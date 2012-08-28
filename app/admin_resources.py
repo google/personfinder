@@ -19,6 +19,7 @@ import cgi
 import datetime
 import mimetypes
 
+import config
 import const
 from resources import Resource, ResourceBundle
 import utils
@@ -44,10 +45,10 @@ img { margin: 12px 0; border: 1px solid #eee; }
 
 table { margin: 12px; border: 1px solid #ccc; }
 tr { vertical-align: baseline; }
-th, td { text-align: left; padding: 3px 6px; min-width: 10em; }
+th, td { text-align: left; padding: 3px 10px; min-width: 5em; }
 th { border-bottom: 1px solid #ccc; }
 .active td { background: #afa; }
-#show-unaltered { float: right; font-weight: normal; color: #aaa; }
+#show-unaltered { margin-left: 1em; font-weight: normal; color: #aaa; }
 
 .warning { color: #a00; }
 a.bundle { color: #06c; }
@@ -140,7 +141,7 @@ class Handler(utils.BaseHandler):
             for anchor, args in crumbs))
 
     def get(self):
-        self.handle(None)
+        self.handle(self.params.operation)
 
     def post(self):
         self.handle(self.params.operation)
@@ -156,12 +157,18 @@ class Handler(utils.BaseHandler):
         if not ResourceBundle.get_by_key_name(self.env.default_resource_bundle):
             ResourceBundle(key_name=self.env.default_resource_bundle).put()
 
-        if self.params.resource_set_preview:
+        if operation == 'set_preview':
             # Set the resource_bundle cookie.  This causes all pages to render
             # using the selected bundle (see main.py).  We use a cookie so that
             # it's possible to preview PF as embedded on external sites.
             self.response.headers['Set-Cookie'] = \
                 'resource_bundle=%s; path=/' % bundle_name
+            return self.redirect(self.get_admin_url())
+
+        if operation == 'set_default':
+            # Set the default resource bundle.
+            config.set(default_resource_bundle=
+                    self.params.resource_bundle_default)
             return self.redirect(self.get_admin_url())
 
         if operation == 'add_bundle' and editable:
@@ -191,7 +198,7 @@ class Handler(utils.BaseHandler):
                 content = resource and resource.content or ''
             put_resource(bundle_name, key_name, content=content,
                          cache_seconds=self.params.cache_seconds)
-            return self.redirect(self.get_admin_url(bundle_name, name, lang))
+            return self.redirect(self.get_admin_url(bundle_name))
 
         if not operation:
             self.write(PREFACE + self.format_nav_html(bundle_name, name, lang))
@@ -287,7 +294,8 @@ function delete_resource() {
     <form method="post" class="%(class)s">
       <input type="hidden" name="operation" value="add_resource">
       <input type="hidden" name="resource_name" value="%(name)s">
-      <input name="resource_lang" size=3 class="hide-when-readonly">
+      <input name="resource_lang" size=3 class="hide-when-readonly"
+          placeholder="lang">
       <input type="submit" value="Add" class="hide-when-readonly">
     </form>
   </td>
@@ -298,29 +306,28 @@ function delete_resource() {
             'name': name})
 
         self.write('''
-<form method="post" class="%(class)s">
-  <input type="hidden" name="operation" value="add_resource">
-  <table cellpadding=0 cellspacing=0>
-    <tr>
-      <th>
-      <div id="show-unaltered">
-        <input id="show-unaltered-checkbox" type="checkbox"
-            onchange="show_unaltered(this.checked)">
-        <label for="show-unaltered-checkbox">Show unaltered files</label>
-      </div>
-      Resource name
-      </th>
-      <th>Localized variants</th></tr>
-    <tr class="add"><td>
-      <input name="resource_name" size="36" class="hide-when-readonly">
-      <input type="submit" value="Add" class="hide-when-readonly">
-      <div class="warning hide-when-editable">
-        This bundle cannot be edited while it is set as default.
-      </div>
-    </td><td></td></tr>
-    %(rows)s
-  </table>
-</form>
+<table cellpadding=0 cellspacing=0>
+<tr><th>
+  Resource name
+  <span id="show-unaltered">
+    <input id="show-unaltered-checkbox" type="checkbox"
+        onchange="show_unaltered(this.checked)">
+    <label for="show-unaltered-checkbox">Show unaltered files</label>
+  </span>
+</th><th>Localized variants</th></tr>
+<tr class="add"><td>
+  <form method="post" class="%(class)s">
+    <input type="hidden" name="operation" value="add_resource">
+    <input name="resource_name" size="36" class="hide-when-readonly"
+        placeholder="resource filename">
+    <input type="submit" value="Add" class="hide-when-readonly">
+    <div class="warning hide-when-editable">
+      This bundle cannot be edited while it is set as default.
+    </div>
+  </form>
+</td><td></td></tr>
+%(rows)s
+</table>
 <script>
 function show_unaltered(show) {
   var rows = document.getElementsByClassName('unaltered');
@@ -336,7 +343,8 @@ show_unaltered(false);
   <table cellpadding=0 cellspacing=0>
     <tr><td>
       Copy all these resources to another bundle:
-      <input name="resource_bundle" size="18">
+      <input name="resource_bundle" size="18"
+          placeholder="bundle name">
       <input type="submit" value="Copy">
     </td></tr>
   </table>
@@ -352,32 +360,45 @@ show_unaltered(false);
         for bundle in bundles:
             bundle_name = bundle.key().name()
             bundle_name_html = html(bundle_name)
-            if bundle_name == self.env.default_resource_bundle:
-                bundle_name_html = '<b>%s</b> (default)' % html(bundle_name)
+            is_default = bundle_name == self.env.default_resource_bundle
+            is_in_preview = bundle_name == self.env.resource_bundle
+            if is_default:
+                bundle_name_html = '<b>%s</b> (default)' % bundle_name_html
+            elif is_in_preview:
+                bundle_name_html += ' (in preview)'
             rows.append('''
 <tr class="%(class)s">
   <td><a class="bundle" href="%(link)s">%(bundle_name_html)s</a></td>
   <td>%(created)s</td>
   <td><a href="%(preview)s"><input type="button" value="Preview"></a></td>
+  <td><input type="radio" name="resource_bundle_default" value="%(bundle_name)s"
+      %(default_checked)s></td>
 </tr>''' % {
-    'class': bundle_name == self.env.resource_bundle and 'active' or '',
+    'class': is_in_preview and 'active' or '',
     'link': self.get_admin_url(bundle_name),
+    'bundle_name': bundle_name,
     'bundle_name_html': bundle_name_html,
+    'default_checked': is_default and 'checked' or '',
     'created': format_datetime(bundle.created),
-    'preview': self.get_admin_url(bundle_name, resource_set_preview='yes')})
+    'preview': self.get_admin_url(bundle_name, operation='set_preview')})
 
         self.write('''
-<table cellpadding=0 cellspacing=0>
-  <tr><th>Bundle name</th><th>Created</th><th>Preview</th></tr>
-  <tr class="add"><td>
-    <form method="post">
-      <input type="hidden" name="operation" value="add_bundle">
-      <input name="resource_bundle" size="18">
-      <input type="submit" value="Add">
-    </form>
-  </td><td></td><td>
-    <a href="%(reset)s"><input type="button" value="Reset to default view"></a>
-  </td></tr>
-  %(rows)s
-</table>''' % {'reset': self.get_admin_url(resource_set_preview='yes'),
+<form method="post">
+  <input type="hidden" name="operation" value="set_default">
+  <table cellpadding=0 cellspacing=0>
+    <tr><th>Bundle name</th><th>Created</th><th>Preview</th><th>Default</th></tr>
+    <tr class="add"><td>
+      <form method="post">
+        <input type="hidden" name="operation" value="add_bundle">
+        <input name="resource_bundle" size="18" placeholder="bundle name">
+        <input type="submit" value="Add">
+      </form>
+    </td><td></td><td>
+      <a href="%(reset)s"><input type="button" value="Reset to default view"></a>
+    </td><td>
+      <input type="submit" value="Set to default">
+    </td></tr>
+    %(rows)s
+  </table>
+</form>''' % {'reset': self.get_admin_url(operation='set_preview'),
                'rows': ''.join(rows)})
