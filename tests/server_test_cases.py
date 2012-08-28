@@ -255,25 +255,6 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
-    def test_language_links(self):
-        """Check that the language links go to the translated start page."""
-        doc = self.go('/haiti')
-
-        doc = self.s.follow(u'espa\u00f1ol')
-        assert 'Busco a alguien' in doc.text
-
-        doc = self.s.follow(u'Fran\u00e7ais')
-        assert 'Je recherche quelqu\'un' in doc.text
-
-        doc = self.go('/pakistan')
-        doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
-        assert (u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 ' +
-                u'\u062A\u0644\u0627\u0634 \u06A9\u0631 ' +
-                u'\u0631\u06C1\u0627 \u06C1\u0648') in doc.text
-
-        doc = self.s.follow(u'English')
-        assert 'I\'m looking for someone' in doc.text
-
     def test_language_xss(self):
         """Regression test for an XSS vulnerability in the 'lang' parameter."""
         doc = self.go('/haiti?lang="<script>alert(1)</script>')
@@ -508,13 +489,13 @@ class ReadOnlyTests(TestsBase):
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')
-        assert doc.first('a', u'Fran\xe7ais')
-        assert doc.first('a', u'Krey\xf2l')
-        assert not doc.all('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert doc.first('option', u'Fran\xe7ais')
+        assert doc.first('option', u'Krey\xf2l')
+        assert not doc.all('option',u'\u0627\u0631\u062F\u0648')  # Urdu
 
         doc = self.go('/pakistan')
-        assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('a', u'Fran\xe7ais')
+        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert not doc.all('option', u'Fran\xe7ais')
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
