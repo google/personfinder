@@ -197,13 +197,14 @@ class TestsBase(unittest.TestCase):
         db.put([person, note])
         return person, note
 
-    def setup_photo(self, person):
-        """Stores a Photo for the given person, for testing."""
-        photo = Photo.create(person.repo, image_data='xyz')
+    def setup_photo(self, record):
+        """Stores a Photo for the given Person or Note record, for testing."""
+        photo = Photo.create(record.repo, image_data='xyz')
         photo.put()
-        person.photo = photo
-        person.photo_url = '_test_photo_url'
-        person.put()
+        record.photo = photo
+        record.photo_url = isinstance(record, Note) and \
+            '_test_photo_url_for_note' or '_test_photo_url'
+        record.put()
         return photo
 
 
@@ -312,8 +313,8 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf-8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis',
@@ -321,7 +322,7 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
@@ -329,15 +330,15 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of title text
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
     def test_query(self):
         """Check the query page."""
@@ -532,15 +533,15 @@ class ReadOnlyTests(TestsBase):
         self.go('/japan', redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                         'http://sagasu-m.appspot.com/japan?subdomain=japan')
+                         'http://sagasu-m.appspot.com/')
 
         # redirect view page
         self.go('/japan/view?id=test.google.com/person.111',
                 redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                'http://sagasu-m.appspot.com/japan/view?subdomain=japan&'
-                'id=test.google.com/person.111')
+                'http://sagasu-m.appspot.com/view'
+                '?id=test.google.com/person.111')
         # no redirect with &small=yes
         self.go('/haiti/?small=yes', redirects=0)
         self.assertEqual(self.s.status, 200)
@@ -706,26 +707,29 @@ class PersonNoteTests(TestsBase):
         note_form = details_page.first('form')
 
         params = dict(kwargs)
-        params['author_made_contact'] = (author_made_contact and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
-        extra_values = [note_body, author]
+        expected = params.copy()
+        params['author_made_contact'] = (author_made_contact and 'yes') or 'no'
         if status:
             params['status'] = status
-            extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
+            expected['status'] = str(NOTE_STATUS_TEXT.get(status))
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
-        new_note_text = notes[-1].text
-        extra_values.extend(kwargs.values())
-        for text in extra_values:
-            assert text in new_note_text, \
-                'Note text %r missing %r' % (new_note_text, text)
+        new_note = notes[-1]
+        for field, text in expected.iteritems():
+            if field in ['note_photo_url']:
+                assert text in new_note.content, \
+                    'Note content %r missing %r' % (new_note.content, text)
+            else:
+                assert text in new_note.text, \
+                    'Note text %r missing %r' % (new_note.text, text)
 
         # Show this text if and only if the person has been contacted
         assert ('This person has been in contact with someone'
-                in new_note_text) == author_made_contact
+                in new_note.text) == author_made_contact
 
     def verify_email_sent(self, message_count=1):
         """Verifies email was sent, firing manually from the taskqueue
@@ -977,7 +981,8 @@ class PersonNoteTests(TestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
-            last_known_location='Port-au-Prince')
+            last_known_location='Port-au-Prince',
+            note_photo_url='http://xyz')
 
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
@@ -1317,7 +1322,8 @@ class PersonNoteTests(TestsBase):
             False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            None, last_known_location='Port-au-Prince')
+            None, last_known_location='Port-au-Prince',
+            note_photo_url='http://xyz')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1350,7 +1356,8 @@ class PersonNoteTests(TestsBase):
                       email_of_found_person='_test_email_of_found_person',
                       phone_of_found_person='_test_phone_of_found_person',
                       last_known_location='_test_last_known_location',
-                      text='_test A note body')
+                      text='_test A note body',
+                      note_photo_url='_test_note_photo_url')
 
         self.verify_details_page(1, details={
             'Given name:': '_test_given_name',
@@ -1396,6 +1403,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
+            photo_url='http://photo1',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1409,6 +1417,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
+            photo_url='http://photo2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1422,6 +1431,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
+            photo_url='http://photo3',
         )])
 
         # All three records should appear on the multiview page.
@@ -1438,6 +1448,9 @@ class PersonNoteTests(TestsBase):
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
+        assert 'http://photo1' in doc.content
+        assert 'http://photo2' in doc.content
+        assert 'http://photo3' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
@@ -2436,10 +2449,6 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.2 is not the default version.
-        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
-
         # Fetch a PFIF 1.3 document.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
@@ -2486,11 +2495,6 @@ class PersonNoteTests(TestsBase):
 '''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
-
-        # Verify that 1.3 is the default version.
-        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content == doc.content, \
-            text_diff(default_doc.content, doc.content)
 
         # Fetch a PFIF 1.4 document.
         # Note that date_of_birth, author_email, author_phone,
@@ -2543,9 +2547,9 @@ _read_profile_url2</pfif:profile_urls>
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that 1.4 is not the default version.
+        # Verify that 1.4 is the default version.
         default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
+        assert default_doc.content == doc.content
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/haiti/api/read?key=full_read_key' +
@@ -2761,11 +2765,6 @@ _read_profile_url2</pfif:profile_urls>
         # verify the log was written.
         verify_api_log(ApiActionLog.READ, api_key='')
 
-        # Verify that PFIF 1.2 is not the default version.
-        default_doc = self.go(
-            '/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
-
         # Fetch a PFIF 1.3 document.
         doc = self.go('/haiti/api/read?' +
                       'id=test.google.com/person.123&version=1.3')
@@ -2787,11 +2786,6 @@ _read_profile_url2</pfif:profile_urls>
 '''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
-
-        # Verify that PFIF 1.3 is the default version.
-        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content == doc.content, \
-            text_diff(default_doc.content, doc.content)
 
         # Fetch a PFIF 1.4 document.
         doc = self.go('/haiti/api/read?' +
@@ -2817,9 +2811,9 @@ _read_profile_url2</pfif:profile_urls>
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.4 is not the default version.
+        # Verify that PFIF 1.4 is the default version.
         default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
+        assert default_doc.content == doc.content
 
 
     def test_search_api(self):
@@ -2895,7 +2889,7 @@ _read_profile_url2</pfif:profile_urls>
                           '&q=_wrong_family_name')
             assert self.s.status not in [403,404]
             empty_pfif = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
 </pfif:pfif>
 '''
             assert (empty_pfif == doc.content), \
@@ -2954,7 +2948,7 @@ _read_profile_url2</pfif:profile_urls>
             home_postal_code='_feed_home_postal_code',
             home_country='_feed_home_country',
             photo_url='_feed_photo_url',
-            profile_urls='_read_profile_url1\n_read_profile_url2',
+            profile_urls='_feed_profile_url1\n_feed_profile_url2',
             source_name='_feed_source_name',
             source_url='_feed_source_url',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
@@ -2978,7 +2972,7 @@ _read_profile_url2</pfif:profile_urls>
         )])
 
         note = None
-        # Feeds use PFIF 1.3.
+        # Feeds use PFIF 1.4 by default.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
@@ -2989,7 +2983,7 @@ _read_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -3005,8 +2999,11 @@ _read_profile_url2</pfif:profile_urls>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_given_name</pfif:first_name>
-      <pfif:last_name>_feed_family_name</pfif:last_name>
+      <pfif:given_name>_feed_given_name</pfif:given_name>
+      <pfif:family_name>_feed_family_name</pfif:family_name>
+      <pfif:alternate_names>_feed_alternate_name1
+_feed_alternate_name2</pfif:alternate_names>
+      <pfif:description>_feed_description &amp; &lt; &gt; "</pfif:description>
       <pfif:sex>male</pfif:sex>
       <pfif:age>30-40</pfif:age>
       <pfif:home_street>_feed_home_street</pfif:home_street>
@@ -3016,8 +3013,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>description:
-    _feed_description &amp; &lt; &gt; "</pfif:other>
+      <pfif:profile_urls>_feed_profile_url1
+_feed_profile_url2</pfif:profile_urls>
       <pfif:note>
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3025,10 +3022,11 @@ _feed_full_name2</pfif:full_name>
         <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
         <pfif:author_name>_feed_author_name</pfif:author_name>
         <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
-        <pfif:found>true</pfif:found>
+        <pfif:author_made_contact>true</pfif:author_made_contact>
         <pfif:status>is_note_author</pfif:status>
         <pfif:last_known_location>_feed_last_known_location</pfif:last_known_location>
         <pfif:text>_feed_text</pfif:text>
+        <pfif:photo_url>_feed_note_photo_url</pfif:photo_url>
       </pfif:note>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
@@ -3055,7 +3053,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/feeds/person?omit_notes=yes')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person?omit_notes=yes</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -3071,8 +3069,11 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_given_name</pfif:first_name>
-      <pfif:last_name>_feed_family_name</pfif:last_name>
+      <pfif:given_name>_feed_given_name</pfif:given_name>
+      <pfif:family_name>_feed_family_name</pfif:family_name>
+      <pfif:alternate_names>_feed_alternate_name1
+_feed_alternate_name2</pfif:alternate_names>
+      <pfif:description>_feed_description &amp; &lt; &gt; "</pfif:description>
       <pfif:sex>male</pfif:sex>
       <pfif:age>30-40</pfif:age>
       <pfif:home_street>_feed_home_street</pfif:home_street>
@@ -3082,8 +3083,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>description:
-    _feed_description &amp; &lt; &gt; "</pfif:other>
+      <pfif:profile_urls>_feed_profile_url1
+_feed_profile_url2</pfif:profile_urls>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
     <title>_feed_full_name1</title>
@@ -3106,7 +3107,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/feeds/person?key=full_read_key')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person?key=full_read_key</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -3124,8 +3125,11 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_given_name</pfif:first_name>
-      <pfif:last_name>_feed_family_name</pfif:last_name>
+      <pfif:given_name>_feed_given_name</pfif:given_name>
+      <pfif:family_name>_feed_family_name</pfif:family_name>
+      <pfif:alternate_names>_feed_alternate_name1
+_feed_alternate_name2</pfif:alternate_names>
+      <pfif:description>_feed_description &amp; &lt; &gt; "</pfif:description>
       <pfif:sex>male</pfif:sex>
       <pfif:date_of_birth>1975</pfif:date_of_birth>
       <pfif:age>30-40</pfif:age>
@@ -3136,8 +3140,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>description:
-    _feed_description &amp; &lt; &gt; "</pfif:other>
+      <pfif:profile_urls>_feed_profile_url1
+_feed_profile_url2</pfif:profile_urls>
       <pfif:note>
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3147,12 +3151,13 @@ _feed_full_name2</pfif:full_name>
         <pfif:author_email>_feed_author_email</pfif:author_email>
         <pfif:author_phone>_feed_author_phone</pfif:author_phone>
         <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
-        <pfif:found>true</pfif:found>
+        <pfif:author_made_contact>true</pfif:author_made_contact>
         <pfif:status>is_note_author</pfif:status>
         <pfif:email_of_found_person>_feed_email_of_found_person</pfif:email_of_found_person>
         <pfif:phone_of_found_person>_feed_phone_of_found_person</pfif:phone_of_found_person>
         <pfif:last_known_location>_feed_last_known_location</pfif:last_known_location>
         <pfif:text>_feed_text</pfif:text>
+        <pfif:photo_url>_feed_note_photo_url</pfif:photo_url>
       </pfif:note>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
@@ -3193,21 +3198,21 @@ _feed_full_name2</pfif:full_name>
             last_known_location='_feed_last_known_location',
             phone_of_found_person='_feed_phone_of_found_person',
             text='_feed_text',
-            photo_url='_feed_photo_url',
+            photo_url='_feed_photo_url_for_note',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             author_made_contact=True,
             status='believed_dead'
         )])
 
-        # Feeds use PFIF 1.2.
+        # Feeds use PFIF 1.4 by default.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
         # utils.filter_sensitive_fields).
         doc = self.go('/haiti/feeds/note')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/note</id>
   <title>%s</title>
   <subtitle>PFIF Note Feed generated by Person Finder at %s</subtitle>
@@ -3221,10 +3226,11 @@ _feed_full_name2</pfif:full_name>
       <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
-      <pfif:found>true</pfif:found>
+      <pfif:author_made_contact>true</pfif:author_made_contact>
       <pfif:status>believed_dead</pfif:status>
       <pfif:last_known_location>_feed_last_known_location</pfif:last_known_location>
       <pfif:text>_feed_text</pfif:text>
+      <pfif:photo_url>_feed_photo_url_for_note</pfif:photo_url>
     </pfif:note>
     <id>pfif:test.google.com/note.456</id>
     <title>_feed_text</title>
@@ -3260,7 +3266,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -3273,8 +3279,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:author_name>illegal character ()</pfif:author_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:full_name>illegal character ()</pfif:full_name>
-      <pfif:first_name>illegal character ()</pfif:first_name>
-      <pfif:last_name>illegal character ()</pfif:last_name>
+      <pfif:given_name>illegal character ()</pfif:given_name>
+      <pfif:family_name>illegal character ()</pfif:family_name>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
     <title>illegal character ()</title>
@@ -3317,7 +3323,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -3332,8 +3338,10 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
       <pfif:full_name>chinese a = \xe4\xba\x9c</pfif:full_name>
-      <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
-      <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
+      <pfif:given_name>greek alpha = \xce\xb1</pfif:given_name>
+      <pfif:family_name>hebrew alef = \xd7\x90</pfif:family_name>
+      <pfif:alternate_names>japanese a = \xe3\x81\x82</pfif:alternate_names>
+      <pfif:profile_urls>korean a = \xec\x95\x84</pfif:profile_urls>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
     <title>chinese a = \xe4\xba\x9c</title>
@@ -3672,30 +3680,32 @@ _feed_full_name2</pfif:full_name>
         """Checks that a stored photo can be retrieved."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        id = photo.key().name().split(':')[1]
-
-        # Should be available in the 'haiti' repo.
-        doc = self.go('/haiti/photo?id=%s' % id)
-        assert self.s.status == 200
-        assert doc.content == 'xyz'
-
-        # Should not be available in a different repo.
-        self.go('/pakistan/photo?id=%s' % id)
-        assert self.s.status == 404
+        note_photo = self.setup_photo(note)
+        for photo in [photo, note_photo]:
+            id = photo.key().name().split(':')[1]
+            # Should be available in the 'haiti' repo.
+            doc = self.go('/haiti/photo?id=%s' % id)
+            assert self.s.status == 200
+            assert doc.content == 'xyz'
+            # Should not be available in a different repo.
+            self.go('/pakistan/photo?id=%s' % id)
+            assert self.s.status == 404
 
     def test_xss_photo(self):
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.photo_url not in doc.content
-        person.photo_url = 'http://xyz'
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert 'http://xyz' in doc.content
-        person.photo_url = 'bad_things://xyz'
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.photo_url not in doc.content
+        note_photo = self.setup_photo(note)
+        for record in [person, note]:
+            doc = self.go('/haiti/view?id=' + person.record_id)
+            assert record.photo_url not in doc.content
+            record.photo_url = 'http://xyz'
+            record.put()
+            doc = self.go('/haiti/view?id=' + person.record_id)
+            assert 'http://xyz' in doc.content
+            record.photo_url = 'bad_things://xyz'
+            record.put()
+            doc = self.go('/haiti/view?id=' + person.record_id)
+            assert record.photo_url not in doc.content
 
     def test_xss_source_url(self):
         person, note = self.setup_person_and_note()
@@ -3761,7 +3771,8 @@ _feed_full_name2</pfif:full_name>
         button = doc.firsttag('input',
                               value='Disable notes on this record')
         doc = self.s.follow(button.enclosing('a'))
-        assert 'disable notes on "_test_given_name _test_family_name"' in doc.text
+        assert 'disable notes on ' \
+               '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
             'input',
             value='Yes, ask the record author to disable notes')
@@ -3783,8 +3794,8 @@ _feed_full_name2</pfif:full_name>
         messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Confirm disable of notes on '
-                '"_test_given_name _test_family_name"' in words), words
+        assert ('[Person Finder] Disable notes on '
+                '"_test_given_name _test_family_name"?' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
@@ -3868,11 +3879,12 @@ _feed_full_name2</pfif:full_name>
             in doc.text, utils.encode(doc.text)
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
-        messages = sorted(self.mail_server.messages[3:], key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages[3:],
+                          key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Confirm enable of notes on '
-                '"_test_given_name _test_family_name"' in words), words
+        assert ('[Person Finder] Enable notes on '
+                '"_test_given_name _test_family_name"?' in words), words
         assert 'the author of this record' in words, words
         assert 'follow this link within 3 days' in words, words
         confirm_enable_notes_url = re.search(
@@ -3889,7 +3901,8 @@ _feed_full_name2</pfif:full_name>
 
         # Check the notification messages sent to related e-mail accounts.
         self.verify_email_sent(6)
-        messages = sorted(self.mail_server.messages[4:], key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages[4:],
+                          key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Notes are now enabled on ' +
@@ -4108,6 +4121,7 @@ _feed_full_name2</pfif:full_name>
         and has the correct effect on the outgoing API and feeds."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
+        note_photo = self.setup_photo(note)
 
         # Advance time by one day.
         now = self.advance_utcnow(days=1)
@@ -4181,6 +4195,7 @@ _feed_full_name2</pfif:full_name>
                 'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
         assert db.get(photo.key())
+        assert db.get(note_photo.key())
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
@@ -4189,9 +4204,9 @@ _feed_full_name2</pfif:full_name>
 
         # The read API should expose an expired record.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
+                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
     <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
@@ -4205,15 +4220,46 @@ _feed_full_name2</pfif:full_name>
             text_diff(expected_content, doc.content)
 
         # The outgoing person feed should contain an expired record.
-        doc = self.go('/haiti/feeds/person')  # PFIF 1.3
+        doc = self.go('/haiti/feeds/person')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T00:00:00Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
+  <entry>
+    <pfif:person>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
+      <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+      <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+      <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
+      <pfif:full_name></pfif:full_name>
+    </pfif:person>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
+    <author>
+    </author>
+    <updated>2010-01-02T00:00:00Z</updated>
+    <source>
+      <title>%s</title>
+    </source>
+  </entry>
+</feed>
+''' % (self.hostport, self.hostport, self.hostport, self.hostport,
+       self.hostport)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        doc = self.go('/haiti/feeds/person?version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
+  <title>%s</title>
+  <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
+  <updated>2010-01-02T00:00:00Z</updated>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
@@ -4324,17 +4370,17 @@ _feed_full_name2</pfif:full_name>
         # The read API should show a record with all the fields present,
         # as if the record was just written with new field values.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
+                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
   <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
   <pfif:expiry_date>2010-03-03T00:00:00Z</pfif:expiry_date>
   <pfif:author_name>_test_author_name</pfif:author_name>
   <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
   <pfif:full_name></pfif:full_name>
-  <pfif:first_name>_test_given_name</pfif:first_name>
-  <pfif:last_name>_test_family_name</pfif:last_name>
+  <pfif:given_name>_test_given_name</pfif:given_name>
+  <pfif:family_name>_test_family_name</pfif:family_name>
   <pfif:photo_url>_test_photo_url</pfif:photo_url>
   <pfif:note>
     <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
@@ -4348,10 +4394,10 @@ _feed_full_name2</pfif:full_name>
 '''
 
         # The outgoing feed should contain a complete record also.
-        doc = self.go('/haiti/feeds/person')  # PFIF 1.3
+        doc = self.go('/haiti/feeds/person')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
@@ -4365,8 +4411,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:author_name>_test_author_name</pfif:author_name>
       <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
       <pfif:full_name>_test_given_name _test_family_name</pfif:full_name>
-      <pfif:first_name>_test_given_name</pfif:first_name>
-      <pfif:last_name>_test_family_name</pfif:last_name>
+      <pfif:given_name>_test_given_name</pfif:given_name>
+      <pfif:family_name>_test_family_name</pfif:family_name>
       <pfif:photo_url>_test_photo_url</pfif:photo_url>
       <pfif:note>
         <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
@@ -4375,6 +4421,7 @@ _feed_full_name2</pfif:full_name>
         <pfif:author_name></pfif:author_name>
         <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
         <pfif:text>Testing</pfif:text>
+        <pfif:photo_url>_test_photo_url_for_note</pfif:photo_url>
       </pfif:note>
     </pfif:person>
     <id>pfif:haiti.personfinder.google.org/person.123</id>
@@ -4418,6 +4465,7 @@ _feed_full_name2</pfif:full_name>
         behind the appropriate placeholder in the outgoing API and feeds."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
+        note_photo = self.setup_photo(note)
 
         now = self.advance_utcnow(days=1)
 
@@ -4441,8 +4489,9 @@ _feed_full_name2</pfif:full_name>
         assert note.is_expired
         assert note.text == 'Testing'
 
-        # The Photo should still be there.
+        # The Photos should still be there.
         assert db.get(photo.key())
+        assert db.get(note_photo.key())
 
         # The Person and Note records should be inaccessible.
         assert not Person.get('haiti', person.record_id)
@@ -4454,9 +4503,10 @@ _feed_full_name2</pfif:full_name>
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
-        doc = self.go('/haiti/api/read?id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
+        doc = self.go('/haiti/api/read'
+                      '?id=haiti.personfinder.google.org/person.123')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
     <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
@@ -4490,14 +4540,14 @@ _feed_full_name2</pfif:full_name>
         assert person.entry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
 
-        # The Note and Photo should be gone.
+        # The Note and Photos should be gone.
         assert not db.get(note.key())
         assert not db.get(photo.key())
+        assert not db.get(note_photo.key())
 
         # The placeholder exposed by the read API should be unchanged.
-        doc = self.go('/haiti/api/read?'
-                      'id=haiti.personfinder.google.org/person.123&'
-                      'version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read'
+                      '?id=haiti.personfinder.google.org/person.123')
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -4521,7 +4571,7 @@ _feed_full_name2</pfif:full_name>
         # Simulate the arrival of an update that expires this record.
         data = '''\
 <?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
@@ -4548,7 +4598,7 @@ _feed_full_name2</pfif:full_name>
 
         # The read API should show the same expired record as before.
         doc = self.go(
-            '/haiti/api/read?id=test.google.com/person.123')  # PFIF 1.3
+            '/haiti/api/read?id=test.google.com/person.123')  # PFIF 1.4
         expected_content = 'No person record with ID test.google.com/person.123'
         assert expected_content in doc.content
 
@@ -5666,8 +5716,8 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
         assert cfg.bad_words == 'foo, bar'
-        # Changing configs other than 'deactivated' does not renew
-        # 'updated_date'.
+        # Changing configs other than 'deactivated' or 'test_mode' does not
+        # renew 'updated_date'.
         assert cfg.updated_date == old_updated_date
 
         # Verifies that there is a javascript constant with languages in it
@@ -5722,6 +5772,46 @@ class ConfigTests(TestsBase):
             assert doc.alltags('input') == []
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
+
+    def test_the_test_mode(self):
+        HTML_PATHS = ['', '/query', '/results', '/create', '/view',
+                      '/multiview', '/reveal', '/photo', '/embed', '/delete']
+
+        # First check no HTML pages show the test mode message.
+        for path in HTML_PATHS:
+            doc = self.go('/haiti%s' % path)
+            assert 'currently in test mode' not in doc.content, \
+                'path: %s, content: %s' % (path, doc.content)
+
+        # Load the administration page.
+        doc = self.go_as_admin('/haiti/admin')
+        assert self.s.status == 200
+
+        cfg = config.Configuration('haiti')
+        old_updated_date = cfg.updated_date
+        self.advance_utcnow(seconds=1)
+
+        # Enable test-mode for an existing repository.
+        settings_form = doc.first('form', id='save_repo')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["en"]',
+            repo_titles='{"en": "Foo"}',
+            test_mode='true',
+            start_page_custom_htmls='{"en": "start page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
+            view_page_custom_htmls='{"en": "view page message"}',
+            seek_query_form_custom_htmls='{"en": "query form message"}')
+
+        cfg = config.Configuration('haiti')
+        assert cfg.test_mode
+        # Changing 'test_mode' renews updated_date.
+        assert cfg.updated_date != old_updated_date
+
+        # Ensure all HTML pages show the test mode message.
+        for path in HTML_PATHS:
+            doc = self.go('/haiti%s' % path)
+            assert 'currently in test mode' in doc.content, \
+                'path: %s, content: %s' % (path, doc.content)
 
     def test_custom_messages(self):
         # Load the administration page.
@@ -5854,6 +5944,7 @@ class FeedTests(TestsBase):
     def tearDown(self):
         TestsBase.tearDown(self)
         config.set_for_repo('haiti', deactivated=False)
+        config.set_for_repo('japan', test_mode=False)
 
     def test_repo_feed_non_existing_repo(self):
         self.go('/none/feeds/repo')
@@ -5898,6 +5989,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="es">Terremoto en Haití</gpf:title>
         <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:test_mode>false</gpf:test_mode>
         <gpf:location>
           <georss:point>18.968637 -72.284546</georss:point>
         </gpf:location>
@@ -5914,6 +6006,7 @@ class FeedTests(TestsBase):
 
     def test_repo_feed_all_repos(self):
         config.set_for_repo('haiti', deactivated=True)
+        config.set_for_repo('japan', test_mode=True)
         config.set_for_repo('japan', updated_date=utils.get_timestamp(
             datetime.datetime(2012, 03, 11)))
 
@@ -5942,6 +6035,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="es">2011 Terremoto en Japón</gpf:title>
         <gpf:read_auth_key_required>true</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>true</gpf:search_auth_key_required>
+        <gpf:test_mode>true</gpf:test_mode>
         <gpf:location>
           <georss:point>38 140.7</georss:point>
         </gpf:location>
@@ -5959,6 +6053,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
         <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:test_mode>false</gpf:test_mode>
         <gpf:location>
           <georss:point>33.36 73.26</georss:point>
         </gpf:location>
@@ -5992,15 +6087,15 @@ class DownloadFeedTests(TestsBase):
         output = open(self.filename).read()
         assert '<pfif:pfif ' in output
         assert '<pfif:person>' in output
-        assert '<pfif:first_name>_test_given_name</pfif:first_name>' in output
+        assert '<pfif:given_name>_test_given_name</pfif:given_name>' in output
 
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'last_name,first_name,age', url)
+                           '-F', 'family_name,given_name,age', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
-        assert lines[0].strip() == 'last_name,first_name,age'
+        assert lines[0].strip() == 'family_name,given_name,age'
         assert lines[1].strip() == '_test_family_name,_test_given_name,'
 
     def test_download_notes(self):

@@ -277,4 +277,5 @@ def monkeypatch_pytest_terminal_reporter():
 
 if __name__ == '__main__':
     monkeypatch_pytest_terminal_reporter()
-    pytest.main(plugins=[PyTestPlugin()])
+    # Run the tests, using sys.exit to set exit status (nonzero for failure).
+    sys.exit(pytest.main(plugins=[PyTestPlugin()]))

@@ -269,11 +269,11 @@ class TasksTests(unittest.TestCase):
         self.key_p3 = db.put(self.p3)
         self.to_delete.append(self.p3)
 
-        # Initial state: three Persons and one Note, nothing expired yet.
+        # Initial state: three Persons and one Note.
         assert model.Person.all().count() == 3
         assert model.Note.get('haiti', self.note_id)
         assert db.get(self.photo_key)
-        assert db.get(self.key_p1).is_expired == False
+        assert db.get(self.key_p1).is_expired == False  # still exists
         assert db.get(self.key_p2).is_expired == False
         assert db.get(self.key_p3).is_expired == False
 
@@ -302,25 +302,25 @@ class TasksTests(unittest.TestCase):
         config.set(test_mode=False, repo='haiti')
         set_utcnow_for_test(datetime.datetime(2010, 6, 1))
         run_clean_up_in_test_mode_task()
-        assert db.get(self.key_p1).is_expired == False
+        assert db.get(self.key_p1).is_expired == False  # still exists
         assert db.get(self.key_p2).is_expired == False
         assert db.get(self.key_p3).is_expired == False
 
-        # People with entry_date before 2010-01-01 3:00 are expired.
+        # Records with entry_date before 2010-01-01 3:00 are deleted.
         config.set(test_mode=True, repo='haiti')
         set_utcnow_for_test(datetime.datetime(2010, 1, 1, 5, 0, 0))
         run_clean_up_in_test_mode_task()
-        assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p2).is_expired == True
-        assert db.get(self.key_p3).is_expired == False
+        assert db.get(self.key_p1) is None
+        assert db.get(self.key_p2) is None
+        assert db.get(self.key_p3).is_expired == False  # still exists
 
-        # All people are expired.
+        # All records are deleted.
         config.set(test_mode=True, repo='haiti')
         set_utcnow_for_test(datetime.datetime(2010, 1, 1, 7, 0, 0))
         run_clean_up_in_test_mode_task()
-        assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p2).is_expired == True
-        assert db.get(self.key_p3).is_expired == True
+        assert db.get(self.key_p1) is None
+        assert db.get(self.key_p2) is None
+        assert db.get(self.key_p3) is None
 
     def test_clean_up_in_test_mode_multi_tasks(self):
         """Test the clean up in test mode when it is broken into multiple
@@ -343,7 +343,7 @@ class TasksTests(unittest.TestCase):
                 mox.IsA(str),
                 mox.IsA(str),
                 utcnow=str(calendar.timegm(utcnow.utctimetuple())),
-                cursor=mox.IsA(str), 
+                cursor=mox.IsA(str),
                 queue_name=mox.IsA(str)).
             WithSideEffects(add_task_for_repo).MultipleTimes())
 
@@ -356,10 +356,10 @@ class TasksTests(unittest.TestCase):
         self.mox.ReplayAll()
 
         config.set(test_mode=True, repo='haiti')
-        # This should run multiple tasks and finally expires all people.
+        # This should run multiple tasks and finally deletes all records.
         cleanup.get()
-        assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p2).is_expired == True
+        assert db.get(self.key_p1) is None
+        assert db.get(self.key_p2) is None
 
         self.mox.UnsetStubs()
         self.mox.VerifyAll()

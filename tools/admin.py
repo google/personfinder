@@ -17,6 +17,7 @@
 from model import *
 from utils import *
 import logging
+import pickle
 
 
 class Mapper(object):
@@ -106,13 +107,62 @@ def get_notes(repo, id):
     return list(Note.all_in_repo(repo).filter(
         'person_record_id =', expand_id(repo, id)))
 
-def delete_person(repo, id):
-    db.delete(get_entities_for_person(repo, id))
+def delete_person(person):
+    """Deletes a Person, possibly leaving behind an empty placeholder."""
+    if person.is_original():
+        person.expiry_date = get_utcnow()
+        person.put_expiry_flags()
+        person.wipe_contents()
+    else:
+        person.delete_related_entities(delete_self=True)
 
-def get_entities_for_person(repo, id):
-    person = get_person(repo, id)
-    notes = get_notes(repo, id)
-    entities = [person] + notes
-    if person.photo:
-        entities.append(person.photo)
-    return entities
+def delete_repo(repo):
+    """Deletes a Repo and associated Person, Note, Authorization, Subscription
+    (but not Counter, ApiActionLog, or UserAgentLog) entities."""
+    for person in Person.all_in_repo(repo, filter_expired=False):
+        delete_person(person)
+    entities = [Repo.get_by_key_name(repo)]
+    for cls in [Person, Note, Authorization, Subscription]:
+        entities += list(cls.all().filter('repo =', repo))
+    min_key = db.Key.from_path('ConfigEntry', repo + ':')
+    max_key = db.Key.from_path('ConfigEntry', repo + ';')
+    entities += list(config.ConfigEntry.all().filter('__key__ >', min_key
+                                            ).filter('__key__ <', max_key))
+    db.delete(entities)
+
+def get_all_resources():
+    """Gets all the Resource entities and returns a dictionary of the contents.
+
+    The resulting dictionary has the structure: {
+      <bundle_name>: {
+        'created': <bundle_created_datetime>,
+        'resources': {
+            <resource_name>: {
+                'cache_seconds': <cache_seconds>
+                'content': <content_string>
+                'last_modified': <last_modified_datetime>
+            }
+        }
+    }
+    """
+    import resources
+    bundle_dicts = {}
+    for b in resources.ResourceBundle.all():
+        resource_dicts = {}
+        for r in resources.Resource.all().ancestor(b):
+            resource_dicts[r.key().name()] = {
+                'cache_seconds': r.cache_seconds,
+                'content': r.content,
+                'last_modified': r.last_modified
+            }
+        bundle_dicts[b.key().name()] = {
+            'created': b.created,
+            'resources': resource_dicts
+        }
+    return bundle_dicts
+
+def download_resources(filename):
+    """Downloads all the Resource data into a backup file in pickle format."""
+    file = open(filename, 'w')
+    pickle.dump(get_all_resources(), file)
+    file.close()

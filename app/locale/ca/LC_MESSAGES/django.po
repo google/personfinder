@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Amplia la "
-"data de caducitat en %(extension_days)s dies\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -47,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Per assegurar-nos que les notes només s'activin o es desactivin quan es"
+" tingui el permís de l'autor del registre, li enviarem un missatge de "
+"confirmació. Si sou l'autor, comproveu el correu electrònic després de "
+"fer clic al botó que hi ha a continuació.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -64,6 +57,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hola %(author_name)s, Un usuari ha sol·licitat l'activació de les notes "
+"al registre de: \"%(given_name)s %(family_name)s\". Tenim registrada la "
+"vostra adreça electrònica com a autor d'aquest registre. Per activar les "
+"notes en aquest registre, seguiu aquest enllaç en un termini màxim de "
+"tres dies:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -81,6 +85,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hola %(author_name)s, Un usuari ha sol·licitat la desactivació de les "
+"notes al registre de: \"%(given_name)s %(family_name)s\". Tenim "
+"registrada la vostra adreça electrònica com a autor d'aquest registre. "
+"Per desactivar les notes en aquest registre, seguiu aquest enllaç en un "
+"termini màxim de tres dies:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -94,12 +108,32 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hola %(author_name)s, Acabeu d'introduir una nota al registre de: "
+"\"%(given_name)s %(family_name)s\". Per publicar-la, seguiu aquest enllaç"
+" en un termini màxim de tres dies:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -127,6 +161,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      esteu segur que voleu desactivar les notes per a \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -135,6 +173,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Esteu segur que voleu desactivar les notes al registre de: "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -143,6 +185,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Esteu segur que voleu activar les notes per a \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -161,6 +207,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Confirmeu la nota\n"
+"    "
 
 msgid ""
 "\n"
@@ -213,6 +262,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Per assegurar-nos que les notes només s'activin o es desactivin quan "
+"es tingui el permís de l'autor del registre, li enviarem un missatge de "
+"confirmació. Si sou l'autor, comproveu el correu electrònic després de "
+"fer clic al botó que hi ha a continuació.\n"
+"  "
 
 msgid ""
 "\n"
@@ -221,6 +276,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  El registre continuarà visible al lloc, però ningú no podrà publicar-hi"
+" cap més nota.\n"
+"  "
 
 msgid ""
 "\n"
@@ -229,6 +288,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Per publicar la nota, introduïu la vostra adreça electrònica a "
+"continuació i seguiu l'enllaç de confirmació que rebreu.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -256,8 +319,8 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Un usuari ha suprimit el registre de \"%(given_name)s %(family_name)s\" a "
-"%(site_url)s. Us notifiquem la supressió perquè la vostra adreça "
+"Un usuari ha suprimit el registre de \"%(given_name)s %(family_name)s\" a"
+" %(site_url)s. Us notifiquem la supressió perquè la vostra adreça "
 "electrònica consta com a autora del registre.\n"
 
 #, python-format
@@ -298,12 +361,20 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Actualment les notes estan desactivades al registre de: \"%(given_name)s "
+"%(family_name)s\". Per visualitzar-lo, seguiu aquest enllaç:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Us ho notifiquem perquè la vostra adreça electrònica està associada amb "
+"el registre d'aquesta persona o bé amb una nota del registre.\n"
 
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -311,6 +382,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Actualment les notes estan activades al registre de: \"%(given_name)s "
+"%(family_name)s\". Per visualitzar-lo, seguiu aquest enllaç:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Us ho notifiquem perquè la vostra adreça electrònica està associada amb "
+"el registre d'aquesta persona o bé amb una nota del registre.\n"
 
 #, python-format
 msgid ""
@@ -339,8 +418,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
+"\n"
+"Hi ha una nota nova al registre de: \"%(given_name)s %(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -353,6 +435,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Us heu subscrit a les notes sobre \"%(given_name)s %(family_name)s\". "
+"Podeu visualitzar aquest registre a\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Per cancel·lar la subscripció, seguiu aquest enllaç: %(unsubscribe_link)s"
+"\n"
 
 msgid "(click to reveal)"
 msgstr "(feu clic per mostrar)"
@@ -431,7 +521,7 @@ msgstr "Torna a l'inici"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "No puc trobar una nota amb l'identificador %(id)s"
 
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -488,7 +578,7 @@ msgid "Developers"
 msgstr "Desenvolupadors"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Desactiva les notes en aquest registre"
 
 msgid "Download the sound as MP3"
 msgstr "Baixa el so com a MP3"
@@ -506,7 +596,7 @@ msgid "Embedding the Application"
 msgstr "Incrustació de l'aplicació"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Activa les notes en aquest registre"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Introduïu-la com a AAAA-MM-DD"
@@ -600,7 +690,7 @@ msgid "I am this person"
 msgstr "Sóc aquesta persona"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "No vull rebre cap més actualització sobre aquest registre."
 
 msgid "I do not want my information online anymore."
 msgstr "Ja no vull que la meva informació estigui en línia."
@@ -650,12 +740,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Si sou l'autor d'aquesta nota, cerqueu al correu electrònic un enllaç per"
+" confirmar que voleu desactivar les notes en aquest registre. Si no ho "
+"sou, espereu que l'autor del registre confirmi la sol·licitud."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Si sou l'autor d'aquesta nota, cerqueu al correu electrònic un enllaç per"
+" confirmar que voleu activar les notes en aquest registre. Si no ho sou, "
+"espereu que l'autor del registre confirmi la sol·licitud."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -727,7 +823,7 @@ msgstr "No"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "No hi ha cap correu electrònic de l'autor del registre %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -736,26 +832,26 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "No hi ha cap nota amb l'ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "No s'ha publicat cap nota"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "No hi ha cap persona amb l'ID: %(id)s."
 
 msgid "No results found for"
 msgstr "No s'ha trobat cap resultat per a"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "No esteu autoritzat a publicar notes amb l'estat \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "No és correu brossa"
 
 msgid "Note author"
-msgstr ""
+msgstr "Autor de la nota"
 
 msgid "Note text"
 msgstr "Text de la nota"
@@ -766,7 +862,7 @@ msgstr ""
 " i que no siguin precisos."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Notes per a aquesta persona"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Nombre o interval (p. ex., 20-30)"
@@ -859,10 +955,10 @@ msgid "Please fill in all the required fields."
 msgstr "Empleneu tots els camps obligatoris."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Escriviu la vostra adreça electrònica."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Proporcioneu una adreça electrònica vàlida."
 
 msgid "Possible duplicates"
 msgstr "Possibles duplicats"
@@ -889,7 +985,7 @@ msgid "Reason for deletion:"
 msgstr "Motiu de la supressió:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Motiu per a la desactivació de les notes:"
 
 msgid "Records Similar to"
 msgstr "Registres semblants a"
@@ -924,7 +1020,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleccioneu un màxim de 3 registres per marcar-los com a duplicats:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Envia un correu electrònic"
 
 msgid "Sex"
 msgstr "Sexe"
@@ -1009,10 +1105,10 @@ msgstr ""
 "provar."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "L'autor ha desactivat les notes en aquest registre."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "L'autor ha desactivat les actualitzacions d'estat en aquest registre."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
@@ -1041,11 +1137,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "El testimoni %(token)s no és vàlid"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "El testimoni %(token)s no és vàlid."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1127,6 +1223,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Per cancel·lar la subscripció, seguiu aquest enllaç"
 
@@ -1188,16 +1287,16 @@ msgid "Yes"
 msgstr "Sí"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Sí, demana a l'autor del registre que desactivi les notes."
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Sí, demana a l'autor del registre que activi les notes."
 
 msgid "Yes, delete the record"
 msgstr "Sí, suprimeix el registre"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Sí, desactiva les notes en aquest registre."
 
 msgid "Yes, extend the record"
 msgstr "Sí, amplia el registre"
@@ -1259,7 +1358,7 @@ msgid "Your e-mail address:"
 msgstr "La vostra adreça electrònica:"
 
 msgid "Your email"
-msgstr ""
+msgstr "El vostre correu electrònic"
 
 msgid "Your name"
 msgstr "El vostre nom"
@@ -1285,16 +1384,15 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"La vostra sol·licitud s'ha processat correctament. Comproveu la bústia "
+"d'entrada i confirmeu que voleu publicar la nota; per fer-ho seguiu l'URL"
+" inserit."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Person Finder] Confirma la vostra nota sobre \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1303,18 +1401,36 @@ msgstr ""
 "%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+"[Person Finder] S'està activant l'avís de notes per a \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Ara les notes estan desactivades per a \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
+"[Person Finder] Ara les notes estan activades per a \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
@@ -1343,6 +1459,9 @@ msgstr "a les"
 
 msgid "female"
 msgstr "dona"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "home"

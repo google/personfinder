@@ -165,7 +165,9 @@ def get_repo_options(request, lang):
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
         url = utils.get_repo_url(request, repo)
-        options.append(utils.Struct(repo=repo, title=title, url=url))
+        test_mode = config.get_for_repo(repo, 'test_mode')
+        options.append(utils.Struct(repo=repo, title=title, url=url,
+                                    test_mode=test_mode))
     return options
 
 def get_language_options(request, config=None):
@@ -196,6 +198,8 @@ def setup_env(request):
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
+    # TODO(ryok): Rename to local_test_mode or something alike to disambiguate
+    # better from repository's test_mode.
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 
@@ -257,7 +261,10 @@ def setup_env(request):
             env.config.view_page_custom_htmls, env.lang, '')
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
-        env.repo_test_mode = config.get('test_mode', repo=env.repo)
+        # If the repository is deactivated, we should not show test mode
+        # notification.
+        env.repo_test_mode = (
+            env.config.test_mode and not env.config.deactivated)
 
         # Preformat the name from the 'given_name' and 'family_name' parameters.
         given_name = request.get('given_name', '').strip()

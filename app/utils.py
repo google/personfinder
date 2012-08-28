@@ -231,7 +231,7 @@ def validate_timestamp(string):
 
 def validate_image(bytestring):
     try:
-        image = ''
+        image = None
         if bytestring:
             image = images.Image(bytestring)
             image.width
@@ -303,14 +303,12 @@ def get_app_name():
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
 
-def sanitize_urls(person):
+def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
-    if person.photo_url:
-        if not url_is_safe(person.photo_url):
-            person.photo_url = None
-    if person.source_url:
-        if not url_is_safe(person.source_url):
-            person.source_url = None
+    for field in ['photo_url', 'source_url']:
+        url = getattr(record, field, None)
+        if url and not url_is_safe(url):
+            setattr(record, field, None)
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -412,11 +410,23 @@ def send_confirmation_email_to_record_author(
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
-    subject = _(
-        '[Person Finder] Confirm %(action)s of notes on '
-        '"%(given_name)s %(family_name)s"'
-        ) % {'action': action, 'given_name': person.given_name,
-             'family_name': person.family_name}
+    params = {
+        'given_name': person.given_name,
+        'family_name': person.family_name,
+    }
+    if action == 'enable':
+        subject = _(
+            '[Person Finder] Enable notes on '
+            '"%(given_name)s %(family_name)s"?'
+            ) % params
+    elif action == 'disable':
+        subject = _(
+            '[Person Finder] Disable notes on '
+            '"%(given_name)s %(family_name)s"?'
+            ) % params
+    else:
+        raise ValueError('Unknown action: %s' % action)
+        
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -478,9 +488,10 @@ class BaseHandler(webapp.RequestHandler):
     auto_params = {
         'add_note': validate_yes,
         'age': validate_age,
-        'alternate_given_names': strip,
         'alternate_family_names': strip,
+        'alternate_given_names': strip,
         'author_email': strip,
+        'author_made_contact': validate_yes,
         'author_name': strip,
         'author_phone': strip,
         'cache_seconds': validate_cache_seconds,
@@ -494,8 +505,8 @@ class BaseHandler(webapp.RequestHandler):
         'email_of_found_person': strip,
         'error': strip,
         'expiry_option': validate_expiry,
+        'family_name': strip,
         'given_name': strip,
-        'author_made_contact': validate_yes,
         'home_city': strip,
         'home_country': strip,
         'home_neighborhood': strip,
@@ -509,10 +520,11 @@ class BaseHandler(webapp.RequestHandler):
         'key': strip,
         'lang': validate_lang,
         'last_known_location': strip,
-        'family_name': strip,
         'max_results': validate_int,
         'min_entry_date': validate_datetime,
         'new_repo': validate_repo,
+        'note_photo': validate_image,
+        'note_photo_url': strip,
         'omit_notes': validate_yes,
         'operation': strip,
         'person_record_id': strip,
@@ -523,8 +535,8 @@ class BaseHandler(webapp.RequestHandler):
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
         'resource_lang': validate_lang,
-        'resource_set_preview': validate_yes,
         'resource_name': validate_resource_name,
+        'resource_set_preview': validate_yes,
         'role': validate_role,
         'sex': validate_sex,
         'signature': strip,
@@ -552,19 +564,11 @@ class BaseHandler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the repo name.  Note that path
-            # has a leading /, so we want to remove just the first component
-            # and leave at least a '/' at the beginning.
-            path = re.sub('^/[^/]*', '', self.request.path) or '/'
-            # Except for top page, we propagate path and query params.
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
-            query_params = []
-            if path != '/':
-                if self.repo:
-                    query_params = ['subdomain=' + self.repo]
-                if self.request.query_string:
-                    query_params.append(self.request.query_string)
-            return redirect_url + '?' + '&'.join(query_params)
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
+                    self.env.action)
+            if self.request.query_string:
+                redirect_url += '?' + self.request.query_string
+            return redirect_url
         return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):

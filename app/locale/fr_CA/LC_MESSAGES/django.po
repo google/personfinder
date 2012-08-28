@@ -21,17 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-
 msgid ""
 "\n"
 "\n"
@@ -43,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Afin de s'assurer que les notes sont uniquement activées ou désactivées"
+" avec la permission de l'auteur de la fiche, un message de confirmation "
+"sera envoyé à l'auteur en question. Si vous êtes l'auteur, vérifiez vos "
+"courriels après avoir cliqué sur le bouton ci-dessous.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +57,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Chère/cher %(author_name)s, Un utilisateur a demandé l'activation des "
+"notes pour la fiche de « %(given_name)s %(family_name)s ». Votre adresse "
+"de courriel figure au dossier comme l'auteur de cette fiche. Pour activer"
+" les notes sur cette fiche, suivez ce lien dans les trois prochains "
+"jours :\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +85,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Chère/cher %(author_name)s, Un utilisateur a demandé que vous désactiviez"
+" les notes pour la fiche de « %(given_name)s %(family_name)s ». Votre "
+"adresse de courriel figure au dossier comme l'auteur de cette fiche. Pour"
+" désactiver les notes sur cette fiche, suivez ce lien dans les "
+"trois prochains jours :\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,12 +108,32 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Chère/cher %(author_name)s, Vous venez d'entrer une note sur la fiche de "
+"« %(given_name)s %(family_name)s ». Pour publier votre note, suivez ce "
+"lien dans les trois prochains jours :\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -123,6 +161,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Êtes-vous sûr de vouloir désactiver les notes sur la fiche de "
+"« %(given_name)s %(family_name)s »?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -131,6 +173,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Êtes-vous sûr de vouloir désactiver les notes sur la fiche de "
+"« %(given_name)s %(family_name)s »?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -139,6 +185,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Êtes-vous sûr de vouloir activer les notes sur la fiche de "
+"« %(given_name)s %(family_name)s »?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -153,6 +203,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Confirmez votre note\n"
+"    "
 
 msgid ""
 "\n"
@@ -205,6 +258,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Afin que les notes sont uniquement activées ou désactivées avec la "
+"permission de l'auteur de la fiche, un message de confirmation sera "
+"envoyé à l'auteur en question. Si vous êtes l'auteur, vérifiez vos "
+"courriels après avoir cliqué sur le bouton ci-dessous.\n"
+"  "
 
 msgid ""
 "\n"
@@ -213,6 +272,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  La fiche sera toujours visible sur ce site, mais personne ne pourra y "
+"ajouter d'autres notes.\n"
+"  "
 
 msgid ""
 "\n"
@@ -221,6 +284,11 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Pour publier votre note, veuillez entrer votre adresse de courriel ci-"
+"dessous. Cliquez ensuite sur le lien de confirmation que vous recevrez "
+"par courriel.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -277,12 +345,20 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Les notes sont maintenant désactivées sur la fiche de « %(given_name)s "
+"%(family_name)s ». Pour voir la fiche, suivez ce lien :\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Nous vous envoyons cette notification, car votre adresse courriel est "
+"associée à la fiche de cette personne ou à une note sur celle-ci.\n"
 
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -290,6 +366,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Les notes sont maintenant activées sur la fiche de « %(given_name)s "
+"%(family_name)s ». Pour voir la fiche, suivez ce lien :\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Nous vous envoyons cette notification, car votre adresse courriel est "
+"associée à la fiche de cette personne ou à une note sur celle-ci.\n"
 
 #, python-format
 msgid ""
@@ -317,8 +401,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
+"\n"
+"Une nouvelle note a été ajoutée à la fiche de « %(given_name)s "
+"%(family_name)s ».\n"
 
 #, python-format
 msgid ""
@@ -331,6 +419,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Vous vous êtes abonné aux notes concernant « %(given_name)s "
+"%(family_name)s ». Vous pouvez voir cette fiche à l'adresse suivante :\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Pour vous désabonner, suivez ce lien : %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(cliquer pour afficher)"
@@ -411,7 +506,7 @@ msgstr "Revenir à l'accueil"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Impossible de trouver la note portant le numéro d'identification %(id)s"
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -471,7 +566,7 @@ msgid "Developers"
 msgstr "Concepteurs"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Désactiver les notes pour cette fiche"
 
 msgid "Download the sound as MP3"
 msgstr "Télécharger le son en format MP3"
@@ -489,7 +584,7 @@ msgid "Embedding the Application"
 msgstr "Intégrer l'application"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Activer les notes pour cette fiche"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Entrez la date selon le format AAAA-MM-JJ"
@@ -578,7 +673,7 @@ msgid "I am this person"
 msgstr "Je suis cette personne"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Je ne désire plus recevoir les mises à jour pour cette fiche."
 
 msgid "I do not want my information online anymore."
 msgstr "Je veux que mes renseignements personnels ne paraissent plus en ligne."
@@ -628,12 +723,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Si vous êtes l'auteur de cette note, vérifiez vos courriels. Nous vous "
+"enverrons un lien permettant de confirmer la désactivation des notes pour"
+" cette fiche. Autrement, veuillez attendre que l'auteur de la fiche "
+"confirme votre demande."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Si vous êtes l'auteur de cette note, vérifiez vos courriels. Nous vous "
+"enverrons un lien permettant de confirmer l'activation des notes pour "
+"cette fiche. Autrement, veuillez attendre que l'auteur de la fiche "
+"confirme votre demande."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -707,33 +810,33 @@ msgstr "Non"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Aucun courriel de l'auteur concernant la fiche %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Aucune fiche n'a été trouvée portant le numéro suivant : %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Aucune note n'a été publiée"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Aucune personne n'a été trouvée portant le numéro suivant : %(id)s."
 
 msgid "No results found for"
 msgstr "Aucun résultats pour"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à publier des notes de statut « présumé mort »."
 
 msgid "Not spam"
 msgstr "Pas du pourriel"
 
 msgid "Note author"
-msgstr ""
+msgstr "Auteur de la note"
 
 msgid "Note text"
 msgstr ""
@@ -742,7 +845,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Notes concernant cette personne"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr ""
@@ -839,10 +942,10 @@ msgid "Please fill in all the required fields."
 msgstr "Veuillez remplir tous les champs nécessaires."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Veuillez indiquer votre adresse courriel."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Veuillez indiquer une adresse courriel valide."
 
 msgid "Possible duplicates"
 msgstr "Doublons possibles"
@@ -870,7 +973,7 @@ msgid "Reason for deletion:"
 msgstr "Raison de la suppression :"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Raison pour la désactivation des notes :"
 
 msgid "Records Similar to"
 msgstr "Résultats similaires à"
@@ -905,7 +1008,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Sélectionnez jusqu'à trois entrées à marquer comme doublon :"
 
 msgid "Send email"
-msgstr ""
+msgstr "Envoyer le courriel"
 
 msgid "Sex"
 msgstr "Sexe"
@@ -992,10 +1095,10 @@ msgstr ""
 "et essayer de nouveau."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "L'auteur a désactivé les notes pour cette fiche."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "L'auteur a désactivé les mises à jour d'état pour cette fiche."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "L'image est trop grande. Veuillez en téléverser une plus petite."
@@ -1024,11 +1127,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Le jeton %(token)s était invalide"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Le jeton %(token)s était invalide."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1111,6 +1214,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr ""
 
@@ -1172,16 +1278,16 @@ msgid "Yes"
 msgstr "Oui"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Oui, demander à l'auteur de la fiche de désactiver les notes"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Oui, demander à l'auteur de la fiche d'activer les notes"
 
 msgid "Yes, delete the record"
 msgstr "Oui, supprimer cette fiche"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Oui, désactiver les notes pour cette fiche."
 
 msgid "Yes, extend the record"
 msgstr ""
@@ -1241,7 +1347,7 @@ msgid "Your e-mail address:"
 msgstr "Votre adresse de courriel :"
 
 msgid "Your email"
-msgstr ""
+msgstr "Votre courriel"
 
 msgid "Your name"
 msgstr "Votre nom"
@@ -1267,16 +1373,15 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Votre demande a été traitée. Veuillez vérifier votre boîte de réception "
+"et confirmer que vous désirez publier votre note en suivant l'URL "
+"contenue dans le message que nous vous enverrons."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Recherche de personnes] Confirmation de votre note sur « %(given_name)s "
+"%(family_name)s »"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1285,18 +1390,36 @@ msgstr ""
 "%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+"[Recherche de personnes] Avis d'activation des notes pour "
+"« %(given_name)s %(family_name)s »"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Recherche de personnes] Les notes sont maintenant désactivées pour "
+"« %(given_name)s %(family_name)s »"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
+"[Recherche de personnes] Les notes sont maintenant activées pour "
+"« %(given_name)s %(family_name)s »"
 
 #, python-format
 msgid ""
@@ -1325,6 +1448,9 @@ msgstr "à"
 
 msgid "female"
 msgstr "femme"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "homme"

@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Podaljšaj "
-"datum veljavnosti za %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -47,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  S potrditvenim sporočilom, ki ga bomo poslali avtorju zapisa, bomo "
+"zagotovili, da so opombe omogočene ali onemogočene samo z dovoljenjem "
+"avtorja zapisa. Če ste avtor vi, po kliku spodnjega gumba preverite "
+"e-pošto.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -64,6 +57,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Spoštovani, %(author_name)s, Uporabnik je zahteval, da omogočite opombe v"
+" zapisu za osebo »%(given_name)s %(family_name)s«. Vaš e-poštni naslov je"
+" shranjen in obravnavan kot avtor tega zapisa. Če želite omogočiti opombe"
+" v tem zapisu, uporabite to povezavo v treh dneh:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -81,6 +84,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Spoštovani, %(author_name)s, uporabnik je zahteval, da onemogočite opombe"
+" v zapisu za osebo »%(given_name)s %(family_name)s«. Vaš e-poštni naslov "
+"je shranjen in obravnavan kot avtor tega zapisa. Če želite onemogočiti "
+"opombe v tem zapisu, uporabite to povezavo v treh dneh:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -94,12 +106,32 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Spoštovani, %(author_name)s, pravkar ste vnesli opombo v zapisu za osebo "
+"»%(given_name)s %(family_name)s«. Če želite opombo objaviti, uporabite to"
+" povezavo v treh dneh:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -127,6 +159,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ali ste prepričani, da želite onemogočiti opombe za osebo "
+"»%(given_name)s %(family_name)s«?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -135,6 +171,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ali ste prepričani, da želite onemogočiti opombe v zapisu osebe "
+"»%(given_name)s %(family_name)s«?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -143,6 +183,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ali ste prepričani, da želite omogočiti opombe za osebo "
+"»%(given_name)s %(family_name)s«?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -161,6 +205,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Potrdite opombo\n"
+"    "
 
 msgid ""
 "\n"
@@ -212,6 +259,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    S potrditvenim sporočilom, ki ga bomo poslali avtorju zapisa, bomo "
+"zagotovili, da so opombe omogočene ali onemogočene samo z dovoljenjem "
+"avtorja zapisa. Če ste avtor vi, po kliku spodnjega gumba preverite "
+"e-pošto.\n"
+"  "
 
 msgid ""
 "\n"
@@ -220,6 +273,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Zapis bo še vedno viden na tem spletnem mestu, vendar zanj ne bo več "
+"mogoče objavljati opomb.\n"
+"  "
 
 msgid ""
 "\n"
@@ -228,6 +285,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Če želite objaviti opombo, spodaj vnesite svoj e-poštni naslov in "
+"uporabite potrditveno povezavo, ki jo boste prejeli.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -296,12 +357,20 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Opombe so zdaj onemogočene v zapisu za osebo »%(given_name)s "
+"%(family_name)s«. Če si želite ogledati zapis, uporabite to povezavo:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te "
+"osebe ali opombo v zapisu.\n"
 
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -309,6 +378,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Opombe so zdaj omogočene v zapisu za osebo »%(given_name)s "
+"%(family_name)s«. Če si želite ogledati zapis, uporabite to povezavo:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te "
+"osebe ali opombo v zapisu.\n"
 
 #, python-format
 msgid ""
@@ -335,8 +412,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
+"\n"
+"Objavljena je nova opomba v zapisu za osebo »%(given_name)s "
+"%(family_name)s«.\n"
 
 #, python-format
 msgid ""
@@ -349,6 +430,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Naročili ste se na opombe osebe »%(given_name)s %(family_name)s«. Ta "
+"zapis si lahko ogledate na\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Če se želite odjaviti, uporabite to povezavo: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(kliknite za prikaz)"
@@ -425,7 +513,7 @@ msgstr "Na začetek"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Opombe s tem ID-jem ni mogoče najti: %(id)s"
 
 msgid "Cancel"
 msgstr "Prekliči"
@@ -482,7 +570,7 @@ msgid "Developers"
 msgstr "Razvijalci"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Onemogočite opombe v tem zapisu"
 
 msgid "Download the sound as MP3"
 msgstr "Prenesi zvok v obliki MP3"
@@ -500,7 +588,7 @@ msgid "Embedding the Application"
 msgstr "Vdelava tega programa"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Omogočite opombe v tem zapisu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Vnesite v obliki LLLL-MM-DD"
@@ -588,7 +676,7 @@ msgid "I am this person"
 msgstr "Ta oseba sem jaz"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Za ta zapis ne želim novih posodobitev."
 
 msgid "I do not want my information online anymore."
 msgstr "Ne želim več, da so moji podatki objavljeni v spletu."
@@ -638,12 +726,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Če ste avtor te opombe, preverite, ali ste prejeli e-pošto s povezavo, s "
+"katero lahko potrdite, da želite za ta zapis onemogočiti opombe. V "
+"nasprotnem primeru počakajte, da vašo zahtevo potrdi avtor zapisa."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Če ste avtor te opombe, preverite, ali ste prejeli e-pošto s povezavo, s "
+"katero lahko potrdite, da želite za ta zapis omogočiti opombe. V "
+"nasprotnem primeru počakajte, da vašo zahtevo potrdi avtor zapisa."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -715,33 +809,33 @@ msgstr "Ne"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Ni e-pošte avtorja za zapis %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Ni sporočil, registriranih za operaterjevo storitev sporočilne table."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Ni opombe z ID-jem: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Opombe niso bile objavljene"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Ni osebe z ID-jem: %(id)s."
 
 msgid "No results found for"
 msgstr "Ni rezultatov za"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
 
 msgid "Not spam"
 msgstr "Ni vsiljena pošta"
 
 msgid "Note author"
-msgstr ""
+msgstr "Avtor opombe"
 
 msgid "Note text"
 msgstr "Besedilo opombe"
@@ -750,7 +844,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "Opomba: druga imena so lahko strojno generirana in morebiti netočna."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Opombe za to osebo"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Število ali obseg (npr. 20–30)"
@@ -839,10 +933,10 @@ msgid "Please fill in all the required fields."
 msgstr "Izpolnite vsa obvezna polja."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Vnesite svoj e-poštni naslov."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Vnesite veljaven e-poštni naslov."
 
 msgid "Possible duplicates"
 msgstr "Možni dvojniki"
@@ -869,7 +963,7 @@ msgid "Reason for deletion:"
 msgstr "Razlog za izbris:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Razlog, zaradi katerega ste onemogočili opombe:"
 
 msgid "Records Similar to"
 msgstr "Zapisi, podobni"
@@ -904,7 +998,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Izberite do 3 zapise, ki jih želite označiti kot dvojnike"
 
 msgid "Send email"
-msgstr ""
+msgstr "Pošljite e-pošto"
 
 msgid "Sex"
 msgstr "Spol"
@@ -978,10 +1072,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Vnesti morate ime izvirnega avtorja. Vrnite se in poskusite znova."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Avtor je onemogočil opombe v tem zapisu."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Avtor je onemogočil posodobitve stanja v tem zapisu."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Navedena slika je prevelika. Prenesite manjšo."
@@ -1009,11 +1103,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Žeton %(token)s ni veljaven"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Žeton %(token)s ni veljaven."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1092,6 +1186,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Če se želite odjaviti, uporabite to povezavo"
 
@@ -1155,16 +1252,16 @@ msgid "Yes"
 msgstr "Da"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Da, prosite avtorja zapisa, da onemogoči opombe"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Da, prosite avtorja zapisa, da omogoči opombe"
 
 msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Da, onemogočite opombe v tem zapisu."
 
 msgid "Yes, extend the record"
 msgstr "Da, podaljšaj zapis"
@@ -1222,7 +1319,7 @@ msgid "Your e-mail address:"
 msgstr "Vaš e-poštni naslov:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Vaš e-poštni naslov"
 
 msgid "Your name"
 msgstr "Vaše ime"
@@ -1244,34 +1341,48 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Zahteva je bila uspešno obdelana. Preglejte svoj poštni predal in z "
+"uporabo vdelanega URL-ja potrdite, da želite objaviti opombo."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Iskalnik oseb] Potrdite opombo za osebo »%(given_name)s %(family_name)s«"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Iskalnik oseb] Obvestilo o izbrisu za »%(given_name)s %(family_name)s«"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+"[Iskalnik oseb] Obvestilo o omogočenju opomb za osebo »%(given_name)s "
+"%(family_name)s«"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Iskalnik oseb] Opombe so zdaj onemogočene za osebo »%(given_name)s "
+"%(family_name)s«"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
+"[Iskalnik oseb] Opombe so zdaj omogočene za osebo »%(given_name)s "
+"%(family_name)s«"
 
 #, python-format
 msgid ""
@@ -1298,6 +1409,9 @@ msgstr "ob"
 
 msgid "female"
 msgstr "ženska"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "moški"

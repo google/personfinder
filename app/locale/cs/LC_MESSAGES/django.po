@@ -21,22 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Prodloužit"
-" datum vypršení platnosti o %(extension_days)s dnů\" id=\"extend_btn\"> "
-"</a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -48,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Abychom zaručili, že k povolení či zakázání poznámek dojde pouze se "
+"souhlasem autora záznamu, zašleme autorovi záznamu zprávu s potvrzením. "
+"Pokud jste autor, po kliknutí na tlačítko níže se podívejte do svého "
+"e-mailu.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -65,6 +57,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dobrý den %(author_name)s, někdo požádal o povolení poznámek k záznamu o "
+"osobě %(given_name)s %(family_name)s. Jako autor tohoto záznamu je v naší"
+" evidenci uvedena vaše e-mailová adresa. Poznámky k tomuto záznamu můžete"
+" do 3 dnů povolit pomocí tohoto odkazu:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -82,6 +84,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dobrý den %(author_name)s, někdo požádal o zakázání poznámek k záznamu o "
+"osobě %(given_name)s %(family_name)s. Jako autor tohoto záznamu je v naší"
+" evidenci uvedena vaše e-mailová adresa. Poznámky k tomuto záznamu můžete"
+" do 3 dnů zakázat pomocí tohoto odkazu:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -95,12 +106,32 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dobrý den %(author_name)s, právě jste zadali poznámku k záznamu o osobě "
+"%(given_name)s %(family_name)s. Poznámku můžete do 3 dnů zveřejnit pomocí"
+" tohoto odkazu:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -128,6 +159,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Opravdu chcete zakázat poznámky o osobě %(given_name)s "
+"%(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -136,6 +171,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Opravdu chcete zakázat poznámky k záznamu o osobě %(given_name)s "
+"%(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -144,6 +183,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Opravdu chcete povolit poznámky o osobě %(given_name)s "
+"%(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -162,6 +205,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Potvrďte poznámku\n"
+"    "
 
 msgid ""
 "\n"
@@ -213,6 +259,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Abychom zaručili, že k povolení či zakázání poznámek dojde pouze se "
+"souhlasem autora záznamu, zašleme autorovi záznamu zprávu s potvrzením. "
+"Pokud jste autor, po kliknutí na tlačítko níže se podívejte do svého "
+"e-mailu.\n"
+"  "
 
 msgid ""
 "\n"
@@ -221,6 +273,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Záznam bude na tomto webu stále viditelný, avšak nikdo k němu nebude "
+"moci přidat další poznámky.\n"
+"  "
 
 msgid ""
 "\n"
@@ -229,6 +285,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Chcete-li zveřejnit poznámku, zadejte prosím níže svoji e-mailovou "
+"adresu a klikněte na potvrzovací odkaz, který obdržíte.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -256,8 +316,8 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Uživatel vymazal záznam pro osobu %(given_name)s %(family_name)s umístěný "
-"na webu %(site_url)s. O vymazání vás informujeme, protože je vaše "
+"Uživatel vymazal záznam pro osobu %(given_name)s %(family_name)s umístěný"
+" na webu %(site_url)s. O vymazání vás informujeme, protože je vaše "
 "e-mailová adresa uvedena jako autor tohoto záznamu.\n"
 
 #, python-format
@@ -297,12 +357,20 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Poznámky k záznamu o osobě %(given_name)s %(family_name)s jsou nyní "
+"zakázány. Záznam zobrazíte pomocí tohoto odkazu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Toto oznámení jsme vám zaslali, protože vaše e-mailová adresa je "
+"přidružena k záznamu o této osobě nebo k poznámce k záznamu.\n"
 
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -310,6 +378,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Poznámky k záznamu o osobě %(given_name)s %(family_name)s jsou nyní "
+"povoleny. Záznam zobrazíte pomocí tohoto odkazu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Toto oznámení jsme vám zaslali, protože vaše e-mailová adresa je "
+"přidružena k záznamu o této osobě nebo k poznámce k záznamu.\n"
 
 #, python-format
 msgid ""
@@ -336,8 +412,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
+"\n"
+"Máme novou poznámku k záznamu o osobě %(given_name)s %(family_name)s.\n"
 
 #, python-format
 msgid ""
@@ -350,6 +429,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Přihlásili jste se k odběru poznámek o osobě %(given_name)s "
+"%(family_name)s. Tento záznam můžete zobrazit na adrese\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Chcete-li odběr odhlásit, použijte tento odkaz: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(zobrazte kliknutím)"
@@ -426,7 +512,7 @@ msgstr "Zpět na začátek"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Poznámka s následujícím ID nebyla nalezena:  %(id)s"
 
 msgid "Cancel"
 msgstr "Zrušit"
@@ -483,7 +569,7 @@ msgid "Developers"
 msgstr "Vývojáři"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Zakázat poznámky k tomuto záznamu"
 
 msgid "Download the sound as MP3"
 msgstr "Stáhnout tento zvuk ve formátu MP3"
@@ -501,7 +587,7 @@ msgid "Embedding the Application"
 msgstr "Vložení aplikace"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Povolit poznámky k tomuto záznamu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Zadejte datum ve formátu RRRR-MM-DD"
@@ -589,7 +675,7 @@ msgid "I am this person"
 msgstr "Jsem tato osoba"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Nechci žádné další aktualizace o tomto záznamu."
 
 msgid "I do not want my information online anymore."
 msgstr "Již nechci, aby se moje informace zobrazovaly online."
@@ -639,12 +725,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jste-li autorem tohoto záznamu, obdržíte e-mailovou zprávu s odkazem, "
+"pomocí kterého můžete potvrdit, že chcete poznámky k tomuto záznamu "
+"zakázat. V opačném případě prosím počkejte, až autor potvrdí váš "
+"požadavek."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jste-li autorem tohoto záznamu, obdržíte e-mailovou zprávu s odkazem, "
+"pomocí kterého můžete potvrdit, že chcete povolit poznámky k tomuto "
+"záznamu. V opačném případě prosím počkejte, až autor potvrdí váš "
+"požadavek."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -716,33 +810,33 @@ msgstr "Ne"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "U záznamu %(id)s není uveden e-mail autora."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Nebyly nalezeny žádné zprávy zaregistrované do vývěskové služby operátora."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Poznámka s ID %(id)s nebyla nalezena."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Nebyly zveřejněny žádné poznámky"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Osoba s ID %(id)s nebyla nalezena."
 
 msgid "No results found for"
 msgstr "Nebyly nalezeny žádné výsledky pro osobu"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Nemáte oprávnění zveřejňovat poznámky se stavem believed_dead."
 
 msgid "Not spam"
 msgstr "Není spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Autor poznámky"
 
 msgid "Note text"
 msgstr "Text poznámky"
@@ -753,7 +847,7 @@ msgstr ""
 " přesná."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Poznámky k této osobě"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Číslo nebo rozsah (například 20–30)"
@@ -842,10 +936,10 @@ msgid "Please fill in all the required fields."
 msgstr "Vyplňte všechna povinná pole."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Vyplňte prosím svoji e-mailovou adresu."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Uveďte prosím platnou e-mailovou adresu."
 
 msgid "Possible duplicates"
 msgstr "Možné duplicitní položky"
@@ -872,7 +966,7 @@ msgid "Reason for deletion:"
 msgstr "Důvod vymazání:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Důvod zakázání poznámek:"
 
 msgid "Records Similar to"
 msgstr "Záznamy podobné"
@@ -907,7 +1001,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Můžete označit až 3 záznamy jako duplicitní:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Odeslat e-mail"
 
 msgid "Sex"
 msgstr "Pohlaví"
@@ -983,10 +1077,10 @@ msgstr ""
 "znovu."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Autor u tohoto záznamu poznámky zakázal."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Autor u tohoto záznamu aktualizace stavu zakázal."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Fotografie je příliš velká. Nahrajte prosím snímek o menší velikosti."
@@ -1014,11 +1108,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Klíč %(token)s byl neplatný"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Klíč %(token)s byl neplatný."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1099,6 +1193,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Chcete-li odběr odhlásit, použijte tento odkaz"
 
@@ -1160,16 +1257,16 @@ msgid "Yes"
 msgstr "Ano"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ano, požádat autora o zakázání poznámek"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ano, požádat autora o povolení poznámek"
 
 msgid "Yes, delete the record"
 msgstr "Ano, chci tento záznam smazat"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ano, zakázat poznámky k tomuto záznamu."
 
 msgid "Yes, extend the record"
 msgstr "Ano, chci prodloužit platnost záznamu"
@@ -1229,7 +1326,7 @@ msgid "Your e-mail address:"
 msgstr "Vaše e-mailová adresa:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Vaše e-mailová adresa"
 
 msgid "Your name"
 msgstr "Vaše jméno"
@@ -1255,34 +1352,48 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Váš požadavek byl úspěšně zpracován. Podívejte se prosím do doručené "
+"pošty a pomocí vložené adresy URL potvrďte, že chcete zveřejnit poznámku."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Potvrďte poznámku o osobě %(given_name)s %(family_name)s"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
-msgstr "[Person Finder] Oznámení o vymazání pro osobu %(given_name)s %(family_name)s"
+msgstr ""
+"[Person Finder] Oznámení o vymazání pro osobu %(given_name)s "
+"%(family_name)s"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr "[Person Finder] Povolování poznámek o osobě %(given_name)s %(family_name)s"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Poznámky o osobě %(given_name)s %(family_name)s jsou nyní"
+" zakázány"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
+"[Person Finder] Poznámky o osobě %(given_name)s %(family_name)s jsou nyní"
+" povoleny"
 
 #, python-format
 msgid ""
@@ -1309,6 +1420,9 @@ msgstr "v"
 
 msgid "female"
 msgstr "žena"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "muž"

@@ -15,17 +15,11 @@
 
 from datetime import datetime
 from model import *
-from photo import get_photo_url
+from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
-from google.appengine.api import images
-from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
-import indexing
-import prefix
 
 from django.utils.translation import ugettext as _
-
-MAX_IMAGE_DIMENSION = 300
 
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
@@ -88,41 +82,23 @@ class Handler(BaseHandler):
                                    self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
-        photo = None
-        photo_url = self.params.photo_url
-
-        # If a picture was uploaded, store it and the URL where we serve it.
-        image = self.params.photo
-        if image == False:  # False means it wasn't valid (see validate_image)
-            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
-
-        if image:
-            if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
-                # No resize needed.  Keep the same size but add a
-                # transformation to force re-encoding.
-                image.resize(image.width, image.height)
-            elif image.width > image.height:
-                image.resize(
-                    MAX_IMAGE_DIMENSION,
-                    image.height * MAX_IMAGE_DIMENSION / image.width)
-            else:
-                image.resize(
-                    image.width * MAX_IMAGE_DIMENSION / image.height,
-                    MAX_IMAGE_DIMENSION)
-
-            try:
-                image_data = \
-                    image.execute_transforms(output_encoding=images.PNG)
-            except RequestTooLargeError:
-                return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
-            except Exception:
-                # There are various images.Error exceptions that can be raised,
-                # as well as e.g. IOError if the image is corrupt.
-                return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
-
-            photo = Photo.create(self.repo, image_data=image_data)
+        photo, photo_url = (None, self.params.photo_url)
+        note_photo, note_photo_url = (None, self.params.note_photo_url)
+        try:
+            # If a photo was uploaded, create a Photo entry and get the URL
+            # where we serve it.
+            if self.params.photo is not None:
+                photo, photo_url = create_photo(self.params.photo, self)
+            if self.params.note_photo is not None:
+                note_photo, note_photo_url = \
+                    create_photo(self.params.note_photo, self)
+        except PhotoError, e:
+            return self.error(400, e.message)
+        # Finally, store the Photo. Past this point, we should NOT self.error.
+        if photo:
             photo.put()
-            photo_url = get_photo_url(photo, self)
+        if note_photo:
+            note_photo.put()
 
         # Person records have to have a source_date; if none entered, use now.
         source_date = source_date or now
@@ -164,10 +140,6 @@ class Handler(BaseHandler):
         person.update_index(['old', 'new'])
 
         if self.params.add_note:
-            if person.notes_disabled:
-                return self.error(403, _(
-                    'The author has disabled notes on this record.'))
-
             spam_detector = SpamDetector(self.config.bad_words)
             spam_score = spam_detector.estimate_spam_score(self.params.text)
             if (spam_score > 0):
@@ -185,7 +157,8 @@ class Handler(BaseHandler):
                     phone_of_found_person=self.params.phone_of_found_person,
                     last_known_location=self.params.last_known_location,
                     text=self.params.text,
-                    photo_url=self.params.photo_url,
+                    photo=note_photo,
+                    photo_url=note_photo_url,
                     spam_score=spam_score,
                     confirmed=False)
 
@@ -216,7 +189,8 @@ class Handler(BaseHandler):
                     phone_of_found_person=self.params.phone_of_found_person,
                     last_known_location=self.params.last_known_location,
                     text=self.params.text,
-                    photo_url=self.params.photo_url)
+                    photo=note_photo,
+                    photo_url=note_photo_url)
 
                 # Write the new NoteWithBadWords to the datastore
                 db.put(note)
@@ -231,10 +205,13 @@ class Handler(BaseHandler):
         # Write the person record to datastore
         db.put(person)
 
+        # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.
             person.source_url = self.get_url('/view', id=person.record_id)
             db.put(person)
+
+        # TODO(ryok): batch-put person, note, photo, note_photo here.
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:

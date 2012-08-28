@@ -45,6 +45,16 @@ if [ ! -f $HOME/.email ]; then
   echo $email > $HOME/.email
 fi
 
+# Check for Mercurial version 1.6 or higher, so we can use --new-branch to
+# safely push a new feature branch to the remote repository.
+if [[ ! "$(LANG=C hg -q version)" =~ \(version\ ([.0-9]+) ||
+      "${BASH_REMATCH[1]}" < 1.6 ]]; then
+  echo
+  echo "You need Mercurial version 1.6 or higher installed."
+  echo
+  exit 1
+fi
+
 # Figure out where we are.
 EMAIL=$(cat $HOME/.email)
 BRANCH=$(hg branch)
@@ -102,7 +112,7 @@ if [ "$(hg -q incoming -b default)" != "" ]; then
   echo "There are new changes in the repository for the default branch."
   echo "Please do 'hg pull' to pull in these changes, then 'hg merge default'"
   echo "to merge them into your branch before requesting a review:"
-  hg -q incoming -v default
+  hg -q incoming -b default
   echo
   exit 1
 fi
@@ -118,7 +128,7 @@ if [ "$(hg merge -P default)" != "" ]; then
 fi
 
 # Push the changes in this branch to the repository.
-hg push -f
+hg push --new-branch
 
 # Prepare the command-line options for the upload.py script.
 OPTIONS="--rev=default -e $EMAIL --send_mail"

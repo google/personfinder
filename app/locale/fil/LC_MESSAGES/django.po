@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extend "
-"expiration date by %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -47,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Upang tiyakin na hindi pinagana o pinagana lang ang mga tala nang may "
+"pahintulot ng may-akda, magpapadala ng mensahe ng pagkumpirma sa may-akda"
+" ng record. Kung ikaw ang may-akda, tingnan ang iyong e-mail pagkatapos "
+"i-click ang button sa ibaba.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -64,6 +57,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Minamahal naming %(author_name)s, Hiniling ng isang user ang pagpapagana "
+"sa mga tala sa record para sa \"%(given_name)s %(family_name)s\". Ni-"
+"record ang iyong e-mail address bilang ang may-akda ng record na ito. "
+"Upang paganahin ang mga tala sa record na ito, sundin ang link na ito sa "
+"loob ng 3 araw:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -81,6 +85,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Minamahal naming %(author_name)s, Hiniling ng user na huwag mong "
+"paganahin ang mga tala sa record para sa \"%(given_name)s "
+"%(family_name)s\". Ni-record ang iyong e-mail address bilang ang may-akda"
+" ng record na ito. Upang huwag paganahin ang mga tala sa record na ito, "
+"sundin ang link na ito sa loob ng 3 araw:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -94,12 +108,32 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Minamahal naming %(author_name)s, Naglagay ka ng tala sa record para sa "
+"\"%(given_name)s %(family_name)s\". Upang i-publish ang iyong tala, "
+"sundin ang link na ito sa loob ng 3 araw:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -127,6 +161,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Sigurado ka bang nais mong huwag paganahin ang mga tala sa "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -135,6 +173,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Sigurado ka bang nais mong huwag paganahin ang mga tala sa record "
+"ng \"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -143,6 +185,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Sigurado ka bang nais mong paganahin ang mga tala sa "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -161,6 +207,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Kumpirmahin ang iyong tala\n"
+"    "
 
 msgid ""
 "\n"
@@ -214,6 +263,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Upang tiyakin na hindi pinagana o pinagana lang ang mga tala nang may"
+" pahintulot ng may-akda, magpapadala ng mensahe ng pagkumpirma sa may-"
+"akda ng record. Kung ikaw ang may-akda, tingnan ang iyong e-mail "
+"pagkatapos i-click ang button sa ibaba.\n"
+"  "
 
 msgid ""
 "\n"
@@ -222,6 +277,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Makikita pa rin ang record sa site na ito, ngunit walang sinumang "
+"makakapag-post ng dagdag pang mga tala dito.\n"
+"  "
 
 msgid ""
 "\n"
@@ -230,6 +289,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Upang i-post ang iyong tala, pakilagay ang e-mail address mo sa ibaba "
+"at sundin ang link sa pagkumpirma na iyong matatanggap.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -258,9 +321,9 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Tinanggal ng isang user ang tala para sa \"%(given_name)s %(family_name)s\""
-" sa %(site_url)s. Inaabisuhan ka namin sa pagtatanggal dahil naitala ang "
-"iyong e-mail address bilang author ng talang ito.\n"
+"Tinanggal ng isang user ang tala para sa \"%(given_name)s "
+"%(family_name)s\" sa %(site_url)s. Inaabisuhan ka namin sa pagtatanggal "
+"dahil naitala ang iyong e-mail address bilang author ng talang ito.\n"
 
 #, python-format
 msgid ""
@@ -300,12 +363,20 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Hindi na pinapagana ang mga tala sa record para sa \"%(given_name)s "
+"%(family_name)s\". Upang tingnan ang record, sundin ang link na ito:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Nino-notify ka namin dahil nauugnay ang iyong e-mail address sa record ng"
+" taong ito o sa isang tala sa record.\n"
 
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -313,6 +384,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Pinapagana na ngayon ang mga tala sa record para sa \"%(given_name)s "
+"%(family_name)s\". Upang tingnan ang record, sundin ang link na ito:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Nino-notify ka namin dahil nauugnay ang iyong e-mail address sa record ng"
+" taong ito o sa isang tala sa record.\n"
 
 #, python-format
 msgid ""
@@ -339,8 +418,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
+"\n"
+"Mayroong bagong tala sa record para sa \"%(given_name)s "
+"%(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -353,6 +436,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Nag-subscribe ka sa mga tala sa \"%(given_name)s %(family_name)s\". "
+"Matitingnan mo ang record na ito sa\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Upang mag-unsubscribe, sundin ang link na ito: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(i-click upang ipakita)"
@@ -429,7 +519,7 @@ msgstr "Bumalik sa simula"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Hindi mahanap ang tala na may id %(id)s"
 
 msgid "Cancel"
 msgstr "Kanselahin"
@@ -488,7 +578,7 @@ msgid "Developers"
 msgstr "Mga Developer"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Huwag paganahin ang mga tala sa record na ito"
 
 msgid "Download the sound as MP3"
 msgstr "I-download ang tunog bilang MP3"
@@ -506,7 +596,7 @@ msgid "Embedding the Application"
 msgstr "Pag-embed ng Application"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Paganahin ang mga tala sa record na ito"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ipasok bilang YYYY-MM-DD"
@@ -598,7 +688,7 @@ msgid "I am this person"
 msgstr "Ako ang taong ito"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Hindi ko nais ang anumang higit pang mga update sa record na ito."
 
 msgid "I do not want my information online anymore."
 msgstr "Hindi ko na gustong nasa online ang aking impormasyon."
@@ -648,12 +738,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong e-mail kung "
+"may link upang kumpirmahin na nais mong huwag paganahin ang mga tala sa "
+"record na ito. Kung hindi man, mangyaring hintaying kumpirmahin ng may-"
+"akda ng record ang iyong kahilingan."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong e-mail kung "
+"may link upang kumpirmahin na nais mong paganahin ang mga tala sa record "
+"na ito. Kung hindi man, mangyaring hintaying kumpirmahin ng may-akda ng "
+"record ang iyong kahilingan."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -725,7 +823,7 @@ msgstr "Hindi"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Walang email ng may-akda para sa record %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -734,26 +832,28 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Walang tala na may ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Walang mga tala ang na-post"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Walang taong may ID: %(id)s."
 
 msgid "No results found for"
 msgstr "Walang resultang natagpuan para sa"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
+"Hindi pinapahintulutang mag-post ng mga tala na may katayuang "
+"\"pinaniniwalaang_patay\"."
 
 msgid "Not spam"
 msgstr "Hindi spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "May-akda ng tala"
 
 msgid "Note text"
 msgstr "Teksto ng tala"
@@ -764,7 +864,7 @@ msgstr ""
 "maaaring hindi wasto."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Mga tala para sa taong ito"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Bilang o sakop (hal. 20-30)"
@@ -855,10 +955,10 @@ msgid "Please fill in all the required fields."
 msgstr "Pakipunan ang lahat ng mga kinakailangang field."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Pakilagay ang iyong email address."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Mangyaring magbigay ng wastong email address."
 
 msgid "Possible duplicates"
 msgstr "Mga posibleng duplicate"
@@ -885,7 +985,7 @@ msgid "Reason for deletion:"
 msgstr "Dahilan ng pagtanggal:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Dahilan para sa hindi pagpapagana sa mga tala:"
 
 msgid "Records Similar to"
 msgstr "Mga Rekord na Pareho sa"
@@ -920,7 +1020,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pumili ng hanggang sa 3 rekord upang markahan bilang duplicate:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Ipadala ang email"
 
 msgid "Sex"
 msgstr "Kasarian"
@@ -998,10 +1098,10 @@ msgstr ""
 "at subukang muli."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Hindi pinagana ng may-akda ang mga tala sa record na ito."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Hindi pinagana ng may-akda ang mga update sa katayuan sa record na ito."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1031,11 +1131,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Ang token %(token)s ay di-wasto"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Ang token %(token)s ay di-wasto."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1116,6 +1216,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Upang mag-unsubscribe, sundin ang link na ito"
 
@@ -1177,16 +1280,16 @@ msgid "Yes"
 msgstr "Oo"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Oo, hilingin sa may-akda ng record na huwag paganahin ang mga tala"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Oo, hilingin sa may-akda ng record na paganahin ang mga tala"
 
 msgid "Yes, delete the record"
 msgstr "Oo, tanggalin ang talaang ito"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Oo, huwag paganahin ang mga tala sa record na ito."
 
 msgid "Yes, extend the record"
 msgstr "Oo, i-extend ang tala"
@@ -1250,7 +1353,7 @@ msgid "Your e-mail address:"
 msgstr "Iyong e-mail address:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Ang iyong e-mail"
 
 msgid "Your name"
 msgstr "Iyong pangalan"
@@ -1276,16 +1379,15 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Matagumpay na naproseso ang iyong kahilingan. Pakitingnan ang iyong inbox"
+" at kumpirmahing nais mong i-post ang iyong tala sa pamamagitan ng "
+"pagsunod sa url na naka-embed."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Tagahanap ng Tao] Kumpirmahin ang iyong tala sa \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1294,18 +1396,36 @@ msgstr ""
 "%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+"[Tagahanap ng Tao] Pinapagana ang notice ng mga tala para sa "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Tagahanap ng Tao] Hindi na ngayon pinapagana ang mga tala para sa "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
+"[Tagahanap ng Tao] Pinapagana na ngayon ang mga tala sa \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
@@ -1334,6 +1454,9 @@ msgstr "sa"
 
 msgid "female"
 msgstr "babae"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "lalaki"

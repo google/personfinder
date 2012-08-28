@@ -275,7 +275,7 @@
                         {% trans "If you have a photo of this person, upload it or enter its URL address." %}
                       </div>
                       <table class="fields">
-                        <tr onclick="document.getElementById('photo_url_radio').checked=true; update_image_input();">
+                        <tr onclick="$('photo_url_radio').checked=true; update_image_input(false);">
                           <td class="radio">
                               <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
                           </td>
@@ -287,7 +287,7 @@
                                 value="{{params.photo_url}}" />
                           </td>
                         </tr>
-                        <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
+                        <tr onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
                           {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
                           <td class="radio">
                               <input id="photo_upload_radio" type="radio" name="photo_input">
