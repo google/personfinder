@@ -64,7 +64,7 @@
       {% include "language-menu.html.template" %}
       {% if not env.small %}
         <a href="{{env.global_url}}">
-          <img src="{{env.global_url}}/google-person-finder.gif"
+          <img src="/static/google-person-finder.gif"
               width="260" height="40">
         </a>
       {% endif %}
@@ -73,7 +73,7 @@
 
   {% if env.repo %}
     <h1>
-      {% trans "Person Finder for" %}
+      {% trans "Person Finder" %}:
       <a class="repo" href="{{env.repo_url}}"
           {% if env.small %}target="_blank"{% endif %}>{{env.repo_title}}</a>
     </h1>
