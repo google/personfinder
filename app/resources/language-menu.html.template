@@ -14,7 +14,7 @@
 
 {% ifnotequal env.language_options|length 1 %}
   <div class="languages" title="{% trans "Language selection" %}">
-    <img src="/static/language_picker.png"
+    <img src="{{env.global_url}}/language_picker.png"
         alt="{% trans "Language selection" %}"
         {% if env.small %}onclick="this.style.display='none';
             $('language_picker').style.display='';"{% endif %} />
