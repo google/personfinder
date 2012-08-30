@@ -1,4 +1,5 @@
 #!/usr/bin/python2.5
+# coding=utf-8
 #
 # Copyright 2011 Google Inc. All Rights Reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -109,6 +110,11 @@ class JpMobileCarriersTests(unittest.TestCase):
             '&nbsp;11:43</A><BR></DIV>')
         assert (docomo_messages[0] == 'http://dengon.docomo.ne.jp/' +
             'inoticelist.cgi?mi=111PybHG001&ix=1&si=2&sm=0SXPP6CbnSukofp&es=0')
+        web171_links = jp_mobile_carriers.WEB171_URL_RE.findall(
+            '<A HREF="https://www.web171.jp/web171app/messageBoardList.do?' +
+            'lang=jp&msn=08070036335">NTT東西伝言板(web171)へ</A><BR>')
+        assert (web171_links[0] == 'https://www.web171.jp/web171app/' +
+            'messageBoardList.do?lang=jp&msn=08070036335')
 
     def test_extract_redirect_url(self):
         scrape = ('<html><head></head><body><br>' +
