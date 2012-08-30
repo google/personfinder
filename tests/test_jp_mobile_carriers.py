@@ -150,7 +150,7 @@ class JpMobileCarriersTests(unittest.TestCase):
         number = '08065422684'
         hidden = 'xyz'
         data = jp_mobile_carriers.get_docomo_post_data(number, hidden)
-        assert data['es'] == 0
+        assert data['es'] == 1
         assert data['si'] == 1
         assert data['bi1'] == 1
         assert data['ep'] == hidden

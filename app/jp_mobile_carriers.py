@@ -122,7 +122,7 @@ def get_docomo_post_data(number, hidden_param):
     Returns:
         a mapping for the POST data.
     """
-    return {'es': 0,
+    return {'es': 1,
             'si': 1,
             'bi1': 1,
             'ep': hidden_param,
