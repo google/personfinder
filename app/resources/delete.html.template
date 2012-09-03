@@ -45,6 +45,7 @@
   {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
 
   <form method="post" action="{{env.repo_path}}/delete">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     {% trans "Reason for deletion:" %}
     <select name="reason_for_deletion">
       <option value="do_not_want_anymore">

@@ -63,6 +63,7 @@
 
 
   <form method="post" action="{{env.repo_path}}/post_flagged_note">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <table class="fields">
       <tr>
         <td class="label" align=left>

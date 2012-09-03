@@ -53,6 +53,11 @@ import user_agents
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 
+# Query parameters which are automatically preserved on page transition
+# if you use utils.BaseHandler.get_url() or
+# env.hidden_input_tags_for_preserved_query_params.
+PRESERVED_QUERY_PARAM_NAMES = ['style', 'small', 'charsets']
+
 
 # ==== Field value text ========================================================
 
@@ -451,12 +456,12 @@ def get_repo_url(request, repo, scheme=None):
         scheme = 'http'  # HTTPS is not available when using dev_appserver
     return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
 
-def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
+def get_url(request, repo, action, charset='UTF-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
     preserving the current repo and the 'small' and 'style' parameters."""
     repo_url = get_repo_url(request, repo or 'global', scheme)
-    params['small'] = params.get('small', request.get('small', None))
-    params['style'] = params.get('style', request.get('style', None))
+    for name in PRESERVED_QUERY_PARAM_NAMES:
+        params[name] = params.get(name, request.get(name, None))
     query = urlencode(params, charset)
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
@@ -749,6 +754,10 @@ class BaseHandler(webapp.RequestHandler):
                 user_agent=self.request.headers.get('User-Agent'), lang=lang,
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
+
+        # Sets default Content-Type header.
+        self.response.headers['Content-Type'] = (
+            'text/html; charset=%s' % self.charset)
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
