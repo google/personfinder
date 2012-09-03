@@ -255,25 +255,6 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
-    def test_language_links(self):
-        """Check that the language links go to the translated start page."""
-        doc = self.go('/haiti')
-
-        doc = self.s.follow(u'espa\u00f1ol')
-        assert 'Busco a alguien' in doc.text
-
-        doc = self.s.follow(u'Fran\u00e7ais')
-        assert 'Je recherche quelqu\'un' in doc.text
-
-        doc = self.go('/pakistan')
-        doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
-        assert (u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 ' +
-                u'\u062A\u0644\u0627\u0634 \u06A9\u0631 ' +
-                u'\u0631\u06C1\u0627 \u06C1\u0648') in doc.text
-
-        doc = self.s.follow(u'English')
-        assert 'I\'m looking for someone' in doc.text
-
     def test_language_xss(self):
         """Regression test for an XSS vulnerability in the 'lang' parameter."""
         doc = self.go('/haiti?lang="<script>alert(1)</script>')
@@ -313,8 +294,8 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf-8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis',
@@ -322,7 +303,7 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
@@ -330,15 +311,15 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of title text
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
     def test_query(self):
         """Check the query page."""
@@ -508,13 +489,13 @@ class ReadOnlyTests(TestsBase):
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')
-        assert doc.first('a', u'Fran\xe7ais')
-        assert doc.first('a', u'Krey\xf2l')
-        assert not doc.all('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert doc.first('option', u'Fran\xe7ais')
+        assert doc.first('option', u'Krey\xf2l')
+        assert not doc.all('option',u'\u0627\u0631\u062F\u0648')  # Urdu
 
         doc = self.go('/pakistan')
-        assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('a', u'Fran\xe7ais')
+        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert not doc.all('option', u'Fran\xe7ais')
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
@@ -533,15 +514,15 @@ class ReadOnlyTests(TestsBase):
         self.go('/japan', redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                         'http://sagasu-m.appspot.com/japan?subdomain=japan')
+                         'http://sagasu-m.appspot.com/')
 
         # redirect view page
         self.go('/japan/view?id=test.google.com/person.111',
                 redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                'http://sagasu-m.appspot.com/japan/view?subdomain=japan&'
-                'id=test.google.com/person.111')
+                'http://sagasu-m.appspot.com/view'
+                '?id=test.google.com/person.111')
         # no redirect with &small=yes
         self.go('/haiti/?small=yes', redirects=0)
         self.assertEqual(self.s.status, 200)

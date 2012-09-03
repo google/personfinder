@@ -572,19 +572,11 @@ class BaseHandler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the repo name.  Note that path
-            # has a leading /, so we want to remove just the first component
-            # and leave at least a '/' at the beginning.
-            path = re.sub('^/[^/]*', '', self.request.path) or '/'
-            # Except for top page, we propagate path and query params.
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
-            query_params = []
-            if path != '/':
-                if self.repo:
-                    query_params = ['subdomain=' + self.repo]
-                if self.request.query_string:
-                    query_params.append(self.request.query_string)
-            return redirect_url + '?' + '&'.join(query_params)
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
+                    self.env.action)
+            if self.request.query_string:
+                redirect_url += '?' + self.request.query_string
+            return redirect_url
         return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):

@@ -22,7 +22,6 @@ body {
   margin: auto;
   width: 800px;
   max-width: 1000px;
-  padding: 15px;
 }
 
 a img {
@@ -32,6 +31,7 @@ a img {
 h1 {
   margin-top: 0.5em;
   font-size: 18px;
+  font-weight: normal;
 }
 
 h2 {
@@ -43,6 +43,16 @@ h3 {
   font-size: 13px;
   font-weight: bold;
   margin: 0;
+}
+
+.header {
+  padding: 1em;
+  border-bottom: 1px solid #dadada;
+  overflow: auto;
+}
+
+.header a {
+  text-decoration: none;
 }
 
 .container {
@@ -61,10 +71,11 @@ h3 {
 .header-notification {
   color: #f00;
   padding: 2em;
-  margin: 2em;
+  margin: 2em auto;
   border: 1px solid #f00;
   background: #ffe;
   font-weight: bold;
+  text-align: center;
 }
 
 var {  /* variables in sample code or URLs */
@@ -81,29 +92,14 @@ pre {  /* code samples */
 
 /* Language menu */
 
-ul.languages {
+div.languages {
   float: right;
-  max-width: 350px;
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
-  list-style-type: none;
 }
 
-ul.languages li {
-  display: inline;
-  white-space: nowrap;
-}
-
-ul.languages li:first-child:before {
-  content: "";
-}
-
-ul.languages li:before {
-  content: "\00b7\00a0";
-}
-
-ul.languages .selected {
-  font-weight: bold;
+div.languages img {
+  vertical-align: text-top;
 }
 
 /* Repository menu */
@@ -238,10 +234,6 @@ td.submit {
   font-size: 16px;
 }
 
-.main .instructions {
-  text-align: center;
-}
-
 .main .stats {
   font-size: 13px;
   text-align: center;
@@ -250,15 +242,19 @@ td.submit {
 .main .action {
   width: 12em;
   padding: 1em;
-  border: 1px solid #abe;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   background: #bcf;
-  font-weight: bold;
   text-align: center;
+  vertical-align: middle;
 }
 
 .main .action:first-child {
-  border: 1px solid #ad9;
   background: #bea;
+}
+
+.main .action a {
+  font-weight: bold;
 }
 
 table.main {
@@ -272,8 +268,21 @@ table.main {
 
 /* Query page */
 
+.query {
+  width: 400px;
+  margin: 2em auto;
+  padding: 1em;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  background: #bcf;
+}
+
+.query.seek {
+  background: #bea;
+}
+
 .query .instructions {
-  padding: 1em 0;
+  padding-bottom: 0.5em;
 }
 
 .query .label {
@@ -282,7 +291,7 @@ table.main {
 }
 
 .query .submit {
-  padding-top: 1em;
+  padding-top: 0.5em;
 }
 
 /* View page */
