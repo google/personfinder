@@ -12,8 +12,9 @@
 <div id="invalid_profile_url_{{profile_website.name}}"
     class="mandatory" style="display: none">
   {% blocktrans with profile_website.name as website %}
-  The URL you entered doesn't look like a valid {{website}} profile URL.  Please
-  go to this person's wall on {{website}}, then copy and paste that URL here.
+  The URL you entered doesn't look like a valid {{website}} profile URL.
+  Please go to this person's profile page on {{website}}, then copy and paste
+  that URL here.
   {% endblocktrans %}
 </div>
 {% endfor %}
