@@ -16,6 +16,7 @@
 {% block content %}
 {% include "map.html.template" %}
 <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
+  {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <table class="create" cellpadding="0" cellspacing="0" role="form">
     <tr class="columns">
