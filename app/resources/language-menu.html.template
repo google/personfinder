@@ -13,13 +13,18 @@
 {% load i18n %}
 
 {% ifnotequal env.language_options|length 1 %}
-  <ul class="languages" title="{% trans "Language selection" %}">
-    {% for option in env.language_options %}
-      {% ifequal option.lang env.lang %}
-        <li class="selected">{{option.endonym}}</li>
-      {% else %}
-        <li><a href="{{option.url}}">{{option.endonym}}</a></li>
-      {% endifequal %}
-    {% endfor %}
-  </ul>
+  <div class="languages" title="{% trans "Language selection" %}">
+    <img src="{{env.global_url}}/language_picker.png"
+        alt="{% trans "Language selection" %}"
+        {% if env.small %}onclick="this.style.display='none';
+            $('language_picker').style.display='';"{% endif %} />
+    <select id="language_picker"
+        {% if env.small %}style="display:none"{% endif %}
+        onchange="window.location.href=this.options[this.selectedIndex].value;">
+      {% for option in env.language_options %}
+        <option value="{{option.url}}"{% ifequal option.lang env.lang %}
+            selected="selected"{% endifequal %}>{{option.endonym}}</option>
+      {% endfor %}
+    </select>
+  </div>
 {% endifnotequal %}
