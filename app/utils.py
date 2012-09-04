@@ -456,7 +456,7 @@ def get_repo_url(request, repo, scheme=None):
         scheme = 'http'  # HTTPS is not available when using dev_appserver
     return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
 
-def get_url(request, repo, action, charset='UTF-8', scheme=None, **params):
+def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
     preserving the current repo and the 'small' and 'style' parameters."""
     repo_url = get_repo_url(request, repo or 'global', scheme)
