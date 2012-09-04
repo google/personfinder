@@ -56,7 +56,7 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # Query parameters which are automatically preserved on page transition
 # if you use utils.BaseHandler.get_url() or
 # env.hidden_input_tags_for_preserved_query_params.
-PRESERVED_QUERY_PARAM_NAMES = ['ui', 'small', 'charsets']
+PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets']
 
 
 # ==== Field value text ========================================================
@@ -547,7 +547,6 @@ class BaseHandler(webapp.RequestHandler):
         'sex': validate_sex,
         'signature': strip,
         'skip': validate_int,
-        'small': validate_yes,
         'source_date': strip,
         'source_name': strip,
         'source_url': strip,
@@ -568,7 +567,7 @@ class BaseHandler(webapp.RequestHandler):
         if (self.config and
             self.config.jp_tier2_mobile_redirect_url and
             not self.params.suppress_redirect and
-            not self.params.small and
+            self.params.ui != 'small' and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
                     self.env.action)

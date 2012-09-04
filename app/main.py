@@ -259,10 +259,9 @@ def setup_env(request):
     env.hidden_input_tags_for_preserved_query_params = (
         get_hidden_input_tags_for_preserved_query_params(request))
 
-    # Fields related to "small mode" (for embedding in an <iframe>).
-    env.small = request.get('small', '').lower() == 'yes'
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = env.small and ' target="_blank" ' or ''
+    env.target_attr = (
+        request.get('ui', '').strip() == 'small' and ' target="_blank" ' or '')
 
     # Repo-specific information.
     if env.repo:

@@ -523,8 +523,8 @@ class ReadOnlyTests(TestsBase):
         self.assertEqual(self.s.headers['location'],
                 'http://sagasu-m.appspot.com/view'
                 '?id=test.google.com/person.111')
-        # no redirect with &small=yes
-        self.go('/haiti/?small=yes', redirects=0)
+        # no redirect with &ui=small
+        self.go('/haiti/?ui=small', redirects=0)
         self.assertEqual(self.s.status, 200)
         # no redirect with &suppress_redirect=yes
         self.go('/japan/view?suppress_redirect=yes'
@@ -766,13 +766,13 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None, required_params={}, forbidden_params={}):
             required_params.setdefault('role', 'provide')
-            required_params.setdefault('small', 'yes')
+            required_params.setdefault('ui', 'small')
             assert_params_conform(url or self.s.url,
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
         # Start on the home page and click the "I'm looking for someone" button
-        self.go('/haiti?small=yes')
+        self.go('/haiti?ui=small')
         search_page = self.s.follow('I have information about someone')
         search_form = search_page.first('form')
         assert 'I have information about someone' in search_form.content
@@ -794,7 +794,7 @@ class PersonNoteTests(TestsBase):
         # text. Click the link.
         create_page = self.s.follow('Follow this link to create a new record')
 
-        assert 'small=yes' not in self.s.url
+        assert 'ui=small' not in self.s.url
         given_name_input = create_page.firsttag('input', name='given_name')
         assert '_test_given_name' in given_name_input.content
         family_name_input = create_page.firsttag('input', name='family_name')
@@ -865,10 +865,10 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek', 'small': 'yes'})
+                url or self.s.url, {'role': 'seek', 'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
-        self.go('/haiti?small=yes')
+        self.go('/haiti?ui=small')
         search_page = self.s.follow('I\'m looking for someone')
         search_form = search_page.first('form')
         assert 'Search for this person' in search_form.content
@@ -912,7 +912,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
@@ -1111,7 +1111,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
@@ -1165,7 +1165,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         Repo(key_name='japan-test').put()
         # Kanji's are segmented character by character.
@@ -1246,7 +1246,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'provide'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'provide'}, {'ui': 'small'})
 
         self.go('/haiti')
         search_page = self.s.follow('I have information about someone')
