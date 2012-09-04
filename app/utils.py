@@ -56,7 +56,7 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # Query parameters which are automatically preserved on page transition
 # if you use utils.BaseHandler.get_url() or
 # env.hidden_input_tags_for_preserved_query_params.
-PRESERVED_QUERY_PARAM_NAMES = ['style', 'small', 'charsets']
+PRESERVED_QUERY_PARAM_NAMES = ['ui', 'small', 'charsets']
 
 
 # ==== Field value text ========================================================
@@ -458,7 +458,8 @@ def get_repo_url(request, repo, scheme=None):
 
 def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
-    preserving the current repo and the 'small' and 'style' parameters."""
+    preserving the current repo and the parameters listed in
+    PRESERVED_QUERY_PARAM_NAMES."""
     repo_url = get_repo_url(request, repo or 'global', scheme)
     for name in PRESERVED_QUERY_PARAM_NAMES:
         params[name] = params.get(name, request.get(name, None))
@@ -551,12 +552,12 @@ class BaseHandler(webapp.RequestHandler):
         'source_name': strip,
         'source_url': strip,
         'status': validate_status,
-        'style': strip,
         'subscribe': validate_checkbox,
         'subscribe_email': strip,
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
+        'ui': strip,
         'utcnow': validate_timestamp,
         'version': validate_version,
     }
@@ -645,7 +646,8 @@ class BaseHandler(webapp.RequestHandler):
 
     def get_url(self, action, repo=None, scheme=None, **params):
         """Constructs the absolute URL for a given action and query parameters,
-        preserving the current repo and the 'small' and 'style' parameters."""
+        preserving the current repo and the parameters listed in
+        PRESERVED_QUERY_PARAM_NAMES."""
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 

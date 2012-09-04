@@ -57,7 +57,7 @@
   {% endif %}
 {% endblock head %}</head>
 
-<body class="{{env.small|yesno:"small,normal"}} {{params.style}}"
+<body class="{{env.small|yesno:"small,normal"}} {{params.ui}}"
     onload="{{onload_function}}">{% block body %}
   <div class="header" role="banner">
     {% block header %}

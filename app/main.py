@@ -196,7 +196,7 @@ def get_localized_message(localized_messages, lang, default):
 
 def get_hidden_input_tags_for_preserved_query_params(request):
     """Gets HTML with <input type="hidden"> tags to preserve query parameters
-    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "style"."""
+    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "ui"."""
     tags_str = ''
     for name in utils.PRESERVED_QUERY_PARAM_NAMES:
         value = request.get(name)
@@ -268,7 +268,7 @@ def setup_env(request):
     if env.repo:
         # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
-        # start_url is like repo_url but preserves 'small' and 'style' params.
+        # start_url is like repo_url but preserves parameters such as 'ui'.
         env.start_url = utils.get_url(request, env.repo, '')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(

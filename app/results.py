@@ -53,9 +53,10 @@ class Handler(BaseHandler):
         return results
 
     def reject_query(self, query):
+        # NOTE: Parameters such as 'ui' are automatically preserved in
+        #       redirect().
         return self.redirect(
-            '/query', role=self.params.role, small=self.params.small,
-            style=self.params.style, error='error', query=query.query)
+            '/query', role=self.params.role, error='error', query=query.query)
 
     def get_results_url(self, query):
         return self.get_url('/results',
