@@ -61,25 +61,19 @@
         <a class="result-link" href="{{result.view_url}}">
           <!-- no whitespace inside .resultImageContainer-->
           {% if result.photo_url %}
-          <span class="resultImageContainer"
-            ><img class='resultImage' width='80' height='80' src='{{result.photo_url}}'
-          /></span>
+          <img class='resultImage' width='80' height='80' src='{{result.photo_url}}' align='left'
+          />
           {% else %}
-          <span class="resultImageContainer"
-            ><img class="resultImage" width='80' height='80' src="{{env.global_url}}/no-photo.gif"
-          /></span>
+          <img class="resultImage" width='80' height='80' src="{{env.global_url}}/no-photo.gif" align='left'
+          />
           {% endif %}
-          <span class='resultData'>
-            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
-            <span class='resultDataTitle'>
               {{result.full_name}}
               {% if config.use_alternate_names and result.alternate_names %}
                 ({{result.alternate_names}})
               {% endif %}
-            </span>
-            <ul>
+              <br>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
-              <li>{% trans "Home address" %}:
+                  {% trans "Home address" %}:
                   {% if result.home_street %}
                     {{result.home_street}}&nbsp;&nbsp;
                   {% endif %}
@@ -95,20 +89,18 @@
                   {% if result.home_postal_code %}
                     {{result.home_postal_code}}&nbsp;&nbsp;
                   {% endif %}
-              </li>
+                  <br>
               {% endif %}
-              <li>{% trans "Status" %}:
+              {% trans "Status" %}:
                 <span class='resultDataPersonFound'>
                   {{ result.latest_note_status }}
                 </span>
-              </li>
+              <br>
               {% if result.provider_name %}
-	      <li>
                 {% trans "Provided by:" %} {{result.provider_name}}
-              </li>
+                <br>
               {% endif %}
-            </ul>
-          </span>
+              <br clear="all">
         </a>
       </div>
     {% endfor %}
@@ -141,6 +133,7 @@
 <p>
 {% if not params.small and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="query" value="{{params.query}}">
     <input type="hidden" name="given_name" value="{{params.given_name}}">
     <input type="hidden" name="family_name" value="{{params.family_name}}">

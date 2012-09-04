@@ -13,9 +13,8 @@
 {% load i18n %}
 
 <form method="get" action="{{env.repo_path}}/results">
+  {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
-  <input type="hidden" name="small" value="{{params.small}}">
-  <input type="hidden" name="style" value="{{params.style}}">
   {% ifequal params.role 'provide' %}
     <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
     <div class="{{params.error}}">
