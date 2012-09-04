@@ -728,6 +728,10 @@ class BaseHandler(webapp.RequestHandler):
         self.config = env.config
         self.charset = env.charset
 
+        # Set default Content-Type header.
+        self.response.headers['Content-Type'] = (
+            'text/html; charset=%s' % self.charset)
+
         # Validate query parameters.
         for name, validator in self.auto_params.items():
             try:
@@ -746,10 +750,6 @@ class BaseHandler(webapp.RequestHandler):
                 user_agent=self.request.headers.get('User-Agent'), lang=lang,
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
-
-        # Sets default Content-Type header.
-        self.response.headers['Content-Type'] = (
-            'text/html; charset=%s' % self.charset)
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':

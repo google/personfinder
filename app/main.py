@@ -27,12 +27,12 @@ from google.appengine.ext import webapp
 
 import config
 import const
+import django.utils.html
 import legacy_redirect
 import logging
 import pfif
 import resources
 import utils
-from xml.sax import saxutils
 
 
 # When no action or repo is specified, redirect to this action.
@@ -202,7 +202,8 @@ def get_hidden_input_tags_for_preserved_query_params(request):
         value = request.get(name)
         if value:
             tags_str += '<input type="hidden" name="%s" value="%s">\n' % (
-                saxutils.escape(name), saxutils.escape(value))
+                django.utils.html.escape(name),
+                django.utils.html.escape(value))
     return tags_str
 
 def setup_env(request):
