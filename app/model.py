@@ -834,7 +834,7 @@ class UserActionLog(db.Expando):
     """Logs user actions."""
     time = db.DateTimeProperty(required=True)
     action = db.StringProperty(required=True, choices=[
-        'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
+        'add', 'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
         'restore', 'unhide', 'disable_notes', 'enable_notes'])
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
