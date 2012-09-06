@@ -292,6 +292,7 @@ class ReadOnlyTests(TestsBase):
 
         # Try with no specified charset.
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
@@ -300,6 +301,7 @@ class ReadOnlyTests(TestsBase):
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift-JIS encoding of title text
@@ -308,6 +310,7 @@ class ReadOnlyTests(TestsBase):
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift-JIS encoding of title text
@@ -316,6 +319,7 @@ class ReadOnlyTests(TestsBase):
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=utf8'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf8'
         # UTF-8 encoding of title text
@@ -5260,6 +5264,68 @@ _feed_profile_url2</pfif:profile_urls>
         # we land in the same bad old place
         self.assertEqual(self.s.url,
                          'http://%s/?subdomain=japan' % self.hostport)
+
+    def test_create_and_seek_with_nondefault_charset(self):
+        """Follow the basic create/seek flow with non-default charset
+        (Shift_JIS).
+
+        Verify:
+        - "charsets" query parameter is passed around
+        - Query parameters (encoded in Shift_JIS) are handled correctly
+        """
+
+        # Japanese translation of "I have information about someone"
+        ja_i_have_info = (
+            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3059\u308b')
+        # Japanese translation of "I'm looking for someone"
+        ja_looking_for_someone = (
+            u'\u4eba\u3092\u63a2\u3057\u3066\u3044\u308b')
+        test_given_name = u'\u592a\u90ce'
+        test_family_name = u'\u30b0\u30fc\u30b0\u30eb'
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'charsets': 'shift_jis'})
+
+        # Start on the home page and click the
+        # "I have information about someone" button
+        self.go('/haiti?lang=ja&charsets=shift_jis')
+        query_page = self.s.follow(ja_i_have_info)
+        assert_params()
+        query_form = query_page.first('form')
+
+        # Input a given name and a family name.
+        create_page = self.s.submit(query_form,
+                      given_name=test_given_name,
+                      family_name=test_family_name)
+        assert_params()
+        create_form = create_page.first('form')
+
+        # Submit a person record.
+        self.s.submit(create_form,
+                      given_name=test_given_name,
+                      family_name=test_family_name,
+                      author_name='_test_author_name',
+                      text='_test_text',
+                      author_made_contact='yes')
+        assert_params()
+
+        # Start on the home page and click the
+        # "I'm looking for someone" button
+        self.go('/haiti?lang=ja&charsets=shift_jis')
+        search_page = self.s.follow(ja_looking_for_someone)
+        assert_params()
+        search_form = search_page.first('form')
+
+        # Search for the record just submitted.
+        self.s.submit(
+            search_form, query=u'%s %s' % (test_given_name, test_family_name))
+        assert_params()
+        self.verify_results_page(1, all_have=([test_given_name]),
+                                 some_have=([test_given_name]))
+
+        self.verify_click_search_result(0, assert_params)
 
 
 class ResourceTests(TestsBase):
