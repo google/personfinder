@@ -554,9 +554,8 @@ class Region:
     and ending positions are just after the starting tag and just before the
     ending tag, respectively."""
 
-    def __init__(
-            self, parent, start=0, end=None, starttag=None, endtag=None,
-            charset=None):
+    def __init__(self, parent, start=0, end=None, starttag=None, endtag=None,
+                 charset=None):
         """Create a Region.  The 'parent' argument is a string or another
         Region.  The 'start' and 'end' arguments, if given, are non-negative
         indices into the original string (not into the parent region).  The
