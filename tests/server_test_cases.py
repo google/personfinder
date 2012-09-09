@@ -88,6 +88,20 @@ def verify_api_log(action, api_key='test_key', person_records=None,
     if notes_skipped:
         assert notes_skipped == entry.notes_skipped
 
+def text_all_logs():
+    return '\n'.join(['UserActionLog: action=%s entity_kind=%s' % (
+        log.action, log.entity_kind)
+        for log in UserActionLog.all().fetch(10)])
+
+def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
+    logs = UserActionLog.all().order('-time').fetch(fetch_limit)
+    for log in logs:
+        if log.action == action and log.entity_kind == entity_kind:
+            for key, value in kwargs.iteritems():
+                assert getattr(log, key) == value
+            return  # verified
+    assert False, text_all_logs()  # not verified
+
 def get_test_data(filename):
     return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
 
@@ -966,13 +980,12 @@ class PersonNoteTests(TestsBase):
             note_photo_url='http://xyz')
 
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test Another note body'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='',
+                               Note_text='_test Another note body',
+                               Note_status='believed_alive')
 
         # Add a note with status == 'believed_dead'.
         # By default allow_believed_dead_via_ui = True for repo 'haiti'.
@@ -980,13 +993,12 @@ class PersonNoteTests(TestsBase):
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert entry.ip_address
-        assert entry.Note_text == '_test Third note body'
-        assert entry.Note_status == 'believed_dead'
-        entry.delete()
+        verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='127.0.0.1',
+                               Note_text='_test Third note body',
+                               Note_status='believed_dead')
 
         person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
@@ -1285,6 +1297,10 @@ class PersonNoteTests(TestsBase):
             'Family name:': '_test_family_name',
             'Author\'s name:': '_test_author_name'})
 
+        # Verify that UserActionLog entries are created for 'add' action.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
+
         # Try the search again, and should get some results
         self.s.submit(search_form,
                       given_name='_test_given_name',
@@ -1361,13 +1377,15 @@ class PersonNoteTests(TestsBase):
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-21 00:00 UTC'})
 
-        # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert entry.ip_address
-        assert entry.Note_text == '_test A note body'
-        assert entry.Note_status == 'believed_dead'
+        # Check that UserActionLog entries were created.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
+        verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='127.0.0.1',
+                               Note_text='_test A note body',
+                               Note_status='believed_dead')
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -1652,13 +1670,13 @@ class PersonNoteTests(TestsBase):
         assert 'believed_dead' not in note.content, \
             text_diff('believed_dead', note.content)
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_first _test_last'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test_text'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
+                               detail='_test_first _test_last',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
+        db.delete(UserActionLog.all().fetch(10))
 
         # Set status to is_note_author, but don't check author_made_contact.
         self.s.submit(form,
@@ -1716,13 +1734,13 @@ class PersonNoteTests(TestsBase):
         assert 'believed_dead' not in note.content
 
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_first _test_last'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test_text'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='japan',
+                               detail='_test_first _test_last',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
+        db.delete(UserActionLog.all().fetch(10))
 
         # Set status to believed_dead, but allow_believed_dead_via_ui is false.
         self.s.submit(form,
@@ -3817,14 +3835,9 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'disable_notes'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
-        assert last_log_entry.detail == 'spam_received'
-        last_log_entry.delete()
+        verify_user_action_log('disable_notes', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123',
+            detail='spam_received')
 
         # Redirect to view page, now we should not show the add_note panel,
         # instead, we show message and a button to enable comments.
@@ -3894,12 +3907,8 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().get()
-        assert last_log_entry
-        assert last_log_entry.action == 'enable_notes'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
+        verify_user_action_log('enable_notes', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
         # also, we show the button to disable comments.
@@ -3968,9 +3977,8 @@ _feed_profile_url2</pfif:profile_urls>
         note = Note.all().get()
         assert not note
 
-        # Make sure that a UserActionLog row was not created yet.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert not last_log_entry
+        # Check that a UserActionLog row was created for 'add' action.
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(1)
@@ -4005,14 +4013,10 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         assert person.latest_status == 'believed_dead'
 
-        # Check that a UserActionLog row was created by now.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'mark_dead'
-        assert last_log_entry.entity_kind == 'Note'
-        keyname = "haiti:%s" % note.get_record_id()
-        assert (last_log_entry.entity_key_name == keyname)
-        last_log_entry.delete()
+        # Check that a UserActionLog row was created for 'mark_dead' action.
+        keyname = 'haiti:%s' % note.get_record_id()
+        verify_user_action_log('mark_dead', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
         # Add a note with bad words to the existing person record.
         doc = self.s.go(view_url)
@@ -4050,9 +4054,8 @@ _feed_profile_url2</pfif:profile_urls>
         assert note_with_bad_words.person_record_id == person.record_id
         assert note_with_bad_words.author_email == 'test2@example.com'
 
-        # Make sure that a UserActionLog row was not created yet.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert not last_log_entry
+        # Check that a UserActionLog row was created for 'add' action.
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(2)
@@ -4084,15 +4087,10 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         assert person.latest_status == 'believed_alive'
 
-        # Check that a UserActionLog row was created by now.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'mark_alive'
-        assert last_log_entry.entity_kind == 'Note'
+        # Check that a UserActionLog row was created for 'mark_alive' action.
         keyname = "haiti:%s" % note.get_record_id()
-        assert (last_log_entry.entity_key_name == keyname)
-        last_log_entry.delete()
-        assert 'Disable notes on this record' in doc.content
+        verify_user_action_log('mark_alive', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
 
     def test_delete_and_restore(self):
@@ -4168,13 +4166,10 @@ _feed_profile_url2</pfif:profile_urls>
         assert not Note.get('haiti', note.record_id)
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'delete'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
-        assert last_log_entry.detail == 'spam_received'
+        verify_user_action_log('delete', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123',
+            detail='spam_received')
+
         assert db.get(photo.key())
         assert db.get(note_photo.key())
 
