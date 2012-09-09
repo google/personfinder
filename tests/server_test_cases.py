@@ -91,7 +91,7 @@ def verify_api_log(action, api_key='test_key', person_records=None,
 def text_all_logs():
     return '\n'.join(['UserActionLog: action=%s entity_kind=%s' % (
         log.action, log.entity_kind)
-        for log in UserActionLog.all().fetch()])
+        for log in UserActionLog.all().fetch(10)])
 
 def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
     logs = UserActionLog.all().order('-time').fetch(fetch_limit)
@@ -981,6 +981,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that a UserActionLog entry was created.
         verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='',
                                Note_text='_test Another note body',
@@ -993,6 +994,7 @@ class PersonNoteTests(TestsBase):
             'believed_dead')
         # Check that a UserActionLog entry was created.
         verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='127.0.0.1',
                                Note_text='_test Third note body',
@@ -1295,6 +1297,10 @@ class PersonNoteTests(TestsBase):
             'Family name:': '_test_family_name',
             'Author\'s name:': '_test_author_name'})
 
+        # Verify that UserActionLog entries are created for 'add' action.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
+
         # Try the search again, and should get some results
         self.s.submit(search_form,
                       given_name='_test_given_name',
@@ -1371,8 +1377,11 @@ class PersonNoteTests(TestsBase):
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-21 00:00 UTC'})
 
-        # Check that a UserActionLog entry was created.
+        # Check that UserActionLog entries were created.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
         verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='127.0.0.1',
                                Note_text='_test A note body',
@@ -1662,6 +1671,7 @@ class PersonNoteTests(TestsBase):
             text_diff('believed_dead', note.content)
         # Check that a UserActionLog entry was created.
         verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
                                detail='_test_first _test_last',
                                ip_address='',
                                Note_text='_test_text',
@@ -1725,6 +1735,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that a UserActionLog entry was created.
         verify_user_action_log('mark_alive', 'Note',
+                               repo='japan',
                                detail='_test_first _test_last',
                                ip_address='',
                                Note_text='_test_text',
@@ -3824,7 +3835,7 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('disable_notes', 'Person',
+        verify_user_action_log('disable_notes', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123',
             detail='spam_received')
 
@@ -3896,7 +3907,7 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('enable_notes', 'Person', 
+        verify_user_action_log('enable_notes', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
@@ -3967,7 +3978,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not note
 
         # Check that a UserActionLog row was created for 'add' action.
-        verify_user_action_log('add', 'NoteWithBadWords')
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(1)
@@ -4004,7 +4015,8 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Check that a UserActionLog row was created for 'mark_dead' action.
         keyname = 'haiti:%s' % note.get_record_id()
-        verify_user_action_log('mark_dead', 'Note', entity_key_name=keyname)
+        verify_user_action_log('mark_dead', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
         # Add a note with bad words to the existing person record.
         doc = self.s.go(view_url)
@@ -4043,7 +4055,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert note_with_bad_words.author_email == 'test2@example.com'
 
         # Check that a UserActionLog row was created for 'add' action.
-        verify_user_action_log('add', 'NoteWithBadWords')
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(2)
@@ -4077,7 +4089,8 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Check that a UserActionLog row was created for 'mark_alive' action.
         keyname = "haiti:%s" % note.get_record_id()
-        verify_user_action_log('mark_alive', 'Note', entity_key_name=keyname)
+        verify_user_action_log('mark_alive', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
 
     def test_delete_and_restore(self):
@@ -4153,7 +4166,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not Note.get('haiti', note.record_id)
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('delete', 'Person',
+        verify_user_action_log('delete', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123',
             detail='spam_received')
 
