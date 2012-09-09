@@ -305,10 +305,17 @@ def get_app_name():
 
 def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
+    # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
         if url and not url_is_safe(url):
             setattr(record, field, None)
+    # Multi-line URLs.
+    for field in ['profile_urls']:
+        urls = (getattr(record, field, None) or '').splitlines()
+        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
+        if len(urls) != len(sanitized_urls):
+            setattr(record, field, '\n'.join(sanitized_urls))
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
