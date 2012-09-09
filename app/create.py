@@ -40,8 +40,8 @@ def days_to_date(days):
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
-        profile_websites = [add_profile_icon_url(website, self) for website in
-                self.config.profile_websites]
+        profile_websites = [add_profile_icon_url(website, self)
+                for website in self.config.profile_websites or []]
         self.render('create.html',
                     profile_websites=profile_websites,
                     profile_websites_json=simplejson.dumps(profile_websites),

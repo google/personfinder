@@ -38,8 +38,9 @@ def get_profile_pages(profile_urls, handler):
         profile_page = {
             'name': urlparse(profile_url).hostname,
             'url': profile_url }
-        for website in handler.config.profile_websites:
-            if re.match(website['url_regexp'], profile_url):
+        for website in handler.config.profile_websites or []:
+            if ('url_regexp' in website and
+                re.match(website['url_regexp'], profile_url)):
                 profile_page = add_profile_icon_url(website, handler)
                 profile_page['url'] = profile_url
                 break

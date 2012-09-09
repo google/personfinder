@@ -68,9 +68,10 @@ function update_image_input(for_note) {
   }
 }
 
-// Shows a new text field for a profile URL.
+// Shows a new text input field for a profile URL.
 function add_profile_entry(select) {
   function set_profile_website(entry_index, website_index) {
+    // Remember the website index, so we can validate the input URL later.
     $('profile_website_index' + entry_index).value = website_index;
 
     // First remove the existing icon if any.
@@ -85,7 +86,9 @@ function add_profile_entry(select) {
     }
   }
 
+  // The dropdown menu has a placeholder as the first option (index = 0).
   var profile_website_index = select.selectedIndex - 1;
+  // Reset the dropdown menu for the next time it'll be shown.
   select.selectedIndex = 0;
 
   var added = false;
@@ -102,16 +105,18 @@ function add_profile_entry(select) {
     }
   }
 
+  // Hide the link and the dropdown menu, so no new profile URL can be added.
   if (!can_add_more) {
     hide($('add_profile_entry'));
   }
 }
 
-// Hides one of the profile page input fields specified by the index of the
-// corresponding <tr> element, and shows the dropdown menu if hidden.
+// Hides one of the profile URL input fields specified by an index,
+// and shows the dropdown menu if hidden.
 function remove_profile_entry(profile_entry_index) {
-  $('profile_entry' + profile_entry_index).style.display = 'none';
+  // Clears the text input field.
   $('profile_url' + profile_entry_index).value = '';
+  hide($('profile_entry' + profile_entry_index));
   show($('add_profile_entry'));
 }
 
@@ -283,12 +288,14 @@ function validate_fields() {
   }
   for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
     if (entry.style.display != 'none') {
-      var url = $('profile_url' + i).value;
+      var input = $('profile_url' + i);
+      var url = input.value;
       var website_index = parseInt($('profile_website_index' + i).value);
       var website = profile_websites[website_index];
-      if (!url.match(website.url_regexp)) {
+      if (url && website && website.url_regexp &&
+          !url.match(website.url_regexp)) {
         show($('invalid_profile_url_' + website.name));
-        $('profile_url' + i).focus();
+        input.focus();
         return false;
       }
     }

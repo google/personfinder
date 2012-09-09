@@ -173,7 +173,7 @@
             {% for val in person.photo_url %}
             <td class="field">
               {% if val %}
-                <a href="{{val}}"><img src="{{val}}" class="photo"</img></a>
+                <a href="{{val}}"><img src="{{val}}" class="photo"></a>
               {% else %}
                 <img src="{{env.global_url}}/no-photo.gif" class="photo">
               {% endif %}

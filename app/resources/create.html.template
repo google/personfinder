@@ -332,7 +332,8 @@
                                     placeholder="{% trans "Link to profile page" %}" />
                               </td>
                               <td>
-                                <a href="javascript:remove_profile_entry({{i}})">Remove</a>
+                                <a href="javascript:remove_profile_entry({{i}})"
+                                  >{% trans "Remove" %}</a>
                               </td>
                             </tr>
                           {% endfor %}

@@ -395,7 +395,7 @@
             id="show_profile_entry_true"
             {{config.show_profile_entry|yesno:"checked,"}}>
         <label for="show_profile_entry_true">
-          Show input field for profile pages
+          Show input fields for profile pages
         </label>
       </div>
       <div class="option">
@@ -403,7 +403,7 @@
             id="show_profile_entry_false"
             {{config.show_profile_entry|yesno:",checked"}}>
         <label for="show_profile_entry_false">
-          Hide input field for profile pages
+          Hide input fields for profile pages
         </label>
       </div>
     </div>
@@ -411,9 +411,9 @@
     <div class="config">
       <label for="profile_websites">External websites to show as the
       default options for profile pages (JSON list of dictionaries representing
-      metadata of external websites with profile pagese, each with 'name',
-      'icon_filename', and 'url_regexp' attributes, sorted in the order they are
-      shown in the create page):</label>
+      metadata of external websites, each with 'name', 'icon_filename', and
+      'url_regexp' attributes, sorted in the order they are displayed in the
+      create page):</label>
       <div class="response">
         <textarea name="profile_websites" id="profile_websites" rows=2 cols=80
           >{{config_json.profile_websites|default:"[]"}}</textarea>
