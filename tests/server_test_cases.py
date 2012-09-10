@@ -22,6 +22,7 @@ import optparse
 import os
 import pytest
 import re
+import simplejson
 import sys
 import tempfile
 import time
@@ -1036,6 +1037,9 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      profile_url1='http://www.facebook.com/_test_account1',
+                      profile_url2='http://www.twitter.com/_test_account2',
+                      profile_url3='http://www.foo.com/_test_account3',
                       expiry_option='foo',
                       description='_test_description')
 
@@ -1052,6 +1056,9 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
+            'Profile page 1:': 'Facebook',
+            'Profile page 2:': 'Twitter',
+            'Profile page 3:': 'www.foo.com',
             'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
@@ -1059,6 +1066,13 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-11 00:00 UTC'})
+
+        # Check the icons and the links are there.
+        assert 'facebook-16x16.png' in self.s.doc.content
+        assert 'twitter-16x16.png' in self.s.doc.content
+        assert 'http://www.facebook.com/_test_account1' in self.s.doc.content
+        assert 'http://www.twitter.com/_test_account2' in self.s.doc.content
+        assert 'http://www.foo.com/_test_account3' in self.s.doc.content
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.
@@ -1345,6 +1359,7 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      profile_url1='http://www.facebook.com/_test_account',
                       expiry_option='20',
                       description='_test_description',
                       add_note='yes',
@@ -1369,6 +1384,7 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
+            'Profile page 1:': 'Facebook',
             'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
@@ -1403,6 +1419,9 @@ class PersonNoteTests(TestsBase):
             date_of_birth='1970-01-01',
             age='31-41',
             photo_url='http://photo1',
+            profile_urls='''http://www.facebook.com/_account_1
+http://www.twitter.com/_account_1
+http://www.foo.com/_account_1''',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1417,6 +1436,7 @@ class PersonNoteTests(TestsBase):
             date_of_birth='1970-02-02',
             age='32-42',
             photo_url='http://photo2',
+            profile_urls='http://www.facebook.com/_account_2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1450,6 +1470,10 @@ class PersonNoteTests(TestsBase):
         assert 'http://photo1' in doc.content
         assert 'http://photo2' in doc.content
         assert 'http://photo3' in doc.content
+        assert 'http://www.facebook.com/_account_1' in doc.content
+        assert 'http://www.twitter.com/_account_1' in doc.content
+        assert 'http://www.foo.com/_account_1' in doc.content
+        assert 'http://www.facebook.com/_account_2' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
@@ -3715,6 +3739,24 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.source_url not in doc.content
 
+    def test_xss_profile_urls(self):
+        profile_urls = ['http://abc', 'http://def', 'http://ghi']
+        person, note = self.setup_person_and_note()
+        person.profile_urls = '\n'.join(profile_urls)
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        for profile_url in profile_urls:
+            assert profile_url in doc.content
+        XSS_URL_INDEX = 1
+        profile_urls[XSS_URL_INDEX] = 'javascript:alert(1);'
+        person.profile_urls = '\n'.join(profile_urls)
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        for i, profile_url in enumerate(profile_urls):
+            if i == XSS_URL_INDEX:
+                assert profile_url not in doc.content
+            else:
+                assert profile_url in doc.content
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
@@ -5624,6 +5666,8 @@ class ConfigTests(TestsBase):
             use_postal_code='false',
             allow_believed_dead_via_ui='false',
             min_query_word_length='1',
+            show_profile_entry='false',
+            profile_websites='["http://abc"]',
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
@@ -5645,6 +5689,8 @@ class ConfigTests(TestsBase):
         assert not cfg.use_postal_code
         assert not cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 1
+        assert not cfg.show_profile_entry
+        assert cfg.profile_websites == ['http://abc']
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
@@ -5666,6 +5712,8 @@ class ConfigTests(TestsBase):
             use_postal_code='true',
             allow_believed_dead_via_ui='true',
             min_query_word_length='2',
+            show_profile_entry='true',
+            profile_websites='["http://xyz"]',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
@@ -5687,6 +5735,8 @@ class ConfigTests(TestsBase):
         assert cfg.use_postal_code
         assert cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 2
+        assert cfg.show_profile_entry
+        assert cfg.profile_websites == ['http://xyz']
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
@@ -5722,6 +5772,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
+            profile_websites='[]',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
             start_page_custom_htmls='{"en": "start page message"}',
@@ -5773,6 +5824,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             test_mode='true',
+            profile_websites='[]',
             start_page_custom_htmls='{"en": "start page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
@@ -5800,6 +5852,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
+            profile_websites='[]',
             start_page_custom_htmls=
                 '{"en": "<b>English</b> start page message",'
                 ' "fr": "<b>French</b> start page message"}',

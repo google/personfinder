@@ -18,6 +18,7 @@ from model import *
 from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
+import simplejson
 
 from django.utils.translation import ugettext as _
 
@@ -39,7 +40,11 @@ def days_to_date(days):
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
+        profile_websites = [add_profile_icon_url(website, self)
+                for website in self.config.profile_websites or []]
         self.render('create.html',
+                    profile_websites=profile_websites,
+                    profile_websites_json=simplejson.dumps(profile_websites),
                     onload_function='view_page_loaded()')
 
     def post(self):
@@ -100,6 +105,14 @@ class Handler(BaseHandler):
         if note_photo:
             note_photo.put()
 
+        profile_urls = []
+        if self.params.profile_url1:
+            profile_urls.append(self.params.profile_url1)
+        if self.params.profile_url2:
+            profile_urls.append(self.params.profile_url2)
+        if self.params.profile_url3:
+            profile_urls.append(self.params.profile_url3)
+
         # Person records have to have a source_date; if none entered, use now.
         source_date = source_date or now
 
@@ -128,6 +141,7 @@ class Handler(BaseHandler):
             home_postal_code=self.params.home_postal_code,
             home_neighborhood=self.params.home_neighborhood,
             home_country=self.params.home_country,
+            profile_urls='\n'.join(profile_urls),
             author_name=self.params.author_name,
             author_phone=self.params.author_phone,
             author_email=self.params.author_email,
