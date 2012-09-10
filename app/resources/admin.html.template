@@ -415,7 +415,7 @@
       'url_regexp' attributes, sorted in the order they are displayed in the
       create page):</label>
       <div class="response">
-        <textarea name="profile_websites" id="profile_websites" rows=2 cols=80
+        <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
           >{{config_json.profile_websites|default:"[]"}}</textarea>
       </div>
     </div>

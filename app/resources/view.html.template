@@ -190,7 +190,7 @@
                         {% for profile_page in person.profile_pages %}
                           <tr>
                             <td class="label">
-                                {% trans "Profile Page" %} {{forloop.counter}}:</td>
+                                {% trans "Profile page" %} {{forloop.counter}}:</td>
                             <td class="field">
                               {% if profile_page.icon_url %}
                                 <img src="{{profile_page.icon_url}}" class="icon">
