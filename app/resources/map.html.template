@@ -116,14 +116,18 @@ function initClickableMap(map_id) {
   markered_map.map.setOptions({draggableCursor: 'pointer'});
   markered_map.marker.setVisible(false);
 
-  // Updates the marker position according to the location field value.
-  location_field.onchange = function() {
-    parseLatLngOrGeocode(this.value, function(latlng) {
+  var onLocationFieldChanged = function() {
+    parseLatLngOrGeocode(location_field.value, function(latlng) {
       markered_map.map.panTo(latlng);
       markered_map.marker.setPosition(latlng);
       markered_map.marker.setVisible(true);
     });
   };
+  // Updates the marker position according to the location field value.
+  location_field.onchange = onLocationFieldChanged;
+  if (location_field.value) {
+    onLocationFieldChanged();
+  }
 
   // Updates the location field value according to the marker position.
   var geocoder = new google.maps.Geocoder();
