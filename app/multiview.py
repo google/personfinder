@@ -18,6 +18,7 @@ from utils import *
 import pfif
 import reveal
 import subscribe
+import view
 
 from django.utils.translation import ugettext as _
 
@@ -31,7 +32,7 @@ class Handler(BaseHandler):
         # each property is a list of values, one for each person.
         # This makes page rendering easier.
         person = dict([(prop, []) for prop in COMPARE_FIELDS])
-        any = dict([(prop, None) for prop in COMPARE_FIELDS])
+        any_person = dict([(prop, None) for prop in COMPARE_FIELDS])
 
         # Get all persons from db.
         # TODO: Can later optimize to use fewer DB calls.
@@ -40,17 +41,14 @@ class Handler(BaseHandler):
             if not id:
                 break
             p = Person.get(self.repo, id)
+            sanitize_urls(p)
 
             for prop in COMPARE_FIELDS:
                 val = getattr(p, prop)
                 if prop == 'sex':  # convert enum value to localized text
                     val = get_person_sex_text(p)
-                # sanitize urls - sanitize_urls() not usable here.
-                if prop.endswith('_url'): 
-                    if not url_is_safe(val):
-                        val = None
                 person[prop].append(val)
-                any[prop] = any[prop] or val
+                any_person[prop] = any_person[prop] or val
 
         # Compute the local times for the date fields on the person.
         person['source_date_local'] = map(
@@ -65,10 +63,14 @@ class Handler(BaseHandler):
 
         # TODO: Handle no persons found.
 
+        person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
+            for profile_urls in person['profile_urls']]
+        any_person['profile_pages'] = any(person['profile_pages'])
+
         # Note: we're not showing notes and linked persons information
         # here at the moment.
         self.render('multiview.html',
-                    person=person, any=any, standalone=standalone,
+                    person=person, any=any_person, standalone=standalone,
                     cols=len(person['full_name']) + 1,
                     onload_function='view_page_loaded()', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)

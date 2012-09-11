@@ -165,7 +165,9 @@ def get_repo_options(request, lang):
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
         url = utils.get_repo_url(request, repo)
-        options.append(utils.Struct(repo=repo, title=title, url=url))
+        test_mode = config.get_for_repo(repo, 'test_mode')
+        options.append(utils.Struct(repo=repo, title=title, url=url,
+                                    test_mode=test_mode))
     return options
 
 def get_language_options(request, config=None):

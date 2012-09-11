@@ -16,6 +16,18 @@ function $(id) {
   return document.getElementById(id);
 }
 
+function show(element) {
+  if (element) {
+    element.style.display = '';
+  }
+}
+
+function hide(element) {
+  if (element) {
+    element.style.display = 'none';
+  }
+}
+
 // Dynamic behavior for the Person entry form.
 function update_clone() {
   var display_original = $('clone_no').checked ? 'inline' : 'none';
@@ -54,6 +66,58 @@ function update_image_input(for_note) {
     $(id_prefix + 'photo_url').disabled = false;
     $(id_prefix + 'photo_url').focus();
   }
+}
+
+// Shows a new text input field for a profile URL.
+function add_profile_entry(select) {
+  function set_profile_website(entry_index, website_index) {
+    // Remember the website index, so we can validate the input URL later.
+    $('profile_website_index' + entry_index).value = website_index;
+
+    // First remove the existing icon if any.
+    icon_container = $('profile_icon' + entry_index);
+    icon_container.innerHTML = '';
+
+    var profile_website = profile_websites[profile_website_index];
+    if (profile_website && profile_website.icon_url) {
+      var icon = document.createElement('img');
+      icon.src = profile_website.icon_url;
+      icon_container.appendChild(icon);
+    }
+  }
+
+  // The dropdown menu has a placeholder as the first option (index = 0).
+  var profile_website_index = select.selectedIndex - 1;
+  // Reset the dropdown menu for the next time it'll be shown.
+  select.selectedIndex = 0;
+
+  var added = false;
+  var can_add_more = false;
+  for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
+    if (entry.style.display == 'none') {
+      if (!added) {
+        set_profile_website(i, profile_website_index);
+        show(entry);
+        added = true;
+      } else {
+        can_add_more = true;
+      }
+    }
+  }
+
+  // Hide the link and the dropdown menu, so no new profile URL can be added.
+  if (!can_add_more) {
+    hide($('add_profile_entry'));
+  }
+}
+
+// Hides one of the profile URL input fields specified by an index,
+// and shows the dropdown menu if hidden.
+function remove_profile_entry(profile_entry_index) {
+  // Clears the text input field.
+  $('profile_url' + profile_entry_index).value = '';
+  hide($('profile_entry' + profile_entry_index));
+  show($('add_profile_entry'));
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
@@ -204,21 +268,39 @@ function validate_fields() {
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {
-      $('mandatory_field_missing').setAttribute('style', '');
+      show($('mandatory_field_missing'));
       field.focus();
       return false;
     }
   }
-  $('mandatory_field_missing').setAttribute('style', 'display: none');
+  hide($('mandatory_field_missing'));
 
   // Check that the status and author_made_contact values are not inconsistent.
-  if ($('status').value == 'is_note_author' &&
-      $('author_made_contact_no').checked) {
-    $('status_inconsistent_with_author_made_contact').setAttribute('style', '');
+  if ($('status') && $('status').value == 'is_note_author' &&
+      $('author_made_contact_no') && $('author_made_contact_no').checked) {
+    show($('status_inconsistent_with_author_made_contact'));
     return false;
   }
+  hide($('status_inconsistent_with_author_made_contact'));
 
-  $('status_inconsistent_with_author_made_contact')
-      .setAttribute('style', 'display: none');
+  // Check profile_urls
+  for (var i = 0; i < profile_websites.length; ++i) {
+    hide($('invalid_profile_url_' + profile_websites[i].name));
+  }
+  for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
+    if (entry.style.display != 'none') {
+      var input = $('profile_url' + i);
+      var url = input.value;
+      var website_index = parseInt($('profile_website_index' + i).value);
+      var website = profile_websites[website_index];
+      if (url && website && website.url_regexp &&
+          !url.match(website.url_regexp)) {
+        show($('invalid_profile_url_' + website.name));
+        input.focus();
+        return false;
+      }
+    }
+  }
+
   return true;
 }

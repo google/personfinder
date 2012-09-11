@@ -841,8 +841,9 @@ class Subscription(db.Model):
 class UserActionLog(db.Expando):
     """Logs user actions."""
     time = db.DateTimeProperty(required=True)
+    repo = db.StringProperty(required=True)
     action = db.StringProperty(required=True, choices=[
-        'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
+        'add', 'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
         'restore', 'unhide', 'disable_notes', 'enable_notes'])
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
@@ -850,21 +851,24 @@ class UserActionLog(db.Expando):
     ip_address = db.StringProperty()
 
     @classmethod
-    def put_new(cls, action, entity, detail='', ip_address=''):
+    def put_new(cls, action, entity, detail='', ip_address='',
+                copy_properties=True):
         """Adds an entry to the UserActionLog.  'action' is the action that
         the user performed, 'entity' is the entity that was operated on, and
         'detail' is a string containing any other details."""
         import utils
         kind = entity.kind()
         entry = cls(
-            time=utils.get_utcnow(), action=action, entity_kind=kind,
-            entity_key_name=entity.key().name(), detail=detail,
-            ip_address=ip_address)
-        for name in entity.properties():  # copy the properties of the entity
-            value = getattr(entity, name)
-            if isinstance(value, db.Model):
-                value = value.key()
-            setattr(entry, kind + '_' + name, value)
+            time=utils.get_utcnow(), repo=entity.repo, action=action,
+            entity_kind=kind, entity_key_name=entity.key().name(),
+            detail=detail, ip_address=ip_address)
+        # copy the properties of the entity
+        if copy_properties:
+            for name in entity.properties():
+                value = getattr(entity, name)
+                if isinstance(value, db.Model):
+                    value = value.key()
+                setattr(entry, kind + '_' + name, value)
         entry.put()
 
 

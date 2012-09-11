@@ -305,10 +305,17 @@ def get_app_name():
 
 def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
+    # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
         if url and not url_is_safe(url):
             setattr(record, field, None)
+    # Multi-line URLs.
+    for field in ['profile_urls']:
+        urls = (getattr(record, field, None) or '').splitlines()
+        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
+        if len(urls) != len(sanitized_urls):
+            setattr(record, field, '\n'.join(sanitized_urls))
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -446,6 +453,11 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     query = urlencode(params, charset)
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
+def add_profile_icon_url(website, handler):
+    website['icon_url'] = \
+        handler.env.global_url + '/' + website['icon_filename']
+    return website
+
 
 # ==== Struct ==================================================================
 
@@ -517,6 +529,9 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
+        'profile_url1': strip,
+        'profile_url2': strip,
+        'profile_url3': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
@@ -550,19 +565,11 @@ class BaseHandler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the repo name.  Note that path
-            # has a leading /, so we want to remove just the first component
-            # and leave at least a '/' at the beginning.
-            path = re.sub('^/[^/]*', '', self.request.path) or '/'
-            # Except for top page, we propagate path and query params.
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
-            query_params = []
-            if path != '/':
-                if self.repo:
-                    query_params = ['subdomain=' + self.repo]
-                if self.request.query_string:
-                    query_params.append(self.request.query_string)
-            return redirect_url + '?' + '&'.join(query_params)
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
+                    self.env.action)
+            if self.request.query_string:
+                redirect_url += '?' + self.request.query_string
+            return redirect_url
         return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):

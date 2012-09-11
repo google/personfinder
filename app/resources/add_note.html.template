@@ -84,14 +84,14 @@
                       {% trans "Last known location" %}
                     </h3>
                     <div class="hint">
-                      {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
+                      {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
                     </div>
                     <table class="fields">
                       <tr>
                         <td>
-                          <input name="last_known_location"
-                              id="last_known_location" size="40"
-                              value="{{params.last_known_location}}" />
+                          <textarea name="last_known_location"
+                              id="clickable_map_location_field" cols=40 rows=2
+                              >{{params.last_known_location}}</textarea>
                         </td>
                       </tr>
                     </table>
@@ -99,21 +99,22 @@
                       <table class="map-container">
                         <tr>
                           <td>
-                            <div id="map_canvas_show_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
-                              {% trans "Show Map" %}
-                              </a>
+                            <div id="clickable_map_show_link">
+                              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                                {% trans "Show Map" %}</a>
                             </div>
-                            <div id="map_canvas_hide_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
-                              {% trans "Hide Map" %}
-                              </a>
+                            <div id="clickable_map_hide_link" style="display: none">
+                              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                                {% trans "Hide Map" %}</a>
+                              &nbsp;&nbsp;
+                              <a href='#' id="switch_to_latlng_link"
+                                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                                {% trans "Switch to lat/long" %}</a>
+                              <a href='#' id="switch_to_address_link" style="display: none"
+                                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                                {% trans "Switch to address" %}</a>
                             </div>
-                            <script type="text/javascript">
-                              ToggleMapLink('map_canvas');
-                            </script>
-                            <div id="map_canvas" class="hidden map">
-                            </div>
+                            <div id="clickable_map" class="map" style="display: none"></div>
                           </td>
                         </tr>
                       </table>
@@ -300,14 +301,7 @@
                     {% if markdup %}
                       <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
                     {% endif %}
-                    <div id="mandatory_field_missing"
-                      class="mandatory" style="display: none">
-                      {% trans "Please fill in all the required fields." %}
-                    </div>
-                    <div id="status_inconsistent_with_author_made_contact"
-                      class="mandatory" style="display: none">
-                      {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
-                    </div>
+                    {% include "errors.html.template" %}
                   </td>
                 </tr>
               </table>
