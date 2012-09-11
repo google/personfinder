@@ -260,6 +260,16 @@ msgstr ""
 "\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -553,6 +563,9 @@ msgstr "デベロッパー"
 msgid "Disable notes on this record"
 msgstr "この記録へのメモの書き込みを禁止する"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "MP3 として音声をダウンロード"
 
@@ -619,7 +632,7 @@ msgid "Given name"
 msgstr "名"
 
 msgid "Google Person Finder"
-msgstr "Google Person Finder (消息情報)"
+msgstr "Google パーソンファインダー (安否情報)"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "この人と災害発生後に連絡が取れましたか？（必須）"
@@ -661,7 +674,7 @@ msgid "I do not want my information online anymore."
 msgstr "自分に関する情報を消したい"
 
 msgid "I have information about someone"
-msgstr "消息情報を提供する"
+msgstr "安否情報を提供する"
 
 msgid "I have reason to think this person is missing"
 msgstr "この人を行方不明と判断した理由がある"
@@ -727,6 +740,9 @@ msgstr "最後に見かけた場所"
 
 msgid "Link"
 msgstr "リンク"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "重複している記録としてマークする"
@@ -847,7 +863,7 @@ msgstr ""
 " では、これらのデータの正確性の確認は実施しておりません。"
 
 msgid "Person Finder"
-msgstr "Person Finder (消息情報)"
+msgstr "パーソンファインダー (安否情報)"
 
 msgid "Phone"
 msgstr "電話"
@@ -907,6 +923,12 @@ msgstr "投稿者:"
 msgid "Proceed"
 msgstr "続行"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "この人に関する情報を提供する"
 
@@ -932,6 +954,9 @@ msgstr "件の記録が選択されています"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "名前や住所が「%(query)s」に一致する記録"
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "スパムを報告"
 
@@ -950,6 +975,9 @@ msgstr "検索結果"
 
 msgid "Search for this person"
 msgstr "この人を探す"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"
@@ -1136,7 +1164,7 @@ msgstr "この記録がスパム情報だから"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr "この Person Finder は現在、試験運用中です。試験運用中、登録後 6 時間以上経過した記録は削除されます。"
+msgstr "現在、体験版としてサービス提供中です。登録データは 6 時間以上経過した後、削除されます。"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "メモに写真を添付するには、アップロードするか、写真の URL を入力してください。"
@@ -1179,9 +1207,6 @@ msgstr "一致する記録が見つかりませんでした。"
 msgid "What is this person's name?"
 msgstr "この人の名前を入力してください。"
 
-msgid "What is your situation?"
-msgstr "どちらかを選択してください。"
-
 msgid "When should this record disappear?"
 msgstr "この記録を自動的に削除するよう設定できます。いつに指定しますか？"
 
@@ -1194,7 +1219,7 @@ msgstr "この人の住所を入力してください。"
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr "試験運用中、登録後 6 時間以上経過した記録は期限によらず削除されます。"
+msgstr "体験版としてサービス提供中は、登録後 6 時間以上経過した記録は期限によらず削除されます。"
 
 msgid "Yes"
 msgstr "はい"
@@ -1290,61 +1315,62 @@ msgstr "リクエストは正常に処理されました。受信トレイ内の
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモを確認"
+msgstr "[パーソンファインダー] 「%(given_name)s %(family_name)s」さんに関するメモを確認"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
-msgstr "[Person Finder(消息情報)] \"%(family_name)s %(given_name)s\"さんの削除の通知"
+msgstr "[パーソンファインダー] \"%(family_name)s %(given_name)s\"さんの削除の通知"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
-msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを無効にしますか?"
+msgstr "[パーソンファインダー] 「%(family_name)s %(given_name)s」さんに関するメモを無効にしますか?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
-msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを有効にしますか?"
+msgstr "[パーソンファインダー] 「%(family_name)s %(given_name)s」さんに関するメモを有効にしますか?"
 
 #, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモの通知を有効にしています"
+msgstr "[パーソンファインダー] 「%(given_name)s %(family_name)s」さんに関するメモの通知を有効にしています"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
-msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが無効になりました"
+msgstr "[パーソンファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが無効になりました"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
-msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが有効になりました"
+msgstr "[パーソンファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが有効になりました"
 
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr "[Person Finder(消息情報)] \"%(family_name)s %(given_name)s\"さんの記録の復元の通知"
+msgstr "[パーソンファインダー] \"%(family_name)s %(given_name)s\"さんの記録の復元の通知"
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情報"
+msgstr "[パーソンファインダー] %(family_name)s %(given_name)s さんについての新着情報"
 
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s "
 "%(family_name)s"
-msgstr ""
-"[Person Finder(消息情報)] %(family_name)s %(given_name)s "
-"さんについての新着情報を受け取るように設定しました"
+msgstr "[パーソンファインダー] %(family_name)s %(given_name)s さんについての新着情報を受け取るように設定しました"
 
 msgid "at"
 msgstr "時刻:"
 
 msgid "female"
 msgstr "女性"
+
+msgid "in test mode"
+msgstr "体験版"
 
 msgid "male"
 msgstr "男性"

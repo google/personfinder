@@ -13,6 +13,13 @@
 {% extends "app-base.html.template" %}
 {% load i18n %}
 
+{% block head %}
+  {{block.super}}
+  <script>
+    var profile_websites = {{profile_websites_json|safe}};
+  </script>
+{% endblock head %}
+
 {% block content %}
 {% include "map.html.template" %}
 <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
@@ -303,6 +310,49 @@
                      </table>
                     </td>
                   </tr>
+                  {% if config.show_profile_entry %}
+                    <tr>
+                      <td class="profile section">
+                        <h3>{% trans "Profile Pages" %}</h3>
+                        <div class="hint">
+                          {% trans "Does this person have profile pages at other websites?" %}
+                        </div>
+                        <table class="fields">
+                          {# Can add at most 3 profile pages #}
+                          {% for i in '123'|make_list %}
+                            <tr id="profile_entry{{i}}" style="display:none">
+                              <td valign="middle">
+                                <div style="width:16px;height:16px"
+                                     id="profile_icon{{i}}"></div>
+                              </td>
+                              <td>
+                                <input type="hidden" id="profile_website_index{{i}}" />
+                                <input type="text" id="profile_url{{i}}"
+                                    name="profile_url{{i}}" size="30"
+                                    placeholder="{% trans "Link to profile page" %}" />
+                              </td>
+                              <td>
+                                <a href="javascript:remove_profile_entry({{i}})"
+                                  >{% trans "Remove" %}</a>
+                              </td>
+                            </tr>
+                          {% endfor %}
+                          <tr id="add_profile_entry">
+                            <td colspan="3">
+                              <select id="add_profile_entry_select"
+                                  onchange="add_profile_entry(this)">
+                                <option>{% trans "Select a website to add a profile page..." %}</option>
+                                {% for website in profile_websites %}
+                                  <option>{{website.name}}</option>
+                                {% endfor %}
+                                <option>Other website</option>
+                              </select>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  {% endif %}
                   <tr>
                     <td class="expiry section">
                       <h3><label for="expiry_date">
@@ -460,14 +510,7 @@
                       <input type="submit"
                           value="{% trans "Save this record" %}"
                           onclick="return validate_fields()">
-                      <div id="mandatory_field_missing"
-                          class="mandatory" style="display: none">
-                        {% trans "Please fill in all the required fields." %}
-                      </div>
-                      <div id="status_inconsistent_with_author_made_contact"
-                          class="mandatory" style="display: none">
-                        {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
-                      </div>
+                      {% include "errors.html.template" %}
                     </td>
                   </tr>
                   {% endifnotequal %}
