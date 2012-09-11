@@ -89,9 +89,9 @@
                     <table class="fields">
                       <tr>
                         <td>
-                          <input name="last_known_location"
-                              id="clickable_map_location_field" size="40"
-                              value="{{params.last_known_location}}" />
+                          <textarea name="last_known_location"
+                              id="clickable_map_location_field" cols=40 rows=2
+                              >{{params.last_known_location}}</textarea>
                         </td>
                       </tr>
                     </table>
@@ -100,15 +100,19 @@
                         <tr>
                           <td>
                             <div id="clickable_map_show_link">
-                              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;" >
+                              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
                                 {% trans "Show Map" %}</a>
                             </div>
                             <div id="clickable_map_hide_link" style="display: none">
-                              <a href='#' onclick="toggleMap('clickable_map'); return false;" >
+                              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
                                 {% trans "Hide Map" %}</a>
                               &nbsp;&nbsp;
-                              <a href='#' onclick="switchToLatLng('clickable_map'); return false;">
+                              <a href='#' id="switch_to_latlng_link"
+                                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
                                 {% trans "Switch to lat/long" %}</a>
+                              <a href='#' id="switch_to_address_link" style="display: none"
+                                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                                {% trans "Switch to address" %}</a>
                             </div>
                             <div id="clickable_map" class="map" style="display: none"></div>
                           </td>

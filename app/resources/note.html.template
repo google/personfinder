@@ -141,16 +141,16 @@
     {% if env.maps_api_key %}
       <div>
         <div id="map_{{note.record_id}}_show_link" style="display: none">
-          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;" >
+          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
             {% trans "Show Map" %}</a>
         </div>
         <div id="map_{{note.record_id}}_hide_link" style="display: none">
-          <a href='#' onclick="toggleMap('map_{{note.record_id}}'); return false;" >
+          <a href='#' onclick="toggleMap('map_{{note.record_id}}'); return false;">
             {% trans "Hide Map" %}</a>
         </div>
         <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
         <script>
-          parseLatLngOrGeocode('map_{{note.record_id}}', '{{note.last_known_location}}');
+          parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
         </script>
       </div>
     {% endif %}

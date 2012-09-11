@@ -29,6 +29,8 @@ var DEFAULT_MAP_ZOOM = {{config.map_default_zoom}};
 
 // key: map_id, value: LatLng
 var latlng_by_map_id = {};
+// key: map_id, value: address string
+var address_by_map_id = {};
 // key: map_id, value: boolean
 var map_initialized = {};
 
@@ -48,13 +50,7 @@ function printLatLng(latlng) {
 }
 
 // Tries to parse "location_str" as a latlng or geocodes it as an address.
-function parseLatLngOrGeocode(map_id, location_str) {
-  // On success, store the latlng and make the show link visible.
-  function onLatLngAvailable(latlng) {
-    latlng_by_map_id[map_id] = latlng;
-    $(map_id + '_show_link').style.display = '';
-  }
-
+function parseLatLngOrGeocode(location_str, onLatLngAvailable) {
   var latlng = parseLatLng(location_str);
   if (latlng) {
     onLatLngAvailable(latlng);
@@ -67,6 +63,15 @@ function parseLatLngOrGeocode(map_id, location_str) {
       }
     });
   }
+}
+
+function parseLatLngOrGeocodeAndStore(location_str, map_id) {
+  // On success, store the latlng and make the show link visible.
+  function onLatLngAvailable(latlng) {
+    latlng_by_map_id[map_id] = latlng;
+    $(map_id + '_show_link').style.display = '';
+  }
+  parseLatLngOrGeocode(location_str, onLatLngAvailable);
 }
 
 // Initializes a map at the canvas whose id is "map_id" and drops a marker at
@@ -111,42 +116,65 @@ function initClickableMap(map_id) {
   markered_map.map.setOptions({draggableCursor: 'pointer'});
   markered_map.marker.setVisible(false);
 
+  // Updates the marker position according to the location field value.
+  location_field.onchange = function() {
+    parseLatLngOrGeocode(this.value, function(latlng) {
+      markered_map.map.panTo(latlng);
+      markered_map.marker.setPosition(latlng);
+      markered_map.marker.setVisible(true);
+    });
+  };
+
+  // Updates the location field value according to the marker position.
   var geocoder = new google.maps.Geocoder();
   google.maps.event.addListener(markered_map.map, "click", function(event) {
-    // Show the marker at the clicked location and updates the text field.
     var latlng = event.latLng;
+    latlng_by_map_id[map_id] = latlng;
+
+    // Show the marker at the clicked location and updates the text field.
     markered_map.marker.setPosition(latlng);
     markered_map.marker.setVisible(true);
     location_field.value = printLatLng(latlng);
 
-    // Store the lat/lng so switchToLatLng() can use it later.
-    latlng_by_map_id[map_id] = latlng;
-
     // Try reverse geocoding the lat/lng location to an address.
     geocoder.geocode({location: latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK && results[0]) {
-        location_field.value = results[0].formatted_address;
+        location_field.value = address_by_map_id[map_id] =
+            results[0].formatted_address;
       }
     });
   });
 }
 
-// Populates the location text field with the lat/lng of the last clicked
-// location.
-function switchToLatLng(map_id) {
-  var latlng = latlng_by_map_id[map_id];
+// Toggles the visibility of an element specified by the id and returns the
+// visibility of the element after the toggle.
+function toggle(id) {
+  var element = $(id);
+  var to_be_visible = element.style.display == 'none';
+  element.style.display = to_be_visible ? '' : 'none';
+  return to_be_visible;
+}
+
+// Toggles the value of location field between lat/long and address string.
+function toggleLatLngAndAddress(map_id) {
   var location_field = $(map_id + '_location_field');
-  if (latlng && location_field) {
-    location_field.value = printLatLng(latlng);
+  if (!location_field) return;
+  if (toggle('switch_to_latlng_link')) {
+    var address = address_by_map_id[map_id];
+    if (address) {
+      location_field.value = address;
+    }
+  }
+  if (toggle('switch_to_address_link')) {
+    var latlng = latlng_by_map_id[map_id];
+    if (latlng) {
+      location_field.value = printLatLng(latlng);
+    }
   }
 }
 
 // Toggles the visibility of the map and the show/hide link.
 function toggleMap(map_id) {
-  function toggle(id) {
-    var e = $(id);
-    e.style.display = e.style.display == 'none' ? '' : 'none';
-  }
   toggle(map_id);
   toggle(map_id + '_show_link');
   toggle(map_id + '_hide_link');
