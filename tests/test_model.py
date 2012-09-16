@@ -165,9 +165,9 @@ class ModelTests(unittest.TestCase):
 
         # Testing indexing properties
         assert self.p1._fields_to_index_properties == \
-            ['given_name', 'family_name']
+            ['given_name', 'family_name', 'full_name']
         assert self.p1._fields_to_index_by_prefix_properties == \
-            ['given_name', 'family_name']
+            ['given_name', 'family_name', 'full_name']
 
         # Test propagation of Note fields to Person.
         assert self.p1.latest_status == u'believed_missing'  # from first note

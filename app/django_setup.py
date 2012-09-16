@@ -33,6 +33,7 @@ import django.template.loader
 import django.utils.translation
 import os
 from django.utils.translation import activate, gettext_lazy, ugettext
+from google.appengine.ext.webapp import template
 
 LANGUAGE_CODE = 'en'
 LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
@@ -51,6 +52,9 @@ django.conf.settings.USE_I18N = True
 django.conf.settings.LOCALE_PATHS = ('locale',)
 django.conf.settings.LANGUAGES_BIDI = LANGUAGES_BIDI
 django.conf.settings.TEMPLATE_LOADERS = ('django_setup.TemplateLoader',)
+
+# Register a custom template library.
+template.register_template_library('template_extras.filters')
 
 
 class TemplateLoader(django.template.loader.BaseLoader):
@@ -71,11 +75,3 @@ class TemplateLoader(django.template.loader.BaseLoader):
         # Silly Django requires custom TemplateLoaders to have this method,
         # but the framework actually only calls load_template().
         pass
-
-
-register = django.template.Library()
-
-# Joins lines in the string with the provided separator or a comma.
-@register.filter
-def joinlines(lines, separator=', '):
-    return lines.replace('\n', separator)

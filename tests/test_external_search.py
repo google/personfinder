@@ -42,6 +42,7 @@ class MockPerson:
         self.key_name = '%s:%s' % (repo, record_id)
         self.given_name = given_name
         self.family_name = family_name
+        self.full_name = self.primary_full_name = ''
         self.alternate_names = ''
         self.names_prefixes = text_query.TextQuery(
             '%s %s' % (given_name, family_name)).query_words
