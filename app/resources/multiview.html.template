@@ -174,10 +174,34 @@
             {% for val in person.photo_url %}
             <td class="field">
               {% if val %}
-                <a href="{{val}}"><img src="{{val}}" class="photo"</img></a>
+                <a href="{{val}}"><img src="{{val}}" class="photo"></a>
               {% else %}
                 <img src="{{env.global_url}}/no-photo.gif" class="photo">
               {% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          {% if any.profile_pages %}
+          <tr>
+            <td colspan="{{cols}}" class="profile sectiontop">
+              <h3>{% trans "Profile Pages" %}</h3>
+            </td>
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">&nbsp;</td>
+            {% for profile_pages in person.profile_pages %}
+            <td class="field">
+              {% for profile_page in profile_pages %}
+              <div>
+                {% if profile_page.icon_url %}
+                <img src="{{profile_page.icon_url}}" class="icon">
+                {% endif %}
+                <a href="{{profile_page.url}}" target="_blank">
+                  {{profile_page.name}}
+                </a>
+              </div>
+              {% endfor %}
             </td>
             {% endfor %}
           </tr>
