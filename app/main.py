@@ -124,7 +124,10 @@ def select_charset(request):
     # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
-    if request.get('charsets'): # allow override for testing
+    if request.get('charsets'):
+        # This parameter is specified e.g. in URLs used for Japanese feature
+        # phones. Many of Japanese feature phones doesn't (fully) support
+        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
     else:
         charsets = request.accept_charset.best_matches()
