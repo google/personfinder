@@ -501,7 +501,7 @@ class Person(Base):
             prefix.update_prefix_properties(self)
 
 # Old indexing
-# TODO(ryok): Still used? If not, remove this with prefix.py
+# TODO(ryok): This is obsolete. Remove it.
 prefix.add_prefix_properties(
     Person, 'given_name', 'family_name', 'home_street', 'home_neighborhood',
     'home_city', 'home_state', 'home_postal_code')
