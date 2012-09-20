@@ -5945,20 +5945,18 @@ class SecretTests(TestsBase):
             author_name='_status_author_name'
         ))
         doc = self.go('/haiti/create?role=provide')
-        assert 'map_canvas' not in doc.content
+        assert 'id="clickable_map"' not in doc.content
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
-        assert 'map_canvas' not in doc.content
-        assert 'map_' not in doc.content
+        assert 'id="clickable_map"' not in doc.content
 
         db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
 
         doc = self.go('/haiti/create?role=provide')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'clickable_map' in doc.content
+        assert 'id="clickable_map"' in doc.content
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'clickable_map' in doc.content
-        assert 'map_' in doc.content
+        assert 'id="clickable_map"' in doc.content
 
 
 class FeedTests(TestsBase):
