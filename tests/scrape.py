@@ -249,7 +249,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if charset and charset is not RAW:
         content = content.decode(charset)
 
-    return url, status, message, headers, content
+    return url, status, message, headers, content, charset
 
 class Session:
     """A Web-browsing session.  Exposed attributes:
@@ -293,9 +293,10 @@ class Session:
             referrer = self.url
 
         while 1:
-            self.url, self.status, self.message, self.headers, self.content = \
-                fetch(url, data, self.agent, referrer, charset, self.verbose,
-                      self.cookiejar, type)
+            (self.url, self.status, self.message, self.headers, self.content,
+             self.charset) = fetch(
+                url, data, self.agent, referrer, charset, self.verbose,
+                self.cookiejar, type)
             if redirects:
                 if self.status in [301, 302] and 'location' in self.headers:
                     url, data = urljoin(url, self.headers['location']), ''
@@ -304,7 +305,7 @@ class Session:
             break
 
         self.history.append(historyentry)
-        self.doc = Region(self.content)
+        self.doc = Region(self.content, charset=self.charset)
         return self.doc
 
     def back(self):
@@ -348,10 +349,11 @@ class Session:
         p.update(params)
         method = form['method'].lower() or 'get'
         url = url or form.get('action', self.url)
+        param_str = urlencode(p, region.charset)
         if method == 'get':
-            return self.go(url + '?' + urlencode(p), '', redirects)
+            return self.go(url + '?' + param_str, '', redirects)
         elif method == 'post':
-            return self.go(url, p, redirects)
+            return self.go(url, param_str, redirects)
         else:
             raise ScrapeError('unknown form method %r' % method)
 
@@ -413,13 +415,15 @@ urlquoted = dict((chr(i), '%%%02X' % i) for i in range(256))
 urlquoted.update(dict((c, c) for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
                                       'abcdefghijklmnopqrstuvwxyz' +
                                       '0123456789._-'))
-def urlquote(text):
+def urlquote(text, charset='utf-8'):
     if type(text) is unicode:
-        text = text.encode('utf-8')
+        text = text.encode(charset)
     return ''.join(map(urlquoted.get, text))
 
-def urlencode(params):
-    pairs = ['%s=%s' % (urlquote(key), urlquote(value).replace('%20', '+'))
+def urlencode(params, charset='utf-8'):
+    pairs = ['%s=%s' % (
+                 urlquote(key, charset),
+                 urlquote(value, charset).replace('%20', '+'))
              for key, value in params.items()]
     return '&'.join(pairs)
 
@@ -550,18 +554,23 @@ class Region:
     and ending positions are just after the starting tag and just before the
     ending tag, respectively."""
 
-    def __init__(self, parent, start=0, end=None, starttag=None, endtag=None):
+    def __init__(self, parent, start=0, end=None, starttag=None, endtag=None,
+                 charset=None):
         """Create a Region.  The 'parent' argument is a string or another
         Region.  The 'start' and 'end' arguments, if given, are non-negative
         indices into the original string (not into the parent region).  The
         'starttag' and 'endtag' arguments are indices into an internal array
-        of tags, intended for use by the implementation only."""
+        of tags, intended for use by the implementation only. The 'charset'
+        argument is the charset of the document e.g. 'utf-8'.
+        """
         if isinstance(parent, basestring):
             self.document = parent
             self.tags = self.scantags(self.document)
+            self.charset = charset
         else:
             self.document = parent.document
             self.tags = parent.tags
+            self.charset = charset or parent.charset
         if end is None:
             end = len(self.document)
         self.start, self.end = start, end

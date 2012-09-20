@@ -27,7 +27,9 @@ from google.appengine.ext import webapp
 
 import config
 import const
+import django.utils.html
 import legacy_redirect
+import logging
 import pfif
 import resources
 import utils
@@ -122,7 +124,10 @@ def select_charset(request):
     # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
-    if request.get('charsets'): # allow override for testing
+    if request.get('charsets'):
+        # This parameter is specified e.g. in URLs used for Japanese feature
+        # phones. Many of Japanese feature phones doesn't (fully) support
+        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
     else:
         charsets = request.accept_charset.best_matches()
@@ -192,6 +197,18 @@ def get_localized_message(localized_messages, lang, default):
         return default
     return localized_messages.get(lang, localized_messages.get('en', default))
 
+def get_hidden_input_tags_for_preserved_query_params(request):
+    """Gets HTML with <input type="hidden"> tags to preserve query parameters
+    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "style"."""
+    tags_str = ''
+    for name in utils.PRESERVED_QUERY_PARAM_NAMES:
+        value = request.get(name)
+        if value:
+            tags_str += '<input type="hidden" name="%s" value="%s">\n' % (
+                django.utils.html.escape(name),
+                django.utils.html.escape(value))
+    return tags_str
+
 def setup_env(request):
     """Constructs the 'env' object, which contains various template variables
     that are commonly used by most handlers."""
@@ -213,6 +230,11 @@ def setup_env(request):
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
     env.back_chevron = env.rtl and u'\xbb' or u'\xab'
+
+    # Used for parsing query params. This must be done before accessing any
+    # query params which may have multi-byte value, such as "given_name" below
+    # in this function.
+    request.charset = env.charset
 
     # Determine the resource bundle to use.
     env.default_resource_bundle = config.get('default_resource_bundle', '1')
@@ -238,6 +260,8 @@ def setup_env(request):
         if (value != 'believed_dead' or
             not env.config or env.config.allow_believed_dead_via_ui)
     ]
+    env.hidden_input_tags_for_preserved_query_params = (
+        get_hidden_input_tags_for_preserved_query_params(request))
 
     # Fields related to "small mode" (for embedding in an <iframe>).
     env.small = request.get('small', '').lower() == 'yes'
@@ -316,7 +340,6 @@ class Main(webapp.RequestHandler):
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
-        request.charset = self.env.charset  # used for parsing query params
 
         # Activate the selected language.
         response.headers['Content-Language'] = self.env.lang
