@@ -21,6 +21,7 @@
       Are you sure you want to extend the expiration for record "{{full_name}}"?
     {% endblocktrans %}
   <form method="post" action="{{env.repo_path}}/extend">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">

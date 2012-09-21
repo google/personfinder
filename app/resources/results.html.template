@@ -121,6 +121,7 @@
       {% trans "Select up to 3 records to mark as duplicate:" %}
       <input type="hidden" id="dup_state" value="">
       <form action="{{env.repo_path}}/multiview" method="get" onsubmit="mark_dup()">
+        {{env.hidden_input_tags_for_preserved_query_params|safe}}
         <input type='hidden' name='id1' id='id1' value=''>
         <input type='hidden' name='id2' id='id2' value=''>
         <input type='hidden' name='id3' id='id3' value=''>
@@ -159,6 +160,7 @@
 <p>
 {% if not params.small and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="query" value="{{params.query}}">
     <input type="hidden" name="given_name" value="{{params.given_name}}">
     <input type="hidden" name="family_name" value="{{params.family_name}}">

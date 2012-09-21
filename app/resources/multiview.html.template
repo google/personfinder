@@ -21,6 +21,7 @@
   {% include "map.html.template" %}
 {% endif %}
 <form method="post" action="{{env.repo_path}}/multiview">
+  {{env.hidden_input_tags_for_preserved_query_params|safe}}
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val}}">
   {% endfor %}

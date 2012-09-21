@@ -29,6 +29,7 @@
   {% endblocktrans %}
 
   <form method="post" action="{{env.repo_path}}/confirm_disable_notes">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     {% trans "Reason for disabling notes:" %}
     <select name="reason_for_disabling_notes">
       <option value="do_not_want_anymore">

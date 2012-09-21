@@ -18,6 +18,7 @@
   <h2>{% trans "Show sensitive information" %}</h2>
   <p>
     <form method="post" action="{{env.repo_path}}/reveal">
+      {{env.hidden_input_tags_for_preserved_query_params|safe}}
       {{captcha_html|safe}}
       <br/>
       <input type="hidden" name="target" value="{{params.target}}">
