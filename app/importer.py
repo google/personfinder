@@ -118,8 +118,8 @@ def create_person(repo, fields):
         profile_urls=strip(fields.get('profile_urls')),
     )
 
-    # For PFIF 1.3 or older, populates full_name with the one generated from
-    # given_name and family_name if full_name is empty.
+    # For PFIF 1.3 or older, populate full_name (it was an optional field
+    # before), using given_name and family_name if it is empty.
     if not person_fields['full_name'].strip():
         person_fields['full_name'] = get_full_name(
             person_fields['given_name'],

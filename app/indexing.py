@@ -111,6 +111,8 @@ class CmpResults():
             person._name_words = person._normalized_full_name.words
             person._alt_name_words = TextQuery(person.alternate_names).words
 
+    # TODO(ryok): re-consider the ranking putting more weight on full_name (a
+    # required field) instead of given name and family name pair (optional).
     def rank(self, person):
         # The normalized query words, in the order as entered.
         ordered_words = self.query.normalized.split()
