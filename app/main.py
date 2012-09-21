@@ -27,12 +27,12 @@ from google.appengine.ext import webapp
 
 import config
 import const
+import django.utils.html
 import legacy_redirect
 import logging
 import pfif
 import resources
 import utils
-from xml.sax import saxutils
 
 
 # When no action or repo is specified, redirect to this action.
@@ -124,7 +124,10 @@ def select_charset(request):
     # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
-    if request.get('charsets'): # allow override for testing
+    if request.get('charsets'):
+        # This parameter is specified e.g. in URLs used for Japanese feature
+        # phones. Many of Japanese feature phones doesn't (fully) support
+        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
     else:
         charsets = request.accept_charset.best_matches()
@@ -202,7 +205,8 @@ def get_hidden_input_tags_for_preserved_query_params(request):
         value = request.get(name)
         if value:
             tags_str += '<input type="hidden" name="%s" value="%s">\n' % (
-                saxutils.escape(name), saxutils.escape(value))
+                django.utils.html.escape(name),
+                django.utils.html.escape(value))
     return tags_str
 
 def setup_env(request):

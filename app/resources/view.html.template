@@ -183,6 +183,29 @@
                     </td>
                   </tr>
                   {% endif %}
+                  {% if person.profile_pages %}
+                  <tr>
+                    <td class="profile section">
+                      <h3>{% trans "Profile Pages" %}</h3>
+                      <table class="fields">
+                        {% for profile_page in person.profile_pages %}
+                          <tr>
+                            <td class="label">
+                                {% trans "Profile page" %} {{forloop.counter}}:</td>
+                            <td class="field">
+                              {% if profile_page.icon_url %}
+                                <img src="{{profile_page.icon_url}}" class="icon">
+                              {% endif %}
+                              <a href="{{profile_page.url}}" target="_blank">
+                                {{profile_page.name}}
+                              </a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
                   <tr>
                     <td class="source section">
                       <h3>{% trans "Source of this record" %}</h3>

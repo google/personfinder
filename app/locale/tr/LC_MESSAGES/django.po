@@ -270,6 +270,16 @@ msgstr ""
 " sonra e-postanızı denetleyin.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -579,6 +589,9 @@ msgstr "Geliştiriciler"
 msgid "Disable notes on this record"
 msgstr "Bu kayıttaki notları devre dışı bırak"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Sesi MP3 olarak indir"
 
@@ -763,6 +776,9 @@ msgstr "Bilinen son konumu"
 
 msgid "Link"
 msgstr "Bağlantı"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
@@ -959,6 +975,12 @@ msgstr "Yayınlayan"
 msgid "Proceed"
 msgstr "İlerle"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Bu kişiyle ilgili bilgi sağlayın"
 
@@ -984,6 +1006,9 @@ msgstr "kayıt seçildi"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Ad ve adres bilgileri şu sorguyla eşleşen kayıtlar: \"%(query)s\""
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "Spam bildir"
 
@@ -1002,6 +1027,9 @@ msgstr "Arama Sonuçları:"
 
 msgid "Search for this person"
 msgstr "Bu kişiyi ara"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
@@ -1058,8 +1086,14 @@ msgstr "%(given_name)s %(family_name)s hakkındaki güncellemelere abone ol"
 msgid "Subscribe to updates about this person"
 msgstr "Bu kişi hakkındaki güncellemelere abone ol"
 
+msgid "Switch to address"
+msgstr ""
+
 msgid "Switch to duplicate marking mode"
 msgstr "Yinelenen işaretleme moduna geç"
+
+msgid "Switch to lat/long"
+msgstr ""
 
 msgid "Switch to normal view mode"
 msgstr "Normal görünüm moduna geç"
@@ -1216,11 +1250,9 @@ msgid "To view or add information, select a name below."
 msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 msgstr ""
-"Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek "
-"konumu belirtin."
 
 msgid "Type the two words:"
 msgstr "İki kelimeyi yazın:"
