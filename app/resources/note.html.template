@@ -140,24 +140,18 @@
     </div>
     {% if env.maps_api_key %}
       <div>
-        <div id="map_{{note.record_id}}_show_link" class="hidden">
-          <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
-            {% trans "Show Map" %}
-          </a>
+        <div id="map_{{note.record_id}}_show_link" style="display: none">
+          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
+            {% trans "Show Map" %}</a>
         </div>
-        <div id="map_{{note.record_id}}_hide_link" class="hidden">
-          <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
-            {% trans "Hide Map" %}
-          </a>
+        <div id="map_{{note.record_id}}_hide_link" style="display: none">
+          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
+            {% trans "Hide Map" %}</a>
         </div>
-        <input type="hidden" id="map_{{note.record_id}}_real_lat_long" value="{{note.last_known_location}}">
-        <script type="text/javascript">
-          MaybeToggleMapLink(
-            'map_{{note.record_id}}',
-            '{{note.last_known_location}}');
+        <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
+        <script>
+          parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
         </script>
-        <div id="map_{{note.record_id}}" class="hidden map">
-        </div>
       </div>
     {% endif %}
   {% endif %}

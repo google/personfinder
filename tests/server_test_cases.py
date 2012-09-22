@@ -22,6 +22,7 @@ import optparse
 import os
 import pytest
 import re
+import simplejson
 import sys
 import tempfile
 import time
@@ -87,6 +88,20 @@ def verify_api_log(action, api_key='test_key', person_records=None,
         assert note_records == entry.note_records
     if notes_skipped:
         assert notes_skipped == entry.notes_skipped
+
+def text_all_logs():
+    return '\n'.join(['UserActionLog: action=%s entity_kind=%s' % (
+        log.action, log.entity_kind)
+        for log in UserActionLog.all().fetch(10)])
+
+def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
+    logs = UserActionLog.all().order('-time').fetch(fetch_limit)
+    for log in logs:
+        if log.action == action and log.entity_kind == entity_kind:
+            for key, value in kwargs.iteritems():
+                assert getattr(log, key) == value
+            return  # verified
+    assert False, text_all_logs()  # not verified
 
 def get_test_data(filename):
     return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
@@ -255,25 +270,6 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
-    def test_language_links(self):
-        """Check that the language links go to the translated start page."""
-        doc = self.go('/haiti')
-
-        doc = self.s.follow(u'espa\u00f1ol')
-        assert 'Busco a alguien' in doc.text
-
-        doc = self.s.follow(u'Fran\u00e7ais')
-        assert 'Je recherche quelqu\'un' in doc.text
-
-        doc = self.go('/pakistan')
-        doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
-        assert (u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 ' +
-                u'\u062A\u0644\u0627\u0634 \u06A9\u0631 ' +
-                u'\u0631\u06C1\u0627 \u06C1\u0648') in doc.text
-
-        doc = self.s.follow(u'English')
-        assert 'I\'m looking for someone' in doc.text
-
     def test_language_xss(self):
         """Regression test for an XSS vulnerability in the 'lang' parameter."""
         doc = self.go('/haiti?lang="<script>alert(1)</script>')
@@ -311,6 +307,7 @@ class ReadOnlyTests(TestsBase):
 
         # Try with no specified charset.
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
@@ -319,6 +316,7 @@ class ReadOnlyTests(TestsBase):
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift-JIS encoding of title text
@@ -327,6 +325,7 @@ class ReadOnlyTests(TestsBase):
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift-JIS encoding of title text
@@ -335,6 +334,7 @@ class ReadOnlyTests(TestsBase):
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=utf8'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf8'
         # UTF-8 encoding of title text
@@ -444,8 +444,8 @@ class ReadOnlyTests(TestsBase):
         tag = doc.first('textarea', name='text')
         assert tag.text == '__TEXT__'
 
-        tag = doc.firsttag('input', name='last_known_location')
-        assert tag['value'] == '__LAST_KNOWN_LOCATION__'
+        tag = doc.first('textarea', name='last_known_location')
+        assert tag.text == '__LAST_KNOWN_LOCATION__'
 
         tag = doc.firsttag('input', id='author_made_contact_yes')
         assert tag['checked'] == 'checked'
@@ -508,13 +508,13 @@ class ReadOnlyTests(TestsBase):
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')
-        assert doc.first('a', u'Fran\xe7ais')
-        assert doc.first('a', u'Krey\xf2l')
-        assert not doc.all('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert doc.first('option', u'Fran\xe7ais')
+        assert doc.first('option', u'Krey\xf2l')
+        assert not doc.all('option',u'\u0627\u0631\u062F\u0648')  # Urdu
 
         doc = self.go('/pakistan')
-        assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('a', u'Fran\xe7ais')
+        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert not doc.all('option', u'Fran\xe7ais')
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
@@ -985,13 +985,12 @@ class PersonNoteTests(TestsBase):
             note_photo_url='http://xyz')
 
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test Another note body'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='',
+                               Note_text='_test Another note body',
+                               Note_status='believed_alive')
 
         # Add a note with status == 'believed_dead'.
         # By default allow_believed_dead_via_ui = True for repo 'haiti'.
@@ -999,13 +998,12 @@ class PersonNoteTests(TestsBase):
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert entry.ip_address
-        assert entry.Note_text == '_test Third note body'
-        assert entry.Note_status == 'believed_dead'
-        entry.delete()
+        verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='127.0.0.1',
+                               Note_text='_test Third note body',
+                               Note_status='believed_dead')
 
         person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
@@ -1043,6 +1041,9 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      profile_url1='http://www.facebook.com/_test_account1',
+                      profile_url2='http://www.twitter.com/_test_account2',
+                      profile_url3='http://www.foo.com/_test_account3',
                       expiry_option='foo',
                       description='_test_description')
 
@@ -1059,6 +1060,9 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
+            'Profile page 1:': 'Facebook',
+            'Profile page 2:': 'Twitter',
+            'Profile page 3:': 'www.foo.com',
             'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
@@ -1066,6 +1070,13 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-11 00:00 UTC'})
+
+        # Check the icons and the links are there.
+        assert 'facebook-16x16.png' in self.s.doc.content
+        assert 'twitter-16x16.png' in self.s.doc.content
+        assert 'http://www.facebook.com/_test_account1' in self.s.doc.content
+        assert 'http://www.twitter.com/_test_account2' in self.s.doc.content
+        assert 'http://www.foo.com/_test_account3' in self.s.doc.content
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.
@@ -1304,6 +1315,10 @@ class PersonNoteTests(TestsBase):
             'Family name:': '_test_family_name',
             'Author\'s name:': '_test_author_name'})
 
+        # Verify that UserActionLog entries are created for 'add' action.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
+
         # Try the search again, and should get some results
         self.s.submit(search_form,
                       given_name='_test_given_name',
@@ -1348,6 +1363,7 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      profile_url1='http://www.facebook.com/_test_account',
                       expiry_option='20',
                       description='_test_description',
                       add_note='yes',
@@ -1372,6 +1388,7 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
+            'Profile page 1:': 'Facebook',
             'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
@@ -1380,13 +1397,15 @@ class PersonNoteTests(TestsBase):
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-21 00:00 UTC'})
 
-        # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_given_name _test_family_name'
-        assert entry.ip_address
-        assert entry.Note_text == '_test A note body'
-        assert entry.Note_status == 'believed_dead'
+        # Check that UserActionLog entries were created.
+        verify_user_action_log('add', 'Person', repo='haiti')
+        verify_user_action_log('add', 'Note', repo='haiti')
+        verify_user_action_log('mark_dead', 'Note',
+                               repo='haiti',
+                               detail='_test_given_name _test_family_name',
+                               ip_address='127.0.0.1',
+                               Note_text='_test A note body',
+                               Note_status='believed_dead')
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -1404,6 +1423,9 @@ class PersonNoteTests(TestsBase):
             date_of_birth='1970-01-01',
             age='31-41',
             photo_url='http://photo1',
+            profile_urls='''http://www.facebook.com/_account_1
+http://www.twitter.com/_account_1
+http://www.foo.com/_account_1''',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1418,6 +1440,7 @@ class PersonNoteTests(TestsBase):
             date_of_birth='1970-02-02',
             age='32-42',
             photo_url='http://photo2',
+            profile_urls='http://www.facebook.com/_account_2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1451,6 +1474,10 @@ class PersonNoteTests(TestsBase):
         assert 'http://photo1' in doc.content
         assert 'http://photo2' in doc.content
         assert 'http://photo3' in doc.content
+        assert 'http://www.facebook.com/_account_1' in doc.content
+        assert 'http://www.twitter.com/_account_1' in doc.content
+        assert 'http://www.foo.com/_account_1' in doc.content
+        assert 'http://www.facebook.com/_account_2' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
@@ -1671,13 +1698,13 @@ class PersonNoteTests(TestsBase):
         assert 'believed_dead' not in note.content, \
             text_diff('believed_dead', note.content)
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_first _test_last'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test_text'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='haiti',
+                               detail='_test_first _test_last',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
+        db.delete(UserActionLog.all().fetch(10))
 
         # Set status to is_note_author, but don't check author_made_contact.
         self.s.submit(form,
@@ -1735,13 +1762,13 @@ class PersonNoteTests(TestsBase):
         assert 'believed_dead' not in note.content
 
         # Check that a UserActionLog entry was created.
-        entry = UserActionLog.all().get()
-        assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_first _test_last'
-        assert not entry.ip_address
-        assert entry.Note_text == '_test_text'
-        assert entry.Note_status == 'believed_alive'
-        entry.delete()
+        verify_user_action_log('mark_alive', 'Note',
+                               repo='japan',
+                               detail='_test_first _test_last',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
+        db.delete(UserActionLog.all().fetch(10))
 
         # Set status to believed_dead, but allow_believed_dead_via_ui is false.
         self.s.submit(form,
@@ -3516,7 +3543,7 @@ _feed_profile_url2</pfif:profile_urls>
             family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow()
         ))
-        url, status, message, headers, content = scrape.fetch(
+        url, status, message, headers, content, charset = scrape.fetch(
             'http://' + self.hostport +
             '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')
@@ -3716,6 +3743,24 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.source_url not in doc.content
 
+    def test_xss_profile_urls(self):
+        profile_urls = ['http://abc', 'http://def', 'http://ghi']
+        person, note = self.setup_person_and_note()
+        person.profile_urls = '\n'.join(profile_urls)
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        for profile_url in profile_urls:
+            assert profile_url in doc.content
+        XSS_URL_INDEX = 1
+        profile_urls[XSS_URL_INDEX] = 'javascript:alert(1);'
+        person.profile_urls = '\n'.join(profile_urls)
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        for i, profile_url in enumerate(profile_urls):
+            if i == XSS_URL_INDEX:
+                assert profile_url not in doc.content
+            else:
+                assert profile_url in doc.content
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
@@ -3836,14 +3881,9 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'disable_notes'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
-        assert last_log_entry.detail == 'spam_received'
-        last_log_entry.delete()
+        verify_user_action_log('disable_notes', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123',
+            detail='spam_received')
 
         # Redirect to view page, now we should not show the add_note panel,
         # instead, we show message and a button to enable comments.
@@ -3913,12 +3953,8 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().get()
-        assert last_log_entry
-        assert last_log_entry.action == 'enable_notes'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
+        verify_user_action_log('enable_notes', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
         # also, we show the button to disable comments.
@@ -3987,9 +4023,8 @@ _feed_profile_url2</pfif:profile_urls>
         note = Note.all().get()
         assert not note
 
-        # Make sure that a UserActionLog row was not created yet.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert not last_log_entry
+        # Check that a UserActionLog row was created for 'add' action.
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(1)
@@ -4024,14 +4059,10 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         assert person.latest_status == 'believed_dead'
 
-        # Check that a UserActionLog row was created by now.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'mark_dead'
-        assert last_log_entry.entity_kind == 'Note'
-        keyname = "haiti:%s" % note.get_record_id()
-        assert (last_log_entry.entity_key_name == keyname)
-        last_log_entry.delete()
+        # Check that a UserActionLog row was created for 'mark_dead' action.
+        keyname = 'haiti:%s' % note.get_record_id()
+        verify_user_action_log('mark_dead', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
         # Add a note with bad words to the existing person record.
         doc = self.s.go(view_url)
@@ -4069,9 +4100,8 @@ _feed_profile_url2</pfif:profile_urls>
         assert note_with_bad_words.person_record_id == person.record_id
         assert note_with_bad_words.author_email == 'test2@example.com'
 
-        # Make sure that a UserActionLog row was not created yet.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert not last_log_entry
+        # Check that a UserActionLog row was created for 'add' action.
+        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(2)
@@ -4103,15 +4133,10 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         assert person.latest_status == 'believed_alive'
 
-        # Check that a UserActionLog row was created by now.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'mark_alive'
-        assert last_log_entry.entity_kind == 'Note'
+        # Check that a UserActionLog row was created for 'mark_alive' action.
         keyname = "haiti:%s" % note.get_record_id()
-        assert (last_log_entry.entity_key_name == keyname)
-        last_log_entry.delete()
-        assert 'Disable notes on this record' in doc.content
+        verify_user_action_log('mark_alive', 'Note', repo='haiti',
+                               entity_key_name=keyname)
 
 
     def test_delete_and_restore(self):
@@ -4187,13 +4212,10 @@ _feed_profile_url2</pfif:profile_urls>
         assert not Note.get('haiti', note.record_id)
 
         # Make sure that a UserActionLog row was created.
-        last_log_entry = UserActionLog.all().order('-time').get()
-        assert last_log_entry
-        assert last_log_entry.action == 'delete'
-        assert last_log_entry.entity_kind == 'Person'
-        assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.personfinder.google.org/person.123')
-        assert last_log_entry.detail == 'spam_received'
+        verify_user_action_log('delete', 'Person', repo='haiti',
+            entity_key_name='haiti:haiti.personfinder.google.org/person.123',
+            detail='spam_received')
+
         assert db.get(photo.key())
         assert db.get(note_photo.key())
 
@@ -5280,6 +5302,68 @@ _feed_profile_url2</pfif:profile_urls>
         self.assertEqual(self.s.url,
                          'http://%s/?subdomain=japan' % self.hostport)
 
+    def test_create_and_seek_with_nondefault_charset(self):
+        """Follow the basic create/seek flow with non-default charset
+        (Shift_JIS).
+
+        Verify:
+        - "charsets" query parameter is passed around
+        - Query parameters (encoded in Shift_JIS) are handled correctly
+        """
+
+        # Japanese translation of "I have information about someone"
+        ja_i_have_info = (
+            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3059\u308b')
+        # Japanese translation of "I'm looking for someone"
+        ja_looking_for_someone = (
+            u'\u4eba\u3092\u63a2\u3057\u3066\u3044\u308b')
+        test_given_name = u'\u592a\u90ce'
+        test_family_name = u'\u30b0\u30fc\u30b0\u30eb'
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'charsets': 'shift_jis'})
+
+        # Start on the home page and click the
+        # "I have information about someone" button
+        self.go('/haiti?lang=ja&charsets=shift_jis')
+        query_page = self.s.follow(ja_i_have_info)
+        assert_params()
+        query_form = query_page.first('form')
+
+        # Input a given name and a family name.
+        create_page = self.s.submit(query_form,
+                      given_name=test_given_name,
+                      family_name=test_family_name)
+        assert_params()
+        create_form = create_page.first('form')
+
+        # Submit a person record.
+        self.s.submit(create_form,
+                      given_name=test_given_name,
+                      family_name=test_family_name,
+                      author_name='_test_author_name',
+                      text='_test_text',
+                      author_made_contact='yes')
+        assert_params()
+
+        # Start on the home page and click the
+        # "I'm looking for someone" button
+        self.go('/haiti?lang=ja&charsets=shift_jis')
+        search_page = self.s.follow(ja_looking_for_someone)
+        assert_params()
+        search_form = search_page.first('form')
+
+        # Search for the record just submitted.
+        self.s.submit(
+            search_form, query=u'%s %s' % (test_given_name, test_family_name))
+        assert_params()
+        self.verify_results_page(1, all_have=([test_given_name]),
+                                 some_have=([test_given_name]))
+
+        self.verify_click_search_result(0, assert_params)
+
 
 class ResourceTests(TestsBase):
     """Tests that verify the Resource mechanism."""
@@ -5648,6 +5732,8 @@ class ConfigTests(TestsBase):
             use_postal_code='false',
             allow_believed_dead_via_ui='false',
             min_query_word_length='1',
+            show_profile_entry='false',
+            profile_websites='["http://abc"]',
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
@@ -5669,6 +5755,8 @@ class ConfigTests(TestsBase):
         assert not cfg.use_postal_code
         assert not cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 1
+        assert not cfg.show_profile_entry
+        assert cfg.profile_websites == ['http://abc']
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
@@ -5690,6 +5778,8 @@ class ConfigTests(TestsBase):
             use_postal_code='true',
             allow_believed_dead_via_ui='true',
             min_query_word_length='2',
+            show_profile_entry='true',
+            profile_websites='["http://xyz"]',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
@@ -5711,6 +5801,8 @@ class ConfigTests(TestsBase):
         assert cfg.use_postal_code
         assert cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 2
+        assert cfg.show_profile_entry
+        assert cfg.profile_websites == ['http://xyz']
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
@@ -5746,6 +5838,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
+            profile_websites='[]',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
             start_page_custom_htmls='{"en": "start page message"}',
@@ -5797,6 +5890,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             test_mode='true',
+            profile_websites='[]',
             start_page_custom_htmls='{"en": "start page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
@@ -5824,6 +5918,7 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
+            profile_websites='[]',
             start_page_custom_htmls=
                 '{"en": "<b>English</b> start page message",'
                 ' "fr": "<b>French</b> start page message"}',
@@ -5916,20 +6011,18 @@ class SecretTests(TestsBase):
             author_name='_status_author_name'
         ))
         doc = self.go('/haiti/create?role=provide')
-        assert 'map_canvas' not in doc.content
+        assert 'id="clickable_map"' not in doc.content
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
-        assert 'map_canvas' not in doc.content
-        assert 'id="map_' not in doc.content
+        assert 'id="clickable_map"' not in doc.content
 
         db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
 
         doc = self.go('/haiti/create?role=provide')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'map_canvas' in doc.content
+        assert 'id="clickable_map"' in doc.content
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'map_canvas' in doc.content
-        assert 'id="map_' in doc.content
+        assert 'id="clickable_map"' in doc.content
 
 
 class FeedTests(TestsBase):

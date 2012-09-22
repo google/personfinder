@@ -270,6 +270,16 @@ msgstr ""
 "på knappen nedan och kollar sedan din e-post.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -580,6 +590,9 @@ msgstr "Utvecklare"
 msgid "Disable notes on this record"
 msgstr "Inaktivera kommentarer på det här inlägget"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Hämta ljudet som MP3"
 
@@ -766,6 +779,9 @@ msgstr "Senast kända vistelseort"
 
 msgid "Link"
 msgstr "Länk"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "Markera poster som dubbletter"
@@ -958,6 +974,12 @@ msgstr "Upplagt av"
 msgid "Proceed"
 msgstr "Fortsätt"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Ange information om personen"
 
@@ -983,6 +1005,9 @@ msgstr "valda poster"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Poster med namn och adresser som stämmer överens med \"%(query)s\""
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "Rapportera som skräppost"
 
@@ -1001,6 +1026,9 @@ msgstr "Sökresultat för"
 
 msgid "Search for this person"
 msgstr "Sök efter personen"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Välj upp till tre poster att markera som dubbletter:"
@@ -1057,8 +1085,14 @@ msgstr "Prenumerera på uppdateringar om %(given_name)s %(family_name)s"
 msgid "Subscribe to updates about this person"
 msgstr "Prenumerera på uppdateringar om den här personen"
 
+msgid "Switch to address"
+msgstr ""
+
 msgid "Switch to duplicate marking mode"
 msgstr "Byt till dubblettmarkeringsläge"
+
+msgid "Switch to lat/long"
+msgstr ""
 
 msgid "Switch to normal view mode"
 msgstr "Byt till normalt visningsläge"
@@ -1218,11 +1252,9 @@ msgid "To view or add information, select a name below."
 msgstr "Välj namnet nedan om du vill visa eller lägga till information."
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 msgstr ""
-"Skriv en adress eller öppna kartan nedan och ange plats genom att flytta "
-"nålen."
 
 msgid "Type the two words:"
 msgstr "Skriv de två orden:"
@@ -1250,9 +1282,6 @@ msgstr "Vi har ingenting som matchar din sökning."
 
 msgid "What is this person's name?"
 msgstr "Vad heter personen?"
-
-msgid "What is your situation?"
-msgstr "Hur ser din situation ut?"
 
 msgid "When should this record disappear?"
 msgstr "När ska posten tas bort?"

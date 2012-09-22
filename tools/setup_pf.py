@@ -89,6 +89,10 @@ def setup_configs():
         use_postal_code=True,
         # Require at least this many letters in each word of a text query.
         min_query_word_length=2,
+        # Show input fields for profile URLs in create page.
+        show_profile_entry=True,
+        # Default list of profile websites to show in create page.
+        profile_websites=const.DEFAULT_PROFILE_WEBSITES,
         # Default map viewport for the location field in the note form.
         map_default_zoom=7,
         map_default_center=[18.968637, -72.284546],
@@ -126,6 +130,8 @@ def setup_configs():
         use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
+        show_profile_entry=True,
+        profile_websites=const.DEFAULT_PROFILE_WEBSITES,
         map_default_zoom=7,
         map_default_center=[38, 140.7],
         map_size_pixels=[400, 400],

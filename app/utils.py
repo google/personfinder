@@ -53,6 +53,11 @@ import user_agents
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 
+# Query parameters which are automatically preserved on page transition
+# if you use utils.BaseHandler.get_url() or
+# env.hidden_input_tags_for_preserved_query_params.
+PRESERVED_QUERY_PARAM_NAMES = ['style', 'small', 'charsets']
+
 
 # ==== Field value text ========================================================
 
@@ -305,10 +310,17 @@ def get_app_name():
 
 def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
+    # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
         if url and not url_is_safe(url):
             setattr(record, field, None)
+    # Multi-line URLs.
+    for field in ['profile_urls']:
+        urls = (getattr(record, field, None) or '').splitlines()
+        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
+        if len(urls) != len(sanitized_urls):
+            setattr(record, field, '\n'.join(sanitized_urls))
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -455,10 +467,15 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
     preserving the current repo and the 'small' and 'style' parameters."""
     repo_url = get_repo_url(request, repo or 'global', scheme)
-    params['small'] = params.get('small', request.get('small', None))
-    params['style'] = params.get('style', request.get('style', None))
+    for name in PRESERVED_QUERY_PARAM_NAMES:
+        params[name] = params.get(name, request.get(name, None))
     query = urlencode(params, charset)
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
+
+def add_profile_icon_url(website, handler):
+    website['icon_url'] = \
+        handler.env.global_url + '/' + website['icon_filename']
+    return website
 
 
 # ==== Struct ==================================================================
@@ -531,6 +548,9 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
+        'profile_url1': strip,
+        'profile_url2': strip,
+        'profile_url3': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_default': validate_resource_name,
@@ -722,6 +742,10 @@ class BaseHandler(webapp.RequestHandler):
         self.repo = env.repo
         self.config = env.config
         self.charset = env.charset
+
+        # Set default Content-Type header.
+        self.response.headers['Content-Type'] = (
+            'text/html; charset=%s' % self.charset)
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():

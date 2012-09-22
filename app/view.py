@@ -31,6 +31,22 @@ from urlparse import urlparse
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
 
+def get_profile_pages(profile_urls, handler):
+    profile_pages = []
+    for profile_url in profile_urls.splitlines():
+        # Use the hostname as the website name by default.
+        profile_page = {
+            'name': urlparse(profile_url).hostname,
+            'url': profile_url }
+        for website in handler.config.profile_websites or []:
+            if ('url_regexp' in website and
+                re.match(website['url_regexp'], profile_url)):
+                profile_page = add_profile_icon_url(website, handler)
+                profile_page['url'] = profile_url
+                break
+        profile_pages.append(profile_page)
+    return profile_pages
+
 class Handler(BaseHandler):
 
     def get(self):
@@ -123,6 +139,9 @@ class Handler(BaseHandler):
         for note in notes:
             sanitize_urls(note)
 
+        if person.profile_urls:
+            person.profile_pages = get_profile_pages(person.profile_urls, self)
+
         self.render('view.html',
                     person=person,
                     notes=notes,
@@ -206,6 +225,7 @@ class Handler(BaseHandler):
                 confirmed=False)
             # Write the new NoteWithBadWords to the datastore
             db.put(note)
+            UserActionLog.put_new('add', note, copy_properties=False)
             # When the note is detected as spam, we do not update person record
             # or log action. We ask the note author for confirmation first.
             return self.redirect('/post_flagged_note', id=note.get_record_id(),
@@ -230,6 +250,7 @@ class Handler(BaseHandler):
                 photo_url=photo_url)
             # Write the new regular Note to the datastore
             db.put(note)
+            UserActionLog.put_new('add', note, copy_properties=False)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':

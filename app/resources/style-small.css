@@ -51,6 +51,10 @@ h3, .header h1 {
   text-align: center;
 }
 
+h1 .repo {
+  white-space: nowrap;
+}
+
 body.facebook h3, body.facebook .header h1 {
   margin: 0 0 5px 0;
 }
@@ -70,31 +74,25 @@ span.var {
   color: green;
 }
 
+.header-notification {
+  color: #f00;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border: 1px solid #f00;
+  background: #ffe;
+}
+
 /* Language menu */
 
-ul.languages {
-  text-align: center;
+div.languages {
+  float: right;
   font-size: smaller;
-  margin: 0 0 12px 0;
+  margin: 0;
   padding: 0;
-  list-style-type: none;
 }
 
-ul.languages li {
-  display: inline;
-  white-space: nowrap;
-}
-
-ul.languages li:first-child:before {
-  content: "";
-}
-
-ul.languages li:before {
-  content: "\00b7\00a0";
-}
-
-ul.languages .selected {
-  font-weight: bold;
+div.languages img {
+  cursor: pointer;
 }
 
 /* Forms */
@@ -227,17 +225,6 @@ body.facebook .link-separator {
   font-size: 13px;
 }
 
-.main .instructions {
-  text-align: left;
-  font-size: 11px;
-}
-
-body.facebook .main .instructions {
-  font-size: 10px;
-  margin: 0;
-  padding: 0;
-}
-
 .main .stats {
   text-align: center;
   font-size: 10px;
@@ -246,16 +233,20 @@ body.facebook .main .instructions {
 
 .main .action {
   width: 9em;
-  padding: 1em;
-  border: 1px solid #abe;
+  padding: 0.5em;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   background: #bcf;
-  font-weight: bold;
   text-align: center;
+  vertical-align: middle;
 }
 
 .main .action:first-child {
-  border: 1px solid #ad9;
   background: #bea;
+}
+
+.main .action a {
+  font-weight: bold;
 }
 
 .custom-message {
@@ -269,6 +260,18 @@ img {
 }
 
 /* Query page */
+
+.query {
+  margin: 1em auto;
+  padding: 0.5em;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  background: #bcf;
+}
+
+.query.seek {
+  background: #bea;
+}
 
 .query .label {
   text-align: right;

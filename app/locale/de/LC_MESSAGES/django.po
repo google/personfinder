@@ -272,6 +272,16 @@ msgstr ""
 "die Schaltfläche unten und überprüfen Sie anschließend Ihre E-Mails.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -588,6 +598,9 @@ msgstr "Entwickler"
 msgid "Disable notes on this record"
 msgstr "Notizen für diesen Datensatz deaktivieren"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Ton als MP3 herunterladen"
 
@@ -782,6 +795,9 @@ msgstr "Letzter bekannter Aufenthaltsort"
 
 msgid "Link"
 msgstr "Link"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "Datensätze als doppelt vorhanden kennzeichnen"
@@ -986,6 +1002,12 @@ msgstr "Gepostet von"
 msgid "Proceed"
 msgstr "Fortfahren"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Informationen zu dieser Person angeben"
 
@@ -1011,6 +1033,9 @@ msgstr "Ausgewählte Datensätze"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Einträge mit Namen und Adressen, die mit \"%(query)s\" übereinstimmen."
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "Spam melden"
 
@@ -1029,6 +1054,9 @@ msgstr "Suchergebnisse für"
 
 msgid "Search for this person"
 msgstr "Nach dieser Person suchen"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Bis zu 3 Datensätze auswählen und als doppelte Datensätze kennzeichnen:"
@@ -1085,8 +1113,14 @@ msgstr "Updates zu %(given_name)s %(family_name)s abonnieren"
 msgid "Subscribe to updates about this person"
 msgstr "Updates zu dieser Person abonnieren"
 
+msgid "Switch to address"
+msgstr ""
+
 msgid "Switch to duplicate marking mode"
 msgstr "Zum Kennzeichnungsmodus für doppelte Datensätze wechseln"
+
+msgid "Switch to lat/long"
+msgstr ""
 
 msgid "Switch to normal view mode"
 msgstr "Zum normalen Anzeigemodus wechseln"
@@ -1241,11 +1275,9 @@ msgstr ""
 "Namen aus."
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 msgstr ""
-"Geben Sie eine Adresse ein oder öffnen Sie die Karte unten und geben Sie "
-"den Standort durch Verschieben der Reißzwecke an."
 
 msgid "Type the two words:"
 msgstr "Geben Sie die zwei Wörter ein:"
@@ -1273,9 +1305,6 @@ msgstr "Es gibt keine passenden Datensätze zu Ihrer Suche."
 
 msgid "What is this person's name?"
 msgstr "Wie heißt diese Person?"
-
-msgid "What is your situation?"
-msgstr "In welcher Situation befinden Sie sich?"
 
 msgid "When should this record disappear?"
 msgstr "Wann sollte dieser Datensatz verschwinden?"

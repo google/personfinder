@@ -32,6 +32,7 @@
   {% endblocktrans %}
 
   <form method="post" action="{{env.repo_path}}/enable_notes">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <br/>
     {{captcha_html|safe}}
     <br/>
