@@ -168,7 +168,7 @@ class Handler(utils.BaseHandler):
         if operation == 'set_default':
             # Set the default resource bundle.
             config.set(default_resource_bundle=
-                    self.params.resource_bundle_default)
+                       self.params.resource_bundle_default)
             return self.redirect(self.get_admin_url())
 
         if operation == 'add_bundle' and editable:
