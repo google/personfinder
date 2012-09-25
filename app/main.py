@@ -264,8 +264,13 @@ def setup_env(request):
         get_hidden_input_tags_for_preserved_query_params(request))
 
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = (
-        request.get('ui', '').strip() == 'small' and ' target="_blank" ' or '')
+    #
+    # TODO(ichikawa): Delete handling of "small=yes" in near future
+    # when we decide to drop support of "small" parameter.
+    small = (
+        request.get('ui', '').strip() == 'small' or
+        request.get('small', '').strip().lower() == 'yes')
+    env.target_attr = (small and ' target="_blank" ' or '')
 
     # Repo-specific information.
     if env.repo:

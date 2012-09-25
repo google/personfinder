@@ -153,6 +153,9 @@ def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
     return string.strip().rstrip('\0')
 
+def strip_and_lower(string):
+    return strip(string).lower()
+
 def validate_yes(string):
     return (strip(string).lower() == 'yes') and 'yes' or ''
 
@@ -562,16 +565,18 @@ class BaseHandler(webapp.RequestHandler):
         'sex': validate_sex,
         'signature': strip,
         'skip': validate_int,
+        'small': validate_yes,
         'source_date': strip,
         'source_name': strip,
         'source_url': strip,
         'status': validate_status,
+        'style': strip,
         'subscribe': validate_checkbox,
         'subscribe_email': strip,
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
-        'ui': strip,
+        'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
     }
@@ -736,6 +741,15 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def convert_old_params(self):
+        """Converts old style parameters to new style parameters."""
+        # TODO(ichikawa): Delete these in near future when we decide to
+        # drop support of "small" and "style" parameters.
+        if not self.params.ui and self.params.small:
+            self.params.ui = 'small'
+        elif not self.params.ui and self.params.style:
+            self.params.ui = self.params.style
+
     def initialize(self, request, response, env):
         webapp.RequestHandler.initialize(self, request, response)
         self.params = Struct()
@@ -756,6 +770,7 @@ class BaseHandler(webapp.RequestHandler):
             except Exception, e:
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
+        self.convert_old_params()
 
         # Log the User-Agent header.
         sample_rate = float(
