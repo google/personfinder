@@ -268,7 +268,7 @@ def setup_env(request):
     # TODO(ichikawa): Delete handling of "small=yes" in near future
     # when we decide to drop support of "small" parameter.
     small = (
-        request.get('ui', '').strip() == 'small' or
+        request.get('ui', '').strip().lower() == 'small' or
         request.get('small', '').strip().lower() == 'yes')
     env.target_attr = (small and ' target="_blank" ' or '')
 
