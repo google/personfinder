@@ -24,17 +24,17 @@
   {% ifequal params.role 'provide' %}
     <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
-    {% ifnotequal env.ui "small" %}
+    {% if env.ui != "small" %}
       {% ifequal num_results 1 %}
         {% trans "There is one existing record with a similar name." %}
       {% else %}
         {% trans "There are some existing records with similar names." %}
       {% endifequal %}
       {% trans "Please check whether it matches the person you were planning to report." %}
-    {% endifnotequal %}
+    {% endif %}
   {% endifequal %}
 
-  {% ifequal env.ui "small" %}
+  {% if env.ui == "small" %}
     {% ifequal num_results 1 %}
       {% trans "There is one existing record with a similar name." %}
     {% else %}
@@ -132,12 +132,12 @@
     <script type='text/javascript'>
       init_dup_state();
     </script>
-  {% endifequal %}
+  {% endif %}
 
   <p>
-  {% ifnotequal env.ui "small" %}
+  {% if env.ui != "small" %}
     {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
-  {% endifnotequal %}
+  {% endif %}
 {% else %}
 
   {% if not jp_phone_number_query %}

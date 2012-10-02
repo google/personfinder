@@ -16,10 +16,10 @@
   <div class="languages" title="{% trans "Language selection" %}">
     <img src="{{env.global_url}}/language_picker.png"
         alt="{% trans "Language selection" %}"
-        {% ifequal env.ui "small" %}onclick="this.style.display='none';
-            $('language_picker').style.display='';"{% endifequal %} />
+        {% if env.ui == "small" %}onclick="this.style.display='none';
+            $('language_picker').style.display='';"{% endif %} />
     <select id="language_picker"
-        {% ifequal env.ui "small" %}style="display:none"{% endifequal %}
+        {% if env.ui == "small" %}style="display:none"{% endif %}
         onchange="window.location.href=this.options[this.selectedIndex].value;">
       {% for option in env.language_options %}
         <option value="{{option.url}}"{% ifequal option.lang env.lang %}
