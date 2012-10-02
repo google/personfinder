@@ -263,14 +263,20 @@ def setup_env(request):
     env.hidden_input_tags_for_preserved_query_params = (
         get_hidden_input_tags_for_preserved_query_params(request))
 
+    env.ui = request.get('ui', '').strip().lower()
+
+    # Interprets "small" and "style" parameters for backward compatibility.
+    # TODO(ichikawa): Delete these in near future when we decide to drop
+    # support of these parameters.
+    small_param = request.get('small', '').strip().lower()
+    style_param = request.get('style', '').strip().lower()
+    if not env.ui and small_param == 'yes':
+        env.ui = 'small'
+    elif not env.ui and style_param:
+        env.ui = style_param
+
     # Optional "target" attribute for links to non-small pages.
-    #
-    # TODO(ichikawa): Delete handling of "small=yes" in near future
-    # when we decide to drop support of "small" parameter.
-    small = (
-        request.get('ui', '').strip().lower() == 'small' or
-        request.get('small', '').strip().lower() == 'yes')
-    env.target_attr = (small and ' target="_blank" ' or '')
+    env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
 
     # Repo-specific information.
     if env.repo:

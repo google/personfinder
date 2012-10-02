@@ -24,7 +24,7 @@
   {% ifequal params.role 'provide' %}
     <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
-    {% ifnotequal params.ui "small" %}
+    {% ifnotequal env.ui "small" %}
       {% ifequal num_results 1 %}
         {% trans "There is one existing record with a similar name." %}
       {% else %}
@@ -34,7 +34,7 @@
     {% endifnotequal %}
   {% endifequal %}
 
-  {% ifequal params.ui "small" %}
+  {% ifequal env.ui "small" %}
     {% ifequal num_results 1 %}
       {% trans "There is one existing record with a similar name." %}
     {% else %}
@@ -135,7 +135,7 @@
   {% endifequal %}
 
   <p>
-  {% ifnotequal params.ui "small" %}
+  {% ifnotequal env.ui "small" %}
     {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
   {% endifnotequal %}
 {% else %}
@@ -148,7 +148,7 @@
   {% else %}
   <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
   {% endif %}
-  {% if params.ui == "small" and not jp_phone_number_query %}
+  {% if env.ui == "small" and not jp_phone_number_query %}
     <p>
     <a class="create-new-record" href="{{create_url}}" target="_blank">
       {% trans "Follow this link to create a new record" %}
@@ -158,7 +158,7 @@
 {% endif %}
 
 <p>
-{% if params.ui != "small" and not jp_phone_number_query %}
+{% if env.ui != "small" and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="query" value="{{params.query}}">

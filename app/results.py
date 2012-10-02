@@ -61,7 +61,7 @@ class Handler(BaseHandler):
     def get_results_url(self, query):
         return self.get_url(
             '/results',
-            ui='' if self.params.ui == 'small' else self.params.ui,
+            ui='' if self.env.ui == 'small' else self.env.ui,
             query=query,
             given_name=self.params.given_name,
             family_name=self.params.family_name)
@@ -69,7 +69,7 @@ class Handler(BaseHandler):
     def get(self):
         create_url = self.get_url(
             '/create',
-            ui='' if self.params.ui == 'small' else self.params.ui,
+            ui='' if self.env.ui == 'small' else self.env.ui,
             role=self.params.role,
             given_name=self.params.given_name,
             family_name=self.params.family_name)
@@ -110,7 +110,7 @@ class Handler(BaseHandler):
                                    results_url=results_url,
                                    create_url=create_url)
             else:
-                if self.params.ui == 'small':
+                if self.env.ui == 'small':
                     # show a link to a create page.
                     return self.render('small-create.html',
                                        create_url=create_url)

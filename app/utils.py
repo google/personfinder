@@ -587,7 +587,7 @@ class BaseHandler(webapp.RequestHandler):
         if (self.config and
             self.config.jp_tier2_mobile_redirect_url and
             not self.params.suppress_redirect and
-            self.params.ui != 'small' and
+            self.env.ui != 'small' and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
                     self.env.action)
@@ -741,15 +741,6 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def convert_old_params(self):
-        """Converts old style parameters to new style parameters."""
-        # TODO(ichikawa): Delete these in near future when we decide to
-        # drop support of "small" and "style" parameters.
-        if not self.params.ui and self.params.small:
-            self.params.ui = 'small'
-        elif not self.params.ui and self.params.style:
-            self.params.ui = self.params.style
-
     def initialize(self, request, response, env):
         webapp.RequestHandler.initialize(self, request, response)
         self.params = Struct()
@@ -770,7 +761,6 @@ class BaseHandler(webapp.RequestHandler):
             except Exception, e:
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
-        self.convert_old_params()
 
         # Log the User-Agent header.
         sample_rate = float(
