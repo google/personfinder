@@ -97,11 +97,11 @@ def get_repo_and_action(request):
     parts = path.lstrip('/').split('/')
 
     # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
-    import legacy_redirect
-    if legacy_redirect.get_subdomain(request):
-        repo = legacy_redirect.get_subdomain(request)
-        action = '/'.join(parts)
-        return repo, action
+    #import legacy_redirect
+    #if legacy_redirect.get_subdomain(request):
+    #    repo = legacy_redirect.get_subdomain(request)
+    #    action = '/'.join(parts)
+    #    return repo, action
 
     # Depending on whether we're serving from appspot directly or
     # google.org/personfinder we could have /global or /personfinder/global

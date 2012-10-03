@@ -33,27 +33,31 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.ui == "small" %}
-    <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
-  {% else %}
-    <link rel="stylesheet" href="{{env.global_url}}/style.css">
+  {% if env.ui != "jp-mobile" %}
+    {% if env.ui == "small" %}
+      <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
+    {% else %}
+      <link rel="stylesheet" href="{{env.global_url}}/style.css">
+    {% endif %}
   {% endif %}
   {% if env.rtl %}
     <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
-  <script type="text/javascript">
-    var lang = '{{env.lang}}';
-    var translate_api_key = '{{config.translate_api_key}}';
-  </script>
-  <script src="{{env.global_url}}/forms.js"></script>
-  {% if env.virtual_keyboard_layout %}
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+  {% if env.ui != "jp-mobile" %}
     <script type="text/javascript">
-      google.setOnLoadCallback(function() {
-        initialize_keyboard('{{env.virtual_keyboard_layout}}');
-      });
+      var lang = '{{env.lang}}';
+      var translate_api_key = '{{config.translate_api_key}}';
     </script>
+    <script src="{{env.global_url}}/forms.js"></script>
+    {% if env.virtual_keyboard_layout %}
+      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+      <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+      <script type="text/javascript">
+        google.setOnLoadCallback(function() {
+          initialize_keyboard('{{env.virtual_keyboard_layout}}');
+        });
+      </script>
+    {% endif %}
   {% endif %}
 {% endblock head %}</head>
 

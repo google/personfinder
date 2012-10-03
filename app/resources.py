@@ -28,6 +28,7 @@ resources is a matter of setting the active bundle."""
 import django_setup
 
 import datetime
+import logging
 import os
 import utils
 
@@ -190,8 +191,16 @@ class Resource(db.Model):
     def get_template(self):
         """Compiles the content of this resource into a Template object."""
         if not hasattr(self, 'template'):
-            self.template = webapp.template.Template(
-                self.content.decode('utf-8'), 'Resource', self.key().name())
+            try:
+                self.template = webapp.template.Template(
+                    self.content.decode('utf-8'), 'Resource', self.key().name())
+            except:
+                # Exception here is silently ignored otherwise.
+                logging.error('error', exc_info=True)
+                self.template = webapp.template.Template(
+                    '** Error loading template %s. See the log for details. **'
+                        % self.key().name(),
+                    'Resource', self.key().name())
         return self.template
 
 
