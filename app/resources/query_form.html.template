@@ -57,13 +57,13 @@
             <label for="family_name">{% trans "Family name" %}:</label>
           </td>
           <td class="field">
-            {% ifequal params.style "facebook" %}
+            {% if env.ui == "facebook" %}
               <input id="family_name" name="family_name"
                   value="{{params.family_name}}" size=10>
             {% else %}
               <input id="family_name" name="family_name"
                   value="{{params.family_name}}" size=20>
-            {% endifequal %}
+            {% endif %}
           </td>
         </tr>
       {% endif %}
@@ -78,13 +78,13 @@
             </label>
           </td>
           <td class="field">
-            {% ifequal params.style "facebook" %}
+            {% if env.ui == "facebook" %}
               <input id="given_name" name="given_name"
                   value="{{params.given_name}}" size=10>
             {% else %}
               <input id="given_name" name="given_name"
                 value="{{params.given_name}}" size=20>
-            {% endifequal %}
+            {% endif %}
           </td>
         </tr>
       {% if config.use_family_name and not config.family_name_first %}
@@ -93,26 +93,26 @@
             <label for="family_name">{% trans "Family name" %}:</label>
           </td>
           <td class="field">
-            {% ifequal params.style "facebook" %}
+            {% if env.ui == "facebook" %}
               <input id="family_name" name="family_name"
                   value="{{params.family_name}}" size=10>
             {% else %}
               <input id="family_name" name="family_name"
                   value="{{params.family_name}}" size=20>
-            {% endifequal %}
+            {% endif %}
           </td>
         </tr>
       {% endif %}
     {% else %}
       <tr>
         <td class="field">
-          {% ifequal params.style "facebook" %}
+          {% if env.ui == "facebook" %}
             <input id="query" name="query"
                 value="{{params.query}}" size=10>
           {% else %}
             <input id="query" name="query"
                 value="{{params.query}}" size=40>
-          {% endifequal %}
+          {% endif %}
         </td>
       </tr>
     {% endifequal %}
@@ -129,13 +129,13 @@
         {% ifequal params.role 'provide' %}
           <input type="submit" value="{% trans "Provide information about this person" %}">
         {% else %}
-          {% ifequal params.style "facebook" %}
+          {% if env.ui == "facebook" %}
             <div style="margin-left: -70px"
             <input type="submit" value="{% trans "Search for this person" %}">
             </div>
           {% else %}
             <input type="submit" value="{% trans "Search for this person" %}">
-          {% endifequal %}
+          {% endif %}
         {% endifequal %}
       </td>
     </tr>

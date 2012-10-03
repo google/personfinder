@@ -199,7 +199,7 @@ def get_localized_message(localized_messages, lang, default):
 
 def get_hidden_input_tags_for_preserved_query_params(request):
     """Gets HTML with <input type="hidden"> tags to preserve query parameters
-    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "style"."""
+    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "ui"."""
     tags_str = ''
     for name in utils.PRESERVED_QUERY_PARAM_NAMES:
         value = request.get(name)
@@ -263,16 +263,26 @@ def setup_env(request):
     env.hidden_input_tags_for_preserved_query_params = (
         get_hidden_input_tags_for_preserved_query_params(request))
 
-    # Fields related to "small mode" (for embedding in an <iframe>).
-    env.small = request.get('small', '').lower() == 'yes'
+    env.ui = request.get('ui', '').strip().lower()
+
+    # Interprets "small" and "style" parameters for backward compatibility.
+    # TODO(ichikawa): Delete these in near future when we decide to drop
+    # support of these parameters.
+    small_param = request.get('small', '').strip().lower()
+    style_param = request.get('style', '').strip().lower()
+    if not env.ui and small_param == 'yes':
+        env.ui = 'small'
+    elif not env.ui and style_param:
+        env.ui = style_param
+
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = env.small and ' target="_blank" ' or ''
+    env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
 
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
-        # start_url is like repo_url but preserves 'small' and 'style' params.
+        # start_url is like repo_url but preserves parameters such as 'ui'.
         env.start_url = utils.get_url(request, env.repo, '')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
