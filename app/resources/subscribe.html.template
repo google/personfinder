@@ -12,13 +12,13 @@
 
 {% load i18n %}
 
-<tr>
-  <td class="label">
+<div class="field">
+  <span class="label">
     <label for="subscribe-checkbox">
       {% trans "Subscribe to updates about this person" %}:
     </label>
-  </td>
-  <td>
+  </span>
+  <span class="value">
     <input id="subscribe-checkbox" type="checkbox" name="subscribe">
-  </td>
-</tr>
+  </span>
+</div>

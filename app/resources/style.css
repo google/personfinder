@@ -78,6 +78,10 @@ h3 {
   text-align: center;
 }
 
+.end-multi-columns {
+  clear: both;
+}
+
 var {  /* variables in sample code or URLs */
   color: #c00;
 }
@@ -136,6 +140,25 @@ input {
   font-weight: normal;
 }
 
+/* Multi-column page */
+
+.column {
+  width: 380px;
+}
+
+.column.left {
+  float: left;
+}
+
+.column.right {
+  float: right;
+}
+
+.column h2 {
+  margin: 2px 0 6px;
+  padding-left: 6px;
+}
+
 /* Tables */
 
 tr {
@@ -148,7 +171,6 @@ th, td {
 }
 
 tr.columns {
-  vertical-align: top;
 }
 
 table.fields {
@@ -187,6 +209,55 @@ td.photo .radio {
 
 td.submit {
   text-align: left;
+}
+
+/* Table with sections and fields */
+
+.fields-table {
+  background: #e8e8e8;
+  padding: 4px;
+}
+
+.fields-table .section {
+  padding: 4px;
+  background: #f8f8f8;
+  border-bottom: 4px solid #e8e8e8;
+}
+
+.fields-table .field {
+  clear: both;
+  margin-left: 16px;
+}
+
+.fields-table .label {
+  width: 160px;
+  float: left;
+  display: block;
+  height: 100%;
+  text-align: right;
+}
+
+.fields-table .value {
+  width: 160px;
+  display: block;
+  float: right;
+}
+
+.fields-table .medium-text-input {
+  width: 150px;
+  border-width: 2px;
+}
+
+.fields-table .long-text-input {
+  width: 300px;
+}
+
+.fields-table .medium-text-input {
+  width: 150px;
+}
+
+.fields-table .short-text-input {
+  width: 75px;
 }
 
 /* Footer */
@@ -232,6 +303,14 @@ td.submit {
 
 .main {
   font-size: 16px;
+  width: 650px;
+  /* centering */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main .row {
+  margin: 24px;
 }
 
 .main .stats {
@@ -239,21 +318,46 @@ td.submit {
   text-align: center;
 }
 
-.main .action {
-  width: 12em;
-  padding: 1em;
+.main .action-outer {
+  width: 240px;
+  padding: 16px;
   border-right: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
+  height: 70px;
+  display: table;
+}
+
+.main .action-outer.left {
+  background: #bea;
+  float: left;
+}
+
+.main .action-outer.right {
   background: #bcf;
-  text-align: center;
+  float: right;
+}
+
+.main .action-middle {
+  display: table-cell;
   vertical-align: middle;
 }
 
-.main .action:first-child {
-  background: #bea;
+.main .action-inner {
+  width: 240px;
+  text-align: center;
 }
 
-.main .action a {
+/* IE 6 */
+* html .main .action-outer  { position: relative; }
+* html .main .action-middle { position: absolute; top: 50%; }
+* html .main .action-inner  { position: relative; top: -50%; }
+
+/* IE 7 */
+*:first-child+html .main .action-outer  { position: relative; }
+*:first-child+html .main .action-middle { position: absolute; top: 50%; }
+*:first-child+html .main .action-inner  { position: relative; top: -50%; }
+
+.main .action-outer a {
   font-weight: bold;
 }
 
@@ -269,7 +373,7 @@ table.main {
 /* Query page */
 
 .query {
-  width: 400px;
+  width: 380px;
   margin: 2em auto;
   padding: 1em;
   border-right: 2px solid #ccc;
@@ -285,28 +389,23 @@ table.main {
   padding-bottom: 0.5em;
 }
 
-.query .label {
-  width: 6em;
-  white-space: nowrap;
-}
-
 .query .submit {
   padding-top: 0.5em;
 }
 
 /* View page */
 
-.view tr.columns td.column {
-  min-width: 250px;
+.view .person {
+  background: #e8e8e8;
 }
 
-.view table.fields {
-  margin-left: 0em;
+.view .person .section {
+  background: #f8f8f8;
+  border-bottom: 4px solid #e8e8e8;
 }
 
-.view table.fields .field {
-  background-color: #f8f8f8;
-  min-width: 5em;
+.view .person .value {
+  font-weight: bold;
 }
 
 img.photo {
@@ -360,27 +459,11 @@ div.map {
   margin-top: 0.5em;
 }
 
-.view table.column {
-  background: #e8e8e8;
-  padding: 4px 0 1px;
-  border-right: 12px solid #fff;
-}
-
 .view table.note.column {
   border-right: none;
 }
 
-.view .section {
-  padding: 0.5em;
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
-}
-
-.view .field {
-  font-weight: bold;
-}
-
-.view .field .warning {
+.view .value .warning {
   color: red;
   font-weight: normal;
 }
@@ -445,10 +528,35 @@ label.option {
   font-weight: bold;
 }
 
-.create .section {
-  padding: 0.5em;
+.create .fields-table {
+  background: #c0d0ff;
+}
+
+.create .fields-table .section {
   background: #f0f4ff;
   border-bottom: 4px solid #c0d0ff;
+}
+
+.create .fields-table .hint {
+}
+
+.fields-table .photo .radio {
+  width: 30px;
+  float: left;
+  display: block;
+}
+
+.fields-table .photo .label {
+  width: 70px;
+  float: left;
+  display: block;
+  text-align: right;
+}
+
+.fields-table .photo .value {
+  width: 220px;
+  display: block;
+  float: right;
 }
 
 .source .instructions {

@@ -17,10 +17,7 @@
         <input type="hidden" name="id" value="{{params.id}}">
         {% endif %}
 
-        <table class="create note column" cellpadding="0" cellspacing="0"
-            role="complementary">
-          <tr>
-            <td>
+        <div class="fields-table note" role="complementary">
               <h2>
                 {% if not markdup %}
                 {% trans "Tell us the status of this person" %}
@@ -28,16 +25,12 @@
                 {% trans "Mark records as duplicate" %}
                 {% endif %}
               </h2>
-              <table class="note input" cellpadding="0" cellspacing="0">
                 {% if not markdup %}
-                <tr>
-                  <td class="status section">
+                  <div class="status section">
                     <h3>
                       {% trans "Status of this person" %}
                     </h3>
-                    <table class="fields">
-                      <tr>
-                        <td>
+                      <div class="field">
                           <select id="status" name="status" value="">
                             {% for status in env.status_options %}
                               <option value="{{status.value}}"
@@ -48,14 +41,11 @@
                               </option>
                             {% endfor %}
                           </select>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
+                      </div>
+                      <div class="end-multi-columns"></div>
+                    </div>
                 {% endif %}
-                <tr>
-                  <td class="mandatory text section">
+                  <div class="mandatory text section">
                     <h3>
                       {% trans "Message (required)" %}
                     </h3>
@@ -66,39 +56,30 @@
                         {% trans "Please explain why you think these are the same person" %}
                       {% endif %}
                     </div>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <textarea name="text" id="text" cols=40
+                      <div class="field">
+                          <textarea name="text" id="text"
+                            class="long-text-input"
                             rows=5>{{params.text}}</textarea>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-
-                </tr>
+                      </div>
+                      <div class="end-multi-columns"></div>
+                  </div>
                 {% if not markdup %}
-                <tr>
-                  <td class="location section">
+                  <div class="location section">
                     <h3>
                       {% trans "Last known location" %}
                     </h3>
                     <div class="hint">
                       {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
                     </div>
-                    <table class="fields">
-                      <tr>
-                        <td>
+                      <div class="field">
                           <textarea name="last_known_location"
-                              id="clickable_map_location_field" cols=40 rows=2
-                              >{{params.last_known_location}}</textarea>
-                        </td>
-                      </tr>
-                    </table>
+                              id="clickable_map_location_field"
+                              class="long-text-input"
+                              rows=2>{{params.last_known_location}}</textarea>
+                      </div>
+                      <div class="end-multi-columns"></div>
                     {% if env.maps_api_key %}
-                      <table class="map-container">
-                        <tr>
-                          <td>
+                        <div class="field map-container">
                             <div id="clickable_map_show_link">
                               <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
                                 {% trans "Show Map" %}</a>
@@ -115,62 +96,54 @@
                                 {% trans "Switch to address" %}</a>
                             </div>
                             <div id="clickable_map" class="map" style="display: none"></div>
-                          </td>
-                        </tr>
-                      </table>
+                        </div>
+                        <div class="end-multi-columns"></div>
                     {% endif %}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="photo section">
+                  </div>
+                  <div class="photo section">
                     <h3><label for="note_photo_url">
                         {% trans "Photo" %}
                     </label></h3>
                     <div class="hint">
                       {% trans "To attach a photo to this note, upload it or enter its URL." %}
                     </div>
-                    <table class="fields">
-                      <tr onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
-                        <td class="radio">
+                      <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
+                        <span class="radio">
                             <input id="note_photo_url_radio" type="radio"
                                 checked="checked" name="note_photo_input">
-                        </td>
-                        <td class="label">
+                        </span>
+                        <span class="label">
                           {% trans "URL" %}:
-                        </td>
-                        <td>
+                        </span>
+                        <span class="value">
                           <input name="note_photo_url" id="note_photo_url"
-                              size="30" value="{{params.photo_url}}" />
-                        </td>
-                      </tr>
-                      <tr onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
+                              class="medium-text-input"
+                              value="{{params.photo_url}}" />
+                        </span>
+                      </div>
+                      <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
                         {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-                        <td class="radio">
+                        <span class="radio">
                           <input id="note_photo_upload_radio" type="radio"
                               name="note_photo_input">
-                        </td>
-                        <td class="label">
+                        </span>
+                        <span class="label">
                           {% trans "Upload" %}:
-                        </td>
-                        <td>
+                        </span>
+                        <span class="value">
                           <input id="note_photo_upload" type="file"
                               name="note_photo" id="note_photo_upload" size="20"
                               disabled="disabled">
-                        </td>
+                        </span>
                         {% comment %} see above comment {% endcomment %}
-                      </tr>
-                   </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="author_made_contact section">
+                      </div>
+                     <div class="end-multi-columns"></div>
+                  </div>
+                  <div class="author_made_contact section">
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
                     </h3>
-                    <table class="fields">
-                      <tr>
-                        <td class="instructions" colspan="2">
-                          <div>
+                      <div class="field">
                             <input type="radio" name="author_made_contact"
                                 value="yes" id="author_made_contact_yes"
                                 onchange="update_contact()"
@@ -181,8 +154,8 @@
                             <label class="option" for="author_made_contact_yes">
                               {% trans "Yes" %}
                             </label>
-                          </div>
-                          <div>
+                      </div>
+                      <div class="field">
                             <input type="radio" name="author_made_contact"
                                 value="no" id="author_made_contact_no"
                                 onchange="update_contact()"
@@ -193,100 +166,95 @@
                             <label class="option" for="author_made_contact_no">
                               {% trans "No" %}
                             </label>
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr style="display: none" id="contact_row">
-                  <td class="contact section">
+                      </div>
+                      <div class="end-multi-columns"></div>
+                  </div>
+                  <div class="contact section" style="display: none" id="contact_row">
                     <h3>
                       {% trans "Missing person's current contact information" %}
                     </h3>
                     <div class="hint">
                       {% trans "How can this person be reached now?" %}
                     </div>
-                    <table class="fields">
-                      <tr>
-                        <td class="label">
+                      <div class="field">
+                        <span class="label">
                           <label for="phone_of_found_person">
                             {% trans "Phone number" %}:
                           </label>
-                        </td>
-                        <td>
+                        </span>
+                        <span class="value">
                           <input name="phone_of_found_person"
-                              id="phone_of_found_person" size="20"
+                              id="phone_of_found_person"
+                              class="medium-text-input"
                               value="{{params.phone_of_found_person}}" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
+                        </span>
+                      </div>
+                      <div class="field">
+                        <span class="label">
                           <label for="email_of_found_person">
                             {% trans "E-mail address" %}:
                           </label>
-                        </td>
-                        <td>
+                        </span>
+                        <span class="value">
                           <input name="email_of_found_person"
-                              id="email_of_found_person" size="20"
+                              id="email_of_found_person"
+                              class="medium-text-input"
                               value="{{params.email_of_found_person}}" />
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
+                        </span>
+                      </div>
+                      <div class="end-multi-columns"></div>
+                    </div>
                 {% endif %}
                 {% if not params.create_mode %}
-                <tr>
-                  <td class="source section">
+                  <div class="source section">
                     <h3 class="mandatory">
                       {% trans "About you (required)" %}
                     </h3>
                     <div class="hint">
                       {% trans "How others who are interested in this person can contact you" %}
                     </div>
-                    <table class="fields">
-                      <tr>
-                        <td class="label">
+                      <div class="field">
+                        <span class="label">
                           <label for="author_name" class="mandatory"
                               id="author_name_original">
                             {% trans "Your name" %}:
                           </label>
-                        </td>
-                        <td>
-                          <input name="author_name" id="author_name" size="20"
+                        </span>
+                        <span class="value">
+                          <input name="author_name" id="author_name"
+                              class="medium-text-input"
                               value="{{params.author_name}}" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
+                        </span>
+                      </div>
+                      <div class="field">
+                        <span class="label">
                           <label for="author_phone" id="author_phone_original">
                             {% trans "Your phone number" %}:
                           </label>
-                        </td>
-                        <td>
-                          <input name="author_phone" id="author_phone" size="20"
+                        </span>
+                        <span class="value">
+                          <input name="author_phone" id="author_phone"
+                              class="medium-text-input"
                               value="{{params.author_phone}}" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
+                        </span>
+                      </div>
+                      <div class="field">
+                        <span class="label">
                           <label for="author_email" id="author_email_original">
                             {% trans "Your e-mail address" %}:
                           </label>
-                        </td>
-                        <td>
-                          <input name="author_email" id="author_email" size="20"
+                        </span>
+                        <span class="value">
+                          <input name="author_email" id="author_email"
+                              class="medium-text-input"
                               value="{{params.author_email}}" />
-                        </td>
-                      </tr>
+                        </span>
+                      </div>
                       {% include "subscribe.html.template" %}
-                    </table>
-                  </td>
-                </tr>
+                      <div class="end-multi-columns"></div>
+                  </div>
                 {% endif %}
-                <tr>
-                  <td align=left class="submit">
+                  <div class="submit">
                     <input type="submit"
                       {% if person.notes_disabled %}
                        disabled="disabled"
@@ -302,9 +270,5 @@
                       <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
                     {% endif %}
                     {% include "errors.html.template" %}
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
+                  </div>
+        </div>
