@@ -19,25 +19,27 @@
 
 {% block head %}
   {{block.super}}
-  <script type="text/javascript">
-  function set_display(id_or_elem, hide) {
-    var hide_text = hide ? 'none' : '';
-    if (typeof(id_or_elem) == 'string') {
-      document.getElementById(id_or_elem).style.display = hide_text;
-    } else {
-      id_or_elem.style.display = hide_text;
+  {% if env.ui != "jp-mobile" %}
+    <script type="text/javascript">
+    function set_display(id_or_elem, hide) {
+      var hide_text = hide ? 'none' : '';
+      if (typeof(id_or_elem) == 'string') {
+        document.getElementById(id_or_elem).style.display = hide_text;
+      } else {
+        id_or_elem.style.display = hide_text;
+      }
     }
-  }
 
-  function hide_unhide_note_contents(note_contents_id) {
-    var note = document.getElementById(note_contents_id + '-contents');
-    var hidden = note.style.display == 'none';
-    set_display(note, !hidden);
-    set_display('reveal-note', hidden);
-    set_display('hide-note', !hidden);
-    set_display(note_contents_id + '-mark-not-spam', !hidden);
-  }
-  </script>
+    function hide_unhide_note_contents(note_contents_id) {
+      var note = document.getElementById(note_contents_id + '-contents');
+      var hidden = note.style.display == 'none';
+      set_display(note, !hidden);
+      set_display('reveal-note', hidden);
+      set_display('hide-note', !hidden);
+      set_display(note_contents_id + '-mark-not-spam', !hidden);
+    }
+    </script>
+  {% endif %}
 {% endblock head %}
 
 {% block content %}
@@ -191,69 +193,73 @@
                           <span class="label">{% trans "Author's name" %}:</span>
                           <span class="value">{{person.author_name}}</span>
                         </div>
-                        <div class="field">
-                          <span class="label">{% trans "Author's phone number" %}:</span>
-                          <span class="value">
-                            {% if show_private_info %}
-                              {{person.author_phone}}</span>
-                            {% else %}
-                              {% if person.author_phone %}
-                                <a href="{{reveal_url}}">
-                                  {% trans "(click to reveal)" %}</a>
+                        {# Not shown on ui=jp-mobile because Captcha #}
+                        {# doesn't work. #}
+                        {% if env.ui != "jp-mobile" %}
+                          <div class="field">
+                            <span class="label">{% trans "Author's phone number" %}:</span>
+                            <span class="value">
+                              {% if show_private_info %}
+                                {{person.author_phone}}</span>
+                              {% else %}
+                                {% if person.author_phone %}
+                                  <a href="{{reveal_url}}">
+                                    {% trans "(click to reveal)" %}</a>
+                                {% endif %}
                               {% endif %}
-                            {% endif %}
-                          </span>
-                        </div>
-                        <div class="field">
-                          <span class="label">{% trans "Author's e-mail address" %}:</span>
-                          <span class="value">
-                            {% if show_private_info %}
-                              {{person.author_email}}
-                            {% else %}
-                              {% if person.author_email %}
-                                <a href="{{reveal_url}}">
-                                  {% trans "(click to reveal)" %}</a>
+                            </span>
+                          </div>
+                          <div class="field">
+                            <span class="label">{% trans "Author's e-mail address" %}:</span>
+                            <span class="value">
+                              {% if show_private_info %}
+                                {{person.author_email}}
+                              {% else %}
+                                {% if person.author_email %}
+                                  <a href="{{reveal_url}}">
+                                    {% trans "(click to reveal)" %}</a>
+                                {% endif %}
                               {% endif %}
-                            {% endif %}
-                          </span>
-                        </div>
+                            </span>
+                          </div>
+                        {% endif %}
                         {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
-                        <div class="field">
-                          <span class="label">{% trans "Original URL" %}:</span>
-                          <span class="value">
-                            <a href="{{person.source_url}}"
-                              >{% trans "Link" %}</a>
-                          </span>
-                        </div>
-                        <div class="field">
-                          <span class="label">{% trans "Original posting date" %}:</span>
-                          <span class="value">
-                            {% if person.source_date %}
-                              {{person.source_date_local|date:"Y-m-d H:i"}}
-                              {{config.time_zone_abbreviation|default:"UTC"}}
-                            {% endif %}
-                          </span>
-                        </div>
-                        <div class="field">
-                          <span class="label">{% trans "Original site name" %}:</span>
-                          <span class="value">{{person.source_name}}</span>
-                        </div>
-                        <div class="field">
-                          <span class="label">{% trans "Expiry date of this record" %}:</span>
-                          <span class="value">
-                            {% if person.expiry_date_local %}
-                              <div>
+                          <div class="field">
+                            <span class="label">{% trans "Original URL" %}:</span>
+                            <span class="value">
+                              <a href="{{person.source_url}}"
+                                >{% trans "Link" %}</a>
+                            </span>
+                          </div>
+                          <div class="field">
+                            <span class="label">{% trans "Original posting date" %}:</span>
+                            <span class="value">
+                              {% if person.source_date %}
+                                {{person.source_date_local|date:"Y-m-d H:i"}}
+                                {{config.time_zone_abbreviation|default:"UTC"}}
+                              {% endif %}
+                            </span>
+                          </div>
+                          <div class="field">
+                            <span class="label">{% trans "Original site name" %}:</span>
+                            <span class="value">{{person.source_name}}</span>
+                          </div>
+                          <div class="field">
+                            <span class="label">{% trans "Expiry date of this record" %}:</span>
+                            <span class="value">
+                              {% if person.expiry_date_local %}
                                 {{person.expiry_date_local|date:"Y-m-d H:i"}}
                                 {{config.time_zone_abbreviation|default:"UTC"}}
-                              </div>
-                              {% if env.repo_test_mode %}
-                                <div class="warning">
-                                  {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
-                                </div>
                               {% endif %}
-                            {% endif %}
-                          </span>
-                        </div>
+                            </span>
+                          </div>
+                          {% if person.expiry_date_local and env.repo_test_mode %}
+                            <div class="field">
+                              <div class="warning">
+                                {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                              </div>
+                            </div>
+                          {% endif %}
                         {% endif %}
                         <div class="end-multi-columns"></div>
                     </div>
@@ -283,7 +289,8 @@
                     </div>
                   {% endif %}
             </div>
-            {% if extend_url %}
+            {# Disabled on ui=jp-mobile because the action requires Captcha. #}
+            {% if env.ui != "jp-mobile" and extend_url %}
               {% if expiration_days %}
               <div class="warning">
                 {% blocktrans count expiration_days as days %}
@@ -303,19 +310,26 @@
                 {% endblocktrans %}
               </div>
             {% endif %}
-            <div>
-                <a href="{{subscribe_url}}">
-                  <input type="button"
-                  value="{% trans "Subscribe to updates about this person" %}"
-                    id="subscribe_btn"></a>
-            </div>
-            <div>
-                <a href="{{delete_url}}">
-                  <input type="button"
-                    value="{% trans "Delete this record" %}"
-                    id="delete_btn"></a>
-            </div>
-            {% if person.author_email %}
+            {# Disabled on ui=jp-mobile because the action requires Captcha. #}
+            {% if env.ui != "jp-mobile" %}
+              <div>
+                  <a href="{{subscribe_url}}">
+                    <input type="button"
+                    value="{% trans "Subscribe to updates about this person" %}"
+                      id="subscribe_btn"></a>
+              </div>
+            {% endif %}
+            {# Disabled on ui=jp-mobile because the action requires Captcha. #}
+            {% if env.ui != "jp-mobile" %}
+              <div>
+                  <a href="{{delete_url}}">
+                    <input type="button"
+                      value="{% trans "Delete this record" %}"
+                      id="delete_btn"></a>
+              </div>
+            {% endif %}
+            {# Disabled on ui=jp-mobile because the action requires Captcha. #}
+            {% if person.author_email and env.ui != "jp-mobile" %}
              <div>
                 {% if not person.notes_disabled %}
                  <a href="{{disable_notes_url}}">

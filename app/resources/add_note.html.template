@@ -69,7 +69,11 @@
                       {% trans "Last known location" %}
                     </h3>
                     <div class="hint">
-                      {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
+                      {% if env.maps_api_key and env.ui != "jp-mobile" %}
+                        {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
+                      {% else %}
+                        {% trans "Type an address." %}
+                      {% endif %}
                     </div>
                       <div class="field">
                           <textarea name="last_known_location"
@@ -78,7 +82,7 @@
                               rows=2>{{params.last_known_location}}</textarea>
                       </div>
                       <div class="end-multi-columns"></div>
-                    {% if env.maps_api_key %}
+                    {% if env.maps_api_key and env.ui != "jp-mobile" %}
                         <div class="field map-container">
                             <div id="clickable_map_show_link">
                               <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
@@ -100,45 +104,48 @@
                         <div class="end-multi-columns"></div>
                     {% endif %}
                   </div>
-                  <div class="photo section">
-                    <h3><label for="note_photo_url">
-                        {% trans "Photo" %}
-                    </label></h3>
-                    <div class="hint">
-                      {% trans "To attach a photo to this note, upload it or enter its URL." %}
+                  {# Uploading is often not supported in feature phones. #}
+                  {% if env.ui != "jp-mobile" %}
+                    <div class="photo section">
+                      <h3><label for="note_photo_url">
+                          {% trans "Photo" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "To attach a photo to this note, upload it or enter its URL." %}
+                      </div>
+                        <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
+                          <span class="radio">
+                              <input id="note_photo_url_radio" type="radio"
+                                  checked="checked" name="note_photo_input">
+                          </span>
+                          <span class="label">
+                            {% trans "URL" %}:
+                          </span>
+                          <span class="value">
+                            <input name="note_photo_url" id="note_photo_url"
+                                class="medium-text-input"
+                                value="{{params.photo_url}}" />
+                          </span>
+                        </div>
+                        <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
+                          {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
+                          <span class="radio">
+                            <input id="note_photo_upload_radio" type="radio"
+                                name="note_photo_input">
+                          </span>
+                          <span class="label">
+                            {% trans "Upload" %}:
+                          </span>
+                          <span class="value">
+                            <input id="note_photo_upload" type="file"
+                                name="note_photo" id="note_photo_upload" size="20"
+                                disabled="disabled">
+                          </span>
+                          {% comment %} see above comment {% endcomment %}
+                        </div>
+                       <div class="end-multi-columns"></div>
                     </div>
-                      <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
-                        <span class="radio">
-                            <input id="note_photo_url_radio" type="radio"
-                                checked="checked" name="note_photo_input">
-                        </span>
-                        <span class="label">
-                          {% trans "URL" %}:
-                        </span>
-                        <span class="value">
-                          <input name="note_photo_url" id="note_photo_url"
-                              class="medium-text-input"
-                              value="{{params.photo_url}}" />
-                        </span>
-                      </div>
-                      <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
-                        {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-                        <span class="radio">
-                          <input id="note_photo_upload_radio" type="radio"
-                              name="note_photo_input">
-                        </span>
-                        <span class="label">
-                          {% trans "Upload" %}:
-                        </span>
-                        <span class="value">
-                          <input id="note_photo_upload" type="file"
-                              name="note_photo" id="note_photo_upload" size="20"
-                              disabled="disabled">
-                        </span>
-                        {% comment %} see above comment {% endcomment %}
-                      </div>
-                     <div class="end-multi-columns"></div>
-                  </div>
+                  {% endif %}
                   <div class="author_made_contact section">
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
@@ -169,7 +176,13 @@
                       </div>
                       <div class="end-multi-columns"></div>
                   </div>
-                  <div class="contact section" style="display: none" id="contact_row">
+                  {# Always shows this section on ui=jp-mobile because #}
+                  {# JavaScript is disabled. #}
+                  <div class="contact section" id="contact_row"
+                      {% if env.ui != "jp-mobile" %}
+                        style="display: none"
+                      {% endif %}
+                      >
                     <h3>
                       {% trans "Missing person's current contact information" %}
                     </h3>

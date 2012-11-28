@@ -129,7 +129,12 @@
      {% endifequal %}
       <div class="submit">
         {% ifequal params.role 'provide' %}
-          <input type="submit" value="{% trans "Provide information about this person" %}">
+          {% if env.ui == "jp-mobile" %}
+            {# Too long buttons are not fully shown in some feature phones. #}
+            <input type="submit" value="{% trans "Provide information" %}">
+          {% else %}
+            <input type="submit" value="{% trans "Provide information about this person" %}">
+          {% endif %}
         {% else %}
           {% if env.ui == "facebook" %}
             <div style="margin-left: -70px"

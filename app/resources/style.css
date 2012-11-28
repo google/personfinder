@@ -559,6 +559,25 @@ label.option {
   float: right;
 }
 
+.create .fields-table .profile .icon {
+  width: 30px;
+  float: left;
+  display: block;
+}
+
+.create .fields-table .profile .value {
+  width: 220px;
+  float: left;
+  display: block;
+  text-align: right;
+}
+
+.create .fields-table .profile .remove {
+  width: 70px;
+  display: block;
+  float: right;
+}
+
 .source .instructions {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -568,6 +587,7 @@ label.option {
 
 img.resultImage {
   width: 80px;
+  height: auto;
   max-width: 80px;
   max-height: 80px;
 }

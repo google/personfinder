@@ -68,10 +68,16 @@
     {% block header %}
       {% include "language-menu.html.template" %}
       {% if env.ui != "small" %}
-        <a href="{{env.global_url}}">
+        {% if env.ui == "jp-mobile" %}
+          {# The global page doesn't support jp-mobile. #}
           <img src="{{env.global_url}}/google-person-finder.gif"
               width="260" height="40">
-        </a>
+        {% else %}
+          <a href="{{env.global_url}}">
+            <img src="{{env.global_url}}/google-person-finder.gif"
+                width="260" height="40">
+          </a>
+        {% endif %}
       {% endif %}
     {% endblock header %}
   </div>
@@ -79,7 +85,7 @@
   {% if env.repo %}
     <h1>
       {% trans "Person Finder" %}:
-      <a class="repo" href="{{env.repo_url}}"
+      <a class="repo" href="{{env.start_url_for_heading}}"
           {{env.target_attr|safe}}>{{env.repo_title}}</a>
     </h1>
   {% endif %}
@@ -116,6 +122,10 @@
     </div>
 
     {% block footer %}
+      {% if env.repo and env.ui == "jp-mobile" %}
+        <a href="{{env.repo_url}}">{% trans "Desktop version" %}</a>
+        <span class="link-separator">&#xb7;</span>
+      {% endif %}
       {% if env.repo %}
         <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
             >{% trans "Embed this tool on your site" %}</a>

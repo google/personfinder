@@ -12,13 +12,17 @@
 
 {% load i18n %}
 
-<div class="field">
-  <span class="label">
-    <label for="subscribe-checkbox">
-      {% trans "Subscribe to updates about this person" %}:
-    </label>
-  </span>
-  <span class="value">
-    <input id="subscribe-checkbox" type="checkbox" name="subscribe">
-  </span>
-</div>
+{# Subscription is disabled on ui=jp-mobile because Captcha often doesn't #}
+{# work in feature phones. #}
+{% if env.ui != "jp-mobile" %}
+  <div class="field">
+    <span class="label">
+      <label for="subscribe-checkbox">
+        {% trans "Subscribe to updates about this person" %}:
+      </label>
+    </span>
+    <span class="value">
+      <input id="subscribe-checkbox" type="checkbox" name="subscribe">
+    </span>
+  </div>
+{% endif %}

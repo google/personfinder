@@ -30,23 +30,32 @@
   {% if note.hidden %}
     <div class="hidden-note">
       {% trans "This note has been marked as spam." %}
-      <a href="#" id="reveal-note" style="display: inline;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-        {% trans "Reveal note" %}</a>
-      <a href="#" id="hide-note" style="display: none;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-        {% trans "Hide note" %}</a>
-      <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
-        style="display: none;">
-        {% trans "Not spam" %}</a>
+      {# Spam operations are disabled on ui=jp-mobile because it requires #}
+      {# JavaScript and supporting more pages on ui=jp-mobile. #}
+      {% if env.ui != "jp-mobile" %}
+        <a href="#" id="reveal-note" style="display: inline;"
+          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+          {% trans "Reveal note" %}</a>
+        <a href="#" id="hide-note" style="display: none;"
+          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+          {% trans "Hide note" %}</a>
+        <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
+          style="display: none;">
+          {% trans "Not spam" %}</a>
+      {% endif %}
     </div>
   {% else %}
-    <span class="report-spam">
-    <a href="{{note.flag_spam_url}}">
-      {% trans "Report spam" %}</a></span>
+    {# Spam operations are disabled on ui=jp-mobile because it requires #}
+    {# JavaScript and supporting more pages on ui=jp-mobile. #}
+    {% if env.ui != "jp-mobile" %}
+      <span class="report-spam">
+      <a href="{{note.flag_spam_url}}">
+        {% trans "Report spam" %}</a></span>
+    {% endif %}
   {% endif %}
   {% endif %}
-  {% if note.author_email %}
+  {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
+  {% if note.author_email and env.ui != "jp-mobile" %}
     <div class="contact">
       {% trans "E-mail" %}:
       {% if show_private_info %}
@@ -57,7 +66,8 @@
       {% endif %}
     </div>
   {% endif %}
-  {% if note.author_phone %}
+  {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
+  {% if note.author_phone and env.ui != "jp-mobile" %}
     <div class="contact">
       {% trans "Phone" %}:
       {% if show_private_info %}
@@ -70,101 +80,105 @@
   {% endif %}
 </div>
 
-<div class="contents" id="{{note.record_id}}-contents"
-  {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
-  <span name="note_text"><span>{{note.text.strip|linebreaksbr}}</span></span>
-  {% if note.linked_person_record_id or note.status or note.author_made_contact or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
-    <p>
-  {% endif %}
+{% if not node.hidden or env.ui != "jp-mobile" %}
+  <div class="contents" id="{{note.record_id}}-contents"
+    {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
+    <span name="note_text"><span>{{note.text.strip|linebreaksbr}}</span></span>
+    {% if note.linked_person_record_id or note.status or note.author_made_contact or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
+      <p>
+    {% endif %}
 
-  {% if note.linked_person_record_id %}
-    <div class="field">
-      {% trans "This record is a duplicate of" %}
-      <a href="{{note.linked_person_url}}"
-        >{{note.linked_person_record_id}}</a>
-    </div>
-  {% endif %}
-  {% if note.status %}
-    <div class="status">
-      <span class="label">
-        {% trans "Status" %}:
-      </span>
-      <span class="field {{note.status}}">
-        {{note.status_text}}
-      </span>
-    </div>
-  {% endif %}
-  {% if note.author_made_contact %}
-    <div class="field">
-      {% trans "This person has been in contact with someone" %}
-    </div>
-  {% endif %}
-  {% if note.email_of_found_person %}
-    <div>
-      <span class="label">
-        {% trans "Missing person's current e-mail address" %}:
-      </span>
-      <span class="field">
-        {% if show_private_info %}
-          {{note.email_of_found_person}}
-        {% else %}
-          <a href="{{reveal_url}}">
-            {% trans "(click to reveal)" %}</a>
-        {% endif %}
-      </span>
-    </div>
-  {% endif %}
-  {% if note.phone_of_found_person %}
-    <div>
-      <span class="label">
-        {% trans "Missing person's current phone number" %}:
-      </span>
-      <span class="field">
-        {% if show_private_info %}
-          {{note.phone_of_found_person}}
-        {% else %}
-          <a href="{{reveal_url}}">
-            {% trans "(click to reveal)" %}</a>
-        {% endif %}
-      </span>
-    </div>
-  {% endif %}
-  {% if note.last_known_location %}
-    <div>
-      <span class="label">
-        {% trans "Last known location" %}:
-      </span>
-      <span class="field">
-        {{note.last_known_location}}
-      </span>
-    </div>
-    {% if env.maps_api_key %}
-      <div>
-        <div id="map_{{note.record_id}}_show_link" style="display: none">
-          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
-            {% trans "Show Map" %}</a>
-        </div>
-        <div id="map_{{note.record_id}}_hide_link" style="display: none">
-          <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
-            {% trans "Hide Map" %}</a>
-        </div>
-        <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
-        <script>
-          parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
-        </script>
+    {% if note.linked_person_record_id %}
+      <div class="field">
+        {% trans "This record is a duplicate of" %}
+        <a href="{{note.linked_person_url}}"
+          >{{note.linked_person_record_id}}</a>
       </div>
     {% endif %}
-  {% endif %}
-  {% if note.photo_url %}
-    <div>
-      <a href="{{note.photo_url}}">
-        <img src="{{note.photo_url}}" class="photo">
-      </a>
+    {% if note.status %}
+      <div class="status">
+        <span class="label">
+          {% trans "Status" %}:
+        </span>
+        <span class="field {{note.status}}">
+          {{note.status_text}}
+        </span>
+      </div>
+    {% endif %}
+    {% if note.author_made_contact %}
+      <div class="field">
+        {% trans "This person has been in contact with someone" %}
+      </div>
+    {% endif %}
+    {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
+    {% if note.email_of_found_person and env.ui != "jp-mobile" %}
+      <div>
+        <span class="label">
+          {% trans "Missing person's current e-mail address" %}:
+        </span>
+        <span class="field">
+          {% if show_private_info %}
+            {{note.email_of_found_person}}
+          {% else %}
+            <a href="{{reveal_url}}">
+              {% trans "(click to reveal)" %}</a>
+          {% endif %}
+        </span>
+      </div>
+    {% endif %}
+    {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
+    {% if note.phone_of_found_person and env.ui != "jp-mobile" %}
+      <div>
+        <span class="label">
+          {% trans "Missing person's current phone number" %}:
+        </span>
+        <span class="field">
+          {% if show_private_info %}
+            {{note.phone_of_found_person}}
+          {% else %}
+            <a href="{{reveal_url}}">
+              {% trans "(click to reveal)" %}</a>
+          {% endif %}
+        </span>
+      </div>
+    {% endif %}
+    {% if note.last_known_location %}
+      <div>
+        <span class="label">
+          {% trans "Last known location" %}:
+        </span>
+        <span class="field">
+          {{note.last_known_location}}
+        </span>
+      </div>
+      {% if env.maps_api_key %}
+        <div>
+          <div id="map_{{note.record_id}}_show_link" style="display: none">
+            <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
+              {% trans "Show Map" %}</a>
+          </div>
+          <div id="map_{{note.record_id}}_hide_link" style="display: none">
+            <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
+              {% trans "Hide Map" %}</a>
+          </div>
+          <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
+          <script>
+            parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
+          </script>
+        </div>
+      {% endif %}
+    {% endif %}
+    {% if note.photo_url %}
+      <div>
+        <a href="{{note.photo_url}}">
+          <img src="{{note.photo_url}}" class="photo">
+        </a>
+      </div>
+    {% endif %}
+    <div class="tracking">
+      ID: {{note.record_id}}
     </div>
-  {% endif %}
-  <div class="tracking">
-    ID: {{note.record_id}}
   </div>
-</div>
+{% endif %}
 
 </div>

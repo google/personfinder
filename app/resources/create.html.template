@@ -15,9 +15,11 @@
 
 {% block head %}
   {{block.super}}
-  <script>
-    var profile_websites = {{profile_websites_json|safe}};
-  </script>
+  {% if env.ui != "jp-mobile" %}
+    <script>
+      var profile_websites = {{profile_websites_json|safe}};
+    </script>
+  {% endif %}
 {% endblock head %}
 
 {% block content %}
@@ -269,45 +271,49 @@
                         </div>
                         <div class="end-multi-columns"></div>
                     </div>
-                    <div class="photo section">
-                      <h3><label for="photo_url">
-                          {% trans "Photo" %}
-                      </label></h3>
-                      <div class="hint">
-                        {% trans "If you have a photo of this person, upload it or enter its URL address." %}
+                    {# Uploading is often not supported in feature phones. #}
+                    {% if env.ui != "jp-mobile" %}
+                      <div class="photo section">
+                        <h3><label for="photo_url">
+                            {% trans "Photo" %}
+                        </label></h3>
+                        <div class="hint">
+                          {% trans "If you have a photo of this person, upload it or enter its URL address." %}
+                        </div>
+                          <div class="field" onclick="$('photo_url_radio').checked=true; update_image_input(false);">
+                            <span class="radio">
+                              <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
+                            </span>
+                            <span class="label">
+                              {% trans "URL" %}:
+                            </span>
+                            <span class="value">
+                              <input name="photo_url" id="photo_url"
+                                  class="medium-text-input"
+                                  value="{{params.photo_url}}" />
+                            </span>
+                          </div>
+                          <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
+                            {% comment %} This span can be removed if uploading needs to be disabled {% endcomment %}
+                            <span class="radio">
+                              <input id="photo_upload_radio" type="radio" name="photo_input">
+                            </span>
+                            <span class="label">
+                              {% trans "Upload" %}:
+                            </span>
+                            <span class="value">
+                              <input id="photo_upload" type="file" name="photo"
+                                  id="photo_upload"
+                                  class="medium-text-input"
+                                  disabled="disabled">
+                            </span>
+                            {% comment %} see above comment {% endcomment %}
+                          </div>
+                         <div class="end-multi-columns"></div>
                       </div>
-                        <div class="field" onclick="$('photo_url_radio').checked=true; update_image_input(false);">
-                          <span class="radio">
-                            <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
-                          </span>
-                          <span class="label">
-                            {% trans "URL" %}:
-                          </span>
-                          <span class="value">
-                            <input name="photo_url" id="photo_url"
-                                class="medium-text-input"
-                                value="{{params.photo_url}}" />
-                          </span>
-                        </div>
-                        <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
-                          {% comment %} This span can be removed if uploading needs to be disabled {% endcomment %}
-                          <span class="radio">
-                            <input id="photo_upload_radio" type="radio" name="photo_input">
-                          </span>
-                          <span class="label">
-                            {% trans "Upload" %}:
-                          </span>
-                          <span class="value">
-                            <input id="photo_upload" type="file" name="photo"
-                                id="photo_upload"
-                                class="medium-text-input"
-                                disabled="disabled">
-                          </span>
-                          {% comment %} see above comment {% endcomment %}
-                        </div>
-                       <div class="end-multi-columns"></div>
-                    </div>
-                  {% if config.show_profile_entry %}
+                    {% endif %}
+                  {# Hidden on ui=jp-mobile because it requires JavaScript. #}
+                  {% if config.show_profile_entry and env.ui != "jp-mobile" %}
                       <div class="profile section">
                         <h3>{% trans "Profile Pages" %}</h3>
                         <div class="hint">
@@ -315,10 +321,15 @@
                         </div>
                           {# Can add at most 3 profile pages #}
                           {% for i in '123'|make_list %}
-                            <div id="profile_entry{{i}}" style="display:none">
-                              <span valign="middle">
+                            <div id="profile_entry{{i}}" class="field"
+                                 style="display:none">
+                              <span class="icon">
                                 <span style="width:16px;height:16px"
                                      id="profile_icon{{i}}"></span>
+                                {# This &nbsp; is needed to keep position of #}
+                                {# <span class="value"> below when the icon #}
+                                {# doesn't exist. #}
+                                &nbsp;
                               </span>
                               <span class="value">
                                 <input type="hidden" id="profile_website_index{{i}}" />
@@ -327,13 +338,13 @@
                                     class="medium-text-input"
                                     placeholder="{% trans "Link to profile page" %}" />
                               </span>
-                              <span class="value">
+                              <span class="remove">
                                 <a href="javascript:remove_profile_entry({{i}})"
                                   >{% trans "Remove" %}</a>
                               </span>
                             </div>
                           {% endfor %}
-                          <div id="add_profile_entry">
+                          <div id="add_profile_entry" class="field">
                               <select id="add_profile_entry_select"
                                   onchange="add_profile_entry(this)">
                                 <option>{% trans "Select a website to add a profile page..." %}</option>
@@ -361,15 +372,13 @@
                         {% endif %}
                       </div>
                         <div class="field">
-                          <span class="value">
-                            <select id="expiry_option" name="expiry_option" value="">
-                              {% for duration in env.expiry_options %}
-                              <option value="{{duration.value}}">
-                                {{duration.text}}
-                              </option>
-                              {% endfor %}
-                            </select>
-                          </span>
+                          <select id="expiry_option" name="expiry_option" value="">
+                            {% for duration in env.expiry_options %}
+                            <option value="{{duration.value}}">
+                              {{duration.text}}
+                            </option>
+                            {% endfor %}
+                          </select>
                         </div>
                         <div class="end-multi-columns"></div>
                     </div>
@@ -380,42 +389,52 @@
                       <div class="hint">
                         {% trans "Where did this information come from?" %}
                       </div>
+                      {# Only clone=no is supported on ui=jp-mobile #}
+                      {# because JavaScript is disabled. #}
+                      {% if env.ui == "jp-mobile" %}
+                        <input type="hidden" name="clone" value="no">
+                      {% else %}
                         <div class="field">
-                          <div class="instructions">
-                            <div>
-                              <input type="radio" name="clone" value="no"
-                                  id="clone_no"
-                                  {% ifnotequal params.clone "yes" %}
-                                    checked="checked"
-                                  {% endifnotequal %}
-                                  onclick="update_clone()"
-                                  onchange="update_clone()">
-                              <label class="option" for="clone_no">
-                                {% trans "This is a new record." %}
-                              </label>
+                            <div class="instructions">
+                              <div>
+                                <input type="radio" name="clone" value="no"
+                                    id="clone_no"
+                                    {% ifnotequal params.clone "yes" %}
+                                      checked="checked"
+                                    {% endifnotequal %}
+                                    onclick="update_clone()"
+                                    onchange="update_clone()">
+                                <label class="option" for="clone_no">
+                                  {% trans "This is a new record." %}
+                                </label>
+                              </div>
+                              <div>
+                                <input type="radio" name="clone" value="yes"
+                                    id="clone_yes"
+                                    {% ifequal params.clone "yes" %}
+                                      checked="checked"
+                                    {% endifequal %}
+                                    onchange="update_clone()"
+                                    onclick="update_clone()">
+                                <label class="option" for="clone_yes">
+                                  {% trans "This record is copied from another source." %}
+                                </label>
+                              </div>
                             </div>
-                            <div>
-                              <input type="radio" name="clone" value="yes"
-                                  id="clone_yes"
-                                  {% ifequal params.clone "yes" %}
-                                    checked="checked"
-                                  {% endifequal %}
-                                  onchange="update_clone()"
-                                  onclick="update_clone()">
-                              <label class="option" for="clone_yes">
-                                {% trans "This record is copied from another source." %}
-                              </label>
-                            </div>
-                          </div>
+                        </div>
+                      {% endif %}
+                        <div class="field">
                           <span class="label">
                             <label for="author_name" class="mandatory"
                                 id="author_name_original">
                               {% trans "Your name" %}:
                             </label>
-                            <label for="author_name" class="mandatory"
-                                id="author_name_clone" style="display: none">
-                              {% trans "Original author's name" %}:
-                            </label>
+                            {% if env.ui != "jp-mobile" %}
+                              <label for="author_name" class="mandatory"
+                                  id="author_name_clone" style="display: none">
+                                {% trans "Original author's name" %}:
+                              </label>
+                            {% endif %}
                           </span>
                           <span class="value">
                             <input name="author_name" id="author_name"
@@ -428,10 +447,12 @@
                             <label for="author_phone" id="author_phone_original">
                               {% trans "Your phone number" %}:
                             </label>
-                            <label for="author_phone"
-                                id="author_phone_clone" style="display: none">
-                              {% trans "Author's phone number" %}:
-                            </label>
+                            {% if env.ui != "jp-mobile" %}
+                              <label for="author_phone"
+                                  id="author_phone_clone" style="display: none">
+                                {% trans "Author's phone number" %}:
+                              </label>
+                            {% endif %}
                           </span>
                           <span class="value">
                             <input name="author_phone" id="author_phone"
@@ -444,10 +465,12 @@
                             <label for="author_email" id="author_email_original">
                               {% trans "Your e-mail address" %}:
                             </label>
-                            <label for="author_email"
-                                id="author_email_clone" style="display: none">
-                              {% trans "Author's e-mail address" %}:
-                            </label>
+                            {% if env.ui != "jp-mobile" %}
+                              <label for="author_email"
+                                  id="author_email_clone" style="display: none">
+                                {% trans "Author's e-mail address" %}:
+                              </label>
+                            {% endif %}
                           </span>
                           <span class="value">
                             <input name="author_email" id="author_email"
@@ -455,43 +478,45 @@
                                 value="{{params.author_email}}" />
                           </span>
                         </div>
-                        <div class="field" id="source_url_row" style="display: none">
-                          <span class="label">
-                            <label for="source_url">
-                              {% trans "URL of original record" %}:
-                            </label>
-                          </span>
-                          <span class="value">
-                            <input name="source_url" id="source_url"
-                                class="medium-text-input"
-                                value="{{params.source_url}}" />
-                          </span>
-                        </div>
-                        <div class="field" id="source_date_row" style="display: none">
-                          <span class="label">
-                            <label for="source_date">
-                              {% trans "Original posting date" %}:
-                            </label>
-                            <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
-                          </span>
-                          <span class="value">
-                            <input name="source_date" id="source_date"
-                                class="medium-text-input"
-                                value="{{params.source_date}}" />
-                          </span>
-                        </div>
-                        <div class="field" id="source_name_row" style="display: none">
-                          <span class="label">
-                            <label for="source_name">
-                              {% trans "Original site name" %}:
-                            </label>
-                          </span>
-                          <span class="value">
-                            <input name="source_name" id="source_name"
-                                class="medium-text-input"
-                                value="{{params.source_name}}" />
-                          </span>
-                       </div>
+                        {% if env.ui != "jp-mobile" %}
+                          <div class="field" id="source_url_row" style="display: none">
+                            <span class="label">
+                              <label for="source_url">
+                                {% trans "URL of original record" %}:
+                              </label>
+                            </span>
+                            <span class="value">
+                              <input name="source_url" id="source_url"
+                                  class="medium-text-input"
+                                  value="{{params.source_url}}" />
+                            </span>
+                          </div>
+                          <div class="field" id="source_date_row" style="display: none">
+                            <span class="label">
+                              <label for="source_date">
+                                {% trans "Original posting date" %}:
+                              </label>
+                              <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
+                            </span>
+                            <span class="value">
+                              <input name="source_date" id="source_date"
+                                  class="medium-text-input"
+                                  value="{{params.source_date}}" />
+                            </span>
+                          </div>
+                          <div class="field" id="source_name_row" style="display: none">
+                            <span class="label">
+                              <label for="source_name">
+                                {% trans "Original site name" %}:
+                              </label>
+                            </span>
+                            <span class="value">
+                              <input name="source_name" id="source_name"
+                                  class="medium-text-input"
+                                  value="{{params.source_name}}" />
+                            </span>
+                         </div>
+                       {% endif %}
                        {% include "subscribe.html.template" %}
                        <div class="end-multi-columns"></div>
                     </div>
