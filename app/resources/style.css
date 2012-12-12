@@ -159,59 +159,20 @@ input {
   padding-left: 6px;
 }
 
-/* Tables */
+/* Tables which show a label and a value of each field e.g. in /view page.
 
-tr {
-  vertical-align: baseline;
-}
+See app/resources/view.html.template for a usage example.
 
-th, td {
-  padding: 0px 4px;
-  text-align: left;
-}
+Constructed with <div> and <span>, not <table>, so that:
+- it looks like a table on normal UI (with CSS rules below)
+- it looks like a normal div/span layout on ui=jp-mobile (where CSS is not
+  applied) which fits small screens.
 
-tr.columns {
-}
-
-table.fields {
-  margin-left: 3em;
-}
-
-table.person tr.photo {
-  vertical-align: top;
-}
-
-tr.text, tr.description, tr.location, tr.other {
-  vertical-align: top;
-}
-
-td.label {
-  text-align: right;
-  width: 12em;
-}
-
-td.photo .label {
-  white-space: nowrap;
-  width: 1em;
-  padding-left: 0;
-  cursor: pointer;
-}
-
-td.photo .radio {
-  vertical-align: middle;
-}
-
-.tracking, .note .contents div.tracking {
-  font-size: 9px;
-  color: #888;
-  text-align: right;
-}
-
-td.submit {
-  text-align: left;
-}
-
-/* Table with sections and fields */
+You need:
+  <div class="end-multi-columns"></div>
+after a sequence of <div class="field">. Otherwise the bottom margin is not
+correctly inserted.
+*/
 
 .fields-table {
   background: #e8e8e8;
@@ -230,34 +191,71 @@ td.submit {
 }
 
 .fields-table .label {
-  width: 160px;
+  display: block;  /* to make float/width attribute work */
   float: left;
-  display: block;
+  width: 160px;
   height: 100%;
   text-align: right;
 }
 
 .fields-table .value {
-  width: 160px;
-  display: block;
+  display: block;  /* to make float/width attribute work */
   float: right;
-}
-
-.fields-table .medium-text-input {
-  width: 150px;
-  border-width: 2px;
+  width: 160px;
 }
 
 .fields-table .long-text-input {
-  width: 300px;
+  width: 280px;
 }
 
 .fields-table .medium-text-input {
-  width: 150px;
+  width: 140px;
 }
 
 .fields-table .short-text-input {
-  width: 75px;
+  width: 70px;
+}
+
+/* Tables.
+
+Mostly replaced by fields-table above, but we still have some e.g. in /admin
+page.
+*/
+
+tr {
+  vertical-align: baseline;
+}
+
+th, td {
+  padding: 0px 4px;
+  text-align: left;
+}
+
+tr.columns {
+  vertical-align: baseline;
+}
+
+table.fields {
+  margin-left: 3em;
+}
+
+tr.text, tr.description, tr.location, tr.other {
+  vertical-align: top;
+}
+
+td.label {
+  text-align: right;
+  width: 12em;
+}
+
+.tracking, .note .contents div.tracking {
+  font-size: 9px;
+  color: #888;
+  text-align: right;
+}
+
+td.submit {
+  text-align: left;
 }
 
 /* Footer */
@@ -320,11 +318,10 @@ td.submit {
 
 .main .action-outer {
   width: 240px;
-  padding: 16px;
+  height: 70px;
   border-right: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
-  height: 70px;
-  display: table;
+  padding: 16px;
 }
 
 .main .action-outer.left {
@@ -337,32 +334,16 @@ td.submit {
   float: right;
 }
 
-.main .action-middle {
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .main .action-inner {
   width: 240px;
+  height: 70px;
+  display: table-cell;  /* to make vertical-align work */
+  vertical-align: middle;
   text-align: center;
 }
 
-/* IE 6 */
-* html .main .action-outer  { position: relative; }
-* html .main .action-middle { position: absolute; top: 50%; }
-* html .main .action-inner  { position: relative; top: -50%; }
-
-/* IE 7 */
-*:first-child+html .main .action-outer  { position: relative; }
-*:first-child+html .main .action-middle { position: absolute; top: 50%; }
-*:first-child+html .main .action-inner  { position: relative; top: -50%; }
-
 .main .action-outer a {
   font-weight: bold;
-}
-
-table.main {
-   border-spacing: 24px;
 }
 
 .custom-message {
@@ -459,11 +440,7 @@ div.map {
   margin-top: 0.5em;
 }
 
-.view table.note.column {
-  border-right: none;
-}
-
-.view .value .warning {
+.view .field .warning {
   color: red;
   font-weight: normal;
 }
@@ -509,21 +486,6 @@ tr.sectionbottom td {
 
 /* Create page */
 
-.create table.column, table.create.column {
-  background: #c0d0ff;
-  padding: 4px 0 1px;
-  border-right: 12px solid #fff;
-}
-
-table.column h2, table.view h2 {
-  margin: 2px 0 6px;
-  padding-left: 6px;
-}
-
-.create td.submit {
-  padding: 4px;
-}
-
 label.option {
   font-weight: bold;
 }
@@ -537,45 +499,42 @@ label.option {
   border-bottom: 4px solid #c0d0ff;
 }
 
-.create .fields-table .hint {
-}
-
-.fields-table .photo .radio {
+.create .fields-table .photo .radio {
+  display: block;
+  float: left;
   width: 30px;
-  float: left;
-  display: block;
 }
 
-.fields-table .photo .label {
-  width: 70px;
-  float: left;
+.create .fields-table .photo .label {
   display: block;
+  float: left;
   text-align: right;
+  width: 70px;
 }
 
-.fields-table .photo .value {
-  width: 220px;
+.create .fields-table .photo .value {
   display: block;
   float: right;
+  width: 220px;
 }
 
 .create .fields-table .profile .icon {
-  width: 30px;
-  float: left;
   display: block;
+  float: left;
+  width: 30px;
 }
 
 .create .fields-table .profile .value {
-  width: 220px;
-  float: left;
   display: block;
+  float: left;
   text-align: right;
+  width: 220px;
 }
 
 .create .fields-table .profile .remove {
-  width: 70px;
   display: block;
   float: right;
+  width: 70px;
 }
 
 .source .instructions {
