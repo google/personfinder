@@ -794,7 +794,7 @@ def RunShell(command, silent_ok=False, universal_newlines=True,
   data, retcode = RunShellWithReturnCode(command, print_output,
                                          universal_newlines, env)
   if retcode:
-    ErrorExit("Got error status from %s:\n%s" % (command, data))
+    ErrorExit("Got error status %d from %s:\n%s" % (retcode, command, data))
   if not silent_ok and not data:
     ErrorExit("No output from %s" % command)
   return data
