@@ -650,8 +650,8 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls=style,
                         message=message, message_html=message_html)
         except:
-            safe_message = message.replace('&', '&amp;').replace('<', '&lt;')
-            self.response.out.write(safe_message + '<p>' + message_html)
+            self.response.out.write(
+                django.utils.html.escape(message) + '<p>' + message_html)
         self.terminate_response()
 
     def terminate_response(self):
