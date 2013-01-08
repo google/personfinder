@@ -30,6 +30,7 @@ import config
 import pfif
 import main
 import model
+import resources
 import utils
 
 
@@ -175,9 +176,11 @@ class HandlerTests(unittest.TestCase):
             'haiti',
             repo_titles={'en': 'Haiti Earthquake'},
             language_menu_options=['en', 'ht', 'fr', 'es'])
+        self.original_get_rendered = resources.get_rendered
 
     def tearDown(self):
         db.delete(config.ConfigEntry.all())
+        resources.get_rendered = self.original_get_rendered
 
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
@@ -216,6 +219,14 @@ class HandlerTests(unittest.TestCase):
         config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
         _, response, handler = self.handler_for_url('/haiti/start')
         assert handler.config.allow_believed_dead_via_ui == False
+
+    def test_error_message(self):
+        """Regression test for an XSS vulnerability."""
+        resources.get_rendered = lambda: 1/0  # force error template to fail
+
+        request, response, handler = self.handler_for_url('/?lang=<script>&')
+        assert 'Invalid language tag' in response.out.getvalue()
+        assert '<script' not in response.out.getvalue()
 
 
 if __name__ == '__main__':
