@@ -19,25 +19,25 @@
 
 {% block head %}
   {{block.super}}
-  {% if env.ui != "jp-mobile" %}
+  {% if env.enable_javascript %}
     <script type="text/javascript">
-    function set_display(id_or_elem, hide) {
-      var hide_text = hide ? 'none' : '';
-      if (typeof(id_or_elem) == 'string') {
-        document.getElementById(id_or_elem).style.display = hide_text;
-      } else {
-        id_or_elem.style.display = hide_text;
+      function set_display(id_or_elem, hide) {
+        var hide_text = hide ? 'none' : '';
+        if (typeof(id_or_elem) == 'string') {
+          document.getElementById(id_or_elem).style.display = hide_text;
+        } else {
+          id_or_elem.style.display = hide_text;
+        }
       }
-    }
 
-    function hide_unhide_note_contents(note_contents_id) {
-      var note = document.getElementById(note_contents_id + '-contents');
-      var hidden = note.style.display == 'none';
-      set_display(note, !hidden);
-      set_display('reveal-note', hidden);
-      set_display('hide-note', !hidden);
-      set_display(note_contents_id + '-mark-not-spam', !hidden);
-    }
+      function hide_unhide_note_contents(note_contents_id) {
+        var note = document.getElementById(note_contents_id + '-contents');
+        var hidden = note.style.display == 'none';
+        set_display(note, !hidden);
+        set_display('reveal-note', hidden);
+        set_display('hide-note', !hidden);
+        set_display(note_contents_id + '-mark-not-spam', !hidden);
+      }
     </script>
   {% endif %}
 {% endblock head %}
@@ -203,9 +203,7 @@
                 <span class="label">{% trans "Author's name" %}:</span>
                 <span class="value">{{person.author_name}}</span>
               </div>
-              {# Not shown on ui=jp-mobile because Captcha #}
-              {# doesn't work. #}
-              {% if env.ui != "jp-mobile" %}
+              {% if env.enable_captcha %}
                 <div class="field">
                   <span class="label">
                     {% trans "Author's phone number" %}:
@@ -310,8 +308,7 @@
 
           </div>
 
-          {# Disabled on ui=jp-mobile because the action requires Captcha. #}
-          {% if env.ui != "jp-mobile" and extend_url %}
+          {% if env.enable_captcha and extend_url %}
             {% if expiration_days %}
               <div class="warning">
                 {% blocktrans count expiration_days as days %}
@@ -332,8 +329,7 @@
             </div>
           {% endif %}
 
-          {# Disabled on ui=jp-mobile because the action requires Captcha. #}
-          {% if env.ui != "jp-mobile" %}
+          {% if env.enable_captcha %}
             <div>
               <a href="{{subscribe_url}}">
                 <input type="button"
@@ -342,8 +338,7 @@
             </div>
           {% endif %}
 
-          {# Disabled on ui=jp-mobile because the action requires Captcha. #}
-          {% if env.ui != "jp-mobile" %}
+          {% if env.enable_captcha %}
             <div>
               <a href="{{delete_url}}">
                 <input type="button"
@@ -352,8 +347,7 @@
             </div>
           {% endif %}
 
-          {# Disabled on ui=jp-mobile because the action requires Captcha. #}
-          {% if person.author_email and not person.notes_disabled and env.ui != "jp-mobile" %}
+          {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
             <div>
               <a href="{{disable_notes_url}}">
                 <input type="button"

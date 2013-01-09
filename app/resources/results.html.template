@@ -47,7 +47,7 @@
   {% else %}
     <p>
     {% trans "To view or add information, select a name below." %}
-    {% if env.ui != "jp-mobile" %}
+    {% if env.enable_dup_mode %}
       <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
       <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
     {% endif %}
@@ -62,12 +62,12 @@
       {% endifchanged %}
       <div class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
-          <!-- no whitespace inside .resultImageContainer-->
-          <!-- Image width/height are specified as attributes here as well as in
-               CSS, so that they are applied if CSS is disabled e.g. on
-               ui=jp-mobile. -->
-          <!-- <img align='left'> and <br clear='all'> are for cases where CSS
-               is disabled e.g. on ui=jp-mobile. -->
+          {# No whitespace inside .resultImageContainer. #}
+          {# Image width/height are specified as attributes here as well as #}
+          {# in CSS, so that they are applied if CSS is disabled e.g. on #}
+          {# ui=jp-mobile. #}
+          {# <img align='left'> and <br clear='all'> are for cases where CSS #}
+          {# is disabled e.g. on ui=jp-mobile. #}
           {% if result.photo_url %}
           <span class="resultImageContainer"
             ><img class='resultImage' src='{{result.photo_url}}'
@@ -127,7 +127,7 @@
       </div>
     {% endfor %}
     </div>
-    {% if env.ui != "jp-mobile" %}
+    {% if env.enable_dup_mode %}
       <div id='dup_form' style='display:none'>
         {% trans "Select up to 3 records to mark as duplicate:" %}
         <input type="hidden" id="dup_state" value="">
@@ -140,9 +140,11 @@
           <span id='dup_count'></span> {% trans "Records selected" %}
         </form>
       </div>
-      <script type='text/javascript'>
-        init_dup_state();
-      </script>
+      {% if env.enable_javascript %}
+        <script type='text/javascript'>
+          init_dup_state();
+        </script>
+      {% endif %}
     {% endif %}
   {% endif %}
 
@@ -177,8 +179,7 @@
     <input type="hidden" name="given_name" value="{{params.given_name}}">
     <input type="hidden" name="family_name" value="{{params.family_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
-    {% if env.ui == "jp-mobile" %}
-      {# Too long buttons are not fully shown in some feature phones. #}
+    {% if env.use_short_buttons %}
       <input type="submit" value="{% trans "Create a new record" %}">
     {% else %}
       {% ifequal params.role 'provide' %}

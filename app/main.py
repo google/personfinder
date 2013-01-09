@@ -115,7 +115,11 @@ def get_repo_and_action(request):
     return repo, action
 
 def select_charset(request):
-    """Given a request, chooses a charset for encoding the response."""
+    """Given a request, chooses a charset for encoding the response.
+
+    If the selected charset is UTF-8, it always returns
+    'utf-8' (const.CHARSET_UTF8), not 'utf8', 'UTF-8', etc.
+    """
     # We assume that any client that doesn't support UTF-8 will specify a
     # preferred encoding in the Accept-Charset header, and will use this
     # encoding for content, query parameters, and form data.  We make this
@@ -135,7 +139,7 @@ def select_charset(request):
     # Always prefer UTF-8 if the client supports it.
     for charset in charsets:
         if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-            return charset
+            return const.CHARSET_UTF8
 
     # Otherwise, look for a requested charset that Python supports.
     for charset in charsets:
@@ -146,7 +150,7 @@ def select_charset(request):
             continue
 
     # If Python doesn't know any of the requested charsets, use UTF-8.
-    return 'utf-8'
+    return const.CHARSET_UTF8
 
 def select_lang(request, config=None):
     """Selects the best language to use for a given request.  The 'lang' query
@@ -229,11 +233,13 @@ def setup_env(request):
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
-    if env.charset == 'UTF-8':
-      env.back_chevron = u'\xbb' if env.rtl else u'\xab'
-    else:
-      # u'\xbb' and u'\xab' may not be in the charset.
-      env.back_chevron = u'>>' if env.rtl else u'<<'
+
+    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
+    try:
+        env.back_chevron.encode(env.charset)
+    except UnicodeEncodeError:
+        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
+        env.back_chevron = u'>>' if env.rtl else u'<<'
 
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below
@@ -281,6 +287,41 @@ def setup_env(request):
 
     # Optional "target" attribute for links to non-small pages.
     env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
+
+    if env.ui == 'jp-mobile':
+      # Disables features which requires JavaScript. Some feature phones doesn't
+      # support JavaScript.
+      env.enable_javascript = False
+      # Disables operations which requires Captcha because Captcha requires
+      # JavaScript.
+      env.enable_captcha = False
+      # Uploading is often not supported in feature phones.
+      env.enable_photo_upload = False
+      # Disables spam operations because it requires JavaScript and
+      # supporting more pages on ui=jp-mobile.
+      env.enable_spam_ops = False
+      # Disables duplicate marking mode because the mode doesn't support
+      # small screens.
+      env.enable_dup_mode = False
+      # Hides links to the global page because the global page doesn't support
+      # small screens.
+      env.enable_global_page = False
+      # Hides language menu because the menu in the current position is annoying
+      # in feature phones.
+      # TODO(ichikawa): Consider layout of the language menu.
+      env.show_language_menu = False
+      # Too long buttons are not fully shown in some feature phones.
+      env.use_short_buttons = True
+
+    else:
+      env.enable_spam_ops = True
+      env.enable_captcha = True
+      env.enable_dup_mode = True
+      env.enable_photo_upload = True
+      env.show_language_menu = True
+      env.enable_global_page = True
+      env.enable_javascript = True
+      env.use_short_buttons = False
 
     # Repo-specific information.
     if env.repo:

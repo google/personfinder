@@ -196,11 +196,13 @@ class Resource(db.Model):
                     self.content.decode('utf-8'), 'Resource', self.key().name())
             except:
                 # Exception here is silently ignored otherwise.
-                logging.error('error', exc_info=True)
+                logging.error(
+                    'Error loading template %s.' % self.key().name(),
+                    exc_info=True)
                 self.template = webapp.template.Template(
-                    '** Error loading template %s. See the log for details. **'
-                        % self.key().name(),
-                    'Resource', self.key().name())
+                    'Internal Server Error',
+                    'Resource',
+                    self.key().name())
         return self.template
 
 

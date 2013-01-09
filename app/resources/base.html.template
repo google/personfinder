@@ -33,17 +33,15 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.ui != "jp-mobile" %}
-    {% if env.ui == "small" %}
-      <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
-    {% else %}
-      <link rel="stylesheet" href="{{env.global_url}}/style.css">
-    {% endif %}
+  {% if env.ui == "small" or env.ui == "jp-mobile" %}
+    <link rel="stylesheet" href="{{env.global_url}}/style-{{env.ui}}.css">
+  {% else %}
+    <link rel="stylesheet" href="{{env.global_url}}/style.css">
   {% endif %}
   {% if env.rtl %}
     <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
-  {% if env.ui != "jp-mobile" %}
+  {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';
       var translate_api_key = '{{config.translate_api_key}}';
@@ -66,18 +64,14 @@
     onload="{{onload_function}}">{% block body %}
   <div class="header" role="banner">
     {% block header %}
-      {% include "language-menu.html.template" %}
-      {% if env.ui != "small" %}
-        {% if env.ui == "jp-mobile" %}
-          {# The global page doesn't support jp-mobile. #}
+      {% if env.show_language_menu %}
+        {% include "language-menu.html.template" %}
+      {% endif %}
+      {% if env.enable_global_page and env.ui != "small" %}
+        <a href="{{env.global_url}}">
           <img src="{{env.global_url}}/google-person-finder.gif"
               width="260" height="40">
-        {% else %}
-          <a href="{{env.global_url}}">
-            <img src="{{env.global_url}}/google-person-finder.gif"
-                width="260" height="40">
-          </a>
-        {% endif %}
+        </a>
       {% endif %}
     {% endblock header %}
   </div>

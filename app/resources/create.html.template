@@ -15,7 +15,7 @@
 
 {% block head %}
   {{block.super}}
-  {% if env.ui != "jp-mobile" %}
+  {% if env.enable_javascript %}
     <script>
       var profile_websites = {{profile_websites_json|safe}};
     </script>
@@ -282,8 +282,7 @@
             <div class="end-multi-columns"></div>
           </div>
 
-          {# Uploading is often not supported in feature phones. #}
-          {% if env.ui != "jp-mobile" %}
+          {% if env.enable_photo_upload %}
             <div class="photo section">
               <h3><label for="photo_url">
                   {% trans "Photo" %}
@@ -324,8 +323,7 @@
             </div>
           {% endif %}
 
-          {# Hidden on ui=jp-mobile because it requires JavaScript. #}
-          {% if config.show_profile_entry and env.ui != "jp-mobile" %}
+          {% if config.show_profile_entry and env.enable_javascript %}
             <div class="profile section">
               <h3>{% trans "Profile Pages" %}</h3>
               <div class="hint">
@@ -403,11 +401,7 @@
             <div class="hint">
               {% trans "Where did this information come from?" %}
             </div>
-            {# Only clone=no is supported on ui=jp-mobile #}
-            {# because JavaScript is disabled. #}
-            {% if env.ui == "jp-mobile" %}
-              <input type="hidden" name="clone" value="no">
-            {% else %}
+            {% if env.enable_javascript %}
               <div class="field">
                 <div class="instructions">
                   <div>
@@ -436,6 +430,9 @@
                   </div>
                 </div>
               </div>
+            {% else %}
+              {# Only clone=no is supported when JavaScript is disabled. #}
+              <input type="hidden" name="clone" value="no">
             {% endif %}
             <div class="field">
               <span class="label">
@@ -443,7 +440,7 @@
                     id="author_name_original">
                   {% trans "Your name" %}:
                 </label>
-                {% if env.ui != "jp-mobile" %}
+                {% if env.enable_javascript %}
                   <label for="author_name" class="mandatory"
                       id="author_name_clone" style="display: none">
                     {% trans "Original author's name" %}:
@@ -461,7 +458,7 @@
                 <label for="author_phone" id="author_phone_original">
                   {% trans "Your phone number" %}:
                 </label>
-                {% if env.ui != "jp-mobile" %}
+                {% if env.enable_javascript %}
                   <label for="author_phone"
                       id="author_phone_clone" style="display: none">
                     {% trans "Author's phone number" %}:
@@ -479,7 +476,7 @@
                 <label for="author_email" id="author_email_original">
                   {% trans "Your e-mail address" %}:
                 </label>
-                {% if env.ui != "jp-mobile" %}
+                {% if env.enable_javascript %}
                   <label for="author_email"
                       id="author_email_clone" style="display: none">
                     {% trans "Author's e-mail address" %}:
@@ -492,7 +489,7 @@
                     value="{{params.author_email}}" />
               </span>
             </div>
-            {% if env.ui != "jp-mobile" %}
+            {% if env.enable_javascript %}
               <div class="field" id="source_url_row" style="display: none">
                 <span class="label">
                   <label for="source_url">
@@ -539,7 +536,10 @@
             <div class="submit">
               <input type="submit"
                   value="{% trans "Save this record" %}"
-                  onclick="return validate_fields()">
+                  {% if env.enable_javascript %}
+                    onclick="return validate_fields()"
+                  {% endif %}
+                  >
               {% include "errors.html.template" %}
             </div>
           {% endifnotequal %}

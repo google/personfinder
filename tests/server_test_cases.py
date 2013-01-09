@@ -334,9 +334,9 @@ class ReadOnlyTests(TestsBase):
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=utf8'
+        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
         meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=utf8'
+        assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of title text
         assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 

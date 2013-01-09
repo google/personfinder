@@ -172,6 +172,9 @@ You need:
   <div class="end-multi-columns"></div>
 after a sequence of <div class="field">. Otherwise the bottom margin is not
 correctly inserted.
+
+We don't use display: table because IE 6/7 doesn't support it. IE 6/7 is over
+10% in penetration ratio.
 */
 
 .fields-table {
@@ -232,7 +235,7 @@ th, td {
 }
 
 tr.columns {
-  vertical-align: baseline;
+  vertical-align: top;
 }
 
 table.fields {
@@ -337,7 +340,10 @@ td.submit {
 .main .action-inner {
   width: 240px;
   height: 70px;
-  display: table-cell;  /* to make vertical-align work */
+  /* display: table-cell to make vertical-align work.
+     Vertical centering doesn't work on IE 6/7 because it doesn't support
+     display: table-cell. But it would be acceptable. */
+  display: table-cell;
   vertical-align: middle;
   text-align: center;
 }

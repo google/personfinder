@@ -129,8 +129,7 @@
      {% endifequal %}
       <div class="submit">
         {% ifequal params.role 'provide' %}
-          {% if env.ui == "jp-mobile" %}
-            {# Too long buttons are not fully shown in some feature phones. #}
+          {% if env.use_short_buttons %}
             <input type="submit" value="{% trans "Provide information" %}">
           {% else %}
             <input type="submit" value="{% trans "Provide information about this person" %}">

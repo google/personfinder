@@ -27,35 +27,30 @@
   <span class="time">{{note.source_date_local|date:"H:i"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
-  {% if note.hidden %}
-    <div class="hidden-note">
-      {% trans "This note has been marked as spam." %}
-      {# Spam operations are disabled on ui=jp-mobile because it requires #}
-      {# JavaScript and supporting more pages on ui=jp-mobile. #}
-      {% if env.ui != "jp-mobile" %}
-        <a href="#" id="reveal-note" style="display: inline;"
-          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-          {% trans "Reveal note" %}</a>
-        <a href="#" id="hide-note" style="display: none;"
-          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-          {% trans "Hide note" %}</a>
-        <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
-          style="display: none;">
-          {% trans "Not spam" %}</a>
+    {% if note.hidden %}
+      <div class="hidden-note">
+        {% trans "This note has been marked as spam." %}
+        {% if env.enable_spam_ops %}
+          <a href="#" id="reveal-note" style="display: inline;"
+            onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+            {% trans "Reveal note" %}</a>
+          <a href="#" id="hide-note" style="display: none;"
+            onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+            {% trans "Hide note" %}</a>
+          <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
+            style="display: none;">
+            {% trans "Not spam" %}</a>
+        {% endif %}
+      </div>
+    {% else %}
+      {% if env.enable_spam_ops %}
+        <span class="report-spam">
+        <a href="{{note.flag_spam_url}}">
+          {% trans "Report spam" %}</a></span>
       {% endif %}
-    </div>
-  {% else %}
-    {# Spam operations are disabled on ui=jp-mobile because it requires #}
-    {# JavaScript and supporting more pages on ui=jp-mobile. #}
-    {% if env.ui != "jp-mobile" %}
-      <span class="report-spam">
-      <a href="{{note.flag_spam_url}}">
-        {% trans "Report spam" %}</a></span>
     {% endif %}
   {% endif %}
-  {% endif %}
-  {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
-  {% if note.author_email and env.ui != "jp-mobile" %}
+  {% if note.author_email and env.enable_captcha %}
     <div class="contact">
       {% trans "E-mail" %}:
       {% if show_private_info %}
@@ -66,8 +61,7 @@
       {% endif %}
     </div>
   {% endif %}
-  {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
-  {% if note.author_phone and env.ui != "jp-mobile" %}
+  {% if note.author_phone and env.enable_captcha %}
     <div class="contact">
       {% trans "Phone" %}:
       {% if show_private_info %}
@@ -80,7 +74,7 @@
   {% endif %}
 </div>
 
-{% if not node.hidden or env.ui != "jp-mobile" %}
+{% if not note.hidden or env.enable_spam_ops %}
   <div class="contents" id="{{note.record_id}}-contents"
     {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
     <span name="note_text"><span>{{note.text.strip|linebreaksbr}}</span></span>
@@ -110,8 +104,7 @@
         {% trans "This person has been in contact with someone" %}
       </div>
     {% endif %}
-    {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
-    {% if note.email_of_found_person and env.ui != "jp-mobile" %}
+    {% if note.email_of_found_person and env.enable_captcha %}
       <div>
         <span class="label">
           {% trans "Missing person's current e-mail address" %}:
@@ -126,8 +119,7 @@
         </span>
       </div>
     {% endif %}
-    {# Not shown on ui=jp-mobile because Captcha doesn't work. #}
-    {% if note.phone_of_found_person and env.ui != "jp-mobile" %}
+    {% if note.phone_of_found_person and env.enable_captcha %}
       <div>
         <span class="label">
           {% trans "Missing person's current phone number" %}:
@@ -151,7 +143,7 @@
           {{note.last_known_location}}
         </span>
       </div>
-      {% if env.maps_api_key %}
+      {% if env.enable_javascript and env.maps_api_key %}
         <div>
           <div id="map_{{note.record_id}}_show_link" style="display: none">
             <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
@@ -162,9 +154,11 @@
               {% trans "Hide Map" %}</a>
           </div>
           <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
-          <script>
-            parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
-          </script>
+          {% if env.enable_javascript %}
+            <script>
+              parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
+            </script>
+          {% endif %}
         </div>
       {% endif %}
     {% endif %}

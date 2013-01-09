@@ -12,9 +12,7 @@
 
 {% load i18n %}
 
-{# Subscription is disabled on ui=jp-mobile because Captcha often doesn't #}
-{# work in feature phones. #}
-{% if env.ui != "jp-mobile" %}
+{% if env.enable_captcha %}
   <div class="field">
     <span class="label">
       <label for="subscribe-checkbox">

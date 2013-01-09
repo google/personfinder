@@ -69,7 +69,7 @@
                       {% trans "Last known location" %}
                     </h3>
                     <div class="hint">
-                      {% if env.maps_api_key and env.ui != "jp-mobile" %}
+                      {% if env.enable_javascript and env.maps_api_key %}
                         {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
                       {% else %}
                         {% trans "Type an address." %}
@@ -82,7 +82,7 @@
                               rows=2>{{params.last_known_location}}</textarea>
                       </div>
                       <div class="end-multi-columns"></div>
-                    {% if env.maps_api_key and env.ui != "jp-mobile" %}
+                    {% if env.enable_javascript and env.maps_api_key %}
                         <div class="field map-container">
                             <div id="clickable_map_show_link">
                               <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
@@ -104,8 +104,7 @@
                         <div class="end-multi-columns"></div>
                     {% endif %}
                   </div>
-                  {# Uploading is often not supported in feature phones. #}
-                  {% if env.ui != "jp-mobile" %}
+                  {% if env.enable_photo_upload %}
                     <div class="photo section">
                       <h3><label for="note_photo_url">
                           {% trans "Photo" %}
@@ -176,10 +175,10 @@
                       </div>
                       <div class="end-multi-columns"></div>
                   </div>
-                  {# Always shows this section on ui=jp-mobile because #}
-                  {# JavaScript is disabled. #}
                   <div class="contact section" id="contact_row"
-                      {% if env.ui != "jp-mobile" %}
+                      {# Always shows this section when Javascript is #}
+                      {# disabled. #}
+                      {% if env.enable_javascript %}
                         style="display: none"
                       {% endif %}
                       >
@@ -278,7 +277,10 @@
                         {% else %}
                           {% trans "Save this record" %}
                         {% endif %}{% endspaceless %}"
-                      onclick="return validate_fields()">
+                      {% if env.enable_javascript %}
+                        onclick="return validate_fields()"
+                      {% endif %}
+                      >
                     {% if markdup %}
                       <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
                     {% endif %}
