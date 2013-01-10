@@ -140,11 +140,9 @@
           <span id='dup_count'></span> {% trans "Records selected" %}
         </form>
       </div>
-      {% if env.enable_javascript %}
-        <script type='text/javascript'>
-          init_dup_state();
-        </script>
-      {% endif %}
+      <script type='text/javascript'>
+        init_dup_state();
+      </script>
     {% endif %}
   {% endif %}
 

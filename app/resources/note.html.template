@@ -154,11 +154,9 @@
               {% trans "Hide Map" %}</a>
           </div>
           <div id="map_{{note.record_id}}" class="map" style="display: none"></div>
-          {% if env.enable_javascript %}
-            <script>
-              parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
-            </script>
-          {% endif %}
+          <script>
+            parseLatLngOrGeocodeAndStore('{{note.last_known_location}}', 'map_{{note.record_id}}');
+          </script>
         </div>
       {% endif %}
     {% endif %}

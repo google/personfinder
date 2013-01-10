@@ -285,43 +285,55 @@ def setup_env(request):
     elif not env.ui and style_param:
         env.ui = style_param
 
+    # UI configurations.
+    #
+    # Enables features which require JavaScript.
+    env.enable_javascript = True
+    # Enables operations which requires Captcha.
+    env.enable_captcha = True
+    # Enables photo upload.
+    env.enable_photo_upload = True
+    # Enables to flag/unflag notes as spam, and to reveal spam notes.
+    env.enable_spam_ops = True
+    # Enables duplicate marking mode.
+    env.enable_dup_mode = True
+    # Shows a logo on top of the page.
+    env.show_logo = True
+    # Shows language menu.
+    env.show_language_menu = True
+    # Uses short labels for buttons.
+    env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
+    env.target_attr = ''
 
-    if env.ui == 'jp-mobile':
-      # Disables features which requires JavaScript. Some feature phones doesn't
-      # support JavaScript.
-      env.enable_javascript = False
-      # Disables operations which requires Captcha because Captcha requires
-      # JavaScript.
-      env.enable_captcha = False
-      # Uploading is often not supported in feature phones.
-      env.enable_photo_upload = False
-      # Disables spam operations because it requires JavaScript and
-      # supporting more pages on ui=jp-mobile.
-      env.enable_spam_ops = False
-      # Disables duplicate marking mode because the mode doesn't support
-      # small screens.
-      env.enable_dup_mode = False
-      # Hides links to the global page because the global page doesn't support
-      # small screens.
-      env.enable_global_page = False
-      # Hides language menu because the menu in the current position is annoying
-      # in feature phones.
-      # TODO(ichikawa): Consider layout of the language menu.
-      env.show_language_menu = False
-      # Too long buttons are not fully shown in some feature phones.
-      env.use_short_buttons = True
+    if env.ui == 'small':
+        env.show_logo = False
+        env.target_attr = ' target="_blank" '
 
-    else:
-      env.enable_spam_ops = True
-      env.enable_captcha = True
-      env.enable_dup_mode = True
-      env.enable_photo_upload = True
-      env.show_language_menu = True
-      env.enable_global_page = True
-      env.enable_javascript = True
-      env.use_short_buttons = False
+    elif env.ui == 'jp-mobile':
+        # Disables features which requires JavaScript. Some feature phones
+        # doesn't support JavaScript.
+        env.enable_javascript = False
+        # Disables operations which requires Captcha because Captcha requires
+        # JavaScript.
+        env.enable_captcha = False
+        # Uploading is often not supported in feature phones.
+        env.enable_photo_upload = False
+        # Disables spam operations because it requires JavaScript and
+        # supporting more pages on ui=jp-mobile.
+        env.enable_spam_ops = False
+        # Disables duplicate marking mode because it doesn't support
+        # small screens and it requires JavaScript.
+        env.enable_dup_mode = False
+        # Hides the logo on the top to save the space. Also, the logo links
+        # to the global page which doesn't support small screens.
+        env.show_logo = False
+        # Hides language menu because the menu in the current position is
+        # annoying in feature phones.
+        # TODO(ichikawa): Consider layout of the language menu.
+        env.show_language_menu = False
+        # Too long buttons are not fully shown in some feature phones.
+        env.use_short_buttons = True
 
     # Repo-specific information.
     if env.repo:
