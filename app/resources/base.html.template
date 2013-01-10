@@ -33,7 +33,7 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.small %}
+  {% if env.ui == "small" %}
     <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
   {% else %}
     <link rel="stylesheet" href="{{env.global_url}}/style.css">
@@ -57,12 +57,13 @@
   {% endif %}
 {% endblock head %}</head>
 
-<body class="{{env.small|yesno:"small,normal"}} {{params.style}}"
+<body
+    class="{{env.ui|default:"normal"}}"
     onload="{{onload_function}}">{% block body %}
   <div class="header" role="banner">
     {% block header %}
       {% include "language-menu.html.template" %}
-      {% if not env.small %}
+      {% if env.ui != "small" %}
         <a href="{{env.global_url}}">
           <img src="{{env.global_url}}/google-person-finder.gif"
               width="260" height="40">
@@ -75,7 +76,7 @@
     <h1>
       {% trans "Person Finder" %}:
       <a class="repo" href="{{env.repo_url}}"
-          {% if env.small %}target="_blank"{% endif %}>{{env.repo_title}}</a>
+          {{env.target_attr|safe}}>{{env.repo_title}}</a>
     </h1>
   {% endif %}
 
@@ -96,7 +97,7 @@
 
   {% block backlink %}
     {% if env.repo and env.action and env.action != "start" %}
-      {% if not env.small %}<p>{% endif %}
+      {% if env.ui != "small" %}<p>{% endif %}
       <div class="backlink"><a href="{{env.start_url}}">
         {{env.back_chevron}} {% trans "Back to start" %}
       </a></div>

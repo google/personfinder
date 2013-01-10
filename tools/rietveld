@@ -211,11 +211,11 @@ rm -f /tmp/en-diff.$$
 
 # Upload the code review.
 echo
-echo $PYTHON $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
+echo python $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
 cd $PROJECT_DIR
 TMP=/tmp/issue-number.$$
 MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
-PYTHONPATH=$TOOLS_DIR $PYTHON -c "
+PYTHONPATH=$TOOLS_DIR python -c "
 import upload
 cmd = ['upload.py'] + ['-m', '$MESSAGE'] + '$OPTIONS'.split() 
 issue, patchset = upload.RealMain(cmd)
