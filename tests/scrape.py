@@ -732,12 +732,6 @@ class Region:
                     if type in ['text', 'password', 'hidden'] or (
                        type in ['checkbox', 'radio'] and 'checked' in input):
                         params[input['name']] = input.get('value', '')
-                    if type == 'file':
-                        try:
-                            filename = input.get('value', '')
-                            params[input['name']] = open(filename)
-                        except IOError:
-                            pass
             for select in self.all('select'):
                 if 'disabled' not in select:
                     selections = [option['value']
