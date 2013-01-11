@@ -12,7 +12,7 @@
 
 {% load i18n %}
 
-{% ifnotequal env.language_options|length 1 %}
+{% if env.language_options|length != 1 %}
   <div class="languages" title="{% trans "Language selection" %}">
     <img src="{{env.global_url}}/language_picker.png"
         alt="{% trans "Language selection" %}"
@@ -27,4 +27,4 @@
       {% endfor %}
     </select>
   </div>
-{% endifnotequal %}
+{% endif %}

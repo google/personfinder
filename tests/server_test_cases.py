@@ -337,9 +337,9 @@ class ReadOnlyTests(TestsBase):
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=utf8'
+        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
         meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=utf8'
+        assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of title text
         assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
@@ -664,10 +664,10 @@ class PersonNoteTests(TestsBase):
         details = details or {}
         details_page = self.s.doc
 
-        # Person info is stored in matching 'label' and 'field' cells.
+        # Person info is stored in matching 'label' and 'value' cells.
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
-            details_page.all(class_='field')))
+            details_page.all(class_='value')))
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -686,7 +686,7 @@ class PersonNoteTests(TestsBase):
         """
 
         # Get the list of links.
-        results = self.s.doc.first('ul', class_='searchResults')
+        results = self.s.doc.first('div', class_='searchResults')
         result_link = results.all('a', class_='result-link')[n]
 
         # Verify and then follow the link.
@@ -1667,7 +1667,7 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1684,11 +1684,16 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
+
+        # Advance the clock. The new note has a newer source_date by this.
+        # This makes sure that the new note appears at the bottom of the view
+        # page.
+        self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
@@ -1729,7 +1734,7 @@ http://www.foo.com/_account_1''',
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1748,12 +1753,15 @@ http://www.foo.com/_account_1''',
         # Check that the believed_dead option does not appear
         # on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
             assert option.attrs['value'] != 'believed_dead'
+
+        # Advance the clock. Same as above.
+        self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
@@ -1772,6 +1780,9 @@ http://www.foo.com/_account_1''',
                                Note_text='_test_text',
                                Note_status='believed_alive')
         db.delete(UserActionLog.all().fetch(10))
+
+        # Advance the clock. Same as above.
+        self.advance_utcnow(seconds=1)
 
         # Set status to believed_dead, but allow_believed_dead_via_ui is false.
         self.s.submit(form,
@@ -1895,6 +1906,7 @@ http://www.foo.com/_account_1''',
                   data=get_test_data('test.pfif-1.2.xml'),
                   type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person is not None
         assert person.given_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
@@ -5015,14 +5027,14 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Given name:'
-        assert f[0].first('td', class_='field').text.strip() == '_test_first'
-        assert f[1].first('td', class_='label').text.strip() == 'Family name:'
-        assert f[1].first('td', class_='field').text.strip() == '_test_last'
-        assert f[2].first('td', class_='label').text.strip() == \
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Given name:'
+        assert f[0].first('span', class_='value').text.strip() == '_test_first'
+        assert f[1].first('span', class_='label').text.strip() == 'Family name:'
+        assert f[1].first('span', class_='value').text.strip() == '_test_last'
+        assert f[2].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[2].first('td', class_='field').text.strip() == \
+        assert f[2].first('span', class_='value').text.strip() == \
             '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')
@@ -5047,9 +5059,9 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         d = self.go(
             '/pakistan/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Name:'
-        assert f[0].first('td', class_='field').text.strip() == '_test_first'
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Name:'
+        assert f[0].first('span', class_='value').text.strip() == '_test_first'
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
         assert '_test_last' not in d.first('body').text
@@ -5095,14 +5107,14 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
-        f = doc.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Family name:'
-        assert f[0].first('td', class_='field').text.strip() == '_test_last'
-        assert f[1].first('td', class_='label').text.strip() == 'Given name:'
-        assert f[1].first('td', class_='field').text.strip() == '_test_first'
-        assert f[2].first('td', class_='label').text.strip() == \
+        f = doc.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Family name:'
+        assert f[0].first('span', class_='value').text.strip() == '_test_last'
+        assert f[1].first('span', class_='label').text.strip() == 'Given name:'
+        assert f[1].first('span', class_='value').text.strip() == '_test_first'
+        assert f[2].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[2].first('td', class_='field').text.strip() == \
+        assert f[2].first('span', class_='value').text.strip() == \
             '_test_alternate_last _test_alternate_first'
 
         self.go('/japan/results?query=_test_first+_test_last&lang=en')
@@ -5143,14 +5155,14 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/haiti/view?id=%s' % person.record_id)
-        f = doc.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Given name:'
-        assert f[0].first('td', class_='field').text.strip() == '_test_first'
-        assert f[1].first('td', class_='label').text.strip() == 'Family name:'
-        assert f[1].first('td', class_='field').text.strip() == '_test_last'
-        assert f[2].first('td', class_='label').text.strip() == \
+        f = doc.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Given name:'
+        assert f[0].first('span', class_='value').text.strip() == '_test_first'
+        assert f[1].first('span', class_='label').text.strip() == 'Family name:'
+        assert f[1].first('span', class_='value').text.strip() == '_test_last'
+        assert f[2].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[2].first('td', class_='field').text.strip() == \
+        assert f[2].first('span', class_='value').text.strip() == \
             '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')
@@ -5178,10 +5190,10 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[2].first('td', class_='label').text.strip() == \
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[2].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[2].first('td', class_='field').text.strip() == \
+        assert f[2].first('span', class_='value').text.strip() == \
             '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')

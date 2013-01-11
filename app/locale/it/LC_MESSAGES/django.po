@@ -120,18 +120,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "                Warning: this record will expire in less than a day.\n"
 "                "
 msgid_plural ""
@@ -141,6 +129,18 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -224,6 +224,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
@@ -266,16 +277,6 @@ msgstr ""
 "di conferma all'autore. Se l'autore sei tu, controlla la posta dopo avere"
 " fatto clic sul pulsante sotto.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -551,6 +552,9 @@ msgstr ""
 "Copia e incolla il seguente codice HTML per incorporare questo strumento "
 "sul tuo sito"
 
+msgid "Create a new record"
+msgstr ""
+
 msgid "Create a new record for"
 msgstr "Crea un nuovo record per"
 
@@ -581,6 +585,9 @@ msgstr "Descrivi le caratteristiche fisiche della persona."
 
 msgid "Description"
 msgstr "Descrizione"
+
+msgid "Desktop version"
+msgstr ""
 
 msgid "Developers"
 msgstr "Sviluppatori"
@@ -986,6 +993,9 @@ msgstr ""
 msgid "Profile page"
 msgstr ""
 
+msgid "Provide information"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Fornisci informazioni su questa persona"
 
@@ -1252,6 +1262,9 @@ msgstr "Per visualizzare o aggiungere informazioni, seleziona un nome di seguito
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"

@@ -15,12 +15,11 @@
 
 {% load i18n %}
 
-<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
-<html dir="{{env.rtl|yesno:"rtl,ltr"}}">
+<!DOCTYPE html>
+<html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
 <head>{% block head %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
-  <meta http-equiv="content-language" content="{{env.lang}}">
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
@@ -33,27 +32,29 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.ui == "small" %}
-    <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
+  {% if env.ui == "small" or env.ui == "jp-mobile" %}
+    <link rel="stylesheet" href="{{env.global_url}}/style-{{env.ui}}.css">
   {% else %}
     <link rel="stylesheet" href="{{env.global_url}}/style.css">
   {% endif %}
   {% if env.rtl %}
     <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
-  <script type="text/javascript">
-    var lang = '{{env.lang}}';
-    var translate_api_key = '{{config.translate_api_key}}';
-  </script>
-  <script src="{{env.global_url}}/forms.js"></script>
-  {% if env.virtual_keyboard_layout %}
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+  {% if env.enable_javascript %}
     <script type="text/javascript">
-      google.setOnLoadCallback(function() {
-        initialize_keyboard('{{env.virtual_keyboard_layout}}');
-      });
+      var lang = '{{env.lang}}';
+      var translate_api_key = '{{config.translate_api_key}}';
     </script>
+    <script src="{{env.global_url}}/forms.js"></script>
+    {% if env.virtual_keyboard_layout %}
+      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+      <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+      <script type="text/javascript">
+        google.setOnLoadCallback(function() {
+          initialize_keyboard('{{env.virtual_keyboard_layout}}');
+        });
+      </script>
+    {% endif %}
   {% endif %}
 {% endblock head %}</head>
 
@@ -62,11 +63,13 @@
     onload="{{onload_function}}">{% block body %}
   <div class="header" role="banner">
     {% block header %}
-      {% include "language-menu.html.template" %}
-      {% if env.ui != "small" %}
+      {% if env.show_language_menu %}
+        {% include "language-menu.html.template" %}
+      {% endif %}
+      {% if env.show_logo %}
         <a href="{{env.global_url}}">
           <img src="{{env.global_url}}/google-person-finder.gif"
-              width="260" height="40">
+              width="260" height="40" alt="Google Person Finder">
         </a>
       {% endif %}
     {% endblock header %}
@@ -75,7 +78,7 @@
   {% if env.repo %}
     <h1>
       {% trans "Person Finder" %}:
-      <a class="repo" href="{{env.repo_url}}"
+      <a class="repo" href="{{env.repo_title_url}}"
           {{env.target_attr|safe}}>{{env.repo_title}}</a>
     </h1>
   {% endif %}
@@ -105,13 +108,17 @@
   {% endblock backlink %}
 
   <div class="footer" role="contentinfo">
-    <div class="disclaimer" role="disclaimer">
+    <div class="disclaimer">
       {% block disclaimer %}
         {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}
     </div>
 
     {% block footer %}
+      {% if env.repo and env.ui == "jp-mobile" %}
+        <a href="{{env.repo_url}}">{% trans "Desktop version" %}</a>
+        <span class="link-separator">&#xb7;</span>
+      {% endif %}
       {% if env.repo %}
         <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
             >{% trans "Embed this tool on your site" %}</a>
