@@ -115,7 +115,11 @@ def get_repo_and_action(request):
     return repo, action
 
 def select_charset(request):
-    """Given a request, chooses a charset for encoding the response."""
+    """Given a request, chooses a charset for encoding the response.
+
+    If the selected charset is UTF-8, it always returns
+    'utf-8' (const.CHARSET_UTF8), not 'utf8', 'UTF-8', etc.
+    """
     # We assume that any client that doesn't support UTF-8 will specify a
     # preferred encoding in the Accept-Charset header, and will use this
     # encoding for content, query parameters, and form data.  We make this
@@ -135,7 +139,7 @@ def select_charset(request):
     # Always prefer UTF-8 if the client supports it.
     for charset in charsets:
         if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-            return charset
+            return const.CHARSET_UTF8
 
     # Otherwise, look for a requested charset that Python supports.
     for charset in charsets:
@@ -146,7 +150,7 @@ def select_charset(request):
             continue
 
     # If Python doesn't know any of the requested charsets, use UTF-8.
-    return 'utf-8'
+    return const.CHARSET_UTF8
 
 def select_lang(request, config=None):
     """Selects the best language to use for a given request.  The 'lang' query
@@ -229,7 +233,13 @@ def setup_env(request):
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
-    env.back_chevron = env.rtl and u'\xbb' or u'\xab'
+
+    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
+    try:
+        env.back_chevron.encode(env.charset)
+    except UnicodeEncodeError:
+        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
+        env.back_chevron = u'>>' if env.rtl else u'<<'
 
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below
@@ -275,8 +285,55 @@ def setup_env(request):
     elif not env.ui and style_param:
         env.ui = style_param
 
+    # UI configurations.
+    #
+    # Enables features which require JavaScript.
+    env.enable_javascript = True
+    # Enables operations which requires Captcha.
+    env.enable_captcha = True
+    # Enables photo upload.
+    env.enable_photo_upload = True
+    # Enables to flag/unflag notes as spam, and to reveal spam notes.
+    env.enable_spam_ops = True
+    # Enables duplicate marking mode.
+    env.enable_dup_mode = True
+    # Shows a logo on top of the page.
+    env.show_logo = True
+    # Shows language menu.
+    env.show_language_menu = True
+    # Uses short labels for buttons.
+    env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
+    env.target_attr = ''
+
+    if env.ui == 'small':
+        env.show_logo = False
+        env.target_attr = ' target="_blank" '
+
+    elif env.ui == 'jp-mobile':
+        # Disables features which requires JavaScript. Some feature phones
+        # doesn't support JavaScript.
+        env.enable_javascript = False
+        # Disables operations which requires Captcha because Captcha requires
+        # JavaScript.
+        env.enable_captcha = False
+        # Uploading is often not supported in feature phones.
+        env.enable_photo_upload = False
+        # Disables spam operations because it requires JavaScript and
+        # supporting more pages on ui=jp-mobile.
+        env.enable_spam_ops = False
+        # Disables duplicate marking mode because it doesn't support
+        # small screens and it requires JavaScript.
+        env.enable_dup_mode = False
+        # Hides the logo on the top to save the space. Also, the logo links
+        # to the global page which doesn't support small screens.
+        env.show_logo = False
+        # Hides language menu because the menu in the current position is
+        # annoying in feature phones.
+        # TODO(ichikawa): Consider layout of the language menu.
+        env.show_language_menu = False
+        # Too long buttons are not fully shown in some feature phones.
+        env.use_short_buttons = True
 
     # Repo-specific information.
     if env.repo:
@@ -284,6 +341,10 @@ def setup_env(request):
         env.repo_url = utils.get_repo_url(request, env.repo)
         # start_url is like repo_url but preserves parameters such as 'ui'.
         env.start_url = utils.get_url(request, env.repo, '')
+        # URL of the link in the heading. The link on ui=small links to the
+        # normal UI.
+        env.repo_title_url = (
+            env.repo_url if env.ui == 'small' else env.start_url)
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')

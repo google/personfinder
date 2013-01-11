@@ -78,6 +78,10 @@ h3 {
   text-align: center;
 }
 
+.end-multi-columns {
+  clear: both;
+}
+
 var {  /* variables in sample code or URLs */
   color: #c00;
 }
@@ -136,7 +140,90 @@ input {
   font-weight: normal;
 }
 
-/* Tables */
+/* Multi-column page */
+
+.column {
+  width: 380px;
+}
+
+.column.left {
+  float: left;
+}
+
+.column.right {
+  float: right;
+}
+
+.column h2 {
+  margin: 2px 0 6px;
+  padding-left: 6px;
+}
+
+/* Tables which show a label and a value of each field e.g. in /view page.
+
+See app/resources/view.html.template for a usage example.
+
+Constructed with <div> and <span>, not <table>, so that:
+- it looks like a table on normal UI (with CSS rules below)
+- it looks like a normal div/span layout on ui=jp-mobile (where CSS is not
+  applied) which fits small screens.
+
+You need:
+  <div class="end-multi-columns"></div>
+after a sequence of <div class="field">. Otherwise the bottom margin is not
+correctly inserted.
+
+We don't use "display: table" because IE 6/7 doesn't support it. IE 6/7 is
+over 10% in penetration ratio.
+*/
+
+.fields-table {
+  background: #e8e8e8;
+  padding: 4px;
+}
+
+.fields-table .section {
+  padding: 4px;
+  background: #f8f8f8;
+  border-bottom: 4px solid #e8e8e8;
+}
+
+.fields-table .field {
+  clear: both;
+  margin-left: 16px;
+}
+
+.fields-table .label {
+  display: block;  /* to make float/width attribute work */
+  float: left;
+  width: 160px;
+  height: 100%;
+  text-align: right;
+}
+
+.fields-table .value {
+  display: block;  /* to make float/width attribute work */
+  float: right;
+  width: 160px;
+}
+
+.fields-table .long-text-input {
+  width: 280px;
+}
+
+.fields-table .medium-text-input {
+  width: 140px;
+}
+
+.fields-table .short-text-input {
+  width: 70px;
+}
+
+/* Tables.
+
+Mostly replaced by fields-table above, but we still have some e.g. in /admin
+page.
+*/
 
 tr {
   vertical-align: baseline;
@@ -155,10 +242,6 @@ table.fields {
   margin-left: 3em;
 }
 
-table.person tr.photo {
-  vertical-align: top;
-}
-
 tr.text, tr.description, tr.location, tr.other {
   vertical-align: top;
 }
@@ -166,17 +249,6 @@ tr.text, tr.description, tr.location, tr.other {
 td.label {
   text-align: right;
   width: 12em;
-}
-
-td.photo .label {
-  white-space: nowrap;
-  width: 1em;
-  padding-left: 0;
-  cursor: pointer;
-}
-
-td.photo .radio {
-  vertical-align: middle;
 }
 
 .tracking, .note .contents div.tracking {
@@ -232,6 +304,14 @@ td.submit {
 
 .main {
   font-size: 16px;
+  width: 650px;
+  /* centering */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main .row {
+  margin: 24px;
 }
 
 .main .stats {
@@ -239,26 +319,37 @@ td.submit {
   text-align: center;
 }
 
-.main .action {
-  width: 12em;
-  padding: 1em;
+.main .action-outer {
+  width: 240px;
+  height: 70px;
   border-right: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
-  background: #bcf;
-  text-align: center;
-  vertical-align: middle;
+  padding: 16px;
 }
 
-.main .action:first-child {
+.main .action-outer.left {
   background: #bea;
+  float: left;
 }
 
-.main .action a {
+.main .action-outer.right {
+  background: #bcf;
+  float: right;
+}
+
+.main .action-inner {
+  width: 240px;
+  height: 70px;
+  /* "display: table-cell" to make vertical-align work.
+     Vertical centering doesn't work on IE 6/7 because it doesn't support
+     "display: table-cell". But it would be acceptable. */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.main .action-outer a {
   font-weight: bold;
-}
-
-table.main {
-   border-spacing: 24px;
 }
 
 .custom-message {
@@ -269,7 +360,7 @@ table.main {
 /* Query page */
 
 .query {
-  width: 400px;
+  width: 380px;
   margin: 2em auto;
   padding: 1em;
   border-right: 2px solid #ccc;
@@ -285,28 +376,23 @@ table.main {
   padding-bottom: 0.5em;
 }
 
-.query .label {
-  width: 6em;
-  white-space: nowrap;
-}
-
 .query .submit {
   padding-top: 0.5em;
 }
 
 /* View page */
 
-.view tr.columns td.column {
-  min-width: 250px;
+.view .person {
+  background: #e8e8e8;
 }
 
-.view table.fields {
-  margin-left: 0em;
+.view .person .section {
+  background: #f8f8f8;
+  border-bottom: 4px solid #e8e8e8;
 }
 
-.view table.fields .field {
-  background-color: #f8f8f8;
-  min-width: 5em;
+.view .person .value {
+  font-weight: bold;
 }
 
 img.photo {
@@ -360,26 +446,6 @@ div.map {
   margin-top: 0.5em;
 }
 
-.view table.column {
-  background: #e8e8e8;
-  padding: 4px 0 1px;
-  border-right: 12px solid #fff;
-}
-
-.view table.note.column {
-  border-right: none;
-}
-
-.view .section {
-  padding: 0.5em;
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
-}
-
-.view .field {
-  font-weight: bold;
-}
-
 .view .field .warning {
   color: red;
   font-weight: normal;
@@ -426,29 +492,55 @@ tr.sectionbottom td {
 
 /* Create page */
 
-.create table.column, table.create.column {
-  background: #c0d0ff;
-  padding: 4px 0 1px;
-  border-right: 12px solid #fff;
-}
-
-table.column h2, table.view h2 {
-  margin: 2px 0 6px;
-  padding-left: 6px;
-}
-
-.create td.submit {
-  padding: 4px;
-}
-
 label.option {
   font-weight: bold;
 }
 
-.create .section {
-  padding: 0.5em;
+.create .fields-table {
+  background: #c0d0ff;
+}
+
+.create .fields-table .section {
   background: #f0f4ff;
   border-bottom: 4px solid #c0d0ff;
+}
+
+.create .fields-table .photo .radio {
+  display: block;
+  float: left;
+  width: 30px;
+}
+
+.create .fields-table .photo .label {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 70px;
+}
+
+.create .fields-table .photo .value {
+  display: block;
+  float: right;
+  width: 220px;
+}
+
+.create .fields-table .profile .icon {
+  display: block;
+  float: left;
+  width: 30px;
+}
+
+.create .fields-table .profile .value {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 220px;
+}
+
+.create .fields-table .profile .remove {
+  display: block;
+  float: right;
+  width: 70px;
 }
 
 .source .instructions {
@@ -460,6 +552,7 @@ label.option {
 
 img.resultImage {
   width: 80px;
+  height: auto;
   max-width: 80px;
   max-height: 80px;
 }

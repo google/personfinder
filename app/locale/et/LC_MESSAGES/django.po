@@ -117,18 +117,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "                Warning: this record will expire in less than a day.\n"
 "                "
 msgid_plural ""
@@ -138,6 +126,18 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -218,6 +218,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
@@ -259,16 +270,6 @@ msgstr ""
 "autori loal, saadetakse kirje autorile kinnitussõnum. Kui olete autor, "
 "siis vaadake pärast alloleval nupul klõpsamist oma meilikontot.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -528,6 +529,9 @@ msgstr "Jah, taasta see kirje"
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 
+msgid "Create a new record"
+msgstr ""
+
 msgid "Create a new record for"
 msgstr ""
 
@@ -560,6 +564,9 @@ msgid "Describe the physical characteristics of this person."
 msgstr "Telli uudised selle isiku kohta"
 
 msgid "Description"
+msgstr ""
+
+msgid "Desktop version"
 msgstr ""
 
 msgid "Developers"
@@ -954,6 +961,9 @@ msgstr ""
 msgid "Profile page"
 msgstr ""
 
+msgid "Provide information"
+msgstr ""
+
 #, fuzzy
 msgid "Provide information about this person"
 msgstr "Keegi otsib infot selle isiku kohta"
@@ -1224,6 +1234,9 @@ msgstr ""
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"
