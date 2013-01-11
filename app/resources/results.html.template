@@ -61,6 +61,8 @@
         {% endif %}
       {% endifchanged %}
       <div class="resultItem">
+        {# Intentionally violates HTML standard to enclose <div> and <input> #}
+        {# with <a>, to make the whole item area clickable. #}
         <a class="result-link" href="{{result.view_url}}">
           {# No whitespace inside .resultImageContainer. #}
           {# Image width/height are specified as attributes here as well as #}
@@ -69,17 +71,17 @@
           {# <img align='left'> and <br clear='all'> are for cases where CSS #}
           {# is disabled e.g. on ui=jp-mobile. #}
           {% if result.photo_url %}
-          <span class="resultImageContainer"
-            ><img class='resultImage' src='{{result.photo_url}}'
-                  width='80' height='80' align='left'
-          /></span>
+            <div class="resultImageContainer"
+              ><img class='resultImage' src='{{result.photo_url}}'
+                    width='80' height='80' align='left' alt=''
+            /></div>
           {% else %}
-          <span class="resultImageContainer"
-            ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
-                  width='80' height='80' align='left'
-          /></span>
+            <div class="resultImageContainer"
+              ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
+                    width='80' height='80' align='left' alt=''
+            /></div>
           {% endif %}
-          <span class='resultData'>
+          <div class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
               {{result.full_name}}
@@ -121,7 +123,7 @@
                 ID: {{result.record_id}}
               </span>
             {% endif %}
-          </span>
+          </div>
         </a>
         <br clear='all'>
       </div>

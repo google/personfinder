@@ -31,7 +31,7 @@
         {% trans "Status of this person" %}
       </h3>
       <div class="field">
-        <select id="status" name="status" value="">
+        <select id="status" name="status">
           {% for status in env.status_options %}
             <option value="{{status.value}}"
                 {% ifequal params.status status.value %}
@@ -137,8 +137,7 @@
           </span>
           <span class="value">
             <input id="note_photo_upload" type="file"
-                name="note_photo" id="note_photo_upload" size="20"
-                disabled="disabled">
+                name="note_photo" disabled="disabled">
           </span>
           {% comment %} see above comment {% endcomment %}
         </div>

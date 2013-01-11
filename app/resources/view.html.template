@@ -167,7 +167,7 @@
                   <span>
                     <a href="{{person.photo_url}}">
                       <img src="{{person.photo_url}}"
-                          class="photo">
+                          class="photo" alt="[PHOTO]">
                     </a>
                   </span>
                 </div>
@@ -185,7 +185,8 @@
                     </span>
                     <span class="value">
                       {% if profile_page.icon_url %}
-                        <img src="{{profile_page.icon_url}}" class="icon">
+                        <img src="{{profile_page.icon_url}}"
+                            class="icon" alt="">
                       {% endif %}
                       <a href="{{profile_page.url}}" target="_blank">
                         {{profile_page.name}}

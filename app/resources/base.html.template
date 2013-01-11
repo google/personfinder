@@ -15,12 +15,11 @@
 
 {% load i18n %}
 
-<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
-<html dir="{{env.rtl|yesno:"rtl,ltr"}}">
+<!DOCTYPE html>
+<html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
 <head>{% block head %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
-  <meta http-equiv="content-language" content="{{env.lang}}">
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
@@ -70,7 +69,7 @@
       {% if env.show_logo %}
         <a href="{{env.global_url}}">
           <img src="{{env.global_url}}/google-person-finder.gif"
-              width="260" height="40">
+              width="260" height="40" alt="Google Person Finder">
         </a>
       {% endif %}
     {% endblock header %}
@@ -109,7 +108,7 @@
   {% endblock backlink %}
 
   <div class="footer" role="contentinfo">
-    <div class="disclaimer" role="disclaimer">
+    <div class="disclaimer">
       {% block disclaimer %}
         {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}

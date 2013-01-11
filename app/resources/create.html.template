@@ -162,7 +162,7 @@
               </span>
               <span class="value">
                 <select name="sex" id="sex">
-                  <option value="" selected="yes"></option>
+                  <option value="" selected></option>
                   <option value="female">{% trans "female" %}</option>
                   <option value="male">{% trans "male" %}</option>
                   <option value="other">{% trans "other" %}</option>
@@ -172,15 +172,17 @@
             <div class="field">
               <span class="label">
                 <label for="age">{% trans "Age" %}:</label>
-                <div class="hint">
-                  {% trans "Number or range (e.g. 20-30)" %}
-                </div>
               </span>
               <span class="value">
                 <input name="age" id="age"
                     class="short-text-input"
                     autocomplete="off">
               </span>
+            </div>
+            <div class="field">
+              <div class="value hint">
+                {% trans "Number or range (e.g. 20-30)" %}
+              </div>
             </div>
             <div class="end-multi-columns"></div>
           </div>
@@ -197,7 +199,6 @@
                   <label for="home_street">
                     {% trans "Street name" %}:
                   </label>
-                  <div class="hint">{% trans "Street name only, no number" %}</div>
                 </span>
                 <span class="value">
                   <input name="home_street" id="home_street"
@@ -205,6 +206,11 @@
                       value="{{params.home_street}}"
                       autocomplete="off">
                 </span>
+              </div>
+              <div class="field">
+                <div class="value hint">
+                  {% trans "Street name only, no number" %}
+                </div>
               </div>
               <div class="field">
                 <span class="label">
@@ -313,9 +319,7 @@
                 </span>
                 <span class="value">
                   <input id="photo_upload" type="file" name="photo"
-                      id="photo_upload"
-                      class="medium-text-input"
-                      disabled="disabled">
+                      class="medium-text-input" disabled="disabled">
                 </span>
                 {% comment %} see above comment {% endcomment %}
               </div>
@@ -369,7 +373,7 @@
           {% endif %}
 
           <div class="expiry section">
-            <h3><label for="expiry_date">
+            <h3><label for="expiry_option">
                 {% trans "Expiry" %}
             </label></h3>
             <div class="hint">
@@ -383,7 +387,7 @@
               {% endif %}
             </div>
             <div class="field">
-              <select id="expiry_option" name="expiry_option" value="">
+              <select id="expiry_option" name="expiry_option">
                 {% for duration in env.expiry_options %}
                 <option value="{{duration.value}}">
                   {{duration.text}}
@@ -507,13 +511,16 @@
                   <label for="source_date">
                     {% trans "Original posting date" %}:
                   </label>
-                  <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
                 </span>
                 <span class="value">
                   <input name="source_date" id="source_date"
                       class="medium-text-input"
                       value="{{params.source_date}}" />
                 </span>
+              </div>
+              <div class="field" id="source_date_hint_row"
+                  style="display: none">
+                <div class="value hint">{% trans "Enter as YYYY-MM-DD" %}</div>
               </div>
               <div class="field" id="source_name_row" style="display: none">
                 <span class="label">
