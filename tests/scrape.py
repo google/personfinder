@@ -1,4 +1,4 @@
-# Copyright 2005-2008 Ka-Ping Yee
+# Copyright 2005-2012 Ka-Ping Yee
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,20 +27,20 @@ Done:
   - handle entities > 255 and Unicode documents
   - accept and store cookies during redirection
   - store and send cookies according to domain and path
+  - submit forms with file upload
 
 To do:
   - split by element
   - detect ends of elements in most cases even if matching end tags are missing
   - make the line breaks in striptags correctly reflect whitespace significance
   - handle <![CDATA[ marked sections ]]>
-  - submit forms with file upload
   - use Regions in striptags instead of duplicating work?
   - remove dependency on urllib.urlencode
 """
 
 __author__ = 'Ka-Ping Yee <ping@zesty.ca>'
-__date__ = '$Date: 2008/07/06 11:13:19 $'.split()[1].replace('/', '-')
-__version__ = '$Revision: 1.43 $'
+__date__ = '$Date: 2012/09/22 00:00:00 $'.split()[1].replace('/', '-')
+__version__ = '$Revision: 1.44 $'
 
 from urlparse import urlsplit, urljoin
 from htmlentitydefs import name2codepoint
@@ -104,7 +104,7 @@ def shellquote(text):
     """Quote a string literal for /bin/sh."""
     return "'" + text.replace("'", "'\\''") + "'"
 
-def curl(url, data=None, agent=None, referrer=None, cookies=None, verbose=0):
+def curl(url, headers={}, data=None, verbose=0):
     """Use curl to make a request; return the entire reply as a string."""
     import os, tempfile
     fd, tempname = tempfile.mkstemp(prefix='scrape')
@@ -113,12 +113,8 @@ def curl(url, data=None, agent=None, referrer=None, cookies=None, verbose=0):
         if not isinstance(data, str): # Unicode not allowed here
             data = urlencode(data)
         command += ' --data ' + shellquote(data)
-    if agent:
-        command += ' --user-agent ' + shellquote(agent)
-    if referrer:
-        command += ' --referer ' + shellquote(referrer)
-    if cookies:
-        command += ' --cookie ' + shellquote(cookies)
+    for name, value in headers.iteritems():
+        command += ' --header ' + shellquote('%s: %s' % (name, value))
     command += ' ' + shellquote(url)
     if verbose >= 3:
         print >>sys.stderr, 'execute:', command
@@ -181,6 +177,20 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     cookieheader = '; '.join([
         '%s=%s' % pair for pair in getcookies(cookiejar, host, path).items()])
 
+    # Make the HTTP headers to send.
+    headers = {'host': host, 'accept': '*/*'}
+    if data:
+        headers['content-type'] = 'application/x-www-form-urlencoded'
+        headers['content-length'] = len(data)
+    if agent:
+        headers['user-agent'] = agent
+    if referrer:
+        headers['referer'] = referrer
+    if cookieheader:
+        headers['cookie'] = cookieheader
+    if type:
+        headers['content-type'] = type
+
     # Make the HTTP or HTTPS request using Python or cURL.
     if verbose:
         print >>sys.stderr, '>', method, url
@@ -188,21 +198,9 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
             path += '?' + query
-        headers = {'host': host, 'accept': '*/*'}
-        if data:
-            headers['content-type'] = 'application/x-www-form-urlencoded'
-            headers['content-length'] = len(data)
-        if agent:
-            headers['user-agent'] = agent
-        if referrer:
-            headers['referer'] = referrer
-        if cookieheader:
-            headers['cookie'] = cookieheader
-        if type:
-            headers['content-type'] = type
         reply = request(scheme, method, host, path, headers, data, verbose)
     elif scheme == 'https':
-        reply = curl(url, data, agent, referrer, cookieheader, verbose)
+        reply = curl(url, headers, data, verbose)
     else:
         raise ValueError, scheme + ' not supported'
 
@@ -249,7 +247,41 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if charset and charset is not RAW:
         content = content.decode(charset)
 
-    return url, status, message, headers, content
+    return url, status, message, headers, content, charset
+
+def multipart_encode(data, charset):
+    """Encode 'data' for a multipart post. If any of the values is of type file,
+    the content of the file is read and added to the output. If any of the
+    values is of type unicode, it is encoded using 'charset'. Returns a pair
+    of the encoded string and content type string, which includes the multipart
+    boundary used."""
+    import mimetools, mimetypes
+    boundary = mimetools.choose_boundary()
+    encoded = []
+    for key, value in data.iteritems():
+        encoded.append('--%s' % boundary)
+        if isinstance(value, file):
+            fd = value
+            filename = fd.name.split('/')[-1]
+            content_type = (mimetypes.guess_type(filename)[0] or
+                'application/octet-stream')
+            encoded.append('Content-Disposition: form-data; ' +
+                           'name="%s"; filename="%s"' % (key, filename))
+            encoded.append('Content-Type: %s' % content_type)
+            fd.seek(0)
+            value = fd.read()
+        else:
+            encoded.append('Content-Disposition: form-data; name="%s"' % key)
+            if isinstance(value, unicode):
+                value = value.encode(charset)
+        encoded.append('')  # empty line
+        encoded.append(value)
+    encoded.append('--' + boundary + '--')
+    encoded.append('')  # empty line
+    encoded.append('')  # empty line
+    encoded = '\r\n'.join(encoded)
+    content_type = 'multipart/form-data; boundary=%s' % boundary
+    return encoded, content_type
 
 class Session:
     """A Web-browsing session.  Exposed attributes:
@@ -293,9 +325,10 @@ class Session:
             referrer = self.url
 
         while 1:
-            self.url, self.status, self.message, self.headers, self.content = \
-                fetch(url, data, self.agent, referrer, charset, self.verbose,
-                      self.cookiejar, type)
+            (self.url, self.status, self.message, self.headers, self.content,
+             self.charset) = fetch(
+                url, data, self.agent, referrer, charset, self.verbose,
+                self.cookiejar, type)
             if redirects:
                 if self.status in [301, 302] and 'location' in self.headers:
                     url, data = urljoin(url, self.headers['location']), ''
@@ -304,7 +337,7 @@ class Session:
             break
 
         self.history.append(historyentry)
-        self.doc = Region(self.content)
+        self.doc = Region(self.content, charset=self.charset)
         return self.doc
 
     def back(self):
@@ -348,10 +381,17 @@ class Session:
         p.update(params)
         method = form['method'].lower() or 'get'
         url = url or form.get('action', self.url)
+        multipart_post = any(map(lambda v: isinstance(v, file), p.itervalues()))
+        if multipart_post:
+            param_str, content_type = multipart_encode(p, region.charset)
+        else:
+            param_str, content_type = urlencode(p, region.charset), None
         if method == 'get':
-            return self.go(url + '?' + urlencode(p), '', redirects)
+            if multipart_post:
+                raise ScrapeError('can not upload a file with a GET request')
+            return self.go(url + '?' + param_str, '', redirects)
         elif method == 'post':
-            return self.go(url, p, redirects)
+            return self.go(url, param_str, redirects, type=content_type)
         else:
             raise ScrapeError('unknown form method %r' % method)
 
@@ -413,13 +453,15 @@ urlquoted = dict((chr(i), '%%%02X' % i) for i in range(256))
 urlquoted.update(dict((c, c) for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
                                       'abcdefghijklmnopqrstuvwxyz' +
                                       '0123456789._-'))
-def urlquote(text):
+def urlquote(text, charset='utf-8'):
     if type(text) is unicode:
-        text = text.encode('utf-8')
+        text = text.encode(charset)
     return ''.join(map(urlquoted.get, text))
 
-def urlencode(params):
-    pairs = ['%s=%s' % (urlquote(key), urlquote(value).replace('%20', '+'))
+def urlencode(params, charset='utf-8'):
+    pairs = ['%s=%s' % (
+                 urlquote(key, charset),
+                 urlquote(value, charset).replace('%20', '+'))
              for key, value in params.items()]
     return '&'.join(pairs)
 
@@ -550,18 +592,23 @@ class Region:
     and ending positions are just after the starting tag and just before the
     ending tag, respectively."""
 
-    def __init__(self, parent, start=0, end=None, starttag=None, endtag=None):
+    def __init__(self, parent, start=0, end=None, starttag=None, endtag=None,
+                 charset=None):
         """Create a Region.  The 'parent' argument is a string or another
         Region.  The 'start' and 'end' arguments, if given, are non-negative
         indices into the original string (not into the parent region).  The
         'starttag' and 'endtag' arguments are indices into an internal array
-        of tags, intended for use by the implementation only."""
+        of tags, intended for use by the implementation only. The 'charset'
+        argument is the charset of the document e.g. 'utf-8'.
+        """
         if isinstance(parent, basestring):
             self.document = parent
             self.tags = self.scantags(self.document)
+            self.charset = charset
         else:
             self.document = parent.document
             self.tags = parent.tags
+            self.charset = charset or parent.charset
         if end is None:
             end = len(self.document)
         self.start, self.end = start, end
@@ -675,7 +722,8 @@ class Region:
 
     # Provide information on forms.
     def get_params(self):
-        """Get a dictionary of default values for all the form parameters."""
+        """Get a dictionary of default values for all the form parameters.
+        If there is a <input type=file> tag, it tries to open a file object."""
         if self.tagname == 'form':
             params = {}
             for input in self.alltags('input'):

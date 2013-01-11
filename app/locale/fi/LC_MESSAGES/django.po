@@ -269,6 +269,16 @@ msgstr ""
 "sähköpostisi napsautettuasi alla olevaa painiketta.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -580,6 +590,9 @@ msgstr "Kehittäjät"
 msgid "Disable notes on this record"
 msgstr "Poista muistiinpanot käytöstä näissä tiedoissa"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Lataa ääni MP3-tiedostona"
 
@@ -768,6 +781,9 @@ msgstr "Viimeinen tunnettu sijainti"
 
 msgid "Link"
 msgstr "Linkki"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "Merkitse tallenteet kopioiksi"
@@ -964,6 +980,12 @@ msgstr "Lisäsi"
 msgid "Proceed"
 msgstr "Jatka"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Anna tietoja tästä henkilöstä"
 
@@ -989,6 +1011,9 @@ msgstr "Tallenteet valittu"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Tiedot, joiden nimi ja osoite vastaa kyselyä \"%(query)s\""
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "Ilmoita roskapostista"
 
@@ -1007,6 +1032,9 @@ msgstr "Hakutulokset haulla"
 
 msgid "Search for this person"
 msgstr "Hae tätä henkilöä"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
@@ -1063,8 +1091,14 @@ msgstr "Tilaa henkilöä %(given_name)s %(family_name)s koskevat päivitykset"
 msgid "Subscribe to updates about this person"
 msgstr "Tilaa tätä henkilöä koskevat päivitykset"
 
+msgid "Switch to address"
+msgstr ""
+
 msgid "Switch to duplicate marking mode"
 msgstr "Vaihda kopioiden merkintätilaan"
+
+msgid "Switch to lat/long"
+msgstr ""
 
 msgid "Switch to normal view mode"
 msgstr "Vaihda normaaliin näyttötilaan"
@@ -1214,11 +1248,9 @@ msgid "To view or add information, select a name below."
 msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 msgstr ""
-"Kirjoita osoite tai avaa alla oleva kartta ja näytä sijainti siirtämällä "
-"merkkiä."
 
 msgid "Type the two words:"
 msgstr "Kirjoita kaksi sanaa:"
@@ -1246,9 +1278,6 @@ msgstr "Haullasi ei löytynyt yhtään tuloksia."
 
 msgid "What is this person's name?"
 msgstr "Mikä on henkilön nimi?"
-
-msgid "What is your situation?"
-msgstr "Mikä on oma tilanteesi?"
 
 msgid "When should this record disappear?"
 msgstr "Milloin nämä tiedot tulee poistaa näkyviltä?"
@@ -1435,6 +1464,9 @@ msgstr "kellonaika:"
 
 msgid "female"
 msgstr "nainen"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "mies"

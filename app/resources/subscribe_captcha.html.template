@@ -23,6 +23,7 @@
     <p>{% trans "Please enter your e-mail address to subscribe to updates" %}</p>
   {% endif %}
   <form method="post" action="{{form_action}}">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <span id="subscribe_label">
       {% trans "Your e-mail address:" %}
     </span>

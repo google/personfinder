@@ -36,6 +36,8 @@ WILLCOM_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.willcom\-inc\.com\/[^\"]+)"\>', re.I)
 EMOBILE_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>', re.I)
+WEB171_URL_RE = re.compile(
+    r'<a href="(https://www\.web171\.jp/[^"]+)">', re.I)
 
 # An re for an actual message stored at Docomo
 DOCOMO_MESSAGE_RE = re.compile(
@@ -98,6 +100,9 @@ def extract_redirect_url(scrape):
     emobile_urls = EMOBILE_URL_RE.findall(scrape)
     if emobile_urls:
         return emobile_urls[0]
+    web171_urls = WEB171_URL_RE.findall(scrape)
+    if web171_urls:
+        return web171_urls[0]
 
 def docomo_has_messages(scrape):
     """Checks if Docomo has messages for a number being inquired in its own
@@ -117,7 +122,7 @@ def get_docomo_post_data(number, hidden_param):
     Returns:
         a mapping for the POST data.
     """
-    return {'es': 0,
+    return {'es': 1,
             'si': 1,
             'bi1': 1,
             'ep': hidden_param,

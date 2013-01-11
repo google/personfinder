@@ -47,8 +47,7 @@ fi
 
 # Check for Mercurial version 1.6 or higher, so we can use --new-branch to
 # safely push a new feature branch to the remote repository.
-# LANG=C is specified to disable localization of the output.
-if [[ ! "$(LANG=C hg -q version)" =~ \(version\ ([.0-9]+)\) ||
+if [[ ! "$(LANG=C hg -q version)" =~ \(version\ ([.0-9]+) ||
       "${BASH_REMATCH[1]}" < 1.6 ]]; then
   echo
   echo "You need Mercurial version 1.6 or higher installed."
@@ -212,11 +211,11 @@ rm -f /tmp/en-diff.$$
 
 # Upload the code review.
 echo
-echo $PYTHON $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
+echo python $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
 cd $PROJECT_DIR
 TMP=/tmp/issue-number.$$
 MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
-PYTHONPATH=$TOOLS_DIR $PYTHON -c "
+PYTHONPATH=$TOOLS_DIR python -c "
 import upload
 cmd = ['upload.py'] + ['-m', '$MESSAGE'] + '$OPTIONS'.split() 
 issue, patchset = upload.RealMain(cmd)

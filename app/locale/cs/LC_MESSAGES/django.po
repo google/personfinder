@@ -266,6 +266,16 @@ msgstr ""
 "e-mailu.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
+"  Please go to this person's profile page on %(website)s, then copy and "
+"paste\n"
+"  that URL here.\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -571,6 +581,9 @@ msgstr "Vývojáři"
 msgid "Disable notes on this record"
 msgstr "Zakázat poznámky k tomuto záznamu"
 
+msgid "Does this person have profile pages at other websites?"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Stáhnout tento zvuk ve formátu MP3"
 
@@ -759,6 +772,9 @@ msgstr "Poslední známá poloha"
 
 msgid "Link"
 msgstr "Odkaz"
+
+msgid "Link to profile page"
+msgstr ""
 
 msgid "Mark records as duplicate"
 msgstr "Označit záznamy jako duplicitní"
@@ -953,6 +969,12 @@ msgstr "Zveřejnil(a)"
 msgid "Proceed"
 msgstr "Pokračovat"
 
+msgid "Profile Pages"
+msgstr ""
+
+msgid "Profile page"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "Poskytnout informace o této osobě"
 
@@ -978,6 +1000,9 @@ msgstr "– počet vybraných záznamů"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Záznamy se jmény a adresami, které odpovídají dotazu „%(query)s“"
 
+msgid "Remove"
+msgstr ""
+
 msgid "Report spam"
 msgstr "Nahlásit spam"
 
@@ -996,6 +1021,9 @@ msgstr "Výsledky vyhledávání pro"
 
 msgid "Search for this person"
 msgstr "Hledat tuto osobu"
+
+msgid "Select a website to add a profile page..."
+msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Můžete označit až 3 záznamy jako duplicitní:"
@@ -1052,8 +1080,14 @@ msgstr "Přihlásit se k odběru aktualizací o osobě %(given_name)s %(family_n
 msgid "Subscribe to updates about this person"
 msgstr "Přihlásit se k odběru aktualizací o této osobě"
 
+msgid "Switch to address"
+msgstr ""
+
 msgid "Switch to duplicate marking mode"
 msgstr "Přepnout do režimu označování duplikátů"
+
+msgid "Switch to lat/long"
+msgstr ""
 
 msgid "Switch to normal view mode"
 msgstr "Přepnout do režimu normálního zobrazení"
@@ -1203,11 +1237,9 @@ msgid "To view or add information, select a name below."
 msgstr "Chcete-li zobrazit nebo přidat informace, zvolte jméno níže."
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 msgstr ""
-"Zadejte adresu nebo otevřete mapu níže a označte polohu přesunutím "
-"špendlíku."
 
 msgid "Type the two words:"
 msgstr "Zadejte dvě slova:"
@@ -1235,9 +1267,6 @@ msgstr "Vašemu vyhledávacímu dotazu nic neodpovídá."
 
 msgid "What is this person's name?"
 msgstr "Jak se tato osoba jmenuje?"
-
-msgid "What is your situation?"
-msgstr "Vyberte svoji situaci."
 
 msgid "When should this record disappear?"
 msgstr "Kdy by měl tento záznam zmizet?"
@@ -1420,6 +1449,9 @@ msgstr "v"
 
 msgid "female"
 msgstr "žena"
+
+msgid "in test mode"
+msgstr ""
 
 msgid "male"
 msgstr "muž"

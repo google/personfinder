@@ -27,7 +27,9 @@ from google.appengine.ext import webapp
 
 import config
 import const
+import django.utils.html
 import legacy_redirect
+import logging
 import pfif
 import resources
 import utils
@@ -122,7 +124,10 @@ def select_charset(request):
     # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
-    if request.get('charsets'): # allow override for testing
+    if request.get('charsets'):
+        # This parameter is specified e.g. in URLs used for Japanese feature
+        # phones. Many of Japanese feature phones doesn't (fully) support
+        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
     else:
         charsets = request.accept_charset.best_matches()
@@ -165,7 +170,9 @@ def get_repo_options(request, lang):
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
         url = utils.get_repo_url(request, repo)
-        options.append(utils.Struct(repo=repo, title=title, url=url))
+        test_mode = config.get_for_repo(repo, 'test_mode')
+        options.append(utils.Struct(repo=repo, title=title, url=url,
+                                    test_mode=test_mode))
     return options
 
 def get_language_options(request, config=None):
@@ -190,12 +197,26 @@ def get_localized_message(localized_messages, lang, default):
         return default
     return localized_messages.get(lang, localized_messages.get('en', default))
 
+def get_hidden_input_tags_for_preserved_query_params(request):
+    """Gets HTML with <input type="hidden"> tags to preserve query parameters
+    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "ui"."""
+    tags_str = ''
+    for name in utils.PRESERVED_QUERY_PARAM_NAMES:
+        value = request.get(name)
+        if value:
+            tags_str += '<input type="hidden" name="%s" value="%s">\n' % (
+                django.utils.html.escape(name),
+                django.utils.html.escape(value))
+    return tags_str
+
 def setup_env(request):
     """Constructs the 'env' object, which contains various template variables
     that are commonly used by most handlers."""
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
+    # TODO(ryok): Rename to local_test_mode or something alike to disambiguate
+    # better from repository's test_mode.
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 
@@ -209,6 +230,11 @@ def setup_env(request):
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
     env.back_chevron = env.rtl and u'\xbb' or u'\xab'
+
+    # Used for parsing query params. This must be done before accessing any
+    # query params which may have multi-byte value, such as "given_name" below
+    # in this function.
+    request.charset = env.charset
 
     # Determine the resource bundle to use.
     env.default_resource_bundle = config.get('default_resource_bundle', '1')
@@ -234,17 +260,29 @@ def setup_env(request):
         if (value != 'believed_dead' or
             not env.config or env.config.allow_believed_dead_via_ui)
     ]
+    env.hidden_input_tags_for_preserved_query_params = (
+        get_hidden_input_tags_for_preserved_query_params(request))
 
-    # Fields related to "small mode" (for embedding in an <iframe>).
-    env.small = request.get('small', '').lower() == 'yes'
+    env.ui = request.get('ui', '').strip().lower()
+
+    # Interprets "small" and "style" parameters for backward compatibility.
+    # TODO(ichikawa): Delete these in near future when we decide to drop
+    # support of these parameters.
+    small_param = request.get('small', '').strip().lower()
+    style_param = request.get('style', '').strip().lower()
+    if not env.ui and small_param == 'yes':
+        env.ui = 'small'
+    elif not env.ui and style_param:
+        env.ui = style_param
+
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = env.small and ' target="_blank" ' or ''
+    env.target_attr = (env.ui == 'small' and ' target="_blank" ' or '')
 
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
-        # start_url is like repo_url but preserves 'small' and 'style' params.
+        # start_url is like repo_url but preserves parameters such as 'ui'.
         env.start_url = utils.get_url(request, env.repo, '')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
@@ -312,7 +350,6 @@ class Main(webapp.RequestHandler):
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
-        request.charset = self.env.charset  # used for parsing query params
 
         # Activate the selected language.
         response.headers['Content-Language'] = self.env.lang

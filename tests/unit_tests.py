@@ -20,6 +20,7 @@ which sets up the PYTHONPATH and other necessary environment variables."""
 
 import os
 import pytest
+import sys
 
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
@@ -42,5 +43,5 @@ original_parse_setoption = _pytest.config.Parser.parse_setoption
 _pytest.config.Parser.parse_setoption = \
     lambda *args: original_parse_setoption(*args) or [os.environ['TESTS_DIR']]
 
-# Run the tests.
-pytest.main()
+# Run the tests, using sys.exit to set exit status (nonzero for failure).
+sys.exit(pytest.main())

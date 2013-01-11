@@ -15,7 +15,8 @@
 {% if env.repo_options %}
   <ul class="repo-menu" title="{% trans "Crisis events" %}">
   {% for option in env.repo_options %}
-    <li><a href="{{option.url}}">{{option.title}}</a><br>
+    <li><a href="{{option.url}}">{{option.title}}
+      {% if option.test_mode %}({% trans "in test mode" %}){% endif %}</a><br>
   {% endfor %}
   </ul>
 {% endif %}

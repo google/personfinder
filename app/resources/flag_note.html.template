@@ -34,6 +34,7 @@
 
   <p>
     <form method="post" action="{{env.repo_path}}/flag_note">
+      {{env.hidden_input_tags_for_preserved_query_params|safe}}
       {% if not note.hidden %}
         {% trans "The reason this note is being marked as spam:" %}
         <select name="reason_for_report">
