@@ -334,8 +334,19 @@ class Person(Base):
 
     @property
     def primary_full_name(self):
-        if self.full_name:
-            return self.full_name.splitlines()[0]
+        return self.full_name.splitlines()[0] if self.full_name else ''
+
+    @property
+    def full_name_list(self):
+        return self.full_name.splitlines() if self.full_name else []
+
+    @property
+    def alternate_names_list(self):
+        return self.alternate_names.splitlines() if self.alternate_names else []
+
+    @property
+    def profile_urls_list(self):
+        return self.profile_urls.splitlines() if self.profile_urls else []
 
     def get_notes(self, filter_expired=True):
         """Returns a list of all the Notes on this Person, omitting expired

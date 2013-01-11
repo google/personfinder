@@ -120,7 +120,7 @@ class AtomPfifVersion:
         indent += '  '
         self.pfif_version.write_person(file, person, notes, indent)
         write_element(file, 'id', 'pfif:' + person['person_record_id'], indent)
-        title = (person.get('full_name', '') or '\n').split('\n')[0]
+        title = person.primary_full_name
         write_element(file, 'title', title, indent)
         file.write(indent + '<author>\n')
         write_element(file, 'name', person.get('author_name'), indent + '  ')

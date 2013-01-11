@@ -85,8 +85,10 @@ class CmpResults():
         self.query_words_set = set(query.words)
 
     def __call__(self, p1, p2):
-        if (p1.primary_full_name == p2.primary_full_name or
-            (p1.given_name == p2.given_name and
+        if ((p1.primary_full_name and
+             p1.primary_full_name == p2.primary_full_name) or
+            ((p1.given_name or p1.family_name) and
+             p1.given_name == p2.given_name and
              p1.family_name == p2.family_name)):
             return 0
         self.set_ranking_attr(p1)
@@ -108,8 +110,9 @@ class CmpResults():
             person._normalized_given_name = TextQuery(person.given_name)
             person._normalized_family_name = TextQuery(person.family_name)
             person._normalized_full_name = TextQuery(person.full_name)
-            person._name_words = person._normalized_full_name.words
-            person._alt_name_words = TextQuery(person.alternate_names).words
+            person._name_words = set(person._normalized_full_name.words)
+            person._alt_name_words = set(
+                    TextQuery(person.alternate_names).words)
 
     # TODO(ryok): re-consider the ranking putting more weight on full_name (a
     # required field) instead of given name and family name pair (optional).

@@ -73,9 +73,9 @@
           <span class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
-              {{result.full_name|joinlines}}
+              {{result.full_name_list|join:", "}}
               {% if config.use_alternate_names and result.alternate_names %}
-                ({{result.alternate_names|joinlines}})
+                ({{result.alternate_names_list|join:", "}})
               {% endif %}
             </span>
             <ul>
