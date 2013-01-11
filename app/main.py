@@ -343,7 +343,7 @@ def setup_env(request):
         env.start_url = utils.get_url(request, env.repo, '')
         # URL of the link in the heading. The link on ui=small links to the
         # normal UI.
-        env.start_url_for_heading = (
+        env.repo_title_url = (
             env.repo_url if env.ui == 'small' else env.start_url)
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
