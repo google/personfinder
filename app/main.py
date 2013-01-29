@@ -170,6 +170,8 @@ def get_repo_options(request, lang):
     """Returns a list of the names and titles of the active repositories."""
     options = []
     for repo in config.get('active_repos') or []:
+        if config.get_for_repo(repo, 'deactivated'):
+            continue
         titles = config.get_for_repo(repo, 'repo_titles', {})
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
