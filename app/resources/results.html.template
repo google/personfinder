@@ -51,7 +51,6 @@
       <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
       <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
     {% endif %}
-    {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <div class='searchResults'>
     {% for result in results %}
       {% ifchanged result.is_address_match %}
