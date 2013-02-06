@@ -6,8 +6,10 @@ import urllib2
 
 import simplejson
 
-API_SSL_SERVER = 'https://api-secure.recaptcha.net'
-API_SERVER = 'http://api.recaptcha.net'
+API_SSL_SERVER = 'https://www.google.com/recaptcha/api'
+# We leave out the URL scheme so that browsers won't complain when accessed
+# from a secure website even when use_ssl is not set.
+API_SERVER = '//www.google.com/recaptcha/api'
 VERIFY_SERVER = 'api-verify.recaptcha.net'
 
 class RecaptchaResponse(object):

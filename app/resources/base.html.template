@@ -110,6 +110,10 @@
   <div class="footer" role="contentinfo">
     <div class="disclaimer">
       {% block disclaimer %}
+        {% if env.ui == "jp-mobile" %}
+          {% trans "To delete your data, access Person Finder from your desktop." %}
+          <br>
+        {% endif %}
         {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}
     </div>
