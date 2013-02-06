@@ -312,7 +312,7 @@ def setup_env(request):
         env.show_logo = False
         env.target_attr = ' target="_blank" '
 
-    elif env.ui == 'jp-mobile':
+    elif env.ui == 'light':
         # Disables features which requires JavaScript. Some feature phones
         # doesn't support JavaScript.
         env.enable_javascript = False
@@ -322,7 +322,7 @@ def setup_env(request):
         # Uploading is often not supported in feature phones.
         env.enable_photo_upload = False
         # Disables spam operations because it requires JavaScript and
-        # supporting more pages on ui=jp-mobile.
+        # supporting more pages on ui=light.
         env.enable_spam_ops = False
         # Disables duplicate marking mode because it doesn't support
         # small screens and it requires JavaScript.

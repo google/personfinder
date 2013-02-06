@@ -66,9 +66,9 @@
           {# No whitespace inside .resultImageContainer. #}
           {# Image width/height are specified as attributes here as well as #}
           {# in CSS, so that they are applied if CSS is disabled e.g. on #}
-          {# ui=jp-mobile. #}
+          {# ui=light. #}
           {# <img align='left'> and <br clear='all'> are for cases where CSS #}
-          {# is disabled e.g. on ui=jp-mobile. #}
+          {# is disabled e.g. on ui=light. #}
           {% if result.photo_url %}
             <div class="resultImageContainer"
               ><img class='resultImage' src='{{result.photo_url}}'
@@ -117,7 +117,7 @@
               {% trans "Provided by:" %} {{result.provider_name}}
             </div>
             {% endif %}
-            {% if env.ui != "jp-mobile" %}
+            {% if env.ui != "light" %}
               <span class="tracking">
                 ID: {{result.record_id}}
               </span>
