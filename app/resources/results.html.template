@@ -62,7 +62,9 @@
       <div class="resultItem">
         {# Intentionally violates HTML standard to enclose <div> and <input> #}
         {# with <a>, to make the whole item area clickable. #}
-        <a class="result-link" href="{{result.view_url}}">
+        {% if env.allow_block_level_anchor %}
+          <a class="result-link" href="{{result.view_url}}">
+        {% endif %}
           {# No whitespace inside .resultImageContainer. #}
           {# Image width/height are specified as attributes here as well as #}
           {# in CSS, so that they are applied if CSS is disabled e.g. on #}
@@ -82,12 +84,18 @@
           {% endif %}
           <div class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
-            <span class='resultDataTitle'>
-              {{result.full_name}}
-              {% if config.use_alternate_names and result.alternate_names %}
-                ({{result.alternate_names}})
-              {% endif %}
-            </span>
+            {% if not env.allow_block_level_anchor %}
+              <a class="result-link" href="{{result.view_url}}">
+            {% endif %}
+              <span class='resultDataTitle'>
+                {{result.full_name}}
+                {% if config.use_alternate_names and result.alternate_names %}
+                  ({{result.alternate_names}})
+                {% endif %}
+              </span>
+            {% if not env.allow_block_level_anchor %}
+              </a>
+            {% endif %}
             {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
             <div>{% trans "Home address" %}:
                 {% if result.home_street %}
@@ -123,7 +131,9 @@
               </span>
             {% endif %}
           </div>
-        </a>
+        {% if env.allow_block_level_anchor %}
+          </a>
+        {% endif %}
         <br clear='all'>
       </div>
     {% endfor %}

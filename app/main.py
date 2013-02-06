@@ -307,6 +307,8 @@ def setup_env(request):
     env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
     env.target_attr = ''
+    # Allows <a> to enclose <div> etc.
+    env.allow_block_level_anchor = True
 
     if env.ui == 'small':
         env.show_logo = False
@@ -336,6 +338,8 @@ def setup_env(request):
         env.show_language_menu = False
         # Too long buttons are not fully shown in some feature phones.
         env.use_short_buttons = True
+        # It seems some feature phones don't support the structure.
+        env.allow_block_level_anchor = False
 
     # Repo-specific information.
     if env.repo:
