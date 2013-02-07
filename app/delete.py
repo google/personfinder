@@ -31,10 +31,8 @@ def send_delete_notice(handler, person):
     """Notify concerned folks about the potential deletion."""
     # i18n: Subject line of an e-mail message notifying a user
     # i18n: that a person record has been deleted
-    subject = _(
-        '[Person Finder] Deletion notice for '
-        '"%(given_name)s %(family_name)s"'
-        ) % {'given_name': person.given_name, 'family_name': person.family_name}
+    subject = _('[Person Finder] Deletion notice for "%(full_name)s"'
+            ) % {'full_name': person.primary_full_name}
 
     # Send e-mail to all the addresses notifying them of the deletion.
     for email in person.get_associated_emails():
@@ -47,8 +45,7 @@ def send_delete_notice(handler, person):
             to=email,
             body=handler.render_to_string(
                 template_name,
-                given_name=person.given_name,
-                family_name=person.family_name,
+                full_name=person.primary_full_name,
                 site_url=handler.get_url('/'),
                 days_until_deletion=EXPIRED_TTL_DAYS,
                 restore_url=get_restore_url(handler, person)

@@ -256,6 +256,7 @@ class Person(Base):
     source_name = db.StringProperty(default='')
     source_url = db.StringProperty(default='')
 
+    # TODO(ryok): consider marking this required.
     full_name = db.StringProperty(multiline=True)
     given_name = db.StringProperty()
     family_name = db.StringProperty()
@@ -301,8 +302,10 @@ class Person(Base):
 
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
-    _fields_to_index_properties = ['given_name', 'family_name']
-    _fields_to_index_by_prefix_properties = ['given_name', 'family_name']
+    # TODO(ryok): index address components.
+    _fields_to_index_properties = ['given_name', 'family_name', 'full_name']
+    _fields_to_index_by_prefix_properties = ['given_name', 'family_name',
+        'full_name']
 
     @staticmethod
     def past_due_records(repo):
@@ -325,10 +328,25 @@ class Person(Base):
             'source_date <=',cutoff_date).filter(
             'repo =', repo)
 
-
-    def get_person_record_id(self):
+    @property
+    def person_record_id(self):
         return self.record_id
-    person_record_id = property(get_person_record_id)
+
+    @property
+    def primary_full_name(self):
+        return self.full_name.splitlines()[0] if self.full_name else ''
+
+    @property
+    def full_name_list(self):
+        return self.full_name.splitlines() if self.full_name else []
+
+    @property
+    def alternate_names_list(self):
+        return self.alternate_names.splitlines() if self.alternate_names else []
+
+    @property
+    def profile_urls_list(self):
+        return self.profile_urls.splitlines() if self.profile_urls else []
 
     def get_notes(self, filter_expired=True):
         """Returns a list of all the Notes on this Person, omitting expired
@@ -493,7 +511,8 @@ class Person(Base):
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)
 
-#old indexing
+# Old indexing
+# TODO(ryok): This is obsolete. Remove it.
 prefix.add_prefix_properties(
     Person, 'given_name', 'family_name', 'home_street', 'home_neighborhood',
     'home_city', 'home_state', 'home_postal_code')
