@@ -73,17 +73,8 @@ def create_photo(image, handler):
 
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
-    port = int(os.environ.get('SERVER_PORT', '80'))
-    if port < 1024:
-        # Assume that serving on a privileged port means we're in production.
-        # We use HTTPS for production URLs so that they don't trigger content
-        # warnings when photos are embedded in HTTPS pages.
-        scheme = 'https'
-    else:
-        # The development server only serves HTTP, not HTTPS.
-        scheme = 'http'
     id = photo.key().name().split(':')[1]
-    return handler.get_url('/photo', scheme=scheme, id=id)
+    return handler.get_url('/photo', id=id)
 
 
 class Handler(utils.BaseHandler):
