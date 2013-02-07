@@ -36,7 +36,7 @@ class PhotoTests(unittest.TestCase):
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
         self.assertEquals(
-            'https://example.appspot.com/haiti/photo?id=%s' % id,
+            'http://example.appspot.com/haiti/photo?id=%s' % id,
             photo.get_photo_url(entity, ph))
 
         # Check the photo URL for a high-replication app in production.
@@ -46,7 +46,7 @@ class PhotoTests(unittest.TestCase):
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
         self.assertEquals(
-            'https://hr-example.appspot.com/haiti/photo?id=%s' % id,
+            'http://hr-example.appspot.com/haiti/photo?id=%s' % id,
             photo.get_photo_url(entity, ph))
 
         # Check that the photo URL is correct for a development server.
