@@ -28,10 +28,13 @@ import tempfile
 import time
 import unittest
 
+from google.appengine.api import images
+
 import config
 from const import ROOT_URL, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 import download_feed
 from model import *
+from photo import MAX_IMAGE_DIMENSION
 import remote_api
 from resources import Resource, ResourceBundle
 import reveal
@@ -334,9 +337,9 @@ class ReadOnlyTests(TestsBase):
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=utf8'
+        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
         meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=utf8'
+        assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of title text
         assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
@@ -542,8 +545,8 @@ class ReadOnlyTests(TestsBase):
         self.assertEqual(self.s.headers['location'],
                 'http://sagasu-m.appspot.com/view'
                 '?id=test.google.com/person.111')
-        # no redirect with &small=yes
-        self.go('/haiti/?small=yes', redirects=0)
+        # no redirect with &ui=small
+        self.go('/haiti/?ui=small', redirects=0)
         self.assertEqual(self.s.status, 200)
         # no redirect with &suppress_redirect=yes
         self.go('/japan/view?suppress_redirect=yes'
@@ -661,10 +664,10 @@ class PersonNoteTests(TestsBase):
         details = details or {}
         details_page = self.s.doc
 
-        # Person info is stored in matching 'label' and 'field' cells.
+        # Person info is stored in matching 'label' and 'value' cells.
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
-            details_page.all(class_='field')))
+            details_page.all(class_='value')))
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -683,7 +686,7 @@ class PersonNoteTests(TestsBase):
         """
 
         # Get the list of links.
-        results = self.s.doc.first('ul', class_='searchResults')
+        results = self.s.doc.first('div', class_='searchResults')
         result_link = results.all('a', class_='result-link')[n]
 
         # Verify and then follow the link.
@@ -784,13 +787,13 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None, required_params={}, forbidden_params={}):
             required_params.setdefault('role', 'provide')
-            required_params.setdefault('small', 'yes')
+            required_params.setdefault('ui', 'small')
             assert_params_conform(url or self.s.url,
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
         # Start on the home page and click the "I'm looking for someone" button
-        self.go('/haiti?small=yes')
+        self.go('/haiti?ui=small')
         search_page = self.s.follow('I have information about someone')
         search_form = search_page.first('form')
         assert 'I have information about someone' in search_form.content
@@ -812,7 +815,7 @@ class PersonNoteTests(TestsBase):
         # text. Click the link.
         create_page = self.s.follow('Follow this link to create a new record')
 
-        assert 'small=yes' not in self.s.url
+        assert 'ui=small' not in self.s.url
         given_name_input = create_page.firsttag('input', name='given_name')
         assert '_test_given_name' in given_name_input.content
         family_name_input = create_page.firsttag('input', name='family_name')
@@ -885,10 +888,10 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek', 'small': 'yes'})
+                url or self.s.url, {'role': 'seek', 'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
-        self.go('/haiti?small=yes')
+        self.go('/haiti?ui=small')
         search_page = self.s.follow('I\'m looking for someone')
         search_form = search_page.first('form')
         assert 'Search for this person' in search_form.content
@@ -933,7 +936,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
@@ -1139,7 +1142,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
@@ -1193,7 +1196,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         Repo(key_name='japan-test').put()
         # Kanji's are segmented character by character.
@@ -1274,7 +1277,7 @@ class PersonNoteTests(TestsBase):
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
-                url or self.s.url, {'role': 'provide'}, {'small': 'yes'})
+                url or self.s.url, {'role': 'provide'}, {'ui': 'small'})
 
         self.go('/haiti')
         search_page = self.s.follow('I have information about someone')
@@ -1655,7 +1658,7 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1672,11 +1675,16 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
+
+        # Advance the clock. The new note has a newer source_date by this.
+        # This makes sure that the new note appears at the bottom of the view
+        # page.
+        self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
@@ -1717,7 +1725,7 @@ http://www.foo.com/_account_1''',
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1736,12 +1744,15 @@ http://www.foo.com/_account_1''',
         # Check that the believed_dead option does not appear
         # on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(class_='note input')
+        note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
             assert option.attrs['value'] != 'believed_dead'
+
+        # Advance the clock. Same as above.
+        self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
@@ -1760,6 +1771,9 @@ http://www.foo.com/_account_1''',
                                Note_text='_test_text',
                                Note_status='believed_alive')
         db.delete(UserActionLog.all().fetch(10))
+
+        # Advance the clock. Same as above.
+        self.advance_utcnow(seconds=1)
 
         # Set status to believed_dead, but allow_believed_dead_via_ui is false.
         self.s.submit(form,
@@ -1883,6 +1897,7 @@ http://www.foo.com/_account_1''',
                   data=get_test_data('test.pfif-1.2.xml'),
                   type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person is not None
         assert person.given_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
@@ -3531,7 +3546,7 @@ _feed_profile_url2</pfif:profile_urls>
             full_name='_test_full_name',
             entry_date=datetime.datetime.utcnow()
         ))
-        url, status, message, headers, content = scrape.fetch(
+        url, status, message, headers, content, charset = scrape.fetch(
             'http://' + self.hostport +
             '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')
@@ -4993,13 +5008,13 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('td', class_='field').text.strip() == \
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
+        assert f[0].first('span', class_='value').text.strip() == \
             '_test_given _test_family'
-        assert f[1].first('td', class_='label').text.strip() == \
+        assert f[1].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[1].first('td', class_='field').text.strip() == \
+        assert f[1].first('span', class_='value').text.strip() == \
             '_test_alternate_given _test_alternate_family'
 
         self.go('/haiti/results?query=_test_given+_test_family')
@@ -5024,9 +5039,9 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         d = self.go(
             '/pakistan/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('td', class_='field').text.strip() == '_test_given'
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
+        assert f[0].first('span', class_='value').text.strip() == '_test_given'
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
         assert '_test_family' not in d.first('body').text
@@ -5072,13 +5087,13 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
-        f = doc.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('td', class_='field').text.strip() == \
+        f = doc.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
+        assert f[0].first('span', class_='value').text.strip() == \
             '_test_family _test_given'
-        assert f[1].first('td', class_='label').text.strip() == \
+        assert f[1].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[1].first('td', class_='field').text.strip() == \
+        assert f[1].first('span', class_='value').text.strip() == \
             '_test_alternate_family _test_alternate_given'
 
         self.go('/japan/results?query=_test_family+_test_given&lang=en')
@@ -5119,13 +5134,13 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/haiti/view?id=%s' % person.record_id)
-        f = doc.first('table', class_='fields').all('tr')
-        assert f[0].first('td', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('td', class_='field').text.strip() == \
+        f = doc.first('div', class_='name section').all('div', class_='field')
+        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
+        assert f[0].first('span', class_='value').text.strip() == \
             '_test_given _test_family'
-        assert f[1].first('td', class_='label').text.strip() == \
+        assert f[1].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[1].first('td', class_='field').text.strip() == \
+        assert f[1].first('span', class_='value').text.strip() == \
             '_test_alternate_given _test_alternate_family'
 
         self.go('/haiti/results?query=_test_given+_test_family')
@@ -5153,10 +5168,10 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('table', class_='fields').all('tr')
-        assert f[1].first('td', class_='label').text.strip() == \
+        f = d.first('div', class_='name section').all('div', class_='field')
+        assert f[1].first('span', class_='label').text.strip() == \
             'Alternate names:'
-        assert f[1].first('td', class_='field').text.strip() == \
+        assert f[1].first('span', class_='value').text.strip() == \
             '_test_alternate_given _test_alternate_family'
 
         self.go('/haiti/results?query=_test_given+_test_family')
@@ -5341,6 +5356,86 @@ _feed_profile_url2</pfif:profile_urls>
                                  some_have=([test_given_name]))
 
         self.verify_click_search_result(0, assert_params)
+
+
+class PhotoTests(TestsBase):
+    """Tests that verify photo upload and serving."""
+    def submit_create(self, **kwargs):
+        doc = self.go('/haiti/create?role=provide')
+        form = doc.first('form')
+        return self.s.submit(form,
+                             given_name='_test_given_name',
+                             family_name='_test_family_name',
+                             author_name='_test_author_name',
+                             text='_test_text',
+                             **kwargs)
+
+    def test_upload_photo(self):
+        """Verifies a photo is uploaded and properly served on the server."""
+        # Create a new person record with a profile photo.
+        photo = file('tests/testdata/small_image.png')
+        original_image = images.Image(photo.read())
+        doc = self.submit_create(photo=photo)
+        # Verify the image is uploaded and displayed on the view page.
+        photos = doc.alltags('img', class_='photo')
+        assert len(photos) == 1
+        # Verify the image is served properly by checking the image metadata.
+        doc = self.s.go(photos[0].attrs['src'])
+        image = images.Image(doc.content)
+        assert image.format == images.PNG
+        assert image.width == original_image.width
+        assert image.height == original_image.height
+        # Follow the link on the image and verify the same image is served.
+        doc = self.s.follow(photos[0].enclosing('a'))
+        image = images.Image(doc.content)
+        assert image.format == images.PNG
+        assert image.width == original_image.width
+        assert image.height == original_image.height
+
+    def test_upload_photos_with_transformation(self):
+        """Uploads both profile photo and note photo and verifies the images are
+        properly transformed and served on the server i.e., jpg is converted to
+        png and a large image is resized to match MAX_IMAGE_DIMENSION."""
+        # Create a new person record with a profile photo and a note photo.
+        photo = file('tests/testdata/small_image.jpg')
+        note_photo = file('tests/testdata/large_image.png')
+        original_image = images.Image(photo.read())
+        doc = self.submit_create(photo=photo, note_photo=note_photo)
+        # Verify the images are uploaded and displayed on the view page.
+        photos = doc.alltags('img', class_='photo')
+        assert len(photos) == 2
+        # Verify the profile image is converted to png.
+        doc = self.s.go(photos[0].attrs['src'])
+        image = images.Image(doc.content)
+        assert image.format == images.PNG
+        assert image.width == original_image.width
+        assert image.height == original_image.height
+        # Verify the note image is resized to match MAX_IMAGE_DIMENSION.
+        doc = self.s.go(photos[1].attrs['src'])
+        image = images.Image(doc.content)
+        assert image.format == images.PNG
+        assert image.width == MAX_IMAGE_DIMENSION
+        assert image.height == MAX_IMAGE_DIMENSION
+
+    def test_upload_empty_photo(self):
+        """Uploads an empty image and verifies no img tag in the view page."""
+        # Create a new person record with a zero-byte profile photo.
+        photo = file('tests/testdata/empty_image.png')
+        doc = self.submit_create(photo=photo)
+        # Verify there is no img tag in the view page.
+        assert '_test_given_name' in doc.text
+        photos = doc.alltags('img', class_='photo')
+        assert len(photos) == 0
+
+    def test_upload_broken_photo(self):
+        """Uploads a broken image and verifies an error message is displayed."""
+        # Create a new person record with a broken profile photo.
+        photo = file('tests/testdata/broken_image.png')
+        doc = self.submit_create(photo=photo)
+        # Verify an error message is displayed.
+        photos = doc.alltags('img', class_='photo')
+        assert len(photos) == 0
+        assert 'unrecognized format' in doc.text
 
 
 class ResourceTests(TestsBase):

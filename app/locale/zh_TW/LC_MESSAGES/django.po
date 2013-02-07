@@ -113,18 +113,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "                Warning: this record will expire in less than a day.\n"
 "                "
 msgid_plural ""
@@ -134,6 +122,18 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -210,6 +210,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
@@ -251,16 +262,6 @@ msgstr ""
 "為了確保註記功能的停用或啟用是經過記錄作者本人的許可，我們會寄送一封確認郵件給記錄作者。如果您是作者，請在您按一下底下的按鈕後，記得檢查您的電子郵件信箱。"
 "\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -517,6 +518,9 @@ msgstr "比較這些記錄"
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
 
+msgid "Create a new record"
+msgstr ""
+
 msgid "Create a new record for"
 msgstr "建立此項目的新記錄："
 
@@ -547,6 +551,9 @@ msgstr "描述這位使用者的外貌特徵。"
 
 msgid "Description"
 msgstr "說明"
+
+msgid "Desktop version"
+msgstr ""
 
 msgid "Developers"
 msgstr "開發人員"
@@ -815,9 +822,6 @@ msgstr "註記作者"
 msgid "Note text"
 msgstr "留言文字"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr "注意：其他名稱可能是由機器產生而不盡正確。"
-
 msgid "Notes for this person"
 msgstr "這位失蹤人士的相關註記"
 
@@ -918,6 +922,9 @@ msgid "Profile Pages"
 msgstr ""
 
 msgid "Profile page"
+msgstr ""
+
+msgid "Provide information"
 msgstr ""
 
 msgid "Provide information about this person"
@@ -1173,6 +1180,9 @@ msgstr ""
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "如要取消訂閱，請前往這個連結"
 
@@ -1182,6 +1192,9 @@ msgstr "若要查看或新增資訊，請從下方選擇姓名。"
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"

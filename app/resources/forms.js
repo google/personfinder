@@ -42,6 +42,7 @@ function update_clone() {
   $('author_email_clone').style.display = display_clone;
   $('source_url_row').style.display = display_source;
   $('source_date_row').style.display = display_source;
+  $('source_date_hint_row').style.display = display_source;
   $('source_name_row').style.display = display_source;
 }
 
@@ -159,7 +160,7 @@ function translate(source, target, text, continuation) {
 // Translates the contents of all the notes.  The 'label' argument is
 // the label "Translated message:", translated into the user's language.
 function translate_notes(source, target, label) {
-  var elements = document.getElementsByName("note_text");
+  var elements = document.getElementsByClassName("note-text");
   for (var i = 0; i < elements.length; i++) {
     (function(element) {
       translate('', lang, element.innerHTML, function(source, target, text) {

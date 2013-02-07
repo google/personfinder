@@ -65,8 +65,9 @@ table.column h2, table.view h2 {
   padding-right: 6px;
 }
 
-/* Qualify with body.normal so this remains centered in small mode. */
-body.normal div.languages {
+/* Qualify with body.normal, body.facebook so this remains centered
+   in small mode. */
+body.normal div.languages, body.facebook div.languages {
   float: left;
 }
 

@@ -117,18 +117,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "                Warning: this record will expire in less than a day.\n"
 "                "
 msgid_plural ""
@@ -138,6 +126,18 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -214,6 +214,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
@@ -257,16 +268,6 @@ msgstr ""
 "envoyé à l'auteur en question. Si vous êtes l'auteur, vérifiez vos "
 "courriels après avoir cliqué sur le bouton ci-dessous.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -529,6 +530,9 @@ msgstr ""
 "Copiez-collez le segment HTML suivant pour intégrer l'outil dans votre "
 "site"
 
+msgid "Create a new record"
+msgstr ""
+
 msgid "Create a new record for"
 msgstr "Créer une nouvelle entrée pour"
 
@@ -562,6 +566,9 @@ msgstr "Décrivez l'apparence de cette personne."
 
 msgid "Description"
 msgstr "Description"
+
+msgid "Desktop version"
+msgstr ""
 
 msgid "Developers"
 msgstr "Concepteurs"
@@ -851,9 +858,6 @@ msgstr "Auteur de la note"
 msgid "Note text"
 msgstr ""
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Notes for this person"
 msgstr "Notes concernant cette personne"
 
@@ -973,6 +977,9 @@ msgid "Profile Pages"
 msgstr ""
 
 msgid "Profile page"
+msgstr ""
+
+msgid "Provide information"
 msgstr ""
 
 msgid "Provide information about this person"
@@ -1245,6 +1252,9 @@ msgstr ""
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr ""
 
@@ -1254,6 +1264,9 @@ msgstr "Pour voir ou ajouter de l'information, sélectionnez un nom ci-dessous."
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"

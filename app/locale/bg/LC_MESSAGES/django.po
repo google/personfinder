@@ -117,18 +117,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "                Warning: this record will expire in less than a day.\n"
 "                "
 msgid_plural ""
@@ -138,6 +126,18 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -216,6 +216,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
@@ -259,16 +270,6 @@ msgstr ""
 "потвърждение. Ако вие сте авторът, проверете имейла си, след като "
 "кликнете върху бутона по-долу.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -537,6 +538,9 @@ msgstr ""
 "Копирайте следния HTML код и го поставете в сайта си, за да сложите този "
 "инструмент в него"
 
+msgid "Create a new record"
+msgstr ""
+
 msgid "Create a new record for"
 msgstr "Създаване на нов запис за"
 
@@ -567,6 +571,9 @@ msgstr "Опишете физическите характеристики на 
 
 msgid "Description"
 msgstr "Описание"
+
+msgid "Desktop version"
+msgstr ""
 
 msgid "Developers"
 msgstr "Програмисти"
@@ -853,11 +860,6 @@ msgstr "Автор на бележката"
 msgid "Note text"
 msgstr "Текст на бележката"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-"Забележка: Възможно е алтернативните имена да са генерирани от компютър и"
-" да не са точни."
-
 msgid "Notes for this person"
 msgstr "Бележки за този човек"
 
@@ -969,6 +971,9 @@ msgid "Profile Pages"
 msgstr ""
 
 msgid "Profile page"
+msgstr ""
+
+msgid "Provide information"
 msgstr ""
 
 msgid "Provide information about this person"
@@ -1226,6 +1231,9 @@ msgstr ""
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "За да се отпишете, отворете тази връзка"
 
@@ -1235,6 +1243,9 @@ msgstr "За да прегледате или добавите информац�
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"

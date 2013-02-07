@@ -15,9 +15,8 @@
 <form method="get" action="{{env.repo_path}}/results">
   {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
-  <table class="query {{params.role}}" align="center" role="form">
-    <tr>
-      <td class="instructions" colspan="2">
+  <div class="fields-table query {{params.role}}" role="form">
+      <div class="instructions">
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
           <div class="{{params.error}}">
@@ -48,28 +47,29 @@
             </div>
           {% endif %}
         {% endifequal %}
-      </td>
-    </tr>
+      </div>
 
     {% ifequal params.role 'provide' %}
       {% if config.use_family_name and config.family_name_first %}
-        <tr>
-          <td class="label">
+        <div class="field">
+          <span class="label">
             <label for="family_name">{% trans "Family name" %}:</label>
-          </td>
-          <td class="field">
-            {% ifequal params.style "facebook" %}
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
               <input id="family_name" name="family_name"
-                  value="{{params.family_name}}" size=10>
+                  class="short-text-input"
+                  value="{{params.family_name}}">
             {% else %}
               <input id="family_name" name="family_name"
-                  value="{{params.family_name}}" size=20>
-            {% endifequal %}
-          </td>
-        </tr>
+                  class="medium-text-input"
+                  value="{{params.family_name}}">
+            {% endif %}
+          </span>
+        </div>
       {% endif %}
-        <tr>
-          <td class="label">
+        <div class="field">
+          <span class="label">
             <label for="given_name">
               {% if config.use_family_name %}
                 {% trans "Given name" %}:
@@ -77,68 +77,73 @@
                 {% trans "Name" %}:
               {% endif %}
             </label>
-          </td>
-          <td class="field">
-            {% ifequal params.style "facebook" %}
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
               <input id="given_name" name="given_name"
-                  value="{{params.given_name}}" size=10>
+                  class="short-text-input"
+                  value="{{params.given_name}}">
             {% else %}
               <input id="given_name" name="given_name"
-                value="{{params.given_name}}" size=20>
-            {% endifequal %}
-          </td>
-        </tr>
+                  class="medium-text-input"
+                  value="{{params.given_name}}">
+            {% endif %}
+          </span>
+        </div>
       {% if config.use_family_name and not config.family_name_first %}
-        <tr>
-          <td class="label">
+        <div class="field">
+          <span class="label">
             <label for="family_name">{% trans "Family name" %}:</label>
-          </td>
-          <td class="field">
-            {% ifequal params.style "facebook" %}
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
               <input id="family_name" name="family_name"
-                  value="{{params.family_name}}" size=10>
+                  class="short-text-input"
+                  value="{{params.family_name}}">
             {% else %}
               <input id="family_name" name="family_name"
-                  value="{{params.family_name}}" size=20>
-            {% endifequal %}
-          </td>
-        </tr>
+                  class="medium-text-input"
+                  value="{{params.family_name}}">
+            {% endif %}
+          </span>
+        </div>
       {% endif %}
     {% else %}
-      <tr>
-        <td class="field">
-          {% ifequal params.style "facebook" %}
+      <div class="field">
+          {% if env.ui == "facebook" %}
             <input id="query" name="query"
-                value="{{params.query}}" size=10>
+                class="short-text-input"
+                value="{{params.query}}">
           {% else %}
             <input id="query" name="query"
-                value="{{params.query}}" size=40>
-          {% endifequal %}
-        </td>
-      </tr>
+                class="long-text-input"
+                value="{{params.query}}">
+          {% endif %}
+      </div>
     {% endifequal %}
+    <div class="end-multi-columns"></div>
     
-    <tr>
      {% ifequal num_results 100 %}
-      <td class="warning">
+      <div class="warning">
         {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}
-      </td>
+      </div>
      {% endifequal %}
-    </tr>
-    <tr>
-      <td colspan=2 class="submit" align="center">
+      <div class="submit">
         {% ifequal params.role 'provide' %}
-          <input type="submit" value="{% trans "Provide information about this person" %}">
+          {% if env.use_short_buttons %}
+            <input type="submit" value="{% trans "Provide information" %}">
+          {% else %}
+            <input type="submit" value="{% trans "Provide information about this person" %}">
+          {% endif %}
         {% else %}
-          {% ifequal params.style "facebook" %}
+          {% if env.ui == "facebook" %}
             <div style="margin-left: -70px"
             <input type="submit" value="{% trans "Search for this person" %}">
             </div>
           {% else %}
             <input type="submit" value="{% trans "Search for this person" %}">
-          {% endifequal %}
+          {% endif %}
         {% endifequal %}
-      </td>
-    </tr>
-  </table>
+      </div>
+  </div>
 </form>

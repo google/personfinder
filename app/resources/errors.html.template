@@ -1,20 +1,25 @@
 {% load i18n %}
 
-<div id="mandatory_field_missing"
-    class="mandatory" style="display: none">
-  {% trans "Please fill in all the required fields." %}
-</div>
-<div id="status_inconsistent_with_author_made_contact"
-    class="mandatory" style="display: none">
-  {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
-</div>
-{% for profile_website in profile_websites %}
-<div id="invalid_profile_url_{{profile_website.name}}"
-    class="mandatory" style="display: none">
-  {% blocktrans with profile_website.name as website %}
-  The URL you entered doesn't look like a valid {{website}} profile URL.
-  Please go to this person's profile page on {{website}}, then copy and paste
-  that URL here.
-  {% endblocktrans %}
-</div>
-{% endfor %}
+{% if env.enable_javascript %}
+  {# If env.enable_javascript is False, these elements are not used. #}
+  {# And these elements must be removed because CSS (display: none) #}
+  {# doesn't work on some feature phones. #}
+  <div id="mandatory_field_missing"
+      class="mandatory" style="display: none">
+    {% trans "Please fill in all the required fields." %}
+  </div>
+  <div id="status_inconsistent_with_author_made_contact"
+      class="mandatory" style="display: none">
+    {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
+  </div>
+  {% for profile_website in profile_websites %}
+    <div id="invalid_profile_url_{{profile_website.name}}"
+        class="mandatory" style="display: none">
+      {% blocktrans with profile_website.name as website %}
+      The URL you entered doesn't look like a valid {{website}} profile URL.
+      Please go to this person's profile page on {{website}}, then copy and paste
+      that URL here.
+      {% endblocktrans %}
+    </div>
+  {% endfor %}
+{% endif %}
