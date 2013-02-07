@@ -582,18 +582,17 @@ class BaseHandler(webapp.RequestHandler):
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
-        """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
-        setting if the request is from a Japanese Tier-2 phone."""
-        if (self.config and
-            self.config.jp_tier2_mobile_redirect_url and
-            not self.params.suppress_redirect and
-            self.env.ui not in ('small', 'jp-mobile') and
-            user_agents.is_jp_tier2_mobile_phone(self.request)):
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
-                    self.env.action)
-            if self.request.query_string:
-                redirect_url += '?' + self.request.query_string
-            return redirect_url
+        """Returns a redirection URL with ui=light&charsets=Shift_JIS if the
+        request is from a Japanese Tier-2 phone."""
+        if (not self.params.suppress_redirect and
+                self.env.ui not in ('small', 'jp-mobile', 'light') and
+                user_agents.is_jp_tier2_mobile_phone(self.request)):
+            params = {}
+            for name in self.request.arguments():
+                params[name] = self.request.get(name)
+            params['ui'] = 'light'
+            params['charsets'] = 'Shift_JIS'
+            return self.get_url(self.env.action, **params)
         return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):

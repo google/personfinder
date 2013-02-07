@@ -27,6 +27,7 @@ import sys
 import tempfile
 import time
 import unittest
+import urlparse
 
 from google.appengine.api import images
 
@@ -224,6 +225,20 @@ class TestsBase(unittest.TestCase):
             '_test_photo_url_for_note' or '_test_photo_url'
         record.put()
         return photo
+
+    def assert_equal_urls(self, actual, expected):
+        """Asserts that the two URLs are equal ignoring the order of the query
+        parameters.
+        """
+        parsed_actual = urlparse.urlparse(actual)
+        parsed_expected = urlparse.urlparse(expected)
+        self.assertEqual(parsed_actual.scheme, parsed_expected.scheme)
+        self.assertEqual(parsed_actual.netloc, parsed_expected.netloc)
+        self.assertEqual(parsed_actual.path, parsed_expected.path)
+        self.assertEqual(
+            urlparse.parse_qs(parsed_actual.query),
+            urlparse.parse_qs(parsed_expected.query))
+        self.assertEqual(parsed_actual.fragment, parsed_expected.fragment)
 
 
 class ReadOnlyTests(TestsBase):
@@ -533,21 +548,26 @@ class ReadOnlyTests(TestsBase):
     def test_jp_tier2_mobile_redirect(self):
         self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
         # Redirect to top page.
-        self.go('/japan', redirects=0)
+        self.go('/japan/', redirects=0)
         self.assertEqual(self.s.status, 302)
-        self.assertEqual(self.s.headers['location'],
-                         'http://sagasu-m.appspot.com/')
+        self.assert_equal_urls(
+            self.s.headers['location'],
+            self.path_to_url('/japan/?ui=light&charsets=Shift_JIS'))
 
         # redirect view page
         self.go('/japan/view?id=test.google.com/person.111',
                 redirects=0)
         self.assertEqual(self.s.status, 302)
-        self.assertEqual(self.s.headers['location'],
-                'http://sagasu-m.appspot.com/view'
-                '?id=test.google.com/person.111')
+        self.assert_equal_urls(
+            self.s.headers['location'],
+            self.path_to_url(
+                '/japan/view?id=test.google.com/person.111&'
+                'ui=light&charsets=Shift_JIS'))
+
         # no redirect with &ui=small
         self.go('/haiti/?ui=small', redirects=0)
         self.assertEqual(self.s.status, 200)
+
         # no redirect with &suppress_redirect=yes
         self.go('/japan/view?suppress_redirect=yes'
                 '&id=test.google.com/person.111&redirect=0')
