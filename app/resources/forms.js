@@ -235,6 +235,16 @@ function set_dup_mode(enable, init) {
   return false;
 }
 
+function on_dup_click(event, elem) {
+  // Stops event propagation to suppress firing onclick of div.resultItem.
+  if (event.stopPropagation) {
+    event.stopPropagation();
+  } else {  // IE
+    event.cancelBubble = true;
+  }
+  check_dup(elem);
+}
+
 // Handles checking / unchecking a person for duplicate handling.
 function check_dup(elem) {
   if (elem.checked) {

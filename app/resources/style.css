@@ -581,7 +581,12 @@ resultsList {
   padding: 0;
 }
 
-.searchResults .result-link:hover {
+.searchResults .resultItem {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.searchResults .resultItem:hover {
   background: #cdf;
 }
 
@@ -591,11 +596,6 @@ resultsList {
 
 .searchResults .resultImageContainer {
   float: left;
-}
-
-.searchResults .result-link {
-  padding: 5px;
-  overflow: hidden;
 }
 
 .searchResults .resultDataTitle {
