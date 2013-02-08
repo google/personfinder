@@ -93,9 +93,11 @@
           /></div>
         {% endif %}
         <div class='resultData'>
-          <input style='display:none; float:{{env.rtl|yesno:"right,left"}}'
-              type='checkbox' name='dup' value='{{result.record_id}}'
-              onclick='on_dup_click(event, this);' class='duplicate-checkbox'>
+          {% if env.enable_dup_mode %}
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}'
+                type='checkbox' name='dup' value='{{result.record_id}}'
+                onclick='on_dup_click(event, this);' class='duplicate-checkbox'>
+          {% endif %}
           <a class="result-link" href="{{result.view_url}}">
             <span class='resultDataTitle'>
               {{result.full_name_list|join:", "}}
