@@ -61,13 +61,8 @@ class Handler(utils.BaseHandler):
             '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
-        subject = _(
-            '[Person Finder] Notes are now disabled for '
-            '"%(given_name)s %(family_name)s"'
-        ) % {
-            'given_name': person.given_name,
-            'family_name': person.family_name
-        }
+        subject = _('[Person Finder] Notes are now disabled for "%(full_name)s"'
+                ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -75,8 +70,7 @@ class Handler(utils.BaseHandler):
                 to=address,
                 body=self.render_to_string(
                     'disable_notes_notice_email.txt',
-                    given_name=person.given_name,
-                    family_name=person.family_name,
+                    full_name=person.primary_full_name,
                     record_url=record_url
                 )
             )

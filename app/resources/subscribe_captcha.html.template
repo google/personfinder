@@ -16,7 +16,7 @@
 {% block content %}
 
 <div>
-  <h2>{% blocktrans with person.given_name as given_name and person.family_name as family_name %}Subscribe to updates about {{given_name}} {{family_name}}{% endblocktrans %}</h2>
+  <h2>{% blocktrans with person.primary_full_name as full_name %}Subscribe to updates about {{full_name}}{% endblocktrans %}</h2>
   {% if subscribe_email %}
     <p>{% trans "Please confirm your e-mail address to subscribe to updates" %}</p>
   {% else %}

@@ -100,9 +100,9 @@
           {% endif %}
           <a class="result-link" href="{{result.view_url}}">
             <span class='resultDataTitle'>
-              {{result.full_name}}
+              {{result.full_name_list|join:", "}}
               {% if config.use_alternate_names and result.alternate_names %}
-                ({{result.alternate_names}})
+                ({{result.alternate_names_list|join:", "}})
               {% endif %}
             </span>
           </a>

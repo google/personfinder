@@ -363,11 +363,13 @@ def setup_env(request):
         env.repo_test_mode = (
             env.config.test_mode and not env.config.deactivated)
 
-        # Preformat the name from the 'given_name' and 'family_name' parameters.
-        given_name = request.get('given_name', '').strip()
-        family_name = request.get('family_name', '').strip()
-        env.params_full_name = utils.get_full_name(
-            given_name, family_name, env.config)
+        env.params_full_name = request.get('full_name', '').strip()
+        if not env.params_full_name:
+            # Preformat the name from 'given_name' and 'family_name' parameters.
+            given_name = request.get('given_name', '').strip()
+            family_name = request.get('family_name', '').strip()
+            env.params_full_name = utils.get_full_name(
+                given_name, family_name, env.config)
 
     return env
 

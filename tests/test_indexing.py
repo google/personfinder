@@ -20,6 +20,7 @@ from text_query import TextQuery
 def create_person(given_name, family_name):
     return model.Person.create_original(
         'test', given_name=given_name, family_name=family_name,
+        full_name=('%s %s' % (given_name, family_name)),
         entry_date=datetime.datetime.utcnow())
 
 

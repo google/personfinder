@@ -79,7 +79,7 @@ class ProcessRunner(threading.Thread):
             if self.ERROR_RE.search(line):  # something went wrong
                 self.failed = True
             if line.strip():
-                self.output.append(line.strip())
+                self.output.append(line.strip('\n'))
 
     def stop(self):
         """Terminates the subprocess and returns its status code."""

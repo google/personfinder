@@ -65,32 +65,14 @@
 
             <div class="name section">
               <h3>{% trans "Name" %}</h3>
-              {% if config.use_family_name and config.family_name_first %}
-                <div class="field">
-                  <span class="label">{% trans "Family name" %}:</span>
-                  <span class="value">{{person.family_name}}</span>
-                </div>
-              {% endif %}
               <div class="field">
-                <span class="label">
-                  {% if config.use_family_name %}
-                    {% trans "Given name" %}:
-                  {% else %}
-                    {% trans "Name" %}:
-                  {% endif %}
-                </span>
-                <span class="value">{{person.given_name}}</span>
+                <span class="label">{% trans "Full name" %}:</span>
+                <span class="value">{{person.full_name_list|join:"<br>"}}</span>
               </div>
-              {% if config.use_family_name and not config.family_name_first %}
-                <div class="field">
-                  <span class="label">{% trans "Family name" %}:</span>
-                  <span class="value">{{person.family_name}}</span>
-                </div>
-              {% endif %}
               {% if config.use_alternate_names %}
                 <div class="field">
                   <span class="label">{% trans "Alternate names" %}:</span>
-                  <span class="value">{{person.alternate_names}}</span>
+                  <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                 </div>
               {% endif %}
               <div class="end-multi-columns"></div>
@@ -323,7 +305,7 @@
               {% blocktrans %}
               <a href="{{extend_url}}">
                 <input type="button"
-                       value="Extend expiration date by {{extension_days}} days" 
+                       value="Extend expiration date by {{extension_days}} days"
                        id="extend_btn">
               </a>
               {% endblocktrans %}

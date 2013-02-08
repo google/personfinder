@@ -274,6 +274,7 @@ function mark_dup() {
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
+  // TODO(ryok): maybe just check full_name instead of given_name and family_name.
   var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
