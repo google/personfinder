@@ -724,8 +724,9 @@ class PersonNoteTests(TestsBase):
         new_note = notes[-1]
         for field, text in expected.iteritems():
             if field in ['note_photo_url']:
-                assert text in new_note.content, \
-                    'Note content %r missing %r' % (new_note.content, text)
+                url = utils.strip_url_scheme(text)
+                assert url in new_note.content, \
+                    'Note content %r missing %r' % (new_note.content, url)
             else:
                 assert text in new_note.text, \
                     'Note text %r missing %r' % (new_note.text, text)
@@ -3730,7 +3731,7 @@ _feed_profile_url2</pfif:profile_urls>
             record.photo_url = 'http://xyz'
             record.put()
             doc = self.go('/haiti/view?id=' + person.record_id)
-            assert 'http://xyz' in doc.content
+            assert '//xyz' in doc.content
             record.photo_url = 'bad_things://xyz'
             record.put()
             doc = self.go('/haiti/view?id=' + person.record_id)
