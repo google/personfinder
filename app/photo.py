@@ -74,7 +74,7 @@ def create_photo(image, handler):
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
     id = photo.key().name().split(':')[1]
-    return handler.get_url('/photo', id=id)
+    return utils.strip_url_scheme(handler.get_url('/photo', id=id))
 
 
 class Handler(utils.BaseHandler):
