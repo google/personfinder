@@ -348,13 +348,6 @@ class Person(Base):
     def profile_urls_list(self):
         return self.profile_urls.splitlines() if self.profile_urls else []
 
-    # TODO(ryok): remove these properties once all the photo URLs in
-    # repositories are stripped of URL scheme.
-    @property
-    def photo_url_no_scheme(self):
-        import utils
-        return utils.strip_url_scheme(self.photo_url)
-
     def get_notes(self, filter_expired=True):
         """Returns a list of all the Notes on this Person, omitting expired
         Notes by default."""
@@ -568,16 +561,9 @@ class Note(Base):
     # True if the note has been reviewed for spam content at /admin/review.
     reviewed = db.BooleanProperty(default=False)
 
-    @property
-    def note_record_id(self):
+    def get_note_record_id(self):
         return self.record_id
-
-    # TODO(ryok): remove these properties once all the photo URLs in
-    # repositories are stripped of URL scheme.
-    @property
-    def photo_url_no_scheme(self):
-        import utils
-        return utils.strip_url_scheme(self.photo_url)
+    note_record_id = property(get_note_record_id)
 
     @staticmethod
     def get_by_person_record_id(

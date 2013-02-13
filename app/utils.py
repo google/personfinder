@@ -467,12 +467,6 @@ def add_profile_icon_url(website, handler):
         handler.env.global_url + '/' + website['icon_filename']
     return website
 
-def strip_url_scheme(url):
-    if not url:
-        return url
-    _, netloc, path, query, segment = urlparse.urlsplit(url)
-    return urlparse.urlunsplit(('', netloc, path, query, segment))
-
 
 # ==== Struct ==================================================================
 

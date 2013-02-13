@@ -147,8 +147,8 @@
                 <h3>{% trans "Photo" %}</h3>
                 <div class="field">
                   <span>
-                    <a href="{{person.photo_url_no_scheme}}">
-                      <img src="{{person.photo_url_no_schemel}}"
+                    <a href="{{person.photo_url}}">
+                      <img src="{{person.photo_url}}"
                           class="photo" alt="[PHOTO]">
                     </a>
                   </span>

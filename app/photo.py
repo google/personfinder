@@ -16,6 +16,7 @@
 """Handler for retrieving uploaded photos for display."""
 
 import os
+import urlparse
 
 import model
 import utils
@@ -74,7 +75,10 @@ def create_photo(image, handler):
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
     id = photo.key().name().split(':')[1]
-    return utils.strip_url_scheme(handler.get_url('/photo', id=id))
+    url = handler.get_url('/photo', id=id)
+    # Strip URL scheme, so we don't see HTTPS errors embedded in HTTP.
+    _, netloc, path, query, segment = urlparse.urlsplit(url)
+    return urlparse.urlunsplit(('', netloc, path, query, segment))
 
 
 class Handler(utils.BaseHandler):

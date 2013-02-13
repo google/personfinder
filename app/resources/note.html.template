@@ -162,8 +162,8 @@
     {% endif %}
     {% if note.photo_url %}
       <div>
-        <a href="{{note.photo_url_no_scheme}}">
-          <img src="{{note.photo_url_no_scheme}}" class="photo">
+        <a href="{{note.photo_url}}">
+          <img src="{{note.photo_url}}" class="photo">
         </a>
       </div>
     {% endif %}
