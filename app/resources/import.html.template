@@ -42,7 +42,7 @@
         [{{stats.type}}]<br>
         Imported {{stats.written}} of {{stats.total}}.<br>
         {% if stats.skipped %}
-          <div class="error">
+          <div class="errors">
             Skipped {{stats.skipped|length}} with errors.<br>
             {% for error in stats.skipped %}
               - {{error.0}}: {{error.1}}<br>

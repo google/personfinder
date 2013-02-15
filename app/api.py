@@ -65,7 +65,8 @@ class Import(utils.BaseHandler):
             return
 
         source_domain = self.auth.domain_write_permission
-        records = importer.utf8_decoder(csv.DictReader(StringIO.StringIO(content)))
+        records = importer.utf8_decoder(
+                csv.DictReader(StringIO.StringIO(content)))
         records = [complete_record_ids(r, source_domain) for r in records]
         persons = [r for r in records if r.get('person_record_id')]
         notes = [r for r in records if r.get('note_record_id')]
