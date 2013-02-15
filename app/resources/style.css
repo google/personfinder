@@ -756,3 +756,25 @@ table.counts th {
 table.counts td {
   text-align: right;
 }
+
+/* Import page */
+
+.upload {
+  margin: 50px;
+}
+
+.upload form {
+  margin: 20px 0;
+}
+
+.upload .stats {
+  background: #f4f4f4;
+  border: 1px solid #dadada;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  padding: 1em;
+}
+
+.upload .stats .error {
+  color: red;
+}

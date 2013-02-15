@@ -17,8 +17,9 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-from datetime import datetime
-import atom
+import csv
+import StringIO
+
 import external_search
 import importer
 import indexing
@@ -26,12 +27,68 @@ import model
 import pfif
 import subscribe
 import utils
-from config import Configuration
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
+from utils import Struct
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
+
+
+def complete_record_ids(record, domain):
+    def complete(record, field):
+        id = record.get(field)
+        if id and '/' not in id:
+            record[field] = '%s/%s' % (domain, id)
+    complete(record, 'person_record_id')
+    complete(record, 'note_record_id')
+    return record
+
+
+class Import(utils.BaseHandler):
+    # TODO(ryok): Uncomment before submission.
+    #https_required = True
+
+    def get(self):
+        self.render('import.html')
+
+    def post(self):
+        if not (self.auth and self.auth.domain_write_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key.')
+            return
+
+        content = self.request.get('content')
+        if not content:
+            self.response.set_status(400)
+            self.write('You need to specify at least one CSV file.')
+            return
+
+        source_domain = self.auth.domain_write_permission
+        records = importer.utf8_decoder(csv.DictReader(StringIO.StringIO(content)))
+        records = [complete_record_ids(r, source_domain) for r in records]
+        persons = [r for r in records if r.get('person_record_id')]
+        notes = [r for r in records if r.get('note_record_id')]
+
+        people_written, people_skipped, people_total = importer.import_records(
+            self.repo, source_domain, importer.create_person, persons)
+        notes_written, notes_skipped, notes_total = importer.import_records(
+            self.repo, source_domain, importer.create_note, notes)
+
+        utils.log_api_action(self, ApiActionLog.WRITE,
+                             people_written, notes_written,
+                             len(people_skipped), len(notes_skipped))
+
+        self.render('import.html',
+                    upload_stats=[
+                        Struct(type='Person',
+                               written=people_written,
+                               skipped=people_skipped,
+                               total=people_total),
+                        Struct(type='Note',
+                               written=notes_written,
+                               skipped=notes_skipped,
+                               total=notes_total)])
 
 
 class Read(utils.BaseHandler):
