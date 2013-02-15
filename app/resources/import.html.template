@@ -1,0 +1,57 @@
+{# Copyright 2013 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the import page (see api.py).                               #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<div class="upload">
+  <h2>{% trans "Upload CSV files" %}</h2>
+  - <a href="{{env.global_url}}/sample-import-csv.txt" target="_blank"
+      >Sample CSV file</a><br>
+  - <a href="http://zesty.ca/pfif/1.4/" target="_blank"
+      >Instructions for filling each field<a><br>
+  <form method="post" enctype="multipart/form-data">
+    <table>
+      <tr>
+        <td>Authorization key:</td>
+        <td><input type="text" name="key"></td>
+      </tr>
+      <tr>
+        <td>CSV file:</td>
+        <td><input type="file" name="content"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Upload"></td>
+      </tr>
+    </table>
+  </form>
+  {% if upload_stats %}
+    <div class="stats">
+      {% for stats in upload_stats %}
+        [{{stats.type}}]<br>
+        Imported {{stats.written}} of {{stats.total}}.<br>
+        {% if stats.skipped %}
+          <div class="error">
+            Skipped {{stats.skipped|length}} with errors.<br>
+            {% for error in stats.skipped %}
+              - {{error.0}}: {{error.1}}<br>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if not forloop.last %}<br>{% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
