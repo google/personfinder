@@ -99,7 +99,6 @@
                 onclick='on_dup_click(event, this);' class='duplicate-checkbox'>
           {% endif %}
           <a class="result-link" href="{{result.view_url}}">
-
             <span class='resultDataTitle'>
               {{result.full_name_list|join:", "}}
               {% if config.use_alternate_names and result.alternate_names %}
