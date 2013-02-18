@@ -15,7 +15,6 @@
 
 from model import *
 from utils import *
-import prefix
 import pfif
 import reveal
 import subscribe
@@ -60,13 +59,9 @@ class Handler(BaseHandler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
-        # TODO: Handle no persons found.
-
-        # Add a calculated full name property - used in the title.
-        person['full_name'] = [
-            fname + ' ' + lname
-            for fname, lname in zip(person['given_name'], person['family_name'])]
         standalone = self.request.get('standalone')
+
+        # TODO: Handle no persons found.
 
         person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
             for profile_urls in person['profile_urls']]
@@ -76,7 +71,7 @@ class Handler(BaseHandler):
         # here at the moment.
         self.render('multiview.html',
                     person=person, any=any_person, standalone=standalone,
-                    cols=len(person['given_name']) + 1,
+                    cols=len(person['full_name']) + 1,
                     onload_function='view_page_loaded()', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)
 

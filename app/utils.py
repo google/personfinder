@@ -410,11 +410,6 @@ def get_full_name(given_name, family_name, config):
     else:
         return given_name
 
-def get_person_full_name(person, config):
-    """Return person's full name.  "person" can be any object with "given_name"
-    and "family_name" attributes."""
-    return get_full_name(person.given_name, person.family_name, config)
-
 def send_confirmation_email_to_record_author(
     handler, person, action, confirm_url, record_id):
     """Send the author an email to confirm enabling/disabling notes
@@ -425,20 +420,12 @@ def send_confirmation_email_to_record_author(
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
-    params = {
-        'given_name': person.given_name,
-        'family_name': person.family_name,
-    }
     if action == 'enable':
-        subject = _(
-            '[Person Finder] Enable notes on '
-            '"%(given_name)s %(family_name)s"?'
-            ) % params
+        subject = _('[Person Finder] Enable notes on "%(full_name)s"?'
+                ) % {'full_name': person.primary_full_name}
     elif action == 'disable':
-        subject = _(
-            '[Person Finder] Disable notes on '
-            '"%(given_name)s %(family_name)s"?'
-            ) % params
+        subject = _('[Person Finder] Disable notes on "%(full_name)s"?'
+                ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
         
@@ -451,8 +438,7 @@ def send_confirmation_email_to_record_author(
         body=handler.render_to_string(
             template_name,
             author_name=person.author_name,
-            given_name=person.given_name,
-            family_name=person.family_name,
+            full_name=person.primary_full_name,
             site_url=handler.get_url('/'),
             confirm_url=confirm_url
         )
@@ -480,6 +466,12 @@ def add_profile_icon_url(website, handler):
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
+
+def strip_url_scheme(url):
+    if not url:
+        return url
+    _, netloc, path, query, segment = urlparse.urlsplit(url)
+    return urlparse.urlunsplit(('', netloc, path, query, segment))
 
 
 # ==== Struct ==================================================================
