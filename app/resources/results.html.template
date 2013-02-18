@@ -136,7 +136,7 @@
             {% trans "Provided by:" %} {{result.provider_name}}
           </div>
           {% endif %}
-          {% if env.ui != "light" %}
+          {% if env.show_record_ids_in_results %}
             <span class="tracking">
               ID: {{result.record_id}}
             </span>

@@ -307,6 +307,8 @@ def setup_env(request):
     env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
     env.target_attr = ''
+    # Shows record IDs in the results page.
+    env.show_record_ids_in_results = True
 
     if env.ui == 'small':
         env.show_logo = False
@@ -336,6 +338,8 @@ def setup_env(request):
         env.show_language_menu = False
         # Too long buttons are not fully shown in some feature phones.
         env.use_short_buttons = True
+        # To make it simple.
+        env.show_record_ids_in_results = False
 
     # Repo-specific information.
     if env.repo:
