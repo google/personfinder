@@ -20,7 +20,6 @@ from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
-import prefix
 import reveal
 import subscribe
 
@@ -98,7 +97,7 @@ class Handler(BaseHandler):
             linked_persons = []
         linked_person_info = [
             dict(id=p.record_id,
-                 name="%s %s" % (p.given_name, p.family_name),
+                 name=p.primary_full_name,
                  view_url=self.get_url('/view', id=p.record_id))
             for p in linked_persons]
 
@@ -133,7 +132,6 @@ class Handler(BaseHandler):
 
         if person.is_clone():
             person.provider_name = person.get_original_domain()
-        person.full_name = get_person_full_name(person, self.config)
 
         sanitize_urls(person)
         for note in notes:
@@ -254,15 +252,14 @@ class Handler(BaseHandler):
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
-            detail = person.given_name + ' ' + person.family_name
             UserActionLog.put_new(
-                'mark_dead', note, detail, self.request.remote_addr)
+                'mark_dead', note, person.primary_full_name,
+                self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note.status in ['believed_alive', 'is_note_author'] and
             person.latest_status not in ['believed_alive', 'is_note_author']):
-            detail = person.given_name + ' ' + person.family_name
-            UserActionLog.put_new('mark_alive', note, detail)
+            UserActionLog.put_new('mark_alive', note, person.primary_full_name)
 
         # Update the Person based on the Note.
         if person:

@@ -13,6 +13,20 @@
 {% extends "app-base.html.template" %}
 {% load i18n %}
 
+{% block head %}
+  {{block.super}}
+  {% if env.enable_javascript %}
+    <script type="text/javascript">
+      function on_result_item_click(event, elem) {
+        if (event.button == 0) {  // left button
+          // Makes the whole result item div clickable.
+          location.href = elem.getAttribute("data-url");
+        }
+      }
+    </script>
+  {% endif %}
+{% endblock head %}
+
 {% block content %}
 {% include "query_form.html.template" %}
 {% if results %}
@@ -59,71 +73,74 @@
           <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
         {% endif %}
       {% endifchanged %}
-      <div class="resultItem">
-        {# Intentionally violates HTML standard to enclose <div> and <input> #}
-        {# with <a>, to make the whole item area clickable. #}
-        <a class="result-link" href="{{result.view_url}}">
-          {# No whitespace inside .resultImageContainer. #}
-          {# Image width/height are specified as attributes here as well as #}
-          {# in CSS, so that they are applied if CSS is disabled e.g. on #}
-          {# ui=jp-mobile. #}
-          {# <img align='left'> and <br clear='all'> are for cases where CSS #}
-          {# is disabled e.g. on ui=jp-mobile. #}
-          {% if result.photo_url %}
-            <div class="resultImageContainer"
-              ><img class='resultImage' src='{{result.photo_url}}'
-                    width='80' height='80' align='left' alt=''
-            /></div>
-          {% else %}
-            <div class="resultImageContainer"
-              ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
-                    width='80' height='80' align='left' alt=''
-            /></div>
+      <div class="resultItem" data-url="{{result.view_url}}"
+          onclick="on_result_item_click(event, this);">
+        {# No whitespace inside .resultImageContainer. #}
+        {# Image width/height are specified as attributes here as well as #}
+        {# in CSS, so that they are applied if CSS is disabled e.g. on #}
+        {# ui=light. #}
+        {# <img align='left'> and <br clear='all'> are for cases where CSS #}
+        {# is disabled e.g. on ui=light. #}
+        {% if result.photo_url %}
+          <div class="resultImageContainer"
+            ><img class='resultImage' src='{{result.photo_url}}'
+                  width='80' height='80' align='left' alt=''
+          /></div>
+        {% else %}
+          <div class="resultImageContainer"
+            ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
+                  width='80' height='80' align='left' alt=''
+          /></div>
+        {% endif %}
+        <div class='resultData'>
+          {% if env.enable_dup_mode %}
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}'
+                type='checkbox' name='dup' value='{{result.record_id}}'
+                onclick='on_dup_click(event, this);' class='duplicate-checkbox'>
           {% endif %}
-          <div class='resultData'>
-            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+          <a class="result-link" href="{{result.view_url}}">
             <span class='resultDataTitle'>
-              {{result.full_name}}
+              {{result.full_name_list|join:", "}}
               {% if config.use_alternate_names and result.alternate_names %}
-                ({{result.alternate_names}})
+                ({{result.alternate_names_list|join:", "}})
               {% endif %}
             </span>
-            {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
-            <div>{% trans "Home address" %}:
-                {% if result.home_street %}
-                  {{result.home_street}}&nbsp;&nbsp;
-                {% endif %}
-                {% if result.home_neighborhood %}
-                  {{result.home_neighborhood}}&nbsp;&nbsp;
-                {% endif %}
-                {% if result.home_city %}
-                  {{result.home_city}}&nbsp;&nbsp;
-                {% endif %}
-                {% if result.home_state %}
-                  {{result.home_state}}&nbsp;&nbsp;
-                {% endif %}
-                {% if result.home_postal_code %}
-                  {{result.home_postal_code}}&nbsp;&nbsp;
-                {% endif %}
-            </div>
-            {% endif %}
-            <div>{% trans "Status" %}:
-              <span class='resultDataPersonFound'>
-                {{ result.latest_note_status }}
-              </span>
-            </div>
-            {% if result.provider_name %}
-            <div>
-              {% trans "Provided by:" %} {{result.provider_name}}
-            </div>
-            {% endif %}
-            {% if env.ui != "jp-mobile" %}
-              <span class="tracking">
-                ID: {{result.record_id}}
-              </span>
-            {% endif %}
+          </a>
+          {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
+          <div>{% trans "Home address" %}:
+              {% if result.home_street %}
+                {{result.home_street}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_neighborhood %}
+                {{result.home_neighborhood}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_city %}
+                {{result.home_city}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_state %}
+                {{result.home_state}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_postal_code %}
+                {{result.home_postal_code}}&nbsp;&nbsp;
+              {% endif %}
           </div>
-        </a>
+          {% endif %}
+          <div>{% trans "Status" %}:
+            <span class='resultDataPersonFound'>
+              {{ result.latest_note_status }}
+            </span>
+          </div>
+          {% if result.provider_name %}
+          <div>
+            {% trans "Provided by:" %} {{result.provider_name}}
+          </div>
+          {% endif %}
+          {% if env.show_record_ids_in_results %}
+            <span class="tracking">
+              ID: {{result.record_id}}
+            </span>
+          {% endif %}
+        </div>
         <br clear='all'>
       </div>
     {% endfor %}

@@ -48,6 +48,7 @@ class TextQuery():
 
         # query_words is redundant now but I'm leaving it since I don't want to
         # change the signature of TextQuery yet
+        # TODO(ryok): get rid of this field?
         self.query_words = self.words
 
 

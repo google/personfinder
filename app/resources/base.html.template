@@ -32,7 +32,7 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.ui == "small" or env.ui == "jp-mobile" %}
+  {% if env.ui == "small" or env.ui == "light" %}
     <link rel="stylesheet" href="{{env.global_url}}/style-{{env.ui}}.css">
   {% else %}
     <link rel="stylesheet" href="{{env.global_url}}/style.css">
@@ -110,7 +110,7 @@
   <div class="footer" role="contentinfo">
     <div class="disclaimer">
       {% block disclaimer %}
-        {% if env.ui == "jp-mobile" %}
+        {% if env.ui == "light" %}
           {% trans "To delete your data, access Person Finder from your desktop." %}
           <br>
         {% endif %}
@@ -119,7 +119,7 @@
     </div>
 
     {% block footer %}
-      {% if env.repo and env.ui == "jp-mobile" %}
+      {% if env.repo and env.ui == "light" %}
         <a href="{{env.repo_url}}">{% trans "Desktop version" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}

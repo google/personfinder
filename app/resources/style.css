@@ -165,7 +165,7 @@ See app/resources/view.html.template for a usage example.
 
 Constructed with <div> and <span>, not <table>, so that:
 - it looks like a table on normal UI (with CSS rules below)
-- it looks like a normal div/span layout on ui=jp-mobile (where CSS is not
+- it looks like a normal div/span layout on ui=light (where CSS is not
   applied) which fits small screens.
 
 You need:
@@ -581,7 +581,12 @@ resultsList {
   padding: 0;
 }
 
-.searchResults .result-link:hover {
+.searchResults .resultItem {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.searchResults .resultItem:hover {
   background: #cdf;
 }
 
@@ -591,11 +596,6 @@ resultsList {
 
 .searchResults .resultImageContainer {
   float: left;
-}
-
-.searchResults .result-link {
-  padding: 5px;
-  overflow: hidden;
 }
 
 .searchResults .resultDataTitle {

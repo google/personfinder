@@ -20,7 +20,6 @@ import external_search
 import indexing
 import jp_mobile_carriers
 import logging
-import prefix
 
 MAX_RESULTS = 100
 
@@ -48,7 +47,6 @@ class Handler(BaseHandler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
-            result.full_name = get_person_full_name(result, self.config)
             sanitize_urls(result)
         return results
 
