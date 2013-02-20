@@ -16,7 +16,8 @@
 {% block content %}
 <div class="upload">
   <h2>{% trans "Upload CSV files" %}</h2>
-  - <a href="{{env.global_url}}/sample-import-csv.txt" target="_blank"
+  <!-- TODO(ryok): i18n -->
+  - <a href="{{env.global_url}}/sample-import.csv" target="_blank"
       >Sample CSV file</a><br>
   - <a href="http://zesty.ca/pfif/1.4/" target="_blank"
       >Instructions for filling each field<a><br>

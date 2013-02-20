@@ -55,6 +55,7 @@ class Import(utils.BaseHandler):
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
             self.response.set_status(403)
+            # TODO(ryok): i18n
             self.write('Missing or invalid authorization key.')
             return
 
@@ -64,10 +65,18 @@ class Import(utils.BaseHandler):
             self.write('You need to specify at least one CSV file.')
             return
 
+        # TODO(ryok): accept more flexible date time format.
+
         source_domain = self.auth.domain_write_permission
         records = importer.utf8_decoder(
                 csv.DictReader(StringIO.StringIO(content)))
-        records = [complete_record_ids(r, source_domain) for r in records]
+        try:
+            records = [complete_record_ids(r, source_domain) for r in records]
+        except csv.Error:
+            self.response.set_status(400)
+            self.write('The CSV file is formatted incorrectly.')
+            return
+
         persons = [r for r in records if r.get('person_record_id')]
         notes = [r for r in records if r.get('note_record_id')]
 
