@@ -579,7 +579,7 @@ class BaseHandler(webapp.RequestHandler):
         if (self.config and
             self.config.jp_tier2_mobile_redirect_url and
             not self.params.suppress_redirect and
-            self.env.ui not in ('small', 'jp-mobile') and
+            self.env.ui not in ('small', 'light') and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
                     self.env.action)

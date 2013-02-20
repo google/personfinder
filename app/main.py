@@ -308,12 +308,14 @@ def setup_env(request):
     env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
     env.target_attr = ''
+    # Shows record IDs in the results page.
+    env.show_record_ids_in_results = True
 
     if env.ui == 'small':
         env.show_logo = False
         env.target_attr = ' target="_blank" '
 
-    elif env.ui == 'jp-mobile':
+    elif env.ui == 'light':
         # Disables features which requires JavaScript. Some feature phones
         # doesn't support JavaScript.
         env.enable_javascript = False
@@ -323,7 +325,7 @@ def setup_env(request):
         # Uploading is often not supported in feature phones.
         env.enable_photo_upload = False
         # Disables spam operations because it requires JavaScript and
-        # supporting more pages on ui=jp-mobile.
+        # supporting more pages on ui=light.
         env.enable_spam_ops = False
         # Disables duplicate marking mode because it doesn't support
         # small screens and it requires JavaScript.
@@ -337,6 +339,8 @@ def setup_env(request):
         env.show_language_menu = False
         # Too long buttons are not fully shown in some feature phones.
         env.use_short_buttons = True
+        # To make it simple.
+        env.show_record_ids_in_results = False
 
     # Repo-specific information.
     if env.repo:
