@@ -36,6 +36,7 @@ HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
 
 def complete_record_ids(record, domain):
+    """Ensures that a record's record_id fields are prefixed with a domain."""
     def complete(record, field):
         id = record.get(field)
         if id and '/' not in id:
@@ -90,7 +91,7 @@ class Import(utils.BaseHandler):
                              len(people_skipped), len(notes_skipped))
 
         self.render('import.html',
-                    upload_stats=[
+                    stats=[
                         Struct(type='Person',
                                written=people_written,
                                skipped=people_skipped,

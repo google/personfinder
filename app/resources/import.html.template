@@ -14,7 +14,7 @@
 {% load i18n %}
 
 {% block content %}
-<div class="upload">
+<div class="import">
   <h2>{% trans "Upload CSV files" %}</h2>
   <!-- TODO(ryok): i18n -->
   - <a href="{{env.global_url}}/sample-import.csv" target="_blank"
@@ -37,9 +37,9 @@
       </tr>
     </table>
   </form>
-  {% if upload_stats %}
+  {% if stats %}
     <div class="stats">
-      {% for stats in upload_stats %}
+      {% for stats in stats %}
         [{{stats.type}}]<br>
         Imported {{stats.written}} of {{stats.total}}.<br>
         {% if stats.skipped %}
