@@ -120,7 +120,7 @@
 
     {% block footer %}
       {% if env.repo and env.ui == "light" %}
-        <a href="{{env.repo_url}}">{% trans "Desktop version" %}</a>
+        <a href="{{env.desktop_ui_url}}">{% trans "Desktop version" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}
       {% if env.repo %}

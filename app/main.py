@@ -33,6 +33,7 @@ import logging
 import pfif
 import resources
 import utils
+import user_agents
 
 
 # When no action or repo is specified, redirect to this action.
@@ -124,15 +125,15 @@ def select_charset(request):
     # preferred encoding in the Accept-Charset header, and will use this
     # encoding for content, query parameters, and form data.  We make this
     # assumption across all repositories.
-    # (Some Japanese mobile phones support only Shift-JIS and expect
-    # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
     if request.get('charsets'):
-        # This parameter is specified e.g. in URLs used for Japanese feature
-        # phones. Many of Japanese feature phones doesn't (fully) support
-        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
+    elif user_agents.is_jp_tier2_mobile_phone(request):
+        # Many of Japanese feature phones don't (fully) support UTF-8.
+        # They only support Shift_JIS. But they don't send Accept-Charset
+        # header.
+        charsets = ['Shift_JIS']
     else:
         charsets = request.accept_charset.best_matches()
 
@@ -287,6 +288,9 @@ def setup_env(request):
     elif not env.ui and style_param:
         env.ui = style_param
 
+    if not env.ui and user_agents.is_jp_tier2_mobile_phone(request):
+        env.ui = 'light'
+
     # UI configurations.
     #
     # Enables features which require JavaScript.
@@ -351,6 +355,9 @@ def setup_env(request):
         # normal UI.
         env.repo_title_url = (
             env.repo_url if env.ui == 'small' else env.start_url)
+        # URL to force desktop UI. Note that we show ui=light version in some
+        # user agents when ui parameter is not specified.
+        env.desktop_ui_url = utils.get_url(request, env.repo, '', ui='desktop')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')

@@ -48,7 +48,6 @@ import legacy_redirect
 import model
 import pfif
 import resources
-import user_agents
 
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
@@ -572,20 +571,6 @@ class BaseHandler(webapp.RequestHandler):
         'utcnow': validate_timestamp,
         'version': validate_version,
     }
-
-    def maybe_redirect_jp_tier2_mobile(self):
-        """Returns a redirection URL with ui=light&charsets=Shift_JIS if the
-        request is from a Japanese Tier-2 phone."""
-        if (not self.params.suppress_redirect and
-                self.env.ui not in ('small', 'light') and
-                user_agents.is_jp_tier2_mobile_phone(self.request)):
-            params = {}
-            for name in self.request.arguments():
-                params[name] = self.request.get(name)
-            params['ui'] = 'light'
-            params['charsets'] = 'Shift_JIS'
-            return self.get_url(self.env.action, **params)
-        return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):
         # This will prepend the repo to the path to create a working URL,

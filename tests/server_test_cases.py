@@ -337,7 +337,7 @@ class ReadOnlyTests(TestsBase):
         assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
-        # Shift-JIS encoding of title text
+        # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that spelling of charset is preserved.
@@ -346,7 +346,7 @@ class ReadOnlyTests(TestsBase):
         assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
-        # Shift-JIS encoding of title text
+        # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that UTF-8 takes precedence.
@@ -358,6 +358,18 @@ class ReadOnlyTests(TestsBase):
         # UTF-8 encoding of title text
         assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
+    def test_japanese_tier2_charsets(self):
+        """Checks that pages are delivered in Shift_JIS if the user agent is a
+        Japanese Tier-2 phone."""
+        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        doc = self.go('/haiti?lang=ja',
+                      charset=scrape.RAW)
+        assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=Shift_JIS'
+        # Shift_JIS encoding of title text
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
+        
     def test_query(self):
         """Check the query page."""
         doc = self.go('/haiti/query')
@@ -542,36 +554,6 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/pakistan')
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
-
-    # TODO(lschumacher):  This external app depends on our urls.
-    #   figure out what to do about it.
-    def test_jp_tier2_mobile_redirect(self):
-        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
-        # Redirect to top page.
-        self.go('/japan/', redirects=0)
-        self.assertEqual(self.s.status, 302)
-        self.assert_equal_urls(
-            self.s.headers['location'],
-            self.path_to_url('/japan/?ui=light&charsets=Shift_JIS'))
-
-        # redirect view page
-        self.go('/japan/view?id=test.google.com/person.111',
-                redirects=0)
-        self.assertEqual(self.s.status, 302)
-        self.assert_equal_urls(
-            self.s.headers['location'],
-            self.path_to_url(
-                '/japan/view?id=test.google.com/person.111&'
-                'ui=light&charsets=Shift_JIS'))
-
-        # no redirect with &ui=small
-        self.go('/haiti/?ui=small', redirects=0)
-        self.assertEqual(self.s.status, 200)
-
-        # no redirect with &suppress_redirect=yes
-        self.go('/japan/view?suppress_redirect=yes'
-                '&id=test.google.com/person.111&redirect=0')
-        self.assertEqual(self.s.status, 404)
 
 
 class PersonNoteTests(TestsBase):
