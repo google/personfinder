@@ -58,9 +58,7 @@
   {% endif %}
 {% endblock head %}</head>
 
-<body
-    class="{{env.ui|default:"normal"}}"
-    onload="{{onload_function}}">{% block body %}
+<body class="{{env.ui}}" onload="{{onload_function}}">{% block body %}
   <div class="header" role="banner">
     {% block header %}
       {% if env.show_language_menu %}
@@ -120,7 +118,7 @@
 
     {% block footer %}
       {% if env.repo and env.ui == "light" %}
-        <a href="{{env.desktop_ui_url}}">{% trans "Desktop version" %}</a>
+        <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}
       {% if env.repo %}

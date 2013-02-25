@@ -362,8 +362,7 @@ class ReadOnlyTests(TestsBase):
         """Checks that pages are delivered in Shift_JIS if the user agent is a
         Japanese Tier-2 phone."""
         self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
-        doc = self.go('/haiti?lang=ja',
-                      charset=scrape.RAW)
+        doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift_JIS'
