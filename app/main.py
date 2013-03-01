@@ -33,6 +33,7 @@ import logging
 import pfif
 import resources
 import utils
+import user_agents
 
 
 # When no action or repo is specified, redirect to this action.
@@ -125,15 +126,17 @@ def select_charset(request):
     # preferred encoding in the Accept-Charset header, and will use this
     # encoding for content, query parameters, and form data.  We make this
     # assumption across all repositories.
-    # (Some Japanese mobile phones support only Shift-JIS and expect
-    # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
     if request.get('charsets'):
-        # This parameter is specified e.g. in URLs used for Japanese feature
-        # phones. Many of Japanese feature phones doesn't (fully) support
-        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
+    elif user_agents.is_jp_tier2_mobile_phone(request):
+        # Many of Japanese feature phones don't (fully) support UTF-8.
+        # They only support Shift_JIS. But they may not send Accept-Charset
+        # header. Also, we haven't confirmed, but there may be phones whose
+        # Accept-Charset header includes UTF-8 but its UTF-8 support is buggy.
+        # So we always use Shift_JIS regardless of Accept-Charset header.
+        charsets = ['Shift_JIS']
     else:
         charsets = request.accept_charset.best_matches()
 
@@ -276,17 +279,24 @@ def setup_env(request):
     env.hidden_input_tags_for_preserved_query_params = (
         get_hidden_input_tags_for_preserved_query_params(request))
 
-    env.ui = request.get('ui', '').strip().lower()
+    ui_param = request.get('ui', '').strip().lower()
 
     # Interprets "small" and "style" parameters for backward compatibility.
     # TODO(ichikawa): Delete these in near future when we decide to drop
     # support of these parameters.
     small_param = request.get('small', '').strip().lower()
     style_param = request.get('style', '').strip().lower()
-    if not env.ui and small_param == 'yes':
-        env.ui = 'small'
-    elif not env.ui and style_param:
-        env.ui = style_param
+    if not ui_param and small_param == 'yes':
+        ui_param = 'small'
+    elif not ui_param and style_param:
+        ui_param = style_param
+
+    if ui_param:
+        env.ui = ui_param
+    elif user_agents.is_jp_tier2_mobile_phone(request):
+        env.ui = 'light'
+    else:
+        env.ui = 'default'
 
     # UI configurations.
     #
@@ -352,6 +362,9 @@ def setup_env(request):
         # normal UI.
         env.repo_title_url = (
             env.repo_url if env.ui == 'small' else env.start_url)
+        # URL to force default UI. Note that we show ui=light version in some
+        # user agents when ui parameter is not specified.
+        env.default_ui_url = utils.get_url(request, env.repo, '', ui='default')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')

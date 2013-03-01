@@ -21,10 +21,6 @@ class Handler(BaseHandler):
     repo_required = False
 
     def get(self):
-        redirect_url = self.maybe_redirect_jp_tier2_mobile()
-        if redirect_url:
-            return self.redirect(redirect_url)
-
         self.env.robots_ok = True
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
