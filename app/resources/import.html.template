@@ -16,28 +16,31 @@
 {% block content %}
 <div class="import">
   <h2>{% trans "Upload CSV files" %}</h2>
-  <!-- TODO(ryok): i18n -->
-  - <a href="{{env.global_url}}/sample-import.csv" target="_blank"
-      >Sample CSV file</a><br>
-  - <a href="http://zesty.ca/pfif/1.4/" target="_blank"
-      >Instructions for filling each field<a><br>
+  {% blocktrans with env.global_url as global_url%}
+  - Here is <a href="{{global_url}}/sample-import.csv"
+      target="_blank">a sample CSV file</a> you can edit and upload<br>
+  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>
+  - See <a href="https://code.google.com/p/googlepersonfinder/wiki/ImportCSV"
+      target="_blank">the wiki</a> for more instructions<br>
+  {% endblocktrans %}
   <form method="post" enctype="multipart/form-data">
     <table>
       <tr>
-        <td>Authorization key:</td>
+        <td>{% trans "Authorization key" %}:</td>
         <td><input type="text" name="key"></td>
       </tr>
       <tr>
-        <td>CSV file:</td>
+        <td>{% trans "CSV file" %}:</td>
         <td><input type="file" name="content"></td>
       </tr>
       <tr>
         <td></td>
-        <td><input type="submit" value="Upload"></td>
+        <td><input type="submit" value="{% trans "Upload" %}"></td>
       </tr>
     </table>
   </form>
   {% if stats %}
+    <!-- TODO(ryok): i18n -->
     <div class="stats">
       {% for stats in stats %}
         [{{stats.type}}]<br>

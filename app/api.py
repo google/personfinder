@@ -47,8 +47,7 @@ def complete_record_ids(record, domain):
 
 
 class Import(utils.BaseHandler):
-    # TODO(ryok): Uncomment before submission.
-    #https_required = True
+    https_required = True
 
     def get(self):
         self.render('import.html')
@@ -66,7 +65,9 @@ class Import(utils.BaseHandler):
             self.write('You need to specify at least one CSV file.')
             return
 
+        # TODO(ryok): let the user select timezone.
         # TODO(ryok): accept more flexible date time format.
+        # TODO(ryok): support non-UTF8 encodings.
 
         source_domain = self.auth.domain_write_permission
         records = importer.utf8_decoder(
@@ -78,8 +79,9 @@ class Import(utils.BaseHandler):
             self.write('The CSV file is formatted incorrectly.')
             return
 
-        persons = [r for r in records if r.get('person_record_id')]
-        notes = [r for r in records if r.get('note_record_id')]
+        is_empty = lambda x: (x or '').strip()
+        persons = [r for r in records if is_empty(r.get('full_name'))]
+        notes = [r for r in records if is_empty(r.get('note_record_id'))]
 
         people_written, people_skipped, people_total = importer.import_records(
             self.repo, source_domain, importer.create_person, persons)

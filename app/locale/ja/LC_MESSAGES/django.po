@@ -120,8 +120,12 @@ msgid_plural ""
 "                Warning: this record will expire in less than %(days)s "
 "days.\n"
 "                "
-msgstr[0] "\n警告：この記録は 1 日以内に削除されます。"
-msgstr[1] "\n警告：この記録は %(days)s 日以内に削除されます。"
+msgstr[0] ""
+"\n"
+"警告：この記録は 1 日以内に削除されます。"
+msgstr[1] ""
+"\n"
+"警告：この記録は %(days)s 日以内に削除されます。"
 
 #, python-format
 msgid ""
@@ -259,6 +263,25 @@ msgstr ""
 "メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
 "\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
+"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
+"\n"
+"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
+"  - See <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
+"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
+"  "
+msgstr ""
+"  - サンプル CSV ファイルは<a href=\"%(global_url)s/sample-import.csv\""
+"      target=\"_blank\">こちら</a>からダウンロードできます<br>"
+"  - 日付はすべて yyyy-mm-ddThh:mm:ssZ の形式で UTC 時間である必要があります<br>"
+"  - 詳しい情報は <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\""
+"      target=\"_blank\">wiki ページ</a>を御覧ください<br>"
 
 msgid ""
 "\n"
@@ -485,11 +508,17 @@ msgstr "情報提供者の名前"
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
+msgid "Authorization key"
+msgstr "API キー"
+
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
 msgid "Back to start"
 msgstr "最初のページに戻る"
+
+msgid "CSV file"
+msgstr "CSV ファイル"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -1205,6 +1234,9 @@ msgstr "指定なし"
 
 msgid "Upload"
 msgstr "アップロード"
+
+msgid "Upload CSV files"
+msgstr "CSV ファイルをアップロードする"
 
 msgid "View the record"
 msgstr "記録を見る"
