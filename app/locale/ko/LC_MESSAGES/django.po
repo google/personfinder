@@ -261,6 +261,19 @@ msgstr ""
 "레코드 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
+"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
+"\n"
+"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
+"  - See <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
+"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -490,11 +503,17 @@ msgstr "작성자의 이름"
 msgid "Author's phone number"
 msgstr "작성자 전화번호"
 
+msgid "Authorization key"
+msgstr ""
+
 msgid "Back to results list"
 msgstr "결과 목록으로 돌아가기"
 
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
+
+msgid "CSV file"
+msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -1222,6 +1241,9 @@ msgstr "지정하지 않음"
 
 msgid "Upload"
 msgstr "업로드"
+
+msgid "Upload CSV files"
+msgstr ""
 
 msgid "View the record"
 msgstr "레코드 보기"

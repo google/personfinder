@@ -272,6 +272,19 @@ msgstr ""
 "autor, provjerite e-poštu kada kliknete gumb u nastavku.\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
+"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
+"\n"
+"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
+"  - See <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
+"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -509,11 +522,17 @@ msgstr "Ime autora"
 msgid "Author's phone number"
 msgstr "Telefonski broj autora"
 
+msgid "Authorization key"
+msgstr ""
+
 msgid "Back to results list"
 msgstr "Natrag na popis rezultata"
 
 msgid "Back to start"
 msgstr "Natrag na početak"
+
+msgid "CSV file"
+msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -1265,6 +1284,9 @@ msgstr "Neodređeno"
 
 msgid "Upload"
 msgstr "Prenesi"
+
+msgid "Upload CSV files"
+msgstr ""
 
 msgid "View the record"
 msgstr "Pogledajte zapis"

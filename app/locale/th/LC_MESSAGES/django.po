@@ -269,6 +269,19 @@ msgstr ""
 " หากคุณเป็นผู้เขียน โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
 "  "
 
+#, python-format
+msgid ""
+"\n"
+"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
+"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
+"\n"
+"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
+"  - See <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
+"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "  The record will still be visible on this site, but no one will be able "
@@ -506,11 +519,17 @@ msgstr "ชื่อของผู้ให้ข้อมูล"
 msgid "Author's phone number"
 msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
 
+msgid "Authorization key"
+msgstr ""
+
 msgid "Back to results list"
 msgstr "กลับไปที่รายการผลลัพธ์"
 
 msgid "Back to start"
 msgstr "กลับไปที่จุดเริ่มต้น"
+
+msgid "CSV file"
+msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -1258,6 +1277,9 @@ msgstr "ไม่ระบุ"
 
 msgid "Upload"
 msgstr "อัปโหลด"
+
+msgid "Upload CSV files"
+msgstr ""
 
 msgid "View the record"
 msgstr "ดูบันทึกข้อมูล"

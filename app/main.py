@@ -73,6 +73,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 
 # Exceptional cases where the module name doesn't match the URL.
 HANDLER_CLASSES[''] = 'start.Handler'
+HANDLER_CLASSES['api/import'] = 'api.Import'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
