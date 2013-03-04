@@ -6282,6 +6282,8 @@ class ImportTests(TestsBase):
         TestsBase.tearDown(self)
 
     def _write_csv_file(self, content):
+        # TODO(ryok): We should use StringIO instead of a file on disk. Update
+        # scrape.py to support StringIO.
         fd, self.filename = tempfile.mkstemp()
         os.fdopen(fd, 'w').write('\n'.join(content))
 
@@ -6332,6 +6334,7 @@ class ImportTests(TestsBase):
         assert person.record_id == 'test.google.com/person1'
         assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
         assert person.full_name == '_test_full_name'
+        verify_api_log(ApiActionLog.WRITE, person_records=1)
 
     def test_import_one_note(self):
         """Verifies a Note entry is successfully imported."""
@@ -6351,6 +6354,7 @@ class ImportTests(TestsBase):
         assert note.person_record_id == 'test.google.com/person1'
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
+        verify_api_log(ApiActionLog.WRITE, note_records=1)
 
     def test_import_only_digit_record_id(self):
         """Verifies that a Person entry is successfully imported even if the
@@ -6370,6 +6374,7 @@ class ImportTests(TestsBase):
         assert person.record_id == 'test.google.com/1'
         assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
         assert person.full_name == '_test_full_name'
+        verify_api_log(ApiActionLog.WRITE, person_records=1)
 
     def test_import_domain_dont_match(self):
         """Verifies we reject a Person entry whose record_id domain does not
@@ -6385,6 +6390,7 @@ class ImportTests(TestsBase):
         assert 'Not in authorized domain' in doc.text
         assert Person.all().count() == 0
         assert Note.all().count() == 0
+        verify_api_log(ApiActionLog.WRITE)
 
     def test_import_one_person_and_note_on_separate_rows(self):
         """Verifies a Note entry and a Person entry on separate rows are
@@ -6411,6 +6417,7 @@ class ImportTests(TestsBase):
         assert note.person_record_id == 'test.google.com/person1'
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
+        verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
 
     def test_import_one_person_and_note_on_single_row(self):
         """Verifies a Note entry and a Person entry on a single row are
@@ -6436,3 +6443,4 @@ class ImportTests(TestsBase):
         assert note.person_record_id == 'test.google.com/person1'
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
+        verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
