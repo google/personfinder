@@ -40,7 +40,7 @@ msgid ""
 "Dear %(author_name)s,\n"
 "\n"
 "A user has requested enabling notes on the record for\n"
-"\"%(given_name)s %(family_name)s\".\n"
+"\"%(full_name)s\".\n"
 "\n"
 "Your e-mail address is recorded as the author of this record.  To enable "
 "notes\n"
@@ -57,7 +57,7 @@ msgid ""
 "Dear %(author_name)s,\n"
 "\n"
 "A user has requested that you disable notes on the record for\n"
-"\"%(given_name)s %(family_name)s\".\n"
+"\"%(full_name)s\".\n"
 "\n"
 "Your e-mail address is recorded as the author of this record.  To disable"
 " notes\n"
@@ -72,24 +72,11 @@ msgid ""
 "\n"
 "\n"
 "Dear %(author_name)s,\n"
-"You just entered a note on the record for \"%(given_name)s "
-"%(family_name)s\".  \n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
 "To publish your note, follow this link within 3 days:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"                <a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"                         value=\"Extend expiration date by "
-"%(extension_days)s days\" \n"
-"                         id=\"extend_btn\">\n"
-"                </a>\n"
-"                "
 msgstr ""
 
 #, python-format
@@ -108,16 +95,26 @@ msgstr[1] ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(given_name)s "
-"%(family_name)s\"?\n"
+"              <a href=\"%(extend_url)s\">\n"
+"                <input type=\"button\"\n"
+"                       value=\"Extend expiration date by "
+"%(extension_days)s days\"\n"
+"                       id=\"extend_btn\">\n"
+"              </a>\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(given_name)s "
-"%(family_name)s\"?\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -125,15 +122,14 @@ msgstr ""
 msgid ""
 "\n"
 "      Are you sure you want to disable notes on the record of "
-"\"%(given_name)s %(family_name)s\"?\n"
+"\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to enable notes on \"%(given_name)s "
-"%(family_name)s\"?\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -141,7 +137,7 @@ msgstr ""
 msgid ""
 "\n"
 "      Are you sure you want to extend the expiration for record "
-"\"%(given_name)s %(family_name)s\"?\n"
+"\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -156,6 +152,17 @@ msgid ""
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -189,10 +196,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"  The URL you entered doesn't look like a valid %(website)s profile URL.\n"
-"  Please go to this person's profile page on %(website)s, then copy and "
-"paste\n"
-"  that URL here.\n"
+"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
+"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
+"\n"
+"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
+"  - See <a "
+"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
+"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
 "  "
 msgstr ""
 
@@ -215,7 +225,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has deleted the record for \"%(given_name)s %(family_name)s\"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
@@ -225,7 +235,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has deleted the record for \"%(given_name)s %(family_name)s\"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
@@ -252,8 +262,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now disabled on the record for \"%(given_name)s "
-"%(family_name)s\".  To view the record,\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -265,8 +275,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s "
-"%(family_name)s\".  To view the record,\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -278,7 +288,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"The author of the record for \"%(given_name)s %(family_name)s\"\n"
+"The author of the record for \"%(full_name)s\"\n"
 "(which was previously deleted) has restored the record.  To view the\n"
 "record, follow this link:\n"
 "\n"
@@ -291,14 +301,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
-"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"You have subscribed to notes on \"%(given_name)s %(family_name)s\".\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
 "\n"
 "You can view this record at\n"
 "\n"
@@ -377,11 +386,17 @@ msgstr "مصنف کا نام"
 msgid "Author's phone number"
 msgstr "مصنف کا فون نمبر"
 
+msgid "Authorization key"
+msgstr ""
+
 msgid "Back to results list"
 msgstr "نتائج کی فہرست پر واپس جائیں"
 
 msgid "Back to start"
 msgstr "شروع کرنے کے لئے واپس جائیں"
+
+msgid "CSV file"
+msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -404,6 +419,9 @@ msgstr "ان ریکارڈوں کا موازنہ کریں"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "اس ٹول کو اپنی سائٹ پر رکھنے کے لئے درج ذیل HTML کوڈ کاپی کرکے پیسٹ کریں"
+
+msgid "Create a new record"
+msgstr ""
 
 msgid "Create a new record for"
 msgstr "نیا ریکارڈ بنائیں برائے"
@@ -437,6 +455,9 @@ msgstr "اس فرد کی نشاندہی کا طریقہ بتائیں۔"
 
 msgid "Description"
 msgstr "وضاحت"
+
+msgid "Desktop version"
+msgstr ""
 
 msgid "Developers"
 msgstr "ڈیولپرز"
@@ -502,6 +523,9 @@ msgstr "نیا ریکارڈ بنانے کے لئے اس لنک کی پیروی �
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
+msgstr ""
+
+msgid "Full name"
 msgstr ""
 
 msgid "Get a new challenge"
@@ -716,9 +740,6 @@ msgstr ""
 msgid "Note text"
 msgstr ""
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Notes for this person"
 msgstr ""
 
@@ -833,6 +854,9 @@ msgstr ""
 msgid "Profile page"
 msgstr ""
 
+msgid "Provide information"
+msgstr ""
+
 msgid "Provide information about this person"
 msgstr "اس فرد کے بارے میں معلومات فراہم کریں"
 
@@ -866,7 +890,7 @@ msgid "Report spam"
 msgstr ""
 
 #, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
+msgid "Return to the record for %(full_name)s."
 msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
 
 msgid "Reveal note"
@@ -934,7 +958,7 @@ msgid "Subscribe"
 msgstr ""
 
 #, python-format
-msgid "Subscribe to updates about %(given_name)s %(family_name)s"
+msgid "Subscribe to updates about %(full_name)s"
 msgstr ""
 
 #, fuzzy
@@ -1087,6 +1111,9 @@ msgstr ""
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr ""
 
@@ -1096,6 +1123,9 @@ msgstr "معلومات دیکھنے یا شامل کرنے کے لئے، ذیل 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
+msgstr ""
+
+msgid "Type an address."
 msgstr ""
 
 msgid "Type the two words:"
@@ -1115,6 +1145,9 @@ msgstr "غیر واضح"
 
 msgid "Upload"
 msgstr "اپ لوڈ کریں"
+
+msgid "Upload CSV files"
+msgstr ""
 
 msgid "View the record"
 msgstr ""
@@ -1238,53 +1271,43 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Enabling notes notice for \"%(given_name)s "
-"%(family_name)s\""
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Notes are now disabled for \"%(given_name)s "
-"%(family_name)s\""
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Notes are now enabled on \"%(given_name)s "
-"%(family_name)s\""
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(given_name)s "
-"%(family_name)s\""
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgid "[Person Finder] Status update for %(full_name)s"
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 
 msgid "at"

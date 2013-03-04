@@ -85,7 +85,11 @@ class CmpResults():
         self.query_words_set = set(query.words)
 
     def __call__(self, p1, p2):
-        if p1.given_name == p2.given_name and p1.family_name == p2.family_name:
+        if ((p1.primary_full_name and
+             p1.primary_full_name == p2.primary_full_name) or
+            ((p1.given_name or p1.family_name) and
+             p1.given_name == p2.given_name and
+             p1.family_name == p2.family_name)):
             return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)
@@ -94,7 +98,8 @@ class CmpResults():
 
         if r1 == r2:
             # if rank is the same sort by name so same names will be together
-            return cmp(p1._normalized_full_name, p2._normalized_full_name)
+            return cmp(p1._normalized_full_name.normalized,
+                       p2._normalized_full_name.normalized)
         else:
             return cmp(r2, r1)
 
@@ -104,13 +109,13 @@ class CmpResults():
         if not hasattr(person, '_normalized_given_name'):
             person._normalized_given_name = TextQuery(person.given_name)
             person._normalized_family_name = TextQuery(person.family_name)
-            person._name_words = set(person._normalized_given_name.words +
-                                     person._normalized_family_name.words)
-            person._normalized_full_name = '%s %s' % (
-                person._normalized_given_name.normalized,
-                person._normalized_family_name.normalized)
-            person._alt_name_words = TextQuery(person.alternate_names).words
+            person._normalized_full_name = TextQuery(person.full_name)
+            person._name_words = set(person._normalized_full_name.words)
+            person._alt_name_words = set(
+                    TextQuery(person.alternate_names).words)
 
+    # TODO(ryok): re-consider the ranking putting more weight on full_name (a
+    # required field) instead of given name and family name pair (optional).
     def rank(self, person):
         # The normalized query words, in the order as entered.
         ordered_words = self.query.normalized.split()

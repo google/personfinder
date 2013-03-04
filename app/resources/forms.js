@@ -42,6 +42,7 @@ function update_clone() {
   $('author_email_clone').style.display = display_clone;
   $('source_url_row').style.display = display_source;
   $('source_date_row').style.display = display_source;
+  $('source_date_hint_row').style.display = display_source;
   $('source_name_row').style.display = display_source;
 }
 
@@ -159,7 +160,7 @@ function translate(source, target, text, continuation) {
 // Translates the contents of all the notes.  The 'label' argument is
 // the label "Translated message:", translated into the user's language.
 function translate_notes(source, target, label) {
-  var elements = document.getElementsByName("note_text");
+  var elements = document.getElementsByClassName("note-text");
   for (var i = 0; i < elements.length; i++) {
     (function(element) {
       translate('', lang, element.innerHTML, function(source, target, text) {
@@ -234,6 +235,16 @@ function set_dup_mode(enable, init) {
   return false;
 }
 
+function on_dup_click(event, elem) {
+  // Stops event propagation to suppress firing onclick of div.resultItem.
+  if (event.stopPropagation) {
+    event.stopPropagation();
+  } else {  // IE
+    event.cancelBubble = true;
+  }
+  check_dup(elem);
+}
+
 // Handles checking / unchecking a person for duplicate handling.
 function check_dup(elem) {
   if (elem.checked) {
@@ -263,6 +274,7 @@ function mark_dup() {
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
+  // TODO(ryok): maybe just check full_name instead of given_name and family_name.
   var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);

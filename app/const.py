@@ -143,6 +143,9 @@ VIRTUAL_KEYBOARD_LAYOUTS = {
     'ur': 'URDU'
 }
 
+# Charset string for UTF-8 used in env.charset.
+CHARSET_UTF8 = 'utf-8'
+
 # UI text for the sex field when displaying a person.
 PERSON_SEX_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.

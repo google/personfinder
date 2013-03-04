@@ -20,7 +20,6 @@ import external_search
 import indexing
 import jp_mobile_carriers
 import logging
-import prefix
 
 MAX_RESULTS = 100
 
@@ -48,28 +47,30 @@ class Handler(BaseHandler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
-            result.full_name = get_person_full_name(result, self.config)
             sanitize_urls(result)
         return results
 
     def reject_query(self, query):
+        # NOTE: Parameters such as 'ui' are automatically preserved in
+        #       redirect().
         return self.redirect(
-            '/query', role=self.params.role, small=self.params.small,
-            style=self.params.style, error='error', query=query.query)
+            '/query', role=self.params.role, error='error', query=query.query)
 
     def get_results_url(self, query):
-        return self.get_url('/results',
-                            small='no',
-                            query=query,
-                            given_name=self.params.given_name,
-                            family_name=self.params.family_name)
+        return self.get_url(
+            '/results',
+            ui='' if self.env.ui == 'small' else self.env.ui,
+            query=query,
+            given_name=self.params.given_name,
+            family_name=self.params.family_name)
 
     def get(self):
-        create_url = self.get_url('/create',
-                                  small='no',
-                                  role=self.params.role,
-                                  given_name=self.params.given_name,
-                                  family_name=self.params.family_name)
+        create_url = self.get_url(
+            '/create',
+            ui='' if self.env.ui == 'small' else self.env.ui,
+            role=self.params.role,
+            given_name=self.params.given_name,
+            family_name=self.params.family_name)
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
@@ -107,7 +108,7 @@ class Handler(BaseHandler):
                                    results_url=results_url,
                                    create_url=create_url)
             else:
-                if self.params.small:
+                if self.env.ui == 'small':
                     # show a link to a create page.
                     return self.render('small-create.html',
                                        create_url=create_url)

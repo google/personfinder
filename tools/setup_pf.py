@@ -147,7 +147,6 @@ def setup_configs():
         time_zone_offset=9,  # UTC+9
         time_zone_abbreviation='JST',
         jp_mobile_carrier_redirect=True,
-        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com',
         published_date=get_timestamp(datetime(2011, 3, 11)),
         updated_date=get_timestamp(datetime(2011, 3, 11)),
     )

@@ -76,10 +76,9 @@ def expire_person(person):
 
 def person_to_text(person):
     """Returns the person's information as string."""
-    return ('id=%s given_name=%s family_name=%s entry_date=%s' % (
+    return ('id=%s full_name=%s entry_date=%s' % (
         person.get_record_id(),
-        person.given_name,
-        person.family_name,
+        person.primary_full_name,
         person.entry_date.isoformat(),
     ))
 

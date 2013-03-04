@@ -33,6 +33,7 @@ import logging
 import pfif
 import resources
 import utils
+import user_agents
 
 
 # When no action or repo is specified, redirect to this action.
@@ -72,6 +73,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 
 # Exceptional cases where the module name doesn't match the URL.
 HANDLER_CLASSES[''] = 'start.Handler'
+HANDLER_CLASSES['api/import'] = 'api.Import'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
@@ -115,27 +117,33 @@ def get_repo_and_action(request):
     return repo, action
 
 def select_charset(request):
-    """Given a request, chooses a charset for encoding the response."""
+    """Given a request, chooses a charset for encoding the response.
+
+    If the selected charset is UTF-8, it always returns
+    'utf-8' (const.CHARSET_UTF8), not 'utf8', 'UTF-8', etc.
+    """
     # We assume that any client that doesn't support UTF-8 will specify a
     # preferred encoding in the Accept-Charset header, and will use this
     # encoding for content, query parameters, and form data.  We make this
     # assumption across all repositories.
-    # (Some Japanese mobile phones support only Shift-JIS and expect
-    # content, parameters, and form data all to be encoded in Shift-JIS.)
 
     # Get a list of the charsets that the client supports.
     if request.get('charsets'):
-        # This parameter is specified e.g. in URLs used for Japanese feature
-        # phones. Many of Japanese feature phones doesn't (fully) support
-        # UTF-8. They only support Shift_JIS.
         charsets = request.get('charsets').split(',')
+    elif user_agents.is_jp_tier2_mobile_phone(request):
+        # Many of Japanese feature phones don't (fully) support UTF-8.
+        # They only support Shift_JIS. But they may not send Accept-Charset
+        # header. Also, we haven't confirmed, but there may be phones whose
+        # Accept-Charset header includes UTF-8 but its UTF-8 support is buggy.
+        # So we always use Shift_JIS regardless of Accept-Charset header.
+        charsets = ['Shift_JIS']
     else:
         charsets = request.accept_charset.best_matches()
 
     # Always prefer UTF-8 if the client supports it.
     for charset in charsets:
         if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-            return charset
+            return const.CHARSET_UTF8
 
     # Otherwise, look for a requested charset that Python supports.
     for charset in charsets:
@@ -146,7 +154,7 @@ def select_charset(request):
             continue
 
     # If Python doesn't know any of the requested charsets, use UTF-8.
-    return 'utf-8'
+    return const.CHARSET_UTF8
 
 def select_lang(request, config=None):
     """Selects the best language to use for a given request.  The 'lang' query
@@ -166,6 +174,8 @@ def get_repo_options(request, lang):
     """Returns a list of the names and titles of the active repositories."""
     options = []
     for repo in config.get('active_repos') or []:
+        if config.get_for_repo(repo, 'deactivated'):
+            continue
         titles = config.get_for_repo(repo, 'repo_titles', {})
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
@@ -199,7 +209,7 @@ def get_localized_message(localized_messages, lang, default):
 
 def get_hidden_input_tags_for_preserved_query_params(request):
     """Gets HTML with <input type="hidden"> tags to preserve query parameters
-    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "style"."""
+    listed in utils.PRESERVED_QUERY_PARAM_NAMES e.g. "ui"."""
     tags_str = ''
     for name in utils.PRESERVED_QUERY_PARAM_NAMES:
         value = request.get(name)
@@ -229,7 +239,13 @@ def setup_env(request):
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
-    env.back_chevron = env.rtl and u'\xbb' or u'\xab'
+
+    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
+    try:
+        env.back_chevron.encode(env.charset)
+    except UnicodeEncodeError:
+        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
+        env.back_chevron = u'>>' if env.rtl else u'<<'
 
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below
@@ -263,17 +279,92 @@ def setup_env(request):
     env.hidden_input_tags_for_preserved_query_params = (
         get_hidden_input_tags_for_preserved_query_params(request))
 
-    # Fields related to "small mode" (for embedding in an <iframe>).
-    env.small = request.get('small', '').lower() == 'yes'
+    ui_param = request.get('ui', '').strip().lower()
+
+    # Interprets "small" and "style" parameters for backward compatibility.
+    # TODO(ichikawa): Delete these in near future when we decide to drop
+    # support of these parameters.
+    small_param = request.get('small', '').strip().lower()
+    style_param = request.get('style', '').strip().lower()
+    if not ui_param and small_param == 'yes':
+        ui_param = 'small'
+    elif not ui_param and style_param:
+        ui_param = style_param
+
+    if ui_param:
+        env.ui = ui_param
+    elif user_agents.is_jp_tier2_mobile_phone(request):
+        env.ui = 'light'
+    else:
+        env.ui = 'default'
+
+    # UI configurations.
+    #
+    # Enables features which require JavaScript.
+    env.enable_javascript = True
+    # Enables operations which requires Captcha.
+    env.enable_captcha = True
+    # Enables photo upload.
+    env.enable_photo_upload = True
+    # Enables to flag/unflag notes as spam, and to reveal spam notes.
+    env.enable_spam_ops = True
+    # Enables duplicate marking mode.
+    env.enable_dup_mode = True
+    # Shows a logo on top of the page.
+    env.show_logo = True
+    # Shows language menu.
+    env.show_language_menu = True
+    # Uses short labels for buttons.
+    env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
-    env.target_attr = env.small and ' target="_blank" ' or ''
+    env.target_attr = ''
+    # Shows record IDs in the results page.
+    env.show_record_ids_in_results = True
+
+    if env.ui == 'small':
+        env.show_logo = False
+        env.target_attr = ' target="_blank" '
+
+    elif env.ui == 'light':
+        # Disables features which requires JavaScript. Some feature phones
+        # doesn't support JavaScript.
+        env.enable_javascript = False
+        # Disables operations which requires Captcha because Captcha requires
+        # JavaScript.
+        env.enable_captcha = False
+        # Uploading is often not supported in feature phones.
+        env.enable_photo_upload = False
+        # Disables spam operations because it requires JavaScript and
+        # supporting more pages on ui=light.
+        env.enable_spam_ops = False
+        # Disables duplicate marking mode because it doesn't support
+        # small screens and it requires JavaScript.
+        env.enable_dup_mode = False
+        # Hides the logo on the top to save the space. Also, the logo links
+        # to the global page which doesn't support small screens.
+        env.show_logo = False
+        # Hides language menu because the menu in the current position is
+        # annoying in feature phones.
+        # TODO(ichikawa): Consider layout of the language menu.
+        env.show_language_menu = False
+        # Too long buttons are not fully shown in some feature phones.
+        env.use_short_buttons = True
+        # To make it simple.
+        env.show_record_ids_in_results = False
 
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
-        # start_url is like repo_url but preserves 'small' and 'style' params.
+        # start_url is like repo_url but preserves parameters such as 'ui'.
         env.start_url = utils.get_url(request, env.repo, '')
+        # URL of the link in the heading. The link on ui=small links to the
+        # normal UI.
+        env.repo_title_url = (
+            env.repo_url if env.ui == 'small' else env.start_url)
+        # URL to force default UI. Note that we show ui=light version in some
+        # user agents when ui parameter is not specified.
+        env.default_ui_url = utils.get_url(request, env.repo, '', ui='default')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')
@@ -290,11 +381,13 @@ def setup_env(request):
         env.repo_test_mode = (
             env.config.test_mode and not env.config.deactivated)
 
-        # Preformat the name from the 'given_name' and 'family_name' parameters.
-        given_name = request.get('given_name', '').strip()
-        family_name = request.get('family_name', '').strip()
-        env.params_full_name = utils.get_full_name(
-            given_name, family_name, env.config)
+        env.params_full_name = request.get('full_name', '').strip()
+        if not env.params_full_name:
+            # Preformat the name from 'given_name' and 'family_name' parameters.
+            given_name = request.get('given_name', '').strip()
+            family_name = request.get('family_name', '').strip()
+            env.params_full_name = utils.get_full_name(
+                given_name, family_name, env.config)
 
     return env
 

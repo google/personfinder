@@ -48,7 +48,6 @@ import legacy_redirect
 import model
 import pfif
 import resources
-import user_agents
 
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
@@ -56,7 +55,7 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # Query parameters which are automatically preserved on page transition
 # if you use utils.BaseHandler.get_url() or
 # env.hidden_input_tags_for_preserved_query_params.
-PRESERVED_QUERY_PARAM_NAMES = ['style', 'small', 'charsets']
+PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets']
 
 
 # ==== Field value text ========================================================
@@ -152,6 +151,9 @@ def anchor(href, body):
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
     return string.strip().rstrip('\0')
+
+def strip_and_lower(string):
+    return strip(string).lower()
 
 def validate_yes(string):
     return (strip(string).lower() == 'yes') and 'yes' or ''
@@ -407,11 +409,6 @@ def get_full_name(given_name, family_name, config):
     else:
         return given_name
 
-def get_person_full_name(person, config):
-    """Return person's full name.  "person" can be any object with "given_name"
-    and "family_name" attributes."""
-    return get_full_name(person.given_name, person.family_name, config)
-
 def send_confirmation_email_to_record_author(
     handler, person, action, confirm_url, record_id):
     """Send the author an email to confirm enabling/disabling notes
@@ -422,20 +419,12 @@ def send_confirmation_email_to_record_author(
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
-    params = {
-        'given_name': person.given_name,
-        'family_name': person.family_name,
-    }
     if action == 'enable':
-        subject = _(
-            '[Person Finder] Enable notes on '
-            '"%(given_name)s %(family_name)s"?'
-            ) % params
+        subject = _('[Person Finder] Enable notes on "%(full_name)s"?'
+                ) % {'full_name': person.primary_full_name}
     elif action == 'disable':
-        subject = _(
-            '[Person Finder] Disable notes on '
-            '"%(given_name)s %(family_name)s"?'
-            ) % params
+        subject = _('[Person Finder] Disable notes on "%(full_name)s"?'
+                ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
         
@@ -448,8 +437,7 @@ def send_confirmation_email_to_record_author(
         body=handler.render_to_string(
             template_name,
             author_name=person.author_name,
-            given_name=person.given_name,
-            family_name=person.family_name,
+            full_name=person.primary_full_name,
             site_url=handler.get_url('/'),
             confirm_url=confirm_url
         )
@@ -465,7 +453,8 @@ def get_repo_url(request, repo, scheme=None):
 
 def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
-    preserving the current repo and the 'small' and 'style' parameters."""
+    preserving the current repo and the parameters listed in
+    PRESERVED_QUERY_PARAM_NAMES."""
     repo_url = get_repo_url(request, repo or 'global', scheme)
     for name in PRESERVED_QUERY_PARAM_NAMES:
         params[name] = params.get(name, request.get(name, None))
@@ -476,6 +465,12 @@ def add_profile_icon_url(website, handler):
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
+
+def strip_url_scheme(url):
+    if not url:
+        return url
+    _, netloc, path, query, segment = urlparse.urlsplit(url)
+    return urlparse.urlunsplit(('', netloc, path, query, segment))
 
 
 # ==== Struct ==================================================================
@@ -572,24 +567,10 @@ class BaseHandler(webapp.RequestHandler):
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
+        'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
     }
-
-    def maybe_redirect_jp_tier2_mobile(self):
-        """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
-        setting if the request is from a Japanese Tier-2 phone."""
-        if (self.config and
-            self.config.jp_tier2_mobile_redirect_url and
-            not self.params.suppress_redirect and
-            not self.params.small and
-            user_agents.is_jp_tier2_mobile_phone(self.request)):
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url + '/' +
-                    self.env.action)
-            if self.request.query_string:
-                redirect_url += '?' + self.request.query_string
-            return redirect_url
-        return ''
 
     def redirect(self, path, repo=None, permanent=False, **params):
         # This will prepend the repo to the path to create a working URL,
@@ -645,7 +626,8 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls=style,
                         message=message, message_html=message_html)
         except:
-            self.response.out.write(message + '<p>' + message_html)
+            self.response.out.write(
+                django.utils.html.escape(message) + '<p>' + message_html)
         self.terminate_response()
 
     def terminate_response(self):
@@ -660,7 +642,8 @@ class BaseHandler(webapp.RequestHandler):
 
     def get_url(self, action, repo=None, scheme=None, **params):
         """Constructs the absolute URL for a given action and query parameters,
-        preserving the current repo and the 'small' and 'style' parameters."""
+        preserving the current repo and the parameters listed in
+        PRESERVED_QUERY_PARAM_NAMES."""
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 

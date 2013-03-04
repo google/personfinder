@@ -13,6 +13,20 @@
 {% extends "app-base.html.template" %}
 {% load i18n %}
 
+{% block head %}
+  {{block.super}}
+  {% if env.enable_javascript %}
+    <script type="text/javascript">
+      function on_result_item_click(event, elem) {
+        if (event.button == 0) {  // left button
+          // Makes the whole result item div clickable.
+          location.href = elem.getAttribute("data-url");
+        }
+      }
+    </script>
+  {% endif %}
+{% endblock head %}
+
 {% block content %}
 {% include "query_form.html.template" %}
 {% if results %}
@@ -24,7 +38,7 @@
   {% ifequal params.role 'provide' %}
     <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
-    {% if not params.small %}
+    {% if env.ui != "small" %}
       {% ifequal num_results 1 %}
         {% trans "There is one existing record with a similar name." %}
       {% else %}
@@ -34,7 +48,7 @@
     {% endif %}
   {% endifequal %}
 
-  {% if params.small %}
+  {% if env.ui == "small" %}
     {% ifequal num_results 1 %}
       {% trans "There is one existing record with a similar name." %}
     {% else %}
@@ -47,10 +61,11 @@
   {% else %}
     <p>
     {% trans "To view or add information, select a name below." %}
-    <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
-    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
-    {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-    <ul class='searchResults'>
+    {% if env.enable_dup_mode %}
+      <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
+      <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
+    {% endif %}
+    <div class='searchResults'>
     {% for result in results %}
       {% ifchanged result.is_address_match %}
         {% if result.is_address_match %}
@@ -58,84 +73,99 @@
           <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
         {% endif %}
       {% endifchanged %}
-      <li class="resultItem">
-        <a class="result-link" href="{{result.view_url}}">
-          <!-- no whitespace inside .resultImageContainer-->
-          {% if result.photo_url %}
-          <span class="resultImageContainer"
+      <div class="resultItem" data-url="{{result.view_url}}"
+          onclick="on_result_item_click(event, this);">
+        {# No whitespace inside .resultImageContainer. #}
+        {# Image width/height are specified as attributes here as well as #}
+        {# in CSS, so that they are applied if CSS is disabled e.g. on #}
+        {# ui=light. #}
+        {# <img align='left'> and <br clear='all'> are for cases where CSS #}
+        {# is disabled e.g. on ui=light. #}
+        {% if result.photo_url %}
+          <div class="resultImageContainer"
             ><img class='resultImage' src='{{result.photo_url}}'
-          /></span>
-          {% else %}
-          <span class="resultImageContainer"
+                  width='80' height='80' align='left' alt=''
+          /></div>
+        {% else %}
+          <div class="resultImageContainer"
             ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
-          /></span>
+                  width='80' height='80' align='left' alt=''
+          /></div>
+        {% endif %}
+        <div class='resultData'>
+          {% if env.enable_dup_mode %}
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}'
+                type='checkbox' name='dup' value='{{result.record_id}}'
+                onclick='on_dup_click(event, this);' class='duplicate-checkbox'>
           {% endif %}
-          <span class='resultData'>
-            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+          <a class="result-link" href="{{result.view_url}}">
             <span class='resultDataTitle'>
-              {{result.full_name}}
+              {{result.full_name_list|join:", "}}
               {% if config.use_alternate_names and result.alternate_names %}
-                ({{result.alternate_names}})
+                ({{result.alternate_names_list|join:", "}})
               {% endif %}
             </span>
-            <ul>
-              {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
-              <li>{% trans "Home address" %}:
-                  {% if result.home_street %}
-                    {{result.home_street}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_neighborhood %}
-                    {{result.home_neighborhood}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_city %}
-                    {{result.home_city}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_state %}
-                    {{result.home_state}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_postal_code %}
-                    {{result.home_postal_code}}&nbsp;&nbsp;
-                  {% endif %}
-              </li>
+          </a>
+          {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
+          <div>{% trans "Home address" %}:
+              {% if result.home_street %}
+                {{result.home_street}}&nbsp;&nbsp;
               {% endif %}
-              <li>{% trans "Status" %}:
-                <span class='resultDataPersonFound'>
-                  {{ result.latest_note_status }}
-                </span>
-              </li>
-              {% if result.provider_name %}
-	      <li>
-                {% trans "Provided by:" %} {{result.provider_name}}
-              </li>
+              {% if result.home_neighborhood %}
+                {{result.home_neighborhood}}&nbsp;&nbsp;
               {% endif %}
-            </ul>
+              {% if result.home_city %}
+                {{result.home_city}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_state %}
+                {{result.home_state}}&nbsp;&nbsp;
+              {% endif %}
+              {% if result.home_postal_code %}
+                {{result.home_postal_code}}&nbsp;&nbsp;
+              {% endif %}
+          </div>
+          {% endif %}
+          <div>{% trans "Status" %}:
+            <span class='resultDataPersonFound'>
+              {{ result.latest_note_status }}
+            </span>
+          </div>
+          {% if result.provider_name %}
+          <div>
+            {% trans "Provided by:" %} {{result.provider_name}}
+          </div>
+          {% endif %}
+          {% if env.show_record_ids_in_results %}
             <span class="tracking">
               ID: {{result.record_id}}
             </span>
-          </span>
-        </a>
-      </li>
+          {% endif %}
+        </div>
+        <br clear='all'>
+      </div>
     {% endfor %}
-    </ul>
-    <div id='dup_form' style='display:none'>
-      {% trans "Select up to 3 records to mark as duplicate:" %}
-      <input type="hidden" id="dup_state" value="">
-      <form action="{{env.repo_path}}/multiview" method="get" onsubmit="mark_dup()">
-        {{env.hidden_input_tags_for_preserved_query_params|safe}}
-        <input type='hidden' name='id1' id='id1' value=''>
-        <input type='hidden' name='id2' id='id2' value=''>
-        <input type='hidden' name='id3' id='id3' value=''>
-        <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
-        <span id='dup_count'></span> {% trans "Records selected" %}
-      </form>
     </div>
-    <script type='text/javascript'>
-      init_dup_state();
-    </script>
+    {% if env.enable_dup_mode %}
+      <div id='dup_form' style='display:none'>
+        {% trans "Select up to 3 records to mark as duplicate:" %}
+        <input type="hidden" id="dup_state" value="">
+        <form action="{{env.repo_path}}/multiview" method="get" onsubmit="mark_dup()">
+          {{env.hidden_input_tags_for_preserved_query_params|safe}}
+          <input type='hidden' name='id1' id='id1' value=''>
+          <input type='hidden' name='id2' id='id2' value=''>
+          <input type='hidden' name='id3' id='id3' value=''>
+          <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
+          <span id='dup_count'></span> {% trans "Records selected" %}
+        </form>
+      </div>
+      <script type='text/javascript'>
+        init_dup_state();
+      </script>
+    {% endif %}
   {% endif %}
 
   <p>
-  {% if not params.small %}
+  {% if env.ui != "small" %}
     {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
   {% endif %}
 {% else %}
@@ -148,7 +178,7 @@
   {% else %}
   <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
   {% endif %}
-  {% if params.small and not jp_phone_number_query %}
+  {% if env.ui == "small" and not jp_phone_number_query %}
     <p>
     <a class="create-new-record" href="{{create_url}}" target="_blank">
       {% trans "Follow this link to create a new record" %}
@@ -158,18 +188,22 @@
 {% endif %}
 
 <p>
-{% if not params.small and not jp_phone_number_query %}
+{% if env.ui != "small" and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="query" value="{{params.query}}">
     <input type="hidden" name="given_name" value="{{params.given_name}}">
     <input type="hidden" name="family_name" value="{{params.family_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
-    {% ifequal params.role 'provide' %}
-      <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
+    {% if env.use_short_buttons %}
+      <input type="submit" value="{% trans "Create a new record" %}">
     {% else %}
-      <input type="submit" value="{% trans "Create a new record for a missing person" %}">
-    {% endifequal %}
+      {% ifequal params.role 'provide' %}
+        <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
+      {% else %}
+        <input type="submit" value="{% trans "Create a new record for a missing person" %}">
+      {% endifequal %}
+    {% endif %}
   </form>
 {% endif %}
 

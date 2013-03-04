@@ -128,6 +128,9 @@ class Handler(BaseHandler):
             expiry_date=expiry_date,
             given_name=self.params.given_name,
             family_name=self.params.family_name,
+            full_name=get_full_name(self.params.given_name,
+                                    self.params.family_name,
+                                    self.config),
             alternate_names=get_full_name(self.params.alternate_given_names,
                                           self.params.alternate_family_names,
                                           self.config),
@@ -215,9 +218,9 @@ class Handler(BaseHandler):
 
             # Specially log 'believed_dead'.
             if note.status == 'believed_dead':
-                detail = person.given_name + ' ' + person.family_name
                 UserActionLog.put_new(
-                    'mark_dead', note, detail, self.request.remote_addr)
+                    'mark_dead', note, person.primary_full_name,
+                    self.request.remote_addr)
 
         # Write the person record to datastore
         db.put(person)

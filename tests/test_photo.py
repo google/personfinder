@@ -29,34 +29,11 @@ class PhotoTests(unittest.TestCase):
         entity.put()
         id = entity.key().name().split(':')[1]
 
-        # Check that the photo URL is correct for a regular app in production.
-        os.environ['SERVER_PORT'] = '80'
-        os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'example.appspot.com'
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
         self.assertEquals(
-            'https://example.appspot.com/haiti/photo?id=%s' % id,
-            photo.get_photo_url(entity, ph))
-
-        # Check the photo URL for a high-replication app in production.
-        os.environ['SERVER_PORT'] = '80'
-        os.environ['APPLICATION_ID'] = 's~hr-example'
-        os.environ['HTTP_HOST'] = 'hr-example.appspot.com'
-        ph = test_handler.initialize_handler(
-            photo.Handler(), 'photo', environ=os.environ)
-        self.assertEquals(
-            'https://hr-example.appspot.com/haiti/photo?id=%s' % id,
-            photo.get_photo_url(entity, ph))
-
-        # Check that the photo URL is correct for a development server.
-        os.environ['SERVER_PORT'] = '8000'
-        os.environ['APPLICATION_ID'] = 'example'
-        os.environ['HTTP_HOST'] = 'localhost:8000'
-        ph = test_handler.initialize_handler(
-            photo.Handler(), 'photo', environ=os.environ)
-        self.assertEquals(
-            'http://localhost:8000/haiti/photo?id=%s' % id,
+            'http://example.appspot.com/haiti/photo?id=%s' % id,
             photo.get_photo_url(entity, ph))
 
 
