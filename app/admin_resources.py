@@ -43,7 +43,7 @@ img { margin: 12px 0; border: 1px solid #eee; }
 .editable .hide-when-editable { display: none; }
 .readonly .hide-when-readonly { display: none; }
 
-table { margin: 12px; border: 1px solid #ccc; }
+table { min-width: 400px; margin: 12px; border: 1px solid #ccc; }
 tr { vertical-align: baseline; }
 th, td { text-align: left; padding: 3px 10px; min-width: 5em; }
 th { border-bottom: 1px solid #ccc; }
