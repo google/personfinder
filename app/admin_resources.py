@@ -50,6 +50,8 @@ th { border-bottom: 1px solid #ccc; }
 .active td { background: #afa; }
 #show-unaltered { margin-left: 1em; font-weight: normal; color: #aaa; }
 
+div.add { margin: 12px; }
+
 .warning { color: #a00; }
 a.bundle { color: #06c; }
 a.resource { color: #06c; }
@@ -386,19 +388,18 @@ show_unaltered(false);
 <form method="post">
   <input type="hidden" name="operation" value="set_default">
   <table cellpadding=0 cellspacing=0>
-    <tr><th>Bundle name</th><th>Created</th><th>Preview</th><th>Default</th></tr>
-    <tr class="add"><td>
-      <form method="post">
-        <input type="hidden" name="operation" value="add_bundle">
-        <input name="resource_bundle" size="18" placeholder="bundle name">
-        <input type="submit" value="Add">
-      </form>
-    </td><td></td><td>
-      <a href="%(reset)s"><input type="button" value="Reset to default view"></a>
-    </td><td>
-      <input type="submit" value="Set to default">
-    </td></tr>
+    <tr><th>Bundle name</th><th>Created</th>
+    <th><a href="%(reset)s"><input type="button" value="Reset to default"
+        ></a></th>
+    <th><input type="submit" value="Set to default"></th></tr>
     %(rows)s
   </table>
-</form>''' % {'reset': self.get_admin_url(operation='set_preview'),
-               'rows': ''.join(rows)})
+</form>
+<div class="add">
+  <form method="post">
+    <input type="hidden" name="operation" value="add_bundle">
+    <input name="resource_bundle" size="18" placeholder="bundle name">
+    <input type="submit" value="Add bundle">
+  </form>
+</div>''' % {'reset': self.get_admin_url(operation='set_preview'),
+             'rows': ''.join(rows)})
