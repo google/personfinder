@@ -65,10 +65,7 @@
         {% include "language-menu.html.template" %}
       {% endif %}
       {% if env.show_logo %}
-        <a href="{{env.global_url}}">
-          <img src="{{env.global_url}}/google-person-finder.gif"
-              width="260" height="40" alt="Google Person Finder">
-        </a>
+        {% block logo %}{% endblock %}
       {% endif %}
     {% endblock header %}
   </div>
@@ -121,14 +118,14 @@
         <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}
-      {% if env.repo %}
-        <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
-            >{% trans "Embed this tool on your site" %}</a>
+      <a href="{{env.global_url}}" {{env.target_attr|safe}}
+          >{% trans "About Google Person Finder" %}</a>
+      <span class="link-separator">&#xb7;</span>
+      {% if env.ui != "light" %}
+        <a href="http://code.google.com/p/googlepersonfinder"
+            {{env.target_attr|safe}}>{% trans "Developers" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}
-      <a href="http://code.google.com/p/googlepersonfinder"
-          {{env.target_attr|safe}}>{% trans "Developers" %}</a>
-      <span class="link-separator">&#xb7;</span>
       <a href="{{env.global_url}}/tos.html" {{env.target_attr|safe}}
           >{% trans "Terms of Service" %}</a>
     {% endblock footer %}
