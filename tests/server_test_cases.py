@@ -539,7 +539,7 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti')
         assert doc.first('option', u'Fran\xe7ais')
         assert doc.first('option', u'Krey\xf2l')
-        assert not doc.all('option',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert not doc.all('option', u'\u0627\u0631\u062F\u0648')  # Urdu
 
         doc = self.go('/pakistan')
         assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
@@ -5519,7 +5519,7 @@ class ResourceTests(TestsBase):
         doc = self.go_as_admin('/global/admin/resources')
 
         # Add a new bundle (redirects to the new bundle's resource listing).
-        doc = self.s.submit(doc.first('form'), resource_bundle='xyz')
+        doc = self.s.submit(doc.last('form'), resource_bundle='xyz')
         assert doc.first('a', class_='sel', content='Bundle: xyz')
         bundle = ResourceBundle.get_by_key_name('xyz')
         assert(bundle)
@@ -5579,6 +5579,14 @@ class ResourceTests(TestsBase):
         doc = self.s.submit(doc.last('form'), resource_bundle='1',
                             resource_bundle_original='xyz')
         assert not Resource.get_by_key_name('abc', parent=bundle)
+
+        # Switch the default bundle version.
+        doc = self.go_as_admin('/global/admin/resources')
+        doc = self.s.submit(doc.first('form'), resource_bundle_default='xyz')
+        assert 'xyz (default)' in doc.text
+        # Undo.
+        doc = self.s.submit(doc.first('form'), resource_bundle_default='1')
+        assert '1 (default)' in doc.text
 
 
 class CounterTests(TestsBase):
