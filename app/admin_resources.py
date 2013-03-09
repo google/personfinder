@@ -323,10 +323,10 @@ function delete_resource() {
     <input name="resource_name" size="36" class="hide-when-readonly"
         placeholder="resource filename">
     <input type="submit" value="Add" class="hide-when-readonly">
+    <div class="warning hide-when-editable">
+      This bundle cannot be edited while it is set as default.
+    </div>
   </form>
-  <div class="warning hide-when-editable">
-    This bundle cannot be edited while it is set as default.
-  </div>
 </td><td></td></tr>
 %(rows)s
 </table>
