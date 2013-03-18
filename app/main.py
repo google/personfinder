@@ -130,8 +130,8 @@ def select_charset(request):
     # Get a list of the charsets that the client supports.
     if request.get('charsets'):
         charsets = request.get('charsets').split(',')
-    elif user_agents.is_jp_tier2_mobile_phone(request):
-        # Many of Japanese feature phones don't (fully) support UTF-8.
+    elif user_agents.prefer_sjis_charset(request):
+        # Some Japanese feature phones don't (fully) support UTF-8.
         # They only support Shift_JIS. But they may not send Accept-Charset
         # header. Also, we haven't confirmed, but there may be phones whose
         # Accept-Charset header includes UTF-8 but its UTF-8 support is buggy.
@@ -240,13 +240,6 @@ def setup_env(request):
     env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
 
-    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
-    try:
-        env.back_chevron.encode(env.charset)
-    except UnicodeEncodeError:
-        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
-        env.back_chevron = u'>>' if env.rtl else u'<<'
-
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below
     # in this function.
@@ -351,6 +344,18 @@ def setup_env(request):
         env.use_short_buttons = True
         # To make it simple.
         env.show_record_ids_in_results = False
+
+    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
+    back_chevron_in_charset = True
+    try:
+        env.back_chevron.encode(env.charset)
+    except UnicodeEncodeError:
+        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
+        back_chevron_in_charset = False
+    if not back_chevron_in_charset or env.ui == 'light':
+        # Uses ASCII characters on ui=light too because some feature phones
+        # support UTF-8 but don't render UTF-8 symbols such as u'\xbb'.
+        env.back_chevron = u'>>' if env.rtl else u'<<'
 
     # Repo-specific information.
     if env.repo:

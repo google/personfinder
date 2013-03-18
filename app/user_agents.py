@@ -20,8 +20,19 @@ import re
 JP_TIER2_MOBILE_USER_AGENT_RE = re.compile(
     r'^(KDDI|DoCoMo|SoftBank|J-PHONE|Vodafone)')
 
+# Regular expression to detect phones which prefer Shift_JIS charset.
+# Some KDDI phones support UTF-8 but they have a bug handling UTF-8 query
+# parameters.
+SJIS_PREFERRED_USER_AGENT_RE = re.compile(r'^KDDI')
+
 
 def is_jp_tier2_mobile_phone(request):
     """Returns True if the user agent is a Japanese Tier-2 mobile phone."""
     user_agent = request.headers.get('User-Agent')
     return user_agent and JP_TIER2_MOBILE_USER_AGENT_RE.match(user_agent)
+
+
+def prefer_sjis_charset(request):
+    """Returns True if Shift_JIS charset should be used for the user agent."""
+    user_agent = request.headers.get('User-Agent')
+    return user_agent and SJIS_PREFERRED_USER_AGENT_RE.match(user_agent)
