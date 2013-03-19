@@ -21,7 +21,7 @@ JP_TIER2_MOBILE_USER_AGENT_RE = re.compile(
     r'^(KDDI|DoCoMo|SoftBank|J-PHONE|Vodafone)')
 
 # Regular expression to detect phones which prefer Shift_JIS charset.
-# Some KDDI phones support UTF-8 but they have a bug handling UTF-8 query
+# Some KDDI phones support UTF-8 but they have a bug encoding UTF-8 query
 # parameters.
 SJIS_PREFERRED_USER_AGENT_RE = re.compile(r'^KDDI')
 

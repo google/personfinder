@@ -353,7 +353,7 @@ def setup_env(request):
         # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
         back_chevron_in_charset = False
     if not back_chevron_in_charset or env.ui == 'light':
-        # Uses ASCII characters on ui=light too because some feature phones
+        # Use ASCII characters on ui=light too because some feature phones
         # support UTF-8 but don't render UTF-8 symbols such as u'\xbb'.
         env.back_chevron = u'>>' if env.rtl else u'<<'
 
