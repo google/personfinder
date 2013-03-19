@@ -358,10 +358,10 @@ class ReadOnlyTests(TestsBase):
         # UTF-8 encoding of title text
         assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
-    def test_japanese_tier2_charsets(self):
+    def test_kddi_charsets(self):
         """Checks that pages are delivered in Shift_JIS if the user agent is a
-        Japanese Tier-2 phone."""
-        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        feature phone by KDDI."""
+        self.s.agent = 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0'
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
         meta = doc.firsttag('meta', http_equiv='content-type')
