@@ -166,6 +166,26 @@
     }
   }
 
+  function insert_profile_websites_example() {
+    $('profile_websites').value = [
+        '[',
+        '    {',
+        '        "name": "Facebook",',
+        '        "icon_filename": "facebook-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?facebook\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "Twitter",',
+        '        "icon_filename": "twitter-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?twitter\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "LinkedIn",',
+        '        "icon_filename": "linkedin-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?linkedin\\\\.com/.*"',
+        '    }',
+        ']'].join('\n');
+  }
 </script>
 
 <p>
@@ -410,10 +430,9 @@
 
     <div class="config">
       <label for="profile_websites">External websites to show as the
-      default options for profile pages (JSON list of dictionaries representing
-      metadata of external websites, each with 'name', 'icon_filename', and
-      'url_regexp' attributes, sorted in the order they are displayed in the
-      create page):</label>
+      default options for profile pages (JSON list of dictionaries sorted in the
+      order of display) <a href="javascript:insert_profile_websites_example()"
+      >click to insert an example</a>:</label>
       <div class="response">
         <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
           >{{config_json.profile_websites|default:"[]"}}</textarea>
