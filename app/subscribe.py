@@ -178,14 +178,14 @@ class Handler(BaseHandler):
             # User is already subscribed
             url = self.get_url('/view', id=self.params.id)
             link_text = _('Return to the record for %(full_name)s.'
-                    ) % {'full_name': escape(person.primary_full_name)},
+                    ) % {'full_name': escape(person.primary_full_name)}
             html = '<a href="%s">%s</a>' % (url, link_text)
             message_html = _('You are already subscribed. ' + html)
             return self.info(200, message_html=message_html)
 
         url = self.get_url('/view', id=self.params.id)
         link_text = _('Return to the record for %(full_name)s.'
-                ) % {'full_name': escape(person.primary_full_name)},
+                ) % {'full_name': escape(person.primary_full_name)}
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
