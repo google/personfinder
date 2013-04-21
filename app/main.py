@@ -20,6 +20,7 @@ import django_setup  # always keep this first
 
 import mimetypes
 import re
+import os
 import urlparse
 
 from google.appengine.api import memcache
@@ -91,6 +92,11 @@ HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
+
+def is_development_server():
+    """Returns True if the app is running in development."""
+    server = os.environ.get('SERVER_SOFTWARE', '')
+    return 'Development' in server
 
 def get_repo_and_action(request):
     """Determines the repo and action for a request.  The action is the part
@@ -253,6 +259,7 @@ def setup_env(request):
     # Information about the request.
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
+    env.force_https = False
     env.domain = env.netloc.split(':')[0]
     env.global_url = utils.get_repo_url(request, 'global')
 
@@ -385,6 +392,7 @@ def setup_env(request):
         # notification.
         env.repo_test_mode = (
             env.config.test_mode and not env.config.deactivated)
+        env.force_https = env.config.force_https
 
         env.params_full_name = request.get('full_name', '').strip()
         if not env.params_full_name:
@@ -438,6 +446,12 @@ class Main(webapp.RequestHandler):
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
+
+        # Force a redirect if requested, except in development
+        # where https is not supported.
+        if (self.env.force_https and self.env.scheme == 'http'
+            and not is_development_server()):
+            self.redirect(self.env.url.replace('http:', 'https:'))
 
         # Activate the selected language.
         response.headers['Content-Language'] = self.env.lang
