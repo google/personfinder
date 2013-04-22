@@ -62,8 +62,11 @@ class Handler(utils.BaseHandler):
         keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
+            # Place holder name here is id_str, not id, because
+            # the translation system doesn't allow the same string in both
+            # a place holder name and a normal uppercase word in one message.
             raise ConfirmPostNoteWithBadWordsError(
-                _('No note with ID: %(id)s.') % {'id': keyname})
+                _('No note with ID: %(id_str)s.') % {'id_str': keyname})
 
         token = self.request.get('token')
         data = 'confirm_post_note_with_bad_words:%s' % self.params.id

@@ -38,8 +38,13 @@ class Handler(utils.BaseHandler):
         """Prompts the user with a CAPTCHA before proceeding the request."""
         person = model.Person.get(self.repo, self.params.id)
         if not person:
+            # Place holder name here is id_str, not id, because
+            # the translation system doesn't allow the same string in both
+            # a place holder name and a normal uppercase word in one message.
             return self.error(
-                400, _('No person with ID: %(id)s.') % {'id': self.params.id})
+                400,
+                _('No person with ID: %(id_str)s.')
+                % {'id_str': self.params.id})
 
         self.render('disable_notes.html',
                     person=person,

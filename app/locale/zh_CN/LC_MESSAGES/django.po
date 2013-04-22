@@ -112,15 +112,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -815,15 +816,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "未找到注册运营商留言板服务的任何相关留言。"
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "没有与以下 ID 对应的注释： %(id)s。"
+msgid "No note with ID: %(id_str)s."
+msgstr ""
 
 msgid "No notes have been posted"
 msgstr "未发布任何注释"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "没有与以下 ID 对应的人： %(id)s。"
+msgid "No person with ID: %(id_str)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
@@ -870,10 +871,10 @@ msgid "Original site name"
 msgstr "原始发布网站的名称"
 
 msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr "请注意：所输入的信息将全部对公众开放，意味着任何人都可查看或使用它们。Google 不会审查或验证这些数据的准确性。"
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "网上寻人"

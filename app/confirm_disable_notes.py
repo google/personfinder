@@ -83,8 +83,12 @@ class Handler(utils.BaseHandler):
         If there is an error we raise a DisableAndEnableNotesError. """
         person = model.Person.get_by_key_name(self.params.id)
         if not person:
+            # Place holder name here is id_str, not id, because
+            # the translation system doesn't allow the same string in both
+            # a place holder name and a normal uppercase word in one message.
             raise DisableAndEnableNotesError(
-                _('No person with ID: %(id)s.') % {'id': self.params.id})
+                _('No person with ID: %(id_str)s.')
+                % {'id_str': self.params.id})
 
         token = self.request.get('token')
         data = 'disable_notes:%s' % self.params.id

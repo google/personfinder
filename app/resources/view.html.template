@@ -294,11 +294,15 @@
           {% if env.enable_captcha and extend_url %}
             {% if expiration_days %}
               <div class="warning">
-                {% blocktrans count expiration_days as days %}
-                Warning: this record will expire in less than a day.
-                {% plural %}
-                Warning: this record will expire in less than {{days}} days.
-                {% endblocktrans %}
+                {% if expiration_days > 1 %}
+                  {% blocktrans %}
+                    Warning: this record will expire in less than {{expiration_days}} days.
+                  {% endblocktrans %}
+                {% else %}
+                  {% blocktrans %}
+                    Warning: this record will expire in less than a day.
+                  {% endblocktrans %}
+                {% endif %}
               </div>
             {% endif %}
             <div>

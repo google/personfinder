@@ -119,15 +119,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -859,15 +860,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "Inga meddelanden har registrerats på operatörens anslagstavla."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Ingen kommentar med detta ID: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr ""
 
 msgid "No notes have been posted"
 msgstr "Inga kommentarer har lagts upp"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Ingen person med detta ID: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "Det finns inga resultat för"
@@ -918,13 +919,10 @@ msgid "Original site name"
 msgstr "Den ursprungliga webbplatsens namn"
 
 msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
 msgstr ""
-"OBSERVERA: Alla data som anges är offentliga och kan ses och användas av "
-"vem som helst. Google varken granskar eller kontrollerar att uppgifterna "
-"stämmer."
 
 msgid "Person Finder"
 msgstr "Google Personsökare"

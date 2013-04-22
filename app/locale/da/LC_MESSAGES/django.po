@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -860,15 +861,15 @@ msgstr ""
 "forum."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Der er ingen note med dette id: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr ""
 
 msgid "No notes have been posted"
 msgstr "Der er ikke indsendt nogen noter"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Der er ingen person med dette id: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "Der blev ikke fundet nogen resultater for"
@@ -919,12 +920,10 @@ msgid "Original site name"
 msgstr "Navnet på det oprindelige websted"
 
 msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
 msgstr ""
-"BEMÆRK: Alle de indtastede data vil være offentligt tilgængelige, og alle"
-" kan se og bruge dem. Google undersøger ikke nøjagtigheden af disse data."
 
 msgid "Person Finder"
 msgstr "Person Finder"
