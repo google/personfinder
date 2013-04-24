@@ -119,16 +119,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
-"                  "
-msgstr ""
-
-msgid ""
+"                Warning: this record will expire in less than a day.\n"
+"                "
+msgid_plural ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
-msgstr ""
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid ""
@@ -870,15 +869,15 @@ msgstr ""
 "de provider."
 
 #, python-format
-msgid "No note with ID: %(id_str)s."
-msgstr ""
+msgid "No note with ID: %(id)s."
+msgstr "Geen opmerking met id: %(id)s."
 
 msgid "No notes have been posted"
 msgstr "Er zijn geen opmerkingen geplaatst"
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr ""
+msgid "No person with ID: %(id)s."
+msgstr "Geen persoon met id: %(id)s."
 
 msgid "No results found for"
 msgstr "Geen resultaten gevonden voor"
@@ -929,10 +928,13 @@ msgid "Original site name"
 msgstr "Naam van oorspronkelijke site"
 
 msgid ""
-"PLEASE NOTE: On active Person Finder sites, all data entered is available"
-" to the public and usable by anyone.  Google does not review or verify "
-"the accuracy of this data."
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
 msgstr ""
+"OPMERKING: alle gegevens die worden ingevoerd, zijn beschikbaar voor "
+"iedereen en zijn door iedereen te gebruiken. Google beoordeelt of "
+"verifieert de nauwkeurigheid van deze gegevens niet."
 
 msgid "Person Finder"
 msgstr "Personen zoeken"

@@ -120,16 +120,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
-"                  "
-msgstr ""
-
-msgid ""
+"                Warning: this record will expire in less than a day.\n"
+"                "
+msgid_plural ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
-msgstr ""
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid ""
@@ -883,15 +882,15 @@ msgstr ""
 "παρόχου."
 
 #, python-format
-msgid "No note with ID: %(id_str)s."
-msgstr ""
+msgid "No note with ID: %(id)s."
+msgstr "Δεν υπάρχει σημείωση με αναγνωριστικό: %(id)s."
 
 msgid "No notes have been posted"
 msgstr "Δεν έχουν δημοσιευτεί σημειώσεις"
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr ""
+msgid "No person with ID: %(id)s."
+msgstr "Δεν υπάρχει χρήστης με αναγνωριστικό: %(id)s."
 
 msgid "No results found for"
 msgstr "Δεν βρέθηκαν αποτελέσματα για"
@@ -944,10 +943,14 @@ msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
 
 msgid ""
-"PLEASE NOTE: On active Person Finder sites, all data entered is available"
-" to the public and usable by anyone.  Google does not review or verify "
-"the accuracy of this data."
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
 msgstr ""
+"ΣΗΜΕΙΩΣΗ: Όλα τα δεδομένα που έχουν εισαχθεί θα είναι διαθέσιμα στο κοινό"
+" και θα μπορούν να προβληθούν και να χρησιμοποιηθούν από κάθε χρήστη.  Η "
+"Google δεν κάνει επισκόπηση ούτε επαληθεύει την ακρίβεια αυτών των "
+"δεδομένων."
 
 msgid "Person Finder"
 msgstr "Εντοπισμός ατόμων"

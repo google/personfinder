@@ -116,16 +116,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
-"                  "
-msgstr ""
-
-msgid ""
+"                Warning: this record will expire in less than a day.\n"
+"                "
+msgid_plural ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
-msgstr ""
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid ""
@@ -851,15 +850,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "У оператора мобильной связи нет сведений об отправленных сообщениях."
 
 #, python-format
-msgid "No note with ID: %(id_str)s."
-msgstr ""
+msgid "No note with ID: %(id)s."
+msgstr "Нет записи с идентификатором %(id)s."
 
 msgid "No notes have been posted"
 msgstr "Записи не опубликованы"
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr ""
+msgid "No person with ID: %(id)s."
+msgstr "Нет человека с идентификатором %(id)s."
 
 msgid "No results found for"
 msgstr "Нет результатов по запросу "
@@ -912,10 +911,13 @@ msgid "Original site name"
 msgstr "Исходный веб-сайт"
 
 msgid ""
-"PLEASE NOTE: On active Person Finder sites, all data entered is available"
-" to the public and usable by anyone.  Google does not review or verify "
-"the accuracy of this data."
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
 msgstr ""
+"ВНИМАНИЕ! Все введенные данные будут открыты для общего просмотра и "
+"использования. Google не проверяет и не подтверждает точность этих "
+"данных."
 
 msgid "Person Finder"
 msgstr "Поиск пропавших людей"

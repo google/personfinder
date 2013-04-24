@@ -112,16 +112,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
-"                  "
-msgstr ""
-
-msgid ""
+"                Warning: this record will expire in less than a day.\n"
+"                "
+msgid_plural ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
-msgstr ""
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid ""
@@ -821,15 +820,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "이동통신사의 메시지 보드 서비스에 등록된 메시지가 없습니다."
 
 #, python-format
-msgid "No note with ID: %(id_str)s."
-msgstr ""
+msgid "No note with ID: %(id)s."
+msgstr "ID %(id)s에 대한 메모가 없습니다."
 
 msgid "No notes have been posted"
 msgstr "게시된 메모가 없습니다."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr ""
+msgid "No person with ID: %(id)s."
+msgstr "ID가 %(id)s인 사람이 없습니다."
 
 msgid "No results found for"
 msgstr "다음 이름에 대한 결과를 찾을 수 없음"
@@ -876,10 +875,12 @@ msgid "Original site name"
 msgstr "처음 사이트 이름"
 
 msgid ""
-"PLEASE NOTE: On active Person Finder sites, all data entered is available"
-" to the public and usable by anyone.  Google does not review or verify "
-"the accuracy of this data."
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
 msgstr ""
+"참고: 입력한 모든 데이터는 공개되어 누구나 보고 사용할 수 있습니다. Google은 이러한 데이터의 정확성을 검토하거나 확인하지 "
+"않습니다."
 
 msgid "Person Finder"
 msgstr "Person Finder"
