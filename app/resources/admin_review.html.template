@@ -20,7 +20,8 @@
 {% endblock head %}
 
 {% block content %}
-  <p>Show: {{nav_html|safe}}
+  <p>Show: {{status_nav_html|safe}}
+  <p>Show: {{source_nav_html|safe}}
 
   <p>
   {% if notes %}
@@ -32,6 +33,7 @@
     <p>
     <form method="post" id="review-form">
       <input name="status" value="{{params.status}}" type="hidden">
+      <input name="source" value="{{params.source}}" type="hidden">
       <table class="review" cellpadding="0" cellspacing="0">
         <tr>
           <td class="empty"></td>
