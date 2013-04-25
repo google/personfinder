@@ -5823,6 +5823,7 @@ class ConfigTests(TestsBase):
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
             bad_words = 'bad, word',
+            force_https = 'false'
         )
         self.assertEquals(self.s.status, 200)
         cfg = config.Configuration('xyz')
@@ -5842,6 +5843,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [300, 300]
         assert not cfg.read_auth_key_required
         assert cfg.bad_words == 'bad, word'
+        assert not cfg.force_https
 
         old_updated_date = cfg.updated_date
         self.advance_utcnow(seconds=1)
@@ -5868,7 +5870,8 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
-            bad_words = 'foo, bar'
+            bad_words = 'foo, bar',
+            force_https = 'true'
         )
 
         cfg = config.Configuration('xyz')
@@ -5888,6 +5891,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
         assert cfg.bad_words == 'foo, bar'
+        assert cfg.force_https
         # Changing configs other than 'deactivated' or 'test_mode' does not
         # renew 'updated_date'.
         assert cfg.updated_date == old_updated_date

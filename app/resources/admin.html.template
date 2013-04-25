@@ -252,6 +252,30 @@
       </div>
     </div>
     <div class="config">
+      <div class="option">
+        <input type="radio" name="force_https" value="true"
+          id="force_https_true"
+          {{config.force_https|yesno:"checked,"}}>
+        <label for="force_https_true">
+          Force https
+        </label>
+	<div class="note">
+	  Force all requests to this repo to be redirected through https.
+	</div>
+      </div>
+      <div class="option">
+        <input type="radio" name="force_https" value="false"
+            id="force_https_false"
+            {{config.force_https|yesno:",checked"}}>
+        <label for="force_https_false">
+          Allow http and https traffic
+        </label>
+	<div class="note">
+	  Allow requests to this repo over http or https.
+	</div>
+      </div>
+    </div>
+    <div class="config">
       <label for="available_languages">
         Available Languages (they will appear in the order shown here; the first
         one will be default):

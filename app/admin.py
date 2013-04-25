@@ -94,6 +94,7 @@ class Handler(BaseHandler):
                 published_date=get_utcnow_timestamp(),
                 updated_date=get_utcnow_timestamp(),
                 test_mode=False,
+                force_https=False,
             )
             self.redirect('/admin', new_repo)
 
@@ -110,7 +111,7 @@ class Handler(BaseHandler):
                 'deactivated', 'start_page_custom_htmls',
                 'results_page_custom_htmls', 'view_page_custom_htmls',
                 'seek_query_form_custom_htmls',
-                'test_mode',
+                'test_mode', 'force_https',
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))
