@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -820,15 +821,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "कैरियर की संदेश बोर्ड सेवा में कोई भी संदेश पंजीकृत नहीं हैं."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "इस ID वाला कोई नोट नहीं है: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr "इस ID वाला कोई नोट नहीं है: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "कोई नोट पोस्ट नहीं किए गए हैं"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "इस ID वाला कोई व्यक्ति नहीं है: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr "इस ID वाला कोई व्यक्ति नहीं है: %(id_str)s."
 
 msgid "No results found for"
 msgstr "इसके लिए कोई परिणाम नहीं मिले"
@@ -884,6 +885,12 @@ msgstr ""
 "कृपया नोट करें: दर्ज किया गया सभी डेटा लोगों के लिए उपलब्ध होगा और किसी "
 "भी व्यक्ति द्वारा देखने-योग्य और उपयोग किए जाने योग्य होगा.  Google इस "
 "डेटा की सटीकता की समीक्षा या इसका सत्यापन नहीं करता."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "व्यक्ति फ़ाइंडर: "

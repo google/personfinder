@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -844,15 +845,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "ไม่พบข้อความที่ลงทะเบียนกับบริการกระดานข้อความของผู้ให้บริการ"
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "ไม่มีข้อความที่มี ID: %(id)s"
+msgid "No note with ID: %(id_str)s."
+msgstr "ไม่มีข้อความที่มี ID: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "ไม่มีข้อความที่ถูกโพสต์"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "ไม่มีบุคคลที่มี ID: %(id)s"
+msgid "No person with ID: %(id_str)s."
+msgstr "ไม่มีบุคคลที่มี ID: %(id_str)s"
 
 msgid "No results found for"
 msgstr "ไม่มีผลลัพธ์สำหรับ"
@@ -910,6 +911,12 @@ msgstr ""
 "โปรดทราบ: ข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป "
 "ซึ่งสามารถดูและใช้งานได้ Google "
 "จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "การค้นหาบุคคล"

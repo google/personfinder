@@ -116,15 +116,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -857,15 +858,15 @@ msgstr ""
 "īsziņu pakalpojumā."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Nav piezīmes ar šādu ID: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr "Nav piezīmes ar šādu ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Nav publicēta neviena piezīme"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Nav personas ar šādu ID: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr "Nav personas ar šādu ID: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Nav atrasti rezultāti, kas atbilstu"
@@ -923,6 +924,12 @@ msgstr ""
 "LŪDZU, ŅEMIET VĒRĀ: visi ievadītie dati būs publiski pieejami un jebkurš "
 "tos varēs skatīt un izmantot. Google nepārskata šos datus un nepārbauda "
 "to pareizību."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Personu meklētājs"

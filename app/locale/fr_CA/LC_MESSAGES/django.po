@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -852,15 +853,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Aucune fiche n'a été trouvée portant le numéro suivant : %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr "Aucune fiche n'a été trouvée portant le numéro suivant : %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Aucune note n'a été publiée"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Aucune personne n'a été trouvée portant le numéro suivant : %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr "Aucune personne n'a été trouvée portant le numéro suivant : %(id_str)s."
 
 msgid "No results found for"
 msgstr "Aucun résultats pour"
@@ -919,6 +920,12 @@ msgstr ""
 "public. Tous les visiteurs du site pourront consulter et utiliser "
 "l'information qui s'y trouve. Google ne vérifie pas la précision des "
 "données fournies par les utilisateurs."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Recherche de personnes"

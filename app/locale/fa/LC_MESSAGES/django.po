@@ -116,15 +116,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -836,15 +837,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "یادداشتی با شناسه: %(id)s وجود ندارد."
+msgid "No note with ID: %(id_str)s."
+msgstr "یادداشتی با شناسه: %(id_str)s وجود ندارد."
 
 msgid "No notes have been posted"
 msgstr "هیچ یادداشتی پست نشده است"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "فردی با شناسه: %(id)s وجود ندارد."
+msgid "No person with ID: %(id_str)s."
+msgstr "فردی با شناسه: %(id_str)s وجود ندارد."
 
 msgid "No results found for"
 msgstr "نتیجه ای یافت نشد برای"
@@ -902,6 +903,12 @@ msgstr ""
 "لطفاً توجه کنید: کلیه داده های وارد شده برای عموم در دسترس خواهند بود و "
 "همه می توانند آنها را مشاهده کرده، از آنها استفاده کنند. صحت این داده ها "
 "را Google تأیید نمی کند و آنها را تصحیح نمی نماید."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Person Finder"

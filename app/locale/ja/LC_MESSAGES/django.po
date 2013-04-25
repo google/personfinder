@@ -113,19 +113,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
+"警告：この記録は %(expiration_days)s 日以内に削除されます。"
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 "\n"
 "警告：この記録は 1 日以内に削除されます。"
-msgstr[1] ""
-"\n"
-"警告：この記録は %(days)s 日以内に削除されます。"
 
 #, python-format
 msgid ""
@@ -823,15 +824,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "携帯通信会社の伝言板サービスに登録されたメッセージは見つかりません。"
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "次の ID のメモが見つかりません: %(id)s"
+msgid "No note with ID: %(id_str)s."
+msgstr "次の ID のメモが見つかりません: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "メモはまだありません"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "次の ID の人は見つかりません: %(id)s"
+msgid "No person with ID: %(id_str)s."
+msgstr "次の ID の人は見つかりません: %(id_str)s"
 
 msgid "No results found for"
 msgstr "次の人に一致する結果が見つかりませんでした"
@@ -885,6 +886,12 @@ msgstr ""
 "注: "
 "入力したデータはすべて公開され、誰でも表示、使用できる状態になります。また、消息データには、直接、ユーザーがパーソンファインダーに入力した情報のほか、公開された情報その他の情報源に基づき入力された情報が含まれています。Google"
 " では、これらのデータの正確性の確認は実施しておりません。"
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "パーソンファインダー (安否情報)"

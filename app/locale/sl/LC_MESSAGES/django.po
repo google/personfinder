@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -854,15 +855,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "Ni sporočil, registriranih za operaterjevo storitev sporočilne table."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Ni opombe z ID-jem: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr "Ni opombe z ID-jem: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Opombe niso bile objavljene"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Ni osebe z ID-jem: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr "Ni osebe z ID-jem: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Ni rezultatov za"
@@ -920,6 +921,12 @@ msgstr ""
 "OPOMBA: Vsi podatki, ki jih vnesete, bodo javno dostopni in si jih bo "
 "lahko ogledal in uporabil kdor koli. Google ne preverja točnosti teh "
 "podatkov."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Iskalnik oseb"

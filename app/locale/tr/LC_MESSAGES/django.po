@@ -117,15 +117,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
 "\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -855,15 +856,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "Operatörün mesaj panosu hizmetine kayıtlı herhangi bir mesaj bulunamadı."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Şu kimliğe sahip not yok: %(id)starihine kadar uzatıldı."
+msgid "No note with ID: %(id_str)s."
+msgstr "Şu kimliğe sahip not yok: %(id_str)starihine kadar uzatıldı."
 
 msgid "No notes have been posted"
 msgstr "Hiç not yayınlanmadı"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Şu kimliğe sahip hiç kişi yok: %(id)starihine kadar uzatıldı."
+msgid "No person with ID: %(id_str)s."
+msgstr "Şu kimliğe sahip hiç kişi yok: %(id_str)starihine kadar uzatıldı."
 
 msgid "No results found for"
 msgstr "Şu arama için sonuç bulunamadı"
@@ -921,6 +922,12 @@ msgstr ""
 "NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes "
 "tarafından görüntülenip kullanılabilecektir. Google, bu verileri "
 "incelemez veya bu verilerin doğruluğunu onaylamaz."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Kişi Bulucu"
