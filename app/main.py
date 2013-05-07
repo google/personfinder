@@ -98,6 +98,14 @@ def is_development_server():
     server = os.environ.get('SERVER_SOFTWARE', '')
     return 'Development' in server
 
+def is_cron_task(request):
+    """Returns True if the request is from appengine cron."""
+    return 'X-AppEngine-Cron' in request.headers
+
+def is_task_queue_task(request):
+    """Returns True if the request is from the appengine task queue."""
+    return 'X-AppEngine-TaskName' in request.headers
+
 def get_repo_and_action(request):
     """Determines the repo and action for a request.  The action is the part
     of the URL path after the repo, with no leading or trailing slashes."""
@@ -447,9 +455,13 @@ class Main(webapp.RequestHandler):
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
 
-        # Force a redirect if requested, except in development
-        # where https is not supported.
+        # Force a redirect if requested, except where https is not supported:
+        # - for cron jobs
+        # - for task queue jobs
+        # - in development
         if (self.env.force_https and self.env.scheme == 'http'
+            and not is_cron_task(self.request)
+            and not is_task_queue_task(self.request)
             and not is_development_server()):
             self.redirect(self.env.url.replace('http:', 'https:'))
 

@@ -157,6 +157,35 @@ indexes:
   properties:
   - name: hidden
   - name: is_expired
+  - name: repo
+  - name: reviewed
+  - name: person_record_id
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: repo
+  - name: reviewed
+  - name: status
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: repo
+  - name: reviewed
+  - name: status
+  - name: person_record_id
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
   - name: reviewed
   - name: repo
   - name: entry_date
