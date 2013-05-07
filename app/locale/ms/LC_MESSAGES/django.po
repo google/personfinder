@@ -131,18 +131,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -214,6 +202,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -222,7 +220,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -230,27 +227,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Rekod ini adalah salinan rekod dari sumber lain.\n"
-"      Anda boleh memadam rekod di sini,\n"
-"      tetapi, sila berjaga-jaga\n"
-"      nanti, kami mungkin menerima satu lagi salinan dari sumber asalnya."
-"\n"
-"\n"
-"      <p>\n"
-"      Jika anda mahu ia dipadam secara kekal,\n"
-"      sila hubungi sumber asal.\n"
-"      Anda boleh melihat rekod asal di\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -268,19 +246,6 @@ msgstr ""
 "pengarang rekod tersebut. Jika anda pengarangnya, semak e-mel anda "
 "selepas mengklik butang di bawah.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -447,10 +412,6 @@ msgstr ""
 msgid "(unknown)"
 msgstr ""
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Daftar keluar</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr ""
 
@@ -612,6 +573,9 @@ msgstr ""
 msgid "Enable notes on this record"
 msgstr "Dayakan nota pada rekod ini"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr ""
 
@@ -634,6 +598,10 @@ msgstr "Tamat tempoh"
 
 msgid "Expiry date of this record"
 msgstr "Tarikh tamat tempoh rekod ini"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr ""
@@ -674,6 +642,10 @@ msgstr ""
 
 msgid "Help"
 msgstr "Bantuan"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr ""
@@ -1036,6 +1008,10 @@ msgstr ""
 msgid "Search for this person"
 msgstr ""
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1052,6 +1028,12 @@ msgid "Show Map"
 msgstr ""
 
 msgid "Show sensitive information"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
 msgstr ""
 
 #, fuzzy
@@ -1345,25 +1327,18 @@ msgstr "Anda sudah melanggan. "
 msgid "You are already unsubscribed."
 msgstr "Anda sudah berhenti melanggan."
 
-#, fuzzy, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Anda tidak mendaftar masuk buat masa ini. <a "
-"href=\"%(login_url)s\">Daftar masuk</a>"
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Anda tidak mendaftar masuk buat masa ini. <a "
-"href=\"%(login_url)s\">Daftar masuk</a>"
-
 #, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Anda boleh <a target=\"_blank\" href=\"%(view_url)s\">melihat rekod</a> "
-"sebelum memadamnya."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

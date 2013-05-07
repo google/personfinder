@@ -130,18 +130,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -212,6 +200,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -220,7 +218,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -228,27 +225,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      این سابقه یک کپی از سابقه یک منبع دیگر است.\n"
-"    می توانید سابقه را در اینجا حذف کنید،\n"
-"    اما لطفاً آگاه باشید که\n"
-"    ما ممکن است بعداً کپی دیگری از این سابقه را از منبع اصلی دریافت کنیم."
-"\n"
-"\n"
-"      <p>\n"
-"     اگر مایلید برای همیشه آن را حذف کنید،\n"
-"        لطفاً با منبع اصلی تماس بگیرید.\n"
-"     می توانید سابقه اصلی را در\n"
-"       <a href=\"%(source_url)s\">%(source_name)s</a> مشاهده کنید.\n"
-"    "
 
 msgid ""
 "\n"
@@ -265,19 +243,6 @@ msgstr ""
 "غیرفعال می‌شوند، یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما "
 "نویسنده هستید، بعد از کلیک بر روی دکمه زیر، ایمیل خود را بررسی کنید.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -444,10 +409,6 @@ msgstr "(برای نمایش کلیک کنید)"
 msgid "(unknown)"
 msgstr "(ناشناس)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">خروج از سیستم</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "پیامی برای این شخص یا دیگران درمورد جستجوی این شخص"
 
@@ -608,6 +569,9 @@ msgstr "قراردادن این برنامه"
 msgid "Enable notes on this record"
 msgstr "فعال کردن یادداشت‌ها در این سابقه"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "بصورت YYYY-MM-DD وارد کنید"
 
@@ -629,6 +593,10 @@ msgstr "انقضا"
 
 msgid "Expiry date of this record"
 msgstr "تاریخ انقضای این سابقه"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "نام خانوادگی"
@@ -667,6 +635,10 @@ msgstr "آیا شخصاً با این فرد بعد از این فاجعه صح�
 
 msgid "Help"
 msgstr "راهنما"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "عدم نمایش نقشه"
@@ -1032,6 +1004,10 @@ msgstr "جستجوی نتایج برای"
 msgid "Search for this person"
 msgstr "جستجوی این شخص"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1049,6 +1025,12 @@ msgstr "نمایش نقشه"
 
 msgid "Show sensitive information"
 msgstr "نمایش اطلاعات مهم"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد زنده است"
@@ -1344,20 +1326,17 @@ msgid "You are already unsubscribed."
 msgstr "اشتراک شما قبلاً لغو شده است."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "درحال حاضر با <span class=\"email\">%(email)s</span> وارد سیستم شده اید."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "هنوز وارد سیستم نشده اید. <a href=\"%(login_url)s\">ورود به سیستم</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"می توانید قبل از حذف سابقه، <a target=\"_blank\" "
-"href=\"%(view_url)s\">سابقه را مشاهده کنید</a>."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

@@ -132,18 +132,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -220,6 +208,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -228,7 +226,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -236,26 +233,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Aquest registre és una còpia d'un registre d'un altre origen.\n"
-"      Podeu suprimir el registre aquí,\n"
-"      però tingueu en compte que\n"
-"      més tard podem rebre'n una altra còpia del seu origen.\n"
-"\n"
-"      <p>\n"
-"      Si voleu que se suprimeixi de manera permanent,\n"
-"      contacteu amb l'origen.\n"
-"      Podeu visualitzar el registre original a\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -273,19 +252,6 @@ msgstr ""
 "confirmació. Si sou l'autor, comproveu el correu electrònic després de "
 "fer clic al botó que hi ha a continuació.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -467,10 +433,6 @@ msgstr "(feu clic per mostrar)"
 msgid "(unknown)"
 msgstr "(desconegut)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Tanca la sessió</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr ""
 "Un missatge per a aquesta persona o per a altres persones que cerquin "
@@ -630,6 +592,9 @@ msgstr "Incrustació de l'aplicació"
 msgid "Enable notes on this record"
 msgstr "Activa les notes en aquest registre"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Introduïu-la com a AAAA-MM-DD"
 
@@ -652,6 +617,10 @@ msgstr "Caducitat"
 
 msgid "Expiry date of this record"
 msgstr "Data de caducitat d'aquest registre"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Cognoms"
@@ -694,6 +663,10 @@ msgstr ""
 
 msgid "Help"
 msgstr "Ajuda"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Oculta el mapa"
@@ -1067,6 +1040,10 @@ msgstr "Resultats de la cerca de"
 msgid "Search for this person"
 msgstr "Cerca aquesta persona"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1084,6 +1061,12 @@ msgstr "Mostra el mapa"
 
 msgid "Show sensitive information"
 msgstr "Mostra la informació confidencial"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Algú ha rebut informació que aquesta persona és viva"
@@ -1381,22 +1364,17 @@ msgid "You are already unsubscribed."
 msgstr "Ja heu anul·lat la subscripció."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Heu iniciat la sessió com a <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"No teniu la sessió iniciada. <a href=\"%(login_url)s\">Inicia la "
-"sessió</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Podeu <a target=\"_blank\" href=\"%(view_url)s\">visualitzar el "
-"registre</a> abans de suprimir-lo."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

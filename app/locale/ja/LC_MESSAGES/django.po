@@ -131,18 +131,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -212,6 +200,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -220,7 +218,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -228,26 +225,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      この記録は別の情報源から転載されたものです。\n"
-"      この記録を削除することはできますが\n"
-"      元の情報源から後でもう一度\n"
-"      転載される可能性があります。あらかじめご了承ください。\n"
-"\n"
-"      <p>\n"
-"      この記録を完全に削除したい場合は\n"
-"      元の情報源にお問い合わせください。\n"
-"      元の記録は次の場所でご覧いただけます:\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>\n"
-"    "
 
 msgid ""
 "\n"
@@ -263,27 +242,6 @@ msgstr ""
 "    "
 "メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
 "\n"
-"  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
-"\n"
-"  - サンプル CSV ファイルは<a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">こちら</a>からダウンロードできます<br>\n"
-"  - 日付はすべて yyyy-mm-ddThh:mm:ssZ の形式で UTC 時間である必要があります<br>\n"
-"  - 詳しい情報は <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">wiki ページ</a>を御覧ください<br>\n"
 "  "
 
 msgid ""
@@ -450,10 +408,6 @@ msgstr "（クリックして表示）"
 msgid "(unknown)"
 msgstr "（不明）"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">サインアウト</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "この人やこの人を探している人へのメッセージ"
 
@@ -609,6 +563,9 @@ msgstr "このツールを埋め込む"
 msgid "Enable notes on this record"
 msgstr "この記録へのメモの書き込みを許可する"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
@@ -629,6 +586,10 @@ msgstr "記録の期限"
 
 msgid "Expiry date of this record"
 msgstr "この記録の有効期限"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "姓"
@@ -667,6 +628,10 @@ msgstr "この人と災害発生後に連絡が取れましたか？（必須）
 
 msgid "Help"
 msgstr "ヘルプ"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "地図を隠す"
@@ -1010,6 +975,10 @@ msgstr "検索結果"
 msgid "Search for this person"
 msgstr "この人を探す"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr "プロフィールページを追加する..."
 
@@ -1027,6 +996,12 @@ msgstr "地図を表示"
 
 msgid "Show sensitive information"
 msgstr "個人情報の表示"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "この人が生きているという情報を入手した人がいます"
@@ -1304,18 +1279,17 @@ msgid "You are already unsubscribed."
 msgstr "アップデートの受け取りは、すでに停止されています。"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "現在、<span class=\"email\">%(email)s</span> としてログインしています。"
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "現在ログインしていません。  <a href=\"%(login_url)s\">ログイン</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr "削除する前に<a target=\"_blank\" href=\"%(view_url)s\">記録を確認</a>できます"
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

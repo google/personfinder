@@ -133,18 +133,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -223,6 +211,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -231,7 +229,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -239,29 +236,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Cet enregistrement est une copie d'un enregistrement provenant "
-"d'une autre source.\n"
-"      Vous pouvez supprimer cet enregistrement ici,\n"
-"      mais sachez que\n"
-"      nous pourrons recevoir ultérieurement une autre copie de "
-"l'enregistrement original.\n"
-"\n"
-"      <p>\n"
-"      Pour supprimer cet enregistrement de façon définitive,\n"
-"      veuillez contacter la personne qui a mis en ligne l'enregistrement "
-"original.\n"
-"      L'enregistrement original est disponible sur la page suivante :\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>\n"
-"    "
 
 msgid ""
 "\n"
@@ -279,19 +255,6 @@ msgstr ""
 "commentaires. Si vous êtes l'auteur, consultez vos e-mails après avoir "
 "cliqué sur le bouton ci-dessous.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -475,10 +438,6 @@ msgstr "(cliquez pour afficher)"
 msgid "(unknown)"
 msgstr "(inconnu)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Déconnexion</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "Message à l'intention de cette personne ou de ceux qui la recherchent"
 
@@ -638,6 +597,9 @@ msgstr "Intégration de l'application"
 msgid "Enable notes on this record"
 msgstr "Activer les commentaires pour cet enregistrement"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Respectez le format AAAA-MM-JJ."
 
@@ -660,6 +622,10 @@ msgstr "Date d'expiration"
 
 msgid "Expiry date of this record"
 msgstr "Date d'expiration de cet enregistrement"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Nom"
@@ -700,6 +666,10 @@ msgstr "Avez-vous parlé avec cette personne APRÈS la catastrophe ? (obligatoi
 
 msgid "Help"
 msgstr "Aide"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Masquer la carte"
@@ -1079,6 +1049,10 @@ msgstr "Résultats de recherche pour"
 msgid "Search for this person"
 msgstr "Rechercher cette personne"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1096,6 +1070,12 @@ msgstr "Afficher la carte"
 
 msgid "Show sensitive information"
 msgstr "Afficher les informations confidentielles"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Quelqu'un a reçu des informations indiquant que cette personne est en vie."
@@ -1397,22 +1377,17 @@ msgid "You are already unsubscribed."
 msgstr "Vous êtes déjà désabonné."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Vous êtes actuellement connecté à l'aide de l'adresse e-mail <span "
-"class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Vous n'êtes pas connecté. <a href=\"%(login_url)s\">Se connecter</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Vous pouvez <a target=\"_blank\" href=\"%(view_url)s\">consulter "
-"l'enregistrement</a> avant de le supprimer."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

@@ -131,18 +131,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -218,6 +206,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -226,7 +224,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -234,26 +231,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Denne journal er en kopi af en journal fra en anden kilde.\n"
-"      Du kan slette journalen her,\n"
-"      men vær opmærksom på, at\n"
-"      vi muligvis senere modtager en ny kopi fra den oprindelige kilde.\n"
-"\n"
-"      <p>\n"
-"      Hvis du vil slette den permanent,\n"
-"      skal du kontakte den oprindelige kilde.\n"
-"      Du kan få vist den oprindelige journal på\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -271,19 +250,6 @@ msgstr ""
 "du er forfatteren, skal du tjekke din e-mail, når du har klikket på "
 "knappen nedenfor.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -463,10 +429,6 @@ msgstr "(klik for at se)"
 msgid "(unknown)"
 msgstr "(ukendt)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Log ud</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "En besked til denne person eller til andre, der søger efter denne person"
 
@@ -624,6 +586,9 @@ msgstr "Sådan integrerer du programmet"
 msgid "Enable notes on this record"
 msgstr "Aktiver noter for denne journal"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Indtast som ÅÅÅÅ-MM-DD"
 
@@ -644,6 +609,10 @@ msgstr "Udløbsdato"
 
 msgid "Expiry date of this record"
 msgstr "Udløbsdato for denne journal"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Efternavn"
@@ -684,6 +653,10 @@ msgstr "Har du selv talt med personen EFTER katastrofen? (skal angives)"
 
 msgid "Help"
 msgstr "Hjælp"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Skjul kort"
@@ -1054,6 +1027,10 @@ msgstr "Søgeresultater for"
 msgid "Search for this person"
 msgstr "Søg efter denne person"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1071,6 +1048,12 @@ msgstr "Vis kort"
 
 msgid "Show sensitive information"
 msgstr "Vis følsomme oplysninger"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Nogen har modtaget oplysninger om, at denne person er i live"
@@ -1367,20 +1350,17 @@ msgid "You are already unsubscribed."
 msgstr "Du har allerede afmeldt abonnementet."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Du er i øjeblikket logget ind som <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Du er i øjeblikket ikke logget ind. <a href=\"%(login_url)s\">Log ind</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Du kan <a target=\"_blank\" href=\"%(view_url)s\">få vist journalen</a>, "
-"før du sletter den."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

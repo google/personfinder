@@ -131,18 +131,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -217,6 +205,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -225,7 +223,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -233,27 +230,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Записът е копие на запис от друг източник.\n"
-"     Можете да го изтриете тук,\n"
-"      но имайте предвид, че\n"
-"      е възможно по-късно да получим друго негово копие от "
-"първоизточника.\n"
-"\n"
-"      <p>\n"
-"      Ако искате да бъде изтрит завинаги,\n"
-"      моля, свържете се с първоизточника.\n"
-"      Можете да прегледате оригиналния запис на адрес\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -271,19 +249,6 @@ msgstr ""
 "потвърждение. Ако вие сте авторът, проверете имейла си, след като "
 "кликнете върху бутона по-долу.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -461,10 +426,6 @@ msgstr "(кликнете, за да се покаже)"
 msgid "(unknown)"
 msgstr "(неизвестен)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Изход</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "Съобщение за този човек или за други, които го търсят"
 
@@ -622,6 +583,9 @@ msgstr "Вграждане на приложението"
 msgid "Enable notes on this record"
 msgstr "Активиране на бележките за този запис"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Въведете във формат ГГГГ.ММ.ДД"
 
@@ -642,6 +606,10 @@ msgstr "Валидност"
 
 msgid "Expiry date of this record"
 msgstr "Срок на валидност на този запис"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Фамилно име"
@@ -682,6 +650,10 @@ msgstr "Говорихте ли лично с този човек СЛЕД бе�
 
 msgid "Help"
 msgstr "Помощ"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Скриване на картата"
@@ -1049,6 +1021,10 @@ msgstr "Резултати от търсенето за"
 msgid "Search for this person"
 msgstr "Търсене за този човек"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1066,6 +1042,12 @@ msgstr "Показване на картата"
 
 msgid "Show sensitive information"
 msgstr "Показване на поверителна информация"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Някой е получил информация, че този човек е жив"
@@ -1352,22 +1334,17 @@ msgid "You are already unsubscribed."
 msgstr "Вече сте отписани."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Понастоящем сте влезли като <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Понастоящем не сте влезли в профила си.  <a "
-"href=\"%(login_url)s\">Вход</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Можете да <a target=\"_blank\" href=\"%(view_url)s\">прегледате "
-"записа</a>, преди да го изтриете."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

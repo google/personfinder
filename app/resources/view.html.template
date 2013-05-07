@@ -306,13 +306,11 @@
               </div>
             {% endif %}
             <div>
-              {% blocktrans %}
               <a href="{{extend_url}}">
                 <input type="button"
-                       value="Extend expiration date by {{extension_days}} days"
+                       value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
                        id="extend_btn">
               </a>
-              {% endblocktrans %}
             </div>
           {% endif %}
 

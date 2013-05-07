@@ -31,6 +31,8 @@ from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
 
+import django.utils.html
+
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
@@ -46,11 +48,28 @@ def complete_record_ids(record, domain):
     return record
 
 
+def get_tag_params(handler):
+    """Return HTML tag parameters used in import.html."""
+    return {
+        'begin_sample_anchor_tag':
+            '<a href="%s/sample-import.csv" target="_blank">' %
+                django.utils.html.escape(handler.env.global_url),
+        'end_sample_anchor_tag':
+            '</a>',
+        'begin_document_anchor_tag':
+            '<a href='
+            '"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV" '
+            'target="_blank">',
+        'end_document_anchor_tag':
+            '</a>',
+    }
+
+
 class Import(utils.BaseHandler):
     https_required = True
 
     def get(self):
-        self.render('import.html')
+        self.render('import.html', **get_tag_params(self))
 
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
@@ -101,7 +120,8 @@ class Import(utils.BaseHandler):
                         Struct(type='Note',
                                written=notes_written,
                                skipped=notes_skipped,
-                               total=notes_total)])
+                               total=notes_total)],
+                    **get_tag_params(self))
 
 
 class Read(utils.BaseHandler):

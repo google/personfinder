@@ -133,18 +133,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -222,6 +210,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -230,7 +228,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -238,27 +235,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Deze melding is een kopie van een melding uit een andere bron.\n"
-"      U kunt de melding hier verwijderen,\n"
-"      maar houd er rekening mee dat\n"
-"      we later misschien een andere kopie ervan ontvangen die afkomstig "
-"is van de oorspronkelijke bron.\n"
-"\n"
-"      <p>\n"
-"      Als u de melding permanent wilt verwijderen,\n"
-"      neemt u contact op met de oorspronkelijke bron.\n"
-"      U kunt de oorspronkelijke bron bekijken op\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -276,19 +254,6 @@ msgstr ""
 "ingeschakeld met toestemming van de auteur. Als u de auteur bent, "
 "controleert u uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -468,10 +433,6 @@ msgstr "(klik voor weergave)"
 msgid "(unknown)"
 msgstr "(onbekend)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Afmelden</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr ""
 "Een bericht voor deze persoon of voor anderen die op zoek zijn naar deze "
@@ -631,6 +592,9 @@ msgstr "De toepassing insluiten"
 msgid "Enable notes on this record"
 msgstr "Opmerkingen inschakelen voor deze record"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Gebruik de notatie JJJJ-MM-DD"
 
@@ -653,6 +617,10 @@ msgstr "Vervaldatum"
 
 msgid "Expiry date of this record"
 msgstr "Vervaldatum van deze melding"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Achternaam"
@@ -693,6 +661,10 @@ msgstr "Heeft u zelf met deze persoon gesproken NA de ramp? (verplicht)"
 
 msgid "Help"
 msgstr "Help"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Kaart verbergen"
@@ -1064,6 +1036,10 @@ msgstr "Zoekresultaten voor"
 msgid "Search for this person"
 msgstr "Zoeken naar deze persoon"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1081,6 +1057,12 @@ msgstr "Kaart weergeven"
 
 msgid "Show sensitive information"
 msgstr "Gevoelige gegevens weergeven"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Iemand heeft informatie gekregen dat deze persoon nog leeft"
@@ -1379,20 +1361,17 @@ msgid "You are already unsubscribed."
 msgstr "U bent al afgemeld."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "U bent momenteel aangemeld als <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "U bent momenteel niet aangemeld. <a href=\"%(login_url)s\">Aanmelden</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"U kunt <a target=\"_blank\" href=\"%(view_url)s\">de melding bekijken</a>"
-" voordat u deze verwijdert."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

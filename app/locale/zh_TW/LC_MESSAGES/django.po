@@ -127,18 +127,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -211,6 +199,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -219,7 +217,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -227,26 +224,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      這筆記錄為其他來源的記錄複本。\n"
-"      您可以刪除這裡的記錄，\n"
-"      但請注意\n"
-"      記錄的原始建立者以後仍有可能發送相同的記錄給我們。\n"
-"\n"
-"      <p>\n"
-"      如要永久刪除記錄，\n"
-"      請洽記錄的原始建立者。\n"
-"      如要檢視原始記錄，請至\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
-"    "
 
 msgid ""
 "\n"
@@ -263,19 +242,6 @@ msgstr ""
 "為了確保註記功能的停用或啟用是經過記錄作者本人的許可，我們會寄送一封確認郵件給記錄作者。如果您是作者，請在您按一下底下的按鈕後，記得檢查您的電子郵件信箱。"
 "\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -443,10 +409,6 @@ msgstr "(按一下即可顯示)"
 msgid "(unknown)"
 msgstr "(未知)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">登出</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
 
@@ -602,6 +564,9 @@ msgstr "嵌入應用程式"
 msgid "Enable notes on this record"
 msgstr "啟用這筆記錄的註記功能"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 
@@ -622,6 +587,10 @@ msgstr "到期"
 
 msgid "Expiry date of this record"
 msgstr "這筆記錄的到期日"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "姓"
@@ -660,6 +629,10 @@ msgstr "在災難「發生後」，您本人是否曾與這個人交談過？(�
 
 msgid "Help"
 msgstr "說明"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "隱藏地圖"
@@ -1000,6 +973,10 @@ msgstr "此項目的搜尋結果："
 msgid "Search for this person"
 msgstr "搜尋這個人"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1017,6 +994,12 @@ msgstr "顯示地圖"
 
 msgid "Show sensitive information"
 msgstr "顯示機密資訊"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "有人收到消息指出這個人還活著"
@@ -1301,18 +1284,17 @@ msgid "You are already unsubscribed."
 msgstr "您已取消訂閱這個項目。"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您目前尚未登入。<a href=\"%(login_url)s\">按這裡登入</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr "您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看這筆記錄</a>，再予以刪除。"
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
