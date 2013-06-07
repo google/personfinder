@@ -118,26 +118,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
-"\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
 
-#, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
 
 #, python-format
@@ -220,6 +209,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -228,7 +227,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -236,28 +234,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      Ang talaang ito ay isang kopya ng talaan mula sa isa pang "
-"pinagmulan.\n"
-"      Maaari mong tanggalin ang talaan dito,\n"
-"      ngunit mangyaring malaman na\n"
-"      maaari kaming tumanggap sa ibang pagkakataon ng isa pang kopya nito"
-" mula sa orihinal na pinagmulan.\n"
-"\n"
-"      <p>\n"
-"      Kung gusto mong permanenteng tanggalin ito nang permanente,\n"
-"      mangyaring makipag-ugnay sa orihinal na pinagmulan.\n"
-"      Maaari mong tingnan ang orihinal na talaan sa\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
-"    "
 
 msgid ""
 "\n"
@@ -275,19 +253,6 @@ msgstr ""
 "akda ng record. Kung ikaw ang may-akda, tingnan ang iyong e-mail "
 "pagkatapos i-click ang button sa ibaba.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -467,10 +432,6 @@ msgstr "(i-click upang ipakita)"
 msgid "(unknown)"
 msgstr "(hindi kilala)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Mag-sign out</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "Mensahe para sa taong ito o mga iba pang naghahanap sa taong ito"
 
@@ -630,6 +591,9 @@ msgstr "Pag-embed ng Application"
 msgid "Enable notes on this record"
 msgstr "Paganahin ang mga tala sa record na ito"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ipasok bilang YYYY-MM-DD"
 
@@ -652,6 +616,10 @@ msgstr "Pag-expire"
 
 msgid "Expiry date of this record"
 msgstr "Petsa ng pag-expire ng talaang ito"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "Apelyido"
@@ -694,6 +662,10 @@ msgstr ""
 
 msgid "Help"
 msgstr "Tulong"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "Itago ang Mapa"
@@ -869,15 +841,15 @@ msgstr ""
 "board ng carrier."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "Walang tala na may ID: %(id)s."
+msgid "No note with ID: %(id_str)s."
+msgstr "Walang tala na may ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Walang mga tala ang na-post"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "Walang taong may ID: %(id)s."
+msgid "No person with ID: %(id_str)s."
+msgstr "Walang taong may ID: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Walang resultang natagpuan para sa"
@@ -937,6 +909,12 @@ msgstr ""
 "PAKITANDAAN: Ang lahat ng data na ipinasok ay magagamit ng publiko at "
 "magagamit ng sinuman.  Hindi sinusuri o bine-verify ng Google ang "
 "katumpakan ng data na ito."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Tagahanap ng Tao"
@@ -1061,6 +1039,10 @@ msgstr "Mga Resulta ng Paghahanap para sa"
 msgid "Search for this person"
 msgstr "Maghanap para sa taong ito"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1078,6 +1060,12 @@ msgstr "Ipakita ang Mapa"
 
 msgid "Show sensitive information"
 msgstr "Ipakita ang sensitibong impormasyon"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "Mayroong nakatanggap ng impormasyong buhay ang taong ito"
@@ -1368,24 +1356,17 @@ msgid "You are already unsubscribed."
 msgstr "Naka-unsubscribe ka na."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Kasalukuyan kang naka-sign in bilang <span "
-"class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Kasalukuyang hindi ka naka-sign in.  <a href=\"%(login_url)s\">Mag-sign "
-"in</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
-"Maaari mong <a target=\"_blank\" href=\"%(view_url)s\">tingnan ang "
-"talaan</a> bago ito tanggalin."
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

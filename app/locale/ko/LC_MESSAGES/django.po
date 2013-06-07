@@ -112,26 +112,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
-"\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
 
-#, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
 
 #, python-format
@@ -209,6 +198,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -217,7 +216,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -225,26 +223,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      다른 소스에서 복사한 레코드입니다.\n"
-"      여기에서 레코드를 삭제할 수 있지만,\n"
-"      나중에 원본 소스로부터 다른 레코드 사본을\n"
-"      수신할 수도 있습니다.\n"
-"\n"
-"      <p>\n"
-"      레코드를 영구히 삭제하고 싶으면,\n"
-"      원본 소스를 삭제하시기 바랍니다.\n"
-"      \n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>에서 원본 레코드를 볼 수 있습니다.\n"
-"    "
 
 msgid ""
 "\n"
@@ -260,19 +240,6 @@ msgstr ""
 "    레코드 작성자가 허가하는 경우에만 메모를 사용 또는 사용중지로 설정할 수 있도록 레코드 작성자에게 확인 메일이 발송됩니다. "
 "레코드 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -442,10 +409,6 @@ msgstr "(표시하려면 클릭)"
 msgid "(unknown)"
 msgstr "(알 수 없음)"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">로그아웃</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "이 사람 또는 이 사람을 찾는 다른 사람을 위한 메시지"
 
@@ -601,6 +564,9 @@ msgstr "응용프로그램 퍼가기"
 msgid "Enable notes on this record"
 msgstr "이 레코드에서 메모 사용"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
 
@@ -621,6 +587,10 @@ msgstr "만료"
 
 msgid "Expiry date of this record"
 msgstr "이 레코드의 만료일"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "성"
@@ -659,6 +629,10 @@ msgstr "재난 이후 이 사람과 개인적으로 대화한 적이 있습니�
 
 msgid "Help"
 msgstr "도움말"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "지도 숨기기"
@@ -820,15 +794,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "이동통신사의 메시지 보드 서비스에 등록된 메시지가 없습니다."
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "ID %(id)s에 대한 메모가 없습니다."
+msgid "No note with ID: %(id_str)s."
+msgstr "ID %(id_str)s에 대한 메모가 없습니다."
 
 msgid "No notes have been posted"
 msgstr "게시된 메모가 없습니다."
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "ID가 %(id)s인 사람이 없습니다."
+msgid "No person with ID: %(id_str)s."
+msgstr "ID가 %(id_str)s인 사람이 없습니다."
 
 msgid "No results found for"
 msgstr "다음 이름에 대한 결과를 찾을 수 없음"
@@ -881,6 +855,12 @@ msgid ""
 msgstr ""
 "참고: 입력한 모든 데이터는 공개되어 누구나 보고 사용할 수 있습니다. Google은 이러한 데이터의 정확성을 검토하거나 확인하지 "
 "않습니다."
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -999,6 +979,10 @@ msgstr "검색결과"
 msgid "Search for this person"
 msgstr "검색"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1016,6 +1000,12 @@ msgstr "지도 표시"
 
 msgid "Show sensitive information"
 msgstr "중요 정보 표시"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
@@ -1302,18 +1292,17 @@ msgid "You are already unsubscribed."
 msgstr "이미 구독을 취소했습니다."
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "<span class=\"email\">%(email)s</span> 주소로 현재 로그인되어 있습니다."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "현재 로그인되어 있지 않습니다. <a href=\"%(login_url)s\">로그인</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr "삭제하기 전에 <a target=\"_blank\" href=\"%(view_url)s\">레코드를 확인</a>할 수 있습니다."
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

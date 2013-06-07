@@ -112,26 +112,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Warning: this record will expire in less than a day.\n"
-"                "
-msgid_plural ""
-"\n"
-"                Warning: this record will expire in less than %(days)s "
-"days.\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
 
-#, python-format
 msgid ""
 "\n"
-"              <a href=\"%(extend_url)s\">\n"
-"                <input type=\"button\"\n"
-"                       value=\"Extend expiration date by "
-"%(extension_days)s days\"\n"
-"                       id=\"extend_btn\">\n"
-"              </a>\n"
-"              "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
 
 #, python-format
@@ -209,6 +198,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -217,7 +216,6 @@ msgid ""
 "      "
 msgstr ""
 
-#, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -225,26 +223,8 @@ msgid ""
 "      but please be aware that\n"
 "      we might later receive another copy of it from the original source."
 "\n"
-"\n"
-"      <p>\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
-"\n"
-"      此记录是其他来源中的记录的副本。\n"
-"      您可以在此处删除该记录，\n"
-"      但请注意，\n"
-"      我们以后可能会从原始源位置收到它的另一个副本。\n"
-"\n"
-"      <p>\n"
-"      如果您想永久删除该记录，\n"
-"      请与原始源位置的负责人联系。\n"
-"      您可以在以下位置查看原始记录：\n"
-"      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
-"    "
 
 msgid ""
 "\n"
@@ -261,19 +241,6 @@ msgstr ""
 "为了确保只有在记录创建者允许的情况下才能禁止或允许发表注释，我们会向记录创建者发送确认电子邮件。如果您是创建者，请在点击下方的按钮后查看电子邮件。"
 "\n"
 "  "
-
-#, python-format
-msgid ""
-"\n"
-"  - Here is <a href=\"%(global_url)s/sample-import.csv\"\n"
-"      target=\"_blank\">a sample CSV file</a> you can edit and upload<br>"
-"\n"
-"  - Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC<br>\n"
-"  - See <a "
-"href=\"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV\"\n"
-"      target=\"_blank\">the wiki</a> for more instructions<br>\n"
-"  "
-msgstr ""
 
 msgid ""
 "\n"
@@ -441,10 +408,6 @@ msgstr "（点击可显示）"
 msgid "(unknown)"
 msgstr "（未知）"
 
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">退出</a>"
-
 msgid "A message for this person or others seeking this person"
 msgstr "给这个人及其寻找者的留言"
 
@@ -600,6 +563,9 @@ msgstr "嵌入此应用程序"
 msgid "Enable notes on this record"
 msgstr "允许对此记录发表注释"
 
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
 msgstr "输入格式为 YYYY-MM-DD"
 
@@ -620,6 +586,10 @@ msgstr "失效日期"
 
 msgid "Expiry date of this record"
 msgstr "此记录的失效日期"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr ""
 
 msgid "Family name"
 msgstr "姓"
@@ -658,6 +628,10 @@ msgstr "灾难过后，您亲自与此人交谈过吗？（必填）"
 
 msgid "Help"
 msgstr "帮助"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
 
 msgid "Hide Map"
 msgstr "隐藏地图"
@@ -815,15 +789,15 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "未找到注册运营商留言板服务的任何相关留言。"
 
 #, python-format
-msgid "No note with ID: %(id)s."
-msgstr "没有与以下 ID 对应的注释： %(id)s。"
+msgid "No note with ID: %(id_str)s."
+msgstr "没有与以下 ID 对应的注释： %(id_str)s。"
 
 msgid "No notes have been posted"
 msgstr "未发布任何注释"
 
 #, python-format
-msgid "No person with ID: %(id)s."
-msgstr "没有与以下 ID 对应的人： %(id)s。"
+msgid "No person with ID: %(id_str)s."
+msgstr "没有与以下 ID 对应的人： %(id_str)s。"
 
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
@@ -874,6 +848,12 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr "请注意：所输入的信息将全部对公众开放，意味着任何人都可查看或使用它们。Google 不会审查或验证这些数据的准确性。"
+
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
 
 msgid "Person Finder"
 msgstr "网上寻人"
@@ -992,6 +972,10 @@ msgstr "有关此姓名的搜索结果"
 msgid "Search for this person"
 msgstr "搜索此人"
 
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+
 msgid "Select a website to add a profile page..."
 msgstr ""
 
@@ -1009,6 +993,12 @@ msgstr "显示地图"
 
 msgid "Show sensitive information"
 msgstr "显示敏感信息"
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
 
 msgid "Someone has received information that this person is alive"
 msgstr "有人已收到这个人幸存的消息"
@@ -1293,18 +1283,17 @@ msgid "You are already unsubscribed."
 msgstr "您已取消订阅。"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您目前还没有登录。请<a href=\"%(login_url)s\">登录</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr "您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看记录</a>，然后再将其删除。"
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+
+msgid "You are not currently signed in."
+msgstr ""
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

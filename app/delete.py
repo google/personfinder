@@ -19,6 +19,7 @@ import model
 import utils
 from model import db
 
+import django.utils.html
 from django.utils.translation import ugettext as _
 
 # The number of days an expired record lingers before the DeleteExpired task
@@ -85,6 +86,23 @@ def delete_person(handler, person, send_notices=True):
         person.delete_related_entities(delete_self=True)
 
 
+def get_tag_params(handler, person):
+    """Return HTML tag parameters used in delete.html."""
+    return {
+        'begin_source_anchor_tag':
+            '<a href="%s">' %
+                django.utils.html.escape(person.source_url),
+        'end_source_anchor_tag':
+            '</a>',
+        'begin_view_anchor_tag':
+            '<a target="_blank" href="%s">' %
+                django.utils.html.escape(
+                    handler.get_url('/view', id=handler.params.id)),
+        'end_view_anchor_tag':
+            '</a>',
+    }
+
+
 class Handler(utils.BaseHandler):
     """Handles a user request to delete a person record."""
 
@@ -97,7 +115,8 @@ class Handler(utils.BaseHandler):
         self.render('delete.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=self.get_captcha_html())
+                    captcha_html=self.get_captcha_html(),
+                    **get_tag_params(self, person))
 
     def post(self):
         """If the user passed the Turing test, delete the record."""
@@ -120,4 +139,5 @@ class Handler(utils.BaseHandler):
             self.render('delete.html',
                         person=person,
                         view_url=self.get_url('/view', id=self.params.id),
-                        captcha_html=captcha_html)
+                        captcha_html=captcha_html,
+                        **get_tag_params(self, person))
