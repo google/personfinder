@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<h2>{% trans "API Key Management" %}</h2>
+<p>
+{% if user %}
+  {% blocktrans with user.email as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
+  {% blocktrans with logout_url as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
+{% else %}
+  {% blocktrans with login_url as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
+{% endif %}
+<p>{{nav_html|safe}}
+{% if message %}<div class="info"><strong>{{ message }}</strong></div>
+{% endif %}
+<h2>Detailed information of an API key for {{ env.subdomain }}.{{env.parent_domain}}</h2>
+{% if target_key.key %}
+<script>
+</script>
+API key:
+<span id="actual_key">
+  {{ target_key.api_key }}
+</span>
+{% endif %}
+
+{% include "admin_api_key_form.html.template" %}
+
+{% endblock %}

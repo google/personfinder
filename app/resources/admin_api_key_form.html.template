@@ -1,0 +1,134 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+
+<script>
+  function $(id) {
+    return document.getElementById(id);
+  }
+  function validate_fields() {
+    $('submit').disabled = true;
+    // Check that mandatory fields are filled in.
+    var mandatory_fields = ['contact_name', 'contact_email',
+                            'organization_name'];
+    for (var i = 0; i < mandatory_fields.length; i++) {
+      field = $(mandatory_fields[i]);
+      if (field != null && field.value.length == 0) {
+        $('mandatory_field_missing').setAttribute('style', '');
+        field.focus();
+        $('submit').disabled = false;
+        return false;
+      }
+    }
+    $('mandatory_field_missing').setAttribute('style', 'display: none');
+    $('submit').disabled = false;
+    return true;
+  }
+</script>
+
+<form method="post" id="create-or-update-api-key" class="admin">
+  <fieldset>
+    <legend>Contact Information</legend>
+    <div class="config">
+      <label for="contact_name" class="mandatory">
+        Name of a person who requested for an API key
+      </label>
+      <div class="response">
+        <input name="contact_name" id="contact_name" size="40"
+               value="{{target_key.contact_name}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="contact_email" class="mandatory">
+        E-mail address of the person
+      </label>
+      <div class="response">
+        <input name="contact_email" id="contact_email" size="40"
+               value="{{target_key.contact_email}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="organization_name" class="mandatory">
+        Name of an organization using the key
+      </label>
+      <div class="response">
+        <input name="organization_name" id="organization_name" size="40"
+               value="{{target_key.organization_name}}">
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Permissions</legend>
+    <div class="config">
+      <label for="domain_write_permission">
+        A domain name when writing with the API.
+        Leave it blank if you don't want to give a write permission.
+      </label>
+      <div class="response">
+        <input name="domain_write_permission" id="domain_write_permission"
+               size="40" value="{{target_key.domain_write_permission}}">
+      </div>
+    </div>
+    <div class="config">
+      <label>
+	Permission flags
+      </label>
+      <div class="response">
+        <input type="checkbox" name="read_permission" id="read_permission"
+               {{target_key.read_permission|yesno:"checked,"}}>
+        Read permission
+      </div>
+      <div class="response">
+        <input type="checkbox" name="full_read_permission"
+               id="full_read_permission"
+               {{target_key.full_read_permission|yesno:"checked,"}}>
+               Full read permission
+	<span class="warning">Think twice before turning this on.</span>
+      </div>
+      <div class="response">
+        <input type="checkbox" name="search_permission" id="search_permission"
+               {{target_key.search_permission|yesno:"checked,"}}>
+        Search permission
+      </div>
+      <div class="response">
+        <input type="checkbox" name="subscribe_permission"
+               id="subscribe_permission"
+               {{target_key.subscribe_permission|yesno:"checked,"}}>
+        Subscribe permission
+      </div>
+      <div class="response">
+        <input type="checkbox" name="mark_notes_reviewed"
+               id="mark_notes_reviewed"
+               {{target_key.mark_notes_reviewed|yesno:"checked,"}}>
+        Skip review process for notes
+      </div>
+      <div class="response">
+        <input type="checkbox" name="is_valid" id="is_valid"
+               {{target_key.is_valid|yesno:"checked,"}}>
+        The key is valid
+      </div>
+    </div>
+  </fieldset>
+  <p>
+    <input type="hidden" name="key" value="{{target_key.key}}">
+    <input type="submit" name="submit" value="{{operation_name}}" id="submit"
+           onclick="return validate_fields();">
+    <div id="mandatory_field_missing"
+         class="mandatory" style="display: none">
+      {% trans "Please fill in all the required fields." %}
+    </div>
+</form>

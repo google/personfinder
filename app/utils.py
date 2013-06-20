@@ -31,6 +31,7 @@ import traceback
 import unicodedata
 import urllib
 import urlparse
+import base64
 
 import django.utils.html
 from google.appengine.api import images
@@ -160,6 +161,11 @@ def validate_yes(string):
 
 def validate_checkbox(string):
     return (strip(string).lower() == 'on') and 'yes' or ''
+
+def validate_checkbox_as_bool(val):
+    if val.lower() in ['on', 'yes', 'true']:
+        return True
+    return False
 
 def validate_role(string):
     return (strip(string).lower() == 'provide') and 'provide' or 'seek'
@@ -484,6 +490,60 @@ class Struct:
         return self.__dict__.get(name, default)
 
 
+def get_random_string(length):
+    source = ('abcdefghijklmnopqrstuvwxyz'
+              'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+              '1234567890'
+              '-_')
+    chars = []
+    for i in range(length):
+        chars.append(random.choice(source))
+    return ''.join(chars)
+
+
+# ==== Key management ======================================================
+
+def generate_random_key(length):
+    """Generates a random key with given length."""
+    return ''.join(chr(random.randrange(256)) for i in range(length))
+
+def get_secret_key(name='reveal', length=20):
+    """Gets the secret key for authorizing reveal operations etc."""
+    secret = model.Secret.get_by_key_name(name)
+    if not secret:
+        secret = model.Secret(key_name=name,
+                              secret=generate_random_key(length))
+        secret.put()
+    return secret.secret
+
+
+# ==== Decorators  ============================================================
+
+def require_api_key_management_permission(handler_method):
+    """
+    This is a decorator for API Key management feature. The limitation
+    is that the decorator can not preserve payloads within a POST/PUT
+    request.
+
+    Usage:
+    class SomeHandler(utils.Handler):
+        @utils.require_api_key_management_permission
+        def get(self):
+            # ....
+            # ....
+    """
+    def inner(*args, **kwargs):
+        handler = args[0]
+        user = users.get_current_user()
+        if users.is_current_user_admin() or \
+                (user and handler.config.key_management_operators and
+                 user.email() in handler.config.key_management_operators):
+            return handler_method(*args, **kwargs)
+        else:
+            return handler.redirect(
+                users.create_login_url(handler.request.url))
+    return inner
+
 # ==== Base Handler ============================================================
 
 class BaseHandler(webapp.RequestHandler):
@@ -509,15 +569,19 @@ class BaseHandler(webapp.RequestHandler):
         'cache_seconds': validate_cache_seconds,
         'clone': validate_yes,
         'confirm': validate_yes,
+        'contact_email': strip,
+        'contact_name': strip,
         'content_id': strip,
         'cursor': strip,
         'date_of_birth': validate_approximate_date,
         'description': strip,
+        'domain_write_permission': strip,
         'dupe_notes': validate_yes,
         'email_of_found_person': strip,
         'error': strip,
         'expiry_option': validate_expiry,
         'family_name': strip,
+        'full_read_permission': validate_checkbox_as_bool,
         'given_name': strip,
         'home_city': strip,
         'home_country': strip,
@@ -529,9 +593,11 @@ class BaseHandler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
+        'is_valid': validate_checkbox_as_bool,
         'key': strip,
         'lang': validate_lang,
         'last_known_location': strip,
+        'mark_notes_reviewed': validate_checkbox_as_bool,
         'max_results': validate_int,
         'min_entry_date': validate_datetime,
         'new_repo': validate_repo,
@@ -539,6 +605,7 @@ class BaseHandler(webapp.RequestHandler):
         'note_photo_url': strip,
         'omit_notes': validate_yes,
         'operation': strip,
+        'organization_name': strip,
         'person_record_id': strip,
         'phone_of_found_person': strip,
         'photo': validate_image,
@@ -547,12 +614,14 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url2': strip,
         'profile_url3': strip,
         'query': strip,
+        'read_permission': validate_checkbox_as_bool,
         'resource_bundle': validate_resource_name,
         'resource_bundle_default': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
         'resource_lang': validate_lang,
         'resource_name': validate_resource_name,
         'role': validate_role,
+        'search_permission': validate_checkbox_as_bool,
         'sex': validate_sex,
         'signature': strip,
         'skip': validate_int,
@@ -564,6 +633,7 @@ class BaseHandler(webapp.RequestHandler):
         'style': strip,
         'subscribe': validate_checkbox,
         'subscribe_email': strip,
+        'subscribe_permission': validate_checkbox_as_bool,
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
@@ -763,6 +833,8 @@ class BaseHandler(webapp.RequestHandler):
             if not self.auth:
                 # perhaps this is a global key ('*' for consistency with config).
                 self.auth = model.Authorization.get('*', self.params.key)
+        if self.auth and not self.auth.is_valid:
+            self.auth = None
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:

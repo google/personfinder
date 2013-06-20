@@ -629,6 +629,12 @@ class Photo(db.Model):
 class Authorization(db.Model):
     """Authorization keys.  Key name: repo + ':' + auth_key."""
 
+    DEFAULT_SETTINGS = dict(contact_name='', contact_email='',
+                            organization_name='', domain_write_permission='',
+                            read_permission=False, full_read_permission=False, 
+                            search_permission=True, subscribe_permission=False,
+                            mark_notes_reviewed=False, is_valid=True, key='')
+
     # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
     repo = db.StringProperty(required=True)
@@ -662,10 +668,21 @@ class Authorization(db.Model):
     # allowed to have status == 'believed_dead'.
     believed_dead_permission = db.BooleanProperty()
 
+    # If this flag is False, the API access with this key won't be
+    # allowed.
+    is_valid = db.BooleanProperty(default=True)
+
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()
     organization_name = db.StringProperty()
+
+    @property
+    def api_key(self):
+        """Gets a key value excluding the subdomain part. """
+        if self.has_key():
+            return self.key().name().split(':')[1]
+        return None
 
     @classmethod
     def get(cls, repo, key):
@@ -676,6 +693,24 @@ class Authorization(db.Model):
     def create(cls, repo, key, **kwargs):
         """Creates an Authorization entity for a given repository and key."""
         return cls(key_name=repo + ':' + key, repo=repo, **kwargs)
+
+
+class ApiKeyManagementLog(db.Model):
+    """Log management history for API keys."""
+    CREATE = 'create'
+    UPDATE = 'update'
+    DELETE = 'delete'
+    ACTIONS = [CREATE, UPDATE, DELETE]
+
+    user = db.UserProperty(auto_current_user_add=True)
+    timestamp = db.DateTimeProperty(auto_now_add=True)
+    subdomain = db.StringProperty(required=True)
+    api_key = db.StringProperty(required=True)
+    action = db.StringProperty(required=True, choices=ACTIONS)
+
+    @property
+    def authorization(self):
+        return Authorization.get(self.subdomain, self.api_key)
 
 
 class Secret(db.Model):
