@@ -6486,13 +6486,13 @@ class ApiKeyManagementTests(TestsBase):
         doc = self.go('/_ah/login')
         self.s.submit(doc.first('form'), admin='False', action='Logout')
         assert self.s.status == 200
-        config.set_for_subdomain(
+        config.set_for_repo(
             'japan',
             key_management_operators=[self.key_management_operator])
 
     def test_toppage(self):
         """Check the main page of API kay management."""
-        url = '/admin/api_keys?subdomain=japan&lang=en'
+        url = 'http://%s/personfinder/japan/admin/api_keys' % self.hostport
         doc = self.go(url, redirects=0)
         # check if 302
         assert self.s.status == 302
@@ -6505,7 +6505,7 @@ class ApiKeyManagementTests(TestsBase):
 
     def test_manage_key(self):
         """Check if a new API key is created/updated correctly."""
-        url = '/admin/api_keys?subdomain=japan&lang=en'
+        url = 'http://%s/personfinder/japan/admin/api_keys' % self.hostport
         doc = self.go_as_operator(url)
         assert self.s.status == 200
         assert 'API Key Management' in doc.text
@@ -6528,7 +6528,7 @@ class ApiKeyManagementTests(TestsBase):
             is_valid='on',
         )
         assert 'A new API key has been created successfully.' in doc.text
-        q = Authorization.all().filter('subdomain =', 'japan')
+        q = Authorization.all().filter('repo =', 'japan')
         authorizations = q.fetch(10)
         assert len(authorizations) == 1
         authorization = authorizations[0]
@@ -6544,7 +6544,7 @@ class ApiKeyManagementTests(TestsBase):
         assert authorization.mark_notes_reviewed is True
         assert authorization.is_valid is True
         # Check if the management log is created correctly.
-        q = ApiKeyManagementLog.all().filter('subdomain =', 'japan')
+        q = ApiKeyManagementLog.all().filter('repo =', 'japan')
         logs = q.fetch(10)
         assert len(logs) == 1
         log = logs[0]
@@ -6553,7 +6553,7 @@ class ApiKeyManagementTests(TestsBase):
         assert log.action == ApiKeyManagementLog.CREATE
 
         # List the key and click the edit form on the list
-        url = '/admin/api_keys/list?subdomain=japan&lang=en'
+        url = 'http://%s/personfinder/japan/admin/api_keys/list' % self.hostport
         doc = self.go_as_operator(url)
         assert self.s.status == 200
         assert 'Listing API keys for japan' in doc.text
@@ -6583,7 +6583,7 @@ class ApiKeyManagementTests(TestsBase):
             key=str(authorization.key()),
         )
         assert 'The API key has been updated successfully.' in doc.text
-        q = Authorization.all().filter('subdomain =', 'japan')
+        q = Authorization.all().filter('repo =', 'japan')
         authorizations = q.fetch(10)
         assert len(authorizations) == 1
         authorization = authorizations[0]
@@ -6599,7 +6599,7 @@ class ApiKeyManagementTests(TestsBase):
         assert authorization.mark_notes_reviewed is False
         assert authorization.is_valid is False
         # Check if the management log is created correctly.
-        q = ApiKeyManagementLog.all().filter('subdomain =', 'japan')
+        q = ApiKeyManagementLog.all().filter('repo =', 'japan')
         logs = q.fetch(10)
         assert len(logs) == 2
         for log in logs:
