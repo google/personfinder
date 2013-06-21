@@ -6466,12 +6466,10 @@ class ApiKeyManagementTests(TestsBase):
     def go_as_operator(self, path, **kwargs):
         """Navigates to the given path with an operator login."""
         if not self.logged_in_as_operator:
-            doc = self.go('/_ah/login')
-            self.s.submit(doc.first('form'), admin='False', action='Login',
-                          email=(self.key_management_operator))
-            assert self.s.status == 200
+            scrape.setcookies(self.s.cookiejar, self.hostport,
+                              ['dev_appserver_login=%s:True:1' %
+                                  self.key_management_operator])
             self.logged_in_as_operator = True
-            self.logged_in_as_admin = False
         return self.go(path, **kwargs)
 
     def go_as_admin(self, path, **kwargs):
@@ -6483,9 +6481,6 @@ class ApiKeyManagementTests(TestsBase):
     def setUp(self):
         TestsBase.setUp(self)
         self.logged_in_as_operator = False
-        doc = self.go('/_ah/login')
-        self.s.submit(doc.first('form'), admin='False', action='Logout')
-        assert self.s.status == 200
         config.set_for_repo(
             'japan',
             key_management_operators=[self.key_management_operator])

@@ -23,10 +23,11 @@ limitations under the License.
 <h2>Listing API keys for {{ env.repo }}.{{env.parent_domain}}</h2>
 <p>
 {% if user %}
-  {% blocktrans with user.email as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
-  {% blocktrans with logout_url as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
+  {% blocktrans with user_email_with_tags as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
+  <a href="{{logout_url}}">{% trans "Sign out" %}</a>
 {% else %}
-  {% blocktrans with login_url as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
+  {% trans "You are not currently signed in." %}
+  <a href="{{login_url}}">{% trans "Sign in" %}</a>
 {% endif %}
 {% if message %}<div class="info"><strong>{{ message }}</strong></div>
 {% endif %}
