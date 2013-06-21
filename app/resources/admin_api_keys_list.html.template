@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% comment %}
-Copyright 2010 Google Inc.
+Copyright 2013 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ limitations under the License.
 {% endblock %}
 {% load i18n %}
 {% block content %}
-<h2>Listing API keys for {{ env.subdomain }}.{{env.parent_domain}}</h2>
+<h2>Listing API keys for {{ env.repo }}.{{env.parent_domain}}</h2>
 <p>
 {% if user %}
   {% blocktrans with user.email as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
@@ -85,7 +85,7 @@ limitations under the License.
       {{authorization.is_valid|yesno:"x,"}}
     </td>
     <td class="operation{% if not authorization.is_valid %} invalid_key{% endif %}">
-      <form method="POST" action="/admin/api_keys?subdomain={{env.subdomain}}"
+      <form method="POST" action="/admin/api_keys"
             id="edit-form-{{forloop.counter}}">
         <input type="hidden" name="authorization_key"
                value="{{ authorization.key }}">

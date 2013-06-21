@@ -1,5 +1,5 @@
 #!/usr/bin/python2.5
-# Copyright 2011 Google Inc.
+# Copyright 2013 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,9 +18,7 @@ import urllib
 from google.appengine.ext import db
 from google.appengine.api import users
 
-from model import (
-    Authorization, ApiKeyManagementLog
-)
+from model import Authorization, ApiKeyManagementLog
 import utils
 
 from django.utils.translation import ugettext as _
@@ -57,15 +55,16 @@ def to_authorization_params(param):
 class ListApiKeys(utils.Handler):
     """
     A handler for listing API keys for a particular domain.
-    TODO(tmatsuo) implement a search/filter and pagination feature.
+    TODO(ryok): implement a search/filter and pagination feature.
     """
     @utils.require_api_key_management_permission
     def get(self):
         user = users.get_current_user()
-        q = Authorization.all().filter('subdomain =', self.subdomain)
+        q = Authorization.all().filter('repo =', self.repo)
         authorizations = q.fetch(KEYS_PER_PAGE)
-        nav_html = ('<a href="/admin/api_keys?subdomain=%s">%s</a> '
-                    % (self.subdomain, _('Create a new API key')))
+        nav_html = ('<a href="%s">%s</a> '
+                    % (self.get_url('admin/api_keys'),
+                       _('Create a new API key')))
         return self.render('admin_api_keys_list.html',
                            nav_html=nav_html,
                            user=user, authorizations=authorizations)
@@ -78,16 +77,18 @@ class CreateOrUpdateApiKey(utils.Handler):
         """Display a form for create/update Authorization"""
         user = users.get_current_user()
         if authorization:
-            nav_html = ('<a href="/admin/api_keys?subdomain=%s">%s</a> '
-                        % (self.subdomain, _('Create a new API key')))
+            nav_html = ('<a href="%s">%s</a> '
+                        % (self.get_url('admin/api_keys'),
+                           _('Create a new API key')))
             operation_name = 'Update an existing key'
         else:
             authorization = Authorization.DEFAULT_SETTINGS
             operation_name = _('Create a new API key')
             nav_html = ''
 
-        nav_html += ('<a href="/admin/api_keys/list?subdomain=%s">%s</a>'
-                     % (self.subdomain, _('List API keys')))
+        nav_html += ('<a href="%s">%s</a>'
+                     % (self.get_url('admin/api_keys/list'),
+                        _('List API keys')))
         return self.render(
             'admin_api_keys.html',
             user=user, target_key=authorization,
@@ -148,20 +149,14 @@ class CreateOrUpdateApiKey(utils.Handler):
             action = ApiKeyManagementLog.CREATE
 
         authorization = Authorization.create(
-            self.subdomain, key_str,
+            self.repo, key_str,
             **to_authorization_params(self.params))
         authorization.put()
 
-        management_log = ApiKeyManagementLog(subdomain=self.subdomain,
+        management_log = ApiKeyManagementLog(repo=self.repo,
                                              api_key=authorization.api_key,
                                              action=action)
         management_log.put()
 
         self.redirect('/admin/api_keys?repo=%s&log_key=%s'
-                      % (self.subdomain, management_log.key()))
-
-
-if __name__ == '__main__':
-    utils.run(('/admin/api_keys', CreateOrUpdateApiKey),
-              ('/admin/api_keys/list', ListApiKeys),
-    )
+                      % (self.repo, management_log.key()))

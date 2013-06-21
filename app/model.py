@@ -679,7 +679,7 @@ class Authorization(db.Model):
 
     @property
     def api_key(self):
-        """Gets a key value excluding the subdomain part. """
+        """Gets a key value excluding the repo part. """
         if self.has_key():
             return self.key().name().split(':')[1]
         return None
@@ -704,13 +704,13 @@ class ApiKeyManagementLog(db.Model):
 
     user = db.UserProperty(auto_current_user_add=True)
     timestamp = db.DateTimeProperty(auto_now_add=True)
-    subdomain = db.StringProperty(required=True)
+    repo = db.StringProperty(required=True)
     api_key = db.StringProperty(required=True)
     action = db.StringProperty(required=True, choices=ACTIONS)
 
     @property
     def authorization(self):
-        return Authorization.get(self.subdomain, self.api_key)
+        return Authorization.get(self.repo, self.api_key)
 
 
 class Secret(db.Model):
