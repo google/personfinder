@@ -626,6 +626,7 @@ class BaseHandler(webapp.RequestHandler):
         'signature': strip,
         'skip': validate_int,
         'small': validate_yes,
+        'source': strip,
         'source_date': strip,
         'source_name': strip,
         'source_url': strip,
