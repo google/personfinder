@@ -1,29 +1,24 @@
-{% extends "base.html" %}
-{% comment %}
-Copyright 2013 Google Inc.
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-{% endcomment %}
+{% extends "app-base.html.template" %}
+{% load i18n %}
 
 {% block head-extra %}
     <link type="text/css" rel="stylesheet" href="/static/style-admin-api-keys.css">
 {% endblock %}
-{% load i18n %}
 {% block content %}
 <h2>Listing API keys for {{ env.repo }}.{{env.parent_domain}}</h2>
 <p>
 {% if user %}
-  {% blocktrans with user_email_with_tags as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
+  {% blocktrans with user_email_with_tags|safe as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
   <a href="{{logout_url}}">{% trans "Sign out" %}</a>
 {% else %}
   {% trans "You are not currently signed in." %}
@@ -86,7 +81,7 @@ limitations under the License.
       {{authorization.is_valid|yesno:"x,"}}
     </td>
     <td class="operation{% if not authorization.is_valid %} invalid_key{% endif %}">
-      <form method="POST" action="/admin/api_keys"
+      <form method="POST" action="{{admin_api_keys_url}}"
             id="edit-form-{{forloop.counter}}">
         <input type="hidden" name="authorization_key"
                value="{{ authorization.key }}">

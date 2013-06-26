@@ -52,7 +52,7 @@ def to_authorization_params(param):
     return ret
 
 
-class ListApiKeys(utils.Handler):
+class ListApiKeys(utils.BaseHandler):
     """
     A handler for listing API keys for a particular domain.
     TODO(ryok): implement a search/filter and pagination feature.
@@ -65,14 +65,15 @@ class ListApiKeys(utils.Handler):
         nav_html = ('<a href="%s">%s</a> '
                     % (self.get_url('admin/api_keys'),
                        _('Create a new API key')))
-        user_email_with_tags = '<span class="email">%s</span>' % user.email
+        user_email_with_tags = '<span class="email">%s</span>' % user.email()
         return self.render('admin_api_keys_list.html',
                            nav_html=nav_html,
+                           admin_api_keys_url=self.get_url('/admin/api_keys'),
                            user=user, authorizations=authorizations,
                            user_email_with_tags=user_email_with_tags)
 
 
-class CreateOrUpdateApiKey(utils.Handler):
+class CreateOrUpdateApiKey(utils.BaseHandler):
     """A handler for create/update API keys."""
 
     def render_form(self, authorization=None, message=''):
@@ -94,7 +95,7 @@ class CreateOrUpdateApiKey(utils.Handler):
         return self.render(
             'admin_api_keys.html',
             user=user, target_key=authorization,
-            user_email_with_tags='<span class="email">%s</span>' % user.email,
+            user_email_with_tags='<span class="email">%s</span>' % user.email(),
             login_url=users.create_login_url(self.request.url),
             logout_url=users.create_logout_url(self.request.url),
             operation_name=operation_name, message=message,
