@@ -82,6 +82,10 @@ span.var {
   background: #ffe;
 }
 
+.end-multi-columns {
+  clear: both;
+}
+
 /* Language menu */
 
 div.languages {
@@ -231,21 +235,36 @@ body.facebook .link-separator {
   color: #888;
 }
 
-.main .action {
+.main .action-outer {
   width: 9em;
-  padding: 0.5em;
+  height: 70px;
   border-right: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
-  background: #bcf;
-  text-align: center;
-  vertical-align: middle;
+  padding: 0.5em;
 }
 
-.main .action:first-child {
+.main .action-outer.left {
   background: #bea;
+  float: left;
 }
 
-.main .action a {
+.main .action-outer.right {
+  background: #bcf;
+  float: right;
+}
+
+.main .action-inner {
+  width: 9em;
+  height: 70px;
+  /* "display: table-cell" to make vertical-align work.
+     Vertical centering doesn't work on IE 6/7 because it doesn't support
+     "display: table-cell". But it would be acceptable. */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.main .action-outer a {
   font-weight: bold;
 }
 
