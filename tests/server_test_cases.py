@@ -2871,6 +2871,7 @@ _read_profile_url2</pfif:profile_urls>
                       given_name='_search_given_name',
                       family_name='_search_2nd_family_name',
                       author_name='_search_2nd_author_name')
+        record_id_2 = self.s.doc.first('form').params['id']
         # Add a note for this 2nd person.
         self.s.submit(self.s.doc.first('form'),
                       author_made_contact='yes',
@@ -2896,7 +2897,7 @@ _read_profile_url2</pfif:profile_urls>
             configure_api_logging()
             doc = self.go('/haiti/api/search?key=search_key' +
                           '&q=_search_1st_family_name')
-            assert self.s.status not in [403,404]
+            assert self.s.status not in [403, 404]
             # verify we logged the search.
             verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
 
@@ -2906,6 +2907,16 @@ _read_profile_url2</pfif:profile_urls>
             # Check we also retrieved the first note and not the second one.
             assert '_search_1st_author_name' in doc.content
             assert '_search_2nd_author_name' not in doc.content
+
+            # Check that we can retrieve a person by record ID.
+            doc = self.go('/haiti/api/search?key=search_key&id=' + record_id_2)
+
+            # Make sure we return the second record and not the first one.
+            assert '_search_1st_family_name' not in doc.content
+            assert '_search_2nd_family_name' in doc.content
+            # Check we also retrieved the second note and not the first one.
+            assert '_search_1st_author_name' not in doc.content
+            assert '_search_2nd_author_name' in doc.content
 
             # Check that we can retrieve several persons matching a query
             # and check their notes are also retrieved.
