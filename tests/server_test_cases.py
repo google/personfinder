@@ -2865,7 +2865,6 @@ _read_profile_url2</pfif:profile_urls>
                       author_made_contact='yes',
                       text='this is text for first person',
                       author_name='_search_1st_note_author_name')
-        record_id_1 = self.s.doc.first('form').params['id']
         # Add a 2nd person with same given name but different family name.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.first('form'),
