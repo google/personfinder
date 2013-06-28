@@ -92,7 +92,6 @@ def verify_api_log(action, api_key='test_key', person_records=None,
         assert note_records == entry.note_records
     if notes_skipped:
         assert notes_skipped == entry.notes_skipped
-    return entry
 
 def text_all_logs():
     return '\n'.join(['UserActionLog: action=%s entity_kind=%s' % (
