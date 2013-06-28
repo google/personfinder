@@ -129,21 +129,23 @@ def fetch_records(parser, url, **params):
             continue
     raise RuntimeError('Failed to fetch %r after 5 attempts' % url)
 
-def download_file(parser, writer, url, key=None):
+def download_file(type, parser, writer, url, key=None):
     """Fetches and writes one batch of records."""
     start_time = time.time()
     records = fetch_records(parser, url, key=key)
     writer.write(records)
     speed = len(records)/float(time.time() - start_time)
-    log('Fetched %d (%.1f rec/s).\n' % (len(records), speed))
+    log('Fetched %d %s record%s (%.1f rec/s).\n' %
+        (len(records), type, ['s', ''][len(records) == 1], speed))
 
-def download_since(parser, writer, url, min_entry_date, key=None):
+def download_since(type, parser, writer, url, min_entry_date, key=None):
     """Fetches and writes batches of records repeatedly until all records
     with an entry_date >= min_entry_date are retrieved."""
     start_time = time.time()
     total = skip = 0
     while True:
-        log('Records with entry_date >= %s: ' % min_entry_date)
+        log('%s records with entry_date >= %s: ' %
+            (type.capitalize(), min_entry_date))
         records = fetch_records(parser, url, key=key, max_results=200,
                                 min_entry_date=min_entry_date, skip=skip)
         writer.write(records)
@@ -160,10 +162,10 @@ def main(*args):
     parser = optparse.OptionParser(usage='''%prog [options] <feed_url>
 
 Downloads the records in a PFIF Person or Note feed into an XML or CSV file.
-By default, this fetches the specified <feed_url> once and saves the contents.
-If you specify the --min_entry_date option, this will make multiple fetches
-as necessary to retrieve all the records with an entry_date >= min_entry_date.
-Examples:
+By default, fetches the specified <feed_url> once and saves only the Person
+records in it.  Specify --notes to get the Note records.  If you specify the
+--min_entry_date option, this will make multiple fetches as necessary to
+retrieve all the records with an entry_date >= min_entry_date.  Examples:
 
   # Make one request for recent Person records in the 'test-nokey' repository
   # and print the XML to stdout.  (This gets the last 200 entered records.)
@@ -252,9 +254,10 @@ Examples:
     writer = writers[format][type](file, fields=fields)
 
     if min_entry_date:
-        download_since(parser, writer, feed_url, min_entry_date, options.key)
+        download_since(type, parser, writer, feed_url, min_entry_date,
+                       options.key)
     else:
-        download_file(parser, writer, feed_url, options.key)
+        download_file(type, parser, writer, feed_url, options.key)
     writer.close()
 
 if __name__ == '__main__':
