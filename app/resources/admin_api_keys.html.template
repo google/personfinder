@@ -22,16 +22,12 @@
   <a href="{{login_url}}">{% trans "Sign in" %}</a>
 {% endif %}
 <p>{{nav_html|safe}}
-{% if message %}<div class="info"><strong>{{ message }}</strong></div>
+{% if message %}
+  <div class="info"><strong>{{ message }}</strong></div>
 {% endif %}
 <h2>Detailed information of an API key for {{ env.repo }}.{{env.parent_domain}}</h2>
 {% if target_key.key %}
-<script>
-</script>
-API key:
-<span id="actual_key">
-  {{ target_key.api_key }}
-</span>
+  API key: <span id="actual_key">{{ target_key.api_key }}</span>
 {% endif %}
 
 {% include "admin_api_key_form.html.template" %}

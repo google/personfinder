@@ -757,6 +757,54 @@ table.counts td {
   text-align: right;
 }
 
+/* API key management page */
+
+table.api-keys {
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+table.api-keys th, table.api-keys td {
+  border: 1px solid #999;
+  padding: 4px 4px;
+}
+
+table.api-keys th {
+  font-weight: normal;
+}
+  
+table.api-keys th.colgroup {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+table.api-keys th.contact.colgroup {
+  background: #5582dd;
+}
+
+table.api-keys th.permission.colgroup {
+  background: #555;
+}
+
+table.api-keys th.operation {
+  background: #A55;
+  color: #fff;
+}
+
+table.api-keys .contact, table.api-keys .contact a, table.api-keys .contact a:visited {
+  color: #04c;
+}
+
+table.api-keys .invalid_key td {
+  background: #CCC;
+}
+
+table.api-keys td.empty {
+  text-align: center;
+  border: none;
+}
+
 /* Import page */
 
 .import {

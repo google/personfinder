@@ -30,7 +30,8 @@ handlers:
 - url: .*/admin.*
   script: main.py
   login: admin
+- url: /admin/api_keys.*
+  script: admin_api_keys.py
+  secure: always
 - url: .*
   script: main.py
-
-#  secure: always

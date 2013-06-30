@@ -490,22 +490,16 @@ class Struct:
         return self.__dict__.get(name, default)
 
 
-def get_random_string(length):
-    source = ('abcdefghijklmnopqrstuvwxyz'
-              'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-              '1234567890'
-              '-_')
-    chars = []
-    for i in range(length):
-        chars.append(random.choice(source))
-    return ''.join(chars)
-
-
 # ==== Key management ======================================================
 
 def generate_random_key(length):
     """Generates a random key with given length."""
-    return ''.join(chr(random.randrange(256)) for i in range(length))
+    source = ('abcdefghijklmnopqrstuvwxyz'
+              'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+              '1234567890'
+              '-_')
+    rng = random.SystemRandom()
+    return ''.join(rng.choice(source) for i in range(length))
 
 def get_secret_key(name='reveal', length=20):
     """Gets the secret key for authorizing reveal operations etc."""
@@ -526,7 +520,7 @@ def require_api_key_management_permission(handler_method):
     request.
 
     Usage:
-    class SomeHandler(utils.Handler):
+    class SomeHandler(utils.BaseHandler):
         @utils.require_api_key_management_permission
         def get(self):
             # ....
@@ -535,14 +529,15 @@ def require_api_key_management_permission(handler_method):
     def inner(*args, **kwargs):
         handler = args[0]
         user = users.get_current_user()
-        if users.is_current_user_admin() or \
-                (user and handler.config.key_management_operators and
-                 user.email() in handler.config.key_management_operators):
+        if (users.is_current_user_admin() or
+            (user and handler.config.key_management_operators and
+             user.email() in handler.config.key_management_operators)):
             return handler_method(*args, **kwargs)
         else:
             return handler.redirect(
                 users.create_login_url(handler.request.url))
     return inner
+
 
 # ==== Base Handler ============================================================
 

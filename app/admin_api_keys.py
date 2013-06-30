@@ -21,6 +21,7 @@ from google.appengine.api import users
 from model import Authorization, ApiKeyManagementLog
 import utils
 
+from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
 """
@@ -57,6 +58,10 @@ class ListApiKeys(utils.BaseHandler):
     A handler for listing API keys for a particular domain.
     TODO(ryok): implement a search/filter and pagination feature.
     """
+
+    https_required = True
+    ignore_deactivation = True
+
     @utils.require_api_key_management_permission
     def get(self):
         user = users.get_current_user()
@@ -64,8 +69,9 @@ class ListApiKeys(utils.BaseHandler):
         authorizations = q.fetch(KEYS_PER_PAGE)
         nav_html = ('<a href="%s">%s</a> '
                     % (self.get_url('admin/api_keys'),
-                       _('Create a new API key')))
-        user_email_with_tags = '<span class="email">%s</span>' % user.email()
+                       escape(_('Create a new API key'))))
+        user_email_with_tags = ('<span class="email">%s</span>'
+                % escape(user.email()))
         return self.render('admin_api_keys_list.html',
                            nav_html=nav_html,
                            admin_api_keys_url=self.get_url('/admin/api_keys'),
@@ -76,14 +82,17 @@ class ListApiKeys(utils.BaseHandler):
 class CreateOrUpdateApiKey(utils.BaseHandler):
     """A handler for create/update API keys."""
 
+    https_required = True
+    ignore_deactivation = True
+
     def render_form(self, authorization=None, message=''):
         """Display a form for create/update Authorization"""
         user = users.get_current_user()
         if authorization:
+            operation_name = _('Update an existing key')
             nav_html = ('<a href="%s">%s</a> '
                         % (self.get_url('admin/api_keys'),
-                           _('Create a new API key')))
-            operation_name = 'Update an existing key'
+                           escape(_('Create a new API key'))))
         else:
             authorization = Authorization.DEFAULT_SETTINGS
             operation_name = _('Create a new API key')
@@ -91,11 +100,13 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
 
         nav_html += ('<a href="%s">%s</a>'
                      % (self.get_url('admin/api_keys/list'),
-                        _('List API keys')))
+                        escape(_('List API keys'))))
+        user_email_with_tags = ('<span class="email">%s</span>'
+                % escape(user.email()))
         return self.render(
             'admin_api_keys.html',
             user=user, target_key=authorization,
-            user_email_with_tags='<span class="email">%s</span>' % user.email(),
+            user_email_with_tags=user_email_with_tags,
             login_url=users.create_login_url(self.request.url),
             logout_url=users.create_logout_url(self.request.url),
             operation_name=operation_name, message=message,
@@ -129,9 +140,8 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
 
         # Handle a form submission from list page
         if self.request.get('edit_form'):
-            try:
-                authorization = db.get(self.request.get('authorization_key'))
-            except Exception:
+            authorization = db.get(self.request.get('authorization_key'))
+            if not authorization:
                 return self.error(404, _('No such Authorization entity.'))
             return self.render_form(authorization)
 
@@ -139,17 +149,18 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
         if not (self.params.contact_name and 
                 self.params.contact_email and
                 self.params.organization_name):
-            return self.error(400,
-                              _('Please fill in all the required fields.'))
+            return self.error(400, _('Please fill in all the required fields.'))
 
         original_key = self.request.get('key')
         if original_key:
             # just override the existing one
             existing_authorization = db.get(original_key)
-            key_str = existing_authorization.key().name().split(':')[1]
+            if not existing_authorization:
+                return self.error(404, _('No such Authorization entity.'))
+            key_str = existing_authorization.api_key
             action = ApiKeyManagementLog.UPDATE
         else:
-            key_str = utils.get_random_string(API_KEY_LENGTH)
+            key_str = utils.generate_random_key(API_KEY_LENGTH)
             action = ApiKeyManagementLog.CREATE
 
         authorization = Authorization.create(
