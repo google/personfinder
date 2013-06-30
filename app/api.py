@@ -239,22 +239,28 @@ class Search(utils.BaseHandler):
         pfif_version = self.params.version
 
         # Retrieve parameters and do some sanity checks on them.
-        query_string = self.request.get("q")
+        record_id = self.request.get('id')
+        query_string = self.request.get('q')
         max_results = min(self.params.max_results or 100, HARD_MAX_RESULTS)
 
-        if not query_string:
-            return self.error(400, 'Missing q parameter')
-
-        # Perform the search.
-        results = None
-        query = TextQuery(query_string)
-        if self.config.external_search_backends:
-            results = external_search.search(self.repo, query, max_results,
-                self.config.external_search_backends)
-        # External search backends are not always complete. Fall back to the
-        # original search when they fail or return no results.
-        if not results:
-            results = indexing.search(self.repo, query, max_results)
+        results = []
+        if record_id:
+            # Search by record ID (always returns just 1 result or nothing).
+            person = model.Person.get(self.repo, record_id)
+            if person:
+                results = [person]
+        elif query_string:
+            # Search by query words.
+            query = TextQuery(query_string)
+            if self.config.external_search_backends:
+                results = external_search.search(self.repo, query, max_results,
+                    self.config.external_search_backends)
+            # External search backends are not always complete. Fall back to
+            # the original search when they fail or return no results.
+            if not results:
+                results = indexing.search(self.repo, query, max_results)
+        else:
+            return self.error(400, 'Neither id nor q parameter specified')
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
