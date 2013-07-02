@@ -31,21 +31,7 @@ from recaptcha.client import captcha
 from model import Secret
 from utils import *
 
-
-# ==== Key management ======================================================
-
-def generate_random_key():
-    """Generates a random 20-byte key."""
-    return ''.join(chr(random.randrange(256)) for i in range(20))
-
-def get_reveal_key():
-    """Gets the secret key for authorizing reveal operations."""
-    secret = Secret.get_by_key_name('reveal')
-    if not secret:
-        secret = Secret(key_name='reveal', secret=generate_random_key())
-        secret.put()
-    return secret.secret
-
+REVEAL_KEY_LENGTH = 20
 
 # ==== Signature generation and verification ===============================
 
@@ -67,7 +53,7 @@ def hmac(key, data, hash=sha1_hash):
 def sign(data, lifetime=600):
     """Produces a limited-time signature for the given data."""
     expiry = int(time.time() + lifetime)
-    key = get_reveal_key()
+    key = get_secret_key(name='reveal', length=REVEAL_KEY_LENGTH)
     return hmac(key, (expiry, data)).encode('hex') + '.' + str(expiry)
 
 def verify(data, signature):
@@ -77,7 +63,7 @@ def verify(data, signature):
         mac, expiry = mac.decode('hex'), int(expiry)
     except (TypeError, ValueError):
         return False
-    key = get_reveal_key()
+    key = get_secret_key(name='reveal', length=REVEAL_KEY_LENGTH)
     return time.time() < expiry and hmac(key, (expiry, data)) == mac
 
 def make_reveal_url(handler, content_id):
