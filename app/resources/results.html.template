@@ -20,6 +20,15 @@
       function on_result_item_click(event, elem) {
         if (event.button == 0) {  // left button
           // Makes the whole result item div clickable.
+          try {
+            var pid = elem.getAttribute('data-url');
+            var status = elem.getAttribute('data-status');
+            var match = pid.match(/id=([^&]+)/);
+            if (match) { pid = decodeURIComponent(match[1]); }
+            pageTracker._trackEvent('click', status, pid);
+          } catch(err) {
+            if (window['console']) { console.log(err); }
+          }
           location.href = elem.getAttribute("data-url");
         }
       }
@@ -73,7 +82,7 @@
           <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
         {% endif %}
       {% endifchanged %}
-      <div class="resultItem" data-url="{{result.view_url}}"
+      <div class="resultItem" data-url="{{result.view_url}}" data-status="{{result.latest_status}}"
           onclick="on_result_item_click(event, this);">
         {# No whitespace inside .resultImageContainer. #}
         {# Image width/height are specified as attributes here as well as #}
