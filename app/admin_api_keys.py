@@ -24,12 +24,6 @@ import utils
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
-"""
-The string representation for a key of an Authorization entity should
-not be in any URL because the representation of db.Key can be
-de-serialized, thus it can reveal the raw api key, so we use an
-encrypted key of an Authorization entity for the url params.
-"""
 
 API_KEY_LENGTH = 16
 KEYS_PER_PAGE = 50
