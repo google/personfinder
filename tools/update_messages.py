@@ -106,8 +106,8 @@ def update_po(locale, new_msgids, header_comment):
     # Fix cases where message.id starts with '\n' but message.string doesn't.
     # django_admin('compilemessages') fails with an error for such cases.
     for message in translations:
-        if (re.search(ur'^\n', message.id) and
-                not re.search(ur'^\n', message.string)):
+        if (message.id.startswith(u'\n') and
+                not message.string.startswith(u'\n')):
             message.string = u'\n' + message.string
 
     translations.header_comment = header_comment
