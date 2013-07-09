@@ -35,7 +35,9 @@ If no arguments are specified, -e '.py,.html,.txt,.template' is assumed.
 
 import datetime
 import os
+import StringIO
 import sys
+import re
 
 from babel.messages import pofile
 from django.core import management
@@ -52,6 +54,30 @@ def get_po_filename(locale):
     return os.path.join(LOCALE_DIR, locale, 'LC_MESSAGES', 'django.po')
 
 
+def read_po(file):
+    """pofile.read_po() with a bug workaround.
+
+    pofile.read_po() produces an incorrect string if either msgid or msgstr
+    spans multiple lines and the first line content string is not empty e.g.
+      msgid "hoge "
+      "foo"
+    This function workarounds this bug by converting this to:
+      msgid ""
+      "hoge "
+      "foo"
+    """
+    converted = ''
+    for line in file:
+        line = line.rstrip('\n')
+        m = re.search(r'^(msgid|msgstr) "(.+)"$', line)
+        if m:
+            converted += '%s ""\n' % m.group(1)
+            converted += '"%s"\n' % m.group(2)
+        else:
+            converted += '%s\n' % line
+    return pofile.read_po(StringIO.StringIO(converted))
+
+
 def write_clean_po(filename, catalog):
     """Writes out a .po file in a canonical way, to minimize spurious diffs."""
     catalog.creation_date = datetime.datetime(2000, 1, 1, 0, 0, 0)
@@ -65,13 +91,25 @@ def update_po(locale, new_msgids, header_comment):
     """Updates a .po file to contain the given set of messages and the given
     header comment, and returns the number of missing translations."""
     filename = get_po_filename(locale)
-    translations = pofile.read_po(open(filename))
-    for message in translations:  # remove unused messages
+    translations = read_po(open(filename))
+
+    # Remove unused messages.
+    for message in translations:
         if message.id and message.id not in new_msgids:
             del translations[message.id]
-    for id in new_msgids:  # add new messages
+
+    # Add new messages.
+    for id in new_msgids:
         if id and id not in translations:
             translations.add(id, '')
+
+    # Fix cases where message.id starts with '\n' but message.string doesn't.
+    # django_admin('compilemessages') fails with an error for such cases.
+    for message in translations:
+        if (message.id.startswith(u'\n') and
+                not message.string.startswith(u'\n')):
+            message.string = u'\n' + message.string
+
     translations.header_comment = header_comment
     write_clean_po(filename, translations)
     return len([message for message in translations
@@ -87,23 +125,25 @@ def django_admin(*args):
 
 
 if __name__ == '__main__':
-    args = sys.argv[1:] or ['-e', '.py,.html,.txt,.template']
+    args = sys.argv[1:]
     if '-h' in args or '--help' in args:
         print __doc__
         sys.exit(1)
     force = '-f' in args or '--force' in args
-    args = [arg for arg in args if arg not in ['-f', '--force']]
+    makemessages_args = [arg for arg in args if arg not in ['-f', '--force']]
+    if not makemessages_args:
+        makemessages_args = ['-e', '.py,.html,.txt,.template']
 
     # Get the set of messages in the existing English .po file.
     en_filename = get_po_filename('en')
-    old_template = pofile.read_po(open(en_filename))
+    old_template = read_po(open(en_filename))
     old_msgids = set(message.id for message in old_template)
 
     # Run makemessages to update the English .po file.
-    django_admin('makemessages', '-l', 'en', *args)
+    django_admin('makemessages', '-l', 'en', *makemessages_args)
 
     # Get the set of messages in the new English .po file.
-    new_template = pofile.read_po(open(en_filename))
+    new_template = read_po(open(en_filename))
     new_msgids = set(message.id for message in new_template)
 
     # Write the English .po file in sorted order without file references.
