@@ -32,6 +32,15 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +58,19 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +88,19 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -78,6 +113,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -86,12 +129,19 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -99,6 +149,9 @@ msgid ""
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -106,6 +159,9 @@ msgid ""
 "      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -114,6 +170,10 @@ msgid ""
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -121,6 +181,9 @@ msgid ""
 "      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -129,12 +192,19 @@ msgid ""
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Confirm your note\n"
+"    "
 
 msgid ""
 "\n"
@@ -142,6 +212,10 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -152,6 +226,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -163,6 +243,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
 
 msgid ""
 "\n"
@@ -173,6 +260,13 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
 
 msgid ""
 "\n"
@@ -184,6 +278,14 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
 
 msgid ""
 "\n"
@@ -192,6 +294,11 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
 
 msgid ""
 "\n"
@@ -200,6 +307,11 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -210,6 +322,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
 
 #, python-format
 msgid ""
@@ -220,6 +338,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
 
 #, python-format
 msgid ""
@@ -227,6 +351,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 
 #, python-format
 msgid ""
@@ -237,6 +364,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -250,6 +383,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
 
 #, python-format
 msgid ""
@@ -263,6 +405,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
 
 #, python-format
 msgid ""
@@ -276,12 +427,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
 
 #, python-format
 msgid ""
 "\n"
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -294,6 +456,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klike a montre)"
@@ -305,59 +475,56 @@ msgid "A message for this person or others seeking this person"
 msgstr "Yon mesaj pou moun sa a oswa pou lòt moun ki ap chechè moun sa a"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
+msgstr "About 1 month (30 days) from now"
 
 msgid "About 1 year (360 days) from now"
-msgstr ""
+msgstr "About 1 year (360 days) from now"
 
 msgid "About 2 months (60 days) from now"
-msgstr ""
+msgstr "About 2 months (60 days) from now"
 
 msgid "About 3 months (90 days) from now"
-msgstr ""
+msgstr "About 3 months (90 days) from now"
 
 msgid "About 6 months (180 days) from now"
-msgstr ""
+msgstr "About 6 months (180 days) from now"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "About Google Person Finder"
 
 msgid "About you (required)"
 msgstr "Enfòmasyon sou ou menm (obligatwa)"
 
 msgid "Administration"
-msgstr ""
+msgstr "Administration"
 
 msgid "Age"
 msgstr "Laj"
 
-#, fuzzy
 msgid "Alternate family names"
 msgstr "Non fanmi li"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternate given names"
 
-#, fuzzy
 msgid "Alternate names"
 msgstr "Non lari a"
 
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Are you sure this note isn't spam?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Are you sure you want to mark this note as spam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Are you sure you want to restore this record from deletion?"
 
-#, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "Ki dènye nouvèl sou moun sa"
 
@@ -371,7 +538,7 @@ msgid "Author's phone number"
 msgstr "Nimewo telefòn otè a"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Authorization key"
 
 msgid "Back to results list"
 msgstr "Retounen sou komansman"
@@ -380,11 +547,11 @@ msgid "Back to start"
 msgstr "Retounen sou komansman"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV file"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Can not find note with id %(id)s"
 
 msgid "Cancel"
 msgstr "Anile"
@@ -407,10 +574,10 @@ msgstr ""
 "site web"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Create a new record"
 
 msgid "Create a new record for"
 msgstr "Kreye yon nouvo dosye pou"
@@ -419,7 +586,7 @@ msgid "Create a new record for a missing person"
 msgstr "Kreye yon nouvo dosye pou yon moun ki manke"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Crisis events"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -431,14 +598,12 @@ msgstr "Dat lan pa kapab nan lavni. Tanpri retounen e eseye ankò."
 msgid "Date of birth"
 msgstr "Dat nesans"
 
-#, fuzzy
 msgid "Delete this record"
 msgstr "Sere dosye sa a"
 
 msgid "Describe how to identify this person."
 msgstr "Dekri kouman ou ta idantifye moun sa a."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
 msgstr "Dekri kouman ou ta idantifye moun sa a."
 
@@ -446,18 +611,17 @@ msgid "Description"
 msgstr "Deskripsyon"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Desktop version"
 
 msgid "Developers"
 msgstr "Développeurs"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Disable notes on this record"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Does this person have profile pages at other websites?"
 
-#, fuzzy
 msgid "Download the sound as MP3"
 msgstr "Telechaje nouvo enfomasyon"
 
@@ -468,16 +632,16 @@ msgid "E-mail address"
 msgstr "Email"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
 msgstr "Intégration de l'application"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Enable notes on this record"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Mete tankou ANE–MWA-JOU"
@@ -488,29 +652,25 @@ msgstr "Antre non moun nan ak tout non fanmi li"
 msgid "Enter the person's name or parts of the name."
 msgstr "Antre non moun nan oswa yo pati nan non li."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Antre non moun nan oswa yo pati nan non li."
 
-#, fuzzy
 msgid "Enter the person's name."
 msgstr "Antre non moun nan ak tout non fanmi li"
 
 msgid "Expiry"
-msgstr ""
+msgstr "Expiry"
 
-#, fuzzy
 msgid "Expiry date of this record"
 msgstr "Sere dosye sa a"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Extend expiration date by %(extension_days)s days"
 
 msgid "Family name"
 msgstr "Non fanmi li"
 
-#, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Ki dènye nouvèl sou moun sa"
 
@@ -521,18 +681,20 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Full name"
 
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Get a new challenge"
 
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Get a visual challenge"
 
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Get an audio challenge"
 
 msgid "Given name"
 msgstr "Premye non li"
@@ -540,22 +702,21 @@ msgstr "Premye non li"
 msgid "Google Person Finder"
 msgstr "Google Chèche Moun"
 
-#, fuzzy
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Eske ou pale ak moun sa a APRÈ tranbleman tè a? (obligatwa)"
 
 msgid "Help"
-msgstr ""
+msgstr "Help"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr ""
+msgstr "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 
 msgid "Hide Map"
 msgstr "Kache kat la"
 
 msgid "Hide note"
-msgstr ""
+msgstr "Hide note"
 
 msgid "Home Address"
 msgstr "Adrès lakay li"
@@ -579,10 +740,10 @@ msgid "I am this person"
 msgstr "Mwen se moun sa"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "I do not want any more updates on this record."
 
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "I do not want my information online anymore."
 
 msgid "I have information about someone"
 msgstr "Mwen genyen enfòmasyon sou yon moun"
@@ -596,16 +757,14 @@ msgstr "Mwen gen nouvèl ke moun sa an vi"
 msgid "I have received information that this person is dead"
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#, fuzzy
 msgid "I have received spam due to this note."
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#, fuzzy
 msgid "I have received spam."
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "I prefer not to specify."
 
 msgid "I'm looking for someone"
 msgstr "Mwen ap chèche yon moun"
@@ -631,24 +790,30 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Si ou genyen foto moun sa ajoute li oswa bay URL la."
 
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Incorrect.  Try again."
 
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Invalid e-mail address. Please try again."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Language selection"
 
 msgid "Last known location"
 msgstr "Denye kote li te ye"
@@ -657,10 +822,10 @@ msgid "Link"
 msgstr "Lyen"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Link to profile page"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Make dosye kom doub"
@@ -680,11 +845,13 @@ msgstr "Email aktyèl moun ki manke a"
 msgid "Missing person's current phone number"
 msgstr "Telefòn aktyèl moun ki manke nan"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
-msgstr "Konyen an ou ka jwen plis enfòmasyon pou developè"
+msgstr ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -699,7 +866,6 @@ msgstr "Non"
 msgid "Name (required)"
 msgstr "Non (obligatwa)"
 
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
@@ -711,51 +877,53 @@ msgstr "Non"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "No author email for record %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "No messages are found registered to the carrier's message board service."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr ""
+msgstr "No note with ID: %(id_str)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "No notes have been posted"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr ""
+msgstr "No person with ID: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Pa gen okenn rezilta pou"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Not authorized to post notes with the status \"believed_dead\"."
 
 msgid "Not spam"
-msgstr ""
+msgstr "Not spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Note author"
 
 msgid "Note text"
-msgstr ""
+msgstr "Note text"
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Notes for this person"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Number or range (e.g. 20-30)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
 
 msgid "Original URL"
 msgstr "URL orijinal"
@@ -784,11 +952,15 @@ msgstr ""
 "ATANSYON: Tout enfòmasyon ou mete ap la pou tout piblik la wè e nenpòt "
 "moun ka itilize li.  Google pa revize ni verifye sous de enfòmasyon yo."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Chèche Moun"
@@ -813,7 +985,7 @@ msgid "Physical characteristics"
 msgstr "Karaktè fizik"
 
 msgid "Play the sound again"
-msgstr ""
+msgstr "Play the sound again"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -826,22 +998,22 @@ msgid "Please check whether it matches the person you were planning to report."
 msgstr "Tanpri gade pou ou wè si li match moun ou ta pral repòte a."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Please confirm your e-mail address to subscribe to updates"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Please enter your e-mail address to subscribe to updates"
 
 msgid "Please explain why you think these are the same person"
 msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun"
 
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Please fill in all the required fields."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Please fill in your email address."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Please provide an valid email address."
 
 msgid "Possible duplicates"
 msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
@@ -856,18 +1028,17 @@ msgid "Proceed"
 msgstr "Kontinye"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profile Pages"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profile page"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Provide information"
 
 msgid "Provide information about this person"
 msgstr "Bay enfomasyon moun sa"
 
-#, fuzzy
 msgid "Provided by:"
 msgstr "Moun ki afiche li a"
 
@@ -875,10 +1046,10 @@ msgid "Province or state"
 msgstr "Pwovens oswa depatman"
 
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Reason for deletion:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Reason for disabling notes:"
 
 msgid "Records Similar to"
 msgstr "Dosye sanble a"
@@ -888,20 +1059,20 @@ msgstr "Dosye seleksyone"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Records with names and addresses matching \"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 msgid "Report spam"
-msgstr ""
+msgstr "Report spam"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Antre non moun nan ak tout non fanmi li"
+msgstr "Return to the record for %(full_name)s."
 
 msgid "Reveal note"
-msgstr ""
+msgstr "Reveal note"
 
 msgid "Save this record"
 msgstr "Sere dosye sa a"
@@ -914,16 +1085,16 @@ msgstr "Chèche moun sa"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Select a website to add a profile page..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleksyone jiska 3 dosye pou make kòm doub:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Send email"
 
 msgid "Sex"
 msgstr "Fi oswa Gason"
@@ -935,10 +1106,10 @@ msgid "Show sensitive information"
 msgstr "Montre enfòmasyon ki sansib"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Sign in"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Sign out"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
@@ -949,7 +1120,6 @@ msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
 msgid "Someone has reported that this person is missing"
 msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
 
-#, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Bay enfomasyon moun sa"
 
@@ -972,24 +1142,23 @@ msgid "Street name only, no number"
 msgstr "Non lari a sèlman,  pa ekri nimewo kay la"
 
 msgid "Subscribe"
-msgstr ""
+msgstr "Subscribe"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr ""
+msgstr "Subscribe to updates about %(full_name)s"
 
-#, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Ki dènye nouvèl sou moun sa"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Switch to address"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Chanje pou mòd make doub"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Switch to lat/long"
 
 msgid "Switch to normal view mode"
 msgstr "Chanje pou mòd we nòmal"
@@ -1001,7 +1170,7 @@ msgid "Terms of Service"
 msgstr "Kontra"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
@@ -1016,40 +1185,43 @@ msgstr ""
 "eseye ankò."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "The author has disabled notes on this record."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "The author has disabled status updates on this record."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
 
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "The reason this note is being marked as spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "The record cannot be extended."
 
 msgid "The record has been deleted."
-msgstr ""
+msgstr "The record has been deleted."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "The record has been extended to %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "The token %(token)s was invalid"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "The token %(token)s was invalid."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1073,33 +1245,32 @@ msgstr ""
 "enkonvenyan sa a.  Administratè nou yo pral egzaminen kote pwoblèm lan "
 "soti, men verifye, tanpri, si fòma demann ou an korèk."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
-msgstr "Ce gadget est disponible sous la "
+msgstr ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
 
 msgid "This is a new record."
 msgstr "Sa a se yon nouvo dosye."
 
-#, fuzzy
 msgid "This link is invalid."
 msgstr "Dosye sa se doub de"
 
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "This note has been marked as spam."
 
-#, fuzzy
 msgid "This note is inappropriate."
 msgstr "Dosye sa se doub de"
 
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "This note is incorrect or untrue."
 
 msgid "This note is spam."
-msgstr ""
+msgstr "This note is spam."
 
-#, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "Moun nou poko jwenn nan antre an kontak avèk yon lot moun"
 
@@ -1107,10 +1278,10 @@ msgid "This person has posted a message"
 msgstr "Moun sa poste mesaj yon mesaj"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr ""
+msgstr "This person's entry does not exist or has been deleted."
 
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "This record has served its purpose."
 
 msgid "This record is a duplicate of"
 msgstr "Dosye sa se doub de"
@@ -1118,11 +1289,9 @@ msgstr "Dosye sa se doub de"
 msgid "This record is copied from another source."
 msgstr "Nou kopye dosye sa de yon lòt sous de enfomasyon."
 
-#, fuzzy
 msgid "This record is inappropriate."
 msgstr "Dosye sa se doub de"
 
-#, fuzzy
 msgid "This record is spam."
 msgstr "Dosye sa se doub de"
 
@@ -1130,15 +1299,17 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "To attach a photo to this note, upload it or enter its URL."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "To delete your data, access Person Finder from your desktop."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "To unsubscribe, follow this link"
 
 msgid "To view or add information, select a name below."
 msgstr "Pou ou sa wè oswa ajoute enfomasyon, chawzi youn nan non ki anba yo."
@@ -1147,15 +1318,17 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Type an address."
 
 msgid "Type the two words:"
-msgstr ""
+msgstr "Type the two words:"
 
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Type what you hear:"
 
 msgid "URL"
 msgstr "URL"
@@ -1167,16 +1340,16 @@ msgid "Unspecified"
 msgstr "Pa spesifie"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Ajoute"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Upload CSV files"
 
 msgid "View the record"
-msgstr ""
+msgstr "View the record"
 
 msgid "We have nothing matching your search."
 msgstr "Nou pa jwen anyen ki match rechèch ou a."
@@ -1185,7 +1358,7 @@ msgid "What is this person's name?"
 msgstr "Kouman moun lan rele?"
 
 msgid "When should this record disappear?"
-msgstr ""
+msgstr "When should this record disappear?"
 
 msgid "Where did this information come from?"
 msgstr "Kote enfòmasyon sa a sòti? "
@@ -1197,26 +1370,27 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
 
 msgid "Yes"
 msgstr "Wi"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Yes, ask the record author to disable notes"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Yes, ask the record author to enable notes"
 
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Yes, delete the record"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Yes, disable notes on this record."
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Yes, extend the record"
 
-#, fuzzy
 msgid "Yes, restore this record"
 msgstr "Sere dosye sa a"
 
@@ -1224,55 +1398,58 @@ msgid "Yes, these are the same person"
 msgstr "Wi, moun sa yo se menm"
 
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Yes, update the note"
 
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "You are already subscribed. "
 
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "You are already unsubscribed."
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "You are not currently signed in."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "You can view the full record at %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr ""
+msgstr "You have successfully subscribed."
 
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "You have successfully unsubscribed."
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
 
 msgid "Your e-mail address"
 msgstr "Email ou"
 
-#, fuzzy
 msgid "Your e-mail address:"
 msgstr "Email ou"
 
 msgid "Your email"
-msgstr ""
+msgstr "Your email"
 
 msgid "Your name"
 msgstr "Non ou"
@@ -1298,61 +1475,63 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Confirm your note on \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Deletion notice for \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Disable notes on \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Enable notes on \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Notes are now enabled on \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr ""
+msgstr "[Person Finder] Record restoration notice for \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr ""
+msgstr "[Person Finder] Status update for %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
+msgstr "[Person Finder] You are subscribed to status updates for %(full_name)s"
 
 msgid "at"
-msgstr ""
+msgstr "at"
 
 msgid "female"
 msgstr "fi"
 
 msgid "in test mode"
-msgstr ""
+msgstr "in test mode"
 
 msgid "male"
 msgstr "gason"
 
 msgid "on"
-msgstr ""
+msgstr "on"
 
 msgid "other"
 msgstr "lòt"

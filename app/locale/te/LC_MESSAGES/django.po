@@ -1,0 +1,1564 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  రికార్డ్ రచయిత అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
+"ప్రారంభించబడ్డాయని\n"
+"  నిర్ధారించడం కోసం, రికార్డ్ రచయితకు నిర్ధారణ సందేశం పంపబడుతుంది.\n"
+"  మీరే రచయిత అయితే, దిగువ బటన్‌‍ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌ను "
+"తనిఖీ చేయండి.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ప్రియమైన %(author_name)s,\n"
+"\n"
+"ఒక వినియోగదారు %(full_name)s కోసం రికార్డ్‌లో గమనికలను ప్రారంభించాలని\n"
+"అభ్యర్థించారు.\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు రచయితగా రికార్డ్ చేయబడింది. ఈ "
+"రికార్డ్‌లో గమనికలను\n"
+"ప్రారంభించడానికి, 3 రోజుల్లోగా ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ప్రియమైన %(author_name)s,\n"
+"\n"
+"ఒక వినియోగదారు %(full_name)s కోసం రికార్డ్‌లో గమనికలను మీరు నిలిపివేయాలని"
+"\n"
+"అభ్యర్థించారు.\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు రచయితగా రికార్డ్ చేయబడింది. ఈ "
+"రికార్డ్‌లో గమనికలను\n"
+"నిలిపివేయడానికి, 3 రోజుల్లోగా ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ప్రియమైన %(author_name)s,\n"
+"మీరు \"%(full_name)s\" కోసం రికార్డ్‌లో గమనికను నమోదు చేసారు.  \n"
+"మీ గమనికను ప్రచురించడానికి, 3 రోజుల్లోగా ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    హెచ్చరిక: ఈ రికార్డ్‌కు గడువు ముగింపు తేదీ "
+"%(expiration_days)s రోజుల కంటే తక్కువగా ఉంది.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    హెచ్చరిక: ఈ రికార్డ్ గడువు ఒక రోజులో ముగుస్తుంది.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు \"%(full_name)s\" కోసం రికార్డ్‌ను ఖచ్చితంగా "
+"తొలగించాలనుకుంటున్నారా?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు \"%(full_name)s\"కు సంబంధించి గమనికలను ఖచ్చితంగా "
+"నిలిపివేయాలనుకుంటున్నారా?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు \"%(full_name)s\" యొక్క రికార్డ్‌లో గమనికలను ఖచ్చితంగా "
+"నిలిపివేయాలనుకుంటున్నారా?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు \"%(full_name)s\"కు సంబంధించి గమనికలను ఖచ్చితంగా "
+"ప్రారంభించాలనుకుంటున్నారా?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు \"%(full_name)s\" రికార్డ్‌కు గడువు ముగింపు తేదీని ఖచ్చితంగా "
+"పొడిగించాలనుకుంటున్నారా?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      మీ గమనికను నిర్ధారించండి\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు తొలగింపును కొనసాగిస్తే,\n"
+"      ఈ రికార్డ్‌ను ఇకపై ఈ సైట్‌లో శోధించలేరు లేదా వీక్షించలేరు.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      మీరు దీన్ని శాశ్వతంగా తొలగించాలనుకుంటే,\n"
+"      దయచేసి వాస్తవ మూలాన్ని సంప్రదించండి.\n"
+"      మీరు వాస్తవ రికార్డ్‌ను %(begin_tag)s%(source_name)s%(end_tag)sలో\n"
+"      వీక్షించవచ్చు.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      మీరు నమోదు చేసిన URL చెల్లుబాటు అయ్యే %(website)s ప్రొఫైల్ URLగా "
+"కనిపించడం లేదు.\n"
+"      దయచేసి %(website)sలో ఈ వ్యక్తి యొక్క ప్రొఫైల్ పేజీకి వెళ్లి, ఆపై ఆ "
+"URLను కాపీ చేసి,\n"
+"      ఇక్కడ అతికించండి.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      ఈ రికార్డ్ మరో మూలానికి చెందిన రికార్డ్ యొక్క కాపీ.\n"
+"      మీరు రికార్డ్‌ను ఇక్కడ తొలగించవచ్చు,\n"
+"      కానీ దయచేసి మేము తర్వాత వాస్తవ మూలం\n"
+"      నుండి దీని యొక్క మరో కాపీని పొందవచ్చని గమనించండి.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    రికార్డ్ రచయిత అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
+"ప్రారంభించబడ్డాయని\n"
+"    నిర్ధారించడం కోసం, రికార్డ్ రచయితకు నిర్ధారణ సందేశం పంపబడుతుంది.\n"
+"    మీరే రచయిత అయితే, దిగువ బటన్‌ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌‍ను "
+"తనిఖీ చేయండి.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  రికార్డ్ ఇప్పటికీ ఈ సైట్‌లో కనిపిస్తుంది, కానీ దీనిలో ఎవరూ తదుపరి "
+"గమనికలను\n"
+"  పోస్ట్ చేయలేరు.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  మీ గమనికను పోస్ట్ చేయడానికి, దయచేసి దిగువ మీ ఇ-మెయిల్ చిరునామాను నమోదు "
+"చేసి,\n"
+"  మీరు స్వీకరించే నిర్ధారణ లింక్‌ను అనుసరించండి.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"ఒక వినియోగదారు %(site_url)sలో \"%(full_name)s\" కోసం\n"
+"రికార్డ్‌ను తొలగించారు.\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌లో ఒక గమనిక యొక్క రచయితగా రికార్డ్\n"
+"చేయబడినందున మేము తొలగింపు గురించి మీకు తెలియజేస్తున్నాము.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"ఒక వినియోగదారు %(site_url)sలో \"%(full_name)s\" కోసం\n"
+"రికార్డ్‌ను తొలగించారు.\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్ యొక్క రచయితగా రికార్డ్\n"
+"చేయబడినందున మేము తొలగింపు గురించి మీకు తెలియజేస్తున్నాము.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"%(days_until_deletion)s రోజుల తర్వాత, రికార్డ్ శాశ్వతంగా తొలగించబడుతుంది."
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"గమనిక: మీరు ఈ రికార్డ్ పొరపాటున తొలగించబడినట్లు భావిస్తే, దీన్ని\n"
+"పునరుద్ధరించడం కోసం తదుపరి %(days_until_deletion)s రోజుల్లోగా ఈ లింక్‌ను "
+"అనుసరించాలి:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"ఇప్పుడు \"%(full_name)s\" కోసం రికార్డ్‌లో గమనికలు నిలిపివేయబడ్డాయి.  "
+"రికార్డ్‌ను వీక్షించడానికి,\n"
+"ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ వ్యక్తి రికార్డ్‌తో లేదా రికార్డ్‌‍లోని గమనికతో\n"
+"అనుబంధించబడినందున మేము మీకు తెలియజేస్తున్నాము.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"ఇప్పుడు \"%(full_name)s\" కోసం రికార్డ్‌లో గమనికలు ప్రారంభించబడ్డాయి.  "
+"రికార్డ్‌ను వీక్షించడానికి,\n"
+"ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ వ్యక్తి రికార్డ్‌తో లేదా రికార్డ్‌‍లోని గమనికతో\n"
+"అనుబంధించబడినందున మేము మీకు తెలియజేస్తున్నాము.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" కోసం రికార్డ్ యొక్క రచయిత\n"
+"(మునుపు తొలగించబడింది) రికార్డ్‌ను పునరుద్ధరించారు.  రికార్డ్‌ను\n"
+"వీక్షించడానికి, ఈ లింక్‌ను అనుసరించండి:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ వ్యక్తి రికార్డ్‌తో లేదా రికార్డ్‌‍లోని గమనికతో\n"
+"అనుబంధించబడినందున మేము మీకు తెలియజేస్తున్నాము.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" కోసం రికార్డ్‌లో క్రొత్త గమనిక ఉంది.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"మీరు \"%(full_name)s\"కు సంబంధించి గమనికలకు చందా పొందారు.\n"
+"\n"
+"మీరు ఈ రికార్డ్‌ను ఇక్కడ వీక్షించవచ్చు\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"చందాను తొలగించడానికి, ఈ లింక్‌ను అనుసరించండి: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(వెల్లడించడానికి క్లిక్ చేయండి)"
+
+msgid "(unknown)"
+msgstr "(తెలియనిది)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "ఈ వ్యక్తి లేదా ఈ వ్యక్తిని వెతుకుతున్న ఇతరుల కోసం సందేశం"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "ఇప్పటి నుండి సుమారు 1 నెల (30 రోజులు)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "ఇప్పటి నుండి సుమారు 1 సంవత్సరం (360 రోజులు)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "ఇప్పటి నుండి సుమారు 2 నెలలు (60 రోజులు)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "ఇప్పటి నుండి సుమారు 3 నెలలు (90 రోజులు)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "ఇప్పటి నుండి సుమారు 6 నెలలు (180 రోజులు)"
+
+msgid "About Google Person Finder"
+msgstr "Google వ్యక్తి శోధిని పరిచయం"
+
+msgid "About you (required)"
+msgstr "మీ పరిచయం (అవసరం)"
+
+msgid "Administration"
+msgstr "నిర్వహణ"
+
+msgid "Age"
+msgstr "వయస్సు"
+
+msgid "Alternate family names"
+msgstr "ప్రత్యామ్నాయ కుటుంబ పేర్లు"
+
+msgid "Alternate given names"
+msgstr "ప్రత్యామ్నాయ పెట్టిన పేర్లు"
+
+msgid "Alternate names"
+msgstr "ప్రత్యామ్నాయ పేర్లు"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "ఈ గమనిక స్పామ్ కాదని మీకు ఖచ్చితంగా తెలుసా?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "ఈ గమనికను మీరు ఖచ్చితంగా స్పామ్‌గా గుర్తు పెట్టాలనుకుంటున్నారా?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "ఈ రికార్డ్‌ను మీరు ఖచ్చితంగా తొలగింపు నుండి పునరుద్ధరించాలనుకుంటున్నారా?"
+
+msgid "Atom feed of updates about this person"
+msgstr "ఈ వ్యక్తి గురించి నవీకరణల యొక్క ఆటమ్ ఫీడ్"
+
+msgid "Author's e-mail address"
+msgstr "రచయిత ఇ-మెయిల్ చిరునామా"
+
+msgid "Author's name"
+msgstr "రచయిత పేరు"
+
+msgid "Author's phone number"
+msgstr "రచయిత ఫోన్ నంబర్"
+
+msgid "Authorization key"
+msgstr "ప్రామాణీకరణ కీ"
+
+msgid "Back to results list"
+msgstr "ఫలితాల జాబితాకు తిరిగి వెళ్లు"
+
+msgid "Back to start"
+msgstr "ప్రారంభానికి తిరిగి వెళ్లు"
+
+msgid "CSV file"
+msgstr "CSV ఫైల్"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "id %(id)sతో గమనికను కనుగొనడం సాధ్యపడలేదు"
+
+msgid "Cancel"
+msgstr "రద్దు చేయి"
+
+msgid "City"
+msgstr "నగరం"
+
+msgid "Click here to view results."
+msgstr "ఫలితాలను వీక్షించడానికి ఇక్కడ క్లిక్ చేయండి."
+
+msgid "Close window"
+msgstr "విండోను మూసివేయి"
+
+msgid "Compare these records"
+msgstr "ఈ రికార్డ్‌లను సరిపోల్చు"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"ఈ సాధనాన్ని మీ సైట్‌లో ఉంచడానికి క్రింది HTML కోడ్‌ను కాపీ చేసి, "
+"అతికించండి"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "క్రొత్త రికార్డ్‌ను సృష్టించండి"
+
+msgid "Create a new record for"
+msgstr "వీరి కోసం క్రొత్త రికార్డ్‌ను సృష్టించండి"
+
+msgid "Create a new record for a missing person"
+msgstr "అందుబాటులో లేని వ్యక్తి కోసం క్రొత్త రికార్డ్‌ను సృష్టించండి"
+
+msgid "Crisis events"
+msgstr "విపత్తు ఈవెంట్‌లు"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr ""
+"ప్రస్తుతానికి సుమారు %(num_people)s మంది రికార్డ్‌లు ట్రాక్ "
+"చేయబడుతున్నాయి."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "భవిష్యత్ తేదీ కాకూడదు.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+
+msgid "Date of birth"
+msgstr "పుట్టిన తేదీ"
+
+msgid "Delete this record"
+msgstr "ఈ రికార్డ్‌ను తొలగించు"
+
+msgid "Describe how to identify this person."
+msgstr "ఈ వ్యక్తిని ఎలా గుర్తించాలో వివరించండి."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "ఈ వ్యక్తి యొక్క భౌతిక లక్షణాలను వివరించండి."
+
+msgid "Description"
+msgstr "వివరణ"
+
+msgid "Desktop version"
+msgstr "డెస్క్‌టాప్ సంస్కరణ"
+
+msgid "Developers"
+msgstr "డెవలపర్‌లు"
+
+msgid "Disable notes on this record"
+msgstr "ఈ రికార్డ్‌లో గమనికలను నిలిపివేయి"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "ఈ వ్యక్తికి ఇతర వెబ్‌సైట్‌ల్లో ప్రొఫైల్ పేజీలు ఉన్నాయా?"
+
+msgid "Download the sound as MP3"
+msgstr "శబ్దాన్ని MP3 వలె డౌన్‌లోడ్ చేయి"
+
+msgid "E-mail"
+msgstr "ఇ-మెయిల్"
+
+msgid "E-mail address"
+msgstr "ఇ-మెయిల్ చిరునామా"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "అనువర్తనాన్ని పొందుపరచడం"
+
+msgid "Enable notes on this record"
+msgstr "ఈ రికార్డ్‌లో గమనికలను ప్రారంభించు"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "UTCలో తేదీలన్నీ dd-mm-yyyyThh:mm:ssZ ఆకృతిలో ఉన్నాయని నిర్ధారించుకోండి"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "DD-MM-YYYY వలె నమోదు చేయండి"
+
+msgid "Enter the person's given and family names."
+msgstr "వ్యక్తి యొక్క పెట్టిన మరియు కుటుంబ పేర్లను నమోదు చేయండి."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "వ్యక్తి పేరును లేదా పేరులో కొంత భాగాన్ని నమోదు చేయండి."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+"వ్యక్తి పేరును, పేరులో కొంత భాగాన్ని లేదా మొబైల్ ఫోన్ నంబర్‌ను నమోదు "
+"చేయండి."
+
+msgid "Enter the person's name."
+msgstr "వ్యక్తి పేరును నమోదు చేయండి."
+
+msgid "Expiry"
+msgstr "గడువు ముగింపు"
+
+msgid "Expiry date of this record"
+msgstr "ఈ రికార్డ్ యొక్క గడువు ముగింపు తేదీ"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "గడువు ముగింపు తేదీని %(extension_days)s రోజులు పొడిగించండి"
+
+msgid "Family name"
+msgstr "కుటుంబ పేరు"
+
+msgid "Feed of updates about this person"
+msgstr "ఈ వ్యక్తి గురించి నవీకరణల ఫీడ్"
+
+msgid "Follow this link to create a new record"
+msgstr "క్రొత్త రికార్డ్‌ను సృష్టించడానికి ఈ లింక్‌ను అనుసరించండి"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"మొబైల్ ఫోన్‌లు కాని ఇతర ఫోన్‌‍ల కోసం, దయచేసి NIT అందిస్తోన్న 171 సేవను "
+"ఉపయోగించండి."
+
+msgid "Full name"
+msgstr "పూర్తి పేరు"
+
+msgid "Get a new challenge"
+msgstr "క్రొత్త సవాలును పొందండి"
+
+msgid "Get a visual challenge"
+msgstr "దృశ్యమాన సవాలును పొందండి"
+
+msgid "Get an audio challenge"
+msgstr "ఆడియో సవాలును పొందండి"
+
+msgid "Given name"
+msgstr "పెట్టిన పేరు"
+
+msgid "Google Person Finder"
+msgstr "Google వ్యక్తి శోధిని"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "ప్రమాదం తర్వాత మీరు ఈ వ్యక్తితో నేరుగా మాట్లాడారా? (అవసరం)"
+
+msgid "Help"
+msgstr "సహాయం"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"ఇక్కడ మీరు సవరించగల మరియు అప్‌లోడ్ చేయగల %(begin_tag)sనమూనా CSV "
+"ఫైల్%(end_tag)s ఉంది"
+
+msgid "Hide Map"
+msgstr "మ్యాప్‌ను దాచు"
+
+msgid "Hide note"
+msgstr "గమనికను దాచు"
+
+msgid "Home Address"
+msgstr "ఇంటి చిరునామా"
+
+msgid "Home address"
+msgstr "ఇంటి చిరునామా"
+
+msgid "Home country"
+msgstr "స్వదేశం"
+
+msgid "How can this person be reached now?"
+msgstr "ప్రస్తుతం ఈ వ్యక్తిని ఎలా సంప్రదించవచ్చు?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "ఈ వ్యక్తి పట్ల ఆసక్తి ఉన్న ఇతరులు మిమ్మల్ని ఎలా సంప్రదించవచ్చు"
+
+msgid "I am seeking information"
+msgstr "నేను సమాచారాన్ని శోధిస్తున్నాను"
+
+msgid "I am this person"
+msgstr "ఈ వ్యక్తిని నేనే"
+
+msgid "I do not want any more updates on this record."
+msgstr "నేను ఇకపై ఈ రికార్డ్‌లో నవీకరణలను స్వీకరించాలనుకోవడం లేదు."
+
+msgid "I do not want my information online anymore."
+msgstr "నేను ఇకపై నా సమాచారం ఆన్‌లైన్‌లో ఉండాలనుకోవడం లేదు."
+
+msgid "I have information about someone"
+msgstr "నా వద్ద ఒకరి గురించి సమాచారం ఉంది"
+
+msgid "I have reason to think this person is missing"
+msgstr "ఈ వ్యక్తి అందుబాటులో లేరని భావించడానికి నా వద్ద కారణం ఉంది"
+
+msgid "I have received information that this person is alive"
+msgstr "ఈ వ్యక్తి సజీవంగా ఉన్నట్లు నాకు సమాచారం అందింది"
+
+msgid "I have received information that this person is dead"
+msgstr "ఈ వ్యక్తి మరణించినట్లు నాకు సమాచారం అందింది"
+
+msgid "I have received spam due to this note."
+msgstr "ఈ గమనిక కారణంగా నేను స్పామ్‌ను స్వీకరించాను."
+
+msgid "I have received spam."
+msgstr "నేను స్పామ్‌ను స్వీకరించాను."
+
+msgid "I prefer not to specify."
+msgstr "నేను పేర్కొనకూడదనుకుంటున్నాను."
+
+msgid "I'm looking for someone"
+msgstr "నేను ఒకరి కోసం వెతుకుతున్నాను"
+
+msgid "Identify who you are looking for"
+msgstr "మీరు ఎవరి కోసం వెతుకుతున్నారో గుర్తించండి"
+
+msgid "Identify who you have information about"
+msgstr "మీ వద్ద ఎవరి గురించి సమాచారం ఉందో గుర్తించండి"
+
+msgid "Identifying information"
+msgstr "సమాచారాన్ని గుర్తిస్తోంది"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"ఈ రికార్డ్‌లు ఏవీ మీరు భావిస్తున్న వ్యక్తికి సరిపోలకుంటే, క్రొత్త "
+"రికార్డ్‌ను సృష్టించడం కోసం మీరు దిగువ క్లిక్ చేయవచ్చు."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"ఈ గమనికను మీరు రచించి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
+"నిలిపివేయాలనుకుంటున్నట్లు నిర్ధారించడానికి లింక్ కోసం మీ ఇ-మెయిల్‌ను "
+"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ రచయిత "
+"నిర్ధారించే వరకు నిరీక్షించండి."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"ఈ గమనికను మీరు రచించి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
+"ప్రారంభించాలనుకుంటున్నట్లు నిర్ధారించడానికి లింక్ కోసం మీ ఇ-మెయిల్‌ను "
+"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ రచయిత "
+"నిర్ధారించే వరకు నిరీక్షించండి."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"మీ వద్ద ఈ వ్యక్తి యొక్క ఫోటో ఉంటే, దాన్ని అప్‌లోడ్ చేయండి లేదా దాని URL "
+"చిరునామాను నమోదు చేయండి."
+
+msgid "Incorrect.  Try again."
+msgstr "తప్పు.  మళ్లీ ప్రయత్నించండి."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "చెల్లని ఇ-మెయిల్ చిరునామా. దయచేసి మళ్లీ ప్రయత్నించండి."
+
+msgid "Language selection"
+msgstr "భాష ఎంపిక"
+
+msgid "Last known location"
+msgstr "గత సుపరిచిత స్థానం"
+
+msgid "Link"
+msgstr "జోడించు"
+
+msgid "Link to profile page"
+msgstr "ప్రొఫైల్ పేజీకి జోడించు"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "రికార్డ్‌లను నకిలీగా గుర్తు పెట్టు"
+
+msgid "Message (required)"
+msgstr "సందేశం (అవసరం)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "సందేశం అవసరం. దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+
+msgid "Missing person's current contact information"
+msgstr "అందుబాటులో లేని వ్యక్తి యొక్క ప్రస్తుత సంప్రదింపు సమాచారం"
+
+msgid "Missing person's current e-mail address"
+msgstr "అందుబాటులో లేని వ్యక్తి యొక్క ప్రస్తుత ఇ-మెయిల్ చిరునామా"
+
+msgid "Missing person's current phone number"
+msgstr "అందుబాటులో లేని వ్యక్తి యొక్క ప్రస్తుత ఫోన్ నంబర్"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"%(developers_link_html)sఇక్కడ%(link_end_html)s డెవలపర్‌ల గురించి ఇప్పుడు "
+"మరింత సమాచారాన్ని కనుగొనవచ్చు."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"100 కంటే ఎక్కువ ఫలితాలు ఉన్నాయి; మొదటి 100 మాత్రమే చూపబడుతున్నాయి.  "
+"పేరుతో పాటు మరింత నమోదు చేసి ప్రయత్నించండి"
+
+msgid "Name"
+msgstr "పేరు"
+
+msgid "Name (required)"
+msgstr "పేరు (అవసరం)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+
+msgid "Neighborhood"
+msgstr "పరిసరాలు"
+
+msgid "No"
+msgstr "వద్దు"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "రికార్డ్ %(id)s కోసం రచయిత ఇమెయిల్ లేదు."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "క్యారియర్ సందేశ బోర్డ్ సేవకు రిజిస్టర్ అయిన సందేశాలు కనుగొనబడలేదు."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "ఈ IDతో గమనిక లేదు: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "గమనికలను పోస్ట్ చేయలేదు"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "ఈ IDతో ఏ వ్యక్తి లేరు: %(id_str)s."
+
+msgid "No results found for"
+msgstr "వీరి కోసం ఫలితాలు కనుగొనబడలేదు"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "\"believed_dead\" స్థితితో గమనికలను పోస్ట్ చేయడానికి ప్రామాణీకరించబడలేదు."
+
+msgid "Not spam"
+msgstr "స్పామ్ కాదు"
+
+msgid "Note author"
+msgstr "గమనిక రచయిత"
+
+msgid "Note text"
+msgstr "గమనిక వచనం"
+
+msgid "Notes for this person"
+msgstr "ఈ వ్యక్తి కోసం గమనికలు"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "సంఖ్య లేదా పరిధి (ఉదా. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"లేదా %(gadget_link_html)sGoogle గాడ్జెట్%(link_end_html)s వలె మీ సైట్‌కు "
+"జోడించండి."
+
+msgid "Original URL"
+msgstr "వాస్తవ URL"
+
+msgid "Original author's name"
+msgstr "వాస్తవ రచయిత పేరు"
+
+msgid "Original posting date"
+msgstr "వాస్తవంగా పోస్ట్ చేసిన తేదీ"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"వాస్తవంగా పోస్ట్ చేసిన తేదీ DD-MM-YYYY ఆకృతిలో లేదు లేదా ఉనికిలో ఉన్న "
+"తేదీ కాదు. దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+
+msgid "Original site name"
+msgstr "వాస్తవ సైట్ పేరు"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"దయచేసి గమనించండి: డేటా మొత్తం పబ్లిక్‌కు అందుబాటులో ఉంటుంది మరియు ఎవరైనా "
+"వీక్షించవచ్చు మరియు ఉపయోగించవచ్చు.  Google ఈ డేటా యొక్క ఖచ్చితత్వాన్ని "
+"సమీక్షించదు లేదా ధృవీకరించదు."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"దయచేసి గమనించండి: సక్రియ వ్యక్తి శోధిని సైట్‌ల్లో, నమోదు చేసే డేటా మొత్తం"
+" పబ్లిక్‌కు అందుబాటులో ఉంటుంది మరియు ఎవరైనా ఉపయోగించవచ్చు.  Google ఈ డేటా"
+" యొక్క ఖచ్చితత్వాన్ని సమీక్షించదు లేదా ధృవీకరించదు."
+
+msgid "Person Finder"
+msgstr "వ్యక్తి శోధిని"
+
+msgid "Phone"
+msgstr "ఫోన్"
+
+msgid "Phone number"
+msgstr "ఫోన్ నంబర్"
+
+msgid "Photo"
+msgstr "ఫోటో"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"అప్‌లోడ్ చేసిన ఫోటో యొక్క ఆకృతి గుర్తించబడలేదు.  దయచేసి వెనుకకు వెళ్లి, "
+"మళ్లీ ప్రయత్నించండి."
+
+msgid "Physical characteristics"
+msgstr "భౌతిక లక్షణాలు"
+
+msgid "Play the sound again"
+msgstr "శబ్దాన్ని మళ్లీ ప్లే చేయి"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"దయచేసి భూకంపం తర్వాత మీరు ఈ వ్యక్తిని సంప్రదించినట్లు గుర్తించండి లేదా "
+"\"ఈ వ్యక్తి స్థితి\" ఫీల్డ్‌ను మార్చండి."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"దయచేసి మీరు నివేదించాలనుకుంటున్న వ్యక్తికి ఇది సరిపోలుతుందేమో తనిఖీ "
+"చేయండి."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "దయచేసి నవీకరణలకు చందా పొందడం కోసం మీ ఇ-మెయిల్ చిరునామాను నిర్ధారించండి"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "దయచేసి నవీకరణలకు చందా పొందడం కోసం మీ ఇ-మెయిల్ చిరునామాను నమోదు చేయండి"
+
+msgid "Please explain why you think these are the same person"
+msgstr ""
+"దయచేసి ఇవి ఒకే వ్యక్తికి చెందినవిగా మీరు భావించడానికి గల కారణాలను "
+"వివరించండి"
+
+msgid "Please fill in all the required fields."
+msgstr "దయచేసి అవసరమైన అన్ని ఫీల్డ్‌లను పూరించండి."
+
+msgid "Please fill in your email address."
+msgstr "దయచేసి మీ ఇమెయిల్ చిరునామాను పూరించండి."
+
+msgid "Please provide an valid email address."
+msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను అందించండి."
+
+msgid "Possible duplicates"
+msgstr "సంభావ్య నకిలీలు"
+
+msgid "Postal or zip code"
+msgstr "పోస్టల్ లేదా జిప్ కోడ్"
+
+msgid "Posted by"
+msgstr "పోస్ట్ చేసిన వారు"
+
+msgid "Proceed"
+msgstr "కొనసాగించు"
+
+msgid "Profile Pages"
+msgstr "ప్రొఫైల్ పేజీలు"
+
+msgid "Profile page"
+msgstr "ప్రొఫైల్ పేజీ"
+
+msgid "Provide information"
+msgstr "సమాచారాన్ని అందించండి"
+
+msgid "Provide information about this person"
+msgstr "ఈ వ్యక్తి గురించి సమాచారాన్ని అందించండి"
+
+msgid "Provided by:"
+msgstr "వీరి ద్వారా అందించబడింది:"
+
+msgid "Province or state"
+msgstr "ప్రాంతం లేదా రాష్ట్రం"
+
+msgid "Reason for deletion:"
+msgstr "తొలగింపుకి కారణం:"
+
+msgid "Reason for disabling notes:"
+msgstr "గమనికల నిలిపివేతకు కారణం:"
+
+msgid "Records Similar to"
+msgstr "సారూప్య రికార్డ్‌లు"
+
+msgid "Records selected"
+msgstr "ఎంచుకోబడిన రికార్డ్‌లు"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "\"%(query)s\"తో సరిపోలే పేర్లు మరియు చిరునామాలను కలిగి ఉన్న రికార్డ్‌లు"
+
+msgid "Remove"
+msgstr "తీసివేయండి"
+
+msgid "Report spam"
+msgstr "స్పామ్‌గా నివేదించండి"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s కోసం రికార్డ్‌కు తిరిగి వెళ్లండి."
+
+msgid "Reveal note"
+msgstr "గమనికను బహిర్గతం చేయండి"
+
+msgid "Save this record"
+msgstr "ఈ రికార్డ్‌ను సేవ్ చేయండి"
+
+msgid "Search Results for"
+msgstr "వీరి కోసం శోధన ఫలితాలు"
+
+msgid "Search for this person"
+msgstr "ఈ వ్యక్తి కోసం శోధించు"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "మరిన్ని సూచనల కోసం %(begin_tag)sవికీ%(end_tag)sని చూడండి"
+
+msgid "Select a website to add a profile page..."
+msgstr "ప్రొఫైల్ పేజీని జోడించడానికి వెబ్‌సైట్‌ను ఎంచుకోండి..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "నకిలీగా గుర్తు పెట్టడానికి గరిష్టంగా 3 రికార్డ్‌లను ఎంచుకోండి:"
+
+msgid "Send email"
+msgstr "ఇమెయిల్ పంపు"
+
+msgid "Sex"
+msgstr "లింగం"
+
+msgid "Show Map"
+msgstr "మ్యాప్‌ను చూపు"
+
+msgid "Show sensitive information"
+msgstr "సున్నితమైన సమాచారాన్ని చూపండి"
+
+msgid "Sign in"
+msgstr "సైన్ ఇన్ చేయండి"
+
+msgid "Sign out"
+msgstr "సైన్ అవుట్ చేయండి"
+
+msgid "Someone has received information that this person is alive"
+msgstr "ఒకరు ఈ వ్యక్తి సజీవంగా ఉన్నారనే సమాచారాన్ని స్వీకరించారు"
+
+msgid "Someone has received information that this person is dead"
+msgstr "ఒకరు ఈ వ్యక్తి మరణించారనే సమాచారాన్ని స్వీకరించారు"
+
+msgid "Someone has reported that this person is missing"
+msgstr "ఒకరు ఈ వ్యక్తి ఆచూకీ తెలియడం లేదని నివేదించారు"
+
+msgid "Someone is seeking information about this person"
+msgstr "ఒకరు ఈ వ్యక్తి గురించి సమాచారాన్ని కోరుతున్నారు"
+
+msgid "Source of this record"
+msgstr "ఈ రికార్డ్ యొక్క మూలం"
+
+msgid "Source of this record (required)"
+msgstr "ఈ రికార్డ్ యొక్క మూలం (అవసరం)"
+
+msgid "Status"
+msgstr "స్థితి"
+
+msgid "Status of this person"
+msgstr "ఈ వ్యక్తి యొక్క స్థితి"
+
+msgid "Street name"
+msgstr "వీధి పేరు"
+
+msgid "Street name only, no number"
+msgstr "వీధి పేరు మాత్రమే, నంబర్ కాదు"
+
+msgid "Subscribe"
+msgstr "చందా పొందండి"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s గురించి నవీకరణలకు చందా పొందండి"
+
+msgid "Subscribe to updates about this person"
+msgstr "ఈ వ్యక్తి గురించి నవీకరణలకు చందా పొందండి"
+
+msgid "Switch to address"
+msgstr "చిరునామాకు మారండి"
+
+msgid "Switch to duplicate marking mode"
+msgstr "నకిలీ మార్కింగ్ మోడ్‌కు మారండి"
+
+msgid "Switch to lat/long"
+msgstr "అక్షా./రేఖా.కి మారండి"
+
+msgid "Switch to normal view mode"
+msgstr "సాధారణ వీక్షణ మోడ్‌కు మారండి"
+
+msgid "Tell us the status of this person"
+msgstr "ఈ వ్యక్తి యొక్క స్థితిని మాకు తెలియజేయండి"
+
+msgid "Terms of Service"
+msgstr "సేవా నిబంధనలు"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"పెట్టిన పేరు మరియు కుటుంబ పేరు రెండూ అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ"
+" ప్రయత్నించండి."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "వాస్తవ రచయిత పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+
+msgid "The author has disabled notes on this record."
+msgstr "రచయిత ఈ రికార్డ్‌లో గమనికలను నిలిపివేసారు."
+
+msgid "The author has disabled status updates on this record."
+msgstr "రచయిత ఈ రికార్డ్‌లో స్థితి నవీకరణలను నిలిపివేసారు."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "అందించిన చిత్రం చాలా పెద్దదిగా ఉంది.  దయచేసి చిన్నది అప్‌లోడ్ చేయండి."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "ఈ గమనికను స్పామ్‌గా గుర్తు పెట్టడానికి గల కారణం:"
+
+msgid "The record cannot be extended."
+msgstr "రికార్డ్‌ను పొడిగించడం సాధ్యపడదు."
+
+msgid "The record has been deleted."
+msgstr "రికార్డ్ తొలగించబడింది."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "రికార్డ్ %(expiry_date)s వరకు పొడిగించబడింది."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"మీరు ఎంచుకున్న స్థితి మీరే ఈ వ్యక్తి అని సూచిస్తోంది. ఇది ఒప్పు అయితే, "
+"దయచేసి మీరు ఈ వ్యక్తిని సంప్రదించారని సూచించడానికి 'ఒప్పు'ని కూడా "
+"ఎంచుకోండి."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "టోకెన్ %(token)s చెల్లదు"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "టోకెన్ %(token)s చెల్లదు."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "సారూప్య పేర్లతో %(num_results)s రికార్డ్‌లు ఉనికిలో ఉన్నాయి."
+
+msgid "There are some existing records with similar names."
+msgstr "సారూప్య పేర్లతో కొన్ని రికార్డ్‌లు ఉనికిలో ఉన్నాయి."
+
+msgid "There is one existing record with a similar name."
+msgstr "సారూప్య పేరుతో 1 రికార్డ్ ఉనికిలో ఉంది."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"చిత్రాన్ని ప్రాసెస్ చేయడంలో సమస్య ఉంది.  దయచేసి వేరొక చిత్రాన్ని "
+"ప్రయత్నించండి."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"మీ అభ్యర్థనను ప్రాసెస్ చేస్తున్నప్పుడు లోపం ఏర్పడింది.  అసౌకర్యానికి "
+"క్షమించండి.  మా నిర్వాహకులు సమస్య యొక్క మూలాన్ని పరిశీలిస్తారు, కానీ "
+"దయచేసి మీ అభ్యర్థన యొక్క ఆకృతి సరైనదో కాదో తనిఖీ చేయండి."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"ఈ గాడ్జెట్‌లు %(apache_link_html)sApache 2.0 లైసెన్స్‌%(link_end_html)sతో"
+" అందుబాటులో ఉన్నాయి."
+
+msgid "This is a new record."
+msgstr "ఇది క్రొత్త రికార్డ్."
+
+msgid "This link is invalid."
+msgstr "ఈ లింక్ చెల్లదు."
+
+msgid "This note has been marked as spam."
+msgstr "ఈ గమనిక స్పామ్‌గా గుర్తు పెట్టబడింది."
+
+msgid "This note is inappropriate."
+msgstr "ఈ గమనిక అనుచితమైనది."
+
+msgid "This note is incorrect or untrue."
+msgstr "ఈ గమనిక సరైనది కాదు లేదా తప్పు."
+
+msgid "This note is spam."
+msgstr "ఈ గమనిక స్పామ్."
+
+msgid "This person has been in contact with someone"
+msgstr "ఈ వ్యక్తి మరొకరితో పరిచయాన్ని కలిగి ఉన్నారు"
+
+msgid "This person has posted a message"
+msgstr "ఈ వ్యక్తి సందేశాన్ని పోస్ట్ చేసారు"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "ఈ వ్యక్తి యొక్క నమోదు ఉనికిలో లేదు లేదా తొలగించబడింది."
+
+msgid "This record has served its purpose."
+msgstr "ఈ రికార్డ్ దాని ప్రయోజనాన్ని నెరవేర్చింది."
+
+msgid "This record is a duplicate of"
+msgstr "ఈ రికార్డ్ దీని యొక్క నకిలీ"
+
+msgid "This record is copied from another source."
+msgstr "ఈ రికార్డ్ మరో మూలం నుండి కాపీ చేయబడింది."
+
+msgid "This record is inappropriate."
+msgstr "ఈ రికార్డ్ అనుచితమైనది."
+
+msgid "This record is spam."
+msgstr "ఈ రికార్డ్ స్పామ్."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"ఈ నిక్షేప స్థానం ప్రస్తుతం పరీక్ష మోడ్‌లో ఉంది. పరీక్ష మోడ్ అమలులో "
+"ఉన్నప్పుడు, 6 గంటల కంటే మునుపు ఉన్న రికార్డ్‌లు తొలగించబడతాయి."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"ఈ గమనికకు ఫోటోను జోడించడానికి, దానిని అప్‌లోడ్ చేయండి లేదా దాని URLని "
+"నమోదు చేయండి."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"మీ డేటాను తొలగించడానికి, మీ డెస్క్‌టాప్ నుండి వ్యక్తి శోధినిని ప్రాప్యత "
+"చేయండి."
+
+msgid "To unsubscribe, follow this link"
+msgstr "చందాను తొలగించడానికి, ఈ లింక్‌ను అనుసరించండి"
+
+msgid "To view or add information, select a name below."
+msgstr "సమాచారాన్ని వీక్షించడానికి లేదా జోడించడానికి, దిగువ పేరును ఎంచుకోండి."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"చిరునామాను టైప్ చేయండి లేదా దిగువ మ్యాప్‌ను తెరవండి మరియు మ్యాప్‌పై "
+"క్లిక్ చేయడం ద్వారా స్థానాన్ని సూచించండి."
+
+msgid "Type an address."
+msgstr "చిరునామాను టైప్ చేయండి."
+
+msgid "Type the two words:"
+msgstr "ఈ రెండు పదాలను టైప్ చేయండి:"
+
+msgid "Type what you hear:"
+msgstr "మీరు విన్నదాన్ని టైప్ చేయండి:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "అసలు రికార్డ్ యొక్క URL"
+
+msgid "Unspecified"
+msgstr "పేర్కొనలేదు"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "అప్‌లోడ్ చేయండి"
+
+msgid "Upload CSV files"
+msgstr "CSV ఫైల్‌లను అప్‌లోడ్ చేయండి"
+
+msgid "View the record"
+msgstr "రికార్డ్‌ను వీక్షించండి"
+
+msgid "We have nothing matching your search."
+msgstr "మీ శోధనకు సరిపోలేవి మా వద్ద లేవు."
+
+msgid "What is this person's name?"
+msgstr "ఈ వ్యక్తి యొక్క పేరు ఏమిటి?"
+
+msgid "When should this record disappear?"
+msgstr "ఈ రికార్డ్ ఎప్పుడు కనిపించకుండాపోవాలి?"
+
+msgid "Where did this information come from?"
+msgstr "ఈ సమాచారం ఎక్కడి నుండి వచ్చింది?"
+
+msgid "Where is this person from?"
+msgstr "ఈ వ్యక్తి ఎక్కడి వారు?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"పరీక్ష మోడ్ ప్రభావంలో ఉన్నప్పుడు, 6 గంటల కంటే మునుపు ఉన్న రికార్డ్‌లు "
+"గడువు తేదీతో సంబంధం లేకుండా తొలగించబడతాయి."
+
+msgid "Yes"
+msgstr "అవును"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "అవును, గమనికలను నిలిపివేయమని రికార్డ్ రచయితను అడగండి"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "అవును, గమనికలను ప్రారంభించమని రికార్డ్ రచయితను అడగండి"
+
+msgid "Yes, delete the record"
+msgstr "అవును, రికార్డ్‌ను తొలగించండి"
+
+msgid "Yes, disable notes on this record."
+msgstr "అవును, ఈ రికార్డ్‌లో గమనికలను నిలిపివేయండి."
+
+msgid "Yes, extend the record"
+msgstr "అవును, రికార్డ్‌ను పొడిగించండి"
+
+msgid "Yes, restore this record"
+msgstr "అవును, ఈ రికార్డ్‌ను పునరుద్ధరించండి"
+
+msgid "Yes, these are the same person"
+msgstr "అవును, వీరు ఒకే వ్యక్తి"
+
+msgid "Yes, update the note"
+msgstr "అవును, గమనికను నవీకరించండి"
+
+msgid "You are already subscribed. "
+msgstr "మీరు ఇప్పటికే చందా పొందారు. "
+
+msgid "You are already unsubscribed."
+msgstr "మీరు ఇప్పటికే చందాను తొలగించారు."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"మీరు ప్రస్తుతం %(begin_span_tag)s%(email)s%(end_span_tag)sగా సైన్ ఇన్ "
+"చేసారు."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "మీరు ప్రస్తుతం సైన్ ఇన్ చేయలేదు."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr ""
+"మీరు రికార్డ్‌ను తొలగించే ముందు %(begin_tag)sదాన్ని "
+"వీక్షించవచ్చు%(end_tag)s."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "మీరు %(view_url)sలో పూర్తి రికార్డ్‌ను వీక్షించవచ్చు"
+
+msgid "You have successfully subscribed."
+msgstr "మీరు విజయవంతంగా చందా పొందారు."
+
+msgid "You have successfully unsubscribed."
+msgstr "మీరు విజయవంతంగా చందాను తొలగించారు."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"మీరు ఈ క్రింది వ్యక్తి గురించిన వార్తల కోసం చందా పొందినందున ఈ "
+"నోటిఫికేషన్‌ను స్వీకరించారు:\n"
+
+msgid "Your e-mail address"
+msgstr "మీ ఇ-మెయిల్ చిరునామా"
+
+msgid "Your e-mail address:"
+msgstr "మీ ఇ-మెయిల్ చిరునామా:"
+
+msgid "Your email"
+msgstr "మీ ఇమెయిల్"
+
+msgid "Your name"
+msgstr "మీ పేరు"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"\"మీ పరిచయం\" విభాగంలో మీ పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ "
+"ప్రయత్నించండి."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"మూలం\" విభాగంలో మీ పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ "
+"ప్రయత్నించండి."
+
+msgid "Your phone number"
+msgstr "మీ ఫోన్ నంబర్"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"మీ అభ్యర్థన విజయవంతంగా ప్రాసెస్ చేయబడింది. దయచేసి మీ ఇన్‌బాక్స్‌ను తనిఖీ "
+"చేయండి మరియు పొందుపరిచిన urlను అనుసరించడం ద్వారా మీరు మీ గమనికను పోస్ట్ "
+"చేయాలనుకుంటున్నారని నిర్ధారించండి."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\"కు సంబంధించి మీ గమనికను నిర్ధారించండి"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\" కోసం తొలగింపు నోటీసు"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\"కు సంబంధించి గమనికలను నిలిపివేయాలా?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\"కు సంబంధించి గమనికలను ప్రారంభించాలా?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\" కోసం గమనికల నోటీసును ప్రారంభిస్తోంది"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[వ్యక్తి శోధిని] ప్రస్తుతం \"%(full_name)s\" కోసం గమనికలు నిలిపివేయబడ్డాయి"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr ""
+"[వ్యక్తి శోధిని] ప్రస్తుతం \"%(full_name)s\"కు సంబంధించి గమనికలు "
+"ప్రారంభించబడ్డాయి"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[వ్యక్తి శోధిని] \"%(full_name)s\" కోసం రికార్డ్ పునరుద్ధరణ నోటీసు"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[వ్యక్తి శోధిని] %(full_name)s కోసం స్థితి నవీకరణ"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[వ్యక్తి శోధిని] మీరు %(full_name)s కోసం స్థితి నవీకరణలకు చందా పొందారు"
+
+msgid "at"
+msgstr "దీనిలో"
+
+msgid "female"
+msgstr "స్త్రీ"
+
+msgid "in test mode"
+msgstr "పరీక్ష మోడ్‌లో ఉంది"
+
+msgid "male"
+msgstr "పురుషుడు"
+
+msgid "on"
+msgstr "ప్రారంభించబడింది"
+
+msgid "other"
+msgstr "ఇతరం"
+

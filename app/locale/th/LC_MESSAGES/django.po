@@ -34,9 +34,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  "
-"เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาตจากผู้เขียนบันทึกเท่านั้น·จะมีการส่งข้อความยืนยันไปยังผู้เขียนบันทึก"
-" หากคุณเป็นผู้เขียน โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
+"  เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาต\n"
+"จากผู้ให้ข้อมูลบันทึกเท่านั้น "
+"จะมีการส่งข้อความยืนยันไปยังผู้ให้ข้อมูลบันทึก \n"
+"หากคุณเป็นผู้ให้ข้อมูล "
+"โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
 "\n"
 "  "
 
@@ -58,14 +60,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"เรียน %(author_name)s "
-"ผู้ใช้รายหนึ่งได้ขอให้เปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\" "
-"ที่อยู่อีเมลของคุณได้รับการบันทึกไว้ว่าเป็นผู้เขียนบันทึกนี้ "
-"หากต้องการเปิดใช้งานข้อความในบันทึกนี้ ให้คลิกที่ลิงก์ต่อไปนี้ภายใน 3 "
-"วัน:\n"
+"เรียน %(author_name)s\n"
+"\n"
+"ผู้ใช้รายหนึ่งได้ขอให้เปิดใช้งานข้อความในบันทึกสำหรับ\n"
+"\"%(full_name)s\"\n"
+"\n"
+"ที่อยู่อีเมลของคุณได้รับการบันทึกไว้ว่าเป็นผู้ให้ข้อมูลบันทึกนี้ "
+"หากต้องการเปิดใช้งานข้อความในบันทึกนี้ โปรดคลิกลิงก์นี้ภายใน 3 วัน\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,10 +89,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"เรียน %(author_name)s "
-"ผู้ใช้รายหนึ่งได้ขอให้คุณปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\""
-" ที่อยู่อีเมลของคุณได้รับการบันทึกไว้ว่าเป็นผู้เขียนบันทึกนี้ "
-"หากต้องการปิดใช้งานข้อความในบันทึกนี้ โปรดคลิกที่ลิงก์นี้ภายใน 3 วัน:\n"
+"เรียน %(author_name)s\n"
+"\n"
+"ผู้ใช้รายหนึ่งได้ขอให้คุณปิดใช้งานข้อความในบันทึกสำหรับ\n"
+"\"%(full_name)s\"\n"
+"\n"
+"ที่อยู่อีเมลของคุณได้รับการบันทึกไว้ว่าเป็นผู้ให้ข้อมูลบันทึกนี้ "
+"หากต้องการปิดใช้งานข้อความในบันทึกนี้ โปรดคลิกลิงก์นี้ภายใน 3 วัน\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -107,9 +113,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"เรียน %(author_name)s คุณเพียงแค่ป้อนข้อความในบันทึกสำหรับ "
-"\"%(full_name)s\" หากต้องการเผยแพร่ข้อความของคุณ โปรดคลิกที่ลิงก์นี้ภายใน"
-" 3 วัน:\n"
+"เรียน %(author_name)s\n"
+"คุณเพียงแค่ป้อนข้อความในบันทึกสำหรับ \"%(full_name)s\"  \n"
+"หากต้องการเผยแพร่ข้อความของคุณ โปรดคลิกลิงก์นี้ภายใน 3 วัน\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -121,12 +127,19 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    คำเตือน: บันทึกนี้จะหมดอายุในเวลาน้อยกว่า "
+"%(expiration_days)s วัน\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    คำเตือน: บันทึกนี้จะหมดอายุในเวลาน้อยกว่าหนึ่งวัน\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -135,7 +148,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      คุณแน่ใจหรือไม่ว่าคุณต้องการลบบันทึกสำหรับ \"%(full_name)s\"?\n"
+"      คุณแน่ใจไหมว่าต้องการลบบันทึกสำหรับ \"%(full_name)s\"\n"
 "    "
 
 #, python-format
@@ -145,7 +158,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานข้อความสำหรับ \"%(full_name)s\"?\n"
+"      คุณแน่ใจไหมว่าต้องการปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\"\n"
 "    "
 
 #, python-format
@@ -156,8 +169,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      คุณแน่ใจหรือไม่ว่าต้องการปิดใช้งานข้อความในบันทึกของ "
-"\"%(full_name)s\"?\n"
+"      คุณแน่ใจไหมว่าต้องการปิดใช้งานข้อความในบันทึกของ \"%(full_name)s\"\n"
 "    "
 
 #, python-format
@@ -167,8 +179,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      คุณแน่ใจหรือไม่ว่าต้องการเปิดใช้งานข้อความสำหรับ \"%(full_name)s\"?"
-"\n"
+"      คุณแน่ใจไหมว่าต้องการเปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\"\n"
 "    "
 
 #, python-format
@@ -179,7 +190,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      คุณต้องการขยายวันหมดอายุของบันทึกข้อมูลหรือไม่ \"%(full_name)s\"?\n"
+"      คุณแน่ใจไหมว่าต้องการขยายวันหมดอายุของบันทึก \"%(full_name)s\"\n"
 "    "
 
 msgid ""
@@ -198,8 +209,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      หากคุณต้องการลบ\n"
-"      คุณจะไม่สามารถค้นหาหรือดูบันทึกบนไซต์นี้ได้อีก\n"
+"      หากลบ\n"
+" คุณจะไม่สามารถค้นหาหรือดูบันทึกนี้บนไซต์นี้ได้อีก\n"
 "    "
 
 #, python-format
@@ -211,6 +222,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      หากคุณต้องการลบออกอย่างถาวร\n"
+"      โปรดติดต่อแหล่งที่มาเดิม\n"
+"      คุณสามารถดูบันทึกเดิมได้ที่\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -222,6 +239,11 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      URL ที่คุณป้อนดูเหมือนไม่ใช่ URL โปรไฟล์ %(website)s ที่ถูกต้อง\n"
+"      โปรดไปที่หน้าโปรไฟล์ของบุคคลนี้ใน %(website)s แล้วคัดลอกและวาง\n"
+"      URL นั้นที่นี่\n"
+"      "
 
 msgid ""
 "\n"
@@ -232,6 +254,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      บันทึกนี้เป็นสำเนาของบันทึกจากแหล่งอื่น\n"
+"      คุณสามารถลบบันทึกนี้ได้ที่นี่\n"
+"      แต่โปรดทราบว่า\n"
+"      เราอาจได้รับอีกสำเนาหนึ่งจากแหล่งที่มาเดิมในภายหลัง\n"
+"    "
 
 msgid ""
 "\n"
@@ -245,8 +273,12 @@ msgid ""
 msgstr ""
 "\n"
 "    "
-"เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาตจากผู้เขียนบันทึกเท่านั้น·จะมีการส่งข้อความยืนยันไปยังผู้เขียนบันทึก"
-" หากคุณเป็นผู้เขียน โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
+"เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาตจาก"
+"\n"
+"ผู้ให้ข้อมูลบันทึกเท่านั้น จะมีการส่งข้อความยืนยันไปยังผู้ให้ข้อมูลบันทึก"
+"\n"
+" หากคุณเป็นผู้ให้ข้อมูล "
+"โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
 "  "
 
 msgid ""
@@ -257,8 +289,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  บันทึกจะยังคงมองเห็นได้บนไซต์นี้ "
-"แต่จะไม่มีใครสามารถโพสต์ข้อความเกี่ยวกับบันทึกนี้ต่อไปได้อีก\n"
+"  บันทึกจะยังคงมองเห็นได้บนไซต์นี้ แต่จะไม่มีใครสามารถ\n"
+"โพสต์ข้อความในบันทึกนี้ได้อีก\n"
 "  "
 
 msgid ""
@@ -269,8 +301,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  หากต้องการโพสต์ข้อความของคุณ "
-"โปรดป้อนที่อยู่อีเมลด้านล่างและคลิกที่ลิงก์การยืนยันที่คุณจะได้รับ\n"
+"  หากต้องการโพสต์ข้อความของคุณ โปรดป้อนที่อยู่อีเมลด้านล่าง\n"
+"และคลิกที่ลิงก์การยืนยันที่คุณจะได้รับ\n"
 "  "
 
 #, python-format
@@ -286,8 +318,8 @@ msgstr ""
 "ผู้ใช้ได้ลบบันทึกสำหรับ \"%(full_name)s\"\n"
 "ที่ %(site_url)s\n"
 "\n"
-"เราแจ้งการลบนี้ให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณได้\n"
-"บันทึกไว้เป็นผู้เขียนข้อความของบันทึกนี้\n"
+"เราแจ้งให้คุณทราบถึงการลบนี้เนื่องจากที่อยู่อีเมลของคุณได้ถูก\n"
+"บันทึกว่าเป็นผู้ให้ข้อมูลข้อความของบันทึกนี้\n"
 
 #, python-format
 msgid ""
@@ -299,9 +331,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"ผู้ใช้ได้ลบบันทึกข้อมูลสำหรับ \"%(full_name)s\" ที่ %(site_url)s "
-"เราแจ้งให้คุณทราบถึงการลบเนื่องจากที่อยู่อีเมลของคุณได้รับการบันทึกว่าเป็นผู้เขียนบันทึกข้อมูลนี้"
+"ผู้ใช้ได้ลบบันทึกสำหรับ \"%(full_name)s\"\n"
+"ที่ %(site_url)s\n"
 "\n"
+"เราแจ้งให้คุณทราบถึงการลบนี้เนื่องจากที่อยู่อีเมลของคุณได้ถูก\n"
+"บันทึกว่าเป็นผู้ให้ข้อมูลบันทึกนี้\n"
 
 #, python-format
 msgid ""
@@ -310,7 +344,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"หลังจาก %(days_until_deletion)s วัน บันทึกข้อมูลจะถูกลบออกอย่างถาวร\n"
+"หลังจาก %(days_until_deletion)s วัน บันทึกจะถูกลบออกอย่างถาวร\n"
 
 #, python-format
 msgid ""
@@ -322,9 +356,8 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"หมายเหตุ: หากคุณเชื่อว่าบันทึกข้อมูลนี้ถูกลบเนื่องจากความผิดพลาด "
-"คุณสามารถกู้คืนบันทึกข้อมูลได้โดยไปที่ลิงก์นี้ภายใน "
-"%(days_until_deletion)s วัน:\n"
+"หมายเหตุ: หากคุณเชื่อว่าบันทึกนี้ถูกลบเนื่องจากความผิดพลาด คุณสามารถ\n"
+"กู้คืนบันทึกได้โดยไปที่ลิงก์นี้ภายใน %(days_until_deletion)s วันถัดไป\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -341,13 +374,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"ขณะนี้ได้ปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\" "
-"หากต้องการดูบันทึกนี้ ให้คลิกที่ลิงก์นี้:\n"
+"ขณะนี้ ได้ปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\" "
+"หากต้องการดูบันทึกนี้\n"
+"ให้คลิกที่ลิงก์นี้\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับบันทึกของบุคคลนี้หรือข้อความในบันทึกนี้"
-"\n"
+"เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับ\n"
+"บันทึกของบุคคลนี้หรือข้อความในบันทึกนี้\n"
 
 #, python-format
 msgid ""
@@ -362,13 +396,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"ขณะนี้ได้เปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\" "
-"หากต้องการดูบันทึกนี้ ให้คลิกที่ลิงก์นี้:\n"
+"ขณะนี้ ได้เปิดใช้งานข้อความในบันทึกสำหรับ \"%(full_name)s\" "
+"หากต้องการดูบันทึกนี้\n"
+"ให้คลิกลิงก์นี้\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับบันทึกของบุคคลนี้หรือข้อความในบันทึกนี้"
-"\n"
+"เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับ\n"
+"บันทึกของบุคคลนี้หรือข้อความในบันทึกนี้\n"
 
 #, python-format
 msgid ""
@@ -383,14 +418,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"ผู้เขียนบันทึกสำหรับ \"%(full_name)s\"\n"
+"ผู้ให้ข้อมูลบันทึกสำหรับ \"%(full_name)s\"\n"
 "(ซึ่งถูกลบไปก่อนหน้านี้) ได้กู้คืนบันทึกนี้ หากต้องการดู\n"
-"บันทึก ให้ไปที่ลิงก์นี้:\n"
+"บันทึกนี้ ให้ไปที่ลิงก์นี้\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับ\n"
-"บันทึกหรือข้อความในบันทึกของบุคคลนี้\n"
+"บันทึกของบุคคลนี้หรือข้อความในบันทึกนี้\n"
 
 #, python-format
 msgid ""
@@ -412,12 +447,14 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"คุณสมัครรับข้อมูลข้อความของ \"%(full_name)s\" คุณสามารถดูบันทึกนี้ได้ที่\n"
+"คุณได้สมัครรับข้อความเกี่ยวกับ \"%(full_name)s\"\n"
+"\n"
+"คุณสามารถดูบันทึกนี้ได้ที่\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"หากต้องการยกเลิกการสมัครรับข้อมูล ให้คลิกที่ลิงก์นี้: "
-"%(unsubscribe_link)s\n"
+"หากต้องการยกเลิกการสมัครรับข้อความ โปรดคลิกลิงก์นี้: %(unsubscribe_link)s"
+"\n"
 
 msgid "(click to reveal)"
 msgstr "(คลิกเพื่อแสดง)"
@@ -429,10 +466,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "ข้อความสำหรับบุคคลนี้หรือคนอื่นที่กำลังตามหาบุคคลนี้"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "ประมาณ 1 เดือน (30 วัน) นับจากนี้"
@@ -450,13 +487,13 @@ msgid "About 6 months (180 days) from now"
 msgstr "ประมาณ 6 เดือน (180 วัน) นับจากนี้"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "เกี่ยวกับ Google Person Finder"
 
 msgid "About you (required)"
 msgstr "เกี่ยวกับตัวคุณ (ต้องระบุ)"
 
 msgid "Administration"
-msgstr "การดูแลระบบ"
+msgstr "การบริหารจัดการ"
 
 msgid "Age"
 msgstr "อายุ"
@@ -471,13 +508,13 @@ msgid "Alternate names"
 msgstr "ชื่อสำรอง"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "คุณแน่ใจหรือไม่ว่าบันทึกนี้ไม่ใช่สแปม"
+msgstr "คุณแน่ใจไหมว่าบันทึกนี้ไม่ใช่สแปม"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการทำเครื่องหมายให้บันทึกเป็นสแปม"
+msgstr "คุณแน่ใจไหมว่าต้องการทำเครื่องหมายบันทึกนี้เป็นสแปม"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการกู้คืนบันทึกนี้กลับจากการลบ"
+msgstr "คุณแน่ใจไหมว่าต้องการกู้คืนบันทึกนี้กลับจากการลบ"
 
 msgid "Atom feed of updates about this person"
 msgstr "ฟีดข้อมูลอัปเดตของ Atom เกี่ยวกับบุคคลนี้"
@@ -492,7 +529,7 @@ msgid "Author's phone number"
 msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "คีย์การให้สิทธิ์"
 
 msgid "Back to results list"
 msgstr "กลับไปที่รายการผลลัพธ์"
@@ -501,17 +538,17 @@ msgid "Back to start"
 msgstr "กลับไปที่จุดเริ่มต้น"
 
 msgid "CSV file"
-msgstr ""
+msgstr "ไฟล์ CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "ไม่พบข้อความที่มี ID %(id)s"
+msgstr "ไม่พบข้อความที่มี id %(id)s"
 
 msgid "Cancel"
 msgstr "ยกเลิก"
 
 msgid "City"
-msgstr "เมือง"
+msgstr "อำเภอ"
 
 msgid "Click here to view results."
 msgstr "คลิกที่นี่เพื่อดูผลลัพธ์"
@@ -520,29 +557,29 @@ msgid "Close window"
 msgstr "ปิดหน้าต่าง"
 
 msgid "Compare these records"
-msgstr "เปรียบเทียบรายการเหล่านี้"
+msgstr "เปรียบเทียบบันทึกเหล่านี้"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "คัดลอกและวางโค้ด HTML ต่อไปนี้เพื่อใส่เครื่องมือนี้บนไซต์ของคุณ"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "สร้างบันทึกใหม่"
 
 msgid "Create a new record for"
-msgstr "สร้างรายการใหม่สำหรับ"
+msgstr "สร้างบันทึกใหม่สำหรับ"
 
 msgid "Create a new record for a missing person"
-msgstr "สร้างรายการใหม่สำหรับบุคคลสูญหาย"
+msgstr "สร้างบันทึกใหม่สำหรับบุคคลสูญหาย"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "เหตุการณ์วิกฤต"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "กำลังติดตามข้อมูลประมาณ %(num_people)s รายการ"
+msgstr "กำลังติดตามบันทึกประมาณ %(num_people)s รายการ"
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "วันที่ต้องไม่ใช่วันในอนาคต โปรดกลับไปและลองใหม่อีกครั้ง"
@@ -563,16 +600,16 @@ msgid "Description"
 msgstr "คำอธิบาย"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "รุ่นเดสก์ท็อป"
 
 msgid "Developers"
-msgstr "ผู้พัฒนา"
+msgstr "นักพัฒนาซอฟต์แวร์"
 
 msgid "Disable notes on this record"
 msgstr "ปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "บุคคลนี้มีหน้าโปรไฟล์ที่เว็บไซต์อื่นๆ ไหม"
 
 msgid "Download the sound as MP3"
 msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
@@ -584,7 +621,7 @@ msgid "E-mail address"
 msgstr "ที่อยู่อีเมล"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
 msgstr "การฝังแอปพลิเคชันนี้"
@@ -593,7 +630,7 @@ msgid "Enable notes on this record"
 msgstr "เปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "ตรวจสอบว่าวันที่ทั้งหมดอยู่ในรูปแบบ ปปปป-ดด-ววTชช:นน:ววZ ในเวลา UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
@@ -618,7 +655,7 @@ msgstr "วันหมดอายุของบันทึกนี้"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "ขยายวันหมดอายุเป็นเวลา %(extension_days)s วัน"
 
 msgid "Family name"
 msgstr "นามสกุล"
@@ -627,7 +664,7 @@ msgid "Feed of updates about this person"
 msgstr "ฟีดข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
 msgid "Follow this link to create a new record"
-msgstr "สร้างรายการใหม่ได้ที่ลิงก์นี้"
+msgstr "คลิกลิงก์นี้เพื่อสร้างบันทึกใหม่"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -637,7 +674,7 @@ msgstr ""
 "ที่ให้บริการโดย NTT"
 
 msgid "Full name"
-msgstr ""
+msgstr "ชื่อและนามสกุล"
 
 msgid "Get a new challenge"
 msgstr "รับรหัสใหม่"
@@ -655,7 +692,7 @@ msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัวหลังเหตุภัยพิบัติหรือไม่ (ต้องระบุ)"
+msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัว \"หลัง\" เหตุภัยพิบัติไหม (ต้องระบุ)"
 
 msgid "Help"
 msgstr "ความช่วยเหลือ"
@@ -663,6 +700,8 @@ msgstr "ความช่วยเหลือ"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"นี่คือ %(begin_tag)sไฟล์ CSV ตัวอย่าง%(end_tag)s "
+"ที่คุณสามารถแก้ไขและอัปโหลดได้"
 
 msgid "Hide Map"
 msgstr "ซ่อนแผนที่"
@@ -734,26 +773,26 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"หากรายการเหล่านี้ไม่ตรงกับบุคคลที่คุณกำลังตามหา "
-"คุณสามารถคลิกด้านล่างนี้เพื่อสร้างรายการใหม่ "
+"หากบันทึกเหล่านี้ไม่ตรงกับบุคคลที่คุณต้องการ "
+"คุณสามารถคลิกที่ด้านล่างเพื่อสร้างบันทึกใหม่"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"หากคุณเป็นผู้เขียนข้อความนี้ "
+"หากคุณเป็นผู้ให้ข้อมูลข้อความนี้ "
 "โปรดตรวจสอบอีเมลของคุณเพื่อรับลิงก์ที่จะใช้ยืนยันว่าคุณต้องการปิดใช้งานข้อความในบันทึกนี้"
-" มิฉะนั้น โปรดรอให้ผู้เขียนบันทึกยืนยันคำขอของคุณ"
+" มิเช่นนั้น โปรดรอให้ผู้ให้ข้อมูลบันทึกยืนยันคำขอของคุณ"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"หากคุณเป็นผู้เขียนข้อความนี้ "
+"หากคุณเป็นผู้ให้ข้อมูลข้อความนี้ "
 "โปรดตรวจสอบอีเมลของคุณเพื่อรับลิงก์ที่จะใช้ยืนยันว่าคุณต้องการเปิดใช้งานข้อความในบันทึกนี้"
-" มิฉะนั้น โปรดรอให้ผู้เขียนบันทึกยืนยันคำขอของคุณ"
+" มิเช่นนั้น โปรดรอให้ผู้ให้ข้อมูลบันทึกยืนยันคำขอของคุณ"
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "หากคุณมีภาพถ่ายของบุคคลนี้ ให้อัปโหลดภาพหรือป้อนที่อยู่ URL ของภาพนั้น"
@@ -765,7 +804,7 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "ที่อยู่อีเมลไม่ถูกต้อง โปรดลองอีกครั้ง"
 
 msgid "Language selection"
-msgstr ""
+msgstr "การเลือกภาษา"
 
 msgid "Last known location"
 msgstr "ตำแหน่งสุดท้ายที่ทราบ"
@@ -774,13 +813,13 @@ msgid "Link"
 msgstr "ลิงก์"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "ลิงก์ไปยังหน้าโปรไฟล์"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "ทำเครื่องหมายรายการว่าซ้ำ"
+msgstr "ทำเครื่องหมายบันทึกว่าซ้ำ"
 
 msgid "Message (required)"
 msgstr "ข้อความ (ต้องระบุ)"
@@ -801,7 +840,9 @@ msgstr "หมายเลขโทรศัพท์ปัจจุบันข
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
-msgstr "คุณสามารถดูข้อมูลเพิ่มเติมสำหรับนักพัฒนาซอฟต์แวร์ได้%(developers_link_html)sที่นี่%(link_end_html)s"
+msgstr ""
+"ขณะนี้คุณสามารถดูข้อมูลเพิ่มเติมสำหรับนักพัฒนาซอฟต์แวร์ได้\n"
+"%(developers_link_html)sที่นี่%(link_end_html)s"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -817,7 +858,7 @@ msgid "Name (required)"
 msgstr "ชื่อ (ต้องระบุ)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "คุณจำเป็นต้องระบุชื่อ โปรดย้อนกลับและลองอีกครั้ง"
+msgstr "คุณจำเป็นต้องระบุชื่อ โปรดกลับไปและลองอีกครั้ง"
 
 msgid "Neighborhood"
 msgstr "ย่านใกล้เคียง"
@@ -827,7 +868,7 @@ msgstr "ไม่"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "ไม่มีอีเมลของผู้เขียนสำหรับบันทึกนี้ %(id)s"
+msgstr "ไม่มีอีเมลของผู้ให้ข้อมูลสำหรับบันทึก %(id)s"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "ไม่พบข้อความที่ลงทะเบียนกับบริการกระดานข้อความของผู้ให้บริการ"
@@ -847,7 +888,7 @@ msgid "No results found for"
 msgstr "ไม่มีผลลัพธ์สำหรับ"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ไม่อนุญาตให้โพสต์ข้อความที่มีสถานะเป็น \"เชื่อว่าเสียชีวิตแล้ว\""
@@ -856,7 +897,7 @@ msgid "Not spam"
 msgstr "ไม่ใช่สแปม"
 
 msgid "Note author"
-msgstr "ผู้เขียนข้อความ"
+msgstr "ผู้ให้ข้อมูลข้อความ"
 
 msgid "Note text"
 msgstr "ข้อความหมายเหตุ"
@@ -872,8 +913,8 @@ msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"หรือเพิ่มลงในไซต์ของคุณเป็น%(gadget_link_html)sแกดเจ็ตของ "
-"Google%(link_end_html)s"
+"หรือเพิ่มลงในไซต์ของคุณเป็น %(gadget_link_html)sGoogle "
+"แกดเจ็ต%(link_end_html)s"
 
 msgid "Original URL"
 msgstr "URL ดั้งเดิม"
@@ -882,13 +923,13 @@ msgid "Original author's name"
 msgstr "ชื่อของผู้ให้ข้อมูลคนแรก"
 
 msgid "Original posting date"
-msgstr "วันที่เดิมที่โพสต์"
+msgstr "วันที่โพสต์ครั้งแรก"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"วันที่โพสต์เดิมไม่อยู่ในรูปแบบ ปปปป-ดด-วว หรือเป็นวันที่ที่ไม่มีจริง "
+"วันที่โพสต์ครั้งแรกไม่อยู่ในรูปแบบ ปปปป-ดด-วว หรือเป็นวันที่ที่ไม่มีจริง "
 "โปรดกลับไปและลองใหม่อีกครั้ง"
 
 msgid "Original site name"
@@ -899,18 +940,22 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"โปรดทราบ: ข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป "
+"โปรดทราบว่าข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป "
 "ซึ่งสามารถดูและใช้งานได้ Google "
 "จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"โปรดทราบ: ในไซต์ Person Finder ที่มีการใช้งานนั้น "
+"ข้อมูลทั้งหมดที่ป้อนจะปรากฏต่อสาธารณะและบุคคลทั่วไปสามารถใช้งานได้ Google"
+" จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
 
 msgid "Person Finder"
-msgstr "การค้นหาบุคคล"
+msgstr "ค้นหาบุคคล"
 
 msgid "Phone"
 msgstr "โทรศัพท์"
@@ -919,7 +964,7 @@ msgid "Phone number"
 msgstr "หมายเลขโทรศัพท์"
 
 msgid "Photo"
-msgstr "รูปภาพ"
+msgstr "ภาพ"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -940,19 +985,19 @@ msgstr ""
 "หรือเปลี่ยนฟิลด์ \"สถานะของบุคคลนี้\" แล้ว"
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "โปรดตรวจสอบว่าตรงกับบุคคลที่คุณกำลังจะรายงานหรือไม่"
+msgstr "โปรดตรวจสอบว่าตรงกับบุคคลที่คุณกำลังจะรายงานไหม"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "โปรดยืนยันที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
+msgstr "โปรดยืนยันที่อยู่อีเมลของคุณเพื่อสมัครรับข้อมูลอัปเดต"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "โปรดป้อนที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
+msgstr "โปรดป้อนที่อยู่อีเมลของคุณเพื่อสมัครรับข้อมูลอัปเดต"
 
 msgid "Please explain why you think these are the same person"
-msgstr "โปรดอธิบายว่าเหตุใดคุณจึงคิดว่านี่เป็นบุคคลคนเดียวกัน"
+msgstr "โปรดอธิบายว่าเหตุใดคุณจึงคิดว่านี่เป็นบุคคลเดียวกัน"
 
 msgid "Please fill in all the required fields."
-msgstr "โปรดป้อนข้อมูลในฟิลด์ที่จำเป็นทั้งหมด"
+msgstr "โปรดป้อนข้อมูลในช่องที่ต้องกรอกทั้งหมด"
 
 msgid "Please fill in your email address."
 msgstr "โปรดกรอกที่อยู่อีเมลของคุณ"
@@ -961,7 +1006,7 @@ msgid "Please provide an valid email address."
 msgstr "โปรดป้อนที่อยู่อีเมลที่ถูกต้อง"
 
 msgid "Possible duplicates"
-msgstr "รายการที่อาจซ้ำกัน"
+msgstr "บันทึกที่อาจซ้ำกัน"
 
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
@@ -973,13 +1018,13 @@ msgid "Proceed"
 msgstr "ดำเนินการต่อ"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "หน้าโปรไฟล์"
 
 msgid "Profile page"
-msgstr ""
+msgstr "หน้าโปรไฟล์"
 
 msgid "Provide information"
-msgstr ""
+msgstr "ให้ข้อมูล"
 
 msgid "Provide information about this person"
 msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
@@ -997,17 +1042,17 @@ msgid "Reason for disabling notes:"
 msgstr "สาเหตุที่ปิดใช้งานข้อความ:"
 
 msgid "Records Similar to"
-msgstr "รายการที่คล้ายกับ"
+msgstr "บันทึกที่คล้ายกับ"
 
 msgid "Records selected"
-msgstr "รายการที่เลือก"
+msgstr "บันทึกที่เลือก"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "บันทึกข้อมูลที่มีชื่อและที่อยู่ตรงกัน \"%(query)s\""
+msgstr "บันทึกที่มีชื่อและที่อยู่ตรงกับ \"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "นำออก"
 
 msgid "Report spam"
 msgstr "รายงานสแปม"
@@ -1017,10 +1062,10 @@ msgid "Return to the record for %(full_name)s."
 msgstr "กลับไปยังบันทึกสำหรับ %(full_name)s"
 
 msgid "Reveal note"
-msgstr "แสดงบันทึก"
+msgstr "แสดงข้อความ"
 
 msgid "Save this record"
-msgstr "บันทึกรายการนี้"
+msgstr "บันทึกบันทึกนี้"
 
 msgid "Search Results for"
 msgstr "ผลการค้นหาสำหรับ"
@@ -1030,13 +1075,13 @@ msgstr "ค้นหาบุคคลนี้"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "ดู %(begin_tag)sวิกิ%(end_tag)s สำหรับคำแนะนำเพิ่มเติม"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "เลือกเว็บไซต์ที่จะเพิ่มหน้าโปรไฟล์..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "เลือกรายการที่จะทำเครื่องหมายว่าซ้ำไม่เกิน 3 รายการ:"
+msgstr "เลือกบันทึกที่จะทำเครื่องหมายว่าซ้ำไม่เกิน 3 รายการ:"
 
 msgid "Send email"
 msgstr "ส่งอีเมล"
@@ -1051,10 +1096,10 @@ msgid "Show sensitive information"
 msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
 
 msgid "Sign in"
-msgstr ""
+msgstr "ลงชื่อเข้าใช้"
 
 msgid "Sign out"
-msgstr ""
+msgstr "ออกจากระบบ"
 
 msgid "Someone has received information that this person is alive"
 msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
@@ -1069,13 +1114,13 @@ msgid "Someone is seeking information about this person"
 msgstr "มีผู้กำลังค้นหาข้อมูลเกี่ยวกับบุคคลนี้"
 
 msgid "Source of this record"
-msgstr "แหล่งที่มาของรายการนี้"
+msgstr "แหล่งที่มาของบันทึกนี้"
 
 msgid "Source of this record (required)"
-msgstr "แหล่งที่มาของรายการนี้ (ต้องระบุ)"
+msgstr "แหล่งที่มาของบันทึกนี้ (ต้องระบุ)"
 
 msgid "Status"
-msgstr "สถานะ "
+msgstr "สถานะ"
 
 msgid "Status of this person"
 msgstr "สถานะของบุคคลนี้"
@@ -1091,19 +1136,19 @@ msgstr "สมัครรับข้อมูล"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตอัปเดตเกี่ยวกับ %(full_name)s"
+msgstr "สมัครรับข้อมูลอัปเดตเกี่ยวกับ %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
+msgstr "สมัครรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "เปลี่ยนไปยังที่อยู่"
 
 msgid "Switch to duplicate marking mode"
 msgstr "เปลี่ยนไปที่โหมดทำเครื่องหมายว่าซ้ำ"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "เปลี่ยนไปที่ละติจูด/ลองจิจูด"
 
 msgid "Switch to normal view mode"
 msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
@@ -1115,19 +1160,8 @@ msgid "Terms of Service"
 msgstr "ข้อกำหนดในการให้บริการ"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1137,10 +1171,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "คุณต้องระบุชื่อผู้ให้ข้อมูลคนแรก โปรดกลับไปและลองใหม่อีกครั้ง"
 
 msgid "The author has disabled notes on this record."
-msgstr "ผู้เขียนปิดใช้งานข้อความในบันทึกนี้"
+msgstr "ผู้ให้ข้อมูลปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "The author has disabled status updates on this record."
-msgstr "ผู้เขียนปิดใช้งานการอัปเดตสถานะของบันทึกนี้"
+msgstr "ผู้ให้ข้อมูลปิดใช้งานการอัปเดตสถานะของบันทึกนี้"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
@@ -1149,22 +1183,22 @@ msgid "The reason this note is being marked as spam:"
 msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
 
 msgid "The record cannot be extended."
-msgstr "ไม่สามารถขยายเวลาบันทึกข้อมูลได้"
+msgstr "ไม่สามารถขยายเวลาบันทึกได้"
 
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "ขยายเวลาบันทึกข้อมูลถึง %(expiry_date)s"
+msgstr "ขยายเวลาบันทึกถึง %(expiry_date)s แล้ว"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"สถานะที่คุณเลือกแจ้งว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก "
-"''ใช่'' เพื่อแจ้งว่าคุณได้ติดต่อกับบุคคลนี้"
+"สถานะที่คุณเลือกบ่งบอกว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก "
+"''ใช่'' ด้วยเพื่อบ่งบอกว่าคุณได้ติดต่อกับบุคคลนี้"
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1176,23 +1210,23 @@ msgstr "โทเค็น %(token)s ไม่ถูกต้อง"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "พบ %(num_results)s รายการที่มีชื่อคล้ายกัน"
+msgstr "มีบันทึกที่มีชื่อคล้ายกันอยู่ %(num_results)s รายการ"
 
 msgid "There are some existing records with similar names."
-msgstr "พบหลายรายการที่มีชื่อคล้ายกัน"
+msgstr "มีบันทึกที่มีชื่อคล้ายกันอยู่หลายรายการ"
 
 msgid "There is one existing record with a similar name."
-msgstr "พบหนึ่งรายการที่มีชื่อคล้ายกัน"
+msgstr "มีบันทึกที่มีชื่อคล้ายกันอยู่หนึ่งรายการ"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "เกิดปัญหาขณะประมวลผลภาพ โปรดลองใช้ภาพอื่น"
+msgstr "เกิดปัญหาขณะดำเนินการกับภาพ โปรดลองใช้ภาพอื่น"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
-"เกิดปัญหาขณะประมวลผลคำขอของคุณ ขออภัยในความไม่สะดวก "
+"เกิดปัญหาขณะดำเนินการคำขอของคุณ ขออภัยในความไม่สะดวก "
 "ผู้ดูแลระบบของเราจะตรวจสอบที่มาของปัญหาดังกล่าว อย่างไรก็ตาม "
 "โปรดตรวจสอบว่ารูปแบบของคำขอถูกต้องหรือไม่"
 
@@ -1201,11 +1235,11 @@ msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้%(apache_link_html)sสัญญาอนุญาต "
+"แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้ %(apache_link_html)sสัญญาอนุญาต "
 "Apache 2.0%(link_end_html)s"
 
 msgid "This is a new record."
-msgstr "นี่เป็นรายการใหม่"
+msgstr "นี่เป็นบันทึกใหม่"
 
 msgid "This link is invalid."
 msgstr "ลิงก์นี้ไม่ถูกต้อง"
@@ -1229,16 +1263,16 @@ msgid "This person has posted a message"
 msgstr "บุคคลนี้ได้โพสต์ข้อความ"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr "ไม่มีข้อความของบุคคลนี้อยู่หรือถูกลบไปแล้ว"
+msgstr "ไม่มีข้อความของบุคคลนี้อยู่หรือข้อความถูกลบไปแล้ว"
 
 msgid "This record has served its purpose."
 msgstr "บันทึกนี้ได้นำมาใช้ตามวัตถุประสงค์แล้ว"
 
 msgid "This record is a duplicate of"
-msgstr "รายการนี้ซ้ำกับ"
+msgstr "บันทึกนี้ซ้ำกับ"
 
 msgid "This record is copied from another source."
-msgstr "รายการนี้คัดลอกมาจากแหล่งที่มาอื่น"
+msgstr "บันทึกนี้คัดลอกมาจากแหล่งที่มาอื่น"
 
 msgid "This record is inappropriate."
 msgstr "บันทึกนี้ไม่เหมาะสม"
@@ -1250,12 +1284,14 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"ขณะนี้ที่เก็บนี้ยังอยู่ในโหมดการทดสอบ ในขณะที่โหมดการทดสอบมีผลอยู่ "
+"บันทึกที่มีอายุเกินกว่า 6 ชั่วโมงจะถูกลบออก"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "หากต้องการแนบภาพเข้ากับข้อความนี้ โปรดอัปโหลดภาพหรือป้อน URL ของภาพ"
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "หากต้องการลบข้อมูล โปรดเข้าสู่ Person Finder จากเดสก์ท็อป"
 
 msgid "To unsubscribe, follow this link"
 msgstr "หากต้องการยกเลิกการสมัครรับข้อมูล ให้ไปที่ลิงก์นี้"
@@ -1266,10 +1302,10 @@ msgstr "หากคุณต้องการดูหรือเพิ่ม
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr ""
+msgstr "พิมพ์ที่อยู่หรือเปิดแผนที่ด้านล่างและระบุตำแหน่งโดยการคลิกบนแผนที่"
 
 msgid "Type an address."
-msgstr ""
+msgstr "พิมพ์ที่อยู่"
 
 msgid "Type the two words:"
 msgstr "พิมพ์สองคำนี้:"
@@ -1281,19 +1317,19 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of original record"
-msgstr "URL ของรายการดั้งเดิม"
+msgstr "URL ของบันทึกเดิม"
 
 msgid "Unspecified"
 msgstr "ไม่ระบุ"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "อัปโหลด"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "อัปโหลดไฟล์ CSV"
 
 msgid "View the record"
 msgstr "ดูบันทึกข้อมูล"
@@ -1317,15 +1353,17 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"ในขณะที่โหมดการทดสอบมีผลอยู่ บันทึกที่มีอายุเกินกว่า 6 "
+"ชั่วโมงจะถูกลบออกโดยไม่คำนึงถึงวันหมดอายุ"
 
 msgid "Yes"
 msgstr "ใช่"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "ใช่ ขอให้ผู้เขียนบันทึกปิดใช้งานข้อความ"
+msgstr "ใช่ ขอให้ผู้ให้ข้อมูลบันทึกปิดใช้งานข้อความ"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "ใช่ ขอให้ผู้เขียนบันทึกเปิดใช้งานข้อความ"
+msgstr "ใช่ ขอให้ผู้ให้ข้อมูลบันทึกเปิดใช้งานข้อความ"
 
 msgid "Yes, delete the record"
 msgstr "ใช่ ลบบันทึกนี้"
@@ -1334,7 +1372,7 @@ msgid "Yes, disable notes on this record."
 msgstr "ใช่ ปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "Yes, extend the record"
-msgstr "ใช่ ขยายเวลาของบันทึกข้อมูล"
+msgstr "ใช่ ขยายเวลาของบันทึก"
 
 msgid "Yes, restore this record"
 msgstr "ใช่ กู้คืนบันทึกนี้"
@@ -1346,43 +1384,43 @@ msgid "Yes, update the note"
 msgstr "ใช่ อัปเดตข้อความนี้"
 
 msgid "You are already subscribed. "
-msgstr "คุณได้สมัครเป็นสมาชิกแล้ว "
+msgstr "คุณได้สมัครรับข้อมูลแล้ว "
 
 msgid "You are already unsubscribed."
-msgstr "คุณได้ยกเลิกการเป็นสมาชิกแล้ว"
+msgstr "คุณได้ยกเลิกการสมัครแล้ว"
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "ขณะนี้คุณลงชื่อเข้าใช้เป็น %(begin_span_tag)s%(email)s%(end_span_tag)s"
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "คุณไม่ได้ลงชื่อเข้าใช้อยู่ในขณะนี้"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "คุณสามารถ %(begin_tag)sดูบันทึก%(end_tag)s ก่อนที่จะลบ"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "คุณสามารถดูบันทึกแบบเต็มได้ที่ %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr "คุณสมัครเป็นสมาชิกเรียบร้อยแล้ว"
+msgstr "คุณสมัครรับข้อมูลเรียบร้อยแล้ว"
 
 msgid "You have successfully unsubscribed."
-msgstr "คุณยกเลิกการเป็นสมาชิกเรียบร้อยแล้ว"
+msgstr "คุณยกเลิกการสมัครเรียบร้อยแล้ว"
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
-"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครรับข้อมูลการอัปเดตของบุคคลต่อไปนี้:"
+"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครรับข้อมูลการอัปเดตของบุคคลต่อไปนี้"
 "\n"
 
 msgid "Your e-mail address"
@@ -1416,51 +1454,49 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"คำขอของคุณได้รับการประมวลผลเสร็จเรียบร้อยแล้ว "
-"โปรดตรวจสอบกล่องจดหมายของคุณและยืนยันว่าคุณต้องการโพสต์ข้อความโดยไปที่ "
-"URL ที่แสดงในอีเมล"
+"คำขอของคุณได้รับการดำเนินการเสร็จเรียบร้อยแล้ว "
+"โปรดตรวจสอบกล่องจดหมายและยืนยันว่าคุณต้องการโพสต์ข้อความโดยไปที่ URL "
+"ที่แสดงในอีเมล"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[การค้นหาบุคคล] ยืนยันข้อความของคุณสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] ยืนยันข้อความของคุณเกี่ยวกับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] แจ้งเตือนการลบสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] การแจ้งเตือนการลบสำหรับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] ต้องการปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\" ไหม"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] ต้องการเปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\" ไหม"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[การค้นหาบุคคล] การเปิดใช้งานข้อความสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] การเปิดใช้งานการแจ้งเตือนข้อความสำหรับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[การค้นหาบุคคล] ขณะนี้ได้ปิดใช้งานข้อความสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] ขณะนี้ได้ปิดใช้งานข้อความสำหรับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[การค้นหาบุคคล] ขณะนี้ได้เปิดใช้งานข้อความสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] ขณะนี้ได้เปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] แจ้งเตือนการกู้คืนบันทึกสำหรับ \"%(full_name)s\""
+msgstr "[Person Finder] การแจ้งเตือนการกู้คืนบันทึกสำหรับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] อัปเดตสถานะสำหรับ %(full_name)s"
+msgstr "[Person Finder] การอัปเดตสถานะสำหรับ %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-"[Person Finder] คุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตสถานะสำหรับ "
-"%(full_name)s"
+msgstr "[Person Finder] คุณได้สมัครรับข้อมูลการอัปเดตสถานะสำหรับ %(full_name)s"
 
 msgid "at"
 msgstr "ที่"
@@ -1469,13 +1505,13 @@ msgid "female"
 msgstr "หญิง"
 
 msgid "in test mode"
-msgstr ""
+msgstr "ในโหมดการทดสอบ"
 
 msgid "male"
 msgstr "ชาย"
 
 msgid "on"
-msgstr "เมื่อ"
+msgstr "เกี่ยวกับ"
 
 msgid "other"
 msgstr "อื่นๆ"

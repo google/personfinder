@@ -10,7 +10,7 @@
 # limitations under the License.
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2000-01-01 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -35,9 +35,11 @@ msgstr ""
 "\n"
 "\n"
 "  Bagi memastikan yang nota hanya dilumpuhkan atau didayakan dengan "
-"kebenaran pengarang rekod, mesej pengesahan akan dihantar kepada "
-"pengarang rekod tersebut. Jika anda pengarangnya, semak e-mel anda "
-"selepas mengklik butang di bawah.\n"
+"kebenaran  \n"
+"  pengarang rekod, mesej pengesahan akan dihantar kepada pengarang rekod "
+"tersebut.\n"
+"  Jika anda pengarangnya, semak e-mel anda selepas mengklik butang di "
+"bawah.\n"
 "\n"
 "  "
 
@@ -59,13 +61,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" %(author_name)s, Seorang pengguna telah memohon agar mendayakan nota "
-"pada rekod untuk \"%(full_name)s\". Alamat e-mel anda direkodkan sebagai "
-"pengarang rekod ini. Untuk mendayakan nota pada rekod ini, ikut pautan "
-"ini dalam masa 3 hari:\n"
+"%(author_name)s yang dihormati,\n"
+"\n"
+"Seorang pengguna telah memohon untuk mendayakan nota pada rekod untuk\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Alamat e-mel anda direkodkan sebagai pengarang rekod ini.  Untuk "
+"mendayakan nota pada rekod ini, ikut pautan ini dalam masa 3 hari:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,10 +90,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" %(author_name)s, Seorang pengguna telah memohon agar anda melumpuhkan "
-"nota pada rekod untuk \"%(full_name)s\". Alamat e-mel anda direkodkan "
-"sebagai pengarang rekod ini. Untuk melumpuhkan nota pada rekod ini, ikut "
-"pautan ini dalam masa 3 hari:\n"
+"%(author_name)s yang dihormati,\n"
+"\n"
+"Seorang pengguna telah memohon agar anda melumpuhkan nota pada rekod "
+"untuk\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Alamat e-mel anda direkodkan sebagai pengarang rekod ini.  Untuk "
+"melumpuhkan nota pada rekod ini, ikut pautan ini dalam masa 3 hari:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -107,9 +115,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" %(author_name)s, Anda baru sahaja memasukkan nota pada rekod untuk "
-"\"%(full_name)s\". Untuk menyiarkan nota anda, ikut pautan ini dalam masa"
-" 3 hari:\n"
+"%(author_name)s yang dihormati,\n"
+"Anda baru sahaja memasukkan nota pada rekod untuk \"%(full_name)s\".  \n"
+"Untuk menyiarkan nota anda, ikut pautan ini dalam masa 3 hari:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -121,12 +129,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Amaran: rekod ini akan tamat tempoh dalam masa kurang"
+" daripada %(expiration_days)s hari.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Amaran: rekod ini akan tamat tempoh dalam masa kurang"
+" daripada sehari.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -135,7 +151,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Anda pasti hendak memadam rekod untuk \"%(full_name)s\"?\n"
+"      Adakah anda pasti mahu memadamkan rekod untuk \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -145,8 +161,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Adakah anda pasti mahu melumpuhkan mencatat pada \"%(full_name)s\"?"
-"\n"
+"      Adakah anda pasti mahu melumpuhkan nota pada \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -157,7 +172,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Adakah anda pasti mahu melumpuhkan mencatat pada rekod "
+"      Adakah anda pasti mahu melumpuhkan nota pada rekod "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -168,7 +183,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Adakah anda pasti mahu mendayakan mencatat pada \"%(full_name)s\"?\n"
+"      Adakah anda pasti mahu mendayakan nota pada \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -178,6 +193,10 @@ msgid ""
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Adakah anda pasti mahu melanjutkan tamat tempoh untuk rekod "
+"\"%(full_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -196,7 +215,7 @@ msgid ""
 msgstr ""
 "\n"
 "      Jika anda teruskan dengan pemadaman,\n"
-"      rekod ini tidak boleh dicari atau dilihat lagi pada tapak ini.\n"
+"     rekod ini tidak boleh dicari atau dilihat lagi pada tapak ini.\n"
 "    "
 
 #, python-format
@@ -208,6 +227,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Jika anda ingin memadamkannya secara kekal,\n"
+"      sila hubungi sumber asal.\n"
+"      Anda boleh melihat rekod asal di\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -219,6 +244,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      URL yang anda masukkan tidak kelihatan seperti URL profil "
+"%(website)s yang sah.\n"
+"      Sila pergi ke halaman profil orang ini di %(website)s, kemudian "
+"salin dan tampal\n"
+"      URL tersebut di sini.\n"
+"      "
 
 msgid ""
 "\n"
@@ -229,6 +261,13 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Rekod ini merupakan salinan rekod dari sumber lain.\n"
+"      Anda boleh memadamkan rekod tersebut di sini,\n"
+"      tetapi anda perlu menyedari bahawa\n"
+"      kami mungkin menerima salinannya yang lain dari sumber asal "
+"kemudian.\n"
+"    "
 
 msgid ""
 "\n"
@@ -242,9 +281,11 @@ msgid ""
 msgstr ""
 "\n"
 "    Bagi memastikan yang nota hanya dilumpuhkan atau didayakan dengan "
-"kebenaran pengarang rekod, mesej pengesahan akan dihantar kepada "
-"pengarang rekod tersebut. Jika anda pengarangnya, semak e-mel anda "
-"selepas mengklik butang di bawah.\n"
+"kebenaran\n"
+"    pengarang rekod, mesej pengesahan akan dihantar kepada pengarang "
+"rekod tersebut.\n"
+"    Jika anda pengarangnya, semak e-mel anda selepas mengklik butang di "
+"bawah.\n"
 "  "
 
 msgid ""
@@ -256,7 +297,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Rekod masih lagi boleh dilihat pada tapak ini, tetapi tiada siapa akan "
-"dapat mencatatkan nota selanjutnya pada rekod ini.\n"
+"dapat mencatatkan\n"
+"  nota selanjutnya pada rekod ini.\n"
 "  "
 
 msgid ""
@@ -268,7 +310,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Untuk mencatatkan nota anda, sila masukkan alamat e-mel anda di bawah "
-"dan ikut pautan pengesahan yang anda akan terima.\n"
+"dan ikut pautan \n"
+"  pengesahan yang anda akan terima.\n"
 "  "
 
 #, python-format
@@ -281,11 +324,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Seorang pengguna telah memadam rekod untuk \"%(full_name)s\"\n"
+"Seorang pengguna telah memadamkan rekod untuk \"%(full_name)s\"\n"
 "di %(site_url)s.\n"
 "\n"
-"Kami memaklumkan kepada anda mengenai pemadaman kerana alamat e-mel anda\n"
-"direkod sebagai pengarang nota pada rekod ini.\n"
+"Kami memaklumkan anda mengenai pemadaman kerana alamat e-mel anda "
+"direkodkan sebagai pengarang nota pada rekod ini.\n"
 
 #, python-format
 msgid ""
@@ -296,6 +339,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Seorang pengguna telah memadamkan rekod untuk \"%(full_name)s\"\n"
+"di %(site_url)s.\n"
+"\n"
+"Kami memaklumkan kepada anda mengenai pemadaman kerana alamat e-mel anda "
+"direkod sebagai pengarang nota pada rekod ini.\n"
 
 #, python-format
 msgid ""
@@ -303,6 +352,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Selepas %(days_until_deletion)s hari, rekod akan dipadamkan secara kekal."
+"\n"
 
 #, python-format
 msgid ""
@@ -313,6 +365,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOTA: Jika anda percaya rekod ini telah silap dipadamkan, anda boleh "
+"mengembalikannya semula dengan mengikut pautan ini dalam masa "
+"%(days_until_deletion)s hari berikutnya:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -327,8 +385,9 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Nota kini dilumpuhkan pada rekod untuk \"%(full_name)s\". Untuk melihat "
-"rekod, ikut pautan ini:\n"
+"Nota kini dilumpuhkan pada rekod untuk \"%(full_name)s\".  Untuk melihat "
+"rekod,\n"
+"ikut pautan ini:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -348,8 +407,9 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Nota kini didayakan pada rekod untuk \"%(full_name)s\". Untuk melihat "
-"rekod, ikut pautan ini:\n"
+"Nota kini didayakan pada rekod untuk \"%(full_name)s\".  Untuk melihat "
+"rekod,\n"
+"ikut pautan ini:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -370,14 +430,13 @@ msgid ""
 msgstr ""
 "\n"
 "Pengarang rekod untuk \"%(full_name)s\"\n"
-"(yang telah dipadam sebelum ini) telah menyimpan semula rekod tersebut.  "
-"Untuk melihat\n"
-"rekod, ikut pautan ini:\n"
+"(yang telah dipadamkan sebelum ini) telah mengembalikan semula rekod "
+"tersebut.  Untuk melihat rekod ini, ikut pautan ini:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Kami memaklumkan anda kerana alamat e-mel anda dikaitkan dengan\n"
-"rekod orang ini atau nota pada rekod.\n"
+"Kami memaklumkan anda kerana alamat e-mel anda dikaitkan dengan rekod "
+"orang ini atau nota pada rekod.\n"
 
 #, python-format
 msgid ""
@@ -399,63 +458,64 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Anda telah melanggan nota pada \"%(full_name)s\". Anda boleh melihat "
-"rekod ini di\n"
+"Anda telah melanggan nota pada \"%(full_name)s\".\n"
+"\n"
+"Anda boleh melihat rekod ini di\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
 "Untuk menyahlanggan, ikut pautan ini: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr ""
+msgstr "(klik untuk mendedahkan)"
 
 msgid "(unknown)"
-msgstr ""
+msgstr "(tidak diketahui)"
 
 msgid "A message for this person or others seeking this person"
-msgstr ""
+msgstr "Mesej untuk orang ini atau orang lain yang mencari orang ini"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Kira-kira 1 bulan (30 hari) daripada sekarang"
+msgstr "Kira-kira 1 bulan (30 hari) dari sekarang"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Kira-kira 1 bulan (360 hari) daripada sekarang"
+msgstr "Kira-kira 1 tahun (360 hari) dari sekarang"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Kira-kira 2 bulan (60 hari) daripada sekarang"
+msgstr "Kira-kira 2 bulan (60 hari) dari sekarang"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Kira-kira 3 bulan (90 hari) daripada sekarang"
+msgstr "Kira-kira 3 bulan (90 hari) dari sekarang"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Kira-kira 6 bulan (180 hari) daripada sekarang"
+msgstr "Kira-kira 6 bulan (180 hari) dari sekarang"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Mengenai Pencari Orang Google"
 
 msgid "About you (required)"
-msgstr ""
+msgstr "Mengenai anda (diperlukan)"
 
 msgid "Administration"
 msgstr "Pentadbiran"
 
 msgid "Age"
-msgstr ""
+msgstr "Umur"
 
 msgid "Alternate family names"
-msgstr ""
+msgstr "Nama keluarga gantian"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Nama berian gantian"
 
 msgid "Alternate names"
-msgstr ""
+msgstr "Nama gantian"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Anda pasti nota ini bukan spam?"
@@ -464,143 +524,137 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "Anda pasti hendak menandakan nota ini sebagai spam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Anda pasti hendak menyimpan semula rekod ini dari pemadaman?"
+msgstr "Anda pasti hendak mengembalikan semula rekod ini daripada pemadaman?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Suapan atom bagi kemas kini mengenai orang ini"
 
-#, fuzzy
 msgid "Author's e-mail address"
-msgstr "Alamat e-mel anda:"
+msgstr "Alamat e-mel pengarang"
 
 msgid "Author's name"
-msgstr ""
+msgstr "Nama pengarang"
 
 msgid "Author's phone number"
-msgstr ""
+msgstr "Nombor telefon pengarang"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Kunci kebenaran"
 
 msgid "Back to results list"
-msgstr ""
+msgstr "Kembali ke senarai hasil carian"
 
 msgid "Back to start"
-msgstr ""
+msgstr "Kembali ke permulaan"
 
 msgid "CSV file"
-msgstr ""
+msgstr "fail CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
 msgstr "Tidak menjumpai nota dengan id %(id)s"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgid "City"
-msgstr ""
+msgstr "Bandar"
 
 msgid "Click here to view results."
-msgstr ""
+msgstr "Klik di sini untuk melihat hasil carian."
 
 msgid "Close window"
-msgstr ""
+msgstr "Tutup tetingkap"
 
-#, fuzzy
 msgid "Compare these records"
-msgstr "Ya, simpan semula rekod ini"
+msgstr "Bandingkan rekod ini"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
+msgstr "Salin dan tampal kod HTML berikut untuk meletakkan alat ini di tapak anda"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Buat rekod baharu"
 
 msgid "Create a new record for"
-msgstr ""
+msgstr "Buat rekod baharu untuk"
 
 msgid "Create a new record for a missing person"
-msgstr ""
+msgstr "Buat rekod baharu untuk orang yang hilang"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Peristiwa krisis"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr ""
+msgstr "Sedang mengesan kira-kira %(num_people)s rekod."
 
-#, fuzzy
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr "Tarikh tidak boleh pada masa hadapan.  Sila undur dan cuba lagi."
 
 msgid "Date of birth"
-msgstr ""
+msgstr "Tarikh lahir"
 
 msgid "Delete this record"
-msgstr "Padam rekod ini"
+msgstr "Padamkan rekod ini"
 
-#, fuzzy
 msgid "Describe how to identify this person."
-msgstr "Langgan kepada kemas kini mengenai orang ini"
+msgstr "Huraikan cara hendak mengenal pasti orang ini."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Langgan kepada kemas kini mengenai orang ini"
+msgstr "Huraikan ciri fizikal orang ini."
 
 msgid "Description"
-msgstr ""
+msgstr "Keterangan"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Versi desktop"
 
 msgid "Developers"
-msgstr ""
+msgstr "Pembangun"
 
 msgid "Disable notes on this record"
 msgstr "Lumpuhkan nota pada rekod ini"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Adakah orang ini mempunyai halaman profil di tapak web yang lain?"
 
 msgid "Download the sound as MP3"
 msgstr "Muat turun bunyi sebagai MP3"
 
 msgid "E-mail"
-msgstr ""
+msgstr "E-mel"
 
-#, fuzzy
 msgid "E-mail address"
-msgstr "Alamat e-mel anda:"
+msgstr "Alamat e-mel"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr ""
+msgstr "Membenamkan Aplikasi"
 
 msgid "Enable notes on this record"
 msgstr "Dayakan nota pada rekod ini"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Pastikan semua tarikh dalam format dd-mm-yyyyThh:mm:ssZ dalam UTC"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr ""
+msgstr "Masukkan sebagai DD-MM-YYYY"
 
 msgid "Enter the person's given and family names."
-msgstr "Masukkan nama yang diberikan dan nama keluarga orang tersebut."
+msgstr "Masukkan nama berian dan nama keluarga orang tersebut."
 
-#, fuzzy
 msgid "Enter the person's name or parts of the name."
-msgstr "Masukkan nama orang tersebut."
+msgstr "Masukkan nama atau sebahagian daripada nama orang tersebut."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Masukkan nama yang diberikan dan nama keluarga orang tersebut."
+msgstr ""
+"Masukkan nama, sebahagian daripada nama atau nombor telefon mudah alih "
+"orang tersebut."
 
 msgid "Enter the person's name."
 msgstr "Masukkan nama orang tersebut."
@@ -613,24 +667,26 @@ msgstr "Tarikh tamat tempoh rekod ini"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Lanjutkan tarikh tamat tempoh selama %(extension_days)s hari"
 
 msgid "Family name"
-msgstr ""
+msgstr "Nama keluarga"
 
 msgid "Feed of updates about this person"
 msgstr "Suapan kemas kini mengenai orang ini"
 
 msgid "Follow this link to create a new record"
-msgstr ""
+msgstr "Ikut pautan ini untuk membuat rekod baharu"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Untuk telefon selain telefon mudah alih, sila gunakan perkhidmatan 171 "
+"yang disediakan oleh NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Nama penuh"
 
 msgid "Get a new challenge"
 msgstr "Dapatkan cabaran baru"
@@ -642,15 +698,15 @@ msgid "Get an audio challenge"
 msgstr "Dapatkan cabaran audio"
 
 msgid "Given name"
-msgstr ""
+msgstr "Nama berian"
 
 msgid "Google Person Finder"
 msgstr "Pencari Orang Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Adakah anda telah bercakap dengan orang ini secara peribadi SELEPAS "
-"bencana?(diperlukan)"
+"Adakah anda telah bercakap sendiri dengan orang ini SELEPAS bencana? "
+"(diperlukan)"
 
 msgid "Help"
 msgstr "Bantuan"
@@ -658,34 +714,35 @@ msgstr "Bantuan"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Berikut ialah %(begin_tag)scontoh fail CSV%(end_tag)s yang anda boleh "
+"edit dan muat naik"
 
 msgid "Hide Map"
-msgstr ""
+msgstr "Sembunyikan Peta"
 
 msgid "Hide note"
 msgstr "Sembunyikan nota"
 
 msgid "Home Address"
-msgstr ""
+msgstr "Alamat Rumah"
 
-#, fuzzy
 msgid "Home address"
-msgstr "Alamat e-mel anda:"
+msgstr "Alamat rumah"
 
 msgid "Home country"
-msgstr ""
+msgstr "Negera asal"
 
 msgid "How can this person be reached now?"
-msgstr ""
+msgstr "Bagaimanakah hendak menghubungi orang ini sekarang?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr ""
+msgstr "Cara orang lain yang berminat dengan orang ini boleh menghubungi anda"
 
 msgid "I am seeking information"
-msgstr ""
+msgstr "Saya sedang mencari maklumat"
 
 msgid "I am this person"
-msgstr ""
+msgstr "Sayalah orang ini"
 
 msgid "I do not want any more updates on this record."
 msgstr "Saya tidak mahu sebarang kemas kini lagi pada rekod ini."
@@ -693,20 +750,17 @@ msgstr "Saya tidak mahu sebarang kemas kini lagi pada rekod ini."
 msgid "I do not want my information online anymore."
 msgstr "Saya tidak mahu maklumat saya berada dalam talian lagi."
 
-#, fuzzy
 msgid "I have information about someone"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Saya mempunyai maklumat tentang seseorang"
 
 msgid "I have reason to think this person is missing"
-msgstr ""
+msgstr "Saya mempunyai alasan untuk merasakan orang ini hilang"
 
-#, fuzzy
 msgid "I have received information that this person is alive"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Saya telah menerima maklumat bahawa orang ini masih hidup"
 
-#, fuzzy
 msgid "I have received information that this person is dead"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Saya telah menerima maklumat bahawa orang ini mati"
 
 msgid "I have received spam due to this note."
 msgstr "Saya telah menerima spam disebabkan oleh nota ini."
@@ -718,21 +772,23 @@ msgid "I prefer not to specify."
 msgstr "Saya memilih untuk tidak nyatakan."
 
 msgid "I'm looking for someone"
-msgstr ""
+msgstr "Saya sedang mencari seseorang"
 
 msgid "Identify who you are looking for"
-msgstr ""
+msgstr "Kenal pasti orang yang anda cari"
 
 msgid "Identify who you have information about"
-msgstr ""
+msgstr "Kenal pasti orang yang maklumat mengenainya anda miliki"
 
 msgid "Identifying information"
-msgstr ""
+msgstr "Mengenal pasti maklumat"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
+"Jika tiada satu pun rekod ini sepadan dengan orang yang anda fikirkan, "
+"anda boleh klik di bawah untuk membuat rekod baharu."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -756,6 +812,8 @@ msgstr ""
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
+"Jika anda mempunyai foto orang ini, muat naik foto tersebut atau masukkan"
+" alamat URLnya."
 
 msgid "Incorrect.  Try again."
 msgstr "Salah. Cuba lagi."
@@ -764,40 +822,37 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Alamat e-mel tidak sah. Sila cuba lagi."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Pilihan bahasa"
 
 msgid "Last known location"
-msgstr ""
+msgstr "Lokasi terakhir yang diketahui"
 
 msgid "Link"
-msgstr ""
+msgstr "Paut"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Paut ke halaman profil"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr ""
+msgstr "Tandakan rekod sebagai salinan"
 
 msgid "Message (required)"
-msgstr ""
+msgstr "Mesej (diperlukan)"
 
-#, fuzzy
 msgid "Message is required. Please go back and try again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr "Mesej diperlukan. Sila undur dan cuba lagi."
 
-#, fuzzy
 msgid "Missing person's current contact information"
-msgstr "Orang ini telah berhubungan dengan seseorang"
+msgstr "Maklumat hubungan semasa orang yang hilang"
 
-#, fuzzy
 msgid "Missing person's current e-mail address"
-msgstr "Alamat e-mel anda:"
+msgstr "Alamat e-mel semasa orang yang hilang"
 
 msgid "Missing person's current phone number"
-msgstr ""
+msgstr "Nombor telefon terkini orang yang hilang"
 
 #, python-format
 msgid ""
@@ -811,12 +866,14 @@ msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
+"Lebih 100 hasil carian; hanya memaparkan 100 yang pertama.  Cuba masukkan"
+" lagi tentang nama"
 
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Nama (diperlukan)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nama diperlukan. Sila undur dan cuba lagi."
@@ -825,14 +882,14 @@ msgid "Neighborhood"
 msgstr "Kejiranan"
 
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #, python-format
 msgid "No author email for record %(id)s."
 msgstr "Tiada e-mel pengarang untuk rekod %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Tiada mesej didapati didaftarkan pada perkhidmatan papan mesej pembawa."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
@@ -846,10 +903,10 @@ msgid "No person with ID: %(id_str)s."
 msgstr "Tiada orang dengan ID: %(id_str)s."
 
 msgid "No results found for"
-msgstr ""
+msgstr "Tiada hasil ditemui untuk"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Tidak dibenarkan mencatat nota dengan status \"believed_dead\"."
@@ -861,71 +918,81 @@ msgid "Note author"
 msgstr "Pengarang nota"
 
 msgid "Note text"
-msgstr ""
+msgstr "Teks nota"
 
 msgid "Notes for this person"
 msgstr "Nota untuk orang ini"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Nombor atau julat (cth. 20-30)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"Atau tambah pada tapak anda sebagai %(gadget_link_html)sGoogle "
+"Atau tambahkan pada tapak anda sebagai %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 
 msgid "Original URL"
-msgstr ""
+msgstr "URL asal"
 
 msgid "Original author's name"
-msgstr ""
+msgstr "Nama pengarang asal"
 
 msgid "Original posting date"
-msgstr ""
+msgstr "Tarikh asal siaran"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
+"Tarikh asal siaran bukan dalam format MM-DD-YYYY atau tarikh yang tidak "
+"wujud. Sila kembali dan cuba lagi."
 
 msgid "Original site name"
-msgstr ""
+msgstr "Nama tapak asal"
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
+"SILA AMBIL PERHATIAN: Semua data yang dimasukkan akan tersedia untuk "
+"orang ramai dan boleh dilihat serta boleh digunakan oleh sesiapa sahaja."
+"  Google tidak menyemak atau mengesahkan ketepatan data ini."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"SILA AMBIL PERHATIAN: Di tapak Pencari Orang yang aktif, semua data yang "
+"dimasukkan tersedia kepada orang ramai boleh digunakan oleh sesiapa "
+"sahaja.  Google tidak menyemak atau mengesahkan ketepatan data ini."
 
 msgid "Person Finder"
 msgstr "Pencari Orang"
 
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 msgid "Phone number"
-msgstr ""
+msgstr "Nombor telefon"
 
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
-#, fuzzy
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr ""
+"Foto yang dimuat naik dalam format yang tidak dikenali. Sila undur dan "
+"cuba lagi."
 
 msgid "Physical characteristics"
-msgstr ""
+msgstr "Ciri fizikal"
 
 msgid "Play the sound again"
 msgstr "Mainkan semula bunyi tersebut"
@@ -934,18 +1001,22 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
+"Sila pastikan yang anda telah menghubungi orang tersebut selepas gempa "
+"bumi atau tukar medan \"Status orang ini\"."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
+"Sila semak sama ada ia sepadan dengan orang yang anda sedang rancang "
+"untuk laporkan ."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Sila sahkan alamat e-mel anda untuk melanggan kepada kemas kini"
+msgstr "Sila sahkan alamat e-mel anda untuk melanggan kemas kini"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Sila masukkan alamat e-mel anda untuk melanggan kepada kemas kini"
+msgstr "Sila masukkan alamat e-mel anda untuk melanggan kemas kini"
 
 msgid "Please explain why you think these are the same person"
-msgstr ""
+msgstr "Sila jelaskan mengapa anda rasa semua orang ini ialah orang yang sama"
 
 msgid "Please fill in all the required fields."
 msgstr "Sila isikan semua medan yang diperlukan."
@@ -957,35 +1028,34 @@ msgid "Please provide an valid email address."
 msgstr "Sila berikan alamat e-mel yang sah."
 
 msgid "Possible duplicates"
-msgstr ""
+msgstr "Pendua yang sesuai"
 
 msgid "Postal or zip code"
-msgstr ""
+msgstr "Poskod atau kod zip"
 
 msgid "Posted by"
-msgstr ""
+msgstr "Disiarkan oleh"
 
 msgid "Proceed"
-msgstr ""
+msgstr "Teruskan"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Halaman Profil"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Halaman profil"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Berikan maklumat"
 
-#, fuzzy
 msgid "Provide information about this person"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Berikan maklumat mengenai orang ini"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Disediakan oleh:"
 
 msgid "Province or state"
-msgstr ""
+msgstr "Wilayah atau negeri"
 
 msgid "Reason for deletion:"
 msgstr "Alasan untuk pemadaman:"
@@ -994,144 +1064,133 @@ msgid "Reason for disabling notes:"
 msgstr "Sebab untuk melumpuhkan nota:"
 
 msgid "Records Similar to"
-msgstr ""
+msgstr "Rekod yang Serupa dengan"
 
 msgid "Records selected"
-msgstr ""
+msgstr "Rekod dipilih"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Rekod dengan nama dan alamat yang sepadan \"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "Alih Keluar"
 
 msgid "Report spam"
 msgstr "Laporkan spam"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Kembali kepada rekod untuk %(full_name)s"
+msgstr "Kembali kepada rekod untuk %(full_name)s."
 
 msgid "Reveal note"
 msgstr "Dedahkan nota"
 
-#, fuzzy
 msgid "Save this record"
-msgstr "Padam rekod ini"
+msgstr "Padamkan rekod ini"
 
 msgid "Search Results for"
-msgstr ""
+msgstr "Hasil Carian untuk"
 
 msgid "Search for this person"
-msgstr ""
+msgstr "Cari orang ini"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Lihat %(begin_tag)swiki%(end_tag)s untuk mendapatkan arahan lanjut"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Pilih tapak web untuk menambah halaman profil..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr ""
+msgstr "Pilih sehingga 3 rekod untuk ditandakan sebagai salinan:"
 
 msgid "Send email"
 msgstr "Hantar e-mel"
 
 msgid "Sex"
-msgstr ""
+msgstr "Jantina"
 
 msgid "Show Map"
-msgstr ""
+msgstr "Tunjukkan Peta"
 
 msgid "Show sensitive information"
-msgstr ""
+msgstr "Tunjukkan maklumat sensitif"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Log masuk"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Log keluar"
 
-#, fuzzy
 msgid "Someone has received information that this person is alive"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Seseorang telah menerima maklumat bahawa orang ini masih hidup"
 
-#, fuzzy
 msgid "Someone has received information that this person is dead"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Seseorang telah menerima maklumat bahawa orang ini mati"
 
-#, fuzzy
 msgid "Someone has reported that this person is missing"
-msgstr "Seseorang mencari maklumat mengenai orang ini"
+msgstr "Seseorang telah melaporkan bahawa orang ini hilang"
 
 msgid "Someone is seeking information about this person"
 msgstr "Seseorang mencari maklumat mengenai orang ini"
 
-#, fuzzy
 msgid "Source of this record"
-msgstr "Tarikh tamat tempoh rekod ini"
+msgstr "Sumber rekod ini"
 
 msgid "Source of this record (required)"
-msgstr ""
+msgstr "Sumber rekod ini (diperlukan)"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
-#, fuzzy
 msgid "Status of this person"
-msgstr "Langgan kepada kemas kini mengenai orang ini"
+msgstr "Status orang ini"
 
 msgid "Street name"
-msgstr ""
+msgstr "Nama jalan"
 
 msgid "Street name only, no number"
-msgstr ""
+msgstr "Nama jalan sahaja, tiada nombor"
 
 msgid "Subscribe"
 msgstr "Langgan"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Langgan kepada kemas kini mengenai%(full_name)s"
+msgstr "Langgan kemas kini mengenai %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Langgan kepada kemas kini mengenai orang ini"
+msgstr "Langgan kemas kini mengenai orang ini"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Beralih ke alamat"
 
 msgid "Switch to duplicate marking mode"
-msgstr ""
+msgstr "Beralih ke mod menandakan pendua"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Beralih ke lat/long"
 
 msgid "Switch to normal view mode"
-msgstr ""
+msgstr "Beralih ke mod paparan biasa"
 
-#, fuzzy
 msgid "Tell us the status of this person"
-msgstr "Langgan kepada kemas kini mengenai orang ini"
+msgstr "Beritahu kami status orang ini"
 
 msgid "Terms of Service"
-msgstr ""
+msgstr "Syarat Perkhidmatan"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr ""
-"Nama yang diberikan dan Nama keluarga diperlukan. Sila undur dan cuba "
-"lagi."
+msgstr "Nama Berian dan Nama keluarga diperlukan. Sila undur dan cuba lagi."
 
-#, fuzzy
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr "Nama Pengarang asal diperlukan. Sila undur dan cuba lagi."
 
 msgid "The author has disabled notes on this record."
 msgstr "Pengarang telah melumpuhkan nota pada rekod ini."
@@ -1140,20 +1199,20 @@ msgid "The author has disabled status updates on this record."
 msgstr "Pengarang telah melumpuhkan kemas kini status pada rekod ini."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "Imej yang diberikan terlalu besar.  Sila muat naik imej yang lebih kecil."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Sebab nota ini ditanda sebagai spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Rekod tidak boleh dilanjutkan."
 
 msgid "The record has been deleted."
-msgstr "Rekod telah dipadam."
+msgstr "Rekod telah dipadamkan."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Rekod telah dilanjutkan kepada %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1174,33 +1233,36 @@ msgstr "Token %(token)s tidak sah."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
+msgstr "Terdapat %(num_results)s rekod sedia ada dengan nama yang sama."
 
 msgid "There are some existing records with similar names."
-msgstr ""
+msgstr "Terdapat beberapa rekod sedia ada dengan nama yang sama."
 
 msgid "There is one existing record with a similar name."
-msgstr ""
+msgstr "Terdapat satu rekod sedia ada dengan nama yang serupa."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "Terdapat masalah semasa memproses imej.  Sila cuba imej yang berbeza."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
+"Terdapat ralat semasa memproses permintaan anda.  Maaf atas sebarang "
+"kesulitan.  Pentadbir kami akan menyiasat punca masalah ini, tetapi harap"
+" pastikan yang format permintaan anda itu betul."
 
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"Alat ini dibuat tersedia di bawah %(apache_link_html)slesen Apache "
+"Alat ini disediakan di bawah %(apache_link_html)slesen Apache "
 "2.0%(link_end_html)s"
 
 msgid "This is a new record."
-msgstr ""
+msgstr "Ini merupakan rekod baharu."
 
 msgid "This link is invalid."
 msgstr "Pautan ini tidak sah."
@@ -1218,26 +1280,22 @@ msgid "This note is spam."
 msgstr "Nota ini ialah spam."
 
 msgid "This person has been in contact with someone"
-msgstr "Orang ini telah berhubungan dengan seseorang"
+msgstr "Orang ini telah menghubungi seseorang"
 
-#, fuzzy
 msgid "This person has posted a message"
-msgstr "Orang ini telah berhubungan dengan seseorang"
+msgstr "Orang ini telah menyiarkan mesej"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Rekod telah dipadam."
+msgstr "Masukan orang ini tidak wujud atau telah dipadamkan."
 
 msgid "This record has served its purpose."
-msgstr "Rekod ini telah memenuhi tujuannya."
+msgstr "Rekod ini telah mencapai tujuannya."
 
-#, fuzzy
 msgid "This record is a duplicate of"
-msgstr "Rekod ini tidak wajar."
+msgstr "Rekod ini merupakan salinan kepada"
 
-#, fuzzy
 msgid "This record is copied from another source."
-msgstr "Rekod ini tidak wajar."
+msgstr "Rekod ini disalin dari sumber lain."
 
 msgid "This record is inappropriate."
 msgstr "Rekod ini tidak wajar."
@@ -1249,26 +1307,30 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Repositori ini kini dalam mod ujian. Semasa mod ujian berkuat kuasa, "
+"rekod yang melebihi 6 jam akan dipadamkan."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "Untuk melampirkan foto pada nota ini, muat naik atau masukkan URLnya."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Untuk memadamkan data anda, akses Pencari Orang dari desktop anda."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Untuk menyahlanggan, ikut pautan ini"
 
 msgid "To view or add information, select a name below."
-msgstr ""
+msgstr "Untuk melihat atau menambah maklumat, pilih nama di bawah."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Taipkan alamat atau buka peta di bawah dan nyatakan lokasi dengan "
+"mengklik pada peta."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Taipkan alamat."
 
 msgid "Type the two words:"
 msgstr "Taipkan dua perkataan:"
@@ -1277,49 +1339,50 @@ msgid "Type what you hear:"
 msgstr "Taipkan apa yang anda dengar:"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "URL of original record"
-msgstr ""
+msgstr "URL rekod asal"
 
 msgid "Unspecified"
-msgstr ""
+msgstr "Tidak ditentukan"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
-msgstr ""
+msgstr "Muat naik"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Muat naik fail CSV"
 
 msgid "View the record"
-msgstr ""
+msgstr "Lihat rekod"
 
 msgid "We have nothing matching your search."
-msgstr ""
+msgstr "Kami tidak mempunyai sebarang padanan untuk carian anda."
 
-#, fuzzy
 msgid "What is this person's name?"
-msgstr "Masukkan nama orang tersebut."
+msgstr "Apakah nama orang ini?"
 
 msgid "When should this record disappear?"
 msgstr "Bila rekod ini perlu hilang?"
 
 msgid "Where did this information come from?"
-msgstr ""
+msgstr "Dari manakah datangnya maklumat ini?"
 
 msgid "Where is this person from?"
-msgstr ""
+msgstr "Dari manakah orang ini?"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Semasa mod ujian berkuat kuasa, rekod yang melebihi 6 jam akan dipadamkan"
+" tanpa mengira tarikh tamat tempoh."
 
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 msgid "Yes, ask the record author to disable notes"
 msgstr "Ya, minta pengarang rekod melumpuhkan nota"
@@ -1328,19 +1391,19 @@ msgid "Yes, ask the record author to enable notes"
 msgstr "Ya, minta pengarang rekod mendayakan nota"
 
 msgid "Yes, delete the record"
-msgstr "Ya, padam rekod tersebut"
+msgstr "Ya, padamkan rekod tersebut"
 
 msgid "Yes, disable notes on this record."
 msgstr "Ya, lumpuhkan nota pada rekod ini."
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ya, lanjutkan rekod"
 
 msgid "Yes, restore this record"
-msgstr "Ya, simpan semula rekod ini"
+msgstr "Ya, kembalikan semula rekod ini"
 
 msgid "Yes, these are the same person"
-msgstr ""
+msgstr "Ya, orang ini ialah orang yang sama"
 
 msgid "Yes, update the note"
 msgstr "Ya, kemas kini nota tersebut"
@@ -1355,35 +1418,36 @@ msgstr "Anda sudah berhenti melanggan."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Anda kini log masuk sebagai %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Anda tidak log masuk pada masa ini."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Anda boleh %(begin_tag)smelihat rekod%(end_tag)s sebelum memadamkannya."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Anda boleh melihat rekod penuh di %(view_url)s"
+msgstr "Anda boleh melihat rekod lengkap di %(view_url)s"
 
 msgid "You have successfully subscribed."
 msgstr "Anda telah berjaya melanggan."
 
 msgid "You have successfully unsubscribed."
-msgstr "Anda telah berjaya berhenti melanggan."
+msgstr "Anda telah berjaya menyahlanggan."
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Anda menerima pemberitahuan ini kerana anda telah melanggan kemas kini "
+"tentang orang berikut:\n"
 
-#, fuzzy
 msgid "Your e-mail address"
 msgstr "Alamat e-mel anda:"
 
@@ -1394,22 +1458,22 @@ msgid "Your email"
 msgstr "E-mel anda"
 
 msgid "Your name"
-msgstr ""
+msgstr "Nama anda"
 
-#, fuzzy
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr ""
+"Nama anda diperlukan di bahagian \"Mengenai anda\".  Sila undur dan cuba "
+"lagi."
 
-#, fuzzy
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "Nama diperlukan. Sila undur dan cuba lagi."
+msgstr "Nama anda diperlukan di bahagian \"Sumber\".  Sila undur dan cuba lagi."
 
 msgid "Your phone number"
-msgstr ""
+msgstr "Nombor telefon anda"
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
@@ -1421,19 +1485,19 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Sahkan nota anda pada \"%(full_name)s\""
+msgstr "[Person Finder] Sahkan nota anda tentang \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Pencari Orang] Notis pemadaman untuk \"%(full_name)s\""
+msgstr "[Person Finder] Notis pemadaman untuk \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Lumpuhkan nota pada \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Dayakan nota pada \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
@@ -1449,33 +1513,31 @@ msgstr "[Person Finder] Nota kini didayakan pada \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Pencari Orang] Notis penyimpanan semula rekod untuk \"%(full_name)s\""
+msgstr "[Person Finder] Notis pemulihan rekod untuk \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Pencari Orang] Kemas kini status untuk %(full_name)s"
+msgstr "[Person Finder] Kemas kini status untuk %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-"[Pencari Orang] Anda telah melanggan kepada kemas kini status untuk "
-"%(full_name)s"
+msgstr "[Person Finder] Anda telah melanggan kemas kini status untuk %(full_name)s"
 
 msgid "at"
 msgstr "di"
 
 msgid "female"
-msgstr ""
+msgstr "wanita"
 
 msgid "in test mode"
-msgstr ""
+msgstr "dalam mod ujian"
 
 msgid "male"
-msgstr ""
+msgstr "lelaki"
 
 msgid "on"
 msgstr "pada"
 
 msgid "other"
-msgstr ""
+msgstr "lain"
 

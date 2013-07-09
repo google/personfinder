@@ -59,13 +59,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kaixo %(author_name)s: erabiltzaile batek \"%(full_name)s\" erregistroan "
-"oharrak gaitzeko eskaera egin du. Zure helbide elektronikoa gordeko da "
-"erregistro honen egile gisa. Erregistroan oharrak gaitzeko, jarraitu "
-"esteka honi 3 eguneko epean:\n"
+"Kaixo, %(author_name)s:\n"
+"\n"
+"Erabiltzaile batek \"%(full_name)s\" erregistroan oharrak gaitzeko "
+"eskaera egin du.\n"
+"\n"
+"Zure helbide elektronikoa gordeko da erregistro honen egile gisa. "
+"Erregistroan oharrak gaitzeko, jarraitu esteka honi 3 eguneko epean:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,10 +88,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kaixo %(author_name)s: erabiltzaile batek \"%(full_name)s\" erregistroan "
-"oharrak desgaitzeko eskaera egin du. Zure helbide elektronikoa gordeko da"
-" erregistro honen egile gisa. Erregistroan oharrak desgaitzeko, jarraitu "
-"esteka honi 3 eguneko epean:\n"
+"Kaixo, %(author_name)s: \n"
+"\n"
+"Erabiltzaile batek \"%(full_name)s\" erregistroan oharrak desgaitzeko "
+"eskaera egin du. Zure helbide elektronikoa gordeko da erregistro honen "
+"egile gisa. Erregistroan oharrak desgaitzeko, jarraitu esteka honi 3 "
+"eguneko epean: \n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -107,9 +111,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kaixo %(author_name)s: ohar bat gehitu duzu \"%(full_name)s\" "
-"erregistroan. Oharra argitaratzeko, jarraitu esteka honi 3 eguneko epean:"
-"\n"
+"Kaixo, %(author_name)s:\n"
+"Ohar bat gehitu duzu \"%(full_name)s\" erregistroan.  \n"
+"Oharra argitaratzeko, jarraitu esteka honi 3 eguneko epean:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -121,12 +125,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Abisua: erregistroa %(expiration_days)s egun igaro "
+"baino lehen iraungiko da.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Abisua: erregistroa egun bat igaro baino lehen "
+"iraungiko da.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -135,8 +147,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ziur \"%(full_name)s\" pertsonaren erregistroa ezabatu nahi duzula?"
-"\n"
+"      Ziur \"%(full_name)s\" erregistroa ezabatu nahi duzula?\n"
 "    "
 
 #, python-format
@@ -179,6 +190,10 @@ msgid ""
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ziur \"%(full_name)s\" erregistroaren iraungitze-data atzeratu nahi"
+" duzula?\n"
+"    "
 
 msgid ""
 "\n"
@@ -196,8 +211,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ezabatzen jarraituz gero,\n"
-"      erregistroa ezingo da bilatu edo ikusi gune honetan.\n"
+"      Ezabatzen jarraituz gero, erregistroa ezingo da bilatu edo ikusi "
+"gune honetan.\n"
 "    "
 
 #, python-format
@@ -209,6 +224,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Behin betiko ezabatu nahi baduzu,\n"
+"      jarri jatorrizko iturburuarekin harremanetan.\n"
+"      Ikusi jatorrizko erregistroa hemen:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -220,6 +241,12 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Idatzi duzun URLak ez dirudi baliozko %(website)s profil batena.\n"
+"      Joan pertsona horren profilaren orrira %(website)s helbidean, eta "
+"kopiatu eta itsatsi\n"
+"      URL hura hemen.\n"
+"      "
 
 msgid ""
 "\n"
@@ -230,6 +257,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Beste iturburu bateko erregistro baten kopia da hau.\n"
+"      Erregistroa hemendik ezaba dezakezu,\n"
+"      baina kontuan izan\n"
+"      beste kopia bat jaso dezakegula jatorrizko iturburutik.\n"
+"    "
 
 msgid ""
 "\n"
@@ -282,12 +315,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Erabiltzaile batek \"%(full_name)s\" pertsonaren erregistro bat ezabatu "
-"du\n"
-"%(site_url)s helbidean.\n"
+"Erabiltzaile batek \"%(full_name)s\" erregistroa ezabatu du\n"
+"%(site_url)s helbidetik.\n"
 "\n"
-"Ezabatzearen berri ematen dizugu, zure helbide elektronikoa dagoelako\n"
-"erregistro honi buruzko ohar baten egile gisa erregistratuta.\n"
+"Ezabatzearen berri ematen dizugu, zure helbide elektronikoa dagoelako "
+"erregistro horri buruzko ohar baten egile gisa erregistratuta.\n"
 
 #, python-format
 msgid ""
@@ -298,6 +330,15 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Erabiltzaile batek \"%(full_name)s\" erregistroa ezabatu du\n"
+"\n"
+"%(site_url)s helbidetik.\n"
+"\n"
+"\n"
+"\n"
+"Ezabatzearen berri ematen dizugu, zure helbide elektronikoa dagoelako "
+"erregistro horren egile gisa erregistratuta.\n"
 
 #, python-format
 msgid ""
@@ -305,6 +346,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"%(days_until_deletion)s egun igarotakoan, erregistroa behin betiko "
+"ezabatuko da.\n"
 
 #, python-format
 msgid ""
@@ -315,6 +359,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"OHARRA: erregistroa akats baten ondorioz ezabatu dela uste baduzu, "
+"lehenera ezazu datozen %(days_until_deletion)s egunetan esteka honi "
+"jarraituta:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -330,12 +380,13 @@ msgid ""
 msgstr ""
 "\n"
 "Oharrak desgaitu egin dira \"%(full_name)s\" erregistroan. Erregistroa "
-"ikusteko, jarraitu esteka honi:\n"
+"ikusteko,\n"
+"jarraitu esteka honi:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona honen "
-"erregistroarekin edo erregistroko oharren batekin erlazionatuta "
+"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona horren"
+" erregistroarekin edo erregistroko oharren batekin erlazionatuta "
 "dagoelako.\n"
 
 #, python-format
@@ -352,12 +403,13 @@ msgid ""
 msgstr ""
 "\n"
 "Oharrak gaitu egin dira \"%(full_name)s\" erregistroan. Erregistroa "
-"ikusteko, jarraitu esteka honi:\n"
+"ikusteko,\n"
+"jarraitu esteka honi:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona honen "
-"erregistroarekin edo erregistroko oharren batekin erlazionatuta "
+"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona horren"
+" erregistroarekin edo erregistroko oharren batekin erlazionatuta "
 "dagoelako.\n"
 
 #, python-format
@@ -373,13 +425,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"\"%(full_name)s\" erregistroaren \n"
-"(ezabatuta zegoen) egileak erregistroa leheneratu du. Erregistroa\n"
-"ikusteko, jarraitu esteka hau:\n"
+"\"%(full_name)s\" erregistroaren (ezabatuta zegoen) egileak erregistroa "
+"leheneratu du. Erregistroa ikusteko, jarraitu esteka honi:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Leheneratzearen berri ematen dizugu, zure helbide elektronikoa dagoelako\n"
+"Leheneratzearen berri ematen dizugu, zure helbide elektronikoa dagoelako "
 "pertsona honen erregistroarekin edo erregistroari buruzko ohar batekin "
 "erlazionatuta.\n"
 
@@ -404,11 +455,8 @@ msgid ""
 msgstr ""
 "\n"
 "\"%(full_name)s\" erregistroaren oharretara harpidetu zara. Hemen ikus "
-"dezakezu erregistroa:\n"
-"\n"
-"     %(view_url)s\n"
-"\n"
-"Harpidetza kentzeko, jarraitu esteka honi: %(unsubscribe_link)s\n"
+"dezakezu erregistroa: %(view_url)s Harpidetza kentzeko, jarraitu esteka "
+"honi: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(egin klik ikusteko)"
@@ -420,10 +468,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "Pertsonarentzako edo pertsonaren bila ari direnentzako mezua"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "Duela 1 hilabete (30 egun) inguru"
@@ -441,7 +489,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Duela 6 hilabete (180 egun) inguru"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Google Person Finder zerbitzuari buruz"
 
 msgid "About you (required)"
 msgstr "Zuri buruz (beharrezkoa)"
@@ -452,14 +500,12 @@ msgstr "Administrazioa"
 msgid "Age"
 msgstr "Adina"
 
-#, fuzzy
 msgid "Alternate family names"
 msgstr "Abizena"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Beste izen batzuk"
 
-#, fuzzy
 msgid "Alternate names"
 msgstr "Kale-helbidea"
 
@@ -485,7 +531,7 @@ msgid "Author's phone number"
 msgstr "Egilearen telefono-zenbakia"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Baimen-gakoa"
 
 msgid "Back to results list"
 msgstr "Itzuli emaitzen zerrendara"
@@ -494,11 +540,11 @@ msgid "Back to start"
 msgstr "Itzuli hasierara"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV fitxategia"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Ezin da ID hau duen oharra aurkitu: %(id)s"
+msgstr "Ezin da %(id)s identifikatzailea duen oharra aurkitu"
 
 msgid "Cancel"
 msgstr "Utzi"
@@ -519,10 +565,10 @@ msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Kopiatu eta itsatsi HTML kode hau tresna zure gunean ezartzeko"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Sortu erregistroa"
 
 msgid "Create a new record for"
 msgstr "Sortu honen erregistroa:"
@@ -531,7 +577,7 @@ msgid "Create a new record for a missing person"
 msgstr "Sortu desagertutako pertsona baten erregistroa"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Krisi-gertaerak"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -549,15 +595,14 @@ msgstr "Ezabatu erregistroa"
 msgid "Describe how to identify this person."
 msgstr "Azaldu pertsona nola identifika daitekeen."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Azaldu pertsona nola identifika daitekeen."
+msgstr "Azaldu pertsona fisikoki nola identifika daitekeen."
 
 msgid "Description"
 msgstr "Azalpena"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Ordenagailurako bertsioa"
 
 msgid "Developers"
 msgstr "Garatzaileak"
@@ -566,7 +611,7 @@ msgid "Disable notes on this record"
 msgstr "Desgaitu oharrak erregistro honetan"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Pertsona horrek ba al ditu profilen orriak beste webgune batzuetan?"
 
 msgid "Download the sound as MP3"
 msgstr "Deskargatu soinua MP3 gisa"
@@ -578,7 +623,7 @@ msgid "E-mail address"
 msgstr "Helbide elektronikoa"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
 msgstr "Aplikazioa kapsulatu"
@@ -587,7 +632,7 @@ msgid "Enable notes on this record"
 msgstr "Gaitu oharrak erregistro honetan"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Ziurtatu data guztiak yyyy-mm-ddThh:mm:ssZ formatuan daudela, UTC aldaeran"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
@@ -598,7 +643,6 @@ msgstr "Sartu pertsonaren izena eta abizena."
 msgid "Enter the person's name or parts of the name."
 msgstr "Sartu pertsonaren izena edo zati bat."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Sartu pertsonaren izena edo zati bat."
 
@@ -613,7 +657,7 @@ msgstr "Erregistroaren iraungitze-data"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Atzeratu iraungitze-data %(extension_days)s egun"
 
 msgid "Family name"
 msgstr "Abizena"
@@ -628,9 +672,11 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Mugikorretakoak ez diren telefono-zenbakien kasuan, erabili NTTk "
+"eskainitako 171 zerbitzua."
 
 msgid "Full name"
-msgstr ""
+msgstr "Izen-abizenak"
 
 msgid "Get a new challenge"
 msgstr "Lortu erronka berri bat"
@@ -645,7 +691,7 @@ msgid "Given name"
 msgstr "Izena"
 
 msgid "Google Person Finder"
-msgstr "Google Pertsona-bilagailua"
+msgstr "Google Person Finder"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
@@ -658,6 +704,8 @@ msgstr "Laguntza"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Hona  hemen edita eta karga dezakezun %(begin_tag)sCSV lagin-"
+"fitxategia%(end_tag)s"
 
 msgid "Hide Map"
 msgstr "Ezkutatu mapa"
@@ -762,19 +810,19 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Helbide elektroniko baliogabea. Saiatu berriro."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Hizkuntza-hautapena"
 
 msgid "Last known location"
 msgstr "Azken kokapen ezaguna"
 
 msgid "Link"
-msgstr "Esteka"
+msgstr "Estekatu"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Estekatu profilaren orriarekin"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Markatu erregistroak bikoiztu gisa"
@@ -826,27 +874,29 @@ msgstr "Ez"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Ez dago erregistro honen egilearen helbide elektronikorik: %(id)s."
+msgstr "Ez dago %(id)s erregistroaren egilearen helbide elektronikorik."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Ez da aurkitu eramailearen mezuen ohol-zerbitzuan erregistratutako "
+"mezurik."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Ez dago %(id_str)sIDa duen oharrik."
+msgstr "Ez dago %(id_str)s IDa duen oharrik."
 
 msgid "No notes have been posted"
 msgstr "Ez da oharrik argitaratu"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "Ez dago %(id_str)sIDa duen pertsonarik."
+msgstr "Ez dago %(id_str)s IDa duen pertsonarik."
 
 msgid "No results found for"
 msgstr "Ez da emaitzarik aurkitu honentzat"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ez dago \"believed_dead\" egoerarekin oharrak argitaratzeko baimenik."
@@ -858,21 +908,21 @@ msgid "Note author"
 msgstr "Oharraren egilea"
 
 msgid "Note text"
-msgstr ""
+msgstr "Oharraren testua"
 
 msgid "Notes for this person"
 msgstr "Pertsona honen oharrak"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Zenbakia edo barrutia (adibidez, 20-30)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"Edo gehitu zure gunean %(gadget_link_html)sGoogle-ren "
-"gadget%(link_end_html)s gisa."
+"Edo gehitu zure gunean %(gadget_link_html)sGoogle gadget%(link_end_html)s"
+" gisa."
 
 msgid "Original URL"
 msgstr "Jatorrizko URLa"
@@ -902,14 +952,18 @@ msgstr ""
 "eta edonork ikusi eta erabili ahal izango ditu. Google-k ez ditu datuen "
 "egiazkotasuna eta zehaztasuna egiaztatzen."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"OHARRA: Person Finder zerbitzuaren gune aktiboetan sartzen diren datu "
+"guztiak publikoki eskuragarri eta erabilgarri daude. Google-k ez du "
+"berrikusten eta egiaztatzen datu horien zehaztasuna."
 
 msgid "Person Finder"
-msgstr "Pertsona-bilagailua"
+msgstr "Person Finder"
 
 msgid "Phone"
 msgstr "Telefonoa"
@@ -976,18 +1030,17 @@ msgid "Proceed"
 msgstr "Jarraitu"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profilen orriak"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profilaren orria"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Eman informazioa"
 
 msgid "Provide information about this person"
 msgstr "Eman pertsonari buruzko informazioa"
 
-#, fuzzy
 msgid "Provided by:"
 msgstr "Mezuaren egilea:"
 
@@ -1008,17 +1061,17 @@ msgstr "erregistro hautatu dira"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "\"%(query)s\" izena eta helbidea dituzten erregistroak"
 
 msgid "Remove"
-msgstr ""
+msgstr "Kendu"
 
 msgid "Report spam"
 msgstr "Eman spamaren berri"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Itzuli %(full_name)s erregistrora."
+msgstr "Itzuli \"%(full_name)s\" erregistrora."
 
 msgid "Reveal note"
 msgstr "Erakutsi oharra"
@@ -1034,10 +1087,10 @@ msgstr "Bilatu pertsona"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Argibide gehiago eskuratzeko, ikusi %(begin_tag)swiki artikulua%(end_tag)s"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Profilaren orria gehitzeko, hautatu webgunea…"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Hautatu gehienez 3 erregistro bikoiztu gisa markatzeko:"
@@ -1055,10 +1108,10 @@ msgid "Show sensitive information"
 msgstr "Erakutsi isilpeko informazioa"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Hasi saioa"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Amaitu saioa"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
@@ -1095,19 +1148,19 @@ msgstr "Harpidetu"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Harpidetu honi buruzko eguneratzeetara: %(full_name)s"
+msgstr "Harpidetu pertsona honi buruzko eguneratzeetara: %(full_name)s"
 
 msgid "Subscribe to updates about this person"
 msgstr "Harpidetu pertsona honi buruzko eguneratzeetara"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Aldatu helbidera"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Aldatu bikoiztuak markatutako modura"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Aldatu latitude eta longitudera"
 
 msgid "Switch to normal view mode"
 msgstr "Aldatu ikuspegi normalera"
@@ -1119,19 +1172,8 @@ msgid "Terms of Service"
 msgstr "Zerbitzu-baldintzak"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1153,14 +1195,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Ohar hau spam gisa markatzearen arrazoia:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Ezin da erregistroaren iraungitze-data atzeratu."
 
 msgid "The record has been deleted."
 msgstr "Erregistroa ezabatu da."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Erregistroaren iraungitze-data %(expiry_date)s arte atzeratu da."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1172,11 +1214,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr " %(token)s tokena baliogabea da"
+msgstr "%(token)s token-a baliogabea da"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr " %(token)s tokena baliogabea da."
+msgstr "%(token)s token-a baliogabea da."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1234,7 +1276,6 @@ msgstr "Pertsona hau norbaitekin harremanetan jarri da"
 msgid "This person has posted a message"
 msgstr "Pertsona horrek mezu bat idatzi du"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Erregistroa ezabatu da."
 
@@ -1257,15 +1298,17 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Biltegia proba moduan dago erabilgarri. Probaldiak dirauen artean, 6 ordu"
+" baino gehiagoko erregistroak ezabatu egingo dira."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "Oharrari argazkia eransteko, kargatu edo idatzi bere URLa."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Datuak ezabatzeko, atzitu Person Finder ordenagailuaren bidez."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Harpidetza kentzeko, jarraitu esteka honi"
 
 msgid "To view or add information, select a name below."
 msgstr "Informazioa ikusteko edo gehitzeko, hautatu beheko izena."
@@ -1274,9 +1317,11 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Idatzi helbidea edo ireki beheko mapa eta zehaztu kokapena mapan klik "
+"eginda."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Idatzi helbidea."
 
 msgid "Type the two words:"
 msgstr "Idatzi bi hitzak:"
@@ -1294,16 +1339,16 @@ msgid "Unspecified"
 msgstr "Zehaztu gabe"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Kargatu"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Kargatu CSV fitxategiak"
 
 msgid "View the record"
-msgstr ""
+msgstr "Ikusi erregistroa"
 
 msgid "We have nothing matching your search."
 msgstr "Ez dugu zure bilaketarekin bat datorren erregistrorik aurkitu."
@@ -1324,6 +1369,8 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Probaldiak dirauen artean, 6 ordu baino gehiago dituzten erregistroak "
+"ezabatu egingo dira, haien iraungitze-data edozein dela ere."
 
 msgid "Yes"
 msgstr "Bai"
@@ -1341,7 +1388,7 @@ msgid "Yes, disable notes on this record."
 msgstr "Bai, desgaitu oharrak erregistro honetan."
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Bai, atzeratu erregistroaren iraungitze-data"
 
 msgid "Yes, restore this record"
 msgstr "Bai, leheneratu erregistroa"
@@ -1362,22 +1409,24 @@ msgstr "Dagoeneko kendu duzu harpidetza."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Unean %(begin_span_tag)s%(email)s%(end_span_tag)s gisa duzu saioa hasita."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Une honetan ez duzu saioa hasita."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
+"Nahi izanez gero, %(begin_tag)sikusi erregistroa%(end_tag)s ezabatu "
+"aurretik."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Erregistro osoa ikus dezakezu hemen: %(view_url)s "
+msgstr "Erregistro osoa ikus dezakezu %(view_url)s helbidean"
 
 msgid "You have successfully subscribed."
 msgstr "Behar bezala harpidetu zara."
@@ -1389,6 +1438,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Pertsona honen eguneratzeetara harpidetu zarelako jaso duzu jakinarazpen "
+"hau:\n"
 
 msgid "Your e-mail address"
 msgstr "Zure helbide elektronikoa"
@@ -1434,15 +1485,19 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] Honen ezabatze-oharra: \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" erregistroa ezabatzearen oharra"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
 msgstr ""
+"[Person Finder] \"%(full_name)s\" erregistroan oharrak gehitzeko aukera "
+"desgaitu?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
+"[Person Finder] \"%(full_name)s\" erregistroan oharrak gehitzeko aukera "
+"gaitu?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
@@ -1458,17 +1513,17 @@ msgstr "[Person Finder] Oharrak gaituta daude \"%(full_name)s\" erregistroan"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] Honen erregistro-leheneratze oharra: \"%(full_name)s\""
+msgstr "[Person Finder] %(full_name)s erregistroa leheneratzearen oharra"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] Honen egoera-eguneratzea: %(full_name)s"
+msgstr "[Person Finder] %(full_name)s erregistroa eguneratzearen oharra"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] Honen egoera-eguneratzeetara harpidetuta zaude: "
-"%(full_name)s"
+"[Person Finder] %(full_name)s erregistroaren egoera-eguneratzeetara "
+"harpidetuta zaude"
 
 msgid "at"
 msgstr "ordua:"
@@ -1477,7 +1532,7 @@ msgid "female"
 msgstr "emakumea"
 
 msgid "in test mode"
-msgstr ""
+msgstr "probaldian"
 
 msgid "male"
 msgstr "gizona"

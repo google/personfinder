@@ -59,13 +59,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hei, %(author_name)s! En bruker har bedt om aktivering av notater på "
-"oppføringen for «%(full_name)s». E-postadressen din er registrert som "
-"forfatteren av denne oppføringen. Hvis du vil aktivere notater for denne "
-"oppføringen, følger du denne koblingen innen tre dager:\n"
+"Hei %(author_name)s! \n"
 "\n"
-"   %(confirm_url)s\n"
+"En bruker har bedt om aktivering av notater på oppføringen for "
+"«%(full_name)s». \n"
 "\n"
+"E-postadressen din er registrert som forfatteren av denne oppføringen. "
+"Hvis du vil aktivere notater for denne oppføringen, følger du denne "
+"linken innen tre dager: \n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -86,12 +89,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hei, %(author_name)s! En bruker har bedt om at du deaktiverer notater på "
-"oppføringen for «%(full_name)s». E-postadressen din er registrert som "
-"forfatteren av denne oppføringen. Du kan deaktivere notater på denne "
-"oppføringen ved å følge denne koblingen innen tre dager:\n"
+"Hei %(author_name)s! \n"
 "\n"
-"   %(confirm_url)s\n"
+"En bruker har bedt om at du deaktiverer notater på oppføringen for "
+"«%(full_name)s». \n"
+"\n"
+"E-postadressen din er registrert som forfatteren av denne oppføringen. Du"
+" kan deaktivere notater på denne oppføringen ved å følge denne linken "
+"innen tre dager: \n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -107,11 +114,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hei, %(author_name)s! Du skrev akkurat et notat på oppføringen for "
-"«%(full_name)s». Publiser notatet ditt ved å følge denne koblingen innen "
-"tre dager:\n"
+"Hei %(author_name)s! \n"
 "\n"
-"   %(confirm_url)s\n"
+"Du skrev akkurat et notat på oppføringen for «%(full_name)s». \n"
+"Publiser notatet ditt ved å følge denne linken innen tre dager: \n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -121,12 +129,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Advarsel: Denne oppføringen utløper om mindre enn "
+"%(expiration_days)s dager.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Advarsel: Denne oppføringen utløper om mindre enn én "
+"dag.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -212,6 +228,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Hvis du vil slette den permanent,\n"
+"      tar du kontakt med originalkilden.\n"
+"      Du kan se originaloppføringen på\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -223,6 +245,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Nettadressen du skrev inn ser ikke ut til å være en gyldig "
+"profilnettadresse for %(website)s.\n"
+"      Gå til denne personens profilside på %(website)s, og kopiér og lim "
+"inn\n"
+"      nettadressen her.\n"
+"      "
 
 msgid ""
 "\n"
@@ -233,6 +262,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Denne oppføringen er en kopi av en oppføring fra en annen kilde.\n"
+"      Du kan slette oppføringen her,\n"
+"      men vær oppmerksom på at\n"
+"      vi kan motta en annen kopi av den senere, fra originalkilden.\n"
+"    "
 
 msgid ""
 "\n"
@@ -260,7 +295,7 @@ msgid ""
 msgstr ""
 "\n"
 "  Oppføringen kommer fortsatt til å være synlig på dette nettstedet, men "
-"ingen vil kunne legge ut ytterligere notater på den.\n"
+"ingen vil kunne legge ut flere notater på den.\n"
 "  "
 
 msgid ""
@@ -272,7 +307,7 @@ msgid ""
 msgstr ""
 "\n"
 "  Hvis du vil legge ut notatet ditt, skriver du inn e-postadressen "
-"nedenfor, og følger bekreftelseskoblingen du mottar.\n"
+"nedenfor, og følger bekreftelseslinken du mottar.\n"
 "  "
 
 #, python-format
@@ -285,11 +320,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"En bruker har slettet oppføringen for «%(full_name)s»\n"
-"at %(site_url)s.\n"
+"En bruker har slettet oppføringen for «%(full_name)s» \n"
+"på %(site_url)s. \n"
 "\n"
-"Vi varsler deg om slettingen fordi din e-postadresse er\n"
-"angitt som forfatter av et notat om denne oppføringen.\n"
+"Vi gir deg beskjed om slettingen fordi e-postadressen din er \n"
+"registrert som forfatter av et notat for denne oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -301,9 +336,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"En bruker har slettet oppføringen for «%(full_name)s» på %(site_url)s. Vi"
-" gir deg beskjed om slettingen fordi e-postadressen din er registrert som"
-" skaperen av denne oppføringen.\n"
+"En bruker har slettet oppføringen for «%(full_name)s» \n"
+"på %(site_url)s. \n"
+"\n"
+"Vi gir deg beskjed om slettingen fordi e-postadressen din er \n"
+"registrert som forfatter av denne oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -312,7 +349,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"Etter %(days_until_deletion)s dager, blir oppføringen permanent slettet.\n"
+"Etter %(days_until_deletion)s dager blir oppføringen slettet permanent.\n"
 
 #, python-format
 msgid ""
@@ -325,10 +362,10 @@ msgid ""
 msgstr ""
 "\n"
 "MERK: Hvis du mener denne oppføringen ble slettet ved en feil, kan du "
-"gjenopprette den ved å følge denne koblingen innen de neste "
-"%(days_until_deletion)s dagene:\n"
+"gjenopprette den ved å følge denne linken innen de neste "
+"%(days_until_deletion)s dagene: \n"
 "\n"
-"    %(restore_url)s\n"
+"%(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -343,13 +380,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Notater har nå blitt deaktivert på oppføringen for «%(full_name)s». Du "
-"kan se oppføringen ved å følge denne koblingen:\n"
+"Notater er nå deaktivert på oppføringen for «%(full_name)s». Du kan se "
+"oppføringen ved å følge denne linken: \n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s \n"
 "\n"
 "Vi varsler deg fordi e-postadressen din er knyttet til denne "
-"personoppføringen eller til et notat på oppføringen.\n"
+"personoppføringen, eller til et notat på oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -364,13 +401,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Notater har nå blitt aktivert på oppføringen for «%(full_name)s». Du kan "
-"se oppføringen ved å følge denne koblingen:\n"
+"Notater er nå aktivert på oppføringen for «%(full_name)s». Du kan se "
+"oppføringen ved å følge denne linken: \n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s \n"
 "\n"
 "Vi varsler deg fordi e-postadressen din er knyttet til denne "
-"personoppføringen eller til et notat på oppføringen.\n"
+"personoppføringen, eller til et notat på oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -385,14 +422,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Forfatteren bak oppføringen for «%(full_name)s»\n"
-"(som tidligere ble slettet) har gjenopprettet oppføringen. Du kan se\n"
-"oppføringen ved å følge denne koblingen:\n"
+"Forfatteren bak oppføringen for «%(full_name)s» \n"
+"(som tidligere ble slettet) har gjenopprettet oppføringen. Du kan se "
+"oppføringen ved å følge denne linken: \n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s \n"
 "\n"
-"Vi varsler deg fordi din e-postadresse er tilknyttet til denne\n"
-"personoppføringen eller et notat om oppføringen.\n"
+"Vi varsler deg fordi e-postadressen din er knyttet til denne "
+"personoppføringen, eller til et notat på oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -414,12 +451,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Du abonnerer nå på notater om «%(full_name)s». Du kan se denne "
-"oppføringen på\n"
+"Du abonnerer nå på notater for «%(full_name)s». \n"
 "\n"
-"     %(view_url)s\n"
+"Du kan se denne oppføringen på \n"
 "\n"
-"Du kan avslutte abonnementet ved å følge denne koblingen: "
+"%(view_url)s \n"
+"\n"
+"Du kan avslutte abonnementet ved å følge denne linken: "
 "%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
@@ -432,10 +470,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "En melding til denne personen eller andre som leter etter denne personen"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "Om 1 måned (30 dager) fra nå"
@@ -453,10 +491,10 @@ msgid "About 6 months (180 days) from now"
 msgstr "Om 6 måneder (180 dager) fra nå"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Om Google Personsøk"
 
 msgid "About you (required)"
-msgstr "Om deg (påkrevd)"
+msgstr "Om deg (obligatorisk)"
 
 msgid "Administration"
 msgstr "Administrasjon"
@@ -477,47 +515,47 @@ msgid "Are you sure this note isn't spam?"
 msgstr "Er du sikker på at notatet ikke er nettsøppel?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Er du sikker på at du vil angi notatet som nettsøppel?"
+msgstr "Er du sikker på at du vil merke notatet som nettsøppel?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Er du sikker på at du vil gjenopprette oppføringen fra slettede elementer?"
 
 msgid "Atom feed of updates about this person"
-msgstr "Atom-innmating av oppdateringer om denne personen"
+msgstr "Atom-strøm med oppdateringer om denne personen"
 
 msgid "Author's e-mail address"
-msgstr "E-postadresse til personen som opprinnelig har lagt inn oppføringen"
+msgstr "Forfatterens e-postadresse"
 
 msgid "Author's name"
-msgstr "Navn på person som har lagt inn oppføringen"
+msgstr "Forfatterens navn"
 
 msgid "Author's phone number"
-msgstr "Telefonnummer til personen som opprinnelig har lagt inn oppføringen"
+msgstr "Forfatterens telefonnummer"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Autorisasjonsnøkkel"
 
 msgid "Back to results list"
 msgstr "Tilbake til resultatlisten"
 
 msgid "Back to start"
-msgstr "Tilbake til startside"
+msgstr "Tilbake til startsiden"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV-fil"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr " Finner ikke notat med ID-en %(id)s"
+msgstr "Finner ingen notater med identifikasjonen %(id)s"
 
 msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "City"
-msgstr "By"
+msgstr "Poststed"
 
 msgid "Click here to view results."
-msgstr "Klikk her for å vise resultater."
+msgstr "Klikk her for å se resultater."
 
 msgid "Close window"
 msgstr "Lukk vindu"
@@ -527,14 +565,14 @@ msgstr "Sammenlign disse oppføringene"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Kopier og lim inn følgende HTML-kode for å legge dette verktøyet ut på "
+"Kopiér og lim inn følgende HTML-kode for å legge dette verktøyet ut på "
 "nettstedet ditt"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Opprett en ny oppføring"
 
 msgid "Create a new record for"
 msgstr "Opprett en ny oppføring for"
@@ -543,14 +581,14 @@ msgid "Create a new record for a missing person"
 msgstr "Opprett en ny oppføring for en savnet person"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Nødsituasjoner"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Sporer for øyeblikket cirka %(num_people)s oppføringer."
+msgstr "Sporer for øyeblikket ca %(num_people)s oppføringer."
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Datoen kan ikke være en fremtidig dato. Gå tilbake og prøv på nytt."
+msgstr "Datoen kan ikke være i fremtiden. Gå tilbake og prøv på nytt."
 
 msgid "Date of birth"
 msgstr "Fødselsdato"
@@ -559,7 +597,7 @@ msgid "Delete this record"
 msgstr "Slett oppføringen"
 
 msgid "Describe how to identify this person."
-msgstr "Gi en beskrivelse av hvordan personen kan identifiseres"
+msgstr "Gi en beskrivelse av hvordan personen kan identifiseres."
 
 msgid "Describe the physical characteristics of this person."
 msgstr "Beskriv de fysiske kjennetegnene til denne personen."
@@ -568,7 +606,7 @@ msgid "Description"
 msgstr "Beskrivelse"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Datamaskinversjon"
 
 msgid "Developers"
 msgstr "Utviklere"
@@ -577,7 +615,7 @@ msgid "Disable notes on this record"
 msgstr "Deaktiver notater på denne oppføringen"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Har denne personen profilsider på andre nettsteder?"
 
 msgid "Download the sound as MP3"
 msgstr "Last ned lyden som MP3"
@@ -589,16 +627,16 @@ msgid "E-mail address"
 msgstr "E-postadresse"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "Bygg inn programmet"
+msgstr "Bygg inn appen"
 
 msgid "Enable notes on this record"
 msgstr "Aktiver notater på denne oppføringen"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Sørg for at alle datoer er på formatet åååå-mm-ddTtt:mm:ssZ i UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Angi som ÅÅÅÅ-MM-DD"
@@ -618,23 +656,23 @@ msgid "Enter the person's name."
 msgstr "Skriv inn personens navn."
 
 msgid "Expiry"
-msgstr "Utløp"
+msgstr "Utløpsdato"
 
 msgid "Expiry date of this record"
 msgstr "Utløpsdato for oppføringen"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Forleng utløpsdatoen med %(extension_days)s dager"
 
 msgid "Family name"
 msgstr "Etternavn"
 
 msgid "Feed of updates about this person"
-msgstr "Innmating av oppdateringer om denne personen"
+msgstr "Strøm med oppdateringer om denne personen"
 
 msgid "Follow this link to create a new record"
-msgstr "Følg denne koblingen for å opprette en ny oppføring"
+msgstr "Følg denne linken for å opprette en ny oppføring"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -642,7 +680,7 @@ msgid ""
 msgstr "For andre telefoner enn mobiltelefoner kan du bruke 171-tjenesten fra NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Fullt navn"
 
 msgid "Get a new challenge"
 msgstr "Ta en ny utfordring"
@@ -660,7 +698,9 @@ msgid "Google Person Finder"
 msgstr "Google Personsøk"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Har du personlig snakket med denne personen ETTER jordskjelvet? (påkrevd)"
+msgstr ""
+"Har du personlig snakket med denne personen ETTER jordskjelvet? "
+"(obligatorisk)"
 
 msgid "Help"
 msgstr "Hjelp"
@@ -668,18 +708,20 @@ msgstr "Hjelp"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Her er %(begin_tag)set eksempel på en CSV-fil%(end_tag)s du kan redigere "
+"og laste opp"
 
 msgid "Hide Map"
 msgstr "Skjul kartet"
 
 msgid "Hide note"
-msgstr "Skjul notat"
+msgstr "Skjul notatet"
 
 msgid "Home Address"
-msgstr "Privatadresse"
+msgstr "Hjemmeadresse"
 
 msgid "Home address"
-msgstr "Privatadresse"
+msgstr "Hjemmeadresse"
 
 msgid "Home country"
 msgstr "Hjemland"
@@ -688,7 +730,7 @@ msgid "How can this person be reached now?"
 msgstr "Hvordan kan man komme i kontakt med denne personen nå?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "Hvordan andre som er interessert i denne personen kan kontakte deg"
+msgstr "Måter andre som er interessert i denne personen kan kontakte deg på"
 
 msgid "I am seeking information"
 msgstr "Jeg er på jakt etter informasjon"
@@ -721,7 +763,7 @@ msgid "I have received spam."
 msgstr "Jeg har mottatt nettsøppel."
 
 msgid "I prefer not to specify."
-msgstr "Jeg foretrekker å ikke angi nærmere."
+msgstr "Jeg foretrekker å ikke oppgi ytterligere opplysninger."
 
 msgid "I'm looking for someone"
 msgstr "Jeg leter etter noen"
@@ -739,7 +781,7 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Hvis ingen av disse oppføringene stemmer overrens med den aktuelle "
+"Hvis ingen av disse oppføringene stemmer overens med den aktuelle "
 "personen, kan du opprette en ny oppføring ved å klikke nedenfor."
 
 msgid ""
@@ -748,9 +790,9 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
-"e-post med en kobling for å bekrefte at du vil deaktivere notater for "
-"denne oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
-"oppføringen, bekrefter forespørselen din."
+"e-post med en link for å bekrefte at du vil deaktivere notater for denne "
+"oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
+"oppføringen bekrefter forespørselen din."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -758,9 +800,9 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
-"e-post med en kobling for å bekrefte at du vil aktivere notater for denne"
-" oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
-"oppføringen, bekrefter forespørselen din."
+"e-post med en link for å bekrefte at du vil aktivere notater for denne "
+"oppføringen. Hvis ikke, må du vente på at den som skrev oppføringen "
+"bekrefter forespørselen din."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -774,28 +816,28 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Ugyldig e-postadresse. Prøv på nytt."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Språkvalg"
 
 msgid "Last known location"
 msgstr "Sist kjente posisjon"
 
 msgid "Link"
-msgstr "Kobling"
+msgstr "Link"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Link til profilside"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Marker oppføringer som duplikater"
 
 msgid "Message (required)"
-msgstr "Melding (påkrevd)"
+msgstr "Melding (obligatorisk)"
 
 msgid "Message is required. Please go back and try again."
-msgstr "Melding er påkrevd. Gå tilbake og prøv på nytt."
+msgstr "Melding er obligatorisk. Gå tilbake og prøv på nytt."
 
 msgid "Missing person's current contact information"
 msgstr "Nåværende kontaktinformasjon for savnet person"
@@ -811,24 +853,24 @@ msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"Utviklere kan nå finne ytterligere informasjon "
+"Utviklere kan nå finne mer informasjon "
 "%(developers_link_html)sher%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"Fant mer enn 100 resultater, viser de første 100. Prøv å skriv inn en "
-"større del av navnet"
+"Fant mer enn 100 resultater, viser de første 100. Prøv å skrive inn mer "
+"av navnet"
 
 msgid "Name"
 msgstr "Navn"
 
 msgid "Name (required)"
-msgstr "Navn (påkrevd)"
+msgstr "Navn (obligatorisk)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "Navn er påkrevd. Gå tilbake og prøv på nytt."
+msgstr "Navn er obligatorisk. Gå tilbake og prøv på nytt."
 
 msgid "Neighborhood"
 msgstr "Lokalområde"
@@ -838,27 +880,27 @@ msgstr "Nei"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Ingen e-post mottatt fra forfatter for oppføring %(id)s."
+msgstr "Ingen forfatter-e-post for oppføringen %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Finner ingen meldinger registrert på operatørens meldingstavletjeneste."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Ikke noe notat med ID: %(id_str)s."
+msgstr "Ingen notater med ID-en: %(id_str)s."
 
 msgid "No notes have been posted"
-msgstr "Det har ikke blitt lagt ut noen notater"
+msgstr "Ingen notater er lagt ut"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "Ingen person med ID: %(id_str)s."
+msgstr "Ingen person med ID-en: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Finner ingen resultater for"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autorisert til å legge ut notater med statusen «believed_dead»."
@@ -870,7 +912,7 @@ msgid "Note author"
 msgstr "Notatforfatter"
 
 msgid "Note text"
-msgstr "Notistekst"
+msgstr "Notattekst"
 
 msgid "Notes for this person"
 msgstr "Notater for denne personen"
@@ -899,8 +941,8 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"Opprinnelig dato for innlegget er ikke i formatet ÅÅÅÅ-MM-DD eller er en "
-"dato som ikke eksisterer. Gå tilbake og prøv på nytt."
+"Opprinnelig dato for innlegget er ikke på formatet ÅÅÅÅ-MM-DD, eller er "
+"en dato som ikke eksisterer. Gå tilbake og prøv på nytt."
 
 msgid "Original site name"
 msgstr "Navn på opprinnelig nettsted"
@@ -914,11 +956,15 @@ msgstr ""
 "alle. Google verken vurderer opplysningene eller bekrefter om de er "
 "riktige."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"MERK: På aktive Personsøk-nettsteder er dataene tilgjengelige for alle, "
+"og kan brukes av alle. Google verken vurderer opplysningene eller "
+"bekrefter at de er riktige."
 
 msgid "Person Finder"
 msgstr "Personsøk"
@@ -951,7 +997,7 @@ msgstr ""
 "jordskjelvet, eller endre feltet «Status for denne personen»."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Kontroller om dette stemmer overrens med personen du ønsker å rapportere."
+msgstr "Kontrollér om dette stemmer overens med personen du ønsker å rapportere."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Bekreft e-postadressen for å abonnere på oppdateringer"
@@ -963,7 +1009,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Forklar hvorfor du tror disse personene er én og samme person"
 
 msgid "Please fill in all the required fields."
-msgstr "Fyll ut alle påkrevde felter."
+msgstr "Fyll ut alle obligatoriske felter."
 
 msgid "Please fill in your email address."
 msgstr "Skriv inn e-postadressen din."
@@ -984,25 +1030,25 @@ msgid "Proceed"
 msgstr "Fortsett"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profilsider"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profilside"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Oppgi informasjon"
 
 msgid "Provide information about this person"
 msgstr "Oppgi informasjon om denne personen"
 
 msgid "Provided by:"
-msgstr "Leveres av:"
+msgstr "Levert av:"
 
 msgid "Province or state"
 msgstr "Provins eller stat"
 
 msgid "Reason for deletion:"
-msgstr "Årsak for sletting:"
+msgstr "Årsak til sletting:"
 
 msgid "Reason for disabling notes:"
 msgstr "Årsak til deaktivering av notater:"
@@ -1011,17 +1057,17 @@ msgid "Records Similar to"
 msgstr "Oppføringer som ligner på"
 
 msgid "Records selected"
-msgstr "oppføringer valgt"
+msgstr "Valgte oppføringer"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Oppføringer med navn og adresser som samsvarer med «%(query)s»"
 
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 msgid "Report spam"
-msgstr "Rapporter nettsøppel"
+msgstr "Rapportér nettsøppel"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1041,13 +1087,13 @@ msgstr "Søk etter denne personen"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Se %(begin_tag)swiki-en%(end_tag)s for flere instruksjoner"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Velg et nettsted for å legge til en profilside"
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Velg opptil tre oppføringer for markering som duplikater:"
+msgstr "Velg opptil tre oppføringer som skal merkes som duplikater:"
 
 msgid "Send email"
 msgstr "Send e-post"
@@ -1062,10 +1108,10 @@ msgid "Show sensitive information"
 msgstr "Vis sensitiv informasjon"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Logg på"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Logg av"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Noen har fått informasjon om at denne personen er i live"
@@ -1083,7 +1129,7 @@ msgid "Source of this record"
 msgstr "Oppføringens kilde"
 
 msgid "Source of this record (required)"
-msgstr "Oppføringens kilde (påkrevd)"
+msgstr "Oppføringens kilde (obligatorisk)"
 
 msgid "Status"
 msgstr "Status"
@@ -1098,23 +1144,23 @@ msgid "Street name only, no number"
 msgstr "Kun gatenavn, ikke nummer"
 
 msgid "Subscribe"
-msgstr "Abonner"
+msgstr "Abonnér"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Abonner på oppdateringer om %(full_name)s"
+msgstr "Abonnér på oppdateringer om %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Abonner på oppdateringer om denne personen"
+msgstr "Abonnér på oppdateringer om denne personen"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Bytt til adresse"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Bytt til duplikatmarkeringsmodus"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Bytt til bredde/lengde"
 
 msgid "Switch to normal view mode"
 msgstr "Bytt til normalvisningsmodus"
@@ -1126,28 +1172,17 @@ msgid "Terms of Service"
 msgstr "Vilkår"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "Både for- og etternavn er påkrevd. Gå tilbake og prøv på nytt."
+msgstr "Både for- og etternavn er obligatorisk. Gå tilbake og prøv på nytt."
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
-"Navn på personen som opprinnelig har lagt inn oppføringen, er påkrevd. Gå"
-" tilbake og prøv på nytt."
+"Navn på personen som opprinnelig har lagt inn oppføringen, er "
+"obligatorisk. Gå tilbake og prøv på nytt."
 
 msgid "The author has disabled notes on this record."
 msgstr "Forfatteren har deaktivert notater for denne oppføringen."
@@ -1165,7 +1200,7 @@ msgid "The record cannot be extended."
 msgstr "Oppføringen kan ikke forlenges."
 
 msgid "The record has been deleted."
-msgstr "Oppføringen har blitt slettet."
+msgstr "Oppføringen er slettet."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
@@ -1177,8 +1212,8 @@ msgid ""
 "person."
 msgstr ""
 "Valgt status indikerer at du er denne personen. Hvis dette stemmer, ber "
-"vi deg også om å indikere at du har kontaktet denne personen, ved å velge"
-" alternativet Ja."
+"vi deg også om å indikere at du har kontaktet denne personen ved å velge "
+"alternativet Ja."
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1200,7 +1235,7 @@ msgstr "Én eksisterende oppføring har lignende navn."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Det oppstod et problem ved forsøk på å behandle bildet. Prøv et annet "
+"Det oppsto et problem ved forsøk på å behandle bildet. Prøv et annet "
 "bilde."
 
 msgid ""
@@ -1225,7 +1260,7 @@ msgid "This is a new record."
 msgstr "Dette er en ny oppføring."
 
 msgid "This link is invalid."
-msgstr "Denne koblingen er ugyldig."
+msgstr "Denne linken er ugyldig."
 
 msgid "This note has been marked as spam."
 msgstr "Dette notatet er angitt som nettsøppel."
@@ -1249,7 +1284,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "Denne personens innlegg eksisterer ikke, eller har blitt slettet."
 
 msgid "This record has served its purpose."
-msgstr "Denne oppføringen har utspilt sin rolle."
+msgstr "Denne oppføringen har tjent sin hensikt."
 
 msgid "This record is a duplicate of"
 msgstr "Denne oppføringen er et duplikat av"
@@ -1267,15 +1302,19 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Dette repositoriet er for øyeblikket i testmodus. Så lenge testmodusen er"
+" i gang, slettes oppføringer som er eldre enn seks timer."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"For å legge til et bilde i dette notatet, laster du det opp eller skriver"
+" inn nettadressen for det."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "For å slette dataene dine finner du Personsøk på skrivebordet."
 
 msgid "To unsubscribe, follow this link"
-msgstr "Du kan avslutte abonnementet ved å følge denne koblingen"
+msgstr "Du kan avslutte abonnementet ved å følge denne linken"
 
 msgid "To view or add information, select a name below."
 msgstr "Velg et navn nedenfor for å vise eller legge til informasjon."
@@ -1284,15 +1323,17 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Skriv inn en adresse eller åpne kartet nedenfor og angi plasseringen ved "
+"å klikke på kartet."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Skriv inn en adresse."
 
 msgid "Type the two words:"
-msgstr "Tast inn disse to ordene:"
+msgstr "Skriv inn disse to ordene:"
 
 msgid "Type what you hear:"
-msgstr "Tast inn det du hører:"
+msgstr "Skriv inn det du hører:"
 
 msgid "URL"
 msgstr "Nettadresse"
@@ -1304,16 +1345,16 @@ msgid "Unspecified"
 msgstr "Uspesifisert"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Last opp"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Last opp CSV-filer"
 
 msgid "View the record"
-msgstr "Vis oppføringen"
+msgstr "Se oppføringen"
 
 msgid "We have nothing matching your search."
 msgstr "Finner ingen samsvar med søkeordet."
@@ -1322,7 +1363,7 @@ msgid "What is this person's name?"
 msgstr "Hva er denne personens navn?"
 
 msgid "When should this record disappear?"
-msgstr "Når bør oppføringen forsvinne?"
+msgstr "Når skal oppføringen forsvinne?"
 
 msgid "Where did this information come from?"
 msgstr "Hvor kommer denne informasjonen fra?"
@@ -1334,6 +1375,8 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Når testmodus er aktiv, slettes oppføringer som er mer enn 6 timer gamle "
+"– uavhengig av utløpsdatoen."
 
 msgid "Yes"
 msgstr "Ja"
@@ -1348,7 +1391,7 @@ msgid "Yes, delete the record"
 msgstr "Ja, slett oppføringen"
 
 msgid "Yes, disable notes on this record."
-msgstr "Ja, deaktiver notater for denne oppføringen"
+msgstr "Ja, deaktiver notater for denne oppføringen."
 
 msgid "Yes, extend the record"
 msgstr "Ja, forleng oppføringen"
@@ -1363,7 +1406,7 @@ msgid "Yes, update the note"
 msgstr "Ja, oppdater notatet"
 
 msgid "You are already subscribed. "
-msgstr "Du har allerede et abonnement. "
+msgstr "Du abonnerer allerede. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede avsluttet abonnementet."
@@ -1372,25 +1415,25 @@ msgstr "Du har allerede avsluttet abonnementet."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Du er nå logget på som %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Du er for øyeblikket ikke pålogget."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Du kan %(begin_tag)sse oppføringen%(end_tag)s før du sletter den."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Du kan vise hele oppføringen på %(view_url)s"
+msgstr "Du kan se hele oppføringen på %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr "Abonnementet har trådt i kraft."
+msgstr "Du er nå abonnent."
 
 msgid "You have successfully unsubscribed."
 msgstr "Abonnementet er avsluttet."
@@ -1399,44 +1442,44 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
-"Du har mottatt denne varslingen fordi du har abonnert på oppdateringer om"
-" følgende person:\n"
+"Du har mottatt dette varselet fordi du har abonnert på oppdateringer om "
+"denne personen:\n"
 
 msgid "Your e-mail address"
-msgstr "Din e-postadresse"
+msgstr "E-postadressen din"
 
 msgid "Your e-mail address:"
-msgstr "Din e-postadresse:"
+msgstr "E-postadressen din:"
 
 msgid "Your email"
-msgstr "Din e-postadresse:"
+msgstr "E-posten din"
 
 msgid "Your name"
-msgstr "Ditt navn"
+msgstr "Navnet ditt"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr "Ditt navn er påkrevd i delen «Om deg». Gå tilbake og prøv på nytt."
+msgstr "Navnet ditt er obligatorisk i delen «Om deg». Gå tilbake og prøv på nytt."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "Ditt navn er påkrevd i delen «Kilde». Gå tilbake og prøv på nytt."
+msgstr "Navnet ditt er obligatorisk i delen «Kilde». Gå tilbake og prøv på nytt."
 
 msgid "Your phone number"
-msgstr "Ditt telefonnummer"
+msgstr "Telefonnummeret ditt"
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
 "Forespørselen din er godtatt. Sjekk innboksen din og bekreft at du vil "
-"legge ut notatet ditt ved å følge koblingen du har mottatt."
+"legge ut notatet ditt ved å følge nettadressen som er innebygd."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Bekreft notatet ditt for «%(full_name)s»"
+msgstr "[Personsøk] Bekreft notatet ditt for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
@@ -1444,27 +1487,27 @@ msgstr "[Personsøk] Melding om sletting for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Personsøk] Vil du deaktivere notater for «%(full_name)s»?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Personsøk] Vil du aktivere notater for «%(full_name)s»?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Aktiverer notatmelding for «%(full_name)s»"
+msgstr "[Personsøk] Aktiverer notatmelding for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Notater har blitt deaktivert for «%(full_name)s»"
+msgstr "[Personsøk] Notater er deaktivert for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Notater har nå blitt aktivert for «%(full_name)s»"
+msgstr "[Personsøk] Notater er nå aktivert for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Personsøk] Melding om gjenoppretting av oppføring for «%(full_name)s»"
+msgstr "[Personsøk] Varsel om gjenoppretting av oppføring for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
@@ -1481,13 +1524,13 @@ msgid "female"
 msgstr "kvinne"
 
 msgid "in test mode"
-msgstr ""
+msgstr "i testmodus"
 
 msgid "male"
 msgstr "mann"
 
 msgid "on"
-msgstr "den"
+msgstr "på"
 
 msgid "other"
 msgstr "annet"

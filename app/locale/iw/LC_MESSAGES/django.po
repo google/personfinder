@@ -10,7 +10,7 @@
 # limitations under the License.
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2000-01-01 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -36,7 +36,7 @@ msgstr ""
 "\n"
 "  כדי להבטיח שהערות מושבתות או מופעלות רק באישורו של מחבר הרשומה, תישלח "
 "הודעת אישור למחבר הרשומה. אם אתה המחבר, בדוק את תיבת הדוא\"ל שלך לאחר "
-"שתלחץ על הלחצן למטה.\n"
+"שתלחץ על הלחצן בהמשך.\n"
 "\n"
 "  "
 
@@ -58,12 +58,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"שלום %(author_name)s, משתמש ביקש להפעיל הערות ברשומה עבור "
-"\"%(full_name)s\". כתובת הדוא\"ל שלך מופיעה כמחבר רשומה זו. כדי להפעיל "
-"הערות ברשומה זו, הפעל את הקישור הבא תוך 3 ימים:\n"
+"שלום %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"משתמש ביקש להפעיל הערות ברשומה עבור \"%(full_name)s\".\n"
 "\n"
+"כתובת הדוא\"ל שלך מופיעה כמחבר הרשומה הזו. כדי להפעיל הערות ברשומה הזו, "
+"הפעל את הקישור הבא תוך 3 ימים:\n"
+"\n"
+" %(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -84,11 +86,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"שלום %(author_name)s, משתמש ביקש להשבית הערות ברשומה עבור "
-"\"%(full_name)s\". כתובת הדוא\"ל שלך מופיעה כמחבר רשומה זו. כדי להשבית "
-"הערות ברשומה זו, הפעל את הקישור הבא תוך 3 ימים:\n"
+"שלום %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"משתמש ביקש להשבית הערות ברשומה עבור \"%(full_name)s\".\n"
+"\n"
+"כתובת הדוא\"ל שלך מופיעה כמחבר הרשומה הזו. כדי להשבית הערות ברשומה הזו, "
+"הפעל את הקישור הבא תוך 3 ימים:\n"
+"\n"
+"  %(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -104,10 +109,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"שלום %(author_name)s, זה עתה הזנת הערה ברשומה עבור \"%(full_name)s\". כדי"
-" לפרסם את ההערה שלך, הפעל את הקישור הבא תוך 3 ימים:\n"
+"שלום %(author_name)s,\n"
+"זה עתה הזנת הערה ברשומה עבור \"%(full_name)s\".\n"
+"כדי לפרסם את ההערה שלך, הפעל את הקישור הבא תוך 3 ימים:\n"
 "\n"
-"   %(confirm_url)s\n"
+" %(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -117,12 +123,19 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    אזהרה: התוקף של הרשומה הזו יפוג בתוך פחות "
+"מ-%(expiration_days)s ימים.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    אזהרה: התוקף של הרשומה הזו יפוג בתוך פחות מיום.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -183,7 +196,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      אשר את הערתך\n"
+"      אשר את ההערה שלך\n"
 "    "
 
 msgid ""
@@ -194,7 +207,7 @@ msgid ""
 msgstr ""
 "\n"
 "      אם תמשיך בתהליך המחיקה,\n"
-"      לא תוכל עוד לחפש או להציג את הרשומה באתר זה.\n"
+"    לא תוכל עוד לחפש או להציג את הרשומה באתר הזה.\n"
 "    "
 
 #, python-format
@@ -206,6 +219,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      אם ברצונך למחוק אותה לצמיתות,\n"
+"     פנה למקור.\n"
+"     תוכל להציג את הרשומה המקורית "
+"ב-%(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -217,6 +236,12 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      כתובת האתר שהזנת לא נראית כמו כתובת אתר חוקית של פרופיל "
+"%(website)s.\n"
+"     עבור לדף הפרופיל של האדם הזה ב-%(website)s ולאחר מכן העתק והדבק את "
+"כתובת האתר כאן.\n"
+"      "
 
 msgid ""
 "\n"
@@ -227,6 +252,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      הרשומה הזו היא העתק של רשומה ממקור אחר.\n"
+"    ניתן למחוק את הרשומה כאן,\n"
+"    אבל שים לב שמאוחר יותר\n"
+"    ייתכן שנקבל עותק נוסף שלה מהמקור.\n"
+"    "
 
 msgid ""
 "\n"
@@ -252,8 +283,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  הרשומה עדיין תהיה גלויה באתר זה, אך לאף אחד לא תהיה אפשרות לפרסם הערות "
-"נוספות עבורה.\n"
+"  הרשומה עדיין תהיה גלויה באתר הזה, אך לאף אחד לא תהיה אפשרות לפרסם הערות"
+" נוספות עבורה.\n"
 "  "
 
 msgid ""
@@ -278,11 +309,10 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"משתמש מחק את הרשומה עבור \"%(full_name)s\"\n"
-"בכתובת %(site_url)s.\n"
+"משתמש מחק את הרשומה עבור \"%(full_name)s\" בכתובת %(site_url)s.\n"
 "\n"
-"אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך\n"
-"מציינת שאתה המחבר של הערה ברשומה זו.\n"
+"אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך מציינת שאתה המחבר של "
+"הערה ברשומה הזו.\n"
 
 #, python-format
 msgid ""
@@ -294,9 +324,10 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"משתמש מחק את הרשומה עבור \"%(full_name)s\" בכתובת %(site_url)s. אנו "
-"מודיעים לך על המחיקה מכיוון שכתובת הדוא\"ל שלך צוינה בתור המחבר של רשומה "
-"זו.\n"
+"משתמש מחק את הרשומה עבור \"%(full_name)s\" בכתובת %(site_url)s.\n"
+"\n"
+"אנו מודיעים לך על המחיקה מכיוון שכתובת הדוא\"ל שלך צוינה בתור המחבר של "
+"הרשומה הזו.\n"
 
 #, python-format
 msgid ""
@@ -317,10 +348,10 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"הערה: אם אתה סבור שרשומה זו נמחקה בטעות, תוכל לשחזר אותה על ידי ביקור "
-"בקישור הבא במהלך %(days_until_deletion)s הימים הבאים:\n"
+"הערה: אם אתה סבור שהרשומה הזו נמחקה בטעות, תוכל לשחזר אותה על ידי ביקור "
+"בקישור הבא במהלך %(days_until_deletion)s הימים הבאים: \n"
 "\n"
-"    %(restore_url)s\n"
+"   %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -338,9 +369,9 @@ msgstr ""
 "הערות מושבתות כעת ברשומה עבור \"%(full_name)s\". כדי להציג את הרשומה, "
 "הפעל את הקישור הבא:\n"
 "\n"
-"    %(record_url)s\n"
+" %(record_url)s\n"
 "\n"
-"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של אדם זה או "
+"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של האדם הזה או "
 "להערה ברשומה.\n"
 
 #, python-format
@@ -357,11 +388,11 @@ msgid ""
 msgstr ""
 "\n"
 "הערות מופעלות כעת ברשומה עבור \"%(full_name)s\". כדי להציג את הרשומה, "
-"הפעל את הקישור הבא:\n"
+"הפעל את הקישור הבא: \n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של אדם זה או "
+"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של האדם הזה או "
 "להערה ברשומה.\n"
 
 #, python-format
@@ -378,13 +409,12 @@ msgid ""
 msgstr ""
 "\n"
 "המחבר של הרשומה עבור \"%(full_name)s\"\n"
-"(שנמחקה בעבר) שיחזר את הרשומה.  כדי להציג את\n"
-"הרשומה, הפעל קישור זה:\n"
+"(שנמחקה בעבר) שיחזר את הרשומה. כדי להציג את הרשומה, הפעל את הקישור הזה:\n"
 "\n"
-"    %(record_url)s\n"
+" %(record_url)s\n"
 "\n"
-"אנו מודיעים לך על כך משום שכתובת הדוא\"ל שלך משויכת לרשומה\n"
-"או להערה ברשומה של אדם זה.\n"
+"אנו מודיעים לך על כך משום שכתובת הדוא\"ל שלך משויכת לרשומה או להערה "
+"ברשומה של האדם הזה.\n"
 
 #, python-format
 msgid ""
@@ -406,26 +436,28 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"נרשמת כמנוי על הערות ב-\"%(full_name)s\". תוכל להציג רשומה זו בכתובת\n"
+"נרשמת כמנוי על הערות ב-\"%(full_name)s\".\n"
 "\n"
-"     %(view_url)s\n"
+"תוכל להציג את הרשומה הזו בכתובת\n"
+"\n"
+" %(view_url)s\n"
 "\n"
 "כדי לבטל את הרישום, הפעל את הקישור הבא: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr ""
+msgstr "(לחץ כדי לחשוף)"
 
 msgid "(unknown)"
-msgstr ""
+msgstr "(לא ידוע)"
 
 msgid "A message for this person or others seeking this person"
-msgstr ""
+msgstr "הודעה לאדם הזה או לאחרים המחפשים את האדם הזה"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "כחודש (30 יום) מעכשיו"
@@ -443,168 +475,162 @@ msgid "About 6 months (180 days) from now"
 msgstr "כשישה חודשים (180 יום) מעכשיו"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "מידע על מאתר האנשים של Google"
 
 msgid "About you (required)"
-msgstr ""
+msgstr "מידע אודותיך (חובה)"
 
 msgid "Administration"
 msgstr "ניהול"
 
 msgid "Age"
-msgstr ""
+msgstr "גיל"
 
 msgid "Alternate family names"
 msgstr "שמות משפחה חלופיים"
 
 msgid "Alternate given names"
-msgstr "שמות נתונים חלופיים"
+msgstr "שמות פרטיים חלופיים"
 
 msgid "Alternate names"
 msgstr "שמות חלופיים"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "האם אתה בטוח שהערה זו אינה דואר זבל?"
+msgstr "האם אתה בטוח שההערה הזו אינה דואר זבל?"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "האם אתה בטוח שברצונך לסמן הערה זו כדואר זבל?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "האם אתה בטוח שברצונך לשחזר רשומה זו מהמחיקה?"
+msgstr "האם אתה בטוח שברצונך לשחזר את הרשומה הזו מהמחיקה?"
 
 msgid "Atom feed of updates about this person"
-msgstr "עדכון Atom של עדכונים לגבי אדם זה"
+msgstr "עדכון Atom של עדכונים לגבי האדם הזה"
 
-#, fuzzy
 msgid "Author's e-mail address"
-msgstr "כתובת הדוא\"ל שלך:"
+msgstr "כתובת הדוא\"ל של המחבר"
 
 msgid "Author's name"
-msgstr ""
+msgstr "שם המחבר"
 
 msgid "Author's phone number"
-msgstr ""
+msgstr "מספר הטלפון של המחבר"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "מפתח הרשאה"
 
 msgid "Back to results list"
-msgstr ""
+msgstr "חזור לרשימת התוצאות"
 
 msgid "Back to start"
-msgstr ""
+msgstr "חזור להתחלה"
 
 msgid "CSV file"
-msgstr ""
+msgstr "קובץ CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
 msgstr "לא ניתן למצוא הערה עם המזהה %(id)s"
 
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 msgid "City"
-msgstr ""
+msgstr "עיר"
 
 msgid "Click here to view results."
-msgstr ""
+msgstr "לחץ כאן כדי להציג את התוצאות."
 
 msgid "Close window"
-msgstr ""
+msgstr "סגור חלון"
 
-#, fuzzy
 msgid "Compare these records"
-msgstr "כן, שחזר רשומה זו"
+msgstr "השווה את הרשומות האלה"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
+msgstr "העתק והדבק את קוד ה-HTML הבא כדי למקם את הכלי הזה באתר שלך"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "יצירת רשומה חדשה"
 
 msgid "Create a new record for"
-msgstr ""
+msgstr "יצירת רשומה חדשה עבור"
 
 msgid "Create a new record for a missing person"
-msgstr ""
+msgstr "יצירת רשומה חדשה עבור אדם נעדר"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "אירועי משבר"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr ""
+msgstr "נכון לעכשיו יש מעקב על כ-%(num_people)s רשומות."
 
-#, fuzzy
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "התאריך אינו יכול להיות בעתיד. חזור ונסה שוב."
 
 msgid "Date of birth"
-msgstr ""
+msgstr "תאריך לידה"
 
 msgid "Delete this record"
-msgstr "מחק רשומה זו"
+msgstr "מחק את הרשומה הזו"
 
-#, fuzzy
 msgid "Describe how to identify this person."
-msgstr "הירשם לקבלת עדכונים על אדם זה"
+msgstr "תאר כיצד ניתן לזהות את האדם הזה."
 
 msgid "Describe the physical characteristics of this person."
-msgstr "תאר את המאפיינים הפיזיים של אדם זה."
+msgstr "תאר את המאפיינים הפיזיים של האדם הזה."
 
 msgid "Description"
-msgstr ""
+msgstr "תיאור"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "גירסה לשולחן העבודה"
 
 msgid "Developers"
-msgstr ""
+msgstr "מפתחים"
 
 msgid "Disable notes on this record"
 msgstr "השבת הערות ברשומה זו"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "האם יש לאדם הזה דפי פרופיל באתרים אחרים?"
 
 msgid "Download the sound as MP3"
 msgstr "הורד את הצליל כ-MP3"
 
 msgid "E-mail"
-msgstr ""
+msgstr "דוא\"ל"
 
-#, fuzzy
 msgid "E-mail address"
-msgstr "כתובת הדוא\"ל שלך:"
+msgstr "כתובת דוא\"ל:"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr ""
+msgstr "הטמעת היישום"
 
 msgid "Enable notes on this record"
 msgstr "הפעל הערות ברשומה זו"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "ודא שכל התאריכים הם בתבנית yyyy-mm-ddThh:mm:ssZ ב-UTC"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr ""
+msgstr "הזן כ-YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
-#, fuzzy
 msgid "Enter the person's name or parts of the name."
-msgstr "הזן את השם של האדם."
+msgstr "הזן את השם של האדם או חלקים משמו."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "הזן את השם, חלקים מתוך השם או מספר טלפון נייד של אדם זה."
+msgstr "הזן את השם, חלקים מתוך השם או מספר טלפון נייד של האדם הזה."
 
 msgid "Enter the person's name."
 msgstr "הזן את השם של האדם."
@@ -613,20 +639,20 @@ msgid "Expiry"
 msgstr "תפוגה"
 
 msgid "Expiry date of this record"
-msgstr "תאריך התפוגה של רשומה זו"
+msgstr "תאריך התפוגה של הרשומה הזו"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "הארך את מועד התפוגה ב-%(extension_days)s ימים"
 
 msgid "Family name"
-msgstr ""
+msgstr "שם משפחה"
 
 msgid "Feed of updates about this person"
-msgstr "עדכון של עדכונים על אדם זה"
+msgstr "עדכונים על האדם הזה"
 
 msgid "Follow this link to create a new record"
-msgstr ""
+msgstr "הפעל את הקישור הזה ליצירת רשומה חדש"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -634,7 +660,7 @@ msgid ""
 msgstr "עבור טלפונים שאינם טלפונים ניידים, השתמש בשירות 171 מטעם NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "שם מלא"
 
 msgid "Get a new challenge"
 msgstr "קבל אתגר חדש"
@@ -646,72 +672,68 @@ msgid "Get an audio challenge"
 msgstr "קבל אתגר אודיו"
 
 msgid "Given name"
-msgstr ""
+msgstr "שם פרטי"
 
 msgid "Google Person Finder"
 msgstr "מאתר האנשים של Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "האם שוחחת עם אדם זה בעצמך לאחר האסון? (נדרש)"
+msgstr "האם שוחחת עם האדם הזה בעצמך לאחר האסון? (חובה)"
 
 msgid "Help"
 msgstr "עזרה"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr ""
+msgstr "לפניך %(begin_tag)s דוגמה לקובץ CSV‏%(end_tag)s שתוכל לערוך ולהעלות"
 
 msgid "Hide Map"
-msgstr ""
+msgstr "הסתר מפה"
 
 msgid "Hide note"
 msgstr "הסתר הערה"
 
 msgid "Home Address"
-msgstr ""
+msgstr "כתובת בבית"
 
-#, fuzzy
 msgid "Home address"
-msgstr "כתובת הדוא\"ל שלך:"
+msgstr "כתובת בבית"
 
 msgid "Home country"
-msgstr ""
+msgstr "ארץ מגורים"
 
 msgid "How can this person be reached now?"
-msgstr ""
+msgstr "כיצד ניתן להגיע אל האדם הזה כעת?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr ""
+msgstr "כיצד אנשים אחרים המעוניינים באדם הזה יכולים ליצור איתך קשר"
 
 msgid "I am seeking information"
-msgstr ""
+msgstr "אני מחפש מידע"
 
 msgid "I am this person"
-msgstr ""
+msgstr "אני האדם הזה"
 
 msgid "I do not want any more updates on this record."
-msgstr "איני מעוניין בעדכונים נוספים לרשומה זו."
+msgstr "אני לא מעוניין בעדכונים נוספים לרשומה הזו."
 
 msgid "I do not want my information online anymore."
 msgstr "אני לא מעוניין יותר שהמידע שלי יופיע באופן מקוון."
 
-#, fuzzy
 msgid "I have information about someone"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "יש לי מידע על האדם הזה"
 
 msgid "I have reason to think this person is missing"
-msgstr ""
+msgstr "יש לי סיבה לחשוב שהאדם הזה נעדר"
 
-#, fuzzy
 msgid "I have received information that this person is alive"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "יש ברשותי מידע שהאדם הזה חי"
 
-#, fuzzy
 msgid "I have received information that this person is dead"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "יש ברשותי מידע שהאדם הזה מת"
 
 msgid "I have received spam due to this note."
-msgstr "קיבלתי דואר זבל בשל הערה זו."
+msgstr "קיבלתי דואר זבל בשל ההערה הזו."
 
 msgid "I have received spam."
 msgstr "קיבלתי דואר זבל."
@@ -720,21 +742,23 @@ msgid "I prefer not to specify."
 msgstr "אני מעדיף שלא לציין."
 
 msgid "I'm looking for someone"
-msgstr ""
+msgstr "אני מחפש מישהו"
 
 msgid "Identify who you are looking for"
-msgstr ""
+msgstr "ציין את מי אתה מחפש"
 
 msgid "Identify who you have information about"
-msgstr ""
+msgstr "ציין על מי יש לך מידע"
 
 msgid "Identifying information"
-msgstr ""
+msgstr "פרטים מזהים"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
+"אם אף אחת מהרשומות האלה לא מתאימה לאדם שבו אתה מעוניין, תוכל ללחוץ למטה "
+"כדי ליצור רשומה חדשה."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -753,7 +777,7 @@ msgstr ""
 "להפעיל את ההערות ברשומה זו. אם לא, המתן שמחבר הרשומה יאשר את בקשתך."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
+msgstr "אם יש לך תמונה של האדם הזה, העלה אותה או הזן את כתובת האתר שלה."
 
 msgid "Incorrect.  Try again."
 msgstr "שגיאה. נסה שוב."
@@ -762,40 +786,37 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "כתובת דוא\"ל לא חוקית. נסה שוב."
 
 msgid "Language selection"
-msgstr ""
+msgstr "בחירת שפה"
 
 msgid "Last known location"
-msgstr ""
+msgstr "המיקום הידוע האחרון"
 
 msgid "Link"
-msgstr ""
+msgstr "צור קישור"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "צור קישור לדף פרופיל"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr ""
+msgstr "סמן רשומות ככפולות"
 
 msgid "Message (required)"
-msgstr ""
+msgstr "הודעה (חובה)"
 
-#, fuzzy
 msgid "Message is required. Please go back and try again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "חובה להזין הודעה. חזור ונסה שוב."
 
-#, fuzzy
 msgid "Missing person's current contact information"
-msgstr "אדם זה היה בקשר עם מישהו"
+msgstr "פרטי קשר נוכחיים של האדם הנעדר"
 
-#, fuzzy
 msgid "Missing person's current e-mail address"
-msgstr "כתובת הדוא\"ל שלך:"
+msgstr "כתובת הדוא\"ל הנוכחית של האדם הנעדר"
 
 msgid "Missing person's current phone number"
-msgstr ""
+msgstr "מספר הטלפון הנוכחי של האדם הנעדר"
 
 #, python-format
 msgid ""
@@ -808,13 +829,13 @@ msgstr ""
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
-msgstr ""
+msgstr "יותר מ-100 תוצאות; מוצגות רק 100 הראשונות. נסה להזין יותר מהשם"
 
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "שם (חובה)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "דרוש שם. חזור ונסה שוב."
@@ -823,11 +844,11 @@ msgid "Neighborhood"
 msgstr "שכונה"
 
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "אין כתובת דוא\"ל של מחבר עבור רשומה %(id)s."
+msgstr "אין כתובת דוא\"ל של מחבר עבור הרשומה %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "לא נמצאו הודעות רשומות בשירות לוח המודעות של הספק."
@@ -844,10 +865,10 @@ msgid "No person with ID: %(id_str)s."
 msgstr "אין אדם עם המזהה: %(id_str)s."
 
 msgid "No results found for"
-msgstr ""
+msgstr "לא נמצאו תוצאות עבור"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "לא מורשה לפרסם הערות עם הסטטוס \"believed_dead\"."
@@ -862,7 +883,7 @@ msgid "Note text"
 msgstr "טקסט הערה"
 
 msgid "Notes for this person"
-msgstr "הערות עבור אדם זה"
+msgstr "הערות עבור האדם הזה"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "מספר או טווח (לדוגמה, 20-30)"
@@ -872,58 +893,65 @@ msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"לחלופין, הוסף לאתר בתור %(gadget_link_html)sגאדג'ט של "
-"Google%(link_end_html)s."
+"לחלופין, הוסף לאתר שלך בתור %(gadget_link_html)sגאדג'ט של "
+"Google‏%(link_end_html)s."
 
 msgid "Original URL"
-msgstr ""
+msgstr "כתובת אתר מקורית"
 
 msgid "Original author's name"
-msgstr ""
+msgstr "שמו של המחבר המקורי"
 
 msgid "Original posting date"
-msgstr ""
+msgstr "מועד הפרסום המקורי"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
+"תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שהמועד אינו קיים. חזור "
+"ונסה שוב."
 
 msgid "Original site name"
-msgstr ""
+msgstr "שם האתר המקורי"
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
+"שים לב: כל הנתונים שהוזנו יהיו זמינים לציבור וניתנים לצפייה ולשימוש של כל"
+" אחד. Google אינה בודקת או מאמתת את הדיוק של הנתונים האלה."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"שים לב: באתרים פעילים של מאתר האנשים, כל הנתונים שהוזנו יהיו זמינים "
+"לציבור וניתנים לשימוש של כל אחד. Google אינה בודקת או מאמתת את הדיוק של "
+"הנתונים האלה."
 
 msgid "Person Finder"
 msgstr "מאתר האנשים"
 
 msgid "Phone"
-msgstr ""
+msgstr "טלפון"
 
 msgid "Phone number"
-msgstr ""
+msgstr "מספר טלפון"
 
 msgid "Photo"
-msgstr ""
+msgstr "תמונה"
 
-#, fuzzy
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "התמונה שהועלתה היא בפורמט לא מוכר. חזור ונסה שוב."
 
 msgid "Physical characteristics"
-msgstr ""
+msgstr "מאפיינים פיזיים"
 
 msgid "Play the sound again"
 msgstr "הפעל שוב את הצליל"
@@ -932,9 +960,11 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
+"בדוק אם היית בקשר עם האדם הזה לאחר רעידת האדמה, או שנה את השדה \"הסטטוס "
+"של האדם הזה\"."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
+msgstr "בדוק אם הוא תואם לאדם שעליו ברצונך לדווח."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "אשר את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
@@ -943,7 +973,7 @@ msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "הזן את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
 
 msgid "Please explain why you think these are the same person"
-msgstr ""
+msgstr "הסבר מדוע אתה חושב שמדובר באותו אדם"
 
 msgid "Please fill in all the required fields."
 msgstr "מלא את כל השדות הנדרשים."
@@ -955,35 +985,34 @@ msgid "Please provide an valid email address."
 msgstr "ספק כתובת דוא\"ל חוקית."
 
 msgid "Possible duplicates"
-msgstr ""
+msgstr "כפילויות אפשריות"
 
 msgid "Postal or zip code"
-msgstr ""
+msgstr "דואר או מיקוד"
 
 msgid "Posted by"
-msgstr ""
+msgstr "פורסם על ידי"
 
 msgid "Proceed"
-msgstr ""
+msgstr "המשך"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "דפי פרופיל"
 
 msgid "Profile page"
-msgstr ""
+msgstr "דף פרופיל"
 
 msgid "Provide information"
-msgstr ""
+msgstr "ספק מידע"
 
-#, fuzzy
 msgid "Provide information about this person"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "ספק מידע על האדם הזה"
 
 msgid "Provided by:"
 msgstr "מטעם:"
 
 msgid "Province or state"
-msgstr ""
+msgstr "מחוז או מדינה"
 
 msgid "Reason for deletion:"
 msgstr "הסיבה למחיקה:"
@@ -992,17 +1021,17 @@ msgid "Reason for disabling notes:"
 msgstr "הסיבה להשבתת ההערות:"
 
 msgid "Records Similar to"
-msgstr ""
+msgstr "רשומות דומות ל:"
 
 msgid "Records selected"
-msgstr ""
+msgstr "רשומות נבחרות"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "רשומות עם שמות וכתובות התואמים ל- \"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "הסר"
 
 msgid "Report spam"
 msgstr "דווח על דואר זבל"
@@ -1014,78 +1043,72 @@ msgstr "חזור לרשומה עבור %(full_name)s."
 msgid "Reveal note"
 msgstr "חשוף הערה"
 
-#, fuzzy
 msgid "Save this record"
-msgstr "מחק רשומה זו"
+msgstr "שמור את הרשומה הזו"
 
 msgid "Search Results for"
-msgstr ""
+msgstr "תוצאות חיפוש עבור"
 
 msgid "Search for this person"
-msgstr ""
+msgstr "חפש את האדם הזה"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "ראה %(begin_tag)swiki‏%(end_tag)s לקבלת הוראות נוספות"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "בחר אתר כדי להוסיף דף פרופיל..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr ""
+msgstr "בחר עד 3 רשומות לסימון כרשומות כפולות:"
 
 msgid "Send email"
 msgstr "שלח דוא\"ל"
 
 msgid "Sex"
-msgstr ""
+msgstr "מין"
 
 msgid "Show Map"
-msgstr ""
+msgstr "הצג מפה"
 
 msgid "Show sensitive information"
-msgstr ""
+msgstr "הצג מידע רגיש"
 
 msgid "Sign in"
-msgstr ""
+msgstr "היכנס"
 
 msgid "Sign out"
-msgstr ""
+msgstr "התנתק"
 
-#, fuzzy
 msgid "Someone has received information that this person is alive"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "מישהו קיבל מידע שהאדם הזה חי"
 
-#, fuzzy
 msgid "Someone has received information that this person is dead"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "מישהו קיבל מידע שהאדם הזה נפטר"
 
-#, fuzzy
 msgid "Someone has reported that this person is missing"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "מישהו דיווח שהאדם הזה נעדר"
 
 msgid "Someone is seeking information about this person"
-msgstr "מישהו מחפש מידע על אדם זה"
+msgstr "מישהו מחפש מידע על האדם הזה"
 
-#, fuzzy
 msgid "Source of this record"
-msgstr "תאריך התפוגה של רשומה זו"
+msgstr "המקור של הרשומה הזו"
 
 msgid "Source of this record (required)"
-msgstr ""
+msgstr "המקור של האלבום הזה (חובה)"
 
 msgid "Status"
-msgstr ""
+msgstr "סטטוס"
 
-#, fuzzy
 msgid "Status of this person"
-msgstr "הירשם לקבלת עדכונים על אדם זה"
+msgstr "הסטטוס של האדם הזה"
 
 msgid "Street name"
-msgstr ""
+msgstr "שם רחוב"
 
 msgid "Street name only, no number"
-msgstr ""
+msgstr "שם רחוב בלבד, ללא מספר"
 
 msgid "Subscribe"
 msgstr "הירשם"
@@ -1095,39 +1118,36 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "הירשם לקבלת עדכונים על %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "הירשם לקבלת עדכונים על אדם זה"
+msgstr "הירשם לקבלת עדכונים על האדם הזה"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "עבור לכתובת"
 
 msgid "Switch to duplicate marking mode"
-msgstr ""
+msgstr "עבור למצב סימון של רשומות כפולות"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "עבור לקווי רוחב/אורך"
 
 msgid "Switch to normal view mode"
-msgstr ""
+msgstr "עבור למצב תצוגה רגיל"
 
-#, fuzzy
 msgid "Tell us the status of this person"
-msgstr "הירשם לקבלת עדכונים על אדם זה"
+msgstr "ספר לנו מה הסטטוס של האדם הזה"
 
 msgid "Terms of Service"
-msgstr ""
+msgstr "תנאים והגבלות"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "נדרשים גם השם הפרטי וגם שם המשפחה.  חזור ונסה שוב."
+msgstr "נדרשים גם השם הפרטי וגם שם המשפחה. חזור ונסה שוב."
 
-#, fuzzy
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "דרוש השם המקורי של המחבר. חזור ונסה שוב."
 
 msgid "The author has disabled notes on this record."
 msgstr "המחבר השבית הערות ברשומה זו."
@@ -1136,7 +1156,7 @@ msgid "The author has disabled status updates on this record."
 msgstr "המחבר השבית עדכוני סטטוס ברשומה זו."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "התמונה שסיפקת גדולה מדי. העלה תמונה קטנה יותר."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "הסיבה שהערה זו סומנה כדואר זבל היא:"
@@ -1156,8 +1176,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"הסטטוס שבחרת מציין שאתה אדם זה. אם זה נכון, בחר גם במילה 'כן' כדי לציין "
-"שיצרת קשר עם אדם זה."
+"הסטטוס שבחרת מציין שאתה האדם הזה. אם זה נכון, בחר גם במילה 'כן' כדי לציין"
+" שיצרת קשר עם האדם הזה."
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1169,36 +1189,38 @@ msgstr "האסימון %(token)s היה לא חוקי."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
+msgstr "קיימות %(num_results)s רשומות עם שם דומה."
 
 msgid "There are some existing records with similar names."
-msgstr ""
+msgstr "קיימות כמה רשומות עם שם דומה."
 
 msgid "There is one existing record with a similar name."
-msgstr ""
+msgstr "קיימת רשומה אחת עם שם דומה."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "אירעה בעיה בעיבוד התמונה. נסה תמונה אחרת."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
+"אירעה שגיאה בעיבוד הבקשה. מצטערים על אי הנוחות. המנהלים שלנו יבדקו את "
+"מקור הבעיה, אבל בדוק אם פורמט הבקשה תקין."
 
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"גאדג'טים אלה זמינים ב%(apache_link_html)sרשיון Apache, גרסה "
+"הגאדג'טים האלה זמינים ב%(apache_link_html)sרישיון Apache, גרסה "
 "2.0%(link_end_html)s."
 
 msgid "This is a new record."
-msgstr ""
+msgstr "זו רשומה חדשה."
 
 msgid "This link is invalid."
-msgstr "קישור זה אינו חוקי."
+msgstr "הקישור הזה אינו חוקי."
 
 msgid "This note has been marked as spam."
 msgstr "הערה זו סומנה כדואר זבל."
@@ -1213,56 +1235,55 @@ msgid "This note is spam."
 msgstr "הערה זו היא דואר זבל."
 
 msgid "This person has been in contact with someone"
-msgstr "אדם זה היה בקשר עם מישהו"
+msgstr "האדם הזה היה בקשר עם מישהו"
 
-#, fuzzy
 msgid "This person has posted a message"
-msgstr "אדם זה היה בקשר עם מישהו"
+msgstr "האדם הזה שלח הודעה"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr "הרשומה של אדם זה אינה קיימת או שנמחקה."
+msgstr "הרשומה של האדם הזה אינה קיימת או שנמחקה."
 
 msgid "This record has served its purpose."
-msgstr "רשומה זו השיגה את  מטרתה."
+msgstr "הרשומה הזו השיגה את מטרתה."
 
-#, fuzzy
 msgid "This record is a duplicate of"
-msgstr "רשומה זו אינה הולמת."
+msgstr "הרשומה הזו היא שכפול של"
 
-#, fuzzy
 msgid "This record is copied from another source."
-msgstr "רשומה זו אינה הולמת."
+msgstr "הרשומה הזו הועתקה ממקור אחר."
 
 msgid "This record is inappropriate."
-msgstr "רשומה זו אינה הולמת."
+msgstr "הרשומה הזו אינה הולמת."
 
 msgid "This record is spam."
-msgstr "רשומה זו היא דואר זבל."
+msgstr "הרשומה הזו היא דואר זבל."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"מאגר הנתונים הזה נמצא כעת במצב בדיקה. כאשר מצב בדיקה פועל, רשומות הקיימות"
+" מעל 6 שעות יימחקו."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "כדי לצרף תמונה להערה הזו, העלה אותה או הזן את כתובת האתר שלה."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "כדי למחוק את הנתונים שלך, היכנס למאתר האנשים משולחן העבודה שלך."
 
 msgid "To unsubscribe, follow this link"
 msgstr "כדי לבטל את הרישום, הפעל את הקישור הבא"
 
 msgid "To view or add information, select a name below."
-msgstr ""
+msgstr "כדי להציג או להוסיף מידע, בחר שם למטה."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr ""
+msgstr "הקלד כתובת או פתח את המפה למטה וציין את המיקום על ידי לחיצה על המפה."
 
 msgid "Type an address."
-msgstr ""
+msgstr "הקלד כתובת."
 
 msgid "Type the two words:"
 msgstr "הקלד את שתי המילים:"
@@ -1271,49 +1292,50 @@ msgid "Type what you hear:"
 msgstr "הקלד את מה שאתה שומע:"
 
 msgid "URL"
-msgstr ""
+msgstr "כתובת אתר"
 
 msgid "URL of original record"
-msgstr ""
+msgstr "כתובת אתר של הרשומה המקורית"
 
 msgid "Unspecified"
-msgstr ""
+msgstr "לא צוין"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
-msgstr ""
+msgstr "העלה"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "העלה קובצי CSV"
 
 msgid "View the record"
 msgstr "הצג את הרשומה"
 
 msgid "We have nothing matching your search."
-msgstr ""
+msgstr "לא נמצא שום דבר התואם לחיפוש שלך."
 
-#, fuzzy
 msgid "What is this person's name?"
-msgstr "הזן את השם של האדם."
+msgstr "מהו השם של האדם?"
 
 msgid "When should this record disappear?"
-msgstr "מתי רשומה זו אמורה להיעלם?"
+msgstr "מתי הרשומה הזו אמורה להיעלם?"
 
 msgid "Where did this information come from?"
-msgstr ""
+msgstr "מאיפה המידע הזה הגיע?"
 
 msgid "Where is this person from?"
-msgstr ""
+msgstr "מאיפה האדם הזה?"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"כאשר מצב בדיקה פועל, רשומות הקיימות מעל 6 שעות יימחקו, בלי קשר לתאריך "
+"התפוגה."
 
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 msgid "Yes, ask the record author to disable notes"
 msgstr "כן, בקש ממחבר הרשומה להשבית הערות"
@@ -1331,10 +1353,10 @@ msgid "Yes, extend the record"
 msgstr "כן, הארך את תוקף הרשומה"
 
 msgid "Yes, restore this record"
-msgstr "כן, שחזר רשומה זו"
+msgstr "כן, שחזר את הרשומה הזו"
 
 msgid "Yes, these are the same person"
-msgstr ""
+msgstr "כן, זה אותו אדם"
 
 msgid "Yes, update the note"
 msgstr "כן, עדכן את ההערה"
@@ -1349,22 +1371,22 @@ msgstr "הרישום שלך כבר בוטל."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "נכנסת כעת בתור %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "לא נכנסת למערכת."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "ניתן %(begin_tag)sלהציג את הרשומה%(end_tag)s לפני מחיקתה."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "תוכל להציג את הרשומה המלאה בכתובת %(view_url)s"
+msgstr "ניתן להציג את הרשומה המלאה בכתובת %(view_url)s"
 
 msgid "You have successfully subscribed."
 msgstr "נרשמת בהצלחה."
@@ -1377,7 +1399,6 @@ msgid ""
 "the following person:\n"
 msgstr "קיבלת התראה זו מכיוון שנרשמת לקבלת עדכונים עבור האדם הבא:\n"
 
-#, fuzzy
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך:"
 
@@ -1388,33 +1409,31 @@ msgid "Your email"
 msgstr "כתובת הדוא\"ל שלך"
 
 msgid "Your name"
-msgstr ""
+msgstr "השם שלך"
 
-#, fuzzy
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "השם שלך דרוש בקטע \"עליך\". חזור ונסה שוב."
 
-#, fuzzy
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr "השם שלך דרוש בקטע \"מקור\". חזור ונסה שוב."
 
 msgid "Your phone number"
-msgstr ""
+msgstr "מספר הטלפון שלך"
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
 "בקשתך עובדה בהצלחה. בדוק את הדואר הנכנס שלך ואשר שברצונך לפרסם את הערתך "
-"על ידי הפעלת הקישור המוטמע."
+"על ידי הפעלת כתובת האתר המוטמעת."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[חיפוש אנשים] אשר את הערתך ב-\"%(full_name)s\""
+msgstr "[מאתר אנשים] אשר את ההערה שלך ב-\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
@@ -1422,15 +1441,15 @@ msgstr "[מאתר אנשים] הודעת מחיקה עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[מאתר אנשים] להשבית הערות על %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[מאתר אנשים] להפעיל הערות על %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[חיפוש אנשים] מפעיל הודעה על הערות עבור \"%(full_name)s\""
+msgstr "[מאתר אנשים] מפעיל הודעה על הערות עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
@@ -1438,7 +1457,7 @@ msgstr "[חיפוש אנשים] הערות מושבתות כעת עבור \"%(fu
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[חיפוש אנשים] הערות מופעלות כעת ב-\"%(full_name)s\""
+msgstr "[מאתר אנשים] הערות מופעלות כעת ב-\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
@@ -1446,27 +1465,27 @@ msgstr "[מאתר אנשים] הודעה על שחזור רשומה עבור \"%
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[מאתר אנשים] עדכון סטטוס עבור %(full_name)s"
+msgstr "[מאתר אנשים] עדכון סטטוס עבור %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[מאתר אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
 
 msgid "at"
-msgstr "בשעה"
+msgstr "ב:"
 
 msgid "female"
-msgstr ""
+msgstr "נקבה"
 
 msgid "in test mode"
-msgstr ""
+msgstr "במצב בדיקה"
 
 msgid "male"
-msgstr ""
+msgstr "זכר"
 
 msgid "on"
-msgstr "בתאריך"
+msgstr "ב:"
 
 msgid "other"
-msgstr ""
+msgstr "אחר"
 

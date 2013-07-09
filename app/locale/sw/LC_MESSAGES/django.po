@@ -1,0 +1,1548 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Ili kuhakikisha kwamba daftari limezimwa au kuwashwa kwa ruhusa ya "
+"mwandishi wa rekodi pekee, ujumbe wa kuthibitisha utatumwa kwa mwandishi "
+"wa rekodi. Iwapo wewe ndiye mwandishi, angalia barua pepe yako baada ya "
+"kubofya kitufe hapo chini.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Mpendwa %(author_name)s,\n"
+"\n"
+"Kuna mtumiaji ambaye ameomba kuwasha daftari kwenye hifadhi ya \n"
+"\"%(full_name)s\".\n"
+"\n"
+"Anwani yako ya barua pepe imerekodiwa kuwa mwandishi wa rekodi hii. Ili "
+"kuwasha daftari kwenye rekodi hii, fuata kiungo hiki kabla ya siku 3 "
+"kuisha:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Mpendwa %(author_name)s,\n"
+"\n"
+"Kuna mtumiaji ambaye ameomba uzime daftari kwenye hifadhi ya\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Anwani yako ya barua pepe imerekodiwa kuwa mwandishi wa rekodi hii. Ili \n"
+"kuzima daftari kwenye rekodi hii, fuata kiungo hiki kabla ya siku 3 "
+"kuisha:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Mpendwa %(author_name)s,\n"
+"Umeingiza daftari linalohifadhiwa kwa \"%(full_name)s\".  \n"
+"Ili kuchapisha daftari lako, fuata kiungo hiki kabla ya siku 3 kuisha:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Onyo: muda wa rekodi hii utakwisha kabla ya siku "
+"%(expiration_days)s kuisha.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Onyo: muda wa rekodi hii utakwisha kabla ya siku moja"
+" kuisha.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Je, una uhakika unataka kufuta rekodi ya \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Je, una uhakika unataka kuzima daftari kwenye \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Je, una uhakika unataka kuzima daftari kwenye hifadhi ya "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Je, una uhakika unataka kuwasha daftari kwenye \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Je, una uhakika unataka kuongeza muda wa kuisha wa rekodi "
+"\"%(full_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Thibitisha daftari lako\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Iwapo utaendelea kufuta,\n"
+"rekodi hii haitaweza kutafutika au kuonekana kwenye tovuti hii.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Iwapo ungependa ifutwe kabisa,\n"
+"     tafadhali wasiliana na chanzo halisi.\n"
+"     Unaweza kuangalia rekodi halisi kwenye     \n"
+"     %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      URL uliyoingiza haionekani kuwa URL halali ya wasifu kwenye "
+"%(website)s.\n"
+"      Tafadhali nenda kwenye ukurasa wa wasifu wa mtu huyu kwenye "
+"%(website)s, kisha inakili na  uibandike \n"
+"       URL hiyo hapa.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Rekodi hii ni nakala ya rekodi kutoka chanzo kingine.\n"
+"      Unaweza kufuta rekodi hiyo hapa,\n"
+"      lakini tafadhali fahamu kwamba\n"
+"      baadaye tunaweza kupokea nakala nyingine ya rekodi hiyo kutoka "
+"chanzo halisi.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Ili kuhakikisha kwamba daftari limezimwa au kuwashwa kwa ruhusa ya "
+"mwandishi wa rekodi pekee, ujumbe wa kuthibitisha utatumwa kwa mwandishi "
+"wa rekodi. Iwapo wewe ndiye mwandishi, angalia barua pepe yako baada ya "
+"kubofya kitufe hapo chini.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Rekodi bado itaonekana kwenye tovuti hii, lakini hakuna atakayeweza "
+"kuchapisha madaftari zaidi kwenye rekodi.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Ili kuchapisha daftari lako, tafadhali ingiza anwani yako ya barua pepe"
+" hapo chini na ufuate kiungo cha kuthibitisha utakachopokea.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Mtumiaji amefuta rekodi ya \"%(full_name)s\"\n"
+"kwenye %(site_url)s.\n"
+"\n"
+"Tunakujulisha kuhusu ufutaji kwa sababu anwani yako ya barua pepe "
+"imernakiliwa kuwa mwandishi wa daftari kwenye rekodi hii.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Mtumiaji amefuta rekodi ya \"%(full_name)s\"\n"
+"kwenye %(site_url)s.\n"
+"\n"
+"Tunakujulisha kuhusu ufutaji kwa sababu anwani yako ya barua pepe "
+"imenakiliwa kuwa mwandishi wa daftari kwenye rekodi hii.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Baada ya siku %(days_until_deletion)s , rekodi itafutwa kabisa.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"KUMBUKA: Iwapo unaamini kuwa rekodi hii ilifutwa kimakosa, unaweza "
+"kuirejesha kwa kufuata kiungo hiki kabla ya %(days_until_deletion)s "
+"kuisha:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Daftari sasa haziko kwenye hifadhi kwa \"%(full_name)s\". Ili kutazama "
+"rekodi, fuata kiungo hiki:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Tunakujulisha kwa sababu anwani yako ya barua pepe inahusishwa na rekodi "
+"ya mtu huyu au daftari kwenye rekodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Daftari sasa zinahifadhiwa kwa \"%(full_name)s\". Ili kutazama rekodi, "
+"fuata kiungo hiki:\n"
+"\n"
+"    %(record_url)s\n"
+"Tunakujulisha kwa sababu anwani yako ya barua pepe inahusishwa na rekodi "
+"ya mtu huyu au daftari kwenye rekodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Mwandishi wa rekodi ya \"%(full_name)s\"\n"
+"(ambayo ilikuwa imefutwa hapo awali) amerejesha rekodi. Ili kutazama "
+"rekodi hiyo, fuata kiungo hiki:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Tunakujulisha kwa sababu anwani yako ya barua pepe inahusishwa na rekodi "
+"ya mtu huyu au daftari kwenye rekodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Kuna daftari jipya kwenye hifadhi ya \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Umejisajili katika daftari kwenye \"%(full_name)s\".\n"
+"\n"
+"Unaweza kutazama rekodi hii kwenye\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Ili kujiengua, fuata kiungo hiki: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(bofya ili kuonyesha)"
+
+msgid "(unknown)"
+msgstr "(haijulikani)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Ujumbe wa mtu huyu au wengine wanaomtafuta mtu huyu"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Kama mwezi 1 (siku 30) kutoka sasa"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Kama mwaka 1 (siku 360) kutoka sasa"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Kama miezi 2 (siku 60) kutoka sasa"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Kama miezi 3 (siku 90) kutoka sasa"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Kama miezi 6 (siku 180) kutoka sasa"
+
+msgid "About Google Person Finder"
+msgstr "Kuhusu Kitafuta Watu cha Google"
+
+msgid "About you (required)"
+msgstr "Kukuhusu (inahitajika)"
+
+msgid "Administration"
+msgstr "Usimamizi"
+
+msgid "Age"
+msgstr "Umri"
+
+msgid "Alternate family names"
+msgstr "Majina mbadala ya familia"
+
+msgid "Alternate given names"
+msgstr "Majina mbadala ya kupewa"
+
+msgid "Alternate names"
+msgstr "Majina mbadala"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Je, una uhakika daftari hili si taka?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Je, una uhakika unataka kutia alama daftari hili kuwa taka?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Je, una uhakika unataka kurejesha rekodi hii kutoka kwenye kufutwa?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Mlisho wa Atom kuhusu mtu huyu"
+
+msgid "Author's e-mail address"
+msgstr "Anwani ya barua pepe ya mwandishi"
+
+msgid "Author's name"
+msgstr "Jina la mwandishi"
+
+msgid "Author's phone number"
+msgstr "Nambari ya simu ya mwandishi"
+
+msgid "Authorization key"
+msgstr "Ufunguo wa kuidhinisha"
+
+msgid "Back to results list"
+msgstr "Rudi kwenye orodha ya matokeo"
+
+msgid "Back to start"
+msgstr "Rudi mwanzo"
+
+msgid "CSV file"
+msgstr "Faili ya CSV"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Haikuweza kupata daftari kutumia kitambulisho %(id)s"
+
+msgid "Cancel"
+msgstr "Ghairi"
+
+msgid "City"
+msgstr "Mji"
+
+msgid "Click here to view results."
+msgstr "Bofya hapa ili utazame matokeo."
+
+msgid "Close window"
+msgstr "Funga dirisha"
+
+msgid "Compare these records"
+msgstr "Linganisha rekodi hizi"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Nakili na ubandike msimbo ufuatao wa HTML ili kuweka zana hii kwenye "
+"tovuti yako"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "Unda rekodi mpya"
+
+msgid "Create a new record for"
+msgstr "Unda rekodi mpya ya"
+
+msgid "Create a new record for a missing person"
+msgstr "Unda rekodi mpya ya mtu aliyepotea"
+
+msgid "Crisis events"
+msgstr "Matukio ya dharura"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Inafuatilia takriban rekodi %(num_people)s kwa sasa."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Tarehe haiwezi kuwa katika wakati ujao. Tafadhali rudi nyuma na ujaribu "
+"tena."
+
+msgid "Date of birth"
+msgstr "Tarehe ya kuzaliwa"
+
+msgid "Delete this record"
+msgstr "Futa rekodi hii"
+
+msgid "Describe how to identify this person."
+msgstr "Elezea jinsi ya kutambua mtu huyu."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Elezea maumbile za mtu huyu."
+
+msgid "Description"
+msgstr "Maelezo"
+
+msgid "Desktop version"
+msgstr "Toleo la eneo-kazi"
+
+msgid "Developers"
+msgstr "Wasanidi programu"
+
+msgid "Disable notes on this record"
+msgstr "Zima daftari kwenye rekodi hii"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Je, mtu huyu ana kurasa za wasifu kwenye tovuti zingine?"
+
+msgid "Download the sound as MP3"
+msgstr "Pakua sauti kama MP3"
+
+msgid "E-mail"
+msgstr "Barua Pepe"
+
+msgid "E-mail address"
+msgstr "Anwani ya barua pepe"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "Upachikaji wa Programu"
+
+msgid "Enable notes on this record"
+msgstr "Washa daftari kwenye rekodi hii"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+"Hakikisha tarehe zote ziko katika muundo wa yyyy-mm-ddThh:mm:ssZ katika "
+"UTC"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Ingiza kama YYYY-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Ingiza majina ya kupewa na ya familia."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Ingiza jina la mtu au sehemu ya jina hilo."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Ingiza jina la mtu, sehemu za jina hilo, au nambari ya simu ya mkononi."
+
+msgid "Enter the person's name."
+msgstr "Ingiza jina la mtu huyo."
+
+msgid "Expiry"
+msgstr "Kuisha muda"
+
+msgid "Expiry date of this record"
+msgstr "Tarehe ya kuisha kwa muda wa rekodi hii"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Ongeza tarehe ya kuisha muda kwa siku %(extension_days)s"
+
+msgid "Family name"
+msgstr "Jina la familia"
+
+msgid "Feed of updates about this person"
+msgstr "Mlisho wa taarifa kuhusu mtu huyu"
+
+msgid "Follow this link to create a new record"
+msgstr "Fuata kiungo hiki ili kuunda rekodi mpya"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Kwa simu nyingine zisizo simu za mkononi, tafadhali tumia huduma ya 171 "
+"inayotolewa na NTT."
+
+msgid "Full name"
+msgstr "Jina kamili"
+
+msgid "Get a new challenge"
+msgstr "Pata fumbo jipya"
+
+msgid "Get a visual challenge"
+msgstr "Pata fumbo la kuona"
+
+msgid "Get an audio challenge"
+msgstr "Pata fumbo la sauti"
+
+msgid "Given name"
+msgstr "Jina la kupewa"
+
+msgid "Google Person Finder"
+msgstr "Kitafuta Watu cha Google"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Je, umeongea na mtu huyu wewe binafsi BAADA ya janga? (inahitajika)"
+
+msgid "Help"
+msgstr "Usaidizi"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Huu ni %(begin_tag)smfano wa faili ya CSV%(end_tag)s unaoweza kubadilisha"
+" na kuupakia"
+
+msgid "Hide Map"
+msgstr "Ficha Ramani"
+
+msgid "Hide note"
+msgstr "Ficha daftari"
+
+msgid "Home Address"
+msgstr "Anwani ya Nyumbani"
+
+msgid "Home address"
+msgstr "Anwani ya nyumbani"
+
+msgid "Home country"
+msgstr "Nchi yako"
+
+msgid "How can this person be reached now?"
+msgstr "Je, mtu huyu anaweze kupatikanaje sasa?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Watu wengine wanamtafuta mtu huyu wanavyoweza kuwasiliana nawe"
+
+msgid "I am seeking information"
+msgstr "Natafuta maelezo"
+
+msgid "I am this person"
+msgstr "Mimi ndiye mtu huyu"
+
+msgid "I do not want any more updates on this record."
+msgstr "Sitaki taarifa zaidi kwenye rekodi hii."
+
+msgid "I do not want my information online anymore."
+msgstr "Sitaki maelezo yangu mtandaoni tena."
+
+msgid "I have information about someone"
+msgstr "Nina maelezo kuhusu mtu fulani"
+
+msgid "I have reason to think this person is missing"
+msgstr "Nina sababu ya kufikiria mtu huyu amepotea"
+
+msgid "I have received information that this person is alive"
+msgstr "Nimepokea habari ya kwamba mtu huyu yuko hai"
+
+msgid "I have received information that this person is dead"
+msgstr "Nimepokea habari ya kwamba mtu huyu ameaga dunia"
+
+msgid "I have received spam due to this note."
+msgstr "Nimepokea taka kutokana na daftari hili."
+
+msgid "I have received spam."
+msgstr "Nimepokea taka."
+
+msgid "I prefer not to specify."
+msgstr "Napendelea kutobainisha."
+
+msgid "I'm looking for someone"
+msgstr "Namtafuta mtu fulani"
+
+msgid "Identify who you are looking for"
+msgstr "Tambua unayemtafuta"
+
+msgid "Identify who you have information about"
+msgstr "Tambua uliye na habari kumhusu"
+
+msgid "Identifying information"
+msgstr "Habari za kutambua"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Iwapo hakuna hata moja ya rekodi hizi inayolingana na mtu unayemfikiria, "
+"unaweza kubofya hapo chini ili kuunda rekodi mpya."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Iwapo wewe ndiye mwandishi wa daftari hili, tafadhali angalia barua pepe "
+"yako kupata kiungo ili uthibitishe kwamba unataka kuondoa daftari kwenye "
+"rekodi hii. Kama sivyo, tafadhali subiri mwandishi wa rekodi athibitishe "
+"ombi lako."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Iwapo wewe ndiye mwandishi wa daftari hili, tafadhali angalia barua pepe "
+"yako kupata kiungo ili kuthibitisha kwamba unataka kuondoa daftari kwenye"
+" rekodi hii. Kama sivyo, tafadhali subiri mwandishi wa rekodi athibitishe"
+" ombi lako."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Iwapo una picha ya mtu huyu, ipakie au uingize anwani yake ya URL."
+
+msgid "Incorrect.  Try again."
+msgstr "Sio sahihi. Jaribu tena."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Anwani batili ya barua pepe. Tafadhali jaribu tena."
+
+msgid "Language selection"
+msgstr "Uteuzi wa lugha"
+
+msgid "Last known location"
+msgstr "Mahali pa mwisho palipojulikana"
+
+msgid "Link"
+msgstr "Kiungo"
+
+msgid "Link to profile page"
+msgstr "Kiungo cha ukurasa wa wasifu"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "Tia alama kuwa rekodi rudufu"
+
+msgid "Message (required)"
+msgstr "Ujumbe (unahitajika)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Ujumbe unahitajika. Tafadhali rudi nyuma na ujaribu tena."
+
+msgid "Missing person's current contact information"
+msgstr "Anwani ya mawasiliano ya hivi sasa ya mtu aliyepotea"
+
+msgid "Missing person's current e-mail address"
+msgstr "Anwani ya barua pepe ya hivi sasa ya mtu aliyepotea"
+
+msgid "Missing person's current phone number"
+msgstr "Nambari ya simu ya hivi sasa ya mtu aliyepotea"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Maelezo zaidi kwa wasanidi programu sasa yanaweza "
+"yakapatikana%(developers_link_html)shapa%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Zaidi ya matokeo 100; inaonyesha 100 ya kwanza pekee. Jaribu kuingiza "
+"zaidi ya jina hilo"
+
+msgid "Name"
+msgstr "Jina"
+
+msgid "Name (required)"
+msgstr "Jina (linahitajika)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Jina linahitajika. Tafadhali rudi nyuma na ujaribu tena."
+
+msgid "Neighborhood"
+msgstr "Mtaa"
+
+msgid "No"
+msgstr "La"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Hakuna barua pepe ya mwandishi ya %(id)s ya rekodi."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"Hakuna ujumbe unaopatikana umesajiliwa katika huduma ya ubao wa ujumbe wa"
+" mtoa huduma."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Hakuna daftari lililo na kitambulisho: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Hakuna madaftari yaliyochapishwa"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Hakuna mtu aliye na kitambulisho: %(id_str)s."
+
+msgid "No results found for"
+msgstr "Hakuna matokeo yaliyopatikana ya"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+"Hana idhini ya kuchapisha madaftari yaliyo na hali ya "
+"\"inaaminika_amefariki\"."
+
+msgid "Not spam"
+msgstr "Si taka"
+
+msgid "Note author"
+msgstr "Nakili mwandishi"
+
+msgid "Note text"
+msgstr "Nakili ujumbe"
+
+msgid "Notes for this person"
+msgstr "Daftari za mtu huyu"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Nambari au mfululizo (k.m. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Au ongeza kwenye tovuti yako kama %(gadget_link_html)sKifaa cha "
+"Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "URL halisi"
+
+msgid "Original author's name"
+msgstr "Jina halisi la mwandishi"
+
+msgid "Original posting date"
+msgstr "Tarehe halisi ya kuchapisha"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Tarehe halisi ya kuchapisha haipo katika muundo wa YYYY-MM-DD, au ni "
+"terahe isiyokuwepo.  Tafadhali rudi nyuma na ujaribu tena."
+
+msgid "Original site name"
+msgstr "Jina halisi la tovuti"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"TAFADHALI KUMBUKA: Data yote iliyoingizwa itapatikana kwa umma na "
+"kuonekana na kutumiwa na yeyote. Google haikagui au kuthibitisha usahihi "
+"wa data hii."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"TAFADHALI KUMBUKA: Kwenye tovuti zinazotumika za Kitafuta Watu, data yote"
+" iliyoingizwa inapatikana kwa umma na kutumiwa na yeyote. Google haikagui"
+" au kuthibitisha usahihi wa data hii."
+
+msgid "Person Finder"
+msgstr "Kitafuta Watu"
+
+msgid "Phone"
+msgstr "Simu"
+
+msgid "Phone number"
+msgstr "Nambari ya simu"
+
+msgid "Photo"
+msgstr "Picha"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Picha iliyopakiwa iko katika muundo usiotambulika. Tafadhali rudi nyuma "
+"na ujaribu tena."
+
+msgid "Physical characteristics"
+msgstr "Sifa za maumbile"
+
+msgid "Play the sound again"
+msgstr "Cheza sauti hiyo tena"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Tafadhali hakikisha kwamba umewasiliana na mtu huyo baada ya tetemeko la "
+"ardhi, au badilisha sehemu ya \"Hali ya mtu huyu\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Tafadhali hakikisha kama inalingana na mtu ambaye ulikuwa umepanga "
+"kuripoti."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Tafadhali thibitisha anwani yako ya barua pepe ili kujisajili kwa taarifa"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Tafadhali ingiza anwani yako ya barua pepe ili kujisaili kwa taarifa"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Tafadhali eleza ni kwa nini unafikiria hawa ni mtu yuyo huyo"
+
+msgid "Please fill in all the required fields."
+msgstr "Tafadhali jaza sehemu zote zinazohitajika."
+
+msgid "Please fill in your email address."
+msgstr "Tafadhali jaza anwani yako ya barua pepe."
+
+msgid "Please provide an valid email address."
+msgstr "Tafadhali toa anwani halali ya barua pepe."
+
+msgid "Possible duplicates"
+msgstr "Uwezekano wa kuwepo kwa rudufu"
+
+msgid "Postal or zip code"
+msgstr "Posta au msimbo wa eneo"
+
+msgid "Posted by"
+msgstr "Imechapishwa na"
+
+msgid "Proceed"
+msgstr "Endelea"
+
+msgid "Profile Pages"
+msgstr "Kurasa za Wasifu"
+
+msgid "Profile page"
+msgstr "Ukurasa wa wasifu"
+
+msgid "Provide information"
+msgstr "Toa maelezo"
+
+msgid "Provide information about this person"
+msgstr "Toa maelezo kuhusu mtu huyu"
+
+msgid "Provided by:"
+msgstr "Imetolewa na:"
+
+msgid "Province or state"
+msgstr "Mkoa au jimbo"
+
+msgid "Reason for deletion:"
+msgstr "Sababu ya kufuta:"
+
+msgid "Reason for disabling notes:"
+msgstr "Sababu ya kuzima daftari:"
+
+msgid "Records Similar to"
+msgstr "Rekodi Zinazofanana na"
+
+msgid "Records selected"
+msgstr "Rekodi zilizochaguliwa"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Rekodi na majina na anwani zinazolingana \"%(query)s\""
+
+msgid "Remove"
+msgstr "Ondoa"
+
+msgid "Report spam"
+msgstr "Ripoti taka"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Rudi kwenye rekodi ya %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Onyesha daftari"
+
+msgid "Save this record"
+msgstr "Hifadhi rekodi hii"
+
+msgid "Search Results for"
+msgstr "Matokeo ya Utafutaji wa"
+
+msgid "Search for this person"
+msgstr "Tafuta mtu huyu"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Angali %(begin_tag)swiki%(end_tag)s kwa maelezo zaidi"
+
+msgid "Select a website to add a profile page..."
+msgstr "Chagua tovuti ya kuongeza ukurasa wa wasifu..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Chagua hadi rekodi 3 za kutia alama kuwa rudufu:"
+
+msgid "Send email"
+msgstr "Tuma barua pepe"
+
+msgid "Sex"
+msgstr "Jinsia"
+
+msgid "Show Map"
+msgstr "Onyesha Ramani"
+
+msgid "Show sensitive information"
+msgstr "Onyesha maelezo nyeti"
+
+msgid "Sign in"
+msgstr "Ingia katika akaunti"
+
+msgid "Sign out"
+msgstr "Ondoka kwenye akaunti"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Mtu amepokea habari kwamba mtu huyu yuko hai"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Mtu amepokea habari kwamba mtu huyu ameaga dunia"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Kuna mtu ameripoti kwamba mtu huyu amepotea"
+
+msgid "Someone is seeking information about this person"
+msgstr "Kuna mtu anatafuta habari kuhusu mtu huyu"
+
+msgid "Source of this record"
+msgstr "Chanzo cha rekodi hii"
+
+msgid "Source of this record (required)"
+msgstr "Chanzo cha rekodi hii (kinahitajika)"
+
+msgid "Status"
+msgstr "Hali"
+
+msgid "Status of this person"
+msgstr "Hali ya mtu huyu"
+
+msgid "Street name"
+msgstr "Jina la mtaa"
+
+msgid "Street name only, no number"
+msgstr "Jina la mtaa pekee, hakuna nambari"
+
+msgid "Subscribe"
+msgstr "Jisajili"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Jisajili kupokea taarifa kuhusu %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Jisajili kupokea taarifa kuhusu mtu huyu"
+
+msgid "Switch to address"
+msgstr "Badilisha kwenda anwani"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Badilisha kwenda hali ya kutia alama rudufu"
+
+msgid "Switch to lat/long"
+msgstr "Badilisha kwenda lat/ndefu"
+
+msgid "Switch to normal view mode"
+msgstr "Badilisha kwenda hali ya kawaida ya kutazama"
+
+msgid "Tell us the status of this person"
+msgstr "Tuambie hali ya mtu huyu"
+
+msgid "Terms of Service"
+msgstr "Sheria na Masharti"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Jina la Kupewa na jina la Familia yote yanahitajika. Tafadhali rudi nyuma"
+" na ujaribu tena."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Jina la mwandishi Halisi linahitajika. Tafadhali rudi nyuma na ujaribu "
+"tena."
+
+msgid "The author has disabled notes on this record."
+msgstr "Mwandishi amezima daftari kwenye rekodi hii."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Mwandishi amezima hali ya taarifa kwenye rekodi hii."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Picha iliyotolewa ni kubwa mno. Tafadhali pakia picha ndogo."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Sababu inayopelekea daftari hili litiwe alama kama barua taka:"
+
+msgid "The record cannot be extended."
+msgstr "Rekodi haiwezi kuongezwa."
+
+msgid "The record has been deleted."
+msgstr "Rekodi imefutwa."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "Rekodi imeongezewa muda hadi %(expiry_date)s."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Hali uliyoichagua inaonyesha kwamba wewe ni mtu huyu. Kama hii ni kweli, "
+"tafadhali pia chagua 'Ndiyo' ili kuonyesha kwamba umewasiliana na mtu "
+"huyu."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Tokeni %(token)s ilikuwa batili."
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Tokeni %(token)s ilikuwa batili."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Kuna rekodi %(num_results)s zilizopo zilizo na majina sawa."
+
+msgid "There are some existing records with similar names."
+msgstr "Kuna rekodi kadhaa zilizo na majina sawa."
+
+msgid "There is one existing record with a similar name."
+msgstr "Kuna rekodi moja iliyopo yenye jina sawa."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Kulikuwa na tatizo wakati wa kuchakata picha.  Tafadhali jaribu picha "
+"tofauti."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Kulikuwa na hitilafu wakati wa kuchakata ombi lako. Samahani kwa "
+"usumbufu. Wasimamizi wetu watachunguza chanzo cha tatizo, lakini "
+"tafadhali hakikisha kuwa muundo wa ombi lako uko sawa."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Vifaa hivi huwa vinapatikana chini ya %(apache_link_html)sleseni ya "
+"Apache 2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Hii ni rekodi mpya."
+
+msgid "This link is invalid."
+msgstr "Kiungo hiki ni batili."
+
+msgid "This note has been marked as spam."
+msgstr "Daftari hili limetiwa alama kuwa taka."
+
+msgid "This note is inappropriate."
+msgstr "Daftari hili halifai."
+
+msgid "This note is incorrect or untrue."
+msgstr "Daftari hili si sawa au si kweli."
+
+msgid "This note is spam."
+msgstr "Daftari hili ni taka."
+
+msgid "This person has been in contact with someone"
+msgstr "Mtu huyu amekuwa akiwasiliana na mtu fulani"
+
+msgid "This person has posted a message"
+msgstr "Mtu huyu amechapisha ujumbe"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Ingizo la mtu huyu halipo au limefutwa."
+
+msgid "This record has served its purpose."
+msgstr "Rekodi hii imetimiza madhumuni yake."
+
+msgid "This record is a duplicate of"
+msgstr "Rekodi hii ni rudufu ya"
+
+msgid "This record is copied from another source."
+msgstr "Rekodi hii imenakiliwa kutoka chanzo kingine."
+
+msgid "This record is inappropriate."
+msgstr "Rekodi hii haifai."
+
+msgid "This record is spam."
+msgstr "Rekodi hii ni taka."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Hazina hii ipo katika hali ya majaribio kwa sasa. Wakati hali ya "
+"majaribio inatumika, rekodi ambazo zimekaa zaidi ya saa 6 zitafutwa."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Ili kuambatanisha picha katika daftari hili, ipakie au ingiza URL yake."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Ili kufuta data yako, fikia Kitafuta Watu kutoka kwenye eneo-kazi lako."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Ili kujiengua, fuata kiungo hiki"
+
+msgid "To view or add information, select a name below."
+msgstr "Ili kutazama au kuongeza maelezo, chagua jina hapo chini."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Chapa anwani au ufungue ramani hapo chini na uonyeshe eneo kwa kubofya "
+"kwenye ramani."
+
+msgid "Type an address."
+msgstr "Chapa anwani."
+
+msgid "Type the two words:"
+msgstr "Chapa maneno hayo mawili:"
+
+msgid "Type what you hear:"
+msgstr "Chapo unachokisikia:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL ya rekodi halisi"
+
+msgid "Unspecified"
+msgstr "Haijabainishwa"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "Pakia"
+
+msgid "Upload CSV files"
+msgstr "Pakia faili za CSV"
+
+msgid "View the record"
+msgstr "Tazama rekodi"
+
+msgid "We have nothing matching your search."
+msgstr "Hatuna chochote kinacholingana na utafutaji wako."
+
+msgid "What is this person's name?"
+msgstr "Jina la mtu huyu ni lipi?"
+
+msgid "When should this record disappear?"
+msgstr "Je, ni wakati gani rekodi hii inapaswa kutoweka?"
+
+msgid "Where did this information come from?"
+msgstr "Je, habari hii ilitoka wapi?"
+
+msgid "Where is this person from?"
+msgstr "Je, mtu huyu ametoka wapi?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Wakati hali ya majaribio inatumika, rekodi ambazo zimekaa zaidi ya saa "
+"sita hufutwa bila kujali tarehe ya kuisha kwa muda wake."
+
+msgid "Yes"
+msgstr "Ndiyo"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Ndiyo, uliza mwandishi wa rekodi azime daftari"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ndiyo, uliza mwandishi wa rekodi awashe daftari"
+
+msgid "Yes, delete the record"
+msgstr "Ndiyo, futa rekodi hiyo"
+
+msgid "Yes, disable notes on this record."
+msgstr "Ndiyo, zima daftari kwenye rekodi hii."
+
+msgid "Yes, extend the record"
+msgstr "Ndiyo, ongeza rekodi hiyo"
+
+msgid "Yes, restore this record"
+msgstr "Ndiyo, rejesha rekodi hii"
+
+msgid "Yes, these are the same person"
+msgstr "Ndiyo, huyu ni mtu yule yule"
+
+msgid "Yes, update the note"
+msgstr "Ndiyo, sasisha daftari hilo"
+
+msgid "You are already subscribed. "
+msgstr "Tayari umesajiliwa. "
+
+msgid "You are already unsubscribed."
+msgstr "Tayari umejiengua."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"Kwa sasa umeingia katika akaunti kama "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Hajuaingia katika akaunti kwa sasa."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Unaweza %(begin_tag)skutazama rekodi%(end_tag)s kabla ya kuifuta."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Unaweza kutazama rekodi kamili katika %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Umefanikiwa kujisajili."
+
+msgid "You have successfully unsubscribed."
+msgstr "Umefanikiwa kujiengua."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Ulipokea arifa hii kwa sababu umejisajili ili upate taarifa kuhusu mtu "
+"huyu:\n"
+
+msgid "Your e-mail address"
+msgstr "Anwani yako ya barua pepe"
+
+msgid "Your e-mail address:"
+msgstr "Anwani yako ya barua pepe:"
+
+msgid "Your email"
+msgstr "Barua pepe yako"
+
+msgid "Your name"
+msgstr "Jina lako"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Jina lako linahitajika katika sehemu ya \"Kukuhusu.\"  Tafadhali rudi "
+"nyuma na ujaribu tena."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Jina lako linahitajika katika sehemu ya \"Chanzo.\"  Tafadhali rudi nyuma"
+" na ujaribu tena."
+
+msgid "Your phone number"
+msgstr "Nambari yako ya simu"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Ombi lako limechakatwa kwa mafanikio. Tafadhali angalia kikasha chako na "
+"uthibitishe kwamba unataka kuchapisha daftari lako kwa kufuata url "
+"iliyopachikwa."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Thibitisha daftari lako kwenye \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Arifa ya ufutaji ya \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Kitafuta Watu] Zima daftari zinazomhusu \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Kitafuta Watu] Huwasha daftari zinazomhusu \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Notisi ya kuwasha daftari la \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Daftari za \"%(full_name)s\" sasa zimezimwa"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Daftari za \"%(full_name)s\" sasa zimewashwa"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Kitafuta Watu] Notisi ya urejeshaji wa Rekodi ya \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Kitafuta Watu] Hali ya taarifa ya %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Kitafuta Watu] Umejisajili kupokea taarifa za hali ya %(full_name)s"
+
+msgid "at"
+msgstr "katika"
+
+msgid "female"
+msgstr "mwanamke"
+
+msgid "in test mode"
+msgstr "katika hali ya majaribio"
+
+msgid "male"
+msgstr "mwanamume"
+
+msgid "on"
+msgstr "imewashwa"
+
+msgid "other"
+msgstr "nyingine"
+

@@ -34,10 +34,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Ett bekräftelsemeddelande skickas till den som har skrivit inlägget för"
-" att säkerställa att kommentarer endast aktiveras eller inaktiveras med "
-"skribentens tillåtelse. Om det är du som har skrivit inlägget klickar du "
-"på knappen nedan och kollar sedan din e-post.\n"
+"  En bekräftelseförfrågan skickas till den som har skrivit posten för att"
+"\n"
+"säkerställa att meddelanden endast aktiveras eller inaktiveras med "
+"skribentens\n"
+"tillåtelse. Om det är du som har skrivit posten klickar du på knappen "
+"nedan\n"
+"och tittar sedan i din e-post.\n"
 "\n"
 "  "
 
@@ -59,14 +62,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bästa %(author_name)sEn användare har begärt att kommentarer ska "
-"aktiveras för inlägget \"%(full_name)s\". Enligt den e-postadress som "
-"finns registrerad är det du som som har skrivit det här inlägget. Om du "
-"vill aktivera kommentarer för det här inlägget klickar du på den här "
-"länken inom tre dagar:\n"
+"Bästa %(author_name)s!\n"
+"\n"
+"En användare har begärt att meddelanden ska aktiveras för posten om\n"
+"%(full_name)s.\n"
+"\n"
+"Enligt den e-postadress som finns registrerad är det du som som har "
+"skrivit\n"
+"denna post. Om du vill aktivera meddelanden för den klickar du på länken\n"
+"nedan inom tre dagar:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -87,11 +93,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bästa %(author_name)sEn användare har begärt att kommentarer ska "
-"inaktiveras för inlägget \"%(full_name)s\". Enligt den e-postadress som "
-"finns registrerad är det du som som har skrivit det här inlägget. Om du "
-"vill inaktivera kommentarer för det här inlägget klickar du på den här "
-"länken inom tre dagar:\n"
+"Bästa %(author_name)s!\n"
+"\n"
+"En användare har begärt att meddelanden ska inaktiveras för posten om\n"
+"%(full_name)s.\n"
+"\n"
+"Enligt den e-postadress som finns registrerad är det du som som har "
+"skrivit\n"
+"denna post. Om du vill inaktivera meddelanden för den klickar du på "
+"länken\n"
+"nedan inom tre dagar:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -109,9 +120,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bästa %(author_name)sDu skrev precis en kommentar på ett inlägg för "
-"\"%(full_name)s\". Om du vill publicera kommentaren klickar du på den här"
-" länken inom tre dagar:\n"
+"Bästa %(author_name)s!\n"
+"Du skrev precis ett meddelande angående posten om %(full_name)s.  \n"
+"Om du vill publicera meddelandet klickar du på länken\n"
+"nedan inom tre dagar:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -123,12 +135,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Obs! Den här posten gallras ut om mindre än "
+"%(expiration_days)s dagar.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Obs! Den här posten gallras ut om mindre än ett dygn."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -137,7 +157,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Vill du ta bort den här posten om \"%(full_name)s\"?\n"
+"      Vill du ta bort posten om %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -147,8 +167,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Är du säker på att du vill inaktivera kommentarer på "
-"\"%(full_name)s\"?\n"
+"      Vill du inaktivera meddelanden om %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -159,8 +178,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Är du säker på att du vill inaktivera kommentarer på inlägget från "
-"\"%(full_name)s\"?\n"
+"      Vill du inaktivera meddelanden angående posten om %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -170,8 +188,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Är du säker på att du vill aktivera kommentarer på "
-"\"%(full_name)s\"?\n"
+"      Vill du aktivera meddelanden om %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -182,8 +199,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Är du säker på att du vill flytta fram utgångsdatumet för posten "
-"\"%(full_name)s\"?\n"
+"      Vill du förlänga giltighetstiden för posten om %(full_name)s?\n"
 "    "
 
 msgid ""
@@ -192,7 +208,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Bekräfta kommentaren\n"
+"      Bekräfta meddelandet\n"
 "    "
 
 msgid ""
@@ -202,7 +218,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Om du fortsätter med borttagningen,\n"
+"      Om du fortsätter med borttagningen\n"
 "      kommer posten inte längre att finnas på webbplatsen för sökning "
 "eller visning.\n"
 "    "
@@ -216,6 +232,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Om du vill att den ska tas bort permanent\n"
+"      kontaktar du den ursprungliga källlan.\n"
+"      Du kan läsa den ursprungliga posten här:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -227,6 +249,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Den angivna webbadressen verkar inte vara en giltig webbadress för "
+"en profil på %(website)s.\n"
+"      Besök den här personens profilsida på %(website)s och kopiera "
+"webbadressen.\n"
+"      Klistra sedan in den här.\n"
+"      "
 
 msgid ""
 "\n"
@@ -237,6 +266,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Den här posten är en kopia av en post från en annan källa.\n"
+"      Du kan ta bort posten härifrån,\n"
+"      men observera att vi kan komma att\n"
+"      få en ny kopia av den från den ursprungliga källan.\n"
+"    "
 
 msgid ""
 "\n"
@@ -249,10 +284,13 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Ett bekräftelsemeddelande skickas till den som har skrivit inlägget "
-"för att säkerställa att kommentarer endast aktiveras och inaktiveras med "
-"skribentens tillåtelse. Om det är du som har skrivit inlägget klickar du "
-"på knappen nedan och kollar sedan din e-post.\n"
+"    En bekräftelseförfrågan skickas till den som har skrivit posten för "
+"att\n"
+"    säkerställa att meddelanden endast aktiveras eller inaktiveras med "
+"skribentens\n"
+"    tillåtelse. Om det är du som har skrivit posten klickar du på knappen"
+" nedan\n"
+"    och tittar sedan i din e-post.\n"
 "  "
 
 msgid ""
@@ -263,8 +301,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Inlägget visas fortfarande på den här webbplatsen, men ingen kan skriva"
-" några fler kommentarer om det.\n"
+"  Posten visas fortfarande på den här webbplatsen, men ingen kan lämna "
+"några fler\n"
+"meddelanden om den.\n"
 "  "
 
 msgid ""
@@ -275,8 +314,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Om du vill lägga upp kommentaren anger du din e-postadress nedan och "
-"klickar på bekräftelselänken som skickas till dig.\n"
+"  Om du vill lägga upp meddelandet anger du din e-postadress nedan och "
+"klickar\n"
+"  på bekräftelselänken som skickas till dig.\n"
 "  "
 
 #, python-format
@@ -289,11 +329,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"En användare har tagit bort posten om \"%(full_name)s\"\n"
+"En användare har tagit bort posten om %(full_name)s\n"
 "på %(site_url)s.\n"
 "\n"
-"Vi meddelar dig om detta eftersom din e-postadress finns\n"
-"angiven som författare av ett meddelande i posten.\n"
+"Vi meddelar dig detta eftersom din e-postadress finns angiven\n"
+"som författare till ett meddelande rörande posten.\n"
 
 #, python-format
 msgid ""
@@ -305,9 +345,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"En användare har tagit bort posten för \"%(full_name)s\" från "
-"%(site_url)s. Vi informerar dig om borttagningen eftersom din "
-"e-postadress har angetts som postens författare.\n"
+"En användare har tagit bort posten om %(full_name)s\n"
+"från %(site_url)s.\n"
+"\n"
+"Vi meddelar dig detta eftersom din e-postadress finns angiven\n"
+"som postens författare.\n"
 
 #, python-format
 msgid ""
@@ -328,8 +370,9 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"Obs! Om du anser att posten har tagits bort av misstag kan du återställa "
-"den om du klickar på den här länken inom %(days_until_deletion)s dagar:\n"
+"Obs! Om du anser att posten har tagits bort av misstag kan du\n"
+"återställa den om du klickar på den här länken inom "
+"%(days_until_deletion)s dagar:\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -346,13 +389,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Kommentarer har nu inaktiverats på inlägget för \"%(full_name)s\". Om du "
-"vill visa inlägget klickar du på den här länken:\n"
+"Meddelanden har nu inaktiverats för posten om %(full_name)s. Om du vill "
+"visa posten\n"
+"klickar du på den här länken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"Du får det här meddelandet eftersom din e-postadress är kopplad till den "
-"här personens inlägg eller till en kommentar på inlägget.\n"
+"Vi meddelar dig eftersom din e-postadress är kopplad till den här\n"
+"personposten eller ett meddelande rörande posten.\n"
 
 #, python-format
 msgid ""
@@ -367,13 +411,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Kommentarer har nu aktiverats på inlägget för \"%(full_name)s\". Om du "
-"vill visa inlägget klickar du på den här länken:\n"
+"Meddelanden har nu aktiverats för posten om %(full_name)s. Om du vill "
+"öppna posten\n"
+"klickar du på den här länken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"Du får det här meddelandet eftersom din e-postadress är kopplad till den "
-"här personens inlägg eller till en kommentar på inlägget.\n"
+"Vi meddelar dig eftersom din e-postadress är kopplad till den här\n"
+"personposten eller ett meddelande rörande posten.\n"
 
 #, python-format
 msgid ""
@@ -388,14 +433,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Författaren av posten om \"%(full_name)s\"\n"
-"(som togs bort tidigare) har återställt posten.  Om du vill visa\n"
+"Författaren till posten om %(full_name)s\n"
+"(som togs bort tidigare) har återställt posten. Om du vill visa\n"
 "posten kan du följa den här länken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
 "Vi meddelar dig eftersom din e-postadress är knuten till den här\n"
-"personposten eller till ett meddelande i posten.\n"
+"personposten eller ett meddelande rörande posten.\n"
 
 #, python-format
 msgid ""
@@ -403,7 +448,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Det finns inga nya kommentarer på inlägget för \"%(full_name)s\".\n"
+"Det finns ett nytt meddelande rörande posten om %(full_name)s.\n"
 
 #, python-format
 msgid ""
@@ -417,8 +462,9 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Du prenumererar på kommentarer på \"%(full_name)s\". Du kan visa det här "
-"inlägget på\n"
+"Du prenumererar på meddelanden om %(full_name)s.\n"
+"\n"
+"Du kan visa posten här:\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -437,28 +483,28 @@ msgstr ""
 " henne"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Ungefär en månad (30 dagar) från idag"
+msgstr "Ungefär en månad (30 dagar) från i dag"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Ungefär ett år (360 dagar) från idag"
+msgstr "Ungefär ett år (360 dagar) från i dag"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Ungefär två månader (60 dagar) från idag"
+msgstr "Ungefär två månader (60 dagar) från i dag"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Ungefär tre månader (90 dagar) från idag"
+msgstr "Ungefär tre månader (90 dagar) från i dag"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Ungefär sex månader (180 dagar) från idag"
+msgstr "Ungefär sex månader (180 dagar) från i dag"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Om Google Person Finder"
 
 msgid "About you (required)"
 msgstr "Om dig (måste anges)"
@@ -479,10 +525,10 @@ msgid "Alternate names"
 msgstr "Alternativa namn"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Är inte det här meddelandet skräppost?"
+msgstr "Är inte det här meddelandet spam?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Vill du markera det här meddelandet som skräppost?"
+msgstr "Vill du markera det här meddelandet som spam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Vill du återställa den här posten från borttagning?"
@@ -500,7 +546,7 @@ msgid "Author's phone number"
 msgstr "Författarens telefonnummer"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Auktoriseringsnyckel"
 
 msgid "Back to results list"
 msgstr "Tillbaka till resultatlistan"
@@ -509,17 +555,17 @@ msgid "Back to start"
 msgstr "Tillbaka till början"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV-fil"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Det gick inte att hitta någon kommentar med detta ID %(id)s"
+msgstr "Det gick inte att hitta något meddelande med id %(id)s"
 
 msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "City"
-msgstr "Stad"
+msgstr "Ort"
 
 msgid "Click here to view results."
 msgstr "Klicka här om du vill visa resultaten."
@@ -536,19 +582,19 @@ msgstr ""
 "webbplats"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Skapa en ny post"
 
 msgid "Create a new record for"
-msgstr "Skapa en ny post för"
+msgstr "Skapa en ny post om"
 
 msgid "Create a new record for a missing person"
-msgstr "Skapa en ny post för en saknad person"
+msgstr "Skapa en ny post om en saknad person"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Katastrofer"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -573,16 +619,16 @@ msgid "Description"
 msgstr "Beskrivning"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Datorversion"
 
 msgid "Developers"
 msgstr "Utvecklare"
 
 msgid "Disable notes on this record"
-msgstr "Inaktivera kommentarer på det här inlägget"
+msgstr "Inaktivera meddelanden om den här posten"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Har personen en profilsida på en annan webbplats?"
 
 msgid "Download the sound as MP3"
 msgstr "Hämta ljudet som MP3"
@@ -594,16 +640,16 @@ msgid "E-mail address"
 msgstr "E-postadress"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
 msgstr "Bädda in programmet"
 
 msgid "Enable notes on this record"
-msgstr "Aktivera kommentarer på det här inlägget"
+msgstr "Aktivera meddelanden om den här posten"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Kontrollera att alla datum är i formatet ååå-mm-ddThh:mm:ssZ i UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
@@ -615,7 +661,7 @@ msgid "Enter the person's name or parts of the name."
 msgstr "Ange personens namn eller delar av namnet."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ange personens namn, delar av namnet eller personen mobilnummer."
+msgstr "Ange personens namn, delar av namnet eller personens mobilnummer."
 
 msgid "Enter the person's name."
 msgstr "Ange personens namn."
@@ -628,7 +674,7 @@ msgstr "Utgångsdatum för den här posten"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Förläng giltighetstiden med %(extension_days)s dagar"
 
 msgid "Family name"
 msgstr "Efternamn"
@@ -645,7 +691,7 @@ msgid ""
 msgstr "För andra telefoner än mobiltelefoner använder du 171-tjänsten från NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Fullständigt namn"
 
 msgid "Get a new challenge"
 msgstr "Få en ny utmaning"
@@ -660,7 +706,7 @@ msgid "Given name"
 msgstr "Förnamn"
 
 msgid "Google Person Finder"
-msgstr "Google Personsökare"
+msgstr "Google Person Finder"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Har du personligen talat med personen EFTER katastrofen (måste anges)?"
@@ -671,6 +717,8 @@ msgstr "Hjälp"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Här finns %(begin_tag)sett exempel på en CSV-fil%(end_tag)s som du kan "
+"redigera och överföra"
 
 msgid "Hide Map"
 msgstr "Dölj karta"
@@ -700,7 +748,7 @@ msgid "I am this person"
 msgstr "Jag är den här personen"
 
 msgid "I do not want any more updates on this record."
-msgstr "Jag vill inte få fler uppdateringar för det här inlägget."
+msgstr "Jag vill inte få fler uppdateringar för den här posten."
 
 msgid "I do not want my information online anymore."
 msgstr "Jag vill inte längre ha mina uppgifter online."
@@ -750,19 +798,19 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Om det är du som har skrivit den här kommentaren kollar du efter ett "
-"e-postmeddelande med en länk för att inaktivera kommentarer på det här "
-"inlägget i din inkorg. Du kan även vänta på att den som har skrivit "
-"inlägget bekräftar din begäran."
+"Om det är du som har skrivit det här meddelandet tittar du i din inkorg "
+"efter ett e-postmeddelande med en länk för att inaktivera meddelanden om "
+"den här posten. Du kan även vänta på att den som har skrivit posten "
+"bekräftar din begäran."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Om det är du som har skrivit den här kommentaren kollar du i din inkorg "
-"efter ett e-postmeddelande med en länk för att aktivera kommentarer på "
-"det här inlägget. Du kan även vänta på att den som har skrivit inlägget "
+"Om det är du som har skrivit det här meddelandet tittar du i din inkorg "
+"efter ett e-postmeddelande med en länk för att aktivera meddelanden om "
+"den här posten. Du kan även vänta på att den som har skrivit posten "
 "bekräftar din begäran."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
@@ -771,13 +819,13 @@ msgstr ""
 "webbadress till fotot."
 
 msgid "Incorrect.  Try again."
-msgstr "Felaktigt.  Försök igen."
+msgstr "Felaktigt. Försök igen."
 
 msgid "Invalid e-mail address. Please try again."
 msgstr "Ogiltig e-postadress. Försök igen."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Språkval"
 
 msgid "Last known location"
 msgstr "Senast kända vistelseort"
@@ -786,10 +834,10 @@ msgid "Link"
 msgstr "Länk"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Länk till profilsida"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Markera poster som dubbletter"
@@ -821,8 +869,8 @@ msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"Mer än 100 resultat. Bara de första 100 visas. Försök med att ange mer av"
-" namnet"
+"Över 100 resultat. Bara de första 100 visas. Försök med att ange mer av "
+"namnet"
 
 msgid "Name"
 msgstr "Namn"
@@ -841,17 +889,17 @@ msgstr "Nej"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Inget e-postmeddelande för inlägget från den som har skrivit det %(id)s."
+msgstr "Inget e-postmeddelande från postens författare %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Inga meddelanden har registrerats på operatörens anslagstavla."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Ingen kommentar med detta ID: %(id_str)s."
+msgstr "Inget meddelande med detta ID: %(id_str)s."
 
 msgid "No notes have been posted"
-msgstr "Inga kommentarer har lagts upp"
+msgstr "Inga medelanden har lämnats"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -861,22 +909,22 @@ msgid "No results found for"
 msgstr "Det finns inga resultat för"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "Ej behörig att lägga upp kommentarer med statusen \"believed_dead\"."
+msgstr "Ej behörig att lägga upp meddelanden med statusen \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Inte skräppost"
 
 msgid "Note author"
-msgstr "Kommentar från skribent"
+msgstr "Meddelandets författare"
 
 msgid "Note text"
-msgstr "Meddelandetext"
+msgstr "Meddelandets text"
 
 msgid "Notes for this person"
-msgstr "Kommentarer för den här personen"
+msgstr "Meddelanden för den här personen"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Antal eller intervall (t.ex. 20–30)"
@@ -893,7 +941,7 @@ msgid "Original URL"
 msgstr "Ursprunglig webbadress"
 
 msgid "Original author's name"
-msgstr "Den ursprunglige författarens namn"
+msgstr "Den ursprungliga författarens namn"
 
 msgid "Original posting date"
 msgstr "Ursprungligt överföringsdatum"
@@ -913,18 +961,22 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"OBSERVERA: Alla data som anges är offentliga och kan ses och användas av "
-"vem som helst. Google varken granskar eller kontrollerar att uppgifterna "
-"stämmer."
+"OBS! Alla uppgifter som anges är offentliga och kan ses och användas av "
+"vem som helst. Google varken granskar uppgifterna eller kontrollerar att "
+"de stämmer."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"OBS! Alla uppgifter som anges på aktiva Person Finder-webbplatser är "
+"offentliga och kan användas av vem som helst. Google varken granskar "
+"uppgifterna eller kontrollerar att de stämmer."
 
 msgid "Person Finder"
-msgstr "Google Personsökare"
+msgstr "Person Finder"
 
 msgid "Phone"
 msgstr "Telefon"
@@ -933,7 +985,7 @@ msgid "Phone number"
 msgstr "Telefonnummer"
 
 msgid "Photo"
-msgstr "Fotografi"
+msgstr "Foto"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -987,19 +1039,19 @@ msgid "Proceed"
 msgstr "Fortsätt"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profilsidor"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profilsida"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Ange uppgifter"
 
 msgid "Provide information about this person"
 msgstr "Ange information om personen"
 
 msgid "Provided by:"
-msgstr "Tillhandahålls av:"
+msgstr "Lämnades av:"
 
 msgid "Province or state"
 msgstr "Provins eller delstat"
@@ -1008,23 +1060,23 @@ msgid "Reason for deletion:"
 msgstr "Orsak till borttagning:"
 
 msgid "Reason for disabling notes:"
-msgstr "Anledning till att inaktivera kommentarer:"
+msgstr "Anledning till att inaktivera meddelanden:"
 
 msgid "Records Similar to"
 msgstr "Poster som liknar"
 
 msgid "Records selected"
-msgstr "valda poster"
+msgstr "Valda poster"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Poster med namn och adresser som stämmer överens med \"%(query)s\""
+msgstr "Poster med namn och adress som stämmer överens med %(query)s"
 
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
 msgid "Report spam"
-msgstr "Rapportera som skräppost"
+msgstr "Rapportera som spam"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1044,10 +1096,10 @@ msgstr "Sök efter personen"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Mer anvisningar finns i %(begin_tag)swikin%(end_tag)s"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Välj en webbplats om du vill lägga till en profilsida …"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Välj upp till tre poster att markera som dubbletter:"
@@ -1065,10 +1117,10 @@ msgid "Show sensitive information"
 msgstr "Visa känslig information"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Logga ut"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Någon har fått information om att personen lever"
@@ -1111,13 +1163,13 @@ msgid "Subscribe to updates about this person"
 msgstr "Prenumerera på uppdateringar om den här personen"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Byt till adress"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Byt till dubblettmarkeringsläge"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Byt till lat./long."
 
 msgid "Switch to normal view mode"
 msgstr "Byt till normalt visningsläge"
@@ -1129,19 +1181,8 @@ msgid "Terms of Service"
 msgstr "Användarvillkor"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1153,18 +1194,18 @@ msgstr ""
 "igen."
 
 msgid "The author has disabled notes on this record."
-msgstr "Personen som har skrivit inlägget har inaktiverat kommentarer."
+msgstr "Personen som har skrivit posten har inaktiverat meddelanden."
 
 msgid "The author has disabled status updates on this record."
 msgstr ""
-"Personen som har skrivit inlägget har inaktiverat statusuppdateringar för"
-" det."
+"Personen som har skrivit posten har inaktiverat statusuppdateringar för "
+"den."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "Orsak till att detta meddelande markeras som skräppost:"
+msgstr "Orsak till att detta meddelande markeras som spam:"
 
 msgid "The record cannot be extended."
 msgstr "Posten kan inte förlängas."
@@ -1181,27 +1222,27 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"Den status du har valt antyder att du är den här personen.  Om det "
+"Den status du har valt antyder att du är den här personen. Om det "
 "stämmer, välj även Ja och ange att du har kontaktat personen som söker "
 "dig."
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr "Token %(token)s var ogiltigt"
+msgstr "Token %(token)s var ogiltig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr "Token %(token)s var ogiltigt."
+msgstr "Token %(token)s var ogiltig."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "Det finns %(num_results)s befintliga poster med liknande namn."
+msgstr "Det finns %(num_results)s poster med liknande namn."
 
 msgid "There are some existing records with similar names."
-msgstr "Det finns några befintliga poster med liknande namn."
+msgstr "Det finns några poster med liknande namn."
 
 msgid "There is one existing record with a similar name."
-msgstr "Det finns en befintlig post med ett liknande namn."
+msgstr "Det finns en post med ett liknande namn."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Ett problem uppstod när bilden skulle bearbetas. Försök med en annan bild."
@@ -1230,16 +1271,16 @@ msgid "This link is invalid."
 msgstr "Länken är ogiltig."
 
 msgid "This note has been marked as spam."
-msgstr "Meddelandet har markerats som skräppost."
+msgstr "Meddelandet har markerats som spam."
 
 msgid "This note is inappropriate."
 msgstr "Meddelandet är olämpligt."
 
 msgid "This note is incorrect or untrue."
-msgstr "Meddelandet är olämpligt eller oriktigt."
+msgstr "Meddelandet är felaktigt eller osant."
 
 msgid "This note is spam."
-msgstr "Meddelandet är skräppost."
+msgstr "Meddelandet är spam."
 
 msgid "This person has been in contact with someone"
 msgstr "Personen har varit i kontakt med någon"
@@ -1263,18 +1304,22 @@ msgid "This record is inappropriate."
 msgstr "Posten är olämplig."
 
 msgid "This record is spam."
-msgstr "Posten är skräppost."
+msgstr "Posten är spam."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Den här lagringsplatsen är i testläge för närvarande. I testläge tas "
+"poster som är äldre än sex timmar bort."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"Om du vill bifoga ett foto till meddelandet överför du det eller anger "
+"webbadressen till det."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Om du vill ta bort data öppnar du Person Finder från skrivbordet."
 
 msgid "To unsubscribe, follow this link"
 msgstr "Om du vill avsluta prenumerationen klickar du på den här länken"
@@ -1286,9 +1331,11 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Skriv en adress eller öppna kartan nedan och ange platsen genom att "
+"klicka på kartan."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Skriv en adress."
 
 msgid "Type the two words:"
 msgstr "Skriv de två orden:"
@@ -1306,13 +1353,13 @@ msgid "Unspecified"
 msgstr "Ospecificerat"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Överför"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Överför CSV-filer"
 
 msgid "View the record"
 msgstr "Visa posten"
@@ -1336,21 +1383,23 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"I testläge tas poster som är äldre än sex timmar bort oavsett "
+"förfallodatum."
 
 msgid "Yes"
 msgstr "Ja"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, be den som har skrivit inlägget att inaktivera kommentarer"
+msgstr "Ja, be den som har skrivit posten att inaktivera meddelanden"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Ja, be den som har skrivit inlägget att aktivera kommentarer"
+msgstr "Ja, be den som har skrivit posten att aktivera medddelanden"
 
 msgid "Yes, delete the record"
 msgstr "Ja, ta bort posten"
 
 msgid "Yes, disable notes on this record."
-msgstr "Ja, inaktivera kommentarer på det här inlägget."
+msgstr "Ja, inaktivera meddelanden för den här posten."
 
 msgid "Yes, extend the record"
 msgstr "Ja, förläng posten"
@@ -1374,18 +1423,18 @@ msgstr "Du har redan avslutat prenumerationen."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Du är inloggad som %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Du är inte inloggad för närvarande."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Du kan %(begin_tag)svisa posten%(end_tag)s innan du tar bort den."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1433,65 +1482,63 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"Din begäran har behandlats. Kolla din inkorg och bekräfta att du vill "
-"lägga upp din kommentar genom att klicka på den inbäddade webbadressen."
+"Din begäran har behandlats. Titta i din inkorg och bekräfta att du vill "
+"lägga upp ditt meddelande genom att klicka på den inbäddade webbadressen."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Bekräfta kommentaren på \"%(full_name)s\""
+msgstr "[Person Finder] Bekräfta meddelandet om %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Google Personsökare] Avisering om borttagning av \"%(full_name)s\""
+msgstr "[Person Finder] Avisering om borttagning för %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Vill du inaktivera meddelanden om %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] Vill du aktivera meddelanden om %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Meddelanden aktiveras för \"%(full_name)s\""
+msgstr "[Person Finder] Avisering om aktiverade meddelanden för %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Meddelanden har inaktiverats för \"%(full_name)s\""
+msgstr "[Person Finder] Meddelanden har inaktiverats för %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Meddelanden har aktiverats på \"%(full_name)s\""
+msgstr "[Person Finder] Meddelanden har aktiverats för %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Google Personsökare] Avisering om återställning av \"%(full_name)s\""
+msgstr "[Person Finder] Avisering om återställning av post om %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Google Personsökare] Statusuppdatering om \"%(full_name)s\""
+msgstr "[Person Finder] Statusuppdatering om %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-"[Google Personsökare] Du prenumererar på statusuppdateringar om "
-"\"%(full_name)s\""
+msgstr "[Person Finder] Du prenumererar på statusuppdateringar om %(full_name)s"
 
 msgid "at"
-msgstr "kl."
+msgstr "vid"
 
 msgid "female"
 msgstr "kvinna"
 
 msgid "in test mode"
-msgstr ""
+msgstr "i testläge"
 
 msgid "male"
 msgstr "man"
 
 msgid "on"
-msgstr "den"
+msgstr "på"
 
 msgid "other"
 msgstr "annat"

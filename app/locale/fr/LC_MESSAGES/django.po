@@ -34,10 +34,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Un message de confirmation sera envoyé à l'auteur de l'enregistrement "
-"afin d'obtenir son autorisation pour l'activation/la désactivation des "
-"commentaires. Si vous êtes l'auteur, consultez vos e-mails après avoir "
-"cliqué sur le bouton ci-dessous.\n"
+"  Un message de confirmation sera envoyé à l'auteur de l'avis de "
+"recherche afin d'obtenir son autorisation pour l'activation ou la "
+"désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
+"e-mails après avoir cliqué sur le bouton ci-dessous.\n"
 "\n"
 "  "
 
@@ -59,14 +59,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bonjour %(author_name)s, Un utilisateur a demandé l'activation des "
-"commentaires pour l'enregistrement concernant \"%(full_name)s\". Votre "
-"adresse e-mail est associée à l'auteur de cet enregistrement. Afin "
-"d'activer les commentaires pour cet enregistrement, suivez le lien ci-"
-"dessous (vous avez trois jours) :\n"
+"Bonjour %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"Un utilisateur a demandé l'activation des commentaires pour l'avis de "
+"recherche concernant \"%(full_name)s\".\n"
 "\n"
+"Votre adresse e-mail est associée à l'auteur de cet avis de recherche. "
+"Afin d'activer les commentaires pour cet avis, cliquez sur le lien ci-"
+"dessous dans les trois jours à venir :\n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -87,13 +89,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bonjour %(author_name)s, Un utilisateur a demandé la désactivation des "
-"commentaires pour l'enregistrement concernant \"%(full_name)s\". Votre "
-"adresse e-mail est associée à l'auteur de cet enregistrement. Afin de "
-"désactiver les commentaires pour cet enregistrement, suivez le lien ci-"
-"dessous (vous avez trois jours) :\n"
+"Bonjour %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"Un utilisateur a demandé la désactivation des commentaires pour l'avis de"
+" recherche concernant \"%(full_name)s\".\n"
+"\n"
+"Votre adresse e-mail est associée à l'auteur de cet avis de recherche. "
+"Afin de désactiver les commentaires pour cet avis, cliquez sur le lien "
+"ci-dessous dans les trois jours à venir :\n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -109,11 +114,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bonjour %(author_name)s, Vous venez de commenter l'enregistrement "
-"concernant \"%(full_name)s\". Afin que votre commentaire soit publié, "
-"veuillez suivre le lien ci-dessous (vous avez trois jours) :\n"
+"Bonjour %(author_name)s,\n"
+"Vous venez de commenter l'avis de recherche concernant \"%(full_name)s\"."
+" Pour que votre commentaire soit publié, veuillez cliquer sur le lien ci-"
+"dessous dans les trois jours à venir :\n"
 "\n"
-"   %(confirm_url)s\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -123,12 +129,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Avertissement : Cet avis de recherche arrivera à "
+"expiration dans moins de %(expiration_days)s jours.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Avertissement : Cet avis de recherche arrivera à "
+"expiration dans moins d'un jour.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -137,7 +151,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Voulez-vous vraiment supprimer l'enregistrement concernant "
+"      Voulez-vous vraiment supprimer l'avis de recherche concernant "
 "\"%(full_name)s\" ?\n"
 "    "
 
@@ -160,8 +174,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Voulez-vous vraiment désactiver les commentaires pour "
-"l'enregistrement concernant \"%(full_name)s\" ?\n"
+"      Voulez-vous vraiment désactiver les commentaires pour l'avis de "
+"recherche concernant \"%(full_name)s\" ?\n"
 "    "
 
 #, python-format
@@ -183,8 +197,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Voulez-vous vraiment repousser la date d'expiration de "
-"l'enregistrement concernant \"%(full_name)s\" ?\n"
+"      Voulez-vous vraiment repousser la date d'expiration de l'avis de "
+"recherche concernant \"%(full_name)s\" ?\n"
 "    "
 
 msgid ""
@@ -193,7 +207,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Confirmer votre commentaire\n"
+"      Confirmer le commentaire\n"
 "    "
 
 msgid ""
@@ -203,9 +217,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Si vous supprimez cet enregistrement,\n"
-"      il ne sera plus inclus dans l'index de recherche et ne pourra plus "
-"être consulté sur ce site.\n"
+"      Si vous supprimez cet avis de recherche, il ne sera plus inclus "
+"dans l'index de recherche et ne pourra plus être consulté sur ce site.\n"
 "    "
 
 #, python-format
@@ -217,6 +230,11 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Si vous souhaitez supprimer définitivement cet avis de recherche, "
+"veuillez contacter la source d'origine. Vous pouvez consulter l'avis de "
+"recherche d'origine sur %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -228,6 +246,11 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Il semble que l'URL saisie ne constitue pas une URL de profil "
+"valide pour le site Web %(website)s. Veuillez accéder à la page de profil"
+" de cette personne sur %(website)s pour y copier-coller cette URL.\n"
+"      "
 
 msgid ""
 "\n"
@@ -238,6 +261,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Ceci est une copie d'un avis de recherche provenant d'une autre "
+"source. Vous pouvez supprimer cet avis de recherche ici. Sachez toutefois"
+" que nous recevrons peut-être plus tard une autre copie de l'avis, "
+"fournie par la source d'origine.\n"
+"    "
 
 msgid ""
 "\n"
@@ -250,10 +279,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Un message de confirmation sera envoyé à l'auteur de l'enregistrement"
-" afin d'obtenir son autorisation pour l'activation/la désactivation des "
-"commentaires. Si vous êtes l'auteur, consultez vos e-mails après avoir "
-"cliqué sur le bouton ci-dessous.\n"
+"    Un message de confirmation sera envoyé à l'auteur de l'avis de "
+"recherche afin d'obtenir son autorisation pour l'activation ou la "
+"désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
+"e-mails après avoir cliqué sur le bouton ci-dessous.\n"
 "  "
 
 msgid ""
@@ -264,8 +293,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  L'enregistrement restera visible sur ce site, mais personne ne pourra "
-"publier de commentaires le concernant.\n"
+"  L'avis de recherche restera visible sur ce site, mais personne ne "
+"pourra publier de commentaires le concernant.\n"
 "  "
 
 msgid ""
@@ -277,7 +306,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Pour publier votre commentaire, veuillez saisir votre adresse e-mail "
-"ci-dessous et suivre le lien de confirmation qui vous sera envoyé.\n"
+"ci-dessous, puis cliquer sur le lien de confirmation qui vous allez "
+"recevoir.\n"
 "  "
 
 #, python-format
@@ -290,11 +320,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Un utilisateur a supprimé l'enregistrement concernant \"%(full_name)s\"\n"
-"à l'adresse %(site_url)s.\n"
+"Un utilisateur a supprimé l'avis de recherche concernant "
+"\"%(full_name)s\" à l'adresse %(site_url)s.\n"
 "\n"
-"Nous tenions à vous en informer, car votre adresse e-mail a été utilisée\n"
-"pour laisser une remarque à propos de cet enregistrement.\n"
+"Nous tenions à vous en informer, car votre adresse e-mail est associée à "
+"un commentaire concernant cet avis de recherche.\n"
 
 #, python-format
 msgid ""
@@ -306,9 +336,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Un utilisateur a supprimé l'enregistrement concernant \"%(full_name)s\" à"
-" l'adresse %(site_url)s. Nous tenions à vous en informer, car votre "
-"adresse e-mail est associée à l'auteur de cet enregistrement.\n"
+"Un utilisateur a supprimé l'avis de recherche concernant "
+"\"%(full_name)s\" à l'adresse %(site_url)s.\n"
+"\n"
+"Nous tenions à vous en informer, car votre adresse e-mail est associée à "
+"l'auteur de cet avis de recherche.\n"
 
 #, python-format
 msgid ""
@@ -317,8 +349,8 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"Après %(days_until_deletion)s jour(s), l'enregistrement sera supprimé "
-"définitivement.\n"
+"L'avis de recherche sera définitivement supprimé au bout de "
+"%(days_until_deletion)s jour(s).\n"
 
 #, python-format
 msgid ""
@@ -330,11 +362,11 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"REMARQUE : Si vous pensez que cet enregistrement a été supprimé par "
-"erreur, vous avez %(days_until_deletion)s jour(s) pour le restaurer en "
+"REMARQUE : Si vous pensez que cet avis de recherche a été supprimé par "
+"erreur, vous avez %(days_until_deletion)s jour(s) pour le restaurer en "
 "cliquant sur le lien suivant :\n"
 "\n"
-"    %(restore_url)s\n"
+"%(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -349,14 +381,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Les commentaires sont maintenant désactivés pour l'enregistrement "
-"concernant \"%(full_name)s\". Pour accéder à l'enregistrement, suivez le "
+"Les commentaires sont maintenant désactivés pour l'avis de recherche "
+"concernant \"%(full_name)s\". Pour consulter cet avis, cliquez sur le "
 "lien ci-dessous :\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"Votre adresse e-mail est associée à l'enregistrement concernant cette "
-"personne ou à un commentaire publié suite à cet enregistrement.\n"
+"Nous tenions à vous en informer, car votre adresse e-mail est associée à "
+"cet avis de recherche ou à un commentaire publié à son sujet.\n"
 
 #, python-format
 msgid ""
@@ -371,14 +403,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Les commentaires sont maintenant activés pour l'enregistrement concernant"
-" \"%(full_name)s\". Pour accéder à l'enregistrement, suivez le lien ci-"
-"dessous :\n"
+"Les commentaires sont maintenant activés pour l'avis de recherche "
+"concernant \"%(full_name)s\". Pour consulter cet avis, cliquez sur le "
+"lien ci-dessous :\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"Votre adresse e-mail est associée à l'enregistrement concernant cette "
-"personne ou à un commentaire publié suite à cet enregistrement.\n"
+"Nous tenions à vous en informer, car votre adresse e-mail est associée à "
+"cet avis de recherche ou à un commentaire publié à son sujet.\n"
 
 #, python-format
 msgid ""
@@ -393,16 +425,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"L'enregistrement concernant \"%(full_name)s\"\n"
-"(qui avait été supprimé) a été restauré par son auteur. Pour afficher cet"
+"L'avis de recherche concernant \"%(full_name)s\" (qui avait été supprimé)"
+" a été restauré par son auteur. Pour consulter cet avis, cliquez sur le "
+"lien suivant :\n"
 "\n"
-"enregistrement, cliquez sur le lien suivant :\n"
-"\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
 "Nous tenions à vous en informer, car votre adresse e-mail est associée à "
-"cet enregistrement\n"
-"ou a été utilisée pour laisser une remarque à propos de ce dernier.\n"
+"cet avis de recherche ou à un commentaire publié à son sujet.\n"
 
 #, python-format
 msgid ""
@@ -410,7 +440,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"L'enregistrement concernant \"%(full_name)s\" vient d'être commenté.\n"
+"L'avis de recherche concernant \"%(full_name)s\" vient d'être commenté.\n"
 
 #, python-format
 msgid ""
@@ -425,11 +455,14 @@ msgid ""
 msgstr ""
 "\n"
 "Vous avez demandé à être informé des commentaires concernant "
-"\"%(full_name)s\". Vous pouvez consulter ce commentaire à l'adresse\n"
+"\"%(full_name)s\".\n"
 "\n"
-"     %(view_url)s\n"
+"Pour consulter l'avis de recherche correspondant, cliquez sur le lien ci-"
+"dessous :\n"
 "\n"
-"Pour vous désabonner, cliquez sur le lien ci-après : %(unsubscribe_link)s"
+"%(view_url)s\n"
+"\n"
+"Pour vous désabonner, cliquez sur le lien suivant : %(unsubscribe_link)s."
 "\n"
 
 msgid "(click to reveal)"
@@ -442,31 +475,31 @@ msgid "A message for this person or others seeking this person"
 msgstr "Message à l'intention de cette personne ou de ceux qui la recherchent"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Il y a environ 1 mois (30 jours)"
+msgstr "Dans environ 1 mois (30 jours) à compter d'aujourd'hui"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Il y a environ 1 an (360 jours)"
+msgstr "Dans environ 1 an (360 jours) à compter d'aujourd'hui"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Il y a environ 2 mois (60 jours)"
+msgstr "Dans environ 2 mois (60 jours) à compter d'aujourd'hui"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Il y a environ 3 mois (90 jours)"
+msgstr "Dans environ 3 mois (90 jours) à compter d'aujourd'hui"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Il y a environ 6 mois (180 jours)"
+msgstr "Dans environ 6 mois (180 jours) à compter d'aujourd'hui"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "À propos de l'outil de recherche de personnes disparues de Google"
 
 msgid "About you (required)"
-msgstr "Vous (obligatoire)"
+msgstr "À propos de vous (obligatoire)"
 
 msgid "Administration"
 msgstr "Administration"
@@ -484,13 +517,13 @@ msgid "Alternate names"
 msgstr "Autres noms"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Êtes-vous sûr que cette remarque n'est pas du spam ?"
+msgstr "Êtes-vous sûr que ce commentaire ne constitue pas du spam ?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Voulez-vous vraiment marquer cette remarque comme du spam ?"
+msgstr "Voulez-vous vraiment marquer ce commentaire comme du spam ?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Voulez-vous vraiment restaurer cet enregistrement supprimé ?"
+msgstr "Voulez-vous vraiment restaurer cet avis de recherche supprimé ?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Flux Atom de mises à jour concernant cette personne"
@@ -505,7 +538,7 @@ msgid "Author's phone number"
 msgstr "Numéro de téléphone de l'auteur"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Clé d'autorisation"
 
 msgid "Back to results list"
 msgstr "Retour à la liste des résultats"
@@ -514,11 +547,11 @@ msgid "Back to start"
 msgstr "Retour au début"
 
 msgid "CSV file"
-msgstr ""
+msgstr "Fichier CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Impossible de trouver le commentaire associé à l'identifiant %(id)s"
+msgstr "Impossible de trouver le commentaire associé à l'identifiant %(id)s."
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -533,45 +566,45 @@ msgid "Close window"
 msgstr "Fermer la fenêtre"
 
 msgid "Compare these records"
-msgstr "Comparer ces enregistrements"
+msgstr "Comparer ces avis de recherche"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Pour intégrer cet outil à votre site Web, vous devez copier le code HTML "
-"suivant et le coller dans votre code source."
+"Pour intégrer cet outil à votre site Web, vous devez copier le code HTML "
+"suivant, puis le coller dans votre code source."
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Créer un avis de recherche"
 
 msgid "Create a new record for"
-msgstr "Créer un enregistrement pour"
+msgstr "Créer un avis de recherche pour"
 
 msgid "Create a new record for a missing person"
-msgstr "Créer un enregistrement pour une personne disparue"
+msgstr "Créer un avis de recherche pour une personne disparue"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Événements de crise"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Environ %(num_people)s enregistrements"
+msgstr "Environ %(num_people)s avis de recherche"
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
-"La date ne doit pas être située dans le futur. Veuillez retourner à la "
-"page précédente, puis réessayez."
+"La date ne doit pas être postérieure à celle du jour. Veuillez revenir à "
+"la page précédente, puis réessayer."
 
 msgid "Date of birth"
 msgstr "Date de naissance"
 
 msgid "Delete this record"
-msgstr "Supprimer cet enregistrement"
+msgstr "Supprimer cet avis de recherche"
 
 msgid "Describe how to identify this person."
-msgstr "Décrivez cette personne afin de pouvoir l'identifier."
+msgstr "Décrivez cette personne pour permettre son identification."
 
 msgid "Describe the physical characteristics of this person."
 msgstr "Décrivez les caractéristiques physiques de cette personne."
@@ -580,19 +613,19 @@ msgid "Description"
 msgstr "Description"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Version pour ordinateur"
 
 msgid "Developers"
 msgstr "Développeurs"
 
 msgid "Disable notes on this record"
-msgstr "Désactiver les commentaires pour cet enregistrement"
+msgstr "Désactiver les commentaires pour cet avis de recherche"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Cette personne possède-t-elle des pages de profil sur d'autres sites Web ?"
 
 msgid "Download the sound as MP3"
-msgstr "Télécharger l'audio au format MP3"
+msgstr "Télécharger le fichier audio au format MP3"
 
 msgid "E-mail"
 msgstr "E-mail"
@@ -601,16 +634,18 @@ msgid "E-mail address"
 msgstr "Adresse e-mail"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "Intégration de l'application"
+msgstr "Intégrer l'application"
 
 msgid "Enable notes on this record"
-msgstr "Activer les commentaires pour cet enregistrement"
+msgstr "Activer les commentaires pour cet avis de recherche"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
 msgstr ""
+"Assurez-vous que toutes les dates respectent le format AAAA-MM-"
+"JJTHH:MM:SSZ UTC."
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Respectez le format AAAA-MM-JJ."
@@ -633,11 +668,11 @@ msgid "Expiry"
 msgstr "Date d'expiration"
 
 msgid "Expiry date of this record"
-msgstr "Date d'expiration de cet enregistrement"
+msgstr "Date d'expiration de cet avis de recherche"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Repousser la date d'expiration de %(extension_days)s jours"
 
 msgid "Family name"
 msgstr "Nom"
@@ -646,7 +681,7 @@ msgid "Feed of updates about this person"
 msgstr "Flux de mises à jour concernant cette personne"
 
 msgid "Follow this link to create a new record"
-msgstr "Cliquez sur ce lien pour créer un enregistrement."
+msgstr "Cliquez sur ce lien pour créer un avis de recherche."
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -656,7 +691,7 @@ msgstr ""
 "composer le 171 pour accéder au service de la NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Nom et prénom"
 
 msgid "Get a new challenge"
 msgstr "Relever un nouveau défi"
@@ -671,7 +706,7 @@ msgid "Given name"
 msgstr "Prénom"
 
 msgid "Google Person Finder"
-msgstr "Google People Finder"
+msgstr "Outil de recherche de personnes disparues de Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Avez-vous parlé avec cette personne APRÈS la catastrophe ? (obligatoire)"
@@ -682,27 +717,31 @@ msgstr "Aide"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Voici un %(begin_tag)sexemple de fichier CSV%(end_tag)s à modifier, puis "
+"importer."
 
 msgid "Hide Map"
 msgstr "Masquer la carte"
 
 msgid "Hide note"
-msgstr "Masquer la remarque"
+msgstr "Masquer le commentaire"
 
 msgid "Home Address"
-msgstr "Adresse"
+msgstr "Adresse personnelle"
 
 msgid "Home address"
-msgstr "Adresse"
+msgstr "Adresse personnelle"
 
 msgid "Home country"
-msgstr "Pays"
+msgstr "Pays d’origine"
 
 msgid "How can this person be reached now?"
 msgstr "Comment peut-on entrer en contact avec cette personne ?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "Comment ceux qui recherchent cette personne peuvent vous contacter ?"
+msgstr ""
+"De quelle manière les personnes recherchant cette personne peuvent-elles "
+"vous contacter ?"
 
 msgid "I am seeking information"
 msgstr "Je recherche des informations."
@@ -711,13 +750,13 @@ msgid "I am this person"
 msgstr "Je confirme être cette personne."
 
 msgid "I do not want any more updates on this record."
-msgstr "Je ne souhaite pas que cet enregistrement soit mis à jour."
+msgstr "Je ne veux pas que cet avis de recherche soit mis à jour."
 
 msgid "I do not want my information online anymore."
-msgstr "Je ne veux plus que mes informations apparaissent en ligne"
+msgstr "Je ne veux plus que mes informations soient affichées en ligne."
 
 msgid "I have information about someone"
-msgstr "J'ai des informations sur une personne"
+msgstr "J'ai des informations sur une personne."
 
 msgid "I have reason to think this person is missing"
 msgstr "J'ai des raisons de croire que cette personne est portée disparue."
@@ -729,22 +768,22 @@ msgid "I have received information that this person is dead"
 msgstr "J'ai reçu des informations indiquant que cette personne est décédée."
 
 msgid "I have received spam due to this note."
-msgstr "J'ai reçu du spam à cause de cette remarque"
+msgstr "J'ai reçu du spam à cause de ce commentaire."
 
 msgid "I have received spam."
-msgstr "J'ai reçu du spam"
+msgstr "J'ai reçu du spam."
 
 msgid "I prefer not to specify."
-msgstr "Je préfère ne pas donner plus de précisions"
+msgstr "Je préfère ne pas donner plus de précisions."
 
 msgid "I'm looking for someone"
-msgstr "Je recherche quelqu'un"
+msgstr "Je recherche quelqu'un."
 
 msgid "Identify who you are looking for"
-msgstr "Identifiez la personne que vous recherchez"
+msgstr "Identifiez la personne que vous recherchez."
 
 msgid "Identify who you have information about"
-msgstr "Identifiez la personne à propos de laquelle vous avez des informations"
+msgstr "Identifiez la personne sur laquelle vous avez des informations."
 
 msgid "Identifying information"
 msgstr "Informations d'identification"
@@ -753,33 +792,35 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Si aucun de ces enregistrements ne correspond à la personne recherchée, "
-"vous pouvez cliquer ci-dessous pour en créer un."
+"Si aucun de ces avis de recherche ne correspond à la personne à laquelle "
+"vous pensiez, vous pouvez cliquer ci-dessous pour en créer un."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Si vous êtes l'auteur de ce commentaire, veuillez consulter vos e-mails. "
+"Si vous êtes l'auteur de ce commentaire, veuillez vérifier vos e-mails. "
 "Vous avez dû recevoir un lien pour confirmer la désactivation des "
-"commentaires relatifs à cet enregistrement. Si vous n'êtes pas l'auteur, "
-"veuillez patienter le temps que ce dernier confirme votre demande."
+"commentaires relatifs à cet avis de recherche. Si vous n'êtes pas "
+"l'auteur, veuillez patienter le temps que ce dernier confirme votre "
+"demande."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Si vous êtes l'auteur de ce commentaire, veuillez consulter vos e-mails. "
+"Si vous êtes l'auteur de ce commentaire, veuillez vérifier vos e-mails. "
 "Vous avez dû recevoir un lien pour confirmer l'activation des "
-"commentaires relatifs à cet enregistrement. Si vous n'êtes pas l'auteur, "
-"veuillez patienter le temps que ce dernier confirme votre demande."
+"commentaires relatifs à cet avis de recherche. Si vous n'êtes pas "
+"l'auteur, veuillez patienter le temps que ce dernier confirme votre "
+"demande."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
-"Si vous avez une photo de cette personne, envoyez-la ou saisissez son "
-"adresse URL."
+"Si vous disposez d'une photo de cette personne, importez-la ou saisissez "
+"son URL."
 
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Veuillez réessayer."
@@ -788,54 +829,54 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Adresse e-mail incorrecte. Veuillez réessayer."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Choix de la langue"
 
 msgid "Last known location"
-msgstr "Dernier lieu connu"
+msgstr "Dernière position connue"
 
 msgid "Link"
 msgstr "Lien"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Lien vers la page de profil"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "Marquer les enregistrements comme des doublons"
+msgstr "Marquer les avis de recherche comme des doublons"
 
 msgid "Message (required)"
 msgstr "Message (obligatoire)"
 
 msgid "Message is required. Please go back and try again."
 msgstr ""
-"Vous devez indiquer un message. Veuillez retourner à la page précédente, "
-"puis réessayez."
+"Vous devez indiquer un message. Veuillez revenir à la page précédente, "
+"puis réessayer."
 
 msgid "Missing person's current contact information"
-msgstr "Coordonnées de la personne disparue"
+msgstr "Coordonnées actuelles de la personne disparue"
 
 msgid "Missing person's current e-mail address"
-msgstr "Adresse e-mail de la personne disparue"
+msgstr "Adresse e-mail actuelle de la personne disparue"
 
 msgid "Missing person's current phone number"
-msgstr "Numéro de téléphone de la personne disparue"
+msgstr "Numéro de téléphone actuel de la personne disparue"
 
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"Pour plus d'informations à destination des développeurs, cliquez "
-"%(developers_link_html)sici%(link_end_html)s."
+"Pour plus d'informations à destination des développeurs, "
+"%(developers_link_html)scliquez ici%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"Plus de 100 résultats, seuls les 100 premiers sont affichés. Essayez de "
-"mieux préciser le nom."
+"Plus de 100 résultats : seuls les 100 premiers sont affichés. Essayez de "
+"préciser le nom."
 
 msgid "Name"
 msgstr "Nom"
@@ -846,7 +887,7 @@ msgstr "Nom (obligatoire)"
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Vous devez indiquer un nom. Veuillez revenir à la page précédente, puis "
-"réessayez."
+"réessayer."
 
 msgid "Neighborhood"
 msgstr "Quartier"
@@ -856,7 +897,7 @@ msgstr "Non"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "L'auteur n'a pas laissé d'adresse e-mail pour l'enregistrement %(id)s."
+msgstr "L'auteur n'a pas indiqué d'adresse e-mail pour l'avis de recherche %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -865,20 +906,20 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Aucun commentaire associé à l'identifiant %(id_str)s."
+msgstr "Aucun commentaire associé à l'identifiant %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Aucun commentaire n'a été publié."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "Personne ne correspond à l'identifiant %(id_str)s."
+msgstr "Personne ne correspond à l'identifiant %(id_str)s."
 
 msgid "No results found for"
 msgstr "Aucun résultat trouvé pour"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -886,7 +927,7 @@ msgstr ""
 "\"believed_dead\"."
 
 msgid "Not spam"
-msgstr "Pas du spam"
+msgstr "Ne contient pas de spam."
 
 msgid "Note author"
 msgstr "Auteur du commentaire"
@@ -898,7 +939,7 @@ msgid "Notes for this person"
 msgstr "Commentaires concernant cette personne"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Âge ou tranche d'âge (25 ou 20-30, par exemple)"
+msgstr "Âge ou tranche d'âge (20-30, par exemple)"
 
 #, python-format
 msgid ""
@@ -912,17 +953,17 @@ msgid "Original URL"
 msgstr "URL d'origine"
 
 msgid "Original author's name"
-msgstr "Nom de l'auteur"
+msgstr "Nom de l'auteur d'origine"
 
 msgid "Original posting date"
-msgstr "Date d'envoi"
+msgstr "Date de publication d'origine"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"La date d'envoi n'existe pas ou ne respecte pas le format AAAA-MM-JJ. "
-"Veuillez retourner à la page précédente, puis réessayez."
+"La date de publication d'origine n'existe pas ou ne respecte pas le "
+"format AAAA-MM-JJ. Veuillez revenir à la page précédente, puis réessayer."
 
 msgid "Original site name"
 msgstr "Nom du site d'origine"
@@ -932,21 +973,25 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"REMARQUE : Toutes les données saisies sont accessibles au public et "
-"visibles et utilisables par tous. Google n'analyse ni ne vérifie "
-"l'exactitude de ces données."
+"REMARQUE : Toutes les données saisies sont accessibles au public, et "
+"visibles et utilisables par tous. Nous n'analysons pas ces données, et ne"
+" vérifions pas leur exactitude."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"REMARQUE : Sur les sites actifs de recherche de personnes disparues, "
+"toutes les données saisies sont accessibles et utilisables par tous. Nous"
+" n'analysons pas ces données, et ne vérifions pas leur exactitude."
 
 msgid "Person Finder"
 msgstr "Outil de recherche de personnes disparues"
 
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Numéro de téléphone"
 
 msgid "Phone number"
 msgstr "Numéro de téléphone"
@@ -958,14 +1003,14 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Le format de la photo envoyée est inconnu. Veuillez retourner à la page "
-"précédente, puis réessayez."
+"Le format de la photo importée est inconnu. Veuillez revenir à la page "
+"précédente, puis réessayer."
 
 msgid "Physical characteristics"
 msgstr "Caractéristiques physiques"
 
 msgid "Play the sound again"
-msgstr "Réécouter l'audio"
+msgstr "Réécouter le fichier audio"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -976,8 +1021,8 @@ msgstr ""
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
-"Veuillez vérifier si cet enregistrement correspond à une personne pour "
-"laquelle vous souhaitiez fournir des informations."
+"Veuillez vérifier si cet avis de recherche correspond à la personne dont "
+"vous souhaitez signaler la disparition."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Confirmez votre adresse e-mail pour vous abonner aux mises à jour."
@@ -1004,19 +1049,19 @@ msgid "Postal or zip code"
 msgstr "Code postal"
 
 msgid "Posted by"
-msgstr "Envoyé par"
+msgstr "Publié par"
 
 msgid "Proceed"
 msgstr "Continuer"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Pages de profil"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Page de profil"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Fournir des informations"
 
 msgid "Provide information about this person"
 msgstr "Fournir des informations sur cette personne"
@@ -1025,7 +1070,7 @@ msgid "Provided by:"
 msgstr "Fourni par :"
 
 msgid "Province or state"
-msgstr "Département"
+msgstr "Département ou État"
 
 msgid "Reason for deletion:"
 msgstr "Motif de la suppression :"
@@ -1034,32 +1079,32 @@ msgid "Reason for disabling notes:"
 msgstr "Motif de la désactivation des commentaires :"
 
 msgid "Records Similar to"
-msgstr "Enregistrements similaires à"
+msgstr "Avis de recherche similaires à"
 
 msgid "Records selected"
-msgstr "Enregistrements sélectionnés"
+msgstr "Avis de recherche sélectionnés"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
-"Enregistrements contenant un nom ou une adresse correspondant à "
+"Avis de recherche contenant un nom ou une adresse correspondant à "
 "\"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 msgid "Report spam"
 msgstr "Signaler du spam"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Revenir à l'enregistrement concernant %(full_name)s"
+msgstr "Revenir à l'avis de recherche concernant \"%(full_name)s\""
 
 msgid "Reveal note"
-msgstr "Afficher la remarque"
+msgstr "Afficher le commentaire"
 
 msgid "Save this record"
-msgstr "Enregistrer"
+msgstr "Enregistrer l'avis de recherche"
 
 msgid "Search Results for"
 msgstr "Résultats de recherche pour"
@@ -1070,12 +1115,16 @@ msgstr "Rechercher cette personne"
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
 msgstr ""
+"Pour obtenir des instructions supplémentaires, consultez le "
+"%(begin_tag)swiki%(end_tag)s."
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Sélectionnez un site Web pour ajouter une page de profil…"
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Sélectionnez jusqu'à 3 enregistrements à marquer comme doublons :"
+msgstr ""
+"Sélectionnez trois avis de recherche au maximum à marquer comme des "
+"doublons :"
 
 msgid "Send email"
 msgstr "Envoyer l'e-mail"
@@ -1090,10 +1139,10 @@ msgid "Show sensitive information"
 msgstr "Afficher les informations confidentielles"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Connexion"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Déconnexion"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Quelqu'un a reçu des informations indiquant que cette personne est en vie."
@@ -1107,13 +1156,13 @@ msgid "Someone has reported that this person is missing"
 msgstr "Quelqu'un a signalé la disparition de cette personne."
 
 msgid "Someone is seeking information about this person"
-msgstr "Quelqu'un recherche des informations sur cette personne"
+msgstr "Quelqu'un recherche des informations sur cette personne."
 
 msgid "Source of this record"
-msgstr "Origine de cet enregistrement"
+msgstr "Source de cet avis de recherche"
 
 msgid "Source of this record (required)"
-msgstr "Origine de cet enregistrement (obligatoire)"
+msgstr "Source de cet avis de recherche (obligatoire)"
 
 msgid "Status"
 msgstr "Statut"
@@ -1122,7 +1171,7 @@ msgid "Status of this person"
 msgstr "Statut de cette personne"
 
 msgid "Street name"
-msgstr "Rue"
+msgstr "Nom de la rue"
 
 msgid "Street name only, no number"
 msgstr "Nom de la rue uniquement, sans le numéro"
@@ -1132,71 +1181,70 @@ msgstr "S'abonner"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "S'abonner aux mises à jour concernant %(full_name)s"
+msgstr "S'abonner aux mises à jour concernant \"%(full_name)s\""
 
 msgid "Subscribe to updates about this person"
 msgstr "S'abonner aux mises à jour concernant cette personne"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Passer à l'adresse"
 
 msgid "Switch to duplicate marking mode"
-msgstr "Basculer vers le mode de marquage des doublons"
+msgstr "Passer au mode de marquage des doublons"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Passer au mode latitude/longitude"
 
 msgid "Switch to normal view mode"
-msgstr "Basculer vers le mode normal"
+msgstr "Passer au mode d'affichage normal"
 
 msgid "Tell us the status of this person"
-msgstr "Indiquez-nous le statut de cette personne."
+msgstr "Indiquer le statut de cette personne"
 
 msgid "Terms of Service"
 msgstr "Conditions d'utilisation"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
 "Les champs \"Prénom\" et \"Nom\" sont obligatoires. Veuillez revenir à la"
-" page précédente, puis réessayez."
+" page précédente, puis réessayer."
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
-"Le champ \"Nom de l'auteur\" est obligatoire. Veuillez retourner à la "
-"page précédente, puis réessayez."
+"Le champ \"Nom de l'auteur d'origine\" est obligatoire. Veuillez revenir "
+"à la page précédente, puis réessayer."
 
 msgid "The author has disabled notes on this record."
-msgstr "L'auteur a désactivé les commentaires pour cet enregistrement."
+msgstr "L'auteur a désactivé les commentaires pour cet avis de recherche."
 
 msgid "The author has disabled status updates on this record."
 msgstr ""
-"L'auteur a désactivé les mises à jour relatives à l'état pour cet "
-"enregistrement."
+"L'auteur a désactivé les mises à jour relatives au statut pour cet avis "
+"de recherche."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
-"Le fichier image fourni est trop volumineux. Veuillez envoyer un fichier "
-"plus petit."
+"Le fichier image fourni est trop volumineux. Veuillez importer un fichier"
+" plus petit."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "Motif pour lequel cette remarque a été marquée comme du spam :"
+msgstr "Motif pour lequel ce commentaire a été marqué comme du spam :"
 
 msgid "The record cannot be extended."
-msgstr "La date d'expiration de l'enregistrement ne peut pas être repoussée."
+msgstr "Impossible de repousser la date d'expiration de l'avis de recherche."
 
 msgid "The record has been deleted."
-msgstr "L'enregistrement a été supprimé"
+msgstr "L'avis de recherche a été supprimé."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
 msgstr ""
-"La date d'expiration de l'enregistrement a été repoussée au "
+"La date d'expiration de l'avis de recherche a été repoussée au "
 "%(expiry_date)s."
 
 msgid ""
@@ -1205,8 +1253,8 @@ msgid ""
 "person."
 msgstr ""
 "Le statut que vous avez sélectionné indique que vous êtes cette personne."
-" Si c'est le cas, veuillez également sélectionner \"Oui\" pour indiquer "
-"que vous avez contacté cette personne."
+" Si tel est le cas, sélectionnez également \"Oui\" pour indiquer que vous"
+" avez contacté cette personne."
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1218,17 +1266,17 @@ msgstr "Le jeton %(token)s n'est pas valide."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "%(num_results)s enregistrements sont associés à des noms similaires."
+msgstr "%(num_results)s avis de recherche sont associés à des noms similaires."
 
 msgid "There are some existing records with similar names."
-msgstr "Plusieurs enregistrements sont associés à des noms similaires."
+msgstr "Plusieurs avis de recherche sont associés à des noms similaires."
 
 msgid "There is one existing record with a similar name."
-msgstr "Il existe un enregistrement associé à un nom similaire."
+msgstr "Il existe un avis de recherche associé à un nom similaire."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Un problème s'est produit lors du traitement de l'image. Veuillez "
+"Une erreur s'est produite lors du traitement de l'image. Veuillez "
 "utiliser une autre image."
 
 msgid ""
@@ -1250,59 +1298,64 @@ msgstr ""
 "Apache 2.0%(link_end_html)s."
 
 msgid "This is a new record."
-msgstr "Nouvel enregistrement"
+msgstr "Il s'agit d'un nouvel avis de recherche."
 
 msgid "This link is invalid."
-msgstr "Ce lien est incorrect"
+msgstr "Ce lien n'est pas valide."
 
 msgid "This note has been marked as spam."
-msgstr "Cette remarque a été marquée comme du spam"
+msgstr "Ce commentaire a été marqué comme du spam."
 
 msgid "This note is inappropriate."
-msgstr "Cette remarque est inappropriée"
+msgstr "Ce commentaire est inapproprié."
 
 msgid "This note is incorrect or untrue."
-msgstr "Cette remarque est incorrecte ou inexacte"
+msgstr "Ce commentaire est incorrect ou inexact."
 
 msgid "This note is spam."
-msgstr "Cette remarque contient du spam"
+msgstr "Ce commentaire contient du spam."
 
 msgid "This person has been in contact with someone"
-msgstr "Cette personne a été en contact avec quelqu'un"
+msgstr "Cette personne a été en contact avec quelqu'un."
 
 msgid "This person has posted a message"
 msgstr "Cette personne a envoyé un message."
 
 msgid "This person's entry does not exist or has been deleted."
 msgstr ""
-"Les données correspondant à cette personne n'existent pas ou ont été "
-"supprimées."
+"L'avis de recherche correspondant à cette personne n'existe pas ou a été "
+"supprimé."
 
 msgid "This record has served its purpose."
-msgstr "Cet enregistrement a atteint son objectif"
+msgstr "Cet avis de recherche a atteint son objectif."
 
 msgid "This record is a duplicate of"
-msgstr "Cet enregistrement est un doublon de"
+msgstr "Cet avis de recherche est un doublon de"
 
 msgid "This record is copied from another source."
-msgstr "Enregistrement copié à partir d'une autre source"
+msgstr "Cet avis de recherche est une copie d'une autre source."
 
 msgid "This record is inappropriate."
-msgstr "Cet enregistrement est inapproprié"
+msgstr "Cet avis de recherche est inapproprié."
 
 msgid "This record is spam."
-msgstr "Cet enregistrement contient du spam"
+msgstr "Cet avis de recherche contient du spam."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Ce référentiel est actuellement en mode de test. Lorsque le mode de test "
+"est activé, les avis de recherche créés il y a plus de six heures sont "
+"supprimés."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "Pour joindre une photo à ce commentaire, importez-la ou saisissez son URL."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
+"Pour effacer vos données, accédez à l'outil de recherche de personnes "
+"disparues depuis votre ordinateur."
 
 msgid "To unsubscribe, follow this link"
 msgstr "Pour vous désabonner, cliquez sur ce lien"
@@ -1314,12 +1367,14 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Saisissez une adresse, ou ouvrez la carte ci-dessous, puis indiquez la "
+"position en cliquant sur la carte."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Saisissez une adresse."
 
 msgid "Type the two words:"
-msgstr "Saisissez les deux mots :"
+msgstr "Saisissez les deux mots :"
 
 msgid "Type what you hear:"
 msgstr "Saisissez ce que vous entendez :"
@@ -1328,111 +1383,120 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of original record"
-msgstr "URL de l'enregistrement d'origine"
+msgstr "URL de l'avis de recherche d'origine"
 
 msgid "Unspecified"
 msgstr "Non spécifié"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
-msgstr "Envoyer"
+msgstr "Importer"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Importer les fichiers CSV"
 
 msgid "View the record"
-msgstr "Afficher l'enregistrement"
+msgstr "Afficher l'avis de recherche"
 
 msgid "We have nothing matching your search."
-msgstr "Aucun résultat ne correspond à votre recherche"
+msgstr "Aucun résultat ne correspond à votre recherche."
 
 msgid "What is this person's name?"
 msgstr "Quel est le nom de cette personne ?"
 
 msgid "When should this record disappear?"
-msgstr "Quand cet enregistrement doit-il être supprimé ?"
+msgstr "Quand cet avis de recherche doit-il être supprimé ?"
 
 msgid "Where did this information come from?"
-msgstr "Quel est la source de ces informations ?"
+msgstr "Quelle est la source de ces informations ?"
 
 msgid "Where is this person from?"
-msgstr "Où habite cette personne ?"
+msgstr "D'où cette personne est-elle originaire ?"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Lorsque le mode de test est activé, les avis de recherche créés il y a "
+"plus de six heures sont supprimés, indépendamment de leur date "
+"d'expiration."
 
 msgid "Yes"
 msgstr "Oui"
 
 msgid "Yes, ask the record author to disable notes"
 msgstr ""
-"Oui, demander à l'auteur de l'enregistrement de désactiver les "
+"Oui, demander à l'auteur de l'avis de recherche de désactiver les "
 "commentaires"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Oui, demander à l'auteur de l'enregistrement d'activer les commentaires"
+msgstr "Oui, demander à l'auteur de l'avis de recherche d'activer les commentaires"
 
 msgid "Yes, delete the record"
-msgstr "Oui, supprimer l'enregistrement"
+msgstr "Oui, supprimer l'avis de recherche"
 
 msgid "Yes, disable notes on this record."
-msgstr "Oui, désactiver les commentaires pour cet enregistrement"
+msgstr "Oui, désactiver les commentaires pour cet avis de recherche"
 
 msgid "Yes, extend the record"
-msgstr "Oui, repousser la date d'expiration de l'enregistrement"
+msgstr "Oui, repousser la date d'expiration de l'avis de recherche"
 
 msgid "Yes, restore this record"
-msgstr "Oui, restaurer cet enregistrement"
+msgstr "Oui, restaurer cet avis de recherche"
 
 msgid "Yes, these are the same person"
 msgstr "Oui, il s'agit de la même personne."
 
 msgid "Yes, update the note"
-msgstr "Oui, mettre à jour la remarque"
+msgstr "Oui, mettre à jour le commentaire"
 
 msgid "You are already subscribed. "
 msgstr "Vous êtes déjà abonné. "
 
 msgid "You are already unsubscribed."
-msgstr "Vous êtes déjà désabonné."
+msgstr "Vous vous êtes déjà désabonné."
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
+"Vous êtes déjà connecté avec l'adresse "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Actuellement, vous n'êtes pas connecté."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
+"Vous pouvez %(begin_tag)sconsulter l'avis de recherche%(end_tag)s avant "
+"de le supprimer."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Vous pouvez consulter l'enregistrement complet à l'adresse %(view_url)s."
+msgstr ""
+"Vous pouvez consulter l'avis de recherche complet sur la page "
+"%(view_url)s."
 
 msgid "You have successfully subscribed."
 msgstr "Vous êtes maintenant abonné."
 
 msgid "You have successfully unsubscribed."
-msgstr "Vous êtes maintenant désabonné."
+msgstr "Vous vous êtes bien désabonné."
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
 "Vous recevez cette notification, car vous vous êtes abonné aux mises à "
-"jour concernant cette personne :\n"
+"jour concernant la personne suivante :\n"
 
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"
@@ -1450,15 +1514,15 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
 msgstr ""
-"Vous devez indiquer votre nom dans la section \"Vous\". Veuillez "
-"retourner à la page précédente, puis réessayez."
+"Vous devez indiquer votre nom dans la section \"À propos de vous\". "
+"Veuillez revenir à la page précédente, puis réessayer."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"Vous devez indiquer votre nom dans la section \"Origine\". Veuillez "
-"retourner à la page précédente, puis réessayez."
+"Vous devez indiquer votre nom dans la section \"Source\". Veuillez "
+"revenir à la page précédente, puis réessayer."
 
 msgid "Your phone number"
 msgstr "Votre numéro de téléphone"
@@ -1467,65 +1531,69 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"Votre demande a bien été traitée. Veuillez consulter votre boîte de "
-"réception et confirmer que vous souhaitez publier votre commentaire en "
-"suivant l'URL fournie."
+"Votre demande a bien été traitée. Veuillez vérifier votre boîte de "
+"réception, puis confirmer que vous souhaitez publier votre commentaire en"
+" cliquant sur l'URL intégrée."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
 msgstr ""
-"[Person Finder] Confirmer la publication de mon commentaire concernant "
-"\"%(full_name)s\""
+"[Outil de recherche de personnes disparues] Confirmer la publication du "
+"commentaire concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] - Avis de suppression "
+"[Outil de recherche de personnes disparues] Notification de suppression "
 "concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
 msgstr ""
+"[Outil de recherche de personnes disparues] Désactiver les commentaires "
+"concernant \"%(full_name)s\" ?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
+"[Outil de recherche de personnes disparues] Activer les commentaires "
+"concernant \"%(full_name)s\" ?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
-"[Person Finder] Activer les notifications relatives aux commentaires "
-"concernant \"%(full_name)s\""
+"[Outil de recherche de personnes disparues] Activer les notifications "
+"relatives aux commentaires concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
-"[Person Finder] Les commentaires concernant \"%(full_name)s\" sont "
-"maintenant désactivés."
+"[Outil de recherche de personnes disparues] Les commentaires concernant "
+"\"%(full_name)s\" sont maintenant désactivés."
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
 msgstr ""
-"[Person Finder] Les commentaires concernant \"%(full_name)s\" sont "
-"maintenant activés."
+"[Outil de recherche de personnes disparues] Les commentaires concernant "
+"\"%(full_name)s\" sont maintenant activés."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] - Avis de restauration "
-"d'enregistrement concernant \"%(full_name)s\""
+"[Outil de recherche de personnes disparues] Notification de restauration "
+"d'avis de recherche concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
 msgstr ""
-"[Outil de recherche de personnes disparues] - Mise à jour du statut de "
-"%(full_name)s"
+"[Outil de recherche de personnes disparues] Mise à jour du statut "
+"concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Outil de recherche de personnes disparues] - Vous êtes abonné aux mises "
-"à jour du statut de %(full_name)s"
+"[Outil de recherche de personnes disparues] Vous êtes abonné aux mises à "
+"jour du statut concernant \"%(full_name)s\""
 
 msgid "at"
 msgstr "à"
@@ -1534,7 +1602,7 @@ msgid "female"
 msgstr "femme"
 
 msgid "in test mode"
-msgstr ""
+msgstr "en mode de test"
 
 msgid "male"
 msgstr "homme"

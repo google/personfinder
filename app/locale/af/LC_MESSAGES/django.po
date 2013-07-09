@@ -1,0 +1,1521 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Om te verseker dat notas net gedeaktiveer of geaktiveer word met die "
+"rekordouteur se toestemming, sal 'n bevestigingboodskap na die "
+"rekordouteur gestuur word. As jy die outeur is, kontroleer jou e-pos "
+"nadat jy die knoppie hieronder geklik het.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Geagte %(author_name)s\n"
+"\n"
+"'n Gebruiker het versoek dat notas oor die rekord vir \"%(full_name)s\" "
+"geaktiveer word.\n"
+"\n"
+"Jou e-posadres is aangeteken as die outeur van hierdie rekord. Om notas "
+"oor hierdie rekord te aktiveer, volg hierdie skakel binne 3 dae:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Geagte %(author_name)s\n"
+"\n"
+"'n Gebruiker het versoek dat notas oor die rekord vir \"%(full_name)s\" "
+"gedeaktiveer word.\n"
+"\n"
+"Jou e-posadres is aangeteken as die outeur van hierdie rekord. Om notas "
+"oor hierdie rekord te deaktiveer, volg hierdie skakel binne 3 dae:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Geagte %(author_name)s\n"
+"\n"
+"Jy het sopas 'n nota ingevoer oor die rekord vir \"%(full_name)s\". Om "
+"jou nota te publiseer, volg hierdie skakel binne 3 dae:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Let wel: hierdie rekord sal oor minder as "
+"%(expiration_days)s dae verval.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Let wel: hierdie rekord sal oor minder as 'n dag "
+"verval.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil die rekord vir \"%(full_name)s\" uitvee?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil notas oor \"%(full_name)s\" deaktiveer?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil notas oor die rekord van \"%(full_name)s\" "
+"deaktiveer?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil notas oor \"%(full_name)s\" aktiveer?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil die vervaldatum van rekord \"%(full_name)s\" "
+"verleng?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Bevestig jou nota\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      As jy voortgaan om dit uit te vee, sal hierdie rekord nie meer op "
+"hierdie werf soekbaar of kykbaar wees nie.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      As jy dit permanent wil uitvee, kontak die oorspronklike bron. Jy "
+"kan die oorspronklike rekord bekyk by "
+"%(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Die URL wat jy ingevoer het, lyk nie soos 'n geldige %(website)s"
+"-profiel-URL nie. Gaan na hierdie persoon se profielbladsy op "
+"%(website)s, en kopieer en plak daardie URL hier.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Hierdie rekord is 'n kopie van 'n rekord uit 'n ander bron. Jy kan "
+"die rekord hier uitvee, maar let daarop dat ons later dalk weer 'n ander "
+"kopie daarvan van die oorspronklike bron kan kry.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Om te verseker dat notas net gedeaktiveer of geaktiveer word met die "
+"rekordouteur se toestemming, sal 'n bevestigingboodskap na die "
+"rekordouteur gestuur word. As jy die outeur is, kontroleer jou e-pos "
+"nadat jy die knoppie hieronder geklik het.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Die rekord sal nog sigbaar wees op hierdie werf, maar niemand sal "
+"verdere notas daaroor kan plaas nie.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Om jou nota te plaas, voer jou e-posadres hieronder in en volg die "
+"bevestigingskakel wat jy sal ontvang.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"'n Gebruiker het die rekord vir \"%(full_name)s\" by %(site_url)s "
+"uitgevee.\n"
+"\n"
+"Ons stel jou in kennis van die uitvee-handeling, want jou e-posadres is "
+"aangeteken as die outeur van 'n nota oor hierdie rekord.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"'n Gebruiker het die rekord vir \"%(full_name)s\" by %(site_url)s "
+"uitgevee.\n"
+"\n"
+"Ons stel jou in kennis van die uitvee-handeling, want jou e-posadres is "
+"aangeteken as die outeur van hierdie rekord.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Na %(days_until_deletion)s dae sal die rekord permanent uitgevee word.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"LET WEL: As jy meen dat hierdie rekord verkeerdelik uitvee is, kan jy dit"
+" teruglaai deur hierdie skakel binne die volgende %(days_until_deletion)s"
+" dae te volg:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Notas is nou gedeaktiveer oor die rekord vir \"%(full_name)s\". Om die "
+"rekord te bekyk, volg hierdie skakel:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Ons stel jou in kennis, want jou e-posadres word geassosieer met hierdie "
+"persoonrekord of 'n nota oor hierdie rekord.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Notas is nou geaktiveer oor die rekord vir \"%(full_name)s\".  Om die "
+"rekord te bekyk, volg hierdie skakel:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Ons stel jou in kennis, want jou e-posadres word geassosieer met hierdie "
+"persoonrekord of 'n nota oor hierdie rekord.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Die outeur van die rekord vir \"%(full_name)s\" (wat voorheen uitgevee "
+"is) het die rekord teruggelaai.  Om die rekord te bekyk, volg hierdie "
+"skakel:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Ons stel jou in kennis, want jou e-posadres word geassosieer met hierdie "
+"persoonrekord of 'n nota oor hierdie rekord.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Daar is 'n nuwe nota oor die rekord vir \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Jy het ingeteken op notas oor \"%(full_name)s\".\n"
+"\n"
+"Jy kan hierdie rekord bekyk by\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Om uit te teken, volg hierdie skakel: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(klik om te wys)"
+
+msgid "(unknown)"
+msgstr "(onbekend)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "'n Boodskap vir hierdie persoon of ander mense wat na hierdie persoon soek"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Ongeveer 1 maand (30 dae) van nou af"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Ongeveer 1 jaar (360 dae) van nou af"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Ongeveer 2 maande (60 dae) van nou af"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Ongeveer 3 maande (90 dae) van nou af"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Ongeveer 6 maande (180 dae) van nou af"
+
+msgid "About Google Person Finder"
+msgstr "Meer oor Google Person Finder"
+
+msgid "About you (required)"
+msgstr "Meer oor jou (vereis)"
+
+msgid "Administration"
+msgstr "Administrasie"
+
+msgid "Age"
+msgstr "Ouderdom"
+
+msgid "Alternate family names"
+msgstr "Alternatiewe vanne"
+
+msgid "Alternate given names"
+msgstr "Alternatiewe voorname"
+
+msgid "Alternate names"
+msgstr "Alternatiewe name"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Is jy seker hierdie nota is nie strooipos nie?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Is jy seker jy wil hierdie nota merk as strooipos?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Is jy seker jy wil hierdie rekord ná 'n uitvee-handeling teruglaai?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Atom-stroom van opdaterings oor hierdie persoon"
+
+msgid "Author's e-mail address"
+msgstr "Outeur se e-posadres"
+
+msgid "Author's name"
+msgstr "Outeur se naam"
+
+msgid "Author's phone number"
+msgstr "Outeur se foonnommer"
+
+msgid "Authorization key"
+msgstr "Magtigingsleutel"
+
+msgid "Back to results list"
+msgstr "Terug na lys resultate"
+
+msgid "Back to start"
+msgstr "Terug na begin"
+
+msgid "CSV file"
+msgstr "CSV-lêer"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Kan nie nota vind met I.D. %(id)s nie"
+
+msgid "Cancel"
+msgstr "Kanselleer"
+
+msgid "City"
+msgstr "Stad"
+
+msgid "Click here to view results."
+msgstr "Klik hier om resultate te bekyk."
+
+msgid "Close window"
+msgstr "Sluit venster"
+
+msgid "Compare these records"
+msgstr "Vergelyk hierdie rekords"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Kopieer en plak die volgende HTML-kode om hierdie nutsding op jou werf te"
+" plaas:"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "Skep 'n nuwe rekord"
+
+msgid "Create a new record for"
+msgstr "Skep 'n nuwe rekord vir"
+
+msgid "Create a new record for a missing person"
+msgstr "Skep 'n nuwe rekord vir 'n vermiste persoon"
+
+msgid "Crisis events"
+msgstr "Krisis-geleenthede"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Moniteer tans ongeveer %(num_people)s rekords."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Datum moenie in die toekoms wees nie. Gaan terug en probeer weer."
+
+msgid "Date of birth"
+msgstr "Geboortedatum"
+
+msgid "Delete this record"
+msgstr "Vee hierdie rekord uit"
+
+msgid "Describe how to identify this person."
+msgstr "Beskryf hoe om hierdie persoon te identifiseer."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Beskryf die liggaamlike eienskappe van hierdie persoon."
+
+msgid "Description"
+msgstr "Beskrywing"
+
+msgid "Desktop version"
+msgstr "Werkskerm-weergawe"
+
+msgid "Developers"
+msgstr "Ontwikkelaars"
+
+msgid "Disable notes on this record"
+msgstr "Deaktiveer notas oor hierdie rekord"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Het hierdie persoon profielbladsye op ander webwerwe?"
+
+msgid "Download the sound as MP3"
+msgstr "Laai die klank af as MP3"
+
+msgid "E-mail"
+msgstr "E-pos"
+
+msgid "E-mail address"
+msgstr "E-posadres"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "Bed die program in"
+
+msgid "Enable notes on this record"
+msgstr "Aktiveer notas oor hierdie rekord"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "Maak seker alle datums is in UTC-tyd in die formaat jjjj-mm-ddTuu:mm:ssZ"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Voer in as JJJJ-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Voer die persoon se voorname en vanne in."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Voer die persoon se naam of deel van die naam in."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Voer die persoon se naam, dele van die naam, of selfoonnommer in."
+
+msgid "Enter the person's name."
+msgstr "Voer die persoon se naam in."
+
+msgid "Expiry"
+msgstr "Vervaldatum"
+
+msgid "Expiry date of this record"
+msgstr "Vervaldatum van hierdie rekord"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Verleng vervaldatum met %(extension_days)s dae"
+
+msgid "Family name"
+msgstr "Van"
+
+msgid "Feed of updates about this person"
+msgstr "Opdateringstroom oor hierdie persoon"
+
+msgid "Follow this link to create a new record"
+msgstr "Volg hierdie skakel om 'n nuwe rekord te skep"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr "Vir fone benewens selfone, gebruik die 171-diens van NTT."
+
+msgid "Full name"
+msgstr "Volle naam"
+
+msgid "Get a new challenge"
+msgstr "Kry 'n nuwe uitdaging"
+
+msgid "Get a visual challenge"
+msgstr "Kry 'n visuele uitdaging"
+
+msgid "Get an audio challenge"
+msgstr "Kry 'n oudio-uitdaging"
+
+msgid "Given name"
+msgstr "Voornaam"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Het jy persoonlik met hierdie persoon gesels ná die ramp? (vereis)"
+
+msgid "Help"
+msgstr "Hulp"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Hier is %(begin_tag)s'n voorbeeld-CSV-lêer%(end_tag)s wat jy kan redigeer"
+" en oplaai"
+
+msgid "Hide Map"
+msgstr "Versteek kaart"
+
+msgid "Hide note"
+msgstr "Versteek nota"
+
+msgid "Home Address"
+msgstr "Huisadres"
+
+msgid "Home address"
+msgstr "Huisadres"
+
+msgid "Home country"
+msgstr "Land van herkoms"
+
+msgid "How can this person be reached now?"
+msgstr "Hoe kan hierdie persoon nou bereik word?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Hoe ander mense wat in hierdie persoon belangstel, jou kan kontak"
+
+msgid "I am seeking information"
+msgstr "Ek is op soek na inligting"
+
+msgid "I am this person"
+msgstr "Ek is hierdie persoon"
+
+msgid "I do not want any more updates on this record."
+msgstr "Ek wil nie enige verdere opdaterings oor hierdie rekord hê nie."
+
+msgid "I do not want my information online anymore."
+msgstr "Ek wil nie meer my inligting aanlyn hê nie."
+
+msgid "I have information about someone"
+msgstr "Ek het inligting oor iemand"
+
+msgid "I have reason to think this person is missing"
+msgstr "Ek het rede om te vermoed hierdie persoon word vermis"
+
+msgid "I have received information that this person is alive"
+msgstr "Ek het inligting gekry dat hierdie persoon nog leef"
+
+msgid "I have received information that this person is dead"
+msgstr "Ek het inligting gekry dat hierdie persoon dood is"
+
+msgid "I have received spam due to this note."
+msgstr "Ek het strooipos gekry weens hierdie nota."
+
+msgid "I have received spam."
+msgstr "Ek het strooipos gekry."
+
+msgid "I prefer not to specify."
+msgstr "Ek verkies om nie te spesifiseer nie."
+
+msgid "I'm looking for someone"
+msgstr "Ek is op soek na iemand"
+
+msgid "Identify who you are looking for"
+msgstr "Identifiseer na wie jy op soek is"
+
+msgid "Identify who you have information about"
+msgstr "Identifiseer oor wie jy inligting het"
+
+msgid "Identifying information"
+msgstr "Identifiseer inligting"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Indien geen van hierdie rekords pas by die persoon wat jy in gedagte "
+"gehad het nie, kan jy hieronder klik om 'n nuwe rekord te skep."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"As jy die outeur van hierdie nota is, kontroleer jou e-pos vir 'n skakel "
+"om te bevestig dat jy notas oor hierdie rekord wil deaktiveer. Andersins,"
+" wag vir die rekordouteur om jou versoek te bevestig."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"As jy die outeur van hierdie nota is, kontroleer jou e-pos vir 'n skakel "
+"om te bevestig dat jy notas oor hierdie rekord wil aktiveer. Andersins, "
+"wag vir die rekordouteur om jou versoek te bevestig."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "As jy 'n foto van die persoon het, laai dit op of voer die URL daarvan in."
+
+msgid "Incorrect.  Try again."
+msgstr "Verkeerd. Probeer weer."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Ongeldige e-posadres. Probeer asseblief weer."
+
+msgid "Language selection"
+msgstr "Taalkeuse"
+
+msgid "Last known location"
+msgstr "Mees onlangse bekende ligging"
+
+msgid "Link"
+msgstr "Skakel"
+
+msgid "Link to profile page"
+msgstr "Skakel na profiel-bladsy"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "Merk rekords as duplikaat"
+
+msgid "Message (required)"
+msgstr "Boodskap (vereis)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Boodskap word vereis. Gaan terug en probeer weer."
+
+msgid "Missing person's current contact information"
+msgstr "Vermiste persoon se huidige kontakinligting"
+
+msgid "Missing person's current e-mail address"
+msgstr "Vermiste persoon se huidige e-posadres"
+
+msgid "Missing person's current phone number"
+msgstr "Vermiste persoon se huidige foonnommer"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Meer inligting vir ontwikkelaars is nou "
+"%(developers_link_html)shier%(link_end_html)s te kry."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Meer as 100 resultate. Wys tans net die eerste 100. Probeer meer name "
+"invoer."
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Name (required)"
+msgstr "Naam (vereis)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Naam word vereis.  Gaan terug en probeer weer."
+
+msgid "Neighborhood"
+msgstr "Buurt"
+
+msgid "No"
+msgstr "Nee"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Geen e-pos vir rekord %(id)s se outeur nie."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"Geen boodskappe is gevind wat by die diensverskaffer se boodskapbord-"
+"diens geregistreer is nie."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Geen nota met ID %(id_str)s nie."
+
+msgid "No notes have been posted"
+msgstr "Geen notas is geplaas nie"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Geen persoon met ID %(id_str)s nie."
+
+msgid "No results found for"
+msgstr "Geen resultate gevind nie vir"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Nie gemagtig om notas met die status \"believed_dead\" te plaas nie."
+
+msgid "Not spam"
+msgstr "Nie strooipos nie"
+
+msgid "Note author"
+msgstr "Notaouteur"
+
+msgid "Note text"
+msgstr "Notateks"
+
+msgid "Notes for this person"
+msgstr "Notas vir hierdie persoon"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Getal of reeks (bv. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Of voeg by jou werf as 'n %(gadget_link_html)sGoogle-"
+"apparaat%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Oorspronklike URL"
+
+msgid "Original author's name"
+msgstr "Oorspronklike outeur se naam"
+
+msgid "Original posting date"
+msgstr "Oorspronklike plasingdatum"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Oorspronklike plasingdatum is nie in JJJJ-MM-DD-formaat nie, of is 'n "
+"niebestaande datum. Gaan terug en probeer weer."
+
+msgid "Original site name"
+msgstr "Oorspronklike werfnaam"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"LET WEL: Alle data wat ingevoer word, sal vir die publiek beskikbaar "
+"wees, en kykbaar en bruikbaar wees deur enigiemand. Google gaan nie die "
+"akkuraatheid van hierdie data na of verifieer dit nie."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"LET WEL: Op aktiewe Person Finder-werwe sal alle data wat ingevoer word, "
+"vir die publiek beskikbaar wees, en bruikbaar wees deur enigiemand. "
+"Google gaan nie die akkuraatheid van hierdie data na of verifieer dit "
+"nie."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "Foon"
+
+msgid "Phone number"
+msgstr "Foonnommer"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Foto wat opgelaai is, is in 'n nieherkende formaat. Gaan terug en probeer"
+" weer."
+
+msgid "Physical characteristics"
+msgstr "Liggaamlike eienskappe"
+
+msgid "Play the sound again"
+msgstr "Speel weer die klank"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Merk dat jy met die persoon in kontak was ná die aardbewing, of verander "
+"die \"Status van hierdie persoon\"-veld."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Kontroleer of dit by die persoon pas wat jy van plan was om aan te gee."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Bevestig jou e-posadres om in te teken op opdaterings"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Voer jou e-posadres in om in te teken op opdaterings"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Verduidelik waarom jy dink dit is dieselfde persoon"
+
+msgid "Please fill in all the required fields."
+msgstr "Vul al die vereiste velde in."
+
+msgid "Please fill in your email address."
+msgstr "Vul jou e-posadres in."
+
+msgid "Please provide an valid email address."
+msgstr "Voer 'n geldige e-posadres in."
+
+msgid "Possible duplicates"
+msgstr "Moontlike duplikate"
+
+msgid "Postal or zip code"
+msgstr "Poskode"
+
+msgid "Posted by"
+msgstr "Geplaas deur"
+
+msgid "Proceed"
+msgstr "Gaan voort"
+
+msgid "Profile Pages"
+msgstr "Profielbladsye"
+
+msgid "Profile page"
+msgstr "Profielbladsy"
+
+msgid "Provide information"
+msgstr "Verskaf inligting"
+
+msgid "Provide information about this person"
+msgstr "Verskaf inligting oor hierdie persoon"
+
+msgid "Provided by:"
+msgstr "Verskaf deur:"
+
+msgid "Province or state"
+msgstr "Provinsie of deelstaat"
+
+msgid "Reason for deletion:"
+msgstr "Rede waarom dit uitgevee word:"
+
+msgid "Reason for disabling notes:"
+msgstr "Rede waarom notas gedeaktiveer word:"
+
+msgid "Records Similar to"
+msgstr "Rekords soortgelyk aan"
+
+msgid "Records selected"
+msgstr "Rekords gekies"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Rekords met name en adresse wat pas by \"%(query)s\""
+
+msgid "Remove"
+msgstr "Verwyder"
+
+msgid "Report spam"
+msgstr "Gee strooipos aan"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Keer terug na die rekord vir %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Maak nota sigbaar"
+
+msgid "Save this record"
+msgstr "Stoor hierdie rekord"
+
+msgid "Search Results for"
+msgstr "Soekresultate vir"
+
+msgid "Search for this person"
+msgstr "Soek vir hierdie persoon"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Sien %(begin_tag)sdie wiki%(end_tag)s vir meer instruksies"
+
+msgid "Select a website to add a profile page..."
+msgstr "Kies 'n webwerf om 'n profielbladsy by te voeg..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Kies tot 3 rekords om as duplikaat te merk:"
+
+msgid "Send email"
+msgstr "Stuur e-pos"
+
+msgid "Sex"
+msgstr "Geslag"
+
+msgid "Show Map"
+msgstr "Wys kaart"
+
+msgid "Show sensitive information"
+msgstr "Wys sensitiewe inligting"
+
+msgid "Sign in"
+msgstr "Meld aan"
+
+msgid "Sign out"
+msgstr "Meld af"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Iemand het inligting gekry dat hierdie persoon nog leef"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Iemand het inligting gekry dat hierdie persoon dood is"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Iemand het aangegee dat hierdie persoon vermis word"
+
+msgid "Someone is seeking information about this person"
+msgstr "Iemand is op soek na inligting oor hierdie persoon"
+
+msgid "Source of this record"
+msgstr "Bron van hierdie rekord"
+
+msgid "Source of this record (required)"
+msgstr "Bron van hierdie rekord (vereis)"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status of this person"
+msgstr "Status van hierdie persoon"
+
+msgid "Street name"
+msgstr "Straatnaam"
+
+msgid "Street name only, no number"
+msgstr "Net straatnaam, nie nommer nie"
+
+msgid "Subscribe"
+msgstr "Teken in"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Teken in op opdaterings oor %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Teken in op opdaterings oor hierdie persoon"
+
+msgid "Switch to address"
+msgstr "Wissel na adres"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Wissel na duplikaatmerk-modus"
+
+msgid "Switch to lat/long"
+msgstr "Wissel na lengte/breedte"
+
+msgid "Switch to normal view mode"
+msgstr "Wissel na normaleaansig-modus"
+
+msgid "Tell us the status of this person"
+msgstr "Vertel ons die status van hierdie persoon"
+
+msgid "Terms of Service"
+msgstr "Diensbepalings"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Die voornaam en van word beide vereis. Gaan terug en probeer weer."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Die oorspronklike outeur se naam word vereis. Gaan terug en probeer weer."
+
+msgid "The author has disabled notes on this record."
+msgstr "Die skrywer het notas oor hierdie rekord gedeaktiveer."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Die skrywer het statusopdaterings oor hierdie rekord gedeaktiveer."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Die prent wat voorsien is, is te groot. Laai asseblief 'n kleiner een op."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Die rede waarom hierdie nota as strooipos gemerk word:"
+
+msgid "The record cannot be extended."
+msgstr "Die rekord kan nie verleng word nie."
+
+msgid "The record has been deleted."
+msgstr "Die rekord is uitgevee."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "Die rekord is verleng na %(expiry_date)s."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Die status wat jy gekies het, dui aan dat jy hierdie persoon is. As dit "
+"waar is, kies ook \"Ja\" om aan te dui dat jy hierdie persoon gekontak "
+"het."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Die token %(token)s was ongeldig"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Die token %(token)s was ongeldig."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Daar is %(num_results)s bestaande rekords met soortgelyke name."
+
+msgid "There are some existing records with similar names."
+msgstr "Daar is 'n aantal bestaande rekords met soortgelyke name."
+
+msgid "There is one existing record with a similar name."
+msgstr "Daar is een bestaande rekord met 'n soortgelyke naam."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Kon nie die prent verwerk nie. Probeer asseblief 'n ander prent."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Kon nie jou versoek verwerk nie. Jammer oor die ongerief. Ons "
+"administrateurs sal die bron van die probleem ondersoek, maar maak seker "
+"dat die formaat van jou versoek korrek is."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Hierdie apparate word beskikbaar gestel ingevolge die "
+"%(apache_link_html)sApache 2.0-lisensie%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Dit is 'n nuwe rekord hierdie."
+
+msgid "This link is invalid."
+msgstr "Hierdie skakel is ongeldig."
+
+msgid "This note has been marked as spam."
+msgstr "Hierdie nota is gemerk as strooipos."
+
+msgid "This note is inappropriate."
+msgstr "Hierdie nota is onvanpas."
+
+msgid "This note is incorrect or untrue."
+msgstr "Hierdie nota is verkeerd of onwaar."
+
+msgid "This note is spam."
+msgstr "Hierdie nota is strooipos."
+
+msgid "This person has been in contact with someone"
+msgstr "Hierdie persoon was met iemand in kontak"
+
+msgid "This person has posted a message"
+msgstr "Hierdie persoon het 'n boodskap geplaas"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Hierdie persoon se inskrywing bestaan nie of is uitgevee."
+
+msgid "This record has served its purpose."
+msgstr "Hierdie rekord het sy doel gedien."
+
+msgid "This record is a duplicate of"
+msgstr "Hierdie rekord is 'n duplikaat van"
+
+msgid "This record is copied from another source."
+msgstr "Hierdie rekord is gekopieer vanuit 'n ander bron."
+
+msgid "This record is inappropriate."
+msgstr "Hierdie rekord is onvanpas."
+
+msgid "This record is spam."
+msgstr "Hierdie rekord is strooipos."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Hierdie bewaarplek is tans in toetsmodus. Terwyl die toetsmodus in "
+"werking is, word rekords wat ouer as 6 uur is, uitgevee."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Om 'n foto by hierdie nota aan te heg, laai dit op of voer die URL in."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Om jou data uit te vee, gaan by Person Finder in vanaf jou rekenaar."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Om uit te teken, volg hierdie skakel"
+
+msgid "To view or add information, select a name below."
+msgstr "Om inligting te bekyk of by te voeg, kies 'n naam hieronder."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Tik 'n adres in of maak die kaart hieronder oop en dui die ligging aan "
+"deur op die kaart te klik."
+
+msgid "Type an address."
+msgstr "Tik 'n adres."
+
+msgid "Type the two words:"
+msgstr "Tik die twee woorde:"
+
+msgid "Type what you hear:"
+msgstr "Tik wat jy hoor:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL van oorspronklike rekord"
+
+msgid "Unspecified"
+msgstr "Ongespesifiseer"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "Laai op"
+
+msgid "Upload CSV files"
+msgstr "Laai CSV-lêers op"
+
+msgid "View the record"
+msgstr "Bekyk die rekord"
+
+msgid "We have nothing matching your search."
+msgstr "Ons het niks wat by jou soektog pas nie."
+
+msgid "What is this person's name?"
+msgstr "Wat is die persoon se naam?"
+
+msgid "When should this record disappear?"
+msgstr "Wanneer moet hierdie rekord verdwyn?"
+
+msgid "Where did this information come from?"
+msgstr "Waar kom hierdie inligting vandaan?"
+
+msgid "Where is this person from?"
+msgstr "Waar woon hierdie persoon?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Terwyl toetsmodus in werking is, word rekords wat ouer as 6 uur is, "
+"uitgevee, ongeag die vervaldatum."
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Ja, vra die rekordouteur om notas te deaktiveer"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ja, vra die rekordouteur om notas te aktiveer"
+
+msgid "Yes, delete the record"
+msgstr "Ja, vee die rekord uit"
+
+msgid "Yes, disable notes on this record."
+msgstr "Ja, deaktiveer notas oor hierdie rekord."
+
+msgid "Yes, extend the record"
+msgstr "Ja, verleng die rekord"
+
+msgid "Yes, restore this record"
+msgstr "Ja, laai hierdie rekord terug"
+
+msgid "Yes, these are the same person"
+msgstr "Ja, dit is dieselfde persoon"
+
+msgid "Yes, update the note"
+msgstr "Ja, dateer die nota op"
+
+msgid "You are already subscribed. "
+msgstr "Jy is reeds ingeteken. "
+
+msgid "You are already unsubscribed."
+msgstr "Jy is reeds uitgeteken."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Jy is tans aangemeld as %(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Jy is nie tans aangemeld nie."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Jy kan %(begin_tag)sdie rekord bekyk%(end_tag)s voordat jy dit uitvee."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Jy kan die volle rekord bekyk by %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Jy het suksesvol ingeteken."
+
+msgid "You have successfully unsubscribed."
+msgstr "Jy het suksesvol uitgeteken."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Jy kry hierdie kennisgewing omdat jy ingeteken is op opdaterings oor die "
+"volgende persoon:\n"
+
+msgid "Your e-mail address"
+msgstr "Jou e-posadres"
+
+msgid "Your e-mail address:"
+msgstr "Jou e-posadres:"
+
+msgid "Your email"
+msgstr "Jou e-pos"
+
+msgid "Your name"
+msgstr "Jou naam"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Jou naam word vereis in die \"Meer oor jou\"-afdeling. Gaan terug en "
+"probeer weer."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "Jou naam word vereis in die \"Bron\"-afdeling. Gaan terug en probeer weer."
+
+msgid "Your phone number"
+msgstr "Jou foonnommer"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Jou versoek is suksesvol verwerk. Kontroleer jou inkassie en bevestig dat"
+" jy jou nota wil plaas deur die ingebedde URL te volg."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Person Finder] Bevestig jou nota oor \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] Uitvee-kennisgewing vir \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Deaktiveer notas oor \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Aktiveer notas oor \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Person Finder] Kennisgewing oor notas-aktivering vir \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Notas is nou gedeaktiveer vir \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] Notas is nou geaktiveer vir \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] Kennisgewing oor rekordherstel vir \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] Statusopdatering vir %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Person Finder] Jy is ingeteken op statusopdaterings vir %(full_name)s"
+
+msgid "at"
+msgstr "by"
+
+msgid "female"
+msgstr "vroulik"
+
+msgid "in test mode"
+msgstr "in toetsmodus"
+
+msgid "male"
+msgstr "manlik"
+
+msgid "on"
+msgstr "oor"
+
+msgid "other"
+msgstr "ander"
+

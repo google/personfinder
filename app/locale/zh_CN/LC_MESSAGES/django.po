@@ -34,9 +34,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  "
-"为了确保只有在记录创建者允许的情况下才能禁止或允许发表注释，我们会向记录创建者发送确认电子邮件。如果您是创建者，请在点击下面的按钮后查看电子邮件。"
-"\n"
+"  为了确保只有在获得记录创建者许可的情况下才能停用或启用记录的注释功能，我们会向记录创建者发送确认邮件。\n"
+"  如果您是创建者，点击下方的按钮即可查看相关电子邮件。\n"
 "\n"
 "  "
 
@@ -58,12 +57,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"尊敬的 "
-"%(author_name)s，有位用户请求您允许对“%(full_name)s”的记录发表注释。系统记录的电子邮件地址显示，您是此记录的创建者。要允许对此记录发表注释，请在"
-" 3 天内点击以下链接：\n"
+"尊敬的%(author_name)s：\n"
+"\n"
+"您好！有位用户请求您启用“%(full_name)s”这条记录的注释功能。\n"
+"\n"
+"这条记录的创建者登记的是您的电子邮件地址，因此若要启用注释功能，请在 3 天内点击以下链接：\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -84,9 +84,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"尊敬的 "
-"%(author_name)s，有位用户请求您禁止对“%(full_name)s”的记录发表注释。系统记录的电子邮件地址显示，您是此记录的创建者。要禁止对此记录发表注释，请在"
-" 3 天内点击以下链接：\n"
+"尊敬的%(author_name)s：\n"
+"\n"
+"您好！有位用户请求您停用“%(full_name)s”这条记录的注释功能。\n"
+"\n"
+"这条记录的创建者登记的是您的电子邮件地址，因此若要停用注释功能，请在 3 天内点击以下链接：\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -104,7 +106,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"尊敬的 %(author_name)s，您刚刚为“%(full_name)s”的记录输入了一条注释。要发布您的注释，请在 3 天内点击以下链接：\n"
+"尊敬的%(author_name)s：\n"
+"您好！您刚刚为“%(full_name)s”这条记录输入了一条注释。\n"
+"若要发表您的注释，请在 3 天内点击以下链接：\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -116,12 +120,18 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    警告：此记录将在 %(expiration_days)s 天内到期。\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    警告：此记录将在 1 天内到期。\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -130,7 +140,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      确定要删除关于“%(full_name)s”的记录吗？\n"
+"      确定要删除“%(full_name)s”这条记录吗？\n"
 "    "
 
 #, python-format
@@ -140,7 +150,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      您确定要禁止对“%(full_name)s”发表注释吗？\n"
+"      确定要停用“%(full_name)s”的注释功能吗？\n"
 "    "
 
 #, python-format
@@ -151,7 +161,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      您确定要禁止对“%(full_name)s”的记录发表注释吗？\n"
+"      确定要停用“%(full_name)s”这条记录的注释功能吗？\n"
 "    "
 
 #, python-format
@@ -161,7 +171,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      您确定要允许对“%(full_name)s”发表注释吗？\n"
+"      确定要启用“%(full_name)s”的注释功能吗？\n"
 "    "
 
 #, python-format
@@ -172,7 +182,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      您确定要延长“%(full_name)s”的记录的有效期吗？\n"
+"      确定要延长“%(full_name)s”这条记录的有效期吗？\n"
 "    "
 
 msgid ""
@@ -191,8 +201,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      如果删除，\n"
-"      以后就无法再从此网站上搜索或查看该记录。\n"
+"      如果确定要删除，那么您以后将无法在此网站上搜到或看到这条记录。\n"
 "    "
 
 #, python-format
@@ -204,6 +213,11 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      如果要永久删除这条记录，请与原始源记录的创建者联系。\n"
+"      您可以在以下位置查看原始源记录：\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s。\n"
+"    "
 
 #, python-format
 msgid ""
@@ -215,6 +229,10 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      您输入的网址不像是有效的 %(website)s 个人资料网址。\n"
+"      请访问此人在 %(website)s 上的个人资料页面，然后将该网页的网址复制并粘贴到此处。\n"
+"      "
 
 msgid ""
 "\n"
@@ -225,6 +243,10 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      此记录是其他来源提供的记录副本。\n"
+"      您可以删除这里的记录，但请注意，我们以后可能会从原始来源收到其他副本。\n"
+"    "
 
 msgid ""
 "\n"
@@ -237,9 +259,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    "
-"为了确保只有在记录创建者允许的情况下才能禁止或允许发表注释，我们会向记录创建者发送确认电子邮件。如果您是创建者，请在点击下方的按钮后查看电子邮件。"
-"\n"
+"    为了确保只有在获得记录创建者许可的情况下才能停用或启用注释功能，我们会向记录创建者发送确认邮件。\n"
+"    如果您是创建者，点击下方的按钮即可查看相关电子邮件。\n"
 "  "
 
 msgid ""
@@ -250,7 +271,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  该记录仍会显示在此网站上，但任何人都无法继续发布对该记录的注释了。\n"
+"  该记录仍会显示在此网站上，但任何人都无法对该记录发布进一步注释。\n"
 "  "
 
 msgid ""
@@ -274,11 +295,9 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"某用户已在以下位置删除了关于“%(full_name)s”的记录：\n"
-"%(site_url)s。\n"
+"有位用户删除了位于 %(site_url)s 的“%(full_name)s”这条记录。\n"
 "\n"
-"您之所以收到本删除通知，是因为系统已将您的电子邮件地址\n"
-"记录为此记录的注释者。\n"
+"您之所以收到本删除通知，是因为系统记录的电子邮件地址显示，您是此记录的注释者。\n"
 
 #, python-format
 msgid ""
@@ -290,8 +309,9 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"某位用户在以下位置删除了“%(full_name)s”的记录： "
-"%(site_url)s。您之所以收到本删除通知，是因为系统已将您的电子邮件地址记录为此记录的创建者。\n"
+"有位用户删除了位于 %(site_url)s 的“%(full_name)s”这条记录。\n"
+"\n"
+"您之所以收到本删除通知，是因为系统记录的电子邮件地址显示，您是此记录的创建者。\n"
 
 #, python-format
 msgid ""
@@ -300,7 +320,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"再过  %(days_until_deletion)s  天，系统就会永久删除该记录。\n"
+"系统将在 %(days_until_deletion)s 天后永久删除该记录。\n"
 
 #, python-format
 msgid ""
@@ -312,7 +332,7 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"请注意：如果您认为该记录遭到了误删，请在接下来的  %(days_until_deletion)s  天内点击以下网址恢复该记录：\n"
+"请注意：如果您认为此记录是被误删的，可以在接下来的 %(days_until_deletion)s 天内点击以下网址来恢复此记录：\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -329,7 +349,7 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"系统现已禁止对“%(full_name)s”的记录发表注释。要查看该记录，请点击以下链接：\n"
+"系统现已停用“%(full_name)s”这条记录的注释功能。要查看该记录，请点击以下链接：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -348,11 +368,11 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"系统现已允许对“%(full_name)s”的记录发表注释。要查看该记录，请点击以下链接：\n"
+"“%(full_name)s”这条记录目前已启用注释功能。要查看该记录，请点击以下链接：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"您之所以收到本通知，是因为您的电子邮件地址与此人的记录或此寻人记录的注释相关联。\n"
+"您之所以收到本通知，是因为您的电子邮件地址与此寻人记录或此寻人记录的注释相关联。\n"
 
 #, python-format
 msgid ""
@@ -367,14 +387,11 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"关于“%(full_name)s”的记录（之前已删除）的作者\n"
-"已还原该记录。要查看该记录，\n"
-"请点击以下链接：\n"
+"“%(full_name)s”这条记录（之前被删除）的创建者已恢复该记录。要查看该记录，请点击以下链接：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"您之所以收到本通知，是因为我们已将您的电子邮件地址与\n"
-"此人的记录或其记录注释关联起来。\n"
+"您之所以收到本通知，是因为您的电子邮件地址与此寻人记录或此寻人记录的注释相关联。\n"
 
 #, python-format
 msgid ""
@@ -382,7 +399,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"“%(full_name)s”的记录有一条新注释。\n"
+"“%(full_name)s”这条记录有条新的注释。\n"
 
 #, python-format
 msgid ""
@@ -396,11 +413,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"您已订阅了“%(full_name)s”的注释。您可以访问以下网址查看此记录：\n"
+"您已订阅有关“%(full_name)s”的注释。\n"
+"\n"
+"您可以点击以下网址查看此记录：\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"要取消订阅，请点击以下链接： %(unsubscribe_link)s\n"
+"要取消订阅，请点击以下链接：%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（点击可显示）"
@@ -409,13 +428,13 @@ msgid "(unknown)"
 msgstr "（未知）"
 
 msgid "A message for this person or others seeking this person"
-msgstr "给这个人及其寻找者的留言"
+msgstr "给此人或其他打听此人下落的人员的留言"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "从现在起大约 1 个月（30 天）"
@@ -433,7 +452,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "从现在起大约 6 个月（180 天）"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "关于 Google Person Finder"
 
 msgid "About you (required)"
 msgstr "您的相关信息（必填）"
@@ -448,10 +467,10 @@ msgid "Alternate family names"
 msgstr "姓氏别称"
 
 msgid "Alternate given names"
-msgstr "别名"
+msgstr "名字别称"
 
 msgid "Alternate names"
-msgstr "别名"
+msgstr "姓名别称"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "确定此注释不是垃圾内容吗？"
@@ -460,22 +479,22 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "确定要将此注释标记为垃圾内容吗？"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "确定要还原这条已删除的记录吗？"
+msgstr "确定要恢复这条已删除的记录吗？"
 
 msgid "Atom feed of updates about this person"
 msgstr "关于此人最新动态的 Atom Feed"
 
 msgid "Author's e-mail address"
-msgstr "提供者的电子邮件地址"
+msgstr "创建者的电子邮件地址"
 
 msgid "Author's name"
-msgstr "提供者姓名"
+msgstr "创建者姓名"
 
 msgid "Author's phone number"
-msgstr "提供者的电话号码"
+msgstr "创建者的电话号码"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "授权密钥"
 
 msgid "Back to results list"
 msgstr "返回结果列表"
@@ -484,11 +503,11 @@ msgid "Back to start"
 msgstr "返回首页"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV 文件"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "找不到与以下 ID 对应的注释： %(id)s"
+msgstr "找不到 id 为 %(id)s"
 
 msgid "Cancel"
 msgstr "取消"
@@ -503,32 +522,32 @@ msgid "Close window"
 msgstr "关闭窗口"
 
 msgid "Compare these records"
-msgstr "比较这些记录"
+msgstr "比较以下记录"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "复制并粘贴下面的 HTML 代码，即可将此工具放到您的网站上"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "创建新记录"
 
 msgid "Create a new record for"
-msgstr "为此人创建一条新记录："
+msgstr "为此人创建新记录"
 
 msgid "Create a new record for a missing person"
-msgstr "为失踪人员创建一条新记录"
+msgstr "为失踪人员创建新记录"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "危机事件"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "当前正在跟踪大约 %(num_people)s 条记录。"
+msgstr "当前正在跟踪约 %(num_people)s 条记录。"
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "请不要使用未来的日期，请返回并重试。"
+msgstr "不能使用未来的日期，请返回并重试。"
 
 msgid "Date of birth"
 msgstr "出生日期"
@@ -537,25 +556,25 @@ msgid "Delete this record"
 msgstr "删除此记录"
 
 msgid "Describe how to identify this person."
-msgstr "请描述这个人的一些基本特征。"
+msgstr "请描述此人的外貌与个人特征。"
 
 msgid "Describe the physical characteristics of this person."
 msgstr "请描述此人的体貌特征。"
 
 msgid "Description"
-msgstr "说明"
+msgstr "描述"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "桌面版"
 
 msgid "Developers"
-msgstr "开发人员"
+msgstr "开发者"
 
 msgid "Disable notes on this record"
-msgstr "禁止对此记录发表注释"
+msgstr "停用此记录的注释功能"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "此人在其他网站上有个人资料页面吗？"
 
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下载声音"
@@ -567,16 +586,16 @@ msgid "E-mail address"
 msgstr "电子邮件地址"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "嵌入此应用程序"
+msgstr "嵌入应用"
 
 msgid "Enable notes on this record"
-msgstr "允许对此记录发表注释"
+msgstr "启用此记录的注释功能"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "所有日期都必须采用 yyyy-mm-ddThh:mm:ssZ (UTC) 格式"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "输入格式为 YYYY-MM-DD"
@@ -585,10 +604,10 @@ msgid "Enter the person's given and family names."
 msgstr "输入此人的名字和姓氏。"
 
 msgid "Enter the person's name or parts of the name."
-msgstr "输入此人的姓名（全部或部分）。"
+msgstr "输入此人的全名或部分姓名。"
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "请输入此人的姓名、姓名简称或手机号码。"
+msgstr "输入此人的全名、部分姓名或手机号码。"
 
 msgid "Enter the person's name."
 msgstr "输入此人的姓名。"
@@ -601,49 +620,49 @@ msgstr "此记录的失效日期"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "将有效期延长 %(extension_days)s 天"
 
 msgid "Family name"
-msgstr "姓"
+msgstr "姓氏"
 
 msgid "Feed of updates about this person"
 msgstr "关于此人最新动态的 Feed"
 
 msgid "Follow this link to create a new record"
-msgstr "按照此链接中的说明创建一条新记录"
+msgstr "点击此链接创建新记录"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr "如果不是手机，请使用日本电信电话株式会社 (NTT) 提供的 171 服务。"
+msgstr "如果是手机以外的电话，请使用日本电信电话株式会社 (NTT) 提供的 171 服务。"
 
 msgid "Full name"
-msgstr ""
+msgstr "全名"
 
 msgid "Get a new challenge"
-msgstr "收到一个新邀请"
+msgstr "获取新的验证码"
 
 msgid "Get a visual challenge"
-msgstr "收到一个视频邀请"
+msgstr "获取图片验证码"
 
 msgid "Get an audio challenge"
-msgstr "收到一个音频邀请"
+msgstr "获取音频验证码"
 
 msgid "Given name"
-msgstr "名"
+msgstr "名字"
 
 msgid "Google Person Finder"
-msgstr "Google 网上寻人"
+msgstr "Google Person Finder"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "灾难过后，您亲自与此人交谈过吗？（必填）"
+msgstr "灾难过后，您本人是否曾与此人交谈过？（必填）"
 
 msgid "Help"
 msgstr "帮助"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr ""
+msgstr "此处提供了可供您修改和上传的 %(begin_tag)sCSV 示例文件%(end_tag)s"
 
 msgid "Hide Map"
 msgstr "隐藏地图"
@@ -664,22 +683,22 @@ msgid "How can this person be reached now?"
 msgstr "现在如何与这个人取得联系？"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "关注这个人的其他人如何与您取得联系"
+msgstr "同样关注这个人的人员该如何与您取得联系"
 
 msgid "I am seeking information"
 msgstr "我正在搜集信息"
 
 msgid "I am this person"
-msgstr "这个人就是我"
+msgstr "正是我本人"
 
 msgid "I do not want any more updates on this record."
-msgstr "我不希望再对此记录进行任何更新了。"
+msgstr "我不想再对此记录进行任何更新了。"
 
 msgid "I do not want my information online anymore."
 msgstr "我想从网上撤下自己的信息。"
 
 msgid "I have information about someone"
-msgstr "我知道某人的一些情况"
+msgstr "我有某人的消息"
 
 msgid "I have reason to think this person is missing"
 msgstr "我有理由认定这个人失踪了"
@@ -703,7 +722,7 @@ msgid "I'm looking for someone"
 msgstr "我正在寻人"
 
 msgid "Identify who you are looking for"
-msgstr "说明您正在寻找谁"
+msgstr "说明您正在寻找的人是谁"
 
 msgid "Identify who you have information about"
 msgstr "说明您有关于谁的消息"
@@ -714,52 +733,52 @@ msgstr "身份识别信息"
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
-msgstr "如果这些记录与您所要报告情况的人员都不相符，可以点击下面，创建一条新记录。"
+msgstr "如果这些记录与您要寻找的人员不符，您可以点击下面，创建新记录。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，以确认您要禁止对此记录发表注释。如果您不是，请等待记录创建者确认您的请求。"
+msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，确认要停用此记录的注释功能。如果您不是，请等待记录创建者确认您的请求。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，以确认您要允许对此记录发表注释。如果您不是，请等待记录创建者确认您的请求。"
+msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，确认要启用此记录的注释功能。如果您不是，请等待记录创建者确认您的请求。"
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "如果您有这个人的照片，请上传或输入其网址。"
+msgstr "如果您有这个人的照片，请上传该照片或输入照片网址。"
 
 msgid "Incorrect.  Try again."
-msgstr "不正确。请重试。"
+msgstr "不正确，请重试。"
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "电子邮件地址无效。请重试。"
+msgstr "电子邮件地址无效，请重试。"
 
 msgid "Language selection"
-msgstr ""
+msgstr "语言选择"
 
 msgid "Last known location"
-msgstr "已知这个人最后出现的位置"
+msgstr "这个人最后出现的地点"
 
 msgid "Link"
 msgstr "链接"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "个人资料页链接"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "将记录标记为重复"
+msgstr "将记录标为重复"
 
 msgid "Message (required)"
-msgstr "消息（必填）"
+msgstr "留言（必填）"
 
 msgid "Message is required. Please go back and try again."
-msgstr "您需要留言，返回并重试。"
+msgstr "必须填写留言，请返回并重试。"
 
 msgid "Missing person's current contact information"
 msgstr "失踪人员的当前联系信息"
@@ -774,12 +793,12 @@ msgstr "失踪人员的当前电话号码"
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
-msgstr "现在，开发人员可在%(developers_link_html)s此处%(link_end_html)s找到更多信息。"
+msgstr "点击%(developers_link_html)s此处%(link_end_html)s即可了解有关开发者的详细信息。"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
-msgstr "有 100 个以上的结果，目前只显示前 100 个。请输入尽可能完整的姓名"
+msgstr "系统找到 100 多条结果，目前只显示了前 100 条。请输入尽可能完整的姓名"
 
 msgid "Name"
 msgstr "姓名"
@@ -788,37 +807,37 @@ msgid "Name (required)"
 msgstr "姓名（必填）"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "姓名必须填写。请返回并重试。"
+msgstr "必须填写姓名，请返回并重试。"
 
 msgid "Neighborhood"
 msgstr "社区"
 
 msgid "No"
-msgstr "没有"
+msgstr "无"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "没有与以下 ID 对应的记录的创建者电子邮件地址： %(id)s。"
+msgstr "没有与记录 %(id)s 对应的创建者电子邮件地址。"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "未找到注册运营商留言板服务的任何相关留言。"
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "没有与以下 ID 对应的注释： %(id_str)s。"
+msgstr "没有 ID 为 %(id_str)s 的注释。"
 
 msgid "No notes have been posted"
-msgstr "未发布任何注释"
+msgstr "没有发布任何注释"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "没有与以下 ID 对应的人： %(id_str)s。"
+msgstr "没有 ID 为 %(id_str)s 的个人。"
 
 msgid "No results found for"
-msgstr "未找到有关此姓名的任何结果："
+msgstr "未找到有关此人的任何结果"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "未经授权，无法发布状态为“believed_dead”的注释。"
@@ -827,7 +846,7 @@ msgid "Not spam"
 msgstr "不是垃圾内容"
 
 msgid "Note author"
-msgstr "注释创建者"
+msgstr "注释者"
 
 msgid "Note text"
 msgstr "注释文字"
@@ -848,7 +867,7 @@ msgid "Original URL"
 msgstr "原始网址"
 
 msgid "Original author's name"
-msgstr "原提供者姓名"
+msgstr "原始创建者姓名"
 
 msgid "Original posting date"
 msgstr "原始发布日期"
@@ -865,16 +884,17 @@ msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
-msgstr "请注意：所输入的信息将全部对公众开放，意味着任何人都可查看或使用它们。Google 不会审查或验证这些数据的准确性。"
+msgstr "请注意：所输入的数据将全部对公众开放，而且可供任何人查看或使用。Google 不会审查或验证这些数据的准确性。"
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
-msgstr ""
+msgstr "请注意：在 Google 网上寻人的有效网站上输入的所有数据都会对公众开放，而且可供任何人使用。Google 不会审查或验证这些数据的准确性。"
 
 msgid "Person Finder"
-msgstr "网上寻人"
+msgstr "Person Finder"
 
 msgid "Phone"
 msgstr "电话"
@@ -891,7 +911,7 @@ msgid ""
 msgstr "无法识别所上传照片的格式，请返回并重试。"
 
 msgid "Physical characteristics"
-msgstr "身体特征"
+msgstr "体貌特征"
 
 msgid "Play the sound again"
 msgstr "重新播放声音"
@@ -899,7 +919,7 @@ msgstr "重新播放声音"
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
-msgstr "请确认您在发生地震后已与相关人员取得联系，否则请更改“这个人的状况”字段中的信息。"
+msgstr "请确认地震后您曾与此人联系过，或更改“这个人的状况”字段中的信息。"
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "请核实此记录是否与您想要报告的人员情况相符。"
@@ -935,13 +955,13 @@ msgid "Proceed"
 msgstr "继续"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "个人资料页面"
 
 msgid "Profile page"
-msgstr ""
+msgstr "个人资料页面"
 
 msgid "Provide information"
-msgstr ""
+msgstr "提供信息"
 
 msgid "Provide information about this person"
 msgstr "提供关于此人的信息"
@@ -956,10 +976,10 @@ msgid "Reason for deletion:"
 msgstr "删除的原因："
 
 msgid "Reason for disabling notes:"
-msgstr "禁止发布注释的原因："
+msgstr "停用注释功能的原因："
 
 msgid "Records Similar to"
-msgstr "有关此姓名的类似记录："
+msgstr "与此人相似的记录"
 
 msgid "Records selected"
 msgstr "选定记录"
@@ -969,14 +989,14 @@ msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "姓名和地址与“%(query)s”匹配的记录"
 
 msgid "Remove"
-msgstr ""
+msgstr "删除"
 
 msgid "Report spam"
 msgstr "举报垃圾内容"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "返回“%(full_name)s”的记录。"
+msgstr "返回到“%(full_name)s”的记录。"
 
 msgid "Reveal note"
 msgstr "显示注释"
@@ -985,20 +1005,20 @@ msgid "Save this record"
 msgstr "保存此记录"
 
 msgid "Search Results for"
-msgstr "有关此姓名的搜索结果"
+msgstr "有关此人的搜索结果"
 
 msgid "Search for this person"
 msgstr "搜索此人"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "访问 %(begin_tag)sWiki%(end_tag)s 了解更多说明"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "选择要添加个人资料页面的网站…"
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "最多选择 3 条记录，将其标记为重复："
+msgstr "选择记录（最多 3 条）并将其标为重复："
 
 msgid "Send email"
 msgstr "发送电子邮件"
@@ -1013,10 +1033,10 @@ msgid "Show sensitive information"
 msgstr "显示敏感信息"
 
 msgid "Sign in"
-msgstr ""
+msgstr "登录"
 
 msgid "Sign out"
-msgstr ""
+msgstr "退出"
 
 msgid "Someone has received information that this person is alive"
 msgstr "有人已收到这个人幸存的消息"
@@ -1059,53 +1079,42 @@ msgid "Subscribe to updates about this person"
 msgstr "订阅关于此人的最新动态"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "切换至地址"
 
 msgid "Switch to duplicate marking mode"
 msgstr "切换至重复标记模式"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "切换至纬度/经度"
 
 msgid "Switch to normal view mode"
 msgstr "切换至普通视图模式"
 
 msgid "Tell us the status of this person"
-msgstr "请告诉我们这个人的状况"
+msgstr "告诉我们这个人的状况"
 
 msgid "Terms of Service"
 msgstr "服务条款"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "姓氏和名字都必须填写，请返回并重试。"
+msgstr "必须填写姓氏和名字，请返回并重试。"
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "您需要输入信息原提供者的姓名，请返回并重试。"
+msgstr "必须输入原始创建者的姓名，请返回并重试。"
 
 msgid "The author has disabled notes on this record."
-msgstr "创建者已禁止对此记录发布注释。"
+msgstr "创建者已停用此记录的注释功能。"
 
 msgid "The author has disabled status updates on this record."
-msgstr "创建者已禁止更新此记录的状态。"
+msgstr "创建者已停用此记录的状况更新功能。"
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "所提供的图片太大，请上传一张较小的图片。"
+msgstr "所提供的图片太大，请上传小一点的图片。"
 
 msgid "The reason this note is being marked as spam:"
 msgstr "将此注释标记为垃圾内容的原因："
@@ -1118,13 +1127,13 @@ msgstr "此记录已删除。"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "该记录的有效期已延长到  %(expiry_date)s。"
+msgstr "该记录的有效期已延长到 %(expiry_date)s。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
-msgstr "您选择的状态表明您正是此人。如果确实如此，请同时选择“是”以表明您已与此人联系过。"
+msgstr "您选择的状况表明这正是您本人。如果情况属实，请同时选择“是”表明您已与此人联系。"
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1136,16 +1145,16 @@ msgstr "令牌 %(token)s 无效。"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "有 %(num_results)s 条具有类似姓名的记录。"
+msgstr "现有 %(num_results)s 条姓名类似的记录。"
 
 msgid "There are some existing records with similar names."
-msgstr "有一些具有类似姓名的记录。"
+msgstr "现有若干条姓名类似的记录。"
 
 msgid "There is one existing record with a similar name."
-msgstr "有一条具有类似姓名的记录。"
+msgstr "现有 1 条姓名类似的记录。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "处理图片时出现问题，请换用其他图片。"
+msgstr "处理图片时出现问题，请改用其他图片。"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1157,7 +1166,7 @@ msgstr "系统在处理您的请求时出错。对此带来的不便，我们深
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
-msgstr "这些小工具按 %(apache_link_html)sApache 2.0 许可协议%(link_end_html)s提供。"
+msgstr "这些小工具按 %(apache_link_html)sApache 2.0 许可%(link_end_html)s提供。"
 
 msgid "This is a new record."
 msgstr "这是一条新记录。"
@@ -1166,7 +1175,7 @@ msgid "This link is invalid."
 msgstr "此链接无效。"
 
 msgid "This note has been marked as spam."
-msgstr "此注释已标记为垃圾内容。"
+msgstr "此注释已被标为垃圾内容。"
 
 msgid "This note is inappropriate."
 msgstr "此注释的内容不当。"
@@ -1175,19 +1184,19 @@ msgid "This note is incorrect or untrue."
 msgstr "此注释不正确或不属实。"
 
 msgid "This note is spam."
-msgstr "此注释属于垃圾留言。"
+msgstr "此注释属于垃圾内容。"
 
 msgid "This person has been in contact with someone"
 msgstr "此人已与某人取得了联系"
 
 msgid "This person has posted a message"
-msgstr "这个人已发布一条消息"
+msgstr "此人已发布一条消息"
 
 msgid "This person's entry does not exist or has been deleted."
 msgstr "此人的记录条目不存在或已删除。"
 
 msgid "This record has served its purpose."
-msgstr "此记录已完成其使命。"
+msgstr "此记录已发挥其作用。"
 
 msgid "This record is a duplicate of"
 msgstr "此记录与以下记录重复"
@@ -1204,33 +1213,33 @@ msgstr "此记录属于垃圾内容。"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr ""
+msgstr "此存储区目前正处于测试模式。在测试模式下，系统会删除超过 6 个小时的记录。"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "要在此注释中附上照片，请上传该照片或输入照片网址。"
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "要删除您的数据，请通过桌面设备访问 Google Person Finder。"
 
 msgid "To unsubscribe, follow this link"
 msgstr "要取消订阅，请点击此链接"
 
 msgid "To view or add information, select a name below."
-msgstr "要查看或添加信息，请选择下面的姓名："
+msgstr "要查看或添加信息，请在下方选择姓名。"
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr ""
+msgstr "输入地址，或打开下方的地图并点击地图上的位置以指明地点。"
 
 msgid "Type an address."
-msgstr ""
+msgstr "输入地址。"
 
 msgid "Type the two words:"
-msgstr "请键入这两个词："
+msgstr "输入您看到的两个字词："
 
 msgid "Type what you hear:"
-msgstr "请键入您听到的内容："
+msgstr "输入您听到的内容："
 
 msgid "URL"
 msgstr "网址"
@@ -1242,13 +1251,13 @@ msgid "Unspecified"
 msgstr "未指定"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "上传"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "上传 CSV 文件"
 
 msgid "View the record"
 msgstr "查看记录"
@@ -1260,39 +1269,39 @@ msgid "What is this person's name?"
 msgstr "这个人叫什么名字？"
 
 msgid "When should this record disappear?"
-msgstr "此记录应在何时消失？"
+msgstr "此记录应在何时删除？"
 
 msgid "Where did this information come from?"
-msgstr "此信息来自何处？"
+msgstr "此信息的出处是哪里？"
 
 msgid "Where is this person from?"
-msgstr "这个人来自哪个国家/地区？"
+msgstr "这个人来自哪里？"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr ""
+msgstr "在测试模式下，系统会删除超过 6 个小时的记录（不考虑其过期日期）。"
 
 msgid "Yes"
-msgstr "是的"
+msgstr "是"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "是的，请求记录创建者禁止发布注释"
+msgstr "是，请求记录创建者停用注释功能"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "是的，请求记录创建者允许发表注释"
+msgstr "是，请求记录创建者启用注释功能"
 
 msgid "Yes, delete the record"
 msgstr "是，删除此记录"
 
 msgid "Yes, disable notes on this record."
-msgstr "是的，禁止对此记录发表注释。"
+msgstr "是，停用此记录的注释功能。"
 
 msgid "Yes, extend the record"
 msgstr "是，延长该记录的有效期"
 
 msgid "Yes, restore this record"
-msgstr "是，还原此记录"
+msgstr "是，恢复此记录"
 
 msgid "Yes, these are the same person"
 msgstr "是的，他们是同一个人"
@@ -1310,22 +1319,22 @@ msgstr "您已取消订阅。"
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "您当前已经以 %(begin_span_tag)s%(email)s%(end_span_tag)s 身份登录。"
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "您当前尚未登录。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "您可以在删除前%(begin_tag)s查看该记录%(end_tag)s。"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "您可以在 %(view_url)s 上查看完整的记录"
+msgstr "您可以在 %(view_url)s 上查看完整记录"
 
 msgid "You have successfully subscribed."
 msgstr "您已成功订阅。"
@@ -1336,7 +1345,7 @@ msgstr "您已成功取消订阅。"
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr "您收到本通知是因为您订阅了关于以下人员的最新动态：\n"
+msgstr "您之所以收到本通知，是因为您订阅了关于以下人员的最新动态：\n"
 
 msgid "Your e-mail address"
 msgstr "您的电子邮件地址"
@@ -1353,12 +1362,12 @@ msgstr "您的姓名"
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr "您需要在“您的相关信息”部分中输入自己的姓名。请返回并重试。"
+msgstr "必须在“您的相关信息”部分中输入您的姓名，请返回并重试。"
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "您需要在“来源”部分中输入您的姓名，请返回并重试。"
+msgstr "必须在“来源”部分中输入您的姓名，请返回并重试。"
 
 msgid "Your phone number"
 msgstr "您的电话号码"
@@ -1366,62 +1375,62 @@ msgstr "您的电话号码"
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
-msgstr "我们已成功处理了您的请求。请检查您的收件箱，并点击相关邮件中包含的网址，以确认您要发布注释。"
+msgstr "您的请求已成功处理。请检查您的收件箱，并点击相关邮件中包含的网址，以确认发布您的注释。"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[网上寻人] 确认对“%(full_name)s”发表注释"
+msgstr "[网上寻人] 确认您关于“%(full_name)s”的注释"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[网上寻人]关于“%(full_name)s”的删除通知"
+msgstr "[网上寻人]“%(full_name)s”的删除通知"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[网上寻人] 停用“%(full_name)s”的注释功能？"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[网上寻人] 启用“%(full_name)s”的注释功能？"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[网上寻人] 为“%(full_name)s”启用注释通知"
+msgstr "[网上寻人] 关于允许对“%(full_name)s”发表注释的通知"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[网上寻人] 现已禁止对“%(full_name)s”发表注释"
+msgstr "[网上寻人] 现已停用“%(full_name)s”的注释功能"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[网上寻人] 现已允许对“%(full_name)s”发表注释"
+msgstr "[网上寻人] 现已启用“%(full_name)s”的注释功能"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[网上寻人]关于“%(full_name)s”的记录还原通知"
+msgstr "[网上寻人]“%(full_name)s”记录恢复通知"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[网站寻人]关于“%(full_name)s”的最新动态"
+msgstr "[网上寻人] 关于“%(full_name)s”的状况更新"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[网上寻人] 您已订阅关于“%(full_name)s”的最新动态"
+msgstr "[网上寻人] 您已订阅关于“%(full_name)s”的状况更新"
 
 msgid "at"
-msgstr "时间"
+msgstr "时间："
 
 msgid "female"
 msgstr "女"
 
 msgid "in test mode"
-msgstr ""
+msgstr "处于测试模式"
 
 msgid "male"
 msgstr "男"
 
 msgid "on"
-msgstr "日期"
+msgstr "日期："
 
 msgid "other"
 msgstr "其他"
