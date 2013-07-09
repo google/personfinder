@@ -1,0 +1,1488 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  ማስታወሻዎች የሚሰናከሉት ወይም የሚነቁት በጸሐፊው ፍቃድ ብቻ እንደሆነ ለማረጋገጥ\n"
+"  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
+"  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ውድ %(author_name)s፣\n"
+"\n"
+"አንድ ተጠቃሚ ማስታወሻዎችን ለ«%(full_name)s» መዝገብ ላይ እንዲነቃለት ጠይቋል።\n"
+"\n"
+"የኢሜይል አድራሻዎ የዚህ መዝገብ ጸሐፊ ተብሎ ተመዝግቧል።  ማስታወሻዎች በዚህ መዝገብ ላይ ለማንቃት ይህን አገናኝ "
+"በ3 ቀናት ውስጥ ይከተሉ፦\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ውድ %(author_name)s፣\n"
+"\n"
+"አንድ ተጠቃሚ ማስታወሻዎችን ለ«%(full_name)s» መዝገብ ላይ እንዲሰናከልለት ጠይቋል።\n"
+"\n"
+"የኢሜይል አድራሻዎ የዚህ መዝገብ ጸሐፊ ተብሎ ተመዝግቧል።  ማስታወሻዎች በዚህ መዝገብ ላይ ለማሰናከል ይህን አገናኝ"
+" በ3 ቀናት ውስጥ ይከተሉ፦\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ውድ %(author_name)s፣\n"
+"አሁን በ«%(full_name)s» መዝገብ ላይ አንድ ማሳታወሻ አስቀምጠዋል።\n"
+"ማስታወሻዎን ለማተም ይህን አገናኝ በ3 ቀናት ውስጥ ይከተሉት፦\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    ማስጠንቀቂያ፦ ይህ መዝገብ ከ%(expiration_days)s ባነሱ ቀናት ጊዜ ውስጥ "
+"ይቃጠላል።\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    ማስጠንቀቂያ፦ ይህ መዝገብ ከ1 ቀን በታች ባለ ጊዜ ውስጥ ይቃጠላል።\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት የ«%(full_name)s»ን መዝገብ መሰረዝ ይፈልጋሉ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት በ«%(full_name)s» ላይ ማስታወሻዎችን ማሰናከል ይፈልጋሉ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት በ%(full_name)s መዝገብ ላይ ያሉ ማስታወሻዎችን ማሰናከል ይፈልጋሉ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት በ«%(full_name)s» ላይ ማስታወሻዎችን ማንቃት ይፈልጋሉ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት የ«%(full_name)s»ን መዝገብ መቃጠያ ጊዜ ማራዘም ይፈልጋሉ?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      ማስታወሻዎን ያረጋግጡ\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      በስረዛው ከቀጠሉ ይህ መዝገብ ከአሁን\n"
+"      በኋላ በዚህ ጣቢያ ላይ ሊፈለግ ወይም ሊታይ የሚችል አይሆንም።\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      እስከመጨረሻው እንዲሰረዝ ከፈለጉ እባክዎ\n"
+"      የመጀመሪያውን ምንጭ ያግኙ።\n"
+"      የመጀመሪያውን መዝገብ በ%(begin_tag)s%(source_name)s%(end_tag)s\n"
+"      ላይ መመልከት ይችላሉ።\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      ያስገቡት ዩ አር ኤል ልክ የሆነ የ%(website)s መገለጫ ዩ አር ኤል አይመስልም።\n"
+"      እባክዎ በ%(website)s ላይ ወደዚህ ሰው መገለጫ ገጽ ይሂዱና ከዚያ ዩ አር ኤሉን ገልብጠው እዚህ ላይ"
+"\n"
+"      ይለጥፉት።\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      ይህ መዝገብ ከሌላ ምንጭ የመጣ የመዝገብ ቅጂ ነው።\n"
+"      መዝገቡን እዚህ መሰረዝ ይችላሉ፣\n"
+"      ነገር ግን ሌላ የእሱን ቅጂ ከምንጩ\n"
+"      ሰርስረን ማውጣት የምንችል መሆኑን እባክዎ ልብ ይበሉ።\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    ማስታወሻዎች የሚሰናከሉት ወይም የሚነቁት በጸሐፊው ፍቃድ ብቻ እንደሆነ ለማረጋገጥ\n"
+"  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
+"  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  መዝገቡ አሁንም በዚህ ጣቢያ ላይ የሚታይ ይሆናል፣ ነገር ግን ማንም ሰው በእሱ ላይ ተጨማሪ\n"
+"  ማስታወሻዎችን መለጠፍ አይችልም።\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  ማስታወሻዎን ለመለጠፍ እባክዎ የኢሜይል አድራሻዎን ከታች ያስገቡትና የሚደርሰዎትን\n"
+"  የማረጋገጫ አገናኝ ይከተሉ።\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"አንድ ተጠቃሚ በ%(site_url)s ላይ የ«%(full_name)s»ን መዝገብ \n"
+"ሰርዟል።\n"
+"\n"
+"የኢሜይል አድራሻዎ በዚህ መዝገብ ላይ ያለው የማስታወሻ ጸሐፊ ተብሎ\n"
+"ስለተመዘገበ ስለስረዛው እያሳውቅነዎት ነው።\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"አንድ ተጠቃሚ በ%(site_url)s ላይ የ«%(full_name)s»ን መዝገብ \n"
+"ሰርዟል።\n"
+"\n"
+"የኢሜይል አድራሻዎ የዚህ መዝገብ ጸሐፊ ተብሎ\n"
+"ስለተመዘገበ ስለስረዛው እያሳውቅነዎት ነው።\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"ከ%(days_until_deletion)s ቀናት በኋላ መዝገቡ እስከመጨረሻው ይሰረዛል።\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"ማስታወሻ፦ ይህ መዝገብ የተሰረዘው በስህተት ነው ብለው ካመኑ በሚቀጥሉ\n"
+"%(days_until_deletion)s ቀናት ላይ ይህን አገናኝ በመከተል ወደነበረበት ሊመልሱት ይችላሉ፦\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"አሁን በመዝገብ ላይ ላሉ ማስታወሻዎች ለ«%(full_name)s» ተሰናክለዋል። መዝገቡን ለማየት ይህን አገናኝ "
+"ይከተሉ፦\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"የኢሜይል አድራሻዎ ከዚህ ሰው መዝገብ  ወይም በመዝገቡ ላይ ካለ\n"
+"ማስታወሻ ጋር ስለተጎዳኘ እያሳወቅነዎት ነው።\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"አሁን በመዝገብ ላይ ላሉ ማስታወሻዎች ለ«%(full_name)s» ነቅተዋል። መዝገቡን ለማየት ይህን አገናኝ ይከተሉ፦"
+"\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"የኢሜይል አድራሻዎ ከዚህ ሰው መዝገብ  ወይም በመዝገቡ ላይ ካለ\n"
+"ማስታወሻ ጋር ስለተጎዳኘ እያሳወቅነዎት ነው።\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"የ«%(full_name)s» መዝገብ ጸሐፊ (ከዚህ በፊት የተሰረዘው ማለት ነው) መዝገቡን ወደነበረበት መልሶታል።\n"
+"መዝገቡን ለማየት ይህን አገናኝ ይከተሉ፦\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"የኢሜይል አድራሻዎ ከዚህ ሰው መዝገብ ወይም በመዝገቡ ላይ ካለ ማስታውሻ ጋር የተጎዳኘ ስለሆነ እያሳወቅነዎት ነው።\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"በ«%(full_name)s» መዝገብ ላይ አዲስ ማስታወሻ አለ።\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"በ«%(full_name)s» ላይ ላሉ ማስታወሻዎች በደንበኝነት ተመዝግበዋል።\n"
+"\n"
+"ይህን መዝገብ በሚከተለው ላይ ማየት ይችላሉ፦\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"ከደንበኝነት ምዝገባ ለመውጣት ይህን አገናኝ ይከተሉ፦ %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(እንዲታይ ጠቅ ያድርጉ)"
+
+msgid "(unknown)"
+msgstr "(ያልታወቀ)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "አንድ መልዕክት ለዚህ ሰው ወይም ይህን ሰው ለሚፈልጉ ሌሎች ሰዎች"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "ከአንድ ወር (30 ቀናት) ገደማ በኋላ"
+
+msgid "About 1 year (360 days) from now"
+msgstr "ከአንድ ዓመት (365 ቀናት) ገደማ በኋላ"
+
+msgid "About 2 months (60 days) from now"
+msgstr "ከሁለት ወር (60 ቀናት) ገደማ በኋላ"
+
+msgid "About 3 months (90 days) from now"
+msgstr "ከ3 ወር (90 ቀናት) ገደማ በኋላ"
+
+msgid "About 6 months (180 days) from now"
+msgstr "ከ6 ወር (180 ቀናት) ገደማ በኋላ"
+
+msgid "About Google Person Finder"
+msgstr "ስለ Google ሰው ማግኛ"
+
+msgid "About you (required)"
+msgstr "ስለእርስዎ (የሚያስፈልግ)"
+
+msgid "Administration"
+msgstr "አስተዳደር"
+
+msgid "Age"
+msgstr "እድሜ"
+
+msgid "Alternate family names"
+msgstr "ተለዋጭ የቤተሰብ ስሞች"
+
+msgid "Alternate given names"
+msgstr "ተለዋጭ የተሰጡ ስሞች"
+
+msgid "Alternate names"
+msgstr "ተለዋጭ ስሞች"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "እርግጠኛ ነዎት ይህ ማስታወሻ አይፈለጌ መልዕክት አይደለም?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "እርግጠኛ ነዎት ይህን ማስታወሻ እንደ አይፈለጌ መልዕክት ምልክት ሊያደርጉበት ይፈልጋሉ?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "እርግጠኛ ነዎት ይህን መዝገብ ከስረዛ ወደነበረበት መመለስ ይፈልጋሉ?"
+
+msgid "Atom feed of updates about this person"
+msgstr "ስለዚህ ሰው ያለ የአቶም ዝማኔዎች ምግብ"
+
+msgid "Author's e-mail address"
+msgstr "የጸሐፊ ኢሜይል አድራሻ"
+
+msgid "Author's name"
+msgstr "የጸሐፊ ስም"
+
+msgid "Author's phone number"
+msgstr "የጸሐፊ ስልክ ቁጥር"
+
+msgid "Authorization key"
+msgstr "የፈቀዳ ቁልፍ"
+
+msgid "Back to results list"
+msgstr "ወደ የውጤቶች ዝርዝር ተመለስ"
+
+msgid "Back to start"
+msgstr "ወደ ጀምር ተመለስ"
+
+msgid "CSV file"
+msgstr "የCSV ፋይል"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "የ%(id)s መታወቂያ ያለው ማስታወሻ ማግኘት አልተቻለም"
+
+msgid "Cancel"
+msgstr "ተወው"
+
+msgid "City"
+msgstr "ከተማ"
+
+msgid "Click here to view results."
+msgstr "ውጤቶችን ለማየት እዚህ ጠቅ ያድርጉ"
+
+msgid "Close window"
+msgstr "መስኮት ዝጋ"
+
+msgid "Compare these records"
+msgstr "እነዚህ መዝገቦችን ያወዳድሩ"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "ይህን መሣሪያ በጣቢያዎ ላይ ለማድረግ የሚከተለውን የኤች ቲ ኤም ኤል ኮድ ገልብጠው ይለጥፉት"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "አዲስ መዝገብ ይፍጠሩ"
+
+msgid "Create a new record for"
+msgstr "አዲስ መዝገብ ይፍጠሩ ለ"
+
+msgid "Create a new record for a missing person"
+msgstr "ለጠፋ ሰው አዲስ መዝገብ ይፍጠሩ"
+
+msgid "Crisis events"
+msgstr "የአስቸኳይ ጊዜ ክስተቶች"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "በአሁኑ ጊዜ %(num_people)s አካባቢ መዝገቦችን በመከታተል ላይ።"
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "ቀን ወደፊት ላይ መሆን አይችልም። እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Date of birth"
+msgstr "የትውልድ ቀን"
+
+msgid "Delete this record"
+msgstr "ይህን መዝገብ ይሰርዙ"
+
+msgid "Describe how to identify this person."
+msgstr "ይህን ሰው እንዴት መለየት እንደሚቻል ያብራሩ።"
+
+msgid "Describe the physical characteristics of this person."
+msgstr "የዚህን ሰው አካላዊ ገጽታ ያብራሩ።"
+
+msgid "Description"
+msgstr "ማብራሪያ"
+
+msgid "Desktop version"
+msgstr "የዴስክቶፕ ስሪት"
+
+msgid "Developers"
+msgstr "ገንቢዎች"
+
+msgid "Disable notes on this record"
+msgstr "በዚህ መዝገብ ላይ ያሉ ማስታወሻዎችን ያሰናክሉ"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "ይህ ሰው በሌሎች ድር ጣቢያዎች ላይ የመገለጫ ገጾች አሉት?"
+
+msgid "Download the sound as MP3"
+msgstr "ድምጹን እንደ MP3 አውርድ"
+
+msgid "E-mail"
+msgstr "ኢሜይል"
+
+msgid "E-mail address"
+msgstr "የኢሜይል አድራሻ"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "መተግበሪያውን በመክተት ላይ"
+
+msgid "Enable notes on this record"
+msgstr "በዚህ መዝገብ ላይ ማስታወሻዎችን ያንቁ"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "ሁሉም ቀናት በUTC ውስጥ በ yyyy-mm-ddThh:mm:ssZ ቅርጸት መሆናቸውን ያረጋግጡ"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "እንደ ዓዓዓዓ-ወወ-ቀቀ ያስገቡ"
+
+msgid "Enter the person's given and family names."
+msgstr "የሰውዬው/ሴትዮዋ የተሰጠው ስም እና የቤተሰም ስም ያስገቡ።"
+
+msgid "Enter the person's name or parts of the name."
+msgstr "የሰውዬው/ሴትዮዋን ስም ወይም የስሙ ክፍሎችን ያስገቡ።"
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "የሰውዬው/ሴትዮዋን ስም፣ የስሙ ክፍሎች ወይም ስልክ ቁጥሩን ያስገቡ።"
+
+msgid "Enter the person's name."
+msgstr "የሰውዬው/ሴትዮዋን ስም ያስገቡ።"
+
+msgid "Expiry"
+msgstr "የሚቃጠልበት ጊዜ"
+
+msgid "Expiry date of this record"
+msgstr "ይህ መዝገብ የሚቃጠልበት ቀን"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "የሚቃጠልበት ቀን በ%(extension_days)s ቀናት አርዝም"
+
+msgid "Family name"
+msgstr "የቤተሰብ ስም"
+
+msgid "Feed of updates about this person"
+msgstr "የዚህ ሰው ዝማኔዎች ምግብ"
+
+msgid "Follow this link to create a new record"
+msgstr "አዲስ መዝገብ ለመፍጠር ይህን አገናኝ ይከተሉ"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr "ከተንቀሳቃሽ ስልክ ውጪ ለሆኑ ስልኮች እባክዎ በNTT የቀረበውን የ171 አገልግሎት ይጠቀሙ።"
+
+msgid "Full name"
+msgstr "ሙሉ ስም"
+
+msgid "Get a new challenge"
+msgstr "አዲስ ፈተና ያግኙ"
+
+msgid "Get a visual challenge"
+msgstr "የምስል ፈተና ያግኙ"
+
+msgid "Get an audio challenge"
+msgstr "የድምጽ ፈተና ያግኙ"
+
+msgid "Given name"
+msgstr "የተሰጠ ስም"
+
+msgid "Google Person Finder"
+msgstr "Google ሰው ማግኛ"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "ከዚህ ሰው ጋር ከአደጋው በኋላ ተነጋግረዋል? (የሚያስፈልግ)"
+
+msgid "Help"
+msgstr "እገዛ"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr "ሊያርትዑት እና ሊሰቅሉት የሚችሉት %(begin_tag)sየናሙና CSV ፋይል%(end_tag)s ይኸውና"
+
+msgid "Hide Map"
+msgstr "ካርታን ደብቅ"
+
+msgid "Hide note"
+msgstr "ማስታወሻን ደብቅ"
+
+msgid "Home Address"
+msgstr "የቤት አድራሻ"
+
+msgid "Home address"
+msgstr "የቤት አድራሻ"
+
+msgid "Home country"
+msgstr "የትውልድ አገር"
+
+msgid "How can this person be reached now?"
+msgstr "ይህ ሰው እንዴት ነው አሁን ሊደረስበት የሚችለው?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "ይህን ሰው የሚፈልጉ ሌሎች እንዴት እርስዎን ማግኘት እንደሚችሉ"
+
+msgid "I am seeking information"
+msgstr "መረጃ እየፈለግሁ ነኝ"
+
+msgid "I am this person"
+msgstr "ይህ ሰው ነኝ"
+
+msgid "I do not want any more updates on this record."
+msgstr "በዚህ መዝገብ ላይ ተጨማሪ ዝማኔዎችን አልፈልግም።"
+
+msgid "I do not want my information online anymore."
+msgstr "መረጃዬ ከአሁን በኋላ መስመር ላይ እንዲሆን አልፈልግም።"
+
+msgid "I have information about someone"
+msgstr "ስለሆነ ሰው መረጃ አለኝ"
+
+msgid "I have reason to think this person is missing"
+msgstr "ይህ ሰው ጠፍቷል ለማለት የሚያስችለኝ ምክንያት አለኝ"
+
+msgid "I have received information that this person is alive"
+msgstr "ይህ ሰው በህይወት አለ የሚል መረጃ ተቀብያለሁ"
+
+msgid "I have received information that this person is dead"
+msgstr "ይህ ሰው ሞቷል የሚል መረጃ ተቀብያለሁ"
+
+msgid "I have received spam due to this note."
+msgstr "በዚህ ማስታወሻ ምክንያት አይፈለጌ መልዕክት መጥቶብኛል።"
+
+msgid "I have received spam."
+msgstr "አይፈለጌ መልዕክት መጥቶብኛል።"
+
+msgid "I prefer not to specify."
+msgstr "ባልገልጽ እመርጣለሁ።"
+
+msgid "I'm looking for someone"
+msgstr "የሆነ ሰው እየፈለግኩኝ ነኝ"
+
+msgid "Identify who you are looking for"
+msgstr "ማንን እንደሚፈልጉ ይግለጹ"
+
+msgid "Identify who you have information about"
+msgstr "ስለማን መረጃ እንዳለዎት ይግለጹ"
+
+msgid "Identifying information"
+msgstr "ገላጭ መረጃ"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"ማናቸውም እነኚህ መዝገቦች እርስዎ ካሰቡት ሰው ጋር የሚዛመዱ ካልሆኑ አዲስ መዝገብ ለመፍጠር ከታች ጠቅ ማድረግ "
+"ይችላሉ።"
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"የዚህ ማስታወሻ ጸሐፊ ከሆኑ እባክዎ በዚህ ማስታወሻ ላይ ማስታወሻዎችን ማሰናከል እንደሚፈሉ ለማረጋገጥ እባክዎ አንድ"
+" አገናኝ መጥቶልዎ ከሆነ ለማየት ኢሜይልዎን ይመልከቱ። አለበለዚያ የመዝገቡ ጸሐፊ ጥያቄዎን እስኪያረጋግጥ ድረስ "
+"እባክዎ ይጠብቁ።"
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"የዚህ ማስታወሻ ጸሐፊ ከሆኑ እባክዎ በዚህ ማስታወሻ ላይ ማስታወሻዎችን ማንቃት እንደሚፈሉ ለማረጋገጥ እባክዎ አንድ "
+"አገናኝ መጥቶልዎ ከሆነ ለማየት ኢሜይልዎን ይመልከቱ። አለበለዚያ የመዝገቡ ጸሐፊ ጥያቄዎን እስኪያረጋግጥ ድረስ "
+"እባክዎ ይጠብቁ።"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "የዚህ ሰው ፎቶ ካለዎት ይስቀሉት ወይም የዩ አር ኤል አድራሻውን ያስገቡ።"
+
+msgid "Incorrect.  Try again."
+msgstr "ትክክል አይደለም።  እንደገና ይሞክሩ።"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "ልክ ያልሆነ የኢሜይል አድራሻ። እባክዎ እንደገና ይሞክሩ።"
+
+msgid "Language selection"
+msgstr "የቋንቋ ምርጫ"
+
+msgid "Last known location"
+msgstr "የሚታወቀው የመጨረሻው አካባቢ"
+
+msgid "Link"
+msgstr "አገናኝ"
+
+msgid "Link to profile page"
+msgstr "ወደ መገለጫ ገጽ የሚወስድ አገናኝ"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "መዝገቦች ብዜት የሚል ምልክት አድርግባቸው"
+
+msgid "Message (required)"
+msgstr "መልዕክት (የሚያስፈልግ)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "መልዕክት ያስፈልጋል። እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Missing person's current contact information"
+msgstr "የጠፋው ሰው የአሁኑ የእውቂያ መረጃ"
+
+msgid "Missing person's current e-mail address"
+msgstr "የጠፋ ሰው የአሁኑ የኢሜይል አድራሻ"
+
+msgid "Missing person's current phone number"
+msgstr "የጠፋው ሰው የአሁኑ ስልክ ቁጥር"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr "ለገንቢዎች ተጨማሪ መረጃ %(developers_link_html)sእዚህ%(link_end_html)s ሊገኝ ይችላል።"
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr "ከ100 በላይ ውጤቶች፣ የመጀመሪያዎቹ 100 ብቻ በማሳየት ላይ።  የስሙ ተጨማሪ አስገብተው ይሞክሩ።"
+
+msgid "Name"
+msgstr "ስም"
+
+msgid "Name (required)"
+msgstr "ስም (የሚያስፈልግ)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "ስም ያስፈልጋል። እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Neighborhood"
+msgstr "ሰፈር"
+
+msgid "No"
+msgstr "አይ"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "ለመዝገብ %(id)s ምንም የጸሐፊ ኢሜይል የለም።"
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "ምንም መልዕክቶች በድምጸ ተያያዡ የመልዕክት ቦርድ አገልግሎት ላይ አልተገኙም።"
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "ይህን መታወቂያ የያዘ ምንም ማስታወሻ የለም፦ %(id_str)s።"
+
+msgid "No notes have been posted"
+msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "ይህን መታወቂያ የያዘ ማንም ሰው የለም፦ %(id_str)s።"
+
+msgid "No results found for"
+msgstr "ለዚህ ምንም ውጤቶች አልተገኙም፦"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "ይህ የ «believed_dead» ሁኔታ ያላቸው ማስታወሻዎችን የመለጠፍ ፍቃድ የለውም።"
+
+msgid "Not spam"
+msgstr "አይፈለጌ መልዕክት አይደለም"
+
+msgid "Note author"
+msgstr "የማስታወሻ ጸሐፊ"
+
+msgid "Note text"
+msgstr "የማስታወሻ ጽሑፍ"
+
+msgid "Notes for this person"
+msgstr "የዚህ ሰው ማስታወሻ"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "ቁጥር ወይም ክልል (ለምሳሌ፦ 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"ወይም እንደ %(gadget_link_html)sGoogle Gadget%(link_end_html)s አድርገው ወደ ጣቢያዎ "
+"ያክሉት።"
+
+msgid "Original URL"
+msgstr "የመጀመሪያው ዩ አር ኤል"
+
+msgid "Original author's name"
+msgstr "የመጀመሪያው ጸሐፊ ስም"
+
+msgid "Original posting date"
+msgstr "የመጀምሪያው የመለጠፍ ቀን"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"የመጀመሪያው የመለጠፍ ቀን በ ዓዓዓዓ-ወወ-ቀቀ ቅርጸት አይደለም ያለው ወይም ደግሞ የሌለ ቀን ነው።  እባክዎ "
+"ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Original site name"
+msgstr "የመጀመሪያው ጣቢያ ስም"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"እባክዎ ልብ ይበሉ፦ የገባው ሁሉም ውሂብ በይፋ የሚገኝና በማንኛውም ሰው ሊታይ እና ስራ ላይ ሊውል የሚችል ይሆናል።"
+"  Google የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም።"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"እባክዎ ልብ ይበሉ፦ በንቁ ሰው ማግኛ ጣቢያዎች ላይ ሁሉም ውሂብ በይፋ የሚገኝ እና በማንኛውም ሰው ስራ ላይ ሊውል "
+"የሚችል ነው።  Google የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም።"
+
+msgid "Person Finder"
+msgstr "የሰው ማግኛ"
+
+msgid "Phone"
+msgstr "ስልክ"
+
+msgid "Phone number"
+msgstr "ስልክ ቁጥር"
+
+msgid "Photo"
+msgstr "ፎቶ"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr "የተሰቀለው ፎቶ በማይታወቅ ቅርጸት ነው የተሰራው።  እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Physical characteristics"
+msgstr "አካላዊ ገጽታ"
+
+msgid "Play the sound again"
+msgstr "ድምጹን እንደገና አጫውት"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"እባክዎ ከመሬት መንቀጥቀጡ በኋላ ከሰውዬው ጋር መገናኘትዎን ወይም አለመገናኘትዎን ያረጋግጡ ወይም የ«የዚህ ሰው "
+"ሁኔታ» መስኩን ይቀይሩት።"
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "ሪፖርት ለማድረግ ካሰቡት ሰው ጋር የሚዛመድ መሆኑን እባክዎ ያረጋግጡ።"
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "ለዝማኔዎች በደንበኝነት ለመመዝገብ እባክዎ የኢሜይል አድራሻዎን ያረጋግጡ"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "ለዝማኔዎች በደንበኝነት ለመመዝገብ እባክዎ የኢሜይል አድራሻዎን ያስገቡ"
+
+msgid "Please explain why you think these are the same person"
+msgstr "ለምን እነዚህ ተመሳሳዩ ሰው እንደሆኑ እንደሚያስቡ ያብራሩ"
+
+msgid "Please fill in all the required fields."
+msgstr "እባክዎ ሁሉንም የሚያስፈልጉ መስኮች ይሙሉ።"
+
+msgid "Please fill in your email address."
+msgstr "እባክዎ የኢሜይል አድራሻዎን ይሙሉ።"
+
+msgid "Please provide an valid email address."
+msgstr "እባክዎ የሚሰራ የኢሜይል አድራሻ ያቅርቡ።"
+
+msgid "Possible duplicates"
+msgstr "ብዜት ሊሆኑ የሚችሉ"
+
+msgid "Postal or zip code"
+msgstr "የፖስታ ወይም ዚፕ ኮድ"
+
+msgid "Posted by"
+msgstr "የተለጠፈው በ"
+
+msgid "Proceed"
+msgstr "ይቀጥሉ"
+
+msgid "Profile Pages"
+msgstr "የመገለጫ ገጾች"
+
+msgid "Profile page"
+msgstr "የመገለጫ ገጽ"
+
+msgid "Provide information"
+msgstr "መረጃ ያቅርቡ"
+
+msgid "Provide information about this person"
+msgstr "ስለዚህ ሰው መረጃ ያቅርቡ"
+
+msgid "Provided by:"
+msgstr "የቀረበው በ፦"
+
+msgid "Province or state"
+msgstr "ግዛት ወይም ክልል"
+
+msgid "Reason for deletion:"
+msgstr "የስረዛ ምክንያት፦"
+
+msgid "Reason for disabling notes:"
+msgstr "ማስታወሻዎች የሚሰናከሉበት ምክንያት፦"
+
+msgid "Records Similar to"
+msgstr "መዛግብቶች ይመሳሰላሉ ከ፦"
+
+msgid "Records selected"
+msgstr "የተመረጡ መዛግብቶች"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "ከ«%(query)s» ጋር የሚዛመዱ ስሞች እና አድራሻዎች ያላቸው መዛግብቶች"
+
+msgid "Remove"
+msgstr "አስወግድ"
+
+msgid "Report spam"
+msgstr "አይፈለጌ መልዕክት ሪፖርት አድርግ"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "ወደ የ%(full_name)s መዝገብ ይመለሱ።"
+
+msgid "Reveal note"
+msgstr "ማስታወሻ ይታይ"
+
+msgid "Save this record"
+msgstr "ይህ መዝገብ ይቀመጥ"
+
+msgid "Search Results for"
+msgstr "የፍለጋ ውጤቶች ስለ"
+
+msgid "Search for this person"
+msgstr "ይህን ሰው ፈልግ፦"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "ለተጨማሪ መማሪያዎች %(begin_tag)sዊኪውን%(end_tag)s ይመልከቱ"
+
+msgid "Select a website to add a profile page..."
+msgstr "የመገለጫ ገጽ የሚያክሉበት ድር ጣቢያ ይምረጡ..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "ብዜት ናቸው የሚል ምልክት የሚያደርጉባቸው እስከ 3 የሚደርሱ መዝገቦችን ይምረጡ፦"
+
+msgid "Send email"
+msgstr "ኢሜይል ይላኩ"
+
+msgid "Sex"
+msgstr "ጾታ"
+
+msgid "Show Map"
+msgstr "ካርታ አሳይ"
+
+msgid "Show sensitive information"
+msgstr "ስስ መረጃ አሳይ"
+
+msgid "Sign in"
+msgstr "በመለያ ግባ"
+
+msgid "Sign out"
+msgstr "ዘግተህ ውጣ"
+
+msgid "Someone has received information that this person is alive"
+msgstr "የሆነ ሰው ይህ ሰው በህይወት እንዳለ መረጃ ደርሶታል"
+
+msgid "Someone has received information that this person is dead"
+msgstr "የሆነ ሰው ይህ ሰው እንደሞተ መረጃ ደርሶታል"
+
+msgid "Someone has reported that this person is missing"
+msgstr "የሆነ ሰው ይህ ሰው እንደጠፋ መረጃ ደርሶታል"
+
+msgid "Someone is seeking information about this person"
+msgstr "የሆነ ሰው ስለዚህ ሰው መረጃ እያፈላለገ ነው"
+
+msgid "Source of this record"
+msgstr "የዚህ መዝገብ ምንጭ"
+
+msgid "Source of this record (required)"
+msgstr "የዚህ መዝገብ ምንጭ (የሚያስፈልግ)"
+
+msgid "Status"
+msgstr "ሁኔታ"
+
+msgid "Status of this person"
+msgstr "የዚህ ሰው ሁኔታ"
+
+msgid "Street name"
+msgstr "የመንገድ ስም"
+
+msgid "Street name only, no number"
+msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
+
+msgid "Subscribe"
+msgstr "ለደንበኝነት ይመዝገቡ"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "ለ%(full_name)s ዝማኔዎች በደንበኝነት ይመዝገቡ"
+
+msgid "Subscribe to updates about this person"
+msgstr "ለዚህ ሰው ዝማኔዎች በደንበኝነት ይመዝገቡ"
+
+msgid "Switch to address"
+msgstr "ወደ አድራሻ ይቀይሩ"
+
+msgid "Switch to duplicate marking mode"
+msgstr "ወደ የብዜት ምልክት ማድረጊያ ሁነታ ይቀይሩ"
+
+msgid "Switch to lat/long"
+msgstr "ወደ ኬክሮስ/ኬንትሮስ ይቀይሩ"
+
+msgid "Switch to normal view mode"
+msgstr "ወደ መደበኛ የእይታ ሁነታ ይቀይሩ"
+
+msgid "Tell us the status of this person"
+msgstr "ስለዚህ ሰው ሁኔታ ይንገሩን"
+
+msgid "Terms of Service"
+msgstr "የአገልግሎት ውል"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "ሁለቱም የተሰጠው እና የቤተሰም ስም ያስፈልጋሉ።  እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "የመጀመሪያው ጸሐፊ ስም ያስፈልጋል።  እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "The author has disabled notes on this record."
+msgstr "ጸሐፊው በዚህ መዝገብ ላይ ማስታወሻዎችን አሰናክሏል።"
+
+msgid "The author has disabled status updates on this record."
+msgstr "ጸሐፊው በዚህ መዝገብ ላይ የሁኔታ ዝማኔዎችን አሰናክሏል።"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "የቀረበው ምስል በጣም ትልቅ ነው።  እባክዎ ያነሰ ይስቀሉ።"
+
+msgid "The reason this note is being marked as spam:"
+msgstr "ይህ ማስታወሻ አይፈለጌ መልዕክት ነው ተብሎ ምልክት የሚደረግበት ምክንያት፦"
+
+msgid "The record cannot be extended."
+msgstr "መዝገቡ ሊራዘም አይችልም።"
+
+msgid "The record has been deleted."
+msgstr "መዝገቡ ተሰርዟል።"
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "መዝገቡ እስከ %(expiry_date)s ድረስ ተራዝሟል።"
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"የመረጡት ሁኔታ እርስዎ ይህ ሰው እንደሆኑ ያመለክታል።  ይህ እውነት ከሆነ ይህን ሰው ማግኘትዎን ለማመልከት እባክዎ"
+" «አዎ»ን ይምረጡ።"
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "ማስመሰያ %(token)s ልክ ያልሆነ ነበር"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "ማስመሰያ %(token)s ልክ ያልሆነ ነበር።"
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "ተመሳሳይ ስም ያላቸው %(num_results)s ነባር መዝገቦች አሉ።"
+
+msgid "There are some existing records with similar names."
+msgstr "ተመሳሳይ ስም ያላቸው አንዳንድ ነባር መዝገቦች አሉ።"
+
+msgid "There is one existing record with a similar name."
+msgstr "ተመሳሳይ ስም ያለው አንድ ነባር መዝገብ አለ።"
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "ምስሉን መስራት ላይ ችግር ነበር።  እባክዎ የተለየ ምስል ይሞክሩ።"
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"ጥያቄዎን መስራት ላይ አንድ ስህተት ነበር።  ለተፈጠረው ችግር ይቅርታ።  አስተዳዳሪዎቻችን የችግሩን ምንጭ "
+"ይመረምሩታል፣ ነገር ግን እባክዎ የጥያቄዎ ቅርጸት ትክክል መሆኑን ያረጋግጡ።"
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"እነዚህ መሣሪያዎች %(apache_link_html)sApache 2.0 ፍቃድ%(link_end_html)s መሠረት ነው "
+"የሚገኙት።"
+
+msgid "This is a new record."
+msgstr "ይህ አዲስ መዝገብ ነው።"
+
+msgid "This link is invalid."
+msgstr "ይህ አገናኝ ልክ ያልሆነ ነው።"
+
+msgid "This note has been marked as spam."
+msgstr "ይህ ማስታወሻ አይፈለጌ መልዕክት ተብሎ ምልክት ተደርጎበታል።"
+
+msgid "This note is inappropriate."
+msgstr "ይህ ማስታወሻ አግባብ ያልሆነ ነው።"
+
+msgid "This note is incorrect or untrue."
+msgstr "ይህ ማስታወሻ ትክክል ወይም እውነት ያልሆነ ነው።"
+
+msgid "This note is spam."
+msgstr "ይህ ማስታወሻ አይፈለጌ መልዕክት ነው።"
+
+msgid "This person has been in contact with someone"
+msgstr "ይህ ሰው ከሆነ ሰው ጋር ተገናኝቷል"
+
+msgid "This person has posted a message"
+msgstr "ይህ ሰው አንድ መልዕክት ለጥፏል"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "የዚህ ሰው ግቤት የለም ወይም ተሰርዟል።"
+
+msgid "This record has served its purpose."
+msgstr "ይህ መዝገብ ዓላማውን አሳክቶ ጨርሷል።"
+
+msgid "This record is a duplicate of"
+msgstr "ይህ መዝገብ የዚህ ብዜት ነው፦"
+
+msgid "This record is copied from another source."
+msgstr "ይህ መዝገብ ከሌላ ምንጭ የተገለበጠ ነው።"
+
+msgid "This record is inappropriate."
+msgstr "ይህ መዝገብ አግባብ ያልሆነ ነው።"
+
+msgid "This record is spam."
+msgstr "ይህ መዝገብ አይፈለጌ መልዕክት ነው።"
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"ይህ የውሂብ ማከማቻ በአሁኑ ጊዜ በሙከራ ሁነታ ላይ ነው። የሙከራ ሁነታ ስራ ላይ ሳለ ከ6 ሰዓት ዕድሜ በላይ "
+"ያላቸው መዝገቦች ይሰረዛሉ።"
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "ፎቶ ከዚህ ማስታወሻ ጋር ለማያያዝ ይስቀሉት ወይም ዩ አር ኤሉን ያስገቡ።"
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "ውሂብዎን ለመሰረዝ የሰው ማግኛን ከዴስክቶፕዎ ይድረሱበት።"
+
+msgid "To unsubscribe, follow this link"
+msgstr "ከደንበኝነት ምዝገባ ለመውጣት ይህን አገናኝ ይከተሉ"
+
+msgid "To view or add information, select a name below."
+msgstr "መረጃ ለማየት ወይም ለማከል ከታች አንድ ስም ይምረጡ።"
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr "ከታች አድራሻ ይተይቡ ወይም ካርታውን ይክፈቱና ካርታው ላይ ጠቅ በማድረግ አካባቢውን ያመልክቱ።"
+
+msgid "Type an address."
+msgstr "አድራሻ ይተይቡ።"
+
+msgid "Type the two words:"
+msgstr "ሁለቱን ቃላት ይተይቡ፦"
+
+msgid "Type what you hear:"
+msgstr "የሚሰሙትን ነገር ይተይቡ፦"
+
+msgid "URL"
+msgstr "ዩ አር ኤል"
+
+msgid "URL of original record"
+msgstr "የመጀመሪያው መዝገብ ዩ አር ኤል"
+
+msgid "Unspecified"
+msgstr "ያልተገለጸ"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "ይስቀሉ"
+
+msgid "Upload CSV files"
+msgstr "የCSV ፋይሎችን ይስቀሉ"
+
+msgid "View the record"
+msgstr "መዝገቡን ይመልከቱ"
+
+msgid "We have nothing matching your search."
+msgstr "ከፍለጋዎ ጋር የሚዛመድ ምንም ነገር የለንም።"
+
+msgid "What is this person's name?"
+msgstr "የዚህ ሰው ስም ማነው?"
+
+msgid "When should this record disappear?"
+msgstr "መቼ ነው ይህ መዝገብ መጥፋት ያለበት?"
+
+msgid "Where did this information come from?"
+msgstr "ይህ መረጃ ከዬት ነው የመጣው?"
+
+msgid "Where is this person from?"
+msgstr "ይህ ሰው ከዬት ነው የመጣው?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr "የሙከራ ሁነታ ስራ ላይ በሆነበት ጊዜ ከ6 ሰዓት በላይ ዕድሜ ያላቸው መዝገቦች የመቃጠያ ቀናቸው ሳይታይ ይሰረዛሉ።"
+
+msgid "Yes"
+msgstr "አዎ"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "አዎ፣ የመዝገብ ጸሐፊው ማስታወሻዎችን እንዲያሰናክል ጠይቅ"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "አዎ፣ የመዝገብ ጸሐፊው ማስታወሻዎችን እንዲያነቃ ጠይቅ"
+
+msgid "Yes, delete the record"
+msgstr "አዎ፣ መዝገቡን ሰርዘው"
+
+msgid "Yes, disable notes on this record."
+msgstr "አዎ፣ በዚህ መዝገብ ላይ ያሉ ማስታወሻዎችን አሰናክል።"
+
+msgid "Yes, extend the record"
+msgstr "አዎ፣ መዝገቡን አራዝመው"
+
+msgid "Yes, restore this record"
+msgstr "አዎ፣ ይህን መዝገብ ወደነበረበት መልስ"
+
+msgid "Yes, these are the same person"
+msgstr "አዎ፣ እነዚህ ተመሳሳዩ ሰው ናቸው"
+
+msgid "Yes, update the note"
+msgstr "አዎ፣ ማስታወሻውን አዘምን"
+
+msgid "You are already subscribed. "
+msgstr "አስቀድመው ለደንበኝነት ተመዝግበዋል። "
+
+msgid "You are already unsubscribed."
+msgstr "አስቀድመው ከደንበኝነት ምዝገባ ወጥተዋል።"
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "በአሁኑ ጊዜ እንደ %(begin_span_tag)s%(email)s%(end_span_tag)s ሆነው ገብተዋል።"
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "በአሁኑ ጊዜ በመለያ አልገቡም።"
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "ከመሰረዝዎ በፊት %(begin_tag)sመዝገቡን ማየት%(end_tag)s ይችላሉ።"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "ሙሉውን መዝገብ በ%(view_url)s ላይ ማየት ይችላሉ"
+
+msgid "You have successfully subscribed."
+msgstr "በተሳካ ሁኔታ ለደንበኝነት ተመዝግበዋል።"
+
+msgid "You have successfully unsubscribed."
+msgstr "በተሳካ ሁኔታ ከደንበኝነት ምዝገባ ወጥተዋል።"
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr "ለሚከተለው ሰው ዝማኔዎች በደንበኝነት ስለተመዘገቡ ይህ ማሳወቂያ ደርሶዎታል።\n"
+
+msgid "Your e-mail address"
+msgstr "የእርስዎ ኢሜይል አድራሻ"
+
+msgid "Your e-mail address:"
+msgstr "የእርስዎ ኢሜይል አድራሻ፦"
+
+msgid "Your email"
+msgstr "የእርስዎ ኢሜይል"
+
+msgid "Your name"
+msgstr "የእርስዎ ስም"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr "የእርስዎ ስም በ«ስለእርስዎ» ክፍል ውስጥ ያስፈልጋል።  እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "የእርስዎ ስም በ«ምንጭ» ክፍል ውስጥ ያስፈልጋል።  እባክዎ ይመለሱና እንደገና ይሞክሩ።"
+
+msgid "Your phone number"
+msgstr "የእርስዎ ስልክ ቁጥር"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"ጥያቄዎ በተሳካ ሁኔታ ተሰርቷል። እባክዎ ገቢ መልዕክት ሳጥንዎን ይመልከቱና የተከተተውን ዩ አር ኤል ተከትለው "
+"በመሄድ ማስታወሻዎን መለጠፍ እንደሚፈልጉ ያረጋግጡ።"
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያለው ማስታወሻዎን ያረጋግጡ"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] የ«%(full_name)s» ስረዛ ማሳወቂያ"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያሉ ማስታወሻዎች ይሰናከሉ?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያሉ ማስታወሻዎች ይንቁ?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] የ«%(full_name)s» ማስታወሻዎች ማሳወቂያን በማንቃት ላይ"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] አሁን የ«%(full_name)s» ማስታወሻዎች ተሰናክሏል"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] ማስታወሻዎች አሁን በ«%(full_name)s» ላይ ነቅተዋል"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] የ«%(full_name)s» መዝገብ ወደነበረበት የመመለስ ማሳወቂያ"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[ሰው ማግኛ] የ%(full_name)s ሁኔታ ዝማኔ"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[ሰው ማግኛ] ለ%(full_name)s ሁኔታ ዝማኔዎች በደንበኝነት ተመዝግበዋል"
+
+msgid "at"
+msgstr "በ"
+
+msgid "female"
+msgstr "ሴት"
+
+msgid "in test mode"
+msgstr "በሙከራ ሁነታ ላይ"
+
+msgid "male"
+msgstr "ወንድ"
+
+msgid "on"
+msgstr "በርቷል"
+
+msgid "other"
+msgstr "ሌላ"
+

@@ -1,0 +1,1559 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Ukuqinisekisa ukuthi amanothi akhutshaziwe noma anikwe amandla ngemvume"
+" yombhali werekhodi, umlayezo wokuqinisekisa uzothunyelwa kumbhali "
+"werekhodi.\n"
+"  Uma ngabe ungumbhali, hlola i-imeyili yakho ngemuva kokuchofoza "
+"inkinobho engezansi.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Sawubona %(author_name)s,\n"
+"\n"
+"Umsebenzisi ucele ukunika amandla amanothi kwirekhodi le-\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Ikheli lakho le-imeyili liqoshiwe njengombhali waleli rekhodi. Ukuze "
+"unike amandla amanothi kule rekhodi, landela lesi sixhumanisi ezinsukwini"
+" ezingu-3:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Sawubona %(author_name)s,\n"
+"\n"
+"Umsebenzisi ucele ukuthi ukhubaze amanothi kwirekhodi le-\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Ikheli lakho le-imeyili liqoshwe njengombhali waleli rekhodi. Ukuze unike"
+" amandla amanothi kule rekhodi, landela lesi sixhumanisi ezinsukwini "
+"ezingu-3:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Sawubona %(author_name)s,\n"
+"Usanda kufaka inothi kurekhodi le-\"%(full_name)s\".  \n"
+"Ukuze ushicilele inothi lakho, landela lesi sixhumanisi ezinsukwini "
+"ezingu-3:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Isexwayiso: le rekhodi izophelelwa yisikhathi "
+"ngaphansi kwezinsuku ezingu-%(expiration_days)s.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Isexwayiso: le rekhodi lizophelelwa yisikhathi "
+"kungakapheli usuku.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ingabe uqinisekile ukuthi ufuna ukususa irekhodi "
+"le-\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ingabe uqinisekile ukuthi ufuna ukukhubaza amanothi "
+"ku-\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ingabe uqinisekile ukuthi ufuna ukukhubaza amanothi kwirekhodi "
+"le-\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ingabe uqinisekile ukuthi ufuna ukunika amandla amanothi "
+"ku-\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ingabe uqinisekile ukuthi ufuna ukunweba ukuphelelwa yisikhathi "
+"kwerekhodi elingu-\"%(full_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Qinisekisa inothi lakho\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Uma uqhubeka nokususa,\n"
+"      leli rekhodi ngeke lisasesheka noma libukeke kuleli sayithi.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Uma ungayithanda ukuthi isuswe unaphakade,\n"
+"      sicela uxhumane nomthombo wangempela.\n"
+"      Ungabuka irekhodi langempela "
+"ku-%(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      I-URL oyifakile ayibukeki njengesithombe se-URL yephrofayela "
+"evumelekile ye-%(website)s.\n"
+"      Sicela uye kukhasi lephrofayela yalo muntu ku-%(website)s, bese "
+"ukopisha uphinde unamathisele leyo URL lapha.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Leli rekhodi liyikhophi yerekhodi esuka komunye umthombo.\n"
+"      Ungasusa irekhodi lapha,\n"
+"      kodwa sicela uqaphele ukuthi\n"
+"      ngemuva kwesikhathi singathola enye ikhophi yayo kusukela kumthombo"
+" wayo wangempela.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Ukuqinisekisa ukuthi amanothi akhutshaziwe noma anikwe amandla "
+"ngemvume yombhali werekhodi, umlayezo wokuqinisekisa uzothunyelwa "
+"kumbhali werekhodi.\n"
+"  Uma ngabe ungumbhali, hlola i-imeyili yakho ngemuva kokuchofoza "
+"inkinobho engezansi.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Irekhodi lisazobonakala kusayithi, kodwa akekho umuntu ozokwazi "
+"ukuthumela\n"
+"  amanothi angeziwe kulo.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Ukuze uthumele inothi yakho, sicela ufake ikheli lakho le-imeyili "
+"ngezansi uphinde ulandele\n"
+"  isixhumanisi sokuqinisekisa ozosithola.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Umsebenzisi ususe irekhodi le-\"%(full_name)s\"\n"
+"ku-%(site_url)s.\n"
+"\n"
+"Sikwazisa ngokususwa ngoba ikheli lakho le-imeyili\n"
+"liqoshwe njengombhali wenothi kuleli rekhodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Umsebenzisi ususe irekhodi le-\"%(full_name)s\"\n"
+"ku-%(site_url)s.\n"
+"\n"
+"Sikwazisa ngokususwa ngoba ikheli lakho le-imeyili\n"
+"liqoshwe njengombhali wenothi kuleli rekhodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Ngemuva kwezinsuku ezingu-%(days_until_deletion)s, irekhodi lizosuswa "
+"unaphakade.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"YAZI: Uma ukholwa ukuthi leli rekhodi lisuswe ngephutha, ungalibuyisela "
+"ngokulandela lesi sixhumanisi ezinsukwini ezingu-%(days_until_deletion)s "
+"ezilandelayo:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Amanothi manje akhutshaziwe kwirekhodi le-\"%(full_name)s\".  Ukuze ubuke"
+" irekhodi,\n"
+"landela lesi sixhumanisi:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Sikwazisa ngoba ikheli lakho le-imeyili lihlotshaniswa naleli rekhodi "
+"lomuntu noma inothi kwirekhodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Amanothi manje sewanikwe amandla kurekhodi le-\"%(full_name)s\".  Ukuze "
+"ubuke irekhodi,\n"
+"landela lesi sixhumanisi:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Sikwazisa ngoba ikheli lakho le-imeyili lihlotshaniswa naleli rekhodi "
+"lomuntu noma inothi kwirekhodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Umbhali werekhodi le-\"%(full_name)s\"\n"
+"(elisusiwe ngokwedlule) ubuyisele irekhodi.  Ukuze ubuke irekhodi, "
+"landela lesi sixhumanisi:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Sikwazisa ngoba ikheli lakho le-imeyili lihlotshaniswa naleli rekhodi "
+"lomuntu noma inothi kwirekhodi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Kukhona inothi elisha kwirekhodi le-\"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Ubhalisele amanothi ku-\"%(full_name)s\".\n"
+"\n"
+"Ungabuka le rekhodi\n"
+"\n"
+"     ku-%(view_url)s\n"
+"\n"
+"Ukuze uzikhiphe ohlweni, landela lesi sixhumanisi: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(chofoza ukuze ubonise)"
+
+msgid "(unknown)"
+msgstr "(akwaziwa)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Umlayezo walo muntu noma abanye abafuna lo muntu"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Cishe inyanga engu-1 (izinsuku ezingu-30) kusukela manje"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Cishe unyaka ongu-1 (izinsuku ezingu-360) kusukela manje"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Cishe izinyanga ezingu-2 (izinsuku ezingu-60) kusukela manje"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Cishe izinyanga ezingu-3 (izinsuku ezingu-90) kusukela manje"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Cishe izinyanga ezingu-6 (izinsuku ezingu-180) kusukela manje"
+
+msgid "About Google Person Finder"
+msgstr "Mayelana ne-Google Person Finder"
+
+msgid "About you (required)"
+msgstr "Mayelana nawe (okudingekayo)"
+
+msgid "Administration"
+msgstr "Ukulawula"
+
+msgid "Age"
+msgstr "Ubudala"
+
+msgid "Alternate family names"
+msgstr "Amanye amagama womndeni"
+
+msgid "Alternate given names"
+msgstr "Amanye amagama anikeziwe"
+
+msgid "Alternate names"
+msgstr "Amanye amagama"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Ingabe uqinisekile ukuthi leli nothi akulona ugaxekile?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Ingabe uqinisekile ukuthi ufuna ukuphawula leli nothi njengogaxekile?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Ingabe uqinisekile ukuthi ufuna ukubuyisela le rekhodi kusukela ekususeni?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Okuphakelayo kwe-Atom kwezibuyekezo mayelana nalo muntu"
+
+msgid "Author's e-mail address"
+msgstr "Ikheli le-imeyili lombhali"
+
+msgid "Author's name"
+msgstr "Igama lombhali"
+
+msgid "Author's phone number"
+msgstr "Inombolo yefoni yombhali"
+
+msgid "Authorization key"
+msgstr "Ukhiye wokugunyazwa"
+
+msgid "Back to results list"
+msgstr "Buyela emuva kuhlu lwemiphumela"
+
+msgid "Back to start"
+msgstr "Buyela ekuqaleni"
+
+msgid "CSV file"
+msgstr "Ifayela le-CSV"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Ayikwazi ukuthola inothi eline-id engu-%(id)s"
+
+msgid "Cancel"
+msgstr "Khansela"
+
+msgid "City"
+msgstr "Idolobha"
+
+msgid "Click here to view results."
+msgstr "Chofoza lapha ukuze ubuke imiphumela."
+
+msgid "Close window"
+msgstr "Vala iwindi"
+
+msgid "Compare these records"
+msgstr "Qhathanisa lawa marekhodi"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Kopisha uphinde unamathisele ikhodi elandelayo ye-HTML ukuze ufake leli "
+"thuluzi kusayithi lakho"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "Dala irekhodi elisha"
+
+msgid "Create a new record for"
+msgstr "Dalela irekhodi elisha i-"
+
+msgid "Create a new record for a missing person"
+msgstr "Dalela irekhodi elisha umuntu olahlekile"
+
+msgid "Crisis events"
+msgstr "Imicimbi esengozini"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Okwamanje ilandelela mayelana namarekhodi wabangu-%(num_people)s."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Idethi ayikwazi ukuba ngokuzayo. Sicela ubuyele emuva uphinde uzame futhi."
+
+msgid "Date of birth"
+msgstr "Idethi yokuzalwa"
+
+msgid "Delete this record"
+msgstr "Susa le rekhodi"
+
+msgid "Describe how to identify this person."
+msgstr "Chaza ukuthi angakhonjwa kanjani lo muntu."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Chaza ubunjalo bomzimba walo muntu."
+
+msgid "Description"
+msgstr "Incazelo"
+
+msgid "Desktop version"
+msgstr "Inguqulo yedeskithophu"
+
+msgid "Developers"
+msgstr "Onjiniyela"
+
+msgid "Disable notes on this record"
+msgstr "Khubaza amanothi kule rekhodi"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Ingabe lo muntu unamakhasi wephrofayela kwamanye amawebhusayithi?"
+
+msgid "Download the sound as MP3"
+msgstr "Landa umsindo njenge-MP3"
+
+msgid "E-mail"
+msgstr "I-imeyili"
+
+msgid "E-mail address"
+msgstr "Ikheli le-imeyili"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "Ukushumeka uhlelo lokusebenza"
+
+msgid "Enable notes on this record"
+msgstr "Nika amandla amanothi kule rekhodi"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+"Qinisekisa ukuthi wonke amadethi akufomethi engu-yyyy-mm-ddThh:mm:ssZ ku-"
+"UTC"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Faka njengo-YYYY-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Faka igama lomuntu elinikeziwe namagama womndeni."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Faka igama lomuntu noma izingxenye zegama."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Faka igama lomuntu, izingxenye zegama, noma inombolo yeselula foni."
+
+msgid "Enter the person's name."
+msgstr "Faka igama lomuntu."
+
+msgid "Expiry"
+msgstr "Ukuphelelwa yisikhathi"
+
+msgid "Expiry date of this record"
+msgstr "Idethi yokuphelelwa yisikhathi kwale rekhodi"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Nweba idethi yokuphelelwa yisikhathi ngezinsuku ezingu-%(extension_days)s"
+
+msgid "Family name"
+msgstr "Igama lomndeni"
+
+msgid "Feed of updates about this person"
+msgstr "Okuphakelayo kwezibuyekezo mayelana nalo muntu"
+
+msgid "Follow this link to create a new record"
+msgstr "Landela lesi sixhumanisi ukuze udale irekhodi elisha"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Kumafoni ngaphandle kwamaselula, sicela usebenzise umhlinzeki wesevisi "
+"ongu-171 nge-NTT."
+
+msgid "Full name"
+msgstr "Igama eligcwele"
+
+msgid "Get a new challenge"
+msgstr "Thola ukuphonselwa inselelo okusha"
+
+msgid "Get a visual challenge"
+msgstr "Thola ukuphonselwa inselelo okubonakalayo"
+
+msgid "Get an audio challenge"
+msgstr "Thola ukuphonselwa inselelo komsindo"
+
+msgid "Given name"
+msgstr "Igama elinikeziwe"
+
+msgid "Google Person Finder"
+msgstr "Isitholi Somuntu se-Google"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Ingabe uke wakhuluma nibhekene nalo muntu NGEMUVA komshophi? "
+"(okudingekayo)"
+
+msgid "Help"
+msgstr "Usizo"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Nali %(begin_tag)sisampuli lefayela le-CSV%(end_tag)s ongalihlela uphinde"
+" ulilayishe"
+
+msgid "Hide Map"
+msgstr "Fihla i-Map"
+
+msgid "Hide note"
+msgstr "Fihla inothi"
+
+msgid "Home Address"
+msgstr "Ikheli Lasekhaya"
+
+msgid "Home address"
+msgstr "Ikheli lasekhaya"
+
+msgid "Home country"
+msgstr "Izwe lasekhaya"
+
+msgid "How can this person be reached now?"
+msgstr "Lo muntu angafinyeleleka kanjani manje?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Abanye abantu abanentshisekelo kulo muntu bangaxhumana kanjani nawe"
+
+msgid "I am seeking information"
+msgstr "Ngifuna ulwazi"
+
+msgid "I am this person"
+msgstr "Ngiwulo muntu"
+
+msgid "I do not want any more updates on this record."
+msgstr "Angisafuni ezinye izibuyekezo kuleli rekhodi."
+
+msgid "I do not want my information online anymore."
+msgstr "Angisalufuni ulwazi lami ku-intanethi."
+
+msgid "I have information about someone"
+msgstr "Nginolwazi mayelana nomunye umuntu"
+
+msgid "I have reason to think this person is missing"
+msgstr "Nginesizathu sokucabanga ukuthi lo muntu ulahlekile"
+
+msgid "I have received information that this person is alive"
+msgstr "Ngithole ulwazi lokuthi lo muntu uyaphila"
+
+msgid "I have received information that this person is dead"
+msgstr "Ngithole ulwazi lokuthi lo muntu ushonile"
+
+msgid "I have received spam due to this note."
+msgstr "Ngithole ugaxekile ngenxa yaleli nothi."
+
+msgid "I have received spam."
+msgstr "Ngithole ugaxekile."
+
+msgid "I prefer not to specify."
+msgstr "Ngincamela ukungacacisi."
+
+msgid "I'm looking for someone"
+msgstr "Ngifuna umuntu othile"
+
+msgid "Identify who you are looking for"
+msgstr "Khomba ukuthi ufuna bani"
+
+msgid "Identify who you have information about"
+msgstr "Khomba ukuthi ubani onolwazi ngaye"
+
+msgid "Identifying information"
+msgstr "Ikhomba ulwazi"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Uma ngabe ungumbhali waleli nothi, sicela uhlole i-imeyili yakho ukuze "
+"uthole isixhumanisi sokuqinisekisa ukuthi ufuna ukukhubaza amanothi kule "
+"rekhodi. Kungenjalo, sicela ulinde umbhali werekhodi ukuze aqinisekise "
+"isicelo sakho."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Uma ngabe ungumbhali waleli nothi, sicela uhlole i-imeyili yakho ukuze "
+"uthole isixhumanisi sokuqinisekisa ukuthi ufuna ukukhubazela amanothi "
+"kuleli rekhodi. Kungenjalo, sicela ulindele umbhali werekhodi ukuze "
+"aqinisekise isicelo sakho."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Uma ngabe ungumbhali waleli nothi, sicela uhlole i-imeyili yakho ukuze "
+"uthole isixhumanisi sokuqinisekisa ukuthi ufuna ukunika amandla amanothi "
+"kuleli rekhodi. Kungenjalo, sicela ulinde umbhali werekhodi ukuze "
+"aqinisekise isicelo sakho."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Uma unesithombe salo muntu, silayishe noma faka ikheli laso le-URL."
+
+msgid "Incorrect.  Try again."
+msgstr "Akulungile. Zama futhi."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Ikheli le-imeyili elingavumelekile. Sicela uzame futhi."
+
+msgid "Language selection"
+msgstr "Ukukhetha kolimi"
+
+msgid "Last known location"
+msgstr "Indawo yokugcina eyaziwayo"
+
+msgid "Link"
+msgstr "Xhuma"
+
+msgid "Link to profile page"
+msgstr "Isixhumanisi esiya kukhasi lephrofayela"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "Maka amarekhodi njengamawele"
+
+msgid "Message (required)"
+msgstr "Umlayezo (okudingekayo)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Umlayezo uyadingeka. Sicela ubuyele emuva uphinde uzame futhi."
+
+msgid "Missing person's current contact information"
+msgstr "Ulwazi lokuxhumana lamanje lomuntu olahlekile"
+
+msgid "Missing person's current e-mail address"
+msgstr "Ikheli le-imeyili lamanje lomuntu olahlekile"
+
+msgid "Missing person's current phone number"
+msgstr "Inombolo yefoni yamanje yomuntu olahlekile"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Ulwazi oluningi lonjiniyela manje selingatholwa "
+"%(developers_link_html)slapha%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Imiphumela eminingi kunengu-100; kuboniswa kuphela engu-100 yokuqala. "
+"Zama ukufaka okuningi kwegama"
+
+msgid "Name"
+msgstr "Igama"
+
+msgid "Name (required)"
+msgstr "Igama (okudingekayo)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Igama liyadingeka. Sicela ubuyele emuva uphinde uzame futhi."
+
+msgid "Neighborhood"
+msgstr "Endaweni"
+
+msgid "No"
+msgstr "Cha"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Ayikho i-imeyili yombhali yerekhodi elingu-%(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"Ayikho imilayezo etholwayo ebhaliswe kubhodi yesevisi yomlayezo "
+"wenkampani yenethiwekhi."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Alikho inothi eline-ID: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Awekho amanothi athunyelwe"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Akekho umuntu one-ID: %(id_str)s."
+
+msgid "No results found for"
+msgstr "Ayikho imiphumela etholelwe i-"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Awugunyazwanga ukuthumela amanothi ngesimo \"sokukholelwa_eshonile\"."
+
+msgid "Not spam"
+msgstr "Akuyena ugaxekile"
+
+msgid "Note author"
+msgstr "Umbhali wenothi"
+
+msgid "Note text"
+msgstr "Umbhalo wenothi"
+
+msgid "Notes for this person"
+msgstr "Amanothi walo muntu"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Inombolo noma ibanga (isb. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Noma engeza kusayithi lakho njenge %(gadget_link_html)sgajethi ye-"
+"Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "I-URL yangempela"
+
+msgid "Original author's name"
+msgstr "Igama langempela lombhali"
+
+msgid "Original posting date"
+msgstr "Idethi yangempela yokuthumela"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Idethi yokuthumela yangempela ayikho ngefomethi engu-YYYY-MM-DD, noma "
+"iyidethi engekho sanhlobo.  Sicela ubuyele emuva uphinde uzame futhi."
+
+msgid "Original site name"
+msgstr "Igama lesayithi langempela"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"SICELA WAZI: Yonke idatha efakiwe izotholakalela umphakathi iphinde "
+"ibukeke futhi ingasetshenziswa yinoma ubani.  I-Google ayibuyekezi noma "
+"iqinisekise ukulunga kwale datha."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"SICELA WAZI: Kumasayithi asebenzayo we-Person Finder, yonke idatha "
+"efakiwe itholakalela umphakathi futhi ingasetshenziswa unoma ubani. "
+"I-Google ayibuyekezi noma iqinisekise ukulunga kwale datha."
+
+msgid "Person Finder"
+msgstr "I-Person Finder"
+
+msgid "Phone"
+msgstr "Ifoni"
+
+msgid "Phone number"
+msgstr "Inombolo yefoni"
+
+msgid "Photo"
+msgstr "Isithombe"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Isithombe esilayishiwe sikufomethi engabonwa. Sicela ubuyele emuva "
+"uphinde uzame futhi."
+
+msgid "Physical characteristics"
+msgstr "Ubunjalo bomuntu"
+
+msgid "Play the sound again"
+msgstr "Dlala umsindo futhi"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Sicela uhlole ukuthi uxhumane nomuntu ngemuva kokuzamazama komhlaba, noma"
+" ushintshe inkambu \"yesimo salo muntu\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Sicela uhlole uma ngabe ifana nalo muntu bowuhlose ukumbika."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Sicela uqinisekise ikheli lakho le-imeyili ykuze ubhalisele izibuyekezo"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Sicela ufake ikheli lakho le-imeyili ukuze ubhalisele izibuyekezo"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Sicela uchaze kungani ucabanga ukuthi laba ngumuntu ofanayo"
+
+msgid "Please fill in all the required fields."
+msgstr "Sicela ugcwalise zonke izinkambu ezidingekayo."
+
+msgid "Please fill in your email address."
+msgstr "Sicela ugcwalise ikheli lakho le-imeyili."
+
+msgid "Please provide an valid email address."
+msgstr "Sicela unikeze ngekheli le-imeyili elivumelekile."
+
+msgid "Possible duplicates"
+msgstr "Amawele okungaba yiwo"
+
+msgid "Postal or zip code"
+msgstr "Ikhodi yeposi noma ye-zip"
+
+msgid "Posted by"
+msgstr "Ithunyelwe ngu-"
+
+msgid "Proceed"
+msgstr "Qhubeka"
+
+msgid "Profile Pages"
+msgstr "Amakhasi wephrofayela"
+
+msgid "Profile page"
+msgstr "Ikhasi lephrofayela"
+
+msgid "Provide information"
+msgstr "Nikeza ngolwazi"
+
+msgid "Provide information about this person"
+msgstr "Nikeza ngolwazi mayelana nalo muntu"
+
+msgid "Provided by:"
+msgstr "Inikezwe ngu-:"
+
+msgid "Province or state"
+msgstr "Isifundazwe noma isifunda"
+
+msgid "Reason for deletion:"
+msgstr "Isizathu sokususa:"
+
+msgid "Reason for disabling notes:"
+msgstr "Isizathu sokukhubaza amanothi:"
+
+msgid "Records Similar to"
+msgstr "Amarekhodi afana ne-"
+
+msgid "Records selected"
+msgstr "Amarekhodi akhethiwe"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Amarekhodi anamagama namakheli afana ne-\"%(query)s\""
+
+msgid "Remove"
+msgstr "Susa"
+
+msgid "Report spam"
+msgstr "Bika ugaxekile"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Buyela kurekhodi le-%(full_name)s."
+
+msgid "Reveal note"
+msgstr "Bonisa inothi"
+
+msgid "Save this record"
+msgstr "Londoloza leli rekhodi"
+
+msgid "Search Results for"
+msgstr "Seshela imiphumela ye-"
+
+msgid "Search for this person"
+msgstr "Seshela lo muntu"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Bona %(begin_tag)si-wiki%(end_tag)s ukuze uthole imiyalo eminingi"
+
+msgid "Select a website to add a profile page..."
+msgstr "Khetha iwebhusayithi ukuze ungeze ikhasi lephrofayela..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Khetha kuze kufike kumarekhodi angu-3 ozowamaka njengayimpinda:"
+
+msgid "Send email"
+msgstr "Thumela i-imeyili"
+
+msgid "Sex"
+msgstr "Ubulili"
+
+msgid "Show Map"
+msgstr "Bonisa i-Map"
+
+msgid "Show sensitive information"
+msgstr "Bonisa ulwazi olubucayi"
+
+msgid "Sign in"
+msgstr "Ngena ngemvume"
+
+msgid "Sign out"
+msgstr "Phuma ngemvume"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Umuntu othile uthole ulwazi lokuthi lo muntu uyaphila"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Umuntu othile uthole ulwazi lokuthi lo muntu ushonile"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Umuntu othile ubike ukuthi lo muntu ulahlekile"
+
+msgid "Someone is seeking information about this person"
+msgstr "Umuntu othile ufuna ulwazi mayelana nalo muntu"
+
+msgid "Source of this record"
+msgstr "Umthombo waleli rekhodi"
+
+msgid "Source of this record (required)"
+msgstr "Umthombo waleli rekhodi (okudingekayo)"
+
+msgid "Status"
+msgstr "Isimo"
+
+msgid "Status of this person"
+msgstr "Isimo salo muntu"
+
+msgid "Street name"
+msgstr "Igama lomgwaqo"
+
+msgid "Street name only, no number"
+msgstr "Igama lomgwaqo kuphela, ngaphandle kwenombolo"
+
+msgid "Subscribe"
+msgstr "Bhalisela"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Bhalisela kuzibuyekezo mayelana ne-%(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Bhalisela kuzibuyekezo mayelana nalo muntu"
+
+msgid "Switch to address"
+msgstr "Shintshela kukheli"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Shintshela kumodi yokumakwa kwamawele"
+
+msgid "Switch to lat/long"
+msgstr "Shintshela ku-lat/ubude"
+
+msgid "Switch to normal view mode"
+msgstr "Shintshela kumodi yokubuka ejwayelekile"
+
+msgid "Tell us the status of this person"
+msgstr "Sitshele ngesimo salo muntu"
+
+msgid "Terms of Service"
+msgstr "Imigomo Yesevisi"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Igama elinikeziwe negama lomndeni womabili ayadingeka. Sicela ubuyele "
+"emuva uphinde uzame futhi."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Igama lombhali wangempela liyadingeka. Sicela ubuyele emuva uphinde uzame"
+" futhi."
+
+msgid "The author has disabled notes on this record."
+msgstr "Umbhali ukhubaze amanothi kuleli rekhodi."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Umbhali ukhubaze izibuyekezo zesimo kuleli rekhodi."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Isithombe esinikeziwe sikhulu kakhulu. Sicela ulayishe esincane."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Isizathu esenza leli nothi limakwe njengogaxekile:"
+
+msgid "The record cannot be extended."
+msgstr "Irekhodi alikwazi ukunwetshwa."
+
+msgid "The record has been deleted."
+msgstr "Irekhodi lisusiwe."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "Irekhodi linwetshelwe kumhla ka-%(expiry_date)s."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Isimo osikhethile sibonisa ukuthi ungulo muntu.  Uma ngabe lokhu "
+"kuyiqiniso, sicela uphinde ukhethe 'uyebo' ukuze ubonise ukuthi uxhumene "
+"nalo muntu."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Ithokheni engu-%(token)s ibikade ingavumelekile"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Ithokheni engu-%(token)s ibikade ingavumelekile."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Kukhona amarekhodi angu-%(num_results)s anamagama afanayo."
+
+msgid "There are some existing records with similar names."
+msgstr "Kukhona amarekhodi athile anamagama afanayo."
+
+msgid "There is one existing record with a similar name."
+msgstr "Kukhona irekhodi elilodwa elinegama elifanayo."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Kube khona inkinga ekucubunguleni isithombe. Sicela uzame isithombe "
+"esihlukile."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Kube nephutha ekucubunguleni isicelo sakho. Siyaxolisa ngokuphazamiseka. "
+"Abalawuli bethu bazophenya umthombo wenkinga, kodwa sicela uhlole ukuthi "
+"ifomethi yesicelo sakho ilungile."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Lawa magajethi enziwe watholakala ngaphansi "
+"%(apache_link_html)skwelayisense ye-Apache 2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Leli yirekhodi elisha."
+
+msgid "This link is invalid."
+msgstr "Lesi sixhumanisi asivumelekile."
+
+msgid "This note has been marked as spam."
+msgstr "Leli nothi limakwe njengogaxekile."
+
+msgid "This note is inappropriate."
+msgstr "Leli nothi alifanelekile."
+
+msgid "This note is incorrect or untrue."
+msgstr "Leli nothi alilungile noma aliqinisanga."
+
+msgid "This note is spam."
+msgstr "Leli nothi lingugaxekile."
+
+msgid "This person has been in contact with someone"
+msgstr "Lo muntu uxhumane nomunye umuntu"
+
+msgid "This person has posted a message"
+msgstr "Lo muntu uthumele umlayezo"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Okufakiwe kwalo muntu akukho noma kususiwe."
+
+msgid "This record has served its purpose."
+msgstr "Leli rekhodi lenze injongo yalo."
+
+msgid "This record is a duplicate of"
+msgstr "Leli rekhodi liyimpinda ye-"
+
+msgid "This record is copied from another source."
+msgstr "Leli rekhodi likopishwe kusukela komunye umthombo."
+
+msgid "This record is inappropriate."
+msgstr "Leli rekhodi alifanelekile."
+
+msgid "This record is spam."
+msgstr "Leli rekhodi ugaxekile."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Leli khosombe okwamanje likumodi yokuhlola. Ngenkathi imodi yokuhlola "
+"isebenza, amarekhodi angaphezulu kobudala bamahora angu-6 ayasuswa."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Ukuze ushumeke isithombe kuleli nothi, silayishe noma faka i-URL yaso."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Ukuze ususe idatha yakho, finyelela ku-Person Finder kusukela "
+"kudeskithophu yakho."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Ukuze uzikhiphe ohlweni, landela lesi sixhumanisi"
+
+msgid "To view or add information, select a name below."
+msgstr "Ukuze ubuke noma ungeze ulwazi, khetha igama ngezansi."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Thayipha ikheli noma uvule imephu ngezansi uphinde ubonise indawo "
+"ngokuchofoza kumephu."
+
+msgid "Type an address."
+msgstr "Thayipha ikheli."
+
+msgid "Type the two words:"
+msgstr "Thayipha amagama amabili:"
+
+msgid "Type what you hear:"
+msgstr "Thayipha okuzwayo:"
+
+msgid "URL"
+msgstr "I-URL"
+
+msgid "URL of original record"
+msgstr "I-URL yerekhodi langempela"
+
+msgid "Unspecified"
+msgstr "Okungashiwongo"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "Layisha"
+
+msgid "Upload CSV files"
+msgstr "Layisha amafayela we-CSV"
+
+msgid "View the record"
+msgstr "Buka irekhodi"
+
+msgid "We have nothing matching your search."
+msgstr "Asinalutho olufana nokusesha kwakho."
+
+msgid "What is this person's name?"
+msgstr "Ubani igama lalo muntu?"
+
+msgid "When should this record disappear?"
+msgstr "Kufanele leli rekhodi linyamalale nini?"
+
+msgid "Where did this information come from?"
+msgstr "Luvele kuphi lolu lwazi?"
+
+msgid "Where is this person from?"
+msgstr "Lo muntu usuka kuphi?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Ngenkathi indlela yokuhlola isebenza, amarekhodi angaphezulu kwamahora "
+"angu-6 ubudala ayasuswa ngokunganaki idethi yokuphelelwa yisikhathi."
+
+msgid "Yes"
+msgstr "Yebo"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Yebo, cela umbhali werekhodi ukuthi akhubaze amanothi"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Yebo, cela umbhali werekhodi ukuthi anike amandla amanothi"
+
+msgid "Yes, delete the record"
+msgstr "Yebo, susa irekhodi"
+
+msgid "Yes, disable notes on this record."
+msgstr "Yebo, khubaza amanothi kuleli rekhodi."
+
+msgid "Yes, extend the record"
+msgstr "Yebo, nweba irekhodi"
+
+msgid "Yes, restore this record"
+msgstr "Yebo, buyisela leli rekhodi"
+
+msgid "Yes, these are the same person"
+msgstr "Yebo, laba bangumuntu oyedwa"
+
+msgid "Yes, update the note"
+msgstr "Yebo, buyekeza inothi"
+
+msgid "You are already subscribed. "
+msgstr "Usuvele ubhalisile. "
+
+msgid "You are already unsubscribed."
+msgstr "Usuvele ukhishiwe ohlweni."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"Okwamanje ungene ngemvume "
+"njengo-%(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Okwamanje awungenanga ngemvume."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "%(begin_tag)sUngabuka irekhodi%(end_tag)s ngaphambi kokuthi ulisuse."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Ungabuka irekhodi eligcwele ku-%(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Ubhalise ngempumelelo."
+
+msgid "You have successfully unsubscribed."
+msgstr "Uzikhiphe ohlweni ngempumelelo."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Uthole lesi saziso ngoba ngoba ubhalisele kuzibuyekezo kulo muntu "
+"olandelayo:\n"
+
+msgid "Your e-mail address"
+msgstr "Ikheli lakho le-imeyili"
+
+msgid "Your e-mail address:"
+msgstr "Ikheli lakho le-imeyili:"
+
+msgid "Your email"
+msgstr "I-imeyili yakho"
+
+msgid "Your name"
+msgstr "Igama lakho"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Igama lakho liyadingeka kusigaba \"sokumayelana nawe\". Sicela ubuyele "
+"emuva uphinde uzame futhi."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Igama lakho liyadingeka kusigaba \"somthombo\". Sicela ubuyele emuva "
+"uphinde uzame futhi."
+
+msgid "Your phone number"
+msgstr "Inombolo yakho yefoni"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Isicelo sakho sicutshungulwe ngempumelelo. SIcela uhlole ibhokisi lakho "
+"lokungenayo uphinde uqinisekise ukuthi ufuna ukuthumela inothi lakho "
+"ngokulandela i-url eshumekiwe."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "I-[Person Finder] Qinisekisa inothi lakho ku-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "I-[Person Finder] Isaziso sokususa se-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "I-[Person Finder] Khubaza amanothi ku-\"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "I-[Person Finder] Nika amandla amanothi ku-\"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "I-[Person Finder] Inikwa amandla isaziso samanothi we-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "I-[Person Finder] Amanothi manje akhutshazelwe i-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "I-[Person Finder] Amanothi manje anikwe amandla ku-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "I-[Person Finder] Isaziso sokubuyiselwa kwerekhodi le-\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "I-[Person Finder] Isibuyekezo sesimo se-%(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "I-[Person Finder] Ubhalisele izibuyekezo zesimo ze-%(full_name)s"
+
+msgid "at"
+msgstr "ngo-"
+
+msgid "female"
+msgstr "owesifazane"
+
+msgid "in test mode"
+msgstr "kumodi yokuhlola"
+
+msgid "male"
+msgstr "owesilisa"
+
+msgid "on"
+msgstr "vula"
+
+msgid "other"
+msgstr "okunye"
+

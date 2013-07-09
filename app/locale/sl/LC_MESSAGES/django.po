@@ -59,13 +59,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Spoštovani, %(author_name)s, Uporabnik je zahteval, da omogočite opombe v"
-" zapisu za osebo »%(full_name)s«. Vaš e-poštni naslov je shranjen in "
-"obravnavan kot avtor tega zapisa. Če želite omogočiti opombe v tem "
-"zapisu, uporabite to povezavo v treh dneh:\n"
+"Spoštovani %(author_name)s,\n"
+"\n"
+"uporabnik je zahteval, da omogočite opombe v zapisu za osebo\n"
+"»%(full_name)s«.\n"
+"\n"
+"Vaš e-poštni naslov je shranjen in obravnavan kot avtor tega zapisa. Če "
+"želite omogočiti opombe\n"
+"v tem zapisu, v naslednjih treh dneh kliknite to povezavo:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,10 +89,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Spoštovani, %(author_name)s, uporabnik je zahteval, da onemogočite opombe"
-" v zapisu za osebo »%(full_name)s«. Vaš e-poštni naslov je shranjen in "
-"obravnavan kot avtor tega zapisa. Če želite onemogočiti opombe v tem "
-"zapisu, uporabite to povezavo v treh dneh:\n"
+"Spoštovani %(author_name)s,\n"
+"\n"
+"uporabnik je zahteval, da onemogočite opombe v zapisu za osebo\n"
+"»%(full_name)s«.\n"
+"\n"
+"Vaš e-poštni naslov je shranjen in obravnavan kot avtor tega zapisa. Če "
+"želite onemogočiti opombe\n"
+"v tem zapisu, v naslednjih treh dneh kliknite to povezavo:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -107,9 +114,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Spoštovani, %(author_name)s, pravkar ste vnesli opombo v zapisu za osebo "
-"»%(full_name)s«. Če želite opombo objaviti, uporabite to povezavo v treh "
-"dneh:\n"
+"Spoštovani %(author_name)s,\n"
+"pravkar ste vnesli opombo v zapisu za osebo »%(full_name)s«.  \n"
+"Če želite opombo objaviti, v naslednjih treh dneh kliknite to povezavo:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -121,12 +128,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Opozorilo: ta zapis bo potekel prej kot v "
+"%(expiration_days)s dneh.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Opozorilo: ta zapis bo potekel prej kot v enem dnevu."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -135,8 +150,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ali ste prepričani, da želite izbrisati zapis za \"%(full_name)s\"?"
-"\n"
+"      Ali res želite izbrisati zapis za »%(full_name)s«?\n"
 "    "
 
 #, python-format
@@ -146,8 +160,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ali ste prepričani, da želite onemogočiti opombe za osebo "
-"»%(full_name)s«?\n"
+"      Ali res želite onemogočiti opombe za osebo »%(full_name)s«?\n"
 "    "
 
 #, python-format
@@ -158,8 +171,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ali ste prepričani, da želite onemogočiti opombe v zapisu osebe "
-"»%(full_name)s«?\n"
+"      Ali res želite onemogočiti opombe v zapisu osebe »%(full_name)s«?\n"
 "    "
 
 #, python-format
@@ -169,8 +181,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ali ste prepričani, da želite omogočiti opombe za osebo "
-"»%(full_name)s«?\n"
+"      Ali res želite omogočiti opombe za osebo »%(full_name)s«?\n"
 "    "
 
 #, python-format
@@ -181,8 +192,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ali ste prepričani, da želite podaljšati veljavnost za zapis "
-"»%(full_name)s«?\n"
+"      Ali res želite podaljšati veljavnost za zapis »%(full_name)s«?\n"
 "    "
 
 msgid ""
@@ -201,7 +211,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Če nadaljujete z brisanjem,\n"
+"      Če boste nadaljevali z brisanjem,\n"
 "      tega zapisa ne bo več mogoče poiskati ali prikazati na tem mestu.\n"
 "    "
 
@@ -214,6 +224,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Če ga želite trajno izbrisati,\n"
+"      se obrnite na izvirni vir.\n"
+"      Izvirni zapis si lahko ogledate tukaj:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -225,6 +241,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Vneseni URL ni videti kot veljaven URL profila spletnega mesta "
+"%(website)s.\n"
+"      Pojdite na stran profila te osebe na spletnem mestu %(website)s, "
+"nato kopirajte URL in ga prilepite\n"
+"      na to mesto.\n"
+"      "
 
 msgid ""
 "\n"
@@ -235,6 +258,13 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Ta zapis je kopija zapisa iz drugega vira.\n"
+"      Zapis lahko izbrišete,\n"
+"      vendar upoštevajte,\n"
+"      da bomo pozneje od izvirnega vira morda prejeli drugo kopijo "
+"zapisa.\n"
+"    "
 
 msgid ""
 "\n"
@@ -287,11 +317,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Uporabnik je izbrisal zapis za \"%(full_name)s\"\n"
-"na naslovu %(site_url)s.\n"
+"Uporabnik je izbrisal zapis za »%(full_name)s«\n"
+" na naslovu %(site_url)s.\n"
 "\n"
-"Obvestilo o izbrisu vam pošiljamo zato, ker\n"
-"ste s svojim e-poštnim naslovom zabeleženi kot avtor opombe za ta zapis.\n"
+"Obvestilo o izbrisu vam pošiljamo zato, ker ste s svojim e-poštnim\n"
+"naslovom zabeleženi kot avtor opombe za ta zapis.\n"
 
 #, python-format
 msgid ""
@@ -303,9 +333,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Uporabnik je izbrisal zapis za »%(full_name)s« na %(site_url)s. Obveščamo"
-" vas o brisanju, ker je za avtorja tega zapisa naveden vaš e-poštni "
-"naslov.\n"
+"Uporabnik je izbrisal zapis za »%(full_name)s«\n"
+"na spletnem mestu %(site_url)s.\n"
+"\n"
+"Obveščamo vas o brisanju, ker ste s svojim e-poštnim naslovom zabeleženi "
+"kot avtor tega zapisa.\n"
 
 #, python-format
 msgid ""
@@ -326,9 +358,9 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"OPOMBA: Če menite, da je bil zapis pomotoma izbrisan, ga lahko obnovite "
-"tako, da kliknete to povezavo v naslednjih %(days_until_deletion)s dneh:"
-"\n"
+"OPOMBA: če menite, da je bil zapis pomotoma izbrisan, ga lahko\n"
+"obnovite, tako da kliknete to povezavo v naslednjih "
+"%(days_until_deletion)s dneh:\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -346,11 +378,12 @@ msgid ""
 msgstr ""
 "\n"
 "Opombe so zdaj onemogočene v zapisu za osebo »%(full_name)s«. Če si "
-"želite ogledati zapis, uporabite to povezavo:\n"
+"želite ogledati zapis,\n"
+"uporabite to povezavo:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te "
+"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te\n"
 "osebe ali opombo v zapisu.\n"
 
 #, python-format
@@ -367,11 +400,12 @@ msgid ""
 msgstr ""
 "\n"
 "Opombe so zdaj omogočene v zapisu za osebo »%(full_name)s«. Če si želite "
-"ogledati zapis, uporabite to povezavo:\n"
+"ogledati zapis,\n"
+"uporabite to povezavo:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te "
+"Obvestilo ste prejeli, ker je vaš e-poštni naslov povezan z zapisom te\n"
 "osebe ali opombo v zapisu.\n"
 
 #, python-format
@@ -387,8 +421,8 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Avtor zapisa za »%(full_name)s«\n"
-", ki je bil prej izbrisan, je obnovil zapis. Če si želite ogledati\n"
+"Avtor zapisa za »%(full_name)s«,\n"
+"ki je bil prej izbrisan, je obnovil zapis. Če si želite ogledati\n"
 "zapis, kliknite to povezavo:\n"
 "\n"
 "    %(record_url)s\n"
@@ -416,8 +450,9 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Naročili ste se na opombe osebe »%(full_name)s«. Ta zapis si lahko "
-"ogledate na\n"
+"Naročili ste se na opombe osebe »%(full_name)s«.\n"
+"\n"
+"Ta zapis si lahko ogledate na naslovu\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -433,10 +468,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "Sporočilo za to osebo ali druge, ki jo iščejo"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "Približno en mesec (30 dni) od zdaj"
@@ -454,7 +489,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Približno šest mesecev (180 dni) od zdaj"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "O Googlovem iskalniku oseb"
 
 msgid "About you (required)"
 msgstr "O vas (obvezno)"
@@ -478,10 +513,10 @@ msgid "Are you sure this note isn't spam?"
 msgstr "Ali ste prepričani, da ta opomba ni neželena vsebina?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Ali ste prepričani, da želite to opombo označiti kot neželeno vsebino?"
+msgstr "Ali res želite to opombo označiti kot neželeno vsebino?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Ali ste prepričani, da želite obnoviti ta izbrisan zapis?"
+msgstr "Ali res želite obnoviti ta izbrisan zapis?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Vir Atom za novice o tej osebi"
@@ -496,7 +531,7 @@ msgid "Author's phone number"
 msgstr "Avtorjeva telefonska številka"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Ključ za pooblastitev"
 
 msgid "Back to results list"
 msgstr "Nazaj na seznam rezultatov"
@@ -505,11 +540,11 @@ msgid "Back to start"
 msgstr "Na začetek"
 
 msgid "CSV file"
-msgstr ""
+msgstr "Datoteka CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Opombe s tem ID-jem ni mogoče najti: %(id)s"
+msgstr "Opombe s tem id-jem ni mogoče najti: %(id)s"
 
 msgid "Cancel"
 msgstr "Prekliči"
@@ -524,31 +559,31 @@ msgid "Close window"
 msgstr "Zapri okno"
 
 msgid "Compare these records"
-msgstr "Primerjajte te zapise"
+msgstr "Primerjaj te zapise"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Če želite to orodje vdelati na vaše mesto, kopirajte in prilepite to kodo"
-" HTML"
+"Če želite to orodje vdelati v svoje spletno mesto, kopirajte in prilepite"
+" to kodo HTML."
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Ustvari nov zapis"
 
 msgid "Create a new record for"
-msgstr "Ustvarite nov zapis za "
+msgstr "Ustvari nov zapis za"
 
 msgid "Create a new record for a missing person"
-msgstr "Ustvarite nov zapis za pogrešano osebo"
+msgstr "Ustvari nov zapis za pogrešano osebo"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Krizni dogodki"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Število zapisov, ki se jim trenutno sledi: %(num_people)s."
+msgstr "Približno število zapisov, ki se jim trenutno sledi: %(num_people)s"
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Datum ne more biti v prihodnosti. Vrnite se in poskusite znova."
@@ -569,16 +604,16 @@ msgid "Description"
 msgstr "Opis"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Namizna različica"
 
 msgid "Developers"
 msgstr "Razvijalci"
 
 msgid "Disable notes on this record"
-msgstr "Onemogočite opombe v tem zapisu"
+msgstr "Onemogoči opombe v tem zapisu"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Ali ima ta oseba strani profila na drugih spletnih mestih?"
 
 msgid "Download the sound as MP3"
 msgstr "Prenesi zvok v obliki MP3"
@@ -590,16 +625,16 @@ msgid "E-mail address"
 msgstr "E-poštni naslov"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "Vdelava tega programa"
+msgstr "Vdelava te aplikacije"
 
 msgid "Enable notes on this record"
-msgstr "Omogočite opombe v tem zapisu"
+msgstr "Omogoči opombe v tem zapisu"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Zagotovite, da bodo vsi datumi v tej obliki: llll-mm-ddTuu:mm:ssZ (UTC)"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Vnesite v obliki LLLL-MM-DD"
@@ -626,7 +661,7 @@ msgstr "Datum poteka zapisa"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Podaljšaj datum poteka za %(extension_days)s dni"
 
 msgid "Family name"
 msgstr "Priimek"
@@ -643,7 +678,7 @@ msgid ""
 msgstr "Za vse telefone, razen mobilnih, uporabite storitev 171 podjetja NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Polno ime"
 
 msgid "Get a new challenge"
 msgstr "Poiščite nov izziv"
@@ -655,7 +690,7 @@ msgid "Get an audio challenge"
 msgstr "Poiščite zvočni izziv"
 
 msgid "Given name"
-msgstr "Ime"
+msgstr "Dano ime"
 
 msgid "Google Person Finder"
 msgstr "Google Iskalnik oseb"
@@ -669,6 +704,8 @@ msgstr "Pomoč"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Tu je na voljo %(begin_tag)svzorčna datoteka CSV%(end_tag)s, ki jo lahko "
+"uredite in prenesete."
 
 msgid "Hide Map"
 msgstr "Skrij zemljevid"
@@ -773,7 +810,7 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Neveljaven e-poštni naslov. Poskusite znova."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Izbira jezika"
 
 msgid "Last known location"
 msgstr "Zadnja znana lokacija"
@@ -782,10 +819,10 @@ msgid "Link"
 msgstr "Povezava"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Povezava do strani profila"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Označi zapise kot podvojene"
@@ -818,7 +855,7 @@ msgid ""
 "the name"
 msgstr ""
 "Rezultatov je več kot 100. Prikazanih je samo prvih sto. Vnesite več črk "
-"imena"
+"imena."
 
 msgid "Name"
 msgstr "Ime"
@@ -844,20 +881,20 @@ msgstr "Ni sporočil, registriranih za operaterjevo storitev sporočilne table."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Ni opombe z ID-jem: %(id_str)s."
+msgstr "Ni opombe z ID-jem: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "Opombe niso bile objavljene"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "Ni osebe z ID-jem: %(id_str)s."
+msgstr "Ni osebe z ID-jem: %(id_str)s"
 
 msgid "No results found for"
 msgstr "Ni rezultatov za"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
@@ -913,11 +950,15 @@ msgstr ""
 "lahko ogledal in uporabil kdor koli. Google ne preverja točnosti teh "
 "podatkov."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"OPOMBA: Na dejavnih spletnih mestih iskalnika oseb so vsi vneseni podatki"
+" na voljo javnosti in uporabi jih lahko kdor koli. Google ne preverja teh"
+" podatkov niti ne potrjuje njihove točnosti."
 
 msgid "Person Finder"
 msgstr "Iskalnik oseb"
@@ -961,7 +1002,7 @@ msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Če se želite naročiti na novice, vnesite svoj e-poštni naslov"
 
 msgid "Please explain why you think these are the same person"
-msgstr "Prosimo, razložite, zakaj mislite, da so ti ista oseba"
+msgstr "Prosimo, razložite, zakaj mislite, da so te osebe ista oseba"
 
 msgid "Please fill in all the required fields."
 msgstr "Izpolnite vsa obvezna polja."
@@ -979,25 +1020,25 @@ msgid "Postal or zip code"
 msgstr "Poštna številka"
 
 msgid "Posted by"
-msgstr "Objavil(a)"
+msgstr "Objavil(-a)"
 
 msgid "Proceed"
 msgstr "Nadaljuj"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Strani profila"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Stran profila"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Vnos informacij"
 
 msgid "Provide information about this person"
 msgstr "Vnos informacij o tej osebi"
 
 msgid "Provided by:"
-msgstr "Ponudnik:"
+msgstr "Zagotovil(-a):"
 
 msgid "Province or state"
 msgstr "Provinca ali zvezna država"
@@ -1016,17 +1057,17 @@ msgstr "Izbrani zapisi"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Zapisi z imeni in naslovi, ki se ujemajo s »%(query)s«"
+msgstr "Zapisi z imeni in naslovi, ki se ujemajo s poizvedbo »%(query)s«"
 
 msgid "Remove"
-msgstr ""
+msgstr "Odstrani"
 
 msgid "Report spam"
 msgstr "Prijavi vsiljeno pošto"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Vrni se na zapis za %(full_name)s."
+msgstr "Vrni se na zapis za osebo %(full_name)s."
 
 msgid "Reveal note"
 msgstr "Razkrij opombo"
@@ -1042,31 +1083,31 @@ msgstr "Poišči to osebo"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Za več navodil odprite %(begin_tag)swiki%(end_tag)s"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Izberite spletno mesto, da dodate stran za profil ..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Izberite do 3 zapise, ki jih želite označiti kot dvojnike"
+msgstr "Izberite do 3 zapise, ki jih želite označiti kot dvojnike:"
 
 msgid "Send email"
-msgstr "Pošljite e-pošto"
+msgstr "Pošlji e-pošto"
 
 msgid "Sex"
 msgstr "Spol"
 
 msgid "Show Map"
-msgstr "Pokaži zemljevid"
+msgstr "Prikaži zemljevid"
 
 msgid "Show sensitive information"
-msgstr "Pokaži občutljive podatke"
+msgstr "Prikaži občutljive podatke"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Prijava"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Odjava"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Nekdo je prejel informacije, da je ta oseba živa"
@@ -1109,13 +1150,13 @@ msgid "Subscribe to updates about this person"
 msgstr "Naročite se na novice o tej osebi"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Preklopi na naslov"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Preklopi v način za označevanje dvojnikov"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Preklopi na zemljepisno širino/dolžino"
 
 msgid "Switch to normal view mode"
 msgstr "Preklopi v običajni način prikaza"
@@ -1127,10 +1168,8 @@ msgid "Terms of Service"
 msgstr "Pogoji storitve"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1159,7 +1198,7 @@ msgstr "Zapis je bil izbrisan."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "Zapis je bil podaljšan na %(expiry_date)s."
+msgstr "Zapis je bil podaljšan do %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1238,7 +1277,7 @@ msgid "This record has served its purpose."
 msgstr "Ta zapis je že služil svojemu namenu."
 
 msgid "This record is a duplicate of"
-msgstr "Ta zapis je dvojni zapisa"
+msgstr "Ta zapis je dvojnik zapisa"
 
 msgid "This record is copied from another source."
 msgstr "Ta zapis je kopiran iz drugega vira."
@@ -1253,12 +1292,16 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Ta shramba je trenutno v preizkusnem načinu. Ko preizkusni način deluje, "
+"se zapisi, ki so starejši od 6 ur, izbrišejo."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"Če želite tej opombi priložiti fotografijo, jo prenesite ali pa vnesite "
+"njen URL."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Če želite izbrisati podatke, dostopite do iskalnika oseb z namizja."
 
 msgid "To unsubscribe, follow this link"
 msgstr "Če se želite odjaviti, uporabite to povezavo"
@@ -1272,9 +1315,11 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Vnesite naslov ali odprite spodnji zemljevid in določite lokacijo, tako "
+"da kliknete zemljevid."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Vnesite naslov."
 
 msgid "Type the two words:"
 msgstr "Vnesite dve besedi:"
@@ -1289,16 +1334,16 @@ msgid "URL of original record"
 msgstr "URL izvirnega zapisa"
 
 msgid "Unspecified"
-msgstr "ni podatka"
+msgstr "Ni določeno"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Prenos v strežnik"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Prenesite datoteke CSV"
 
 msgid "View the record"
 msgstr "Oglejte si zapis"
@@ -1322,6 +1367,8 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Ko preizkusni način deluje, se zapisi, ki so starejši od 6 ur, izbrišejo "
+"(ne glede na datum poteka)."
 
 msgid "Yes"
 msgstr "Da"
@@ -1360,22 +1407,22 @@ msgstr "Naročnina je že odpovedana."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Trenutno ste vpisani kot %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Trenutno niste vpisani."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Lahko si %(begin_tag)sogledate zapis%(end_tag)s, preden ga izbrišete."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Celoten zapis si lahko ogledate na %(view_url)s"
+msgstr "Celoten zapis si lahko ogledate na naslovu %(view_url)s"
 
 msgid "You have successfully subscribed."
 msgstr "Uspešno ste se naročili."
@@ -1408,7 +1455,7 @@ msgstr "V razdelek »O vas« morate vnesti ime. Vrnite se in poskusite znova."
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "V razdelku »Izvor« morate vnesti ime. Vrnite se in poskusite znova."
+msgstr "V razdelku »Vir« morate vnesti ime. Vrnite se in poskusite še enkrat."
 
 msgid "Your phone number"
 msgstr "Vaša telefonska številka"
@@ -1426,15 +1473,15 @@ msgstr "[Iskalnik oseb] Potrdite opombo za osebo »%(full_name)s«"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Iskalnik oseb] Obvestilo o izbrisu za »%(full_name)s«"
+msgstr "[Iskalnik oseb] Obvestilo o izbrisu za osebo »%(full_name)s«"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Iskalnik oseb] Ali želite onemogočiti opombe za osebo »%(full_name)s«?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Iskalnik oseb] Ali želite omogočiti opombe za osebo »%(full_name)s«?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
@@ -1454,11 +1501,11 @@ msgstr "[Iskalnik oseb] Obvestilo o obnovitvi zapisa za »%(full_name)s«"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Iskalnik oseb] Posodobitev stanja za %(full_name)s"
+msgstr "[Iskalnik oseb] Posodobitev stanja za osebo %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[Iskalnik oseb] Naročeni ste na posodobitve stanja za %(full_name)s"
+msgstr "[Iskalnik oseb] Naročeni ste na posodobitve stanja za osebo %(full_name)s"
 
 msgid "at"
 msgstr "ob"
@@ -1467,13 +1514,13 @@ msgid "female"
 msgstr "ženska"
 
 msgid "in test mode"
-msgstr ""
+msgstr "v preizkusnem načinu"
 
 msgid "male"
 msgstr "moški"
 
 msgid "on"
-msgstr "dne"
+msgstr "na"
 
 msgid "other"
 msgstr "drugo"

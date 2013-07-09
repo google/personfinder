@@ -34,10 +34,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Er wordt een bevestigingsbericht naar de auteur van de record verzonden"
-" om ervoor te zorgen dat opmerkingen alleen worden uit- of ingeschakeld "
-"met toestemming van de auteur. Als u de auteur bent, controleert u uw "
-"e-mail nadat u op de onderstaande knop heeft geklikt.\n"
+"  Er wordt een bevestigingsbericht naar de auteur van de vermelding "
+"verzonden om ervoor te zorgen dat opmerkingen alleen worden in- of "
+"uitgeschakeld met zijn of haar toestemming. Als u de auteur bent, "
+"controleer dan uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
 "\n"
 "  "
 
@@ -59,14 +59,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Beste %(author_name)s, Een gebruiker heeft een verzoek ingediend voor het"
-" inschakelen van opmerkingen in de record voor '%(full_name)s'. Uw "
-"e-mailadres is geregistreerd als de auteur van deze record. Als u "
-"opmerkingen voor deze record wilt inschakelen, klikt u binnen drie dagen "
-"op deze link:\n"
+"Beste %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"Een gebruiker heeft een verzoek ingediend voor het inschakelen van "
+"opmerkingen in de vermelding voor '%(full_name)s'.\n"
 "\n"
+"Uw e-mailadres is geregistreerd als de auteur van deze vermelding. Als u "
+"opmerkingen voor deze vermelding wilt inschakelen, klik dan binnen drie "
+"dagen op deze link:\n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -87,13 +89,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Beste %(author_name)s, Een gebruiker heeft een verzoek ingediend voor het"
-" uitschakelen van opmerkingen in de record voor '%(full_name)s'. Uw "
-"e-mailadres is geregistreerd als de auteur van deze record. Als u "
-"opmerkingen voor deze record wilt uitschakelen, klikt u binnen drie dagen"
-" op deze link:\n"
+"Beste %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"Een gebruiker heeft een verzoek ingediend voor het uitschakelen van "
+"opmerkingen in de vermelding voor '%(full_name)s'.\n"
+"\n"
+"Uw e-mailadres is geregistreerd als de auteur van deze vermelding. Als u "
+"opmerkingen voor deze vermelding wilt uitschakelen, klik dan binnen drie "
+"dagen op deze link:\n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -109,11 +114,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Beste %(author_name)s, U heeft zojuist een opmerking toegevoegd aan de "
-"record voor '%(full_name)s'. Als u uw opmerking wilt publiceren, klikt u "
-"binnen drie dagen op deze link:\n"
+"Beste %(author_name)s,\n"
 "\n"
-"   %(confirm_url)s\n"
+"U heeft zojuist een opmerking toegevoegd aan de vermelding voor "
+"'%(full_name)s'.\n"
+"Als u uw opmerking wilt publiceren, klik dan binnen drie dagen op deze "
+"link:\n"
+"\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -123,12 +131,19 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Let op: deze vermelding verloopt over minder dan "
+"%(expiration_days)s dagen.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Let op: deze vermelding verloopt vandaag nog.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -137,7 +152,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Weet u zeker dat u de melding voor '%(full_name)s' wilt "
+"      Weet u zeker dat u deze vermelding voor '%(full_name)s' wilt "
 "verwijderen?\n"
 "    "
 
@@ -160,8 +175,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Weet u zeker dat u opmerkingen wilt uitschakelen voor de record van"
-" '%(full_name)s'?\n"
+"      Weet u zeker dat u opmerkingen wilt uitschakelen voor de vermelding"
+" van '%(full_name)s'?\n"
 "    "
 
 #, python-format
@@ -183,8 +198,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Weet u zeker dat u de vervaldatum wilt verlengen voor record "
-"'%(full_name)s'?\n"
+"      Weet u zeker dat u de vervaldatum voor vermelding '%(full_name)s' "
+"wilt uitstellen?\n"
 "    "
 
 msgid ""
@@ -203,8 +218,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Als u de verwijdering voltooit,\n"
-"      is deze melding niet meer te vinden of te bekijken op deze site.\n"
+"      Als u de verwijdering voltooit, is deze vermelding niet meer te "
+"vinden of te bekijken op deze site.\n"
 "    "
 
 #, python-format
@@ -216,6 +231,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Als u de vermelding permanent wilt verwijderen,\n"
+"      moet u contact opnemen met de oorspronkelijke bron.\n"
+"      U kunt de oorspronkelijke vermelding bekijken op\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -227,6 +248,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      De URL die u heeft ingevoerd, lijkt geen geldige %(website)s "
+"profiel-URL.\n"
+"      Ga naar de profielpagina van deze persoon op %(website)s en kopieer"
+" en plak\n"
+"      die URL hier.\n"
+"      "
 
 msgid ""
 "\n"
@@ -237,6 +265,14 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Deze vermelding is een kopie van een vermelding van een andere "
+"bron.\n"
+"      U kunt de vermelding hier verwijderen,\n"
+"      maar houd er rekening mee dat\n"
+"      we later mogelijk een andere kopie ervan ontvangen van de "
+"oorspronkelijk bron.\n"
+"    "
 
 msgid ""
 "\n"
@@ -249,10 +285,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Er wordt een bevestigingsbericht naar de auteur van de record "
-"verzonden om ervoor te zorgen dat opmerkingen alleen worden uit- of "
-"ingeschakeld met toestemming van de auteur. Als u de auteur bent, "
-"controleert u uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
+"    Er wordt een bevestigingsbericht naar de auteur van de vermelding "
+"verzonden om ervoor te zorgen dat opmerkingen alleen worden in- of "
+"uitgeschakeld met toestemming van de auteur. Als u de auteur bent, "
+"controleer dan uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
 "  "
 
 msgid ""
@@ -263,8 +299,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  De record blijft zichtbaar op deze site, maar niemand kan er meer "
-"opmerkingen bij plaatsen.\n"
+"  De vermelding blijft zichtbaar op deze site, maar er kunnen geen "
+"opmerkingen meer bij geplaatst worden.\n"
 "  "
 
 msgid ""
@@ -275,8 +311,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Als u uw opmerking wilt plaatsen, geeft u hieronder uw e-mailadres op "
-"en klikt u op de bevestigingslink die u op dat adres ontvangt.\n"
+"  Als u uw opmerking wilt plaatsen, geef dan hieronder uw e-mailadres op "
+"en klik u op de bevestigingslink die u op dat adres ontvangt.\n"
 "  "
 
 #, python-format
@@ -289,12 +325,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Een gebruiker heeft de melding voor '%(full_name)s'\n"
-"op %(site_url)s verwijderd.\n"
+"Een gebruiker heeft de vermelding voor '%(full_name)s' op\n"
+" %(site_url)s verwijderd.\n"
 "\n"
-"We stellen u op de hoogte van deze verwijdering omdat \n"
-"uw e-mailadres als auteur van een opmerking bij deze melding is "
-"geregistreerd.\n"
+"We stellen u hiervan op de hoogte omdat uw e-mailadres\n"
+"als auteur van een opmerking bij deze vermelding is geregistreerd.\n"
 
 #, python-format
 msgid ""
@@ -306,9 +341,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Een gebruiker heeft de record verwijderd voor '%(full_name)s' op "
-"%(site_url)s. We stellen u hiervan op de hoogte omdat uw e-mailadres is "
-"geregistreerd als de auteur van deze record.\n"
+"Een gebruiker heeft de vermelding verwijderd voor '%(full_name)s'\n"
+"op %(site_url)s.\n"
+"\n"
+"We stellen u hiervan op de hoogte omdat uw e-mailadres is\n"
+"geregistreerd als auteur van deze vermelding.\n"
 
 #, python-format
 msgid ""
@@ -317,7 +354,8 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"Na %(days_until_deletion)s dagen wordt de record definitief verwijderd.\n"
+"Na %(days_until_deletion)s dagen wordt de vermelding definitief "
+"verwijderd.\n"
 
 #, python-format
 msgid ""
@@ -329,11 +367,11 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"Opmerking: als u van mening bent dat deze record ten onrechte is "
-"verwijderd, kunt u de record herstellen door deze link te volgen in de "
-"komende %(days_until_deletion)s dagen:\n"
+"Opmerking: als u vindt dat deze vermelding ten onrechte is verwijderd, "
+"kunt u de vermelding herstellen door binnen %(days_until_deletion)s dagen"
+" deze link te volgen:\n"
 "\n"
-"    %(restore_url)s\n"
+"%(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -348,13 +386,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Opmerkingen zijn nu uitgeschakeld in de record voor '%(full_name)s'. Klik"
-" op deze link om de record te bekijken:\n"
+"Opmerkingen zijn nu uitgeschakeld in de vermelding voor '%(full_name)s'. "
+"Klik op deze link\n"
+"om de vermelding te bekijken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze "
-"persoonsrecord of een opmerking in de record.\n"
+"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze\n"
+"persoonsvermelding of een opmerking in de vermelding.\n"
 
 #, python-format
 msgid ""
@@ -369,13 +408,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Opmerkingen zijn nu ingeschakeld in de record voor '%(full_name)s'. Klik "
-"op deze link om de record te bekijken:\n"
+"Opmerkingen zijn nu ingeschakeld in de vermelding voor '%(full_name)s'. "
+"Klik op deze link\n"
+"om de vermelding te bekijken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze "
-"persoonsrecord of een opmerking in de record.\n"
+"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze\n"
+"persoonsvermelding of een opmerking in de vermelding.\n"
 
 #, python-format
 msgid ""
@@ -390,14 +430,15 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"De auteur van de melding voor '%(full_name)s'\n"
-"(die eerder was verwijderd) heeft de melding hersteld. Als u de \n"
-"melding wilt bekijken, volgt u deze link:\n"
+"De auteur van de vermelding voor '%(full_name)s'\n"
+"(die eerder was verwijderd) heeft de vermelding hersteld. Volg deze link "
+"om de vermelding bekijken:\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
-"We stellen u hiervan op de hoogte omdat uw e-mailadres is gekoppeld \n"
-"aan deze persoonsmelding of een opmerking bij de melding.\n"
+"We stellen u hiervan op de hoogte omdat uw e-mailadres is gekoppeld aan "
+"deze\n"
+"persoonsmelding of een opmerking bij de vermelding.\n"
 
 #, python-format
 msgid ""
@@ -405,8 +446,8 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Er is een nieuwe opmerking toegevoegd aan de record voor '%(full_name)s'."
-"\n"
+"Er is een nieuwe opmerking toegevoegd aan de vermelding voor "
+"'%(full_name)s'.\n"
 
 #, python-format
 msgid ""
@@ -420,12 +461,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Uw heeft zich geabonneerd op opmerkingen over '%(full_name)s'. U kunt "
-"deze record bekijken op\n"
+"Uw heeft zich geabonneerd op opmerkingen over '%(full_name)s'.\n"
 "\n"
-"     %(view_url)s\n"
+"U kunt deze vermelding bekijken op\n"
 "\n"
-"Als u zich wilt afmelden, volgt u deze link: %(unsubscribe_link)s\n"
+"%(view_url)s\n"
+"\n"
+"Volg deze link als u zich wilt afmelden: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klik voor weergave)"
@@ -439,10 +481,10 @@ msgstr ""
 "persoon"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "Over ongeveer 1 maand (30 dagen)"
@@ -460,7 +502,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Over ongeveer 6 maanden (180 dagen)"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Over Google Personen zoeken"
 
 msgid "About you (required)"
 msgstr "Over u (verplicht)"
@@ -487,7 +529,9 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "Weet u zeker dat u deze opmerking als spam wilt markeren?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Weet u zeker dat u de verwijdering van deze melding ongedaan wilt maken?"
+msgstr ""
+"Weet u zeker dat u de verwijdering van deze vermelding ongedaan wilt "
+"maken?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Atom-feed met updates over deze persoon"
@@ -502,7 +546,7 @@ msgid "Author's phone number"
 msgstr "Telefoonnummer van auteur"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Autorisatiecode"
 
 msgid "Back to results list"
 msgstr "Terug naar lijst met resultaten"
@@ -511,7 +555,7 @@ msgid "Back to start"
 msgstr "Terug naar begin"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV-bestand"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -530,40 +574,40 @@ msgid "Close window"
 msgstr "Venster sluiten"
 
 msgid "Compare these records"
-msgstr "Deze meldingen vergelijken"
+msgstr "Deze vermeldingen vergelijken"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Kopieer en plak de volgende HTML-code om dit hulpprogramma op uw site in "
-"te sluiten"
+"Kopieer en plak de volgende HTML-code om deze tool op uw site in te "
+"sluiten"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Een nieuwe vermelding maken"
 
 msgid "Create a new record for"
-msgstr "Een nieuwe melding maken voor"
+msgstr "Een nieuwe vermelding maken voor"
 
 msgid "Create a new record for a missing person"
-msgstr "Een nieuwe melding maken voor een vermist persoon"
+msgstr "Een nieuwe vermelding maken voor een vermist persoon"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Noodsituaties"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Er worden momenteel ongeveer %(num_people)s meldingen bijgehouden."
+msgstr "Er worden momenteel ongeveer %(num_people)s vermeldingen bijgehouden."
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Datum kan niet in de toekomst liggen. Ga terug en probeer het opnieuw."
+msgstr "Datum mag niet in de toekomst liggen. Ga terug en probeer het opnieuw."
 
 msgid "Date of birth"
 msgstr "Geboortedatum"
 
 msgid "Delete this record"
-msgstr "Deze melding verwijderen"
+msgstr "Deze vermelding verwijderen"
 
 msgid "Describe how to identify this person."
 msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
@@ -575,19 +619,19 @@ msgid "Description"
 msgstr "Beschrijving"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Desktopversie"
 
 msgid "Developers"
 msgstr "Ontwikkelaars"
 
 msgid "Disable notes on this record"
-msgstr "Opmerkingen uitschakelen voor deze record"
+msgstr "Opmerkingen uitschakelen voor deze vermelding"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Heeft deze persoon profielpagina's op andere websites?"
 
 msgid "Download the sound as MP3"
-msgstr "Het geluid als MP3 downloaden"
+msgstr "Het geluid downloaden als een MP3-bestand"
 
 msgid "E-mail"
 msgstr "E-mail"
@@ -596,43 +640,43 @@ msgid "E-mail address"
 msgstr "E-mailadres"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "De toepassing insluiten"
+msgstr "De app insluiten"
 
 msgid "Enable notes on this record"
-msgstr "Opmerkingen inschakelen voor deze record"
+msgstr "Opmerkingen inschakelen voor deze vermelding"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Alle datums moeten de notatie jjjj-mm-ddTuu:mm:ssZ hebben in UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Gebruik de notatie JJJJ-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Voer de voor- en achternaam van de persoon in."
+msgstr "Geef de voor- en achternaam van de persoon."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Voer de naam of delen van de naam van de persoon in."
+msgstr "Geef de naam of delen van de naam van de persoon."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 "Geef de naam, gedeelten van de naam of het mobiele telefoonnummer van de "
-"persoon op."
+"persoon."
 
 msgid "Enter the person's name."
-msgstr "Voer de naam van de persoon in."
+msgstr "Geef de naam van de persoon."
 
 msgid "Expiry"
 msgstr "Vervaldatum"
 
 msgid "Expiry date of this record"
-msgstr "Vervaldatum van deze melding"
+msgstr "Vervaldatum van deze vermelding"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Vervaldatum %(extension_days)s dagen uitstellen"
 
 msgid "Family name"
 msgstr "Achternaam"
@@ -641,7 +685,7 @@ msgid "Feed of updates about this person"
 msgstr "Feed met updates over deze persoon"
 
 msgid "Follow this link to create a new record"
-msgstr "Volg deze link om een nieuwe melding te maken"
+msgstr "Volg deze link om een nieuwe vermelding te maken"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -651,7 +695,7 @@ msgstr ""
 "gebruiken die wordt geleverd door NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Volledige naam"
 
 msgid "Get a new challenge"
 msgstr "Een nieuwe uitdaging aangaan"
@@ -677,6 +721,8 @@ msgstr "Help"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Dit is %(begin_tag)seen voorbeeld van een CSV-bestand%(end_tag)s dat u "
+"kunt bewerken en uploaden"
 
 msgid "Hide Map"
 msgstr "Kaart verbergen"
@@ -698,8 +744,8 @@ msgstr "Hoe is deze persoon nu te bereiken?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
-"Hoe anderen die informatie willen over deze persoon contact met u kunnen "
-"opnemen"
+"Hoe kunnen anderen die informatie over deze persoon willen contact met u "
+"opnemen?"
 
 msgid "I am seeking information"
 msgstr "Ik ben op zoek naar informatie"
@@ -708,7 +754,7 @@ msgid "I am this person"
 msgstr "Ik ben deze persoon"
 
 msgid "I do not want any more updates on this record."
-msgstr "Ik wil niet dat er updates voor deze record worden weergegeven."
+msgstr "Ik wil niet dat er updates voor deze vermelding worden weergegeven."
 
 msgid "I do not want my information online anymore."
 msgstr "Ik wil niet dat mijn gegevens online beschikbaar blijven."
@@ -750,28 +796,28 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Als geen van deze meldingen overeenkomt met de persoon die u bedoelt, "
-"klikt u hieronder om een nieuwe melding te maken."
+"Als geen van deze vermeldingen overeenkomt met de persoon die u bedoelt, "
+"klik dan hieronder om een nieuwe vermelding te maken."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Als u de auteur van deze opmerking bent, controleert u of u een e-mail "
+"Als u de auteur van deze opmerking bent, controleer dan of u een e-mail "
 "met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
-"opmerkingen wilt uitschakelen voor deze record. Als u niet de auteur "
-"bent, wacht u tot de auteur van de record uw verzoek bevestigt."
+"opmerkingen wilt uitschakelen voor deze vermelding. Als u niet de auteur "
+"bent, wacht dan tot de auteur van de vermelding uw verzoek bevestigt."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Als u de auteur van deze opmerking bent, controleert u of u een e-mail "
+"Als u de auteur van deze opmerking bent, controleer dan of u een e-mail "
 "met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
-"opmerkingen wilt inschakelen voor deze record. Als u niet de auteur bent,"
-" wacht u tot de auteur van de record uw verzoek bevestigt."
+"opmerkingen wilt inschakelen voor deze vermelding. Als u niet de auteur "
+"bent, wacht dan tot de auteur van de vermelding uw verzoek bevestigt."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -785,31 +831,31 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Ongeldig e-mailadres. Probeer het opnieuw."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Taal selecteren"
 
 msgid "Last known location"
 msgstr "Laatst bekende locatie"
 
 msgid "Link"
-msgstr "Link"
+msgstr "Koppelen"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Koppelen aan profielpagina"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "Meldingen markeren als duplicaten"
+msgstr "Vermeldingen markeren als duplicaten"
 
 msgid "Message (required)"
-msgstr "Bericht (vereist)"
+msgstr "Bericht (verplicht)"
 
 msgid "Message is required. Please go back and try again."
 msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
 
 msgid "Missing person's current contact information"
-msgstr "Huidige contactgegevens van de vermiste persoon"
+msgstr "Huidige contactgegevens van vermiste persoon"
 
 msgid "Missing person's current e-mail address"
 msgstr "Huidig e-mailadres van vermiste persoon"
@@ -842,14 +888,14 @@ msgid "Name is required.  Please go back and try again."
 msgstr "U moet een naam opgeven. Ga terug en probeer het opnieuw."
 
 msgid "Neighborhood"
-msgstr "Buurt"
+msgstr "Wijk"
 
 msgid "No"
 msgstr "Nee"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Geen e-mailadres van auteur voor record %(id)s."
+msgstr "Geen e-mailadres van auteur voor vermelding %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -871,7 +917,7 @@ msgid "No results found for"
 msgstr "Geen resultaten gevonden voor"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Niet toegestaan opmerkingen te plaatsen met de status 'believed_dead'."
@@ -923,15 +969,20 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"OPMERKING: alle gegevens die worden ingevoerd, zijn beschikbaar voor "
+"LET OP: alle gegevens die worden ingevoerd, zijn beschikbaar voor "
 "iedereen en zijn door iedereen te gebruiken. Google beoordeelt of "
-"verifieert de nauwkeurigheid van deze gegevens niet."
+"verifieert de betrouwbaarheid van deze gegevens niet."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"LET OP: op actieve sites voor Personen zoeken zijn alle gegevens die "
+"worden ingevoerd openbaar beschikbaar, en ze kunnen door iedereen worden "
+"gebruikt. Google beoordeelt of controleert de betrouwbaarheid van deze "
+"gegevens niet."
 
 msgid "Person Finder"
 msgstr "Personen zoeken"
@@ -978,7 +1029,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Leg uit waarom u denkt dat het hier om dezelfde persoon gaat"
 
 msgid "Please fill in all the required fields."
-msgstr "Vul alle vereiste velden in."
+msgstr "Vul alle verplichte velden in."
 
 msgid "Please fill in your email address."
 msgstr "Vul uw e-mailadres in."
@@ -999,19 +1050,19 @@ msgid "Proceed"
 msgstr "Doorgaan"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profielpagina's"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profielpagina"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Informatie geven"
 
 msgid "Provide information about this person"
 msgstr "Informatie geven over deze persoon"
 
 msgid "Provided by:"
-msgstr "Geleverd door:"
+msgstr "Opgegeven door:"
 
 msgid "Province or state"
 msgstr "Provincie of staat"
@@ -1023,30 +1074,30 @@ msgid "Reason for disabling notes:"
 msgstr "Reden voor het uitschakelen van opmerkingen:"
 
 msgid "Records Similar to"
-msgstr "Meldingen die lijken op"
+msgstr "Vermeldingen die lijken op"
 
 msgid "Records selected"
-msgstr "meldingen geselecteerd"
+msgstr "Vermeldingen geselecteerd"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Records met namen en adressen die overeenkomen met '%(query)s'"
+msgstr "Vermeldingen met namen en adressen die overeenkomen met '%(query)s'"
 
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 msgid "Report spam"
-msgstr "Spam melden"
+msgstr "Spam rapporteren"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Terug naar de melding voor %(full_name)s."
+msgstr "Terug naar de vermelding voor %(full_name)s."
 
 msgid "Reveal note"
 msgstr "Opmerking weergeven"
 
 msgid "Save this record"
-msgstr "Deze melding opslaan"
+msgstr "Deze vermelding opslaan"
 
 msgid "Search Results for"
 msgstr "Zoekresultaten voor"
@@ -1056,13 +1107,13 @@ msgstr "Zoeken naar deze persoon"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Lees de %(begin_tag)swiki%(end_tag)s voor meer informatie"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Selecteer een website om een profielpagina toe te voegen..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Selecteer maximaal drie meldingen om als duplicaat te markeren:"
+msgstr "Selecteer maximaal drie vermeldingen om als duplicaat te markeren:"
 
 msgid "Send email"
 msgstr "E-mail verzenden"
@@ -1077,10 +1128,10 @@ msgid "Show sensitive information"
 msgstr "Gevoelige gegevens weergeven"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Inloggen"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Uitloggen"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Iemand heeft informatie gekregen dat deze persoon nog leeft"
@@ -1095,10 +1146,10 @@ msgid "Someone is seeking information about this person"
 msgstr "Iemand is op zoek naar informatie over deze persoon"
 
 msgid "Source of this record"
-msgstr "Bron van deze melding"
+msgstr "Bron van deze vermelding"
 
 msgid "Source of this record (required)"
-msgstr "Bron van deze melding (verplicht)"
+msgstr "Bron van deze vermelding (verplicht)"
 
 msgid "Status"
 msgstr "Status"
@@ -1123,16 +1174,16 @@ msgid "Subscribe to updates about this person"
 msgstr "Abonneren op updates over deze persoon"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Overschakelen naar adres"
 
 msgid "Switch to duplicate marking mode"
-msgstr "Overschakelen naar modus voor het markeren van duplicaten"
+msgstr "Overschakelen naar het markeren van duplicaten"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Overschakelen naar lengte-/breedtegraad"
 
 msgid "Switch to normal view mode"
-msgstr "Overschakelen naar modus voor normale weergave"
+msgstr "Overschakelen naar normale weergave"
 
 msgid "Tell us the status of this person"
 msgstr "Vertel ons de status van deze persoon"
@@ -1141,19 +1192,8 @@ msgid "Terms of Service"
 msgstr "Servicevoorwaarden"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1165,10 +1205,10 @@ msgstr ""
 " het opnieuw."
 
 msgid "The author has disabled notes on this record."
-msgstr "De auteur heeft opmerkingen uitgeschakeld voor deze record."
+msgstr "De auteur heeft opmerkingen uitgeschakeld voor deze vermelding."
 
 msgid "The author has disabled status updates on this record."
-msgstr "De auteur heeft statusupdates uitgeschakeld voor deze record."
+msgstr "De auteur heeft statusupdates uitgeschakeld voor deze vermelding."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "De geleverde afbeelding is te groot. Upload een kleinere afbeelding."
@@ -1177,14 +1217,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "De reden dat deze opmerking als spam wordt gemarkeerd:"
 
 msgid "The record cannot be extended."
-msgstr "De record kan niet worden verlengd."
+msgstr "De vermelding kan niet worden verlengd."
 
 msgid "The record has been deleted."
-msgstr "De melding is verwijderd."
+msgstr "De vermelding is verwijderd."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "De record is verlengd tot %(expiry_date)s."
+msgstr "De vermelding is verlengd tot %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1205,13 +1245,13 @@ msgstr "De token %(token)s is ongeldig."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "Er zijn %(num_results)s bestaande meldingen met vergelijkbare namen."
+msgstr "Er zijn %(num_results)s bestaande vermeldingen met vergelijkbare namen."
 
 msgid "There are some existing records with similar names."
-msgstr "Er zijn enkele bestaande meldingen met vergelijkbare namen."
+msgstr "Er zijn enkele bestaande vermeldingen met vergelijkbare namen."
 
 msgid "There is one existing record with a similar name."
-msgstr "Er is één bestaande melding met een vergelijkbare naam."
+msgstr "Er is één bestaande vermelding met een vergelijkbare naam."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1233,10 +1273,10 @@ msgid ""
 " license%(link_end_html)s."
 msgstr ""
 "Deze gadgets zijn beschikbaar gesteld via de %(apache_link_html)slicentie"
-" voor Apache 2.0%(link_end_html)s."
+" voor Apache 2.00%(link_end_html)s."
 
 msgid "This is a new record."
-msgstr "Dit is een nieuwe melding."
+msgstr "Dit is een nieuwe vermelding."
 
 msgid "This link is invalid."
 msgstr "Deze link is ongeldig."
@@ -1248,7 +1288,7 @@ msgid "This note is inappropriate."
 msgstr "Deze opmerking is ongepast."
 
 msgid "This note is incorrect or untrue."
-msgstr "Deze opmerking is onjuist of niet waar."
+msgstr "Deze opmerking is niet waar."
 
 msgid "This note is spam."
 msgstr "Deze opmerking is spam."
@@ -1263,46 +1303,50 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "De vermelding van deze persoon bestaat niet of is verwijderd."
 
 msgid "This record has served its purpose."
-msgstr "Deze melding heeft resultaat gehad."
+msgstr "Deze vermelding heeft het gewenste resultaat opgeleverd."
 
 msgid "This record is a duplicate of"
-msgstr "Deze melding is een duplicaat van"
+msgstr "Deze vermelding is een duplicaat van"
 
 msgid "This record is copied from another source."
-msgstr "Deze melding is gekopieerd van een andere bron."
+msgstr "Deze vermelding is gekopieerd van een andere bron."
 
 msgid "This record is inappropriate."
-msgstr "Deze melding is ongepast."
+msgstr "Deze vermelding is ongepast."
 
 msgid "This record is spam."
-msgstr "Deze melding is spam."
+msgstr "Deze vermelding is spam."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Deze opslagplaats bevindt zich momenteel in de testmodus. Dit betekent "
+"dat vermeldingen na zes uur verwijderd worden."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"Als u een foto wilt toevoegen aan deze opmerking, uploadt u de foto of "
+"geeft u de URL op."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Open om gegevens te verwijderen Personen zoeken vanaf uw desktopcomputer."
 
 msgid "To unsubscribe, follow this link"
-msgstr "Als u zich wilt afmelden, volgt u deze link"
+msgstr "Volg deze link als u zich wilt afmelden"
 
 msgid "To view or add information, select a name below."
-msgstr ""
-"Als u informatie wilt bekijken of wilt toevoegen, selecteert u hieronder "
-"een naam."
+msgstr "Selecteer hieronder een naam om informatie te bekijken of toe te voegen."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Typ een adres of open de onderstaande kaart en geeft de locatie aan door "
+"op de kaart te klikken."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Typ een adres."
 
 msgid "Type the two words:"
 msgstr "Typ de twee woorden:"
@@ -1314,22 +1358,22 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of original record"
-msgstr "URL van oorspronkelijke melding"
+msgstr "URL van oorspronkelijke vermelding"
 
 msgid "Unspecified"
 msgstr "Niet opgegeven"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Uploaden"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "CSV-bestanden uploaden"
 
 msgid "View the record"
-msgstr "De record weergeven"
+msgstr "De vermelding bekijken"
 
 msgid "We have nothing matching your search."
 msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
@@ -1338,7 +1382,7 @@ msgid "What is this person's name?"
 msgstr "Wat is de naam van deze persoon?"
 
 msgid "When should this record disappear?"
-msgstr "Wanneer moet deze melding worden opgeheven?"
+msgstr "Wanneer moet deze vermelding worden opgeheven?"
 
 msgid "Where did this information come from?"
 msgstr "Waar komt deze informatie vandaan?"
@@ -1350,6 +1394,8 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"In de testmodus worden vermeldingen, ongeacht de vervaldatum, na zes uur "
+"verwijderd."
 
 msgid "Yes"
 msgstr "Ja"
@@ -1361,16 +1407,16 @@ msgid "Yes, ask the record author to enable notes"
 msgstr "Ja, de auteur vragen opmerkingen in te schakelen"
 
 msgid "Yes, delete the record"
-msgstr "Ja, de melding verwijderen"
+msgstr "Ja, de vermelding verwijderen"
 
 msgid "Yes, disable notes on this record."
-msgstr "Ja, opmerkingen voor deze record uitschakelen."
+msgstr "Ja, opmerkingen voor deze vermelding uitschakelen."
 
 msgid "Yes, extend the record"
-msgstr "Ja, de record verlengen"
+msgstr "Ja, de vermelding verlengen"
 
 msgid "Yes, restore this record"
-msgstr "Ja, deze melding herstellen"
+msgstr "Ja, deze vermelding herstellen"
 
 msgid "Yes, these are the same person"
 msgstr "Ja, het gaat om dezelfde persoon"
@@ -1388,22 +1434,24 @@ msgstr "U bent al afgemeld."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "U bent momenteel ingelogd als %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "U bent momenteel niet ingelogd."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
+"U kunt %(begin_tag)sde vermelding bekijken%(end_tag)s voordat u deze "
+"verwijdert."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "U kunt de volledige melding bekijken op %(view_url)s"
+msgstr "U kunt de volledige vermelding bekijken op %(view_url)s"
 
 msgid "You have successfully subscribed."
 msgstr "U bent geabonneerd."
@@ -1415,8 +1463,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
-"U heeft deze melding ontvangen omdat u zich heeft aangemeld voor updates "
-"over de volgende persoon:\n"
+"U heeft deze vermelding ontvangen omdat u zich heeft aangemeld voor "
+"updates over de volgende persoon:\n"
 
 msgid "Your e-mail address"
 msgstr "Uw e-mailadres"
@@ -1451,8 +1499,8 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"Uw verzoek is verwerkt. Controleer uw Postvak IN en bevestig dat u uw "
-"opmerking wilt plaatsen door op de URL in de e-mail te klikken."
+"Uw verzoek is verwerkt. Controleer uw Postvak IN en bevestig het plaatsen"
+" van uw opmerking door op de URL in de e-mail te klikken."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
@@ -1464,16 +1512,16 @@ msgstr "[Personen zoeken] Verwijderingsbericht voor '%(full_name)s'"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Personen zoeken] Opmerkingen voor '%(full_name)s' verwijderen?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Personen zoeken] Opmerkingen voor '%(full_name)s' inschakelen?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
-"[Personen zoeken] Kennisgeving van het inschakelen van opmerkingen voor "
+"[Personen zoeken] Bericht over het inschakelen van opmerkingen voor "
 "'%(full_name)s'"
 
 #, python-format
@@ -1486,7 +1534,7 @@ msgstr "[Personen zoeken] Opmerkingen zijn nu ingeschakeld voor '%(full_name)s'"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Personen zoeken] Herstelbericht van melding voor '%(full_name)s'"
+msgstr "[Personen zoeken] Herstelbericht van vermelding voor '%(full_name)s'"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
@@ -1497,13 +1545,13 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Personen zoeken] U bent geabonneerd op statusupdates voor %(full_name)s"
 
 msgid "at"
-msgstr "om"
+msgstr "in"
 
 msgid "female"
 msgstr "vrouw"
 
 msgid "in test mode"
-msgstr ""
+msgstr "in testmodus"
 
 msgid "male"
 msgstr "man"
@@ -1512,5 +1560,5 @@ msgid "on"
 msgstr "op"
 
 msgid "other"
-msgstr "overig"
+msgstr "anders"
 

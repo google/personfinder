@@ -34,10 +34,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Upang tiyakin na hindi pinagana o pinagana lang ang mga tala nang may "
-"pahintulot ng may-akda, magpapadala ng mensahe ng pagkumpirma sa may-akda"
-" ng record. Kung ikaw ang may-akda, tingnan ang iyong e-mail pagkatapos "
-"i-click ang button sa ibaba.\n"
+"  Upang tiyaking dini-disable o ine-enable lang ang mga tala nang may\n"
+"  pahintulot ng may-akda ng talaan, magpapadala ng mensahe ng pagkumpirma"
+" sa may-akda ng talaan.\n"
+"  Kung ikaw ang may-akda, tingnan ang iyong email pagkatapos i-click ang "
+"button sa ibaba.\n"
 "\n"
 "  "
 
@@ -59,13 +60,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Minamahal naming %(author_name)s, Hiniling ng isang user ang pagpapagana "
-"sa mga tala sa record para sa \"%(full_name)s\". Ni-record ang iyong "
-"e-mail address bilang ang may-akda ng record na ito. Upang paganahin ang "
-"mga tala sa record na ito, sundin ang link na ito sa loob ng 3 araw:\n"
+"Minamahal naming %(author_name)s,\n"
+"\n"
+"Hiniling ng isang user ang pag-e-enable ng mga tala sa talaan para kay "
+"\"%(full_name)s\".\n"
+"\n"
+"Nakatala ang iyong email address bilang may-akda ng talaan.  Upang "
+"i-enable\n"
+"ang tala sa talaang ito, sundan ang link na ito sa loob ng 3 araw:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,11 +90,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Minamahal naming %(author_name)s, Hiniling ng user na huwag mong "
-"paganahin ang mga tala sa record para sa \"%(full_name)s\". Ni-record ang"
-" iyong e-mail address bilang ang may-akda ng record na ito. Upang huwag "
-"paganahin ang mga tala sa record na ito, sundin ang link na ito sa loob "
-"ng 3 araw:\n"
+"Minamahal naming %(author_name)s,\n"
+"\n"
+"Hiniling ng isang user na i-disable mo ang mga tala sa talaan para kay "
+"\"%(full_name)s\".\n"
+"\n"
+"Nakatala ang iyong email address bilang may-akda ng talaang ito.  Upang "
+"i-disable ang mga tala sa talaang ito, sundan ang link na ito sa loob ng "
+"3 araw:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -108,9 +115,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Minamahal naming %(author_name)s, Naglagay ka ng tala sa record para sa "
-"\"%(full_name)s\". Upang i-publish ang iyong tala, sundin ang link na ito"
-" sa loob ng 3 araw:\n"
+"Minamahal naming %(author_name)s,\n"
+"Kakalagay mo lang ng tala sa talaan para kay \"%(full_name)s\".  \n"
+"Upang i-publish ang iyong tala, sundan ang link na ito sa loob ng 3 araw:"
+" \n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -122,12 +130,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Babala: mag-e-expire ang talaang ito sa loob ng hindi"
+" hihigit sa %(expiration_days)s (na) araw.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Babala: mag-e-expire ang talaang ito sa loob ng hindi"
+" hihigit sa isang araw.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -136,7 +152,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Sigurado ka bang gusto mong tanggalin ang talaan para sa "
+"      Sigurado ka bang gusto mong tanggalin ang talaan para kay "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -147,7 +163,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Sigurado ka bang nais mong huwag paganahin ang mga tala sa "
+"      Sigurado ka bang gusto mong i-disable ang mga tala kay "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -159,8 +175,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Sigurado ka bang nais mong huwag paganahin ang mga tala sa record "
-"ng \"%(full_name)s\"?\n"
+"      Sigurado ka bang gusto mong i-disable ang mga tala sa talaan ni "
+"\"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -170,7 +186,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Sigurado ka bang nais mong paganahin ang mga tala sa "
+"      Sigurado ka bang gusto mong i-enable ang mga tala kay "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -182,8 +198,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Nakakatiyak ka bang gusto mong i-extend ang expiration para sa tala"
-" \"%(full_name)s\"?\n"
+"      Sigurado ka bang gusto mong patagalin ang expiration para sa talaan"
+" kay \"%(full_name)s\"?\n"
 "    "
 
 msgid ""
@@ -202,8 +218,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Kung magpatuloy ka sa pagtanggal,\n"
-"      hindi na mahahanap o mapapanood ang talaang ito sa site na ito.\n"
+"      Kung magpapatuloy ka sa pagtatanggal,\n"
+"      hindi na mahahanap o makikita ang talaang ito sa site na ito.\n"
 "    "
 
 #, python-format
@@ -215,6 +231,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Kung gusto mo itong tanggalin nang permanente,\n"
+"      mangyaring makipag-ugnayan sa orihinal na pinagmulan.\n"
+"      Maaari mong tingnan ang orihinal na talaan sa\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -226,6 +248,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Mukhang hindi wastong %(website)s URL ng profile ang inilagay mong "
+"URL.\n"
+"      Mangyaring pumunta sa pahina ng profile ng taong ito sa "
+"%(website)s, pagkatapos ay\n"
+"      kopyahin at i-paste ang URL na iyon dito.\n"
+"      "
 
 msgid ""
 "\n"
@@ -236,6 +265,13 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Ang talaang ito ay kopya ng isang talaan mula sa ibang pinagmulan.\n"
+"      Maaari mong tanggalin ang talaan dito,\n"
+"      ngunit mangyaring malaman na\n"
+"      maaari kaming makatanggap ng isa pang kopya nito mula sa orihinal "
+"na pinagmulan sa ibang pagkakataon.\n"
+"    "
 
 msgid ""
 "\n"
@@ -248,10 +284,11 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Upang tiyakin na hindi pinagana o pinagana lang ang mga tala nang may"
-" pahintulot ng may-akda, magpapadala ng mensahe ng pagkumpirma sa may-"
-"akda ng record. Kung ikaw ang may-akda, tingnan ang iyong e-mail "
-"pagkatapos i-click ang button sa ibaba.\n"
+"    Upang tiyaking dini-disable o ine-enable lang ang mga tala nang may "
+"pahintulot ng may-akda ng talaan,\n"
+"    magpapadala ng mensahe ng pagkumpirma sa may-akda ng talaan.\n"
+"    Kung ikaw ang may-akda, tingnan ang iyong email pagkatapos i-click "
+"ang button sa ibaba.\n"
 "  "
 
 msgid ""
@@ -262,8 +299,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Makikita pa rin ang record sa site na ito, ngunit walang sinumang "
-"makakapag-post ng dagdag pang mga tala dito.\n"
+"  Makikita pa rin ang talaan sa site na ito, ngunit walang sinumang "
+"makakapag-post ng\n"
+"  dagdag pang mga tala dito.\n"
 "  "
 
 msgid ""
@@ -274,8 +312,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Upang i-post ang iyong tala, pakilagay ang e-mail address mo sa ibaba "
-"at sundin ang link sa pagkumpirma na iyong matatanggap.\n"
+"  Upang i-post ang iyong tala, pakilagay ang email address mo sa ibaba at"
+" sundan ang\n"
+"  link sa pagkumpirma na iyong matatanggap.\n"
 "  "
 
 #, python-format
@@ -288,12 +327,12 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Tinanggal ng user ang talaan para sa\"%(full_name)s\"\n"
-"at %(site_url)s.\n"
+"Tinanggal ng user ang talaan para kay\"%(full_name)s\"\n"
+"sa %(site_url)s.\n"
 "\n"
-"Nino-notify ka namin sa pagtanggal na ito dahil ang iyong e-mail address "
-"ay\n"
-"naitala bilang may-akda ng tala sa talaang ito.\n"
+"Nino-notify ka namin tungkol sa pagtatanggal dahil naitala ang iyong "
+"email address\n"
+"bilang may-akda ng tala sa talaang ito.\n"
 
 #, python-format
 msgid ""
@@ -305,9 +344,12 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Tinanggal ng isang user ang tala para sa \"%(full_name)s\" sa "
-"%(site_url)s. Inaabisuhan ka namin sa pagtatanggal dahil naitala ang "
-"iyong e-mail address bilang author ng talang ito.\n"
+"Tinanggal ng isang user ang tala para kay \"%(full_name)s\"\n"
+"sa %(site_url)s.\n"
+"\n"
+"Nino-notify ka namin tungkol sa pagtatanggal dahil naitala ang iyong "
+"email address\n"
+"bilang may-akda ng talaang ito.\n"
 
 #, python-format
 msgid ""
@@ -316,8 +358,8 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"Matapos ang %(days_until_deletion)s (na) araw, permanenteng matatanggal "
-"ang tala.\n"
+"Pagkalipas ng %(days_until_deletion)s (na) araw, permanenteng matatanggal"
+" ang talaan.\n"
 
 #, python-format
 msgid ""
@@ -329,11 +371,9 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"TANDAAN: Kung naniniwala kang mali ang pagkakatanggal sa tala, maaari mo "
-"itong ibalik sa pamamagitan ng pagsunod sa link na ito sa loob ng susunod"
-" na %(days_until_deletion)s (na) araw:\n"
-"\n"
-"    %(restore_url)s\n"
+"TANDAAN: Kung naniniwala kang hindi dapat tinanggal ang talaang ito, "
+"maaari mo itong ipanumbalik sa pamamagitan ng pagsunod sa link na ito sa "
+"loob ng susunod na %(days_until_deletion)s (na) araw: %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -348,13 +388,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Hindi na pinapagana ang mga tala sa record para sa \"%(full_name)s\". "
-"Upang tingnan ang record, sundin ang link na ito:\n"
+"Naka-disable na ang mga tala sa talaan para kay \"%(full_name)s\".  Upang"
+" tingnan ang talaan,\n"
+"sundan ang link na ito:\n"
 "\n"
-"    %(record_url)s\n"
+"    %(record_url)s \n"
 "\n"
-"Nino-notify ka namin dahil nauugnay ang iyong e-mail address sa record ng"
-" taong ito o sa isang tala sa record.\n"
+"Nino-notify ka namin dahil nauugnay ang iyong email address sa\n"
+"talaan ng taong ito o sa isang tala sa talaan.\n"
 
 #, python-format
 msgid ""
@@ -369,13 +410,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Pinapagana na ngayon ang mga tala sa record para sa \"%(full_name)s\". "
-"Upang tingnan ang record, sundin ang link na ito:\n"
+"Naka-enable na ngayon ang mga tala sa talaan para kay \"%(full_name)s\"."
+"  Upang tingnan ang talaan,\n"
+"sundan ang link na ito:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Nino-notify ka namin dahil nauugnay ang iyong e-mail address sa record ng"
-" taong ito o sa isang tala sa record.\n"
+"Nino-notify ka namin dahil nauugnay ang iyong email address sa\n"
+"talaan ng taong ito o sa isang tala sa talaan.\n"
 
 #, python-format
 msgid ""
@@ -390,14 +432,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Ang may-akda ng talaan para sa \"%(full_name)s\"\n"
-"(na dating natanggal) ay nagbalik sa talaan.  Upang tingnan ang\n"
-"talaan, sundin ang link na ito:\n"
+"Ipinanumbalik ng may-akda ng talaan para kay \"%(full_name)s\"\n"
+"(na dating natanggal) ang talaan.  Upang tingnan ang\n"
+"talaan, sundan ang link na ito:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Nino-notify ka namin dahil nauugnay ang iyong e-mail address sa\n"
-"talaan ng taong ito o tala sa talaan.\n"
+"Nino-notify ka namin dahil nauugnay ang iyong email address sa talaan ng "
+"taong ito o isang tala sa talaan.\n"
 
 #, python-format
 msgid ""
@@ -405,7 +447,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Mayroong bagong tala sa record para sa \"%(full_name)s\".\n"
+"May bagong tala sa talaan para kay \"%(full_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -419,12 +461,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Nag-subscribe ka sa mga tala sa \"%(full_name)s\". Matitingnan mo ang "
-"record na ito sa\n"
+"Nag-subscribe ka sa mga tala tungkol kay \"%(full_name)s\".\n"
+"\n"
+"Matitingnan mo ang talaang ito sa\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"Upang mag-unsubscribe, sundin ang link na ito: %(unsubscribe_link)s\n"
+"Upang mag-unsubscribe, sundan ang link na ito: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(i-click upang ipakita)"
@@ -436,28 +479,28 @@ msgid "A message for this person or others seeking this person"
 msgstr "Mensahe para sa taong ito o mga iba pang naghahanap sa taong ito"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Mga 1 buwan (30 araw) mula ngayon"
+msgstr "Humigit-kumulang 1 buwan (30 araw) mula ngayon"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Mga 1 taon (360 araw) mula ngayon"
+msgstr "Humigit-kumulang 1 taon (360 araw) mula ngayon"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Mga 2 buwan (60 araw) mula ngayon"
+msgstr "Humigit-kumulang 2 buwan (60 araw) mula ngayon"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Mga 3 buwan (90 araw) mula ngayon"
+msgstr "Humigit-kumulang 3 buwan (90 araw) mula ngayon"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Mga 6 na buwan (180 araw) mula ngayon"
+msgstr "Humigit-kumulang 6 na buwan (180 araw) mula ngayon"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Tungkol sa Google Person Finder"
 
 msgid "About you (required)"
 msgstr "Tungkol sa iyo (kinakailangan)"
@@ -469,13 +512,13 @@ msgid "Age"
 msgstr "Edad"
 
 msgid "Alternate family names"
-msgstr "Kahaliling mga apelyido"
+msgstr "Mga kahaliling apelyido"
 
 msgid "Alternate given names"
-msgstr "Kahaliling mga pangalan"
+msgstr "Mga kahaliling pangalan"
 
 msgid "Alternate names"
-msgstr "Kahaliling mga pangalan"
+msgstr "Mga kahaliling pangalan"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Sigurado ka bang hindi spam ang talang ito?"
@@ -484,13 +527,15 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "Sigurado ka bang gusto mong markahan ang talang ito bilang spam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Sigurado ka bang gusto mong ibalik ang talaang ito mula sa pagkakatanggal?"
+msgstr ""
+"Sigurado ka bang gusto mong ipanumbalik ang talaang ito mula sa "
+"pagkakatanggal?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Atom feed ng mga update tungkol sa taong ito"
 
 msgid "Author's e-mail address"
-msgstr "E-mail address ng may-akda"
+msgstr "Email address ng may-akda"
 
 msgid "Author's name"
 msgstr "Pangalan ng may-akda"
@@ -499,7 +544,7 @@ msgid "Author's phone number"
 msgstr "Numero ng telepono ng may-akda"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Key ng pahintulot"
 
 msgid "Back to results list"
 msgstr "Bumalik sa listahan ng mga resulta"
@@ -508,11 +553,11 @@ msgid "Back to start"
 msgstr "Bumalik sa simula"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV file"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Hindi mahanap ang tala na may id %(id)s"
+msgstr "Hindi mahanap ang talang may id na %(id)s"
 
 msgid "Cancel"
 msgstr "Kanselahin"
@@ -527,7 +572,7 @@ msgid "Close window"
 msgstr "Isara ang window"
 
 msgid "Compare these records"
-msgstr "Ihambing ang mga rekord na ito"
+msgstr "Paghambingin ang mga talaang ito"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -535,27 +580,27 @@ msgstr ""
 "ito sa iyong site"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Gumawa ng bagong talaan"
 
 msgid "Create a new record for"
-msgstr "Lumikha ng bagong rekord para sa"
+msgstr "Gumawa ng bagong talaan para kay"
 
 msgid "Create a new record for a missing person"
-msgstr "Lumikha ng bagong rekord para sa nawawalang tao"
+msgstr "Gumawa ng bagong talaan para sa isang nawawalang tao"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Mga kaganapan ng krisis"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Kasalukuyang sinusubaybayan ang tungkol sa %(num_people)s (na) rekord."
+msgstr "Kasalukuyang sinusubaybayan ang tungkol sa %(num_people)s (na) talaan."
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
-"Hindi maaaring nasa hinaharap ang petsa.  Mangyaring bumalik at subukang "
+"Hindi maaaring nasa hinaharap ang petsa. Mangyaring bumalik at subukang "
 "muli."
 
 msgid "Date of birth"
@@ -574,40 +619,40 @@ msgid "Description"
 msgstr "Paglalarawan"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Bersyon sa desktop"
 
 msgid "Developers"
 msgstr "Mga Developer"
 
 msgid "Disable notes on this record"
-msgstr "Huwag paganahin ang mga tala sa record na ito"
+msgstr "I-disable ang mga tala sa talaang ito"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Mayroon bang mga pahina ng profile sa ibang mga website ang taong ito?"
 
 msgid "Download the sound as MP3"
 msgstr "I-download ang tunog bilang MP3"
 
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Email"
 
 msgid "E-mail address"
-msgstr "E-mail address"
+msgstr "Email address"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "Pag-embed ng Application"
+msgstr "Pag-e-embed ng Application"
 
 msgid "Enable notes on this record"
-msgstr "Paganahin ang mga tala sa record na ito"
+msgstr "I-enable ang mga tala sa talaang ito"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "Siguraduhing nasa format na yyyy-mm-ddThh:mm:ssZ sa UTC ang lahat ng petsa"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr "Ipasok bilang YYYY-MM-DD"
+msgstr "Ilagay bilang YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "Ilagay ang pangalan at apelyido ng tao."
@@ -616,22 +661,20 @@ msgid "Enter the person's name or parts of the name."
 msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Ilagay ang pangalan ng tao, mga bahagi ng pangalan, o numero ng mobile "
-"phone."
+msgstr "Ilagay ang pangalan ng tao, mga bahagi ng pangalan, o numero ng cellphone."
 
 msgid "Enter the person's name."
 msgstr "Ilagay ang pangalan ng tao."
 
 msgid "Expiry"
-msgstr "Pag-expire"
+msgstr "Expiration"
 
 msgid "Expiry date of this record"
-msgstr "Petsa ng pag-expire ng talaang ito"
+msgstr "Expiration date ng talaang ito"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Pahabain ang expiration date nang %(extension_days)s (na) araw"
 
 msgid "Family name"
 msgstr "Apelyido"
@@ -640,17 +683,17 @@ msgid "Feed of updates about this person"
 msgstr "Feed ng mga update tungkol sa taong ito"
 
 msgid "Follow this link to create a new record"
-msgstr "Sundan ang link na ito upang lumikha ng bagong rekord"
+msgstr "Sundan ang link na ito upang gumawa ng bagong talaan"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
-"Para sa mga teleponong iba pa sa mga mobile phone, pakigamit ang "
-"serbisyong 171 na ihinatid ng NTT."
+"Para sa mga teleponong hindi mobile phone, mangyaring gamitin ang "
+"serbisyong 171 na ibinibigay ng NTT."
 
 msgid "Full name"
-msgstr ""
+msgstr "Buong pangalan"
 
 msgid "Get a new challenge"
 msgstr "Makakuha ng bagong hamon"
@@ -678,6 +721,8 @@ msgstr "Tulong"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"Narito ang %(begin_tag)sisang sample na CSV file%(end_tag)s na maaari "
+"mong i-edit at i-upload"
 
 msgid "Hide Map"
 msgstr "Itago ang Mapa"
@@ -686,16 +731,16 @@ msgid "Hide note"
 msgstr "Itago ang tala"
 
 msgid "Home Address"
-msgstr "Address ng Tahanan"
+msgstr "Address ng Bahay"
 
 msgid "Home address"
-msgstr "Address ng tahanan"
+msgstr "Address ng bahay"
 
 msgid "Home country"
 msgstr "Bansang pinagmulan"
 
 msgid "How can this person be reached now?"
-msgstr "Paano maabot ang taong ito sa ngayon?"
+msgstr "Paano makakaugnayan ang taong ito sa ngayon?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Paano makikipag-ugnay sa iyo ang iba pang mga interesado sa taong ito"
@@ -707,16 +752,18 @@ msgid "I am this person"
 msgstr "Ako ang taong ito"
 
 msgid "I do not want any more updates on this record."
-msgstr "Hindi ko nais ang anumang higit pang mga update sa record na ito."
+msgstr ""
+"Hindi ko gustong makatanggap ng higit pang mga update tungkol sa talaang "
+"ito."
 
 msgid "I do not want my information online anymore."
-msgstr "Hindi ko na gustong nasa online ang aking impormasyon."
+msgstr "Hindi ko na gustong maging online ang aking impormasyon."
 
 msgid "I have information about someone"
 msgstr "Mayroon akong impormasyon tungkol sa isang tao"
 
 msgid "I have reason to think this person is missing"
-msgstr "May dahilan akong isiping nawawala ang taong ito"
+msgstr "May dahilan ako upang maghinala na nawawala ang taong ito"
 
 msgid "I have received information that this person is alive"
 msgstr "Nakatanggap ako ng impormasyong buhay ang taong ito"
@@ -740,7 +787,7 @@ msgid "Identify who you are looking for"
 msgstr "Kilalanin kung sino ang iyong hinahanap"
 
 msgid "Identify who you have information about"
-msgstr "Tukuyin kung kanino ka may impormasyong nalalaman"
+msgstr "Tukuyin kung tungkol kanino ang nalalaman mong impormasyon"
 
 msgid "Identifying information"
 msgstr "Impormasyon sa pagkilala"
@@ -749,42 +796,42 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Kung wala sa mga rekord na ito ang tumutugma sa taong iniisip mo, maaari "
-"kang mag-click sa ibaba upang lumikha ng bagong rekord."
+"Kung wala sa mga talaang ito ang tumutugma sa taong iniisip mo, maaari "
+"kang mag-click sa ibaba upang gumawa ng bagong talaan."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong e-mail kung "
-"may link upang kumpirmahin na nais mong huwag paganahin ang mga tala sa "
-"record na ito. Kung hindi man, mangyaring hintaying kumpirmahin ng may-"
-"akda ng record ang iyong kahilingan."
+"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong email kung "
+"may link upang kumpirmahing gusto mong i-disable ang mga tala sa talaang "
+"ito. Kung wala, mangyaring hintaying kumpirmahin ng may-akda ng talaan "
+"ang iyong kahilingan."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong e-mail kung "
-"may link upang kumpirmahin na nais mong paganahin ang mga tala sa record "
-"na ito. Kung hindi man, mangyaring hintaying kumpirmahin ng may-akda ng "
-"record ang iyong kahilingan."
+"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong email kung "
+"may link upang kumpirmahing gusto mong i-enable ang mga tala sa talaang "
+"ito. Kung wala, mangyaring hintaying kumpirmahin ng may-akda ng talaan "
+"ang iyong kahilingan."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
-"Kung mayroon kang larawan ng taong ito, i-upload ito o ipasok ang URL "
+"Kung mayroon kang larawan ng taong ito, i-upload ito o ilagay ang URL "
 "address nito."
 
 msgid "Incorrect.  Try again."
-msgstr "Hindi tama.  Subukang muli."
+msgstr "Mali.  Subukang muli."
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "Di-wastong e-mail address. Pakisubukang muli."
+msgstr "Di-wasto ang email address. Pakisubukang muli."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Pagpipilian ng wika"
 
 msgid "Last known location"
 msgstr "Huling alam na lokasyon"
@@ -793,13 +840,13 @@ msgid "Link"
 msgstr "I-link"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "I-link sa pahina ng profile"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "Markahan ang mga rekord bilang duplicate"
+msgstr "Markahan ang mga talaan bilang kapareho"
 
 msgid "Message (required)"
 msgstr "Mensahe (kinakailangan)"
@@ -808,10 +855,10 @@ msgid "Message is required. Please go back and try again."
 msgstr "Kinakailangan ang Mensahe. Mangyaring bumalik at subukang muli."
 
 msgid "Missing person's current contact information"
-msgstr "Kasalukuyang impormasyon sa pag-contact ng nawawalang tao"
+msgstr "Kasalukuyang impormasyon sa pakikipag-ugnay ng nawawalang tao"
 
 msgid "Missing person's current e-mail address"
-msgstr "Kasalukuyang e-mail address ng nawawalang tao"
+msgstr "Kasalukuyang email address ng nawawalang tao"
 
 msgid "Missing person's current phone number"
 msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
@@ -821,15 +868,15 @@ msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"Maaaring makita ang higit pang impormasyon para sa mga nag-develop "
+"Maaaring makita ang higit pang impormasyon para sa mga developer "
 "%(developers_link_html)sdito%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"Mahigit sa 100 resulta; ipinapakita lamang ang unang 100.  Subukang "
-"magpasok ng higit pang pangalan"
+"Mahigit sa 100 resulta; ipinapakita lang ang unang 100.  Subukang buuin "
+"pa ang pangalan"
 
 msgid "Name"
 msgstr "Pangalan"
@@ -841,41 +888,41 @@ msgid "Name is required.  Please go back and try again."
 msgstr "Kailangan ang pangalan.  Mangyaring bumalik at subukang muli."
 
 msgid "Neighborhood"
-msgstr "Kapitbahayan"
+msgstr "Pamilyar na lugar"
 
 msgid "No"
 msgstr "Hindi"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Walang email ng may-akda para sa record %(id)s."
+msgstr "Walang email ng may-akda para sa talaan na %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
-"Walang natagpuang mga mensahe na nakarehistro sa serbisyo ng message "
-"board ng carrier."
+"Walang nakitang mga mensahe na nakarehistro sa serbisyo ng message board "
+"ng carrier."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
 msgstr "Walang tala na may ID: %(id_str)s."
 
 msgid "No notes have been posted"
-msgstr "Walang mga tala ang na-post"
+msgstr "Walang mga talang na-post"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Walang taong may ID: %(id_str)s."
 
 msgid "No results found for"
-msgstr "Walang resultang natagpuan para sa"
+msgstr "Walang mga nakitang resulta para sa"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
-"Hindi pinapahintulutang mag-post ng mga tala na may katayuang "
-"\"pinaniniwalaang_patay\"."
+"Hindi pinapahintulutang mag-post ng mga talang may status na "
+"\"pinaniniwalaang_patay.\""
 
 msgid "Not spam"
 msgstr "Hindi spam"
@@ -924,18 +971,22 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"PAKITANDAAN: Ang lahat ng data na ipinasok ay magagamit ng publiko at "
-"magagamit ng sinuman.  Hindi sinusuri o bine-verify ng Google ang "
-"katumpakan ng data na ito."
+"PAKITANDAAN: Magagamit ng publiko at magagamit ng sinuman ang lahat ng "
+"inilagay na data.  Hindi sinusuri o bine-verify ng Google ang katumpakan "
+"ng data na ito."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"PAKITANDAAN: Sa mga aktibong site sa Person Finder, magagamit ng publiko "
+"at magagamit ng sinuman ang lahat ng inilagay na data.  Hindi sinusuri o "
+"bine-verify ng Google ang katumpakan ng data na ito."
 
 msgid "Person Finder"
-msgstr "Tagahanap ng Tao"
+msgstr "Person Finder"
 
 msgid "Phone"
 msgstr "Telepono"
@@ -950,7 +1001,7 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Ang larawang na-upload ay nasa hindi nakikilalang format.  Mangyaring "
+"Ang larawang na-upload ay may format na hindi nakikilala.  Mangyaring "
 "bumalik at subukang muli."
 
 msgid "Physical characteristics"
@@ -963,25 +1014,23 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"Mangyaring suriin na nakikipag-ugnay ka sa tao pagkatapos ng lindol, o "
-"baguhin ang field na \"Katayuan ng taong ito\"."
+"Pakitiyak na nakaugnayan mo ang tao pagkatapos ng lindol, o baguhin ang "
+"field na \"Status ng taong ito\"."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Mangyaring suriin kung tumutugma ito sa taong pinaplano mong iulat."
+msgstr "Mangyaring tingnan kung tumutugma ito sa taong pinaplano mong iulat."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Pakikumpirma ang iyong e-mail address upang mag-subscribe sa mga update"
+msgstr "Pakikumpirma ang iyong email address upang mag-subscribe sa mga update"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Pakilagay ang iyong e-mail address upang mag-subscribe sa mga update"
+msgstr "Pakilagay ang iyong email address upang mag-subscribe sa mga update"
 
 msgid "Please explain why you think these are the same person"
-msgstr ""
-"Mangyaring ipaliwanag kung bakit sa tingin mo ay iisang tao lamang ang "
-"mga ito"
+msgstr "Mangyaring ipaliwanag kung bakit sa tingin mo ay iisang tao lang sila"
 
 msgid "Please fill in all the required fields."
-msgstr "Pakipunan ang lahat ng mga kinakailangang field."
+msgstr "Pakipunan ang lahat ng kinakailangang field."
 
 msgid "Please fill in your email address."
 msgstr "Pakilagay ang iyong email address."
@@ -1002,41 +1051,41 @@ msgid "Proceed"
 msgstr "Magpatuloy"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Mga Pahina ng Profile"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Pahina ng profile"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Magbigay ng impormasyon"
 
 msgid "Provide information about this person"
 msgstr "Magbigay ng impormasyon tungkol sa taong ito"
 
 msgid "Provided by:"
-msgstr "Ibinigay ng:"
+msgstr "Ibinigay ni:"
 
 msgid "Province or state"
 msgstr "Lalawigan o estado"
 
 msgid "Reason for deletion:"
-msgstr "Dahilan ng pagtanggal:"
+msgstr "Dahilan ng pagtatanggal:"
 
 msgid "Reason for disabling notes:"
-msgstr "Dahilan para sa hindi pagpapagana sa mga tala:"
+msgstr "Dahilan para sa pag-disable sa mga tala:"
 
 msgid "Records Similar to"
-msgstr "Mga Rekord na Pareho sa"
+msgstr "Mga Talaang Katulad ng"
 
 msgid "Records selected"
-msgstr "Mga rekord ang napili"
+msgstr "Mga talaang napili"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Ang mga talang may mga pangalan at address na tumutugma sa \"%(query)s\""
+msgstr "Ang mga talaang may mga pangalan at address na tumutugma sa \"%(query)s\""
 
 msgid "Remove"
-msgstr ""
+msgstr "Alisin"
 
 msgid "Report spam"
 msgstr "Mag-ulat ng spam"
@@ -1046,29 +1095,29 @@ msgid "Return to the record for %(full_name)s."
 msgstr "Bumalik sa talaan para sa %(full_name)s."
 
 msgid "Reveal note"
-msgstr "Ibunyag ang tala"
+msgstr "Ipakita ang tala"
 
 msgid "Save this record"
-msgstr "I-save ang rekord na ito"
+msgstr "I-save ang talaang ito"
 
 msgid "Search Results for"
 msgstr "Mga Resulta ng Paghahanap para sa"
 
 msgid "Search for this person"
-msgstr "Maghanap para sa taong ito"
+msgstr "Hanapin ang taong ito"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Tingnan %(begin_tag)sang wiki%(end_tag)s para sa higit pang mga tagubilin"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Pumili ng website kung saan magdaragdag ng pahina ng profile..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Pumili ng hanggang sa 3 rekord upang markahan bilang duplicate:"
+msgstr "Pumili ng hanggang sa 3 talaan na mamarkahan bilang duplicate:"
 
 msgid "Send email"
-msgstr "Ipadala ang email"
+msgstr "Magpadala ng email"
 
 msgid "Sex"
 msgstr "Kasarian"
@@ -1080,74 +1129,72 @@ msgid "Show sensitive information"
 msgstr "Ipakita ang sensitibong impormasyon"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Mag-sign in"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Mag-sign out"
 
 msgid "Someone has received information that this person is alive"
-msgstr "Mayroong nakatanggap ng impormasyong buhay ang taong ito"
+msgstr "May nakatanggap ng impormasyong buhay ang taong ito"
 
 msgid "Someone has received information that this person is dead"
-msgstr "Mayroong nakatanggap ng impormasyong patay na ang taong ito"
+msgstr "May nakatanggap ng impormasyong patay na ang taong ito"
 
 msgid "Someone has reported that this person is missing"
-msgstr "Mayroong nag-ulat na nawawala ang taong ito"
+msgstr "May nag-ulat na nawawala ang taong ito"
 
 msgid "Someone is seeking information about this person"
-msgstr "May isang taong naghahanap ng impormasyon tungkol sa taong ito"
+msgstr "May taong naghahanap ng impormasyon tungkol sa taong ito"
 
 msgid "Source of this record"
-msgstr "Pinagmulan ng rekord na ito"
+msgstr "Pinagmulan ng talaang ito"
 
 msgid "Source of this record (required)"
-msgstr "Pinagmulan ng rekord na ito (kinakailangan)"
+msgstr "Pinagmulan ng talaang ito (kinakailangan)"
 
 msgid "Status"
-msgstr "Katayuan"
+msgstr "Status"
 
 msgid "Status of this person"
-msgstr "Katayuan ng taong ito"
+msgstr "Status ng taong ito"
 
 msgid "Street name"
 msgstr "Pangalan ng kalye"
 
 msgid "Street name only, no number"
-msgstr "Pangalan lamang ng kalye, walang numero"
+msgstr "Pangalan lang ng kalye, walang numero"
 
 msgid "Subscribe"
 msgstr "Mag-subscribe"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Mag-subscribe sa mga update tungkol sa %(full_name)s"
+msgstr "Mag-subscribe sa mga update tungkol kay %(full_name)s"
 
 msgid "Subscribe to updates about this person"
 msgstr "Mag-subscribe sa mga update tungkol sa taong ito"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Lumipat sa address"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Lumipat sa mode na pagmamarka ng duplicate"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Lumipat sa lat/long"
 
 msgid "Switch to normal view mode"
-msgstr "Lumipat sa mode na normal na pagtingin"
+msgstr "Lumipat sa mode na normal na view"
 
 msgid "Tell us the status of this person"
-msgstr "Sabihin sa amin ang katayuan ng taong ito"
+msgstr "Sabihin sa amin ang status ng taong ito"
 
 msgid "Terms of Service"
 msgstr "Mga Tuntunin ng Serbisyo"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1161,58 +1208,58 @@ msgstr ""
 "at subukang muli."
 
 msgid "The author has disabled notes on this record."
-msgstr "Hindi pinagana ng may-akda ang mga tala sa record na ito."
+msgstr "Na-disable ng may-akda ang mga tala sa talaang ito."
 
 msgid "The author has disabled status updates on this record."
-msgstr "Hindi pinagana ng may-akda ang mga update sa katayuan sa record na ito."
+msgstr "Na-disable ng may-akda ang mga update sa status sa talaang ito."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
-"Masyadong malaki ang ibinigay na larawan.  Mangyaring mag-upload nang mas"
-" maliit."
+"Masyadong malaki ang ibinigay na larawan.  Mangyaring mag-upload ng mas "
+"maliit."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Ang dahilan kung bakit minarkahang spam ang talang ito:"
 
 msgid "The record cannot be extended."
-msgstr "Hindi maaaring ma-extend ang tala."
+msgstr "Hindi maaaring pahabain ang talaan."
 
 msgid "The record has been deleted."
 msgstr "Tinanggal na ang talaan."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "In-extend ang tala sa %(expiry_date)s."
+msgstr "Pinatagal hanggang %(expiry_date)s ang talaan."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"Isinasaad ng katayuang iyong pinili na ikaw ang taong ito.  Kung totoo "
-"ito, pakipili din ang 'Oo' upang isaad na nakipag-ugnay ka sa taong ito."
+"Isinasaad ng pinili mong status na ikaw ang taong ito.  Kung totoo ito, "
+"pakipili din ang 'Oo' upang isaad na nakipag-ugnay ka sa taong ito."
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr "Ang token %(token)s ay di-wasto"
+msgstr "Di-wasto ang token na %(token)s"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr "Ang token %(token)s ay di-wasto."
+msgstr "Di-wasto ang token na %(token)s."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "Mayroong %(num_results)s (na) umiiral nang tala na may parehong pangalan."
+msgstr "May %(num_results)s (na) umiiral na talaang may magkakatulad na pangalan."
 
 msgid "There are some existing records with similar names."
-msgstr "Mayroong ilang umiiral nang mga rekord na may parehong pangalan."
+msgstr "May ilang umiiral na talaang may magkakatulad na pangalan."
 
 msgid "There is one existing record with a similar name."
-msgstr "Mayroong isang umiiral nang rekord na may parehong pangalan."
+msgstr "May umiiral na talaang may katulad na pangalan."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Mayroong problema sa pagproseso sa larawan.  Mangyaring sumubok ng ibang "
+"Nagkaproblema sa pagproseso ng larawan.  Mangyaring sumubok ng ibang "
 "larawan."
 
 msgid ""
@@ -1220,9 +1267,9 @@ msgid ""
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
-"Mayroong error sa pagproseso ng iyong hiling.  Paumanhin sa abala.  "
-"Sisiyasatin ng aming mga administrator ang pinagmulan ng problema, ngunit"
-" mangyaring suriin na tama ang format ng iyong hiling."
+"Nagkaroon ng error sa pagproseso ng iyong kahilingan.  Paumanhin sa "
+"abala.  Sisiyasatin ng aming mga administrator ang pinagmulan ng "
+"problema, ngunit pakitiyak na tama ang format ng iyong kahilingan."
 
 #, python-format
 msgid ""
@@ -1233,25 +1280,25 @@ msgstr ""
 "%(apache_link_html)slisensyang Apache 2.0%(link_end_html)s."
 
 msgid "This is a new record."
-msgstr "Ito ay isang bagong rekord."
+msgstr "Isa itong bagong talaan."
 
 msgid "This link is invalid."
 msgstr "Di-wasto ang link na ito."
 
 msgid "This note has been marked as spam."
-msgstr "Minarkahang spam ang talang ito."
+msgstr "Minarkahan bilang spam ang talang ito."
 
 msgid "This note is inappropriate."
 msgstr "Hindi naaangkop ang talang ito."
 
 msgid "This note is incorrect or untrue."
-msgstr "Di-tama o di-totoo ang talang ito."
+msgstr "Mali o hindi totoo ang talang ito."
 
 msgid "This note is spam."
 msgstr "Spam ang talang ito."
 
 msgid "This person has been in contact with someone"
-msgstr "Nakipag-ugnay ang taong ito sa iba"
+msgstr "Nakipag-ugnayan ang taong ito sa iba"
 
 msgid "This person has posted a message"
 msgstr "Nag-post ng mensahe ang taong ito"
@@ -1260,13 +1307,13 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "Hindi umiiral ang entry ng taong ito o natanggal na."
 
 msgid "This record has served its purpose."
-msgstr "Naihatid ng talaang ito ang hangarin nito."
+msgstr "Napakinabangan na ang talang ito."
 
 msgid "This record is a duplicate of"
-msgstr "Ang rekord na ito ay isang duplicate ng"
+msgstr "Ang talaang ito ay isang duplicate ng"
 
 msgid "This record is copied from another source."
-msgstr "Nakopya ang rekord na ito mula sa isa pang mapagkukunan."
+msgstr "Kinopya ang talaang ito mula sa isa pang pinagmulan."
 
 msgid "This record is inappropriate."
 msgstr "Hindi naaangkop ang talaang ito."
@@ -1278,56 +1325,64 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Kasalukuyang nasa test mode ang imbakan na ito. Habang nasa test mode, "
+"matatanggal ang mga talaang lagpas 6 na oras na ang tagal."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"Upang mag-attach ng isang photo sa talang ito, i-upload ito o ilagay ang "
+"URL nito."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
+"Upang tanggalin ang iyong data, i-access ang Person Finder mula sa iyong "
+"desktop."
 
 msgid "To unsubscribe, follow this link"
-msgstr "Upang mag-unsubscribe, sundin ang link na ito"
+msgstr "Upang mag-unsubscribe, sundan ang link na ito"
 
 msgid "To view or add information, select a name below."
-msgstr "Upang tingnan o magdagdag ng impormasyon, pumili ng pangalan sa ibaba."
+msgstr "Upang tumingin o magdagdag ng impormasyon, pumili ng pangalan sa ibaba."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Mag-type ng isang address o buksan ang mapa sa ibaba at tukuyin ang "
+"lokasyon sa pamamagitan ng pag-click sa mapa."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Mag-type ng address."
 
 msgid "Type the two words:"
 msgstr "I-type ang dalawang salita:"
 
 msgid "Type what you hear:"
-msgstr "I-type kung ano ang iyong naririnig:"
+msgstr "I-type ang iyong maririnig:"
 
 msgid "URL"
 msgstr "URL"
 
 msgid "URL of original record"
-msgstr "URL ng orihinal na rekord"
+msgstr "URL ng orihinal na talaan"
 
 msgid "Unspecified"
 msgstr "Hindi tinukoy"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "I-upload"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "Mag-upload ng mga CSV file"
 
 msgid "View the record"
-msgstr "Tingnan ang tala"
+msgstr "Tingnan ang talaan"
 
 msgid "We have nothing matching your search."
-msgstr "Walang tumutugma sa iyong hinahanap."
+msgstr "Walang kaming nakita na tumutugma sa iyong hinahanap."
 
 msgid "What is this person's name?"
 msgstr "Ano ang pangalan ng taong ito?"
@@ -1339,36 +1394,38 @@ msgid "Where did this information come from?"
 msgstr "Saan nagmula ang impormasyong ito?"
 
 msgid "Where is this person from?"
-msgstr "Saan mula ang taong ito?"
+msgstr "Saan nagmula ang taong ito?"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Habang nasa test mode, matatanggal ang mga talaang lagpas 6 na oras na "
+"ang tagal, anumang ang expiration date."
 
 msgid "Yes"
 msgstr "Oo"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "Oo, hilingin sa may-akda ng record na huwag paganahin ang mga tala"
+msgstr "Oo, hilingin sa may-akda ng talaan na i-disable ang mga tala"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Oo, hilingin sa may-akda ng record na paganahin ang mga tala"
+msgstr "Oo, hilingin sa may-akda ng talaan na i-enable ang mga tala"
 
 msgid "Yes, delete the record"
 msgstr "Oo, tanggalin ang talaang ito"
 
 msgid "Yes, disable notes on this record."
-msgstr "Oo, huwag paganahin ang mga tala sa record na ito."
+msgstr "Oo, i-disable ang mga tala sa talaang ito."
 
 msgid "Yes, extend the record"
-msgstr "Oo, i-extend ang tala"
+msgstr "Oo, pahabain ang talaan"
 
 msgid "Yes, restore this record"
-msgstr "Oo, ibalik ang talaang ito"
+msgstr "Oo, ipanumbalik ang talaang ito"
 
 msgid "Yes, these are the same person"
-msgstr "Oo, iisang tao lamang ang mga ito"
+msgstr "Oo, iisang tao lang sila"
 
 msgid "Yes, update the note"
 msgstr "Oo, i-update ang tala"
@@ -1384,17 +1441,19 @@ msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
+"Kasalukuyan kang naka-sign in bilang si "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Kasalukuyan kang hindi naka-sign in."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Maaari mong %(begin_tag)stingnan ang talaan%(end_tag)s bago ito tanggalin."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1414,88 +1473,90 @@ msgstr ""
 " sa sumusunod na tao:\n"
 
 msgid "Your e-mail address"
-msgstr "Iyong e-mail address"
+msgstr "Ang iyong email address"
 
 msgid "Your e-mail address:"
-msgstr "Iyong e-mail address:"
+msgstr "Ang iyong email address:"
 
 msgid "Your email"
-msgstr "Ang iyong e-mail"
+msgstr "Ang iyong email"
 
 msgid "Your name"
-msgstr "Iyong pangalan"
+msgstr "Ang iyong pangalan"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
 msgstr ""
-"Kinakailangan ang iyong pangalan sa seksyong \"Tungkol sa iyo\".  "
+"Kinakailangan ang iyong pangalan sa seksyong \"Tungkol sa iyo.\"  "
 "Mangyaring bumalik at subukang muli."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"Kinakailangan ang iyong pangalan sa seksyong \"Source\".  Mangyaring "
+"Kinakailangan ang iyong pangalan sa seksyong \"Pinagmulan.\"  Mangyaring "
 "bumalik at subukang muli."
 
 msgid "Your phone number"
-msgstr "Iyong numero ng telepono"
+msgstr "Ang numero ng iyong telepono"
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
 "Matagumpay na naproseso ang iyong kahilingan. Pakitingnan ang iyong inbox"
-" at kumpirmahing nais mong i-post ang iyong tala sa pamamagitan ng "
+" at kumpirmahing gusto mong i-post ang iyong tala sa pamamagitan ng "
 "pagsunod sa url na naka-embed."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Tagahanap ng Tao] Kumpirmahin ang iyong tala sa \"%(full_name)s\""
+msgstr "[Person Finder] Kumpirmahin ang iyong tala sa \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Tagahanap ng Tao] Notice ng pagtanggal para sa \"%(full_name)s\""
+msgstr "[Person Finder] Paunawa sa pagtatanggal para sa \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] I-disable ang mga tala tungkol kay \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Person Finder] I-enable ang mga tala tungkol kay \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
-"[Tagahanap ng Tao] Pinapagana ang notice ng mga tala para sa "
+"[Person Finder] Ine-enable ang paunawa sa mga tala para kay "
 "\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
-"[Tagahanap ng Tao] Hindi na ngayon pinapagana ang mga tala para sa "
+"[Person Finder] Naka-disable na ngayon ang mga tala para kay "
 "\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Tagahanap ng Tao] Pinapagana na ngayon ang mga tala sa \"%(full_name)s\""
+msgstr ""
+"[Person Finder] Naka-enable na ngayon ang mga tala tungkol kay "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
 msgstr ""
-"[Tagahanap ng Tao] Notice para sa pagbabalik ng talaan para sa "
+"[Person Finder] Paunawa para sa pagbabalik ng talaan para kay "
 "\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Tagahanap ng Tao] Update sa katayuan para sa %(full_name)s"
+msgstr "[Person Finder] Update sa status para kay %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Tagahanap ng Tao] Naka-subscribe ka sa mga update sa katayuan para sa "
+"[Person Finder] Naka-subscribe ka sa mga update sa status para kay "
 "%(full_name)s"
 
 msgid "at"
@@ -1505,7 +1566,7 @@ msgid "female"
 msgstr "babae"
 
 msgid "in test mode"
-msgstr ""
+msgstr "nasa test mode"
 
 msgid "male"
 msgstr "lalaki"

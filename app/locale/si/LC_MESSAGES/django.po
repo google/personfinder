@@ -1,0 +1,1533 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  වාර්තා කරන කර්තෘවරුන්ගේ අවසරය සහිතව පමණක් සටහන් අබල හෝ සබල කරන බව "
+"තහවුරු කර ගැනීමට, තහවුරු කිරීමේ පණිවිඩයක් වාර්තා කරන කර්තෘ වෙත යැවෙනු ඇත."
+" ඔබ කර්තෘ නම්, පහත බොත්තම ක්ලික් කිරීමෙන් පසුව ඔබගේ ඊ-තැපෑල පරික්ෂා "
+"කරන්න.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ආදරණීය %(author_name)s,\n"
+"\n"
+"පරිශීලකයෙකු \"%(full_name)s\" සඳහා වාර්තාව මත සටහන් සබල කිරීමට ඉල්ලා ඇත.\n"
+"\n"
+"ඔබගේ ඊ-තැපැල් ලිපිනය මෙම වාර්තාවේ කර්තෘ ලෙස වාර්තා වේ. මෙම වාර්තාව මත "
+"සටහන් සබල කිරීමට, දින 3 ක් ඇතුළත මෙම සබැඳිය අනුගමනය කරන්න:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ආදරණීය %(author_name)s,\n"
+"\n"
+"පරිශීලකයෙකු \"%(full_name)s\" සඳහා වාර්තාව මත සටහන් අබල කරන ලෙස ඔබගෙන් "
+"ඉල්ලා ඇත.\n"
+"\n"
+"ඔබගේ ඊ-තැපෑල මෙම වාර්තාවේ කර්තෘ ලෙස වාර්තා කර ඇත. මෙම වාර්තාව මත සටහන් "
+"අබල කිරීමට, දින තුනක් ඇතුළත මෙම සබැඳිය අනුගමනය කරන්න:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ආදරණීය %(author_name)s,\n"
+"ඔබ හුදෙක් \"%(full_name)s\" සඳහා වාර්තාව මත සටහනක් ඇතුළු කළේය. ඔබගේ සටහන "
+"පළ කිරීමට, දින 3 ක් ඇතුළත මෙම සබැඳිය අනුගමනය කරන්න:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    අනතුරු ඇඟවීමයි: මෙම වාර්තාව දින %(expiration_days)s "
+"කට වඩා අඩු ගණනකදී කල් ඉකුත්වනු ඇත.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    අනතුරු ඇඟවීමයි: මෙම වාර්තාව දිනකට අඩු කාලයක දී කල් "
+"ඉකුත් වනු ඇත.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" සඳහා වාර්තාව මැකීමට ඔබට අවශ්‍ය බව ඔබට විශ්වාසද?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබට \"%(full_name)s\" මත සටහන් අබල කිරීමට අවශ්‍ය බව ඔබට විශ්වාසද?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබට \"%(full_name)s\" වාර්තාව මත සටහන් අබල කිරීමට අවශ්‍ය බව ඔබට "
+"විශ්වාසද?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබට \"%(full_name)s\" මත සටහන් සබල කිරීමට අවශ්‍ය බව ඔබට විශ්වාසද?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබට \"%(full_name)s\" වාර්තාව සඳහා කල් ඉකුත්වීම දික් කිරීමට අවශ්‍ය "
+"බව ඔබට විශ්වාසද?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබගේ සටහන තහවුරු කරන්න\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබ මැකීම කරගෙන ගියහොත්,\n"
+"     මෙම වාර්තාව තවදුරටත් මෙම අඩවිය මත ෙසෙවිය හෝ දසුන් කළ නොහැකි වනු ඇත.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබ එය ස්ථීරවම මැකීමට කැමති නම්,\n"
+"      කරුණාකර මුල් මූලාශ්‍රය අමතන්න.\n"
+"      ඔබට මුල් වාර්තාව මෙහි දසුන් කළ හැක\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      ඔබ ඇතුළු කළ URL එක වලංගු %(website)s පැතිකඩ URL එකක් මෙන් නොපෙනේ.\n"
+"      කරුණාකර %(website)s මත මෙම පුද්ගලයාගේ පැතිකඩ පිටුව වෙත යන්න, "
+"අනතුරුව එම URL එක පිටපත් කර මෙහි අලවන්න.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      මෙම වාර්තාව වෙනත් මූලාශ්‍රයක් වෙතින් වන වාර්තාවක පිටපතකි.\n"
+"      ඔබට මෙහි වාර්තාව මැකිය හැක,\n"
+"      නමුත් අපට පසුව මුල් මූලාශ්‍රය වෙතින් තවත් පිටපතක් ලැබිය හැකි බව "
+"කරුණාකර දැනුවත්වන්න.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    වාර්තා කර්තෘගේ අවසරය සහිතව පමණක් සටහන් අබල හෝ සබල කර ඇති බව සහතික "
+"කිරීමට, වාර්තා කර්තෘ වෙත තහවුරු කිරීමේ පණිවිඩයක් යවනු ඇත.\n"
+"    ඔබ කර්තෘ නම්, පහත බොත්තම ක්ලික් කිරීමෙන් පසුව ඔබගේ ඊ-තැපෑල පරික්ෂා "
+"කරන්න.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  වාර්තාව තවමත් මෙම අඩවිය මත දෘශ්‍යමාන වන නමුත් කිසිවෙකුට එය මත සටහන් පළ "
+"කිරීමට හැකි නොවනු ඇත.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  ඔබගේ සටහන පළ කිරීමට, කරුණාකර පහත ඔබගේ ඊ-තැපැල් ලිපිනය ඇතුළු කර ඔබට "
+"ලැබෙනු ඇති තහවුරු කිරීමේ සබැඳිය අනුගමනය කරන්න.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"%(site_url)s හි \"%(full_name)s\" සඳහා වාර්තාව පරිශීලකයකු අනාවරණය කරගෙන "
+"ඇත.\n"
+"\n"
+"මෙම වාර්තාව මත සටහනක කර්තෘ ලෙස ඔබගේ ඊ-තැපැල් ලිපිනය වාර්තාගත කර ඇති නිසා "
+"මැකීම පිළිබඳව අපි ඔබට දැනුම්දෙමින් සිටින්නෙමු.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"%(full_name)s දී \"%(site_url)s\" සඳහා වාර්තාව පරිශීලකයකු අනාවරණය කරගෙන "
+"ඇත.\n"
+"\n"
+"මෙම වාර්තාව මත සටහනක කර්තෘ ලෙස ඔබගේ ඊ-තැපැල් ලිපිනය වාර්තාගත කර ඇති නිසා "
+"මැකීම පිළිබඳව අපි ඔබට දැනුම්දෙමින් සිටින්නෙමු.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"දින %(days_until_deletion)s කට පසුව, වාර්තාව ස්ථීරවම මැකෙනු ඇත.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"සටහන: දෝෂයකින් මෙම වාර්තාව මැකුන ඔබ විශ්වාස කරන්නේ නම්, ඊළඟ දින "
+"%(days_until_deletion)s ඇතුළත මෙම සබැඳිය අනුගමනය කිරීම මගින් ඔබට එය "
+"පිළිනැගිය හැක:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" සඳහා වාර්තාව මත සටහන් දැන් අබල කර ඇත.  වාර්තාව දසුන් "
+"කිරීමට,\n"
+"සබැඳිය අනුගමනය කරන්න:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"මෙම පුද්ගලයාගේ වාර්තාව හෝ වාර්තාව මත සටහනක් සමග ඔබගේ ඊ-තැපැල් ලිපිනය "
+"සම්බන්ධිත නිසා අපි ඔබට දැනුම්දෙමින් සිටින්නෙමු.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" සඳහා වාර්තාව මත සටහන් දැන් සබල කර ඇත.  වාර්තාව දසුන් "
+"කිරීමට,\n"
+"සබැඳිය අනුගමනය කරන්න:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"මෙම පුද්ගලයාගේ වාර්තාව හෝ වාර්තාව මත සටහනක් සමග ඔබගේ ඊ-තැපැල් ලිපිනය "
+"සම්බන්ධිත නිසා අපි ඔබට දැනුම්දෙමින් සිටින්නෙමු.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" සඳහා වාර්තාවේ කර්තෘ\n"
+"(පෙරදී මකන ලද) වාර්තාව පිළිනගා ඇත.  වාර්තාව දසුන් කිරීමට, සබැඳිය අනුගමනය "
+"කරන්න:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"මෙම පුද්ගලයාගේ වාර්තාව හෝ වාර්තාව මත සටහනක් සමග ඔබගේ ඊ-තැපැල් ලිපිනය "
+"සම්බන්ධිත නිසා අපි ඔබට දැනුම්දෙමින් සිටින්නෙමු.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" සඳහා වාර්තාව මත නව සටහනක් ඇත.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" මත සටහන් වෙත ඔබ දායක වී ඇත.\n"
+"\n"
+"ඔබට මෙම වාර්තාව මෙහිදී දසුන් කළ හැක\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"දායකත්වයෙන් ඉවත් වීමට, මෙම සබැඳිය අනුගමනය කරන්න: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(හෙළි කිරීමට ක්ලික් කරන්න)"
+
+msgid "(unknown)"
+msgstr "(නොදන්නා)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "මෙම පුද්ගලයා හෝ මෙම පුද්ගලයා අයදින වෙනත් අය සඳහා පණිවිඩයක්"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "දැන් සිට මාස 1 ක් පමණ (දින 30 ක්)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "දැන් සිට වර්ෂ 1 ක් පමණ (දින 360 ක්)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "දැන් සිට මාස 2 ක් පමණ (දින 60 ක්)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "දැන් සිට මාස 3 ක් පමණ (දින 90 ක්)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "දැන් සිට මාස 6 ක් පමණ (දින 180 ක්)"
+
+msgid "About Google Person Finder"
+msgstr "Google පුද්ගල සෙවුම පිළිබඳ"
+
+msgid "About you (required)"
+msgstr "ඔබ පිළිබඳ (අවශ්‍යයයි)"
+
+msgid "Administration"
+msgstr "පරිපාලනය"
+
+msgid "Age"
+msgstr "වයස"
+
+msgid "Alternate family names"
+msgstr "විකල්ප පවුල් නාම"
+
+msgid "Alternate given names"
+msgstr "විකල්ප දෙන ලද නාම"
+
+msgid "Alternate names"
+msgstr "විකල්ප නාම"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "මෙම සටහන ආයාචිත තැපෑලක් නොවන බව ඔබට විශ්වාස ද?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "මෙම සටහන ආයාචිත තැපෑලක් ලෙස ඔබට ලකුණු කිරීමට අවශ්‍ය බව ඔබට විශ්වාස ද?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "මෙම වාර්තාව මැකීම වෙතින් පිළිනැගීමට ඔබට අවශ්‍ය බව ඔබට විශ්වාස ද?"
+
+msgid "Atom feed of updates about this person"
+msgstr "මෙම පුද්ගලයා පිළිබඳ යාවත්කාලීනයන්ගේ Atom සංග්‍රහය"
+
+msgid "Author's e-mail address"
+msgstr "කර්තෘගේ ඊ-තැපැල් ලිපිනය"
+
+msgid "Author's name"
+msgstr "කර්තෘගේ නම"
+
+msgid "Author's phone number"
+msgstr "කර්තෘගේ දුරකථන අංකය"
+
+msgid "Authorization key"
+msgstr "අනුමැතිය දීමේ යතුර"
+
+msgid "Back to results list"
+msgstr "ප්‍රතිළුල ලැයිස්තුව වෙත ආපසු"
+
+msgid "Back to start"
+msgstr "ඇරඹීම වෙත ආපසු"
+
+msgid "CSV file"
+msgstr "CSV ගොනුව"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "id %(id)s සහිත සටහන සොයා ගැනීමට නොහැක"
+
+msgid "Cancel"
+msgstr "අවලංගු කරන්න"
+
+msgid "City"
+msgstr "නගරය"
+
+msgid "Click here to view results."
+msgstr "ප්‍රතිඵල දසුන් කිරීමට මෙහි ක්ලික් කරන්න."
+
+msgid "Close window"
+msgstr "කවුඵව වසන්න"
+
+msgid "Compare these records"
+msgstr "මෙම වාර්තා සසඳන්න"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "ඔබගේ අඩවිය මත මෙම මෙවලම යෙදීමට පහත HTML කේතය  පිටපත් කර අලවන්න"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "නව වාර්තාවක් තනන්න"
+
+msgid "Create a new record for"
+msgstr "සඳහා නව වාර්තාවක් තනන්න"
+
+msgid "Create a new record for a missing person"
+msgstr "අස්ථානගත වූ පුද්ගලයකු සඳහා නව වාර්තාවක් තනන්න"
+
+msgid "Crisis events"
+msgstr "අර්බුද සිද්ධි"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "%(num_people)s වාර්තා පිළිබඳව වර්තමානයේ හඹායයි."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "දිනය අනාගතයෙහි විය නොහැක.  කරුණාකර ආපසු ගොස් නැවත උත්සාහ කරන්න."
+
+msgid "Date of birth"
+msgstr "උපන්දිනය"
+
+msgid "Delete this record"
+msgstr "මෙම වාර්තාව මකන්න"
+
+msgid "Describe how to identify this person."
+msgstr "මෙම පුද්ගලයා හඳුනාගන්නේ කෙසේදැයි විස්තර කරන්න."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "මෙම පුද්ගලයාගේ ශාරීරික අංග ලක්ෂණ විග්‍රහ කරන්න."
+
+msgid "Description"
+msgstr "විස්තරය"
+
+msgid "Desktop version"
+msgstr "මේස පරිගණක අනුවාදය"
+
+msgid "Developers"
+msgstr "සංවර්ධකයන්"
+
+msgid "Disable notes on this record"
+msgstr "මෙම වාර්තාව මත සටහන් අබල කරන්න"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "වෙනත් වෙබ් අඩවිවල මෙම පුද්ගලයාට පැතිකඩ පිටු තිබේ ද?"
+
+msgid "Download the sound as MP3"
+msgstr "MP3 ලෙස හඬ බාගන්න"
+
+msgid "E-mail"
+msgstr "ඊ-තැපෑල"
+
+msgid "E-mail address"
+msgstr "ඊ-තැපැල් ලිපිනය"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "යෙදුම කාවැද්දේ"
+
+msgid "Enable notes on this record"
+msgstr "මෙම වාර්තාව මත සටහන් සබල කරන්න"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "සියලු දින yyyy-mm-ddThh:mm:ssZ ආකෘතියෙන් UTC තුළ ඇති බව තහවුරු කරන්න"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-MM-DD ලෙස ඇතුළු කරන්න"
+
+msgid "Enter the person's given and family names."
+msgstr "පුද්ගලයාගේ දෙනලද සහ පෙළපත් නාම ඇතුළු කරන්න"
+
+msgid "Enter the person's name or parts of the name."
+msgstr "පුද්ගලයාගේ නම හෝ නමේ කොටස් ඇතුළු කරන්න."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "පුද්ගලයාගේ නම, නමේ කොටස් හෝ ජංගම දුරකථන අංකය ඇතුළු කරන්න."
+
+msgid "Enter the person's name."
+msgstr "පුද්ගලයාගේ නම ඇතුළු කරන්න."
+
+msgid "Expiry"
+msgstr "කල්ඉකුත්වීම"
+
+msgid "Expiry date of this record"
+msgstr "මෙම වාර්තාවේ කල් ඉකුත්වීමේ දිනය"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "දින %(extension_days)s කින් කල් ඉකුත්වීමේ දිනය දික් කරන්න"
+
+msgid "Family name"
+msgstr "පෙළපත් නාමය"
+
+msgid "Feed of updates about this person"
+msgstr "මෙම පුද්ගලයා පිළිබඳ යාවත්කාලීන සංග්‍රහය"
+
+msgid "Follow this link to create a new record"
+msgstr "නව වාර්තාවක් තැනීමට මෙම සබැඳිය අනුගමනය කරන්න"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"ජංගම දුරකථන හැර වෙනත් දුරකථන සඳහා NTT මගින් සපයන ලද 171 සේවාව භාවිතා "
+"කරන්න."
+
+msgid "Full name"
+msgstr "සම්පූර්ණ නම"
+
+msgid "Get a new challenge"
+msgstr "නව අභියෝගයක් ලබා ගන්න"
+
+msgid "Get a visual challenge"
+msgstr "දෘශ්‍ය අභියෝගයක් ලබා ගන්න"
+
+msgid "Get an audio challenge"
+msgstr "ශ්‍රව්‍ය අභියෝගයක් ලබා ගන්න"
+
+msgid "Given name"
+msgstr "දෙන ලද නාමය"
+
+msgid "Google Person Finder"
+msgstr "Google පුද්ගල සෙවුම"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "ව්‍යසනයට පසුව මෙම පුද්ගලයා සමග ඔබ පුද්ගලිකව කථා කර තිබේද? (අවශ්‍යයයි)"
+
+msgid "Help"
+msgstr "ඉන්පුට් ටූල්ස් සක්‍රිය කරන්න"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"මේ තියෙන්නේ ඔබට සංස්කරණය කළ හැකි සහ උඩුගත කළ හැකි %(begin_tag)sCSV සාම්පල"
+" ගොනුවකි%(end_tag)s"
+
+msgid "Hide Map"
+msgstr "සිතියම සඟවන්න"
+
+msgid "Hide note"
+msgstr "සටහන සඟවන්න"
+
+msgid "Home Address"
+msgstr "ගෘහ ලිපිනය"
+
+msgid "Home address"
+msgstr "ගෘහ ලිපිනය"
+
+msgid "Home country"
+msgstr "මව් රට"
+
+msgid "How can this person be reached now?"
+msgstr "මෙම පුද්ගලයා වෙත දැන් ලඟාවන්නේ කෙසේද?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "මෙම පුද්ගලයා කෙරෙහි රුචිකත්වයක් ඇති වෙනත් අය ඔබව අමතන්නේ කෙසේද"
+
+msgid "I am seeking information"
+msgstr "මම තොරතුරු අයදිමින් සිටිමි"
+
+msgid "I am this person"
+msgstr "මම මෙම පුද්ගලයා ය"
+
+msgid "I do not want any more updates on this record."
+msgstr "මට මෙම වාර්තාව මත තවදුරටත් යාවත්කාලීන අවශ්‍ය නැත."
+
+msgid "I do not want my information online anymore."
+msgstr "මට තවදුරටත් සබැඳිව මගේ තොරතුරු අවශ්‍ය නැත."
+
+msgid "I have information about someone"
+msgstr "යම් කෙනෙකු පිළිබඳව මට තොරතුරු ඇත"
+
+msgid "I have reason to think this person is missing"
+msgstr "මෙම පුද්ගලයා අතුරුදහන් වී ඇති බව සිතීමට මට හේතු ඇත"
+
+msgid "I have received information that this person is alive"
+msgstr "මෙම පුද්ගලයා ජීවතුන් අතර සිටින බවට මට තොරතුරු ලැබී ඇත"
+
+msgid "I have received information that this person is dead"
+msgstr "මෙම පුද්ගලයා මියගොස් ඇති බවට මට තොරතුරු ලැබී ඇත"
+
+msgid "I have received spam due to this note."
+msgstr "මෙම සටහන හේතුවෙන් මට ආයාචිත තැපැල් ලැබී ඇත."
+
+msgid "I have received spam."
+msgstr "මට ආයාචිත තැපැල් ලැබී ඇත."
+
+msgid "I prefer not to specify."
+msgstr "විශේෂයෙන් සඳහන් නොකිරීමට මම ප්‍රිය කරමි."
+
+msgid "I'm looking for someone"
+msgstr "මම යම්කෙනෙකුව බලාපොරොත්තුවෙන් සිටිමි."
+
+msgid "Identify who you are looking for"
+msgstr "ඔබ බලාපොරොත්තුවෙන් සිටින්නේ කවුද යන්න හඳුනා ගන්න"
+
+msgid "Identify who you have information about"
+msgstr "ඔබට ඇත්තේ කා පිළිබඳ තොරතුරුද යන්න හඳුනා ගන්න"
+
+msgid "Identifying information"
+msgstr "තොරතුරු හඳුනා ගැනේ"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"ඔබගේ මනසේ සිටි පුද්ගලයා හා මෙම වාර්තා කිසිවක් ගැළපෙන්නේ නැතිනම්, නව "
+"වාර්තාවක් තැනීමට ඔබට පහත ක්ලික් කළ හැක."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"මෙම සටහනේ කර්තෘ ඔබ නම්, මෙම වාර්තාව මත සටහන් අබල කිරීමට ඔබට අවශ්‍ය බව "
+"තහවුරු කිරීමට සබැඳියක් සඳහා කරුණාකර ඔබගේ ඊ-තැපෑල පරික්ෂා කරන්න.  එසේ "
+"නැත්නම්, ඔබගේ ඉල්ලීම් තහවුරු කිරීමට කරුණාකර වාර්තා කර්තෘ සඳහා රැඳී "
+"සිටින්න."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"මෙම සටහනේ කර්තෘ ඔබ නම්, මෙම වාර්තාව මත සටහන් සබල කිරීමට ඔබට අවශ්‍ය බව "
+"තහවුරු කිරීමට සබැඳියක් සඳහා කරුණාකර ඔබගේ ඊ-තැපෑල පරික්ෂා කරන්න.  එසේ "
+"නැත්නම්, ඔබගේ ඉල්ලීම් තහවුරු කිරීමට කරුණාකර වාර්තා කර්තෘ සඳහා රැඳී "
+"සිටින්න."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"ඔබට මෙම පුද්ගලයා පිළිබඳ ඡායාරූපයක් ඇත්නම්, එය උඩුගත කරන්න නැතහොත් එහි URL"
+" ලිපිනය ඇතුළු කරන්න."
+
+msgid "Incorrect.  Try again."
+msgstr "වැරදිය.  නැවත උත්සාහ කරන්න."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "අවලංගු ඊ-තැපැල් ලිපිනයකි. කරුණාකර නැවත උත්සාහ කරන්න."
+
+msgid "Language selection"
+msgstr "භාෂා තේරීම"
+
+msgid "Last known location"
+msgstr "අවසන් වරට දන්නා පිහිටුම"
+
+msgid "Link"
+msgstr "සබැඳිය"
+
+msgid "Link to profile page"
+msgstr "පැතිකඩ පිටුව වෙත සබඳින්න"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "අනුපිටපත ලෙස වාර්තාව ලකුණු කරන්න."
+
+msgid "Message (required)"
+msgstr "පණිවිඩය (අවශ්‍යයයි)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "පණිවිඩය අවශ්‍යයයි. කරුණාකර ආපසු ගොස් නැවත උත්සාහ කරන්න."
+
+msgid "Missing person's current contact information"
+msgstr "අතුරුදන් වූ පුද්ගලයාගේ වර්තමාන සබඳතා තොරතුරු"
+
+msgid "Missing person's current e-mail address"
+msgstr "අතුරුදන් වූ පුද්ගලයාගේ වර්තමාන ඊ-තැපැල් ලිපිනය"
+
+msgid "Missing person's current phone number"
+msgstr "අතුරුදන් වූ පුද්ගලයාගේ වර්තමාන දුරකථන අංකය"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"සංවර්ධකයන් සඳහා වැඩිදුර තොරතුරු දැන් "
+"%(developers_link_html)sමෙහි%(link_end_html)s සොයාගත හැක."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"ප්‍රතිඵල 100 වඩා වැඩිය; පෙන්වන්නේ පළමු 100 පමණී.  නම් වැඩිපුර ඇතුළු "
+"කිරීමට උත්සාහ කරන්න"
+
+msgid "Name"
+msgstr "නම"
+
+msgid "Name (required)"
+msgstr "නම (අවශ්‍යයයි)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "නම අවශ්‍යයව ඇත. කරුණාකර ආපසු ගොස් නැවත උත්සාහ කරන්න."
+
+msgid "Neighborhood"
+msgstr "අසල්වාසීන්"
+
+msgid "No"
+msgstr "නැත"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "වාර්තාව %(id)s සඳහා කර්තෘ ඊ-තැපෑලක් නැත."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "ප්‍රවාහකගේ පණිවිඩ පුවරු සේවාව වෙත ලියාපදිංචි කළ පණිවිඩ කිසිවක් හමු වී නැත."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "මෙම ID සමග සටහනක් නැත: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "සටහන් කිසිවක් පළ කර නැත"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "මෙම ID එක සහිත පුද්ගලයකු නැත: %(id_str)s."
+
+msgid "No results found for"
+msgstr "මෙය සඳහා ප්‍රතිඵල හමු වී නැත"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "\"believed_dead\" තත්වය සහිතව සටහන් පළ කිරීමට අනුමැතිය දී නැත."
+
+msgid "Not spam"
+msgstr "ආයාචිත තැපැල් නොවේ"
+
+msgid "Note author"
+msgstr "සටහන් කර්තෘ"
+
+msgid "Note text"
+msgstr "සටහන් පෙළ"
+
+msgid "Notes for this person"
+msgstr "මෙම පුද්ගලයා සඳහා සටහන්"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "අංකය හෝ පරාසය (උ.දා. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"හෝ %(gadget_link_html)sGoogle මෙවලමක්%(link_end_html)s ලෙස ඔබගේ අඩවිය වෙත"
+" එක් කරන්න."
+
+msgid "Original URL"
+msgstr "මුල් URL එක"
+
+msgid "Original author's name"
+msgstr "මුල් කර්තෘගේ නම"
+
+msgid "Original posting date"
+msgstr "මුල් පළි කිරීමේ දිනය"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"මුල් පළ කිරීමේ දිනය YYYY-MM-DD ආකෘතියෙන් නැත නැතහොත් එය නොපවතින දිනයකි.  "
+"කරුණාකර ආපසු ගොස් නැවත උත්සාහ කරන්න."
+
+msgid "Original site name"
+msgstr "මුල් අඩවි නාමය"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"කරුණාකර සටහන් කර ගන්න: ඇතුළු කළ සියලු දත්ත මහජනයා වෙත ලද හැකි අතර ඕනෑම "
+"කෙනෙකු විසින් දසුන් කළ හැක තවද භාවිතා කළ හැක.  Google මෙම දත්ත වල "
+"නිරවද්‍යතාවය සමාලෝචනය හෝ සත්‍යාපනය නොකරයි."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"කරුණාකර සටහන් කර ගන්න: සක්‍රිය පුද්ගල සෙවුම් අඩවි මත, ඇතුළු කළ සියලු දත්ත"
+" මහජනයා වෙත ලද හැකි අතර ඕනෑම කෙනෙකු විසින් දසුන් කළ හැක එමෙන්ම භාවිතා කළ "
+"හැක.  Google මෙම දත්ත වල නිරවද්‍යතාවය සමාලෝචනය හෝ සත්‍යාපනය නොකරයි."
+
+msgid "Person Finder"
+msgstr "පුද්ගල සෙවුම"
+
+msgid "Phone"
+msgstr "දුරකථනය"
+
+msgid "Phone number"
+msgstr "දුරකථන අංකය"
+
+msgid "Photo"
+msgstr "ඡායාරූපය"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"උඩුගත කළ ඡායාරූපය හඳුනා නොගත් හැඩතලයකි.  කරුණාකර ආපසු ගොස් නැවත උත්සාහ "
+"කරන්න."
+
+msgid "Physical characteristics"
+msgstr "ශාරීරික අංග ලක්ෂණ"
+
+msgid "Play the sound again"
+msgstr "නැවත හඬ වාදනය කරන්න"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"භූමිකම්පාවට පසුව පුද්ගලයා සමග ඔබ සම්බන්ධව සිට ඇති බව කරුණාකර පරික්ෂා "
+"කරන්න, නැතහොත් \"මෙම පුද්ගලයාගේ තත්වය\" ක්ෂේත්‍රය වෙනස් කරන්න."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"වාර්තා කිරීමට ඔබ සැලසුම් කරමින් සිටින පුද්ගලයා හා එය ගැළපෙන්නේදැයි "
+"කරුණාකර පරික්ෂා කරන්න."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "යාවත්කාලීන වෙත දායක කරවීමට කරුණාකර ඔබගේ ඊ-තැපැල් ලිපිනය තහවුරු කරන්න"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "යාවත්කාලීන වෙත දායක කරවීමට කරුණාකර ඔබගේ ඊ-තැපැල් ලිපිනය ඇතුළු කරන්න."
+
+msgid "Please explain why you think these are the same person"
+msgstr "මේ එකම පුද්ගලයා බව ඔබ සිතන්නේ ඇයිදැයි කරුණාකර පැහැදිලි කරන්න."
+
+msgid "Please fill in all the required fields."
+msgstr "කරුණාකර අවශ්‍ය සියලු ක්ෂේත්‍ර පුරවන්න."
+
+msgid "Please fill in your email address."
+msgstr "කරුණාකර ඔබගේ ඊතැපැල් ලිපිනය පුරවන්න"
+
+msgid "Please provide an valid email address."
+msgstr "කරුණාකර වලංගු ඊතැපැල් ලිපිනයක් සපයන්න."
+
+msgid "Possible duplicates"
+msgstr "වියහැකි අනුපිටපත්"
+
+msgid "Postal or zip code"
+msgstr "තැපැල් හෝ සිප් කේතය"
+
+msgid "Posted by"
+msgstr "තැපැල් කළේ"
+
+msgid "Proceed"
+msgstr "ඉදිරියට යන්න"
+
+msgid "Profile Pages"
+msgstr "පැතිකඩ පිටු"
+
+msgid "Profile page"
+msgstr "පැතිකඩ පිටුව"
+
+msgid "Provide information"
+msgstr "තොරතුරු සපයන්න"
+
+msgid "Provide information about this person"
+msgstr "මෙම පුද්ගලයා පිළිබඳ තොරතුරු සපයන්න"
+
+msgid "Provided by:"
+msgstr "සපයන ලද්දේ:"
+
+msgid "Province or state"
+msgstr "කලාපය හෝ ප්‍රාන්තය"
+
+msgid "Reason for deletion:"
+msgstr "මැකීම සඳහා හේතුව:"
+
+msgid "Reason for disabling notes:"
+msgstr "සටහන් අබල කිරීමට හේතුව:"
+
+msgid "Records Similar to"
+msgstr "මෙයට සමාන වාර්තා"
+
+msgid "Records selected"
+msgstr "වාර්තා තෝරා ගැනිණි"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "\"%(query)s\" හා ගැළපෙන නම් සහ ලිපින සහිත වාර්තා"
+
+msgid "Remove"
+msgstr "ඉවත් කරන්න"
+
+msgid "Report spam"
+msgstr "ආයාචිත තැපෑල වාර්තා කරන්න"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s සඳහා වාර්තාව වෙත ආපසු යන්න."
+
+msgid "Reveal note"
+msgstr "සටහන හෙළි කරන්න"
+
+msgid "Save this record"
+msgstr "මෙම වාර්තාව සුරකින්න"
+
+msgid "Search Results for"
+msgstr "මෙය සඳහා ප්‍රතිඵල සොයන්න"
+
+msgid "Search for this person"
+msgstr "මෙම පුද්ගලයා සඳහා සොයන්න"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "වැඩිදුර උපදෙස් සඳහා %(begin_tag)swiki%(end_tag)s බලන්න"
+
+msgid "Select a website to add a profile page..."
+msgstr "පැතිකඩ පිටුවක් එක් කිරීමට වෙබ් අඩවියක් තෝරන්න..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "අනුපිටපත ලෙස ලකුණු කිරීමට වාර්තා 3 ක් දක්වා තෝරන්න:"
+
+msgid "Send email"
+msgstr "ඊ-තැපෑල යවන්න"
+
+msgid "Sex"
+msgstr "ලිංගිකත්වය"
+
+msgid "Show Map"
+msgstr "සිතියම පෙන්වන්න"
+
+msgid "Show sensitive information"
+msgstr "සංවේදී තොරතුරු පෙන්වන්න"
+
+msgid "Sign in"
+msgstr "පුරන්න"
+
+msgid "Sign out"
+msgstr "වරන්න"
+
+msgid "Someone has received information that this person is alive"
+msgstr "මෙම පුද්ගලයා ජීවතුන් අතර සිටින බවට තොරතුරු යම් කෙනෙකුට ලැබී ඇත"
+
+msgid "Someone has received information that this person is dead"
+msgstr "මෙම පුද්ගලයා මියගොස් ඇති බවට තොරතුරු යම් කෙනෙකුට ලැබී ඇත"
+
+msgid "Someone has reported that this person is missing"
+msgstr "මෙම පුද්ගලයා අතුරැදන්ව ඇති බව යම් කෙනෙකු වාර්තා කර ඇත"
+
+msgid "Someone is seeking information about this person"
+msgstr "මෙම පුද්ගලයා පිළිබඳ තොරතුරු යම් කෙනෙකු අයදිමින් සිටී"
+
+msgid "Source of this record"
+msgstr "මෙම වාර්තාවේ මූලාශ්‍රය"
+
+msgid "Source of this record (required)"
+msgstr "මෙම වාර්තාවේ මූලාශ්‍රය (අවශ්‍යයි)"
+
+msgid "Status"
+msgstr "තත්වය"
+
+msgid "Status of this person"
+msgstr "මෙම පුද්ගලයාගේ තත්වය"
+
+msgid "Street name"
+msgstr "වීථි නම"
+
+msgid "Street name only, no number"
+msgstr "වීථි නම පමණී, අංකයක් නැත"
+
+msgid "Subscribe"
+msgstr "දායක වන්න"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s පිළිබඳ යාවත්කාලීන වෙත දායකවන්න"
+
+msgid "Subscribe to updates about this person"
+msgstr "මෙම පුද්ගලයා පිළිබඳ යාවත්කාලීන වෙත දායකවන්න"
+
+msgid "Switch to address"
+msgstr "ලිපිනය වෙත මාරුවන්න"
+
+msgid "Switch to duplicate marking mode"
+msgstr "අනුපිටපත් ලකුණු කිරීමේ ප්‍රකාරය වෙත මාරුවන්න"
+
+msgid "Switch to lat/long"
+msgstr "අක්ෂාංශ/දේෂාංශ වෙත මාරුවන්න"
+
+msgid "Switch to normal view mode"
+msgstr "සාමාන්‍ය දසුන් ප්‍රකාරය වෙත මාරුවන්න"
+
+msgid "Tell us the status of this person"
+msgstr "මෙම පුද්ගලයාගේ තත්වය අපට පවසන්න"
+
+msgid "Terms of Service"
+msgstr "සේවා නියමයන්"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"දෙන ලද නම සහ පෙළපත් නාමය යන දෙකම අවශ්‍යය.  කරුණාකර ආපසු ගොස් නැවත උත්සාහ "
+"කරන්න."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "මුල් කර්තෘගේ නම අවශ්‍යය.  කරුණාකර ආපසු ගොස් නැවත උත්සාහ කරන්න."
+
+msgid "The author has disabled notes on this record."
+msgstr "කර්තෘ මෙම වාර්තාව මත සටහන් අබල කර ඇත."
+
+msgid "The author has disabled status updates on this record."
+msgstr "කර්තෘ මෙම වාර්තාව මත තත්ව යාවත්කාලීන අබල කර ඇත."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "සපයන ලද අනුරුව වඩාත් විශාලය.  කරුණාකර සමාන එකක් උඩුගත කරන්න."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "අයාචිත තැපෑල ලෙස මෙම සටහන ලකුණු කිරීමේ හේතුව:"
+
+msgid "The record cannot be extended."
+msgstr "වාර්තාව දිගු කළ නොහැක."
+
+msgid "The record has been deleted."
+msgstr "වාර්තාව මකා ඇත."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "%(expiry_date)s දක්වා වාර්තාව දිගු කර ඇත."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"ඔබ තෝරා ගත් තත්වය මෙම පුද්ගලයා ඔබ බව දක්වයි. මෙය සත්‍ය නම්, ඔබ මෙම "
+"පුද්ගලයා අමතා ඇති බව දැක්වීමට 'ඔව්' යන්න ද තෝරන්න."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "%(token)s ටෝකනය අවලංගු වී තිබුණි."
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "%(token)s ටෝකනය අවලංගු වී තිබුණි."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "සමාන නම් සහිත පවතින වාර්තා %(num_results)s ඇත."
+
+msgid "There are some existing records with similar names."
+msgstr "සමාන නම් සහිත පවතින වාර්තා සමහරක් ඇත."
+
+msgid "There is one existing record with a similar name."
+msgstr "සමාන නමක් සහිත එක් පවතින වාර්තාවක් ඇත."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"අනුරුව සැකසීමේ ගැටලුවක් ඇතිවී තිබුණි.  කරුණාකර වෙනස් අනුරුවක් උත්සාහ "
+"කරන්න."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"ඔබගේ ඉල්ලීම සැකසීමේ දෝෂයක් වී තිබිණි. අපහසුතාවය පිළිබඳව කනගාටුයි. අපගේ "
+"පරිපාලකයන් ගැටලුවේ මූලාශ්‍රය පරීක්ෂා කරනු ඇති නමුත්, කරුණාකර ඔබගේ ඉල්ලීමේ"
+" ආකෘතිය නිවැරදි බව පරීක්ෂා කරන්න."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"%(apache_link_html)sApache 2.0 license%(link_end_html)s යටතේ මෙම ගැජට් ලද"
+" හැකි කොට ඇත."
+
+msgid "This is a new record."
+msgstr "මෙය නව වාර්තාවකි."
+
+msgid "This link is invalid."
+msgstr "මෙම සබැඳිය අවලංගුය."
+
+msgid "This note has been marked as spam."
+msgstr "මෙම සටහන ආයාචිත තැපෑල ලෙස ලකුණු කර ඇත."
+
+msgid "This note is inappropriate."
+msgstr "මෙම සටහන නුසුදුසුය."
+
+msgid "This note is incorrect or untrue."
+msgstr "මෙම සටහන වැරදි හෝ සාවද්‍ය වේ."
+
+msgid "This note is spam."
+msgstr "මෙම සටහන ආයාචිත තැපෑලකි."
+
+msgid "This person has been in contact with someone"
+msgstr "මෙම පුද්ගලයා යම්කෙනෙකු සමග සම්බන්ධව සිට ඇත"
+
+msgid "This person has posted a message"
+msgstr "මෙම පුද්ගලයා පණිවිඩයක් පළ කර ඇත"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "මෙම පුද්ගලයාගේ ප්‍රවේශය නොපවතී හෝ මකා ඇත."
+
+msgid "This record has served its purpose."
+msgstr "මෙම වාර්තාව එහි පරමාර්ථය ඉටු කර ඇත."
+
+msgid "This record is a duplicate of"
+msgstr "මෙම වාර්තාව මෙහි අනුපිටපතකි"
+
+msgid "This record is copied from another source."
+msgstr "මෙම වාර්තාව වෙනත් මූලාශ්‍රයක් වෙතින් පිටපත් කර ඇත."
+
+msgid "This record is inappropriate."
+msgstr "මෙම වාර්තාව නුසුදුසුය."
+
+msgid "This record is spam."
+msgstr "මෙම වාර්තාව ආයාචිත තැපෑලකි."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"මෙම ගබඩාව වර්තමානයේ පරික්ෂණ ප්‍රකාරය තුළ ඇත. පරීක්ෂණ ප්‍රකාරය බලපැවැත්වෙන"
+" අතරතුර, පැය 6 කට වඩා පැරණි වාර්තා මැකේ."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"මෙම සටහන වෙත ඡායාරූපයක් ඇමිණීමට, එය උඩුගත කරන්න නැතහොත් එහි URL එක ඇතුළු "
+"කරන්න."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "ඔබගේ දත්ත මැකීමට, ඔබගේ මේස පරිගණකය වෙතින් පුද්ගල සෙවුම ප්‍රවේශ වන්න."
+
+msgid "To unsubscribe, follow this link"
+msgstr "දායකත්වයෙන් ඉවත් කිරීමට, මෙම සබැඳිය අනුගමනය කරන්න."
+
+msgid "To view or add information, select a name below."
+msgstr "තොරතුර දසුන් කිරීමට හෝ එක් කිරීමට, පහත නමක් තෝරන්න."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"ලිපිනයක් ටයිප් කරන්න නැතහොත් පහත සිතියම විවෘත කර අනතුරුව සිතියම මත ක්ලික්"
+" කිරීමෙන් පිහිටුම දක්වන්න."
+
+msgid "Type an address."
+msgstr "ලිපිනයක් ටයිප් කරන්න"
+
+msgid "Type the two words:"
+msgstr "වචන දෙක ටයිප් කරන්න:"
+
+msgid "Type what you hear:"
+msgstr "ඔබට ඇසෙන දේ ටයිප් කරන්න:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "මුල් වාර්තාවේ URL එක"
+
+msgid "Unspecified"
+msgstr "නිශ්චය නොකළ"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "උඩුගත කරන්න"
+
+msgid "Upload CSV files"
+msgstr "CSV ගොනු උඩුගත කරන්න"
+
+msgid "View the record"
+msgstr "වාර්තාව බලන්න"
+
+msgid "We have nothing matching your search."
+msgstr "අප සතුව ඔබගේ සෙවීමට ගැළපෙන කිසිවක් නැත."
+
+msgid "What is this person's name?"
+msgstr "මෙම පුද්ගලයාගේ නම කුමක්ද?"
+
+msgid "When should this record disappear?"
+msgstr "මෙම වාර්තාව නොපෙනී යන්නේ කවදාද?"
+
+msgid "Where did this information come from?"
+msgstr "මෙම තොරතුරු පැමිණියේ කොහින්ද?"
+
+msgid "Where is this person from?"
+msgstr "මෙම පුද්ගලයා කොහෙන් ආ කෙනෙක්ද?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"පරීක්ෂණ ප්‍රකාරය බලපැවැත්වෙන අතරතුර, පැය 6 කට වඩා වැඩි වාර්තා කල් ඉකුත් "
+"වීමේ දිනය කුමක් වුවද මැකෙනු ඇත."
+
+msgid "Yes"
+msgstr "ඔව්"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "ඔව්, වාර්තා කර්තෘගෙන් සටහන් අබල කරන ලෙස විමසන්න"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "ඔව්, වාර්තා කර්තෘගෙන් සටහන් සබල කරන ලෙස විමසන්න"
+
+msgid "Yes, delete the record"
+msgstr "ඔව්, වාර්තාව මකන්න"
+
+msgid "Yes, disable notes on this record."
+msgstr "ඔව්, මෙම වාර්තාව මත සටහන් අබල කරන්න"
+
+msgid "Yes, extend the record"
+msgstr "ඔව්, වාර්තාව දිගු කරන්න"
+
+msgid "Yes, restore this record"
+msgstr "ඔව්, මෙම වාර්තාව පිළිනගන්න"
+
+msgid "Yes, these are the same person"
+msgstr "ඔව්, මේ එකම පුද්ගලයන්ය"
+
+msgid "Yes, update the note"
+msgstr "ඔව්, සටහන යාවත්කාලීන කරන්න"
+
+msgid "You are already subscribed. "
+msgstr "ඔබ දැනටමත් දායක වී ඇත. "
+
+msgid "You are already unsubscribed."
+msgstr "ඔබ දැනටමත් දායකත්වයෙන් ඉවත් වී ඇත."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "ඔබ දැනට %(begin_span_tag)s%(email)s%(end_span_tag)s ලෙස පුරා ඇත."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "ඔබ දැනට පුරා නැත."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "ඔබට එය මැකීමට පෙර %(begin_tag)sවාර්තාව බැලීම%(end_tag)s කළහැක."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "ඔබට %(view_url)s හි දී සම්පූර්ණ වාර්තාව බැලිය හැක"
+
+msgid "You have successfully subscribed."
+msgstr "ඔබ සාර්ථකව දායක වී ඇත."
+
+msgid "You have successfully unsubscribed."
+msgstr "ඔබ සාර්ථකව දායකත්වයෙන් ඉවත් වී ඇත."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"ඔබ පහත පුද්ගලයා මත යාවත්කාලීන වෙත දායක වී ඇති බැවින් ඔබට මෙම දැනුම්දීම "
+"ලැබිණි.\n"
+
+msgid "Your e-mail address"
+msgstr "ඔබගේ ඊ-තැපැල් ලිපිනය"
+
+msgid "Your e-mail address:"
+msgstr "ඔබගේ ඊ-තැපැල් ලිපිනය:"
+
+msgid "Your email"
+msgstr "ඔබගේ ඊ-තැපැල්"
+
+msgid "Your name"
+msgstr "ඔබගේ නම"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"\"ඔබ පිළිබඳව\" කොටසේ දී ඔබගේ නම අවශ්‍ය වේ. තරුණාකර ආපසු ගොස් නැවත උත්සාහ "
+"කරන්න."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"මූලාශ්‍රය\" කොටසේ දී ඔබගේ නම අවශ්‍ය වේ. තරුණාකර ආපසු ගොස් නැවත උත්සාහ "
+"කරන්න."
+
+msgid "Your phone number"
+msgstr "ඔබගේ දුරකථන අංකය"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"ඔබගේ ඉල්ලීම සාර්ථකව සකසා ඇත. කරුණාකර ඔබගේ එනලිපි පරීක්ෂා කර කාවැද්දූ url "
+"එක අනුගමනය කිරීමෙන් ඔබට ඔබගේ සටහන පළ කිරීමට අවශ්‍ය බව තහවුරු කරන්න."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" මත ඔබගේ සටහන තහවුරු කරයි"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" සඳහා සටහන මකයි"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] \"%(full_name)s\"මත සටහන් අබල කරයි?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] \"%(full_name)s\" මත සටහන් සබල කරයි?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" සඳහා සටහන් සබල කෙරේ"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" සඳහා සටහන් දැන් අබල කර ඇත"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" මත සටහන් දැන් සබල කර ඇත"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" සඳහා වාර්තා පිළිනැගීමේ නිවේදනය"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] %(full_name)s සඳහා තත්ව යාවත්කාලීනය"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Person Finder] %(full_name)s සඳහා තත්ව යාවත්කාලීන වලට ඔබ දායක වී ඇත."
+
+msgid "at"
+msgstr "හිදී"
+
+msgid "female"
+msgstr "ගැහැණු"
+
+msgid "in test mode"
+msgstr "පරීක්ෂණ ප්‍රකාරය තුළ"
+
+msgid "male"
+msgstr "පිරිමි"
+
+msgid "on"
+msgstr "මත"
+
+msgid "other"
+msgstr "වෙනත්"
+

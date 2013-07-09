@@ -1,0 +1,1551 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  केवळ रेकॉर्ड लेखकाच्या परवानगीसह टिपा अक्षम किंवा सक्षम केल्या आहेत हे\n"
+"  सुनिश्चित करण्यासाठी, रेकॉर्ड लेखकास एक पुष्टीकरण संदेश पाठविला जाईल.\n"
+"  आपण लेखक असल्यास, खाली असलेले बटण क्लिक केल्यानंतर आपले ई-मेल तपासा.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"प्रिय %(author_name)s,\n"
+"\n"
+"एका वापरकर्त्याने \"%(full_name)s\" साठी रेकॉर्डवरील टिपा सक्षम करण्याची "
+"विनंती केली आहे.\n"
+"\n"
+"या रेकॉर्डचा लेखक म्हणून आपला ई-मेल पत्ता रेकॉर्ड करण्यात आला आहे.  \n"
+"या रेकॉर्डवरील टिपा सक्षम करण्यासाठी, 3 दिवसांमध्ये या दुव्याचे अनुसरण "
+"करा:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"प्रिय %(author_name)s,\n"
+"\n"
+"एका वापरकर्त्याने आपण \"%(full_name)s\" साठी रेकॉर्डवरील टिपा अक्षम "
+"कराव्या अशी विनंती केली आहे.\n"
+"\n"
+"या रेकॉर्डचा लेखक म्हणून आपला ई-मेल पत्ता रेकॉर्ड करण्यात आला आहे.  या "
+"रेकॉर्डवरील टिपा\n"
+"अक्षम करण्यासाठी, 3 दिवसांमध्ये या दुव्याचे अनुसरण करा:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"प्रिय %(author_name)s,\n"
+"आपण इतक्यातच \"%(full_name)s\" साठी रेकॉर्डवर टिपा प्रविष्ट केल्या.  \n"
+"आपली टीप प्रकाशित करण्यासाठी, 3 दिवसांमध्ये या दुव्याचे अनुसरण करा:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    चेतावणी: हे रेकॉर्ड %(expiration_days)s पेक्षा कमी "
+"दिवसांमध्ये कालबाह्य होईल.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    चेतावणी: हे रेकॉर्ड एका दिवसापेक्षा कमी वेळात "
+"कालबाह्य होईल.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्याला खात्री आहे की आपण \"%(full_name)s\" साठी रेकॉर्ड हटवू "
+"इच्छिता?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्याला खात्री आहे की आपण \"%(full_name)s\" वरील टिपा अक्षम करू "
+"इच्छिता?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्याला खात्री आहे की आपण \"%(full_name)s\" च्या रेकॉर्डवर टिपा "
+"अक्षम करू इच्छिता?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्याला खात्री आहे की आपण \"%(full_name)s\" वर टिपा सक्षम करू "
+"इच्छिता?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्याला खात्री आहे की आपण \"%(full_name)s\" रेकॉर्डसाठी कालबाह्यता"
+" विस्तारित करू इच्छिता?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      आपल्या टिपेची पुष्टी करा\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      आपण हटविणे सुरू ठेवल्यास,\n"
+"      या साइटवर हे रेकॉर्ड यापुढे शोधण्यायोग्य किंवा पाहण्यायोग्य राहणार "
+"नाही.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      आपण हे कायमचे हटवू इच्छित असल्यास,\n"
+"      कृपया मूळ स्त्रोताशी संपर्क साधा.\n"
+"      येथे आपण मूळ रेकॉर्ड पाहू शकता\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      आपण प्रविष्ट केलेली URL एका वैध %(website)s प्रोफाईल URL सारखी दिसत"
+" नाही.\n"
+"      कृपया %(website)s वर या व्यक्तीच्या प्रोफाईल पृष्ठावर जा, त्यानंतर "
+"ती URL येथे\n"
+"      कॉपी आणि पेस्ट करा.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      हे रेकॉर्ड दुसर्‍या स्त्रोताकडील एका रेकॉर्डची प्रत आहे.\n"
+"      आपण रेकॉर्ड येथे हटवू शकता,\n"
+"      परंतु मूळ स्त्रोताकडून त्याची दुसरी प्रत आम्ही नंतर प्राप्त करू "
+"शकतो याबद्दल\n"
+"जाणीव असू द्या.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    रेकॉर्ड लेखकाच्या परवानगीसह टिपा केवळ अक्षम किंवा सक्षम केल्या "
+"असल्याचे\n"
+"     सुनिश्चित करण्यासाठी, रेकॉर्ड लेखकास एक पुष्टीकरण संदेश पाठविला "
+"जाईल.\n"
+"    आपण लेखक असल्यास, खाली असलेले बटण क्लिक केल्यानंतर आपले ई-मेल तपासा.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  या साइटवर अद्याप रेकॉर्ड दृश्यमान असेल, परंतु त्यावर त्यापुढे टिपा "
+"पोस्ट करण्यात\n"
+"  कोणीही सक्षम नसेल.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  आपल्या टिपा पोस्ट करण्यासाठी, कृपया खाली आपला ई-मेल पत्ता प्रविष्ट करा "
+"आणि\n"
+"  आपल्याला प्राप्त होणार्‍या पुष्टीकरण दुव्याचे अनुसरण करा.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"एका वापरकर्त्याने %(site_url)s वर \"%(full_name)s\" चे रेकॉर्ड\n"
+"हटविले आहे.\n"
+"\n"
+"या रेकॉर्डवरील एका टिपेचा लेखक म्हणून आपला ई-मेल पत्ता रेकॉर्ड करण्यात "
+"आल्यामुळे\n"
+"आम्ही आपल्याला हटविण्याबद्दल सूचित करत आहोत.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"एका वापरकर्त्याने %(site_url)s वर \"%(full_name)s\" चे रेकॉर्ड\n"
+"हटविले आहे.\n"
+"\n"
+"या रेकॉर्डचा लेखक म्हणून आपला ई-मेल पत्ता रेकॉर्ड करण्यात आल्यामुळे\n"
+"आम्ही आपल्याला हटविण्याबद्दल सूचित करत आहोत.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"%(days_until_deletion)s दिवसांनंतर, रेकॉर्ड कायमचे हटविले जाईल.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"टीप: हे रेकॉर्ड त्रुटीने हटविण्यात आले होते असा आपल्याला विश्वास असल्यास,"
+" आपण पुढील %(days_until_deletion)s दिवसांमध्ये या दुव्याचे अनुसरण करून ते"
+" पुनर्संचयित करू शकता:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"टिपा आता \"%(full_name)s\" च्या रेकॉर्डवर अक्षम करण्यात आल्या आहेत.\n"
+"रेकॉर्ड पाहण्यासाठी,\n"
+"या दुव्याचे अनुसरण करा:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"या व्यक्तीच्या रेकॉर्डसह किंवा रेकॉर्डवरील टिपेसह आपला ई-मेल पत्ता\n"
+"संबद्ध असल्यामुळे आम्ही आपल्याला सूचित करत आहोत.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"टिपा आता \"%(full_name)s\" च्या रेकॉर्डवर सक्षम करण्यात आल्या आहेत. "
+"रेकॉर्ड पाहण्यासाठी,\n"
+"या दुव्याचे अनुसरण करा:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"या व्यक्तीच्या रेकॉर्डसह किंवा रेकॉर्डवरील टिपेसह आपला ई-मेल पत्ता\n"
+"संबद्ध असल्यामुळे आम्ही आपल्याला सूचित करत आहोत.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" च्या रेकॉर्डच्या लेखकाने\n"
+"(पूर्वी हटविण्यात आलेले) रेकॉर्ड पुनर्संचयित केले आहे. रेकॉर्ड "
+"पाहण्यासाठी\n"
+"या दुव्याचे अनुसरण करा:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"या व्यक्तीच्या रेकॉर्डसह किंवा रेकॉर्डवरील टिपेसह आपला ई-मेल पत्ता\n"
+"संबद्ध असल्यामुळे आम्ही आपल्याला सूचित करत आहोत.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" च्या रेकॉर्डवर एक नवीन टीप आहे.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"आपण \"%(full_name)s\" वरील टिपांसाठी सदस्यता घेतली.\n"
+"\n"
+"आपण येथे हे रेकॉर्ड पाहू शकता\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"सदस्यता रद्द करण्यासाठी, या दुव्याचे अनुसरण करा: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(प्रकट करण्यासाठी क्लिक करा)"
+
+msgid "(unknown)"
+msgstr "(अज्ञात)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "या व्यक्तीसाठीचा एक संदेश किंवा या व्यक्तीस शोधणारे इतर"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "आतापासून सुमारे 1 महिना (30 दिवस)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "आतापासून सुमारे 1 वर्ष (360 दिवस)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "आतापासून सुमारे 2 महिने (60 दिवस)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "आतापासून सुमारे 3 महिने (90 दिवस)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "आतापासून सुमारे 6 महिने (180 दिवस)"
+
+msgid "About Google Person Finder"
+msgstr "Google Person Finder विषयी"
+
+msgid "About you (required)"
+msgstr "आपल्या विषयी (आवश्यक)"
+
+msgid "Administration"
+msgstr "प्रशासन"
+
+msgid "Age"
+msgstr "वय"
+
+msgid "Alternate family names"
+msgstr "वैकल्पिक कौटुंबिक नावे"
+
+msgid "Alternate given names"
+msgstr "वैकल्पिक दिलेली नावे"
+
+msgid "Alternate names"
+msgstr "वैकल्पिक नावे"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "आपल्याला खात्री आहे ही टीप स्पॅम नाही?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "आपल्याला खात्री आहे की आपण ही टीप स्पॅम म्हणून चिन्हांकित करू इच्छिता?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "आपल्याला खात्री आहे की आपण हे रेकॉर्ड पुनर्संचयित करू इच्छिता?"
+
+msgid "Atom feed of updates about this person"
+msgstr "या व्यक्ती विषयी अद्यतनांचे Atom फीड"
+
+msgid "Author's e-mail address"
+msgstr "लेखकाचा ई-मेल पत्ता"
+
+msgid "Author's name"
+msgstr "लेखकाचे नाव"
+
+msgid "Author's phone number"
+msgstr "लेखकाचा फोन नंबर"
+
+msgid "Authorization key"
+msgstr "प्राधिकृत की"
+
+msgid "Back to results list"
+msgstr "परिणामांकडे परत"
+
+msgid "Back to start"
+msgstr "प्रारंभाकडे परत"
+
+msgid "CSV file"
+msgstr "CSV फाईल"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "%(id)s id सह टीप शोधू शकत नाही"
+
+msgid "Cancel"
+msgstr "रद्द करा"
+
+msgid "City"
+msgstr "शहर"
+
+msgid "Click here to view results."
+msgstr "परिणाम पाहण्यासाठी येथे क्लिक करा."
+
+msgid "Close window"
+msgstr "विंडो बंद करा"
+
+msgid "Compare these records"
+msgstr "या रेकॉर्डची तुलना करा"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "हे साधन आपल्या साइटवर ठेवण्यासाठी खालील HTML कोड कॉपी आणि पेस्ट करा"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "एक नवीन रेकॉर्ड तयार करा"
+
+msgid "Create a new record for"
+msgstr "यासाठी एक नवीन रेकॉर्ड तयार करा"
+
+msgid "Create a new record for a missing person"
+msgstr "एका हरविलेल्या व्यक्तीसाठी एक नवीन रेकॉर्ड तयार करा"
+
+msgid "Crisis events"
+msgstr "संकटकालीन इव्हेंट"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "सध्या %(num_people)s रेकॉर्डचा मागोवा घेत आहे."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "तारीख भविष्यातील असू शकत नाही.  कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "Date of birth"
+msgstr "जन्मतारीख"
+
+msgid "Delete this record"
+msgstr "हे रेकॉर्ड हटवा"
+
+msgid "Describe how to identify this person."
+msgstr "या व्यक्तीस कसे ओळखावे याचे वर्णन करा."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "या व्यक्तीच्या शारीरिक वैशिष्ट्यांचे वर्णन करा."
+
+msgid "Description"
+msgstr "वर्णन"
+
+msgid "Desktop version"
+msgstr "डेस्कटॉप आवृत्ती"
+
+msgid "Developers"
+msgstr "विकासक"
+
+msgid "Disable notes on this record"
+msgstr "या रेकॉर्डवरील टिपा अक्षम करा"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "या व्यक्तीचे अन्य वेबसाइटवर प्रोफाईल पृष्ठे आहेत?"
+
+msgid "Download the sound as MP3"
+msgstr "MP3 म्हणून ध्वनी डाउनलोड करा"
+
+msgid "E-mail"
+msgstr "ई-मेल"
+
+msgid "E-mail address"
+msgstr "ई-मेल पत्ता"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "अनुप्रयोग अंतःस्थापित करत आहे"
+
+msgid "Enable notes on this record"
+msgstr "या रेकॉर्डवरील टिपा सक्षम करा"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "UTC मधील सर्व तारखा yyyy-mm-ddThh:mm:ssZ स्वरूपात असल्याचे सुनिश्चित करा"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-MM-DD म्हणून प्रविष्ट करा"
+
+msgid "Enter the person's given and family names."
+msgstr "व्यक्तीने दिलेली आणि कौटुंबिक नावे प्रविष्ट करा."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "व्यक्तीचे नाव किंवा नावाचे भाग प्रविष्ट करा."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "व्यक्तीचे नाव, नावाचे भाग किंवा मोबाईल फोन नंबर प्रविष्ट करा."
+
+msgid "Enter the person's name."
+msgstr "व्यक्तीचे नाव प्रविष्ट करा."
+
+msgid "Expiry"
+msgstr "कालबाह्यता"
+
+msgid "Expiry date of this record"
+msgstr "या रेकॉर्डची कालबाह्यता तारीख"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "कालबाह्यता तारीख %(extension_days)s दिवसांनी विस्तारित करा"
+
+msgid "Family name"
+msgstr "कौटुंबिक नाव"
+
+msgid "Feed of updates about this person"
+msgstr "या व्यक्तीविषयी अद्यतनांचे फीड"
+
+msgid "Follow this link to create a new record"
+msgstr "एक नवीन रेकॉर्ड तयार करण्यासाठी या दुव्याचे अनुसरण करा"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"मोबाईल फोन व्यतिरिक्त फोनसाठी, कृपया NTT द्वारे प्रदान केलेली 171 सेवा "
+"वापरा."
+
+msgid "Full name"
+msgstr "पूर्ण नाव"
+
+msgid "Get a new challenge"
+msgstr "एक नवीन आव्हान मिळवा"
+
+msgid "Get a visual challenge"
+msgstr "एक दृश्यमान आव्हान मिळवा"
+
+msgid "Get an audio challenge"
+msgstr "ऑडिओ आव्हान मिळवा"
+
+msgid "Given name"
+msgstr "दिलेले नाव"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "आपत्ती नंतर आपण या व्यक्तीशी वैयक्तिकपणे बोललात? (आवश्यक)"
+
+msgid "Help"
+msgstr "मदत"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"आपण संपादित करू आणि अपलोड करू शकता अशी येथे %(begin_tag)sएक नमुना CSV "
+"फाईल%(end_tag)s आहे"
+
+msgid "Hide Map"
+msgstr "नकाशा लपवा"
+
+msgid "Hide note"
+msgstr "टीप लपवा"
+
+msgid "Home Address"
+msgstr "निवास पत्ता"
+
+msgid "Home address"
+msgstr "निवास पत्ता"
+
+msgid "Home country"
+msgstr "मूळ देश"
+
+msgid "How can this person be reached now?"
+msgstr "ही व्यक्ती आता कशी पोहोचू शकते?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "या व्यक्तीमध्ये स्वारस्य असलेले इतर आपल्याशी संपर्क कसे साधू शकतात"
+
+msgid "I am seeking information"
+msgstr "मी माहिती शोधत आहे"
+
+msgid "I am this person"
+msgstr "मी ही व्यक्ती आहे"
+
+msgid "I do not want any more updates on this record."
+msgstr "मला या रेकॉर्डवरील कोणतीही अधिक अद्यतने नको आहेत."
+
+msgid "I do not want my information online anymore."
+msgstr "मला माझी माहिती आता ऑनलाइन नको आहे."
+
+msgid "I have information about someone"
+msgstr "माझ्याकडे कोणाविषयी तरी माहिती आहे"
+
+msgid "I have reason to think this person is missing"
+msgstr "ही व्यक्ती हरविली आहे हा विचार करण्यासाठी माझ्याकडे कारण आहे"
+
+msgid "I have received information that this person is alive"
+msgstr "मला ही व्यक्ती जिवंत असल्याची माहिती प्राप्त झाली आहे"
+
+msgid "I have received information that this person is dead"
+msgstr "मला ही व्यक्ती मृत झाली असल्याची माहिती प्राप्त झाली आहे"
+
+msgid "I have received spam due to this note."
+msgstr "या टिपेमुळे मला स्पॅम प्राप्त झाला."
+
+msgid "I have received spam."
+msgstr "मला स्पॅम प्राप्त झाला."
+
+msgid "I prefer not to specify."
+msgstr "मी निर्दिष्ट न करण्यास प्राधान्य देतो."
+
+msgid "I'm looking for someone"
+msgstr "मी कोणासतरी शोधत आहे"
+
+msgid "Identify who you are looking for"
+msgstr "आपण ज्यांना शोधत आहात त्यांना ओळखा"
+
+msgid "Identify who you have information about"
+msgstr "आपल्याकडे ज्यांच्याविषयी माहिती आहे त्यांना ओळखा"
+
+msgid "Identifying information"
+msgstr "ओळख माहिती"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"आपल्या मनात असलेल्या व्यक्तीशी यापैकी कोणतीही रेकॉर्ड न जुळल्यास, आपण एक "
+"नवीन रेकॉर्ड तयार करण्यासाठी खाली क्लिक करू शकता."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"आपण या टिपेचे लेखक असल्यास, कृपया या रेकॉर्डवरील टिपा आपण अक्षम करू "
+"इच्छित असल्याची पुष्टी करण्यासाठी आपले ई-मेल तपासा. अन्यथा, आपल्या "
+"विनंतीची पुष्टी करण्यासाठी रेकॉर्ड लेखकाची प्रतीक्षा करा."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"आपण या टिपेचे लेखक असल्यास, कृपया या रेकॉर्डवरील टिपा आपण सक्षम करू "
+"इच्छित असल्याची पुष्टी करण्यासाठी आपले ई-मेल तपासा. अन्यथा, कृपया आपल्या "
+"विनंतीची पुष्टी करण्यासाठी रेकॉर्डच्या लेखकाची प्रतीक्षा करा."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"आपल्याकडे या व्यक्तीचा फोटो असल्यास, तो अपलोड करा किंवा त्याचा URL पत्ता "
+"प्रविष्ट करा."
+
+msgid "Incorrect.  Try again."
+msgstr "अयोग्य. पुन्हा प्रयत्न करा."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "अवैध ई-मेल पत्ता. कृपया पुन्हा प्रयत्न करा."
+
+msgid "Language selection"
+msgstr "भाषा निवड"
+
+msgid "Last known location"
+msgstr "अंतिम ज्ञात स्थान"
+
+msgid "Link"
+msgstr "दुवा"
+
+msgid "Link to profile page"
+msgstr "प्रोफाईल पृष्ठावर दुवा जोडा"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "डुप्लिकेट म्हणून रेकॉर्ड चिन्हांकित करा"
+
+msgid "Message (required)"
+msgstr "संदेश (आवश्यक)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "संदेश आवश्यक आहे. कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "Missing person's current contact information"
+msgstr "हरविलेल्या व्यक्तीची वर्तमान संपर्क माहिती"
+
+msgid "Missing person's current e-mail address"
+msgstr "हरविलेल्या व्यक्तीचा वर्तमान ई-मेल पत्ता"
+
+msgid "Missing person's current phone number"
+msgstr "हरविलेल्या व्यक्तीचा वर्तमान फोन नंबर"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"विकासकांची अधिक माहिती आता %(developers_link_html)sयेथे%(link_end_html)s "
+"आढळू शकते."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"100 पेक्षा अधिक परिणाम; फक्त प्रथम 100 दर्शवत आहे. अधिक नावे प्रविष्ट "
+"करून पहा"
+
+msgid "Name"
+msgstr "नाव"
+
+msgid "Name (required)"
+msgstr "नाव (आवश्यक)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "नाव आवश्यक आहे. कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "Neighborhood"
+msgstr "अतिपरिचित क्षेत्र"
+
+msgid "No"
+msgstr "नाही"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "%(id)s रेकॉर्डसाठी कोणताही लेखक ईमेल नाही."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"वाहकाच्या संदेश बोर्ड सेवेमध्ये कोणत्याही संदेशांची नोंदणी केलेली आढळली "
+"नाही."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "ID सह कोणतीही टीप नाही: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "कोणत्याही टिपा पोस्ट करण्यात आल्या नाहीत"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "ID सह कोणतीही व्यक्ती नाही: %(id_str)s."
+
+msgid "No results found for"
+msgstr "यासाठी कोणतेही परिणाम आढळले नाहीत"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "\"believed_dead\" स्थितीसह टिपा पोस्ट करण्यासाठी अधिकृत नाही."
+
+msgid "Not spam"
+msgstr "स्पॅम नाही"
+
+msgid "Note author"
+msgstr "टीप लेखक"
+
+msgid "Note text"
+msgstr "टीप मजकूर"
+
+msgid "Notes for this person"
+msgstr "या व्यक्तीसाठी टिपा"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "संख्या किंवा श्रेणी (उदा. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"किंवा एक %(gadget_link_html)sGoogle Gadget%(link_end_html)s म्हणून आपल्या"
+" साइटवर जोडा."
+
+msgid "Original URL"
+msgstr "मूळ URL"
+
+msgid "Original author's name"
+msgstr "मूळ लेखकाचे नाव"
+
+msgid "Original posting date"
+msgstr "मूळ पोस्टिंग तारीख"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"मूळ पोस्टिंग तारीख YYYY-MM-DD स्वरूपात आहे किंवा ती एक अस्तित्वात नसलेली "
+"तारीख आहे.  कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "Original site name"
+msgstr "मूळ साइट नाव"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"कृपया लक्षात ठेवा: प्रविष्ट केलेला सर्व डेटा लोकांसाठी उपलब्ध होईल आणि "
+"कोणासाठीही तो दृश्यमान असेल आणि वापरण्यायोग्य असेल.  Google या डेटाचे "
+"पुनरावलोकन करत नाही किंवा त्याची अचूकता सत्यापित करत नाही."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"कृपया लक्षात ठेवा: सक्रिय Person Finder साइटवर, प्रविष्ट केलेला सर्व डेटा"
+" लोकांसाठी उपलब्ध होईल आणि कोणालाही वापरण्यायोग्य असेल. Google या डेटाचे "
+"पुनरावलोकन करत नाही किंवा त्याची अचूकता सत्यापित करत नाही."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "फोन"
+
+msgid "Phone number"
+msgstr "फोन नंबर"
+
+msgid "Photo"
+msgstr "फोटो"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"अपलोड केलेला फोटो अपरिचित स्वरूपात आहे. कृपया परत जा आणि पुन्हा प्रयत्न "
+"करा."
+
+msgid "Physical characteristics"
+msgstr "शारीरिक वैशिष्ट्ये"
+
+msgid "Play the sound again"
+msgstr "ध्वनी पुन्हा प्ले करा"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"कृपया भूकंपानंतर आपण व्यक्तीशी संपर्क केला असल्याचे तपासा किंवा \"या "
+"व्यक्तीची स्थिती\" फील्ड बदला."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"कृपया आपण अहवाल देण्याची योजना करत असलेल्या व्यक्तीशी हे जुळते किंवा नाही"
+" हे तपासा."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "कृपया अद्यतनांची सदस्यता घेण्यासाठी आपल्या ई-मेल पत्त्याची पुष्टी करा"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "कृपया अद्यतनांची सदस्यता घेण्यासाठी आपल्या ई-मेल पत्त्याची पुष्टी करा"
+
+msgid "Please explain why you think these are the same person"
+msgstr "कृपया ही एकच व्यक्ती आहेत असे आपल्याला का वाटते हे स्पष्ट करा"
+
+msgid "Please fill in all the required fields."
+msgstr "सर्व आवश्यक फील्ड भरा."
+
+msgid "Please fill in your email address."
+msgstr "कृपया आपला ईमेल पत्ता भरा."
+
+msgid "Please provide an valid email address."
+msgstr "कृपया वैध ईमेल पत्ता प्रदान करा."
+
+msgid "Possible duplicates"
+msgstr "संभाव्य डुप्लिकेट"
+
+msgid "Postal or zip code"
+msgstr "पोस्टल किंवा पिन कोड"
+
+msgid "Posted by"
+msgstr "द्वारे पोस्ट केले"
+
+msgid "Proceed"
+msgstr "पुढे जा"
+
+msgid "Profile Pages"
+msgstr "प्रोफाईल पृष्ठे"
+
+msgid "Profile page"
+msgstr "प्रोफाईल पृष्ठ"
+
+msgid "Provide information"
+msgstr "माहिती प्रदान करा"
+
+msgid "Provide information about this person"
+msgstr "या व्यक्तीविषयी माहिती प्रदान करा"
+
+msgid "Provided by:"
+msgstr "द्वारे प्रदान:"
+
+msgid "Province or state"
+msgstr "प्रांत किंवा राज्य"
+
+msgid "Reason for deletion:"
+msgstr "हटविण्याचे कारण:"
+
+msgid "Reason for disabling notes:"
+msgstr "टिपा अक्षम करण्याचे कारण:"
+
+msgid "Records Similar to"
+msgstr "यासारखी रेकॉर्ड"
+
+msgid "Records selected"
+msgstr "निवडलेली रेकॉर्ड"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "नावांसह रेकॉर्ड आणि \"%(query)s\" शी जुळणारे पत्ते"
+
+msgid "Remove"
+msgstr "काढा"
+
+msgid "Report spam"
+msgstr "स्‍पॅमचा अहवाल द्या"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s साठी रेकॉर्डवर परत जा."
+
+msgid "Reveal note"
+msgstr "टीप प्रकट करा"
+
+msgid "Save this record"
+msgstr "हे रेकॉर्ड जतन करा"
+
+msgid "Search Results for"
+msgstr "यासाठी परिणाम शोधा"
+
+msgid "Search for this person"
+msgstr "या व्यक्तीस शोधा"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "अधिक सूचनांसाठी %(begin_tag)swiki%(end_tag)s पहा"
+
+msgid "Select a website to add a profile page..."
+msgstr "एक प्रोफाईल पृष्ठ जोडण्यासाठी एक वेबसाइट निवडा..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "डुप्लिकेट म्हणून चिन्हांकित करण्यासाठी सुमारे 3 रेकॉर्ड निवडा:"
+
+msgid "Send email"
+msgstr "ईमेल पाठवा"
+
+msgid "Sex"
+msgstr "लिंग"
+
+msgid "Show Map"
+msgstr "नकाशा दर्शवा"
+
+msgid "Show sensitive information"
+msgstr "संवेदनशील माहिती दर्शवा"
+
+msgid "Sign in"
+msgstr "साइन इन करा"
+
+msgid "Sign out"
+msgstr "साइन आउट करा"
+
+msgid "Someone has received information that this person is alive"
+msgstr "ही व्यक्ती जिवंत असल्याची माहिती कोणालातरी प्राप्त झाली आहे"
+
+msgid "Someone has received information that this person is dead"
+msgstr "ही व्यक्ती मृत झाल्याची माहिती कोणालातरी प्राप्त झाली आहे"
+
+msgid "Someone has reported that this person is missing"
+msgstr "ही व्यक्ती हरविली असल्याची कोणीतरी तक्रार नोंदविली आहे"
+
+msgid "Someone is seeking information about this person"
+msgstr "या व्यक्तीविषयी माहिती कोणीतरी शोधत आहे"
+
+msgid "Source of this record"
+msgstr "या रेकॉर्डचा स्त्रोत"
+
+msgid "Source of this record (required)"
+msgstr "या रेकॉर्डचा स्त्रोत (आवश्यक)"
+
+msgid "Status"
+msgstr "स्थिती"
+
+msgid "Status of this person"
+msgstr "या व्यक्तीची स्थिती"
+
+msgid "Street name"
+msgstr "मार्ग नाव"
+
+msgid "Street name only, no number"
+msgstr "केवळ मार्ग नाव, नंबर नाही"
+
+msgid "Subscribe"
+msgstr "सदस्यता घ्या"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s विषयी अद्यतनांची सदस्यता घ्या"
+
+msgid "Subscribe to updates about this person"
+msgstr "या व्यक्तीविषयी अद्यतनांची सदस्यता घ्या"
+
+msgid "Switch to address"
+msgstr "पत्त्यावर स्विच करा"
+
+msgid "Switch to duplicate marking mode"
+msgstr "डुप्लिकेट चिन्हांकन मोडवर स्विच करा"
+
+msgid "Switch to lat/long"
+msgstr "अक्षांश/रेखांश वर स्विच करा"
+
+msgid "Switch to normal view mode"
+msgstr "सामान्य दृश्य मोड वर स्विच करा"
+
+msgid "Tell us the status of this person"
+msgstr "आम्हाला या व्यक्तीची स्थिती सांगा"
+
+msgid "Terms of Service"
+msgstr "सेवा अटी"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"दिलेले नाव आणि कौटुंबिक नाव दोन्ही आवश्यक आहेत. कृपया परत जा आणि पुन्हा "
+"प्रयत्न करा."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "मूळ लेखकाचे नाव आवश्यक आहे. कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "The author has disabled notes on this record."
+msgstr "लेखकाने या रेकॉर्डवरील टिपा अक्षम केल्या आहेत."
+
+msgid "The author has disabled status updates on this record."
+msgstr "लेखकांना या रेकॉर्डवरील स्थिती अद्यतने अक्षम केली आहेत."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "प्रदान केलेली प्रतिमा खूप मोठी आहे. कृपया एक लहान अपलोड करा."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "स्पॅम म्हणून ही टीप चिन्हांकित केल्याचे कारण:"
+
+msgid "The record cannot be extended."
+msgstr "रेकॉर्ड विस्तारित केले जाऊ शकत नाही."
+
+msgid "The record has been deleted."
+msgstr "रेकॉर्ड हटविले गेले आहे."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "रेकॉर्ड %(expiry_date)s पर्यंत विस्तारित केले गेले आहे."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"आपण निवडलेली स्थिती दर्शविते की आपण ही व्यक्ती आहात. हे सत्य असल्यास, "
+"कृपया आपण या व्यक्तीशी संपर्क साधला आहे हे दर्शवण्यासाठी 'होय' देखील "
+"निवडा."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "%(token)s टोकन अवैध होते"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "%(token)s टोकन अवैध होते."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "समान नावांची %(num_results)s रेकॉर्ड विद्यमान आहेत."
+
+msgid "There are some existing records with similar names."
+msgstr "समान नावांची काही रेकॉर्ड विद्यमान आहेत."
+
+msgid "There is one existing record with a similar name."
+msgstr "समान नावाचे एक रेकॉर्ड विद्यमान आहे."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"प्रतिमेवर प्रक्रिया करताना एक समस्या आली होती. कृपया एक वेगळी प्रतिमा "
+"वापरून पहा."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"आपल्या विनंतीवर प्रक्रिया करताना समस्या आली. गैरसोयीबद्दल दिलगीर आहोत.  "
+"आमचे प्रशासक समस्येच्या स्त्रोताचे अन्वेषण करतील, परंतु कृपया आपल्या "
+"विनंतीचे स्वरूप योग्य असल्याचे तपासा."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"ही गॅझेट %(apache_link_html)sApache 2.0 परवाना%(link_end_html)s अंतर्गत "
+"उपलब्ध केलेली आहेत."
+
+msgid "This is a new record."
+msgstr "हे एक नवीन रेकॉर्ड आहे."
+
+msgid "This link is invalid."
+msgstr "हा दुवा अवैध आहे."
+
+msgid "This note has been marked as spam."
+msgstr "ही टीप स्पॅम म्हणून चिन्हांकित केली गेली आहे."
+
+msgid "This note is inappropriate."
+msgstr "ही टीप अयोग्य आहे."
+
+msgid "This note is incorrect or untrue."
+msgstr "ही टीप अयोग्य किंवा असत्य आहे."
+
+msgid "This note is spam."
+msgstr "ही टीप स्पॅम आहे."
+
+msgid "This person has been in contact with someone"
+msgstr "ही व्यक्ती कोणाच्यातरी संपर्कात आहे"
+
+msgid "This person has posted a message"
+msgstr "या व्यक्तीने एक संदेश पोस्ट केला आहे"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "या व्यक्तीची प्रविष्टी विद्यमान नाही किंवा हटविली गेली आहे."
+
+msgid "This record has served its purpose."
+msgstr "या रेकॉर्डने त्याचा उद्देश पूर्ण केला आहे."
+
+msgid "This record is a duplicate of"
+msgstr "हे रेकॉर्ड याचे डुप्लिकेट आहे"
+
+msgid "This record is copied from another source."
+msgstr "हे रेकॉर्ड दुसर्‍या स्त्रोतावरून कॉपी केले आहे."
+
+msgid "This record is inappropriate."
+msgstr "हे रेकॉर्ड अयोग्य आहे."
+
+msgid "This record is spam."
+msgstr "हे रेकॉर्ड स्पॅम आहे."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"हा कोष सध्या चाचणी मोड मध्ये आहे. चाचणी मोड प्रभावात असताना, 6 "
+"तासांपेक्षा जुनी असणारी रेकॉर्ड हटविली जातील."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"या टिपेवर एक फोटो संलग्न करण्यासाठी, तो अपलोड करा किंवा त्याची URL "
+"प्रविष्ट करा."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "आपला डेटा हटविण्यासाठी, आपल्या डेस्कटॉपवरून Person Finder वर प्रवेश करा."
+
+msgid "To unsubscribe, follow this link"
+msgstr "सदस्यता रद्द करण्यासाठी, या दुव्याचे अनुसरण करा"
+
+msgid "To view or add information, select a name below."
+msgstr "माहिती पाहण्यासाठी किंवा जोडण्यासाठी, खाली एक नाव निवडा."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"एक पत्ता टाइप करा किंवा खालील नकाशा उघडा आणि नकाशावर क्लिक करून स्थान "
+"दर्शवा."
+
+msgid "Type an address."
+msgstr "एक पत्ता टाइप करा."
+
+msgid "Type the two words:"
+msgstr "दोन शब्द टाइप करा:"
+
+msgid "Type what you hear:"
+msgstr "आपण ऐकता ते टाइप करा:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "मूळ रेकॉर्डची URL"
+
+msgid "Unspecified"
+msgstr "अनिर्दिष्ट"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "अपलोड करा"
+
+msgid "Upload CSV files"
+msgstr "CSV फायली अपलोड करा"
+
+msgid "View the record"
+msgstr "रेकॉर्ड पहा"
+
+msgid "We have nothing matching your search."
+msgstr "आमच्याकडे आपल्या शोधाशी जुळणारे काहीही नाही."
+
+msgid "What is this person's name?"
+msgstr "या व्यक्तीचे नाव काय आहे?"
+
+msgid "When should this record disappear?"
+msgstr "हे रेकॉर्ड अदृश्य केव्हा व्हावे?"
+
+msgid "Where did this information come from?"
+msgstr "ही माहिती कुठून आली?"
+
+msgid "Where is this person from?"
+msgstr "ही व्यक्ती कुठली आहे?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"चाचणी मोड प्रभावात असताना, 6 तासांपेक्षा जुनी रेकॉर्ड कालबाह्य तारखेकडे "
+"दुर्लक्ष करून हटविली जातील."
+
+msgid "Yes"
+msgstr "होय"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "होय, टिपा अक्षम करण्यासाठी रेकॉर्ड लेखकास विचारा"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "होय, टिपा सक्षम करण्यासाठी रेकॉर्ड लेखकास विचारा"
+
+msgid "Yes, delete the record"
+msgstr "होय, रेकॉर्ड हटवा"
+
+msgid "Yes, disable notes on this record."
+msgstr "होय, या रेकॉर्डवरील टिपा अक्षम करा."
+
+msgid "Yes, extend the record"
+msgstr "होय, रेकॉर्ड विस्तारित करा"
+
+msgid "Yes, restore this record"
+msgstr "होय, हे रेकॉर्ड पुनर्संचयित करा"
+
+msgid "Yes, these are the same person"
+msgstr "होय, ही एकच व्यक्ती आहे"
+
+msgid "Yes, update the note"
+msgstr "होय, टीप अद्यतनित करा"
+
+msgid "You are already subscribed. "
+msgstr "आपण आधीपासूनच सदस्यता घेतली आहे. "
+
+msgid "You are already unsubscribed."
+msgstr "आपण आधीपासूनच सदस्यता रद्द केली आहे."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"आपण सध्या %(begin_span_tag)s%(email)s%(end_span_tag)s म्हणून साइन इन केले"
+" आहे."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "आपण सध्या साइन इन केलेले नाही."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "आपण ते हटविण्यापूर्वी %(begin_tag)sरेकॉर्ड पाहू शकता%(end_tag)s."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "आपण %(view_url)s येथे संपूर्ण रेकॉर्ड पाहू शकता"
+
+msgid "You have successfully subscribed."
+msgstr "आपण यशस्वीरित्या सदस्यता घेतली."
+
+msgid "You have successfully unsubscribed."
+msgstr "आपण यशस्वीरित्या सदस्यता रद्द केली."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"आपण खालील व्यक्तीवरील अद्यतनांची सदस्यता घेतल्याने आपल्याला ही सूचना "
+"प्राप्त होत आहे:\n"
+
+msgid "Your e-mail address"
+msgstr "आपला ई-मेल पत्ता"
+
+msgid "Your e-mail address:"
+msgstr "आपला ई-मेल पत्ता:"
+
+msgid "Your email"
+msgstr "आपला ईमेल"
+
+msgid "Your name"
+msgstr "आपले नाव"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"आपले नाव \"आपल्या विषयी\" विभागामध्ये आवश्यक आहे. कृपया परत जा आणि पुन्हा"
+" प्रयत्न करा."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"आपले नाव \"स्त्रोत\" विभागामध्ये आवश्यक आहे. कृपया परत जा आणि पुन्हा "
+"प्रयत्न करा."
+
+msgid "Your phone number"
+msgstr "आपला फोन नंबर"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"आपल्या विनंतीवर यशस्वीरित्या प्रक्रिया केली गेली आहे. कृपया आपला इनबॉक्स "
+"तपासा आणि अंतःस्थापित केलेल्या url चे अनुसरण करून आपली टीप पोस्ट करू "
+"इच्छित असल्याची पुष्टी करा."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" वरील आपल्या टिपेची पुष्टी करा"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" साठी हटविण्याची सूचना"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] \"%(full_name)s\" वरील टिपा अक्षम करायच्या?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] \"%(full_name)s\" वरील टिपा सक्षम करायच्या?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" साठी टिपा सक्षम करत आहे"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" साठी टिपा आता अक्षम केल्या आहेत"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" वरील टिपा आता सक्षम केल्या आहेत"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] \"%(full_name)s\" साठी पुनर्संचयन सूचना रेकॉर्ड करा"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] %(full_name)s साठी स्थिती अद्यतन"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Person Finder] आपण %(full_name)s साठी स्थिती अद्यतनांची सदस्यता घेतली आहे"
+
+msgid "at"
+msgstr "येथे"
+
+msgid "female"
+msgstr "स्त्री"
+
+msgid "in test mode"
+msgstr "चाचणी मोड मध्ये"
+
+msgid "male"
+msgstr "पुरूष"
+
+msgid "on"
+msgstr "चालू"
+
+msgid "other"
+msgstr "अन्य"
+

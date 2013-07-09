@@ -4996,7 +4996,8 @@ _feed_profile_url2</pfif:profile_urls>
         # Test the unsubscribe link in the email
         unsub_url = re.search('(/haiti/unsubscribe.*)', message['data']).group(1)
         doc = self.go(unsub_url)
-        assert u'maintenant d\u00E9sabonn\u00E9' in doc.content
+        # "You have successfully unsubscribed." in French.
+        assert u'Vous vous \u00eates bien d\u00e9sabonn\u00e9.' in doc.content
         assert len(person.get_subscriptions()) == 0
 
     def test_config_use_family_name(self):
@@ -5319,7 +5320,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Japanese translation of "I have information about someone"
         ja_i_have_info = (
-            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3059\u308b')
+            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3057\u305f\u3044')
         # Japanese translation of "I'm looking for someone"
         ja_looking_for_someone = (
             u'\u4eba\u3092\u63a2\u3057\u3066\u3044\u308b')

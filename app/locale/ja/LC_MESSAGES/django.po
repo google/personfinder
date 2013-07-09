@@ -34,9 +34,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  "
-"メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
-"\n"
+"  メモを無効または有効にするには、記録の作成者の許可を必要とするため、\n"
+"  確認メールが記録の作成者に送られます。作成者である場合は、\n"
+"  下のボタンをクリックした後、メールを確認してください。\n"
 "\n"
 "  "
 
@@ -58,12 +58,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" "
-"%(author_name)s、ユーザーから「%(full_name)s」さんに関する記録のメモを有効にするようリクエストがありました。この記録の作成者のメール"
-" アドレスにお知らせをしています。この記録のメモを有効にするには、3 日以内に以下のリンクをたどってください:\n"
+"%(author_name)s 様\n"
+"\n"
+"ユーザーから「%(full_name)s」さんに関する記録のメモを有効にするよう\n"
+"リクエストがありました。\n"
+"\n"
+"あなたのメール アドレスはこの記録の作成者として登録されています。この記録の\n"
+"メモを有効にするには、3 日以内に以下のリンクにアクセスしてください:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -84,9 +87,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" "
-"%(author_name)s、ユーザーから「%(full_name)s」さんに関する記録のメモを無効にするようリクエストがありました。この記録の作成者のメール"
-" アドレスにお知らせをしています。この記録のメモを無効にするには、3 日以内に以下のリンクをたどってください:\n"
+"%(author_name)s 様\n"
+"\n"
+"ユーザーから「%(full_name)s」さんに関する記録のメモを無効にするよう\n"
+"リクエストがありました。\n"
+"\n"
+"あなたのメール アドレスはこの記録の作成者として登録されています。この記録の\n"
+"メモを無効にするには、3 日以内に以下のリンクにアクセスしてください:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -104,8 +111,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" %(author_name)s、先ほど「%(full_name)s」さんに関する記録のメモが入力されました。このメモを公開にするには、3 "
-"日以内に以下のリンクをたどってください:\n"
+"%(author_name)s 様\n"
+"先ほど「%(full_name)s」さんに関する記録のメモが入力されました。\n"
+"このメモを公開するには、3 日以内に以下のリンクにアクセスしてください:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -118,7 +126,8 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"警告：この記録は %(expiration_days)s 日以内に削除されます。"
+"                    警告: この記録は %(expiration_days)s 日以内に期限切れとなります。\n"
+"                  "
 
 msgid ""
 "\n"
@@ -126,7 +135,8 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"警告：この記録は 1 日以内に削除されます。"
+"                    警告: この 記録は 1 日以内に期限切れとなります。\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -135,7 +145,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"本当に%(full_name)sのレコードを削除してもよろしいですか？"
+"      「%(full_name)s」さんに関する記録を削除してもよろしいですか？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -144,7 +155,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      「%(full_name)s」さんに関するメモを無効にします。よろしいですか？\n"
+"      「%(full_name)s」さんに関するメモを無効にしてもよろしいですか？\n"
 "    "
 
 #, python-format
@@ -155,7 +166,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      「%(full_name)s」さんの記録に関するメモを無効にします。よろしいですか？\n"
+"      「%(full_name)s」さんの記録に関するメモを無効にしてもよろしいですか？\n"
 "    "
 
 #, python-format
@@ -165,7 +176,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      「%(full_name)s」さんに関するメモを有効にします。よろしいですか？\n"
+"      「%(full_name)s」さんに関するメモを有効にしてもよろしいですか？\n"
 "    "
 
 #, python-format
@@ -176,7 +187,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      「%(full_name)s」さんに関する記録の保存期間を延長します。よろしいですか？\n"
+"      「%(full_name)s」さんに関する記録の有効期限を延長してもよろしいですか？\n"
 "    "
 
 msgid ""
@@ -195,7 +206,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"削除を続行すると、このレコードは、このサイトから見えなくなります。"
+"      削除を続行すると、\n"
+"      この記録はこのサイトで検索したり表示したりできなくなります。\n"
+"    "
 
 #, python-format
 msgid ""
@@ -206,6 +219,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      完全に削除したい場合は、\n"
+"      情報源に連絡してください。\n"
+"      元の記録は %(begin_tag)s%(source_name)s%(end_tag)s で\n"
+"      確認できます。\n"
+"    "
 
 #, python-format
 msgid ""
@@ -217,6 +236,11 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      入力した URL は有効な %(website)s のプロフィール URL ではないようです。\n"
+"      %(website)s 上のこの人のプロフィール ページにアクセスし、その URL を\n"
+"      コピーしてここに貼り付けてください。\n"
+"      "
 
 msgid ""
 "\n"
@@ -227,6 +251,10 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      この記録は別の情報源の記録のコピーです。\n"
+"      この記録はここで削除できますが、\n"
+"      後ほど元の情報源からこの記録の別のコピーを受け取る可能性があります。"
 
 msgid ""
 "\n"
@@ -239,9 +267,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    "
-"メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
-"\n"
+"    メモを無効または有効にするには、記録の作成者の許可を必要とするため、\n"
+"    確認メールが記録の作成者に送られます。作成者である場合は、\n"
+"    下のボタンをクリックした後、メールを確認してください。\n"
 "  "
 
 msgid ""
@@ -252,7 +280,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  記録は引き続きこのサイトに表示されますが、この記録に関するメモは誰も投稿できなくなります。\n"
+"  記録は引き続きこのサイトに表示されますが、この記録に関するメモは誰も\n"
+"  投稿できなくなります。\n"
 "  "
 
 msgid ""
@@ -263,7 +292,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  メモを投稿するには、メール アドレスを下記に入力して、送られてくる確認リンクをたどってください。\n"
+"  メモを投稿するには、メール アドレスを下記に入力して、送られてくる確認リンクに\n"
+"  アクセスしてください。\n"
 "  "
 
 #, python-format
@@ -276,11 +306,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"他のユーザが、%(site_url)s において、\"%(full_name)s\"\n"
-"さんの記録を消去しました。\n"
+"「%(full_name)s」さんに関する記録が %(site_url)s で削除\n"
+"されました。\n"
 "\n"
-"あなたのメールアドレスがこの記録のメモの作成者として\n"
-"記録されていましたので、お知らせいたします。\n"
+"あなたのメール アドレスがこの記録のメモの作成者として\n"
+"登録されていましたので、お知らせいたします。\n"
 
 #, python-format
 msgid ""
@@ -292,8 +322,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"「%(full_name)s」さんに関する情報が %(site_url)s で削除されました。この記録の作成者のメール "
-"アドレスにお知らせをしています。\n"
+"「%(full_name)s」さんに関する記録が %(site_url)s で削除\n"
+"されました。\n"
+"\n"
+"あなたのメール アドレスがこの記録の作成者として\n"
+"登録されていましたので、お知らせいたします。\n"
 
 #, python-format
 msgid ""
@@ -302,7 +335,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"あと %(days_until_deletion)s 日後に、記録は完全に削除されます。\n"
+"%(days_until_deletion)s 日後に記録は完全に削除されます。\n"
 
 #, python-format
 msgid ""
@@ -314,7 +347,8 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"注: この記録が誤って削除されたと思われる場合は、 %(days_until_deletion)s 日以内に次のリンクから復元できます:\n"
+"注: この記録が誤って削除されたと思われる場合は、\n"
+"%(days_until_deletion)s 日以内であれば次のリンクから復元できます:\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -331,11 +365,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"「%(full_name)s」さんに関する記録のメモが無効になりました。記録を表示するには、以下のリンクをたどってください:\n"
+"「%(full_name)s」さんに関する記録のメモが無効になりました。記録を表示する\n"
+"には、以下のリンクにアクセスしてください:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"この記録の作成者、またはこの記録のメモの作成者のメール アドレスにお知らせをしています。\n"
+"このメール アドレスが、この人の記録またはこの記録のメモに\n"
+"関連付けられていましたので、お知らせいたします。\n"
 
 #, python-format
 msgid ""
@@ -350,11 +386,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"「%(full_name)s」さんに関する記録のメモが有効になりました。記録を表示するには、以下のリンクをたどってください:\n"
+"「%(full_name)s」さんに関する記録のメモが有効になりました。記録を表示する\n"
+"には、以下のリンクにアクセスしてください:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"この記録の作成者、またはこの記録のメモの作成者のメール アドレスにお知らせをしています。\n"
+"このメール アドレスが、この人の記録またはこの記録のメモに\n"
+"関連付けられていましたので、お知らせいたします。\n"
 
 #, python-format
 msgid ""
@@ -369,12 +407,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-" \"%(full_name)s\" さんの(以前削除されていた)記録を、\n"
-"作成した方が復元しました。詳細を見るには、次のリンクをクリックしてください。\n"
+"「%(full_name)s」さんの（以前削除された）記録を、\n"
+"その記録の作成者が復元しました。記録を表示するには、\n"
+"以下のリンクにアクセスしてください:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"この方の記録あるいは覚書にあなたのメールアドレスが関連付けられていたためご連絡しております。\n"
+"このメール アドレスが、この人の記録またはこの記録のメモに\n"
+"関連付けられていましたので、お知らせいたします。\n"
 
 #, python-format
 msgid ""
@@ -396,11 +436,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"「%(full_name)s」さんに関するメモを受け取る登録をしました。この記録は\n"
+"「%(full_name)s」さんに関するメモを受け取るよう登録しました。\n"
+"\n"
+"この記録を見るには、以下のリンクにアクセスしてください:\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"登録を解除するには、以下のリンクをたどってください: %(unsubscribe_link)s\n"
+"登録を解除するには、次のリンクにアクセスしてください: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
@@ -409,13 +451,13 @@ msgid "(unknown)"
 msgstr "（不明）"
 
 msgid "A message for this person or others seeking this person"
-msgstr "この人やこの人を探している人へのメッセージ"
+msgstr "この人へのメッセージ、またはこの人を探している人へのメッセージ"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "約 1 か月（30 日）後"
@@ -433,7 +475,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "約 6 か月（180 日）後"
 
 msgid "About Google Person Finder"
-msgstr "パーソンファインダーについて"
+msgstr "Google パーソンファインダーについて"
 
 msgid "About you (required)"
 msgstr "あなたについて（必須）"
@@ -454,47 +496,47 @@ msgid "Alternate names"
 msgstr "名前（よみがな）"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "本当にスパムではありませんか?"
+msgstr "このメモは本当にスパムではありませんか？"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "本当にスパムとして報告しますか?"
+msgstr "このメモをスパムとして登録してもよろしいですか？"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "この記録を復元してもよろしいですか？"
+msgstr "削除したこの記録を復元してもよろしいですか？"
 
 msgid "Atom feed of updates about this person"
-msgstr "この人に関する最新情報の Atom フィード"
+msgstr "この人に関する新着情報の Atom フィード"
 
 msgid "Author's e-mail address"
-msgstr "情報提供者のメールアドレス"
+msgstr "作成者のメール アドレス"
 
 msgid "Author's name"
-msgstr "情報提供者の名前"
+msgstr "作成者の名前"
 
 msgid "Author's phone number"
-msgstr "情報提供者の電話番号"
+msgstr "作成者の電話番号"
 
 msgid "Authorization key"
-msgstr "API キー"
+msgstr "承認キー"
 
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
 msgid "Back to start"
-msgstr "最初のページに戻る"
+msgstr "先頭に戻る"
 
 msgid "CSV file"
 msgstr "CSV ファイル"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "ID %(id)s"
+msgstr "%(id)s のメモは見つかりません"
 
 msgid "Cancel"
 msgstr "キャンセル"
 
 msgid "City"
-msgstr "市"
+msgstr "市区町村"
 
 msgid "Click here to view results."
 msgstr "結果を表示するにはここをクリックしてください。"
@@ -503,22 +545,22 @@ msgid "Close window"
 msgstr "ウィンドウを閉じる"
 
 msgid "Compare these records"
-msgstr "記録の比較"
+msgstr "これらの記録の比較"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "このツールをサイト上に配置するには、次の HTML コードをコピーして貼り付けます"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr "新しいレコードを作成"
+msgstr "新しい記録を作成"
 
 msgid "Create a new record for"
-msgstr "次の人の新しいレコードを作成する:"
+msgstr "次の人の新しい記録を作成:"
 
 msgid "Create a new record for a missing person"
-msgstr "行方不明者の新しい記録を作成する"
+msgstr "行方不明者の新しい記録を作成"
 
 msgid "Crisis events"
 msgstr "災害"
@@ -534,10 +576,10 @@ msgid "Date of birth"
 msgstr "誕生日"
 
 msgid "Delete this record"
-msgstr "このレコードを削除します"
+msgstr "この記録を削除"
 
 msgid "Describe how to identify this person."
-msgstr "この人のその他の特徴を入力してください。"
+msgstr "この人の特徴を入力してください。"
 
 msgid "Describe the physical characteristics of this person."
 msgstr "この人の身体の特徴を入力してください。"
@@ -546,16 +588,16 @@ msgid "Description"
 msgstr "説明"
 
 msgid "Desktop version"
-msgstr "デスクトップ版"
+msgstr "PC 版"
 
 msgid "Developers"
-msgstr "デベロッパー"
+msgstr "開発者"
 
 msgid "Disable notes on this record"
-msgstr "この記録へのメモの書き込みを禁止する"
+msgstr "この記録のメモを無効にする"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr "この人のプロフィールページを知っていますか？"
+msgstr "この人のプロフィールが掲載されているウェブサイトは他にありますか？"
 
 msgid "Download the sound as MP3"
 msgstr "MP3 として音声をダウンロード"
@@ -567,16 +609,16 @@ msgid "E-mail address"
 msgstr "メール アドレス"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "このツールを埋め込む"
+msgstr "このアプリケーションの埋め込み"
 
 msgid "Enable notes on this record"
-msgstr "この記録へのメモの書き込みを許可する"
+msgstr "この記録のメモを有効にする"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "日付がすべて UTC で yyyy-mm-ddThh:mm:ssZ の形式であることを確認してください"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
@@ -594,23 +636,23 @@ msgid "Enter the person's name."
 msgstr "その人の名前を入力してください。"
 
 msgid "Expiry"
-msgstr "記録の期限"
+msgstr "期限"
 
 msgid "Expiry date of this record"
 msgstr "この記録の有効期限"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "有効期限を %(extension_days)s 日延長する"
 
 msgid "Family name"
 msgstr "姓"
 
 msgid "Feed of updates about this person"
-msgstr "この人に関する最新情報のフィード"
+msgstr "この人に関する新着情報のフィード"
 
 msgid "Follow this link to create a new record"
-msgstr "このリンクを使用して新しい記録を作成できます"
+msgstr "このリンクから新しい記録を作成できます"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -621,13 +663,13 @@ msgid "Full name"
 msgstr "姓名"
 
 msgid "Get a new challenge"
-msgstr "新しいキャプチャチャレンジ"
+msgstr "新しい認証を取得"
 
 msgid "Get a visual challenge"
-msgstr "画像によるキャプチャチャレンジ"
+msgstr "画像による認証を取得"
 
 msgid "Get an audio challenge"
-msgstr "音声によるキャプチャチャレンジ"
+msgstr "音声による認証を取得"
 
 msgid "Given name"
 msgstr "名"
@@ -643,7 +685,7 @@ msgstr "ヘルプ"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr ""
+msgstr "次の %(begin_tag)sCSV ファイルのサンプル%(end_tag)sは編集/アップロード可能です"
 
 msgid "Hide Map"
 msgstr "地図を隠す"
@@ -673,13 +715,13 @@ msgid "I am this person"
 msgstr "私が本人である"
 
 msgid "I do not want any more updates on this record."
-msgstr "この記録に関する最新情報は不要です。"
+msgstr "この記録に関する新着情報は不要"
 
 msgid "I do not want my information online anymore."
-msgstr "自分に関する情報を消したい"
+msgstr "自分に関する情報をウェブから削除したい"
 
 msgid "I have information about someone"
-msgstr "安否情報を提供する"
+msgstr "安否情報を提供したい"
 
 msgid "I have reason to think this person is missing"
 msgstr "この人を行方不明と判断した理由がある"
@@ -691,10 +733,10 @@ msgid "I have received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した"
 
 msgid "I have received spam due to this note."
-msgstr "このメモが原因でスパムを受信したから"
+msgstr "このメモが原因でスパムを受信した"
 
 msgid "I have received spam."
-msgstr "この記録が原因でスパムを受信したから"
+msgstr "スパムを受信した"
 
 msgid "I prefer not to specify."
 msgstr "指定しない"
@@ -714,7 +756,7 @@ msgstr "識別情報"
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
-msgstr "探している人の情報が見つからない場合は、下のボタンをクリックして新しい記録を作成できます。"
+msgstr "探している人の記録が見つからない場合は、以下をクリックして新しい記録を作成できます。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -732,13 +774,13 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してください。"
 
 msgid "Incorrect.  Try again."
-msgstr "正しくありません。もう一度やり直してください。"
+msgstr "正しくありません。もう一度お試しください。"
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "メールアドレスに問題があります。再度入力してください。"
+msgstr "メール アドレスが無効です。もう一度お試しください。"
 
 msgid "Language selection"
-msgstr "言語選択"
+msgstr "言語の選択"
 
 msgid "Last known location"
 msgstr "最後に見かけた場所"
@@ -747,13 +789,13 @@ msgid "Link"
 msgstr "リンク"
 
 msgid "Link to profile page"
-msgstr "プロフィールページヘのリンク"
+msgstr "プロフィール ページへのリンク"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "重複している記録としてマークする"
+msgstr "重複している記録として登録する"
 
 msgid "Message (required)"
 msgstr "メッセージ（必須）"
@@ -774,7 +816,7 @@ msgstr "行方不明者の現在の電話番号"
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
-msgstr "その他の開発者情報%(developers_link_html)shere%(link_end_html)s."
+msgstr "開発者情報について詳しくは%(developers_link_html)sこちら%(link_end_html)sをご覧ください。"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -788,7 +830,7 @@ msgid "Name (required)"
 msgstr "名前（必須）"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "[名] は必須です。前に戻って入力してください。"
+msgstr "[名前] は必須です。前に戻って入力してください。"
 
 msgid "Neighborhood"
 msgstr "近隣の場所"
@@ -798,14 +840,14 @@ msgstr "いいえ"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "記録 %(id)sの作成者のメール アドレスが見つかりません。"
+msgstr "記録 %(id)s の作成者のメール アドレスは見つかりません。"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "携帯通信会社の伝言板サービスに登録されたメッセージは見つかりません。"
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "次の ID のメモが見つかりません: %(id_str)s"
+msgstr "次の ID のメモは見つかりません: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "メモはまだありません"
@@ -815,13 +857,13 @@ msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
 
 msgid "No results found for"
-msgstr "次の人に一致する結果が見つかりませんでした"
+msgstr "次の人に一致する結果は見つかりませんでした:"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "状況が「believed_dead」の場合、メモは投稿できません。"
+msgstr "状況が「believed_dead」の場合はメモを投稿できません。"
 
 msgid "Not spam"
 msgstr "スパムではありません"
@@ -830,7 +872,7 @@ msgid "Note author"
 msgstr "メモの作成者"
 
 msgid "Note text"
-msgstr "メモ"
+msgstr "メモの本文"
 
 msgid "Notes for this person"
 msgstr "この人に関するメモ"
@@ -842,16 +884,16 @@ msgstr "半角数字。ハイフンで範囲指定も可（例: 20-30）"
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
-msgstr "もしくは %(gadget_link_html)sGoogle Gadget%(link_end_html)s としてサイトを追加する"
+msgstr "または %(gadget_link_html)sGoogle ガジェット%(link_end_html)sとしてサイトに追加してください。"
 
 msgid "Original URL"
-msgstr "情報元の URL"
+msgstr "元の URL"
 
 msgid "Original author's name"
-msgstr "元の情報提供者の名前"
+msgstr "元の作成者の名前"
 
 msgid "Original posting date"
-msgstr "情報元の投稿日"
+msgstr "元の投稿日"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
@@ -859,22 +901,22 @@ msgid ""
 msgstr "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在しない日付になっています。前に戻って入力し直してください。"
 
 msgid "Original site name"
-msgstr "情報元のサイト名"
+msgstr "元のサイト名"
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
-msgstr ""
-"注: "
-"入力したデータはすべて公開され、誰でも表示、使用できる状態になります。また、消息データには、直接、ユーザーがパーソンファインダーに入力した情報のほか、公開された情報その他の情報源に基づき入力された情報が含まれています。Google"
-" では、これらのデータの正確性の確認は実施しておりません。"
+msgstr "注: 入力したデータはすべて公開され、誰でも表示、使用できる状態になります。Google では、データの正確性の確認は行っていません。"
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"注: 有効なパーソンファインダー サイトでは、入力したデータはすべて公開され、誰でも使用できます。Google "
+"では、データの正確性の確認は行っていません。"
 
 msgid "Person Finder"
 msgstr "パーソンファインダー (安否情報)"
@@ -891,7 +933,7 @@ msgstr "写真"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しください。"
+msgstr "アップロードした写真の形式を認識できません。前に戻って別の写真をお試しください。"
 
 msgid "Physical characteristics"
 msgstr "身体の特徴"
@@ -908,10 +950,10 @@ msgid "Please check whether it matches the person you were planning to report."
 msgstr "報告しようとした人と一致しているかどうかを確認してください。"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るメールアドレスを確認してください"
+msgstr "新着情報を受け取るメール アドレスを確認してください"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るにはメールアドレスを入力してください"
+msgstr "新着情報を受け取るにはメール アドレスを入力してください"
 
 msgid "Please explain why you think these are the same person"
 msgstr "同一人物だと考える理由を入力してください"
@@ -938,10 +980,10 @@ msgid "Proceed"
 msgstr "続行"
 
 msgid "Profile Pages"
-msgstr "プロフィールページ"
+msgstr "プロフィール ページ"
 
 msgid "Profile page"
-msgstr "プロフィールページ"
+msgstr "プロフィール ページ"
 
 msgid "Provide information"
 msgstr "情報を提供する"
@@ -962,43 +1004,43 @@ msgid "Reason for disabling notes:"
 msgstr "メモを無効にする理由:"
 
 msgid "Records Similar to"
-msgstr "類似する記録"
+msgstr "次と類似する記録:"
 
 msgid "Records selected"
-msgstr "件の記録が選択されています"
+msgstr "選択されている記録"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "名前や住所が「%(query)s」に一致する記録"
 
 msgid "Remove"
-msgstr "削除する"
+msgstr "削除"
 
 msgid "Report spam"
 msgstr "スパムを報告"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "%(full_name)s さんの記録の表示に戻る"
+msgstr "%(full_name)s さんの記録の表示に戻ります。"
 
 msgid "Reveal note"
-msgstr "メモを表示する"
+msgstr "メモを表示"
 
 msgid "Save this record"
 msgstr "この記録を保存"
 
 msgid "Search Results for"
-msgstr "検索結果"
+msgstr "検索結果:"
 
 msgid "Search for this person"
 msgstr "この人を探す"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "手順について詳しくは %(begin_tag)swiki%(end_tag)s をご覧ください"
 
 msgid "Select a website to add a profile page..."
-msgstr "プロフィールページを追加する..."
+msgstr "プロフィール ページの追加先ウェブサイトを選択..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"
@@ -1013,13 +1055,13 @@ msgid "Show Map"
 msgstr "地図を表示"
 
 msgid "Show sensitive information"
-msgstr "個人情報の表示"
+msgstr "個人情報を表示"
 
 msgid "Sign in"
-msgstr ""
+msgstr "ログイン"
 
 msgid "Sign out"
-msgstr ""
+msgstr "ログアウト"
 
 msgid "Someone has received information that this person is alive"
 msgstr "この人が生きているという情報を入手した人がいます"
@@ -1031,7 +1073,7 @@ msgid "Someone has reported that this person is missing"
 msgstr "この人を行方不明者として報告した人がいます"
 
 msgid "Someone is seeking information about this person"
-msgstr "誰かがこの人物についての情報を求めています"
+msgstr "この人についての情報を求めている人がいます"
 
 msgid "Source of this record"
 msgstr "この記録の情報源"
@@ -1052,14 +1094,14 @@ msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
 msgid "Subscribe"
-msgstr "アップデートを受け取る"
+msgstr "新着情報を受け取る"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "%(full_name)s さんについての新着情報を受け取る"
+msgstr "%(full_name)s さんの新着情報を受け取る"
 
 msgid "Subscribe to updates about this person"
-msgstr "この方の新着情報をメールで受け取る"
+msgstr "この人の新着情報を受け取る"
 
 msgid "Switch to address"
 msgstr "住所に切り替える"
@@ -1080,45 +1122,43 @@ msgid "Terms of Service"
 msgstr "利用規約"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
+msgstr "[元の作成者の名前] は必須です。前に戻って入力してください。"
 
 msgid "The author has disabled notes on this record."
 msgstr "作成者がこの記録に関するメモを無効にしました。"
 
 msgid "The author has disabled status updates on this record."
-msgstr "作成者がこの記録に関する情報の更新を無効にしました。"
+msgstr "作成者がこの記録に関する新着情報を無効にしました。"
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
+msgstr "提供された画像は大きすぎます。もっと小さい画像をアップロードしてください。"
 
 msgid "The reason this note is being marked as spam:"
-msgstr "スパムとして報告した理由："
+msgstr "スパムとして登録した理由:"
 
 msgid "The record cannot be extended."
-msgstr "この記録は保存期間を延長できません。"
+msgstr "この記録は有効期限を延長できません。"
 
 msgid "The record has been deleted."
-msgstr "レコードが削除されました。"
+msgstr "記録が削除されました。"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "保存期間が %(expiry_date)sまで延長されました。"
+msgstr "記録の有効期限が %(expiry_date)s まで延長されました。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
-msgstr "この人があなた本人である場合は、[この人と災害発生後にコンタクト取れましたか？] で [はい] を選択してください。"
+msgstr "この人があなた本人である場合は、[この人と災害発生後に連絡が取れましたか？] で [はい] を選択してください。"
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1151,27 +1191,25 @@ msgstr "リクエストの処理中にエラーが発生しました。ご不便
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
-msgstr ""
-"これらのガジェットは以下で有効になります %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
+msgstr "これらのガジェットは %(apache_link_html)sApache 2.0 ライセンス%(link_end_html)sで使用できます。"
 
 msgid "This is a new record."
 msgstr "これは新しい記録です。"
 
 msgid "This link is invalid."
-msgstr "このリンクは正しくありません。"
+msgstr "このリンクは無効です。"
 
 msgid "This note has been marked as spam."
-msgstr "このメモはスパムとして登録されました"
+msgstr "このメモはスパムとして登録されました。"
 
 msgid "This note is inappropriate."
-msgstr "不適切なメモだから"
+msgstr "このメモは不適切です。"
 
 msgid "This note is incorrect or untrue."
-msgstr "不正確なメモだから"
+msgstr "このメモは不正確です。"
 
 msgid "This note is spam."
-msgstr "スパムだから"
+msgstr "このメモはスパムです。"
 
 msgid "This person has been in contact with someone"
 msgstr "この人と連絡を取った人がいます"
@@ -1183,7 +1221,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "この人の記録は存在しないか、削除されました。"
 
 msgid "This record has served its purpose."
-msgstr "この記録が目的を果たしたから"
+msgstr "この記録は目的を果たしました。"
 
 msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
@@ -1192,24 +1230,24 @@ msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
 msgid "This record is inappropriate."
-msgstr "この記録が不適切な情報だから"
+msgstr "この記録は不適切です。"
 
 msgid "This record is spam."
-msgstr "この記録がスパム情報だから"
+msgstr "この記録はスパムです。"
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr "現在、体験版としてサービス提供中です。登録データは 6 時間以上経過した後、削除されます。"
+msgstr "現在、体験版としてサービス提供中です。体験版では、6 時間以上が経過した記録は削除されます。"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "メモに写真を添付するには、アップロードするか、写真の URL を入力してください。"
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "データを削除するには、デスクトップからパーソンファインダーにアクセスして下さい。"
+msgstr "データを削除するには、パソコンからパーソンファインダーにアクセスしてください。"
 
 msgid "To unsubscribe, follow this link"
-msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください:"
+msgstr "登録を解除するには、以下のリンクにアクセスしてください"
 
 msgid "To view or add information, select a name below."
 msgstr "情報を表示または追加するには、下に表示されている名前を選択してください。"
@@ -1217,16 +1255,16 @@ msgstr "情報を表示または追加するには、下に表示されている
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr "住所を入力するか、下のマップ上をクリックして場所を指定してください。"
+msgstr "住所を入力するか下の地図を開き、地図上をクリックして場所を指定してください。"
 
 msgid "Type an address."
 msgstr "住所を入力してください。"
 
 msgid "Type the two words:"
-msgstr "二つの単語を入力してください："
+msgstr "単語を 2 つ入力してください:"
 
 msgid "Type what you hear:"
-msgstr "聞こえたことを入力してください："
+msgstr "聞こえたことを入力してください:"
 
 msgid "URL"
 msgstr "URL"
@@ -1238,13 +1276,13 @@ msgid "Unspecified"
 msgstr "指定なし"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "アップロード"
 
 msgid "Upload CSV files"
-msgstr "CSV ファイルをアップロードする"
+msgstr "CSV ファイルをアップロード"
 
 msgid "View the record"
 msgstr "記録を見る"
@@ -1256,7 +1294,7 @@ msgid "What is this person's name?"
 msgstr "この人の名前を入力してください。"
 
 msgid "When should this record disappear?"
-msgstr "この記録を自動的に削除するよう設定できます。いつに指定しますか？"
+msgstr "この記録をいつ削除するか指定してください。"
 
 msgid "Where did this information come from?"
 msgstr "この記録の情報源を指定してください。"
@@ -1267,78 +1305,78 @@ msgstr "この人の住所を入力してください。"
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr "体験版としてサービス提供中は、登録後 6 時間以上経過した記録は期限によらず削除されます。"
+msgstr "体験版では、6 時間以上が経過した記録は有効期限に関わらず削除されます。"
 
 msgid "Yes"
 msgstr "はい"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "はい、メモを無効にするよう作成者にリクエストします"
+msgstr "はい、メモを無効にするよう記録の作成者にリクエストします"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "はい、メモを有効にするよう作成者にリクエストします"
+msgstr "はい、メモを有効にするよう記録の作成者にリクエストします"
 
 msgid "Yes, delete the record"
-msgstr "はい、削除する"
+msgstr "はい、記録を削除します"
 
 msgid "Yes, disable notes on this record."
-msgstr "はい、この記録のメモを無効にします。"
+msgstr "はい、この記録のメモを無効にします"
 
 msgid "Yes, extend the record"
-msgstr "はい、延長します"
+msgstr "はい、有効期限を延長します"
 
 msgid "Yes, restore this record"
-msgstr "はい、この記録を復元します。"
+msgstr "はい、この記録を復元します"
 
 msgid "Yes, these are the same person"
-msgstr "はい、同一人物です。"
+msgstr "はい、同一人物です"
 
 msgid "Yes, update the note"
-msgstr "メモを更新する"
+msgstr "はい、メモを更新します"
 
 msgid "You are already subscribed. "
-msgstr "アップデートを受け取るように、すでに設定されています。"
+msgstr "新着情報を受け取るよう既に設定されています。 "
 
 msgid "You are already unsubscribed."
-msgstr "アップデートの受け取りは、すでに停止されています。"
+msgstr "新着情報の受け取りは既に停止されています。"
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "現在、%(begin_span_tag)s%(email)s%(end_span_tag)s としてログインしています。"
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "ログインしていません。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "記録を削除する前に、%(begin_tag)s記録を確認%(end_tag)sできます。"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "すべての記録は %(view_url)s で見ることができます。"
+msgstr "完全な記録は %(view_url)s で確認できます"
 
 msgid "You have successfully subscribed."
-msgstr "アップデートを受け取るように設定されました。"
+msgstr "新着情報を受け取るよう設定しました。"
 
 msgid "You have successfully unsubscribed."
-msgstr "アップデートの受け取りが停止されました。"
+msgstr "新着情報の受け取りを停止しました。"
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr "次の人の最新情報を受け取るための登録が完了しました:\n"
+msgstr "次の人の新着情報を受け取るための登録が完了しました:\n"
 
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
 
 msgid "Your e-mail address:"
-msgstr "あなたのメールアドレス"
+msgstr "あなたのメール アドレス:"
 
 msgid "Your email"
 msgstr "メール アドレス"
@@ -1362,39 +1400,39 @@ msgstr "あなたの電話番号"
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
-msgstr "リクエストは正常に処理されました。受信トレイ内のメールに記載されている URL をたどって、メモを投稿することを確認してください。"
+msgstr "リクエストは正常に処理されました。受信トレイ内のメールに記載されている URL にアクセスして、メモを投稿することを確認してください。"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモを確認"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモを確認"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんの削除の通知"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんの削除の通知"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモを無効にしますか?"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモを無効にしますか？"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモを有効にしますか?"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモを有効にしますか？"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモの通知を有効にしています"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモの有効化の通知"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモが無効になりました"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモが無効になりました"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんに関するメモが有効になりました"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモが有効になりました"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[パーソンファインダー] %(full_name)s さんの記録の復元の通知"
+msgstr "[パーソンファインダー] 「%(full_name)s」さんの記録の復元の通知"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
@@ -1402,10 +1440,10 @@ msgstr "[パーソンファインダー] %(full_name)s さんについての新�
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るように設定しました"
+msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
 
 msgid "at"
-msgstr "時刻:"
+msgstr "場所:"
 
 msgid "female"
 msgstr "女性"

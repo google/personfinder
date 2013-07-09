@@ -36,7 +36,7 @@ msgstr ""
 "\n"
 "  برای اطمینان از اینکه یادداشت‌ها فقط با مجوز نویسنده سابقه فعال یا "
 "غیرفعال می‌شوند، یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما "
-"نویسنده هستید بعد از کلیک بر روی دکمه زیر ایمیل خود را بررسی کنید.\n"
+"نویسنده هستید، بعد از کلیک بر روی دکمه زیر، ایمیل خود را بررسی کنید.\n"
 "\n"
 "  "
 
@@ -58,13 +58,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"author_name %(author_name)s، یک کاربر درخواست کرده است یادداشت‌ها در "
-"سابقه برای \"%(full_name)s\" فعال شوند. آدرس ایمیل شما بعنوان نویسنده این"
-" سابقه ثبت می‌شود. برای فعال کردن یادداشت‌ها در این سابقه، ظرف 3 روز این "
-"پیوند را دنبال کنید:\n"
-"\n"
-"   %(confirm_url)s\n"
-"\n"
+"%(author_name)s عزیز،\n"
+"کاربری درخواست کرده است یادداشت‌ها در سابقه «%(full_name)s» فعال شود.\n"
+"آدرس ایمیل شما به عنوان نویسنده این سابقه ثبت شده است. برای فعال‌سازی "
+"یادداشت‌ها\n"
+"در این سابقه، ظرف ۳ روز این پیوند را دنبال کنید:\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -85,12 +84,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"author_name %(author_name)s، یک کاربر درخواست کرده است یادداشت‌ها در "
-"سابقه برای \"%(full_name)s\" غیر فعال شوند. آدرس ایمیل شما بعنوان نویسنده"
-" این سابقه ثبت می‌شود. برای غیرفعال کردن یادداشت‌ها در این سابقه، ظرف 3 "
-"روز این پیوند را دنبال کنید:\n"
-"\n"
-"   %(confirm_url)s\n"
+"%(author_name)s عزیز،\n"
+"کاربری درخواست کرده است یادداشت‌ها در سابقه «%(full_name)s» غیرفعال شود.\n"
+"آدرس ایمیل شما به عنوان نویسنده این سابقه ثبت می‌شود. برای غیرفعال‌سازی\n"
+"یادداشت‌ها در این سابقه، ظرف ۳ روز این پیوند را دنبال کنید:\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -106,11 +104,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"author_name %(author_name)s، شما اکنون یک یادداشت را در سابقه برای "
-"\"%(full_name)s\" وارد کردید. برای انتشار یادداشت خود، ظرف 3 روز این "
-"پیوند را دنبال کنید:\n"
-"\n"
-"   %(confirm_url)s\n"
+"%(author_name)s عزیز،\n"
+"به تازگی یادداشتی را در سابقه «%(full_name)s» وارد کردید.\n"
+"برای انتشار یادداشت‌تان، ظرف ۳ روز این پیوند را دنبال کنید:\n"
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -120,12 +117,19 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    هشدار: این سابقه تا %(expiration_days)s روز دیگر "
+"منقضی می‌شود.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    هشدار: این سابقه تا یک روز دیگر منقضی می‌شود.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -134,7 +138,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      آیا مطمئن هستید می خواهید سابقه \"%(full_name)s\" را حذف کنید؟\n"
+"      مطمئنید می‌خواهید سابقه «%(full_name)s» را حذف کنید؟\n"
 "    "
 
 #, python-format
@@ -144,7 +148,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      مطمئنید می‌خواهید یادداشت‌ها را در \"%(full_name)s\" غیرفعال کنید؟\n"
+"      مطمئنید می‌خواهید یادداشت‌های مربوط به «%(full_name)s» را غیرفعال "
+"کنید؟\n"
 "    "
 
 #, python-format
@@ -155,7 +160,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      مطمئنید می‌خواهید یادداشت‌ها را در سابقه \"%(full_name)s\" غیرفعال "
+"      مطمئنید می‌خواهید یادداشت‌ها را در سابقه «%(full_name)s» غیرفعال "
 "کنید؟\n"
 "    "
 
@@ -166,7 +171,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      مطمئنید می‌خواهید یادداشت‌ها را در \"%(full_name)s\" فعال کنید؟\n"
+"      مطمئنید می‌خواهید یادداشت‌های مربوط به «%(full_name)s» را فعال "
+"کنید؟\n"
 "    "
 
 #, python-format
@@ -176,6 +182,10 @@ msgid ""
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      مطمئنید می‌خواهید تاریخ انقضای سابقه «%(full_name)s» را تمدید کنید؟"
+"\n"
+"    "
 
 msgid ""
 "\n"
@@ -193,8 +203,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"     اگر حذف کردن را ادامه دهید،\n"
-"      این سابقه دیگر در این سایت قابل جستجو نخواهد بود.\n"
+"      اگر حذف کردن را ادامه دهید،\n"
+"این سابقه دیگر در این سایت قابل جستجو یا قابل مشاهده نخواهد بود.\n"
 "    "
 
 #, python-format
@@ -206,6 +216,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      اگر می‌خواهید برای همیشه حذف شود،\n"
+"لطفاً با منبع اصلی تماس بگیرید.\n"
+"می‌توانید سابقه اصلی را در\n"
+"%(begin_tag)s%(source_name)s%(end_tag)s مشاهده کنید.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -217,6 +233,13 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      ظاهراً نشانی اینترنتی که وارد کردید یک نشانی اینترنتی معتبر برای "
+"نمایه %(website)s نیست.\n"
+"لطفاً به صفحه نمایه این شخص در %(website)s بروید و سپس نشانی اینترنتی را "
+"کپی و در اینجا\n"
+"جای‌گذاری کنید.\n"
+"      "
 
 msgid ""
 "\n"
@@ -227,6 +250,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      این سابقه کپی سابقه‌‌ای از یک منبع دیگر است.\n"
+"می‌توانید سابقه را در اینجا حذف کنید،\n"
+"اما لطفاً توجه داشته باشید که ممکن است بعداً\n"
+"کپی دیگری از این سابقه را از منبع اصلی دریافت کنیم.\n"
+"    "
 
 msgid ""
 "\n"
@@ -240,8 +269,10 @@ msgid ""
 msgstr ""
 "\n"
 "    برای اطمینان از اینکه یادداشت‌ها فقط با مجوز نویسنده سابقه فعال یا "
-"غیرفعال می‌شوند، یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما "
-"نویسنده هستید، بعد از کلیک بر روی دکمه زیر، ایمیل خود را بررسی کنید.\n"
+"غیرفعال می‌شوند،\n"
+"یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما نویسنده هستید، بعد"
+" از کلیک\n"
+"بر روی دکمه زیر، ایمیل خود را بررسی کنید.\n"
 "  "
 
 msgid ""
@@ -252,8 +283,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  سابقه هنوز هم در این سایت قابل دیدن است، اما هیچ فردی نمی‌تواند "
-"یادداشت‌های دیگری به آن پست کند.\n"
+"  سابقه هنوز هم در این سایت قابل مشاهده خواهد بود، اما هیچ کس\n"
+" نمی‌تواند یادداشت‌های دیگری به آن پست کند.\n"
 "  "
 
 msgid ""
@@ -264,8 +295,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  برای پست کردن یادداشت خود، لطفاً آدرس ایمیل خود را در زیر وارد کرده و "
-"پیوند تأییدی را که دریافت می‌کنید دنبال نمایید.\n"
+"  برای پست کردن یادداشت خود، لطفاً آدرس ایمیل خود را در زیر وارد کنید\n"
+" و پیوند تأییدی را که دریافت می‌کنید دنبال نمایید.\n"
 "  "
 
 #, python-format
@@ -278,12 +309,9 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"کاربری سابقه \"%(full_name)s\"\n"
-" را در %(site_url)s حذف کرده است.\n"
-"\n"
-"چون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت در این سابقه ثبت شده است"
-"\n"
-"ما این حذف را به شما اطلاع می دهیم.\n"
+"کاربری سابقه «%(full_name)s» را در %(site_url)s حذف کرده است.\n"
+"چون آدرس ایمیل شما به عنوان نویسنده یادداشتی در این سابقه\n"
+"ثبت شده است این حذف را به شما اطلاع دادیم.\n"
 
 #, python-format
 msgid ""
@@ -294,6 +322,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"کاربری سابقه «%(full_name)s» را در %(site_url)s حذف کرده است.\n"
+"چون آدرس ایمیل شما به عنوان نویسنده این سابقه\n"
+"ثبت شده است این حذف را به شما اطلاع دادیم.\n"
 
 #, python-format
 msgid ""
@@ -301,6 +333,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"پس از %(days_until_deletion)s روز، سابقه برای همیشه حذف می‌شود.\n"
 
 #, python-format
 msgid ""
@@ -311,6 +345,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"توجه: اگر فکر می‌کنید این سابقه به اشتباه حذف شده است،\n"
+"می‌توانید ظرف %(days_until_deletion)s روز آینده با دنبال کردن این پیوند "
+"آن را بازیابی کنید:\n"
+" %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -325,13 +364,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"یادداشت‌ها اکنون در سابقه برای \"%(full_name)s\" غیرفعال می‌شوند. برای "
-"مشاهده سابقه، این پیوند را دنبال کنید:\n"
+"یادداشت‌ها اکنون در سابقه «%(full_name)s» غیرفعال است. برای مشاهده سابقه،"
 "\n"
-"    %(record_url)s\n"
-"\n"
-"به این دلیل به شما اطلاع می‌دهیم که آدرس ایمیل شما با سوابق این شخص یا "
-"یادداشتی در سوابق این شخص همراه است.\n"
+"این پیوند را دنبال کنید:\n"
+" %(record_url)s\n"
+"به این دلیل به شما اطلاع می‌دهیم که آدرس ایمیل شما با سابقه این شخص\n"
+"یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
 msgid ""
@@ -346,13 +384,11 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"یادداشت‌ها اکنون در سابقه برای \"%(full_name)s\" فعال می‌شوند. برای "
-"مشاهده سابقه، این پیوند را دنبال کنید:\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"به این دلیل به شما اطلاع می‌دهیم که آدرس ایمیل شما با سوابق این شخص یا "
-"یادداشتی در سوابق این شخص همراه است.\n"
+"یادداشت‌ها اکنون در سابقه «%(full_name)s» فعال است. برای مشاهده سابقه،\n"
+"این پیوند را دنبال کنید:\n"
+" %(record_url)s\n"
+"به این دلیل به شما اطلاع می‌دهیم که آدرس ایمیل شما با سابقه این شخص\n"
+"یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
 msgid ""
@@ -367,14 +403,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"نویسنده سابقه برای \"%(full_name)s\"\n"
-"(که قبلاً حذف شده بود) این سابقه را بازیابی کرده است.  برای مشاهده\n"
-"سابقه، این پیوند را دنبال کنید\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"چون آدرس ایمیل شما با سابقه یا یادداشتی در\n"
-"سابقه این شخص در ارتباط است، به شما اطلاع می دهیم.\n"
+"نویسنده سابقه «%(full_name)s» (که قبلاً حذف شده بود)\n"
+" این سابقه را بازیابی کرده است. برای مشاهده سابقه،\n"
+" این پیوند را دنبال کنید:\n"
+" %(record_url)s\n"
+"به این دلیل به شما اطلاع می‌دهیم که آدرس ایمیل شما\n"
+" با سابقه این شخص یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
 msgid ""
@@ -382,7 +416,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"یادداشت جدیدی در سابقه برای \"%(full_name)s\" وجود دارد.\n"
+"یادداشت جدیدی در سابقه «%(full_name)s» وجود دارد.\n"
 
 #, python-format
 msgid ""
@@ -396,45 +430,43 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"شما برای یادداشت‌ها در \"%(full_name)s\" مشترک شده‌اید. می‌توانید این "
-"سابقه را در\n"
-"\n"
-"     %(view_url)s\n"
-"\n"
-"برای عدم مشارکت، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
+"شما برای یادداشت‌ها در «%(full_name)s» مشترک شده‌اید.\n"
+"می‌توانید این سابقه را در این آدرس مشاهده کنید\n"
+" %(view_url)s\n"
+"برای لغو مشارکت، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "(برای نمایش کلیک کنید)"
+msgstr "(برای نمایش کلیک کنید)‏"
 
 msgid "(unknown)"
 msgstr "(ناشناس)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "پیامی برای این شخص یا دیگران درمورد جستجوی این شخص"
+msgstr "پیامی برای این شخص یا افرادی که این شخص را جستجو می‌کنند"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
-msgstr "تقریباً 1 ماه (30 روز) از هم اکنون"
+msgstr "تقریباً ۱ ماه (۳۰ روز) دیگر"
 
 msgid "About 1 year (360 days) from now"
-msgstr "تقریباً 1 سال (360 روز) از هم اکنون"
+msgstr "تقریباً ۱ سال (۳۶۰ روز) دیگر"
 
 msgid "About 2 months (60 days) from now"
-msgstr "تقریباً 2 ماه (60 روز) از هم اکنون"
+msgstr "تقریباً ۲ ماه (۶۰ روز) دیگر"
 
 msgid "About 3 months (90 days) from now"
-msgstr "تقریباً 3 ماه (90 روز) از هم اکنون"
+msgstr "تقریباً ۳ ماه (۹۰ روز) دیگر"
 
 msgid "About 6 months (180 days) from now"
-msgstr "تقریباً 6 ماه (180 روز) از هم اکنون"
+msgstr "تقریباً ۶ ماه (۱۸۰ روز) دیگر"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "درباره Google Person Finder"
 
 msgid "About you (required)"
 msgstr "درباره شما (ضروری)"
@@ -445,31 +477,29 @@ msgstr "سرپرستی"
 msgid "Age"
 msgstr "سن"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "نام خانوادگی"
+msgstr "نام‌های خانوادگی دیگر"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "نام‌های دیگر"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "نام خیابان"
+msgstr "نام‌های دیگر"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "آیا مطمئن هستید این یادداشت هرزنامه نیست؟"
+msgstr "مطمئنید این یادداشت هرزنامه نیست؟"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "آیا مطمئن هستید می خواهید این یادداشت را بصورت هرزنامه علامت گذاری کنید؟"
+msgstr "مطمئنید می‌خواهید این یادداشت را به عنوان هرزنامه علامت‌گذاری کنید؟"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "آیا مطمئن هستید می خواهید این سابقه را از موارد حذف شده بازیابی کنید؟"
+msgstr "مطمئنید می‌خواهید این سابقه را از موارد حذف شده بازیابی کنید؟"
 
 msgid "Atom feed of updates about this person"
-msgstr "فید Atom به روزرسانی ها درباره این شخص"
+msgstr "فید Atom برای به‌روزرسانی‌های مربوط به این شخص"
 
 msgid "Author's e-mail address"
-msgstr "نشانی ایمیل نویسنده"
+msgstr "آدرس ایمیل نویسنده"
 
 msgid "Author's name"
 msgstr "نام نویسنده"
@@ -478,20 +508,20 @@ msgid "Author's phone number"
 msgstr "شماره تلفن نویسنده"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "کلید مجوز"
 
 msgid "Back to results list"
-msgstr "برگشت به لیست نتایج"
+msgstr "برگشت به فهرست نتایج"
 
 msgid "Back to start"
-msgstr "برگشت به نقطه شروع"
+msgstr "برگشت به شروع"
 
 msgid "CSV file"
-msgstr ""
+msgstr "‫فایل CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "نمی‌توانید یادداشتی با شناسه %(id)s"
+msgstr "یادداشتی با شناسه %(id)s یافت نشد"
 
 msgid "Cancel"
 msgstr "لغو"
@@ -506,18 +536,16 @@ msgid "Close window"
 msgstr "بستن پنجره"
 
 msgid "Compare these records"
-msgstr "مقایسه این سوابق"
+msgstr "مقایسه این سابقه‌ها"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"کد HTML زیر را کپی کرده و جای گذاری کنید تا این ابزار را در سایت خود قرار"
-" دهید"
+msgstr "کد HTML زیر را کپی و جای‌گذاری کنید تا این ابزار را در سایت خود قرار دهید"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "ایجاد یک سابقه جدید"
 
 msgid "Create a new record for"
 msgstr "ایجاد سابقه جدید برای"
@@ -526,14 +554,14 @@ msgid "Create a new record for a missing person"
 msgstr "ایجاد سابقه جدید برای شخص گم شده"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "رویدادهای بحرانی"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "درحال حاضر %(num_people)s مدراک ردیابی شده است."
+msgstr "درحال حاضر تقریباً %(num_people)s سابقه ردیابی می‌شود."
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "تاریخ نباید مربوط به آینده باشد. لطفاً برگردید و دوباره سعی کنید."
+msgstr "تاریخ نباید مربوط به آینده باشد. لطفاً برگردید و دوباره امتحان کنید."
 
 msgid "Date of birth"
 msgstr "تاریخ تولد"
@@ -542,29 +570,28 @@ msgid "Delete this record"
 msgstr "حذف این سابقه"
 
 msgid "Describe how to identify this person."
-msgstr "نحوه پیداکردن این شخص را توضیح دهید."
+msgstr "نحوه شناسایی این شخص را توضیح دهید."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "نحوه پیداکردن این شخص را توضیح دهید."
+msgstr "مشخصات جسمی این شخص را توضیح دهید."
 
 msgid "Description"
 msgstr "توضیحات"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "نسخه دسک‌تاپ"
 
 msgid "Developers"
-msgstr "برنامه نویسان"
+msgstr "برنامه‌نویسان"
 
 msgid "Disable notes on this record"
 msgstr "غیرفعال کردن یادداشت‌‌ها در این سابقه"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "این شخص در سایر وب‌سایت‌ها دارای صفحه‌های نمایه است؟"
 
 msgid "Download the sound as MP3"
-msgstr "دانلود صدا بصورت MP3"
+msgstr "‫دانلود صدا بصورت MP3"
 
 msgid "E-mail"
 msgstr "ایمیل"
@@ -573,19 +600,19 @@ msgid "E-mail address"
 msgstr "نشانی ایمیل"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "قراردادن این برنامه"
+msgstr "جاسازی این برنامه"
 
 msgid "Enable notes on this record"
 msgstr "فعال کردن یادداشت‌ها در این سابقه"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
+msgstr "‫مطمئن شوید که همه تاریخ‌ها در قالب yyyy-mm-ddThh:mm:ssZ به وقت UTC است"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr "بصورت YYYY-MM-DD وارد کنید"
+msgstr "‫به صورت YYYY-MM-DD وارد کنید"
 
 msgid "Enter the person's given and family names."
 msgstr "نام و نام خانوادگی شخص را وارد کنید."
@@ -593,9 +620,8 @@ msgstr "نام و نام خانوادگی شخص را وارد کنید."
 msgid "Enter the person's name or parts of the name."
 msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "نام یا قسمتی از نام شخص را وارد کنید."
+msgstr "نام شخص، قسمتی از نام شخص، یا شماره تلفن همراه او را وارد کنید."
 
 msgid "Enter the person's name."
 msgstr "نام شخص را وارد کنید."
@@ -608,13 +634,13 @@ msgstr "تاریخ انقضای این سابقه"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "تمدید تاریخ انقضا برای %(extension_days)s روز بیشتر"
 
 msgid "Family name"
 msgstr "نام خانوادگی"
 
 msgid "Feed of updates about this person"
-msgstr "فید به روزرسانی ها درباره این شخص"
+msgstr "فید به‌روزرسانی‌ها درباره این شخص"
 
 msgid "Follow this link to create a new record"
 msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
@@ -623,9 +649,11 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"‫برای شماره تلفن‌های غیر از تلفن‌ همراه لطفاً از سرویس ۱۷۱ ارائه شده توسط"
+" NTT استفاده کنید."
 
 msgid "Full name"
-msgstr ""
+msgstr "نام کامل"
 
 msgid "Get a new challenge"
 msgstr "دریافت معمای جدید"
@@ -643,7 +671,7 @@ msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "آیا شخصاً با این فرد بعد از این فاجعه صحبت کرده اید؟ (ضروری)"
+msgstr "آیا شخصاً با این فرد بعد از فاجعه صحبت کرده‌اید؟ (ضروری)‏"
 
 msgid "Help"
 msgstr "راهنما"
@@ -651,12 +679,14 @@ msgstr "راهنما"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"این %(begin_tag)sیک فایل CSV نمونه%(end_tag)s است که می‌توانید ویرایش و "
+"آپلود کنید"
 
 msgid "Hide Map"
 msgstr "عدم نمایش نقشه"
 
 msgid "Hide note"
-msgstr "پنهان کردن نکته"
+msgstr "پنهان کردن یادداشت"
 
 msgid "Home Address"
 msgstr "نشانی منزل"
@@ -668,10 +698,10 @@ msgid "Home country"
 msgstr "کشور زادگاه"
 
 msgid "How can this person be reached now?"
-msgstr "اکنون چگونه می توان به این شخص دسترسی پیدا کرد؟"
+msgstr "اکنون چگونه می‌توان با این شخص تماس گرفت؟"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "افراد دیگری که به این شخص علاقمندند چگونه می توانند با شما تماس بگیرند"
+msgstr "افراد دیگری که به این شخص علاقمندند چگونه می‌توانند با شما تماس بگیرند"
 
 msgid "I am seeking information"
 msgstr "به دنبال کسب اطلاعات هستم"
@@ -680,37 +710,37 @@ msgid "I am this person"
 msgstr "من همین شخص هستم"
 
 msgid "I do not want any more updates on this record."
-msgstr "نمی‌خواهم به روزرسانی‌های دیگری برای این سابقه داشته باشم."
+msgstr "نمی‌خواهم به‌روزرسانی‌های دیگری برای این سابقه داشته باشم."
 
 msgid "I do not want my information online anymore."
-msgstr "دیگر نمی خواهم اطلاعاتم بصورت آنلاین نمایش داده شود."
+msgstr "دیگر نمی‌خواهم اطلاعاتم بصورت آنلاین نمایش داده شود."
 
 msgid "I have information about someone"
 msgstr "من اطلاعاتی راجع به یک نفر دارم"
 
 msgid "I have reason to think this person is missing"
-msgstr "برای تصور خود که این شخص گم شده است دلیلی دارم"
+msgstr "دلیلی دارم که فکر می‌کنم این شخص گم شده است"
 
 msgid "I have received information that this person is alive"
-msgstr "اطلاعاتی دریافت کرده ام که این شخص زنده است"
+msgstr "اطلاعاتی دریافت کرده‌ام که این شخص زنده است"
 
 msgid "I have received information that this person is dead"
-msgstr "اطلاعاتی دریافت کرده ام که این شخص مرده است"
+msgstr "اطلاعاتی دریافت کرده‌ام که این شخص مرده است"
 
 msgid "I have received spam due to this note."
-msgstr "به خاطر این یادداشت هرزنامه دریافت کرده ام."
+msgstr "به خاطر این یادداشت هرزنامه دریافت کرده‌ام."
 
 msgid "I have received spam."
-msgstr "من هرزنامه دریافت کرده ام."
+msgstr "هرزنامه دریافت کرده‌ام."
 
 msgid "I prefer not to specify."
-msgstr "ترجیح می دهم مشخص نکنم."
+msgstr "ترجیح می‌دهم مشخص نکنم."
 
 msgid "I'm looking for someone"
-msgstr "من بدنبال یافتن شخصی هستم"
+msgstr "من به دنبال شخصی هستم"
 
 msgid "Identify who you are looking for"
-msgstr "تعیین کنید دنبال چه کسی می گردید"
+msgstr "تعیین کنید دنبال چه کسی می‌گردید"
 
 msgid "Identify who you have information about"
 msgstr "تعیین کنید درباره چه کسی اطلاعات دارید"
@@ -722,30 +752,33 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد "
-"سابقه جدید، روی قسمت زیر کلیک کنید."
+"اگر هیچکدام از این سوابق با شخص مورد نظر شما مطابقت نداشت، می‌توانید برای"
+" ایجاد سابقه جدید، روی قسمت زیر کلیک کنید."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"اگر نویسنده این یادداشت هستید، لطفاً ایمیل خود را برای یک پیوند بررسی "
-"کنید تا تأیید کنید که می‌خواهید یادداشت‌ها را در این سابقه غیرفعال کنید. "
-"در غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست شما را تأیید "
-"کند."
+"اگر نویسنده این یادداشت هستید، لطفاً ایمیل خود را برای دریافت پیوندی "
+"بررسی کنید که از طریق آن تأیید کنید می‌خواهید یادداشت‌ها را در این سابقه "
+"غیرفعال کنید. در غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست "
+"شما را تأیید کند."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"اگر نویسنده این یادداشت هستید، لطفاً ایمیل خود را برای یک پیوند بررسی "
-"کنید تا تأیید کنید که می‌خواهید یادداشت‌ها را در این سابقه فعال کنید. در "
-"غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست شما را تأیید کند."
+"اگر نویسنده این یادداشت هستید، لطفاً ایمیل خود را برای دریافت پیوندی "
+"بررسی کنید که از طریق آن تأیید کنید می‌خواهید یادداشت‌ها را در این سابقه "
+"فعال کنید. در غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست شما"
+" را تأیید کند."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی URL آن را وارد کنید."
+msgstr ""
+"اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی اینترنتی آن را وارد "
+"کنید."
 
 msgid "Incorrect.  Try again."
 msgstr "نادرست. دوباره امتحان کنید."
@@ -754,28 +787,28 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "آدرس ایمیل نامعتبر. لطفاً دوباره امتحان کنید."
 
 msgid "Language selection"
-msgstr ""
+msgstr "انتخاب زبان"
 
 msgid "Last known location"
-msgstr "آخرین موقعیت معلوم"
+msgstr "آخرین مکان شناخته شده"
 
 msgid "Link"
 msgstr "پیوند"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "پیوند به صفحه نمایه"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
-msgstr "علامتگذاری سوابق به عنوان تکراری"
+msgstr "علامت‌گذاری سوابق به عنوان تکراری"
 
 msgid "Message (required)"
 msgstr "پیام (ضروری)"
 
 msgid "Message is required. Please go back and try again."
-msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره امتحان کنید."
 
 msgid "Missing person's current contact information"
 msgstr "اطلاعات تماس فعلی شخص گم شده"
@@ -791,15 +824,15 @@ msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"اطلاعات بیشتر برای برنامه نویسان را می توان در "
+"اطلاعات بیشتر برای برنامه‌نویسان را می‌توان در "
 "%(developers_link_html)sاینجا%(link_end_html)s پیدا کرد."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را "
-"بصورت کاملتر وارد کنید"
+"بیش از ۱۰۰ نتیجه؛ فقط ۱۰۰ مورد اول نشان داده می‌شود. سعی کنید نام را به "
+"صورت کاملتری وارد کنید"
 
 msgid "Name"
 msgstr "نام"
@@ -814,34 +847,34 @@ msgid "Neighborhood"
 msgstr "محله"
 
 msgid "No"
-msgstr "خیر"
+msgstr "نه"
 
 #, python-format
 msgid "No author email for record %(id)s."
 msgstr "ایمیل نویسنده برای سابقه %(id)s وجود ندارد."
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "پیامی که در سرویس برد پیام شرکت مخابراتی ثبت شده باشد یافت نشد."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "یادداشتی با شناسه: %(id_str)s وجود ندارد."
+msgstr "یادداشتی با این شناسه وجود ندارد: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "هیچ یادداشتی پست نشده است"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "فردی با شناسه: %(id_str)s وجود ندارد."
+msgstr "فردی با این شناسه وجود ندارد: %(id_str)s."
 
 msgid "No results found for"
-msgstr "نتیجه ای یافت نشد برای"
+msgstr "نتیجه‌ای برای این مورد یافت نشد"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "برای پست کردن یادداشت‌ها با وضعیت \"believed_dead\" مجاز نیستید."
+msgstr "‫پست کردن یادداشت‌ برای وضعیت «believed_dead» مجاز نیست."
 
 msgid "Not spam"
 msgstr "هرزنامه نیست"
@@ -850,24 +883,24 @@ msgid "Note author"
 msgstr "نویسنده یادداشت"
 
 msgid "Note text"
-msgstr ""
+msgstr "نوشتار یادداشت"
 
 msgid "Notes for this person"
 msgstr "یادداشت‌ها برای این فرد"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "عدد یا محدوده (مثلاً ۳۰-۲۰)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"یا در سایت خود به عنوان %(gadget_link_html)sاسبابک "
-"Google%(link_end_html)s اضافه کنید."
+"‫یا در سایت خود به عنوان %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s اضافه کنید."
 
 msgid "Original URL"
-msgstr "URL اصلی"
+msgstr "نشانی اینترنتی اصلی"
 
 msgid "Original author's name"
 msgstr "نام نویسنده اصلی"
@@ -879,8 +912,8 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً "
-"برگردید و دوباره سعی کنید."
+"‫تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً "
+"برگردید و دوباره امتحان کنید."
 
 msgid "Original site name"
 msgstr "نام سایت اصلی"
@@ -890,15 +923,19 @@ msgid ""
 "viewable and usable by anyone.  Google does not review or verify the "
 "accuracy of this data."
 msgstr ""
-"لطفاً توجه کنید: کلیه داده های وارد شده برای عموم در دسترس خواهند بود و "
-"همه می توانند آنها را مشاهده کرده، از آنها استفاده کنند. صحت این داده ها "
-"را Google تأیید نمی کند و آنها را تصحیح نمی نماید."
+"‫لطفاً توجه کنید: کلیه داده‌های وارد شده برای عموم در دسترس خواهند بود و "
+"همه می‌توانند آنها را مشاهده کرده، از آنها استفاده کنند. Google این "
+"داده‌ها را بازبینی نمی‌کند و صحت آنها را تأیید نمی‌نماید."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"‫لطفاً توجه کنید: در سایت‌های فعال Person Finder، کلیه داده‌های وارد شده "
+"برای عموم در دسترس خواهد بود و همه می‌توانند از آنها استفاده کنند. Google"
+" این داده‌ها را بازبینی نمی‌کند و صحت آنها را تأیید نمی‌نماید."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -915,7 +952,7 @@ msgstr "عکس"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "قالب عکسهای آپلود شده قابل تشخیص نیست. لطفاً برگردید و دوباره سعی کنید."
+msgstr "قالب عکس آپلود شده قابل تشخیص نیست. لطفاً برگردید و دوباره امتحان کنید."
 
 msgid "Physical characteristics"
 msgstr "مشخصات فیزیکی"
@@ -927,25 +964,25 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"لطفاً علامت بگذارید که بعد از زلزله با این شخص در تماس بوده اید یا قسمت "
-"\"Status of this person\" را تغییر دهید."
+"لطفاً علامت بگذارید که بعد از زلزله با این شخص در تماس بوده‌اید یا فیلد "
+"«وضعیت این شخص» را تغییر دهید."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
-"لطفاً بررسی کنید و ببینید آیا این همان شخصی است که می خواستید گزارشی در "
-"مورد او منتشر کنید."
+"لطفاً بررسی کنید و ببینید آیا این همان شخصی است که می‌خواستید گزارشی در "
+"مورد او منتشر کنید یا خیر."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس ایمیل خود را تأیید کنید تا برای به روزرسانی ها مشترک شوید"
+msgstr "لطفاً آدرس ایمیل خود را تأیید کنید تا برای به‌روزرسانی‌ها مشترک شوید"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس ایمیل خود را وارد کنید تا برای به روزرسانی ها مشترک شوید"
+msgstr "لطفاً آدرس ایمیل خود را وارد کنید تا برای به‌روزرسانی‌ها مشترک شوید"
 
 msgid "Please explain why you think these are the same person"
-msgstr "لطفاً توضیح دهید که چرا فکر می کنید اینها یک نفر هستند"
+msgstr "لطفاً توضیح دهید که چرا فکر می‌کنید اینها یک نفر هستند"
 
 msgid "Please fill in all the required fields."
-msgstr "لطفاً تمام قسمتهای لازم را پر کنید."
+msgstr "لطفاً تمام فیلدهای ضروری را پر کنید."
 
 msgid "Please fill in your email address."
 msgstr "لطفاً آدرس ایمیل خود را پر کنید."
@@ -966,20 +1003,19 @@ msgid "Proceed"
 msgstr "ادامه"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "صفحه‌های نمایه"
 
 msgid "Profile page"
-msgstr ""
+msgstr "صفحه نمایه"
 
 msgid "Provide information"
-msgstr ""
+msgstr "ارائه اطلاعات"
 
 msgid "Provide information about this person"
 msgstr "ارائه اطلاعاتی درباره این شخص"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "پست شده توسط"
+msgstr "پست شده توسط:"
 
 msgid "Province or state"
 msgstr "استان یا ایالت"
@@ -988,30 +1024,30 @@ msgid "Reason for deletion:"
 msgstr "دلیل حذف:"
 
 msgid "Reason for disabling notes:"
-msgstr "دلیل برای غیرفعال کردن یادداشت‌ها:"
+msgstr "دلیل غیرفعال کردن یادداشت‌ها:"
 
 msgid "Records Similar to"
 msgstr "سوابق شبیه به"
 
 msgid "Records selected"
-msgstr "سابقه انتخاب شد"
+msgstr "سابقه‌ها انتخاب شد"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "سوابق دارای نام و آدرس‌های مشابه با «%(query)s»"
 
 msgid "Remove"
-msgstr ""
+msgstr "حذف"
 
 msgid "Report spam"
 msgstr "گزارش هرزنامه"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "برگشت به سابقه %(full_name)s."
+msgstr "‫بازگشت به سابقه %(full_name)s."
 
 msgid "Reveal note"
-msgstr "نمایش نکته"
+msgstr "نمایش یادداشت"
 
 msgid "Save this record"
 msgstr "ذخیره این سابقه"
@@ -1024,13 +1060,13 @@ msgstr "جستجوی این شخص"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "‫برای دستورالعمل‌های بیشتر، به %(begin_tag)swiki%(end_tag)s رجوع کنید"
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "انتخاب وب‌سایتی برای افزودن یک صفحه نمایه…"
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
+msgstr "برای علامت‌گذاری سوابق به عنوان تکراری حداکثر ۳ سابقه را انتخاب کنید:"
 
 msgid "Send email"
 msgstr "ارسال ایمیل"
@@ -1045,10 +1081,10 @@ msgid "Show sensitive information"
 msgstr "نمایش اطلاعات مهم"
 
 msgid "Sign in"
-msgstr ""
+msgstr "ورود به سیستم"
 
 msgid "Sign out"
-msgstr ""
+msgstr "خروج از سیستم"
 
 msgid "Someone has received information that this person is alive"
 msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد زنده است"
@@ -1081,47 +1117,36 @@ msgid "Street name only, no number"
 msgstr "فقط نام خیابان، بدون شماره"
 
 msgid "Subscribe"
-msgstr "اشتراک"
+msgstr "مشترک شدن"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "مشترک شدن برای به روزرسانی درباره %(full_name)s"
+msgstr "‫مشترک شدن برای به‌روزرسانی درباره %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "مشترک شدن برای به روزرسانی درباره این شخص"
+msgstr "مشترک شدن برای به‌روزرسانی درباره این شخص"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "تغییر به آدرس"
 
 msgid "Switch to duplicate marking mode"
-msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
+msgstr "تغییر وضعیت به حالت علامت‌گذاری تکراری"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "تغییر به طول/عرض جغرافیایی"
 
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
 msgid "Tell us the status of this person"
-msgstr "گفتن وضعیت این شخص به ما"
+msgstr "وضعیت این شخص را به ما بگویید"
 
 msgid "Terms of Service"
-msgstr "شرایط استفاده از سرویس"
+msgstr "شرایط خدمات"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1130,38 +1155,38 @@ msgstr ""
 "کنید."
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "نام نویسنده اصلی باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+msgstr "نام نویسنده اصلی باید وارد شود. لطفاً برگردید و دوباره امتحان کنید."
 
 msgid "The author has disabled notes on this record."
 msgstr "نویسنده یادداشت‌ها را در این سابقه غیرفعال کرده است."
 
 msgid "The author has disabled status updates on this record."
-msgstr "نویسنده به روزرسانی‌های وضعیت را در این سابقه غیرفعال کرده است."
+msgstr "نویسنده به‌روزرسانی‌های وضعیت را در این سابقه غیرفعال کرده است."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "تصویر ارائه شده خیلی بزرگ است. لطفاً عکس کوچکتری آپلود کنید."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "دلیل اینکه چرا این یادداشت به عنوان هرزنامه علامتگذاری شده است:"
+msgstr "دلیل اینکه این یادداشت به عنوان هرزنامه علامت‌گذاری شده است:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "سابقه قابل تمدید نیست."
 
 msgid "The record has been deleted."
 msgstr "سابقه حذف شده است."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "‫سابقه تا تاریخ %(expiry_date)s تمدید شده است."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"وضعیتی که انتخاب کرده اید نشان می دهد که شما همین فرد هستید. اگر درست "
-"است، لطفاً \"بله\" را انتخاب کنید تا نشان دهید که با این شخص در تماس بوده"
-" اید."
+"وضعیتی که انتخاب کرده‌اید نشان می‌دهد که شما همین فرد هستید. اگر درست "
+"است، لطفاً «بله» را انتخاب کنید تا نشان دهید که با این شخص در تماس "
+"بوده‌اید."
 
 #, python-format
 msgid "The token %(token)s was invalid"
@@ -1173,13 +1198,13 @@ msgstr "کد %(token)s معتبر نبود."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "%(num_results)s سابقه با همین نامها وجود دارد."
+msgstr "%(num_results)s سابقه با نام‌های مشابه وجود دارد."
 
 msgid "There are some existing records with similar names."
-msgstr "چند سابقه با همین نام ها وجود دارد."
+msgstr "چند سابقه با نام‌های مشابه وجود دارد."
 
 msgid "There is one existing record with a similar name."
-msgstr "یک سابقه با همین نام وجود دارد."
+msgstr "سابقه‌ای با نام مشابه وجود دارد."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "پردازش تصویر با مشکل مواجه شد. لطفاً تصویر دیگری را امتحان کنید."
@@ -1189,17 +1214,17 @@ msgid ""
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
-"پردازش درخواست شما با مشکل روبرو شد. از اینکه باعث زحمت شما شدیم پوزش می "
-"خواهیم. مدیران ما منبع مشکل را بررسی می کنند، اما لطفاً چک کنید که قالب "
-"درخواست شما درست باشد."
+"پردازش درخواست شما با مشکل روبرو شد. از اینکه باعث زحمت شما شدیم پوزش "
+"می‌خواهیم. سرپرستان ما منبع مشکل را بررسی می‌کنند، اما لطفاً بررسی کنید "
+"که قالب درخواست شما درست باشد."
 
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"این اسبابک ها در %(apache_link_html)sمجوز Apache 2.0%(link_end_html)s در "
-"دسترس هستند."
+"‫این ابزارک‌ها تحت %(apache_link_html)sمجوزApache 2.0%(link_end_html)s در"
+" دسترس قرار می‌گیرند."
 
 msgid "This is a new record."
 msgstr "این سابقه جدید است."
@@ -1208,7 +1233,7 @@ msgid "This link is invalid."
 msgstr "این پیوند نامعتبر است."
 
 msgid "This note has been marked as spam."
-msgstr "این یادداشت بعنوان هرزنامه علامتگذاری شده است."
+msgstr "این یادداشت به عنوان هرزنامه علامت‌گذاری شده است."
 
 msgid "This note is inappropriate."
 msgstr "این یادداشت نامناسب است."
@@ -1225,12 +1250,11 @@ msgstr "این شخص با فردی در تماس بوده است"
 msgid "This person has posted a message"
 msgstr "این شخص پیامی پست کرده است"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "سابقه حذف شده است."
+msgstr "مدخل این فرد وجود ندارد یا حذف شده است."
 
 msgid "This record has served its purpose."
-msgstr "این سابقه شرایط لازم را دارد."
+msgstr "این سابقه کارش را انجام داده است."
 
 msgid "This record is a duplicate of"
 msgstr "این سابقه تکرار این مورد است"
@@ -1248,15 +1272,19 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"‫این محل ذخیره در حال حاضر در حالت آزمایشی است. وقتی حالت آزمایشی فعال "
+"است، سوابق مربوط به بیش از ۶ ساعت قبل حذف می‌شوند."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
+"برای پیوست یک عکس به این یادداشت، آن را آپلود کنید یا نشانی اینترنتی آن "
+"را وارد کنید."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "‫برای حذف داده‌هایتان، از رایانه خود به Person Finder وارد شوید."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "برای لغو اشتراک، این پیوند را دنبال کنید"
 
 msgid "To view or add information, select a name below."
 msgstr "برای مشاهده یا افزودن اطلاعات، نامی را در زیر انتخاب کنید."
@@ -1265,36 +1293,38 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"آدرسی را تایپ کنید یا نقشه زیر را باز کنید و با کلیک روی نقشه موقعیت "
+"مکانی را مشخص کنید."
 
 msgid "Type an address."
-msgstr ""
+msgstr "آدرسی تایپ کنید."
 
 msgid "Type the two words:"
 msgstr "این دو کلمه را تایپ کنید:"
 
 msgid "Type what you hear:"
-msgstr "آنچه را که می شنوید تایپ کنید:"
+msgstr "آنچه را که می‌شنوید تایپ کنید:"
 
 msgid "URL"
-msgstr "URL"
+msgstr "نشانی اینترنتی"
 
 msgid "URL of original record"
-msgstr "URL سابقه اصلی"
+msgstr "نشانی اینترنتی سابقه اصلی"
 
 msgid "Unspecified"
 msgstr "مشخص نشده"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "آپلود"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "‫آپلود فایل‌های CSV"
 
 msgid "View the record"
-msgstr ""
+msgstr "مشاهده سابقه"
 
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."
@@ -1303,18 +1333,20 @@ msgid "What is this person's name?"
 msgstr "نام این شخص چیست؟"
 
 msgid "When should this record disappear?"
-msgstr "این سابقه چه زمانی ناپدید شود؟"
+msgstr "این سابقه چه زمانی دیگر نشان داده نشود؟"
 
 msgid "Where did this information come from?"
-msgstr "این اطلاعات از کجا است؟"
+msgstr "این اطلاعات از کجا آمده است؟"
 
 msgid "Where is this person from?"
-msgstr "این شخص اهل کجاست؟"
+msgstr "این شخص اهل کجا است؟"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"هنگامی که حالت آزمایشی فعال است، سوابق مربوط به بیش از ۶ ساعت قبل، صرفنظر"
+" از تاریخ انقضا، حذف می‌شوند."
 
 msgid "Yes"
 msgstr "بله"
@@ -1332,7 +1364,7 @@ msgid "Yes, disable notes on this record."
 msgstr "بله، یادداشت‌ها در این سابقه غیرفعال شود."
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "بله این سابقه تمدید شود"
 
 msgid "Yes, restore this record"
 msgstr "بله، این سابقه بازیابی شود"
@@ -1341,10 +1373,10 @@ msgid "Yes, these are the same person"
 msgstr "بله، اینها یک نفر هستند"
 
 msgid "Yes, update the note"
-msgstr "بله، این یادداشت به روز شود"
+msgstr "بله، این یادداشت به‌روزرسانی شود"
 
 msgid "You are already subscribed. "
-msgstr "شما قبلاً مشترک شده اید. "
+msgstr "شما قبلاً مشترک شده‌اید. "
 
 msgid "You are already unsubscribed."
 msgstr "اشتراک شما قبلاً لغو شده است."
@@ -1354,21 +1386,23 @@ msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
 msgstr ""
+"‫در حال حاضر با %(begin_span_tag)s%(email)s%(end_span_tag)s به سیستم وارد"
+" شدید."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "در حال حاضر وارد سیستم نشده‌اید."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "‫می‌توانید قبل از حذف، %(begin_tag)sسابقه را مشاهده کنید%(end_tag)s."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
+msgstr "‫می‌توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
 
 msgid "You have successfully subscribed."
 msgstr "با موفقیت مشترک شدید."
@@ -1380,12 +1414,14 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"چون برای دریافت به‌روزرسانی‌های مربوط به شخص زیر مشترک شده‌اید این اعلان "
+"را دریافت کردید:\n"
 
 msgid "Your e-mail address"
-msgstr "نشانی ایمیل شما"
+msgstr "آدرس ایمیل شما"
 
 msgid "Your e-mail address:"
-msgstr "آدرس ایمیل شما:"
+msgstr "آدرس ایمیل شما:‏"
 
 msgid "Your email"
 msgstr "ایمیل شما"
@@ -1397,13 +1433,13 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
 msgstr ""
-"در قسمت \"About you\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی "
-"کنید."
+"در قسمت «درباره شما» نام شما باید وارد شود. لطفاً برگردید و دوباره امتحان"
+" کنید."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr "در قسمت \"Source\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+msgstr "در قسمت «منبع» نام شما باید وارد شود. لطفاً برگردید و دوباره امتحان کنید."
 
 msgid "Your phone number"
 msgstr "شماره تلفن شما"
@@ -1412,67 +1448,67 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"درخواست شما با موفقیت پردازش شده است. لطفاً صندوق دریافت خود را بررسی "
-"کرده و تأیید کنید که می‌خواهید یادداشت خود را با دنبال کردن url جاسازی "
-"شده پست کنید."
+"درخواست شما با موفقیت پردازش شده است. لطفاً صندوق ورودی خود را بررسی کنید"
+" و تأیید کنید که می‌خواهید یادداشت خود را با دنبال کردن نشانی اینترنتی "
+"جاسازی شده پست کنید."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] تأیید یادداشت شما در \"%(full_name)s\""
+msgstr "‫[Person Finder] یادداشت خود در مورد «%(full_name)s» را تایید کنید"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] اعلان حذف برای \"%(full_name)s\""
+msgstr "‫[Person Finder] اخطار حذف «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» غیرفعال شود؟"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» فعال شود؟"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] فعال کردن اعلام یادداشت‌ها برای \"%(full_name)s\""
+msgstr "‫[Person Finder] اعلان فعال‌سازی یادداشت‌ها برای «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] یادداشت‌ها اکنون برای \"%(full_name)s\" غیرفعال هستند"
+msgstr "‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» غیرفعال است"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] یادداشت‌ها اکنون در \"%(full_name)s\" فعال هستند"
+msgstr "‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» فعال است"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] اعلان بازیابی سابقه برای \"%(full_name)s\""
+msgstr "‫[Person Finder] اعلان بازیابی سابقه برای «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] به روز رسانی وضعیت برای %(full_name)s"
+msgstr "‫[Person Finder] به‌روزرسانی وضعیت برای %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] شما برای به روزرسانی های وضعیت مربوط به %(full_name)s "
-"مشترک شده اید"
+"‫[Person Finder] شما برای به‌روزرسانی‌های وضعیت مربوط به %(full_name)s "
+"مشترک شده‌اید"
 
 msgid "at"
 msgstr "در"
 
 msgid "female"
-msgstr "زن"
+msgstr "مؤنث"
 
 msgid "in test mode"
-msgstr ""
+msgstr "در حالت آزمایشی"
 
 msgid "male"
-msgstr "مرد"
+msgstr "مذکر"
 
 msgid "on"
 msgstr "در"
 
 msgid "other"
-msgstr "موارد دیگر"
+msgstr "سایر موارد"
 

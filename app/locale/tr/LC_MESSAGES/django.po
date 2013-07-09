@@ -35,9 +35,10 @@ msgstr ""
 "\n"
 "\n"
 "  Notların yalnızca kaydın sahibinin izniyle devre dışı bırakılıp "
-"etkinleştirilmesini sağlamak için, kayıt sahibine bir onay iletisi "
-"gönderilecektir. Bu kaydın sahibi sizseniz, aşağıdaki düğmeyi tıkladıktan"
-" sonra e-postanızı denetleyin.\n"
+"etkinleştirilmesini\n"
+"sağlamak için, kayıt sahibine bir onay iletisi gönderilecektir. Bu kaydın"
+" sahibi\n"
+"sizseniz, aşağıdaki düğmeyi tıkladıktan sonra posta kutunuzu denetleyin.\n"
 "\n"
 "  "
 
@@ -59,13 +60,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Sayın %(author_name)s, Bir kullanıcı şu kişiyle ilgili kayıtta notları "
-"etkinleştirme isteğinde bulundu: \"%(full_name)s\". E-posta adresiniz bu "
-"kaydın sahibi olarak belirtiliyor. Bu kayıtta notları etkinleştirmek "
+"Sayın %(author_name)s,\n"
+"\n"
+"Bir kullanıcı, şu kişiyle ilgili kayıtta notları etkinleştirme isteğinde "
+"bulundu:\n"
+"\"%(full_name)s\".\n"
+"\n"
+"E-posta adresiniz bu kaydın sahibi olarak belirtiliyor. Bu kayıtta "
+"notları etkinleştirmek\n"
 "için, 3 gün içinde şu bağlantıyı izleyin:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 "\n"
 
 #, python-format
@@ -86,10 +91,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Sayın %(author_name)s, Bir kullanıcı şu kişiyle ilgili kayıtta notları "
-"devre dışı bırakma isteğinde bulundu: \"%(full_name)s\". E-posta "
-"adresiniz bu kaydın sahibi olarak belirtiliyor. Bu kayıtta notları devre "
-"dışı bırakmak için, 3 gün içinde şu bağlantıyı izleyin:\n"
+"Sayın %(author_name)s,\n"
+"\n"
+"Bir kullanıcı, şu kişiyle ilgili kayıtta notları devre dışı bırakma "
+"isteğinde bulundu:\n"
+"\"%(full_name)s\".\n"
+"\n"
+"E-posta adresiniz bu kaydın sahibi olarak belirtiliyor. Bu kayıtta "
+"notları\n"
+"devre dışı bırakmak için, 3 gün içinde şu bağlantıyı izleyin:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -107,9 +117,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Sayın %(author_name)s, Şu kişiyle ilgili kayda az önce bir not girdiniz. "
-"\"%(full_name)s\" Notunuzu yayınlamak için, 3 gün içinde şu bağlantıyı "
-"izleyin:\n"
+"Sayın %(author_name)s,\n"
+"\"%(full_name)s\" ile ilgili kayda az önce bir not girdiniz.  \n"
+"Notunuzu yayınlamak için, 3 gün içinde şu bağlantıyı izleyin:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -121,12 +131,20 @@ msgid ""
 "%(expiration_days)s days.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Uyarı: Bu kaydın süresinin bitmesine "
+"%(expiration_days)s günden az kaldı.\n"
+"                  "
 
 msgid ""
 "\n"
 "                    Warning: this record will expire in less than a day.\n"
 "                  "
 msgstr ""
+"\n"
+"                    Uyarı: Bu kaydın süresinin bitmesine bir günden az "
+"kaldı.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -146,9 +164,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Şu kayıttaki notları devre dışı bırakmak istediğinizden emin "
-"misiniz: \"%(full_name)s\" adlı kişiye ait kayıt için süre sonu tarihini "
-"uzatmak istediğinizden emin misiniz?\n"
+"      \"%(full_name)s\" ile ilgili notları devre dışı bırakmak "
+"istediğinizden emin misiniz?\n"
 "    "
 
 #, python-format
@@ -159,9 +176,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Şu kişiyle ilgili kayıttaki notları devre dışı bırakmak "
-"istediğinizden emin misiniz: \"%(full_name)s\" adlı kişiye ait kayıt için"
-" süre sonu tarihini uzatmak istediğinizden emin misiniz?\n"
+"      \"%(full_name)s\" ile ilgili kayıtta notları devre dışı bırakmak "
+"istediğinizden emin misiniz?\n"
 "    "
 
 #, python-format
@@ -171,9 +187,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Şu kayıttaki notları etkinleştirmek istediğinizden emin "
-"misiniz?%(full_name)s\" adlı kişiye ait kayıt için süre sonu tarihini "
-"uzatmak istediğinizden emin misiniz?\n"
+"      \"%(full_name)s\" ile ilgili kayıtta notları etkinleştirmek "
+"istediğinizden emin misiniz?\n"
 "    "
 
 #, python-format
@@ -184,8 +199,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      \"%(full_name)s\" adlı kişiye ait kayıt için süre sonu tarihini "
-"uzatmak istediğinizden emin misiniz?\n"
+"      \"%(full_name)s\" ile ilgili kayıt için süre sonu tarihini uzatmak "
+"istediğinizden emin misiniz?\n"
 "    "
 
 msgid ""
@@ -204,8 +219,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Silme işlemine devam ederseniz,\n"
-"      bu kayıt artık bu sitede bulunamayacak veya görüntülenemeyecektir.\n"
+"      Silme işlemine devam ederseniz, bu kayıt artık bu sitede "
+"bulunamayacak veya görüntülenemeyecektir.\n"
 "    "
 
 #, python-format
@@ -217,6 +232,12 @@ msgid ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Kalıcı olarak silinmesini istiyorsanız,\n"
+"      lütfen orijinal kaynakla iletişime geçin.\n"
+"      Orijinal kaydı şu adresten görebilirsiniz:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
 
 #, python-format
 msgid ""
@@ -228,6 +249,12 @@ msgid ""
 "      that URL here.\n"
 "      "
 msgstr ""
+"\n"
+"      Girdiğiniz URL geçerli bir %(website)s profil URL'sine benzemiyor.\n"
+"      Lütfen bu kişinin %(website)s adresindeki profil sayfasına gidin, "
+"ardından o\n"
+"      URL'yi kopyalayıp buraya yapıştırın.\n"
+"      "
 
 msgid ""
 "\n"
@@ -238,6 +265,12 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"      Bu kayıt, başka bir kaynağa ait kaydın kopyası.\n"
+"      Kaydı buradan silebilirsiniz,\n"
+"      ancak daha sonra orijinal\n"
+"      kaynaktan başka bir kopyasını alabileceğimizi lütfen unutmayın.\n"
+"    "
 
 msgid ""
 "\n"
@@ -251,9 +284,10 @@ msgid ""
 msgstr ""
 "\n"
 "    Notların yalnızca kaydın sahibinin izniyle devre dışı bırakılıp "
-"etkinleştirilmesini sağlamak için, kayıt sahibine bir onay iletisi "
-"gönderilecektir. Bu kaydın sahibi sizseniz, aşağıdaki düğmeyi tıkladıktan"
-" sonra e-postanızı denetleyin.\n"
+"etkinleştirilmesini\n"
+"sağlamak için, kayıt sahibine bir onay iletisi gönderilecektir. Bu kaydın"
+" sahibi\n"
+"sizseniz, aşağıdaki düğmeyi tıkladıktan sonra posta kutunuzu denetleyin.\n"
 "  "
 
 msgid ""
@@ -264,7 +298,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Kayıt sitede görünür olmaya devam edecek, ancak kimse bu kayıt için "
+"  Kayıt sitede görünür olmaya devam edecek, ancak kimse bu kayıt için\n"
 "başka not yayınlayamayacak.\n"
 "  "
 
@@ -277,7 +311,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Notunuzu yayınlamak için lütfen e-posta adresinizi aşağıya girin ve "
-"e-posta ile alacağınız onay bağlantısını izleyin.\n"
+"e-posta\n"
+"ile alacağınız onay bağlantısını izleyin.\n"
 "  "
 
 #, python-format
@@ -290,12 +325,12 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Bir kullanıcı \"%(full_name)s\"\n"
-"kaydını %(site_url)s konumundan silmiş.\n"
+"Bir kullanıcı \"%(site_url)s\" adresindeki\n"
+"%(full_name)s ile ilgili kaydı sildi.\n"
 "\n"
-"Bu kayıtla ilgili bir notun yazarı olarak sizin e-posta adresiniz\n"
-"kayıtlı olduğundan silme işlemi ile ilgili bu bildirimi size "
-"gönderiyoruz.\n"
+"Bu kayıtla ilgili bir notun yazarı olarak sizin e-posta adresiniz kayıtlı"
+"\n"
+"olduğundan silme işlemi ile ilgili bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -307,9 +342,12 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Bir kullanıcı, \"%(full_name)s\" adlı kişinin %(site_url)s sitesindeki "
-"kaydını sildi. E-posta adresiniz, söz konusu kaydın yazarı olarak "
-"belirtildiğinden, bu silme işlemini size bildiriyoruz.\n"
+"Bir kullanıcı, \"%(site_url)s\" adresindeki\n"
+"%(full_name)s ile ilgili kaydı sildi.\n"
+"\n"
+"Bu kaydın yazarı olarak sizin e-posta adresiniz kayıtlı olduğundan silme "
+"işlemi\n"
+"ile ilgili bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -318,7 +356,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"Kayıt, %(days_until_deletion)s gün sonra kalıcı olarak silinecek.\n"
+"%(days_until_deletion)s gün sonra kayıt kalıcı olarak silinecek.\n"
 
 #, python-format
 msgid ""
@@ -330,7 +368,7 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"NOT: Bu kaydın hata sonucu silindiğine inanıyorsanız, önümüzdeki "
+"NOT: Bu kaydın hata sonucu silindiğine inanıyorsanız, önümüzdeki\n"
 "%(days_until_deletion)s gün içinde şu bağlantıyı izleyerek kaydı geri "
 "yükleyebilirsiniz:\n"
 "\n"
@@ -349,13 +387,15 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Şu kişiyle ilgili kayıttaki notlar artık devre dışı bırakıldı: "
-"\"%(full_name)s\". Kaydı görüntülemek için şu bağlantıyı ziyaret edin:\n"
+"%(full_name)s ile ilgili kayıttaki notlar artık devre dışı bırakıldı. "
+"Kaydı görüntülemek\n"
+"için şu bağlantıyı ziyaret edin:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "E-posta adresiniz bu kişi kaydıyla veya kayıttaki bir notla ilişkili "
-"olduğundan size bildirim gönderdik.\n"
+"olduğundan\n"
+"bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -370,13 +410,15 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Şu kişiyle ilgili kayıttaki notlar artık etkinleştirildi: "
-"\"%(full_name)s\". Kaydı görüntülemek için şu bağlantıyı ziyaret edin:\n"
+"%(full_name)s ile ilgili kayıttaki notlar artık etkinleştirildi. Kaydı "
+"görüntülemek\n"
+"için şu bağlantıyı ziyaret edin:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "E-posta adresiniz bu kişi kaydıyla veya kayıttaki bir notla ilişkili "
-"olduğundan size bildirim gönderdik.\n"
+"olduğundan\n"
+"bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -391,15 +433,15 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Daha önce silinen \"%(full_name)s\" kaydının yazarı\n"
-"kaydı geri yükledi. Kaydı görüntülemek için şu\n"
-"bağlantıyı izleyin:\n"
+"\"%(full_name)s\" ile ilgili daha önce silinen kaydın yazarı, kaydı geri "
+"yükledi.\n"
+"Kaydı görüntülemek için şu bağlantıyı izleyin:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "E-posta adresiniz bu kişi kaydıyla veya kayıttaki bir notla "
-"ilişkilendirilmiş olduğundan \n"
-"size bu bildirimi gönderiyoruz.\n"
+"ilişkilendirilmiş\n"
+"olduğundan bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -407,7 +449,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Şu kişiyle ilgili kayıtta yeni bir not var: \"%(full_name)s\".\n"
+"%(full_name)s ile ilgili kayıtta yeni bir not var.\n"
 
 #, python-format
 msgid ""
@@ -421,8 +463,9 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Şu kayıttaki notlara abone oldunuz: \"%(full_name)s\". Bu kaydı şu "
-"adreste görüntüleyebilirsiniz:\n"
+"\"%(full_name)s\" ilgili notlara abone oldunuz\n"
+"\n"
+"Bu kaydı şu adreste görüntüleyebilirsiniz:\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -435,13 +478,13 @@ msgid "(unknown)"
 msgstr "(bilinmiyor)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
+msgstr "Bu kişi için veya bu kişiyi arayan diğer kişiler için bir mesaj"
 
 msgid "A new API key has been created successfully."
-msgstr ""
+msgstr "A new API key has been created successfully."
 
 msgid "API Key Management"
-msgstr ""
+msgstr "API Key Management"
 
 msgid "About 1 month (30 days) from now"
 msgstr "Bugünden itibaren yaklaşık 1 ay (30 gün)"
@@ -459,7 +502,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Bugünden itibaren yaklaşık 6 ay (180 gün)"
 
 msgid "About Google Person Finder"
-msgstr ""
+msgstr "Google Kişi Bulucu Hakkında"
 
 msgid "About you (required)"
 msgstr "Hakkınızda (zorunlu)"
@@ -492,16 +535,16 @@ msgid "Atom feed of updates about this person"
 msgstr "Bu kişi hakkında atom güncelleme özet akışı"
 
 msgid "Author's e-mail address"
-msgstr "Oluşturanın e-posta adresi"
+msgstr "Yazan kişinin e-posta adresi"
 
 msgid "Author's name"
-msgstr "Oluşturanın adı"
+msgstr "Yazan kişinin adı"
 
 msgid "Author's phone number"
-msgstr "Oluşturanın telefon numarası"
+msgstr "Yazan kişinin telefon numarası"
 
 msgid "Authorization key"
-msgstr ""
+msgstr "Yetkilendirme anahtarı"
 
 msgid "Back to results list"
 msgstr "Sonuç listesine dön"
@@ -510,11 +553,11 @@ msgid "Back to start"
 msgstr "Başa dön"
 
 msgid "CSV file"
-msgstr ""
+msgstr "CSV dosyası"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Şu kimliğe sahip not bulunamıyor: %(id)s"
+msgstr "%(id)s kimliğine sahip not bulunamıyor"
 
 msgid "Cancel"
 msgstr "İptal"
@@ -535,19 +578,19 @@ msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Bu aracı sitenize koymak için aşağıdaki HTML kodunu kopyalayıp yapıştırın"
 
 msgid "Create a new API key"
-msgstr ""
+msgstr "Create a new API key"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Yeni kayıt oluştur"
 
 msgid "Create a new record for"
-msgstr "Şunun için yeni bir kayıt oluştur: "
+msgstr "Şunun için yeni bir kayıt oluştur:"
 
 msgid "Create a new record for a missing person"
 msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "Kriz etkinlikleri"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -569,10 +612,10 @@ msgid "Describe the physical characteristics of this person."
 msgstr "Bu kişinin fiziksel özelliklerini tanımlayın."
 
 msgid "Description"
-msgstr "açıklama"
+msgstr "Açıklama"
 
 msgid "Desktop version"
-msgstr ""
+msgstr "Masaüstü sürümü"
 
 msgid "Developers"
 msgstr "Geliştiriciler"
@@ -581,7 +624,7 @@ msgid "Disable notes on this record"
 msgstr "Bu kayıttaki notları devre dışı bırak"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Bu kişinin başka Web sitelerinde profil sayfaları var mı?"
 
 msgid "Download the sound as MP3"
 msgstr "Sesi MP3 olarak indir"
@@ -593,16 +636,18 @@ msgid "E-mail address"
 msgstr "E-posta adresi"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 msgid "Embedding the Application"
-msgstr "Uygulamayı Katıştırma"
+msgstr "Uygulamayı Yerleştirme"
 
 msgid "Enable notes on this record"
 msgstr "Bu kayıttaki notları etkinleştir"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
 msgstr ""
+"Tüm tarihlerin yyyy-aa-ggTss:dd:ssZ biçiminde ve UTC zamanına göre "
+"olduğundan emin olun"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-AA-GG olarak girin"
@@ -620,14 +665,14 @@ msgid "Enter the person's name."
 msgstr "Kişinin adını girin."
 
 msgid "Expiry"
-msgstr "Son tarih"
+msgstr "Süre sonu tarihi"
 
 msgid "Expiry date of this record"
-msgstr "Bu kaydın son tarihi"
+msgstr "Bu kaydın süre sonu tarihi"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
+msgstr "Süre sonu tarihini %(extension_days)s gün uzat"
 
 msgid "Family name"
 msgstr "Soyadı"
@@ -646,7 +691,7 @@ msgstr ""
 "hizmetini kullanın."
 
 msgid "Full name"
-msgstr ""
+msgstr "Tam ad"
 
 msgid "Get a new challenge"
 msgstr "Yeni bir soru al"
@@ -672,6 +717,8 @@ msgstr "Yardım"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
+"İşte düzenleyip yükleyebileceğiniz %(begin_tag)sörnek bir CSV "
+"dosyası%(end_tag)s"
 
 msgid "Hide Map"
 msgstr "Haritayı Gizle"
@@ -731,7 +778,7 @@ msgid "I'm looking for someone"
 msgstr "Birisini arıyorum"
 
 msgid "Identify who you are looking for"
-msgstr "Kimi aradığınızı tanımlayın"
+msgstr "Aradığınız kişiyi tanımlayın"
 
 msgid "Identify who you have information about"
 msgstr "Kimin hakkında bilgi sahibi olduğunuzu tanımlayın"
@@ -774,19 +821,19 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "Geçersiz e-posta adresi. Lütfen tekrar deneyin."
 
 msgid "Language selection"
-msgstr ""
+msgstr "Dil seçimi"
 
 msgid "Last known location"
 msgstr "Bilinen son konumu"
 
 msgid "Link"
-msgstr "Bağlantı"
+msgstr "Bağlantı oluştur"
 
 msgid "Link to profile page"
-msgstr ""
+msgstr "Profil sayfasına bağlantı oluştur"
 
 msgid "List API keys"
-msgstr ""
+msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
@@ -822,7 +869,7 @@ msgstr ""
 "daha fazla bilgi girmeyi deneyin"
 
 msgid "Name"
-msgstr "Adı"
+msgstr "Ad"
 
 msgid "Name (required)"
 msgstr "Ad (zorunlu)"
@@ -838,27 +885,27 @@ msgstr "Hayır"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "Şu kaydın sahibinin e-posta bilgisi yok: %(id)starihine kadar uzatıldı."
+msgstr "%(id)s kaydına ilişkin yazar e-posta bilgisi yok."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Operatörün mesaj panosu hizmetine kayıtlı herhangi bir mesaj bulunamadı."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "Şu kimliğe sahip not yok: %(id_str)starihine kadar uzatıldı."
+msgstr "Şu kimliğe sahip hiç not yok: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Hiç not yayınlanmadı"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "Şu kimliğe sahip hiç kişi yok: %(id_str)starihine kadar uzatıldı."
+msgstr "Şu kimliğe sahip hiç kimse yok: %(id_str)s."
 
 msgid "No results found for"
 msgstr "Şu arama için sonuç bulunamadı"
 
 msgid "No such Authorization entity."
-msgstr ""
+msgstr "No such Authorization entity."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Durumu \"believed_dead\" olan notları yayınlama yetkiniz yok."
@@ -883,8 +930,8 @@ msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"Veya sitenize bir %(gadget_link_html)sGoogle Gadget%(link_end_html)s "
-"olarak ekleyin."
+"Sitenize bir %(gadget_link_html)sGoogle Gadget%(link_end_html)s olarak da"
+" ekleyebilirsiniz."
 
 msgid "Original URL"
 msgstr "Orijinal URL"
@@ -899,7 +946,7 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"Orijinal gönderi tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
+"Orijinal yayın tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
 "tarih belirtildi. Lütfen geri dönün ve yeniden deneyin."
 
 msgid "Original site name"
@@ -914,11 +961,15 @@ msgstr ""
 "tarafından görüntülenip kullanılabilecektir. Google, bu verileri "
 "incelemez veya bu verilerin doğruluğunu onaylamaz."
 
+#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
+"LÜTFEN UNUTMAYIN: Etkin durumda olan Kişi Bulucu sitelerinde, girilen tüm"
+" veriler herkes tarafından görülebilir ve kullanılabilir. Google bu "
+"verilerin doğruluğu konusunda hiçbir inceleme veya denetim işlemi yapmaz."
 
 msgid "Person Finder"
 msgstr "Kişi Bulucu"
@@ -936,7 +987,7 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Yüklenen fotoğraf tanınmayan bir biçimde. Lütfen geri dönün ve yeniden "
+"Yüklenen fotoğrafın biçimi tanınmıyor. Lütfen geri dönün ve yeniden "
 "deneyin."
 
 msgid "Physical characteristics"
@@ -988,13 +1039,13 @@ msgid "Proceed"
 msgstr "İlerle"
 
 msgid "Profile Pages"
-msgstr ""
+msgstr "Profil Sayfaları"
 
 msgid "Profile page"
-msgstr ""
+msgstr "Profil sayfası"
 
 msgid "Provide information"
-msgstr ""
+msgstr "Bilgi sağlayın"
 
 msgid "Provide information about this person"
 msgstr "Bu kişiyle ilgili bilgi sağlayın"
@@ -1015,21 +1066,21 @@ msgid "Records Similar to"
 msgstr "Benzer Kayıtlar:"
 
 msgid "Records selected"
-msgstr "kayıt seçildi"
+msgstr "Kayıt seçildi"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Ad ve adres bilgileri şu sorguyla eşleşen kayıtlar: \"%(query)s\""
+msgstr "Ad ve adres bilgileri \"%(query)s\" sorgusuyla eşleşen kayıtlar:"
 
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 msgid "Report spam"
 msgstr "Spam bildir"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "%(full_name)s kaydına geri dönün."
+msgstr "%(full_name)s ile ilgili kayda geri dönün."
 
 msgid "Reveal note"
 msgstr "Notu göster"
@@ -1045,10 +1096,10 @@ msgstr "Bu kişiyi ara"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr ""
+msgstr "Daha fazla talimat için %(begin_tag)swiki%(end_tag)s'ye bakın."
 
 msgid "Select a website to add a profile page..."
-msgstr ""
+msgstr "Profil sayfası eklemek üzere bir Web sitesi seçin..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
@@ -1063,13 +1114,13 @@ msgid "Show Map"
 msgstr "Haritayı Göster"
 
 msgid "Show sensitive information"
-msgstr "Önemli bilgileri göster"
+msgstr "Hassas bilgileri göster"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Oturum aç"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Çıkış yap"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Birisi, bu kişinin yaşadığına dair bilgi aldı"
@@ -1084,7 +1135,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Birisi bu kişi hakkında bilgi arıyor"
 
 msgid "Source of this record"
-msgstr "Bu kaynağın kaydı"
+msgstr "Bu kaydın kaynağı"
 
 msgid "Source of this record (required)"
 msgstr "Bu kaydın kaynağı (zorunlu)"
@@ -1112,13 +1163,13 @@ msgid "Subscribe to updates about this person"
 msgstr "Bu kişi hakkındaki güncellemelere abone ol"
 
 msgid "Switch to address"
-msgstr ""
+msgstr "Adres değiştir"
 
 msgid "Switch to duplicate marking mode"
 msgstr "Yinelenen işaretleme moduna geç"
 
 msgid "Switch to lat/long"
-msgstr ""
+msgstr "Enl./boyl. değiştir"
 
 msgid "Switch to normal view mode"
 msgstr "Normal görünüm moduna geç"
@@ -1130,19 +1181,8 @@ msgid "Terms of Service"
 msgstr "Hizmet Şartları"
 
 msgid "The API key has been updated successfully."
-msgstr ""
+msgstr "The API key has been updated successfully."
 
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
@@ -1166,14 +1206,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Bu notun spam olarak işaretlenme nedeni:"
 
 msgid "The record cannot be extended."
-msgstr "Kayıt uzatılamaz."
+msgstr "Kaydın süre sonu uzatılamıyor."
 
 msgid "The record has been deleted."
 msgstr "Kayıt silindi."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr "Kayıt %(expiry_date)starihine kadar uzatıldı."
+msgstr "Kayıt %(expiry_date)s tarihine kadar uzatıldı."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1185,11 +1225,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr "Jeton %(token)s geçersizdi"
+msgstr "%(token)s jetonu geçersizdi"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr "Jeton %(token)s geçersizdi."
+msgstr "%(token)s jetonu geçersizdi."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1267,15 +1307,17 @@ msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
+"Bu veri havuzu şu anda test ediliyor. Test modundayken 6 saatten daha "
+"eski kayıtlar silinir."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "Bu nota bir fotoğraf eklemek için fotoğrafı yükleyin veya URL'sini girin."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
+msgstr "Verilerinizi silmek için masaüstünüzden Kişi Bulucu'ya erişin."
 
 msgid "To unsubscribe, follow this link"
-msgstr "Abonelikten çıkmak için şu bağlantıyı izleyin:"
+msgstr "Abonelikten çıkmak için bu bağlantıyı izleyin"
 
 msgid "To view or add information, select a name below."
 msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
@@ -1284,9 +1326,11 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
+"Bir adres yazın veya aşağıdan haritayı açıp haritaya tıklayarak konumu "
+"belirtin."
 
 msgid "Type an address."
-msgstr ""
+msgstr "Bir adres yazın."
 
 msgid "Type the two words:"
 msgstr "İki kelimeyi yazın:"
@@ -1301,22 +1345,22 @@ msgid "URL of original record"
 msgstr "Orijinal kaydın URL'si"
 
 msgid "Unspecified"
-msgstr "Belirtilmemiş"
+msgstr "Belirtilmedi"
 
 msgid "Update an existing key"
-msgstr ""
+msgstr "Update an existing key"
 
 msgid "Upload"
 msgstr "Yükle"
 
 msgid "Upload CSV files"
-msgstr ""
+msgstr "CSV dosyaları yükle"
 
 msgid "View the record"
 msgstr "Kaydı görüntüle"
 
 msgid "We have nothing matching your search."
-msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
+msgstr "Aramanızla eşleşen hiçbir bilgi yok."
 
 msgid "What is this person's name?"
 msgstr "Bu kişinin adı nedir?"
@@ -1334,6 +1378,8 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
+"Test modundayken, 6 saatten daha eski kayıtlar son tarihleri ne olursa "
+"olsun silinir."
 
 msgid "Yes"
 msgstr "Evet"
@@ -1351,7 +1397,7 @@ msgid "Yes, disable notes on this record."
 msgstr "Evet, bu kayıtta notları devre dışı bırak."
 
 msgid "Yes, extend the record"
-msgstr "Evet, kaydı uzat"
+msgstr "Evet, kaydın süre sonunu uzat"
 
 msgid "Yes, restore this record"
 msgstr "Evet, bu kaydı geri yükle"
@@ -1372,22 +1418,22 @@ msgstr "Abonelikten zaten çıktınız."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
+msgstr "Şu anda %(begin_span_tag)s%(email)s%(end_span_tag)s olarak oturum açtınız."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr ""
+msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr ""
+msgstr "Şu anda oturum açmış değilsiniz."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
+msgstr "Silmeden önce %(begin_tag)skaydı görüntüleyebilirsiniz%(end_tag)s."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Buradan kaydın tümünü görüntüleyebilirsiniz: %(view_url)s"
+msgstr "%(view_url)s adresinden kaydın tümünü görüntüleyebilirsiniz"
 
 msgid "You have successfully subscribed."
 msgstr "Başarıyla abone oldunuz."
@@ -1436,12 +1482,12 @@ msgid ""
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
 "İsteğiniz başarılı bir şekilde işleme kondu. Lütfen gelen kutunuzu "
-"denetleyin ve iletideki gömülü url'yi izleyerek notunuzu yayınlamak "
-"istediğinizi onaylayın."
+"denetleyin ve iletiye yerleştirilmiş URL'yi izleyerek notunuzu yayınlamak"
+" istediğinizi onaylayın."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Şu kayıttaki notunuzu onaylayın: \"%(full_name)s\""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" ile ilgili notunuzu onaylayın"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
@@ -1450,34 +1496,32 @@ msgstr "[Kişi Bulucu] \"%(full_name)s\" ile ilgili silme bildirimi"
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
 msgstr ""
+"[Kişi Bulucu] \"%(full_name)s\" ile ilgili notlar devre dışı bırakılsın "
+"mı?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr ""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" ile ilgili notlar etkinleştirilsin mi?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Şu kayıt için notlar etkinleştiriliyor: \"%(full_name)s\""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" için notlar etkinleştiriliyor"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Şu kayıt için notlar artık devre dışı bırakıldı: "
-"\"%(full_name)s\""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" için notlar artık devre dışı bırakıldı"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Şu kayıttaki notlar artık etkinleştirildi: "
-"\"%(full_name)s\""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" için notlar artık etkinleştirildi"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Kişi Bulucu] \"%(full_name)s\" ile ilgili kayıt geri yükleme bildirimi"
+msgstr "[Kişi Bulucu] \"%(full_name)s\" için kayıt geri yükleme bildirimi"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Kişi Bulucu] %(full_name)s ile ilgili durum güncellemesi"
+msgstr "[Kişi Bulucu] %(full_name)s için durum güncellemesi"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
@@ -1492,13 +1536,13 @@ msgid "female"
 msgstr "kadın"
 
 msgid "in test mode"
-msgstr ""
+msgstr "test modunda"
 
 msgid "male"
 msgstr "erkek"
 
 msgid "on"
-msgstr "tarih:"
+msgstr "/"
 
 msgid "other"
 msgstr "diğer"

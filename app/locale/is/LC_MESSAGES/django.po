@@ -1,0 +1,1559 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Til að tryggja að athugasemdir séu eingöngu virkar eða óvirkar með "
+"heimild\n"
+"  höfundar færslunnar fær höfundur færslunnar sent staðfestingarskeyti.\n"
+"  Ef þú ert höfundurinn skaltu athuga tölvupóstinn þinn eftir að hafa "
+"smellt\n"
+"  á hnappinn hér að neðan.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kæri/kæra %(author_name)s.\n"
+"\n"
+"Notandi hefur farið fram á að athugasemdir verði gerðar virkar við "
+"færsluna fyrir\n"
+"„%(full_name)s“.\n"
+"\n"
+"Netfangið þitt er skráð sem höfundur þessarar færslu. Til að gera "
+"athugasemdir\n"
+"virkar við þessa færslu skaltu opna þennan tengil innan þriggja daga:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kæri/kæra %(author_name)s.\n"
+"\n"
+"Notandi hefur farið fram á að athugasemdir verði gerðar óvirkar við "
+"færsluna fyrir\n"
+"„%(full_name)s“.\n"
+"\n"
+"Netfangið þitt er skráð sem höfundur þessarar færslu. Til að gera "
+"athugasemdir\n"
+"óvirkar við þessa færslu skaltu opna þennan tengil innan þriggja daga:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kæri/kæra %(author_name)s.\n"
+"Þú skrifaðir athugasemd við færsluna fyrir „%(full_name)s“.  \n"
+"Til að birta athugasemdina skaltu opna þennan tengil innan þriggja daga:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Viðvörun: Þessi færsla rennur út innan "
+"%(expiration_days)s daga.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Viðvörun: Þessi færsla rennur út innan sólarhrings.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ertu viss um að þú viljir eyða færslunni fyrir „%(full_name)s“?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ertu viss um að þú viljir gera athugasemdir óvirkar við "
+"„%(full_name)s“?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ertu viss um að þú viljir gera athugasemdir óvirkar við færsluna "
+"fyrir „%(full_name)s“?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ertu viss um að þú viljir gera athugasemdir virkar við "
+"„%(full_name)s“?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ertu viss um að þú viljir lengja fyrningartíma færslunnar "
+"„%(full_name)s“?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Staðfestu athugasemdina\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Ef þú eyðir færslunni\n"
+"      verður ekki lengur hægt að leita að henni eða skoða hana á þessu "
+"vefsvæði.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Ef þú vilt eyða henni fyrir fullt og allt\n"
+"      skaltu hafa samband við upprunalegan höfund.\n"
+"      Þú getur skoðað upphaflegu færsluna á\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Slóðin sem þú slóst inn virðist ekki vera gild vefslóð %(website)s "
+"prófíls.\n"
+"      Opnaðu prófílsíðu viðkomandi á %(website)s og afritaðu síðan og "
+"límdu\n"
+"      þá vefslóð hingað.\n"
+"      "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Þessi færsla er afrit af færslu annars staðar frá.\n"
+"      Þú getur eytt færslunni hér\n"
+"      en hafðu í huga að\n"
+"      við gætum síðar fengið annað eintak af henni frá upprunastaðnum.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Til að tryggja að athugasemdir séu eingöngu virkar eða óvirkar með "
+"heimild\n"
+"    höfundar færslunnar fær höfundur færslunnar sent staðfestingarskeyti."
+"\n"
+"    Ef þú ert höfundurinn skaltu athuga tölvupóstinn þinn eftir að hafa "
+"smellt\n"
+"    á hnappinn hér að neðan.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Færslan verður áfram sýnileg á vefsvæðinu en ekki verður hægt að skrifa"
+"\n"
+"  frekari athugasemdir við hana.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Til að birta færsluna skaltu skrá netfangið þitt hér að neðan og opna\n"
+"  staðfestingartengilinn sem þú færð sendan.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Notandi eyddi færslunni fyrir „%(full_name)s“\n"
+"á %(site_url)s.\n"
+"\n"
+"Við tilkynnum þér um þessa eyðingu vegna þess að netfangið þitt er\n"
+"skráð sem höfundur athugasemdar við þessa færslu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Notandi eyddi færslunni fyrir „%(full_name)s“\n"
+"á %(site_url)s.\n"
+"\n"
+"Við tilkynnum þér um þessa eyðingu vegna þess að netfangið þitt er\n"
+"skráð sem höfundur þessarar færslu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Eftir %(days_until_deletion)s daga verður færslunni eytt fyrir fullt og "
+"allt.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"ATH.: Ef þú telur að þessari færslu hafi verið eytt fyrir mistök geturðu\n"
+"endurheimt hana með því að opna þennan tengil innan næstu "
+"%(days_until_deletion)s daga:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Athugasemdir eru nú óvirkar við færsluna fyrir „%(full_name)s“. Til að "
+"skoða færsluna\n"
+"skaltu opna þennan tengil:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Við sendum þér tilkynningu vegna þess að netfangið þitt er tengt þessari\n"
+"persónufærslu eða athugasemd við færsluna.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Athugasemdir eru nú virkar við færsluna fyrir „%(full_name)s“. Til að "
+"skoða færsluna\n"
+"skaltu opna þennan tengil:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Við sendum þér tilkynningu vegna þess að netfangið þitt er tengt þessari\n"
+"persónufærslu eða athugasemd við færsluna.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Höfundur færslunnar fyrir „%(full_name)s“\n"
+"(sem var áður eytt) hefur endurheimt færsluna. Til að skoða\n"
+"færsluna skaltu opna þennan tengil:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Við sendum þér tilkynningu vegna þess að netfangið þitt er tengt þessari\n"
+"persónufærslu eða athugasemd við færsluna.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Ný athugasemd er við færsluna fyrir „%(full_name)s“.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Þú hefur gerst áskrifandi að athugasemdum við „%(full_name)s“.\n"
+"\n"
+"Þú getur skoðað þessa færslu á\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Opnaðu þennan tengil til að segja upp áskriftinni: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(smelltu til að sýna)"
+
+msgid "(unknown)"
+msgstr "(óþekkt)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Skilaboð til þessarar manneskju eða annarra sem leita að henni"
+
+msgid "A new API key has been created successfully."
+msgstr "A new API key has been created successfully."
+
+msgid "API Key Management"
+msgstr "API Key Management"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Eftir u.þ.b. einn mánuð (30 daga)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Eftir u.þ.b. eitt ár (360 daga)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Eftir u.þ.b. tvo mánuði (60 daga)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Eftir u.þ.b. þrjá mánuði (90 daga)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Eftir u.þ.b. sex mánuði (180 daga)"
+
+msgid "About Google Person Finder"
+msgstr "Um Google persónuleit"
+
+msgid "About you (required)"
+msgstr "Um þig (nauðsynlegt)"
+
+msgid "Administration"
+msgstr "Stjórnun"
+
+msgid "Age"
+msgstr "Aldur"
+
+msgid "Alternate family names"
+msgstr "Önnur ættarnöfn"
+
+msgid "Alternate given names"
+msgstr "Önnur eiginnöfn"
+
+msgid "Alternate names"
+msgstr "Önnur nöfn"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Ertu viss um að þessi athugasemd sé ekki rusl?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem rusl?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Ertu viss um að þú viljir endurheimta þessa færslu sem var eytt?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Atom-straumur með fréttum af þessari manneskju"
+
+msgid "Author's e-mail address"
+msgstr "Netfang höfundar"
+
+msgid "Author's name"
+msgstr "Nafn höfundar"
+
+msgid "Author's phone number"
+msgstr "Símanúmer höfundar"
+
+msgid "Authorization key"
+msgstr "Sannvottunarlykill"
+
+msgid "Back to results list"
+msgstr "Til baka í niðurstöðulista"
+
+msgid "Back to start"
+msgstr "Til baka á byrjun"
+
+msgid "CSV file"
+msgstr "CSV-skrá"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Athugasemd með auðkennið %(id)s finnst ekki"
+
+msgid "Cancel"
+msgstr "Hætta við"
+
+msgid "City"
+msgstr "Borg/bær"
+
+msgid "Click here to view results."
+msgstr "Smelltu hér til að sjá niðurstöður."
+
+msgid "Close window"
+msgstr "Loka glugga"
+
+msgid "Compare these records"
+msgstr "Bera þessar færslur saman"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Afritaðu og límdu eftirfarandi HTML-kóða til að setja þetta tól á "
+"vefsvæðið þitt"
+
+msgid "Create a new API key"
+msgstr "Create a new API key"
+
+msgid "Create a new record"
+msgstr "Búa til nýja færslu"
+
+msgid "Create a new record for"
+msgstr "Búa til nýja færslu fyrir"
+
+msgid "Create a new record for a missing person"
+msgstr "Búa til nýja færslu fyrir týnda manneskju"
+
+msgid "Crisis events"
+msgstr "Neyðartilvik"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Fylgist sem stendur með u.þ.b. %(num_people)s færslum."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Dagsetning má ekki vera í framtíðinni. Farðu til baka og reyndu aftur."
+
+msgid "Date of birth"
+msgstr "Fæðingardagur"
+
+msgid "Delete this record"
+msgstr "Eyða þessari færslu"
+
+msgid "Describe how to identify this person."
+msgstr "Lýstu hvernig bera má kennsl á þessa manneskju."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Lýstu líkamlegum einkennum þessarar manneskju."
+
+msgid "Description"
+msgstr "Lýsing"
+
+msgid "Desktop version"
+msgstr "Tölvuútgáfa"
+
+msgid "Developers"
+msgstr "Forritarar"
+
+msgid "Disable notes on this record"
+msgstr "Gera athugasemdir við færsluna óvirkar"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Er þessi manneskja með prófílsíður á öðrum vefsvæðum?"
+
+msgid "Download the sound as MP3"
+msgstr "Sækja hljóðið sem MP3"
+
+msgid "E-mail"
+msgstr "Tölvupóstur"
+
+msgid "E-mail address"
+msgstr "Netfang"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Embedding the Application"
+msgstr "Forritið fellt inn"
+
+msgid "Enable notes on this record"
+msgstr "Gera athugasemdir við færsluna virkar"
+
+msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr ""
+"Gakktu úr skugga um að allar dagsetningar séu á sniðinu áááá-mm-"
+"ddTkk:mm:ssZ í UTC-tímabeltinu"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Færðu inn sem ÁÁÁÁ-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Færðu inn eiginnöfn og ættarnafn manneskjunnar."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Færðu inn nafn manneskjunnar eða hluta nafnsins."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Færðu inn nafn manneskjunnar, hluta nafnsins eða farsímanúmer."
+
+msgid "Enter the person's name."
+msgstr "Færðu inn nafn manneskjunnar."
+
+msgid "Expiry"
+msgstr "Rennur út"
+
+msgid "Expiry date of this record"
+msgstr "Fyrningardagsetning þessarar færslu"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Lengja fyrningardagsetningu um %(extension_days)s daga"
+
+msgid "Family name"
+msgstr "Ættarnafn"
+
+msgid "Feed of updates about this person"
+msgstr "Straumur með fréttum af þessari manneskju"
+
+msgid "Follow this link to create a new record"
+msgstr "Opnaðu þennan tengil til að búa til nýja færslu"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Fyrir síma sem ekki eru farsímar skaltu nota 171-þjónustuna sem NTT býður"
+" upp á."
+
+msgid "Full name"
+msgstr "Fullt nafn"
+
+msgid "Get a new challenge"
+msgstr "Fá nýtt próf"
+
+msgid "Get a visual challenge"
+msgstr "Fá myndrænt próf"
+
+msgid "Get an audio challenge"
+msgstr "Fá hljóðpróf"
+
+msgid "Given name"
+msgstr "Eiginnafn"
+
+msgid "Google Person Finder"
+msgstr "Google persónuleit"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Hefur þú talað persónulega við þessa manneskju EFTIR hamfarirnar? "
+"(nauðsynlegt)"
+
+msgid "Help"
+msgstr "Hjálp"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Hér er %(begin_tag)sdæmi um CSV-skrá%(end_tag)s sem þú getur breytt og "
+"hlaðið inn"
+
+msgid "Hide Map"
+msgstr "Fela kort"
+
+msgid "Hide note"
+msgstr "Fela athugasemd"
+
+msgid "Home Address"
+msgstr "Heimilisfang"
+
+msgid "Home address"
+msgstr "Heimilisfang"
+
+msgid "Home country"
+msgstr "Heimaland"
+
+msgid "How can this person be reached now?"
+msgstr "Hvernig er hægt að ná í þessa manneskju núna?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Hvernig aðrir sem hafa áhuga á þessari manneskju geta haft samband við þig"
+
+msgid "I am seeking information"
+msgstr "Ég er að leita eftir upplýsingum"
+
+msgid "I am this person"
+msgstr "Ég er þessi manneskja"
+
+msgid "I do not want any more updates on this record."
+msgstr "Ég vil ekki fleiri fréttir af þessari færslu."
+
+msgid "I do not want my information online anymore."
+msgstr "Ég vil ekki að upplýsingarnar mínar séu á netinu lengur."
+
+msgid "I have information about someone"
+msgstr "Ég bý yfir upplýsingum um einhvern"
+
+msgid "I have reason to think this person is missing"
+msgstr "Ég hef ástæðu til að telja að þessi manneskja sé týnd"
+
+msgid "I have received information that this person is alive"
+msgstr "Ég hef fengið upplýsingar um að þessi manneskja sé á lífi"
+
+msgid "I have received information that this person is dead"
+msgstr "Ég hef fengið upplýsingar um að þessi manneskja sé látin"
+
+msgid "I have received spam due to this note."
+msgstr "Ég hef fengið ruslpóst vegna þessarar athugasemdar."
+
+msgid "I have received spam."
+msgstr "Ég hef fengið ruslpóst."
+
+msgid "I prefer not to specify."
+msgstr "Ég kýs að tilgreina ekki nánar."
+
+msgid "I'm looking for someone"
+msgstr "Ég er að leita að einhverjum"
+
+msgid "Identify who you are looking for"
+msgstr "Tilgreindu hverjum þú ert að leita að"
+
+msgid "Identify who you have information about"
+msgstr "Tilgreindu hvern þú býrð yfir upplýsingum um"
+
+msgid "Identifying information"
+msgstr "Auðkennandi upplýsingar"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Ef engin af þessum færslum samsvarar manneskjunni sem þú hefur í huga "
+"geturðu smellt hér að neðan til að búa til nýja færslu."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ef þú ert höfundur þessarar athugasemdar skaltu athuga tölvupóstinn þinn "
+"þar sem þú finnur tengil til að staðfesta að þú viljir gera athugasemdir "
+"óvirkar við þessa færslu. Annars skaltu bíða eftir að höfundur færslunnar"
+" samþykki beiðnina þína."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ef þú ert höfundur þessarar athugasemdar skaltu athuga tölvupóstinn þinn "
+"þar sem þú finnur tengil til að staðfesta að þú viljir gera athugasemdir "
+"virkar við þessa færslu. Annars skaltu bíða eftir að höfundur færslunnar "
+"samþykki beiðnina þína."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Ef þú átt mynd af þessari manneskju skaltu hlaða henni inn eða færa inn "
+"vefslóð hennar."
+
+msgid "Incorrect.  Try again."
+msgstr "Rangt. Reyndu aftur."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Ógilt netfang. Reyndu aftur."
+
+msgid "Language selection"
+msgstr "Tungumálaval"
+
+msgid "Last known location"
+msgstr "Síðasta þekkta staðsetning"
+
+msgid "Link"
+msgstr "Tengill"
+
+msgid "Link to profile page"
+msgstr "Tengill á prófílsíðu"
+
+msgid "List API keys"
+msgstr "List API keys"
+
+msgid "Mark records as duplicate"
+msgstr "Merkja færslur sem tvíteknar"
+
+msgid "Message (required)"
+msgstr "Skilaboð (nauðsynlegt)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Skilaboð eru nauðsynleg. Farðu til baka og reyndu aftur."
+
+msgid "Missing person's current contact information"
+msgstr "Núverandi samskiptaupplýsingar týndrar manneskju"
+
+msgid "Missing person's current e-mail address"
+msgstr "Núverandi netfang týndrar manneskju"
+
+msgid "Missing person's current phone number"
+msgstr "Núverandi símanúmer týndrar manneskju"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Frekari upplýsingar fyrir forritara fást "
+"%(developers_link_html)shér%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Fleiri en 100 niðurstöður; aðeins fyrstu 100 eru birtar. Prófaðu að færa "
+"inn meira af nafninu"
+
+msgid "Name"
+msgstr "Nafn"
+
+msgid "Name (required)"
+msgstr "Nafn (nauðsynlegt)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Nafn er nauðsynlegt. Farðu til baka og reyndu aftur."
+
+msgid "Neighborhood"
+msgstr "Hverfi"
+
+msgid "No"
+msgstr "Nei"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Ekkert netfang höfundar fyrir færsluna %(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"Engin skilaboð finnast sem skráð eru í skilaboðaþjónustu "
+"símafyrirtækisins."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Engin athugasemd með auðkennið: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Engar athugasemdir hafa verið birtar"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Engin manneskja með auðkennið: %(id_str)s."
+
+msgid "No results found for"
+msgstr "Engar niðurstöður fundust fyrir"
+
+msgid "No such Authorization entity."
+msgstr "No such Authorization entity."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Ekki heimild til að birta athugasemdir með stöðunni „believed_dead“."
+
+msgid "Not spam"
+msgstr "Ekki rusl"
+
+msgid "Note author"
+msgstr "Höfundur athugasemdar"
+
+msgid "Note text"
+msgstr "Texti athugasemdar"
+
+msgid "Notes for this person"
+msgstr "Athugasemdir fyrir þessa manneskju"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Tala eða svið (t.d. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Eða bættu á vefsvæðið þitt sem %(gadget_link_html)sGoogle "
+"græju%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Upprunaleg vefslóð"
+
+msgid "Original author's name"
+msgstr "Nafn upprunalegs höfundar"
+
+msgid "Original posting date"
+msgstr "Dagsetning upprunalegrar birtingar"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Dagsetning upprunalegrar birtingar er ekki á sniðinu ÁÁÁÁ-MM-DD eða er "
+"dagsetning sem ekki er til. Farðu til baka og reyndu aftur."
+
+msgid "Original site name"
+msgstr "Heiti upprunalegs vefsvæðis"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"ATHUGAÐU: Öll gögn sem færð eru inn verða aðgengileg almenningi og allir "
+"geta skoðað þau og notað. Google fer ekki yfir þessi gögn eða staðfestir "
+"að þau séu rétt."
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"ATHUGAÐU: Á virkum vefsvæðum persónuleitar eru öll gögn sem færð eru inn "
+"aðgengileg almenningi og allir geta skoðað þau og notað. Google fer ekki "
+"yfir þessi gögn eða staðfestir að þau séu rétt."
+
+msgid "Person Finder"
+msgstr "Persónuleit"
+
+msgid "Phone"
+msgstr "Sími"
+
+msgid "Phone number"
+msgstr "Símanúmer"
+
+msgid "Photo"
+msgstr "Mynd"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Mynd sem hlaðið var inn er á óþekktu sniði. Farðu til baka og reyndu "
+"aftur."
+
+msgid "Physical characteristics"
+msgstr "Líkamleg einkenni"
+
+msgid "Play the sound again"
+msgstr "Spila hljóðið aftur"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Gakktu úr skugga um að þú hafir verið í sambandi við manneskjuna eftir "
+"jarðskjálftann eða breyttu reitnum „Staða þessarar manneskju“."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Athugaðu hvort þetta stemmir við manneskjuna sem þú ætlaðir að tilkynna."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Staðfestu netfangið þitt til að gerast áskrifandi að fréttum"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Sláðu inn netfangið þitt til að gerast áskrifandi að fréttum"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Útskýrðu hvers vegna þú telur þetta vera sömu manneskjuna"
+
+msgid "Please fill in all the required fields."
+msgstr "Fylltu inn í alla reiti sem krafist er."
+
+msgid "Please fill in your email address."
+msgstr "Skráðu netfangið þitt."
+
+msgid "Please provide an valid email address."
+msgstr "Skráðu gilt netfang."
+
+msgid "Possible duplicates"
+msgstr "Mögulegar tvítekningar"
+
+msgid "Postal or zip code"
+msgstr "Póstnúmer"
+
+msgid "Posted by"
+msgstr "Höfundur:"
+
+msgid "Proceed"
+msgstr "Halda áfram"
+
+msgid "Profile Pages"
+msgstr "Prófílsíður"
+
+msgid "Profile page"
+msgstr "Prófílsíða"
+
+msgid "Provide information"
+msgstr "Veita upplýsingar"
+
+msgid "Provide information about this person"
+msgstr "Veita upplýsingar um þessa manneskju"
+
+msgid "Provided by:"
+msgstr "Upplýsingar veitti:"
+
+msgid "Province or state"
+msgstr "Hérað eða ríki"
+
+msgid "Reason for deletion:"
+msgstr "Ástæða fyrir eyðingu:"
+
+msgid "Reason for disabling notes:"
+msgstr "Ástæða fyrir því að gera athugasemdir óvirkar:"
+
+msgid "Records Similar to"
+msgstr "Færslur svipaðar"
+
+msgid "Records selected"
+msgstr "Valdar færslur"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Færslur með nöfnum og heimilisföngum sem stemma við „%(query)s“"
+
+msgid "Remove"
+msgstr "Fjarlægja"
+
+msgid "Report spam"
+msgstr "Tilkynna ruslefni"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Til baka í færsluna fyrir %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Sýna athugasemd"
+
+msgid "Save this record"
+msgstr "Vista þessa færslu"
+
+msgid "Search Results for"
+msgstr "Leitarniðurstöður fyrir"
+
+msgid "Search for this person"
+msgstr "Leita að þessari manneskju"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr ""
+"Skoðaðu %(begin_tag)swiki-síðuna%(end_tag)s til að fá frekari "
+"leiðbeiningar"
+
+msgid "Select a website to add a profile page..."
+msgstr "Veldu vefsvæði til að bæta við prófílsíðu..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Veldu allt að þrjár færslur til að merkja sem tvítekningar:"
+
+msgid "Send email"
+msgstr "Senda tölvupóst"
+
+msgid "Sex"
+msgstr "Kyn"
+
+msgid "Show Map"
+msgstr "Sýna kort"
+
+msgid "Show sensitive information"
+msgstr "Sýna viðkvæmar upplýsingar"
+
+msgid "Sign in"
+msgstr "Skrá inn"
+
+msgid "Sign out"
+msgstr "Skrá út"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Einhver hefur fengið upplýsingar um að þessi manneskja sé á lífi"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Einhver hefur fengið upplýsingar um að þessi manneskja sé látin"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Einhver hefur tilkynnt að þessi manneskja sé týnd"
+
+msgid "Someone is seeking information about this person"
+msgstr "Einhver er að leita eftir upplýsingum um þessa manneskju"
+
+msgid "Source of this record"
+msgstr "Uppruni þessarar færslu"
+
+msgid "Source of this record (required)"
+msgstr "Uppruni þessarar færslu (nauðsynlegt)"
+
+msgid "Status"
+msgstr "Staða"
+
+msgid "Status of this person"
+msgstr "Staða þessarar manneskju"
+
+msgid "Street name"
+msgstr "Götuheiti"
+
+msgid "Street name only, no number"
+msgstr "Aðeins götuheiti, ekki húsnúmer"
+
+msgid "Subscribe"
+msgstr "Gerast áskrifandi"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Gerast áskrifandi að fréttum af %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Gerast áskrifandi að fréttum af þessari manneskju"
+
+msgid "Switch to address"
+msgstr "Skipta yfir í heimilisfang"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Skipta yfir í merkingu tvítekninga"
+
+msgid "Switch to lat/long"
+msgstr "Skipta yfir í lengdar-/breiddargráðu"
+
+msgid "Switch to normal view mode"
+msgstr "Skipta yfir í venjulegt yfirlit"
+
+msgid "Tell us the status of this person"
+msgstr "Segðu okkur hver staða þessarar manneskju er"
+
+msgid "Terms of Service"
+msgstr "Þjónustuskilmálar"
+
+msgid "The API key has been updated successfully."
+msgstr "The API key has been updated successfully."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Eiginnafn og ættarnafn eru bæði nauðsynleg. Farðu til baka og reyndu "
+"aftur."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Nafn upprunalegs höfundar er nauðsynlegt. Farðu til baka og reyndu aftur."
+
+msgid "The author has disabled notes on this record."
+msgstr "Höfundurinn hefur gert athugasemdir við færsluna óvirkar."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Höfundurinn hefur gert stöðuuppfærslur óvirkar fyrir færsluna."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Innsend mynd er of stór. Hladdu inn minni mynd."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Ástæðan fyrir því að þessi athugasemd er merkt sem rusl:"
+
+msgid "The record cannot be extended."
+msgstr "Ekki er hægt að framlengja þessa færslu."
+
+msgid "The record has been deleted."
+msgstr "Færslunni hefur verið eytt."
+
+#, python-format
+msgid "The record has been extended to %(expiry_date)s."
+msgstr "Færslan hefur verið framlengd til %(expiry_date)s."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Staðan sem þú valdir gefur til kynna að þú sért þessi manneskja. Ef þetta"
+" er rétt skaltu einnig velja „Já“ til að gefa til kynna að þú hafir haft "
+"samband við manneskjuna."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Lykillinn %(token)s var ógildur"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Lykillinn %(token)s var ógildur."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "%(num_results)s fyrirliggjandi færslur eru til með svipuðu nafni."
+
+msgid "There are some existing records with similar names."
+msgstr "Einhverjar fyrirliggjandi færslur eru til með svipuðu nafni."
+
+msgid "There is one existing record with a similar name."
+msgstr "Ein fyrirliggjandi færsla er til með svipuðu nafni."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Vandamál kom upp við að vinna úr myndinni. Prófaðu aðra mynd."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Villa kom upp við að vinna úr beiðninni. Við biðjumst velvirðingar á "
+"óþægindunum. Kerfisstjórar okkar munu kanna orsök vandamálsins en gakktu "
+"einnig úr skugga um að snið beiðninnar sé rétt."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Þessar græjur eru veittar samkvæmt %(apache_link_html)sApache 2.0 "
+"leyfinu%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Þetta er ný færsla."
+
+msgid "This link is invalid."
+msgstr "Þessi tengill er ógildur."
+
+msgid "This note has been marked as spam."
+msgstr "Þessi athugasemd hefur verið merkt sem rusl."
+
+msgid "This note is inappropriate."
+msgstr "Þessi athugasemd er óviðeigandi."
+
+msgid "This note is incorrect or untrue."
+msgstr "Þessi athugasemd er röng eða ósönn."
+
+msgid "This note is spam."
+msgstr "Þessi athugasemd er rusl."
+
+msgid "This person has been in contact with someone"
+msgstr "Þessi manneskja hefur haft samband við einhvern"
+
+msgid "This person has posted a message"
+msgstr "Þessi manneskja hefur birt skilaboð"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Færsla þessarar manneskju er ekki til eða hefur verið eytt."
+
+msgid "This record has served its purpose."
+msgstr "Þessi færsla hefur þjónað tilgangi sínum."
+
+msgid "This record is a duplicate of"
+msgstr "Þessi færsla er tvítekning af"
+
+msgid "This record is copied from another source."
+msgstr "Þessi færsla var afrituð annars staðar frá."
+
+msgid "This record is inappropriate."
+msgstr "Þessi færsla er óviðeigandi."
+
+msgid "This record is spam."
+msgstr "Þessi færsla er rusl."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Þetta gagnasafn er í prófunarstillingu. Á meðan prófunarstilling er virk "
+"er færslum sem eru eldri en sex klukkustunda gamlar eytt."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"Til að hengja mynd við þessa athugasemd skatu hlaða henni inn eða slá inn"
+" vefslóð hennar."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Opnaðu Persónuleit í tölvunni til að eyða gögnunum þínum."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Opnaðu þennan tengil til að segja upp áskriftinni"
+
+msgid "To view or add information, select a name below."
+msgstr "Veldu nafn hér að neðan til að skoða upplýsingar eða bæta þeim við."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Sláðu inn heimilisfang eða opnaðu kortið hér að neðan til að tilgreina "
+"staðsetningu með því að smella á kortið."
+
+msgid "Type an address."
+msgstr "Sláðu inn heimilisfang."
+
+msgid "Type the two words:"
+msgstr "Sláðu þessi tvö orð inn:"
+
+msgid "Type what you hear:"
+msgstr "Sláðu inn það sem þú heyrir:"
+
+msgid "URL"
+msgstr "Vefslóð"
+
+msgid "URL of original record"
+msgstr "Vefslóð upprunalegu færslunnar"
+
+msgid "Unspecified"
+msgstr "Ótilgreint"
+
+msgid "Update an existing key"
+msgstr "Update an existing key"
+
+msgid "Upload"
+msgstr "Hlaða inn"
+
+msgid "Upload CSV files"
+msgstr "Hlaða inn CSV-skrám"
+
+msgid "View the record"
+msgstr "Skoða færsluna"
+
+msgid "We have nothing matching your search."
+msgstr "Ekkert passar við leitina þína."
+
+msgid "What is this person's name?"
+msgstr "Hvað heitir þessi manneskja?"
+
+msgid "When should this record disappear?"
+msgstr "Hvenær ætti þessi færsla að hverfa?"
+
+msgid "Where did this information come from?"
+msgstr "Hvaðan koma þessar upplýsingar?"
+
+msgid "Where is this person from?"
+msgstr "Hvaðan er þessi manneskja?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Á meðan prófunarstilling er virk er færslum sem eru eldri en sex "
+"klukkustunda gamlar eytt, burtséð frá fyrningardagsetningu."
+
+msgid "Yes"
+msgstr "Já"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Já, biðja höfund færslu um að gera athugasemdir óvirkar"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Já, biðja höfund færslu um að gera athugasemdir virkar"
+
+msgid "Yes, delete the record"
+msgstr "Já, eyða færslunni"
+
+msgid "Yes, disable notes on this record."
+msgstr "Já, gera athugasemdir við færsluna óvirkar."
+
+msgid "Yes, extend the record"
+msgstr "Já, framlengja færsluna"
+
+msgid "Yes, restore this record"
+msgstr "Já, endurheimta þessa færslu"
+
+msgid "Yes, these are the same person"
+msgstr "Já, þetta er sama manneskjan"
+
+msgid "Yes, update the note"
+msgstr "Já, uppfæra athugasemdina"
+
+msgid "You are already subscribed. "
+msgstr "Þú ert nú þegar áskrifandi. "
+
+msgid "You are already unsubscribed."
+msgstr "Þú hefur nú þegar sagt áskriftinni upp."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Þú ert skráð(ur) inn sem %(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "You are currently signed in as %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Þú ert ekki skráð(ur) inn."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Þú getur %(begin_tag)sskoðað færsluna%(end_tag)s áður en þú eyðir henni."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Þú getur skoðað færsluna í heild á %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Þú gerðist áskrifandi."
+
+msgid "You have successfully unsubscribed."
+msgstr "Þú sagðir áskriftinni upp."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Þú fékkst þessa tilkynningu vegna þess að þú gerðist áskrifandi að "
+"fréttum af eftirfarandi manneskju:\n"
+
+msgid "Your e-mail address"
+msgstr "Netfangið þitt"
+
+msgid "Your e-mail address:"
+msgstr "Netfangið þitt:"
+
+msgid "Your email"
+msgstr "Netfangið þitt"
+
+msgid "Your name"
+msgstr "Nafnið þitt"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Nafnið þitt er nauðsynlegt í hlutanum „Um þig“. Farðu til baka og reyndu "
+"aftur."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Nafnið þitt er nauðsynlegt í hlutanum „Uppruni“. Farðu til baka og reyndu"
+" aftur."
+
+msgid "Your phone number"
+msgstr "Símanúmerið þitt"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Beiðnin þín hefur verið afgreidd. Athugaðu póstinn þinn og staðfestu að "
+"þú viljir birta athugasemdina með því að opna vefslóðina sem þú fékkst "
+"senda."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Persónuleit] Staðfestu athugasemdina við „%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Persónuleit] Tilkynning um eyðingu fyrir „%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Persónuleit] Gera athugasemdir óvirkar við „%(full_name)s“?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Persónuleit] Gera athugasemdir virkar við „%(full_name)s“?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Persónuleit] Tilkynning um að athugasemdir eru virkar við „%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Persónuleit] Athugasemdir eru nú óvirkar við „%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Persónuleit] Athugasemdir eru nú virkar við „%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr ""
+"[Persónuleit] Tilkynning um að færsla hefur verið endurheimt fyrir "
+"„%(full_name)s“"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
+
+msgid "at"
+msgstr "kl."
+
+msgid "female"
+msgstr "kona"
+
+msgid "in test mode"
+msgstr "í prófunarstillingu"
+
+msgid "male"
+msgstr "karl"
+
+msgid "on"
+msgstr " "
+
+msgid "other"
+msgstr "annað"
+
