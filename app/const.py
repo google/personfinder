@@ -43,7 +43,7 @@ LANGUAGE_ENDONYMS = {
     'en': u'English',
     'en-GB': u'English (UK)',
     'es': u'espa\u00F1ol',
-    'es_419': u'espa\u00F1ol (Latinoam\u00e9rica)',
+    'es-419': u'espa\u00F1ol (Latinoam\u00e9rica)',
     'et': u'eesti',
     'eu': u'Euskara',
     'fa': u'\u0641\u0627\u0631\u0633\u06CC',
@@ -97,6 +97,7 @@ LANGUAGE_ENDONYMS = {
     'zh-HK': u'\u4E2D \u6587 (\u9999 \u6e2f)',
     'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',
     'zu': u'isiZulu',
+    'xx': u'xx',
 }
 
 # Mapping from language codes to English names for all available languages.
@@ -117,7 +118,7 @@ LANGUAGE_EXONYMS = {
     'en': 'English (US)',
     'en-GB': 'English (UK)',
     'es': 'Spanish',
-    'es_419': 'Spanish (Latin America)',
+    'es-419': 'Spanish (Latin America)',
     'et': 'Estonian',
     'eu': 'Basque',
     'fa': 'Persian',
