@@ -52,7 +52,7 @@
     <input type="hidden" name="query" value="{{params.query}}">
     <div class="view">
 
-      <div class="column left">
+      <div class="column start">
         <div class="fields-table person">
           <div>
 
@@ -354,7 +354,7 @@
         {% endif %}
       </div>
 
-      <div class="column right">
+      <div class="column end">
         {% if notes %}
           <h2>{% trans "Notes for this person" %}
             <a href="{{feed_url}}"

@@ -32,14 +32,9 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  {% if env.ui == "small" or env.ui == "light" %}
-    <link rel="stylesheet" href="{{env.global_url}}/style-{{env.ui}}.css">
-  {% else %}
-    <link rel="stylesheet" href="{{env.global_url}}/style.css">
-  {% endif %}
-  {% if env.rtl %}
-    <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
-  {% endif %}
+  <link
+      rel="stylesheet"
+      href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
   {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';

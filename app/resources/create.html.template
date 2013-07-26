@@ -29,7 +29,7 @@
     <input type="hidden" name="role" value="{{params.role}}">
     <div class="create" role="form">
 
-      <div class="column left">
+      <div class="column start">
         <div class="fields-table person">
 
           <h2>
@@ -555,7 +555,7 @@
       </div>
 
       {% ifequal params.role "provide" %}
-        <div class="column right">
+        <div class="column end">
           {% include "add_note.html.template" %}
         </div>
       {% endifequal %}

@@ -70,6 +70,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/dashboard',
   'admin/resources',
   'admin/review',
+  'css',
 ])
 
 # Exceptional cases where the module name doesn't match the URL.
@@ -362,17 +363,17 @@ def setup_env(request):
         # To make it simple.
         env.show_record_ids_in_results = False
 
-    env.back_chevron = u'\xbb' if env.rtl else u'\xab'
+    env.back_chevron = u'\xab'
     back_chevron_in_charset = True
     try:
         env.back_chevron.encode(env.charset)
     except UnicodeEncodeError:
-        # u'\xbb' or u'\xab' is not in the charset (e.g. Shift_JIS).
+        # u'\xab' is not in the charset (e.g. Shift_JIS).
         back_chevron_in_charset = False
     if not back_chevron_in_charset or env.ui == 'light':
         # Use ASCII characters on ui=light too because some feature phones
-        # support UTF-8 but don't render UTF-8 symbols such as u'\xbb'.
-        env.back_chevron = u'>>' if env.rtl else u'<<'
+        # support UTF-8 but don't render UTF-8 symbols such as u'\xab'.
+        env.back_chevron = u'<<'
 
     # Repo-specific information.
     if env.repo:

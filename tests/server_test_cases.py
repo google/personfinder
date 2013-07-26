@@ -506,9 +506,6 @@ class ReadOnlyTests(TestsBase):
         self.assertEqual(self.s.status, 200)
         assert doc.content.startswith('GIF89a')
 
-        doc = self.go('/static/style.css')
-        assert 'body {' in doc.content
-
     def test_embed(self):
         """Check the embed page."""
         doc = self.go('/haiti/embed')
@@ -553,6 +550,16 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/pakistan')
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
+
+    def test_css(self):
+        """Check that the CSS files are accessible."""
+        doc = self.go('/global/css?lang=en&ui=default')
+        assert 'body {' in doc.content
+        doc = self.go('/global/css?lang=en&ui=small')
+        assert 'body {' in doc.content
+        doc = self.go('/global/css?lang=en&ui=light')
+        doc = self.go('/global/css?lang=ar&ui=default')
+        assert 'body {' in doc.content
 
 
 class PersonNoteTests(TestsBase):

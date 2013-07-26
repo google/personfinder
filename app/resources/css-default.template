@@ -97,7 +97,7 @@ pre {  /* code samples */
 /* Language menu */
 
 div.languages {
-  float: right;
+  float: {{end}};
   margin: 10px 0;
   padding: 0;
 }
@@ -146,17 +146,17 @@ input {
   width: 380px;
 }
 
-.column.left {
-  float: left;
+.column.start {
+  float: {{start}};
 }
 
-.column.right {
-  float: right;
+.column.end {
+  float: {{end}};
 }
 
 .column h2 {
   margin: 2px 0 6px;
-  padding-left: 6px;
+  padding-{{start}}: 6px;
 }
 
 /* Tables which show a label and a value of each field e.g. in /view page.
@@ -190,20 +190,20 @@ over 10% in penetration ratio.
 
 .fields-table .field {
   clear: both;
-  margin-left: 16px;
+  margin-{{start}}: 16px;
 }
 
 .fields-table .label {
   display: block;  /* to make float/width attribute work */
-  float: left;
+  float: {{start}};
   width: 160px;
   height: 100%;
-  text-align: right;
+  text-align: {{end}};
 }
 
 .fields-table .value {
   display: block;  /* to make float/width attribute work */
-  float: right;
+  float: {{end}};
   width: 160px;
 }
 
@@ -231,7 +231,7 @@ tr {
 
 th, td {
   padding: 0px 4px;
-  text-align: left;
+  text-align: {{start}};
 }
 
 tr.columns {
@@ -239,7 +239,7 @@ tr.columns {
 }
 
 table.fields {
-  margin-left: 3em;
+  margin-{{start}}: 3em;
 }
 
 tr.text, tr.description, tr.location, tr.other {
@@ -247,25 +247,25 @@ tr.text, tr.description, tr.location, tr.other {
 }
 
 td.label {
-  text-align: right;
+  text-align: {{end}};
   width: 12em;
 }
 
 .tracking, .note .contents div.tracking {
   font-size: 9px;
   color: #888;
-  text-align: right;
+  text-align: {{end}};
 }
 
 td.submit {
-  text-align: left;
+  text-align: {{start}};
 }
 
 /* Footer */
 
 .disclaimer {
   margin: 0 0 1em 0;
-  text-align: left;
+  text-align: {{start}};
 }
 
 .footer {
@@ -306,8 +306,8 @@ td.submit {
   font-size: 16px;
   width: 650px;
   /* centering */
-  margin-left: auto;
-  margin-right: auto;
+  margin-{{start}}: auto;
+  margin-{{end}}: auto;
 }
 
 .main .row {
@@ -322,19 +322,19 @@ td.submit {
 .main .action-outer {
   width: 240px;
   height: 70px;
-  border-right: 2px solid #ccc;
+  border-{{end}}: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   padding: 16px;
 }
 
-.main .action-outer.left {
+.main .action-outer.start {
   background: #bea;
-  float: left;
+  float: {{start}};
 }
 
-.main .action-outer.right {
+.main .action-outer.end {
   background: #bcf;
-  float: right;
+  float: {{end}};
 }
 
 .main .action-inner {
@@ -363,7 +363,7 @@ td.submit {
   width: 380px;
   margin: 2em auto;
   padding: 1em;
-  border-right: 2px solid #ccc;
+  border-{{end}}: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   background: #bcf;
 }
@@ -412,7 +412,7 @@ img.icon {
 }
 
 .view.note .source {
-  padding-left: 4px;
+  padding-{{start}}: 4px;
   color: #888;
 }
 
@@ -477,7 +477,7 @@ table.multiview {
 .multiview .field {
   background-color: #f8f8f8;
   min-width: 5em;
-  border-left: 2px solid #e8e8e9;
+  border-{{start}}: 2px solid #e8e8e9;
 }
 
 .multiview .sectiontop {
@@ -507,39 +507,39 @@ label.option {
 
 .create .fields-table .photo .radio {
   display: block;
-  float: left;
+  float: {{start}};
   width: 30px;
 }
 
 .create .fields-table .photo .label {
   display: block;
-  float: left;
-  text-align: right;
+  float: {{start}};
+  text-align: {{end}};
   width: 70px;
 }
 
 .create .fields-table .photo .value {
   display: block;
-  float: right;
+  float: {{end}};
   width: 220px;
 }
 
 .create .fields-table .profile .icon {
   display: block;
-  float: left;
+  float: {{start}};
   width: 30px;
 }
 
 .create .fields-table .profile .value {
   display: block;
-  float: left;
-  text-align: right;
+  float: {{start}};
+  text-align: {{end}};
   width: 220px;
 }
 
 .create .fields-table .profile .remove {
   display: block;
-  float: right;
+  float: {{end}};
   width: 70px;
 }
 
@@ -595,7 +595,7 @@ resultsList {
 }
 
 .searchResults .resultImageContainer {
-  float: left;
+  float: {{start}};
 }
 
 .searchResults .resultDataTitle {
@@ -606,7 +606,7 @@ resultsList {
 }
 
 .searchResults .resultData {
-  margin-left: 100px; /* 80px for image + 20px gutter */
+  margin-{{start}}: 100px; /* 80px for image + 20px gutter */
 }
 
 .searchResults .resultImageContainer,
@@ -617,13 +617,13 @@ resultsList {
 }
 
 .searchResults .tracking {
-  text-align: right;
+  text-align: {{end}};
 }
 
 /* Embedding instructions */
 
 div.embed pre {
-  margin-left: 2em;
+  margin-{{start}}: 2em;
   padding: 0.5em;
   background: #eee;
   border: 1px solid #ddd;
@@ -648,11 +648,11 @@ form.admin .config {
 form.admin input#subdomain_new {
   font-family: courier, monospace;
   font-size: 14px;
-  text-align: right;
+  text-align: {{end}};
 }
 
 form.admin .config .response {
-  margin-left: 4em;
+  margin-{{start}}: 4em;
 }
 
 form.admin .config input, form .config textarea, form code {
@@ -665,7 +665,7 @@ form.admin .option label {
 }
 
 form.admin .config .note {
-  margin-left: 4em;
+  margin-{{start}}: 4em;
 }
 
 .subscribe_email_error {
@@ -713,8 +713,8 @@ table.review td.empty {
 
 table.review td.caret, table.review td.checkbox {
   padding: 2px 0;
-  border-left: none;
-  border-right: none;
+  border-{{start}}: none;
+  border-{{end}}: none;
 }
 
 table.review td.date {
@@ -749,12 +749,12 @@ table.counts th, table.counts td {
 }
 
 table.counts th {
-  text-align: left;
+  text-align: {{start}};
   font-weight: bold;
 }
 
 table.counts td {
-  text-align: right;
+  text-align: {{end}};
 }
 
 /* API key management page */
