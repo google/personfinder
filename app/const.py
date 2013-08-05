@@ -97,7 +97,6 @@ LANGUAGE_ENDONYMS = {
     'zh-HK': u'\u4E2D \u6587 (\u9999 \u6e2f)',
     'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',
     'zu': u'isiZulu',
-    'xx': u'xx',
 }
 
 # Mapping from language codes to English names for all available languages.
