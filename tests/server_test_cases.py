@@ -558,6 +558,7 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/global/css?lang=en&ui=small')
         assert 'body {' in doc.content
         doc = self.go('/global/css?lang=en&ui=light')
+        assert 'Apache License' in doc.content
         doc = self.go('/global/css?lang=ar&ui=default')
         assert 'body {' in doc.content
 
