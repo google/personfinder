@@ -89,7 +89,7 @@ span.var {
 /* Language menu */
 
 div.languages {
-  float: right;
+  float: {{end}};
   font-size: smaller;
   margin: 0;
   padding: 0;
@@ -125,7 +125,7 @@ tr {
 
 th, td {
   padding: 1px;
-  text-align: left;
+  text-align: {{start}};
 }
 
 tr.columns {
@@ -157,7 +157,7 @@ label {
 .tracking {
   font-size: 9px;
   color: #888;
-  text-align: right;
+  text-align: {{end}};
 }
 
 table.input td {
@@ -174,7 +174,7 @@ textarea, input {
 }
 
 td.submit {
-  text-align: left;
+  text-align: {{start}};
 }
 
 tr.address, tr.photo, tr.author, tr.location, tr.contact {
@@ -185,7 +185,7 @@ tr.address, tr.photo, tr.author, tr.location, tr.contact {
 
 .disclaimer {
   margin: 0 0 1em 0;
-  text-align: left;
+  text-align: {{start}};
   font-size: 10px;
   color: #888;
 }
@@ -201,12 +201,12 @@ body.facebook .disclaimer {
 }
 
 body.facebook .footer {
-  float: left;
+  float: {{start}};
 }
 
 body.facebook .footer a {
   display: block;
-  text-align: left;
+  text-align: {{start}};
 }
 
 body.facebook .link-separator {
@@ -238,19 +238,19 @@ body.facebook .link-separator {
 .main .action-outer {
   width: 9em;
   height: 70px;
-  border-right: 2px solid #ccc;
+  border-{{end}}: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   padding: 0.5em;
 }
 
-.main .action-outer.left {
+.main .action-outer.start {
   background: #bea;
-  float: left;
+  float: {{start}};
 }
 
-.main .action-outer.right {
+.main .action-outer.end {
   background: #bcf;
-  float: right;
+  float: {{end}};
 }
 
 .main .action-inner {
@@ -274,8 +274,8 @@ body.facebook .link-separator {
 
 img {
   display: block;
-  margin-left: auto;
-  margin-right: auto 
+  margin-{{start}}: auto;
+  margin-{{end}}: auto 
 }
 
 /* Query page */
@@ -283,7 +283,7 @@ img {
 .query {
   margin: 1em auto;
   padding: 0.5em;
-  border-right: 2px solid #ccc;
+  border-{{end}}: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   background: #bcf;
 }
@@ -293,7 +293,7 @@ img {
 }
 
 .query .label {
-  text-align: right;
+  text-align: {{end}};
   width: 6em;
 }
 

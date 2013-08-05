@@ -17,14 +17,14 @@
 
   <div class="main">
     <div class="row">
-      <div class="action-outer left">
+      <div class="action-outer start">
         <div class="action-inner">
           <a href="{{seek_url}}" tabindex="1">
             {% trans "I'm looking for someone" %}
           </a>
         </div>
       </div>
-      <div class="action-outer right">
+      <div class="action-outer end">
         <div class="action-inner">
           <a href="{{provide_url}}" tabindex="2">
             {% trans "I have information about someone" %}
