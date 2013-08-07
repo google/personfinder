@@ -180,7 +180,18 @@ LANGUAGE_SYNONYMS = {
     'mo' : 'ro',
     # Note that we don't currently support jv (Javanese) or yi (Yiddish).
     'jw' : 'jv',
-    'ji' : 'yi'
+    'ji' : 'yi',
+    # Django has a bug that django.utils.translation.activate() throws
+    # AttributeError when:
+    # - The language is not in $APPENGINE_DIR/lib/django_1_2/django/conf/locale
+    # - The language code contains a dash '-'
+    # and 'zh-HK' meets both criteria. We workaround this bug by using 'zhhk'
+    # instead of 'zh-HK' internally.
+    #
+    # The cause of the bug is that
+    # $APPENGINE_DIR/lib/django_1_2/django/utils/translation/trans_real.py:142
+    # accesses res._info even when res is None.
+    'zh-HK': 'zhhk',
 }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
