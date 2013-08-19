@@ -104,14 +104,7 @@
           {% trans "To delete your data, access Person Finder from your desktop." %}
           <br>
         {% endif %}
-        {% if env.lang == "en" %}
-          {% trans "PLEASE NOTE: On active Person Finder sites, all data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-        {% else %}
-          {# Uses an old message for non-English for now because the new #}
-          {# message is not translated yet. #}
-          {# TODO(ichikawa) Always use the new message once it is translated. #}
-          {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-        {% endif %}
+        {% trans "PLEASE NOTE: On active Person Finder sites, all data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}
     </div>
 
