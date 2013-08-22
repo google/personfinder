@@ -232,7 +232,7 @@
                   </span>
                   <span class="value">
                     {% if person.source_date %}
-                      {{person.source_date_local|date:"Y-m-d H:i"}}
+                      {{person.source_date_local|date:"DATETIME_FORMAT"}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -247,7 +247,7 @@
                   </span>
                   <span class="value">
                     {% if person.expiry_date_local %}
-                      {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                      {{person.expiry_date_local|date:"DATETIME_FORMAT"}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -281,7 +281,7 @@
                 {% if not params.dupe_notes %}
                 <div class="field">
                   <span><a href="{{dupe_notes_url}}">
-                      Show who marked these duplicates
+                    {% trans "Show who marked these duplicates" %}
                   </a></span>
                 </div>
                 {% endif %}

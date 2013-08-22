@@ -249,8 +249,11 @@
                 </label>
               </span>
               <span class="value">
+                {# This field uses medium-text-input, not short-text-input #}
+                {# because province/state names can be long in some languages #}
+                {# such as Polish. #}
                 <input name="home_state" id="home_state"
-                    class="short-text-input"
+                    class="medium-text-input"
                     value="{{params.home_state}}"
                     autocomplete="off">
               </span>
@@ -365,7 +368,7 @@
                   {% for website in profile_websites %}
                     <option>{{website.name}}</option>
                   {% endfor %}
-                  <option>Other website</option>
+                  <option>{% trans "Other website" %}</option>
                 </select>
               </div>
               <div class="end-multi-columns"></div>
