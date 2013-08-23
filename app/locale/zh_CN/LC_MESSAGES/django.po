@@ -136,6 +136,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -233,6 +240,13 @@ msgstr ""
 "      您输入的网址不像是有效的 %(website)s 个人资料网址。\n"
 "      请访问此人在 %(website)s 上的个人资料页面，然后将该网页的网址复制并粘贴到此处。\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -501,6 +515,16 @@ msgstr "返回结果列表"
 
 msgid "Back to start"
 msgstr "返回首页"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV 文件"
@@ -833,11 +857,16 @@ msgstr "没有发布任何注释"
 msgid "No person with ID: %(id_str)s."
 msgstr "没有 ID 为 %(id_str)s 的个人。"
 
-msgid "No results found for"
-msgstr "未找到有关此人的任何结果"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "没有这样的授权实体。"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "未经授权，无法发布状态为“believed_dead”的注释。"
@@ -879,6 +908,9 @@ msgstr "原始发布日期未采用 YYYY-MM-DD 格式，或者该日期不存在
 
 msgid "Original site name"
 msgstr "原始发布网站的名称"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -978,8 +1010,8 @@ msgstr "删除的原因："
 msgid "Reason for disabling notes:"
 msgstr "停用注释功能的原因："
 
-msgid "Records Similar to"
-msgstr "与此人相似的记录"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "选定记录"
@@ -1004,8 +1036,8 @@ msgstr "显示注释"
 msgid "Save this record"
 msgstr "保存此记录"
 
-msgid "Search Results for"
-msgstr "有关此人的搜索结果"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "搜索此人"
@@ -1031,6 +1063,9 @@ msgstr "显示地图"
 
 msgid "Show sensitive information"
 msgstr "显示敏感信息"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "登录"
@@ -1124,10 +1159,6 @@ msgstr "该记录的有效期无法延长。"
 
 msgid "The record has been deleted."
 msgstr "此记录已删除。"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "该记录的有效期已延长到 %(expiry_date)s。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1416,9 +1447,6 @@ msgstr "[网上寻人] 关于“%(full_name)s”的状况更新"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[网上寻人] 您已订阅关于“%(full_name)s”的状况更新"
-
-msgid "at"
-msgstr "时间："
 
 msgid "female"
 msgstr "女"

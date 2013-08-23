@@ -148,6 +148,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -254,6 +261,13 @@ msgstr ""
 "      Sicela uye kukhasi lephrofayela yalo muntu ku-%(website)s, bese "
 "ukopisha uphinde unamathisele leyo URL lapha.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -548,6 +562,16 @@ msgstr "Buyela emuva kuhlu lwemiphumela"
 
 msgid "Back to start"
 msgstr "Buyela ekuqaleni"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Ifayela le-CSV"
@@ -908,11 +932,16 @@ msgstr "Awekho amanothi athunyelwe"
 msgid "No person with ID: %(id_str)s."
 msgstr "Akekho umuntu one-ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Ayikho imiphumela etholelwe i-"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Alikho ibhizinisi eligunyaziwe."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Awugunyazwanga ukuthumela amanothi ngesimo \"kukholelwa_eshonile\"."
@@ -958,6 +987,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Igama lesayithi langempela"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1067,8 +1099,8 @@ msgstr "Isizathu sokususa:"
 msgid "Reason for disabling notes:"
 msgstr "Isizathu sokukhubaza amanothi:"
 
-msgid "Records Similar to"
-msgstr "Amarekhodi afana ne-"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Amarekhodi akhethiwe"
@@ -1093,8 +1125,8 @@ msgstr "Bonisa inothi"
 msgid "Save this record"
 msgstr "Londoloza leli rekhodi"
 
-msgid "Search Results for"
-msgstr "Seshela imiphumela ye-"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Seshela lo muntu"
@@ -1120,6 +1152,9 @@ msgstr "Bonisa i-Map"
 
 msgid "Show sensitive information"
 msgstr "Bonisa ulwazi olubucayi"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Ngena ngemvume"
@@ -1217,10 +1252,6 @@ msgstr "Irekhodi alikwazi ukunwetshwa."
 
 msgid "The record has been deleted."
 msgstr "Irekhodi lisusiwe."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Irekhodi linwetshelwe kumhla ka-%(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1538,9 +1569,6 @@ msgstr "[ISitholi sabantu] Isibuyekezo sesimo se-%(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ISitholi sabantu] Ubhalisele izibuyekezo zesimo ze-%(full_name)s"
-
-msgid "at"
-msgstr "ngo-"
 
 msgid "female"
 msgstr "owesifazane"

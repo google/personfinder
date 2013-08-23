@@ -144,6 +144,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -248,6 +255,13 @@ msgstr ""
 "      Gå til personens profilside på %(website)s, og kopiér og indsæt\n"
 "      webadressen her.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -540,6 +554,16 @@ msgstr "Tilbage til resultatlisten"
 
 msgid "Back to start"
 msgstr "Tilbage til start"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-fil"
@@ -898,11 +922,16 @@ msgstr "Der er ikke indsendt nogen noter"
 msgid "No person with ID: %(id_str)s."
 msgstr "Der er ingen person med dette id: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Der blev ikke fundet nogen resultater for"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "En sådan godkendelse findes ikke."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autoriseret til at indsende noter med statussen \"believed_dead\"."
@@ -948,6 +977,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Navnet på det oprindelige website"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1057,8 +1089,8 @@ msgstr "Årsag til sletning:"
 msgid "Reason for disabling notes:"
 msgstr "Årsag til deaktivering af noter:"
 
-msgid "Records Similar to"
-msgstr "Journaler, der ligner"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "journaler er valgt"
@@ -1083,8 +1115,8 @@ msgstr "Vis note"
 msgid "Save this record"
 msgstr "Gem denne journal"
 
-msgid "Search Results for"
-msgstr "Søgeresultater for"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Søg efter denne person"
@@ -1110,6 +1142,9 @@ msgstr "Vis kort"
 
 msgid "Show sensitive information"
 msgstr "Vis følsomme oplysninger"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Log ind"
@@ -1205,10 +1240,6 @@ msgstr "Journalen kan ikke forlænges."
 
 msgid "The record has been deleted."
 msgstr "Journalen er slettet."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Journalen er blevet forlænget til %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1521,9 +1552,6 @@ msgstr "[Person Finder] Statusopdatering for %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Du har abonneret på statusopdateringer for %(full_name)s"
-
-msgid "at"
-msgstr "kl."
 
 msgid "female"
 msgstr "kvinde"

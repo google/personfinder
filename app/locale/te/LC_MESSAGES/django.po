@@ -147,6 +147,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -254,6 +261,13 @@ msgstr ""
 "URLను కాపీ చేసి,\n"
 "      ఇక్కడ అతికించండి.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -547,6 +561,16 @@ msgstr "ఫలితాల జాబితాకు తిరిగి వెళ
 
 msgid "Back to start"
 msgstr "ప్రారంభానికి తిరిగి వెళ్లు"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ఫైల్"
@@ -905,11 +929,16 @@ msgstr "గమనికలను పోస్ట్ చేయలేదు"
 msgid "No person with ID: %(id_str)s."
 msgstr "ఈ IDతో ఏ వ్యక్తి లేరు: %(id_str)s."
 
-msgid "No results found for"
-msgstr "వీరి కోసం ఫలితాలు కనుగొనబడలేదు"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "ఎటువంటి ప్రామాణీకరణ ఎంటిటీ లేదు."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" స్థితితో గమనికలను పోస్ట్ చేయడానికి ప్రామాణీకరించబడలేదు."
@@ -955,6 +984,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "వాస్తవ సైట్ పేరు"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1068,8 +1100,8 @@ msgstr "తొలగింపుకి కారణం:"
 msgid "Reason for disabling notes:"
 msgstr "గమనికల నిలిపివేతకు కారణం:"
 
-msgid "Records Similar to"
-msgstr "సారూప్య రికార్డ్‌లు"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "ఎంచుకోబడిన రికార్డ్‌లు"
@@ -1094,8 +1126,8 @@ msgstr "గమనికను బహిర్గతం చేయండి"
 msgid "Save this record"
 msgstr "ఈ రికార్డ్‌ను సేవ్ చేయండి"
 
-msgid "Search Results for"
-msgstr "వీరి కోసం శోధన ఫలితాలు"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "ఈ వ్యక్తి కోసం శోధించు"
@@ -1121,6 +1153,9 @@ msgstr "మ్యాప్‌ను చూపు"
 
 msgid "Show sensitive information"
 msgstr "సున్నితమైన సమాచారాన్ని చూపండి"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "సైన్ ఇన్ చేయండి"
@@ -1216,10 +1251,6 @@ msgstr "రికార్డ్‌ను పొడిగించడం సా�
 
 msgid "The record has been deleted."
 msgstr "రికార్డ్ తొలగించబడింది."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "రికార్డ్ %(expiry_date)s వరకు పొడిగించబడింది."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1543,9 +1574,6 @@ msgstr "[వ్యక్తి శోధిని] %(full_name)s కోసం �
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[వ్యక్తి శోధిని] మీరు %(full_name)s కోసం స్థితి నవీకరణలకు చందా పొందారు"
-
-msgid "at"
-msgstr "దీనిలో"
 
 msgid "female"
 msgstr "స్త్రీ"

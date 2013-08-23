@@ -144,6 +144,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -249,6 +256,13 @@ msgstr ""
 "прекопирајте\n"
 "      тај URL овде.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -538,6 +552,16 @@ msgstr "Назад на листу резултата"
 
 msgid "Back to start"
 msgstr "Назад на почетак"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV датотека"
@@ -892,11 +916,16 @@ msgstr "Није постављена ниједна белешка"
 msgid "No person with ID: %(id_str)s."
 msgstr "Не постоји ниједна особа са ИД-ом: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Није пронађен ниједан резултат за"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Не постоји такав ентитет за овлашћења."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Не постоји овлашћење за постављање бележака са статусом „believed_dead“."
@@ -940,6 +969,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Назив оригиналног сајта"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1047,8 +1079,8 @@ msgstr "Разлог за брисање:"
 msgid "Reason for disabling notes:"
 msgstr "Разлог за онемогућавање бележака:"
 
-msgid "Records Similar to"
-msgstr "Записи који су слични записима"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Изабрани записи"
@@ -1073,8 +1105,8 @@ msgstr "Откриј белешку"
 msgid "Save this record"
 msgstr "Сачувај овај запис"
 
-msgid "Search Results for"
-msgstr "Резултати претраге за"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Потражи ову особу"
@@ -1100,6 +1132,9 @@ msgstr "Прикажи мапу"
 
 msgid "Show sensitive information"
 msgstr "Прикажи осетљиве информације"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Пријави ме"
@@ -1193,10 +1228,6 @@ msgstr "Рок важења записа не може да се продужи.
 
 msgid "The record has been deleted."
 msgstr "Запис је избрисан."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Рок важења записа је продужен до %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1510,9 +1541,6 @@ msgstr "[Тражење особа] Ажурирање статуса особе
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Тражење особа] Пријављени сте за ажурирања статуса особе %(full_name)s"
-
-msgid "at"
-msgstr "у"
 
 msgid "female"
 msgstr "женски"

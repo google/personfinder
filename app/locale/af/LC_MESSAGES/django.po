@@ -145,6 +145,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -246,6 +253,13 @@ msgstr ""
 "-profiel-URL nie. Gaan na hierdie persoon se profielbladsy op "
 "%(website)s, en kopieer en plak daardie URL hier.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -532,6 +546,16 @@ msgstr "Terug na lys resultate"
 
 msgid "Back to start"
 msgstr "Terug na begin"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-lêer"
@@ -882,11 +906,16 @@ msgstr "Geen notas is geplaas nie"
 msgid "No person with ID: %(id_str)s."
 msgstr "Geen persoon met ID %(id_str)s nie."
 
-msgid "No results found for"
-msgstr "Geen resultate gevind nie vir"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Geen sodanige magtigingsentiteit nie."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nie gemagtig om notas met die status \"believed_dead\" te plaas nie."
@@ -932,6 +961,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Oorspronklike werfnaam"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1042,8 +1074,8 @@ msgstr "Rede waarom dit uitgevee word:"
 msgid "Reason for disabling notes:"
 msgstr "Rede waarom notas gedeaktiveer word:"
 
-msgid "Records Similar to"
-msgstr "Rekords soortgelyk aan"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Rekords gekies"
@@ -1068,8 +1100,8 @@ msgstr "Maak nota sigbaar"
 msgid "Save this record"
 msgstr "Stoor hierdie rekord"
 
-msgid "Search Results for"
-msgstr "Soekresultate vir"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Soek vir hierdie persoon"
@@ -1095,6 +1127,9 @@ msgstr "Wys kaart"
 
 msgid "Show sensitive information"
 msgstr "Wys sensitiewe inligting"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Meld aan"
@@ -1188,10 +1223,6 @@ msgstr "Die rekord kan nie verleng word nie."
 
 msgid "The record has been deleted."
 msgstr "Die rekord is uitgevee."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Die rekord is verleng na %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1500,9 +1531,6 @@ msgstr "[Person Finder] Statusopdatering vir %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Jy is ingeteken op statusopdaterings vir %(full_name)s"
-
-msgid "at"
-msgstr "by"
 
 msgid "female"
 msgstr "vroulik"

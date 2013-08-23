@@ -141,6 +141,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -241,6 +248,13 @@ msgstr ""
 "      %(website)s 上のこの人のプロフィール ページにアクセスし、その URL を\n"
 "      コピーしてここに貼り付けてください。\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -524,6 +538,16 @@ msgstr "結果一覧に戻る"
 
 msgid "Back to start"
 msgstr "先頭に戻る"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ファイル"
@@ -856,11 +880,16 @@ msgstr "メモはまだありません"
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
 
-msgid "No results found for"
-msgstr "次の人に一致する結果は見つかりませんでした:"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "状況が「believed_dead」の場合はメモを投稿できません。"
@@ -902,6 +931,9 @@ msgstr "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在
 
 msgid "Original site name"
 msgstr "元のサイト名"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1003,8 +1035,8 @@ msgstr "削除の理由:"
 msgid "Reason for disabling notes:"
 msgstr "メモを無効にする理由:"
 
-msgid "Records Similar to"
-msgstr "次と類似する記録:"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "選択されている記録"
@@ -1029,8 +1061,8 @@ msgstr "メモを表示"
 msgid "Save this record"
 msgstr "この記録を保存"
 
-msgid "Search Results for"
-msgstr "検索結果:"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "この人を探す"
@@ -1056,6 +1088,9 @@ msgstr "地図を表示"
 
 msgid "Show sensitive information"
 msgstr "個人情報を表示"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "ログイン"
@@ -1149,10 +1184,6 @@ msgstr "この記録は有効期限を延長できません。"
 
 msgid "The record has been deleted."
 msgstr "記録が削除されました。"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "記録の有効期限が %(expiry_date)s まで延長されました。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1441,9 +1472,6 @@ msgstr "[パーソンファインダー] %(full_name)s さんについての新�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
-
-msgid "at"
-msgstr "場所:"
 
 msgid "female"
 msgstr "女性"

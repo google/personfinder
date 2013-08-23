@@ -153,6 +153,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -256,6 +263,13 @@ msgstr ""
 "webbadressen.\n"
 "      Klistra sedan in den här.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -553,6 +567,16 @@ msgstr "Tillbaka till resultatlistan"
 
 msgid "Back to start"
 msgstr "Tillbaka till början"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-fil"
@@ -905,11 +929,16 @@ msgstr "Inga medelanden har lämnats"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ingen person med detta ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Det finns inga resultat för"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Det finns ingen auktoriseringsenhet"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ej behörig att lägga upp meddelanden med statusen \"believed_dead\"."
@@ -955,6 +984,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Den ursprungliga webbplatsens namn"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1062,8 +1094,8 @@ msgstr "Orsak till borttagning:"
 msgid "Reason for disabling notes:"
 msgstr "Anledning till att inaktivera meddelanden:"
 
-msgid "Records Similar to"
-msgstr "Poster som liknar"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Valda poster"
@@ -1088,8 +1120,8 @@ msgstr "Visa meddelande"
 msgid "Save this record"
 msgstr "Spara den här posten"
 
-msgid "Search Results for"
-msgstr "Sökresultat för"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Sök efter personen"
@@ -1115,6 +1147,9 @@ msgstr "Visa karta"
 
 msgid "Show sensitive information"
 msgstr "Visa känslig information"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Logga in"
@@ -1212,10 +1247,6 @@ msgstr "Posten kan inte förlängas."
 
 msgid "The record has been deleted."
 msgstr "Posten har tagits bort."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Posten har förlängts till %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1524,9 +1555,6 @@ msgstr "[Person Finder] Statusuppdatering om %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Du prenumererar på statusuppdateringar om %(full_name)s"
-
-msgid "at"
-msgstr "vid"
 
 msgid "female"
 msgstr "kvinna"

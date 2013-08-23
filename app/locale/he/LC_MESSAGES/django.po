@@ -140,6 +140,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -242,6 +249,13 @@ msgstr ""
 "     עבור לדף הפרופיל של האדם הזה ב-%(website)s ולאחר מכן העתק והדבק את "
 "כתובת האתר כאן.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -524,6 +538,16 @@ msgstr "חזור לרשימת התוצאות"
 
 msgid "Back to start"
 msgstr "חזור להתחלה"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "קובץ CSV"
@@ -864,11 +888,16 @@ msgstr "לא פורסמו הערות"
 msgid "No person with ID: %(id_str)s."
 msgstr "אין אדם עם המזהה: %(id_str)s."
 
-msgid "No results found for"
-msgstr "לא נמצאו תוצאות עבור"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "אין יישות הרשאה כזו."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "לא מורשה לפרסם הערות עם הסטטוס \"believed_dead\"."
@@ -914,6 +943,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "שם האתר המקורי"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1020,8 +1052,8 @@ msgstr "הסיבה למחיקה:"
 msgid "Reason for disabling notes:"
 msgstr "הסיבה להשבתת ההערות:"
 
-msgid "Records Similar to"
-msgstr "רשומות דומות ל:"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "רשומות נבחרות"
@@ -1046,8 +1078,8 @@ msgstr "חשוף הערה"
 msgid "Save this record"
 msgstr "שמור את הרשומה הזו"
 
-msgid "Search Results for"
-msgstr "תוצאות חיפוש עבור"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "חפש את האדם הזה"
@@ -1073,6 +1105,9 @@ msgstr "הצג מפה"
 
 msgid "Show sensitive information"
 msgstr "הצג מידע רגיש"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "היכנס"
@@ -1166,10 +1201,6 @@ msgstr "לא ניתן להאריך את תוקף הרשומה."
 
 msgid "The record has been deleted."
 msgstr "הרשומה נמחקה."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "תוקף הרשומה הוארך עד %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1470,9 +1501,6 @@ msgstr "[מאתר אנשים] עדכון סטטוס עבור %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[מאתר אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
-
-msgid "at"
-msgstr "ב:"
 
 msgid "female"
 msgstr "נקבה"

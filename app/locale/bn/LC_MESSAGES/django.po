@@ -148,6 +148,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -253,6 +260,13 @@ msgstr ""
 "অনুলিপি করুন এবং \n"
 "      এখানে ঐ URLটি আটকান৷\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -541,6 +555,16 @@ msgstr "ফলাফলগুলির তালিকায় ফিরে যা
 
 msgid "Back to start"
 msgstr "শুরুতে ফিরে যান"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ফাইল"
@@ -895,11 +919,16 @@ msgstr "কোনো নোট পোস্ট করা হয়নি"
 msgid "No person with ID: %(id_str)s."
 msgstr "ID সহ কোনো ব্যক্তি নেই:%(id_str)s"
 
-msgid "No results found for"
-msgstr "এর জন্য কোনো ফলাফল পাওয়া যায়নি"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "এমন কোনো অনুমোদনের অস্তিত্ব নেই৷"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" স্থিতিটি সহ নোটগুলি পোস্ট করতে কোনো অনুমোদন নেই৷"
@@ -945,6 +974,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "আসল সাইট নাম"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1056,8 +1088,8 @@ msgstr "মুছে ফেলার কারণ:"
 msgid "Reason for disabling notes:"
 msgstr "নোটগুলি অক্ষম করার কারণ:"
 
-msgid "Records Similar to"
-msgstr "রেকর্ডগুলি এর অনুরুপ"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "রেকর্ডগুলি নির্বাচন করা হয়েছে"
@@ -1082,8 +1114,8 @@ msgstr "নোট প্রকাশ করুন"
 msgid "Save this record"
 msgstr "এই রেকর্ডটি সংরক্ষণ করুন"
 
-msgid "Search Results for"
-msgstr "এর জন্য অনুসন্ধান ফলাফলগুলি"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "এই ব্যক্তির জন্য অনুসন্ধান করুন"
@@ -1109,6 +1141,9 @@ msgstr "মানচিত্র দেখান"
 
 msgid "Show sensitive information"
 msgstr "সংবেদনশীল তথ্য দেখান"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "সাইন ইন"
@@ -1204,10 +1239,6 @@ msgstr "রেকর্ডটি বাড়ানো যাবে না৷"
 
 msgid "The record has been deleted."
 msgstr "রেকর্ডটি মুছে ফেলা হয়েছে৷"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "রেকর্ডটি %(expiry_date)s পর্যন্ত বাড়ানো হয়েছে৷"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1529,9 +1560,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[ব্যক্তি খোঁজকারী] %(full_name)s এর জন্য আপনি স্থিতি আপডেটগুলিতে সদস্যতা "
 "নিয়েছেন"
-
-msgid "at"
-msgstr "এ"
 
 msgid "female"
 msgstr "স্ত্রী"

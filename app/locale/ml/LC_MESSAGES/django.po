@@ -152,6 +152,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -260,6 +267,13 @@ msgstr ""
 "പോയി\n"
 "      ആ URL ഇവിടെ പകർത്തി ഒട്ടിക്കുക.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -558,6 +572,16 @@ msgstr "ഫലങ്ങളുടെ ലിസ്റ്റിലേക്ക് �
 
 msgid "Back to start"
 msgstr "ആരംഭത്തിലേക്ക് മടങ്ങുക"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ഫയൽ"
@@ -917,11 +941,16 @@ msgstr "കുറിപ്പുകളൊന്നും പോസ്റ്റ�
 msgid "No person with ID: %(id_str)s."
 msgstr "ഇനിപ്പറയുന്ന ഐഡിയിൽ വ്യക്തികളൊന്നുമില്ല: %(id_str)s."
 
-msgid "No results found for"
-msgstr "ഇതിനായി ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "അത്തരം അംഗീകരണ എന്റിറ്റികളൊന്നുമില്ല."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -969,6 +998,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "യഥാർത്ഥ സൈറ്റിന്റെ പേര്"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1083,8 +1115,8 @@ msgstr "ഇല്ലാതാക്കുന്നതിനുള്ള കാ�
 msgid "Reason for disabling notes:"
 msgstr "കുറിപ്പുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനുള്ള കാരണം:"
 
-msgid "Records Similar to"
-msgstr "ഇതിന് സമാനമായ റെക്കോർഡുകൾ"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "തിരഞ്ഞെടുത്ത റെക്കോർഡുകൾ"
@@ -1111,8 +1143,8 @@ msgstr "കുറിപ്പ് വെളിപ്പെടുത്തുക"
 msgid "Save this record"
 msgstr "ഈ റെക്കോർഡ് സംരക്ഷിക്കുക"
 
-msgid "Search Results for"
-msgstr "ഇതിനായുള്ള തിരയൽ ഫലങ്ങൾ"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "ഈ വ്യക്തിയെ തിരയുക"
@@ -1138,6 +1170,9 @@ msgstr "മാപ്പ് കാണിക്കുക"
 
 msgid "Show sensitive information"
 msgstr "തന്ത്രപ്രധാന വിവരങ്ങൾ കാണിക്കുക"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "സൈൻ ഇൻ ചെയ്യുക"
@@ -1233,10 +1268,6 @@ msgstr "റെക്കോർഡ് കാലാവധി നീട്ടാന�
 
 msgid "The record has been deleted."
 msgstr "റെക്കോർഡ് ഇല്ലാതാക്കി."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "റെക്കോർഡ് %(expiry_date)s വരെ നീട്ടി."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1575,9 +1606,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] %(full_name)s എന്നയാൾക്കായുള്ള സ്റ്റാറ്റസ് "
 "അപ്‌ഡേറ്റുകൾക്കായി നിങ്ങൾ സബ്‌സ്‌ക്രൈബുചെയ്‌തു"
-
-msgid "at"
-msgstr "ഇതിൽ"
 
 msgid "female"
 msgstr "സ്‌ത്രീ"

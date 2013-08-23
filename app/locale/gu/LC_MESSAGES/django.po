@@ -142,6 +142,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -247,6 +254,13 @@ msgstr ""
 " \n"
 "      URL ને અહીં પેસ્ટ કરો.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -540,6 +554,16 @@ msgstr "પરિણામોની સૂચિ પર પાછા જાઓ"
 
 msgid "Back to start"
 msgstr "પ્રારંભ પર પાછા જાઓ"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ફાઇલ"
@@ -892,11 +916,16 @@ msgstr "કોઈ નોટ્સ પોસ્ટ કરવામાં આવ�
 msgid "No person with ID: %(id_str)s."
 msgstr "આ ID ધરાવતી કોઈ વ્યક્તિ નથી: %(id_str)s ."
 
-msgid "No results found for"
-msgstr "આ માટે કોઈ પરિણામો મળ્યા નથી"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "આવો કોઈ અધિકૃત અસ્તિત્વ નથી."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" સ્થિતિવાળી નોટ્સ પોસ્ટ કરવા માટે અધિકૃત નથી."
@@ -942,6 +971,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "સાઇટનું મૂળ નામ"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1057,8 +1089,8 @@ msgstr "કાઢી નાંખવાનું માટેનું કાર
 msgid "Reason for disabling notes:"
 msgstr "નોટ્સને અક્ષમ કરવા માટેનું કારણ:"
 
-msgid "Records Similar to"
-msgstr "આના જેવા રેકોર્ડ્સ"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "પસંદ કરેલ રેકોર્ડ્સ"
@@ -1083,8 +1115,8 @@ msgstr "નોટ દર્શાવે છે"
 msgid "Save this record"
 msgstr "આ રેકોર્ડ સાચવો"
 
-msgid "Search Results for"
-msgstr "આ માટેના શોધ પરિણામો"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "આ વ્યક્તિ માટે શોધો"
@@ -1110,6 +1142,9 @@ msgstr "નકશો બતાવો"
 
 msgid "Show sensitive information"
 msgstr "સંવેદનશીલ માહિતી બતાવો"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "સાઇન ઇન કરો"
@@ -1205,10 +1240,6 @@ msgstr "આ રેકોર્ડ વિસ્તૃત કરી શકાત�
 
 msgid "The record has been deleted."
 msgstr "આ રેકોર્ડ કાઢી નાખવામાં આવ્યો છે."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "આ રેકોર્ડ %(expiry_date)s સુધી વિસ્તૃત કરવામાં આવ્યો છે."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1524,9 +1555,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[વ્યક્તિ શોધક] તમે %(full_name)s માટે સ્થિતિ અપડેટ્સ પર સબ્સ્ક્રાઇબ "
 "કર્યું છે"
-
-msgid "at"
-msgstr "આ પર"
 
 msgid "female"
 msgstr "સ્ત્રી"

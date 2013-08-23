@@ -142,6 +142,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -245,6 +252,13 @@ msgstr ""
 "ແລ້ວທຳການສຳເນົາ ແລະ ວາງ\n"
 "      URL ດັ່ງກ່າວບ່ອນນີ້.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -532,6 +546,16 @@ msgstr "ກັບຄືນໄປລາຍການຜົນ"
 
 msgid "Back to start"
 msgstr "ກັບຄືນໄປບ່ອນເລີ່ມຕົ້ນ"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "ໄຟລ໌ CSV"
@@ -877,11 +901,16 @@ msgstr "ບໍ່ມີການໂພສໂນ໋ດໃດໆ"
 msgid "No person with ID: %(id_str)s."
 msgstr "ບໍ່ມີບຸກຄົນທີ່ໃຊ້ໄອດີ: %(id_str)s ."
 
-msgid "No results found for"
-msgstr "ບໍ່ພົບຜົນການຊອກຫາສຳລັບ"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "ບໍ່ມີ Authorization entity ດັ່ງກ່າວ."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ບໍ່ອະນຸຍາດໃຫ້ໂພສໂນ໋ດທີ່ມີສະຖານະວ່າ \"ຄິດວ່າເສຍຊີວິດແລ້ວ\"."
@@ -927,6 +956,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "ຊື່ເວັບໄຊຕົ້ນສະບັບ"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1034,8 +1066,8 @@ msgstr "ເຫດຜົນຂອງການລຶບ:"
 msgid "Reason for disabling notes:"
 msgstr "ເຫດຜົນເພື່ອປິດການນຳໃຊ້ໂນ໋ດ:"
 
-msgid "Records Similar to"
-msgstr "ບັນທຶກຄ້າຍຄືກັນກັບ"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "ບັນທຶກທີ່ເລືອກ"
@@ -1060,8 +1092,8 @@ msgstr "ສະແດງໂນ໋ດ"
 msgid "Save this record"
 msgstr "ບັນທຶກການບັນທຶກນີ້"
 
-msgid "Search Results for"
-msgstr "ຜົນການຊອກຫາສໍາລັບ"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "ຊອກຫາບຸກຄົນນີ້"
@@ -1087,6 +1119,9 @@ msgstr "ສະແດງແຜນທີ່"
 
 msgid "Show sensitive information"
 msgstr "ສະແດງຂໍ້ມູນທີ່ສຳຄັນ"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "ເຂົ້າສູ່ລະບົບ"
@@ -1180,10 +1215,6 @@ msgstr "ບັນທຶກບໍ່ສາມາດຍືດເວລາອອກ
 
 msgid "The record has been deleted."
 msgstr "ບັນທຶກດັ່ງກ່າວໄດ້ຖືກລຶບອອກແລ້ວ."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "ບັນທຶກດັ່ງກ່າວໄດ້ຖືກຍືດເວລາອອກໄປ %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1496,9 +1527,6 @@ msgstr "[Person Finder] ອັບເດດສະຖານະສຳລັບ %(fu
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] ທ່ານສະໝັກຮັບການອັບເດດສະຖານະສຳລັບ %(full_name)s"
-
-msgid "at"
-msgstr "ທີ່"
 
 msgid "female"
 msgstr "ຍິງ"

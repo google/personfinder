@@ -149,6 +149,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -256,6 +263,13 @@ msgstr ""
 "límdu\n"
 "      þá vefslóð hingað.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -550,6 +564,16 @@ msgstr "Til baka í niðurstöðulista"
 
 msgid "Back to start"
 msgstr "Til baka á byrjun"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-skrá"
@@ -910,11 +934,16 @@ msgstr "Engar athugasemdir hafa verið birtar"
 msgid "No person with ID: %(id_str)s."
 msgstr "Engin manneskja með auðkennið: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Engar niðurstöður fundust fyrir"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Engin slík sannvottunareigind."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ekki heimild til að birta athugasemdir með stöðunni „believed_dead“."
@@ -960,6 +989,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Heiti upprunalegs vefsvæðis"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1069,8 +1101,8 @@ msgstr "Ástæða fyrir eyðingu:"
 msgid "Reason for disabling notes:"
 msgstr "Ástæða fyrir því að gera athugasemdir óvirkar:"
 
-msgid "Records Similar to"
-msgstr "Færslur svipaðar"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Valdar færslur"
@@ -1095,8 +1127,8 @@ msgstr "Sýna athugasemd"
 msgid "Save this record"
 msgstr "Vista þessa færslu"
 
-msgid "Search Results for"
-msgstr "Leitarniðurstöður fyrir"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Leita að þessari manneskju"
@@ -1124,6 +1156,9 @@ msgstr "Sýna kort"
 
 msgid "Show sensitive information"
 msgstr "Sýna viðkvæmar upplýsingar"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Skrá inn"
@@ -1219,10 +1254,6 @@ msgstr "Ekki er hægt að framlengja þessa færslu."
 
 msgid "The record has been deleted."
 msgstr "Færslunni hefur verið eytt."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Færslan hefur verið framlengd til %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1538,9 +1569,6 @@ msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
-
-msgid "at"
-msgstr "kl."
 
 msgid "female"
 msgstr "kona"

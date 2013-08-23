@@ -141,6 +141,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -241,6 +248,13 @@ msgstr ""
 "      %(website)s에서 해당 사용자의 프로필 페이지로 이동한 뒤 URL을 복사하여\n"
 "      여기에 붙여넣으세요.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -526,6 +540,16 @@ msgstr "결과 목록으로 돌아가기"
 
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV 파일"
@@ -862,11 +886,16 @@ msgstr "게시된 메모가 없습니다."
 msgid "No person with ID: %(id_str)s."
 msgstr "ID가 %(id_str)s인 사람이 없습니다."
 
-msgid "No results found for"
-msgstr "다음 이름에 대한 결과를 찾을 수 없음"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "해당 승인 항목이 없습니다."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "'사망 추정' 상태인 메모를 게시할 권한이 없습니다."
@@ -908,6 +937,9 @@ msgstr "원래 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 �
 
 msgid "Original site name"
 msgstr "원본 사이트 이름"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1011,8 +1043,8 @@ msgstr "삭제 사유:"
 msgid "Reason for disabling notes:"
 msgstr "메모 사용 중지 이유:"
 
-msgid "Records Similar to"
-msgstr "유사한 레코드"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "선택한 레코드"
@@ -1037,8 +1069,8 @@ msgstr "메모 표시"
 msgid "Save this record"
 msgstr "레코드 저장"
 
-msgid "Search Results for"
-msgstr "검색결과"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "검색"
@@ -1064,6 +1096,9 @@ msgstr "지도 표시"
 
 msgid "Show sensitive information"
 msgstr "중요 정보 표시"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "로그인"
@@ -1157,10 +1192,6 @@ msgstr "레코드의 유효기간을 연장할 수 없습니다."
 
 msgid "The record has been deleted."
 msgstr "레코드가 삭제되었습니다."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "레코드의 유효기간이 %(expiry_date)s(으)로 연장되었습니다."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1451,9 +1482,6 @@ msgstr "[Person Finder] %(full_name)s님 상태 업데이트"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] %(full_name)s님에 대한 상태 업데이트를 구독했습니다."
-
-msgid "at"
-msgstr "위치:"
 
 msgid "female"
 msgstr "여자"

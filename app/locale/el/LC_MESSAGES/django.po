@@ -155,6 +155,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -262,6 +269,13 @@ msgstr ""
 "%(website)s και, στη συνέχεια, κάντε αντιγραφή και επικόλληση\n"
 "      αυτής της διεύθυνσης URL εδώ.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -566,6 +580,16 @@ msgstr "Επιστροφή στη λίστα των αποτελεσμάτων"
 
 msgid "Back to start"
 msgstr "Επιστροφή στην αρχή"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Αρχείο CSV"
@@ -934,11 +958,16 @@ msgstr "Δεν έχουν δημοσιευτεί σημειώσεις"
 msgid "No person with ID: %(id_str)s."
 msgstr "Δεν υπάρχει άτομο με αναγνωριστικό: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Δεν βρέθηκαν αποτελέσματα για"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Δεν υπάρχει τέτοια οντότητα εξουσιοδότησης."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -986,6 +1015,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1101,8 +1133,8 @@ msgstr "Αιτία διαγραφής:"
 msgid "Reason for disabling notes:"
 msgstr "Λόγος για την απενεργοποίηση σημειώσεων:"
 
-msgid "Records Similar to"
-msgstr "Εγγραφές παρόμοιες με"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Επιλεγμένες εγγραφές"
@@ -1129,8 +1161,8 @@ msgstr "Εμφάνιση σημείωσης"
 msgid "Save this record"
 msgstr "Αποθήκευση αυτής της εγγραφής"
 
-msgid "Search Results for"
-msgstr "Αναζήτηση αποτελεσμάτων για"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Αναζήτηση αυτού του ατόμου"
@@ -1156,6 +1188,9 @@ msgstr "Προβολή χάρτη"
 
 msgid "Show sensitive information"
 msgstr "Προβολή ευαίσθητων δεδομένων"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Σύνδεση"
@@ -1255,10 +1290,6 @@ msgstr "Δεν είναι δυνατή η επέκταση του αρχείου
 
 msgid "The record has been deleted."
 msgstr "Η εγγραφή διαγράφηκε."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Η εγγραφή έχει επεκταθεί έως τις %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1602,9 +1633,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Εντοπισμός ατόμων] Έχετε εγγραφεί στις ενημερώσεις κατάστασης για το "
 "άτομο %(full_name)s"
-
-msgid "at"
-msgstr "στις"
 
 msgid "female"
 msgstr "γυναίκα"

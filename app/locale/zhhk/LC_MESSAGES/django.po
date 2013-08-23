@@ -141,6 +141,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -241,6 +248,13 @@ msgstr ""
 "      請前往這位使用者在 %(website)s 的個人資料頁面，複製該頁面的網址，\n"
 "      然後再貼到這裡。\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -526,6 +540,16 @@ msgstr "回到結果清單"
 
 msgid "Back to start"
 msgstr "回到首頁"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV 檔案"
@@ -858,11 +882,16 @@ msgstr "沒有已發佈的註解"
 msgid "No person with ID: %(id_str)s."
 msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
-msgid "No results found for"
-msgstr "此項目無搜尋結果"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "沒有這類授權實體。"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "您未獲授權發佈狀態為「believed_dead」的註解。"
@@ -904,6 +933,9 @@ msgstr "原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日
 
 msgid "Original site name"
 msgstr "原始網站名稱"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1003,8 +1035,8 @@ msgstr "刪除原因："
 msgid "Reason for disabling notes:"
 msgstr "停用註解功能的原因："
 
-msgid "Records Similar to"
-msgstr "此項目的類似記錄："
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "已選取的記錄數目："
@@ -1029,8 +1061,8 @@ msgstr "顯示註解"
 msgid "Save this record"
 msgstr "儲存此記錄"
 
-msgid "Search Results for"
-msgstr "此項目的搜尋結果："
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "搜尋這個人"
@@ -1056,6 +1088,9 @@ msgstr "顯示地圖"
 
 msgid "Show sensitive information"
 msgstr "顯示機密資料"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "登入"
@@ -1149,10 +1184,6 @@ msgstr "記錄有效期無法延長。"
 
 msgid "The record has been deleted."
 msgstr "記錄已刪除。"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "記錄有效期已延長至 %(expiry_date)s。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1441,9 +1472,6 @@ msgstr "[尋人工具]「%(full_name)s」的狀態更新"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[尋人工具] 您已訂閱「%(full_name)s」的狀態更新"
-
-msgid "at"
-msgstr "位置："
 
 msgid "female"
 msgstr "女性"

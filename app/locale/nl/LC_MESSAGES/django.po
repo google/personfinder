@@ -148,6 +148,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -255,6 +262,13 @@ msgstr ""
 " en plak\n"
 "      die URL hier.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -553,6 +567,16 @@ msgstr "Terug naar lijst met resultaten"
 
 msgid "Back to start"
 msgstr "Terug naar begin"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-bestand"
@@ -913,11 +937,16 @@ msgstr "Er zijn geen opmerkingen geplaatst"
 msgid "No person with ID: %(id_str)s."
 msgstr "Geen persoon met id: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Geen resultaten gevonden voor"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Deze autorisatie-entiteit bestaat niet."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Niet toegestaan opmerkingen te plaatsen met de status 'believed_dead'."
@@ -963,6 +992,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Naam van oorspronkelijke site"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1073,8 +1105,8 @@ msgstr "Reden voor verwijdering:"
 msgid "Reason for disabling notes:"
 msgstr "Reden voor het uitschakelen van opmerkingen:"
 
-msgid "Records Similar to"
-msgstr "Vermeldingen die lijken op"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Vermeldingen geselecteerd"
@@ -1099,8 +1131,8 @@ msgstr "Opmerking weergeven"
 msgid "Save this record"
 msgstr "Deze vermelding opslaan"
 
-msgid "Search Results for"
-msgstr "Zoekresultaten voor"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Zoeken naar deze persoon"
@@ -1126,6 +1158,9 @@ msgstr "Kaart weergeven"
 
 msgid "Show sensitive information"
 msgstr "Gevoelige gegevens weergeven"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Inloggen"
@@ -1221,10 +1256,6 @@ msgstr "De vermelding kan niet worden verlengd."
 
 msgid "The record has been deleted."
 msgstr "De vermelding is verwijderd."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "De vermelding is verlengd tot %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1543,9 +1574,6 @@ msgstr "[Personen zoeken] Statusupdate voor %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Personen zoeken] U bent geabonneerd op statusupdates voor %(full_name)s"
-
-msgid "at"
-msgstr "in"
 
 msgid "female"
 msgstr "vrouw"

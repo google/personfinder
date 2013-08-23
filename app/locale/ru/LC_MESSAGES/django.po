@@ -144,6 +144,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -245,6 +252,13 @@ msgstr ""
 "вставьте его\n"
 "      в это поле.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -533,6 +547,16 @@ msgstr "Назад к списку результатов"
 
 msgid "Back to start"
 msgstr "К началу"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-файл"
@@ -890,11 +914,16 @@ msgstr "Заметки не опубликованы"
 msgid "No person with ID: %(id_str)s."
 msgstr "Не найден человек с идентификатором: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Нет результатов по запросу"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Отсутствует указанный объект авторизации."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -942,6 +971,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Исходный веб-сайт"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1053,8 +1085,8 @@ msgstr "Причина удаления:"
 msgid "Reason for disabling notes:"
 msgstr "Причина отключения заметок:"
 
-msgid "Records Similar to"
-msgstr "Похожие записи"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Выбрано записей"
@@ -1079,8 +1111,8 @@ msgstr "Отобразить запись"
 msgid "Save this record"
 msgstr "Сохранить запись"
 
-msgid "Search Results for"
-msgstr "Результаты поиска по запросу"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Найти этого человека"
@@ -1106,6 +1138,9 @@ msgstr "Показать карту"
 
 msgid "Show sensitive information"
 msgstr "Показать конфиденциальную информацию"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Войти"
@@ -1201,10 +1236,6 @@ msgstr "Невозможно продлить срок действия запи
 
 msgid "The record has been deleted."
 msgstr "Запись удалена."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Срок действия записи был продлен до %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1519,9 +1550,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Вы подписались на обновления для статуса человека "
 "%(full_name)s"
-
-msgid "at"
-msgstr "в"
 
 msgid "female"
 msgstr "женский"

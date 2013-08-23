@@ -147,6 +147,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -249,6 +256,13 @@ msgstr ""
 "тоді скопіюйте та вставте\n"
 "      URL-адресу тут.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -540,6 +554,16 @@ msgstr "Назад у список результатів"
 
 msgid "Back to start"
 msgstr "На початок"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Файл CSV"
@@ -900,11 +924,16 @@ msgstr "Немає опублікованих нотаток"
 msgid "No person with ID: %(id_str)s."
 msgstr "Немає особи з ідентифікатором %(id_str)s."
 
-msgid "No results found for"
-msgstr "Не знайдено результатів для запиту"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Немає такого об’єкта авторизації."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Not authorized to post notes with the status \"believed_dead\"."
@@ -950,6 +979,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Назва початкового веб-сайту"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1058,8 +1090,8 @@ msgstr "Причина видалення:"
 msgid "Reason for disabling notes:"
 msgstr "Причина вимкнення нотаток:"
 
-msgid "Records Similar to"
-msgstr "Записи, подібні до"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Вибрані записи"
@@ -1084,8 +1116,8 @@ msgstr "Показати нотатку"
 msgid "Save this record"
 msgstr "Зберегти цей запис"
 
-msgid "Search Results for"
-msgstr "Результати пошуку для запиту"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Шукати цю особу"
@@ -1111,6 +1143,9 @@ msgstr "Показати карту"
 
 msgid "Show sensitive information"
 msgstr "Показати конфіденційну інформацію"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Увійти"
@@ -1208,10 +1243,6 @@ msgstr "Неможливо подовжити термін дії запису."
 
 msgid "The record has been deleted."
 msgstr "Запис видалено."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Термін дії запису подовжено до %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1533,9 +1564,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Служба пошуку людей] Ви підписалися на оновлення статусу особи "
 "%(full_name)s"
-
-msgid "at"
-msgstr "о"
 
 msgid "female"
 msgstr "жінка"

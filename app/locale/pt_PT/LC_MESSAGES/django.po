@@ -145,6 +145,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s Records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -253,6 +260,13 @@ msgstr ""
 " copie\n"
 "      e cole esse URL aqui.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -541,6 +555,16 @@ msgstr "Voltar à lista de resultados"
 
 msgid "Back to start"
 msgstr "Voltar ao início"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Ficheiro CSV"
@@ -895,11 +919,16 @@ msgstr "Não foram publicadas notas"
 msgid "No person with ID: %(id_str)s."
 msgstr "Nenhuma pessoa com o ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Não foram encontrados resultados para"
+msgid "No results found for:"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Sem entidade de Autorização."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Sem autorização para publicar notas com o estado \"believed_dead\"."
@@ -945,6 +974,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Nome do site original"
+
+msgid "Other website"
+msgstr ""
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1054,8 +1086,8 @@ msgstr "Motivo da eliminação:"
 msgid "Reason for disabling notes:"
 msgstr "Motivo para a desativação das notas:"
 
-msgid "Records Similar to"
-msgstr "Registos Semelhantes a"
+msgid "Records Similar to:"
+msgstr ""
 
 msgid "Records selected"
 msgstr "Registos selecionados"
@@ -1080,8 +1112,8 @@ msgstr "Revelar nota"
 msgid "Save this record"
 msgstr "Guardar este registo"
 
-msgid "Search Results for"
-msgstr "Resultados de Pesquisa para"
+msgid "Search Results for:"
+msgstr ""
 
 msgid "Search for this person"
 msgstr "Pesquisar esta pessoa"
@@ -1107,6 +1139,9 @@ msgstr "Mostrar Mapa"
 
 msgid "Show sensitive information"
 msgstr "Mostrar informações confidenciais"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Iniciar sessão"
@@ -1202,10 +1237,6 @@ msgstr "O registo não pode ser prolongado."
 
 msgid "The record has been deleted."
 msgstr "O registo foi eliminado."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "O registo foi prolongado até %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1529,9 +1560,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Localizador de Pessoas] Subscreveu atualizações de estado de "
 "%(full_name)s"
-
-msgid "at"
-msgstr "às"
 
 msgid "female"
 msgstr "feminino"
