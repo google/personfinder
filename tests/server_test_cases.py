@@ -1080,9 +1080,9 @@ class PersonNoteTests(TestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': '2001-01-01 00:00 UTC',
+            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': '2001-01-11 00:00 UTC'})
+            'Expiry date of this record:': 'Jan. 11, 2001, midnight UTC'})
 
         # Check the icons and the links are there.
         assert 'facebook-16x16.png' in self.s.doc.content
@@ -1111,13 +1111,14 @@ class PersonNoteTests(TestsBase):
 
         self.go('/japan/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': '2001-02-03 13:05 JST'
+            'Original posting date:': 'Feb. 3, 2001, 1:05 p.m. JST'
         })
-        assert 'Posted by Fred on 2001-02-03 at 16:08 JST' in self.s.doc.text
+        assert (
+            'Posted by Fred on Feb. 3, 2001, 4:08 p.m. JST' in self.s.doc.text)
 
         self.go('/japan/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert '2001-02-03 13:05 JST' in self.s.doc.text, \
+        assert 'Feb. 3, 2001, 1:05 p.m. JST' in self.s.doc.text, \
             text_diff('', self.s.doc.text)
 
         # Other repositories should show up in UTC.
@@ -1139,12 +1140,13 @@ class PersonNoteTests(TestsBase):
 
         self.go('/haiti/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': '2001-02-03 04:05 UTC'
+            'Original posting date:': 'Feb. 3, 2001, 4:05 a.m. UTC'
         })
-        assert 'Posted by Fred on 2001-02-03 at 07:08 UTC' in self.s.doc.text
+        assert (
+            'Posted by Fred on Feb. 3, 2001, 7:08 a.m. UTC' in self.s.doc.text)
         self.go('/haiti/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert '2001-02-03 04:05 UTC' in self.s.doc.text
+        assert 'Feb. 3, 2001, 4:05 a.m. UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -1402,9 +1404,9 @@ class PersonNoteTests(TestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': '2001-01-01 00:00 UTC',
+            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': '2001-01-21 00:00 UTC'})
+            'Expiry date of this record:': 'Jan. 21, 2001, midnight UTC'})
 
         # Check that UserActionLog entries were created.
         verify_user_action_log('add', 'Person', repo='haiti')
