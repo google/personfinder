@@ -784,8 +784,8 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def initialize(self, request, response, env):
-        webapp.RequestHandler.initialize(self, request, response)
+    def __init__(self, request, response, env):
+        webapp.RequestHandler.__init__(self, request, response)
         self.params = Struct()
         self.env = env
         self.repo = env.repo

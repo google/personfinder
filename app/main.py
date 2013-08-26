@@ -485,8 +485,8 @@ class Main(webapp.RequestHandler):
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
-            handler = getattr(__import__(module_name), class_name)()
-            handler.initialize(request, response, env)
+            handler = getattr(__import__(module_name), class_name)(
+                request, response, env)
             getattr(handler, request.method.lower())()  # get() or post()
         elif env.action.endswith('.template'):
             # Don't serve template source code.
