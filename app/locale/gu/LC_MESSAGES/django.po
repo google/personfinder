@@ -142,8 +142,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -236,6 +250,13 @@ msgstr ""
 "      તમે મૂળ રેકોર્ડને \n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s પર જોઈ શકો છો.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -916,9 +937,6 @@ msgstr "કોઈ નોટ્સ પોસ્ટ કરવામાં આવ�
 msgid "No person with ID: %(id_str)s."
 msgstr "આ ID ધરાવતી કોઈ વ્યક્તિ નથી: %(id_str)s ."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "આવો કોઈ અધિકૃત અસ્તિત્વ નથી."
 
@@ -974,15 +992,6 @@ msgstr "સાઇટનું મૂળ નામ"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"કૃપા કરી નોટ કરો: દાખલ કરેલો તમામ ડેટા સાર્વજનિક રીતે ઉપલબ્ધ હશે અને "
-"કોઈપણ દ્વારા દૃશ્યક્ષમ અને ઉપયોગમાં લઈ શકાય તેવો હશે. Google આ ડેટાની "
-"સચોટતાની સમીક્ષા કરતું નથી કે ચકાસતું નથી."
 
 #, fuzzy
 msgid ""
@@ -1089,9 +1098,6 @@ msgstr "કાઢી નાંખવાનું માટેનું કાર
 msgid "Reason for disabling notes:"
 msgstr "નોટ્સને અક્ષમ કરવા માટેનું કારણ:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "પસંદ કરેલ રેકોર્ડ્સ"
 
@@ -1114,9 +1120,6 @@ msgstr "નોટ દર્શાવે છે"
 
 msgid "Save this record"
 msgstr "આ રેકોર્ડ સાચવો"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "આ વ્યક્તિ માટે શોધો"

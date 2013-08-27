@@ -136,8 +136,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -225,6 +239,13 @@ msgstr ""
 "      您可以在以下位置查看原始源记录：\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s。\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -857,9 +878,6 @@ msgstr "没有发布任何注释"
 msgid "No person with ID: %(id_str)s."
 msgstr "没有 ID 为 %(id_str)s 的个人。"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "没有这样的授权实体。"
 
@@ -911,12 +929,6 @@ msgstr "原始发布网站的名称"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr "请注意：所输入的数据将全部对公众开放，而且可供任何人查看或使用。Google 不会审查或验证这些数据的准确性。"
 
 #, fuzzy
 msgid ""
@@ -1010,9 +1022,6 @@ msgstr "删除的原因："
 msgid "Reason for disabling notes:"
 msgstr "停用注释功能的原因："
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "选定记录"
 
@@ -1035,9 +1044,6 @@ msgstr "显示注释"
 
 msgid "Save this record"
 msgstr "保存此记录"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "搜索此人"

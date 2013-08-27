@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -240,6 +254,13 @@ msgstr ""
 "Можете да прегледате оригиналния запис\n"
 "на адрес %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -921,9 +942,6 @@ msgstr "Няма публикувани бележки"
 msgid "No person with ID: %(id_str)s."
 msgstr "Няма човек с идентификационен номер: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Няма такъв упълномощаващ субект."
 
@@ -979,15 +997,6 @@ msgstr "Име на оригиналния сайт"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"МОЛЯ, ОБЪРНЕТЕ ВНИМАНИЕ: Всички въведени данни са общодостъпни и могат да"
-" се видят и използват от всекиго. Google не преглежда и не удостоверява "
-"точността на информацията."
 
 #, fuzzy
 msgid ""
@@ -1088,9 +1097,6 @@ msgstr "Причина за изтриването:"
 msgid "Reason for disabling notes:"
 msgstr "Причина за деактивиране на бележките:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Избрани записи"
 
@@ -1113,9 +1119,6 @@ msgstr "Показване на бележката"
 
 msgid "Save this record"
 msgstr "Запазване на този запис"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Търсене за този човек"

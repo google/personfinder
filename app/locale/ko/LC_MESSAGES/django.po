@@ -141,8 +141,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -232,6 +246,13 @@ msgstr ""
 "      %(begin_tag)s%(source_name)s%(end_tag)s에서\n"
 "      원본 레코드를 볼 수 있습니다.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -886,9 +907,6 @@ msgstr "게시된 메모가 없습니다."
 msgid "No person with ID: %(id_str)s."
 msgstr "ID가 %(id_str)s인 사람이 없습니다."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "해당 승인 항목이 없습니다."
 
@@ -940,14 +958,6 @@ msgstr "원본 사이트 이름"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"참고: 입력한 모든 데이터는 공개되어 누구나 보고 사용할 수 있습니다. Google은 해당 데이터의 정확성을 검토하거나 확인하지 "
-"않습니다."
 
 #, fuzzy
 msgid ""
@@ -1043,9 +1053,6 @@ msgstr "삭제 사유:"
 msgid "Reason for disabling notes:"
 msgstr "메모 사용 중지 이유:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "선택한 레코드"
 
@@ -1068,9 +1075,6 @@ msgstr "메모 표시"
 
 msgid "Save this record"
 msgstr "레코드 저장"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "검색"

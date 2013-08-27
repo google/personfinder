@@ -148,8 +148,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -241,6 +255,13 @@ msgstr ""
 "die Originalquelle. Den Originaldatensatz finden Sie unter "
 "%(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -927,9 +948,6 @@ msgstr "Es wurden keine Notizen gepostet."
 msgid "No person with ID: %(id_str)s."
 msgstr "Keine Person mit der ID: %(id_str)s"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Keine entsprechende Autorisierungsstelle"
 
@@ -988,15 +1006,6 @@ msgstr "Name der Originalwebsite"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"Hinweis: Alle eingegebenen Daten sind öffentlich verfügbar und können von"
-" jedem abgerufen und verwendet werden. Die Richtigkeit dieser Daten wird "
-"von Google weder überprüft noch bestätigt."
 
 #, fuzzy
 msgid ""
@@ -1101,9 +1110,6 @@ msgstr "Grund für die Löschung:"
 msgid "Reason for disabling notes:"
 msgstr "Grund für die Deaktivierung von Notizen:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Ausgewählte Datensätze"
 
@@ -1126,9 +1132,6 @@ msgstr "Notiz einblenden"
 
 msgid "Save this record"
 msgstr "Datensatz speichern"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Nach dieser Person suchen"

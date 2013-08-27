@@ -133,8 +133,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -227,6 +241,13 @@ msgstr ""
 "स्रोतसँग सम्पर्क राख्नुहोस्। तपाईँले मूल रेकर्डलाई %(begin_tag)s "
 "%(source_name)s %(end_tag)sमा हेर्न सक्नुहुन्छ।\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -883,9 +904,6 @@ msgstr "कुनै टिप्पणीहरू पोष्ट गरिए
 msgid "No person with ID: %(id_str)s."
 msgstr "यस ID %(id_str)s का साथ कुनै पनि व्यक्ति छैन।"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "यस्तो कुनै प्रमाणिकरण वस्तु छैन।"
 
@@ -941,15 +959,6 @@ msgstr "मूल साइट नाम"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"कृपया ध्यान दिनुहोस्: सम्पूर्ण प्रविष्टि गरिएको डेटा सार्वजनिक रूपमा "
-"उपलव्ध हुने छ र जो कसैले पनि हेर्न र प्रयोग गर्न मिल्ने अवस्थामा हुन्छ। "
-"Google ले यस डेटाको सहीपना समीक्षा वा प्रमाणित गर्दैन।"
 
 #, fuzzy
 msgid ""
@@ -1058,9 +1067,6 @@ msgstr "मेट्नका लागि कारण:"
 msgid "Reason for disabling notes:"
 msgstr "टिप्पणी असक्षम पार्नका लागि कारण:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "चयनित रेकर्ड"
 
@@ -1083,9 +1089,6 @@ msgstr "टिप्पणी देखाउनुहोस्"
 
 msgid "Save this record"
 msgstr "यो रेकर्ड बचत गर्नुहोस्"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "यस व्यक्तिका लागि खोज गर्नुहोस्"

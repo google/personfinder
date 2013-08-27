@@ -148,8 +148,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -245,6 +259,13 @@ msgstr ""
 "      ನೀವು ನಿಜವಾದ ಮೂಲವನ್ನು\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s ನಲ್ಲಿ ವೀಕ್ಷಿಸಬಹುದಾಗಿದೆ.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -931,9 +952,6 @@ msgstr "ಯಾವುದೇ ಟಿಪ್ಪಣಿಗಳನ್ನು ಪೋಸ್�
 msgid "No person with ID: %(id_str)s."
 msgstr "ID ಯೊಂದಿಗೆ ಯಾವ ವ್ಯಕ್ತಿಯೂ ಇಲ್ಲ: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "ಅಂಥ ಯಾವುದೇ ದೃಢೀಕರಣ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ."
 
@@ -991,15 +1009,6 @@ msgstr "ಮೂಲ ಸೈಟ್ ಹೆಸರು"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ದಯವಿಟ್ಟು ಗಮನಿಸಿ: ನಮೂದಿಸಿರುವ ಎಲ್ಲ ಡೇಟಾವು ಸಾರ್ವಜನಿಕರಿಗೆ ಲಭ್ಯವಾಗುತ್ತದೆ ಹಾಗೂ "
-"ಯಾರಾದರೂ ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಬಳಸಬಹುದಾಗಿದೆ. ಈ ಡೇಟಾದ ನಿಖರತೆಯನ್ನು Google "
-"ವಿಮರ್ಶಿಸುವುದಿಲ್ಲ ಅಥವಾ ಪರಿಶೀಲಿಸುವುದಿಲ್ಲ."
 
 #, fuzzy
 msgid ""
@@ -1102,9 +1111,6 @@ msgstr "ಅಳಿಸುವಿಕೆಗೆ ಕಾರಣ:"
 msgid "Reason for disabling notes:"
 msgstr "ಟಿಪ್ಪಣಿಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತಿರುವುದಕ್ಕೆ ಕಾರಣ:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "ರೆಕಾರ್ಡ್‌ಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ"
 
@@ -1129,9 +1135,6 @@ msgstr "ಟಿಪ್ಪಣಿ ಬಹಿರಂಗಪಡಿಸು"
 
 msgid "Save this record"
 msgstr "ಈ ರೆಕಾರ್ಡ್ ಉಳಿಸು"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಗಾಗಿ ಹುಡುಕು"

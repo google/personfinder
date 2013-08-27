@@ -141,8 +141,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -232,6 +246,13 @@ msgstr ""
 "      元の記録は %(begin_tag)s%(source_name)s%(end_tag)s で\n"
 "      確認できます。\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -880,9 +901,6 @@ msgstr "メモはまだありません"
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
 
@@ -934,12 +952,6 @@ msgstr "元のサイト名"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr "注: 入力したデータはすべて公開され、誰でも表示、使用できる状態になります。Google では、データの正確性の確認は行っていません。"
 
 #, fuzzy
 msgid ""
@@ -1035,9 +1047,6 @@ msgstr "削除の理由:"
 msgid "Reason for disabling notes:"
 msgstr "メモを無効にする理由:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "選択されている記録"
 
@@ -1060,9 +1069,6 @@ msgstr "メモを表示"
 
 msgid "Save this record"
 msgstr "この記録を保存"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "この人を探す"

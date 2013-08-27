@@ -144,8 +144,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -236,6 +250,13 @@ msgstr ""
 "fonte original.\n"
 "Veja o registro original em %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -910,9 +931,6 @@ msgstr "Nenhuma nota foi postada"
 msgid "No person with ID: %(id_str)s."
 msgstr "Nenhuma pessoa com ID: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Essa entidade de autorização não existe."
 
@@ -968,15 +986,6 @@ msgstr "Nome do site original"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"OBSERVAÇÃO: todos os dados inseridos aqui ficarão disponíveis para o "
-"público e poderão ser vistos e usados por qualquer pessoa. O Google não "
-"analisa nem verifica a precisão dos dados."
 
 #, fuzzy
 msgid ""
@@ -1080,9 +1089,6 @@ msgstr "Motivo da exclusão:"
 msgid "Reason for disabling notes:"
 msgstr "Motivo para desativar as notas:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Registros selecionados"
 
@@ -1105,9 +1111,6 @@ msgstr "Revelar nota"
 
 msgid "Save this record"
 msgstr "Salvar este registro"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Procurar por esta pessoa"

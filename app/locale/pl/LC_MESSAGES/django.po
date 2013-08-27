@@ -146,8 +146,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "      Oryginalny wpis możesz zobaczyć w serwisie\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -928,9 +949,6 @@ msgstr "Nie opublikowano żadnych notatek"
 msgid "No person with ID: %(id_str)s."
 msgstr "Brak osoby o identyfikatorze %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Brak takiego podmiotu autoryzacji."
 
@@ -988,15 +1006,6 @@ msgstr "Nazwa witryny zawierającej oryginał"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"UWAGA: wszystkie wpisane dane będą dostępne publicznie. Dowolny "
-"użytkownik będzie mógł je wyświetlić i wykorzystać. Google nie sprawdza "
-"ich dokładności."
 
 #, fuzzy
 msgid ""
@@ -1095,9 +1104,6 @@ msgstr "Przyczyna usunięcia:"
 msgid "Reason for disabling notes:"
 msgstr "Przyczyna wyłączenia dodawania notatek:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Wybrane wpisy"
 
@@ -1122,9 +1128,6 @@ msgstr "Ujawnij notatkę"
 
 msgid "Save this record"
 msgstr "Zapisz informacje"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Szukaj tej osoby"

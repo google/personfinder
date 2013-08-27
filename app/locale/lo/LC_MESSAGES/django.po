@@ -142,8 +142,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -235,6 +249,13 @@ msgstr ""
 "      ທ່ານສາມາດເບິ່ງການບັນທຶກຕົ້ນສະບັບໄດ້ທີ່\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -901,9 +922,6 @@ msgstr "ບໍ່ມີການໂພສໂນ໋ດໃດໆ"
 msgid "No person with ID: %(id_str)s."
 msgstr "ບໍ່ມີບຸກຄົນທີ່ໃຊ້ໄອດີ: %(id_str)s ."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "ບໍ່ມີ Authorization entity ດັ່ງກ່າວ."
 
@@ -959,15 +977,6 @@ msgstr "ຊື່ເວັບໄຊຕົ້ນສະບັບ"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ຫມາຍເຫດ: ຂໍ້ມູນທັງຫມົດທີ່ປ້ອນເຂົ້າໄປຈະສາມາດເບິ່ງເຫັນ ແລະ "
-"ນຳໃຊ້ໂດຍສາທາລະນະໄດ້.  Google ບໍ່ໄດ້ກວດສອບ ຫຼື "
-"ຢືນຢັນຄວາມຖືກຕ້ອງຂອງຂໍ້ມູນເຫຼົ່ານີ້."
 
 #, fuzzy
 msgid ""
@@ -1066,9 +1075,6 @@ msgstr "ເຫດຜົນຂອງການລຶບ:"
 msgid "Reason for disabling notes:"
 msgstr "ເຫດຜົນເພື່ອປິດການນຳໃຊ້ໂນ໋ດ:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "ບັນທຶກທີ່ເລືອກ"
 
@@ -1091,9 +1097,6 @@ msgstr "ສະແດງໂນ໋ດ"
 
 msgid "Save this record"
 msgstr "ບັນທຶກການບັນທຶກນີ້"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ຊອກຫາບຸກຄົນນີ້"

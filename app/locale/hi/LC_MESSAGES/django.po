@@ -149,8 +149,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "      आप मूल रिकॉर्ड\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s पर देख सकते हैं.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -924,9 +945,6 @@ msgstr "कोई नोट पोस्ट नहीं किया गया"
 msgid "No person with ID: %(id_str)s."
 msgstr "इस आईडी वाला कोई व्यक्ति नहीं है: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "ऐसी कोई प्राधिकरण इकाई नहीं."
 
@@ -982,15 +1000,6 @@ msgstr "मूल साइट नाम"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"कृपया ध्यान दें: डाला गया सभी डेटा जन-साधाकरण के लिए उपलब्ध होगा और किसी "
-"भी व्यक्ति द्वारा देखा और उपयोग किया जा सकेगा.  Google इस डेटा की सटीकता "
-"की समीक्षा या इसका सत्यापन नहीं करता है."
 
 #, fuzzy
 msgid ""
@@ -1094,9 +1103,6 @@ msgstr "हटाने का कारण:"
 msgid "Reason for disabling notes:"
 msgstr "नोट अक्षम करने का कारण:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "रिकॉर्ड का चयन किया गया"
 
@@ -1119,9 +1125,6 @@ msgstr "नोट दिखाएं"
 
 msgid "Save this record"
 msgstr "यह रिकॉर्ड सहेजें"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "इस व्यक्ति को खोजें"

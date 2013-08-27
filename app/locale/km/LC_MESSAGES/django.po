@@ -152,8 +152,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -246,6 +260,13 @@ msgstr ""
 "សូម​ទាក់​ទង​ប្រភព​ដើម។\n"
 "អ្នក​អាច​មើល​កំណត់​ត្រា​ដើម​នៅ​ %(begin_tag)s%(source_name)s%(end_tag)s។\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -935,9 +956,6 @@ msgstr "មិនមាន​កំណត់​ចំណាំ​ត្រូវ
 msgid "No person with ID: %(id_str)s."
 msgstr "មិន​មាន​បុគ្គល​ជាមួយ​លេខ​សម្គាល់៖ %(id_str)s។"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "មិន​មាន​​ធាតុ​​អនុញ្ញាត​បែប​នេះ​ទេ។"
 
@@ -996,17 +1014,6 @@ msgstr "ឈ្មោះ​តំបន់​បណ្ដាញ​ដើម"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"សូម​ចំណាំ​:៖ "
-"គ្រប់​ទិន្នន័យ​ទាំង​អស់​ដែល​បាន​បញ្ចូល​នឹង​ត្រូវ​អាច​រក​បាន​ជា​សាធារណៈ​ "
-"និង​អាច​មើល​បាន​ និង​អាច​ប្រើ​បាន​ដោយ​អ្នក​រាល់​គ្នា។ ក្រុមហ៊ុន Google "
-"មិន​បាន​ពិនិត្យ​មើល​ឡើងវិញ​ "
-"ឬ​ផ្ទៀង​ផ្ទាត់​ភាព​ត្រឹមត្រូវ​នៃ​ទិន្នន័យ​នេះទេ​។"
 
 #, fuzzy
 msgid ""
@@ -1109,9 +1116,6 @@ msgstr "មូលហេតុ​សម្រាប់​ការ​លុប​
 msgid "Reason for disabling notes:"
 msgstr "មូលហេតុ​សម្រាប់​ការ​បិទ​កំណត់​ចំណាំ​:៖"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "កំណត់ត្រា​ដែល​បាន​ជ្រើស"
 
@@ -1134,9 +1138,6 @@ msgstr "បង្ហាញ​កំណត់​ចំណាំ"
 
 msgid "Save this record"
 msgstr "រក្សា​ទុក​​កំណត់​ត្រា​នេះ"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ស្វែងរក​បុគ្គល​នេះ"

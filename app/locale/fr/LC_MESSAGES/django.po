@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "veuillez contacter la source d'origine. Vous pouvez consulter l'avis de "
 "recherche d'origine sur %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -939,9 +960,6 @@ msgstr "Aucun commentaire n'a été publié."
 msgid "No person with ID: %(id_str)s."
 msgstr "Personne ne correspond à l'identifiant %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Aucune entité d'autorisation de ce type."
 
@@ -999,15 +1017,6 @@ msgstr "Nom du site d'origine"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"REMARQUE : Toutes les données saisies sont accessibles au public, et "
-"visibles et utilisables par tous. Nous n'analysons pas ces données, et ne"
-" vérifions pas leur exactitude."
 
 #, fuzzy
 msgid ""
@@ -1110,9 +1119,6 @@ msgstr "Motif de la suppression :"
 msgid "Reason for disabling notes:"
 msgstr "Motif de la désactivation des commentaires :"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Avis de recherche sélectionnés"
 
@@ -1137,9 +1143,6 @@ msgstr "Afficher le commentaire"
 
 msgid "Save this record"
 msgstr "Enregistrer l'avis de recherche"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Rechercher cette personne"

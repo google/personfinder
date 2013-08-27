@@ -149,8 +149,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -245,6 +259,13 @@ msgstr ""
 "      Orijinal kaydı şu adresten görebilirsiniz:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -925,9 +946,6 @@ msgstr "Hiç not yayınlanmadı"
 msgid "No person with ID: %(id_str)s."
 msgstr "Şu kimliğe sahip hiç kimse yok: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Böyle bir yetkilendirme öğesi yok."
 
@@ -983,15 +1001,6 @@ msgstr "Orijinal site adı"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes "
-"tarafından görüntülenip kullanılabilecektir. Google, bu verileri "
-"incelemez veya bu verilerin doğruluğunu onaylamaz."
 
 #, fuzzy
 msgid ""
@@ -1094,9 +1103,6 @@ msgstr "Silme nedeni:"
 msgid "Reason for disabling notes:"
 msgstr "Notları devre dışı bırakma nedeni:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Kayıt seçildi"
 
@@ -1119,9 +1125,6 @@ msgstr "Notu göster"
 
 msgid "Save this record"
 msgstr "Bu kaydı kaydet"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Bu kişiyi ara"

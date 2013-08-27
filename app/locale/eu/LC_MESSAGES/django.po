@@ -143,8 +143,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -237,6 +251,13 @@ msgstr ""
 "      Ikusi jatorrizko erregistroa hemen:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -916,9 +937,6 @@ msgstr "Ez da oharrik argitaratu"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ez dago %(id_str)s IDa duen pertsonarik."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Ez dago horrelako erakunde jaulkitzailerik."
 
@@ -974,15 +992,6 @@ msgstr "Jatorrizko gunearen izena"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"OHARRA: sartutako datu guztiak erabilgarri egongo dira publikoarentzat "
-"eta edonork ikusi eta erabili ahal izango ditu. Google-k ez ditu datuen "
-"egiazkotasuna eta zehaztasuna egiaztatzen."
 
 #, fuzzy
 msgid ""
@@ -1085,9 +1094,6 @@ msgstr "Ezabatzearen arrazoia:"
 msgid "Reason for disabling notes:"
 msgstr "Oharrak desgaitzearen arrazoia:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "erregistro hautatu dira"
 
@@ -1110,9 +1116,6 @@ msgstr "Erakutsi oharra"
 
 msgid "Save this record"
 msgstr "Gorde erregistroa"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Bilatu pertsona"

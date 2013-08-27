@@ -140,8 +140,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -231,6 +245,13 @@ msgstr ""
 "      የመጀመሪያውን መዝገብ በ%(begin_tag)s%(source_name)s%(end_tag)s\n"
 "      ላይ መመልከት ይችላሉ።\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -888,9 +909,6 @@ msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
 msgid "No person with ID: %(id_str)s."
 msgstr "ይህን መታወቂያ የያዘ ማንም ሰው የለም፦ %(id_str)s።"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "እንደዚህ ያለ የፈቀዳ አካል የለም።"
 
@@ -946,14 +964,6 @@ msgstr "የመጀመሪያው ጣቢያ ስም"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"እባክዎ ልብ ይበሉ፦ የገባው ሁሉም ውሂብ በይፋ የሚገኝና በማንኛውም ሰው ሊታይ እና ስራ ላይ ሊውል የሚችል ይሆናል።"
-"  Google የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም።"
 
 #, fuzzy
 msgid ""
@@ -1051,9 +1061,6 @@ msgstr "የስረዛ ምክንያት፦"
 msgid "Reason for disabling notes:"
 msgstr "ማስታወሻዎች የሚሰናከሉበት ምክንያት፦"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "የተመረጡ መዛግብቶች"
 
@@ -1076,9 +1083,6 @@ msgstr "ማስታወሻ ይታይ"
 
 msgid "Save this record"
 msgstr "ይህ መዝገብ ይቀመጥ"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ይህን ሰው ፈልግ፦"

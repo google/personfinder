@@ -142,8 +142,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -233,6 +247,13 @@ msgstr ""
 "      يمكنك عرض المصدر الأصلي على\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -900,9 +921,6 @@ msgstr "لم يتم نشر أية ملاحظات"
 msgid "No person with ID: %(id_str)s."
 msgstr "ليس هناك شخص يتضمن المعرّف: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "لا يوجد كيان تفويض مثل هذا."
 
@@ -956,15 +974,6 @@ msgstr "اسم الموقع الأصلي"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"الرجاء ملاحظة أن: جميع البيانات التي يتم إدخالها ستكون متاحة للجميع، "
-"ليتسنى لهم عرضها واستخدامها. ولا تراجع Google هذه البيانات أو تتحقق من "
-"دقتها."
 
 #, fuzzy
 msgid ""
@@ -1065,9 +1074,6 @@ msgstr "أسباب الحذف:"
 msgid "Reason for disabling notes:"
 msgstr "سبب تعطيل الملاحظات:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "تم تحديد السجلات"
 
@@ -1090,9 +1096,6 @@ msgstr "الكشف عن ملاحظة"
 
 msgid "Save this record"
 msgstr "حفظ هذا السجل"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "البحث عن هذا الشخص"

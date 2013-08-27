@@ -143,8 +143,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -235,6 +249,13 @@ msgstr ""
 "      Pôvodný zdroj nájdete tu:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -917,9 +938,6 @@ msgstr "Neboli uverejnené žiadne poznámky"
 msgid "No person with ID: %(id_str)s."
 msgstr "Osoba s ID %(id_str)s sa nenašla."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Daná entita s právami autorizácie neexistuje."
 
@@ -975,15 +993,6 @@ msgstr "Pôvodný názov webových stránok"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"UPOZORNENIE: Všetky zadané údaje budú verejne prístupné. Ktokoľvek ich "
-"bude môcť zobraziť alebo použiť. Spoločnosť Google presnosť týchto údajov"
-" nekontroluje ani neoveruje."
 
 #, fuzzy
 msgid ""
@@ -1088,9 +1097,6 @@ msgstr "Dôvod odstránenia:"
 msgid "Reason for disabling notes:"
 msgstr "Dôvod zakázania poznámok:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "– počet vybratých záznamov"
 
@@ -1113,9 +1119,6 @@ msgstr "Zobraziť poznámku"
 
 msgid "Save this record"
 msgstr "Uložiť tento záznam"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Hľadať túto osobu"

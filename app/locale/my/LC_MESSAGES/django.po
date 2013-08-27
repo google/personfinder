@@ -151,8 +151,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -246,6 +260,13 @@ msgstr ""
 " %(begin_tag)s%(source_name)s%(end_tag)s. တြင္ "
 "မႈရင္းမွတ္တမ္းအားႀကည့္႐ွဳႏိုင္ပါသည္။\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -968,9 +989,6 @@ msgstr "မည္သည့္ မွတ္စုမွ တင္မထားပ�
 msgid "No person with ID: %(id_str)s."
 msgstr "%(id_str)s. အိုင္ဒီႏွင့္ ဘယ္သူ ့ကိုမွ မေတြ ့ပါ။"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "ထုိကဲ့သုိ႔သီးျခား လုပ္ပုိင္ခြင့္မရွိပါ။"
 
@@ -1029,15 +1047,6 @@ msgstr "မူရင္း ၀က္ဗ္ဆိုက္ နာမည္။"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ေက်းဇူးျပဳၿပီး သတိျပဳပါ။ ထည့္သြင္းလိုက္ေသာ အခ်က္အလက္မ်ားအား\n"
-"မည္သူမဆို ႀကည့္႐ွဳႏိုင္မည္၊ အသံုးျပဳႏိုင္မည္ ျဖစ္ပါသည္။  Google ဂူဂယ္\n"
-"မွ ဤအခ်က္အလက္မ်ား၏ မွန္ကန္မႈအား စစ္ေဆး အတည္ျပဳမည္ မဟုတ္ပါ။"
 
 #, fuzzy
 msgid ""
@@ -1147,9 +1156,6 @@ msgstr "ဖ်က္ျပစ္ရတဲ ့အေႀကာင္းအရာ�
 msgid "Reason for disabling notes:"
 msgstr "မွတ္စုမ်ားကို disable လုပ္ရတဲ့ အေႀကာင္းအရာ။"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "ေရြးထားေသာ မွတ္တမ္းမ်ား။"
 
@@ -1174,9 +1180,6 @@ msgstr "မွတ္စုကို ျပပါ။"
 
 msgid "Save this record"
 msgstr "ဤမွတ္တမ္းကို သိမ္းထားပါ။"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ဒီလူကို ရွာေဖြပါ။"

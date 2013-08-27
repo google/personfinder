@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -238,6 +252,13 @@ msgstr ""
 "      Початковий запис можна переглянути на сторінці\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -924,9 +945,6 @@ msgstr "Немає опублікованих нотаток"
 msgid "No person with ID: %(id_str)s."
 msgstr "Немає особи з ідентифікатором %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Немає такого об’єкта авторизації."
 
@@ -982,14 +1000,6 @@ msgstr "Назва початкового веб-сайту"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ЗАУВАЖТЕ: усі введені дані може переглядати та використовувати будь-хто. "
-"Google не перевіряє та не підтверджує точність цих даних."
 
 #, fuzzy
 msgid ""
@@ -1090,9 +1100,6 @@ msgstr "Причина видалення:"
 msgid "Reason for disabling notes:"
 msgstr "Причина вимкнення нотаток:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Вибрані записи"
 
@@ -1115,9 +1122,6 @@ msgstr "Показати нотатку"
 
 msgid "Save this record"
 msgstr "Зберегти цей запис"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Шукати цю особу"

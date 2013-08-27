@@ -148,8 +148,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "      அசல் பதிவை\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s இல் பார்க்கலாம்.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -934,9 +955,6 @@ msgstr "எந்தக் குறிப்புகளும் இடுக�
 msgid "No person with ID: %(id_str)s."
 msgstr "இந்த ஐடியில் எந்த நபரும் இல்லை: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "அதுபோன்ற அங்கீகார உட்கூறு இல்லை."
 
@@ -994,16 +1012,6 @@ msgstr "அசல் தளத்தின் பெயர்"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"கவனத்தில் கொள்ளவும்: உள்ளிடப்பட்ட எல்லா தரவும் பொதுவில் கிடைக்கும், "
-"மேலும் அனைவராலும் பார்க்கக்கூடியதாகவும், பயன்படுத்தக்கூடியதாகவும் "
-"இருக்கும். Google இந்தத் தரவின் துல்லியத்தை மதிப்பாய்வு செய்யாது அல்லது "
-"சரிபார்க்காது."
 
 #, fuzzy
 msgid ""
@@ -1107,9 +1115,6 @@ msgstr "நீக்கத்திற்கான காரணம்:"
 msgid "Reason for disabling notes:"
 msgstr "குறிப்புகளை முடக்குவதற்கான காரணம்:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "பதிவுகள் தேர்ந்தெடுக்கப்பட்டன"
 
@@ -1134,9 +1139,6 @@ msgstr "குறிப்பை வெளிப்படுத்து"
 
 msgid "Save this record"
 msgstr "இந்தப் பதிவைச் சேமி"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "இந்த நபரைத் தேடு"

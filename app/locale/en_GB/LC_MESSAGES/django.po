@@ -145,8 +145,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -239,6 +253,13 @@ msgstr ""
 "      You can view the original record at\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -911,9 +932,6 @@ msgstr "No notes have been posted"
 msgid "No person with ID: %(id_str)s."
 msgstr "No person with ID: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "No such Authorisation entity."
 
@@ -969,15 +987,6 @@ msgstr "Original site name"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone. Google does not review or verify the "
-"accuracy of this data."
 
 #, fuzzy
 msgid ""
@@ -1076,9 +1085,6 @@ msgstr "Reason for deletion:"
 msgid "Reason for disabling notes:"
 msgstr "Reason for disabling notes:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Records selected"
 
@@ -1101,9 +1107,6 @@ msgstr "Reveal note"
 
 msgid "Save this record"
 msgstr "Save this record"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Search for this person"

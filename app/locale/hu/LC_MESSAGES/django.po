@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -239,6 +253,13 @@ msgstr ""
 "      Az eredeti bejegyzést itt tekintheti meg:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -924,9 +945,6 @@ msgstr "Nem lett közzétéve megjegyzés"
 msgid "No person with ID: %(id_str)s."
 msgstr "Nem létezik személy a következő azonosítóval: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Nincs ilyen engedélyező entitás."
 
@@ -984,15 +1002,6 @@ msgstr "Az eredeti webhely neve"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"FIGYELEM: Minden bevitt adat nyilvános, mindenki által látható és "
-"felhasználható lesz. A Google nem vizsgálja felül vagy hitelesíti ezen "
-"adatok pontosságát."
 
 #, fuzzy
 msgid ""
@@ -1095,9 +1104,6 @@ msgstr "A törlés oka:"
 msgid "Reason for disabling notes:"
 msgstr "A megjegyzések letiltásának oka:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Bejegyzések kiválasztva"
 
@@ -1120,9 +1126,6 @@ msgstr "Megjegyzés megjelenítése"
 
 msgid "Save this record"
 msgstr "Bejegyzés mentése"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "A személy keresése"

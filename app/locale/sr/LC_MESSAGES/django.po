@@ -144,8 +144,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -238,6 +252,13 @@ msgstr ""
 "      Можете да прегледате оригинални запис на\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -916,9 +937,6 @@ msgstr "Није постављена ниједна белешка"
 msgid "No person with ID: %(id_str)s."
 msgstr "Не постоји ниједна особа са ИД-ом: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Не постоји такав ентитет за овлашћења."
 
@@ -972,15 +990,6 @@ msgstr "Назив оригиналног сајта"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"НАПОМЕНА: Сви унети подаци биће јавно доступни, па ће сви моћи да их "
-"прегледају и користе. Google не прегледа ове податке нити проверава "
-"њихову тачност."
 
 #, fuzzy
 msgid ""
@@ -1079,9 +1088,6 @@ msgstr "Разлог за брисање:"
 msgid "Reason for disabling notes:"
 msgstr "Разлог за онемогућавање бележака:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Изабрани записи"
 
@@ -1104,9 +1110,6 @@ msgstr "Откриј белешку"
 
 msgid "Save this record"
 msgstr "Сачувај овај запис"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Потражи ову особу"

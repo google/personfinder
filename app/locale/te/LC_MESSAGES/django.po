@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -243,6 +257,13 @@ msgstr ""
 "      మీరు వాస్తవ రికార్డ్‌ను %(begin_tag)s%(source_name)s%(end_tag)sలో\n"
 "      వీక్షించవచ్చు.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -929,9 +950,6 @@ msgstr "గమనికలను పోస్ట్ చేయలేదు"
 msgid "No person with ID: %(id_str)s."
 msgstr "ఈ IDతో ఏ వ్యక్తి లేరు: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "ఎటువంటి ప్రామాణీకరణ ఎంటిటీ లేదు."
 
@@ -987,15 +1005,6 @@ msgstr "వాస్తవ సైట్ పేరు"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"దయచేసి గమనించండి: డేటా మొత్తం పబ్లిక్‌కు అందుబాటులో ఉంటుంది మరియు ఎవరైనా "
-"వీక్షించవచ్చు మరియు ఉపయోగించవచ్చు.  Google ఈ డేటా యొక్క ఖచ్చితత్వాన్ని "
-"సమీక్షించదు లేదా ధృవీకరించదు."
 
 #, fuzzy
 msgid ""
@@ -1100,9 +1109,6 @@ msgstr "తొలగింపుకి కారణం:"
 msgid "Reason for disabling notes:"
 msgstr "గమనికల నిలిపివేతకు కారణం:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "ఎంచుకోబడిన రికార్డ్‌లు"
 
@@ -1125,9 +1131,6 @@ msgstr "గమనికను బహిర్గతం చేయండి"
 
 msgid "Save this record"
 msgstr "ఈ రికార్డ్‌ను సేవ్ చేయండి"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ఈ వ్యక్తి కోసం శోధించు"

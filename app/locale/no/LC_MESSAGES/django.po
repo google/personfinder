@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -241,6 +255,13 @@ msgstr ""
 "      Du kan se originaloppføringen på\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -920,9 +941,6 @@ msgstr "Ingen notater er lagt ut"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ingen person med ID-en: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Denne autorisasjonsinstansen eksisterer ikke."
 
@@ -978,15 +996,6 @@ msgstr "Navn på opprinnelig nettsted"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"MERK: Alle data som legges inn er allment synlig og tilgjengelig for "
-"alle. Google verken vurderer opplysningene eller bekrefter om de er "
-"riktige."
 
 #, fuzzy
 msgid ""
@@ -1085,9 +1094,6 @@ msgstr "Årsak til sletting:"
 msgid "Reason for disabling notes:"
 msgstr "Årsak til deaktivering av notater:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Valgte oppføringer"
 
@@ -1110,9 +1116,6 @@ msgstr "Vis notat"
 
 msgid "Save this record"
 msgstr "Lagre denne oppføringen"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Søk etter denne personen"

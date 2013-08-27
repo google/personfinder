@@ -147,8 +147,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "      Alkuperäiset tiedot näkyvät osoitteessa\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -922,9 +943,6 @@ msgstr "Muistiinpanoja ei ole lisätty"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ei löydy henkilöä tunnuksella: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Ei kyseistä valtuutusyhteisöä."
 
@@ -980,15 +998,6 @@ msgstr "Alkuperäinen sivuston nimi"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"HUOMAA: Kaikki annetut tiedot ovat julkisesti saatavilla ja kaikkien "
-"katseltavissa. Google ei tarkista tai vahvista tietojen "
-"paikkansapitävyyttä."
 
 #, fuzzy
 msgid ""
@@ -1091,9 +1100,6 @@ msgstr "Poiston syy:"
 msgid "Reason for disabling notes:"
 msgstr "Syy muistiinpanojen käytöstä poistamiseen:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Tallenteet valittu"
 
@@ -1116,9 +1122,6 @@ msgstr "Näytä viesti"
 
 msgid "Save this record"
 msgstr "Tallenna tallenne"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Hae tätä henkilöä"

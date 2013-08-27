@@ -155,8 +155,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -251,6 +265,13 @@ msgstr ""
 "      Μπορείτε να προβάλετε την αρχική εγγραφή στο\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -958,9 +979,6 @@ msgstr "Δεν έχουν δημοσιευτεί σημειώσεις"
 msgid "No person with ID: %(id_str)s."
 msgstr "Δεν υπάρχει άτομο με αναγνωριστικό: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Δεν υπάρχει τέτοια οντότητα εξουσιοδότησης."
 
@@ -1018,16 +1036,6 @@ msgstr "Αρχικό όνομα ιστότοπου"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ΣΗΜΕΙΩΣΗ: Όλα τα δεδομένα που έχουν καταχωριστεί θα είναι διαθέσιμα στο "
-"κοινό και θα μπορούν να προβληθούν και να χρησιμοποιηθούν από κάθε "
-"χρήστη. Η Google δεν κάνει επισκόπηση ούτε επαληθεύει την ακρίβεια αυτών "
-"των δεδομένων."
 
 #, fuzzy
 msgid ""
@@ -1133,9 +1141,6 @@ msgstr "Αιτία διαγραφής:"
 msgid "Reason for disabling notes:"
 msgstr "Λόγος για την απενεργοποίηση σημειώσεων:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Επιλεγμένες εγγραφές"
 
@@ -1160,9 +1165,6 @@ msgstr "Εμφάνιση σημείωσης"
 
 msgid "Save this record"
 msgstr "Αποθήκευση αυτής της εγγραφής"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Αναζήτηση αυτού του ατόμου"

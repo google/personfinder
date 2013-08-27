@@ -96,8 +96,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -157,6 +171,13 @@ msgid ""
 "      please contact the original source.\n"
 "      You can view the original record at\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
 "    "
 msgstr ""
 
@@ -731,9 +752,6 @@ msgstr ""
 msgid "No person with ID: %(id_str)s."
 msgstr ""
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr ""
 
@@ -785,15 +803,6 @@ msgstr ""
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
 
 #, fuzzy
 msgid ""
@@ -890,9 +899,6 @@ msgstr ""
 msgid "Reason for disabling notes:"
 msgstr ""
 
-msgid "Records Similar to:"
-msgstr ""
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
@@ -911,9 +917,6 @@ msgid "Reveal note"
 msgstr ""
 
 msgid "Save this record"
-msgstr ""
-
-msgid "Search Results for:"
 msgstr ""
 
 msgid "Search for this person"

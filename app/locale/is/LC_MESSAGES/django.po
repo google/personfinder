@@ -149,8 +149,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -245,6 +259,13 @@ msgstr ""
 "      Þú getur skoðað upphaflegu færsluna á\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -934,9 +955,6 @@ msgstr "Engar athugasemdir hafa verið birtar"
 msgid "No person with ID: %(id_str)s."
 msgstr "Engin manneskja með auðkennið: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "Engin slík sannvottunareigind."
 
@@ -992,15 +1010,6 @@ msgstr "Heiti upprunalegs vefsvæðis"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ATHUGAÐU: Öll gögn sem færð eru inn verða aðgengileg almenningi og allir "
-"geta skoðað þau og notað. Google fer ekki yfir þessi gögn eða staðfestir "
-"að þau séu rétt."
 
 #, fuzzy
 msgid ""
@@ -1101,9 +1110,6 @@ msgstr "Ástæða fyrir eyðingu:"
 msgid "Reason for disabling notes:"
 msgstr "Ástæða fyrir því að gera athugasemdir óvirkar:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Valdar færslur"
 
@@ -1126,9 +1132,6 @@ msgstr "Sýna athugasemd"
 
 msgid "Save this record"
 msgstr "Vista þessa færslu"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Leita að þessari manneskju"

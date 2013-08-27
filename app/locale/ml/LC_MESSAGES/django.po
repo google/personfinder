@@ -152,8 +152,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -249,6 +263,13 @@ msgstr ""
 "      നിങ്ങൾക്ക് യഥാർത്ഥ റെക്കോർഡ് \n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s എന്നതിൽ കാണാനാകും.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -941,9 +962,6 @@ msgstr "കുറിപ്പുകളൊന്നും പോസ്റ്റ�
 msgid "No person with ID: %(id_str)s."
 msgstr "ഇനിപ്പറയുന്ന ഐഡിയിൽ വ്യക്തികളൊന്നുമില്ല: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "അത്തരം അംഗീകരണ എന്റിറ്റികളൊന്നുമില്ല."
 
@@ -1001,15 +1019,6 @@ msgstr "യഥാർത്ഥ സൈറ്റിന്റെ പേര്"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"ശ്രദ്ധിക്കുക: നൽകിയ എല്ലാ ഡാറ്റയും എല്ലാവർക്കും ലഭ്യമാകുന്നതും "
-"ഏതൊരാൾക്കും കാണാനും ഉപയോഗിക്കാനും കഴിയുന്നതുമാണ്.  Google ഈ ഡാറ്റയുടെ "
-"കൃത്യത അവലോകനം ചെയ്യുകയോ സ്ഥിരീകരിക്കുകയോ ചെയ്യില്ല."
 
 #, fuzzy
 msgid ""
@@ -1115,9 +1124,6 @@ msgstr "ഇല്ലാതാക്കുന്നതിനുള്ള കാ�
 msgid "Reason for disabling notes:"
 msgstr "കുറിപ്പുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനുള്ള കാരണം:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "തിരഞ്ഞെടുത്ത റെക്കോർഡുകൾ"
 
@@ -1142,9 +1148,6 @@ msgstr "കുറിപ്പ് വെളിപ്പെടുത്തുക"
 
 msgid "Save this record"
 msgstr "ഈ റെക്കോർഡ് സംരക്ഷിക്കുക"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "ഈ വ്യക്തിയെ തിരയുക"

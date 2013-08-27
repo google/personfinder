@@ -141,8 +141,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -232,6 +246,13 @@ msgstr ""
 "      原始紀錄出處為：\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -882,9 +903,6 @@ msgstr "沒有已發佈的註記"
 msgid "No person with ID: %(id_str)s."
 msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "沒有這類授權實體。"
 
@@ -936,12 +954,6 @@ msgstr "原始網站名稱"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr "請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。Google 並不會檢查或確認資料是否正確。"
 
 #, fuzzy
 msgid ""
@@ -1037,9 +1049,6 @@ msgstr "刪除原因："
 msgid "Reason for disabling notes:"
 msgstr "停用註記功能的原因："
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "已選取的紀錄筆數："
 
@@ -1062,9 +1071,6 @@ msgstr "顯示註記"
 
 msgid "Save this record"
 msgstr "儲存此紀錄"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "搜尋這個人"

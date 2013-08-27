@@ -146,8 +146,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -238,6 +252,13 @@ msgstr ""
 "original. El registre original es pot consultar a "
 "%(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -927,9 +948,6 @@ msgstr "No s'ha publicat cap nota."
 msgid "No person with ID: %(id_str)s."
 msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "No hi ha cap entitat d'autorització."
 
@@ -985,15 +1003,6 @@ msgstr "Nom del lloc original"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"TINGUEU EN COMPTE EL SEGÜENT: Totes les dades introduïdes aquí estaran "
-"disponibles per al públic general i tothom les podrà visualitzar i "
-"utilitzar. Google no revisa ni verifica la precisió d'aquestes dades."
 
 #, fuzzy
 msgid ""
@@ -1095,9 +1104,6 @@ msgstr "Motiu de la supressió:"
 msgid "Reason for disabling notes:"
 msgstr "Motiu per a la desactivació de les notes:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "Registres seleccionats"
 
@@ -1120,9 +1126,6 @@ msgstr "Mostra la nota"
 
 msgid "Save this record"
 msgstr "Desa aquest registre"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "Cerca aquesta persona"

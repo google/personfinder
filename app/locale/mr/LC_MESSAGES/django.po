@@ -145,8 +145,22 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s Records selected\n"
+"            %(dup_count)s records selected\n"
 "          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 msgstr ""
 
 #, python-format
@@ -242,6 +256,13 @@ msgstr ""
 "      येथे आपण मूळ रेकॉर्ड पाहू शकता\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -924,9 +945,6 @@ msgstr "कोणत्याही टिपा पोस्ट करण्य
 msgid "No person with ID: %(id_str)s."
 msgstr "ID सह कोणतीही व्यक्ती नाही: %(id_str)s."
 
-msgid "No results found for:"
-msgstr ""
-
 msgid "No such Authorization entity."
 msgstr "असे कोणतेही प्राधिकृत अस्तित्व नाही."
 
@@ -982,15 +1000,6 @@ msgstr "मूळ साइट नाव"
 
 msgid "Other website"
 msgstr ""
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"कृपया लक्षात ठेवा: प्रविष्ट केलेला सर्व डेटा लोकांसाठी उपलब्ध होईल आणि "
-"कोणासाठीही तो दृश्यमान असेल आणि वापरण्यायोग्य असेल.  Google या डेटाचे "
-"पुनरावलोकन करत नाही किंवा त्याची अचूकता सत्यापित करत नाही."
 
 #, fuzzy
 msgid ""
@@ -1093,9 +1102,6 @@ msgstr "हटविण्याचे कारण:"
 msgid "Reason for disabling notes:"
 msgstr "टिपा अक्षम करण्याचे कारण:"
 
-msgid "Records Similar to:"
-msgstr ""
-
 msgid "Records selected"
 msgstr "निवडलेली रेकॉर्ड"
 
@@ -1118,9 +1124,6 @@ msgstr "टीप प्रकट करा"
 
 msgid "Save this record"
 msgstr "हे रेकॉर्ड जतन करा"
-
-msgid "Search Results for:"
-msgstr ""
 
 msgid "Search for this person"
 msgstr "या व्यक्तीस शोधा"
