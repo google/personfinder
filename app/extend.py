@@ -64,7 +64,6 @@ class Handler(utils.BaseHandler):
                 # we save here too.
                 person.put()
                 person.put_expiry_flags()
-                view_url=self.get_url('/view', id=person.record_id)
                 self.render('extend_done.html',
                             expiry_date_local=
                                 self.to_local_time(person.expiry_date),
