@@ -151,6 +151,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -243,6 +264,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -256,6 +284,13 @@ msgstr ""
 "ေက်းဇူးၿပဳၿပီး %(website)sေပၚရွိ ထိုသူ၏profile စာမ်က္နွာကိုသြား၍ "
 "ထိုURLအား ဒီမွာcopyလုပ္ၿပီး၊ paste လုပ္ပါ။\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -556,6 +591,16 @@ msgstr "results list ေခၚ ရလဒ္စာရင္း သို ့ျ�
 
 msgid "Back to start"
 msgstr "အစသို ့ျပန္သြားရန္။"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV ဖိုင္။"
@@ -944,11 +989,13 @@ msgstr "မည္သည့္ မွတ္စုမွ တင္မထားပ�
 msgid "No person with ID: %(id_str)s."
 msgstr "%(id_str)s. အိုင္ဒီႏွင့္ ဘယ္သူ ့ကိုမွ မေတြ ့ပါ။"
 
-msgid "No results found for"
-msgstr "----အတြက္ ဘာ ရလဒ္ (results) မွ မရွိပါ။"
-
 msgid "No such Authorization entity."
 msgstr "ထုိကဲ့သုိ႔သီးျခား လုပ္ပုိင္ခြင့္မရွိပါ။"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -998,14 +1045,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "မူရင္း ၀က္ဗ္ဆိုက္ နာမည္။"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"ေက်းဇူးျပဳၿပီး သတိျပဳပါ။ ထည့္သြင္းလိုက္ေသာ အခ်က္အလက္မ်ားအား\n"
-"မည္သူမဆို ႀကည့္႐ွဳႏိုင္မည္၊ အသံုးျပဳႏိုင္မည္ ျဖစ္ပါသည္။  Google ဂူဂယ္\n"
-"မွ ဤအခ်က္အလက္မ်ား၏ မွန္ကန္မႈအား စစ္ေဆး အတည္ျပဳမည္ မဟုတ္ပါ။"
 
 #, fuzzy
 msgid ""
@@ -1115,9 +1156,6 @@ msgstr "ဖ်က္ျပစ္ရတဲ ့အေႀကာင္းအရာ�
 msgid "Reason for disabling notes:"
 msgstr "မွတ္စုမ်ားကို disable လုပ္ရတဲ့ အေႀကာင္းအရာ။"
 
-msgid "Records Similar to"
-msgstr "---ႏွင့္တူေသာ မွတ္တမ္းမ်ား။"
-
 msgid "Records selected"
 msgstr "ေရြးထားေသာ မွတ္တမ္းမ်ား။"
 
@@ -1142,9 +1180,6 @@ msgstr "မွတ္စုကို ျပပါ။"
 
 msgid "Save this record"
 msgstr "ဤမွတ္တမ္းကို သိမ္းထားပါ။"
-
-msgid "Search Results for"
-msgstr "---အတြက္ ရွာေဖြရသည့္ ရလဒ္ (Results) မ်ား။"
 
 msgid "Search for this person"
 msgstr "ဒီလူကို ရွာေဖြပါ။"
@@ -1175,6 +1210,9 @@ msgstr "ေျမပံုကို ျပပါ။"
 
 msgid "Show sensitive information"
 msgstr "အေရးႀကီးေသာ အခ်က္အလက္မ်ားကို ျပပါ။"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "ဆိုင္းအင္ Sign in"
@@ -1288,10 +1326,6 @@ msgstr "ဤမွတ္တမ္းအား ထပ္မံသက္တမ္�
 
 msgid "The record has been deleted."
 msgstr "မွတ္တမ္းအား ဖ်က္ထားလိုက္ၿပီ။"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "%(expiry_date)s. အထိ မွတ္တမ္းအား သက္တမ္းတိုးထားလိုက္သည္။"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1650,9 +1684,6 @@ msgstr ""
 "[Person Finder]  %(full_name)s ၏ ေနာက္ဆံုးအေနအထား အပ္ဒိတ္ (Status update)"
 " ကို သိရွိရန္ အီးေမးလ္လိပ္စာျဖင့္ သင္စာရင္းသြင္းထားသည္။ subscribe "
 "လုပ္ထားသည္။"
-
-msgid "at"
-msgstr "မွာ"
 
 msgid "female"
 msgstr "အမ်ိဳးသမီး"

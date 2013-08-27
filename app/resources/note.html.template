@@ -22,9 +22,7 @@
     <span class="author unknown">{% trans "(unknown)" %}</span>
   {% endif %}
   {% trans "on" %}
-  <span class="date">{{note.source_date_local|date:"Y-m-d"}}</span>
-  {% trans "at" %}
-  <span class="time">{{note.source_date_local|date:"H:i"}}</span>
+  <span class="time">{{note.source_date_local|date:"DATETIME_FORMAT"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
     {% if note.hidden %}

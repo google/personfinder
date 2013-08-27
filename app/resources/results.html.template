@@ -40,12 +40,19 @@
 {% include "query_form.html.template" %}
 {% if results %}
   {% ifequal params.role 'seek' %}
-    <h1>{% trans "Search Results for" %}:
-      {{params.query}}</h1>
+    <h1>
+      {% blocktrans with params.query as query %}
+        Search Results for: {{query}}
+      {% endblocktrans %}
+    </h1>
   {% endifequal %}
 
   {% ifequal params.role 'provide' %}
-    <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
+    <h1>
+      {% blocktrans with env.params_full_name as full_name %}
+        Records Similar to: {{full_name}}
+      {% endblocktrans %}
+    </h1>
     <p>
     {% if env.ui != "small" %}
       {% ifequal num_results 1 %}
@@ -164,7 +171,9 @@
           <input type='hidden' name='id2' id='id2' value=''>
           <input type='hidden' name='id3' id='id3' value=''>
           <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
-          <span id='dup_count'></span> {% trans "Records selected" %}
+          {% blocktrans with "<span id='dup_count'></span>"|safe as dup_count %}
+            {{dup_count}} records selected
+          {% endblocktrans %}
         </form>
       </div>
       <script type='text/javascript'>
@@ -180,8 +189,11 @@
 {% else %}
 
   {% if not jp_phone_number_query %}
-  <h1>{% trans "No results found for" %}:
-    {{params.query}}</h1>
+  <h1>
+    {% blocktrans with params.query as query %}
+      No results found for: {{query}}
+    {% endblocktrans %}
+  </h1>
   <p>
   {% trans "We have nothing matching your search." %}
   {% else %}

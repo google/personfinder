@@ -146,6 +146,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -234,6 +255,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -248,6 +276,13 @@ msgstr ""
 "nato kopirajte URL in ga prilepite\n"
 "      na to mesto.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -538,6 +573,16 @@ msgstr "Nazaj na seznam rezultatov"
 
 msgid "Back to start"
 msgstr "Na začetek"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Datoteka CSV"
@@ -890,11 +935,13 @@ msgstr "Opombe niso bile objavljene"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ni osebe z ID-jem: %(id_str)s"
 
-msgid "No results found for"
-msgstr "Ni rezultatov za"
-
 msgid "No such Authorization entity."
 msgstr "Ni nobenega takega subjekta za dodeljevanje dovoljenj."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
@@ -941,14 +988,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Ime izvirnega mesta"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"OPOMBA: Vsi podatki, ki jih vnesete, bodo javno dostopni in si jih bo "
-"lahko ogledal in uporabil kdor koli. Google ne preverja točnosti teh "
-"podatkov."
 
 #, fuzzy
 msgid ""
@@ -1049,9 +1090,6 @@ msgstr "Razlog za izbris:"
 msgid "Reason for disabling notes:"
 msgstr "Razlog, zaradi katerega ste onemogočili opombe:"
 
-msgid "Records Similar to"
-msgstr "Zapisi, podobni"
-
 msgid "Records selected"
 msgstr "Izbrani zapisi"
 
@@ -1074,9 +1112,6 @@ msgstr "Razkrij opombo"
 
 msgid "Save this record"
 msgstr "Shrani ta zapis"
-
-msgid "Search Results for"
-msgstr "Rezultati iskanja za"
 
 msgid "Search for this person"
 msgstr "Poišči to osebo"
@@ -1102,6 +1137,9 @@ msgstr "Prikaži zemljevid"
 
 msgid "Show sensitive information"
 msgstr "Prikaži občutljive podatke"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Prijava"
@@ -1195,10 +1233,6 @@ msgstr "Zapisa ni mogoče podaljšati."
 
 msgid "The record has been deleted."
 msgstr "Zapis je bil izbrisan."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Zapis je bil podaljšan do %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1506,9 +1540,6 @@ msgstr "[Iskalnik oseb] Posodobitev stanja za osebo %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Iskalnik oseb] Naročeni ste na posodobitve stanja za osebo %(full_name)s"
-
-msgid "at"
-msgstr "ob"
 
 msgid "female"
 msgstr "ženska"

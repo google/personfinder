@@ -143,6 +143,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -233,6 +254,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +275,13 @@ msgstr ""
 " đó sao chép và dán\n"
 "      URL đó tại đây.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -534,6 +569,16 @@ msgstr "Trở lại danh sách kết quả"
 
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Tệp CSV"
@@ -886,11 +931,13 @@ msgstr "Chưa có ghi chú nào được đăng"
 msgid "No person with ID: %(id_str)s."
 msgstr "Không có người nào có ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Không tìm thấy kết quả cho"
-
 msgid "No such Authorization entity."
 msgstr "Không có tổ chức ủy quyền như vậy."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Không được phép đăng ghi chú có trạng thái \"believed_dead\"."
@@ -937,14 +984,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Tên trang web gốc"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"XIN LƯU Ý: Tất cả dữ liệu đã nhập sẽ được công khai và bất kỳ ai cũng có "
-"thể xem và sử dụng dữ liệu đó. Google không đánh giá hay xác minh tính "
-"chính xác của dữ liệu này."
 
 #, fuzzy
 msgid ""
@@ -1046,9 +1087,6 @@ msgstr "Lý do xóa:"
 msgid "Reason for disabling notes:"
 msgstr "Lý do tắt ghi chú:"
 
-msgid "Records Similar to"
-msgstr "Hồ sơ tương tự với"
-
 msgid "Records selected"
 msgstr "Hồ sơ đã chọn"
 
@@ -1071,9 +1109,6 @@ msgstr "Tiết lộ ghi chú"
 
 msgid "Save this record"
 msgstr "Lưu hồ sơ này"
-
-msgid "Search Results for"
-msgstr "Kết quả tìm kiếm cho"
 
 msgid "Search for this person"
 msgstr "Tìm kiếm người này"
@@ -1099,6 +1134,9 @@ msgstr "Hiển thị Bản đồ"
 
 msgid "Show sensitive information"
 msgstr "Hiển thị thông tin nhạy cảm"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Đăng nhập"
@@ -1192,10 +1230,6 @@ msgstr "Không thể gia hạn hồ sơ."
 
 msgid "The record has been deleted."
 msgstr "Hồ sơ này đã bị xóa."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Hồ sơ đã được gia hạn tới %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1515,9 +1549,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Công cụ tìm kiếm người thân] Bạn đã được đăng ký các cập nhật trạng thái"
 " cho %(full_name)s"
-
-msgid "at"
-msgstr "lúc"
 
 msgid "female"
 msgstr "nữ"

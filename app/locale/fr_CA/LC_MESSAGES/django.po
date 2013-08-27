@@ -147,6 +147,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -240,6 +261,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -252,6 +280,13 @@ msgstr ""
 "valide pour le site Web %(website)s. Veuillez accéder à la page de profil"
 " de cette personne sur %(website)s pour y copier-coller cette URL.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -549,6 +584,16 @@ msgstr "Revenir à la liste des résultats"
 
 msgid "Back to start"
 msgstr "Revenir à l'accueil"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Fichier CSV"
@@ -921,11 +966,13 @@ msgstr "Aucun commentaire n'a été publié"
 msgid "No person with ID: %(id_str)s."
 msgstr "Personne ne correspond à l'identifiant %(id_str)s."
 
-msgid "No results found for"
-msgstr "Aucun résultat pour"
-
 msgid "No such Authorization entity."
 msgstr "Aucune entité d'autorisation de ce type."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -974,15 +1021,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Nom du site original"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"Remarque importante : toutes les données entrées seront accessibles au "
-"public. Tous les visiteurs du site pourront consulter et utiliser "
-"l'information qui s'y trouve. Nous n'analysons pas ces données, et ne "
-"vérifions pas leur exactitude."
 
 #, fuzzy
 msgid ""
@@ -1089,9 +1129,6 @@ msgstr "Raison de la suppression :"
 msgid "Reason for disabling notes:"
 msgstr "Raison pour la désactivation des commentaires :"
 
-msgid "Records Similar to"
-msgstr "Résultats similaires à"
-
 msgid "Records selected"
 msgstr "Entrées sélectionnées"
 
@@ -1116,9 +1153,6 @@ msgstr "Afficher le commentaire"
 
 msgid "Save this record"
 msgstr "Enregistrer l'avis de recherche"
-
-msgid "Search Results for"
-msgstr "Rechercher des résultats concernant"
 
 msgid "Search for this person"
 msgstr "Rechercher cette personne"
@@ -1148,6 +1182,9 @@ msgstr "Afficher la carte"
 
 msgid "Show sensitive information"
 msgstr "Afficher les données sensibles"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Connexion"
@@ -1245,12 +1282,6 @@ msgstr "Impossible de repousser la date d'expiration de l'avis de recherche."
 
 msgid "The record has been deleted."
 msgstr "L'avis de recherche a été supprimé."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
-"La date d'expiration de l'avis de recherche a été repoussée au "
-"%(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1599,9 +1630,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Service Recherche de personnes de Google] Vous êtes abonné aux mises à "
 "jour d'état concernant « %(full_name)s »"
-
-msgid "at"
-msgstr "à"
 
 msgid "female"
 msgstr "femme"

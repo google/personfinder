@@ -149,6 +149,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -242,6 +263,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -255,6 +283,13 @@ msgstr ""
 "ardından o\n"
 "      URL'yi kopyalayıp buraya yapıştırın.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -551,6 +586,16 @@ msgstr "Sonuç listesine dön"
 
 msgid "Back to start"
 msgstr "Başa dön"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV dosyası"
@@ -901,11 +946,13 @@ msgstr "Hiç not yayınlanmadı"
 msgid "No person with ID: %(id_str)s."
 msgstr "Şu kimliğe sahip hiç kimse yok: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Şu arama için sonuç bulunamadı"
-
 msgid "No such Authorization entity."
 msgstr "Böyle bir yetkilendirme öğesi yok."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Durumu \"believed_dead\" olan notları yayınlama yetkiniz yok."
@@ -952,14 +999,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Orijinal site adı"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes "
-"tarafından görüntülenip kullanılabilecektir. Google, bu verileri "
-"incelemez veya bu verilerin doğruluğunu onaylamaz."
 
 #, fuzzy
 msgid ""
@@ -1062,9 +1103,6 @@ msgstr "Silme nedeni:"
 msgid "Reason for disabling notes:"
 msgstr "Notları devre dışı bırakma nedeni:"
 
-msgid "Records Similar to"
-msgstr "Benzer Kayıtlar:"
-
 msgid "Records selected"
 msgstr "Kayıt seçildi"
 
@@ -1087,9 +1125,6 @@ msgstr "Notu göster"
 
 msgid "Save this record"
 msgstr "Bu kaydı kaydet"
-
-msgid "Search Results for"
-msgstr "Arama Sonuçları:"
 
 msgid "Search for this person"
 msgstr "Bu kişiyi ara"
@@ -1115,6 +1150,9 @@ msgstr "Haritayı Göster"
 
 msgid "Show sensitive information"
 msgstr "Hassas bilgileri göster"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Oturum aç"
@@ -1210,10 +1248,6 @@ msgstr "Kaydın süre sonu uzatılamıyor."
 
 msgid "The record has been deleted."
 msgstr "Kayıt silindi."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Kayıt %(expiry_date)s tarihine kadar uzatıldı."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1528,9 +1562,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Kişi Bulucu] %(full_name)s ile ilgili durum güncellemelerine abone "
 "oldunuz"
-
-msgid "at"
-msgstr "saat:"
 
 msgid "female"
 msgstr "kadın"

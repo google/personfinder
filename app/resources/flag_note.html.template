@@ -23,9 +23,9 @@
     {% endif %}
   </h2>
   {% if note.hidden %}
-    <p>By unmarking this note as spam, you will make it visible by default.</p>
+    <p>{% trans "By unmarking this note as spam, you will make it visible by default." %}</p>
   {% else %}
-    <p>By marking this note as spam, you will make it hidden by default. It will still be a part of the record, but will require an extra click to view the contents of the note. Users will also be able to remove the spam mark from this note.</p>
+    <p>{% trans "By marking this note as spam, you will make it hidden by default. It will still be a part of the record, but will require an extra click to view the contents of the note. Users will also be able to remove the spam mark from this note." %}</p>
   {% endif %}
   
   <div style="width: 462px;">

@@ -133,6 +133,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -224,6 +245,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -236,6 +264,13 @@ msgstr ""
 "जस्तो देखिँदैन। कृपया यस व्यक्तिको प्रोफाइल पृष्ठ %(website)sमा जानुहोस्,"
 " र त्यसपछि त्यस URL लाई प्रतिलिपि गरेर यहाँ टाँस गर्नुहोस्।\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -503,6 +538,16 @@ msgstr "परिणाम सूचीमा फर्कनुहोस्"
 
 msgid "Back to start"
 msgstr "सुरुमा फर्कनुहोस्"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV फाइल"
@@ -859,11 +904,13 @@ msgstr "कुनै टिप्पणीहरू पोष्ट गरिए
 msgid "No person with ID: %(id_str)s."
 msgstr "यस ID %(id_str)s का साथ कुनै पनि व्यक्ति छैन।"
 
-msgid "No results found for"
-msgstr "यसका लागि कुनै परिणामहरू छैन"
-
 msgid "No such Authorization entity."
 msgstr "यस्तो कुनै प्रमाणिकरण वस्तु छैन।"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" वस्तुस्थितिका साथ टिप्पणीहरू पोष्ट गर्न अधिकार छैन।"
@@ -910,14 +957,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "मूल साइट नाम"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"कृपया ध्यान दिनुहोस्: सम्पूर्ण प्रविष्टि गरिएको डेटा सार्वजनिक रूपमा "
-"उपलव्ध हुने छ र जो कसैले पनि हेर्न र प्रयोग गर्न मिल्ने अवस्थामा हुन्छ। "
-"Google ले यस डेटाको सहीपना समीक्षा वा प्रमाणित गर्दैन।"
 
 #, fuzzy
 msgid ""
@@ -1026,9 +1067,6 @@ msgstr "मेट्नका लागि कारण:"
 msgid "Reason for disabling notes:"
 msgstr "टिप्पणी असक्षम पार्नका लागि कारण:"
 
-msgid "Records Similar to"
-msgstr "यससँग मिल्दाजुल्दा रेकर्डहरू"
-
 msgid "Records selected"
 msgstr "चयनित रेकर्ड"
 
@@ -1051,9 +1089,6 @@ msgstr "टिप्पणी देखाउनुहोस्"
 
 msgid "Save this record"
 msgstr "यो रेकर्ड बचत गर्नुहोस्"
-
-msgid "Search Results for"
-msgstr "लागि परिणामहरू खोज गर्नुहोस्"
 
 msgid "Search for this person"
 msgstr "यस व्यक्तिका लागि खोज गर्नुहोस्"
@@ -1079,6 +1114,9 @@ msgstr "नक्सा देखाउँनुहोस्"
 
 msgid "Show sensitive information"
 msgstr "सम्वेदनशील जानकारी देखाउनुहोस्"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "साइन इन गर्नुहोस्"
@@ -1174,10 +1212,6 @@ msgstr "यस रेकर्डलाई विस्तार गर्न �
 
 msgid "The record has been deleted."
 msgstr "यस रेकर्डलाई मेटाइएको छ।"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "रेकर्डलाई %(expiry_date)sमा विस्तार गरिएको छ।"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1499,9 +1533,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] वस्तुस्थिति अद्यावधिक%(full_name)sका लागि तपाईँको सदस्यता"
 " कायम गरिएको छ"
-
-msgid "at"
-msgstr "मा"
 
 msgid "female"
 msgstr "महिला"

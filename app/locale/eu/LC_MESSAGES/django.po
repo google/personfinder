@@ -143,6 +143,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -234,6 +255,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +275,13 @@ msgstr ""
 "kopiatu eta itsatsi\n"
 "      URL hura hemen.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -538,6 +573,16 @@ msgstr "Itzuli emaitzen zerrendara"
 
 msgid "Back to start"
 msgstr "Itzuli hasierara"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV fitxategia"
@@ -892,11 +937,13 @@ msgstr "Ez da oharrik argitaratu"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ez dago %(id_str)s IDa duen pertsonarik."
 
-msgid "No results found for"
-msgstr "Ez da emaitzarik aurkitu honentzat"
-
 msgid "No such Authorization entity."
 msgstr "Ez dago horrelako erakunde jaulkitzailerik."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ez dago \"believed_dead\" egoerarekin oharrak argitaratzeko baimenik."
@@ -943,14 +990,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Jatorrizko gunearen izena"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"OHARRA: sartutako datu guztiak erabilgarri egongo dira publikoarentzat "
-"eta edonork ikusi eta erabili ahal izango ditu. Google-k ez ditu datuen "
-"egiazkotasuna eta zehaztasuna egiaztatzen."
 
 #, fuzzy
 msgid ""
@@ -1053,9 +1094,6 @@ msgstr "Ezabatzearen arrazoia:"
 msgid "Reason for disabling notes:"
 msgstr "Oharrak desgaitzearen arrazoia:"
 
-msgid "Records Similar to"
-msgstr "Honen antzeko erregistroak:"
-
 msgid "Records selected"
 msgstr "erregistro hautatu dira"
 
@@ -1078,9 +1116,6 @@ msgstr "Erakutsi oharra"
 
 msgid "Save this record"
 msgstr "Gorde erregistroa"
-
-msgid "Search Results for"
-msgstr "Honen bilaketa-emaitzak:"
 
 msgid "Search for this person"
 msgstr "Bilatu pertsona"
@@ -1106,6 +1141,9 @@ msgstr "Erakutsi mapa"
 
 msgid "Show sensitive information"
 msgstr "Erakutsi isilpeko informazioa"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Hasi saioa"
@@ -1199,10 +1237,6 @@ msgstr "Ezin da erregistroaren iraungitze-data atzeratu."
 
 msgid "The record has been deleted."
 msgstr "Erregistroa ezabatu da."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Erregistroaren iraungitze-data %(expiry_date)s arte atzeratu da."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1524,9 +1558,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] %(full_name)s erregistroaren egoera-eguneratzeetara "
 "harpidetuta zaude"
-
-msgid "at"
-msgstr "ordua:"
 
 msgid "female"
 msgstr "emakumea"

@@ -142,6 +142,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -230,6 +251,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -244,6 +272,13 @@ msgstr ""
 "ثم انسخ والصق\n"
 "      عنوان URL هذا هنا.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -530,6 +565,16 @@ msgstr "الرجوع إلى قائمة النتائج"
 
 msgid "Back to start"
 msgstr "الرجوع إلى البداية"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "ملف CSV"
@@ -876,11 +921,13 @@ msgstr "لم يتم نشر أية ملاحظات"
 msgid "No person with ID: %(id_str)s."
 msgstr "ليس هناك شخص يتضمن المعرّف: %(id_str)s."
 
-msgid "No results found for"
-msgstr "لم يتم العثور على أية نتائج لـ"
-
 msgid "No such Authorization entity."
 msgstr "لا يوجد كيان تفويض مثل هذا."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "غير مصرح بنشر ملاحظات بالحالة \"believed_dead\"."
@@ -925,14 +972,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "اسم الموقع الأصلي"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"الرجاء ملاحظة أن: جميع البيانات التي يتم إدخالها ستكون متاحة للجميع، "
-"ليتسنى لهم عرضها واستخدامها. ولا تراجع Google هذه البيانات أو تتحقق من "
-"دقتها."
 
 #, fuzzy
 msgid ""
@@ -1033,9 +1074,6 @@ msgstr "أسباب الحذف:"
 msgid "Reason for disabling notes:"
 msgstr "سبب تعطيل الملاحظات:"
 
-msgid "Records Similar to"
-msgstr "السجلات مماثلة لـ"
-
 msgid "Records selected"
 msgstr "تم تحديد السجلات"
 
@@ -1058,9 +1096,6 @@ msgstr "الكشف عن ملاحظة"
 
 msgid "Save this record"
 msgstr "حفظ هذا السجل"
-
-msgid "Search Results for"
-msgstr "البحث في النتائج عن"
 
 msgid "Search for this person"
 msgstr "البحث عن هذا الشخص"
@@ -1088,6 +1123,9 @@ msgstr "عرض الخريطة"
 
 msgid "Show sensitive information"
 msgstr "عرض المعلومات الحساسة"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "تسجيل الدخول"
@@ -1181,10 +1219,6 @@ msgstr "لا يمكن مد تاريخ صلاحية السجل."
 
 msgid "The record has been deleted."
 msgstr "تم حذف السجل."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "تم مد تاريخ صلاحية السجل إلى %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1487,9 +1521,6 @@ msgstr "[الباحث عن الأشخاص] تحديث حالة %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[الباحث عن الأشخاص] لقد اشتركت في تحديثات حالة %(full_name)s"
-
-msgid "at"
-msgstr "في"
 
 msgid "female"
 msgstr "أنثى"

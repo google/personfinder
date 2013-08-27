@@ -96,6 +96,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -156,12 +177,26 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
 "and paste\n"
 "      that URL here.\n"
 "      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
 msgstr ""
 
 msgid ""
@@ -374,6 +409,16 @@ msgid "Back to results list"
 msgstr ""
 
 msgid "Back to start"
+msgstr ""
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
 
 msgid "CSV file"
@@ -707,10 +752,12 @@ msgstr ""
 msgid "No person with ID: %(id_str)s."
 msgstr ""
 
-msgid "No results found for"
+msgid "No such Authorization entity."
 msgstr ""
 
-msgid "No such Authorization entity."
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
 msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
@@ -754,14 +801,8 @@ msgstr ""
 msgid "Original site name"
 msgstr ""
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
 
 #, fuzzy
 msgid ""
@@ -858,12 +899,6 @@ msgstr ""
 msgid "Reason for disabling notes:"
 msgstr ""
 
-msgid "Records Similar to"
-msgstr ""
-
-msgid "Records selected"
-msgstr ""
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
@@ -882,9 +917,6 @@ msgid "Reveal note"
 msgstr ""
 
 msgid "Save this record"
-msgstr ""
-
-msgid "Search Results for"
 msgstr ""
 
 msgid "Search for this person"
@@ -910,6 +942,9 @@ msgid "Show Map"
 msgstr ""
 
 msgid "Show sensitive information"
+msgstr ""
+
+msgid "Show who marked these duplicates"
 msgstr ""
 
 msgid "Sign in"
@@ -1003,10 +1038,6 @@ msgid "The record cannot be extended."
 msgstr ""
 
 msgid "The record has been deleted."
-msgstr ""
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
 msgstr ""
 
 msgid ""
@@ -1295,9 +1326,6 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-
-msgid "at"
 msgstr ""
 
 msgid "female"

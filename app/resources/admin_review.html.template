@@ -89,8 +89,8 @@
               {{note.person_status_codes}}
             </td>
             <td class="note date">
-              {{note.source_date|date:"M d, H:i"}}
-              <div class="entry-date">{{note.entry_date|date:"M d, H:i"}}</div>
+              {{note.source_date|date:"DATETIME_FORMAT"}}
+              <div class="entry-date">{{note.entry_date|date:"DATETIME_FORMAT"}}</div>
             </td>
             <td class="note">
               {{note.author_name}}

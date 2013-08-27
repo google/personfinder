@@ -146,6 +146,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -235,6 +256,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +275,13 @@ msgstr ""
 "%(website)s. Aneu a la pàgina de perfil d'aquesta persona a %(website)s "
 "i, a continuació, copieu l'URL i enganxeu-lo aquí.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -541,6 +576,16 @@ msgstr "Torna a la llista de resultats"
 
 msgid "Back to start"
 msgstr "Torna a l'inici"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Fitxer CSV"
@@ -903,11 +948,13 @@ msgstr "No s'ha publicat cap nota."
 msgid "No person with ID: %(id_str)s."
 msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
 
-msgid "No results found for"
-msgstr "No s'ha trobat cap resultat per a"
-
 msgid "No such Authorization entity."
 msgstr "No hi ha cap entitat d'autorització."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "No esteu autoritzat a publicar notes amb l'estat \"believed_dead\"."
@@ -954,14 +1001,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Nom del lloc original"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"TINGUEU EN COMPTE EL SEGÜENT: Totes les dades introduïdes aquí estaran "
-"disponibles per al públic general i tothom les podrà visualitzar i "
-"utilitzar. Google no revisa ni verifica la precisió d'aquestes dades."
 
 #, fuzzy
 msgid ""
@@ -1063,9 +1104,6 @@ msgstr "Motiu de la supressió:"
 msgid "Reason for disabling notes:"
 msgstr "Motiu per a la desactivació de les notes:"
 
-msgid "Records Similar to"
-msgstr "Registres semblants a"
-
 msgid "Records selected"
 msgstr "Registres seleccionats"
 
@@ -1088,9 +1126,6 @@ msgstr "Mostra la nota"
 
 msgid "Save this record"
 msgstr "Desa aquest registre"
-
-msgid "Search Results for"
-msgstr "Resultats de la cerca de"
 
 msgid "Search for this person"
 msgstr "Cerca aquesta persona"
@@ -1116,6 +1151,9 @@ msgstr "Mostra el mapa"
 
 msgid "Show sensitive information"
 msgstr "Mostra la informació confidencial"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Inicia la sessió"
@@ -1211,10 +1249,6 @@ msgstr "El registre no es pot ampliar."
 
 msgid "The record has been deleted."
 msgstr "S'ha suprimit el registre."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "El registre s'ha ampliat fins al dia %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1542,9 +1576,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Cercador de persones] Esteu subscrit a les actualitzacions d'estat sobre"
 " %(full_name)s."
-
-msgid "at"
-msgstr "a les"
 
 msgid "female"
 msgstr "dona"

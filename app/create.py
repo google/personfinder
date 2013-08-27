@@ -72,7 +72,7 @@ class Handler(BaseHandler):
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
             if (self.params.status == 'believed_dead' and \
                 not self.config.allow_believed_dead_via_ui):
-                return self.error(400, _('Not authorized to post notes with the status "believed_dead".'))
+                return self.error(400, _('Not authorized to post notes with the status "I have received information that this person is dead".'))
 
         source_date = None
         if self.params.source_date:

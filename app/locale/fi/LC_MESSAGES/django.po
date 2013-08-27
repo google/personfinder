@@ -147,6 +147,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -239,6 +260,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -253,6 +281,13 @@ msgstr ""
 "kopioi ja liitä\n"
 "      kyseinen URL-osoite tähän.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -542,6 +577,16 @@ msgstr "Takaisin tulosluetteloon"
 
 msgid "Back to start"
 msgstr "Takaisin alkuun"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV-tiedosto"
@@ -898,11 +943,13 @@ msgstr "Muistiinpanoja ei ole lisätty"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ei löydy henkilöä tunnuksella: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Ei tuloksia haulla"
-
 msgid "No such Authorization entity."
 msgstr "Ei kyseistä valtuutusyhteisöä."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -949,14 +996,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Alkuperäinen sivuston nimi"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"HUOMAA: Kaikki annetut tiedot ovat julkisesti saatavilla ja kaikkien "
-"katseltavissa. Google ei tarkista tai vahvista tietojen "
-"paikkansapitävyyttä."
 
 #, fuzzy
 msgid ""
@@ -1059,9 +1100,6 @@ msgstr "Poiston syy:"
 msgid "Reason for disabling notes:"
 msgstr "Syy muistiinpanojen käytöstä poistamiseen:"
 
-msgid "Records Similar to"
-msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
-
 msgid "Records selected"
 msgstr "Tallenteet valittu"
 
@@ -1084,9 +1122,6 @@ msgstr "Näytä viesti"
 
 msgid "Save this record"
 msgstr "Tallenna tallenne"
-
-msgid "Search Results for"
-msgstr "Hakutulokset haulla"
 
 msgid "Search for this person"
 msgstr "Hae tätä henkilöä"
@@ -1112,6 +1147,9 @@ msgstr "Näytä kartta"
 
 msgid "Show sensitive information"
 msgstr "Näytä arkaluonteiset tiedot"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
@@ -1207,10 +1245,6 @@ msgstr "Tietojen vanhentumispäivää ei voi siirtää."
 
 msgid "The record has been deleted."
 msgstr "Tiedot poistettu."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Tietojen uusi vanhentumispäivä on %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1536,9 +1570,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Olet tilannut seuraavaa henkilöä koskevat "
 "tilapäivitykset: %(full_name)s"
-
-msgid "at"
-msgstr "kellonaika:"
 
 msgid "female"
 msgstr "nainen"

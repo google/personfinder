@@ -148,6 +148,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -241,6 +262,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -255,6 +283,13 @@ msgstr ""
 "%(website)s, pagkatapos ay\n"
 "      kopyahin at i-paste ang URL na iyon dito.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -551,6 +586,16 @@ msgstr "Bumalik sa listahan ng mga resulta"
 
 msgid "Back to start"
 msgstr "Bumalik sa simula"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV file"
@@ -913,11 +958,13 @@ msgstr "Walang mga talang na-post"
 msgid "No person with ID: %(id_str)s."
 msgstr "Walang taong may ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Walang mga nakitang resulta para sa"
-
 msgid "No such Authorization entity."
 msgstr "Walang ganoong entity sa Pagpapahintulot."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -966,14 +1013,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Pangalan ng orihinal na site"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"PAKITANDAAN: Magagamit ng publiko at magagamit ng sinuman ang lahat ng "
-"inilagay na data.  Hindi sinusuri o bine-verify ng Google ang katumpakan "
-"ng data na ito."
 
 #, fuzzy
 msgid ""
@@ -1074,9 +1115,6 @@ msgstr "Dahilan ng pagtatanggal:"
 msgid "Reason for disabling notes:"
 msgstr "Dahilan para sa pag-disable sa mga tala:"
 
-msgid "Records Similar to"
-msgstr "Mga Talaang Katulad ng"
-
 msgid "Records selected"
 msgstr "Mga talaang napili"
 
@@ -1099,9 +1137,6 @@ msgstr "Ipakita ang tala"
 
 msgid "Save this record"
 msgstr "I-save ang talaang ito"
-
-msgid "Search Results for"
-msgstr "Mga Resulta ng Paghahanap para sa"
 
 msgid "Search for this person"
 msgstr "Hanapin ang taong ito"
@@ -1127,6 +1162,9 @@ msgstr "Ipakita ang Mapa"
 
 msgid "Show sensitive information"
 msgstr "Ipakita ang sensitibong impormasyon"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Mag-sign in"
@@ -1226,10 +1264,6 @@ msgstr "Hindi maaaring pahabain ang talaan."
 
 msgid "The record has been deleted."
 msgstr "Tinanggal na ang talaan."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Pinatagal hanggang %(expiry_date)s ang talaan."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1558,9 +1592,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Naka-subscribe ka sa mga update sa status para kay "
 "%(full_name)s"
-
-msgid "at"
-msgstr "sa"
 
 msgid "female"
 msgstr "babae"

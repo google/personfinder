@@ -144,6 +144,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -232,6 +253,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -244,6 +272,13 @@ msgstr ""
 "      โปรดไปที่หน้าโปรไฟล์ของบุคคลนี้ใน %(website)s แล้วคัดลอกและวาง\n"
 "      URL นั้นที่นี่\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -536,6 +571,16 @@ msgstr "กลับไปที่รายการผลลัพธ์"
 
 msgid "Back to start"
 msgstr "กลับไปที่จุดเริ่มต้น"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "ไฟล์ CSV"
@@ -884,11 +929,13 @@ msgstr "ไม่มีข้อความที่ถูกโพสต์"
 msgid "No person with ID: %(id_str)s."
 msgstr "ไม่มีบุคคลที่มี ID: %(id_str)s"
 
-msgid "No results found for"
-msgstr "ไม่มีผลลัพธ์สำหรับ"
-
 msgid "No such Authorization entity."
 msgstr "ไม่มีบุคคลที่ได้รับอนุญาตดังกล่าว"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ไม่อนุญาตให้โพสต์ข้อความที่มีสถานะเป็น \"เชื่อว่าเสียชีวิตแล้ว\""
@@ -935,14 +982,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "ชื่อเว็บไซต์ดั้งเดิม"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"โปรดทราบว่าข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป "
-"ซึ่งสามารถดูและใช้งานได้ Google "
-"จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
 
 #, fuzzy
 msgid ""
@@ -1041,9 +1082,6 @@ msgstr "เหตุผลสำหรับการลบ:"
 msgid "Reason for disabling notes:"
 msgstr "สาเหตุที่ปิดใช้งานข้อความ:"
 
-msgid "Records Similar to"
-msgstr "บันทึกที่คล้ายกับ"
-
 msgid "Records selected"
 msgstr "บันทึกที่เลือก"
 
@@ -1066,9 +1104,6 @@ msgstr "แสดงข้อความ"
 
 msgid "Save this record"
 msgstr "บันทึกบันทึกนี้"
-
-msgid "Search Results for"
-msgstr "ผลการค้นหาสำหรับ"
 
 msgid "Search for this person"
 msgstr "ค้นหาบุคคลนี้"
@@ -1094,6 +1129,9 @@ msgstr "แสดงแผนที่"
 
 msgid "Show sensitive information"
 msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "ลงชื่อเข้าใช้"
@@ -1187,10 +1225,6 @@ msgstr "ไม่สามารถขยายเวลาบันทึกไ
 
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "ขยายเวลาบันทึกถึง %(expiry_date)s แล้ว"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1497,9 +1531,6 @@ msgstr "[Person Finder] การอัปเดตสถานะสำหร�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] คุณได้สมัครรับข้อมูลการอัปเดตสถานะสำหรับ %(full_name)s"
-
-msgid "at"
-msgstr "ที่"
 
 msgid "female"
 msgstr "หญิง"

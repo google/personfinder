@@ -145,6 +145,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -236,6 +257,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -249,6 +277,13 @@ msgstr ""
 "      براہ کرم %(website)s پر اس شخص کے پروفائل صفحہ پر جائیں، پھر\n"
 "      وہ URL یہاں کاپی اور پیسٹ کریں۔\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -536,6 +571,16 @@ msgstr "نتائج کی فہرست پر واپس جائیں"
 
 msgid "Back to start"
 msgstr "شروع کرنے کیلئے واپس جائیں"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV فائل"
@@ -887,11 +932,13 @@ msgstr "کوئی نوٹس شائع نہیں کیے گئے ہیں"
 msgid "No person with ID: %(id_str)s."
 msgstr "اس ID والا کوئی شخص نہیں ہے: %(id_str)s۔"
 
-msgid "No results found for"
-msgstr "کوئی نتائج نہیں ملے برائے"
-
 msgid "No such Authorization entity."
 msgstr "اس طرح کی کوئی اجازت دہندگی کی ہستی نہیں ہے۔"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" صورتحال کے ساتھ نوٹس شائع کرنے کی اجازت نہیں ہے"
@@ -938,14 +985,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "اصل سائٹ کا نام"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"براہ کرم نوٹ کریں: درج کردہ سبھی ڈیٹا عوام کیلئے دستیاب ہوگا اور کوئی بھی"
-" اسے دیکھ یا استعمال کرسکے گا۔ Google اس ڈیٹا کی قطعیت کا تجزیہ یا اس کی "
-"توثیق نہیں کرتا ہے۔"
 
 #, fuzzy
 msgid ""
@@ -1048,9 +1089,6 @@ msgstr "حذف کی وجہ:"
 msgid "Reason for disabling notes:"
 msgstr "نوٹس غیر فعال کرنے کی وجہ:"
 
-msgid "Records Similar to"
-msgstr "ریکارڈز مماثل بہ"
-
 msgid "Records selected"
 msgstr "ریکارڈز منتخب ہوئے"
 
@@ -1073,9 +1111,6 @@ msgstr "نوٹ کا افشاء کریں"
 
 msgid "Save this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
-
-msgid "Search Results for"
-msgstr "تلاش کے نتائج برائے"
 
 msgid "Search for this person"
 msgstr "اس شخص کو تلاش کریں"
@@ -1101,6 +1136,9 @@ msgstr "نقشہ دکھائیں"
 
 msgid "Show sensitive information"
 msgstr "حساس معلومات دکھائیں"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "سائن ان کریں"
@@ -1196,10 +1234,6 @@ msgstr "ریکارڈ کی توسیع نہیں کی جاسکتی ہے۔"
 
 msgid "The record has been deleted."
 msgstr "ریکارڈ کو حذف کردیا گیا ہے۔"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "ریکارڈ کو %(expiry_date)s تک وسیع کردیا گیا ہے۔"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1519,9 +1553,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] آپ %(full_name)s کیلئے صورتحال کی اپ ڈیٹس کیلئے سبسکرائب "
 "ہیں"
-
-msgid "at"
-msgstr "پر"
 
 msgid "female"
 msgstr "خاتون"

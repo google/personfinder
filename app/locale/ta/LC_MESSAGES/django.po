@@ -148,6 +148,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -239,6 +260,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -253,6 +281,13 @@ msgstr ""
 "செல்லவும், பிறகு\n"
 "      அந்த URL ஐ நகலெடுத்து இங்கே ஒட்டவும்.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -550,6 +585,16 @@ msgstr "முடிவுகள் பட்டியலுக்குச் �
 
 msgid "Back to start"
 msgstr "தொடக்கத்திற்குச் செல்"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "CSV கோப்பு"
@@ -910,11 +955,13 @@ msgstr "எந்தக் குறிப்புகளும் இடுக�
 msgid "No person with ID: %(id_str)s."
 msgstr "இந்த ஐடியில் எந்த நபரும் இல்லை: %(id_str)s."
 
-msgid "No results found for"
-msgstr "இதற்கான முடிவுகள் இல்லை"
-
 msgid "No such Authorization entity."
 msgstr "அதுபோன்ற அங்கீகார உட்கூறு இல்லை."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -963,15 +1010,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "அசல் தளத்தின் பெயர்"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"கவனத்தில் கொள்ளவும்: உள்ளிடப்பட்ட எல்லா தரவும் பொதுவில் கிடைக்கும், "
-"மேலும் அனைவராலும் பார்க்கக்கூடியதாகவும், பயன்படுத்தக்கூடியதாகவும் "
-"இருக்கும். Google இந்தத் தரவின் துல்லியத்தை மதிப்பாய்வு செய்யாது அல்லது "
-"சரிபார்க்காது."
 
 #, fuzzy
 msgid ""
@@ -1075,9 +1115,6 @@ msgstr "நீக்கத்திற்கான காரணம்:"
 msgid "Reason for disabling notes:"
 msgstr "குறிப்புகளை முடக்குவதற்கான காரணம்:"
 
-msgid "Records Similar to"
-msgstr "இதைப்போன்ற பதிவுகள்"
-
 msgid "Records selected"
 msgstr "பதிவுகள் தேர்ந்தெடுக்கப்பட்டன"
 
@@ -1103,9 +1140,6 @@ msgstr "குறிப்பை வெளிப்படுத்து"
 msgid "Save this record"
 msgstr "இந்தப் பதிவைச் சேமி"
 
-msgid "Search Results for"
-msgstr "இதற்கான தேடல் முடிவுகள்"
-
 msgid "Search for this person"
 msgstr "இந்த நபரைத் தேடு"
 
@@ -1130,6 +1164,9 @@ msgstr "வரைபடத்தைக் காட்டு"
 
 msgid "Show sensitive information"
 msgstr "முக்கியமான தகவலைக் காட்டு"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "உள்நுழை"
@@ -1225,10 +1262,6 @@ msgstr "பதிவை நீட்டிக்க முடியாது."
 
 msgid "The record has been deleted."
 msgstr "பதிவு நீக்கப்பட்டது."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "பதிவு %(expiry_date)s வரை நீட்டிக்கப்பட்டுள்ளது."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1558,9 +1591,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] நீங்கள் %(full_name)s இன் நிலை குறித்த புதுப்பிப்புகளில் "
 "குழுசேர்ந்துள்ளீர்கள்"
-
-msgid "at"
-msgstr "இங்கே"
 
 msgid "female"
 msgstr "பெண்"

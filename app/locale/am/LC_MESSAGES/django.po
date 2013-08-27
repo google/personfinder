@@ -140,6 +140,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -228,6 +249,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -241,6 +269,13 @@ msgstr ""
 "\n"
 "      ይለጥፉት።\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -524,6 +559,16 @@ msgstr "ወደ የውጤቶች ዝርዝር ተመለስ"
 
 msgid "Back to start"
 msgstr "ወደ ጀምር ተመለስ"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "የCSV ፋይል"
@@ -864,11 +909,13 @@ msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
 msgid "No person with ID: %(id_str)s."
 msgstr "ይህን መታወቂያ የያዘ ማንም ሰው የለም፦ %(id_str)s።"
 
-msgid "No results found for"
-msgstr "ለዚህ ምንም ውጤቶች አልተገኙም፦"
-
 msgid "No such Authorization entity."
 msgstr "እንደዚህ ያለ የፈቀዳ አካል የለም።"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ይህ የ «believed_dead» ሁኔታ ያላቸው ማስታወሻዎችን የመለጠፍ ፍቃድ የለውም።"
@@ -915,13 +962,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "የመጀመሪያው ጣቢያ ስም"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"እባክዎ ልብ ይበሉ፦ የገባው ሁሉም ውሂብ በይፋ የሚገኝና በማንኛውም ሰው ሊታይ እና ስራ ላይ ሊውል የሚችል ይሆናል።"
-"  Google የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም።"
 
 #, fuzzy
 msgid ""
@@ -1019,9 +1061,6 @@ msgstr "የስረዛ ምክንያት፦"
 msgid "Reason for disabling notes:"
 msgstr "ማስታወሻዎች የሚሰናከሉበት ምክንያት፦"
 
-msgid "Records Similar to"
-msgstr "መዛግብቶች ይመሳሰላሉ ከ፦"
-
 msgid "Records selected"
 msgstr "የተመረጡ መዛግብቶች"
 
@@ -1044,9 +1083,6 @@ msgstr "ማስታወሻ ይታይ"
 
 msgid "Save this record"
 msgstr "ይህ መዝገብ ይቀመጥ"
-
-msgid "Search Results for"
-msgstr "የፍለጋ ውጤቶች ስለ"
 
 msgid "Search for this person"
 msgstr "ይህን ሰው ፈልግ፦"
@@ -1072,6 +1108,9 @@ msgstr "ካርታ አሳይ"
 
 msgid "Show sensitive information"
 msgstr "ስስ መረጃ አሳይ"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "በመለያ ግባ"
@@ -1165,10 +1204,6 @@ msgstr "መዝገቡ ሊራዘም አይችልም።"
 
 msgid "The record has been deleted."
 msgstr "መዝገቡ ተሰርዟል።"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "መዝገቡ እስከ %(expiry_date)s ድረስ ተራዝሟል።"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1467,9 +1502,6 @@ msgstr "[ሰው ማግኛ] የ%(full_name)s ሁኔታ ዝማኔ"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ሰው ማግኛ] ለ%(full_name)s ሁኔታ ዝማኔዎች በደንበኝነት ተመዝግበዋል"
-
-msgid "at"
-msgstr "በ"
 
 msgid "female"
 msgstr "ሴት"

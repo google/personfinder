@@ -146,6 +146,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -235,6 +256,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +275,13 @@ msgstr ""
 "%(website)s válida. Dirígete a la página de perfil de %(website)s de esta"
 " persona, copia la URL que allí aparece y pégala aquí.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -534,6 +569,16 @@ msgstr "Volver a la lista de resultados"
 
 msgid "Back to start"
 msgstr "Volver al principio"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
 
 msgid "CSV file"
 msgstr "Archivo CSV"
@@ -896,11 +941,13 @@ msgstr "No se publicó ninguna nota."
 msgid "No person with ID: %(id_str)s."
 msgstr "Ninguna persona con el ID %(id_str)s"
 
-msgid "No results found for"
-msgstr "No se encontró ningún resultado para"
-
 msgid "No such Authorization entity."
 msgstr "No existe tal entidad de autorización."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "No estás autorizado/a a publicar notas con el estado \"believed_dead\"."
@@ -947,14 +994,8 @@ msgstr ""
 msgid "Original site name"
 msgstr "Nombre del sitio original"
 
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
+msgid "Other website"
 msgstr ""
-"NOTA: Todos los datos que se ingresan están a disposición del público, y "
-"cualquier persona puede verlos y usarlos. Google no revisa ni verifica la"
-" precisión de estos datos."
 
 #, fuzzy
 msgid ""
@@ -1062,9 +1103,6 @@ msgstr "Motivo de la eliminación:"
 msgid "Reason for disabling notes:"
 msgstr "Motivo de la inhabilitación de las notas:"
 
-msgid "Records Similar to"
-msgstr "Registros similares a"
-
 msgid "Records selected"
 msgstr "Registros seleccionados"
 
@@ -1087,9 +1125,6 @@ msgstr "Mostrar nota"
 
 msgid "Save this record"
 msgstr "Guardar este registro"
-
-msgid "Search Results for"
-msgstr "Resultados de la búsqueda para"
 
 msgid "Search for this person"
 msgstr "Buscar a esta persona"
@@ -1115,6 +1150,9 @@ msgstr "Mostrar mapa"
 
 msgid "Show sensitive information"
 msgstr "Mostrar información confidencial"
+
+msgid "Show who marked these duplicates"
+msgstr ""
 
 msgid "Sign in"
 msgstr "Acceder"
@@ -1212,10 +1250,6 @@ msgstr "No se puede extender la fecha de vencimiento del registro."
 
 msgid "The record has been deleted."
 msgstr "Se eliminó el registro."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "La fecha de vencimiento del registro se extendió hasta el %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1538,9 +1572,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Te suscribiste para recibir actualizaciones acerca de "
 "%(full_name)s."
-
-msgid "at"
-msgstr "en"
 
 msgid "female"
 msgstr "femenino"
