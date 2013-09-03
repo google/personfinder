@@ -232,7 +232,7 @@
             {% for val in person.source_date_local %}
               <td class="field">
                 {% if val %}
-                  {{val|date:"Y-m-d H:i"}}
+                  {{val|date:"DATETIME_FORMAT"}}
                   {{config.time_zone_abbreviation|default:"UTC"}}
                 {% endif %}
               </td>

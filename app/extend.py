@@ -62,16 +62,13 @@ class Handler(utils.BaseHandler):
                     get_extension_days(self))
                 # put_expiry_flags will only save if the status changed, so
                 # we save here too.
-                person.put() 
+                person.put()
                 person.put_expiry_flags()
-                view_url=self.get_url('/view', id=person.record_id)
-                return self.info(
-                    200,
-                    _('The record has been extended to %(expiry_date)s.') % 
-                      {'expiry_date': self.to_local_time(
-                            person.expiry_date).strftime('%Y-%m-%d')},
-                    message_html='&nbsp;<a href=\'' + view_url +
-                    '\'>' + _('View the record') + '</a>')
+                self.render('extend_done.html',
+                            expiry_date_local=
+                                self.to_local_time(person.expiry_date),
+                            view_url=
+                                self.get_url('/view', id=person.record_id))
             else: 
                 # this shouldn't happen in normal work flow.
                 return self.info(200, _('The record cannot be extended.',))

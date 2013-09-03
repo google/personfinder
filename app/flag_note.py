@@ -27,6 +27,7 @@ class Handler(utils.BaseHandler):
         if not note:
             return self.error(400, 'No note with ID: %r' % self.params.id)
         note.status_text = utils.get_note_status_text(note)
+        note.source_date_local = self.to_local_time(note.source_date)
         captcha_html = note.hidden and self.get_captcha_html() or ''
 
         # Check if private info should be revealed.

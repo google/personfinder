@@ -44,7 +44,11 @@ try:
 except:
     pass
 django.conf.settings.LANGUAGE_CODE = LANGUAGE_CODE
+# Enables Django translation system e.g. {% trans %} tag
 django.conf.settings.USE_I18N = True
+# Enables localized formatting
+# e.g. localizing date/time format for {% my_date|date:"DATETIME_FORMAT" %}
+django.conf.settings.USE_L10N = True
 django.conf.settings.LOCALE_PATHS = ('locale',)
 django.conf.settings.LANGUAGES_BIDI = LANGUAGES_BIDI
 django.conf.settings.TEMPLATE_LOADERS = ('django_setup.TemplateLoader',)

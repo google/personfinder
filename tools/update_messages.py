@@ -107,6 +107,7 @@ def update_po(locale, new_msgids, header_comment):
     # django_admin('compilemessages') fails with an error for such cases.
     for message in translations:
         if (message.id.startswith(u'\n') and
+                message.string and
                 not message.string.startswith(u'\n')):
             message.string = u'\n' + message.string
 
