@@ -103,13 +103,23 @@ def update_po(locale, new_msgids, header_comment):
         if id and id not in translations:
             translations.add(id, '')
 
-    # Fix cases where message.id starts with '\n' but message.string doesn't.
-    # django_admin('compilemessages') fails with an error for such cases.
+    # django_admin('compilemessages') fails if message.id starts/ends with '\n'
+    # but message.string doesn't, or vice versa.
+    # Fix message.string to make it consistent.
     for message in translations:
+        if not message.string: continue
         if (message.id.startswith(u'\n') and
-                message.string and
                 not message.string.startswith(u'\n')):
             message.string = u'\n' + message.string
+        if (not message.id.startswith(u'\n') and
+                message.string.startswith(u'\n')):
+            message.string = message.string.lstrip('\n')
+        if (message.id.endswith(u'\n') and
+                not message.string.endswith(u'\n')):
+            message.string = message.string + u'\n'
+        if (not message.id.endswith(u'\n') and
+                message.string.endswith(u'\n')):
+            message.string = message.string.rstrip('\n')
 
     translations.header_comment = header_comment
     write_clean_po(filename, translations)
