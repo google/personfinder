@@ -185,6 +185,7 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
 
         notes_written, notes_skipped, notes_total = importer.import_records(
             self.repo, source_domain, importer.create_note, records,
+            believed_dead_permission=self.auth.believed_dead_permission,
             omit_duplicate_notes=True)
 
         utils.log_api_action(self, ApiActionLog.WRITE,
