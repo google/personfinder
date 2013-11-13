@@ -180,7 +180,12 @@ retrieve all the records with an entry_date >= min_entry_date.  Examples:
 
   # Download all the Note records entered since Jan 1, 2010 to an XML file.
   % %prog --notes --min_entry_date=2010-01-01 --out=notes.xml \\
-        https://www.google.org/personfinder/test-nokey/feeds/note''')
+        https://www.google.org/personfinder/test-nokey/feeds/note
+
+The above examples use the test-nokey repository, which does not require an
+API key.  Most repositories on google.org require a key, so <feed_url> will
+look like https://www.google.org/personfinder/<repo>/feeds/person?key=<key>.
+''')
     parser.add_option('-n', '--notes', action='store_true',
                       help='download Notes (default: download Persons)')
     parser.add_option('-f', '--format',
