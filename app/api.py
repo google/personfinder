@@ -33,6 +33,8 @@ from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
 
+import xlrd
+
 import django.utils.html
 
 from google.appengine import runtime
@@ -43,6 +45,15 @@ HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
 class InputFileError(Exception):
     pass
+
+
+def get_requested_formats(path):
+    """Returns a list of requested formats.
+    The possible values are 'persons' and 'notes'."""
+    format = path.split('/')[-1]
+    if format in ['persons', 'notes']:
+        return [format]
+    return ['persons', 'notes']
 
 
 def complete_record_ids(record, domain):
@@ -143,7 +154,9 @@ class Import(utils.BaseHandler):
     https_required = True
 
     def get(self):
-        self.render('import.html', **get_tag_params(self))
+        self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
+                    **get_tag_params(self))
 
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
@@ -194,6 +207,7 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
                              0, notes_written, 0, len(notes_skipped))
 
         self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
                     stats=[
                         Struct(type='Note',
                                written=notes_written,
@@ -230,6 +244,7 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
                              len(people_skipped), len(notes_skipped))
 
         self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
                     stats=[
                         Struct(type='Person',
                                written=people_written,
