@@ -33,8 +33,6 @@ from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
 
-import xlrd
-
 import django.utils.html
 
 from google.appengine import runtime
