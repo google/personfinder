@@ -6308,6 +6308,9 @@ class ImportTests(TestsBase):
     """Tests for CSV import page at /api/import."""
     def setUp(self):
         TestsBase.setUp(self)
+        config.set_for_repo(
+            'haiti',
+            api_action_logging=True)
         self.filename = None
 
     def tearDown(self):
@@ -6324,9 +6327,9 @@ class ImportTests(TestsBase):
     def test_import_no_csv(self):
         """Verifies an error message is shown when no CSV file is uploaded."""
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key')
-        assert 'You need to specify at least one CSV file' in doc.text
+        assert 'Please specify at least one CSV file.' in doc.text
 
     def test_import_invalid_authentication_key(self):
         """Verifies an error message is shown when auth key is invalid."""
@@ -6335,7 +6338,7 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='bad_key', content=open(self.filename))
         assert 'Missing or invalid authorization key' in doc.text
 
@@ -6346,7 +6349,7 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'The CSV file is formatted incorrectly' in doc.text
         assert Person.all().count() == 0
@@ -6359,9 +6362,9 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 0
         person = Person.all().get()
@@ -6378,9 +6381,9 @@ class ImportTests(TestsBase):
             '_test_author_name,2013-02-26T09:10:00Z',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 0
         assert Note.all().count() == 1
         note = Note.all().get()
@@ -6399,9 +6402,9 @@ class ImportTests(TestsBase):
             '1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 0
         person = Person.all().get()
@@ -6418,9 +6421,9 @@ class ImportTests(TestsBase):
             'different.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
         assert 'Not in authorized domain' in doc.text
         assert Person.all().count() == 0
         assert Note.all().count() == 0
@@ -6436,10 +6439,10 @@ class ImportTests(TestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 1
         person = Person.all().get()
@@ -6462,10 +6465,10 @@ class ImportTests(TestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 1
         person = Person.all().get()
