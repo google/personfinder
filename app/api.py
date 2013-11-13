@@ -220,7 +220,8 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
         people_written, people_skipped, people_total = importer.import_records(
             self.repo, source_domain, importer.create_person, persons)
         notes_written, notes_skipped, notes_total = importer.import_records(
-            self.repo, source_domain, importer.create_note, notes)
+            self.repo, source_domain, importer.create_note, notes,
+            believed_dead_permission=self.auth.believed_dead_permission)
 
         utils.log_api_action(self, ApiActionLog.WRITE,
                              people_written, notes_written,
