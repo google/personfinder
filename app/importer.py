@@ -83,7 +83,7 @@ def validate_boolean(string):
     if not string:
         return None  # A missing value is okay.
     return (isinstance(string, basestring) and
-            string.strip().lower() in ['true', '1'])
+            string.strip().lower() in ['true', 'yes', 'y', '1'])
 
 def create_person(repo, fields):
     """Creates a Person entity in the given repository with the given field
@@ -195,9 +195,20 @@ def send_notifications(handler, persons, notes):
         person = persons[note.person_record_id]
         subscribe.send_notifications(handler, person, [note])
 
+
+def notes_match(a, b):
+    fields = ['person_record_id', 'author_name', 'author_email', 'author_phone',
+              'source_date', 'status', 'author_made_contact',
+              'email_of_found_person', 'phone_of_found_person',
+              'last_known_location', 'text', 'photo_url']
+    return [getattr(a, f) for f in fields] == [getattr(b, f) for f in fields]
+
+
 def import_records(repo, domain, converter, records,
-                   mark_notes_reviewed=False, 
-                   believed_dead_permission=False, handler=None):
+                   mark_notes_reviewed=False,
+                   believed_dead_permission=False,
+                   handler=None,
+                   omit_duplicate_notes=False):
     """Convert and import a list of entries into a respository.
 
     Args:
@@ -214,7 +225,9 @@ def import_records(repo, domain, converter, records,
         believed_dead_permission: If true, allow importing notes with status 
             as 'believed_dead'; otherwise skip the note and return an error.
         handler: Handler to use to send e-mail notification for notes.  If this
-           is None, then we do not send e-mail.
+            is None, then we do not send e-mail.
+        omit_duplicate_notes: If true, skip any Notes that are identical to
+            existing Notes on the same Person.
 
     Returns:
         The number of passed-in records that were written (not counting other
@@ -251,12 +264,20 @@ def import_records(repo, domain, converter, records,
                      fields))
                 continue
             # Check whether commenting is already disabled by record author.
-            existed_person = Person.get(repo, entity.person_record_id)
-            if ((existed_person) and (existed_person.notes_disabled)):
+            existing_person = Person.get(repo, entity.person_record_id)
+            if existing_person and existing_person.notes_disabled:
                 skipped.append(
                     ('The author has disabled new commenting on this record',
                      fields))
                 continue
+            # Check whether the note is a duplicate.
+            if omit_duplicate_notes:
+                other_notes = Note.get_by_person_record_id(
+                    repo, entity.person_record_id, filter_expired=False)
+                if any(notes_match(entity, note) for note in other_notes):
+                    skipped.append(
+                        ('This is a duplicate of an existing note', fields))
+                    continue
             entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity
 
