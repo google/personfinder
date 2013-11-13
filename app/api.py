@@ -87,7 +87,9 @@ def generate_note_record_ids(records):
 
 def convert_time(text, offset):
     """Converts a textual date and time into an RFC 3339 UTC timestamp."""
-    match = re.match(r'(\d+)-(\d+)-(\d+) *(\d+):(\d+)', text)
+    if utils.DATETIME_RE.match(text.strip()):  # don't apply offset
+        return text
+    match = re.search(r'(\d\d\d\d)[/-](\d+)[/-](\d+) *(\d+):(\d+)', text)
     if match:
         y, l, d, h, m = map(int, match.groups())
         timestamp = calendar.timegm((y, l, d, h, m, 0)) - offset*3600

@@ -226,7 +226,7 @@ def validate_status(string):
         string = strip(string).lower()
     return string in pfif.NOTE_STATUS_VALUES and string or ''
 
-DATETIME_RE = re.compile(r'^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
+DATETIME_RE = re.compile(r'^(2\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
 
 def validate_datetime(string):
     if not string:
