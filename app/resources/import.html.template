@@ -15,51 +15,56 @@
 
 {% block content %}
 <div class="import">
-  <h2>{% trans "Upload notes in CSV format" %}</h2>
-  <ol>
-    <li>{% blocktrans with begin_notes_template_link|safe as begin_link and end_notes_template_link|safe as end_link %}Download {{begin_link}}this Excel template{{end_link}} and add rows to it{% endblocktrans %}
-    <li>{% blocktrans %}In Excel, use File &gt; Save as... and save in CSV format (.csv){% endblocktrans %}
-    <li>{% blocktrans %}Upload your CSV file below{% endblocktrans %}
-  </ol>
-  <form method="post" enctype="multipart/form-data">
-    <table>
-      <tr>
-        <td>{% trans "Authorization key" %}:</td>
-        <td><input type="text" name="key"></td>
-      </tr>
-      <tr>
-        <td>{% trans "CSV file" %}:</td>
-        <td><input type="file" name="content"></td>
-      </tr>
-      <tr>
-        <td><input type="hidden" name="format" value="notes"></td>
-        <td><input type="submit" value="{% trans "Upload" %}"></td>
-      </tr>
-    </table>
-  </form>
+  {% if 'notes' in formats %}
+    <h2>{% trans "Upload notes in CSV format" %}</h2>
+    <ol>
+      <li>{% blocktrans with begin_notes_template_link|safe as begin_link and end_notes_template_link|safe as end_link %}Download {{begin_link}}this Excel template{{end_link}} and add rows to it{% endblocktrans %}
+      <li>{% blocktrans %}In Excel, use File &gt; Save as... and save in CSV format (.csv){% endblocktrans %}
+      <li>{% blocktrans %}Upload your CSV file below{% endblocktrans %}
+    </ol>
+    <form method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>{% trans "Authorization key" %}:</td>
+          <td><input type="text" name="key"></td>
+        </tr>
+        <tr>
+          <td>{% trans "CSV file" %}:</td>
+          <td><input type="file" name="content"></td>
+        </tr>
+        <tr>
+          <td><input type="hidden" name="format" value="notes"></td>
+          <td><input type="submit" value="{% trans "Upload" %}"></td>
+        </tr>
+      </table>
+    </form>
+  {% endif %}
 
-  <h2>{% trans "Upload persons in CSV format" %}</h2>
-  <ul>
-    <li>{% blocktrans with begin_sample_anchor_tag|safe as begin_tag and end_sample_anchor_tag|safe as end_tag %}Here is {{begin_tag}}a sample CSV file{{end_tag}} you can edit and upload{% endblocktrans %}
-    <li>{% trans "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC" %}
-    <li>{% blocktrans with begin_document_anchor_tag|safe as begin_tag and end_document_anchor_tag|safe as end_tag %}See {{begin_tag}}the wiki{{end_tag}} for more instructions{% endblocktrans %}
-  </ul>
-  <form method="post" enctype="multipart/form-data">
-    <table>
-      <tr>
-        <td>{% trans "Authorization key" %}:</td>
-        <td><input type="text" name="key"></td>
-      </tr>
-      <tr>
-        <td>{% trans "CSV file" %}:</td>
-        <td><input type="file" name="content"></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="submit" value="{% trans "Upload" %}"></td>
-      </tr>
-    </table>
-  </form>
+  {% if 'persons' in formats %}
+    <h2>{% trans "Upload persons in CSV format" %}</h2>
+    <ul>
+      <li>{% blocktrans with begin_sample_anchor_tag|safe as begin_tag and end_sample_anchor_tag|safe as end_tag %}Here is {{begin_tag}}a sample CSV file{{end_tag}} you can edit and upload{% endblocktrans %}
+      <li>{% trans "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC" %}
+      <li>{% blocktrans with begin_document_anchor_tag|safe as begin_tag and end_document_anchor_tag|safe as end_tag %}See {{begin_tag}}the wiki{{end_tag}} for more instructions{% endblocktrans %}
+    </ul>
+    <form method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>{% trans "Authorization key" %}:</td>
+          <td><input type="text" name="key"></td>
+        </tr>
+        <tr>
+          <td>{% trans "CSV file" %}:</td>
+          <td><input type="file" name="content"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="{% trans "Upload" %}"></td>
+        </tr>
+      </table>
+    </form>
+  {% endif %}
+
   {% if stats %}
     <!-- TODO(ryok): i18n -->
     <div class="stats">
