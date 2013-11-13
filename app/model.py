@@ -668,6 +668,9 @@ class Authorization(db.Model):
     # allowed to have status == 'believed_dead'.
     believed_dead_permission = db.BooleanProperty()
 
+    # If this flag is true, this key can be used to get overall statistics.
+    stats_permission = db.BooleanProperty()
+
     # If this flag is False, the API access with this key won't be
     # allowed.
     is_valid = db.BooleanProperty(default=True)
