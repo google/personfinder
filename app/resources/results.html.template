@@ -77,10 +77,14 @@
   {% else %}
     <p>
     {% trans "To view or add information, select a name below." %}
-    {% if env.enable_dup_mode %}
-      <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
-      <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
+    {% if env.enable_dup_mode and results|length > 1 %}
+      <p>
+      {% if has_possible_duplicates %}
+        <b>{% trans "Possible duplicates found." %}</b><br />
+      {% endif %}
+      <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
     {% endif %}
+    <p>
     <div class='searchResults'>
     {% for result in results %}
       {% ifchanged result.is_address_match %}
@@ -164,21 +168,17 @@
     {% if env.enable_dup_mode %}
       <div id='dup_form' style='display:none'>
         {% trans "Select up to 3 records to mark as duplicate:" %}
-        <input type="hidden" id="dup_state" value="">
         <form action="{{env.repo_path}}/multiview" method="get" onsubmit="mark_dup()">
           {{env.hidden_input_tags_for_preserved_query_params|safe}}
           <input type='hidden' name='id1' id='id1' value=''>
           <input type='hidden' name='id2' id='id2' value=''>
           <input type='hidden' name='id3' id='id3' value=''>
           <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
-          {% blocktrans with "<span id='dup_count'></span>"|safe as dup_count %}
+          {% blocktrans with "<span id='dup_count'>0</span>"|safe as dup_count %}
             {{dup_count}} records selected
           {% endblocktrans %}
         </form>
       </div>
-      <script type='text/javascript'>
-        init_dup_state();
-      </script>
     {% endif %}
   {% endif %}
 

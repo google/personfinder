@@ -202,35 +202,17 @@ function view_page_loaded() {
 // Selected people in duplicate handling mode.
 var checked_ids = {};
 
-// Initialize JavaScript state based on hidden fields.
-function init_dup_state() {
-  var dup_mode_enabled = $('dup_state').value == 'true';
-  set_dup_mode(dup_mode_enabled, true);
-}
-
-// Switched duplicate handling UI on or off.
-function set_dup_mode(enable, init) {
-  $('dup_on_link').style.display = enable ? 'none' : '';
-  $('dup_off_link').style.display = enable ? '' : 'none';
-  $('dup_form').style.display = enable ? '' : 'none';
-  $('dup_state').value = enable;
+// Enable dup mode to mark duplicate records.
+function enable_dup_mode(button) {
+  button.style.display = 'none';
+  $('dup_form').style.display = '';
 
   var elems = document.getElementsByTagName('input');
   for (var i = 0; i < elems.length; ++i) {
     var elem = elems[i];
     if (elem.type.toLowerCase() == 'checkbox' && elem.name == 'dup') {
-      elem.style.display = enable ? 'block' : 'none';
-      if (init) {
-        check_dup(elem);
-      } else {
-        elem.checked = false;
-      }
+      elem.style.display = 'block';
     }
-  }
-  if (!init) {
-    checked_ids = {};
-    $('dup_count').innerHTML = '0';
-    $('dup_go').disabled = true;
   }
   return false;
 }
