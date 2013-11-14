@@ -173,7 +173,7 @@
           <input type='hidden' name='id1' id='id1' value=''>
           <input type='hidden' name='id2' id='id2' value=''>
           <input type='hidden' name='id3' id='id3' value=''>
-          <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
+          <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark the selected records as duplicate" %}'>
           {% blocktrans with "<span id='dup_count'>0</span>"|safe as dup_count %}
             {{dup_count}} records selected
           {% endblocktrans %}
