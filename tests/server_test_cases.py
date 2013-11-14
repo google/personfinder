@@ -3661,7 +3661,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not extend_button, 'Didn\'t expect to find expiry extend button'
 
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3813,7 +3813,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.submit(button, url=extend_url)
         assert 'extend the expiration' in doc.text
         # Click the extend button.
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'extend the expiration' in doc.text
         # Click the button on the confirmation page.
         button = doc.firsttag('input', value='Yes, extend the record')
@@ -3840,7 +3840,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
                               value='Disable notes on this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -3921,7 +3921,7 @@ _feed_profile_url2</pfif:profile_urls>
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable notes on this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -4180,7 +4180,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
@@ -4942,7 +4942,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?id=test.google.com/person.111')
         assert 'Subscribe to updates about this person' in doc.text
         button = doc.firsttag('input', id='subscribe_btn')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
 
         # Empty email is an error.
         button = doc.firsttag('input', value='Subscribe')
