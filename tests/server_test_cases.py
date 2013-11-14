@@ -680,7 +680,7 @@ class PersonNoteTests(TestsBase):
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
-        actual_num_notes = len(details_page.all(class_='view note'))
+        actual_num_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         assert actual_num_notes == num_notes, \
             'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
 
@@ -715,7 +715,7 @@ class PersonNoteTests(TestsBase):
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
-        num_initial_notes = len(details_page.all(class_='view note'))
+        num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         note_form = details_page.first('form')
 
         params = dict(kwargs)
@@ -728,7 +728,7 @@ class PersonNoteTests(TestsBase):
             expected['status'] = str(NOTE_STATUS_TEXT.get(status))
 
         details_page = self.s.submit(note_form, **params)
-        notes = details_page.all(class_='view note')
+        notes = details_page.first(class_='self-notes').all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note = notes[-1]
         for field, text in expected.iteritems():
@@ -1503,7 +1503,7 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.all('div', class_='view note')
+        notes = doc.first(class_='self-notes').all('div', class_='view note')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
