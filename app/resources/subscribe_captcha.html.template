@@ -37,9 +37,8 @@
     <div>
       <input type="submit" value="{% trans 'Subscribe' %}" />
       <input type="hidden" name="id" value="{{person.record_id}}">
-      <a href="{{back_url}}">
-        <input type="button" value="{% trans 'Cancel' %}">
-      </a>
+      <input type="button" value="{% trans 'Cancel' %}"
+             onclick="javascript:location.href='{{back_url}}'">
     </div>
   </form>
 </div>
