@@ -306,38 +306,37 @@
               </div>
             {% endif %}
             <div>
-              <a href="{{extend_url}}">
-                <input type="button"
-                       value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
-                       id="extend_btn">
-              </a>
+              <input type="button"
+                     value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
+                     onclick="javascript:location.href='{{extend_url}};'"
+                     id="extend_btn">
             </div>
           {% endif %}
 
           {% if env.enable_captcha %}
             <div>
-              <a href="{{subscribe_url}}">
-                <input type="button"
+              <input type="button"
                 value="{% trans "Subscribe to updates about this person" %}"
-                  id="subscribe_btn"></a>
+                onclick="javascript:location.href='{{subscribe_url}};'"
+                id="subscribe_btn">
             </div>
           {% endif %}
 
           {% if env.enable_captcha %}
             <div>
-              <a href="{{delete_url}}">
-                <input type="button"
-                  value="{% trans "Delete this record" %}"
-                  id="delete_btn"></a>
+              <input type="button"
+                value="{% trans "Delete this record" %}"
+                onclick="javascript:location.href='{{delete_url}};'"
+                id="delete_btn">
             </div>
           {% endif %}
 
           {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
             <div>
-              <a href="{{disable_notes_url}}">
-                <input type="button"
-                  value="{% trans "Disable notes on this record" %}"
-                  id="disable_notes_btn"></a>
+              <input type="button"
+                value="{% trans "Disable notes on this record" %}"
+                onclick="javascript:location.href='{{disable_notes_url}};'"
+                id="disable_notes_btn">
             </div>
           {% endif %}
 
@@ -399,10 +398,10 @@
           <div class="mandatory">
             {% trans "The author has disabled notes on this record." %}
             <p>
-            <a href="{{enable_notes_url}}">
-              <input type="button"
-                value="{% trans "Enable notes on this record" %}"
-                id="enable_notes_btn"></a>
+            <input type="button"
+              value="{% trans "Enable notes on this record" %}"
+              onclick="javascript:location.href='{{enable_notes_url}};'"
+              id="enable_notes_btn">
           </div>
         {% else %}
           <div class="create" role="form">
