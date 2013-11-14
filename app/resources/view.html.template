@@ -308,7 +308,7 @@
             <div>
               <input type="button"
                      value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
-                     onclick="javascript:location.href='{{extend_url}};'"
+                     onclick="javascript:location.href='{{extend_url}}'"
                      id="extend_btn">
             </div>
           {% endif %}
@@ -317,7 +317,7 @@
             <div>
               <input type="button"
                 value="{% trans "Subscribe to updates about this person" %}"
-                onclick="javascript:location.href='{{subscribe_url}};'"
+                onclick="javascript:location.href='{{subscribe_url}}'"
                 id="subscribe_btn">
             </div>
           {% endif %}
@@ -326,7 +326,7 @@
             <div>
               <input type="button"
                 value="{% trans "Delete this record" %}"
-                onclick="javascript:location.href='{{delete_url}};'"
+                onclick="javascript:location.href='{{delete_url}}'"
                 id="delete_btn">
             </div>
           {% endif %}
@@ -335,7 +335,7 @@
             <div>
               <input type="button"
                 value="{% trans "Disable notes on this record" %}"
-                onclick="javascript:location.href='{{disable_notes_url}};'"
+                onclick="javascript:location.href='{{disable_notes_url}}'"
                 id="disable_notes_btn">
             </div>
           {% endif %}
@@ -400,7 +400,7 @@
             <p>
             <input type="button"
               value="{% trans "Enable notes on this record" %}"
-              onclick="javascript:location.href='{{enable_notes_url}};'"
+              onclick="javascript:location.href='{{enable_notes_url}}'"
               id="enable_notes_btn">
           </div>
         {% else %}
