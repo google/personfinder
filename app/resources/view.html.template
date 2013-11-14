@@ -356,25 +356,44 @@
 
       <div class="column end">
         {% if notes %}
-          <h2>{% trans "Notes for this person" %}
-            <a href="{{feed_url}}"
-               title="{% trans "Feed of updates about this person" %}">
-              <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
-            </a>
-          </h2>
-          {% for note in notes %}
-            {% if params.dupe_notes or not note.linked_person_record_id %}
-              {% include "note.html.template" %}
-            {% endif %}
-          {% endfor %}
+          <div class="self-notes">
+            <h2>{% trans "Notes for this person" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
+              </a>
+            </h2>
+            {% for note in notes %}
+              {% if params.dupe_notes or not note.linked_person_record_id %}
+                {% include "note.html.template" %}
+              {% endif %}
+            {% endfor %}
+          </div>
         {% else %}
-          <h2>{% trans "No notes have been posted" %}
-            <a href="{{feed_url}}"
-               title="{% trans "Feed of updates about this person" %}">
-              <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
-            </a>
-          </h2>
+          <div class="self-notes">
+            <h2>{% trans "No notes have been posted" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
+              </a>
+            </h2>
+          </div>
         {% endif %}
+        {% for linked_person in linked_person_info %}
+          {% if linked_person.notes %}
+            <div class="linked-notes">
+              <h2>
+                {% trans "Notes for a possible duplicate" %}
+                <a href="{{linked_person.view_url}}">
+                  {{linked_person.name}}
+                </a>
+              </h2>
+              {% for note in linked_person.notes %}
+                {% include "note.html.template" %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
         <p>
         {% if person.notes_disabled %}
           <div class="mandatory">
