@@ -5,6 +5,9 @@ cron:
 - description: update note counts
   url: /global/tasks/count/note
   schedule: every 20 minutes
+- description: update person statuses (if believed_dead)
+  url: /global/tasks/count/update_dead_status
+  schedule: every 10 minutes
 - description: update person statuses
   url: /global/tasks/count/update_status
   schedule: every 5 minutes
