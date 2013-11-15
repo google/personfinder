@@ -7,10 +7,10 @@ cron:
   schedule: every 20 minutes
 - description: update person statuses (if believed_dead)
   url: /global/tasks/count/update_dead_status
-  schedule: every 10 minutes
+  schedule: every 5 minutes
 - description: update person statuses
   url: /global/tasks/count/update_status
-  schedule: every 5 minutes
+  schedule: every 15 minutes
 - description: sitemap ping
   url: /sitemap/ping?search_engine=google
   schedule: every 15 minutes
