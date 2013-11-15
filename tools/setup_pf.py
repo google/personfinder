@@ -60,7 +60,8 @@ def setup_configs():
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
                captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     # A Google Translate API key with a very low quota, just for testing.
-               translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE')
+               translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
+               referrer_whitelist=[])
 
     config.set_for_repo(
         'haiti',

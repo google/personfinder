@@ -1642,6 +1642,50 @@ http://www.foo.com/_account_1''',
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
+    def test_referer(self):
+        """Follow the "I have information" flow with a referrer set."""
+        config.set_for_repo('haiti', referrer_whitelist=['a.org'])
+
+        # Set utcnow to match source date
+        SOURCE_DATETIME = datetime.datetime(2001, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(SOURCE_DATETIME)
+        test_source_date = SOURCE_DATETIME.strftime('%Y-%m-%d')
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'provide', 'referrer': 'a.org'},
+                {'ui': 'small'})
+
+        self.go('/haiti?referrer=a.org')
+        search_page = self.s.follow('I have information about someone')
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
+
+        self.s.submit(search_form,
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
+        assert_params()
+        # Because the datastore is empty, should go straight to the create page
+
+        self.verify_create_form(prefilled_params={
+            'given_name': '_test_given_name',
+            'family_name': '_test_family_name'})
+        self.verify_note_form()
+
+        # Submit the create form with minimal information
+        create_form = self.s.doc.first('form')
+        self.s.submit(create_form,
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      author_name='_test_author_name',
+                      text='_test A note body')
+
+        netloc = urlparse.urlparse(self.s.url).netloc
+        self.verify_details_page(1, details={
+            'Original site name:': '%s (referred by a.org)' % netloc
+            })
+
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
         data = get_test_data('global-test.pfif-1.2-source.xml')
