@@ -61,6 +61,11 @@ class Handler(utils.BaseHandler):
             model.UserActionLog.put_new(
                 (note.hidden and 'hide') or 'unhide',
                 note, self.request.get('reason_for_report', ''))
+
+            person = model.Person.get(self.repo, note.person_record_id)
+            if person:
+                person.update_latest_status()
+
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))
         elif not captcha_response.is_valid:

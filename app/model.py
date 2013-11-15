@@ -516,6 +516,20 @@ class Person(Base):
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)
 
+    def update_latest_status(self):
+        """Scans all notes on this Person and fixes latest_status if needed."""
+        status = None
+        status_source_date = None
+        for note in self.get_notes():
+            if note.status and not note.hidden:
+                status = note.status
+                status_source_date = note.source_date
+        if status != self.latest_status:
+            self.latest_status = status
+            self.latest_status_source_date = status_source_date
+            self.put()
+
+
 # Old indexing
 # TODO(ryok): This is obsolete. Remove it.
 prefix.add_prefix_properties(
