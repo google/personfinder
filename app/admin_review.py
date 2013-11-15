@@ -141,7 +141,8 @@ class Handler(utils.BaseHandler):
         db.put(notes)
         self.redirect('/admin/review',
                       status=self.params.status,
-                      source=self.params.source)
+                      source=self.params.source,
+                      skip=str(self.params.skip))
 
     def is_current_user_authorized(self):
         if users.is_current_user_admin():  # admins can always review
