@@ -27,6 +27,7 @@ import importer
 import indexing
 import model
 import pfif
+import simplejson
 import subscribe
 import utils
 from model import Person, Note, ApiActionLog
@@ -448,3 +449,48 @@ class Unsubscribe(utils.BaseHandler):
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')
         return self.info(200, 'Not subscribed')
+
+
+def fetch_all(query):
+    results = []
+    batch = query.fetch(500)
+    while batch:
+        results += batch
+        batch = query.with_cursor(query.cursor()).fetch(500)
+    return results
+
+
+class Stats(utils.BaseHandler):
+    def get(self):
+        if not (self.auth and self.auth.stats_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
+        person_counts = model.Counter.get_all_counts(self.repo, 'person')
+        note_counts = model.Counter.get_all_counts(self.repo, 'note')
+
+        # unreviewed
+        note_counts['hidden=FALSE,reviewed=FALSE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('reviewed =', False
+            ).filter('hidden =', False
+            ).order('-entry_date')))
+        # accepted
+        note_counts['hidden=FALSE,reviewed=TRUE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('reviewed =', True
+            ).filter('hidden =', False
+            ).order('-entry_date')))
+        # flagged
+        note_counts['hidden=TRUE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('hidden =', True
+            ).order('-entry_date')))
+
+        self.response.headers['Content-Type'] = 'application/json'
+        self.write(simplejson.dumps({'person': person_counts,
+                                     'note': note_counts}))
