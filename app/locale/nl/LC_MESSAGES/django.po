@@ -151,6 +151,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s vermeldingen geselecteerd\n"
+"          "
 
 #, python-format
 msgid ""
@@ -158,6 +161,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Vermeldingen vergelijkbaar met: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -165,6 +171,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Zoekresultaten voor: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -265,6 +274,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Geen resultaten gevonden voor: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -290,6 +302,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      De vermelding is verlengd tot %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -595,9 +610,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Als u deze notitie markeert als spam, wordt de notitie standaard "
+"verborgen. De notitie maakt nog steeds deel uit van de vermelding, maar "
+"er moet extra worden geklikt om de inhoud van de notitie weer te geven. "
+"Gebruikers kunnen de spammarkering voor deze notitie ook verwijderen."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Als u de markering van deze notitie als spam ongedaan maakt, wordt de "
+"notitie standaard weergegeven."
 
 msgid "CSV file"
 msgstr "CSV-bestand"
@@ -677,7 +698,7 @@ msgstr "Heeft deze persoon profielpagina's op andere websites?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Het geluid downloaden als een MP3-bestand"
@@ -874,7 +895,7 @@ msgstr ""
 "adres ervan invoeren."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Onjuist. Probeer het opnieuw."
@@ -899,6 +920,9 @@ msgstr "Lijst van API-sleutels weergeven"
 
 msgid "Mark records as duplicate"
 msgstr "Vermeldingen markeren als duplicaten"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Bericht (verplicht)"
@@ -972,6 +996,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Niet geautoriseerd om notities te plaatsen met de status 'Ik heb "
+"informatie gekregen dat deze persoon is overleden'."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Niet toegestaan opmerkingen te plaatsen met de status 'believed_dead'."
@@ -986,7 +1012,7 @@ msgid "Note text"
 msgstr "Opmerkingstekst"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Opmerkingen voor deze persoon"
@@ -1022,7 +1048,7 @@ msgid "Original site name"
 msgstr "Naam van oorspronkelijke site"
 
 msgid "Other website"
-msgstr ""
+msgstr "Andere website"
 
 #, fuzzy
 msgid ""
@@ -1090,6 +1116,9 @@ msgstr "Geef een geldig e-mailadres op."
 
 msgid "Possible duplicates"
 msgstr "Mogelijke duplicaten"
+
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Postcode"
@@ -1170,7 +1199,7 @@ msgid "Show sensitive information"
 msgstr "Gevoelige gegevens weergeven"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Weergeven wie deze duplicaten heeft gemarkeerd"
 
 msgid "Sign in"
 msgstr "Inloggen"
@@ -1221,14 +1250,8 @@ msgstr "Abonneren op updates over deze persoon"
 msgid "Switch to address"
 msgstr "Overschakelen naar adres"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Overschakelen naar het markeren van duplicaten"
-
 msgid "Switch to lat/long"
 msgstr "Overschakelen naar lengte-/breedtegraad"
-
-msgid "Switch to normal view mode"
-msgstr "Overschakelen naar normale weergave"
 
 msgid "Tell us the status of this person"
 msgstr "Vertel ons de status van deze persoon"
@@ -1383,7 +1406,7 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
-"Typ een adres of open de onderstaande kaart en geeft de locatie aan door "
+"Typ een adres of open de onderstaande kaart en geef de locatie aan door "
 "op de kaart te klikken."
 
 msgid "Type an address."
@@ -1411,13 +1434,13 @@ msgid "Upload"
 msgstr "Uploaden"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "De vermelding bekijken"

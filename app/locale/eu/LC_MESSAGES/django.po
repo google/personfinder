@@ -146,6 +146,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s erregistro hautatu dira\n"
+"          "
 
 #, python-format
 msgid ""
@@ -153,6 +156,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Honen antzeko erregistroak: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -160,6 +166,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Honen bilaketa-emaitzak: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -258,6 +267,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Ez da bilaketa honen emaitzarik aurkitu: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -282,6 +294,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Erregistroaren iraungitze-data %(expiry_date)s arte atzeratu da.\n"
+"    "
 
 msgid ""
 "\n"
@@ -509,19 +524,19 @@ msgid "API Key Management"
 msgstr "APIaren gakoen kudeaketa"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Duela 1 hilabete (30 egun) inguru"
+msgstr "1 hilabete (30 egun) inguru barru"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Duela 1 urte (360 egun) inguru"
+msgstr "1 urte (360 egun) inguru barru"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Duela 2 hilabete (60 egun) inguru"
+msgstr "2 hilabete (60 egun) inguru barru"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Duela 3 hilabete (90 egun) inguru"
+msgstr "3 hilabete (90 egun) inguru barru"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Duela 6 hilabete (180 egun) inguru"
+msgstr "6 hilabete (180 egun) inguru barru"
 
 msgid "About Google Person Finder"
 msgstr "Google Person Finder zerbitzuari buruz"
@@ -580,9 +595,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Oharra spam gisa markatzen baduzu, ezkutatu egingo da lehenespenez. "
+"Erregistroan egoten jarraituko du, baina klik bat gehiago egin beharko da"
+" oharraren edukia ikusteko. Erabiltzaileek, bestalde, oharraren spam-"
+"marka kendu ahal izango dute."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "Oharrari spam-marka kenduz gero, ikusgai ezarriko da lehenespenez."
 
 msgid "CSV file"
 msgstr "CSV fitxategia"
@@ -616,7 +635,7 @@ msgid "Create a new record"
 msgstr "Sortu erregistroa"
 
 msgid "Create a new record for"
-msgstr "Sortu honen erregistroa:"
+msgstr "Sortu honen beste erregistro bat:"
 
 msgid "Create a new record for a missing person"
 msgstr "Sortu desagertutako pertsona baten erregistroa"
@@ -660,7 +679,7 @@ msgstr "Pertsona horrek ba al ditu profilen orriak beste webgune batzuetan?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Deskargatu soinua MP3 gisa"
@@ -687,10 +706,10 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
 
 msgid "Enter the person's given and family names."
-msgstr "Sartu pertsonaren izena eta abizena."
+msgstr "Idatzi pertsonaren izena eta abizenak."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Sartu pertsonaren izena edo zati bat."
+msgstr "Idatzi pertsonaren izena edo izenaren zati bat."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Sartu pertsonaren izena edo zati bat."
@@ -709,7 +728,7 @@ msgid "Extend expiration date by %(extension_days)s days"
 msgstr "Atzeratu iraungitze-data %(extension_days)s egun"
 
 msgid "Family name"
-msgstr "Abizena"
+msgstr "Abizenak"
 
 msgid "Feed of updates about this person"
 msgstr "Pertsona honi buruzko eguneratzeen jarioa"
@@ -777,7 +796,7 @@ msgstr "Nola jar daiteke pertsona honekin harremanetan orain?"
 msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Nola jar daitezke pertsona honetan interesatutako gainerakoak zurekin "
-"harremanetan"
+"harremanetan?"
 
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
@@ -853,7 +872,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Pertsonaren argazkirik baduzu, kargatu irudia edo sartu URL helbidea."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Oker. Saiatu berriro."
@@ -880,7 +899,7 @@ msgid "Mark records as duplicate"
 msgstr "Markatu erregistroak bikoiztu gisa"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Mezua (beharrezkoa)"
@@ -954,6 +973,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"\"Pertsona hau hilda dagoela jakin dut\" egoera duten oharrak "
+"argitaratzeko baimenik ez."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ez dago \"believed_dead\" egoerarekin oharrak argitaratzeko baimenik."
@@ -968,7 +989,7 @@ msgid "Note text"
 msgstr "Oharraren testua"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Pertsona honen oharrak"
@@ -1004,7 +1025,7 @@ msgid "Original site name"
 msgstr "Jatorrizko gunearen izena"
 
 msgid "Other website"
-msgstr ""
+msgstr "Beste webgune bat"
 
 #, fuzzy
 msgid ""
@@ -1075,7 +1096,7 @@ msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Posta-kodea edo zip kodea"
@@ -1156,7 +1177,7 @@ msgid "Show sensitive information"
 msgstr "Erakutsi isilpeko informazioa"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Erakutsi nork markatu dituen bikoiztu gisa"
 
 msgid "Sign in"
 msgstr "Hasi saioa"
@@ -1386,13 +1407,13 @@ msgid "Upload"
 msgstr "Kargatu"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Ikusi erregistroa"

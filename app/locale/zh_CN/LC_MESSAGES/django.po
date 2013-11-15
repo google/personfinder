@@ -139,6 +139,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            已选定%(dup_count)s条记录\n"
+"          "
 
 #, python-format
 msgid ""
@@ -146,6 +149,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        与“%(full_name)s”类似的记录\n"
+"      "
 
 #, python-format
 msgid ""
@@ -153,6 +159,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        有关“%(query)s”的搜索结果\n"
+"      "
 
 #, python-format
 msgid ""
@@ -246,6 +255,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      找不到有关“%(query)s”的结果\n"
+"    "
 
 #, python-format
 msgid ""
@@ -268,6 +280,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      该记录的有效期已延长到%(expiry_date)s。\n"
+"    "
 
 msgid ""
 "\n"
@@ -457,13 +472,13 @@ msgstr ""
 "要取消订阅，请点击以下链接：%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "（点击可显示）"
+msgstr "（点击即可显示）"
 
 msgid "(unknown)"
 msgstr "（未知）"
 
 msgid "A message for this person or others seeking this person"
-msgstr "给此人或其他打听此人下落的人员的留言"
+msgstr "留言给此人或其他打听此人下落的人"
 
 msgid "A new API key has been created successfully."
 msgstr "已成功创建新的 API 密钥。"
@@ -542,10 +557,10 @@ msgid ""
 " still be a part of the record, but will require an extra click to view "
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
-msgstr ""
+msgstr "将此注释标为垃圾内容，即表示该注释在默认情况下将处于隐藏状态。这条注释将仍然是记录的一部分，但用户需要点击记录才能查看注释的内容。用户也可以去掉这条注释的垃圾内容标记。"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "去掉此注释的垃圾内容标记，即表示该注释在默认情况下公开显示。"
 
 msgid "CSV file"
 msgstr "CSV 文件"
@@ -589,7 +604,7 @@ msgstr "危机事件"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "当前正在跟踪约 %(num_people)s 条记录。"
+msgstr "当前跟踪的记录约有 %(num_people)s 条。"
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "不能使用未来的日期，请返回并重试。"
@@ -601,7 +616,7 @@ msgid "Delete this record"
 msgstr "删除此记录"
 
 msgid "Describe how to identify this person."
-msgstr "请描述此人的外貌与个人特征。"
+msgstr "请描述此人的外貌与基本特征。"
 
 msgid "Describe the physical characteristics of this person."
 msgstr "请描述此人的体貌特征。"
@@ -623,7 +638,7 @@ msgstr "此人在其他网站上有个人资料页面吗？"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下载声音"
@@ -662,7 +677,7 @@ msgid "Enter the person's name."
 msgstr "输入此人的姓名。"
 
 msgid "Expiry"
-msgstr "失效日期"
+msgstr "有效期限"
 
 msgid "Expiry date of this record"
 msgstr "此记录的失效日期"
@@ -732,10 +747,10 @@ msgid "How can this person be reached now?"
 msgstr "现在如何与这个人取得联系？"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "同样关注这个人的人员该如何与您取得联系"
+msgstr "同样关注此人的人员该如何与您取得联系"
 
 msgid "I am seeking information"
-msgstr "我正在搜集信息"
+msgstr "我正在寻找这个人的消息"
 
 msgid "I am this person"
 msgstr "正是我本人"
@@ -753,13 +768,13 @@ msgid "I have reason to think this person is missing"
 msgstr "我有理由认定这个人失踪了"
 
 msgid "I have received information that this person is alive"
-msgstr "我已收到这个人幸存的消息"
+msgstr "我收到这个人幸存的消息"
 
 msgid "I have received information that this person is dead"
-msgstr "我已收到这个人不幸遇难的消息"
+msgstr "我收到这个人不幸遇难的消息"
 
 msgid "I have received spam due to this note."
-msgstr "我因为此注释的缘故而收到了垃圾内容。"
+msgstr "我因为此注释而收到了垃圾内容。"
 
 msgid "I have received spam."
 msgstr "我收到了垃圾内容。"
@@ -774,7 +789,7 @@ msgid "Identify who you are looking for"
 msgstr "说明您正在寻找的人是谁"
 
 msgid "Identify who you have information about"
-msgstr "说明您有关于谁的消息"
+msgstr "请说明您有关于哪个人的消息"
 
 msgid "Identifying information"
 msgstr "身份识别信息"
@@ -800,7 +815,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有这个人的照片，请上传该照片或输入照片网址。"
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "不正确，请重试。"
@@ -812,7 +827,7 @@ msgid "Language selection"
 msgstr "语言选择"
 
 msgid "Last known location"
-msgstr "这个人最后出现的地点"
+msgstr "此人最后出现的地点"
 
 msgid "Link"
 msgstr "链接"
@@ -825,6 +840,9 @@ msgstr "列出 API 密钥"
 
 msgid "Mark records as duplicate"
 msgstr "将记录标为重复"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "留言（必填）"
@@ -862,7 +880,7 @@ msgid "Name is required.  Please go back and try again."
 msgstr "必须填写姓名，请返回并重试。"
 
 msgid "Neighborhood"
-msgstr "社区"
+msgstr "街区/城区"
 
 msgid "No"
 msgstr "无"
@@ -891,7 +909,7 @@ msgstr "没有这样的授权实体。"
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
+msgstr "未经授权，无法发布状况内容为“我收到这个人不幸遇难的消息”的注释。"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "未经授权，无法发布状态为“believed_dead”的注释。"
@@ -906,13 +924,13 @@ msgid "Note text"
 msgstr "注释文字"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "对此人的注释"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "数字或数字范围（例如：20-30）"
+msgstr "具体的数字或范围（例如：20-30）"
 
 #, python-format
 msgid ""
@@ -924,7 +942,7 @@ msgid "Original URL"
 msgstr "原始网址"
 
 msgid "Original author's name"
-msgstr "原始创建者姓名"
+msgstr "原创建者姓名"
 
 msgid "Original posting date"
 msgstr "原始发布日期"
@@ -938,14 +956,16 @@ msgid "Original site name"
 msgstr "原始发布网站的名称"
 
 msgid "Other website"
-msgstr ""
+msgstr "其他网站"
 
 #, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
-msgstr "请注意：在 Google 网上寻人的有效网站上输入的所有数据都会对公众开放，而且可供任何人使用。Google 不会审查或验证这些数据的准确性。"
+msgstr ""
+"请注意：在 Google Person Finder 有效网站上输入的所有数据都会对公众开放，而且可供任何人使用。Google "
+"不会审查或验证这些数据的准确性。"
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -999,6 +1019,9 @@ msgstr "请提供有效的电子邮件地址。"
 msgid "Possible duplicates"
 msgstr "可能的重复项"
 
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
+
 msgid "Postal or zip code"
 msgstr "邮政编码"
 
@@ -1018,13 +1041,13 @@ msgid "Provide information"
 msgstr "提供信息"
 
 msgid "Provide information about this person"
-msgstr "提供关于此人的信息"
+msgstr "提供此人的相关信息"
 
 msgid "Provided by:"
 msgstr "提供者："
 
 msgid "Province or state"
-msgstr "省/自治区/直辖市"
+msgstr "州/省/自治区/直辖市"
 
 msgid "Reason for deletion:"
 msgstr "删除的原因："
@@ -1078,7 +1101,7 @@ msgid "Show sensitive information"
 msgstr "显示敏感信息"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "显示将这些注释标为重复的用户"
 
 msgid "Sign in"
 msgstr "登录"
@@ -1102,7 +1125,7 @@ msgid "Source of this record"
 msgstr "此记录的来源"
 
 msgid "Source of this record (required)"
-msgstr "此记录的来源（必填）"
+msgstr "此记录的出处（必填）"
 
 msgid "Status"
 msgstr "状况"
@@ -1114,7 +1137,7 @@ msgid "Street name"
 msgstr "街道名称"
 
 msgid "Street name only, no number"
-msgstr "只需输入相应的街道名称，无需输入门牌号"
+msgstr "输入街道名称即可，无需输入门牌号"
 
 msgid "Subscribe"
 msgstr "订阅"
@@ -1124,19 +1147,13 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "订阅关于“%(full_name)s”的最新动态"
 
 msgid "Subscribe to updates about this person"
-msgstr "订阅关于此人的最新动态"
+msgstr "订阅关于此人的最新消息"
 
 msgid "Switch to address"
 msgstr "切换至地址"
 
-msgid "Switch to duplicate marking mode"
-msgstr "切换至重复标记模式"
-
 msgid "Switch to lat/long"
 msgstr "切换至纬度/经度"
-
-msgid "Switch to normal view mode"
-msgstr "切换至普通视图模式"
 
 msgid "Tell us the status of this person"
 msgstr "告诉我们这个人的状况"
@@ -1153,7 +1170,7 @@ msgid ""
 msgstr "必须填写姓氏和名字，请返回并重试。"
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "必须输入原始创建者的姓名，请返回并重试。"
+msgstr "必须输入原创建者的姓名，请返回并重试。"
 
 msgid "The author has disabled notes on this record."
 msgstr "创建者已停用此记录的注释功能。"
@@ -1292,7 +1309,7 @@ msgid "URL of original record"
 msgstr "原始记录的网址"
 
 msgid "Unspecified"
-msgstr "未指定"
+msgstr "不详"
 
 msgid "Update an existing key"
 msgstr "更新现有密钥"
@@ -1301,13 +1318,13 @@ msgid "Upload"
 msgstr "上传"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "查看记录"
@@ -1316,13 +1333,13 @@ msgid "We have nothing matching your search."
 msgstr "没有任何记录与您的搜索条件相符。"
 
 msgid "What is this person's name?"
-msgstr "这个人叫什么名字？"
+msgstr "这个人的姓名是什么？"
 
 msgid "When should this record disappear?"
-msgstr "此记录应在何时删除？"
+msgstr "此记录可在何时删除？"
 
 msgid "Where did this information come from?"
-msgstr "此信息的出处是哪里？"
+msgstr "此信息的出处为何？"
 
 msgid "Where is this person from?"
 msgstr "这个人来自哪里？"
@@ -1330,7 +1347,7 @@ msgstr "这个人来自哪里？"
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr "在测试模式下，系统会删除超过 6 个小时的记录（不考虑其过期日期）。"
+msgstr "在测试模式下，系统会删除超过 6 个小时的记录，不论有效期限的设定为何。"
 
 msgid "Yes"
 msgstr "是"
@@ -1433,7 +1450,7 @@ msgstr "[网上寻人] 确认您关于“%(full_name)s”的注释"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[网上寻人]“%(full_name)s”的删除通知"
+msgstr "[Person Finder]“%(full_name)s”的删除通知"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"

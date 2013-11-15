@@ -34,10 +34,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Per assegurar-nos que les notes només s'activin o es desactivin quan es"
-" tingui el permís de l'autor del registre, li enviarem un missatge de "
-"confirmació. Si sou l'autor, comproveu el correu electrònic després de "
-"fer clic al botó que hi ha a continuació.\n"
+"  "
+"為了確保註解功能的停用或啟用的確獲得記錄作者本人許可，我們會寄送一封確認郵件給記錄作者。如果您是作者，請您在按一下下方的按鈕後，查看您的電郵信箱。"
+"\n"
 "\n"
 "  "
 
@@ -59,16 +58,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hola, %(author_name)s.\n"
+"%(author_name)s，您好：\n"
 "\n"
-"Un usuari ha sol·licitat l'activació de les notes al registre de:\n"
-"%(full_name)s.\n"
+"目前有一位使用者要求啟用「%(full_name)s」這項記錄的\n"
+"註解功能。\n"
 "\n"
-"Tenim registrada la vostra adreça electrònica com a autor d'aquest "
-"registre. Per activar les notes en aquest registre, seguiu aquest enllaç "
-"en un termini màxim de tres dies:\n"
+"由於這項記錄的作者資料登記了您的電郵地址，因此，如果您確定要啟用\n"
+"這項記錄的註解功能，請於 3 日內前往以下連結：\n"
 "\n"
-"  %(confirm_url)s\n"
+"   %(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -89,16 +87,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hola, %(author_name)s.\n"
+"%(author_name)s，您好：\n"
 "\n"
-"Un usuari ha sol·licitat la desactivació de les notes al registre de:\n"
-"%(full_name)s.\n"
+"目前有一位使用者要求停用「%(full_name)s」這項記錄的\n"
+"註解功能。\n"
 "\n"
-"Tenim registrada la vostra adreça electrònica com a autor d'aquest "
-"registre. Per desactivar les notes en aquest registre, seguiu aquest "
-"enllaç en un termini màxim de tres dies:\n"
+"由於這項記錄的作者資料登記了您的電郵地址，因此，如果您確定要停用\n"
+"這項記錄的註解功能，請於 3 日內前往以下連結：\n"
 "\n"
-"  %(confirm_url)s\n"
+"   %(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -114,9 +111,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hola, %(author_name)s.\n"
-"Acabeu d'introduir una nota al registre de: %(full_name)s.\n"
-"Per publicar-la, seguiu aquest enllaç en un termini màxim de tres dies:\n"
+"%(author_name)s，您好：\n"
+"您剛剛在「%(full_name)s」這項記錄中輸入了註解。\n"
+"如要發佈您的註解，請於 3 日內前往以下連結：\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -129,8 +126,7 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    Advertiment: aquest registre caducarà en menys de "
-"%(expiration_days)s dies.\n"
+"                    警告：這項記錄將於 %(expiration_days)s 天內到期。\n"
 "                  "
 
 msgid ""
@@ -139,8 +135,7 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    Advertiment: aquest registre caducarà en menys d'un "
-"dia.\n"
+"                    警告：這項記錄將於 1 天內到期。\n"
 "                  "
 
 #, python-format
@@ -150,7 +145,7 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(dup_count)s registres seleccionats\n"
+"            已選取 %(dup_count)s 個記錄\n"
 "          "
 
 #, python-format
@@ -160,7 +155,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Registres similars a: %(full_name)s\n"
+"        與「%(full_name)s」類似的記錄\n"
 "      "
 
 #, python-format
@@ -170,7 +165,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Resultats de la cerca per a: %(query)s\n"
+"        「 %(query)s」的搜尋結果\n"
 "      "
 
 #, python-format
@@ -180,7 +175,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu suprimir el registre de %(full_name)s?\n"
+"      您確定要刪除「%(full_name)s」的記錄嗎？\n"
 "    "
 
 #, python-format
@@ -190,7 +185,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu desactivar les notes per a %(full_name)s?\n"
+"      您確定要停用「%(full_name)s」的註解功能嗎？\n"
 "    "
 
 #, python-format
@@ -201,8 +196,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu desactivar les notes al registre de "
-"%(full_name)s?\n"
+"      您確定要停用「%(full_name)s」這項記錄的註解功能嗎？\n"
 "    "
 
 #, python-format
@@ -212,7 +206,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu activar les notes per a %(full_name)s?\n"
+"      您確定要啟用「%(full_name)s」的註解功能嗎？\n"
 "    "
 
 #, python-format
@@ -223,8 +217,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu ampliar la data de caducitat del registre "
-"%(full_name)s?\n"
+"      您確定要延長「%(full_name)s」這項記錄的有效期嗎？\n"
 "    "
 
 msgid ""
@@ -233,7 +226,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Confirmeu la nota\n"
+"      確認您的註解\n"
 "    "
 
 msgid ""
@@ -243,8 +236,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Si continueu amb l'acció de suprimir, aquest registre ja no es "
-"podrà cercar ni visualitzar en aquest lloc.\n"
+"      這項記錄一經刪除，\n"
+"      您就無法再透過這個網站搜尋或查看這項記錄。\n"
 "    "
 
 #, python-format
@@ -257,9 +250,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Si voleu que se suprimeixi permanentment, contacteu amb la font "
-"original. El registre original es pot consultar a "
-"%(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"      如果您要永久刪除記錄，\n"
+"      請與原始來源聯絡。\n"
+"      您可前往以下來源查看原始記錄：\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s。\n"
 "    "
 
 #, python-format
@@ -269,7 +263,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      No s'han trobat resultats per a: %(query)s\n"
+"      找不到與「%(query)s」相符的搜尋結果。\n"
 "    "
 
 #, python-format
@@ -283,9 +277,9 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      L'URL que heu introduït no sembla un URL de perfil vàlid per a "
-"%(website)s. Aneu a la pàgina de perfil d'aquesta persona a %(website)s "
-"i, a continuació, copieu l'URL i enganxeu-lo aquí.\n"
+"      您所輸入的網址似乎並非有效的 %(website)s 個人資料網址。\n"
+"      請前往這位使用者在 %(website)s 的個人資料頁面，複製該頁面的網址，\n"
+"      然後再貼到這裡。\n"
 "      "
 
 #, python-format
@@ -295,7 +289,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      El registre s'ha ampliat fins al dia %(expiry_date)s.\n"
+"      記錄有效期已延長至 %(expiry_date)s。\n"
 "    "
 
 msgid ""
@@ -308,9 +302,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Aquest registre és una còpia d'un registre d'una altra font. El "
-"podeu suprimir aquí, però tingueu en compte que és possible que més "
-"endavant la font original ens n'enviï una altra còpia.\n"
+"      這項記錄是其他來源提供的記錄副本。\n"
+"      您可以刪除這裡的記錄，\n"
+"      但請注意，\n"
+"      我們稍後可能會收到該記錄的其他副本 (由原始來源提供)。\n"
 "    "
 
 msgid ""
@@ -324,10 +319,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Per assegurar-nos que les notes només s'activin o es desactivin quan "
-"es tingui el permís de l'autor del registre, li enviarem un missatge de "
-"confirmació. Si sou l'autor, comproveu el correu electrònic després de "
-"fer clic al botó que hi ha a continuació.\n"
+"    為了確保註解功能的停用或啟用的確獲得記錄作者本人\n"
+"    許可，我們會寄送一封確認郵件給記錄作者。\n"
+"    如果您是作者，請在按一下下方的按鈕後，查看您的電郵信箱。\n"
 "  "
 
 msgid ""
@@ -338,8 +332,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  El registre continuarà visible al lloc, però ningú no podrà publicar-hi"
-" cap més nota.\n"
+"  相關記錄仍會顯示在網站上，但所有人皆無法再\n"
+"  針對該項記錄發佈註解。\n"
 "  "
 
 msgid ""
@@ -350,8 +344,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Per publicar la nota, introduïu la vostra adreça electrònica a "
-"continuació i seguiu l'enllaç de confirmació que rebreu.\n"
+"  如要發佈註解，請在下方輸入您的電郵地址，系統會馬上寄送\n"
+"  一封郵件給您，您只要按一下當中的確認連結即可。\n"
 "  "
 
 #, python-format
@@ -364,12 +358,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Un usuari ha suprimit el registre %(full_name)s de la pàgina "
-"%(site_url)s.\n"
+"某位使用者已將「%(full_name)s」的記錄\n"
+"從 %(site_url)s 中刪除。\n"
 "\n"
-"Heu rebut aquesta notificació de supressió perquè la vostra adreça "
-"electrònica està registrada com a adreça de l'autor d'una nota escrita en"
-" aquest registre.\n"
+"由於系統根據您的電郵地址確定您曾經為這項記錄添加註解，\n"
+"因此特此通知您記錄已被刪除。\n"
 
 #, python-format
 msgid ""
@@ -381,12 +374,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Un usuari ha suprimit el registre %(full_name)s de la pàgina "
-"%(site_url)s.\n"
+"某位使用者已將「%(full_name)s」這項記錄\n"
+"從 %(site_url)s 中刪除。\n"
 "\n"
-"Heu rebut aquesta notificació de supressió perquè la vostra adreça "
-"electrònica està registrada com a adreça de l'autor d'una nota escrita en"
-" aquest registre.\n"
+"由於這項記錄的作者資料中登記了您的電郵地址，\n"
+"因此我們特此通知您記錄已被刪除。\n"
 
 #, python-format
 msgid ""
@@ -395,8 +387,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"D'aquí a %(days_until_deletion)s dies, el registre se suprimirà de manera"
-" permanent.\n"
+"系統將在 %(days_until_deletion)s 天後永久刪除這項記錄。\n"
 
 #, python-format
 msgid ""
@@ -408,9 +399,8 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"NOTA: si creieu que aquest registre s'ha suprimit per error, podeu "
-"restaurar-lo si seguiu aquest enllaç durant els pròxims "
-"%(days_until_deletion)s dies:\n"
+"注意：如果您確信這項記錄被錯誤刪除，\n"
+"請於 %(days_until_deletion)s 天內前往以下連結還原記錄：\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -427,14 +417,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Actualment les notes estan desactivades al registre de: %(full_name)s. "
-"Per visualitzar-lo, seguiu aquest enllaç:\n"
+"系統已停用「%(full_name)s」這項記錄的註解功能。如要查看這項記錄，\n"
+"請前往以下連結：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Us ho notifiquem perquè la vostra adreça electrònica està associada amb "
-"el registre d'aquesta\n"
-"persona o bé amb una nota del registre.\n"
+"由於這項尋人記錄或當中的註解登記了您的電郵地址，\n"
+"因此我們特此發送通知給您。\n"
 
 #, python-format
 msgid ""
@@ -449,14 +438,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Actualment les notes estan activades al registre de: %(full_name)s. Per "
-"visualitzar-lo, seguiu aquest enllaç:\n"
+"系統已啟用「%(full_name)s」這項記錄的註解功能。如要查看這項記錄，\n"
+"請前往以下連結：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Us ho notifiquem perquè la vostra adreça electrònica està associada amb "
-"el registre d'aquesta\n"
-"persona o bé amb una nota del registre.\n"
+"由於這項尋人記錄或當中的註解登記了您的電郵地址，\n"
+"因此我們特此發送通知給您。\n"
 
 #, python-format
 msgid ""
@@ -471,14 +459,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"L'autor del registre de: %(full_name)s (que s'ha suprimit prèviament) ha "
-"restaurat el registre. Per visualitzar el registre, seguiu aquest enllaç:"
-"\n"
+"「%(full_name)s」的作者\n"
+"已將該項原本被刪除的記錄還原。如要查看該項記錄，\n"
+"請前往以下連結：\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Us ho notifiquem perquè la vostra adreça electrònica està associada amb "
-"el registre d'aquesta persona o amb una nota del registre.\n"
+"由於這項尋人記錄或當中的註解登記了您的電郵地址，\n"
+"因此我們特此發送通知給您。\n"
 
 #, python-format
 msgid ""
@@ -486,7 +474,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Hi ha una nota nova al registre de: %(full_name)s.\n"
+"「%(full_name)s」這項記錄中有一項新註解。\n"
 
 #, python-format
 msgid ""
@@ -500,929 +488,857 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Us heu subscrit a les notes sobre %(full_name)s.\n"
+"您已訂閱「%(full_name)s」這項記錄的註解。\n"
 "\n"
-"Podeu visualitzar aquest registre a\n"
+"您可前往以下連結查看這項記錄：\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"Per cancel·lar la subscripció, seguiu aquest enllaç: %(unsubscribe_link)s"
-"\n"
+"如要取消訂閱，請前往以下連結：%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "(feu clic per mostrar la informació)"
+msgstr "(按一下即可顯示)"
 
 msgid "(unknown)"
-msgstr "(desconegut)"
+msgstr "(未知)"
 
 msgid "A message for this person or others seeking this person"
-msgstr ""
-"Escriviu un missatge per a aquesta persona o per a altres persones que "
-"l'estiguin cercant."
+msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
 
 msgid "A new API key has been created successfully."
-msgstr "S'ha creat una clau API nova correctament."
+msgstr "已成功建立新的 API 金鑰。"
 
 msgid "API Key Management"
-msgstr "Gestió de claus API"
+msgstr "API 金鑰管理"
 
 msgid "About 1 month (30 days) from now"
-msgstr "D'aquí a aproximadament un mes (30 dies)"
+msgstr "從現在起約 1 個月 (30 天) 後"
 
 msgid "About 1 year (360 days) from now"
-msgstr "D'aquí a aproximadament un any (360 dies)"
+msgstr "從現在起約 1 年 (360 天) 後"
 
 msgid "About 2 months (60 days) from now"
-msgstr "D'aquí a aproximadament dos mesos (60 dies)"
+msgstr "從現在起約 2 個月 (60 天) 後"
 
 msgid "About 3 months (90 days) from now"
-msgstr "D'aquí a aproximadament tres mesos (90 dies)"
+msgstr "從現在起約 3 個月 (90 天) 後"
 
 msgid "About 6 months (180 days) from now"
-msgstr "D'aquí a aproximadament sis mesos (180 dies)"
+msgstr "從現在起約 6 個月 (180 天) 後"
 
 msgid "About Google Person Finder"
-msgstr "Sobre el Cercador de persones de Google"
+msgstr "關於 Google 尋人工具"
 
 msgid "About you (required)"
-msgstr "Informació personal (obligatòria)"
+msgstr "關於您 (必填)"
 
 msgid "Administration"
-msgstr "Administració"
+msgstr "管理"
 
 msgid "Age"
-msgstr "Edat"
+msgstr "年齡"
 
 msgid "Alternate family names"
-msgstr "Cognoms alternatius"
+msgstr "其他姓氏"
 
 msgid "Alternate given names"
-msgstr "Noms de pila alternatius"
+msgstr "其他名字"
 
 msgid "Alternate names"
-msgstr "Noms alternatius"
+msgstr "其他名稱"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Esteu segur que aquesta nota no és activitat brossa?"
+msgstr "您確定這項註解並非垃圾資訊嗎？"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Esteu segur que voleu marcar aquesta nota com a activitat brossa?"
+msgstr "您確定要將這項註解標示為垃圾資訊嗎？"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Esteu segur que voleu restaurar aquest registre després de suprimir-lo?"
+msgstr "您確定要還原這項被刪除的記錄嗎？"
 
 msgid "Atom feed of updates about this person"
-msgstr "Feed d'Atom de novetats sobre aquesta persona"
+msgstr "這個人的最新消息 Atom 資訊提供"
 
 msgid "Author's e-mail address"
-msgstr "Adreça electrònica de l'autor"
+msgstr "作者的電郵地址"
 
 msgid "Author's name"
-msgstr "Nom de l'autor"
+msgstr "作者的姓名"
 
 msgid "Author's phone number"
-msgstr "Número de telèfon de l'autor"
+msgstr "作者的電話號碼"
 
 msgid "Authorization key"
-msgstr "Clau d'autorització"
+msgstr "授權金鑰"
 
 msgid "Back to results list"
-msgstr "Torna a la llista de resultats"
+msgstr "回到結果清單"
 
 msgid "Back to start"
-msgstr "Torna a l'inici"
+msgstr "回到首頁"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
-msgstr ""
-"Si marqueu aquesta nota com a correu brossa, fareu que s'amagui de manera"
-" predeterminada. Continuarà sent part del registre, però caldrà fer un "
-"clic addicional per veure el contingut de la nota. Els usuaris també "
-"podran suprimir la marca de correu brossa de la nota."
+msgstr "將這個備註標記為垃圾郵件，將會使該備註預設為隱藏。該備註仍會是記錄的一部分，但需要現按一下才能查看備註的內容。使用者亦可以移除這個備註的垃圾郵件標記。"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
-"Si anul·leu el marcatge d'aquesta nota com a correu brossa, fareu que "
-"sigui visible de manera predeterminada."
+msgstr "移除這個備註的垃圾郵件標記，可以使該備註預設為顯示。"
 
 msgid "CSV file"
-msgstr "Fitxer CSV"
+msgstr "CSV 檔案"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "No trobo la nota amb l'identificador %(id)s"
+msgstr "找不到編號為 %(id)s 的註解"
 
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "取消"
 
 msgid "City"
-msgstr "Ciutat"
+msgstr "城市"
 
 msgid "Click here to view results."
-msgstr "Feu clic aquí per visualitzar els resultats."
+msgstr "按一下此處即可查看結果。"
 
 msgid "Close window"
-msgstr "Tanca la finestra"
+msgstr "關閉視窗"
 
 msgid "Compare these records"
-msgstr "Compara aquests registres"
+msgstr "比較這些記錄"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Copieu i enganxeu el codi HTML següent per col·locar aquesta eina al "
-"vostre lloc"
+msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放在您的網站上。"
 
 msgid "Create a new API key"
-msgstr "Crea una clau API nova"
+msgstr "建立新的 API 金鑰"
 
 msgid "Create a new record"
-msgstr "Crea un registre nou"
+msgstr "建立新記錄"
 
 msgid "Create a new record for"
-msgstr "Crea un registre nou per a"
+msgstr "建立此項目的新記錄："
 
 msgid "Create a new record for a missing person"
-msgstr "Crea un registre nou per a una persona desapareguda"
+msgstr "建立失蹤人士的新記錄"
 
 msgid "Crisis events"
-msgstr "Esdeveniments de crisi"
+msgstr "危機事件"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Aproximadament %(num_people)s persones registrades."
+msgstr "目前追蹤的記錄約有 %(num_people)s 項。"
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "La data no pot ser en el futur. Aneu enrere i torneu-ho a provar."
+msgstr "日期不能在未來，請回到上一步，然後再試一次。"
 
 msgid "Date of birth"
-msgstr "Data de naixement"
+msgstr "生日"
 
 msgid "Delete this record"
-msgstr "Suprimeix aquest registre"
+msgstr "刪除這項記錄"
 
 msgid "Describe how to identify this person."
-msgstr "Descriviu com es pot identificar aquesta persona."
+msgstr "請描述這個人的外貌與基本特徵。"
 
 msgid "Describe the physical characteristics of this person."
-msgstr "Descriviu les característiques físiques d'aquesta persona."
+msgstr "請描述這個人的外貌特徵。"
 
 msgid "Description"
-msgstr "Descripció"
+msgstr "描述"
 
 msgid "Desktop version"
-msgstr "Versió d'escriptori"
+msgstr "電腦版本"
 
 msgid "Developers"
-msgstr "Desenvolupadors"
+msgstr "開發人員"
 
 msgid "Disable notes on this record"
-msgstr "Desactiva les notes en aquest registre"
+msgstr "停用這項記錄的註解功能"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr "Aquesta persona té pàgines de perfil en altres llocs web?"
+msgstr "這個人在其他網站上有個人資料頁面嗎？"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
-msgstr "Baixa el so com a MP3"
+msgstr "以 MP3 格式下載聲音"
 
 msgid "E-mail"
-msgstr "Correu electrònic"
+msgstr "電郵"
 
 msgid "E-mail address"
-msgstr "Adreça electrònica"
+msgstr "電郵地址"
 
 msgid "Edit"
-msgstr "Edita"
+msgstr "編輯"
 
 msgid "Embedding the Application"
-msgstr "Inserció de l'aplicació"
+msgstr "嵌入應用程式"
 
 msgid "Enable notes on this record"
-msgstr "Activa les notes en aquest registre"
+msgstr "啟用這項記錄的註解功能"
 
 msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Assegureu-vos que totes les dates tinguin el format aaaa-mm-ddThh:mm:ssZ "
-"en UTC"
+msgstr "確定所有日期格式皆為 yyyy-mm-ddThh:mm:ssZ (年年年年-月月-日日時時:分分:秒秒)，並以世界標準時間為準"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr "La data ha de tenir el format AAAA-MM-DD."
+msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 
 msgid "Enter the person's given and family names."
-msgstr "Introduïu el nom i els cognoms de la persona."
+msgstr "輸入這個人的名字和姓氏。"
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Introduïu el nom o part del nom de la persona."
+msgstr "輸入這個人的全名或部分姓名。"
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Escriviu el nom de la persona, alguna part del seu nom o el seu número de"
-" telèfon mòbil."
+msgstr "輸入這個人的全名、部分姓名或手機號碼。"
 
 msgid "Enter the person's name."
-msgstr "Introduïu el nom de la persona."
+msgstr "輸入這個人的姓名。"
 
 msgid "Expiry"
-msgstr "Caducitat"
+msgstr "到期"
 
 msgid "Expiry date of this record"
-msgstr "Data de caducitat d'aquest registre"
+msgstr "這項記錄的到期日"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Amplia %(extension_days)s dies la data de caducitat"
+msgstr "將有效期延長 %(extension_days)s 天"
 
 msgid "Family name"
-msgstr "Cognom"
+msgstr "姓氏"
 
 msgid "Feed of updates about this person"
-msgstr "Feed de novetats sobre aquesta persona"
+msgstr "這個人的最新消息資訊提供"
 
 msgid "Follow this link to create a new record"
-msgstr "Seguiu aquest enllaç per crear un registre nou."
+msgstr "請前往此連結建立新記錄"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
-"Per a telèfons que no siguin mòbils, feu servir el servei 171 "
-"subministrat per NTT."
+msgstr "如果是手機以外的電話，請使用 NTT 所提供的 171 災害緊急留言服務。"
 
 msgid "Full name"
-msgstr "Nom complet"
+msgstr "全名"
 
 msgid "Get a new challenge"
-msgstr "Aconseguiu un repte nou"
+msgstr "取得新的驗證問題"
 
 msgid "Get a visual challenge"
-msgstr "Aconseguiu un repte visual"
+msgstr "取得圖片驗證問題"
 
 msgid "Get an audio challenge"
-msgstr "Aconseguiu un repte d'àudio"
+msgstr "取得語音驗證問題"
 
 msgid "Given name"
-msgstr "Nom de pila"
+msgstr "名字"
 
 msgid "Google Person Finder"
-msgstr "Cercador de persones de Google"
+msgstr "Google 尋人工具"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Heu parlat personalment amb aquesta persona DESPRÉS de la catàstrofe? "
-"(resposta obligatòria)"
+msgstr "在災難「發生後」，您本人是否曾與這個人交談過？(必填)"
 
 msgid "Help"
-msgstr "Ajuda"
+msgstr "說明"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr ""
-"Aquí teniu %(begin_tag)sun fitxer CSV d'exemple%(end_tag)s que podeu "
-"modificar i penjar"
+msgstr "您可以編輯%(begin_tag)s這一份 CSV 檔案範本%(end_tag)s，然後再上載"
 
 msgid "Hide Map"
-msgstr "Amaga el mapa"
+msgstr "隱藏地圖"
 
 msgid "Hide note"
-msgstr "Amaga la nota"
+msgstr "隱藏註解"
 
 msgid "Home Address"
-msgstr "Adreça"
+msgstr "住所地址"
 
 msgid "Home address"
-msgstr "Adreça"
+msgstr "住所地址"
 
 msgid "Home country"
-msgstr "País d'origen"
+msgstr "居住國家/地區"
 
 msgid "How can this person be reached now?"
-msgstr "Com es pot contactar amb aquesta persona ara?"
+msgstr "現在可以如何聯絡這個人？"
 
 msgid "How others who are interested in this person can contact you"
-msgstr ""
-"La manera com altres persones interessades en aquesta persona poden "
-"contactar-vos"
+msgstr "想要聯絡這個人的其他人可以如何聯絡您"
 
 msgid "I am seeking information"
-msgstr "Cerco informació"
+msgstr "我正在找尋這個人的消息"
 
 msgid "I am this person"
-msgstr "Sóc aquesta persona"
+msgstr "我就是這個人"
 
 msgid "I do not want any more updates on this record."
-msgstr "No vull rebre cap novetat més sobre aquest registre."
+msgstr "我不想再收到這項記錄的最新動態。"
 
 msgid "I do not want my information online anymore."
-msgstr "Ja no vull que la meva informació estigui en línia."
+msgstr "我不想再讓其他人在網上看到我的資料。"
 
 msgid "I have information about someone"
-msgstr "Tinc informació sobre una persona"
+msgstr "我有某人的消息"
 
 msgid "I have reason to think this person is missing"
-msgstr "Tinc motius per pensar que aquesta persona ha desaparegut"
+msgstr "我有理由確信這個人已失蹤"
 
 msgid "I have received information that this person is alive"
-msgstr "He rebut informació que aquesta persona és viva"
+msgstr "我收到消息指出這個人還活著"
 
 msgid "I have received information that this person is dead"
-msgstr "He rebut informació que aquesta persona és morta"
+msgstr "我收到消息指出這個人已死亡"
 
 msgid "I have received spam due to this note."
-msgstr "He rebut activitat brossa a causa d'aquesta nota."
+msgstr "我因為這項註解而收到垃圾資訊。"
 
 msgid "I have received spam."
-msgstr "He rebut activitat brossa."
+msgstr "我收到垃圾資訊。"
 
 msgid "I prefer not to specify."
-msgstr "Prefereixo no especificar-ho."
+msgstr "我不想指定。"
 
 msgid "I'm looking for someone"
-msgstr "Cerco algú"
+msgstr "我正在尋找某人"
 
 msgid "Identify who you are looking for"
-msgstr "Identifiqueu la persona que cerqueu."
+msgstr "請說明您要尋找的人是誰"
 
 msgid "Identify who you have information about"
-msgstr "Identifiqueu la persona de la qual teniu informació"
+msgstr "請說明您有關於哪個人的消息"
 
 msgid "Identifying information"
-msgstr "Informació d'identificació personal"
+msgstr "身分識別資訊"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
-msgstr ""
-"Si cap d'aquests registres no coincideix amb la persona que cerqueu, "
-"podeu fer clic al botó que apareix més avall per crear-ne un de nou."
+msgstr "如果這些記錄都不符合您要尋找的人，您可以在下方建立新記錄。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
-"Si sou l'autor d'aquesta nota, cerqueu al correu electrònic un enllaç per"
-" confirmar que voleu desactivar les notes d'aquest registre. Si no ho "
-"sou, espereu que l'autor del registre confirmi la sol·licitud."
+msgstr "如果您是這項註解的作者，請查看您的信箱以找出系統寄送的郵件，然後透過當中的連結確認您要停用這項記錄的註解功能。如果您並非作者，請等候記錄作者確認您的要求。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
-"Si sou l'autor d'aquesta nota, cerqueu al correu electrònic un enllaç per"
-" confirmar que voleu activar les notes d'aquest registre. Si no ho sou, "
-"espereu que l'autor del registre confirmi la sol·licitud."
+msgstr "如果您是這項註解的作者，請查看您的信箱以找出系統寄送的郵件，然後透過當中的連結確認您要啟用這項記錄的註解功能。如果您並非作者，請等候記錄作者確認您的要求。"
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Si teniu una foto d'aquesta persona, pengeu-la o introduïu-ne l'adreça "
-"URL."
+msgstr "如果您有這個人的相片，請上載相片或輸入相片網址。"
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
-msgstr "Incorrecte. Torneu-ho a provar."
+msgstr "錯誤，請再試一次。"
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "L'adreça electrònica no és vàlida. Torneu-ho a provar."
+msgstr "電郵地址無效，請再試一次。"
 
 msgid "Language selection"
-msgstr "Selecció d'idioma"
+msgstr "選取語言"
 
 msgid "Last known location"
-msgstr "Darrera ubicació coneguda"
+msgstr "這個人最後出現的地點"
 
 msgid "Link"
-msgstr "Enllaça"
+msgstr "連結"
 
 msgid "Link to profile page"
-msgstr "Enllaça a la pàgina de perfil"
+msgstr "個人資料頁面連結"
 
 msgid "List API keys"
-msgstr "Mostra les claus API"
+msgstr "列出 API 金鑰"
 
 msgid "Mark records as duplicate"
-msgstr "Marca els registres com a duplicats"
+msgstr "將記錄標示為重複項目"
 
 msgid "Mark the selected records as duplicate"
 msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
-msgstr "Missatge (obligatori)"
+msgstr "訊息 (必填)"
 
 msgid "Message is required. Please go back and try again."
-msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
+msgstr "[訊息] 欄位為必填，請回到上一步，然後再試一次。"
 
 msgid "Missing person's current contact information"
-msgstr "Informació de contacte actual de la persona desapareguda"
+msgstr "失踨人士目前的聯絡資料"
 
 msgid "Missing person's current e-mail address"
-msgstr "Adreça electrònica actual de la persona desapareguda"
+msgstr "失踨人士目前使用的電郵地址"
 
 msgid "Missing person's current phone number"
-msgstr "Número de telèfon actual de la persona desapareguda"
+msgstr "失踨人士目前使用的電話號碼"
 
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
-msgstr ""
-"Trobareu més informació per a desenvolupadors en "
-"%(developers_link_html)saquesta pàgina%(link_end_html)s."
+msgstr "請前往%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
-msgstr ""
-"Hi ha més de 100 resultats i només se'n mostren els 100 primers. Proveu d"
-"'introduir-ne més amb el nom."
+msgstr "超過 100 項結果，僅顯示前 100 項。請嘗試輸入更完整的姓名"
 
 msgid "Name"
-msgstr "Nom"
+msgstr "姓名"
 
 msgid "Name (required)"
-msgstr "Nom (obligatori)"
+msgstr "姓名 (必填)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "Cal un nom. Aneu enrere i torneu-ho a provar."
+msgstr "[姓名] 欄位為必填，請回到上一步，然後再試一次。"
 
 msgid "Neighborhood"
-msgstr "Barri"
+msgstr "社區"
 
 msgid "No"
-msgstr "No"
+msgstr "否"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "No hi ha cap correu electrònic d'autor per al registre %(id)s."
+msgstr "編號 %(id)s 的記錄未登記作者電郵地址。"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
-"No s'ha trobat cap missatge registrat al servei del tauler de missatges "
-"de l'operador de telefonia."
+msgstr "流動網絡供應商的留言板服務中尚無訊息。"
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "No hi ha cap nota amb l'identificador: %(id_str)s."
+msgstr "找不到以下編號的註解：%(id_str)s。"
 
 msgid "No notes have been posted"
-msgstr "No s'ha publicat cap nota."
+msgstr "沒有已發佈的註解"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
+msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
 msgid "No such Authorization entity."
-msgstr "No hi ha cap entitat d'autorització."
+msgstr "沒有這類授權實體。"
 
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
-"Sense autorització per publicar notes amb l'estat \"Se m'ha comunicat que"
-" aquesta persona ha mort\""
+msgstr "無權發佈帶有「我收到消息指此人已經死亡」狀態的備註。"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "No esteu autoritzat a publicar notes amb l'estat \"believed_dead\"."
+msgstr "您未獲授權發佈狀態為「believed_dead」的註解。"
 
 msgid "Not spam"
-msgstr "No és activitat brossa."
+msgstr "非垃圾資訊"
 
 msgid "Note author"
-msgstr "Autor de la nota"
+msgstr "註解作者"
 
 msgid "Note text"
-msgstr "Text de la nota"
+msgstr "註解文字"
 
 msgid "Notes for a possible duplicate"
 msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
-msgstr "Notes per a aquesta persona"
+msgstr "這位失蹤人士的相關註解"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Número o interval (p. ex., 20-30)"
+msgstr "數字或範圍 (例如 20-30)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
-msgstr ""
-"O afegiu al vostre lloc com a %(gadget_link_html)sgadget de "
-"Google%(link_end_html)s."
+msgstr "或是以 %(gadget_link_html)sGoogle 小工具%(link_end_html)s形式加到您的網站。"
 
 msgid "Original URL"
-msgstr "URL original"
+msgstr "原始網址"
 
 msgid "Original author's name"
-msgstr "Nom de l'autor original"
+msgstr "原作者的姓名"
 
 msgid "Original posting date"
-msgstr "Data de publicació original"
+msgstr "原始張貼日期"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
-msgstr ""
-"La data de publicació original no té el format AAAA-MM-DD o no existeix. "
-"Aneu enrere i torneu-ho a provar."
+msgstr "原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日)，或是該日期不存在。請回到上一步，然後再試一次。"
 
 msgid "Original site name"
-msgstr "Nom del lloc original"
+msgstr "原始網站名稱"
 
 msgid "Other website"
-msgstr "Un altre lloc web"
+msgstr "其他網站"
 
 #, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
-msgstr ""
-"TINGUEU EN COMPTE EL SEGÜENT: als llocs actius del Cercador de persones, "
-"totes les dades introduïdes estaran disponibles per al públic general i "
-"tothom les podrà utilitzar. Google no revisa ni verifica la precisió "
-"d'aquestes dades."
+msgstr "請注意：在有效的尋人工具網站上，您輸入的所有資料都會開放給大眾查閱，而且任何人都可以使用這些資料。Google 並不會檢查或確認資料是否正確。"
 
 msgid "Person Finder"
-msgstr "Cercador de persones"
+msgstr "尋人工具"
 
 msgid "Phone"
-msgstr "Telèfon"
+msgstr "電話"
 
 msgid "Phone number"
-msgstr "Número de telèfon"
+msgstr "電話號碼"
 
 msgid "Photo"
-msgstr "Foto"
+msgstr "相片"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
-"La foto penjada té un format no reconegut. Aneu enrere i torneu-ho a "
-"provar."
+msgstr "上載的相片格式無法辨識，請回到上一步，然後再試一次。"
 
 msgid "Physical characteristics"
-msgstr "Característiques físiques"
+msgstr "外貌特徵"
 
 msgid "Play the sound again"
-msgstr "Torna a reproduir el so"
+msgstr "重播聲音"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Comproveu que hàgiu estat en contacte amb la persona després del "
-"terratrèmol o bé canvieu l'estat del camp \"Estat d'aquesta persona\"."
+msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Comproveu si coincideix amb la persona de la qual volíeu informar."
+msgstr "請檢查內容是否與您打算報告的人相符。"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Confirmeu la vostra adreça electrònica per subscriure-us a les novetats"
+msgstr "請確認電郵地址，以訂閱最新消息"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Introduïu la vostra adreça electrònica per subscriure-us a les novetats"
+msgstr "請輸入電郵地址，以訂閱最新消息"
 
 msgid "Please explain why you think these are the same person"
-msgstr "Expliqueu per què penseu que aquestes persones són la mateixa persona"
+msgstr "請說明為什麼您認為他們是同一個人"
 
 msgid "Please fill in all the required fields."
-msgstr "Empleneu tots els camps obligatoris."
+msgstr "請填寫所有必填欄位。"
 
 msgid "Please fill in your email address."
-msgstr "Escriviu la vostra adreça electrònica."
+msgstr "請填入您的電郵地址。"
 
 msgid "Please provide an valid email address."
-msgstr "Proporcioneu una adreça electrònica vàlida."
+msgstr "請提供有效的電郵地址。"
 
 msgid "Possible duplicates"
-msgstr "Possibles duplicats"
+msgstr "可能的重複項目"
 
 msgid "Possible duplicates found."
 msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
-msgstr "Codi postal"
+msgstr "郵遞區號"
 
 msgid "Posted by"
-msgstr "Publicat per"
+msgstr "張貼者"
 
 msgid "Proceed"
-msgstr "Continua"
+msgstr "繼續"
 
 msgid "Profile Pages"
-msgstr "Pàgines de perfil"
+msgstr "個人資料頁面"
 
 msgid "Profile page"
-msgstr "Pàgina de perfil"
+msgstr "個人資料頁面"
 
 msgid "Provide information"
-msgstr "Proporcioneu informació"
+msgstr "提供資料"
 
 msgid "Provide information about this person"
-msgstr "Proporcioneu informació sobre aquesta persona"
+msgstr "提供這個人的相關資料"
 
 msgid "Provided by:"
-msgstr "Subministrat per:"
+msgstr "作者："
 
 msgid "Province or state"
-msgstr "Província o estat"
+msgstr "省或州"
 
 msgid "Reason for deletion:"
-msgstr "Motiu de la supressió:"
+msgstr "刪除原因："
 
 msgid "Reason for disabling notes:"
-msgstr "Motiu per a la desactivació de les notes:"
+msgstr "停用註解功能的原因："
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Registres amb noms i adreces que coincideixin amb \"%(query)s\""
+msgstr "名稱和地址符合「%(query)s」的記錄"
 
 msgid "Remove"
-msgstr "Elimina"
+msgstr "移除"
 
 msgid "Report spam"
-msgstr "Marca-ho com a activitat brossa"
+msgstr "舉報垃圾內容"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Torna al registre de: %(full_name)s."
+msgstr "返回「%(full_name)s」的記錄。"
 
 msgid "Reveal note"
-msgstr "Mostra la nota"
+msgstr "顯示註解"
 
 msgid "Save this record"
-msgstr "Desa aquest registre"
+msgstr "儲存此記錄"
 
 msgid "Search for this person"
-msgstr "Cerca aquesta persona"
+msgstr "搜尋這個人"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr "Consulteu %(begin_tag)sel wiki%(end_tag)s per obtenir més instruccions."
+msgstr "查看%(begin_tag)s維基百科%(end_tag)s尋求詳細說明"
 
 msgid "Select a website to add a profile page..."
-msgstr "Seleccioneu un lloc web per afegir una pàgina de perfil..."
+msgstr "選取要新增個人資料頁面的網站..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Seleccioneu un màxim de tres registres per marcar-los com a duplicats:"
+msgstr "最多選取 3 項記錄並將其標示為重複項目："
 
 msgid "Send email"
-msgstr "Envia un correu electrònic"
+msgstr "發送電郵"
 
 msgid "Sex"
-msgstr "Gènere"
+msgstr "性別"
 
 msgid "Show Map"
-msgstr "Mostra el mapa"
+msgstr "顯示地圖"
 
 msgid "Show sensitive information"
-msgstr "Mostra la informació confidencial"
+msgstr "顯示機密資料"
 
 msgid "Show who marked these duplicates"
-msgstr "Mostra qui ha marcat aquests duplicats"
+msgstr "顯示將這些內容標記為重複內容的使用者"
 
 msgid "Sign in"
-msgstr "Inicia la sessió"
+msgstr "登入"
 
 msgid "Sign out"
-msgstr "Tanca la sessió"
+msgstr "登出"
 
 msgid "Someone has received information that this person is alive"
-msgstr "Algú ha rebut informació que aquesta persona és viva"
+msgstr "有人收到消息指出這個人還活著"
 
 msgid "Someone has received information that this person is dead"
-msgstr "Algú ha rebut informació que aquesta persona és morta"
+msgstr "有人收到消息指出這個人已死亡"
 
 msgid "Someone has reported that this person is missing"
-msgstr "Algú ha informat que aquesta persona ha desaparegut"
+msgstr "有人報告這個人已失踨"
 
 msgid "Someone is seeking information about this person"
-msgstr "Alguna persona cerca informació sobre aquesta persona."
+msgstr "有人想知道這個人的下落"
 
 msgid "Source of this record"
-msgstr "Origen d'aquest registre"
+msgstr "此記錄的出處"
 
 msgid "Source of this record (required)"
-msgstr "Origen d'aquest registre (obligatori)"
+msgstr "此記錄的出處 (必填)"
 
 msgid "Status"
-msgstr "Estat"
+msgstr "狀態"
 
 msgid "Status of this person"
-msgstr "Estat d'aquesta persona"
+msgstr "這個人的狀況"
 
 msgid "Street name"
-msgstr "Carrer"
+msgstr "街道名稱"
 
 msgid "Street name only, no number"
-msgstr "Només el nom del carrer, sense el número"
+msgstr "輸入路名即可，不必輸入門牌號碼"
 
 msgid "Subscribe"
-msgstr "Subscriviu-vos"
+msgstr "訂閱"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Subscriviu-vos a les novetats sobre %(full_name)s."
+msgstr "訂閱「%(full_name)s」的最新消息"
 
 msgid "Subscribe to updates about this person"
-msgstr "Subscriu-me a les novetats sobre aquesta persona"
+msgstr "訂閱這個人的最新消息"
 
 msgid "Switch to address"
-msgstr "Canvia a l'adreça"
+msgstr "切換為地址"
 
 msgid "Switch to lat/long"
-msgstr "Canvia a latitud/longitud"
+msgstr "切換為經緯度"
 
 msgid "Tell us the status of this person"
-msgstr "Indiqueu-nos l'estat de la persona"
+msgstr "請告訴我們這個人目前的狀況"
 
 msgid "Terms of Service"
-msgstr "Condicions del servei"
+msgstr "服務條款"
 
 msgid "The API key has been updated successfully."
-msgstr "La clau API s'ha actualitzat correctament."
+msgstr "已成功更新 API 金鑰。"
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "El nom i els cognoms són obligatoris. Aneu enrere i torneu-ho a provar."
+msgstr "[名字] 及 [姓氏] 欄位不可留空，請回到上一步，然後再試一次。"
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"El nom de l'autor original és obligatori. Aneu enrere i torneu-ho a "
-"provar."
+msgstr "[原作者的姓名] 欄位為必填，請回到上一步，然後再試一次。"
 
 msgid "The author has disabled notes on this record."
-msgstr "L'autor ha desactivat les notes en aquest registre."
+msgstr "作者已停用這項記錄的註解功能。"
 
 msgid "The author has disabled status updates on this record."
-msgstr "L'autor ha desactivat les actualitzacions d'estat en aquest registre."
+msgstr "作者已停用這項記錄的狀態更新功能。"
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
+msgstr "提供的圖片檔案太大，請上載檔案較小的圖片。"
 
 msgid "The reason this note is being marked as spam:"
-msgstr "El motiu pel qual aquesta nota es marca com a activitat brossa:"
+msgstr "這項註解被標示為垃圾資訊的原因："
 
 msgid "The record cannot be extended."
-msgstr "El registre no es pot ampliar."
+msgstr "記錄有效期無法延長。"
 
 msgid "The record has been deleted."
-msgstr "S'ha suprimit el registre."
+msgstr "記錄已刪除。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
-msgstr ""
-"L'estat que heu seleccionat indica que sou aquesta persona. Si és "
-"veritat, seleccioneu també Sí per indicar que heu contactat amb aquesta "
-"persona."
+msgstr "您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個人聯絡。"
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr "El testimoni %(token)s no és vàlid."
+msgstr "憑證 %(token)s 無效"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr "El testimoni %(token)s no era vàlid."
+msgstr "憑證 %(token)s 無效。"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "Hi ha %(num_results)s registres existents amb noms semblants."
+msgstr "相似姓名具有 %(num_results)s 項記錄。"
 
 msgid "There are some existing records with similar names."
-msgstr "Hi ha uns quants registres existents amb noms semblants."
+msgstr "相似姓名具有幾項記錄。"
 
 msgid "There is one existing record with a similar name."
-msgstr "Hi ha un registre existent amb un nom semblant."
+msgstr "相似姓名具有一項記錄。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
-"S'ha produït un problema en processar la imatge. Proveu-ho amb una altra "
-"imatge."
+msgstr "處理圖片時發生問題，請使用不同的圖片。"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
-msgstr ""
-"S'ha produït un error en processar la sol·licitud. Disculpeu les "
-"molèsties. Els nostres administradors investigaran l'origen del problema,"
-" però us recomanem que comproveu que el format de la sol·licitud sigui "
-"correcte."
+msgstr "處理您的要求時發生錯誤。對您造成不便，謹此致歉。我們的管理員會調查問題根源，但請檢查您是否使用正確的格式提出要求。"
 
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
-msgstr ""
-"Aquests gadgets estan disponibles a la %(apache_link_html)sllicència "
-"d'Apache 2.0%(link_end_html)s."
+msgstr "這些小工具是根據 %(apache_link_html)sApache 2.0 授權%(link_end_html)s條款提供使用。"
 
 msgid "This is a new record."
-msgstr "És un registre nou."
+msgstr "這是一項新記錄。"
 
 msgid "This link is invalid."
-msgstr "Aquest enllaç no és vàlid."
+msgstr "這個連結無效。"
 
 msgid "This note has been marked as spam."
-msgstr "Aquesta nota s'ha marcat com a activitat brossa."
+msgstr "這項註解已被標示為垃圾資訊。"
 
 msgid "This note is inappropriate."
-msgstr "Aquesta nota és inadequada."
+msgstr "這項註解內容不當。"
 
 msgid "This note is incorrect or untrue."
-msgstr "Aquesta nota és incorrecta o bé falsa."
+msgstr "這項註解內容有誤或不實。"
 
 msgid "This note is spam."
-msgstr "Aquesta nota és activitat brossa."
+msgstr "這項註解是垃圾資訊。"
 
 msgid "This person has been in contact with someone"
-msgstr "Aquesta persona ha estat en contacte amb alguna persona."
+msgstr "這個人已與某人聯絡"
 
 msgid "This person has posted a message"
-msgstr "Aquesta persona ha publicat un missatge."
+msgstr "這個人有張貼訊息"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr "L'entrada d'aquesta persona no existeix o bé s'ha suprimit."
+msgstr "系統沒有或已刪除這位使用者的資料。"
 
 msgid "This record has served its purpose."
-msgstr "Aquest registre ha complert la seva finalitat."
+msgstr "這項記錄已達到其目的。"
 
 msgid "This record is a duplicate of"
-msgstr "Aquest registre és un duplicat de"
+msgstr "此記錄與下列項目重複："
 
 msgid "This record is copied from another source."
-msgstr "És un registre copiat d'un altre origen."
+msgstr "此記錄是從另一個地方複製過來的。"
 
 msgid "This record is inappropriate."
-msgstr "Aquest registre és inadequat."
+msgstr "這項記錄內容不當。"
 
 msgid "This record is spam."
-msgstr "Aquest registre és activitat brossa."
+msgstr "這項記錄是垃圾資訊。"
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr ""
-"Aquest repositori es troba en proves. Mentre les proves estiguin vigents,"
-" els registres que portin més de sis hores publicats se suprimiran."
+msgstr "這個儲存庫目前為測試模式。雖然測試模式仍屬有效，但系統會將超過 6 小時的資料刪除。"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr "Per adjuntar una foto a aquesta nota, pengeu-la o introduïu-ne l'URL."
+msgstr "如要附加相片至這項註解，請上載相片或輸入其網址。"
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr ""
-"Per suprimir les vostres dades, accediu al Cercador de persones des de "
-"l'ordinador."
+msgstr "如要刪除您的資料，請透過電腦使用尋人工具。"
 
 msgid "To unsubscribe, follow this link"
-msgstr "Per cancel·lar la subscripció, seguiu aquest enllaç."
+msgstr "如要取消訂閱，請前往這個連結"
 
 msgid "To view or add information, select a name below."
-msgstr "Per visualitzar o per afegir informació, seleccioneu un nom més avall."
+msgstr "如要查看或新增資訊，請從下方選擇姓名。"
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr ""
-"Escriviu una adreça o obriu el mapa que apareix a continuació i feu-hi "
-"clic per indicar la ubicació."
+msgstr "請輸入地址，或開啟下方地圖，然後在地圖上點選您要指定的位置。"
 
 msgid "Type an address."
-msgstr "Escriviu una adreça."
+msgstr "輸入地址。"
 
 msgid "Type the two words:"
-msgstr "Escriviu les dues paraules:"
+msgstr "輸入您看到的兩個字詞："
 
 msgid "Type what you hear:"
-msgstr "Escriviu el que sentiu:"
+msgstr "輸入語音內容："
 
 msgid "URL"
-msgstr "URL"
+msgstr "網址"
 
 msgid "URL of original record"
-msgstr "URL del registre original"
+msgstr "原始記錄網址"
 
 msgid "Unspecified"
-msgstr "Sense especificar"
+msgstr "未指定"
 
 msgid "Update an existing key"
-msgstr "Actualitza una clau existent"
+msgstr "更新現有金鑰"
 
 msgid "Upload"
-msgstr "Penja"
+msgstr "上載"
 
 msgid "Upload notes in CSV format"
 msgstr "Upload notes in CSV format"
@@ -1434,197 +1350,175 @@ msgid "Upload your CSV file below"
 msgstr "Upload your CSV file below"
 
 msgid "View the record"
-msgstr "Mostra el registre"
+msgstr "檢視記錄"
 
 msgid "We have nothing matching your search."
-msgstr "La vostra cerca no correspon amb cap registre."
+msgstr "系統找不到相符的搜尋結果。"
 
 msgid "What is this person's name?"
-msgstr "Com es diu aquesta persona?"
+msgstr "這個人的姓名是什麼？"
 
 msgid "When should this record disappear?"
-msgstr "Quan ha de desaparèixer aquest registre?"
+msgstr "這項記錄應在何時移除？"
 
 msgid "Where did this information come from?"
-msgstr "D'on prové aquesta informació?"
+msgstr "此消息的出處何在？"
 
 msgid "Where is this person from?"
-msgstr "D'on és aquesta persona?"
+msgstr "這個人來自哪裡？"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr ""
-"Mentre les proves estiguin vigents, els registres que portin més de sis "
-"hores publicats se suprimiran independentment de la seva data de "
-"caducitat."
+msgstr "雖然測試模式仍屬有效，但系統會將超過 6 小時的資料刪除，不論有效期的設定如何。"
 
 msgid "Yes"
-msgstr "Sí"
+msgstr "是"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "Sí, demana a l'autor del registre que desactivi les notes"
+msgstr "是，要求記錄作者停用註解功能"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Sí, demana a l'autor del registre que activi les notes"
+msgstr "是，要求記錄作者啟用註解功能"
 
 msgid "Yes, delete the record"
-msgstr "Sí, suprimeix el registre"
+msgstr "是，刪除這項記錄"
 
 msgid "Yes, disable notes on this record."
-msgstr "Sí, desactiva les notes en aquest registre"
+msgstr "是，停用這項記錄的註解功能。"
 
 msgid "Yes, extend the record"
-msgstr "Sí, amplia el registre"
+msgstr "是，延長記錄有效期"
 
 msgid "Yes, restore this record"
-msgstr "Sí, restaura aquest registre"
+msgstr "是，還原這項記錄"
 
 msgid "Yes, these are the same person"
-msgstr "Sí, són la mateixa persona"
+msgstr "是，他們是同一個人"
 
 msgid "Yes, update the note"
-msgstr "Sí, actualitza la nota"
+msgstr "是，更新這項註解"
 
 msgid "You are already subscribed. "
-msgstr "Ja esteu subscrit. "
+msgstr "您已訂閱這個項目。 "
 
 msgid "You are already unsubscribed."
-msgstr "Ja heu anul·lat la subscripció."
+msgstr "您已取消訂閱這個項目。"
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
-"Teniu la sessió iniciada com a "
-"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "目前您是以 %(begin_span_tag)s%(email)s%(end_span_tag)s 的身分登入。"
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr "En aquest moment teniu la sessió iniciada com a %(user_email)s."
+msgstr "您目前是以 %(user_email)s 的身分登入。"
 
 msgid "You are not currently signed in."
-msgstr "No heu iniciat la sessió."
+msgstr "您目前未登入。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr ""
-"Podeu %(begin_tag)svisualitzar el registre%(end_tag)s abans de suprimir-"
-"lo."
+msgstr "您可先%(begin_tag)s查看記錄%(end_tag)s，然後才刪除。"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "Podeu visualitzar el registre complet a %(view_url)s."
+msgstr "如要查看完整記錄，請前往 %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr "Us heu subscrit correctament."
+msgstr "成功訂閱。"
 
 msgid "You have successfully unsubscribed."
-msgstr "Heu anul·lat la subscripció correctament."
+msgstr "成功取消訂閱。"
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
-"Heu rebut aquesta notificació perquè us heu subscrit a les novetats sobre"
-" aquesta persona:\n"
+msgstr "由於您訂閱了以下使用者的更新，因此我們特此發送這封郵件通知您：\n"
 
 msgid "Your e-mail address"
-msgstr "La vostra adreça electrònica"
+msgstr "您的電郵地址"
 
 msgid "Your e-mail address:"
-msgstr "La vostra adreça electrònica:"
+msgstr "您的電郵地址："
 
 msgid "Your email"
-msgstr "El vostre correu electrònic"
+msgstr "您的電郵"
 
 msgid "Your name"
-msgstr "El vostre nom"
+msgstr "您的姓名"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr ""
-"El vostre nom és obligatori a la secció \"Informació personal\". Aneu "
-"enrere i torneu-ho a provar."
+msgstr "請務必在 [關於您] 部分中輸入您的姓名。請回到上一步，然後再試一次。"
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr ""
-"El vostre nom és obligatori a la secció \"Origen\". Aneu enrere i torneu-"
-"ho a provar."
+msgstr "請務必在 [來源] 部分中輸入您的姓名。請回到上一步，然後再試一次。"
 
 msgid "Your phone number"
-msgstr "El vostre número de telèfon"
+msgstr "您的電話號碼"
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
-msgstr ""
-"La vostra sol·licitud s'ha processat correctament. Comproveu la safata "
-"d'entrada i confirmeu que voleu publicar la nota; per fer-ho, seguiu "
-"l'URL inserit."
+msgstr "您的要求已處理完畢，請查看您的收件匣，並前往郵件內隨附的網址，確認發佈您的註解。"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Cercador de persones] Confirmeu la vostra nota sobre %(full_name)s."
+msgstr "[尋人工具] 確認您針對「%(full_name)s」所發佈的註解"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Cercador de persones] Avís de supressió de %(full_name)s."
+msgstr "[尋人工具]「%(full_name)s」的刪除通知"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Cercador de persones] Voleu desactivar les notes sobre \"%(full_name)s\"?"
+msgstr "[尋人工具] 要停用「%(full_name)s」的註解嗎？"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Cercador de persones] Voleu activar les notes sobre \"%(full_name)s\"?"
+msgstr "[尋人工具] 要啟用「%(full_name)s」的註解嗎？"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Cercador de persones] S'està activant l'avís de notes per a %(full_name)s"
+msgstr "[尋人工具] 正在啟用「%(full_name)s」的註解通知"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr ""
-"[Cercador de persones] Ara les notes estan desactivades per a "
-"%(full_name)s"
+msgstr "[尋人工具] 已停用「%(full_name)s」的註解功能"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Cercador de persones] Ara les notes estan activades per a %(full_name)s"
+msgstr "[尋人工具] 已啟用「%(full_name)s」的註解功能"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr ""
-"[Cercador de persones] Avís de restauració del registre sobre "
-"%(full_name)s"
+msgstr "[尋人工具]「%(full_name)s」的記錄還原通知"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Cercador de persones] Actualització d'estat sobre %(full_name)s"
+msgstr "[尋人工具]「%(full_name)s」的狀態更新"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-"[Cercador de persones] Esteu subscrit a les actualitzacions d'estat sobre"
-" %(full_name)s."
+msgstr "[尋人工具] 您已訂閱「%(full_name)s」的狀態更新"
 
 msgid "female"
-msgstr "dona"
+msgstr "女性"
 
 msgid "in test mode"
-msgstr "en proves"
+msgstr "在測試模式中"
 
 msgid "male"
-msgstr "home"
+msgstr "男性"
 
 msgid "on"
-msgstr "a"
+msgstr "日期："
 
 msgid "other"
-msgstr "altres"
+msgstr "其他"
 

@@ -149,6 +149,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s rexistros seleccionados\n"
+"          "
 
 #, python-format
 msgid ""
@@ -156,6 +159,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Rexistros similares a: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -163,6 +169,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Resultados da busca para: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -263,6 +272,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Non se atoparon resultados para: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -288,6 +300,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      O rexistro ampliouse ata o %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -592,9 +607,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ao marcar esta nota como spam, ocultarase de xeito predeterminado. "
+"Seguirá a formar parte do rexistro, pero será necesario facer un clic "
+"adicional para ver o contido da nota. Os usuarios tamén poderán eliminar "
+"a marca de spam desta nota."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "Ao indicar que esta nota non é spam, será visible de forma predeterminada."
 
 msgid "CSV file"
 msgstr "Ficheiro CSV"
@@ -674,7 +693,7 @@ msgstr "Este usuario ten páxinas de perfil noutros sitios web?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Descargar o son como MP3"
@@ -869,7 +888,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Se tes unha foto desta persoa, cárgaa ou introduce o seu enderezo URL."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Incorrecto. Téntao de novo."
@@ -896,7 +915,7 @@ msgid "Mark records as duplicate"
 msgstr "Marcar rexistros como duplicados"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Mensaxe (obrigatoria)"
@@ -970,6 +989,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Non está permitido publicar notas co estado \"Indicáronme que esta persoa"
+" morreu\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Non estás autorizado a publicar notas co estado \"believed_dead\"."
@@ -984,7 +1005,7 @@ msgid "Note text"
 msgstr "Texto da nota"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Notas para este usuario"
@@ -1020,7 +1041,7 @@ msgid "Original site name"
 msgstr "Nome do sitio web orixinal"
 
 msgid "Other website"
-msgstr ""
+msgstr "Outro sitio web"
 
 #, fuzzy
 msgid ""
@@ -1093,7 +1114,7 @@ msgid "Possible duplicates"
 msgstr "Posibles duplicados"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Código postal"
@@ -1174,7 +1195,7 @@ msgid "Show sensitive information"
 msgstr "Amosar información confidencial"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Amosar quen marcou estes duplicados"
 
 msgid "Sign in"
 msgstr "Iniciar sesión"
@@ -1226,7 +1247,7 @@ msgid "Switch to address"
 msgstr "Cambiar ao enderezo"
 
 msgid "Switch to lat/long"
-msgstr "Cambiar a lat./lonx."
+msgstr "Cambiar a latitude/lonxitude"
 
 msgid "Tell us the status of this person"
 msgstr "Indícanos o estado desta persoa"
@@ -1407,13 +1428,13 @@ msgid "Upload"
 msgstr "Cargar"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Ver o rexistro"

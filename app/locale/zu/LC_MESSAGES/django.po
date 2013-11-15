@@ -151,6 +151,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s amarekhodi akhethiwe\n"
+"          "
 
 #, python-format
 msgid ""
@@ -158,6 +161,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Amarekhodi afana ne-: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -165,6 +171,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Imiphumela yosesho lwe-: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -265,6 +274,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Ayikho imiphumela etholelwe i-: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -289,6 +301,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Irekhodi linwetshelwe kumhla ka-%(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -590,9 +605,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ngokumaka leli nothi njengogaxekile, uzolenza ukuthi lifihlwe "
+"ngokuzenzakalela. Lisazoba yingxenye yerekhodi, kodwa lizodinga "
+"ukuchofoza okungeziwe ukuze ubuke okuqukethwe kwenothi. Abasebenzisi "
+"bazophinde bakwazi ukususa ukumaka kogaxekile kusukela kule nothi."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ngokuyekisa ukumaka leli nothi njengogaxekile, uzolenza libonakale "
+"ngokuzenzakalela."
 
 msgid "CSV file"
 msgstr "Ifayela le-CSV"
@@ -672,7 +693,7 @@ msgstr "Ingabe lo muntu unamakhasi wephrofayela kwamanye amawebhusayithi?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Landa umsindo njenge-MP3"
@@ -869,7 +890,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Uma unesithombe salo muntu, silayishe noma faka ikheli laso le-URL."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Akulungile. Zama futhi."
@@ -894,6 +915,9 @@ msgstr "Ukubuka kohlu lokhiye be-API"
 
 msgid "Mark records as duplicate"
 msgstr "Maka amarekhodi njengempinda"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Umlayezo (okudingekayo)"
@@ -967,6 +991,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Awugunyaziwe ukuthumela amanothi anesimo esithi \"Ngithole ulwazi lokuthi"
+" umuntu ushonile\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Awugunyazwanga ukuthumela amanothi ngesimo \"kukholelwa_eshonile\"."
@@ -981,7 +1007,7 @@ msgid "Note text"
 msgstr "Umbhalo wenothi"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Amanothi walo muntu"
@@ -1017,7 +1043,7 @@ msgid "Original site name"
 msgstr "Igama lesayithi langempela"
 
 msgid "Other website"
-msgstr ""
+msgstr "Enye iwebhusayithi"
 
 #, fuzzy
 msgid ""
@@ -1084,6 +1110,9 @@ msgstr "Sicela unikeze ngekheli le-imeyili elivumelekile."
 
 msgid "Possible duplicates"
 msgstr "Okungenzeka kube izimpinda"
+
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Ikhodi yeposi noma ye-zip"
@@ -1164,7 +1193,7 @@ msgid "Show sensitive information"
 msgstr "Bonisa ulwazi olubucayi"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Bonisa ukuthi ubani omake lawa mawele"
 
 msgid "Sign in"
 msgstr "Ngena ngemvume"
@@ -1215,14 +1244,8 @@ msgstr "Bhalisela kuzibuyekezo mayelana nalo muntu"
 msgid "Switch to address"
 msgstr "Shintshela kukheli"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Shintshela kumodi yokumakwa kwamawele"
-
 msgid "Switch to lat/long"
 msgstr "Shintshela ku-lat/ubude"
-
-msgid "Switch to normal view mode"
-msgstr "Shintshela kumodi yokubuka ejwayelekile"
 
 msgid "Tell us the status of this person"
 msgstr "Sitshele ngesimo salo muntu"
@@ -1407,13 +1430,13 @@ msgid "Upload"
 msgstr "Layisha"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Buka irekhodi"

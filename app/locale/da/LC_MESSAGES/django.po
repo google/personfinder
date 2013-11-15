@@ -147,6 +147,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s journaler er valgt\n"
+"          "
 
 #, python-format
 msgid ""
@@ -154,6 +157,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Journaler, der ligner: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -161,6 +167,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Søgeresultater for: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -259,6 +268,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Der blev ikke fundet nogen resultater for: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -283,6 +295,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Journalen er blevet forlænget til %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -582,9 +597,14 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ved at markere denne note som spam skjuler du den som standard. Den vil "
+"stadig være en del af journalen, men der skal klikkes på noten for at se "
+"indholdet. Brugere vil også kunne fjerne spammarkeringen fra denne note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ved at fjerne spammarkeringen for denne note, gør du den synlig som "
+"standard."
 
 msgid "CSV file"
 msgstr "CSV-fil"
@@ -664,7 +684,7 @@ msgstr "Har denne person profilsider på andre websites?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Download lyden som MP3"
@@ -859,7 +879,7 @@ msgstr ""
 "indtaste dets webadresse."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Forkert.  Prøv igen."
@@ -871,7 +891,7 @@ msgid "Language selection"
 msgstr "Sprogvalg"
 
 msgid "Last known location"
-msgstr "Sidste kendte placering"
+msgstr "Sidst kendte placering"
 
 msgid "Link"
 msgstr "Link"
@@ -886,7 +906,7 @@ msgid "Mark records as duplicate"
 msgstr "Markér disse journaler som kopier"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Besked (påkrævet)"
@@ -960,6 +980,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Ikke autoriseret til at skrive noter med status \"Jeg har modtaget "
+"oplysninger om, at denne person er død\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autoriseret til at indsende noter med statussen \"believed_dead\"."
@@ -974,7 +996,7 @@ msgid "Note text"
 msgstr "Notetekst"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Noter for denne person"
@@ -1010,7 +1032,7 @@ msgid "Original site name"
 msgstr "Navnet på det oprindelige website"
 
 msgid "Other website"
-msgstr ""
+msgstr "Andet website"
 
 #, fuzzy
 msgid ""
@@ -1079,7 +1101,7 @@ msgid "Possible duplicates"
 msgstr "Mulige kopier"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Postnummer"
@@ -1160,7 +1182,7 @@ msgid "Show sensitive information"
 msgstr "Vis følsomme oplysninger"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Vis, hvem der har markeret disse dubletter"
 
 msgid "Sign in"
 msgstr "Log ind"
@@ -1395,13 +1417,13 @@ msgid "Upload"
 msgstr "Upload"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Se journalen"

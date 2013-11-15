@@ -158,6 +158,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Έχουν επιλεγεί %(dup_count)s εγγραφές\n"
+"          "
 
 #, python-format
 msgid ""
@@ -165,6 +168,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Εγγραφές παρόμοιες με: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -172,6 +178,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Αποτελέσματα αναζήτησης για: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -272,6 +281,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Δεν βρέθηκαν αποτελέσματα για: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -297,6 +309,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Η εγγραφή έχει επεκταθεί έως τις %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -608,9 +623,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Επισημαίνοντας αυτήν τη σημείωση ως ανεπιθύμητη, θα γίνει απόκρυψή της "
+"από προεπιλογή. Θα εξακολουθεί να αποτελεί μέρος της εγγραφής, αλλά θα "
+"απαιτείται ένα επιπλέον κλικ για την προβολή του περιεχομένου της "
+"σημείωσης. Οι χρήστες θα έχουν επίσης τη δυνατότητα να καταργούν την "
+"επισήμανση αυτής της σημείωσης ως ανεπιθύμητης."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Καταργώντας την επισήμανση αυτής της σημείωσης ως ανεπιθύμητης, θα γίνει "
+"ορατή από προεπιλογή."
 
 msgid "CSV file"
 msgstr "Αρχείο CSV"
@@ -692,7 +714,7 @@ msgstr "Έχει αυτό το άτομο σελίδες προφίλ σε άλ�
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Λήψη ήχου ως MP3"
@@ -893,7 +915,7 @@ msgstr ""
 "διεύθυνση URL για αυτή τη φωτογραφία."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Λάθος. Προσπαθήστε ξανά."
@@ -920,7 +942,7 @@ msgid "Mark records as duplicate"
 msgstr "Επισημάνετε τις εγγραφές ως διπλότυπες"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Μήνυμα (απαιτείται)"
@@ -996,6 +1018,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Δεν επιτρέπεται να δημοσιεύετε σημειώσεις με κατάσταση \"Έχω λάβει "
+"πληροφορίες ότι αυτό το άτομο απεβίωσε\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -1012,7 +1036,7 @@ msgid "Note text"
 msgstr "Κείμενο σημείωσης"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Σημειώσεις για αυτό το άτομο"
@@ -1048,7 +1072,7 @@ msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
 
 msgid "Other website"
-msgstr ""
+msgstr "Άλλος ιστότοπος"
 
 #, fuzzy
 msgid ""
@@ -1122,7 +1146,7 @@ msgid "Possible duplicates"
 msgstr "Πιθανά διπλότυπα"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Ταχυδρομικός κώδικας"
@@ -1167,7 +1191,7 @@ msgid "Remove"
 msgstr "Κατάργηση"
 
 msgid "Report spam"
-msgstr "Αναφορά ανεπιθύμητων"
+msgstr "Αναφορά ανεπιθύμητου"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1205,7 +1229,7 @@ msgid "Show sensitive information"
 msgstr "Προβολή ευαίσθητων δεδομένων"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Εμφάνιση του χρήστη που επισήμανε αυτά τα διπλότυπα"
 
 msgid "Sign in"
 msgstr "Σύνδεση"
@@ -1251,7 +1275,7 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "Εγγραφείτε στις ενημερώσεις σχετικά με το άτομο %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Εγγραφείτε στις ενημερώσεις σχετικά με αυτό το άτομο"
+msgstr "Εγγραφείτε στις ενημερώσεις για αυτό το άτομο"
 
 msgid "Switch to address"
 msgstr "Εναλλαγή σε διεύθυνση"
@@ -1413,7 +1437,7 @@ msgid "To unsubscribe, follow this link"
 msgstr "Για να καταργήσετε την εγγραφή, ακολουθήστε αυτόν το σύνδεσμο"
 
 msgid "To view or add information, select a name below."
-msgstr "Για να κάνετε προβολή ή προσθήκη πληροφοριών, επιλέξτε ένα όνομα παρακάτω."
+msgstr "Για να δείτε ή να προσθέσετε πληροφορίες, επιλέξτε ένα όνομα παρακάτω."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
@@ -1447,13 +1471,13 @@ msgid "Upload"
 msgstr "Μεταφόρτωση"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Προβολή εγγραφής"

@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s bejegyzés kiválasztva\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        A következőhöz hasonló bejegyzések: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Találatok erre: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -260,6 +269,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Nincs találat erre: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -283,6 +295,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      A bejegyzést meghosszabbították eddig: %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -491,7 +506,7 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Feliratkozott „%(full_name)s” megjegyzéseire.\n"
+"Feliratkozott „%(full_name)s” állapotfrissítéseire.\n"
 "\n"
 "A bejegyzést a következő címen tekintheti meg:\n"
 "\n"
@@ -586,9 +601,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ha spamként jelöli meg a jegyzetet, azzal alapértelmezés szerint el is "
+"rejti. A jegyzet továbbra is a bejegyzés része marad, de egy külön "
+"kattintásra lesz szükség a tartalmának a megtekintéséhez. A "
+"felhasználóknak lehetőségük lesz eltávolítani a spam jelölést a "
+"jegyzetről."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ha a jegyzetről eltávolítja a spam jelölést, akkor alapértelmezés szerint"
+" láthatóvá teszi azt."
 
 msgid "CSV file"
 msgstr "CSV-fájl"
@@ -668,7 +690,7 @@ msgstr "Ennek a személynek vannak profiloldalai más webhelyeken?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Hang letöltése MP3-ként"
@@ -795,7 +817,7 @@ msgid "I do not want any more updates on this record."
 msgstr "Nem kérek több frissítést ezzel a bejegyzéssel kapcsolatban."
 
 msgid "I do not want my information online anymore."
-msgstr "Nem szeretném tovább tárolni az adataimat online."
+msgstr "Szeretném eltávolítani az adataimat az internetről."
 
 msgid "I have information about someone"
 msgstr "Információm van valakiről"
@@ -863,7 +885,7 @@ msgstr ""
 " URL-címét."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Hibás. Próbálja újra."
@@ -887,10 +909,10 @@ msgid "List API keys"
 msgstr "API-kulcsok listázása"
 
 msgid "Mark records as duplicate"
-msgstr "Bejegyzések megjelölése duplikátumként"
+msgstr "Bejegyzések megjelölése ismétlődésként"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Üzenet (szükséges)"
@@ -962,6 +984,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"A következő állapottal nem lehet jegyzetet közzétenni: „Arról értesültem,"
+" hogy ez a személy elhalálozott”."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -978,7 +1002,7 @@ msgid "Note text"
 msgstr "A megjegyzés szövege"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Megjegyzések ehhez a személyhez"
@@ -1014,7 +1038,7 @@ msgid "Original site name"
 msgstr "Az eredeti webhely neve"
 
 msgid "Other website"
-msgstr ""
+msgstr "Másik webhely"
 
 #, fuzzy
 msgid ""
@@ -1085,7 +1109,7 @@ msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Postai irányítószám"
@@ -1152,7 +1176,7 @@ msgstr "Profiloldal hozzáadásához válasszon egy webhelyet..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
-"Válasszon ki legfeljebb 3 bejegyzést, amelyeket duplikátumként kíván "
+"Válasszon ki legfeljebb 3 bejegyzést, amelyeket ismétlődésként kíván "
 "megjelölni:"
 
 msgid "Send email"
@@ -1168,7 +1192,7 @@ msgid "Show sensitive information"
 msgstr "Bizalmas adatok megjelenítése"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Azok megjelenítése, akik ismétlődőként jelölték meg ezeket"
 
 msgid "Sign in"
 msgstr "Bejelentkezés"
@@ -1407,13 +1431,13 @@ msgid "Upload"
 msgstr "Feltöltés"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Bejegyzés megtekintése"

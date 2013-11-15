@@ -152,6 +152,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s færslur valdar\n"
+"          "
 
 #, python-format
 msgid ""
@@ -159,6 +162,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Færslur svipaðar: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -166,6 +172,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Leitarniðurstöður fyrir: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -266,6 +275,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Engar niðurstöður fundust fyrir: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -291,6 +303,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Færslan hefur verið framlengd til %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -560,7 +575,7 @@ msgid "Are you sure this note isn't spam?"
 msgstr "Ertu viss um að þessi athugasemd sé ekki rusl?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem rusl?"
+msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem ruslefni?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Ertu viss um að þú viljir endurheimta þessa færslu sem var eytt?"
@@ -592,9 +607,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Með því að merkja þessa athugasemd sem ruslefni felurðu hana sjálfgefið. "
+"Hún verður enn hluti af færslunni en þörf er á viðbótarsmelli til að "
+"skoða innihald athugasemdarinnar. Notendur munu einnig geta fjarlægt "
+"ruslmerkinguna af athugasemdinni."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Með því að taka rulsmerkinguna af athugasemdinni gerir þú hana sjálfgefið"
+" sýnilega."
 
 msgid "CSV file"
 msgstr "CSV-skrá"
@@ -616,7 +637,7 @@ msgid "Close window"
 msgstr "Loka glugga"
 
 msgid "Compare these records"
-msgstr "Bera þessar færslur saman"
+msgstr "Berðu færslurnar saman"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -674,13 +695,13 @@ msgstr "Er þessi manneskja með prófílsíður á öðrum vefsvæðum?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Sækja hljóðið sem MP3"
 
 msgid "E-mail"
-msgstr "Tölvupóstur"
+msgstr "Netfang"
 
 msgid "E-mail address"
 msgstr "Netfang"
@@ -703,7 +724,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Færðu inn sem ÁÁÁÁ-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Færðu inn eiginnöfn og ættarnafn manneskjunnar."
+msgstr "Færðu inn eiginafn og kenninafn manneskjunnar."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "Færðu inn nafn manneskjunnar eða hluta nafnsins."
@@ -715,7 +736,7 @@ msgid "Enter the person's name."
 msgstr "Færðu inn nafn manneskjunnar."
 
 msgid "Expiry"
-msgstr "Rennur út"
+msgstr "Gildistími"
 
 msgid "Expiry date of this record"
 msgstr "Fyrningardagsetning þessarar færslu"
@@ -725,7 +746,7 @@ msgid "Extend expiration date by %(extension_days)s days"
 msgstr "Lengja fyrningardagsetningu um %(extension_days)s daga"
 
 msgid "Family name"
-msgstr "Ættarnafn"
+msgstr "Kenninafn"
 
 msgid "Feed of updates about this person"
 msgstr "Straumur með fréttum af þessari manneskju"
@@ -760,7 +781,7 @@ msgstr "Google persónuleit"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Hefur þú talað persónulega við þessa manneskju EFTIR hamfarirnar? "
+"Hefur þú talað persónulega við þessa manneskju EFTIR atvikið? "
 "(nauðsynlegt)"
 
 msgid "Help"
@@ -871,7 +892,7 @@ msgstr ""
 "vefslóð hennar."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Rangt. Reyndu aftur."
@@ -898,10 +919,10 @@ msgid "Mark records as duplicate"
 msgstr "Merkja færslur sem tvíteknar"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
-msgstr "Skilaboð (nauðsynlegt)"
+msgstr "Skilaboð (nauðsynleg)"
 
 msgid "Message is required. Please go back and try again."
 msgstr "Skilaboð eru nauðsynleg. Farðu til baka og reyndu aftur."
@@ -972,6 +993,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Ekki heimild til að birta athugasemdir með stöðunni „Ég hef fengið "
+"upplýsingar um að þessi manneskja sé látin“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ekki heimild til að birta athugasemdir með stöðunni „believed_dead“."
@@ -986,7 +1009,7 @@ msgid "Note text"
 msgstr "Texti athugasemdar"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Athugasemdir fyrir þessa manneskju"
@@ -1022,7 +1045,7 @@ msgid "Original site name"
 msgstr "Heiti upprunalegs vefsvæðis"
 
 msgid "Other website"
-msgstr ""
+msgstr "Annað vefsvæði"
 
 #, fuzzy
 msgid ""
@@ -1091,7 +1114,7 @@ msgid "Possible duplicates"
 msgstr "Mögulegar tvítekningar"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Póstnúmer"
@@ -1174,7 +1197,7 @@ msgid "Show sensitive information"
 msgstr "Sýna viðkvæmar upplýsingar"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Sýna hver merkti þessar tvítekningar"
 
 msgid "Sign in"
 msgstr "Skrá inn"
@@ -1241,7 +1264,7 @@ msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
-"Eiginnafn og ættarnafn eru bæði nauðsynleg. Farðu til baka og reyndu "
+"Eiginnafn og kenninafn eru bæði nauðsynleg. Farðu til baka og reyndu "
 "aftur."
 
 msgid "The Original author's name is required.  Please go back and try again."
@@ -1363,8 +1386,8 @@ msgstr ""
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
-"Til að hengja mynd við þessa athugasemd skatu hlaða henni inn eða slá inn"
-" vefslóð hennar."
+"Til að hengja mynd við þessa athugasemd skaltu hlaða henni inn eða slá "
+"inn vefslóð hennar."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr "Opnaðu Persónuleit í tölvunni til að eyða gögnunum þínum."
@@ -1398,7 +1421,7 @@ msgid "URL of original record"
 msgstr "Vefslóð upprunalegu færslunnar"
 
 msgid "Unspecified"
-msgstr "Ótilgreint"
+msgstr "Ótilgreind"
 
 msgid "Update an existing key"
 msgstr "Uppfæra fyrirliggjandi lykil"
@@ -1407,13 +1430,13 @@ msgid "Upload"
 msgstr "Hlaða inn"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Skoða færsluna"

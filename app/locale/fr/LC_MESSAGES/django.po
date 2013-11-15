@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s avis de recherche selectionnés\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Avis de recherche similaires à \"%(full_name)s\"\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Résultats de recherche pour \"%(query)s\"\n"
+"      "
 
 #, python-format
 msgid ""
@@ -263,6 +272,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Aucun résultat pour \"%(query)s\"\n"
+"    "
 
 #, python-format
 msgid ""
@@ -286,6 +298,10 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      La date d'expiration de l'avis de recherche a été repoussée au "
+"%(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -531,7 +547,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Dans environ 6 mois (180 jours) à compter d'aujourd'hui"
 
 msgid "About Google Person Finder"
-msgstr "À propos de l'outil de recherche de personnes disparues de Google"
+msgstr "À propos de Google Recherche de personnes"
 
 msgid "About you (required)"
 msgstr "À propos de vous (obligatoire)"
@@ -587,9 +603,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Si vous indiquez que cette note constitue du spam, elle sera masquée par "
+"défaut. Elle sera toujours associée à l'avis de recherche, mais "
+"l'utilisateur devra cliquer dessus pour en afficher le contenu. Les "
+"utilisateurs pourront également supprimer l'indicateur de spam associé à "
+"la note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Si vous supprimez l'indicateur de spam associé à cette note, il sera "
+"visible par défaut."
 
 msgid "CSV file"
 msgstr "Fichier CSV"
@@ -671,7 +694,7 @@ msgstr "Cette personne possède-t-elle des pages de profil sur d'autres sites We
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Télécharger le fichier audio au format MP3"
@@ -755,7 +778,7 @@ msgid "Given name"
 msgstr "Prénom"
 
 msgid "Google Person Finder"
-msgstr "Outil de recherche de personnes disparues de Google"
+msgstr "Google Recherche de personnes"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Avez-vous parlé avec cette personne APRÈS la catastrophe ? (obligatoire)"
@@ -805,7 +828,7 @@ msgid "I do not want my information online anymore."
 msgstr "Je ne veux plus que mes informations soient affichées en ligne."
 
 msgid "I have information about someone"
-msgstr "J'ai des informations sur une personne."
+msgstr "J'ai des informations sur une personne"
 
 msgid "I have reason to think this person is missing"
 msgstr "J'ai des raisons de croire que cette personne est portée disparue."
@@ -826,7 +849,7 @@ msgid "I prefer not to specify."
 msgstr "Je préfère ne pas donner plus de précisions."
 
 msgid "I'm looking for someone"
-msgstr "Je recherche quelqu'un."
+msgstr "Je recherche une personne"
 
 msgid "Identify who you are looking for"
 msgstr "Identifiez la personne que vous recherchez."
@@ -872,7 +895,7 @@ msgstr ""
 "son URL."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Veuillez réessayer."
@@ -899,7 +922,7 @@ msgid "Mark records as duplicate"
 msgstr "Marquer les avis de recherche comme des doublons"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Message (obligatoire)"
@@ -977,6 +1000,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Non autorisé à publier des notes avec l'état \"J'ai reçu des informations"
+" indiquant que cette personne est décédée\""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -993,7 +1018,7 @@ msgid "Note text"
 msgstr "Commentaire"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Commentaires concernant cette personne"
@@ -1029,7 +1054,7 @@ msgid "Original site name"
 msgstr "Nom du site d'origine"
 
 msgid "Other website"
-msgstr ""
+msgstr "Autre site Web"
 
 #, fuzzy
 msgid ""
@@ -1037,12 +1062,12 @@ msgid ""
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"REMARQUE : Sur les sites actifs de recherche de personnes disparues, "
-"toutes les données saisies sont accessibles et utilisables par tous. Nous"
-" n'analysons pas ces données, et ne vérifions pas leur exactitude."
+"REMARQUE : Sur les sites Recherche de personnes actifs, toutes les "
+"données saisies sont accessibles et utilisables par tous. Nous "
+"n'analysons pas ces données, et ne vérifions pas leur exactitude."
 
 msgid "Person Finder"
-msgstr "Outil de recherche de personnes disparues"
+msgstr "Recherche de personnes"
 
 msgid "Phone"
 msgstr "Numéro de téléphone"
@@ -1100,7 +1125,7 @@ msgid "Possible duplicates"
 msgstr "Doublons éventuels"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Code postal"
@@ -1187,7 +1212,7 @@ msgid "Show sensitive information"
 msgstr "Afficher les informations confidentielles"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Afficher la personne qui a signalé ces avis en double"
 
 msgid "Sign in"
 msgstr "Connexion"
@@ -1393,8 +1418,8 @@ msgstr "Pour joindre une photo à ce commentaire, importez-la ou saisissez son U
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
-"Pour effacer vos données, accédez à l'outil de recherche de personnes "
-"disparues depuis votre ordinateur."
+"Pour effacer vos données, accédez à l'outil Recherche de personnes depuis"
+" votre ordinateur."
 
 msgid "To unsubscribe, follow this link"
 msgstr "Pour vous désabonner, cliquez sur ce lien"
@@ -1434,13 +1459,13 @@ msgid "Upload"
 msgstr "Importer"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Afficher l'avis de recherche"
@@ -1583,62 +1608,62 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Confirmer la publication du "
-"commentaire concernant \"%(full_name)s\""
+"[Recherche de personnes] Confirmer la publication du commentaire "
+"concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Notification de suppression "
-"concernant \"%(full_name)s\""
+"[Recherche de personnes] Notification de suppression concernant "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
 msgstr ""
-"[Outil de recherche de personnes disparues] Désactiver les commentaires "
-"concernant \"%(full_name)s\" ?"
+"[Recherche de personnes] Désactiver les commentaires concernant "
+"\"%(full_name)s\" ?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
-"[Outil de recherche de personnes disparues] Activer les commentaires "
-"concernant \"%(full_name)s\" ?"
+"[Recherche de personnes] Activer les commentaires concernant "
+"\"%(full_name)s\" ?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Activer les notifications "
-"relatives aux commentaires concernant \"%(full_name)s\""
+"[Recherche de personnes] Activer les notifications relatives aux "
+"commentaires concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Les commentaires concernant "
-"\"%(full_name)s\" sont maintenant désactivés."
+"[Recherche de personnes] Les commentaires concernant \"%(full_name)s\" "
+"sont maintenant désactivés."
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Les commentaires concernant "
-"\"%(full_name)s\" sont maintenant activés."
+"[Recherche de personnes] Les commentaires concernant \"%(full_name)s\" "
+"sont maintenant activés."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
 msgstr ""
-"[Outil de recherche de personnes disparues] Notification de restauration "
-"d'avis de recherche concernant \"%(full_name)s\""
+"[Recherche de personnes] Notification de restauration d'avis de recherche"
+" concernant \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
 msgstr ""
-"[Outil de recherche de personnes disparues] Mise à jour du statut "
-"concernant \"%(full_name)s\""
+"[Recherche de personnes] Mise à jour du statut concernant "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Outil de recherche de personnes disparues] Vous êtes abonné aux mises à "
-"jour du statut concernant \"%(full_name)s\""
+"[Recherche de personnes] Vous êtes abonné aux mises à jour du statut "
+"concernant \"%(full_name)s\""
 
 msgid "female"
 msgstr "femme"

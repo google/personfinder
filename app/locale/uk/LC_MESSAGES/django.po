@@ -58,10 +58,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "Шановний(-а) %(author_name)s!\n"
 "\n"
-"Ви отримали запит на ввімкнення нотатків до запису про особу "
+"Ви отримали запит на ввімкнення нотаток до запису про особу "
 "\"%(full_name)s\".\n"
 "\n"
 "Вашу електронну адресу вказано як адресу автора цього запису. Щоб "
@@ -69,7 +68,6 @@ msgstr ""
 "\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -88,10 +86,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "Шановний(-а) %(author_name)s,\n"
 "\n"
-"Ви отримали запит на вимкнення нотатків до запису про особу\n"
+"Ви отримали запит на вимкнення нотаток до запису про особу\n"
 "\"%(full_name)s\".\n"
 "\n"
 "Вашу електронну адресу вказано як адресу автора цього запису. Щоб "
@@ -99,7 +96,6 @@ msgstr ""
 "\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -150,6 +146,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Вибрано записів: %(dup_count)s\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +156,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Записи, подібні до %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +166,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Результати пошуку для запиту %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -259,6 +264,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Немає результатів для запиту %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -284,6 +292,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Термін дії запису подовжено до %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -582,9 +593,14 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Позначивши цю нотатку як спам, ви сховаєте її за умовчанням. Вона "
+"залишиться в записі, але для її перегляду знадобиться ще один клік. Також"
+" можна вилучити позначку \"спам\" із нотатки."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Якщо вилучити позначку \"спам\" із нотатки, вона відображатиметься за "
+"умовчанням."
 
 msgid "CSV file"
 msgstr "Файл CSV"
@@ -664,7 +680,7 @@ msgstr "Чи має ця особа сторінки профілю на інш�
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Завантажити звук у форматі MP3"
@@ -696,12 +712,12 @@ msgid "Enter the person's given and family names."
 msgstr "Введіть ім’я та прізвище особи."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Введіть ім’я та прізвище особи або їх частину."
+msgstr "Введіть ім’я та прізвище особи повністю або декілька букв."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"Введіть ім’я та прізвище (або їх частину) чи номер мобільного телефону "
-"особи."
+"Введіть ім’я та прізвище (повністю або лише або декілька букв) чи номер "
+"мобільного телефону особи."
 
 msgid "Enter the person's name."
 msgstr "Введіть ім’я та прізвище особи."
@@ -861,7 +877,7 @@ msgstr ""
 "URL-адресу."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Неправильно. Повторіть спробу."
@@ -886,6 +902,9 @@ msgstr "Список ключів API"
 
 msgid "Mark records as duplicate"
 msgstr "Позначити записи як копії"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Повідомлення (обов’язково)"
@@ -930,7 +949,7 @@ msgid "Neighborhood"
 msgstr "Район"
 
 msgid "No"
-msgstr "Немає"
+msgstr "Ні"
 
 #, python-format
 msgid "No author email for record %(id)s."
@@ -959,6 +978,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Забороняється публікувати нотатки зі статусом \"У мене є інформація, що "
+"ця особа померла\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Not authorized to post notes with the status \"believed_dead\"."
@@ -973,7 +994,7 @@ msgid "Note text"
 msgstr "Текст нотатки"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Нотатки про цю особу"
@@ -1009,7 +1030,7 @@ msgid "Original site name"
 msgstr "Назва початкового веб-сайту"
 
 msgid "Other website"
-msgstr ""
+msgstr "Інший веб-сайт"
 
 #, fuzzy
 msgid ""
@@ -1076,6 +1097,9 @@ msgstr "Введіть дійсну електронну адресу."
 
 msgid "Possible duplicates"
 msgstr "Можливі копії"
+
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Поштовий індекс"
@@ -1156,7 +1180,7 @@ msgid "Show sensitive information"
 msgstr "Показати конфіденційну інформацію"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Показати, хто позначив ці копії"
 
 msgid "Sign in"
 msgstr "Увійти"
@@ -1207,14 +1231,8 @@ msgstr "Підписатися на оновлення про цю особу"
 msgid "Switch to address"
 msgstr "Перейти до адреси"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Перейти в режим позначення копій"
-
 msgid "Switch to lat/long"
 msgstr "Перейти до широти й довготи"
-
-msgid "Switch to normal view mode"
-msgstr "Перейти в режим звичайного перегляду"
 
 msgid "Tell us the status of this person"
 msgstr "Повідомте про статус цієї особи"
@@ -1398,13 +1416,13 @@ msgid "Upload"
 msgstr "Завантажити"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Переглянути запис"

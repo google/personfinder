@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s избрани записа\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Записи, подобни на: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Резултати от търсенето на: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -172,8 +181,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Наистина ли искате да изтриете записа за „%(full_name)s“?\n"
-"    "
+"Наистина ли искате да изтриете записа за %(full_name)s?"
 
 #, python-format
 msgid ""
@@ -182,8 +190,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Наистина ли искате да деактивирате бележките за „%(full_name)s“?\n"
-"    "
+"Наистина ли искате да деактивирате бележките за %(full_name)s?"
 
 #, python-format
 msgid ""
@@ -193,9 +200,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Наистина ли искате да деактивирате бележките за записа на "
-"„%(full_name)s“?\n"
-"    "
+"Наистина ли искате да деактивирате бележките за записа на %(full_name)s?"
 
 #, python-format
 msgid ""
@@ -261,6 +266,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Няма резултати за: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -286,6 +294,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Записът е удължен до %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -355,7 +366,7 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Потребител изтри записа за „%(full_name)s“\n"
+"Потребител изтри записа за %(full_name)s\n"
 "на адрес %(site_url)s.\n"
 "\n"
 "Уведомяваме Ви за изтриването, защото Вашият имейл адрес е\n"
@@ -371,7 +382,7 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Потребител изтри записа за „%(full_name)s“\n"
+"Потребител изтри записа за %(full_name)s\n"
 "на адрес %(site_url)s.\n"
 "\n"
 "Уведомяваме Ви за изтриването, защото Вашият имейл адрес е\n"
@@ -459,7 +470,7 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Авторът на записа за „%(full_name)s“\n"
+"Авторът на записа за %(full_name)s\n"
 "(който по-рано бе изтрит) го възстанови. За да го прегледате,\n"
 "отворете тази връзка:\n"
 "\n"
@@ -474,7 +485,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Има нова бележка за записа за „%(full_name)s“.\n"
+"Има нова бележка за записа за %(full_name)s.\n"
 
 #, python-format
 msgid ""
@@ -488,7 +499,7 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Абонирахте се за бележки за „%(full_name)s“.\n"
+"Абонирахте се за бележки за %(full_name)s.\n"
 "\n"
 "Можете да прегледате този запис на адрес\n"
 "\n"
@@ -527,7 +538,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "След около 6 месеца (180 дни)"
 
 msgid "About Google Person Finder"
-msgstr "Всичко за Google Person Finder"
+msgstr "Всичко за Google Търсене на хора при бедствия"
 
 msgid "About you (required)"
 msgstr "За вас (задължително)"
@@ -583,9 +594,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Като означите тази бележка като спам, ще я направите скрита по "
+"подразбиране. Тя ще продължи да е част от записа, но за преглед на "
+"съдържанието й ще е необходимо допълнително кликване. Потребителите също "
+"ще могат да премахнат означаването й като спам."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Като отмените означаването на тази бележка като спам, ще я направите "
+"видима по подразбиране."
 
 msgid "CSV file"
 msgstr "CSV файл"
@@ -665,7 +682,7 @@ msgstr "Има ли този човек страници на потребите
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Изтегляне на звука като MP3"
@@ -747,7 +764,7 @@ msgid "Given name"
 msgstr "Собствено име"
 
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Google Търсене на хора при бедствия"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Говорихте ли лично с този човек СЛЕД бедствието? (задължително)"
@@ -858,7 +875,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Неправилно. Опитайте отново."
@@ -885,7 +902,7 @@ msgid "Mark records as duplicate"
 msgstr "Маркиране на записите като дублирани"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Съобщение (задължително)"
@@ -959,6 +976,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Не сте упълномощени да публикувате бележки със състояние „Получих "
+"информация, че този човек е починал“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Не сте упълномощени да публикувате бележки със състояние „believed_dead“."
@@ -973,13 +992,13 @@ msgid "Note text"
 msgstr "Текст на бележката"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Бележки за този човек"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Число или период (напр. 20–30)"
+msgstr "Число или диапазон (напр. 20–30)"
 
 #, python-format
 msgid ""
@@ -1009,7 +1028,7 @@ msgid "Original site name"
 msgstr "Име на оригиналния сайт"
 
 msgid "Other website"
-msgstr ""
+msgstr "Друг уебсайт"
 
 #, fuzzy
 msgid ""
@@ -1018,11 +1037,11 @@ msgid ""
 "the accuracy of this data."
 msgstr ""
 "МОЛЯ, ОБЪРНЕТЕ ВНИМАНИЕ: Всички въведени данни на активните сайтове на "
-"Person Finder са общодостъпни и могат да се използват от всекиго. Google "
-"не преглежда и не удостоверява точността на информацията."
+"Търсене на хора при бедствия са общодостъпни и могат да се използват от "
+"всекиго. Google не преглежда и не удостоверява точността на информацията."
 
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "Търсене на хора при бедствия"
 
 msgid "Phone"
 msgstr "Телефон"
@@ -1078,7 +1097,7 @@ msgid "Possible duplicates"
 msgstr "Възможни дублирания"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Пощенски код"
@@ -1125,7 +1144,7 @@ msgstr "Подаване на сигнал за спам"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Върнете се към записа за „%(full_name)s“."
+msgstr "Върнете се към записа за %(full_name)s."
 
 msgid "Reveal note"
 msgstr "Показване на бележката"
@@ -1159,7 +1178,7 @@ msgid "Show sensitive information"
 msgstr "Показване на поверителна информация"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Показване на човека, означил тези дубликати"
 
 msgid "Sign in"
 msgstr "Вход"
@@ -1202,7 +1221,7 @@ msgstr "Абониране"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Абонирайте се за актуализации за „%(full_name)s“"
+msgstr "Абонирайте се за актуализации за %(full_name)s"
 
 msgid "Subscribe to updates about this person"
 msgstr "Абонирайте се за актуализации за този човек"
@@ -1354,8 +1373,8 @@ msgstr ""
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
-"За да изтриете данните си, осъществете достъп до Person Finder от "
-"компютъра си."
+"За да изтриете данните си, осъществете достъп до Търсене на хора при "
+"бедствия от компютъра си."
 
 msgid "To unsubscribe, follow this link"
 msgstr "За да се отпишете, отворете тази връзка"
@@ -1395,13 +1414,13 @@ msgid "Upload"
 msgstr "Качване"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Преглед на записа"
@@ -1534,45 +1553,61 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Потвърждаване на бележката Ви за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Потвърждаване на бележката Ви за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] Известие за изтриване на „%(full_name)s“"
+msgstr "[Търсене на хора при бедствия] Известие за изтриване на „%(full_name)s“"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Да се деактивират ли бележките за „%(full_name)s“?"
+msgstr ""
+"[Търсене на хора при бедствия] Да се деактивират ли бележките за "
+"%(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Да се активират ли бележките за „%(full_name)s“?"
+msgstr ""
+"[Търсене на хора при бедствия] Да се активират ли бележките за "
+"%(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Известие за активиране на бележките за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Известие за активиране на бележките за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Бележките вече са деактивирани за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Бележките вече са деактивирани за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Бележките вече са активирани за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Бележките вече са активирани за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] Известие за възстановяване на запис за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Известие за възстановяване на запис за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] Актуализация на състоянието за „%(full_name)s“"
+msgstr ""
+"[Търсене на хора при бедствия] Актуализация на състоянието за "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] Абонирани сте за актуализации на състоянието за "
-"„%(full_name)s“"
+"[Търсене на хора при бедствия] Абонирани сте за актуализации на "
+"състоянието за %(full_name)s"
 
 msgid "female"
 msgstr "жена"

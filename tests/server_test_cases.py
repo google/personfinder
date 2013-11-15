@@ -281,7 +281,7 @@ class ReadOnlyTests(TestsBase):
     def test_start_french(self):
         """Check the French start page."""
         doc = self.go('/haiti?lang=fr')
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
     def test_start_creole(self):
         """Check the Creole start page."""
@@ -309,10 +309,10 @@ class ReadOnlyTests(TestsBase):
         fr_session = self.s = scrape.Session(verbose=1)
 
         doc = self.go('/haiti?lang=fr')  # sets cookie
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
         doc = self.go('/haiti')
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
         # Check that this didn't screw up the language for the other session
         self.s = en_session

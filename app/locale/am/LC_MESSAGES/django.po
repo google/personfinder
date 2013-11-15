@@ -143,6 +143,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s መዝገቦች ተመርጠዋል\n"
+"          "
 
 #, python-format
 msgid ""
@@ -150,6 +153,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        ለሚከተለው ጋር የሚመሳሰሉ መዝገቦች፦ %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -157,6 +163,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        የፍለጋ ውጤቶች ለ፦ %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -252,6 +261,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      ለሚከተለው ምንም ውጤቶች አልተገኙም፦ %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -276,6 +288,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      መዝገቡ እስከ %(expiry_date)s ድረስ ተራዝሟል።\n"
+"    "
 
 msgid ""
 "\n"
@@ -566,9 +581,12 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"በዚህ ማስታወሻ ላይ አይፈለጌ መልዕክት የሚል ምልክት በማድረግ በነባሪ እንዲደበቅ ያደርጉታል። አሁንም የመዝገቡ "
+"አካል ይሆናል ፣ ነገር ግን የማስታወሻውን ይዘት ለማየት አንድ ተጨማሪ ጠቅታ ያስፈልገዋል። እንዲሁም ተጠቃሚዎች "
+"የአይፈለጌ መልዕክት ምልክቱን ከዚህ ማስታወሻ ማስወገድ ይችላሉ።"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "በዚህ ማስታወሻ ላይ ያለውን የአይፈለጌ መልዕክት ምልክት በማንሳት በነባሪ እንዲታይ ያደርጉታል።"
 
 msgid "CSV file"
 msgstr "የCSV ፋይል"
@@ -646,7 +664,7 @@ msgstr "ይህ ሰው በሌሎች ድር ጣቢያዎች ላይ የመገለጫ
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "ድምጹን እንደ MP3 አውርድ"
@@ -831,7 +849,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "የዚህ ሰው ፎቶ ካለዎት ይስቀሉት ወይም የዩ አር ኤል አድራሻውን ያስገቡ።"
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "ትክክል አይደለም።  እንደገና ይሞክሩ።"
@@ -858,7 +876,7 @@ msgid "Mark records as duplicate"
 msgstr "መዝገቦች ብዜት የሚል ምልክት አድርግባቸው"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "መልዕክት (የሚያስፈልግ)"
@@ -925,7 +943,7 @@ msgstr "እንደዚህ ያለ የፈቀዳ አካል የለም።"
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
+msgstr "«ይህ ሰው መሞቱን የሚያመለክት መረጃ ደርሶኛል» የሚል ሁኔታ ያላቸው ልጥፎች ለመለጠፍ ፈቃድ አልተሰጠም።"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ይህ የ «believed_dead» ሁኔታ ያላቸው ማስታወሻዎችን የመለጠፍ ፍቃድ የለውም።"
@@ -940,7 +958,7 @@ msgid "Note text"
 msgstr "የማስታወሻ ጽሑፍ"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "የዚህ ሰው ማስታወሻ"
@@ -976,7 +994,7 @@ msgid "Original site name"
 msgstr "የመጀመሪያው ጣቢያ ስም"
 
 msgid "Other website"
-msgstr ""
+msgstr "ሌላ ድር ጣቢያ"
 
 #, fuzzy
 msgid ""
@@ -1042,7 +1060,7 @@ msgid "Possible duplicates"
 msgstr "ብዜት ሊሆኑ የሚችሉ"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "የፖስታ ወይም ዚፕ ኮድ"
@@ -1123,7 +1141,7 @@ msgid "Show sensitive information"
 msgstr "ስስ መረጃ አሳይ"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "ማን እነዚህ የተባዙ የሚል ምልክት እንዳደረገባቸው አሳይ"
 
 msgid "Sign in"
 msgstr "በመለያ ግባ"
@@ -1348,13 +1366,13 @@ msgid "Upload"
 msgstr "ይስቀሉ"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "መዝገቡን ይመልከቱ"

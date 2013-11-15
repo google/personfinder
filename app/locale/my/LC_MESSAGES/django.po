@@ -154,6 +154,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s မွတ္တမ္းမ်ား ေရြးခ်ယ္ထားသည္။\n"
+"          "
 
 #, python-format
 msgid ""
@@ -161,6 +164,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        : %(full_name)s ႏွင့္ဆင္တူေသာ မွတ္တမ္းမ်ား။\n"
+"      "
 
 #, python-format
 msgid ""
@@ -168,6 +174,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        \"%(query)s\" အတြက္ ရွာေဖြျခင္းရလဒ္မ်ား။\n"
+"      "
 
 #, python-format
 msgid ""
@@ -267,6 +276,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      : %(query)s အတြက္ ရလဒ္မရွိပါ။\n"
+"    "
 
 #, python-format
 msgid ""
@@ -291,6 +303,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      %(expiry_date)s. အထိ မွတ္တမ္းအား သက္တမ္းတိုးထားလိုက္သည္။\n"
+"    "
 
 msgid ""
 "\n"
@@ -598,9 +613,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"သင္သည္ ဤမွတ္စုကုိ spamအျဖစ္ မွတ္သားျခင္းျဖင့္၊ ထိုမွတ္တမ္းသည္ default "
+"အေနျဖင့္ ေပ်ာက္ကြယ္သြားမည္ျဖစ္သည္။ ထို မွတ္စုသည္ "
+"မွတ္တမ္း၏အပုိင္းတစ္ခုအေနျဖင့္ ဆက္လက္ရွိေနမည္ျဖစ္ေသာ္လည္း  "
+"မွတ္စုပါအေၾကာင္းအရာအား ျပန္လည္ၾကည့္လုိပါက ကလစ္အပုိထပ္မံႏွိပ္ရန္ "
+"လုိအပ္ပါသည္။  အသံုးျပဳသူက မွတ္စုမွ ဤspam အမွတ္အသားကုိလဲ ဖယ္ရွားႏုိင္သည္။"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"သင္သည္ ဤမွတ္စုကုိ spamအေနျဖင့္ မွတ္သားမထားပါက defaultအေနျဖင့္ မွတ္စုအား "
+"ျမင္ေတြ႕ရပါလိမ့္မည္။"
 
 msgid "CSV file"
 msgstr "CSV ဖိုင္။"
@@ -684,7 +706,7 @@ msgstr "အျခား၀က္ဗ္ဆိုက္မ်ားတြင္ �
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "အသံကို MP3 အေနျဖင့္ ေဒါင္းလုပ္ လုပ္ပါ။"
@@ -901,7 +923,7 @@ msgstr ""
 "၏ URL လိပ္စာအား ႐ိုက္ထည့္ပါ။"
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "မမွန္ပါ။ ထပ္ႀကိဳးစားႀကည့္ပါ။"
@@ -926,6 +948,9 @@ msgstr "API ကီးမ်ား စာရင္း"
 
 msgid "Mark records as duplicate"
 msgstr "မွတ္တမ္းမ်ားကို မူရင္းမဟုတ္သည့္ အပြားမ်ားျဖစ္ေႀကာင္း မွတ္သားပါ။"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "မက္ေဆ့ Message  (လိုအပ္သည္။)"
@@ -1003,6 +1028,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"\"ကြၽႏု္ပ္တြင္ ဤလူေသဆံုးသည့္ သတင္းအခ်က္အလက္ကိုရရွိထားသည္\" ဟုဆုိေသာ "
+"မွတ္စုကုိတင္ရန္ လုပ္ပုိင္ခြင့္မရွိပါ။"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -1019,7 +1046,7 @@ msgid "Note text"
 msgstr "မွတ္စု စာသား။"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "ဒီလူအတြက္ မွတ္စုမ်ား။"
@@ -1056,7 +1083,7 @@ msgid "Original site name"
 msgstr "မူရင္း ၀က္ဗ္ဆိုက္ နာမည္။"
 
 msgid "Other website"
-msgstr ""
+msgstr "တစ္ျခားဝက္ဘ္ဆုိဒ္"
 
 #, fuzzy
 msgid ""
@@ -1132,6 +1159,9 @@ msgstr "ေက်းဇူးၿပဳၿပီး အီးေမးလ္လ�
 
 msgid "Possible duplicates"
 msgstr "မူရင္းမဟုတ္သည့္ အပြားမ်ားျဖစ္ႏိုင္သည္။"
+
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Postal or zip code ေခၚ စာတိုက္လိပ္စာ နံပါတ္။"
@@ -1219,7 +1249,7 @@ msgid "Show sensitive information"
 msgstr "အေရးႀကီးေသာ အခ်က္အလက္မ်ားကို ျပပါ။"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "ဤမိတၱဴမ်ားကုိ မည္သူကမွတ္ထားသည္ကုိ ျပပါ။"
 
 msgid "Sign in"
 msgstr "ဆိုင္းအင္ Sign in"
@@ -1282,14 +1312,8 @@ msgstr ""
 msgid "Switch to address"
 msgstr "လိပ္စာသို ့သြားပါ။"
 
-msgid "Switch to duplicate marking mode"
-msgstr "မူရင္းမဟုတ္သည့္အပြားမ်ားကို မွတ္သားသည့္ပံုစံသို ့ သြားပါ။"
-
 msgid "Switch to lat/long"
 msgstr "လတၱီတြဒ္၊ေလာင္ဂ်ီတြဒ္ မ်ည္းမ်ားသို ့ သြားပါ။"
-
-msgid "Switch to normal view mode"
-msgstr "ပံုမွန္ႀကည့္ရသည့္အေနအထား သို ့သြားပါ။"
 
 msgid "Tell us the status of this person"
 msgstr "ဒီလူ၏ေနာက္ဆံုး စေတးတပ္ အေနအထားကို ကၽြႏ္ုပ္တို ့အားေျပာျပပါ။"
@@ -1491,13 +1515,13 @@ msgid "Upload"
 msgstr "Upload လုပ္ပါ။"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "မွတ္တမ္းကို ႀကည့္ပါ။"

@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s avis de recherche sélectionnés\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Avis de recherche similaires à %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Résultats de recherche pour %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -264,6 +273,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Aucun résultat pour %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -287,6 +299,10 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      La date d'expiration de l'avis de recherche a été repoussée au "
+"%(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -591,9 +607,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Si vous marquez cette note comme indésirable, elle sera masquée par "
+"défaut. Elle sera toujours associée à l'avis de recherche, mais il faudra"
+" cliquer dessus pour en afficher le contenu. Les utilisateurs pourront "
+"également supprimer l'indication de pourriel associée à la note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Si vous supprimez l'indication de pourriel associée à cette note, elle "
+"sera visible par défaut."
 
 msgid "CSV file"
 msgstr "Fichier CSV"
@@ -675,7 +697,7 @@ msgstr "Cette personne possède-t-elle des pages de profils sur d'autres sites W
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 
 msgid "Download the sound as MP3"
 msgstr "Télécharger le son en format MP3"
@@ -876,7 +898,7 @@ msgstr ""
 "l'adresse URL du fichier."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Essayez de nouveau."
@@ -903,7 +925,7 @@ msgid "Mark records as duplicate"
 msgstr "Marquer les avis de recherche comme des doublons"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Message (obligatoire)"
@@ -983,6 +1005,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Non autorisé à publier des notes avec l'état « J'ai reçu des "
+"renseignements indiquant que cette personne est décédée »."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -999,7 +1023,7 @@ msgid "Note text"
 msgstr "Commentaire"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Commentaires concernant cette personne"
@@ -1035,7 +1059,7 @@ msgid "Original site name"
 msgstr "Nom du site original"
 
 msgid "Other website"
-msgstr ""
+msgstr "Autre site Web"
 
 #, fuzzy
 msgid ""
@@ -1110,7 +1134,7 @@ msgid "Possible duplicates"
 msgstr "Doublons possibles"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "Possible duplicates found."
 
 msgid "Postal or zip code"
 msgstr "Code postal"
@@ -1197,7 +1221,7 @@ msgid "Show sensitive information"
 msgstr "Afficher les données sensibles"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Afficher la personne ayant signalé ces avis en double"
 
 msgid "Sign in"
 msgstr "Connexion"
@@ -1438,13 +1462,13 @@ msgid "Upload"
 msgstr "Téléverser"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "Upload notes in CSV format"
 
 msgid "Upload persons in CSV format"
-msgstr ""
+msgstr "Upload persons in CSV format"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "Afficher l'avis de recherche"
