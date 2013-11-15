@@ -56,7 +56,7 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # Query parameters which are automatically preserved on page transition
 # if you use utils.BaseHandler.get_url() or
 # env.hidden_input_tags_for_preserved_query_params.
-PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets']
+PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets', 'referrer']
 
 
 # ==== Field value text ========================================================
@@ -433,7 +433,6 @@ def send_confirmation_email_to_record_author(
                 ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
-        
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -610,6 +609,7 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url3': strip,
         'query': strip,
         'read_permission': validate_checkbox_as_bool,
+        'referrer': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_default': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
@@ -804,6 +804,11 @@ class BaseHandler(webapp.RequestHandler):
             except Exception, e:
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
+
+        # Ensure referrer is in whitelist, if it exists
+        if self.params.referrer and (not self.params.referrer in
+                                     self.config.referrer_whitelist):
+            setattr(self.params, 'referrer', '')
 
         # Log the User-Agent header.
         sample_rate = float(
