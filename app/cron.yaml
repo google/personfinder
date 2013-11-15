@@ -1,16 +1,23 @@
 cron:
+
+# Generate statistics used by /admin/dashboard and /api/stats.
 - description: update person counts
   url: /global/tasks/count/person
   schedule: every 20 minutes
 - description: update note counts
   url: /global/tasks/count/note
   schedule: every 20 minutes
-- description: update person statuses (if believed_dead)
-  url: /global/tasks/count/update_dead_status
-  schedule: every 5 minutes
+
+# Ensure each Person's latest_status reflects the latest non-flagged Note
 - description: update person statuses
   url: /global/tasks/count/update_status
   schedule: every 15 minutes
+
+# This does a subset of the work of update_status, a little more often.
+- description: update person statuses (if believed_dead)
+  url: /global/tasks/count/update_dead_status
+  schedule: every 5 minutes
+
 - description: sitemap ping
   url: /sitemap/ping?search_engine=google
   schedule: every 15 minutes
