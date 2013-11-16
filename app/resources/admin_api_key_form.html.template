@@ -115,6 +115,7 @@
                id="believed_dead_permission"
                {{target_key.believed_dead_permission|yesno:"checked,"}}>
         Allow marking records as "believed dead"
+	<span class="warning">Think twice before turning this on.</span>
       </div>
       <div class="response">
         <input type="checkbox" name="stats_permission"
