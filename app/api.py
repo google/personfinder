@@ -215,12 +215,10 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
                     **get_tag_params(self))
 
     def import_persons(self, lines):
-        # TODO(ryok): let the user select timezone.
-        # TODO(ryok): accept more flexible date time format.
         # TODO(ryok): support non-UTF8 encodings.
 
         source_domain = self.auth.domain_write_permission
-        records = importer.utf8_decoder(csv.DictReader(lines))
+        records = importer.utf8_decoder(convert_time_fields(csv.reader(lines)))
         try:
             records = [complete_record_ids(r, source_domain) for r in records]
         except csv.Error, e:
