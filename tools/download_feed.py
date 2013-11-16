@@ -143,19 +143,33 @@ def download_since(type, parser, writer, url, min_entry_date, key=None):
     with an entry_date >= min_entry_date are retrieved."""
     start_time = time.time()
     total = skip = 0
+    last_min_entry_date = None
+    last_first_person_record_id = None
     while True:
         log('%s records with entry_date >= %s: ' %
             (type.capitalize(), min_entry_date))
         records = fetch_records(parser, url, key=key, max_results=200,
                                 min_entry_date=min_entry_date, skip=skip)
+        if not records:
+            break
+        # The feed sometimes doesn't skip as we'd expect. See:
+        # https://code.google.com/p/googlepersonfinder/issues/detail?id=127
+        # When this occurs, it seems to start at the same person record ID, so I
+        # try to work around this by checking for repeat person record IDs.
+        if records[0]['person_record_id'] == last_first_person_record_id:
+            break
+        last_first_person_record_id = records[0]['person_record_id']
         writer.write(records)
         total += len(records)
         speed = total/float(time.time() - start_time)
         log('%d (total %d, %.1f rec/s).\n' % (len(records), total, speed))
-        if not records:
-            break
         min_entry_date = max(r['entry_date'] for r in records)
-        skip = len([r for r in records if r['entry_date'] == min_entry_date])
+        next_skip = len([r for r in records if r['entry_date'] == min_entry_date])
+        if min_entry_date == last_min_entry_date:
+          skip += next_skip
+        else:
+          last_min_entry_date = min_entry_date
+          skip = next_skip
     log('Done.\n')
 
 def main(*args):
