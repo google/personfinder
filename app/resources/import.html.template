@@ -44,7 +44,6 @@
     <h2>{% trans "Upload persons in CSV format" %}</h2>
     <ul>
       <li>{% blocktrans with begin_sample_anchor_tag|safe as begin_tag and end_sample_anchor_tag|safe as end_tag %}Here is {{begin_tag}}a sample CSV file{{end_tag}} you can edit and upload{% endblocktrans %}
-      <li>{% trans "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC" %}
       <li>{% blocktrans with begin_document_anchor_tag|safe as begin_tag and end_document_anchor_tag|safe as end_tag %}See {{begin_tag}}the wiki{{end_tag}} for more instructions{% endblocktrans %}
     </ul>
     <form method="post" enctype="multipart/form-data">
