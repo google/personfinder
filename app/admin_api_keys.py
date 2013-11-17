@@ -39,6 +39,8 @@ def to_authorization_params(param):
         'search_permission',
         'subscribe_permission',
         'mark_notes_reviewed',
+        'believed_dead_permission',
+        'stats_permission',
         'is_valid',
     ]
     ret = {}
