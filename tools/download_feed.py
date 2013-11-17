@@ -144,7 +144,6 @@ def download_since(type, parser, writer, url, min_entry_date, key=None):
     start_time = time.time()
     total = skip = 0
     last_min_entry_date = None
-    last_first_person_record_id = None
     while True:
         log('%s records with entry_date >= %s: ' %
             (type.capitalize(), min_entry_date))
@@ -152,13 +151,6 @@ def download_since(type, parser, writer, url, min_entry_date, key=None):
                                 min_entry_date=min_entry_date, skip=skip)
         if not records:
             break
-        # The feed sometimes doesn't skip as we'd expect. See:
-        # https://code.google.com/p/googlepersonfinder/issues/detail?id=127
-        # When this occurs, it seems to start at the same person record ID, so I
-        # try to work around this by checking for repeat person record IDs.
-        if records[0]['person_record_id'] == last_first_person_record_id:
-            break
-        last_first_person_record_id = records[0]['person_record_id']
         writer.write(records)
         total += len(records)
         speed = total/float(time.time() - start_time)
