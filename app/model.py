@@ -111,8 +111,8 @@ class Repo(db.Model):
         return [repo.key().name() for repo in cls.all()]
 
     @classmethod
-    def list_active(cls):
-        """Returns a list of the active repository names."""
+    def list_launched(cls):
+        """Returns a list of the launched repository names."""
         return [name for name in Repo.list()
                 if not config.get_for_repo(name, 'deactivated')]
 

@@ -55,12 +55,12 @@ class Handler(BaseHandler):
         # Gather the data into a table, with a column for each repository.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
         all_repos = sorted(Repo.list())
-        active_repos = sorted(Repo.list_active())
+        launched_repos = sorted(Repo.list_launched())
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
             blanks = []
-            for repo in active_repos:
+            for repo in launched_repos:
                 query = Counter.all_finished_counters(repo, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
@@ -104,5 +104,5 @@ class Handler(BaseHandler):
         # Render the page with the JSON data in it.
         self.render('admin_dashboard.html',
                     data_js=pack_json(json),
-                    active_repos_js=simplejson.dumps(active_repos),
+                    launched_repos_js=simplejson.dumps(launched_repos),
                     all_repos_js=simplejson.dumps(all_repos))

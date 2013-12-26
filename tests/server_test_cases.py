@@ -6245,7 +6245,7 @@ class FeedTests(TestsBase):
         # verify we logged the repo read.
         verify_api_log(ApiActionLog.REPO, api_key='')
 
-    def test_repo_feed_all_repos(self):
+    def test_repo_feed_all_launched_repos(self):
         config.set_for_repo('haiti', deactivated=True)
         config.set_for_repo('japan', test_mode=True)
         config.set_for_repo('japan', updated_date=utils.get_timestamp(
@@ -6283,26 +6283,8 @@ class FeedTests(TestsBase):
       </gpf:repo>
     </content>
   </entry>
-  <entry>
-    <id>%s/pakistan</id>
-    <published>2010-08-06T00:00:00Z</published>
-    <updated>2010-08-06T00:00:00Z</updated>
-    <title xml:lang="en">Pakistan Floods</title>
-    <content type="text/xml">
-      <gpf:repo>
-        <gpf:title xml:lang="en">Pakistan Floods</gpf:title>
-        <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
-        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
-        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
-        <gpf:test_mode>false</gpf:test_mode>
-        <gpf:location>
-          <georss:point>33.36 73.26</georss:point>
-        </gpf:location>
-      </gpf:repo>
-    </content>
-  </entry>
 </feed>
-''' % (self.hostport, ROOT_URL, ROOT_URL)
+''' % (self.hostport, ROOT_URL)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 

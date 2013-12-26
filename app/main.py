@@ -192,9 +192,9 @@ def select_lang(request, config=None):
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
 
 def get_repo_options(request, lang):
-    """Returns a list of the names and titles of the active repositories."""
+    """Returns a list of the names and titles of the launched repositories."""
     options = []
-    for repo in config.get('active_repos') or []:
+    for repo in config.get('launched_repos') or []:
         if config.get_for_repo(repo, 'deactivated'):
             continue
         titles = config.get_for_repo(repo, 'repo_titles', {})

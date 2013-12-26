@@ -48,7 +48,11 @@ class Repo(utils.BaseHandler):
     ignore_deactivation = True
 
     def get(self):
-        repos = model.Repo.list_active()
+        repos = []
+        for name in config.get('launched_repos') or []:
+            if config.get_for_repo(name, 'deactivated'):
+                continue
+            repos.append(name)
         if self.repo:
             repos = [self.repo] if self.repo in repos else []
         updated = self.get_latest_updated_date(repos)

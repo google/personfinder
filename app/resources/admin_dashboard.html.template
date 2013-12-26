@@ -45,7 +45,7 @@ var CHART_OPTIONS = {
 var DATA = {{data_js|safe}};
 
 function draw_chart() {
-  var repos = {{active_repos_js|safe}};
+  var repos = {{launched_repos_js|safe}};
   var columns = [{type: 'datetime'}];
   for (var i = 0; i < repos.length; i++) {
     columns.push({type: 'number', label: repos[i]});
