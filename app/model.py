@@ -102,8 +102,13 @@ class Repo(db.Model):
     top-level entity, with no parent, whose existence just indicates the
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
+
     # No properties for now; only the key_name is significant.  The repository
     # title and other settings are all in ConfigEntry entities (see config.py).
+    # The per-repository 'deactivated' setting blocks UI and API access to the
+    # repository, replacing all its pages with a deactivation message.  The
+    # global 'launched_repos' setting is an ordered list of repository names
+    # that are publicized in the UI (navigation menu) and API (repo feed).
 
     @classmethod
     def list(cls):
@@ -111,10 +116,17 @@ class Repo(db.Model):
         return [repo.key().name() for repo in cls.all()]
 
     @classmethod
-    def list_launched(cls):
-        """Returns a list of the launched repository names."""
+    def list_active(cls):
+        """Returns a list of the active (non-deactivated) repository names."""
         return [name for name in Repo.list()
                 if not config.get_for_repo(name, 'deactivated')]
+
+    @classmethod
+    def list_launched(cls):
+        """Returns a list of the launched (listed in menu) repository names."""
+        return [name for name in config.get('launched_repos', [])
+                if not config.get_for_repo(name, 'deactivated')]
+
 
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,
