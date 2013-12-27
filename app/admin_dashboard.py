@@ -88,15 +88,15 @@ class Handler(BaseHandler):
                 (name, Counter.get_count(repo, name))
                 for name in counter_names)
 
-        for kind in ['person', 'note']:
-            data[kind + '_original_domains'] = {}
-            for repo in all_repos:
-                counts = Counter.get_all_counts(repo, kind)
-                domain_count_pairs = [
-                    (name.split('=', 1)[1], counts[name])
-                    for name in counts if name.startswith('original_domain=')]
-                data[kind + '_original_domains'][repo] = sorted(
-                    domain_count_pairs, key=lambda pair: -pair[1])
+        data['sources'] = {}
+        for repo in all_repos:
+            counts_by_source = {}
+            for kind in ['person', 'note']:
+                for name, count in Counter.get_all_counts(repo, kind).items():
+                    if name.startswith('original_domain='):
+                        source = name.split('=', 1)[1]
+                        counts_by_source.setdefault(source, {})[kind] = count
+            data['sources'][repo] = sorted(counts_by_source.items())
 
         # Encode the data as JSON.
         json = simplejson.dumps(data, default=encode_date)
