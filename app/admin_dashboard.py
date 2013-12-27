@@ -43,7 +43,8 @@ def pack_json(json):
 
 
 class Handler(BaseHandler):
-    # This dashboard shows information for all repositories.
+    # If a repo is specified, this dashboard shows information about just that
+    # repo; otherwise it shows information for all repositories by default.
     repo_required = False
 
     def get(self):
@@ -56,6 +57,8 @@ class Handler(BaseHandler):
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
         all_repos = sorted(Repo.list())
         launched_repos = sorted(Repo.list_launched())
+        if self.repo:
+            all_repos = launched_repos = [self.repo]
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
