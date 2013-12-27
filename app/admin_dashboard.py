@@ -46,6 +46,8 @@ class Handler(BaseHandler):
     # If a repo is specified, this dashboard shows information about just that
     # repo; otherwise it shows information for all repositories by default.
     repo_required = False
+    # Show stats even for deactivated repositories.
+    ignore_deactivation = True
 
     def get(self):
         # Determine the time range to display.  We currently show the last
