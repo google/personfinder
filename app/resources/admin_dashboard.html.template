@@ -55,7 +55,7 @@ function draw_chart() {
 }
 
 function show_counts(element) {
-  var repos = {{all_repos_js|safe}};
+  var repos = {{active_repos_js|safe}};
   var rows = [
     '<th>Repository</th>',
     '<th>Persons</th>',
@@ -98,7 +98,7 @@ function show_counts(element) {
 }
 
 function show_sources(element) {
-  var repos = {{all_repos_js|safe}};
+  var repos = {{active_repos_js|safe}};
   var html = '<table class="counts">';
   for (var i = 0; i < repos.length; i++) {
     var counts = DATA.sources[repos[i]] || {};
@@ -113,11 +113,13 @@ function show_sources(element) {
     for (var j = 0; j < counts.length; j++) {
       var persons = counts[j][1].person || 0;
       var notes = counts[j][1].note || 0;
+      var percent_persons = (100*persons/total_persons).toFixed(1) + '%';
+      var percent_notes = (100*notes/total_notes).toFixed(1) + '%';
       html += '<tr><td>' + counts[j][0] + '</td>';
-      html += '<td>' + persons + '</td>';
-      html += '<td>' + (100*persons/total_persons).toFixed(1) + '%</td>';
-      html += '<td>' + notes + '</td>';
-      html += '<td>' + (100*notes/total_notes).toFixed(1) + '%</td></tr>';
+      html += '<td>' + (persons || '') + '</td>';
+      html += '<td>' + (persons ? percent_persons : '') + '</td>';
+      html += '<td>' + (notes || '') + '</td>';
+      html += '<td>' + (notes ? percent_notes : '') + '</td></tr>';
     }
     html += '<tr><td colspan="2" style="border: none">&nbsp;</td></tr>';
   }

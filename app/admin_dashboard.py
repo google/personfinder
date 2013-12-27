@@ -57,10 +57,10 @@ class Handler(BaseHandler):
 
         # Gather the data into a table, with a column for each repository.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
-        all_repos = sorted(Repo.list())
+        active_repos = sorted(Repo.list_active())
         launched_repos = sorted(Repo.list_launched())
         if self.repo:
-            all_repos = launched_repos = [self.repo]
+            active_repos = launched_repos = [self.repo]
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
@@ -85,13 +85,13 @@ class Handler(BaseHandler):
         counter_names += ['note.last_known_location', 'note.linked_person']
         counter_names += ['note.status=' + status
                           for status in [''] + pfif.NOTE_STATUS_VALUES]
-        for repo in all_repos:
+        for repo in active_repos:
             data['counts'][repo] = dict(
                 (name, Counter.get_count(repo, name))
                 for name in counter_names)
 
         data['sources'] = {}
-        for repo in all_repos:
+        for repo in active_repos:
             counts_by_source = {}
             for kind in ['person', 'note']:
                 for name, count in Counter.get_all_counts(repo, kind).items():
@@ -110,4 +110,4 @@ class Handler(BaseHandler):
         self.render('admin_dashboard.html',
                     data_js=pack_json(json),
                     launched_repos_js=simplejson.dumps(launched_repos),
-                    all_repos_js=simplejson.dumps(all_repos))
+                    active_repos_js=simplejson.dumps(active_repos))
