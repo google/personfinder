@@ -856,6 +856,7 @@ class BaseHandler(webapp.RequestHandler):
             return self.error(404, message_html=html)
 
         # If this repository has been deactivated, terminate with a message.
+        # The ignore_deactivation flag is for admin pages that bypass this.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
             self.env.robots_ok = True

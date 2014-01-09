@@ -48,7 +48,7 @@ def setup_repos():
             Repo(key_name='japan'),
             Repo(key_name='pakistan')])
     # Set some repositories active so they show on the main page.
-    config.set(active_repos=['japan', 'haiti'])
+    config.set(launched_repos=['japan', 'haiti'])
 
 def setup_configs():
     """Installs configuration settings used for testing by server_tests."""
