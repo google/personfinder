@@ -35,7 +35,7 @@ def get_latest_entry_date(entities):
 
 def get_latest_repo_updated_date(repos):
     dates = [config.get_for_repo(repo, 'updated_date') for repo in repos]
-    return max(dates + [None]) or utils.get_utcnow()
+    return dates and max(dates) or utils.get_utcnow()
 
 def make_hidden_notes_blank(notes):
     for note in notes:
