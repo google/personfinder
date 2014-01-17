@@ -144,6 +144,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            已選取 %(dup_count)s 個記錄\n"
+"          "
 
 #, python-format
 msgid ""
@@ -151,6 +154,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        與「%(full_name)s」類似的記錄\n"
+"      "
 
 #, python-format
 msgid ""
@@ -158,6 +164,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        「 %(query)s」的搜尋結果\n"
+"      "
 
 #, python-format
 msgid ""
@@ -253,6 +262,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      找不到與「%(query)s」相符的搜尋結果。\n"
+"    "
 
 #, python-format
 msgid ""
@@ -276,6 +288,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      記錄有效期已延長至 %(expiry_date)s。\n"
+"    "
 
 msgid ""
 "\n"
@@ -567,10 +582,10 @@ msgid ""
 " still be a part of the record, but will require an extra click to view "
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
-msgstr ""
+msgstr "將這個備註標記為垃圾郵件，將會使該備註預設為隱藏。該備註仍會是記錄的一部分，但需要現按一下才能查看備註的內容。使用者亦可以移除這個備註的垃圾郵件標記。"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "移除這個備註的垃圾郵件標記，可以使該備註預設為顯示。"
 
 msgid "CSV file"
 msgstr "CSV 檔案"
@@ -648,7 +663,7 @@ msgstr "這個人在其他網站上有個人資料頁面嗎？"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "下載%(begin_link)s這個 Excel 範本%(end_link)s並新增列"
 
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下載聲音"
@@ -822,7 +837,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有這個人的相片，請上載相片或輸入相片網址。"
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "於 Excel 內使用 [檔案] > [另存新檔…]，並以 CSV 格式 (.csv) 儲存"
 
 msgid "Incorrect.  Try again."
 msgstr "錯誤，請再試一次。"
@@ -849,7 +864,7 @@ msgid "Mark records as duplicate"
 msgstr "將記錄標示為重複項目"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "將已選取的記錄標示為重複"
 
 msgid "Message (required)"
 msgstr "訊息 (必填)"
@@ -916,7 +931,7 @@ msgstr "沒有這類授權實體。"
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
+msgstr "無權發佈帶有「我收到消息指此人已經死亡」狀態的備註。"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "您未獲授權發佈狀態為「believed_dead」的註解。"
@@ -931,7 +946,7 @@ msgid "Note text"
 msgstr "註解文字"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "可能重複的記錄之注意事項"
 
 msgid "Notes for this person"
 msgstr "這位失蹤人士的相關註解"
@@ -963,7 +978,7 @@ msgid "Original site name"
 msgstr "原始網站名稱"
 
 msgid "Other website"
-msgstr ""
+msgstr "其他網站"
 
 #, fuzzy
 msgid ""
@@ -1025,7 +1040,7 @@ msgid "Possible duplicates"
 msgstr "可能的重複項目"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "發現可能重複的記錄。"
 
 msgid "Postal or zip code"
 msgstr "郵遞區號"
@@ -1106,7 +1121,7 @@ msgid "Show sensitive information"
 msgstr "顯示機密資料"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "顯示將這些內容標記為重複內容的使用者"
 
 msgid "Sign in"
 msgstr "登入"
@@ -1323,13 +1338,13 @@ msgid "Upload"
 msgstr "上載"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "上載 CSV 格式的筆記"
 
 msgid "Upload person records in CSV format"
-msgstr ""
+msgstr "上載 CSV 格式的個人記錄"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "上載您在下方的 CSV 檔案"
 
 msgid "View the record"
 msgstr "檢視記錄"

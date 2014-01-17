@@ -1,0 +1,1592 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Kanggo njamin catetan mung dipateni utawa diaktifake karo idin penulis "
+"laporan, pesen konfirmasi bakal dikirim menyang penulis laporan. Yen "
+"sampeyan panulise, priksa email sampeyan sabanjure ngeklik tombol ing "
+"ngisor iki.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kagem %(author_name)s, \n"
+"\n"
+"Sawijining pangguna wis dijaluk kanggo ngaktifake cathetan ing laporan "
+"kanggo \"%(full_name)s\". \n"
+"\n"
+"Alamat email sampeyan dichatet minangka penulis laporan iki. Kanggo "
+"ngaktifake cathetan kanggo rekaman iki, bukak tautan iki sajrone 3 dina:"
+" \n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kagem %(author_name)s, \n"
+"\n"
+"Sawijning pangguna wis njaluk sampeyan kanggo mateni cathetan ing laporan"
+" kanggo \"%(full_name)s\". \n"
+"\n"
+"Alamat email sampeyan dichatet minangka penulis laporan iki. Kanggo "
+"mateni cathetan kanggo laporan iki, bukak tautan iki sajrone 3 dina: \n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kagem %(author_name)s, \n"
+"Sampeyan  wis nulis cathetan ing laporan kanggo \" %(full_name)s \". "
+"Kanggo nerbitake cathetan sampeyan, bukak tautan iki sajrone 3 dina: \n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Pepeling: laporan iki bakal kedaluwarsa ing kurang "
+"saka %(expiration_days)s dina.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Pepeling: laporan iki bakal kedaluwarsa ing kurang "
+"saka sadina.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s laporan sing dipilih\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Laporan sing padha karo: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Asil Tlusuran kanggo: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Sampeyan yakin pengin mbusak laporan kanggo \"%(full_name)s \"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Sampeyan yakin pengin mateni cathetan ing \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Sampeyan yakin pengin mateni cathetan ing laporane "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Sampeyan yakin pengin ngaktifake cathetan ing \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Sampeyan yakin pengin nambah wektu  kedaluwarsa kanggo laporan "
+"\"%(full_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Konfirmasi cathetan sampeyan\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Yen sampeyan nerusake kanggo mbusak, laporan iki ora bakal bisa "
+"ditlusuri utawa dideleng maneh ing situs iki.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Yen sampeyan pengin mbusak kanthi permanen, hubungi sumber asline. "
+"Sampeyan bisa ndeleng laporan asline ing %(begin_tag)s %(source_name)s "
+"%(end_tag)s .\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Ora ana asil kanggo: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      URL sing sampeyan ngetik ora katon kaya URL profil %(website)s sing"
+" valid. Bukak kaca profil wong iki ing %(website)s , banjur salin lan "
+"tempel URL-e ing kene.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Laporan iki wis ditambah wektu kedaluwarsane dadi %(expiry_date)s ."
+"\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Laporan iki salinan laporan saka sumber liyane. Sampeyan bisa "
+"ngapus laporan iki, nanging elinga kita bisa uga nampa salinan iki maneh "
+"saka sumber asline.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Kanggo njamin catetan mung dipateni utawa diaktifake karo idin "
+"panulis cathetan, pesen konfirmasi bakal dikirim menyang panulis "
+"cathetan. Yen sampeyan panulise, priksa email sampeyan sabanjure ngeklik "
+"tombol ing ngisor iki.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Laporan iki bakal isih bisa didheleng ing situs iki, nanging ora ana "
+"sing bisa ngirim cathetan ing laporane.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Kanggo ngirim posting sampeyan, ketik alamat email ing ngisor iki, "
+"banjur klik tautan konfirmasi sing bakal sampeyan tampa.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Sawijining pangguna wis mbusak laporan kanggo \"%(full_name)s\" ing "
+"%(site_url)s. Kita ngandani sampeyan babahan pambusakan amarga email "
+"sampeyan dichatet minangka penulis cathetan laporan iki.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Sawijining pangguna wis mbusak laporan kanggo \"%(full_name)s\" ing "
+"%(site_url)s. Kita ngandani sampeyan babahan pambusakan amarga email "
+"sampeyan dichatet minangka penulis laporan iki.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Sawise %(days_until_deletion)s dina, laporan bakal dibusak permanen.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"CATHETAN: Yen sampeyan yakin laporan iki ora sengaja dibusak, sampeyan "
+"bisa mulihake dening ngeklik tautan iki ing %(days_until_deletion)s dina:"
+" \n"
+"\n"
+"%(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Cathetan saiki dipateni ing laporan kanggo \"%(full_name)s\". Kanggo "
+"ndeleng laporan iki, bukak tautan iki: \n"
+"\n"
+"%(record_url)s \n"
+"\n"
+"Kita ngandani sampeyan amarga alamat email sampeyan gegandhengan karo "
+"laporan wong iki utawa cathetan ing laporan.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Cathetan saiki diaktifake ing laporan kanggo \"%(full_name)s\". Kanggo "
+"ndeleng laporan iki, bukak tautan iki: \n"
+"\n"
+"%(record_url)s \n"
+"\n"
+"Kita ngandani sampeyan amarga alamat email sampeyan gegandhengan karo "
+"laporan wong iki utawa cathetan ing laporan.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Penulis laporan kanggo \"%(full_name)s\" (sing sadurunge dibusak). Kanggo"
+" ndeleng laporan iki, bukak tautan iki: %(record_url)s Kita ngandani "
+"sampeyan amarga alamat email sampeyan gegandhengan karo laporan wong iki "
+"utawa cathetan ing laporan.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Ana cathetan anyar ing laporan kanggo \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Sampeyan wis langganan cathetan ing \"%(full_name)s\". \n"
+"\n"
+"Sampeyan bisa ndeleng laporan iki ing \n"
+"\n"
+"%(view_url)s \n"
+"\n"
+"Kanggo batal langganan, bukak tautan iki: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(Klik kanggo mbukak)"
+
+msgid "(unknown)"
+msgstr "(ora dingerteni)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Pesen kanggo wong iki utawa wong liya sing nggoleki wong iki"
+
+msgid "A new API key has been created successfully."
+msgstr "Tombol API sing anyar wis digawe."
+
+msgid "API Key Management"
+msgstr "Manajemen Kunci API"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Kira-kira 1 sasi (30 dina) saka saiki"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Kira-kira 1 taun (360 dina) saka saiki"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Kira-kira 2 wulan (60 dina) saka saiki"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Kira-kira 3 wulan (90 dina) saka saiki"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Kira-kira 6 sasi (180 dina) saka saiki"
+
+msgid "About Google Person Finder"
+msgstr "Babagan Google Person Finder"
+
+msgid "About you (required)"
+msgstr "Babagan sampeyan (wajib)"
+
+msgid "Administration"
+msgstr "Administrasi"
+
+msgid "Age"
+msgstr "Umur"
+
+msgid "Alternate family names"
+msgstr "Jeneng kulawarga alternatif"
+
+msgid "Alternate given names"
+msgstr "Jeneng timur alternatif"
+
+msgid "Alternate names"
+msgstr "Jeneng alternatif"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Sampeyan yakin cathetan iki ora dudu spam?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Sampeyan yakin pengin nandhani cathetan iki minangka spam?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Sampeyan yakin pengin mulihake laporan iki saka pambusakan?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Feed Atom nganyari babagan wong iki"
+
+msgid "Author's e-mail address"
+msgstr "Alamat e-mail penulis"
+
+msgid "Author's name"
+msgstr "Jeneng penulis"
+
+msgid "Author's phone number"
+msgstr "Nomer telpon penulis"
+
+msgid "Authorization key"
+msgstr "Kunci wewenang"
+
+msgid "Back to results list"
+msgstr "Balik menyang dhaptar asil"
+
+msgid "Back to start"
+msgstr "Balik kanggo miwiti"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Kanthi nandhani cathetan iki minangka spam, sampeyan bakal ndhelikake "
+"cathetan kanthi gawan. Cathetan iki bakal isih dadi bagean saka rekaman, "
+"nanging bakal butuh klik tambahan kanggo delendeleng isi cathetan. "
+"Pangguna bakal bisa uga mbusak tandha spam saka cathetan iki."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Kanthi batal nandhani cathetan iki minangka spam, sampeyan bakal "
+"ngatonake cathetan kanthi gawan."
+
+msgid "CSV file"
+msgstr "File CSV"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Ora bisa nemu cathetan karo id %(id)s"
+
+msgid "Cancel"
+msgstr "Batalna"
+
+msgid "City"
+msgstr "Kutha"
+
+msgid "Click here to view results."
+msgstr "Klik ing kene kanggo ndeleng asil."
+
+msgid "Close window"
+msgstr "Tutup Jendhela"
+
+msgid "Compare these records"
+msgstr "Bandingake laporan-laporan"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Salin lan tempel kode HTML ing ngisor iki kanggo nyelehake alat iki ing "
+"situs sampeyan"
+
+msgid "Create a new API key"
+msgstr "Gawe kunci API sing anyar"
+
+msgid "Create a new record"
+msgstr "Gawe laporan anyar"
+
+msgid "Create a new record for"
+msgstr "Gawe laporan anyar kanggo"
+
+msgid "Create a new record for a missing person"
+msgstr "Gawe laporan anyar kanggo wong sing ora ana"
+
+msgid "Crisis events"
+msgstr "Acara penting"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Saiki lagi nlusuri babagan %(num_people)s laporan."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Tanggal bisa ora ing mbesuk-mbesuk. Mangga balik lan baleni maneh."
+
+msgid "Date of birth"
+msgstr "Tanggal lair"
+
+msgid "Delete this record"
+msgstr "Busak laporan iki"
+
+msgid "Describe how to identify this person."
+msgstr "Gambarke cara ngenali wong iki."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Gambarke ciri-ciri fisik wong iki."
+
+msgid "Description"
+msgstr "Gambaran"
+
+msgid "Desktop version"
+msgstr "Versi desktop"
+
+msgid "Developers"
+msgstr "Pangembang"
+
+msgid "Disable notes on this record"
+msgstr "Pateni cathetan ing laporan iki"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Apa wong iki duwe kaca profil ing situs web liyane?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Undhuh %(begin_link)s Template Excel iki %(end_link)s banjur tambah baris"
+" ing jerone"
+
+msgid "Download the sound as MP3"
+msgstr "Undhuh swara minangka MP3"
+
+msgid "E-mail"
+msgstr "Email"
+
+msgid "E-mail address"
+msgstr "Alamat email"
+
+msgid "Edit"
+msgstr "Owahi"
+
+msgid "Embedding the Application"
+msgstr "Sematke Aplikasi iki"
+
+msgid "Enable notes on this record"
+msgstr "Aktifake cathetan ing laporan iki"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Ketik minangka YYYY-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Ketik jeneng timur lan jeneng kulawarga wong iku."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Ketik jeneng wong iku utawa sebagean saka jenenge."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Ketik jeneng wong, sabagean saka jenenge, nomer telpon utawa HP-ne."
+
+msgid "Enter the person's name."
+msgstr "Ketik jeneng wong iku."
+
+msgid "Expiry"
+msgstr "Kedaluwarsa"
+
+msgid "Expiry date of this record"
+msgstr "Tanggal kedaluwarsa laporan iki"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Tambah tanggal kedaluwarsa dening %(extension_days)s dina"
+
+msgid "Family name"
+msgstr "Jeneng kaluwarga"
+
+msgid "Feed of updates about this person"
+msgstr "Feed nganyari babagan wong iki"
+
+msgid "Follow this link to create a new record"
+msgstr "Bukak tautan iki kanggo nggawe laporan anyar"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Kanggo telpon saliyane HP, gunakake layanan 171 sing disedhiyani dening "
+"NTT."
+
+msgid "Full name"
+msgstr "Jeneng lengkap"
+
+msgid "Get a new challenge"
+msgstr "Jaluk tantangan anyar"
+
+msgid "Get a visual challenge"
+msgstr "Jaluk tantangan visual"
+
+msgid "Get an audio challenge"
+msgstr "Jaluk tantangan audio"
+
+msgid "Given name"
+msgstr "Jeneng timur"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Sampeyan wis tau ngomong langsung karo wong iki SABANJURE musibah? (Wajib)"
+
+msgid "Help"
+msgstr "Pitulungan"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Iki %(begin_tag)s a sampel file CSV %(end_tag)s sampeyan uga bisa ngowahi"
+" lan ngunggah"
+
+msgid "Hide Map"
+msgstr "Dhelikake Peta"
+
+msgid "Hide note"
+msgstr "Dhelikake cathetan"
+
+msgid "Home Address"
+msgstr "Alamat Omah"
+
+msgid "Home address"
+msgstr "Alamat omah"
+
+msgid "Home country"
+msgstr "Negara asal"
+
+msgid "How can this person be reached now?"
+msgstr "Piye cara ngubungi wong iki saiki?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Piye carane manawa wong liya sing kesengsem karo wong iki bisa ngubungi "
+"sampeyan"
+
+msgid "I am seeking information"
+msgstr "Aku lagi nggoleki informasi"
+
+msgid "I am this person"
+msgstr "Aku wong iki"
+
+msgid "I do not want any more updates on this record."
+msgstr "Aku ora gelem nganyari apa wae ing laporan iki."
+
+msgid "I do not want my information online anymore."
+msgstr "Aku ora pengin informasiku online maneh."
+
+msgid "I have information about someone"
+msgstr "Aku duwe informasi babagan sawijining wong"
+
+msgid "I have reason to think this person is missing"
+msgstr "Aku duwe alesan kanggo mikir manawa wong iki ilang"
+
+msgid "I have received information that this person is alive"
+msgstr "Aku wis nampa informasi manawa wong iki isih urip"
+
+msgid "I have received information that this person is dead"
+msgstr "Aku wis nampa informasi manawa wong iki wis meninggal"
+
+msgid "I have received spam due to this note."
+msgstr "Aku nampa spam amarga cathetan iki."
+
+msgid "I have received spam."
+msgstr "Aku nampa spam."
+
+msgid "I prefer not to specify."
+msgstr "Aku milih ora nulis."
+
+msgid "I'm looking for someone"
+msgstr "Aku lagi nggoleki sawijining wong"
+
+msgid "Identify who you are looking for"
+msgstr "Kenali wong sing sampeyan goleki"
+
+msgid "Identify who you have information about"
+msgstr "Kenali informasi wong sing sampeyan goleki"
+
+msgid "Identifying information"
+msgstr "Ngenali informasi"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Yen ora ana laporan sing cocog karo wong sing pengin sampeyan goleki, "
+"sampeyan bisa klik ing ngisor iki kanggo nggawe laporan anyar."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Yen sampeyan penulis cathetan iki, priksa email kanggo nemu tautan kanggo"
+" konfirmasi manawa sampeyan pengin mateni cathetan ing laporan iki. Yen "
+"ora, enteni penulis kanggo ngonfirmasi panjaluk sampeyan."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Yen sampeyan penulis cathetan iki, priksa email kanggo nemu tautan kanggo"
+" konfirmasi manawa sampeyan pengin ngaktifake cathetan ing laporan iki. "
+"Yen ora, enteni penulis kanggo ngonfirmasi panjaluk sampeyan."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Yen sampeyan duwe foto wong iki, unggah utawa ketik alamat URL-e."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "Ing Excel, enggo File > Save as... banjur simpen ing Format CSV (.csv)"
+
+msgid "Incorrect.  Try again."
+msgstr "Salah. Coba maneh."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Alamat email ora valid. Coba maneh."
+
+msgid "Language selection"
+msgstr "Pilihan basa"
+
+msgid "Last known location"
+msgstr "Lokasi sing pungkasan dingerteni"
+
+msgid "Link"
+msgstr "Tautan"
+
+msgid "Link to profile page"
+msgstr "Tautan menyang kaca profil"
+
+msgid "List API keys"
+msgstr "Dhaptarake kunci API"
+
+msgid "Mark records as duplicate"
+msgstr "Tandhani laporan minangka duplikat"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Centhang laporan sing dipilih minangka duplikat"
+
+msgid "Message (required)"
+msgstr "Pesen (wajib)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Pesen wajib diisi. Mangga mbalik banjur coba maneh."
+
+msgid "Missing person's current contact information"
+msgstr "Informasi kontak wong sing ilang"
+
+msgid "Missing person's current e-mail address"
+msgstr "Alamat email duweke wong sing ilang"
+
+msgid "Missing person's current phone number"
+msgstr "Nomer telpon duweke wong sing ilang"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Informasi liyane kanggo pangembang gawe aiki bisa ditemokake "
+"%(developers_link_html)s ing kene %(link_end_html)s ."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Luwih saka 100 asil; mung nuduhake 100 asil paling ngarep. Coba ketik "
+"jenenge luwih akeh"
+
+msgid "Name"
+msgstr "Jeneng"
+
+msgid "Name (required)"
+msgstr "Jeneng (wajib)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Jeneng wajib ditulis. Mangga mbalik banjur baleni maneh."
+
+msgid "Neighborhood"
+msgstr "Tangga"
+
+msgid "No"
+msgstr "Ora"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Ora ana email penulis kanggo %(id)s laporan."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "Ora ana pesen sing kadhaptar ing layanan papan pesen panggawa."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Ora ana cathetan karo ID: %(id_str)s ."
+
+msgid "No notes have been posted"
+msgstr "Ora ana cathetan sing dikirim"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Ora ana wong karo ID: %(id_str)s ."
+
+msgid "No such Authorization entity."
+msgstr "Ora ana entitas wewenang."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Ora duwe wewenang kanggo ngirim cathetan posting karo status \"Aku wis "
+"nampa informasi manawa wong iki wis meninggal\"."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+"Ora duwe wewenang kanggo ngirim cathetan posting karo status "
+"\"dinuga_meninggal\"."
+
+msgid "Not spam"
+msgstr "Dudu spam"
+
+msgid "Note author"
+msgstr "Penulis cathetan"
+
+msgid "Note text"
+msgstr "Teks cathetan"
+
+msgid "Notes for a possible duplicate"
+msgstr "Cathetan kanggo kemungkinan duplikat"
+
+msgid "Notes for this person"
+msgstr "Cathetan kanggo wong iki"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Jumlah kisaran( contone 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Utawa tambah menyang situs sampeyan minangka %(gadget_link_html)s Google "
+"Gadget %(link_end_html)s ."
+
+msgid "Original URL"
+msgstr "URL Asli"
+
+msgid "Original author's name"
+msgstr "Jeneng penulis asli"
+
+msgid "Original posting date"
+msgstr "Tanggal asli ngirim posting"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Tanggal Posting asli ora ing format YYYY-MM-DD, utawa tanggal sing ora "
+"valid. Mangga balik banjur coba maneh."
+
+msgid "Original site name"
+msgstr "Jeneng situs asli"
+
+msgid "Other website"
+msgstr "Situs web liyane"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"ELINGA: Ing situs Person Finder sing aktif, kabeh data sing dilebokake "
+"kasedhiya kanggo publik lan bisa dideleng karo kabeh wong. Google ora "
+"ndleng utawa veirifikasi akurasi data iki."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "Telpon"
+
+msgid "Phone number"
+msgstr "Nomer telpon"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Foto sing diunggah ngenggo format sing ora dikenali. Mangga balik banjur "
+"coba maneh."
+
+msgid "Physical characteristics"
+msgstr "Ciri-ciri fisik"
+
+msgid "Play the sound again"
+msgstr "Puter swara maneh"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Priksa manawa sampeyan wis ngubungi wong iki sabanjure gempa bumi, utawa "
+"karo genti kolom \"Status wong iki\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Mangga priksa manawa iku wis cocog karo wong sing pengin sampeyan "
+"laporake."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Konfirmasi alamat email sampeyan kanggo langganan yen ana anyari"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Tulis alamat email sampeyan kanggo langganan yen ana anyari"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Terangke ngapa sampeyan ngira iku wong sing padha"
+
+msgid "Please fill in all the required fields."
+msgstr "Isi kabeh kolom sing wajib."
+
+msgid "Please fill in your email address."
+msgstr "Isi alamat email sampeyan."
+
+msgid "Please provide an valid email address."
+msgstr "Sedhiyani alamat email sing valid."
+
+msgid "Possible duplicates"
+msgstr "Kemungkinan duplikat"
+
+msgid "Possible duplicates found."
+msgstr "Kemungkinan duplikat ditemokake"
+
+msgid "Postal or zip code"
+msgstr "Kode pos"
+
+msgid "Posted by"
+msgstr "Dikirim dening"
+
+msgid "Proceed"
+msgstr "Terusake"
+
+msgid "Profile Pages"
+msgstr "Kaca Profil"
+
+msgid "Profile page"
+msgstr "Kaca profil"
+
+msgid "Provide information"
+msgstr "Sedhiyani informasi"
+
+msgid "Provide information about this person"
+msgstr "Sedhiyani informasi babagan wong iki"
+
+msgid "Provided by:"
+msgstr "Disedhiyani dening:"
+
+msgid "Province or state"
+msgstr "Provinsi utawa negara bagean"
+
+msgid "Reason for deletion:"
+msgstr "Alesan pambusakan:"
+
+msgid "Reason for disabling notes:"
+msgstr "Alesan kanggo mateni cathetan:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Laporan sing jeneg lan alamate cocog \"%(query)s\""
+
+msgid "Remove"
+msgstr "Busak"
+
+msgid "Report spam"
+msgstr "Laporake spam"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Balik menyang laporan kanggo %(full_name)s ."
+
+msgid "Reveal note"
+msgstr "Tuduhake cathetan"
+
+msgid "Save this record"
+msgstr "Simpen laporan iki"
+
+msgid "Search for this person"
+msgstr "Goleki wong iki"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Waca %(begin_tag)s ing Wiki %(end_tag)s kanggo pandhuan liyane"
+
+msgid "Select a website to add a profile page..."
+msgstr "Pilih situs web kanggo nambah kaca profil..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Pilih nganti 3 laporan kanggo ditandhani minangka duplikat:"
+
+msgid "Send email"
+msgstr "Kirim email"
+
+msgid "Sex"
+msgstr "Jinis kelamin"
+
+msgid "Show Map"
+msgstr "Tampilake Peta"
+
+msgid "Show sensitive information"
+msgstr "Tampilake informasi sensitif"
+
+msgid "Show who marked these duplicates"
+msgstr "Tampilake wong sing nandhani iki duplikasi"
+
+msgid "Sign in"
+msgstr "Mlebu"
+
+msgid "Sign out"
+msgstr "Metu"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Ana sing wis nampa informasi manawa wong iki isih urip"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Ana sing wis nampa informasi manawa wong iki wis meninggal"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Ana sing nglaporake manawa wong iki ilang"
+
+msgid "Someone is seeking information about this person"
+msgstr "Ana sing nggoleki informasi babagan wong iki"
+
+msgid "Source of this record"
+msgstr "Sumber laporan iki"
+
+msgid "Source of this record (required)"
+msgstr "Sumber laporan iki (wajib)"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status of this person"
+msgstr "Status wong iki"
+
+msgid "Street name"
+msgstr "Jeneng dalan"
+
+msgid "Street name only, no number"
+msgstr "Mung jeneng dalan, ora perlu nomer"
+
+msgid "Subscribe"
+msgstr "Langganan:"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Langganan kanggo nganyari babagan %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Langganan kanggo nganyari babagan wong iki"
+
+msgid "Switch to address"
+msgstr "Genti dadi alamat"
+
+msgid "Switch to lat/long"
+msgstr "Ganti dadi Buj/Lint"
+
+msgid "Tell us the status of this person"
+msgstr "Kandhani kita status wong iki"
+
+msgid "Terms of Service"
+msgstr "Katentuan Layanan"
+
+msgid "The API key has been updated successfully."
+msgstr "Kunci API wis dianyari."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Jeneng Timur lan Janeng kaluwarga kudu ditulis. Mangga mbalik banjur coba"
+" maneh."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Kudu ana jeneng penulis asli. Mangga mbalik banjur coba maneh."
+
+msgid "The author has disabled notes on this record."
+msgstr "Penulis wis mateni cathetan ing laporan iki."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Penulis wis mateni anyari status ing laporan iki."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Gambar sing diwenehi kegedhen. Unggah sing luwih cilik."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Alesan cathetan iki ditandhani minangka spam:"
+
+msgid "The record cannot be extended."
+msgstr "Wektu kedhaluwarsa laporan ora bisa ditambah."
+
+msgid "The record has been deleted."
+msgstr "Laporan iki wis dibusak."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Status sing sampeyan pilih nuduhake manawa sampeyan iku wong iki. Yen "
+"bener, monggo pilih 'Ya' kanggo nunjukake manawa sampeyan wis ngubungi "
+"wong iki."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Token %(token)s ora valid"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Token %(token)s ora valid."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Ana %(num_results)s laporan sing wis ana sing jenenge podho."
+
+msgid "There are some existing records with similar names."
+msgstr "Ana sawetara laporan sing wis ana sing jenenge podho."
+
+msgid "There is one existing record with a similar name."
+msgstr "Ana siji laporan sing wis ana sing jenenge podho."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Ana masalah pas mroses gambar. Coba gambar liyane."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Ana kesalahan mroses panjaluk sampeyan. Nuwun sewu amarga keadean iki. "
+"Administrator kita bakal mriksa sumber masalahe, nanging priksa manawa "
+"format panjaluk sampeyan wis bener."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Gadget iki disedhiyakake ngenggo %(apache_link_html)s lisensi Apache "
+"2.0%(link_end_html)s ."
+
+msgid "This is a new record."
+msgstr "Iki laporan anyar."
+
+msgid "This link is invalid."
+msgstr "Tautan iki ora valid."
+
+msgid "This note has been marked as spam."
+msgstr "Cathetan iki wis ditandhani minangka spam."
+
+msgid "This note is inappropriate."
+msgstr "Cathetan iki ora layak."
+
+msgid "This note is incorrect or untrue."
+msgstr "Catethan iki salah/ora bener."
+
+msgid "This note is spam."
+msgstr "Catethan iki spam."
+
+msgid "This person has been in contact with someone"
+msgstr "Wong iki wis dihubungi sawijining wong"
+
+msgid "This person has posted a message"
+msgstr "Wong iki wis ngirim pesen"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Entri wong iki ora ana utawa wis dibusak."
+
+msgid "This record has served its purpose."
+msgstr "Laporan iki wis berguna."
+
+msgid "This record is a duplicate of"
+msgstr "Laporan iki duplikat saka"
+
+msgid "This record is copied from another source."
+msgstr "Laporan iki disalin saka sumber liyane."
+
+msgid "This record is inappropriate."
+msgstr "Laporan iki ora layak."
+
+msgid "This record is spam."
+msgstr "Laporan iki spam."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Gudang iki lagi ing mode uji. Nalika mode uji gek dilakonake, laporan "
+"sing luwih suwi saka 6 jam bakal dibusak."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Kanggo wenehi fotokanggo cathetan iki, unggah file utawa tulis URL-e."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Kanggo mbusak data, bukak Person Finder saka desktop."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Kanggo batal langganan, klik tautan iki"
+
+msgid "To view or add information, select a name below."
+msgstr "Kanggo ndeleng utawa nambah informasi, pilih jeneng ing ngisor iki."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Ketik alamat utawa bukak peta ing ngisor iki banjur tunjuk lokasi kanthi "
+"ngeklik ing peta."
+
+msgid "Type an address."
+msgstr "Ketik alamat."
+
+msgid "Type the two words:"
+msgstr "Ketik loro tembung iki:"
+
+msgid "Type what you hear:"
+msgstr "Ketik apa sing sampeyan rungokake:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL laporan asli"
+
+msgid "Unspecified"
+msgstr "Ora ditemtokake"
+
+msgid "Update an existing key"
+msgstr "Anyari kunci sing wis ana"
+
+msgid "Upload"
+msgstr "Unggah"
+
+msgid "Upload notes in CSV format"
+msgstr "Unggah cathetan ing Format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Unggah cathetan wong ing format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Unggah file CSV ing ngisor iki"
+
+msgid "View the record"
+msgstr "Deleng laporan"
+
+msgid "We have nothing matching your search."
+msgstr "Ora ana sing cocog kari tlusuran sampeyan."
+
+msgid "What is this person's name?"
+msgstr "Apa jeneng wong iki?"
+
+msgid "When should this record disappear?"
+msgstr "Kapan laporan iki bakal ilang?"
+
+msgid "Where did this information come from?"
+msgstr "Saka endi informasi iki?"
+
+msgid "Where is this person from?"
+msgstr "Saka endi wong iki?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Nalika mode uji ing aktif, laporan sing wis luwih saka 6 jam bakal "
+"dibusak ora preduli tanggal kedaluwarsane."
+
+msgid "Yes"
+msgstr "Ya"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Ya, takoni penulis rekaman kanggo mateni cathetan"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ya, takon penulis rekaman kanggo ngaktifake cathetan"
+
+msgid "Yes, delete the record"
+msgstr "Ya, busak laporan"
+
+msgid "Yes, disable notes on this record."
+msgstr "Ya, pateni cathetan ing laporan iki."
+
+msgid "Yes, extend the record"
+msgstr "Ya, tambah wektu kedaluwarsa laporan"
+
+msgid "Yes, restore this record"
+msgstr "Ya, pulihake laporan iki"
+
+msgid "Yes, these are the same person"
+msgstr "Ya, wong iku padha"
+
+msgid "Yes, update the note"
+msgstr "Ya, anyari cathetan"
+
+msgid "You are already subscribed. "
+msgstr "Sampeyan wis langganan. "
+
+msgid "You are already unsubscribed."
+msgstr "Sampeyan wis batal langganan."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"Sampeyan saiki mlebu minangka %(begin_span_tag)s %(email)s "
+"%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Sampeyan saiki mlebu minangka %(user_email)s ."
+
+msgid "You are not currently signed in."
+msgstr "Sampeyan ora mlebu"
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Sampeyan bisa %(begin_tag)s ndeleng laporan %(end_tag)s sadurunge mbusak."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Sampeyan bisa ndeleng laporan lengkape ing %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Sampeyan wis langganan."
+
+msgid "You have successfully unsubscribed."
+msgstr "Sampeyan wis batal langganan."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Sampeyan nampa kabar iki amarga sampeyan langganan anyari babahan wong "
+"ing ngisor iki:\n"
+
+msgid "Your e-mail address"
+msgstr "Alamat e-mail sampeyan"
+
+msgid "Your e-mail address:"
+msgstr "Alamat e-mail sampeyan:"
+
+msgid "Your email"
+msgstr "Email sampeyan"
+
+msgid "Your name"
+msgstr "Jeneng sampeyan"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Jeneng sampeyan kudu diisi ing bagean \"Babagan sampeyan\". Mangga mbalik"
+" banjur coba maneh."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Jeneng sampeyan kudu diisi ing bagean \"Sumber\". Mangga mbalik banjur "
+"coba maneh."
+
+msgid "Your phone number"
+msgstr "Nomer telpon sampeyan"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Panjaluk sampeyan wis diproses. Priksa kothak mlebu lan konfirmasi manawa"
+" sampeyan pengin ngirim cathetan sampeyan dening ngeklik URL sing "
+"disemat."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Person Finder] Konfirmasi cathetan sampeyan babagan \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] Kabar pambusakan kanggo \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Pateni cathetan kanggo \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Aktifake cathetan kanggo \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Person Finder] NGaktifake kabar cathetan kanggo \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Cathetan saiki dipateni kanggo \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] Cathetan saiki diaktifake kanggo \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] Rekam kabar pamulihan kanggo \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] Anyari status kanggo %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Person Finder] Sampeyan langganan karo anyari status kanggo %(full_name)s"
+
+msgid "female"
+msgstr "wadon"
+
+msgid "in test mode"
+msgstr "ing mode uji"
+
+msgid "male"
+msgstr "lanang"
+
+msgid "on"
+msgstr "urip"
+
+msgid "other"
+msgstr "liyane"
+
