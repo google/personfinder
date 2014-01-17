@@ -31,6 +31,7 @@ import const
 import django.utils.html
 import legacy_redirect
 import logging
+import model
 import pfif
 import resources
 import utils
@@ -192,11 +193,9 @@ def select_lang(request, config=None):
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
 
 def get_repo_options(request, lang):
-    """Returns a list of the names and titles of the active repositories."""
+    """Returns a list of the names and titles of the launched repositories."""
     options = []
-    for repo in config.get('active_repos') or []:
-        if config.get_for_repo(repo, 'deactivated'):
-            continue
+    for repo in model.Repo.list_launched():
         titles = config.get_for_repo(repo, 'repo_titles', {})
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
@@ -215,7 +214,6 @@ def get_language_options(request, config=None):
 
 def get_secret(name):
     """Gets a secret from the datastore by name, or returns None if missing."""
-    import model
     secret = model.Secret.get_by_key_name(name)
     if secret:
         return secret.secret

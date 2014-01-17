@@ -743,7 +743,12 @@ table.counts {
   border-collapse: collapse;
 }
 
+table.counts tr.head {
+  background: #cdf;
+}
+
 table.counts th, table.counts td {
+  min-width: 3em;
   padding: 4px 8px;
   border: 1px solid #aaa;
 }
