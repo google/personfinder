@@ -1,0 +1,1596 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Тэмдэглэлийг зөвхөн бичлэгийн зохиогчийн зөвшөөрөлтэйгээр идэвхжүүлэх "
+"буюу идэвхгүйжүүлэхийн тулд бичлэгийн зохиогч руу баталгаажуулах зурвас "
+"илгээгдэх болно.\n"
+"  Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа имэйлээ шалгана уу.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Эрхэм %(author_name)s,\n"
+"\n"
+"Хэрэглэгч \"%(full_name)s\"-н бичлэг дээр тэмдэглэлийг идэвхжүүлэх хүсэлт"
+" гаргасан.\n"
+"\n"
+"Таны имэйл хаяг энэ бичлэгийн зохиогчийнх гэж бүртгэгдсэн байна.  Энэ "
+"бичлэг дээр тэмдэглэлийг идэвхжүүлэхийн тулд дараах холбоосыг 3 өдрийн "
+"дотор дагах шаардлагатай:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Эрхэм %(author_name)s,\n"
+"\n"
+"Хэрэглэгч \"%(full_name)s\"-н бичлэг дээр тэмдэглэлийг идэвхгүйжүүлэх "
+"хүсэлт гаргасан.\n"
+"\n"
+"Таны имэйл хаяг энэ бичлэгийн зохиогчийнх гэж бүртгэгдсэн байна.  Энэ "
+"бичлэг дээр тэмдэглэлийг идэвхгүйжүүлэхийн тулд дараах холбоосыг 3 өдрийн"
+" дотор дагах шаардлагатай:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Эрхэм %(author_name)s,\n"
+"Та \"%(full_name)s\"-н бичлэг дээр тэмдэглэл орууллаа.  \n"
+"Өөрийн тэмдэглэлийг нийтлэхийн тулд дараах холбоосыг 3 өдрийн дотор дагах"
+" шаардлагатай:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Анхааруулга: энэ бичлэг %(expiration_days)s өдрийн "
+"дотор хугацаа нь дуусна.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Анхааруулга: энэ бичлэг нэг өдрийн дотор хугацаа нь "
+"дуусна.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s бичлэг сонгогдсон\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        %(full_name)s-тай төстэй бичлэгүүд\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Дараах хайлтын илэрцүүд: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\"-н бичлэгийг үнэхээр устгах уу?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\" дээрх тэмдэглэлүүдийг үнэхээр идэвхгүйжүүлэх "
+"үү?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\"-н бичлэгүүд дээрх тэмдэглэлүүдийг үнэхээр "
+"идэвхгүйжүүлэхийг хүсэж байна уу?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\" дээрх тэмдэглэлүүдийг үнэхээр идэвхжүүлэх үү?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\" бичлэгийн хугацааг үнэхээр сунгах уу?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Өөрийн тэмдэглэлийг баталгаажуулна уу\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Хэрэв та үргэлжлүүлэн устгавал,\n"
+"      энэ сайтан дээрээс энэ бичлэгийг хайх буюу харах боломжгүй болно.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Хэрэв та үүнийг бүрмөсөн устгахыг хүсвэл,\n"
+"      эх сурвалжтай нь холбоо барина уу.\n"
+"      Та эх бичлэгийг %(begin_tag)s%(source_name)s%(end_tag)s дээр харж "
+"болно.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      %(query)s хайлтад илэрц гарсангүй\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Таны оруулсан URL зөв %(website)s профайл URL биш бололтой.\n"
+"      Энэ хүний профайл хуудас руу %(website)s дээр очиж тус URL-г хуулан"
+" энд буулгана уу.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Бичлэгийн хугацааг %(expiry_date)s болгож сунгасан.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Энэ бичлэг нь өөр эхийн хуулбар бичлэг.\n"
+"      Та бичлэгийг эндээс устгаж болно,\n"
+"      гэхдээ бид дараа нь өөр хуулбарыг нь\n"
+"      эх сурвалжаас хүлээн авч болохыг анхаарна уу.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Тэмдэглэлийг зөвхөн бичлэгийн зохиогчийн зөвшөөрөлтэйгээр идэвхжүүлэх"
+" буюу идэвхгүйжүүлэхийн тулд бичлэгийн зохиогч руу баталгаажуулах зурвас "
+"илгээгдэх болно. Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа "
+"имэйлээ шалгана уу.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Бичлэг энэ сайтан дээр харагдсан хэвээр байх боловч хэн нэгэн дээр нь "
+"цаашид тэмдэглэл үлдээх боломжгүй болсон.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Өөрийн тэмдэглэлийг нийтлэхийн тулд имэйл хаягаа доор дахин оруулж "
+"хүлээн авах баталгаажуулалтын холбоосыг дагана уу.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Хэрэглэгч \"%(full_name)s\"-н бичлэгийг %(site_url)s дээрээс устгалаа.\n"
+"\n"
+"Таны имэйл хаяг энэ бичлэг дээрх тэмдэглэлийн зохиогчийнх гэж бүртгэгдсэн"
+" тул устгасан тухай бид танд мэдэгдэж байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Хэрэглэгч \"%(full_name)s\"-н бичлэгийг %(site_url)s дээрээс устгалаа.\n"
+"\n"
+"Таны имэйл хаяг энэ бичлэг дээрх тэмдэглэлийн зохиогчийнх гэж бүртгэгдсэн"
+" тул устгасан тухай бид танд мэдэгдэж байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"%(days_until_deletion)s өдрийн дараа бичлэг бүрмөсөн устгагдах болно.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"ТЭМДЭГЛЭЛ: Хэрэв та энэ бичлэгийг устгасан нь алдаа гэж үзэж байгаа бол "
+"дараах холбоосыг %(days_until_deletion)s өдрийн дотор дагаснаар сэргээх "
+"боломжтой:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\"-н бичлэг дээр одоо тэмдэглэлийг идэвхгүйжүүлсэн.  "
+"Бичлэгийг үзэхийн тулд дараах холбоосоор очно уу:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Таны имэйл хаяг бичлэг буюу бичлэг дээрх тэмдэглэлтэй холбогдсон учир бид"
+" танд мэдэгдэж байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\"-н бичлэг дээр одоо тэмдэглэлийг идэвхжүүлсэн.  "
+"Бичлэгийг үзэхийн тулд дараах холбоосоор очно уу:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Таны имэйл хаяг бичлэг буюу бичлэг дээрх тэмдэглэлтэй холбогдсон учир бид"
+" танд мэдэгдэж байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\"-н бичлэгийн зохиогч (өмнө нь бичлэгийг устгасан) "
+"бичлэгийг сэргээсэн.  Бичлэгийг үзэхийн тулд дараах холбоосоор очно уу:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Таны имэйл хаяг бичлэг буюу бичлэг дээрх тэмдэглэлтэй холбогдсон учир бид"
+" танд мэдэгдэж байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\"-н бичлэг дээр шинэ тэмдэглэл байна.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Та \"%(full_name)s\"-н тэмдэглэлүүдийн талаар мэдээлэл авахаар "
+"бүртгүүлсэн.\n"
+"\n"
+"Та энэ бичлэгийг \n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"дээрээс үзэж болно. Цуцлахын тулд дараах холбоосыг дагна уу: "
+"%(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(ил гаргахын тулд товшино уу)"
+
+msgid "(unknown)"
+msgstr "(тодорхойгүй)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Энэ хүн буюу энэ хүнийг хайж буй бусад хүмүүст зориулсан зурвас"
+
+msgid "A new API key has been created successfully."
+msgstr "Шинэ API түлхүүр амжилттай үүсгэгдлээ."
+
+msgid "API Key Management"
+msgstr "API Түлхүүрийн удирдлага"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Одоогоос 1 сар (30 өдөр) орчим"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Одоогоос 1 жил (360 өдөр) орчим"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Одоогоос 2 сар (60 өдөр) орчим"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Одоогоос 3 сар (90 өдөр) орчим"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Одоогоос 6 сар (180 өдөр) орчим"
+
+msgid "About Google Person Finder"
+msgstr "Google Хүн Хайгчийн тухай"
+
+msgid "About you (required)"
+msgstr "Таны тухай (шаардлагатай)"
+
+msgid "Administration"
+msgstr "Захиргаа"
+
+msgid "Age"
+msgstr "Нас"
+
+msgid "Alternate family names"
+msgstr "Гэр бүлийн өөр нэр"
+
+msgid "Alternate given names"
+msgstr "Өөрийн өөр нэр"
+
+msgid "Alternate names"
+msgstr "Өөр нэрс"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Та үүнийг спам биш гэдэгт итгэлтэй байна уу?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Та үүнийг спам биш гэж тэмдэглэх үү?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Та энэ бичлэгийг устгаснаа сэргээх үү?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Энэ хүний тухай шинэ мэдээллийн атом фийд"
+
+msgid "Author's e-mail address"
+msgstr "Зохиогчийн имэйл хаяг"
+
+msgid "Author's name"
+msgstr "Зохиогчийн нэр"
+
+msgid "Author's phone number"
+msgstr "Зохиогчийн утасны дугаар"
+
+msgid "Authorization key"
+msgstr "Эрхжүүлэлтийн түлхүүр"
+
+msgid "Back to results list"
+msgstr "Илэрцийн жагсаалт руу буцах"
+
+msgid "Back to start"
+msgstr "Эхлэл рүү буцах"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Энэ тэмдэглэлийг спам гэж тэмдэглэснээр үндсэн харагдац дээр нууцлах "
+"болно. Энэ бичлэгийн нэг хэсэг байх боловч тэмдэглэлийн контентыг харахын"
+" тулд дахин нэг удаа товших шаардлагатай. Хэрэглэгчид мөн энэ "
+"тэмдэглэлээс спам гэсэн тэмдгийг арилгах боломжтой."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Энэ тэмдэглэлийн спам тэмдгийг авснаар үндсэн харагдац дээр шууд харагдах"
+" болно."
+
+msgid "CSV file"
+msgstr "CSV файл"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "%(id)s id-тай тэмдэглэл олдсонгүй"
+
+msgid "Cancel"
+msgstr "Цуцлах"
+
+msgid "City"
+msgstr "Хот"
+
+msgid "Click here to view results."
+msgstr "Илэрцүүдийг харахын тулд энд товшино уу."
+
+msgid "Close window"
+msgstr "Цонхыг хаах"
+
+msgid "Compare these records"
+msgstr "Эдгээр бичлэгүүдийг харьцуулах"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Энэ хэрэгслийг өөрийн сайтад оруулах бол дараах HTML кодыг хуулж буулгана"
+" уу"
+
+msgid "Create a new API key"
+msgstr "Шинэ API түлхүүр үүсгэх"
+
+msgid "Create a new record"
+msgstr "Шинэ бичлэг үүсгэх"
+
+msgid "Create a new record for"
+msgstr "Шинэ бичлэг үүсгэх"
+
+msgid "Create a new record for a missing person"
+msgstr "Алга болсон хүний тухай шинэ бичлэг үүсгэх"
+
+msgid "Crisis events"
+msgstr "Гамшгийн үйл явдал"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Одоогоор %(num_people)s бичлэгийг дагаж байна."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Огноог ирээдүйнхээр оруулах боломжгүй. Буцаж очоод дахин оролдоно уу."
+
+msgid "Date of birth"
+msgstr "Төрсөн огноо"
+
+msgid "Delete this record"
+msgstr "Энэ бичлэгийг устгах"
+
+msgid "Describe how to identify this person."
+msgstr "Энэ хүнийг таних аргыг тодорхойлно уу."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Энэ хүний биет шинж тэмдгийг тодорхойлно уу."
+
+msgid "Description"
+msgstr "Тодорхойлолт"
+
+msgid "Desktop version"
+msgstr "Десктоп хувилбар"
+
+msgid "Developers"
+msgstr "Хөгжүүлэгчид"
+
+msgid "Disable notes on this record"
+msgstr "Энэ бичлэг дээр тэмдэглэлийг идэвхгүйжүүлэх"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Энэ хүнд өөр вебсайтууд дээр профайл хуудас байгаа юу?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Энэ %(begin_link)sExcel загварыг%(end_link)s татаж аваад мөр нэмнэ үү"
+
+msgid "Download the sound as MP3"
+msgstr "Дууг MP3 болгон татаж авах"
+
+msgid "E-mail"
+msgstr "Имэйл"
+
+msgid "E-mail address"
+msgstr "Имэйл хаяг"
+
+msgid "Edit"
+msgstr "Засах"
+
+msgid "Embedding the Application"
+msgstr "Аппликешныг оруулж байна"
+
+msgid "Enable notes on this record"
+msgstr "Энэ бичлэг дээр тэмдэглэлийг идэвхжүүлэх"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-MM-DD байдлаар оруулна уу"
+
+msgid "Enter the person's given and family names."
+msgstr "Тухайн хүний нэр болон овгийг оруулна уу."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Тухайн хүний нэр буюу нэрний хэсгийг оруулна уу."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Тухайн хүний нэр, нэрний хэсэг буюу гар утасны дугаарыг оруулна уу."
+
+msgid "Enter the person's name."
+msgstr "Тухайн хүний нэрийг оруулна уу."
+
+msgid "Expiry"
+msgstr "Хугацаа дуусах"
+
+msgid "Expiry date of this record"
+msgstr "Энэ бичлэгийн дуусах хугацаа"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Дуусах хугацааг %(extension_days)s өдрөөр сунгах"
+
+msgid "Family name"
+msgstr "Овог"
+
+msgid "Feed of updates about this person"
+msgstr "Энэ хүний тухай шинэ мэдээллийн фийд"
+
+msgid "Follow this link to create a new record"
+msgstr "Шинэ бичлэг үүсгэхийн тулд энэ холбоосыг дагна уу"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr "Гар утаснаас бусад утасны хувьд NTT-н 171 үйлчилгээг ашиглана уу."
+
+msgid "Full name"
+msgstr "Бүтэн нэр"
+
+msgid "Get a new challenge"
+msgstr "Шинэ дуудлага авах"
+
+msgid "Get a visual challenge"
+msgstr "Дүрс дуудлага авах"
+
+msgid "Get an audio challenge"
+msgstr "Дуут дуудлага авах"
+
+msgid "Given name"
+msgstr "Өөрийн нэр"
+
+msgid "Google Person Finder"
+msgstr "Google Хүн Хайгч"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Та энэ хүнтэй гамшгийн ДАРАА биечлэн уулзсан уу? (шаардлагатай)"
+
+msgid "Help"
+msgstr "Тусламж"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr "Энэ %(begin_tag)sжишээ CSV файлыг%(end_tag)s та засаад байршуулж болно"
+
+msgid "Hide Map"
+msgstr "Газрын зургийг далдлах"
+
+msgid "Hide note"
+msgstr "Тэмдэглэлийг далдлах"
+
+msgid "Home Address"
+msgstr "Гэрийн хаяг"
+
+msgid "Home address"
+msgstr "Гэрийн хаяг"
+
+msgid "Home country"
+msgstr "Эх орон"
+
+msgid "How can this person be reached now?"
+msgstr "Энэ хүнтэй одоо хэрхэн холбоо барьж болох вэ?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Энэ хүнийг сонирхсон бусад хүмүүс тантай хэрхэн холбоо барьж болох вэ"
+
+msgid "I am seeking information"
+msgstr "Би мэдээлэл хайж байна"
+
+msgid "I am this person"
+msgstr "Би энэ хүн байна"
+
+msgid "I do not want any more updates on this record."
+msgstr "Би энэ бичлэгийн талаар шинэ мэдээлэл авахгүй."
+
+msgid "I do not want my information online anymore."
+msgstr "Би өөрийн мэдээллийг цаашид онлайн байлгахгүй."
+
+msgid "I have information about someone"
+msgstr "Надад хэн нэгний тухай мэдээлэл байна"
+
+msgid "I have reason to think this person is missing"
+msgstr "Надад энэ хүнийг сураггүй болсон гэж бодох үндэслэл байна"
+
+msgid "I have received information that this person is alive"
+msgstr "Энэ хүн амьд байгаа тухай мэдээллийг би хүлээж авсан"
+
+msgid "I have received information that this person is dead"
+msgstr "Энэ хүнийг амь үрэгдсэн тухай мэдээллийг би хүлээж авсан"
+
+msgid "I have received spam due to this note."
+msgstr "Энэ тэмдэглэлээс шалтгаалан би спам хүлээж авсан."
+
+msgid "I have received spam."
+msgstr "Би спам хүлээж авсан."
+
+msgid "I prefer not to specify."
+msgstr "Би тодорхойлохыг хүсэхгүй байна."
+
+msgid "I'm looking for someone"
+msgstr "Би хэн нэгнийг хайж байна"
+
+msgid "Identify who you are looking for"
+msgstr "Хэнийг хайж байгаагаа таниулна уу"
+
+msgid "Identify who you have information about"
+msgstr "Хэний тухай мэдээлэлтэй байгаагаа таниулна уу"
+
+msgid "Identifying information"
+msgstr "Таниулах мэдээлэл"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Эдгээр бичлэгүүдийн аль нь ч таны бодож байгаа хүнтэй таарахгүй байгаа "
+"бол та доор товшиж шинэ бичлэг үүсгэж болно."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Хэрэв та энэ тэмдэглэлийн зохиогч нь бол өөрийн имэйлээ шалгаж ирсэн "
+"холбоосоор энэ бичлэг дээр тэмдэглэлүүдийг идэвхгүйжүүлэхийг хүсэж "
+"байгаагаа баталгаажуулна уу.  Үгүй бол бичлэгийн зохиогч таны хүсэлтийг "
+"баталгаажуултал хүлээнэ үү."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Хэрэв та энэ тэмдэглэлийн зохиогч нь бол өөрийн имэйлээ шалгаж ирсэн "
+"холбоосоор энэ бичлэг дээр тэмдэглэлүүдийг идэвхжүүлэхийг хүсэж байгаагаа"
+" \n"
+"баталгаажуулна уу.  Үгүй бол бичлэгийн зохиогч таны хүсэлтийг \n"
+"баталгаажуултал хүлээнэ үү."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Хэрэв танд энэ хүний зураг байгаа бол байршуулах буюу URL хаягийг нь "
+"оруулна уу."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excel дотор File &gt; Save as... болон save in CSV format (.csv) гэснийг "
+"ашиглана уу"
+
+msgid "Incorrect.  Try again."
+msgstr "Буруу. Дахин оролдоно уу."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Имэйл хаяг буруу. Дахин оролдоно уу."
+
+msgid "Language selection"
+msgstr "Хэлний сонголт"
+
+msgid "Last known location"
+msgstr "Хамгийн сүүлд мэдэгдэж буй байршил"
+
+msgid "Link"
+msgstr "Холбоос"
+
+msgid "Link to profile page"
+msgstr "Профайл хуудасны холбоос"
+
+msgid "List API keys"
+msgstr "API түлхүүрүүдийг жагсаах"
+
+msgid "Mark records as duplicate"
+msgstr "Бичлэгүүдийг давхардсан гэж тэмдэглэх"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Сонгогдсон бичлэгүүдийг давхардсан гэж тэмдэглэх"
+
+msgid "Message (required)"
+msgstr "Зурвас (шаардлагатай)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Зурвас шаардлагатай. Буцаж очоод дахин оролдоно уу."
+
+msgid "Missing person's current contact information"
+msgstr "Сураггүй болсон хүний одоогийн холбогдох хаягийн мэдээлэл"
+
+msgid "Missing person's current e-mail address"
+msgstr "Сураггүй болсон хүний одоогийн имэйл хаяг"
+
+msgid "Missing person's current phone number"
+msgstr "Сураггүй болсон хүний одоогийн утасны дугаар"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Хөгжүүлэгчдэд зориулсан өөр мэдээллийг "
+"%(developers_link_html)sэндээс%(link_end_html)s авч болно."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"100-с олон илэрц байна; зөвхөн эхний 100-г харуулж байна.  Нэрнээс нь "
+"цааш оруулаарай"
+
+msgid "Name"
+msgstr "Нэр"
+
+msgid "Name (required)"
+msgstr "Нэр (шаардлагатай)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Нэр шаардлагатай.  Буцаж очоод дахин оролдоно уу."
+
+msgid "Neighborhood"
+msgstr "Хөрш"
+
+msgid "No"
+msgstr "Үгүй"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "%(id)s бичлэгт зохиогчийн имэйл байхгүй байна."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "Операторын зурвасын самбар үйлчилгээнд бүртгэгдсэн зурвас байхгүй байна."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Дараах ID-тай тэмдэглэл байхгүй: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Тэмдэглэл нийтлэгдээгүй байна"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Дараах ID-тай хүн алга байна: %(id_str)s."
+
+msgid "No such Authorization entity."
+msgstr "Ийм Эрхжүүлэгч байгууллага байхгүй байна."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"\"Би энэ хүнийг амь үрэгдсэн талаар мэдээлэл хүлээж авсан\" гэсэн "
+"статустай тэмдэглэл нийтлэх эрхгүй."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "\"үрэгдсэнд_тооцсон\" гэсэн статустай тэмдэглэл нийтлэх эрхгүй."
+
+msgid "Not spam"
+msgstr "Спам биш"
+
+msgid "Note author"
+msgstr "Тэмдэглэлийн зохиогч"
+
+msgid "Note text"
+msgstr "Тэмдэглэлийн текст"
+
+msgid "Notes for a possible duplicate"
+msgstr "Давхардсан байж болзошгүй талаар тэмдэглэлүүд"
+
+msgid "Notes for this person"
+msgstr "Энэ хүний талаарх тэмдэглэлүүд"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Тоо буюу цар хүрээ (жнь. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Эсвэл өөрийн сайтыг %(gadget_link_html)sGoogle Gadget%(link_end_html)s "
+"болгон нэмээрэй."
+
+msgid "Original URL"
+msgstr "Эх URL"
+
+msgid "Original author's name"
+msgstr "Эх зохиогчийн нэр"
+
+msgid "Original posting date"
+msgstr "Эхийг нийтлэсэн огноо"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Эхийг нийтлэсэн огноо YYYY-MM-DD форматтай биш, эсвэл байхгүй огноо "
+"байна.  Буцаж очоод дахин оролдоно уу."
+
+msgid "Original site name"
+msgstr "Эх сайтын нэр"
+
+msgid "Other website"
+msgstr "Бусад вебсайт"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"АНХААРНА УУ: Идэвхтэй байгаа Хүн Хайгч сайт дээр оруулсан бүх дата нь "
+"нийтэд нээлттэй бөгөөд дурын хүн ашиглаж болно. Google энэ датаг хянах "
+"буюу баталгаажуулах алхам хийдэггүй."
+
+msgid "Person Finder"
+msgstr "Хүн Хайгч"
+
+msgid "Phone"
+msgstr "Утас"
+
+msgid "Phone number"
+msgstr "Утасны дугаар"
+
+msgid "Photo"
+msgstr "Зураг"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Байршуулсан зураг үл мэдэгдэх форматтай байна. Буцаж очоод дахин оролдоно"
+" уу."
+
+msgid "Physical characteristics"
+msgstr "Биет шинж тэмдэг"
+
+msgid "Play the sound again"
+msgstr "Дууг дахин тоглуулах"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Та газар хөдөлсний дараа тус хүнтэй холбоо барьсан гэж чек хийх буюу "
+"\"Энэ хүний статус\" талбарыг өөрчилнө үү."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Энэ таны мэдээлэх гэж буй хүнтэй таарч байгаа эсэхийг шалгана уу."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Шинэчлэлд бүртгүүлэхийн тулд имэйл хаягаа баталгаажуулна уу"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Шинэчлэлд бүртгүүлэхийн тулд имэйл хаягаа дахин оруулна уу"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Яагаад эдгээр хүмүүсийг нэг хүн гэж бодож байгаагаа тайлбарлана уу"
+
+msgid "Please fill in all the required fields."
+msgstr "Шаардлагатай бүх талбарыг бөглөнө үү."
+
+msgid "Please fill in your email address."
+msgstr "Өөрийн имэйл хаягаа бөглөнө үү."
+
+msgid "Please provide an valid email address."
+msgstr "Зөв имэйл хаяг оруулна уу."
+
+msgid "Possible duplicates"
+msgstr "Давхардсан байж магадгүй"
+
+msgid "Possible duplicates found."
+msgstr "Давхардсан байж магадгүй."
+
+msgid "Postal or zip code"
+msgstr "Шуудан буюу зип код"
+
+msgid "Posted by"
+msgstr "Нийтлэгч"
+
+msgid "Proceed"
+msgstr "Үргэлжлүүлэх"
+
+msgid "Profile Pages"
+msgstr "Профайл хуудсууд"
+
+msgid "Profile page"
+msgstr "Профайл хуудас"
+
+msgid "Provide information"
+msgstr "Мэдээлэл өгөх"
+
+msgid "Provide information about this person"
+msgstr "Энэ хүний тухай мэдээлэл өгөх"
+
+msgid "Provided by:"
+msgstr "Өгсөн:"
+
+msgid "Province or state"
+msgstr "Муж буюу орон нутаг"
+
+msgid "Reason for deletion:"
+msgstr "Устгах шалтгаан:"
+
+msgid "Reason for disabling notes:"
+msgstr "Тэмдэглэлийг идэвхгүйжүүлэх шалтгаан:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Нэр болон хаяг нь \"%(query)s\"-тай таарч буй бичлэгүүд"
+
+msgid "Remove"
+msgstr "Хасах"
+
+msgid "Report spam"
+msgstr "Спам мэдээлэх"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s-н бичлэг рүү буцах."
+
+msgid "Reveal note"
+msgstr "Тэмдэглэлийг ил гаргах"
+
+msgid "Save this record"
+msgstr "Энэ бичлэгийг хадгалах"
+
+msgid "Search for this person"
+msgstr "Энэ хүнийг хайх"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Өөр заавруудыг %(begin_tag)sthe wiki%(end_tag)s дээрээс харах"
+
+msgid "Select a website to add a profile page..."
+msgstr "Профайл хуудас нэмэхийн тулд вебсайт сонгоно уу..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Давхардсан гэж тэмдэглэхийн тулд 3 хүртэл бичлэгийг сонгоно уу:"
+
+msgid "Send email"
+msgstr "Имэйл илгээх"
+
+msgid "Sex"
+msgstr "Хүйс"
+
+msgid "Show Map"
+msgstr "Газрын зургийг харуулах"
+
+msgid "Show sensitive information"
+msgstr "Нууцлаг мэдээллийг харуулах"
+
+msgid "Show who marked these duplicates"
+msgstr "Эдгээр давхардлуудыг хэн тэмдэглэснийг харуулах"
+
+msgid "Sign in"
+msgstr "Нэвтрэх"
+
+msgid "Sign out"
+msgstr "Гарах"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Энэ хүн амьд байгаа тухай мэдээллийг хэн нэгэн хүлээж авсан"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Энэ хүнийг амь үрэгдсэн тухай мэдээллийг хэн нэгэн хүлээж авсан"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Энэ хүнийг сураггүй болсон тухай хэн нэгэн мэдээлсэн"
+
+msgid "Someone is seeking information about this person"
+msgstr "Энэ хүний тухай мэдээллийг хэн нэгэн хайж байна"
+
+msgid "Source of this record"
+msgstr "Энэ бичлэгийн эх сурвалж"
+
+msgid "Source of this record (required)"
+msgstr "Энэ бичлэгийн эх сурвалж (шаардлагатай)"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Status of this person"
+msgstr "Энэ хүний статус"
+
+msgid "Street name"
+msgstr "Гудамжны нэр"
+
+msgid "Street name only, no number"
+msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
+
+msgid "Subscribe"
+msgstr "Бүртгүүлэх"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s-н талаарх шинэ мэдээлэл авахаар бүртгүүлэх"
+
+msgid "Subscribe to updates about this person"
+msgstr "Энэ хүний талаарх шинэ мэдээлэл авахаар бүртгүүлэх"
+
+msgid "Switch to address"
+msgstr "Хаяг руу сэлгэх"
+
+msgid "Switch to lat/long"
+msgstr "Урт/өрг рүү сэлгэх"
+
+msgid "Tell us the status of this person"
+msgstr "Энэ хүний статусын талаар бидэнд мэдэгдэнэ үү"
+
+msgid "Terms of Service"
+msgstr "Үйлчилгээний Нөхцөл"
+
+msgid "The API key has been updated successfully."
+msgstr "API түлхүүр амжилттай шинэчлэгдлээ."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Өөрийн нэр болон овог хоёулаа шаардлагатай.  Буцаж очоод дахин оролдоно "
+"уу."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Эх сурвалжийн зохиогчийн нэр шаардлагатай.  Буцаж очоод дахин оролдоно уу."
+
+msgid "The author has disabled notes on this record."
+msgstr "Зохиогч нь энэ бичлэг дээр тэмдэглэлийг идэвхгүйжүүлсэн."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Зохиогч нь энэ бичлэг дээр статус шинэчлэлтийг идэвхгүйжүүлсэн."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Өгсөн зураг хэт том байна. Жижиг зураг байршуулна уу."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Энэ тэмдэглэлийг спам гэж тэмдэглэж буй шалтгаан:"
+
+msgid "The record cannot be extended."
+msgstr "Бичлэгийн хугацааг сунгах боломжгүй."
+
+msgid "The record has been deleted."
+msgstr "Бичлэг устсан."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Таны сонгосон статусаар бол та энэ хүн байна. Хэрэв үнэн бол та энэ "
+"хүнтэй холбоо барьсан гэдийг мөн 'Тийм' болгоно уу."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "%(token)s бүтвэр буруу байна"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "%(token)s бүтвэр буруу байсан."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Төстэй нэртэй %(num_results)s бичлэг байна."
+
+msgid "There are some existing records with similar names."
+msgstr "Төстэй нэртэй хэсэг бичлэг байна."
+
+msgid "There is one existing record with a similar name."
+msgstr "Төстэй нэртэй нэг бичлэг байна."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Зургийг боловсруулах явцад алдаа гарлаа. Өөр зураг оруулж үзнэ үү."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Таны хүсэлтийг боловсруулах явцад алдаа гарлаа. Төвөг учруулсанд хүлцэл "
+"өчье. Манай админууд алдааны шалтгааны тодруулах боловч та өөрийн "
+"хүсэлтийн формат зөв байгаа эсэхийг шалгана уу."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Эдгээр гаджетуудыг %(apache_link_html)sApache 2.0 "
+"лицензийн%(link_end_html)s хүрээнд бий болгосон."
+
+msgid "This is a new record."
+msgstr "Энэ шинэ бичлэг."
+
+msgid "This link is invalid."
+msgstr "Энэ холбоос буруу байна."
+
+msgid "This note has been marked as spam."
+msgstr "Энэ тэмдэглэл спам гэж тэмдэглэгдсэн."
+
+msgid "This note is inappropriate."
+msgstr "Энэ тэмдэглэл зохисгүй байна."
+
+msgid "This note is incorrect or untrue."
+msgstr "Энэ тэмдэглэл буруу эсвэл худал."
+
+msgid "This note is spam."
+msgstr "Энэ тэмдэглэл спам байна."
+
+msgid "This person has been in contact with someone"
+msgstr "Энэ хүн хэн нэгэнтэй холбоо барьсан"
+
+msgid "This person has posted a message"
+msgstr "Энэ хүн зурвас үлдээсэн"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Энэ хүний бичсэн нь байхгүй эсвэл устсан байна."
+
+msgid "This record has served its purpose."
+msgstr "Энэ бичлэг үүргээ гүйцэтгэсэн."
+
+msgid "This record is a duplicate of"
+msgstr "Энэ бичлэг нь дараахийн давхардал байна"
+
+msgid "This record is copied from another source."
+msgstr "Энэ бичлэг өөр эх сурвалжаас хуулагдсан байна."
+
+msgid "This record is inappropriate."
+msgstr "Энэ бичлэг зохисгүй байна."
+
+msgid "This record is spam."
+msgstr "Энэ бичлэг спам байна."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Энэ агуулагч одоогоор туршилтын горимд байгаа. Туршилтын горим идэвхжсэн "
+"үед 6 цаг болсон бичлэгүүд устана."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Энэ тэмдэглэлд зураг хавсаргахын тулд байршуулах буюу URL-г нь оруулна уу."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Өөрийн датаг устгахын тулд компьютер дээрээсээ Хүн Хайгчид хандана уу."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Бүртгэлээс хасуулахын тулд энэ холбоосыг дагна уу"
+
+msgid "To view or add information, select a name below."
+msgstr "Мэдээлэл харах буюу нэмэхийн тулд доор нэр сонгоно уу."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr "Хаяг бичих буюу доор газрын зураг нээж дээрэн товшиж байршлыг заана уу."
+
+msgid "Type an address."
+msgstr "Хаяг бичнэ үү."
+
+msgid "Type the two words:"
+msgstr "Хоёр үгийг бичнэ үү:"
+
+msgid "Type what you hear:"
+msgstr "Юу сонсож байгаагаа бичнэ үү:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "Эх бичлэгийн URL"
+
+msgid "Unspecified"
+msgstr "Заагаагүй"
+
+msgid "Update an existing key"
+msgstr "Байгаа түлхүүрийг шинэчлэх"
+
+msgid "Upload"
+msgstr "Байршуулах"
+
+msgid "Upload notes in CSV format"
+msgstr "Тэмдэглэлүүдийг CSV форматаар байршуулна уу"
+
+msgid "Upload person records in CSV format"
+msgstr "Хүний мэдээллийг CSV форматаар байршуулах"
+
+msgid "Upload your CSV file below"
+msgstr "Өөрийн CSV файлыг доор байршуулна уу"
+
+msgid "View the record"
+msgstr "Бичлэгийг харах"
+
+msgid "We have nothing matching your search."
+msgstr "Таны хайлтад таарах зүйл алга байна."
+
+msgid "What is this person's name?"
+msgstr "Энэ хүний нэр хэн бэ?"
+
+msgid "When should this record disappear?"
+msgstr "Энэ бичлэг хэзээ арилах ёстой вэ?"
+
+msgid "Where did this information come from?"
+msgstr "Энэ мэдээлэл хаанаас ирсэн бэ?"
+
+msgid "Where is this person from?"
+msgstr "Энэ хүн хаанаас ирсэн бэ?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Тестийн горим идэвхжсэн үед 6 цаг болсон бичлэгүүд дуусах хугацаанаас "
+"хамаарахгүйгээр устана."
+
+msgid "Yes"
+msgstr "Тийм"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Тийм, бичлэгийн зохиогчоос тэмдэглэлийг идэвхгүйжүүлэх эсэхийг асуух"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Тийм, бичлэгийн зохиогчоос тэмдэглэлийг идэвхжүүлэх эсэхийг асуух"
+
+msgid "Yes, delete the record"
+msgstr "Тийм, бичлэгийг устгах"
+
+msgid "Yes, disable notes on this record."
+msgstr "Тийм, энэ бичлэг дээр тэмдэглэлийг идэвхгүйжүүлнэ."
+
+msgid "Yes, extend the record"
+msgstr "Тийм, бичлэгийн хугацааг сунгана"
+
+msgid "Yes, restore this record"
+msgstr "Тийм, энэ бичлэгийг сэргээнэ"
+
+msgid "Yes, these are the same person"
+msgstr "Тийм, эдгээр нь нэг ижил хүн байна"
+
+msgid "Yes, update the note"
+msgstr "Тийм, тэмдэглэлийг шинэчилнэ"
+
+msgid "You are already subscribed. "
+msgstr "Та аль хэдийн бүртгүүлсэн байна. "
+
+msgid "You are already unsubscribed."
+msgstr "Та аль хэдийн бүртгүүлсэн байна."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Та одоо %(begin_span_tag)s%(email)s%(end_span_tag)s-р нэвтэрсэн байна."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Та одоо %(user_email)s-р нэвтэрсэн байна."
+
+msgid "You are not currently signed in."
+msgstr "Та одоо нэвтрээгүй байна."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Та устгахаасаа өмнө %(begin_tag)sбичлэгийг үзэх%(end_tag)s боломжтой."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Та бүтэн бичлэгийг %(view_url)s дээрээс үзэж болно"
+
+msgid "You have successfully subscribed."
+msgstr "Та амжилттай бүртгүүллээ."
+
+msgid "You have successfully unsubscribed."
+msgstr "Та бүртгэлээс амжилттайгаар хасагдлаа."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Та дараах хүний талаар шинэ мэдээлэл авахаар бүртгүүлсэн учир энэ "
+"мэдэгдлийг хүлээн авч байна:\n"
+
+msgid "Your e-mail address"
+msgstr "Таны имэйл хаяг"
+
+msgid "Your e-mail address:"
+msgstr "Таны имэйл хаяг:"
+
+msgid "Your email"
+msgstr "Таны имэйл"
+
+msgid "Your name"
+msgstr "Нэрээ оруулна уу"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Таны нэр \"Таны тухай\" хэсэгт шаардлагатай.  Буцаж очоод дахин оролдоно "
+"уу."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Таны нэр \"Эх сурвалж\" хэсэгт шаардлагатай.  Буцаж очоод дахин оролдоно "
+"уу."
+
+msgid "Your phone number"
+msgstr "Таны утасны дугаар"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Таны хүсэлт амжилттайгаар боловсруулагдлаа. Ирсэн имэйлээ шалгаад байгаа "
+"холбоосын дагуу өөрийн тэмдэглэлийг нийтлэхийг хүсэж байгаагаа "
+"баталгаажуулна уу."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлээ баталгаажуулна уу"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх мэдэгдлийг устгах"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэлийг идэвхгүйжүүлэх үү?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэлийг идэвхжүүлэх үү?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг мэдэгдлийг "
+"идэвхжүүлэх үү"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг идэвхгүйжүүлсэн"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг идэвхжүүлсэн"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх бичлэгийг сэргээсэн тухай мэдэгдэл"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Хүн Хайгч] %(full_name)s-н статусын шинэчлэл"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Хүн Хайгч] Та %(full_name)s-н статусын шинэчлэлийн талаар мэдээлэл "
+"авахаар бүртгүүлсэн"
+
+msgid "female"
+msgstr "эмэгтэй"
+
+msgid "in test mode"
+msgstr "туршилтын горимд"
+
+msgid "male"
+msgstr "эрэгтэй"
+
+msgid "on"
+msgstr "асаах"
+
+msgid "other"
+msgstr "бусад"
+

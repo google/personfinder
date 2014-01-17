@@ -143,6 +143,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s רשומות נבחרו\n"
+"          "
 
 #, python-format
 msgid ""
@@ -150,6 +153,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        רשומות דומות ל: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -157,6 +163,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        תוצאות חיפוש עבור: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -253,6 +262,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      לא נמצאו תוצאות עבור: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -277,6 +289,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      תוקף הרשומה הוארך עד %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -489,10 +504,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "הודעה לאדם הזה או לאחרים המחפשים את האדם הזה"
 
 msgid "A new API key has been created successfully."
-msgstr "מפתח API חדש כבר נוצר בהצלחה."
+msgstr "‏מפתח API חדש כבר נוצר בהצלחה."
 
 msgid "API Key Management"
-msgstr "ניהול מפתחות API"
+msgstr "‏ניהול מפתחות API"
 
 msgid "About 1 month (30 days) from now"
 msgstr "כחודש (30 יום) מעכשיו"
@@ -510,7 +525,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "כשישה חודשים (180 יום) מעכשיו"
 
 msgid "About Google Person Finder"
-msgstr "מידע על מאתר האנשים של Google"
+msgstr "‏מידע על הכלי של Google לאיתור אנשים"
 
 msgid "About you (required)"
 msgstr "מידע אודותיך (חובה)"
@@ -540,7 +555,7 @@ msgid "Are you sure you want to restore this record from deletion?"
 msgstr "האם אתה בטוח שברצונך לשחזר את הרשומה הזו מהמחיקה?"
 
 msgid "Atom feed of updates about this person"
-msgstr "עדכון Atom של עדכונים לגבי האדם הזה"
+msgstr "‏עדכון Atom של עדכונים לגבי האדם הזה"
 
 msgid "Author's e-mail address"
 msgstr "כתובת הדוא\"ל של המחבר"
@@ -566,12 +581,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"על ידי סימון ההערה הזו כספאם, ההערה תהפוך למוסתרת כברירת מחדל. ההערה "
+"עדיין תהיה חלק מהרשומה, אך תידרש לחיצה נוספת כדי להציג את תוכן ההערה. "
+"משתמשים יוכלו גם להסיר את הסימון כספאם מההערה הזו."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "על ידי ביטול סימון ההערה הזו כספאם, היא תהפוך לגלויה כברירת מחדל."
 
 msgid "CSV file"
-msgstr "קובץ CSV"
+msgstr "‏קובץ CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -593,10 +611,10 @@ msgid "Compare these records"
 msgstr "השווה את הרשומות האלה"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "העתק והדבק את קוד ה-HTML הבא כדי למקם את הכלי הזה באתר שלך"
+msgstr "‏העתק והדבק את קוד ה-HTML הבא כדי למקם את הכלי הזה באתר שלך"
 
 msgid "Create a new API key"
-msgstr "צור מפתח API חדש"
+msgstr "‏צור מפתח API חדש"
 
 msgid "Create a new record"
 msgstr "יצירת רשומה חדשה"
@@ -646,16 +664,16 @@ msgstr "האם יש לאדם הזה דפי פרופיל באתרים אחרים?
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr ""
+msgstr "‏הורד את %(begin_link)sהתבנית הזו של Excel%(end_link)s והוסף לה שורות"
 
 msgid "Download the sound as MP3"
-msgstr "הורד את הצליל כ-MP3"
+msgstr "‏הורד את הצליל כ-MP3"
 
 msgid "E-mail"
 msgstr "דוא\"ל"
 
 msgid "E-mail address"
-msgstr "כתובת דוא\"ל:"
+msgstr "כתובת דוא\"ל"
 
 msgid "Edit"
 msgstr "ערוך"
@@ -667,7 +685,7 @@ msgid "Enable notes on this record"
 msgstr "הפעל הערות ברשומה זו"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr "הזן כ-YYYY-MM-DD"
+msgstr "‏הזן כ-YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
@@ -703,7 +721,7 @@ msgstr "הפעל את הקישור הזה ליצירת רשומה חדש"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr "עבור טלפונים שאינם טלפונים ניידים, השתמש בשירות 171 מטעם NTT."
+msgstr "‏עבור טלפונים שאינם טלפונים ניידים, השתמש בשירות 171 מטעם NTT."
 
 msgid "Full name"
 msgstr "שם מלא"
@@ -721,7 +739,7 @@ msgid "Given name"
 msgstr "שם פרטי"
 
 msgid "Google Person Finder"
-msgstr "מאתר האנשים של Google"
+msgstr "‏כלי Google לאיתור אנשים"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "האם שוחחת עם האדם הזה בעצמך לאחר האסון? (חובה)"
@@ -731,7 +749,7 @@ msgstr "עזרה"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr "לפניך %(begin_tag)s דוגמה לקובץ CSV‏%(end_tag)s שתוכל לערוך ולהעלות"
+msgstr "‏לפניך %(begin_tag)s דוגמה לקובץ CSV‏%(end_tag)s שתוכל לערוך ולהעלות"
 
 msgid "Hide Map"
 msgstr "הסתר מפה"
@@ -826,7 +844,7 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "אם יש לך תמונה של האדם הזה, העלה אותה או הזן את כתובת האתר שלה."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
-msgstr ""
+msgstr "‏ב-Excel, השתמש ב'קובץ' &gt; 'שמירה בשם'... ושמור בתבנית CSV ‏(‎.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "שגיאה. נסה שוב."
@@ -847,13 +865,13 @@ msgid "Link to profile page"
 msgstr "צור קישור לדף פרופיל"
 
 msgid "List API keys"
-msgstr "הצג רשימה של מפתחות API"
+msgstr "‏הצג רשימה של מפתחות API"
 
 msgid "Mark records as duplicate"
 msgstr "סמן רשומות ככפולות"
 
 msgid "Mark the selected records as duplicate"
-msgstr ""
+msgstr "סמן את הרשומות שנבחרו ככפולות"
 
 msgid "Message (required)"
 msgstr "הודעה (חובה)"
@@ -922,10 +940,10 @@ msgstr "אין יישות הרשאה כזו."
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
+msgstr "אין הרשאה לפרסם הערות עם הסטטוס \"יש ברשותי מידע שהאדם הזה מת\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "לא מורשה לפרסם הערות עם הסטטוס \"believed_dead\"."
+msgstr "‏לא מורשה לפרסם הערות עם הסטטוס \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "לא דואר זבל"
@@ -937,7 +955,7 @@ msgid "Note text"
 msgstr "טקסט הערה"
 
 msgid "Notes for a possible duplicate"
-msgstr ""
+msgstr "הערות לגבי רשומה שעשויה להיות כפולה"
 
 msgid "Notes for this person"
 msgstr "הערות עבור האדם הזה"
@@ -950,7 +968,7 @@ msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"לחלופין, הוסף לאתר שלך בתור %(gadget_link_html)sגאדג'ט של "
+"‏לחלופין, הוסף לאתר שלך בתור %(gadget_link_html)sגאדג'ט של "
 "Google‏%(link_end_html)s."
 
 msgid "Original URL"
@@ -966,14 +984,14 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שהמועד אינו קיים. חזור "
+"‏תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שהמועד אינו קיים. חזור "
 "ונסה שוב."
 
 msgid "Original site name"
 msgstr "שם האתר המקורי"
 
 msgid "Other website"
-msgstr ""
+msgstr "אתר אחר"
 
 #, fuzzy
 msgid ""
@@ -981,12 +999,12 @@ msgid ""
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"שים לב: באתרים פעילים של מאתר האנשים, כל הנתונים שהוזנו יהיו זמינים "
-"לציבור וניתנים לשימוש של כל אחד. Google אינה בודקת או מאמתת את הדיוק של "
-"הנתונים האלה."
+"‏שים לב: באתרים פעילים של הכלי לאיתור אנשים, כל הנתונים שהוזנו יהיו "
+"זמינים לציבור וניתנים לשימוש של כל אחד. Google אינה בודקת או מאמתת את "
+"הדיוק של הנתונים האלה."
 
 msgid "Person Finder"
-msgstr "מאתר האנשים"
+msgstr "כלי לאיתור אנשים"
 
 msgid "Phone"
 msgstr "טלפון"
@@ -1040,7 +1058,7 @@ msgid "Possible duplicates"
 msgstr "כפילויות אפשריות"
 
 msgid "Possible duplicates found."
-msgstr ""
+msgstr "נמצאו רשומות שעשויות להיות כפולות."
 
 msgid "Postal or zip code"
 msgstr "דואר או מיקוד"
@@ -1100,7 +1118,7 @@ msgstr "חפש את האדם הזה"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr "ראה %(begin_tag)swiki‏%(end_tag)s לקבלת הוראות נוספות"
+msgstr "‏ראה %(begin_tag)swiki‏%(end_tag)s לקבלת הוראות נוספות"
 
 msgid "Select a website to add a profile page..."
 msgstr "בחר אתר כדי להוסיף דף פרופיל..."
@@ -1121,7 +1139,7 @@ msgid "Show sensitive information"
 msgstr "הצג מידע רגיש"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "הצג מי סימן את הכפילויות האלה"
 
 msgid "Sign in"
 msgstr "היכנס"
@@ -1182,7 +1200,7 @@ msgid "Terms of Service"
 msgstr "תנאים והגבלות"
 
 msgid "The API key has been updated successfully."
-msgstr "מפתח ה-API עודכן בהצלחה."
+msgstr "‏מפתח ה-API עודכן בהצלחה."
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
@@ -1252,7 +1270,7 @@ msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"הגאדג'טים האלה זמינים ב%(apache_link_html)sרישיון Apache, גרסה "
+"‏הגאדג'טים האלה זמינים ב%(apache_link_html)sרישיון Apache, גרסה "
 "2.0%(link_end_html)s."
 
 msgid "This is a new record."
@@ -1308,7 +1326,9 @@ msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "כדי לצרף תמונה להערה הזו, העלה אותה או הזן את כתובת האתר שלה."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "כדי למחוק את הנתונים שלך, היכנס למאתר האנשים משולחן העבודה שלך."
+msgstr ""
+"‏כדי למחוק את הנתונים שלך, היכנס לכלי של Google לאיתור אנשים משולחן "
+"העבודה שלך."
 
 msgid "To unsubscribe, follow this link"
 msgstr "כדי לבטל את הרישום, הפעל את הקישור הבא"
@@ -1346,13 +1366,13 @@ msgid "Upload"
 msgstr "העלה"
 
 msgid "Upload notes in CSV format"
-msgstr ""
+msgstr "‏העלה הערות בתבנית CSV"
 
 msgid "Upload person records in CSV format"
-msgstr ""
+msgstr "‏העלה רשומות של משתמשים בפורמט CSV"
 
 msgid "Upload your CSV file below"
-msgstr ""
+msgstr "‏העלה את קובץ ה-CSV שלך בהמשך"
 
 msgid "View the record"
 msgstr "הצג את הרשומה"
@@ -1445,7 +1465,7 @@ msgid ""
 msgstr "קיבלת התראה זו מכיוון שנרשמת לקבלת עדכונים עבור האדם הבא:\n"
 
 msgid "Your e-mail address"
-msgstr "כתובת הדוא\"ל שלך:"
+msgstr "כתובת הדוא\"ל שלך"
 
 msgid "Your e-mail address:"
 msgstr "כתובת הדוא\"ל שלך:"
@@ -1478,43 +1498,43 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[מאתר אנשים] אשר את ההערה שלך ב-\"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] אשר את ההערה שלך ב-\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[מאתר אנשים] הודעת מחיקה עבור \"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] הודעת מחיקה עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[מאתר אנשים] להשבית הערות על %(full_name)s?"
+msgstr "‏[כלי Google לאיתור אנשים] להשבית הערות על %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[מאתר אנשים] להפעיל הערות על %(full_name)s?"
+msgstr "‏[כלי Google לאיתור אנשים] להפעיל הערות על %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[מאתר אנשים] מפעיל הודעה על הערות עבור \"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] מפעיל הודעה על הערות עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[חיפוש אנשים] הערות מושבתות כעת עבור \"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] הערות מושבתות כעת עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[מאתר אנשים] הערות מופעלות כעת ב-\"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] הערות מופעלות כעת ב-\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[מאתר אנשים] הודעה על שחזור רשומה עבור \"%(full_name)s\""
+msgstr "‏[כלי Google לאיתור אנשים] הודעה על שחזור רשומה עבור \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[מאתר אנשים] עדכון סטטוס עבור %(full_name)s"
+msgstr "‏[כלי Google לאיתור אנשים] עדכון סטטוס עבור %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[מאתר אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
+msgstr "‏[כלי Google לאיתור אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
 
 msgid "female"
 msgstr "נקבה"
@@ -1526,7 +1546,7 @@ msgid "male"
 msgstr "זכר"
 
 msgid "on"
-msgstr "ב:"
+msgstr "ב"
 
 msgid "other"
 msgstr "אחר"
