@@ -18,7 +18,11 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import csv
+import logging
+import re
 import StringIO
+import xml.dom.minidom
+import django.utils.html
 
 import external_search
 import importer
@@ -228,6 +232,7 @@ class Write(utils.BaseHandler):
   </status:write>
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
+
 class Search(utils.BaseHandler):
     https_required = False
 
@@ -279,6 +284,7 @@ class Search(utils.BaseHandler):
             self.response.out, records, get_notes_for_person)
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
+
 class Subscribe(utils.BaseHandler):
     https_required = True
 
@@ -317,3 +323,71 @@ class Unsubscribe(utils.BaseHandler):
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')
         return self.info(200, 'Not subscribed')
+
+
+class HandleSMS(utils.BaseHandler):
+    #https_required = True
+    https_required = False
+    repo_required = False
+
+    MAX_RESULTS = 3
+
+    def post(self):
+        if not (self.auth and self.auth.search_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key.')
+            return
+
+        body = self.request.body_file.read()
+        logging.info('post body: %r' % body)
+        doc = xml.dom.minidom.parseString(body)
+        #doc = xml.dom.minidom.parse(self.request.body_file)
+        message = self.get_element_text(doc, 'message_text')
+        receiver_phone_number = self.get_element_text(
+            doc, 'receiver_phone_number')
+
+        repo = 'japan'  # kari
+
+        responses = []
+        m = re.search(r'^search\s+(.+)$', message, re.I)
+        if m:
+            query_string = m.group(1).strip()
+            query = TextQuery(query_string)
+            people = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
+            for person in people:
+                fields = []
+                fields.append(person.full_name)
+                if person.latest_status:
+                    fields.append(person.latest_status)
+                if person.sex: fields.append(person.sex)
+                if person.age: fields.append(person.age)
+                if person.home_city or person.home_state:
+                    fields.append(
+                        'From: %s %s' % (person.home_city, person.home_state))
+                responses.append(' / '.join(fields))
+            responses.append(
+                'All data entered in PersonFinder is available to the public '
+                'and usable by anyone. Google does not review or verify the '
+                'accuracy of this data http://goo.gl/UCAXa')
+        else:
+            responses = ['Usage: Search Hiroshi']
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.write('<?xml version="1.0" encoding="utf-8"?>\n')
+        self.write('<response>\n')
+        for response in responses:
+            self.write(
+                '  <message_text>%s</message_text>\n' %
+                django.utils.html.escape(response))
+        self.write('</response>\n')
+
+    def get_element_text(self, doc, tag_name):
+        elems = doc.getElementsByTagName(tag_name)
+        if elems:
+            text = u''
+            for node in elems[0].childNodes:
+                if node.nodeType == node.TEXT_NODE:
+                    text += node.data
+            return text.encode('utf-8')
+        else:
+            return None
