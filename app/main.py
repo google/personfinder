@@ -31,6 +31,7 @@ import const
 import django.utils.html
 import legacy_redirect
 import logging
+import model
 import pfif
 import resources
 import utils
@@ -78,11 +79,14 @@ HANDLER_CLASSES[''] = 'start.Handler'
 HANDLER_CLASSES['admin/api_keys'] = 'admin_api_keys.CreateOrUpdateApiKey'
 HANDLER_CLASSES['admin/api_keys/list'] = 'admin_api_keys.ListApiKeys'
 HANDLER_CLASSES['api/import'] = 'api.Import'
+HANDLER_CLASSES['api/import/notes'] = 'api.Import'
+HANDLER_CLASSES['api/import/persons'] = 'api.Import'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
 HANDLER_CLASSES['api/subscribe'] = 'api.Subscribe'
 HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
+HANDLER_CLASSES['api/stats'] = 'api.Stats'
 HANDLER_CLASSES['api/handle_sms'] = 'api.HandleSMS'
 HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
@@ -92,6 +96,7 @@ HANDLER_CLASSES['sitemap/ping'] = 'sitemap.SiteMapPing'
 HANDLER_CLASSES['tasks/count/note'] = 'tasks.CountNote'
 HANDLER_CLASSES['tasks/count/person'] = 'tasks.CountPerson'
 HANDLER_CLASSES['tasks/count/reindex'] = 'tasks.Reindex'
+HANDLER_CLASSES['tasks/count/update_dead_status'] = 'tasks.UpdateDeadStatus'
 HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
@@ -189,11 +194,9 @@ def select_lang(request, config=None):
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
 
 def get_repo_options(request, lang):
-    """Returns a list of the names and titles of the active repositories."""
+    """Returns a list of the names and titles of the launched repositories."""
     options = []
-    for repo in config.get('active_repos') or []:
-        if config.get_for_repo(repo, 'deactivated'):
-            continue
+    for repo in model.Repo.list_launched():
         titles = config.get_for_repo(repo, 'repo_titles', {})
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
@@ -212,7 +215,6 @@ def get_language_options(request, config=None):
 
 def get_secret(name):
     """Gets a secret from the datastore by name, or returns None if missing."""
-    import model
     secret = model.Secret.get_by_key_name(name)
     if secret:
         return secret.secret

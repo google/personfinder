@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s avis de recherche sélectionnés\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Avis de recherche similaires à %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Résultats de recherche pour %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -264,6 +273,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Aucun résultat pour %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -287,6 +299,10 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      La date d'expiration de l'avis de recherche a été repoussée au "
+"%(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -591,9 +607,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Si vous marquez cette note comme indésirable, elle sera masquée par "
+"défaut. Elle sera toujours associée à l'avis de recherche, mais il faudra"
+" cliquer dessus pour en afficher le contenu. Les utilisateurs pourront "
+"également supprimer l'indication de pourriel associée à la note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Si vous supprimez l'indication de pourriel associée à cette note, elle "
+"sera visible par défaut."
 
 msgid "CSV file"
 msgstr "Fichier CSV"
@@ -673,6 +695,12 @@ msgstr "Désactiver les commentaires pour cet avis de recherche"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Cette personne possède-t-elle des pages de profils sur d'autres sites Web?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Téléchargez ce %(begin_link)smodèle Excel%(end_link)s, et ajoutez-y des "
+"lignes."
+
 msgid "Download the sound as MP3"
 msgstr "Télécharger le son en format MP3"
 
@@ -690,11 +718,6 @@ msgstr "Intégrer l'application"
 
 msgid "Enable notes on this record"
 msgstr "Activer les commentaires pour cet avis de recherche"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Assurez-vous que toutes les dates respectent le format UTC : AAAA-MM-"
-"JJTHH:MM:SSZ."
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Entrez la date selon le format AAAA-MM-JJ"
@@ -871,6 +894,11 @@ msgstr ""
 "Si vous avez une photo de cette personne, téléversez-la ou entrez "
 "l'adresse URL du fichier."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Dans Excel, sélectionnez Fichier &gt; Enregistrer sous…, puis enregistrez"
+" le fichier au format CSV (.csv)."
+
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Essayez de nouveau."
 
@@ -894,6 +922,9 @@ msgstr "Afficher les clés d'API dans une liste"
 
 msgid "Mark records as duplicate"
 msgstr "Marquer les avis de recherche comme des doublons"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Marquer les fiches sélectionnées comme doublons"
 
 msgid "Message (required)"
 msgstr "Message (obligatoire)"
@@ -973,6 +1004,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Non autorisé à publier des notes avec l'état « J'ai reçu des "
+"renseignements indiquant que cette personne est décédée »."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -987,6 +1020,9 @@ msgstr "Auteur du commentaire"
 
 msgid "Note text"
 msgstr "Commentaire"
+
+msgid "Notes for a possible duplicate"
+msgstr "Notes pour un doublon éventuel"
 
 msgid "Notes for this person"
 msgstr "Commentaires concernant cette personne"
@@ -1022,7 +1058,7 @@ msgid "Original site name"
 msgstr "Nom du site original"
 
 msgid "Other website"
-msgstr ""
+msgstr "Autre site Web"
 
 #, fuzzy
 msgid ""
@@ -1096,6 +1132,9 @@ msgstr "Veuillez indiquer une adresse courriel valide."
 msgid "Possible duplicates"
 msgstr "Doublons possibles"
 
+msgid "Possible duplicates found."
+msgstr "Doublons éventuels trouvés."
+
 msgid "Postal or zip code"
 msgstr "Code postal"
 
@@ -1128,9 +1167,6 @@ msgstr "Raison de la suppression :"
 
 msgid "Reason for disabling notes:"
 msgstr "Raison pour la désactivation des commentaires :"
-
-msgid "Records selected"
-msgstr "Entrées sélectionnées"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1184,7 +1220,7 @@ msgid "Show sensitive information"
 msgstr "Afficher les données sensibles"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Afficher la personne ayant signalé ces avis en double"
 
 msgid "Sign in"
 msgstr "Connexion"
@@ -1235,14 +1271,8 @@ msgstr "S'abonner aux mises à jour concernant cette personne"
 msgid "Switch to address"
 msgstr "Passer à l'adresse"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Passer au mode de marquage des doublons"
-
 msgid "Switch to lat/long"
 msgstr "Passer au mode latitude/longitude"
-
-msgid "Switch to normal view mode"
-msgstr "Passer au mode d'affichage normal"
 
 msgid "Tell us the status of this person"
 msgstr "Dites-nous l'état de cette personne"
@@ -1430,8 +1460,14 @@ msgstr "Mettre à jour une clé existante"
 msgid "Upload"
 msgstr "Téléverser"
 
-msgid "Upload CSV files"
-msgstr "Téléverser les fichiers CSV"
+msgid "Upload notes in CSV format"
+msgstr "Téléverser des notes au format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Téléverser les fiches sur les personnes au format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Téléversez votre fichier CSV ci-dessous"
 
 msgid "View the record"
 msgstr "Afficher l'avis de recherche"

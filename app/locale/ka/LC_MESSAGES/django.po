@@ -1,0 +1,1633 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  იმაში დასარწმუნებლად, რომ შენიშვნების ჩართვა-გამორთვა მხოლოდ ჩანაწერის "
+"ავტორის\n"
+"  ნებართვის საფუძველზე ხდება, ჩანაწერის ავტორს დადასტურების წერილი "
+"გაეგზავნება.\n"
+"  თუ ავტორი თქვენ ხართ, შეამოწმეთ ელფოსტა ქვემოთა ღილაკზე დაწკაპუნებით.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ძვირფასო %(author_name)s,\n"
+"\n"
+"მომხმარებელმა მოითხოვა შენიშვნების ჩართვის უფლება ჩანაწერში, რომელიც "
+"ეკუთვნის\n"
+"„%(full_name)s“-ს.\n"
+"\n"
+"დამახსოვრებულია თქვენი, როგორც ამ ჩანაწერის ავტორის ელფოსტის მისამართი.  "
+"ამ ჩანაწერში შენიშვნების\n"
+"ჩასართველად\n"
+"გადადით ამ ბმულზე 3 დღის განმავლობაში:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ძვირფასო %(author_name)s,\n"
+"\n"
+"მომხმარებელმა მოითხოვა შენიშვნების გამორთვის უფლება ჩანაწერში, რომელიც "
+"ეკუთვნის\n"
+"„%(full_name)s“-ს.\n"
+"\n"
+"დამახსოვრებულია თქვენი, როგორც ამ ჩანაწერის ავტორის ელფოსტის მისამართი.  "
+"ამ ჩანაწერში შენიშვნების\n"
+"გამოსართველად\n"
+"გადადით ამ ბმულზე 3 დღის განმავლობაში:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"ძვირფასო %(author_name)s,\n"
+"თქვენ ახლახანს ჩაწერეთ შენიშვნა „%(full_name)s“-ის ჩანაწერში.  \n"
+"თქვენი შენიშვნის გამოსაქვეყნებლად გადადით ამ მბულზე 3 დღის განმავლობაში:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    გაფრთხილება: ამ ჩანაწერს ვადა %(expiration_days)s "
+"დღეზე ადრე ამოეწურება.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    გაფრთხილება: ამ ჩანაწერს ვადა ერთ დღეზე ნაკლებ დროში "
+"ამოეწურება.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            არჩეულია %(dup_count)s ჩანაწერი\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        %(full_name)s-ის ჩანაწერების მსგავსი ჩანაწერები\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        ძიების შედეგები მოთხოვნაზე: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ნამდვილად გსურთ „%(full_name)s“-ის ჩანაწერის წაშლა?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ნამდვილად გსურთ „%(full_name)s“-თან დაკავშირებული შენიშვნების "
+"გამორთვა?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ნამდვილად გსურთ „%(full_name)s“-ის ჩანაწერებში შენიშვნების "
+"გამორთვა?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ნამდვილად გსურთ „%(full_name)s“-თან დაკავშირებული შენიშვნების "
+"ჩართვა?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ნამდვილად გსურთ „%(full_name)s“-ის ჩანაწერის ვადის გახანგრძლივება?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      თქვენი შენიშვნის დადასტურება\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      წაშლის შემთხვევაში,\n"
+"      შეუძლებელი გახდება ამ ჩანაწერის მოძიება და ნახვა ამ საიტზე.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      თუ გსურთ მისი სამუდამოდ წაშლა,\n"
+"      გთხოვთ, დაუკავშირდეთ თავდაპირველ წყაროს.\n"
+"      თავდაპირველი ჩანაწერი იხილეთ:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      მოთხოვნაზე %(query)s შედეგები ვერ მოიძებნა\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      თქვენ მიერ შეყვანილი URL არ გავს %(website)s-ის პროფილის სწორ "
+"URL-ს.\n"
+"      გთხოვთ, გადახვიდეთ ამ პიროვნების პროფილის გვერდზე %(website)s-ზე, "
+"შემდეგ კი, დააკოპიროთ და ჩასვათ\n"
+"      ის URL აქ.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      ამ ჩანაწერის ვადა %(expiry_date)s-მდე გახანგრძლივდა.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      ეს ჩანაწერი არის ჩანაწერის ასლი სხვა წყაროდან.\n"
+"      შეგიძლიათ აქ წაშალოთ ჩანაწერი,\n"
+"      მაგრამ, გთხოვთ, გაითვალისწინოთ, რომ\n"
+"      შესაძლოა მოგვიანებით მისივე სხვა ასლი თავდაპირველი წყაროდან "
+"მივიღოთ.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    იმაში დასარწმუნებლად, რომ შენიშვნების ჩართვა-გამორთვა მხოლოდ "
+"ჩანაწერის ავტორის\n"
+"  ნებართვის საფუძველზე ხდება, ჩანაწერის ავტორს დადასტურების წერილი "
+"გაეგზავნება.\n"
+"  თუ ავტორი თქვენ ხართ, შეამოწმეთ ელფოსტა ქვემოთა ღილაკზე დაწკაპუნებით.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  ჩანაწერი კვლავ ხილული დარჩება ამ საიტზე, მაგრამ ვეღარავინ შეძლებს, "
+"გამოაქვეყნოს\n"
+"  მასში მეტი შენიშვნა.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  თქვენი შენიშვნის გამოსაქვეყნებლად გთხოვთ, შეიყვანოთ თქვენი ელფოსტის "
+"მისამართი ქვემოთ და მიჰყვეთ\n"
+"  დადასტურების ბმულს, რომელსაც მიიღებთ.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"მომხმარებელმა წაშალა „%(full_name)s“-ის ჩანაწერი\n"
+"%(site_url)s-ზე.\n"
+"\n"
+"თქვენ იღებთ შეტყობინებას წაშლის შესახებ, რადგან თქვენი ელფოსტის მისამართი"
+"\n"
+"დამახსოვრებულია, როგორც ამ ჩანაწერზე გაკეთებული შენიშვნის ავტორის "
+"მისამართი.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"მომხმარებელმა წაშალა „%(full_name)s“-ის ჩანაწერი\n"
+"%(site_url)s-ზე.\n"
+"\n"
+"თქვენ იღებთ შეტყობინებას წაშლის შესახებ, რადგან თქვენი ელფოსტის მისამართი"
+"\n"
+"დამახსოვრებულია, როგორც ამ ჩანაწერის ავტორის მისამართი.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"%(days_until_deletion)s დღეში ჩანაწერი სამუდამოდ წაიშლება.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"შენიშვნა: თუ ფიქრობთ, რომ ეს ჩანაწერი შეცდომით წაიშალა, შეგიძლიათ\n"
+"აღადგინოთ მომდევნო %(days_until_deletion)s დღის განმავლობაში შემდეგ "
+"ბმულზე გადასვლით:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"„%(full_name)s“-ის ჩანაწერში შენიშვნები გამორთულია.  ჩანაწერის სანახავად\n"
+"მიჰყევით ბმულს:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"თქვენ იღებთ ამ შეტყობინებას, რადგან თქვენი ელფოსტის მისამართი ასოცირდება "
+"ამ\n"
+"პიროვნების ჩანაწერთან ან ჩანაწერის შენიშვნასთან.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"„%(full_name)s“-ის ჩანაწერში შენიშვნები ჩართულია.  ჩანაწერის სანახავად\n"
+"მიჰყევით ბმულს:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"თქვენ იღებთ ამ შეტყობინებას, რადგან თქვენი ელფოსტის მისამართი ასოცირდება "
+"ამ\n"
+"პიროვნების ჩანაწერთან ან ჩანაწერის შენიშვნასთან.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"ადრე წაშლილი „%(full_name)s“-ის ჩანაწერის ავტორმა\n"
+"აღადგინა ჩანაწერი.  ჩანაწერის სანახავად\n"
+"მიჰყევით ბმულს:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"თქვენ იღებთ ამ შეტყობინებას, რადგან თქვენი ელფოსტის მისამართი ასოცირდება "
+"ამ\n"
+"პიროვნების ჩანაწერთან ან ჩანაწერის შენიშვნასთან.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"„%(full_name)s“-ის ჩანაწერში ახალი შენიშვნაა.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"თქვენ გამოიწერეთ „%(full_name)s“-ის შენიშვნები.\n"
+"\n"
+"ამ ჩანაწერის ნახვა შეგიძლიათ მისამართზე\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"გამოწერის გასაუქმებლად მიჰყევით ბმულს: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(დააწკაპუნეთ საჩვენებლად)"
+
+msgid "(unknown)"
+msgstr "(უცნობია)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "შეტყობინება ამ პიროვნებისგან ან სხვებისგან, რომელიც ეძებს ამ პიროვნებას"
+
+msgid "A new API key has been created successfully."
+msgstr "ახალი API-ს გასაღები წარმატებით შეიქმნა."
+
+msgid "API Key Management"
+msgstr "API-ს გასაღებების მართვა"
+
+msgid "About 1 month (30 days) from now"
+msgstr "დაახლოებით კიდევ 1 თვე (30 დღე)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "დაახლოებით კიდევ 1 წელი (360 დღე)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "დაახლოებით კიდევ 2 თვე (60 დღე)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "დაახლოებით კიდევ 3 თვე (90 დღე)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "დაახლოებით კიდევ 6 თვე (180 დღე)"
+
+msgid "About Google Person Finder"
+msgstr "Google-ის დაკარგული ადამიანების ძებნის სერვისის შესახებ"
+
+msgid "About you (required)"
+msgstr "თქვენ შესახებ (აუცილებელი)"
+
+msgid "Administration"
+msgstr "ადმინისტრაცია"
+
+msgid "Age"
+msgstr "ასაკი"
+
+msgid "Alternate family names"
+msgstr "სხვა გვარები"
+
+msgid "Alternate given names"
+msgstr "სხვა სახელები"
+
+msgid "Alternate names"
+msgstr "სხვა სახელები"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "დარწმუნებული ხართ, რომ ეს შენიშვნა სპამი არ არის?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "დარწმუნებული ხართ, რომ ამ შენიშვნის სპამად მონიშვნა გსურთ?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "დარწმუნებული ხართ, რომ გსურთ ამ წაშლილი ჩანაწერის აღდგენა?"
+
+msgid "Atom feed of updates about this person"
+msgstr "განახლებების Atom-ის არხი ამ პიროვნების შესახებ"
+
+msgid "Author's e-mail address"
+msgstr "ავტორის ელფოსტის მისამართი"
+
+msgid "Author's name"
+msgstr "ავტორის სახელი"
+
+msgid "Author's phone number"
+msgstr "ავტორის ტელეფონის ნომერი"
+
+msgid "Authorization key"
+msgstr "ავტორიზაციის გასაღები"
+
+msgid "Back to results list"
+msgstr "დაბრუნება შედეგების სიაში"
+
+msgid "Back to start"
+msgstr "დაბრუნება დასაწყისში"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"სპამად მონიშვნით ნაგულისხმევად მოხდება ამ შენიშვნის დამალვა. ის დარჩება "
+"ჩანაწერის ნაწილად, მაგრამ შენიშვნის კონტენტის სანახავად საჭირო იქნება "
+"კიდევ ერთი დაწკაპუნება. აგრეთვე მომხმარებლები შეძლებენ ამ შენიშვნიდან "
+"სპამის ნიშნის მოშორებას."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "ამ შენიშვნის სპამად მონიშვნის გაუქმებით ის ნაგულისხმევად გახდება ხილული."
+
+msgid "CSV file"
+msgstr "CSV ფაილი"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "შენიშვნა id-ით %(id)s ვერ მოიძებნა"
+
+msgid "Cancel"
+msgstr "გაუქმება"
+
+msgid "City"
+msgstr "ქალაქი"
+
+msgid "Click here to view results."
+msgstr "დააწკაპუნეთ აქ შედეგების სანახავად."
+
+msgid "Close window"
+msgstr "ფანჯრის დახურვა"
+
+msgid "Compare these records"
+msgstr "ამ ჩანაწერების შედარება"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"დააკოპირეთ და ჩასვით შემდეგი HTML-კოდი ამ ხელსაწყოს თქვენს საიტზე "
+"განსათავსებლად"
+
+msgid "Create a new API key"
+msgstr "API-ს ახალი გასაღების შექმნა"
+
+msgid "Create a new record"
+msgstr "ახალი ჩანაწერის შექმნა"
+
+msgid "Create a new record for"
+msgstr "ახალი ჩანაწერის შექმნა"
+
+msgid "Create a new record for a missing person"
+msgstr "ახალი ჩანაწერის შექმნა დაკარგული პიროვნების შესახებ"
+
+msgid "Crisis events"
+msgstr "კრიზისული მოვლენები"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "ამჟამად მიმდინარეობს %(num_people)s ჩანაწერის კვლევა."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "თარიღი არ შეიძლება იყოს მომავალში.  გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid "Date of birth"
+msgstr "დაბადების თარიღი"
+
+msgid "Delete this record"
+msgstr "ამ ჩანაწერის წაშლა"
+
+msgid "Describe how to identify this person."
+msgstr "აღწერეთ, როგორ შეიძლება ამ პიროვნების იდენტიფიკაცია."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "აღწერეთ ამ პიროვნების ფიზიკური ნიშან-თვისებები."
+
+msgid "Description"
+msgstr "აღწერა"
+
+msgid "Desktop version"
+msgstr "დესკტოპის ვერსია"
+
+msgid "Developers"
+msgstr "დეველოპერები"
+
+msgid "Disable notes on this record"
+msgstr "შენიშვნების წაშლა ამ ჩანაწერში"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "აქვს ამ პიროვნებას პროფილის გვერდები სხვა გვერდებზე?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"ჩამოტვირთეთ %(begin_link)sExcel-ის ეს შაბლონი%(end_link)s და დაამატეთ "
+"მწკრივები"
+
+msgid "Download the sound as MP3"
+msgstr "ჩამოტვირთეთ ხმა MP3-ფორმატში"
+
+msgid "E-mail"
+msgstr "ელფოსტა"
+
+msgid "E-mail address"
+msgstr "ელფოსტის მისამართი"
+
+msgid "Edit"
+msgstr "რედაქტირება"
+
+msgid "Embedding the Application"
+msgstr "აპლიკაციის ჩაშენება"
+
+msgid "Enable notes on this record"
+msgstr "ამ ჩანაწერში შენიშვნების ჩართვა"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "შეიყვანეთ ფორმატში წწწწ-თთ-დდ"
+
+msgid "Enter the person's given and family names."
+msgstr "შეიყვანეთ პიროვნების სახელი და გვარი."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "შეიყვანეთ პიროვნების სახელი ან სახელის რომელიმე მონაკვეთი."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+"შეიყვანეთ პიროვნების სახელი, სახელის მონაკვეთები ან მობილური ტელეფონის "
+"ნომერი."
+
+msgid "Enter the person's name."
+msgstr "შეიყვანეთ პიროვნების სახელი."
+
+msgid "Expiry"
+msgstr "ვადა"
+
+msgid "Expiry date of this record"
+msgstr "ამ ჩანაწერის ვადა"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "ვადის გაგრძელება %(extension_days)s დღით"
+
+msgid "Family name"
+msgstr "გვარი"
+
+msgid "Feed of updates about this person"
+msgstr "არხი ან განახლებები ამ პიროვნების შესახებ"
+
+msgid "Follow this link to create a new record"
+msgstr "მიჰყევით ამ ბმულს ახალი ჩანაწერის შესაქმნელად"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"ტელეფონებისთვის, მობილური ტელეფონების გარდა, გთხოვთ, გამოიყენოთ NTT-ის "
+"მიერ უზრუნველყოფილი სერვისი 171."
+
+msgid "Full name"
+msgstr "სრული სახელი"
+
+msgid "Get a new challenge"
+msgstr "ახალი შემოწმება"
+
+msgid "Get a visual challenge"
+msgstr "ვიზუალური შემოწმება"
+
+msgid "Get an audio challenge"
+msgstr "აუდიო შემოწმება"
+
+msgid "Given name"
+msgstr "სახელი"
+
+msgid "Google Person Finder"
+msgstr "Google-ის დაკარგული ადამიანების ძებნა"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "პირადად ესაუბრეთ ამ პიროვნებას სტიქიის შემდეგ? (აუცილებელი)"
+
+msgid "Help"
+msgstr "დახმარება"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"აქ არის %(begin_tag)sCSV-ფაილის ნიმუში%(end_tag)s, რომელიც შეგიძლიათ "
+"დაარედაქტიროთ და ატვირთოთ"
+
+msgid "Hide Map"
+msgstr "რუკის დამალვა"
+
+msgid "Hide note"
+msgstr "შენიშვნის დამალვა"
+
+msgid "Home Address"
+msgstr "სახლის მისამართი"
+
+msgid "Home address"
+msgstr "სახლის მისამართი"
+
+msgid "Home country"
+msgstr "მშობლიური ქვეყანა"
+
+msgid "How can this person be reached now?"
+msgstr "როგორ შეიძლება ამ პიროვნებასთან დაკავშირება ახლა?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "როგორ დაგიკავშირდნენ ამ პიროვნებით დაინტერესებული სხვა ადამიანები"
+
+msgid "I am seeking information"
+msgstr "მე ვეძებ ინფორმაციას"
+
+msgid "I am this person"
+msgstr "ეს პიროვნება მე ვარ"
+
+msgid "I do not want any more updates on this record."
+msgstr "აღარ მსურს ამ ჩანაწერთან დაკავშირებული განახლებების მიღება"
+
+msgid "I do not want my information online anymore."
+msgstr "აღარ მსურს ჩემი ინფირმაცია იყოს ონლაინ."
+
+msgid "I have information about someone"
+msgstr "მაქვს ინფორმაცია ერთი ადამიანის შესახებ"
+
+msgid "I have reason to think this person is missing"
+msgstr "მაქვს მიზეზი ვიფიქრო, რომ ეს პიროვნება დაკარგულია"
+
+msgid "I have received information that this person is alive"
+msgstr "მე მივიღე ინფორმაცია, რომ ეს ადამიანი ცოცხალია"
+
+msgid "I have received information that this person is dead"
+msgstr "მე მივიღე ინფორმაცია, რომ ეს ადამიანი გარდაიცვალა"
+
+msgid "I have received spam due to this note."
+msgstr "სპამი მივიღე ამ შენიშვნასთან დაკავშირებით."
+
+msgid "I have received spam."
+msgstr "მივიღე სპამი."
+
+msgid "I prefer not to specify."
+msgstr "მირჩევნია, არ დავაკონკრეტო."
+
+msgid "I'm looking for someone"
+msgstr "ვეძებ ვიღაცას"
+
+msgid "Identify who you are looking for"
+msgstr "დაადგინეთ, ვის ეძებთ"
+
+msgid "Identify who you have information about"
+msgstr "დაადგინეთ, ვის შესახებ გაქვთ ინფორმაცია"
+
+msgid "Identifying information"
+msgstr "ინფორმაციის იდენტიფიკაცია"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"თუ ამ ჩანაწერებიდან არც-ერთი არ შეესატყვისება პიროვნებას, რომელზეც "
+"ფიქრობდით, შეგიძლიათ დააწკაპუნოთ ქვემოთა ბმულზე ახალი ჩანაწერის "
+"შესაქმნელად."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"თუ ამ შენიშვნის ავტორი თქვენ ხართ, გთხოვთ, შეამოწმოთ ელფოსტა ბმულის "
+"სანახავად, რომ დაადასტუროთ ამ ჩანაწერში შენიშვნების გამორთვის სურვილი.  "
+"თუ ავტორი არ ხართ, გთხოვთ, დაელოდოთ თქვენი მოთხოვნის დადასტურებას "
+"ჩანაწერის ავტორის მხრიდან."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"თუ ამ შენიშვნის ავტორი თქვენ ხართ, გთხოვთ, შეამოწმოთ ელფოსტა ბმულის "
+"სანახავად, რომ დაადასტუროთ ამ ჩანაწერში შენიშვნების ჩართვის სურვილი.  თუ "
+"ავტორი არ ხართ, გთხოვთ, დაელოდოთ თქვენი მოთხოვნის დადასტურებას ჩანაწერის "
+"ავტორის მხრიდან."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "თუ გაქვთ ამ პიროვნების ფოტო, ატვირთეთ ან შეიყვანეთ მისი URL მისამართი."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excel-ში გამოიყენეთ „ფაილი“ &gt; „შენახვა, როგორც...“ და შეინახეთ CSV "
+"ფორმატში (.csv)"
+
+msgid "Incorrect.  Try again."
+msgstr "არასწორია. სცადეთ ხელახლა."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "ელფოსტის მისამართი არასწორია. გთხოვთ, სცადოთ ხელახლა."
+
+msgid "Language selection"
+msgstr "ენის არჩევა"
+
+msgid "Last known location"
+msgstr "ბოლო ცნობილი მდებარეობა"
+
+msgid "Link"
+msgstr "ბმული"
+
+msgid "Link to profile page"
+msgstr "პროფილის გვერდის ბმული"
+
+msgid "List API keys"
+msgstr "API-ს გასაღებების სიის შედგენა"
+
+msgid "Mark records as duplicate"
+msgstr "ჩანაწერების მონიშვნა გამეორებულად"
+
+msgid "Mark the selected records as duplicate"
+msgstr "არჩეული ჩანაწერების მონიშვნა გამეორებულად"
+
+msgid "Message (required)"
+msgstr "შეტყობინება (აუცილებელი)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "შეტყობინება აუცილებელია. გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid "Missing person's current contact information"
+msgstr "დაკარგული ადამიანის ახლანდელი საკონტაქტო ინფორმაცია"
+
+msgid "Missing person's current e-mail address"
+msgstr "დაკარგული ადამიანის ახლანდელი ელფოსტის მისამართი"
+
+msgid "Missing person's current phone number"
+msgstr "დაკარგული ადამიანის ახლანდელი ტელეფონის ნომერი"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"დამატებითი ინფორმაცია დეველოპერებისთვის იხილეთ "
+"%(developers_link_html)sაქ%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"100-ზე მეტი შედეგი; ნაჩვენებია მხოლოდ პირველი 100.  სცადეთ უფრო სრულად "
+"შეიყვანოთ სახელი"
+
+msgid "Name"
+msgstr "სახელი"
+
+msgid "Name (required)"
+msgstr "სახელი (აუცილებელი)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "სახელი აუცილებელია.  გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid "Neighborhood"
+msgstr "უბანი"
+
+msgid "No"
+msgstr "არა"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "ჩანაწერისთვის %(id)s ავტორის ელფოსტა არ არის."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"მობილური ოპერატორის შეტყობინებათა დაფის სერვისში შეტყობინებები "
+"რეგისტრირებული არ არის."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "შენიშვნა ID-ით %(id_str)s არ არის."
+
+msgid "No notes have been posted"
+msgstr "შენიშვნები არ არის გამოქვეყნებული"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "პიროვნება ID-ით %(id_str)s არ არის."
+
+msgid "No such Authorization entity."
+msgstr "ასეთი ავტორიზაციის ერთეული არ არის."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"შენიშვნის გამოქვეყნება სტატუსით „მივიღე ინფორმაცია, რომ ეს პიროვნება "
+"გარდაიცვალა“ არ არის ნებადართული."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "შენიშვნის გამოქვეყნება სტატუსით „believed_dead“ არ არის ნებადართული."
+
+msgid "Not spam"
+msgstr "სპამი არ არის"
+
+msgid "Note author"
+msgstr "შენიშვნის ავტორი"
+
+msgid "Note text"
+msgstr "შენიშვნის ტექსტი"
+
+msgid "Notes for a possible duplicate"
+msgstr "შენიშვნები შესაძლო დუბლიკატისთვის"
+
+msgid "Notes for this person"
+msgstr "შენიშვნები ამ პიროვნებისთვის"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "რიცხვი ან დიაპაზონი (მაგ. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"ან დაამატეთ თქვენს საიტს, როგორც %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "საწყისი URL"
+
+msgid "Original author's name"
+msgstr "თავდაპირველი ავტორის სახელი"
+
+msgid "Original posting date"
+msgstr "თავდაპირველი გამოქვეყნების თარიღი"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"თავდაპირველი გამოქვეყნების თარიღი არ არის წწწწ-თთ-დდ ფორმატში ან ეს "
+"თარიღი არარსებულია.  გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid "Original site name"
+msgstr "საწყისი საიტის სახელი"
+
+msgid "Other website"
+msgstr "სხვა ვებსაიტი"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"გთხოვთ, გაითვალისწინოთ: Person Finder-ის აქტიურ საიტებზე შეყვანილი მთელი "
+"მონაცემები ხელმისაწვდომია საზოგადოებისთვის და მისი გამოყენება ყველას "
+"შეუძლია.  Google არ ამოწმებს და არ ადასტურებს აღნიშნულ მონაცემთა "
+"სიზუსტეს."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "ტელეფონი"
+
+msgid "Phone number"
+msgstr "ტელეფონის ნომერი"
+
+msgid "Photo"
+msgstr "ფოტოები"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr "ატვირთული ფოტოს ფორმატი ამოუცნობია.  გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid "Physical characteristics"
+msgstr "ფიზიკური ნიშან-თვისებები"
+
+msgid "Play the sound again"
+msgstr "ხმის დაკვრა ხელმეორედ"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"გთხოვთ, მონიშნოთ, რომ ამ პიროვნებასთან კონტაქტი დაამყარეთ მიწისძვრის "
+"შემდეგ, ან შეცვალოთ „ამ პიროვნების სტატუსის“ ველი."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"გთხოვთ, გადაამოწმოთ, არის თუ არა ეს იგივე პიროვნება, რომლის შესახებაც "
+"შეტყობინებას აპირებდით."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "განახლებების გამოსაწერად გთხოვთ, დაადასტუროთ თქვენი ელფოსტის მისამართი"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "განახლებების გამოსაწერად გთხოვთ, შეიყვანოთ თქვენი ელფოსტის მისამართი"
+
+msgid "Please explain why you think these are the same person"
+msgstr "გთხოვთ, განმარტოთ, რატომ ფიქრობთ, რომ ისინი ერთიდაიგივე პიროვნებებია"
+
+msgid "Please fill in all the required fields."
+msgstr "გთხოვთ, შეავსოთ ყველა აუცილებელი ველი."
+
+msgid "Please fill in your email address."
+msgstr "გთხოვთ, ჩაწეროთ თქვენი ელფოსტის მისამართი."
+
+msgid "Please provide an valid email address."
+msgstr "გთხოვთ, მიუთითოთ სწორი ელფოსტის მისამართი."
+
+msgid "Possible duplicates"
+msgstr "შესაძლო დუბლიკატები"
+
+msgid "Possible duplicates found."
+msgstr "ნაპოვნია შესაძლო დუბლიკატები."
+
+msgid "Postal or zip code"
+msgstr "საფოსტო ან zip-კოდი"
+
+msgid "Posted by"
+msgstr "გამოაქვეყნა:"
+
+msgid "Proceed"
+msgstr "გაგრძელება"
+
+msgid "Profile Pages"
+msgstr "პროფილების გვერდები"
+
+msgid "Profile page"
+msgstr "პროფილის გვერდი"
+
+msgid "Provide information"
+msgstr "ინფორმაციის მიწოდება"
+
+msgid "Provide information about this person"
+msgstr "ინფორმაციის მიწოდება ამ პიროვნების შესახებ"
+
+msgid "Provided by:"
+msgstr "ინფორმაციის მომწოდებელი:"
+
+msgid "Province or state"
+msgstr "პროვინცია ან შტატი"
+
+msgid "Reason for deletion:"
+msgstr "წაშლის მიზეზი:"
+
+msgid "Reason for disabling notes:"
+msgstr "შენიშვნების გამორთვის მიზეზი:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "„%(query)s“-ის შესატყვისი ჩანაწერები სახელებით და მისამართებით"
+
+msgid "Remove"
+msgstr "წაშლა"
+
+msgid "Report spam"
+msgstr "შეტყობინება სპამის შესახებ"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s-ის ჩანაწერზე დაბრუნება."
+
+msgid "Reveal note"
+msgstr "შენიშვნის გამოჩენა"
+
+msgid "Save this record"
+msgstr "ამ ჩანაწერის შენახვა"
+
+msgid "Search for this person"
+msgstr "ამ პიროვნების ძებნა"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "დამატებითი ინსტრუქციებისთვის იხილეთ %(begin_tag)swiki%(end_tag)s"
+
+msgid "Select a website to add a profile page..."
+msgstr "პროფილის გვერდის დასამატებლად ვებსაიტის არჩევა..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "აირჩიეთ მაქსიმუმ 3 ჩანაწერი დუბლიკატად მოსანიშნად:"
+
+msgid "Send email"
+msgstr "ელფოსტის გაგზავნა"
+
+msgid "Sex"
+msgstr "სქესი"
+
+msgid "Show Map"
+msgstr "რუკის ჩვენება"
+
+msgid "Show sensitive information"
+msgstr "სენსიტიური ინფორმაციის ჩვენება"
+
+msgid "Show who marked these duplicates"
+msgstr "იმ პიროვნებების ჩვენება, ვინც ეს ჩანაწერები მონიშნა დუბლიკატებად"
+
+msgid "Sign in"
+msgstr "შესვლა"
+
+msgid "Sign out"
+msgstr "გასვლა"
+
+msgid "Someone has received information that this person is alive"
+msgstr "ვიღაცამ მიიღო ინფორმაცია, რომ ეს პიროვნება ცოცხალია"
+
+msgid "Someone has received information that this person is dead"
+msgstr "ვიღაცამ მიიღო ინფორმაცია, რომ ეს ადამიანი გარდაიცვალა"
+
+msgid "Someone has reported that this person is missing"
+msgstr "ვიღაცამ გამოგზავნა შეტყობინება ამ პიროვნების დაკარგვის შესახებ"
+
+msgid "Someone is seeking information about this person"
+msgstr "ვიღაც ეძებს ინფორმაციას ამ პიროვნების შესახებ"
+
+msgid "Source of this record"
+msgstr "ამ ჩანაწერის წყარო"
+
+msgid "Source of this record (required)"
+msgstr "ამ ჩანაწერის წყარო (აუცილებელი)"
+
+msgid "Status"
+msgstr "სტატუსი"
+
+msgid "Status of this person"
+msgstr "ამ პიროვნების სტატუსი"
+
+msgid "Street name"
+msgstr "ქუჩის სახელი"
+
+msgid "Street name only, no number"
+msgstr "მხოლოდ ქუჩის სახელი, ნომრის გარეშე"
+
+msgid "Subscribe"
+msgstr "გამოწერა"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s-ის შესახებ განახლებების გამოწერა"
+
+msgid "Subscribe to updates about this person"
+msgstr "ამ პიროვნების შესახებ განახლებების გამოწერა"
+
+msgid "Switch to address"
+msgstr "გადართვა მისამართზე"
+
+msgid "Switch to lat/long"
+msgstr "გადართვა გრძ/განედზე"
+
+msgid "Tell us the status of this person"
+msgstr "გვითხარით ამ პიროვნების სტატუსი"
+
+msgid "Terms of Service"
+msgstr "მომსახურების პირობები"
+
+msgid "The API key has been updated successfully."
+msgstr "API-ს გასაღები წარმატებით განახლდა."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"აუცილებელია სახელისა და გვარის მითითება.  გთხოვთ, დაბრუნდეთ და სცადოთ "
+"ხელახლა."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"თავდაპირველი ავტორის სახელი აუცილებელია.  გთხოვთ, დაბრუნდეთ და სცადოთ "
+"ხელახლა."
+
+msgid "The author has disabled notes on this record."
+msgstr "ავტორმა გამორთო შენიშვნები ამ ჩანაწერში."
+
+msgid "The author has disabled status updates on this record."
+msgstr "ავტორმა გამორთო სტატუსის განახლებები ამ ჩანაწერში."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "სურათი ძალიან დიდია.  გთხოვთ, ატვირთოთ უფრო მცირე ზომის სურათი."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "ამ შენიშვნის სპამად მონიშვნის მიზეზი:"
+
+msgid "The record cannot be extended."
+msgstr "ჩანაწერის ვადის გაგრძელება შეუძლებელია."
+
+msgid "The record has been deleted."
+msgstr "ჩანაწერი წაიშალა."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"თქვენ მიერ არჩეული სტატუსი მიანიშნებს, რომ ეს პიროვნება თქვენ ხართ.  თუ "
+"ეს ასეა, გთხოვთ, აირჩიოთ „დიახ“, რათა მიანიშნოთ, რომ თქვენ დაამყარეთ "
+"კონტაქტი ამ პიროვნებასთან."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "ჟტონი %(token)s არასწორია"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "ჟტონი %(token)s იყო არასწორი."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "მსგავსი სახელების შემცველი %(num_results)s ჩანაწერი არ არსებობს"
+
+msgid "There are some existing records with similar names."
+msgstr "არსებობს მსგავსი სახელების შემცველი რამდენიმე ჩანაწერი."
+
+msgid "There is one existing record with a similar name."
+msgstr "არსებობს ერთი ჩანაწერი მსგავსი სახელით."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "სურათის დამუშავება ვერ მოხერხდა.  გთხოვთ, სცადოთ სხვა სურათით."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"თქვენი მოთხოვნის დამუშავება ვერ მოხერხდა.  ბოდიშს გიხდით შეფერხებისთვის."
+"  ჩვენი ადმინისტრატორები გამოიკვლევენ, თუ საიდან მომდინარეობს ეს "
+"პრობლემა, თუმცა, გთხოვთ, გადაამოწმოთ, რომ თქვენი მოთხოვნის ფორმატი "
+"სწორია."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"ეს გაჯეტები ხელმისაწვდომი გახდა %(apache_link_html)sლიცენზიით Apache "
+"2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "ეს ახალი ჩანაწერია."
+
+msgid "This link is invalid."
+msgstr "ეს ბმული არასწორია."
+
+msgid "This note has been marked as spam."
+msgstr "ეს შენიშვნა სპამად მოინიშნა."
+
+msgid "This note is inappropriate."
+msgstr "ეს შენიშვნა შეუსაბამოა."
+
+msgid "This note is incorrect or untrue."
+msgstr "ეს შენიშვნა არასწორი ან მცდარია."
+
+msgid "This note is spam."
+msgstr "ეს შენიშვნა სპამია."
+
+msgid "This person has been in contact with someone"
+msgstr "ეს პიროვნება დაუკავშირდა ვიღაცას"
+
+msgid "This person has posted a message"
+msgstr "ამ პიროვნებამ გამოაქვეყნა შეტყობინება"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "ამ პიროვნების ჩანაწერი არ არსებობს ან წაიშალა."
+
+msgid "This record has served its purpose."
+msgstr "ამ ჩანაწერმა შეასრულა თავისი დანიშნულება."
+
+msgid "This record is a duplicate of"
+msgstr "ეს ჩანაწერი დუბლიკატია:"
+
+msgid "This record is copied from another source."
+msgstr "ეს ჩანაწერი სხვა წყაროდანაა კოპირებული."
+
+msgid "This record is inappropriate."
+msgstr "ეს ჩანაწერი შეუსაბამოა."
+
+msgid "This record is spam."
+msgstr "ეს ჩანაწერი სპამია."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"საცავი ამჟამად სატესტო რეჟიმშია. სანამ სატესტო რეჟიმი მოქმედებს, 6 საათის"
+" ხანგრძლივობის ჩანაწერები წაიშლება."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "ამ შენიშვნაზე ფოტოს მისამაგრებლად ატვირთეთ ფოტო, ან შეიყვანეთ მისი URL."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"თქვენი მონაცემების წასაშლელად იქონიეთ წვდომა Person Finder-ზე თქვენი "
+"დესკტოპიდან."
+
+msgid "To unsubscribe, follow this link"
+msgstr "გამოწერის გასაუქმებლად მიჰყევით ბმულს"
+
+msgid "To view or add information, select a name below."
+msgstr "ინფორმაციის სანახავად ან დასამატებლად აირჩიეთ სახელი ქვემოთ."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"აკრიფეთ მისამართი ან გახსენით ქვემოთა რუკა და მიუთითეთ მდებარეობა რუკაზე "
+"დაწკაპუნებით."
+
+msgid "Type an address."
+msgstr "აკრიფეთ მისამართი."
+
+msgid "Type the two words:"
+msgstr "აკრიფეთ ორი სიტყვა:"
+
+msgid "Type what you hear:"
+msgstr "აკრიფეთ, რაც გესმით:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "თავდაპირველი ჩანაწერის URL"
+
+msgid "Unspecified"
+msgstr "არ არის მითითებული"
+
+msgid "Update an existing key"
+msgstr "არსებული გასაღების განახლება"
+
+msgid "Upload"
+msgstr "ატვირთვა"
+
+msgid "Upload notes in CSV format"
+msgstr "შენიშვნების ატვირთვა CSV ფორმატში"
+
+msgid "Upload person records in CSV format"
+msgstr "პიროვნების შესახებ ჩანაწერების ატვირთვა CSV ფორმატში"
+
+msgid "Upload your CSV file below"
+msgstr "ატვირთეთ თქვენი CSV ფაილი ქვემოთ"
+
+msgid "View the record"
+msgstr "ჩანაწერის ნახვა"
+
+msgid "We have nothing matching your search."
+msgstr "თქვენი ძიების შესატყვისი ინფორმაცია ვერ მოიძებნა."
+
+msgid "What is this person's name?"
+msgstr "რა ჰქვია ამ პიროვნებას?"
+
+msgid "When should this record disappear?"
+msgstr "როდის გაქრეს ეს ჩანაწერი?"
+
+msgid "Where did this information come from?"
+msgstr "საიდან მოვიდა ეს ინფორმაცია?"
+
+msgid "Where is this person from?"
+msgstr "საიდან არის ეს ადამიანი?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"სანამ სატესტო რეჟიმი მოქმედებს, 6 საათის ხანგრძლივობის ჩანაწერები "
+"წაიშლება მათი ვადის მიუხედავად."
+
+msgid "Yes"
+msgstr "დიახ"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "დიახ, სთხოვე შენიშვნების გამორთვა ავტორს"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "დიახ, სთხოვე შენიშვნების ჩართვა ავტორს"
+
+msgid "Yes, delete the record"
+msgstr "დიახ, ჩანაწერი წაიშალოს"
+
+msgid "Yes, disable notes on this record."
+msgstr "დიახ, ამ ჩანაწერში შენიშვნები გამოირთოს."
+
+msgid "Yes, extend the record"
+msgstr "დიახ, გაგრძელდეს ჩანაწერის ვადა"
+
+msgid "Yes, restore this record"
+msgstr "დიახ, ჩანაწერი აღდგეს"
+
+msgid "Yes, these are the same person"
+msgstr "დიახ, ეს იგივე პიროვნებაა"
+
+msgid "Yes, update the note"
+msgstr "დიახ, შენიშვნა გამახლდეს"
+
+msgid "You are already subscribed. "
+msgstr "თქვენ უკვე გამოიწერეთ. "
+
+msgid "You are already unsubscribed."
+msgstr "თქვენ უკვე გააუქმეთ გამოწერა."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "ამჟამად შესული ხართ, როგორც %(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "ამჟამად შესული ხართ, როგორც %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "ამჟამად შესული არ ხართ."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "შეგიძლიათ წაშლამდე %(begin_tag)sნახოთ ეს ჩანაწერი%(end_tag)s."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "სრული ჩანაწერის ნახვა შეგიძლიათ აქ: %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "თქვენი გამოწერა წარმატებით შესრულდა."
+
+msgid "You have successfully unsubscribed."
+msgstr "თქვენი გამოწერა წარმატებით გაუქმდა."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"თქვენ მიიღეთ ეს შეტყობინება, რადგან გამოწერილი გაქვთ ამ პიროვნებასთან "
+"დაკავშირებული განახლებები:\n"
+
+msgid "Your e-mail address"
+msgstr "თქვენი ელფოსტის მისამართი"
+
+msgid "Your e-mail address:"
+msgstr "თქვენი ელფოსტის მისამართი:"
+
+msgid "Your email"
+msgstr "თქვენი ელფოსტა"
+
+msgid "Your name"
+msgstr "თქვენი სახელი"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"სექციაში „თქვენ შესახებ“ აუცილებელია თქვენი სახელის მითითება.  გთხოვთ, "
+"დაბრუნდეთ და სცადოთ ხელახლა."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"სექციაში „წყარო“ აუცილებელია თქვენი სახელის მითითება.  გთხოვთ, დაბრუნდეთ "
+"და სცადოთ ხელახლა."
+
+msgid "Your phone number"
+msgstr "თქვენი ტელეფონის ნომერი"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"თქვენი მოტხოვნა წარმატებით დამუშავდა. გთხოვთ, შეამოწმოთ შემოსულები "
+"და ჩაშენებულ URL-ზე გადასვლით დაადასტუროთ, რომ გსურთ შენიშვნის "
+"გამოქვეყნება."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr ""
+"[Person Finder] დაადასტურეთ თქვენი შენიშვნა „%(full_name)s“-თან "
+"დაკავშირებით"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] შეტყობინება „%(full_name)s“-ის წაშლის შესახებ"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] გამოირთოს „%(full_name)s“-თან დაკავშირებული შენიშვნები?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] ჩაირთოს „%(full_name)s“-თან დაკავშირებული შენიშვნები?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Person Finder] „%(full_name)s“-თან დაკავშირებული შენიშვნების ჩართვის "
+"შეტყობინება"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr ""
+"[Person Finder] „%(full_name)s“-თან დაკავშირებული შენიშვნები ახლა "
+"გამორთულია"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] „%(full_name)s“-თან დაკავშირებული შენიშვნები ახლა ჩართულია"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] შეტყობინება „%(full_name)s“-ის ჩანაწერის აღდგენის შესახებ"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] %(full_name)s-ის შესახებ სტატუსის განახლება"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Person Finder] თქვენ გამოიწერეთ სტატუსის განახლებები %(full_name)s-ის "
+"შესახებ"
+
+msgid "female"
+msgstr "მდედრობითი"
+
+msgid "in test mode"
+msgstr "სატესტო რეჟიმში"
+
+msgid "male"
+msgstr "მამრობითი"
+
+msgid "on"
+msgstr "ჩართული"
+
+msgid "other"
+msgstr "სხვა"
+

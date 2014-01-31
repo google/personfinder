@@ -58,10 +58,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "Шановний(-а) %(author_name)s!\n"
 "\n"
-"Ви отримали запит на ввімкнення нотатків до запису про особу "
+"Ви отримали запит на ввімкнення нотаток до запису про особу "
 "\"%(full_name)s\".\n"
 "\n"
 "Вашу електронну адресу вказано як адресу автора цього запису. Щоб "
@@ -69,7 +68,6 @@ msgstr ""
 "\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -88,10 +86,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "Шановний(-а) %(author_name)s,\n"
 "\n"
-"Ви отримали запит на вимкнення нотатків до запису про особу\n"
+"Ви отримали запит на вимкнення нотаток до запису про особу\n"
 "\"%(full_name)s\".\n"
 "\n"
 "Вашу електронну адресу вказано як адресу автора цього запису. Щоб "
@@ -99,7 +96,6 @@ msgstr ""
 "\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -150,6 +146,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Вибрано записів: %(dup_count)s\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +156,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Записи, подібні до %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +166,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Результати пошуку для запиту %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -259,6 +264,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Немає результатів для запиту %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -284,6 +292,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Термін дії запису подовжено до %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -582,9 +593,14 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Позначивши цю нотатку як спам, ви сховаєте її за умовчанням. Вона "
+"залишиться в записі, але для її перегляду знадобиться ще один клік. Також"
+" можна вилучити позначку \"спам\" із нотатки."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Якщо вилучити позначку \"спам\" із нотатки, вона відображатиметься за "
+"умовчанням."
 
 msgid "CSV file"
 msgstr "Файл CSV"
@@ -662,6 +678,12 @@ msgstr "Вимкнути нотатки до цього запису"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Чи має ця особа сторінки профілю на інших веб-сайтах?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Завантажте %(begin_link)sцей шаблон у форматі Excel%(end_link)s і додайте"
+" в нього рядки"
+
 msgid "Download the sound as MP3"
 msgstr "Завантажити звук у форматі MP3"
 
@@ -680,11 +702,6 @@ msgstr "Вставка програми"
 msgid "Enable notes on this record"
 msgstr "Увімкнути нотатки до цього запису"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Переконайтеся, що всі дати мають формат yyyy-mm-ddThh:mm:ssZ за "
-"універсальним часом (UTC)"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "Введіть у форматі РРРР-ММ-ДД"
 
@@ -692,12 +709,12 @@ msgid "Enter the person's given and family names."
 msgstr "Введіть ім’я та прізвище особи."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Введіть ім’я та прізвище особи або їх частину."
+msgstr "Введіть ім’я та прізвище особи повністю або декілька букв."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"Введіть ім’я та прізвище (або їх частину) чи номер мобільного телефону "
-"особи."
+"Введіть ім’я та прізвище (повністю або лише або декілька букв) чи номер "
+"мобільного телефону особи."
 
 msgid "Enter the person's name."
 msgstr "Введіть ім’я та прізвище особи."
@@ -856,6 +873,11 @@ msgstr ""
 "Якщо ви маєте фотографію цієї особи, завантажте її або введіть її "
 "URL-адресу."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"У програмі Excel виберіть \"Файл\" &gt; \"Зберегти як…\" і збережіть "
+"шаблон у форматі CSV (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Неправильно. Повторіть спробу."
 
@@ -879,6 +901,9 @@ msgstr "Список ключів API"
 
 msgid "Mark records as duplicate"
 msgstr "Позначити записи як копії"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Позначити вибрані записи як копії"
 
 msgid "Message (required)"
 msgstr "Повідомлення (обов’язково)"
@@ -923,7 +948,7 @@ msgid "Neighborhood"
 msgstr "Район"
 
 msgid "No"
-msgstr "Немає"
+msgstr "Ні"
 
 #, python-format
 msgid "No author email for record %(id)s."
@@ -952,6 +977,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Забороняється публікувати нотатки зі статусом \"У мене є інформація, що "
+"ця особа померла\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Not authorized to post notes with the status \"believed_dead\"."
@@ -964,6 +991,9 @@ msgstr "Автор нотатки"
 
 msgid "Note text"
 msgstr "Текст нотатки"
+
+msgid "Notes for a possible duplicate"
+msgstr "Примітки про ймовірну копію"
 
 msgid "Notes for this person"
 msgstr "Нотатки про цю особу"
@@ -999,7 +1029,7 @@ msgid "Original site name"
 msgstr "Назва початкового веб-сайту"
 
 msgid "Other website"
-msgstr ""
+msgstr "Інший веб-сайт"
 
 #, fuzzy
 msgid ""
@@ -1067,6 +1097,9 @@ msgstr "Введіть дійсну електронну адресу."
 msgid "Possible duplicates"
 msgstr "Можливі копії"
 
+msgid "Possible duplicates found."
+msgstr "Знайдено ймовірні копії."
+
 msgid "Postal or zip code"
 msgstr "Поштовий індекс"
 
@@ -1099,9 +1132,6 @@ msgstr "Причина видалення:"
 
 msgid "Reason for disabling notes:"
 msgstr "Причина вимкнення нотаток:"
-
-msgid "Records selected"
-msgstr "Вибрані записи"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1149,7 +1179,7 @@ msgid "Show sensitive information"
 msgstr "Показати конфіденційну інформацію"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Показати, хто позначив ці копії"
 
 msgid "Sign in"
 msgstr "Увійти"
@@ -1200,14 +1230,8 @@ msgstr "Підписатися на оновлення про цю особу"
 msgid "Switch to address"
 msgstr "Перейти до адреси"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Перейти в режим позначення копій"
-
 msgid "Switch to lat/long"
 msgstr "Перейти до широти й довготи"
-
-msgid "Switch to normal view mode"
-msgstr "Перейти в режим звичайного перегляду"
 
 msgid "Tell us the status of this person"
 msgstr "Повідомте про статус цієї особи"
@@ -1390,8 +1414,14 @@ msgstr "Оновити наявний ключ"
 msgid "Upload"
 msgstr "Завантажити"
 
-msgid "Upload CSV files"
-msgstr "Завантажити файли CSV"
+msgid "Upload notes in CSV format"
+msgstr "Завантажте примітки у форматі CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Завантажте записи про осіб у форматі CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Завантажте файл CSV нижче"
 
 msgid "View the record"
 msgstr "Переглянути запис"

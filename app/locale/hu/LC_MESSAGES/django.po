@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s bejegyzés kiválasztva\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        A következőhöz hasonló bejegyzések: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Találatok erre: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -260,6 +269,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Nincs találat erre: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -283,6 +295,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      A bejegyzést meghosszabbították eddig: %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -491,7 +506,7 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Feliratkozott „%(full_name)s” megjegyzéseire.\n"
+"Feliratkozott „%(full_name)s” állapotfrissítéseire.\n"
 "\n"
 "A bejegyzést a következő címen tekintheti meg:\n"
 "\n"
@@ -586,9 +601,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ha spamként jelöli meg a jegyzetet, azzal alapértelmezés szerint el is "
+"rejti. A jegyzet továbbra is a bejegyzés része marad, de egy külön "
+"kattintásra lesz szükség a tartalmának a megtekintéséhez. A "
+"felhasználóknak lehetőségük lesz eltávolítani a spam jelölést a "
+"jegyzetről."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ha a jegyzetről eltávolítja a spam jelölést, akkor alapértelmezés szerint"
+" láthatóvá teszi azt."
 
 msgid "CSV file"
 msgstr "CSV-fájl"
@@ -666,6 +688,12 @@ msgstr "Megjegyzések letiltása a bejegyzésen"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ennek a személynek vannak profiloldalai más webhelyeken?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Töltse le %(begin_link)sezt az Excel-sablont%(end_link)s, és adjon hozzá "
+"sorokat"
+
 msgid "Download the sound as MP3"
 msgstr "Hang letöltése MP3-ként"
 
@@ -683,11 +711,6 @@ msgstr "Alkalmazás beágyazása"
 
 msgid "Enable notes on this record"
 msgstr "Megjegyzések engedélyezése a bejegyzésen"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Győződjön meg róla, hogy minden dátum éééé-hh-nnTóó:pp:mmZ formátumban "
-"van, UTC időzóna szerint"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
@@ -791,7 +814,7 @@ msgid "I do not want any more updates on this record."
 msgstr "Nem kérek több frissítést ezzel a bejegyzéssel kapcsolatban."
 
 msgid "I do not want my information online anymore."
-msgstr "Nem szeretném tovább tárolni az adataimat online."
+msgstr "Szeretném eltávolítani az adataimat az internetről."
 
 msgid "I have information about someone"
 msgstr "Információm van valakiről"
@@ -858,6 +881,11 @@ msgstr ""
 "Ha rendelkezik fényképpel erről a személyről, töltse fel vagy adja meg az"
 " URL-címét."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excelben használja a Fájl &gt; Mentés másként… lehetőséget, és mentsen "
+"CSV formátumban (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Hibás. Próbálja újra."
 
@@ -880,7 +908,10 @@ msgid "List API keys"
 msgstr "API-kulcsok listázása"
 
 msgid "Mark records as duplicate"
-msgstr "Bejegyzések megjelölése duplikátumként"
+msgstr "Bejegyzések megjelölése ismétlődésként"
+
+msgid "Mark the selected records as duplicate"
+msgstr "A kiválasztott adatok megjelölése ismétlődőként"
 
 msgid "Message (required)"
 msgstr "Üzenet (szükséges)"
@@ -952,6 +983,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"A következő állapottal nem lehet jegyzetet közzétenni: „Arról értesültem,"
+" hogy ez a személy elhalálozott”."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -966,6 +999,9 @@ msgstr "A megjegyzés szerzője"
 
 msgid "Note text"
 msgstr "A megjegyzés szövege"
+
+msgid "Notes for a possible duplicate"
+msgstr "Feljegyzés lehetséges ismétlődéssel kapcsolatban"
 
 msgid "Notes for this person"
 msgstr "Megjegyzések ehhez a személyhez"
@@ -1001,7 +1037,7 @@ msgid "Original site name"
 msgstr "Az eredeti webhely neve"
 
 msgid "Other website"
-msgstr ""
+msgstr "Másik webhely"
 
 #, fuzzy
 msgid ""
@@ -1071,6 +1107,9 @@ msgstr "Kérjük, érvényes e-mail címet adjon meg."
 msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
 
+msgid "Possible duplicates found."
+msgstr "Lehetséges ismétlődések érzékelve."
+
 msgid "Postal or zip code"
 msgstr "Postai irányítószám"
 
@@ -1104,9 +1143,6 @@ msgstr "A törlés oka:"
 msgid "Reason for disabling notes:"
 msgstr "A megjegyzések letiltásának oka:"
 
-msgid "Records selected"
-msgstr "Bejegyzések kiválasztva"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Bejegyzések a következővel egyező névvel és címmel: „%(query)s”"
@@ -1139,7 +1175,7 @@ msgstr "Profiloldal hozzáadásához válasszon egy webhelyet..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
-"Válasszon ki legfeljebb 3 bejegyzést, amelyeket duplikátumként kíván "
+"Válasszon ki legfeljebb 3 bejegyzést, amelyeket ismétlődésként kíván "
 "megjelölni:"
 
 msgid "Send email"
@@ -1155,7 +1191,7 @@ msgid "Show sensitive information"
 msgstr "Bizalmas adatok megjelenítése"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Azok megjelenítése, akik ismétlődőként jelölték meg ezeket"
 
 msgid "Sign in"
 msgstr "Bejelentkezés"
@@ -1206,14 +1242,8 @@ msgstr "Feliratkozás az ezzel a személlyel kapcsolatos frissítésekre"
 msgid "Switch to address"
 msgstr "Váltás a címre"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Váltás az ismétlődésmegjelölési módra"
-
 msgid "Switch to lat/long"
 msgstr "Váltás a szélességi/hosszúsági adatokra"
-
-msgid "Switch to normal view mode"
-msgstr "Váltás normál nézetre"
 
 msgid "Tell us the status of this person"
 msgstr "Ossza meg velünk a személy állapotát"
@@ -1399,8 +1429,14 @@ msgstr "Meglévő kulcs frissítése"
 msgid "Upload"
 msgstr "Feltöltés"
 
-msgid "Upload CSV files"
-msgstr "CSV-fájlok feltöltése"
+msgid "Upload notes in CSV format"
+msgstr "Jegyzetek feltöltése CSV formátumban"
+
+msgid "Upload person records in CSV format"
+msgstr "Személyi adatok feltöltése CSV formátumban"
+
+msgid "Upload your CSV file below"
+msgstr "Töltse fel alább a CSV-fájlt"
 
 msgid "View the record"
 msgstr "Bejegyzés megtekintése"

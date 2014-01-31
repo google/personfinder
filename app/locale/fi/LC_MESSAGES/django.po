@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s tallennetta valittu\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Tallenteet, jotka ovat samankaltaisia kuin %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Hakutulokset haulle %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -263,6 +272,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Ei tuloksia haulla %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -288,6 +300,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Tietojen uusi vanhentumispäivä on %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -584,9 +599,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Merkitsemällä tämän muistiinpanon roskasisällöksi piilotat sen "
+"oletusarvoisesti. Se on silti osa tallennetta, mutta vaatii ylimääräisen "
+"klikkauksen, jotta muistiinpanon sisällön voi nähdä. Käyttäjät voivat "
+"myös poistaa roskasisältömerkinnän tästä muistiinpanosta."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Jos poistat roskasisältömerkinnän tästä muistiinpanosta, se näkyy "
+"oletusarvoisesti."
 
 msgid "CSV file"
 msgstr "CSV-tiedosto"
@@ -664,6 +685,10 @@ msgstr "Poista muistiinpanot käytöstä näissä tiedoissa"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Onko tällä henkilöllä profiilisivuja muissa verkkosivustoissa?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Lataa %(begin_link)stämä Excel-malli%(end_link)s ja lisää siihen rivejä"
+
 msgid "Download the sound as MP3"
 msgstr "Lataa ääni MP3-tiedostona"
 
@@ -681,11 +706,6 @@ msgstr "Sovelluksen upottaminen"
 
 msgid "Enable notes on this record"
 msgstr "Ota muistiinpanot käyttöön näissä tiedoissa"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Varmista, että kaikki päivämäärät ovat muodossa vvvv-kk-ppTtt:mm:ssZ UTC-"
-"ajassa"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Anna muodossa VVVV-KK-PP"
@@ -774,7 +794,7 @@ msgid "Home country"
 msgstr "Kotimaa"
 
 msgid "How can this person be reached now?"
-msgstr "Miten tähän henkilöön voidaan saada yhteys?"
+msgstr "Miten tähän henkilöön voidaan ottaa yhteyttä?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
@@ -813,7 +833,7 @@ msgid "I prefer not to specify."
 msgstr "En halua kertoa."
 
 msgid "I'm looking for someone"
-msgstr "Etsin jotakin henkilöä"
+msgstr "Etsin jotakuta henkilöä"
 
 msgid "Identify who you are looking for"
 msgstr "Ilmoita, ketä etsit"
@@ -856,6 +876,11 @@ msgstr ""
 "Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
 "osoitteen."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Käytä Excelissä kohtaa Tiedosto &gt; Tallenna nimellä… ja tallenna CSV-"
+"muodossa (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Virhe. Yritä uudelleen."
 
@@ -879,6 +904,9 @@ msgstr "Sovellusliittymäavainten luettelo"
 
 msgid "Mark records as duplicate"
 msgstr "Merkitse tallenteet kopioiksi"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Merkitse valitut tietueet päällekkäisiksi tiedoiksi"
 
 msgid "Message (required)"
 msgstr "Viesti (pakollinen)"
@@ -950,6 +978,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Sinulla ei ole lupaa lisätä muistiinpanoja, joiden tila on Olen saanut "
+"tiedon, että tämä henkilö on kuollut."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -964,6 +994,9 @@ msgstr "Muistiinpanon kirjoittaja"
 
 msgid "Note text"
 msgstr "Huomautus"
+
+msgid "Notes for a possible duplicate"
+msgstr "Muistiinpanoja mahdollisesta päällekkäisestä tiedosta"
 
 msgid "Notes for this person"
 msgstr "Tätä henkilöä koskevat muistiinpanot"
@@ -997,7 +1030,7 @@ msgid "Original site name"
 msgstr "Alkuperäinen sivuston nimi"
 
 msgid "Other website"
-msgstr ""
+msgstr "Muu verkkosivusto"
 
 #, fuzzy
 msgid ""
@@ -1067,6 +1100,9 @@ msgstr "Anna käytössä oleva sähköpostiosoite."
 msgid "Possible duplicates"
 msgstr "Mahdolliset kopiot"
 
+msgid "Possible duplicates found."
+msgstr "Löydettiin mahdollisesti päällekkäisiä tietoja."
+
 msgid "Postal or zip code"
 msgstr "Postinumero"
 
@@ -1099,9 +1135,6 @@ msgstr "Poiston syy:"
 
 msgid "Reason for disabling notes:"
 msgstr "Syy muistiinpanojen käytöstä poistamiseen:"
-
-msgid "Records selected"
-msgstr "Tallenteet valittu"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1149,7 +1182,7 @@ msgid "Show sensitive information"
 msgstr "Näytä arkaluonteiset tiedot"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Näytä, kuka merkitsi nämä kaksoiskappaleiksi"
 
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
@@ -1200,14 +1233,8 @@ msgstr "Tilaa tätä henkilöä koskevat päivitykset"
 msgid "Switch to address"
 msgstr "Vaihda osoitteeseen"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Vaihda kopioiden merkintätilaan"
-
 msgid "Switch to lat/long"
 msgstr "Vaihda pituus-/leveysasteisiin"
-
-msgid "Switch to normal view mode"
-msgstr "Vaihda normaaliin näyttötilaan"
 
 msgid "Tell us the status of this person"
 msgstr "Ilmoita tämän henkilön tila"
@@ -1386,8 +1413,14 @@ msgstr "Päivitä olemassa oleva avain"
 msgid "Upload"
 msgstr "Lataa"
 
-msgid "Upload CSV files"
-msgstr "Lataa CSV-tiedostoja"
+msgid "Upload notes in CSV format"
+msgstr "Lähetä muistiinpanot CSV-muodossa"
+
+msgid "Upload person records in CSV format"
+msgstr "Lähetä henkilön tiedot CSV-muodossa"
+
+msgid "Upload your CSV file below"
+msgstr "Lähetä CSV-tiedostosi alta"
 
 msgid "View the record"
 msgstr "Katso tiedot"

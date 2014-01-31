@@ -145,6 +145,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            تم تحديد %(dup_count)s من السجلات\n"
+"          "
 
 #, python-format
 msgid ""
@@ -152,6 +155,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        السجلات التي تشبه: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -159,6 +165,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        نتائج البحث عن: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -254,6 +263,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      لم يتم العثور على نتائج عن: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -266,6 +278,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
+"‏\n"
 "      عنوان URL الذي أدخلته يبدو أنه عنوان URL غير صالح لملف شخصي في "
 "%(website)s.\n"
 "      الرجاء الانتقال إلى صفحة الملف الشخصي لهذا الشخص على %(website)s، "
@@ -279,6 +292,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      تم مد تاريخ صلاحية السجل إلى %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -516,7 +532,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "حوالي 6 أشهر (180 يومًا) من الآن"
 
 msgid "About Google Person Finder"
-msgstr "حول الباحث عن الأشخاص من Google"
+msgstr "‏حول الباحث عن الأشخاص من Google"
 
 msgid "About you (required)"
 msgstr "نبذة عنك (مطلوب)"
@@ -546,7 +562,7 @@ msgid "Are you sure you want to restore this record from deletion?"
 msgstr "هل ترغب بالتأكيد في استعادة هذا السجل من الحذف؟"
 
 msgid "Atom feed of updates about this person"
-msgstr "خلاصة Atom للتحديثات حول هذا الشخص"
+msgstr "‏خلاصة Atom للتحديثات حول هذا الشخص"
 
 msgid "Author's e-mail address"
 msgstr "عنوان البريد الإلكتروني للمؤلف"
@@ -572,12 +588,18 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"يعني وضع علامة على هذه الملاحظة بأنها غير مرغوب فيها، أنه سيتم إخفاؤها "
+"بشكل افتراضي. وستظل جزءًا من السجل إلا أنها ستتطلب نقرة إضافية لعرض "
+"محتويات الملاحظة. وسيتمكن المستخدمون أيضًا من إزالة علامة \"غير مرغوب "
+"فيها\" من هذه الملاحظة."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"بإزالة علامة غير مرغوب فيها من هذه الملاحظة، ستجعل الملاحظة مرئية بشكل "
+"افتراضي."
 
 msgid "CSV file"
-msgstr "ملف CSV"
+msgstr "‏ملف CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -599,7 +621,7 @@ msgid "Compare these records"
 msgstr "مقارنة هذه السجلات"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "انسخ شفرة HTML التالية والصقها لوضع هذه الأداة على موقعك"
+msgstr "‏انسخ شفرة HTML التالية والصقها لوضع هذه الأداة على موقعك"
 
 msgid "Create a new API key"
 msgstr "إنشاء مفتاح جديد لواجهة برمجة التطبيقات"
@@ -650,8 +672,12 @@ msgstr "تعطيل الملاحظات على هذا السجل"
 msgid "Does this person have profile pages at other websites?"
 msgstr "هل لدى هذا الشخص صفحات ملفات شخصية في مواقع ويب أخرى؟"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "‏تنزيل %(begin_link)sالنموذج بتنسيق Excel هذا%(end_link)s وإضافة صفوف إليه"
+
 msgid "Download the sound as MP3"
-msgstr "تنزيل الصوت بتنسيق MP3"
+msgstr "‏تنزيل الصوت بتنسيق MP3"
 
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
@@ -668,13 +694,8 @@ msgstr "تضمين التطبيق"
 msgid "Enable notes on this record"
 msgstr "تمكين الملاحظات على هذا السجل"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"تأكد من أن كل التواريخ بتنسيق yyyy-mm-ddThh:mm:ssZ وفقًا للتوقيت القياسي "
-"العالمي"
-
 msgid "Enter as YYYY-MM-DD"
-msgstr "إدخال بتنسيق YYYY-MM-DD"
+msgstr "‏إدخال بتنسيق YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "أدخل الاسم الأول للشخص واسم عائلته."
@@ -711,7 +732,7 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
-"بالنسبة إلى الأرقام بخلاف الهواتف الجوالة، يرجى استخدام خدمة 171 التي "
+"‏بالنسبة إلى الأرقام بخلاف الهواتف الجوالة، يرجى استخدام خدمة 171 التي "
 "تقدمها NTT."
 
 msgid "Full name"
@@ -730,7 +751,7 @@ msgid "Given name"
 msgstr "الاسم الأول"
 
 msgid "Google Person Finder"
-msgstr "الباحث عن الأشخاص من Google"
+msgstr "‏الباحث عن الأشخاص من Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "هل تحدثت بشكل شخصي مع هذا الشخص بعد حدوث الكارثة؟ (مطلوب)"
@@ -740,7 +761,7 @@ msgstr "مساعدة"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr "إليك %(begin_tag)sنموذج ملف CSV%(end_tag)s يمكنك تعديله وتحميله"
+msgstr "‏إليك %(begin_tag)sنموذج ملف CSV%(end_tag)s يمكنك تعديله وتحميله"
 
 msgid "Hide Map"
 msgstr "إخفاء الخريطة"
@@ -834,7 +855,10 @@ msgstr ""
 "تأكيد مؤلف السجل لطلبك."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "إذا كانت لديك صورة لهذا الشخص، فحمّلها أو أدخل عنوان URL لها."
+msgstr "‏إذا كانت لديك صورة لهذا الشخص، فحمّلها أو أدخل عنوان URL لها."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "‏في Excel، يمكن استخدام ملف &gt; حفظ باسم... والحفظ بتنسيق CSV ‏(csv.)"
 
 msgid "Incorrect.  Try again."
 msgstr "غير صحيح. حاول مرة أخرى."
@@ -859,6 +883,9 @@ msgstr "عرض مفاتيح واجهة برمجة التطبيقات"
 
 msgid "Mark records as duplicate"
 msgstr "وضع علامة على السجلات كمكررة"
+
+msgid "Mark the selected records as duplicate"
+msgstr "وضع علامة على السجلات المحددة باعتبارها مكررة"
 
 msgid "Message (required)"
 msgstr "الرسالة (مطلوبة)"
@@ -928,9 +955,11 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"ليس مصرحًا لك بنشر ملاحظات بالحالة \"لقد استلمت معلومات بأن هذا الشخص "
+"ميت\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "غير مصرح بنشر ملاحظات بالحالة \"believed_dead\"."
+msgstr "‏غير مصرح بنشر ملاحظات بالحالة \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "ليست رسائل غير مرغوب فيها"
@@ -940,6 +969,9 @@ msgstr "مؤلف الملاحظة"
 
 msgid "Note text"
 msgstr "نص الملاحظة"
+
+msgid "Notes for a possible duplicate"
+msgstr "ملاحظات لتكرار محتمل"
 
 msgid "Notes for this person"
 msgstr "ملاحظات هذا الشخص"
@@ -951,10 +983,10 @@ msgstr "الرقم أو النطاق (مثل 20-30)"
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
-msgstr "أو أضف إلى موقعك %(gadget_link_html)sكأداة من Google%(link_end_html)s."
+msgstr "‏أو أضف إلى موقعك %(gadget_link_html)sكأداة من Google%(link_end_html)s."
 
 msgid "Original URL"
-msgstr "عنوان URL الأصلي"
+msgstr "‏عنوان URL الأصلي"
 
 msgid "Original author's name"
 msgstr "اسم المؤلف الأصلي"
@@ -966,14 +998,14 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"تاريخ النشر الأصلي لا يظهر بالتنسيق \"YYYY-MM-DD\"، أو أنه غير صحيح. "
+"‏تاريخ النشر الأصلي لا يظهر بالتنسيق \"YYYY-MM-DD\"، أو أنه غير صحيح. "
 "الرجاء الرجوع وإعادة المحاولة."
 
 msgid "Original site name"
 msgstr "اسم الموقع الأصلي"
 
 msgid "Other website"
-msgstr ""
+msgstr "موقع ويب آخر"
 
 #, fuzzy
 msgid ""
@@ -981,7 +1013,7 @@ msgid ""
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"الرجاء ملاحظة أن: في مواقع البحث عن الأشخاص النشطة، تتوفر كل البيانات "
+"‏الرجاء ملاحظة أن: في مواقع البحث عن الأشخاص النشطة، تتوفر كل البيانات "
 "التي يتم إدخالها للجميع ليتسنى لهم استخدامها. ولا تراجع Google هذه "
 "البيانات أو تتحقق من دقتها."
 
@@ -1041,6 +1073,9 @@ msgstr "الرجاء تقديم عنوان بريد إلكتروني صالح."
 msgid "Possible duplicates"
 msgstr "النتائج المكررة المحتملة"
 
+msgid "Possible duplicates found."
+msgstr "تم العثور على تكرارات محتملة."
+
 msgid "Postal or zip code"
 msgstr "الرمز البريدي"
 
@@ -1073,9 +1108,6 @@ msgstr "أسباب الحذف:"
 
 msgid "Reason for disabling notes:"
 msgstr "سبب تعطيل الملاحظات:"
-
-msgid "Records selected"
-msgstr "تم تحديد السجلات"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1125,7 +1157,7 @@ msgid "Show sensitive information"
 msgstr "عرض المعلومات الحساسة"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "عرض الأشخاص الذين وضعوا علامات على هذه النسخ المكررة"
 
 msgid "Sign in"
 msgstr "تسجيل الدخول"
@@ -1176,14 +1208,8 @@ msgstr "الاشتراك في التحديثات حول هذا الشخص"
 msgid "Switch to address"
 msgstr "التبديل إلى العنوان"
 
-msgid "Switch to duplicate marking mode"
-msgstr "التبديل إلى وضع تمييز السجلات المكررة"
-
 msgid "Switch to lat/long"
 msgstr "التبديل إلى خطوط العرض/الطول"
-
-msgid "Switch to normal view mode"
-msgstr "التبديل إلى وضع العرض العادي"
 
 msgid "Tell us the status of this person"
 msgstr "أخبرنا بحالة هذا الشخص"
@@ -1262,7 +1288,7 @@ msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"تتاح هذه الأدوات بموجب %(apache_link_html)sترخيص Apache "
+"‏تتاح هذه الأدوات بموجب %(apache_link_html)sترخيص Apache "
 "2.0%(link_end_html)s"
 
 msgid "This is a new record."
@@ -1315,7 +1341,7 @@ msgstr ""
 "حذف السجلات التي يتجاوز عمرها 6 ساعات."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr "لإرفاق صورة بهذه الملاحظة، عليك تحميلها أو إدخال عنوان URL لها."
+msgstr "‏لإرفاق صورة بهذه الملاحظة، عليك تحميلها أو إدخال عنوان URL لها."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr "لحذف بياناتك، ادخل إلى الباحث عن الأشخاص من سطح المكتب."
@@ -1341,10 +1367,10 @@ msgid "Type what you hear:"
 msgstr "اكتب ما تسمعه:"
 
 msgid "URL"
-msgstr "عنوان URL"
+msgstr "‏عنوان URL"
 
 msgid "URL of original record"
-msgstr "عنوان URL للسجل الأصلي"
+msgstr "‏عنوان URL للسجل الأصلي"
 
 msgid "Unspecified"
 msgstr "غير محدد"
@@ -1355,8 +1381,14 @@ msgstr "تحديث مفتاح حالي"
 msgid "Upload"
 msgstr "تحميل"
 
-msgid "Upload CSV files"
-msgstr "تحميل ملفات CSV"
+msgid "Upload notes in CSV format"
+msgstr "‏تحميل الملاحظات في تنسيق CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "‏تحميل سجلات الأشخاص بتنسيق CSV"
+
+msgid "Upload your CSV file below"
+msgstr "‏تحميل ملف CSV أدناه"
 
 msgid "View the record"
 msgstr "عرض السجل"
@@ -1479,8 +1511,8 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"تمت معالجة طلبك بنجاح. الرجاء التحقق من البريد الوارد وتأكيد رغبتك في نشر"
-" الملاحظة من خلال اتباع عنوان URL المضمّن."
+"‏تمت معالجة طلبك بنجاح. الرجاء التحقق من البريد الوارد وتأكيد رغبتك في "
+"نشر الملاحظة من خلال اتباع عنوان URL المضمّن."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""

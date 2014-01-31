@@ -120,7 +120,12 @@ class Handler(BaseHandler):
         # (i.e. created for the first time here, not copied from elsewhere).
         source_name = self.params.source_name
         if not self.params.clone:
-            source_name = self.env.netloc  # record originated here
+            # record originated here
+            if self.params.referrer:
+                source_name = "%s (referred by %s)" % (self.env.netloc,
+                                                       self.params.referrer)
+            else:
+                source_name = self.env.netloc
 
         person = Person.create_original(
             self.repo,

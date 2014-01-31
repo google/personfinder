@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s rekod dipilih\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Rekod yang Serupa dengan: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Hasil Carian untuk: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -261,6 +270,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Tiada hasil carian ditemui untuk: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -286,6 +298,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Rekod telah dilanjutkan kepada %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -588,9 +603,16 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Apabila anda menandakan nota ini sebagai spam, anda akan menjadikannya "
+"tersembunyi secara lalai. Nota ini masih akan menjadi sebahagian daripada"
+" rekod, tetapi akan memerlukan satu klik tambahan untuk melihat kandungan"
+" nota tersebut. Pengguna turut boleh menghapuskan tanda spam ini daripada"
+" nota."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Apabila nota ini tidak ditandakan sebagai spam, anda akan menjadikannya "
+"kelihatan secara lalai."
 
 msgid "CSV file"
 msgstr "fail CSV"
@@ -666,6 +688,12 @@ msgstr "Lumpuhkan nota pada rekod ini"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Adakah orang ini mempunyai halaman profil di tapak web yang lain?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Muat turun %(begin_link)stemplat Excel ini%(end_link)s dan tambahkan "
+"baris padanya"
+
 msgid "Download the sound as MP3"
 msgstr "Muat turun bunyi sebagai MP3"
 
@@ -683,9 +711,6 @@ msgstr "Membenamkan Aplikasi"
 
 msgid "Enable notes on this record"
 msgstr "Dayakan nota pada rekod ini"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Pastikan semua tarikh dalam format dd-mm-yyyyThh:mm:ssZ dalam UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Masukkan sebagai DD-MM-YYYY"
@@ -860,6 +885,11 @@ msgstr ""
 "Jika anda mempunyai foto orang ini, muat naik foto tersebut atau masukkan"
 " alamat URLnya."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Dalam Excel, gunakan File &gt; Save as... dan simpan dalam format CSV "
+"(.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Salah. Cuba lagi."
 
@@ -882,7 +912,10 @@ msgid "List API keys"
 msgstr "Senaraikan Kunci API"
 
 msgid "Mark records as duplicate"
-msgstr "Tandakan rekod sebagai salinan"
+msgstr "Tandakan rekod sebagai pendua"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Tandakan rekod yang dipilih sebagai pendua"
 
 msgid "Message (required)"
 msgstr "Mesej (diperlukan)"
@@ -891,7 +924,7 @@ msgid "Message is required. Please go back and try again."
 msgstr "Mesej diperlukan. Sila undur dan cuba lagi."
 
 msgid "Missing person's current contact information"
-msgstr "Maklumat hubungan semasa orang yang hilang"
+msgstr "Maklumat hubungan terkini tentang orang yang hilang"
 
 msgid "Missing person's current e-mail address"
 msgstr "Alamat e-mel semasa orang yang hilang"
@@ -954,6 +987,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Tidak dibenarkan menyiar nota dengan status \"Saya telah menerima "
+"maklumat bahawa orang ini telah meninggal dunia\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Tidak dibenarkan mencatat nota dengan status \"believed_dead\"."
@@ -966,6 +1001,9 @@ msgstr "Pengarang nota"
 
 msgid "Note text"
 msgstr "Teks nota"
+
+msgid "Notes for a possible duplicate"
+msgstr "Nota untuk kemungkinan pendua"
 
 msgid "Notes for this person"
 msgstr "Nota untuk orang ini"
@@ -1001,7 +1039,7 @@ msgid "Original site name"
 msgstr "Nama tapak asal"
 
 msgid "Other website"
-msgstr ""
+msgstr "Tapak web lain"
 
 #, fuzzy
 msgid ""
@@ -1047,8 +1085,8 @@ msgstr ""
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
-"Sila semak sama ada ia sepadan dengan orang yang anda sedang rancang "
-"untuk laporkan ."
+"Sila semak sama ada maklumat ini sepadan dengan maklumat orang yang anda "
+"sedang rancang untuk laporkan."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Sila sahkan alamat e-mel anda untuk melanggan kemas kini"
@@ -1070,6 +1108,9 @@ msgstr "Sila berikan alamat e-mel yang sah."
 
 msgid "Possible duplicates"
 msgstr "Pendua yang sesuai"
+
+msgid "Possible duplicates found."
+msgstr "Kemungkinan pendua ditemui."
 
 msgid "Postal or zip code"
 msgstr "Poskod atau kod zip"
@@ -1104,9 +1145,6 @@ msgstr "Alasan untuk pemadaman:"
 msgid "Reason for disabling notes:"
 msgstr "Sebab untuk melumpuhkan nota:"
 
-msgid "Records selected"
-msgstr "Rekod dipilih"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Rekod dengan nama dan alamat yang sepadan \"%(query)s\""
@@ -1125,7 +1163,7 @@ msgid "Reveal note"
 msgstr "Dedahkan nota"
 
 msgid "Save this record"
-msgstr "Padamkan rekod ini"
+msgstr "Simpan rekod ini"
 
 msgid "Search for this person"
 msgstr "Cari orang ini"
@@ -1138,7 +1176,7 @@ msgid "Select a website to add a profile page..."
 msgstr "Pilih tapak web untuk menambah halaman profil..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Pilih sehingga 3 rekod untuk ditandakan sebagai salinan:"
+msgstr "Pilih sehingga 3 rekod untuk ditandakan sebagai pendua:"
 
 msgid "Send email"
 msgstr "Hantar e-mel"
@@ -1153,7 +1191,7 @@ msgid "Show sensitive information"
 msgstr "Tunjukkan maklumat sensitif"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Tunjukkan siapa yang menandakannya sebagai pendua"
 
 msgid "Sign in"
 msgstr "Log masuk"
@@ -1204,14 +1242,8 @@ msgstr "Langgan kemas kini mengenai orang ini"
 msgid "Switch to address"
 msgstr "Beralih ke alamat"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Beralih ke mod menandakan pendua"
-
 msgid "Switch to lat/long"
 msgstr "Beralih ke lat/long"
-
-msgid "Switch to normal view mode"
-msgstr "Beralih ke mod paparan biasa"
 
 msgid "Tell us the status of this person"
 msgstr "Beritahu kami status orang ini"
@@ -1387,8 +1419,14 @@ msgstr "Kemas kini kunci sedia ada"
 msgid "Upload"
 msgstr "Muat naik"
 
-msgid "Upload CSV files"
-msgstr "Muat naik fail CSV"
+msgid "Upload notes in CSV format"
+msgstr "Muat naik nota dalam format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Muat naik rekod orang dalam format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Muat naik fail CSV anda di bawah ini"
 
 msgid "View the record"
 msgstr "Lihat rekod"
@@ -1400,10 +1438,10 @@ msgid "What is this person's name?"
 msgstr "Apakah nama orang ini?"
 
 msgid "When should this record disappear?"
-msgstr "Bila rekod ini perlu hilang?"
+msgstr "Bila rekod ini harus luput?"
 
 msgid "Where did this information come from?"
-msgstr "Dari manakah datangnya maklumat ini?"
+msgstr "Dari manakah asalnya maklumat ini?"
 
 msgid "Where is this person from?"
 msgstr "Dari manakah orang ini?"
@@ -1483,7 +1521,7 @@ msgstr ""
 "tentang orang berikut:\n"
 
 msgid "Your e-mail address"
-msgstr "Alamat e-mel anda:"
+msgstr "Alamat e-mel anda"
 
 msgid "Your e-mail address:"
 msgstr "Alamat e-mel anda:"

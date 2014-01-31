@@ -155,6 +155,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s កំណត់ត្រា​​បាន​ជ្រើស\n"
+"          "
 
 #, python-format
 msgid ""
@@ -162,6 +165,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        កំណត់​ត្រា​ស្រដៀង​ទៅ​នឹង៖ %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -169,6 +175,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        លទ្ធផល​ស្វែង​រក​សម្រាប់​៖ %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -267,6 +276,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      គ្មាន​លទ្ធផល​រក​ឃើញ​សម្រាប់​​៖ %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -290,6 +302,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      កំណត់​ត្រា​​ត្រូវ​បាន​ពន្យារ​ដល់​ %(expiry_date)s។\n"
+"    "
 
 msgid ""
 "\n"
@@ -513,7 +528,7 @@ msgid "(unknown)"
 msgstr "(មិន​ស្គាល់)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "សារ​មួយ​សម្រាប់​បុគ្គល​នេះ​ ឬ​ផ្សេង​ទៀត​ស្វែង​រក​បុគ្គល​នេះ"
+msgstr "សារ​មួយ​សម្រាប់​បុគ្គល​នេះ​ ឬ​ផ្សេង​ទៀត​ដែល​ស្វែង​រក​បុគ្គល​នេះ"
 
 msgid "A new API key has been created successfully."
 msgstr "​បាន​បង្កើត​សោ​ API ថ្មី​ដោយ​ជោគជ័យ​។"
@@ -522,19 +537,19 @@ msgid "API Key Management"
 msgstr "ការ​គ្រប់គ្រង​​សោ API"
 
 msgid "About 1 month (30 days) from now"
-msgstr "ប្រហែល​ 1 ខែ (30 ថ្ងៃ) ចាប់​ពី​ឥឡូវ​"
+msgstr "ប្រហែល​ ១​ខែ (៣០​ថ្ងៃ) ចាប់​ពី​ឥឡូវ​"
 
 msgid "About 1 year (360 days) from now"
-msgstr "ប្រហែល​ 1 ឆ្នាំ​ (360 ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
+msgstr "ប្រហែល​១​ឆ្នាំ​ (៣៦០​ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
 
 msgid "About 2 months (60 days) from now"
-msgstr "ប្រហែល​ 2 ខែ (60 ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
+msgstr "ប្រហែល​​២​ខែ (៦០​ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
 
 msgid "About 3 months (90 days) from now"
-msgstr "ប្រហែល​ 3 ខែ (90 ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
+msgstr "ប្រហែល​​៣​ខែ (៩០​ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
 
 msgid "About 6 months (180 days) from now"
-msgstr "ប្រហែល​ 6 ខែ (180 ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
+msgstr "ប្រហែល​​៦​ខែ (១៨០​ថ្ងៃ) ចាប់​ពី​ឥឡូវ"
 
 msgid "About Google Person Finder"
 msgstr "អំពី​ស្វែង​រក​មនុស្ស​ Google"
@@ -593,9 +608,17 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"ដោយ​សម្គាល់​ចំណាំ​នេះ​ថា​ជា​សារ​ឥត​បាន​ការ​ "
+"អ្នក​​នឹង​ធ្វើ​ឱ្យ​វា​បាន​លាក់​ដោយ​លំនាំ​ដើម​។ "
+"វា​នឹង​នៅ​តែ​ជា​ផ្នែក​មួយ​នៃ​កំណត់​ត្រា​ "
+"​ប៉ុន្តែ​វា​នឹង​តម្រូវ​ឱ្យ​មាន​ជា​ការ​ចុច​បន្ថែម​ដើម្បី​មើល​មាតិកា​នៃ​ចំណាំ​។"
+" "
+"អ្នក​ប្រើ​ប្រាស់​ក៏​នឹង​អាច​យក​សម្គាល់​សារ​ឥត​បាន​ការ​ចេញ​ពី​ចំណាំ​នេះ​ផង​ដែរ។"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"ដោយ​មិន​សម្គាល់​ចំណាំ​នេះ​ថា​ជា​សារ​ឥត​បាន​ការ​ "
+"អ្នក​នឹង​ធ្វើ​ឱ្យ​វា​មើល​ឃើញ​ដោយ​លំនាំ​ដើម​។"
 
 msgid "CSV file"
 msgstr "ឯកសារ CSV"
@@ -675,6 +698,10 @@ msgstr "បិទ​​កំណត់​ចំណាំ​លើ​កំណត
 msgid "Does this person have profile pages at other websites?"
 msgstr "តើ​បុគ្គល​នេះ​មាន​ទំព័រ​ប្រវត្តិ​រូប​នៅ​តំបន់​បណ្ដាញ​ផ្សេង​ទៀត​ទេ?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "ទាញ​យក​ %(begin_link)sគំរូ Excel នេះ%(end_link)s ហើយ​បន្ថែម​ជួរ​ដេក​ទៅ​វា"
+
 msgid "Download the sound as MP3"
 msgstr "ទាញ​យក​សំឡេង​ជា MP3"
 
@@ -693,16 +720,11 @@ msgstr "ការ​បង្កប់​កម្មវិធី"
 msgid "Enable notes on this record"
 msgstr "បើក​កំណត់​ចំណាំ​ទៅ​លើ​កំណត់​ត្រា​នេះ"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"ធានា​ថា​គ្រប់​កាលបរិច្ឆេទ​ទាំងអស់​នៅ​ក្នុងទម្រង់​ yyyy-mm-ddThh:mm:ssZ "
-"ក្នុង UTC"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "បញ្ចូល​ជា YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "បញ្ចូល​ឈ្មោះ​ដែល​បាន​ផ្ដល់​ឱ្យ​របស់​បុគ្គល​ ​និង​ឈ្មោះ​គ្រួសារ​។"
+msgstr "បញ្ចូល​នាម​ខ្លួន​ ​​និង​នាម​ត្រកូល​​របស់​បុគ្គល​នោះ​​។"
 
 msgid "Enter the person's name or parts of the name."
 msgstr "បញ្ចូល​ឈ្មោះ​របស់​បុគ្គល​ ឬ​ផ្នែក​នៃ​ឈ្មោះ​។"
@@ -721,10 +743,10 @@ msgstr "កាល​បរិច្ឆេទ​ផុត​កំណត់​ន
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "ពន្យារ​កាល​បរិច្ឆេទ​ផុត​កំណត់​ដោយ %(extension_days)s ថ្ងៃ"
+msgstr "ពន្យារ​កាល​បរិច្ឆេទ​ផុត​កំណត់​%(extension_days)s​ថ្ងៃ"
 
 msgid "Family name"
-msgstr "ឈ្មោះ​គ្រួសារ"
+msgstr "នាម​ត្រកូល"
 
 msgid "Feed of updates about this person"
 msgstr "ព័ត៌មាន​បច្ចុប្បន្ន​ភាព​អំពី​បុគ្គល​នេះ"
@@ -752,10 +774,10 @@ msgid "Get an audio challenge"
 msgstr "ទទួល​បាន​ការ​ប្រឈម​អូឌីយ៉ូ"
 
 msgid "Given name"
-msgstr "ឈ្មោះ​ដែល​បាន​ផ្ដល់​ឱ្យ"
+msgstr "នាម​ខ្លួន"
 
 msgid "Google Person Finder"
-msgstr "អ្នក​ស្វែង​រក​មនុស្ស​ Google"
+msgstr "កម្ម​វិធី​រក​មនុស្ស Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
@@ -841,8 +863,8 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"ប្រសិន​បើ​កំណត់​ត្រា​​ទាំងនេះ​មិន​ត្រូវ​គ្នា​នឹង​មនុស្ស​ដែល​អ្នក​ធ្លាប់​មាន​នៅក្នុង​ចិត្ត​"
-" អ្នក​អាច​ចុច​ខាង​ក្រោម​ដើម្បី​បង្កើត​កំណត់​ត្រា​ថ្មី​។"
+"ប្រសិន​បើ​កំណត់​ត្រា​​ទាំងនេះ​មិន​ត្រូវ​គ្នា​នឹង​មនុស្ស​ដែល​អ្នក​ចង់​រក "
+"អ្នក​អាច​ចុច​ខាង​ក្រោម​ដើម្បី​បង្កើត​កំណត់​ត្រា​ថ្មី​។"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -869,6 +891,11 @@ msgstr ""
 "ប្រសិន​បើ​អ្នក​មាន​រូបថត​មួយ​នៃ​បុគ្គល​នេះ​ សូម​ផ្ទុក​វា​ឡើង​ "
 "ឬ​បញ្ចូល​អាសយដ្ឋាន URL របស់​វា​។"
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"ក្នុង​ Excel ប្រើ File &gt; Save as... និង​រក្សា​ទុក​ក្នុង​ទម្រង់ CSV "
+"(.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "មិន​ត្រឹមត្រូវ​។ សូម​ព្យាយាម​ម្តង​ទៀត​។"
 
@@ -892,6 +919,9 @@ msgstr "រាយ​​​សោ API"
 
 msgid "Mark records as duplicate"
 msgstr "សម្គាល់​កំណត់​ត្រា​ជា​ការ​ស្ទួន"
+
+msgid "Mark the selected records as duplicate"
+msgstr "សម្គាល់​កំណត់ត្រា​ដែល​បាន​ជ្រើស​ថា​ស្ទួន"
 
 msgid "Message (required)"
 msgstr "សារ (ទាមទារ)"
@@ -963,6 +993,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"មិន​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យ​ប្រកាស​ចំណាំ​ជាមួយ​នឹង​ស្ថានភាព "
+"\"ខ្ញុំ​បាន​ទទួល​ព័ត៌មាន​ដែល​ថា​មនុស្ស​ម្នាក់​នេះ​បាន​ស្លាប់​\" ។"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -977,6 +1009,9 @@ msgstr "អ្នក​និពន្ធ​កំណត់​ចំណាំ"
 
 msgid "Note text"
 msgstr "អត្ថបទ​កំណត់​ចំណាំ"
+
+msgid "Notes for a possible duplicate"
+msgstr "ចំណាំ​សម្រាប់​​​ភាព​ស្ទួន​​ដែល​មាន"
 
 msgid "Notes for this person"
 msgstr "កំណត់​ចំណាំ​សម្រាប់​បុគ្គល​នេះ"
@@ -1013,7 +1048,7 @@ msgid "Original site name"
 msgstr "ឈ្មោះ​តំបន់​បណ្ដាញ​ដើម"
 
 msgid "Other website"
-msgstr ""
+msgstr "គេហ​ទំព័រ​​ផ្សេងទៀត"
 
 #, fuzzy
 msgid ""
@@ -1028,7 +1063,7 @@ msgstr ""
 "ឬ​ផ្ទៀង​ផ្ទាត់​ភាព​ត្រឹមត្រូវ​នៃ​ទិន្នន័យ​នេះទេ​។"
 
 msgid "Person Finder"
-msgstr "អ្នក​ស្វែង​រក​មនុស្ស"
+msgstr "កម្ម​វិធី​រក​មនុស្ស"
 
 msgid "Phone"
 msgstr "ទូរ​ស័​ព្ទ"
@@ -1083,6 +1118,9 @@ msgstr "សូម​ផ្ដល់​នូវ​អាសយដ្ឋាន​
 msgid "Possible duplicates"
 msgstr "ភាព​ស្ទួន​ដែល​អាច​កើត​ឡើង​"
 
+msgid "Possible duplicates found."
+msgstr "រក​ឃើ​ញ​ភាព​ស្ទួន​ដែល​មាន​។"
+
 msgid "Postal or zip code"
 msgstr "ប្រៃសណីយ៍​ ឬ​កូដ​តំបន់"
 
@@ -1116,9 +1154,6 @@ msgstr "មូលហេតុ​សម្រាប់​ការ​លុប​
 msgid "Reason for disabling notes:"
 msgstr "មូលហេតុ​សម្រាប់​ការ​បិទ​កំណត់​ចំណាំ​:៖"
 
-msgid "Records selected"
-msgstr "កំណត់ត្រា​ដែល​បាន​ជ្រើស"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "កំណត់ត្រា​ជាមួយ​នឹង​ឈ្មោះ ​និង​អាសយដ្ឋាន​ត្រូវ​គ្នា​នឹង \" %(query)s \""
@@ -1150,7 +1185,7 @@ msgid "Select a website to add a profile page..."
 msgstr "ជ្រើស​តំបន់​ប​ណ្តា​ញ​ដើម្បី​បន្ថែម​ទំព័រ​ប្រវត្តិ​រូប​មួយ..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "ជ្រើស​រហូត​ដល់​ទៅ 3 កំណត់​ត្រា​ដើម្បី​សម្គាល់​ថា​ស្ទួន​:៖"
+msgstr "ជ្រើស​រហូត​ដល់​ទៅ​៣​កំណត់​ត្រា​ដើម្បី​សម្គាល់​ថា​ស្ទួន​៖"
 
 msgid "Send email"
 msgstr "ផ្ញើ​​អ៊ី​មែល"
@@ -1162,10 +1197,10 @@ msgid "Show Map"
 msgstr "បង្ហាញ​ផែនទី"
 
 msgid "Show sensitive information"
-msgstr "បង្ហាញ​ព័ត៌មាន​ដែល​ងាយ​ឈឺចាប់"
+msgstr "បង្ហាញ​ព័ត៌មាន​សម្ងាត់"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "បង្ហាញ​អ្នក​ដែល​បាន​សម្គាល់​ទាំង​នេះ​ស្ទួន"
 
 msgid "Sign in"
 msgstr "ចូល"
@@ -1211,19 +1246,13 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "ជា​វ​ប្រចាំ​ទៅ​ភាព​ទាន់សម័យ​អំពី %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "ជា​វ​ប្រចាំ​ទៅ​ភាព​ទាន់សម័យ​អំពី​បុគ្គល​នេះ"
+msgstr "ជា​វ​ប្រចាំ​ដើម្បី​ទទួល​បច្ចុប្បន្នភាព​របស់​បុគ្គល​នេះ"
 
 msgid "Switch to address"
 msgstr "ប្តូ​រ​ទៅ​អាសយដ្ឋាន​"
 
-msgid "Switch to duplicate marking mode"
-msgstr "ប្ដូរ​ទៅ​ទម្រង់​សម្គាល់​ស្ទួន"
-
 msgid "Switch to lat/long"
 msgstr "ប្តូ​រ​ទៅ រយៈទទឹង/រយៈ​បណ្តោយ"
-
-msgid "Switch to normal view mode"
-msgstr "ប្ដូរ​ទៅ​ទម្រង់​ទិដ្ឋភាព​ធម្មតា"
 
 msgid "Tell us the status of this person"
 msgstr "ប្រាប់​យើង​អំពី​ស្ថានភាព​នៃ​បុគ្គល​នេះ"
@@ -1343,7 +1372,7 @@ msgid "This person has posted a message"
 msgstr "បុគ្គល​​នេះ​បាន​ប្រកាស​សារ​មួយ​"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr "ធាតុ​របស់​បុគ្គល​នេះ​មិន​ទាន់​មាន​ ឬ​ត្រូវ​បាន​លុប​។"
+msgstr "ទិន្នន័យ​របស់​បុគ្គល​នេះ​មិន​ទាន់​មាន​ ឬ​ត្រូវ​បាន​លុប​។"
 
 msgid "This record has served its purpose."
 msgstr "កំណត់​ត្រា​នេះ​បាន​បម្រើ​គោល​បំណង​របស់​វា។"
@@ -1415,8 +1444,14 @@ msgstr "ធ្វើ​បច្ចុប្បន្ន​ភាព​​​ស
 msgid "Upload"
 msgstr "ផ្ទុក​ឡើង"
 
-msgid "Upload CSV files"
-msgstr "ផ្ទុក​ឡើង​ឯកសារ CSV"
+msgid "Upload notes in CSV format"
+msgstr "ផ្ទុក​កំណត់​ត្រា​ឡើង​ក្នុង​ទម្រង់​ CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "ផ្ទុកឡើង​កំណត់​ត្រា​​បុគ្គល​ជា​ទ្រង់ទ្រាយ CSV"
+
+msgid "Upload your CSV file below"
+msgstr "ផ្ទុក​ឯកសារ​ CSV របស់​អ្នក​ខាង​ក្រោម​ឡើង"
 
 msgid "View the record"
 msgstr "មើល​កំណត់​ត្រា​"

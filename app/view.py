@@ -79,23 +79,24 @@ class Handler(BaseHandler):
             notes = []
         person.sex_text = get_person_sex_text(person)
         for note in notes:
-            note.status_text = get_note_status_text(note)
-            note.linked_person_url = \
-                self.get_url('/view', id=note.linked_person_record_id)
-            note.flag_spam_url = \
-                self.get_url('/flag_note', id=note.note_record_id,
-                             hide=(not note.hidden) and 'yes' or 'no',
-                             signature=self.params.signature)
-            note.source_date_local = self.to_local_time(note.source_date)
+            self.add_fields_to_notes(note)
         try:
             linked_persons = person.get_all_linked_persons()
         except datastore_errors.NeedIndexError:
             linked_persons = []
-        linked_person_info = [
-            dict(id=p.record_id,
-                 name=p.primary_full_name,
-                 view_url=self.get_url('/view', id=p.record_id))
-            for p in linked_persons]
+        linked_person_info = []
+        for linked_person in linked_persons:
+            try:
+                linked_notes = linked_person.get_notes()
+            except datastore_errors.NeedIndexError:
+                linked_notes = []
+            for note in linked_notes:
+                self.add_fields_to_notes(note)
+            linked_person_info.append(dict(
+                id=linked_person.record_id,
+                name=linked_person.primary_full_name,
+                view_url=self.get_url('/view', id=linked_person.record_id),
+                notes=linked_notes))
 
         # Render the page.
         dupe_notes_url = self.get_url(
@@ -273,3 +274,14 @@ class Handler(BaseHandler):
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)
+
+    def add_fields_to_notes(self, note):
+        """Adds some fields used in the template to a note."""
+        note.status_text = get_note_status_text(note)
+        note.linked_person_url = \
+            self.get_url('/view', id=note.linked_person_record_id)
+        note.flag_spam_url = \
+            self.get_url('/flag_note', id=note.note_record_id,
+                         hide=(not note.hidden) and 'yes' or 'no',
+                         signature=self.params.signature)
+        note.source_date_local = self.to_local_time(note.source_date)

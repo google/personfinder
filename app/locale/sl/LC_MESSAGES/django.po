@@ -149,6 +149,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Št. izbranih zapisov: %(dup_count)s\n"
+"          "
 
 #, python-format
 msgid ""
@@ -156,6 +159,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Zapisi, podobni temu: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -163,6 +169,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Rezultati iskanja za: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -258,6 +267,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Ni bilo rezultatov iskanja za: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -283,6 +295,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Zapis je bil podaljšan do %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -494,7 +509,7 @@ msgstr ""
 "Če se želite odjaviti, uporabite to povezavo: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "(kliknite za prikaz)"
+msgstr "(klikni za prikaz)"
 
 msgid "(unknown)"
 msgstr "(neznano)"
@@ -580,9 +595,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Če označite to kot vsiljeno vsebino, bo privzeto skrito. Še vedno bo del "
+"zapisa, vendar bo za ogled vsebine opombe potreben dodaten klik. "
+"Uporabniki bodo prav tako lahko odstranili oznako vsiljene vsebine za to "
+"opombo."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Če odstranite oznako vsiljene vsebine za to opombo, bo spet privzeto "
+"vidna."
 
 msgid "CSV file"
 msgstr "Datoteka CSV"
@@ -660,6 +681,12 @@ msgstr "Onemogoči opombe v tem zapisu"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ali ima ta oseba strani profila na drugih spletnih mestih?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Prenesite %(begin_link)sto Excelovo predlogo%(end_link)s in ji dodajte "
+"vrstice"
+
 msgid "Download the sound as MP3"
 msgstr "Prenesi zvok v obliki MP3"
 
@@ -678,9 +705,6 @@ msgstr "Vdelava te aplikacije"
 msgid "Enable notes on this record"
 msgstr "Omogoči opombe v tem zapisu"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Zagotovite, da bodo vsi datumi v tej obliki: llll-mm-ddTuu:mm:ssZ (UTC)"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "Vnesite v obliki LLLL-MM-DD"
 
@@ -688,7 +712,7 @@ msgid "Enter the person's given and family names."
 msgstr "Vnesite ime in priimek osebe."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Vnesite ime osebe ali del imena."
+msgstr "Vnesite ime ali del imena osebe."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
@@ -735,7 +759,7 @@ msgid "Get an audio challenge"
 msgstr "Poiščite zvočni izziv"
 
 msgid "Given name"
-msgstr "Dano ime"
+msgstr "Ime"
 
 msgid "Google Person Finder"
 msgstr "Google Iskalnik oseb"
@@ -768,7 +792,7 @@ msgid "Home country"
 msgstr "Država rojstva"
 
 msgid "How can this person be reached now?"
-msgstr "Kako je to osebo mogoče zdaj doseči?"
+msgstr "Kako je mogoče doseči to osebo zdaj?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kako se lahko drugi, ki jih zanima ta oseba, obrnejo na vas"
@@ -848,6 +872,11 @@ msgstr ""
 "Če imate fotografijo te osebe, jo prenesite v strežnik ali vnesite njen "
 "URL."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"V Excelu kliknite »Datoteka &gt; Shrani kot ...« in shranite v obliki CSV"
+" (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Nepravilno. Poskusite znova."
 
@@ -861,7 +890,7 @@ msgid "Last known location"
 msgstr "Zadnja znana lokacija"
 
 msgid "Link"
-msgstr "Povezava"
+msgstr "povezava"
 
 msgid "Link to profile page"
 msgstr "Povezava do strani profila"
@@ -871,6 +900,9 @@ msgstr "Seznam ključev API"
 
 msgid "Mark records as duplicate"
 msgstr "Označi zapise kot podvojene"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Označi izbrane zapise kot podvojitve"
 
 msgid "Message (required)"
 msgstr "Sporočilo (obvezno)"
@@ -942,6 +974,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Niste pooblaščeni za objavo opomb s statusom »Prejel sem informacije, da "
+"je ta oseba mrtva«."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
@@ -954,6 +988,9 @@ msgstr "Avtor opombe"
 
 msgid "Note text"
 msgstr "Besedilo opombe"
+
+msgid "Notes for a possible duplicate"
+msgstr "Opombe za morebitno podvojitev"
 
 msgid "Notes for this person"
 msgstr "Opombe za to osebo"
@@ -989,7 +1026,7 @@ msgid "Original site name"
 msgstr "Ime izvirnega mesta"
 
 msgid "Other website"
-msgstr ""
+msgstr "Druga spletna mesta"
 
 #, fuzzy
 msgid ""
@@ -1057,6 +1094,9 @@ msgstr "Vnesite veljaven e-poštni naslov."
 msgid "Possible duplicates"
 msgstr "Možni dvojniki"
 
+msgid "Possible duplicates found."
+msgstr "Najdene so morebitne podvojitve."
+
 msgid "Postal or zip code"
 msgstr "Poštna številka"
 
@@ -1089,9 +1129,6 @@ msgstr "Razlog za izbris:"
 
 msgid "Reason for disabling notes:"
 msgstr "Razlog, zaradi katerega ste onemogočili opombe:"
-
-msgid "Records selected"
-msgstr "Izbrani zapisi"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1139,7 +1176,7 @@ msgid "Show sensitive information"
 msgstr "Prikaži občutljive podatke"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Pokaži, kdo je označil te dvojnike"
 
 msgid "Sign in"
 msgstr "Prijava"
@@ -1178,26 +1215,20 @@ msgid "Street name only, no number"
 msgstr "Samo ulica brez številke"
 
 msgid "Subscribe"
-msgstr "Naročite se"
+msgstr "Naroči se"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
 msgstr "Naročite se na novice o osebi %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Naročite se na novice o tej osebi"
+msgstr "Naroči se na novice o tej osebi"
 
 msgid "Switch to address"
 msgstr "Preklopi na naslov"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Preklopi v način za označevanje dvojnikov"
-
 msgid "Switch to lat/long"
 msgstr "Preklopi na zemljepisno širino/dolžino"
-
-msgid "Switch to normal view mode"
-msgstr "Preklopi v običajni način prikaza"
 
 msgid "Tell us the status of this person"
 msgstr "Sporočite nam stanje te osebe"
@@ -1331,8 +1362,8 @@ msgstr ""
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
-"Če želite tej opombi priložiti fotografijo, jo prenesite ali pa vnesite "
-"njen URL."
+"Če želite tej opombi priložiti fotografijo, jo prenesite ali vnesite njen"
+" URL."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr "Če želite izbrisati podatke, dostopite do iskalnika oseb z namizja."
@@ -1350,7 +1381,7 @@ msgid ""
 "clicking on the map."
 msgstr ""
 "Vnesite naslov ali odprite spodnji zemljevid in določite lokacijo, tako "
-"da kliknete zemljevid."
+"da kliknete točko na zemljevidu."
 
 msgid "Type an address."
 msgstr "Vnesite naslov."
@@ -1376,8 +1407,14 @@ msgstr "Posodobi obstoječ ključ"
 msgid "Upload"
 msgstr "Prenos v strežnik"
 
-msgid "Upload CSV files"
-msgstr "Prenesite datoteke CSV"
+msgid "Upload notes in CSV format"
+msgstr "Naložite zapiske v obliki CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Prenesi zapise o osebah v obliki CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Spodaj naložite svojo datoteko CSV"
 
 msgid "View the record"
 msgstr "Oglejte si zapis"
@@ -1417,7 +1454,7 @@ msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
 
 msgid "Yes, disable notes on this record."
-msgstr "Da, onemogočite opombe v tem zapisu."
+msgstr "Da, onemogoči opombe v tem zapisu."
 
 msgid "Yes, extend the record"
 msgstr "Da, podaljšaj zapis"

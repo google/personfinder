@@ -281,7 +281,7 @@ class ReadOnlyTests(TestsBase):
     def test_start_french(self):
         """Check the French start page."""
         doc = self.go('/haiti?lang=fr')
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
     def test_start_creole(self):
         """Check the Creole start page."""
@@ -309,10 +309,10 @@ class ReadOnlyTests(TestsBase):
         fr_session = self.s = scrape.Session(verbose=1)
 
         doc = self.go('/haiti?lang=fr')  # sets cookie
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
         doc = self.go('/haiti')
-        assert 'Je recherche quelqu\'un' in doc.text
+        assert 'Je recherche une personne' in doc.text
 
         # Check that this didn't screw up the language for the other session
         self.s = en_session
@@ -680,7 +680,7 @@ class PersonNoteTests(TestsBase):
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
-        actual_num_notes = len(details_page.all(class_='view note'))
+        actual_num_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         assert actual_num_notes == num_notes, \
             'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
 
@@ -715,7 +715,7 @@ class PersonNoteTests(TestsBase):
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
-        num_initial_notes = len(details_page.all(class_='view note'))
+        num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         note_form = details_page.first('form')
 
         params = dict(kwargs)
@@ -728,7 +728,7 @@ class PersonNoteTests(TestsBase):
             expected['status'] = str(NOTE_STATUS_TEXT.get(status))
 
         details_page = self.s.submit(note_form, **params)
-        notes = details_page.all(class_='view note')
+        notes = details_page.first(class_='self-notes').all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note = notes[-1]
         for field, text in expected.iteritems():
@@ -1503,7 +1503,7 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.all('div', class_='view note')
+        notes = doc.first(class_='self-notes').all('div', class_='view note')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
@@ -1641,6 +1641,50 @@ http://www.foo.com/_account_1''',
         doc = self.go('/haiti/view?lang=en&id=mytestdomain.com/person.21009')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
+
+    def test_referer(self):
+        """Follow the "I have information" flow with a referrer set."""
+        config.set_for_repo('haiti', referrer_whitelist=['a.org'])
+
+        # Set utcnow to match source date
+        SOURCE_DATETIME = datetime.datetime(2001, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(SOURCE_DATETIME)
+        test_source_date = SOURCE_DATETIME.strftime('%Y-%m-%d')
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'provide', 'referrer': 'a.org'},
+                {'ui': 'small'})
+
+        self.go('/haiti?referrer=a.org')
+        search_page = self.s.follow('I have information about someone')
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
+
+        self.s.submit(search_form,
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
+        assert_params()
+        # Because the datastore is empty, should go straight to the create page
+
+        self.verify_create_form(prefilled_params={
+            'given_name': '_test_given_name',
+            'family_name': '_test_family_name'})
+        self.verify_note_form()
+
+        # Submit the create form with minimal information
+        create_form = self.s.doc.first('form')
+        self.s.submit(create_form,
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      author_name='_test_author_name',
+                      text='_test A note body')
+
+        netloc = urlparse.urlparse(self.s.url).netloc
+        self.verify_details_page(1, details={
+            'Original site name:': '%s (referred by a.org)' % netloc
+            })
 
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
@@ -2746,7 +2790,7 @@ _read_profile_url2</pfif:profile_urls>
 
             # Repo feed does not require authorization key.
             doc = self.go('/global/feeds/repo')
-            assert 'haiti' in doc.content
+            assert 'xmlns:gpf' in doc.content
 
         finally:
             config.set_for_repo('haiti', read_auth_key_required=False)
@@ -3661,7 +3705,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not extend_button, 'Didn\'t expect to find expiry extend button'
 
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3813,7 +3857,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.submit(button, url=extend_url)
         assert 'extend the expiration' in doc.text
         # Click the extend button.
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'extend the expiration' in doc.text
         # Click the button on the confirmation page.
         button = doc.firsttag('input', value='Yes, extend the record')
@@ -3840,7 +3884,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
                               value='Disable notes on this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -3921,7 +3965,7 @@ _feed_profile_url2</pfif:profile_urls>
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable notes on this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -4180,7 +4224,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
@@ -4942,7 +4986,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?id=test.google.com/person.111')
         assert 'Subscribe to updates about this person' in doc.text
         button = doc.firsttag('input', id='subscribe_btn')
-        doc = self.s.follow(button.enclosing('a'))
+        doc = self.s.follow_button(button)
 
         # Empty email is an error.
         button = doc.firsttag('input', value='Subscribe')
@@ -6139,9 +6183,9 @@ class FeedTests(TestsBase):
         configure_api_logging()
 
     def tearDown(self):
-        TestsBase.tearDown(self)
         config.set_for_repo('haiti', deactivated=False)
         config.set_for_repo('japan', test_mode=False)
+        TestsBase.tearDown(self)
 
     def test_repo_feed_non_existing_repo(self):
         self.go('/none/feeds/repo')
@@ -6157,7 +6201,6 @@ class FeedTests(TestsBase):
       xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/haiti/feeds/repo</id>
   <title>Person Finder Repository Feed</title>
-  <updated>1970-01-01T00:00:00Z</updated>
 </feed>
 ''' % self.hostport
         assert expected_content == doc.content, \
@@ -6201,12 +6244,15 @@ class FeedTests(TestsBase):
         # verify we logged the repo read.
         verify_api_log(ApiActionLog.REPO, api_key='')
 
-    def test_repo_feed_all_repos(self):
+    def test_repo_feed_all_launched_repos(self):
         config.set_for_repo('haiti', deactivated=True)
         config.set_for_repo('japan', test_mode=True)
         config.set_for_repo('japan', updated_date=utils.get_timestamp(
             datetime.datetime(2012, 03, 11)))
 
+        # 'haiti', 'japan', and 'pakistan' exist in the datastore.  The config
+        # setting launched_repos=['haiti', 'japan'] excludes 'pakistan'; and
+        # 'haiti' is deactivated, so only 'japan' should appear in the feed.
         doc = self.go('/global/feeds/repo')
         expected_content = '''\
 <?xml version="1.0" encoding="UTF-8"?>
@@ -6239,26 +6285,8 @@ class FeedTests(TestsBase):
       </gpf:repo>
     </content>
   </entry>
-  <entry>
-    <id>%s/pakistan</id>
-    <published>2010-08-06T00:00:00Z</published>
-    <updated>2010-08-06T00:00:00Z</updated>
-    <title xml:lang="en">Pakistan Floods</title>
-    <content type="text/xml">
-      <gpf:repo>
-        <gpf:title xml:lang="en">Pakistan Floods</gpf:title>
-        <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
-        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
-        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
-        <gpf:test_mode>false</gpf:test_mode>
-        <gpf:location>
-          <georss:point>33.36 73.26</georss:point>
-        </gpf:location>
-      </gpf:repo>
-    </content>
-  </entry>
 </feed>
-''' % (self.hostport, ROOT_URL, ROOT_URL)
+''' % (self.hostport, ROOT_URL)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -6308,6 +6336,9 @@ class ImportTests(TestsBase):
     """Tests for CSV import page at /api/import."""
     def setUp(self):
         TestsBase.setUp(self)
+        config.set_for_repo(
+            'haiti',
+            api_action_logging=True)
         self.filename = None
 
     def tearDown(self):
@@ -6324,9 +6355,9 @@ class ImportTests(TestsBase):
     def test_import_no_csv(self):
         """Verifies an error message is shown when no CSV file is uploaded."""
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key')
-        assert 'You need to specify at least one CSV file' in doc.text
+        assert 'Please specify at least one CSV file.' in doc.text
 
     def test_import_invalid_authentication_key(self):
         """Verifies an error message is shown when auth key is invalid."""
@@ -6335,7 +6366,7 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='bad_key', content=open(self.filename))
         assert 'Missing or invalid authorization key' in doc.text
 
@@ -6346,7 +6377,7 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'The CSV file is formatted incorrectly' in doc.text
         assert Person.all().count() == 0
@@ -6359,9 +6390,9 @@ class ImportTests(TestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 0
         person = Person.all().get()
@@ -6378,9 +6409,9 @@ class ImportTests(TestsBase):
             '_test_author_name,2013-02-26T09:10:00Z',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 0
         assert Note.all().count() == 1
         note = Note.all().get()
@@ -6399,9 +6430,9 @@ class ImportTests(TestsBase):
             '1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 0
         person = Person.all().get()
@@ -6418,9 +6449,9 @@ class ImportTests(TestsBase):
             'different.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
         assert 'Not in authorized domain' in doc.text
         assert Person.all().count() == 0
         assert Note.all().count() == 0
@@ -6436,10 +6467,10 @@ class ImportTests(TestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 1
         person = Person.all().get()
@@ -6462,10 +6493,10 @@ class ImportTests(TestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.first('form')
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert '[Person] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert '[Note] Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
         assert Note.all().count() == 1
         person = Person.all().get()

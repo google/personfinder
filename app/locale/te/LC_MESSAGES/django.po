@@ -33,14 +33,11 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"\n"
-"  రికార్డ్ రచయిత అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
+"రికార్డ్ లేఖరి అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
 "ప్రారంభించబడ్డాయని\n"
-"  నిర్ధారించడం కోసం, రికార్డ్ రచయితకు నిర్ధారణ సందేశం పంపబడుతుంది.\n"
-"  మీరే రచయిత అయితే, దిగువ బటన్‌‍ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌ను "
-"తనిఖీ చేయండి.\n"
-"\n"
-"  "
+"  నిర్ధారించడం కోసం, రికార్డ్ లేఖరికి నిర్ధారణ సందేశం పంపబడుతుంది.\n"
+"  మీరే లేఖరి అయితే, దిగువ బటన్‌‍ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌ను "
+"తనిఖీ చేయండి."
 
 #, python-format
 msgid ""
@@ -59,18 +56,16 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "ప్రియమైన %(author_name)s,\n"
 "\n"
 "ఒక వినియోగదారు %(full_name)s కోసం రికార్డ్‌లో గమనికలను ప్రారంభించాలని\n"
 "అభ్యర్థించారు.\n"
 "\n"
-"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు రచయితగా రికార్డ్ చేయబడింది. ఈ "
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు లేఖరిగా రికార్డ్ చేయబడింది. ఈ "
 "రికార్డ్‌లో గమనికలను\n"
 "ప్రారంభించడానికి, 3 రోజుల్లోగా ఈ లింక్‌ను అనుసరించండి:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -89,19 +84,17 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
 "ప్రియమైన %(author_name)s,\n"
 "\n"
 "ఒక వినియోగదారు %(full_name)s కోసం రికార్డ్‌లో గమనికలను మీరు నిలిపివేయాలని"
 "\n"
 "అభ్యర్థించారు.\n"
 "\n"
-"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు రచయితగా రికార్డ్ చేయబడింది. ఈ "
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌కు లేఖరిగా రికార్డ్ చేయబడింది. ఈ "
 "రికార్డ్‌లో గమనికలను\n"
 "నిలిపివేయడానికి, 3 రోజుల్లోగా ఈ లింక్‌ను అనుసరించండి:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -150,6 +143,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s రికార్డ్‌లు ఎంచుకోబడ్డాయి\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +153,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        దీనికి సారూప్యమైన రికార్డ్‌లు: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +163,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        దీని కోసం శోధన ఫలితాలు: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -264,6 +266,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      దీని కోసం ఫలితాలు కనుగొనబడలేదు: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -289,6 +294,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      రికార్డ్ గడువు %(expiry_date)s వరకు పొడిగించబడింది.\n"
+"    "
 
 msgid ""
 "\n"
@@ -317,12 +325,11 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    రికార్డ్ రచయిత అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
+"రికార్డ్ లేఖరి అనుమతితోనే గమనికలు నిలిపివేయబడ్డాయని లేదా "
 "ప్రారంభించబడ్డాయని\n"
-"    నిర్ధారించడం కోసం, రికార్డ్ రచయితకు నిర్ధారణ సందేశం పంపబడుతుంది.\n"
-"    మీరే రచయిత అయితే, దిగువ బటన్‌ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌‍ను "
-"తనిఖీ చేయండి.\n"
-"  "
+"    నిర్ధారించడం కోసం, రికార్డ్ లేఖరికి నిర్ధారణ సందేశం పంపబడుతుంది.\n"
+"    మీరే లేఖరి అయితే, దిగువ బటన్‌ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌‍ను "
+"తనిఖీ చేయండి."
 
 msgid ""
 "\n"
@@ -363,7 +370,7 @@ msgstr ""
 "ఒక వినియోగదారు %(site_url)sలో \"%(full_name)s\" కోసం\n"
 "రికార్డ్‌ను తొలగించారు.\n"
 "\n"
-"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌లో ఒక గమనిక యొక్క రచయితగా రికార్డ్\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్‌లో ఒక గమనిక యొక్క లేఖరిగా రికార్డ్\n"
 "చేయబడినందున మేము తొలగింపు గురించి మీకు తెలియజేస్తున్నాము.\n"
 
 #, python-format
@@ -379,7 +386,7 @@ msgstr ""
 "ఒక వినియోగదారు %(site_url)sలో \"%(full_name)s\" కోసం\n"
 "రికార్డ్‌ను తొలగించారు.\n"
 "\n"
-"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్ యొక్క రచయితగా రికార్డ్\n"
+"మీ ఇ-మెయిల్ చిరునామా ఈ రికార్డ్ యొక్క లేఖరిగా రికార్డ్\n"
 "చేయబడినందున మేము తొలగింపు గురించి మీకు తెలియజేస్తున్నాము.\n"
 
 #, python-format
@@ -465,7 +472,7 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"\"%(full_name)s\" కోసం రికార్డ్ యొక్క రచయిత\n"
+"\"%(full_name)s\" కోసం రికార్డ్ యొక్క లేఖరి\n"
 "(మునుపు తొలగించబడింది) రికార్డ్‌ను పునరుద్ధరించారు.  రికార్డ్‌ను\n"
 "వీక్షించడానికి, ఈ లింక్‌ను అనుసరించండి:\n"
 "\n"
@@ -560,19 +567,19 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "ఈ గమనికను మీరు ఖచ్చితంగా స్పామ్‌గా గుర్తు పెట్టాలనుకుంటున్నారా?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "ఈ రికార్డ్‌ను మీరు ఖచ్చితంగా తొలగింపు నుండి పునరుద్ధరించాలనుకుంటున్నారా?"
+msgstr "ఈ రికార్డ్‌ను మీరు ఖచ్చితంగా పునరుద్ధరించాలనుకుంటున్నారా?"
 
 msgid "Atom feed of updates about this person"
 msgstr "ఈ వ్యక్తి గురించి నవీకరణల యొక్క ఆటమ్ ఫీడ్"
 
 msgid "Author's e-mail address"
-msgstr "రచయిత ఇ-మెయిల్ చిరునామా"
+msgstr "లేఖరి ఇ-మెయిల్ చిరునామా"
 
 msgid "Author's name"
-msgstr "రచయిత పేరు"
+msgstr "లేఖరి పేరు"
 
 msgid "Author's phone number"
-msgstr "రచయిత ఫోన్ నంబర్"
+msgstr "లేఖరి ఫోన్ నంబర్"
 
 msgid "Authorization key"
 msgstr "ప్రామాణీకరణ కీ"
@@ -589,9 +596,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"మీరు ఈ గమనికను స్పామ్‌గా గుర్తు పెట్టడం ద్వారా దీన్ని డిఫాల్ట్‌గా "
+"దాచిపెడతారు. ఇది ఇప్పటికీ రికార్డ్‌లో భాగంగా ఉంటుంది, కానీ గమనిక యొక్క "
+"కంటెంట్‌లను వీక్షించడానికి అదనపు క్లిక్ అవసరమవుతుంది. వినియోగదారులు కూడా "
+"ఈ గమనిక నుండి స్పామ్ గుర్తుని తీసివేయగలుగుతారు."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"మీరు ఈ గమనికకు స్పామ్‌గా ఉన్న గుర్తుని తీసివేయడం ద్వారా దీన్ని "
+"డిఫాల్ట్‌గా కనిపించేలా చేస్తారు."
 
 msgid "CSV file"
 msgstr "CSV ఫైల్"
@@ -671,6 +684,12 @@ msgstr "ఈ రికార్డ్‌లో గమనికలను నిల
 msgid "Does this person have profile pages at other websites?"
 msgstr "ఈ వ్యక్తికి ఇతర వెబ్‌సైట్‌ల్లో ప్రొఫైల్ పేజీలు ఉన్నాయా?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"%(begin_link)sఈ Excel టెంప్లేట్%(end_link)sని డౌన్‌లోడ్ చేసి దానికి అడ్డు"
+" వరుసలను జోడించండి"
+
 msgid "Download the sound as MP3"
 msgstr "శబ్దాన్ని MP3 వలె డౌన్‌లోడ్ చేయి"
 
@@ -688,9 +707,6 @@ msgstr "అనువర్తనాన్ని పొందుపరచడం"
 
 msgid "Enable notes on this record"
 msgstr "ఈ రికార్డ్‌లో గమనికలను ప్రారంభించు"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "UTCలో తేదీలన్నీ dd-mm-yyyyThh:mm:ssZ ఆకృతిలో ఉన్నాయని నిర్ధారించుకోండి"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "DD-MM-YYYY వలె నమోదు చేయండి"
@@ -748,7 +764,7 @@ msgid "Get an audio challenge"
 msgstr "ఆడియో సవాలును పొందండి"
 
 msgid "Given name"
-msgstr "పెట్టిన పేరు"
+msgstr "పేరు"
 
 msgid "Google Person Finder"
 msgstr "Google వ్యక్తి శోధిని"
@@ -843,9 +859,9 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"ఈ గమనికను మీరు రచించి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
+"ఈ గమనికను మీరు వ్రాసి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
 "నిలిపివేయాలనుకుంటున్నట్లు నిర్ధారించడానికి లింక్ కోసం మీ ఇ-మెయిల్‌ను "
-"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ రచయిత "
+"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ లేఖరి "
 "నిర్ధారించే వరకు నిరీక్షించండి."
 
 msgid ""
@@ -853,15 +869,20 @@ msgid ""
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"ఈ గమనికను మీరు రచించి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
+"ఈ గమనికను మీరు వ్రాసి ఉంటే, దయచేసి మీరు ఈ రికార్డ్‌లో గమనికలను "
 "ప్రారంభించాలనుకుంటున్నట్లు నిర్ధారించడానికి లింక్ కోసం మీ ఇ-మెయిల్‌ను "
-"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ రచయిత "
+"తనిఖీ చేయండి.  అలా కాకపోతే, దయచేసి మీ అభ్యర్థనను రికార్డ్ లేఖరి "
 "నిర్ధారించే వరకు నిరీక్షించండి."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "మీ వద్ద ఈ వ్యక్తి యొక్క ఫోటో ఉంటే, దాన్ని అప్‌లోడ్ చేయండి లేదా దాని URL "
 "చిరునామాను నమోదు చేయండి."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excelలో, ఫైల్ &gt; ఇలా సేవ్ చేయి... ఉపయోగించి CSV ఆకృతి (.csv)లో సేవ్ "
+"చేయండి"
 
 msgid "Incorrect.  Try again."
 msgstr "తప్పు.  మళ్లీ ప్రయత్నించండి."
@@ -886,6 +907,9 @@ msgstr "API కీలను జాబితా చేయండి"
 
 msgid "Mark records as duplicate"
 msgstr "రికార్డ్‌లను నకిలీగా గుర్తు పెట్టు"
+
+msgid "Mark the selected records as duplicate"
+msgstr "ఎంచుకోబడిన నివేదికలను నకిలీగా గుర్తుపెట్టండి"
 
 msgid "Message (required)"
 msgstr "సందేశం (అవసరం)"
@@ -930,11 +954,11 @@ msgid "Neighborhood"
 msgstr "పరిసరాలు"
 
 msgid "No"
-msgstr "వద్దు"
+msgstr "లేదు"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "రికార్డ్ %(id)s కోసం రచయిత ఇమెయిల్ లేదు."
+msgstr "రికార్డ్ %(id)s కోసం లేఖరి ఇమెయిల్ లేదు."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "క్యారియర్ సందేశ బోర్డ్ సేవకు రిజిస్టర్ అయిన సందేశాలు కనుగొనబడలేదు."
@@ -957,6 +981,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"\"నేను ఈ వ్యక్తి మరణించారని సమాచారాన్ని స్వీకరించాను\" స్థితితో ఉన్న "
+"గమనికలను పోస్ట్ చేయడానికి అధికారం లేదు."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" స్థితితో గమనికలను పోస్ట్ చేయడానికి ప్రామాణీకరించబడలేదు."
@@ -965,10 +991,13 @@ msgid "Not spam"
 msgstr "స్పామ్ కాదు"
 
 msgid "Note author"
-msgstr "గమనిక రచయిత"
+msgstr "గమనిక లేఖరి"
 
 msgid "Note text"
 msgstr "గమనిక వచనం"
+
+msgid "Notes for a possible duplicate"
+msgstr "నకిలీ కావడానికి అవకాశం ఉన్నదాని కోసం గమనికలు"
 
 msgid "Notes for this person"
 msgstr "ఈ వ్యక్తి కోసం గమనికలు"
@@ -988,7 +1017,7 @@ msgid "Original URL"
 msgstr "వాస్తవ URL"
 
 msgid "Original author's name"
-msgstr "వాస్తవ రచయిత పేరు"
+msgstr "వాస్తవ లేఖరి పేరు"
 
 msgid "Original posting date"
 msgstr "వాస్తవంగా పోస్ట్ చేసిన తేదీ"
@@ -1004,7 +1033,7 @@ msgid "Original site name"
 msgstr "వాస్తవ సైట్ పేరు"
 
 msgid "Other website"
-msgstr ""
+msgstr "ఇతర వెబ్‌సైట్"
 
 #, fuzzy
 msgid ""
@@ -1076,6 +1105,9 @@ msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమ
 msgid "Possible duplicates"
 msgstr "సంభావ్య నకిలీలు"
 
+msgid "Possible duplicates found."
+msgstr "నకిలీ కావడానికి అవకాశం ఉన్నవి కనుగొనబడ్డాయి."
+
 msgid "Postal or zip code"
 msgstr "పోస్టల్ లేదా జిప్ కోడ్"
 
@@ -1108,9 +1140,6 @@ msgstr "తొలగింపుకి కారణం:"
 
 msgid "Reason for disabling notes:"
 msgstr "గమనికల నిలిపివేతకు కారణం:"
-
-msgid "Records selected"
-msgstr "ఎంచుకోబడిన రికార్డ్‌లు"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1158,7 +1187,7 @@ msgid "Show sensitive information"
 msgstr "సున్నితమైన సమాచారాన్ని చూపండి"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "వీటిని నకిలీలుగా గుర్తు పెట్టిన వారిని చూపు"
 
 msgid "Sign in"
 msgstr "సైన్ ఇన్ చేయండి"
@@ -1209,14 +1238,8 @@ msgstr "ఈ వ్యక్తి గురించి నవీకరణలక
 msgid "Switch to address"
 msgstr "చిరునామాకు మారండి"
 
-msgid "Switch to duplicate marking mode"
-msgstr "నకిలీ మార్కింగ్ మోడ్‌కు మారండి"
-
 msgid "Switch to lat/long"
 msgstr "అక్షా./రేఖా.కి మారండి"
-
-msgid "Switch to normal view mode"
-msgstr "సాధారణ వీక్షణ మోడ్‌కు మారండి"
 
 msgid "Tell us the status of this person"
 msgstr "ఈ వ్యక్తి యొక్క స్థితిని మాకు తెలియజేయండి"
@@ -1235,13 +1258,13 @@ msgstr ""
 " ప్రయత్నించండి."
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "వాస్తవ రచయిత పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
+msgstr "వాస్తవ లేఖరి పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
 
 msgid "The author has disabled notes on this record."
-msgstr "రచయిత ఈ రికార్డ్‌లో గమనికలను నిలిపివేసారు."
+msgstr "లేఖరి ఈ రికార్డ్‌లో గమనికలను నిలిపివేసారు."
 
 msgid "The author has disabled status updates on this record."
-msgstr "రచయిత ఈ రికార్డ్‌లో స్థితి నవీకరణలను నిలిపివేసారు."
+msgstr "లేఖరి ఈ రికార్డ్‌లో స్థితి నవీకరణలను నిలిపివేసారు."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "అందించిన చిత్రం చాలా పెద్దదిగా ఉంది.  దయచేసి చిన్నది అప్‌లోడ్ చేయండి."
@@ -1400,8 +1423,14 @@ msgstr "ప్రస్తుతం ఉన్న కీని నవీకరి
 msgid "Upload"
 msgstr "అప్‌లోడ్ చేయండి"
 
-msgid "Upload CSV files"
-msgstr "CSV ఫైల్‌లను అప్‌లోడ్ చేయండి"
+msgid "Upload notes in CSV format"
+msgstr "గమనికలను CSV ఆకృతిలో అప్‌లోడ్ చేయండి"
+
+msgid "Upload person records in CSV format"
+msgstr "వ్యక్తి నివేదికలను CSV ఆకృతిలో అప్‌లోడ్ చేయండి"
+
+msgid "Upload your CSV file below"
+msgstr "మీ CSV ఫైల్‌ను దిగువ అప్‌లోడ్ చేయండి"
 
 msgid "View the record"
 msgstr "రికార్డ్‌ను వీక్షించండి"
@@ -1432,10 +1461,10 @@ msgid "Yes"
 msgstr "అవును"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "అవును, గమనికలను నిలిపివేయమని రికార్డ్ రచయితను అడగండి"
+msgstr "అవును, గమనికలను నిలిపివేయమని రికార్డ్ లేఖరిని అడగండి"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "అవును, గమనికలను ప్రారంభించమని రికార్డ్ రచయితను అడగండి"
+msgstr "అవును, గమనికలను ప్రారంభించమని రికార్డ్ లేఖరిని అడగండి"
 
 msgid "Yes, delete the record"
 msgstr "అవును, రికార్డ్‌ను తొలగించండి"

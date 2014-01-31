@@ -137,6 +137,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s سابقه انتخاب شد\n"
+"          "
 
 #, python-format
 msgid ""
@@ -144,6 +147,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        سوابق مشابه با: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -151,6 +157,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        نتایج جستجو برای: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -250,6 +259,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      نتیجه‌ای برای این عبارت جستجو یافت نشد: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -275,6 +287,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      ‫سابقه تا تاریخ %(expiry_date)s تمدید شده است.\n"
+"    "
 
 msgid ""
 "\n"
@@ -480,10 +495,10 @@ msgid "A message for this person or others seeking this person"
 msgstr "پیامی برای این شخص یا افرادی که این شخص را جستجو می‌کنند"
 
 msgid "A new API key has been created successfully."
-msgstr "کلید API جدید با موفقیت ایجاد شد."
+msgstr "‏کلید API جدید با موفقیت ایجاد شد."
 
 msgid "API Key Management"
-msgstr "مدیریت کلید API"
+msgstr "‏مدیریت کلید API"
 
 msgid "About 1 month (30 days) from now"
 msgstr "تقریباً ۱ ماه (۳۰ روز) دیگر"
@@ -501,7 +516,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "تقریباً ۶ ماه (۱۸۰ روز) دیگر"
 
 msgid "About Google Person Finder"
-msgstr "درباره Google Person Finder"
+msgstr "‏درباره Google Person Finder"
 
 msgid "About you (required)"
 msgstr "درباره شما (ضروری)"
@@ -531,7 +546,7 @@ msgid "Are you sure you want to restore this record from deletion?"
 msgstr "مطمئنید می‌خواهید این سابقه را از موارد حذف شده بازیابی کنید؟"
 
 msgid "Atom feed of updates about this person"
-msgstr "فید Atom برای به‌روزرسانی‌های مربوط به این شخص"
+msgstr "‏فید Atom برای به‌روزرسانی‌های مربوط به این شخص"
 
 msgid "Author's e-mail address"
 msgstr "آدرس ایمیل نویسنده"
@@ -557,12 +572,18 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"با علامت‌گذاری این یادداشت به عنوان هرزنامه، آن را به طور پیش‌فرض پنهان "
+"می‌کنید. این یادداشت همچنان بخشی از سابقه خواهد ماند، اما مشاهده محتوای "
+"آن به یک کلیک اضافه نیاز دارد. همچنین کاربران قادر خواهند بود علامت "
+"هرزنامه را از این یادداشت بردارند."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"با برداشتن علامت هرزنامه از این یادداشت، آن را به طور پیش‌فرض قابل مشاهده"
+" می‌کنید."
 
 msgid "CSV file"
-msgstr "‫فایل CSV"
+msgstr "‏‫فایل CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
@@ -584,10 +605,10 @@ msgid "Compare these records"
 msgstr "مقایسه این سابقه‌ها"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "کد HTML زیر را کپی و جای‌گذاری کنید تا این ابزار را در سایت خود قرار دهید"
+msgstr "‏کد HTML زیر را کپی و جای‌گذاری کنید تا این ابزار را در سایت خود قرار دهید"
 
 msgid "Create a new API key"
-msgstr "ایجاد یک کلید API جدید"
+msgstr "‏ایجاد یک کلید API جدید"
 
 msgid "Create a new record"
 msgstr "ایجاد یک سابقه جدید"
@@ -635,8 +656,12 @@ msgstr "غیرفعال کردن یادداشت‌‌ها در این سابقه"
 msgid "Does this person have profile pages at other websites?"
 msgstr "این شخص در سایر وب‌سایت‌ها دارای صفحه‌های نمایه است؟"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "‏دانلود %(begin_link)sاین الگوی Excel%(end_link)s و افزودن ردیف‌ها به آن"
+
 msgid "Download the sound as MP3"
-msgstr "‫دانلود صدا بصورت MP3"
+msgstr "‏‫دانلود صدا بصورت MP3"
 
 msgid "E-mail"
 msgstr "ایمیل"
@@ -653,11 +678,8 @@ msgstr "جاسازی این برنامه"
 msgid "Enable notes on this record"
 msgstr "فعال کردن یادداشت‌ها در این سابقه"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "‫مطمئن شوید که همه تاریخ‌ها در قالب yyyy-mm-ddThh:mm:ssZ به وقت UTC است"
-
 msgid "Enter as YYYY-MM-DD"
-msgstr "‫به صورت YYYY-MM-DD وارد کنید"
+msgstr "‏‫به صورت YYYY-MM-DD وارد کنید"
 
 msgid "Enter the person's given and family names."
 msgstr "نام و نام خانوادگی شخص را وارد کنید."
@@ -694,8 +716,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
-"‫برای شماره تلفن‌های غیر از تلفن‌ همراه لطفاً از سرویس ۱۷۱ ارائه شده توسط"
-" NTT استفاده کنید."
+"‏‫برای شماره تلفن‌های غیر از تلفن‌ همراه لطفاً از سرویس ۱۷۱ ارائه شده "
+"توسط NTT استفاده کنید."
 
 msgid "Full name"
 msgstr "نام کامل"
@@ -724,7 +746,7 @@ msgstr "راهنما"
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
-"این %(begin_tag)sیک فایل CSV نمونه%(end_tag)s است که می‌توانید ویرایش و "
+"‏این %(begin_tag)sیک فایل CSV نمونه%(end_tag)s است که می‌توانید ویرایش و "
 "آپلود کنید"
 
 msgid "Hide Map"
@@ -825,6 +847,11 @@ msgstr ""
 "اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی اینترنتی آن را وارد "
 "کنید."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"‏در Excel، از فایل &gt; ذخیره به عنوان... استفاده کنید و با قالب CSV‏ "
+"(‎.csv) ذخیره کنید"
+
 msgid "Incorrect.  Try again."
 msgstr "نادرست. دوباره امتحان کنید."
 
@@ -844,10 +871,13 @@ msgid "Link to profile page"
 msgstr "پیوند به صفحه نمایه"
 
 msgid "List API keys"
-msgstr "فهرست کلیدهای API"
+msgstr "‏فهرست کلیدهای API"
 
 msgid "Mark records as duplicate"
 msgstr "علامت‌گذاری سوابق به عنوان تکراری"
+
+msgid "Mark the selected records as duplicate"
+msgstr "علامت‌گذاری سوابق انتخاب شده به عنوان تکراری"
 
 msgid "Message (required)"
 msgstr "پیام (ضروری)"
@@ -919,9 +949,11 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"با وضعیت «اطلاعاتی دریافت کرده‌ام که این فرد فوت شده است» مجاز به پست "
+"کردن یادداشت‌ها نیستید."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "‫پست کردن یادداشت‌ برای وضعیت «believed_dead» مجاز نیست."
+msgstr "‏‫پست کردن یادداشت‌ برای وضعیت «believed_dead» مجاز نیست."
 
 msgid "Not spam"
 msgstr "هرزنامه نیست"
@@ -931,6 +963,9 @@ msgstr "نویسنده یادداشت"
 
 msgid "Note text"
 msgstr "نوشتار یادداشت"
+
+msgid "Notes for a possible duplicate"
+msgstr "یادداشت برای یک مورد تکراری احتمالی"
 
 msgid "Notes for this person"
 msgstr "یادداشت‌ها برای این فرد"
@@ -943,7 +978,7 @@ msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"‫یا در سایت خود به عنوان %(gadget_link_html)sGoogle "
+"‏‫یا در سایت خود به عنوان %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s اضافه کنید."
 
 msgid "Original URL"
@@ -959,14 +994,14 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"‫تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً "
+"‏‫تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً "
 "برگردید و دوباره امتحان کنید."
 
 msgid "Original site name"
 msgstr "نام سایت اصلی"
 
 msgid "Other website"
-msgstr ""
+msgstr "وب‌سایت دیگر"
 
 #, fuzzy
 msgid ""
@@ -974,9 +1009,9 @@ msgid ""
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"‫لطفاً توجه کنید: در سایت‌های فعال Person Finder، کلیه داده‌های وارد شده "
-"برای عموم در دسترس خواهد بود و همه می‌توانند از آنها استفاده کنند. Google"
-" این داده‌ها را بازبینی نمی‌کند و صحت آنها را تأیید نمی‌نماید."
+"‏‫لطفاً توجه کنید: در سایت‌های فعال Person Finder، کلیه داده‌های وارد شده"
+" برای عموم در دسترس خواهد بود و همه می‌توانند از آنها استفاده کنند. "
+"Google این داده‌ها را بازبینی نمی‌کند و صحت آنها را تأیید نمی‌نماید."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1034,6 +1069,9 @@ msgstr "لطفاً یک آدرس ایمیل معتبر ارائه دهید."
 msgid "Possible duplicates"
 msgstr "موارد تکراری ممکن"
 
+msgid "Possible duplicates found."
+msgstr "موارد احتمالاً تکراری یافت شد."
+
 msgid "Postal or zip code"
 msgstr "کد پستی"
 
@@ -1067,9 +1105,6 @@ msgstr "دلیل حذف:"
 msgid "Reason for disabling notes:"
 msgstr "دلیل غیرفعال کردن یادداشت‌ها:"
 
-msgid "Records selected"
-msgstr "سابقه‌ها انتخاب شد"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "سوابق دارای نام و آدرس‌های مشابه با «%(query)s»"
@@ -1095,7 +1130,7 @@ msgstr "جستجوی این شخص"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr "‫برای دستورالعمل‌های بیشتر، به %(begin_tag)swiki%(end_tag)s رجوع کنید"
+msgstr "‏‫برای دستورالعمل‌های بیشتر، به %(begin_tag)swiki%(end_tag)s رجوع کنید"
 
 msgid "Select a website to add a profile page..."
 msgstr "انتخاب وب‌سایتی برای افزودن یک صفحه نمایه…"
@@ -1116,7 +1151,7 @@ msgid "Show sensitive information"
 msgstr "نمایش اطلاعات مهم"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "نشان دادن افرادی که این موارد تکراری را علامت‌گذاری کرده‌اند"
 
 msgid "Sign in"
 msgstr "ورود به سیستم"
@@ -1167,14 +1202,8 @@ msgstr "مشترک شدن برای به‌روزرسانی درباره این �
 msgid "Switch to address"
 msgstr "تغییر به آدرس"
 
-msgid "Switch to duplicate marking mode"
-msgstr "تغییر وضعیت به حالت علامت‌گذاری تکراری"
-
 msgid "Switch to lat/long"
 msgstr "تغییر به طول/عرض جغرافیایی"
-
-msgid "Switch to normal view mode"
-msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
 msgid "Tell us the status of this person"
 msgstr "وضعیت این شخص را به ما بگویید"
@@ -1183,7 +1212,7 @@ msgid "Terms of Service"
 msgstr "شرایط خدمات"
 
 msgid "The API key has been updated successfully."
-msgstr "کلید API با موفقیت به‌روزرسانی شد."
+msgstr "‏کلید API با موفقیت به‌روزرسانی شد."
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
@@ -1257,8 +1286,8 @@ msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"‫این ابزارک‌ها تحت %(apache_link_html)sمجوزApache 2.0%(link_end_html)s در"
-" دسترس قرار می‌گیرند."
+"‏‫این ابزارک‌ها تحت %(apache_link_html)sمجوزApache 2.0%(link_end_html)s "
+"در دسترس قرار می‌گیرند."
 
 msgid "This is a new record."
 msgstr "این سابقه جدید است."
@@ -1315,7 +1344,7 @@ msgstr ""
 "را وارد کنید."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "‫برای حذف داده‌هایتان، از رایانه خود به Person Finder وارد شوید."
+msgstr "‏‫برای حذف داده‌هایتان، از رایانه خود به Person Finder وارد شوید."
 
 msgid "To unsubscribe, follow this link"
 msgstr "برای لغو اشتراک، این پیوند را دنبال کنید"
@@ -1354,8 +1383,14 @@ msgstr "به‌روزرسانی کلید موجود"
 msgid "Upload"
 msgstr "آپلود"
 
-msgid "Upload CSV files"
-msgstr "‫آپلود فایل‌های CSV"
+msgid "Upload notes in CSV format"
+msgstr "‏آپلود یادداشت‌ها در قالب CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "‏آپلود سوابق فرد در قالب CSV"
+
+msgid "Upload your CSV file below"
+msgstr "‏آپلود فایل CSV شما در زیر"
 
 msgid "View the record"
 msgstr "مشاهده سابقه"
@@ -1488,44 +1523,44 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "‫[Person Finder] یادداشت خود در مورد «%(full_name)s» را تایید کنید"
+msgstr "‏‫[Person Finder] یادداشت خود در مورد «%(full_name)s» را تایید کنید"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "‫[Person Finder] اخطار حذف «%(full_name)s»"
+msgstr "‏‫[Person Finder] اخطار حذف «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» غیرفعال شود؟"
+msgstr "‏‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» غیرفعال شود؟"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» فعال شود؟"
+msgstr "‏‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» فعال شود؟"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "‫[Person Finder] اعلان فعال‌سازی یادداشت‌ها برای «%(full_name)s»"
+msgstr "‏‫[Person Finder] اعلان فعال‌سازی یادداشت‌ها برای «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» غیرفعال است"
+msgstr "‏‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» غیرفعال است"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» فعال است"
+msgstr "‏‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» فعال است"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "‫[Person Finder] اعلان بازیابی سابقه برای «%(full_name)s»"
+msgstr "‏‫[Person Finder] اعلان بازیابی سابقه برای «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "‫[Person Finder] به‌روزرسانی وضعیت برای %(full_name)s"
+msgstr "‏‫[Person Finder] به‌روزرسانی وضعیت برای %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"‫[Person Finder] شما برای به‌روزرسانی‌های وضعیت مربوط به %(full_name)s "
+"‏‫[Person Finder] شما برای به‌روزرسانی‌های وضعیت مربوط به %(full_name)s "
 "مشترک شده‌اید"
 
 msgid "female"

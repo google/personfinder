@@ -147,6 +147,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s journaler er valgt\n"
+"          "
 
 #, python-format
 msgid ""
@@ -154,6 +157,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Journaler, der ligner: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -161,6 +167,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Søgeresultater for: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -259,6 +268,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Der blev ikke fundet nogen resultater for: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -283,6 +295,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Journalen er blevet forlænget til %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -582,9 +597,14 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ved at markere denne note som spam skjuler du den som standard. Den vil "
+"stadig være en del af journalen, men der skal klikkes på noten for at se "
+"indholdet. Brugere vil også kunne fjerne spammarkeringen fra denne note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ved at fjerne spammarkeringen for denne note, gør du den synlig som "
+"standard."
 
 msgid "CSV file"
 msgstr "CSV-fil"
@@ -662,6 +682,12 @@ msgstr "Deaktiver noter for denne journal"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Har denne person profilsider på andre websites?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Download %(begin_link)sdenne Excel-skabelon%(end_link)s, og føj rækker "
+"til den"
+
 msgid "Download the sound as MP3"
 msgstr "Download lyden som MP3"
 
@@ -679,9 +705,6 @@ msgstr "Sådan integrerer du programmet"
 
 msgid "Enable notes on this record"
 msgstr "Aktivér noter for denne journal"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Sørg for at alle datoer er i formatet åååå-mm-ddTtt:mm:ssZ i UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Indtast som ÅÅÅÅ-MM-DD"
@@ -854,6 +877,9 @@ msgstr ""
 "Hvis du har et billede af denne person, skal du uploade det eller "
 "indtaste dets webadresse."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "I Excel skal du bruge Fil &gt; Gem som... og gemme i CSV-format (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Forkert.  Prøv igen."
 
@@ -864,7 +890,7 @@ msgid "Language selection"
 msgstr "Sprogvalg"
 
 msgid "Last known location"
-msgstr "Sidste kendte placering"
+msgstr "Sidst kendte placering"
 
 msgid "Link"
 msgstr "Link"
@@ -877,6 +903,9 @@ msgstr "Lav en liste over API-nøgler"
 
 msgid "Mark records as duplicate"
 msgstr "Markér disse journaler som kopier"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Markér de valgte optegnelser som dubletter"
 
 msgid "Message (required)"
 msgstr "Besked (påkrævet)"
@@ -950,6 +979,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Ikke autoriseret til at skrive noter med status \"Jeg har modtaget "
+"oplysninger om, at denne person er død\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autoriseret til at indsende noter med statussen \"believed_dead\"."
@@ -962,6 +993,9 @@ msgstr "Notens forfatter"
 
 msgid "Note text"
 msgstr "Notetekst"
+
+msgid "Notes for a possible duplicate"
+msgstr "Noter til en mulig dublet"
 
 msgid "Notes for this person"
 msgstr "Noter for denne person"
@@ -997,7 +1031,7 @@ msgid "Original site name"
 msgstr "Navnet på det oprindelige website"
 
 msgid "Other website"
-msgstr ""
+msgstr "Andet website"
 
 #, fuzzy
 msgid ""
@@ -1065,6 +1099,9 @@ msgstr "Angiv en gyldig e-mailadresse."
 msgid "Possible duplicates"
 msgstr "Mulige kopier"
 
+msgid "Possible duplicates found."
+msgstr "Der er fundet mulige dubletter."
+
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
@@ -1097,9 +1134,6 @@ msgstr "Årsag til sletning:"
 
 msgid "Reason for disabling notes:"
 msgstr "Årsag til deaktivering af noter:"
-
-msgid "Records selected"
-msgstr "journaler er valgt"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1147,7 +1181,7 @@ msgid "Show sensitive information"
 msgstr "Vis følsomme oplysninger"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Vis, hvem der har markeret disse dubletter"
 
 msgid "Sign in"
 msgstr "Log ind"
@@ -1198,14 +1232,8 @@ msgstr "Abonner på opdateringer om denne person"
 msgid "Switch to address"
 msgstr "Skift til adresse"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Skift til tilstanden kopimarkering"
-
 msgid "Switch to lat/long"
 msgstr "Skift til breddegrad/længdegrad"
-
-msgid "Switch to normal view mode"
-msgstr "Skift til tilstanden normal visning"
 
 msgid "Tell us the status of this person"
 msgstr "Fortæl os om denne persons status"
@@ -1387,8 +1415,14 @@ msgstr "Opdater en eksisterende nøgle"
 msgid "Upload"
 msgstr "Upload"
 
-msgid "Upload CSV files"
-msgstr "Upload CSV-filer"
+msgid "Upload notes in CSV format"
+msgstr "Upload noter i CSV-format"
+
+msgid "Upload person records in CSV format"
+msgstr "Upload personoptegnelser i CSV-format"
+
+msgid "Upload your CSV file below"
+msgstr "Upload din CSV-fil nedenfor"
 
 msgid "View the record"
 msgstr "Se journalen"

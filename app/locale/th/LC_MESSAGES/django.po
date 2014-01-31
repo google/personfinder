@@ -147,6 +147,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            เลือกแล้ว %(dup_count)s บันทึก\n"
+"          "
 
 #, python-format
 msgid ""
@@ -154,6 +157,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        บันทึกที่คล้ายกับ: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -161,6 +167,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        ผลการค้นหาสำหรับ: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -256,6 +265,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      ไม่พบผลการค้นหาสำหรับ: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -279,6 +291,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      ขยายเวลาบันทึกถึง %(expiry_date)s แล้ว\n"
+"    "
 
 msgid ""
 "\n"
@@ -578,9 +593,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"การทำเครื่องหมายว่าบันทึกย่อนี้เป็นสแปมจะทำให้บันทึกย่อถูกซ่อนโดยค่าเริ่มต้น"
+" บันทึกย่อจะยังเป็นส่วนหนึ่งของบันทึก "
+"แต่จะต้องการการคลิกเพิ่มในการดูเนื้อหาของบันทึกย่อ "
+"ผู้ใช้ยังจะสามารถนำเครื่องหมายสแปมออกจากบันทึกย่อนี้ได้"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "การยกเลิกการทำเครื่องหมายว่าบันทึกย่อนี้เป็นสแปมจะทำให้บันทึกย่อปรากฏขึ้นโดยค่าเริ่มต้น"
 
 msgid "CSV file"
 msgstr "ไฟล์ CSV"
@@ -656,6 +675,10 @@ msgstr "ปิดใช้งานข้อความในบันทึก
 msgid "Does this person have profile pages at other websites?"
 msgstr "บุคคลนี้มีหน้าโปรไฟล์ที่เว็บไซต์อื่นๆ ไหม"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "ดาวน์โหลด%(begin_link)sเทมเพลต Excel นี้%(end_link)sและเพิ่มแถว"
+
 msgid "Download the sound as MP3"
 msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
 
@@ -673,9 +696,6 @@ msgstr "การฝังแอปพลิเคชันนี้"
 
 msgid "Enable notes on this record"
 msgstr "เปิดใช้งานข้อความในบันทึกนี้"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "ตรวจสอบว่าวันที่ทั้งหมดอยู่ในรูปแบบ ปปปป-ดด-ววTชช:นน:ววZ ในเวลา UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
@@ -842,6 +862,9 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "หากคุณมีภาพถ่ายของบุคคลนี้ ให้อัปโหลดภาพหรือป้อนที่อยู่ URL ของภาพนั้น"
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "ใน Excel ให้ใช้ ไฟล์ &gt; บันทึกเป็น... และบันทึกในรูปแบบ CSV (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "ไม่ถูกต้อง ลองอีกครั้ง"
 
@@ -865,6 +888,9 @@ msgstr "ระบุคีย์ API"
 
 msgid "Mark records as duplicate"
 msgstr "ทำเครื่องหมายบันทึกว่าซ้ำ"
+
+msgid "Mark the selected records as duplicate"
+msgstr "ทำเครื่องหมายระเบียนที่เลือกว่าเป็นข้อมูลซ้ำ"
 
 msgid "Message (required)"
 msgstr "ข้อความ (ต้องระบุ)"
@@ -936,6 +962,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"ไม่ได้รับอนุญาตให้โพสต์บันทึกย่อที่มีสถานะ "
+"\"ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว\""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ไม่อนุญาตให้โพสต์ข้อความที่มีสถานะเป็น \"เชื่อว่าเสียชีวิตแล้ว\""
@@ -948,6 +976,9 @@ msgstr "ผู้ให้ข้อมูลข้อความ"
 
 msgid "Note text"
 msgstr "ข้อความหมายเหตุ"
+
+msgid "Notes for a possible duplicate"
+msgstr "หมายเหตุสำหรับข้อมูลซ้ำที่เป็นไปได้"
 
 msgid "Notes for this person"
 msgstr "ข้อความสำหรับบุคคลนี้"
@@ -983,7 +1014,7 @@ msgid "Original site name"
 msgstr "ชื่อเว็บไซต์ดั้งเดิม"
 
 msgid "Other website"
-msgstr ""
+msgstr "เว็บไซต์อื่นๆ"
 
 #, fuzzy
 msgid ""
@@ -1049,6 +1080,9 @@ msgstr "โปรดป้อนที่อยู่อีเมลที่ถ
 msgid "Possible duplicates"
 msgstr "บันทึกที่อาจซ้ำกัน"
 
+msgid "Possible duplicates found."
+msgstr "พบข้อมูลซ้ำที่เป็นไปได้"
+
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
 
@@ -1081,9 +1115,6 @@ msgstr "เหตุผลสำหรับการลบ:"
 
 msgid "Reason for disabling notes:"
 msgstr "สาเหตุที่ปิดใช้งานข้อความ:"
-
-msgid "Records selected"
-msgstr "บันทึกที่เลือก"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1131,7 +1162,7 @@ msgid "Show sensitive information"
 msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "แสดงผู้ที่ทำเครื่องหมายรายการที่ซ้ำกันเหล่านี้"
 
 msgid "Sign in"
 msgstr "ลงชื่อเข้าใช้"
@@ -1180,16 +1211,10 @@ msgid "Subscribe to updates about this person"
 msgstr "สมัครรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
 msgid "Switch to address"
-msgstr "เปลี่ยนไปยังที่อยู่"
-
-msgid "Switch to duplicate marking mode"
-msgstr "เปลี่ยนไปที่โหมดทำเครื่องหมายว่าซ้ำ"
+msgstr "เปลี่ยนเป็นที่อยู่"
 
 msgid "Switch to lat/long"
-msgstr "เปลี่ยนไปที่ละติจูด/ลองจิจูด"
-
-msgid "Switch to normal view mode"
-msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
+msgstr "เปลี่ยนเป็นละติจูด/ลองจิจูด"
 
 msgid "Tell us the status of this person"
 msgstr "แจ้งสถานะของบุคคลนี้ให้เราทราบ"
@@ -1362,8 +1387,14 @@ msgstr "อัปเดตคีย์ที่มีอยู่"
 msgid "Upload"
 msgstr "อัปโหลด"
 
-msgid "Upload CSV files"
-msgstr "อัปโหลดไฟล์ CSV"
+msgid "Upload notes in CSV format"
+msgstr "อัปโหลดโน้ตในรูปแบบ CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "อัปโหลดระเบียนบุคคลในรูปแบบ CSV"
+
+msgid "Upload your CSV file below"
+msgstr "อัปโหลดไฟล์ CSV ของคุณด้านล่าง"
 
 msgid "View the record"
 msgstr "ดูบันทึกข้อมูล"

@@ -64,7 +64,7 @@ msgstr ""
 "A user has requested enabling notes on the record for\n"
 "\"%(full_name)s\".\n"
 "\n"
-"Your e-mail address is recorded as the author of this record. To enable "
+"Your email address is recorded as the author of this record. To enable "
 "notes\n"
 "on this record, follow this link within 3 days:\n"
 "\n"
@@ -94,7 +94,7 @@ msgstr ""
 "A user has requested that you disable notes on the record for\n"
 "\"%(full_name)s\".\n"
 "\n"
-"Your e-mail address is recorded as the author of this record. To disable "
+"Your email address is recorded as the author of this record. To disable "
 "notes\n"
 "on this record, follow this link within 3 days:\n"
 "\n"
@@ -148,6 +148,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
 
 #, python-format
 msgid ""
@@ -155,6 +158,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -162,6 +168,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -260,6 +269,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -285,6 +297,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -357,7 +372,7 @@ msgstr ""
 "A user has deleted the record for \"%(full_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
-"We are notifying you of the deletion because your e-mail address is\n"
+"We are notifying you of the deletion because your email address is\n"
 "recorded as the author of a note on this record.\n"
 
 #, python-format
@@ -373,7 +388,7 @@ msgstr ""
 "A user has deleted the record for \"%(full_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
-"We are notifying you of the deletion because your e-mail address is\n"
+"We are notifying you of the deletion because your email address is\n"
 "recorded as the author of this record.\n"
 
 #, python-format
@@ -421,7 +436,7 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"We are notifying you because your e-mail address is associated with this\n"
+"We are notifying you because your email address is associated with this\n"
 "person record or a note on the record.\n"
 
 #, python-format
@@ -443,7 +458,7 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"We are notifying you because your e-mail address is associated with this\n"
+"We are notifying you because your email address is associated with this\n"
 "person record or a note on the record.\n"
 
 #, python-format
@@ -465,7 +480,7 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"We are notifying you because your e-mail address is associated with this\n"
+"We are notifying you because your email address is associated with this\n"
 "person record or a note on the record.\n"
 
 #, python-format
@@ -583,9 +598,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "By unmarking this note as spam, you will make it visible by default."
 
 msgid "CSV file"
 msgstr "CSV file"
@@ -661,6 +680,10 @@ msgstr "Disable notes on this record"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Does this person have profile pages at other websites?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+
 msgid "Download the sound as MP3"
 msgstr "Download the sound in MP3 format"
 
@@ -668,7 +691,7 @@ msgid "E-mail"
 msgstr "Email"
 
 msgid "E-mail address"
-msgstr "E-mail address"
+msgstr "Email address"
 
 msgid "Edit"
 msgstr "Edit"
@@ -678,9 +701,6 @@ msgstr "Embedding the Application"
 
 msgid "Enable notes on this record"
 msgstr "Enable notes on this record"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Enter as DD-MM-YYYY"
@@ -708,7 +728,7 @@ msgid "Extend expiration date by %(extension_days)s days"
 msgstr "Extend expiration date by %(extension_days)s days"
 
 msgid "Family name"
-msgstr "Family name"
+msgstr "Last name"
 
 msgid "Feed of updates about this person"
 msgstr "Feed of updates about this person"
@@ -736,7 +756,7 @@ msgid "Get an audio challenge"
 msgstr "Get an audio challenge"
 
 msgid "Given name"
-msgstr "Given name"
+msgstr "First name"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -845,6 +865,9 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "If you have a photo of this person, upload it or enter its URL address."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Try again."
 
@@ -868,6 +891,9 @@ msgstr "List API keys"
 
 msgid "Mark records as duplicate"
 msgstr "Mark records as duplicate"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mark the selected records as duplicate"
 
 msgid "Message (required)"
 msgstr "Message (required)"
@@ -939,6 +965,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Not authorised to post notes with the status \"I have received "
+"information that this person is dead.\""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Not authorised to post notes with the status \"believed_dead\"."
@@ -951,6 +979,9 @@ msgstr "Note's author"
 
 msgid "Note text"
 msgstr "Note text"
+
+msgid "Notes for a possible duplicate"
+msgstr "Notes for a possible duplicate"
 
 msgid "Notes for this person"
 msgstr "Notes for this person"
@@ -986,7 +1017,7 @@ msgid "Original site name"
 msgstr "Original site name"
 
 msgid "Other website"
-msgstr ""
+msgstr "Other website"
 
 #, fuzzy
 msgid ""
@@ -1052,6 +1083,9 @@ msgstr "Please provide a valid email address."
 msgid "Possible duplicates"
 msgstr "Possible duplicates"
 
+msgid "Possible duplicates found."
+msgstr "Possible duplicates found."
+
 msgid "Postal or zip code"
 msgstr "Postcode or zip code"
 
@@ -1084,9 +1118,6 @@ msgstr "Reason for deletion:"
 
 msgid "Reason for disabling notes:"
 msgstr "Reason for disabling notes:"
-
-msgid "Records selected"
-msgstr "Records selected"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1134,7 +1165,7 @@ msgid "Show sensitive information"
 msgstr "Show sensitive information"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Show who marked these duplicates"
 
 msgid "Sign in"
 msgstr "Sign in"
@@ -1185,14 +1216,8 @@ msgstr "Subscribe to updates about this person"
 msgid "Switch to address"
 msgstr "Switch to address"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Switch to duplicate marking mode"
-
 msgid "Switch to lat/long"
 msgstr "Switch to lat/long"
-
-msgid "Switch to normal view mode"
-msgstr "Switch to normal viewing mode"
 
 msgid "Tell us the status of this person"
 msgstr "Tell us the status of this person"
@@ -1370,8 +1395,14 @@ msgstr "Update an existing key"
 msgid "Upload"
 msgstr "Upload"
 
-msgid "Upload CSV files"
-msgstr "Upload CSV files"
+msgid "Upload notes in CSV format"
+msgstr "Upload notes in CSV format"
+
+msgid "Upload person records in CSV format"
+msgstr "Upload person records in CSV format"
+
+msgid "Upload your CSV file below"
+msgstr "Upload your CSV file below"
 
 msgid "View the record"
 msgstr "View the record"

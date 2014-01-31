@@ -300,29 +300,33 @@ class AddReviewedProperty(CountBase):
             note.put()
 
 
-class UpdateStatus(CountBase):
+class UpdateDeadStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',
     checks for the last non-hidden Note, and updates the status if necessary.
     This is designed specifically to address bogus 'believed_dead' notes that
     are flagged as spam.  (This is a cleanup task, not a counting task.)"""
-    SCAN_NAME = 'update-status'
-    ACTION = 'tasks/count/update_status'
+    SCAN_NAME = 'update-dead-status'
+    ACTION = 'tasks/count/update_dead_status'
 
     def make_query(self):
         return model.Person.all().filter('repo =', self.repo
                           ).filter('latest_status =', 'believed_dead')
 
     def update_counter(self, counter, person):
-        status = None
-        status_source_date = None
-        for note in person.get_notes():
-            if note.status and not note.hidden:
-                status = note.status
-                status_source_date = note.source_date
-        if status != person.latest_status:
-            person.latest_status = status
-            person.latest_status_source_date = status_source_date
-        person.put()
+        person.update_latest_status()
+
+
+class UpdateStatus(CountBase):
+    """This task scans Person records, looks for the last non-hidden Note, and
+    updates latest_status.  (This is a cleanup task, not a counting task.)"""
+    SCAN_NAME = 'update-status'
+    ACTION = 'tasks/count/update_status'
+
+    def make_query(self):
+        return model.Person.all().filter('repo =', self.repo)
+
+    def update_counter(self, counter, person):
+        person.update_latest_status()
 
 
 class Reindex(CountBase):

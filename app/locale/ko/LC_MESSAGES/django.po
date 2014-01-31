@@ -34,9 +34,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  레코드 작성자가 허가하는 경우에만 메모를 사용 또는 사용 중지로\n"
-"  설정할 수 있도록 레코드 작성자에게 확인 메일이 발송됩니다.\n"
-"  레코드 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
+"  신상기록 작성자가 허가하는 경우에만 메모를 사용 또는 사용 중지로\n"
+"  설정할 수 있도록 신상기록 작성자에게 확인 메일이 발송됩니다.\n"
+"  신상기록 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
 "\n"
 "  "
 
@@ -60,11 +60,11 @@ msgstr ""
 "\n"
 "안녕하십니까? %(author_name)s님,\n"
 "\n"
-"사용자가 '%(full_name)s'님에 대한 레코드에서 메모를 사용하도록 설정할 것을\n"
+"사용자가 '%(full_name)s'님에 대한 신상기록에서 메모를 사용하도록 설정할 것을\n"
 "요청했습니다.\n"
 "\n"
-"귀하의 이메일 주소가 이 레코드의 작성자로 기록되어 있습니다.\n"
-"이 레코드에 대해 메모를 사용하도록 설정하려면 3일 이내에 다음 링크를 클릭하세요.\n"
+"귀하의 이메일 주소가 이 신상기록의 작성자로 기록되어 있습니다.\n"
+"이 신상기록에 대해 메모를 사용하도록 설정하려면 3일 이내에 다음 링크를 클릭하세요.\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -89,11 +89,11 @@ msgstr ""
 "\n"
 "안녕하십니까? %(author_name)s님,\n"
 "\n"
-"사용자가 '%(full_name)s'님에 대한 레코드에서 메모를 사용 중지할 것을\n"
+"사용자가 '%(full_name)s'님에 대한 신상기록에서 메모를 사용 중지할 것을\n"
 "요청했습니다.\n"
 "\n"
-"귀하의 이메일 주소가 이 레코드의 작성자로 기록되어 있습니다.\n"
-"이 레코드에 대해 메모를 사용 중지하도록 설정하려면 3일 이내에 다음 링크를 클릭하세요.\n"
+"귀하의 이메일 주소가 이 신상기록의 작성자로 기록되어 있습니다.\n"
+"이 신상기록에 대해 메모를 사용 중지하도록 설정하려면 3일 이내에 다음 링크를 클릭하세요.\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -112,7 +112,7 @@ msgstr ""
 "\n"
 "\n"
 "안녕하십니까? %(author_name)s님,\n"
-"방금 '%(full_name)s'님에 대한 레코드에 메모를 입력하셨습니다.  \n"
+"방금 '%(full_name)s'님에 대한 신상기록에 메모를 입력하셨습니다.  \n"
 "메모를 게시하려면 3일 이내에 다음 링크를 클릭하세요.\n"
 "\n"
 "   %(confirm_url)s\n"
@@ -126,8 +126,7 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    경고: 이 레코드는 %(expiration_days)s일 이내에 만료됩니다.\n"
-"                  "
+"경고: 이 신상기록은 %(expiration_days)s일 이내에 만료됩니다."
 
 msgid ""
 "\n"
@@ -135,8 +134,7 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    경고: 이 레코드는 24시간 이내에 만료됩니다.\n"
-"                  "
+"경고: 이 신상기록은 24시간 이내에 만료됩니다."
 
 #, python-format
 msgid ""
@@ -144,6 +142,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            신상기록 %(dup_count)s개 선택됨\n"
+"          "
 
 #, python-format
 msgid ""
@@ -151,6 +152,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        이름(%(full_name)s)이 유사한 신상기록:\n"
+"      "
 
 #, python-format
 msgid ""
@@ -158,6 +162,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        다음에 대한 검색결과: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -166,8 +173,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      '%(full_name)s'님에 대한 레코드를 삭제하시겠습니까?\n"
-"    "
+"'%(full_name)s'님에 대한 신상기록을 삭제하시겠습니까?"
 
 #, python-format
 msgid ""
@@ -187,7 +193,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      '%(full_name)s'님의 레코드에서 메모를 사용 중지하시겠습니까?\n"
+"      '%(full_name)s'님의 신상기록에서 메모를 사용 중지하시겠습니까?\n"
 "    "
 
 #, python-format
@@ -208,7 +214,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      '%(full_name)s'님에 대한 레코드의 유효기간을 연장하시겠습니까?\n"
+"      '%(full_name)s'님에 대한 신상기록의 유효기간을 연장하시겠습니까?\n"
 "    "
 
 msgid ""
@@ -227,9 +233,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      삭제를 진행하면,\n"
-"      이 레코드는 이 사이트에서 더 이상 검색하거나 볼 수 없게 됩니다.\n"
-"    "
+"삭제한 신상기록은 이 사이트에서 더 이상 검색하거나 볼 수 없습니다."
 
 #, python-format
 msgid ""
@@ -241,11 +245,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      레코드를 완전히 삭제하고 싶으면,\n"
+"신상기록을 완전히 삭제하고 싶으면,\n"
 "      원본 소스에 문의하시기 바랍니다.\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s에서\n"
-"      원본 레코드를 볼 수 있습니다.\n"
-"    "
+"      원본 신상기록을 볼 수 있습니다."
 
 #, python-format
 msgid ""
@@ -253,6 +256,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      다음에 대한 검색결과 없음: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -276,6 +282,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      신상기록 유효기간이 %(expiry_date)s로 연장되었습니다.\n"
+"    "
 
 msgid ""
 "\n"
@@ -287,11 +296,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      다른 소스에서 복사한 레코드입니다.\n"
-"      여기에서 레코드를 삭제할 수 있지만,\n"
-"      나중에 원본 소스로부터 다른 레코드 사본을\n"
-"      수신할 수도 있습니다.\n"
-"    "
+"다른 출처에서 복사한 신상기록입니다.\n"
+"      여기에서 신상기록를 삭제할 수 있지만,\n"
+"      나중에 원본 출처로부터 신상기록 사본이\n"
+"      다시 등록될 수 있습니다."
 
 msgid ""
 "\n"
@@ -304,9 +312,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    레코드 작성자가 허가하는 경우에만 메모를 사용 또는 사용 중지로 \n"
-"    설정할 수 있도록 레코드 작성자에게 확인 메일이 발송됩니다.\n"
-"    레코드 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
+"    신상기록 작성자가 허가하는 경우에만 메모를 사용 또는 사용 중지로 \n"
+"    설정할 수 있도록 신상기록 작성자에게 확인 메일이 발송됩니다.\n"
+"    신상기록 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
 "  "
 
 msgid ""
@@ -317,9 +325,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  레코드는 계속 이 사이트에 표시되지만\n"
-"  아무도 더 이상 메모를 게시할 수 없습니다.\n"
-"  "
+"신상기록은 계속 이 사이트에 표시되지만\n"
+"  아무도 더 이상 메모를 게시할 수 없습니다."
 
 msgid ""
 "\n"
@@ -343,11 +350,10 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"사용자가 %(site_url)s에 있는\n"
-"'%(full_name)s'님에 대한 레코드를 삭제했습니다.\n"
+"%(site_url)s에서\n"
+"'%(full_name)s'님에 대한 신상기록이 삭제되었습니다.\n"
 "\n"
-"귀하의 이메일 주소가 이 레코드에 대한 메모의 작성자로 기록되어 있기 때문에\n"
-"삭제에 대해 알려드립니다.\n"
+"이 신상기록에 대한 메모를 작성하신 분들께 등록된 이메일 주소로 삭제 사실을 알려드립니다.\n"
 
 #, python-format
 msgid ""
@@ -359,11 +365,11 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"사용자가 %(site_url)s에 있는 \n"
-"'%(full_name)s'님에 대한 레코드를 삭제했습니다.\n"
+"%(site_url)s에서 \n"
+"'%(full_name)s'님에 대한 신상기록이 삭제되었습니다.\n"
 "\n"
-"귀하의 이메일 주소가 이 레코드의 작성자로 기록되어 있기 때문에\n"
-"삭제에 대해 알려드립니다.\n"
+"이 신상기록의 작성자로 기록되어 있는 이메일 주소로\n"
+"삭제 사실을 알려드립니다.\n"
 
 #, python-format
 msgid ""
@@ -372,7 +378,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"%(days_until_deletion)s일 후에는 레코드가 완전히 삭제됩니다.\n"
+"%(days_until_deletion)s일 후에는 신상기록이 완전히 삭제됩니다.\n"
 
 #, python-format
 msgid ""
@@ -384,8 +390,8 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"참고: 레코드가 실수로 삭제되었다면\n"
-"%(days_until_deletion)s일 이내에 다음 링크를 클릭하여 레코드를 복원할 수 있습니다.\n"
+"참고: 신상기록이 실수로 삭제되었다면\n"
+"%(days_until_deletion)s일 이내에 다음 링크를 클릭하여 신상기록을 복원할 수 있습니다.\n"
 "\n"
 "    %(restore_url)s\n"
 
@@ -402,12 +408,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"이제 '%(full_name)s'님에 대한 레코드에서 메모를 사용 중지하도록 설정되었습니다.\n"
-"레코드를 보려면 다음 링크를 클릭하세요.\n"
+"이제 '%(full_name)s'님에 대한 신상기록에서 메모를 사용 중지하도록 설정되었습니다.\n"
+"신상기록을 보려면 다음 링크를 클릭하세요.\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"이 사람의 레코드 또는 레코드의 메모에 대해 귀하의 이메일 주소가 입력되어 \n"
+"이 사람의 신상기록 또는 신상기록의 메모에 대해 귀하의 이메일 주소가 입력되어 \n"
 "있어서 알림을 전송합니다.\n"
 
 #, python-format
@@ -423,12 +429,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"이제 '%(full_name)s'님에 대한 레코드에서 메모를 사용하도록 설정되었습니다. 레코드를 보려면\n"
+"이제 '%(full_name)s'님에 대한 신상기록에서 메모를 사용하도록 설정되었습니다. 신상기록을 보려면\n"
 "다음 링크를 클릭하세요.\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"이 사람의 레코드 또는 레코드의 메모에 대해 귀하의 이메일 주소가 입력되어 \n"
+"이 사람의 신상기록 또는 신상기록의 메모에 대해 귀하의 이메일 주소가 입력되어 \n"
 "있어서 알림을 전송합니다.\n"
 
 #, python-format
@@ -444,14 +450,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"'%(full_name)s'님에 대한 레코드(이전에 삭제됨)의 작성자가\n"
-"레코드를 복원했습니다. 레코드를 보려면\n"
+"'%(full_name)s'님에 대한 신상기록(이전에 삭제됨) 작성자가\n"
+"신상기록을 복원했습니다. 신상기록을 보려면\n"
 "다음 링크를 클릭하세요.\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
-"이 사람의 레코드 또는 레코드에 있는 메모에 대해 귀하의 이메일 주소가 입력되어\n"
-"있어서 알림을 전송합니다.\n"
+"이 사람의 신상기록 또는 메모에 대해 이메일 주소가 등록된 분들께 신상기록이 복원되었음을 알려드립니다.\n"
 
 #, python-format
 msgid ""
@@ -459,7 +464,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"'%(full_name)s'님에 대한 레코드에 새 메모가 있습니다.\n"
+"'%(full_name)s'님에 대한 신상기록에 새 메모가 있습니다.\n"
 
 #, python-format
 msgid ""
@@ -473,13 +478,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"'%(full_name)s'님에 대한 메모를 구독하기로 하셨습니다.\n"
+"'%(full_name)s'님에 대한 메모를 수신하기로 하셨습니다.\n"
 "\n"
-"이 레코드는 다음 위치에서 볼 수 있습니다.\n"
+"이 신상기록은 다음 위치에서 볼 수 있습니다.\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"구독을 취소하려면 다음 링크를 클릭하세요. %(unsubscribe_link)s\n"
+"수신 취소하려면 다음 링크를 클릭하세요. %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(표시하려면 클릭)"
@@ -488,7 +493,7 @@ msgid "(unknown)"
 msgstr "(알 수 없음)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "이 사람 또는 이 사람을 찾는 다른 사람을 위한 메시지"
+msgstr "이 사람 또는 이 사람을 찾는 다른 사람을 위한 메시지를 남기세요."
 
 msgid "A new API key has been created successfully."
 msgstr "새 API 키가 만들어졌습니다."
@@ -497,25 +502,25 @@ msgid "API Key Management"
 msgstr "API 키 관리"
 
 msgid "About 1 month (30 days) from now"
-msgstr "지금을 기준으로 약 1개월(30일) 후"
+msgstr "약 1개월(30일) 후"
 
 msgid "About 1 year (360 days) from now"
-msgstr "지금을 기준으로 약 1년(360일) 후"
+msgstr "약 1년(360일) 후"
 
 msgid "About 2 months (60 days) from now"
-msgstr "지금을 기준으로 약 2개월(60일) 후"
+msgstr "약 2개월(60일) 후"
 
 msgid "About 3 months (90 days) from now"
-msgstr "지금을 기준으로 약 3개월(90일) 후"
+msgstr "약 3개월(90일) 후"
 
 msgid "About 6 months (180 days) from now"
-msgstr "지금을 기준으로 약 6개월(180일) 후"
+msgstr "약 6개월(180일) 후"
 
 msgid "About Google Person Finder"
-msgstr "Google Person Finder 정보"
+msgstr "Google 사람 찾기 정보"
 
 msgid "About you (required)"
-msgstr "내 정보(필수)"
+msgstr "내 정보(필수 항목)"
 
 msgid "Administration"
 msgstr "관리"
@@ -539,7 +544,7 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr "이 메모를 스팸으로 표시하시겠습니까?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "이 레코드를 삭제 내용으로부터 복원하시겠습니까?"
+msgstr "이 신상기록을 삭제 취소하시겠습니까?"
 
 msgid "Atom feed of updates about this person"
 msgstr "이 사람에 대한 소식의 Atom 피드"
@@ -568,9 +573,11 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"이 메모를 스팸으로 표시하면 기본적으로 메모가 숨겨집니다. 클릭을 한 번 더 해야 표시되긴 하지만, 메모는 스팸으로 표시해도 계속 "
+"신상기록에 남습니다. 또한 다른 사용자가 스팸 표시를 해제할 수도 있습니다."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "이 메모에서 스팸 표시를 해제하면 기본적으로 메모가 표시됩니다."
 
 msgid "CSV file"
 msgstr "CSV 파일"
@@ -583,7 +590,7 @@ msgid "Cancel"
 msgstr "취소"
 
 msgid "City"
-msgstr "도시"
+msgstr "시/군/구"
 
 msgid "Click here to view results."
 msgstr "결과를 보려면 여기를 클릭하세요."
@@ -592,7 +599,7 @@ msgid "Close window"
 msgstr "창 닫기"
 
 msgid "Compare these records"
-msgstr "레코드 비교"
+msgstr "신상기록 비교"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하여 붙여넣으세요."
@@ -601,20 +608,20 @@ msgid "Create a new API key"
 msgstr "새 API 키 만들기"
 
 msgid "Create a new record"
-msgstr "새 레코드 만들기"
+msgstr "새 신상기록 만들기"
 
 msgid "Create a new record for"
-msgstr "새 레코드 만들기"
+msgstr "신상기록 작성하기:"
 
 msgid "Create a new record for a missing person"
-msgstr "실종된 사람에 대한 새 레코드 만들기"
+msgstr "실종자에 대한 신상기록 새로 작성하기"
 
 msgid "Crisis events"
 msgstr "위기 이벤트"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
+msgstr "현재 약 %(num_people)s건의 신상기록을 추적 중입니다."
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "날짜를 미래 날짜로 설정할 수 없습니다. 이전으로 돌아가 다시 시도해 주세요."
@@ -623,10 +630,10 @@ msgid "Date of birth"
 msgstr "생일"
 
 msgid "Delete this record"
-msgstr "이 레코드 삭제"
+msgstr "신상기록 삭제하기"
 
 msgid "Describe how to identify this person."
-msgstr "이 사람의 신원을 확인할 수 있는 방법을 설명하세요."
+msgstr "이 사람을 알아볼 수 있는 방법을 알려주세요."
 
 msgid "Describe the physical characteristics of this person."
 msgstr "이 사람의 신체적 특징을 설명해 주세요."
@@ -641,10 +648,14 @@ msgid "Developers"
 msgstr "개발자"
 
 msgid "Disable notes on this record"
-msgstr "이 레코드에서 메모 사용 중지"
+msgstr "신상기록에서 메모 사용 중지"
 
 msgid "Does this person have profile pages at other websites?"
 msgstr "다른 웹사이트에 이 사람의 프로필 페이지가 있습니까?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "%(begin_link)sExcel 템플릿%(end_link)s을 다운로드하고 열을 추가하세요."
 
 msgid "Download the sound as MP3"
 msgstr "사운드를 MP3로 다운로드"
@@ -662,19 +673,16 @@ msgid "Embedding the Application"
 msgstr "응용프로그램 퍼가기"
 
 msgid "Enable notes on this record"
-msgstr "이 레코드에서 메모 사용"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "모든 날짜는 UTC에서 yyyy-mm-ddThh:mm:ssZ 형식이어야 합니다."
+msgstr "이 신상기록에서 메모 사용"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
 
 msgid "Enter the person's given and family names."
-msgstr "해당하는 사람의 이름과 성을 입력하세요."
+msgstr "제보하려는 사람의 이름과 성을 입력하세요."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "해당하는 사람의 이름 또는 이름의 일부를 입력하세요."
+msgstr "찾으려는 사람의 이름 또는 이름의 일부를 입력하세요."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "찾고 있는 사람의 이름이나 그 일부, 또는 휴대전화 번호를 입력하세요."
@@ -683,14 +691,14 @@ msgid "Enter the person's name."
 msgstr "해당하는 사람의 이름을 입력하세요."
 
 msgid "Expiry"
-msgstr "만료"
+msgstr "만료일 지정"
 
 msgid "Expiry date of this record"
-msgstr "이 레코드의 만료일"
+msgstr "이 신상기록의 만료일"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "만료일을 %(extension_days)s일 확대"
+msgstr "만료일 %(extension_days)s일 연장하기"
 
 msgid "Family name"
 msgstr "성"
@@ -699,7 +707,7 @@ msgid "Feed of updates about this person"
 msgstr "이 사람에 대한 업데이트 피드"
 
 msgid "Follow this link to create a new record"
-msgstr "링크로 이동하여 새 레코드 만들기"
+msgstr "링크로 이동하여 새 신상기록 만들기"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
@@ -722,10 +730,10 @@ msgid "Given name"
 msgstr "이름"
 
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Google 사람 찾기"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "사건 발생 이후 이 사람과 개인적으로 대화한 적이 있습니까?(필수)"
+msgstr "사건 발생 이후 이 사람과 개인적으로 대화한 적이 있습니까?(필수 항목)"
 
 msgid "Help"
 msgstr "도움말"
@@ -753,7 +761,7 @@ msgid "How can this person be reached now?"
 msgstr "이 사람에게 지금 연락할 수 있는 방법은 무엇입니까?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "이 사람에게 관심이 있는 다른 사람들이 나에게 연락할 수 있는 방법"
+msgstr "이 사람과 관련된 사람들이 내게 연락할 수 있도록 연락처를 남겨주세요."
 
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
@@ -762,13 +770,13 @@ msgid "I am this person"
 msgstr "내가 이 사람입니다."
 
 msgid "I do not want any more updates on this record."
-msgstr "이 레코드에 대한 업데이트를 더 이상 받지 않겠습니다."
+msgstr "이 신상기록에 대한 업데이트를 더 이상 받지 않겠습니다."
 
 msgid "I do not want my information online anymore."
 msgstr "내 정보를 더 이상 온라인으로 게재해 두지 않겠습니다."
 
 msgid "I have information about someone"
-msgstr "누군가에 대한 정보가 있습니다."
+msgstr "제보하기"
 
 msgid "I have reason to think this person is missing"
 msgstr "이 사람이 실종되었다고 생각하는 이유가 있습니다."
@@ -789,40 +797,43 @@ msgid "I prefer not to specify."
 msgstr "명시하고 싶지 않습니다."
 
 msgid "I'm looking for someone"
-msgstr "누군가를 찾고 있습니다."
+msgstr "사람 찾기"
 
 msgid "Identify who you are looking for"
 msgstr "실종자 신원정보"
 
 msgid "Identify who you have information about"
-msgstr "신원정보 입력"
+msgstr "신상정보 입력하기"
 
 msgid "Identifying information"
-msgstr "신원 확인 정보"
+msgstr "신상정보"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
-msgstr "이러한 레코드 중 찾는 사람과 일치하는 레코드가 없는 경우 아래에서 클릭하여 새 레코드를 만들 수 있습니다."
+msgstr "검색결과에 찾는 사람에 대한 신상기록이 없는 경우 아래 버튼을 클릭하여 신상기록을 새로 작성할 수 있습니다."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"이 메모의 작성자인 경우 이메일에 있는 링크를 통해 이 레코드에서 메모를 사용 중지할 것임을 확인하세요. 작성자가 아닌 경우 레코드"
-" 작성자가 요청을 확인할 때까지 기다려 주세요."
+"이 메모의 작성자인 경우 이메일에 있는 링크를 통해 이 신상기록에서 메모를 사용 중지할 것임을 확인하세요. 작성자가 아닌 경우 "
+"신상기록 작성자가 요청을 확인할 때까지 기다려 주세요."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"이 메모의 작성자인 경우 이메일에 있는 링크를 통해 이 레코드에서 메모를 사용할 것임을 확인하세요. 작성자가 아닌 경우 레코드 "
+"이 메모의 작성자인 경우 이메일에 있는 링크를 통해 이 신상기록에서 메모를 사용할 것임을 확인하세요. 작성자가 아닌 경우 신상기록 "
 "작성자가 요청을 확인할 때까지 기다려 주세요."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "이 사람의 사진이 있는 경우 사진을 업로드하거나 URL 주소를 입력하세요."
+msgstr "이 사람의 사진이 있으시면 사진을 업로드하거나 URL 주소를 입력하세요."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "Excel에서 '파일' &gt; '다른 이름으로 저장'을 사용한 다음 CSV 형식(.csv)으로 저장하세요."
 
 msgid "Incorrect.  Try again."
 msgstr "잘못 입력하셨습니다. 다시 시도해 주세요."
@@ -846,22 +857,25 @@ msgid "List API keys"
 msgstr "API 키 목록으로 표시"
 
 msgid "Mark records as duplicate"
-msgstr "레코드를 중복으로 표시"
+msgstr "중복된 신상기록으로 표시하기"
+
+msgid "Mark the selected records as duplicate"
+msgstr "선택한 신상기록을 중복으로 표시"
 
 msgid "Message (required)"
-msgstr "메시지(필수)"
+msgstr "메시지(필수 항목)"
 
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
 msgid "Missing person's current contact information"
-msgstr "실종된 사람의 현재 연락처 정보"
+msgstr "실종자의 현재 연락처 정보"
 
 msgid "Missing person's current e-mail address"
-msgstr "실종된 사람의 현재 이메일 주소"
+msgstr "실종자의 현재 이메일 주소"
 
 msgid "Missing person's current phone number"
-msgstr "실종된 사람의 현재 전화번호"
+msgstr "실종자의 현재 전화번호"
 
 #, python-format
 msgid ""
@@ -878,20 +892,20 @@ msgid "Name"
 msgstr "이름"
 
 msgid "Name (required)"
-msgstr "이름(필수)"
+msgstr "이름(필수 항목)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
 
 msgid "Neighborhood"
-msgstr "인근 지역"
+msgstr "상세 주소 1"
 
 msgid "No"
 msgstr "아니요"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "레코드 %(id)s에 대한 작성자 이메일이 없습니다."
+msgstr "신상기록 %(id)s에 대한 작성자 이메일이 없습니다."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "이동통신사의 메시지 보드 서비스에 등록된 메시지가 없습니다."
@@ -913,7 +927,7 @@ msgstr "해당 승인 항목이 없습니다."
 msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
-msgstr ""
+msgstr "'이 사람이 사망했다는 정보를 받았습니다.' 상태로 메모를 게시할 권한이 없습니다."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "'사망 추정' 상태인 메모를 게시할 권한이 없습니다."
@@ -927,8 +941,11 @@ msgstr "메모 작성자"
 msgid "Note text"
 msgstr "메모 텍스트"
 
+msgid "Notes for a possible duplicate"
+msgstr "중복 가능성이 있는 신상기록에 대한 메모"
+
 msgid "Notes for this person"
-msgstr "다음 사람에 대한 메모"
+msgstr "메모"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "숫자 또는 범위(예: 20-30)"
@@ -943,21 +960,21 @@ msgid "Original URL"
 msgstr "원본 URL"
 
 msgid "Original author's name"
-msgstr "원래 작성자의 이름"
+msgstr "원본 작성자 이름"
 
 msgid "Original posting date"
-msgstr "원래 게시 날짜"
+msgstr "원본 게시 날짜"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
-msgstr "원래 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 않는 날짜입니다. 이전으로 돌아가 다시 시도해 주세요."
+msgstr "원본 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 않는 날짜입니다. 이전으로 돌아가 다시 시도해 주세요."
 
 msgid "Original site name"
 msgstr "원본 사이트 이름"
 
 msgid "Other website"
-msgstr ""
+msgstr "기타 웹사이트"
 
 #, fuzzy
 msgid ""
@@ -969,7 +986,7 @@ msgstr ""
 "데이터의 정확성을 검토하거나 확인하지 않습니다."
 
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "사람 찾기"
 
 msgid "Phone"
 msgstr "전화"
@@ -997,13 +1014,13 @@ msgid ""
 msgstr "지진 후 이 사람과 계속 연락해 왔는지 확인해 주세요. 또는 '이 사람의 상태' 입력란을 변경해 주세요."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "신고하려는 사람과 일치하는지 확인해 주세요."
+msgstr "제보하려는 사람과 일치하는지 확인해 주세요."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "소식을 구독하려면 이메일 주소를 확인하세요."
+msgstr "소식을 받으려면 이메일 주소를 확인하세요."
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "소식을 구독하려면 이메일 주소를 입력하세요."
+msgstr "소식을 받으려면 이메일 주소를 입력하세요."
 
 msgid "Please explain why you think these are the same person"
 msgstr "동일한 사람이라고 생각하는 이유를 설명하세요."
@@ -1018,13 +1035,16 @@ msgid "Please provide an valid email address."
 msgstr "유효한 이메일 주소를 입력하세요."
 
 msgid "Possible duplicates"
-msgstr "가능한 중복 레코드"
+msgstr "가능한 중복 신상기록"
+
+msgid "Possible duplicates found."
+msgstr "중복 가능성이 있는 신상기록이 발견되었습니다."
 
 msgid "Postal or zip code"
 msgstr "우편번호"
 
 msgid "Posted by"
-msgstr "게시자"
+msgstr "게시자:"
 
 msgid "Proceed"
 msgstr "계속하기"
@@ -1039,13 +1059,13 @@ msgid "Provide information"
 msgstr "정보 입력"
 
 msgid "Provide information about this person"
-msgstr "이 사람에 대한 정보 입력"
+msgstr "이 사람에 대해 제보하기"
 
 msgid "Provided by:"
 msgstr "제공자:"
 
 msgid "Province or state"
-msgstr "주/도"
+msgstr "시/도"
 
 msgid "Reason for deletion:"
 msgstr "삭제 사유:"
@@ -1053,12 +1073,9 @@ msgstr "삭제 사유:"
 msgid "Reason for disabling notes:"
 msgstr "메모 사용 중지 이유:"
 
-msgid "Records selected"
-msgstr "선택한 레코드"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "'%(query)s'와(과) 일치하는 이름 또는 주소가 있는 레코드"
+msgstr "'%(query)s'와(과) 일치하는 이름 또는 주소가 있는 신상기록"
 
 msgid "Remove"
 msgstr "삭제"
@@ -1068,13 +1085,13 @@ msgstr "스팸신고"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "%(full_name)s님에 대한 레코드로 돌아가기"
+msgstr "%(full_name)s님의 신상기록으로 돌아가기"
 
 msgid "Reveal note"
 msgstr "메모 표시"
 
 msgid "Save this record"
-msgstr "레코드 저장"
+msgstr "신상기록 저장하기"
 
 msgid "Search for this person"
 msgstr "검색"
@@ -1087,7 +1104,7 @@ msgid "Select a website to add a profile page..."
 msgstr "프로필 페이지를 추가할 웹사이트 선택..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "중복으로 표시할 레코드를 3개까지 선택:"
+msgstr "신상기록은 최대 3개까지 중복된 정보로 표시할 수 있습니다."
 
 msgid "Send email"
 msgstr "이메일 보내기"
@@ -1096,13 +1113,13 @@ msgid "Sex"
 msgstr "성별"
 
 msgid "Show Map"
-msgstr "지도 표시"
+msgstr "지도 보기"
 
 msgid "Show sensitive information"
 msgstr "중요 정보 표시"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "중복 신상기록으로 표시한 사용자 보기"
 
 msgid "Sign in"
 msgstr "로그인"
@@ -1123,10 +1140,10 @@ msgid "Someone is seeking information about this person"
 msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
 msgid "Source of this record"
-msgstr "이 레코드의 출처"
+msgstr "이 신상기록의 출처"
 
 msgid "Source of this record (required)"
-msgstr "이 레코드의 출처(필수)"
+msgstr "신상기록의 출처(필수 항목)"
 
 msgid "Status"
 msgstr "상태"
@@ -1135,35 +1152,29 @@ msgid "Status of this person"
 msgstr "이 사람의 상태"
 
 msgid "Street name"
-msgstr "상세 주소"
+msgstr "상세 주소 2"
 
 msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
 msgid "Subscribe"
-msgstr "구독"
+msgstr "수신"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "%(full_name)s님에 대한 소식 구독"
+msgstr "%(full_name)s님에 대한 소식 받기"
 
 msgid "Subscribe to updates about this person"
-msgstr "이 사람에 관한 소식 구독"
+msgstr "이 사람에 대한 소식 받기"
 
 msgid "Switch to address"
 msgstr "주소로 전환"
 
-msgid "Switch to duplicate marking mode"
-msgstr "중복 표시 모드로 전환"
-
 msgid "Switch to lat/long"
 msgstr "위도/경도로 전환"
 
-msgid "Switch to normal view mode"
-msgstr "기본 보기 모드로 전환"
-
 msgid "Tell us the status of this person"
-msgstr "이 사람의 상태 알리기"
+msgstr "이 사람에 대해 제보하기"
 
 msgid "Terms of Service"
 msgstr "서비스 약관"
@@ -1177,13 +1188,13 @@ msgid ""
 msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "원래 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
+msgstr "원본 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
 msgid "The author has disabled notes on this record."
-msgstr "작성자가 이 레코드에서 메모를 사용 중지했습니다."
+msgstr "작성자가 이 신상기록에서 메모를 사용 중지했습니다."
 
 msgid "The author has disabled status updates on this record."
-msgstr "작성자가 이 레코드에서 상태 업데이트를 사용 중지했습니다."
+msgstr "작성자가 이 신상기록에서 상태 업데이트를 사용 중지했습니다."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
@@ -1192,10 +1203,10 @@ msgid "The reason this note is being marked as spam:"
 msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
 msgid "The record cannot be extended."
-msgstr "레코드의 유효기간을 연장할 수 없습니다."
+msgstr "신상기록의 유효기간을 연장할 수 없습니다."
 
 msgid "The record has been deleted."
-msgstr "레코드가 삭제되었습니다."
+msgstr "신상기록이 삭제되었습니다."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1213,13 +1224,13 @@ msgstr "토큰 %(token)s이(가) 잘못되었습니다."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "이름이 유사한 기존 레코드가 %(num_results)s개 있습니다."
+msgstr "이름이 유사한 신상기록이 %(num_results)s건 있습니다."
 
 msgid "There are some existing records with similar names."
-msgstr "이름이 유사한 기존 레코드가 몇 개 있습니다."
+msgstr "이름이 유사한 신상기록이 몇 건 있습니다."
 
 msgid "There is one existing record with a similar name."
-msgstr "이름이 유사한 기존 레코드가 하나 있습니다."
+msgstr "이름이 유사한 신상기록이 1건 있습니다."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
@@ -1239,7 +1250,7 @@ msgid ""
 msgstr "이러한 가젯은 %(apache_link_html)sApache 2.0 라이선스%(link_end_html)s에 따라 제공됩니다."
 
 msgid "This is a new record."
-msgstr "새 레코드입니다."
+msgstr "새로 작성한 신상기록"
 
 msgid "This link is invalid."
 msgstr "잘못된 링크입니다."
@@ -1266,33 +1277,33 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "해당하는 사람의 항목이 존재하지 않거나 삭제되었습니다."
 
 msgid "This record has served its purpose."
-msgstr "이 레코드는 목적에 부합합니다."
+msgstr "더 이상 필요없는 신상기록입니다."
 
 msgid "This record is a duplicate of"
-msgstr "다음의 중복 레코드입니다."
+msgstr "다음의 중복 신상기록입니다."
 
 msgid "This record is copied from another source."
-msgstr "다른 출처에서 복사한 레코드입니다."
+msgstr "다른 출처에서 복사한 신상기록"
 
 msgid "This record is inappropriate."
-msgstr "이 레코드는 부적절합니다."
+msgstr "이 신상기록은 부적절합니다."
 
 msgid "This record is spam."
-msgstr "이 레코드는 스팸입니다."
+msgstr "이 신상기록은 스팸입니다."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr "이 저장소는 현재 테스트 모드입니다. 테스트 모드를 사용 중일 때 6시간이 경과한 레코드는 삭제됩니다."
+msgstr "이 저장소는 현재 테스트 모드입니다. 테스트 모드를 사용 중일 때 6시간이 경과한 신상기록이 삭제됩니다."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr "이 메모에 사진을 첨부하려면 업로드하거나 URL을 입력하세요."
+msgstr "여기에 사진을 첨부하려면 업로드하거나 URL을 입력하세요."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "데이터를 삭제하려면 데스크톱에서 Person Finder에 액세스하세요."
+msgstr "데이터를 삭제하려면 데스크톱에서 사람 찾기에 액세스하세요."
 
 msgid "To unsubscribe, follow this link"
-msgstr "구독을 취소하려면 다음 링크를 따르세요."
+msgstr "수신 취소하려면 다음 링크를 클릭하세요."
 
 msgid "To view or add information, select a name below."
 msgstr "정보를 보거나 추가하려면 아래에서 이름을 선택하세요."
@@ -1300,13 +1311,13 @@ msgstr "정보를 보거나 추가하려면 아래에서 이름을 선택하세�
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr "주소를 입력하거나 아래의 지도를 열고 지도를 클릭하여 위치를 나타냅니다."
+msgstr "직접 주소를 입력하거나 아래에서 지도를 열고 클릭하여 위치를 표시하세요."
 
 msgid "Type an address."
 msgstr "주소를 입력하세요."
 
 msgid "Type the two words:"
-msgstr "두 단어 입력:"
+msgstr "보안문자 두 개를 입력하세요"
 
 msgid "Type what you hear:"
 msgstr "들은 내용 입력:"
@@ -1315,7 +1326,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of original record"
-msgstr "원래 레코드의 URL"
+msgstr "원본 신상기록 URL"
 
 msgid "Unspecified"
 msgstr "지정하지 않음"
@@ -1326,11 +1337,17 @@ msgstr "기존 키 업데이트"
 msgid "Upload"
 msgstr "업로드"
 
-msgid "Upload CSV files"
-msgstr "CSV 파일 업로드"
+msgid "Upload notes in CSV format"
+msgstr "CSV 형식으로 메모 업로드"
+
+msgid "Upload person records in CSV format"
+msgstr "CSV 형식의 개인 신상기록 업로드"
+
+msgid "Upload your CSV file below"
+msgstr "아래 CSV 파일 업로드"
 
 msgid "View the record"
-msgstr "레코드 보기"
+msgstr "신상기록 보기"
 
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."
@@ -1339,10 +1356,10 @@ msgid "What is this person's name?"
 msgstr "이 사람의 이름은 무엇입니까?"
 
 msgid "When should this record disappear?"
-msgstr "이 레코드는 언제 사라져야 합니까?"
+msgstr "이 신상기록의 만료일을 언제로 지정하시겠습니까?"
 
 msgid "Where did this information come from?"
-msgstr "이 정보의 출처는 어디입니까?"
+msgstr "이 신상기록의 출처에 대해 알려주세요."
 
 msgid "Where is this person from?"
 msgstr "어디에 살던 사람입니까?"
@@ -1350,40 +1367,40 @@ msgstr "어디에 살던 사람입니까?"
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
-msgstr "테스트 모드를 사용 중일 때 6시간이 경과한 레코드는 만료일과 관계 없이 삭제됩니다."
+msgstr "테스트 모드를 사용 중일 때 6시간이 경과한 신상기록은 만료일과 관계 없이 삭제됩니다."
 
 msgid "Yes"
 msgstr "예"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "예, 레코드 작성자에게 메모 사용 중지를 요청합니다."
+msgstr "메모 사용 중지 요청"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "예, 레코드 작성자에게 메모 사용을 요청합니다."
+msgstr "메모 사용 요청"
 
 msgid "Yes, delete the record"
-msgstr "예, 기록을 삭제합니다."
+msgstr "신상기록 삭제"
 
 msgid "Yes, disable notes on this record."
-msgstr "예, 이 레코드에서 메모를 사용 중지합니다."
+msgstr "메모 사용 중지"
 
 msgid "Yes, extend the record"
-msgstr "예, 레코드 유효기간을 연장합니다."
+msgstr "만료일 연장"
 
 msgid "Yes, restore this record"
-msgstr "예, 레코드를 복원합니다."
+msgstr "신상기록 복원"
 
 msgid "Yes, these are the same person"
-msgstr "예, 동일한 사람입니다."
+msgstr "중복된 정보로 표시"
 
 msgid "Yes, update the note"
-msgstr "예, 메모를 업데이트합니다."
+msgstr "메모 업데이트"
 
 msgid "You are already subscribed. "
-msgstr "이미 구독했습니다. "
+msgstr "이미 수신 신청하셨습니다."
 
 msgid "You are already unsubscribed."
-msgstr "이미 구독을 취소했습니다."
+msgstr "이미 수신 취소하셨습니다."
 
 #, python-format
 msgid ""
@@ -1400,22 +1417,22 @@ msgstr "현재 로그인되어 있지 않습니다."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr "삭제하기 전에 %(begin_tag)s레코드를 확인%(end_tag)s할 수 있습니다."
+msgstr "삭제하기 전에 %(begin_tag)s신상기록을 확인%(end_tag)s할 수 있습니다."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "%(view_url)s 페이지에서 전체 레코드를 확인할 수 있습니다."
+msgstr "%(view_url)s 페이지에서 전체 신상기록을 확인할 수 있습니다."
 
 msgid "You have successfully subscribed."
-msgstr "구독 절차를 완료했습니다."
+msgstr "수신 절차를 완료했습니다."
 
 msgid "You have successfully unsubscribed."
-msgstr "구독 취소를 완료했습니다."
+msgstr "수신 취소를 완료했습니다."
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr "다음 사람의 업데이트 소식을 구독했기 때문에 전송된 알림입니다.\n"
+msgstr "본 알림은 다음 사람의 소식을 수신 신청한 분들께 전송되는 알림입니다.\n"
 
 msgid "Your e-mail address"
 msgstr "이메일 주소"
@@ -1427,7 +1444,7 @@ msgid "Your email"
 msgstr "이메일"
 
 msgid "Your name"
-msgstr "이름"
+msgstr "작성자 이름"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1477,7 +1494,7 @@ msgstr "[Person Finder] 이제 '%(full_name)s'님에 대한 메모를 사용하�
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] '%(full_name)s'님 레코드 복원 고지"
+msgstr "[Person Finder] '%(full_name)s'님 신상기록 복원 알림"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
@@ -1485,7 +1502,7 @@ msgstr "[Person Finder] %(full_name)s님 상태 업데이트"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[Person Finder] %(full_name)s님에 대한 상태 업데이트를 구독했습니다."
+msgstr "[Person Finder] %(full_name)s님에 대한 소식을 수신 신청했습니다."
 
 msgid "female"
 msgstr "여자"

@@ -150,6 +150,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Atlasīti %(dup_count)s ieraksti\n"
+"          "
 
 #, python-format
 msgid ""
@@ -157,6 +160,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Ieraksti, kas līdzīgi ierakstiem par šādu personu: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -164,6 +170,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Meklēšanas rezultāti vaicājumam “%(query)s”\n"
+"      "
 
 #, python-format
 msgid ""
@@ -263,6 +272,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Netika atrasts neviens rezultāts meklēšanas vaicājumam “%(query)s”\n"
+"    "
 
 #, python-format
 msgid ""
@@ -288,6 +300,10 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Ieraksta derīguma termiņš ir pagarināts līdz šādam datumam: "
+"%(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -499,10 +515,11 @@ msgstr ""
 "\n"
 "     %(view_url)s\n"
 "\n"
-"Lai anulētu abonementu, izmantojiet šo saiti: %(unsubscribe_link)s\n"
+"Lai anulētu abonementu, noklikšķiniet uz šīs saites: %(unsubscribe_link)s"
+"\n"
 
 msgid "(click to reveal)"
-msgstr "(noklikšķiniet, lai atklātu)"
+msgstr "parādīt"
 
 msgid "(unknown)"
 msgstr "(nezināms)"
@@ -588,9 +605,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Atzīmējot šo piezīmi kā mēstuli, pēc noklusējuma tā tiks slēpta. Piezīme "
+"joprojām būs daļa no ieraksta, taču, lai apskatītu tās saturu, būs "
+"vēlreiz jānoklikšķina. Lietotāji varēs arī noņemt mēstules atzīmi no šīs "
+"piezīmes."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr ""
+msgstr "Noņemot mēstules atzīmi no šīs piezīmes, pēc noklusējuma tā būs redzama."
 
 msgid "CSV file"
 msgstr "CSV fails"
@@ -666,6 +687,12 @@ msgstr "Atspējot piezīmes par šo ierakstu"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Vai šai personai ir profila lapas citās vietnēs?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Lejupielādējiet %(begin_link)sšo Excel veidni%(end_link)s un pievienojiet"
+" tai rindas."
+
 msgid "Download the sound as MP3"
 msgstr "Lejupielādēt skaņas failu MP3 formātā"
 
@@ -684,11 +711,6 @@ msgstr "Lietojumprogrammas iegulšana"
 msgid "Enable notes on this record"
 msgstr "Iespējot piezīmes par šo ierakstu"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Visiem datumiem jābūt formātā gggg-mm-ddThh:mm:ssZ pēc UTC (universālā "
-"koordinētā laika)."
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ievadiet datumu formātā GGGG-MM-DD."
 
@@ -696,12 +718,12 @@ msgid "Enter the person's given and family names."
 msgstr "Ievadiet personas vārdu un uzvārdu."
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Ievadiet personas vārdu vai vārda daļas."
+msgstr "Ievadiet pilnu personas vārdu vai tās vārda dažus burtus."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"Ievadiet personas vārdu, uzvārdu, vārda un uzvārda daļas vai mobilā "
-"tālruņa numuru."
+"Ievadiet personas vārdu, uzvārdu, vārda un uzvārda dažus burtus vai "
+"mobilā tālruņa numuru."
 
 msgid "Enter the person's name."
 msgstr "Ievadiet personas vārdu."
@@ -752,7 +774,7 @@ msgstr "Google personu meklētājs"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Vai jūs personīgi esat runājis ar šo personu PĒC nelaimes gadījuma? "
+"Vai personīgi esat runājis ar šo personu PĒC nelaimes gadījuma? "
 "(nepieciešams)"
 
 msgid "Help"
@@ -780,7 +802,7 @@ msgid "Home country"
 msgstr "Mītnes zeme/dzimtene"
 
 msgid "How can this person be reached now?"
-msgstr "Kā ar šo personu tagad var sazināties?"
+msgstr "Kā tagad var sazināties ar šo personu?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kā ar jums var sazināties citi, kas interesējas par šo personu"
@@ -810,13 +832,13 @@ msgid "I have received information that this person is dead"
 msgstr "Esmu saņēmis informāciju, ka šī persona ir mirusi"
 
 msgid "I have received spam due to this note."
-msgstr "Šīs piezīmes dēļ es saņēmu mēstuli"
+msgstr "Šīs piezīmes dēļ es saņēmu mēstuli."
 
 msgid "I have received spam."
 msgstr "Es saņēmu mēstuli"
 
 msgid "I prefer not to specify."
-msgstr "Es nevēlos norādīt"
+msgstr "Es nevēlos norādīt."
 
 msgid "I'm looking for someone"
 msgstr "Es meklēju kādu personu"
@@ -825,7 +847,7 @@ msgid "Identify who you are looking for"
 msgstr "Identificējiet personu, kuru jūs meklējat"
 
 msgid "Identify who you have information about"
-msgstr "Identificējiet personu, par kuru jums ir informācija"
+msgstr "Norādiet personu, par kuru jums ir informācija"
 
 msgid "Identifying information"
 msgstr "Identifikācijas informācija"
@@ -834,8 +856,8 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Ja neviens no šiem ierakstiem neatbilst personai, kuru jūs domājāt, varat"
-" noklikšķināt tālāk, lai izveidotu jaunu ierakstu."
+"Ja neviens no šiem ierakstiem neatbilst personai, kuru meklējāt, varat "
+"mēģināt izveidot jaunu ierakstu."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -862,6 +884,11 @@ msgstr ""
 "Ja jums ir šīs personas fotoattēls, augšupielādējiet to vai ievadiet tā "
 "URL adresi."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Programmā Excel pārejiet uz cilni Fails &gt; Saglabāt kā... un "
+"saglabājiet failu CSV formātā (.csv)."
+
 msgid "Incorrect.  Try again."
 msgstr "Nepareizi. Mēģiniet vēlreiz."
 
@@ -885,6 +912,9 @@ msgstr "Skatīt API atslēgu sarakstu"
 
 msgid "Mark records as duplicate"
 msgstr "Atzīmēt ierakstus kā dublikātus"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Atzīmēt atlasītos ierakstus kā dublikātus"
 
 msgid "Message (required)"
 msgstr "Ziņojums (nepieciešams)"
@@ -958,6 +988,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Nav atļauts publicēt piezīmes ar statusu “Esmu saņēmis informāciju, ka šī"
+" persona ir mirusi”."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Jums nav atļaujas publicēt piezīmes ar statusu “believed_dead”."
@@ -971,11 +1003,14 @@ msgstr "Piezīmes autors"
 msgid "Note text"
 msgstr "Piezīmes teksts"
 
+msgid "Notes for a possible duplicate"
+msgstr "Piezīmes par iespējamu dublikātu"
+
 msgid "Notes for this person"
 msgstr "Piezīmes par šo personu"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Skaitlis vai diapazons (piemēram, 20–30)"
+msgstr "Precīzs vai aptuvens(piem., 20–30)"
 
 #, python-format
 msgid ""
@@ -1005,7 +1040,7 @@ msgid "Original site name"
 msgstr "Sākotnējās vietnes nosaukums"
 
 msgid "Other website"
-msgstr ""
+msgstr "Cita vietne"
 
 #, fuzzy
 msgid ""
@@ -1037,7 +1072,7 @@ msgstr ""
 "mēģiniet vēlreiz."
 
 msgid "Physical characteristics"
-msgstr "Fiziskās īpašības"
+msgstr "Pazīmes"
 
 msgid "Play the sound again"
 msgstr "Atskaņot skaņu vēlreiz"
@@ -1050,7 +1085,7 @@ msgstr ""
 "arī mainiet lauku “Šīs personas statuss”."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Lūdzu, pārbaudiet, vai tas atbilst personai, par kuru vēlaties ziņot."
+msgstr "Lūdzu, pārbaudiet, vai tie atbilst personai, par kuru vēlaties ziņot."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Lai abonētu jaunumus, lūdzu, apstipriniet savu e-pasta adresi."
@@ -1062,7 +1097,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Lūdzu, paskaidrojiet, kāpēc uzskatāt, ka tā ir viena un tā pati persona."
 
 msgid "Please fill in all the required fields."
-msgstr "Lūdzu, aizpildiet visus obligātos laukus."
+msgstr "Lūdzu, aizpildiet visus obligātos laukus!"
 
 msgid "Please fill in your email address."
 msgstr "Lūdzu, ievadiet savu e-pasta adresi."
@@ -1072,6 +1107,9 @@ msgstr "Lūdzu, norādiet derīgu e-pasta adresi."
 
 msgid "Possible duplicates"
 msgstr "Iespējamie dublikāti"
+
+msgid "Possible duplicates found."
+msgstr "Atrasti iespējami dublikāti."
 
 msgid "Postal or zip code"
 msgstr "Pasta indekss"
@@ -1092,7 +1130,7 @@ msgid "Provide information"
 msgstr "Sniegt informāciju"
 
 msgid "Provide information about this person"
-msgstr "Sniegt informāciju par šo personu."
+msgstr "Sniegt informāciju par šo personu"
 
 msgid "Provided by:"
 msgstr "Iesniedzējs:"
@@ -1105,9 +1143,6 @@ msgstr "Dzēšanas iemesls:"
 
 msgid "Reason for disabling notes:"
 msgstr "Piezīmju atspējošanas iemesls:"
-
-msgid "Records selected"
-msgstr "Atlasītie ieraksti"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1142,7 +1177,7 @@ msgid "Select a website to add a profile page..."
 msgstr "Atlasiet vietni, kuru pievienot profila lapai..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Atlasiet ne vairāk kā 3 ierakstus, lai atzīmētu kā dublikātus:"
+msgstr "Atlasiet ne vairāk kā trīs ierakstus:"
 
 msgid "Send email"
 msgstr "Sūtīt e-pasta ziņojumu"
@@ -1157,7 +1192,7 @@ msgid "Show sensitive information"
 msgstr "Parādīt sensitīvu informāciju"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Parādīt, kurš atzīmēja šos dublikātus"
 
 msgid "Sign in"
 msgstr "Pierakstīties"
@@ -1208,14 +1243,8 @@ msgstr "Abonēt jaunumus par šo personu"
 msgid "Switch to address"
 msgstr "Pārslēgt uz adresi"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Pārslēgt dublikātu atzīmēšanas režīmu"
-
 msgid "Switch to lat/long"
-msgstr "Pārslēgt uz ģeogrāfisko platumu/garumu"
-
-msgid "Switch to normal view mode"
-msgstr "Pārslēgt uz normāla skata režīmu"
+msgstr "Pārslēgt uz ģeogrāfiskajām koordinātām"
 
 msgid "Tell us the status of this person"
 msgstr "Norādiet šīs personas statusu"
@@ -1350,9 +1379,7 @@ msgstr ""
 "ieraksti, kas ir vecāki par 6 stundām, tiek dzēsti."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
-"Lai pievienotu šai piezīmei fotoattēlu, augšupielādējiet to vai ievadiet "
-"tā URL."
+msgstr "Lai pievienotu fotoattēlu, augšupielādējiet to vai ievadiet tā URL."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
@@ -1360,7 +1387,7 @@ msgstr ""
 "galddatoru."
 
 msgid "To unsubscribe, follow this link"
-msgstr "Lai anulētu abonementu, izmantojiet šo saiti."
+msgstr "Lai anulētu abonementu, noklikšķiniet uz šīs saites."
 
 msgid "To view or add information, select a name below."
 msgstr "Lai skatītu vai pievienotu informāciju, atlasiet vārdu."
@@ -1396,8 +1423,14 @@ msgstr "Atjaunināt esošu atslēgu"
 msgid "Upload"
 msgstr "Augšupielādēt"
 
-msgid "Upload CSV files"
-msgstr "Augšupielādēt CSV failus"
+msgid "Upload notes in CSV format"
+msgstr "Augšupielādējiet piezīmes CSV formātā."
+
+msgid "Upload person records in CSV format"
+msgstr "Augšupielādēt personas datus CSV formātā"
+
+msgid "Upload your CSV file below"
+msgstr "Tālāk augšupielādējiet CSV failu."
 
 msgid "View the record"
 msgstr "Skatīt ierakstu"
@@ -1409,7 +1442,7 @@ msgid "What is this person's name?"
 msgstr "Kā sauc šo personu?"
 
 msgid "When should this record disappear?"
-msgstr "Kad šo ierakstu noņemt?"
+msgstr "Pēc cik ilga laika šo ierakstu var dzēst?"
 
 msgid "Where did this information come from?"
 msgstr "No kurienes ir šī informācija?"
@@ -1574,7 +1607,7 @@ msgstr "[Person Finder] Statusa atjauninājums par personu %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] Jūs abonējat statusa atjauninājumus par personu "
+"[Person Finder] Jūs esat abonējis statusa atjauninājumus par personu "
 "%(full_name)s."
 
 msgid "female"

@@ -153,6 +153,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s (de) înregistrări selectate\n"
+"          "
 
 #, python-format
 msgid ""
@@ -160,6 +163,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Înregistrări similare cu: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -167,6 +173,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Rezultatele căutării pentru: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -265,6 +274,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Niciun rezultat găsit pentru: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -290,6 +302,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Înregistrarea a fost extinsă la %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -597,9 +612,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Dacă marcați nota ca spam, aceasta va fi ascunsă în mod prestabilit. Nota"
+" va rămâne inclusă în înregistrare, dar pentru vizualizarea conținutului "
+"acesteia va fi necesar un clic suplimentar. De asemenea, utilizatorii vor"
+" putea să anuleze marcarea ca spam a acestei note."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Anulând marcarea ca spam a notei, aceasta va deveni vizibilă în mod "
+"prestabilit."
 
 msgid "CSV file"
 msgstr "Fișier CSV"
@@ -679,6 +700,12 @@ msgstr "Dezactivați notele pentru această înregistrare"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Această persoană are pagini de profil pe alte site-uri web?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Descărcați %(begin_link)sacest șablon în Excel%(end_link)s și adăugați-i "
+"rânduri"
+
 msgid "Download the sound as MP3"
 msgstr "Descărcați sunetul în format MP3"
 
@@ -696,9 +723,6 @@ msgstr "Încorporarea aplicației"
 
 msgid "Enable notes on this record"
 msgstr "Activați notele pentru această înregistrare"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Asigurați-vă că toate datele sunt în format aaaa-ll-zzThh:mm:ssZ în UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Introduceți în format AAAA-LL-ZZ"
@@ -873,6 +897,11 @@ msgstr ""
 "Dacă dețineți o fotografie a acestei persoane, încărcați-o sau "
 "introduceți adresa URL a acesteia."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"În Excel, utilizați Fișier &gt; Salvare ca... și salvați în format CSV "
+"(.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Incorect. Încercați din nou."
 
@@ -896,6 +925,9 @@ msgstr "Afișați cheile API"
 
 msgid "Mark records as duplicate"
 msgstr "Marcați înregistrările ca fiind duplicate"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Marcați înregistrările selectate ca duplicate"
 
 msgid "Message (required)"
 msgstr "Mesaj (obligatoriu)"
@@ -971,6 +1003,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Nu este autorizată postarea de note cu starea „Am primit informații "
+"conform cărora această persoană a decedat”."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nu sunteți autorizat(ă) să postați note cu starea „believed_dead”."
@@ -983,6 +1017,9 @@ msgstr "Autorul notei"
 
 msgid "Note text"
 msgstr "Textul notei"
+
+msgid "Notes for a possible duplicate"
+msgstr "Note pentru o posibilă înregistrare duplicat"
 
 msgid "Notes for this person"
 msgstr "Note pentru această persoană"
@@ -1018,7 +1055,7 @@ msgid "Original site name"
 msgstr "Numele site-ului inițial"
 
 msgid "Other website"
-msgstr ""
+msgstr "Alt site web"
 
 #, fuzzy
 msgid ""
@@ -1088,6 +1125,9 @@ msgstr "Introduceți o adresă de e-mail validă."
 msgid "Possible duplicates"
 msgstr "Duplicate posibile"
 
+msgid "Possible duplicates found."
+msgstr "S-au găsit posibile înregistrări duplicate."
+
 msgid "Postal or zip code"
 msgstr "Cod poștal"
 
@@ -1120,9 +1160,6 @@ msgstr "Motiv de ștergere:"
 
 msgid "Reason for disabling notes:"
 msgstr "Motivul dezactivării notelor:"
-
-msgid "Records selected"
-msgstr "Înregistrări selectate"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1172,7 +1209,7 @@ msgid "Show sensitive information"
 msgstr "Afișați informații delicate"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Afișați cine a marcat aceste duplicate"
 
 msgid "Sign in"
 msgstr "Conectați-vă"
@@ -1223,14 +1260,8 @@ msgstr "Abonați-vă la actualizări despre această persoană"
 msgid "Switch to address"
 msgstr "Comutați la adresă"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Comutați la modul de marcare a duplicatelor"
-
 msgid "Switch to lat/long"
 msgstr "Comutați la latitudine/longitudine"
-
-msgid "Switch to normal view mode"
-msgstr "Comutați la modul de vizualizare normal"
 
 msgid "Tell us the status of this person"
 msgstr "Spuneți-ne care este starea acestei persoane"
@@ -1416,8 +1447,14 @@ msgstr "Actualizați o cheie existentă"
 msgid "Upload"
 msgstr "Încărcați"
 
-msgid "Upload CSV files"
-msgstr "Încărcați fișiere CSV"
+msgid "Upload notes in CSV format"
+msgstr "Încărcați note în format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Încărcați înregistrările persoanei în format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Încărcați fișierul CSV mai jos"
 
 msgid "View the record"
 msgstr "Afișați înregistrarea"

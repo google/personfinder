@@ -151,6 +151,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            %(dup_count)s ದಾಖಲೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ\n"
+"          "
 
 #, python-format
 msgid ""
@@ -158,6 +161,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        ದಾಖಲೆಗಳು ಇದನ್ನು ಹೋಲುತ್ತವೆ: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -165,6 +171,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        ಇದಕ್ಕಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -173,9 +182,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      \"%(full_name)s\" ಅವರಿಗಾಗಿ ಈ ಪುಟವನ್ನು ನೀವು ಅಳಿಸಲು ಖಚಿತವಾಗಿ "
-"ಬಯಸುವಿರಾ?\n"
-"    "
+"\"%(full_name)s\" ಕುರಿತ ಈ ರೆಕಾರ್ಡ್ ಅನ್ನು ಅಳಿಸುವುದು ಖಚಿತವೇ?"
 
 #, python-format
 msgid ""
@@ -219,9 +226,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      \"%(full_name)s\" ರೆಕಾರ್ಡ್‌ಗಾಗಿ ಮುಕ್ತಾಯದ ಅವಧಿಯನ್ನು ವಿಸ್ತರಿಸಲು ನೀವು "
-"ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?\n"
-"    "
+"\"%(full_name)s\" ಕುರಿತ ರೆಕಾರ್ಡ್‌ನ ಮುಕ್ತಾಯದ ಅವಧಿಯನ್ನು ವಿಸ್ತರಿಸುವುದು "
+"ಖಚಿತವೇ?"
 
 msgid ""
 "\n"
@@ -239,10 +245,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ನೀವು ಅಳಿಸುವಿರಾದರೆ,\n"
-"      ಈ ರೆಕಾರ್ಡ್ ಅನ್ನು ಇನ್ನು ಮುಂದೆ ಈ ಸೈಟ್‌ನಲ್ಲಿ ಹುಡುಕಲು ಮತ್ತು ವೀಕ್ಷಿಸಲು "
-"ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.\n"
-"    "
+"ನೀವು ಅಳಿಸುವಿರಾದರೆ,\n"
+"      ಈ ರೆಕಾರ್ಡ್ ಅನ್ನು ಇನ್ನು ಮುಂದೆ ಈ ಸೈಟ್‌ನಲ್ಲಿ ಹುಡುಕಲು, ನೋಡಲು "
+"ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ."
 
 #, python-format
 msgid ""
@@ -266,6 +271,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      ಇದಕ್ಕಾಗಿ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -291,6 +299,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      ರೆಕಾರ್ಡ್ ಅನ್ನು %(expiry_date)s ವರೆಗೆ ವಿಸ್ತರಿಸಲಾಗಿದೆ.\n"
+"    "
 
 msgid ""
 "\n"
@@ -511,7 +522,7 @@ msgid "(unknown)"
 msgstr "(ಅಜ್ಞಾತ)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "ಈ ವ್ಯಕ್ತಿಯನ್ನು ಹುಡುಕಲು ಈ ವ್ಯಕ್ತಿ ಅಥವಾ ಇತರರಿಗಾಗಿ ಒಂದು ಸಂದೇಶ"
+msgstr "ಈ ವ್ಯಕ್ತಿಗೆ ಅಥವಾ ಇವರನ್ನು ಹುಡುಕುತ್ತಿರುವ ಇತರರಿಗಾಗಿ ಸಂದೇಶ"
 
 msgid "A new API key has been created successfully."
 msgstr "ಒಂದು ಹೊಸ API ಕೀ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ."
@@ -591,9 +602,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"ಈ ಟಿಪ್ಪಣಿಯನ್ನು ಸ್ಪ್ಯಾಮ್ ಎಂದು ಗುರುತಿಸುವ ಮೂಲಕ, ನೀವು ಡೀಫಾಲ್ಟ್ ಆಗಿ ಅದನ್ನು "
+"ಮರೆಮಾಡುತ್ತೀರಿ. ಇದು ಈಗಲೂ ದಾಖಲೆಯ ಭಾಗವಾಗಿರುತ್ತದೆ, ಆದರೆ ಟಿಪ್ಪಣಿಯ ವಿಷಯಗಳನ್ನು "
+"ವೀಕ್ಷಿಸಲು ಹೆಚ್ಚುವರಿ ಕ್ಲಿಕ್‌ನ ಅಗತ್ಯವಿರುತ್ತದೆ. ಬಳಕೆದಾರರಿಗೂ ಸಹ ಈ ಟಿಪ್ಪಣಿಯಿಂದ"
+" ಸ್ಪ್ಯಾಮ್ ಗುರುತನ್ನು ತೆಗೆದುಹಾಕಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"ಈ ಟಿಪ್ಪಣಿಯನ್ನು ಸ್ಪ್ಯಾಮ್ ಎಂದು ಗುರುತಿಸಿರುವುದನ್ನು ರದ್ದುಮಾಡುವುದರಿಂದ, ನೀವು "
+"ಡೀಫಾಲ್ಟ್ ಮೂಲಕ ಅದನ್ನು ಗೋಚರವಾಗುವಂತೆ ಮಾಡುತ್ತೀರಿ."
 
 msgid "CSV file"
 msgstr "CSV ಫೈಲ್"
@@ -615,7 +632,7 @@ msgid "Close window"
 msgstr "ವಿಂಡೋ ಮುಚ್ಚು"
 
 msgid "Compare these records"
-msgstr "ಈ ರೆಕಾರ್ಡ್‌ಗಳನ್ನು ಹೋಲಿಸು"
+msgstr "ಈ ರೆಕಾರ್ಡ್‌ಗಳನ್ನು ಹೋಲಿಸಿ ನೋಡು"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -629,10 +646,10 @@ msgid "Create a new record"
 msgstr "ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಿ"
 
 msgid "Create a new record for"
-msgstr "ಇದಕ್ಕಾಗಿ ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಿ"
+msgstr "ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸು:"
 
 msgid "Create a new record for a missing person"
-msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಗಾಗಿ ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಿ"
+msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸು"
 
 msgid "Crisis events"
 msgstr "ಬಿಕ್ಕಟ್ಟಿನ ಈವೆಂಟ್‌ಗಳು"
@@ -666,10 +683,16 @@ msgid "Developers"
 msgstr "ಡೆವಲಪರ್‌ಗಳು"
 
 msgid "Disable notes on this record"
-msgstr "ಈ ರೆಕಾರ್ಡ್‌ನಲ್ಲಿನ ಟಿಪ್ಪಣಿಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"
+msgstr "ಈ ರೆಕಾರ್ಡ್‌ನಲ್ಲಿನ ಟಿಪ್ಪಣಿಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"
 
 msgid "Does this person have profile pages at other websites?"
 msgstr "ಈ ವ್ಯಕ್ತಿಯು ಇತರ ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿ ಪ್ರೊಫೈಲ್ ಪುಟಗಳನ್ನು ಹೊಂದಿದ್ದಾರೆಯೇ?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"%(begin_link)sಈ Excel ಟೆಂಪ್ಲೇಟ್%(end_link)s ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಅದಕ್ಕೆ "
+"ಸಾಲುಗಳನ್ನು ಸೇರಿಸಿ"
 
 msgid "Download the sound as MP3"
 msgstr "ಧ್ವನಿಯನ್ನು MP3 ರೂಪದಲ್ಲಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
@@ -689,16 +712,11 @@ msgstr "ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಎಂಬೆಡ್ ಮಾ
 msgid "Enable notes on this record"
 msgstr "ರೆಕಾರ್ಡ್‌ನಲ್ಲಿ ಟಿಪ್ಪಣಿಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"ಎಲ್ಲಾ ದಿನಾಂಕಗಳು UTC ಯಲ್ಲಿ yyyy-mm-ddThh:mm:ssZ ಸ್ವರೂಪದಲ್ಲಿವೆಯೇ ಎಂಬುದನ್ನು "
-"ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD ರೂಪದಲ್ಲಿ ನಮೂದಿಸಿ"
 
 msgid "Enter the person's given and family names."
-msgstr "ವ್ಯಕ್ತಿಯ ಒದಗಿಸಿದ ಮತ್ತು ಕುಟುಂಬದ ಹೆಸರುಗಳನ್ನು ನಮೂದಿಸಿ."
+msgstr "ವ್ಯಕ್ತಿಯ ಹಾಗೂ ಅವರ ಕುಟುಂಬದ ಹೆಸರುಗಳನ್ನು ನಮೂದಿಸಿ."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "ವ್ಯಕ್ತಿಯ ಹೆಸರು ಅಥವಾ ಹೆಸರಿನ ಭಾಗಗಳನ್ನು ನಮೂದಿಸಿ."
@@ -717,7 +735,7 @@ msgstr "ಈ ರೆಕಾರ್ಡ್‌ನ ಮುಕ್ತಾಯದ ದಿನಾ
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "ಮುಕ್ತಾಯದ ದಿನಾಂಕವನ್ನು %(extension_days)s ದಿನಗಳವರೆಗೆ ವಿಸ್ತರಿಸಿ"
+msgstr "ಮುಕ್ತಾಯದ ದಿನಾಂಕವನ್ನು %(extension_days)s ದಿನಗಳವರೆಗೆ ವಿಸ್ತರಿಸು"
 
 msgid "Family name"
 msgstr "ಕುಟುಂಬದ ಹೆಸರು"
@@ -748,7 +766,7 @@ msgid "Get an audio challenge"
 msgstr "ಆಡಿಯೊ ಸವಾಲನ್ನು ಪಡೆಯಿರಿ"
 
 msgid "Given name"
-msgstr "ಒದಗಿಸಿದ ಹೆಸರು"
+msgstr "ಹೆಸರು"
 
 msgid "Google Person Finder"
 msgstr "Google ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ"
@@ -783,13 +801,13 @@ msgid "Home country"
 msgstr "ಸ್ವದೇಶ"
 
 msgid "How can this person be reached now?"
-msgstr "ಈ ವ್ಯಕ್ತಿಯ ಇದೀಗ ಹೇಗೆ ತಲುಪಬಹುದಾಗಿದೆ?"
+msgstr "ಈ ವ್ಯಕ್ತಿಯನ್ನು ಈಗ ಭೇಟಿ ಮಾಡುವುದು ಹೇಗೆ?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "ಈ ವ್ಯಕ್ತಿಯ ಬಗ್ಗೆ ಆಸಕ್ತಿ ಹೊಂದಿರುವಂತಹ ಇತರರು ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದಾಗಿದೆ"
+msgstr "ಈ ವ್ಯಕ್ತಿಯ ಬಗ್ಗೆ ತಿಳಿಯಲು ಆಸಕ್ತಿ ಇರುವ ಇತರರು ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು"
 
 msgid "I am seeking information"
-msgstr "ನಾನು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕುತ್ತಿದ್ದೇನೆ"
+msgstr "ಮಾಹಿತಿಯ ಹುಡುಕಾಟದಲ್ಲಿದ್ದೇನೆ"
 
 msgid "I am this person"
 msgstr "ಈ ವ್ಯಕ್ತಿ ನಾನೇ"
@@ -801,28 +819,28 @@ msgid "I do not want my information online anymore."
 msgstr "ನಾನು ಇನ್ನು ಮುಂದೆ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನನ್ನ ಮಾಹಿತಿಯನ್ನು ಬಯಸುವುದಿಲ್ಲ."
 
 msgid "I have information about someone"
-msgstr "ಒಬ್ಬರ ಕುರಿತು ನಾನು ಮಾಹಿತಿಯನ್ನು ಹೊಂದಿರುವೆ"
+msgstr "ಯಾರೋ ಒಬ್ಬರ ಕುರಿತ ಮಾಹಿತಿ ನನ್ನಲ್ಲಿದೆ"
 
 msgid "I have reason to think this person is missing"
-msgstr "ಈ ವ್ಯಕ್ತಿಯು ಕಾಣೆಯಾಗಿದ್ದಾರೆ ಎಂದು ಯೋಚಿಸುವುದಕ್ಕಾಗಿ ನನ್ನಲ್ಲಿ ಕಾರಣವಿದೆ"
+msgstr "ಈ ವ್ಯಕ್ತಿಯು ಕಾಣೆಯಾಗಿದ್ದಾರೆ ಎಂಬುದಕ್ಕೆ ನನ್ನಲ್ಲಿ ಕಾರಣವಿದೆ"
 
 msgid "I have received information that this person is alive"
-msgstr "ಈ ವ್ಯಕ್ತಿಯು ಜೀವಂತವಾಗಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿಯನ್ನು ನಾನು ಪಡೆದಿದ್ದೇನೆ"
+msgstr "ಈ ವ್ಯಕ್ತಿಯು ಜೀವಂತವಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿ ನನಗೆ ಲಭಿಸಿದೆ"
 
 msgid "I have received information that this person is dead"
 msgstr "ಈ ವ್ಯಕ್ತಿಯು ಮರಣ ಹೊಂದಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿಯನ್ನು ನಾನು ಪಡೆದಿದ್ದೇನೆ"
 
 msgid "I have received spam due to this note."
-msgstr "ಈ ಟಿಪ್ಪಣಿಯ ಕಾರಣದಿಂದಾಗಿ ನಾನು ಸ್ಪ್ಯಾಮ್ ಸ್ವೀಕರಿಸಿದ್ದೇನೆ."
+msgstr "ಈ ಟಿಪ್ಪಣಿಯ ಕಾರಣದಿಂದಾಗಿ ನನಗೆ ಸ್ಪ್ಯಾಮ್‌ ಬಂದಿದೆ."
 
 msgid "I have received spam."
-msgstr "ನಾನು ಸ್ಪ್ಯಾಮ್ ಸ್ವೀಕರಿಸಿದ್ದೇನೆ."
+msgstr "ನನಗೆ ಸ್ಪ್ಯಾಮ್ ಬಂದಿದೆ."
 
 msgid "I prefer not to specify."
 msgstr "ನಾನು ಸೂಚಿಸಲು ಆದ್ಯತೆ ವಹಿಸುವುದಿಲ್ಲ."
 
 msgid "I'm looking for someone"
-msgstr "ನಾನು ಯಾರೋ ಒಬ್ಬರಿಗಾಗಿ ನಿರೀಕ್ಷೆಯಲ್ಲಿದ್ದೇನೆ"
+msgstr "ನಾನು ಒಬ್ಬರನ್ನು ಹುಡುಕುತ್ತಿದ್ದೇನೆ"
 
 msgid "Identify who you are looking for"
 msgstr "ನೀವು ಯಾರಿಗಾಗಿ ನಿರೀಕ್ಷಿಸುತ್ತಿರುವಿರಿ ಎಂಬುದನ್ನು ಗುರುತಿಸಿ"
@@ -838,7 +856,7 @@ msgid ""
 "below to create a new record."
 msgstr ""
 "ಒಂದು ವೇಳೆ ನಿಮ್ಮ ಮನಸ್ಸಿನಲ್ಲಿರುವ ವ್ಯಕ್ತಿಗೆ ಈ ಯಾವುದೇ ರೆಕಾರ್ಡ್‌ಗಳು "
-"ಹೊಂದಾಣಿಕೆಯಾಗದಿದ್ದರೆ, ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಲು ನೀವು ಕೆಳಗೆ ಕ್ಲಿಕ್ ಮಾಡಬಹುದು."
+"ತಾಳೆಯಾಗದಿದ್ದರೆ, ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಲು ಕೆಳಗೆ ಕ್ಲಿಕ್ ಮಾಡಿ."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -865,6 +883,11 @@ msgstr ""
 "ನೀವು ಈ ವ್ಯಕ್ತಿಯ ಫೋಟೋ ಹೊಂದಿದ್ದರೆ, ಅದನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಅದರ URL "
 "ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excel ನಲ್ಲಿ, ಫೈಲ್ &gt; ಇದರಂತೆ ಉಳಿಸು ಬಳಸಿ... ಮತ್ತು CSV ಸ್ವರೂಪದಲ್ಲಿ (.csv) "
+"ಉಳಿಸಿ"
+
 msgid "Incorrect.  Try again."
 msgstr "ತಪ್ಪಾಗಿದೆ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
@@ -875,7 +898,7 @@ msgid "Language selection"
 msgstr "ಭಾಷೆ ಆಯ್ಕೆ"
 
 msgid "Last known location"
-msgstr "ಕೊನೆಯದಾಗಿ ತಿಳಿದಿರುವ ಸ್ಥಾನ"
+msgstr "ಕೊನೆಯದಾಗಿ ತಿಳಿದ ಸ್ಥಳ"
 
 msgid "Link"
 msgstr "ಲಿಂಕ್‌"
@@ -889,6 +912,9 @@ msgstr "API ಕೀಗಳನ್ನು ಪಟ್ಟಿಮಾಡಿ"
 msgid "Mark records as duplicate"
 msgstr "ರೆಕಾರ್ಡ್‌ಗಳನ್ನು ನಕಲು ಎಂದು ಗುರುತಿಸಿ"
 
+msgid "Mark the selected records as duplicate"
+msgstr "ಆಯ್ಕೆಮಾಡಿದ ದಾಖಲೆಗಳನ್ನು ನಕಲು ಎಂದು ಗುರುತಿಸಿ"
+
 msgid "Message (required)"
 msgstr "ಸಂದೇಶ (ಅಗತ್ಯವಿದೆ)"
 
@@ -896,7 +922,7 @@ msgid "Message is required. Please go back and try again."
 msgstr "ಸಂದೇಶದ ಅಗತ್ಯವಿದೆ. ಹಿಂತಿರುಗಿ ಹಾಗೂ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
 msgid "Missing person's current contact information"
-msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಸ್ತುತ ಸಂಪರ್ಕ ಮಾಹಿತಿ"
+msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಈಗಿನ ಸಂಪರ್ಕ ಮಾಹಿತಿ"
 
 msgid "Missing person's current e-mail address"
 msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಸ್ತುತ ಇ-ಮೇಲ್ ವಿಳಾಸ"
@@ -932,7 +958,7 @@ msgid "Neighborhood"
 msgstr "ನೆರೆಹೊರೆ"
 
 msgid "No"
-msgstr "ಬೇಡ"
+msgstr "ಇಲ್ಲ"
 
 #, python-format
 msgid "No author email for record %(id)s."
@@ -959,6 +985,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"\"ಈ ವ್ಯಕ್ತಿ ತೀರಿಕೊಂಡಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿ ನನಗೆ ಬಂದಿದೆ\" ಎಂಬ ಸ್ಥಿತಿಯ "
+"ಟಿಪ್ಪಣಿಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲು ಅನುಮತಿಯಿಲ್ಲ."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -973,6 +1001,9 @@ msgstr "ಟಿಪ್ಪಣಿ ಲೇಖಕ"
 
 msgid "Note text"
 msgstr "ಟಿಪ್ಪಣಿ ಪಠ್ಯ"
+
+msgid "Notes for a possible duplicate"
+msgstr "ಸಂಭಾವ್ಯ ನಕಲಿಗಾಗಿ ಟಿಪ್ಪಣಿಗಳು"
 
 msgid "Notes for this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಗಾಗಿ ಟಿಪ್ಪಣಿಗಳು"
@@ -995,7 +1026,7 @@ msgid "Original author's name"
 msgstr "ಮೂಲ ಲೇಖಕರ ಹೆಸರು"
 
 msgid "Original posting date"
-msgstr "ಮೂಲ ಪೋಸ್ಟ್ ಮಾಡುವ ದಿನಾಂಕ"
+msgstr "ಮೂಲವನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲಾದ ದಿನಾಂಕ"
 
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
@@ -1008,7 +1039,7 @@ msgid "Original site name"
 msgstr "ಮೂಲ ಸೈಟ್ ಹೆಸರು"
 
 msgid "Other website"
-msgstr ""
+msgstr "ಇತರ ವೆಬ್‌ಸೈಟ್‌"
 
 #, fuzzy
 msgid ""
@@ -1064,7 +1095,7 @@ msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "ನವೀಕರಣಗಳಿಗೆ ಚಂದಾದಾರರಾಗಲು ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ"
 
 msgid "Please explain why you think these are the same person"
-msgstr "ಇವರೆಲ್ಲರೂ ಅದೇ ವ್ಯಕ್ತಿಯೆಂದು ನೀವು ಏಕೆ ಅಭಿಪ್ರಾಯ ಪಡುತ್ತೀರಿ ಎಂಬುದನ್ನು ವಿವರಿಸಿ"
+msgstr "ಇವರೆಲ್ಲರೂ ಅದೇ ವ್ಯಕ್ತಿಯೆಂದು ನೀವೇಕೆ ಭಾವಿಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ವಿವರಿಸಿ"
 
 msgid "Please fill in all the required fields."
 msgstr "ದಯವಿಟ್ಟು ಅಗತ್ಯವಿರುವ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಭರ್ತಿಮಾಡಿ."
@@ -1077,6 +1108,9 @@ msgstr "ದಯವಿಟ್ಟು ಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸ
 
 msgid "Possible duplicates"
 msgstr "ಸಂಭಾವ್ಯ ನಕಲುಗಳು"
+
+msgid "Possible duplicates found."
+msgstr "ಕಂಡುಬಂದಿರುವ ಸಂಭಾವ್ಯ ನಕಲುಗಳು."
 
 msgid "Postal or zip code"
 msgstr "ಅಂಚೆ ಅಥವಾ ಪಿನ್ ಕೋಡ್"
@@ -1097,7 +1131,7 @@ msgid "Provide information"
 msgstr "ಮಾಹಿತಿ ಒದಗಿಸಿ"
 
 msgid "Provide information about this person"
-msgstr "ಈ ವ್ಯಕ್ತಿಯ ಬಗ್ಗೆ ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಿ"
+msgstr "ಈ ವ್ಯಕ್ತಿಗೆ ಸಂಬಂಧಿಸಿದ ಮಾಹಿತಿ ಒದಗಿಸಿ"
 
 msgid "Provided by:"
 msgstr "ಇವರು ಒದಗಿಸಿದ್ದಾರೆ:"
@@ -1110,9 +1144,6 @@ msgstr "ಅಳಿಸುವಿಕೆಗೆ ಕಾರಣ:"
 
 msgid "Reason for disabling notes:"
 msgstr "ಟಿಪ್ಪಣಿಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತಿರುವುದಕ್ಕೆ ಕಾರಣ:"
-
-msgid "Records selected"
-msgstr "ರೆಕಾರ್ಡ್‌ಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1137,7 +1168,7 @@ msgid "Save this record"
 msgstr "ಈ ರೆಕಾರ್ಡ್ ಉಳಿಸು"
 
 msgid "Search for this person"
-msgstr "ಈ ವ್ಯಕ್ತಿಗಾಗಿ ಹುಡುಕು"
+msgstr "ಇವರನ್ನು ಹುಡುಕು"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
@@ -1162,7 +1193,7 @@ msgid "Show sensitive information"
 msgstr "ಸೂಕ್ಷ್ಮ ಮಾಹಿತಿಯನ್ನು ತೋರಿಸು"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "ಈ ನಕಲುಗಳನ್ನು ಗುರುತಿಸಿದ್ದು ಯಾರು ಎಂಬುದನ್ನು ತೋರಿಸು"
 
 msgid "Sign in"
 msgstr "ಸೈನ್ ಇನ್"
@@ -1171,7 +1202,7 @@ msgid "Sign out"
 msgstr "ಸೈನ್ ಔಟ್"
 
 msgid "Someone has received information that this person is alive"
-msgstr "ಈ ವ್ಯಕ್ತಿ ಜೀವಂತವಾಗಿದ್ದಾರೆ ಎಂದು ಯಾರೋ ಒಬ್ಬರು ಮಾಹಿತಿಯನ್ನು ಸ್ವೀಕರಿಸಿದ್ದಾರೆ"
+msgstr "ಈ ವ್ಯಕ್ತಿ ಜೀವಂತವಾಗಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿ ಯಾರೋ ಒಬ್ಬರಿಗೆ ಲಭಿಸಿದೆ"
 
 msgid "Someone has received information that this person is dead"
 msgstr "ಈ ವ್ಯಕ್ತಿ ಮರಣ ಹೊಂದಿದ್ದಾರೆ ಎಂದು ಯಾರೋ ಒಬ್ಬರು ಮಾಹಿತಿಯನ್ನು ಸ್ವೀಕರಿಸಿದ್ದಾರೆ"
@@ -1198,7 +1229,7 @@ msgid "Street name"
 msgstr "ಗಲ್ಲಿ ಹೆಸರು"
 
 msgid "Street name only, no number"
-msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ, ಸಂಖ್ಯೆ ಬೇಡ"
+msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ. ಸಂಖ್ಯೆ ಬೇಡ"
 
 msgid "Subscribe"
 msgstr "ಚಂದಾದಾರರಾಗಿ"
@@ -1208,19 +1239,13 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "%(full_name)s ಅವರ ಕುರಿತು ನವೀಕರಣಗಳಿಗಾಗಿ ಚಂದಾದಾರರಾಗಿ"
 
 msgid "Subscribe to updates about this person"
-msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತು ನವೀಕರಣಗಳಿಗಾಗಿ ಚಂದಾದಾರರಾಗಿ"
+msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತು ನವೀಕರಣಗಳಿಗಾಗಿ ಚಂದಾದಾರರಾಗು"
 
 msgid "Switch to address"
 msgstr "ವಿಳಾಸಕ್ಕೆ ಬದಲಿಸು"
 
-msgid "Switch to duplicate marking mode"
-msgstr "ನಕಲು ಗುರುತಿಸುವಿಕೆ ಮೋಡ್‌ಗೆ ಬದಲಿಸಿ"
-
 msgid "Switch to lat/long"
 msgstr "ಅಕ್ಷಾಂಶ/ರೇಖಾಂಶಕ್ಕೆ ಬದಲಿಸು"
-
-msgid "Switch to normal view mode"
-msgstr "ಸಾಮಾನ್ಯ ವೀಕ್ಷಣೆ ಮೋಡ್‌ಗೆ ಬದಲಿಸು"
 
 msgid "Tell us the status of this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿಯನ್ನು ನಮಗೆ ತಿಳಿಸಿ"
@@ -1336,7 +1361,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಪ್ರವೇಶ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವಾ ಅಳಿಸಲಾಗಿದೆ."
 
 msgid "This record has served its purpose."
-msgstr "ಈ ರೆಕಾರ್ಡ್ ಅದರ ಉದ್ದೇಶಕ್ಕಾಗಿ ಸೇವೆ ಸಲ್ಲಿಸಿದೆ."
+msgstr "ಈ ರೆಕಾರ್ಡ್‌‌ನ ಉದ್ದೇಶ ಈಡೇರಿದೆ."
 
 msgid "This record is a duplicate of"
 msgstr "ಈ ರೆಕಾರ್ಡ್ ಇದರ ನಕಲಾಗಿದೆ"
@@ -1373,8 +1398,8 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
-"ವಿಳಾಸವನ್ನು ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಕೆಳಗೆ ನಕ್ಷೆಯನ್ನು ತೆರೆಯಿರಿ ಮತ್ತು ನಕ್ಷೆಯಲ್ಲಿ "
-"ಕ್ಲಿಕ್ ಮಾಡುವುದರ ಮೂಲಕ ಸ್ಥಾನವನ್ನು ಸೂಚಿಸಿ."
+"ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಕೆಳಗೆ ನಕ್ಷೆಯನ್ನು ತೆರೆಯಿರಿ. ನಕ್ಷೆಯಲ್ಲಿ ಕ್ಲಿಕ್ "
+"ಮಾಡುವುದರ ಮೂಲಕ ಸ್ಥಳ ಗುರುತಿಸಿ."
 
 msgid "Type an address."
 msgstr "ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ."
@@ -1392,7 +1417,7 @@ msgid "URL of original record"
 msgstr "ಮೂಲ ರೆಕಾರ್ಡ್‌ನ URL"
 
 msgid "Unspecified"
-msgstr "ಅನಿರ್ದಿಷ್ಟಪಡಿಸಿರುವುದು"
+msgstr "ಸ್ಪಷ್ಟವಿಲ್ಲ"
 
 msgid "Update an existing key"
 msgstr "ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಒಂದು ಕೀ ಅನ್ನು ನವೀಕರಿಸು"
@@ -1400,8 +1425,14 @@ msgstr "ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಒಂದು ಕೀ ಅ
 msgid "Upload"
 msgstr "ಅಪ್‌ಲೋಡ್"
 
-msgid "Upload CSV files"
-msgstr "CSV ಫೈಲ್‌ಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
+msgid "Upload notes in CSV format"
+msgstr "CSV ಸ್ವರೂಪದಲ್ಲಿ ಟಿಪ್ಪಣಿಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
+
+msgid "Upload person records in CSV format"
+msgstr "CSV ಸ್ವರೂಪದಲ್ಲಿ ವ್ಯಕ್ತಿಯ ದಾಖಲೆಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
+
+msgid "Upload your CSV file below"
+msgstr "ಕೆಳಗೆ ನಿಮ್ಮ CSV ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
 msgid "View the record"
 msgstr "ರೆಕಾರ್ಡ್ ವೀಕ್ಷಿಸು"
@@ -1416,7 +1447,7 @@ msgid "When should this record disappear?"
 msgstr "ಈ ರೆಕಾರ್ಡ್ ಯಾವಾಗ ಅಳಿಸಿ ಹೋಗಬೇಕು?"
 
 msgid "Where did this information come from?"
-msgstr "ಈ ಮಾಹಿತಿ ಎಲ್ಲಿಂದ ಬಂದಿದೆ?"
+msgstr "ಈ ಮಾಹಿತಿ ಎಲ್ಲಿಂದ ಸಿಕ್ಕಿದೆ?"
 
 msgid "Where is this person from?"
 msgstr "ಈ ವ್ಯಕ್ತಿ ಎಲ್ಲಿನವರು?"

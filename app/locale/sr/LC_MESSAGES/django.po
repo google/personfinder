@@ -147,6 +147,9 @@ msgid ""
 "            %(dup_count)s records selected\n"
 "          "
 msgstr ""
+"\n"
+"            Изабраних записа: %(dup_count)s\n"
+"          "
 
 #, python-format
 msgid ""
@@ -154,6 +157,9 @@ msgid ""
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
+"\n"
+"        Записи слични као: %(full_name)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -161,6 +167,9 @@ msgid ""
 "        Search Results for: %(query)s\n"
 "      "
 msgstr ""
+"\n"
+"        Резултати претраге за: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -259,6 +268,9 @@ msgid ""
 "      No results found for: %(query)s\n"
 "    "
 msgstr ""
+"\n"
+"      Нема пронађених резултата за: %(query)s\n"
+"    "
 
 #, python-format
 msgid ""
@@ -284,6 +296,9 @@ msgid ""
 "      The record has been extended to %(expiry_date)s.\n"
 "    "
 msgstr ""
+"\n"
+"      Рок важења записа је продужен до %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -394,8 +409,8 @@ msgid ""
 msgstr ""
 "\n"
 "НАПОМЕНА: Ако сматрате да је овај запис грешком избрисан, можете\n"
-"да га вратите ако посетите овај линк у следећа(их) "
-"%(days_until_deletion)s дана:\n"
+"да га вратите ако посетите овај линк у следећа %(days_until_deletion)s "
+"дана:\n"
 "\n"
 "%(restore_url)s\n"
 
@@ -580,9 +595,15 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
+"Ако означите ову белешку као непожељан садржај, она ће бити подразумевано"
+" сакривена. И даље ће бити део записа, али ће за преглед садржаја белешке"
+" бити потребан додатан клик. Корисници ће такође моћи да уклоне ознаку за"
+" непожељан садржај са ове белешке."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
+"Ако уклоните ознаку за непожељан садржај са ове белешке, она ће бити "
+"подразумевано видљива."
 
 msgid "CSV file"
 msgstr "CSV датотека"
@@ -658,6 +679,10 @@ msgstr "Онемогући белешке у овом запису"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Да ли ова особа има странице профила на другим веб-сајтовима?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Преузмите %(begin_link)sовај Excel шаблон%(end_link)s и додајте му редове"
+
 msgid "Download the sound as MP3"
 msgstr "Преузми звук као MP3"
 
@@ -675,11 +700,6 @@ msgstr "Уграђивање апликације"
 
 msgid "Enable notes on this record"
 msgstr "Омогући белешке у овом запису"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Проверите да ли су сви датуми у формату гггг-мм-ддTчч:мм:ссZ у "
-"координисаном универзалном времену"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Унесите у формату ГГГГ-ММ-ДД"
@@ -848,6 +868,11 @@ msgstr ""
 "Ако имате слику ове особе, отпремите је или унесите URL адресу на којој "
 "се налази."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"У Excel-у идите на File (Датотека) &gt; Save as... (Сачувај као...) и "
+"сачувајте га у CSV формату (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Нетачно. Покушајте поново."
 
@@ -871,6 +896,9 @@ msgstr "Навођење API кључева"
 
 msgid "Mark records as duplicate"
 msgstr "Означи записе као дупликате"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Означи изабране записе као дупликате"
 
 msgid "Message (required)"
 msgstr "Порука (обавезно)"
@@ -944,6 +972,8 @@ msgid ""
 "Not authorized to post notes with the status \"I have received "
 "information that this person is dead\"."
 msgstr ""
+"Нисте овлашћени да постављате белешке са статусом „Примио/ла сам "
+"информације да је ова особа преминула“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Не постоји овлашћење за постављање бележака са статусом „believed_dead“."
@@ -956,6 +986,9 @@ msgstr "Аутор белешке"
 
 msgid "Note text"
 msgstr "Текст белешке"
+
+msgid "Notes for a possible duplicate"
+msgstr "Напомене за могући дупликат"
 
 msgid "Notes for this person"
 msgstr "Белешке за ову особу"
@@ -989,7 +1022,7 @@ msgid "Original site name"
 msgstr "Назив оригиналног сајта"
 
 msgid "Other website"
-msgstr ""
+msgstr "Други веб-сајт"
 
 #, fuzzy
 msgid ""
@@ -1055,6 +1088,9 @@ msgstr "Наведите важећу адресу е-поште."
 msgid "Possible duplicates"
 msgstr "Могући дупликати"
 
+msgid "Possible duplicates found."
+msgstr "Пронађени су могући дупликати."
+
 msgid "Postal or zip code"
 msgstr "Поштански број"
 
@@ -1088,9 +1124,6 @@ msgstr "Разлог за брисање:"
 msgid "Reason for disabling notes:"
 msgstr "Разлог за онемогућавање бележака:"
 
-msgid "Records selected"
-msgstr "Изабрани записи"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Записи са називима и адресама који се подударају са „%(query)s“"
@@ -1103,7 +1136,7 @@ msgstr "Пријави као непожељно"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Врати се на запис за особу %(full_name)s."
+msgstr "Назад на запис за особу %(full_name)s."
 
 msgid "Reveal note"
 msgstr "Откриј белешку"
@@ -1137,7 +1170,7 @@ msgid "Show sensitive information"
 msgstr "Прикажи осетљиве информације"
 
 msgid "Show who marked these duplicates"
-msgstr ""
+msgstr "Прикажи ко је означио ове дупликате"
 
 msgid "Sign in"
 msgstr "Пријави ме"
@@ -1188,14 +1221,8 @@ msgstr "Пријавите се за новости о овој особи"
 msgid "Switch to address"
 msgstr "Пребаци на адресу"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Пребаци на режим за обележавање дупликата"
-
 msgid "Switch to lat/long"
 msgstr "Пребаци на географску ширину/дужину"
-
-msgid "Switch to normal view mode"
-msgstr "Пребаци на режим уобичајеног приказа"
 
 msgid "Tell us the status of this person"
 msgstr "Наведите статус ове особе"
@@ -1306,7 +1333,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "Унос ове особе не постоји или је избрисан."
 
 msgid "This record has served its purpose."
-msgstr "Овај запис је био користан."
+msgstr "Овај запис је послужио сврси."
 
 msgid "This record is a duplicate of"
 msgstr "Овај запис је дупликат записа"
@@ -1374,8 +1401,14 @@ msgstr "Ажурирање постојећег кључа"
 msgid "Upload"
 msgstr "Отпреми"
 
-msgid "Upload CSV files"
-msgstr "Отпреми CSV датотеке"
+msgid "Upload notes in CSV format"
+msgstr "Отпремите белешке у CSV формату"
+
+msgid "Upload person records in CSV format"
+msgstr "Отпреми записе о особи у CSV формату"
+
+msgid "Upload your CSV file below"
+msgstr "Отпремите CSV датотеку у наставку"
 
 msgid "View the record"
 msgstr "Прикажи запис"
