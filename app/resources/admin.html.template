@@ -212,6 +212,15 @@
   </form>
 
 {% if env.repo %}
+<h2>Admin tools for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
+<ul>
+  <li><a href="admin/dashboard">Dashboard</a></li>
+  <li><a href="admin/review">Review notes</a></li>
+  <li><a href="admin/api_keys">Create an API key</a></li>
+  <li><a href="admin/api_keys/list">List API keys</a></li>
+  <li><a href="admin/resources">Manage resources</a></li>
+</ul>
+
 <h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
 
 <form id="save_repo" method="post" class="admin"
