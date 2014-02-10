@@ -196,23 +196,25 @@ class CleanUpInTestMode(utils.BaseHandler):
 
 
 def run_count(make_query, update_counter, counter):
-    """Scans the entities matching a query for a limited amount of CPU time."""
-    for _ in xrange(100):
-        # Get the next batch of entities.
-        query = make_query()
-        if counter.last_key:
-            query = query.filter('__key__ >', db.Key(counter.last_key))
-        entities = query.order('__key__').fetch(FETCH_LIMIT)
-        if not entities:
-            counter.last_key = ''
-            break
+    """Scans the entities matching a query for a limited amount of CPU time.
+    
+    Returns False if we finished counting all entries."""
+    # Get the next batch of entities.
+    query = make_query()
+    if counter.last_key:
+        query = query.filter('__key__ >', db.Key(counter.last_key))
+    entities = query.order('__key__').fetch(FETCH_LIMIT)
+    if not entities:
+        counter.last_key = ''
+        return False
 
-        # Pass the entities to the counting function.
-        for entity in entities:
-            update_counter(counter, entity)
+    # Pass the entities to the counting function.
+    for entity in entities:
+        update_counter(counter, entity)
 
-        # Remember where we left off.
-        counter.last_key = str(entities[-1].key())
+    # Remember where we left off.
+    counter.last_key = str(entities[-1].key())
+    return True
 
 
 class CountBase(utils.BaseHandler):
@@ -227,12 +229,17 @@ class CountBase(utils.BaseHandler):
     def get(self):
         if self.repo:  # Do some counting.
             try:
-                while True:
-                    counter = model.Counter.get_unfinished_or_create(
-                        self.repo, self.SCAN_NAME)
-                    run_count(self.make_query, self.update_counter, counter)
+                counter = model.Counter.get_unfinished_or_create(
+                    self.repo, self.SCAN_NAME)
+                counted_all_entities = False
+                while not counted_all_entities:
+                    # Batch the db updates.
+                    for _ in xrange(100):
+                        counted_all_entities = run_count(
+                            self.make_query, self.update_counter, counter)
+                        if counted_all_entities:
+                            break
                     counter.put()
-                    if not counter.last_key: break
             except runtime.DeadlineExceededError:
                 # Continue counting in another task.
                 self.add_task_for_repo(self.repo, self.SCAN_NAME, self.ACTION)
