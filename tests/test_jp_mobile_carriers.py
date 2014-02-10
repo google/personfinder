@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # coding=utf-8
 #
 # Copyright 2011 Google Inc. All Rights Reserved.
