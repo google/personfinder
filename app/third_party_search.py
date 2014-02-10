@@ -29,11 +29,13 @@ import utils
 class Handler(utils.BaseHandler):
     """Proxy to perform search with third-party search engine."""
     def get(self):
-        if not self.config.third_party_search_engines:
+        if (self.params.search_engine_id >=
+                len(self.config.third_party_search_engines or [])):
             self.response.set_status(500)
-            self.write('No third-party search engines are configured')
+            self.write('search_engine_id is out of range')
             return
         query = self.params.query
+        # TODO(ichikawa) Support query_type "tel".
         query_type = ''
         search_engine = self.config.third_party_search_engines[
             self.params.search_engine_id]
@@ -59,15 +61,16 @@ class Handler(utils.BaseHandler):
             basic_auth_value = base64.encodestring('%s:%s' % (
                     search_engine['basic_auth_user'],
                     search_engine['basic_auth_password']))
+            # Result of base64.encodestring can include '\n', but HTTP header
+            # value must not include '\n'.
             basic_auth_value = re.sub('\n', '', basic_auth_value)
             headers = {'Authorization': 'Basic %s' % basic_auth_value}
         else:
             headers = {}
-        deadline = 60
         logging.info(
-            'urlfetch.fetch(%r, headers=%r, deadline=%r)' %
-            (url, headers, deadline))
-        response = urlfetch.fetch(url, headers=headers, deadline=deadline)
+            'urlfetch.fetch(%r, headers=%r)' %
+            (url, headers))
+        response = urlfetch.fetch(url, headers=headers, deadline=60)
         if response.status_code == 200:
             self.response.headers['Content-Type'] = 'application/json'
             self.write(response.content)

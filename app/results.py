@@ -88,7 +88,7 @@ class Handler(BaseHandler):
         for i, search_engine in enumerate(
                 self.config.third_party_search_engines or []):
             third_party_search_engines.append(
-                {'id': i, 'name': search_engine['name']})
+                {'id': i, 'name': search_engine.get('name', '')})
 
         if self.params.role == 'provide':
             # The order of family name and given name does matter (see the

@@ -45,6 +45,7 @@
     <script type="text/javascript">
       // Lets jQuery not overwrite "$" symbol defined in forms.js.
       // Use "jQuery" instead of "$".
+      // TODO(ichikawa) Remove "$" from forms.js and use jQuery's "$" instead.
       jQuery.noConflict();
     </script>
     <script src="{{env.global_url}}/forms.js"></script>

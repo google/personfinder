@@ -33,44 +33,37 @@
             if (match) { pid = decodeURIComponent(match[1]); }
             pageTracker._trackEvent('click', status, pid);
           } catch(err) {
-            if (window['console']) { console.log(err); }
+            console_error(err);
           }
           location.href = elem.getAttribute('data-url');
         }
       }
 
-      function performThirdPartySearch(id) {
+      function perform_third_party_search(id) {
         jQuery.ajax({
             url: repo_url + '/third_party_search',
             data: {query: query, lang: lang, search_engine_id: id},
             dataType: 'json'
         }).done(function(r) { 
-          if (window['console']) {
-            console.log('Third-party search response: ', r);
-          }
+          console_log('Third-party search response: ', r);
           if (r.status == 'OK') {
             if (typeof(r.url) != 'string') {
-              if (window['console']) {
-                console.error(
-                    'url attribute of third-party search response is ' +
-                    'not a string');
-              }
+              console_error(
+                  'url attribute of third-party search response is ' +
+                  'not a string');
               return;
             }
             jQuery('#third_party_search_result_link' + id).attr('href', r.url);
             jQuery('#third_party_search_result' + id).show();
           }
         }).fail(function(r) {
-          if (window['console']) {
-            console.error('Third-party search request has failed: ', r);
-          }
+          console_error('Third-party search request has failed: ', r);
         });
       }
 
-      jQuery(function() {
-        // This is exected on page load.
+      jQuery(document).ready(function() {
         for (var i = 0; i < num_third_party_search_engines; ++i) {
-          performThirdPartySearch(i);
+          perform_third_party_search(i);
         }
       });
     </script>
@@ -242,6 +235,7 @@
 {% if env.ui != "light" %}
   {% for search_engine in third_party_search_engines %}
     <p id="third_party_search_result{{search_engine.id}}"
+       class="third-party-search-result"
        style="display: none;">
       <a href="#" id="third_party_search_result_link{{search_engine.id}}">
         {% blocktrans with search_engine.name as search_engine_name %}
@@ -253,11 +247,11 @@
 {% endif %}
 
 {% if results %}
-  <p>
-    {% if env.ui != "small" %}
+  {% if env.ui != "small" %}
+    <p>
       {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
-    {% endif %}
-  </p>
+    </p>
+  {% endif %}
 {% else %}
   {% if env.ui == "small" and not jp_phone_number_query %}
     <p>
