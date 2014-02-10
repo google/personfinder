@@ -40,6 +40,13 @@
       var lang = '{{env.lang}}';
       var translate_api_key = '{{config.translate_api_key}}';
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+      // Lets jQuery not overwrite "$" symbol defined in forms.js.
+      // Use "jQuery" instead of "$".
+      jQuery.noConflict();
+    </script>
     <script src="{{env.global_url}}/forms.js"></script>
     {% if env.virtual_keyboard_layout %}
       <script type="text/javascript" src="http://www.google.com/jsapi"></script>

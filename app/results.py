@@ -84,6 +84,12 @@ class Handler(BaseHandler):
             family_name=self.params.family_name)
         min_query_word_length = self.config.min_query_word_length
 
+        third_party_search_engines = []
+        for i, search_engine in enumerate(
+                self.config.third_party_search_engines or []):
+            third_party_search_engines.append(
+                {'id': i, 'name': search_engine['name']})
+
         if self.params.role == 'provide':
             # The order of family name and given name does matter (see the
             # scoring function in indexing.py).
@@ -117,9 +123,12 @@ class Handler(BaseHandler):
                                    results=results,
                                    num_results=len(results),
                                    has_possible_duplicates=
-                                        has_possible_duplicates(results),
+                                       has_possible_duplicates(results),
                                    results_url=results_url,
-                                   create_url=create_url)
+                                   create_url=create_url,
+                                   third_party_search_engines=
+                                       third_party_search_engines,
+                                   query=self.params.query)
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
@@ -153,6 +162,9 @@ class Handler(BaseHandler):
                                results=results,
                                num_results=len(results),
                                has_possible_duplicates=
-                                    has_possible_duplicates(results),
+                                   has_possible_duplicates(results),
                                results_url=results_url,
-                               create_url=create_url)
+                               create_url=create_url,
+                               third_party_search_engines=
+                                   third_party_search_engines,
+                               query=self.params.query)

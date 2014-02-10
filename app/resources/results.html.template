@@ -17,6 +17,12 @@
   {{block.super}}
   {% if env.enable_javascript %}
     <script type="text/javascript">
+      var num_third_party_search_engines =
+          {{third_party_search_engines|length|escapejs}};
+      var repo_url = '{{env.repo_url|escapejs}}';
+      var query = '{{query|escapejs}}';
+      var lang = '{{env.lang|escapejs}}';
+
       function on_result_item_click(event, elem) {
         if (event.button == 0) {  // left button
           // Makes the whole result item div clickable.
@@ -29,9 +35,44 @@
           } catch(err) {
             if (window['console']) { console.log(err); }
           }
-          location.href = elem.getAttribute("data-url");
+          location.href = elem.getAttribute('data-url');
         }
       }
+
+      function performThirdPartySearch(id) {
+        jQuery.ajax({
+            url: repo_url + '/third_party_search',
+            data: {query: query, lang: lang, search_engine_id: id},
+            dataType: 'json'
+        }).done(function(r) { 
+          if (window['console']) {
+            console.log('Third-party search response: ', r);
+          }
+          if (r.status == 'OK') {
+            if (typeof(r.url) != 'string') {
+              if (window['console']) {
+                console.error(
+                    'url attribute of third-party search response is ' +
+                    'not a string');
+              }
+              return;
+            }
+            jQuery('#third_party_search_result_link' + id).attr('href', r.url);
+            jQuery('#third_party_search_result' + id).show();
+          }
+        }).fail(function(r) {
+          if (window['console']) {
+            console.error('Third-party search request has failed: ', r);
+          }
+        });
+      }
+
+      jQuery(function() {
+        // This is exected on page load.
+        for (var i = 0; i < num_third_party_search_engines; ++i) {
+          performThirdPartySearch(i);
+        }
+      });
     </script>
   {% endif %}
 {% endblock head %}
@@ -182,10 +223,6 @@
     {% endif %}
   {% endif %}
 
-  <p>
-  {% if env.ui != "small" %}
-    {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
-  {% endif %}
 {% else %}
 
   {% if not jp_phone_number_query %}
@@ -199,13 +236,36 @@
   {% else %}
   <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
   {% endif %}
+
+{% endif %}
+
+{% if env.ui != "light" %}
+  {% for search_engine in third_party_search_engines %}
+    <p id="third_party_search_result{{search_engine.id}}"
+       style="display: none;">
+      <a href="#" id="third_party_search_result_link{{search_engine.id}}">
+        {% blocktrans with search_engine.name as search_engine_name %}
+          {{search_engine_name}} has search result(s) matching this query.
+        {% endblocktrans %}
+      </a>
+    </p>
+  {% endfor %}
+{% endif %}
+
+{% if results %}
+  <p>
+    {% if env.ui != "small" %}
+      {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
+    {% endif %}
+  </p>
+{% else %}
   {% if env.ui == "small" and not jp_phone_number_query %}
     <p>
-    <a class="create-new-record" href="{{create_url}}" target="_blank">
-      {% trans "Follow this link to create a new record" %}
-    </a>
+      <a class="create-new-record" href="{{create_url}}" target="_blank">
+        {% trans "Follow this link to create a new record" %}
+      </a>
+    </p>
   {% endif %}
-
 {% endif %}
 
 <p>

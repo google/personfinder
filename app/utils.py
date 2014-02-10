@@ -617,6 +617,7 @@ class BaseHandler(webapp.RequestHandler):
         'resource_lang': validate_lang,
         'resource_name': validate_resource_name,
         'role': validate_role,
+        'search_engine_id': validate_int,
         'search_permission': validate_checkbox_as_bool,
         'sex': validate_sex,
         'signature': strip,
