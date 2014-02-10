@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -53,8 +53,7 @@ class MainTests(unittest.TestCase):
         """Tests Shift-JIS encoding of GET query parameters."""
         request = setup_request(
             '/japan/results?charsets=shift_jis&query=%8D%B2%93%A1&role=seek&')
-        handler = main.Main()
-        handler.initialize(request, webapp.Response())
+        handler = main.Main(request, webapp.Response())
         assert handler.env.charset == 'shift_jis'
         assert request.charset == 'shift_jis'
         assert request.get('query') == u'\u4F50\u85E4'
@@ -64,8 +63,7 @@ class MainTests(unittest.TestCase):
         request = setup_request('/japan/post?')
         request.body = 'charsets=shift_jis&given_name=%8D%B2%93%A1'
         request.method = 'POST'
-        handler = main.Main()
-        handler.initialize(request, webapp.Response())
+        handler = main.Main(request, webapp.Response())
         assert handler.env.charset == 'shift_jis'
         assert request.charset == 'shift_jis'
         assert request.get('given_name') == u'\u4F50\u85E4'
@@ -73,16 +71,14 @@ class MainTests(unittest.TestCase):
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
         request = setup_request('/haiti/start')
-        handler = main.Main()
-        handler.initialize(request, webapp.Response())
+        handler = main.Main(request, webapp.Response())
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
 
         config.set_for_repo('haiti', language_menu_options=['fr', 'ht', 'es'])
 
         request = setup_request('/haiti/start')
-        handler = main.Main()
-        handler.initialize(request, webapp.Response())
+        handler = main.Main(request, webapp.Response())
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
 
