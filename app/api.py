@@ -17,7 +17,9 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
+import calendar
 import csv
+import re
 import StringIO
 
 import external_search
@@ -25,6 +27,7 @@ import importer
 import indexing
 import model
 import pfif
+import simplejson
 import subscribe
 import utils
 from model import Person, Note, ApiActionLog
@@ -33,8 +36,23 @@ from utils import Struct
 
 import django.utils.html
 
+from google.appengine import runtime
+
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
+
+
+class InputFileError(Exception):
+    pass
+
+
+def get_requested_formats(path):
+    """Returns a list of requested formats.
+    The possible values are 'persons' and 'notes'."""
+    format = path.split('/')[-1]
+    if format in ['persons', 'notes']:
+        return [format]
+    return ['persons', 'notes']
 
 
 def complete_record_ids(record, domain):
@@ -51,6 +69,11 @@ def complete_record_ids(record, domain):
 def get_tag_params(handler):
     """Return HTML tag parameters used in import.html."""
     return {
+        'begin_notes_template_link':
+            '<a href="%s/notes-template.xlsx">' %
+                django.utils.html.escape(handler.env.global_url),
+        'end_notes_template_link':
+            '</a>',
         'begin_sample_anchor_tag':
             '<a href="%s/sample-import.csv" target="_blank">' %
                 django.utils.html.escape(handler.env.global_url),
@@ -65,11 +88,74 @@ def get_tag_params(handler):
     }
 
 
+def generate_note_record_ids(records):
+    for record in records:
+        if not record.get('note_record_id', '').strip():
+            record['note_record_id'] = str(model.UniqueId.create_id())
+        yield record
+
+
+def convert_time(text, offset):
+    """Converts a textual date and time into an RFC 3339 UTC timestamp."""
+    if utils.DATETIME_RE.match(text.strip()):  # don't apply offset
+        return text
+    match = re.search(r'(\d\d\d\d)[/-](\d+)[/-](\d+) *(\d+):(\d+)', text)
+    if match:
+        y, l, d, h, m = map(int, match.groups())
+        timestamp = calendar.timegm((y, l, d, h, m, 0)) - offset*3600
+        return utils.format_utc_timestamp(timestamp)
+    return text  # keep the original text so it shows up in the error message
+
+
+def convert_time_fields(rows, default_offset=0):
+    """Filters CSV rows, converting time fields to RFC 3339 UTC times.
+
+    The first row that contains "person_record_id" is assumed to be the header
+    row containing field names.  Preceding rows are treated as a preamble.
+
+    If the text "time_zone_offset" is found in the preamble section, the cell
+    immediately below it is treated as a time zone offset from UTC in hours.
+    Otherwise default_offset is used as the time zone offset.
+
+    Rows below the header row are returned as dictionaries (as csv.DictReader
+    would), except that any "*_date" fields are parsed as local times,
+    converted to UTC according to the specified offset, and reformatted
+    as RFC 3339 UTC times.
+    """
+    field_names = []
+    time_fields = []
+    setting_names = []
+    settings = {}
+    offset = default_offset
+
+    for row in rows:
+        if field_names:
+            record = dict(zip(field_names, row))
+            for key in time_fields:
+                record[key] = convert_time(record[key], offset)
+            yield record
+
+        elif 'person_record_id' in row:
+            field_names = [name.lower().strip() for name in row]
+            time_fields = [name for name in row if name.endswith('_date')]
+            if 'time_zone_offset' in settings:
+                try:
+                    offset = float(settings['time_zone_offset'])
+                except ValueError:
+                    raise InputFileError('invalid time_zone_offset value')
+
+        else:
+            settings.update(dict(zip(setting_names, row)))
+            setting_names = [name.lower().strip() for name in row]
+
+
 class Import(utils.BaseHandler):
     https_required = True
 
     def get(self):
-        self.render('import.html', **get_tag_params(self))
+        self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
+                    **get_tag_params(self))
 
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
@@ -81,37 +167,81 @@ class Import(utils.BaseHandler):
         content = self.request.get('content')
         if not content:
             self.response.set_status(400)
-            self.write('You need to specify at least one CSV file.')
+            self.write('Please specify at least one CSV file.')
             return
 
-        # TODO(ryok): let the user select timezone.
-        # TODO(ryok): accept more flexible date time format.
+        try:
+            lines = content.splitlines()  # handles \r, \n, or \r\n
+            if self.request.get('format') == 'notes':
+                self.import_notes(lines)
+            else:
+                self.import_persons(lines)
+        except InputFileError, e:
+            self.response.set_status(400)
+            self.write('Problem in the uploaded file: %s' % e)
+        except runtime.DeadlineExceededError, e:
+            self.response.set_status(400)
+            self.write('''
+Sorry, the uploaded file is too large.  Try splitting it into smaller files
+(keeping the header rows in each file) and uploading each part separately.
+''')
+
+    def import_notes(self, lines):
+        source_domain = self.auth.domain_write_permission
+        records = importer.utf8_decoder(generate_note_record_ids(
+            convert_time_fields(csv.reader(lines))))
+        try:
+            records = [complete_record_ids(r, source_domain) for r in records]
+        except csv.Error, e:
+            self.response.set_status(400)
+            self.write('The CSV file is formatted incorrectly. (%s)' % e)
+            return
+
+        notes_written, notes_skipped, notes_total = importer.import_records(
+            self.repo, source_domain, importer.create_note, records,
+            believed_dead_permission=self.auth.believed_dead_permission,
+            omit_duplicate_notes=True)
+
+        utils.log_api_action(self, ApiActionLog.WRITE,
+                             0, notes_written, 0, len(notes_skipped))
+
+        self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
+                    stats=[
+                        Struct(type='Note',
+                               written=notes_written,
+                               skipped=notes_skipped,
+                               total=notes_total)],
+                    **get_tag_params(self))
+
+    def import_persons(self, lines):
         # TODO(ryok): support non-UTF8 encodings.
 
         source_domain = self.auth.domain_write_permission
-        records = importer.utf8_decoder(
-                csv.DictReader(StringIO.StringIO(content)))
+        records = importer.utf8_decoder(convert_time_fields(csv.reader(lines)))
         try:
             records = [complete_record_ids(r, source_domain) for r in records]
-        except csv.Error:
+        except csv.Error, e:
             self.response.set_status(400)
-            self.write('The CSV file is formatted incorrectly.')
+            self.write('The CSV file is formatted incorrectly. (%s)' % e)
             return
 
-        is_empty = lambda x: (x or '').strip()
-        persons = [r for r in records if is_empty(r.get('full_name'))]
-        notes = [r for r in records if is_empty(r.get('note_record_id'))]
+        is_not_empty = lambda x: (x or '').strip()
+        persons = [r for r in records if is_not_empty(r.get('full_name'))]
+        notes = [r for r in records if is_not_empty(r.get('note_record_id'))]
 
         people_written, people_skipped, people_total = importer.import_records(
             self.repo, source_domain, importer.create_person, persons)
         notes_written, notes_skipped, notes_total = importer.import_records(
-            self.repo, source_domain, importer.create_note, notes)
+            self.repo, source_domain, importer.create_note, notes,
+            believed_dead_permission=self.auth.believed_dead_permission)
 
         utils.log_api_action(self, ApiActionLog.WRITE,
                              people_written, notes_written,
                              len(people_skipped), len(notes_skipped))
 
         self.render('import.html',
+                    formats=get_requested_formats(self.env.path),
                     stats=[
                         Struct(type='Person',
                                written=people_written,
@@ -317,3 +447,48 @@ class Unsubscribe(utils.BaseHandler):
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')
         return self.info(200, 'Not subscribed')
+
+
+def fetch_all(query):
+    results = []
+    batch = query.fetch(500)
+    while batch:
+        results += batch
+        batch = query.with_cursor(query.cursor()).fetch(500)
+    return results
+
+
+class Stats(utils.BaseHandler):
+    def get(self):
+        if not (self.auth and self.auth.stats_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
+        person_counts = model.Counter.get_all_counts(self.repo, 'person')
+        note_counts = model.Counter.get_all_counts(self.repo, 'note')
+
+        # unreviewed
+        note_counts['hidden=FALSE,reviewed=FALSE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('reviewed =', False
+            ).filter('hidden =', False
+            ).order('-entry_date')))
+        # accepted
+        note_counts['hidden=FALSE,reviewed=TRUE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('reviewed =', True
+            ).filter('hidden =', False
+            ).order('-entry_date')))
+        # flagged
+        note_counts['hidden=TRUE'] = len(fetch_all(
+            model.Note.all(keys_only=True
+            ).filter('repo =', self.repo
+            ).filter('hidden =', True
+            ).order('-entry_date')))
+
+        self.response.headers['Content-Type'] = 'application/json'
+        self.write(simplejson.dumps({'person': person_counts,
+                                     'note': note_counts}))

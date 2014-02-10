@@ -56,7 +56,7 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # Query parameters which are automatically preserved on page transition
 # if you use utils.BaseHandler.get_url() or
 # env.hidden_input_tags_for_preserved_query_params.
-PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets']
+PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets', 'referrer']
 
 
 # ==== Field value text ========================================================
@@ -226,7 +226,7 @@ def validate_status(string):
         string = strip(string).lower()
     return string in pfif.NOTE_STATUS_VALUES and string or ''
 
-DATETIME_RE = re.compile(r'^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
+DATETIME_RE = re.compile(r'^(2\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
 
 def validate_datetime(string):
     if not string:
@@ -433,7 +433,6 @@ def send_confirmation_email_to_record_author(
                 ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
-        
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -561,6 +560,7 @@ class BaseHandler(webapp.RequestHandler):
         'author_made_contact': validate_yes,
         'author_name': strip,
         'author_phone': strip,
+        'believed_dead_permission': validate_checkbox_as_bool,
         'cache_seconds': validate_cache_seconds,
         'clone': validate_yes,
         'confirm': validate_yes,
@@ -610,6 +610,7 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url3': strip,
         'query': strip,
         'read_permission': validate_checkbox_as_bool,
+        'referrer': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_default': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
@@ -625,6 +626,7 @@ class BaseHandler(webapp.RequestHandler):
         'source_date': strip,
         'source_name': strip,
         'source_url': strip,
+        'stats_permission': validate_checkbox_as_bool,
         'status': validate_status,
         'style': strip,
         'subscribe': validate_checkbox,
@@ -805,6 +807,11 @@ class BaseHandler(webapp.RequestHandler):
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
 
+        # Ensure referrer is in whitelist, if it exists
+        if self.params.referrer and (not self.params.referrer in
+                                     self.config.referrer_whitelist):
+            setattr(self.params, 'referrer', '')
+
         # Log the User-Agent header.
         sample_rate = float(
             self.config and self.config.user_agent_sample_rate or 0)
@@ -849,6 +856,7 @@ class BaseHandler(webapp.RequestHandler):
             return self.error(404, message_html=html)
 
         # If this repository has been deactivated, terminate with a message.
+        # The ignore_deactivation flag is for admin pages that bypass this.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
             self.env.robots_ok = True

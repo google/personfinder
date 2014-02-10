@@ -24,6 +24,17 @@ import logging
 MAX_RESULTS = 100
 
 
+def has_possible_duplicates(results):
+    """Returns True if it detects that there are possible duplicate records
+    in the results i.e. identical full name."""
+    full_names = set()
+    for result in results:
+        if result.full_name in full_names:
+            return True
+        full_names.add(result.full_name)
+    return False
+
+
 class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
@@ -105,6 +116,8 @@ class Handler(BaseHandler):
                 return self.render('results.html',
                                    results=results,
                                    num_results=len(results),
+                                   has_possible_duplicates=
+                                        has_possible_duplicates(results),
                                    results_url=results_url,
                                    create_url=create_url)
             else:
@@ -139,5 +152,7 @@ class Handler(BaseHandler):
             return self.render('results.html',
                                results=results,
                                num_results=len(results),
+                               has_possible_duplicates=
+                                    has_possible_duplicates(results),
                                results_url=results_url,
                                create_url=create_url)

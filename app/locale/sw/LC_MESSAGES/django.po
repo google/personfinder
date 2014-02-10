@@ -34,10 +34,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Ili kuhakikisha kwamba daftari limezimwa au kuwashwa kwa ruhusa ya "
-"mwandishi wa rekodi pekee, ujumbe wa kuthibitisha utatumwa kwa mwandishi "
-"wa rekodi. Iwapo wewe ndiye mwandishi, angalia barua pepe yako baada ya "
-"kubofya kitufe hapo chini.\n"
+"  Ili kuhakikisha kwamba ujumbe ulioachwa umefichwa au unaonyeshwa kwa "
+"ruhusa ya mwandishi wa rekodi pekee, barua pepe ya kuthibitisha itatumwa "
+"kwa mwandishi wa rekodi. Iwapo wewe ndiwe mwandishi, angalia barua pepe "
+"zako baada ya kubofya kitufe hapo chini.\n"
 "\n"
 "  "
 
@@ -58,18 +58,16 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
+"Hujambo %(author_name)s,\n"
 "\n"
-"Mpendwa %(author_name)s,\n"
-"\n"
-"Kuna mtumiaji ambaye ameomba kuwasha daftari kwenye hifadhi ya \n"
+"Kuna mtumiaji ambaye ameomba uonyeshe ujumbe ulioachwa kwenye rekodi ya \n"
 "\"%(full_name)s\".\n"
 "\n"
-"Anwani yako ya barua pepe imerekodiwa kuwa mwandishi wa rekodi hii. Ili "
-"kuwasha daftari kwenye rekodi hii, fuata kiungo hiki kabla ya siku 3 "
-"kuisha:\n"
+"Ni anwani yako ya barua pepe iliyorekodiwa kama mwandishi wa rekodi hii. "
+"Ili kuanza kuonyesha ujumbe ulioachwa kwenye rekodi hii, fuata kiungo "
+"hiki kabla siku 3 ziishe:\n"
 "\n"
 "   %(confirm_url)s\n"
-"\n"
 
 #, python-format
 msgid ""
@@ -89,14 +87,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mpendwa %(author_name)s,\n"
+"Hujambo %(author_name)s,\n"
 "\n"
-"Kuna mtumiaji ambaye ameomba uzime daftari kwenye hifadhi ya\n"
+"Kuna mtumiaji ambaye ameomba ufiche ujumbe kwenye rekodi ya\n"
 "\"%(full_name)s\".\n"
 "\n"
-"Anwani yako ya barua pepe imerekodiwa kuwa mwandishi wa rekodi hii. Ili \n"
-"kuzima daftari kwenye rekodi hii, fuata kiungo hiki kabla ya siku 3 "
-"kuisha:\n"
+"Ni anwani yako ya barua pepe iliyorekodiwa kama mwandishi wa rekodi hii. "
+"Ili \n"
+"kuficha ujumbe kwenye rekodi hii, fuata kiungo hiki kabla siku 3 ziishe:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -146,6 +144,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            Rekodi %(dup_count)s zimechaguliwa\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Rekodi Sawa na: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Matokeo ya Utafutaji wa: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -160,8 +188,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Je, una uhakika unataka kuzima daftari kwenye \"%(full_name)s\"?\n"
-"    "
+"Je, una uhakika unataka kuficha ujumbe ulioachwa kwenye \"%(full_name)s\"?"
 
 #, python-format
 msgid ""
@@ -171,7 +198,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Je, una uhakika unataka kuzima daftari kwenye hifadhi ya "
+"      Je, una uhakika unataka kuficha ujumbe ulioachwa kwenye rekodi ya "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -182,8 +209,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Je, una uhakika unataka kuwasha daftari kwenye \"%(full_name)s\"?\n"
-"    "
+"Je, una uhakika unataka kuonyesha ujumbe ulioachwa kwenye "
+"\"%(full_name)s\"?"
 
 #, python-format
 msgid ""
@@ -193,9 +220,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Je, una uhakika unataka kuongeza muda wa kuisha wa rekodi "
-"\"%(full_name)s\"?\n"
-"    "
+"Una uhakika unataka kuongeza muda wa rekodi \"%(full_name)s\"?"
 
 msgid ""
 "\n"
@@ -213,8 +238,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Iwapo utaendelea kufuta,\n"
-"rekodi hii haitaweza kutafutika au kuonekana kwenye tovuti hii.\n"
+"      Iwapo utaifuta,\n"
+"rekodi hii haitaweza tena kutafutika au kuonekana kwenye tovuti hii.\n"
 "    "
 
 #, python-format
@@ -236,6 +261,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Hakuna matokeo yaliyopatikana ya: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -250,6 +285,16 @@ msgstr ""
 "%(website)s, kisha inakili na  uibandike \n"
 "       URL hiyo hapa.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Rekodi imeongezewa muda hadi %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -279,10 +324,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Ili kuhakikisha kwamba daftari limezimwa au kuwashwa kwa ruhusa ya "
-"mwandishi wa rekodi pekee, ujumbe wa kuthibitisha utatumwa kwa mwandishi "
-"wa rekodi. Iwapo wewe ndiye mwandishi, angalia barua pepe yako baada ya "
-"kubofya kitufe hapo chini.\n"
+"    Ili kuhakikisha kwamba ujumbe ulioachwa umefichwa au unaonyeshwa kwa "
+"ruhusa ya mwandishi wa rekodi pekee, barua pepe ya kuthibitisha itatumwa "
+"kwa mwandishi wa rekodi. Iwapo wewe ndiwe mwandishi, angalia barua pepe "
+"yako baada ya kubofya kitufe hapo chini.\n"
 "  "
 
 msgid ""
@@ -294,7 +339,7 @@ msgid ""
 msgstr ""
 "\n"
 "  Rekodi bado itaonekana kwenye tovuti hii, lakini hakuna atakayeweza "
-"kuchapisha madaftari zaidi kwenye rekodi.\n"
+"kuacha ujumbe zaidi kwenye rekodi.\n"
 "  "
 
 msgid ""
@@ -379,13 +424,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Daftari sasa haziko kwenye hifadhi kwa \"%(full_name)s\". Ili kutazama "
-"rekodi, fuata kiungo hiki:\n"
+"Ujumbe ulioachwa kwenye rekodi ya \"%(full_name)s\" sasa umefichwa. Ili "
+"kutazama rekodi, fuata kiungo hiki:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "Tunakujulisha kwa sababu anwani yako ya barua pepe inahusishwa na rekodi "
-"ya mtu huyu au daftari kwenye rekodi.\n"
+"ya mtu huyu au ujumbe kwenye rekodi.\n"
 
 #, python-format
 msgid ""
@@ -400,12 +445,12 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Daftari sasa zinahifadhiwa kwa \"%(full_name)s\". Ili kutazama rekodi, "
-"fuata kiungo hiki:\n"
+"Ujumbe ulioachwa kwenye rekodi ya \"%(full_name)s\" sasa zinaonyeshwa. "
+"Ili kuitazama rekodi, fuata kiungo hiki:\n"
 "\n"
 "    %(record_url)s\n"
 "Tunakujulisha kwa sababu anwani yako ya barua pepe inahusishwa na rekodi "
-"ya mtu huyu au daftari kwenye rekodi.\n"
+"ya mtu huyu au ujumbe kwenye rekodi.\n"
 
 #, python-format
 msgid ""
@@ -449,7 +494,7 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Umejisajili katika daftari kwenye \"%(full_name)s\".\n"
+"Umejisajili ujulishwe kuhusu ujumbe ulioachwa kwenye \"%(full_name)s\".\n"
 "\n"
 "Unaweza kutazama rekodi hii kwenye\n"
 "\n"
@@ -464,7 +509,7 @@ msgid "(unknown)"
 msgstr "(haijulikani)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "Ujumbe wa mtu huyu au wengine wanaomtafuta mtu huyu"
+msgstr "Ujumbe kwa mtu huyu au wengine wanaomtafuta"
 
 msgid "A new API key has been created successfully."
 msgstr "Ufunguo mpya wa API umeundwa bila tatizo."
@@ -488,7 +533,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "Kama miezi 6 (siku 180) kutoka sasa"
 
 msgid "About Google Person Finder"
-msgstr "Kuhusu Kitafuta Watu cha Google"
+msgstr "Kuhusu Tovuti ya Kutafuta Waliopotea kutoka Google"
 
 msgid "About you (required)"
 msgstr "Kukuhusu (inahitajika)"
@@ -537,6 +582,22 @@ msgstr "Rudi kwenye orodha ya matokeo"
 
 msgid "Back to start"
 msgstr "Rudi mwanzo"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Kwa kutia alama daftari hili kuwa taka, utalificha kwa chaguo-msingi. "
+"Bado litakuwa sehemu ya rekodi, lakini litahitaji mbofyo zaidi ili "
+"kutazama maudhui ya daftari. Watumiaji pia wataweza kuondoa alama ya taka"
+" kutoka kwenye daftari hili."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Kwa kuondoa alama kuwa daftari hili ni taka, utalifanya lionekane kwa "
+"chaguo-msingi."
 
 msgid "CSV file"
 msgstr "Faili ya CSV"
@@ -596,10 +657,10 @@ msgid "Delete this record"
 msgstr "Futa rekodi hii"
 
 msgid "Describe how to identify this person."
-msgstr "Elezea jinsi ya kutambua mtu huyu."
+msgstr "Eleza jinsi ya kumtambua mtu huyu."
 
 msgid "Describe the physical characteristics of this person."
-msgstr "Elezea maumbile za mtu huyu."
+msgstr "Eleza maumbile ya mtu huyu."
 
 msgid "Description"
 msgstr "Maelezo"
@@ -611,10 +672,16 @@ msgid "Developers"
 msgstr "Wasanidi programu"
 
 msgid "Disable notes on this record"
-msgstr "Zima daftari kwenye rekodi hii"
+msgstr "Ficha ujumbe ulioachwa kwenye rekodi hii"
 
 msgid "Does this person have profile pages at other websites?"
 msgstr "Je, mtu huyu ana kurasa za wasifu kwenye tovuti zingine?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Pakua %(begin_link)skiolezo hiki cha Excel%(end_link)s na ukiongezee safu"
+" milalo"
 
 msgid "Download the sound as MP3"
 msgstr "Pakua sauti kama MP3"
@@ -632,18 +699,13 @@ msgid "Embedding the Application"
 msgstr "Upachikaji wa Programu"
 
 msgid "Enable notes on this record"
-msgstr "Washa daftari kwenye rekodi hii"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Hakikisha tarehe zote ziko katika muundo wa yyyy-mm-ddThh:mm:ssZ katika "
-"UTC"
+msgstr "Onyesha ujumbe ulioachwa kwenye rekodi hii"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ingiza kama YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Ingiza majina ya kupewa na ya familia."
+msgstr "Weka majina kamili ya mtu huyo."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "Ingiza jina la mtu au sehemu ya jina hilo."
@@ -662,7 +724,7 @@ msgstr "Tarehe ya kuisha kwa muda wa rekodi hii"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Ongeza tarehe ya kuisha muda kwa siku %(extension_days)s"
+msgstr "Ongeza tarehe ya kuisha kwa muda kwa siku %(extension_days)s"
 
 msgid "Family name"
 msgstr "Jina la familia"
@@ -693,13 +755,13 @@ msgid "Get an audio challenge"
 msgstr "Pata fumbo la sauti"
 
 msgid "Given name"
-msgstr "Jina la kupewa"
+msgstr "Majina mengine"
 
 msgid "Google Person Finder"
-msgstr "Kitafuta Watu cha Google"
+msgstr "Tovuti ya Kutafuta Waliopotea kutoka Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Je, umeongea na mtu huyu wewe binafsi BAADA ya janga? (inahitajika)"
+msgstr "Je, wewe mwenyewe umeongea na mtu huyu BAADA ya janga? (inahitajika)"
 
 msgid "Help"
 msgstr "Usaidizi"
@@ -726,10 +788,10 @@ msgid "Home country"
 msgstr "Nchi yako"
 
 msgid "How can this person be reached now?"
-msgstr "Je, mtu huyu anaweze kupatikanaje sasa?"
+msgstr "Mtu huyu anaweza kupatikanaje sasa?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "Watu wengine wanamtafuta mtu huyu wanavyoweza kuwasiliana nawe"
+msgstr "Jinsi wengine wanaomtafuta mtu huyu wanaweza kuwasiliana nawe"
 
 msgid "I am seeking information"
 msgstr "Natafuta maelezo"
@@ -756,13 +818,13 @@ msgid "I have received information that this person is dead"
 msgstr "Nimepokea habari ya kwamba mtu huyu ameaga dunia"
 
 msgid "I have received spam due to this note."
-msgstr "Nimepokea taka kutokana na daftari hili."
+msgstr "Nimepokea barua taka kutokana na ujumbe huu mfupi."
 
 msgid "I have received spam."
-msgstr "Nimepokea taka."
+msgstr "Nimepokea barua taka."
 
 msgid "I prefer not to specify."
-msgstr "Napendelea kutobainisha."
+msgstr "Sitaki kubainisha."
 
 msgid "I'm looking for someone"
 msgstr "Namtafuta mtu fulani"
@@ -771,7 +833,7 @@ msgid "Identify who you are looking for"
 msgstr "Tambua unayemtafuta"
 
 msgid "Identify who you have information about"
-msgstr "Tambua uliye na habari kumhusu"
+msgstr "Mtambue uliye na habari kumhusu"
 
 msgid "Identifying information"
 msgstr "Habari za kutambua"
@@ -788,23 +850,28 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Iwapo wewe ndiye mwandishi wa daftari hili, tafadhali angalia barua pepe "
-"yako kupata kiungo ili uthibitishe kwamba unataka kuondoa daftari kwenye "
-"rekodi hii. Kama sivyo, tafadhali subiri mwandishi wa rekodi athibitishe "
-"ombi lako."
+"Iwapo ni wewe uliyeandika ujumbe huu, tafadhali angalia kiungo "
+"ulichotumiwa kwenye barua pepe zako ili uthibitishe kwamba unataka "
+"kuuondoa ujumbe kwenye rekodi hii. Kama sivyo, tafadhali subiri mwandishi"
+" wa rekodi athibitishe ombi lako."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"Iwapo wewe ndiye mwandishi wa daftari hili, tafadhali angalia barua pepe "
-"yako kupata kiungo ili kuthibitisha kwamba unataka kuondoa daftari kwenye"
-" rekodi hii. Kama sivyo, tafadhali subiri mwandishi wa rekodi athibitishe"
-" ombi lako."
+"Iwapo ni wewe uliyeandika ujumbe huu, tafadhali angalia kiungo kilicho "
+"kwenye barua pepe zako ili uthibitishe kwamba unataka kuondoa ujumbe huu "
+"kwenye rekodi hii. Kama sivyo, tafadhali subiri mwandishi wa rekodi "
+"athibitishe ombi lako."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Iwapo una picha ya mtu huyu, ipakie au uingize anwani yake ya URL."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Katika Excel, tumia Faili> Hifadhi kama... na uhifadhi katika muundo wa "
+"CSV (. csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Sio sahihi. Jaribu tena."
@@ -816,7 +883,7 @@ msgid "Language selection"
 msgstr "Uteuzi wa lugha"
 
 msgid "Last known location"
-msgstr "Mahali pa mwisho palipojulikana"
+msgstr "Mahali alipoonekana mwisho"
 
 msgid "Link"
 msgstr "Kiungo"
@@ -828,7 +895,10 @@ msgid "List API keys"
 msgstr "Orodhesha funguo za API"
 
 msgid "Mark records as duplicate"
-msgstr "Tia alama kuwa rekodi rudufu"
+msgstr "Tia alama kuwa ni rekodi rudufu"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Wekea alama kumbukumbu zilizochaguliwa kuwa rudufu"
 
 msgid "Message (required)"
 msgstr "Ujumbe (unahitajika)"
@@ -889,22 +959,24 @@ msgid "No note with ID: %(id_str)s."
 msgstr "Hakuna daftari lililo na kitambulisho: %(id_str)s."
 
 msgid "No notes have been posted"
-msgstr "Hakuna madaftari yaliyochapishwa"
+msgstr "Hakuna ujumbe ulioachwa"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Hakuna mtu aliye na kitambulisho: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Hakuna matokeo yaliyopatikana ya"
-
 msgid "No such Authorization entity."
 msgstr "Hakuna huluki la uidhinishaji kama huo."
 
-msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
 msgstr ""
-"Hana idhini ya kuchapisha madaftari yaliyo na hali ya "
-"\"inaaminika_amefariki\"."
+"Hujaidhinishwa kuchapisha daftari lenye hali ya \"Nimepokea habari kwamba"
+" mtu huyu amefariki\"."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Huna idhini ya kuchapisha ujumbe unaosoma \"inaaminika_amefariki\"."
 
 msgid "Not spam"
 msgstr "Si taka"
@@ -915,8 +987,11 @@ msgstr "Nakili mwandishi"
 msgid "Note text"
 msgstr "Nakili ujumbe"
 
+msgid "Notes for a possible duplicate"
+msgstr "Maelezo ya uwezekano wa matokeo yanayojirudia"
+
 msgid "Notes for this person"
-msgstr "Daftari za mtu huyu"
+msgstr "Ujumbe ulioachwa unaohusiana na mtu huyu"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Nambari au mfululizo (k.m. 20-30)"
@@ -948,18 +1023,21 @@ msgstr ""
 msgid "Original site name"
 msgstr "Jina halisi la tovuti"
 
+msgid "Other website"
+msgstr "Tovuti nyingine"
+
 #, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"TAFADHALI KUMBUKA: Kwenye tovuti zinazotumika za Kitafuta Watu, data yote"
-" iliyoingizwa inapatikana kwa umma na kutumiwa na yeyote. Google haikagui"
-" au kuthibitisha usahihi wa data hii."
+"TAFADHALI KUMBUKA: Kwenye tovuti zinazotumika za Kutafuta Waliopotea, "
+"data yote iliyoingizwa inapatikana kwa umma na kutumiwa na yeyote. Google"
+" haikagui au kuthibitisha usahihi wa data hii."
 
 msgid "Person Finder"
-msgstr "Kitafuta Watu"
+msgstr "Tovuti ya Kutafuta Waliopotea"
 
 msgid "Phone"
 msgstr "Simu"
@@ -996,13 +1074,15 @@ msgstr ""
 "kuripoti."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Tafadhali thibitisha anwani yako ya barua pepe ili kujisajili kwa taarifa"
+msgstr ""
+"Tafadhali thibitisha anwani yako ya barua pepe ili ujisajili kupokea "
+"taarifa"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Tafadhali ingiza anwani yako ya barua pepe ili kujisaili kwa taarifa"
+msgstr "Tafadhali ingiza anwani yako ya barua pepe ili ujisajili kupokea taarifa"
 
 msgid "Please explain why you think these are the same person"
-msgstr "Tafadhali eleza ni kwa nini unafikiria hawa ni mtu yuyo huyo"
+msgstr "Tafadhali eleza ni kwa nini unafikiria rekodi hizi zinamhusu mtu mmoja"
 
 msgid "Please fill in all the required fields."
 msgstr "Tafadhali jaza sehemu zote zinazohitajika."
@@ -1016,11 +1096,14 @@ msgstr "Tafadhali toa anwani halali ya barua pepe."
 msgid "Possible duplicates"
 msgstr "Uwezekano wa kuwepo kwa rudufu"
 
+msgid "Possible duplicates found."
+msgstr "Matokeo yanayoweza kuwa ya marudio yaliyopatikana."
+
 msgid "Postal or zip code"
 msgstr "Posta au msimbo wa eneo"
 
 msgid "Posted by"
-msgstr "Imechapishwa na"
+msgstr "Ilichapishwa na"
 
 msgid "Proceed"
 msgstr "Endelea"
@@ -1049,9 +1132,6 @@ msgstr "Sababu ya kufuta:"
 msgid "Reason for disabling notes:"
 msgstr "Sababu ya kuzima daftari:"
 
-msgid "Records Similar to"
-msgstr "Rekodi Zinazofanana na"
-
 msgid "Records selected"
 msgstr "Rekodi zilizochaguliwa"
 
@@ -1063,7 +1143,7 @@ msgid "Remove"
 msgstr "Ondoa"
 
 msgid "Report spam"
-msgstr "Ripoti taka"
+msgstr "Ripoti barua taka"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1074,9 +1154,6 @@ msgstr "Onyesha daftari"
 
 msgid "Save this record"
 msgstr "Hifadhi rekodi hii"
-
-msgid "Search Results for"
-msgstr "Matokeo ya Utafutaji wa"
 
 msgid "Search for this person"
 msgstr "Tafuta mtu huyu"
@@ -1102,6 +1179,9 @@ msgstr "Onyesha Ramani"
 
 msgid "Show sensitive information"
 msgstr "Onyesha maelezo nyeti"
+
+msgid "Show who marked these duplicates"
+msgstr "Onyesha aliyetia alama nakala hizi"
 
 msgid "Sign in"
 msgstr "Ingia katika akaunti"
@@ -1152,14 +1232,8 @@ msgstr "Jisajili kupokea taarifa kuhusu mtu huyu"
 msgid "Switch to address"
 msgstr "Badilisha kwenda anwani"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Badilisha kwenda hali ya kutia alama rudufu"
-
 msgid "Switch to lat/long"
 msgstr "Badilisha kwenda lat/ndefu"
-
-msgid "Switch to normal view mode"
-msgstr "Badilisha kwenda hali ya kawaida ya kutazama"
 
 msgid "Tell us the status of this person"
 msgstr "Tuambie hali ya mtu huyu"
@@ -1173,9 +1247,7 @@ msgstr "Ufunguo wa API umesasishwa bila tatizo."
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr ""
-"Jina la Kupewa na jina la Familia yote yanahitajika. Tafadhali rudi nyuma"
-" na ujaribu tena."
+msgstr "Jina yote kamili yanahitajika. Tafadhali rudi nyuma na ujaribu tena."
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
@@ -1183,7 +1255,7 @@ msgstr ""
 "tena."
 
 msgid "The author has disabled notes on this record."
-msgstr "Mwandishi amezima daftari kwenye rekodi hii."
+msgstr "Mwandishi ameficha ujumbe ulioachwa kwenye rekodi hii."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Mwandishi amezima hali ya taarifa kwenye rekodi hii."
@@ -1199,10 +1271,6 @@ msgstr "Rekodi haiwezi kuongezwa."
 
 msgid "The record has been deleted."
 msgstr "Rekodi imefutwa."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Rekodi imeongezewa muda hadi %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1306,7 +1374,9 @@ msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "Ili kuambatanisha picha katika daftari hili, ipakie au ingiza URL yake."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "Ili kufuta data yako, fikia Kitafuta Watu kutoka kwenye eneo-kazi lako."
+msgstr ""
+"Ili kufuta data yako, fikia Tovuti ya Kutafuta Waliopotea kutoka eneo-"
+"kazi lako."
 
 msgid "To unsubscribe, follow this link"
 msgstr "Ili kujiengua, fuata kiungo hiki"
@@ -1345,8 +1415,14 @@ msgstr "Sasisha ufunguo uliopo"
 msgid "Upload"
 msgstr "Pakia"
 
-msgid "Upload CSV files"
-msgstr "Pakia faili za CSV"
+msgid "Upload notes in CSV format"
+msgstr "Pakia daftari katika muundo wa CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Pakia kumbukumbu za mtu katika muundo wa CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Pakia faili yako ya CSV hapa chini"
 
 msgid "View the record"
 msgstr "Tazama rekodi"
@@ -1358,7 +1434,7 @@ msgid "What is this person's name?"
 msgstr "Jina la mtu huyu ni lipi?"
 
 msgid "When should this record disappear?"
-msgstr "Je, ni wakati gani rekodi hii inapaswa kutoweka?"
+msgstr "Je, rekodi hii inafaa iwache kuonyeshwa lini?"
 
 msgid "Where did this information come from?"
 msgstr "Je, habari hii ilitoka wapi?"
@@ -1377,16 +1453,16 @@ msgid "Yes"
 msgstr "Ndiyo"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "Ndiyo, uliza mwandishi wa rekodi azime daftari"
+msgstr "Ndiyo, uliza aliyeandika rekodi afiche ujumbe ulioachwa"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Ndiyo, uliza mwandishi wa rekodi awashe daftari"
+msgstr "Ndiyo, muulize aliyeandika rekodi hii aonyeshe ujumbe ulioachwa"
 
 msgid "Yes, delete the record"
 msgstr "Ndiyo, futa rekodi hiyo"
 
 msgid "Yes, disable notes on this record."
-msgstr "Ndiyo, zima daftari kwenye rekodi hii."
+msgstr "Ndiyo, ficha ujumbe ulioachwa kwenye rekodi hii."
 
 msgid "Yes, extend the record"
 msgstr "Ndiyo, ongeza rekodi hiyo"
@@ -1481,46 +1557,59 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Thibitisha daftari lako kwenye \"%(full_name)s\""
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Thibitisha ujumbe wako kwenye "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Arifa ya ufutaji ya \"%(full_name)s\""
+msgstr "[Tovuti ya Kutafuta Waliopotea] Arifa ya kufutwa kwa \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Kitafuta Watu] Zima daftari zinazomhusu \"%(full_name)s\"?"
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Ungependa kuficha ujumbe mfupi kwenye "
+"\"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Kitafuta Watu] Huwasha daftari zinazomhusu \"%(full_name)s\"?"
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Ungependa kuanza kuonyesha ujumbe kwenye "
+"\"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Notisi ya kuwasha daftari la \"%(full_name)s\""
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Notisi ya kuanza kuonyesha ujumbe "
+"uliochiwa \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Daftari za \"%(full_name)s\" sasa zimezimwa"
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Ujumbe ulioachiwa \"%(full_name)s\" sasa "
+"umefichwa"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Daftari za \"%(full_name)s\" sasa zimewashwa"
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Ujumbe ulioachiwa \"%(full_name)s\" sasa "
+"unaonyeshwa"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Kitafuta Watu] Notisi ya urejeshaji wa Rekodi ya \"%(full_name)s\""
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Notisi ya kurejeshwa kwa Rekodi ya "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Kitafuta Watu] Hali ya taarifa ya %(full_name)s"
+msgstr "[Tovuti ya Kutafuta Waliopotea] Hali ya taarifa ya %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[Kitafuta Watu] Umejisajili kupokea taarifa za hali ya %(full_name)s"
-
-msgid "at"
-msgstr "katika"
+msgstr ""
+"[Tovuti ya Kutafuta Waliopotea] Umejisajili kupokea taarifa za hali ya "
+"%(full_name)s"
 
 msgid "female"
 msgstr "mwanamke"
@@ -1532,7 +1621,7 @@ msgid "male"
 msgstr "mwanamume"
 
 msgid "on"
-msgstr "imewashwa"
+msgstr "mnamo"
 
 msgid "other"
 msgstr "nyingine"

@@ -153,6 +153,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s poster valda\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Poster som liknar: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Sökresultat för %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -242,6 +272,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Inga resultat hittades för: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -256,6 +296,16 @@ msgstr ""
 "webbadressen.\n"
 "      Klistra sedan in den här.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Posten har förlängts till %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -554,6 +604,22 @@ msgstr "Tillbaka till resultatlistan"
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"I och med att du markerar det här meddelandet som spam döljs det som "
+"standard. Det är fortfarande en del av posten, men ett extra klick krävs "
+"för att visa texten. Andra användare kan ta bort markeringen av "
+"meddelandet som spam."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"I och med att du tar bort markeringen av det här meddelandet som spam "
+"visas det som standard."
+
 msgid "CSV file"
 msgstr "CSV-fil"
 
@@ -630,6 +696,12 @@ msgstr "Inaktivera meddelanden om den här posten"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Har personen en profilsida på en annan webbplats?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Hämta %(begin_link)sden här Excel-mallen%(end_link)s och lägg till rader "
+"i den"
+
 msgid "Download the sound as MP3"
 msgstr "Hämta ljudet som MP3"
 
@@ -647,9 +719,6 @@ msgstr "Bädda in programmet"
 
 msgid "Enable notes on this record"
 msgstr "Aktivera meddelanden om den här posten"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Kontrollera att alla datum är i formatet ååå-mm-ddThh:mm:ssZ i UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
@@ -818,6 +887,9 @@ msgstr ""
 "Om du har ett foto av personen kan du överföra det eller ange en "
 "webbadress till fotot."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "I Excel väljer du Arkiv &gt; Spara som ... och sparar i CSV-format (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Felaktigt. Försök igen."
 
@@ -841,6 +913,9 @@ msgstr "Lista API-nycklar"
 
 msgid "Mark records as duplicate"
 msgstr "Markera poster som dubbletter"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Markera de valda posterna som dubbletter"
 
 msgid "Message (required)"
 msgstr "Meddelande (måste anges)"
@@ -905,11 +980,15 @@ msgstr "Inga medelanden har lämnats"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ingen person med detta ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Det finns inga resultat för"
-
 msgid "No such Authorization entity."
 msgstr "Det finns ingen auktoriseringsenhet"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Inte behörig att lägga upp meddelanden med statusen Jag har fått "
+"information om att personen är död."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ej behörig att lägga upp meddelanden med statusen \"believed_dead\"."
@@ -922,6 +1001,9 @@ msgstr "Meddelandets författare"
 
 msgid "Note text"
 msgstr "Meddelandets text"
+
+msgid "Notes for a possible duplicate"
+msgstr "Meddelanden om en möjlig dubblett"
 
 msgid "Notes for this person"
 msgstr "Meddelanden för den här personen"
@@ -955,6 +1037,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Den ursprungliga webbplatsens namn"
+
+msgid "Other website"
+msgstr "Annan webbplats"
 
 #, fuzzy
 msgid ""
@@ -1020,6 +1105,9 @@ msgstr "Ange en giltig e-postadress."
 msgid "Possible duplicates"
 msgstr "Möjliga dubbletter"
 
+msgid "Possible duplicates found."
+msgstr "Möjliga dubbletter hittades."
+
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
@@ -1053,9 +1141,6 @@ msgstr "Orsak till borttagning:"
 msgid "Reason for disabling notes:"
 msgstr "Anledning till att inaktivera meddelanden:"
 
-msgid "Records Similar to"
-msgstr "Poster som liknar"
-
 msgid "Records selected"
 msgstr "Valda poster"
 
@@ -1078,9 +1163,6 @@ msgstr "Visa meddelande"
 
 msgid "Save this record"
 msgstr "Spara den här posten"
-
-msgid "Search Results for"
-msgstr "Sökresultat för"
 
 msgid "Search for this person"
 msgstr "Sök efter personen"
@@ -1106,6 +1188,9 @@ msgstr "Visa karta"
 
 msgid "Show sensitive information"
 msgstr "Visa känslig information"
+
+msgid "Show who marked these duplicates"
+msgstr "Visa vem som markerade dubbletterna"
 
 msgid "Sign in"
 msgstr "Logga in"
@@ -1156,14 +1241,8 @@ msgstr "Prenumerera på uppdateringar om den här personen"
 msgid "Switch to address"
 msgstr "Byt till adress"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Byt till dubblettmarkeringsläge"
-
 msgid "Switch to lat/long"
 msgstr "Byt till lat./long."
-
-msgid "Switch to normal view mode"
-msgstr "Byt till normalt visningsläge"
 
 msgid "Tell us the status of this person"
 msgstr "Berätta för oss vilken status personen har"
@@ -1203,10 +1282,6 @@ msgstr "Posten kan inte förlängas."
 
 msgid "The record has been deleted."
 msgstr "Posten har tagits bort."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Posten har förlängts till %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1349,8 +1424,14 @@ msgstr "Uppdatera en befintlig nyckel"
 msgid "Upload"
 msgstr "Överför"
 
-msgid "Upload CSV files"
-msgstr "Överför CSV-filer"
+msgid "Upload notes in CSV format"
+msgstr "Överför anteckningar i CSV-format"
+
+msgid "Upload person records in CSV format"
+msgstr "Överför personposter i CSV-format"
+
+msgid "Upload your CSV file below"
+msgstr "Överför CSV-filen nedan"
 
 msgid "View the record"
 msgstr "Visa posten"
@@ -1515,9 +1596,6 @@ msgstr "[Person Finder] Statusuppdatering om %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Du prenumererar på statusuppdateringar om %(full_name)s"
-
-msgid "at"
-msgstr "vid"
 
 msgid "female"
 msgstr "kvinna"

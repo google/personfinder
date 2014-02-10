@@ -1,0 +1,1608 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Жазбалардың автордың рұқсатымен ғана қосылуын немесе өшірілуін "
+"қадағалау үшін, дерек авторына растау хабары жіберіледі.\n"
+"  Егер авторы сіз болсаңыз, төмендегі түймені басқаннан кейін, поштаңызды"
+" тексеріңіз.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Құрметті %(author_name)s,\n"
+"\n"
+"Пайдаланушы \"%(full_name)s\" туралы жазбаларды қосуды өтінді.\n"
+"\n"
+"Сіздің э-поштаңыз осы деректің иесі ретінде тіркелген. Осы дерек туралы "
+"жазбаларды қосу үшін келесі сілтемені 3 күн ішінде басыңыз:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Құрметті %(author_name)s,\n"
+"\n"
+"Пайдаланушы \"%(full_name)s\" туралы жазбаларды өшіруді өтінді.\n"
+"\n"
+"Сіздің э-поштаңыз осы деректің иесі ретінде тіркелген. Осы дерек туралы "
+"жазбаларды өшіру үшін келесі сілтемені 3 күн ішінде басыңыз:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Құрметті %(author_name)s,\n"
+"Сіз \"%(full_name)s\" туралы дерек жазбасын енгіздіңіз.  \n"
+"Жазбаны жариялау үшін, келесі сілтемені 3 күн ішінде басыңыз:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Ескерту: бұл деректің мерзімі %(expiration_days)s "
+"күннен аз уақытта аяқталады.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Ескерту: бұл деректің мерзімі бір күннен аз уақытта "
+"аяқталады.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s деректер таңдалды\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Келесі деректерге ұқсас деректер: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Келесі деректерді іздеу нәтижелері: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы деректерді жойғыңыз келетініне сенімдісіз "
+"бе?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы жазбаларды өшіргіңіз келетініне сенімдісіз"
+" бе?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы деректерге қатысты жазбаларды өшіргіңіз "
+"келетініне сенімдісіз бе?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы жазбаларды қосқыңыз келетініне сенімдісіз "
+"бе ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы деректердің мерзімін ұзартқыңыз келетініне"
+" сенімдісіз бе?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Жазбаңызды растаңыз\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Егер деректі жойсаңыз, \n"
+"      бұл деректі осыдан былай бұл сайттан табу немесе көру мүмкін "
+"болмайды.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Егер мүлдем жоюды қаласаңыз,\n"
+"      түпнұсқа дереккөзіне хабарласыңыз.\n"
+"      Түпнұсқа деректі \n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s дереккөзінен көруіңізге "
+"болады.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Келесі өтініш бойынша ешқандай нәтижелер табылмады: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Сіз енгізген URL мекенжайы %(website)s веб-сайтының жарамды URL "
+"мекенжайы емес сияқты.\n"
+"      Осы адамның %(website)s веб-сайтындағы парағының URL мекенжайының "
+"көшірмесін жасап, осы жерге енгізіңіз.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Дерек мерзімі %(expiry_date)s дейін ұзартылды.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Бұл дерек басқа дереккөзден алынған деректің көшірмесі.\n"
+"      Деректі осы жерде жоюға болады,\n"
+"      бірақ, есіңізде болсын,\n"
+"      түпнұсқа дереккөзден оның тағы бір көшірмесін алуымыз мүмкін.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Жазбалардың деректің авторының рұқсатымен ғана қосылуын немесе "
+"өшірілуін қадағалау үшін, дерек авторына растау хабары жіберіледі.\n"
+"  Егер авторы сіз болсаңыз, төмендегі түймені басқаннан кейін, поштаңызды"
+" тексеріңіз.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Деректі осы веб-сайттан көру әлі де мүмкін болады, бірақ басқаларға ол "
+"туралы жазба қосу мүмкін болмайды.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Жазбаңызды қосу үшін, төменде э-поштаңызды енгізіп, сізге жіберілген "
+"растама сілтемесін басыңыз.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Пайдаланушы \"%(full_name)s\" туралы деректі  %(site_url)s веб-сайтында "
+"жойды.\n"
+"\n"
+"Жойылған дерек туралы сізге хабарлап отырмыз, себебі сіздің э-поштаңыз "
+"осы дерекке қатысты жазбаның авторы ретінде тіркелген.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Пайдаланушы \"%(full_name)s\" туралы деректі %(site_url)s веб-сайтында "
+"жойды.\n"
+"\n"
+"Жойылған дерек туралы сізге хабарлап отырмыз, себебі сіздің э-поштаңыз "
+"осы деректің авторы ретінде тіркелген.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"%(days_until_deletion)s күннен кейін дерек мүлдем жойылады.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"ЕСІҢІЗДЕ БОЛСЫН: Егер дерек абайсызда жойылған деп санасаңыз,келесі "
+"сілтемені %(days_until_deletion)s күн ішінде басып, деректі қайта қалпына"
+" келтіруіңізге болады:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" туралы деректерге жазба қосу өшірілді. Деректі көру "
+"үшін келесі сілтемені басыңыз:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Біз сізге бұл туралы хабарлап отырмыз, себебі сіздің э-поштаңыз осы адам "
+"туралы дерекке немесе дерек туралы жазбаға қатысты тіркелген.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" туралы дерекке қатысты жазба енгізу қосылған.  Деректі "
+"көру үшін келесі сілтемені басыңыз:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Біз сізге бұл туралы хабарлап отырмыз, себебі сіздің э-поштаңыз осы адам "
+"туралы дерекке немесе дерек туралы жазбаға қатысты тіркелген.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" туралы деректің (жойылған дерек) авторы деректі қалпына"
+" келтірді.\n"
+"Деректі көру үшін келесі сілтемені басыңыз:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Біз сізге бұл туралы хабарлап отырмыз, себебі сіздің э-поштаңыз осы адам "
+"туралы дерекке немесе дерек туралы жазбаға қатысты тіркелген.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" туралы дерекке жаңа жазба қосылды.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"\"%(full_name)s\" туралы жазбаларды көруге жазылдыңыз.\n"
+"\n"
+"Бұл деректі келесі сілтеме арқылы көруге болады:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Жазылымды тоқтату үшін келесі сілтемені басыңыз: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(ашу үшін басыңыз)"
+
+msgid "(unknown)"
+msgstr "(белгісіз)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Осы адамға немесе осы адамды іздеушілерге жіберілген хабар"
+
+msgid "A new API key has been created successfully."
+msgstr "Жаңа API (қолданба бағдарламалау интерфейсі) кілті сәтті жасақталды."
+
+msgid "API Key Management"
+msgstr "API кілтін басқару"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Осы уақыттан бастап шамамен 1 ай (30 күн)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Осы уақыттан бастап шамамен 1 жыл (360 күн)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Осы уақыттан бастап шамамен 2 ай (60 күн)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Осы уақыттан бастап шамамен 3 ай (90 күн)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Осы уақыттан бастап  шамамен 6 ай (180 күн)"
+
+msgid "About Google Person Finder"
+msgstr "Google Адам Іздеу қызметі туралы"
+
+msgid "About you (required)"
+msgstr "Сіз туралы (міндетті)"
+
+msgid "Administration"
+msgstr "Әкімшілік"
+
+msgid "Age"
+msgstr "Жасы"
+
+msgid "Alternate family names"
+msgstr "Қосымша тектер"
+
+msgid "Alternate given names"
+msgstr "Қосымша есімдер"
+
+msgid "Alternate names"
+msgstr "Қосымша аттар"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Бұл жазбаның спам емес екеніне сенімдісіз бе?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Бұл жазбаны спам ретінде белгілеңіз келетініне сенімдісіз бе?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+"Бұл деректі жойылған деректерден қалпына келтіргіңіз келетініне "
+"сенімдісіз бе?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Бұл адам туралы жаңартылған деректердің Atom-таспалары"
+
+msgid "Author's e-mail address"
+msgstr "Aвтордың э-поштасы"
+
+msgid "Author's name"
+msgstr "Aвтордың аты"
+
+msgid "Author's phone number"
+msgstr "Aвтордың телефон нөмірі"
+
+msgid "Authorization key"
+msgstr "Рұқсат беру кілті"
+
+msgid "Back to results list"
+msgstr "Нәтижелер тізіміне оралу"
+
+msgid "Back to start"
+msgstr "Басына оралу"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Бұл жазбаны спам ретінде белгілесеңіз, бастапқы параметр бойынша жазба "
+"жасырын болады. Бұл әлі де деректің бір бөлігі болып табылады, бірақ "
+"жазбаның мазмұнын көру үшін оны жеке басу қажет болады. Пайдаланушыларға "
+"да бұл жазбаның спам белгісін алып тастауға болады."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Бұл жазбаның спам белгісін алсаңыз, бастапқы параметр бойынша жазбаны "
+"көру мүмкін болады."
+
+msgid "CSV file"
+msgstr "CSV файлы"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Жазбаны анықтағышы бойынша табу мүмкін емес %(id)s"
+
+msgid "Cancel"
+msgstr "Болдырмау"
+
+msgid "City"
+msgstr "Қала"
+
+msgid "Click here to view results."
+msgstr "Нәтижелерді көру үшін осы жерді басыңыз."
+
+msgid "Close window"
+msgstr "Терезені жабыңыз"
+
+msgid "Compare these records"
+msgstr "Осы жазбаларды салыстырыңыз"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Осы құралды веб-сайтыңызға қою үшін, келесі HTML кодының көшірмесін "
+"енгізіңіз"
+
+msgid "Create a new API key"
+msgstr "Жаңа API кілтін жасау"
+
+msgid "Create a new record"
+msgstr "Жаңа дерек жасау"
+
+msgid "Create a new record for"
+msgstr "туралы жаңа дерек жасау"
+
+msgid "Create a new record for a missing person"
+msgstr "Жоғалған адам туралы жаңа дерек жасау"
+
+msgid "Crisis events"
+msgstr "Апат оқиғалары"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Қазір шамамен %(num_people)s туралы дерек қаралуда."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Мезгілі алдағы күндер болуы мүмкін емес. Кері оралып, қайта әрекеттеніңіз."
+
+msgid "Date of birth"
+msgstr "Туған күні мен жылы"
+
+msgid "Delete this record"
+msgstr "Бұл деректі жойыңыз"
+
+msgid "Describe how to identify this person."
+msgstr "Бұл адамды анықтау үшін сипаттаңыз."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Осы адамның келбетін сипаттаңыз."
+
+msgid "Description"
+msgstr "Сипаттамасы"
+
+msgid "Desktop version"
+msgstr "Десктоп нұсқасы"
+
+msgid "Developers"
+msgstr "Дамытушылар"
+
+msgid "Disable notes on this record"
+msgstr "Осы дерекке қатысты жазба қосуды өшіріңіз"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Бұл адамның басқа веб-сайттарда жеке парақшасы бар ма?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Мына %(begin_link)s Excel үлгісін жүктеп алыңыз%(end_link)s және оған "
+"жолдарды қосыңыз."
+
+msgid "Download the sound as MP3"
+msgstr "Дыбысты MP3 ретінде жүктеңіз"
+
+msgid "E-mail"
+msgstr "Э-пошта"
+
+msgid "E-mail address"
+msgstr "Э-пошта мекенжайы"
+
+msgid "Edit"
+msgstr "Жөндеу"
+
+msgid "Embedding the Application"
+msgstr "Қолданбаны қосу"
+
+msgid "Enable notes on this record"
+msgstr "Бұл дерек туралы жазба қосуды іске қосу"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "ЖЖЖЖ-АА-КК ретінде енгізіңіз"
+
+msgid "Enter the person's given and family names."
+msgstr "Адамның есімдері мен тегін енгізіңіз."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Адамның аты-жөнін немесе аты-жөнінің жартысын енгізіңіз."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Адамның атын, атының жартысын немесе ұялы телефонын енгізіңіз."
+
+msgid "Enter the person's name."
+msgstr "Адамның атын енгізіңіз."
+
+msgid "Expiry"
+msgstr "Жарамдылық мерзімі"
+
+msgid "Expiry date of this record"
+msgstr "Осы деректің жарамдылық мерзімі"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Жарамдылық мерзімін %(extension_days)s күнге ұзарту"
+
+msgid "Family name"
+msgstr "Тегі"
+
+msgid "Feed of updates about this person"
+msgstr "Бұл адам туралы жаңартылған дерек таспалары"
+
+msgid "Follow this link to create a new record"
+msgstr "Жаңа дерек жасау үшін осы сілтемені басыңыз"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Ұялы телефоннан басқа телефондар үшін NTT компаниясы қамтамасыз еткен 171"
+" қызметін қолданыңыз."
+
+msgid "Full name"
+msgstr "Толық аты-жөні"
+
+msgid "Get a new challenge"
+msgstr "Жаңа сауалға ие болыңыз"
+
+msgid "Get a visual challenge"
+msgstr "Визуалды сауалға ие болыңыз"
+
+msgid "Get an audio challenge"
+msgstr "Аудио сауалға ие болыңыз"
+
+msgid "Given name"
+msgstr "Есімі"
+
+msgid "Google Person Finder"
+msgstr "Google Адам Іздеу қызметі"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Апаттан КЕЙІН адамның өзімен сөйлестіңіз бе? (міндетті)"
+
+msgid "Help"
+msgstr "Көмек"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Мұнда жөндеуге және жүктеуге болатын %(begin_tag)sCSV файлының "
+"үлгісі%(end_tag)s"
+
+msgid "Hide Map"
+msgstr "Картаны жасыру"
+
+msgid "Hide note"
+msgstr "Жазбаны жасыру"
+
+msgid "Home Address"
+msgstr "Үйдің Мекенжайы"
+
+msgid "Home address"
+msgstr "Үйдің мекенжайы"
+
+msgid "Home country"
+msgstr "Тұратын елі"
+
+msgid "How can this person be reached now?"
+msgstr "Бұл адаммен қазір қалай хабарласуға болды?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Бұл адамды іздеген басқа адамдар сізбен қалай хабарласа алады?"
+
+msgid "I am seeking information"
+msgstr "Мен ақпарат іздеудемін"
+
+msgid "I am this person"
+msgstr "Мен сол адаммын"
+
+msgid "I do not want any more updates on this record."
+msgstr "Мен осыдан былай бұл дерекке қатысты жаңартуларды қаламаймын."
+
+msgid "I do not want my information online anymore."
+msgstr "Мен осыдан былай мен туралы ақпараттың желіде болуын қаламаймын."
+
+msgid "I have information about someone"
+msgstr "Менде бір адам туралы ақпарат бар"
+
+msgid "I have reason to think this person is missing"
+msgstr "Менің бұл адамды іздеуде деп ойлауымның себебі бар"
+
+msgid "I have received information that this person is alive"
+msgstr "Бұл адам тірі деген хабар алдым"
+
+msgid "I have received information that this person is dead"
+msgstr "Бұл адам қайтыс болды деген хабар алдым"
+
+msgid "I have received spam due to this note."
+msgstr "Мен бұл дерекке қатысты спам алдым."
+
+msgid "I have received spam."
+msgstr "Мен спам алдым."
+
+msgid "I prefer not to specify."
+msgstr "Мен толық ақпарат беруді қаламаймын."
+
+msgid "I'm looking for someone"
+msgstr "Мен біреуді іздеп жүрмін"
+
+msgid "Identify who you are looking for"
+msgstr "Іздеп жүрген адамыңызды анықтаңыз"
+
+msgid "Identify who you have information about"
+msgstr "Сізде кім туралы ақпарат бар екені анықтаңыз"
+
+msgid "Identifying information"
+msgstr "Анықтау ақпараты"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Бұл деректер сіз іздеп жүрген адамға сәйкес келмесе, жаңа дерек жинағын "
+"жасау үшін төмендегі аймақты басыңыз."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Егер сіз осы жазбаның авторы болсаңыз, поштаңызды тексеріп, осы дерекке "
+"қатысты жазбаларды қосуды өшіргіңіз келетінін растаңыз. Әйтпесе, деректің"
+" авторы өтінішіңізді растағанға дейін күтіңіз."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Егер сіз осы жазбаның авторы болсаңыз, поштаңызды тексеріп, осы дерекке "
+"қатысты жазбаларды қосқыңыз келетінін растаңыз. Әйтпесе, деректің авторы "
+"өтінішіңізді растағанға дейін күтіңіз."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Егер ол адамның фотосуреті болса, фотосуретті жүктеңіз немесе оның URL "
+"мекенжайын енгізіңіз."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excel форматында, Файл &gt пәрменін қолданыңыз; ...ретінде сақтау "
+"пәрмендерін қолданып, CSV форматында сақтаңыз (.csv)"
+
+msgid "Incorrect.  Try again."
+msgstr "Дұрыс емес. Қайта әрекеттеніңіз."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Жарамсыз э-пошта. Қайта әрекеттеніңіз."
+
+msgid "Language selection"
+msgstr "Тіл таңдау"
+
+msgid "Last known location"
+msgstr "Соңғы рет болған аймағы"
+
+msgid "Link"
+msgstr "Сілтеме"
+
+msgid "Link to profile page"
+msgstr "Жеке парақшасына сілтеме"
+
+msgid "List API keys"
+msgstr "Соңғы API кілті"
+
+msgid "Mark records as duplicate"
+msgstr "Деректерді көшірме ретінде белгілеңіз"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Таңдалған деректерді көшірме ретінде белгілеңіз"
+
+msgid "Message (required)"
+msgstr "Хабар (міндетті)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Хабар міндетті. Кері оралып, қайта әрекеттеніп көріңіз."
+
+msgid "Missing person's current contact information"
+msgstr "Іздеудегі адамның қазіргі байланыс ақпараты"
+
+msgid "Missing person's current e-mail address"
+msgstr "Іздеудегі адамның қазіргі э-поштасы"
+
+msgid "Missing person's current phone number"
+msgstr "Іздеудегі адамның қазіргі телефон нөмірі"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Дамытушылар туралы толығырақ ақпаратты %(developers_link_html)sмына "
+"жерден%(link_end_html)s қарауға болады."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"100-ден аса нәтиже; бірінші 100 нәтижені ғана көрсетуде.  Атының көбірек "
+"бөлігін енгізіңіз."
+
+msgid "Name"
+msgstr "Аты"
+
+msgid "Name (required)"
+msgstr "Аты (міндетті)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Аты міндетті. Кері оралып, қайта әрекеттеніңіз."
+
+msgid "Neighborhood"
+msgstr "Аудан"
+
+msgid "No"
+msgstr "Жоқ"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "%(id)s дерегі үшін ешқандай автордың э-поштасы жоқ."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "Байланыс қызметі жеткізген хабарға қатысты ешқандай хабар тіркелмеген."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Келесі анықтағышы бар жазба табылмады: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Ешқандай жазбалар қосылмаған."
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Келесі анықтағыш бойынша ешбір адам табылмады: %(id_str)s."
+
+msgid "No such Authorization entity."
+msgstr "Мұндай рұқсат элементі жоқ."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"\"Мен бұл адам қайтыс болды деген ақпарат алдым\" күйімен жазба қосуға "
+"рұқсат жоқ."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "\"Қайтыс болды деп саналады\" күйімен жазба қосуға рұқсат жоқ."
+
+msgid "Not spam"
+msgstr "Спам емес"
+
+msgid "Note author"
+msgstr "Жазба авторы"
+
+msgid "Note text"
+msgstr "Жазба мәтіні"
+
+msgid "Notes for a possible duplicate"
+msgstr "Ықтимал көшірмеге қатысты жазба"
+
+msgid "Notes for this person"
+msgstr "Осы адамға қатысты жазба"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Саны немесе аумағы (мысалы, 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Немесе веб-сайтыңызға %(gadget_link_html)sGoogle Гаджеті%(link_end_html)s"
+" ретінде қосыңыз."
+
+msgid "Original URL"
+msgstr "Түпнұсқа URL"
+
+msgid "Original author's name"
+msgstr "Бастапқы автордың аты"
+
+msgid "Original posting date"
+msgstr "Бастапқы қойылған күні"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Бастапқы қойылған күні ЖЖЖЖ-АА-КК форматында емес немесе жарамсыз. Кері "
+"оралып, қайта әрекеттеніңіз."
+
+msgid "Original site name"
+msgstr "Түпнұсқа веб-сайт атауы"
+
+msgid "Other website"
+msgstr "Басқа веб-сайт"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"ЕСІҢІЗДЕ БОЛСЫН: Жұмыс істеп тұрған Адам Іздеу сайттарына енгізілген "
+"деректер барлығына қол жетімді және барлығының қолдануына болады.Google "
+"бұл деректердің дұрыстығын тексермейді."
+
+msgid "Person Finder"
+msgstr "Адам Іздеу қызметі"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Phone number"
+msgstr "Телефон нөмірі"
+
+msgid "Photo"
+msgstr "Фотосурет"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr "Фотосурет белгісіз форматта жүктелген.  Кері оралып, қайта әрекеттеніңіз."
+
+msgid "Physical characteristics"
+msgstr "Келбеті"
+
+msgid "Play the sound again"
+msgstr "Дыбысты қайта ойнату"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Бұл адаммен жер сілкінісінен кейін хабарласқаныңызды тексеріңіз немесе "
+"\"Осы адамның күйі\" аймағын өзгертіңіз."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Бұл ақпараттың сіз баяндамақ болған адамға сәйкестігін тексеріңіз."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Жаңартуларға жазылу үшін, э-поштаңызды растаңыз"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Жаңартуларға жазылу үшін, э-поштаңызды енгізіңіз"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Оларды неге бір адам деп санайтыныңызды түсіндіріңіз"
+
+msgid "Please fill in all the required fields."
+msgstr "Міндетті аймақтардың барлығын толтырыңыз."
+
+msgid "Please fill in your email address."
+msgstr "Э-поштаңызды енгізіңіз."
+
+msgid "Please provide an valid email address."
+msgstr "Жарамды э-пошта мекенжайын беріңіз."
+
+msgid "Possible duplicates"
+msgstr "Ықтимал көшірмелер"
+
+msgid "Possible duplicates found."
+msgstr "Ықтимал көшірмелер табылды."
+
+msgid "Postal or zip code"
+msgstr "Пошта индексі"
+
+msgid "Posted by"
+msgstr "Жазбаны қойған"
+
+msgid "Proceed"
+msgstr "Жалғастыру"
+
+msgid "Profile Pages"
+msgstr "Жеке парақшалар"
+
+msgid "Profile page"
+msgstr "Жеке парақша"
+
+msgid "Provide information"
+msgstr "Ақпарат беру"
+
+msgid "Provide information about this person"
+msgstr "Бұл адам туралы ақпарат беріңіз"
+
+msgid "Provided by:"
+msgstr "Ақпаратты берген:"
+
+msgid "Province or state"
+msgstr "Аймақ немесе штат"
+
+msgid "Reason for deletion:"
+msgstr "Жою себебі:"
+
+msgid "Reason for disabling notes:"
+msgstr "Жазбаларды өшіру себебі:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Аттары мен мекенжайлары \"%(query)s\" өтінішіне сәйкес деректер"
+
+msgid "Remove"
+msgstr "Алып тастау"
+
+msgid "Report spam"
+msgstr "Спам туралы хабарлау"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "%(full_name)s туралы дерекке оралу."
+
+msgid "Reveal note"
+msgstr "Жазбаны ашу"
+
+msgid "Save this record"
+msgstr "Бұл деректі сақтау"
+
+msgid "Search for this person"
+msgstr "Бұл адамды іздеу"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Толығырақ нұсқауларды %(begin_tag)swiki%(end_tag)s арқылы қараңыз"
+
+msgid "Select a website to add a profile page..."
+msgstr "Жеке парақша қосу үшін веб-сайтты таңдаңыз..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Көшірме ретінде белгілеу үшін 3 дерекке дейін таңдаңыз:"
+
+msgid "Send email"
+msgstr "Хат жіберу"
+
+msgid "Sex"
+msgstr "Жынысы"
+
+msgid "Show Map"
+msgstr "Картаны көрсету"
+
+msgid "Show sensitive information"
+msgstr "Маңызды ақпаратты көрсету"
+
+msgid "Show who marked these duplicates"
+msgstr "Бұл көшірмелерді кім белгілегенін көрсету"
+
+msgid "Sign in"
+msgstr "Кіру"
+
+msgid "Sign out"
+msgstr "Шығу"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Біреу бұл адам тірі деген ақпарат алған"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Біреу бұл адам қайтыс болды деген ақпарат алған"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Біреу бұл адам іздеуде деп хабарлаған"
+
+msgid "Someone is seeking information about this person"
+msgstr "Біреу бұл адам туралы ақпарат іздеп жүр"
+
+msgid "Source of this record"
+msgstr "Бұл дерек алынған дереккөз"
+
+msgid "Source of this record (required)"
+msgstr "Бұл дерек алынған дереккөз (міндетті)"
+
+msgid "Status"
+msgstr "Күйі"
+
+msgid "Status of this person"
+msgstr "Бұл адамның күйі"
+
+msgid "Street name"
+msgstr "Көше атауы"
+
+msgid "Street name only, no number"
+msgstr "Көшенің атауы ғана, нөмірсіз"
+
+msgid "Subscribe"
+msgstr "Жазылу"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "%(full_name)s туралы жаңартуларға жазылу"
+
+msgid "Subscribe to updates about this person"
+msgstr "Бұл адам туралы жаңартуларға жазылу"
+
+msgid "Switch to address"
+msgstr "Мекенжайына ауысу"
+
+msgid "Switch to lat/long"
+msgstr "Ені/ұзындығына ауысу"
+
+msgid "Tell us the status of this person"
+msgstr "Бұл адамның күйі туралы айтыңыз"
+
+msgid "Terms of Service"
+msgstr "Қызмет шарттары"
+
+msgid "The API key has been updated successfully."
+msgstr "API кілті сәтті жаңартылды."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Адамның есімі мен тегін беру міндетті талап. Кері оралып, қайта "
+"әрекеттеніңіз."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Бастапқы автордың аты міндетті талап. Кері оралып, қайта әрекеттеніңіз."
+
+msgid "The author has disabled notes on this record."
+msgstr "Автор бұл дерекке қатысты жазбаларды өшірген."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Автор бұл деректің күйін жаңартуды өшірген."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Берілген фотосурет тым үлкен. Шағындау нұсқасын жүктеңіз."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Бұл жазбаның спам ретінде белгіленуінің себебі:"
+
+msgid "The record cannot be extended."
+msgstr "Дерек мерзімі ұзартылмайды."
+
+msgid "The record has been deleted."
+msgstr "Дерек жойылған."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Сіз таңдаған күй сіздің осы адам екеніңізді меңзейді. Рас болса, 'Иә' "
+"пернесін таңдап, осы адаммен хабарласқаныңызды көрсетіңіз."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "%(token)s белгісі жарамсыз болған."
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "%(token)s белгісі жарамсыз болған."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Ұқсас атаумен %(num_results)s дерек бар."
+
+msgid "There are some existing records with similar names."
+msgstr "Ұқсас атаумен бірнеше деректер бар."
+
+msgid "There is one existing record with a similar name."
+msgstr "Ұқсас атаумен бір дерек бар."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Бұл бейнені қолдануда мәселе туындады. Басқа бейнені қолданып көріңіз."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Сіздің өтінішіңізді орындауда қателік орын алды. Қолайсыздық үшін кешірім"
+" өтінеміз. Әкімшілер мәселенің себебін анықтайды, өтінішіңіздің форматы "
+"дұрыс екенін тексеріңіз."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Бұл гаджеттер %(apache_link_html)sApache 2.0 license%(link_end_html)s "
+"аясында қол жетімді."
+
+msgid "This is a new record."
+msgstr "Бұл жаңа дерек."
+
+msgid "This link is invalid."
+msgstr "Бұл сілтеме жарамсыз."
+
+msgid "This note has been marked as spam."
+msgstr "Бұл жазба спам ретінде белгіленген."
+
+msgid "This note is inappropriate."
+msgstr "Бұл жазба қолайсыз."
+
+msgid "This note is incorrect or untrue."
+msgstr "Бұл жазба дұрыс емес немесе жалған."
+
+msgid "This note is spam."
+msgstr "Бұл жазба спам."
+
+msgid "This person has been in contact with someone"
+msgstr "Бұл адам біреумен хабарласқан"
+
+msgid "This person has posted a message"
+msgstr "Бұл адам хабар жіберген."
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Бұл адамның жазбасы жоқ немесе жойылған."
+
+msgid "This record has served its purpose."
+msgstr "Бұл жазба мақсатын орындады."
+
+msgid "This record is a duplicate of"
+msgstr "Бұл дерек келесі деректің көшірмесі:"
+
+msgid "This record is copied from another source."
+msgstr "Бұл дерек басқа дереккөзден көшірілген."
+
+msgid "This record is inappropriate."
+msgstr "Бұл дерек қолайсыз."
+
+msgid "This record is spam."
+msgstr "Бұл дерек - спам."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Бұл дерекқор қазір сынақ режимінде. Сынақ режимі кезінде 6 сағат бұрын "
+"жазылған деректер жойылады."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"Бұл жазбаға фотосуретті бекіту үшін, жүктеңіз немесе URL мекенжайын "
+"енгізіңіз."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Деректер жинағын жою үшін, Адам Іздеу қызметін өзіңіздің жұмыс "
+"үстеліңізден ашыңыз."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Жазылымды тоқтату үшін, мына сілтемені басыңыз"
+
+msgid "To view or add information, select a name below."
+msgstr "Ақпаратты көру үшін немесе қосу үшін, төмендегі атты таңдаңыз."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Мекенжайды теріп жазып немесе төмендегі картаны ашып, аймақты картадан "
+"басып көрсетіңіз."
+
+msgid "Type an address."
+msgstr "Мекенжайды теріп жазыңыз."
+
+msgid "Type the two words:"
+msgstr "Екі сөзді теріп жазыңыз:"
+
+msgid "Type what you hear:"
+msgstr "Естігеніңізді  теріп жазыңыз:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "Түпнұсқа деректің URL мекенжайы"
+
+msgid "Unspecified"
+msgstr "Анықталмаған"
+
+msgid "Update an existing key"
+msgstr "Бар кілтті жаңарту"
+
+msgid "Upload"
+msgstr "Жүктеу"
+
+msgid "Upload notes in CSV format"
+msgstr "Жазбаларды CSV форматында жүктеңіз"
+
+msgid "Upload person records in CSV format"
+msgstr "Адам туралы деректерді CSV форматында жүктеңіз"
+
+msgid "Upload your CSV file below"
+msgstr "CSV файлыңызды төменде жүктеңіз"
+
+msgid "View the record"
+msgstr "Жазбаны көріңіз"
+
+msgid "We have nothing matching your search."
+msgstr "Іздегеніңізге сәйкес ешнәрсе табылмады."
+
+msgid "What is this person's name?"
+msgstr "Бұл адамның аты кім?"
+
+msgid "When should this record disappear?"
+msgstr "Бұл дерек қашан жойылуы қажет?"
+
+msgid "Where did this information come from?"
+msgstr "Бұл ақпарат қайдан алынды?"
+
+msgid "Where is this person from?"
+msgstr "Бұл адам қайдан?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr "Сынақ режимі кезінде 6 сағат бұрын жазылған деректер жойылады."
+
+msgid "Yes"
+msgstr "Иә"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Иә, дерек авторынан жазбаларды өшіруді өтініңіз"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Иә, дерек авторынан жазбаларды қосуды өтініңіз"
+
+msgid "Yes, delete the record"
+msgstr "Иә, деректі өшіріңіз"
+
+msgid "Yes, disable notes on this record."
+msgstr "Иә, дерек туралы жазбаларды өшіріңіз."
+
+msgid "Yes, extend the record"
+msgstr "Иә, дерек мерзімін ұзартыңыз"
+
+msgid "Yes, restore this record"
+msgstr "Иә, бұл деректі қалпына келтіріңіз"
+
+msgid "Yes, these are the same person"
+msgstr "Иә, бұлар - бір адам"
+
+msgid "Yes, update the note"
+msgstr "Иә, жазбаны жаңартыңыз"
+
+msgid "You are already subscribed. "
+msgstr "Сіз бұрыннан жазылғансыз. "
+
+msgid "You are already unsubscribed."
+msgstr "Сіз жазылымды тоқтаттыңыз."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr ""
+"Сіз қазір жүйеге %(begin_span_tag)s%(email)s%(end_span_tag)s ретінде "
+"кіріп отырсыз."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Сіз қазір жүйеге %(user_email)s ретінде кіріп отырсыз."
+
+msgid "You are not currently signed in."
+msgstr "Сіз қазір жүйеде емессіз."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Сізге жоюға дейін %(begin_tag)sжазбаны көруге%(end_tag)s болады."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Жазбаның толық нұсқасын %(view_url)s мекенжайынан көруге болады."
+
+msgid "You have successfully subscribed."
+msgstr "Сіздің жазылымыңыз сәтті орындалды."
+
+msgid "You have successfully unsubscribed."
+msgstr "Сіз жазылымды сәтті тоқтаттыңыз."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Сізге бұл хабарлама жіберілген себебі - сіз келесі адам туралы "
+"жаңартуларға жазылғансыз:\n"
+
+msgid "Your e-mail address"
+msgstr "Сіздің э-поштаңыздың мекенжайы"
+
+msgid "Your e-mail address:"
+msgstr "Сіздің э-поштаңыздың мекенжайы:"
+
+msgid "Your email"
+msgstr "Сіздің э-поштаңыз"
+
+msgid "Your name"
+msgstr "Сіздің атыңыз"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Сіздің атыңыз \"Сіз туралы\" бөлімі үшін қажет.  Кері оралып, қайта "
+"әрекеттеніңіз."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Сіздің атыңыз \"Дереккөз\" бөлімі үшін қажет.  Кері оралып, қайта "
+"әрекеттеніңіз."
+
+msgid "Your phone number"
+msgstr "Сіздің телефон нөміріңіз"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Өтінішіңіз сәтті қабылданды. Поштаңызды тексеріп, енгізілген url бойынша "
+"жазбаңызды қосқыңыз келетінін растаңыз."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбаңызды растаңыз"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr ""
+"[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбаның жойылғаны туралы "
+"хабарлама"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Адам Іздеу қызметі]  \"%(full_name)s\" туралы жазбаларды өшіру қажет пе?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбаларды қосу қажет пе?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Адам Іздеу қызметі]  \"%(full_name)s\" туралы жазбалар жайлы хабарлауды "
+"іске қосу"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбалар қазір қосылған."
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбалар іске қосылды."
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr ""
+"[Адам Іздеу қызметі] \"%(full_name)s\" туралы деректі қалпына келтіру "
+"жайлы хабарландыру"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Адам Іздеу қызметі] %(full_name)s күйі туралы жаңартулар"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Адам Іздеу қызметі] Сіз %(full_name)s күйінің жаңартуларына жазылдыңыз"
+
+msgid "female"
+msgstr "әйел"
+
+msgid "in test mode"
+msgstr "сынақ режимінде"
+
+msgid "male"
+msgstr "ер адам"
+
+msgid "on"
+msgstr "қосулы"
+
+msgid "other"
+msgstr "басқа"
+

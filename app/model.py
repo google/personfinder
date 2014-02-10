@@ -102,8 +102,13 @@ class Repo(db.Model):
     top-level entity, with no parent, whose existence just indicates the
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
+
     # No properties for now; only the key_name is significant.  The repository
     # title and other settings are all in ConfigEntry entities (see config.py).
+    # The per-repository 'deactivated' setting blocks UI and API access to the
+    # repository, replacing all its pages with a deactivation message.  The
+    # global 'launched_repos' setting is an ordered list of repository names
+    # that are publicized in the UI (navigation menu) and API (repo feed).
 
     @classmethod
     def list(cls):
@@ -112,9 +117,16 @@ class Repo(db.Model):
 
     @classmethod
     def list_active(cls):
-        """Returns a list of the active repository names."""
+        """Returns a list of the active (non-deactivated) repository names."""
         return [name for name in Repo.list()
                 if not config.get_for_repo(name, 'deactivated')]
+
+    @classmethod
+    def list_launched(cls):
+        """Returns a list of the launched (listed in menu) repository names."""
+        return [name for name in config.get('launched_repos', [])
+                if not config.get_for_repo(name, 'deactivated')]
+
 
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,
@@ -516,6 +528,20 @@ class Person(Base):
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)
 
+    def update_latest_status(self):
+        """Scans all notes on this Person and fixes latest_status if needed."""
+        status = None
+        status_source_date = None
+        for note in self.get_notes():
+            if note.status and not note.hidden:
+                status = note.status
+                status_source_date = note.source_date
+        if status != self.latest_status:
+            self.latest_status = status
+            self.latest_status_source_date = status_source_date
+            self.put()
+
+
 # Old indexing
 # TODO(ryok): This is obsolete. Remove it.
 prefix.add_prefix_properties(
@@ -667,6 +693,9 @@ class Authorization(db.Model):
     # If this flag is true, notes written with this authorization token are
     # allowed to have status == 'believed_dead'.
     believed_dead_permission = db.BooleanProperty()
+
+    # If this flag is true, this key can be used to get overall statistics.
+    stats_permission = db.BooleanProperty()
 
     # If this flag is False, the API access with this key won't be
     # allowed.

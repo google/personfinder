@@ -151,6 +151,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s မွတ္တမ္းမ်ား ေရြးခ်ယ္ထားသည္။\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        : %(full_name)s ႏွင့္ဆင္တူေသာ မွတ္တမ္းမ်ား။\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        \"%(query)s\" အတြက္ ရွာေဖြျခင္းရလဒ္မ်ား။\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -243,6 +273,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      : %(query)s အတြက္ ရလဒ္မရွိပါ။\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -256,6 +296,16 @@ msgstr ""
 "ေက်းဇူးၿပဳၿပီး %(website)sေပၚရွိ ထိုသူ၏profile စာမ်က္နွာကိုသြား၍ "
 "ထိုURLအား ဒီမွာcopyလုပ္ၿပီး၊ paste လုပ္ပါ။\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      %(expiry_date)s. အထိ မွတ္တမ္းအား သက္တမ္းတိုးထားလိုက္သည္။\n"
+"    "
 
 msgid ""
 "\n"
@@ -557,6 +607,23 @@ msgstr "results list ေခၚ ရလဒ္စာရင္း သို ့ျ�
 msgid "Back to start"
 msgstr "အစသို ့ျပန္သြားရန္။"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"သင္သည္ ဤမွတ္စုကုိ spamအျဖစ္ မွတ္သားျခင္းျဖင့္၊ ထိုမွတ္တမ္းသည္ default "
+"အေနျဖင့္ ေပ်ာက္ကြယ္သြားမည္ျဖစ္သည္။ ထို မွတ္စုသည္ "
+"မွတ္တမ္း၏အပုိင္းတစ္ခုအေနျဖင့္ ဆက္လက္ရွိေနမည္ျဖစ္ေသာ္လည္း  "
+"မွတ္စုပါအေၾကာင္းအရာအား ျပန္လည္ၾကည့္လုိပါက ကလစ္အပုိထပ္မံႏွိပ္ရန္ "
+"လုိအပ္ပါသည္။  အသံုးျပဳသူက မွတ္စုမွ ဤspam အမွတ္အသားကုိလဲ ဖယ္ရွားႏုိင္သည္။"
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"သင္သည္ ဤမွတ္စုကုိ spamအေနျဖင့္ မွတ္သားမထားပါက defaultအေနျဖင့္ မွတ္စုအား "
+"ျမင္ေတြ႕ရပါလိမ့္မည္။"
+
 msgid "CSV file"
 msgstr "CSV ဖိုင္။"
 
@@ -637,6 +704,12 @@ msgstr "ဤမွတ္တမ္းေပၚရွိ မွတ္စုမ်�
 msgid "Does this person have profile pages at other websites?"
 msgstr "အျခား၀က္ဗ္ဆိုက္မ်ားတြင္ ဤလူ၏ profile စာမ်က္ႏွာမ်ား ရွိပါသလား။"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"%(begin_link)sဤExcelပုံစံပြားကို%(end_link)s ေဒါင္းလုပ္ၿပီး၊ "
+"ဇယားကြက္အတန္း(rows)မ်ား ထည့္ပါ။"
+
 msgid "Download the sound as MP3"
 msgstr "အသံကို MP3 အေနျဖင့္ ေဒါင္းလုပ္ လုပ္ပါ။"
 
@@ -656,11 +729,6 @@ msgstr ""
 
 msgid "Enable notes on this record"
 msgstr "ဤမွတ္တမ္းေပၚတြင္ မွတ္စုမ်ားကို Enable လုပ္ပါ။"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"UTC ထဲတြင္ ရက္စြဲမ်ားအားလံုးသည္ yyyy-mm-ddThh:mm:ssZ ပံုစံ\n"
-"ျဖစ္ရန္၊ ေသခ်ာေအာင္လုပ္ပါ။"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ခုႏွစ္-လ-ရက္ (YYYY-MM-DD) ကို႐ိုက္ထည့္ပါ။"
@@ -851,6 +919,11 @@ msgstr ""
 "ဓာတ္ပံု\n"
 "၏ URL လိပ္စာအား ႐ိုက္ထည့္ပါ။"
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excelထဲတြင္, File &gt; Save as ......ကိုသုံးကာ... CSV ဖိုင္ပုံစံ(.csv) "
+"ျဖင့္သိမ္းထားပါ။"
+
 msgid "Incorrect.  Try again."
 msgstr "မမွန္ပါ။ ထပ္ႀကိဳးစားႀကည့္ပါ။"
 
@@ -874,6 +947,9 @@ msgstr "API ကီးမ်ား စာရင္း"
 
 msgid "Mark records as duplicate"
 msgstr "မွတ္တမ္းမ်ားကို မူရင္းမဟုတ္သည့္ အပြားမ်ားျဖစ္ေႀကာင္း မွတ္သားပါ။"
+
+msgid "Mark the selected records as duplicate"
+msgstr "ေရြးခ်ယ္ထားေသာ မွတ္တမ္းမ်ားကို မူပြားမ်ားအျဖစ္ သတ္မွတ္ပါ။"
 
 msgid "Message (required)"
 msgstr "မက္ေဆ့ Message  (လိုအပ္သည္။)"
@@ -944,11 +1020,15 @@ msgstr "မည္သည့္ မွတ္စုမွ တင္မထားပ�
 msgid "No person with ID: %(id_str)s."
 msgstr "%(id_str)s. အိုင္ဒီႏွင့္ ဘယ္သူ ့ကိုမွ မေတြ ့ပါ။"
 
-msgid "No results found for"
-msgstr "----အတြက္ ဘာ ရလဒ္ (results) မွ မရွိပါ။"
-
 msgid "No such Authorization entity."
 msgstr "ထုိကဲ့သုိ႔သီးျခား လုပ္ပုိင္ခြင့္မရွိပါ။"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"\"ကြၽႏု္ပ္တြင္ ဤလူေသဆံုးသည့္ သတင္းအခ်က္အလက္ကိုရရွိထားသည္\" ဟုဆုိေသာ "
+"မွတ္စုကုိတင္ရန္ လုပ္ပုိင္ခြင့္မရွိပါ။"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -963,6 +1043,9 @@ msgstr "မွတ္စုေရးသားသူ။"
 
 msgid "Note text"
 msgstr "မွတ္စု စာသား။"
+
+msgid "Notes for a possible duplicate"
+msgstr "ျဖစ္ႏိုင္ေျခရွိတဲ ့မူပြားအတြက္ မွတ္စု။"
 
 msgid "Notes for this person"
 msgstr "ဒီလူအတြက္ မွတ္စုမ်ား။"
@@ -997,6 +1080,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "မူရင္း ၀က္ဗ္ဆိုက္ နာမည္။"
+
+msgid "Other website"
+msgstr "တစ္ျခားဝက္ဘ္ဆုိဒ္"
 
 #, fuzzy
 msgid ""
@@ -1073,6 +1159,9 @@ msgstr "ေက်းဇူးၿပဳၿပီး အီးေမးလ္လ�
 msgid "Possible duplicates"
 msgstr "မူရင္းမဟုတ္သည့္ အပြားမ်ားျဖစ္ႏိုင္သည္။"
 
+msgid "Possible duplicates found."
+msgstr "ျဖစ္ႏိုင္ေျခရွိတဲ ့မူပြားပံုတူမ်ားကို ေတြ ့ရသည္။"
+
 msgid "Postal or zip code"
 msgstr "Postal or zip code ေခၚ စာတိုက္လိပ္စာ နံပါတ္။"
 
@@ -1106,9 +1195,6 @@ msgstr "ဖ်က္ျပစ္ရတဲ ့အေႀကာင္းအရာ�
 msgid "Reason for disabling notes:"
 msgstr "မွတ္စုမ်ားကို disable လုပ္ရတဲ့ အေႀကာင္းအရာ။"
 
-msgid "Records Similar to"
-msgstr "---ႏွင့္တူေသာ မွတ္တမ္းမ်ား။"
-
 msgid "Records selected"
 msgstr "ေရြးထားေသာ မွတ္တမ္းမ်ား။"
 
@@ -1133,9 +1219,6 @@ msgstr "မွတ္စုကို ျပပါ။"
 
 msgid "Save this record"
 msgstr "ဤမွတ္တမ္းကို သိမ္းထားပါ။"
-
-msgid "Search Results for"
-msgstr "---အတြက္ ရွာေဖြရသည့္ ရလဒ္ (Results) မ်ား။"
 
 msgid "Search for this person"
 msgstr "ဒီလူကို ရွာေဖြပါ။"
@@ -1166,6 +1249,9 @@ msgstr "ေျမပံုကို ျပပါ။"
 
 msgid "Show sensitive information"
 msgstr "အေရးႀကီးေသာ အခ်က္အလက္မ်ားကို ျပပါ။"
+
+msgid "Show who marked these duplicates"
+msgstr "ဤမိတၱဴမ်ားကုိ မည္သူကမွတ္ထားသည္ကုိ ျပပါ။"
 
 msgid "Sign in"
 msgstr "ဆိုင္းအင္ Sign in"
@@ -1228,14 +1314,8 @@ msgstr ""
 msgid "Switch to address"
 msgstr "လိပ္စာသို ့သြားပါ။"
 
-msgid "Switch to duplicate marking mode"
-msgstr "မူရင္းမဟုတ္သည့္အပြားမ်ားကို မွတ္သားသည့္ပံုစံသို ့ သြားပါ။"
-
 msgid "Switch to lat/long"
 msgstr "လတၱီတြဒ္၊ေလာင္ဂ်ီတြဒ္ မ်ည္းမ်ားသို ့ သြားပါ။"
-
-msgid "Switch to normal view mode"
-msgstr "ပံုမွန္ႀကည့္ရသည့္အေနအထား သို ့သြားပါ။"
 
 msgid "Tell us the status of this person"
 msgstr "ဒီလူ၏ေနာက္ဆံုး စေတးတပ္ အေနအထားကို ကၽြႏ္ုပ္တို ့အားေျပာျပပါ။"
@@ -1279,10 +1359,6 @@ msgstr "ဤမွတ္တမ္းအား ထပ္မံသက္တမ္�
 
 msgid "The record has been deleted."
 msgstr "မွတ္တမ္းအား ဖ်က္ထားလိုက္ၿပီ။"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "%(expiry_date)s. အထိ မွတ္တမ္းအား သက္တမ္းတိုးထားလိုက္သည္။"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1440,8 +1516,14 @@ msgstr "လက္ရွိကီးကုိ Updateလုပ္ရန္။"
 msgid "Upload"
 msgstr "Upload လုပ္ပါ။"
 
-msgid "Upload CSV files"
-msgstr "CSV ဖုိင္မ်ားအား Upload လုပ္တင္ပါ။"
+msgid "Upload notes in CSV format"
+msgstr "မွတ္စုမ်ားကို CSV ဖိုင္ပံုစံျဖင့္  Uploadလုပ္ပါ။"
+
+msgid "Upload person records in CSV format"
+msgstr "လူပုဂၢိဳလ္ဆိုင္ရာ မွတ္တမ္းမ်ားကို CSV ေဖာ္မက္ပံုစံႏွင့္ တင္ပါ။"
+
+msgid "Upload your CSV file below"
+msgstr "သင့္CSV ဖိုင္ကိုေအာက္တြင္Uploadလုပ္ပါ။"
 
 msgid "View the record"
 msgstr "မွတ္တမ္းကို ႀကည့္ပါ။"
@@ -1641,9 +1723,6 @@ msgstr ""
 "[Person Finder]  %(full_name)s ၏ ေနာက္ဆံုးအေနအထား အပ္ဒိတ္ (Status update)"
 " ကို သိရွိရန္ အီးေမးလ္လိပ္စာျဖင့္ သင္စာရင္းသြင္းထားသည္။ subscribe "
 "လုပ္ထားသည္။"
-
-msgid "at"
-msgstr "မွာ"
 
 msgid "female"
 msgstr "အမ်ိဳးသမီး"

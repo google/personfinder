@@ -149,6 +149,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s færslur valdar\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Færslur svipaðar: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Leitarniðurstöður fyrir: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -242,6 +272,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Engar niðurstöður fundust fyrir: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -256,6 +296,16 @@ msgstr ""
 "límdu\n"
 "      þá vefslóð hingað.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Færslan hefur verið framlengd til %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -525,7 +575,7 @@ msgid "Are you sure this note isn't spam?"
 msgstr "Ertu viss um að þessi athugasemd sé ekki rusl?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem rusl?"
+msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem ruslefni?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Ertu viss um að þú viljir endurheimta þessa færslu sem var eytt?"
@@ -551,6 +601,22 @@ msgstr "Til baka í niðurstöðulista"
 msgid "Back to start"
 msgstr "Til baka á byrjun"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Með því að merkja þessa athugasemd sem ruslefni felurðu hana sjálfgefið. "
+"Hún verður enn hluti af færslunni en þörf er á viðbótarsmelli til að "
+"skoða innihald athugasemdarinnar. Notendur munu einnig geta fjarlægt "
+"ruslmerkinguna af athugasemdinni."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Með því að taka rulsmerkinguna af athugasemdinni gerir þú hana sjálfgefið"
+" sýnilega."
+
 msgid "CSV file"
 msgstr "CSV-skrá"
 
@@ -571,7 +637,7 @@ msgid "Close window"
 msgstr "Loka glugga"
 
 msgid "Compare these records"
-msgstr "Bera þessar færslur saman"
+msgstr "Berðu færslurnar saman"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -627,11 +693,15 @@ msgstr "Gera athugasemdir við færsluna óvirkar"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Er þessi manneskja með prófílsíður á öðrum vefsvæðum?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Sæktu %(begin_link)sþetta Excel-sniðmát%(end_link)s og bættu línum við það"
+
 msgid "Download the sound as MP3"
 msgstr "Sækja hljóðið sem MP3"
 
 msgid "E-mail"
-msgstr "Tölvupóstur"
+msgstr "Netfang"
 
 msgid "E-mail address"
 msgstr "Netfang"
@@ -645,16 +715,11 @@ msgstr "Forritið fellt inn"
 msgid "Enable notes on this record"
 msgstr "Gera athugasemdir við færsluna virkar"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Gakktu úr skugga um að allar dagsetningar séu á sniðinu áááá-mm-"
-"ddTkk:mm:ssZ í UTC-tímabeltinu"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "Færðu inn sem ÁÁÁÁ-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Færðu inn eiginnöfn og ættarnafn manneskjunnar."
+msgstr "Færðu inn eiginafn og kenninafn manneskjunnar."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "Færðu inn nafn manneskjunnar eða hluta nafnsins."
@@ -666,7 +731,7 @@ msgid "Enter the person's name."
 msgstr "Færðu inn nafn manneskjunnar."
 
 msgid "Expiry"
-msgstr "Rennur út"
+msgstr "Gildistími"
 
 msgid "Expiry date of this record"
 msgstr "Fyrningardagsetning þessarar færslu"
@@ -676,7 +741,7 @@ msgid "Extend expiration date by %(extension_days)s days"
 msgstr "Lengja fyrningardagsetningu um %(extension_days)s daga"
 
 msgid "Family name"
-msgstr "Ættarnafn"
+msgstr "Kenninafn"
 
 msgid "Feed of updates about this person"
 msgstr "Straumur með fréttum af þessari manneskju"
@@ -711,7 +776,7 @@ msgstr "Google persónuleit"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Hefur þú talað persónulega við þessa manneskju EFTIR hamfarirnar? "
+"Hefur þú talað persónulega við þessa manneskju EFTIR atvikið? "
 "(nauðsynlegt)"
 
 msgid "Help"
@@ -821,6 +886,11 @@ msgstr ""
 "Ef þú átt mynd af þessari manneskju skaltu hlaða henni inn eða færa inn "
 "vefslóð hennar."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Í Excel skaltu nota File &gt; Save as... (Skrá &gt; Vista sem...) og "
+"vista á CSV-sniði (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Rangt. Reyndu aftur."
 
@@ -845,8 +915,11 @@ msgstr "Skoða forritaskilalykla"
 msgid "Mark records as duplicate"
 msgstr "Merkja færslur sem tvíteknar"
 
+msgid "Mark the selected records as duplicate"
+msgstr "Merkja valdar færslur sem tvítekningu"
+
 msgid "Message (required)"
-msgstr "Skilaboð (nauðsynlegt)"
+msgstr "Skilaboð (nauðsynleg)"
 
 msgid "Message is required. Please go back and try again."
 msgstr "Skilaboð eru nauðsynleg. Farðu til baka og reyndu aftur."
@@ -910,11 +983,15 @@ msgstr "Engar athugasemdir hafa verið birtar"
 msgid "No person with ID: %(id_str)s."
 msgstr "Engin manneskja með auðkennið: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Engar niðurstöður fundust fyrir"
-
 msgid "No such Authorization entity."
 msgstr "Engin slík sannvottunareigind."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Ekki heimild til að birta athugasemdir með stöðunni „Ég hef fengið "
+"upplýsingar um að þessi manneskja sé látin“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ekki heimild til að birta athugasemdir með stöðunni „believed_dead“."
@@ -927,6 +1004,9 @@ msgstr "Höfundur athugasemdar"
 
 msgid "Note text"
 msgstr "Texti athugasemdar"
+
+msgid "Notes for a possible duplicate"
+msgstr "Athugasemdir um hugsanlega tvítekningu"
 
 msgid "Notes for this person"
 msgstr "Athugasemdir fyrir þessa manneskju"
@@ -960,6 +1040,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Heiti upprunalegs vefsvæðis"
+
+msgid "Other website"
+msgstr "Annað vefsvæði"
 
 #, fuzzy
 msgid ""
@@ -1027,6 +1110,9 @@ msgstr "Skráðu gilt netfang."
 msgid "Possible duplicates"
 msgstr "Mögulegar tvítekningar"
 
+msgid "Possible duplicates found."
+msgstr "Hugsanleg tvítekning fannst."
+
 msgid "Postal or zip code"
 msgstr "Póstnúmer"
 
@@ -1060,9 +1146,6 @@ msgstr "Ástæða fyrir eyðingu:"
 msgid "Reason for disabling notes:"
 msgstr "Ástæða fyrir því að gera athugasemdir óvirkar:"
 
-msgid "Records Similar to"
-msgstr "Færslur svipaðar"
-
 msgid "Records selected"
 msgstr "Valdar færslur"
 
@@ -1085,9 +1168,6 @@ msgstr "Sýna athugasemd"
 
 msgid "Save this record"
 msgstr "Vista þessa færslu"
-
-msgid "Search Results for"
-msgstr "Leitarniðurstöður fyrir"
 
 msgid "Search for this person"
 msgstr "Leita að þessari manneskju"
@@ -1115,6 +1195,9 @@ msgstr "Sýna kort"
 
 msgid "Show sensitive information"
 msgstr "Sýna viðkvæmar upplýsingar"
+
+msgid "Show who marked these duplicates"
+msgstr "Sýna hver merkti þessar tvítekningar"
 
 msgid "Sign in"
 msgstr "Skrá inn"
@@ -1165,14 +1248,8 @@ msgstr "Gerast áskrifandi að fréttum af þessari manneskju"
 msgid "Switch to address"
 msgstr "Skipta yfir í heimilisfang"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Skipta yfir í merkingu tvítekninga"
-
 msgid "Switch to lat/long"
 msgstr "Skipta yfir í lengdar-/breiddargráðu"
-
-msgid "Switch to normal view mode"
-msgstr "Skipta yfir í venjulegt yfirlit"
 
 msgid "Tell us the status of this person"
 msgstr "Segðu okkur hver staða þessarar manneskju er"
@@ -1187,7 +1264,7 @@ msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
-"Eiginnafn og ættarnafn eru bæði nauðsynleg. Farðu til baka og reyndu "
+"Eiginnafn og kenninafn eru bæði nauðsynleg. Farðu til baka og reyndu "
 "aftur."
 
 msgid "The Original author's name is required.  Please go back and try again."
@@ -1210,10 +1287,6 @@ msgstr "Ekki er hægt að framlengja þessa færslu."
 
 msgid "The record has been deleted."
 msgstr "Færslunni hefur verið eytt."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Færslan hefur verið framlengd til %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1313,8 +1386,8 @@ msgstr ""
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
-"Til að hengja mynd við þessa athugasemd skatu hlaða henni inn eða slá inn"
-" vefslóð hennar."
+"Til að hengja mynd við þessa athugasemd skaltu hlaða henni inn eða slá "
+"inn vefslóð hennar."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr "Opnaðu Persónuleit í tölvunni til að eyða gögnunum þínum."
@@ -1348,7 +1421,7 @@ msgid "URL of original record"
 msgstr "Vefslóð upprunalegu færslunnar"
 
 msgid "Unspecified"
-msgstr "Ótilgreint"
+msgstr "Ótilgreind"
 
 msgid "Update an existing key"
 msgstr "Uppfæra fyrirliggjandi lykil"
@@ -1356,8 +1429,14 @@ msgstr "Uppfæra fyrirliggjandi lykil"
 msgid "Upload"
 msgstr "Hlaða inn"
 
-msgid "Upload CSV files"
-msgstr "Hlaða inn CSV-skrám"
+msgid "Upload notes in CSV format"
+msgstr "Hlaða inn athugasemdum á CSV-sniði"
+
+msgid "Upload person records in CSV format"
+msgstr "Hlaða niður færslum um einstaklinga á CSV-sniði"
+
+msgid "Upload your CSV file below"
+msgstr "Sendu CSV-skrána þína inn hér að neðan"
 
 msgid "View the record"
 msgstr "Skoða færsluna"
@@ -1529,9 +1608,6 @@ msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
-
-msgid "at"
-msgstr "kl."
 
 msgid "female"
 msgstr "kona"

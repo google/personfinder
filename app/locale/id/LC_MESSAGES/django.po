@@ -62,12 +62,12 @@ msgstr ""
 "\n"
 "%(author_name)s yang terhormat,\n"
 "\n"
-"Seorang pengguna meminta untuk mengaktifkan catatan dalam rekaman untuk\n"
+"Seorang pengguna meminta untuk mengaktifkan catatan pada rekaman untuk\n"
 "\"%(full_name)s\".\n"
 "\n"
 "Alamat email Anda tercatat sebagai pembuat rekaman ini.  Untuk "
 "mengaktifkan catatan\n"
-"dalam rekaman ini, ikuti tautan ini dalam waktu 3 hari:\n"
+"pada rekaman ini, ikuti tautan ini dalam waktu 3 hari:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -92,12 +92,12 @@ msgstr ""
 "\n"
 "%(author_name)s yang terhormat,\n"
 "\n"
-"Seorang pengguna meminta Anda menonaktifkan catatan dalam rekaman untuk\n"
+"Seorang pengguna meminta Anda menonaktifkan catatan pada rekaman untuk\n"
 "\"%(full_name)s\".\n"
 "\n"
 "Alamat email Anda tercatat sebagai pembuat rekaman ini. Untuk "
 "menonaktifkan catatan\n"
-"dalam rekaman ini, ikuti tautan ini dalam waktu 3 hari:\n"
+"pada rekaman ini, ikuti tautan ini dalam waktu 3 hari:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -116,7 +116,7 @@ msgstr ""
 "\n"
 "\n"
 "%(author_name)s yang terhormat,\n"
-"Anda baru saja memasukkan catatan dalam rekaman untuk \"%(full_name)s\"."
+"Anda baru saja memasukkan catatan pada rekaman untuk \"%(full_name)s\"."
 "  \n"
 "Untuk memublikasikan catatan Anda, ikuti tautan ini dalam waktu 3 hari:\n"
 "\n"
@@ -148,6 +148,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s rekaman dipilih\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Rekaman Mirip dengan: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Hasil Penelusuran untuk: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -162,7 +192,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Yakin ingin menonaktifkan catatan dalam \"%(full_name)s\"?\n"
+"      Yakin ingin menonaktifkan catatan pada \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -173,7 +203,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Yakin ingin menonaktifkan catatan dalam rekaman \"%(full_name)s\"?\n"
+"      Yakin ingin menonaktifkan catatan pada rekaman \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -183,7 +213,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Yakin ingin mengaktifkan catatan dalam \"%(full_name)s\"?\n"
+"      Yakin ingin mengaktifkan catatan pada \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -194,7 +224,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Yakin ingin memperpanjang tanggal kedaluwarsa untuk catatan "
+"      Yakin ingin memperpanjang tanggal kedaluwarsa untuk rekaman "
 "\"%(full_name)s\"?\n"
 "    "
 
@@ -204,7 +234,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Konfirmasi catatan Anda\n"
+"      Konfirmasikan catatan Anda\n"
 "    "
 
 msgid ""
@@ -215,7 +245,7 @@ msgid ""
 msgstr ""
 "\n"
 "      Jika Anda meneruskan penghapusan,\n"
-"      rekaman ini tidak lagi dapat ditelusuri atau dilihat di situs ini.\n"
+"      rekaman ini tidak dapat lagi ditelusuri atau dilihat di situs ini.\n"
 "    "
 
 #, python-format
@@ -237,6 +267,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Tidak ditemukan hasil untuk: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -251,6 +291,16 @@ msgstr ""
 "tempel\n"
 "      URL tersebut di sini.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Rekaman telah diperpanjang hingga %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -327,7 +377,7 @@ msgstr ""
 "di %(site_url)s.\n"
 "\n"
 "Kami memberitahukan penghapusan ini kepada Anda karena alamat email Anda\n"
-"tercatat sebagai penulis catatan dalam rekaman ini.\n"
+"tercatat sebagai penulis catatan pada rekaman ini.\n"
 
 #, python-format
 msgid ""
@@ -385,14 +435,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Saat ini catatan dinonaktifkan dalam rekaman untuk \"%(full_name)s\".  "
+"Saat ini catatan dinonaktifkan pada rekaman untuk \"%(full_name)s\".  "
 "Untuk melihat rekaman,\n"
 "ikuti tautan ini:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "Kami memberi tahu Anda karena alamat email Anda terkait dengan rekaman\n"
-"orang ini atau catatan dalam rekaman tersebut.\n"
+"orang ini atau catatan pada rekaman tersebut.\n"
 
 #, python-format
 msgid ""
@@ -407,14 +457,14 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Saat ini catatan diaktifkan dalam rekaman untuk \"%(full_name)s\".  Untuk"
-" melihat rekaman,\n"
+"Saat ini catatan diaktifkan pada rekaman untuk \"%(full_name)s\". Untuk "
+"melihat rekaman,\n"
 "ikuti tautan ini:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
 "Kami memberi tahu Anda karena alamat email Anda terkait dengan\n"
-"rekaman orang ini atau catatan dalam rekaman tersebut.\n"
+"rekaman orang ini atau catatan pada rekaman tersebut.\n"
 
 #, python-format
 msgid ""
@@ -436,7 +486,7 @@ msgstr ""
 "    %(record_url)s\n"
 "\n"
 "Kami memberi tahu Anda karena alamat email Anda terkait dengan\n"
-"rekaman orang ini atau dengan catatan dalam rekaman tersebut.\n"
+"rekaman orang ini atau dengan catatan pada rekaman tersebut.\n"
 
 #, python-format
 msgid ""
@@ -444,7 +494,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"Terdapat catatan baru dalam rekaman untuk \"%(full_name)s\".\n"
+"Terdapat catatan baru pada rekaman untuk \"%(full_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -458,7 +508,7 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Anda telah berlangganan catatan dalam \"%(full_name)s\".\n"
+"Anda telah berlangganan catatan tentang \"%(full_name)s\".\n"
 "\n"
 "Anda dapat melihat rekaman ini di\n"
 "\n"
@@ -518,13 +568,13 @@ msgid "Alternate names"
 msgstr "Nama alternatif"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Apakah Anda yakin catatan ini bukan spam?"
+msgstr "Yakin catatan ini bukan spam?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Apakah Anda yakin ingin menandai catatan ini sebagai spam?"
+msgstr "Yakin ingin menandai catatan ini sebagai spam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Apakah Anda yakin ingin memulihkan rekaman ini dari penghapusan?"
+msgstr "Yakin ingin memulihkan rekaman ini dari penghapusan?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Umpan Atom pembaruan tentang orang ini"
@@ -546,6 +596,22 @@ msgstr "Kembali ke daftar hasil"
 
 msgid "Back to start"
 msgstr "Kembali ke awal"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Dengan menandai catatan ini sebagai spam, Anda akan membuatnya "
+"tersembunyi secara default. Catatan ini masih menjadi bagian dari "
+"rekaman, tapi akan memerlukan klik tambahan untuk menampilkan konten "
+"catatan. Pengguna juga dapat menghapus tanda spam dari catatan ini."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Dengan menghapus tanda spam dari catatan ini, Anda akan membuatnya "
+"terlihat secara default."
 
 msgid "CSV file"
 msgstr "File CSV"
@@ -594,7 +660,7 @@ msgid "Currently tracking about %(num_people)s records."
 msgstr "Saat ini melacak sekitar %(num_people)s rekaman."
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Tanggal tidak boleh masa mendatang.  Kembali dan coba lagi."
+msgstr "Tanggal tidak boleh di masa mendatang. Kembali dan coba lagi."
 
 msgid "Date of birth"
 msgstr "Tanggal lahir"
@@ -618,10 +684,14 @@ msgid "Developers"
 msgstr "Pengembang"
 
 msgid "Disable notes on this record"
-msgstr "Nonaktifkan catatan dalam rekaman ini"
+msgstr "Nonaktifkan catatan pada rekaman ini"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr "Apakah orang ini memiliki laman profil di situs web lain?"
+msgstr "Apakah orang ini punya laman profil di situs web lain?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Unduh %(begin_link)stemplate Excel ini%(end_link)s dan tambahkan baris"
 
 msgid "Download the sound as MP3"
 msgstr "Unduh suara sebagai MP3"
@@ -639,10 +709,7 @@ msgid "Embedding the Application"
 msgstr "Menyematkan Aplikasi"
 
 msgid "Enable notes on this record"
-msgstr "Aktifkan catatan dalam rekaman ini"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Pastikan semua tanggal dalam format tttt-bb-hhTjj:mm:ddZ dalam UTC"
+msgstr "Aktifkan catatan pada rekaman ini"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Masukkan dengan format TTTT-BB-HH"
@@ -750,10 +817,10 @@ msgid "I do not want any more updates on this record."
 msgstr "Saya tidak menginginkan pembaruan lainnya untuk rekaman ini."
 
 msgid "I do not want my information online anymore."
-msgstr "Saya tidak ingin informasi saya tersedia secara online lagi."
+msgstr "Saya sudah tidak ingin informasi saya tersedia online."
 
 msgid "I have information about someone"
-msgstr "Saya memiliki informasi tentang seseorang"
+msgstr "Saya punya informasi tentang seseorang"
 
 msgid "I have reason to think this person is missing"
 msgstr "Saya ingin melaporkan bahwa orang ini hilang"
@@ -798,7 +865,7 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Jika Anda adalah pembuat catatan ini, periksa tautan di email untuk "
-"mengonfirmasi bahwa Anda ingin menonaktifkan catatan dalam rekaman ini. "
+"mengonfirmasi bahwa Anda ingin menonaktifkan catatan pada rekaman ini. "
 "Atau, tunggu hingga pembuat rekaman mengonfirmasi permintaan Anda."
 
 msgid ""
@@ -807,17 +874,22 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Jika Anda adalah pembuat catatan ini, periksa tautan di email untuk "
-"mengonfirmasi bahwa Anda ingin mengaktifkan catatan dalam rekaman ini. "
+"mengonfirmasi bahwa Anda ingin mengaktifkan catatan pada rekaman ini. "
 "Atau, tunggu hingga pembuat rekaman mengonfirmasi permintaan Anda."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Jika Anda memiliki foto orang ini, unggahlah atau masukkan alamat URL-nya."
+msgstr "Jika Anda punya foto orang ini, unggahlah atau masukkan alamat URL-nya."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Di Excel, gunakan File &gt; Simpan sebagai... dan simpan dalam format CSV"
+" (.csv)"
 
 msgid "Incorrect.  Try again."
 msgstr "Salah. Coba lagi."
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "Alamat email tidak valid. Harap coba lagi."
+msgstr "Alamat email tidak valid. Coba lagi."
 
 msgid "Language selection"
 msgstr "Pemilihan bahasa"
@@ -837,11 +909,14 @@ msgstr "Cantumkan kunci API"
 msgid "Mark records as duplicate"
 msgstr "Tandai rekaman sebagai duplikat"
 
+msgid "Mark the selected records as duplicate"
+msgstr "Tandai data yang dipilih sebagai duplikat"
+
 msgid "Message (required)"
 msgstr "Pesan (wajib diisi)"
 
 msgid "Message is required. Please go back and try again."
-msgstr "Pesan harus diisi. Harap kembali dan coba lagi."
+msgstr "Pesan harus diisi. Kembali dan coba lagi."
 
 msgid "Missing person's current contact information"
 msgstr "Informasi kontak saat ini untuk si orang hilang"
@@ -874,7 +949,7 @@ msgid "Name (required)"
 msgstr "Nama (wajib diisi)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "Nama harus diisi. Harap kembali dan coba lagi."
+msgstr "Nama harus diisi. Kembali dan coba lagi."
 
 msgid "Neighborhood"
 msgstr "Lingkungan"
@@ -900,11 +975,15 @@ msgstr "Belum ada catatan yang diposkan"
 msgid "No person with ID: %(id_str)s."
 msgstr "Tidak ada orang dengan ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Tidak ada hasil yang ditemukan untuk"
-
 msgid "No such Authorization entity."
 msgstr "Tidak ada entitas Otorisasi seperti itu."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Tidak diizinkan mengeposkan catatan dengan status \"Saya menerima "
+"informasi bahwa orang ini meninggal\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Tidak diizinkan mengeposkan catatan dengan status \"believed_dead\"."
@@ -917,6 +996,9 @@ msgstr "Penulis catatan"
 
 msgid "Note text"
 msgstr "Teks catatan"
+
+msgid "Notes for a possible duplicate"
+msgstr "Catatan untuk kemungkinan duplikat"
 
 msgid "Notes for this person"
 msgstr "Catatan untuk orang ini"
@@ -946,10 +1028,13 @@ msgid ""
 "date.  Please go back and try again."
 msgstr ""
 "Tanggal pengeposan asli tidak dalam format TTTT-BB-HH, atau tanggal tidak"
-" ada. Harap kembali dan coba lagi."
+" ada. Kembali dan coba lagi."
 
 msgid "Original site name"
 msgstr "Nama situs asli"
+
+msgid "Other website"
+msgstr "Situs web lainnya"
 
 #, fuzzy
 msgid ""
@@ -976,7 +1061,7 @@ msgstr "Foto"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "Format foto yang diunggah tidak dikenali. Harap kembali dan coba lagi."
+msgstr "Format foto yang diunggah tidak dikenali. Kembali dan coba lagi."
 
 msgid "Physical characteristics"
 msgstr "Ciri-ciri fisik"
@@ -995,7 +1080,7 @@ msgid "Please check whether it matches the person you were planning to report."
 msgstr "Periksa apakah nama itu cocok dengan orang yang ingin Anda laporkan."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Konfirmasi alamat email Anda untuk berlangganan pembaruan"
+msgstr "Konfirmasikan alamat email Anda untuk berlangganan pembaruan"
 
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Masukkan alamat email Anda untuk berlangganan pembaruan"
@@ -1004,7 +1089,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Jelaskan mengapa menurut Anda mereka adalah orang yang sama"
 
 msgid "Please fill in all the required fields."
-msgstr "Harap lengkapi semua bidang wajib isi."
+msgstr "Lengkapi semua bidang yang wajib diisi."
 
 msgid "Please fill in your email address."
 msgstr "Cantumkan alamat email Anda."
@@ -1014,6 +1099,9 @@ msgstr "Berikan alamat email yang valid."
 
 msgid "Possible duplicates"
 msgstr "Kemungkinan duplikat"
+
+msgid "Possible duplicates found."
+msgstr "Kemungkinan duplikat ditemukan."
 
 msgid "Postal or zip code"
 msgstr "Kode pos atau ZIP"
@@ -1040,16 +1128,13 @@ msgid "Provided by:"
 msgstr "Disediakan oleh:"
 
 msgid "Province or state"
-msgstr "Provinsi atau negara bagian"
+msgstr "Provinsi/negara bagian"
 
 msgid "Reason for deletion:"
 msgstr "Alasan penghapusan:"
 
 msgid "Reason for disabling notes:"
 msgstr "Alasan menonaktifkan catatan:"
-
-msgid "Records Similar to"
-msgstr "Rekaman yang Mirip dengan"
 
 msgid "Records selected"
 msgstr "Rekaman yang dipilih"
@@ -1074,11 +1159,8 @@ msgstr "Buka catatan"
 msgid "Save this record"
 msgstr "Simpan data ini"
 
-msgid "Search Results for"
-msgstr "Hasil Penelusuran untuk"
-
 msgid "Search for this person"
-msgstr "Penelusuran untuk orang ini"
+msgstr "Cari orang ini"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
@@ -1101,6 +1183,9 @@ msgstr "Tampilkan Peta"
 
 msgid "Show sensitive information"
 msgstr "Menampilkan informasi sensitif"
+
+msgid "Show who marked these duplicates"
+msgstr "Tampilkan yang menandai ini sebagai duplikat"
 
 msgid "Sign in"
 msgstr "Masuk"
@@ -1151,14 +1236,8 @@ msgstr "Langganan pembaruan tentang orang ini"
 msgid "Switch to address"
 msgstr "Ubah ke alamat"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Ubah ke mode penandaan duplikat"
-
 msgid "Switch to lat/long"
 msgstr "Ubah ke Iintang/bujur"
-
-msgid "Switch to normal view mode"
-msgstr "Ubah ke mode tampilan normal"
 
 msgid "Tell us the status of this person"
 msgstr "Beri tahu kami status orang ini"
@@ -1172,16 +1251,16 @@ msgstr "Kunci API berhasil diperbarui."
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "Nama Depan dan Nama Keluarga harus diisi. Harap kembali dan coba lagi."
+msgstr "Nama Depan dan Nama Keluarga harus diisi. Kembali dan coba lagi."
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Nama penulis asli harus diisi. Harap kembali dan coba lagi."
+msgstr "Nama penulis asli harus diisi. Kembali dan coba lagi."
 
 msgid "The author has disabled notes on this record."
-msgstr "Penulis telah menonaktifkan catatan dalam rekaman ini."
+msgstr "Penulis telah menonaktifkan catatan pada rekaman ini."
 
 msgid "The author has disabled status updates on this record."
-msgstr "Penulis telah menonaktifkan pembaruan status dalam rekaman ini."
+msgstr "Penulis telah menonaktifkan pembaruan status pada rekaman ini."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Gambar yang diunggah terlalu besar. Unggah yang lebih kecil."
@@ -1194,10 +1273,6 @@ msgstr "Rekaman tidak dapat diperpanjang."
 
 msgid "The record has been deleted."
 msgstr "Rekaman telah dihapus."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Rekaman telah diperpanjang hingga %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1274,7 +1349,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "Entri orang ini tidak ada atau sudah dihapus."
 
 msgid "This record has served its purpose."
-msgstr "Rekaman ini tidak lagi diperlukan."
+msgstr "Rekaman ini tidak diperlukan lagi."
 
 msgid "This record is a duplicate of"
 msgstr "Rekaman ini duplikat dari"
@@ -1338,8 +1413,14 @@ msgstr "Perbarui kunci yang sudah ada"
 msgid "Upload"
 msgstr "Unggah"
 
-msgid "Upload CSV files"
-msgstr "Unggah file CSV"
+msgid "Upload notes in CSV format"
+msgstr "Unggah catatan dalam format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Unggah data orang dalam format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Unggah file CSV Anda di bawah"
 
 msgid "View the record"
 msgstr "Lihat rekaman"
@@ -1379,7 +1460,7 @@ msgid "Yes, delete the record"
 msgstr "Ya, hapus rekaman tersebut"
 
 msgid "Yes, disable notes on this record."
-msgstr "Ya, nonaktifkan catatan dalam rekaman ini."
+msgstr "Ya, nonaktifkan catatan pada rekaman ini."
 
 msgid "Yes, extend the record"
 msgstr "Ya, perpanjang rekaman"
@@ -1450,16 +1531,12 @@ msgstr "Nama Anda"
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
-msgstr ""
-"Nama harus diisikan dalam bagian \"Tentang Anda\". Harap kembali dan coba"
-" lagi."
+msgstr "Nama harus diisi pada bagian \"Tentang Anda\". Kembali dan coba lagi."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr ""
-"Nama Anda harus diisikan dalam bagian \"Sumber\". Harap kembali dan coba "
-"lagi."
+msgstr "Nama Anda harus diisi pada bagian \"Sumber\". Kembali dan coba lagi."
 
 msgid "Your phone number"
 msgstr "Nomor telepon Anda"
@@ -1474,7 +1551,7 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Konfirmasi catatan Anda dalam \"%(full_name)s\""
+msgstr "[Person Finder] Konfirmasikan catatan Anda pada \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
@@ -1482,11 +1559,11 @@ msgstr "[Person Finder] Pemberitahuan penghapusan untuk \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Nonaktifkan catatan dalam \"%(full_name)s\"?"
+msgstr "[Person Finder] Nonaktifkan catatan pada \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Aktifkan catatan dalam \"%(full_name)s\"?"
+msgstr "[Person Finder] Aktifkan catatan pada \"%(full_name)s\"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
@@ -1498,7 +1575,7 @@ msgstr "[Person Finder] Catatan saat ini dinonaktifkan untuk \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Catatan saat ini diaktifkan dalam \"%(full_name)s\""
+msgstr "[Person Finder] Catatan saat ini diaktifkan pada \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
@@ -1511,9 +1588,6 @@ msgstr "[Person Finder] Pembaruan status untuk %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Anda berlangganan pembaruan status untuk %(full_name)s"
-
-msgid "at"
-msgstr "di"
 
 msgid "female"
 msgstr "wanita"

@@ -743,7 +743,12 @@ table.counts {
   border-collapse: collapse;
 }
 
+table.counts tr.head {
+  background: #cdf;
+}
+
 table.counts th, table.counts td {
+  min-width: 3em;
   padding: 4px 8px;
   border: 1px solid #aaa;
 }
@@ -818,11 +823,21 @@ table.api-keys td.empty {
 .import .stats {
   background: #f4f4f4;
   border: 1px solid #dadada;
-  font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   padding: 1em;
 }
 
 .import .stats .errors {
   color: red;
+}
+
+.import .stats .error {
+  background: inherit;
+  margin: 0.5em 0;
+  padding: 0;
+  border: none;
+}
+
+.import .stats .error .message {
+  font-weight: bold;
 }

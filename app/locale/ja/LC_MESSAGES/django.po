@@ -141,6 +141,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s 件の記録が選択されています\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        「%(full_name)s」さんと類似する記録\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        「%(query)s」の検索結果\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -229,6 +259,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      「%(query)s」に一致する検索結果は見つかりませんでした\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -241,6 +281,16 @@ msgstr ""
 "      %(website)s 上のこの人のプロフィール ページにアクセスし、その URL を\n"
 "      コピーしてここに貼り付けてください。\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      記録の有効期限が %(expiry_date)s まで延長されました。\n"
+"    "
 
 msgid ""
 "\n"
@@ -525,6 +575,16 @@ msgstr "結果一覧に戻る"
 msgid "Back to start"
 msgstr "先頭に戻る"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr "このメモをスパムとして登録すると、このメモはデフォルトで非表示になります。引き続き記録の一部として保存されますが、このメモの内容を表示するには追加のクリックが必要になります。ユーザーはこのメモのスパム登録を解除することもできます。"
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "このメモのスパム登録を解除すると、このメモはデフォルトで表示されるようになります。"
+
 msgid "CSV file"
 msgstr "CSV ファイル"
 
@@ -599,6 +659,10 @@ msgstr "この記録のメモを無効にする"
 msgid "Does this person have profile pages at other websites?"
 msgstr "この人のプロフィールが掲載されているウェブサイトは他にありますか？"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "%(begin_link)sこの Excel テンプレート%(end_link)sをダウンロードして、テンプレートに行を追加します"
+
 msgid "Download the sound as MP3"
 msgstr "MP3 として音声をダウンロード"
 
@@ -616,9 +680,6 @@ msgstr "このアプリケーションの埋め込み"
 
 msgid "Enable notes on this record"
 msgstr "この記録のメモを有効にする"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "日付がすべて UTC で yyyy-mm-ddThh:mm:ssZ の形式であることを確認してください"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
@@ -733,10 +794,10 @@ msgid "I have received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した"
 
 msgid "I have received spam due to this note."
-msgstr "このメモが原因でスパムを受信した"
+msgstr "このメモが原因でスパムを受信したから"
 
 msgid "I have received spam."
-msgstr "スパムを受信した"
+msgstr "この記録が原因でスパムを受信したから"
 
 msgid "I prefer not to specify."
 msgstr "指定しない"
@@ -773,6 +834,9 @@ msgstr "このメモの作成者である場合は、この記録に関するメ
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してください。"
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "Excel で、[ファイル] &gt; [名前を付けて保存] をクリックし、CSV 形式（.csv）で保存します"
+
 msgid "Incorrect.  Try again."
 msgstr "正しくありません。もう一度お試しください。"
 
@@ -796,6 +860,9 @@ msgstr "API キーを一覧表示"
 
 msgid "Mark records as duplicate"
 msgstr "重複している記録として登録する"
+
+msgid "Mark the selected records as duplicate"
+msgstr "選択した記録を重複している記録として登録する"
 
 msgid "Message (required)"
 msgstr "メッセージ（必須）"
@@ -856,11 +923,13 @@ msgstr "メモはまだありません"
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
 
-msgid "No results found for"
-msgstr "次の人に一致する結果は見つかりませんでした:"
-
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr "状況が「この人が亡くなっているという情報を入手した」の場合はメモを投稿できません。"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "状況が「believed_dead」の場合はメモを投稿できません。"
@@ -873,6 +942,9 @@ msgstr "メモの作成者"
 
 msgid "Note text"
 msgstr "メモの本文"
+
+msgid "Notes for a possible duplicate"
+msgstr "重複している可能性のある記録のメモ"
 
 msgid "Notes for this person"
 msgstr "この人に関するメモ"
@@ -902,6 +974,9 @@ msgstr "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在
 
 msgid "Original site name"
 msgstr "元のサイト名"
+
+msgid "Other website"
+msgstr "その他のウェブサイト"
 
 #, fuzzy
 msgid ""
@@ -964,6 +1039,9 @@ msgstr "有効なメール アドレスを指定してください。"
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
+msgid "Possible duplicates found."
+msgstr "重複している可能性のある記録が見つかりました。"
+
 msgid "Postal or zip code"
 msgstr "郵便番号"
 
@@ -992,13 +1070,10 @@ msgid "Province or state"
 msgstr "都道府県"
 
 msgid "Reason for deletion:"
-msgstr "削除の理由:"
+msgstr "削除する理由:"
 
 msgid "Reason for disabling notes:"
 msgstr "メモを無効にする理由:"
-
-msgid "Records Similar to"
-msgstr "次と類似する記録:"
 
 msgid "Records selected"
 msgstr "選択されている記録"
@@ -1022,9 +1097,6 @@ msgstr "メモを表示"
 
 msgid "Save this record"
 msgstr "この記録を保存"
-
-msgid "Search Results for"
-msgstr "検索結果:"
 
 msgid "Search for this person"
 msgstr "この人を探す"
@@ -1050,6 +1122,9 @@ msgstr "地図を表示"
 
 msgid "Show sensitive information"
 msgstr "個人情報を表示"
+
+msgid "Show who marked these duplicates"
+msgstr "これらの重複している記録を登録した人を表示"
 
 msgid "Sign in"
 msgstr "ログイン"
@@ -1100,14 +1175,8 @@ msgstr "この人の新着情報を受け取る"
 msgid "Switch to address"
 msgstr "住所に切り替える"
 
-msgid "Switch to duplicate marking mode"
-msgstr "重複マーク モードに切り替える"
-
 msgid "Switch to lat/long"
 msgstr "緯度経度に切り替える"
-
-msgid "Switch to normal view mode"
-msgstr "通常の表示モードに切り替える"
 
 msgid "Tell us the status of this person"
 msgstr "この人の状況について教えてください"
@@ -1143,10 +1212,6 @@ msgstr "この記録は有効期限を延長できません。"
 
 msgid "The record has been deleted."
 msgstr "記録が削除されました。"
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "記録の有効期限が %(expiry_date)s まで延長されました。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1197,13 +1262,13 @@ msgid "This note has been marked as spam."
 msgstr "このメモはスパムとして登録されました。"
 
 msgid "This note is inappropriate."
-msgstr "このメモは不適切です。"
+msgstr "不適切なメモだから"
 
 msgid "This note is incorrect or untrue."
-msgstr "このメモは不正確です。"
+msgstr "不正確なメモだから"
 
 msgid "This note is spam."
-msgstr "このメモはスパムです。"
+msgstr "このメモがスパム情報だから"
 
 msgid "This person has been in contact with someone"
 msgstr "この人と連絡を取った人がいます"
@@ -1215,7 +1280,7 @@ msgid "This person's entry does not exist or has been deleted."
 msgstr "この人の記録は存在しないか、削除されました。"
 
 msgid "This record has served its purpose."
-msgstr "この記録は目的を果たしました。"
+msgstr "この記録が目的を果たしたから"
 
 msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
@@ -1224,10 +1289,10 @@ msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
 msgid "This record is inappropriate."
-msgstr "この記録は不適切です。"
+msgstr "この記録が不適切な情報だから"
 
 msgid "This record is spam."
-msgstr "この記録はスパムです。"
+msgstr "この記録がスパム情報だから"
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
@@ -1275,8 +1340,14 @@ msgstr "既存のキーを更新"
 msgid "Upload"
 msgstr "アップロード"
 
-msgid "Upload CSV files"
-msgstr "CSV ファイルをアップロード"
+msgid "Upload notes in CSV format"
+msgstr "CSV 形式でメモをアップロードします"
+
+msgid "Upload person records in CSV format"
+msgstr "CSV 形式で人物の記録をアップロードします"
+
+msgid "Upload your CSV file below"
+msgstr "以下の CSV ファイルをアップロードします"
 
 msgid "View the record"
 msgstr "記録を見る"
@@ -1435,9 +1506,6 @@ msgstr "[パーソンファインダー] %(full_name)s さんについての新�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
-
-msgid "at"
-msgstr "場所:"
 
 msgid "female"
 msgstr "女性"

@@ -96,6 +96,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -156,12 +177,26 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
 "and paste\n"
 "      that URL here.\n"
 "      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
 msgstr ""
 
 msgid ""
@@ -376,6 +411,16 @@ msgstr ""
 msgid "Back to start"
 msgstr ""
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+
 msgid "CSV file"
 msgstr ""
 
@@ -450,6 +495,10 @@ msgstr ""
 msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr ""
 
@@ -466,9 +515,6 @@ msgid "Embedding the Application"
 msgstr ""
 
 msgid "Enable notes on this record"
-msgstr ""
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
 msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
@@ -624,6 +670,9 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+
 msgid "Incorrect.  Try again."
 msgstr ""
 
@@ -646,6 +695,9 @@ msgid "List API keys"
 msgstr ""
 
 msgid "Mark records as duplicate"
+msgstr ""
+
+msgid "Mark the selected records as duplicate"
 msgstr ""
 
 msgid "Message (required)"
@@ -707,10 +759,12 @@ msgstr ""
 msgid "No person with ID: %(id_str)s."
 msgstr ""
 
-msgid "No results found for"
+msgid "No such Authorization entity."
 msgstr ""
 
-msgid "No such Authorization entity."
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
 msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
@@ -723,6 +777,9 @@ msgid "Note author"
 msgstr ""
 
 msgid "Note text"
+msgstr ""
+
+msgid "Notes for a possible duplicate"
 msgstr ""
 
 msgid "Notes for this person"
@@ -752,6 +809,9 @@ msgid ""
 msgstr ""
 
 msgid "Original site name"
+msgstr ""
+
+msgid "Other website"
 msgstr ""
 
 #, fuzzy
@@ -816,6 +876,9 @@ msgstr ""
 msgid "Possible duplicates"
 msgstr ""
 
+msgid "Possible duplicates found."
+msgstr ""
+
 msgid "Postal or zip code"
 msgstr ""
 
@@ -849,12 +912,6 @@ msgstr ""
 msgid "Reason for disabling notes:"
 msgstr ""
 
-msgid "Records Similar to"
-msgstr ""
-
-msgid "Records selected"
-msgstr ""
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
@@ -873,9 +930,6 @@ msgid "Reveal note"
 msgstr ""
 
 msgid "Save this record"
-msgstr ""
-
-msgid "Search Results for"
 msgstr ""
 
 msgid "Search for this person"
@@ -901,6 +955,9 @@ msgid "Show Map"
 msgstr ""
 
 msgid "Show sensitive information"
+msgstr ""
+
+msgid "Show who marked these duplicates"
 msgstr ""
 
 msgid "Sign in"
@@ -952,13 +1009,7 @@ msgstr ""
 msgid "Switch to address"
 msgstr ""
 
-msgid "Switch to duplicate marking mode"
-msgstr ""
-
 msgid "Switch to lat/long"
-msgstr ""
-
-msgid "Switch to normal view mode"
 msgstr ""
 
 msgid "Tell us the status of this person"
@@ -994,10 +1045,6 @@ msgid "The record cannot be extended."
 msgstr ""
 
 msgid "The record has been deleted."
-msgstr ""
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
 msgstr ""
 
 msgid ""
@@ -1127,7 +1174,13 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-msgid "Upload CSV files"
+msgid "Upload notes in CSV format"
+msgstr ""
+
+msgid "Upload person records in CSV format"
+msgstr ""
+
+msgid "Upload your CSV file below"
 msgstr ""
 
 msgid "View the record"
@@ -1286,9 +1339,6 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr ""
-
-msgid "at"
 msgstr ""
 
 msgid "female"

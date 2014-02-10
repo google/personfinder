@@ -146,6 +146,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            ᐅ%(dup_count)sᐊ réçörðš šéļéçţéð\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        ®éçörðš Šîmîļår ţö: ᐅ%(full_name)sᐊ\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Šéårçĥ ®éšûļţš ƒör: ᐅ%(query)sᐊ\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -237,6 +267,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Ñö réšûļţš ƒöûñð ƒör: ᐅ%(query)sᐊ\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -251,6 +291,16 @@ msgstr ""
 " åñð þåšţé\n"
 "      ţĥåţ Û®Ļ ĥéré.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Ţĥé réçörð ĥåš bééñ éxţéñðéð ţö ᐅ%(expiry_date)sᐊ.\n"
+"    "
 
 msgid ""
 "\n"
@@ -547,6 +597,20 @@ msgstr "Båçķ ţö réšûļţš ļîšţ"
 msgid "Back to start"
 msgstr "Båçķ ţö šţårţ"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Bý mårķîñĝ ţĥîš ñöţé åš šþåm, ýöû ŵîļļ måķé îţ ĥîððéñ bý ðéƒåûļţ. Îţ ŵîļļ"
+" šţîļļ bé å þårţ öƒ ţĥé réçörð, bûţ ŵîļļ réqûîré åñ éxţrå çļîçķ ţö vîéŵ "
+"ţĥé çöñţéñţš öƒ ţĥé ñöţé. Ûšérš ŵîļļ åļšö bé åbļé ţö rémövé ţĥé šþåm mårķ"
+" ƒröm ţĥîš ñöţé."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "Bý ûñmårķîñĝ ţĥîš ñöţé åš šþåm, ýöû ŵîļļ måķé îţ vîšîbļé bý ðéƒåûļţ."
+
 msgid "CSV file"
 msgstr "ÇŠV ƒîļé"
 
@@ -621,6 +685,12 @@ msgstr "Ðîšåbļé ñöţéš öñ ţĥîš réçörð"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ðöéš ţĥîš þéršöñ ĥåvé þröƒîļé þåĝéš åţ öţĥér ŵébšîţéš¿"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Ðöŵñļöåð ᐅ%(begin_link)sᐊţĥîš Éxçéļ ţémþļåţéᐅ%(end_link)sᐊ åñð åðð röŵš "
+"ţö îţ"
+
 msgid "Download the sound as MP3"
 msgstr "Ðöŵñļöåð ţĥé šöûñð åš MÞ3"
 
@@ -638,9 +708,6 @@ msgstr "Émbéððîñĝ ţĥé Åþþļîçåţîöñ"
 
 msgid "Enable notes on this record"
 msgstr "Éñåbļé ñöţéš öñ ţĥîš réçörð"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Éñšûré åļļ ðåţéš åré îñ ýýýý-mm-ððŢĥĥ:mm:ššŽ ƒörmåţ îñ ÛŢÇ"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Éñţér åš ÝÝÝÝ-MM-ÐÐ"
@@ -807,6 +874,9 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Îƒ ýöû ĥåvé å þĥöţö öƒ ţĥîš þéršöñ, ûþļöåð îţ ör éñţér îţš Û®Ļ åððréšš."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "Îñ Éxçéļ, ûšé Fîļé &gt; Šåvé åš... åñð šåvé îñ ÇŠV ƒörmåţ (.çšv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Îñçörréçţ.  Ţrý åĝåîñ."
 
@@ -830,6 +900,9 @@ msgstr "Ļîšţ ÅÞÎ ķéýš"
 
 msgid "Mark records as duplicate"
 msgstr "Mårķ réçörðš åš ðûþļîçåţé"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Mårķ ţĥé šéļéçţéð réçörðš åš ðûþļîçåţé"
 
 msgid "Message (required)"
 msgstr "Méššåĝé (réqûîréð)"
@@ -894,11 +967,15 @@ msgstr "Ñö ñöţéš ĥåvé bééñ þöšţéð"
 msgid "No person with ID: %(id_str)s."
 msgstr "Ñö þéršöñ ŵîţĥ ÎÐ: ᐅ%(id_str)sᐊ."
 
-msgid "No results found for"
-msgstr "Ñö réšûļţš ƒöûñð ƒör"
-
 msgid "No such Authorization entity."
 msgstr "Ñö šûçĥ Åûţĥörîžåţîöñ éñţîţý."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Ñöţ åûţĥörîžéð ţö þöšţ ñöţéš ŵîţĥ ţĥé šţåţûš \"Î ĥåvé réçéîvéð "
+"îñƒörmåţîöñ ţĥåţ ţĥîš þéršöñ îš ðéåð\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ñöţ åûţĥörîžéð ţö þöšţ ñöţéš ŵîţĥ ţĥé šţåţûš \"béļîévéð_ðéåð\"."
@@ -911,6 +988,9 @@ msgstr "Ñöţé åûţĥör"
 
 msgid "Note text"
 msgstr "Ñöţé ţéxţ"
+
+msgid "Notes for a possible duplicate"
+msgstr "Ñöţéš ƒör å þöššîbļé ðûþļîçåţé"
 
 msgid "Notes for this person"
 msgstr "Ñöţéš ƒör ţĥîš þéršöñ"
@@ -944,6 +1024,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Örîĝîñåļ šîţé ñåmé"
+
+msgid "Other website"
+msgstr "Öţĥér ŵébšîţé"
 
 #, fuzzy
 msgid ""
@@ -1011,6 +1094,9 @@ msgstr "Þļéåšé þrövîðé åñ våļîð émåîļ åððréšš."
 msgid "Possible duplicates"
 msgstr "Þöššîbļé ðûþļîçåţéš"
 
+msgid "Possible duplicates found."
+msgstr "Þöššîbļé ðûþļîçåţéš ƒöûñð."
+
 msgid "Postal or zip code"
 msgstr "Þöšţåļ ör žîþ çöðé"
 
@@ -1044,9 +1130,6 @@ msgstr "®éåšöñ ƒör ðéļéţîöñ:"
 msgid "Reason for disabling notes:"
 msgstr "®éåšöñ ƒör ðîšåbļîñĝ ñöţéš:"
 
-msgid "Records Similar to"
-msgstr "®éçörðš Šîmîļår ţö"
-
 msgid "Records selected"
 msgstr "®éçörðš šéļéçţéð"
 
@@ -1069,9 +1152,6 @@ msgstr "®évéåļ ñöţé"
 
 msgid "Save this record"
 msgstr "Šåvé ţĥîš réçörð"
-
-msgid "Search Results for"
-msgstr "Šéårçĥ ®éšûļţš ƒör"
 
 msgid "Search for this person"
 msgstr "Šéårçĥ ƒör ţĥîš þéršöñ"
@@ -1097,6 +1177,9 @@ msgstr "Šĥöŵ Måþ"
 
 msgid "Show sensitive information"
 msgstr "Šĥöŵ šéñšîţîvé îñƒörmåţîöñ"
+
+msgid "Show who marked these duplicates"
+msgstr "Šĥöŵ ŵĥö mårķéð ţĥéšé ðûþļîçåţéš"
 
 msgid "Sign in"
 msgstr "Šîĝñ îñ"
@@ -1147,14 +1230,8 @@ msgstr "Šûbšçrîbé ţö ûþðåţéš åböûţ ţĥîš þéršöñ"
 msgid "Switch to address"
 msgstr "Šŵîţçĥ ţö åððréšš"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Šŵîţçĥ ţö ðûþļîçåţé mårķîñĝ möðé"
-
 msgid "Switch to lat/long"
 msgstr "Šŵîţçĥ ţö ļåţ/ļöñĝ"
-
-msgid "Switch to normal view mode"
-msgstr "Šŵîţçĥ ţö ñörmåļ vîéŵ möðé"
 
 msgid "Tell us the status of this person"
 msgstr "Ţéļļ ûš ţĥé šţåţûš öƒ ţĥîš þéršöñ"
@@ -1192,10 +1269,6 @@ msgstr "Ţĥé réçörð çåññöţ bé éxţéñðéð."
 
 msgid "The record has been deleted."
 msgstr "Ţĥé réçörð ĥåš bééñ ðéļéţéð."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Ţĥé réçörð ĥåš bééñ éxţéñðéð ţö ᐅ%(expiry_date)sᐊ."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1336,8 +1409,14 @@ msgstr "Ûþðåţé åñ éxîšţîñĝ ķéý"
 msgid "Upload"
 msgstr "Ûþļöåð"
 
-msgid "Upload CSV files"
-msgstr "Ûþļöåð ÇŠV ƒîļéš"
+msgid "Upload notes in CSV format"
+msgstr "Ûþļöåð ñöţéš îñ ÇŠV ƒörmåţ"
+
+msgid "Upload person records in CSV format"
+msgstr "Ûþļöåð þéršöñ réçörðš îñ ÇŠV ƒörmåţ"
+
+msgid "Upload your CSV file below"
+msgstr "Ûþļöåð ýöûr ÇŠV ƒîļé béļöŵ"
 
 msgid "View the record"
 msgstr "Vîéŵ ţĥé réçörð"
@@ -1508,9 +1587,6 @@ msgstr "[Þéršöñ Fîñðér] Šţåţûš ûþðåţé ƒör ᐅ%(full_name)
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Þéršöñ Fîñðér] Ýöû åré šûbšçrîbéð ţö šţåţûš ûþðåţéš ƒör ᐅ%(full_name)sᐊ"
-
-msgid "at"
-msgstr "åţ"
 
 msgid "female"
 msgstr "ƒémåļé"

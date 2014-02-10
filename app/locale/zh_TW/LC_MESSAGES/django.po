@@ -141,6 +141,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            已選取 %(dup_count)s 項紀錄\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        與「%(full_name)s」相似的紀錄\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        「%(query)s」的搜尋結果\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -229,6 +259,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      找不到與「%(query)s」相符的搜尋結果\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -241,6 +281,16 @@ msgstr ""
 "      請前往這位使用者在 %(website)s 的個人資料頁面，複製該頁面的網址，\n"
 "      然後再貼到這裡。\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      紀錄效期已延長至 %(expiry_date)s。\n"
+"    "
 
 msgid ""
 "\n"
@@ -440,14 +490,14 @@ msgstr ""
 "\n"
 "您已訂閱「%(full_name)s」這筆紀錄的註記。\n"
 "\n"
-"您可點擊以下連結查看這筆紀錄：\n"
+"如要查看這筆紀錄，請點選以下連結：\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
-"如要取消訂閱，請造訪以下連結：%(unsubscribe_link)s\n"
+"如要取消訂閱，請點選以下連結：%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "(按一下即可顯示)"
+msgstr "(按這裡查看)"
 
 msgid "(unknown)"
 msgstr "(不明)"
@@ -527,6 +577,16 @@ msgstr "回到結果清單"
 msgid "Back to start"
 msgstr "回到首頁"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr "如果將這個註記標示為垃圾內容，該註記將預設為隱藏。該註記仍會保留在紀錄中，但需要另行點擊才能查看註記內容。使用者也可將這個註記的垃圾內容標示移除。"
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "如果取消這個註記的垃圾內容標示，該註記將預設為顯示。"
+
 msgid "CSV file"
 msgstr "CSV 檔案"
 
@@ -559,7 +619,7 @@ msgid "Create a new record"
 msgstr "建立新紀錄"
 
 msgid "Create a new record for"
-msgstr "建立此項目的新紀錄："
+msgstr "為這個人建立一筆新紀錄："
 
 msgid "Create a new record for a missing person"
 msgstr "建立失蹤人士的新紀錄"
@@ -601,6 +661,10 @@ msgstr "停用這筆紀錄的註記功能"
 msgid "Does this person have profile pages at other websites?"
 msgstr "這個人在其他網站上有個人資料頁面嗎？"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "下載%(begin_link)s這個 Excel 範本%(end_link)s並在其中新增資料列"
+
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下載聲音"
 
@@ -619,9 +683,6 @@ msgstr "嵌入應用程式"
 msgid "Enable notes on this record"
 msgstr "啟用這筆紀錄的註記功能"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "確定所有日期格式皆為 yyyy-mm-ddThh:mm:ssZ，以世界標準時間為準"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 
@@ -629,7 +690,7 @@ msgid "Enter the person's given and family names."
 msgstr "輸入這個人的名字和姓氏。"
 
 msgid "Enter the person's name or parts of the name."
-msgstr "輸入這個人的姓名或是部分姓名。"
+msgstr "輸入這個人的全名或是部分姓名。"
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "輸入這個人的姓名、部分姓名或手機號碼。"
@@ -758,7 +819,7 @@ msgstr "身分識別資訊"
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
-msgstr "如果這些紀錄都不符合您要尋找的人，您可以在下方建立新紀錄。"
+msgstr "如果以上紀錄與您要回報的失蹤者不符，您可以在下方建立一筆新紀錄。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -774,6 +835,9 @@ msgstr "如果您是這則註記的發佈者，請至您的信箱找出系統寄
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "在 Excel 中依序按一下 [檔案] &gt; [另存新檔...]，然後以 CSV 格式 (.csv) 儲存。"
 
 msgid "Incorrect.  Try again."
 msgstr "錯誤，請再試一次。"
@@ -798,6 +862,9 @@ msgstr "列出 API 金鑰"
 
 msgid "Mark records as duplicate"
 msgstr "將紀錄標示為重複項目"
+
+msgid "Mark the selected records as duplicate"
+msgstr "將所選紀錄標示為重複"
 
 msgid "Message (required)"
 msgstr "訊息 (必填)"
@@ -858,11 +925,13 @@ msgstr "沒有已發佈的註記"
 msgid "No person with ID: %(id_str)s."
 msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
-msgid "No results found for"
-msgstr "找不到以下項目的搜尋結果："
-
 msgid "No such Authorization entity."
 msgstr "沒有這類授權實體。"
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr "未獲得相關授權，無法張貼狀態為「我收到消息指出這個人已死亡」的註記。"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "未經授權，無法發佈狀態為「believed_dead」的註記。"
@@ -875,6 +944,9 @@ msgstr "註記發佈者"
 
 msgid "Note text"
 msgstr "註記文字"
+
+msgid "Notes for a possible duplicate"
+msgstr "可能重複的紀錄相關注意事項"
 
 msgid "Notes for this person"
 msgstr "這位失蹤人士的相關註記"
@@ -904,6 +976,9 @@ msgstr "原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日
 
 msgid "Original site name"
 msgstr "原始網站名稱"
+
+msgid "Other website"
+msgstr "其他網站"
 
 #, fuzzy
 msgid ""
@@ -943,10 +1018,10 @@ msgid ""
 msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "請檢查其是否與您打算回報的人相符。"
+msgstr "請確認這筆記錄所描述的失蹤者，是否就是您要提供或打聽消息的人。"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "請確認電子郵件地址，以訂閱最新消息"
+msgstr "請確認電子郵件地址是否正確，以訂閱這個人的最新消息"
 
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "請輸入電子郵件地址，以訂閱最新消息"
@@ -965,6 +1040,9 @@ msgstr "請提供有效的電子郵件地址。"
 
 msgid "Possible duplicates"
 msgstr "可能的重複項目"
+
+msgid "Possible duplicates found."
+msgstr "發現可能重複的紀錄。"
 
 msgid "Postal or zip code"
 msgstr "郵遞區號"
@@ -999,9 +1077,6 @@ msgstr "刪除原因："
 msgid "Reason for disabling notes:"
 msgstr "停用註記功能的原因："
 
-msgid "Records Similar to"
-msgstr "此項目的相似紀錄："
-
 msgid "Records selected"
 msgstr "已選取的紀錄筆數："
 
@@ -1023,10 +1098,7 @@ msgid "Reveal note"
 msgstr "顯示註記"
 
 msgid "Save this record"
-msgstr "儲存此紀錄"
-
-msgid "Search Results for"
-msgstr "此項目的搜尋結果："
+msgstr "儲存這筆紀錄"
 
 msgid "Search for this person"
 msgstr "搜尋這個人"
@@ -1053,6 +1125,9 @@ msgstr "顯示地圖"
 msgid "Show sensitive information"
 msgstr "顯示機密資訊"
 
+msgid "Show who marked these duplicates"
+msgstr "顯示將這些內容標示為重複內容的使用者"
+
 msgid "Sign in"
 msgstr "登入"
 
@@ -1072,7 +1147,7 @@ msgid "Someone is seeking information about this person"
 msgstr "有人想知道這個人的下落"
 
 msgid "Source of this record"
-msgstr "此紀錄的出處"
+msgstr "這筆紀錄的來源"
 
 msgid "Source of this record (required)"
 msgstr "此紀錄的出處 (必填)"
@@ -1102,14 +1177,8 @@ msgstr "訂閱這個人的最新消息"
 msgid "Switch to address"
 msgstr "切換為地址模式"
 
-msgid "Switch to duplicate marking mode"
-msgstr "切換至重複標記模式"
-
 msgid "Switch to lat/long"
 msgstr "切換為經緯度模式"
-
-msgid "Switch to normal view mode"
-msgstr "切換至正常檢視模式"
 
 msgid "Tell us the status of this person"
 msgstr "請告訴我們這個人目前的狀況"
@@ -1146,10 +1215,6 @@ msgstr "紀錄效期無法延長。"
 msgid "The record has been deleted."
 msgstr "紀錄已刪除。"
 
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "紀錄效期已延長至 %(expiry_date)s。"
-
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -1166,13 +1231,13 @@ msgstr "憑證 %(token)s 無效。"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "相似姓名具有 %(num_results)s 筆紀錄。"
+msgstr "系統找到 %(num_results)s 筆姓名相似的紀錄。"
 
 msgid "There are some existing records with similar names."
-msgstr "相似姓名具有數筆紀錄。"
+msgstr "系統找到數筆姓名相似的紀錄。"
 
 msgid "There is one existing record with a similar name."
-msgstr "相似姓名具有一筆紀錄。"
+msgstr "系統找到一筆姓名相似的紀錄。"
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "處理圖片時發生問題，請使用不同的圖片。"
@@ -1223,7 +1288,7 @@ msgid "This record is a duplicate of"
 msgstr "此紀錄與下列項目重複："
 
 msgid "This record is copied from another source."
-msgstr "此紀錄是從另一個地方複製過來的。"
+msgstr "這筆紀錄是從另一個地方複製過來的。"
 
 msgid "This record is inappropriate."
 msgstr "這筆紀錄內容不當。"
@@ -1277,8 +1342,14 @@ msgstr "更新現有金鑰"
 msgid "Upload"
 msgstr "上傳"
 
-msgid "Upload CSV files"
-msgstr "上傳 CSV 檔案"
+msgid "Upload notes in CSV format"
+msgstr "上傳 CSV 格式的筆記"
+
+msgid "Upload person records in CSV format"
+msgstr "上傳 CSV 格式的個人紀錄"
+
+msgid "Upload your CSV file below"
+msgstr "上傳下列 CSV 檔案"
 
 msgid "View the record"
 msgstr "查看紀錄"
@@ -1437,9 +1508,6 @@ msgstr "[尋人服務]「%(full_name)s」的狀態更新"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[尋人服務] 您已訂閱「%(full_name)s」的狀態更新"
-
-msgid "at"
-msgstr "時間："
 
 msgid "female"
 msgstr "女性"

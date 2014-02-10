@@ -143,6 +143,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            Đã chọn %(dup_count)s hồ sơ\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Hồ sơ tương tự với: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Kết quả tìm kiếm cho: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -233,6 +263,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Không tìm thấy kết quả nào cho: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +287,16 @@ msgstr ""
 " đó sao chép và dán\n"
 "      URL đó tại đây.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Hồ sơ đã được gia hạn tới %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -500,7 +550,7 @@ msgid "Alternate family names"
 msgstr "Họ thay thế"
 
 msgid "Alternate given names"
-msgstr "Tên thánh thay thế"
+msgstr "Tên thay thế"
 
 msgid "Alternate names"
 msgstr "Tên thay thế"
@@ -534,6 +584,22 @@ msgstr "Trở lại danh sách kết quả"
 
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Bằng cách đánh dấu ghi chú này là spam, bạn sẽ làm ghi chú ẩn theo mặc "
+"định. Ghi chú vẫn sẽ là một phần của hồ sơ, nhưng sẽ cần nhấp chuột thêm "
+"để xem nội dung ghi chú. Người dùng cũng sẽ có thể xóa dấu spam khỏi ghi "
+"chú này."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Bằng cách bỏ đánh dấu ghi chú này là spam, bạn sẽ làm ghi chú hiển thị "
+"theo mặc định."
 
 msgid "CSV file"
 msgstr "Tệp CSV"
@@ -609,6 +675,10 @@ msgstr "Tắt ghi chú trên hồ sơ này"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Người này có trang tiểu sử trên các trang web khác không?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "Tải xuống %(begin_link)smẫu Excel này%(end_link)s và thêm hàng cho mẫu"
+
 msgid "Download the sound as MP3"
 msgstr "Tải xuống âm thanh dưới dạng MP3"
 
@@ -626,9 +696,6 @@ msgstr "Nhúng Ứng dụng"
 
 msgid "Enable notes on this record"
 msgstr "Bật ghi chú trên hồ sơ này"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Đảm bảo tất cả các ngày đều ở định dạng dd-mm-yyyyThh:mm:ssZ theo giờ UTC"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng DD-MM-YYYY"
@@ -684,7 +751,7 @@ msgid "Get an audio challenge"
 msgstr "Nhận thử thách âm thanh"
 
 msgid "Given name"
-msgstr "Tên thánh"
+msgstr "Tên"
 
 msgid "Google Person Finder"
 msgstr "Công cụ tìm kiếm người thân của Google"
@@ -797,6 +864,11 @@ msgstr ""
 "Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của "
 "ảnh."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Trong Excel, sử dụng Tệp &gt Lưu dưới dạng... và lưu ở định dạng CSV "
+"(.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Không đúng. Thử lại."
 
@@ -820,6 +892,9 @@ msgstr "Liệt kê các khóa API"
 
 msgid "Mark records as duplicate"
 msgstr "Đánh dấu hồ sơ là trùng lặp"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Đánh dấu các hồ sơ đã chọn là trùng lặp"
 
 msgid "Message (required)"
 msgstr "Tin nhắn (bắt buộc)"
@@ -886,14 +961,18 @@ msgstr "Chưa có ghi chú nào được đăng"
 msgid "No person with ID: %(id_str)s."
 msgstr "Không có người nào có ID: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Không tìm thấy kết quả cho"
-
 msgid "No such Authorization entity."
 msgstr "Không có tổ chức ủy quyền như vậy."
 
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Không được phép đăng ghi chú có trạng thái \"Tôi đã nhận được thông tin "
+"rằng người này đã qua đời\"."
+
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "Không được phép đăng ghi chú có trạng thái \"believed_dead\"."
+msgstr "Không được phép đăng ghi chú có tình trạng \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Không phải spam"
@@ -903,6 +982,9 @@ msgstr "Tác giả ghi chú"
 
 msgid "Note text"
 msgstr "Ghi chú"
+
+msgid "Notes for a possible duplicate"
+msgstr "Ghi chú về hồ sơ có thể trùng lặp"
 
 msgid "Notes for this person"
 msgstr "Ghi chú cho người này"
@@ -936,6 +1018,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Tên trang web gốc"
+
+msgid "Other website"
+msgstr "Trang web khác"
 
 #, fuzzy
 msgid ""
@@ -1004,6 +1089,9 @@ msgstr "Vui lòng cung cấp địa chỉ email hợp lệ."
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
 
+msgid "Possible duplicates found."
+msgstr "Đã tìm thấy hồ sơ có thể trùng lặp."
+
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
 
@@ -1037,9 +1125,6 @@ msgstr "Lý do xóa:"
 msgid "Reason for disabling notes:"
 msgstr "Lý do tắt ghi chú:"
 
-msgid "Records Similar to"
-msgstr "Hồ sơ tương tự với"
-
 msgid "Records selected"
 msgstr "Hồ sơ đã chọn"
 
@@ -1062,9 +1147,6 @@ msgstr "Tiết lộ ghi chú"
 
 msgid "Save this record"
 msgstr "Lưu hồ sơ này"
-
-msgid "Search Results for"
-msgstr "Kết quả tìm kiếm cho"
 
 msgid "Search for this person"
 msgstr "Tìm kiếm người này"
@@ -1091,6 +1173,9 @@ msgstr "Hiển thị Bản đồ"
 msgid "Show sensitive information"
 msgstr "Hiển thị thông tin nhạy cảm"
 
+msgid "Show who marked these duplicates"
+msgstr "Hiển thị người đã đánh dấu những nội dung trùng lặp này"
+
 msgid "Sign in"
 msgstr "Đăng nhập"
 
@@ -1116,7 +1201,7 @@ msgid "Source of this record (required)"
 msgstr "Nguồn của hồ sơ này (bắt buộc)"
 
 msgid "Status"
-msgstr "Trạng thái"
+msgstr "Tình trạng"
 
 msgid "Status of this person"
 msgstr "Tình trạng của người này"
@@ -1140,14 +1225,8 @@ msgstr "Đăng ký các cập nhật về người này"
 msgid "Switch to address"
 msgstr "Chuyển sang địa chỉ"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Chuyển sang chế độ đánh dấu trùng lặp"
-
 msgid "Switch to lat/long"
 msgstr "Chuyển sang vĩ độ/kinh độ"
-
-msgid "Switch to normal view mode"
-msgstr "Chuyển sang chế độ xem bình thường"
 
 msgid "Tell us the status of this person"
 msgstr "Hãy cho chúng tôi biết tình trạng của người này"
@@ -1170,7 +1249,7 @@ msgid "The author has disabled notes on this record."
 msgstr "Tác giả đã tắt ghi chú trên hồ sơ này."
 
 msgid "The author has disabled status updates on this record."
-msgstr "Tác giả đã tắt cập nhật trạng thái trên hồ sơ này."
+msgstr "Tác giả đã tắt cập nhật tình trạng trên hồ sơ này."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ảnh đã cung cấp quá lớn. Hãy tải lên một ảnh nhỏ hơn."
@@ -1184,16 +1263,12 @@ msgstr "Không thể gia hạn hồ sơ."
 msgid "The record has been deleted."
 msgstr "Hồ sơ này đã bị xóa."
 
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Hồ sơ đã được gia hạn tới %(expiry_date)s."
-
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"Trạng thái bạn đã chọn cho biết bạn là người này. Nếu điều này đúng, vui "
+"Tình trạng bạn đã chọn cho biết bạn là người này. Nếu điều này đúng, vui "
 "lòng chọn 'Có' để cho biết bạn đã liên lạc với người này."
 
 #, python-format
@@ -1329,8 +1404,14 @@ msgstr "Cập nhật khóa hiện có"
 msgid "Upload"
 msgstr "Tải lên"
 
-msgid "Upload CSV files"
-msgstr "Tải lên tệp CSV"
+msgid "Upload notes in CSV format"
+msgstr "Tải ghi chú lên ở định dạng CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Tải lên hồ sơ cá nhân ở định dạng CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Tải lên tệp CSV của bạn ở bên dưới"
 
 msgid "View the record"
 msgstr "Xem hồ sơ"
@@ -1499,16 +1580,13 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Công cụ tìm kiếm người thân] Cập nhật trạng thái cho %(full_name)s"
+msgstr "[Công cụ tìm kiếm người thân] Cập nhật tình trạng cho %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Công cụ tìm kiếm người thân] Bạn đã được đăng ký các cập nhật trạng thái"
-" cho %(full_name)s"
-
-msgid "at"
-msgstr "lúc"
+"[Công cụ tìm kiếm người thân] Bạn đã được đăng ký nhận thông tin cập nhật"
+" về tình trạng cho %(full_name)s"
 
 msgid "female"
 msgstr "nữ"

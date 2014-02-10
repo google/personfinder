@@ -146,11 +146,41 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s registres seleccionats\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Registres similars a: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Resultats de la cerca per a: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu suprimir el registre de %(full_name)s?\n"
+"      Confirmeu que voleu suprimir  el registre de %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -235,6 +265,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      No s'han trobat resultats per a: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -247,6 +287,16 @@ msgstr ""
 "%(website)s. Aneu a la pàgina de perfil d'aquesta persona a %(website)s "
 "i, a continuació, copieu l'URL i enganxeu-lo aquí.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      El registre s'ha ampliat fins al dia %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -359,7 +409,7 @@ msgid ""
 msgstr ""
 "\n"
 "NOTA: si creieu que aquest registre s'ha suprimit per error, podeu "
-"restaurar-lo si seguiu aquest enllaç durant els propers "
+"restaurar-lo si seguiu aquest enllaç durant els pròxims "
 "%(days_until_deletion)s dies:\n"
 "\n"
 "    %(restore_url)s\n"
@@ -460,15 +510,15 @@ msgstr ""
 "\n"
 
 msgid "(click to reveal)"
-msgstr "(feu clic per mostrar)"
+msgstr "(feu clic per mostrar la informació)"
 
 msgid "(unknown)"
 msgstr "(desconegut)"
 
 msgid "A message for this person or others seeking this person"
 msgstr ""
-"Un missatge per a aquesta persona o per a altres persones que cerquin "
-"aquesta persona"
+"Escriviu un missatge per a aquesta persona o per a altres persones que "
+"l'estiguin cercant."
 
 msgid "A new API key has been created successfully."
 msgstr "S'ha creat una clau API nova correctament."
@@ -477,19 +527,19 @@ msgid "API Key Management"
 msgstr "Gestió de claus API"
 
 msgid "About 1 month (30 days) from now"
-msgstr "D'aquí a aproximadament 1 mes (30 dies)"
+msgstr "D'aquí a aproximadament un mes (30 dies)"
 
 msgid "About 1 year (360 days) from now"
-msgstr "D'aquí a aproximadament 1 any (360 dies)"
+msgstr "D'aquí a aproximadament un any (360 dies)"
 
 msgid "About 2 months (60 days) from now"
-msgstr "D'aquí a aproximadament 2 mesos (60 dies)"
+msgstr "D'aquí a aproximadament dos mesos (60 dies)"
 
 msgid "About 3 months (90 days) from now"
-msgstr "D'aquí a aproximadament 3 mesos (90 dies)"
+msgstr "D'aquí a aproximadament tres mesos (90 dies)"
 
 msgid "About 6 months (180 days) from now"
-msgstr "D'aquí a aproximadament 6 mesos (180 dies)"
+msgstr "D'aquí a aproximadament sis mesos (180 dies)"
 
 msgid "About Google Person Finder"
 msgstr "Sobre el Cercador de persones de Google"
@@ -541,6 +591,22 @@ msgstr "Torna a la llista de resultats"
 
 msgid "Back to start"
 msgstr "Torna a l'inici"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Si marqueu aquesta nota com a correu brossa, fareu que s'amagui de manera"
+" predeterminada. Continuarà sent part del registre, però caldrà fer un "
+"clic addicional per veure el contingut de la nota. Els usuaris també "
+"podran suprimir la marca de correu brossa de la nota."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Si anul·leu el marcatge d'aquesta nota com a correu brossa, fareu que "
+"sigui visible de manera predeterminada."
 
 msgid "CSV file"
 msgstr "Fitxer CSV"
@@ -618,6 +684,12 @@ msgstr "Desactiva les notes en aquest registre"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Aquesta persona té pàgines de perfil en altres llocs web?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Baixeu %(begin_link)saquesta plantilla d'Excel%(end_link)s i afegiu-hi "
+"files"
+
 msgid "Download the sound as MP3"
 msgstr "Baixa el so com a MP3"
 
@@ -636,13 +708,8 @@ msgstr "Inserció de l'aplicació"
 msgid "Enable notes on this record"
 msgstr "Activa les notes en aquest registre"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Assegureu-vos que totes les dates tinguin el format aaaa-mm-ddThh:mm:ssZ "
-"en UTC"
-
 msgid "Enter as YYYY-MM-DD"
-msgstr "Introduïu-la com a AAAA-MM-DD"
+msgstr "La data ha de tenir el format AAAA-MM-DD."
 
 msgid "Enter the person's given and family names."
 msgstr "Introduïu el nom i els cognoms de la persona."
@@ -666,7 +733,7 @@ msgstr "Data de caducitat d'aquest registre"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Amplia %(extension_days)s dies més la cada de caducitat"
+msgstr "Amplia %(extension_days)s dies la data de caducitat"
 
 msgid "Family name"
 msgstr "Cognom"
@@ -704,8 +771,8 @@ msgstr "Cercador de persones de Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Heu parlat personalment amb aquesta persona DESPRÉS del desastre? "
-"(obligatori)"
+"Heu parlat personalment amb aquesta persona DESPRÉS de la catàstrofe? "
+"(resposta obligatòria)"
 
 msgid "Help"
 msgstr "Ajuda"
@@ -723,10 +790,10 @@ msgid "Hide note"
 msgstr "Amaga la nota"
 
 msgid "Home Address"
-msgstr "Adreça particular"
+msgstr "Adreça"
 
 msgid "Home address"
-msgstr "Adreça particular"
+msgstr "Adreça"
 
 msgid "Home country"
 msgstr "País d'origen"
@@ -779,7 +846,7 @@ msgid "Identify who you are looking for"
 msgstr "Identifiqueu la persona que cerqueu."
 
 msgid "Identify who you have information about"
-msgstr "Identifiqueu la persona sobre la qual teniu informació."
+msgstr "Identifiqueu la persona de la qual teniu informació"
 
 msgid "Identifying information"
 msgstr "Informació d'identificació personal"
@@ -788,8 +855,8 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Si cap d'aquests registres no coincideix amb la persona que volíeu, podeu"
-" fer clic més avall per crear-ne un de nou."
+"Si cap d'aquests registres no coincideix amb la persona que cerqueu, "
+"podeu fer clic al botó que apareix més avall per crear-ne un de nou."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -814,6 +881,11 @@ msgstr ""
 "Si teniu una foto d'aquesta persona, pengeu-la o introduïu-ne l'adreça "
 "URL."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"A Excel, aneu a Fitxer &gt; Desa com a... i deseu-ho en format CSV format"
+" (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Incorrecte. Torneu-ho a provar."
 
@@ -837,6 +909,9 @@ msgstr "Mostra les claus API"
 
 msgid "Mark records as duplicate"
 msgstr "Marca els registres com a duplicats"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Marca els registres seleccionats com a duplicats"
 
 msgid "Message (required)"
 msgstr "Missatge (obligatori)"
@@ -903,11 +978,15 @@ msgstr "No s'ha publicat cap nota."
 msgid "No person with ID: %(id_str)s."
 msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
 
-msgid "No results found for"
-msgstr "No s'ha trobat cap resultat per a"
-
 msgid "No such Authorization entity."
 msgstr "No hi ha cap entitat d'autorització."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Sense autorització per publicar notes amb l'estat \"Se m'ha comunicat que"
+" aquesta persona ha mort\""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "No esteu autoritzat a publicar notes amb l'estat \"believed_dead\"."
@@ -920,6 +999,9 @@ msgstr "Autor de la nota"
 
 msgid "Note text"
 msgstr "Text de la nota"
+
+msgid "Notes for a possible duplicate"
+msgstr "Notes per a un possible duplicat"
 
 msgid "Notes for this person"
 msgstr "Notes per a aquesta persona"
@@ -953,6 +1035,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Nom del lloc original"
+
+msgid "Other website"
+msgstr "Un altre lloc web"
 
 #, fuzzy
 msgid ""
@@ -1021,6 +1106,9 @@ msgstr "Proporcioneu una adreça electrònica vàlida."
 msgid "Possible duplicates"
 msgstr "Possibles duplicats"
 
+msgid "Possible duplicates found."
+msgstr "S'han trobat possibles duplicats."
+
 msgid "Postal or zip code"
 msgstr "Codi postal"
 
@@ -1054,9 +1142,6 @@ msgstr "Motiu de la supressió:"
 msgid "Reason for disabling notes:"
 msgstr "Motiu per a la desactivació de les notes:"
 
-msgid "Records Similar to"
-msgstr "Registres semblants a"
-
 msgid "Records selected"
 msgstr "Registres seleccionats"
 
@@ -1079,9 +1164,6 @@ msgstr "Mostra la nota"
 
 msgid "Save this record"
 msgstr "Desa aquest registre"
-
-msgid "Search Results for"
-msgstr "Resultats de la cerca de"
 
 msgid "Search for this person"
 msgstr "Cerca aquesta persona"
@@ -1107,6 +1189,9 @@ msgstr "Mostra el mapa"
 
 msgid "Show sensitive information"
 msgstr "Mostra la informació confidencial"
+
+msgid "Show who marked these duplicates"
+msgstr "Mostra qui ha marcat aquests duplicats"
 
 msgid "Sign in"
 msgstr "Inicia la sessió"
@@ -1142,7 +1227,7 @@ msgid "Street name"
 msgstr "Carrer"
 
 msgid "Street name only, no number"
-msgstr "Només el nom del carrer, sense número"
+msgstr "Només el nom del carrer, sense el número"
 
 msgid "Subscribe"
 msgstr "Subscriviu-vos"
@@ -1152,25 +1237,19 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "Subscriviu-vos a les novetats sobre %(full_name)s."
 
 msgid "Subscribe to updates about this person"
-msgstr "Subscriviu-vos a les novetats sobre aquesta persona."
+msgstr "Subscriu-me a les novetats sobre aquesta persona"
 
 msgid "Switch to address"
 msgstr "Canvia a l'adreça"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Canvia al mode de marcatge de duplicats"
-
 msgid "Switch to lat/long"
 msgstr "Canvia a latitud/longitud"
 
-msgid "Switch to normal view mode"
-msgstr "Canvia al mode de visualització normal"
-
 msgid "Tell us the status of this person"
-msgstr "Digueu-nos quin és l'estat d'aquesta persona."
+msgstr "Indiqueu-nos l'estat de la persona"
 
 msgid "Terms of Service"
-msgstr "Condicions del servei"
+msgstr "Termes i condicions"
 
 msgid "The API key has been updated successfully."
 msgstr "La clau API s'ha actualitzat correctament."
@@ -1202,10 +1281,6 @@ msgstr "El registre no es pot ampliar."
 
 msgid "The record has been deleted."
 msgstr "S'ha suprimit el registre."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "El registre s'ha ampliat fins al dia %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1258,7 +1333,7 @@ msgstr ""
 "d'Apache 2.0%(link_end_html)s."
 
 msgid "This is a new record."
-msgstr "Es tracta d'un registre nou."
+msgstr "És un registre nou."
 
 msgid "This link is invalid."
 msgstr "Aquest enllaç no és vàlid."
@@ -1291,7 +1366,7 @@ msgid "This record is a duplicate of"
 msgstr "Aquest registre és un duplicat de"
 
 msgid "This record is copied from another source."
-msgstr "Es tracta d'un registre copiat d'un altre origen."
+msgstr "És un registre copiat d'un altre origen."
 
 msgid "This record is inappropriate."
 msgstr "Aquest registre és inadequat."
@@ -1324,8 +1399,8 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
-"Escriviu una adreça o bé obriu el mapa següent i feu clic al mapa per "
-"indicar la ubicació."
+"Escriviu una adreça o obriu el mapa que apareix a continuació i feu-hi "
+"clic per indicar la ubicació."
 
 msgid "Type an address."
 msgstr "Escriviu una adreça."
@@ -1351,8 +1426,14 @@ msgstr "Actualitza una clau existent"
 msgid "Upload"
 msgstr "Penja"
 
-msgid "Upload CSV files"
-msgstr "Penja els fitxers CSV"
+msgid "Upload notes in CSV format"
+msgstr "Penja notes en format CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Penja els registres de la persona en format CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Pengeu el fitxer CSV a continuació."
 
 msgid "View the record"
 msgstr "Mostra el registre"
@@ -1402,7 +1483,7 @@ msgid "Yes, restore this record"
 msgstr "Sí, restaura aquest registre"
 
 msgid "Yes, these are the same person"
-msgstr "Sí, es tracta de la mateixa persona"
+msgstr "Sí, són la mateixa persona"
 
 msgid "Yes, update the note"
 msgstr "Sí, actualitza la nota"
@@ -1533,9 +1614,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Cercador de persones] Esteu subscrit a les actualitzacions d'estat sobre"
 " %(full_name)s."
-
-msgid "at"
-msgstr "a les"
 
 msgid "female"
 msgstr "dona"

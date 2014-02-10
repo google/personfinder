@@ -34,11 +34,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
+"  Pou asire nòt yo sèlman aktive oswa dezaktive ak otorizsyon otè dosye "
+"a, nou pral voye yon mesaj bay otè dosye a. Si w se otè a, verify imèl ou"
+" apre ou klike sou bouton pi ba a.\n"
 "\n"
 "  "
 
@@ -60,16 +58,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dear %(author_name)s,\n"
-"\n"
-"A user has requested enabling notes on the record for\n"
-"\"%(full_name)s\".\n"
-"\n"
-"Your e-mail address is recorded as the author of this record.  To enable "
-"notes\n"
-"on this record, follow this link within 3 days:\n"
-"\n"
-"   %(confirm_url)s\n"
+"Chè %(author_name)s , te gen yon itilizatè ki mande pou aktive nòt sou "
+"dosye pou \" %(full_name)s \".  Se adrès imèl ou nou genyen kòm otè dosye"
+" sa a. Pou aktive nòt sou dosye sa a, swiv lyen sa a nan 3 jou: "
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -90,16 +82,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dear %(author_name)s,\n"
-"\n"
-"A user has requested that you disable notes on the record for\n"
-"\"%(full_name)s\".\n"
-"\n"
-"Your e-mail address is recorded as the author of this record.  To disable"
-" notes\n"
-"on this record, follow this link within 3 days:\n"
-"\n"
-"   %(confirm_url)s\n"
+"Chè %(author_name)s , te gen yon itilizatè ki mande pou dezaktive nòt sou"
+" dosye pou \" \" %(full_name)s \".  Se adrès imèl ou nou genyen kòm otè "
+"dosye sa a. Pou dezaktive nòt sou dosye sa a, swiv lyen sa a nan 3 jouu: "
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -115,11 +101,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dear %(author_name)s,\n"
-"You just entered a note on the record for \"%(full_name)s\".  \n"
-"To publish your note, follow this link within 3 days:\n"
-"\n"
-"   %(confirm_url)s\n"
+"Chè %(author_name)s , Ou fenk antre nan yon nòt sou dosye  pou \" "
+"%(full_name)s \". Yo pibliye nòt ou a, swiv lyen sa a nan 3 jou: "
+"%(confirm_url)s\n"
 "\n"
 
 #, python-format
@@ -130,8 +114,8 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
+"                    Atansyon: dosye sa a pral ekspire nan mwens pase "
+"%(expiration_days)s jou.\n"
 "                  "
 
 msgid ""
@@ -140,8 +124,39 @@ msgid ""
 "                  "
 msgstr ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
+"                    Atansyon: dosye sa a pral ekspire nan mwens pase yon "
+"jou.\n"
 "                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s dosye chwazi\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Dosye Menm jan ak: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Rezilta rechèch pou: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -150,7 +165,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"      Èske ou sèten ou vle efase dosye  pou \" %(full_name)s \"?\n"
 "    "
 
 #, python-format
@@ -160,7 +175,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"      Èske ou sèten ou vle dezaktive nòt sou \" %(full_name)s \"?\n"
 "    "
 
 #, python-format
@@ -171,8 +186,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
+"      Èske ou sèten ou vle dezaktive nòt sou dosye  \" %(full_name)s \"?\n"
 "    "
 
 #, python-format
@@ -182,7 +196,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"      Èske ou sèten ou vle aktive nòt sou \" %(full_name)s \"?\n"
 "    "
 
 #, python-format
@@ -193,8 +207,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Are you sure you want to extend the expiration for record "
-"\"%(full_name)s\"?\n"
+"      Èske ou sèten ou vle yon ekstansyon pou dat ekspirasyon  dosye \" "
+"%(full_name)s \"?\n"
 "    "
 
 msgid ""
@@ -203,7 +217,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Confirm your note\n"
+"      Konfime nòt ou\n"
 "    "
 
 msgid ""
@@ -213,8 +227,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      If you proceed with deletion,\n"
-"      this record will no longer be searchable or viewable on this site.\n"
+"      Si ou kontinye efase, moun p ap ka chèche ak gade dosye sa a nan "
+"sit sa a.\n"
 "    "
 
 #, python-format
@@ -227,10 +241,19 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      If you would like it permanently deleted,\n"
-"      please contact the original source.\n"
-"      You can view the original record at\n"
-"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"      Si ou ta renmen li efase nèt, tanpri kontakte sous orijinal la. Ou "
+"kapab wè dosye orijinal la nan %(begin_tag)s %(source_name)s %(end_tag)s "
+".\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Pa gen rezilta  pou: %(query)s\n"
 "    "
 
 #, python-format
@@ -244,13 +267,21 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      The URL you entered doesn't look like a valid %(website)s profile "
-"URL.\n"
-"      Please go to this person's profile page on %(website)s, then copy "
-"and paste\n"
-"      that URL here.\n"
+"      Adrès ou te mete a genlè pa yon adrèt pwofil  valab %(website)s UR."
+" Tanpri, ale nan paj pwofil moun sa a sou %(website)s , apresa kopye epi "
+"kole adrès la isit la.\n"
 "      "
 
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Dosye a te pwolonje pou %(expiry_date)s .\n"
+"    "
+
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
@@ -261,11 +292,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      This record is a copy of a record from another source.\n"
-"      You can delete the record here,\n"
-"      but please be aware that\n"
-"      we might later receive another copy of it from the original source."
-"\n"
+"      Dosye sa a se kopi dosye nan yon lòt sous. Ou ka efase dosye a la, "
+"men pa bliye pita nou ka resevwa yon lòt kope ki soti nan sous orijinal "
+"li.\n"
 "    "
 
 msgid ""
@@ -279,12 +308,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
+"    Pou asire nou se sèlman ak otorizsyon otè nòt yo dezaktive oswa "
+"aktive, nou pral voye yon mesaj bay otè nòt la. Si ou se otè a, tanpri "
+"verifye imèl ou apre ou klike sou bouton pi ba a.\n"
 "  "
 
 msgid ""
@@ -295,9 +321,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
+"  Dosye a ap toujou vizib sou sit sa a, men pesonn pa pral kapab mete "
+"plis nòt sou li.\n"
 "  "
 
 msgid ""
@@ -308,9 +333,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  To post your note, please enter your e-mail address below and follow "
-"the\n"
-"  confirmation link that you will receive.\n"
+"  Pou w poste nòt ou a, tanpri antre nan adrès imèl ou anba a epi suiv "
+"lyen nan konfimasyon ou ap resevwa a.\n"
 "  "
 
 #, python-format
@@ -323,11 +347,9 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"A user has deleted the record for \"%(full_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
+"Yon itilizatè efase dosye  pou \" %(full_name)s \"nan %(site_url)s . Nou "
+"ap fè ou konnen desiziyon pou efase li a paske se adrès imèl ou ki kòm "
+"otè nòt dosye a.\n"
 
 #, python-format
 msgid ""
@@ -339,11 +361,9 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"A user has deleted the record for \"%(full_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of this record.\n"
+"Yon itilizatè efase dosye  pou \" %(full_name)s \"nan %(site_url)s . Nou "
+"ap fè ou konnen desiziyon pou efase li a paske se adrès imèl ou ki kòm "
+"otè nòt dosye a.\n"
 
 #, python-format
 msgid ""
@@ -352,8 +372,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently "
-"deleted.\n"
+"Apre %(days_until_deletion)s jou, dosy -a ap efase nèt.\n"
 
 #, python-format
 msgid ""
@@ -365,11 +384,9 @@ msgid ""
 "    %(restore_url)s\n"
 msgstr ""
 "\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
+"REMAK: Si ou kwè yo te dosye sa a efase pa aksidan, ou ka retabli li lè "
+"ou swiv lyen sa a nan pwochen %(days_until_deletion)s jou yo : "
+"%(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -384,14 +401,9 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
-"record,\n"
-"follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"We are notifying you because your e-mail address is associated with this\n"
-"person record or a note on the record.\n"
+"Nòt yo kounye a se dezaktive nan dosye  \" %(full_name)s \". Pou wè dosye"
+" a, swiv lyen sa a: %(record_url)s Nou ap fè ou konnen desiziyon pou "
+"efase li a paske se adrès imèl ou ki kòm otè nòt dosye a.\n"
 
 #, python-format
 msgid ""
@@ -406,14 +418,9 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
-"record,\n"
-"follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"We are notifying you because your e-mail address is associated with this\n"
-"person record or a note on the record.\n"
+"Nòt yo kounye a se dezaktive nan dosye  \" %(full_name)s \". Pou wè dosye"
+" a, swiv lyen sa a: %(record_url)s Nou ap fè ou konnen desiziyon pou "
+"efase li a paske se adrès imèl ou ki kòm otè nòt dosye a.\n"
 
 #, python-format
 msgid ""
@@ -428,14 +435,9 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"The author of the record for \"%(full_name)s\"\n"
-"(which was previously deleted) has restored the record.  To view the\n"
-"record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"We are notifying you because your e-mail address is associated with this\n"
-"person record or a note on the record.\n"
+"Otè dosye sa a se\" %(full_name)s te \"(ki te deja efase) retabli dosye "
+"a. Pou wè dosyea, swiv lyen sa a: %(record_url)s Nou ap fè ou konnen "
+"desiziyon pou efase li a paske se adrès imèl ou ki kòm otè nòt dosye a.\n"
 
 #, python-format
 msgid ""
@@ -443,7 +445,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"There is a new note on the record for \"%(full_name)s\".\n"
+"Gen yon nouvo nòt sou dosye \" %(full_name)s \".\n"
 
 #, python-format
 msgid ""
@@ -457,16 +459,11 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"You have subscribed to notes on \"%(full_name)s\".\n"
-"\n"
-"You can view this record at\n"
-"\n"
-"     %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+"Ou te enskri nan nòt sou \" %(full_name)s \". Ou kapab wè dosye sa a nan "
+"%(view_url)s Pou koupe abònman, swiv lyen sa a: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
-msgstr "(klike a montre)"
+msgstr "(klike pou  montre)"
 
 msgid "(unknown)"
 msgstr "(enkoni)"
@@ -475,61 +472,61 @@ msgid "A message for this person or others seeking this person"
 msgstr "Yon mesaj pou moun sa a oswa pou lòt moun ki ap chechè moun sa a"
 
 msgid "A new API key has been created successfully."
-msgstr "A new API key has been created successfully."
+msgstr "Yon nouvo kle API te kreye avèk siksè."
 
 msgid "API Key Management"
-msgstr "API Key Management"
+msgstr "Jesyon kle API"
 
 msgid "About 1 month (30 days) from now"
-msgstr "About 1 month (30 days) from now"
+msgstr "Nan apeprè 1 mwa (30 jou)"
 
 msgid "About 1 year (360 days) from now"
-msgstr "About 1 year (360 days) from now"
+msgstr "Nan apeprè 1 ane (360 jou)"
 
 msgid "About 2 months (60 days) from now"
-msgstr "About 2 months (60 days) from now"
+msgstr "Nan apeprè 2 mwa (60 jou)"
 
 msgid "About 3 months (90 days) from now"
-msgstr "About 3 months (90 days) from now"
+msgstr "Nan Apeprè 3 mwa (90 jou)"
 
 msgid "About 6 months (180 days) from now"
-msgstr "About 6 months (180 days) from now"
+msgstr "Nan apeprè 6 mwa (180 jou)"
 
 msgid "About Google Person Finder"
-msgstr "About Google Person Finder"
+msgstr "Konsènan Google Zouti Pou Chèche Moun"
 
 msgid "About you (required)"
 msgstr "Enfòmasyon sou ou menm (obligatwa)"
 
 msgid "Administration"
-msgstr "Administration"
+msgstr "Administrasyon"
 
 msgid "Age"
 msgstr "Laj"
 
 msgid "Alternate family names"
-msgstr "Non fanmi li"
+msgstr "Lòt non fanmi"
 
 msgid "Alternate given names"
-msgstr "Alternate given names"
+msgstr "Lòt non"
 
 msgid "Alternate names"
-msgstr "Non lari a"
+msgstr "Lòt non"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Are you sure this note isn't spam?"
+msgstr "Èske ou sèten nòt sa a se pa espam?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Are you sure you want to mark this note as spam?"
+msgstr "Èske ou sèten ou vle yo make nòt sa a kòm espam?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Are you sure you want to restore this record from deletion?"
+msgstr "Èske ou sèten ou vle retabli dosye sa a ki te efase?"
 
 msgid "Atom feed of updates about this person"
-msgstr "Ki dènye nouvèl sou moun sa"
+msgstr "Mete  dènye nouvèl sou moun sa"
 
 msgid "Author's e-mail address"
-msgstr "Adrès elektwonik otè a"
+msgstr "Adrès imèl otè a"
 
 msgid "Author's name"
 msgstr "Non otè a"
@@ -538,20 +535,33 @@ msgid "Author's phone number"
 msgstr "Nimewo telefòn otè a"
 
 msgid "Authorization key"
-msgstr "Authorization key"
+msgstr "Kle Otorizasyon"
 
 msgid "Back to results list"
-msgstr "Retounen sou komansman"
+msgstr "Retounen nan lis rezilta a"
 
 msgid "Back to start"
-msgstr "Retounen sou komansman"
+msgstr "Retounen nan komansman"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Depi ou make nòt sa a kòm espam,  w ap fè li kache pa defo. LI pral fè "
+"pati dosye a men w ap bezwen klike yon fwa an plis pou wè sa ki nan nòt "
+"la. Itilizatè yo ap ka retore mak espam sou nòt sa a tou."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "Depi ou make nòt sa a pou di li pa espam, w ap fè li vizib pa defo."
 
 msgid "CSV file"
-msgstr "CSV file"
+msgstr "Fichye CSV"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "Can not find note with id %(id)s"
+msgstr "Pa ka jwenn nòt ak id %(id)s"
 
 msgid "Cancel"
 msgstr "Anile"
@@ -560,119 +570,120 @@ msgid "City"
 msgstr "Vil"
 
 msgid "Click here to view results."
-msgstr "Peze la po ka wè resilta."
+msgstr "Peze la pou ka wè resilta."
 
 msgid "Close window"
 msgstr "Fèmen fenèt la"
 
 msgid "Compare these records"
-msgstr "Kompare dosye sa yo"
+msgstr "Konpare dosye sa yo"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Copier et coller le code HTML suivant pour mettre cet outil sur votre "
-"site web"
+msgstr "Kopye epi kole kòd HTML sa a pou mete zouti sa a sou sit ou a."
 
 msgid "Create a new API key"
-msgstr "Create a new API key"
+msgstr "Kreye yon nouvo kle API"
 
 msgid "Create a new record"
-msgstr "Create a new record"
+msgstr "Kreye yon nouvo dosye"
 
 msgid "Create a new record for"
 msgstr "Kreye yon nouvo dosye pou"
 
 msgid "Create a new record for a missing person"
-msgstr "Kreye yon nouvo dosye pou yon moun ki manke"
+msgstr "Kreye yon nouvo dosye pou yon moun yo pa ka jwenn"
 
 msgid "Crisis events"
-msgstr "Crisis events"
+msgstr "Evènman kriz"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
+msgstr "Kounye a la n ap swiv anviwon %(num_people)s dosye."
 
 msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Dat lan pa kapab nan lavni. Tanpri retounen e eseye ankò."
+msgstr "Dat lan pa kapab nan lavni. Tanpri retounen epi eseye ankò."
 
 msgid "Date of birth"
 msgstr "Dat nesans"
 
 msgid "Delete this record"
-msgstr "Sere dosye sa a"
+msgstr "Efase dosye sa a"
 
 msgid "Describe how to identify this person."
 msgstr "Dekri kouman ou ta idantifye moun sa a."
 
 msgid "Describe the physical characteristics of this person."
-msgstr "Dekri kouman ou ta idantifye moun sa a."
+msgstr "Dekri karakteristik fizik moun sa a."
 
 msgid "Description"
 msgstr "Deskripsyon"
 
 msgid "Desktop version"
-msgstr "Desktop version"
+msgstr "Vèsyon biwo"
 
 msgid "Developers"
-msgstr "Développeurs"
+msgstr "Devlopè"
 
 msgid "Disable notes on this record"
-msgstr "Disable notes on this record"
+msgstr "Dezaktive nòt sou dosye sa a"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr "Does this person have profile pages at other websites?"
+msgstr "Eske moun sa a gen paj pwofil nan lòt sit wèb ?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Telechanje %(begin_link)s  modèl Excel  sa a%(end_link)s epi ajoute ran "
+"ladan"
 
 msgid "Download the sound as MP3"
-msgstr "Telechaje nouvo enfomasyon"
+msgstr "Telechaje son an nan fòm mp3"
 
 msgid "E-mail"
-msgstr "Email"
+msgstr "Imèl"
 
 msgid "E-mail address"
-msgstr "Email"
+msgstr "Imèl"
 
 msgid "Edit"
-msgstr "Edit"
+msgstr "Modifye"
 
 msgid "Embedding the Application"
-msgstr "Intégration de l'application"
+msgstr "Entegrasyon aplikasyon an"
 
 msgid "Enable notes on this record"
-msgstr "Enable notes on this record"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
+msgstr "Aktive nòt sou dosye sa a"
 
 msgid "Enter as YYYY-MM-DD"
-msgstr "Mete tankou ANE–MWA-JOU"
+msgstr "Mete tankou AAAA-MM-JJ"
 
 msgid "Enter the person's given and family names."
 msgstr "Antre non moun nan ak tout non fanmi li"
 
 msgid "Enter the person's name or parts of the name."
-msgstr "Antre non moun nan oswa yo pati nan non li."
+msgstr "Antre non moun nan oswa yon pati nan non li."
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Antre non moun nan oswa yo pati nan non li."
+msgstr "Antre non moun nan, yon pati nan non li, oswa nimewo telefòn mobil li."
 
 msgid "Enter the person's name."
-msgstr "Antre non moun nan ak tout non fanmi li"
+msgstr "Antre non moun nan."
 
 msgid "Expiry"
-msgstr "Expiry"
+msgstr "Ekspirasyon"
 
 msgid "Expiry date of this record"
-msgstr "Sere dosye sa a"
+msgstr "Dat ekspirasyon dosye sa a"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Extend expiration date by %(extension_days)s days"
+msgstr "Pwolonje dat ekspirasyon an pa %(extension_days)s jou"
 
 msgid "Family name"
-msgstr "Non fanmi li"
+msgstr "Non fanmi"
 
 msgid "Feed of updates about this person"
-msgstr "Ki dènye nouvèl sou moun sa"
+msgstr "Mete dènye nouvèl sou moun sa"
 
 msgid "Follow this link to create a new record"
 msgstr "Suiv lyen sa pou kreye yon nouvo dosye"
@@ -681,99 +692,101 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
-"For phones other than mobile phones, please use 171 service provided by "
+"Pou telefòn ki pa telefòn mobil yo, tanpri itilize sèvis 171 ki ofri pa "
 "NTT."
 
 msgid "Full name"
-msgstr "Full name"
+msgstr "Non Konplè"
 
 msgid "Get a new challenge"
-msgstr "Get a new challenge"
+msgstr "Pran yon nouvo defi"
 
 msgid "Get a visual challenge"
-msgstr "Get a visual challenge"
+msgstr "Pran yon defi vizyèl"
 
 msgid "Get an audio challenge"
-msgstr "Get an audio challenge"
+msgstr "Pran yon defi odyo"
 
 msgid "Given name"
-msgstr "Premye non li"
+msgstr "Premye non"
 
 msgid "Google Person Finder"
-msgstr "Google Chèche Moun"
+msgstr "Zouti Pou Chèche Moun Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Eske ou pale ak moun sa a APRÈ tranbleman tè a? (obligatwa)"
+msgstr "Eske ou te pale ak moun sa a APRÈ dezas la ou menm?  (obligatwa)"
 
 msgid "Help"
-msgstr "Help"
+msgstr "Èd"
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
-msgstr "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Men yon %(begin_tag)s echantiyon fichye CSV %(end_tag)s ou ka modifye ak "
+"telechaje"
 
 msgid "Hide Map"
 msgstr "Kache kat la"
 
 msgid "Hide note"
-msgstr "Hide note"
+msgstr "Kache nòt la"
 
 msgid "Home Address"
-msgstr "Adrès lakay li"
+msgstr "Adrès kay la"
 
 msgid "Home address"
-msgstr "Adrès lakay"
+msgstr "Adrès kay la"
 
 msgid "Home country"
 msgstr "Peyi kote ou moun"
 
 msgid "How can this person be reached now?"
-msgstr "Kouman nou ka kominike ak moun sa konnyen a"
+msgstr "Kouman nou ka kominike ak moun sa a  kounye a?"
 
 msgid "How others who are interested in this person can contact you"
-msgstr "Kouman lòt moun ki enterese nan moun sa a ka kontakte ou"
+msgstr "Kouman lòt moun ki enterese a moun sa a ka kontakte ou"
 
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
 
 msgid "I am this person"
-msgstr "Mwen se moun sa"
+msgstr "Mwen se moun sa a"
 
 msgid "I do not want any more updates on this record."
-msgstr "I do not want any more updates on this record."
+msgstr "Mwen pa vle resevwa nouvèl sou dosye sa a ankò."
 
 msgid "I do not want my information online anymore."
-msgstr "I do not want my information online anymore."
+msgstr "Mwen pa vle enfòmasyon mwen sou entènèt ankò."
 
 msgid "I have information about someone"
 msgstr "Mwen genyen enfòmasyon sou yon moun"
 
 msgid "I have reason to think this person is missing"
-msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
+msgstr "Mwen gen rezon pou m kwè yo poko jwenn moun sa a"
 
 msgid "I have received information that this person is alive"
-msgstr "Mwen gen nouvèl ke moun sa an vi"
+msgstr "Mwen gen nouvèl moun sa a an vi"
 
 msgid "I have received information that this person is dead"
-msgstr "Mwen resevwa nouvèl ke moun sa mouri"
+msgstr "Mwen resevwa nouvèl  moun sa a mouri"
 
 msgid "I have received spam due to this note."
-msgstr "Mwen resevwa nouvèl ke moun sa mouri"
+msgstr "Nòt sa a te lakòz mwen resevwa espam"
 
 msgid "I have received spam."
-msgstr "Mwen resevwa nouvèl ke moun sa mouri"
+msgstr "Mwen te resevwa espam"
 
 msgid "I prefer not to specify."
-msgstr "I prefer not to specify."
+msgstr "Mwen prefere pa presize."
 
 msgid "I'm looking for someone"
 msgstr "Mwen ap chèche yon moun"
 
 msgid "Identify who you are looking for"
-msgstr "Idantifye ki moun ou ap chèche"
+msgstr "Idantifye moun ou ap chèche a"
 
 msgid "Identify who you have information about"
-msgstr "Idantifye sou ki moun ou genyen enfòmasyon"
+msgstr "Idantifye moun ou genyen enfòmasyon sou li a"
 
 msgid "Identifying information"
 msgstr "Enfomasyon pou idantifikasyon"
@@ -782,83 +795,91 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Si okenn nan dosye sa yo pa match moun ou an, ou met pezesou bouton anba "
-"la pou ou sa kreye yon nouvo dosye."
+"Si okenn nan dosye sa yo pa koresponn ak moun ou an, ou met klike sou "
+"bouton anba la pou ou sa kreye yon nouvo dosye."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
+"Si ou se otè nan nòt sa a, tanpri tcheke imèl ou pou yon lyen pou konfime"
+" ou vle dezaktive nòt sou dosye sa a. Sinon, tanpri, tann pou otè a dosye"
+" konfime demann ou an."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
+"Si ou se otè nan nòt sa a, tanpri tcheke imèl ou pou yon lyen pou konfime"
+" ou vle aktive nòt sou dosye sa a. Sinon, tanpri, tann pou otè a dosye "
+"konfime demann ou an."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Si ou genyen foto moun sa ajoute li oswa bay URL la."
+msgstr "Si ou genyen foto moun sa a, ajoute li oswa bay adrès entènèt li."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Nan Excel, itilize Fichye> Anrejistre Sou ... epi sovgade sou fòma CSV (."
+" CSV)"
 
 msgid "Incorrect.  Try again."
-msgstr "Incorrect.  Try again."
+msgstr "Li pa kòrèk. Eseye ankò."
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "Invalid e-mail address. Please try again."
+msgstr "Adrès imèl la pa valab . Tanpri eseye ankò."
 
 msgid "Language selection"
-msgstr "Language selection"
+msgstr "Chwazi lang"
 
 msgid "Last known location"
-msgstr "Denye kote li te ye"
+msgstr "Dènye kote li te ye"
 
 msgid "Link"
 msgstr "Lyen"
 
 msgid "Link to profile page"
-msgstr "Link to profile page"
+msgstr "Lyen pou paj pwofil"
 
 msgid "List API keys"
-msgstr "List API keys"
+msgstr "Mete lis kle API yo"
 
 msgid "Mark records as duplicate"
-msgstr "Make dosye kom doub"
+msgstr "Make dosye yo kom doub"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Make dosye chwazi yo kòm kopi"
 
 msgid "Message (required)"
 msgstr "Mesaj (obligatwa)"
 
 msgid "Message is required. Please go back and try again."
-msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+msgstr "Mesaj obligatwa. Tanpri retounen epi eseye ankò."
 
 msgid "Missing person's current contact information"
-msgstr "Ki dènye enfòmasyon ou genyen pou kontakte moun ki manke a"
+msgstr "Enfòmasyon kontak moun nou pa ka jwenn nan"
 
 msgid "Missing person's current e-mail address"
-msgstr "Email aktyèl moun ki manke a"
+msgstr "Adrès imèl moun nou pa ka jwenn nan genyen kounye a"
 
 msgid "Missing person's current phone number"
-msgstr "Telefòn aktyèl moun ki manke nan"
+msgstr "Telefòn moun nou paka jwenn nan genyen kounye a"
 
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"More information for developers can now be found "
-"%(developers_link_html)shere%(link_end_html)s."
+"W ap  jwenn plis enfòmasyon pou devlopè kounye a ka "
+"%(developers_link_html)s la a %(link_end_html)s ."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"Plis ke 100 rezilta; selman montre premye 100 rezilta yo. Eseye antre "
-"plis sou non an"
+"Plis ke 100 rezilta; nou sèlman montre premye 100 rezilta yo. Eseye antre"
+" plis pati non an"
 
 msgid "Name"
 msgstr "Non"
@@ -867,7 +888,7 @@ msgid "Name (required)"
 msgstr "Non (obligatwa)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+msgstr "Non obligatwa. Tanpri retounen epi eseye ankò."
 
 msgid "Neighborhood"
 msgstr "Katye"
@@ -877,59 +898,64 @@ msgstr "Non"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "No author email for record %(id)s."
+msgstr "Pa gen otè imèl pou dosye %(id)s ."
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr "No messages are found registered to the carrier's message board service."
+msgstr "Pa gen mesaj yo jwenn ki anrejistre nan sèvis mesaj konpayi a."
 
 #, python-format
 msgid "No note with ID: %(id_str)s."
-msgstr "No note with ID: %(id_str)s."
+msgstr "Pa gen nòt ak ID: %(id_str)s ."
 
 msgid "No notes have been posted"
-msgstr "No notes have been posted"
+msgstr "Pa gen nòt ki afiche"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "No person with ID: %(id_str)s."
-
-msgid "No results found for"
-msgstr "Pa gen okenn rezilta pou"
+msgstr "Pa gen moun ak idantite: %(id_str)s ."
 
 msgid "No such Authorization entity."
-msgstr "No such Authorization entity."
+msgstr "Pa gen okenn antite Otorizasyon."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr "Pa otorize to poste nòt ak dènye nouvèl \"Mwen gen nouvèl moun sa mouri\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Pa otorize pou poste nòt ak dènye nouvèl \"kwè_li_mouri\"."
 
 msgid "Not spam"
-msgstr "Not spam"
+msgstr "Pa espam"
 
 msgid "Note author"
-msgstr "Note author"
+msgstr "Otè nòt la"
 
 msgid "Note text"
-msgstr "Note text"
+msgstr "Tèks nòt"
+
+msgid "Notes for a possible duplicate"
+msgstr "Nòt pou yon posib kopi"
 
 msgid "Notes for this person"
-msgstr "Notes for this person"
+msgstr "Nòt pou moun sa a"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Number or range (e.g. 20-30)"
+msgstr "Nimewo oswa ran (egzanp 20-30)"
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
 msgstr ""
-"Or add to your site as a %(gadget_link_html)sGoogle "
-"Gadget%(link_end_html)s."
+"Oswa ajoute nan sit ou a kòm yon %(gadget_link_html)s Gadjèt Google "
+"%(link_end_html)s ."
 
 msgid "Original URL"
-msgstr "URL orijinal"
+msgstr "Adrès entènèt orijinal la"
 
 msgid "Original author's name"
-msgstr "Non otè orijinal a"
+msgstr "Non otè orijinal la"
 
 msgid "Original posting date"
 msgstr "Dat afichaj orijinal la"
@@ -938,11 +964,14 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"Dat ou poste mesaj la pa nan fòma ANE - MWA- JOU, oswa li pa egziste.T "
-"Tanpri tounen sou paj ou te ye a epi eseye ankò"
+"Dat ou poste mesaj la pa nan fòma AAAA-MM-JJ oswa li pa egziste. Tanpri "
+"retounen epi eseye ankò"
 
 msgid "Original site name"
 msgstr "Non orijinal sit la"
+
+msgid "Other website"
+msgstr "Lòt sit entènèt"
 
 #, fuzzy
 msgid ""
@@ -950,15 +979,15 @@ msgid ""
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: On active Person Finder sites, all data entered is available"
-" to the public and usable by anyone.  Google does not review or verify "
-"the accuracy of this data."
+"TANPRI NOTE: Sou sit aktif ak Zouti Pou Chèche Moun yo, tout enfòmasyon "
+"ou mete ap disponib pou tout piblik la epi nenpòt ki moun ap ka itilize "
+"yo. Google pa revize ni verifye si done sa yo egzak."
 
 msgid "Person Finder"
-msgstr "Chèche Moun"
+msgstr "Zouti Pou Chèche Moun"
 
 msgid "Phone"
-msgstr "Nimewo telefòn"
+msgstr "Telefòn"
 
 msgid "Phone number"
 msgstr "Nimewo telefòn"
@@ -969,124 +998,119 @@ msgstr "Foto"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
-"Nou pa rekonèt fòma imaj/foto ou voye a. Tanpri tounen sou paj ou te ye a"
-" epi eseye ankò"
+msgstr "Nou pa rekonèt fòma foto ou ajoute a. Tanpri retounen epi eseye ankò."
 
 msgid "Physical characteristics"
 msgstr "Karaktè fizik"
 
 msgid "Play the sound again"
-msgstr "Play the sound again"
+msgstr "Jwe son an ankò"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"Tanpri cheke ke ou antre an kontak avèk moun sa aprè tranbleman tè a, "
-"oswa chanje valè \"Stati moun sa\"."
+"Tanpri tchke si ou antre an kontak avèk moun sa a aprè tranbleman tè a, "
+"oswa chanje chan \"Dènye nouvèl moun sa a\"."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Tanpri gade pou ou wè si li match moun ou ta pral repòte a."
+msgstr "Tanpri verifye si li koresponn ak moun ou te vle fè rapò sou li a."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Please confirm your e-mail address to subscribe to updates"
+msgstr "Tanpri konfime adrès imèl ou pou resevwa dènye nouvèl"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Please enter your e-mail address to subscribe to updates"
+msgstr "Tanpri mete adrès imèl ou pou resevwa dènye nouvèl"
 
 msgid "Please explain why you think these are the same person"
-msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun"
+msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun nan"
 
 msgid "Please fill in all the required fields."
-msgstr "Please fill in all the required fields."
+msgstr "Tanpri ranpli tout chan obligatwa yo."
 
 msgid "Please fill in your email address."
-msgstr "Please fill in your email address."
+msgstr "Tanpri mete adrès imèl ou."
 
 msgid "Please provide an valid email address."
-msgstr "Please provide an valid email address."
+msgstr "Tanpri bay yon adrès imèl ki valab."
 
 msgid "Possible duplicates"
-msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
+msgstr "Kapab se yon doub"
+
+msgid "Possible duplicates found."
+msgstr "Nou jwenn yo posib kopi."
 
 msgid "Postal or zip code"
-msgstr "Nimewo postal"
+msgstr "Kòd postal"
 
 msgid "Posted by"
-msgstr "Moun ki afiche li a"
+msgstr "Moun ki poste li a"
 
 msgid "Proceed"
 msgstr "Kontinye"
 
 msgid "Profile Pages"
-msgstr "Profile Pages"
+msgstr "Paj pwofil"
 
 msgid "Profile page"
-msgstr "Profile page"
+msgstr "Paj profile"
 
 msgid "Provide information"
-msgstr "Provide information"
+msgstr "Bay enfòmasyon"
 
 msgid "Provide information about this person"
-msgstr "Bay enfomasyon moun sa"
+msgstr "Bay enfomasyon moun sa a"
 
 msgid "Provided by:"
-msgstr "Moun ki afiche li a"
+msgstr "Founi pa:"
 
 msgid "Province or state"
 msgstr "Pwovens oswa depatman"
 
 msgid "Reason for deletion:"
-msgstr "Reason for deletion:"
+msgstr "Rezon pou efase:"
 
 msgid "Reason for disabling notes:"
 msgstr "Reason for disabling notes:"
-
-msgid "Records Similar to"
-msgstr "Dosye sanble a"
 
 msgid "Records selected"
 msgstr "Dosye seleksyone"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr "Records with names and addresses matching \"%(query)s\""
+msgstr "Dosye ak non ak adrès yo pa koresponn \" %(query)s \""
 
 msgid "Remove"
-msgstr "Remove"
+msgstr "Efase"
 
 msgid "Report spam"
-msgstr "Report spam"
+msgstr "Rapòte espam"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
-msgstr "Return to the record for %(full_name)s."
+msgstr "Retounen nan dosye a pou  %(full_name)s ."
 
 msgid "Reveal note"
-msgstr "Reveal note"
+msgstr "Revele nòt"
 
 msgid "Save this record"
-msgstr "Sere dosye sa a"
-
-msgid "Search Results for"
-msgstr "Rezilta rechèch pou"
+msgstr "Anrejistre dosye sa a"
 
 msgid "Search for this person"
-msgstr "Chèche moun sa"
+msgstr "Chèche moun sa a"
 
 #, python-format
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
-msgstr "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Al gade nan %(begin_tag)s wiki %(end_tag)s a pou plis enstriksyon"
 
 msgid "Select a website to add a profile page..."
-msgstr "Select a website to add a profile page..."
+msgstr "Chwazi yon sit entènèt pou ajoute yon paj pwofil ..."
 
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Seleksyone jiska 3 dosye pou make kòm doub:"
+msgstr "Chwazi jiska 3 dosye pou make kòm doub:"
 
 msgid "Send email"
-msgstr "Send email"
+msgstr "Voye imèl la"
 
 msgid "Sex"
 msgstr "Fi oswa Gason"
@@ -1095,265 +1119,261 @@ msgid "Show Map"
 msgstr "Montre kat la"
 
 msgid "Show sensitive information"
-msgstr "Montre enfòmasyon ki sansib"
+msgstr "Montre enfòmasyon ki delika"
+
+msgid "Show who marked these duplicates"
+msgstr "Montre ki moun ki te make doub sa yo"
 
 msgid "Sign in"
-msgstr "Sign in"
+msgstr "Konekte"
 
 msgid "Sign out"
-msgstr "Sign out"
+msgstr "Dekonekte"
 
 msgid "Someone has received information that this person is alive"
-msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
+msgstr "Gen yon moun ki resevwa enfòmasyon moun sa an vi"
 
 msgid "Someone has received information that this person is dead"
-msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
+msgstr "Gen yon moun ki resevwa enfòmasyon moun sa  a mouri"
 
 msgid "Someone has reported that this person is missing"
-msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
+msgstr "Gen yon moun ki rapòte yo paka jwenn moun sa a"
 
 msgid "Someone is seeking information about this person"
-msgstr "Bay enfomasyon moun sa"
+msgstr "Yon moun ap chèche enfomasyon sou moun sa a"
 
 msgid "Source of this record"
-msgstr "Sere dosye sa a"
+msgstr "Sous dosye sa a"
 
 msgid "Source of this record (required)"
-msgstr "Sous de enfomasyon (obligatwa)"
+msgstr "Sous dosye sa a (obligatwa)"
 
 msgid "Status"
-msgstr "Eta"
+msgstr "Dènye nouvèl"
 
 msgid "Status of this person"
-msgstr "Ki dènye nouvèl sou moun sa"
+msgstr "Dènye nouvèl sou moun sa a"
 
 msgid "Street name"
 msgstr "Non lari a"
 
 msgid "Street name only, no number"
-msgstr "Non lari a sèlman,  pa ekri nimewo kay la"
+msgstr "Non lari a sèlman, pa ekri nimewo kay la"
 
 msgid "Subscribe"
-msgstr "Subscribe"
+msgstr "Abone"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Subscribe to updates about %(full_name)s"
+msgstr "Abòne pou dènye sou %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Ki dènye nouvèl sou moun sa"
+msgstr "Abòne pou dènye nouvèl sou moun sa"
 
 msgid "Switch to address"
-msgstr "Switch to address"
-
-msgid "Switch to duplicate marking mode"
-msgstr "Chanje pou mòd make doub"
+msgstr "Chanje a adrès"
 
 msgid "Switch to lat/long"
-msgstr "Switch to lat/long"
-
-msgid "Switch to normal view mode"
-msgstr "Chanje pou mòd we nòmal"
+msgstr "Chanje a lat / long"
 
 msgid "Tell us the status of this person"
-msgstr "Ba nou enfòmasyon sou moun sa a"
+msgstr "Bay nou dènye nouvèl moun sa a"
 
 msgid "Terms of Service"
-msgstr "Kontra"
+msgstr "Kondisyon Pou Itilize"
 
 msgid "The API key has been updated successfully."
-msgstr "The API key has been updated successfully."
+msgstr "Nou te mete kle API a ajou."
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr ""
-"Premye non ak non fanmi ou obligatwa. Tanpri tounen sou paj ou te ye a "
-"epi eseye ankò"
+msgstr "Premye non ak non Fanmi ou obligatwa. Tanpri retounen epi eseye ankò"
 
 msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Non otè orijinal la obligatwa. Tanpri tounen sou paj ou te ye aa epi "
-"eseye ankò."
+msgstr "Non otè Orijinal la obligatwa. Tanpri retounen eseye ankò."
 
 msgid "The author has disabled notes on this record."
-msgstr "The author has disabled notes on this record."
+msgstr "Èske otè a te dezaktive nòt sou dosye sa a."
 
 msgid "The author has disabled status updates on this record."
-msgstr "The author has disabled status updates on this record."
+msgstr "Èske otè a te dezaktive denyè nouvèl sou dosye sa a."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
+msgstr "Imaj ou telechaje a twò lou. Tanpri telechaje yon lòt ki pi piti."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "The reason this note is being marked as spam:"
+msgstr "Rezon ki fè nòt sa a make kòm espam:"
 
 msgid "The record cannot be extended."
-msgstr "The record cannot be extended."
+msgstr "Dosye a pa kapab pwolonje."
 
 msgid "The record has been deleted."
-msgstr "The record has been deleted."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "The record has been extended to %(expiry_date)s."
+msgstr "Dosye a te efase."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
+"Dènye nouvèl ou chwazi a endike ou se moun sa a. Si se vre, tanpri tou "
+"chwazi 'Wi' yo endike ou te kontakte moun sa a."
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr "The token %(token)s was invalid"
+msgstr "Jeton %(token)s nan pa te valab"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr "The token %(token)s was invalid."
+msgstr "Jeton %(token)s nan pa te valab."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
-msgstr "Gen %(num_results)s dosye ki egziste ak mem non yo."
+msgstr "Gen %(num_results)s dosye ki egziste ak menm non."
 
 msgid "There are some existing records with similar names."
-msgstr "Gen kèlke dosye ki egziste ki sanble ak non sa yo."
+msgstr "Gen kèlke dosye ki egziste deja ak menm non sa a."
 
 msgid "There is one existing record with a similar name."
-msgstr "Gen yon dosye ki egziste ki sanble ak non sa."
+msgstr "Gen yon dosye ki egziste deja ak menm non sa a."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
+msgstr "Genyen yo erè ak foto sa. tanpri eseye mete yon lòt."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
 "  Our administrators will investigate the source of the problem, but "
 "please check that the format of your request is correct."
 msgstr ""
-"Te gen yon erè nan tretman demann ou an.  Nou regrèt anpil pou "
-"enkonvenyan sa a.  Administratè nou yo pral egzaminen kote pwoblèm lan "
-"soti, men verifye, tanpri, si fòma demann ou an korèk."
+"Te gen yon erè nan tretman demann ou an. Nou regrèt anpil pou enkonvenyan"
+" sa a. Administratè nou yo pral egzaminen kote pwoblèm lan soti, men  "
+"tanpri verifye si fòma demann ou an korèk."
 
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0"
-" license%(link_end_html)s."
+"Gadjèt sa yo disponib grasa %(apache_link_html)s lisans Apache 2.0 "
+"%(link_end_html)s a ."
 
 msgid "This is a new record."
 msgstr "Sa a se yon nouvo dosye."
 
 msgid "This link is invalid."
-msgstr "Dosye sa se doub de"
+msgstr "Lyen sa a pa valid."
 
 msgid "This note has been marked as spam."
-msgstr "This note has been marked as spam."
+msgstr "Yo te make nòt sa a kòm espam."
 
 msgid "This note is inappropriate."
-msgstr "Dosye sa se doub de"
+msgstr "Dosye sa a pa apwopriye."
 
 msgid "This note is incorrect or untrue."
-msgstr "This note is incorrect or untrue."
+msgstr "Nòt pa pa kòrèk oswa pa verite."
 
 msgid "This note is spam."
-msgstr "This note is spam."
+msgstr "Nòt sa a se espam."
 
 msgid "This person has been in contact with someone"
-msgstr "Moun nou poko jwenn nan antre an kontak avèk yon lot moun"
+msgstr "Moun sa a poko kontakte okenn moun"
 
 msgid "This person has posted a message"
-msgstr "Moun sa poste mesaj yon mesaj"
+msgstr "Moun sa a te poste yon mesaj."
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr "This person's entry does not exist or has been deleted."
+msgstr "Enfòmasyon moun sa a pa egziste oswa li te efase."
 
 msgid "This record has served its purpose."
-msgstr "This record has served its purpose."
+msgstr "Dosye sa a te fè travay li gen pou fè a."
 
 msgid "This record is a duplicate of"
-msgstr "Dosye sa se doub de"
+msgstr "Dosye sa se doub"
 
 msgid "This record is copied from another source."
-msgstr "Nou kopye dosye sa de yon lòt sous de enfomasyon."
+msgstr "Nou kopye dosye sa a nan yon lòt sous  enfòmasyon."
 
 msgid "This record is inappropriate."
-msgstr "Dosye sa se doub de"
+msgstr "Dosye sa a pa apwopriye."
 
 msgid "This record is spam."
-msgstr "Dosye sa se doub de"
+msgstr "Dosye sa se espam."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
 msgstr ""
-"This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"Kounye a repozitwa sa a nan mòd tès. Pandan mòd tès la aktiv, dosye ki "
+"gen plis pase 6 èdtan yo ap efase."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr "To attach a photo to this note, upload it or enter its URL."
+msgstr "Pou ajoute yon foto ak nòt sa a, telechaje li oswa mete adrès entènèt li."
 
 msgid "To delete your data, access Person Finder from your desktop."
-msgstr "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Pou efase done ou, konekte sou Zouti Pou Chèche Moun ki nan biwo òdinatè "
+"ou a."
 
 msgid "To unsubscribe, follow this link"
-msgstr "To unsubscribe, follow this link"
+msgstr "Pou anile abònman ou, swiv lyen sa a"
 
 msgid "To view or add information, select a name below."
-msgstr "Pou ou sa wè oswa ajoute enfomasyon, chawzi youn nan non ki anba yo."
+msgstr "Pou ou sa wè oswa ajoute enfomasyon, chwazi yon non anba a."
 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
-"Type an address or open the map below and indicate the location by "
-"clicking on the map."
+"Tape adrès la oubyen ouvri kat la anba a epi  klike sou kat la pou montre"
+" ki kote."
 
 msgid "Type an address."
-msgstr "Type an address."
+msgstr "Tape yon adrès."
 
 msgid "Type the two words:"
-msgstr "Type the two words:"
+msgstr "Tape de  mo sa yo:"
 
 msgid "Type what you hear:"
-msgstr "Type what you hear:"
+msgstr "Tape sa w tande a:"
 
 msgid "URL"
-msgstr "URL"
+msgstr "Adrès entènèt"
 
 msgid "URL of original record"
-msgstr "Dosye orijinal URL la"
+msgstr "Adrès entènèt dosye orijinal la"
 
 msgid "Unspecified"
-msgstr "Pa spesifie"
+msgstr "Pa spesifye"
 
 msgid "Update an existing key"
-msgstr "Update an existing key"
+msgstr "Mete ajou yon kle ki deja egziste"
 
 msgid "Upload"
-msgstr "Ajoute"
+msgstr "Telechaje"
 
-msgid "Upload CSV files"
-msgstr "Upload CSV files"
+msgid "Upload notes in CSV format"
+msgstr "Telechanje nòt sou fòma CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Telechaje dosye moun nan nan fòma CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Telechanje fichye CSV ou pi ba a"
 
 msgid "View the record"
-msgstr "View the record"
+msgstr "Gade dosye a"
 
 msgid "We have nothing matching your search."
-msgstr "Nou pa jwen anyen ki match rechèch ou a."
+msgstr "Nou pa jwen anyen ki koresponn ak rechèch ou a."
 
 msgid "What is this person's name?"
-msgstr "Kouman moun lan rele?"
+msgstr "Kijan moun lan rele?"
 
 msgid "When should this record disappear?"
-msgstr "When should this record disappear?"
+msgstr "Kilè dozye sa a ta dwe disparèt?"
 
 msgid "Where did this information come from?"
-msgstr "Kote enfòmasyon sa a sòti? "
+msgstr "Kote enfòmasyon sa a sòti?"
 
 msgid "Where is this person from?"
 msgstr "Ki kote moun sa a sòti?"
@@ -1362,86 +1382,84 @@ msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
 msgstr ""
-"While test mode is in effect, records that are over 6 hours old are "
-"deleted regardless of the expiry date."
+"Pandan mòd tès la aktive, dosye ki gen plis pase 6 èdtan yo ap efase "
+"kèlkeswa dat ekspirasyon."
 
 msgid "Yes"
 msgstr "Wi"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr "Yes, ask the record author to disable notes"
+msgstr "Wi, mande otè dosye pou dezaktive nòt"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr "Yes, ask the record author to enable notes"
+msgstr "Wi, mande otè dosye a pou pèmèt nòt"
 
 msgid "Yes, delete the record"
-msgstr "Yes, delete the record"
+msgstr "Wi, efase dosye a"
 
 msgid "Yes, disable notes on this record."
-msgstr "Yes, disable notes on this record."
+msgstr "Wi, dezaktive nòt sou dosye sa a."
 
 msgid "Yes, extend the record"
-msgstr "Yes, extend the record"
+msgstr "Wi, yon pwolonje dosye a"
 
 msgid "Yes, restore this record"
-msgstr "Sere dosye sa a"
+msgstr "Wi, restore dosye sa a"
 
 msgid "Yes, these are the same person"
-msgstr "Wi, moun sa yo se menm"
+msgstr "Wi, se menm moun nan"
 
 msgid "Yes, update the note"
-msgstr "Yes, update the note"
+msgstr "Wi, mete nòt la ajou"
 
 msgid "You are already subscribed. "
-msgstr "You are already subscribed. "
+msgstr "Ou deja pa abòne. "
 
 msgid "You are already unsubscribed."
-msgstr "You are already unsubscribed."
+msgstr "Ou deja pa abòne."
 
 #, python-format
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr ""
-"You are currently signed in as "
-"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Kounye a ou konekte kòm %(begin_span_tag)s %(email)s %(end_span_tag)s ."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr "You are currently signed in as %(user_email)s."
+msgstr "Kounye a ou konekte kòm %(user_email)s ."
 
 msgid "You are not currently signed in."
-msgstr "You are not currently signed in."
+msgstr "Ou pa konekte kounye a."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
-msgstr "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Ou ka %(begin_tag)s gade dosye a %(end_tag)s a anvan ou efase li."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr "You can view the full record at %(view_url)s"
+msgstr "Ou kapab gae tout dosye a sou %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr "You have successfully subscribed."
+msgstr "Ou abone."
 
 msgid "You have successfully unsubscribed."
-msgstr "You have successfully unsubscribed."
+msgstr "Ou pa abone ankò."
 
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
+"Ou te resevwa avi sa paske ou te enskri pou resevwa dènye nouvèl sou moun"
+" sa a:\n"
 
 msgid "Your e-mail address"
-msgstr "Email ou"
+msgstr "Adrès imèl ou"
 
 msgid "Your e-mail address:"
-msgstr "Email ou"
+msgstr "Adrès imèl ou"
 
 msgid "Your email"
-msgstr "Your email"
+msgstr "Imèl ou"
 
 msgid "Your name"
 msgstr "Non ou"
@@ -1450,15 +1468,13 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
 msgstr ""
-"Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen "
-"sou paj ou te ye a epi eseye ankò"
+"Non ou obligatwa nan seksyon \"Enfòmasyon sou ou\" a. Tanpri retounen epi"
+" eseye ankò."
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
-msgstr ""
-"Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen "
-"sou paj ou te ye a epi eseye ankò"
+msgstr "Non ou obligatwa nan seksyon \"Sous\" la. Tanpri retounen epi eseye ankò"
 
 msgid "Your phone number"
 msgstr "Nimewo telefòn ou"
@@ -1467,63 +1483,60 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"Your request has been processed successfully. Please check your inbox and"
-" confirm that you want to post your note by following the url embedded."
+"Nou te trete demann ou an ak siksè. Tanrpi tcheke bwat ou epi klike sou "
+"adrès entènèt entegre a pou konfime ou vle nou pibliye nòt nou yo."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Zouti Pou Chèche Moun] Konfime nòt ou sou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Zouti Pou Chèche Moun] Avi pou Efase pou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Chèche Moun] Enfim nòt sou \" %(full_name)s \"?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[ZouitChèche Moun] Pèmèt nòt sou \" %(full_name)s \"?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr "[Zouti Pou Chèche Moun] N ap aktive avi nòt pou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "Zouti Pou[Chèche Moun] Kounye a nòt dezaktive pou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Zouti Pou Chèche Moun] Kounye a nòt aktive sou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Zouti Pou Chèche Moun] Avi restorasyon dosye pou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] Status update for %(full_name)s"
+msgstr "[Zouti Pou Chèche Moun] Dènye nouvèl pou %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
-msgstr "[Person Finder] You are subscribed to status updates for %(full_name)s"
-
-msgid "at"
-msgstr "at"
+msgstr "[Zouti Pou Chèche Moun] Ou abòne nan dènye nouvèl sou %(full_name)s"
 
 msgid "female"
 msgstr "fi"
 
 msgid "in test mode"
-msgstr "in test mode"
+msgstr "nan mòd tès"
 
 msgid "male"
 msgstr "gason"
 
 msgid "on"
-msgstr "on"
+msgstr "aktive"
 
 msgid "other"
 msgstr "lòt"

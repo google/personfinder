@@ -142,6 +142,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s ການບັນທຶກຖືກຄັດເລືອກ\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        ການບັນທຶກທີ່ຄ້າຍຄືກັບ: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        ຜົນການຊອກຫາສຳລັບ: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -232,6 +262,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      ບໍ່ພົບຜົນການຊອກຫາສຳລັບ: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -245,6 +285,16 @@ msgstr ""
 "ແລ້ວທຳການສຳເນົາ ແລະ ວາງ\n"
 "      URL ດັ່ງກ່າວບ່ອນນີ້.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      ບັນທຶກດັ່ງກ່າວໄດ້ຖືກຍືດເວລາອອກໄປເປັນ %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -533,6 +583,22 @@ msgstr "ກັບຄືນໄປລາຍການຜົນ"
 msgid "Back to start"
 msgstr "ກັບຄືນໄປບ່ອນເລີ່ມຕົ້ນ"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"ໂດຍການໝາຍບັນທຶກນີ້ເປັນສະແປມ ແມ່ນທ່ານຈະເຮັດໃຫ້ມັນຖືກເຊື່ອງໃນຄັ້ງຕໍ່ໆໄປ. "
+"ມັນຈະເປັນພາກສ່ວນນຶ່ງຂອງການບັນທຶກ, ແຕ່ຈະມີການຄລິກເພີ່ມເຕີມເຂົ້າມາ "
+"ກ່ອນທີ່ຈະສາມາດເບິ່ງບັນທຶກໄດ້. "
+"ຜູ່ໃຊ້ຍັງສາມາດຖອນການໝາຍສະແປມອອກຈາກບັນທຶກນີ້ໄດ້."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"ໂດຍການຖອນການໝາຍວ່າບັນທຶກນີ້ເປັນສະແປມ, "
+"ທ່ານຈະເຮັດໃຫ້ມັນຖືກສະແດງໃນຄັ້ງຕໍ່ໆໄປ."
+
 msgid "CSV file"
 msgstr "ໄຟລ໌ CSV"
 
@@ -607,6 +673,10 @@ msgstr "ປິດການນຳໃຊ້ໂນ໋ດສຳລັບບັນທ
 msgid "Does this person have profile pages at other websites?"
 msgstr "ບຸກຄົນນີ້ມີໜ້າໂປຣໄຟລ໌ຢູ່ໃນເວັບໄຊອື່ນບໍ່?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr "ດາວ %(begin_link)sເທັມເພລດ Excel ນີ້%(end_link)s ແລະ ເພີ່ມແຖວໃສ່ມັນ"
+
 msgid "Download the sound as MP3"
 msgstr "ດາວໂຫລດສຽງເປັນ MP3"
 
@@ -625,14 +695,11 @@ msgstr "ການເອມເບດແອັບພລິເຄຊັນ"
 msgid "Enable notes on this record"
 msgstr "ເປີດນຳໃຊ້ໂນ໋ດສຳລັບບັນທຶກນີ້"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr "ກວດສອບໃຫ້ໝັ້ນໃຈວ່າວັນທີຢູ່ໃນຮູບແບບ yyyy-mm-ddThh:mm:ssZ ໃນ UTC"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "ໃສ່ເປັນ YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "ໃສ່ຊື່ ແລະນາມສະກຸນຂອງບຸກຄົນດັ່ງກ່າວ."
+msgstr "ກະລຸນາໃສ່ຊື່ ແລະນາມສະກຸນຂອງບຸກຄົນດັ່ງກ່າວ."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "ໃສ່ຊື່ທັງໝົດ ຫຼື ຊື່ບາງສ່ວນຂອງບຸກຄົນດັ່ງກ່າວ."
@@ -741,7 +808,7 @@ msgid "I have received information that this person is dead"
 msgstr "ຂ້ອຍໄດ້ຮັບຂໍ້ມູນແຈ້ງວ່າບຸກຄົນນີ້ເສຍຊີວິດແລ້ວ"
 
 msgid "I have received spam due to this note."
-msgstr "ຂ້ອຍໄດ້ຮັບສະແປມຍ້ອນໂນ໋ດນີ້."
+msgstr "ຂ້ອຍໄດ້ຮັບສະແປມຍ້ອນບັນທຶກນີ້."
 
 msgid "I have received spam."
 msgstr "ຂ້ອຍໄດ້ຮັບສະແປມ."
@@ -790,6 +857,9 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "ຖ້າທ່ານມີຮູບຂອງບຸກຄົນນີ້, ສາມາດອັບໂຫລດມັນຂຶ້ນ ຫຼື ໃສ່ URL ຂອງຮູບໄດ້."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr "ໃນ Excel, ໄປທີ່ເມນູ File &gt; Save as... ແລະ ບັນທຶກໃນຮູບແບບ CSV (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "ບໍ່ຖືກຕ້ອງ. ລອງໃໝ່ອີກຄັ້ງ."
 
@@ -813,6 +883,9 @@ msgstr "ສ້າງລາຍຊື່ລະຫັດ API"
 
 msgid "Mark records as duplicate"
 msgstr "ໝາຍບັນທຶກວ່າຊ້ຳກັນ"
+
+msgid "Mark the selected records as duplicate"
+msgstr "ຫມາຍ​​ບັນ​ທຶກ​ທີ່​ເລືອກ​ເປັນ​ຂໍ້ມູນຊ້ຳ"
 
 msgid "Message (required)"
 msgstr "ຂໍ້ຄວາມ (ຈຳເປັນ)"
@@ -877,11 +950,15 @@ msgstr "ບໍ່ມີການໂພສໂນ໋ດໃດໆ"
 msgid "No person with ID: %(id_str)s."
 msgstr "ບໍ່ມີບຸກຄົນທີ່ໃຊ້ໄອດີ: %(id_str)s ."
 
-msgid "No results found for"
-msgstr "ບໍ່ພົບຜົນການຊອກຫາສຳລັບ"
-
 msgid "No such Authorization entity."
 msgstr "ບໍ່ມີ Authorization entity ດັ່ງກ່າວ."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"ບໍ່ອະນຸຍາດໃຫ້ໂພສບັນທຶກດ້ວຍສະຖານະ "
+"\"ຂ້າ​ພະ​ເຈົ້າ​ໄດ້​ຮັບ​ຂໍ້​ມູນ​ວ່າ​ບຸກ​ຄົນ​ນີ້​ເສຍຊີວິດ​ແລ້ວ\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "ບໍ່ອະນຸຍາດໃຫ້ໂພສໂນ໋ດທີ່ມີສະຖານະວ່າ \"ຄິດວ່າເສຍຊີວິດແລ້ວ\"."
@@ -894,6 +971,9 @@ msgstr "ຜູ່ຂຽນໂນ໋ດ"
 
 msgid "Note text"
 msgstr "ຂໍ້ຄວາມໂນ໋ດ"
+
+msgid "Notes for a possible duplicate"
+msgstr "ໝາຍເຫດຂອງຂໍ້ມູນຊ້ຳທີ່ເປັນໄປໄດ້"
 
 msgid "Notes for this person"
 msgstr "ໂນ໋ດສຳລັບບຸກຄົນນີ້"
@@ -927,6 +1007,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "ຊື່ເວັບໄຊຕົ້ນສະບັບ"
+
+msgid "Other website"
+msgstr "ເວັບໄຊອື່ນໆ"
 
 #, fuzzy
 msgid ""
@@ -992,6 +1075,9 @@ msgstr "ກະລຸນາໃສ່ທີ່ຢູ່ອີເມວທີ່ຖ
 msgid "Possible duplicates"
 msgstr "ມີຄວາມເປັນໄປໄດ້ວ່າຊ້ຳກັນ"
 
+msgid "Possible duplicates found."
+msgstr "ພົບຂໍ້ມູນຊ້ຳທີ່ເປັນໄປໄດ້."
+
 msgid "Postal or zip code"
 msgstr "ໄປສະນີ ຫຼື ລະຫັດໄປສະນີ"
 
@@ -1025,9 +1111,6 @@ msgstr "ເຫດຜົນຂອງການລຶບ:"
 msgid "Reason for disabling notes:"
 msgstr "ເຫດຜົນເພື່ອປິດການນຳໃຊ້ໂນ໋ດ:"
 
-msgid "Records Similar to"
-msgstr "ບັນທຶກຄ້າຍຄືກັນກັບ"
-
 msgid "Records selected"
 msgstr "ບັນທຶກທີ່ເລືອກ"
 
@@ -1050,9 +1133,6 @@ msgstr "ສະແດງໂນ໋ດ"
 
 msgid "Save this record"
 msgstr "ບັນທຶກການບັນທຶກນີ້"
-
-msgid "Search Results for"
-msgstr "ຜົນການຊອກຫາສໍາລັບ"
 
 msgid "Search for this person"
 msgstr "ຊອກຫາບຸກຄົນນີ້"
@@ -1078,6 +1158,9 @@ msgstr "ສະແດງແຜນທີ່"
 
 msgid "Show sensitive information"
 msgstr "ສະແດງຂໍ້ມູນທີ່ສຳຄັນ"
+
+msgid "Show who marked these duplicates"
+msgstr "ສະແດງໃຫ້ເຫັນວ່າໃຜໝາຍສິ່ງເຫຼົ່ານີ້ວ່າຊ້ຳກັນ"
 
 msgid "Sign in"
 msgstr "ເຂົ້າສູ່ລະບົບ"
@@ -1123,19 +1206,13 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "ສະໝັກຮັບການອັບເດດກ່ຽວກັບ %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "ສະໝັກຮັບການອັບເດດກ່ຽວກັບບຸກຄົນນີ້"
+msgstr "ຮັບຂໍ້ມູນອັບເດດຂອງບຸກຄົນນີ້"
 
 msgid "Switch to address"
 msgstr "ສະລັບໄປຫາທີ່ຢູ່"
 
-msgid "Switch to duplicate marking mode"
-msgstr "ສະລັບໄປໂໝດການໝາຍວ່າຊ້ຳກັນ"
-
 msgid "Switch to lat/long"
 msgstr "ສະລັບໄປ ເສັ້ນຮຸ້ງ/ເສັ້ນແວງ"
-
-msgid "Switch to normal view mode"
-msgstr "ສັບປ່ຽນໄປໂໝດມຸມມອງແບບທຳມະດາ"
 
 msgid "Tell us the status of this person"
 msgstr "ບອກພວກເຮົາກ່ຽວກັບສະຖານະຂອງບຸກຄົນນີ້"
@@ -1164,17 +1241,13 @@ msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ຮູບທີ່ສະໜອງໃຫ້ມີຂະໜາດໃຫຍ່ເກີນໄປ. ກະລຸນາອັບໂຫລດອັນທີ່ມີຂະໜາດນ້ອຍກວ່າ."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "ເຫດຜົນທີ່ໂນ໋ດນີ້ຖືກໝາຍວ່າແມ່ນສະແປມ:"
+msgstr "ເຫດຜົນທີ່ບັນທຶກນີ້ຖືກໝາຍວ່າແມ່ນສະແປມ:"
 
 msgid "The record cannot be extended."
 msgstr "ບັນທຶກບໍ່ສາມາດຍືດເວລາອອກໄດ້."
 
 msgid "The record has been deleted."
 msgstr "ບັນທຶກດັ່ງກ່າວໄດ້ຖືກລຶບອອກແລ້ວ."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "ບັນທຶກດັ່ງກ່າວໄດ້ຖືກຍືດເວລາອອກໄປ %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1232,13 +1305,13 @@ msgid "This note has been marked as spam."
 msgstr "ໂນ໋ດນີ້ໄດ້ຖືກໝາຍວ່າແມ່ນສະແປມແລ້ວ."
 
 msgid "This note is inappropriate."
-msgstr "ໂນ໋ດນີ້ຖືກໝາຍວ່າບໍ່ເໝາະສົມ."
+msgstr "ບັນທຶກນີ້ຖືກໝາຍວ່າບໍ່ເໝາະສົມ."
 
 msgid "This note is incorrect or untrue."
-msgstr "ໂນ໋ດນີ້ແມ່ນບໍ່ຖືກຕ້ອງ ຫຼື ບໍ່ແມ່ນຄວາມຈິງ."
+msgstr "ບັນທຶກນີ້ບໍ່ຖືກຕ້ອງ ຫຼືບໍ່ແມ່ນຄວາມຈິງ."
 
 msgid "This note is spam."
-msgstr "ໂນ໋ດນີ້ແມ່ນສະແປມ."
+msgstr "ບັນທຶກນີ້ແມ່ນສະແປມ."
 
 msgid "This person has been in contact with someone"
 msgstr "ບຸກຄົນນີ້ໄດ້ຕິດຕໍ່ກັບໃຜຄົນນຶ່ງ"
@@ -1312,8 +1385,14 @@ msgstr "ອັບເດດລະຫັດທີ່ມີຢູ່ແລ້ວ"
 msgid "Upload"
 msgstr "ອັບໂຫຼດ"
 
-msgid "Upload CSV files"
-msgstr "ອັບໂຫລດໄຟລ໌ CSV"
+msgid "Upload notes in CSV format"
+msgstr "ອັບໂຫຼດບັນທຶກໃນຮູບແບບ CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "ອັບໂຫຼດ​ບັນ​ທຶກສ່ວນ​ບຸກ​ຄົນ​​ໃນ​ຮູບແບບ CSV"
+
+msgid "Upload your CSV file below"
+msgstr "ອັບໂຫຼດໄຟລ໌ CSV ຂອງທ່ານດ້ານລຸ່ມ"
 
 msgid "View the record"
 msgstr "ເບິ່ງບັນທຶກ"
@@ -1325,7 +1404,7 @@ msgid "What is this person's name?"
 msgstr "ຊື່ຂອງບຸກຄົນນີ້ແມ່ນຫຍັງ?"
 
 msgid "When should this record disappear?"
-msgstr "ບັນທຶກນີ້ຈະຫາຍໄປເມື່ອໃດ?"
+msgstr "ທ່ານຕ້ອງການໃຫ້ບັນທຶກຂອງຂໍ້ມູນເຫຼົ່ານີ້ ຫາຍໄປໃນເວລາໃດ?"
 
 msgid "Where did this information come from?"
 msgstr "ຂໍ້ມູນນີ້ມາຈາກໃສ?"
@@ -1487,9 +1566,6 @@ msgstr "[Person Finder] ອັບເດດສະຖານະສຳລັບ %(fu
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] ທ່ານສະໝັກຮັບການອັບເດດສະຖານະສຳລັບ %(full_name)s"
-
-msgid "at"
-msgstr "ທີ່"
 
 msgid "female"
 msgstr "ຍິງ"

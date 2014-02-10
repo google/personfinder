@@ -143,6 +143,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            Počet vybratých záznamov: %(dup_count)s\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Záznamy podobné ako: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Výsledky vyhľadávania pre dopyt: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -232,6 +262,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Nenašli sa žiadne výsledky pre dopyt: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -246,6 +286,16 @@ msgstr ""
 "skopírujte a vložte\n"
 "      danú adresu URL na toto miesto.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Platnosť záznamu bola predĺžená do %(expiry_date)s.\n"
+"    "
 
 msgid ""
 "\n"
@@ -488,7 +538,7 @@ msgid "About 6 months (180 days) from now"
 msgstr "O 6 mesiacov (180 dní) od dnešného dňa"
 
 msgid "About Google Person Finder"
-msgstr "O službe Google Person Finder"
+msgstr "O službe Hľadanie ľudí Google"
 
 msgid "About you (required)"
 msgstr "Informácie o vás (povinné)"
@@ -537,6 +587,22 @@ msgstr "Späť na zoznam výsledkov"
 
 msgid "Back to start"
 msgstr "Späť na začiatok"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Označením tejto poznámky ako spam ju v predvolenom nastavení skryjete. "
+"Bude stále súčasťou záznamu, ale zobrazenie jej obsahu bude vyžadovať "
+"ďalšie kliknutie. Používatelia budú tiež môcť z tejto poznámky odstrániť "
+"označenie spamu."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Zrušením označenia tejto poznámky ako spam ju znova v predvolenom "
+"nastavení zobrazíte."
 
 msgid "CSV file"
 msgstr "Súbor CSV"
@@ -614,8 +680,14 @@ msgstr "Zakázať poznámky k tomuto záznamu"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Má táto osoba stránky s profilom na iných webových lokalitách?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Stiahnite si %(begin_link)stúto šablónu pre aplikáciu Excel%(end_link)s a"
+" pridajte do nej riadky"
+
 msgid "Download the sound as MP3"
-msgstr "Prevziať zvuk v podobe súboru MP3"
+msgstr "Stiahnuť zvuk v podobe súboru MP3"
 
 msgid "E-mail"
 msgstr "E-mail"
@@ -632,16 +704,11 @@ msgstr "Vloženie aplikácie"
 msgid "Enable notes on this record"
 msgstr "Povoliť poznámky k tomuto záznamu"
 
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Všetky dátumy v časovom pásme UTC musia byť uvedené vo formáte rrrr-mm-"
-"ddThh:mm:ssZ"
-
 msgid "Enter as YYYY-MM-DD"
 msgstr "Zadajte v tvare RRRR-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Zadajte krstné meno a priezvisko osoby."
+msgstr "Zadajte meno a priezvisko osoby."
 
 msgid "Enter the person's name or parts of the name."
 msgstr "Zadajte meno osoby alebo časti mena."
@@ -660,9 +727,7 @@ msgstr "Dátum vypršania platnosti tohto záznamu"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr ""
-"Predĺžte dátum vypršania platnosti o nasledovný počet dní: "
-"%(extension_days)s"
+msgstr "Predĺžiť dátum vypršania platnosti o %(extension_days)s dní"
 
 msgid "Family name"
 msgstr "Priezvisko"
@@ -696,7 +761,7 @@ msgid "Given name"
 msgstr "Krstné meno"
 
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Hľadanie ľudí Google"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Rozprávali ste sa s touto osobou osobne PO katastrofe? (povinné)"
@@ -750,10 +815,10 @@ msgid "I have reason to think this person is missing"
 msgstr "Mám dôvod domnievať sa, že táto je osoba nezvestná"
 
 msgid "I have received information that this person is alive"
-msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba živá"
+msgstr "Mám informácie, podľa ktorých je táto osoba živá"
 
 msgid "I have received information that this person is dead"
-msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
+msgstr "Mám informácie, podľa ktorých je táto osoba mŕtva"
 
 msgid "I have received spam due to this note."
 msgstr "Pre túto poznámku som dostal(-a) spam."
@@ -806,6 +871,11 @@ msgstr ""
 "Ak máte fotografiu tejto osoby, odovzdajte ju alebo zadajte jej adresu "
 "URL."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"V aplikácii Excel použite možnosť Súbor &gt; Uložiť ako... a uložte súbor"
+" vo formáte CSV (.csv)"
+
 msgid "Incorrect.  Try again."
 msgstr "Nesprávne. Skúste to znova."
 
@@ -829,6 +899,9 @@ msgstr "Zobraziť zoznam kľúčov rozhrania API"
 
 msgid "Mark records as duplicate"
 msgstr "Označiť záznamy ako duplikát"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Označiť vybraté záznamy za duplicitné"
 
 msgid "Message (required)"
 msgstr "Správa (povinné)"
@@ -870,7 +943,7 @@ msgid "Name is required.  Please go back and try again."
 msgstr "Meno je povinné. Prejdite späť a skúste to znova."
 
 msgid "Neighborhood"
-msgstr "Moja oblasť"
+msgstr "Štvrť"
 
 msgid "No"
 msgstr "Nie"
@@ -893,11 +966,15 @@ msgstr "Neboli uverejnené žiadne poznámky"
 msgid "No person with ID: %(id_str)s."
 msgstr "Osoba s ID %(id_str)s sa nenašla."
 
-msgid "No results found for"
-msgstr "Nenašli sa žiadne výsledky pre osobu"
-
 msgid "No such Authorization entity."
 msgstr "Daná entita s právami autorizácie neexistuje."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Nemáte oprávnenie uverejňovať poznámky so stavom „Dostal(-a) som "
+"informácie, že táto osoba zomrela“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nemáte oprávnenie uverejňovať poznámky so stavom „believed_dead“."
@@ -910,6 +987,9 @@ msgstr "Autor poznámky"
 
 msgid "Note text"
 msgstr "Text poznámky"
+
+msgid "Notes for a possible duplicate"
+msgstr "Poznámky k možnému duplicitnému záznamu"
 
 msgid "Notes for this person"
 msgstr "Poznámka k tejto osobe"
@@ -944,18 +1024,21 @@ msgstr ""
 msgid "Original site name"
 msgstr "Pôvodný názov webových stránok"
 
+msgid "Other website"
+msgstr "Iné webové stránky"
+
 #, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
 "the accuracy of this data."
 msgstr ""
-"UPOZORNENIE: Na aktívnych stránkach služby Person Finder sú všetky zadané"
-" údaje k dispozícii verejnosti a ktokoľvek ich môže použiť. Spoločnosť "
-"Google nekontroluje ani neoveruje presnosť týchto údajov."
+"UPOZORNENIE: Na aktívnych stránkach služby Hľadanie ľudí Google sú všetky"
+" zadané údaje k dispozícii verejnosti a ktokoľvek ich môže použiť. "
+"Spoločnosť Google nekontroluje ani neoveruje presnosť týchto údajov."
 
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "Hľadanie ľudí"
 
 msgid "Phone"
 msgstr "Telefón"
@@ -987,7 +1070,9 @@ msgstr ""
 "alebo zmeňte pole „Stav tejto osoby“."
 
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Skontrolujte, či súhlasí s osobou, ktorú ste chceli nahlásiť."
+msgstr ""
+"Skontrolujte, či existuje záznam zodpovedajúci osobe, ktorú ste chceli "
+"nahlásiť."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr ""
@@ -1013,6 +1098,9 @@ msgstr "Uveďte platnú e-mailovú adresu."
 
 msgid "Possible duplicates"
 msgstr "Možné duplikáty"
+
+msgid "Possible duplicates found."
+msgstr "Našli sa možné duplicitné záznamy."
 
 msgid "Postal or zip code"
 msgstr "PSČ"
@@ -1047,9 +1135,6 @@ msgstr "Dôvod odstránenia:"
 msgid "Reason for disabling notes:"
 msgstr "Dôvod zakázania poznámok:"
 
-msgid "Records Similar to"
-msgstr "Podobné záznamy"
-
 msgid "Records selected"
 msgstr "– počet vybratých záznamov"
 
@@ -1072,9 +1157,6 @@ msgstr "Zobraziť poznámku"
 
 msgid "Save this record"
 msgstr "Uložiť tento záznam"
-
-msgid "Search Results for"
-msgstr "Výsledky vyhľadávania pre"
 
 msgid "Search for this person"
 msgstr "Hľadať túto osobu"
@@ -1100,6 +1182,9 @@ msgstr "Zobraziť mapu"
 
 msgid "Show sensitive information"
 msgstr "Zobraziť citlivé informácie"
+
+msgid "Show who marked these duplicates"
+msgstr "Zobraziť, kto označil tieto duplikáty"
 
 msgid "Sign in"
 msgstr "Prihlásiť sa"
@@ -1142,7 +1227,7 @@ msgstr "Prihlásiť sa na odber"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Prihlásiť sa na odber aktualizácií o osobe %(full_name)s"
+msgstr "Prihláste sa na odber aktualizácií o osobe %(full_name)s"
 
 msgid "Subscribe to updates about this person"
 msgstr "Prihlásiť sa na odber aktualizácií o tejto osobe"
@@ -1150,14 +1235,8 @@ msgstr "Prihlásiť sa na odber aktualizácií o tejto osobe"
 msgid "Switch to address"
 msgstr "Prepnúť na adresu"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Prepnúť na režim označovania duplikátov"
-
 msgid "Switch to lat/long"
 msgstr "Prepnúť na zemepisnú šírku/dĺžku"
-
-msgid "Switch to normal view mode"
-msgstr "Prepnúť na režim normálneho zobrazenia"
 
 msgid "Tell us the status of this person"
 msgstr "Oznámte nám stav tejto osoby"
@@ -1171,7 +1250,7 @@ msgstr "Kľúč API bol úspešne aktualizovaný."
 msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
-msgstr "Krstné meno a priezvisko sú povinné. Prejdite späť a skúste to znova."
+msgstr "Meno a priezvisko sú povinné. Prejdite späť a skúste to znova."
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Meno pôvodného autora je povinné. Prejdite späť a skúste to znova."
@@ -1193,10 +1272,6 @@ msgstr "Platnosť záznamu nie je možné predĺžiť."
 
 msgid "The record has been deleted."
 msgstr "Záznam bol odstránený."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Platnosť záznamu bola predĺžená do %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1301,7 +1376,7 @@ msgstr ""
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
-"Ak chcete odstrániť svoje údaje, pristúpte k službe Person Finder zo "
+"Ak chcete odstrániť svoje údaje, pristúpte k službe Hľadanie ľudí zo "
 "svojho počítača."
 
 msgid "To unsubscribe, follow this link"
@@ -1333,7 +1408,7 @@ msgid "URL of original record"
 msgstr "Adresa URL pôvodného záznamu"
 
 msgid "Unspecified"
-msgstr "Neuvedené"
+msgstr "Nie je uvedené"
 
 msgid "Update an existing key"
 msgstr "Aktualizovať existujúci kľúč"
@@ -1341,8 +1416,14 @@ msgstr "Aktualizovať existujúci kľúč"
 msgid "Upload"
 msgstr "Odovzdať"
 
-msgid "Upload CSV files"
-msgstr "Odovzdať súbory CSV"
+msgid "Upload notes in CSV format"
+msgstr "Odovzdať poznámky vo formáte CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Odovzdať záznamy osôb vo formáte CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Odovzdajte súbor CSV nižšie"
 
 msgid "View the record"
 msgstr "Zobraziť záznam"
@@ -1474,50 +1555,47 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr "[Person Finder] Potvrďte poznámku k osobe %(full_name)s"
+msgstr "[Hľadanie ľudí] Potvrďte poznámku k osobe %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
-msgstr "[Person Finder] Upozornenie o odstránení pre osobu %(full_name)s"
+msgstr "[Hľadanie ľudí] Upozornenie o odstránení pre osobu %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Zakázať poznámky k osobe %(full_name)s?"
+msgstr "[Hľadanie ľudí] Zakázať poznámky k osobe %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
-msgstr "[Person Finder] Povoliť poznámky k osobe %(full_name)s?"
+msgstr "[Hľadanie ľudí] Povoliť poznámky k osobe %(full_name)s?"
 
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
 msgstr ""
-"[Person Finder] Prebieha povolenie upozornenia na poznámky k osobe "
+"[Hľadanie ľudí] Prebieha povolenie upozornenia na poznámky k osobe "
 "%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Poznámky k osobe %(full_name)s boli zakázané"
+msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli zakázané"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Poznámky k osobe %(full_name)s boli povolené"
+msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli povolené"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
-msgstr "[Person Finder] Upozornenie o obnovení záznamu pre osobu %(full_name)s"
+msgstr "[Hľadanie ľudí] Upozornenie o obnovení záznamu pre osobu %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
-msgstr "[Person Finder] Aktualizácia stavu pre osobu %(full_name)s"
+msgstr "[Hľadanie ľudí] Aktualizácia stavu pre osobu %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] Ste prihlásený/-á na odber aktualizácií stavu pre osobu "
+"[Hľadanie ľudí] Ste prihlásený/-á na odber aktualizácií stavu pre osobu "
 "%(full_name)s"
-
-msgid "at"
-msgstr "o"
 
 msgid "female"
 msgstr "žena"

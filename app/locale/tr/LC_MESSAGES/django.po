@@ -149,6 +149,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s kayıt seçildi\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Şuna Benzer Kayıtlar: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Şunun İçin Arama Sonuçları: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
 "    "
 msgstr ""
@@ -242,6 +272,16 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Şunun için arama sonucu bulunamadı: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      The URL you entered doesn't look like a valid %(website)s profile "
 "URL.\n"
 "      Please go to this person's profile page on %(website)s, then copy "
@@ -255,6 +295,16 @@ msgstr ""
 "ardından o\n"
 "      URL'yi kopyalayıp buraya yapıştırın.\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Kayıt %(expiry_date)s tarihine kadar uzatıldı.\n"
+"    "
 
 msgid ""
 "\n"
@@ -356,7 +406,7 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"%(days_until_deletion)s gün sonra kayıt kalıcı olarak silinecek.\n"
+"%(days_until_deletion)s gün sonra kayıt kalıcı olarak silinecektir.\n"
 
 #, python-format
 msgid ""
@@ -552,6 +602,22 @@ msgstr "Sonuç listesine dön"
 msgid "Back to start"
 msgstr "Başa dön"
 
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Bu notu spam olarak işaretlediğinizde, not varsayılan olarak gizlenir. "
+"Kaydın parçası olmaya devam eder ancak nottaki içeriklerin "
+"görüntülenebilmesi için fazladan tıklama gerekir. Kullanıcılar ayrıca bu "
+"nottaki spam işaretini kaldırabilirler."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Bu notun spam işaretini kaldırdığınızda, not varsayılan olarak görünür "
+"yapılır."
+
 msgid "CSV file"
 msgstr "CSV dosyası"
 
@@ -626,6 +692,12 @@ msgstr "Bu kayıttaki notları devre dışı bırak"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Bu kişinin başka Web sitelerinde profil sayfaları var mı?"
 
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"%(begin_link)sBu Excel şablonunu%(end_link)s indirin ve şablona satırlar "
+"ekleyin"
+
 msgid "Download the sound as MP3"
 msgstr "Sesi MP3 olarak indir"
 
@@ -643,11 +715,6 @@ msgstr "Uygulamayı Yerleştirme"
 
 msgid "Enable notes on this record"
 msgstr "Bu kayıttaki notları etkinleştir"
-
-msgid "Ensure all dates are in yyyy-mm-ddThh:mm:ssZ format in UTC"
-msgstr ""
-"Tüm tarihlerin yyyy-aa-ggTss:dd:ssZ biçiminde ve UTC zamanına göre "
-"olduğundan emin olun"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-AA-GG olarak girin"
@@ -691,7 +758,7 @@ msgstr ""
 "hizmetini kullanın."
 
 msgid "Full name"
-msgstr "Tam ad"
+msgstr "Tam adı"
 
 msgid "Get a new challenge"
 msgstr "Yeni bir soru al"
@@ -703,7 +770,7 @@ msgid "Get an audio challenge"
 msgstr "Sesli soru al"
 
 msgid "Given name"
-msgstr "Ad"
+msgstr "Adı"
 
 msgid "Google Person Finder"
 msgstr "Google Kişi Bulucu"
@@ -814,6 +881,11 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
 
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excel'de, Dosya &gt; Farklı Kaydet... seçeneğini kullanarak dosyayı CSV "
+"biçiminde (.csv) kaydedin"
+
 msgid "Incorrect.  Try again."
 msgstr "Yanlış. Tekrar deneyin."
 
@@ -837,6 +909,9 @@ msgstr "API anahtarlarını listele"
 
 msgid "Mark records as duplicate"
 msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Seçilen kayıtları yinelenen kayıt olarak işaretle"
 
 msgid "Message (required)"
 msgstr "Mesaj (zorunlu)"
@@ -869,10 +944,10 @@ msgstr ""
 "daha fazla bilgi girmeyi deneyin"
 
 msgid "Name"
-msgstr "Ad"
+msgstr "Adı"
 
 msgid "Name (required)"
-msgstr "Ad (zorunlu)"
+msgstr "Adı (zorunlu)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Ad gerekiyor. Lütfen geri dönün ve tekrar deneyin."
@@ -901,11 +976,15 @@ msgstr "Hiç not yayınlanmadı"
 msgid "No person with ID: %(id_str)s."
 msgstr "Şu kimliğe sahip hiç kimse yok: %(id_str)s."
 
-msgid "No results found for"
-msgstr "Şu arama için sonuç bulunamadı"
-
 msgid "No such Authorization entity."
 msgstr "Böyle bir yetkilendirme öğesi yok."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"\"Bu kişinin hayatını kaybettiğine dair bilgi aldım\" durumunu içeren "
+"notlar göndermek için yetkili değil."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Durumu \"believed_dead\" olan notları yayınlama yetkiniz yok."
@@ -918,6 +997,9 @@ msgstr "Not yazarı"
 
 msgid "Note text"
 msgstr "Not metni"
+
+msgid "Notes for a possible duplicate"
+msgstr "Olası yinelenen kayıt için notlar"
 
 msgid "Notes for this person"
 msgstr "Bu kişi için notlar"
@@ -951,6 +1033,9 @@ msgstr ""
 
 msgid "Original site name"
 msgstr "Orijinal site adı"
+
+msgid "Other website"
+msgstr "Başka web sitesi"
 
 #, fuzzy
 msgid ""
@@ -1020,6 +1105,9 @@ msgstr "Lütfen geçerli bir e-posta adresi sağlayın."
 msgid "Possible duplicates"
 msgstr "Olası yinelemeler"
 
+msgid "Possible duplicates found."
+msgstr "Olası yinelenen kayıtlar bulundu."
+
 msgid "Postal or zip code"
 msgstr "Posta veya alan kodu"
 
@@ -1053,9 +1141,6 @@ msgstr "Silme nedeni:"
 msgid "Reason for disabling notes:"
 msgstr "Notları devre dışı bırakma nedeni:"
 
-msgid "Records Similar to"
-msgstr "Benzer Kayıtlar:"
-
 msgid "Records selected"
 msgstr "Kayıt seçildi"
 
@@ -1078,9 +1163,6 @@ msgstr "Notu göster"
 
 msgid "Save this record"
 msgstr "Bu kaydı kaydet"
-
-msgid "Search Results for"
-msgstr "Arama Sonuçları:"
 
 msgid "Search for this person"
 msgstr "Bu kişiyi ara"
@@ -1106,6 +1188,9 @@ msgstr "Haritayı Göster"
 
 msgid "Show sensitive information"
 msgstr "Hassas bilgileri göster"
+
+msgid "Show who marked these duplicates"
+msgstr "Bu yinelemeleri kimin işaretlediğini göster"
 
 msgid "Sign in"
 msgstr "Oturum aç"
@@ -1154,16 +1239,10 @@ msgid "Subscribe to updates about this person"
 msgstr "Bu kişi hakkındaki güncellemelere abone ol"
 
 msgid "Switch to address"
-msgstr "Adres değiştir"
-
-msgid "Switch to duplicate marking mode"
-msgstr "Yinelenen işaretleme moduna geç"
+msgstr "Adresi göster"
 
 msgid "Switch to lat/long"
-msgstr "Enl./boyl. değiştir"
-
-msgid "Switch to normal view mode"
-msgstr "Normal görünüm moduna geç"
+msgstr "Enl./boyl. göster"
 
 msgid "Tell us the status of this person"
 msgstr "Bu kişinin durumu hakkında bilgi verin"
@@ -1178,7 +1257,7 @@ msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
-"Ad ve Soyadı bilgilerinin her ikisi de gerekli. Lütfen geri dönün ve "
+"Adı ve Soyadı bilgilerinin her ikisi de gerekli. Lütfen geri dönün ve "
 "yeniden deneyin."
 
 msgid "The Original author's name is required.  Please go back and try again."
@@ -1201,10 +1280,6 @@ msgstr "Kaydın süre sonu uzatılamıyor."
 
 msgid "The record has been deleted."
 msgstr "Kayıt silindi."
-
-#, python-format
-msgid "The record has been extended to %(expiry_date)s."
-msgstr "Kayıt %(expiry_date)s tarihine kadar uzatıldı."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1344,8 +1419,14 @@ msgstr "Mevcut anahtarı güncelle"
 msgid "Upload"
 msgstr "Yükle"
 
-msgid "Upload CSV files"
-msgstr "CSV dosyaları yükle"
+msgid "Upload notes in CSV format"
+msgstr "Notları CSV biçiminde yükleyin"
+
+msgid "Upload person records in CSV format"
+msgstr "Kişi kayıtlarını CSV biçiminde yükleyin"
+
+msgid "Upload your CSV file below"
+msgstr "CSV dosyanızı aşağıdaki alanı kullanarak yükleyin"
 
 msgid "View the record"
 msgstr "Kaydı görüntüle"
@@ -1519,9 +1600,6 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Kişi Bulucu] %(full_name)s ile ilgili durum güncellemelerine abone "
 "oldunuz"
-
-msgid "at"
-msgstr "saat:"
 
 msgid "female"
 msgstr "kadın"

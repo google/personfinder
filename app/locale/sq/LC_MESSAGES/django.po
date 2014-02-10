@@ -1,0 +1,1616 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Për t'u siguruar që shënimet janë të disponueshme ose jo, me lejen e "
+"autorit të raportit, një mesazh konfirmimi do t'i dërgohet autorit. Nëse "
+"autori jeni ju, atëherë kontrolloni postën tuaj elektronike pasi të keni "
+"klikuar butonin e mëposhtëm.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"I/E dashur %(author_name)s, Një përdorues ka kërkuar mundësinë e "
+"leximit/shfrytëzimit të shënimeve në raportin për \"%(full_name)s\". "
+"Adresa juaj e postës elektronike është e regjistruar si autore e këtij "
+"raporti. Për të mundësuar shfrytëzimin e shënimeve në këtë raport, ndiqni"
+" këtë lidhje brenda 3 ditëve: %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"I/E dashur %(author_name)s, Një përdorues ka kërkuar heqjen e mundësisë "
+"së leximit/shfrytëzimit të shënimeve në raportin për \"%(full_name)s\". "
+"Adresa juaj e postës elektronike është e regjistruar si autore e këtij "
+"raporti. Për të hequr mundësinë e shfrytëzimit të shënimeve në këtë "
+"raport, ndiqni këtë lidhje brenda 3 ditëve: %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"I/E dashur %(author_name)s, Ju sapo keni futur një shënim në raportin për"
+" \"%(full_name)s\". Për të publikuar shënimin tuaj, ndiqni këtë lidhje "
+"brenda 3 ditëve: %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Njoftim: Ky raport do të skadojë së shfrytëzuari "
+"brenda më pak se %(expiration_days)s ditësh.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Njoftim: Ky raport do të skadojë së shfrytëzuari "
+"brenda më pak se një dite.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"            %(dup_count)s records selected\n"
+"          "
+msgstr ""
+"\n"
+"            %(dup_count)s raporte të përzgjedhura\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"        Records Similar to: %(full_name)s\n"
+"      "
+msgstr ""
+"\n"
+"        Raporte të ngjashme me: %(full_name)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Rezultatet e kërkimit për: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeni i sigurt që doni ta fshini raportin për \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeni i sigurt që doni t'i lejoni për shfrytëzim shënimet mbi "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeni i sigurt që doni ta hiqni mundësinë e shfrytëzimit të "
+"shënimeve në raportin për \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeni i sigurt që doni ta lejoni mundësinë e shfrytëzimit të "
+"shënimeve mbi \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeni i sigurt që doni ta shtyni afatin e skadimit për shfrytëzim të"
+" raportit \"%(full_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Konfirmoni shënimin tuaj\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Nëse vazhdoni me fshirjen, ky raport nuk do të jetë më i "
+"disponueshëm për t'u kërkuar apo lexuar në këtë faqe interneti.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Nëse doni që ta fshini një herë e përgjithmonë, ju lutemi "
+"kontaktoni burimin origjinal. Ju mund ta shikoni raportin origjinal në "
+"%(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      No results found for: %(query)s\n"
+"    "
+msgstr ""
+"\n"
+"      Asnjë rezultat nuk u gjet për: %(query)s\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      URL-ja që futët, me sa duket nuk është e vlefshme si URL profili "
+"për %(website)s. Ju lutemi, shkoni te faqja e profilit të personit në "
+"%(website)s, kopjojeni URL-në dhe pastaj ngjiteni këtu.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Afati i shfrytëzimit të raportit është shtyrë deri më "
+"%(expiry_date)s.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Ky raport është kopje nga një tjetër burim. Ju mund ta fshini "
+"raportin e këtushëm, por ju lutemi, jini të vetëdijshëm që ne mund të "
+"sigurojmë një tjetër kopje më vonë, nga burimi origjinal i tij.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Për t'u siguruar që shënimet janë të disponueshme ose jo, me lejen e "
+"autorit të raportit, një mesazh konfirmimi do t'i dërgohet autorit. Nëse "
+"autori jeni ju, atëherë kontrolloni postën tuaj elektronike pasi të keni "
+"klikuar butonin e mëposhtëm.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Raporti do të vazhdojë të figurojë në këtë faqe, por askush nuk do të "
+"jetë në gjendje të postojë shënime të tjera në të.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Që të postoni shënimin tuaj, më parë duhet të futni adresën tuaj të "
+"postës elektronike dhe pastaj të ndiqni lidhjen e konfirmimit që do të "
+"merrni.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Një përdorues ka fshirë raportin për \"%(full_name)s\" në %(site_url)s. "
+"Po ju njoftojmë për këtë fshirje, pasi adresa e postës suaj elektronike "
+"është e regjistruar si autore e një shënimi në këtë raport.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Një përdorues ka fshirë raportin për \"%(full_name)s\" në %(site_url)s. "
+"Po ju njoftojmë për këtë fshirje, pasi adresa e postës suaj elektronike "
+"është e regjistruar si autore e këtij raporti.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Pas %(days_until_deletion)s ditësh, raporti do të fshihet përgjithmonë.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"VINI RE: Nëse besoni se ky raport është fshirë gabimisht, ju mund ta "
+"rivendosni atë duke ndjekur lidhjen e mëposhtme brenda "
+"%(days_until_deletion)s ditëve të ardhshme: %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Futja e shënimeve sapo është çaktivizuar në këtë raport për "
+"\"%(full_name)s\". Për të parë raportin, ndiqni këtë lidhje: "
+"%(record_url)s Po ju njoftojmë pasi adresa e postës suaj elektronike "
+"është e lidhur me raportin e këtij personi ose me ndonjërin prej "
+"shënimeve të këtij raporti.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Futja e shënimeve sapo është mundësuar në këtë raport për "
+"\"%(full_name)s\". Për të parë raportin, ndiqni këtë lidhje: "
+"%(record_url)s Po ju njoftojmë pasi adresa e postës suaj elektronike "
+"është e lidhur me raportin e këtij personi, ose me ndonjërin prej "
+"shënimeve të këtij raporti.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Autori i raportit për \"%(full_name)s\" (i cili ishte fshirë më herët) e "
+"ka rikthyer atë. Për të parë raportin, ndiqni këtë lidhje: %(record_url)s"
+" Po ju njoftojmë pasi adresa e postës suaj elektronike është e lidhur me "
+"raportin e këtij personi, ose me ndonjërin prej shënimeve të këtij "
+"raporti.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Një shënim i ri është vendosur në raportin për \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Ju sapo u abonuat për shfrytëzimin e shënimeve mbi \"%(full_name)s\". "
+"Raportin e plotë mund ta shikoni në %(view_url)s. Për t'u çabonuar, "
+"ndiqni këtë lidhje: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(kliko për ta publikuar)"
+
+msgid "(unknown)"
+msgstr "(i panjohur)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Një mesazh për këtë person apo të tjerët që kërkojnë këtë person"
+
+msgid "A new API key has been created successfully."
+msgstr "Një çelës i ri API është krijuar me sukses."
+
+msgid "API Key Management"
+msgstr "Menaxhimi i çelësit API"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Rreth 1 muaj (30 ditë) nga sot"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Rreth 1 vit (360 ditë) nga sot"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Rreth 2 muaj (60 ditë) nga sot"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Rreth 3 muaj (90 ditë) nga sot"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Rreth 6 muaj (180 ditë) nga sot"
+
+msgid "About Google Person Finder"
+msgstr "Rreth apl. \"Gjetësi i Personave i Google\""
+
+msgid "About you (required)"
+msgstr "Rreth jush (e domosdoshme për t'u përgjigjur)"
+
+msgid "Administration"
+msgstr "Administrimi"
+
+msgid "Age"
+msgstr "Mosha"
+
+msgid "Alternate family names"
+msgstr "Mbiemrat alternativë"
+
+msgid "Alternate given names"
+msgstr "Emrat alternativë"
+
+msgid "Alternate names"
+msgstr "Emrat alternativë"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Jeni i sigurt që ky shënim nuk është mesazh i padëshirueshëm (spam)?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Jeni i sigurt që doni ta shënjoni këtë shënim si mesazh të padëshirueshëm?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Jeni i sigurt që doni ta riktheni nga fshirja këtë raport?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Mekanizmi furnizues \"Atom\" i njoftimeve rreth këtij personi"
+
+msgid "Author's e-mail address"
+msgstr "Posta elektronike e autorit"
+
+msgid "Author's name"
+msgstr "Emri i autorit"
+
+msgid "Author's phone number"
+msgstr "Numri i telefonit të autorit"
+
+msgid "Authorization key"
+msgstr "Çelësi autorizues"
+
+msgid "Back to results list"
+msgstr "Kthehu tek lista e rezultateve"
+
+msgid "Back to start"
+msgstr "Kthehu tek fillimi"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Duke e shënjuar këtë shënim si mesazh të padëshirueshëm (spam), ju do ta "
+"bëni atë automatikisht të padukshëm. Shënimi do të vazhdojë të jetë pjesë"
+" e raportit por do të kërkojë një klikim shtesë për t'u shfaqur dhe për "
+"të hapur përmbajtjen e tij. Nga ana tjetër, edhe përdoruesit e tjerë do "
+"të kenë të drejtë që ta heqin shenjën si \"mesazh i padëshirueshëm\" nga "
+"ky shënim."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Duke i hequr këtij shënimi shenjën si \"mesazh i padëshirueshëm\", ju do "
+"ta bëni atë automatikisht të dukshëm."
+
+msgid "CSV file"
+msgstr "Skedari CSV"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Shënimi me Id.-në %(id)s nuk mund të gjendet"
+
+msgid "Cancel"
+msgstr "Anulo"
+
+msgid "City"
+msgstr "Qyteti"
+
+msgid "Click here to view results."
+msgstr "Kliko këtu për të parë rezultatet."
+
+msgid "Close window"
+msgstr "Mbyll dritaren"
+
+msgid "Compare these records"
+msgstr "Krahasoni këto të dhëna"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Kopjoni dhe ngjitni kodin e mëposhtëm HTML për ta vendosur këtë mjet në "
+"faqen tuaj"
+
+msgid "Create a new API key"
+msgstr "Krijo një çelës të ri API"
+
+msgid "Create a new record"
+msgstr "Krijo një raport të ri"
+
+msgid "Create a new record for"
+msgstr "Krijo një raport të ri për"
+
+msgid "Create a new record for a missing person"
+msgstr "Krijo një raport të ri për një person të humbur"
+
+msgid "Crisis events"
+msgstr "Ngjarjet e krizës"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Duke gjurmuar mbi %(num_people)s raporte."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Data nuk mund të vendoset për në të ardhmen. Ju lutemi, kthehuni prapa "
+"dhe provoni sërish."
+
+msgid "Date of birth"
+msgstr "Data e lindjes"
+
+msgid "Delete this record"
+msgstr "Fshije këtë raport"
+
+msgid "Describe how to identify this person."
+msgstr "Përshkruani se si mund të identifikohet ky person."
+
+msgid "Describe the physical characteristics of this person."
+msgstr "Përshkruani tiparet fizike të këtij personi."
+
+msgid "Description"
+msgstr "Përshkrimi"
+
+msgid "Desktop version"
+msgstr "Versioni në Desktop"
+
+msgid "Developers"
+msgstr "Programuesit"
+
+msgid "Disable notes on this record"
+msgstr "Çaktivizo mundësinë për shënime në këtë raport"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "A ka faqe profili apo faqe interneti të tjera ky person?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Shkarko %(begin_link)skëtë shabllon në formatin \"Excel\" %(end_link)s "
+"dhe shto rreshta në të"
+
+msgid "Download the sound as MP3"
+msgstr "Shkarko audion si MP3"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "E-mail address"
+msgstr "Adresa e e-mail-it"
+
+msgid "Edit"
+msgstr "Ndrysho"
+
+msgid "Embedding the Application"
+msgstr "Duke instaluar aplikacionin"
+
+msgid "Enable notes on this record"
+msgstr "Aktivizo mundësinë për shënime në këtë raport"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Shkruajeni datën në formatin \"YYYY-MM-DD\""
+
+msgid "Enter the person's given and family names."
+msgstr "Futni emrin dhe mbiemrin e personit."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Futni emrin e plotë ose pjesë të emrit të personit."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+"Futni emrin e personit, pjesë të emrit ose numrin e telefonit celular të "
+"personit."
+
+msgid "Enter the person's name."
+msgstr "Futni emrin e personit."
+
+msgid "Expiry"
+msgstr "Skadimi"
+
+msgid "Expiry date of this record"
+msgstr "Data e skadimit të këtij raporti"
+
+#, python-format
+msgid "Extend expiration date by %(extension_days)s days"
+msgstr "Shtyni datën e skadimit me %(extension_days)s ditë të tjera"
+
+msgid "Family name"
+msgstr "Mbiemri"
+
+msgid "Feed of updates about this person"
+msgstr "Mekanizmi furnizues i njoftimeve rreth këtij personi"
+
+msgid "Follow this link to create a new record"
+msgstr "Ndiqni këtë lidhje për të krijuar një raport të ri"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Për numra të tjerë telefonikë, ndryshe nga celularët, ju lutemi përdorni "
+"shërbimin 171 të ofruar nga NTT."
+
+msgid "Full name"
+msgstr "Emri i plotë"
+
+msgid "Get a new challenge"
+msgstr "Provoni një mënyrë të re"
+
+msgid "Get a visual challenge"
+msgstr "Provoni përmes pamjes"
+
+msgid "Get an audio challenge"
+msgstr "Provoni përmes audios"
+
+msgid "Given name"
+msgstr "Emri i dhënë"
+
+msgid "Google Person Finder"
+msgstr "\"Gjetësi i Personave i Google\""
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"A keni biseduar personalisht me këtë person PAS katastrofës? (e "
+"domosdoshme për t'u përgjigjur)"
+
+msgid "Help"
+msgstr "Ndihmë"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Këtu është %(begin_tag)snjë shembull skedari CSV%(end_tag)s që mund ta "
+"ndryshoni dhe ngarkoni."
+
+msgid "Hide Map"
+msgstr "Fshihe hartën"
+
+msgid "Hide note"
+msgstr "Fshihe shënimin"
+
+msgid "Home Address"
+msgstr "Adresa"
+
+msgid "Home address"
+msgstr "Vendbanimi"
+
+msgid "Home country"
+msgstr "Shteti i lindjes"
+
+msgid "How can this person be reached now?"
+msgstr "Si mund të kontaktohet me këtë person tani?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Si mund të kontaktojnë me ju, të tjerë të interesuar për këtë person"
+
+msgid "I am seeking information"
+msgstr "Po kërkoj informacione"
+
+msgid "I am this person"
+msgstr "Unë jam ky person"
+
+msgid "I do not want any more updates on this record."
+msgstr "Nuk dua më njoftime mbi këtë raport."
+
+msgid "I do not want my information online anymore."
+msgstr "Nuk më nevojiten më të dhënat e mia në internet."
+
+msgid "I have information about someone"
+msgstr "Kam informacione në lidhje me dikë"
+
+msgid "I have reason to think this person is missing"
+msgstr "Kam arsye të besoj se ky person ka humbur"
+
+msgid "I have received information that this person is alive"
+msgstr "Kam marrë informacione se ky person është gjallë"
+
+msgid "I have received information that this person is dead"
+msgstr "Kam marrë informacione se ky person ka vdekur"
+
+msgid "I have received spam due to this note."
+msgstr "Kam marrë mesazhe të padëshirueshme (spam) për shkak të këtij shënimi."
+
+msgid "I have received spam."
+msgstr "Kam marrë mesazhe të padëshirueshme (spam)."
+
+msgid "I prefer not to specify."
+msgstr "Preferoj të mos specifikoj."
+
+msgid "I'm looking for someone"
+msgstr "Po kërkoj dikë"
+
+msgid "Identify who you are looking for"
+msgstr "Identifikoni personin që po kërkoni"
+
+msgid "Identify who you have information about"
+msgstr "Identifikoni personin për të cilin keni informacione"
+
+msgid "Identifying information"
+msgstr "Informacioni identifikues"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Nëse asnjë prej këtyre raporteve nuk përputhet me personin që mendonit, "
+"ju mund të klikoni më poshtë për të krijuar një raport të ri."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Nëse autori i këtij shënimi jeni ju, ju lutemi kontrolloni postën tuaj "
+"elektronike për lidhjen e konfirmimit përmes të cilës do të çaktivizoni "
+"mundësinë e futjes së shënimeve në këtë raport. Në të kundërt, ju lutemi "
+"prisni që kërkesën tuaj ta konfirmojë autori i raportit."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Nëse autori i këtij shënimi jeni ju, ju lutemi kontrolloni postën tuaj "
+"elektronike për lidhjen e konfirmimit përmes të cilës do të aktivizoni "
+"mundësinë e futjes së shënimeve në këtë raport. Në të kundërt, ju lutemi "
+"prisni që kërkesën tuaj ta konfirmojë autori i raportit."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Nëse keni ndonjë fotografi të këtij personi, ngarkojeni atë ose futni "
+"adresën e URL-së së saj."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Në \"Excel\", përdorni Skedari > Ruaj si... dhe ruajeni në formatin CSV "
+"(.csv)"
+
+msgid "Incorrect.  Try again."
+msgstr "E pasaktë! Provoni sërish."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Adresë e-mail-i e pavlefshme! Ju lutemi, provoni sërish."
+
+msgid "Language selection"
+msgstr "Përzgjedhja e gjuhës"
+
+msgid "Last known location"
+msgstr "Vendndodhja e fundit e njohur"
+
+msgid "Link"
+msgstr "Lidhje"
+
+msgid "Link to profile page"
+msgstr "Lidhje për në faqen e profilit"
+
+msgid "List API keys"
+msgstr "Listo çelësat API"
+
+msgid "Mark records as duplicate"
+msgstr "Shënjo raportet si dublikatë"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Shenjo raportet e përzgjedhura si dublikatë"
+
+msgid "Message (required)"
+msgstr "Mesazhi (e domosdoshme për t'u përgjigjur)"
+
+msgid "Message is required. Please go back and try again."
+msgstr ""
+"Mesazhi është i kërkueshëm me çdo kusht! Ju lutemi, kthehuni prapa dhe "
+"provoni sërish."
+
+msgid "Missing person's current contact information"
+msgstr "Informacioni aktual për kontakt i personit të humbur"
+
+msgid "Missing person's current e-mail address"
+msgstr "Adresa aktuale e e-mail-it të personit të humbur"
+
+msgid "Missing person's current phone number"
+msgstr "Numri aktual i telefonit të personit të humbur"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Më shumë informacione për programuesit, tani mund të gjenden "
+"%(developers_link_html)skëtu%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Më shumë se 100 rezultate; këtu shfaqen vetëm 100 të parat. Provoni të "
+"futni më shumë germa nga emri që kërkoni"
+
+msgid "Name"
+msgstr "Emri"
+
+msgid "Name (required)"
+msgstr "Emri (e domosdoshme për t'u përgjigjur)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+"Emri është i kërkueshëm me çdo kusht! Ju lutemi, kthehuni prapa dhe "
+"provoni sërish."
+
+msgid "Neighborhood"
+msgstr "Lagjja"
+
+msgid "No"
+msgstr "Jo"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Nuk ka adresë e-mail-i autori për raportin me id. %(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+"Nuk u gjet asnjë mesazh i regjistruar nga shërbimi i mesazheve të "
+"operatorit."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Nuk ka asnjë shënim me id.-në %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Nuk është postuar asnjë shënim"
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Nuk ka asnjë person me id.-në %(id_str)s."
+
+msgid "No such Authorization entity."
+msgstr "Nuk keni një autorizim i tillë."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"I/E paautorizuar për të postuar shënime me statusin \"Kam marrë "
+"informacione se ky person ka vdekur\"."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "I/E paautorizuar për të postuar shënime me statusin \"mendohet i vdekur\"."
+
+msgid "Not spam"
+msgstr "Nuk është mesazh i padëshirueshëm (spam)"
+
+msgid "Note author"
+msgstr "Autori i shënimit"
+
+msgid "Note text"
+msgstr "Teksti i shënimit"
+
+msgid "Notes for a possible duplicate"
+msgstr "Shënime për një dublikatë të mundshme"
+
+msgid "Notes for this person"
+msgstr "Shënime për këtë person"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Numri ose vargu (p.sh. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Ose shtojeni në faqen tuaj si %(gadget_link_html)s \"vegël thjeshtëzuese "
+"(gadget) të Google\"%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "URL-ja origjinale"
+
+msgid "Original author's name"
+msgstr "Emri origjinal i autorit"
+
+msgid "Original posting date"
+msgstr "Data origjinale e postimit"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Data origjinale e postimit nuk është në formatin \"YYYY-MM-DD\", ose "
+"bëhet fjalë për një datë që nuk ekziston. Ju lutemi, kthehuni prapa dhe "
+"provoni sërish."
+
+msgid "Original site name"
+msgstr "Emri origjinal i uebfaqes"
+
+msgid "Other website"
+msgstr "Uebfaqe të tjera"
+
+#, fuzzy
+msgid ""
+"PLEASE NOTE: On active Person Finder sites, all data entered is available"
+" to the public and usable by anyone.  Google does not review or verify "
+"the accuracy of this data."
+msgstr ""
+"JU LUTEMI, VINI RE!: Në faqet aktive \"Gjetësi i Personave\", të gjitha "
+"të dhënat e futura janë të disponueshme për publikun si dhe të "
+"shfrytëzueshme për cilindo. Google nuk rishqyrton ose verifikon saktësinë"
+" e këtyre të dhënave."
+
+msgid "Person Finder"
+msgstr "\"Gjetësi i Personave\""
+
+msgid "Phone"
+msgstr "Telefoni"
+
+msgid "Phone number"
+msgstr "Numri i telefonit"
+
+msgid "Photo"
+msgstr "Fotografitë"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Fotografia e ngarkuar është e një formati të panjohur. Ju lutemi, "
+"kthehuni prapa dhe provoni sërish."
+
+msgid "Physical characteristics"
+msgstr "Tiparet fizike"
+
+msgid "Play the sound again"
+msgstr "Dëgjoni sërish audion"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Ju lutemi, verifikoni që keni kontaktuar me këtë person pas tërmetit ose "
+"ndryshoni fushën \"Statusi i këtij personi\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Ju lutemi, verifikoni nëse i përputhet personit që ju planifikonit ta "
+"raportoni."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+"Ju lutemi, konfirmoni adresën tuaj të e-mail-it për t'u abonuar mbi "
+"njoftimet"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Ju lutemi, futni adresën tuaj të e-mail-it për t'u abonuar mbi njoftimet"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Ju lutemi, sqaroni se përse mendoni që bëhet fjalë për të njëjtin person"
+
+msgid "Please fill in all the required fields."
+msgstr "Ju lutemi, plotësojini të gjitha fushat e kërkuara."
+
+msgid "Please fill in your email address."
+msgstr "Ju lutemi, plotësoni adresën tuaj të e-mail-it."
+
+msgid "Please provide an valid email address."
+msgstr "Ju lutemi, ofroni një adresë të vlefshme e-mail-i."
+
+msgid "Possible duplicates"
+msgstr "Dublikatë e mundshme"
+
+msgid "Possible duplicates found."
+msgstr "Një dublikatë e mundshme u gjet!"
+
+msgid "Postal or zip code"
+msgstr "Kodi postar"
+
+msgid "Posted by"
+msgstr "Postuar nga"
+
+msgid "Proceed"
+msgstr "Vazhdo"
+
+msgid "Profile Pages"
+msgstr "Faqet e profilit"
+
+msgid "Profile page"
+msgstr "Faqja e profilit"
+
+msgid "Provide information"
+msgstr "Ofroni informacione"
+
+msgid "Provide information about this person"
+msgstr "Ofroni informacione rreth këtij personi"
+
+msgid "Provided by:"
+msgstr "Ofruar nga:"
+
+msgid "Province or state"
+msgstr "Provinca ose shteti"
+
+msgid "Reason for deletion:"
+msgstr "Arsyeja e fshirjes:"
+
+msgid "Reason for disabling notes:"
+msgstr "Arsyeja për çaktivizimin e shënimeve:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Raportet me emrat dhe adresat që përputhen me \"%(query)s\""
+
+msgid "Remove"
+msgstr "Hiqni"
+
+msgid "Report spam"
+msgstr "Raporto mesazhin e padëshirueshëm"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Kthehu tek raporti për %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Publiko shënimin"
+
+msgid "Save this record"
+msgstr "Ruaje këtë raport"
+
+msgid "Search for this person"
+msgstr "Kërko për këtë person"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Shiko faqen %(begin_tag)s\"wiki\"%(end_tag)s për më shumë udhëzime"
+
+msgid "Select a website to add a profile page..."
+msgstr "Zgjidh një ueb-faqe për të shtuar një faqe profili..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Zgjidh deri në 3 raporte për t'i shënjuar si dublikata:"
+
+msgid "Send email"
+msgstr "Dërgo e-mail"
+
+msgid "Sex"
+msgstr "Gjinia"
+
+msgid "Show Map"
+msgstr "Shfaq hartën"
+
+msgid "Show sensitive information"
+msgstr "Shfaq informacione të ndjeshme"
+
+msgid "Show who marked these duplicates"
+msgstr "Shfaq përdoruesin që i ka shënjuar si dublikatë këto raporte"
+
+msgid "Sign in"
+msgstr "Identifikohuni"
+
+msgid "Sign out"
+msgstr "Dilni"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Dikush ka marrë informacione se ky person është gjallë"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Dikush ka marrë informacione se ky person ka vdekur"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Dikush ka raportuar se ky person ka humbur"
+
+msgid "Someone is seeking information about this person"
+msgstr "Dikush po kërkon informacione në lidhje me këtë person"
+
+msgid "Source of this record"
+msgstr "Burimi i këtij raporti"
+
+msgid "Source of this record (required)"
+msgstr "Burimi i këtij raporti (e domosdoshme për t'u përgjigjur)"
+
+msgid "Status"
+msgstr "Statusi"
+
+msgid "Status of this person"
+msgstr "Statusi i këtij personi"
+
+msgid "Street name"
+msgstr "Emri i rrugës"
+
+msgid "Street name only, no number"
+msgstr "Vetëm emrin e rrugës, jo numrin e saj"
+
+msgid "Subscribe"
+msgstr "Abonohu"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Abonohu për të marrë informacione mbi %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Abonohu për të marrë informacione mbi këtë person"
+
+msgid "Switch to address"
+msgstr "Kalo tek adresa"
+
+msgid "Switch to lat/long"
+msgstr "Kalo në gjer./gjat."
+
+msgid "Tell us the status of this person"
+msgstr "Na tregoni statusin e këtij personi"
+
+msgid "Terms of Service"
+msgstr "Kushtet e shërbimit"
+
+msgid "The API key has been updated successfully."
+msgstr "Çelësi API është rinovuar me sukses."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Emri dhe mbiemri janë të domosdoshëm për t'u futur. Ju lutemi, kthehuni "
+"prapa dhe provoni sërish."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Emri origjinal i autorit është e domosdoshëm për t'u futur. Ju lutemi, "
+"kthehuni prapa dhe provoni sërish."
+
+msgid "The author has disabled notes on this record."
+msgstr "Autori e ka çaktivizuar mundësinë për të futur shënime në këtë raport."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Autori e ka çaktivizuar mundësinë e rinovimit të statusit në këtë raport."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+"Fotografia e ofruar është shumë e madhe. Ju lutemi, ngarkoni një "
+"fotografi më të vogël."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Arsyeja përse ky shënim është shënjuar si mesazh i padëshirueshëm (spam):"
+
+msgid "The record cannot be extended."
+msgstr "Afati i shfrytëzimit të raportit nuk mund të shtyhet më tej."
+
+msgid "The record has been deleted."
+msgstr "Raporti është fshirë."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Statusi që keni klikuar tregon se ju jeni personi i duhur. Nëse është e "
+"vërtetë, ju lutemi klikoni 'Po' për të treguar se ju keni kontaktuar me "
+"këtë person."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Atributi %(token)s ishte i pavlefshëm"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Atributi %(token)s ishte i pavlefshëm."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Ekzistojnë %(num_results)s raporte me emra të ngjashëm."
+
+msgid "There are some existing records with similar names."
+msgstr "Ekzistojnë disa raporte me emra të ngjashëm."
+
+msgid "There is one existing record with a similar name."
+msgstr "Nuk ekziston asnjë raport me një emër të tillë të ngjashëm."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Pati një problem gjatë përpunimit të imazhit. Ju lutemi, provoni një "
+"imazh tjetër."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Ndodhi një gabim gjatë përpunimit të kërkesës suaj. Ju kërkojmë ndjesë "
+"për shqetësimin. Administratorët tanë kanë për ta hetuar burimin e "
+"problemit, por ju lutemi, verifikoni nëse formati i kërkesës suaj ka qenë"
+" i saktë."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Këto vegla thjeshtëzuese (gadgets) janë vënë në dispozicion, nën "
+"%(apache_link_html)s licencën e Apache 2.0 %(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Ky është një raport i ri."
+
+msgid "This link is invalid."
+msgstr "Kjo lidhje është e pavlefshme."
+
+msgid "This note has been marked as spam."
+msgstr "Ky shënim është shënjuar si mesazh i padëshirueshëm (spam)."
+
+msgid "This note is inappropriate."
+msgstr "Ky shënim është i papërshtatshëm."
+
+msgid "This note is incorrect or untrue."
+msgstr "Ky shënim është i pasaktë ose i pavërtetë."
+
+msgid "This note is spam."
+msgstr "Ky shënim është mesazh i padëshirueshëm (spam)."
+
+msgid "This person has been in contact with someone"
+msgstr "Ky person ka qenë në kontakt me dikë"
+
+msgid "This person has posted a message"
+msgstr "Ky person ka postuar një mesazh"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Informacioni i futur nga ky person, nuk ekziston ose është fshirë."
+
+msgid "This record has served its purpose."
+msgstr "Ky raport e përmbushi qëllimin për të cilin u krijua."
+
+msgid "This record is a duplicate of"
+msgstr "Ky raport është dublikatë i"
+
+msgid "This record is copied from another source."
+msgstr "Ky raport është kopjuar nga një tjetër burim."
+
+msgid "This record is inappropriate."
+msgstr "Ky raport është e papërshtatshëm."
+
+msgid "This record is spam."
+msgstr "Ky raport është mesazh i padëshiruar (spam)."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+"Kjo bazë të dhënash është aktualisht në testim. Duke qenë kështu, "
+"raportet që i kalojnë 6 orë nga publikimi, fshihen!"
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"Për t'i bashkëngjitur një fotografi këtij shënimi, ngarkojeni atë ose "
+"futni URL-në e fotografisë."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Për të fshirë të dhënat tuaja, hyni në aplikacionin \"Gjetësi i "
+"Personave\" që keni në desktop."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Për t'u çabonuar, ndiqni këtë lidhje"
+
+msgid "To view or add information, select a name below."
+msgstr ""
+"Për të parë ose për të shtuar informacione, përzgjidhni një emër më "
+"poshtë."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Shkruani një adresë ose hapni hartën e mëposhtme dhe piketoni "
+"vendndodhjen duke klikuar në hartë."
+
+msgid "Type an address."
+msgstr "Shkruani një adresë."
+
+msgid "Type the two words:"
+msgstr "Shkruani dy fjalët:"
+
+msgid "Type what you hear:"
+msgstr "Shkruani atë që dëgjoni:"
+
+msgid "URL"
+msgstr "URL-ja"
+
+msgid "URL of original record"
+msgstr "URL-ja e raportit origjinal"
+
+msgid "Unspecified"
+msgstr "E paspecifikuar"
+
+msgid "Update an existing key"
+msgstr "Rinovo çelësin ekzistues"
+
+msgid "Upload"
+msgstr "Ngarko"
+
+msgid "Upload notes in CSV format"
+msgstr "Ngarko shënime në formatin CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Ngarkoni raportet e personave në formatin CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Ngarko skedarin CSV më poshtë"
+
+msgid "View the record"
+msgstr "Shiko raportin"
+
+msgid "We have nothing matching your search."
+msgstr "Nuk kemi asgjë që t'i përputhet kërkimit tuaj."
+
+msgid "What is this person's name?"
+msgstr "Si quhet ky person?"
+
+msgid "When should this record disappear?"
+msgstr "Kur mund të hiqet ky raport?"
+
+msgid "Where did this information come from?"
+msgstr "Prej nga erdhi ky informacion?"
+
+msgid "Where is this person from?"
+msgstr "Prej nga është ky person?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Duke qenë se kjo bazë të dhënash është në testim, raportet që i kalojnë 6"
+" orë nga publikimi, fshihen pavarësisht datës së skadimit."
+
+msgid "Yes"
+msgstr "Po"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr ""
+"Po, kërkojini autorit të raportit që të çaktivizojë mundësinë e "
+"futjes/shfrytëzimit të shënimeve."
+
+msgid "Yes, ask the record author to enable notes"
+msgstr ""
+"Po, kërkojini autorit të raportit që të aktivizojë mundësinë e "
+"futjes/shfrytëzimit të shënimeve."
+
+msgid "Yes, delete the record"
+msgstr "Po, fshije raportin"
+
+msgid "Yes, disable notes on this record."
+msgstr "Po, çaktivizoje futjen/shfrytëzimin e shënimeve në këtë raport."
+
+msgid "Yes, extend the record"
+msgstr "Po, shtyje afatin e shfrytëzimit të raportit"
+
+msgid "Yes, restore this record"
+msgstr "Po, riktheje këtë raport"
+
+msgid "Yes, these are the same person"
+msgstr "Po, këta janë i njëjti person"
+
+msgid "Yes, update the note"
+msgstr "Po, rifresko me të dhëna shënimin"
+
+msgid "You are already subscribed. "
+msgstr "Ju jeni abonuar tashmë. "
+
+msgid "You are already unsubscribed."
+msgstr "Ju jeni çabonuar tashmë."
+
+#, python-format
+msgid ""
+"You are currently signed in as "
+"%(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Ju keni hyrë tashmë si %(begin_span_tag)s%(email)s%(end_span_tag)s."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Ju keni hyrë tashmë si %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Ju nuk keni hyrë në llogari."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Ju mund ta %(begin_tag)sshikoni raportin%(end_tag)s para se ta fshini atë."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Ju mund të shikoni raportin e plotë në lidhjen %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Ju jeni abonuar me sukses."
+
+msgid "You have successfully unsubscribed."
+msgstr "Ju jeni çabonuar me sukses."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Ju morët këtë njoftim, pasi jeni abonuar për të marrë çdo informacion të "
+"ri mbi personin e mëposhtëm:\n"
+
+msgid "Your e-mail address"
+msgstr "Adresa juaj e e-mail-it"
+
+msgid "Your e-mail address:"
+msgstr "Adresa juaj e e-mail-it:"
+
+msgid "Your email"
+msgstr "E-mail-i juaj:"
+
+msgid "Your name"
+msgstr "Emri juaj"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Emri juaj është i domosdoshëm për t'u shkruar në seksionin \"Rreth "
+"jush\". Ju lutemi, kthehuni prapa dhe provoni sërish."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Emri juaj është i domosdoshëm për t'u shkruar në seksionin \"Burimi\". Ju"
+" lutemi, kthehuni prapa dhe provoni sërish."
+
+msgid "Your phone number"
+msgstr "Numri i telefonit tuaj"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Kërkesa juaj është përpunuar me sukses. Ju lutemi, kontrolloni postën "
+"tuaj elektronike  dhe konfirmoni se dëshironi të postoni shënimin, duke "
+"ndjekur url-në e ardhur në e-mail."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Gjetësi i Personave] Konfirmo shënim tënd mbi \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Gjetësi i Personave] Njoftimi i fshirjes për \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Gjetësi i Personave] Do i çaktivizosh shënimet mbi \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Gjetësi i Personave] Do i aktivizosh shënimet mbi \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Gjetësi i Personave] Njoftimi për aktivizimin e shënimeve për "
+"\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Gjetësi i Personave] Shënimet u çaktivizuan për \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Gjetësi i Personave] Shënimet u aktivizuan mbi \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr ""
+"[Gjetësi i Personave] Njoftimi i rikthimit të raportit për "
+"\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Gjetësi i Personave] Informacione mbi statusin e %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Gjetësi i Personave] Ju jeni abonuar për të marrë çdo informacion të ri "
+"mbi %(full_name)s"
+
+msgid "female"
+msgstr "femër"
+
+msgid "in test mode"
+msgstr "në fazë testimi"
+
+msgid "male"
+msgstr "mashkull"
+
+msgid "on"
+msgstr "mbi"
+
+msgid "other"
+msgstr "tjetër"
+

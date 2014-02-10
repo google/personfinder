@@ -360,6 +360,16 @@ class Session:
             raise ScrapeError('link %r has no href' % link)
         return self.go(link['href'])
 
+    def follow_button(self, button):
+        """Follow the forward URL specified in the button's onclick handler."""
+        if not button:
+            raise ScrapeError('button %r not found' % button)
+        location_match = re.search(r'location\.href=[\'"]([^\'"]+)',
+                                   button.get('onclick', ''))
+        if not location_match:
+            raise ScrapeError('button %r has no forward URL' % button)
+        return self.go(location_match.group(1))
+
     def submit(self, region, paramdict=None, url=None, redirects=10, **params):
         """Submit a form, optionally by clicking a given button.  The 'region'
         argument can be the form itself or a button in the form to click.

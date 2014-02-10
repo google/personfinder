@@ -175,7 +175,8 @@ class HandlerTests(unittest.TestCase):
         config.set_for_repo(
             'haiti',
             repo_titles={'en': 'Haiti Earthquake'},
-            language_menu_options=['en', 'ht', 'fr', 'es'])
+            language_menu_options=['en', 'ht', 'fr', 'es'],
+            referrer_whitelist=[])
         self.original_get_rendered = resources.get_rendered
 
     def tearDown(self):
@@ -200,6 +201,17 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.family_name == 'Doe'
         assert handler.params.author_made_contact == 'yes'
         assert handler.params.role == 'provide'
+
+    def test_whitelisted_referrer(self):
+        config.set_for_repo('haiti', referrer_whitelist=['a.org'])
+        _, _, handler = self.handler_for_url(
+            '/haiti?referrer=a.org')
+        assert handler.params.referrer == 'a.org'
+
+    def test_nonwhitelisted_referrer(self):
+        _, _, handler = self.handler_for_url(
+            '/haiti?referrer=foobar')
+        assert handler.params.referrer == ''
 
     def test_nonexistent_repo(self):
         request, response, handler = self.handler_for_url('/x/start')
