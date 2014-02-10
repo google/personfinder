@@ -27,10 +27,10 @@ fi
 
 for python in \
     "$PYTHON" \
-    $(which python2.5) \
-    /usr/local/bin/python2.5 \
-    /usr/bin/python2.5 \
-    /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
+    $(which python2.7) \
+    /usr/local/bin/python2.7 \
+    /usr/bin/python2.7 \
+    /Library/Frameworks/Python.framework/Versions/2.7/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
         break
@@ -39,13 +39,13 @@ done
 
 if [ -z "$PYTHON" ]; then
     DEFAULT_PYTHON=$(which python)
-    if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.5" ]]; then
+    if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.7" ]]; then
         export PYTHON="$DEFAULT_PYTHON"
     fi
 fi
 
 if [ -z "$PYTHON" ]; then
-    echo "Could not find python2.5 executable.  Please set PYTHON."
+    echo "Could not find python2.7 executable.  Please set PYTHON."
     exit 1
 fi
 
