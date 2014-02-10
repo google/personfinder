@@ -231,13 +231,13 @@ class CountBase(utils.BaseHandler):
             try:
                 counter = model.Counter.get_unfinished_or_create(
                     self.repo, self.SCAN_NAME)
-                counted_all_entities = False
-                while not counted_all_entities:
+                entities_remaining = True
+                while entities_remaining:
                     # Batch the db updates.
                     for _ in xrange(100):
-                        counted_all_entities = run_count(
+                        entities_remaining = run_count(
                             self.make_query, self.update_counter, counter)
-                        if counted_all_entities:
+                        if not entities_remaining:
                             break
                     counter.put()
             except runtime.DeadlineExceededError:
