@@ -30,6 +30,9 @@ class Handler(BaseHandler):
     # accessible so we can edit its settings.
     ignore_deactivation = True
 
+    # We show global admin page, if a repo is not specified.
+    repo_required = False
+
     def get(self):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str
@@ -99,6 +102,10 @@ class Handler(BaseHandler):
             self.redirect('/admin', new_repo)
 
         elif self.params.operation == 'save_repo':
+            if not self.repo:
+                self.redirect('/admin')
+                return
+
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'repo_titles',
