@@ -15,7 +15,7 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
-DEFAULT_BRANCH='default'
+DEFAULT_BRANCH='python27'
 
 function usage() {
   echo
