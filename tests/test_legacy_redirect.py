@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -16,6 +16,7 @@
 
 """Tests for legacy_redirect."""
 
+import django_setup
 import main
 import unittest
 import utils
@@ -32,8 +33,8 @@ class LegacyRedirectTests(unittest.TestCase):
         environ['HTTP_HOST'] = host
         request = webapp.Request(environ)
         response = webapp.Response()
-        self.handler = utils.BaseHandler()
-        self.handler.initialize(request, response, main.setup_env(request))
+        self.handler = utils.BaseHandler(
+            request, response, main.setup_env(request))
 
     def test_get_subdomain(self):
         self.init('/', 'japan.personfinder.appspot.com')
@@ -43,7 +44,7 @@ class LegacyRedirectTests(unittest.TestCase):
         """Verify that we redirect a host-based subdomain properly."""
         self.init('/', 'japan.personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(301, self.handler.response.status)
+        self.assertEquals('301 Moved Permanently', self.handler.response.status)
         self.assertEquals('http://google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
@@ -51,7 +52,7 @@ class LegacyRedirectTests(unittest.TestCase):
         """Verify that we redirect a host-based subdomain properly."""
         self.init('/?subdomain=japan', 'personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(301, self.handler.response.status)
+        self.assertEquals('301 Moved Permanently', self.handler.response.status)
         self.assertEquals('http://google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
@@ -61,7 +62,7 @@ class LegacyRedirectTests(unittest.TestCase):
                   '%2Fperson.1141073&family_name=&query=ahmet&role=seek',
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(301, self.handler.response.status)
+        self.assertEquals('301 Moved Permanently', self.handler.response.status)
         # note that we stripped out the empty params here.
         self.assertEquals(
             'http://google.org/personfinder/turkey-2011'
@@ -75,7 +76,7 @@ class LegacyRedirectTests(unittest.TestCase):
                   '%2Fperson.1141073&family_name=&query=ahmet&role=seek',
                   host='turkey-2011.personfinder.google.org')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(301, self.handler.response.status)
+        self.assertEquals('301 Moved Permanently', self.handler.response.status)
         self.assertEquals(
             'http://google.org/personfinder/turkey-2011/view?'
             'id=turkey-2011.person-finder.appspot.com'

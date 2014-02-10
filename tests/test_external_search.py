@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -355,7 +355,7 @@ class ExternalSearchTests(unittest.TestCase):
 
 # To run this test independently:
 # pushd tools; source common.sh; popd
-# python2.5 tests/test_external_search.py
+# python2.7 tests/test_external_search.py
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     unittest.main()
