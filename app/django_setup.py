@@ -24,6 +24,9 @@ selected; ugettext for those after (ugettext is safe to use in all Handlers)."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
+from google.appengine.dist import use_library
+use_library('django', '1.2')
+
 import django.conf
 import django.template
 import django.template.loader

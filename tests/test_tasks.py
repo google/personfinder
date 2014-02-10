@@ -25,6 +25,7 @@ import sys
 import unittest
 import webob
 
+from google.appengine import runtime
 from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.api import quota
@@ -41,9 +42,9 @@ from utils import get_utcnow, set_utcnow_for_test
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
-    def initialize_handler(self, handler):
-        test_handler.initialize_handler(handler, handler.ACTION)
-        return handler
+    def initialize_handler(self, handler_class):
+        return test_handler.initialize_handler(
+            handler_class, handler_class.ACTION)
 
     def setUp(self):
         logging.basicConfig(level=logging.INFO, stream=sys.stderr)
@@ -110,7 +111,7 @@ class TasksTests(unittest.TestCase):
 
         def run_delete_expired_task():
             """Runs the DeleteExpired task."""
-            self.initialize_handler(tasks.DeleteExpired()).get()
+            self.initialize_handler(tasks.DeleteExpired).get()
 
         def assert_past_due_count(expected):
             actual = len(list(model.Person.past_due_records(repo='haiti')))
@@ -138,8 +139,8 @@ class TasksTests(unittest.TestCase):
                       params={'cursor': cursor, 'queue_name': 'expiry'},
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        delexp = self.initialize_handler(tasks.DeleteExpired())
-        delexp.schedule_next_task(query)
+        delexp = self.initialize_handler(tasks.DeleteExpired)
+        delexp.schedule_next_task(query.cursor())
         self.mox.VerifyAll()
 
 
@@ -250,7 +251,7 @@ class TasksTests(unittest.TestCase):
 
         def run_clean_up_in_test_mode_task():
             """Runs the CleanUpInTestMode task."""
-            self.initialize_handler(tasks.CleanUpInTestMode()).get()
+            self.initialize_handler(tasks.CleanUpInTestMode).get()
 
         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
 
@@ -293,8 +294,8 @@ class TasksTests(unittest.TestCase):
                       },
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        cleanup = self.initialize_handler(tasks.CleanUpInTestMode())
-        cleanup.schedule_next_task(query, utcnow)
+        cleanup = self.initialize_handler(tasks.CleanUpInTestMode)
+        cleanup.schedule_next_task(query.cursor(), utcnow)
         self.mox.UnsetStubs()
         self.mox.VerifyAll()
 
@@ -326,17 +327,26 @@ class TasksTests(unittest.TestCase):
         """Test the clean up in test mode when it is broken into multiple
         tasks."""
 
+        class Listener(object):
+            def before_deletion(self, person):
+                # This will be implemented later using mock.
+                assert False
+
         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
         utcnow = datetime.datetime(2010, 1, 1, 7, 0, 0)
         set_utcnow_for_test(utcnow)
         self.mox = mox.Mox()
-        cleanup = self.initialize_handler(tasks.CleanUpInTestMode())
+        cleanup = self.initialize_handler(tasks.CleanUpInTestMode)
+        listener = Listener()
+        cleanup.set_listener(listener)
 
         # Simulates add_task_for_repo() because it doesn't work in unit tests.
         def add_task_for_repo(repo, task_name, action, **kwargs):
-            test_handler.initialize_handler(
-                cleanup, action, repo=repo, params=kwargs)
+            cleanup = test_handler.initialize_handler(
+                tasks.CleanUpInTestMode, action, repo=repo, params=kwargs)
+            cleanup.set_listener(listener)
             cleanup.get()
+
         self.mox.StubOutWithMock(cleanup, 'add_task_for_repo')
         (cleanup.add_task_for_repo(
                 'haiti',
@@ -347,11 +357,14 @@ class TasksTests(unittest.TestCase):
                 queue_name=mox.IsA(str)).
             WithSideEffects(add_task_for_repo).MultipleTimes())
 
-        # Always pretends that we have consumed more CPU than threshold,
-        # so that it creates a new task for each entry.
-        self.mox.StubOutWithMock(quota, 'get_request_cpu_usage')
-        quota.get_request_cpu_usage().MultipleTimes().AndReturn(
-            tasks.CPU_MEGACYCLES_PER_REQUEST + 1)
+        def raise_deadline_exceeded_error(_):
+            raise runtime.DeadlineExceededError()
+
+        self.mox.StubOutWithMock(listener, 'before_deletion')
+        listener.before_deletion(self.key_p1)
+        listener.before_deletion(self.key_p2).WithSideEffects(
+            raise_deadline_exceeded_error)
+        listener.before_deletion(self.key_p2)
 
         self.mox.ReplayAll()
 

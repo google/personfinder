@@ -17,6 +17,7 @@ import calendar
 import datetime
 import time
 
+from google.appengine import runtime
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
@@ -52,35 +53,35 @@ class ScanForExpired(utils.BaseHandler):
         """Subclasses should implement this."""
         pass
 
-    def schedule_next_task(self, query):
+    def schedule_next_task(self, cursor):
         """Schedule the next task for to carry on with this query.
-
-        we pass the query as a parameter to make testing easier.
         """
         self.add_task_for_repo(self.repo, self.task_name(), self.ACTION,
-                               cursor=query.cursor(), queue_name='expiry')
+                               cursor=cursor, queue_name='expiry')
 
     def get(self):
         if self.repo:
             query = self.query()
             if self.params.cursor:
                 query.with_cursor(self.params.cursor)
-            for person in query:
-                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
-                    # Stop before running into the hard limit on CPU time per
-                    # request, to avoid aborting in the middle of an operation.
-                    # Add task back in, restart at current spot:
-                    self.schedule_next_task(query)
-                    break
-                was_expired = person.is_expired
-                person.put_expiry_flags()
-                if (utils.get_utcnow() - person.get_effective_expiry_date() >
-                    EXPIRED_TTL):
-                    person.wipe_contents()
-                else:
-                    # treat this as a regular deletion.
-                    if person.is_expired and not was_expired:
-                        delete.delete_person(self, person)
+            cursor = self.params.cursor
+            try:
+                for person in query:
+                    # query.cursor() returns a cursor which returns the entity
+                    # next to this "person" as the first result.
+                    next_cursor = query.cursor()
+                    was_expired = person.is_expired
+                    person.put_expiry_flags()
+                    if (utils.get_utcnow() - person.get_effective_expiry_date()
+                        > EXPIRED_TTL):
+                        person.wipe_contents()
+                    else:
+                        # treat this as a regular deletion.
+                        if person.is_expired and not was_expired:
+                            delete.delete_person(self, person)
+                    cursor = next_cursor
+            except runtime.DeadlineExceededError:
+                self.schedule_next_task(cursor)
         else:
             for repo in model.Repo.list():
                 self.add_task_for_repo(repo, self.task_name(), self.ACTION)
@@ -132,20 +133,22 @@ class CleanUpInTestMode(utils.BaseHandler):
     #   deleted, and handled as a part of real mode data.
     DELETION_AGE_SECONDS = 6 * 3600
 
+    def __init__(self, request, response, env):
+        utils.BaseHandler.__init__(self, request, response, env)
+        self.__listener = None
+
     def task_name(self):
         return 'clean-up-in-test-mode'
 
-    def schedule_next_task(self, query, utcnow):
+    def schedule_next_task(self, cursor, utcnow):
         """Schedule the next task for to carry on with this query.
-
-        We pass the query as a parameter to make testing easier.
         """
         self.add_task_for_repo(
                 self.repo,
                 self.task_name(),
                 self.ACTION,
                 utcnow=str(calendar.timegm(utcnow.utctimetuple())),
-                cursor=query.cursor(),
+                cursor=cursor,
                 queue_name='clean_up_in_test_mode')
 
     def in_test_mode(self, repo):
@@ -166,29 +169,35 @@ class CleanUpInTestMode(utils.BaseHandler):
             query.filter('entry_date <=', max_entry_date)
             if self.params.cursor:
                 query.with_cursor(self.params.cursor)
+            cursor = self.params.cursor
             # Uses query.get() instead of "for person in query".
             # If we use for-loop, query.cursor() points to an unexpected
             # position.
             person = query.get()
             # When the repository is no longer in test mode, aborts the
             # deletion.
-            while person and self.in_test_mode(self.repo):
-                person.delete_related_entities(delete_self=True)
-                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
-                    # Stop before running into the hard limit on CPU time per
-                    # request, to avoid aborting in the middle of an operation.
-                    # Add task back in, restart at current spot:
-                    self.schedule_next_task(query, utcnow)
-                    break
-                person = query.get()
+            try:
+                while person and self.in_test_mode(self.repo):
+                    if self.__listener:
+                        self.__listener.before_deletion(person.key())
+                    person.delete_related_entities(delete_self=True)
+                    cursor = query.cursor()
+                    person = query.get()
+            except runtime.DeadlineExceededError:
+                self.schedule_next_task(cursor, utcnow)
+                
         else:
             for repo in model.Repo.list():
                 if self.in_test_mode(repo):
                     self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
+    def set_listener(self, listener):
+        self.__listener = listener
+
+
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
-    while quota.get_request_cpu_usage() < CPU_MEGACYCLES_PER_REQUEST:
+    for _ in xrange(100):
         # Get the next batch of entities.
         query = make_query()
         if counter.last_key:
@@ -217,11 +226,15 @@ class CountBase(utils.BaseHandler):
 
     def get(self):
         if self.repo:  # Do some counting.
-            counter = model.Counter.get_unfinished_or_create(
-                self.repo, self.SCAN_NAME)
-            run_count(self.make_query, self.update_counter, counter)
-            counter.put()
-            if counter.last_key:  # Continue counting in another task.
+            try:
+                while True:
+                    counter = model.Counter.get_unfinished_or_create(
+                        self.repo, self.SCAN_NAME)
+                    run_count(self.make_query, self.update_counter, counter)
+                    counter.put()
+                    if not counter.last_key: break
+            except runtime.DeadlineExceededError:
+                # Continue counting in another task.
                 self.add_task_for_repo(self.repo, self.SCAN_NAME, self.ACTION)
         else:  # Launch counting tasks for all repositories.
             for repo in model.Repo.list():

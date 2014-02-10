@@ -55,10 +55,13 @@ export PYTHONPATH=\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
+"$APPENGINE_DIR/lib/webapp2":\
 "$APPENGINE_DIR/lib/webob":\
 "$APPENGINE_DIR/lib/webob_0_9":\
 "$APPENGINE_DIR/lib/yaml/lib":\
 "$APPENGINE_DIR/lib/django_1_2"
+
+export APPENGINE_RUNTIME=python27
 
 if [ -z "$USER_EMAIL" ]; then
     export USER_EMAIL=$(whoami)@google.com
