@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2011 Google Inc.
 #
@@ -18,6 +18,7 @@
 
 import unittest
 
+import django.template
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 import resources
@@ -85,8 +86,8 @@ class ResourcesTests(unittest.TestCase):
         self.rendered = []
 
         self.resource_get_by_key_name_original = Resource.get_by_key_name
-        self.template_init_original = webapp.template.Template.__init__
-        self.template_render_original = webapp.template.Template.render
+        self.template_init_original = django.template.Template.__init__
+        self.template_render_original = django.template.Template.render
 
         test_self = self
 
@@ -104,8 +105,8 @@ class ResourcesTests(unittest.TestCase):
             return test_self.template_render_original(self, context)
 
         Resource.get_by_key_name = resource_get_by_key_name_for_test
-        webapp.template.Template.__init__ = template_init_for_test
-        webapp.template.Template.render = template_render_for_test
+        django.template.Template.__init__ = template_init_for_test
+        django.template.Template.render = template_render_for_test
 
     def tearDown(self):
         utils.set_utcnow_for_test(None)

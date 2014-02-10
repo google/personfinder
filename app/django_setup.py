@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,6 @@ Use gettext_lazy for strings that are declared before a language has been
 selected; ugettext for those after (ugettext is safe to use in all Handlers)."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
-
-from google.appengine.dist import use_library
-use_library('django', '1.2')
 
 import django.conf
 import django.template
