@@ -15,6 +15,8 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
+DEFAULT_BRANCH='default'
+
 function usage() {
   echo
   echo "Usage: $0 <reviewer-addresses> [<cc-addresses>]"
@@ -59,7 +61,7 @@ fi
 EMAIL=$(cat $HOME/.email)
 BRANCH=$(hg branch)
 BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
-DEFAULT_CS=$(hg branches | grep "^default " | sed -e 's/^.* //')
+DEFAULT_CS=$(hg branches | grep "^$DEFAULT_BRANCH " | sed -e 's/^.* //')
 PARENT_CS=$(hg parent --template '{rev}:{node|short}')
 ISSUE_INDEX=$HOME/.codereview_issues
 if [ -f $ISSUE_INDEX ]; then
@@ -78,9 +80,9 @@ if [ -n "$ISSUE" ]; then
 fi
 
 # Ensure that we're on a feature branch.
-if [ "$BRANCH" == default ]; then
+if [ "$BRANCH" == "$DEFAULT_BRANCH" ]; then
   echo
-  echo "You're on the default branch; don't commit changes here until they"
+  echo "You're on the $DEFAULT_BRANCH branch; don't commit changes here until they"
   echo "have been reviewed.  Instead, create a branch for your changes with"
   echo "'hg branch', commit them, and request a review there."
   echo
@@ -107,22 +109,22 @@ if [ "$(hg status -m -a -r -d)" != "" ]; then
 fi
 
 # Ensure that this repository is up to date with changes in the default branch.
-if [ "$(hg -q incoming -b default)" != "" ]; then
+if [ "$(hg -q incoming -b $DEFAULT_BRANCH)" != "" ]; then
   echo
-  echo "There are new changes in the repository for the default branch."
-  echo "Please do 'hg pull' to pull in these changes, then 'hg merge default'"
+  echo "There are new changes in the repository for the $DEFAULT_BRANCH branch."
+  echo "Please do 'hg pull' to pull in these changes, then 'hg merge $DEFAULT_BRANCH'"
   echo "to merge them into your branch before requesting a review:"
-  hg -q incoming -b default
+  hg -q incoming -b $DEFAULT_BRANCH
   echo
   exit 1
 fi
 
 # Ensure that this branch is up to date with changes in the default branch.
-if [ "$(hg merge -P default)" != "" ]; then
+if [ "$(hg merge -P $DEFAULT_BRANCH)" != "" ]; then
   echo
-  echo "There are new changes in the default branch that need to be merged."
-  echo "Please do 'hg merge default' before requesting a review."
-  hg merge -P default
+  echo "There are new changes in the $DEFAULT_BRANCH branch that need to be merged."
+  echo "Please do 'hg merge $DEFAULT_BRANCH' before requesting a review."
+  hg merge -P $DEFAULT_BRANCH
   echo
   exit 1
 fi
@@ -131,7 +133,7 @@ fi
 hg push --new-branch
 
 # Prepare the command-line options for the upload.py script.
-OPTIONS="--rev=default -e $EMAIL --send_mail"
+OPTIONS="--rev=$DEFAULT_BRANCH -e $EMAIL --send_mail"
 
 # Get the e-mail addresses of the reviewers.
 if [ -n "$1" ]; then
@@ -151,9 +153,9 @@ OPTIONS="$OPTIONS --cc=$CC_LIST"
 # Add the existing issue number, if there is one.
 if [ -n "$ISSUE" ]; then
   OPTIONS="$OPTIONS -i $ISSUE"
-  echo "Updating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+  echo "Updating review: $DEFAULT_CS ($DEFAULT_BRANCH) --> $BRANCH_CS"
 else
-  echo "Creating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+  echo "Creating review: $DEFAULT_CS ($DEFAULT_BRANCH) --> $BRANCH_CS"
 fi
 
 # Ask for a patch set description.
@@ -199,7 +201,7 @@ else
 fi
 
 # Don't put all the message files in the review if only the timestamp changed.
-hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
+hg diff -r $DEFAULT_BRANCH app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
 # When only one line is touched, diff produces exactly 6 lines of output.
 if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
     # If we see the "POT-Creation-Date" line in the diff, it's the only change.
