@@ -211,6 +211,7 @@
     <input type="submit" value="Create">
   </form>
 
+{% if env.repo %}
 <h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
 
 <form id="save_repo" method="post" class="admin"
@@ -626,4 +627,5 @@
     <input type="hidden" name="operation" value="save_repo">
     <input type="submit" value="Save these settings">
 </form>
+{% endif %}
 {% endblock %}
