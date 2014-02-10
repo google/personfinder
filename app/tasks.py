@@ -131,7 +131,7 @@ class CleanUpInTestMode(utils.BaseHandler):
     #   entries are deleted.
     # - If we make the switch in DELETION_AGE_SECONDS, such entries are not
     #   deleted, and handled as a part of real mode data.
-    DELETION_AGE_SECONDS = 6 * 3600
+    DELETION_AGE_SECONDS = 24 * 3600
 
     def __init__(self, request, response, env):
         utils.BaseHandler.__init__(self, request, response, env)
