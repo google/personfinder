@@ -67,9 +67,7 @@ class Handler(utils.BaseHandler):
             headers = {'Authorization': 'Basic %s' % basic_auth_value}
         else:
             headers = {}
-        logging.info(
-            'urlfetch.fetch(%r, headers=%r)' %
-            (url, headers))
+        logging.info('urlfetch.fetch(%r, headers=%r)' % (url, headers))
         response = urlfetch.fetch(url, headers=headers, deadline=60)
         if response.status_code == 200:
             self.response.headers['Content-Type'] = 'application/json'
