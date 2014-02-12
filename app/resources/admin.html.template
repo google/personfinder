@@ -562,6 +562,7 @@
       </div>
     </div>
   </fieldset>
+
   <fieldset>
     <legend>Optional custom messages</legend>
     <div class="config">
@@ -606,6 +607,17 @@
         <textarea name="seek_query_form_custom_htmls"
             id="seek_query_form_custom_htmls" rows=10 cols=80
 >{{config_json.seek_query_form_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="footer_custom_htmls">
+        Custom message for the footer in all pages in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="footer_custom_htmls"
+            id="footer_custom_htmls" rows=10 cols=80
+>{{config_json.footer_custom_htmls}}</textarea>
       </div>
     </div>
   </fieldset>

@@ -116,6 +116,10 @@
       {% endblock disclaimer %}
     </div>
 
+    <div>
+      {{env.footer_custom_html|default:""|safe}}
+    </div>
+
     {% block footer %}
       {% if env.repo and env.ui == "light" %}
         <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
