@@ -165,6 +165,10 @@ msgid ""
 "query.\n"
 "        "
 msgstr ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -312,7 +316,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ამ ჩანაწერის ვადა %(expiry_date)s-მდე გახანგრძლივდა.\n"
+"      ამ ჩანაწერის ვადა გახანგრძლივდა %(expiry_date)s-მდე.\n"
 "    "
 
 msgid ""
@@ -538,7 +542,7 @@ msgid "(unknown)"
 msgstr "(უცნობია)"
 
 msgid "A message for this person or others seeking this person"
-msgstr "შეტყობინება ამ პიროვნებისგან ან სხვებისგან, რომელიც ეძებს ამ პიროვნებას"
+msgstr "შეტყობინება ამ პიროვნებისთვის, ან მათთვის, ვინც ამ პიროვნებას ეძებს"
 
 msgid "A new API key has been created successfully."
 msgstr "ახალი API-ს გასაღები წარმატებით შეიქმნა."
@@ -646,7 +650,7 @@ msgid "Close window"
 msgstr "ფანჯრის დახურვა"
 
 msgid "Compare these records"
-msgstr "ამ ჩანაწერების შედარება"
+msgstr "შეადარეთ ჩანაწერები"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -660,7 +664,7 @@ msgid "Create a new record"
 msgstr "ახალი ჩანაწერის შექმნა"
 
 msgid "Create a new record for"
-msgstr "ახალი ჩანაწერის შექმნა"
+msgstr "ახალი ჩანაწერის შექმნა პიროვნებაზე:"
 
 msgid "Create a new record for a missing person"
 msgstr "ახალი ჩანაწერის შექმნა დაკარგული პიროვნების შესახებ"
@@ -833,7 +837,7 @@ msgid "I do not want my information online anymore."
 msgstr "აღარ მსურს ჩემი ინფირმაცია იყოს ონლაინ."
 
 msgid "I have information about someone"
-msgstr "მაქვს ინფორმაცია ერთი ადამიანის შესახებ"
+msgstr "მაქვს ინფორმაცია დაკარგული ადამიანის შესახებ"
 
 msgid "I have reason to think this person is missing"
 msgstr "მაქვს მიზეზი ვიფიქრო, რომ ეს პიროვნება დაკარგულია"
@@ -854,7 +858,7 @@ msgid "I prefer not to specify."
 msgstr "მირჩევნია, არ დავაკონკრეტო."
 
 msgid "I'm looking for someone"
-msgstr "ვეძებ ვიღაცას"
+msgstr "ვეძებ დაკარგულ ადამიანს"
 
 msgid "Identify who you are looking for"
 msgstr "დაადგინეთ, ვის ეძებთ"
@@ -923,10 +927,10 @@ msgid "List API keys"
 msgstr "API-ს გასაღებების სიის შედგენა"
 
 msgid "Mark records as duplicate"
-msgstr "ჩანაწერების მონიშვნა გამეორებულად"
+msgstr "ჩანაწერების მონიშვნა დუბლიკატად"
 
 msgid "Mark the selected records as duplicate"
-msgstr "არჩეული ჩანაწერების მონიშვნა გამეორებულად"
+msgstr "არჩეული ჩანაწერების მონიშვნა დუბლიკატად"
 
 msgid "Message (required)"
 msgstr "შეტყობინება (აუცილებელი)"
@@ -1054,7 +1058,6 @@ msgstr "საწყისი საიტის სახელი"
 msgid "Other website"
 msgstr "სხვა ვებსაიტი"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1463,7 +1466,7 @@ msgid "Where did this information come from?"
 msgstr "საიდან მოვიდა ეს ინფორმაცია?"
 
 msgid "Where is this person from?"
-msgstr "საიდან არის ეს ადამიანი?"
+msgstr "საიდან არის ეს პიროვნება?"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
@@ -1634,7 +1637,7 @@ msgid "male"
 msgstr "მამრობითი"
 
 msgid "on"
-msgstr "ჩართული"
+msgstr "თარიღი:"
 
 msgid "other"
 msgstr "სხვა"

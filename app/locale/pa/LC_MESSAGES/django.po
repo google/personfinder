@@ -157,6 +157,10 @@ msgid ""
 "query.\n"
 "        "
 msgstr ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -185,8 +189,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਕੀ ਤੁਸੀ ਦੇ ਲਈ ਰਿਕਾਰਡ ਨੂੰ ਨਸ਼ਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\"%(full_name)s\"?\n"
-"    "
+"ਕੀ ਤੁਸੀ \"%(full_name)s\" ਦੇ ਲਈ ਰਿਕਾਰਡ ਨੂੰ ਨਸ਼ਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #, python-format
 msgid ""
@@ -195,8 +198,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਕੀ ਤੁਸੀ ਦੇ ਉੱਤੇ ਨੋਟਾਂ ਨੂੰ ਅਕਰਮਕ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ \"%(full_name)s\"?\n"
-"    "
+"ਕੀ ਤੁਸੀ  \"%(full_name)s\" ਦੇ ਉੱਤੇ ਨੋਟਾਂ ਨੂੰ ਅਕਰਮਕ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #, python-format
 msgid ""
@@ -228,9 +230,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਕੀ ਤੁਸੀਂ ਰਿਕਾਰਡ ਦੇ ਲਈ ਸਮਾਂ ਸੀਮਾ ਅੰਤ ਦਾ ਵਿਸਥਾਰ ਕਰਨਾ ਚਾਹੁੰਦੇ "
-"ਹੋ\"%(full_name)s\"?\n"
-"    "
+"ਕੀ ਤੁਸੀਂ \"%(full_name)s\" ਦੇ ਲਈ ਰਿਕਾਰਡ ਸਮਾਂ ਸੀਮਾ ਅੰਤ ਦਾ ਵਿਸਥਾਰ ਕਰਨਾ "
+"ਚਾਹੁੰਦੇ ਹੋ?"
 
 msgid ""
 "\n"
@@ -248,9 +249,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਜੇਕਰ ਤੁਸੀਂ ਹਟਾਣ ਦੇ ਨਾਲ ਅੱਗੇ ਵਧਦੇ ਹੈ, ਤਾਂ ਇਹ ਰਿਕਾਰਡ ਹੁਣ ਇਸ ਸਾਇਟ ਉੱਤੇ"
-" ਖੋਜਿਆ ਜਾਂ ਵੇਖਿਆ ਨਹੀ ਜਾ ਸਕੇਂਗਾ.\n"
-"    "
+"ਜੇਕਰ ਤੁਸੀਂ ਹਟਾਣ ਦੇ ਨਾਲ ਅੱਗੇ ਵਧਦੇ ਹੋ, ਤਾਂ ਇਹ ਰਿਕਾਰਡ ਹੁਣ ਇਸ ਸਾਇਟ ਉੱਤੇ ਖੋਜਿਆ"
+" ਜਾਂ ਵੇਖਿਆ ਨਹੀ ਜਾ ਸਕੇਂਗਾ."
 
 #, python-format
 msgid ""
@@ -274,8 +274,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਦੇ ਲਈ ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲੇ: %(query)s\n"
-"    "
+" \t\n"
+"%(query)s :ਦੇ ਲਈ ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲੇ"
 
 #, python-format
 msgid ""
@@ -302,8 +302,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      ਰਿਕਾਰਡ ਕਰਨ ਲਈ ਵਧਾ ਦਿੱਤਾ ਗਿਆ ਹੈ%(expiry_date)s.\n"
-"    "
+"ਇਹ ਰਿਕਾਰਡ %(expiry_date)s ਤਕ ਵਧਾ ਦਿੱਤਾ ਗਿਆ ਹੈ."
 
 msgid ""
 "\n"
@@ -331,11 +330,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    ਨੋਟਸ ਕੇਵਲ ਅਕਸ਼ਮ ਹਨ ਜਾਂ ਰਿਕਾਰਡ ਲੇਖਕ ਦੀ ਆਗਿਆ ਦੇ ਨਾਲ ਸਮਰੱਥਾਵਾਨ ਹੋਣਾ "
-"ਚਾਹੀਦਾ ਹੈ ਇਹ ਸੁਨਿਸਚਿਤ ਕਰਨ ਦੇ ਲਈ, ਇੱਕ ਪੁਸ਼ਟਿਕਰਣ ਸੁਨੇਹਾ ਰਿਕਾਰਡ ਲੇਖਕ ਨੂੰ "
-"ਭੇਜਿਆ ਜਾਵੇਗਾ. ਜੇਕਰ ਤੁਸੀ ਲੇਖਕ ਹੋ, ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਉੱਤੇ ਕਲਿਕ ਕਰਣ ਦੇ ਬਾਅਦ "
-"ਤੁਹਾਡੇ ਈ-ਮੇਲ ਦੀ ਜਾਂਚ ਕਰੋ.\n"
-"  "
+"ਨੋਟਸ ਕੇਵਲ ਅਕਸ਼ਮ ਹਨ ਜਾਂ ਰਿਕਾਰਡ ਲੇਖਕ ਦੀ ਆਗਿਆ ਦੇ ਨਾਲ ਸਮਰੱਥਾਵਾਨ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"
+" ਇਹ ਸੁਨਿਸਚਿਤ ਕਰਨ ਦੇ ਲਈ, ਇੱਕ ਪੁਸ਼ਟਿਕਰਣ ਸੁਨੇਹਾ ਰਿਕਾਰਡ ਲੇਖਕ ਨੂੰ ਭੇਜਿਆ ਜਾਵੇਗਾ."
+" ਜੇਕਰ ਤੁਸੀ ਲੇਖਕ ਹੋ, ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਉੱਤੇ ਕਲਿਕ ਕਰਣ ਦੇ ਬਾਅਦ ਅਪਣੀ ਈ-ਮੇਲ ਦੀ "
+"ਜਾਂਚ ਕਰੋ."
 
 msgid ""
 "\n"
@@ -371,11 +369,11 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"ਇੱਕ ਉਪਯੋਗਕਰਤਾ ਨੇ ਦੇ ਲਈ ਰਿਕਾਰਡ ਹਟਾਇਆ %(full_name)s\"\n"
-"ਗਿਆ ਹੈ %(site_url)s.\n"
+"ਇੱਕ ਉਪਯੋਗਕਰਤਾ ਨੇ %(full_name)s\"\n"
+"ਦੇ ਲਈ ਰਿਕਾਰਡ ਹਟਾਇਆ ਗਿਆ ਹੈ %(site_url)s.\n"
 "\n"
-"ਤੁਹਾਡੇ ਈ-ਮੇਲ ਪਤਾ ਇਸ ਰਿਕਾਰਡ ਉੱਤੇ ਇੱਕ ਨੋਟ ਦੇ ਲੇਖਕ ਦੇ ਰੂਪ ਵਿੱਚ ਦਰਜ ਕੀਤਾ ਗਿਆ "
-"ਹੈ ਇਸ ਲਅਸੀ ਤੁਹਾਨੂੰ ਹਟਾਏ ਜਾਣ ਦੀ ਸੂਚਨਾ ਦੇ ਰਹੇ ਹਾਂ.\n"
+"ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤਾ ਇਸ ਰਿਕਾਰਡ ਉੱਤੇ ਇੱਕ ਨੋਟ ਦੇ ਲੇਖਕ ਦੇ ਰੂਪ ਵਿੱਚ ਦਰਜ ਕੀਤਾ ਗਿਆ "
+"ਹੈ ਇਸ ਲਈ ਅਸੀ ਤੁਹਾਨੂੰ ਹਟਾਏ ਜਾਣ ਦੀ ਸੂਚਨਾ ਦੇ ਰਹੇ ਹਾਂ.\n"
 
 #, python-format
 msgid ""
@@ -486,7 +484,7 @@ msgid ""
 "There is a new note on the record for \"%(full_name)s\".\n"
 msgstr ""
 "\n"
-"ਦੇ ਲਈ ਇਸ ਰਿਕਾਰਡ ਉੱਤੇ ਇੱਕ ਨਵਾਂ ਨੋਟ ਹੈ\"%(full_name)s\".\n"
+"\"%(full_name)s\" ਦੇ ਲਈ ਇਸ ਰਿਕਾਰਡ ਉੱਤੇ ਇੱਕ ਨਵਾਂ ਨੋਟ ਹੈ.\n"
 
 #, python-format
 msgid ""
@@ -608,7 +606,7 @@ msgstr "ਸੀਏਸਵੀ ਫਾਇਲ"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr "ਆਈਡੀ ਦੇ ਨਾਲ ਨੋਟ ਨਹੀਂ ਲਭਿਆ%(id)s"
+msgstr "%(id)s ਆਈਡੀ ਦੇ ਨਾਲ ਨੋਟ ਨਹੀਂ ਲਭਿਆ"
 
 msgid "Cancel"
 msgstr "ਰੱਦ"
@@ -626,7 +624,9 @@ msgid "Compare these records"
 msgstr "ਇਹਨਾਂ ਰਿਕਾਰਡਾ ਦੀ ਤੁਲਨਾ ਕਰੋ"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "ਦੀ ਨਕਲ ਬਨਾਓ ਅਤੇ ਇਸ ਟੂਲ ਨੂੰ ਅਪਣੀ ਸਾਇਟ ਉੱਤੇ ਲ਼ਿਉਣ ਲਈ ਨਿਮਨ HTML ਕੋਡ ਪੇਸਟ ਕਰੋ"
+msgstr ""
+"ਨਿਮਨ ਹੈਛਟੀਐਮਐਲ ਕੋਡ ਦੀ ਨਕਲ ਬਨਾਓ ਅਤੇ ਇਸ ਟੂਲ ਨੂੰ ਅਪਣੀ ਸਾਇਟ ਉੱਤੇ ਲ਼ਿਉਣ ਲਈ ਪੇਸਟ"
+" ਕਰੋ. "
 
 msgid "Create a new API key"
 msgstr "ਇੱਕ ਨਵੀ ਏਪੀਆਈ ਕੁੰਜੀ ਬਨਾਓ"
@@ -684,7 +684,7 @@ msgstr ""
 "ਸਤਰਾਂ ਨੂੰ ਜੋੜੋ"
 
 msgid "Download the sound as MP3"
-msgstr "ਏਮਪੀ 3 ਦੇ ਰੂਪ ਵਿੱਚ 2 ਧੁਨੀ ਨੂੰ ਡਾਉਨਲੋਡ ਕਰੋ"
+msgstr "ਏਮਪੀ 3 ਦੇ ਰੂਪ ਵਿੱਚ ਧੁਨੀ ਨੂੰ ਡਾਉਨਲੋਡ ਕਰੋ"
 
 msgid "E-mail"
 msgstr "ਈ-ਮੇਲ"
@@ -730,7 +730,7 @@ msgid "Family name"
 msgstr "ਪਰਵਾਰ ਦਾ ਨਾਮ"
 
 msgid "Feed of updates about this person"
-msgstr "ਇਸ ਵਿਅਕਤੀ ਦੇ ਬਾਰੇ ਵਿੱਚ ਅਪਡੇਟ ਦੀ ਫੀਡ"
+msgstr "ਇਸ ਵਿਅਕਤੀ ਦੇ ਬਾਰੇ ਅਪਡੇਟ ਦੀ ਫੀਡ"
 
 msgid "Follow this link to create a new record"
 msgstr "ਇੱਕ ਨਵਾਂ ਰਿਕਾਰਡ ਬਣਾਉਣ ਲਈ ਇਸ ਲਿੰਕ ਦਾ ਪਾਲਣ ਕਰੋ"
@@ -739,8 +739,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
-"ਫੋਨ ਲਈ ਹੋਰ ਮੋਬਾਇਲ ਫੋਨ ਤੋਂ ਇਲਾਵਾ, ਕ੍ਰਿਪਾ 171 ਏਨਟੀਟੀ ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੀ ਸੇਵਾ"
-" ਦੀ ਵਰਤੋ ਕਰੋ"
+"ਕ੍ਰਿਪਾ, ਫੋਨ ਲਈ ਹੋਰ ਮੋਬਾਇਲ ਫੋਨ ਤੋਂ ਇਲਾਵਾ, 171 ਏਨਟੀਟੀ ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੀ "
+"ਸੇਵਾ ਦਾ ਵਰਤੋ ਕਰੋ"
 
 msgid "Full name"
 msgstr "ਪੂਰਾ ਨਾਮ"
@@ -835,7 +835,7 @@ msgid "Identify who you are looking for"
 msgstr " ਤੁਸੀਂ ਕਿਸ ਲਈ ਵੇਖ ਰਹੇ ਹੋ,ਪਛਾਣੋ"
 
 msgid "Identify who you have information about"
-msgstr "ਤੁਹਾਡੇ ਕੋਲ ਕਿਸ ਬਾਰੇ ਜਾਣਕਾਰੀ ਹੈ ਪਛਾਣੋ"
+msgstr "ਪਛਾਣੋ ਕਰੋ, ਤੁਹਾਡੇ ਕੋਲ ਕਿਸ ਬਾਰੇ ਜਾਣਕਾਰੀ ਹੈ."
 
 msgid "Identifying information"
 msgstr "ਜਾਣਕਾਰੀ ਦੀ ਪਹਿਚਾਣ ਕਰ ਰਿਹਾ ਹਾਂ"
@@ -930,7 +930,7 @@ msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
 "the name"
 msgstr ""
-"100 ਤੋਂ ਜਿਆਦਾ ਨਤੀਜਾ; ਕੇਵਲ ਪਹਿਲੇ 100 ਦਿਖ ਰਹੇ ਹਨ, ਨਾਮ ਦੇ ਹੋਰ ਪਰਵੇਸ਼ ਕਰਨ ਦੀ "
+"100 ਤੋਂ ਜਿਆਦਾ ਨਤੀਜੇ; ਕੇਵਲ ਪਹਿਲੇ 100 ਦਿਖ ਰਹੇ ਹਨ, ਹੋਰ ਨਾਮ ਪਰਵੇਸ਼ ਕਰਨ ਦੀ "
 "ਕੋਸ਼ਿਸ਼ ਕਰੋ."
 
 msgid "Name"
@@ -950,7 +950,7 @@ msgstr "ਨਾਂਹ"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr "ਰਿਕਾਰਡ ਲਈ ਕੋਈ ਲੇਖਕ ਈਮੇਲ ਨਹੀ %(id)s."
+msgstr " %(id)s ਰਿਕਾਰਡ ਲਈ ਕੋਈ ਲੇਖਕ ਈਮੇਲ ਨਹੀ."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "ਵਾਹਕ ਦੇ ਸੁਨੇਹਾ ਬੋਰਡ ਸੇਵਾ ਉਤੇ ਕੋਈ ਵੀ ਸੁਨੇਹਾ ਪੰਜੀਕ੍ਰਿਤ ਨਹੀ ਪਾਇਆ ਗਿਆ"
@@ -964,7 +964,7 @@ msgstr "ਕੋਈ ਨੋਟ ਪੋਸਟ ਨਹੀ ਕੀਤਾ ਗਿਆ ਹੈ
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
-msgstr "ਆਈਡੀ ਦੇ ਨਾਲ ਕੋਈ ਵਿਅਕਤੀ ਨਹੀ:%(id_str)s."
+msgstr "%(id_str)s :ਆਈਡੀ ਦੇ ਨਾਲ ਕੋਈ ਵਿਅਕਤੀ ਨਹੀ."
 
 msgid "No such Authorization entity."
 msgstr "ਅਜਿਹੀ ਕੋਈ ਪ੍ਰਾਧਿਕਰਣ ਸੰਸਥਾ ਨਹੀ."
@@ -1027,7 +1027,6 @@ msgstr "ਮੂਲ ਸਾਇਟ ਦਾ ਨਾਮ"
 msgid "Other website"
 msgstr "ਹੋਰ ਵੇਬਸਾਈਟ"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1064,8 +1063,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"ਜੇਕਰ ਤੁਸੀ ਭੁਚਾਲ ਦੇ ਬਾਅਦ ਵਿਅਕਤੀ ਦੇ ਨਾਲ ਸੰਪਰਕ ਵਿੱਚ ਸੀ ਚੇਕ ਕਰੋ ਜਾਂ ਫੀਲਡ \"ਇਸ"
-" ਵਿਅਕਤੀ ਦੀ ਹਾਲਤ ਵਿੱਚ ਬਦਲਾਵ ਕਰੋ\"."
+"ਚੇਕ ਕਰੋ, ਕੀਤੁਸੀ ਭੁਚਾਲ ਦੇ ਬਾਅਦ ਵਿਅਕਤੀ ਦੇ ਨਾਲ ਸੰਪਰਕ ਵਿੱਚ ਸੀ ਜਾਂ \"ਇਸ ਵਿਅਕਤੀ"
+" ਦੀ ਹਾਲਤ ਵਿੱਚ\" ਫੀਲਡ ਨੂੰ ਬਦਲੋ."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
@@ -1079,13 +1078,13 @@ msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "ਅਦਿਅਤਨ ਕਰਨ ਲਈ ਸਦੱਸਤਾ ਲਈ ਆਪਣਾ ਈ-ਮੇਲ ਪਤਾ ਦਰਜ ਕਰੋ"
 
 msgid "Please explain why you think these are the same person"
-msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਸੱਮਝਾਉਣਾ ਕਰੋ ਕਿ ਕਿਉਂ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਉਹੀ ਵਿਅਕਤੀਆਂ ਹਨ"
+msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਸੱਮਝਾਉਣਾ ਕਰੋ ਕਿ ਕਿਉਂ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਉਹੀ ਵਿਅਕਤੀ ਹਨ"
 
 msgid "Please fill in all the required fields."
 msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਸਾਰੇ ਜ਼ਰੂਰੀ ਫੀਲਡ ਭਰੋ."
 
 msgid "Please fill in your email address."
-msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਆਪਣੇ ਈਮੇਲ ਪਤਾ ਵਿੱਚ ਭਰੋ."
+msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਆਪਣਾ ਈਮੇਲ ਪਤਾ ਵਿੱਚ ਭਰੋ."
 
 msgid "Please provide an valid email address."
 msgstr "ਕ੍ਰਿਪਾ ਕਰਕੇ ਇੱਕ ਆਦਰ ਯੋਗ ਈਮੇਲ ਪਤਾ ਪ੍ਰਦਾਨ ਕਰੋ."
@@ -1214,11 +1213,11 @@ msgid "Street name only, no number"
 msgstr "ਕੇਵਲ ਸੜਕ ਦਾ ਨਾਮ, ਕੋਈ ਨੰਬਰ ਨਹੀ"
 
 msgid "Subscribe"
-msgstr "ਮੈਂਬਰੀ ਲਵੇਂ"
+msgstr "ਮੈਂਬਰੀ ਲਵੋ"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "ਦੇ ਬਾਰੇ ਵਿੱਚ ਅਦਿਅਤਨ ਕਰਨ ਲਈ ਸਦੱਸਤਾ ਲਵੇਂ %(full_name)s"
+msgstr "%(full_name)s ਦੇ ਬਾਰੇ ਵਿੱਚ ਅਦਿਅਤਨ ਕਰਨ ਲਈ ਸਦੱਸਤਾ ਲਵੋ"
 
 msgid "Subscribe to updates about this person"
 msgstr "ਇਸ ਵਿਅਕਤੀ ਦੇ ਬਾਰੇ ਵਿੱਚ ਅਦਿਅਤਨ ਕਰਨ ਦੀ ਸਦੱਸਤਾ ਲਵੋ"
@@ -1271,8 +1270,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
-"ਜੋ ਹਾਲਤ ਤੁਸੀ ਚਇਨਿਤ ਕੀਤੀ ਹੈ ਇੰਗਿਤ ਕਰਦਾ ਹੈ ਕਿ ਤੁਸੀ ਹੀ ਇਹ ਵਿਅਕਤੀਆਂ ਹੋ.  ਜੇਕਰ"
-" ਇਹ ਸੱਚ ਹੈ, ਇਹ ਵੀ ਕਿ ਤੁਸੀ ਇਸ ਵਿਅਕਤੀ ਨੂੰ ਸੰਪਰਕ ਕੀਤਾ ਹੈ  ਇੰਗਿਤ ਕਰਨ ਲਈ 'ਹਾਂ'"
+"ਜੋ ਹਾਲਤ ਤੁਸੀ ਚਇਨਿਤ ਕੀਤੀ ਹੈ ਇੰਗਿਤ ਕਰਦਾ ਹੈ ਕਿ ਤੁਸੀ ਹੀ ਇਹ ਵਿਅਕਤੀਆਂ ਹੋ.  ਜੇਕਰ"
+" ਇਹ ਸੱਚ ਹੈ, ਇਹ ਕਿ ਤੁਸੀ ਇਸ ਵਿਅਕਤੀ ਨੂੰ ਸੰਪਰਕ ਕੀਤਾ ਹੈ ਨੂੰ ਇੰਗਿਤ ਕਰਨ ਲਈ 'ਹਾਂ'"
 " ਦੀ ਚੋਣ ਕਰੋ."
 
 #, python-format
@@ -1369,7 +1368,7 @@ msgid "To delete your data, access Person Finder from your desktop."
 msgstr "ਆਪਣੇ ਡੇਟਾ ਨੂੰ ਹਟਾਣ ਦੇ ਲਈ, ਤੁਹਾਡੇ ਡੇਸਕਟਾਪ ਤੋਂ ਵਿਅਕਤੀ ਖੋਜਕ ਦੀ ਵਰਤੋ"
 
 msgid "To unsubscribe, follow this link"
-msgstr "ਸਦੱਸਤਾ ਖ਼ਤਮ ਕਰਨ ਦੇ ਲਈ, ਇਹ ਲਿੰਕ ਦਾ ਪ੍ਰਯੋਗ ਕਰੋ."
+msgstr "ਸਦੱਸਤਾ ਖ਼ਤਮ ਕਰਨ ਦੇ ਲਈ, ਇਸ ਲਿੰਕ ਦਾ ਪ੍ਰਯੋਗ ਕਰੋ."
 
 msgid "To view or add information, select a name below."
 msgstr "ਜਾਣਕਾਰੀ ਦੇਖਣ ਜਾਂ ਜੋੜਨ ਦੇ ਲਈ, ਹੇਠਾਂ ਇੱਕ ਨਾਮ ਦੀ ਚੋਣ ਕਰੋ."
@@ -1388,7 +1387,7 @@ msgid "Type the two words:"
 msgstr "ਦੋ ਸ਼ਬਦ ਟਾਈਪ ਕਰੋ:"
 
 msgid "Type what you hear:"
-msgstr "ਤੁਸੀ ਕੀ ਸੁਣਨਾ ਹੈ ਟਾਈਪ ਕਰੋ :"
+msgstr "ਜੋ ਤੁਸੀ ਸੁਣ ਰਹੇ ਹੋ ਨੂੰ ਟਾਈਪ ਕਰੋ :"
 
 msgid "URL"
 msgstr "ਯੂਆਰਏਲ"
@@ -1418,7 +1417,7 @@ msgid "View the record"
 msgstr "ਰਿਕਾਰਡ ਵੇਖੋ"
 
 msgid "We have nothing matching your search."
-msgstr "ਸਾਡੇ ਕੋਲ ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਮੇਲ ਖਾਂਦੇਾ ਕੁੱਝ ਵੀ ਨਹੀਂ ਹੈ."
+msgstr "ਸਾਡੇ ਕੋਲ ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਕੁੱਝ ਵੀ ਨਹੀਂ ਹੈ."
 
 msgid "What is this person's name?"
 msgstr "ਇਸ ਵਿਅਕਤੀ ਦਾ ਨਾਮ ਕੀ ਹੈ?"
@@ -1467,10 +1466,10 @@ msgid "Yes, update the note"
 msgstr "ਹਾਂ, ਨੋਟਸ ਨੂੰ ਅਦਿਅਤਨ ਕਰੋ."
 
 msgid "You are already subscribed. "
-msgstr "ਤੁਸੀਂ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਸਦੱਸਅ ਬੰਨ ਹੋ. "
+msgstr "ਤੁਸੀਂ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਸਦੱਸਅ ਬਨੇ ਹੋ."
 
 msgid "You are already unsubscribed."
-msgstr "ਤੁਸੀਂ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਅਸਦੱਸਅ ਬੰਨ ਹੋ."
+msgstr "ਤੁਸੀਂ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਅਸਦੱਸਅ ਬਨੇ ਹੋ."
 
 #, python-format
 msgid ""
@@ -1482,7 +1481,7 @@ msgstr ""
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr "ਤੁਸੀਂ ਵਰਤਮਾਨ ਵਿੱਚ ਦੇ ਰੂਪ ਵਿੱਚ ਸਾਇਨ ਇਨ ਹੋ%(user_email)s."
+msgstr "ਤੁਸੀਂ ਵਰਤਮਾਨ ਵਿੱਚ %(user_email)s ਦੇ ਰੂਪ ਵਿੱਚ ਸਾਇਨ ਇਨ ਹੋ."
 
 msgid "You are not currently signed in."
 msgstr "ਤੁਸੀਂ ਵਰਤਮਾਨ ਵਿੱਚ ਦੇ ਰੂਪ ਵਿੱਚ ਸਾਇਨ ਇਨ ਨਹੀ ਹੋ"
@@ -1509,7 +1508,7 @@ msgstr ""
 "ਦੀ ਸਦੱਸਤਾ ਲਈ ਹੈ.\n"
 
 msgid "Your e-mail address"
-msgstr "ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤੇ"
+msgstr "ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤਾ"
 
 msgid "Your e-mail address:"
 msgstr "ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤਾ:"
@@ -1547,7 +1546,7 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
-msgstr " [ਵਿਅਕਤੀ ਖੋਜਕ] ਆਪਣੇ ਨੋਟ ਦੀ ਉੱਤੇ ਪੁਸ਼ਟੀ ਕਰੋ\"%(full_name)s\""
+msgstr "[ਵਿਅਕਤੀ ਖੋਜਕ] ਆਪਣੇ ਨੋਟ ਉੱਤੇ ਪੁਸ਼ਟੀ ਕਰੋ\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
@@ -1582,7 +1581,7 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Status update for %(full_name)s"
 msgstr ""
-"[ਵਿਅਕਤੀ ਖੋਜਕ] ਦੇ ਲਈ ਹਾਲਤ ਅਪਡੇਟ \n"
+"[ਵਿਅਕਤੀ ਖੋਜਕ] ਦੇ ਲਈ ਪਦਵੀ ਅਪਡੇਟ\n"
 "%(full_name)s"
 
 #, python-format

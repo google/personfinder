@@ -157,6 +157,10 @@ msgid ""
 "query.\n"
 "        "
 msgstr ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -471,14 +475,13 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"«%(full_name)s» գրառման հեղինակը\n"
-"(որը նախկինում հեռացվել էր) վերականգնել է գրառումը:  Գրառումը տեսնելու "
-"համար անցեք այս հղումով`\n"
+"Հեղինակը, որը նախկինում հեռացրել էր «%(full_name)s» գրառումը,\n"
+"կրկին վերականգնել է այն: Գրառումը տեսնելու համար անցեք այս հղումով`\n"
 "\n"
-"    %(record_url)s\n"
+"%(record_url)s\n"
 "\n"
 "Մենք տեղեկացնում ենք ձեզ հեռացման մասին, քանի որ ձեր էլփոստի հասցեն "
-"կապված է այս օգտվողի գրառման կամ գրառման նշման հետ:\n"
+"կապակցված է այս օգտվողի գրառման կամ գրառման վերաբերյալ նշման հետ:\n"
 
 #, python-format
 msgid ""
@@ -500,13 +503,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Դուք բաժանորդագրվել եք «%(full_name)s»-ի նշումներին\n"
+"Դուք բաժանորդագրվել եք «%(full_name)s»-ի վերաբերյալ նշումներին\n"
 "\n"
-"Կարող եք տեսնել այս գրառումն այստեղ`\n"
+"Այդ գրառումը կարող եք տեսնել այստեղ`\n"
 "\n"
-"     %(view_url)s\n"
+"%(view_url)s\n"
 "\n"
-"Ապաբաժանորդագրվելու համար այցելեք այստեղ` %(unsubscribe_link)s\n"
+"Ապաբաժանորդագրվելու համար սեղմեք հետևյալ հղումը` %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(ցուցադրել)"
@@ -595,9 +598,10 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
-"Այս գրառումը լցոն նշելով` այն լռելյայն կթաքցնեք: Այն կմնա որպես գրառման "
-"մաս, սակայն կպահանջի հավելյալ սեղմում` նշման բովանդակությունը կարդալու "
-"համար: Օգտվողները նաև կկարողանան հեռացնել լցոնի պիտակը այս նշումից:"
+"Այս գրառումը լցոն նշելով` այն ըստ կանխադրման կթաքցվի: Այն կմնա որպես "
+"գրառման մաս, սակայն նշման բովանդակությունը կարդալու համար անհրաժեշտ կլինի"
+" լրացուցիչ սեղմել: Օգտվողները նաև կկարողանան հեռացնել լցոնի պիտակը այս "
+"նշումից:"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr "Այս նշումը լռելյայն կդառնա տեսանելի որպես լցոն ապանշելուց հետո:"
@@ -613,7 +617,7 @@ msgid "Cancel"
 msgstr "Չեղարկել"
 
 msgid "City"
-msgstr "Քաղաք"
+msgstr "Քաղաքը"
 
 msgid "Click here to view results."
 msgstr "Արդյունքները տեսնելու համար սեղմեք այստեղ:"
@@ -639,14 +643,14 @@ msgid "Create a new record for"
 msgstr "Ստեղծել նոր գրառում հետևյալի համար`"
 
 msgid "Create a new record for a missing person"
-msgstr "Ստեղծել նոր գրառում բացակայող անձի մասին"
+msgstr "Ստեղծել նոր գրառում կորած անձի մասին"
 
 msgid "Crisis events"
 msgstr "Ճգնաժամային իրադարձություններ"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Ներկայումս հետևում է մոտ %(num_people)s գրառման"
+msgstr "Գրառումների մոտավոր թիվը՝ %(num_people)s"
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Ամսաթիվը չի կարող լինել ապագայում: Խնդրում ենք վերադառնալ և կրկին փորձել:"
@@ -658,10 +662,10 @@ msgid "Delete this record"
 msgstr "Ջնջել այս գրառումը"
 
 msgid "Describe how to identify this person."
-msgstr "Նկարագրեք, թե ինչպես պետք է նույնականացնել այդ մարդուն:"
+msgstr "Ինչպե՞ս ճանաչել տվյալ անձին:"
 
 msgid "Describe the physical characteristics of this person."
-msgstr "Նկարագրեք այդ անձի ֆիզիկական բնութագրերը:"
+msgstr "Նկարագրեք տվյալ անձին:"
 
 msgid "Description"
 msgstr "Նկարագրություն"
@@ -706,7 +710,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Մուտքագրել որպես YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
-msgstr "Մուտքագրեք անձի տրված և ընտանեկան անունները:"
+msgstr "Մուտքագրեք անձի անունը և ազգանունը:"
 
 msgid "Enter the person's name or parts of the name."
 msgstr "Մուտքագրեք անձի անունը կամ անվան ինչ-որ մասը:"
@@ -718,17 +722,17 @@ msgid "Enter the person's name."
 msgstr "Մուտքագրեք անձի անունը:"
 
 msgid "Expiry"
-msgstr "Սպառման ժամկետ"
+msgstr "Պահպանման ժամկետ"
 
 msgid "Expiry date of this record"
 msgstr "Այս գրառման սպառման ժամկետը"
 
 #, python-format
 msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Ավելացնել սպառման ժամկետը %(extension_days)s օր"
+msgstr "Երկարաձգել սպառման ժամկետը %(extension_days)s օրով"
 
 msgid "Family name"
-msgstr "Ազգանուն"
+msgstr "Ազգանունը"
 
 msgid "Feed of updates about this person"
 msgstr "Այս անձի մասին թարմացումների հոսք"
@@ -756,7 +760,7 @@ msgid "Get an audio challenge"
 msgstr "Ձայնային խնդիր"
 
 msgid "Given name"
-msgstr "Տրված անունը"
+msgstr "Անունը"
 
 msgid "Google Person Finder"
 msgstr "Google Մարդկանց որոնում"
@@ -878,7 +882,7 @@ msgid "Language selection"
 msgstr "Լեզվի ընտրություն"
 
 msgid "Last known location"
-msgstr "Հայտնի վերջին վայրը"
+msgstr "Տվյալ անձի գտնվելու վերջին վայրը"
 
 msgid "Link"
 msgstr "Հղում"
@@ -935,7 +939,7 @@ msgid "Name is required.  Please go back and try again."
 msgstr "Անունը պարտադիր է: Վերադարձեք և կրկին փորձեք:"
 
 msgid "Neighborhood"
-msgstr "Շրջակայքը"
+msgstr "Թաղամասը"
 
 msgid "No"
 msgstr "Ոչ"
@@ -989,7 +993,7 @@ msgid "Notes for this person"
 msgstr "Նշումներ այս անձի վերաբերյալ"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr "Համար կամ ընդգրկույթ (օր.` 20-30)"
+msgstr "Ճշգրիտ կամ մոտավոր (օր.` 20-30)"
 
 #, python-format
 msgid ""
@@ -1021,7 +1025,6 @@ msgstr "Բնօրինակ կայքի անունը"
 msgid "Other website"
 msgstr "Այլ կայք"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1119,7 +1122,7 @@ msgid "Provided by:"
 msgstr "Ներկայացնող`"
 
 msgid "Province or state"
-msgstr "Մարզ կամ նահանգ"
+msgstr "Մարզը կամ նահանգը"
 
 msgid "Reason for deletion:"
 msgstr "Հեռացման պատճառը`"
@@ -1135,7 +1138,7 @@ msgid "Remove"
 msgstr "Հեռացնել"
 
 msgid "Report spam"
-msgstr "Հաղորդել որպես թափոն"
+msgstr "Հաղորդել որպես լցոն"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1164,7 +1167,7 @@ msgid "Send email"
 msgstr "Ուղարկել նամակ"
 
 msgid "Sex"
-msgstr "Սեռ"
+msgstr "Սեռը"
 
 msgid "Show Map"
 msgstr "Ցույց տալ քարտեզը"
@@ -1206,10 +1209,10 @@ msgid "Status of this person"
 msgstr "Այս անձի կարգավիճակը"
 
 msgid "Street name"
-msgstr "Փողոց"
+msgstr "Փողոցը"
 
 msgid "Street name only, no number"
-msgstr "Միայն փողոցի անունը, ոչ թիվը"
+msgstr "Միայն փողոցի անունը (առանց տան համարի)"
 
 msgid "Subscribe"
 msgstr "Բաժանորդագրվել"
@@ -1219,10 +1222,10 @@ msgid "Subscribe to updates about %(full_name)s"
 msgstr "Բաժանորդագրվեք` %(full_name)s-ի մասին թարմացումներ ստանալու համար"
 
 msgid "Subscribe to updates about this person"
-msgstr "Բաժանորդագրվեք այս անձի մասին թարմացումներին"
+msgstr "Ստանալ այս անձի մասին թարմացումները"
 
 msgid "Switch to address"
-msgstr "Հասցեի փոխարկում"
+msgstr "Անցնել հասցեին"
 
 msgid "Switch to lat/long"
 msgstr "Անցնել կոորդինատներին"
@@ -1260,7 +1263,7 @@ msgid "The record cannot be extended."
 msgstr "Գրառումը հնարավոր չէ երկարացնել:"
 
 msgid "The record has been deleted."
-msgstr "Գրառումը ջնջվել է:"
+msgstr "Գրառումը ջնջվեց:"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -1359,8 +1362,8 @@ msgstr ""
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
-"Այս նշմանը լուսանկար փակցնելու համար վերբեռնեք այն կամ մուտքագրեք դրա "
-"URL-ը:"
+"Այս նկարագրությանը լուսանկար կցելու համար վերբեռնեք այն կամ մուտքագրեք "
+"դրա URL-ը:"
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr "Ձեր տվյալները ջնջելու համար մուտք գործեք Մարդկանց որոնում ձեր համակարգչից:"
@@ -1418,16 +1421,16 @@ msgid "We have nothing matching your search."
 msgstr "Մենք չունենք ձեր որոնմանը համապատասխան նյութեր:"
 
 msgid "What is this person's name?"
-msgstr "Ինչպե՞ս է այս անձի անունը:"
+msgstr "Ինչպե՞ս է տվյալ անձի անունը:"
 
 msgid "When should this record disappear?"
-msgstr "Ե՞րբ պետք է այս գրառումը անհետանա:"
+msgstr "Ե՞րբ պետք է այս գրառումը հեռացվի:"
 
 msgid "Where did this information come from?"
 msgstr "Որտեղի՞ց է ստացվել այս տեղեկությունը:"
 
 msgid "Where is this person from?"
-msgstr "Որտեղի՞ց է այս անձը:"
+msgstr "Որտեղի՞ց է տվյալ անձը:"
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
@@ -1458,7 +1461,7 @@ msgid "Yes, restore this record"
 msgstr "Այո, վերականգնել այս գրառումը"
 
 msgid "Yes, these are the same person"
-msgstr "Այո, սրանք նույն մարդիկ են"
+msgstr "Այո, սրանք նույն մարդն են"
 
 msgid "Yes, update the note"
 msgstr "Այո, թարմացնել նշումը"
@@ -1491,7 +1494,7 @@ msgid "You can view the full record at %(view_url)s"
 msgstr "Դուք կարող եք դիտել ամբողջ գրառումն այստեղ` %(view_url)s"
 
 msgid "You have successfully subscribed."
-msgstr "Դուք հաջողությամբ բաժանորդագրվել եք:"
+msgstr "Դուք հաջողությամբ բաժանորդագրվեցիք:"
 
 msgid "You have successfully unsubscribed."
 msgstr "Դուք հաջողությամբ ապաբաժանորդագրվել եք:"
