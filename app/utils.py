@@ -609,6 +609,7 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url2': strip,
         'profile_url3': strip,
         'query': strip,
+        'query_type': strip,
         'read_permission': validate_checkbox_as_bool,
         'referrer': strip,
         'resource_bundle': validate_resource_name,
