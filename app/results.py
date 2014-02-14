@@ -24,8 +24,15 @@ import indexing
 import jp_mobile_carriers
 
 MAX_RESULTS = 100
+# U+2010: HYPHEN
+# U+2012: FIGURE DASH
+# U+2013: EN DASH
+# U+2015: HORIZONTAL BAR
+# U+2212: MINUS SIGN
+# U+301C: WAVE DASH
+# U+30FC: KATAKANA-HIRAGANA PROLONGED SOUND MARK
 POSSIBLE_PHONE_NUMBER_RE = re.compile(
-    ur'^[\d\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]+$')
+    ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
 
 def has_possible_duplicates(results):
