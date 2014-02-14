@@ -161,6 +161,10 @@ msgid ""
 "query.\n"
 "        "
 msgstr ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -529,19 +533,19 @@ msgid "API Key Management"
 msgstr "API Түлхүүрийн удирдлага"
 
 msgid "About 1 month (30 days) from now"
-msgstr "Одоогоос 1 сар (30 өдөр) орчим"
+msgstr "1 сарын дараа(30 өдөр)"
 
 msgid "About 1 year (360 days) from now"
-msgstr "Одоогоос 1 жил (360 өдөр) орчим"
+msgstr "1 жилийн дараа (360 өдөр)"
 
 msgid "About 2 months (60 days) from now"
-msgstr "Одоогоос 2 сар (60 өдөр) орчим"
+msgstr "2 сарын дараа (60 өдөр)"
 
 msgid "About 3 months (90 days) from now"
-msgstr "Одоогоос 3 сар (90 өдөр) орчим"
+msgstr "3 сарын дараа (90 өдөр)"
 
 msgid "About 6 months (180 days) from now"
-msgstr "Одоогоос 6 сар (180 өдөр) орчим"
+msgstr "6 сарын дараа (180 өдөр)"
 
 msgid "About Google Person Finder"
 msgstr "Google Хүн Хайгчийн тухай"
@@ -654,7 +658,7 @@ msgstr "Гамшгийн үйл явдал"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Одоогоор %(num_people)s бичлэгийг дагаж байна."
+msgstr "Одоогоор %(num_people)s хүний мэдээллийг агуулж байна."
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Огноог ирээдүйнхээр оруулах боломжгүй. Буцаж очоод дахин оролдоно уу."
@@ -1030,7 +1034,6 @@ msgstr "Эх сайтын нэр"
 msgid "Other website"
 msgstr "Бусад вебсайт"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1379,7 +1382,9 @@ msgstr "Мэдээлэл харах буюу нэмэхийн тулд доор 
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
-msgstr "Хаяг бичих буюу доор газрын зураг нээж дээрэн товшиж байршлыг заана уу."
+msgstr ""
+"Хаяг бичих буюу доорх газрын зургийг нээж дээр нь товшин байршлыг оруулна"
+" уу."
 
 msgid "Type an address."
 msgstr "Хаяг бичнэ үү."

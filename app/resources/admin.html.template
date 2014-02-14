@@ -32,7 +32,7 @@
   <input type=submit value="Delete (with confirmation)">
 </form>
 
-<h2>Configure repositories</h2>
+<h2>Select a repository</h2>
 
 <script>
   var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
@@ -191,8 +191,10 @@
 
 <p>
   <form method="get" style="display: inline-block" class="admin">
-    Select a repository:
     <select name="repo" id="select_repo" onchange="select_repo_changed()">
+      {% if not env.repo %}
+        <option>Select a repository:</option>
+      {% endif %}
       {% for option in repo_options %}
         <option value="{{option.url}}"
           {% ifequal option.repo env.repo %}
@@ -210,6 +212,16 @@
     <input name="new_repo" id="new_repo" size=15>
     <input type="submit" value="Create">
   </form>
+
+{% if env.repo %}
+<h2>Admin tools for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
+<ul>
+  <li><a href="admin/dashboard">Dashboard</a></li>
+  <li><a href="admin/review">Review notes</a></li>
+  <li><a href="admin/api_keys">Create an API key</a></li>
+  <li><a href="admin/api_keys/list">List API keys</a></li>
+  <li><a href="admin/resources">Manage resources</a></li>
+</ul>
 
 <h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
 
@@ -638,4 +650,5 @@
     <input type="hidden" name="operation" value="save_repo">
     <input type="submit" value="Save these settings">
 </form>
+{% endif %}
 {% endblock %}

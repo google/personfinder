@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,9 @@ class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
     ignore_deactivation = True
+
+    # We show global admin page, if a repo is not specified.
+    repo_required = False
 
     def get(self):
         user = users.get_current_user()
@@ -100,6 +103,10 @@ class Handler(BaseHandler):
             self.redirect('/admin', new_repo)
 
         elif self.params.operation == 'save_repo':
+            if not self.repo:
+                self.redirect('/admin')
+                return
+
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'repo_titles',

@@ -2,7 +2,7 @@
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# You may obtain a copy of the License at:
 #
 #      http://www.apache.org/licenses/LICENSE-2.0
 #
@@ -14,8 +14,9 @@
 
 application: googlepersonfinder
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: false
 
 handlers:
 # Administrative handlers
@@ -35,3 +36,7 @@ handlers:
   secure: always
 - url: .*
   script: main.py
+
+libraries:
+- name: django
+  version: "1.2"

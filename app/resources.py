@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +31,8 @@ import datetime
 import logging
 import os
 import utils
+
+import django.template
 
 from google.appengine.ext import db
 from google.appengine.ext import webapp
@@ -192,14 +194,14 @@ class Resource(db.Model):
         """Compiles the content of this resource into a Template object."""
         if not hasattr(self, 'template'):
             try:
-                self.template = webapp.template.Template(
+                self.template = django.template.Template(
                     self.content.decode('utf-8'), 'Resource', self.key().name())
             except:
                 # Exception here is silently ignored otherwise.
                 logging.error(
                     'Error loading template %s.' % self.key().name(),
                     exc_info=True)
-                self.template = webapp.template.Template(
+                self.template = django.template.Template(
                     'Internal Server Error',
                     'Resource',
                     self.key().name())
@@ -267,6 +269,6 @@ def render_in_lang(template, lang, vars):
     original_lang = django.utils.translation.get_language()
     try:
         django.utils.translation.activate(lang)
-        return template.render(webapp.template.Context(vars))
+        return template.render(django.template.Context(vars))
     finally:
         django.utils.translation.activate(original_lang)

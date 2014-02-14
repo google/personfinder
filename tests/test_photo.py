@@ -31,7 +31,7 @@ class PhotoTests(unittest.TestCase):
 
         os.environ['HTTP_HOST'] = 'example.appspot.com'
         ph = test_handler.initialize_handler(
-            photo.Handler(), 'photo', environ=os.environ)
+            photo.Handler, 'photo', environ=os.environ)
         self.assertEquals(
             'http://example.appspot.com/haiti/photo?id=%s' % id,
             photo.get_photo_url(entity, ph))
