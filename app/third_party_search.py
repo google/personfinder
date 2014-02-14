@@ -34,20 +34,18 @@ class Handler(utils.BaseHandler):
             self.response.set_status(500)
             self.write('search_engine_id is out of range')
             return
-        query = self.params.query
-        # TODO(ichikawa) Support query_type "tel".
-        query_type = ''
+        query = self.params.query.encode('utf-8')
+        query_type = self.params.query_type.encode('utf-8')
         search_engine = self.config.third_party_search_engines[
             self.params.search_engine_id]
-        if self.env.lang == search_engine['default_language']:
-            lang = ''
-        elif self.env.lang in search_engine['supported_languages']:
-            lang = self.env.lang
+        if self.env.lang in search_engine['supported_languages']:
+            lang = self.env.lang.encode('utf-8')
         else:
             lang = 'en'
         time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
         signature_source = (
-            query + query_type + lang + time + search_engine['auth_key'])
+            query + query_type + lang + time +
+            search_engine['auth_key'].encode('utf-8'))
         signature = hashlib.sha256(signature_source).hexdigest()
         params = {
             'q': query,

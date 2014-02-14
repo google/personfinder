@@ -22,6 +22,7 @@
       var repo_url = '{{env.repo_url|escapejs}}';
       var query = '{{query|escapejs}}';
       var lang = '{{env.lang|escapejs}}';
+      var query_type = '{{third_party_query_type|escapejs}}';
 
       function on_result_item_click(event, elem) {
         if (event.button == 0) {  // left button
@@ -39,10 +40,20 @@
         }
       }
 
+      // Hits a third party search engine and shows a link to the result page.
+      // We use AJAX not to slow down our search by waiting for third party
+      // results. We use third_party_search as a proxy instead of hitting
+      // third party search API directly here, to workaround AJAX's same
+      // origin policy, and for authorization.
       function perform_third_party_search(id) {
         jQuery.ajax({
             url: repo_url + '/third_party_search',
-            data: {query: query, lang: lang, search_engine_id: id},
+            data: {
+                query: query,
+                lang: lang,
+                query_type: query_type,
+                search_engine_id: id
+            },
             dataType: 'json'
         }).done(function(r) { 
           console_log('Third-party search response: ', r);
