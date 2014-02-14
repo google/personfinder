@@ -90,6 +90,7 @@ class Handler(BaseHandler):
                 results_page_custom_htmls={'en': '', 'fr': ''},
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
+                footer_custom_htmls={'en': '', 'fr': ''},
                 bad_words='',
                 published_date=get_utcnow_timestamp(),
                 updated_date=get_utcnow_timestamp(),
@@ -110,7 +111,7 @@ class Handler(BaseHandler):
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'start_page_custom_htmls',
                 'results_page_custom_htmls', 'view_page_custom_htmls',
-                'seek_query_form_custom_htmls',
+                'seek_query_form_custom_htmls', 'footer_custom_htmls',
                 'test_mode', 'force_https',
             ]:
                 try:
