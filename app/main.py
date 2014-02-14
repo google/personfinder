@@ -67,6 +67,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_enable_notes',
   'post_flagged_note',
   'confirm_post_flagged_note',
+  'third_party_search',
   'admin',
   'admin/dashboard',
   'admin/resources',
@@ -401,6 +402,8 @@ def setup_env(request):
             env.config.view_page_custom_htmls, env.lang, '')
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
+        env.footer_custom_html = get_localized_message(
+            env.config.footer_custom_htmls, env.lang, '')
         # If the repository is deactivated, we should not show test mode
         # notification.
         env.repo_test_mode = (

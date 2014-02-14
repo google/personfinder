@@ -17,6 +17,13 @@
   {{block.super}}
   {% if env.enable_javascript %}
     <script type="text/javascript">
+      var num_third_party_search_engines =
+          {{third_party_search_engines|length|escapejs}};
+      var repo_url = '{{env.repo_url|escapejs}}';
+      var query = '{{query|escapejs}}';
+      var lang = '{{env.lang|escapejs}}';
+      var query_type = '{{third_party_query_type|escapejs}}';
+
       function on_result_item_click(event, elem) {
         if (event.button == 0) {  // left button
           // Makes the whole result item div clickable.
@@ -27,11 +34,49 @@
             if (match) { pid = decodeURIComponent(match[1]); }
             pageTracker._trackEvent('click', status, pid);
           } catch(err) {
-            if (window['console']) { console.log(err); }
+            console_error(err);
           }
-          location.href = elem.getAttribute("data-url");
+          location.href = elem.getAttribute('data-url');
         }
       }
+
+      // Hits a third party search engine and shows a link to the result page.
+      // We use AJAX not to slow down our search by waiting for third party
+      // results. We use third_party_search as a proxy instead of hitting
+      // third party search API directly here, to workaround AJAX's same
+      // origin policy, and for authorization.
+      function perform_third_party_search(id) {
+        jQuery.ajax({
+            url: repo_url + '/third_party_search',
+            data: {
+                query: query,
+                lang: lang,
+                query_type: query_type,
+                search_engine_id: id
+            },
+            dataType: 'json'
+        }).done(function(r) { 
+          console_log('Third-party search response: ', r);
+          if (r.status == 'OK') {
+            if (typeof(r.url) != 'string') {
+              console_error(
+                  'url attribute of third-party search response is ' +
+                  'not a string');
+              return;
+            }
+            jQuery('#third_party_search_result_link' + id).attr('href', r.url);
+            jQuery('#third_party_search_result' + id).show();
+          }
+        }).fail(function(r) {
+          console_error('Third-party search request has failed: ', r);
+        });
+      }
+
+      jQuery(document).ready(function() {
+        for (var i = 0; i < num_third_party_search_engines; ++i) {
+          perform_third_party_search(i);
+        }
+      });
     </script>
   {% endif %}
 {% endblock head %}
@@ -182,10 +227,6 @@
     {% endif %}
   {% endif %}
 
-  <p>
-  {% if env.ui != "small" %}
-    {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
-  {% endif %}
 {% else %}
 
   {% if not jp_phone_number_query %}
@@ -199,13 +240,37 @@
   {% else %}
   <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
   {% endif %}
+
+{% endif %}
+
+{% if env.ui != "light" %}
+  {% for search_engine in third_party_search_engines %}
+    <p id="third_party_search_result{{search_engine.id}}"
+       class="third-party-search-result"
+       style="display: none;">
+      <a href="#" id="third_party_search_result_link{{search_engine.id}}">
+        {% blocktrans with search_engine.name as search_engine_name %}
+          {{search_engine_name}} has search result(s) matching this query.
+        {% endblocktrans %}
+      </a>
+    </p>
+  {% endfor %}
+{% endif %}
+
+{% if results %}
+  {% if env.ui != "small" %}
+    <p>
+      {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
+    </p>
+  {% endif %}
+{% else %}
   {% if env.ui == "small" and not jp_phone_number_query %}
     <p>
-    <a class="create-new-record" href="{{create_url}}" target="_blank">
-      {% trans "Follow this link to create a new record" %}
-    </a>
+      <a class="create-new-record" href="{{create_url}}" target="_blank">
+        {% trans "Follow this link to create a new record" %}
+      </a>
+    </p>
   {% endif %}
-
 {% endif %}
 
 <p>
