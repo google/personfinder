@@ -255,7 +255,7 @@
                 {% if person.expiry_date_local and env.repo_test_mode %}
                   <div class="field">
                     <div class="warning">
-                      {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                      {% trans "While test mode is in effect, records that are over 24 hours old are deleted regardless of the expiry date." %}
                     </div>
                   </div>
                 {% endif %}
