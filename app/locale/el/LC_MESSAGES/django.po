@@ -165,6 +165,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          Η μηχανή αναζήτησης %(search_engine_name)s έχει αποτελέσματα "
+"αναζήτησης που αντιστοιχούν σε αυτό το ερώτημα.\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1073,7 +1085,6 @@ msgstr "Αρχικό όνομα ιστότοπου"
 msgid "Other website"
 msgstr "Άλλος ιστότοπος"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1416,11 +1427,11 @@ msgstr "Αυτή η εγγραφή είναι ανεπιθύμητη."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
 "Αυτός ο χώρος φύλαξης βρίσκεται αυτήν τη στιγμή σε δοκιμαστική "
 "λειτουργία. Για όσο διάστημα είναι ενεργή η δοκιμαστική λειτουργία, οι "
-"εγγραφές που είναι παλαιότερες των 6 ωρών θα διαγράφονται."
+"εγγραφές που είναι παλαιότερες των 24 ωρών θα διαγράφονται."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
@@ -1495,6 +1506,13 @@ msgstr "Από πού προέρχονται αυτές οι πληροφορί�
 
 msgid "Where is this person from?"
 msgstr "Από πού κατάγεται το άτομο αυτό;"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "

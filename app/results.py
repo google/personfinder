@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +13,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
+import unicodedata
+
 from model import *
 from utils import *
 from text_query import TextQuery
 import external_search
 import indexing
 import jp_mobile_carriers
-import logging
 
 MAX_RESULTS = 100
+# U+2010: HYPHEN
+# U+2012: FIGURE DASH
+# U+2013: EN DASH
+# U+2015: HORIZONTAL BAR
+# U+2212: MINUS SIGN
+# U+301C: WAVE DASH
+# U+30FC: KATAKANA-HIRAGANA PROLONGED SOUND MARK
+POSSIBLE_PHONE_NUMBER_RE = re.compile(
+    ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
 
 def has_possible_duplicates(results):
@@ -33,6 +44,11 @@ def has_possible_duplicates(results):
             return True
         full_names.add(result.full_name)
     return False
+
+
+def is_possible_phone_number(query_str):
+    return re.search(POSSIBLE_PHONE_NUMBER_RE,
+        unicodedata.normalize('NFKC', unicode(query_str)))
 
 
 class Handler(BaseHandler):
@@ -84,6 +100,12 @@ class Handler(BaseHandler):
             family_name=self.params.family_name)
         min_query_word_length = self.config.min_query_word_length
 
+        third_party_search_engines = []
+        for i, search_engine in enumerate(
+                self.config.third_party_search_engines or []):
+            third_party_search_engines.append(
+                {'id': i, 'name': search_engine.get('name', '')})
+
         if self.params.role == 'provide':
             # The order of family name and given name does matter (see the
             # scoring function in indexing.py).
@@ -117,9 +139,12 @@ class Handler(BaseHandler):
                                    results=results,
                                    num_results=len(results),
                                    has_possible_duplicates=
-                                        has_possible_duplicates(results),
+                                       has_possible_duplicates(results),
                                    results_url=results_url,
-                                   create_url=create_url)
+                                   create_url=create_url,
+                                   third_party_search_engines=
+                                       third_party_search_engines,
+                                   query=self.params.query)
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
@@ -131,28 +156,40 @@ class Handler(BaseHandler):
                     return self.redirect('/create', **self.params.__dict__)
 
         if self.params.role == 'seek':
-            query = TextQuery(self.params.query) 
+            query = TextQuery(self.params.query)
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:
                 if jp_mobile_carriers.handle_phone_number(self, query.query):
                     return 
 
-            # Ensure that required parameters are present.
-            if (len(query.query_words) == 0 or
-                max(map(len, query.query_words)) < min_query_word_length):
+            if is_possible_phone_number(query.query):
+                # If the query looks like a phone number, we show an empty
+                # result page instead of rejecting it. We don't support
+                # search by phone numbers, but third party search engines
+                # may support it.
+                results = []
+                results_url = None
+                third_party_query_type = 'tel'
+            elif (len(query.query_words) == 0 or
+                    max(map(len, query.query_words)) < min_query_word_length):
                 logging.info('rejecting %s' % query.query)
                 return self.reject_query(query)
-
-            # Look for prefix matches.
-            results = self.search(query)
-            results_url = self.get_results_url(self.params.query)
+            else:
+                # Look for prefix matches.
+                results = self.search(query)
+                results_url = self.get_results_url(self.params.query)
+                third_party_query_type = ''
 
             # Show the (possibly empty) matches.
             return self.render('results.html',
                                results=results,
                                num_results=len(results),
                                has_possible_duplicates=
-                                    has_possible_duplicates(results),
+                                   has_possible_duplicates(results),
                                results_url=results_url,
-                               create_url=create_url)
+                               create_url=create_url,
+                               third_party_search_engines=
+                                   third_party_search_engines,
+                               query=self.params.query,
+                               third_party_query_type=third_party_query_type)

@@ -150,6 +150,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s ఈ ప్రశ్నకు సరిపోలే శోధన ఫలితం(లు) కలిగి "
+"ఉంది.\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1035,7 +1047,6 @@ msgstr "వాస్తవ సైట్ పేరు"
 msgid "Other website"
 msgstr "ఇతర వెబ్‌సైట్"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1371,10 +1382,10 @@ msgstr "ఈ రికార్డ్ స్పామ్."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
 "ఈ నిక్షేప స్థానం ప్రస్తుతం పరీక్ష మోడ్‌లో ఉంది. పరీక్ష మోడ్ అమలులో "
-"ఉన్నప్పుడు, 6 గంటల కంటే మునుపు ఉన్న రికార్డ్‌లు తొలగించబడతాయి."
+"ఉన్నప్పుడు, 24 గంటల కంటే ముందు ఉన్న రికార్డ్‌లు తొలగించబడతాయి."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
@@ -1449,6 +1460,13 @@ msgstr "ఈ సమాచారం ఎక్కడి నుండి వచ్�
 
 msgid "Where is this person from?"
 msgstr "ఈ వ్యక్తి ఎక్కడి వారు?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "

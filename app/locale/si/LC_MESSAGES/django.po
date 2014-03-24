@@ -153,6 +153,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s හට මෙම සෙවීම් විමසුමට ගැළපෙන ප්‍රතිඵල "
+"ඇත.\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1016,7 +1028,6 @@ msgstr "මුල් අඩවි නාමය"
 msgid "Other website"
 msgstr "අනෙක් වෙබ්අඩවිය"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1349,10 +1360,10 @@ msgstr "මෙම වාර්තාව ආයාචිත තැපෑලකි
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
-"මෙම ගබඩාව වර්තමානයේ පරික්ෂණ ආකාරය තුළ ඇත. පරීක්ෂණ ආකාරය බලපැවැත්වෙන "
-"අතරතුර, පැය 6 කට වඩා පැරණි වාර්තා මැකේ."
+"මෙම භාණ්ඩාගාරය දැනට පරීක්ෂා ආකාරය තුළ පවතී. පරීක්ෂා ප්‍රකාරය බලපැවැත්වෙන "
+"අතරතුර, පැය 24 ට වඩා පැරණි වාර්තා මකනු ලැබේ."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
@@ -1425,6 +1436,13 @@ msgstr "මෙම තොරතුරු පැමිණියේ කොහින
 
 msgid "Where is this person from?"
 msgstr "මෙම පුද්ගලයා කොහෙන් ආ කෙනෙක්ද?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "

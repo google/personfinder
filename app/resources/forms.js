@@ -16,6 +16,22 @@ function $(id) {
   return document.getElementById(id);
 }
 
+// console_log(...) is the same as console.log(...) except that it doesn't
+// crash when console is missing.
+function console_log() {
+  if (window.console && window.console.log) {
+    console.log.apply(console, arguments);
+  }
+}
+
+// console_error(...) is the same as console.error(...) except that it doesn't
+// crash when console is missing.
+function console_error() {
+  if (window.console && window.console.error) {
+    console.error.apply(console, arguments);
+  }
+}
+
 function show(element) {
   if (element) {
     element.style.display = '';

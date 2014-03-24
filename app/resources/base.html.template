@@ -40,6 +40,14 @@
       var lang = '{{env.lang}}';
       var translate_api_key = '{{config.translate_api_key}}';
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+      // Lets jQuery not overwrite "$" symbol defined in forms.js.
+      // Use "jQuery" instead of "$".
+      // TODO(ichikawa) Remove "$" from forms.js and use jQuery's "$" instead.
+      jQuery.noConflict();
+    </script>
     <script src="{{env.global_url}}/forms.js"></script>
     {% if env.virtual_keyboard_layout %}
       <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -75,7 +83,7 @@
 
   {% if env.repo_test_mode %}
     <div class="header-notification">
-      {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 6 hours old are deleted." %}
+      {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 24 hours old are deleted." %}
     </div>
   {% endif %}
 
@@ -106,6 +114,10 @@
         {% endif %}
         {% trans "PLEASE NOTE: On active Person Finder sites, all data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}
+    </div>
+
+    <div>
+      {{env.footer_custom_html|default:""|safe}}
     </div>
 
     {% block footer %}

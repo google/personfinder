@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -5888,6 +5888,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
+            footer_custom_htmls='{"no": "footer message"}',
             bad_words = 'bad, word',
             force_https = 'false'
         )
@@ -5936,6 +5937,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
+            footer_custom_htmls='{"no": "footer message"}',
             bad_words = 'foo, bar',
             force_https = 'true'
         )
@@ -5995,6 +5997,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
             seek_query_form_custom_htmls='{"en": "query form message"}',
+            footer_custom_htmls='{"no": "footer message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -6044,7 +6047,8 @@ class ConfigTests(TestsBase):
             start_page_custom_htmls='{"en": "start page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
-            seek_query_form_custom_htmls='{"en": "query form message"}')
+            seek_query_form_custom_htmls='{"en": "query form message"}',
+            footer_custom_htmls='{"en": "footer message"}')
 
         cfg = config.Configuration('haiti')
         assert cfg.test_mode
@@ -6081,6 +6085,9 @@ class ConfigTests(TestsBase):
             seek_query_form_custom_htmls=
                 '{"en": "<b>English</b> query form message",'
                 ' "fr": "<b>French</b> query form message"}',
+            footer_custom_htmls=
+                '{"en": "<b>English</b> footer message",'
+                ' "fr": "<b>French</b> footer message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -6096,6 +6103,9 @@ class ConfigTests(TestsBase):
         assert cfg.seek_query_form_custom_htmls == \
             {'en': '<b>English</b> query form message',
              'fr': '<b>French</b> query form message'}
+        assert cfg.footer_custom_htmls == \
+            {'en': '<b>English</b> footer message',
+             'fr': '<b>French</b> footer message'}
 
         # Add a person record
         db.put(Person(

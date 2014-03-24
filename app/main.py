@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,6 +67,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_enable_notes',
   'post_flagged_note',
   'confirm_post_flagged_note',
+  'third_party_search',
   'admin',
   'admin/dashboard',
   'admin/resources',
@@ -402,6 +403,8 @@ def setup_env(request):
             env.config.view_page_custom_htmls, env.lang, '')
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
+        env.footer_custom_html = get_localized_message(
+            env.config.footer_custom_htmls, env.lang, '')
         # If the repository is deactivated, we should not show test mode
         # notification.
         env.repo_test_mode = (
@@ -488,8 +491,8 @@ class Main(webapp.RequestHandler):
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
-            handler = getattr(__import__(module_name), class_name)()
-            handler.initialize(request, response, env)
+            handler = getattr(__import__(module_name), class_name)(
+                request, response, env)
             getattr(handler, request.method.lower())()  # get() or post()
         elif env.action.endswith('.template'):
             # Don't serve template source code.

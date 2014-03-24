@@ -160,6 +160,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s presenta risultati di ricerca "
+"corrispondenti alla query.\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1049,7 +1061,6 @@ msgstr "Nome del sito originale"
 msgid "Other website"
 msgstr "Altro sito web"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1381,10 +1392,10 @@ msgstr "Questo record è spam."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
 "Questo repository è attualmente in modalità di test. Mentre è attiva la "
-"modalità di test, i record creati da più di sei ore vengono eliminati."
+"modalità di test, i record creati da più di 24 ore vengono eliminati."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "Per allegare una foto a questa nota, caricala o inseriscine l'URL."
@@ -1455,6 +1466,13 @@ msgstr "Da dove provengono queste informazioni?"
 
 msgid "Where is this person from?"
 msgstr "Da dove viene questa persona?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "

@@ -270,7 +270,7 @@ td.submit {
 
 .footer {
   clear: both;
-  padding: 1em;
+  margin: 2em 0;
   text-align: center;
   color: #666;
 }
@@ -618,6 +618,10 @@ resultsList {
 
 .searchResults .tracking {
   text-align: {{end}};
+}
+
+.third-party-search-result {
+  font-weight: bold;
 }
 
 /* Embedding instructions */

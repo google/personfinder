@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -609,6 +609,7 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url2': strip,
         'profile_url3': strip,
         'query': strip,
+        'query_type': strip,
         'read_permission': validate_checkbox_as_bool,
         'referrer': strip,
         'resource_bundle': validate_resource_name,
@@ -617,6 +618,7 @@ class BaseHandler(webapp.RequestHandler):
         'resource_lang': validate_lang,
         'resource_name': validate_resource_name,
         'role': validate_role,
+        'search_engine_id': validate_int,
         'search_permission': validate_checkbox_as_bool,
         'sex': validate_sex,
         'signature': strip,
@@ -786,8 +788,8 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def initialize(self, request, response, env):
-        webapp.RequestHandler.initialize(self, request, response)
+    def __init__(self, request, response, env):
+        webapp.RequestHandler.__init__(self, request, response)
         self.params = Struct()
         self.env = env
         self.repo = env.repo

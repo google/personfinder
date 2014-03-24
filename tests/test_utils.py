@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -186,8 +186,7 @@ class HandlerTests(unittest.TestCase):
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
         response = webapp.Response()
-        handler = utils.BaseHandler()
-        handler.initialize(request, response, main.setup_env(request))
+        handler = utils.BaseHandler(request, response, main.setup_env(request))
         return (request, response, handler)
 
     def test_parameter_validation(self):
@@ -216,9 +215,9 @@ class HandlerTests(unittest.TestCase):
 
     def test_nonexistent_repo(self):
         request, response, handler = self.handler_for_url('/x/start')
-        assert response.status == 404
-        assert 'No such repository' in response.out.getvalue()
-        assert 'class="error"' in response.out.getvalue()  # error template
+        assert response.status == '404 Not Found'
+        assert 'No such repository' in response.body
+        assert 'class="error"' in response.body  # error template
 
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
@@ -237,8 +236,8 @@ class HandlerTests(unittest.TestCase):
         resources.get_rendered = lambda: 1/0  # force error template to fail
 
         request, response, handler = self.handler_for_url('/?lang=<script>&')
-        assert 'Invalid language tag' in response.out.getvalue()
-        assert '<script' not in response.out.getvalue()
+        assert 'Invalid language tag' in response.body
+        assert '<script' not in response.body
 
 
 if __name__ == '__main__':

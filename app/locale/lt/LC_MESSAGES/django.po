@@ -157,6 +157,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          „%(search_engine_name)s“ yra šią užklausą atitinkantis (-ių) "
+"paieškos rezultatas (-ų).\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1030,7 +1042,6 @@ msgstr "Pirminės svetainės pavadinimas"
 msgid "Other website"
 msgstr "Kita svetainė"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1364,10 +1375,10 @@ msgstr "Šiame įraše skelbiamas šlamštas."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
 "Ši saugykla šiuo metu veikia bandomuoju režimu. Kol veikia bandomasis "
-"režimas, senesni nei 6 val. įrašai ištrinami."
+"režimas, senesni nei 24 val. įrašai ištrinami."
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
@@ -1444,6 +1455,13 @@ msgstr "Iš kur gauta ši informacija?"
 
 msgid "Where is this person from?"
 msgstr "Iš kur kilęs šis asmuo?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "

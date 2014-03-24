@@ -154,6 +154,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s มีผลการค้นหาที่ตรงกับคำค้นหานี้\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
 "        Records Similar to: %(full_name)s\n"
 "      "
 msgstr ""
@@ -1016,7 +1027,6 @@ msgstr "ชื่อเว็บไซต์ดั้งเดิม"
 msgid "Other website"
 msgstr "เว็บไซต์อื่นๆ"
 
-#, fuzzy
 msgid ""
 "PLEASE NOTE: On active Person Finder sites, all data entered is available"
 " to the public and usable by anyone.  Google does not review or verify "
@@ -1341,10 +1351,10 @@ msgstr "บันทึกนี้เป็นสแปม"
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
-"records that are over 6 hours old are deleted."
+"records that are over 24 hours old are deleted."
 msgstr ""
-"ขณะนี้ที่เก็บนี้ยังอยู่ในโหมดการทดสอบ ในขณะที่โหมดการทดสอบมีผลอยู่ "
-"บันทึกที่มีอายุเกินกว่า 6 ชั่วโมงจะถูกลบออก"
+"ขณะนี้ที่เก็บนี้อยู่ในโหมดทดสอบ ในขณะที่อยู่ในโหมดทดสอบ "
+"บันทึกที่มีอายุเกิน 24 ชั่วโมงจะถูกลบทิ้ง"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr "หากต้องการแนบภาพเข้ากับข้อความนี้ โปรดอัปโหลดภาพหรือป้อน URL ของภาพ"
@@ -1413,6 +1423,13 @@ msgstr "ข้อมูลนี้มาจากไหน"
 
 msgid "Where is this person from?"
 msgstr "บุคคลนี้มาจากที่ไหน"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
 
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
