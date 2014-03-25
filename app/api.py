@@ -23,6 +23,7 @@ import logging
 import re
 import StringIO
 import xml.dom.minidom
+
 import django.utils.html
 
 import external_search
@@ -500,8 +501,7 @@ class Stats(utils.BaseHandler):
 
 
 class HandleSMS(utils.BaseHandler):
-    #https_required = True
-    https_required = False
+    https_required = True
     repo_required = False
 
     MAX_RESULTS = 3
