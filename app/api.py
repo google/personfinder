@@ -517,7 +517,7 @@ class HandleSMS(utils.BaseHandler):
 
         body = self.request.body_file.read()
         doc = xml.dom.minidom.parseString(body)
-        message = self.get_element_text(doc, 'message_text')
+        message = self.get_element_text(doc, 'message_text').strip()
         receiver_phone_number = self.get_element_text(
             doc, 'receiver_phone_number')
 
