@@ -517,9 +517,18 @@ class HandleSMS(utils.BaseHandler):
 
         body = self.request.body_file.read()
         doc = xml.dom.minidom.parseString(body)
-        message = self.get_element_text(doc, 'message_text').strip()
+        message_text = self.get_element_text(doc, 'message_text')
         receiver_phone_number = self.get_element_text(
             doc, 'receiver_phone_number')
+
+        if message_text is None:
+            self.response.set_status(400)
+            self.write('message_text element is required.')
+            return
+        if receiver_phone_number is None:
+            self.response.set_status(400)
+            self.write('receiver_phone_number element is required.')
+            return
 
         repo = (
             self.config.sms_number_to_repo and
@@ -532,25 +541,14 @@ class HandleSMS(utils.BaseHandler):
             return
 
         responses = []
-        m = re.search(r'^search\s+(.+)$', message, re.I)
+        m = re.search(r'^search\s+(.+)$', message_text.strip(), re.I)
         if m:
             query_string = m.group(1).strip()
             query = TextQuery(query_string)
-            people = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
-            if people:
-                for person in people:
-                    fields = []
-                    fields.append(person.full_name)
-                    if person.latest_status:
-                        fields.append(unicode(
-                            utils.get_person_status_text(person)))
-                    if person.sex: fields.append(person.sex)
-                    if person.age: fields.append(person.age)
-                    if person.home_city or person.home_state:
-                        fields.append(
-                            'From: %s %s' %
-                            (person.home_city, person.home_state))
-                    responses.append(' / '.join(fields))
+            persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
+            if persons:
+                for person in persons:
+                    responses.append(self.render_person(person))
             else:
                 responses.append('No results found for: %s' % query_string)
             responses.append(
@@ -560,7 +558,7 @@ class HandleSMS(utils.BaseHandler):
                 'and usable by anyone. Google does not review or verify the '
                 'accuracy of this data http://goo.gl/UCAXa')
         else:
-            responses = ['Usage: Search Hiroshi']
+            responses.append('Usage: Search John')
 
         self.response.headers['Content-Type'] = 'application/xml'
         self.write(
@@ -569,6 +567,20 @@ class HandleSMS(utils.BaseHandler):
             '  <message_text>%s</message_text>\n'
             '</response>\n'
             % django.utils.html.escape(' ## '.join(responses)))
+
+    def render_person(self, person):
+        fields = []
+        fields.append(person.full_name)
+        if person.latest_status:
+            fields.append(unicode(
+                utils.get_person_status_text(person)))
+        if person.sex: fields.append(person.sex)
+        if person.age: fields.append(person.age)
+        if person.home_city or person.home_state:
+            fields.append(
+                'From: ' +
+                ' '.join(filter([person.home_city, person.home_state])))
+        return ' / '.join(fields)
 
     def get_element_text(self, doc, tag_name):
         elems = doc.getElementsByTagName(tag_name)
