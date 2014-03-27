@@ -25,6 +25,7 @@ import StringIO
 import xml.dom.minidom
 
 import django.utils.html
+from google.appengine import runtime
 
 import external_search
 import importer
@@ -37,10 +38,6 @@ import utils
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
-
-import django.utils.html
-
-from google.appengine import runtime
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
@@ -503,6 +500,7 @@ class Stats(utils.BaseHandler):
                                      'note': note_counts}))
 
 
+# TODO(ichikawa) Add server test for this.
 class HandleSMS(utils.BaseHandler):
     https_required = True
     repo_required = False
@@ -575,6 +573,10 @@ class HandleSMS(utils.BaseHandler):
         fields = []
         fields.append(person.full_name)
         if person.latest_status:
+            # The result of utils.get_person_status_text() may be a Django's
+            # proxy object for lazy translation. Use uicode() to convert it
+            # into a unicode object. We must not specify an encoding for
+            # unicode() in this case.
             fields.append(unicode(
                 utils.get_person_status_text(person)))
         if person.sex: fields.append(person.sex)
@@ -582,7 +584,7 @@ class HandleSMS(utils.BaseHandler):
         if person.home_city or person.home_state:
             fields.append(
                 'From: ' +
-                ' '.join(filter([person.home_city, person.home_state])))
+                ' '.join(filter(None, [person.home_city, person.home_state])))
         return ' / '.join(fields)
 
     def get_element_text(self, doc, tag_name):
