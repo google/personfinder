@@ -19,8 +19,13 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import calendar
 import csv
+import logging
 import re
 import StringIO
+import xml.dom.minidom
+
+import django.utils.html
+from google.appengine import runtime
 
 import external_search
 import importer
@@ -33,10 +38,6 @@ import utils
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
-
-import django.utils.html
-
-from google.appengine import runtime
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
@@ -361,6 +362,7 @@ class Write(utils.BaseHandler):
   </status:write>
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
+
 class Search(utils.BaseHandler):
     https_required = False
 
@@ -411,6 +413,7 @@ class Search(utils.BaseHandler):
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
+
 
 class Subscribe(utils.BaseHandler):
     https_required = True
@@ -495,3 +498,102 @@ class Stats(utils.BaseHandler):
         self.response.headers['Content-Type'] = 'application/json'
         self.write(simplejson.dumps({'person': person_counts,
                                      'note': note_counts}))
+
+
+# TODO(ichikawa) Add server test for this.
+class HandleSMS(utils.BaseHandler):
+    https_required = True
+    repo_required = False
+
+    MAX_RESULTS = 3
+
+    def post(self):
+        if not (self.auth and self.auth.search_permission):
+            self.response.set_status(403)
+            self.write(
+                '"key" URL parameter is either missing, invalid or '
+                'lacks required permissions. The key\'s repo must be "*" and '
+                'search_permission must be True.')
+            return
+
+        body = self.request.body_file.read()
+        doc = xml.dom.minidom.parseString(body)
+        message_text = self.get_element_text(doc, 'message_text')
+        receiver_phone_number = self.get_element_text(
+            doc, 'receiver_phone_number')
+
+        if message_text is None:
+            self.response.set_status(400)
+            self.write('message_text element is required.')
+            return
+        if receiver_phone_number is None:
+            self.response.set_status(400)
+            self.write('receiver_phone_number element is required.')
+            return
+
+        repo = (
+            self.config.sms_number_to_repo and
+            self.config.sms_number_to_repo.get(receiver_phone_number))
+        if not repo:
+            self.response.set_status(400)
+            self.write(
+                'The given receiver_phone_number is not found in '
+                'sms_number_to_repo config.')
+            return
+
+        responses = []
+        m = re.search(r'^search\s+(.+)$', message_text.strip(), re.I)
+        if m:
+            query_string = m.group(1).strip()
+            query = TextQuery(query_string)
+            persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
+            if persons:
+                for person in persons:
+                    responses.append(self.render_person(person))
+            else:
+                responses.append('No results found for: %s' % query_string)
+            responses.append(
+                'More at: http://g.co/pf/%s' % repo)
+            responses.append(
+                'All data entered in Person Finder is available to the public '
+                'and usable by anyone. Google does not review or verify the '
+                'accuracy of this data http://goo.gl/UCAXa')
+        else:
+            responses.append('Usage: Search John')
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.write(
+            '<?xml version="1.0" encoding="utf-8"?>\n'
+            '<response>\n'
+            '  <message_text>%s</message_text>\n'
+            '</response>\n'
+            % django.utils.html.escape(' ## '.join(responses)))
+
+    def render_person(self, person):
+        fields = []
+        fields.append(person.full_name)
+        if person.latest_status:
+            # The result of utils.get_person_status_text() may be a Django's
+            # proxy object for lazy translation. Use uicode() to convert it
+            # into a unicode object. We must not specify an encoding for
+            # unicode() in this case.
+            fields.append(unicode(
+                utils.get_person_status_text(person)))
+        if person.sex: fields.append(person.sex)
+        if person.age: fields.append(person.age)
+        if person.home_city or person.home_state:
+            fields.append(
+                'From: ' +
+                ' '.join(filter(None, [person.home_city, person.home_state])))
+        return ' / '.join(fields)
+
+    def get_element_text(self, doc, tag_name):
+        elems = doc.getElementsByTagName(tag_name)
+        if elems:
+            text = u''
+            for node in elems[0].childNodes:
+                if node.nodeType == node.TEXT_NODE:
+                    text += node.data
+            return text.encode('utf-8')
+        else:
+            return None
