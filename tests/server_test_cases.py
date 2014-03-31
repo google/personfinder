@@ -18,6 +18,8 @@
 
 import calendar
 import datetime
+import email
+import email.header
 import optparse
 import os
 import pytest
@@ -239,6 +241,27 @@ class TestsBase(unittest.TestCase):
             urlparse.parse_qs(parsed_actual.query),
             urlparse.parse_qs(parsed_expected.query))
         self.assertEqual(parsed_actual.fragment, parsed_expected.fragment)
+
+    def get_email_payload(self, message):
+        """Gets the payload (body) of the email.
+        It performs base-64 decoding if needed.
+        """
+        m = email.message_from_string(message['data'])
+        result = ''
+        for part in m.walk():
+            p = part.get_payload(decode=True)
+            if p: result += p
+        return result
+
+    def get_email_subject(self, message):
+        """Gets the subject of the email.
+        It performs RFC 2047 decoding if needed."""
+        m = email.message_from_string(message['data'])
+        result = ''
+        for s, encoding in email.header.decode_header(m['Subject']):
+            assert encoding is None or encoding == 'utf-8'
+            result += s
+        return result
 
 
 class ReadOnlyTests(TestsBase):
@@ -992,6 +1015,8 @@ class PersonNoteTests(TestsBase):
         self.verify_note_form()
         self.verify_update_notes(
             False, '_test A note body', '_test A note author', None)
+        # Advances the clock so that the new note is shown below the old notes.
+        self.advance_utcnow(seconds=1)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
@@ -1008,6 +1033,8 @@ class PersonNoteTests(TestsBase):
 
         # Add a note with status == 'believed_dead'.
         # By default allow_believed_dead_via_ui = True for repo 'haiti'.
+        # Advances the clock so that the new note is shown below the old notes.
+        self.advance_utcnow(seconds=1)
         self.verify_update_notes(
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
@@ -2364,11 +2391,12 @@ http://www.foo.com/_account_1''',
         assert subscriptions[0].language == 'en'
         self.verify_email_sent()
         message = self.mail_server.messages[0]
+        payload = self.get_email_payload(message)
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
-        assert '_test_full_name' in message['data']
-        assert 'view?id=test.google.com%2Fperson.111' in message['data']
+        assert '_test_full_name' in payload
+        assert 'view?id=test.google.com%2Fperson.111' in payload
 
         # Duplicate subscription
         self.go('/haiti/api/subscribe?key=subscribe_key', data=data)
@@ -4800,7 +4828,7 @@ _feed_profile_url2</pfif:profile_urls>
             author_name='_test_author_name',
             author_email='test@example.com',
             full_name='_test_full_name1',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.2',
@@ -4808,7 +4836,7 @@ _feed_profile_url2</pfif:profile_urls>
             author_name='_test_author_name',
             author_email='test@example.com',
             full_name='_test_full_name2',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.3',
@@ -4816,28 +4844,28 @@ _feed_profile_url2</pfif:profile_urls>
             author_name='_test_author_name',
             author_email='test@example.com',
             full_name='_test_full_name3',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.1',
             repo='haiti',
             person_record_id='test.google.com/person.1',
             text='Testing',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.2',
             repo='haiti',
             person_record_id='test.google.com/person.2',
             linked_person_record_id='test.google.com/person.3',
             text='Testing',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.3',
             repo='haiti',
             person_record_id='test.google.com/person.3',
             linked_person_record_id='test.google.com/person.2',
             text='Testing',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
         ), Subscription(
             key_name='haiti:test.google.com/person.1:example1@example.com',
             repo='haiti',
@@ -4858,6 +4886,8 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Visit the details page and add a note, triggering notification
         # to the subscriber.
+        # Advances the clock so that the new note is shown below the old notes.
+        self.advance_utcnow(seconds=1)
         doc = self.go('/haiti/view?id=test.google.com/person.1')
         self.verify_details_page(1)
         self.verify_note_form()
@@ -4869,13 +4899,14 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Verify email data
         message = self.mail_server.messages[0]
+        payload = self.get_email_payload(message)
         assert message['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message['from']
-        assert '_test_full_name1' in message['data']
+        assert '_test_full_name1' in payload
         # Subscription is French, email should be, too
-        assert 'recherche des informations' in message['data']
-        assert '_test A note body' in message['data']
-        assert 'view?id=test.google.com%2Fperson.1' in message['data']
+        assert 'recherche des informations' in payload
+        assert '_test A note body' in payload
+        assert 'view?id=test.google.com%2Fperson.1' in payload
 
         # Reset the MailThread queue
         self.mail_server.messages = []
@@ -4891,14 +4922,16 @@ _feed_profile_url2</pfif:profile_urls>
         self.verify_email_sent(2)
 
         # Verify email details
-        message_1 = self.mail_server.messages[0]
-        assert message_1['to'] == [SUBSCRIBER_1]
+        messages_by_to = {}
+        for message in self.mail_server.messages:
+            assert len(message['to']) == 1
+            messages_by_to[message['to'][0]] = message
+        message_1 = messages_by_to[SUBSCRIBER_1]
         assert 'do-not-reply@' in message_1['from']
-        assert '_test_full_name1' in message_1['data']
-        message_2 = self.mail_server.messages[1]
-        assert message_2['to'] == [SUBSCRIBER_2]
+        assert '_test_full_name1' in self.get_email_payload(message_1)
+        message_2 = messages_by_to[SUBSCRIBER_2]
         assert 'do-not-reply@' in message_2['from']
-        assert '_test_full_name2' in message_2['data']
+        assert '_test_full_name2' in self.get_email_payload(message_2)
 
         # Reset the MailThread queue
         self.mail_server.messages = []
@@ -4912,10 +4945,11 @@ _feed_profile_url2</pfif:profile_urls>
                                  status='information_sought')
         self.verify_details_page(1)
         self.verify_email_sent(2)
-        message_1 = self.mail_server.messages[0]
-        assert message_1['to'] == [SUBSCRIBER_1]
-        message_2 = self.mail_server.messages[1]
-        assert message_2['to'] == [SUBSCRIBER_2]
+        tos = set()
+        for message in self.mail_server.messages:
+            assert len(message['to']) == 1
+            tos.add(message['to'][0])
+        assert tos == set([SUBSCRIBER_1, SUBSCRIBER_2])
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"
@@ -5022,11 +5056,12 @@ _feed_profile_url2</pfif:profile_urls>
 
         self.verify_email_sent()
         message = self.mail_server.messages[0]
+        payload = self.get_email_payload(message)
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
-        assert '_test_full_name' in message['data']
-        assert 'view?id=test.google.com%2Fperson.111' in message['data']
+        assert '_test_full_name' in payload
+        assert 'view?id=test.google.com%2Fperson.111' in payload
 
         # Already subscribed person is shown info page
         self.s.back()
@@ -5048,7 +5083,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert subscriptions[0].language == 'fr'
 
         # Test the unsubscribe link in the email
-        unsub_url = re.search('(/haiti/unsubscribe.*)', message['data']).group(1)
+        unsub_url = re.search('(/haiti/unsubscribe.*)', payload).group(1)
         doc = self.go(unsub_url)
         # "You have successfully unsubscribed." in French.
         assert u'Vous vous \u00eates bien d\u00e9sabonn\u00e9.' in doc.content
