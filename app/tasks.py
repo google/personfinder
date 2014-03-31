@@ -15,9 +15,11 @@
 
 import calendar
 import datetime
+import logging
 import time
 
 from google.appengine import runtime
+from google.appengine.api import datastore_errors
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
@@ -81,6 +83,10 @@ class ScanForExpired(utils.BaseHandler):
                             delete.delete_person(self, person)
                     cursor = next_cursor
             except runtime.DeadlineExceededError:
+                self.schedule_next_task(cursor)
+            except datastore_errors.Timeout:
+                # This exception is sometimes raised, maybe when the query
+                # object live too long?
                 self.schedule_next_task(cursor)
         else:
             for repo in model.Repo.list():
@@ -185,6 +191,10 @@ class CleanUpInTestMode(utils.BaseHandler):
                     person = query.get()
             except runtime.DeadlineExceededError:
                 self.schedule_next_task(cursor, utcnow)
+            except datastore_errors.Timeout:
+                # This exception is sometimes raised, maybe when the query
+                # object live too long?
+                self.schedule_next_task(cursor, utcnow)
                 
         else:
             for repo in model.Repo.list():
@@ -196,7 +206,7 @@ class CleanUpInTestMode(utils.BaseHandler):
 
 
 def run_count(make_query, update_counter, counter):
-    """Scans the entities matching a query for a limited amount of CPU time.
+    """Scans the entities matching a query up to FETCH_LIMIT.
     
     Returns False if we finished counting all entries."""
     # Get the next batch of entities.
@@ -239,6 +249,7 @@ class CountBase(utils.BaseHandler):
                             self.make_query, self.update_counter, counter)
                         if not entities_remaining:
                             break
+                    # And put the updates at once.
                     counter.put()
             except runtime.DeadlineExceededError:
                 # Continue counting in another task.
