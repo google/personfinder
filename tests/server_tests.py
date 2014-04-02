@@ -35,6 +35,7 @@ import signal
 import smtpd
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 
@@ -63,13 +64,23 @@ class ProcessRunner(threading.Thread):
     def run(self):
         """Starts the subprocess and collects its output while it runs."""
         self.process = subprocess.Popen(
-            self.args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            self.args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             close_fds=True)
 
         # Each subprocess needs a thread to be watching it and absorbing its
         # output; otherwise it will block when its stdout pipe buffer fills.
+        self.start_watching_output(self.process.stdout)
+        self.start_watching_output(self.process.stderr)
+        self.process.wait()
+
+    def start_watching_output(self, output):
+        stdout_thread = threading.Thread(target=self.watch_output, args=(output,))
+        stdout_thread.setDaemon(True)
+        stdout_thread.start()
+
+    def watch_output(self, output):
         while self.process.poll() is None:
-            line = self.process.stdout.readline()
+            line = output.readline()
             if not line:  # process finished
                 return
             if self.READY_RE.search(line):
@@ -124,20 +135,28 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application')
+    READY_RE = re.compile('Starting module "default" running at|Running application')
     OMIT_RE = re.compile(
         'INFO |WARNING |DeprecationWarning: get_request_cpu_usage')
 
     def __init__(self, port, smtp_port):
+        self.__datastore_file = tempfile.NamedTemporaryFile()
         ProcessRunner.__init__(self, 'appserver', [
             os.environ['PYTHON'],
             os.path.join(os.environ['APPENGINE_DIR'], 'dev_appserver.py'),
             os.environ['APP_DIR'],
             '--port=%s' % port,
-            '--datastore_path=/dev/null',
+            '--datastore_path=%s' % self.__datastore_file.name,
             '--require_indexes',
             '--smtp_host=localhost',
-            '--smtp_port=%d' % smtp_port # '-d'
+            '--smtp_port=%d' % smtp_port,
+            # By default, if we perform a datastore write and a query in this
+            # order, the query may see the data before the write is applied.
+            # This is the behavior in the production, but it is inconvenient
+            # to perform server tests, because we often perform a database
+            # write then test if it's visible in the web page. This flag makes
+            # sure that the query see the data after the write is applied.
+            '--datastore_consistency_policy=consistent',
         ])
 
 
@@ -207,7 +226,7 @@ class PyTestPlugin:
             thread.wait_until_ready()
 
         # Connect to the datastore.
-        url, app_id = remote_api.connect(url, 'test', 'test')
+        url, app_id = remote_api.connect(url, 'test@example.com', 'test')
 
         # Reset the datastore for the first test.
         reset_data()

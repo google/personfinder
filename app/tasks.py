@@ -206,7 +206,7 @@ class CleanUpInTestMode(utils.BaseHandler):
 
 
 def run_count(make_query, update_counter, counter):
-    """Scans the entities matching a query for a limited amount of CPU time.
+    """Scans the entities matching a query up to FETCH_LIMIT.
     
     Returns False if we finished counting all entries."""
     # Get the next batch of entities.
@@ -249,6 +249,7 @@ class CountBase(utils.BaseHandler):
                             self.make_query, self.update_counter, counter)
                         if not entities_remaining:
                             break
+                    # And put the updates at once.
                     counter.put()
             except runtime.DeadlineExceededError:
                 # Continue counting in another task.

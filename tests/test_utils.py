@@ -215,7 +215,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_nonexistent_repo(self):
         request, response, handler = self.handler_for_url('/x/start')
-        assert response.status == '404 Not Found'
+        assert response.status_int == 404
         assert 'No such repository' in response.body
         assert 'class="error"' in response.body  # error template
 

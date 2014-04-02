@@ -24,10 +24,14 @@
     </ol>
     <form method="post" enctype="multipart/form-data">
       <table>
-        <tr>
-          <td>{% trans "Authorization key" %}:</td>
-          <td><input type="text" name="key"></td>
-        </tr>
+        {% if params.key %}
+          <input type="hidden" name="key" value="{{params.key|safe}}" />
+        {% else %}
+          <tr>
+            <td>{% trans "Authorization key" %}:</td>
+            <td><input type="text" name="key"></td>
+          </tr>
+        {% endif %}
         <tr>
           <td>{% trans "CSV file" %}:</td>
           <td><input type="file" name="content"></td>
@@ -48,10 +52,14 @@
     </ul>
     <form method="post" enctype="multipart/form-data">
       <table>
-        <tr>
-          <td>{% trans "Authorization key" %}:</td>
-          <td><input type="text" name="key"></td>
-        </tr>
+        {% if params.key %}
+          <input type="hidden" name="key" value="{{params.key|safe}}" />
+        {% else %}
+          <tr>
+            <td>{% trans "Authorization key" %}:</td>
+            <td><input type="text" name="key"></td>
+          </tr>
+        {% endif %}
         <tr>
           <td>{% trans "CSV file" %}:</td>
           <td><input type="file" name="content"></td>
