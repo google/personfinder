@@ -19,6 +19,16 @@
     try {
       var pageTracker = _gat._getTracker('{{env.analytics_id}}');
       pageTracker._trackPageview();
-    } catch(err) {}
+      var path = window.location.pathname;
+      if (path.match(/\/(create|results|view)$/)) {
+        pageTracker._trackPageview(path);
+      }
+      var num_results = '{{num_results}}';
+      if (num_results != '') {
+        pageTracker._trackEvent('search', 'search', 'results', num_results - 0, true);
+      }
+    } catch(err) {
+      if (window['console']) { console.log(err); }
+    }
   </script>
 {% endif %}
