@@ -96,7 +96,7 @@ class ProcessRunner(threading.Thread):
         """Terminates the subprocess and returns its status code."""
         if self.process:  # started
             if self.isAlive():  # still running
-                os.kill(self.process.pid, signal.SIGKILL)
+                os.kill(self.process.pid, signal.SIGINT)
             else:
                 self.failed = self.process.returncode != 0
         self.clean_up()
