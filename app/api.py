@@ -161,15 +161,13 @@ class Import(utils.BaseHandler):
 
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
-            self.response.set_status(403)
             # TODO(ryok): i18n
-            self.write('Missing or invalid authorization key.')
+            self.error(403, message='Missing or invalid authorization key.')
             return
 
         content = self.request.get('content')
         if not content:
-            self.response.set_status(400)
-            self.write('Please specify at least one CSV file.')
+            self.error(400, message='Please specify at least one CSV file.')
             return
 
         try:
@@ -179,14 +177,12 @@ class Import(utils.BaseHandler):
             else:
                 self.import_persons(lines)
         except InputFileError, e:
-            self.response.set_status(400)
-            self.write('Problem in the uploaded file: %s' % e)
+            self.error(400, message='Problem in the uploaded file: %s' % e)
         except runtime.DeadlineExceededError, e:
-            self.response.set_status(400)
-            self.write('''
-Sorry, the uploaded file is too large.  Try splitting it into smaller files
-(keeping the header rows in each file) and uploading each part separately.
-''')
+            self.error(400, message=
+                'Sorry, the uploaded file is too large. Try splitting it into '
+                'smaller files (keeping the header rows in each file) and '
+                'uploading each part separately.')
 
     def import_notes(self, lines):
         source_domain = self.auth.domain_write_permission
@@ -195,8 +191,8 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
         try:
             records = [complete_record_ids(r, source_domain) for r in records]
         except csv.Error, e:
-            self.response.set_status(400)
-            self.write('The CSV file is formatted incorrectly. (%s)' % e)
+            self.error(400, message=
+                'The CSV file is formatted incorrectly. (%s)' % e)
             return
 
         notes_written, notes_skipped, notes_total = importer.import_records(
@@ -225,8 +221,8 @@ Sorry, the uploaded file is too large.  Try splitting it into smaller files
         try:
             records = [complete_record_ids(r, source_domain) for r in records]
         except csv.Error, e:
-            self.response.set_status(400)
-            self.write('The CSV file is formatted incorrectly. (%s)' % e)
+            self.error(400, message=
+                'The CSV file is formatted incorrectly. (%s)' % e)
             return
 
         is_not_empty = lambda x: (x or '').strip()
@@ -264,8 +260,10 @@ class Read(utils.BaseHandler):
     def get(self):
         if self.config.read_auth_key_required and not (
             self.auth and self.auth.read_permission):
-            self.response.set_status(403)
-            self.write('Missing or invalid authorization key\n')
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
             return
 
         pfif_version = self.params.version
@@ -274,12 +272,17 @@ class Read(utils.BaseHandler):
         # can consider adding support for multiple records later.
         record_id = self.request.get('id')
         if not record_id:
-            return self.error(400, 'Missing id parameter')
+            self.info(400, message='Missing id parameter', style='plain')
+            return
 
         person = model.Person.get(
             self.repo, record_id, filter_expired=False)
         if not person:
-            return self.error(404, 'No person record with ID %s' % record_id)
+            self.info(
+                400,
+                message='No person record with ID %s' % record_id,
+                style='plain')
+            return
         notes = model.Note.get_by_person_record_id(self.repo, record_id)
         notes = [note for note in notes if not note.hidden]
 
@@ -299,8 +302,10 @@ class Write(utils.BaseHandler):
 
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
-            self.response.set_status(403)
-            self.write('Missing or invalid authorization key\n')
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
             return
 
         source_domain = self.auth.domain_write_permission
@@ -308,8 +313,7 @@ class Write(utils.BaseHandler):
             person_records, note_records = \
                 pfif.parse_file(self.request.body_file)
         except Exception, e:
-            self.response.set_status(400)
-            self.write('Invalid XML: %s\n' % e)
+            self.info(400, message='Invalid XML: %s' % e, style='plain')
             return
 
         mark_notes_reviewed = bool(self.auth.mark_notes_reviewed)
@@ -369,7 +373,11 @@ class Search(utils.BaseHandler):
     def get(self):
         if self.config.search_auth_key_required and not (
             self.auth and self.auth.search_permission):
-            return self.error(403, 'Missing or invalid authorization key\n')
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
+            return
 
         pfif_version = self.params.version
 
@@ -395,7 +403,10 @@ class Search(utils.BaseHandler):
             if not results:
                 results = indexing.search(self.repo, query, max_results)
         else:
-            return self.error(400, 'Neither id nor q parameter specified')
+            self.info(
+                400,
+                message='Neither id nor q parameter specified',
+                style='plain')
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -467,8 +478,10 @@ def fetch_all(query):
 class Stats(utils.BaseHandler):
     def get(self):
         if not (self.auth and self.auth.stats_permission):
-            self.response.set_status(403)
-            self.write('Missing or invalid authorization key\n')
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
             return
 
         person_counts = model.Counter.get_all_counts(self.repo, 'person')
@@ -509,11 +522,13 @@ class HandleSMS(utils.BaseHandler):
 
     def post(self):
         if not (self.auth and self.auth.search_permission):
-            self.response.set_status(403)
-            self.write(
-                '"key" URL parameter is either missing, invalid or '
-                'lacks required permissions. The key\'s repo must be "*" and '
-                'search_permission must be True.')
+            self.info(
+                403,
+                message=
+                    '"key" URL parameter is either missing, invalid or '
+                    'lacks required permissions. The key\'s repo must be "*" '
+                    'and search_permission must be True.',
+                style='plain')
             return
 
         body = self.request.body_file.read()
@@ -523,22 +538,28 @@ class HandleSMS(utils.BaseHandler):
             doc, 'receiver_phone_number')
 
         if message_text is None:
-            self.response.set_status(400)
-            self.write('message_text element is required.')
+            self.info(
+                400,
+                message='message_text element is required.',
+                style='plain')
             return
         if receiver_phone_number is None:
-            self.response.set_status(400)
-            self.write('receiver_phone_number element is required.')
+            self.info(
+                400,
+                message='receiver_phone_number element is required.',
+                style='plain')
             return
 
         repo = (
             self.config.sms_number_to_repo and
             self.config.sms_number_to_repo.get(receiver_phone_number))
         if not repo:
-            self.response.set_status(400)
-            self.write(
-                'The given receiver_phone_number is not found in '
-                'sms_number_to_repo config.')
+            self.info(
+                400,
+                message=
+                    'The given receiver_phone_number is not found in '
+                    'sms_number_to_repo config.',
+                style='plain')
             return
 
         responses = []
