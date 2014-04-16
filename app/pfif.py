@@ -492,6 +492,10 @@ def parse_file(pfif_utf8_file, rename_fields=True):
     handler = Handler(rename_fields)
     parser = xml.sax.make_parser()
     parser.setFeature(xml.sax.handler.feature_namespaces, True)
+    # Below two are to avoid XML External Entity attacks:
+    # https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing
+    parser.setFeature(xml.sax.handler.feature_external_pes, False)
+    parser.setFeature(xml.sax.handler.feature_external_ges, False)
     parser.setContentHandler(handler)
     parser.parse(pfif_utf8_file)
     if rename_fields:
