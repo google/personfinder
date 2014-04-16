@@ -703,16 +703,20 @@ class BaseHandler(webapp.RequestHandler):
         if not message and not message_html:
             message = '%d: %s' % (code, httplib.responses.get(code))
         if style == 'plain':
-            self.response.out.write(
-                django.utils.html.escape(message) + '<p>' + message_html)
+            self.__render_plain_message(message, message_html)
         else:
             try:
                 self.render('message.html', cls=style,
                             message=message, message_html=message_html)
             except:
-                self.response.out.write(
-                    django.utils.html.escape(message) + '<p>' + message_html)
+                self.__render_plain_message(message, message_html)
         self.terminate_response()
+
+    def __render_plain_message(self, message, message_html):
+        self.response.out.write(
+            django.utils.html.escape(message) +
+            ('<p>' if message and message_html else '') +
+            message_html)
 
     def terminate_response(self):
         """Prevents any further output from being written."""
