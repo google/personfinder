@@ -685,6 +685,16 @@ class BaseHandler(webapp.RequestHandler):
         self.info(code, message, message_html, style='error')
 
     def info(self, code, message='', message_html='', style='info'):
+        """Renders a simple page with a message.
+
+        Args:
+          code: HTTP status code.
+          message: A message in plain text.
+          message_html: A message in HTML.
+          style: 'info', 'error' or 'plain'. 'info' and 'error' differs in
+              appearance. 'plain' just renders the message without extra
+              HTML tags. Good for API response.
+        """
         is_error = 400 <= code < 600
         if is_error:
             webapp.RequestHandler.error(self, code)
@@ -692,13 +702,21 @@ class BaseHandler(webapp.RequestHandler):
             self.response.set_status(code)
         if not message and not message_html:
             message = '%d: %s' % (code, httplib.responses.get(code))
-        try:
-            self.render('message.html', cls=style,
-                        message=message, message_html=message_html)
-        except:
-            self.response.out.write(
-                django.utils.html.escape(message) + '<p>' + message_html)
+        if style == 'plain':
+            self.__render_plain_message(message, message_html)
+        else:
+            try:
+                self.render('message.html', cls=style,
+                            message=message, message_html=message_html)
+            except:
+                self.__render_plain_message(message, message_html)
         self.terminate_response()
+
+    def __render_plain_message(self, message, message_html):
+        self.response.out.write(
+            django.utils.html.escape(message) +
+            ('<p>' if message and message_html else '') +
+            message_html)
 
     def terminate_response(self):
         """Prevents any further output from being written."""
