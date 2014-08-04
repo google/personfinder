@@ -269,9 +269,6 @@ def reset_data():
             domain_write_permission='test.google.com',
             believed_dead_permission=True),
         Authorization.create(
-            '*', 'global_test_key',
-            domain_write_permission='globaltestdomain.com'),
-        Authorization.create(
             'haiti', 'other_key', domain_write_permission='other.google.com'),
         Authorization.create(
             'haiti', 'read_key', read_permission=True),
@@ -281,6 +278,11 @@ def reset_data():
             'haiti', 'search_key', search_permission=True),
         Authorization.create(
             'haiti', 'subscribe_key', subscribe_permission=True),
+        Authorization.create(
+            '*', 'global_test_key',
+            domain_write_permission='globaltestdomain.com'),
+        Authorization.create(
+            '*', 'global_search_key', search_permission=True),
     ])
 
 def monkeypatch_pytest_terminal_reporter():

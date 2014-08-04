@@ -3052,6 +3052,126 @@ _read_profile_url2</pfif:profile_urls>
             config.set_for_repo('haiti', search_auth_key_required=False)
 
 
+    def test_sms_api(self):
+        """Tests the behavior of SMS API."""
+        # Add a person to datastore.
+        self.go('/haiti/create')
+        self.s.submit(self.s.doc.first('form'),
+                      given_name='_search_given_name',
+                      family_name='_search_1st_family_name',
+                      author_name='_search_1st_author_name',
+                      sex='female',
+                      age='52',
+                      home_city='_test_home_city',
+                      home_state='_test_home_state')
+        # Add a note for this person.
+        self.s.submit(self.s.doc.first('form'),
+                      author_made_contact='yes',
+                      text='this is text for first person',
+                      author_name='_search_1st_note_author_name',
+                      status='is_note_author')
+
+        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+
+        good_request_data = (
+            '<?xml version="1.0" encoding="utf-8"?>'
+            '<request>'
+            '    <message_text>Search _search_1st_family_name</message_text>'
+            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
+            '</request>')
+        request_data_with_no_result = (
+            '<?xml version="1.0" encoding="utf-8"?>'
+            '<request>'
+            '    <message_text>Search _non_existent_family_name</message_text>'
+            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
+            '</request>')
+        request_data_with_bad_text = (
+            '<?xml version="1.0" encoding="utf-8"?>'
+            '<request>'
+            '    <message_text>Hello</message_text>'
+            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
+            '</request>')
+        request_data_with_unknown_number = (
+            '<?xml version="1.0" encoding="utf-8"?>'
+            '<request>'
+            '    <message_text>Hello</message_text>'
+            '    <receiver_phone_number>+10987654321</receiver_phone_number>'
+            '</request>')
+
+        # Search request which matches a person record.
+        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+                      data=good_request_data, type='application/xml')
+        assert self.s.status == 200
+        assert doc.content == (
+            '<?xml version="1.0" encoding="utf-8"?>\n'
+            '<response>\n'
+            '  <message_text>'
+                '_search_given_name _search_1st_family_name / '
+                'This person has posted a message / '
+                'female / 52 / From: _test_home_city _test_home_state ## '
+                'More at: http://g.co/pf/haiti ## '
+                'All data entered in Person Finder is available to the public '
+                'and usable by anyone. Google does not review or verify the '
+                'accuracy of this data http://goo.gl/UCAXa'
+                '</message_text>\n'
+            '</response>\n')
+
+        # Search request which matches no person records.
+        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+                      data=request_data_with_no_result, type='application/xml')
+        assert self.s.status == 200
+        assert doc.content == (
+            '<?xml version="1.0" encoding="utf-8"?>\n'
+            '<response>\n'
+            '  <message_text>'
+                'No results found for: _non_existent_family_name ## '
+                'More at: http://g.co/pf/haiti ## '
+                'All data entered in Person Finder is available to the public '
+                'and usable by anyone. Google does not review or verify the '
+                'accuracy of this data http://goo.gl/UCAXa'
+                '</message_text>\n'
+            '</response>\n')
+
+        # The text doesn't begin with "Search".
+        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+                      data=request_data_with_bad_text, type='application/xml')
+        assert self.s.status == 200
+        assert doc.content == (
+            '<?xml version="1.0" encoding="utf-8"?>\n'
+            '<response>\n'
+            '  <message_text>Usage: Search John</message_text>\n'
+            '</response>\n')
+
+        # The receiver phone number is not associated with a repository.
+        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+                      data=request_data_with_unknown_number,
+                      type='application/xml')
+        assert self.s.status == 400
+        assert ('The given receiver_phone_number is not found in '
+            'sms_number_to_repo config.') in doc.content
+
+        # A request without a key.
+        doc = self.go('/global/api/handle_sms?lang=en',
+                      data=good_request_data, type='application/xml')
+        assert self.s.status == 403
+        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
+            'lacks required permissions.') in doc.content
+
+        # The key is associated with a repository, not global.
+        doc = self.go('/global/api/handle_sms?key=search_key&lang=en',
+                      data=good_request_data, type='application/xml')
+        assert self.s.status == 403
+        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
+            'lacks required permissions.') in doc.content
+
+        # The key doesn't have "search" permission.
+        doc = self.go('/global/api/handle_sms?key=global_test_key&lang=en',
+                      data=good_request_data, type='application/xml')
+        assert self.s.status == 403
+        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
+            'lacks required permissions.') in doc.content
+
+
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
         configure_api_logging()

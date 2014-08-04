@@ -513,7 +513,6 @@ class Stats(utils.BaseHandler):
                                      'note': note_counts}))
 
 
-# TODO(ichikawa) Add server test for this.
 class HandleSMS(utils.BaseHandler):
     https_required = True
     repo_required = False
