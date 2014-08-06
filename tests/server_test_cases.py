@@ -202,8 +202,13 @@ class TestsBase(unittest.TestCase):
             full_name='_test_given_name _test_family_name',
             given_name='_test_given_name',
             family_name='_test_family_name',
+            sex='female',
+            age='52',
+            home_city='_test_home_city',
+            home_state='_test_home_state',
             source_date=TEST_DATETIME,
-            entry_date=TEST_DATETIME
+            entry_date=TEST_DATETIME,
+            latest_status='believed_alive',
         )
         person.update_index(['old', 'new'])
         note = Note(
@@ -213,7 +218,8 @@ class TestsBase(unittest.TestCase):
             person_record_id='%s/person.123' % domain,
             source_date=TEST_DATETIME,
             entry_date=TEST_DATETIME,
-            text='Testing'
+            text='Testing',
+            status='believed_alive',
         )
         db.put([person, note])
         return person, note
@@ -227,12 +233,6 @@ class TestsBase(unittest.TestCase):
             '_test_photo_url_for_note' or '_test_photo_url'
         record.put()
         return photo
-
-    def assert_equal_multiline(self, actual, expected):
-        """Same as assert actual == expected, but it dumps multiline
-        actual/expected text in a more readable format."""
-        assert actual == expected, (
-            '\nactual:\n%s\nexpected:\n%s\n' % (actual, expected))
 
     def assert_equal_urls(self, actual, expected):
         """Asserts that the two URLs are equal ignoring the order of the query
@@ -3060,24 +3060,7 @@ _read_profile_url2</pfif:profile_urls>
 
     def test_sms_api(self):
         """Tests the behavior of SMS API."""
-        person = Person(
-            key_name='haiti:test.google.com/person.123',
-            repo='haiti',
-            author_name='_test_author_name',
-            author_email='test@example.com',
-            full_name='_test_given_name _test_family_name',
-            given_name='_test_given_name',
-            family_name='_test_family_name',
-            sex='female',
-            age='52',
-            home_city='_test_home_city',
-            home_state='_test_home_state',
-            latest_status='is_note_author',
-            source_date=TEST_DATETIME,
-            entry_date=TEST_DATETIME
-        )
-        person.update_index(['old', 'new'])
-        db.put([person])
+        self.setup_person_and_note()
 
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
 
@@ -3110,12 +3093,12 @@ _read_profile_url2</pfif:profile_urls>
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=good_request_data, type='application/xml')
         assert self.s.status == 200
-        self.assert_equal_multiline(doc.content,
+        expected = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>'
                 '_test_given_name _test_family_name / '
-                'This person has posted a message / '
+                'Someone has received information that this person is alive / '
                 'female / 52 / From: _test_home_city _test_home_state ## '
                 'More at: http://g.co/pf/haiti ## '
                 'All data entered in Person Finder is available to the public '
@@ -3123,12 +3106,13 @@ _read_profile_url2</pfif:profile_urls>
                 'accuracy of this data http://goo.gl/UCAXa'
                 '</message_text>\n'
             '</response>\n')
+        assert expected == doc.content, text_diff(expected, actual)
 
         # Search request which matches no person records.
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=request_data_with_no_result, type='application/xml')
         assert self.s.status == 200
-        self.assert_equal_multiline(doc.content,
+        expected = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>'
@@ -3139,16 +3123,18 @@ _read_profile_url2</pfif:profile_urls>
                 'accuracy of this data http://goo.gl/UCAXa'
                 '</message_text>\n'
             '</response>\n')
+        assert expected == doc.content, text_diff(expected, actual)
 
         # The text doesn't begin with "Search".
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=request_data_with_bad_text, type='application/xml')
         assert self.s.status == 200
-        self.assert_equal_multiline(doc.content,
+        expected = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>Usage: Search John</message_text>\n'
             '</response>\n')
+        assert expected == doc.content, text_diff(expected, actual)
 
         # The receiver phone number is not associated with a repository.
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
@@ -4660,6 +4646,10 @@ _feed_profile_url2</pfif:profile_urls>
       <pfif:full_name>_test_given_name _test_family_name</pfif:full_name>
       <pfif:given_name>_test_given_name</pfif:given_name>
       <pfif:family_name>_test_family_name</pfif:family_name>
+      <pfif:sex>female</pfif:sex>
+      <pfif:age>52</pfif:age>
+      <pfif:home_city>_test_home_city</pfif:home_city>
+      <pfif:home_state>_test_home_state</pfif:home_state>
       <pfif:photo_url>_test_photo_url</pfif:photo_url>
       <pfif:note>
         <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
@@ -4667,6 +4657,7 @@ _feed_profile_url2</pfif:profile_urls>
         <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
         <pfif:author_name></pfif:author_name>
         <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
+        <pfif:status>believed_alive</pfif:status>
         <pfif:text>Testing</pfif:text>
         <pfif:photo_url>_test_photo_url_for_note</pfif:photo_url>
       </pfif:note>
@@ -6494,7 +6485,7 @@ class DownloadFeedTests(TestsBase):
         lines = open(self.filename).readlines()
         assert len(lines) == 2
         assert lines[0].strip() == 'family_name,given_name,age'
-        assert lines[1].strip() == '_test_family_name,_test_given_name,'
+        assert lines[1].strip() == '_test_family_name,_test_given_name,52'
 
     def test_download_notes(self):
         url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport
