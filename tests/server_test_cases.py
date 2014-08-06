@@ -228,6 +228,12 @@ class TestsBase(unittest.TestCase):
         record.put()
         return photo
 
+    def assert_equal_multiline(self, actual, expected):
+        """Same as assert actual == expected, but it dumps multiline
+        actual/expected text in a more readable format."""
+        assert actual == expected, (
+            '\nactual:\n%s\nexpected:\n%s\n' % (actual, expected))
+
     def assert_equal_urls(self, actual, expected):
         """Asserts that the two URLs are equal ignoring the order of the query
         parameters.
@@ -3054,29 +3060,31 @@ _read_profile_url2</pfif:profile_urls>
 
     def test_sms_api(self):
         """Tests the behavior of SMS API."""
-        # Add a person to datastore.
-        self.go('/haiti/create')
-        self.s.submit(self.s.doc.first('form'),
-                      given_name='_search_given_name',
-                      family_name='_search_1st_family_name',
-                      author_name='_search_1st_author_name',
-                      sex='female',
-                      age='52',
-                      home_city='_test_home_city',
-                      home_state='_test_home_state')
-        # Add a note for this person.
-        self.s.submit(self.s.doc.first('form'),
-                      author_made_contact='yes',
-                      text='this is text for first person',
-                      author_name='_search_1st_note_author_name',
-                      status='is_note_author')
+        person = Person(
+            key_name='haiti:test.google.com/person.123',
+            repo='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            full_name='_test_given_name _test_family_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
+            sex='female',
+            age='52',
+            home_city='_test_home_city',
+            home_state='_test_home_state',
+            latest_status='is_note_author',
+            source_date=TEST_DATETIME,
+            entry_date=TEST_DATETIME
+        )
+        person.update_index(['old', 'new'])
+        db.put([person])
 
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
 
         good_request_data = (
             '<?xml version="1.0" encoding="utf-8"?>'
             '<request>'
-            '    <message_text>Search _search_1st_family_name</message_text>'
+            '    <message_text>Search _test_family_name</message_text>'
             '    <receiver_phone_number>+12345678901</receiver_phone_number>'
             '</request>')
         request_data_with_no_result = (
@@ -3102,11 +3110,11 @@ _read_profile_url2</pfif:profile_urls>
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=good_request_data, type='application/xml')
         assert self.s.status == 200
-        assert doc.content == (
+        self.assert_equal_multiline(doc.content,
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>'
-                '_search_given_name _search_1st_family_name / '
+                '_test_given_name _test_family_name / '
                 'This person has posted a message / '
                 'female / 52 / From: _test_home_city _test_home_state ## '
                 'More at: http://g.co/pf/haiti ## '
@@ -3120,7 +3128,7 @@ _read_profile_url2</pfif:profile_urls>
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=request_data_with_no_result, type='application/xml')
         assert self.s.status == 200
-        assert doc.content == (
+        self.assert_equal_multiline(doc.content,
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>'
@@ -3136,7 +3144,7 @@ _read_profile_url2</pfif:profile_urls>
         doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
                       data=request_data_with_bad_text, type='application/xml')
         assert self.s.status == 200
-        assert doc.content == (
+        self.assert_equal_multiline(doc.content,
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>Usage: Search John</message_text>\n'

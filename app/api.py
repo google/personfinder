@@ -594,7 +594,7 @@ class HandleSMS(utils.BaseHandler):
         fields.append(person.full_name)
         if person.latest_status:
             # The result of utils.get_person_status_text() may be a Django's
-            # proxy object for lazy translation. Use uicode() to convert it
+            # proxy object for lazy translation. Use unicode() to convert it
             # into a unicode object. We must not specify an encoding for
             # unicode() in this case.
             fields.append(unicode(
