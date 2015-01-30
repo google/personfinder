@@ -573,11 +573,11 @@ class HandleSMS(utils.BaseHandler):
             else:
                 responses.append('No results found for: %s' % query_string)
             responses.append(
-                'More at: http://g.co/pf/%s' % repo)
+                'More at: google.org/personfinder/%s?ui=light' % repo)
             responses.append(
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data http://goo.gl/UCAXa')
+                'accuracy of this data google.org/personfinder/global/tos.html')
         else:
             responses.append('Usage: Search John')
 

@@ -142,7 +142,7 @@ function remove_profile_entry(profile_entry_index) {
 // target language, and translated text.
 var translate_callback_id = 0;
 function translate(source, target, text, continuation) {
-  if (source === target) {
+  if (source === target || !translate_api_key || translate_api_key == 'None') {
     // The Translate API considers 'en -> en' an invalid language pair,
     // so we add a shortcut for this special case.
     continuation(source, target, text);

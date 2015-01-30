@@ -20,6 +20,7 @@
 <head>{% block head %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
@@ -40,8 +41,7 @@
       var lang = '{{env.lang}}';
       var translate_api_key = '{{config.translate_api_key}}';
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js">
-    </script>
+    <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
       // Lets jQuery not overwrite "$" symbol defined in forms.js.
       // Use "jQuery" instead of "$".
