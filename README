@@ -15,6 +15,8 @@ http://google.org/personfinder/.
 1. Set up the developement environment.
   1a. Set up your Git client. Make sure to set your name and email.
       > https://help.github.com/articles/set-up-git/
+  1b. Install hub commandline tool.
+      > https://github.com/github/hub
   1b. Clone the PF repository.
       $ git clone https://github.com/google/personfinder.git pf
 2. Find an issue to work on, or create a new one.
@@ -26,11 +28,7 @@ http://google.org/personfinder/.
 5. Push your local changes to the remote repository.
    $ git push -u origin $USER-your-new-feature
 6. Create a new pull request.
-  6a. Click on "New pull request" button.
-      > https://github.com/google/personfinder/pulls
-  6b. Choose your branch from "compare". Keep the "base" as "master".
-  6c. Name the request. If you have an issue associated with the change,
-      make sure to include it in the title e.g. "My feature #123"
+   $ hub pull-request -i <issue>
 7. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
    (ichikawa@google.com or ryok@google.com as of 2015/01/30).
