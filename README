@@ -22,13 +22,13 @@ http://google.org/personfinder/.
 2. Find an issue to work on, or create a new one.
    > https://github.com/google/personfinder/issues
 3. Create a new branch, prefixed with your username.
-   $ git checkout -b $USER-your-new-feature
+   $ git checkout -b your-new-feature
 4. Make changes and commit. Repeat the step until you are ready for code review.
    $ git commit
 5. Push your local changes to the remote repository.
-   $ git push -u origin $USER-your-new-feature
+   $ git push -u origin your-new-feature
 6. Create a new pull request.
-   $ hub pull-request -i <issue>
+   $ hub pull-request -i <issue #>
 7. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
    (ichikawa@google.com or ryok@google.com as of 2015/01/30).
