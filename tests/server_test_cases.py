@@ -6009,8 +6009,8 @@ class ConfigTests(TestsBase):
         # the global domain is retrieved.
         assert cfg_sub.translate_api_key == 'global_hijk'
 
-    def test_admin_page(self):
-        # Load the administration page.
+    def test_repo_admin_page(self):
+        # Load the repository administration page.
         doc = self.go_as_admin('/haiti/admin')
         self.assertEquals(self.s.status, 200)
 
@@ -6128,6 +6128,43 @@ class ConfigTests(TestsBase):
         # saved languages and titles in it
         assert self.s.doc.find('nl')
         assert self.s.doc.find('Aardbeving')
+
+    def test_global_admin_page(self):
+        # Load the global administration page.
+        doc = self.go_as_admin('/global/admin')
+        self.assertEquals(self.s.status, 200)
+
+        # Change some settings.
+        settings_form = doc.first('form', id='save_global')
+        doc = self.s.submit(settings_form,
+            sms_number_to_repo=
+                '{"+198765432109": "haiti", "+8101234567890": "japan"}'
+        )
+        self.assertEquals(self.s.status, 200)
+
+        # Reopen the admin page and check if the change took effect on the page.
+        doc = self.go_as_admin('/global/admin')
+        self.assertEquals(self.s.status, 200)
+        self.assertEquals(
+            simplejson.loads(
+                doc.first('textarea', id='sms_number_to_repo').text),
+            {'+198765432109': 'haiti', '+8101234567890': 'japan'})
+
+        # Also check if the change took effect in the config.
+        self.assertEquals(
+            config.get('sms_number_to_repo'),
+            {'+198765432109': 'haiti', '+8101234567890': 'japan'})
+
+        # Change settings again and make sure they took effect.
+        settings_form = doc.first('form', id='save_global')
+        doc = self.s.submit(settings_form,
+            sms_number_to_repo=
+                '{"+198765432109": "test", "+8101234567890": "japan"}'
+        )
+        self.assertEquals(self.s.status, 200)
+        self.assertEquals(
+            config.get('sms_number_to_repo'),
+            {'+198765432109': 'test', '+8101234567890': 'japan'})
 
     def test_deactivation(self):
         # Load the administration page.

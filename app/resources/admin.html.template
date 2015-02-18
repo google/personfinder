@@ -24,6 +24,10 @@
   <a href="{{login_url}}">{% trans "Sign in" %}</a>
 {% endif %}
 
+{% if env.repo %}
+  <p><a href="../global/admin">Global admin page</a></p>
+{% endif %}
+
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
@@ -646,9 +650,52 @@
       </div>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>SMS</legend>
+    <div class="config">
+      Go to <a href="../global/admin">Global admin page</a> to configure SMS
+      numbers mapping.
+    </div>
+  </fieldset>
+
   <p>
     <input type="hidden" name="operation" value="save_repo">
     <input type="submit" value="Save these settings">
+  </p>
 </form>
+
+{% else %}
+
+<h2>Edit global settings</h2>
+
+<form id="save_global" method="post" class="admin">
+  <fieldset>
+    <legend>SMS</legend>
+    <div class="config">
+      <label for="sms_number_to_repo">
+        SMS numbers mapping.<br>
+        e.g., If it is
+        <code>{"+198765432109": "test", "+8101234567890": "japan"}</code>, SMS
+        messages to +198765432109 are interpreted as requests for "test"
+        repository, and messages to +8101234567890 are interpreted as requests
+        to "japan" repository.<br>
+        JSON dictionary where the key is an international phone number and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="sms_number_to_repo"
+            id="sms_number_to_repo" rows=10 cols=80
+            >{{config_json.sms_number_to_repo}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <p>
+    <input type="hidden" name="operation" value="save_global">
+    <input type="submit" value="Save these settings">
+  </p>
+</form>
+
 {% endif %}
 {% endblock %}

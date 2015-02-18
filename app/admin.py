@@ -107,35 +107,67 @@ class Handler(BaseHandler):
                 self.redirect('/admin')
                 return
 
-            values = {}
-            for name in [  # These settings are all entered in JSON.
-                'language_menu_options', 'repo_titles',
-                'use_family_name', 'family_name_first', 'use_alternate_names',
-                'use_postal_code', 'allow_believed_dead_via_ui',
-                'min_query_word_length', 'map_default_zoom',
-                'show_profile_entry', 'profile_websites',
-                'map_default_center', 'map_size_pixels',
-                'read_auth_key_required', 'search_auth_key_required',
-                'deactivated', 'start_page_custom_htmls',
-                'results_page_custom_htmls', 'view_page_custom_htmls',
-                'seek_query_form_custom_htmls', 'footer_custom_htmls',
-                'test_mode', 'force_https',
-            ]:
-                try:
-                    values[name] = simplejson.loads(self.request.get(name))
-                except:
-                    return self.error(
-                        400, 'The setting for %s was not valid JSON.' % name)
+            if self.__update_config(
+                    self.repo,
+                    # These settings are all entered in JSON.
+                    json_config_names=[
+                        'language_menu_options', 'repo_titles',
+                        'use_family_name', 'family_name_first',
+                        'use_alternate_names',
+                        'use_postal_code', 'allow_believed_dead_via_ui',
+                        'min_query_word_length', 'map_default_zoom',
+                        'show_profile_entry', 'profile_websites',
+                        'map_default_center', 'map_size_pixels',
+                        'read_auth_key_required', 'search_auth_key_required',
+                        'deactivated', 'start_page_custom_htmls',
+                        'results_page_custom_htmls', 'view_page_custom_htmls',
+                        'seek_query_form_custom_htmls', 'footer_custom_htmls',
+                        'test_mode', 'force_https',
+                    ],
+                    # These settings are literal strings (not JSON).
+                    literal_config_names=[
+                        'keywords', 'deactivation_message_html', 'bad_words',
+                    ],
+                    # Update updated_date if any of the following settings are changed.
+                    updating_config_names=[
+                        'deactivated', 'test_mode',
+                    ]):
+                self.redirect('/admin')
 
-            for name in ['keywords', 'deactivation_message_html', 'bad_words']:
-                # These settings are literal strings (not JSON).
-                values[name] = self.request.get(name)
+        elif self.params.operation == 'save_global':
+            if self.__update_config(
+                    '*',
+                    # These settings are all entered in JSON.
+                    json_config_names=[
+                        'sms_number_to_repo',
+                    ],
+                    # These settings are literal strings (not JSON).
+                    literal_config_names=[
+                    ]):
+                self.redirect('/admin')
 
-            # Update updated_date if any of the following settings are changed.
-            for name in ['deactivated', 'test_mode']:
-                if config.get_for_repo(self.repo, name) != values[name]:
-                    values['updated_date'] = get_utcnow_timestamp()
-                    break
+    def __update_config(
+            self,
+            repo,
+            json_config_names,
+            literal_config_names,
+            updating_config_names=[]):
+        values = {}
+        for name in json_config_names:
+            try:
+                values[name] = simplejson.loads(self.request.get(name))
+            except:
+                self.error(
+                    400, 'The setting for %s was not valid JSON.' % name)
+                return False
 
-            config.set_for_repo(self.repo, **values)
-            self.redirect('/admin')
+        for name in literal_config_names:
+            values[name] = self.request.get(name)
+
+        for name in updating_config_names:
+            if config.get_for_repo(repo, name) != values[name]:
+                values['updated_date'] = get_utcnow_timestamp()
+                break
+
+        config.set_for_repo(repo, **values)
+        return True
