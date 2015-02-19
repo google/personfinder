@@ -5491,6 +5491,24 @@ _feed_profile_url2</pfif:profile_urls>
         assert '_test_12345' not in doc.text
         person.delete()
 
+    def test_repo_alias(self):
+        config.set(repo_aliases={'jp': 'japan'})
+
+        self.go('/jp/', redirects=0)
+        self.assertEqual(self.s.status, 302)
+        self.assertEqual(self.s.headers['location'], self.path_to_url('/japan/'))
+
+        # With an action and query parameters.
+        self.go('/jp/view?id=123&ui=light', redirects=0)
+        self.assertEqual(self.s.status, 302)
+        self.assertEqual(
+            self.s.headers['location'],
+            self.path_to_url('/japan/view?id=123&ui=light'))
+
+        # No redirect.
+        self.go('/japan/', redirects=0)
+        self.assertEqual(self.s.status, 200)
+
     def test_legacy_redirect(self):
         # enable legacy redirects.
         config.set(missing_repo_redirect_enabled=True)
