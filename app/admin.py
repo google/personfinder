@@ -111,26 +111,40 @@ class Handler(BaseHandler):
                     self.repo,
                     # These settings are all entered in JSON.
                     json_config_names=[
-                        'language_menu_options', 'repo_titles',
-                        'use_family_name', 'family_name_first',
+                        'allow_believed_dead_via_ui',
+                        'deactivated',
+                        'family_name_first',
+                        'footer_custom_htmls',
+                        'force_https',
+                        'language_menu_options',
+                        'map_default_center',
+                        'map_default_zoom',
+                        'map_size_pixels',
+                        'min_query_word_length',
+                        'profile_websites',
+                        'read_auth_key_required',
+                        'repo_titles',
+                        'results_page_custom_htmls',
+                        'search_auth_key_required',
+                        'seek_query_form_custom_htmls',
+                        'show_profile_entry',
+                        'start_page_custom_htmls',
+                        'test_mode',
                         'use_alternate_names',
-                        'use_postal_code', 'allow_believed_dead_via_ui',
-                        'min_query_word_length', 'map_default_zoom',
-                        'show_profile_entry', 'profile_websites',
-                        'map_default_center', 'map_size_pixels',
-                        'read_auth_key_required', 'search_auth_key_required',
-                        'deactivated', 'start_page_custom_htmls',
-                        'results_page_custom_htmls', 'view_page_custom_htmls',
-                        'seek_query_form_custom_htmls', 'footer_custom_htmls',
-                        'test_mode', 'force_https',
+                        'use_family_name',
+                        'use_postal_code',
+                        'view_page_custom_htmls',
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
-                        'keywords', 'deactivation_message_html', 'bad_words',
+                        'bad_words',
+                        'deactivation_message_html',
+                        'keywords',
                     ],
                     # Update updated_date if any of the following settings are changed.
                     updating_config_names=[
-                        'deactivated', 'test_mode',
+                        'deactivated',
+                        'test_mode',
                     ]):
                 self.redirect('/admin')
 
