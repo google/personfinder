@@ -820,6 +820,8 @@ class BaseHandler(webapp.RequestHandler):
         # the short URL. e.g., You can access
         # https://www.google.org/personfinder/2014-jammu-kashmir-floods
         # by http://g.co/pf/jam .
+        if not self.repo:
+            return False
         repo_aliases = config.get('repo_aliases', default={})
         if self.repo in repo_aliases:
             canonical_repo = repo_aliases[self.repo]
@@ -875,6 +877,10 @@ class BaseHandler(webapp.RequestHandler):
             if self.env.scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
+        # Handles repository alias.
+        if self.maybe_redirect_for_repo_alias(request):
+            return
+
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
@@ -898,8 +904,6 @@ class BaseHandler(webapp.RequestHandler):
         if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
                 return legacy_redirect.redirect(self)
-            if self.maybe_redirect_for_repo_alias(request):
-                return
             html = 'No such repository. '
             if self.env.repo_options:
                 html += 'Select:<p>' + self.render_to_string('repo-menu.html')
