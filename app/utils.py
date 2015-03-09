@@ -806,6 +806,36 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def maybe_redirect_for_repo_alias(self, request):
+        """If the specified repository name is an alias, redirects to the URL
+        with the canonical repository name and returns True. Otherwise returns
+        False.
+        """
+        # Config repo_alias is a dictionary from a repository name alias to
+        # its canonical.
+        # e.g., {'yol': '2013-yolanda', 'jam': '2014-jammu-kashmir-floods'}
+        #
+        # A repository name alias can be used instead of the canonical
+        # repository name in URLs. This is especially useful combined with
+        # the short URL. e.g., You can access
+        # https://www.google.org/personfinder/2014-jammu-kashmir-floods
+        # by http://g.co/pf/jam .
+        if not self.repo:
+            return False
+        repo_aliases = config.get('repo_aliases', default={})
+        if self.repo in repo_aliases:
+            canonical_repo = repo_aliases[self.repo]
+            params = {}
+            for name in request.arguments():
+                params[name] = request.get(name)
+            # Redirects to the same URL including the query parameters, except
+            # for the repository name.
+            self.redirect('/' + self.env.action, repo=canonical_repo, **params)
+            self.terminate_response()
+            return True
+        else:
+            return False
+
     def __init__(self, request, response, env):
         webapp.RequestHandler.__init__(self, request, response)
         self.params = Struct()
@@ -846,6 +876,10 @@ class BaseHandler(webapp.RequestHandler):
         if self.https_required and self.env.domain != 'localhost':
             if self.env.scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
+
+        # Handles repository alias.
+        if self.maybe_redirect_for_repo_alias(request):
+            return
 
         # Check for an authorization key.
         self.auth = None
