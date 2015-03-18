@@ -5546,7 +5546,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Japanese translation of "I have information about someone"
         ja_i_have_info = (
-            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3057\u305f\u3044')
+            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3059\u308b')
         # Japanese translation of "I'm looking for someone"
         ja_looking_for_someone = (
             u'\u4eba\u3092\u63a2\u3057\u3066\u3044\u308b')
