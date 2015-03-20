@@ -85,19 +85,19 @@
 {% include "query_form.html.template" %}
 {% if results %}
   {% ifequal params.role 'seek' %}
-    <h1>
+    <h3 class="results-title">
       {% blocktrans with params.query as query %}
-        Search Results for: {{query}}
+        Search Results for: <span class="query-value">{{query}}</span>
       {% endblocktrans %}
-    </h1>
+    </h3>
   {% endifequal %}
 
   {% ifequal params.role 'provide' %}
-    <h1>
+    <h3 class="results-title">
       {% blocktrans with env.params_full_name as full_name %}
         Records Similar to: {{full_name}}
       {% endblocktrans %}
-    </h1>
+    </h3>
     <p>
     {% if env.ui != "small" %}
       {% ifequal num_results 1 %}
@@ -230,11 +230,11 @@
 {% else %}
 
   {% if not jp_phone_number_query %}
-  <h1>
+  <h3 class="results-title">
     {% blocktrans with params.query as query %}
-      No results found for: {{query}}
+      No results found for: <span class="query-value">{{query}}</span>
     {% endblocktrans %}
-  </h1>
+  </h3>
   <p>
   {% trans "We have nothing matching your search." %}
   {% else %}
@@ -259,7 +259,7 @@
 
 {% if results %}
   {% if env.ui != "small" %}
-    <p>
+    <p class="note">
       {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
     </p>
   {% endif %}
@@ -275,7 +275,7 @@
 
 <p>
 {% if env.ui != "small" and not jp_phone_number_query %}
-  <form method="get" action="{{env.repo_path}}/create">
+  <form method="get" action="{{env.repo_path}}/create" class="create-form">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="query" value="{{params.query}}">
     <input type="hidden" name="given_name" value="{{params.given_name}}">

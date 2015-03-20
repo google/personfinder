@@ -70,40 +70,44 @@
       {% if env.show_logo %}
         {% block logo %}{% endblock %}
       {% endif %}
+      <a style="display: none" class="pagetitle" href="{{env.repo_title_url}}"
+          {{env.target_attr|safe}}>
+        {% if env.repo %}{{env.repo_title}}
+        {% else %}{% trans "Person Finder" %}{% endif %}</a>
     {% endblock header %}
   </div>
 
-  {% if env.repo %}
-    <h1>
-      {% trans "Person Finder" %}:
-      <a class="repo" href="{{env.repo_title_url}}"
-          {{env.target_attr|safe}}>{{env.repo_title}}</a>
-    </h1>
-  {% endif %}
-
-  {% if env.repo_test_mode %}
-    <div class="header-notification">
-      {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 24 hours old are deleted." %}
-    </div>
-  {% endif %}
-
   {% block container %}
     <div class="container">
+      {% if env.repo %}
+        <h1 class="contenttitle">
+          {% trans "Person Finder" %}:
+          <a class="repo" href="{{env.repo_title_url}}"
+              {{env.target_attr|safe}}>{{env.repo_title}}</a>
+        </h1>
+      {% endif %}
+
+      {% if env.repo_test_mode %}
+        <div class="header-notification">
+          {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 24 hours old are deleted." %}
+        </div>
+      {% endif %}
+
       <div class="content" role="main">
         {% block content %}
         {% endblock content %}
       </div>
+
+    {% block backlink %}
+      {% if env.repo and env.action and env.action != "start" %}
+        {% if env.ui != "small" %}<p>{% endif %}
+        <div class="backlink"><a href="{{env.start_url}}">
+          {{env.back_chevron}} {% trans "Back to start" %}
+        </a></div>
+      {% endif %}
+    {% endblock backlink %}
     </div>
   {% endblock container %}
-
-  {% block backlink %}
-    {% if env.repo and env.action and env.action != "start" %}
-      {% if env.ui != "small" %}<p>{% endif %}
-      <div class="backlink"><a href="{{env.start_url}}">
-        {{env.back_chevron}} {% trans "Back to start" %}
-      </a></div>
-    {% endif %}
-  {% endblock backlink %}
 
   <div class="footer" role="contentinfo">
     <div class="disclaimer">

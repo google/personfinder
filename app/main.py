@@ -311,7 +311,7 @@ def setup_env(request):
     elif user_agents.is_jp_tier2_mobile_phone(request):
         env.ui = 'light'
     else:
-        env.ui = 'default'
+        env.ui = 'new'
 
     # UI configurations.
     #
