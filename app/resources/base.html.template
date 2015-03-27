@@ -39,7 +39,11 @@
   {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';
-      var translate_api_key = '{{config.translate_api_key}}';
+      {% if config.translate_api_key %}
+        var translate_api_key = '{{config.translate_api_key}}';
+      {% else %}
+        var translate_api_key = null;
+      {% endif %}
     </script>
     <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
