@@ -106,9 +106,7 @@ class Repo(db.Model):
     # No properties for now; only the key_name is significant.  The repository
     # title and other settings are all in ConfigEntry entities (see config.py).
     # The per-repository 'deactivated' setting blocks UI and API access to the
-    # repository, replacing all its pages with a deactivation message.  The
-    # global 'launched_repos' setting is an ordered list of repository names
-    # that are publicized in the UI (navigation menu) and API (repo feed).
+    # repository, replacing all its pages with a deactivation message.
 
     @classmethod
     def list(cls):
@@ -124,8 +122,9 @@ class Repo(db.Model):
     @classmethod
     def list_launched(cls):
         """Returns a list of the launched (listed in menu) repository names."""
-        return [name for name in config.get('launched_repos', [])
-                if not config.get_for_repo(name, 'deactivated')]
+        return [name for name in Repo.list()
+                if config.get_for_repo(name, 'launched') and
+                   not config.get_for_repo(name, 'deactivated')]
 
 
 class Base(db.Model):
