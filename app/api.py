@@ -156,7 +156,6 @@ class Import(utils.BaseHandler):
     def get(self):
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     **get_tag_params(self))
 
     def post(self):
@@ -205,7 +204,6 @@ class Import(utils.BaseHandler):
 
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     stats=[
                         Struct(type='Note',
                                written=notes_written,
@@ -241,7 +239,6 @@ class Import(utils.BaseHandler):
 
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     stats=[
                         Struct(type='Person',
                                written=people_written,
