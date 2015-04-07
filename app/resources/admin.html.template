@@ -238,13 +238,13 @@
     <div class="config">
       <div class="option">
         <input
-            type="radio" name="launch_status" value="prelaunch"
-            id="launch_status_prelaunch"
-            {% if view_config.launch_status == "prelaunch" %}
+            type="radio" name="launch_status" value="staging"
+            id="launch_status_staging"
+            {% if view_config.launch_status == "staging" %}
               checked
             {% endif %}>
-        <label for="launch_status_prelaunch">
-          Prelaunch
+        <label for="launch_status_staging">
+          Staging
         </label>
         <div class="note">
           <div>
@@ -256,19 +256,19 @@
             <a href="{{env.global_url}}" target="_blank">the home page</a> nor
             <a href="{{env.global_url}}/feeds/repo" target="_blank">the
             repository feed</a>. So only people who know the URL can discover
-            the repository. It is the same as "Launched" except for that.
+            the repository. It is the same as "Activated" except for that.
           </div>
         </div>
       </div>
       <div class="option">
         <input
-            type="radio" name="launch_status" value="launched"
-            id="launch_status_launched"
-            {% if view_config.launch_status == "launched" %}
+            type="radio" name="launch_status" value="activated"
+            id="launch_status_activated"
+            {% if view_config.launch_status == "activated" %}
               checked
             {% endif %}>
-        <label for="launch_status_launched">
-          Launched
+        <label for="launch_status_activated">
+          Activated
         </label>
         <div class="note">
           <div>

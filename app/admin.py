@@ -204,9 +204,9 @@ class Handler(BaseHandler):
         if model_config.deactivated:
             view_config['launch_status'] = 'deactivated'
         elif model_config.launched:
-            view_config['launch_status'] = 'launched'
+            view_config['launch_status'] = 'activated'
         else:
-            view_config['launch_status'] = 'prelaunch'
+            view_config['launch_status'] = 'staging'
 
         return view_config
 
@@ -216,10 +216,10 @@ class Handler(BaseHandler):
         model_config = {}
         for name, value in view_config.iteritems():
             if name == 'launch_status':
-                if value == 'prelaunch':
+                if value == 'staging':
                     model_config['deactivated'] = False
                     model_config['launched'] = False
-                elif value == 'launched':
+                elif value == 'activated':
                     model_config['deactivated'] = False
                     model_config['launched'] = True
                 elif value == 'deactivated':
