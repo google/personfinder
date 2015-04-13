@@ -233,7 +233,7 @@
     onsubmit="return validate_settings()">
 
   <fieldset>
-    <legend>Modes</legend>
+    <legend>Activation mode</legend>
 
     <div class="config">
       <div class="option">
@@ -320,6 +320,10 @@
             >{{view_config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data retention mode</legend>
 
     <div class="config">
       <div class="option">
