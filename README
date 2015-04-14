@@ -12,6 +12,9 @@ http://google.org/personfinder/.
 
 ============================= How to Contribute ================================
 
+The following steps are for Person Finder team members. Fork and send pull
+request in the standard way if you are not a team member.
+
 1. Set up the developement environment.
   1a. Set up your Git client. Make sure to set your name and email.
       > https://help.github.com/articles/set-up-git/
@@ -22,11 +25,11 @@ http://google.org/personfinder/.
 2. Find an issue to work on, or create a new one.
    > https://github.com/google/personfinder/issues
 3. Create a new branch, prefixed with your username.
-   $ git checkout -b your-new-feature
+   $ git checkout -b $USER-your-new-feature
 4. Make changes and commit. Repeat the step until you are ready for code review.
    $ git commit
 5. Push your local changes to the remote repository.
-   $ git push -u origin your-new-feature
+   $ git push -u origin $USER-your-new-feature
 6. Create a new pull request. (-i is optional, but strongly encouraged.)
    $ hub pull-request -i <issue #>
 7. The pull request will be reviewed by one of the code reviewers (*) and
