@@ -82,7 +82,7 @@ def get_tag_params(handler):
             '</a>',
         'begin_document_anchor_tag':
             '<a href='
-            '"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV" '
+            '"https://github.com/google/personfinder/wiki/ImportCSV" '
             'target="_blank">',
         'end_document_anchor_tag':
             '</a>',
