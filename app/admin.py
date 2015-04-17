@@ -24,7 +24,6 @@ from utils import *
 import const
 import reveal
 import tasks
-import logging
 
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
@@ -39,8 +38,9 @@ class Handler(BaseHandler):
         simplejson.encoder.FLOAT_REPR = str
         encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
         view_config = self.__model_config_to_view_config(self.config)
-        view_config_json = dict((name, encoder.encode(value))
-                           for name, value in view_config.iteritems())
+        view_config_json = dict(
+                (name, encoder.encode(value))
+                for name, value in view_config.iteritems())
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])

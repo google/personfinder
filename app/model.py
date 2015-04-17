@@ -124,7 +124,7 @@ class Repo(db.Model):
         """Returns a list of the launched (listed in menu) repository names."""
         return [name for name in Repo.list()
                 if config.get_for_repo(name, 'launched') and
-                   not config.get_for_repo(name, 'deactivated')]
+                        not config.get_for_repo(name, 'deactivated')]
 
 
 class Base(db.Model):
