@@ -6132,7 +6132,7 @@ class ConfigTests(TestsBase):
         assert cfg.read_auth_key_required
         assert cfg.bad_words == 'foo, bar'
         assert cfg.force_https
-        # Changing configs other than 'deactivated' or 'test_mode' does not
+        # Changing configs other than 'launch_status' or 'test_mode' does not
         # renew 'updated_date'.
         assert cfg.updated_date == old_updated_date
 
@@ -6200,7 +6200,7 @@ class ConfigTests(TestsBase):
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
             profile_websites='[]',
-            deactivated='true',
+            launch_status='deactivated',
             deactivation_message_html='de<i>acti</i>vated',
             start_page_custom_htmls='{"en": "start page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
@@ -6212,7 +6212,7 @@ class ConfigTests(TestsBase):
         cfg = config.Configuration('haiti')
         assert cfg.deactivated
         assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
-        # Changing 'deactivated' renews updated_date.
+        # Changing 'launch_status' renews updated_date.
         assert cfg.updated_date != old_updated_date
 
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
@@ -6464,14 +6464,18 @@ class FeedTests(TestsBase):
         verify_api_log(ApiActionLog.REPO, api_key='')
 
     def test_repo_feed_all_launched_repos(self):
-        config.set_for_repo('haiti', deactivated=True)
-        config.set_for_repo('japan', test_mode=True)
-        config.set_for_repo('japan', updated_date=utils.get_timestamp(
-            datetime.datetime(2012, 03, 11)))
+        config.set_for_repo('haiti',
+                deactivated=True, launched=True, test_mode=False)
+        config.set_for_repo('japan',
+                deactivated=False, launched=True, test_mode=True,
+                updated_date=utils.get_timestamp(
+                        datetime.datetime(2012, 03, 11)))
+        config.set_for_repo('pakistan',
+                deactivated=False, launched=False, test_mode=False)
 
-        # 'haiti', 'japan', and 'pakistan' exist in the datastore.  The config
-        # setting launched_repos=['haiti', 'japan'] excludes 'pakistan'; and
-        # 'haiti' is deactivated, so only 'japan' should appear in the feed.
+        # 'haiti', 'japan', and 'pakistan' exist in the datastore. Only those
+        # which are 'launched' and not 'deactivated' i.e., only 'japan' should
+        # appear in the feed.
         doc = self.go('/global/feeds/repo')
         expected_content = '''\
 <?xml version="1.0" encoding="UTF-8"?>
