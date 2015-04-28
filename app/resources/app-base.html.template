@@ -13,7 +13,7 @@
 {% block title %}{{block.super}}{% endblock title %}
 
 {% block logo %}
-  <a href="{{env.global_url}}"><img src="{{env.global_url}}/logo.png" class="logo" alt=""></a>
+  <a href="{{env.global_url}}"><img src="{{env.global_url}}/logo.png" alt=""></a>
 {% endblock %}
 
 {# Header above page content. #}

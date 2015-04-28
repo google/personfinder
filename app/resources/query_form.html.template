@@ -12,7 +12,7 @@
 
 {% load i18n %}
 
-<form method="get" action="{{env.repo_path}}/results" class="query-form">
+<form method="get" action="{{env.repo_path}}/results">
   {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <div class="fields-table query {{params.role}}" role="form">
@@ -88,7 +88,6 @@
                   class="medium-text-input"
                   value="{{params.given_name}}">
             {% endif %}
-            
           </span>
         </div>
       {% if config.use_family_name and not config.family_name_first %}
@@ -111,7 +110,6 @@
       {% endif %}
     {% else %}
       <div class="field">
-        {% spaceless %}
           {% if env.ui == "facebook" %}
             <input id="query" name="query"
                 class="short-text-input"
@@ -121,13 +119,6 @@
                 class="long-text-input"
                 value="{{params.query}}">
           {% endif %}
-          {# Append the submit button to the search box. #}
-          {# TODO(kevinalle): Find a better way to do this. #}
-          {% if env.ui == "new" %}
-            <input type="submit" class="search-button"
-                   value="{% trans "Search for this person" %}">
-          {% endif %}
-        {% endspaceless %}
       </div>
     {% endifequal %}
     <div class="end-multi-columns"></div>
@@ -146,12 +137,12 @@
           {% endif %}
         {% else %}
           {% if env.ui == "facebook" %}
-            <div style="margin-left: -70px">
+            <div style="margin-left: -70px"
             <input type="submit" value="{% trans "Search for this person" %}">
             </div>
-          {% else %}{% if env.ui != "new" %}
+          {% else %}
             <input type="submit" value="{% trans "Search for this person" %}">
-          {% endif %}{% endif %}
+          {% endif %}
         {% endifequal %}
       </div>
   </div>

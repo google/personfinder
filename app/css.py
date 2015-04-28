@@ -23,7 +23,7 @@ class Handler(BaseHandler):
 
     def get(self):
         self.response.headers['Content-Type'] = 'text/css'
-        if self.env.ui in ['small', 'light', 'new']:
+        if self.env.ui in ['small', 'light']:
             template_name = 'css-%s' % self.env.ui
         else:
             template_name = 'css-default'
