@@ -284,6 +284,22 @@ function validate_fields() {
   }
   hide($('mandatory_field_missing'));
 
+  //Validate email-id
+  var email_field = $('author_email');
+  var email_id = $('author_email').value;
+  if (email_id !== "")
+  {
+     var emailfilter=/^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i;
+     if (!emailfilter.test(email_id))
+     {
+        show($('email_id_improper_format'));
+        email_field.focus();
+        return false;
+     }
+   }
+
+  hide($('email_id_improper_format'));
+
   // Check that the status and author_made_contact values are not inconsistent.
   if ($('status') && $('status').value == 'is_note_author' &&
       $('author_made_contact_no') && $('author_made_contact_no').checked) {
