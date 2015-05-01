@@ -200,4 +200,4 @@ class Handler(BaseHandler):
     def __get_person_record_link_html(self, person):
         return '<a href="%s" target=_blank>%s</a>' % (
             django.utils.html.escape(self.get_url('/view', id=person.person_record_id)),
-            person.primary_full_name)
+            django.utils.html.escape(person.primary_full_name))
