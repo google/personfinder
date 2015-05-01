@@ -288,7 +288,7 @@ function validate_fields() {
   var email_field = $('author_email');
   var email_id = $('author_email').value;
   if (email_id !== ""){
-     var emailfilter=/(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)[a-z]{2,6}(?:\s|$)/i;
+     var emailfilter=/(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)/i;
      if (!emailfilter.test(email_id)){
         show($('email_id_improper_format'));
         email_field.focus();
