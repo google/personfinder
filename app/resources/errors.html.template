@@ -10,7 +10,10 @@
   </div>
   <div id="email_id_improper_format"
       class="mandatory" style="display: none">
-    {% trans "The Email-ID you entered doesn't look like valid. Please correct it and try again" %}
+  {% blocktrans %}
+  The Email address you entered doesn't look like valid address.
+  Please correct it and try again.
+  {% endblocktrans %}
   </div>
   <div id="status_inconsistent_with_author_made_contact"
       class="mandatory" style="display: none">
