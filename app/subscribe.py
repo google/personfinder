@@ -141,7 +141,10 @@ class Handler(BaseHandler):
                     captcha_html=self.get_captcha_html(),
                     subscribe_email=self.params.subscribe_email or '',
                     form_action=form_action,
-                    back_url=back_url)
+                    back_url=back_url,
+                    person_record_link_html=
+                        self.__get_person_record_link_html(person),
+                    context=self.params.context)
 
     def post(self):
         person = model.Person.get(self.repo, self.params.id)
@@ -158,7 +161,9 @@ class Handler(BaseHandler):
                                message=_(
                                    'Invalid e-mail address. Please try again.'),
                                captcha_html=captcha_html,
-                               form_action=form_action)
+                               form_action=form_action,
+                               person_record_link_html=
+                                   self.__get_person_record_link_html(person))
 
         # Check the captcha
         captcha_response = self.get_captcha_response()
@@ -170,7 +175,9 @@ class Handler(BaseHandler):
                                person=person,
                                subscribe_email=self.params.subscribe_email,
                                captcha_html=captcha_html,
-                               form_action=form_action)
+                               form_action=form_action,
+                               person_record_link_html=
+                                   self.__get_person_record_link_html(person))
 
         subscription = subscribe_to(self, self.repo, person,
                                     self.params.subscribe_email, self.env.lang)
@@ -189,3 +196,8 @@ class Handler(BaseHandler):
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
+
+    def __get_person_record_link_html(self, person):
+        return '<a href="%s" target=_blank>%s</a>' % (
+            django.utils.html.escape(self.get_url('/view', id=person.person_record_id)),
+            person.primary_full_name)
