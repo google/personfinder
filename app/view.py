@@ -269,8 +269,10 @@ class Handler(BaseHandler):
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:
-            return self.redirect('/subscribe', id=person.record_id,
-                                 subscribe_email=self.params.author_email)
+            return self.redirect('/subscribe',
+                                 id=person.record_id,
+                                 subscribe_email=self.params.author_email,
+                                 context='add_note')
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)
