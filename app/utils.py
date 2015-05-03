@@ -567,6 +567,7 @@ class BaseHandler(webapp.RequestHandler):
         'contact_email': strip,
         'contact_name': strip,
         'content_id': strip,
+        'context': strip,
         'cursor': strip,
         'date_of_birth': validate_approximate_date,
         'description': strip,

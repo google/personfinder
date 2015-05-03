@@ -1141,6 +1141,9 @@ msgstr "登入"
 msgid "Sign out"
 msgstr "登出"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "有人收到消息指出這個人還活著"
 
@@ -1210,6 +1213,10 @@ msgstr "發佈者已停用這筆紀錄的註記功能。"
 msgid "The author has disabled status updates on this record."
 msgstr "發佈者已停用這筆紀錄的狀態更新功能。"
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "提供的圖片檔案太大，請上傳檔案較小的圖片。"
 
@@ -1218,6 +1225,10 @@ msgstr "這則註記被標示為垃圾資訊的原因："
 
 msgid "The record cannot be extended."
 msgstr "紀錄效期無法延長。"
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "紀錄已刪除。"
@@ -1435,6 +1446,12 @@ msgstr "您目前未登入。"
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "您可先%(begin_tag)s查看紀錄%(end_tag)s，然後再行刪除。"
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
