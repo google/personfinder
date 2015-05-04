@@ -109,8 +109,11 @@ def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
             return  # verified
     assert False, text_all_logs()  # not verified
 
+def get_test_filepath(filename):
+    return os.path.join(os.environ['TESTS_DIR'], filename)
+
 def get_test_data(filename):
-    return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
+    return open(get_test_filepath(filename)).read()
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -6732,6 +6735,21 @@ class ImportTests(TestsBase):
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
         verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
+
+    def test_import_xlsx(self):
+        """Verifies an xlsx file import."""
+        doc = self.go('/haiti/api/import')
+        form = doc.last('form')
+        doc = self.s.submit(form, key='test_key',
+            content=open(get_test_filepath('persons.xlsx')))
+        assert 'Person records Imported 3 of 3' in re.sub('\\s+', ' ', doc.text)
+        assert Person.all().count() == 3
+        person = Person.all().get()  # check the first Person
+        assert person.record_id == 'test.google.com/12345'
+        assert person.source_date == datetime.datetime(2013, 11, 12, 7, 26, 0)
+        assert person.full_name == 'Mary Example'
+        verify_api_log(ApiActionLog.WRITE, person_records=3, note_records=0)
+
 
 # TODO(ryok): fix go_as_operator() and re-enable the tests.
 #class ApiKeyManagementTests(TestsBase):
