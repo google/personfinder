@@ -157,7 +157,7 @@ def convert_xsl_to_csv(contents):
         book = xlrd.open_workbook(file_contents=contents)
     except xlrd.XLRDError as e:
         return None, str(e)
-    except UnicodeDecodeError as e:
+    except UnicodeDecodeError:
         return None, 'The encoding of the file is unknown.'
     if book.nsheets == 0:
         return None, 'The uploaded file contains no sheets.'
@@ -215,7 +215,7 @@ class Import(utils.BaseHandler):
                 self.response.set_status(400)
                 self.write(error)
                 return
-                        
+
         try:
             lines = content.splitlines()  # handles \r, \n, or \r\n
             if self.request.get('format') == 'notes':
