@@ -70,7 +70,7 @@ def make_reveal_url(handler, content_id):
     """Produces a link to this reveal handler that, on success, redirects back
     to the given 'target' URL with a signature for the given 'content_id'."""
     return handler.get_url(
-        '/reveal', target=handler.request.url, content_id=content_id)
+        '/reveal', target=handler.request.path_qs, content_id=content_id)
 
 
 # ==== The reveal page, which authorizes revelation ========================
