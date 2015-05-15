@@ -37,8 +37,10 @@ class Handler(BaseHandler):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str
         encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
-        config_json = dict((name, encoder.encode(self.config[name]))
-                           for name in self.config.keys())
+        view_config = self.__model_config_to_view_config(self.config)
+        view_config_json = dict(
+                (name, encoder.encode(value))
+                for name, value in view_config.iteritems())
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
@@ -50,7 +52,8 @@ class Handler(BaseHandler):
         self.render('admin.html',
                     user=user,
                     repo_options=repo_options,
-                    config=self.config, config_json=config_json,
+                    view_config=view_config,
+                    view_config_json=view_config_json,
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
@@ -88,6 +91,7 @@ class Handler(BaseHandler):
                 read_auth_key_required=True,
                 search_auth_key_required=True,
                 deactivated=False,
+                launched=False,
                 deactivation_message_html='',
                 start_page_custom_htmls={'en': '', 'fr': ''},
                 results_page_custom_htmls={'en': '', 'fr': ''},
@@ -112,7 +116,6 @@ class Handler(BaseHandler):
                     # These settings are all entered in JSON.
                     json_config_names=[
                         'allow_believed_dead_via_ui',
-                        'deactivated',
                         'family_name_first',
                         'footer_custom_htmls',
                         'force_https',
@@ -140,10 +143,12 @@ class Handler(BaseHandler):
                         'bad_words',
                         'deactivation_message_html',
                         'keywords',
+                        'launch_status',
                     ],
-                    # Update updated_date if any of the following settings are changed.
+                    # Update updated_date if any of the following settings are
+                    # changed.
                     updating_config_names=[
-                        'deactivated',
+                        'launch_status',
                         'test_mode',
                     ]):
                 self.redirect('/admin')
@@ -178,10 +183,52 @@ class Handler(BaseHandler):
         for name in literal_config_names:
             values[name] = self.request.get(name)
 
+        orig_view_config = self.__model_config_to_view_config(
+                config.Configuration(repo))
         for name in updating_config_names:
-            if config.get_for_repo(repo, name) != values[name]:
+            if orig_view_config.get(name) != values[name]:
                 values['updated_date'] = get_utcnow_timestamp()
                 break
 
-        config.set_for_repo(repo, **values)
+        config.set_for_repo(repo, **self.__view_config_to_model_config(values))
         return True
+
+    def __model_config_to_view_config(self, model_config):
+        """Converts the config in the database to the config for admin page
+        rendering."""
+        view_config = {}
+        for name, value in model_config.iteritems():
+            if name not in ['deactivated', 'launched']:
+                view_config[name] = value
+
+        if model_config.deactivated:
+            view_config['launch_status'] = 'deactivated'
+        elif model_config.launched:
+            view_config['launch_status'] = 'activated'
+        else:
+            view_config['launch_status'] = 'staging'
+
+        return view_config
+
+    def __view_config_to_model_config(self, view_config):
+        """Converts the config for admin page rendering to the config in the
+        database."""
+        model_config = {}
+        for name, value in view_config.iteritems():
+            if name == 'launch_status':
+                if value == 'staging':
+                    model_config['deactivated'] = False
+                    model_config['launched'] = False
+                elif value == 'activated':
+                    model_config['deactivated'] = False
+                    model_config['launched'] = True
+                elif value == 'deactivated':
+                    model_config['deactivated'] = True
+                    model_config['launched'] = False
+                else:
+                    raise Exception(
+                            'Invalid value for config.launch_status: %p'
+                            % value)
+            else:
+                model_config[name] = value
+        return model_config

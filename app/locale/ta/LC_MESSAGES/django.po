@@ -352,6 +352,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1220,6 +1226,9 @@ msgstr "உள்நுழை"
 msgid "Sign out"
 msgstr "வெளியேறு"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "இவர் உயிரோடு இருப்பதாக ஒருவருக்குத் தகவல் கிடைத்துள்ளது"
 
@@ -1291,6 +1300,10 @@ msgstr "இந்தப் பதிவில் உள்ள குறிப்
 msgid "The author has disabled status updates on this record."
 msgstr "இந்தப் பதிவில் நிலை குறித்த புதுப்பிப்புகளை ஆசிரியர் முடக்கியுள்ளார்."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "வழங்கியுள்ள படம் மிகவும் பெரிதாக உள்ளது. சிறிய ஒன்றைப் பதிவேற்றவும்."
 
@@ -1299,6 +1312,10 @@ msgstr "இந்தக் குறிப்பை ஸ்பேமாக கு
 
 msgid "The record cannot be extended."
 msgstr "பதிவை நீட்டிக்க முடியாது."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "பதிவு நீக்கப்பட்டது."
@@ -1545,6 +1562,12 @@ msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
 "நீங்கள் பதிவை நீக்குவதற்கு முன் %(begin_tag)sபதிவைப் "
 "பார்க்கலாம்%(end_tag)s."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

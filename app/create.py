@@ -241,7 +241,9 @@ class Handler(BaseHandler):
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:
-            return self.redirect('/subscribe', id=person.record_id,
-                                 subscribe_email=self.params.author_email)
+            return self.redirect('/subscribe',
+                                 id=person.record_id,
+                                 subscribe_email=self.params.author_email,
+                                 context='create_person')
 
         self.redirect('/view', id=person.record_id)

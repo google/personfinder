@@ -343,6 +343,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1185,6 +1191,9 @@ msgstr "පුරනය වන්න"
 msgid "Sign out"
 msgstr "වරනය වන්න"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "මෙම පුද්ගලයා ජීවතුන් අතර සිටින බවට තොරතුරු යම් කෙනෙකුට ලැබී ඇත"
 
@@ -1256,6 +1265,10 @@ msgstr "කර්තෘ මෙම වාර්තාව මත සටහන් �
 msgid "The author has disabled status updates on this record."
 msgstr "කර්තෘ මෙම වාර්තාව මත තත්ව යාවත්කාලීන අබල කර ඇත."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "සපයන ලද පින්තුරය වඩාත් විශාලය.  කරුණාකර සමාන එකක් උඩුගත කරන්න."
 
@@ -1264,6 +1277,10 @@ msgstr "අයාචිත තැපෑල ලෙස මෙම සටහන ල�
 
 msgid "The record cannot be extended."
 msgstr "වාර්තාව දිගු කළ නොහැක."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "වාර්තාව මකා ඇත."
@@ -1500,6 +1517,12 @@ msgstr "ඔබ දැනට පුරා නැත."
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "ඔබට එය මැකීමට පෙර %(begin_tag)sවාර්තාව බැලීම%(end_tag)s කළහැක."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

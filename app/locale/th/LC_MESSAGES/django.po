@@ -344,6 +344,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1180,6 +1186,9 @@ msgstr "ลงชื่อเข้าใช้"
 msgid "Sign out"
 msgstr "ออกจากระบบ"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
 
@@ -1249,6 +1258,10 @@ msgstr "ผู้ให้ข้อมูลปิดใช้งานข้อ
 msgid "The author has disabled status updates on this record."
 msgstr "ผู้ให้ข้อมูลปิดใช้งานการอัปเดตสถานะของบันทึกนี้"
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
 
@@ -1257,6 +1270,10 @@ msgstr "เหตุผลที่ทำเครื่องหมายให
 
 msgid "The record cannot be extended."
 msgstr "ไม่สามารถขยายเวลาบันทึกได้"
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
@@ -1487,6 +1504,12 @@ msgstr "คุณไม่ได้ลงชื่อเข้าใช้อย
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "คุณสามารถ %(begin_tag)sดูบันทึก%(end_tag)s ก่อนที่จะลบ"
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

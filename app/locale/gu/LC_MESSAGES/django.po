@@ -345,6 +345,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1203,6 +1209,9 @@ msgstr "સાઇન ઇન કરો"
 msgid "Sign out"
 msgstr "સાઇન આઉટ કરો"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "કોઈકને માહિતી પ્રાપ્ત થઈ છે કે આ વ્યક્તિ જીવિત છે"
 
@@ -1272,6 +1281,10 @@ msgstr "આ લેખકે આ રેકોર્ડ પર નોટ્સ અ
 msgid "The author has disabled status updates on this record."
 msgstr "આ લેખકે આ રેકોર્ડ પર સ્થિતિ અપડેટ્સ અક્ષમ કર્યું છે."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "પૂરી પાડવામાં આવેલ છબી ખૂબ મોટી છે. કૃપા કરી એક નાની અપલોડ કરો."
 
@@ -1280,6 +1293,10 @@ msgstr "આ નોટને સ્પામ તરીકે માર્ક ક�
 
 msgid "The record cannot be extended."
 msgstr "આ રેકોર્ડ વિસ્તૃત કરી શકાતો નથી."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "આ રેકોર્ડ કાઢી નાખવામાં આવ્યો છે."
@@ -1515,6 +1532,12 @@ msgstr "તમે હાલમાં સાઇન ઇન કરેલું ન�
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "તમે કાઢી નાખતા પહેલાં, %(begin_tag)sરેકોર્ડને જોઈ%(end_tag)s શકો છો ."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

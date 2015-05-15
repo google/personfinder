@@ -349,6 +349,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1210,6 +1216,9 @@ msgstr "Bejelentkezés"
 msgid "Sign out"
 msgstr "Kilépés"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "Valakinek információja van róla, hogy ez a személy életben van"
 
@@ -1283,6 +1292,10 @@ msgstr "A szerző letiltotta a megjegyzéseket ezen a bejegyzésen."
 msgid "The author has disabled status updates on this record."
 msgstr "A szerző letiltotta az állapotfrissítéseket ezen a bejegyzésen."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
 
@@ -1291,6 +1304,10 @@ msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
 
 msgid "The record cannot be extended."
 msgstr "A bejegyzést nem lehet meghosszabbítani."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "A bejegyzés törölve."
@@ -1532,6 +1549,12 @@ msgstr "Jelenleg nincs bejelentkezve."
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "%(begin_tag)sMegtekintheti a bejegyzést%(end_tag)s, mielőtt törölné."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

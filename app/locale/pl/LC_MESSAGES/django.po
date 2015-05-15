@@ -353,6 +353,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1209,6 +1215,9 @@ msgstr "Zaloguj się"
 msgid "Sign out"
 msgstr "Wyloguj się"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "Ktoś otrzymał informacje, że ta osoba żyje"
 
@@ -1278,6 +1287,10 @@ msgstr "Autor wyłączył dodawanie notatek do tego wpisu."
 msgid "The author has disabled status updates on this record."
 msgstr "Autor wyłączył aktualizacje stanu tego wpisu."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Udostępnione zdjęcie jest zbyt duże. Prześlij mniejsze."
 
@@ -1286,6 +1299,10 @@ msgstr "Przyczyna oznaczenia tej notatki jako spam:"
 
 msgid "The record cannot be extended."
 msgstr "Nie można przedłużyć ważności wpisu."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "Wpis został usunięty."
@@ -1518,6 +1535,12 @@ msgstr "Nie jesteś obecnie zalogowany."
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "%(begin_tag)sWpis możesz wyświetlić%(end_tag)s, zanim go usuniesz."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

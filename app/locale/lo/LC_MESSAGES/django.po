@@ -342,6 +342,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1176,6 +1182,9 @@ msgstr "ເຂົ້າສູ່ລະບົບ"
 msgid "Sign out"
 msgstr "ອອກຈາກລະບົບ"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "ມີໃຜບາງຄົນໄດ້ຮັບຂໍ້ມູນວ່າບຸກຄົນນີ້ຍັງມີຊີວິດຢູ່"
 
@@ -1245,6 +1254,10 @@ msgstr "ຜູ່ຂຽນໄດ້ປິດການນຳໃຊ້ໂນ໋ດ
 msgid "The author has disabled status updates on this record."
 msgstr "ຜູ່ຂຽນໄດ້ປິດການນຳໃຊ້ການອັບເດດສະຖານະສຳລັບບັນທຶກນີ້."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ຮູບທີ່ສະໜອງໃຫ້ມີຂະໜາດໃຫຍ່ເກີນໄປ. ກະລຸນາອັບໂຫລດອັນທີ່ມີຂະໜາດນ້ອຍກວ່າ."
 
@@ -1253,6 +1266,10 @@ msgstr "ເຫດຜົນທີ່ບັນທຶກນີ້ຖືກໝາຍ
 
 msgid "The record cannot be extended."
 msgstr "ບັນທຶກບໍ່ສາມາດຍືດເວລາອອກໄດ້."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "ບັນທຶກດັ່ງກ່າວໄດ້ຖືກລຶບອອກແລ້ວ."
@@ -1487,6 +1504,12 @@ msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
 "ທ່ານສາມາດ %(begin_tag)sເບິ່ງບັນທຶກດັ່ງກ່າວ%(end_tag)s "
 "ກ່ອນຈະທຳການລຶບມັນໄດ້."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

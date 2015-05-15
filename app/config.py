@@ -133,6 +133,10 @@ def get(name, default=None, repo='*'):
 
 def set(repo='*', **kwargs):
     """Sets configuration settings."""
+    if 'launched_repos' in kwargs.keys():
+        raise Exception(
+            'Config "launched_repos" is deprecated. Use per-repository '
+            'config "launched" instead.')
     db.put(ConfigEntry(key_name=repo + ':' + name,
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(repo)

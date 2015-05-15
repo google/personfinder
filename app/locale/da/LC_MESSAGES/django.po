@@ -348,6 +348,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1200,6 +1206,9 @@ msgstr "Log ind"
 msgid "Sign out"
 msgstr "Log ud"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "Nogen har modtaget oplysninger om, at denne person er i live"
 
@@ -1271,6 +1280,10 @@ msgstr "Forfatteren har deaktiveret noter for denne journal."
 msgid "The author has disabled status updates on this record."
 msgstr "Forfatteren har deaktiveret statusopdateringer for denne journal."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Det vedhæftede billede er for stort.  Prøv at uploade et mindre billede."
 
@@ -1279,6 +1292,10 @@ msgstr "Årsagen til, at denne note bliver markeret som spam:"
 
 msgid "The record cannot be extended."
 msgstr "Journalen kan ikke forlænges."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "Journalen er slettet."
@@ -1518,6 +1535,12 @@ msgstr "Du er i øjeblikket ikke logget ind"
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "Du kan %(begin_tag)sse journalen%(end_tag)s, før du sletter den."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

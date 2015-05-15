@@ -330,6 +330,12 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -1137,6 +1143,9 @@ msgstr "로그인"
 msgid "Sign out"
 msgstr "로그아웃"
 
+msgid "Skip"
+msgstr ""
+
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
 
@@ -1206,6 +1215,10 @@ msgstr "작성자가 이 신상기록에서 메모를 사용 중지했습니다.
 msgid "The author has disabled status updates on this record."
 msgstr "작성자가 이 신상기록에서 상태 업데이트를 사용 중지했습니다."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
 
@@ -1214,6 +1227,10 @@ msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
 msgid "The record cannot be extended."
 msgstr "신상기록의 유효기간을 연장할 수 없습니다."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr ""
 
 msgid "The record has been deleted."
 msgstr "신상기록이 삭제되었습니다."
@@ -1433,6 +1450,12 @@ msgstr "현재 로그인되어 있지 않습니다."
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "삭제하기 전에 %(begin_tag)s신상기록을 확인%(end_tag)s할 수 있습니다."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
