@@ -179,7 +179,7 @@ select {
 }
 
 .column.end {
-  float: left;
+  float: {{start}};
 }
 
 .column h2 {
@@ -218,12 +218,12 @@ over 10% in penetration ratio.
 
 .fields-table .field {
   clear: both;
-  margin-left: 0;
+  margin-{{start}}: 0;
 }
 
 .fields-table .label {
   display: block; /* to make float/width attribute work */
-  float: left;
+  float: {{start}};
   height: 100%;
   max-width: 160px;
   text-align: right;
@@ -232,7 +232,7 @@ over 10% in penetration ratio.
 
 .fields-table .value {
   display: block;  /* to make float/width attribute work */
-  float: right;
+  float: {{end}};
   max-width: 160px;
   width: 100%;
 }
@@ -361,7 +361,7 @@ td.submit {
 
 .main .action-outer.start {
   background: #bea;
-  float: left;
+  float: {{start}};
   margin-right: 58px;
 }
 
@@ -554,7 +554,7 @@ label.option {
 
 .create .fields-table .photo .value {
   display: block;
-  float: right;
+  float: {{end}};
   max-width: 220px;
   width: 100%;
 }
