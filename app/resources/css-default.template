@@ -16,12 +16,21 @@
 
 /* All pages */
 
+html {
+  padding: 15px;
+}
+
 body {
   font-family: arial, sans-serif;
   font-size: 13px;
   margin: auto;
-  width: 800px;
-  max-width: 1000px;
+  max-width: 800px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
 }
 
 a img {
@@ -46,9 +55,9 @@ h3 {
 }
 
 .header {
-  padding: 1em;
   border-bottom: 1px solid #dadada;
-  overflow: auto;
+  overflow: hidden;
+  padding: 1em 0;
 }
 
 .header a {
@@ -57,6 +66,7 @@ h3 {
 
 .container {
   clear: both;
+  overflow: hidden;
 }
 
 .hidden {
@@ -121,8 +131,19 @@ form {
 }
 
 input {
+  box-sizing: border-box;
   font-family: arial, sans-serif;
   font-size: 13px;
+  margin-bottom: .5em;
+  max-width: 100%;
+}
+
+textarea {
+  box-sizing: border-box;
+}
+
+select {
+  max-width: 100%;
 }
 
 .mandatory {
@@ -130,9 +151,10 @@ input {
 }
 
 .hint {
-  font-weight: normal;
   color: #888;
   font-size: 11px;
+  font-weight: normal;
+  margin-bottom: .5em
 }
 
 .hint .warning {
@@ -143,7 +165,13 @@ input {
 /* Multi-column page */
 
 .column {
-  width: 380px;
+  margin-top: 2em;
+  max-width: 380px;
+  width: 100%;
+}
+
+.column:first-of-type {
+  margin-right: 40px;
 }
 
 .column.start {
@@ -151,7 +179,7 @@ input {
 }
 
 .column.end {
-  float: {{end}};
+  float: left;
 }
 
 .column h2 {
@@ -190,29 +218,33 @@ over 10% in penetration ratio.
 
 .fields-table .field {
   clear: both;
-  margin-{{start}}: 16px;
+  margin-left: 0;
 }
 
 .fields-table .label {
-  display: block;  /* to make float/width attribute work */
-  float: {{start}};
-  width: 160px;
+  display: block; /* to make float/width attribute work */
+  float: left;
   height: 100%;
-  text-align: {{end}};
+  max-width: 160px;
+  text-align: right;
+  width: 100%;
 }
 
 .fields-table .value {
   display: block;  /* to make float/width attribute work */
-  float: {{end}};
-  width: 160px;
+  float: right;
+  max-width: 160px;
+  width: 100%;
 }
 
 .fields-table .long-text-input {
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
 }
 
 .fields-table .medium-text-input {
-  width: 140px;
+  max-width: 140px;
+  width: 100%;
 }
 
 .fields-table .short-text-input {
@@ -304,10 +336,9 @@ td.submit {
 
 .main {
   font-size: 16px;
+  margin: auto;
   width: 650px;
-  /* centering */
-  margin-{{start}}: auto;
-  margin-{{end}}: auto;
+  width: 100%;
 }
 
 .main .row {
@@ -320,21 +351,23 @@ td.submit {
 }
 
 .main .action-outer {
-  width: 240px;
-  height: 70px;
-  border-{{end}}: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
+  border: none;
+  margin-bottom: 1em;
+  max-width: 240px;
+  min-height: 70px;
   padding: 16px;
+  width: 100%;
 }
 
 .main .action-outer.start {
   background: #bea;
-  float: {{start}};
+  float: left;
+  margin-right: 58px;
 }
 
 .main .action-outer.end {
   background: #bcf;
-  float: {{end}};
+  float: left;
 }
 
 .main .action-inner {
@@ -360,12 +393,13 @@ td.submit {
 /* Query page */
 
 .query {
-  width: 380px;
-  margin: 2em auto;
-  padding: 1em;
-  border-{{end}}: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
   background: #bcf;
+  border: none;
+  box-sizing: border-box;
+  margin: 2em auto;
+  max-width: 380px;
+  padding: 1em;
+  width: 100%;
 }
 
 .query.seek {
@@ -520,8 +554,9 @@ label.option {
 
 .create .fields-table .photo .value {
   display: block;
-  float: {{end}};
-  width: 220px;
+  float: right;
+  max-width: 220px;
+  width: 100%;
 }
 
 .create .fields-table .profile .icon {
@@ -844,4 +879,14 @@ table.api-keys td.empty {
 
 .import .stats .error .message {
   font-weight: bold;
+}
+
+#recaptcha_widget_div {
+  overflow: auto;
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    padding: 5px;
+  }
 }
