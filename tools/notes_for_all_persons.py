@@ -29,11 +29,14 @@ To use:
       --min_entry_date=2010-10-01 \
       --key=$PF_KEY \
       https://www.google.org/personfinder/$REPO/feeds/person
-    tools/notes_for_all_persons google.org/personfinder $USER@google.com persons.csv
+    tools/notes_for_all_persons \
+      google.org/personfinder $USER@google.com persons.csv \
+      /tmp/nepal-notes 2015-nepal-earthquake '2015-05-12T06:50:00Z' \
+      information_sought note_body.txt
     Password: <enter your ASP>
 
-The result will be a series of files in /tmp that you can then post to
-the Person Finder API to write the notes to the datastore like this:
+The result will be a series of files prefixed with /tmp/nepal-notes that you can
+then post to the Person Finder API to write the notes to the datastore like this:
 
     for i in `seq 0 100 10200`; do
       echo $i
@@ -96,24 +99,20 @@ def write_notes_for_all_in_repo(
         file.close()
         logging.info('wrote ' + filename)
 
-def write_notes_for_nepal():
-    """Writes XML Atom feeds of notes for the Nepal reactivation."""
-    message = u'''
-    Another major earthquake occurred in Nepal on May 12 at 12:50 Nepali time.  Information previously entered here remains present, but may not have been updated since the more recent earthquake.  If you have new information on this person, please add a note here with their updated status.
-
-    बैशाख २९ गते १२ बजेर ५० मिनेट जाँदा नेपालमा अर्को शक्तिशाली भूकम्प गएको छ । Person Finder मा पहिले राखिएको जानकारी अझै पनि बाँकि छ तर त्यो जानकारी ताजा नहुन सक्छ । येदि तपाईसंग कुनै व्यक्ति को बारेमा नया जानकारी छ भने कृपया त्यो व्यक्तिको रेकर्ड खोजेर त्येस्मा नया टिप्पणी थप्नुहोला ।
-
-    नेपाल में एक और बड़ा भूकंप 12 मई को नेपाली समय में 12:50 पर आया है। व्यक्ति फाइंडर में पहले से दर्ज सूचना मौजूद है, लेकिन हाल ही में आए भूकंप के बाद शायद अपडेटेड ना  हो।  अगर आपके पास किसी व्यक्ति पर नई जानकारी है, तो कृपया यहाँ उस व्यक्ति का रिकॉर्ड खोज कर एक नोट जोड़ें नई जानकारी के साथ। 
-    '''.strip()
-
+def write_notes_for_all_persons(basename, repo, date, status, text):
+    """Writes XML Atom feeds of notes for all person records."""
     write_notes_for_all_in_repo(
-        '/tmp/nepal-notes',
-        '2015-nepal-earthquake',
-        date='2015-05-12T06:50:00Z',
-        status='information_sought',
-        text=message
+        basename,
+        repo,
+        date=date,
+        status=status,
+        text=text
     )
 
 if __name__ == '__main__':
     remote_api.connect(sys.argv[1], sys.argv[2], None)
-    write_notes_for_nepal()
+    text = None
+    with open(sys.argv[6]) as f:
+        text = f.read().decode('utf-8')
+    write_notes_for_all_persons(sys.argv[3], sys.argv[4], sys.argv[5], text)
+
