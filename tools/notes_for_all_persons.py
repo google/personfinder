@@ -58,19 +58,19 @@ logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
 
-def all_person_record_ids(repo, batch_size=100):
-    """Generates all the record IDs of persons in the given repo."""
-    with open(sys.argv[3]) as f:
+def all_person_record_ids(persons_feed_file_name, batch_size=100):
+    """Generates all the record IDs of persons in the given persons feed CSV file."""
+    with open(persons_feed_file_name) as f:
         reader = csv.DictReader(f)
         for row in reader:
             print row['person_record_id']
             yield row['person_record_id']
 
-def write_notes_for_all_in_repo(
-        basename, repo, date, status, text, batch_size=100):
-    """Writes XML Atom feeds of notes, one for every person in the repo."""
+def write_notes_for_all_persons(
+        persons_feed_file_name, basename, date, status, text, batch_size=100):
+    """Writes XML Atom feeds of notes, one for every person in the persons feed file."""
     note_dicts = []
-    for person_record_id in all_person_record_ids(repo):
+    for person_record_id in all_person_record_ids(persons_feed_file_name):
         # Generate a note record ID that (a) can never collide with a future
         # generated note record ID and (b) is a function of the person record
         # ID to ensure that at most one note is created per person regardless
@@ -99,20 +99,10 @@ def write_notes_for_all_in_repo(
         file.close()
         logging.info('wrote ' + filename)
 
-def write_notes_for_all_persons(basename, repo, date, status, text):
-    """Writes XML Atom feeds of notes for all person records."""
-    write_notes_for_all_in_repo(
-        basename,
-        repo,
-        date=date,
-        status=status,
-        text=text
-    )
-
 if __name__ == '__main__':
     remote_api.connect(sys.argv[1], sys.argv[2], None)
     text = None
-    with open(sys.argv[6]) as f:
+    with open(sys.argv[7]) as f:
         text = f.read().decode('utf-8')
-    write_notes_for_all_persons(sys.argv[3], sys.argv[4], sys.argv[5], text)
-
+    write_notes_for_all_persons(
+            sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], text)
