@@ -6629,22 +6629,42 @@ class ImportTests(TestsBase):
 
     def test_import_one_note(self):
         """Verifies a Note entry is successfully imported."""
+        person = Person(
+            key_name='haiti:test.google.com/person1',
+            repo='haiti',
+            author_name='_test_author_name',
+            full_name='_test_given_name _test_family_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
+            source_date=TEST_DATETIME,
+            entry_date=TEST_DATETIME,
+            latest_status='',
+        )
+        db.put(person)
+
         self._write_csv_file([
-            'note_record_id,person_record_id,author_name,source_date',
+            'note_record_id,person_record_id,author_name,source_date,status',
             'test.google.com/note1,test.google.com/person1,' +
-            '_test_author_name,2013-02-26T09:10:00Z',
+            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
             ])
         doc = self.go('/haiti/api/import')
         form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
+
         assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 0
+
         assert Note.all().count() == 1
         note = Note.all().get()
         assert note.record_id == 'test.google.com/note1'
         assert note.person_record_id == 'test.google.com/person1'
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
+        assert note.status == 'believed_alive'
+
+        assert Person.all().count() == 1
+        person = Person.all().get()
+        assert person.latest_status == 'believed_alive'
+
         verify_api_log(ApiActionLog.WRITE, note_records=1)
 
     def test_import_only_digit_record_id(self):
@@ -6735,6 +6755,23 @@ class ImportTests(TestsBase):
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
         verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
+
+    def test_import_note_for_non_existent_person(self):
+        """Verifies a Note entry is not imported if it points to a non-existent
+        person_record_id."""
+        self._write_csv_file([
+            'note_record_id,person_record_id,author_name,source_date,status',
+            'test.google.com/note1,test.google.com/non_existent_person,' +
+            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
+            ])
+        doc = self.go('/haiti/api/import')
+        form = doc.last('form')
+        doc = self.s.submit(form, key='test_key', content=open(self.filename))
+
+        assert 'Note records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'There is no person record with the person_record_id' in doc.text
+        assert Note.all().count() == 0
+        verify_api_log(ApiActionLog.WRITE)
 
     def test_import_xlsx(self):
         """Verifies an xlsx file import."""

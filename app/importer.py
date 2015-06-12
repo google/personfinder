@@ -236,9 +236,12 @@ def import_records(repo, domain, converter, records,
         number of records processed in total.
     """
     persons = {}  # Person entities to write
-    notes = {}  # Note entities to write
+    # Note entries in the records (incliding ones skipped later) with their
+    # original fields.
+    input_notes_with_fields = []
     skipped = []  # entities skipped due to an error
     total = 0  # total number of entities for which conversion was attempted
+
     for fields in records:
         total += 1
         try:
@@ -255,43 +258,20 @@ def import_records(repo, domain, converter, records,
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
-            # Check whether reporting 'believed_dead' in note is permitted.
-            if (not believed_dead_permission and \
-                entity.status == 'believed_dead'):
-                skipped.append(
-                    ('Not authorized to post notes with ' \
-                     'the status \"believed_dead\"',
-                     fields))
-                continue
-            # Check whether commenting is already disabled by record author.
-            existing_person = Person.get(repo, entity.person_record_id)
-            if existing_person and existing_person.notes_disabled:
-                skipped.append(
-                    ('The author has disabled new commenting on this record',
-                     fields))
-                continue
-            # Check whether the note is a duplicate.
-            if omit_duplicate_notes:
-                other_notes = Note.get_by_person_record_id(
-                    repo, entity.person_record_id, filter_expired=False)
-                if any(notes_match(entity, note) for note in other_notes):
-                    skipped.append(
-                        ('This is a duplicate of an existing note', fields))
-                    continue
-            entity.reviewed = mark_notes_reviewed
-            notes[entity.record_id] = entity
+            input_notes_with_fields.append((entity, fields))
 
+    # Note entities to write
+    notes = {}
+    # Updated Persons other than those being imported.
+    #
     # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
     # key sets: Person entities for the records passed in to import_records() 
     # go in 'persons', and any other Person entities affected by the import go
     # in 'extra_persons'.  The two dictionaries are kept separate in order to
     # produce a count of records written that only counts 'persons'.
-    extra_persons = {}  # updated Persons other than those being imported
+    extra_persons = {}
 
-    # For each Note, update the latest_* fields on the associated Person.
-    # We do these updates in dictionaries keyed by person_record_id so that
-    # multiple updates for one person_record_id will mutate the same object.
-    for note in notes.values():
+    for (note, fields) in input_notes_with_fields:
         if note.person_record_id in persons:
             # This Note belongs to a Person that is being imported.
             person = persons[note.person_record_id]
@@ -303,9 +283,43 @@ def import_records(repo, domain, converter, records,
             # This Note belongs to some other Person that is not part of this
             # import and this is the first such Note in this import.
             person = Person.get(repo, note.person_record_id)
-            if not person:
+
+        if not person:
+            skipped.append(
+                ('There is no person record with the person_record_id %r'
+                    % note.person_record_id,
+                 fields))
+            continue
+        # Check whether reporting 'believed_dead' in note is permitted.
+        if not believed_dead_permission and note.status == 'believed_dead':
+            skipped.append(
+                ('Not authorized to post notes with ' \
+                 'the status \"believed_dead\"',
+                 fields))
+            continue
+        # Check whether commenting is already disabled by record author.
+        if person.notes_disabled:
+            skipped.append(
+                ('The author has disabled new commenting on this record',
+                 fields))
+            continue
+        # Check whether the note is a duplicate.
+        if omit_duplicate_notes:
+            other_notes = Note.get_by_person_record_id(
+                repo, note.person_record_id, filter_expired=False)
+            if any(notes_match(note, other_note) for other_note in other_notes):
+                skipped.append(
+                    ('This is a duplicate of an existing note', fields))
                 continue
+
+        note.reviewed = mark_notes_reviewed
+        notes[note.record_id] = note
+        if note.person_record_id not in persons:
             extra_persons[note.person_record_id] = person
+
+        # Update the latest_* fields on the associated Person for the note.
+        # We do these updates in dictionaries keyed by person_record_id so that
+        # multiple updates for one person_record_id will mutate the same object.
         person.update_from_note(note)
 
     # TODO(kpy): Don't overwrite existing Persons with newer source_dates.
