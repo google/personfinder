@@ -207,12 +207,30 @@ def get_repo_options(request, lang):
                                     test_mode=test_mode))
     return options
 
-def get_language_options(request, config=None):
+def get_language_options(request, config, current_lang):
     """Returns a list of information needed to generate the language menu."""
-    return [{'lang': lang,
-             'endonym': const.LANGUAGE_ENDONYMS.get(lang, '?'),
-             'url': utils.set_url_param(request.url, 'lang', lang)}
-            for lang in (config and config.language_menu_options or ['en'])]
+    primary_langs = (config and config.language_menu_options) or ['en']
+    all_langs = sorted(
+        const.LANGUAGE_ENDONYMS.keys(),
+        key=lambda s: const.LANGUAGE_ENDONYMS[s])
+    return {
+        'primary':
+            [get_language_option(request, lang, lang == current_lang)
+             for lang in primary_langs],
+        'all':
+            [get_language_option(
+                request, lang,
+                lang == current_lang and lang not in primary_langs)
+             for lang in all_langs],
+    }
+
+def get_language_option(request, lang, is_current):
+    return {
+        'lang': lang,
+        'endonym': const.LANGUAGE_ENDONYMS.get(lang, '?'),
+        'url': utils.set_url_param(request.url, 'lang', lang),
+        'is_current': is_current,
+    }
 
 def get_secret(name):
     """Gets a secret from the datastore by name, or returns None if missing."""
@@ -279,7 +297,7 @@ def setup_env(request):
     env.global_url = utils.get_repo_url(request, 'global')
 
     # Commonly used information that's rendered or localized for templates.
-    env.language_options = get_language_options(request, env.config)
+    env.language_options = get_language_options(request, env.config, env.lang)
     env.repo_options = get_repo_options(request, env.lang)
     env.expiry_options = [
         utils.Struct(value=value, text=const.PERSON_EXPIRY_TEXT[value])

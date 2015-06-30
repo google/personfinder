@@ -14,7 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Test cases for end-to-end testing.  Run with the server_tests script."""
+"""Test cases for end-to-end testing.  Run with the server_tests script.
+
+See scrape.py for methods available for the document object returned by self.s.go.
+"""
 
 import calendar
 import datetime
@@ -566,13 +569,30 @@ class ReadOnlyTests(TestsBase):
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')
-        assert doc.first('option', u'Fran\xe7ais')
-        assert doc.first('option', u'Krey\xf2l')
-        assert not doc.all('option', u'\u0627\u0631\u062F\u0648')  # Urdu
+        select = doc.first('select', id='language_picker')
+        options = select.all('option')
+
+        # It first lists languages in the repository config.
+        # These are set in setup_configs() in setup_pf.py.
+        assert options[0].text == u'English'  # en
+        assert options[1].text == u'Krey\xf2l'  # ht
+        assert options[2].text == u'Fran\xe7ais'  # fr
+        assert options[3].text == u'espa\u00F1ol'  # es
+
+        # All other languages follow.
+        assert select.first('option', u'\u0627\u0631\u062F\u0648')  # ur
 
         doc = self.go('/pakistan')
-        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('option', u'Fran\xe7ais')
+        select = doc.first('select', id='language_picker')
+        options = select.all('option')
+
+        # It first lists languages in the repository config.
+        # These are set in setup_configs() in setup_pf.py.
+        assert options[0].text == u'English'  # en
+        assert options[1].text == u'\u0627\u0631\u062F\u0648'  # ur
+
+        # All other languages follow.
+        assert select.first('option', u'Fran\xe7ais')  # fr
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
