@@ -224,7 +224,6 @@
   <li><a href="admin/review">Review notes</a></li>
   <li><a href="admin/api_keys">Create an API key</a></li>
   <li><a href="admin/api_keys/list">List API keys</a></li>
-  <li><a href="admin/resources">Manage resources</a></li>
 </ul>
 
 <h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
@@ -773,6 +772,13 @@
 </form>
 
 {% else %}
+
+<h2>Global admin tools</h2>
+<ul>
+  <li><a href="admin/resources">Manage resources</a></li>
+  <li><a href="admin/api_keys">Create an API key to access all repositories</a></li>
+  <li><a href="admin/api_keys/list">List API keys to access all repositories</a></li>
+</ul>
 
 <h2>Edit global settings</h2>
 

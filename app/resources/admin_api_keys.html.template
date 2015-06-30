@@ -25,7 +25,11 @@
 {% if message %}
   <div class="info"><strong>{{ message }}</strong></div>
 {% endif %}
-<h2>Detailed information of an API key for {{ env.repo }}.{{env.parent_domain}}</h2>
+{% if env.repo %}
+  <h2>Detailed information of an API key for {{ env.repo }} repository</h2>
+{% else %}
+  <h2>Detailed information of an API key to access all repositories</h2>
+{% endif %}
 {% if target_key.key %}
   API key: <span id="actual_key">{{ target_key.api_key }}</span>
 {% endif %}
