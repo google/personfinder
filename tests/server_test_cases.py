@@ -750,6 +750,11 @@ class PersonNoteTests(TestsBase):
         num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         note_form = details_page.first('form')
 
+        # Advance the clock. The new note has a newer source_date by this.
+        # This makes sure that the new note appears at the bottom of the view
+        # page.
+        self.advance_utcnow(seconds=1)
+
         params = dict(kwargs)
         params['text'] = note_body
         params['author_name'] = author
