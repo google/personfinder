@@ -45,7 +45,6 @@ from recaptcha.client import captcha
 
 import const
 import config
-import legacy_redirect
 import model
 import pfif
 import resources
@@ -903,8 +902,6 @@ class BaseHandler(webapp.RequestHandler):
 
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo):
-            if legacy_redirect.do_redirect(self):
-                return legacy_redirect.redirect(self)
             html = 'No such repository. '
             if self.env.repo_options:
                 html += 'Select:<p>' + self.render_to_string('repo-menu.html')
