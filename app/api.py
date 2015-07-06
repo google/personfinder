@@ -35,6 +35,7 @@ import pfif
 import simplejson
 import subscribe
 import utils
+import xlrd
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
@@ -82,7 +83,7 @@ def get_tag_params(handler):
             '</a>',
         'begin_document_anchor_tag':
             '<a href='
-            '"https://code.google.com/p/googlepersonfinder/wiki/ImportCSV" '
+            '"https://github.com/google/personfinder/wiki/ImportCSV" '
             'target="_blank">',
         'end_document_anchor_tag':
             '</a>',
@@ -150,6 +151,42 @@ def convert_time_fields(rows, default_offset=0):
             setting_names = [name.lower().strip() for name in row]
 
 
+def convert_xsl_to_csv(contents):
+    """Converts data in xsl (or xslx) format to CSV."""
+    try:
+        book = xlrd.open_workbook(file_contents=contents)
+    except xlrd.XLRDError as e:
+        return None, str(e)
+    except UnicodeDecodeError:
+        return None, 'The encoding of the file is unknown.'
+    if book.nsheets == 0:
+        return None, 'The uploaded file contains no sheets.'
+    sheet = book.sheet_by_index(0)
+    table = []
+    for row in xrange(sheet.nrows):
+        table_row = []
+        for col in xrange(sheet.ncols):
+            value = None
+            cell_value = sheet.cell_value(row, col)
+            cell_type = sheet.cell_type(row, col)
+            if cell_type == xlrd.XL_CELL_TEXT:
+                value = cell_value
+            elif cell_type == xlrd.XL_CELL_NUMBER:
+                value = str(int(cell_value))
+            elif cell_type == xlrd.XL_CELL_BOOLEAN:
+                value = 'true' if cell_value else 'false'
+            elif cell_type == xlrd.XL_CELL_DATE:
+                # TODO(ryok): support date type.
+                pass
+            table_row.append(value)
+        table.append(table_row)
+
+    csv_output = StringIO.StringIO()
+    csv_writer = csv.writer(csv_output)
+    csv_writer.writerows(table)
+    return csv_output.getvalue(), None
+
+
 class Import(utils.BaseHandler):
     https_required = True
 
@@ -168,6 +205,15 @@ class Import(utils.BaseHandler):
         if not content:
             self.error(400, message='Please specify at least one CSV file.')
             return
+
+        # Handle Excel sheets.
+        filename = self.request.POST['content'].filename
+        if re.search('\.xlsx?$', filename):
+            content, error = convert_xsl_to_csv(content)
+            if error:
+                self.response.set_status(400)
+                self.write(error)
+                return
 
         try:
             lines = content.splitlines()  # handles \r, \n, or \r\n

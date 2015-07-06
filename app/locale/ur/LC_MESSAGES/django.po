@@ -349,6 +349,15 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -741,6 +750,9 @@ msgstr "خاندانی نام"
 
 msgid "Feed of updates about this person"
 msgstr "اس شخص کے بارے میں اپ ڈیٹس کی فیڈ"
+
+msgid "Feedback"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "ایک نیا ریکارڈ بنانے کیلئے اس لنک کی پیروی کریں"
@@ -1192,6 +1204,9 @@ msgstr "سائن ان کریں"
 msgid "Sign out"
 msgstr "سائن آؤٹ کریں"
 
+msgid "Skip"
+msgstr "Skip"
+
 msgid "Someone has received information that this person is alive"
 msgstr "کسی کو اطلاع ملی ہے کہ یہ شخص زندہ ہے"
 
@@ -1211,7 +1226,7 @@ msgid "Source of this record (required)"
 msgstr "اس معلومات کا ماخذ (مطلوب)"
 
 msgid "Status"
-msgstr "صورتحال"
+msgstr "اسٹیٹس"
 
 msgid "Status of this person"
 msgstr "اس شخص کی صورتحال"
@@ -1263,6 +1278,10 @@ msgstr "مصنف نے اس ریکارڈ پر نوٹس کو غیر فعال کر�
 msgid "The author has disabled status updates on this record."
 msgstr "مصنف نے اس ریکارڈ پر صورتحال کی اپ ڈیٹس کو غیر فعال کردیا ہے۔"
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "The note for %(full_name)s has been added"
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "فراہم کردہ تصویر کافی بڑی ہے۔ براہ کرم قدرے چھوٹی تصویر اپ لوڈ کریں۔"
 
@@ -1271,6 +1290,10 @@ msgstr "اس نوٹ کو سپام کے بطور نشان زد کیے جانے ک
 
 msgid "The record cannot be extended."
 msgstr "ریکارڈ کی توسیع نہیں کی جاسکتی ہے۔"
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "ریکارڈ کو حذف کردیا گیا ہے۔"
@@ -1510,6 +1533,14 @@ msgstr "آپ فی الحال سائن ان نہیں ہیں۔"
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "آپ حذف کرنے سے پہلے %(begin_tag)sریکارڈ دیکھ سکتے ہیں%(end_tag)s۔"
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

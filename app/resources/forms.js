@@ -142,7 +142,7 @@ function remove_profile_entry(profile_entry_index) {
 // target language, and translated text.
 var translate_callback_id = 0;
 function translate(source, target, text, continuation) {
-  if (source === target || !translate_api_key || translate_api_key == 'None') {
+  if (source === target) {
     // The Translate API considers 'en -> en' an invalid language pair,
     // so we add a shortcut for this special case.
     continuation(source, target, text);
@@ -158,6 +158,8 @@ function translate(source, target, text, continuation) {
       } else if (target.length > 2) {
         // Try falling back to "fr" if "fr-CA" didn't work.
         translate(source, target.slice(0, 2), text, continuation);
+      } else {
+        console_error("Call to Translate API has failed: ", response);
       }
     };
     // Add a <script> tag to make a request to the Google Translate API.
@@ -283,6 +285,20 @@ function validate_fields() {
     }
   }
   hide($('mandatory_field_missing'));
+
+  //Validate email-id
+  var email_field = $('author_email');
+  var email_id = $('author_email').value;
+  if (email_id !== ""){
+     var emailfilter=/(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)/i;
+     if (!emailfilter.test(email_id)){
+        show($('email_id_improper_format'));
+        email_field.focus();
+        return false;
+     }
+   }
+
+  hide($('email_id_improper_format'));
 
   // Check that the status and author_made_contact values are not inconsistent.
   if ($('status') && $('status').value == 'is_note_author' &&

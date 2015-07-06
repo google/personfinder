@@ -24,6 +24,7 @@ import pickle
 import random
 import sha
 import time
+import urlparse
 
 from google.appengine.api import users
 from recaptcha.client import captcha
@@ -70,7 +71,7 @@ def make_reveal_url(handler, content_id):
     """Produces a link to this reveal handler that, on success, redirects back
     to the given 'target' URL with a signature for the given 'content_id'."""
     return handler.get_url(
-        '/reveal', target=handler.request.url, content_id=content_id)
+        '/reveal', target=handler.request.path_qs, content_id=content_id)
 
 
 # ==== The reveal page, which authorizes revelation ========================
@@ -100,8 +101,14 @@ class Handler(BaseHandler):
         captcha_response = self.get_captcha_response()
         if captcha_response.is_valid or self.env.test_mode:
             signature = sign(self.params.content_id)
+            # self.params.target contains only the path part of the URL e.g.,
+            # "/test/view?...". Puts our own scheme and netloc to make it an
+            # absolute URL. We do this to allow only URLs in our domain as
+            # the target.
+            scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+            target = '%s://%s%s' % (scheme, netloc, self.params.target)
             self.redirect(
-                set_url_param(self.params.target, 'signature', signature))
+                set_url_param(target, 'signature', signature))
         else:
             self.render(
                 'reveal.html',

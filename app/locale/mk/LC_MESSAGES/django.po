@@ -356,6 +356,15 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -758,6 +767,9 @@ msgstr "Презиме"
 
 msgid "Feed of updates about this person"
 msgstr "Навестувања за ажурирања за ова лице"
+
+msgid "Feedback"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Следете ја оваа врска за да создадете нов запис"
@@ -1203,10 +1215,13 @@ msgid "Show who marked these duplicates"
 msgstr "Прикажи кој ги означил овие дупликати"
 
 msgid "Sign in"
-msgstr "Пријавете се"
+msgstr "Најавете се"
 
 msgid "Sign out"
 msgstr "Одјавете се"
+
+msgid "Skip"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Некој добил информации дека ова лице е живо"
@@ -1279,6 +1294,10 @@ msgstr "Авторот оневозможил белешки на овој за�
 msgid "The author has disabled status updates on this record."
 msgstr "Авторот оневозможил ажурирања на статус на овој запис."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "The note for %(full_name)s has been added"
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Понудената слика е премногу голема. Поставете помала."
 
@@ -1287,6 +1306,10 @@ msgstr "Причината зошто оваа белешка е означен�
 
 msgid "The record cannot be extended."
 msgstr "Записот не може да се продолжи."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Записот е избришан."
@@ -1511,18 +1534,26 @@ msgstr "Веќе ја откажавте претплатата."
 msgid ""
 "You are currently signed in as "
 "%(begin_span_tag)s%(email)s%(end_span_tag)s."
-msgstr "Моментално сте пријавени како %(begin_span_tag)s%(email)s%(end_span_tag)s."
+msgstr "Моментално сте најавени како %(begin_span_tag)s%(email)s%(end_span_tag)s."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr "Моментално сте пријавени како %(user_email)s."
+msgstr "Моментално сте најавени како %(user_email)s."
 
 msgid "You are not currently signed in."
-msgstr "Моментално не сте пријавени."
+msgstr "Моментално не сте најавени."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "Може да го %(begin_tag)sвидите записот%(end_tag)s пред да го избришете."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

@@ -364,6 +364,15 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -780,6 +789,9 @@ msgstr "Επώνυμο"
 
 msgid "Feed of updates about this person"
 msgstr "Ροή ενημερώσεων σχετικά με αυτό το άτομο"
+
+msgid "Feedback"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Ακολουθήστε αυτόν το σύνδεσμο για να δημιουργήσετε μια νέα εγγραφή"
@@ -1247,6 +1259,9 @@ msgstr "Σύνδεση"
 msgid "Sign out"
 msgstr "Έξοδος"
 
+msgid "Skip"
+msgstr "Skip"
+
 msgid "Someone has received information that this person is alive"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
@@ -1322,6 +1337,10 @@ msgstr ""
 "Ο συντάκτης έχει απενεργοποιήσει τις ενημερώσεις κατάστασης σε αυτήν την "
 "εγγραφή."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "The note for %(full_name)s has been added"
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Η παρεχόμενη εικόνα είναι πολύ μεγάλη. Μεταφορτώστε μια μικρότερη."
 
@@ -1330,6 +1349,10 @@ msgstr "Αιτία που αυτή η σημείωση έχει επισημαν
 
 msgid "The record cannot be extended."
 msgstr "Δεν είναι δυνατή η επέκταση του αρχείου."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Η εγγραφή διαγράφηκε."
@@ -1578,6 +1601,14 @@ msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
 "Μπορείτε να %(begin_tag)sπροβάλετε την εγγραφή%(end_tag)s πριν τη "
 "διαγράψετε."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

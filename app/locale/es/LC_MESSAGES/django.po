@@ -356,6 +356,15 @@ msgstr ""
 
 msgid ""
 "\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+
+msgid ""
+"\n"
 "  The record will still be visible on this site, but no one will be able "
 "to post\n"
 "  further notes on it.\n"
@@ -764,6 +773,9 @@ msgstr "Apellidos"
 
 msgid "Feed of updates about this person"
 msgstr "Feed de novedades sobre esta persona"
+
+msgid "Feedback"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Accede a este enlace para crear un registro nuevo"
@@ -1235,6 +1247,9 @@ msgstr "Iniciar sesión"
 msgid "Sign out"
 msgstr "Cerrar sesión"
 
+msgid "Skip"
+msgstr "Skip"
+
 msgid "Someone has received information that this person is alive"
 msgstr "Alguien tiene información de que esta persona está viva"
 
@@ -1310,6 +1325,10 @@ msgstr ""
 msgid "The author has disabled status updates on this record."
 msgstr "El autor ha inhabilitado las novedades sobre el estado en este registro."
 
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "The note for %(full_name)s has been added"
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "La imagen que has subido es demasiado grande. Sube una imagen más pequeña."
 
@@ -1318,6 +1337,10 @@ msgstr "Motivo por el que esta nota se ha marcado como spam:"
 
 msgid "The record cannot be extended."
 msgstr "No se puede ampliar la fecha de caducidad del registro."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Se ha eliminado el registro."
@@ -1562,6 +1585,14 @@ msgstr "No has iniciado sesión."
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr "Puedes %(begin_tag)sver el registro%(end_tag)s antes de eliminarlo."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"

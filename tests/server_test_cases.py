@@ -109,8 +109,11 @@ def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
             return  # verified
     assert False, text_all_logs()  # not verified
 
+def get_test_filepath(filename):
+    return os.path.join(os.environ['TESTS_DIR'], filename)
+
 def get_test_data(filename):
-    return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
+    return open(get_test_filepath(filename)).read()
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -5546,7 +5549,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Japanese translation of "I have information about someone"
         ja_i_have_info = (
-            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3057\u305f\u3044')
+            u'\u5b89\u5426\u60c5\u5831\u3092\u63d0\u4f9b\u3059\u308b')
         # Japanese translation of "I'm looking for someone"
         ja_looking_for_someone = (
             u'\u4eba\u3092\u63a2\u3057\u3066\u3044\u308b')
@@ -6626,22 +6629,42 @@ class ImportTests(TestsBase):
 
     def test_import_one_note(self):
         """Verifies a Note entry is successfully imported."""
+        person = Person(
+            key_name='haiti:test.google.com/person1',
+            repo='haiti',
+            author_name='_test_author_name',
+            full_name='_test_given_name _test_family_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
+            source_date=TEST_DATETIME,
+            entry_date=TEST_DATETIME,
+            latest_status='',
+        )
+        db.put(person)
+
         self._write_csv_file([
-            'note_record_id,person_record_id,author_name,source_date',
+            'note_record_id,person_record_id,author_name,source_date,status',
             'test.google.com/note1,test.google.com/person1,' +
-            '_test_author_name,2013-02-26T09:10:00Z',
+            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
             ])
         doc = self.go('/haiti/api/import')
         form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
+
         assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 0
+
         assert Note.all().count() == 1
         note = Note.all().get()
         assert note.record_id == 'test.google.com/note1'
         assert note.person_record_id == 'test.google.com/person1'
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
+        assert note.status == 'believed_alive'
+
+        assert Person.all().count() == 1
+        person = Person.all().get()
+        assert person.latest_status == 'believed_alive'
+
         verify_api_log(ApiActionLog.WRITE, note_records=1)
 
     def test_import_only_digit_record_id(self):
@@ -6732,6 +6755,38 @@ class ImportTests(TestsBase):
         assert note.author_name == '_test_author_name'
         assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
         verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
+
+    def test_import_note_for_non_existent_person(self):
+        """Verifies a Note entry is not imported if it points to a non-existent
+        person_record_id."""
+        self._write_csv_file([
+            'note_record_id,person_record_id,author_name,source_date,status',
+            'test.google.com/note1,test.google.com/non_existent_person,' +
+            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
+            ])
+        doc = self.go('/haiti/api/import')
+        form = doc.last('form')
+        doc = self.s.submit(form, key='test_key', content=open(self.filename))
+
+        assert 'Note records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
+        assert 'There is no person record with the person_record_id' in doc.text
+        assert Note.all().count() == 0
+        verify_api_log(ApiActionLog.WRITE)
+
+    def test_import_xlsx(self):
+        """Verifies an xlsx file import."""
+        doc = self.go('/haiti/api/import')
+        form = doc.last('form')
+        doc = self.s.submit(form, key='test_key',
+            content=open(get_test_filepath('persons.xlsx')))
+        assert 'Person records Imported 3 of 3' in re.sub('\\s+', ' ', doc.text)
+        assert Person.all().count() == 3
+        person = Person.all().get()  # check the first Person
+        assert person.record_id == 'test.google.com/12345'
+        assert person.source_date == datetime.datetime(2013, 11, 12, 7, 26, 0)
+        assert person.full_name == 'Mary Example'
+        verify_api_log(ApiActionLog.WRITE, person_records=3, note_records=0)
+
 
 # TODO(ryok): fix go_as_operator() and re-enable the tests.
 #class ApiKeyManagementTests(TestsBase):

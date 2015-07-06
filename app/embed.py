@@ -25,6 +25,6 @@ class Handler(BaseHandler):
                     apache_link_html=anchor_start(
                         'http://www.apache.org/licenses/LICENSE-2.0.html'),
                     developers_link_html=anchor_start(
-                        'http://code.google.com/p/googlepersonfinder'),
+                        'https://github.com/google/personfinder'),
                     link_end_html='</a>'
 )

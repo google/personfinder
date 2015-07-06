@@ -16,12 +16,23 @@
 {% block content %}
 
 <div>
-  <h2>{% blocktrans with person.primary_full_name as full_name %}Subscribe to updates about {{full_name}}{% endblocktrans %}</h2>
-  {% if subscribe_email %}
+
+  {% if context == 'create_person' %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}The record for {{full_name}} has been registered{% endblocktrans %}</h2>
+  {% else %}{% if context == 'add_note' %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}The note for {{full_name}} has been added{% endblocktrans %}</h2>
+  {% else %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}Subscribe to updates about {{full_name}}{% endblocktrans %}</h2>
+  {% endif %}{% endif %}
+
+  {% if context == 'create_person' or context == 'add_note' %}
+    <p>{% blocktrans with person_record_link_html|safe as full_name %}You can subscribe to updates about {{full_name}} by entering your e-mail address here{% endblocktrans %}</p>
+  {% else %}{% if subscribe_email %}
     <p>{% trans "Please confirm your e-mail address to subscribe to updates" %}</p>
   {% else %}
     <p>{% trans "Please enter your e-mail address to subscribe to updates" %}</p>
-  {% endif %}
+  {% endif %}{% endif %}
+
   <form method="post" action="{{form_action}}">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <span id="subscribe_label">
@@ -37,8 +48,13 @@
     <div>
       <input type="submit" value="{% trans 'Subscribe' %}" />
       <input type="hidden" name="id" value="{{person.record_id}}">
-      <input type="button" value="{% trans 'Cancel' %}"
-             onclick="javascript:location.href='{{back_url}}'">
+      {% if context == 'create_person' or context == 'add_note' %}
+        <input type="button" value="{% trans 'Skip' %}"
+               onclick="javascript:location.href='{{back_url}}'">
+      {% else %}
+        <input type="button" value="{% trans 'Cancel' %}"
+               onclick="javascript:location.href='{{back_url}}'">
+      {% endif %}
     </div>
   </form>
 </div>
