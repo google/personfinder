@@ -12,7 +12,12 @@
 {% load i18n %}
 
 {% block content %}
-<h2>Listing API keys for {{env.repo}}.{{env.parent_domain}}</h2>
+{% if env.repo %}
+  <h2>API keys for {{env.repo}} repository</h2>
+{% else %}
+  <h2>API keys to access all repositories</h2>
+{% endif %}
+
 <p>
 {% if user %}
   {% blocktrans with user_email_with_tags|safe as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
