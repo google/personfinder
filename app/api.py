@@ -580,8 +580,6 @@ class HandleSMS(utils.BaseHandler):
         message_text = self.get_element_text(doc, 'message_text')
         receiver_phone_number = self.get_element_text(
             doc, 'receiver_phone_number')
-        sender_phone_number = self.get_element_text(
-            doc, 'sender_phone_number')
 
         if message_text is None:
             self.info(
@@ -628,10 +626,6 @@ class HandleSMS(utils.BaseHandler):
                 'accuracy of this data google.org/personfinder/global/tos.html')
         elif self.config.enable_sms_record_input and add_self_m:
             name_string = add_self_m.group(1).strip()
-            # TODO(nworden): Figure out a better sort of ID (needs to hide the
-            # sender phone number and be safe with names with whitespace).
-            person_record_id = '%s.%s/%s.%s-%s' % (
-                repo, HOME_DOMAIN, 'person', sender_phone_number, name_string)
             person = Person.create_original(
                 repo,
                 entry_date=utils.get_utcnow(),
