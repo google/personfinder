@@ -632,9 +632,8 @@ class HandleSMS(utils.BaseHandler):
             # sender phone number and be safe with names with whitespace).
             person_record_id = '%s.%s/%s.%s-%s' % (
                 repo, HOME_DOMAIN, 'person', sender_phone_number, name_string)
-            person = Person.create_original_with_record_id(
+            person = Person.create_original(
                 repo,
-                person_record_id,
                 entry_date=utils.get_utcnow(),
                 full_name=name_string)
             person.update_index(['old', 'new'])
