@@ -629,7 +629,9 @@ class HandleSMS(utils.BaseHandler):
             person = Person.create_original(
                 repo,
                 entry_date=utils.get_utcnow(),
-                full_name=name_string)
+                full_name=name_string,
+                family_name='',
+                given_name='')
             person.update_index(['old', 'new'])
             note = Note.create_original(
                 repo,
