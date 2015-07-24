@@ -37,7 +37,6 @@ import simplejson
 import subscribe
 import utils
 import xlrd
-from const import HOME_DOMAIN
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
@@ -651,7 +650,7 @@ class HandleSMS(utils.BaseHandler):
             model.UserActionLog.put_new('add', person, copy_properties=False)
             responses.append('Added record for found person: %s' % name_string)
         else:
-            usage_str = 'Usage: Search John'
+            usage_str = 'Usage: "Search John"'
             if self.config.enable_sms_record_input:
               usage_str += ' OR "I am John"'
             responses.append(usage_str)
