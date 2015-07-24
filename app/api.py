@@ -565,13 +565,15 @@ class HandleSMS(utils.BaseHandler):
     MAX_RESULTS = 3
 
     def post(self):
-        if not (self.auth and self.auth.search_permission):
+        if not (self.auth and self.auth.search_permission
+                and self.auth.domain_write_permission):
             self.info(
                 403,
                 message=
                     '"key" URL parameter is either missing, invalid or '
-                    'lacks required permissions. The key\'s repo must be "*" '
-                    'and search_permission must be True.',
+                    'lacks required permissions. The key\'s repo must be "*", '
+                    'search_permission must be True, and it must have write '
+                    'permission.',
                 style='plain')
             return
 
