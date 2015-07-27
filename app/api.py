@@ -565,7 +565,7 @@ class HandleSMS(utils.BaseHandler):
 
     def post(self):
         if not (self.auth and self.auth.search_permission
-                and self.auth.domain_write_permission):
+                and self.auth.domain_write_permission == '*'):
             self.info(
                 403,
                 message=
