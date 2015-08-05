@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,6 +26,7 @@ import xml.dom.minidom
 
 import django.utils.html
 from google.appengine import runtime
+from google.appengine.api import images
 
 import external_search
 import importer
@@ -36,9 +37,19 @@ import simplejson
 import subscribe
 import utils
 from model import Person, Note, ApiActionLog
+from photo import create_photo, PhotoError
 from text_query import TextQuery
 from utils import Struct
 
+'''
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
+import urllib.request
+import io
+import binascii
+'''
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
@@ -58,10 +69,12 @@ def get_requested_formats(path):
 
 def complete_record_ids(record, domain):
     """Ensures that a record's record_id fields are prefixed with a domain."""
+
     def complete(record, field):
         id = record.get(field)
         if id and '/' not in id:
             record[field] = '%s/%s' % (domain, id)
+
     complete(record, 'person_record_id')
     complete(record, 'note_record_id')
     return record
@@ -72,12 +85,12 @@ def get_tag_params(handler):
     return {
         'begin_notes_template_link':
             '<a href="%s/notes-template.xlsx">' %
-                django.utils.html.escape(handler.env.global_url),
+            django.utils.html.escape(handler.env.global_url),
         'end_notes_template_link':
             '</a>',
         'begin_sample_anchor_tag':
             '<a href="%s/sample-import.csv" target="_blank">' %
-                django.utils.html.escape(handler.env.global_url),
+            django.utils.html.escape(handler.env.global_url),
         'end_sample_anchor_tag':
             '</a>',
         'begin_document_anchor_tag':
@@ -103,7 +116,7 @@ def convert_time(text, offset):
     match = re.search(r'(\d\d\d\d)[/-](\d+)[/-](\d+) *(\d+):(\d+)', text)
     if match:
         y, l, d, h, m = map(int, match.groups())
-        timestamp = calendar.timegm((y, l, d, h, m, 0)) - offset*3600
+        timestamp = calendar.timegm((y, l, d, h, m, 0)) - offset * 3600
         return utils.format_utc_timestamp(timestamp)
     return text  # keep the original text so it shows up in the error message
 
@@ -180,9 +193,9 @@ class Import(utils.BaseHandler):
             self.error(400, message='Problem in the uploaded file: %s' % e)
         except runtime.DeadlineExceededError, e:
             self.error(400, message=
-                'Sorry, the uploaded file is too large. Try splitting it into '
-                'smaller files (keeping the header rows in each file) and '
-                'uploading each part separately.')
+            'Sorry, the uploaded file is too large. Try splitting it into '
+            'smaller files (keeping the header rows in each file) and '
+            'uploading each part separately.')
 
     def import_notes(self, lines):
         source_domain = self.auth.domain_write_permission
@@ -192,7 +205,7 @@ class Import(utils.BaseHandler):
             records = [complete_record_ids(r, source_domain) for r in records]
         except csv.Error, e:
             self.error(400, message=
-                'The CSV file is formatted incorrectly. (%s)' % e)
+            'The CSV file is formatted incorrectly. (%s)' % e)
             return
 
         notes_written, notes_skipped, notes_total = importer.import_records(
@@ -222,7 +235,7 @@ class Import(utils.BaseHandler):
             records = [complete_record_ids(r, source_domain) for r in records]
         except csv.Error, e:
             self.error(400, message=
-                'The CSV file is formatted incorrectly. (%s)' % e)
+            'The CSV file is formatted incorrectly. (%s)' % e)
             return
 
         is_not_empty = lambda x: (x or '').strip()
@@ -259,7 +272,7 @@ class Read(utils.BaseHandler):
 
     def get(self):
         if self.config.read_auth_key_required and not (
-            self.auth and self.auth.read_permission):
+                    self.auth and self.auth.read_permission):
             self.info(
                 403,
                 message='Missing or invalid authorization key',
@@ -297,6 +310,37 @@ class Read(utils.BaseHandler):
             self, ApiActionLog.READ, len(records), len(notes))
 
 
+class PhotoUpload(utils.BaseHandler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth):
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
+            return
+        photo = self.request.body_file
+        if photo is not None:
+            photo = photo.read()
+            photo = images.Image(photo)
+            photo, photo_url = create_photo(photo, self)
+            if photo:
+                photo.put()
+        else :
+            self.info(
+                403,
+                message='Photo URL is wrong',
+                style='plain')
+            return
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.write('<?xml version="1.0"?>\n')
+        self.write('<response><url>')
+        self.write(photo_url)
+        self.write('</url></response>')
+
+
 class Write(utils.BaseHandler):
     https_required = True
 
@@ -328,7 +372,7 @@ class Write(utils.BaseHandler):
         num_people_written, people_skipped, total = importer.import_records(
             self.repo, source_domain, create_person, person_records)
         self.write_status(
-            'person', num_people_written, people_skipped, total, 
+            'person', num_people_written, people_skipped, total,
             'person_record_id')
 
         create_note = importer.create_note
@@ -340,8 +384,8 @@ class Write(utils.BaseHandler):
             'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
         self.write('</status:status>\n')
-        utils.log_api_action(self, ApiActionLog.WRITE,          
-                             num_people_written, num_notes_written,  
+        utils.log_api_action(self, ApiActionLog.WRITE,
+                             num_people_written, num_notes_written,
                              len(people_skipped), len(notes_skipped))
 
 
@@ -372,7 +416,7 @@ class Search(utils.BaseHandler):
 
     def get(self):
         if self.config.search_auth_key_required and not (
-            self.auth and self.auth.search_permission):
+                    self.auth and self.auth.search_permission):
             self.info(
                 403,
                 message='Missing or invalid authorization key',
@@ -397,7 +441,7 @@ class Search(utils.BaseHandler):
             query = TextQuery(query_string)
             if self.config.external_search_backends:
                 results = external_search.search(self.repo, query, max_results,
-                    self.config.external_search_backends)
+                                                 self.config.external_search_backends)
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
@@ -524,9 +568,9 @@ class HandleSMS(utils.BaseHandler):
             self.info(
                 403,
                 message=
-                    '"key" URL parameter is either missing, invalid or '
-                    'lacks required permissions. The key\'s repo must be "*" '
-                    'and search_permission must be True.',
+                '"key" URL parameter is either missing, invalid or '
+                'lacks required permissions. The key\'s repo must be "*" '
+                'and search_permission must be True.',
                 style='plain')
             return
 
@@ -556,8 +600,8 @@ class HandleSMS(utils.BaseHandler):
             self.info(
                 400,
                 message=
-                    'The given receiver_phone_number is not found in '
-                    'sms_number_to_repo config.',
+                'The given receiver_phone_number is not found in '
+                'sms_number_to_repo config.',
                 style='plain')
             return
 
