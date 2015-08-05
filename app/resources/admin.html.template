@@ -804,6 +804,27 @@
     </div>
   </fieldset>
 
+  <fieldset>
+    <legend>REPO</legend>
+    <div class="config">
+      <label for="repo_aliases">
+        SMS numbers mapping.<br>
+        e.g., If it is
+        <code>{"+198765432109": "test", "+8101234567890": "japan"}</code>, SMS
+        messages to +198765432109 are interpreted as requests for "test"
+        repository, and messages to +8101234567890 are interpreted as requests
+        to "japan" repository.<br>
+        JSON dictionary where the key is an international phone number and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="repo_aliases"
+            id="repo_aliases" rows=10 cols=80
+            >{{view_config_json.repo_aliases}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
   <p>
     <input type="hidden" name="operation" value="save_global">
     <input type="submit" value="Save these settings">
