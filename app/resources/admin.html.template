@@ -98,8 +98,11 @@
    * and give it a title.
    * Returns the number of the row that was added
    */
-  function add_language() {
-    var table = $('language_table');
+  function add_language(table_name) {
+
+    //var table = $('language_table');
+
+    var table = $(table_name);
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
     var cur_col = 0;
@@ -162,7 +165,7 @@
 
     //foreach language, add that language and its title
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
-      var row_number = add_language();
+      var row_number = add_language('language_table');
       var language = LANGUAGES[lang_num];
       $('language_selection_' + row_number).value = language;
        if (TITLES[language] != undefined) {
@@ -689,9 +692,9 @@
         (JSON dictionary with HTML values):
       </label>
 
-      <div class="response">
+      <div class="response" onload="add_initial_languages()">
 
-	<table>
+	<table id="start_page_custom_htmls">
 	  <tr>
 	    <th><!--for the 'x' to remove a row--></th>
 	    <th>Language</th>
