@@ -805,16 +805,27 @@
   </fieldset>
 
   <fieldset>
-    <legend>REPO</legend>
+    <legend>Repository aliases</legend>
     <div class="config">
       <label for="repo_aliases">
-        REPO alias mapping.<br>
+        repository alias mapping.<br>
         e.g., If it is
-        <code>{"jp": "japan", "ht": "haiti"}</code>, REPO
-        alias to jp are interpreted as requests for "japan"
-        repository, and messages to ht are interpreted as requests
-        to "haiti" repository.<br>
-        JSON dictionary where the key is an international phone number and the
+        <code>{"jp": "japan", "ht": "haiti"}</code>, 
+	you can use 
+	<a href="http://google.org/personfinder/jp">
+	  http://google.org/personfinder/jp
+	</a>
+	 as an alias of
+	<a href="http://google.org/personfinder/jp">
+	  http://http://google.org/personfinder/japan
+	</a>
+	 and the same for "ht". 
+	This is especially useful combined with the short URL e.g., 
+	<a href="http://g.co.pf/jp">
+	  http://g.co.pf/jp
+	</a>
+	.<br>
+        JSON dictionary where the key is an abbreviation for repository and the
         value is a repository name:
       </label>
       <div class="response">
