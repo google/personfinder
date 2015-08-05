@@ -808,7 +808,7 @@
     <legend>Repository aliases</legend>
     <div class="config">
       <label for="repo_aliases">
-        repository alias mapping.<br>
+        Repository alias mapping.<br>
         e.g., If it is
         <code>{"jp": "japan", "ht": "haiti"}</code>, 
 	you can use 
@@ -825,8 +825,8 @@
 	  http://g.co.pf/jp
 	</a>
 	.<br>
-        JSON dictionary where the key is an abbreviation for repository and the
-        value is a repository name:
+        JSON dictionary where the key is an alias for Repository and the
+        value is a Repository name:
       </label>
       <div class="response">
         <textarea name="repo_aliases"
