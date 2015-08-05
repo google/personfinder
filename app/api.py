@@ -41,15 +41,6 @@ from photo import create_photo, PhotoError
 from text_query import TextQuery
 from utils import Struct
 
-'''
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
-
-import urllib.request
-import io
-import binascii
-'''
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
