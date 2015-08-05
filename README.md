@@ -27,7 +27,7 @@ request in the standard way if you are not a team member.
 3. Create a new branch, prefixed with your username.
    <br/>`$ git checkout -b $USER-your-new-feature`
 4. Make changes and commit. Repeat the step until you are ready for code review.
-   <br/>`$ git commit`
+   <br/>`$ git commit -a`
 5. Push your local changes to the remote repository.
    <br/>`$ git push -u origin $USER-your-new-feature`
 6. Create a new pull request. (-i is optional, but strongly encouraged.)
