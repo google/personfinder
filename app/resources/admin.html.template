@@ -808,12 +808,12 @@
     <legend>REPO</legend>
     <div class="config">
       <label for="repo_aliases">
-        SMS numbers mapping.<br>
+        REPO alias mapping.<br>
         e.g., If it is
-        <code>{"+198765432109": "test", "+8101234567890": "japan"}</code>, SMS
-        messages to +198765432109 are interpreted as requests for "test"
-        repository, and messages to +8101234567890 are interpreted as requests
-        to "japan" repository.<br>
+        <code>{"jp": "japan", "ht": "haiti"}</code>, REPO
+        alias to jp are interpreted as requests for "japan"
+        repository, and messages to ht are interpreted as requests
+        to "haiti" repository.<br>
         JSON dictionary where the key is an international phone number and the
         value is a repository name:
       </label>
