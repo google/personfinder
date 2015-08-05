@@ -26,6 +26,7 @@ import xml.dom.minidom
 
 import django.utils.html
 from google.appengine import runtime
+from google.appengine.ext import db
 
 import external_search
 import importer
@@ -193,7 +194,6 @@ class Import(utils.BaseHandler):
     def get(self):
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     **get_tag_params(self))
 
     def post(self):
@@ -251,7 +251,6 @@ class Import(utils.BaseHandler):
 
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     stats=[
                         Struct(type='Note',
                                written=notes_written,
@@ -287,7 +286,6 @@ class Import(utils.BaseHandler):
 
         self.render('import.html',
                     formats=get_requested_formats(self.env.path),
-                    params=self.params,
                     stats=[
                         Struct(type='Person',
                                written=people_written,
@@ -566,13 +564,15 @@ class HandleSMS(utils.BaseHandler):
     MAX_RESULTS = 3
 
     def post(self):
-        if not (self.auth and self.auth.search_permission):
+        if not (self.auth and self.auth.search_permission
+                and self.auth.domain_write_permission == '*'):
             self.info(
                 403,
                 message=
                     '"key" URL parameter is either missing, invalid or '
-                    'lacks required permissions. The key\'s repo must be "*" '
-                    'and search_permission must be True.',
+                    'lacks required permissions. The key\'s repo must be "*", '
+                    'search_permission must be True, and it must have write '
+                    'permission.',
                 style='plain')
             return
 
@@ -608,9 +608,10 @@ class HandleSMS(utils.BaseHandler):
             return
 
         responses = []
-        m = re.search(r'^search\s+(.+)$', message_text.strip(), re.I)
-        if m:
-            query_string = m.group(1).strip()
+        search_m = re.search(r'^search\s+(.+)$', message_text.strip(), re.I)
+        add_self_m = re.search(r'^i am\s+(.+)$', message_text.strip(), re.I)
+        if search_m:
+            query_string = search_m.group(1).strip()
             query = TextQuery(query_string)
             persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
             if persons:
@@ -624,8 +625,35 @@ class HandleSMS(utils.BaseHandler):
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
                 'accuracy of this data google.org/personfinder/global/tos.html')
+        elif self.config.enable_sms_record_input and add_self_m:
+            name_string = add_self_m.group(1).strip()
+            person = Person.create_original(
+                repo,
+                entry_date=utils.get_utcnow(),
+                full_name=name_string,
+                family_name='',
+                given_name='')
+            person.update_index(['old', 'new'])
+            note = Note.create_original(
+                repo,
+                entry_date=utils.get_utcnow(),
+                source_date=utils.get_utcnow(),
+                person_record_id=person.record_id,
+                author_name=name_string,
+                author_made_contact=True,
+                status='is_note_author',
+                text=message_text)
+            db.put(note)
+            model.UserActionLog.put_new('add', note, copy_properties=False)
+            person.update_from_note(note)
+            db.put(person)
+            model.UserActionLog.put_new('add', person, copy_properties=False)
+            responses.append('Added record for found person: %s' % name_string)
         else:
-            responses.append('Usage: Search John')
+            usage_str = 'Usage: "Search John"'
+            if self.config.enable_sms_record_input:
+              usage_str += ' OR "I am John"'
+            responses.append(usage_str)
 
         self.response.headers['Content-Type'] = 'application/xml'
         self.write(

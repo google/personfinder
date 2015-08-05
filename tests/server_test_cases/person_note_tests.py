@@ -204,6 +204,11 @@ class PersonNoteTests(ServerTestsBase):
         num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
         note_form = details_page.first('form')
 
+        # Advance the clock. The new note has a newer source_date by this.
+        # This makes sure that the new note appears at the bottom of the view
+        # page.
+        self.advance_utcnow(seconds=1)
+
         params = dict(kwargs)
         params['text'] = note_body
         params['author_name'] = author
@@ -1431,20 +1436,6 @@ http://www.foo.com/_account_1''',
         assert note.author_made_contact == False
         assert note.status == u'believed_missing'
         assert note.reviewed == False
-
-    # TODO(ryok): Remove support for legacy URLs in mid-January 2012.
-    def test_api_write_pfif_1_2_legacy_url(self):
-        """Post a single entry as PFIF 1.2 using the API at its old URL."""
-        person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person is None
-
-        self.s.go('http://%s/api/write?subdomain=haiti&key=test_key' %
-                      self.hostport,
-                  data=self.get_test_data('test.pfif-1.2.xml'),
-                  type='application/xml')
-        person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person is not None
-        assert person.given_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
@@ -4965,32 +4956,6 @@ _feed_profile_url2</pfif:profile_urls>
         # No redirect.
         self.go('/japan/', redirects=0)
         self.assertEqual(self.s.status, 200)
-
-    def test_legacy_redirect(self):
-        # enable legacy redirects.
-        config.set(missing_repo_redirect_enabled=True)
-        self.s.go('http://%s/?subdomain=japan' % self.hostport,
-                  redirects=0)
-        self.assertEqual(self.s.status, 301)
-        self.assertEqual(self.s.headers['location'],
-                         'http://google.org/personfinder/japan/')
-
-        self.s.go('http://%s/feeds/person/create?full_name=foo&subdomain=japan'
-                  % self.hostport, redirects=0)
-        self.assertEqual(self.s.status, 301)
-        self.assertEqual(
-            self.s.headers['location'],
-            'http://google.org/personfinder/japan/feeds/person/create'
-            '?full_name=foo')
-
-        # disable legacy redirects, which lands us on main.
-        config.set(missing_repo_redirect_enabled=False)
-        self.s.go('http://%s/?subdomain=japan' % self.hostport,
-                  redirects=0)
-        self.assertEqual(self.s.status, 200)
-        # we land in the same bad old place
-        self.assertEqual(self.s.url,
-                         'http://%s/?subdomain=japan' % self.hostport)
 
     def test_create_and_seek_with_nondefault_charset(self):
         """Follow the basic create/seek flow with non-default charset
