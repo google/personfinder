@@ -41,6 +41,7 @@ class Handler(BaseHandler):
         view_config_json = dict(
                 (name, encoder.encode(value))
                 for name, value in view_config.iteritems())
+        
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
@@ -54,6 +55,7 @@ class Handler(BaseHandler):
                     repo_options=repo_options,
                     view_config=view_config,
                     view_config_json=view_config_json,
+                    config=config,
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
