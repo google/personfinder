@@ -90,7 +90,6 @@
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
     $('repo_titles').value = JSON.stringify(languages_to_titles);
-
     return true;
   }
 
@@ -707,8 +706,14 @@ for (var id_num = 0; id_num < table_ids.length; id_num++) {
 	  </tr>
 	</table>
 	<p>
-	  <a href="JavaScript:void(0);" onclick="add_language()">Add another Language</a>
+	  <a href="JavaScript:void(0);" onclick="add_language('start_page_custom_htmls')">Add another Language</a>
 	</p>
+       <!-- Aggregates the above forms into one form for ease of parsing -->
+       <input name="language_menu_options" id="language_menu_options"
+	      value="{{view_config_json.language_menu_options}}"
+	      type="hidden" />
+       <input name="repo_start_page_messages" id="repo_start_page_messages"
+	      value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
 	<!--
             <textarea name="start_page_custom_htmls"
             id="start_page_custom_htmls" rows=10 cols=80
