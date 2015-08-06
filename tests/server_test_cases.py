@@ -3084,7 +3084,7 @@ _read_profile_url2</pfif:profile_urls>
             '</request>')
 
         # Search request which matches a person record.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=good_request_data, type='application/xml')
         assert self.s.status == 200
         expected = (
@@ -3103,7 +3103,7 @@ _read_profile_url2</pfif:profile_urls>
         assert expected == doc.content, text_diff(expected, doc.content)
 
         # Search request which matches no person records.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_no_result, type='application/xml')
         assert self.s.status == 200
         expected = (
@@ -3117,21 +3117,21 @@ _read_profile_url2</pfif:profile_urls>
                 'accuracy of this data google.org/personfinder/global/tos.html'
                 '</message_text>\n'
             '</response>\n')
-        assert expected == doc.content, text_diff(expected, actual)
+        assert expected == doc.content, text_diff(expected, doc.content)
 
         # The text doesn't begin with "Search".
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_bad_text, type='application/xml')
         assert self.s.status == 200
         expected = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
-            '  <message_text>Usage: Search John</message_text>\n'
+            '  <message_text>Usage: &quot;Search John&quot;</message_text>\n'
             '</response>\n')
-        assert expected == doc.content, text_diff(expected, actual)
+        assert expected == doc.content, text_diff(expected, doc.content)
 
         # The receiver phone number is not associated with a repository.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_unknown_number,
                       type='application/xml')
         assert self.s.status == 400
@@ -5936,6 +5936,13 @@ class ConfigTests(TestsBase):
         config.cache.enable(False)
         self.go('/haiti?lang=en&flush=config')
 
+    def get_admin_page_error_message(self):
+        error_div = self.s.doc.first('div', class_='error')
+        if error_div:
+            return 'Error message: %s' % error_div.text
+        else:
+            return 'Whole page HTML:\n%s' % self.s.doc.content
+
     def test_config_cache_enabling(self):
         # The tests below flush the resource cache so that the effects of
         # the config cache become visible for testing.
@@ -6118,7 +6125,7 @@ class ConfigTests(TestsBase):
     def test_global_admin_page(self):
         # Load the global administration page.
         doc = self.go_as_admin('/global/admin')
-        self.assertEquals(self.s.status, 200)
+        assert self.s.status == 200
 
         # Change some settings.
         settings_form = doc.first('form', id='save_global')
@@ -6126,19 +6133,17 @@ class ConfigTests(TestsBase):
             sms_number_to_repo=
                 '{"+198765432109": "haiti", "+8101234567890": "japan"}'
         )
-        self.assertEquals(self.s.status, 200)
+        assert self.s.status == 200, self.get_admin_page_error_message()
 
         # Reopen the admin page and check if the change took effect on the page.
         doc = self.go_as_admin('/global/admin')
-        self.assertEquals(self.s.status, 200)
-        self.assertEquals(
-            simplejson.loads(
-                doc.first('textarea', id='sms_number_to_repo').text),
-            {'+198765432109': 'haiti', '+8101234567890': 'japan'})
+        assert self.s.status == 200
+        assert (simplejson.loads(
+                    doc.first('textarea', id='sms_number_to_repo').text) ==
+                {'+198765432109': 'haiti', '+8101234567890': 'japan'})
 
         # Also check if the change took effect in the config.
-        self.assertEquals(
-            config.get('sms_number_to_repo'),
+        assert (config.get('sms_number_to_repo') ==
             {'+198765432109': 'haiti', '+8101234567890': 'japan'})
 
         # Change settings again and make sure they took effect.
@@ -6147,9 +6152,8 @@ class ConfigTests(TestsBase):
             sms_number_to_repo=
                 '{"+198765432109": "test", "+8101234567890": "japan"}'
         )
-        self.assertEquals(self.s.status, 200)
-        self.assertEquals(
-            config.get('sms_number_to_repo'),
+        assert self.s.status == 200, self.get_admin_page_error_message()
+        assert (config.get('sms_number_to_repo') ==
             {'+198765432109': 'test', '+8101234567890': 'japan'})
 
     def test_deactivation(self):
