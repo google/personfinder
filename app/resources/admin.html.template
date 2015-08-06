@@ -162,32 +162,18 @@
 
     var STARTPAGES = {{view_config_json.start_page_custom_htmls|safe|default:'[]'}};
     var table_ids = ['language_table', 'start_page_custom_htmls'];
-
-/**
-* table_id: language_table -> TITLES
-* table_id: start_page_custom_htmls -> STARTPAGES
-*/
+    var tables = [TITLES, STARTPAGES];
 
     //foreach language, add that language and its title
 for (var id_num = 0; id_num < table_ids.length; id_num++) {
     var table_id = table_ids[id_num];
+    var table_name = tables[id_num];
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
       var row_number = add_language(table_id);
       var language = LANGUAGES[lang_num];
       $(table_id + '_language_selection_' + row_number).value = language;
-
-var textarea = '';//(乂д´)
-switch (id_num) {
-  case 0:
-    textarea = TITLES;
-    break;
-  case 1:
-    textarea = STARTPAGES;
-    break;
-}
-      
-       if (textarea[language] != undefined) {
-	 $(table_id + '_language_title_' + row_number).value = textarea[language];
+       if (table_name[language] != undefined) {
+	 $(table_id + '_language_title_' + row_number).value = table_name[language];
        }
      }
 }
