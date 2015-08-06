@@ -71,11 +71,11 @@
     var languages_to_titles = {};
     var languages_custom_messages = {};//ﾀﾞﾒ<(｀Д＠；)>ﾀﾞｧｧ!!!
     //there is a title row in the table, so the dropdowns are 1-indexed
-    for (var dropdown_index = 1; $(table_id + '_language_selection_' + dropdown_index) !=
+    for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
          null; dropdown_index++) {
       var language_code = $('repo_titles_language_selection_' + dropdown_index).value;
       var language_title = $('repo_titles_language_title_' + dropdown_index).value;
-      var custom_message = $('start_page_custom_hatmls_language_title' + dropdown_index).value;
+      var custom_message = $('start_page_custom_htmls_language_title_' + dropdown_index).value;
       if (language_code === 'unused') {
         continue;
       }
@@ -716,7 +716,7 @@
 
        <!-- Aggregates the above forms into one form for ease of parsing -->
 
-       <input name="repo_start_page_messages" id="start_page_custom_htmls"
+       <input name="start_page_custom_htmls" id="start_page_custom_htmls"
 	      value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
 
 <!--
