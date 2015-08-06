@@ -90,6 +90,7 @@
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
     $('repo_titles').value = JSON.stringify(languages_to_titles);
+    $('repo_start_page_messages').value = JSON.stringify(languages_to_titles);
     return true;
   }
 
@@ -98,9 +99,6 @@
    * Returns the number of the row that was added
    */
   function add_language(table_id) {
-
-    //var table = $('language_table');
-
     var table = $(table_id);
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
@@ -118,7 +116,7 @@
     //add the languages dropdown
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
-    languages.id = 'language_selection_' + iteration;
+    languages.id = table_id + '_language_selection_' + iteration;
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
     blank_option.text = "Choose a Language";
@@ -140,7 +138,7 @@
     var title_col = row.insertCell(cur_col++);
     var title = document.createElement('input');
     title.type = 'text';
-    title.id = 'language_title_' + iteration;
+    title.id = table_id + '_language_title_' + iteration;
     title_col.appendChild(title);
 
     return iteration;
@@ -162,7 +160,13 @@
     var LANGUAGES = {{view_config_json.language_menu_options|safe|default:'[]'}};
     var TITLES = {{view_config_json.repo_titles|safe|default:'[]'}};
 
+    var STARTPAGES = {{view_config_json.start_page_custom_htmls|safe|default:'[]'}};
     var table_ids = ['language_table', 'start_page_custom_htmls'];
+
+/**
+* table_id: language_table -> TITLES
+* table_id: start_page_custom_htmls -> STARTPAGES
+*/
 
     //foreach language, add that language and its title
 for (var id_num = 0; id_num < table_ids.length; id_num++) {
@@ -170,9 +174,20 @@ for (var id_num = 0; id_num < table_ids.length; id_num++) {
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
       var row_number = add_language(table_id);
       var language = LANGUAGES[lang_num];
-      $('language_selection_' + row_number).value = language;
-       if (TITLES[language] != undefined) {
-	 $('language_title_' + row_number).value = TITLES[language];
+      $(table_id + '_language_selection_' + row_number).value = language;
+
+var textarea = '';//(乂д´)
+switch (id_num) {
+  case 0:
+    textarea = TITLES;
+    break;
+  case 1:
+    textarea = STARTPAGES;
+    break;
+}
+      
+       if (textarea[language] != undefined) {
+	 $(table_id + '_language_title_' + row_number).value = textarea[language];
        }
      }
 }
