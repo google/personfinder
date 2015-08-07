@@ -109,13 +109,15 @@
     var cur_col = 0;
 
     //add the 'x'
-    var x_col = row.insertCell(cur_col++);
-    var x_link = document.createElement('a');
-    var x_link_text = document.createTextNode('x');
-    x_link.href = 'JavaScript:void(0);'
-    x_link.onclick = function() {remove_language(iteration)};
-    x_link.appendChild(x_link_text);
-    x_col.appendChild(x_link);
+    if (table_id == 'repo_titles') {
+      var x_col = row.insertCell(cur_col++);
+      var x_link = document.createElement('a');
+      var x_link_text = document.createTextNode('x');
+      x_link.href = 'JavaScript:void(0);'
+      x_link.onclick = function() {remove_language(iteration)};
+      x_link.appendChild(x_link_text);
+      x_col.appendChild(x_link);
+    }
 
     //add the languages dropdown
     var languages_col = row.insertCell(cur_col++);
@@ -148,14 +150,23 @@
     return iteration;
   }
 
+  function add_another_language() {
+    add_language('repo_titles');
+    add_language('start_page_custom_htmls');
+  }
+
   /* Hides a language from the user's view and marks it so that it will not be
    * submitted.
    */
   function remove_language(row_number) {
-    var table = $('repo_titles');
-    var row = table.rows[row_number];
-    row.hidden = true;
-    $('language_selection_' + row_number).value = 'unused';
+    var table_ids = ['repo_titles', 'start_page_custom_htmls'];
+    for (var id_num = 0; id_num < table_ids.length; id_num++) {
+      var table_name = table_ids[id_num];
+      var table = $(table_name + '_table');
+      var row = table.rows[row_number];
+      row.hidden = true;
+      $(table_name + '_language_selection_' + row_number).value = 'unused';
+    }
   }
 
   // Adds rows to the languages table for each language already in the database
@@ -434,7 +445,7 @@
 	   <th>Title</th>
 	 </tr>
        </table>
-       <p><a href="JavaScript:void(0);" onClick="add_language()">
+       <p><a href="JavaScript:void(0);" onClick="add_another_language()">
 	 Add Another Language
        </a></p>
        <!-- Aggregates the above forms into one form for ease of parsing -->
@@ -704,14 +715,10 @@
 
 	<table id="start_page_custom_htmls_table">
 	  <tr>
-	    <th><!--for the 'x' to remove a row--></th>
 	    <th>Language</th>
 	    <th>Custom Message</th>
 	  </tr>
 	</table>
-	<p>
-	  <a href="JavaScript:void(0);" onclick="add_language('start_page_custom_htmls')">Add another Language</a>
-	</p>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="start_page_custom_htmls" id="start_page_custom_htmls"
 	      value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
