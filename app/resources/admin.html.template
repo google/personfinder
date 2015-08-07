@@ -98,10 +98,12 @@
     return true;
   }
 
-function change_text(row) {
-var x = document.getElementById('repo_titles_language_selection_' + row).value;
-document.getElementById('start_page_custom_htmls_language_selected_' + row).innerHTML = x;
-}
+  function change_text(table_id, row_number) {
+    var language_code = document.getElementById('repo_titles_language_selection_' + row_number).value;
+console.log(language_code);
+console.log(row_number);
+    document.getElementById(table_id + '_language_selected_' + row_number).innerHTML = language_code;
+  }
 
   /* Adds a row to the languages table so that the user can add a new language
    * and give it a title.
@@ -128,7 +130,7 @@ document.getElementById('start_page_custom_htmls_language_selected_' + row).inne
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
     languages.id = table_id + '_language_selection_' + iteration;
-    languages.onchange = function() {change_text(iteration)};
+    languages.onchange = function() {change_text(table_id, iteration)};
 
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
@@ -157,26 +159,26 @@ document.getElementById('start_page_custom_htmls_language_selected_' + row).inne
     return iteration;
   }
 
-function add_language_span(table_id, language) {
-  var table = $(table_id + '_table');
-  iteration = table.rows.length;
-  var row = table.insertRow(iteration);
-  var cur_col = 0;
+  function add_language_span(table_id, language) {
+    var table = $(table_id + '_table');
+    iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+    var cur_col = 0;
   
-  var selected_language_col = row.insertCell(cur_col++);
-  var selected_language = document.createElement('span');
-  var selected_language_text = document.createTextNode(language);
-  selected_language.id = table_id + '_language_selected_' + iteration;
-  selected_language.appendChild(selected_language_text);
-  selected_language_col.appendChild(selected_language);
+    var selected_language_col = row.insertCell(cur_col++);
+    var selected_language = document.createElement('span');
+    var selected_language_text = document.createTextNode(language);
+    selected_language.id = table_id + '_language_selected_' + iteration;
+    selected_language.appendChild(selected_language_text);
+    selected_language_col.appendChild(selected_language);
   
-  var title_col = row.insertCell(cur_col++);
-  var title = document.createElement('input');
-  title.type = 'text';
-  title.id = table_id + '_language_value_' + iteration;
-  title_col.appendChild(title);
-  return iteration;
-}
+    var title_col = row.insertCell(cur_col++);
+    var title = document.createElement('input');
+    title.type = 'text';
+    title.id = table_id + '_language_value_' + iteration;
+    title_col.appendChild(title);
+    return iteration; 
+  }
 
   function add_another_language() {
     add_language('repo_titles');
@@ -193,11 +195,11 @@ function add_language_span(table_id, language) {
       var table = $(table_name + '_table');
       var row = table.rows[row_number];
       row.hidden = true;
-if (table_name == 'repo_titles') {
-      $(table_name + '_language_selection_' + row_number).value = 'unused';
-} else {
-$(table_name + '_language_selected_' + row_number).value = 'unused';
-}
+      if (table_name == 'repo_titles') {
+        $(table_name + '_language_selection_' + row_number).value = 'unused';
+      } else {
+        $(table_name + '_language_selected_' + row_number).value = 'unused';
+      }
     }
   }
 
