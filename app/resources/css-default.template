@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  background: #f2f0f0;
   font-family: arial, sans-serif;
   font-size: 13px;
   margin: auto;
@@ -101,6 +102,22 @@ pre {  /* code samples */
   font-size: 12px;
 }
 
+.logo {
+  display: flex;
+  font-size: 40px;
+  font-weight: strong;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo-blue {
+  color: #4285f4;
+}
+
+.logo-green {
+  color: #15a04a;
+}
+
 /* Language menu */
 
 div.languages {
@@ -133,6 +150,10 @@ input {
   font-size: 13px;
   margin-bottom: .5em;
   max-width: 100%;
+}
+
+.input {
+  margin-bottom: .5em;
 }
 
 textarea {
@@ -203,18 +224,46 @@ over 10% in penetration ratio.
 */
 
 .fields-table {
-  background: #e8e8e8;
   padding: 4px;
 }
 
 .fields-table .section {
-  padding: 4px;
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 4px solid #e6e6e6;
+  padding: 10px 4px 4px;
+}
+
+.fields-table .section h1 {
+  font-size: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fields-table .section h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.fields-table .section .links {
+  border-style: none;  
+}
+
+.fields-table .section .links a {
+  color: #4285f4;
+  display: block;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.fields-table .section textarea {
+  width: 100%;
 }
 
 .fields-table .field {
   clear: both;
+  display: flex;
   margin-{{start}}: 0;
 }
 
@@ -222,16 +271,15 @@ over 10% in penetration ratio.
   display: block; /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
-  max-width: 160px;
+  padding-top: 5px;
   text-align: right;
-  width: 100%;
+  width: 45%;
 }
 
 .fields-table .value {
   display: block;  /* to make float/width attribute work */
   float: {{end}};
-  max-width: 160px;
-  width: 100%;
+  width: 50%;
 }
 
 .fields-table .long-text-input {
@@ -414,15 +462,24 @@ td.submit {
 /* View page */
 
 .view .person {
-  background: #e8e8e8;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
 }
 
 .view .person .section {
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 2px solid #e6e6e6;
 }
 
-.view .person .value {
+.view .person .section .centered-photo {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.view .person .section .links {
+  border-style: none;
+}
+
+.view .person .label {
   font-weight: bold;
 }
 
@@ -437,14 +494,19 @@ img.icon {
 }
 
 .view.note {
-  margin: 1em 0;
-  background: #e8e8e8;
-  padding: 4px;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  margin-bottom: 10px;
 }
 
 .view.note .source {
+  background: #e6e6e6;
   padding-{{start}}: 4px;
-  color: #888;
+}
+
+.view .note .report-spam {
+  float: right;
+  padding-right: 20px;  
 }
 
 .self-notes .view.note.duplicate {
@@ -467,7 +529,7 @@ img.icon {
 }
 
 .note .contents {
-  background: #f8f8f8;
+  background: #ffffff;
   padding: 4px;
   margin-top: 4px;
 }
@@ -532,12 +594,29 @@ label.option {
 }
 
 .create .fields-table {
-  background: #c0d0ff;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
 }
 
 .create .fields-table .section {
-  background: #f0f4ff;
-  border-bottom: 4px solid #c0d0ff;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.create .fields-table .subsection {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.create .fields-table h1 {
+  font-size: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.create .fields-table h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
 .create .fields-table .photo .radio {
@@ -564,12 +643,11 @@ label.option {
   display: block;
   float: {{start}};
   width: 30px;
+  margin-left: 30px;
 }
 
 .create .fields-table .profile .value {
   display: block;
-  float: {{start}};
-  text-align: {{end}};
   width: 220px;
 }
 
@@ -577,6 +655,17 @@ label.option {
   display: block;
   float: {{end}};
   width: 70px;
+}
+
+.create .fields-table .submit input {
+  background: #4285f4;
+  border-radius: 28px;
+  border-style: none;
+  color: white;
+  display: block;
+  font-size: 20px;
+  margin: 10px auto;
+  min-width: 50%;
 }
 
 .source .instructions {

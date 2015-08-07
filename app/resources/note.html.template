@@ -14,14 +14,15 @@
 
 <div class="view note{% if note.linked_person_record_id %} duplicate{% endif %}">
 
-<div class="source">
-  {% trans "Posted by" %}
-  {% if note.author_name %}
-    <span class="author">{{note.author_name}}</span>
-  {% else %}
-    <span class="author unknown">{% trans "(unknown)" %}</span>
-  {% endif %}
-  {% trans "on" %}
+<div class="source header">
+  <div>
+    {% trans "Posted By:" %}
+    {% if note.author_name %}
+      <span class="author">{{note.author_name}}</span>
+    {% else %}
+      <span class="author unknown">{% trans "(unknown)" %}</span>
+    {% endif %}
+  </div>
   <span class="time">{{note.source_date_local|date:"DATETIME_FORMAT"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
