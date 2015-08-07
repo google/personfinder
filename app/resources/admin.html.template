@@ -100,7 +100,7 @@
 
 function change_text(row) {
 var x = document.getElementById('repo_titles_language_selection_' + row).value;
-document.getElementById('');//http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onchange
+document.getElementById('start_page_custom_htmls_language_selected_' + row).innerHTML = x;
 }
 
   /* Adds a row to the languages table so that the user can add a new language
@@ -193,7 +193,11 @@ function add_language_span(table_id, language) {
       var table = $(table_name + '_table');
       var row = table.rows[row_number];
       row.hidden = true;
+if (table_name == 'repo_titles') {
       $(table_name + '_language_selection_' + row_number).value = 'unused';
+} else {
+$(table_name + '_language_selected_' + row_number).value = 'unused';
+}
     }
   }
 
