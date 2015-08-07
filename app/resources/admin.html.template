@@ -69,13 +69,13 @@
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
     var languages_to_titles = {};
-    var languages_custom_messages = {};//ﾀﾞﾒ<(｀Д＠；)>ﾀﾞｧｧ!!!
+    var languages_custom_messages = {};
     //there is a title row in the table, so the dropdowns are 1-indexed
     for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
          null; dropdown_index++) {
       var language_code = $('repo_titles_language_selection_' + dropdown_index).value;
-      var language_title = $('repo_titles_language_title_' + dropdown_index).value;
-      var custom_message = $('start_page_custom_htmls_language_title_' + dropdown_index).value;
+      var language_title = $('repo_titles_language_value_' + dropdown_index).value;
+      var custom_message = $('start_page_custom_htmls_language_value_' + dropdown_index).value;
       if (language_code === 'unused') {
         continue;
       }
@@ -142,7 +142,7 @@
     var title_col = row.insertCell(cur_col++);
     var title = document.createElement('input');
     title.type = 'text';
-    title.id = table_id + '_language_title_' + iteration;
+    title.id = table_id + '_language_value_' + iteration;
     title_col.appendChild(title);
 
     return iteration;
@@ -175,7 +175,7 @@
         var language = LANGUAGES[lang_num];
         $(table_id + '_language_selection_' + row_number).value = language;
         if (table_name[language] != undefined) {
-	  $(table_id + '_language_title_' + row_number).value = table_name[language];
+	  $(table_id + '_language_value_' + row_number).value = table_name[language];
         }
       }
     }
@@ -426,12 +426,8 @@
 	 Available Languages (they will appear in the order shown here; the first
 	 one will be default):
        </label>
-<!--
-       <table id="language_table">
--->
 
-<table id="repo_titles_table">
-
+       <table id="repo_titles_table">
 	 <tr>
 	   <th><!--for the 'x' to remove a row--></th>
 	   <th>Language</th>
@@ -708,7 +704,7 @@
 
 	<table id="start_page_custom_htmls_table">
 	  <tr>
-	    <th></th>
+	    <th><!--for the 'x' to remove a row--></th>
 	    <th>Language</th>
 	    <th>Custom Message</th>
 	  </tr>
@@ -716,17 +712,9 @@
 	<p>
 	  <a href="JavaScript:void(0);" onclick="add_language('start_page_custom_htmls')">Add another Language</a>
 	</p>
-
        <!-- Aggregates the above forms into one form for ease of parsing -->
-
        <input name="start_page_custom_htmls" id="start_page_custom_htmls"
 	      value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
-
-<!--
-            <textarea name="start_page_custom_htmls"
-            id="start_page_custom_htmls" rows=10 cols=80
-            >{{view_config_json.start_page_custom_htmls}}</textarea>
--->
 
       </div>
     </div>
