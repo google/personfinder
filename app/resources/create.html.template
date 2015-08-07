@@ -31,169 +31,161 @@
 
       <div class="column start">
         <div class="fields-table person">
-
-          <h2>
-            {% ifequal params.role "provide" %}
-              {% trans "Identify who you have information about" %}
-            {% else %}
-              {% trans "Identify who you are looking for" %}
-            {% endifequal %}
-          </h2>
-
+          <div class="header section">
+            <h1>
+              {% ifequal params.role "provide" %}
+                {% trans "Who do you have information about?" %}
+              {% else %}
+                {% trans "Who are you looking for?" %}
+              {% endifequal %}
+            </h1>
+          </div>
           <div class="name section">
-            <h3 class="mandatory">
-              {% trans "Name (required)" %}
-            </h3>
-            <div class="hint">
-              {% trans "What is this person's name?" %}
-            </div>
-            {% if config.use_family_name and config.family_name_first %}
-              <div class="field">
-                <div class="label">
-                  <label for="family_name" class="mandatory">
-                    {% trans "Family name" %}:
-                  </label>
-                </div>
-                <div class="value">
-                  <input name="family_name" id="family_name"
-                      class="medium-text-input"
-                      value="{{params.family_name}}"
-                      autocomplete="off">
-                </div>
+            <h2>
+              Identifying Information
+            </h2>
+
+            <div class="subsection">
+              <h3>
+                {% trans "Name" %}
+              </h3>
+              <div class="hint">
+                {% trans "What is this person's name?" %}
               </div>
-            {% endif %}
-            <div class="field">
-              <span class="label">
-                <label for="given_name" class="mandatory">
-                  {% if config.use_family_name %}
-                    {% trans "Given name" %}:
-                  {% else %}
-                    {% trans "Name" %}:
-                  {% endif %}
-                </label>
-              </span>
-              <span class="value">
-                <input name="given_name" id="given_name"
-                    class="medium-text-input"
-                    value="{{params.given_name}}"
-                    autocomplete="off">
-              </span>
-            </div>
-            {% if config.use_family_name and not config.family_name_first %}
-              <div class="field">
-                <span class="label">
-                  <label for="family_name" class="mandatory">
-                    {% trans "Family name" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="family_name" id="family_name"
-                      class="medium-text-input"
-                      value="{{params.family_name}}"
-                      autocomplete="off">
-                </span>
-              </div>
-            {% endif %}
-            {% if config.use_alternate_names %}
               {% if config.use_family_name and config.family_name_first %}
                 <div class="field">
-                  <span class="label">
-                    <label for="alternate_family_names">
-                      {% trans "Alternate family names" %}:
+                  <div class="label">
+                    <label for="family_name" class="mandatory">
+                      {% trans "Family name (required)" %}:
                     </label>
-                  </span>
-                  <span class="value">
-                    <input name="alternate_family_names"
-                        id="alternate_family_names"
+                  </div>
+                  <div class="value">
+                    <input name="family_name" id="family_name"
                         class="medium-text-input"
-                        value="{{params.alternate_family_names}}"
+                        value="{{params.family_name}}"
                         autocomplete="off">
-                  </span>
+                  </div>
                 </div>
               {% endif %}
               <div class="field">
                 <span class="label">
-                  <label for="alternate_given_names">
+                  <label for="given_name" class="mandatory">
                     {% if config.use_family_name %}
-                      {% trans "Alternate given names" %}:
+                      {% trans "Given name (required)" %}:
                     {% else %}
-                      {% trans "Alternate names" %}:
+                      {% trans "Name" %}:
                     {% endif %}
                   </label>
                 </span>
                 <span class="value">
-                  <input name="alternate_given_names"
-                      id="alternate_given_names"
+                  <input name="given_name" id="given_name"
                       class="medium-text-input"
-                      value="{{params.alternate_given_names}}"
+                      value="{{params.given_name}}"
                       autocomplete="off">
                 </span>
               </div>
               {% if config.use_family_name and not config.family_name_first %}
                 <div class="field">
                   <span class="label">
-                    <label for="alternate_family_names">
-                      {% trans "Alternate family names" %}:
+                    <label for="family_name" class="mandatory">
+                      {% trans "Family name" %}:
                     </label>
                   </span>
                   <span class="value">
-                    <input name="alternate_family_names"
-                        id="alternate_family_names"
+                    <input name="family_name" id="family_name"
                         class="medium-text-input"
-                        value="{{params.alternate_family_names}}"
+                        value="{{params.family_name}}"
                         autocomplete="off">
                   </span>
                 </div>
               {% endif %}
-            {% endif %}
-            <div class="end-multi-columns"></div>
-          </div>
+              {% if config.use_alternate_names %}
+                {% if config.use_family_name and config.family_name_first %}
+                  <div class="field">
+                    <span class="label">
+                      <label for="alternate_family_names">
+                        {% trans "Alternate family names" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="alternate_family_names"
+                          id="alternate_family_names"
+                          class="medium-text-input"
+                          value="{{params.alternate_family_names}}"
+                          autocomplete="off">
+                    </span>
+                  </div>
+                {% endif %}
+                <div class="field">
+                  <span class="label">
+                    <label for="alternate_given_names">
+                      {% if config.use_family_name %}
+                        {% trans "Alternate given names" %}:
+                      {% else %}
+                        {% trans "Alternate names" %}:
+                      {% endif %}
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="alternate_given_names"
+                        id="alternate_given_names"
+                        class="medium-text-input"
+                        value="{{params.alternate_given_names}}"
+                        autocomplete="off">
+                  </span>
+                </div>
+                {% if config.use_family_name and not config.family_name_first %}
+                  <div class="field">
+                    <span class="label">
+                      <label for="alternate_family_names">
+                        {% trans "Alternate family names" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="alternate_family_names"
+                          id="alternate_family_names"
+                          class="medium-text-input"
+                          value="{{params.alternate_family_names}}"
+                          autocomplete="off">
+                    </span>
+                  </div>
+                {% endif %}
+              {% endif %}
 
-          <div class="physical section">
-            <h3>
-              {% trans "Physical characteristics" %}
-            </h3>
-            <div class="hint">
-              {% trans "Describe the physical characteristics of this person." %}
-            </div>
-            <div class="field">
-              <span class="label">
-                <label for="sex">{% trans "Sex" %}:</label>
-              </span>
-              <span class="value">
-                <select name="sex" id="sex">
-                  <option value="" selected></option>
-                  <option value="female">{% trans "female" %}</option>
-                  <option value="male">{% trans "male" %}</option>
-                  <option value="other">{% trans "other" %}</option>
-                </select>
-              </span>
-            </div>
-            <div class="field">
-              <span class="label">
-                <label for="age">{% trans "Age" %}:</label>
-              </span>
-              <span class="value">
-                <input name="age" id="age"
-                    class="short-text-input"
-                    autocomplete="off">
-              </span>
-            </div>
-            <div class="field">
-              <div class="value hint">
-                {% trans "Number or range (e.g. 20-30)" %}
+              <div class="field">
+                <span class="label">
+                  <label for="sex">{% trans "Sex" %}:</label>
+                </span>
+                <span class="value">
+                  <select name="sex" id="sex" class="input">
+                    <option value="" selected></option>
+                    <option value="female">{% trans "female" %}</option>
+                    <option value="male">{% trans "male" %}</option>
+                    <option value="other">{% trans "other" %}</option>
+                  </select>
+                </span>
               </div>
+              <div class="field">
+                <span class="label">
+                  <label for="age">{% trans "Age" %}:</label>
+                </span>
+                <span class="value">
+                  <input name="age" id="age"
+                      class="short-text-input"
+                      autocomplete="off">
+                  <div class="value hint">
+                    {% trans "Number or range (e.g. 20-30)" %}
+                  </div>
+                </span>
+              </div>
+              <div class="end-multi-columns"></div>
             </div>
-            <div class="end-multi-columns"></div>
           </div>
 
           <div class="address section">
-            <h3>
+            <h2>
               {% trans "Home Address" %}
-            </h3>
-            <div class="hint">
-              {% trans "Where is this person from?" %}
-            </div>
+            </h2>
               <div class="field">
                 <span class="label">
                   <label for="home_street">
@@ -205,12 +197,10 @@
                       class="medium-text-input"
                       value="{{params.home_street}}"
                       autocomplete="off">
+                  <div class="value hint">
+                    {% trans "Street name only, no number" %}
+                  </div>
                 </span>
-              </div>
-              <div class="field">
-                <div class="value hint">
-                  {% trans "Street name only, no number" %}
-                </div>
               </div>
               <div class="field">
                 <span class="label">
@@ -277,9 +267,9 @@
           </div>
 
           <div class="description section">
-            <h3><label for="description">
+            <h2><label for="description">
               {% trans "Description" %}
-            </label></h3>
+            </label></h2>
             <div class="hint">
               {% trans "Describe how to identify this person." %}
             </div>
@@ -293,9 +283,9 @@
 
           {% if env.enable_photo_upload %}
             <div class="photo section">
-              <h3><label for="photo_url">
+              <h2><label for="photo_url">
                   {% trans "Photo" %}
-              </label></h3>
+              </label></h2>
               <div class="hint">
                 {% trans "If you have a photo of this person, upload it or enter its URL address." %}
               </div>
@@ -332,7 +322,7 @@
 
           {% if config.show_profile_entry and env.enable_javascript %}
             <div class="profile section">
-              <h3>{% trans "Profile Pages" %}</h3>
+              <h2>{% trans "Profile Pages" %}</h2>
               <div class="hint">
                 {% trans "Does this person have profile pages at other websites?" %}
               </div>
@@ -376,9 +366,9 @@
           {% endif %}
 
           <div class="expiry section">
-            <h3><label for="expiry_option">
+            <h2><label for="expiry_option">
                 {% trans "Expiry" %}
-            </label></h3>
+            </label></h2>
             <div class="hint">
               <div>
                 {% trans "When should this record disappear?" %}
@@ -402,9 +392,9 @@
           </div>
 
           <div class="source section">
-            <h3 class="mandatory">
-              {% trans "Source of this record (required)" %}
-            </h3>
+            <h2>
+              {% trans "Source of Record" %}
+            </h2>
             <div class="hint">
               {% trans "Where did this information come from?" %}
             </div>
@@ -445,7 +435,7 @@
               <span class="label">
                 <label for="author_name" class="mandatory"
                     id="author_name_original">
-                  {% trans "Your name" %}:
+                  {% trans "Your name (required)" %}:
                 </label>
                 {% if env.enable_javascript %}
                   <label for="author_name" class="mandatory"

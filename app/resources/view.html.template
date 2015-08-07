@@ -54,32 +54,31 @@
 
       <div class="column start">
         <div class="fields-table person">
+          <div class="header section">
+            <h1>{{person.full_name_list|first}}
+          </div>
           <div>
 
             <h2>
-              {% trans "Identifying information" %}
               {% if person.provider_name %}<br />
               ({% trans "Provided by:" %} {{person.provider_name}})
               {% endif %}
             </h2>
 
             <div class="name section">
-              <h3>{% trans "Name" %}</h3>
-              <div class="field">
-                <span class="label">{% trans "Full name" %}:</span>
-                <span class="value">{{person.full_name_list|join:"<br>"}}</span>
-              </div>
+              <h2>{% trans "Identifying Information" %}</h2>
+              {% if person.full_name_list|length > 2 %}
+                <div class="field">
+                  <span class="label">{% trans "Full name" %}:</span>
+                  <span class="value">{{person.full_name_list|join:"<br>"}}</span>
+                </div>
+              {% endif %}
               {% if config.use_alternate_names %}
                 <div class="field">
-                  <span class="label">{% trans "Alternate names" %}:</span>
+                  <span class="label">{% trans "Alternate Names" %}:</span>
                   <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                 </div>
               {% endif %}
-              <div class="end-multi-columns"></div>
-            </div>
-
-            <div class="physical section">
-              <h3>{% trans "Physical characteristics" %}</h3>
               <div class="field">
                 <span class="label">{% trans "Sex" %}:</span>
                 <span class="value">{{person.sex_text}}</span>
@@ -99,7 +98,7 @@
             </div>
 
             <div class="address section">
-              <h3>{% trans "Home address" %}</h3>
+              <h2>{% trans "Home Address" %}</h2>
               <div class="field">
                 <span class="label">{% trans "Street name" %}:</span>
                 <span class="value">{{person.home_street}}</span>
@@ -131,12 +130,10 @@
 
             {% if person.description %}
               <div class="description section">
-                <h3>{% trans "Description" %}</h3>
+                <h2>{% trans "Description" %}</h2>
                 <div class="field">
-                  <span>
-                    <textarea readonly="readonly" cols=40 rows=5
-                      >{{person.description}}</textarea>
-                  </span>
+                  <textarea readonly="readonly" rows=5
+                    >{{person.description}}</textarea>
                 </div>
                 <div class="end-multi-columns"></div>
               </div>
@@ -144,9 +141,9 @@
 
             {% if person.photo_url %}
               <div class="photo section">
-                <h3>{% trans "Photo" %}</h3>
+                <h2>{% trans "Photo" %}</h2>
                 <div class="field">
-                  <span>
+                  <span class="centered-photo">
                     <a href="{{person.photo_url_no_scheme}}">
                       <img src="{{person.photo_url_no_scheme}}"
                           class="photo" alt="[PHOTO]">
@@ -159,7 +156,7 @@
 
             {% if person.profile_pages %}
               <div class="profile section">
-                <h3>{% trans "Profile Pages" %}</h3>
+                <h2>{% trans "Profile Pages" %}</h2>
                 {% for profile_page in person.profile_pages %}
                   <div class="field">
                     <span class="label">
@@ -181,7 +178,7 @@
             {% endif %}
 
             <div class="source section">
-              <h3>{% trans "Source of this record" %}</h3>
+              <h2>{% trans "Source of this Record" %}</h2>
               <div class="field">
                 <span class="label">{% trans "Author's name" %}:</span>
                 <span class="value">{{person.author_name}}</span>
@@ -232,7 +229,8 @@
                   </span>
                   <span class="value">
                     {% if person.source_date %}
-                      {{person.source_date_local|date:"DATETIME_FORMAT"}}
+                      {{person.source_date_local|date:"DATE_FORMAT"}}<br/>
+                      {{person.source_date_local|date:"TIME_FORMAT"}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -247,7 +245,8 @@
                   </span>
                   <span class="value">
                     {% if person.expiry_date_local %}
-                      {{person.expiry_date_local|date:"DATETIME_FORMAT"}}
+                      {{person.expiry_date_local|date:"DATE_FORMAT"}}<br/>
+                      {{person.expiry_date_local|date:"TIME_FORMAT"}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -265,7 +264,7 @@
 
             {% if linked_person_info %}
               <div class="other section">
-                <h3>{% trans "Possible duplicates" %}</h3>
+                <h2>{% trans "Possible Duplicates" %}</h2>
                 {% for linked_person in linked_person_info %}
                   <div class="field">
                     <span>
@@ -290,55 +289,53 @@
             {% endif %}
 
           </div>
-
-          {% if env.enable_captcha and extend_url %}
-            {% if expiration_days %}
-              <div class="warning">
-                {% if expiration_days > 1 %}
-                  {% blocktrans %}
-                    Warning: this record will expire in less than {{expiration_days}} days.
+          <div class="links section">
+            {% if env.enable_captcha and extend_url %}
+              {% if expiration_days %}
+                <div class="warning">
+                  {% if expiration_days > 1 %}
+                    {% blocktrans %}
+                      Warning: this record will expire in less than {{expiration_days}} days.
+                    {% endblocktrans %}
+                  {% else %}
+                    {% blocktrans %}
+                      Warning: this record will expire in less than a day.
+                    {% endblocktrans %}
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="links section">
+                <a id="extend-btn" href={{extend_url}}>
+                  {% blocktrans %}Extend expiration date by {{extension_days}} days
                   {% endblocktrans %}
-                {% else %}
-                  {% blocktrans %}
-                    Warning: this record will expire in less than a day.
-                  {% endblocktrans %}
-                {% endif %}
+                </a>
               </div>
             {% endif %}
-            <div>
-              <input type="button"
-                value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
-                onclick="javascript:location.href='{{extend_url}}'"
-                id="extend_btn">
-            </div>
-          {% endif %}
 
-          {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Subscribe to updates about this person" %}"
-                onclick="javascript:location.href='{{subscribe_url}}'"
-                id="subscribe_btn">
-            </div>
-          {% endif %}
+            {% if env.enable_captcha %}
+              <div class="links section">
+                <a id="subscribe_btn" href={{subscribe_url}}>
+                  {% trans "Subscribe to updates about this person" %}
+                </a>
+              </div>
+            {% endif %}
 
-          {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Delete this record" %}"
-                onclick="javascript:location.href='{{delete_url}}'"
-                id="delete_btn">
-            </div>
-          {% endif %}
+            {% if env.enable_captcha %}
+              <div class="links section">
+                <a id="delete-btn" href={{delete_url}}>
+                  {% trans "Delete this record" %}
+                </a>
+              </div>
+            {% endif %}
 
-          {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
-            <div>
-              <input type="button"
-                value="{% trans "Disable notes on this record" %}"
-                onclick="javascript:location.href='{{disable_notes_url}}'"
-                id="disable_notes_btn">
-            </div>
-          {% endif %}
+            {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
+              <div class="links section">
+              <a id="disable_notes_btn" href={{disable_notes_url}}>
+                {% trans "Disable notes on this record" %}
+              </a>
+              </div>
+            {% endif %}
+          </div>
 
         </div>
         <p>

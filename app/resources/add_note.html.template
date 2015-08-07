@@ -18,35 +18,116 @@
 {% endif %}
 
 <div class="fields-table note" role="complementary">
-  <h2>
-    {% if not markdup %}
-      {% trans "Tell us the status of this person" %}
-    {% else %}
-      {% trans "Mark records as duplicate" %}
-    {% endif %}
-  </h2>
+  <div class="header section">
+    <h1>
+      {% if not markdup %}
+        {% trans "Status of Person" %}
+      {% else %}
+        {% trans "Mark records as duplicate" %}
+      {% endif %}
+    </h1>
+  </div>
   {% if not markdup %}
-    <div class="status section">
-      <h3>
-        {% trans "Status of this person" %}
-      </h3>
-      <div class="field">
-        <select id="status" name="status">
-          {% for status in env.status_options %}
-            <option value="{{status.value}}"
-                {% ifequal params.status status.value %}
-                  selected='selected'
-                {% endifequal %}>
-              {{status.text}}
-            </option>
-          {% endfor %}
-        </select>
+    <div class="section">
+      <h2>Status</h2>
+      <div class="status subsection">
+        <h3>
+          {% trans "Status of this person:" %}
+        </h3>
+        <div class="field">
+          <select id="status" name="status">
+            {% for status in env.status_options %}
+              <option value="{{status.value}}"
+                  {% ifequal params.status status.value %}
+                    selected='selected'
+                  {% endifequal %}>
+                {{status.text}}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="end-multi-columns"></div>
       </div>
-      <div class="end-multi-columns"></div>
+
+      <div class="author_made_contact subsection">
+        <h3 class="mandatory">
+          {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
+        </h3>
+        <div class="field">
+          <input type="radio" name="author_made_contact"
+              value="yes" id="author_made_contact_yes"
+              onchange="update_contact()"
+              onclick="update_contact()"
+              {% ifequal params.author_made_contact "yes" %}
+                checked="checked"
+              {% endifequal %}>
+          <label class="option" for="author_made_contact_yes">
+            {% trans "Yes" %}
+          </label>
+        </div>
+        <div class="field">
+          <input type="radio" name="author_made_contact"
+              value="no" id="author_made_contact_no"
+              onchange="update_contact()"
+              onclick="update_contact()"
+              {% ifnotequal params.author_made_contact "yes" %}
+                checked="checked"
+              {% endifnotequal %}>
+          <label class="option" for="author_made_contact_no">
+            {% trans "No" %}
+          </label>
+        </div>
+        <div class="end-multi-columns"></div>
+      </div>
+
+      <div class="location subsection">
+        <h3>
+          {% trans "Last known location" %}
+        </h3>
+        <div class="hint">
+          {% if env.enable_javascript and env.maps_api_key %}
+            {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
+          {% else %}
+            {% trans "Type an address." %}
+          {% endif %}
+        </div>
+        <div class="field">
+            <textarea name="last_known_location"
+                id="clickable_map_location_field"
+                class="long-text-input"
+                rows=2>{{params.last_known_location}}</textarea>
+        </div>
+        <div class="end-multi-columns"></div>
+        {% if env.enable_javascript and env.maps_api_key %}
+          <div class="field map-container">
+            <div id="clickable_map_show_link">
+              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                {% trans "Show Map" %}</a>
+            </div>
+            <div id="clickable_map_hide_link" style="display: none">
+              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                {% trans "Hide Map" %}</a>
+              &nbsp;&nbsp;
+              <a href='#' id="switch_to_latlng_link"
+                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                {% trans "Switch to lat/long" %}</a>
+              <a href='#' id="switch_to_address_link" style="display: none"
+                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                {% trans "Switch to address" %}</a>
+            </div>
+            <div id="clickable_map" class="map" style="display: none"></div>
+          </div>
+          <div class="end-multi-columns"></div>
+        {% endif %}
+      </div>
     </div>
   {% endif %}
-  <div class="mandatory text section">
-    <h3>
+
+
+
+  <div class="section">
+    <h2>Message</h2>
+    <h3 class="mandatory text">
       {% trans "Message (required)" %}
     </h3>
     <div class="hint">
@@ -63,52 +144,13 @@
     </div>
     <div class="end-multi-columns"></div>
   </div>
+  
   {% if not markdup %}
-    <div class="location section">
-      <h3>
-        {% trans "Last known location" %}
-      </h3>
-      <div class="hint">
-        {% if env.enable_javascript and env.maps_api_key %}
-          {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
-        {% else %}
-          {% trans "Type an address." %}
-        {% endif %}
-      </div>
-      <div class="field">
-          <textarea name="last_known_location"
-              id="clickable_map_location_field"
-              class="long-text-input"
-              rows=2>{{params.last_known_location}}</textarea>
-      </div>
-      <div class="end-multi-columns"></div>
-      {% if env.enable_javascript and env.maps_api_key %}
-        <div class="field map-container">
-          <div id="clickable_map_show_link">
-            <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-              {% trans "Show Map" %}</a>
-          </div>
-          <div id="clickable_map_hide_link" style="display: none">
-            <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-              {% trans "Hide Map" %}</a>
-            &nbsp;&nbsp;
-            <a href='#' id="switch_to_latlng_link"
-                onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-              {% trans "Switch to lat/long" %}</a>
-            <a href='#' id="switch_to_address_link" style="display: none"
-                onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-              {% trans "Switch to address" %}</a>
-          </div>
-          <div id="clickable_map" class="map" style="display: none"></div>
-        </div>
-        <div class="end-multi-columns"></div>
-      {% endif %}
-    </div>
+
+    
     {% if env.enable_photo_upload %}
       <div class="photo section">
-        <h3><label for="note_photo_url">
-            {% trans "Photo" %}
-        </label></h3>
+        <h2>Photo</h2>
         <div class="hint">
           {% trans "To attach a photo to this note, upload it or enter its URL." %}
         </div>
@@ -144,36 +186,9 @@
         <div class="end-multi-columns"></div>
       </div>
     {% endif %}
-    <div class="author_made_contact section">
-      <h3 class="mandatory">
-        {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
-      </h3>
-      <div class="field">
-        <input type="radio" name="author_made_contact"
-            value="yes" id="author_made_contact_yes"
-            onchange="update_contact()"
-            onclick="update_contact()"
-            {% ifequal params.author_made_contact "yes" %}
-              checked="checked"
-            {% endifequal %}>
-        <label class="option" for="author_made_contact_yes">
-          {% trans "Yes" %}
-        </label>
-      </div>
-      <div class="field">
-        <input type="radio" name="author_made_contact"
-            value="no" id="author_made_contact_no"
-            onchange="update_contact()"
-            onclick="update_contact()"
-            {% ifnotequal params.author_made_contact "yes" %}
-              checked="checked"
-            {% endifnotequal %}>
-        <label class="option" for="author_made_contact_no">
-          {% trans "No" %}
-        </label>
-      </div>
-      <div class="end-multi-columns"></div>
-    </div>
+
+
+    
     <div class="contact section" id="contact_row"
         {# Always shows this section when Javascript is #}
         {# disabled. #}
@@ -218,9 +233,7 @@
   {% endif %}
   {% if not params.create_mode %}
     <div class="source section">
-      <h3 class="mandatory">
-        {% trans "About you (required)" %}
-      </h3>
+      <h2>About You</h2>
       <div class="hint">
         {% trans "How others who are interested in this person can contact you" %}
       </div>
@@ -228,7 +241,7 @@
         <span class="label">
           <label for="author_name" class="mandatory"
               id="author_name_original">
-            {% trans "Your name" %}:
+            {% trans "Your name (required)" %}:
           </label>
         </span>
         <span class="value">
@@ -274,7 +287,7 @@
         {% if markdup %}
           {% trans "Yes, these are the same person" %}
         {% else %}
-          {% trans "Save this record" %}
+          {% trans "Save Record" %}
         {% endif %}{% endspaceless %}"
       {% if env.enable_javascript %}
         onclick="return validate_fields()"
