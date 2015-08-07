@@ -103,7 +103,7 @@
    * Returns the number of the row that was added
    */
   function add_language(table_id) {
-    var table = $(table_id);
+    var table = $(table_id + '_table');
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
     var cur_col = 0;
@@ -169,6 +169,7 @@
     for (var id_num = 0; id_num < table_ids.length; id_num++) {
       var table_id = table_ids[id_num];
       var table_name = configsan[table_id];
+
       for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
         var row_number = add_language(table_id);
         var language = LANGUAGES[lang_num];
@@ -428,7 +429,9 @@
 <!--
        <table id="language_table">
 -->
-<table id="repo_titles">
+
+<table id="repo_titles_table">
+
 	 <tr>
 	   <th><!--for the 'x' to remove a row--></th>
 	   <th>Language</th>
@@ -703,7 +706,7 @@
 
       <div class="response">
 
-	<table id="start_page_custom_htmls">
+	<table id="start_page_custom_htmls_table">
 	  <tr>
 	    <th></th>
 	    <th>Language</th>
