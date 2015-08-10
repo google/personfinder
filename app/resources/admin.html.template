@@ -68,7 +68,6 @@
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
-    var languages_to_values = {};
 
     //there is a title row in the table, so the dropdowns are 1-indexed
     for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
@@ -88,6 +87,7 @@
     // Copy the dropdowns and the titles into the text boxes that will
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
+    var languages_to_values = {};
     var custom_message_table_ids = [
       'repo_titles', 
       'start_page_custom_htmls', 
@@ -196,7 +196,14 @@
 
   function add_another_language() {
     add_language('repo_titles');
-    var table_ids = ['start_page_custom_htmls', 'results_page_custom_htmls', 'view_page_custom_htmls', 'seek_query_form_custom_htmls', 'footer_custom_htmls'];
+
+    var table_ids = [
+      'start_page_custom_htmls', 
+      'results_page_custom_htmls', 
+      'view_page_custom_htmls', 
+      'seek_query_form_custom_htmls', 
+      'footer_custom_htmls'
+    ];
     for(var id_num = 0; id_num < table_ids.length; id_num++){
       add_language_span(table_ids[id_num], 'not selected');
     }
@@ -206,7 +213,14 @@
    * submitted.
    */
   function remove_language(row_number) {
-    var table_ids = ['repo_titles', 'start_page_custom_htmls', 'results_page_custom_htmls', 'view_page_custom_htmls', 'seek_query_form_custom_htmls', 'footer_custom_htmls'];
+    var table_ids = [
+      'repo_titles', 
+      'start_page_custom_htmls', 
+      'results_page_custom_htmls', 
+      'view_page_custom_htmls', 
+      'seek_query_form_custom_htmls', 
+      'footer_custom_htmls'
+    ];
     for (var id_num = 0; id_num < table_ids.length; id_num++) {
       var table_name = table_ids[id_num];
       var table = $(table_name + '_table');
@@ -225,7 +239,13 @@
     // Saved languages and titles for this repository
     var all_view_config_json = {{all_view_config_json|safe|default:'[]'}};
     var LANGUAGES = all_view_config_json['language_menu_options'];
-    var table_ids = ['repo_titles', 'start_page_custom_htmls', 'results_page_custom_htmls', 'view_page_custom_htmls', 'seek_query_form_custom_htmls', 'footer_custom_htmls'];
+    var table_ids = [
+      'repo_titles', 
+      'start_page_custom_htmls', 
+      'results_page_custom_htmls', 
+      'view_page_custom_htmls', 
+      'seek_query_form_custom_htmls', 
+      'footer_custom_htmls'];
     //foreach language, add that language and its title
     for (var id_num = 0; id_num < table_ids.length; id_num++) {
       var table_id = table_ids[id_num];
