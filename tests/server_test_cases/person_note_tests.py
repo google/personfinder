@@ -46,556 +46,10 @@ import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
+from server_tests_base import ServerTestsBase
 
-TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
-TEST_TIMESTAMP = calendar.timegm((2010, 1, 1, 0, 0, 0, 0, 0, 0))
 
-NOTE_STATUS_OPTIONS = [
-  '',
-  'information_sought',
-  'is_note_author',
-  'believed_alive',
-  'believed_missing',
-  'believed_dead'
-]
-
-last_star = time.time()  # timestamp of the last message that started with '*'.
-
-def log(message, *args):
-    """Prints a timestamped message to stderr (handy for debugging or profiling
-    tests).  If the message starts with '*', the clock will be reset to zero."""
-    global last_star
-    now = time.time()
-    if isinstance(message, unicode):
-        message = message.encode('utf-8')
-    else:
-        message = str(message)
-    print >>sys.stderr, '%6.2f:' % (now - last_star), message, args or ''
-    if message[:1] == '*':
-        last_star = now
-
-def configure_api_logging(repo='*', enable=True):
-    db.delete(ApiActionLog.all())
-    config.set_for_repo(repo, api_action_logging=enable)
-
-def verify_api_log(action, api_key='test_key', person_records=None,
-                   people_skipped=None, note_records=None, notes_skipped=None):
-    action_logs = ApiActionLog.all().fetch(1)
-    assert action_logs
-    entry = action_logs[0]
-    assert entry.action == action \
-        and entry.api_key == api_key, \
-        'api_key=%s, action=%s' % (entry.api_key, entry.action)
-    if person_records:
-        assert person_records == entry.person_records
-    if people_skipped:
-        assert people_skipped == entry.people_skipped
-    if note_records:
-        assert note_records == entry.note_records
-    if notes_skipped:
-        assert notes_skipped == entry.notes_skipped
-
-def text_all_logs():
-    return '\n'.join(['UserActionLog: action=%s entity_kind=%s' % (
-        log.action, log.entity_kind)
-        for log in UserActionLog.all().fetch(10)])
-
-def verify_user_action_log(action, entity_kind, fetch_limit=10, **kwargs):
-    logs = UserActionLog.all().order('-time').fetch(fetch_limit)
-    for log in logs:
-        if log.action == action and log.entity_kind == entity_kind:
-            for key, value in kwargs.iteritems():
-                assert getattr(log, key) == value
-            return  # verified
-    assert False, text_all_logs()  # not verified
-
-def get_test_filepath(filename):
-    return os.path.join(os.environ['TESTS_DIR'], filename)
-
-def get_test_data(filename):
-    return open(get_test_filepath(filename)).read()
-
-def assert_params_conform(url, required_params=None, forbidden_params=None):
-    """Enforces the presence and non-presence of URL parameters.
-
-    If required_params or forbidden_params is set, this function asserts that
-    the given URL contains or does not contain those parameters, respectively.
-    """
-    required_params = required_params or {}
-    forbidden_params = forbidden_params or {}
-
-    # TODO(kpy): Decode the URL, don't match against it directly like this.
-    for key, value in required_params.iteritems():
-        param_regex = r'\b%s=%s\b' % (re.escape(key), re.escape(value))
-        assert re.search(param_regex, url), \
-            'URL %s must contain %s=%s' % (url, key, value)
-
-    for key, value in forbidden_params.iteritems():
-        param_regex = r'\b%s=%s\b' % (re.escape(key), re.escape(value))
-        assert not re.search(param_regex, url), \
-            'URL %s must not contain %s=%s' % (url, key, value)
-
-
-class TestsBase(unittest.TestCase):
-    """Base class for test cases."""
-    import pytest
-    hostport = pytest.config.hostport
-    mail_server = pytest.config.mail_server
-
-    # Entities of these kinds won't be wiped between tests
-    kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
-
-    def setUp(self):
-        """Sets up a scrape Session for each test."""
-        # See http://zesty.ca/scrape for documentation on scrape.
-        self.s = scrape.Session(verbose=1)
-        self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
-
-    def tearDown(self):
-        """Resets the datastore."""
-        setup.wipe_datastore(keep=self.kinds_to_keep)
-
-    def path_to_url(self, path):
-        return 'http://%s/personfinder%s' % (self.hostport, path)
-
-    def go(self, path, **kwargs):
-        """Navigates the scrape Session to the given path on the test server."""
-        return self.s.go(self.path_to_url(path), **kwargs)
-
-    def go_as_admin(self, path, **kwargs):
-        """Navigates to the given path with an admin login."""
-        scrape.setcookies(self.s.cookiejar, self.hostport,
-                          ['dev_appserver_login=admin@example.com:True:1'])
-        return self.go(path, **kwargs)
-
-    def set_utcnow_for_test(self, new_utcnow, flush=''):
-        """Sets the utils.get_utcnow() clock locally and on the server, and
-        optionally also flushes caches on the server.
-
-        Args:
-          new_utcnow: A datetime, timestamp, or None to revert to real time.
-          flush: Names of caches to flush (see main.flush_caches).
-        """
-        if new_utcnow is None:
-            param = 'real'
-        elif isinstance(new_utcnow, (int, float)):
-            param = str(new_utcnow)
-        else:
-            param = calendar.timegm(new_utcnow.utctimetuple())
-        path = '/?utcnow=%s&flush=%s' % (param, flush)
-        # Requesting '/' gives a fast redirect; to save time, don't follow it.
-        scrape.Session(verbose=0).go(self.path_to_url(path), redirects=0)
-        utils.set_utcnow_for_test(new_utcnow)
-
-    def advance_utcnow(self, days=0, seconds=0):
-        """Advances the utils.get_utcnow() clock locally and on the server."""
-        new_utcnow = utils.get_utcnow() + datetime.timedelta(days, seconds)
-        self.set_utcnow_for_test(new_utcnow)
-        return new_utcnow
-
-    def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
-        """Puts a Person with associated Note into the datastore, returning
-        (now, person, note) for testing.  This creates an original record
-        by default; to make a clone record, pass in a domain name."""
-        person = Person(
-            key_name='haiti:%s/person.123' % domain,
-            repo='haiti',
-            author_name='_test_author_name',
-            author_email='test@example.com',
-            full_name='_test_given_name _test_family_name',
-            given_name='_test_given_name',
-            family_name='_test_family_name',
-            sex='female',
-            age='52',
-            home_city='_test_home_city',
-            home_state='_test_home_state',
-            source_date=TEST_DATETIME,
-            entry_date=TEST_DATETIME,
-            latest_status='believed_alive',
-        )
-        person.update_index(['old', 'new'])
-        note = Note(
-            key_name='haiti:%s/note.456' % domain,
-            repo='haiti',
-            author_email='test2@example.com',
-            person_record_id='%s/person.123' % domain,
-            source_date=TEST_DATETIME,
-            entry_date=TEST_DATETIME,
-            text='Testing',
-            status='believed_alive',
-        )
-        db.put([person, note])
-        return person, note
-
-    def setup_photo(self, record):
-        """Stores a Photo for the given Person or Note record, for testing."""
-        photo = Photo.create(record.repo, image_data='xyz')
-        photo.put()
-        record.photo = photo
-        record.photo_url = isinstance(record, Note) and \
-            '_test_photo_url_for_note' or '_test_photo_url'
-        record.put()
-        return photo
-
-    def assert_equal_urls(self, actual, expected):
-        """Asserts that the two URLs are equal ignoring the order of the query
-        parameters.
-        """
-        parsed_actual = urlparse.urlparse(actual)
-        parsed_expected = urlparse.urlparse(expected)
-        self.assertEqual(parsed_actual.scheme, parsed_expected.scheme)
-        self.assertEqual(parsed_actual.netloc, parsed_expected.netloc)
-        self.assertEqual(parsed_actual.path, parsed_expected.path)
-        self.assertEqual(
-            urlparse.parse_qs(parsed_actual.query),
-            urlparse.parse_qs(parsed_expected.query))
-        self.assertEqual(parsed_actual.fragment, parsed_expected.fragment)
-
-    def get_email_payload(self, message):
-        """Gets the payload (body) of the email.
-        It performs base-64 decoding if needed.
-        """
-        m = email.message_from_string(message['data'])
-        result = ''
-        for part in m.walk():
-            p = part.get_payload(decode=True)
-            if p: result += p
-        return result
-
-    def get_email_subject(self, message):
-        """Gets the subject of the email.
-        It performs RFC 2047 decoding if needed."""
-        m = email.message_from_string(message['data'])
-        result = ''
-        for s, encoding in email.header.decode_header(m['Subject']):
-            assert encoding is None or encoding == 'utf-8'
-            result += s
-        return result
-
-
-class ReadOnlyTests(TestsBase):
-    """Tests that don't modify data go here."""
-
-    def setUp(self):
-        """Sets up a scrape Session for each test."""
-        self.s = scrape.Session(verbose=1)
-        # These tests don't rely on utcnow, so don't bother to set it.
-
-    def tearDown(self):
-        # These tests don't write anything, so no need to reset the datastore.
-        pass
-
-    def test_noconfig(self):
-        """Check the home page with no config (generic welcome page)."""
-        doc = self.go('/')
-        assert 'You are now running Person Finder.' in doc.text
-
-    def test_home(self):
-        """Check the generic home page."""
-        doc = self.go('/global/home.html')
-        assert 'You are now running Person Finder.' in doc.text
-
-    def test_tos(self):
-        """Check the generic TOS page."""
-        doc = self.go('/global/tos.html')
-        assert 'Terms of Service' in doc.text
-
-    def test_start(self):
-        """Check the start page with no language specified."""
-        doc = self.go('/haiti')
-        assert 'I\'m looking for someone' in doc.text
-
-    def test_start_english(self):
-        """Check the start page with English language specified."""
-        doc = self.go('/haiti?lang=en')
-        assert 'I\'m looking for someone' in doc.text
-
-    def test_start_french(self):
-        """Check the French start page."""
-        doc = self.go('/haiti?lang=fr')
-        assert 'Je recherche une personne' in doc.text
-
-    def test_start_creole(self):
-        """Check the Creole start page."""
-        doc = self.go('/haiti?lang=ht')
-        assert u'Mwen ap ch\u00e8che yon moun' in doc.text
-
-    def test_language_xss(self):
-        """Regression test for an XSS vulnerability in the 'lang' parameter."""
-        doc = self.go('/haiti?lang="<script>alert(1)</script>')
-        assert '<script>' not in doc.content
-
-    def test_language_cookie_caching(self):
-        """Regression test for caching the wrong language."""
-
-        # Run a session where the default language is English
-        en_session = self.s = scrape.Session(verbose=1)
-
-        doc = self.go('/haiti?lang=en')  # sets cookie
-        assert 'I\'m looking for someone' in doc.text
-
-        doc = self.go('/haiti')
-        assert 'I\'m looking for someone' in doc.text
-
-        # Run a separate session where the default language is French
-        fr_session = self.s = scrape.Session(verbose=1)
-
-        doc = self.go('/haiti?lang=fr')  # sets cookie
-        assert 'Je recherche une personne' in doc.text
-
-        doc = self.go('/haiti')
-        assert 'Je recherche une personne' in doc.text
-
-        # Check that this didn't screw up the language for the other session
-        self.s = en_session
-
-        doc = self.go('/haiti')
-        assert 'I\'m looking for someone' in doc.text
-
-    def test_charsets(self):
-        """Checks that pages are delivered in the requested charset."""
-
-        # Try with no specified charset.
-        doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=utf-8'
-        # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
-        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
-
-        # Try with a specific requested charset.
-        doc = self.go('/haiti?lang=ja&charsets=shift_jis',
-                      charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
-        meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=shift_jis'
-        # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
-
-        # Confirm that spelling of charset is preserved.
-        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
-                      charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
-        meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=Shift-JIS'
-        # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
-
-        # Confirm that UTF-8 takes precedence.
-        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
-                      charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=utf-8'
-        # UTF-8 encoding of title text
-        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
-
-    def test_kddi_charsets(self):
-        """Checks that pages are delivered in Shift_JIS if the user agent is a
-        feature phone by KDDI."""
-        self.s.agent = 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0'
-        doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
-        assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
-        meta = doc.firsttag('meta', http_equiv='content-type')
-        assert meta['content'] == 'text/html; charset=Shift_JIS'
-        # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
-        
-    def test_query(self):
-        """Check the query page."""
-        doc = self.go('/haiti/query')
-        button = doc.firsttag('input', type='submit')
-        assert button['value'] == 'Search for this person'
-
-        doc = self.go('/haiti/query?role=provide')
-        button = doc.firsttag('input', type='submit')
-        assert button['value'] == 'Provide information about this person'
-
-    def test_results(self):
-        """Check the results page."""
-        doc = self.go('/haiti/results?query=xy')
-        assert 'We have nothing' in doc.text
-
-    def test_create(self):
-        """Check the create page."""
-        doc = self.go('/haiti/create')
-        assert 'Identify who you are looking for' in doc.text
-
-        doc = self.go('/haiti/create?role=provide')
-        assert 'Identify who you have information about' in doc.text
-
-        params = [
-            'role=provide',
-            'family_name=__FAMILY_NAME__',
-            'given_name=__GIVEN_NAME__',
-            'home_street=__HOME_STREET__',
-            'home_neighborhood=__HOME_NEIGHBORHOOD__',
-            'home_city=__HOME_CITY__',
-            'home_state=__HOME_STATE__',
-            'home_postal_code=__HOME_POSTAL_CODE__',
-            'description=__DESCRIPTION__',
-            'photo_url=__PHOTO_URL__',
-            'clone=yes',
-            'author_name=__AUTHOR_NAME__',
-            'author_phone=__AUTHOR_PHONE__',
-            'author_email=__AUTHOR_EMAIL__',
-            'source_url=__SOURCE_URL__',
-            'source_date=__SOURCE_DATE__',
-            'source_name=__SOURCE_NAME__',
-            'status=believed_alive',
-            'text=__TEXT__',
-            'last_known_location=__LAST_KNOWN_LOCATION__',
-            'author_made_contact=yes',
-            'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
-            'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
-        ]
-        doc = self.go('/haiti/create?' + '&'.join(params))
-        tag = doc.firsttag('input', name='family_name')
-        assert tag['value'] == '__FAMILY_NAME__'
-
-        tag = doc.firsttag('input', name='given_name')
-        assert tag['value'] == '__GIVEN_NAME__'
-
-        tag = doc.firsttag('input', name='home_street')
-        assert tag['value'] == '__HOME_STREET__'
-
-        tag = doc.firsttag('input', name='home_neighborhood')
-        assert tag['value'] == '__HOME_NEIGHBORHOOD__'
-
-        tag = doc.firsttag('input', name='home_city')
-        assert tag['value'] == '__HOME_CITY__'
-
-        tag = doc.firsttag('input', name='home_state')
-        assert tag['value'] == '__HOME_STATE__'
-
-        tag = doc.firsttag('input', name='home_postal_code')
-        assert tag['value'] == '__HOME_POSTAL_CODE__'
-
-        tag = doc.first('textarea', name='description')
-        assert tag.text == '__DESCRIPTION__'
-
-        tag = doc.firsttag('input', name='photo_url')
-        assert tag['value'] == '__PHOTO_URL__'
-
-        tag = doc.firsttag('input', id='clone_yes')
-        assert tag['checked'] == 'checked'
-
-        tag = doc.firsttag('input', name='author_name')
-        assert tag['value'] == '__AUTHOR_NAME__'
-
-        tag = doc.firsttag('input', name='author_phone')
-        assert tag['value'] == '__AUTHOR_PHONE__'
-
-        tag = doc.firsttag('input', name='author_email')
-        assert tag['value'] == '__AUTHOR_EMAIL__'
-
-        tag = doc.firsttag('input', name='source_url')
-        assert tag['value'] == '__SOURCE_URL__'
-
-        tag = doc.firsttag('input', name='source_date')
-        assert tag['value'] == '__SOURCE_DATE__'
-
-        tag = doc.firsttag('input', name='source_name')
-        assert tag['value'] == '__SOURCE_NAME__'
-
-        tag = doc.first('select', name='status')
-        tag = doc.firsttag('option', value='believed_alive')
-        assert tag['selected'] == 'selected'
-
-        tag = doc.first('textarea', name='text')
-        assert tag.text == '__TEXT__'
-
-        tag = doc.first('textarea', name='last_known_location')
-        assert tag.text == '__LAST_KNOWN_LOCATION__'
-
-        tag = doc.firsttag('input', id='author_made_contact_yes')
-        assert tag['checked'] == 'checked'
-
-        tag = doc.firsttag('input', name='phone_of_found_person')
-        assert tag['value'] == '__PHONE_OF_FOUND_PERSON__'
-
-        tag = doc.firsttag('input', name='email_of_found_person')
-        assert tag['value'] == '__EMAIL_OF_FOUND_PERSON__'
-
-    def test_view(self):
-        """Check the view page."""
-        doc = self.go('/haiti/view')
-        assert 'No person id was specified' in doc.text
-
-    def test_multiview(self):
-        """Check the multiview page."""
-        doc = self.go('/haiti/multiview')
-        assert 'Compare these records' in doc.text
-
-    def test_photo(self):
-        """Check the photo page."""
-        doc = self.go('/haiti/photo')
-        assert 'Photo id is unspecified or invalid' in doc.text
-
-    def test_static(self):
-        """Check that the static files are accessible."""
-        doc = self.go('/static/no-photo.gif')
-        self.assertEqual(self.s.status, 200)
-        assert doc.content.startswith('GIF89a')
-
-    def test_embed(self):
-        """Check the embed page."""
-        doc = self.go('/haiti/embed')
-        assert 'Embedding' in doc.text
-
-    def test_gadget(self):
-        """Check the gadget page."""
-        doc = self.go('/haiti/gadget')
-        assert '<Module>' in doc.content
-        assert 'application/xml' in self.s.headers['content-type']
-
-    def test_sitemap(self):
-        """Check the sitemap generator."""
-        doc = self.go('/haiti/sitemap')
-        assert '</sitemapindex>' in doc.content
-
-        doc = self.go('/haiti/sitemap?shard_index=1')
-        assert '</urlset>' in doc.content
-
-    def test_config_repo_titles(self):
-        doc = self.go('/haiti')
-        assert 'Haiti Earthquake' in doc.first('h1').text
-
-        doc = self.go('/pakistan')
-        assert 'Pakistan Floods' in doc.first('h1').text
-
-    def test_config_language_menu_options(self):
-        doc = self.go('/haiti')
-        assert doc.first('option', u'Fran\xe7ais')
-        assert doc.first('option', u'Krey\xf2l')
-        assert not doc.all('option', u'\u0627\u0631\u062F\u0648')  # Urdu
-
-        doc = self.go('/pakistan')
-        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('option', u'Fran\xe7ais')
-
-    def test_config_keywords(self):
-        doc = self.go('/haiti')
-        meta = doc.firsttag('meta', name='keywords')
-        assert 'tremblement' in meta['content']
-
-        doc = self.go('/pakistan')
-        meta = doc.firsttag('meta', name='keywords')
-        assert 'pakistan flood' in meta['content']
-
-    def test_css(self):
-        """Check that the CSS files are accessible."""
-        doc = self.go('/global/css?lang=en&ui=default')
-        assert 'body {' in doc.content
-        doc = self.go('/global/css?lang=en&ui=small')
-        assert 'body {' in doc.content
-        doc = self.go('/global/css?lang=en&ui=light')
-        assert 'Apache License' in doc.content
-        doc = self.go('/global/css?lang=ar&ui=default')
-        assert 'body {' in doc.content
-
-
-class PersonNoteTests(TestsBase):
+class PersonNoteTests(ServerTestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
 
@@ -835,7 +289,7 @@ class PersonNoteTests(TestsBase):
         def assert_params(url=None, required_params={}, forbidden_params={}):
             required_params.setdefault('role', 'provide')
             required_params.setdefault('ui', 'small')
-            assert_params_conform(url or self.s.url,
+            self.assert_params_conform(url or self.s.url,
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
@@ -934,7 +388,7 @@ class PersonNoteTests(TestsBase):
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'seek', 'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
@@ -982,7 +436,7 @@ class PersonNoteTests(TestsBase):
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
@@ -1038,7 +492,7 @@ class PersonNoteTests(TestsBase):
             note_photo_url='http://xyz')
 
         # Check that a UserActionLog entry was created.
-        verify_user_action_log('mark_alive', 'Note',
+        self.verify_user_action_log('mark_alive', 'Note',
                                repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='',
@@ -1053,7 +507,7 @@ class PersonNoteTests(TestsBase):
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
         # Check that a UserActionLog entry was created.
-        verify_user_action_log('mark_dead', 'Note',
+        self.verify_user_action_log('mark_dead', 'Note',
                                repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='127.0.0.1',
@@ -1194,7 +648,7 @@ class PersonNoteTests(TestsBase):
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         # Start on the home page and click the "I'm looking for someone" button
@@ -1248,7 +702,7 @@ class PersonNoteTests(TestsBase):
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         Repo(key_name='japan-test').put()
@@ -1329,7 +783,7 @@ class PersonNoteTests(TestsBase):
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'provide'}, {'ui': 'small'})
 
         self.go('/haiti')
@@ -1369,8 +823,8 @@ class PersonNoteTests(TestsBase):
             'Author\'s name:': '_test_author_name'})
 
         # Verify that UserActionLog entries are created for 'add' action.
-        verify_user_action_log('add', 'Person', repo='haiti')
-        verify_user_action_log('add', 'Note', repo='haiti')
+        self.verify_user_action_log('add', 'Person', repo='haiti')
+        self.verify_user_action_log('add', 'Note', repo='haiti')
 
         # Try the search again, and should get some results
         self.s.submit(search_form,
@@ -1450,9 +904,9 @@ class PersonNoteTests(TestsBase):
             'Expiry date of this record:': 'Jan. 21, 2001, midnight UTC'})
 
         # Check that UserActionLog entries were created.
-        verify_user_action_log('add', 'Person', repo='haiti')
-        verify_user_action_log('add', 'Note', repo='haiti')
-        verify_user_action_log('mark_dead', 'Note',
+        self.verify_user_action_log('add', 'Person', repo='haiti')
+        self.verify_user_action_log('add', 'Note', repo='haiti')
+        self.verify_user_action_log('mark_dead', 'Note',
                                repo='haiti',
                                detail='_test_given_name _test_family_name',
                                ip_address='127.0.0.1',
@@ -1467,7 +921,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             full_name='_full_name_1',
             alternate_names='_alternate_names_1',
             sex='male',
@@ -1483,7 +937,7 @@ http://www.foo.com/_account_1''',
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             full_name='_full_name_2',
             alternate_names='_alternate_names_2',
             sex='male',
@@ -1497,7 +951,7 @@ http://www.foo.com/_account_1''',
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             full_name='_full_name_3',
             alternate_names='_alternate_names_3',
             sex='male',
@@ -1567,7 +1021,7 @@ http://www.foo.com/_account_1''',
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             full_name='_reveal_full_name',
             sex='male',
             date_of_birth='1970-01-01',
@@ -1589,7 +1043,7 @@ http://www.foo.com/_account_1''',
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
@@ -1669,7 +1123,7 @@ http://www.foo.com/_account_1''',
     def test_show_domain_source(self):
         """Test that we show domain of source for records coming from API."""
 
-        data = get_test_data('test.pfif-1.2-source.xml')
+        data = self.get_test_data('test.pfif-1.2-source.xml')
         self.go('/haiti/api/write?key=domain_test_key',
                 data=data, type='application/xml')
 
@@ -1694,7 +1148,7 @@ http://www.foo.com/_account_1''',
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'role': 'provide', 'referrer': 'a.org'},
                 {'ui': 'small'})
 
@@ -1729,7 +1183,7 @@ http://www.foo.com/_account_1''',
 
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
-        data = get_test_data('global-test.pfif-1.2-source.xml')
+        data = self.get_test_data('global-test.pfif-1.2-source.xml')
         self.go('/haiti/api/write?key=global_test_key',
                 data=data, type='application/xml')
 
@@ -1757,8 +1211,8 @@ http://www.foo.com/_account_1''',
         doc = self.go('/haiti/create?role=provide')
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
-        assert len(options) == len(NOTE_STATUS_OPTIONS)
-        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+        assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
+        for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
 
         # Create a record with no status and get the new record's ID.
@@ -1774,8 +1228,8 @@ http://www.foo.com/_account_1''',
         doc = self.s.go(view_url)
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
-        assert len(options) == len(NOTE_STATUS_OPTIONS)
-        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+        assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
+        for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
 
         # Advance the clock. The new note has a newer source_date by this.
@@ -1794,7 +1248,7 @@ http://www.foo.com/_account_1''',
         assert 'believed_dead' not in note.content, \
             text_diff('believed_dead', note.content)
         # Check that a UserActionLog entry was created.
-        verify_user_action_log('mark_alive', 'Note',
+        self.verify_user_action_log('mark_alive', 'Note',
                                repo='haiti',
                                detail='_test_given _test_family',
                                ip_address='',
@@ -1824,8 +1278,8 @@ http://www.foo.com/_account_1''',
         doc = self.go('/japan/create?role=provide')
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
-        assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
-        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+        assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
+        for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
             assert option.attrs['value'] != 'believed_dead'
 
@@ -1843,8 +1297,8 @@ http://www.foo.com/_account_1''',
         doc = self.s.go(view_url)
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
-        assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
-        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+        assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
+        for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
             assert text in option.attrs['value']
             assert option.attrs['value'] != 'believed_dead'
 
@@ -1861,7 +1315,7 @@ http://www.foo.com/_account_1''',
         assert 'believed_dead' not in note.content
 
         # Check that a UserActionLog entry was created.
-        verify_user_action_log('mark_alive', 'Note',
+        self.verify_user_action_log('mark_alive', 'Note',
                                repo='japan',
                                detail='_test_family _test_given',
                                ip_address='',
@@ -1889,7 +1343,7 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_pfif_1_4(self):
         """Post a single entry as PFIF 1.4 using the upload API."""
-        data = get_test_data('test.pfif-1.4.xml')
+        data = self.get_test_data('test.pfif-1.4.xml')
         self.go('/haiti/api/write?version=1.4&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1985,7 +1439,7 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
-        data = get_test_data('test.pfif-1.2.xml')
+        data = self.get_test_data('test.pfif-1.2.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -2078,7 +1532,7 @@ http://www.foo.com/_account_1''',
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         # Create person records that the notes will attach to.
-        configure_api_logging()
+        self.configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
                repo='haiti',
                full_name='_test_full_name_1',
@@ -2088,11 +1542,11 @@ http://www.foo.com/_account_1''',
                full_name='_test_full_name_2',
                entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2)).put()
 
-        data = get_test_data('test.pfif-1.2-note.xml')
+        data = self.get_test_data('test.pfif-1.2-note.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
 
-        verify_api_log(ApiActionLog.WRITE)
+        self.verify_api_log(ApiActionLog.WRITE)
 
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
@@ -2152,7 +1606,7 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
-        data = get_test_data('test.pfif-1.1.xml')
+        data = self.get_test_data('test.pfif-1.1.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -2221,7 +1675,7 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""
-        data = get_test_data('test.pfif-1.2.xml')
+        data = self.get_test_data('test.pfif-1.2.xml')
         self.go('/haiti/api/write?key=bad_key',
                 data=data, type='application/xml')
         assert self.s.status == 403
@@ -2245,7 +1699,7 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_wrong_domain(self):
         """Attempt to post an entry with a domain that doesn't match the key."""
-        data = get_test_data('test.pfif-1.2.xml')
+        data = self.get_test_data('test.pfif-1.2.xml')
         doc = self.go('/haiti/api/write?key=other_key',
                       data=data, type='application/xml')
 
@@ -2265,18 +1719,18 @@ http://www.foo.com/_account_1''',
 
     def test_api_write_log_skipping(self):
         """Test skipping bad note entries."""
-        configure_api_logging()
-        data = get_test_data('test.pfif-1.2-badrecord.xml')
+        self.configure_api_logging()
+        data = self.get_test_data('test.pfif-1.2-badrecord.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         assert self.s.status == 200, \
             'status = %s, content=%s' % (self.s.status, self.s.content)
         # verify we logged the write.
-        verify_api_log(ApiActionLog.WRITE, person_records=1, people_skipped=1)
+        self.verify_api_log(ApiActionLog.WRITE, person_records=1, people_skipped=1)
 
     def test_api_write_reviewed_note(self):
         """Post reviewed note entries."""
-        data = get_test_data('test.pfif-1.2.xml')
+        data = self.get_test_data('test.pfif-1.2.xml')
         self.go('/haiti/api/write?key=reviewed_test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -2289,12 +1743,12 @@ http://www.foo.com/_account_1''',
     def test_api_believed_dead_permission(self):
         """ Test whether the API key is authorized to report a person dead. """
         # Add the associated person record to the datastore
-        data = get_test_data('test.pfif-1.2.xml')
+        data = self.get_test_data('test.pfif-1.2.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
 
         # Test authorized key.
-        data = get_test_data('test.pfif-1.2-believed-dead.xml')
+        data = self.get_test_data('test.pfif-1.2-believed-dead.xml')
         doc = self.go(
             '/haiti/api/write?key=allow_believed_dead_test_key',
             data=data, type='application/xml')
@@ -2379,10 +1833,10 @@ http://www.foo.com/_account_1''',
             'lang': 'en',
             'subscribe_email': SUBSCRIBE_EMAIL
         }
-        configure_api_logging()
+        self.configure_api_logging()
         self.go('/haiti/api/subscribe?key=subscribe_key', data=data)
         # verify we logged the subscribe.
-        verify_api_log(ApiActionLog.SUBSCRIBE, api_key='subscribe_key')
+        self.verify_api_log(ApiActionLog.SUBSCRIBE, api_key='subscribe_key')
 
         subscriptions = person.get_subscriptions()
         assert 'Success' in self.s.content
@@ -2416,13 +1870,13 @@ http://www.foo.com/_account_1''',
 
         # Unsubscribe
         del data['lang']
-        configure_api_logging()
+        self.configure_api_logging()
         self.go('/haiti/api/unsubscribe?key=subscribe_key', data=data)
         assert 'Success' in self.s.content
         assert len(person.get_subscriptions()) == 0
 
         # verify we logged the unsub.
-        verify_api_log(ApiActionLog.UNSUBSCRIBE, api_key='subscribe_key')
+        self.verify_api_log(ApiActionLog.UNSUBSCRIBE, api_key='subscribe_key')
 
         # Unsubscribe non-existent subscription
         self.go('/haiti/api/unsubscribe?key=subscribe_key', data=data)
@@ -2476,7 +1930,7 @@ http://www.foo.com/_account_1''',
             status='believed_missing'
         )])
         # check for logging as well
-        configure_api_logging()
+        self.configure_api_logging()
 
         # Fetch a PFIF 1.1 document.
         # Note that author_email, author_phone, email_of_found_person, and
@@ -2827,11 +2281,11 @@ _read_profile_url2</pfif:profile_urls>
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests PFIF 1.1 - 1.4."""
-        expiry_date = TEST_DATETIME + datetime.timedelta(days=1)
+        expiry_date = ServerTestsBase.TEST_DATETIME + datetime.timedelta(days=1)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             expiry_date=expiry_date,
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
@@ -2863,7 +2317,7 @@ _read_profile_url2</pfif:profile_urls>
             text_diff(expected_content, doc.content)
 
         # Fetch a PFIF 1.2 document.
-        configure_api_logging()
+        self.configure_api_logging()
         doc = self.go('/haiti/api/read?id=test.google.com/person.123'
                       '&version=1.2')
         assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
@@ -2879,8 +2333,8 @@ _read_profile_url2</pfif:profile_urls>
   </pfif:person>
 </pfif:pfif>
 ''', doc.content)
-        # verify the log was written.
-        verify_api_log(ApiActionLog.READ, api_key='')
+        # verify the self.log was written.
+        self.verify_api_log(ApiActionLog.READ, api_key='')
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/haiti/api/read?' +
@@ -2976,12 +2430,12 @@ _read_profile_url2</pfif:profile_urls>
             assert 'Missing or invalid authorization key' in doc.content
 
             # With a valid search authorization key, the request should succeed.
-            configure_api_logging()
+            self.configure_api_logging()
             doc = self.go('/haiti/api/search?key=search_key' +
                           '&q=_search_1st_family_name')
             assert self.s.status not in [403, 404]
             # verify we logged the search.
-            verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
+            self.verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
 
             # Make sure we return the first record and not the 2nd one.
             assert '_search_1st_family_name' in doc.content
@@ -3162,7 +2616,7 @@ _read_profile_url2</pfif:profile_urls>
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
-        configure_api_logging()
+        self.configure_api_logging()
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
@@ -3284,7 +2738,7 @@ _feed_profile_url2</pfif:profile_urls>
             text_diff(expected_content, doc.content)
 
         # verify we logged the read.
-        verify_api_log(ApiActionLog.READ, api_key='')
+        self.verify_api_log(ApiActionLog.READ, api_key='')
 
         # Test the omit_notes parameter.
         doc = self.go('/haiti/feeds/person?omit_notes=yes')
@@ -3764,7 +3218,7 @@ _feed_profile_url2</pfif:profile_urls>
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             full_name='_status_full_name',
             author_name='_status_author_name'
         ))
@@ -3781,7 +3235,7 @@ _feed_profile_url2</pfif:profile_urls>
             key_name='haiti:test.google.com/note.2002',
             repo='haiti',
             person_record_id='test.google.com/person.1001',
-            entry_date=TEST_DATETIME
+            entry_date=ServerTestsBase.TEST_DATETIME
         ))
         doc = self.go('/haiti/api/read' +
                       '?id=test.google.com/person.1001')
@@ -3797,7 +3251,7 @@ _feed_profile_url2</pfif:profile_urls>
             repo='haiti',
             person_record_id='test.google.com/person.1001',
             status='',
-            entry_date=TEST_DATETIME
+            entry_date=ServerTestsBase.TEST_DATETIME
         ))
         doc = self.go('/haiti/api/read' +
                       '?id=test.google.com/person.1001')
@@ -3812,7 +3266,7 @@ _feed_profile_url2</pfif:profile_urls>
             key_name='haiti:test.google.com/note.2002',
             repo='haiti',
             person_record_id='test.google.com/person.1001',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             status='believed_alive'
         ))
         doc = self.go('/haiti/api/read' +
@@ -3898,8 +3352,8 @@ _feed_profile_url2</pfif:profile_urls>
         person.original_creation_date = person.source_date
         person.source_date = None
         person.put()
-        assert person.original_creation_date == TEST_DATETIME, '%s != %s' % (
-            person.original_creation_date, TEST_DATETIME)
+        assert person.original_creation_date == ServerTestsBase.TEST_DATETIME, '%s != %s' % (
+            person.original_creation_date, ServerTestsBase.TEST_DATETIME)
 
         self.advance_utcnow(days=11)  # past the configured 10-day expiry period
         # run the delete_old task
@@ -3978,7 +3432,7 @@ _feed_profile_url2</pfif:profile_urls>
         except scrape.ScrapeError:
             pass
         # Now add an expiry date.
-        expiry_date = TEST_DATETIME + datetime.timedelta(days=18)
+        expiry_date = ServerTestsBase.TEST_DATETIME + datetime.timedelta(days=18)
         person.expiry_date = expiry_date
         db.put([person])
 
@@ -4086,7 +3540,7 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('disable_notes', 'Person', repo='haiti',
+        self.verify_user_action_log('disable_notes', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123',
             detail='spam_received')
 
@@ -4158,7 +3612,7 @@ _feed_profile_url2</pfif:profile_urls>
                 '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('enable_notes', 'Person', repo='haiti',
+        self.verify_user_action_log('enable_notes', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
@@ -4229,7 +3683,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not note
 
         # Check that a UserActionLog row was created for 'add' action.
-        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
+        self.verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(1)
@@ -4266,7 +3720,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Check that a UserActionLog row was created for 'mark_dead' action.
         keyname = 'haiti:%s' % note.get_record_id()
-        verify_user_action_log('mark_dead', 'Note', repo='haiti',
+        self.verify_user_action_log('mark_dead', 'Note', repo='haiti',
                                entity_key_name=keyname)
 
         # Add a note with bad words to the existing person record.
@@ -4306,7 +3760,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert note_with_bad_words.author_email == 'test2@example.com'
 
         # Check that a UserActionLog row was created for 'add' action.
-        verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
+        self.verify_user_action_log('add', 'NoteWithBadWords', repo='haiti')
 
         # Verify that an email is sent to note author
         self.verify_email_sent(2)
@@ -4340,7 +3794,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Check that a UserActionLog row was created for 'mark_alive' action.
         keyname = "haiti:%s" % note.get_record_id()
-        verify_user_action_log('mark_alive', 'Note', repo='haiti',
+        self.verify_user_action_log('mark_alive', 'Note', repo='haiti',
                                entity_key_name=keyname)
 
 
@@ -4417,7 +3871,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not Note.get('haiti', note.record_id)
 
         # Make sure that a UserActionLog row was created.
-        verify_user_action_log('delete', 'Person', repo='haiti',
+        self.verify_user_action_log('delete', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123',
             detail='spam_received')
 
@@ -4849,7 +4303,7 @@ _feed_profile_url2</pfif:profile_urls>
             repo='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
-            entry_date=TEST_DATETIME,
+            entry_date=ServerTestsBase.TEST_DATETIME,
             text='TestingSpam'
         )
         db.put([person, note])
@@ -5095,7 +4549,7 @@ _feed_profile_url2</pfif:profile_urls>
         self.mail_server.messages = []
 
         # Send a Note through Write API. It should send a notification.
-        data = get_test_data('test.pfif-1.2-notification.xml')
+        data = self.get_test_data('test.pfif-1.2-notification.xml')
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         notes = person.get_notes()
@@ -5523,7 +4977,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
-            assert_params_conform(
+            self.assert_params_conform(
                 url or self.s.url, {'charsets': 'shift_jis'})
 
         # Start on the home page and click the
@@ -5564,1341 +5018,3 @@ _feed_profile_url2</pfif:profile_urls>
                                  some_have=([test_given_name]))
 
         self.verify_click_search_result(0, assert_params)
-
-
-class PhotoTests(TestsBase):
-    """Tests that verify photo upload and serving."""
-    def submit_create(self, **kwargs):
-        doc = self.go('/haiti/create?role=provide')
-        form = doc.first('form')
-        return self.s.submit(form,
-                             given_name='_test_given_name',
-                             family_name='_test_family_name',
-                             author_name='_test_author_name',
-                             text='_test_text',
-                             **kwargs)
-
-    def test_upload_photo(self):
-        """Verifies a photo is uploaded and properly served on the server."""
-        # Create a new person record with a profile photo.
-        photo = file('tests/testdata/small_image.png')
-        original_image = images.Image(photo.read())
-        doc = self.submit_create(photo=photo)
-        # Verify the image is uploaded and displayed on the view page.
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 1
-        # Verify the image is served properly by checking the image metadata.
-        doc = self.s.go(photos[0].attrs['src'])
-        image = images.Image(doc.content)
-        assert image.format == images.PNG
-        assert image.width == original_image.width
-        assert image.height == original_image.height
-        # Follow the link on the image and verify the same image is served.
-        doc = self.s.follow(photos[0].enclosing('a'))
-        image = images.Image(doc.content)
-        assert image.format == images.PNG
-        assert image.width == original_image.width
-        assert image.height == original_image.height
-
-    def test_upload_photos_with_transformation(self):
-        """Uploads both profile photo and note photo and verifies the images are
-        properly transformed and served on the server i.e., jpg is converted to
-        png and a large image is resized to match MAX_IMAGE_DIMENSION."""
-        # Create a new person record with a profile photo and a note photo.
-        photo = file('tests/testdata/small_image.jpg')
-        note_photo = file('tests/testdata/large_image.png')
-        original_image = images.Image(photo.read())
-        doc = self.submit_create(photo=photo, note_photo=note_photo)
-        # Verify the images are uploaded and displayed on the view page.
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 2
-        # Verify the profile image is converted to png.
-        doc = self.s.go(photos[0].attrs['src'])
-        image = images.Image(doc.content)
-        assert image.format == images.PNG
-        assert image.width == original_image.width
-        assert image.height == original_image.height
-        # Verify the note image is resized to match MAX_IMAGE_DIMENSION.
-        doc = self.s.go(photos[1].attrs['src'])
-        image = images.Image(doc.content)
-        assert image.format == images.PNG
-        assert image.width == MAX_IMAGE_DIMENSION
-        assert image.height == MAX_IMAGE_DIMENSION
-
-    def test_upload_empty_photo(self):
-        """Uploads an empty image and verifies no img tag in the view page."""
-        # Create a new person record with a zero-byte profile photo.
-        photo = file('tests/testdata/empty_image.png')
-        doc = self.submit_create(photo=photo)
-        # Verify there is no img tag in the view page.
-        assert '_test_given_name' in doc.text
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 0
-
-    def test_upload_broken_photo(self):
-        """Uploads a broken image and verifies an error message is displayed."""
-        # Create a new person record with a broken profile photo.
-        photo = file('tests/testdata/broken_image.png')
-        doc = self.submit_create(photo=photo)
-        # Verify an error message is displayed.
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 0
-        assert 'unrecognized format' in doc.text
-
-
-class ResourceTests(TestsBase):
-    """Tests that verify the Resource mechanism."""
-    def test_resource_override(self):
-        """Verifies that Resources in the datastore override files on disk."""
-        # Should render normally.
-        doc = self.go('/haiti/create')
-        assert 'xyz' not in doc.content
-
-        # This Resource should override the create.html.template file.
-        bundle = ResourceBundle(key_name='1')
-        key1 = Resource(parent=bundle,
-                        key_name='create.html.template',
-                        content='xyz{{env.repo}}xyz').put()
-        doc = self.go('/haiti/create')
-        assert 'xyzhaitixyz' not in doc.content  # old template is still cached
-
-        # The new template should take effect after 1 second.
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/haiti/create')
-        assert 'xyzhaitixyz' in doc.content
-
-        # A plain .html Resource should override the .html.template Resource.
-        key2 = Resource(parent=bundle,
-                        key_name='create.html', content='xyzxyzxyz').put()
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/haiti/create')
-        assert 'xyzxyzxyz' in doc.content
-
-        # After removing both Resources, should fall back to the original file.
-        db.delete([key1, key2])
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/haiti/create')
-        assert 'xyz' not in doc.content
-
-    def test_resource_caching(self):
-        """Verifies that Resources are cached properly."""
-        # There's no file here.
-        self.go('/global/foo.txt')
-        assert self.s.status == 404
-        self.go('/global/foo.txt?lang=fr')
-        assert self.s.status == 404
-
-        # Add a Resource to be served as the static file.
-        bundle = ResourceBundle(key_name='1')
-        Resource(parent=bundle, key_name='foo.txt', content='hello').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'hello'
-
-        # Add a localized Resource.
-        fr_key = Resource(parent=bundle, key_name='foo.txt:fr',
-                          content='bonjour').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'hello'  # original Resource remains cached
-
-        # The cached version should expire after 1 second.
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'
-
-        # Change the non-localized Resource.
-        Resource(parent=bundle, key_name='foo.txt', content='goodbye').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'  # no effect on the localized Resource
-
-        # Remove the localized Resource.
-        db.delete(fr_key)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'  # localized Resource remains cached
-
-        # The cached version should expire after 1 second.
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'goodbye'
-
-    def test_admin_resources(self):
-        # Verify that the bundle listing loads.
-        doc = self.go_as_admin('/global/admin/resources')
-
-        # Add a new bundle (redirects to the new bundle's resource listing).
-        doc = self.s.submit(doc.last('form'), resource_bundle='xyz')
-        assert doc.first('a', class_='sel', content='Bundle: xyz')
-        bundle = ResourceBundle.get_by_key_name('xyz')
-        assert(bundle)
-
-        # Add a resource (redirects to the resource's edit page).
-        doc = self.s.submit(doc.first('form'), resource_name='abc')
-        assert doc.first('a', class_='sel', content='Resource: abc')
-
-        # The new Resource shouldn't exist in the datastore until it is saved.
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Enter some content for the resource.
-        doc = self.s.submit(doc.first('form'), content='pqr')
-        assert Resource.get_by_key_name('abc', parent=bundle).content == 'pqr'
-
-        # Use the breadcrumb navigation bar to go back to the resource listing.
-        doc = self.s.follow('Bundle: xyz')
-
-        # Add a localized variant of the resource.
-        row = doc.first('td', content='abc').enclosing('tr')
-        doc = self.s.submit(row.first('form'), resource_lang='pl')
-        assert doc.first('a', class_='sel', content='pl: Polish')
-
-        # Enter some content for the localized resource.
-        doc = self.s.submit(doc.first('form'), content='jk')
-        assert Resource.get_by_key_name('abc:pl', parent=bundle).content == 'jk'
-
-        # Confirm that both the generic and localized resource are listed.
-        doc = self.s.follow('Bundle: xyz')
-        assert doc.first('a', class_='resource', content='abc')
-        assert doc.first('a', class_='resource', content='pl')
-
-        # Copy all the resources to a new bundle.
-        doc = self.s.submit(doc.last('form'), resource_bundle='zzz',
-                            resource_bundle_original='xyz')
-        parent = ResourceBundle.get_by_key_name('zzz')
-        assert Resource.get_by_key_name('abc', parent=parent).content == 'pqr'
-        assert Resource.get_by_key_name('abc:pl', parent=parent).content == 'jk'
-
-        # Verify that we can't add a resource to the default bundle.
-        bundle = ResourceBundle.get_by_key_name('1')
-        assert(bundle)
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.follow('1 (default)')
-        self.s.submit(doc.first('form'), resource_name='abc')
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Verify that we can't edit a resource in the default bundle.
-        self.s.back()
-        doc = self.s.follow('base.html.template')
-        self.s.submit(doc.first('form'), content='xyz')
-        assert not Resource.get_by_key_name('base.html.template', parent=bundle)
-
-        # Verify that we can't copy resources into the default bundle.
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.follow('xyz')
-        doc = self.s.submit(doc.last('form'), resource_bundle='1',
-                            resource_bundle_original='xyz')
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Switch the default bundle version.
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.submit(doc.first('form'), resource_bundle_default='xyz')
-        assert 'xyz (default)' in doc.text
-        # Undo.
-        doc = self.s.submit(doc.first('form'), resource_bundle_default='1')
-        assert '1 (default)' in doc.text
-
-
-class CounterTests(TestsBase):
-    """Tests related to Counters."""
-
-    def test_tasks_count(self):
-        """Tests the counting task."""
-        # Add two Persons and two Notes in the 'haiti' repository.
-        db.put([Person(
-            key_name='haiti:test.google.com/person.123',
-            repo='haiti',
-            author_name='_test1_author_name',
-            entry_date=TEST_DATETIME,
-            full_name='_test1_full_name',
-            sex='male',
-            date_of_birth='1970-01-01',
-            age='50-60',
-            latest_status='believed_missing'
-        ), Note(
-            key_name='haiti:test.google.com/note.123',
-            repo='haiti',
-            person_record_id='haiti:test.google.com/person.123',
-            entry_date=TEST_DATETIME,
-            status='believed_missing'
-        ), Person(
-            key_name='haiti:test.google.com/person.456',
-            repo='haiti',
-            author_name='_test2_author_name',
-            entry_date=TEST_DATETIME,
-            full_name='_test2_full_name',
-            sex='female',
-            date_of_birth='1970-02-02',
-            age='30-40',
-            latest_found=True
-        ), Note(
-            key_name='haiti:test.google.com/note.456',
-            repo='haiti',
-            person_record_id='haiti:test.google.com/person.456',
-            entry_date=TEST_DATETIME,
-            author_made_contact=True
-        )])
-
-        # Run the counting task (should finish counting in a single run).
-        doc = self.go_as_admin('/haiti/tasks/count/person')
-
-        # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
-        assert Counter.get_count('haiti', 'person.sex=male') == 1
-        assert Counter.get_count('haiti', 'person.sex=female') == 1
-        assert Counter.get_count('haiti', 'person.sex=other') == 0
-        assert Counter.get_count('haiti', 'person.found=TRUE') == 1
-        assert Counter.get_count('haiti', 'person.found=') == 1
-        assert Counter.get_count('haiti', 'person.status=believed_missing') == 1
-        assert Counter.get_count('haiti', 'person.status=') == 1
-        assert Counter.get_count('pakistan', 'person.all') == 0
-
-        # Add a Person in the 'pakistan' repository.
-        db.put(Person(
-            key_name='pakistan:test.google.com/person.789',
-            repo='pakistan',
-            author_name='_test3_author_name',
-            entry_date=TEST_DATETIME,
-            full_name='_test3_full_name',
-            sex='male',
-            date_of_birth='1970-03-03',
-            age='30-40',
-        ))
-
-        # Re-run the counting tasks for both repositories.
-        doc = self.go('/haiti/tasks/count/person')
-        doc = self.go('/pakistan/tasks/count/person')
-
-        # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
-        assert Counter.get_count('pakistan', 'person.all') == 1
-
-        # Check that the counted value shows up correctly on the main page.
-        doc = self.go('/haiti?flush=*')
-        assert 'Currently tracking' not in doc.text
-
-        # Counts less than 100 should not be shown.
-        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
-                       count_all=5L))
-        doc = self.go('/haiti?flush=*')
-        assert 'Currently tracking' not in doc.text
-
-        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
-                       count_all=86L))
-        doc = self.go('/haiti?flush=*')
-        assert 'Currently tracking' not in doc.text
-
-        # Counts should be rounded to the nearest 100.
-        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
-                       count_all=278L))
-        doc = self.go('/haiti?flush=*')
-        assert 'Currently tracking about 300 records' in doc.text
-
-        # If we don't flush, the previously rendered page should stay cached.
-        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
-                       count_all=411L))
-        doc = self.go('/haiti')
-        assert 'Currently tracking about 300 records' in doc.text
-
-        # After 10 seconds, the cached page should expire.
-        # The counter is also separately cached in memcache, so we have to
-        # flush memcache to make the expiry of the cached page observable.
-        self.advance_utcnow(seconds=11)
-        doc = self.go('/haiti?flush=memcache')
-        assert 'Currently tracking about 400 records' in doc.text
-
-    def test_admin_dashboard(self):
-        """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put([Counter(
-            scan_name='Person', repo='haiti', last_key='', count_all=278
-        ), Counter(
-            scan_name='Person', repo='pakistan', last_key='',
-            count_all=127
-        ), Counter(
-            scan_name='Note', repo='haiti', last_key='', count_all=12
-        ), Counter(
-            scan_name='Note', repo='pakistan', last_key='', count_all=8
-        )])
-        assert self.go_as_admin('/global/admin/dashboard')
-        assert self.s.status == 200
-
-
-class ConfigTests(TestsBase):
-    """Tests related to configuration settings (ConfigEntry entities)."""
-
-    # Repo and ConfigEntry entities should be wiped between tests.
-    kinds_to_keep = ['Authorization']
-
-    def tearDown(self):
-        TestsBase.tearDown(self)
-
-        # Restore the configuration settings.
-        setup.setup_repos()
-        setup.setup_configs()
-
-        # Flush the configuration cache.
-        config.cache.enable(False)
-        self.go('/haiti?lang=en&flush=config')
-
-    def get_admin_page_error_message(self):
-        error_div = self.s.doc.first('div', class_='error')
-        if error_div:
-            return 'Error message: %s' % error_div.text
-        else:
-            return 'Whole page HTML:\n%s' % self.s.doc.content
-
-    def test_config_cache_enabling(self):
-        # The tests below flush the resource cache so that the effects of
-        # the config cache become visible for testing.
-
-        # Modify the custom title directly in the datastore.
-        # With the config cache off, new values should appear immediately.
-        config.cache.enable(False)
-        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
-                                  value='{"en": "FooTitle"}'))
-        doc = self.go('/haiti?lang=en&flush=resource')
-        assert 'FooTitle' in doc.text
-        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
-                                  value='{"en": "BarTitle"}'))
-        doc = self.go('/haiti?lang=en&flush=resource')
-        assert 'BarTitle' in doc.text
-
-        # Now enable the config cache and load the main page again.
-        # This should pull the configuration value from database and cache it.
-        config.cache.enable(True)
-        doc = self.go('/haiti?lang=en&flush=config,resource')
-        assert 'BarTitle' in doc.text
-
-        # Modify the custom title directly in the datastore.
-        # The old message from the config cache should still be visible because
-        # the config cache doesn't know that the datastore changed.
-        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
-                                  value='{"en": "QuuxTitle"}'))
-        doc = self.go('/haiti?lang=en&flush=resource')
-        assert 'BarTitle' in doc.text
-
-        # After 10 minutes, the cache should pick up the new value.
-        self.advance_utcnow(seconds=601)
-        doc = self.go('/haiti?lang=en&flush=resource')
-        assert 'QuuxTitle' in doc.text
-
-
-    def test_config_namespaces(self):
-        # Tests the cache's ability to retrieve global or repository-specific
-        # configuration entries.
-        cfg_sub = config.Configuration('_foo')
-        cfg_global = config.Configuration('*')
-
-        config.set_for_repo('*',
-                            captcha_private_key='global_abcd',
-                            captcha_public_key='global_efgh',
-                            translate_api_key='global_hijk')
-        assert cfg_global.captcha_private_key == 'global_abcd'
-        assert cfg_global.captcha_public_key == 'global_efgh'
-        assert cfg_global.translate_api_key == 'global_hijk'
-
-        config.set_for_repo('_foo',
-                            captcha_private_key='abcd',
-                            captcha_public_key='efgh')
-        assert cfg_sub.captcha_private_key == 'abcd'
-        assert cfg_sub.captcha_public_key == 'efgh'
-        # If a key isn't present for a repository, its value for
-        # the global domain is retrieved.
-        assert cfg_sub.translate_api_key == 'global_hijk'
-
-    def test_repo_admin_page(self):
-        # Load the repository administration page.
-        doc = self.go_as_admin('/haiti/admin')
-        self.assertEquals(self.s.status, 200)
-
-        # Activate a new repository.
-        assert not Repo.get_by_key_name('xyz')
-        create_form = doc.first('form', id='create_repo')
-        doc = self.s.submit(create_form, new_repo='xyz')
-        assert Repo.get_by_key_name('xyz')
-
-        # Change some settings for the new repository.
-        settings_form = doc.first('form', id='save_repo')
-        doc = self.s.submit(settings_form,
-            language_menu_options='["no"]',
-            repo_titles='{"no": "Jordskjelv"}',
-            keywords='foo, bar',
-            use_family_name='false',
-            family_name_first='false',
-            use_alternate_names='false',
-            use_postal_code='false',
-            allow_believed_dead_via_ui='false',
-            min_query_word_length='1',
-            show_profile_entry='false',
-            profile_websites='["http://abc"]',
-            map_default_zoom='6',
-            map_default_center='[4, 5]',
-            map_size_pixels='[300, 300]',
-            read_auth_key_required='false',
-            start_page_custom_htmls='{"no": "start page message"}',
-            results_page_custom_htmls='{"no": "results page message"}',
-            view_page_custom_htmls='{"no": "view page message"}',
-            seek_query_form_custom_htmls='{"no": "query form message"}',
-            footer_custom_htmls='{"no": "footer message"}',
-            bad_words = 'bad, word',
-            force_https = 'false'
-        )
-        self.assertEquals(self.s.status, 200)
-        cfg = config.Configuration('xyz')
-        self.assertEquals(cfg.language_menu_options, ['no'])
-        assert cfg.repo_titles == {'no': 'Jordskjelv'}
-        assert cfg.keywords == 'foo, bar'
-        assert not cfg.use_family_name
-        assert not cfg.family_name_first
-        assert not cfg.use_alternate_names
-        assert not cfg.use_postal_code
-        assert not cfg.allow_believed_dead_via_ui
-        assert cfg.min_query_word_length == 1
-        assert not cfg.show_profile_entry
-        assert cfg.profile_websites == ['http://abc']
-        assert cfg.map_default_zoom == 6
-        assert cfg.map_default_center == [4, 5]
-        assert cfg.map_size_pixels == [300, 300]
-        assert not cfg.read_auth_key_required
-        assert cfg.bad_words == 'bad, word'
-        assert not cfg.force_https
-
-        old_updated_date = cfg.updated_date
-        self.advance_utcnow(seconds=1)
-
-        # Change settings again and make sure they took effect.
-        settings_form = doc.first('form', id='save_repo')
-        doc = self.s.submit(settings_form,
-            language_menu_options='["nl"]',
-            repo_titles='{"nl": "Aardbeving"}',
-            keywords='spam, ham',
-            use_family_name='true',
-            family_name_first='true',
-            use_alternate_names='true',
-            use_postal_code='true',
-            allow_believed_dead_via_ui='true',
-            min_query_word_length='2',
-            show_profile_entry='true',
-            profile_websites='["http://xyz"]',
-            map_default_zoom='7',
-            map_default_center='[-3, -7]',
-            map_size_pixels='[123, 456]',
-            read_auth_key_required='true',
-            start_page_custom_htmls='{"nl": "start page message"}',
-            results_page_custom_htmls='{"nl": "results page message"}',
-            view_page_custom_htmls='{"nl": "view page message"}',
-            seek_query_form_custom_htmls='{"nl": "query form message"}',
-            footer_custom_htmls='{"no": "footer message"}',
-            bad_words = 'foo, bar',
-            force_https = 'true'
-        )
-
-        cfg = config.Configuration('xyz')
-        assert cfg.language_menu_options == ['nl']
-        assert cfg.repo_titles == {'nl': 'Aardbeving'}
-        assert cfg.keywords == 'spam, ham'
-        assert cfg.use_family_name
-        assert cfg.family_name_first
-        assert cfg.use_alternate_names
-        assert cfg.use_postal_code
-        assert cfg.allow_believed_dead_via_ui
-        assert cfg.min_query_word_length == 2
-        assert cfg.show_profile_entry
-        assert cfg.profile_websites == ['http://xyz']
-        assert cfg.map_default_zoom == 7
-        assert cfg.map_default_center == [-3, -7]
-        assert cfg.map_size_pixels == [123, 456]
-        assert cfg.read_auth_key_required
-        assert cfg.bad_words == 'foo, bar'
-        assert cfg.force_https
-        # Changing configs other than 'launch_status' or 'test_mode' does not
-        # renew 'updated_date'.
-        assert cfg.updated_date == old_updated_date
-
-        # Verifies that there is a javascript constant with languages in it
-        # (for the dropdown); thus, a language that is NOT used but IS
-        # supported should appear
-        assert self.s.doc.find('bg')
-        assert self.s.doc.find('Bulgarian')
-
-        # Verifies that there is a javascript constant with the previously
-        # saved languages and titles in it
-        assert self.s.doc.find('nl')
-        assert self.s.doc.find('Aardbeving')
-
-    def test_global_admin_page(self):
-        # Load the global administration page.
-        doc = self.go_as_admin('/global/admin')
-        assert self.s.status == 200
-
-        # Change some settings.
-        settings_form = doc.first('form', id='save_global')
-        doc = self.s.submit(settings_form,
-            sms_number_to_repo=
-                '{"+198765432109": "haiti", "+8101234567890": "japan"}'
-        )
-        assert self.s.status == 200, self.get_admin_page_error_message()
-
-        # Reopen the admin page and check if the change took effect on the page.
-        doc = self.go_as_admin('/global/admin')
-        assert self.s.status == 200
-        assert (simplejson.loads(
-                    doc.first('textarea', id='sms_number_to_repo').text) ==
-                {'+198765432109': 'haiti', '+8101234567890': 'japan'})
-
-        # Also check if the change took effect in the config.
-        assert (config.get('sms_number_to_repo') ==
-            {'+198765432109': 'haiti', '+8101234567890': 'japan'})
-
-        # Change settings again and make sure they took effect.
-        settings_form = doc.first('form', id='save_global')
-        doc = self.s.submit(settings_form,
-            sms_number_to_repo=
-                '{"+198765432109": "test", "+8101234567890": "japan"}'
-        )
-        assert self.s.status == 200, self.get_admin_page_error_message()
-        assert (config.get('sms_number_to_repo') ==
-            {'+198765432109': 'test', '+8101234567890': 'japan'})
-
-    def test_deactivation(self):
-        # Load the administration page.
-        doc = self.go_as_admin('/haiti/admin')
-        assert self.s.status == 200
-
-        cfg = config.Configuration('haiti')
-        old_updated_date = cfg.updated_date
-        self.advance_utcnow(seconds=1)
-
-        # Deactivate an existing repository.
-        settings_form = doc.first('form', id='save_repo')
-        doc = self.s.submit(settings_form,
-            language_menu_options='["en"]',
-            repo_titles='{"en": "Foo"}',
-            keywords='foo, bar',
-            profile_websites='[]',
-            launch_status='deactivated',
-            deactivation_message_html='de<i>acti</i>vated',
-            start_page_custom_htmls='{"en": "start page message"}',
-            results_page_custom_htmls='{"en": "results page message"}',
-            view_page_custom_htmls='{"en": "view page message"}',
-            seek_query_form_custom_htmls='{"en": "query form message"}',
-            footer_custom_htmls='{"no": "footer message"}',
-        )
-
-        cfg = config.Configuration('haiti')
-        assert cfg.deactivated
-        assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
-        # Changing 'launch_status' renews updated_date.
-        assert cfg.updated_date != old_updated_date
-
-        # Ensure all paths listed in app.yaml are inaccessible, except /admin.
-        for path in ['', '/query', '/results', '/create', '/view',
-                     '/multiview', '/reveal', '/photo', '/embed',
-                     '/gadget', '/delete', '/sitemap', '/api/read',
-                     '/api/write', '/feeds/note', '/feeds/person']:
-            doc = self.go('/haiti%s' % path)
-            assert 'de<i>acti</i>vated' in doc.content, \
-                'path: %s, content: %s' % (path, doc.content)
-            assert doc.alltags('form') == []
-            assert doc.alltags('input') == []
-            assert doc.alltags('table') == []
-            assert doc.alltags('td') == []
-
-    def test_the_test_mode(self):
-        HTML_PATHS = ['', '/query', '/results', '/create', '/view',
-                      '/multiview', '/reveal', '/photo', '/embed', '/delete']
-
-        # First check no HTML pages show the test mode message.
-        for path in HTML_PATHS:
-            doc = self.go('/haiti%s' % path)
-            assert 'currently in test mode' not in doc.content, \
-                'path: %s, content: %s' % (path, doc.content)
-
-        # Load the administration page.
-        doc = self.go_as_admin('/haiti/admin')
-        assert self.s.status == 200
-
-        cfg = config.Configuration('haiti')
-        old_updated_date = cfg.updated_date
-        self.advance_utcnow(seconds=1)
-
-        # Enable test-mode for an existing repository.
-        settings_form = doc.first('form', id='save_repo')
-        doc = self.s.submit(settings_form,
-            language_menu_options='["en"]',
-            repo_titles='{"en": "Foo"}',
-            test_mode='true',
-            profile_websites='[]',
-            start_page_custom_htmls='{"en": "start page message"}',
-            results_page_custom_htmls='{"en": "results page message"}',
-            view_page_custom_htmls='{"en": "view page message"}',
-            seek_query_form_custom_htmls='{"en": "query form message"}',
-            footer_custom_htmls='{"en": "footer message"}')
-
-        cfg = config.Configuration('haiti')
-        assert cfg.test_mode
-        # Changing 'test_mode' renews updated_date.
-        assert cfg.updated_date != old_updated_date
-
-        # Ensure all HTML pages show the test mode message.
-        for path in HTML_PATHS:
-            doc = self.go('/haiti%s' % path)
-            assert 'currently in test mode' in doc.content, \
-                'path: %s, content: %s' % (path, doc.content)
-
-    def test_custom_messages(self):
-        # Load the administration page.
-        doc = self.go_as_admin('/haiti/admin')
-        assert self.s.status == 200
-
-        # Edit the custom text fields
-        settings_form = doc.first('form', id='save_repo')
-        doc = self.s.submit(settings_form,
-            language_menu_options='["en"]',
-            repo_titles='{"en": "Foo"}',
-            keywords='foo, bar',
-            profile_websites='[]',
-            start_page_custom_htmls=
-                '{"en": "<b>English</b> start page message",'
-                ' "fr": "<b>French</b> start page message"}',
-            results_page_custom_htmls=
-                '{"en": "<b>English</b> results page message",'
-                ' "fr": "<b>French</b> results page message"}',
-            view_page_custom_htmls=
-                '{"en": "<b>English</b> view page message",'
-                ' "fr": "<b>French</b> view page message"}',
-            seek_query_form_custom_htmls=
-                '{"en": "<b>English</b> query form message",'
-                ' "fr": "<b>French</b> query form message"}',
-            footer_custom_htmls=
-                '{"en": "<b>English</b> footer message",'
-                ' "fr": "<b>French</b> footer message"}',
-        )
-
-        cfg = config.Configuration('haiti')
-        assert cfg.start_page_custom_htmls == \
-            {'en': '<b>English</b> start page message',
-             'fr': '<b>French</b> start page message'}
-        assert cfg.results_page_custom_htmls == \
-            {'en': '<b>English</b> results page message',
-             'fr': '<b>French</b> results page message'}
-        assert cfg.view_page_custom_htmls == \
-            {'en': '<b>English</b> view page message',
-             'fr': '<b>French</b> view page message'}
-        assert cfg.seek_query_form_custom_htmls == \
-            {'en': '<b>English</b> query form message',
-             'fr': '<b>French</b> query form message'}
-        assert cfg.footer_custom_htmls == \
-            {'en': '<b>English</b> footer message',
-             'fr': '<b>French</b> footer message'}
-
-        # Add a person record
-        db.put(Person(
-            key_name='haiti:test.google.com/person.1001',
-            repo='haiti',
-            entry_date=TEST_DATETIME,
-            full_name='_status_full_name',
-            author_name='_status_author_name'
-        ))
-
-        # Check for custom message on main page
-        doc = self.go('/haiti?flush=*')
-        assert 'English start page message' in doc.text
-        doc = self.go('/haiti?flush=*&lang=fr')
-        assert 'French start page message' in doc.text
-        doc = self.go('/haiti?flush=*&lang=ht')
-        assert 'English start page message' in doc.text
-
-        # Check for custom messages on results page
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=en')
-        assert 'English results page message' in doc.text
-        assert 'English query form message' in doc.text
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=fr')
-        assert 'French results page message' in doc.text
-        assert 'French query form message' in doc.text
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=ht')
-        assert 'English results page message' in doc.text
-        assert 'English query form message' in doc.text
-
-        # Check for custom message on view page
-        doc = self.go('/haiti/view?id=test.google.com/person.1001&lang=en')
-        assert 'English view page message' in doc.text
-        doc = self.go(
-            '/haiti/view?id=test.google.com/person.1001&lang=fr')
-        assert 'French view page message' in doc.text
-        doc = self.go(
-            '/haiti/view?id=test.google.com/person.1001&lang=ht')
-        assert 'English view page message' in doc.text
-
-
-class SecretTests(TestsBase):
-    """Tests that manipulate Secret entities."""
-
-    def test_analytics_id(self):
-        """Checks that the analytics_id Secret is used for analytics."""
-        doc = self.go('/haiti/create')
-        assert 'getTracker(' not in doc.content
-
-        db.put(Secret(key_name='analytics_id', secret='analytics_id_xyz'))
-
-        doc = self.go('/haiti/create')
-        assert "getTracker('analytics_id_xyz')" in doc.content
-
-    def test_maps_api_key(self):
-        """Checks that maps don't appear when there is no maps_api_key."""
-        db.put(Person(
-            key_name='haiti:test.google.com/person.1001',
-            repo='haiti',
-            entry_date=TEST_DATETIME,
-            full_name='_status_full_name',
-            author_name='_status_author_name'
-        ))
-        doc = self.go('/haiti/create?role=provide')
-        assert 'id="clickable_map"' not in doc.content
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
-        assert 'id="clickable_map"' not in doc.content
-
-        db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
-
-        doc = self.go('/haiti/create?role=provide')
-        assert 'maps_api_key_xyz' in doc.content
-        assert 'id="clickable_map"' in doc.content
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
-        assert 'maps_api_key_xyz' in doc.content
-        assert 'id="clickable_map"' in doc.content
-
-
-class FeedTests(TestsBase):
-    """Tests atom feeds.
-
-    TODO(ryok): move feed tests from PersonNoteTests to FeedTests.
-    """
-    def setUp(self):
-        TestsBase.setUp(self)
-        configure_api_logging()
-
-    def tearDown(self):
-        config.set_for_repo('haiti', deactivated=False)
-        config.set_for_repo('japan', test_mode=False)
-        TestsBase.tearDown(self)
-
-    def test_repo_feed_non_existing_repo(self):
-        self.go('/none/feeds/repo')
-        assert self.s.status == 404
-
-    def test_repo_feed_deactivated_repo(self):
-        config.set_for_repo('haiti', deactivated=True)
-        doc = self.go('/haiti/feeds/repo')
-        expected_content = '''\
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:gpf="http://schemas.google.com/personfinder/2012"
-      xmlns:georss="http://www.georss.org/georss">
-  <id>http://%s/personfinder/haiti/feeds/repo</id>
-  <title>Person Finder Repository Feed</title>
-</feed>
-''' % self.hostport
-        assert expected_content == doc.content, \
-            text_diff(expected_content, doc.content)
-
-    def test_repo_feed_activated_repo(self):
-        doc = self.go('/haiti/feeds/repo')
-        expected_content = '''\
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:gpf="http://schemas.google.com/personfinder/2012"
-      xmlns:georss="http://www.georss.org/georss">
-  <id>http://%s/personfinder/haiti/feeds/repo</id>
-  <title>Person Finder Repository Feed</title>
-  <updated>2010-01-12T00:00:00Z</updated>
-  <entry>
-    <id>%s/haiti</id>
-    <published>2010-01-12T00:00:00Z</published>
-    <updated>2010-01-12T00:00:00Z</updated>
-    <title xml:lang="en">Haiti Earthquake</title>
-    <content type="text/xml">
-      <gpf:repo>
-        <gpf:title xml:lang="en">Haiti Earthquake</gpf:title>
-        <gpf:title xml:lang="ht">Tranbleman Tè an Ayiti</gpf:title>
-        <gpf:title xml:lang="fr">Séisme en Haïti</gpf:title>
-        <gpf:title xml:lang="es">Terremoto en Haití</gpf:title>
-        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
-        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
-        <gpf:test_mode>false</gpf:test_mode>
-        <gpf:location>
-          <georss:point>18.968637 -72.284546</georss:point>
-        </gpf:location>
-      </gpf:repo>
-    </content>
-  </entry>
-</feed>
-''' % (self.hostport, ROOT_URL)
-        assert expected_content == doc.content, \
-            text_diff(expected_content, doc.content)
-
-        # verify we logged the repo read.
-        verify_api_log(ApiActionLog.REPO, api_key='')
-
-    def test_repo_feed_all_launched_repos(self):
-        config.set_for_repo('haiti',
-                deactivated=True, launched=True, test_mode=False)
-        config.set_for_repo('japan',
-                deactivated=False, launched=True, test_mode=True,
-                updated_date=utils.get_timestamp(
-                        datetime.datetime(2012, 03, 11)))
-        config.set_for_repo('pakistan',
-                deactivated=False, launched=False, test_mode=False)
-
-        # 'haiti', 'japan', and 'pakistan' exist in the datastore. Only those
-        # which are 'launched' and not 'deactivated' i.e., only 'japan' should
-        # appear in the feed.
-        doc = self.go('/global/feeds/repo')
-        expected_content = '''\
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:gpf="http://schemas.google.com/personfinder/2012"
-      xmlns:georss="http://www.georss.org/georss">
-  <id>http://%s/personfinder/global/feeds/repo</id>
-  <title>Person Finder Repository Feed</title>
-  <updated>2012-03-11T00:00:00Z</updated>
-  <entry>
-    <id>%s/japan</id>
-    <published>2011-03-11T00:00:00Z</published>
-    <updated>2012-03-11T00:00:00Z</updated>
-    <title xml:lang="ja">2011 日本地震</title>
-    <content type="text/xml">
-      <gpf:repo>
-        <gpf:title xml:lang="ja">2011 日本地震</gpf:title>
-        <gpf:title xml:lang="en">2011 Japan Earthquake</gpf:title>
-        <gpf:title xml:lang="ko"></gpf:title>
-        <gpf:title xml:lang="zh-CN">2011 日本地震</gpf:title>
-        <gpf:title xml:lang="zh-TW">2011 日本地震</gpf:title>
-        <gpf:title xml:lang="pt-BR">2011 Terremoto no Japão</gpf:title>
-        <gpf:title xml:lang="es">2011 Terremoto en Japón</gpf:title>
-        <gpf:read_auth_key_required>true</gpf:read_auth_key_required>
-        <gpf:search_auth_key_required>true</gpf:search_auth_key_required>
-        <gpf:test_mode>true</gpf:test_mode>
-        <gpf:location>
-          <georss:point>38 140.7</georss:point>
-        </gpf:location>
-      </gpf:repo>
-    </content>
-  </entry>
-</feed>
-''' % (self.hostport, ROOT_URL)
-        assert expected_content == doc.content, \
-            text_diff(expected_content, doc.content)
-
-        # verify we logged the repo read.
-        verify_api_log(ApiActionLog.REPO, api_key='')
-
-
-class DownloadFeedTests(TestsBase):
-    """Tests for the tools/download_feed.py script."""
-    def setUp(self):
-        TestsBase.setUp(self)
-        self.setup_person_and_note()
-        fd, self.filename = tempfile.mkstemp()
-        os.close(fd)
-
-    def tearDown(self):
-        os.remove(self.filename)
-        TestsBase.tearDown(self)
-
-    def test_download_xml(self):
-        url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
-        download_feed.main('-q', '-o', self.filename, url)
-        output = open(self.filename).read()
-        assert '<pfif:pfif ' in output
-        assert '<pfif:person>' in output
-        assert '<pfif:given_name>_test_given_name</pfif:given_name>' in output
-
-    def test_download_csv(self):
-        url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
-        download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'family_name,given_name,age', url)
-        lines = open(self.filename).readlines()
-        assert len(lines) == 2
-        assert lines[0].strip() == 'family_name,given_name,age'
-        assert lines[1].strip() == '_test_family_name,_test_given_name,52'
-
-    def test_download_notes(self):
-        url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport
-        download_feed.main('-q', '-o', self.filename, '-n', url)
-        output = open(self.filename).read()
-        assert '<pfif:pfif ' in output
-        assert '<pfif:note>' in output
-        assert '<pfif:text>Testing</pfif:text>' in output
-
-
-class ImportTests(TestsBase):
-    """Tests for CSV import page at /api/import."""
-    def setUp(self):
-        TestsBase.setUp(self)
-        config.set_for_repo(
-            'haiti',
-            api_action_logging=True)
-        self.filename = None
-
-    def tearDown(self):
-        if self.filename:
-            os.remove(self.filename)
-        TestsBase.tearDown(self)
-
-    def _write_csv_file(self, content):
-        # TODO(ryok): We should use StringIO instead of a file on disk. Update
-        # scrape.py to support StringIO.
-        fd, self.filename = tempfile.mkstemp()
-        os.fdopen(fd, 'w').write('\n'.join(content))
-
-    def test_import_no_csv(self):
-        """Verifies an error message is shown when no CSV file is uploaded."""
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key')
-        assert 'Please specify at least one CSV file.' in doc.text
-
-    def test_import_invalid_authentication_key(self):
-        """Verifies an error message is shown when auth key is invalid."""
-        self._write_csv_file([
-            'person_record_id,source_date,full_name',
-            'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='bad_key', content=open(self.filename))
-        assert 'Missing or invalid authorization key' in doc.text
-
-    def test_import_broken_csv(self):
-        """Verifies an error message is shown when a broken CSV is imported."""
-        self._write_csv_file([
-            'person_record_id,source_date,\0full_name',  # contains null
-            'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'The CSV file is formatted incorrectly' in doc.text
-        assert Person.all().count() == 0
-        assert Note.all().count() == 0
-
-    def test_import_one_person(self):
-        """Verifies a Person entry is successfully imported."""
-        self._write_csv_file([
-            'person_record_id,source_date,full_name',
-            'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 1
-        assert Note.all().count() == 0
-        person = Person.all().get()
-        assert person.record_id == 'test.google.com/person1'
-        assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        assert person.full_name == '_test_full_name'
-        verify_api_log(ApiActionLog.WRITE, person_records=1)
-
-    def test_import_one_note(self):
-        """Verifies a Note entry is successfully imported."""
-        person = Person(
-            key_name='haiti:test.google.com/person1',
-            repo='haiti',
-            author_name='_test_author_name',
-            full_name='_test_given_name _test_family_name',
-            given_name='_test_given_name',
-            family_name='_test_family_name',
-            source_date=TEST_DATETIME,
-            entry_date=TEST_DATETIME,
-            latest_status='',
-        )
-        db.put(person)
-
-        self._write_csv_file([
-            'note_record_id,person_record_id,author_name,source_date,status',
-            'test.google.com/note1,test.google.com/person1,' +
-            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-
-        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-
-        assert Note.all().count() == 1
-        note = Note.all().get()
-        assert note.record_id == 'test.google.com/note1'
-        assert note.person_record_id == 'test.google.com/person1'
-        assert note.author_name == '_test_author_name'
-        assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        assert note.status == 'believed_alive'
-
-        assert Person.all().count() == 1
-        person = Person.all().get()
-        assert person.latest_status == 'believed_alive'
-
-        verify_api_log(ApiActionLog.WRITE, note_records=1)
-
-    def test_import_only_digit_record_id(self):
-        """Verifies that a Person entry is successfully imported even if the
-        record_id just contains digits, and that the imported record_id is
-        prefixed with the write domain associated with auth key."""
-        self._write_csv_file([
-            'person_record_id,source_date,full_name',
-            '1,2013-02-26T09:10:00Z,_test_full_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 1
-        assert Note.all().count() == 0
-        person = Person.all().get()
-        assert person.record_id == 'test.google.com/1'
-        assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        assert person.full_name == '_test_full_name'
-        verify_api_log(ApiActionLog.WRITE, person_records=1)
-
-    def test_import_domain_dont_match(self):
-        """Verifies we reject a Person entry whose record_id domain does not
-        match that of authentication key."""
-        self._write_csv_file([
-            'person_record_id,source_date,full_name',
-            'different.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'Person records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert 'Not in authorized domain' in doc.text
-        assert Person.all().count() == 0
-        assert Note.all().count() == 0
-        verify_api_log(ApiActionLog.WRITE)
-
-    def test_import_one_person_and_note_on_separate_rows(self):
-        """Verifies a Note entry and a Person entry on separate rows are
-        successfully imported."""
-        self._write_csv_file([
-            'person_record_id,full_name,source_date,note_record_id,author_name',
-            'test.google.com/person1,_test_full_name,2013-02-26T09:10:00Z,,',
-            'test.google.com/person1,,2013-02-26T09:10:00Z,' +
-            'test.google.com/note1,_test_author_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 1
-        assert Note.all().count() == 1
-        person = Person.all().get()
-        assert person.record_id == 'test.google.com/person1'
-        assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        assert person.full_name == '_test_full_name'
-        note = Note.all().get()
-        assert note.record_id == 'test.google.com/note1'
-        assert note.person_record_id == 'test.google.com/person1'
-        assert note.author_name == '_test_author_name'
-        assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
-
-    def test_import_one_person_and_note_on_single_row(self):
-        """Verifies a Note entry and a Person entry on a single row are
-        successfully imported."""
-        self._write_csv_file([
-            'person_record_id,full_name,source_date,note_record_id,author_name',
-            'test.google.com/person1,_test_full_name,2013-02-26T09:10:00Z,' +
-            'test.google.com/note1,_test_author_name',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-        assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 1
-        assert Note.all().count() == 1
-        person = Person.all().get()
-        assert person.record_id == 'test.google.com/person1'
-        assert person.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        assert person.full_name == '_test_full_name'
-        note = Note.all().get()
-        assert note.record_id == 'test.google.com/note1'
-        assert note.person_record_id == 'test.google.com/person1'
-        assert note.author_name == '_test_author_name'
-        assert note.source_date == datetime.datetime(2013, 2, 26, 9, 10, 0)
-        verify_api_log(ApiActionLog.WRITE, person_records=1, note_records=1)
-
-    def test_import_note_for_non_existent_person(self):
-        """Verifies a Note entry is not imported if it points to a non-existent
-        person_record_id."""
-        self._write_csv_file([
-            'note_record_id,person_record_id,author_name,source_date,status',
-            'test.google.com/note1,test.google.com/non_existent_person,' +
-            '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
-            ])
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key', content=open(self.filename))
-
-        assert 'Note records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
-        assert 'There is no person record with the person_record_id' in doc.text
-        assert Note.all().count() == 0
-        verify_api_log(ApiActionLog.WRITE)
-
-    def test_import_xlsx(self):
-        """Verifies an xlsx file import."""
-        doc = self.go('/haiti/api/import')
-        form = doc.last('form')
-        doc = self.s.submit(form, key='test_key',
-            content=open(get_test_filepath('persons.xlsx')))
-        assert 'Person records Imported 3 of 3' in re.sub('\\s+', ' ', doc.text)
-        assert Person.all().count() == 3
-        person = Person.all().get()  # check the first Person
-        assert person.record_id == 'test.google.com/12345'
-        assert person.source_date == datetime.datetime(2013, 11, 12, 7, 26, 0)
-        assert person.full_name == 'Mary Example'
-        verify_api_log(ApiActionLog.WRITE, person_records=3, note_records=0)
-
-
-# TODO(ryok): fix go_as_operator() and re-enable the tests.
-#class ApiKeyManagementTests(TestsBase):
-#    """Tests for API key management capabilities."""
-#
-#    key_management_operator = "op@example.com"
-#    
-#    def go_as_operator(self, path, **kwargs):
-#        """Navigates to the given path with an operator login."""
-#        if not self.logged_in_as_operator:
-#            scrape.setcookies(self.s.cookiejar, self.hostport,
-#                              ['dev_appserver_login=%s:True:1' %
-#                                  self.key_management_operator])
-#            self.logged_in_as_operator = True
-#        return self.go(path, **kwargs)
-#
-#    def go_as_admin(self, path, **kwargs):
-#        """Setting logged_in_as_operator to False."""
-#        ret = TestsBase.go_as_admin(self, path, **kwargs)
-#        self.logged_in_as_operator = False
-#        return ret
-#
-#    def setUp(self):
-#        TestsBase.setUp(self)
-#        self.logged_in_as_operator = False
-#        config.set_for_repo(
-#            'japan',
-#            key_management_operators=[self.key_management_operator])
-#
-#    def test_toppage(self):
-#        """Check the main page of API kay management."""
-#        url = 'http://%s/personfinder/japan/admin/api_keys' % self.hostport
-#        doc = self.go(url, redirects=0)
-#        # check if 302
-#        assert self.s.status == 302
-#        doc = self.go_as_operator(url, redirects=0)
-#        assert self.s.status == 200
-#        assert 'API Key Management' in doc.text
-#        doc = self.go_as_admin(url, redirects=0)
-#        assert self.s.status == 200
-#        assert 'API Key Management' in doc.text
-#
-#    def test_manage_key(self):
-#        """Check if a new API key is created/updated correctly."""
-#        url = 'http://%s/personfinder/japan/admin/api_keys' % self.hostport
-#        doc = self.go_as_operator(url)
-#        assert self.s.status == 200
-#        assert 'API Key Management' in doc.text
-#        form = doc.first('form', id='create-or-update-api-key')
-#        contact_name = 'Test User'
-#        contact_email = 'user@example.com'
-#        organization_name = 'Example, Inc.'
-#        domain_write_permission = 'example.com'
-#        doc = self.s.submit(
-#            form,
-#            contact_name=contact_name,
-#            contact_email=contact_email,
-#            organization_name=organization_name,
-#            domain_write_permission=domain_write_permission,
-#            read_permission='on',
-#            full_read_permission='on',
-#            search_permission='on',
-#            subscribe_permission='on',
-#            mark_notes_reviewed='on',
-#            is_valid='on',
-#        )
-#        assert 'A new API key has been created successfully.' in doc.text
-#        q = Authorization.all().filter('repo =', 'japan')
-#        authorizations = q.fetch(10)
-#        assert len(authorizations) == 1
-#        authorization = authorizations[0]
-#        # Check if the new key is correct.
-#        assert authorization.contact_name == contact_name
-#        assert authorization.contact_email == contact_email
-#        assert authorization.organization_name == organization_name
-#        assert authorization.domain_write_permission == domain_write_permission
-#        assert authorization.read_permission is True
-#        assert authorization.full_read_permission is True
-#        assert authorization.search_permission is True
-#        assert authorization.subscribe_permission is True
-#        assert authorization.mark_notes_reviewed is True
-#        assert authorization.is_valid is True
-#        # Check if the management log is created correctly.
-#        q = ApiKeyManagementLog.all().filter('repo =', 'japan')
-#        logs = q.fetch(10)
-#        assert len(logs) == 1
-#        log = logs[0]
-#        assert log.user.email() == self.key_management_operator
-#        assert log.authorization.key() == authorization.key()
-#        assert log.action == ApiKeyManagementLog.CREATE
-#
-#        # List the key and click the edit form on the list
-#        url = 'http://%s/personfinder/japan/admin/api_keys/list' % self.hostport
-#        doc = self.go_as_admin(url)
-#        assert self.s.status == 200
-#        assert 'Listing API keys for japan' in doc.text
-#        form = doc.first('form')
-#        doc = self.s.submit(form)
-#        assert self.s.status == 200
-#        assert 'Detailed information of an API key for japan' in doc.text
-#
-#        # Update the key
-#        contact_name = 'Japanese User'
-#        contact_email = 'user@example.jp'
-#        organization_name = 'Example, Corp.'
-#
-#        form = doc.first('form')
-#        doc = self.s.submit(
-#            form,
-#            contact_name=contact_name,
-#            contact_email=contact_email,
-#            organization_name=organization_name,
-#            domain_write_permission='',
-#            read_permission='',
-#            full_read_permission='',
-#            search_permission='',
-#            subscribe_permission='',
-#            mark_notes_reviewed='',
-#            is_valid='',
-#            key=str(authorization.key()),
-#        )
-#        assert 'The API key has been updated successfully.' in doc.text
-#        q = Authorization.all().filter('repo =', 'japan')
-#        authorizations = q.fetch(10)
-#        assert len(authorizations) == 1
-#        authorization = authorizations[0]
-#        # Check if the new key is correct.
-#        assert authorization.contact_name == contact_name
-#        assert authorization.contact_email == contact_email
-#        assert authorization.organization_name == organization_name
-#        assert authorization.domain_write_permission == ''
-#        assert authorization.read_permission is False
-#        assert authorization.full_read_permission is False
-#        assert authorization.search_permission is False
-#        assert authorization.subscribe_permission is False
-#        assert authorization.mark_notes_reviewed is False
-#        assert authorization.is_valid is False
-#        # Check if the management log is created correctly.
-#        q = ApiKeyManagementLog.all().filter('repo =', 'japan')
-#        logs = q.fetch(10)
-#        assert len(logs) == 2
-#        for log in logs:
-#            assert log.user.email() == self.key_management_operator
-#            assert log.authorization.key() == authorization.key()
-#            if log.action != ApiKeyManagementLog.CREATE:
-#                assert log.action == ApiKeyManagementLog.UPDATE
