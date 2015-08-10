@@ -100,7 +100,9 @@
 
   function change_text(table_id, row_number) {
     var language_codes = document.getElementById('repo_titles_language_selection_' + row_number);
-    $(table_id + '_language_selected_' + row_number).innerHTML = language_codes[row_number].text;
+    var selected_index = language_codes.selectedIndex;
+    var language = language_codes[selected_index].text;
+    $(table_id + '_language_selected_' + row_number).innerHTML = language;
   }
 
   /* Adds a row to the languages table so that the user can add a new language
