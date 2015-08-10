@@ -14,7 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Test cases for end-to-end testing.  Run with the server_tests script."""
+"""Test cases for end-to-end testing.  Run with the server_tests script.
+
+See scrape.py for methods available for the document object returned by self.s.go.
+"""
 
 import calendar
 import datetime
