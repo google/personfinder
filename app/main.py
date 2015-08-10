@@ -218,18 +218,23 @@ def get_language_options(request, config, current_lang):
             [get_language_option(request, lang, lang == current_lang)
              for lang in primary_langs],
         'all':
+            # We put both 'primary' and 'all' languages into a single <select>
+            # box (See app/resources/language-menu.html.template).
+            # If current_lang is in the primary languages, we mark the
+            # language as is_selected in 'primary', not in 'all', to make sure
+            # a single option is selected in the <select> box.
             [get_language_option(
                 request, lang,
                 lang == current_lang and lang not in primary_langs)
              for lang in all_langs],
     }
 
-def get_language_option(request, lang, is_current):
+def get_language_option(request, lang, is_selected):
     return {
         'lang': lang,
         'endonym': const.LANGUAGE_ENDONYMS.get(lang, '?'),
         'url': utils.set_url_param(request.url, 'lang', lang),
-        'is_current': is_current,
+        'is_selected': is_selected,
     }
 
 def get_secret(name):

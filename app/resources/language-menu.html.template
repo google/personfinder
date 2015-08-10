@@ -25,7 +25,7 @@
     {% for option in env.language_options.primary %}
       <option
           value="{{option.url}}"
-          {% if option.is_current %}selected="selected"{% endif %}>
+          {% if option.is_selected %}selected="selected"{% endif %}>
         {{option.endonym}}
       </option>
     {% endfor %}
@@ -36,7 +36,7 @@
     {% for option in env.language_options.all %}
       <option
           value="{{option.url}}"
-          {% if option.is_current %}selected="selected"{% endif %}>
+          {% if option.is_selected %}selected="selected"{% endif %}>
         {{option.endonym}}
       </option>
     {% endfor %}
