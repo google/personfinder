@@ -100,7 +100,6 @@
 
   function change_text(table_id, row_number) {
     var language_codes = document.getElementById('repo_titles_language_selection_' + row_number);
-console.log(table_id);
     $(table_id + '_language_selected_' + row_number).innerHTML = language_codes[row_number].text;
   }
 
