@@ -174,8 +174,8 @@
     selected_language_col.appendChild(selected_language);
   
     var title_col = row.insertCell(cur_col++);
-    var title = document.createElement('input');
-    title.type = 'text';
+    var title = document.createElement('textarea');
+    title.cols = 72;
     title.id = table_id + '_language_value_' + iteration;
     title_col.appendChild(title);
     return iteration; 
