@@ -67,7 +67,6 @@
   function validate_settings() {
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
-    var custom_message_table_ids = ['repo_titles', 'start_page_custom_htmls', 'results_page_custom_htmls', 'view_page_custom_htmls', 'seek_query_form_custom_htmls', 'footer_custom_htmls'];
     var used_languages = [];
     var languages_to_values = {};
 
@@ -80,7 +79,7 @@
       }
       if (arr_contains(used_languages, language_code)) {
         alert("You entered the same language (" + language_code + ") twice. " +
-             "That's not allowed.");
+              "That's not allowed.");
         return false;
       }
       used_languages.push(language_code);
@@ -89,6 +88,14 @@
     // Copy the dropdowns and the titles into the text boxes that will
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
+    var custom_message_table_ids = [
+      'repo_titles', 
+      'start_page_custom_htmls', 
+      'results_page_custom_htmls', 
+      'view_page_custom_htmls', 
+      'seek_query_form_custom_htmls', 
+      'footer_custom_htmls'
+    ];
     for(var id_num = 0; id_num < custom_message_table_ids.length; id_num++){
       var table_name = custom_message_table_ids[id_num];
       for(var i = 1; i < dropdown_index; i++){
@@ -216,13 +223,13 @@
   // Adds rows to the languages table for each language already in the database
   function add_initial_languages() {
     // Saved languages and titles for this repository
-    var configsan = {{configsan|safe|default:'[]'}};
-    var LANGUAGES = configsan['language_menu_options'];
+    var all_view_config_json = {{all_view_config_json|safe|default:'[]'}};
+    var LANGUAGES = all_view_config_json['language_menu_options'];
     var table_ids = ['repo_titles', 'start_page_custom_htmls', 'results_page_custom_htmls', 'view_page_custom_htmls', 'seek_query_form_custom_htmls', 'footer_custom_htmls'];
     //foreach language, add that language and its title
     for (var id_num = 0; id_num < table_ids.length; id_num++) {
       var table_id = table_ids[id_num];
-      var table_name = configsan[table_id];
+      var table_name = all_view_config_json[table_id];
       for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
         var language = LANGUAGES[lang_num];
         if (table_id == 'repo_titles') {
@@ -233,7 +240,7 @@
           change_text(row_number);
         }
         if (table_name[language] != undefined) {
-	  $(table_id + '_language_value_' + row_number).value = table_name[language];
+          $(table_id + '_language_value_' + row_number).value = table_name[language];
         }
       }
     }
@@ -241,23 +248,23 @@
 
    function insert_profile_websites_example() {
      $('profile_websites').value = [
-	 '[',
-	 '    {',
-	 '        "name": "Facebook",',
-	 '        "icon_filename": "facebook-16x16.png",',
-	 '        "url_regexp": "http://(www\\\\.)?facebook\\\\.com/.*"',
-	 '    },',
-	 '    {',
-	 '        "name": "Twitter",',
-	 '        "icon_filename": "twitter-16x16.png",',
-	 '        "url_regexp": "http://(www\\\\.)?twitter\\\\.com/.*"',
-	 '    },',
-	 '    {',
-	 '        "name": "LinkedIn",',
-	 '        "icon_filename": "linkedin-16x16.png",',
-	 '        "url_regexp": "http://(www\\\\.)?linkedin\\\\.com/.*"',
-	 '    }',
-	 ']'].join('\n');
+         '[',
+         '    {',
+         '        "name": "Facebook",',
+         '        "icon_filename": "facebook-16x16.png",',
+         '        "url_regexp": "http://(www\\\\.)?facebook\\\\.com/.*"',
+         '    },',
+         '    {',
+         '        "name": "Twitter",',
+         '        "icon_filename": "twitter-16x16.png",',
+         '        "url_regexp": "http://(www\\\\.)?twitter\\\\.com/.*"',
+         '    },',
+         '    {',
+         '        "name": "LinkedIn",',
+         '        "icon_filename": "linkedin-16x16.png",',
+         '        "url_regexp": "http://(www\\\\.)?linkedin\\\\.com/.*"',
+         '    }',
+         ']'].join('\n');
    }
  </script>
 
@@ -265,16 +272,16 @@
    <form method="get" style="display: inline-block" class="admin">
      <select name="repo" id="select_repo" onchange="select_repo_changed()">
        {% if not env.repo %}
-	 <option>Select a repository:</option>
+         <option>Select a repository:</option>
        {% endif %}
        {% for option in repo_options %}
-	 <option value="{{option.url}}"
-	   {% ifequal option.repo env.repo %}
-	     selected
-	   {% endifequal %}
-	 >
-	   {{option.repo}}
-	 </option>
+         <option value="{{option.url}}"
+           {% ifequal option.repo env.repo %}
+             selected
+           {% endifequal %}
+         >
+           {{option.repo}}
+         </option>
        {% endfor %}
        <option value="__new__">Create new...</option>
      </select>
@@ -304,87 +311,87 @@
 
      <div class="config">
        <div class="option">
-	 <input
-	     type="radio" name="launch_status" value="staging"
-	     id="launch_status_staging"
-	     {% if view_config.launch_status == "staging" %}
-	       checked
-	     {% endif %}>
-	 <label for="launch_status_staging">
-	   Staging
-	 </label>
-	 <div class="note">
-	   <div>
-	     <strong>Use case:</strong> Keep a repository in this mode while
-	     testing the repository before public announcement.
-	   </div>
-	   <div>
-	     <strong>Effect:</strong> The repository is neither listed on
-	     <a href="{{env.global_url}}" target="_blank">the home page</a> nor
-	     <a href="{{env.global_url}}/feeds/repo" target="_blank">the
-	     repository feed</a>. So only people who know the URL can discover
-	     the repository. It is the same as "Activated" except for that.
-	   </div>
-	 </div>
+         <input
+             type="radio" name="launch_status" value="staging"
+             id="launch_status_staging"
+             {% if view_config.launch_status == "staging" %}
+               checked
+             {% endif %}>
+         <label for="launch_status_staging">
+           Staging
+         </label>
+         <div class="note">
+           <div>
+             <strong>Use case:</strong> Keep a repository in this mode while
+             testing the repository before public announcement.
+           </div>
+           <div>
+             <strong>Effect:</strong> The repository is neither listed on
+             <a href="{{env.global_url}}" target="_blank">the home page</a> nor
+             <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+             repository feed</a>. So only people who know the URL can discover
+             the repository. It is the same as "Activated" except for that.
+           </div>
+         </div>
        </div>
        <div class="option">
-	 <input
-	     type="radio" name="launch_status" value="activated"
-	     id="launch_status_activated"
-	     {% if view_config.launch_status == "activated" %}
-	       checked
-	     {% endif %}>
-	 <label for="launch_status_activated">
-	   Activated
-	 </label>
-	 <div class="note">
-	   <div>
-	     <strong>Use case:</strong> Keep a repository in this mode while the
-	     repository is used by end users.
-	   </div>
-	   <div>
-	     <strong>Effect:</strong> The repository is listed on
-	     <a href="{{env.global_url}}" target="_blank">the home page</a> and
-	     <a href="{{env.global_url}}/feeds/repo" target="_blank">the
-	     repository feed</a>. So end users can discover the repository.
-	   </div>
-	 </div>
+         <input
+             type="radio" name="launch_status" value="activated"
+             id="launch_status_activated"
+             {% if view_config.launch_status == "activated" %}
+               checked
+             {% endif %}>
+         <label for="launch_status_activated">
+           Activated
+         </label>
+         <div class="note">
+           <div>
+             <strong>Use case:</strong> Keep a repository in this mode while the
+             repository is used by end users.
+           </div>
+           <div>
+             <strong>Effect:</strong> The repository is listed on
+             <a href="{{env.global_url}}" target="_blank">the home page</a> and
+             <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+             repository feed</a>. So end users can discover the repository.
+           </div>
+         </div>
        </div>
        <div class="option">
-	 <input
-	     type="radio" name="launch_status" value="deactivated"
-	     id="launch_status_deactivated"
-	     {% if view_config.launch_status == "deactivated" %}
-	       checked
-	     {% endif %}>
-	 <label for="launch_status_deactivated">
-	   Deactivated
-	 </label>
-	 <div class="note">
-	   <div>
-	     <strong>Use case:</strong> Switch to this mode to deactivate the
-	     repository.
-	   </div>
-	   <div>
-	     <strong>Effect:</strong> Replaces content of all pages with the
-	     deactivation message below. People cannot interact with the
-	     repository either via web interface or API. The repository is
-	     neither listed on
-	     <a href="{{env.global_url}}" target="_blank">the home page</a> nor
-	     <a href="{{env.global_url}}/feeds/repo" target="_blank">the
-	     repository feed</a>.
-	   </div>
-	 </div>
+         <input
+             type="radio" name="launch_status" value="deactivated"
+             id="launch_status_deactivated"
+             {% if view_config.launch_status == "deactivated" %}
+               checked
+             {% endif %}>
+         <label for="launch_status_deactivated">
+           Deactivated
+         </label>
+         <div class="note">
+           <div>
+             <strong>Use case:</strong> Switch to this mode to deactivate the
+             repository.
+           </div>
+           <div>
+             <strong>Effect:</strong> Replaces content of all pages with the
+             deactivation message below. People cannot interact with the
+             repository either via web interface or API. The repository is
+             neither listed on
+             <a href="{{env.global_url}}" target="_blank">the home page</a> nor
+             <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+             repository feed</a>.
+           </div>
+         </div>
        </div>
      </div>
 
      <div class="config">
        <label for="deactivation_message_html">
-	 Deactivation message (HTML):</label>
+         Deactivation message (HTML):</label>
        <div class="response">
-	 <textarea name="deactivation_message_html"
-	     id="deactivation_message_html" rows=6 cols=80
-	     >{{view_config.deactivation_message_html|default:""}}</textarea>
+         <textarea name="deactivation_message_html"
+             id="deactivation_message_html" rows=6 cols=80
+             >{{view_config.deactivation_message_html|default:""}}</textarea>
        </div>
      </div>
    </fieldset>
@@ -394,58 +401,58 @@
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="test_mode" value="true"
-	   id="test_mode_true"
-	   {{view_config.test_mode|yesno:"checked,"}}>
-	 <label for="test_mode_true">
-	   Test mode
-	 </label>
-	 <div class="note">
-	   <div>
-	     <strong>Use case:</strong> This mode is usually used for always-on
-	     repository such as "japan" repository, while no crisis is
-	     on-going.
-	   </div>
-	   <div>
-	     <strong>Effect:</strong> In this mode, all records are deleted
-	     about {{test_mode_min_age_hours}} hours after they are created,
-	     regardless of their specified expiry date. We do this to clean up
-	     spams, because it's not feasible to perform manual spam monitoring
-	     all the time for always-on repositories.
-	   </div>
-	   <div>
-	     <strong>Note:</strong> If you switch from real mode to
-	     test mode, existing records that are more than
-	     {{test_mode_min_age_hours}} old will soon be deleted.
-	     Also note that (unlike regular deletions or expirations)
-	     these deletions do not generate expiry notices
-	     in the outgoing PFIF feeds,
-	     so any clients that import test records into their own repositories
-	     cannot be expected to delete them on the same short schedule.
-	   </div>
-	 </div>
+         <input type="radio" name="test_mode" value="true"
+           id="test_mode_true"
+           {{view_config.test_mode|yesno:"checked,"}}>
+         <label for="test_mode_true">
+           Test mode
+         </label>
+         <div class="note">
+           <div>
+             <strong>Use case:</strong> This mode is usually used for always-on
+             repository such as "japan" repository, while no crisis is
+             on-going.
+           </div>
+           <div>
+             <strong>Effect:</strong> In this mode, all records are deleted
+             about {{test_mode_min_age_hours}} hours after they are created,
+             regardless of their specified expiry date. We do this to clean up
+             spams, because it's not feasible to perform manual spam monitoring
+             all the time for always-on repositories.
+           </div>
+           <div>
+             <strong>Note:</strong> If you switch from real mode to
+             test mode, existing records that are more than
+             {{test_mode_min_age_hours}} old will soon be deleted.
+             Also note that (unlike regular deletions or expirations)
+             these deletions do not generate expiry notices
+             in the outgoing PFIF feeds,
+             so any clients that import test records into their own repositories
+             cannot be expected to delete them on the same short schedule.
+           </div>
+         </div>
        </div>
        <div class="option">
-	 <input type="radio" name="test_mode" value="false"
-	     id="test_mode_false"
-	     {{view_config.test_mode|yesno:",checked"}}>
-	 <label for="test_mode_false">
-	   Real mode
-	 </label>
-	 <div class="note">
-	   <div>
-	     <strong>Use case:</strong> Use this mode while the repository is
-	     actively used for a real crisis.
-	   </div>
-	   <div>
-	     <strong>Effect:</strong> In this mode, records last until their
-	     specified expiry date.
-	   </div>
-	   <div>
-	     <strong>Note:</strong> If you switch from test mode to real mode,
-	     any existing records are retained and will be treated as normal.
-	   </div>
-	 </div>
+         <input type="radio" name="test_mode" value="false"
+             id="test_mode_false"
+             {{view_config.test_mode|yesno:",checked"}}>
+         <label for="test_mode_false">
+           Real mode
+         </label>
+         <div class="note">
+           <div>
+             <strong>Use case:</strong> Use this mode while the repository is
+             actively used for a real crisis.
+           </div>
+           <div>
+             <strong>Effect:</strong> In this mode, records last until their
+             specified expiry date.
+           </div>
+           <div>
+             <strong>Note:</strong> If you switch from test mode to real mode,
+             any existing records are retained and will be treated as normal.
+           </div>
+         </div>
        </div>
      </div>
 
@@ -456,60 +463,60 @@
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="force_https" value="true"
-	   id="force_https_true"
-	   {{view_config.force_https|yesno:"checked,"}}>
-	 <label for="force_https_true">
-	   Force https
-	 </label>
-	 <div class="note">
-	   Force all requests to this repo to be redirected through https.
-	 </div>
+         <input type="radio" name="force_https" value="true"
+           id="force_https_true"
+           {{view_config.force_https|yesno:"checked,"}}>
+         <label for="force_https_true">
+           Force https
+         </label>
+         <div class="note">
+           Force all requests to this repo to be redirected through https.
+         </div>
        </div>
        <div class="option">
-	 <input type="radio" name="force_https" value="false"
-	     id="force_https_false"
-	     {{view_config.force_https|yesno:",checked"}}>
-	 <label for="force_https_false">
-	   Allow http and https traffic
-	 </label>
-	 <div class="note">
-	   Allow requests to this repo over http or https.
-	 </div>
+         <input type="radio" name="force_https" value="false"
+             id="force_https_false"
+             {{view_config.force_https|yesno:",checked"}}>
+         <label for="force_https_false">
+           Allow http and https traffic
+         </label>
+         <div class="note">
+           Allow requests to this repo over http or https.
+         </div>
        </div>
      </div>
 
      <div class="config">
        <label for="available_languages">
-	 Available Languages (they will appear in the order shown here; the first
-	 one will be default):
+         Available Languages (they will appear in the order shown here; the first
+         one will be default):
        </label>
 
        <table id="repo_titles_table">
-	 <tr>
-	   <th><!--for the 'x' to remove a row--></th>
-	   <th>Language</th>
-	   <th>Title</th>
-	 </tr>
+         <tr>
+           <th><!--for the 'x' to remove a row--></th>
+           <th>Language</th>
+           <th>Title</th>
+         </tr>
        </table>
        <p><a href="JavaScript:void(0);" onClick="add_another_language()">
-	 Add Another Language
+         Add Another Language
        </a></p>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="language_menu_options" id="language_menu_options"
-	      value="{{view_config_json.language_menu_options}}"
-	      type="hidden" />
+              value="{{view_config_json.language_menu_options}}"
+              type="hidden" />
        <input name="repo_titles" id="repo_titles"
-	      value="{{view_config_json.repo_titles}}" type="hidden" />
+              value="{{view_config_json.repo_titles}}" type="hidden" />
      </div>
 
      <div class="config">
        <label for="keywords">
-	 Keywords in all languages (keywords separated by commas):
+         Keywords in all languages (keywords separated by commas):
        </label>
        <div class="response">
-	 <textarea name="keywords" id="keywords" rows=4 cols=80
-	   >{{view_config.keywords|default:""}}</textarea>
+         <textarea name="keywords" id="keywords" rows=4 cols=80
+           >{{view_config.keywords|default:""}}</textarea>
        </div>
      </div>
 
@@ -520,143 +527,143 @@
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="use_family_name" value="true"
-	   id="use_family_name_true"
-	   {{view_config.use_family_name|yesno:"checked,"}}>
-	 <label for="use_family_name_true">
-	   Use both given and family name fields
-	 </label>
+         <input type="radio" name="use_family_name" value="true"
+           id="use_family_name_true"
+           {{view_config.use_family_name|yesno:"checked,"}}>
+         <label for="use_family_name_true">
+           Use both given and family name fields
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="use_family_name" value="false"
-	     id="use_family_name_false"
-	     {{view_config.use_family_name|yesno:",checked"}}>
-	 <label for="use_family_name_false">
-	   Use only a single name field
-	 </label>
-       </div>
-     </div>
-
-     <div class="config">
-       <div class="option">
-	 <input type="radio" name="family_name_first" value="false"
-	     id="family_name_first_false"
-	     {{view_config.family_name_first|yesno:",checked"}}>
-	 <label for="family_name_first_false">
-	   Show given name first, then family name
-	 </label>
-       </div>
-       <div class="option">
-	 <input type="radio" name="family_name_first" value="true"
-	     id="family_name_first_true"
-	     {{view_config.family_name_first|yesno:"checked,"}}>
-	 <label for="family_name_first_true">
-	   Show family name first, then given name
-	 </label>
+         <input type="radio" name="use_family_name" value="false"
+             id="use_family_name_false"
+             {{view_config.use_family_name|yesno:",checked"}}>
+         <label for="use_family_name_false">
+           Use only a single name field
+         </label>
        </div>
      </div>
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="use_alternate_names" value="false"
-	     id="use_alternate_names_false"
-	     {{view_config.use_alternate_names|yesno:",checked"}}>
-	 <label for="use_alternate_names_false">
-	   Don't use alternate name fields (e.g. readings of Japanese names)
-	 </label>
+         <input type="radio" name="family_name_first" value="false"
+             id="family_name_first_false"
+             {{view_config.family_name_first|yesno:",checked"}}>
+         <label for="family_name_first_false">
+           Show given name first, then family name
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="use_alternate_names" value="true"
-	     id="use_alternate_names_true"
-	     {{view_config.use_alternate_names|yesno:"checked,"}}>
-	 <label for="use_alternate_names_true">
-	   Use alternate name fields (e.g. readings of Japanese names)
-	 </label>
-       </div>
-     </div>
-
-     <div class="config">
-       <div class="option">
-	 <input type="radio" name="use_postal_code" value="true"
-	     id="use_postal_code_true"
-	     {{view_config.use_postal_code|yesno:"checked,"}}>
-	 <label for="use_postal_code_true">
-	   Use the postal code field
-	 </label>
-       </div>
-       <div class="option">
-	 <input type="radio" name="use_postal_code" value="false"
-	     id="use_postal_code_false"
-	     {{view_config.use_postal_code|yesno:",checked"}}>
-	 <label for="use_postal_code_false">
-	   Hide the postal code field
-	 </label>
+         <input type="radio" name="family_name_first" value="true"
+             id="family_name_first_true"
+             {{view_config.family_name_first|yesno:"checked,"}}>
+         <label for="family_name_first_true">
+           Show family name first, then given name
+         </label>
        </div>
      </div>
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="allow_believed_dead_via_ui" value="true"
-	     id="allow_believed_dead_via_ui"
-	     {{view_config.allow_believed_dead_via_ui|yesno:"checked,"}}>
-	 <label for="allow_believed_dead_via_ui_true">
-	   Allow users to post notes with status
-	   "I have received information that this person is dead".
-	 </label>
+         <input type="radio" name="use_alternate_names" value="false"
+             id="use_alternate_names_false"
+             {{view_config.use_alternate_names|yesno:",checked"}}>
+         <label for="use_alternate_names_false">
+           Don't use alternate name fields (e.g. readings of Japanese names)
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="allow_believed_dead_via_ui" value="false"
-	     id="allow_believed_dead_via_ui"
-	     {{view_config.allow_believed_dead_via_ui|yesno:",checked"}}>
-	 <label for="allow_believed_dead_via_ui_false">
-	   Don't allow users to post notes with status
-	   "I have received information that this person is dead".
-	 </label>
+         <input type="radio" name="use_alternate_names" value="true"
+             id="use_alternate_names_true"
+             {{view_config.use_alternate_names|yesno:"checked,"}}>
+         <label for="use_alternate_names_true">
+           Use alternate name fields (e.g. readings of Japanese names)
+         </label>
+       </div>
+     </div>
+
+     <div class="config">
+       <div class="option">
+         <input type="radio" name="use_postal_code" value="true"
+             id="use_postal_code_true"
+             {{view_config.use_postal_code|yesno:"checked,"}}>
+         <label for="use_postal_code_true">
+           Use the postal code field
+         </label>
+       </div>
+       <div class="option">
+         <input type="radio" name="use_postal_code" value="false"
+             id="use_postal_code_false"
+             {{view_config.use_postal_code|yesno:",checked"}}>
+         <label for="use_postal_code_false">
+           Hide the postal code field
+         </label>
+       </div>
+     </div>
+
+     <div class="config">
+       <div class="option">
+         <input type="radio" name="allow_believed_dead_via_ui" value="true"
+             id="allow_believed_dead_via_ui"
+             {{view_config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+         <label for="allow_believed_dead_via_ui_true">
+           Allow users to post notes with status
+           "I have received information that this person is dead".
+         </label>
+       </div>
+       <div class="option">
+         <input type="radio" name="allow_believed_dead_via_ui" value="false"
+             id="allow_believed_dead_via_ui"
+             {{view_config.allow_believed_dead_via_ui|yesno:",checked"}}>
+         <label for="allow_believed_dead_via_ui_false">
+           Don't allow users to post notes with status
+           "I have received information that this person is dead".
+         </label>
        </div>
      </div>
 
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="min_query_word_length" value="1"
-	     id="min_query_word_length_1"
-	     {% ifequal view_config.min_query_word_length 1 %}
-	       checked
-	     {% endifequal %}
-	 >
-	 <label for="min_query_word_length_1">
-	   Accept queries with only 1 character
-	 </label>
+         <input type="radio" name="min_query_word_length" value="1"
+             id="min_query_word_length_1"
+             {% ifequal view_config.min_query_word_length 1 %}
+               checked
+             {% endifequal %}
+         >
+         <label for="min_query_word_length_1">
+           Accept queries with only 1 character
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="min_query_word_length" value="2"
-	     id="min_query_word_length_2"
-	     {% ifnotequal view_config.min_query_word_length 1 %}
-	       checked
-	     {% endifnotequal %}
-	 >
-	 <label for="min_query_word_length_2">
-	   Require query words to have at least 2 characters
-	 </label>
+         <input type="radio" name="min_query_word_length" value="2"
+             id="min_query_word_length_2"
+             {% ifnotequal view_config.min_query_word_length 1 %}
+               checked
+             {% endifnotequal %}
+         >
+         <label for="min_query_word_length_2">
+           Require query words to have at least 2 characters
+         </label>
        </div>
      </div>
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="show_profile_entry" value="true"
-	     id="show_profile_entry_true"
-	     {{view_config.show_profile_entry|yesno:"checked,"}}>
-	 <label for="show_profile_entry_true">
-	   Show input fields for profile pages
-	 </label>
+         <input type="radio" name="show_profile_entry" value="true"
+             id="show_profile_entry_true"
+             {{view_config.show_profile_entry|yesno:"checked,"}}>
+         <label for="show_profile_entry_true">
+           Show input fields for profile pages
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="show_profile_entry" value="false"
-	     id="show_profile_entry_false"
-	     {{view_config.show_profile_entry|yesno:",checked"}}>
-	 <label for="show_profile_entry_false">
-	   Hide input fields for profile pages
-	 </label>
+         <input type="radio" name="show_profile_entry" value="false"
+             id="show_profile_entry_false"
+             {{view_config.show_profile_entry|yesno:",checked"}}>
+         <label for="show_profile_entry_false">
+           Hide input fields for profile pages
+         </label>
        </div>
      </div>
 
@@ -666,8 +673,8 @@
        order of display) <a href="javascript:insert_profile_websites_example()"
        >click to insert an example</a>:</label>
        <div class="response">
-	 <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
-	   >{{view_config_json.profile_websites|default:"[]"}}</textarea>
+         <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
+           >{{view_config_json.profile_websites|default:"[]"}}</textarea>
        </div>
      </div>
    </fieldset>
@@ -678,28 +685,28 @@
      <div class="config">
        <label for="map_default_zoom">Default zoom level (integer):</label>
        <div class="response">
-	 <input name="map_default_zoom" id="map_default_zoom" size=24
-	     value="{{view_config_json.map_default_zoom}}">
+         <input name="map_default_zoom" id="map_default_zoom" size=24
+             value="{{view_config_json.map_default_zoom}}">
        </div>
      </div>
 
      <div class="config">
        <label for="map_default_center">
-	 Default center [latitude north, longitude east]:
+         Default center [latitude north, longitude east]:
        </label>
        <div class="response">
-	 <input name="map_default_center" id="map_default_center" size=24
-	     value="{{view_config_json.map_default_center}}">
+         <input name="map_default_center" id="map_default_center" size=24
+             value="{{view_config_json.map_default_center}}">
        </div>
      </div>
 
      <div class="config">
        <label for="map_default_center">
-	 Map size in pixels [width, height]:
+         Map size in pixels [width, height]:
        </label>
        <div class="response">
-	 <input name="map_size_pixels" id="map_size_pixels" size=24
-	     value="{{view_config_json.map_size_pixels}}">
+         <input name="map_size_pixels" id="map_size_pixels" size=24
+             value="{{view_config_json.map_size_pixels}}">
        </div>
      </div>
 
@@ -710,39 +717,39 @@
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="search_auth_key_required" value="false"
-	     id="search_auth_key_required_false"
-	     {{view_config.search_auth_key_required|yesno:",checked"}}>
-	 <label for="search_auth_key_required_false">
-	   Allow anyone to use the search API
-	 </label>
+         <input type="radio" name="search_auth_key_required" value="false"
+             id="search_auth_key_required_false"
+             {{view_config.search_auth_key_required|yesno:",checked"}}>
+         <label for="search_auth_key_required_false">
+           Allow anyone to use the search API
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="search_auth_key_required" value="true"
-	     id="search_auth_key_required_true"
-	     {{view_config.search_auth_key_required|yesno:"checked,"}}>
-	 <label for="search_auth_key_required_true">
-	   Require an authorization key to use the search API
-	 </label>
+         <input type="radio" name="search_auth_key_required" value="true"
+             id="search_auth_key_required_true"
+             {{view_config.search_auth_key_required|yesno:"checked,"}}>
+         <label for="search_auth_key_required_true">
+           Require an authorization key to use the search API
+         </label>
        </div>
      </div>
 
      <div class="config">
        <div class="option">
-	 <input type="radio" name="read_auth_key_required" value="false"
-	     id="read_auth_key_required_false"
-	     {{view_config.read_auth_key_required|yesno:",checked"}}>
-	 <label for="read_auth_key_required_false">
-	   Allow anyone to use the read API and read the feeds
-	 </label>
+         <input type="radio" name="read_auth_key_required" value="false"
+             id="read_auth_key_required_false"
+             {{view_config.read_auth_key_required|yesno:",checked"}}>
+         <label for="read_auth_key_required_false">
+           Allow anyone to use the read API and read the feeds
+         </label>
        </div>
        <div class="option">
-	 <input type="radio" name="read_auth_key_required" value="true"
-		id="read_auth_key_required_true"
-		{{view_config.read_auth_key_required|yesno:"checked,"}}>
-	 <label for="read_auth_key_required_true">
-	   Require an authorization key to use the read API and read the feeds
-	 </label>
+         <input type="radio" name="read_auth_key_required" value="true"
+                id="read_auth_key_required_true"
+                {{view_config.read_auth_key_required|yesno:"checked,"}}>
+         <label for="read_auth_key_required_true">
+           Require an authorization key to use the read API and read the feeds
+         </label>
        </div>
      </div>
 
@@ -760,15 +767,15 @@
 
       <div class="response">
 
-	<table id="start_page_custom_htmls_table">
-	  <tr>
-	    <th>Language</th>
-	    <th>Custom Message</th>
-	  </tr>
-	</table>
+        <table id="start_page_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="start_page_custom_htmls" id="start_page_custom_htmls"
-	      value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
+              value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
 
       </div>
     </div>
@@ -779,15 +786,15 @@
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-	<table id="results_page_custom_htmls_table">
-	  <tr>
-	    <th>Language</th>
-	    <th>Custom Message</th>
-	  </tr>
-	</table>
+        <table id="results_page_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="results_page_custom_htmls" id="results_page_custom_htmls"
-	      value="{{view_config_json.results_page_custom_htmls}}" type="hidden" />
+              value="{{view_config_json.results_page_custom_htmls}}" type="hidden" />
       </div>
     </div>
 
@@ -797,15 +804,15 @@
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-	<table id="view_page_custom_htmls_table">
-	  <tr>
-	    <th>Language</th>
-	    <th>Custom Message</th>
-	  </tr>
-	</table>
+        <table id="view_page_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="view_page_custom_htmls" id="view_page_custom_htmls"
-	      value="{{view_config_json.view_page_custom_htmls}}" type="hidden" />
+              value="{{view_config_json.view_page_custom_htmls}}" type="hidden" />
       </div>
     </div>
 
@@ -815,15 +822,15 @@
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-	<table id="seek_query_form_custom_htmls_table">
-	  <tr>
-	    <th>Language</th>
-	    <th>Custom Message</th>
-	  </tr>
-	</table>
+        <table id="seek_query_form_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="seek_query_form_custom_htmls" id="seek_query_form_custom_htmls"
-	      value="{{view_config_json.seek_query_form_custom_htmls}}" type="hidden" />
+              value="{{view_config_json.seek_query_form_custom_htmls}}" type="hidden" />
       </div>
     </div>
 
@@ -833,15 +840,15 @@
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-	<table id="footer_custom_htmls_table">
-	  <tr>
-	    <th>Language</th>
-	    <th>Custom Message</th>
-	  </tr>
-	</table>
+        <table id="footer_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
        <!-- Aggregates the above forms into one form for ease of parsing -->
        <input name="footer_custom_htmls" id="footer_custom_htmls"
-	      value="{{view_config_json.footer_custom_htmls}}" type="hidden" />
+              value="{{view_config_json.footer_custom_htmls}}" type="hidden" />
       </div>
     </div>
 
