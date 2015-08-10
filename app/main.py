@@ -29,7 +29,6 @@ from google.appengine.ext import webapp
 import config
 import const
 import django.utils.html
-import legacy_redirect
 import logging
 import model
 import pfif
@@ -121,13 +120,6 @@ def get_repo_and_action(request):
     of the URL path after the repo, with no leading or trailing slashes."""
     scheme, netloc, path, _, _ = urlparse.urlsplit(request.url)
     parts = path.lstrip('/').split('/')
-
-    # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
-    import legacy_redirect
-    if legacy_redirect.get_subdomain(request):
-        repo = legacy_redirect.get_subdomain(request)
-        action = '/'.join(parts)
-        return repo, action
 
     # Depending on whether we're serving from appspot directly or
     # google.org/personfinder we could have /global or /personfinder/global
@@ -476,13 +468,6 @@ class Main(webapp.RequestHandler):
 
         # If requested, flush caches before we touch anything that uses them.
         flush_caches(*request.get('flush', '').split(','))
-
-        # check for legacy redirect:
-        # TODO(lschumacher|kpy): remove support for legacy URLS Q1 2012.
-        if legacy_redirect.do_redirect(self):
-            # stub out get/head to prevent failures.
-            self.get = self.head = lambda *args: None
-            return legacy_redirect.redirect(self)
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
