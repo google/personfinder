@@ -124,22 +124,21 @@
    * and give it a title.
    * Returns the number of the row that was added
    */
-  function add_language(table_id) {
+  function add_language() {
+    var table_id = 'repo_titles';
     var table = $(table_id + '_table');
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
     var cur_col = 0;
 
     //add the 'x'
-    if (table_id == 'repo_titles') {
-      var x_col = row.insertCell(cur_col++);
-      var x_link = document.createElement('a');
-      var x_link_text = document.createTextNode('x');
-      x_link.href = 'JavaScript:void(0);'
-      x_link.onclick = function() {remove_language(iteration)};
-      x_link.appendChild(x_link_text);
-      x_col.appendChild(x_link);
-    }
+    var x_col = row.insertCell(cur_col++);
+    var x_link = document.createElement('a');
+    var x_link_text = document.createTextNode('x');
+    x_link.href = 'JavaScript:void(0);'
+    x_link.onclick = function() {remove_language(iteration)};
+    x_link.appendChild(x_link_text);
+    x_col.appendChild(x_link);
 
     //add the languages dropdown
     var languages_col = row.insertCell(cur_col++);
@@ -197,7 +196,7 @@
   }
 
   function add_another_language() {
-    add_language('repo_titles');
+    add_language();
     for(var id_num = 1; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++){
       add_language_span(CUSTOM_MESSAGE_TABLE_IDS[id_num], 'not selected');
     }
@@ -234,7 +233,7 @@
       for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
         var language = LANGUAGES[lang_num];
         if (table_id == 'repo_titles') {
-          var row_number = add_language(table_id);
+          var row_number = add_language();
           $(table_id + '_language_selection_' + row_number).value = language;
         } else {
           var row_number = add_language_span(table_id, language);
