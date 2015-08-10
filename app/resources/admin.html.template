@@ -72,7 +72,8 @@
     //there is a title row in the table, so the dropdowns are 1-indexed
     for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
          null; dropdown_index++) {
-      var language_code = $('repo_titles_language_selection_' + dropdown_index).value;
+      var language_code = $('repo_titles_language_selection_' + 
+                             dropdown_index).value;
       if (language_code === 'unused') {
         continue;
       }
