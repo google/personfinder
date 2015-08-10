@@ -99,10 +99,9 @@
   }
 
   function change_text(table_id, row_number) {
-    var language_code = document.getElementById('repo_titles_language_selection_' + row_number).value;
-console.log(language_code);
-console.log(row_number);
-    document.getElementById(table_id + '_language_selected_' + row_number).innerHTML = language_code;
+    var language_codes = document.getElementById('repo_titles_language_selection_' + row_number);
+console.log(table_id);
+    $(table_id + '_language_selected_' + row_number).innerHTML = language_codes[row_number].text;
   }
 
   /* Adds a row to the languages table so that the user can add a new language
@@ -130,7 +129,7 @@ console.log(row_number);
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
     languages.id = table_id + '_language_selection_' + iteration;
-    languages.onchange = function() {change_text(table_id, iteration)};
+    languages.onchange = function() {change_text('start_page_custom_htmls', iteration)};//nnnnnnn
 
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
@@ -167,6 +166,7 @@ console.log(row_number);
   
     var selected_language_col = row.insertCell(cur_col++);
     var selected_language = document.createElement('span');
+
     var selected_language_text = document.createTextNode(language);
     selected_language.id = table_id + '_language_selected_' + iteration;
     selected_language.appendChild(selected_language_text);
@@ -182,7 +182,7 @@ console.log(row_number);
 
   function add_another_language() {
     add_language('repo_titles');
-    add_language_span('start_page_custom_htmls');
+    add_language_span('start_page_custom_htmls', 'not selected');
   }
 
   /* Hides a language from the user's view and marks it so that it will not be
@@ -220,6 +220,7 @@ console.log(row_number);
           $(table_id + '_language_selection_' + row_number).value = language;
         } else {
           var row_number = add_language_span(table_id, language);
+          change_text(table_id, row_number);
         }
         if (table_name[language] != undefined) {
 	  $(table_id + '_language_value_' + row_number).value = table_name[language];
