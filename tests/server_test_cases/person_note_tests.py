@@ -2538,7 +2538,7 @@ _read_profile_url2</pfif:profile_urls>
             '</request>')
 
         # Search request which matches a person record.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=good_request_data, type='application/xml')
         assert self.s.status == 200
         expected = (
@@ -2557,7 +2557,7 @@ _read_profile_url2</pfif:profile_urls>
         assert expected == doc.content, text_diff(expected, doc.content)
 
         # Search request which matches no person records.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_no_result, type='application/xml')
         assert self.s.status == 200
         expected = (
@@ -2571,21 +2571,21 @@ _read_profile_url2</pfif:profile_urls>
                 'accuracy of this data google.org/personfinder/global/tos.html'
                 '</message_text>\n'
             '</response>\n')
-        assert expected == doc.content, text_diff(expected, actual)
+        assert expected == doc.content, text_diff(expected, doc.content)
 
         # The text doesn't begin with "Search".
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_bad_text, type='application/xml')
         assert self.s.status == 200
         expected = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
-            '  <message_text>Usage: Search John</message_text>\n'
+            '  <message_text>Usage: &quot;Search John&quot;</message_text>\n'
             '</response>\n')
-        assert expected == doc.content, text_diff(expected, actual)
+        assert expected == doc.content, text_diff(expected, doc.content)
 
         # The receiver phone number is not associated with a repository.
-        doc = self.go('/global/api/handle_sms?key=global_search_key&lang=en',
+        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
                       data=request_data_with_unknown_number,
                       type='application/xml')
         assert self.s.status == 400
