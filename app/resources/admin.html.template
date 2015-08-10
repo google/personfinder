@@ -40,6 +40,14 @@
 
 <script>
   var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
+  var CUSTOM_MESSAGE_TABLE_IDS = [
+    'repo_titles', 
+    'start_page_custom_htmls', 
+    'results_page_custom_htmls', 
+    'view_page_custom_htmls', 
+    'seek_query_form_custom_htmls', 
+    'footer_custom_htmls'
+  ];
 
   /* Returns true if the array contains elem */
   function arr_contains(arr, elem) {
@@ -89,19 +97,11 @@
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
     var languages_to_values = {};
-    var custom_message_table_ids = [
-      'repo_titles', 
-      'start_page_custom_htmls', 
-      'results_page_custom_htmls', 
-      'view_page_custom_htmls', 
-      'seek_query_form_custom_htmls', 
-      'footer_custom_htmls'
-    ];
-    for(var id_num = 0; id_num < custom_message_table_ids.length; id_num++){
-      var table_name = custom_message_table_ids[id_num];
-      for(var i = 1; i < dropdown_index; i++){
-        var language_value = $(table_name + '_language_value_' + i).value;
-        var used_language = used_languages[i - 1];
+    for(var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++){
+      var table_name = CUSTOM_MESSAGE_TABLE_IDS[id_num];
+      for(var i = 0; i < used_languages.length; i++){
+        var language_value = $(table_name + '_language_value_' + (i+1)).value;
+        var used_language = used_languages[i];
         languages_to_values[used_language] = language_value;
       }
       $(table_name).value = JSON.stringify(languages_to_values);
@@ -110,10 +110,11 @@
   }
 
   function change_text(row_number) {
-    var language_codes = document.getElementById('repo_titles_language_selection_' + row_number);
+    var language_codes = $('repo_titles_language_selection_' + row_number);
     var selected_index = language_codes.selectedIndex;
     var language = language_codes[selected_index].text;
-    var language_selected_elements = document.getElementsByClassName('language_selected_' + row_number);
+    var language_selected_elements = document.getElementsByClassName(
+                                     'language_selected_' + row_number);
     for (var i = 0; i < language_selected_elements.length; i++) {
       language_selected_elements[i].innerHTML = language;
     }
@@ -197,16 +198,8 @@
 
   function add_another_language() {
     add_language('repo_titles');
-
-    var table_ids = [
-      'start_page_custom_htmls', 
-      'results_page_custom_htmls', 
-      'view_page_custom_htmls', 
-      'seek_query_form_custom_htmls', 
-      'footer_custom_htmls'
-    ];
-    for(var id_num = 0; id_num < table_ids.length; id_num++){
-      add_language_span(table_ids[id_num], 'not selected');
+    for(var id_num = 1; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++){
+      add_language_span(CUSTOM_MESSAGE_TABLE_IDS[id_num], 'not selected');
     }
   }
 
@@ -214,23 +207,16 @@
    * submitted.
    */
   function remove_language(row_number) {
-    var table_ids = [
-      'repo_titles', 
-      'start_page_custom_htmls', 
-      'results_page_custom_htmls', 
-      'view_page_custom_htmls', 
-      'seek_query_form_custom_htmls', 
-      'footer_custom_htmls'
-    ];
-    for (var id_num = 0; id_num < table_ids.length; id_num++) {
-      var table_name = table_ids[id_num];
+    for (var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++) {
+      var table_name = CUSTOM_MESSAGE_TABLE_IDS[id_num];
       var table = $(table_name + '_table');
       var row = table.rows[row_number];
       row.hidden = true;
       if (table_name == 'repo_titles') {
         $(table_name + '_language_selection_' + row_number).value = 'unused';
       } else {
-        $(table_name + '_language_selected_' + row_number).value = 'unused';
+        document.getElementsByClassName('language_selected_' + row_number).value
+                                       = 'unused';
       }
     }
   }
@@ -240,16 +226,10 @@
     // Saved languages and titles for this repository
     var all_view_config_json = {{all_view_config_json|safe|default:'[]'}};
     var LANGUAGES = all_view_config_json['language_menu_options'];
-    var table_ids = [
-      'repo_titles', 
-      'start_page_custom_htmls', 
-      'results_page_custom_htmls', 
-      'view_page_custom_htmls', 
-      'seek_query_form_custom_htmls', 
-      'footer_custom_htmls'];
+
     //foreach language, add that language and its title
-    for (var id_num = 0; id_num < table_ids.length; id_num++) {
-      var table_id = table_ids[id_num];
+    for (var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++) {
+      var table_id = CUSTOM_MESSAGE_TABLE_IDS[id_num];
       var table_name = all_view_config_json[table_id];
       for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
         var language = LANGUAGES[lang_num];
@@ -261,7 +241,8 @@
           change_text(row_number);
         }
         if (table_name[language] != undefined) {
-          $(table_id + '_language_value_' + row_number).value = table_name[language];
+          $(table_id + '_language_value_' + row_number).value
+          = table_name[language];
         }
       }
     }
