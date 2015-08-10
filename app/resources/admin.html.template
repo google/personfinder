@@ -39,6 +39,9 @@
 <h2>Select a repository</h2>
 
 <script>
+
+//TODO: move to object-oriented!!
+
   var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
   var CUSTOM_MESSAGE_TABLE_IDS = [
     'repo_titles', 
