@@ -112,7 +112,7 @@
     return true;
   }
 
-  function change_text(row_number) {
+  function update_language_selected(row_number) {
     var language_codes = $('repo_titles_language_selection_' + row_number);
     var selected_index = language_codes.selectedIndex;
     var language = language_codes[selected_index].text;
@@ -146,7 +146,7 @@
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
     languages.id = 'repo_titles_language_selection_' + iteration;
-    languages.onchange = function() {change_text(iteration);};
+    languages.onchange = function() {update_language_selected(iteration);};
 
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
@@ -239,7 +239,7 @@
           $(table_id + '_language_selection_' + row_number).value = language;
         } else {
           var row_number = add_language_span(table_id, language);
-          change_text(row_number);
+          update_language_selected(row_number);
         }
         if (table_name[language] != undefined) {
           $(table_id + '_language_value_' + row_number).value
