@@ -226,7 +226,7 @@
   function add_initial_languages() {
     // Saved languages and titles for this repository
     var all_view_config_json = {{all_view_config_json|safe|default:'[]'}};
-    var LANGUAGES = all_view_config_json['language_menu_options'];
+    var LANGUAGES = {{view_config_json.language_menu_options|safe|default:'[]'}};
 
     //foreach language, add that language and its title
     for (var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++) {
