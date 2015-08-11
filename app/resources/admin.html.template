@@ -128,8 +128,7 @@
    * Returns the number of the row that was added
    */
   function add_language() {
-    var table_id = 'repo_titles';
-    var table = $(table_id + '_table');
+    var table = $('repo_titles_table');
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
     var cur_col = 0;
@@ -146,8 +145,8 @@
     //add the languages dropdown
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
-    languages.id = table_id + '_language_selection_' + iteration;
-    languages.onchange = function() {change_text(iteration)};
+    languages.id = 'repo_titles_language_selection_' + iteration;
+    languages.onchange = function() {change_text(iteration);};
 
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
@@ -171,7 +170,7 @@
     var title_col = row.insertCell(cur_col++);
     var title = document.createElement('input');
     title.type = 'text';
-    title.id = table_id + '_language_value_' + iteration;
+    title.id = 'repo_titles_language_value_' + iteration;
     title_col.appendChild(title);
     return iteration;
   }
