@@ -124,6 +124,17 @@
     return true;
   }
 
+  function check_language_selected(row_number) {
+    var language_codes = $('repo_titles_language_selection_' + row_number);
+    var selected_index = language_codes.selectedIndex;
+    var language_code = language_codes[selected_index].value;
+    var used_languages =
+        {{view_config_json.language_menu_options|safe|default:'[]'}};
+    if (used_languages.indexOf(language_code) >= 0) {
+      alert('You entered the same language!!');
+    }
+  }
+
   function update_language_selected(row_number) {
     var language_codes = $('repo_titles_language_selection_' + row_number);
     var selected_index = language_codes.selectedIndex;
@@ -158,7 +169,7 @@
     var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
     languages.id = 'repo_titles_language_selection_' + iteration;
-    languages.onchange = function() {update_language_selected(iteration);};
+    languages.onchange = function() {update_language_selected(iteration);check_language_selected(iteration);};
 
     //add a blank option to display basic help text
     var blank_option = document.createElement('option');
@@ -284,7 +295,7 @@
 
 <p>
   <form method="get" style="display: inline-block" class="admin">
-    <select name="repo" id="select_repo" onchange="select_repo_changed()">
+    <select name="repo" id="select_repo" onchange="select_repo_changed();">
       {% if not env.repo %}
         <option>Select a repository:</option>
       {% endif %}
