@@ -24,4 +24,4 @@ echo "--- Running server tests"
 # server_tests.py, but UTC times when written by the dev_appserver.  So,
 # to make tests work properly, we have to set the local time zone to UTC.
 TZ=UTC time $PYTHON $TESTS_DIR/server_tests.py \
-    --pyargs --tb=short "$@" server_test_cases
+    --pyargs --tb=short "$@" $TESTS_DIR/server_test_cases/*.py

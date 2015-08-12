@@ -161,6 +161,7 @@ class Handler(BaseHandler):
                     # These settings are all entered in JSON.
                     json_config_names=[
                         'sms_number_to_repo',
+                        'repo_aliases',
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[

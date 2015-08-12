@@ -281,8 +281,12 @@ def reset_data():
         Authorization.create(
             '*', 'global_test_key',
             domain_write_permission='globaltestdomain.com'),
+        # An API key which can be used for SMS API.
         Authorization.create(
-            '*', 'global_search_key', search_permission=True),
+            '*',
+            'sms_key',
+            search_permission=True,
+            domain_write_permission='*'),
     ])
 
 def monkeypatch_pytest_terminal_reporter():
