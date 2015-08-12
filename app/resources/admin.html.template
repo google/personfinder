@@ -227,7 +227,6 @@
     // Saved languages and titles for this repository
     var all_view_config_json = {{all_view_config_json|safe|default:'[]'}};
     var LANGUAGES = {{view_config_json.language_menu_options|safe|default:'[]'}};
-
     //foreach language, add that language and its title
     for (var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++) {
       var table_id = CUSTOM_MESSAGE_TABLE_IDS[id_num];
@@ -241,7 +240,7 @@
           var row_number = add_language_span(table_id, language);
           update_language_selected(row_number);
         }
-        if (table_name[language] !== undefined) {
+        if (table_name !== undefined && table_name[language] !== undefined) {
           $(table_id + '_language_value_' + row_number).value
               = table_name[language];
         }
