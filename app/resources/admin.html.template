@@ -52,16 +52,6 @@
     'footer_custom_htmls'
   ];
 
-  /* Returns true if the array contains elem */
-  function arr_contains(arr, elem) {
-    for (var i = 0; i < this.length; i++) {
-      if (arr[i] === elem) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   function $(id) {
     return document.getElementById(id);
   }
@@ -87,11 +77,6 @@
                              dropdown_index).value;
       if (language_code === 'unused') {
         continue;
-      }
-      if (arr_contains(used_languages, language_code)) {
-        alert("You entered the same language (" + language_code + ") twice. " +
-              "That's not allowed.");
-        return false;
       }
       used_languages.push(language_code);
     }
