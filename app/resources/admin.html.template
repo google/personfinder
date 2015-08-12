@@ -96,19 +96,31 @@
       used_languages.push(language_code);
     }
 
+    var filtered_index = [];
+    used_languages.filter(function(element, index, self){
+      if (self.indexOf(element) === index){
+        filtered_index.push(index);
+      } else {
+        used_languages.splice(index, 1);
+      }
+    });
+
     // Copy the dropdowns and the titles into the text boxes that will
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
     var languages_to_values = {};
-    for(var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++){
+
+    for (var id_num = 0; id_num < CUSTOM_MESSAGE_TABLE_IDS.length; id_num++){
       var table_name = CUSTOM_MESSAGE_TABLE_IDS[id_num];
-      for(var i = 0; i < used_languages.length; i++){
-        var language_value = $(table_name + '_language_value_' + (i+1)).value;
-        var used_language = used_languages[i];
+      for (var i = 0; i < filtered_index.length; i++){
+        var index = filtered_index[i];
+        var language_value = $(table_name + '_language_value_' + (index+1)).value;
+        var used_language = used_languages[index];
         languages_to_values[used_language] = language_value;
       }
       $(table_name).value = JSON.stringify(languages_to_values);
     }
+
     return true;
   }
 
