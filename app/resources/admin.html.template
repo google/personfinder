@@ -81,30 +81,29 @@
       used_languages.push(language_code);
     }
 
-    var filtered_index = [];
-    used_languages.filter(function(element, index, self){
-      if (self.indexOf(element) === index){
-        filtered_index.push(index);
-        return true;
-      } else {
-        return false;
+    var language_code_to_index_map = {};
+    for (var i = 0; i < used_languages.length; i++) {
+      var language_code = used_languages[i];
+      if (language_code_to_index_map[language_code] == 1) {
+        used_languages.splice(i, 1);
       }
-    });
+      language_code_to_index_map[language_code] = 1;
+    }
 
     // Copy the dropdowns and the titles into the text boxes that will
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
-    var languages_to_values = {};
 
     for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
       var table_name = MULTILINGUAL_TABLE_IDS[id_num];
-      for (var i = 0; i < filtered_index.length; i++) {
-        var index = filtered_index[i];
-        var language_value = $(table_name + '_language_value_' + (index+1)).value;
-        var used_language = used_languages[index];
-        languages_to_values[used_language] = language_value;
+      var index = 1;
+      for(var key in language_code_to_index_map){
+        var language_value = $(table_name + '_language_value_' + index++).value;
+        var used_language = key;
+        language_code_to_index_map[used_language] = language_value;
       }
-      $(table_name).value = JSON.stringify(languages_to_values);
+      console.log(language_code_to_index_map);
+      $(table_name).value = JSON.stringify(language_code_to_index_map);
     }
 
     return true;
@@ -119,7 +118,7 @@
   }
 
   function validate_selected_languages(row_number) {
-    var used_languages = new Array();
+    var used_languages = {};
     var language_num = $('repo_titles_table').rows.length;
     var selected_language = get_selected_language(row_number);
     for (var index = 1; index < language_num; index++) {
@@ -131,6 +130,20 @@
     }
   }
 
+  function escape_html(str) {
+    var escape_table = {
+      '<': '&lt',
+      '>': '&gt',
+      '&': '&amp',
+      '"': '&quot',
+      '\'': '&#x27',
+    };
+    escaped_str = str.replace(/[<>&"\']/g, function (match) {
+      return escape_table[match];
+    });
+    return escaped_str;
+  }
+
   function update_language_selected(row_number) {
     var language_codes = $('repo_titles_language_selection_' + row_number);
     var selected_index = language_codes.selectedIndex;
@@ -138,7 +151,8 @@
     var language_selected_elements = document.getElementsByClassName(
                                      'language_selected_' + row_number);
     for (var i = 0; i < language_selected_elements.length; i++) {
-      language_selected_elements[i].innerHTML = language;
+      escaped_language = escape_html(language);
+      language_selected_elements[i].innerHTML = escaped_language;
     }
   }
 
@@ -222,7 +236,8 @@
   function add_another_language() {
     add_language_to_repo_titles_table();
     for(var id_num = 1; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++){
-      add_language_to_custom_message_table(MULTILINGUAL_TABLE_IDS[id_num], 'not selected');
+      add_language_to_custom_message_table(
+          MULTILINGUAL_TABLE_IDS[id_num], 'not selected');
     }
   }
 
