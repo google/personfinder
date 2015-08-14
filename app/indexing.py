@@ -35,12 +35,14 @@ but will not be retrieved by:
 from text_query import TextQuery
 
 from google.appengine.ext import db
+from google.appengine.api import search
 import unicodedata
 import logging
 import model
 import re
 import jautils
 
+INDEX_NAME = 'personal_information'
 
 def update_index_properties(entity):
     """Finds and updates all prefix-related properties on the given entity."""
@@ -208,6 +210,8 @@ def sort_query_words(query_words):
     #       which are usually more effective filters, come first.
     return sorted(sorted_query_words, key=len, reverse=True)
 
+def create_query(query):
+    return re.sub(r' ', ' OR ', query)
 
 def search(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the

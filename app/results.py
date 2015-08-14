@@ -23,6 +23,10 @@ import external_search
 import indexing
 import jp_mobile_carriers
 
+from google.appengine.api import search
+from datetime import datetime
+import re
+
 MAX_RESULTS = 100
 # U+2010: HYPHEN
 # U+2012: FIGURE DASH
@@ -34,6 +38,7 @@ MAX_RESULTS = 100
 POSSIBLE_PHONE_NUMBER_RE = re.compile(
     ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
+INDEX_NAME = 'personal_information'
 
 def has_possible_duplicates(results):
     """Returns True if it detects that there are possible duplicate records
@@ -50,19 +55,34 @@ def is_possible_phone_number(query_str):
     return re.search(POSSIBLE_PHONE_NUMBER_RE,
         unicodedata.normalize('NFKC', unicode(query_str)))
 
+def create_query(query):
+    return re.sub(r' ', ' OR ', query)
 
 class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = None
+        results = []
         if self.config.external_search_backends:
             results = external_search.search(
-                self.repo, query, MAX_RESULTS,
+                self.repo, TextQuery(query), MAX_RESULTS,
                 self.config.external_search_backends)
+
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search(self.repo, query, MAX_RESULTS)
+            index = search.Index(name=INDEX_NAME)
+            query = create_query(query)
+            try:
+                results_index = index.search(query)
+                logging.info(len(results_index.results))
+                record_ids = []
+                for document in results_index:
+                    record_ids.append(document.fields[0].value)
+                logging.info(record_ids)
+                for id in record_ids:
+                    results.append(model.Person.get_by_key_name(self.repo + ':' + id))
+            except search.Error:
+                logging.exception('Search failed')
 
         for result in results:
             result.view_url = self.get_url('/view',
@@ -75,6 +95,7 @@ class Handler(BaseHandler):
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
             sanitize_urls(result)
+
         return results
 
     def reject_query(self, query):
@@ -111,6 +132,7 @@ class Handler(BaseHandler):
             # scoring function in indexing.py).
             query_txt = get_full_name(
                 self.params.given_name, self.params.family_name, self.config)
+
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
@@ -127,7 +149,8 @@ class Handler(BaseHandler):
             # for key in criteria:
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
-            results = self.search(query)
+            results = self.search(query_txt)
+
             # Filter out results with addresses matching part of the query.
             results = [result for result in results
                        if not getattr(result, 'is_address_match', False)]
@@ -157,6 +180,7 @@ class Handler(BaseHandler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query)
+
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:
@@ -177,7 +201,7 @@ class Handler(BaseHandler):
                 return self.reject_query(query)
             else:
                 # Look for prefix matches.
-                results = self.search(query)
+                results = self.search(self.params.query)
                 results_url = self.get_results_url(self.params.query)
                 third_party_query_type = ''
 
