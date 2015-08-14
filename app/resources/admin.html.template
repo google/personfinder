@@ -95,15 +95,15 @@
     $('language_menu_options').value = JSON.stringify(used_languages);
 
     for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
-      var table_name = MULTILINGUAL_TABLE_IDS[id_num];
+      var table_id = MULTILINGUAL_TABLE_IDS[id_num];
       var index = 1;
       for(var key in language_code_to_index_map){
-        var language_value = $(table_name + '_language_value_' + index++).value;
+        var language_value = $(table_id + '_language_value_' + index++).value;
         var used_language = key;
         language_code_to_index_map[used_language] = language_value;
       }
       console.log(language_code_to_index_map);
-      $(table_name).value = JSON.stringify(language_code_to_index_map);
+      $(table_id).value = JSON.stringify(language_code_to_index_map);
     }
 
     return true;
@@ -211,6 +211,7 @@
     return iteration;
   }
 
+  // Adds a language in custom_message_table.
   function add_language_to_custom_message_table(table_id, language) {
     var table = $(table_id + '_table');
     var iteration = table.rows.length;
@@ -233,7 +234,8 @@
     return iteration; 
   }
 
-  function add_another_language() {
+  // Adds a language in repo_titles_table and custom_message_table.
+  function add_language() {
     add_language_to_repo_titles_table();
     for(var id_num = 1; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++){
       add_language_to_custom_message_table(
@@ -249,8 +251,8 @@
     var repo_table = $('repo_titles_table');
     repo_table.rows[row_number].hidden = true;
     for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
-      var table_name = MULTILINGUAL_TABLE_IDS[id_num];
-      var table = $(table_name + '_table');
+      var table_id = MULTILINGUAL_TABLE_IDS[id_num];
+      var table = $(table_id + '_table');
       var row = table.rows[row_number];
       row.hidden = true;
     }
@@ -312,7 +314,7 @@
 
 <p>
   <form method="get" style="display: inline-block" class="admin">
-    <select name="repo" id="select_repo" onchange="select_repo_changed();">
+    <select name="repo" id="select_repo" onchange="select_repo_changed()">
       {% if not env.repo %}
         <option>Select a repository:</option>
       {% endif %}
@@ -541,7 +543,7 @@
           <th>Title</th>
         </tr>
       </table>
-      <p><a href="JavaScript:void(0);" onClick="add_another_language()">
+      <p><a href="JavaScript:void(0);" onClick="add_language()">
         Add Another Language
       </a></p>
       <!-- Aggregates the above forms into one form for ease of parsing -->
