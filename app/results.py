@@ -39,6 +39,7 @@ POSSIBLE_PHONE_NUMBER_RE = re.compile(
     ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
 INDEX_NAME = 'personal_information'
+INDEX_LOCATION = 'personal_location'
 
 def has_possible_duplicates(results):
     """Returns True if it detects that there are possible duplicate records
@@ -59,6 +60,32 @@ def create_query(query):
     return re.sub(r' ', ' OR ', query)
 
 class Handler(BaseHandler):
+    def search_with_index(self, query, index):
+        results = []
+        query = create_query(query)
+        try:
+            results_index = search.Index(name=index).search(query)
+            record_ids = []
+            for document in results_index:
+                record_ids.append(document.fields[0].value)
+            for id in record_ids:
+                results.append(model.Person.get_by_key_name(self.repo + ':' + id))
+        except search.Error:
+            if index == INDEX_NAME:
+                logging.exception('Search by name failed')
+            else:
+                logging.exception('Search by location failed')
+        
+        return results
+
+    def merge_results(self, results_name, results_location):
+        results = []
+        results_name_ids = []
+        results_location_ids = []
+
+        return results
+        
+    
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = []
@@ -70,20 +97,11 @@ class Handler(BaseHandler):
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            index = search.Index(name=INDEX_NAME)
-            query = create_query(query)
-            try:
-                results_index = index.search(query)
-                logging.info(len(results_index.results))
-                record_ids = []
-                for document in results_index:
-                    record_ids.append(document.fields[0].value)
-                logging.info(record_ids)
-                for id in record_ids:
-                    results.append(model.Person.get_by_key_name(self.repo + ':' + id))
-            except search.Error:
-                logging.exception('Search failed')
-
+            results = self.search_with_index(query, INDEX_NAME)
+            results_location = self.search_with_index(query, INDEX_LOCATION)
+            logging.info(results)
+            logging.info(results_location)
+            
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
