@@ -57,11 +57,12 @@ class ListApiKeys(utils.BaseHandler):
 
     https_required = True
     ignore_deactivation = True
+    repo_required = False
 
     @utils.require_api_key_management_permission
     def get(self):
         user = users.get_current_user()
-        q = Authorization.all().filter('repo =', self.repo)
+        q = Authorization.all().filter('repo =', self.repo or '*')
         authorizations = q.fetch(KEYS_PER_PAGE)
         nav_html = ('<a href="%s">%s</a> '
                     % (self.get_url('admin/api_keys'),
@@ -80,6 +81,7 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
 
     https_required = True
     ignore_deactivation = True
+    repo_required = False
 
     def render_form(self, authorization=None, message=''):
         """Display a form for create/update Authorization"""
@@ -158,13 +160,14 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
         else:
             key_str = utils.generate_random_key(API_KEY_LENGTH)
             action = ApiKeyManagementLog.CREATE
+        repo = self.repo or '*'
 
         authorization = Authorization.create(
-            self.repo, key_str,
+            repo, key_str,
             **to_authorization_params(self.params))
         authorization.put()
 
-        management_log = ApiKeyManagementLog(repo=self.repo,
+        management_log = ApiKeyManagementLog(repo=repo,
                                              api_key=authorization.api_key,
                                              action=action)
         management_log.put()

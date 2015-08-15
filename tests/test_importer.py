@@ -24,6 +24,20 @@ import model
 import importer
 
 
+TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
+
+def put_dummy_person_record(repo, person_record_id):
+    db.put(model.Person(
+        key_name='%s:%s' % (repo, person_record_id),
+        repo=repo,
+        author_name='_test_author_name',
+        full_name='_test_given_name _test_family_name',
+        given_name='_test_given_name',
+        family_name='_test_family_name',
+        source_date=TEST_DATETIME,
+        entry_date=TEST_DATETIME,
+    ))
+
 class ImporterTests(unittest.TestCase):
     """Test the import utilities."""
 
@@ -192,6 +206,11 @@ class ImporterTests(unittest.TestCase):
         assert model.Person.all().count() == 15
 
     def test_import_note_records(self):
+        # Prepare person records which the notes will be added to.
+        for domain in ['test_domain', 'other_domain']:
+            for i in range(20):
+                put_dummy_person_record('haiti', '%s/person_%d' % (domain, i))
+
         records = []
         for i in range(20):
             source_date = '2010-01-01T01:23:45Z'
@@ -250,6 +269,10 @@ class ImporterTests(unittest.TestCase):
             assert note.reviewed == False
 
     def test_authorize_write_believed_dead_note_records(self):
+        # Prepare person records which the notes will be added to.
+        for i in range(20):
+            put_dummy_person_record('haiti', 'test_domain/person_%d' % i)
+
         # Prepare input data
         records = []
         for i in range(20):
@@ -321,6 +344,10 @@ class ImporterTests(unittest.TestCase):
                 assert note.status == 'believed_missing' 
 
     def test_import_reviewed_note_records(self):
+        # Prepare person records which the notes will be added to.
+        for i in range(3):
+            put_dummy_person_record('haiti', 'test_domain/person_%d' % i)
+
         records = []
         for i in range(3):
             source_date = '2010-01-01T01:23:45Z'
@@ -408,6 +435,28 @@ class ImporterTests(unittest.TestCase):
 
         assert total == 2
         assert model.Note.all().count() == 1
+
+    def test_import_note_records_for_non_existent_person(self):
+        records = [{
+            'person_record_id': 'test_domain/non_existent_person',
+            'note_record_id': 'test_domain/record_0',
+            'source_date': '2010-01-01T01:23:45Z',
+        }]
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records, False,
+            True, None)
+
+        assert written == 0
+        assert len(skipped) == 1
+        assert skipped[0] == (
+            "There is no person record with the person_record_id "
+            "'test_domain/non_existent_person'", {
+                'person_record_id': 'test_domain/non_existent_person',
+                'source_date': '2010-01-01T01:23:45Z',
+                'note_record_id': 'test_domain/record_0'
+            })
+        assert total == 1
+        assert model.Note.all().count() == 0
 
 if __name__ == "__main__":
     unittest.main()

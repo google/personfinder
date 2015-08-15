@@ -45,7 +45,6 @@ from recaptcha.client import captcha
 
 import const
 import config
-import legacy_redirect
 import model
 import pfif
 import resources
@@ -674,10 +673,15 @@ class BaseHandler(webapp.RequestHandler):
         lang = language_override or self.env.lang
         extra_key = (self.env.repo, self.env.charset, self.request.query_string)
         def get_all_vars():
+            vars.update(get_vars())
+            for key in ('env', 'config', 'params'):
+                if key in vars:
+                    raise Exception(
+                        'Cannot use "%s" as a key in vars. It is reserved.'
+                        % key)
             vars['env'] = self.env  # pass along application-wide context
             vars['config'] = self.config  # pass along the configuration
             vars['params'] = self.params  # pass along the query parameters
-            vars.update(get_vars())
             return vars
         return resources.get_rendered(
             name, lang, extra_key, get_all_vars, cache_seconds)
@@ -903,8 +907,6 @@ class BaseHandler(webapp.RequestHandler):
 
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo):
-            if legacy_redirect.do_redirect(self):
-                return legacy_redirect.redirect(self)
             html = 'No such repository. '
             if self.env.repo_options:
                 html += 'Select:<p>' + self.render_to_string('repo-menu.html')

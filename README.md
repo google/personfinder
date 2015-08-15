@@ -1,4 +1,4 @@
-============================= Person Finder ===================================
+# Person Finder
 
 Person Finder is a searchable missing person database written in Python and
 hosted on App Engine.
@@ -10,28 +10,28 @@ contributions from many volunteers inside and outside of Google. It was used
 again for the earthquakes in Chile, Yushu, and Japan, and now runs at
 http://google.org/personfinder/.
 
-============================= How to Contribute ================================
+## How to Contribute
 
 The following steps are for Person Finder team members. Fork and send pull
 request in the standard way if you are not a team member.
 
 1. Set up the developement environment.
-  1a. Set up your Git client. Make sure to set your name and email.
-      > https://help.github.com/articles/set-up-git/
-  1b. Install hub commandline tool.
-      > https://github.com/github/hub
-  1b. Clone the PF repository.
-      $ git clone https://github.com/google/personfinder.git pf
+  1. Set up your Git client. Make sure to set your name and email.
+    <br/>https://help.github.com/articles/set-up-git/
+  2. Install hub commandline tool.
+    <br/>https://github.com/github/hub
+  3. Clone the PF repository.
+    <br/>`$ git clone https://github.com/google/personfinder.git pf`
 2. Find an issue to work on, or create a new one.
-   > https://github.com/google/personfinder/issues
+   <br/>https://github.com/google/personfinder/issues
 3. Create a new branch, prefixed with your username.
-   $ git checkout -b $USER-your-new-feature
+   <br/>`$ git checkout -b $USER-your-new-feature`
 4. Make changes and commit. Repeat the step until you are ready for code review.
-   $ git commit
+   <br/>`$ git commit -a`
 5. Push your local changes to the remote repository.
-   $ git push -u origin $USER-your-new-feature
+   <br/>`$ git push -u origin $USER-your-new-feature`
 6. Create a new pull request. (-i is optional, but strongly encouraged.)
-   $ hub pull-request -i <issue #>
+   <br/>`$ hub pull-request -i <issue #>`
 7. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
    (ichikawa@google.com or ryok@google.com as of 2015/01/30).

@@ -288,6 +288,10 @@ class CountPerson(CountBase):
         counter.increment('num_notes=%d' % len(person.get_notes()))
         counter.increment('status=' + (person.latest_status or ''))
         counter.increment('found=' + found)
+        if person.author_email:  # author e-mail address present?
+            counter.increment('author_email')
+        if person.author_phone:  # author phone number present?
+            counter.increment('author_phone')
         counter.increment(
             'linked_persons=%d' % len(person.get_linked_persons()))
 
@@ -308,10 +312,14 @@ class CountNote(CountBase):
         counter.increment('status=' + (note.status or ''))
         counter.increment('original_domain=' + (note.original_domain or ''))
         counter.increment('author_made_contact=' + author_made_contact)
-        if note.linked_person_record_id:
-            counter.increment('linked_person')
-        if note.last_known_location:
+        if note.last_known_location:  # last known location specified?
             counter.increment('last_known_location')
+        if note.author_email:  # author e-mail address present?
+            counter.increment('author_email')
+        if note.author_phone:  # author phone number present?
+            counter.increment('author_phone')
+        if note.linked_person_record_id:  # linked to another person?
+            counter.increment('linked_person')
 
 
 class AddReviewedProperty(CountBase):

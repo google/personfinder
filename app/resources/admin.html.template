@@ -224,7 +224,6 @@
   <li><a href="admin/review">Review notes</a></li>
   <li><a href="admin/api_keys">Create an API key</a></li>
   <li><a href="admin/api_keys/list">List API keys</a></li>
-  <li><a href="admin/resources">Manage resources</a></li>
 </ul>
 
 <h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
@@ -233,7 +232,7 @@
     onsubmit="return validate_settings()">
 
   <fieldset>
-    <legend>Modes</legend>
+    <legend>Activation mode</legend>
 
     <div class="config">
       <div class="option">
@@ -320,6 +319,10 @@
             >{{view_config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data retention mode</legend>
 
     <div class="config">
       <div class="option">
@@ -770,6 +773,13 @@
 
 {% else %}
 
+<h2>Global admin tools</h2>
+<ul>
+  <li><a href="admin/resources">Manage resources</a></li>
+  <li><a href="admin/api_keys">Create an API key to access all repositories</a></li>
+  <li><a href="admin/api_keys/list">List API keys to access all repositories</a></li>
+</ul>
+
 <h2>Edit global settings</h2>
 
 <form id="save_global" method="post" class="admin">
@@ -790,6 +800,38 @@
         <textarea name="sms_number_to_repo"
             id="sms_number_to_repo" rows=10 cols=80
             >{{view_config_json.sms_number_to_repo}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Repository aliases</legend>
+    <div class="config">
+      <label for="repo_aliases">
+        Repository alias mapping.<br>
+        e.g., If it is
+        <code>{"jp": "japan", "ht": "haiti"}</code>, 
+	you can use 
+	<a href="http://google.org/personfinder/jp">
+	  http://google.org/personfinder/jp
+	</a>
+	 as an alias of
+	<a href="http://google.org/personfinder/japan">
+	  http://http://google.org/personfinder/japan
+	</a>
+	 and the same for "ht". 
+	This is especially useful combined with the short URL e.g., 
+	<a href="http://g.co.pf/jp">
+	  http://g.co.pf/jp
+	</a>
+	.<br>
+        JSON dictionary where the key is an alias for repository and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="repo_aliases"
+            id="repo_aliases" rows=10 cols=80
+            >{{view_config_json.repo_aliases}}</textarea>
       </div>
     </div>
   </fieldset>
