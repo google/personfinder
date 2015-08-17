@@ -23,10 +23,6 @@ import external_search
 import indexing
 import jp_mobile_carriers
 
-from google.appengine.api import search
-from datetime import datetime
-import re
-
 MAX_RESULTS = 100
 # U+2010: HYPHEN
 # U+2012: FIGURE DASH
@@ -66,7 +62,6 @@ class Handler(BaseHandler):
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            #results = self.search_with_index(query, INDEX_NAME)
             results = indexing.search_with_index(self.repo, query, MAX_RESULTS)
             
         for result in results:
@@ -80,7 +75,6 @@ class Handler(BaseHandler):
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
             sanitize_urls(result)
-
         return results
 
     def reject_query(self, query):
@@ -135,7 +129,6 @@ class Handler(BaseHandler):
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
             results = self.search(query_txt)
-
             # Filter out results with addresses matching part of the query.
             results = [result for result in results
                        if not getattr(result, 'is_address_match', False)]
