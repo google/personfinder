@@ -40,7 +40,7 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
-def create_name_document(record_id, repo, given_name, family_name, full_name, 
+def create_document2(record_id, repo, given_name, family_name, full_name, 
                          alternate_given_names, alternate_family_names,
                          alternate_names):
     return search.Document(
@@ -54,18 +54,37 @@ def create_name_document(record_id, repo, given_name, family_name, full_name,
                   search.TextField(name='alternate_names', value=alternate_names)
               ])
 
-def create_location_document(record_id, repo, home_street, home_city, 
-                             home_state, home_postal_code, home_country):
+def create_document(**kwargs):
     return search.Document(
-        fields = [search.TextField(name='record_id', value=record_id),
-                  search.TextField(name='repo', value=repo),
-                  search.TextField(name='home_street', value=home_street),
-                  search.TextField(name='home_city', value=home_city),
-                  search.TextField(name='home_state', value=home_state),
-                  search.TextField(name='home_postal_code', value=home_postal_code),
-                  search.TextField(name='home_country', value=home_country)
-              ])
-    
+        fields = [search.TextField(name='record_id', value=kwargs['record_id']),
+                  search.TextField(name='repo', value=kwargs['repo']),
+                  search.TextField(name='given_name', value=kwargs['given_name']),
+                  search.TextField(name='family_name', value=kwargs['family_name']),
+                  search.TextField(name='full_name', value=kwargs['full_name']),
+                  search.TextField(name='alternate_given_names', value=kwargs['alternate_given_names']),
+                  search.TextField(name='alternate_family_names', value=kwargs['alternate_family_names']),
+                  search.TextField(name='alternate_names', value=kwargs['alternate_names'])
+              ])    
+
+def create_index(**kwargs):
+    try:
+        index_name = search.Index(name=INDEX_NAME)
+        index_name.put(create_document(
+            person.record_id,
+            self.repo,
+            self.params.given_name,
+            self.params.family_name,
+            get_full_name(self.params.given_name,
+                          self.params.family_name,
+                          self.config),
+            self.params.alternate_given_names,
+            self.params.alternate_family_names,
+            get_full_name(self.params.alternate_given_names,
+                          self.params.alternate_family_names,
+                          self.config)
+        ))
+    except search.Error:
+        logging.exception('Put failed')
 
 class Handler(BaseHandler):
     def get(self):
@@ -193,36 +212,22 @@ class Handler(BaseHandler):
 
         try:
             index_name = search.Index(name=INDEX_NAME)
-            index_name.put(create_name_document(
-                person.record_id,
-                self.repo,
-                self.params.given_name,
-                self.params.family_name,
-                get_full_name(self.params.given_name,
+            index_name.put(create_document(
+                record_id=person.record_id,
+                repo=self.repo,
+                given_name=self.params.given_name,
+                family_name=self.params.family_name,
+                full_name=get_full_name(self.params.given_name,
                                         self.params.family_name,
                                         self.config),
-                self.params.alternate_given_names,
-                self.params.alternate_family_names,
-                get_full_name(self.params.alternate_given_names,
+                alternate_given_names=self.params.alternate_given_names,
+                alternate_family_names=self.params.alternate_family_names,
+                alternate_names=get_full_name(self.params.alternate_given_names,
                                               self.params.alternate_family_names,
                                               self.config)
             ))
         except search.Error:
-            logging.exception('Put name_document failed')
-        
-        try:
-            index_location = search.Index(name=INDEX_LOCATION)
-            index_location.put(create_location_document(
-                person.record_id,
-                self.repo,
-                self.params.home_street,
-                self.params.home_city,
-                self.params.home_state,
-                self.params.home_postal_code,
-                self.params.home_country
-            ))
-        except search.Error:
-            logging.exception('Put location_document failed')
+            logging.exception('Put failed')
 
         if self.params.add_note:
             spam_detector = SpamDetector(self.config.bad_words)
