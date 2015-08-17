@@ -29,6 +29,7 @@ import indexing
 import pfif
 import prefix
 import re
+import logging
 from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
@@ -224,16 +225,12 @@ class Base(db.Model):
         # which is more consitent with repo id format.
         record_id = '%s.%s/%s.%d' % (
             repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        if(cls == Person):
-            indexing.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @classmethod
     def create_clone(cls, repo, record_id, **kwargs):
         """Creates a new clone entity with the given field values."""
         assert is_clone(repo, record_id)
-        if(cls == Person):
-            indexing.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     # TODO(kpy): Rename this function (maybe to create_with_record_id?).
@@ -327,7 +324,20 @@ class Person(Base):
     _fields_to_index_properties = ['given_name', 'family_name', 'full_name']
     _fields_to_index_by_prefix_properties = ['given_name', 'family_name',
         'full_name']
+    
+    @classmethod
+    def create_original(cls, repo, **kwargs):
+        record_id = '%s.%s/%s.%d' % (
+            repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
+        indexing.create_index(record_id=record_id, repo=repo, **kwargs)
+        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
+    @classmethod
+    def create_clone(cls, repo, record_id, **kwargs):
+        assert is_clone(repo, record_id)
+        indexing.create_index(record_id=record_id, repo=repo, **kwargs)
+        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
+        
     @staticmethod
     def past_due_records(repo):
         """Returns a query for all Person records with expiry_date in the past,
@@ -498,22 +508,7 @@ class Person(Base):
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
 
-    def delete_related_entities(self, delete_self=False):
-        """Permanently delete all related Photos and Notes, and also self if
-        delete_self is True."""
-        # Delete all related Notes.
-        notes = self.get_notes(filter_expired=False)
-        # Delete the locally stored Photos.  We use get_value_for_datastore to
-        # get just the keys and prevent auto-fetching the Photo data.
-        photo = Person.photo.get_value_for_datastore(self)
-        note_photos = [Note.photo.get_value_for_datastore(n) for n in notes]
-
-        entities_to_delete = filter(None, notes + [photo] + note_photos)
-        if delete_self:
-            entities_to_delete.append(self)
-            delete_index(self)
-        db.delete(entities_to_delete)
-
+    """
     def delete_index(self, person):
         index = search.Index(name=INDEX_NAME)
         splited_record = re.compile(r'').split(person.key().name())
@@ -527,6 +522,37 @@ class Person(Base):
             index.delete(document_id)
         except search.Error:
             logging.exception('Search failed')
+    """
+
+
+    def delete_related_entities(self, delete_self=False):
+        """Permanently delete all related Photos and Notes, and also self if
+        delete_self is True."""
+        # Delete all related Notes.
+        notes = self.get_notes(filter_expired=False)
+        # Delete the locally stored Photos.  We use get_value_for_datastore to
+        # get just the keys and prevent auto-fetching the Photo data.
+        photo = Person.photo.get_value_for_datastore(self)
+        note_photos = [Note.photo.get_value_for_datastore(n) for n in notes]
+
+        entities_to_delete = filter(None, notes + [photo] + note_photos)
+        if delete_self:
+            entities_to_delete.append(self)
+            person=self
+            index = search.Index(name=INDEX_NAME)
+            splited_record = re.compile(r'[:./]').split(person.key().name())
+            logging.info(splited_record)
+            repo = splited_record[0]
+            person_record_id = splited_record[-1]
+            try:
+                result = index.search(
+                    'repo:' + repo + ' AND record_id:' + person_record_id)
+                document_id = result.results[0].doc_id
+                index.delete(document_id)
+            except search.Error:
+                logging.exception('Search failed')
+        db.delete(entities_to_delete)
+
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
