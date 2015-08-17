@@ -276,3 +276,22 @@ def search_debug(repo, query_obj, max_results):
 
     # Now rank and order the results.
     return rank_and_order(matched, query_obj, max_results)
+
+def create_document(**kwargs):
+    return search.Document(
+        fields = [search.TextField(name='record_id', value=kwargs['record_id']),
+                  search.TextField(name='repo', value=kwargs['repo']),
+                  search.TextField(name='given_name', value=kwargs['given_name']),
+                  search.TextField(name='family_name', value=kwargs['family_name']),
+                  search.TextField(name='full_name', value=kwargs['full_name']),
+                  search.TextField(name='alternate_given_names', value=kwargs['alternate_given_names']),
+                  search.TextField(name='alternate_family_names', value=kwargs['alternate_family_names']),
+                  search.TextField(name='alternate_names', value=kwargs['alternate_names'])
+              ])    
+
+def create_index(**kwargs):
+    try:
+        index_name = search.Index(name=INDEX_NAME)
+        index_name.put(create_document(**kwargs))
+    except search.Error:
+        logging.exception('Put failed')

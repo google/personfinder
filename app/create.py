@@ -23,8 +23,9 @@ import simplejson
 from django.utils.translation import ugettext as _
 from google.appengine.api import search
 
+import indexing
+
 INDEX_NAME = 'personal_information'
-INDEX_LOCATION = 'personal_location'
 
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
@@ -182,7 +183,7 @@ class Handler(BaseHandler):
             photo_url=photo_url
         )
         person.update_index(['old', 'new'])
-        create_index(                
+        indexing.create_index(                
             record_id=person.record_id,
             repo=self.repo,
             given_name=self.params.given_name,
