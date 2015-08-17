@@ -285,7 +285,7 @@ def create_document(**kwargs):
                   search.TextField(name='family_name', value=kwargs['family_name']),
                   search.TextField(name='full_name', value=kwargs['full_name']),
                   search.TextField(name='alternate_names', value=kwargs['alternate_names'])
-              ])    
+              ])
 
 def create_index(**kwargs):
     try:

@@ -38,9 +38,6 @@ MAX_RESULTS = 100
 POSSIBLE_PHONE_NUMBER_RE = re.compile(
     ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
-INDEX_NAME = 'personal_information'
-INDEX_LOCATION = 'personal_location'
-
 def has_possible_duplicates(results):
     """Returns True if it detects that there are possible duplicate records
     in the results i.e. identical full name."""
@@ -56,28 +53,8 @@ def is_possible_phone_number(query_str):
     return re.search(POSSIBLE_PHONE_NUMBER_RE,
         unicodedata.normalize('NFKC', unicode(query_str)))
 
-def create_query(query):
-    return re.sub(r' ', ' OR ', query)
 
 class Handler(BaseHandler):
-    def search_with_index(self, query, index):
-        results = []
-        query = create_query(query)
-        try:
-            results_index = search.Index(name=index).search(query)
-            record_ids = []
-            for document in results_index:
-                record_ids.append(document.fields[0].value)
-            for id in record_ids:
-                results.append(model.Person.get_by_key_name(self.repo + ':' + id))
-        except search.Error:
-            if index == INDEX_NAME:
-                logging.exception('Search by name failed')
-            else:
-                logging.exception('Search by location failed')
-        
-        return results
-    
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = []

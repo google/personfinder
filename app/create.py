@@ -41,25 +41,6 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
-def create_document(**kwargs):
-    return search.Document(
-        fields = [search.TextField(name='record_id', value=kwargs['record_id']),
-                  search.TextField(name='repo', value=kwargs['repo']),
-                  search.TextField(name='given_name', value=kwargs['given_name']),
-                  search.TextField(name='family_name', value=kwargs['family_name']),
-                  search.TextField(name='full_name', value=kwargs['full_name']),
-                  search.TextField(name='alternate_given_names', value=kwargs['alternate_given_names']),
-                  search.TextField(name='alternate_family_names', value=kwargs['alternate_family_names']),
-                  search.TextField(name='alternate_names', value=kwargs['alternate_names'])
-              ])    
-
-def create_index(**kwargs):
-    try:
-        index_name = search.Index(name=INDEX_NAME)
-        index_name.put(create_document(**kwargs))
-    except search.Error:
-        logging.exception('Put failed')
-
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
@@ -183,19 +164,6 @@ class Handler(BaseHandler):
             photo_url=photo_url
         )
         person.update_index(['old', 'new'])
-        indexing.create_index(                
-            record_id=person.record_id,
-            repo=self.repo,
-            given_name=self.params.given_name,
-            family_name=self.params.family_name,
-            full_name=get_full_name(self.params.given_name,
-                                    self.params.family_name,
-                                    self.config),
-            alternate_given_names=self.params.alternate_given_names,
-            alternate_family_names=self.params.alternate_family_names,
-            alternate_names=get_full_name(self.params.alternate_given_names,
-                                          self.params.alternate_family_names,
-                                          self.config))
 
         if self.params.add_note:
             spam_detector = SpamDetector(self.config.bad_words)
