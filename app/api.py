@@ -438,14 +438,15 @@ class Search(utils.BaseHandler):
                 results = [person]
         elif query_string:
             # Search by query words.
-            query = TextQuery(query_string)
             if self.config.external_search_backends:
+                query = TextQuery(query_string)
                 results = external_search.search(self.repo, query, max_results,
                     self.config.external_search_backends)
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                results = indexing.search_with_index(self.repo, query_string, max_results)
+                results = indexing.search_with_index(
+                    self.repo, query_string, max_results)
         else:
             self.info(
                 400,

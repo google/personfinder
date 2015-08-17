@@ -21,9 +21,6 @@ from model import db
 
 import django.utils.html
 from django.utils.translation import ugettext as _
-from google.appengine.api import search
-import logging
-import re
 
 # The number of days an expired record lingers before the DeleteExpired task
 # wipes it from the database.  When a user deletes a record through the UI,
@@ -31,7 +28,6 @@ import re
 # the number of days after deletion during which the record can be restored.
 EXPIRED_TTL_DAYS = 3
 
-INDEX_NAME = 'personal_information'
 
 def send_delete_notice(handler, person):
     """Notify concerned folks about the potential deletion."""

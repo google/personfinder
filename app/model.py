@@ -324,7 +324,7 @@ class Person(Base):
     _fields_to_index_properties = ['given_name', 'family_name', 'full_name']
     _fields_to_index_by_prefix_properties = ['given_name', 'family_name',
         'full_name']
-    
+
     @classmethod
     def create_original(cls, repo, **kwargs):
         record_id = '%s.%s/%s.%d' % (
@@ -539,7 +539,6 @@ class Person(Base):
             entities_to_delete.append(self)
             self.delete_index(self)
         db.delete(entities_to_delete)
-
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
