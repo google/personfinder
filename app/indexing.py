@@ -284,8 +284,6 @@ def create_document(**kwargs):
                   search.TextField(name='given_name', value=kwargs['given_name']),
                   search.TextField(name='family_name', value=kwargs['family_name']),
                   search.TextField(name='full_name', value=kwargs['full_name']),
-                  search.TextField(name='alternate_given_names', value=kwargs['alternate_given_names']),
-                  search.TextField(name='alternate_family_names', value=kwargs['alternate_family_names']),
                   search.TextField(name='alternate_names', value=kwargs['alternate_names'])
               ])    
 

@@ -29,6 +29,8 @@ import pfif
 import prefix
 from const import HOME_DOMAIN
 
+import logging
+
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
 
@@ -218,6 +220,8 @@ class Base(db.Model):
         # which is more consitent with repo id format.
         record_id = '%s.%s/%s.%d' % (
             repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
+        if(cls == Person):
+            indexing.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @classmethod

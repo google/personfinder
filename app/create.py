@@ -196,26 +196,6 @@ class Handler(BaseHandler):
             alternate_names=get_full_name(self.params.alternate_given_names,
                                           self.params.alternate_family_names,
                                           self.config))
-        """
-        try:
-            index_name = search.Index(name=INDEX_NAME)
-            index_name.put(create_document(
-                record_id=person.record_id,
-                repo=self.repo,
-                given_name=self.params.given_name,
-                family_name=self.params.family_name,
-                full_name=get_full_name(self.params.given_name,
-                                        self.params.family_name,
-                                        self.config),
-                alternate_given_names=self.params.alternate_given_names,
-                alternate_family_names=self.params.alternate_family_names,
-                alternate_names=get_full_name(self.params.alternate_given_names,
-                                              self.params.alternate_family_names,
-                                              self.config)
-            ))
-        except search.Error:
-            logging.exception('Put failed')
-        """
 
         if self.params.add_note:
             spam_detector = SpamDetector(self.config.bad_words)
