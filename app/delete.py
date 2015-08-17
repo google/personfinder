@@ -74,7 +74,6 @@ def delete_person(handler, person, send_notices=True):
     record, deletion can be undone within EXPIRED_TTL_DAYS days."""
     if person.is_original():
         if send_notices:
-            delete_index(person)
             # For an original record, send notifiations
             # to all the related e-mail addresses offering an undelete link.
             send_delete_notice(handler, person)

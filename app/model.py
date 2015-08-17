@@ -22,6 +22,7 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+from google.appengine.api import search
 
 import config
 import indexing
@@ -31,6 +32,8 @@ from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
+
+INDEX_NAME = 'personal_information'
 
 # ==== PFIF record IDs =====================================================
 
@@ -76,6 +79,8 @@ def clone_to_new_type(origin, dest_class, **kwargs):
     if hasattr(origin, 'record_id'):
         vals.update(record_id=origin.record_id)
     return dest_class(key_name=origin.key().name(), **vals)
+
+
 
 # ==== Model classes =======================================================
 
@@ -503,7 +508,22 @@ class Person(Base):
         entities_to_delete = filter(None, notes + [photo] + note_photos)
         if delete_self:
             entities_to_delete.append(self)
+            delete_index(self)
         db.delete(entities_to_delete)
+
+    def delete_index(self, person):
+        index = search.Index(name=INDEX_NAME)
+        splited_record = re.compile(r'').split(person.key().name())
+        logging.info(splited_record)
+        repo = splited_record[0]
+        person_record_id = splited_record[-1]
+        try:
+            result = index.search(
+                'repo:' + repo + ' AND record_id:' + person_record_id)
+            document_id = result.results[0].doc_id
+            index.delete(document_id)
+        except search.Error:
+            logging.exception('Search failed')
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
