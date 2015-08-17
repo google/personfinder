@@ -218,7 +218,9 @@ def search_with_index(repo, query_obj, max_results):
     query = create_query(query_obj)
     try:
         index = search.Index(name=INDEX_NAME)
-        options = search.QueryOptions(limit=max_results)
+        options = search.QueryOptions(
+            limit=max_results,
+            returned_fields=['record_id'])
         results_index = index.search(search.Query(
             query_string=query, options=options))
         record_ids = []
