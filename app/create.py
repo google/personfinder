@@ -40,20 +40,6 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
-def create_document2(record_id, repo, given_name, family_name, full_name, 
-                         alternate_given_names, alternate_family_names,
-                         alternate_names):
-    return search.Document(
-        fields = [search.TextField(name='record_id', value=record_id),
-                  search.TextField(name='repo', value=repo),
-                  search.TextField(name='given_name', value=given_name),
-                  search.TextField(name='family_name', value=family_name),
-                  search.TextField(name='full_name', value=full_name),
-                  search.TextField(name='alternate_given_names', value=alternate_given_names),
-                  search.TextField(name='alternate_family_names', value=alternate_family_names),
-                  search.TextField(name='alternate_names', value=alternate_names)
-              ])
-
 def create_document(**kwargs):
     return search.Document(
         fields = [search.TextField(name='record_id', value=kwargs['record_id']),
@@ -69,20 +55,7 @@ def create_document(**kwargs):
 def create_index(**kwargs):
     try:
         index_name = search.Index(name=INDEX_NAME)
-        index_name.put(create_document(
-            person.record_id,
-            self.repo,
-            self.params.given_name,
-            self.params.family_name,
-            get_full_name(self.params.given_name,
-                          self.params.family_name,
-                          self.config),
-            self.params.alternate_given_names,
-            self.params.alternate_family_names,
-            get_full_name(self.params.alternate_given_names,
-                          self.params.alternate_family_names,
-                          self.config)
-        ))
+        index_name.put(create_document(**kwargs))
     except search.Error:
         logging.exception('Put failed')
 
@@ -209,7 +182,20 @@ class Handler(BaseHandler):
             photo_url=photo_url
         )
         person.update_index(['old', 'new'])
-
+        create_index(                
+            record_id=person.record_id,
+            repo=self.repo,
+            given_name=self.params.given_name,
+            family_name=self.params.family_name,
+            full_name=get_full_name(self.params.given_name,
+                                    self.params.family_name,
+                                    self.config),
+            alternate_given_names=self.params.alternate_given_names,
+            alternate_family_names=self.params.alternate_family_names,
+            alternate_names=get_full_name(self.params.alternate_given_names,
+                                          self.params.alternate_family_names,
+                                          self.config))
+        """
         try:
             index_name = search.Index(name=INDEX_NAME)
             index_name.put(create_document(
@@ -228,6 +214,7 @@ class Handler(BaseHandler):
             ))
         except search.Error:
             logging.exception('Put failed')
+        """
 
         if self.params.add_note:
             spam_detector = SpamDetector(self.config.bad_words)
