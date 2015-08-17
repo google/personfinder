@@ -44,7 +44,6 @@
 
   var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
   var MULTILINGUAL_TABLE_IDS = [
-    //'repo_titles', 
     'start_page_custom_htmls', 
     'results_page_custom_htmls', 
     'view_page_custom_htmls', 
@@ -123,7 +122,7 @@
     var selected_language = get_selected_language(row_number);
     for (var index = 1; index < language_num; index++) {
       var language_code = get_selected_language(index);
-      if (used_languages[language_code] != null) {
+      if (language_code != 'unused' && used_languages[language_code] != null) {
         alert('You entered the same language!!');
       }
       used_languages[language_code] = 1;
@@ -237,7 +236,7 @@
   // Adds a language in repo_titles_table and custom_message_table.
   function add_language() {
     add_language_to_repo_titles_table();
-    for(var id_num = 1; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++){
+    for(var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++){
       add_language_to_custom_message_table(
           MULTILINGUAL_TABLE_IDS[id_num], 'not selected');
     }
