@@ -21,12 +21,17 @@ from model import db
 
 import django.utils.html
 from django.utils.translation import ugettext as _
+from google.appengine.api import search
+import logging
+import re
 
 # The number of days an expired record lingers before the DeleteExpired task
 # wipes it from the database.  When a user deletes a record through the UI,
 # we carry that out by setting the expiry to the current time, so this is also
 # the number of days after deletion during which the record can be restored.
 EXPIRED_TTL_DAYS = 3
+
+INDEX_NAME = 'personal_information'
 
 def send_delete_notice(handler, person):
     """Notify concerned folks about the potential deletion."""
@@ -69,6 +74,7 @@ def delete_person(handler, person, send_notices=True):
     record, deletion can be undone within EXPIRED_TTL_DAYS days."""
     if person.is_original():
         if send_notices:
+            delete_index(person)
             # For an original record, send notifiations
             # to all the related e-mail addresses offering an undelete link.
             send_delete_notice(handler, person)
@@ -85,6 +91,20 @@ def delete_person(handler, person, send_notices=True):
         # visible result will be as if we had never received a copy of it.)
         person.delete_related_entities(delete_self=True)
 
+
+def delete_index(person):
+    index = search.Index(name=INDEX_NAME)
+    splited_record = re.compile(r'[:./]').split(person.key().name())
+    logging.info(splited_record)
+    repo = splited_record[0]
+    person_record_id = splited_record[-1]
+    try:
+        result = index.search(
+            'repo:' + repo + ' AND record_id:' + person_record_id)
+        document_id = result.results[0].doc_id
+        index.delete(document_id)
+    except search.Error:
+        logging.exception('Search failed')
 
 def get_tag_params(handler, person):
     """Return HTML tag parameters used in delete.html."""
