@@ -77,14 +77,6 @@ class Handler(BaseHandler):
                 logging.exception('Search by location failed')
         
         return results
-
-    def merge_results(self, results_name, results_location):
-        results = []
-        results_name_ids = []
-        results_location_ids = []
-
-        return results
-        
     
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
@@ -97,10 +89,8 @@ class Handler(BaseHandler):
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = self.search_with_index(query, INDEX_NAME)
-            results_location = self.search_with_index(query, INDEX_LOCATION)
-            logging.info(results)
-            logging.info(results_location)
+            #results = self.search_with_index(query, INDEX_NAME)
+            results = indexing.search_with_index(self.repo, query, MAX_RESULTS)
             
         for result in results:
             result.view_url = self.get_url('/view',

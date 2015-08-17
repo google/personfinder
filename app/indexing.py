@@ -211,9 +211,26 @@ def sort_query_words(query_words):
     return sorted(sorted_query_words, key=len, reverse=True)
 
 def create_query(query):
-    return re.sub(r' ', ' OR ', query)
+    return re.sub(r' ', ' AND ', query)
 
-def search(repo, query_obj, max_results):
+def search_with_index(repo, query_obj, max_results):
+    results = []
+    query = create_query(query_obj)
+    try:
+        index = search.Index(name=INDEX_NAME)
+        options = search.QueryOptions(limit=max_results)
+        results_index = index.search(search.Query(
+            query_string=query, options=options))
+        record_ids = []
+        for document in results_index:
+            record_ids.append(document.fields[0].value)
+        for id in record_ids:
+            results.append(model.Person.get_by_key_name(repo + ':' + id))
+    except search.Error:
+        logging.exception('Search exception')
+    return results
+
+def search_debug(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the
     # number of entries we can fetch at once, the order of query words could
     # potentially matter.  In particular, this is the case for most Japanese

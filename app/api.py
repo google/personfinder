@@ -445,7 +445,7 @@ class Search(utils.BaseHandler):
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                results = indexing.search(self.repo, query, max_results)
+                results = indexing.search_with_index(self.repo, query, max_results)
         else:
             self.info(
                 400,
