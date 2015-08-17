@@ -28,6 +28,7 @@ import config
 import indexing
 import pfif
 import prefix
+import re
 from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
@@ -231,6 +232,8 @@ class Base(db.Model):
     def create_clone(cls, repo, record_id, **kwargs):
         """Creates a new clone entity with the given field values."""
         assert is_clone(repo, record_id)
+        if(cls == Person):
+            indexing.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     # TODO(kpy): Rename this function (maybe to create_with_record_id?).

@@ -90,7 +90,7 @@ def delete_person(handler, person, send_notices=True):
         # visible result will be as if we had never received a copy of it.)
         person.delete_related_entities(delete_self=True)
 
-
+"""
 def delete_index(person):
     index = search.Index(name=INDEX_NAME)
     splited_record = re.compile(r'[:./]').split(person.key().name())
@@ -104,6 +104,7 @@ def delete_index(person):
         index.delete(document_id)
     except search.Error:
         logging.exception('Search failed')
+"""
 
 def get_tag_params(handler, person):
     """Return HTML tag parameters used in delete.html."""
