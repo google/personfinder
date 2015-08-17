@@ -508,10 +508,10 @@ class Person(Base):
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
 
-    """
+
     def delete_index(self, person):
         index = search.Index(name=INDEX_NAME)
-        splited_record = re.compile(r'').split(person.key().name())
+        splited_record = re.compile(r'[:./]').split(person.key().name())
         logging.info(splited_record)
         repo = splited_record[0]
         person_record_id = splited_record[-1]
@@ -522,7 +522,6 @@ class Person(Base):
             index.delete(document_id)
         except search.Error:
             logging.exception('Search failed')
-    """
 
 
     def delete_related_entities(self, delete_self=False):
@@ -538,19 +537,7 @@ class Person(Base):
         entities_to_delete = filter(None, notes + [photo] + note_photos)
         if delete_self:
             entities_to_delete.append(self)
-            person=self
-            index = search.Index(name=INDEX_NAME)
-            splited_record = re.compile(r'[:./]').split(person.key().name())
-            logging.info(splited_record)
-            repo = splited_record[0]
-            person_record_id = splited_record[-1]
-            try:
-                result = index.search(
-                    'repo:' + repo + ' AND record_id:' + person_record_id)
-                document_id = result.results[0].doc_id
-                index.delete(document_id)
-            except search.Error:
-                logging.exception('Search failed')
+            self.delete_index(self)
         db.delete(entities_to_delete)
 
 
