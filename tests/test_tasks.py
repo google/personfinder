@@ -31,6 +31,7 @@ from google.appengine.ext import db
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import webapp
+from google.appengine.ext import testbed
 
 import config
 import delete
@@ -49,7 +50,9 @@ class TasksTests(unittest.TestCase):
     def setUp(self):
         logging.basicConfig(level=logging.INFO, stream=sys.stderr)
         self.mox = None
-
+        self.tb = testbed.Testbed()
+        self.tb.activate()
+        self.tb.init_search_stub()
         # Setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
         self.photo = model.Photo.create('haiti', image_data='xyz')
@@ -59,11 +62,14 @@ class TasksTests(unittest.TestCase):
             'haiti',
             given_name='John',
             family_name='Smith',
+            full_name='John Smith',
+            alternate_names='',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
             home_postal_code='11111',
             home_neighborhood='Good Neighborhood',
+            home_country='',
             author_name='Alice Smith',
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
@@ -79,9 +85,14 @@ class TasksTests(unittest.TestCase):
             'haiti',
             given_name='Tzvika',
             family_name='Hartman',
+            full_name='Tzvika Hartman',
+            alternate_names='',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             source_date=datetime.datetime(2010, 1, 1),
             entry_date=datetime.datetime(2010, 1, 1),
             expiry_date=datetime.datetime(2010, 3, 1),
@@ -102,6 +113,7 @@ class TasksTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
+        self.tb.deactivate()
         if self.mox:
             self.mox.UnsetStubs()
 
@@ -258,11 +270,16 @@ class TasksTests(unittest.TestCase):
         # entry_date of p3 is 4 hours after p1 and p2.
         self.p3 = model.Person.create_original(
             'haiti',
-            first_name='Taro',
-            last_name='Google',
+            given_name='Taro',
+            family_name='Google',
+            full_name='Taro Google',
+            alternate_names='',
             home_street='Roppongi',
             home_city='Minato',
             home_state='Tokyo',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             source_date=datetime.datetime(2010, 1, 1),
             entry_date=datetime.datetime(2010, 1, 1, 4, 0, 0),
             expiry_date=datetime.datetime(2010, 3, 1),

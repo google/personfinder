@@ -8,6 +8,7 @@
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 from google.appengine.ext import db
+from google.appengine.ext import testbed
 import datetime
 import indexing
 import logging
@@ -20,16 +21,22 @@ from text_query import TextQuery
 def create_person(given_name, family_name):
     return model.Person.create_original(
         'test', given_name=given_name, family_name=family_name,
-        full_name=('%s %s' % (given_name, family_name)),
+        full_name=('%s %s' % (given_name, family_name)), alternate_names='',
+        home_street='', home_city='', home_state='', home_postal_code='',
+        home_neighborhood='', home_country='',
         entry_date=datetime.datetime.utcnow())
 
 
 class IndexingTests(unittest.TestCase):
     def setUp(self):
         db.delete(model.Person.all())
+        self.tb = testbed.Testbed()
+        self.tb.activate()
+        self.tb.init_search_stub()
 
     def tearDown(self):
         db.delete(model.Person.all())
+        self.tb.deactivate()
 
     def add_persons(self, *persons):
         for p in persons:
@@ -37,7 +44,7 @@ class IndexingTests(unittest.TestCase):
             db.put(p)
 
     def get_matches(self, query, limit=100):
-        results = indexing.search('test', TextQuery(query), limit)
+        results = indexing.search_debug('test', TextQuery(query), limit)
         return [(p.given_name, p.family_name) for p in results]
 
     def get_ranked(self, results, query, limit=100):
@@ -159,10 +166,10 @@ class IndexingTests(unittest.TestCase):
             indexing.update_index_properties(p)
             db.put(p)
 
-        res = indexing.search('test', TextQuery('Bryan abc'), 1)
+        res = indexing.search_debug('test', TextQuery('Bryan abc'), 1)
         assert [(p.given_name, p.family_name) for p in res] == [('Bryan', 'abc')]
 
-        res = indexing.search('test', TextQuery('CC AAAA'), 100)
+        res = indexing.search_debug('test', TextQuery('CC AAAA'), 100)
         assert [(p.given_name, p.family_name) for p in res] == \
             [('AAAA BBBB', 'CCC DDD')]
 
@@ -238,7 +245,7 @@ class IndexingTests(unittest.TestCase):
 
     def test_no_query_terms(self):
         # Regression test (this used to throw an exception).
-        assert indexing.search('test', TextQuery(''), 100) == []
+        assert indexing.search_debug('test', TextQuery(''), 100) == []
 
 
 if __name__ == '__main__':

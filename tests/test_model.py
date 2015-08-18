@@ -19,21 +19,28 @@ from google.appengine.ext import db
 import unittest
 import model
 from utils import get_utcnow, set_utcnow_for_test
+from google.appengine.ext import testbed
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
         set_utcnow_for_test(datetime(2010, 1, 1))
+        self.tb = testbed.Testbed()
+        self.tb.activate()
+        self.tb.init_search_stub()
         self.p1 = model.Person.create_original(
             'haiti',
             given_name='John',
             family_name='Smith',
+            full_name='John Smith',
+            alternate_names='',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
             home_postal_code='11111',
             home_neighborhood='Good Neighborhood',
+            home_country='',
             author_name='Alice Smith',
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
@@ -46,18 +53,28 @@ class ModelTests(unittest.TestCase):
             'haiti',
             given_name='Tzvika',
             family_name='Hartman',
+            full_name='Tzvika',
+            alternate_names='',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             entry_date=datetime(2010, 1, 1),
             expiry_date=datetime(2010, 3, 1))
         self.p3 = model.Person.create_original(
             'haiti',
             given_name='Third',
             family_name='Person',
+            full_name='Third Person',
+            alternate_names='',
             home_street='Main St.',
             home_city='San Francisco',
             home_state='California',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             entry_date=datetime(2010, 1, 1),
             expiry_date=datetime(2020, 3, 1))
         self.key_p1 = db.put(self.p1)
@@ -140,6 +157,7 @@ class ModelTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
+        self.tb.deactivate()
 
     def test_associated_emails(self):
         emails = self.p1.get_associated_emails()

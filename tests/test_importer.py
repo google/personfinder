@@ -18,6 +18,7 @@ import datetime
 import unittest
 
 from google.appengine.ext import db
+from google.appengine.ext import testbed
 from pytest import raises
 
 import model
@@ -40,10 +41,15 @@ def put_dummy_person_record(repo, person_record_id):
 
 class ImporterTests(unittest.TestCase):
     """Test the import utilities."""
+    def setUp(self):
+        self.tb = testbed.Testbed()
+        self.tb.activate()
+        self.tb.init_search_stub()
 
     def tearDown(self):
         db.delete(model.Person.all())
         db.delete(model.Note.all())
+        self.tb.deactivate()
 
     def test_strip(self):
         assert importer.strip('') == ''

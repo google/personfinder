@@ -26,7 +26,16 @@ import api
 import model
 import test_handler
 
+from google.appengine.ext import testbed
+
 class APITests(unittest.TestCase):
+    def setUp(self):
+        self.tb = testbed.Testbed()
+        self.tb.activate()
+        self.tb.init_search_stub()
+    
+    def tearDown(self):
+        self.tb.deactivate()
 
     def test_sms_render_person(self):
         handler = test_handler.initialize_handler(
@@ -34,12 +43,19 @@ class APITests(unittest.TestCase):
 
         person = model.Person.create_original(
             'haiti',
+            given_name='John',
+            family_name='Smith',
             full_name='John Smith',
             latest_status='believed_alive',
+            alternate_names='',
             sex='male',
             age='30',
+            home_street='',
             home_city='Los Angeles',
             home_state='California',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             entry_date=datetime.datetime(2010, 1, 1))
         assert (handler.render_person(person) ==
             'John Smith / '
@@ -48,13 +64,30 @@ class APITests(unittest.TestCase):
 
         person = model.Person.create_original(
             'haiti',
+            given_name='John',
+            family_name='Smith',
             full_name='John Smith',
+            alternate_names='',
+            home_street='',
+            home_city='',
+            home_state='',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             entry_date=datetime.datetime(2010, 1, 1))
         assert handler.render_person(person) == 'John Smith'
 
         person = model.Person.create_original(
             'haiti',
+            given_name='John',
+            family_name='Smith',
             full_name='John Smith',
+            alternate_names='',
+            home_street='',
+            home_city='',
             home_state='California',
+            home_postal_code='',
+            home_neighborhood='',
+            home_country='',
             entry_date=datetime.datetime(2010, 1, 1))
         assert handler.render_person(person) == 'John Smith / From: California'
