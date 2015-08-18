@@ -41,6 +41,7 @@ import model
 import re
 import jautils
 
+
 def update_index_properties(entity):
     """Finds and updates all prefix-related properties on the given entity."""
     # Using set to make sure I'm not adding the same string more than once.
@@ -206,6 +207,7 @@ def sort_query_words(query_words):
     #   (3) Sort them according to the lengths so that longer query words,
     #       which are usually more effective filters, come first.
     return sorted(sorted_query_words, key=len, reverse=True)
+
 
 def search(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the

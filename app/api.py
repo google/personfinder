@@ -31,6 +31,7 @@ from google.appengine.ext import db
 import external_search
 import importer
 import indexing
+import full_text_search
 import model
 import pfif
 import simplejson
@@ -445,7 +446,7 @@ class Search(utils.BaseHandler):
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                results = indexing.search_with_index(
+                results = full_text_search.search_with_index(
                     self.repo, query_string, max_results)
         else:
             self.info(
