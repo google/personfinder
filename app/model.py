@@ -82,8 +82,6 @@ def clone_to_new_type(origin, dest_class, **kwargs):
         vals.update(record_id=origin.record_id)
     return dest_class(key_name=origin.key().name(), **vals)
 
-
-
 # ==== Model classes =======================================================
 
 # Every Person or Note entity belongs to a specific repository.  To partition

@@ -63,7 +63,7 @@ class Handler(BaseHandler):
         # original search when they fail or return no results.
         if not results:
             results = indexing.search_with_index(self.repo, query, MAX_RESULTS)
-            
+
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
@@ -111,7 +111,6 @@ class Handler(BaseHandler):
             # scoring function in indexing.py).
             query_txt = get_full_name(
                 self.params.given_name, self.params.family_name, self.config)
-
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
@@ -158,7 +157,6 @@ class Handler(BaseHandler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query)
-
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:

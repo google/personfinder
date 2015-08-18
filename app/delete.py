@@ -28,7 +28,6 @@ from django.utils.translation import ugettext as _
 # the number of days after deletion during which the record can be restored.
 EXPIRED_TTL_DAYS = 3
 
-
 def send_delete_notice(handler, person):
     """Notify concerned folks about the potential deletion."""
     # i18n: Subject line of an e-mail message notifying a user
