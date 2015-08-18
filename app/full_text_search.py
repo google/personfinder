@@ -46,3 +46,16 @@ def create_index(**kwargs):
     except search.Error:
         logging.exception('Put failed')
 
+
+def delete_index(person):
+    index = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
+    splited_record = re.compile(r'[:./]').split(person.key().name())
+    repo = splited_record[0]
+    person_record_id = splited_record[-1]
+    try:
+        result = index.search(
+            'repo:' + repo + ' AND record_id:' + person_record_id)
+        document_id = result.results[0].doc_id
+        index.delete(document_id)
+    except search.Error:
+        logging.exception('Search failed')

@@ -35,13 +35,11 @@ but will not be retrieved by:
 from text_query import TextQuery
 
 from google.appengine.ext import db
-from google.appengine.api import search
 import unicodedata
 import logging
 import model
 import re
 import jautils
-from const import PERSON_FULLTEXT_INDEX_NAME
 
 def update_index_properties(entity):
     """Finds and updates all prefix-related properties on the given entity."""

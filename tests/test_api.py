@@ -33,7 +33,7 @@ class APITests(unittest.TestCase):
         self.tb = testbed.Testbed()
         self.tb.activate()
         self.tb.init_search_stub()
-    
+
     def tearDown(self):
         self.tb.deactivate()
 

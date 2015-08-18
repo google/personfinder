@@ -22,7 +22,6 @@ import simplejson
 
 from django.utils.translation import ugettext as _
 
-
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
     entry of the source_date in the creation form.    Unlike the validators in
