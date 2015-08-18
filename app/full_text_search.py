@@ -3,6 +3,7 @@ from const import PERSON_FULLTEXT_INDEX_NAME
 from google.appengine.api import search
 import re
 import model
+import logging
 
 def search_with_index(repo, query_obj, max_results):
 
@@ -29,14 +30,13 @@ def search_with_index(repo, query_obj, max_results):
 
 
 def create_document(**kwargs):
-    return search.Document(
-        fields = [search.TextField(name='record_id', value=kwargs['record_id']),
-                  search.TextField(name='repo', value=kwargs['repo']),
-                  search.TextField(name='given_name', value=kwargs['given_name']),
-                  search.TextField(name='family_name', value=kwargs['family_name']),
-                  search.TextField(name='full_name', value=kwargs['full_name']),
-                  search.TextField(name='alternate_names', value=kwargs['alternate_names'])
-              ])
+    TEXT_FIELD_TABLE = ['record_id', 'repo', 'given_name', 'family_name',
+                       'full_name', 'alternate_names']
+    fields = []
+    for field in TEXT_FIELD_TABLE:
+        if field in kwargs:
+            fields.append(search.TextField(name=field, value=kwargs[field]))
+    return search.Document(fields=fields)
 
 
 def create_index(**kwargs):
@@ -55,7 +55,8 @@ def delete_index(person):
     try:
         result = index.search(
             'repo:' + repo + ' AND record_id:' + person_record_id)
-        document_id = result.results[0].doc_id
-        index.delete(document_id)
+        if result.results:
+            document_id = result.results[0].doc_id
+            index.delete(document_id)
     except search.Error:
         logging.exception('Search failed')

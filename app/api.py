@@ -446,8 +446,12 @@ class Search(utils.BaseHandler):
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                results = full_text_search.search_with_index(
-                    self.repo, query_string, max_results)
+                if self.config.enable_fulltext_search:
+                    results = full_text_search.search_with_index(
+                        self.repo, query_string, max_results)
+                else:
+                    results = indexing.search(
+                        self.repo, TextQuery(query_string), max_results)
         else:
             self.info(
                 400,

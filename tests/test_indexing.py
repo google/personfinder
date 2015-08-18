@@ -21,9 +21,7 @@ from text_query import TextQuery
 def create_person(given_name, family_name):
     return model.Person.create_original(
         'test', given_name=given_name, family_name=family_name,
-        full_name=('%s %s' % (given_name, family_name)), alternate_names='',
-        home_street='', home_city='', home_state='', home_postal_code='',
-        home_neighborhood='', home_country='',
+        full_name=('%s %s' % (given_name, family_name)),
         entry_date=datetime.datetime.utcnow())
 
 

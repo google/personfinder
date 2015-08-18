@@ -327,13 +327,11 @@ class Person(Base):
     def create_original(cls, repo, **kwargs):
         record_id = '%s.%s/%s.%d' % (
             repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        full_text_search.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @classmethod
     def create_clone(cls, repo, record_id, **kwargs):
         assert is_clone(repo, record_id)
-        full_text_search.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @staticmethod
@@ -541,6 +539,14 @@ class Person(Base):
     def update_index(self, which_indexing):
         #setup new indexing
         if 'new' in which_indexing:
+            full_text_search.create_index(
+                record_id = self.record_id,
+                repo = self.repo,
+                given_name = self.given_name,
+                family_name = self.family_name,
+                full_name = self.full_name,
+                alternate_names = self.alternate_names
+            )
             indexing.update_index_properties(self)
         # setup old indexing
         if 'old' in which_indexing:
