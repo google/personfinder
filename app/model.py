@@ -323,17 +323,6 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['given_name', 'family_name',
         'full_name']
 
-    @classmethod
-    def create_original(cls, repo, **kwargs):
-        record_id = '%s.%s/%s.%d' % (
-            repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
-
-    @classmethod
-    def create_clone(cls, repo, record_id, **kwargs):
-        assert is_clone(repo, record_id)
-        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
-
     @staticmethod
     def past_due_records(repo):
         """Returns a query for all Person records with expiry_date in the past,

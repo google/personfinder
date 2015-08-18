@@ -20,6 +20,7 @@ from model import *
 from utils import *
 from text_query import TextQuery
 import external_search
+import indexing
 import full_text_search
 import jp_mobile_carriers
 
