@@ -210,12 +210,26 @@ def sort_query_words(query_words):
     #       which are usually more effective filters, come first.
     return sorted(sorted_query_words, key=len, reverse=True)
 
-def create_query(query):
+def create_and_query(query):
     return re.sub(r' ', ' AND ', query)
+
+def create_or_query(query):
+    name_params = ['given_name', 'family_name', 'full_name', 'alternate_names']
+    or_query = re.sub(r' ', ' OR ', query)
+    search_name_query = ''
+    for param in name_params:
+        search_name_query += param + ': ' + or_query + ' OR '
+    return search_name_query[:-4]
+
+def create_query(query):
+    search_name_location_query = create_and_query(query)
+    search_name_query = create_or_query(query)
+    return search_name_location_query + ' AND (' + search_name_query + ')'
 
 def search_with_index(repo, query_obj, max_results):
     results = []
     query = create_query(query_obj)
+    logging.info(query)
     try:
         index = search.Index(name=INDEX_NAME)
         options = search.QueryOptions(
@@ -279,13 +293,31 @@ def search_debug(repo, query_obj, max_results):
 
 def create_document(**kwargs):
     return search.Document(
-        fields = [search.TextField(name='record_id', value=kwargs['record_id']),
-                  search.TextField(name='repo', value=kwargs['repo']),
-                  search.TextField(name='given_name', value=kwargs['given_name']),
-                  search.TextField(name='family_name', value=kwargs['family_name']),
-                  search.TextField(name='full_name', value=kwargs['full_name']),
-                  search.TextField(name='alternate_names', value=kwargs['alternate_names'])
-              ])
+        fields = [
+            search.TextField(name='record_id', value=kwargs['record_id']),
+            search.TextField(
+                name='repo', value=kwargs['repo']),
+            search.TextField(
+                name='given_name', value=kwargs['given_name']),
+            search.TextField(
+                name='family_name', value=kwargs['family_name']),
+            search.TextField(
+                name='full_name', value=kwargs['full_name']),
+            search.TextField(
+                name='alternate_names', value=kwargs['alternate_names']),
+            search.TextField(
+                name='home_street', value=kwargs['home_street']),
+            search.TextField(
+                name='home_city', value=kwargs['home_city']),
+            search.TextField(
+                name='home_state', value=kwargs['home_state']),
+            search.TextField(
+                name='home_postal_code', value=kwargs['home_postal_code']),
+            search.TextField(
+                name='home_neighborhood', value=kwargs['home_neighborhood']),
+            search.TextField(
+                name='home_country', value=kwargs['home_country'])
+        ])
 
 def create_index(**kwargs):
     try:
