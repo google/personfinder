@@ -20,7 +20,7 @@ from model import *
 from utils import *
 from text_query import TextQuery
 import external_search
-import indexing
+import full_text_search
 import jp_mobile_carriers
 
 MAX_RESULTS = 100
@@ -53,7 +53,7 @@ def is_possible_phone_number(query_str):
 class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = []
+        results = None
         if self.config.external_search_backends:
             results = external_search.search(
                 self.repo, TextQuery(query), MAX_RESULTS,
@@ -62,8 +62,8 @@ class Handler(BaseHandler):
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search_with_index(self.repo, query, MAX_RESULTS)
-            
+            results = full_text_search.search_with_index(self.repo, query, MAX_RESULTS)
+
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,

@@ -21,11 +21,7 @@ from detect_spam import SpamDetector
 import simplejson
 
 from django.utils.translation import ugettext as _
-from google.appengine.api import search
 
-import indexing
-
-INDEX_NAME = 'personal_information'
 
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual

@@ -30,12 +30,13 @@ import pfif
 import prefix
 import re
 import logging
+import full_text_search
 from const import HOME_DOMAIN
+from const import PERSON_FULLTEXT_INDEX_NAME
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
 
-INDEX_NAME = 'personal_information'
 
 # ==== PFIF record IDs =====================================================
 
@@ -329,13 +330,13 @@ class Person(Base):
     def create_original(cls, repo, **kwargs):
         record_id = '%s.%s/%s.%d' % (
             repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        indexing.create_index(record_id=record_id, repo=repo, **kwargs)
+        full_text_search.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @classmethod
     def create_clone(cls, repo, record_id, **kwargs):
         assert is_clone(repo, record_id)
-        indexing.create_index(record_id=record_id, repo=repo, **kwargs)
+        full_text_search.create_index(record_id=record_id, repo=repo, **kwargs)
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
         
     @staticmethod
@@ -510,7 +511,7 @@ class Person(Base):
 
 
     def delete_index(self, person):
-        index = search.Index(name=INDEX_NAME)
+        index = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
         splited_record = re.compile(r'[:./]').split(person.key().name())
         logging.info(splited_record)
         repo = splited_record[0]
