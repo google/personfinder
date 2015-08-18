@@ -207,7 +207,7 @@ def sort_query_words(query_words):
     #       which are usually more effective filters, come first.
     return sorted(sorted_query_words, key=len, reverse=True)
 
-def search_debug(repo, query_obj, max_results):
+def search(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the
     # number of entries we can fetch at once, the order of query words could
     # potentially matter.  In particular, this is the case for most Japanese

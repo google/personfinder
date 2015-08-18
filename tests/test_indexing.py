@@ -44,7 +44,7 @@ class IndexingTests(unittest.TestCase):
             db.put(p)
 
     def get_matches(self, query, limit=100):
-        results = indexing.search_debug('test', TextQuery(query), limit)
+        results = indexing.search('test', TextQuery(query), limit)
         return [(p.given_name, p.family_name) for p in results]
 
     def get_ranked(self, results, query, limit=100):
@@ -166,10 +166,10 @@ class IndexingTests(unittest.TestCase):
             indexing.update_index_properties(p)
             db.put(p)
 
-        res = indexing.search_debug('test', TextQuery('Bryan abc'), 1)
+        res = indexing.search('test', TextQuery('Bryan abc'), 1)
         assert [(p.given_name, p.family_name) for p in res] == [('Bryan', 'abc')]
 
-        res = indexing.search_debug('test', TextQuery('CC AAAA'), 100)
+        res = indexing.search('test', TextQuery('CC AAAA'), 100)
         assert [(p.given_name, p.family_name) for p in res] == \
             [('AAAA BBBB', 'CCC DDD')]
 
@@ -245,7 +245,7 @@ class IndexingTests(unittest.TestCase):
 
     def test_no_query_terms(self):
         # Regression test (this used to throw an exception).
-        assert indexing.search_debug('test', TextQuery(''), 100) == []
+        assert indexing.search('test', TextQuery(''), 100) == []
 
 
 if __name__ == '__main__':
