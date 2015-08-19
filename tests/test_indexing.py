@@ -8,7 +8,6 @@
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 from google.appengine.ext import db
-from google.appengine.ext import testbed
 import datetime
 import indexing
 import logging
@@ -28,13 +27,9 @@ def create_person(given_name, family_name):
 class IndexingTests(unittest.TestCase):
     def setUp(self):
         db.delete(model.Person.all())
-        self.tb = testbed.Testbed()
-        self.tb.activate()
-        self.tb.init_search_stub()
 
     def tearDown(self):
         db.delete(model.Person.all())
-        self.tb.deactivate()
 
     def add_persons(self, *persons):
         for p in persons:

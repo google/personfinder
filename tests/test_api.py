@@ -26,16 +26,7 @@ import api
 import model
 import test_handler
 
-from google.appengine.ext import testbed
-
 class APITests(unittest.TestCase):
-    def setUp(self):
-        self.tb = testbed.Testbed()
-        self.tb.activate()
-        self.tb.init_search_stub()
-
-    def tearDown(self):
-        self.tb.deactivate()
 
     def test_sms_render_person(self):
         handler = test_handler.initialize_handler(

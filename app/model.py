@@ -528,6 +528,11 @@ class Person(Base):
     def update_index(self, which_indexing):
         #setup new indexing
         if 'new' in which_indexing:
+            indexing.update_index_properties(self)
+        # setup old indexing
+        if 'old' in which_indexing:
+            prefix.update_prefix_properties(self)
+        if 'full_text_search' in which_indexing:
             full_text_search.create_index(
                 record_id = self.record_id,
                 repo = self.repo,
@@ -536,10 +541,6 @@ class Person(Base):
                 full_name = self.full_name,
                 alternate_names = self.alternate_names
             )
-            indexing.update_index_properties(self)
-        # setup old indexing
-        if 'old' in which_indexing:
-            prefix.update_prefix_properties(self)
 
     def update_latest_status(self):
         """Scans all notes on this Person and fixes latest_status if needed."""

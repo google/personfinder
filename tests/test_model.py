@@ -19,16 +19,12 @@ from google.appengine.ext import db
 import unittest
 import model
 from utils import get_utcnow, set_utcnow_for_test
-from google.appengine.ext import testbed
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
         set_utcnow_for_test(datetime(2010, 1, 1))
-        self.tb = testbed.Testbed()
-        self.tb.activate()
-        self.tb.init_search_stub()
         self.p1 = model.Person.create_original(
             'haiti',
             given_name='John',
@@ -144,7 +140,6 @@ class ModelTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
-        self.tb.deactivate()
 
     def test_associated_emails(self):
         emails = self.p1.get_associated_emails()
