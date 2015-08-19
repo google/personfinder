@@ -31,7 +31,6 @@ from google.appengine.ext import db
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import webapp
-from google.appengine.ext import testbed
 
 import config
 import delete
@@ -50,9 +49,7 @@ class TasksTests(unittest.TestCase):
     def setUp(self):
         logging.basicConfig(level=logging.INFO, stream=sys.stderr)
         self.mox = None
-        self.tb = testbed.Testbed()
-        self.tb.activate()
-        self.tb.init_search_stub()
+
         # Setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
         self.photo = model.Photo.create('haiti', image_data='xyz')
@@ -105,7 +102,6 @@ class TasksTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
-        self.tb.deactivate()
         if self.mox:
             self.mox.UnsetStubs()
 
