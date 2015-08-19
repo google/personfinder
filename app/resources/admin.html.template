@@ -68,25 +68,20 @@
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
-
+    var language_code_to_index_map = {};
     //there is a title row in the table, so the dropdowns are 1-indexed
     for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
          null; dropdown_index++) {
       var language_code = $('repo_titles_language_selection_' + 
                              dropdown_index).value;
+      if (language_code_to_index_map[language_code] == 1) {
+        used_languages.splice(i-1, 1)
+      }
       if (language_code === 'unused') {
         continue;
       }
-      used_languages.push(language_code);
-    }
-
-    var language_code_to_index_map = {};
-    for (var i = 0; i < used_languages.length; i++) {
-      var language_code = used_languages[i];
-      if (language_code_to_index_map[language_code] == 1) {
-        used_languages.splice(i, 1);
-      }
       language_code_to_index_map[language_code] = 1;
+      used_languages.push(language_code);
     }
 
     // Copy the dropdowns and the titles into the text boxes that will
@@ -96,9 +91,8 @@
     for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
       var table_id = MULTILINGUAL_TABLE_IDS[id_num];
       var index = 1;
-      for(var key in language_code_to_index_map){
+      for(var used_language in language_code_to_index_map){
         var language_value = $(table_id + '_language_value_' + index++).value;
-        var used_language = key;
         language_code_to_index_map[used_language] = language_value;
       }
       console.log(language_code_to_index_map);
@@ -146,11 +140,11 @@
   function update_language_selected(row_number) {
     var language_codes = $('repo_titles_language_selection_' + row_number);
     var selected_index = language_codes.selectedIndex;
-    var language = language_codes[selected_index].text;
+    var selected_language = language_codes[selected_index].text;
     var language_selected_elements = document.getElementsByClassName(
                                      'language_selected_' + row_number);
+    var escaped_language = escape_html(selected_language);
     for (var i = 0; i < language_selected_elements.length; i++) {
-      escaped_language = escape_html(language);
       language_selected_elements[i].innerHTML = escaped_language;
     }
   }
