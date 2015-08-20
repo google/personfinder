@@ -19,11 +19,11 @@ Steps to create the container
 
 3. Create the container running
 
-    $ ./run-container.sh <image-name> <container-name>
+    $ ./run-container.sh <image-name> [<container-name>]
 
     e.g.
 
-    $ ./run-container.sh personfinder-image personfinder-container
+    $ ./run-container.sh personfinder-image personfinder-container  # Container's name is optional
 
     This will create and run the container image.
 
