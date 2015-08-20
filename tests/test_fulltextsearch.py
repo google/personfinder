@@ -77,7 +77,7 @@ class FullTextSearchTests(unittest.TestCase):
             full_name='Iori Minase',
             alternate_names='Iorin'
         )
-        results = full_text_search.search_with_index('haiti', 'Iorin', 100)
+        results = full_text_search.search_with_index('haiti', 'Iorin', 5)
         assert results[0].record_id == 'haiti/0505'
 
     def test_search_index_name_only(self):
@@ -87,15 +87,22 @@ class FullTextSearchTests(unittest.TestCase):
         create_index(self.p2)
         create_index(self.p3)
         create_index(self.p4)
-        results = full_text_search.search_with_index('haiti', 'Yayoi', 100)
+
+        results = full_text_search.search_with_index('haiti', 'Yayoi', 5)
         assert len(results) == 2
         record_ids = ['haiti/0325', 'haiti/1202']
         for result in results:
             assert result.record_id in record_ids
 
+        results = full_text_search.search_with_index('haiti', 'Producer san', 5)
+        assert results == []
+
+        results = full_text_search.search_with_index('haiti', '', 5)
+        assert results == []
+
     def test_delete_index(self):
         db.put(self.p4)
         create_index(self.p4)
         full_text_search.delete_index(self.p4)
-        results = full_text_search.search_with_index('haiti', 'Miki', 100)
+        results = full_text_search.search_with_index('haiti', 'Miki', 5)
         assert results == []

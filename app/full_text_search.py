@@ -11,6 +11,8 @@ def search_with_index(repo, query_obj, max_results):
         return re.sub(r' ', ' AND ', query)
 
     results = []
+    if (query_obj == ''):
+        return results
     query = create_query(query_obj)
     try:
         index = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
