@@ -129,13 +129,13 @@
 
   function escape_html(str) {
     var escape_table = {
-      '<': '&lt',
-      '>': '&gt',
-      '&': '&amp',
-      '"': '&quot',
-      '\'': '&#x27',
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;',
+      '\'': '&#x27;',
     };
-    escaped_str = str.replace(/[<>&"\']/g, function (match) {
+    var escaped_str = str.replace(/[<>&"\']/g, function (match) {
       return escape_table[match];
     });
     return escaped_str;
@@ -286,9 +286,9 @@
       }
     }
 
-    var language_num = $('repo_titles_table').rows.length - 1;
-    for (var row_num = 0; row_num < language_num; row_num++) {
-      update_language_selected(row_num+1);
+    var language_num = $('repo_titles_table').rows.length;
+    for (var row_num = 1; row_num < language_num; row_num++) {
+      update_language_selected(row_num);
     }
 
   }
