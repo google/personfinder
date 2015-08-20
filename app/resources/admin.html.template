@@ -76,7 +76,7 @@
       var language_code = $('repo_titles_language_selection_' + 
                              dropdown_index).value;
       if (language_code == 'unused' ||
-          language_code_index_map[language_code] === undefined) {
+          language_code_index_map[language_code] !== undefined) {
         continue;
       }
       language_code_index_map[language_code] = dropdown_index;
