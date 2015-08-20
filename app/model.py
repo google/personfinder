@@ -32,7 +32,6 @@ import re
 import logging
 import full_text_search
 from const import HOME_DOMAIN
-from const import PERSON_FULLTEXT_INDEX_NAME
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40

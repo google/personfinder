@@ -1,14 +1,30 @@
-from const import PERSON_FULLTEXT_INDEX_NAME
+import logging
+import re
 
 from google.appengine.api import search
-import re
+
 import model
-import logging
+
+# The index name for full text search
+PERSON_FULLTEXT_INDEX_NAME = 'person_information'
 
 def search_with_index(repo, query_obj, max_results):
-
+    """
+    Searches person with index.
+    Args:
+        repo: The name of repository
+        query_obj: Search word
+        max_results: The max results you want.(Maximum: 1000)
+    Returns:
+        results[<model.Person>, ...]
+    """
     def create_query(query):
-        return re.sub(r' ', ' AND ', query)
+        query_words = query.split(' ')
+        query_string = ''
+        for word in query_words:
+            if (word != ''):
+                query_string += word + ' AND '
+        return query_string[:-5]
 
     results = []
     if (query_obj == ''):
@@ -32,6 +48,10 @@ def search_with_index(repo, query_obj, max_results):
 
 
 def create_document(**kwargs):
+    """
+    Creates document for full text search.
+    It should be called in creat_index method.
+    """
     TEXT_FIELD_TABLE = ['record_id', 'repo', 'given_name', 'family_name',
                        'full_name', 'alternate_names']
     fields = []
@@ -42,6 +62,10 @@ def create_document(**kwargs):
 
 
 def create_index(**kwargs):
+    """
+    Creates index.
+    (Field: record_id, repo, given_name, family_name, full_name, alternate?name)
+    """
     try:
         index_name = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
         index_name.put(create_document(**kwargs))
@@ -50,6 +74,10 @@ def create_index(**kwargs):
 
 
 def delete_index(person):
+    """Deletes index.
+    Args:
+        person: Person who should be removed
+    """
     index = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
     splited_record = re.compile(r'[:./]').split(person.key().name())
     repo = splited_record[0]

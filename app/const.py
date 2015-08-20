@@ -18,9 +18,6 @@
 # We use lazy translation in this file because the language isn't set yet.
 from django_setup import gettext_lazy as _
 
-# The index name
-PERSON_FULLTEXT_INDEX_NAME = 'person_information'
-
 # The root URL of this application.
 ROOT_URL = 'http://google.org/personfinder'
 
