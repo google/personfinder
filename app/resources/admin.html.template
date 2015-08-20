@@ -68,38 +68,42 @@
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
-    var language_code_set = {};
+    var language_code_index_map = {};
     //there is a title row in the table, so the dropdowns are 1-indexed
-    for (var dropdown_index = 1; $('repo_titles_language_selection_' + dropdown_index) !=
-         null; dropdown_index++) {
+    for (var dropdown_index = 1;
+         $('repo_titles_language_selection_' + dropdown_index) != null;
+         dropdown_index++) {
       var language_code = $('repo_titles_language_selection_' + 
                              dropdown_index).value;
-      if (language_code === 'unused' ||
-          language_code_set[language_code] == 1) {
+      if (language_code == 'unused' ||
+          language_code_index_map[language_code] === undefined) {
         continue;
       }
-      language_code_set[language_code] = 1;
+      language_code_index_map[language_code] = dropdown_index;
       used_languages.push(language_code);
     }
 
     // Copy the dropdowns and the titles into the text boxes that will
     // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
-    var index = 1;
-    for (var used_language in language_code_set) {
-      var language_value = $('repo_titles_language_value_' + index++).value
-      language_code_set[used_language] = language_value;
+
+    var repo_titles = {};
+    for (var language_code in language_code_index_map) {
+      var index = language_code_index_map[language_code];
+      var language_value = $('repo_titles_language_value_' + index).value
+      repo_titles[language_code] = language_value;
     }
-    $('repo_titles').value = JSON.stringify(language_code_set);
+    $('repo_titles').value = JSON.stringify(repo_titles);
 
     for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
+      var custom_messages = {};
       var table_id = MULTILINGUAL_TABLE_IDS[id_num];
-      index = 1;
-      for (var used_language in language_code_set) {
-        var language_value = $(table_id + '_language_value_' + index++).value;
-        language_code_set[used_language] = language_value;
+      for (var language_code in language_code_index_map) {
+        var index = language_code_index_map[language_code];
+        var language_value = $(table_id + '_language_value_' + index).value;
+        custom_messages[language_code] = language_value;
       }
-      $(table_id).value = JSON.stringify(language_code_set);
+      $(table_id).value = JSON.stringify(custom_messages);
     }
     return true;
   }
