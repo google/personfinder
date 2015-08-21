@@ -52,21 +52,23 @@ def is_possible_phone_number(query_str):
 
 
 class Handler(BaseHandler):
-    def search(self, query):
+    def search(self, query_txt):
         """Performs a search and adds view_url attributes to the results."""
         results = None
         if self.config.external_search_backends:
             results = external_search.search(
-                self.repo, TextQuery(query), MAX_RESULTS,
+                self.repo, TextQuery(query_txt), MAX_RESULTS,
                 self.config.external_search_backends)
 
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
             if self.config.enable_fulltext_search:
-                results = full_text_search.search_with_index(self.repo, query, MAX_RESULTS)
+                results = full_text_search.search(self.repo,
+                                                  query_txt, MAX_RESULTS)
             else:
-                results = indexing.search(self.repo, TextQuery(query), MAX_RESULTS)
+                results = indexing.search(self.repo,
+                                          TextQuery(query_txt), MAX_RESULTS)
 
         for result in results:
             result.view_url = self.get_url('/view',

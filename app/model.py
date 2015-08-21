@@ -25,12 +25,10 @@ from google.appengine.ext import db
 from google.appengine.api import search
 
 import config
+import full_text_search
 import indexing
 import pfif
 import prefix
-import re
-import logging
-import full_text_search
 from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
@@ -530,14 +528,7 @@ class Person(Base):
         if 'new' in which_indexing:
             indexing.update_index_properties(self)
             if config.get('enable_fulltext_search'):
-                full_text_search.create_index(
-                    record_id = self.record_id,
-                    repo = self.repo,
-                    given_name = self.given_name,
-                    family_name = self.family_name,
-                    full_name = self.full_name,
-                    alternate_names = self.alternate_names
-                )
+                full_text_search.add_record_to_index(self)
         # setup old indexing
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)

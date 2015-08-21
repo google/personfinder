@@ -447,7 +447,7 @@ class Search(utils.BaseHandler):
             # the original search when they fail or return no results.
             if not results:
                 if self.config.enable_fulltext_search:
-                    results = full_text_search.search_with_index(
+                    results = full_text_search.search(
                         self.repo, query_string, max_results)
                 else:
                     results = indexing.search(
