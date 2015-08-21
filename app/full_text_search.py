@@ -18,25 +18,17 @@ def search_with_index(repo, query_obj, max_results):
     Returns:
         results[<model.Person>, ...]
     """
-    def create_query(query):
-        query_words = query.split(' ')
-        query_string = ''
-        for word in query_words:
-            if (word != ''):
-                query_string += word + ' AND '
-        return query_string[:-5]
-
+    #TODO: Sanitaize query_obj
     results = []
-    if (query_obj == ''):
+    if not query_obj:
         return results
-    query = create_query(query_obj)
     try:
         index = search.Index(name=PERSON_FULLTEXT_INDEX_NAME)
         options = search.QueryOptions(
             limit=max_results,
             returned_fields=['record_id'])
         results_index = index.search(search.Query(
-            query_string=query, options=options))
+            query_string=query_obj, options=options))
         record_ids = []
         for document in results_index:
             record_ids.append(document.fields[0].value)
