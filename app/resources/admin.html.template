@@ -285,7 +285,7 @@
         }
       }
     }
-
+    if($('repo_titles_table') === null) return;
     var language_num = $('repo_titles_table').rows.length;
     for (var row_num = 1; row_num < language_num; row_num++) {
       update_language_selected(row_num);
