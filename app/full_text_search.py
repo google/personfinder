@@ -49,10 +49,8 @@ def search(repo, query_txt, max_results):
         returned_fields=['record_id'])
     index_results = index.search(appengine_search.Query(
         query_string=query_txt, options=options))
-    record_ids = []
     for document in index_results:
-        record_ids.append(document.fields[0].value)
-    for id in record_ids:
+        id = document.fields[0].value
         results.append(model.Person.get_by_key_name(repo + ':' + id))
     return results
 
@@ -87,7 +85,7 @@ def add_record_to_index(person):
         alternate_names = person.alternate_names))
 
 
-def delete_index(person):
+def delete_record_from_index(person):
     """
     Deletes person record from index.
     Args:

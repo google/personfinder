@@ -504,7 +504,7 @@ class Person(Base):
         if delete_self:
             entities_to_delete.append(self)
             if config.get('enable_fulltext_search'):
-                full_text_search.delete_index(self)
+                full_text_search.delete_record_from_index(self)
         db.delete(entities_to_delete)
 
     def update_from_note(self, note):
