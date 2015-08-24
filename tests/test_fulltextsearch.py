@@ -82,35 +82,40 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
 
-        #Search by alternate name
+        # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
-        #Search by family name
+        # Search by family name
         results = full_text_search.search('haiti', 'Minase', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
-        #Search by given name
+        # Search by given name
         results = full_text_search.search('haiti', 'Iori', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])        
 
-        #Search by full name
+        # Search by given name + family name
         results = full_text_search.search('haiti', 'Minase Iori', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
-        #Search in a different repository
+        # Search by full name
+        resutls = full_text_search.search('haiti', 'Iori Minase', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0505'])
+
+        # Search in a different repository
         results = full_text_search.search('japan', 'Iori', 5)
         assert not results
 
-        #Check no results
+        # Check no results
         results = full_text_search.search('haiti', 'Producer san', 5)
         assert not results
 
-        #Search with no query text
+        # Search with no query text
         results = full_text_search.search('haiti', '', 5)
         assert not results
 
