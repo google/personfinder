@@ -43,6 +43,7 @@ def search(repo, query_txt, max_results):
     if not query_txt:
         return results
     index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
+    query_txt += ' AND (repo: ' + repo + ')'
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id'])
