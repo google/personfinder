@@ -101,6 +101,9 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Producer san', 5)
         assert not results
 
+        results = full_text_search.search('japan', 'Iori', 5)
+        assert not results
+
         results = full_text_search.search('haiti', '', 5)
         assert not results
 
