@@ -72,23 +72,31 @@ class FullTextSearchTests(unittest.TestCase):
         db.delete(model.Person.all())
         self.tb.deactivate()
 
-    def test_add_record_to_index(self):
-        db.put(self.p1)
-        full_text_search.add_record_to_index(self.p1)
-        results = full_text_search.search('haiti', 'Iorin', 5)
-        assert set([r.record_id for r in results]) == set(['haiti/0505'])
-
     def test_search_by_name_only(self):
+        db.put(self.p1)
         db.put(self.p2)
         db.put(self.p3)
         db.put(self.p4)
+        full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
 
-        results = full_text_search.search('haiti', 'Yayoi', 5)
+        results = full_text_search.search('haiti', 'Iorin', 5)
         assert set([r.record_id for r in results]) == \
-            set(['haiti/0325', 'haiti/1202'])
+            set(['haiti/0505'])
+
+        results = full_text_search.search('haiti', 'Minase', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0505'])
+
+        results = full_text_search.search('haiti', 'Iori', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0505'])        
+
+        results = full_text_search.search('haiti', 'Minase Iori', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0505'])
 
         results = full_text_search.search('haiti', 'Producer san', 5)
         assert not results
