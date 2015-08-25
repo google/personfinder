@@ -19,6 +19,7 @@ import unicodedata
 from model import *
 from utils import *
 from text_query import TextQuery
+import config
 import external_search
 import indexing
 import full_text_search
@@ -63,7 +64,7 @@ class Handler(BaseHandler):
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            if self.config.enable_fulltext_search:
+            if config.get('enable_fulltext_search'):
                 results = full_text_search.search(self.repo,
                                                   query_txt, MAX_RESULTS)
             else:

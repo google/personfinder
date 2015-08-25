@@ -77,12 +77,12 @@ def add_record_to_index(person):
     """
     index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
     index.put(create_document(
-        record_id = person.record_id,
-        repo = person.repo,
-        given_name = person.given_name,
-        family_name = person.family_name,
-        full_name = person.full_name,
-        alternate_names = person.alternate_names))
+        record_id=person.record_id,
+        repo=person.repo,
+        given_name=person.given_name,
+        family_name=person.family_name,
+        full_name=person.full_name,
+        alternate_names=person.alternate_names))
 
 
 def delete_record_from_index(person):

@@ -119,7 +119,7 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', '', 5)
         assert not results
 
-    def test_delete_index(self):
+    def test_delete_record_from_index(self):
         db.put(self.p4)
         full_text_search.add_record_to_index(self.p4)
         full_text_search.delete_record_from_index(self.p4)

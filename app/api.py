@@ -28,10 +28,11 @@ import django.utils.html
 from google.appengine import runtime
 from google.appengine.ext import db
 
+import config
 import external_search
+import full_text_search
 import importer
 import indexing
-import full_text_search
 import model
 import pfif
 import simplejson
@@ -446,7 +447,7 @@ class Search(utils.BaseHandler):
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                if self.config.enable_fulltext_search:
+                if config.get('enable_fulltext_search'):
                     results = full_text_search.search(
                         self.repo, query_string, max_results)
                 else:
