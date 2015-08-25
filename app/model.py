@@ -22,8 +22,10 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+from google.appengine.api import search
 
 import config
+import full_text_search
 import indexing
 import pfif
 import prefix
@@ -501,6 +503,8 @@ class Person(Base):
         entities_to_delete = filter(None, notes + [photo] + note_photos)
         if delete_self:
             entities_to_delete.append(self)
+            if config.get('enable_fulltext_search'):
+                full_text_search.delete_record_from_index(self)
         db.delete(entities_to_delete)
 
     def update_from_note(self, note):
@@ -523,6 +527,8 @@ class Person(Base):
         #setup new indexing
         if 'new' in which_indexing:
             indexing.update_index_properties(self)
+            if config.get('enable_fulltext_search'):
+                full_text_search.add_record_to_index(self)
         # setup old indexing
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)

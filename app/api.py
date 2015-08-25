@@ -28,7 +28,9 @@ import django.utils.html
 from google.appengine import runtime
 from google.appengine.ext import db
 
+import config
 import external_search
+import full_text_search
 import importer
 import indexing
 import model
@@ -438,14 +440,19 @@ class Search(utils.BaseHandler):
                 results = [person]
         elif query_string:
             # Search by query words.
-            query = TextQuery(query_string)
             if self.config.external_search_backends:
+                query = TextQuery(query_string)
                 results = external_search.search(self.repo, query, max_results,
                     self.config.external_search_backends)
             # External search backends are not always complete. Fall back to
             # the original search when they fail or return no results.
             if not results:
-                results = indexing.search(self.repo, query, max_results)
+                if config.get('enable_fulltext_search'):
+                    results = full_text_search.search(
+                        self.repo, query_string, max_results)
+                else:
+                    results = indexing.search(
+                        self.repo, TextQuery(query_string), max_results)
         else:
             self.info(
                 400,

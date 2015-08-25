@@ -19,8 +19,10 @@ import unicodedata
 from model import *
 from utils import *
 from text_query import TextQuery
+import config
 import external_search
 import indexing
+import full_text_search
 import jp_mobile_carriers
 
 MAX_RESULTS = 100
@@ -33,7 +35,6 @@ MAX_RESULTS = 100
 # U+30FC: KATAKANA-HIRAGANA PROLONGED SOUND MARK
 POSSIBLE_PHONE_NUMBER_RE = re.compile(
     ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
-
 
 def has_possible_duplicates(results):
     """Returns True if it detects that there are possible duplicate records
@@ -52,17 +53,23 @@ def is_possible_phone_number(query_str):
 
 
 class Handler(BaseHandler):
-    def search(self, query):
+    def search(self, query_txt):
         """Performs a search and adds view_url attributes to the results."""
         results = None
         if self.config.external_search_backends:
             results = external_search.search(
-                self.repo, query, MAX_RESULTS,
+                self.repo, TextQuery(query_txt), MAX_RESULTS,
                 self.config.external_search_backends)
+
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search(self.repo, query, MAX_RESULTS)
+            if config.get('enable_fulltext_search'):
+                results = full_text_search.search(self.repo,
+                                                  query_txt, MAX_RESULTS)
+            else:
+                results = indexing.search(self.repo,
+                                          TextQuery(query_txt), MAX_RESULTS)
 
         for result in results:
             result.view_url = self.get_url('/view',
@@ -111,6 +118,7 @@ class Handler(BaseHandler):
             # scoring function in indexing.py).
             query_txt = get_full_name(
                 self.params.given_name, self.params.family_name, self.config)
+
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
@@ -127,7 +135,7 @@ class Handler(BaseHandler):
             # for key in criteria:
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
-            results = self.search(query)
+            results = self.search(query_txt)
             # Filter out results with addresses matching part of the query.
             results = [result for result in results
                        if not getattr(result, 'is_address_match', False)]
@@ -157,6 +165,7 @@ class Handler(BaseHandler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query)
+
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:
@@ -177,7 +186,7 @@ class Handler(BaseHandler):
                 return self.reject_query(query)
             else:
                 # Look for prefix matches.
-                results = self.search(query)
+                results = self.search(self.params.query)
                 results_url = self.get_results_url(self.params.query)
                 third_party_query_type = ''
 
