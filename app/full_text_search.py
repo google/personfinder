@@ -22,6 +22,7 @@ import model
 
 # The index name for full text search
 PERSON_FULL_TEXT_INDEX_NAME = 'person_information'
+PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
 def search(repo, query_txt, max_results):
     """
@@ -42,13 +43,20 @@ def search(repo, query_txt, max_results):
     results = []
     if not query_txt:
         return results
-    index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
+    person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
+    person_location_index = appengine_search.Index(
+        name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     query_txt += ' AND (repo: ' + repo + ')'
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id'])
-    index_results = index.search(appengine_search.Query(
+    person_index_results = person_index.search(appengine_search.Query(
         query_string=query_txt, options=options))
+    person_location_index_results = person_location_index.search(
+        appengine_search.Query(query_string=query_txt, options=options))
+    index_results = list(
+        set(person_index_results) & set(person_location_index_results))
+    logging.info(index_results)
     for document in index_results:
         id = document.fields[0].value
         results.append(model.Person.get_by_key_name(repo + ':' + id))
@@ -75,14 +83,29 @@ def add_record_to_index(person):
         search.Error: An error occurred when the document could not be indexed
                       or the query has a syntax error.
     """
-    index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
-    index.put(create_document(
+    person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
+    person_index.put(create_document(
         record_id=person.record_id,
         repo=person.repo,
         given_name=person.given_name,
         family_name=person.family_name,
         full_name=person.full_name,
         alternate_names=person.alternate_names))
+    person_location_index = appengine_search.Index(
+        name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
+    person_location_index.put(create_document(
+        record_id=person.record_id,
+        repo=person.repo,
+        given_name=person.given_name,
+        family_name=person.family_name,
+        full_name=person.full_name,
+        alternate_names=person.alternate_names,
+        home_street=person.home_street,
+        home_city=person.home_city,
+        home_state=person.home_state,
+        home_postal_code=person.home_postal_code,
+        home_neighborhood=person.home_neighborhood,
+        home_country=person.home_country))
 
 
 def delete_record_from_index(person):
@@ -94,6 +117,9 @@ def delete_record_from_index(person):
         search.Error: An error occurred when the index name is unknown
                       or the query has a syntax error.
     """
-    index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
+    person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
     doc_id = person.repo + ':' + person.record_id
-    index.delete(doc_id)
+    person_index.delete(doc_id)
+    person_location_index = appengine_search.Index(
+        name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
+    person_location_index.delete(doc_id)
