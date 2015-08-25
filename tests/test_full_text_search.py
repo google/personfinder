@@ -67,6 +67,21 @@ class FullTextSearchTests(unittest.TestCase):
             full_name='Miki Hoshii',
             entry_date=TEST_DATETIME
         )
+        self.p5 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0225',
+            given_name='Chihaya',
+            family_name='Kisaragi',
+            full_name='Chihaya Kisaragi',
+            home_street='Kunaideme72',
+            home_city='Arao',
+            home_state='Kumamoto',
+            home_postal_code='864-0003',
+            home_neighborhood='Araokeibajou',
+            home_country='Japan',
+            entry_date=TEST_DATETIME
+        )
+
 
     def tearDown(self):
         db.delete(model.Person.all())
@@ -77,10 +92,12 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p2)
         db.put(self.p3)
         db.put(self.p4)
+        db.put(self.p5)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
+        full_text_search.add_record_to_index(self.p5)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -106,6 +123,35 @@ class FullTextSearchTests(unittest.TestCase):
         resutls = full_text_search.search('haiti', 'Iori Minase', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
+
+        # Search by name & location
+        results = full_text_search.search('haiti', 'Chihaya Arao', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0225'])
+
+        # Search by home_street only
+        results = full_text_search.search('haiti', 'Kunaideme72', 5)
+        assert not results
+
+        # Search by home_city only
+        results = full_text_search.search('haiti', 'Arao', 5)
+        assert not results
+
+        # Search by home_state only
+        results = full_text_search.search('haiti', 'Kumamoto', 5)
+        assert not results
+
+        # Search by home_postal_code only
+        results = full_text_search.search('haiti', '864-0003', 5)
+        assert not results
+
+        # Search by home_neighborhood only
+        results = full_text_search.search('haiti', 'Araokeibajou', 5)
+        assert not results
+
+        # Search by home_country only
+        results = full_text_search.search('haiti', 'Japan', 5)
+        assert not results
 
         # Search in a different repository
         results = full_text_search.search('japan', 'Iori', 5)

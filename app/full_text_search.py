@@ -24,6 +24,14 @@ import model
 PERSON_FULL_TEXT_INDEX_NAME = 'person_information'
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
+def create_or_query(query_txt):
+    query_words = query_txt.split(' ')
+    query_string = ''
+    for word in query_words:
+        if (word != ''):
+            query_string += word + ' OR '
+    return query_string[:-4]
+
 def search(repo, query_txt, max_results):
     """
     Searches person with index.
@@ -46,17 +54,18 @@ def search(repo, query_txt, max_results):
     person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-    query_txt += ' AND (repo: ' + repo + ')'
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id'])
+    or_query = create_or_query(query_txt) + ' AND (repo: ' + repo + ')'
     person_index_results = person_index.search(appengine_search.Query(
-        query_string=query_txt, options=options))
+        query_string=or_query, options=options))
+    query_txt += ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
-        appengine_search.Query(query_string=query_txt, options=options))
+        appengine_search.Query(
+            query_string=query_txt, options=options))
     index_results = list(
         set(person_index_results) & set(person_location_index_results))
-    logging.info(index_results)
     for document in index_results:
         id = document.fields[0].value
         results.append(model.Person.get_by_key_name(repo + ':' + id))
