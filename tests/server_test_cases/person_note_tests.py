@@ -428,8 +428,7 @@ class PersonNoteTests(ServerTestsBase):
         link = self.s.doc.firsttag('a', class_='results-found')
         assert 'query=_test_given_name' in link.content
 
-
-    def test_seeking_someone_regular(self):
+    def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
         # Set utcnow to match source date
@@ -588,6 +587,14 @@ class PersonNoteTests(ServerTestsBase):
         assert 'http://www.facebook.com/_test_account1' in self.s.doc.content
         assert 'http://www.twitter.com/_test_account2' in self.s.doc.content
         assert 'http://www.foo.com/_test_account3' in self.s.doc.content
+
+    def test_seeking_someone_regular_by_full_text_search(self):
+        config.set(enable_full_text_search = True)
+        self.run_test_seeking_someone_regular()
+
+    def test_seeking_someone_regular(self):
+        """Follow the seeking someone flow on the regular-sized embed."""
+        self.run_test_seeking_someone_regular()
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.

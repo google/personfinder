@@ -95,7 +95,7 @@ class FullTextSearchTests(unittest.TestCase):
         # Search by given name
         results = full_text_search.search('haiti', 'Iori', 5)
         assert set([r.record_id for r in results]) == \
-            set(['haiti/0505'])        
+            set(['haiti/0505'])
 
         # Search by given name + family name
         results = full_text_search.search('haiti', 'Minase Iori', 5)
