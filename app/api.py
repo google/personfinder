@@ -355,16 +355,18 @@ class PhotoUpload(utils.BaseHandler):
             return
 
         # Check for empty body
-        if len(self.request.body) < 1:
+        if not self.request.body:
             self.error(400, "Request body must not be empty")
+            return
 
         # Size check for uploaded file
         if len(self.request.body) > PHOTO_UPLOAD_MAX_SIZE:
             self.error(400, "Size of uploaded file is greater than 10MB")
+            return
 
         try:
-            photoImg = images.Image(self.request.body)
-            photo, photo_url = create_photo(photoImg, self)
+            photo_img = images.Image(self.request.body)
+            photo, photo_url = create_photo(photo_img, self)
         except PhotoError, e:
             self.error(400, e.message)
 
