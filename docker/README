@@ -31,6 +31,14 @@ Steps to create the container
 
     $ gae-run-app.sh
 
+5. To initialize the datastore, open one more Shell inside the running container with the following command
+
+    $ docker exec -it <container-name> /bin/bash
+
+    then run (password is "root")
+
+    $ setup_datastore.sh
+
 
 NOTES
 -----
