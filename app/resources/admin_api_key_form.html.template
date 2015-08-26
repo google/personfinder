@@ -14,14 +14,11 @@
   function $(id) {
     return document.getElementById(id);
   }
-  function updateWriteDomain() {
+  function update_write_domain() {
     var write_field = $('write_permission');
-    var domain_write_field = $('domain_write_permission');
-    if(write_field.checked) {
-      $('domain_write_permission').disabled = false;
-    }
-    else {
-      $('domain_write_permission').disabled = true;
+    $('domain_write_permission').disabled = !write_field.checked;
+    if(!write_field.checked) {
+      $('domain_write_permission').value = "";
     }
   }
   function validate_fields() {
@@ -41,7 +38,7 @@
     // Check for explicit write permission
     var write_field = $('write_permission');
     var domain_write_field = $('domain_write_permission');
-    if(write_field.checked && domain_write_field.value.length == 0) {
+    if (write_field.checked && domain_write_field.value.length == 0) {
        alert('Enter proper value for domain name');
        domain_write_field.focus();
        $('domain_write_label').setAttribute('class', 'mandatory');
@@ -104,9 +101,9 @@
 	Permission flags
       </label>
       <div class="response">
-        <input type="checkbox" name="write_permission" id="write_permission" onChange="updateWriteDomain();">
+        <input type="checkbox" name="write_permission" id="write_permission" onChange="update_write_domain();">
         Write permission
-	<span class="warning">This permission should go with domain write permission.</span>
+	<span class="warning">This permission should go with the domain name above.</span>
       </div>
       <div class="response">
         <input type="checkbox" name="read_permission" id="read_permission"
