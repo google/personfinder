@@ -35,7 +35,5 @@ ADD setup_datastore.sh  /usr/bin/
 RUN mkdir -p /opt/personfinder
 #WORKDIR /opt/personfinder
 
-ENTRYPOINT gae-run-app.sh
-
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
