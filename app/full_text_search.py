@@ -20,11 +20,20 @@ from google.appengine.api import search as appengine_search
 
 import model
 
-# The index name for full text search
+# The index name for full text search. This index contains name.
 PERSON_FULL_TEXT_INDEX_NAME = 'person_information'
+# The index name for full text search. This index contains name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
 def create_or_query(query_txt):
+    """
+    Creates query for person_information index.
+    Args:
+        query_txt: Search query
+
+    Returns:
+        query_word OR query_word OR ...
+    """
     query_words = query_txt.split(' ')
     query_string = ''
     for word in query_words:
