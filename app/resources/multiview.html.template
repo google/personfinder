@@ -260,6 +260,9 @@
     </tr>
   </table>
   &nbsp;
-  {% include "add_note.html.template" %}
+  <div class="column end">
+    {% include "add_note.html.template" %}
+  </div>
+  <div class="end-multi-columns"></div>
 </form>
 {% endblock %}
