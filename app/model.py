@@ -583,7 +583,7 @@ class Note(Base):
     author_made_contact = db.BooleanProperty()
     email_of_found_person = db.StringProperty(default='')
     phone_of_found_person = db.StringProperty(default='')
-    last_known_location = db.StringProperty(default='')
+    last_known_location = db.StringProperty(default='', multiline=True)
     text = db.TextProperty(default='')
     photo_url = db.TextProperty(default='')
 
