@@ -224,7 +224,7 @@ function view_page_loaded() {
 function on_status_change(event) {
   if (event.target.value == 'is_note_author') {
     var name;
-    var nameFields = document.querySelectorAll('div.name input[name$=name]');
+    var nameFields = document.querySelectorAll('input[name=family_name],input[name=given_name]');
     if (nameFields.length) {
       name = nameFields[0].value + ' ' + nameFields[1].value;
     } else {
