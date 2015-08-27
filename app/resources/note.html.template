@@ -12,7 +12,7 @@
 
 {% load i18n %}
 
-<div class="view note">
+<div class="view note{% if params.dupe_notes and note.linked_person_record_id %} duplicate{% endif %}">
 
 <div class="source">
   {% trans "Posted by" %}
