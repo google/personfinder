@@ -57,6 +57,7 @@ class Handler(utils.BaseHandler):
             note.source_date = now
             note.entry_date = now
             db.put(note)
+            note.put()
 
             model.UserActionLog.put_new(
                 (note.hidden and 'hide') or 'unhide',
