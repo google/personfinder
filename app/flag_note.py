@@ -57,7 +57,6 @@ class Handler(utils.BaseHandler):
             note.source_date = now
             note.entry_date = now
             db.put(note)
-            note.put()
 
             model.UserActionLog.put_new(
                 (note.hidden and 'hide') or 'unhide',
@@ -65,7 +64,7 @@ class Handler(utils.BaseHandler):
 
             person = model.Person.get(self.repo, note.person_record_id)
             if person:
-                person.update_latest_status()
+                person.update_latest_status(note)
 
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))
