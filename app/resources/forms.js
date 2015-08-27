@@ -231,7 +231,7 @@ function on_status_change(event) {
       name = document.querySelector('.header > h1').textContent
           .replace(/^\s+|\s+$/, '');
     }
-    $('author_name').value  = name;
+    $('author_name').value = name;
     $('author_made_contact_yes').checked = true;
     update_contact();
   }
