@@ -1,5 +1,5 @@
 # This file is originally from recaptcha-client 1.0.5 (obtained from pypi),
-# now modified to support custom translations.
+# now modified to use new Recaptcha.
 
 import urllib
 import urllib2
@@ -62,7 +62,7 @@ def submit (recaptcha_response):
     if not recaptcha_response:
         return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
 
-    secret_key = config.get('secret_key')
+    secret_key = config.get('captcha_secret_key')
     url = "https://www.google.com/recaptcha/api/siteverify?secret="
     request_url = url + secret_key + "&response=" + recaptcha_response
     recaptcha_request = urllib2.Request (request_url)
