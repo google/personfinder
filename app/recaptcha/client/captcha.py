@@ -4,6 +4,7 @@
 import urllib
 import urllib2
 
+import config
 import simplejson
 
 API_SSL_SERVER = 'https://www.google.com/recaptcha/api'
@@ -18,7 +19,7 @@ class RecaptchaResponse(object):
         self.error_code = error_code
 
 def get_display_html(public_key, use_ssl=False, error=None,
-                     lang='en', custom_translations={}):
+                     lang='en'):
     """Gets the HTML to display for reCAPTCHA
 
     public_key -- The public api key
@@ -32,87 +33,43 @@ def get_display_html(public_key, use_ssl=False, error=None,
     if use_ssl:
         server = API_SSL_SERVER
 
-    # _('...') used to return objects that are unpalatable to simplejson.
-    # For better compatibility, we keep this conversion code, but execute it
-    # only when values are non-unicode to prevent UnicodeEncodeError.
-    if any(not isinstance(v, unicode) for v in custom_translations.values()):
-      custom_translations = dict((k, unicode(str(v), 'utf-8'))
-                                 for (k, v) in custom_translations.items())
-
-    options = {
-        'theme': 'white',
-        'lang': lang,
-        'custom_translations': custom_translations
-    }
-
     return '''
-<script>
-  var RecaptchaOptions = %(options)s;
-</script>
-<script src="%(server)s/challenge?k=%(public_key)s%(error_param)s"></script>
+<script src='%(server)s.js?hl=%(lang)s'></script>
 
 <noscript>
-  <iframe src="%(server)s/noscript?k=%(public_key)s%(error_param)s"
-      height="300" width="500" frameborder="0"></iframe><br>
-  <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-  <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+  <div>
+    <iframe src="%(server)s/fallback?k=%(public_key)s" height="450" width="302" frameborder="3"></iframe>
+  </div>
+  <div>
+    <textarea id="g-recaptcha-response" name="g-recaptcha-response"></textarea>
+  </div>
 </noscript>
 ''' % {
-    'options': simplejson.dumps(options),
     'server': server,
-    'public_key': public_key,
-    'error_param': error_param,
+    'lang': lang,
+    'public_key': public_key
 }
 
 
-def submit (recaptcha_challenge_field,
-            recaptcha_response_field,
-            private_key,
-            remoteip):
+def submit (recaptcha_response):
     """
     Submits a reCAPTCHA request for verification. Returns RecaptchaResponse
     for the request
 
-    recaptcha_challenge_field -- The value of recaptcha_challenge_field from the form
-    recaptcha_response_field -- The value of recaptcha_response_field from the form
-    private_key -- your reCAPTCHA private key
-    remoteip -- the user's ip address
+    recaptcha_response -- The value of recaptcha_response
     """
 
-    if not (recaptcha_response_field and recaptcha_challenge_field and
-            len (recaptcha_response_field) and len (recaptcha_challenge_field)):
+    if not recaptcha_response:
         return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
-    
 
-    def encode_if_necessary(s):
-        if isinstance(s, unicode):
-            return s.encode('utf-8')
-        return s
-
-    params = urllib.urlencode ({
-            'privatekey': encode_if_necessary(private_key),
-            'remoteip' :  encode_if_necessary(remoteip),
-            'challenge':  encode_if_necessary(recaptcha_challenge_field),
-            'response' :  encode_if_necessary(recaptcha_response_field),
-            })
-
-    request = urllib2.Request (
-        url = "http://%s/verify" % VERIFY_SERVER,
-        data = params,
-        headers = {
-            "Content-type": "application/x-www-form-urlencoded",
-            "User-agent": "reCAPTCHA Python"
-            }
-        )
-    
-    httpresp = urllib2.urlopen (request)
-
-    return_values = httpresp.read ().splitlines ();
-    httpresp.close();
-
-    return_code = return_values [0]
-
-    if (return_code == "true"):
+    secret_key = config.get('secret_key')
+    url = "https://www.google.com/recaptcha/api/siteverify?secret="
+    request_url = url + secret_key + "&response=" + recaptcha_response
+    recaptcha_request = urllib2.Request (request_url)
+    response = urllib2.urlopen (recaptcha_request)
+    result = simplejson.load(response)
+    result_code = result['success']
+    if result_code:
         return RecaptchaResponse (is_valid=True)
     else:
-        return RecaptchaResponse (is_valid=False, error_code = return_values [1])
+        return RecaptchaResponse (is_valid=False)

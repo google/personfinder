@@ -768,30 +768,14 @@ class BaseHandler(webapp.RequestHandler):
 
         return captcha.get_display_html(
             public_key=config.get('captcha_public_key'),
-            use_ssl=use_ssl, error=error_code, lang=lang,
-            custom_translations={
-                # reCAPTCHA doesn't support all languages, so we treat its
-                # messages as part of this app's usual translation workflow
-                'instructions_visual': _('Type the two words:'),
-                'instructions_audio': _('Type what you hear:'),
-                'play_again': _('Play the sound again'),
-                'cant_hear_this': _('Download the sound as MP3'),
-                'visual_challenge': _('Get a visual challenge'),
-                'audio_challenge': _('Get an audio challenge'),
-                'refresh_btn': _('Get a new challenge'),
-                'help_btn': _('Help'),
-                'incorrect_try_again': _('Incorrect.  Try again.')
-            }
+            use_ssl=use_ssl, error=error_code, lang=lang
         )
 
     def get_captcha_response(self):
         """Returns an object containing the CAPTCHA response information for the
         given request's CAPTCHA field information."""
-        challenge = self.request.get('recaptcha_challenge_field')
-        response = self.request.get('recaptcha_response_field')
-        remote_ip = os.environ['REMOTE_ADDR']
-        return captcha.submit(
-            challenge, response, config.get('captcha_private_key'), remote_ip)
+        captcha_response = self.request.get('g-recaptcha-response')
+        return captcha.submit(captcha_response)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
