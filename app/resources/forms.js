@@ -215,6 +215,26 @@ function view_page_loaded() {
   if (translate_api_key) {
     translate('en', lang, 'Translated message:', translate_notes);
   }
+
+  $('status').addEventListener('change', on_status_change);
+}
+
+// Copy the name and set author_made_contact when a user fills out the form for
+// themselves.
+function on_status_change(event) {
+  if (event.target.value == 'is_note_author') {
+    var name;
+    var nameFields = document.querySelectorAll('input[name=family_name],input[name=given_name]');
+    if (nameFields.length) {
+      name = nameFields[0].value + ' ' + nameFields[1].value;
+    } else {
+      name = document.querySelector('.header > h1').textContent
+          .replace(/^\s+|\s+$/, '');
+    }
+    $('author_name').value = name;
+    $('author_made_contact_yes').checked = true;
+    update_contact();
+  }
 }
 
 // Selected people in duplicate handling mode.
