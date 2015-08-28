@@ -58,7 +58,9 @@ def search(repo, query_txt, max_results):
         query_string=query_txt, options=options))
     for document in index_results:
         id = document.fields[0].value
-        results.append(get_record_from_datastore(repo, id))
+        result = get_record_from_datastore(repo, id)
+        if result:
+            results.append(get_record_from_datastore(repo, id))
     return results
 
 

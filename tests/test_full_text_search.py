@@ -23,6 +23,7 @@ from google.appengine.ext import db
 from google.appengine.ext import testbed
 from google.appengine.api import search
 
+import delete
 import full_text_search
 import model
 
@@ -74,7 +75,6 @@ class FullTextSearchTests(unittest.TestCase):
             family_name='Kikuchi',
             full_name='Makoto Kikuchi',
             entry_date=TEST_DATETIME,
-            is_expired=True,
         )
 
     def tearDown(self):
@@ -86,10 +86,12 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p2)
         db.put(self.p3)
         db.put(self.p4)
+        db.put(self.p5)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
+        full_text_search.add_record_to_index(self.p5)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -128,7 +130,8 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', '', 5)
         assert not results
 
-        # Search expired record
+        # Search deleted record
+        delete.delete_person(self, self.p5)
         results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
 
