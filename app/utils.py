@@ -42,6 +42,8 @@ from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
+from babel.dates import format_datetime
+import babel
 
 import const
 import config
@@ -801,6 +803,19 @@ class BaseHandler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
+    def __get_env_language(self):
+        language_code = self.env.lang
+        # A hack to avoid rejecting zh-hk locale.
+        # This corresponds to the hack with LANGUAGE_SYNONYMS in const.py.
+        # TODO: remove these 2 lines when a original code can be passed to here.
+        if language_code == 'zhhk':
+            language_code = 'zh-hk'
+        try:
+            return babel.Locale.parse(language_code, sep='-')
+        except babel.UnknownLocaleError as e:
+            # fallback language
+            return babel.Locale('en')
+
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
         current repository.  For convenience, returns None if date is None."""
@@ -810,6 +825,13 @@ class BaseHandler(webapp.RequestHandler):
             if self.config.time_zone_offset:
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
+
+    def format_datetime_localized(self, dt):
+        return format_datetime(dt, locale=self.__get_env_language());
+
+    def to_formatted_local_time(self, dt):
+        dt = self.to_local_time(dt)
+        return self.format_datetime_localized(dt)
 
     def maybe_redirect_for_repo_alias(self, request):
         """If the specified repository name is an alias, redirects to the URL
