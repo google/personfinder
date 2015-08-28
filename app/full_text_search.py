@@ -35,11 +35,7 @@ def create_or_query(query_txt):
         query_word OR query_word OR ...
     """
     query_words = query_txt.split(' ')
-    query_string = ''
-    for word in query_words:
-        if (word != ''):
-            query_string += word + ' OR '
-    return query_string[:-4]
+    return ' OR '.join([word for word in query_words if word != ''])
 
 def search(repo, query_txt, max_results):
     """
