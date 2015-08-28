@@ -67,6 +67,15 @@ class FullTextSearchTests(unittest.TestCase):
             full_name='Miki Hoshii',
             entry_date=TEST_DATETIME
         )
+        self.p5 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0829',
+            given_name='Makoto',
+            family_name='Kikuchi',
+            full_name='Makoto Kikuchi',
+            entry_date=TEST_DATETIME,
+            is_expired=True,
+        )
 
     def tearDown(self):
         db.delete(model.Person.all())
@@ -117,6 +126,10 @@ class FullTextSearchTests(unittest.TestCase):
 
         # Search with no query text
         results = full_text_search.search('haiti', '', 5)
+        assert not results
+
+        # Search expired record
+        results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
 
     def test_delete_record_from_index(self):
