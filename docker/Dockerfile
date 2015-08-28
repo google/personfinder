@@ -1,5 +1,4 @@
 FROM phusion/baseimage
-#FROM ubuntu:14.04
 MAINTAINER Carlo Lobrano <c.lobrano@gmail.com>
 
 CMD ["/sbin/my_init"]
@@ -33,7 +32,7 @@ ADD gae-run-app.sh      /usr/bin/
 ADD setup_datastore.sh  /usr/bin/
 
 RUN mkdir -p /opt/personfinder
-#WORKDIR /opt/personfinder
+WORKDIR /opt/personfinder
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
