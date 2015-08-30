@@ -21,7 +21,7 @@
   <div class="header section">
     <h1>
       {% if not markdup %}
-        {% trans "Status of Person" %}
+        {% trans "Status of " %}{{person.full_name}}
       {% else %}
         {% trans "Mark records as duplicate" %}
       {% endif %}
@@ -278,7 +278,7 @@
       <div class="end-multi-columns"></div>
     </div>
   {% endif %}
-  <div class="submit">
+  <div class="submit button">
     <input type="submit"
       {% if person.notes_disabled %}
        disabled="disabled"
@@ -287,7 +287,7 @@
         {% if markdup %}
           {% trans "Yes, these are the same person" %}
         {% else %}
-          {% trans "Save Record" %}
+          {% trans "Submit" %}
         {% endif %}{% endspaceless %}"
       {% if env.enable_javascript %}
         onclick="return validate_fields()"

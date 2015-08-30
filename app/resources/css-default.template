@@ -118,6 +118,16 @@ pre {  /* code samples */
   color: #15a04a;
 }
 
+.button input {
+  background: #4285f4;
+  border-radius: 28px;
+  border-style: none;
+  color: white;
+  display: block;
+  font-size: 20px;
+  margin: 10px auto;
+}
+
 /* Language menu */
 
 div.languages {
@@ -200,6 +210,11 @@ select {
   float: {{start}};
 }
 
+.column.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .column h2 {
   margin: 2px 0 6px;
   padding-{{start}}: 6px;
@@ -271,9 +286,9 @@ over 10% in penetration ratio.
   display: block; /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
-  padding-top: 5px;
   text-align: right;
   width: 45%;
+  margin-{{end}}: 10px;
 }
 
 .fields-table .value {
@@ -332,6 +347,7 @@ td.label {
   font-size: 9px;
   color: #888;
   text-align: {{end}};
+  padding-top: 10px;
 }
 
 td.submit {
@@ -493,20 +509,30 @@ img.icon {
   vertical-align: middle;
 }
 
+.view .add-note input {
+  width: 100%;
+  line-height: 200%;
+}
+
 .view.note {
   background: #ffffff;
-  border: 2px solid #e6e6e6;
+  border: 8px solid #e6e6e6;
   margin-bottom: 10px;
 }
 
 .view.note .source {
   background: #e6e6e6;
+  padding-top: 10px;
   padding-{{start}}: 4px;
+  text-align: {{end}};
 }
 
-.view .note .report-spam {
-  float: right;
-  padding-right: 20px;  
+.view .note .report-spam a {
+  color: red;
+  }
+
+.self-notes {
+  margin-top: 30px;
 }
 
 .self-notes .view.note.duplicate {
@@ -530,7 +556,7 @@ img.icon {
 
 .note .contents {
   background: #ffffff;
-  padding: 4px;
+  padding: 8px;
   margin-top: 4px;
 }
 
@@ -657,14 +683,7 @@ label.option {
   width: 70px;
 }
 
-.create .fields-table .submit input {
-  background: #4285f4;
-  border-radius: 28px;
-  border-style: none;
-  color: white;
-  display: block;
-  font-size: 20px;
-  margin: 10px auto;
+.create .fields-table .button input {
   min-width: 50%;
 }
 

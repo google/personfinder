@@ -546,7 +546,7 @@
           </div>
 
           {% ifnotequal params.role "provide" %}
-            <div class="submit">
+            <div class="submit button">
               <input type="submit"
                   value="{% trans "Save this record" %}"
                   {% if env.enable_javascript %}

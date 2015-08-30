@@ -351,14 +351,30 @@
       </div>
 
       <div class="column end">
+        {% if person.notes_disabled %}
+          <div class="mandatory">
+            {% trans "The author has disabled notes on this record." %}
+            <p>
+            <input type="button"
+              value="{% trans "Enable notes on this record" %}"
+              onclick="javascript:location.href='{{enable_notes_url}}'"
+              id="enable_notes_btn">
+          </div>
+        {% else %}
+        <div class="button add-note">
+          <input type="button" value="{% trans "I Have Information About This Person" %}"
+              onclick="javascript:location.href='{{status_url}}'">
+        </div>
+
+        {% endif %}
         {% if notes %}
           <div class="self-notes">
-            <h2>{% trans "Notes for this person" %}
+            <h1>{% trans "Notes for this Person" %}
               <a href="{{feed_url}}"
                  title="{% trans "Feed of updates about this person" %}">
                 <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
               </a>
-            </h2>
+            </h1>
             {% for note in notes %}
               {% if params.dupe_notes or not note.linked_person_record_id %}
                 {% include "note.html.template" %}
@@ -391,20 +407,6 @@
           {% endif %}
         {% endfor %}
         <p>
-        {% if person.notes_disabled %}
-          <div class="mandatory">
-            {% trans "The author has disabled notes on this record." %}
-            <p>
-            <input type="button"
-              value="{% trans "Enable notes on this record" %}"
-              onclick="javascript:location.href='{{enable_notes_url}}'"
-              id="enable_notes_btn">
-          </div>
-        {% else %}
-          <div class="create" role="form">
-            {% include "add_note.html.template" %}
-          </div>
-        {% endif %}
       </div>
 
       <div class="end-multi-columns"></div>
