@@ -263,21 +263,21 @@
                 </span>
               </div>
             {% endif %}
-	    <div class="field">
-		<span class="label">
-                  <label for="home_country">
-                    {% trans "Home country" %}:
-                  </label>
-                </span>
-		<span class="value">
-                  <input name="home_country" id="home_country"
-                      class="medium-text-input"
-                      value="{{params.home_country}}"
-                      autocomplete="off">
-                </span>
+            <div class="field">
+              <span class="label">
+                <label for="home_country">
+                  {% trans "Home country" %}:
+                </label>
+              </span>
+              <span class="value">
+                <input name="home_country" id="home_country"
+                    class="medium-text-input"
+                    value="{{params.home_country}}"
+                    autocomplete="off">
+              </span>
             </div>
             <div class="end-multi-columns"></div>
-          </div>
+            </div>
 
           <div class="description section">
             <h2><label for="description">

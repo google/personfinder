@@ -14,7 +14,6 @@
 
 <div class="view note{% if note.linked_person_record_id %} duplicate{% endif %}">
 
-
 {% if not note.hidden or env.enable_spam_ops %}
   <div class="contents" id="{{note.record_id}}-contents"
     {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
