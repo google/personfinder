@@ -22,7 +22,7 @@
     <h1>
       {% if not markdup %}
         {% if person.full_name %}
-          {% blocktrans with person.full_name as fullName %}Status of {{fullName}} {% endblocktrans %}
+          {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
         {% else %}
           {% trans "Status of Person" %}
         {% endif %}
