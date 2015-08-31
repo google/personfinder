@@ -46,7 +46,7 @@ def search(repo, query_txt, max_results):
         max_results: The max number of results you want.(Maximum: 1000)
 
     Returns:
-        results[<model.Person>, ...]
+        Array of <model.Person> in datastore
 
     Raises:
         search.Error: An error occurred when the index name is unknown
