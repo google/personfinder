@@ -17,7 +17,7 @@
   function update_write_domain() {
     var write_field = $('write_permission');
     $('domain_write_permission').disabled = !write_field.checked;
-    if(!write_field.checked) {
+    if (!write_field.checked) {
       $('domain_write_permission').value = "";
     }
   }
