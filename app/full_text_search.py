@@ -16,29 +16,25 @@
 import logging
 import re
 
-import random
-import time
-
 from google.appengine.api import search as appengine_search
 
 import model
 
-# The index name for full text search. This index contains person name.
-PERSON_FULL_TEXT_INDEX_NAME = 'person_information'
-# The index name for full text search. This index contains person name and location.
+# The index name for full text search.
+# This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
-def create_query(query_txt, join_word):
+def make_regexp(query_txt):
     """
-    Creates query for person_information index.
+    Creates regular expression.
     Args:
         query_txt: Search query
 
     Returns:
-        query_word join_word query_word join_word ...
+        query_word | query_word | ...
     """
     query_words = query_txt.split(' ')
-    return join_word.join([word for word in query_words if word])
+    return '|'.join([word for word in query_words if word])
 
 
 def search(repo, query_txt, max_results):
@@ -61,38 +57,32 @@ def search(repo, query_txt, max_results):
     if not query_txt:
         return results
 
-    query_txt = re.sub(r'[\:\OR\AND\"]', '', query_txt)
-    start = time.time()
+    query_txt = re.sub('|:|OR|AND|"', '', query_txt)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-
-    max_results = 1000
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id', 'names'])
-
     and_query = query_txt + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
 
     index_results = []
-    search_word = create_query(query_txt, '|')
-    logging.info(search_word)
+    regexp = make_regexp(query_txt)
     for document in person_location_index_results:
         for field in document.fields:
             if field.name == 'names':
                 names = field.value
             else:
                 id = field.value
-        match = re.search(search_word, names)
 
+        pattern = re.compile(regexp, re.I)
+        match = pattern.search(names)
         if match:
             index_results.append(id)
 
-    finish = time.time() - start
-    logging.info('finish:{0}'.format(finish) + '[sec]')
     for id in index_results:
         results.append(model.Person.get_by_key_name(repo + ':' + id))
     return results
@@ -118,18 +108,14 @@ def add_record_to_index(person):
         search.Error: An error occurred when the document could not be indexed
                       or the query has a syntax error.
     """
-    person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
-    person_index.put(create_document(
-        record_id=person.record_id,
-        repo=person.repo,
-        given_name=person.given_name,
-        family_name=person.family_name,
-        full_name=person.full_name,
-        alternate_names=person.alternate_names))
+
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-    name_params = [person.given_name, person.family_name, person.full_name, person.alternate_names]
-    names =  ':'.join([word for word in name_params])
+    name_params = [person.given_name,
+                   person.family_name,
+                   person.full_name,
+                   person.alternate_names]
+    names =  ':'.join([name for name in name_params if name])
     person_location_index.put(create_document(
         record_id=person.record_id,
         repo=person.repo,
@@ -155,9 +141,7 @@ def delete_record_from_index(person):
         search.Error: An error occurred when the index name is unknown
                       or the query has a syntax error.
     """
-    person_index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
     doc_id = person.repo + ':' + person.record_id
-    person_index.delete(doc_id)
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     person_location_index.delete(doc_id)
