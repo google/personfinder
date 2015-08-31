@@ -21,7 +21,11 @@
   <div class="header section">
     <h1>
       {% if not markdup %}
-        {% trans "Status of " %}{{person.full_name}}
+        {% if person.full_name %}
+          {% blocktrans with person.full_name as fullName %}Status of {{fullName}} {% endblocktrans %}
+        {% else %}
+          {% trans "Status of Person" %}
+        {% endif %}
       {% else %}
         {% trans "Mark records as duplicate" %}
       {% endif %}
