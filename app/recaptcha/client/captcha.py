@@ -64,7 +64,7 @@ def submit (recaptcha_response):
 
     secret_key = config.get('captcha_secret_key')
     request_url = (
-        "https://www.google.com/recaptcha/api/siteverify?secret=?%s&response=%s"
+        "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s"
         % (secret_key, recaptcha_response))
     recaptcha_request = urllib2.Request (request_url)
     response = urllib2.urlopen (recaptcha_request)
