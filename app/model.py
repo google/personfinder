@@ -533,11 +533,13 @@ class Person(Base):
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)
 
-    def update_latest_status(self):
+    def update_latest_status(self, modified_note=None):
         """Scans all notes on this Person and fixes latest_status if needed."""
         status = None
         status_source_date = None
         for note in self.get_notes():
+            if modified_note and modified_note.note_record_id == note.record_id:
+                note = modified_note
             if note.status and not note.hidden:
                 status = note.status
                 status_source_date = note.source_date
