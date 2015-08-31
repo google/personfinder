@@ -63,8 +63,9 @@ def submit (recaptcha_response):
         return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
 
     secret_key = config.get('captcha_secret_key')
-    url = "https://www.google.com/recaptcha/api/siteverify?secret="
-    request_url = url + secret_key + "&response=" + recaptcha_response
+    request_url = (
+        "https://www.google.com/recaptcha/api/siteverify?secret=?%s&response=%s"
+        % (secret_key, recaptcha_response))
     recaptcha_request = urllib2.Request (request_url)
     response = urllib2.urlopen (recaptcha_request)
     result = simplejson.load(response)
