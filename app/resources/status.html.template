@@ -64,7 +64,7 @@
           </div>
         {% else %}
           <div class="create" role="form">
-            {% include "add_note.html.template" %}
+            {% include "add_note_base.html.template" %}
           </div>
         {% endif %}
       </div>
