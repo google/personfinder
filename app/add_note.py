@@ -26,6 +26,8 @@ import subscribe
 from django.utils.translation import ugettext as _
 from urlparse import urlparse
 
+# TODO(jessien): Clean up duplicate code here and in create.py.
+
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
