@@ -562,7 +562,7 @@
 
       {% ifequal params.role "provide" %}
         <div class="column end">
-          {% include "add_note_basehtml.template" %}
+          {% include "add_note_base.html.template" %}
         </div>
       {% endifequal %}
 

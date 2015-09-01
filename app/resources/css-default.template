@@ -125,7 +125,7 @@ pre {  /* code samples */
   color: white;
   display: block;
   font-size: 20px;
-  margin: 10px auto;
+  padding: 5px 15px;
 }
 
 /* Language menu */
@@ -413,6 +413,8 @@ td.submit {
 
 .main .action-outer {
   border: none;
+  border-radius: 28px;
+  font-size: 20px;
   margin-bottom: 1em;
   max-width: 240px;
   min-height: 70px;
@@ -420,14 +422,19 @@ td.submit {
   width: 100%;
 }
 
+.main .action-outer a {
+  color: white;
+  text-decoration: none;
+}
+
 .main .action-outer.start {
-  background: #bea;
+  background: #4285f4;
   float: {{start}};
   margin-right: 58px;
 }
 
 .main .action-outer.end {
-  background: #bcf;
+  background: #15a04a;
   float: left;
 }
 
@@ -463,16 +470,35 @@ td.submit {
   width: 100%;
 }
 
-.query.seek {
-  background: #bea;
+.query h1 {
+  font-size: 20px;
+  margin-bottom: 0px;  
+}
+
+.query .header {
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.query.seek,
+.query.provide {
+  background: #fff;
+  border: 2px solid #e6e6e6;
 }
 
 .query .instructions {
   padding-bottom: 0.5em;
 }
 
-.query .submit {
-  padding-top: 0.5em;
+.query .help-text {
+  padding-top: 10px;
+}
+
+.query .button {
+  margin-top: 20px;
+}
+
+.query .button input {
+  margin: 10px auto;
 }
 
 /* View page */
@@ -511,7 +537,6 @@ img.icon {
 
 .view .add-note input {
   width: 100%;
-  line-height: 200%;
 }
 
 .view.note {
@@ -684,6 +709,7 @@ label.option {
 }
 
 .create .fields-table .button input {
+  margin: 10px auto;
   min-width: 50%;
 }
 
