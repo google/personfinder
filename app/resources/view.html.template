@@ -363,7 +363,7 @@
         {% else %}
         <div class="button add-note">
           <input type="button" value="{% trans "I Have Information About This Person" %}"
-              onclick="javascript:location.href='{{status_url}}'">
+              onclick="javascript:location.href='{{add_note_url}}'">
         </div>
 
         {% endif %}

@@ -95,12 +95,12 @@ class Handler(BaseHandler):
             linked_person_info.append(dict(
                 id=linked_person.record_id,
                 name=linked_person.primary_full_name,
-                view_url=self.get_url('/status', id=linked_person.record_id),
+                view_url=self.get_url('/add_note', id=linked_person.record_id),
                 notes=linked_notes))
 
         # Render the page.
         dupe_notes_url = self.get_url(
-            '/status', id=self.params.id, dupe_notes='yes')
+            '/add_note', id=self.params.id, dupe_notes='yes')
         results_url = self.get_url(
             '/results',
             role=self.params.role,
@@ -137,7 +137,7 @@ class Handler(BaseHandler):
         if person.profile_urls:
             person.profile_pages = get_profile_pages(person.profile_urls, self)
 
-        self.render('status.html',
+        self.render('add_note.html',
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,
@@ -275,13 +275,13 @@ class Handler(BaseHandler):
                                  context='add_note')
 
         # Redirect to this page so the browser's back button works properly.
-        self.redirect('/status', id=self.params.id, query=self.params.query)
+        self.redirect('/add_note', id=self.params.id, query=self.params.query)
 
     def add_fields_to_notes(self, note):
         """Adds some fields used in the template to a note."""
         note.status_text = get_note_status_text(note)
         note.linked_person_url = \
-            self.get_url('/status', id=note.linked_person_record_id)
+            self.get_url('/add_note', id=note.linked_person_record_id)
         note.flag_spam_url = \
             self.get_url('/flag_note', id=note.note_record_id,
                          hide=(not note.hidden) and 'yes' or 'no',
