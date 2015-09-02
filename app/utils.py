@@ -767,7 +767,7 @@ class BaseHandler(webapp.RequestHandler):
         lang = self.env.lang.split('-')[0]
 
         return captcha.get_display_html(
-            public_key=config.get('captcha_public_key'),
+            public_key=config.get('captcha_site_key'),
             use_ssl=use_ssl, error=error_code, lang=lang
         )
 
