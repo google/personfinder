@@ -75,6 +75,7 @@ def search(repo, query_txt, max_results):
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id', 'names'])
+
     and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
@@ -91,7 +92,9 @@ def search(repo, query_txt, max_results):
         if regexp.search(names):
             index_results.append(id)
 
-    return [model.Person.get_by_key_name(repo + ':' + id) for id in index_results]
+    return [model.Person.get(repo, id, filter_expired=True)
+            for id in index_results
+            if model.Person.get(repo, id, filter_expired=True)]
 
 def create_document(**kwargs):
     """

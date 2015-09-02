@@ -23,6 +23,7 @@ from google.appengine.ext import db
 from google.appengine.ext import testbed
 from google.appengine.api import search
 
+import delete
 import full_text_search
 import model
 
@@ -69,6 +70,14 @@ class FullTextSearchTests(unittest.TestCase):
         )
         self.p5 = model.Person.create_original_with_record_id(
             'haiti',
+            'haiti/0829',
+            given_name='Makoto',
+            family_name='Kikuchi',
+            full_name='Makoto Kikuchi',
+            entry_date=TEST_DATETIME
+        )
+        self.p6 = model.Person.create_original_with_record_id(
+            'haiti',
             'haiti/0225',
             given_name='Chihaya',
             family_name='Kisaragi',
@@ -93,11 +102,13 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p3)
         db.put(self.p4)
         db.put(self.p5)
+        db.put(self.p6)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
         full_text_search.add_record_to_index(self.p5)
+        full_text_search.add_record_to_index(self.p6)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -163,6 +174,11 @@ class FullTextSearchTests(unittest.TestCase):
 
         # Search with no query text
         results = full_text_search.search('haiti', '', 5)
+        assert not results
+
+        # Search deleted record
+        delete.delete_person(self, self.p5)
+        results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
 
     def test_delete_record_from_index(self):
