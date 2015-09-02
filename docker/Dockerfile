@@ -16,6 +16,7 @@ RUN apt-get install -y python2.7 libpython2.7-dev
 RUN apt-get install -y python-setuptools
 RUN apt-get install -y git
 RUN apt-get install -y wget
+RUN apt-get install -y time
 
 WORKDIR /opt/
 RUN wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz
