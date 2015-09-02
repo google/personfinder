@@ -1074,14 +1074,14 @@ http://www.foo.com/_account_1''',
         url = reveal_region.get('href', '')
         doc = self.go(url[url.find('/haiti/reveal'):])
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Try to continue with an invalid captcha response. Get redirected
         # back to the same page.
         button = doc.firsttag('input', value='Proceed')
         doc = self.s.submit(button)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Continue as if captcha is valid. All information should be viewable.
         doc = self.s.submit(button, test_mode='yes')
@@ -4610,7 +4610,7 @@ _feed_profile_url2</pfif:profile_urls>
         button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
 
         # Invalid email is an error (even with valid captcha)
