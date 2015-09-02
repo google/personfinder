@@ -24,9 +24,9 @@ import model
 # This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
-def make_regexp(query_txt):
+def make_or_regexp(query_txt):
     """
-    Creates regular expression.
+    Craetes compiled regular expression for or search.
     Args:
         query_txt: Search query
 
@@ -34,8 +34,15 @@ def make_regexp(query_txt):
         query_word | query_word | ...
     """
     query_words = query_txt.split(' ')
-    return '|'.join([word for word in query_words if word])
+    regexp = '|'.join([word for word in query_words if word])
+    return re.compile(regexp, re.I)
 
+def enclose_in_double_quotes(query_txt):
+
+    query_words = query_txt.split(' ')
+    enclosed_query = '"'
+    enclosed_query += '" "'.join([word for word in query_words if word]) +'"'
+    return enclosed_query
 
 def search(repo, query_txt, max_results):
     """
@@ -57,34 +64,33 @@ def search(repo, query_txt, max_results):
     if not query_txt:
         return results
 
-    query_txt = re.sub('|:|OR|AND|"', '', query_txt)
-
+    # escape double quote for enclose each query_txt
+    query_txt = re.sub('"', '', query_txt)
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
         limit=max_results,
         returned_fields=['record_id', 'names'])
-    and_query = query_txt + ' AND (repo: ' + repo + ')'
+    and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
-
     index_results = []
-    regexp = make_regexp(query_txt)
+    regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
         for field in document.fields:
             if field.name == 'names':
                 names = field.value
-            else:
+            if field.name == 'record_id':
                 id = field.value
 
-        pattern = re.compile(regexp, re.I)
-        match = pattern.search(names)
+        match = regexp.search(names)
         if match:
             index_results.append(id)
 
     for id in index_results:
         results.append(model.Person.get_by_key_name(repo + ':' + id))
+    return [model.Person.get_by_key_name(repo + ':' + id) for id in index_results]
     return results
 
 
