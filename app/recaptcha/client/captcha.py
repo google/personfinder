@@ -60,7 +60,7 @@ def submit (recaptcha_response):
     """
 
     if not (recaptcha_response and len(recaptcha_response)):
-        return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
+        return RecaptchaResponse (is_valid = False)
 
     secret_key = config.get('captcha_secret_key')
     request_url = (
