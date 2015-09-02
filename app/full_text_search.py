@@ -51,7 +51,9 @@ def search(repo, query_txt, max_results):
         query_string=query_txt, options=options))
     for document in index_results:
         id = document.fields[0].value
-        results.append(model.Person.get_by_key_name(repo + ':' + id))
+        result = model.Person.get(repo, id, filter_expired=True)
+        if result:
+            results.append(result)
     return results
 
 
