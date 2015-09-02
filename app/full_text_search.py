@@ -38,7 +38,14 @@ def make_or_regexp(query_txt):
     return re.compile(regexp, re.I)
 
 def enclose_in_double_quotes(query_txt):
+    """
+    Enclosesd query_txt in double quotes.
+    Args:
+        query_txt: Search query
 
+    Returns:
+        "query_words" + " " + "query_words" + " " + ...
+    """
     query_words = query_txt.split(' ')
     enclosed_query = '"'
     enclosed_query += '" "'.join([word for word in query_words if word]) +'"'
