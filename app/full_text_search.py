@@ -34,7 +34,7 @@ def make_or_regexp(query_txt):
         query_word | query_word | ...
     """
     query_words = query_txt.split(' ')
-    regexp = '|'.join([word for word in query_words if word])
+    regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
 
 def enclose_in_double_quotes(query_txt):
@@ -47,13 +47,16 @@ def enclose_in_double_quotes(query_txt):
 def search(repo, query_txt, max_results):
     """
     Searches person with index.
+    Query_txt must match at least a part of person name.
+    (It's not allowed to search only by location.)
     Args:
         repo: The name of repository
         query_txt: Search query
         max_results: The max number of results you want.(Maximum: 1000)
 
     Returns:
-        Array of <model.Person> in datastore
+        - Array of <model.Person> in datastore
+        - []: If query_txt doesn't contain a part of person name
 
     Raises:
         search.Error: An error occurred when the index name is unknown
@@ -66,6 +69,7 @@ def search(repo, query_txt, max_results):
 
     # escape double quote for enclose each query_txt
     query_txt = re.sub('"', '', query_txt)
+
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
@@ -84,20 +88,15 @@ def search(repo, query_txt, max_results):
             if field.name == 'record_id':
                 id = field.value
 
-        match = regexp.search(names)
-        if match:
+        if regexp.search(names):
             index_results.append(id)
 
-    for id in index_results:
-        results.append(model.Person.get_by_key_name(repo + ':' + id))
     return [model.Person.get_by_key_name(repo + ':' + id) for id in index_results]
-    return results
-
 
 def create_document(**kwargs):
     """
     Creates document for full text search.
-    It should be called in add_record_to_index method.
+    It should be called in add_record_to_index method.model.Person.get_by_key_name(repo + ':' + id
     """
     doc_id = kwargs['repo'] + ':' + kwargs['record_id']
     fields = []
@@ -125,7 +124,7 @@ def add_record_to_index(person):
     person_location_index.put(create_document(
         record_id=person.record_id,
         repo=person.repo,
-        names = names,
+        names=names,
         given_name=person.given_name,
         family_name=person.family_name,
         full_name=person.full_name,
