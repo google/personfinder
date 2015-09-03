@@ -38,11 +38,25 @@ def get_display_html(public_key, use_ssl=False, error=None,
     html = '''
 <script src='%(server)s.js?hl=%(lang)s'></script>
 <noscript>
-  <div>
-    <iframe src="%(server)s/fallback?k=%(public_key)s" height="450" width="302" frameborder="3"></iframe>
-  </div>
-  <div>
-    <textarea id="g-recaptcha-response" name="g-recaptcha-response"></textarea>
+  <div style='width: 302px; height: 422px;'>
+    <div style='width: 302px; height: 422px; position: relative;'>
+      <div style='width: 302px; height: 422px; position: absolute;'>
+        <iframe src='%(server)s/fallback?k=%(public_key)s'
+                frameborder="0" scrolling="no"
+                style='width: 302px; height:422px; border-style: none;'>
+        </iframe>
+      </div>
+
+    </div>
+      <div style='width: 300px; height: 60px; border-style: none;
+                  bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                  background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;'>
+        <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                  class="g-recaptcha-response"
+                  style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                         margin: 10px 25px; padding: 0px; resize: none;">
+        </textarea>
+      </div>
   </div>
 </noscript>
 ''' % {
@@ -51,7 +65,7 @@ def get_display_html(public_key, use_ssl=False, error=None,
     'public_key': public_key,
 }
     if error:
-        return html + '''<div>error=%(error)s</div>'''%{'error':error}
+        return '''<div>error=%(error)s</div>'''%{'error':error} + html
     else:
         return html
 
