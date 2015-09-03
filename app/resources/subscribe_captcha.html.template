@@ -45,9 +45,6 @@
     <br/><br/>
     {{captcha_html|safe}}
     <br/><br/>
-    <br/><br/>
-    <br/>
-    <div class="g-recaptcha" data-sitekey="{{public_key}}"></div>
     <div>
       <input type="submit" value="{% trans 'Subscribe' %}" />
       <input type="hidden" name="id" value="{{person.record_id}}">

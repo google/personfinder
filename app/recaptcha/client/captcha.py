@@ -37,6 +37,7 @@ def get_display_html(public_key, use_ssl=False, error=None,
 
     html = '''
 <script src='%(server)s.js?hl=%(lang)s'></script>
+<div class='g-recaptcha' data-sitekey='%(public_key)s'></div>
 <noscript>
   <div style='width: 302px; height: 422px;'>
     <div style='width: 302px; height: 422px; position: relative;'>
@@ -58,7 +59,7 @@ def get_display_html(public_key, use_ssl=False, error=None,
         </textarea>
       </div>
   </div>
-</noscript>
+</noscript><br/><br/><br/>
 ''' % {
     'server': server,
     'lang': lang,
