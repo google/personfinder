@@ -113,11 +113,7 @@ class Handler(BaseHandler):
             repo=self.repo)   
         add_note_url = self.get_url(
             '/add_note',
-             id=self.params.id,
-             role=self.params.role,
-             query=self.params.query,
-             given_name=self.params.given_name,
-             family_name=self.params.family_name)
+             id=self.params.id)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
         disable_notes_url = self.get_url('/disable_notes', id=self.params.id)

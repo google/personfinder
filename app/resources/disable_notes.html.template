@@ -35,8 +35,14 @@
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="submit" value="{% trans "Yes, ask the record author to disable notes" %}">
-    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+    <div class="button-box">
+      <div class="button">
+        <input type="submit" value="{% trans "Yes, ask the record author to disable notes" %}">
+      </div>
+      <div class="button-cancel">
+        <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+      </div>
+    </div>
   </form>
 </div>
 <br/><br/>

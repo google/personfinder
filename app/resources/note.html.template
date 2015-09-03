@@ -111,7 +111,7 @@
 {% endif %}
 <div class="source">
   <div>
-    {% trans "Posted By:" %}
+    {% trans "Posted by" %}
     {% if note.author_name %}
       <span class="author">{{note.author_name}}</span>
     {% else %}

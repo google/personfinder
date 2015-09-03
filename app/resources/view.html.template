@@ -66,16 +66,10 @@
             </h2>
 
             <div class="name section">
-              <h2>{% trans "Identifying Information" %}</h2>
-              {% if person.full_name_list|length > 2 %}
-                <div class="field">
-                  <span class="label">{% trans "Full name" %}:</span>
-                  <span class="value">{{person.full_name_list|join:"<br>"}}</span>
-                </div>
-              {% endif %}
+              <h2>{% trans "Identifying information" %}</h2>
               {% if config.use_alternate_names %}
                 <div class="field">
-                  <span class="label">{% trans "Alternate Names" %}:</span>
+                  <span class="label">{% trans "Alternate names" %}:</span>
                   <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                 </div>
               {% endif %}
@@ -98,7 +92,7 @@
             </div>
 
             <div class="address section">
-              <h2>{% trans "Home Address" %}</h2>
+              <h2>{% trans "Home address" %}</h2>
               <div class="field">
                 <span class="label">{% trans "Street name" %}:</span>
                 <span class="value">{{person.home_street}}</span>
@@ -178,7 +172,7 @@
             {% endif %}
 
             <div class="source section">
-              <h2>{% trans "Source of this Record" %}</h2>
+              <h2>{% trans "Source of this record" %}</h2>
               <div class="field">
                 <span class="label">{% trans "Author's name" %}:</span>
                 <span class="value">{{person.author_name}}</span>
@@ -264,7 +258,7 @@
 
             {% if linked_person_info %}
               <div class="other section">
-                <h2>{% trans "Possible Duplicates" %}</h2>
+                <h2>{% trans "Possible duplicates" %}</h2>
                 {% for linked_person in linked_person_info %}
                   <div class="field">
                     <span>
@@ -289,7 +283,7 @@
             {% endif %}
 
           </div>
-          <div class="links section">
+          <div class="section">
             {% if env.enable_captcha and extend_url %}
               {% if expiration_days %}
                 <div class="warning">
@@ -304,8 +298,8 @@
                   {% endif %}
                 </div>
               {% endif %}
-              <div class="links section">
-                <a id="extend-btn" href={{extend_url}}>
+              <div class="links">
+                <a id="extend-btn" href="{{extend_url}}">
                   {% blocktrans %}Extend expiration date by {{extension_days}} days
                   {% endblocktrans %}
                 </a>
@@ -313,24 +307,24 @@
             {% endif %}
 
             {% if env.enable_captcha %}
-              <div class="links section">
-                <a id="subscribe_btn" href={{subscribe_url}}>
+              <div class="links">
+                <a id="subscribe_btn" href="{{subscribe_url}}">
                   {% trans "Subscribe to updates about this person" %}
                 </a>
               </div>
             {% endif %}
 
             {% if env.enable_captcha %}
-              <div class="links section">
-                <a id="delete-btn" href={{delete_url}}>
+              <div class="links">
+                <a id="delete-btn" href="{{delete_url}}">
                   {% trans "Delete this record" %}
                 </a>
               </div>
             {% endif %}
 
             {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
-              <div class="links section">
-              <a id="disable_notes_btn" href={{disable_notes_url}}>
+              <div class="links">
+              <a id="disable_notes_btn" href="{{disable_notes_url}}">
                 {% trans "Disable notes on this record" %}
               </a>
               </div>
@@ -369,7 +363,7 @@
         {% endif %}
         {% if notes %}
           <div class="self-notes">
-            <h1>{% trans "Notes for this Person" %}
+            <h1>{% trans "Notes for this person" %}
               <a href="{{feed_url}}"
                  title="{% trans "Feed of updates about this person" %}">
                 <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">

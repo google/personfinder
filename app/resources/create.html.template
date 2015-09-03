@@ -34,15 +34,15 @@
           <div class="header section">
             <h1>
               {% ifequal params.role "provide" %}
-                {% trans "Who do you have information about?" %}
+                {% trans "Identify who you have information about" %}
               {% else %}
-                {% trans "Who are you looking for?" %}
+                {% trans "Identify who you are looking for" %}
               {% endifequal %}
             </h1>
           </div>
           <div class="name section">
             <h2>
-              Identifying Information
+              {% trans "Identifying information" %}
             </h2>
 
             <div class="subsection">

@@ -102,30 +102,35 @@ pre {  /* code samples */
   font-size: 12px;
 }
 
-.logo {
-  display: flex;
-  font-size: 40px;
-  font-weight: strong;
-  justify-content: center;
-  width: 100%;
-}
-
-.logo-blue {
-  color: #4285f4;
-}
-
-.logo-green {
-  color: #15a04a;
-}
-
-.button input {
-  background: #4285f4;
+.button input,
+.button-cancel input {
   border-radius: 28px;
   border-style: none;
   color: white;
   display: block;
   font-size: 20px;
   padding: 5px 15px;
+}
+
+.button input {
+  background: #4285f4;  
+}
+
+.button-cancel input {
+  background: #db4437;
+}
+
+.button-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.button-box .button,
+.button-box .button-cancel {
+  margin-left: 10px;  
+  margin-right: 10px;
 }
 
 /* Language menu */
@@ -269,6 +274,7 @@ over 10% in penetration ratio.
   font-size: 16px;
   margin-left: auto;
   margin-right: auto;
+  padding: 10px 4px 4px;
   text-align: center;
 }
 
