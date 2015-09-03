@@ -20,6 +20,8 @@ from google.appengine.api import search as appengine_search
 
 import model
 
+
+import script_variant
 # The index name for full text search
 PERSON_FULL_TEXT_INDEX_NAME = 'person_information'
 
@@ -57,16 +59,20 @@ def search(repo, query_txt, max_results):
     return results
 
 
-def create_document(**kwargs):
+def create_document(record_id, repo, **kwargs):
     """
     Creates document for full text search.
     It should be called in add_record_to_index method.
     """
-    doc_id = kwargs['repo'] + ':' + kwargs['record_id']
+    doc_id = repo + ':' + record_id
     fields = []
+    fields.append(appengine_search.TextField(name='repo', value=repo))
+    fields.append(appengine_search.TextField(name='record_id', value=record_id))
     for field in kwargs:
+        script_varianted_value = script_variant.script_variant_western(
+            kwargs[field])
         fields.append(
-            appengine_search.TextField(name=field, value=kwargs[field]))
+            appengine_search.TextField(name=field, value=script_varianted_value))
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
 
@@ -79,8 +85,8 @@ def add_record_to_index(person):
     """
     index = appengine_search.Index(name=PERSON_FULL_TEXT_INDEX_NAME)
     index.put(create_document(
-        record_id=person.record_id,
-        repo=person.repo,
+        person.record_id,
+        person.repo,
         given_name=person.given_name,
         family_name=person.family_name,
         full_name=person.full_name,

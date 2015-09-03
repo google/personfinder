@@ -25,6 +25,8 @@ import indexing
 import full_text_search
 import jp_mobile_carriers
 
+import script_variant
+
 MAX_RESULTS = 100
 # U+2010: HYPHEN
 # U+2012: FIGURE DASH
@@ -65,8 +67,10 @@ class Handler(BaseHandler):
         # original search when they fail or return no results.
         if not results:
             if config.get('enable_fulltext_search'):
+                script_varianted_query_txt = script_variant.script_variant_western(query_txt)
+                logging.info(script_varianted_query_txt)
                 results = full_text_search.search(self.repo,
-                                                  query_txt, MAX_RESULTS)
+                                                  script_varianted_query_txt, MAX_RESULTS)
             else:
                 results = indexing.search(self.repo,
                                           TextQuery(query_txt), MAX_RESULTS)
