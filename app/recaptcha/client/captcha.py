@@ -29,8 +29,7 @@ def get_display_html(public_key, use_ssl=False, error=None,
 
     error_param = ''
     if error:
-        logging.info(error)
-        error_param = '&error=%s' % error
+        error_param = 'error=%s' % error
     server = API_SERVER
     if use_ssl:
         server = API_SSL_SERVER
@@ -66,7 +65,11 @@ def get_display_html(public_key, use_ssl=False, error=None,
     'public_key': public_key,
 }
     if error:
-        return '''<div>error=%(error)s</div>'''%{'error':error} + html
+        return '''
+        <div>%(error_param)s</div>
+        ''' % {
+            'error_param': error_param
+        } + html
     else:
         return html
 
