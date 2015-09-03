@@ -19,7 +19,6 @@ from model import *
 from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
-from babel.dates import format_datetime
 import extend
 import reveal
 import subscribe

@@ -803,7 +803,7 @@ class BaseHandler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
-    def __get_env_language(self):
+    def __get_env_language_for_babel(self):
         language_code = self.env.lang
         # A hack to avoid rejecting zh-hk locale.
         # This corresponds to the hack with LANGUAGE_SYNONYMS in const.py.
@@ -827,9 +827,14 @@ class BaseHandler(webapp.RequestHandler):
             return date
 
     def format_datetime_localized(self, dt):
-        return format_datetime(dt, locale=self.__get_env_language());
+        """Formats a datetime object to a localized human-readable string based
+        on the current locale."""
+        return format_datetime(dt, locale=self.__get_env_language_for_babel());
 
     def to_formatted_local_time(self, dt):
+        """Converts a datetime object to the local time configured for the
+        current repository and formats to a localized human-readable string
+        based on the current locale."""
         dt = self.to_local_time(dt)
         return self.format_datetime_localized(dt)
 
