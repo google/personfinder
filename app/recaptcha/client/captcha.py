@@ -7,6 +7,7 @@ import urllib2
 import config
 import simplejson
 
+import logging
 API_SSL_SERVER = 'https://www.google.com/recaptcha/api'
 # We leave out the URL scheme so that browsers won't complain when accessed
 # from a secure website even when use_ssl is not set.
@@ -28,14 +29,14 @@ def get_display_html(public_key, use_ssl=False, error=None,
 
     error_param = ''
     if error:
+        logging.info(error)
         error_param = '&error=%s' % error
     server = API_SERVER
     if use_ssl:
         server = API_SSL_SERVER
 
-    return '''
+    html = '''
 <script src='%(server)s.js?hl=%(lang)s'></script>
-
 <noscript>
   <div>
     <iframe src="%(server)s/fallback?k=%(public_key)s" height="450" width="302" frameborder="3"></iframe>
@@ -47,8 +48,12 @@ def get_display_html(public_key, use_ssl=False, error=None,
 ''' % {
     'server': server,
     'lang': lang,
-    'public_key': public_key
+    'public_key': public_key,
 }
+    if error:
+        return html + '''<div>error=%(error)s</div>'''%{'error':error}
+    else:
+        return html
 
 
 def submit (recaptcha_response):
@@ -60,7 +65,7 @@ def submit (recaptcha_response):
     """
 
     if not (recaptcha_response and len(recaptcha_response)):
-        return RecaptchaResponse (is_valid = False)
+        return RecaptchaResponse (is_valid=False, error_code='incorrect-captcha-sol')
 
     secret_key = config.get('captcha_secret_key')
     request_url = (
@@ -73,4 +78,4 @@ def submit (recaptcha_response):
     if result_code:
         return RecaptchaResponse (is_valid=True)
     else:
-        return RecaptchaResponse (is_valid=False)
+        return RecaptchaResponse (is_valid=False, error_code=result['error-codes'][0])
