@@ -1,13 +1,19 @@
 from unidecode import unidecode
 import jautils
 import logging
+import re
 
-def script_variant_western(query):
-    if jautils.should_normalize(query):
-        hiragana_query = jautils.normalize(query)
-        romaji_query = jautils.hiragana_to_romaji(hiragana_query)
-        logging.info(unidecode(romaji_query))
-    script_varianted_query = unidecode(query)
-    return script_varianted_query
+def word_to_alphabet(word):
+    if jautils.should_normalize(word):
+        hiragana_word = jautils.normalize(word)
+        romaji_word = jautils.hiragana_to_romaji(hiragana_word)
+    script_varianted_word = unidecode(word)
+    return script_varianted_word
 
-
+def script_variant_western(query_word):        
+    cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', query_word)
+    splited_query_word = cjk_separated.split()
+    words = [word_to_alphabet(word)
+             if not re.match(ur'([\u3400-\u9fff])', word) else word
+             for word in splited_query_word]
+    return ''.join([word for word in words])
