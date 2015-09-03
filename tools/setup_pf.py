@@ -56,8 +56,10 @@ def setup_configs():
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
 
+    # NOTE: the following two CAPTCHA keys are dummy keys for testing only.
     # They should be replaced with real keys upon launch.
-    config.set(
+    config.set(captcha_site_key='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+               captcha_secret_key='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
     # A Google Translate API key with a very low quota, just for testing.
                translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
                repo_aliases={},
