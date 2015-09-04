@@ -17,6 +17,10 @@
   <input type="hidden" name="id" value="{{params.id}}">
 {% endif %}
 
+{% if markdup %}
+  <div class="column middle">
+{% endif %}
+
 <div class="fields-table note" role="complementary">
   <h2>
     {% if not markdup %}
@@ -286,3 +290,7 @@
     {% include "errors.html.template" %}
   </div>
 </div>
+
+{% if markdup %}
+  </div>
+{% endif %}
