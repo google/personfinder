@@ -27,6 +27,7 @@ import xml.dom.minidom
 import django.utils.html
 from google.appengine import runtime
 from google.appengine.ext import db
+from google.appengine.api import images
 
 import config
 import external_search
@@ -42,10 +43,11 @@ import xlrd
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from utils import Struct
+from photo import create_photo, PhotoError
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
-
+PHOTO_UPLOAD_MAX_SIZE = 10485760 # Currently 10MB is the maximum upload size
 
 class InputFileError(Exception):
     pass
@@ -341,6 +343,44 @@ class Read(utils.BaseHandler):
             self.response.out, records, lambda p: note_records)
         utils.log_api_action(
             self, ApiActionLog.READ, len(records), len(notes))
+
+
+class PhotoUpload(utils.BaseHandler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.domain_write_permission):
+            self.info(
+                403,
+                message='Missing or invalid authorization key',
+                style='plain')
+            return
+
+        # Check for empty body
+        if not self.request.body:
+            self.error(400, "Request body must not be empty")
+            return
+
+        # Size check for uploaded file
+        if len(self.request.body) > PHOTO_UPLOAD_MAX_SIZE:
+            self.error(400, "Size of uploaded file is greater than 10MB")
+            return
+
+        try:
+            photo_img = images.Image(self.request.body)
+            photo, photo_url = create_photo(photo_img, self)
+        except PhotoError, e:
+            self.error(400, e.message)
+
+        # If we reached this point, it means photo is filled properly
+        # So feel free to use it right away!
+        photo.put()
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.write('<?xml version="1.0"?>\n')
+        self.write('<response><url>')
+        self.write(django.utils.html.escape(photo_url))
+        self.write('</url></response>')
 
 
 class Write(utils.BaseHandler):
