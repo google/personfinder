@@ -44,7 +44,7 @@ def enclose_in_double_quotes(query_txt):
         query_txt: Search query
 
     Returns:
-        '"query_words" "query_words" ...'
+        '"query_word1" "query_word2" ...'
     """
     query_words = query_txt.split(' ')
     return '"' + '" "'.join([word for word in query_words if word]) + '"'
@@ -69,7 +69,7 @@ def search(repo, query_txt, max_results):
     """
     #TODO: Sanitaize query_txt
     if not query_txt:
-        return results
+        return []
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
     query_txt = re.sub('"', '', query_txt)
@@ -80,7 +80,9 @@ def search(repo, query_txt, max_results):
         limit=max_results,
         returned_fields=['record_id', 'names'])
 
-    # enclose_in_double_quotes used for escaping.
+    # enclose_in_double_quotes used for escaping query_txt
+    # which specifies index field name, contains special symbol, ...
+    # (e.g., "repo: repository_name", "test: test", "test AND test").
     and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
