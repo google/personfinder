@@ -37,6 +37,22 @@ def make_or_regexp(query_txt):
     regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
 
+def create_sort_expression(**kwargs):
+    """
+    Creates sortExpressions for ranking.
+    Args:
+        **kwargs: key=field_name, value=field_rank_value
+    Returns:
+        array of SortExpression
+    """
+    expressions = []
+    for field in kwargs:
+        expressions.append(appengine_search.SortExpression(
+            expression=field,
+            direction=appengine_search.SortExpression.ASCENDING,
+            default_value=kwargs[field]))
+    return expressions
+
 def enclose_in_double_quotes(query_txt):
     """
     Encloses each word in query_txt in double quotes.
@@ -76,9 +92,16 @@ def search(repo, query_txt, max_results):
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
+
+    expressions = create_sort_expression(
+        given_name=1, family_name=1, full_name=1)
+    sort_opt = appengine_search.SortOptions(expressions=expressions)
+
     options = appengine_search.QueryOptions(
         limit=max_results,
-        returned_fields=['record_id', 'names'])
+        returned_fields=['record_id', 'names'],
+        sort_options=sort_opt)
+
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -87,6 +110,7 @@ def search(repo, query_txt, max_results):
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
+    logging.info(person_location_index_results)
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
