@@ -30,7 +30,6 @@ handlers:
 # Everything else is handled by main.
 - url: .*/admin.*
   script: main.py
-  login: admin
 - url: /admin/api_keys.*
   script: admin_api_keys.py
   secure: always
