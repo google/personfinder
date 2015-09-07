@@ -3496,7 +3496,7 @@ _feed_profile_url2</pfif:profile_urls>
                '"_test_given_name _test_family_name"' in doc.text, \
                'missing expected status from %s' % doc.text
 
-        # Continue4 with a valid captcha (faked, for purpose of test). Check
+        # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
         doc = self.go(
             '/haiti/disable_notes',

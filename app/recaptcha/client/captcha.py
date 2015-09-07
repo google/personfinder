@@ -7,7 +7,8 @@ import urllib2
 import config
 import simplejson
 
-import logging
+from django.utils.html import escape
+
 API_SSL_SERVER = 'https://www.google.com/recaptcha/api'
 # We leave out the URL scheme so that browsers won't complain when accessed
 # from a secure website even when use_ssl is not set.
@@ -19,29 +20,26 @@ class RecaptchaResponse(object):
         self.is_valid = is_valid
         self.error_code = error_code
 
-def get_display_html(public_key, use_ssl=False, error=None,
+def get_display_html(site_key, use_ssl=False, error=None,
                      lang='en'):
     """Gets the HTML to display for reCAPTCHA
 
-    public_key -- The public api key
+    site_key -- The public api key
     use_ssl -- Should the request be sent over ssl?
     error -- An error message to display (from RecaptchaResponse.error_code)"""
 
-    error_param = ''
-    if error:
-        error_param = 'error=%s' % error
     server = API_SERVER
     if use_ssl:
         server = API_SSL_SERVER
 
     html = '''
 <script src='%(server)s.js?hl=%(lang)s'></script>
-<div class='g-recaptcha' data-sitekey='%(public_key)s'></div>
+<div class='g-recaptcha' data-sitekey='%(site_key)s'></div>
 <noscript>
   <div style='width: 302px; height: 422px;'>
     <div style='width: 302px; height: 422px; position: relative;'>
       <div style='width: 302px; height: 422px; position: absolute;'>
-        <iframe src='%(server)s/fallback?k=%(public_key)s'
+        <iframe src='%(server)s/fallback?k=%(site_key)s'
                 frameborder="0" scrolling="no"
                 style='width: 302px; height:422px; border-style: none;'>
         </iframe>
@@ -62,14 +60,10 @@ def get_display_html(public_key, use_ssl=False, error=None,
 ''' % {
     'server': server,
     'lang': lang,
-    'public_key': public_key,
+    'site_key': site_key,
 }
     if error:
-        return '''
-        <div>%(error_param)s</div>
-        ''' % {
-            'error_param': error_param
-        } + html
+        return "<div>%(error)s</div>" % {'error': escape(error)} + html
     else:
         return html
 
