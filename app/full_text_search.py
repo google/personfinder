@@ -80,7 +80,7 @@ def search(repo, query_txt, max_results):
         limit=max_results,
         returned_fields=['record_id', 'names'])
 
-    # enclose_in_double_quotes used for escaping query_txt
+    # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
     and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
