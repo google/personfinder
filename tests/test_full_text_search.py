@@ -90,6 +90,24 @@ class FullTextSearchTests(unittest.TestCase):
             home_country='Japan',
             entry_date=TEST_DATETIME
         )
+        self.p7 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0810',
+            given_name='Rin',
+            family_name='Shibuya',
+            full_name='Rin Shibuya',
+            home_city='shinjuku',
+            entry_date=TEST_DATETIME
+        )
+        self.p8 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0203',
+            given_name='Rin',
+            family_name='Tosaka',
+            full_name='Rin Tosaka',
+            home_city='Shibuya',
+            entry_date=TEST_DATETIME
+        )
 
 
     def tearDown(self):
@@ -103,12 +121,16 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p4)
         db.put(self.p5)
         db.put(self.p6)
+        db.put(self.p7)
+        db.put(self.p8)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
         full_text_search.add_record_to_index(self.p5)
         full_text_search.add_record_to_index(self.p6)
+        full_text_search.add_record_to_index(self.p7)
+        full_text_search.add_record_to_index(self.p8)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -180,6 +202,11 @@ class FullTextSearchTests(unittest.TestCase):
         delete.delete_person(self, self.p5)
         results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
+
+        # Check rank order
+        results = full_text_search.search('haiti', 'Rin Shibuya', 5)
+        assert [r.record_id for r in results] == \
+               ['haiti/0810', 'haiti/0203']
 
     def test_delete_record_from_index(self):
         db.put(self.p4)
