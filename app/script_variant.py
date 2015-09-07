@@ -16,7 +16,7 @@ def change_word_to_alphabet(word):
     """
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
-        romaji_word = jautils.hiragana_to_romaji(hiragana_word)
+        return jautils.hiragana_to_romaji(hiragana_word)
     script_varianted_word = unidecode(word)
     return script_varianted_word
 
