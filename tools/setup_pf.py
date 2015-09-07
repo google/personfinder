@@ -57,6 +57,7 @@ def setup_configs():
                        'people finder', 'crisis', 'survivor', 'family']
 
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only.
+    #       (https://developers.google.com/recaptcha/docs/faq)
     # They should be replaced with real keys upon launch.
     config.set(captcha_site_key='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
                captcha_secret_key='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
