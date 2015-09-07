@@ -26,7 +26,7 @@ PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
 def make_or_regexp(query_txt):
     """
-    Craetes compiled regular expression for or search.
+    Creates compiled regular expression for OR search.
     Args:
         query_txt: Search query
 
@@ -39,17 +39,15 @@ def make_or_regexp(query_txt):
 
 def enclose_in_double_quotes(query_txt):
     """
-    Enclosesd query_txt in double quotes.
+    Encloses each word in query_txt in double quotes.
     Args:
         query_txt: Search query
 
     Returns:
-        "query_words" + " " + "query_words" + " " + ...
+        '"query_words" "query_words" ...'
     """
     query_words = query_txt.split(' ')
-    enclosed_query = '"'
-    enclosed_query += '" "'.join([word for word in query_words if word]) +'"'
-    return enclosed_query
+    return '"' + '" "'.join([word for word in query_words if word]) + '"'
 
 def search(repo, query_txt, max_results):
     """
@@ -70,11 +68,10 @@ def search(repo, query_txt, max_results):
                       or the query has syntax error.
     """
     #TODO: Sanitaize query_txt
-    results = []
     if not query_txt:
         return results
 
-    # escape double quote for enclose each query_txt
+    # Remove double quotes so that we can safely apply enclose_in_double_quotes().
     query_txt = re.sub('"', '', query_txt)
 
     person_location_index = appengine_search.Index(
@@ -83,6 +80,7 @@ def search(repo, query_txt, max_results):
         limit=max_results,
         returned_fields=['record_id', 'names'])
 
+    # enclose_in_double_quotes used for escaping.
     and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
@@ -99,9 +97,12 @@ def search(repo, query_txt, max_results):
         if regexp.search(names):
             index_results.append(id)
 
-    return [model.Person.get(repo, id, filter_expired=True)
-            for id in index_results
-            if model.Person.get(repo, id, filter_expired=True)]
+    results = []
+    for id in index_results:
+        result = model.Person.get(repo, id, filter_expired=True)
+        if result:
+            results.append(result)
+    return results
 
 def create_document(**kwargs):
     """
