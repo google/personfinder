@@ -24,7 +24,6 @@ import external_search
 import indexing
 import full_text_search
 import jp_mobile_carriers
-
 import script_variant
 
 MAX_RESULTS = 100
@@ -67,7 +66,7 @@ class Handler(BaseHandler):
         # original search when they fail or return no results.
         if not results:
             if config.get('enable_fulltext_search'):
-                script_varianted_query = script_variant.language_to_roman(query_txt)
+                script_varianted_query =script_variant.apply_script_variant(query_txt)
                 results = full_text_search.search(self.repo,
                                                   script_varianted_query, MAX_RESULTS)
             else:

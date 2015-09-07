@@ -1,25 +1,51 @@
-from unidecode import unidecode
 import jautils
+
+from unidecode import unidecode
+
 import logging
 import re
 
-def word_to_alphabet(word):
+def change_word_to_alphabet(word):
+    """
+    Changes word to alphabet.
+    This method should be called in translate_languages_to_roman().
+    Args:
+        word: should be script varianted
+    Returns:
+        script varianted word
+    """
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
         romaji_word = jautils.hiragana_to_romaji(hiragana_word)
     script_varianted_word = unidecode(word)
     return script_varianted_word
 
-def script_variant_western(query_word):
-    if not query_word:
-        return query_word
-    cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', query_word)
-    splited_query_word = cjk_separated.split()
-    words = [word_to_alphabet(word)
-             if not re.match(ur'([\u3400-\u9fff])', word) else word
-             for word in splited_query_word]
-    return ''.join([word for word in words])
+def translate_languages_to_roman(word):
+    """
+    Translates languages(except kanji) to Roman.
+    This method is for ignore Japanese kanji.
+    Args:
+        word: should be script_varianted
+    Returns:
+        script varianted word
+    """
+    if not word:
+        return word
 
-def language_to_roman(query_txt):
+    cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', word)
+    splited_word = cjk_separated.split()
+    translated_words = [change_word_to_alphabet(word)
+                        if not re.match(ur'([\u3400-\u9fff])', word) else word
+                        for word in splited_word]
+    return ''.join([word for word in translated_words])
+
+def apply_script_variant(query_txt):
+    """
+    Applies to script variant to query_txt.
+    Args:
+        query_txt: Search query
+    Returns:
+        script varianted query_txt (except kanji)
+    """
     query_words = query_txt.split(' ')
-    return ' '.join([script_variant_western(word) for word in query_words])
+    return ' '.join([translate_languages_to_roman(word) for word in query_words])

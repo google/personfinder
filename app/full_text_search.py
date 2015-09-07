@@ -114,7 +114,7 @@ def create_document(record_id, repo, **kwargs):
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
     for field in kwargs:
-        script_varianted_value = script_variant.script_variant_western(
+        script_varianted_value = script_variant.translate_languages_to_roman(
             kwargs[field])
         fields.append(
             appengine_search.TextField(name=field, value=script_varianted_value))
