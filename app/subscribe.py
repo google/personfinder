@@ -16,6 +16,7 @@
 from google.appengine.ext import db
 from google.appengine.api import taskqueue
 
+import config
 import model
 import reveal
 from utils import *
@@ -136,7 +137,9 @@ class Handler(BaseHandler):
 
         form_action = self.get_url('/subscribe', id=self.params.id)
         back_url = self.get_url('/view', id=self.params.id)
+        site_key = config.get('captcha_site_key')
         self.render('subscribe_captcha.html',
+                    site_key=site_key,
                     person=person,
                     captcha_html=self.get_captcha_html(),
                     subscribe_email=self.params.subscribe_email or '',
@@ -154,9 +157,11 @@ class Handler(BaseHandler):
         if not is_email_valid(self.params.subscribe_email):
             # Invalid email
             captcha_html = self.get_captcha_html()
+            site_key = config.get('captcha_site_key')
             form_action = self.get_url('/subscribe', id=self.params.id)
             return self.render('subscribe_captcha.html',
                                person=person,
+                               site_key=site_key,
                                subscribe_email=self.params.subscribe_email,
                                message=_(
                                    'Invalid e-mail address. Please try again.'),
@@ -170,9 +175,11 @@ class Handler(BaseHandler):
         if not captcha_response.is_valid and not self.env.test_mode:
             # Captcha is incorrect
             captcha_html = self.get_captcha_html(captcha_response.error_code)
+            site_key = config.get('captcha_site_key')
             form_action = self.get_url('/subscribe', id=self.params.id)
             return self.render('subscribe_captcha.html',
                                person=person,
+                               site_key=site_key,
                                subscribe_email=self.params.subscribe_email,
                                captcha_html=captcha_html,
                                form_action=form_action,

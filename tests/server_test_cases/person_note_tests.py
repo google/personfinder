@@ -1074,14 +1074,14 @@ http://www.foo.com/_account_1''',
         url = reveal_region.get('href', '')
         doc = self.go(url[url.find('/haiti/reveal'):])
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Try to continue with an invalid captcha response. Get redirected
         # back to the same page.
         button = doc.firsttag('input', value='Proceed')
         doc = self.s.submit(button)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Continue as if captcha is valid. All information should be viewable.
         doc = self.s.submit(button, test_mode='yes')
@@ -3316,7 +3316,6 @@ _feed_profile_url2</pfif:profile_urls>
         # to an invalid captcha.
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
@@ -3464,7 +3463,6 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.submit(button)
         # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
         # Simulate passing the captcha.
         doc = self.go('/haiti/extend',
                       data='id=' + str(person.record_id) + '&test_mode=yes')
@@ -3497,7 +3495,6 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text, \
                'missing expected status from %s' % doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
@@ -3577,7 +3574,6 @@ _feed_profile_url2</pfif:profile_urls>
         # to an invalid captcha.
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha. Check that a proper message
         # has been sent to the record author.
@@ -3835,7 +3831,6 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text
         assert 'The record has been deleted' not in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
@@ -4371,7 +4366,6 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Make sure it redirects to the same page with error
         doc = self.s.submit(button)
-        assert 'incorrect-captcha-sol' in doc.content
         assert 'Are you sure' in doc.text
         assert 'TestingSpam' in doc.text
 
@@ -4610,7 +4604,7 @@ _feed_profile_url2</pfif:profile_urls>
         button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
 
         # Invalid email is an error (even with valid captcha)
