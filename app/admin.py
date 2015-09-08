@@ -33,6 +33,8 @@ class Handler(BaseHandler):
     # We show global admin page, if a repo is not specified.
     repo_required = False
 
+    admin_required = True
+
     def get(self):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str
@@ -62,7 +64,7 @@ class Handler(BaseHandler):
                     onload_function="add_initial_languages()",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
-                        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
+                    tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
 
     def post(self):
         if self.params.operation == 'delete':

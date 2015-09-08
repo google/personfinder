@@ -35,6 +35,7 @@ STATUS_CODES = {
 
 
 class Handler(utils.BaseHandler):
+    admin_required = True
     def get(self):
         if not self.is_current_user_authorized():
             return self.redirect(users.create_login_url('/admin/review'))

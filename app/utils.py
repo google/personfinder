@@ -549,6 +549,9 @@ class BaseHandler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
+    # Handlers that don't neet a admin permission can set this False.
+    admin_required = False
+
     # List all accepted query parameters here with their associated validators.
     auto_params = {
         'add_note': validate_yes,
@@ -897,6 +900,17 @@ class BaseHandler(webapp.RequestHandler):
                 self.auth = model.Authorization.get('*', self.params.key)
         if self.auth and not self.auth.is_valid:
             self.auth = None
+
+        if self.admin_required:
+            user = users.get_current_user()
+            if not user:
+                login_url = users.create_login_url(self.request.url)
+                webapp.RequestHandler.redirect(self, login_url)
+            if not users.is_current_user_admin():
+                logout_url = users.create_logout_url(self.request.url)
+                self.render('logout.html', logout_url=logout_url, user=user)
+                self.terminate_response()
+                return
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:
