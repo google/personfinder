@@ -39,7 +39,21 @@ def translate_languages_to_roman(word):
                         for word in splited_word]
     return ''.join([word for word in translated_words])
 
-def apply_script_variant(query_txt):
+def translate__all_languages_to_roman(word):
+    """
+    Translates all languages to Roman.
+    Args:
+        word: should be script_varianted
+    Returns:
+        script varianted word
+    """
+    if not word:
+        return word
+
+    translated_words = [change_word_to_alphabet(word) for word in splited_word]
+    return ''.join([word for word in translated_words])
+
+def apply_script_variant(query_txt, ignore_kanji=True):
     """
     Applies to script variant to query_txt.
     Args:
