@@ -39,7 +39,7 @@ def make_or_regexp(query_txt):
 
 def create_sort_expression(**kwargs):
     """
-    Creates sortExpressions for ranking.
+    Creates SortExpression's for ranking.
     Args:
         **kwargs: key=field_name, value=field_rank_value
     Returns:
@@ -110,7 +110,6 @@ def search(repo, query_txt, max_results):
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
-    logging.info(person_location_index_results)
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
