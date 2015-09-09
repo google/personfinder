@@ -53,10 +53,14 @@ def is_possible_phone_number(query_str):
 
 def max_word_length(query_words):
     max_length = max(map(len, query_words))
-    # Count series of CJK characters as one word.
+    # Count series of CJK characters as one word. Do this because CJK
+    # characters are treated as separate words even when there is no
+    # whitespace between them. This also means that sequences of CJK characters
+    # will be counted here as one word even if there was whitespace between
+    # them originally.
     cjk_length = 0
-    for i in range(len(query_words)):
-        word = query_words[i]
+    for word in query_words:
+        # This CJK character range is copied from the logic in text_query.py.
         if u'\u3400' <= word <= u'\u9fff':
             cjk_length += 1
             max_length = max(max_length, cjk_length)
@@ -140,7 +144,7 @@ class Handler(BaseHandler):
             if self.config.use_family_name and not self.params.family_name:
                 return self.reject_query(query)
             if (len(query.query_words) == 0 or
-                max_word_length(query.query_words) < in_query_word_length):
+                max_word_length(query.query_words) < min_query_word_length):
                 return self.reject_query(query)
 
             # Look for *similar* names, not prefix matches.
