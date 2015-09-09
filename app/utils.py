@@ -549,7 +549,7 @@ class BaseHandler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
-    # Handlers that don't neet a admin permission can set this False.
+    # Handlers that require an admin permission can set this to True.
     admin_required = False
 
     # List all accepted query parameters here with their associated validators.
@@ -906,9 +906,11 @@ class BaseHandler(webapp.RequestHandler):
             if not user:
                 login_url = users.create_login_url(self.request.url)
                 webapp.RequestHandler.redirect(self, login_url)
+                self.terminate_response()
+                return
             if not users.is_current_user_admin():
                 logout_url = users.create_logout_url(self.request.url)
-                self.render('logout.html', logout_url=logout_url, user=user)
+                self.render('not_admin_error.html', logout_url=logout_url, user=user)
                 self.terminate_response()
                 return
 
