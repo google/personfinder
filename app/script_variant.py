@@ -62,4 +62,7 @@ def apply_script_variant(query_txt, ignore_kanji=True):
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    return ' '.join([translate_languages_to_roman(word) for word in query_words])
+    if ignore_kanji:
+        return ' '.join([translate_languages_to_roman(word) for word in query_words])
+    else:
+        return ' '.join([translate_all_languages_to_roman(word) for word in query_words])
