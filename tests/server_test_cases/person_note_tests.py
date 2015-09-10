@@ -577,9 +577,9 @@ class PersonNoteTests(ServerTestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
+            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan. 11, 2001, midnight UTC'})
+            'Expiry date of this record:': 'Jan 11, 2001, 12:00:05 AM UTC'})
 
         # Check the icons and the links are there.
         assert 'facebook-16x16.png' in self.s.doc.content
@@ -616,14 +616,14 @@ class PersonNoteTests(ServerTestsBase):
 
         self.go('/japan/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': 'Feb. 3, 2001, 1:05 p.m. JST'
+            'Original posting date:': 'Feb 3, 2001, 1:05:06 PM JST'
         })
         assert (
-            'Posted by Fred on Feb. 3, 2001, 4:08 p.m. JST' in self.s.doc.text)
+            'Posted by Fred on Feb 3, 2001, 4:08:09 PM JST' in self.s.doc.text)
 
         self.go('/japan/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert 'Feb. 3, 2001, 1:05 p.m. JST' in self.s.doc.text, \
+        assert 'Feb 3, 2001, 1:05:06 PM JST' in self.s.doc.text, \
             text_diff('', self.s.doc.text)
 
         # Other repositories should show up in UTC.
@@ -645,13 +645,13 @@ class PersonNoteTests(ServerTestsBase):
 
         self.go('/haiti/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': 'Feb. 3, 2001, 4:05 a.m. UTC'
+            'Original posting date:': 'Feb 3, 2001, 4:05:06 AM UTC'
         })
         assert (
-            'Posted by Fred on Feb. 3, 2001, 7:08 a.m. UTC' in self.s.doc.text)
+            'Posted by Fred on Feb 3, 2001, 7:08:09 AM UTC' in self.s.doc.text)
         self.go('/haiti/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert 'Feb. 3, 2001, 4:05 a.m. UTC' in self.s.doc.text
+        assert 'Feb 3, 2001, 4:05:06 AM UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -909,9 +909,9 @@ class PersonNoteTests(ServerTestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
+            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan. 21, 2001, midnight UTC'})
+            'Expiry date of this record:': 'Jan 21, 2001, 12:00:02 AM UTC'})
 
         # Check that UserActionLog entries were created.
         self.verify_user_action_log('add', 'Person', repo='haiti')
@@ -1008,7 +1008,8 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.first(class_='self-notes').all('div', class_='view note duplicate')
+        notes = doc.first(class_='self-notes').all(
+            'div', class_='view note duplicate')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
