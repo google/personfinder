@@ -1008,7 +1008,7 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.first(class_='self-notes').all('div', class_='view note')
+        notes = doc.first(class_='self-notes').all('div', class_='view note duplicate')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
