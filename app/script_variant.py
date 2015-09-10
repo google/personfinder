@@ -6,10 +6,10 @@ from google.appengine.api import memcache
 import re
 import logging
 
-def romanize_languages_by_unidecode(word):
+def romanize(word):
     """
-    Changes word to alphabet.
-    This method should be called in translate_languages_to_roman().
+    This method romanize all languages by unidecode.
+    If word is hiragana or katakana, it is romanized by jautils.
     Args:
         word: should be script varianted
     Returns:
@@ -18,11 +18,16 @@ def romanize_languages_by_unidecode(word):
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
         return jautils.hiragana_to_romaji(hiragana_word)
-    script_varianted_word = unidecode(word)
-    return script_varianted_word
+    romanized_word = unidecode(word)
+    return romanized_word
 
 
 def romanize_japanese_name_by_name_dict(word):
+    """
+    This method romanize japanese name by using name dictionary.
+    If word isn't found in dictionary, this method doesn't
+    apply romanize.
+    """
     if not word:
         return word
 
@@ -39,12 +44,14 @@ def romanize_japanese_name_by_name_dict(word):
 
 def apply_script_variant(query_txt):
     """
-    Applies to script variant to query_txt.
+    Applies to script variant to each query_txt.
+    This method uses unidecode and jautils for script variant.
+    This method is called by search method in app/result.py.
     Args:
         query_txt: Search query
     Returns:
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    return ' '.join([romanize_languages_by_unidecode(word)
+    return ' '.join([romanize(word)
                      for word in query_words])

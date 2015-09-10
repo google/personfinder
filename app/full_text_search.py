@@ -123,8 +123,7 @@ def create_document(record_id, repo, **kwargs):
 
     # Add name and location romanized by unidecode
     for field in kwargs:
-        romanized_value = script_variant.romanize_languages_by_unidecode(
-            kwargs[field])
+        romanized_value = script_variant.romanize(kwargs[field])
         fields.append(
             appengine_search.TextField(name=field, value=romanized_value))
 
