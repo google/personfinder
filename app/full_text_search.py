@@ -46,11 +46,11 @@ def create_sort_expression(**kwargs):
         array of SortExpression
     """
     expressions = []
-    for field in kwargs:
-        expressions.append(appengine_search.SortExpression(
-            expression=field,
-            direction=appengine_search.SortExpression.ASCENDING,
-            default_value=kwargs[field]))
+    expressions.append(appengine_search.SortExpression(
+        expression='_score',
+        direction=appengine_search.SortExpression.ASCENDING,
+        default_value=0.0
+    ))
     return expressions
 
 def enclose_in_double_quotes(query_txt):
@@ -95,7 +95,7 @@ def search(repo, query_txt, max_results):
 
     expressions = create_sort_expression(
         given_name=1, family_name=1, full_name=1)
-    sort_opt = appengine_search.SortOptions(expressions=expressions)
+    sort_opt = appengine_search.SortOptions(expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
     options = appengine_search.QueryOptions(
         limit=max_results,
@@ -110,6 +110,7 @@ def search(repo, query_txt, max_results):
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
+    logging.info(person_location_index_results)
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
