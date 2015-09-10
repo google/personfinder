@@ -79,7 +79,7 @@ def search(repo, query_txt, max_results):
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
         limit=max_results,
-        returned_fields=['record_id', 'names'])
+        returned_fields=['record_id', 'names', 'names_romanized_by_kanji'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -96,8 +96,10 @@ def search(repo, query_txt, max_results):
                 names = field.value
             if field.name == 'record_id':
                 id = field.value
+            if field.name == 'names_romanized_by_kanji':
+                names_romanized_by_kanji = field.value
 
-        if regexp.search(names):
+        if regexp.search(names) or regexp.search(names_romanized_by_kanji):
             index_results.append(id)
 
     results = []
@@ -114,6 +116,7 @@ def create_document(record_id, repo, **kwargs):
     """
     doc_id = repo + ':' + record_id
     fields = []
+    name_fields = ['given_name', 'family_name', 'full_name', 'alternate_names']
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
     for field in kwargs:
@@ -121,6 +124,32 @@ def create_document(record_id, repo, **kwargs):
             kwargs[field])
         fields.append(
             appengine_search.TextField(name=field, value=romanized_value))
+        """
+        if field in name_fields:
+            romanized_value_by_name_dict =\
+            script_variant.romanize_japanese_name_by_name_dict(kwargs[field])
+            fields.append(
+                appengine_search.TextField(name=field+'_romanized_by_name_dict',
+                                           value=romanized_value_by_name_dict)
+            )
+        """
+    
+    names_list_romanized_by_kanji = []
+    for field in name_fields:
+        romanized_value_by_name_dict = \
+                script_variant.romanize_japanese_name_by_name_dict(kwargs[field])
+        names_list_romanized_by_kanji.append(romanized_value_by_name_dict)
+        fields.append(
+            appengine_search.TextField(name=field+'_romanized_by_name_dict',
+                                       value=romanized_value_by_name_dict)
+        )
+
+    names_romanized_by_kanji = ':'.join([name for name in names_list_romanized_by_kanji if name])
+    fields.append(
+        appengine_search.TextField(name='names_romanized_by_kanji',
+                                   value=names_romanized_by_kanji)
+    )
+        
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
 

@@ -1,4 +1,5 @@
 # coding:utf-8
+
 import jautils
 
 from unidecode import unidecode
@@ -27,9 +28,15 @@ def romanize_japanese_name_by_name_dict(word):
     if not word:
         return word
 
-    hiragana = memcache.get(unicode(word, 'utf-8'))
-    logging.info(hiragana)
-    return jautils.hiragana_to_romaji(hiragana)
+    dict1 = memcache.get('dict1')
+    dict2 = memcache.get('dict2')
+    if word in dict1:
+        yomigana = (dict1[word])
+        return jautils.hiragana_to_romaji(yomigana)
+    if word in dict2:
+        yomigana = (dict2[word])
+        return jautils.hiragana_to_romaji(yomigana)
+    return word
 
 
 def translate_all_languages_to_roman(word):
