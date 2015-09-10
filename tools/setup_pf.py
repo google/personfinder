@@ -15,7 +15,6 @@
 
 from datetime import datetime
 from google.appengine.api import memcache
-import simplejson
 
 import const
 from model import *
@@ -224,4 +223,4 @@ def setup_japanese_name_dictionary():
     dict2 = get_dict_from_name_dict_file('tools/name_dict2.txt')
 
     memcache.add(key='dict1', value=dict1)
-    memcache.add(key='dict2', value=dict2)    
+    memcache.add(key='dict2', value=dict2)
