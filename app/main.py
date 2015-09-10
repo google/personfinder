@@ -37,6 +37,7 @@ import utils
 import user_agents
 
 import setup_pf as setup
+import threading
 
 
 # When no action or repo is specified, redirect to this action.
@@ -458,13 +459,22 @@ class Main(webapp.RequestHandler):
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
 
-        # Setup datastore if that has not been done before.
+        # Run setup_datastore if that has not been done before.
         # The first time Person Finder is run, the repository list
         # is empty. Let's use this info to check whether
-        # setup_datastore has been called before.
+        # setup_datastore has been called before or not.
+	logging.debug('Setup lock')
+	setup_lock = threading.RLock()
+	setup_lock.acquire()
+
         if not model.Repo.list():
-            logging.info('First session on Person Finder: set datastore up')
-            setup.setup_datastore ()
+            logging.info('First session on Person Finder: setting datastore up')
+            setup.setup_datastore()
+	else:
+	    logging.debug('Setup datastore done already. Nothing to do')
+
+	setup_lock.release()
+	logging.debug('Setup unlock')
 
         # If requested, set the clock before doing anything clock-related.
         # Only works on localhost for testing.  Specify ?utcnow=1293840000 to
