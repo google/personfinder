@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2009-2010 by Ka-Ping Yee
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,8 @@
 # limitations under the License.
 
 from datetime import datetime
+from google.appengine.api import memcache
+import simplejson
 
 import const
 from model import *
@@ -24,6 +27,7 @@ def setup_datastore():
     information will not be changed or deleted.)"""
     setup_repos()
     setup_configs()
+    setup_japanese_name_dictionary()
 
 def wipe_datastore(delete=None, keep=None):
     """Deletes everything in the datastore.  If 'delete' is given (a list of
@@ -207,3 +211,17 @@ def setup_lang_test_config():
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
+
+def setup_japanese_name_dictionary():
+    def get_dict_from_name_dict_file(file_name):
+        dict = {}
+        for line in open(file_name, 'r'):
+            kanji, hiragana = line[:-1].split('\t')
+            dict[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+        return dict
+
+    dict1 = get_dict_from_name_dict_file('tools/name_dict1.txt')
+    dict2 = get_dict_from_name_dict_file('tools/name_dict2.txt')
+
+    memcache.add(key='dict1', value=dict1)
+    memcache.add(key='dict2', value=dict2)    

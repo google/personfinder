@@ -26,8 +26,6 @@ import full_text_search
 import jp_mobile_carriers
 import script_variant
 
-import push_memcache
-
 MAX_RESULTS = 100
 # U+2010: HYPHEN
 # U+2012: FIGURE DASH
@@ -69,8 +67,6 @@ class Handler(BaseHandler):
         if not results:
             if config.get('enable_fulltext_search'):
                 script_varianted_query = script_variant.apply_script_variant(query_txt)
-                logging.info(script_variant.romanize_japanese_name_by_name_dict(query_txt))
-                #push_memcache.push_data_in_memcache()
                 results = full_text_search.search(self.repo,
                                                   script_varianted_query, MAX_RESULTS)
             else:
