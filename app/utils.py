@@ -549,7 +549,7 @@ class BaseHandler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
-    # Handlers that require an admin permission can set this to True.
+    # Handlers that require an admin permission must set this to True.
     admin_required = False
 
     # List all accepted query parameters here with their associated validators.
@@ -901,6 +901,8 @@ class BaseHandler(webapp.RequestHandler):
         if self.auth and not self.auth.is_valid:
             self.auth = None
 
+        # check admin instead of "login: admin" in app.yaml
+        # because if we use it, user can't sign out when user login as non-admin.
         if self.admin_required:
             user = users.get_current_user()
             if not user:
