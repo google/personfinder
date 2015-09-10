@@ -1,6 +1,8 @@
+# coding:utf-8
 import jautils
 
 from unidecode import unidecode
+from google.appengine.api import memcache
 
 import logging
 import re
@@ -20,26 +22,17 @@ def change_word_to_alphabet(word):
     script_varianted_word = unidecode(word)
     return script_varianted_word
 
-def translate_languages_to_roman(word):
-    """
-    Translates languages(except kanji) to Roman.
-    This method is for ignore Japanese kanji.
-    Args:
-        word: should be script_varianted
-    Returns:
-        script varianted word
-    """
+
+def romanize_japanese_name_by_name_dict(word):
     if not word:
         return word
 
-    cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', word)
-    splited_word = cjk_separated.split()
-    translated_words = [change_word_to_alphabet(word)
-                        if not re.match(ur'([\u3400-\u9fff])', word) else word
-                        for word in splited_word]
-    return ''.join([word for word in translated_words])
+    hiragana = memcache.get(unicode(word, 'utf-8'))
+    logging.info(hiragana)
+    return jautils.hiragana_to_romaji(hiragana)
 
-def translate__all_languages_to_roman(word):
+
+def translate_all_languages_to_roman(word):
     """
     Translates all languages to Roman.
     Args:
@@ -50,10 +43,10 @@ def translate__all_languages_to_roman(word):
     if not word:
         return word
 
-    translated_words = [change_word_to_alphabet(word) for word in splited_word]
-    return ''.join([word for word in translated_words])
+    return change_word_to_alphabet(word)
 
-def apply_script_variant(query_txt, ignore_kanji=True):
+
+def apply_script_variant(query_txt):
     """
     Applies to script variant to query_txt.
     Args:
@@ -62,7 +55,4 @@ def apply_script_variant(query_txt, ignore_kanji=True):
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    if ignore_kanji:
-        return ' '.join([translate_languages_to_roman(word) for word in query_words])
-    else:
-        return ' '.join([translate_all_languages_to_roman(word) for word in query_words])
+    return ' '.join([translate_all_languages_to_roman(word) for word in query_words])
