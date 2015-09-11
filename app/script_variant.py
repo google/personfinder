@@ -6,6 +6,13 @@ from google.appengine.api import memcache
 import re
 import logging
 
+
+JAPANESE_NAME_DICTIONARY = {}
+for line in open('japanese_name_dict.txt', 'r'):
+    kanji, hiragana = line[:-1].split('\t')
+    JAPANESE_NAME_DICTIONARY[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+
+
 def romanize(word):
     """
     This method romanize all languages by unidecode.
@@ -15,6 +22,9 @@ def romanize(word):
     Returns:
         script varianted word
     """
+    if not word:
+        return word
+
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
         return jautils.hiragana_to_romaji(hiragana_word)
@@ -31,14 +41,10 @@ def romanize_japanese_name_by_name_dict(word):
     if not word:
         return word
 
-    dict1 = memcache.get('dict1')
-    dict2 = memcache.get('dict2')
-    if word in dict1:
-        yomigana = (dict1[word])
+    if word in JAPANESE_NAME_DICTIONARY:
+        yomigana = (JAPANESE_NAME_DICTIONARY[word])
         return jautils.hiragana_to_romaji(yomigana)
-    if word in dict2:
-        yomigana = (dict2[word])
-        return jautils.hiragana_to_romaji(yomigana)
+
     return word
 
 
