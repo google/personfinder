@@ -79,7 +79,7 @@ def search(repo, query_txt, max_results):
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
         limit=max_results,
-        returned_fields=['record_id', 'names', 'names_romanized_by_jp_name_dict'])
+        returned_fields=['record_id', 'names', 'romanized_jp_names'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -96,10 +96,10 @@ def search(repo, query_txt, max_results):
                 names = field.value
             if field.name == 'record_id':
                 id = field.value
-            if field.name == 'names_romanized_by_jp_name_dict':
-                names_romanized_by_kanji = field.value
+            if field.name == 'romanized_jp_names':
+                romanized_jp_names = field.value
 
-        if regexp.search(names) or regexp.search(names_romanized_by_kanji):
+        if regexp.search(names) or regexp.search(romanized_jp_names):
             index_results.append(id)
 
     results = []
