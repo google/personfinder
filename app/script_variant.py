@@ -7,11 +7,11 @@ import re
 import logging
 
 def read_dictionary(file_name):
-    dict = {}
+    dictionary = {}
     for line in open(file_name, 'r'):
         kanji, hiragana = line[:-1].split('\t')
-        dict[kanji.decode('utf-8')] = hiragana.decode('utf-8')
-    return dict
+        dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+    return dictionary
 
 JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
 JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
