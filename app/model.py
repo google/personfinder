@@ -996,4 +996,4 @@ class UniqueId(db.Model):
         previously returned by this static method."""
         unique_id = UniqueId()
         unique_id.put()
-        return unique_id.key().id()    
+        return unique_id.key().id()
