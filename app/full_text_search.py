@@ -37,7 +37,7 @@ def make_or_regexp(query_txt):
     regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
 
-def create_sort_expression(**kwargs):
+def create_sort_expression():
     """
     Creates SortExpression's for ranking.
     Args:
@@ -48,7 +48,7 @@ def create_sort_expression(**kwargs):
     expressions = []
     expressions.append(appengine_search.SortExpression(
         expression='_score',
-        direction=appengine_search.SortExpression.ASCENDING,
+        direction=appengine_search.SortExpression.DESCENDING,
         default_value=0.0
     ))
     return expressions
@@ -93,8 +93,7 @@ def search(repo, query_txt, max_results):
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
 
-    expressions = create_sort_expression(
-        given_name=1, family_name=1, full_name=1)
+    expressions = create_sort_expression()
     sort_opt = appengine_search.SortOptions(expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
     options = appengine_search.QueryOptions(
@@ -137,9 +136,15 @@ def create_document(**kwargs):
     """
     doc_id = kwargs['repo'] + ':' + kwargs['record_id']
     fields = []
+    name_fields = ['given_name', 'full_name', 'family_name', 'alternate_names']
     for field in kwargs:
         fields.append(
             appengine_search.TextField(name=field, value=kwargs[field]))
+        if field in name_fields:
+            for x in range(5):
+                fields.append(
+                    appengine_search.TextField(name=field+'_'+str(x), value=kwargs[field]))
+            
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
 
