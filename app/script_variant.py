@@ -16,7 +16,7 @@ def read_dictionary(file_name):
 JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
 JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
 
-def romanize(word):
+def romanize_word(word):
     """
     This method romanize all languages by unidecode.
     If word is hiragana or katakana, it is romanized by jautils.
@@ -66,7 +66,7 @@ def romanize_japanese_location(word):
     return word
 
 
-def apply_script_variant(query_txt):
+def romanize_text(query_txt):
     """
     Applies to script variant to each query_txt.
     This method uses unidecode and jautils for script variant.
@@ -77,5 +77,4 @@ def apply_script_variant(query_txt):
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    return ' '.join([romanize(word)
-                     for word in query_words])
+    return ' '.join([romanize_word(word) for word in query_words])
