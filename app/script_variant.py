@@ -6,12 +6,15 @@ from google.appengine.api import memcache
 import re
 import logging
 
+def read_dictionary(file_name):
+    dict = {}
+    for line in open(file_name, 'r'):
+        kanji, hiragana = line[:-1].split('\t')
+        dict[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+    return dict
 
-JAPANESE_NAME_DICTIONARY = {}
-for line in open('japanese_name_dict.txt', 'r'):
-    kanji, hiragana = line[:-1].split('\t')
-    JAPANESE_NAME_DICTIONARY[kanji.decode('utf-8')] = hiragana.decode('utf-8')
-
+JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
+JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
 
 def romanize(word):
     """
@@ -43,6 +46,21 @@ def romanize_japanese_name_by_name_dict(word):
 
     if word in JAPANESE_NAME_DICTIONARY:
         yomigana = (JAPANESE_NAME_DICTIONARY[word])
+        return jautils.hiragana_to_romaji(yomigana)
+
+    return word
+
+def romanize_japanese_location(word):
+    """
+    This method romanize japanese name by using name dictionary.
+    If word isn't found in dictionary, this method doesn't
+    apply romanize.
+    """
+    if not word:
+        return word
+
+    if word in JAPANESE_LOCATION_DICTIONARY:
+        yomigana = (JAPANESE_LOCATION_DICTIONARY[word])
         return jautils.hiragana_to_romaji(yomigana)
 
     return word

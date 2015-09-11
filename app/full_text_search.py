@@ -110,7 +110,11 @@ def search(repo, query_txt, max_results):
     return results
 
 
-def create_name_document(**kwargs):
+def create_jp_name_document(**kwargs):
+    """
+    Creates document(romanized jp name data) for full text search.
+    It should be called in create_document method.
+    """
     fields = []
     romanized_names_list = []
     for field in kwargs:
@@ -121,12 +125,27 @@ def create_name_document(**kwargs):
             appengine_search.TextField(name=field+'_romanized_by_jp_name_dict',
                                        value=romanized_japanese_name)
         )
-    names_romanized_by_jp_name_dict =\
+    romanized_jp_names =\
             ':'.join([name for name in romanized_names_list if name])
-    fields.append(appengine_search.TextField(name='names_romanized_by_jp_name_dict',
-                                             value=names_romanized_by_jp_name_dict))
+    fields.append(appengine_search.TextField(name='romanized_jp_names',
+                                             value=romanized_jp_names))
     return fields
 
+
+def create_jp_location_document(**kwargs):
+    """
+    Creates document(romanized jp location data) for full text search.
+    It should be called in create_document method.
+    """
+    fields = []
+    for field in kwargs:
+        romanized_japanese_location =\
+                script_variant.romanize_japanese_location(kwargs[field])
+        fields.append(
+            appengine_search.TextField(name=field+'_romanized_by_jp_location_dict',
+                                       value=romanized_japanese_location)
+        )
+    return fields
 
 def create_document(record_id, repo, **kwargs):
     """
@@ -147,10 +166,20 @@ def create_document(record_id, repo, **kwargs):
             appengine_search.TextField(name=field, value=romanized_value))
 
     # Add name romanized by japanese name dictionary
-    fields.extend(create_name_document(given_name=kwargs['given_name'],
-                                       family_name=kwargs['family_name'],
-                                       full_name=kwargs['full_name'],
-                                       alternate_names=kwargs['alternate_names']))
+    fields.extend(create_jp_name_document(
+        given_name=kwargs['given_name'],
+        family_name=kwargs['family_name'],
+        full_name=kwargs['full_name'],
+        alternate_names=kwargs['alternate_names']))
+
+    # Add location romanized by japanese location dictionary
+    fields.extend(create_jp_location_document(
+        home_street=kwargs['home_street'],
+        home_city=kwargs['home_city'],
+        home_state=kwargs['home_state'],
+        home_postal_code=kwargs['home_postal_code'],
+        home_neighborhood=kwargs['home_neighborhood'],
+        home_country=kwargs['home_country']))
 
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
