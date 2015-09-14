@@ -66,10 +66,9 @@ class Handler(BaseHandler):
         # original search when they fail or return no results.
         if not results:
             if config.get('enable_fulltext_search'):
-                script_varianted_query = script_variant.romanize_text(query_txt)
-                script_variant.romanize_japanese_name_by_name_dict(query_txt)
+                romanized_query = script_variant.romanize_text(query_txt)
                 results = full_text_search.search(self.repo,
-                                                  script_varianted_query, MAX_RESULTS)
+                                                  romanized_query, MAX_RESULTS)
             else:
                 results = indexing.search(self.repo,
                                           TextQuery(query_txt), MAX_RESULTS)
