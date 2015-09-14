@@ -903,7 +903,8 @@ class BaseHandler(webapp.RequestHandler):
 
         # Shows a custom error page here when the user is not an admin
         # instead of "login: admin" in app.yaml
-        # because if we use it, user can't sign out when user login as non-admin.
+        # If we use it, user can't sign out 
+        # because the error page of "login: admin" doesn't have sign-out link.
         if self.admin_required:
             user = users.get_current_user()
             if not user:
