@@ -48,7 +48,7 @@ def create_sort_expression():
     expressions = []
     expressions.append(appengine_search.SortExpression(
         expression='_score',
-        direction=appengine_search.SortExpression.DESCENDING,
+        direction=appengine_search.SortExpression.ASCENDING,
         default_value=0.0
     ))
     return expressions
