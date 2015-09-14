@@ -901,7 +901,8 @@ class BaseHandler(webapp.RequestHandler):
         if self.auth and not self.auth.is_valid:
             self.auth = None
 
-        # check admin instead of "login: admin" in app.yaml
+        # Shows a custom error page here when the user is not an admin
+        # instead of "login: admin" in app.yaml
         # because if we use it, user can't sign out when user login as non-admin.
         if self.admin_required:
             user = users.get_current_user()
