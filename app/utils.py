@@ -42,6 +42,8 @@ from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
+from babel.dates import format_datetime
+import babel
 
 import const
 import config
@@ -767,31 +769,15 @@ class BaseHandler(webapp.RequestHandler):
         lang = self.env.lang.split('-')[0]
 
         return captcha.get_display_html(
-            public_key=config.get('captcha_public_key'),
-            use_ssl=use_ssl, error=error_code, lang=lang,
-            custom_translations={
-                # reCAPTCHA doesn't support all languages, so we treat its
-                # messages as part of this app's usual translation workflow
-                'instructions_visual': _('Type the two words:'),
-                'instructions_audio': _('Type what you hear:'),
-                'play_again': _('Play the sound again'),
-                'cant_hear_this': _('Download the sound as MP3'),
-                'visual_challenge': _('Get a visual challenge'),
-                'audio_challenge': _('Get an audio challenge'),
-                'refresh_btn': _('Get a new challenge'),
-                'help_btn': _('Help'),
-                'incorrect_try_again': _('Incorrect.  Try again.')
-            }
+            site_key=config.get('captcha_site_key'),
+            use_ssl=use_ssl, error=error_code, lang=lang
         )
 
     def get_captcha_response(self):
         """Returns an object containing the CAPTCHA response information for the
         given request's CAPTCHA field information."""
-        challenge = self.request.get('recaptcha_challenge_field')
-        response = self.request.get('recaptcha_response_field')
-        remote_ip = os.environ['REMOTE_ADDR']
-        return captcha.submit(
-            challenge, response, config.get('captcha_private_key'), remote_ip)
+        captcha_response = self.request.get('g-recaptcha-response')
+        return captcha.submit(captcha_response)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
@@ -800,6 +786,19 @@ class BaseHandler(webapp.RequestHandler):
             'inconvenience.  Our administrators will investigate the source '
             'of the problem, but please check that the format of your '
             'request is correct.'))
+
+    def __get_env_language_for_babel(self):
+        language_code = self.env.lang
+        # A hack to avoid rejecting zh-hk locale.
+        # This corresponds to the hack with LANGUAGE_SYNONYMS in const.py.
+        # TODO: remove these 2 lines when a original code can be passed to here.
+        if language_code == 'zhhk':
+            language_code = 'zh-hk'
+        try:
+            return babel.Locale.parse(language_code, sep='-')
+        except babel.UnknownLocaleError as e:
+            # fallback language
+            return babel.Locale('en')
 
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
@@ -810,6 +809,18 @@ class BaseHandler(webapp.RequestHandler):
             if self.config.time_zone_offset:
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
+
+    def format_datetime_localized(self, dt):
+        """Formats a datetime object to a localized human-readable string based
+        on the current locale."""
+        return format_datetime(dt, locale=self.__get_env_language_for_babel());
+
+    def to_formatted_local_time(self, dt):
+        """Converts a datetime object to the local time configured for the
+        current repository and formats to a localized human-readable string
+        based on the current locale."""
+        dt = self.to_local_time(dt)
+        return self.format_datetime_localized(dt)
 
     def maybe_redirect_for_repo_alias(self, request):
         """If the specified repository name is an alias, redirects to the URL
