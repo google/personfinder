@@ -98,7 +98,7 @@ def connect(url, email=None, password=None, exit_on_failure=False):
                 raise
     except Exception, e:
         if isinstance(e, urllib2.HTTPError):
-            print >>sys.stderr, 'HTTP error %d from URL: %s' % (e.code, e.url)
+            print >>sys.stderr, e.read()
         elif isinstance(e, urllib2.URLError):
             reason = hasattr(e.reason, 'args') and e.reason.args[-1] or e.reason
             print >>sys.stderr, 'Cannot connect to %s: %s' % (hostport, reason)
