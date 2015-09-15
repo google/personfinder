@@ -49,6 +49,8 @@ class Handler(BaseHandler):
     # Show stats even for deactivated repositories.
     ignore_deactivation = True
 
+    admin_required = True
+
     def get(self):
         # Determine the time range to display.  We currently show the last
         # 7 days of data, which encodes to about 100 kb of JSON text.
