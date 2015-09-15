@@ -18,7 +18,13 @@ def read_dictionary(file_name):
     with open(file_name, 'r') as f:
         for line in f:
             kanji, hiragana = line[:-1].split('\t')
-            dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+            kanji = kanji.decode('utf-8')
+            hiragana = hiragana.decode('utf-8')
+            if kanji in dictionary:
+                hiragana_list = dictionary[kanji]
+                hiragana_list.append(hiragana)
+            else:
+                dictionary[kanji] = [hiragana]
     return dictionary
 
 JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
@@ -35,10 +41,12 @@ def romanize_japanese_name_by_name_dict(word):
         return word
 
     if word in JAPANESE_NAME_DICTIONARY:
-        yomigana = JAPANESE_NAME_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+        yomigana_list = JAPANESE_NAME_DICTIONARY[word]
+        for x in range(len(yomigana_list)):
+            yomigana_list[x] = jautils.hiragana_to_romaji(yomigana_list[x])
+        return yomigana_list
 
-    return word
+    return [word]
 
 
 def romanize_japanese_location(word):
@@ -51,10 +59,12 @@ def romanize_japanese_location(word):
         return word
 
     if word in JAPANESE_LOCATION_DICTIONARY:
-        yomigana = JAPANESE_LOCATION_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+        yomigana_list = JAPANESE_LOCATION_DICTIONARY[word]
+        for x in range(len(yomigana_list)):
+            yomigana_list[x] = jautils.hiragana_to_romaji(yomigana_list[x])
+        return yomigana_list
 
-    return word
+    return [word]
 
 
 def romanize_word(word):

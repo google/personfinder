@@ -123,11 +123,14 @@ def create_jp_name_fields(**kwargs):
 
             romanized_japanese_name = (
                 script_variant.romanize_japanese_name_by_name_dict(kwargs[field]))
-            romanized_names_list.append(romanized_japanese_name)
-            fields.append(
-                appengine_search.TextField(name=field+'_romanized_by_jp_name_dict',
-                                           value=romanized_japanese_name)
-            )
+
+            for x in range(len(romanized_japanese_name)):
+                romanized_names_list.append(romanized_japanese_name[x])
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_name_dict_'+str(x),
+                        value=romanized_japanese_name[x])
+                )
             
     # field for checking query words contians a part of person name. 
     romanized_jp_names = (
@@ -147,11 +150,13 @@ def create_jp_location_fields(**kwargs):
         if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
             romanized_japanese_location = (
                 script_variant.romanize_japanese_location(kwargs[field]))
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_jp_location_dict',
-                    value=romanized_japanese_location)
-            )
+
+            for x in range(len(romanized_japanese_location)):
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_location_dict_'+str(x),
+                        value=romanized_japanese_location[x])
+                )
     return fields
 
 def create_document(record_id, repo, **kwargs):

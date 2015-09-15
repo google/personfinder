@@ -67,6 +67,7 @@ class Handler(BaseHandler):
         if not results:
             if config.get('enable_fulltext_search'):
                 romanized_query = script_variant.romanize_text(query_txt)
+                logging.info(script_variant.romanize_japanese_name_by_name_dict(query_txt))
                 results = full_text_search.search(self.repo,
                                                   romanized_query, MAX_RESULTS)
             else:
