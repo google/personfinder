@@ -13,7 +13,7 @@ Steps to create the container
 
     e.g.
 
-    $ docker build -t personfinder-image
+    $ docker build -t personfinder-image .
 
     This will take a while and will create the docker image.
 
