@@ -45,16 +45,20 @@
     <br/><br/>
     {{captcha_html|safe}}
     <br/><br/>
-    <div>
-      <input type="submit" value="{% trans 'Subscribe' %}" />
+    <div class="button-box">
+      <div class="button">
+        <input type="submit" value="{% trans 'Subscribe' %}" />
+      </div>
       <input type="hidden" name="id" value="{{person.record_id}}">
-      {% if context == 'create_person' or context == 'add_note' %}
-        <input type="button" value="{% trans 'Skip' %}"
-               onclick="javascript:location.href='{{back_url}}'">
-      {% else %}
-        <input type="button" value="{% trans 'Cancel' %}"
-               onclick="javascript:location.href='{{back_url}}'">
-      {% endif %}
+      <div class="button-cancel">
+        {% if context == 'create_person' or context == 'add_note' %}
+          <input type="button" value="{% trans 'Skip' %}"
+                 onclick="javascript:location.href='{{back_url}}'">
+        {% else %}
+          <input type="button" value="{% trans 'Cancel' %}"
+                 onclick="javascript:location.href='{{back_url}}'">
+        {% endif %}
+      </div>
     </div>
   </form>
 </div>
