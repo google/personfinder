@@ -65,10 +65,9 @@ class Handler(utils.BaseHandler):
                 person.put()
                 person.put_expiry_flags()
                 self.render('extend_done.html',
-                            expiry_date_local=
-                                self.to_local_time(person.expiry_date),
-                            view_url=
-                                self.get_url('/view', id=person.record_id))
+                    expiry_date_local_string = self.to_formatted_local_time(
+                        person.expiry_date),
+                    view_url=self.get_url('/view', id=person.record_id))
             else: 
                 # this shouldn't happen in normal work flow.
                 return self.info(200, _('The record cannot be extended.',))

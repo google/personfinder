@@ -58,6 +58,7 @@ class ListApiKeys(utils.BaseHandler):
     https_required = True
     ignore_deactivation = True
     repo_required = False
+    admin_required = True
 
     @utils.require_api_key_management_permission
     def get(self):
@@ -82,6 +83,7 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
     https_required = True
     ignore_deactivation = True
     repo_required = False
+    admin_required = True
 
     def render_form(self, authorization=None, message=''):
         """Display a form for create/update Authorization"""
