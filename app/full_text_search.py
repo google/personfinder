@@ -75,6 +75,7 @@ def search(repo, query_txt, max_results):
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
 
     romanized_query = script_variant.romanize_text(query_txt)
+    logging.info(romanized_query)
     query_txt = re.sub('"', '', romanized_query)
 
     person_location_index = appengine_search.Index(
