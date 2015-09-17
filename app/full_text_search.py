@@ -114,7 +114,6 @@ def search(repo, query_txt, max_results):
 def create_jp_name_fields(**kwargs):
     """
     Creates fields(romanized jp name data) for full text search.
-    It should be called in create_document method.
     """
     fields = []
     romanized_names_list = []
@@ -144,7 +143,6 @@ def create_jp_name_fields(**kwargs):
 def create_jp_location_fields(**kwargs):
     """
     Creates fields(romanized jp location data) for full text search.
-    It should be called in create_document method.
     """
     fields = []
     for field in kwargs:
@@ -204,6 +202,7 @@ def add_record_to_index(person):
         search.Error: An error occurred when the document could not be indexed
                       or the query has a syntax error.
     """
+
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     name_params = [person.given_name,
