@@ -182,8 +182,13 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
 
-        # Search romaji record by kanji
+        # Search romaji record by kanji name
         results = full_text_search.search('haiti', u'千早', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0225'])
+
+        # Search romaji record by kanji name and location
+        results = full_text_search.search('haiti', u'千早 荒尾', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
 
