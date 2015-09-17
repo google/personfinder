@@ -15,10 +15,14 @@ def read_dictionary(file_name):
         {kanj: yomigana, ...}
     """
     dictionary = {}
-    with open(file_name, 'r') as f:
-        for line in f:
-            kanji, hiragana = line[:-1].split('\t')
-            dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+    #filename check
+    try:
+        with open(file_name, 'r') as f:
+            for line in f:
+                kanji, hiragana = line[:-1].split('\t')
+                dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+    except IOError:
+        return None
     return dictionary
 
 JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
