@@ -68,8 +68,13 @@ class Handler(BaseHandler):
         show_private_info = reveal.verify(content_id, self.params.signature)
 
         # Compute the local times for the date fields on the person.
-        person.source_date_local = self.to_local_time(person.source_date)
-        person.expiry_date_local = self.to_local_time(
+        person.source_date_local_string = self.to_formatted_local_date(
+            person.source_date)
+        person.source_time_local_string = self.to_formatted_local_time(
+            person.source_date)
+        person.expiry_date_local_string = self.to_formatted_local_date(
+            person.get_effective_expiry_date())        
+        person.expiry_time_local_string = self.to_formatted_local_time(
             person.get_effective_expiry_date())
 
         # Get the notes and duplicate links.
@@ -290,4 +295,5 @@ class Handler(BaseHandler):
             self.get_url('/flag_note', id=note.note_record_id,
                          hide=(not note.hidden) and 'yes' or 'no',
                          signature=self.params.signature)
-        note.source_date_local = self.to_local_time(note.source_date)
+        note.source_datetime_local_string = self.to_formatted_local_datetime(
+            note.source_date)

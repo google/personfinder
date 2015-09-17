@@ -16,7 +16,7 @@
 
 {% block content %}
   <div class="info">
-    {% blocktrans with expiry_date_local|date:"DATETIME_FORMAT" as expiry_date %}
+    {% blocktrans with expiry_datetime_local_string as expiry_date %}
       The record has been extended to {{expiry_date}}.
     {% endblocktrans %}
     <a href="{{view_url}}">{% trans "View the record" %}</a>

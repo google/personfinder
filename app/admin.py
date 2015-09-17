@@ -33,6 +33,8 @@ class Handler(BaseHandler):
     # We show global admin page, if a repo is not specified.
     repo_required = False
 
+    admin_required = True
+
     def get(self):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str

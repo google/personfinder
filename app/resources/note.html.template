@@ -118,7 +118,7 @@
       <span class="author unknown">{% trans "(unknown)" %}</span>
     {% endif %}
     <span>{%trans "on" %}</span>
-    <span class="time">{{note.source_date_local|date:"DATETIME_FORMAT"}}</span>
+    <span class="time">{{note.source_datetime_local_string}}</span>
     {{config.time_zone_abbreviation|default:"UTC"}}
   </div>
   {% if note.author_email and env.enable_captcha %}

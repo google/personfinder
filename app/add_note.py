@@ -188,4 +188,5 @@ class Handler(BaseHandler):
             self.get_url('/flag_note', id=note.note_record_id,
                          hide=(not note.hidden) and 'yes' or 'no',
                          signature=self.params.signature)
-        note.source_date_local = self.to_local_time(note.source_date)
+        note.source_datetime_local_string = 
+            self.to_formatted_local_datetime(note.source_date)

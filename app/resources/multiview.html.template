@@ -229,10 +229,10 @@
           </tr>
           <tr>
             <td class="label">{% trans "Original posting date" %}:</td>
-            {% for val in person.source_date_local %}
+            {% for val in person.source_datetime_local_string %}
               <td class="field">
                 {% if val %}
-                  {{val|date:"DATETIME_FORMAT"}}
+                  {{val}}
                   {{config.time_zone_abbreviation|default:"UTC"}}
                 {% endif %}
               </td>
@@ -260,6 +260,8 @@
     </tr>
   </table>
   &nbsp;
-  {% include "add_note_base.html.template" %}
+  <div class="column">
+    {% include "add_note_base.html.template" %}
+  </div>
 </form>
 {% endblock %}

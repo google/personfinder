@@ -222,9 +222,9 @@
                     {% trans "Original posting date" %}:
                   </span>
                   <span class="value">
-                    {% if person.source_date %}
-                      {{person.source_date_local|date:"DATE_FORMAT"}}<br/>
-                      {{person.source_date_local|date:"TIME_FORMAT"}}
+                    {% if person.source_date_local_string and person.source_time_local_string %}
+                      {{person.source_date_local_string}}<br/>
+                      {{person.source_time_local_string}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -238,9 +238,9 @@
                     {% trans "Expiry date of this record" %}:
                   </span>
                   <span class="value">
-                    {% if person.expiry_date_local %}
-                      {{person.expiry_date_local|date:"DATE_FORMAT"}}<br/>
-                      {{person.expiry_date_local|date:"TIME_FORMAT"}}
+                    {% if person.expiry_date_local_string and person.expiry_time_local_string %}
+                      {{person.expiry_date_local_string}}<br/>
+                      {{person.expiry_time_local_string}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>

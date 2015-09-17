@@ -35,6 +35,7 @@ STATUS_CODES = {
 
 
 class Handler(utils.BaseHandler):
+    admin_required = True
     def get(self):
         if not self.is_current_user_authorized():
             return self.redirect(users.create_login_url('/admin/review'))
@@ -105,6 +106,10 @@ class Handler(utils.BaseHandler):
                         code = code.upper()
                     status_codes += code
                 note.person_status_codes = status_codes
+                note.source_date_string = self.format_datetime_localized(
+                    note.source_date);
+                note.entry_date_string = self.format_datetime_localized(
+                    note.entry_date);
 
         if len(notes) > NOTES_PER_PAGE:
             notes = notes[:NOTES_PER_PAGE]
