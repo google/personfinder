@@ -24,7 +24,6 @@ import external_search
 import indexing
 import full_text_search
 import jp_mobile_carriers
-import script_variant
 
 MAX_RESULTS = 100
 # U+2010: HYPHEN

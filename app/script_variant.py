@@ -2,8 +2,8 @@ import jautils
 
 from unidecode import unidecode
 
+import os.path
 import re
-import logging
 
 def read_dictionary(file_name):
     """
@@ -15,12 +15,12 @@ def read_dictionary(file_name):
         {kanj: yomigana, ...}
     """
     dictionary = {}
-    #filename check
     try:
-        with open(file_name, 'r') as f:
-            for line in f:
-                kanji, hiragana = line[:-1].split('\t')
-                dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+        if os.path.exists(file_name):
+            with open(file_name, 'r') as f:
+                for line in f:
+                    kanji, hiragana = line[:-1].split('\t')
+                    dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
     except IOError:
         return None
     return dictionary
