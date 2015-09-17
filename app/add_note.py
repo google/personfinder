@@ -39,15 +39,15 @@ class Handler(BaseHandler):
     def get(self):
         # Check the request parameters.
         if not self.params.id:
-            return self.error(404, 'No person id was specified.')
+            return self.error(404, _('No person id was specified.'))
         try:
             person = Person.get(self.repo, self.params.id)
         except ValueError:
             return self.error(404,
-                _("This person's entry does not exist or has been deleted."))
+                _("This person's entry does not exist and has been deleted."))
         if not person:
             return self.error(404,
-                _("This person's entry does not exist or has been deleted."))
+                _("This person's entry does not exist and has been deleted."))
         standalone = self.request.get('standalone')
 
         # Render the page.
@@ -73,7 +73,7 @@ class Handler(BaseHandler):
             not self.params.author_made_contact):
             return self.error(
                 200, _('Please check that you have been in contact with '
-                       'the person after the earthquake, or change the '
+                       'the person after the disaster, or change the '
                        '"Status of this person" field.'))
 
         if (self.params.status == 'believed_dead' and
@@ -178,15 +178,3 @@ class Handler(BaseHandler):
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/add_note', id=self.params.id, query=self.params.query)
-
-    def add_fields_to_notes(self, note):
-        """Adds some fields used in the template to a note."""
-        note.status_text = get_note_status_text(note)
-        note.linked_person_url = \
-            self.get_url('/add_note', id=note.linked_person_record_id)
-        note.flag_spam_url = \
-            self.get_url('/flag_note', id=note.note_record_id,
-                         hide=(not note.hidden) and 'yes' or 'no',
-                         signature=self.params.signature)
-        note.source_datetime_local_string = 
-            self.to_formatted_local_datetime(note.source_date)
