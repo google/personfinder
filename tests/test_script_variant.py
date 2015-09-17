@@ -22,10 +22,11 @@ class ScriptVariantTests(unittest.TestCase):
 
     def test_romanize_word(self):
         assert script_variant.romanize_word(u'Cœur') == u'Coeur'
-        assert script_variant.romanize_word(u'貴音') == u'Gui Yin '
+        assert script_variant.romanize_word(u'貴音') == u'TAKANE'
         assert script_variant.romanize_word(u'きくちまこと') == u'KIKUCHIMAKOTO'
         assert script_variant.romanize_word(u'') == u''
 
     def test_romanize_text(self):
         assert script_variant.romanize_text(u'あまみ はるか') == u'AMAMI HARUKA'
+        assert script_variant.romanize_text(u'新宿 響') == u'SHINJUKU HIBIKI'
         assert script_variant.romanize_text(u'') == u''
