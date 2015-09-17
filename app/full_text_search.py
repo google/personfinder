@@ -73,7 +73,9 @@ def search(repo, query_txt, max_results):
         return []
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
-    query_txt = re.sub('"', '', query_txt)
+
+    romanized_query = script_variant.romanize_text(query_txt)
+    query_txt = re.sub('"', '', romanized_query)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -113,23 +115,24 @@ def search(repo, query_txt, max_results):
 
 def create_jp_name_fields(**kwargs):
     """
-    Creates fields(romanized jp name data) for full text search.
-    It should be called in create_document method.
+    Creates fields(romanized_jp_names) for full text search.
     """
     fields = []
     romanized_names_list = []
     for field in kwargs:
-        if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
+        if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
 
             romanized_japanese_name = (
-                script_variant.romanize_japanese_name_by_name_dict(kwargs[field]))
-            romanized_names_list.append(romanized_japanese_name)
-            fields.append(
-                appengine_search.TextField(name=field+'_romanized_by_jp_name_dict',
-                                           value=romanized_japanese_name)
-            )
+                script_variant.romanize_japanese_name_by_name_dict(
+                    kwargs[field]))
+            if romanized_jp_name:
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_name_dict',
+                        value=romanized_japanese_name)
+                )
             
-    # field for checking query words contians a part of person name. 
+    # field for checking if query words contian a part of person name. 
     romanized_jp_names = (
             ':'.join([name for name in romanized_names_list if name]))
     fields.append(appengine_search.TextField(name='romanized_jp_names',
@@ -147,11 +150,12 @@ def create_jp_location_fields(**kwargs):
         if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
             romanized_japanese_location = (
                 script_variant.romanize_japanese_location(kwargs[field]))
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_jp_location_dict',
-                    value=romanized_japanese_location)
-            )
+            if romanized_japanese_location:
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_location_dict',
+                        value=romanized_japanese_location)
+                )
     return fields
 
 def create_document(record_id, repo, **kwargs):
