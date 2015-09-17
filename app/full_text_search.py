@@ -75,7 +75,11 @@ def search(repo, query_txt, max_results):
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
 
     romanized_query = script_variant.romanize_text(query_txt)
-    query_txt = re.sub('"', '', romanized_query)
+    kanji_list_in_query_txt = script_variant.find_kanji_word(query_txt)
+
+    romanized_query = re.sub('"', '', romanized_query)
+    romanized_query_with_kanji = re.sub(
+        '"', '', romanized_query+' '+kanji_list_in_query_txt)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -86,12 +90,23 @@ def search(repo, query_txt, max_results):
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
-    and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
+    and_query = enclose_in_double_quotes(romanized_query) + ' AND (repo: ' + repo + ')'
+
+    and_query_with_kanji = enclose_in_double_quotes(romanized_query_with_kanji) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
+
+    person_location_index_results2 = person_location_index.search(
+        appengine_search.Query(
+            query_string=and_query_with_kanji, options=options)
+    )
+
+    logging.info(person_location_index_results2)
+
+
     index_results = []
-    regexp = make_or_regexp(query_txt)
+    regexp = make_or_regexp(romanized_query)
     for document in person_location_index_results:
         romanized_jp_names = ''
         for field in document.fields:
@@ -125,11 +140,16 @@ def create_jp_name_fields(**kwargs):
             romanized_japanese_name = (
                 script_variant.romanize_japanese_name_by_name_dict(
                     kwargs[field]))
-            if romanized_jp_name:
+            if romanized_japanese_name:
                 fields.append(
                     appengine_search.TextField(
                         name=field+'_romanized_by_jp_name_dict',
                         value=romanized_japanese_name)
+                )
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_non_romanized',
+                        value=kwargs[field])
                 )
             
     # field for checking if query words contian a part of person name. 

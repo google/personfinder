@@ -91,3 +91,11 @@ def romanize_text(query_txt):
     """
     query_words = query_txt.split(' ')
     return ' '.join([romanize_word(word) for word in query_words])
+
+def find_kanji_word(query_txt):
+    query_words = query_txt.split(' ')
+    kanji_list_in_query_words = []
+    for word in query_words:
+        if re.match(ur'([\u3400-\u9fff])', word):
+            kanji_list_in_query_words.append(word)
+    return ' '.join([word for word in kanji_list_in_query_words])
