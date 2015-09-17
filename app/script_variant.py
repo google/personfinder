@@ -77,7 +77,7 @@ def romanize_word(word):
         hiragana_word = jautils.normalize(word)
         return jautils.hiragana_to_romaji(hiragana_word)
     romanized_word = unidecode(word)
-    return romanized_word
+    return romanized_word.strip()
 
 
 def romanize_text(query_txt):
