@@ -204,7 +204,7 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
 
-        # Check rank order
+        # Check rank order (name match heigher than location match)
         results = full_text_search.search('haiti', 'Rin Shibuya', 5)
         assert [r.record_id for r in results] == \
                ['haiti/0810', 'haiti/0203']
