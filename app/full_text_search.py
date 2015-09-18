@@ -204,7 +204,11 @@ def add_record_to_index(person):
     """
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-    full_name = re.sub(' ', '', person.full_name)
+    full_name = person.full_name
+    if person.given_name and person.family_name:
+        full_name = (person.given_name + person.family_name) + ' ' + (
+            person.family_name + person.given_name)
+
     name_params = [person.given_name,
                    person.family_name,
                    full_name,

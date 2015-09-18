@@ -91,6 +91,14 @@ class FullTextSearchTests(unittest.TestCase):
             home_country='Japan',
             entry_date=TEST_DATETIME
         )
+        self.p7 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/1010',
+            given_name='Hibiki',
+            family_name='Ganaha',
+            full_name='Hibiki Ganaha',
+            entry_date=TEST_DATETIME
+        )
 
 
     def tearDown(self):
@@ -104,12 +112,14 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p4)
         db.put(self.p5)
         db.put(self.p6)
+        db.put(self.p7)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
         full_text_search.add_record_to_index(self.p4)
         full_text_search.add_record_to_index(self.p5)
         full_text_search.add_record_to_index(self.p6)
+        full_text_search.add_record_to_index(self.p7)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -191,6 +201,16 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'千早 荒尾', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
+
+        # Search by full name without space
+        results = full_text_search.search('haiti', u'HibikiGanaha', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/1010'])
+
+        # Search by full name without space
+        results = full_text_search.search('haiti', u'GanahaHibiki', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/1010'])
 
     def test_delete_record_from_index(self):
         db.put(self.p4)
