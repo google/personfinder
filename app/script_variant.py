@@ -2,8 +2,8 @@ import jautils
 
 from unidecode import unidecode
 
+import os.path
 import re
-import logging
 
 def read_dictionary(file_name):
     """
@@ -15,16 +15,20 @@ def read_dictionary(file_name):
         {kanj: yomigana, ...}
     """
     dictionary = {}
-    with open(file_name, 'r') as f:
-        for line in f:
-            kanji, hiragana = line[:-1].split('\t')
-            kanji = kanji.decode('utf-8')
-            hiragana = hiragana.decode('utf-8')
-            if kanji in dictionary:
-                hiragana_list = dictionary[kanji]
-                hiragana_list.append(hiragana)
-            else:
-                dictionary[kanji] = [hiragana]
+    try:
+        if os.path.exists(file_name):
+            with open(file_name, 'r') as f:
+                for line in f:
+                    kanji, hiragana = line[:-1].split('\t')
+                    kanji = kanji.decode('utf-8')
+                    hiragana = hiragana.decode('utf-8')
+                    if kanji in dictionary:
+                        hiragana_list = dictionary[kanji]
+                        hiragana_list.append(hiragana)
+                    else:
+                        dictionary[kanji] = [hiragana]
+    except IOError:
+        return None
     return dictionary
 
 JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
@@ -79,11 +83,15 @@ def romanize_word(word):
     if not word:
         return word
 
+    if re.match(ur'([\u3400-\u9fff])', word):
+        word = romanize_japanese_name_by_name_dict(word)
+        word = romanize_japanese_location(word)
+
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
         return jautils.hiragana_to_romaji(hiragana_word)
     romanized_word = unidecode(word)
-    return romanized_word
+    return romanized_word.strip()
 
 
 def romanize_text(query_txt):
