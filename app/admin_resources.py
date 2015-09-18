@@ -118,6 +118,8 @@ class Handler(utils.BaseHandler):
     # Resources apply to all repositories.
     repo_required = False
 
+    admin_required = True
+
     def get_admin_url(self, bundle_name=None, name=None, lang=None, **params):
         """Constructs a parameterized URL to this page."""
         return self.get_url('admin/resources',

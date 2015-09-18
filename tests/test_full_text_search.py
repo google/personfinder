@@ -1,4 +1,5 @@
 #!/usr/bin/python2.7
+# coding:utf-8
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -207,6 +208,16 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Rin Shibuya', 5)
         assert [r.record_id for r in results] == \
                ['haiti/0810', 'haiti/0203']
+
+        # Search romaji record by kanji name
+        results = full_text_search.search('haiti', u'千早', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0225'])
+
+        # Search romaji record by kanji name and location
+        results = full_text_search.search('haiti', u'千早 荒尾', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0225'])
 
     def test_delete_record_from_index(self):
         db.put(self.p4)

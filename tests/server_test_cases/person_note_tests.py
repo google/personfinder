@@ -577,9 +577,9 @@ class PersonNoteTests(ServerTestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
+            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan. 11, 2001, midnight UTC'})
+            'Expiry date of this record:': 'Jan 11, 2001, 12:00:05 AM UTC'})
 
         # Check the icons and the links are there.
         assert 'facebook-16x16.png' in self.s.doc.content
@@ -616,14 +616,14 @@ class PersonNoteTests(ServerTestsBase):
 
         self.go('/japan/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': 'Feb. 3, 2001, 1:05 p.m. JST'
+            'Original posting date:': 'Feb 3, 2001, 1:05:06 PM JST'
         })
         assert (
-            'Posted by Fred on Feb. 3, 2001, 4:08 p.m. JST' in self.s.doc.text)
+            'Posted by Fred on Feb 3, 2001, 4:08:09 PM JST' in self.s.doc.text)
 
         self.go('/japan/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert 'Feb. 3, 2001, 1:05 p.m. JST' in self.s.doc.text, \
+        assert 'Feb 3, 2001, 1:05:06 PM JST' in self.s.doc.text, \
             text_diff('', self.s.doc.text)
 
         # Other repositories should show up in UTC.
@@ -645,13 +645,13 @@ class PersonNoteTests(ServerTestsBase):
 
         self.go('/haiti/view?id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
-            'Original posting date:': 'Feb. 3, 2001, 4:05 a.m. UTC'
+            'Original posting date:': 'Feb 3, 2001, 4:05:06 AM UTC'
         })
         assert (
-            'Posted by Fred on Feb. 3, 2001, 7:08 a.m. UTC' in self.s.doc.text)
+            'Posted by Fred on Feb 3, 2001, 7:08:09 AM UTC' in self.s.doc.text)
         self.go('/haiti/multiview?id1=test.google.com/person.111'
                 '&lang=en')
-        assert 'Feb. 3, 2001, 4:05 a.m. UTC' in self.s.doc.text
+        assert 'Feb 3, 2001, 4:05:06 AM UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -909,9 +909,9 @@ class PersonNoteTests(ServerTestsBase):
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
-            'Original posting date:': 'Jan. 1, 2001, midnight UTC',
+            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan. 21, 2001, midnight UTC'})
+            'Expiry date of this record:': 'Jan 21, 2001, 12:00:02 AM UTC'})
 
         # Check that UserActionLog entries were created.
         self.verify_user_action_log('add', 'Person', repo='haiti')
@@ -1008,7 +1008,8 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.first(class_='self-notes').all('div', class_='view note')
+        notes = doc.first(class_='self-notes').all(
+            'div', class_='view note duplicate')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
@@ -1074,14 +1075,14 @@ http://www.foo.com/_account_1''',
         url = reveal_region.get('href', '')
         doc = self.go(url[url.find('/haiti/reveal'):])
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Try to continue with an invalid captcha response. Get redirected
         # back to the same page.
         button = doc.firsttag('input', value='Proceed')
         doc = self.s.submit(button)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
 
         # Continue as if captcha is valid. All information should be viewable.
         doc = self.s.submit(button, test_mode='yes')
@@ -3316,7 +3317,6 @@ _feed_profile_url2</pfif:profile_urls>
         # to an invalid captcha.
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
@@ -3464,7 +3464,6 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.submit(button)
         # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
         # Simulate passing the captcha.
         doc = self.go('/haiti/extend',
                       data='id=' + str(person.record_id) + '&test_mode=yes')
@@ -3497,7 +3496,6 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text, \
                'missing expected status from %s' % doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
@@ -3577,7 +3575,6 @@ _feed_profile_url2</pfif:profile_urls>
         # to an invalid captcha.
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha. Check that a proper message
         # has been sent to the record author.
@@ -3835,7 +3832,6 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text
         assert 'The record has been deleted' not in doc.text
-        assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
@@ -4371,7 +4367,6 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Make sure it redirects to the same page with error
         doc = self.s.submit(button)
-        assert 'incorrect-captcha-sol' in doc.content
         assert 'Are you sure' in doc.text
         assert 'TestingSpam' in doc.text
 
@@ -4610,7 +4605,7 @@ _feed_profile_url2</pfif:profile_urls>
         button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
-        assert 'recaptcha_response_field' in doc.content
+        assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
 
         # Invalid email is an error (even with valid captcha)

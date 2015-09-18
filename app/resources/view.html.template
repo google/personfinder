@@ -232,7 +232,7 @@
                   </span>
                   <span class="value">
                     {% if person.source_date %}
-                      {{person.source_date_local|date:"DATETIME_FORMAT"}}
+                      {{person.source_date_local_string}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
@@ -246,8 +246,8 @@
                     {% trans "Expiry date of this record" %}:
                   </span>
                   <span class="value">
-                    {% if person.expiry_date_local %}
-                      {{person.expiry_date_local|date:"DATETIME_FORMAT"}}
+                    {% if person.expiry_date_local_string %}
+                      {{person.expiry_date_local_string}}
                       {{config.time_zone_abbreviation|default:"UTC"}}
                     {% endif %}
                   </span>
