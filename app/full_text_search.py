@@ -131,6 +131,22 @@ def create_jp_name_fields(**kwargs):
                         value=romanized_japanese_name)
                 )
                 romanized_names_list.append(romanized_japanese_name)
+                kwargs[field] = romanized_japanese_name
+
+    # field for searching by fullname without space
+    romanized_given_name = kwargs['given_name']
+    romanized_family_name = kwargs['family_name']
+    if romanized_given_name and romanized_family_name:
+        full_name_given_family = romanized_given_name + romanized_family_name
+        full_name_family_given = romanized_family_name + romanized_given_name
+        romanized_names_list.append(full_name_given_family)
+        romanized_names_list.append(full_name_family_given)
+        fields.append(appengine_search.TextField(
+            name='no_spacefull_name_romanized_jp_names1',
+            value=full_name_given_family))
+        fields.append(appengine_search.TextField(
+            name='no_spacefull_name_romanized_jp_name2',
+            value=full_name_family_given))
             
     # field for checking if query words contian a part of person name.
     romanized_jp_names = (
@@ -204,14 +220,9 @@ def add_record_to_index(person):
     """
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-    full_name = person.full_name
-    if person.given_name and person.family_name:
-        full_name = (person.given_name + person.family_name) + ' ' + (
-            person.family_name + person.given_name)
-
     name_params = [person.given_name,
                    person.family_name,
-                   full_name,
+                   person.full_name,
                    person.alternate_names]
     names =  ':'.join([name for name in name_params if name])
     person_location_index.put(create_document(
@@ -220,7 +231,7 @@ def add_record_to_index(person):
         names=names,
         given_name=person.given_name,
         family_name=person.family_name,
-        full_name=full_name,
+        full_name=person.full_name,
         alternate_names=person.alternate_names,
         home_street=person.home_street,
         home_city=person.home_city,
