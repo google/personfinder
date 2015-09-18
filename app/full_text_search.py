@@ -19,6 +19,7 @@ import re
 from google.appengine.api import search as appengine_search
 
 import model
+import script_variant
 
 # The index name for full text search.
 # This index contains person name and location.
@@ -72,13 +73,15 @@ def search(repo, query_txt, max_results):
         return []
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
-    query_txt = re.sub('"', '', query_txt)
+
+    romanized_query = script_variant.romanize_text(query_txt)
+    query_txt = re.sub('"', '', romanized_query)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
         limit=max_results,
-        returned_fields=['record_id', 'names'])
+        returned_fields=['record_id', 'names', 'romanized_jp_names'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -90,13 +93,16 @@ def search(repo, query_txt, max_results):
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
+        romanized_jp_names = ''
         for field in document.fields:
             if field.name == 'names':
                 names = field.value
             if field.name == 'record_id':
                 id = field.value
+            if field.name == 'romanized_jp_names':
+                romanized_jp_names = field.value
 
-        if regexp.search(names):
+        if regexp.search(names) or regexp.search(romanized_jp_names):
             index_results.append(id)
 
     results = []
@@ -106,16 +112,86 @@ def search(repo, query_txt, max_results):
             results.append(result)
     return results
 
-def create_document(**kwargs):
+
+def create_jp_name_fields(**kwargs):
     """
-    Creates document for full text search.
-    It should be called in add_record_to_index method.model.Person.get_by_key_name(repo + ':' + id
+    Creates fields(romanized_jp_names) for full text search.
     """
-    doc_id = kwargs['repo'] + ':' + kwargs['record_id']
+    fields = []
+    romanized_names_list = []
+    for field in kwargs:
+        if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
+            romanized_japanese_name = (
+                script_variant.romanize_japanese_name_by_name_dict(
+                    kwargs[field]))
+            if romanized_japanese_name:
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_name_dict',
+                        value=romanized_japanese_name)
+                )
+                romanized_names_list.append(romanized_japanese_name)
+            
+    # field for checking if query words contian a part of person name.
+    romanized_jp_names = (
+            ':'.join([name for name in romanized_names_list if name]))
+    fields.append(appengine_search.TextField(name='romanized_jp_names',
+                                             value=romanized_jp_names))
+    return fields
+
+
+def create_jp_location_fields(**kwargs):
+    """
+    Creates fields(romanized jp location data) for full text search.
+    It should be called in create_document method.
+    """
     fields = []
     for field in kwargs:
+        if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
+            romanized_japanese_location = (
+                script_variant.romanize_japanese_location(kwargs[field]))
+            if romanized_japanese_location:
+                fields.append(
+                    appengine_search.TextField(
+                        name=field+'_romanized_by_jp_location_dict',
+                        value=romanized_japanese_location)
+                )
+    return fields
+
+def create_document(record_id, repo, **kwargs):
+    """
+    Creates document for full text search.
+    It should be called in add_record_to_index method.
+    """
+    fields = []
+
+    # Add repo and record_id to fields
+    doc_id = repo + ':' + record_id
+    fields.append(appengine_search.TextField(name='repo', value=repo))
+    fields.append(appengine_search.TextField(name='record_id', value=record_id))
+
+    # Add name and location romanized by unidecode
+    for field in kwargs:
+        romanized_value = script_variant.romanize_word(kwargs[field])
         fields.append(
-            appengine_search.TextField(name=field, value=kwargs[field]))
+            appengine_search.TextField(name=field, value=romanized_value))
+
+    # Add name romanized by japanese name dictionary
+    fields.extend(create_jp_name_fields(
+        given_name=kwargs['given_name'],
+        family_name=kwargs['family_name'],
+        full_name=kwargs['full_name'],
+        alternate_names=kwargs['alternate_names']))
+
+    # Add location romanized by japanese location dictionary
+    fields.extend(create_jp_location_fields(
+        home_street=kwargs['home_street'],
+        home_city=kwargs['home_city'],
+        home_state=kwargs['home_state'],
+        home_postal_code=kwargs['home_postal_code'],
+        home_neighborhood=kwargs['home_neighborhood'],
+        home_country=kwargs['home_country']))
+
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
 
@@ -126,7 +202,6 @@ def add_record_to_index(person):
         search.Error: An error occurred when the document could not be indexed
                       or the query has a syntax error.
     """
-
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     name_params = [person.given_name,
@@ -135,8 +210,8 @@ def add_record_to_index(person):
                    person.alternate_names]
     names =  ':'.join([name for name in name_params if name])
     person_location_index.put(create_document(
-        record_id=person.record_id,
-        repo=person.repo,
+        person.record_id,
+        person.repo,
         names=names,
         given_name=person.given_name,
         family_name=person.family_name,
