@@ -42,6 +42,8 @@ from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
+from babel.dates import format_datetime
+import babel
 
 import const
 import config
@@ -549,6 +551,9 @@ class BaseHandler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
+    # Handlers that require an admin permission must set this to True.
+    admin_required = False
+
     # List all accepted query parameters here with their associated validators.
     auto_params = {
         'add_note': validate_yes,
@@ -785,6 +790,19 @@ class BaseHandler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
+    def __get_env_language_for_babel(self):
+        language_code = self.env.lang
+        # A hack to avoid rejecting zh-hk locale.
+        # This corresponds to the hack with LANGUAGE_SYNONYMS in const.py.
+        # TODO: remove these 2 lines when a original code can be passed to here.
+        if language_code == 'zhhk':
+            language_code = 'zh-hk'
+        try:
+            return babel.Locale.parse(language_code, sep='-')
+        except babel.UnknownLocaleError as e:
+            # fallback language
+            return babel.Locale('en')
+
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
         current repository.  For convenience, returns None if date is None."""
@@ -794,6 +812,18 @@ class BaseHandler(webapp.RequestHandler):
             if self.config.time_zone_offset:
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
+
+    def format_datetime_localized(self, dt):
+        """Formats a datetime object to a localized human-readable string based
+        on the current locale."""
+        return format_datetime(dt, locale=self.__get_env_language_for_babel());
+
+    def to_formatted_local_time(self, dt):
+        """Converts a datetime object to the local time configured for the
+        current repository and formats to a localized human-readable string
+        based on the current locale."""
+        dt = self.to_local_time(dt)
+        return self.format_datetime_localized(dt)
 
     def maybe_redirect_for_repo_alias(self, request):
         """If the specified repository name is an alias, redirects to the URL
@@ -881,6 +911,23 @@ class BaseHandler(webapp.RequestHandler):
                 self.auth = model.Authorization.get('*', self.params.key)
         if self.auth and not self.auth.is_valid:
             self.auth = None
+
+        # Shows a custom error page here when the user is not an admin
+        # instead of "login: admin" in app.yaml
+        # If we use it, user can't sign out 
+        # because the error page of "login: admin" doesn't have sign-out link.
+        if self.admin_required:
+            user = users.get_current_user()
+            if not user:
+                login_url = users.create_login_url(self.request.url)
+                webapp.RequestHandler.redirect(self, login_url)
+                self.terminate_response()
+                return
+            if not users.is_current_user_admin():
+                logout_url = users.create_logout_url(self.request.url)
+                self.render('not_admin_error.html', logout_url=logout_url, user=user)
+                self.terminate_response()
+                return
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:

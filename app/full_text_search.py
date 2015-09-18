@@ -150,7 +150,6 @@ def create_jp_name_fields(**kwargs):
     romanized_names_list = []
     for field in kwargs:
         if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
-
             romanized_japanese_name = (
                 script_variant.romanize_japanese_name_by_name_dict(
                     kwargs[field]))
