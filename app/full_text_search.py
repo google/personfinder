@@ -25,6 +25,8 @@ import script_variant
 # This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
+REPEAT_COUNT_FOR_RANK = 5
+
 def make_or_regexp(query_txt):
     """
     Creates compiled regular expression for OR search.
@@ -46,13 +48,11 @@ def create_sort_expression():
     Returns:
         array of SortExpression
     """
-    expressions = []
-    expressions.append(appengine_search.SortExpression(
+    return [appengine_search.SortExpression(
         expression='_score',
         direction=appengine_search.SortExpression.DESCENDING,
         default_value=0.0
-    ))
-    return expressions
+    )]
 
 def enclose_in_double_quotes(query_txt):
     """
@@ -152,12 +152,11 @@ def create_jp_name_fields(**kwargs):
                         name=field+'_romanized_by_jp_name_dict',
                         value=romanized_japanese_name)
                 )
-                connected_romanized_jp_name = ''
-                for x in range(5):
-                    connected_romanized_jp_name += romanized_japanese_name
+                repeated_romanized_jp_name = ''.join(
+                    romanized_japanesename for _ in range(REPEAT_COUNT_FOR_RANK))
                 fields.append(appengine_search.TextField(
                     name=field+'_romanized_by_jp_name_dict_for_rank',
-                    value=connected_romanized_jp_name))
+                    value=repeated_romanized_jp_name))
                 romanized_names_list.append(romanized_japanese_name)
             
     # field for checking if query words contian a part of person name.
@@ -205,12 +204,11 @@ def create_document(record_id, repo, **kwargs):
         fields.append(
             appengine_search.TextField(name=field, value=romanized_value))
         if romanized_value and field in name_fields:
-            connected_romanized_value = ''
-            for x in range(5):
-                connected_romanized_value += romanized_value
+            repeated_romanized_value = ''.join(
+                romanized_value for _ in range(REPEAT_COUNT_FOR_RANK))
             fields.append(
                 appengine_search.TextField(name=field+'_for_rank',
-                                           value=connected_romanized_value))
+                                           value=repeated_romanized_value))
 
     # Add name romanized by japanese name dictionary
     fields.extend(create_jp_name_fields(
