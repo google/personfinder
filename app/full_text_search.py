@@ -135,6 +135,26 @@ def search(repo, query_txt, max_results):
     return results
 
 
+def create_fields_for_rank(field_name, value):
+    """
+    Creates fields for ranking.
+    Args:
+        field_name: field name
+        value: field value
+    Returns:
+        array of appengine_search.TextField(name=field_name, value=value)
+           (length: REPEAT_COUNT_FOR_RANK)
+    """
+    if not value:
+        return []
+
+    fields = []
+    for x in range(REPEAT_COUNT_FOR_RANK):
+        fields.append(
+            appengine_search.TextField(name=field_name+'_for_rank_'+str(x),
+                                       value=value))
+    return fields
+
 def create_jp_name_fields(**kwargs):
     """
     Creates fields(romanized_jp_names) for full text search.
@@ -152,11 +172,8 @@ def create_jp_name_fields(**kwargs):
                         name=field+'_romanized_by_jp_name_dict',
                         value=romanized_japanese_name)
                 )
-                repeated_romanized_jp_name = ''.join(
-                    romanized_japanesename for _ in range(REPEAT_COUNT_FOR_RANK))
-                fields.append(appengine_search.TextField(
-                    name=field+'_romanized_by_jp_name_dict_for_rank',
-                    value=repeated_romanized_jp_name))
+                fields.extend(create_fields_for_rank(
+                    field+'romanized_by_jp__name_dict', romanized_jp_name))
                 romanized_names_list.append(romanized_japanese_name)
             
     # field for checking if query words contian a part of person name.
@@ -170,7 +187,6 @@ def create_jp_name_fields(**kwargs):
 def create_jp_location_fields(**kwargs):
     """
     Creates fields(romanized jp location data) for full text search.
-    It should be called in create_document method.
     """
     fields = []
     for field in kwargs:
@@ -201,14 +217,12 @@ def create_document(record_id, repo, **kwargs):
     name_fields = ['given_name', 'full_name', 'family_name', 'alternate_names']
     for field in kwargs:
         romanized_value = script_variant.romanize_word(kwargs[field])
-        fields.append(
-            appengine_search.TextField(name=field, value=romanized_value))
-        if romanized_value and field in name_fields:
-            repeated_romanized_value = ''.join(
-                romanized_value for _ in range(REPEAT_COUNT_FOR_RANK))
+
+        if field in name_fields:
+            fields.extend(create_fields_for_rank(field, romanized_value))
+        else:
             fields.append(
-                appengine_search.TextField(name=field+'_for_rank',
-                                           value=repeated_romanized_value))
+                appengine_search.TextField(name=field, value=romanized_value))
 
     # Add name romanized by japanese name dictionary
     fields.extend(create_jp_name_fields(
