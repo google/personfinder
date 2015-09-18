@@ -94,4 +94,4 @@ def romanize_text(query_txt):
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    return ' '.join([romanize_word(word) for word in query_words])
+    return ' '.join([romanize_word(word).lower() for word in query_words])

@@ -27,6 +27,6 @@ class ScriptVariantTests(unittest.TestCase):
         assert script_variant.romanize_word(u'') == u''
 
     def test_romanize_text(self):
-        assert script_variant.romanize_text(u'あまみ はるか') == u'AMAMI HARUKA'
-        assert script_variant.romanize_text(u'新宿 響') == u'SHINJUKU HIBIKI'
+        assert script_variant.romanize_text(u'あまみ はるか') == u'amami haruka'
+        assert script_variant.romanize_text(u'新宿 響') == u'shinjuku hibiki'
         assert script_variant.romanize_text(u'') == u''

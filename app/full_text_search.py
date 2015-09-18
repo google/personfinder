@@ -38,7 +38,7 @@ def make_or_regexp(query_txt):
     regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
 
-def create_sort_expression(**kwargs):
+def create_sort_expression():
     """
     Creates SortExpression's for ranking.
     Args:
@@ -49,7 +49,7 @@ def create_sort_expression(**kwargs):
     expressions = []
     expressions.append(appengine_search.SortExpression(
         expression='_score',
-        direction=appengine_search.SortExpression.ASCENDING,
+        direction=appengine_search.SortExpression.DESCENDING,
         default_value=0.0
     ))
     return expressions
@@ -96,9 +96,9 @@ def search(repo, query_txt, max_results):
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
 
-    expressions = create_sort_expression(
-        given_name=1, family_name=1, full_name=1)
-    sort_opt = appengine_search.SortOptions(expressions=expressions, match_scorer=appengine_search.MatchScorer())
+    expressions = create_sort_expression()
+    sort_opt = appengine_search.SortOptions(
+        expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
     options = appengine_search.QueryOptions(
         limit=max_results,
@@ -112,7 +112,6 @@ def search(repo, query_txt, max_results):
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
-    logging.info(person_location_index_results)
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
@@ -153,6 +152,12 @@ def create_jp_name_fields(**kwargs):
                         name=field+'_romanized_by_jp_name_dict',
                         value=romanized_japanese_name)
                 )
+                connected_romanized_jp_name = ''
+                for x in range(5):
+                    connected_romanized_jp_name += romanized_japanese_name
+                fields.append(appengine_search.TextField(
+                    name=field+'_romanized_by_jp_name_dict_for_rank',
+                    value=connected_romanized_jp_name))
                 romanized_names_list.append(romanized_japanese_name)
             
     # field for checking if query words contian a part of person name.
@@ -194,10 +199,18 @@ def create_document(record_id, repo, **kwargs):
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
 
     # Add name and location romanized by unidecode
+    name_fields = ['given_name', 'full_name', 'family_name', 'alternate_names']
     for field in kwargs:
         romanized_value = script_variant.romanize_word(kwargs[field])
         fields.append(
             appengine_search.TextField(name=field, value=romanized_value))
+        if romanized_value and field in name_fields:
+            connected_romanized_value = ''
+            for x in range(5):
+                connected_romanized_value += romanized_value
+            fields.append(
+                appengine_search.TextField(name=field+'_for_rank',
+                                           value=connected_romanized_value))
 
     # Add name romanized by japanese name dictionary
     fields.extend(create_jp_name_fields(
