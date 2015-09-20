@@ -35,3 +35,11 @@ request in the standard way if you are not a team member.
 7. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
    (ichikawa@google.com or ryok@google.com as of 2015/01/30).
+
+## How to launch
+
+1. Download Google App Engine SDK - https://cloud.google.com/appengine/downloads
+2. Launch App Engine SDK and create a new project
+3. Clone the repository and copy it to your App Engine project
+4. In the file app.yaml make changes (change the name of your project and version)
+5. Assemble your project by pressing Deploy
