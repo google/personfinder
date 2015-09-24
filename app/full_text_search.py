@@ -113,12 +113,20 @@ def search(repo, query_txt, max_results):
     return results
 
 
+def create_full_name_without_space(given_name, family_name):
+    full_name_without_space = ''
+    if given_name and family_name:
+        full_name_without_space = given_name + family_name
+    return full_name_without_space
+        
+
 def create_jp_name_fields(**kwargs):
     """
     Creates fields(romanized_jp_names) for full text search.
     """
     fields = []
     romanized_names_list = []
+    romanized_name_values = {}
     for field in kwargs:
         if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
             romanized_japanese_name = (
@@ -131,22 +139,27 @@ def create_jp_name_fields(**kwargs):
                         value=romanized_japanese_name)
                 )
                 romanized_names_list.append(romanized_japanese_name)
-                kwargs[field] = romanized_japanese_name
+                romanized_name_values[field] = romanized_japanese_name
+        else:
+            romanized_name_values[field] = kwargs[field]
 
-    # field for searching by fullname without space
-    romanized_given_name = kwargs['given_name']
-    romanized_family_name = kwargs['family_name']
-    if romanized_given_name and romanized_family_name:
-        full_name_given_family = romanized_given_name + romanized_family_name
-        full_name_family_given = romanized_family_name + romanized_given_name
-        romanized_names_list.append(full_name_given_family)
-        romanized_names_list.append(full_name_family_given)
+    # fields for searching by full name without white space
+    full_name_given_family = create_full_name_without_space(
+        romanized_name_values['given_name'],
+        romanized_name_values['family_name'])
+    full_name_family_given = create_full_name_without_space(
+        romanized_name_values['given_name'],
+        romanized_name_values['family_name'])
+    if full_name_given_family:
         fields.append(appengine_search.TextField(
             name='no_spacefull_name_romanized_jp_names1',
             value=full_name_given_family))
+        romanized_names_list.append(full_name_given_family)
+    if full_name_family_given:
         fields.append(appengine_search.TextField(
             name='no_spacefull_name_romanized_jp_name2',
             value=full_name_family_given))
+        romanized_names_list.append(full_name_family_given)
             
     # field for checking if query words contian a part of person name.
     romanized_jp_names = (
@@ -186,11 +199,34 @@ def create_document(record_id, repo, **kwargs):
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
 
+    romanized_values = {}
     # Add name and location romanized by unidecode
-    for field in kwargs:
+    for field in kwargs:        
         romanized_value = script_variant.romanize_word(kwargs[field])
+        romanized_values[field] = romanized_value
         fields.append(
             appengine_search.TextField(name=field, value=romanized_value))
+
+    # Add fullname without space romanized by unidecode
+    full_name_without_space = create_full_name_without_space(
+        kwargs['given_name'], kwargs['family_name'])
+    romanized_full_name_without_space = script_variant.romanize_word(
+        full_name_without_space)
+    if romanized_full_name_without_space:
+        fields.append(
+            appengine_search.TextField(name='full_name_without_space',
+                                       value=romanized_full_name_without_space))
+    romanized_values['full_name_without_space'] = romanized_full_name_without_space
+
+    name_params = [romanized_values['given_name'],
+                   romanized_values['family_name'],
+                   romanized_values['full_name'],
+                   romanized_values['alternate_names'],
+                   romanized_values['full_name_without_space']]
+    names =  ':'.join([name for name in name_params if name])
+    fields.append(
+        appengine_search.TextField(name='names',
+                                   value=script_variant.romanize_word(names)))
 
     # Add name romanized by japanese name dictionary
     fields.extend(create_jp_name_fields(
@@ -220,15 +256,9 @@ def add_record_to_index(person):
     """
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-    name_params = [person.given_name,
-                   person.family_name,
-                   person.full_name,
-                   person.alternate_names]
-    names =  ':'.join([name for name in name_params if name])
     person_location_index.put(create_document(
         person.record_id,
         person.repo,
-        names=names,
         given_name=person.given_name,
         family_name=person.family_name,
         full_name=person.full_name,
