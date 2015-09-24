@@ -114,11 +114,17 @@ def search(repo, query_txt, max_results):
 
 
 def create_full_name_without_space(given_name, family_name):
+    """
+    Creates full name without white space.
+    Returns:
+        if given_name and family_name: 'given_name + family_name'
+        else: None
+    """
     full_name_without_space = ''
     if given_name and family_name:
         full_name_without_space = given_name + family_name
     return full_name_without_space
-        
+
 
 def create_jp_name_fields(**kwargs):
     """
@@ -201,7 +207,7 @@ def create_document(record_id, repo, **kwargs):
 
     romanized_values = {}
     # Add name and location romanized by unidecode
-    for field in kwargs:        
+    for field in kwargs:    
         romanized_value = script_variant.romanize_word(kwargs[field])
         romanized_values[field] = romanized_value
         fields.append(
