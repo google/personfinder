@@ -96,7 +96,15 @@ def romanize_text(query_txt):
     query_words = query_txt.split(' ')
     return ' '.join([romanize_word(word) for word in query_words])
 
+
 def find_kanji_word(query_txt):
+    """
+    Finds kanji word from query_txt.
+    Args:
+        query_txt: Search query
+    Returns:
+        '"kanji1" "kanji2" ...' 
+    """
     query_words = query_txt.split(' ')
     kanji_list_in_query_words = []
     for word in query_words:

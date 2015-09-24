@@ -144,7 +144,7 @@ def search(repo, query_txt, max_results):
 
 def create_jp_name_fields(**kwargs):
     """
-    creates fields(romanized_jp_names) for full text search.
+    Creates fields(romanized_jp_names) for full text search.
     """
     fields = []
     romanized_names_list = []
