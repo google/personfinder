@@ -207,7 +207,7 @@ def create_document(record_id, repo, **kwargs):
 
     romanized_values = {}
     # Add name and location romanized by unidecode
-    for field in kwargs:    
+    for field in kwargs:
         romanized_value = script_variant.romanize_word(kwargs[field])
         romanized_values[field] = romanized_value
         fields.append(
