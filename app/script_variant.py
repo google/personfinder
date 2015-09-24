@@ -24,7 +24,8 @@ def read_dictionary(file_name):
                     hiragana = hiragana.decode('utf-8')
                     if kanji in dictionary:
                         hiragana_list = dictionary[kanji]
-                        hiragana_list.append(hiragana)
+                        if not hiragana in hiragana_list:
+                            hiragana_list.append(hiragana)
                     else:
                         dictionary[kanji] = [hiragana]
     except IOError:
@@ -83,13 +84,17 @@ def romanize_word(word):
     if not word:
         return word
 
+    yomigana_list = []
     if re.match(ur'([\u3400-\u9fff])', word):
-        word = romanize_japanese_name_by_name_dict(word)
-        word = romanize_japanese_location(word)
-
+        yomigana_list = romanize_japanese_name_by_name_dict(word)
+        if not yomigana_list:
+            yomigana_list = romanize_japanese_location(word)
+        return ' '.join(word for word in yomigana_list)
+            
     if jautils.should_normalize(word):
-        hiragana_word = jautils.normalize(word)
-        return jautils.hiragana_to_romaji(hiragana_word)
+            hiragana_word = jautils.normalize(word)
+            return jautils.hiragana_to_romaji(hiragana_word)
+
     romanized_word = unidecode(word)
     return romanized_word.strip()
 

@@ -124,15 +124,15 @@ def create_jp_name_fields(**kwargs):
             romanized_japanese_name = (
                 script_variant.romanize_japanese_name_by_name_dict(
                     kwargs[field]))
-
-            for x in range(len(romanized_japanese_name)):
-                romanized_names_list.append(romanized_japanese_name[x])
-                fields.append(
-                    appengine_search.TextField(
-                        name=field+'_romanized_by_jp_name_dict_'+str(x),
-                        value=romanized_japanese_name[x])
-                )
-                romanized_names_list.append(romanized_japanese_name)
+            if romanized_japanese_name:
+                for index in range(len(romanized_japanese_name)):
+                    romanized_names_list.append(romanized_japanese_name[index])
+                    fields.append(
+                        appengine_search.TextField(
+                            name=field+'_romanized_by_jp_name_dict_'+str(index),
+                            value=romanized_japanese_name[index])
+                    )
+                romanized_names_list.extend(romanized_japanese_name)
 
     # field for checking if query words contain a part of person name.
     romanized_jp_names = (
@@ -153,11 +153,11 @@ def create_jp_location_fields(**kwargs):
                 script_variant.romanize_japanese_location(kwargs[field]))
 
             if romanized_japanese_location:
-                for x in range(len(romanized_japanese_location)):
+                for index in range(len(romanized_japanese_location)):
                     fields.append(
                         appengine_search.TextField(
-                            name=field+'_romanized_by_jp_location_dict_'+str(x),
-                            value=romanized_japanese_location[x])
+                            name=field+'_romanized_by_jp_location_dict_'+str(index),
+                            value=romanized_japanese_location[index])
                     )
     return fields
 
@@ -205,7 +205,6 @@ def add_record_to_index(person):
         search.Error: An error occurred when the document could not be indexed
                       or the query has a syntax error.
     """
-
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     name_params = [person.given_name,

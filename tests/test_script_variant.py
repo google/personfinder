@@ -9,15 +9,15 @@ import unittest
 class ScriptVariantTests(unittest.TestCase):
     def test_romanize_japanese_name_by_name_dict(self):
         assert script_variant.romanize_japanese_name_by_name_dict(
-            u'雪歩') == u'YUKIHO'
+            u'雪歩') == [u'YUKIHO']
         assert script_variant.romanize_japanese_name_by_name_dict(
-            u'周近平') == u'周近平'
+            u'周近平') == [u'周近平']
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'') == u''
 
     def test_romanize_japanese_location(self):
-        assert script_variant.romanize_japanese_location(u'中野') == u'NAKANO'
-        assert script_variant.romanize_japanese_location(u'海门') == u'海门'
+        assert script_variant.romanize_japanese_location(u'中野') == [u'NAKANO']
+        assert script_variant.romanize_japanese_location(u'海门') == [u'海门']
         assert script_variant.romanize_japanese_location(u'') == u''
 
     def test_romanize_word(self):
