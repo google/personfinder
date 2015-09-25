@@ -25,6 +25,7 @@ import script_variant
 # This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
+# This is for ranking (person name match higher than location)
 REPEAT_COUNT_FOR_RANK = 5
 
 def make_or_regexp(query_txt):
@@ -40,11 +41,9 @@ def make_or_regexp(query_txt):
     regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
 
-def create_sort_expression():
+def create_sort_expressions():
     """
     Creates SortExpression's for ranking.
-    Args:
-        **kwargs: key=field_name, value=field_rank_value
     Returns:
         array of SortExpression
     """
@@ -96,7 +95,7 @@ def search(repo, query_txt, max_results):
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
 
-    expressions = create_sort_expression()
+    expressions = create_sort_expressions()
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
@@ -173,7 +172,7 @@ def create_jp_name_fields(**kwargs):
                         value=romanized_japanese_name)
                 )
                 fields.extend(create_fields_for_rank(
-                    field+'romanized_by_jp__name_dict', romanized_jp_name))
+                    field+'_romanized_by_jp_name_dict', romanized_jp_name))
                 romanized_names_list.append(romanized_japanese_name)
             
     # field for checking if query words contian a part of person name.
