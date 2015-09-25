@@ -38,9 +38,10 @@ def romanize_japanese_name_by_name_dict(word):
     if not word:
         return word
 
-    if word in JAPANESE_NAME_DICTIONARY:
-        yomigana = JAPANESE_NAME_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+    if (re.match(ur'([\u3400-\u9fff])', word)):
+        if word in JAPANESE_NAME_DICTIONARY:
+            yomigana = JAPANESE_NAME_DICTIONARY[word]
+            return jautils.hiragana_to_romaji(yomigana)
 
     return word
 
@@ -54,9 +55,10 @@ def romanize_japanese_location(word):
     if not word:
         return word
 
-    if word in JAPANESE_LOCATION_DICTIONARY:
-        yomigana = JAPANESE_LOCATION_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+    if (re.match(ur'([\u3400-\u9fff])', word)):
+        if word in JAPANESE_LOCATION_DICTIONARY:
+            yomigana = JAPANESE_LOCATION_DICTIONARY[word]
+            return jautils.hiragana_to_romaji(yomigana)
 
     return word
 

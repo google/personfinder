@@ -81,7 +81,9 @@ def search(repo, query_txt, max_results):
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
     options = appengine_search.QueryOptions(
         limit=max_results,
-        returned_fields=['record_id', 'names', 'romanized_jp_names'])
+        returned_fields=['record_id',
+                         'name_romanize_word',
+                         'name_japanese_name_by_name_dict'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -93,13 +95,14 @@ def search(repo, query_txt, max_results):
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
+        names = ''
         romanized_jp_names = ''
         for field in document.fields:
-            if field.name == 'names':
+            if field.name == 'name_romanize_word':
                 names = field.value
             if field.name == 'record_id':
                 id = field.value
-            if field.name == 'romanized_jp_names':
+            if field.name == 'name_romanize_japanese_name_by_name_dict':
                 romanized_jp_names = field.value
 
         if regexp.search(names) or regexp.search(romanized_jp_names):
@@ -128,7 +131,7 @@ def create_full_name_without_space(given_name, family_name):
 
 def create_full_name_without_space_fields(romanize_method, given_name, family_name):
     """
-    Creates full name without fields.
+    Creates fields with the full name without white spaces.
     Returns:
         fullname fields, romanized_name_list: (for check)
     """
@@ -155,62 +158,48 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     return fields, romanized_name_list
 
 
-def create_jp_name_fields(**kwargs):
+def create_romanized_name_fields(romanize_method, **kwargs):
     """
-    Creates fields(romanized_jp_names) for full text search.
+    Creates fields(romanized by romanize_method) for full text search.
     """
     fields = []
     romanized_names_list = []
-    romanized_name_values = {}
+    romanize_method_name = romanize_method.__name__
     for field in kwargs:
-        if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
-            romanized_japanese_name = (
-                script_variant.romanize_japanese_name_by_name_dict(
-                    kwargs[field]))
-            if romanized_japanese_name:
-                fields.append(
-                    appengine_search.TextField(
-                        name=field+'_romanized_by_jp_name_dict',
-                        value=romanized_japanese_name)
-                )
-                romanized_names_list.append(romanized_japanese_name)
-                romanized_name_values[field] = romanized_japanese_name
-        else:
-            romanized_name_values[field] = kwargs[field]
+        romanized_name = romanize_method(kwargs[field])
+        if romanized_name:
+            fields.append(
+                appengine_search.TextField(
+                    name=field+'_romanized_by_'+romanize_method_name,
+                    value=romanized_name))
+            romanized_names_list.append(romanized_name)
 
-    given_name = kwargs['given_name']
-    family_name = kwargs['family_name']
-    full_name_fields, romanized_full_name_list =\
-            create_full_name_without_space_fields(
-                script_variant.romanize_japanese_name_by_name_dict,
-                given_name, family_name)
-    fields.extend(full_name_fields)
-    romanized_names_list.extend(romanized_full_name_list)
+    full_name_field, romanized_full_names = create_full_name_without_space_fields(
+        romanize_method, kwargs['given_name'], kwargs['family_name'])
+    fields.extend(full_name_field)
+    romanized_names_list.extend(romanized_full_names)
 
-    # field for checking if query words contian a part of person name.
-    romanized_jp_names = (
-            ':'.join([name for name in romanized_names_list if name]))
-    fields.append(appengine_search.TextField(name='romanized_jp_names',
-                                             value=romanized_jp_names))
+    names = ':'.join([name for name in romanized_names_list if name])
+    fields.append(
+        appengine_search.TextField(name='name_'+romanize_method_name,
+                                   value=names))
     return fields
 
 
-def create_jp_location_fields(**kwargs):
+def create_romanized_location_fields(romanize_method, **kwargs):
     """
-    Creates fields(romanized jp location data) for full text search.
-    It should be called in create_document method.
+    Creates fields(romanized by romanize_method) for full text search.
     """
     fields = []
+    romanize_method_name = romanize_method.__name__
     for field in kwargs:
-        if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
-            romanized_japanese_location = (
-                script_variant.romanize_japanese_location(kwargs[field]))
-            if romanized_japanese_location:
-                fields.append(
-                    appengine_search.TextField(
-                        name=field+'_romanized_by_jp_location_dict',
-                        value=romanized_japanese_location)
-                )
+        romanized_japanese_location = romanize_method(kwargs[field])
+        if romanized_japanese_location:
+            fields.append(
+                appengine_search.TextField(
+                    name=field+'_romanized_by_'+romanize_method_name,
+                    value=romanized_japanese_location)
+            )
     return fields
 
 
@@ -226,39 +215,17 @@ def create_document(record_id, repo, **kwargs):
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
 
-    romanized_values = {}
-    # Add name and location romanized by unidecode
-    for field in kwargs:
-        romanized_value = script_variant.romanize_word(kwargs[field])
-        romanized_values[field] = romanized_value
-        fields.append(
-            appengine_search.TextField(name=field, value=romanized_value))
-
-    # Add fullname without space romanized by unidecode
-    full_name_field, romanized_full_names = create_full_name_without_space_fields(
+    # Add name romanized by unidecode
+    fields.extend(create_romanized_name_fields(
         script_variant.romanize_word,
-        kwargs['given_name'], kwargs['family_name']
-    )
-
-    name_params = [romanized_values['given_name'],
-                   romanized_values['family_name'],
-                   romanized_values['full_name'],
-                   romanized_values['alternate_names']]
-    name_params.extend(romanized_full_names)
-    names =  ':'.join([name for name in name_params if name])
-    fields.append(
-        appengine_search.TextField(name='names',
-                                   value=script_variant.romanize_word(names)))
-
-    # Add name romanized by japanese name dictionary
-    fields.extend(create_jp_name_fields(
         given_name=kwargs['given_name'],
         family_name=kwargs['family_name'],
         full_name=kwargs['full_name'],
         alternate_names=kwargs['alternate_names']))
 
-    # Add location romanized by japanese location dictionary
-    fields.extend(create_jp_location_fields(
+    # Add location romanized by unidecode
+    fields.extend(create_romanized_location_fields(
+        script_variant.romanize_word,
         home_street=kwargs['home_street'],
         home_city=kwargs['home_city'],
         home_state=kwargs['home_state'],
@@ -266,6 +233,25 @@ def create_document(record_id, repo, **kwargs):
         home_neighborhood=kwargs['home_neighborhood'],
         home_country=kwargs['home_country']))
 
+    # Add name romanized by japanese name dictionary
+    fields.extend(create_romanized_name_fields(
+        script_variant.romanize_japanese_name_by_name_dict,
+        given_name=kwargs['given_name'],
+        family_name=kwargs['family_name'],
+        full_name=kwargs['full_name'],
+        alternate_names=kwargs['alternate_names']))
+
+    # Add location romanized by japanese location dictionary
+    fields.extend(create_romanized_location_fields(
+        script_variant.romanize_japanese_location,
+        home_street=kwargs['home_street'],
+        home_city=kwargs['home_city'],
+        home_state=kwargs['home_state'],
+        home_postal_code=kwargs['home_postal_code'],
+        home_neighborhood=kwargs['home_neighborhood'],
+        home_country=kwargs['home_country']))
+
+    logging.info(fields)
     return appengine_search.Document(doc_id=doc_id, fields=fields)
 
 
