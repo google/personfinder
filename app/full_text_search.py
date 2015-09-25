@@ -148,7 +148,7 @@ def create_fields_for_rank(field_name, value):
         return []
 
     fields = []
-    for x in range(REPEAT_COUNT_FOR_RANK):
+    for x in xrange(REPEAT_COUNT_FOR_RANK):
         fields.append(
             appengine_search.TextField(name=field_name+'_for_rank_'+str(x),
                                        value=value))
