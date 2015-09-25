@@ -126,6 +126,35 @@ def create_full_name_without_space(given_name, family_name):
     return full_name_without_space
 
 
+def create_full_name_without_space_fields(romanize_method, given_name, family_name):
+    """
+    Creates full name without fields.
+    Returns:
+        fullname fields, romanized_name_list: (for check)
+    """
+    fields = []
+    romanized_name_list = []
+    romanized_given_name = romanize_method(given_name)
+    romanized_family_name = romanize_method(family_name)
+    full_name_given_family = create_full_name_without_space(
+        romanized_given_name, romanized_family_name
+    )
+    full_name_family_given = create_full_name_without_space(
+        romanized_family_name, romanized_given_name
+    )
+    if full_name_given_family:
+        fields.append(appengine_search.TextField(
+            name='no_spacefull_name_1_'+romanize_method.__name__,
+            value=full_name_given_family))
+        romanized_name_list.append(full_name_given_family)
+    if full_name_family_given:
+        fields.append(appengine_search.TextField(
+            name='no_spacefull_name_2_'+romanize_method.__name__,
+            value=full_name_family_given))
+        romanized_name_list.append(full_name_family_given)
+    return fields, romanized_name_list
+
+
 def create_jp_name_fields(**kwargs):
     """
     Creates fields(romanized_jp_names) for full text search.
@@ -149,24 +178,15 @@ def create_jp_name_fields(**kwargs):
         else:
             romanized_name_values[field] = kwargs[field]
 
-    # fields for searching by full name without white space
-    full_name_given_family = create_full_name_without_space(
-        romanized_name_values['given_name'],
-        romanized_name_values['family_name'])
-    full_name_family_given = create_full_name_without_space(
-        romanized_name_values['given_name'],
-        romanized_name_values['family_name'])
-    if full_name_given_family:
-        fields.append(appengine_search.TextField(
-            name='no_spacefull_name_romanized_jp_names1',
-            value=full_name_given_family))
-        romanized_names_list.append(full_name_given_family)
-    if full_name_family_given:
-        fields.append(appengine_search.TextField(
-            name='no_spacefull_name_romanized_jp_name2',
-            value=full_name_family_given))
-        romanized_names_list.append(full_name_family_given)
-            
+    given_name = kwargs['given_name']
+    family_name = kwargs['family_name']
+    full_name_fields, romanized_full_name_list =\
+            create_full_name_without_space_fields(
+                script_variant.romanize_japanese_name_by_name_dict,
+                given_name, family_name)
+    fields.extend(full_name_fields)
+    romanized_names_list.extend(romanized_full_name_list)
+
     # field for checking if query words contian a part of person name.
     romanized_jp_names = (
             ':'.join([name for name in romanized_names_list if name]))
@@ -193,6 +213,7 @@ def create_jp_location_fields(**kwargs):
                 )
     return fields
 
+
 def create_document(record_id, repo, **kwargs):
     """
     Creates document for full text search.
@@ -214,21 +235,16 @@ def create_document(record_id, repo, **kwargs):
             appengine_search.TextField(name=field, value=romanized_value))
 
     # Add fullname without space romanized by unidecode
-    full_name_without_space = create_full_name_without_space(
-        kwargs['given_name'], kwargs['family_name'])
-    romanized_full_name_without_space = script_variant.romanize_word(
-        full_name_without_space)
-    if romanized_full_name_without_space:
-        fields.append(
-            appengine_search.TextField(name='full_name_without_space',
-                                       value=romanized_full_name_without_space))
-    romanized_values['full_name_without_space'] = romanized_full_name_without_space
+    full_name_field, romanized_full_names = create_full_name_without_space_fields(
+        script_variant.romanize_word,
+        kwargs['given_name'], kwargs['family_name']
+    )
 
     name_params = [romanized_values['given_name'],
                    romanized_values['family_name'],
                    romanized_values['full_name'],
-                   romanized_values['alternate_names'],
-                   romanized_values['full_name_without_space']]
+                   romanized_values['alternate_names']]
+    name_params.extend(romanized_full_names)
     names =  ':'.join([name for name in name_params if name])
     fields.append(
         appengine_search.TextField(name='names',
