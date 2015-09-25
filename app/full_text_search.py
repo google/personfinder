@@ -137,6 +137,9 @@ def search(repo, query_txt, max_results):
 def create_fields_for_rank(field_name, value):
     """
     Creates fields for ranking. (person name match > location match)
+    MatchScorer class(assigns score) doesn't support to assign
+    a score based on term frequency in a field.
+    So we add 5 fields for each name params.
     Args:
         field_name: field name
         value: field value
