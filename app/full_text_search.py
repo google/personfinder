@@ -136,7 +136,7 @@ def search(repo, query_txt, max_results):
 
 def create_fields_for_rank(field_name, value):
     """
-    Creates fields for ranking.
+    Creates fields for ranking. (person name match > location match)
     Args:
         field_name: field name
         value: field value
@@ -217,6 +217,7 @@ def create_document(record_id, repo, **kwargs):
     for field in kwargs:
         romanized_value = script_variant.romanize_word(kwargs[field])
 
+        # for ranking person name match higher than location match
         if field in name_fields:
             fields.extend(create_fields_for_rank(field, romanized_value))
         else:
