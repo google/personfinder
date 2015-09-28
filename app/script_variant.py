@@ -102,7 +102,7 @@ def romanize_word(word):
     if not word:
         return word
 
-    if is_kanji(word):
+    if has_kanji(word):
         word = romanize_japanese_name_by_name_dict(word)
         word = romanize_japanese_location(word)
 
