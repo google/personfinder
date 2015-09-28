@@ -35,6 +35,8 @@ def has_kanji(word):
     """
     # [\u3400-\u9fff]: kanji
     # TODO: update this range (some of kanji characters out of this range.)
+    if not word:
+        return False
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
@@ -132,7 +134,7 @@ def find_kanji_word(query_txt):
     Args:
         query_txt: Search query
     Returns:
-        '"kanji1" "kanji2" ...' 
+        '"kanji1" "kanji2" ...'
     """
     query_words = query_txt.split(' ')
     kanji_list_in_query_words = []

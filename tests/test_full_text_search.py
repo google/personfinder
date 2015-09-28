@@ -71,10 +71,10 @@ class FullTextSearchTests(unittest.TestCase):
         )
         self.p5 = model.Person.create_original_with_record_id(
             'haiti',
-            'haiti/0719',
-            given_name='Azusa',
-            family_name='Miura',
-            full_name='Azusa Miura',
+            'haiti/0522',
+            given_name='Ami',
+            family_name='Futami',
+            full_name='Ami Futami',
             entry_date=TEST_DATETIME
         )
         self.p6 = model.Person.create_original_with_record_id(
@@ -231,7 +231,7 @@ class FullTextSearchTests(unittest.TestCase):
 
         # Search deleted record
         delete.delete_person(self, self.p5)
-        results = full_text_search.search('haiti', 'Azusa', 5)
+        results = full_text_search.search('haiti', 'Ami', 5)
         assert not results
 
         # Search romaji record by kanji name
