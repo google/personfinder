@@ -113,20 +113,13 @@ def romanize_word(word):
     if not word:
         return word
 
-<<<<<<< HEAD
     yomigana_list = []
-    if re.match(ur'([\u3400-\u9fff])', word):
+    if has_kanji(word):
         yomigana_list = romanize_japanese_name_by_name_dict(word)
         if not yomigana_list:
             yomigana_list = romanize_japanese_location(word)
-        return ' '.join(word for word in yomigana_list)
-            
-=======
-    if has_kanji(word):
-        word = romanize_japanese_name_by_name_dict(word)
-        word = romanize_japanese_location(word)
+            return ' '.join(word for word in yomigana_list)
 
->>>>>>> master
     if jautils.should_normalize(word):
             hiragana_word = jautils.normalize(word)
             return jautils.hiragana_to_romaji(hiragana_word)
