@@ -207,6 +207,7 @@ def create_romanized_location_fields(romanize_method, **kwargs):
     Creates romanized location fields (romanized by romanize_method)
     for full text search.
     """
+    # TODO: combine name dict and location dict
     fields = []
     romanize_method_name = romanize_method.__name__
     for field in kwargs:
@@ -217,8 +218,8 @@ def create_romanized_location_fields(romanize_method, **kwargs):
                 if romanized_location:
                     fields.append(
                         appengine_search.TextField(
-                            name=field+'_romanized_by_'+romanize_method_name+\
-                                 '_'+str(index),
+                            name='%s_romanized_by_%s_%d' % (
+                                field, romanize_method_name, index),
                             value=romanized_location)
                     )
     return fields
