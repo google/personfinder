@@ -93,20 +93,44 @@ class FullTextSearchTests(unittest.TestCase):
         )
         self.p7 = model.Person.create_original_with_record_id(
             'haiti',
-            'haiti/0810',
-            given_name='Rin',
-            family_name='Shibuya',
-            full_name='Rin Shibuya',
-            home_city='shinjuku',
+            'haiti/1010',
+            given_name='Hibiki',
+            family_name='Ganaha',
+            full_name='Hibiki Ganaha',
             entry_date=TEST_DATETIME
         )
         self.p8 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0719',
+            given_name=u'あずさ',
+            family_name=u'三浦',
+            home_city=u'横浜',
+            entry_date=TEST_DATETIME
+        )
+        self.p9 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0623',
+            given_name=u'рицуко',
+            family_name=u'акидуки',
+            home_city=u'тоттори',
+            entry_date=TEST_DATETIME
+        )
+        self.p10 = model.Person.create_original_with_record_id(
             'haiti',
             'haiti/0203',
             given_name='Rin',
             family_name='Tosaka',
             full_name='Rin Tosaka',
             home_city='Shibuya',
+            entry_date=TEST_DATETIME
+        )
+        self.p11 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0810',
+            given_name='Rin',
+            family_name='Shibuya',
+            full_name='Rin Shibuya',
+            home_city='shinjuku',
             entry_date=TEST_DATETIME
         )
 
@@ -124,6 +148,9 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p6)
         db.put(self.p7)
         db.put(self.p8)
+        db.put(self.p9)
+        db.put(self.p10)
+        db.put(self.p11)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -132,6 +159,9 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p6)
         full_text_search.add_record_to_index(self.p7)
         full_text_search.add_record_to_index(self.p8)
+        full_text_search.add_record_to_index(self.p9)
+        full_text_search.add_record_to_index(self.p10)
+        full_text_search.add_record_to_index(self.p11)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -162,6 +192,11 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Chihaya Arao', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
+
+        # Search Cyrillic record by name & location
+        results = full_text_search.search('haiti', 'Ritsuko Tottori', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0623'])
 
         # Search by home_street only
         results = full_text_search.search('haiti', 'Kunaideme72', 5)
@@ -218,6 +253,27 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'千早 荒尾', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
+
+        # Search romaji record by hiragana name and location
+        results = full_text_search.search('haiti', u'ちはや あらお', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0225'])
+
+        # Search by full name without space
+        results = full_text_search.search('haiti', 'HibikiGanaha', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/1010'])
+
+        # Search kanji record by full name without space
+        results = full_text_search.search('haiti', u'AzusaMiura', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0719'])
+
+        # Search Cyrillic record by full name without space
+        results = full_text_search.search('haiti', u'RitsukoAkiduki', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0623'])
+
 
     def test_delete_record_from_index(self):
         db.put(self.p4)
