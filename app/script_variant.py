@@ -29,9 +29,9 @@ JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
 JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
 
 
-def is_kanji(word):
+def has_kanji(word):
     """
-    Returns whether word is kanji or not.
+    Returns whether word contains kanji or not.
     """
     # [\u3400-\u9fff]: kanji
     # TODO: update this range (some of kanji characters out of this range.)
