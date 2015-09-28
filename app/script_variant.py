@@ -32,9 +32,10 @@ JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
 def is_kanji(word):
     """
     Returns whether word is kanji or not.
-    [\u3400-\u9fff]: kanji
-    TODO: update this range (some of kanji characters out of this range.)
+
     """
+    # [\u3400-\u9fff]: kanji
+    # TODO: update this range (some of kanji characters out of this range.)
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
@@ -74,6 +75,7 @@ def romanize_word_by_unidecode(word):
     """
     This method romanizes all languages by unidecode.
     If word is hiragana or katakana, it is romanized by jautils.
+    kanji is romanized in Chinese way.
     Args:
         word: should be script varianted
     Returns:
