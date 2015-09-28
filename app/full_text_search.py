@@ -122,13 +122,13 @@ def create_full_name_without_space(given_name, family_name):
     Returns:
         if given_name and family_name: ('given_name + family_name',
                                         'family_name + given_name')
-        else: ''
+        else: None
     """
     if given_name and family_name:
         return (given_name + family_name,
                 family_name + given_name)
     else:
-        return ''
+        return None
 
 
 def create_full_name_without_space_fields(romanize_method, given_name, family_name):
