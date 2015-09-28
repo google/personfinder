@@ -116,7 +116,7 @@ def search(repo, query_txt, max_results):
     return results
 
 
-def create_full_name_without_space(given_name, family_name):
+def create_full_name_without_space(given_names, family_names):
     """
     Creates full name without white space.
     Returns:
@@ -124,9 +124,16 @@ def create_full_name_without_space(given_name, family_name):
                                         'family_name + given_name')
         else: None
     """
-    if given_name and family_name:
-        return (given_name + family_name,
-                family_name + given_name)
+    if given_names and family_names:
+        full_names = []
+        for index1 in xrange(len(given_names)):
+            given_name = given_names[index1]
+            for index2 in xrange(len(family_names)):
+                family_name = family_names[index2]
+                full_names.append(
+                    (given_name + family_name,
+                    family_name + given_name))
+        return full_names
     else:
         return None
 
@@ -141,18 +148,22 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     romanized_name_list = []
     romanized_given_name = romanize_method(given_name)
     romanized_family_name = romanize_method(family_name)
+    romanize_method_name = romanize_method.__name__
     full_names = create_full_name_without_space(
         romanized_given_name, romanized_family_name)
     if full_names:
-        full_name_given_family, full_name_family_given = full_names
-        fields.append(appengine_search.TextField(
-            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_1',
-            value=full_name_given_family))
-        romanized_name_list.append(full_name_given_family)
-        fields.append(appengine_search.TextField(
-            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_2',
-            value=full_name_family_given))
-        romanized_name_list.append(full_name_family_given)
+        for index in xrange(len(full_names)):
+            full_name_given_family, full_name_family_given = full_names[index]
+            fields.append(appengine_search.TextField(
+                name='no_space_full_name_1_romanized_by_'+romanize_method_name+\
+                     '_'+str(index),
+                value=full_name_given_family))
+            romanized_name_list.append(full_name_given_family)
+            fields.append(appengine_search.TextField(
+                name='no_space_full_name_2_romanized_by_'+romanize_method_name+\
+                     '_'+str(index),
+                value=full_name_family_given))
+            romanized_name_list.append(full_name_family_given)
     return fields, romanized_name_list
 
 
@@ -165,34 +176,18 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
     for field in kwargs:
-<<<<<<< HEAD
-        if kwargs[field] and (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
-            romanized_japanese_name = (
-                script_variant.romanize_japanese_name_by_name_dict(
-                    kwargs[field]))
-            if romanized_japanese_name:
-                for index in range(len(romanized_japanese_name)):
-                    romanized_names_list.append(romanized_japanese_name[index])
+        romanized_names = romanize_method(kwargs[field])
+        if romanized_names:
+            logging.info(romanized_names)
+            for index in xrange(len(romanized_names)):
+                romanized_name = romanized_names[index]
+                if romanized_name:
                     fields.append(
                         appengine_search.TextField(
-                            name=field+'_romanized_by_jp_name_dict_'+str(index),
-                            value=romanized_japanese_name[index])
-                    )
-                romanized_names_list.extend(romanized_japanese_name)
-
-    # field for checking if query words contain a part of person name.
-    romanized_jp_names = (
-            ':'.join([name for name in romanized_names_list if name]))
-    fields.append(appengine_search.TextField(name='romanized_jp_names',
-                                             value=romanized_jp_names))
-=======
-        romanized_name = romanize_method(kwargs[field])
-        if romanized_name:
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_'+romanize_method_name,
-                    value=romanized_name))
-            romanized_names_list.append(romanized_name)
+                            name=field+'_romanized_by_'+romanize_method_name+\
+                                 '_'+str(index),
+                            value=romanized_name))
+            romanized_names_list.extend(romanized_names)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])
@@ -203,43 +198,29 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields.append(
         appengine_search.TextField(name='names_romanized_by_'+romanize_method_name,
                                    value=names))
->>>>>>> master
+
     return fields
 
 
 def create_romanized_location_fields(romanize_method, **kwargs):
     """
-<<<<<<< HEAD
-    Creates fields(romanized jp location data) for full text search.
-=======
     Creates romanized location fields (romanized by romanize_method)
     for full text search.
->>>>>>> master
     """
     fields = []
     romanize_method_name = romanize_method.__name__
     for field in kwargs:
-<<<<<<< HEAD
-        if (re.match(ur'([\u3400-\u9fff])', kwargs[field])):
-            romanized_japanese_location = (
-                script_variant.romanize_japanese_location(kwargs[field]))
-
-            if romanized_japanese_location:
-                for index in range(len(romanized_japanese_location)):
+        romanized_locations = romanize_method(kwargs[field])
+        if romanized_locations:
+            for index in xrange(len(romanized_locations)):
+                romanized_location = romanized_locations[index]
+                if romanized_location:
                     fields.append(
                         appengine_search.TextField(
-                            name=field+'_romanized_by_jp_location_dict_'+str(index),
-                            value=romanized_japanese_location[index])
+                            name=field+'_romanized_by_'+romanize_method_name+\
+                                 '_'+str(index),
+                            value=romanized_location)
                     )
-=======
-        romanized_japanese_location = romanize_method(kwargs[field])
-        if romanized_japanese_location:
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_'+romanize_method_name,
-                    value=romanized_japanese_location)
-            )
->>>>>>> master
     return fields
 
 def create_document(person):

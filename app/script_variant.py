@@ -96,9 +96,9 @@ def romanize_word_by_unidecode(word):
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
-        return jautils.hiragana_to_romaji(hiragana_word)
+        return [jautils.hiragana_to_romaji(hiragana_word)]
     romanized_word = unidecode(word)
-    return romanized_word.strip()
+    return [romanized_word.strip()]
 
 
 def romanize_word(word):
@@ -118,7 +118,7 @@ def romanize_word(word):
         yomigana_list = romanize_japanese_name_by_name_dict(word)
         if not yomigana_list:
             yomigana_list = romanize_japanese_location(word)
-            return ' '.join(word for word in yomigana_list)
+        return ' '.join(word for word in yomigana_list)
 
     if jautils.should_normalize(word):
             hiragana_word = jautils.normalize(word)
