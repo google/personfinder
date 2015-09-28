@@ -128,16 +128,13 @@ def search(repo, query_txt, max_results):
 
         if regexp.search(names) or regexp.search(romanized_jp_names):
             index_results.append(id)
-    logging.info(index_results)
+
     results = []
     for id in index_results:
         result = model.Person.get(repo, id, filter_expired=True)
         if result:
             results.append(result)
-            logging.info(id)
-    logging.info(results)
     return results
-
 
 def create_fields_for_rank(field_name, value):
     """
@@ -158,7 +155,7 @@ def create_fields_for_rank(field_name, value):
     fields = []
     for x in xrange(REPEAT_COUNT_FOR_RANK):
         fields.append(
-            appengine_search.TextField(name=field_name+'_for_rank_'+str(x),
+            appengine_search.TextField(name='%s_for_rank_%d' % (field_name, x),
                                        value=value))
     return fields
 
@@ -214,12 +211,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     for field in kwargs:
         romanized_name = romanize_method(kwargs[field])
         if romanized_name:
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_'+romanize_method_name,
-                    value=romanized_name))
-            fields.extend(create_fields_for_rank(
-                field+'_romanized_by_'+romanize_method_name, romanized_name))
+            fields.extend(create_fields_for_rank(field, romanized_name))
             romanized_names_list.append(romanized_name)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
