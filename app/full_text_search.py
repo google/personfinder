@@ -216,7 +216,8 @@ def create_document(person):
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
 
-    # Applies two methods because kanji is used in Chinese and Japanese
+    # Applies two methods because kanji is used in Chinese and Japanese,
+    # and romanizing in chinese and japanese is different.
     romanize_name_methods = [script_variant.romanize_word_by_unidecode,
                              script_variant.romanize_japanese_name_by_name_dict]
 
