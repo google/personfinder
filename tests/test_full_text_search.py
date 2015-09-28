@@ -112,6 +112,7 @@ class FullTextSearchTests(unittest.TestCase):
             'haiti/0623',
             given_name=u'рицуко',
             family_name=u'акидуки',
+            home_city=u'тоттори',
             entry_date=TEST_DATETIME
         )
 
@@ -169,6 +170,11 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', 'Chihaya Arao', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
+
+        # Search Cyrillic record by name & location
+        results = full_text_search.search('haiti', 'Ritsuko Tottori', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0623'])
 
         # Search by home_street only
         results = full_text_search.search('haiti', 'Kunaideme72', 5)
@@ -231,12 +237,12 @@ class FullTextSearchTests(unittest.TestCase):
         assert set([r.record_id for r in results]) == \
             set(['haiti/1010'])
 
-        # Search by full name without space
-        results = full_text_search.search('haiti', u'MiuraAzusa', 5)
+        # Search kanji record by full name without space
+        results = full_text_search.search('haiti', u'AzusaMiura', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0719'])
 
-        # Search by full name without space
+        # Search Cyrillic record by full name without space
         results = full_text_search.search('haiti', u'RitsukoAkiduki', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])

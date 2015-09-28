@@ -83,7 +83,7 @@ def search(repo, query_txt, max_results):
         limit=max_results,
         returned_fields=['record_id',
                          'names_romanized_by_romanize_word_by_unidecode',
-                         'names_romanized_by_japanese_name_by_name_dict'])
+                         'names_romanized_by_romanize_japanese_name_by_name_dict'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -116,18 +116,19 @@ def search(repo, query_txt, max_results):
     return results
 
 
-def create_full_name_without_space(name_component1, name_component2):
+def create_full_name_without_space(given_name, family_name):
     """
     Creates full name without white space.
     Returns:
-        if name_component1 and name_component2: 'name_component1 + name_component2'
-        else: None
+        if given_name and family_name: ('given_name + family_name',
+                                        'family_name + given_name')
+        else: ''
     """
-    full_name_without_space = ''
-    if name_component1 and name_component2:
-        full_name_without_space = (name_component1 + name_component2,
-                                   name_component2 + name_component1)
-    return full_name_without_space
+    if given_name and family_name:
+        return (given_name + family_name,
+                family_name + given_name)
+    else:
+        return ''
 
 
 def create_full_name_without_space_fields(romanize_method, given_name, family_name):
@@ -143,14 +144,13 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     full_names = create_full_name_without_space(
         romanized_given_name, romanized_family_name)
     if full_names:
-        full_name_given_family = full_names[0]
-        full_name_family_given = full_names[1]
+        full_name_given_family, full_name_family_given = full_names
         fields.append(appengine_search.TextField(
-            name='no_space_full_name_1_'+romanize_method.__name__,
+            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_1',
             value=full_name_given_family))
         romanized_name_list.append(full_name_given_family)
         fields.append(appengine_search.TextField(
-            name='no_space_full_name_2_'+romanize_method.__name__,
+            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_2',
             value=full_name_family_given))
         romanized_name_list.append(full_name_family_given)
     return fields, romanized_name_list
@@ -158,7 +158,7 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
 
 def create_romanized_name_fields(romanize_method, **kwargs):
     """
-    Creates romanized name fields(romanized by romanize_method)
+    Creates romanized name fields (romanized by romanize_method)
     for full text search.
     """
     fields = []
@@ -187,7 +187,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
 
 def create_romanized_location_fields(romanize_method, **kwargs):
     """
-    Creates romanized location fields(romanized by romanize_method)
+    Creates romanized location fields (romanized by romanize_method)
     for full text search.
     """
     fields = []

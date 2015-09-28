@@ -31,8 +31,9 @@ JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
 
 def is_kanji(word):
     """
-    Returns word is kanji or not.
+    Returns whether word is kanji or not.
     [\u3400-\u9fff]: kanji
+    TODO: update this range (some of kanji characters out of this range.)
     """
     return re.match(ur'([\u3400-\u9fff])', word)
 
@@ -46,10 +47,9 @@ def romanize_japanese_name_by_name_dict(word):
     if not word:
         return word
 
-    if is_kanji(word):
-        if word in JAPANESE_NAME_DICTIONARY:
-            yomigana = JAPANESE_NAME_DICTIONARY[word]
-            return jautils.hiragana_to_romaji(yomigana)
+    if word in JAPANESE_NAME_DICTIONARY:
+        yomigana = JAPANESE_NAME_DICTIONARY[word]
+        return jautils.hiragana_to_romaji(yomigana)
 
     return word
 
@@ -83,6 +83,25 @@ def romanize_word_by_unidecode(word):
     if not word:
         return word
 
+    if jautils.should_normalize(word):
+        hiragana_word = jautils.normalize(word)
+        return jautils.hiragana_to_romaji(hiragana_word)
+    romanized_word = unidecode(word)
+    return romanized_word.strip()
+
+
+def romanize_word(word):
+    """
+    This method romanizes all languages.
+    If word is hiragana or katakana, it is romanized by jautils.
+    Args:
+        word: should be script varianted
+    Returns:
+        script varianted word
+    """
+    if not word:
+        return word
+
     if is_kanji(word):
         word = romanize_japanese_name_by_name_dict(word)
         word = romanize_japanese_location(word)
@@ -104,4 +123,4 @@ def romanize_text(query_txt):
         script varianted query_txt (except kanji)
     """
     query_words = query_txt.split(' ')
-    return ' '.join([romanize_word_by_unidecode(word) for word in query_words])
+    return ' '.join([romanize_word(word) for word in query_words])
