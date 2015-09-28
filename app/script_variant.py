@@ -63,10 +63,9 @@ def romanize_japanese_location(word):
     if not word:
         return word
 
-    if is_kanji(word):
-        if word in JAPANESE_LOCATION_DICTIONARY:
-            yomigana = JAPANESE_LOCATION_DICTIONARY[word]
-            return jautils.hiragana_to_romaji(yomigana)
+    if word in JAPANESE_LOCATION_DICTIONARY:
+        yomigana = JAPANESE_LOCATION_DICTIONARY[word]
+        return jautils.hiragana_to_romaji(yomigana)
 
     return word
 
