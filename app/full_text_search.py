@@ -216,8 +216,11 @@ def create_document(person):
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
 
+    # romanize name method by unidecode or japanese name dictionary.
     romanize_name_methods = [script_variant.romanize_word_by_unidecode,
                              script_variant.romanize_japanese_name_by_name_dict]
+
+    # romanize method method by unidecode or japanese location dictionary.
     romanize_location_mathods = [script_variant.romanize_word_by_unidecode,
                                  script_variant.romanize_japanese_location]
 
