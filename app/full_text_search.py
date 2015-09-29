@@ -200,12 +200,16 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     return fields, romanized_name_list
 
 def split_full_name_without_space(romanize_method, full_name):
+    names = []
     for index in xrange(len(full_name)):
         family_name = full_name[:index]
         given_name = full_name[index:]
         romanized_family_name = romanize_method(family_name)
         romanized_given_name = romanize_method(given_name)
-
+        if (romanized_family_name == family_name) and (
+                romanized_given_name == given_name):
+            names.append(given_name, family_name)
+    return names
     full_name = full_name
 
 def create_romanized_name_fields(romanize_method, **kwargs):
@@ -229,7 +233,8 @@ def create_romanized_name_fields(romanize_method, **kwargs):
 
     full_name = kwargs['full_name']
     if full_name and not (' ' in full_name):
-        split_full_name_without_space(romanize_method, full_name)
+        splited_full_names = split_full_name_without_space(
+            romanize_method, full_name)
 
     names = ':'.join([name for name in romanized_names_list if name])
     fields.append(
