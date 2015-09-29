@@ -83,7 +83,6 @@ def search(repo, query_txt, max_results):
         search.Error: An error occurred when the index name is unknown
                       or the query has syntax error.
     """
-    #TODO: Sanitaize query_txt
     if not query_txt:
         return []
 
