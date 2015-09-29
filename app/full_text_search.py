@@ -201,16 +201,15 @@ def create_full_name_list_without_space(given_names, family_names):
     """
     Creates full name list without white space.
     Returns:
-        if given_name and family_name: [('given_name + family_name',
-                                        'family_name + given_name')]
+        if given_name and family_name: ['given_name + family_name',
+                                        'family_name + given_name',...]
     """
     full_names = []
     if given_names and family_names:
         for given_name in given_names:
             for family_name in family_names:
-                full_names.append(
-                    (given_name + family_name,
-                    family_name + given_name))
+                full_names.append(given_name + family_name)
+                full_names.append(family_name + given_name)
     return full_names
 
 
@@ -229,17 +228,11 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
         romanized_given_names, romanized_family_names)
     if full_names:
         for index, full_name in enumerate(full_names):
-            full_name_given_family, full_name_family_given = full_name
             fields.append(appengine_search.TextField(
-                name='no_space_full_name_1_romanized_by_%s_%d' % (
+                name='no_space_full_name_romanized_by_%s_%d' % (
                     romanize_method_name, index),
-                value=full_name_given_family))
-            romanized_name_list.append(full_name_given_family)
-            fields.append(appengine_search.TextField(
-                name='no_space_full_name_2_romanized_by_%s_%d' % (
-                    romanize_method_name, index),
-                value=full_name_family_given))
-            romanized_name_list.append(full_name_family_given)
+                value=full_name))
+            romanized_name_list.append(full_name)
     return fields, romanized_name_list
 
 
