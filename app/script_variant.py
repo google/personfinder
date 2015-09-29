@@ -116,15 +116,15 @@ def romanize_word(word):
     if not word:
         return []
 
-    yomigana_list = []
+    romanized_words = []
     if has_kanji(word):
-        yomigana_list = romanize_japanese_name_by_name_dict(word)
-        yomigana_list.extend(romanize_japanese_location(word))
+        romanized_words = romanize_japanese_name_by_name_dict(word)
+        romanized_words.extend(romanize_japanese_location(word))
 
     if jautils.should_normalize(word):
-            hiragana_word = jautils.normalize(word)
-            yomigana_list.append(jautils.hiragana_to_romaji(hiragana_word))
+        hiragana_word = jautils.normalize(word)
+        romanized_words.append(jautils.hiragana_to_romaji(hiragana_word))
 
     romanized_word = unidecode(word)
-    yomigana_list.append(romanized_word.strip())
-    return yomigana_list
+    romanized_words.append(romanized_word.strip())
+    return romanized_words
