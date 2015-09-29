@@ -115,6 +115,13 @@ class FullTextSearchTests(unittest.TestCase):
             home_city=u'тоттори',
             entry_date=TEST_DATETIME
         )
+        self.p10 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0523',
+            given_name=u'Zhen Mei',
+            family_name=u'Shuang Hai',
+            entry_date=TEST_DATETIME
+        )
 
 
     def tearDown(self):
@@ -131,6 +138,7 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p7)
         db.put(self.p8)
         db.put(self.p9)
+        db.put(self.p10)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -140,6 +148,7 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p7)
         full_text_search.add_record_to_index(self.p8)
         full_text_search.add_record_to_index(self.p9)
+        full_text_search.add_record_to_index(self.p10)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -246,6 +255,11 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'RitsukoAkiduki', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])
+
+        # Search Chinese record by kanji
+        results = full_text_search.search('haiti', u'真美', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0523'])
 
 
     def test_delete_record_from_index(self):
