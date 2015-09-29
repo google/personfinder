@@ -281,6 +281,11 @@ class FullTextSearchTests(unittest.TestCase):
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])
 
+        # Search full name without space record by given name and family name
+        results = full_text_search.search('haiti', u'Kotori Otonashi', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0909'])
+
 
     def test_delete_record_from_index(self):
         db.put(self.p4)
