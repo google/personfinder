@@ -281,15 +281,9 @@
     <input type="hidden" name="given_name" value="{{params.given_name}}">
     <input type="hidden" name="family_name" value="{{params.family_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
-    {% if env.use_short_buttons %}
-      <input type="submit" value="{% trans "Create a new record" %}">
-    {% else %}
-      {% ifequal params.role 'provide' %}
-        <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
-      {% else %}
-        <input type="submit" value="{% trans "Create a new record for a missing person" %}">
-      {% endifequal %}
-    {% endif %}
+    <div class="searchResults button">
+    <input type="submit" value="{% trans "Create a new record" %}">
+    </div>
   </form>
 {% endif %}
 

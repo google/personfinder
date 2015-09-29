@@ -42,7 +42,9 @@ from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
+from babel.dates import format_date
 from babel.dates import format_datetime
+from babel.dates import format_time
 import babel
 
 import const
@@ -818,12 +820,36 @@ class BaseHandler(webapp.RequestHandler):
         on the current locale."""
         return format_datetime(dt, locale=self.__get_env_language_for_babel());
 
+    def format_date_localized(self, dt):
+        """Formats a datetime object to a localized human-readable string based
+        on the current locale containing only the date."""
+        return format_date(dt, locale=self.__get_env_language_for_babel());
+
+    def format_time_localized(self, dt):
+        """Formats a datetime object to a localized human-readable string based
+        on the current locale containing only the time."""
+        return format_time(dt, locale=self.__get_env_language_for_babel());
+
+    def to_formatted_local_datetime(self, dt):
+        """Converts a datetime object to the local datetime configured for the
+        current repository and formats to a localized human-readable string
+        based on the current locale."""
+        dt = self.to_local_time(dt)
+        return self.format_datetime_localized(dt)
+
+    def to_formatted_local_date(self, dt):
+        """Converts a datetime object to the local date configured for the
+        current repository and formats to a localized human-readable string
+        based on the current locale."""
+        dt = self.to_local_time(dt)
+        return self.format_date_localized(dt)
+
     def to_formatted_local_time(self, dt):
         """Converts a datetime object to the local time configured for the
         current repository and formats to a localized human-readable string
         based on the current locale."""
         dt = self.to_local_time(dt)
-        return self.format_datetime_localized(dt)
+        return self.format_time_localized(dt)
 
     def maybe_redirect_for_repo_alias(self, request):
         """If the specified repository name is an alias, redirects to the URL
