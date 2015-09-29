@@ -1,7 +1,7 @@
 import jautils
 
 from unidecode import unidecode
-
+import logging
 import os.path
 import re
 
@@ -19,15 +19,15 @@ def read_dictionary(file_name):
         if os.path.exists(file_name):
             with open(file_name, 'r') as f:
                 for line in f:
-                    kanji, hiragana = line[:-1].split('\t')
+                    kanji, hiragana = line.rstrip('\n').split('\t')
                     kanji = kanji.decode('utf-8')
                     hiragana = hiragana.decode('utf-8')
                     if kanji in dictionary:
-                        hiragana_list = dictionary[kanji]
-                        if not hiragana in hiragana_list:
-                            hiragana_list.append(hiragana)
+                        hiragana_set = dictionary[kanji]
+                        hiragana_set.add(hiragana)
                     else:
-                        dictionary[kanji] = [hiragana]
+                        dictionary[kanji] = set([hiragana])
+
     except IOError:
         return None
     return dictionary
@@ -50,33 +50,37 @@ def romanize_japanese_name_by_name_dict(word):
     This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    Returns:
+        [romanized_jp_name, ...]
     """
     if not word:
-        return word
+        return ['']
 
     if word in JAPANESE_NAME_DICTIONARY:
         yomigana_list = JAPANESE_NAME_DICTIONARY[word]
-        for x in range(len(yomigana_list)):
-            yomigana_list[x] = jautils.hiragana_to_romaji(yomigana_list[x])
-        return yomigana_list
+        romanized_yomigana_list = [jautils.hiragana_to_romaji(yomigana)
+                                   for yomigana in yomigana_list]
+        return romanized_yomigana_list
 
     return [word]
 
 
 def romanize_japanese_location(word):
     """
-    This method romanizes japanese name by using name dictionary.
+    This method romanizes japanese location by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    Returns:
+        [romanized_jp_location, ...]
     """
     if not word:
-        return word
+        return ['']
 
     if word in JAPANESE_LOCATION_DICTIONARY:
         yomigana_list = JAPANESE_LOCATION_DICTIONARY[word]
-        for x in range(len(yomigana_list)):
-            yomigana_list[x] = jautils.hiragana_to_romaji(yomigana_list[x])
-        return yomigana_list
+        romanized_yomigana_list = [jautils.hiragana_to_romaji(yomigana)
+                                   for yomigana in yomigana_list]
+        return romanized_yomigana_list
 
     return [word]
 
@@ -92,7 +96,7 @@ def romanize_word_by_unidecode(word):
         script varianted word
     """
     if not word:
-        return word
+        return ['']
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
@@ -111,31 +115,17 @@ def romanize_word(word):
         script varianted word
     """
     if not word:
-        return word
+        return []
 
     yomigana_list = []
     if has_kanji(word):
         yomigana_list = romanize_japanese_name_by_name_dict(word)
-        if not yomigana_list:
-            yomigana_list = romanize_japanese_location(word)
-        return ' '.join(word for word in yomigana_list)
+        yomigana_list.extend(romanize_japanese_location(word))
 
     if jautils.should_normalize(word):
             hiragana_word = jautils.normalize(word)
-            return jautils.hiragana_to_romaji(hiragana_word)
+            yomigana_list.append(jautils.hiragana_to_romaji(hiragana_word))
 
     romanized_word = unidecode(word)
-    return romanized_word.strip()
-
-
-def romanize_text(query_txt):
-    """
-    Applies romanization to each word in query_txt.
-    This method uses unidecode and jautils for script variant.
-    Args:
-        query_txt: Search query
-    Returns:
-        script varianted query_txt (except kanji)
-    """
-    query_words = query_txt.split(' ')
-    return ' '.join([romanize_word(word) for word in query_words])
+    yomigana_list.append(romanized_word.strip())
+    return yomigana_list
