@@ -23,8 +23,7 @@ def read_dictionary(file_name):
                     kanji = kanji.decode('utf-8')
                     hiragana = hiragana.decode('utf-8')
                     if kanji in dictionary:
-                        hiragana_set = dictionary[kanji]
-                        hiragana_set.add(hiragana)
+                        dictionary[kanji].add(hiragana)
                     else:
                         dictionary[kanji] = set([hiragana])
 
@@ -50,6 +49,7 @@ def romanize_japanese_name_by_name_dict(word):
     This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    This method can return multiple romanizations.
     Returns:
         [romanized_jp_name, ...]
     """
@@ -58,9 +58,8 @@ def romanize_japanese_name_by_name_dict(word):
 
     if word in JAPANESE_NAME_DICTIONARY:
         yomigana_list = JAPANESE_NAME_DICTIONARY[word]
-        romanized_yomigana_list = [jautils.hiragana_to_romaji(yomigana)
-                                   for yomigana in yomigana_list]
-        return romanized_yomigana_list
+        return [jautils.hiragana_to_romaji(yomigana)
+                for yomigana in yomigana_list]
 
     return [word]
 
@@ -70,6 +69,7 @@ def romanize_japanese_location(word):
     This method romanizes japanese location by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    This method can return multiple romanizations.
     Returns:
         [romanized_jp_location, ...]
     """
@@ -78,9 +78,8 @@ def romanize_japanese_location(word):
 
     if word in JAPANESE_LOCATION_DICTIONARY:
         yomigana_list = JAPANESE_LOCATION_DICTIONARY[word]
-        romanized_yomigana_list = [jautils.hiragana_to_romaji(yomigana)
-                                   for yomigana in yomigana_list]
-        return romanized_yomigana_list
+        return [jautils.hiragana_to_romaji(yomigana)
+                for yomigana in yomigana_list]
 
     return [word]
 
@@ -93,7 +92,7 @@ def romanize_word_by_unidecode(word):
     Args:
         word: should be script varianted
     Returns:
-        script varianted word
+        arrays of romanzied_word by unidecode [romanized_word]
     """
     if not word:
         return ['']

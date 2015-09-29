@@ -205,11 +205,10 @@ def create_full_name_list_without_space(given_names, family_names):
                                         'family_name + given_name',...]
     """
     full_names = []
-    if given_names and family_names:
-        for given_name in given_names:
-            for family_name in family_names:
-                full_names.append(given_name + family_name)
-                full_names.append(family_name + given_name)
+    for given_name in given_names:
+        for family_name in family_names:
+            full_names.append(given_name + family_name)
+            full_names.append(family_name + given_name)
     return full_names
 
 
@@ -226,13 +225,12 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     romanize_method_name = romanize_method.__name__
     full_names = create_full_name_list_without_space(
         romanized_given_names, romanized_family_names)
-    if full_names:
-        for index, full_name in enumerate(full_names):
-            fields.append(appengine_search.TextField(
-                name='no_space_full_name_romanized_by_%s_%d' % (
-                    romanize_method_name, index),
-                value=full_name))
-            romanized_name_list.append(full_name)
+    for index, full_name in enumerate(full_names):
+        fields.append(appengine_search.TextField(
+            name='no_space_full_name_romanized_by_%s_%d' % (
+                romanize_method_name, index),
+            value=full_name))
+        romanized_name_list.append(full_name)
     return fields, romanized_name_list
 
 
@@ -244,10 +242,11 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields = []
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
-    for field in kwargs:
-        romanized_names = romanize_method(kwargs[field])
-        for romanized_name in romanized_names:
-            fields.extend(create_fields_for_rank(field, romanized_name))
+    for field_name in kwargs:
+        romanized_names = romanize_method(kwargs[field_name])
+        for index, romanized_name in enumerate(romanized_names):
+            fields.extend(create_fields_for_rank(field_name+'_'+str(index),
+                                                 romanized_name))
         romanized_names_list.extend(romanized_names)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
