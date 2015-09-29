@@ -205,6 +205,7 @@ def split_full_name_without_space(romanize_method, full_name):
         given_name = full_name[index:]
         romanized_family_name = romanize_method(family_name)
         romanized_given_name = romanize_method(given_name)
+
     full_name = full_name
 
 def create_romanized_name_fields(romanize_method, **kwargs):
