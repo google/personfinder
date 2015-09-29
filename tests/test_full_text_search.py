@@ -115,6 +115,24 @@ class FullTextSearchTests(unittest.TestCase):
             home_city=u'тоттори',
             entry_date=TEST_DATETIME
         )
+        self.p10 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti:0810',
+            given_name='Rin',
+            family_name='Shibuya',
+            full_name='Rin Shibuya',
+            home_city='shinjuku',
+            entry_date=TEST_DATETIME
+        )
+        self.p11 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti:0203',
+            given_name='Rin',
+            family_name='Tosaka',
+            full_name='Rin Tosaka',
+            home_city='Shibuya',
+            entry_date=TEST_DATETIME
+        )
 
 
     def tearDown(self):
@@ -131,6 +149,8 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p7)
         db.put(self.p8)
         db.put(self.p9)
+        db.put(self.p10)
+        db.put(self.p11)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -140,6 +160,8 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p7)
         full_text_search.add_record_to_index(self.p8)
         full_text_search.add_record_to_index(self.p9)
+        full_text_search.add_record_to_index(self.p10)
+        full_text_search.add_record_to_index(self.p11)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -216,6 +238,11 @@ class FullTextSearchTests(unittest.TestCase):
         delete.delete_person(self, self.p5)
         results = full_text_search.search('haiti', 'Makoto', 5)
         assert not results
+
+        # Check rank order (name match heigher than location match)
+        results = full_text_search.search('haiti', 'Rin Shibuya', 5)
+        assert [r.record_id for r in results] == \
+               ['haiti:0810', 'haiti:0203']
 
         # Search romaji record by kanji name
         results = full_text_search.search('haiti', u'千早', 5)

@@ -25,6 +25,9 @@ import script_variant
 # This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
+# This is for ranking (person name match higher than location)
+REPEAT_COUNT_FOR_RANK = 5
+
 def make_or_regexp(query_txt):
     """
     Creates compiled regular expression for OR search.
@@ -37,6 +40,18 @@ def make_or_regexp(query_txt):
     query_words = query_txt.split(' ')
     regexp = '|'.join([re.escape(word) for word in query_words if word])
     return re.compile(regexp, re.I)
+
+def create_sort_expressions():
+    """
+    Creates SortExpression's for ranking.
+    Returns:
+        array of SortExpression
+    """
+    return [appengine_search.SortExpression(
+        expression='_score',
+        direction=appengine_search.SortExpression.DESCENDING,
+        default_value=0.0
+    )]
 
 def enclose_in_double_quotes(query_txt):
     """
@@ -79,8 +94,14 @@ def search(repo, query_txt, max_results):
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
+
+    expressions = create_sort_expressions()
+    sort_opt = appengine_search.SortOptions(
+        expressions=expressions, match_scorer=appengine_search.MatchScorer())
+
     options = appengine_search.QueryOptions(
         limit=max_results,
+        sort_options=sort_opt,
         returned_fields=['record_id',
                          'names_romanized_by_romanize_word_by_unidecode',
                          'names_romanized_by_romanize_japanese_name_by_name_dict'])
@@ -114,6 +135,29 @@ def search(repo, query_txt, max_results):
         if result:
             results.append(result)
     return results
+
+def create_fields_for_rank(field_name, value):
+    """
+    Creates fields for ranking. (person name match > location match)
+    MatchScorer class(assigns score) doesn't support to assign
+    a score based on term frequency in a field.
+    So we add 5 fields for each name params.
+    Args:
+        field_name: field name
+        value: field value
+    Returns:
+        array of appengine_search.TextField(name=field_name, value=value)
+           (length: REPEAT_COUNT_FOR_RANK)
+    """
+    if not value:
+        return []
+
+    fields = []
+    for x in xrange(REPEAT_COUNT_FOR_RANK):
+        fields.append(
+            appengine_search.TextField(name='%s_for_rank_%d' % (field_name, x),
+                                       value=value))
+    return fields
 
 
 def create_full_name_without_space(given_name, family_name):
@@ -167,10 +211,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     for field in kwargs:
         romanized_name = romanize_method(kwargs[field])
         if romanized_name:
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_romanized_by_'+romanize_method_name,
-                    value=romanized_name))
+            fields.extend(create_fields_for_rank(field, romanized_name))
             romanized_names_list.append(romanized_name)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
@@ -182,6 +223,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields.append(
         appengine_search.TextField(name='names_romanized_by_'+romanize_method_name,
                                    value=names))
+
     return fields
 
 
