@@ -206,9 +206,10 @@ def split_full_name_without_space(romanize_method, full_name):
         given_name = full_name[index:]
         romanized_family_name = romanize_method(family_name)
         romanized_given_name = romanize_method(given_name)
-        if (romanized_family_name == family_name) and (
-                romanized_given_name == given_name):
-            names.append(given_name, family_name)
+        if (romanized_family_name != family_name) and (
+                romanized_given_name != given_name):
+            names.append((romanized_given_name,
+                          romanized_family_name))
     return names
     full_name = full_name
 
@@ -226,15 +227,24 @@ def create_romanized_name_fields(romanize_method, **kwargs):
             fields.extend(create_fields_for_rank(field, romanized_name))
             romanized_names_list.append(romanized_name)
 
-    full_name_fields, romanized_full_names = create_full_name_without_space_fields(
-        romanize_method, kwargs['given_name'], kwargs['family_name'])
-    fields.extend(full_name_fields)
-    romanized_names_list.extend(romanized_full_names)
-
+    splited_full_names = []
     full_name = kwargs['full_name']
     if full_name and not (' ' in full_name):
         splited_full_names = split_full_name_without_space(
             romanize_method, full_name)
+        for index, names in enumerate(splited_full_names):
+            romanized_given_name, romanized_family_name = names
+            fields.extend(create_fields_for_rank(field+'_'+str(index),
+                                                 romanized_given_name))
+            romanized_names_list.append(romanized_given_name)
+            fields.extend(create_fields_for_rank(field+'_'+str(index),
+                                                 romanized_family_name))
+            romanized_names_list.append(romanized_family_name)
+
+    full_name_fields, romanized_full_names = create_full_name_without_space_fields(
+        romanize_method, kwargs['given_name'], kwargs['family_name'])
+    fields.extend(full_name_fields)
+    romanized_names_list.extend(romanized_full_names)
 
     names = ':'.join([name for name in romanized_names_list if name])
     fields.append(

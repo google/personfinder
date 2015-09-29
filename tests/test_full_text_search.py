@@ -133,6 +133,11 @@ class FullTextSearchTests(unittest.TestCase):
             home_city='Shibuya',
             entry_date=TEST_DATETIME
         )
+        self.p12 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0909',
+            full_name=u'音無小鳥',
+            entry_date=TEST_DATETIME)
 
 
     def tearDown(self):
@@ -151,6 +156,7 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p9)
         db.put(self.p10)
         db.put(self.p11)
+        db.put(self.p12)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -162,6 +168,7 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p9)
         full_text_search.add_record_to_index(self.p10)
         full_text_search.add_record_to_index(self.p11)
+        full_text_search.add_record_to_index(self.p12)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
