@@ -63,7 +63,21 @@ def enclose_in_double_quotes(query_txt):
         '"query_word1" "query_word2" ...'
     """
     query_words = query_txt.split(' ')
-    return '"' + '" "'.join([word for word in query_words if word]) + '"'
+    return '"' + '" AND "'.join([word for word in query_words if word]) + '"'
+
+
+def enclose_in_double_quotes_unidecode(query_txt):
+    """
+    Encloses each word in query_txt in double quotes.
+    Args:
+        query_txt: Search query
+
+    Returns:
+        '"query_word1" "query_word2" ...'
+    """
+    query_words = query_txt.split('  ')
+    return '"' + '" AND "'.join([word for word in query_words if word]) + '"'
+
 
 def search(repo, query_txt, max_results):
     """
@@ -90,7 +104,9 @@ def search(repo, query_txt, max_results):
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
 
     romanized_query = script_variant.romanize_text(query_txt)
+    romanized_query_by_unidecode = script_variant.romanize_word_by_unidecode(query_txt)
     query_txt = re.sub('"', '', romanized_query)
+    query_txt_unidecode = re.sub('"', '', romanized_query_by_unidecode)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -106,15 +122,20 @@ def search(repo, query_txt, max_results):
                          'names_romanized_by_romanize_word_by_unidecode',
                          'names_romanized_by_romanize_japanese_name_by_name_dict'])
 
+
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
-    and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
+    and_query = '((%s) OR (%s)) AND (repo: %s)' % (
+        enclose_in_double_quotes(query_txt),
+        enclose_in_double_quotes_unidecode(query_txt_unidecode), repo)
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
+
     index_results = []
     regexp = make_or_regexp(query_txt)
+    regexp_unidecode = make_or_regexp(query_txt_unidecode)
     for document in person_location_index_results:
         names = ''
         romanized_jp_names = ''
@@ -127,7 +148,13 @@ def search(repo, query_txt, max_results):
                 romanized_jp_names = field.value
 
         if regexp.search(names) or regexp.search(romanized_jp_names):
-            index_results.append(id)
+            if not id in index_results:
+                index_results.append(id)
+
+        if regexp_unidecode.search(names) or regexp_unidecode.search(
+                romanized_jp_names):
+            if not id in index_results:
+                index_results.append(id)
 
     results = []
     for id in index_results:
