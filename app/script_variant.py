@@ -1,7 +1,7 @@
 import jautils
 
 from unidecode import unidecode
-import logging
+
 import os.path
 import re
 

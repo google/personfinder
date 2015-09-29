@@ -39,13 +39,10 @@ def make_or_regexp(query_txt):
     """
     query_words = query_txt.split(' ')
     query_list = []
-    logging.info(query_words)
     for word in query_words:
         romanized_word_list = script_variant.romanize_word(word)
         query_list.extend(romanized_word_list)
-    logging.info(query_list)
     regexp = '|'.join([re.escape(word) for word in query_list if word])
-    logging.info(regexp)
     return re.compile(regexp, re.I)
 
 def create_sort_expressions():
@@ -60,7 +57,7 @@ def create_sort_expressions():
         default_value=0.0
     )]
 
-def enclose_in_double_parenthesis(query_txt):
+def enclose_in_parenthesis(query_txt):
     """
     Encloses each word in query_txt in double quotes.
     Args:
@@ -101,7 +98,7 @@ def create_query_txt(query_txt):
                                      for word in romanized_word_list)
         query_list.append(romanized_word)
     romanized_query = ','.join([word for word in query_list])
-    return enclose_in_double_parenthesis(romanized_query)
+    return enclose_in_parenthesis(romanized_query)
 
 
 def search(repo, query_txt, max_results):
