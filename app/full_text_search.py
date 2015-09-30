@@ -201,8 +201,8 @@ def create_full_name_list_without_space(given_names, family_names):
     """
     Creates full name list without white space.
     Returns:
-        if given_name and family_name: ['given_name + family_name',
-                                        'family_name + given_name',...]
+        ['given_name + family_name',
+         'family_name + given_name',...]
     """
     full_names = []
     for given_name in given_names:
@@ -245,7 +245,8 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     for field_name in kwargs:
         romanized_names = romanize_method(kwargs[field_name])
         for index, romanized_name in enumerate(romanized_names):
-            fields.extend(create_fields_for_rank(field_name+'_'+str(index),
+            fields.extend(create_fields_for_rank('%s_%d' %
+                                                 (field_name, index),
                                                  romanized_name))
         romanized_names_list.extend(romanized_names)
 

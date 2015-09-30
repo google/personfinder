@@ -50,6 +50,7 @@ def romanize_japanese_name_by_name_dict(word):
     If word isn't found in dictionary, this method doesn't
     apply romanize.
     This method can return multiple romanizations.
+    (because there are multiple ways to read the same kanji name in japanese)
     Returns:
         [romanized_jp_name, ...]
     """
@@ -70,6 +71,7 @@ def romanize_japanese_location(word):
     If word isn't found in dictionary, this method doesn't
     apply romanize.
     This method can return multiple romanizations.
+    (because there are multiple ways to read the same kanji location in japanese)
     Returns:
         [romanized_jp_location, ...]
     """
@@ -92,7 +94,7 @@ def romanize_word_by_unidecode(word):
     Args:
         word: should be script varianted
     Returns:
-        arrays of romanzied_word by unidecode [romanized_word]
+        an array of romanzied_word by unidecode [romanized_word]
     """
     if not word:
         return ['']
@@ -111,7 +113,9 @@ def romanize_word(word):
     Args:
         word: should be script varianted
     Returns:
-        script varianted word
+        [romanized_word, ... ]   
+        (if word can be romanized by unidecode and jp_dictionary,
+        returns multiple romanizations.)
     """
     if not word:
         return []
