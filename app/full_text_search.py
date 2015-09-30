@@ -38,7 +38,11 @@ def make_or_regexp(query_txt):
         query_word | query_word | ...
     """
     query_words = query_txt.split(' ')
-    regexp = '|'.join([re.escape(word) for word in query_words if word])
+    query_list = []
+    for word in query_words:
+        romanized_word_list = script_variant.romanize_word(word)
+        query_list.extend(romanized_word_list)
+    regexp = '|'.join([re.escape(word) for word in query_list if word])
     return re.compile(regexp, re.I)
 
 def create_sort_expressions():
@@ -53,6 +57,19 @@ def create_sort_expressions():
         default_value=0.0
     )]
 
+def enclose_in_parenthesis(query_txt):
+    """
+    Encloses each word in query_txt in double quotes.
+    Args:
+        query_txt: Search query
+
+    Returns:
+        '(query_word1) AND (query_word2) ...'
+    """
+    query_words = query_txt.split(',')
+    return '(' + ') AND ('.join([word for word in query_words if word]) + ')'
+
+
 def enclose_in_double_quotes(query_txt):
     """
     Encloses each word in query_txt in double quotes.
@@ -60,10 +77,29 @@ def enclose_in_double_quotes(query_txt):
         query_txt: Search query
 
     Returns:
-        '"query_word1" "query_word2" ...'
+        '"query_word1"'
+    """
+    return '"' + query_txt + '"'
+
+
+def create_query_txt(query_txt):
+    """
+    Applies romanization to each word in query_txt.
+    Args:
+        query_txt: Search query
+    Returns:
+        script varianted query_txt
     """
     query_words = query_txt.split(' ')
-    return '"' + '" "'.join([word for word in query_words if word]) + '"'
+    query_list = []
+    for word in query_words:
+        romanized_word_list = script_variant.romanize_word(word)
+        romanized_word = ' OR '.join(enclose_in_double_quotes(word)
+                                     for word in romanized_word_list)
+        query_list.append(romanized_word)
+    romanized_query = ','.join([word for word in query_list])
+    return enclose_in_parenthesis(romanized_query)
+
 
 def search(repo, query_txt, max_results):
     """
@@ -87,9 +123,8 @@ def search(repo, query_txt, max_results):
         return []
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
-
-    romanized_query = script_variant.romanize_text(query_txt)
-    query_txt = re.sub('"', '', romanized_query)
+    query_txt = re.sub('"', '', query_txt)
+    romanized_query = create_query_txt(query_txt)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -108,10 +143,12 @@ def search(repo, query_txt, max_results):
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
-    and_query = enclose_in_double_quotes(query_txt) + ' AND (repo: ' + repo + ')'
+    and_query = romanized_query + ' AND (repo: ' + repo + ')'
+
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
+
     index_results = []
     regexp = make_or_regexp(query_txt)
     for document in person_location_index_results:
@@ -159,19 +196,19 @@ def create_fields_for_rank(field_name, value):
     return fields
 
 
-def create_full_name_without_space(given_name, family_name):
+def create_full_name_list_without_space(given_names, family_names):
     """
-    Creates full name without white space.
+    Creates full name list without white space.
     Returns:
-        if given_name and family_name: ('given_name + family_name',
-                                        'family_name + given_name')
-        else: None
+        ['given_name + family_name',
+         'family_name + given_name',...]
     """
-    if given_name and family_name:
-        return (given_name + family_name,
-                family_name + given_name)
-    else:
-        return None
+    full_names = []
+    for given_name in given_names:
+        for family_name in family_names:
+            full_names.append(given_name + family_name)
+            full_names.append(family_name + given_name)
+    return full_names
 
 
 def create_full_name_without_space_fields(romanize_method, given_name, family_name):
@@ -182,20 +219,17 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     """
     fields = []
     romanized_name_list = []
-    romanized_given_name = romanize_method(given_name)
-    romanized_family_name = romanize_method(family_name)
-    full_names = create_full_name_without_space(
-        romanized_given_name, romanized_family_name)
-    if full_names:
-        full_name_given_family, full_name_family_given = full_names
+    romanized_given_names = romanize_method(given_name)
+    romanized_family_names = romanize_method(family_name)
+    romanize_method_name = romanize_method.__name__
+    full_names = create_full_name_list_without_space(
+        romanized_given_names, romanized_family_names)
+    for index, full_name in enumerate(full_names):
         fields.append(appengine_search.TextField(
-            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_1',
-            value=full_name_given_family))
-        romanized_name_list.append(full_name_given_family)
-        fields.append(appengine_search.TextField(
-            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_2',
-            value=full_name_family_given))
-        romanized_name_list.append(full_name_family_given)
+            name='no_space_full_name_romanized_by_%s_%d' % (
+                romanize_method_name, index),
+            value=full_name))
+        romanized_name_list.append(full_name)
     return fields, romanized_name_list
 
 
@@ -207,11 +241,13 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields = []
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
-    for field in kwargs:
-        romanized_name = romanize_method(kwargs[field])
-        if romanized_name:
-            fields.extend(create_fields_for_rank(field, romanized_name))
-            romanized_names_list.append(romanized_name)
+    for field_name in kwargs:
+        romanized_names = romanize_method(kwargs[field_name])
+        for index, romanized_name in enumerate(romanized_names):
+            fields.extend(create_fields_for_rank('%s_%d' %
+                                                 (field_name, index),
+                                                 romanized_name))
+        romanized_names_list.extend(romanized_names)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])
@@ -231,15 +267,17 @@ def create_romanized_location_fields(romanize_method, **kwargs):
     Creates romanized location fields (romanized by romanize_method)
     for full text search.
     """
+    # TODO: combine name dict and location dict
     fields = []
     romanize_method_name = romanize_method.__name__
     for field in kwargs:
-        romanized_japanese_location = romanize_method(kwargs[field])
-        if romanized_japanese_location:
+        romanized_locations = romanize_method(kwargs[field])
+        for index, romanized_location in enumerate(romanized_locations):
             fields.append(
                 appengine_search.TextField(
-                    name=field+'_romanized_by_'+romanize_method_name,
-                    value=romanized_japanese_location)
+                    name='%s_romanized_by_%s_%d' % (
+                        field, romanize_method_name, index),
+                    value=romanized_location)
             )
     return fields
 
