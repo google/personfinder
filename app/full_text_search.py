@@ -53,7 +53,7 @@ def create_sort_expressions():
     """
     return [appengine_search.SortExpression(
         expression='_score',
-        direction=appengine_search.SortExpression.ASCENDING,
+        direction=appengine_search.SortExpression.DESCENDING,
         default_value=1.0
     )]
 
@@ -108,7 +108,6 @@ def get_person_ids_from_results(romanized_query, results_list):
     regexp = make_or_regexp(romanized_query)
     index_results = []
     for results in results_list:
-        logging.info(results)
         for document in results:
             romanized_jp_names = ''
             for field in document.fields:
@@ -118,13 +117,12 @@ def get_person_ids_from_results(romanized_query, results_list):
                     id = field.value
                 if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
                     romanized_jp_names = field.value
-
+            
             if id in index_results:
                 continue
 
             if regexp.search(names) or regexp.search(romanized_jp_names):
                 index_results.append(id)
-    logging.info(index_results)
     return index_results
 
 
@@ -155,18 +153,15 @@ def search(repo, query_txt, max_results):
     kanji_words_in_query_txt = script_variant.find_kanji_word(query_txt)
     double_quote_kanji_words_in_query_txt = ' '.join(
         enclose_in_double_quotes(word) for word in kanji_words_in_query_txt)
-    romanized_query_with_kanji = romanized_query + ' ' + double_quote_kanji_words_in_query_txt
+    romanized_query_with_kanji = romanized_query + ' ' +\
+                                 double_quote_kanji_words_in_query_txt
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
 
     expressions = create_sort_expressions()
-    """
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
-    """
-    sort_opt = appengine_search.SortOptions(
-        match_scorer=appengine_search.RescoringMatchScorer(), expressions=expressions)
 
     options = appengine_search.QueryOptions(
         limit=max_results,
@@ -189,20 +184,15 @@ def search(repo, query_txt, max_results):
         appengine_search.Query(
             query_string=and_query_with_kanji, options=options)
     )
-
-
     results_list = [person_location_index_results_with_kanji,
                     person_location_index_results]
-    
-    index_results = get_person_ids_from_results(query_txt, results_list)
 
+    index_results = get_person_ids_from_results(query_txt, results_list)
     results = []
     for id in index_results:
-        logging.info(id)
         result = model.Person.get(repo, id, filter_expired=True)
         if result:
             results.append(result)
-    logging.info(results)
     return results
 
 def create_fields_for_rank(field_name, value):
@@ -274,24 +264,13 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields = []
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
-    """
-    for field in kwargs:
-        romanized_name = romanize_method(kwargs[field])
-        if romanized_name:
-            fields.extend(create_fields_for_rank(field, romanized_name))
-            romanized_names_list.append(romanized_name)
-        fields.append(
-            appengine_search.TextField(
-                name=field+'_non_romanized',
-                value=kwargs[field]))
-        romanized_names_list.append(kwargs[field])
-    """
     for field_name in kwargs:
         romanized_names = romanize_method(kwargs[field_name])
         for index, romanized_name in enumerate(romanized_names):
-            fields.extend(create_fields_for_rank('%s_%d' %
-                                                 (field_name, index),
+            fields.extend(create_fields_for_rank('%s_%s_%d' %
+                                                 (field_name, romanize_method_name, index),
                                                  romanized_name))
+            fields.extend(create_fields_for_rank('%s_%d' % (field_name, index), kwargs[field_name]))
         romanized_names_list.extend(romanized_names)
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(

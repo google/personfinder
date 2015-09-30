@@ -22,7 +22,8 @@ import unittest
 from google.appengine.ext import db
 from google.appengine.ext import testbed
 from google.appengine.api import search
-
+import sys
+import logging
 import delete
 import full_text_search
 import model
