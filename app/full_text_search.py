@@ -241,11 +241,8 @@ def split_full_name_without_space(romanize_method, full_name):
     for index in xrange(1, len(full_name)):
         family_name = full_name[:index]
         given_name = full_name[index:]
-        romanized_family_name = romanize_method(family_name)
-        romanized_given_name = romanize_method(given_name)
-
         romanized_family_names = romanize_method(family_name)
-        romanzied_given_names = romanize_method(given_name)
+        romanized_given_names = romanize_method(given_name)
         for romanized_family_name in romanized_family_names:
             for romanized_given_name in romanized_given_names:
                 if (romanized_family_name != family_name) and (
