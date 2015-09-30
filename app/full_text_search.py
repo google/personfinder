@@ -1,4 +1,5 @@
 #!/usr/bin/python2.7
+# coding:utf-8
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -199,6 +200,30 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
         romanized_name_list.append(full_name_family_given)
     return fields, romanized_name_list
 
+
+def create_full_name_without_space_fields2(romanized_given_names, romanized_family_names):
+    """
+    Creates fields with the full name without white spaces.
+    Returns:
+        fullname fields, romanized_name_list: (for check)
+    """
+    fields = []
+    romanized_name_list = []
+
+    full_names = create_full_name_without_space(
+        romanized_given_name, romanized_family_name)
+    if full_names:
+        full_name_given_family, full_name_family_given = full_names
+        fields.append(appengine_search.TextField(
+            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_1',
+            value=full_name_given_family))
+        romanized_name_list.append(full_name_given_family)
+        fields.append(appengine_search.TextField(
+            name='no_space_full_name_romanized_by_'+romanize_method.__name__+'_2',
+            value=full_name_family_given))
+        romanized_name_list.append(full_name_family_given)
+    return fields, romanized_name_list
+
 def split_full_name_without_space(romanize_method, full_name):
     names = []
     for index in xrange(len(full_name)):
@@ -208,10 +233,8 @@ def split_full_name_without_space(romanize_method, full_name):
         romanized_given_name = romanize_method(given_name)
         if (romanized_family_name != family_name) and (
                 romanized_given_name != given_name):
-            names.append((romanized_given_name,
-                          romanized_family_name))
+            names.append((given_name, family_name))
     return names
-    full_name = full_name
 
 def create_romanized_name_fields(romanize_method, **kwargs):
     """
@@ -229,6 +252,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
 
     splited_full_names = []
     full_name = kwargs['full_name']
+    full_name = u'水瀬伊織'
     if full_name and not (' ' in full_name):
         splited_full_names = split_full_name_without_space(
             romanize_method, full_name)
@@ -241,10 +265,34 @@ def create_romanized_name_fields(romanize_method, **kwargs):
                                                  romanized_family_name))
             romanized_names_list.append(romanized_family_name)
 
+            """
+            full_name_fields, romanized_full_names = create_full_name_without_space_fields(
+                romanize_method, romanized_given_name, romanized_family_name)
+            fields.extend(full_name_fields)
+            romanized_names_list.extend(romanized_full_names)
+            """
+
+
+    given_name = kwargs['given_name']
+    family_name = kwargs['family_name']
+    given_names_family_names = []
+    if given_name and family_name:
+        given_names_family_names.append((given_name, family_name))
+    given_names_family_names.extend(splited_full_names)
+
+    for given_name_family_name in given_names_family_names:
+        given_name, family_name = given_name_family_name
+        full_name_fields, romanized_full_names = create_full_name_without_space_fields(
+            romanize_method, given_name, family_name)
+        fields.extend(full_name_fields)
+        romanized_names_list.extend(romanized_full_names)
+
+    """
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])
     fields.extend(full_name_fields)
     romanized_names_list.extend(romanized_full_names)
+    """
 
     names = ':'.join([name for name in romanized_names_list if name])
     fields.append(
