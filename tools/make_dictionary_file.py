@@ -5,15 +5,9 @@ Makes dictionary file from mozc
 
 def check_number(id1, id2, numbers):
     """
-    checks id1 == id2 == numbers
+    checks id1 == id2 (id1 and id2 are in numbers)
     """
-    if id1 != id2:
-        return False
-
-    if id1 in numbers and id2 in numbers:
-        return id1 == id2
-
-    return False
+    return id1 in numbers and id1 == id2
 
 
 def make_dictionary(input_file_names, output_file_name, numbers):
