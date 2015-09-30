@@ -65,6 +65,28 @@ def enclose_in_double_quotes(query_txt):
     query_words = query_txt.split(' ')
     return '"' + '" "'.join([word for word in query_words if word]) + '"'
 
+def get_person_ids_from_results(romanized_query, results_list):
+    """
+    Returns person record_id (a part of romanized_query matches person name) list.
+    """
+    regexp = make_or_regexp(romanized_query)
+    index_results = []
+    for results in results_list:
+        for document in results:
+            romanized_jp_names = ''
+            for field in document.fields:
+                if field.name == 'names_romanized_by_romanize_word_by_unidecode':
+                    names = field.value
+                if field.name == 'record_id':
+                    id = field.value
+                if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
+                    romanized_jp_names = field.value
+            if id in index_results:
+                continue
+            if regexp.search(names) or regexp.search(romanized_jp_names):
+                index_results.append(id)
+    return index_results
+
 def search(repo, query_txt, max_results):
     """
     Searches person with index.
@@ -127,36 +149,9 @@ def search(repo, query_txt, max_results):
             query_string=and_query_with_kanji, options=options)
     )
 
-    index_results = []
-    regexp = make_or_regexp(romanized_query)
-    for document in person_location_index_results_with_kanji:
-        romanized_jp_names = ''
-        for field in document.fields:
-            if field.name == 'names_romanized_by_romanize_word_by_unidecode':
-                names = field.value
-            if field.name == 'record_id':
-                id = field.value
-            if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
-                romanized_jp_names = field.value
-
-        if regexp.search(names) or regexp.search(romanized_jp_names):
-            index_results.append(id)
-
-    for document in person_location_index_results:
-        names = ''
-        romanized_jp_names = ''
-        for field in document.fields:
-            if field.name == 'names_romanized_by_romanize_word_by_unidecode':
-                names = field.value
-            if field.name == 'record_id':
-                id = field.value
-            if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
-                romanized_jp_names = field.value
-
-        if id in index_results:
-            continue
-        if regexp.search(names) or regexp.search(romanized_jp_names):
-            index_results.append(id)
+    results_list = [person_location_index_results_with_kanji,
+                    person_location_index_results]
+    index_results = get_person_ids_from_results(romanized_query, results_list)
 
     results = []
     for id in index_results:
@@ -242,12 +237,11 @@ def create_romanized_name_fields(romanize_method, **kwargs):
         if romanized_name:
             fields.extend(create_fields_for_rank(field, romanized_name))
             romanized_names_list.append(romanized_name)
-        if script_variant.has_kanji(kwargs[field]):
-            fields.append(
-                appengine_search.TextField(
-                    name=field+'_non_romanized',
-                    value=kwargs[field]))
-            romanized_names_list.append(kwargs[field])
+        fields.append(
+            appengine_search.TextField(
+                name=field+'_non_romanized',
+                value=kwargs[field]))
+        romanized_names_list.append(kwargs[field])
 
     full_name_fields, romanized_full_names = create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])

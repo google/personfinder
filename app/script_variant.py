@@ -35,8 +35,6 @@ def has_kanji(word):
     """
     # [\u3400-\u9fff]: kanji
     # TODO: update this range (some of kanji characters out of this range.)
-    if not word:
-        return False
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
