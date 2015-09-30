@@ -206,7 +206,7 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
 
 def split_full_name_without_space(romanize_method, full_name):
     names = []
-    for index in xrange(len(full_name)):
+    for index in xrange(1, len(full_name)):
         family_name = full_name[:index]
         given_name = full_name[index:]
         romanized_family_name = romanize_method(family_name)
@@ -230,12 +230,12 @@ def create_romanized_name_fields(romanize_method, **kwargs):
             fields.extend(create_fields_for_rank(field, romanized_name))
             romanized_names_list.append(romanized_name)
 
-    splited_full_names = []
+    split_full_names = []
     full_name = kwargs['full_name']
     if full_name and not (' ' in full_name):
-        splited_full_names = split_full_name_without_space(
+        split_full_names = split_full_name_without_space(
             romanize_method, full_name)
-        for index, names in enumerate(splited_full_names):
+        for index, names in enumerate(split_full_names):
             given_name, family_name = names
             fields.extend(create_fields_for_rank('splited_full_name_given_%d' %
                                                  index,
@@ -251,7 +251,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     given_names_family_names = []
     if given_name and family_name:
         given_names_family_names.append((given_name, family_name))
-    given_names_family_names.extend(splited_full_names)
+    given_names_family_names.extend(split_full_names)
     for index, given_name_family_name in enumerate(given_names_family_names):
         given_name, family_name = given_name_family_name
         full_name_fields, romanized_full_names = create_full_name_without_space_fields(
