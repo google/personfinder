@@ -53,8 +53,8 @@ def create_sort_expressions():
     """
     return [appengine_search.SortExpression(
         expression='_score',
-        direction=appengine_search.SortExpression.DESCENDING,
-        default_value=0.0
+        direction=appengine_search.SortExpression.ASCENDING,
+        default_value=1.0
     )]
 
 def enclose_in_parenthesis(query_txt):
@@ -108,6 +108,7 @@ def get_person_ids_from_results(romanized_query, results_list):
     regexp = make_or_regexp(romanized_query)
     index_results = []
     for results in results_list:
+        logging.info(results)
         for document in results:
             romanized_jp_names = ''
             for field in document.fields:
@@ -117,11 +118,15 @@ def get_person_ids_from_results(romanized_query, results_list):
                     id = field.value
                 if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
                     romanized_jp_names = field.value
+
             if id in index_results:
                 continue
+
             if regexp.search(names) or regexp.search(romanized_jp_names):
                 index_results.append(id)
+    logging.info(index_results)
     return index_results
+
 
 def search(repo, query_txt, max_results):
     """
@@ -145,15 +150,6 @@ def search(repo, query_txt, max_results):
         return []
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
-    """
-    romanized_query = script_variant.romanize_text(query_txt)
-    kanji_words_in_query_txt = script_variant.find_kanji_word(query_txt)
-
-    romanized_query = re.sub('"', '', romanized_query)
-    romanized_query_with_kanji = re.sub(
-        '"', '', romanized_query+' '+kanji_words_in_query_txt)
-    """
-
     query_txt = re.sub('"', '', query_txt)
     romanized_query = create_query_txt(query_txt)
     kanji_words_in_query_txt = script_variant.find_kanji_word(query_txt)
@@ -161,19 +157,16 @@ def search(repo, query_txt, max_results):
         enclose_in_double_quotes(word) for word in kanji_words_in_query_txt)
     romanized_query_with_kanji = romanized_query + ' ' + double_quote_kanji_words_in_query_txt
 
-    """
-    romanized_query_with_kanji = re.sub(
-        '"', '', romanized_query+' '+double_quote_kanji_words_in_query_txt)
-    logging.info(romanized_query_with_kanji)
-    """
-
-
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
 
     expressions = create_sort_expressions()
+    """
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
+    """
+    sort_opt = appengine_search.SortOptions(
+        match_scorer=appengine_search.RescoringMatchScorer(), expressions=expressions)
 
     options = appengine_search.QueryOptions(
         limit=max_results,
@@ -185,13 +178,6 @@ def search(repo, query_txt, max_results):
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
-    """
-    and_query = enclose_in_double_quotes(romanized_query) + (
-        ' AND (repo: ' + repo + ')')
-    and_query_with_kanji = enclose_in_double_quotes(
-        romanized_query_with_kanji) + ' AND (repo: ' + repo + ')'
-    """
-
     and_query = romanized_query + ' AND (repo: ' + repo + ')'
     and_query_with_kanji = romanized_query_with_kanji + ' AND (repo: ' + repo + ')'
 
@@ -204,33 +190,19 @@ def search(repo, query_txt, max_results):
             query_string=and_query_with_kanji, options=options)
     )
 
+
     results_list = [person_location_index_results_with_kanji,
                     person_location_index_results]
+    
     index_results = get_person_ids_from_results(query_txt, results_list)
-    logging.info(index_results)
-    """
-    index_results = []
-    regexp = make_or_regexp(query_txt)
-    for document in person_location_index_results:
-        names = ''
-        romanized_jp_names = ''
-        for field in document.fields:
-            if field.name == 'names_romanized_by_romanize_word_by_unidecode':
-                names = field.value
-            if field.name == 'record_id':
-                id = field.value
-            if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
-                romanized_jp_names = field.value
-
-        if regexp.search(names) or regexp.search(romanized_jp_names):
-            index_results.append(id)
-    """
 
     results = []
     for id in index_results:
+        logging.info(id)
         result = model.Person.get(repo, id, filter_expired=True)
         if result:
             results.append(result)
+    logging.info(results)
     return results
 
 def create_fields_for_rank(field_name, value):
