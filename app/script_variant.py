@@ -19,8 +19,14 @@ def read_dictionary(file_name):
         if os.path.exists(file_name):
             with open(file_name, 'r') as f:
                 for line in f:
-                    kanji, hiragana = line[:-1].split('\t')
-                    dictionary[kanji.decode('utf-8')] = hiragana.decode('utf-8')
+                    kanji, hiragana = line.rstrip('\n').split('\t')
+                    kanji = kanji.decode('utf-8')
+                    hiragana = hiragana.decode('utf-8')
+                    if kanji in dictionary:
+                        dictionary[kanji].add(hiragana)
+                    else:
+                        dictionary[kanji] = set([hiragana])
+
     except IOError:
         return None
     return dictionary
@@ -43,31 +49,41 @@ def romanize_japanese_name_by_name_dict(word):
     This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    This method can return multiple romanizations.
+    (because there are multiple ways to read the same kanji name in japanese)
+    Returns:
+        [romanized_jp_name, ...]
     """
     if not word:
-        return word
+        return ['']
 
     if word in JAPANESE_NAME_DICTIONARY:
-        yomigana = JAPANESE_NAME_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+        yomigana_list = JAPANESE_NAME_DICTIONARY[word]
+        return [jautils.hiragana_to_romaji(yomigana)
+                for yomigana in yomigana_list]
 
-    return word
+    return [word]
 
 
 def romanize_japanese_location(word):
     """
-    This method romanizes japanese name by using name dictionary.
+    This method romanizes japanese location by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
+    This method can return multiple romanizations.
+    (because there are multiple ways to read the same kanji location in japanese)
+    Returns:
+        [romanized_jp_location, ...]
     """
     if not word:
-        return word
+        return ['']
 
     if word in JAPANESE_LOCATION_DICTIONARY:
-        yomigana = JAPANESE_LOCATION_DICTIONARY[word]
-        return jautils.hiragana_to_romaji(yomigana)
+        yomigana_list = JAPANESE_LOCATION_DICTIONARY[word]
+        return [jautils.hiragana_to_romaji(yomigana)
+                for yomigana in yomigana_list]
 
-    return word
+    return [word]
 
 
 def romanize_word_by_unidecode(word):
@@ -78,16 +94,16 @@ def romanize_word_by_unidecode(word):
     Args:
         word: should be script varianted
     Returns:
-        script varianted word
+        an array of romanzied_word by unidecode [romanized_word]
     """
     if not word:
-        return word
+        return ['']
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
-        return jautils.hiragana_to_romaji(hiragana_word)
+        return [jautils.hiragana_to_romaji(hiragana_word)]
     romanized_word = unidecode(word)
-    return romanized_word.strip()
+    return [romanized_word.strip()]
 
 
 def romanize_word(word):
@@ -97,30 +113,22 @@ def romanize_word(word):
     Args:
         word: should be script varianted
     Returns:
-        script varianted word
+        [romanized_word, ... ]   
+        (if word can be romanized by unidecode and jp_dictionary,
+        returns multiple romanizations.)
     """
     if not word:
-        return word
+        return []
 
+    romanized_words = []
     if has_kanji(word):
-        word = romanize_japanese_name_by_name_dict(word)
-        word = romanize_japanese_location(word)
+        romanized_words = romanize_japanese_name_by_name_dict(word)
+        romanized_words.extend(romanize_japanese_location(word))
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
-        return jautils.hiragana_to_romaji(hiragana_word)
+        romanized_words.append(jautils.hiragana_to_romaji(hiragana_word))
+
     romanized_word = unidecode(word)
-    return romanized_word.strip()
-
-
-def romanize_text(query_txt):
-    """
-    Applies romanization to each word in query_txt.
-    This method uses unidecode and jautils for script variant.
-    Args:
-        query_txt: Search query
-    Returns:
-        script varianted query_txt (except kanji)
-    """
-    query_words = query_txt.split(' ')
-    return ' '.join([romanize_word(word) for word in query_words])
+    romanized_words.append(romanized_word.strip())
+    return romanized_words
