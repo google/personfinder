@@ -54,7 +54,7 @@ def create_sort_expressions():
     return [appengine_search.SortExpression(
         expression='_score',
         direction=appengine_search.SortExpression.DESCENDING,
-        default_value=1.0
+        default_value=0.0
     )]
 
 def enclose_in_parenthesis(query_txt):
@@ -103,7 +103,13 @@ def create_query_txt(query_txt):
 
 def get_person_ids_from_results(romanized_query, results_list):
     """
-    Returns person record_id (a part of romanized_query matches person name) list.
+    Returns person record_id of persons
+    whose name contains at least one word in romanized_query.
+    We need regexp because check romanized_query matches
+    at least a part of person name.
+    It also removes dups.
+    (i.e., If results_list contains multiple results with the same index_results,
+    it returns just one of them)
     """
     regexp = make_or_regexp(romanized_query)
     index_results = []
@@ -155,6 +161,7 @@ def search(repo, query_txt, max_results):
         enclose_in_double_quotes(word) for word in kanji_words_in_query_txt)
     romanized_query_with_kanji = romanized_query + ' ' +\
                                  double_quote_kanji_words_in_query_txt
+    romanized_query_with_kanji = double_quote_kanji_words_in_query_txt
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -174,16 +181,20 @@ def search(repo, query_txt, max_results):
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
     and_query = romanized_query + ' AND (repo: ' + repo + ')'
-    and_query_with_kanji = romanized_query_with_kanji + ' AND (repo: ' + repo + ')'
 
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
 
-    person_location_index_results_with_kanji = person_location_index.search(
-        appengine_search.Query(
-            query_string=and_query_with_kanji, options=options)
-    )
+    # For ranking same kanji higher than different kanji with the same reading.
+    person_location_index_results_with_kanji = []
+    if romanized_query_with_kanji:
+        and_query_with_kanji = romanized_query_with_kanji + ' AND (repo: ' + repo + ')'
+        person_location_index_results_with_kanji = person_location_index.search(
+            appengine_search.Query(
+                query_string=and_query_with_kanji, options=options)
+        )
+
     results_list = [person_location_index_results_with_kanji,
                     person_location_index_results]
 
@@ -264,16 +275,17 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields = []
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
-    for field_name in kwargs:
-        romanized_names = romanize_method(kwargs[field_name])
+    for field_name, field_value in kwargs.iteritems():
+        romanized_names = romanize_method(field_value)
         for index, romanized_name in enumerate(romanized_names):
             fields.extend(create_fields_for_rank('%s_%s_%d' %
-                                                 (field_name, romanize_method_name, index),
+                                                 (field_name,
+                                                  romanize_method_name, index),
                                                  romanized_name))
-            fields.extend(create_fields_for_rank('%s_%d' % (field_name, index), kwargs[field_name]))
         romanized_names_list.extend(romanized_names)
 
-    full_name_fields, romanized_full_names = create_full_name_without_space_fields(
+    full_name_fields, romanized_full_names =\
+            create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])
     fields.extend(full_name_fields)
     romanized_names_list.extend(romanized_full_names)
@@ -305,6 +317,17 @@ def create_romanized_location_fields(romanize_method, **kwargs):
             )
     return fields
 
+def create_non_romanized_fields(**kwargs):
+    """
+    Creates non romanized fields for ranking same kanji higher than
+    different kanji with the same reading.
+    """
+    fields = []
+    for field_name in kwargs:
+        fields.append(appengine_search.TextField(
+            name=field_name, value=kwargs[field_name]))
+    return fields
+
 def create_document(person):
     """
     Creates document for full text search.
@@ -318,6 +341,18 @@ def create_document(person):
     doc_id = repo + ':' + record_id
     fields.append(appengine_search.TextField(name='repo', value=repo))
     fields.append(appengine_search.TextField(name='record_id', value=record_id))
+
+    fields.extend(create_non_romanized_fields(
+            given_name=person.given_name,
+            family_name=person.family_name,
+            full_name=person.full_name,
+            alternate_names=person.alternate_names,
+            home_street=person.home_street,
+            home_city=person.home_city,
+            home_state=person.home_state,
+            home_postal_code=person.home_postal_code,
+            home_neighborhood=person.home_neighborhood,
+            home_country=person.home_country))
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
