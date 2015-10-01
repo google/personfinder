@@ -1,4 +1,5 @@
 #!/usr/bin/python2.7
+# coding: utf-8
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -82,7 +83,19 @@ def enclose_in_double_quotes(query_txt):
     return '"' + query_txt + '"'
 
 
-def create_query_txt(query_txt):
+def create_non_romanized_query(query_txt):
+    """
+    Creates non romanized query txt.
+    Args:
+        query_txt: Search query
+    Returns:
+        '"query_word1" "query_word2" ...'
+    """
+    query_words = query_txt.split(' ')
+    return ' '.join(enclose_in_double_quotes(word) for word in query_words)
+
+
+def create_romanized_query_txt(query_txt):
     """
     Applies romanization to each word in query_txt.
     Args:
@@ -105,8 +118,9 @@ def get_person_ids_from_results(romanized_query, results_list):
     """
     Returns person record_id of persons
     whose name contains at least one word in romanized_query.
-    We need regexp because check romanized_query matches
+    We need regexp to check romanized_query matches
     at least a part of person name.
+    To protect users' privacy, we should not return records matches location only.
     It also removes dups.
     (i.e., If results_list contains multiple results with the same index_results,
     it returns just one of them)
@@ -155,13 +169,8 @@ def search(repo, query_txt, max_results):
 
     # Remove double quotes so that we can safely apply enclose_in_double_quotes().
     query_txt = re.sub('"', '', query_txt)
-    romanized_query = create_query_txt(query_txt)
-    kanji_words_in_query_txt = script_variant.find_kanji_word(query_txt)
-    double_quote_kanji_words_in_query_txt = ' '.join(
-        enclose_in_double_quotes(word) for word in kanji_words_in_query_txt)
-    romanized_query_with_kanji = romanized_query + ' ' +\
-                                 double_quote_kanji_words_in_query_txt
-    romanized_query_with_kanji = double_quote_kanji_words_in_query_txt
+    romanized_query = create_romanized_query_txt(query_txt)
+    non_romanized_query = create_non_romanized_query(query_txt)
 
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
@@ -181,19 +190,16 @@ def search(repo, query_txt, max_results):
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
     and_query = romanized_query + ' AND (repo: ' + repo + ')'
-
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
 
-    # For ranking same kanji higher than different kanji with the same reading.
-    person_location_index_results_with_kanji = []
-    if romanized_query_with_kanji:
-        and_query_with_kanji = romanized_query_with_kanji + ' AND (repo: ' + repo + ')'
-        person_location_index_results_with_kanji = person_location_index.search(
-            appengine_search.Query(
-                query_string=and_query_with_kanji, options=options)
-        )
+    # To rank exact matches higher than non-exact matches with the same romanization.
+    non_romanized_and_query = non_romanized_query + ' AND (repo: ' + repo + ')'
+    person_location_index_results_with_kanji = person_location_index.search(
+        appengine_search.Query(
+            query_string=non_romanized_and_query, options=options)
+    )
 
     results_list = [person_location_index_results_with_kanji,
                     person_location_index_results]
@@ -319,8 +325,11 @@ def create_romanized_location_fields(romanize_method, **kwargs):
 
 def create_non_romanized_fields(**kwargs):
     """
-    Creates non romanized fields for ranking same kanji higher than
-    different kanji with the same reading.
+    Creates non romanized fields to rank exact matches higher than
+    non-exact matches with the same romanization.
+    e.g., 
+    if there are records record1:[name=菊地真], record2:[name=菊地眞],
+    get results(1st: 菊地真、2nd: 菊地眞) when search by "菊地 真"
     """
     fields = []
     for field_name in kwargs:

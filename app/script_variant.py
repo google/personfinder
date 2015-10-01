@@ -132,19 +132,3 @@ def romanize_word(word):
     romanized_word = unidecode(word)
     romanized_words.append(romanized_word.strip())
     return romanized_words
-
-
-def find_kanji_word(query_txt):
-    """
-    Finds kanji word from query_txt.
-    Args:
-        query_txt: Search query
-    Returns:
-        '"kanji1" "kanji2" ...'
-    """
-    query_words = query_txt.split(' ')
-    kanji_list_in_query_words = []
-    for word in query_words:
-        if re.match(ur'([\u3400-\u9fff])', word):
-            kanji_list_in_query_words.append(word)
-    return kanji_list_in_query_words
