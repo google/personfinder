@@ -311,7 +311,7 @@ class FullTextSearchTests(unittest.TestCase):
             set(['haiti/0909'])
 
         # Search Cyrillic record by full name without space
-        results = full_text_search.search('haiti', u'KotoriOtonashi', 5)
+        results = full_text_search.search('haiti', u'OtonashiKotori', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0909'])
 

@@ -8,12 +8,10 @@ import unittest
 
 class ScriptVariantTests(unittest.TestCase):
     def test_romanize_japanese_name_by_name_dict(self):
-        assert script_variant.romanize_japanese_name_by_name_dict(
-            u'雪歩') == [u'YUKIHO']
+        results = script_variant.romanize_japanese_name_by_name_dict(u'天海')
+        assert len(results) > 1
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'偶像大师') == [u'偶像大师']
-        assert script_variant.romanize_japanese_name_by_name_dict(
-            u'天海') == [u'TENKAI', u'AMAMI', u'AMAGAI', u'AMAUMI']
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'') == [u'']
 

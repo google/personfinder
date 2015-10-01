@@ -44,6 +44,18 @@ def has_kanji(word):
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
+def find_word_in_dict(word):
+    if not word:
+        return ['']
+
+    if word in JAPANESE_NAME_DICTIONARY:
+        yomigana_list = JAPANESE_NAME_DICTIONARY[word]
+        return [jautils.hiragana_to_romaji(yomigana)
+                for yomigana in yomigana_list]
+
+    return [word]
+
+
 def romanize_japanese_name_by_name_dict(word):
     """
     This method romanizes japanese name by using name dictionary.
@@ -57,12 +69,21 @@ def romanize_japanese_name_by_name_dict(word):
     if not word:
         return ['']
 
-    if word in JAPANESE_NAME_DICTIONARY:
-        yomigana_list = JAPANESE_NAME_DICTIONARY[word]
-        return [jautils.hiragana_to_romaji(yomigana)
-                for yomigana in yomigana_list]
-
-    return [word]
+    words = []
+    for index in xrange(1, len(word)):
+        first_part = word[:index]
+        last_part = word[index:]
+        romanized_first_parts = find_word_in_dict(first_part)
+        romanized_last_parts = find_word_in_dict(last_part)
+        for romanized_first_part in romanized_first_parts:
+            for romanized_last_part in romanized_last_parts:
+                if (romanized_first_part != first_part) and (
+                        romanized_last_part != last_part):
+                    words.append(romanized_first_part+romanized_last_part)
+                    words.append(romanized_last_part)
+                    words.append(romanized_first_part)
+    words.extend(find_word_in_dict(word))
+    return words
 
 
 def romanize_japanese_location(word):

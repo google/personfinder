@@ -145,7 +145,6 @@ def search(repo, query_txt, max_results):
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
     and_query = romanized_query + ' AND (repo: ' + repo + ')'
-
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
@@ -214,7 +213,7 @@ def create_full_name_list_without_space(given_names, family_names):
     return full_names
 
 
-def create_full_name_without_space_fields(romanize_method, given_name, family_name, index):
+def create_full_name_without_space_fields(romanize_method, given_name, family_name):
     """
     Creates fields with the full name without white spaces.
     Returns:
@@ -236,21 +235,6 @@ def create_full_name_without_space_fields(romanize_method, given_name, family_na
     return fields, romanized_name_list
 
 
-def split_full_name_without_space(romanize_method, full_name):
-    names = []
-    for index in xrange(1, len(full_name)):
-        family_name = full_name[:index]
-        given_name = full_name[index:]
-        romanized_family_names = romanize_method(family_name)
-        romanized_given_names = romanize_method(given_name)
-        for romanized_family_name in romanized_family_names:
-            for romanized_given_name in romanized_given_names:
-                if (romanized_family_name != family_name) and (
-                        romanized_given_name != given_name):
-                    names.append((given_name, family_name))
-    return names
-
-
 def create_romanized_name_fields(romanize_method, **kwargs):
     """
     Creates romanized name fields (romanized by romanize_method)
@@ -265,33 +249,12 @@ def create_romanized_name_fields(romanize_method, **kwargs):
             field_name, romanize_method_name), romanized_names))
         romanized_names_list.extend(romanized_names)
 
-    split_full_names = []
-    full_name = kwargs['full_name']
-    if full_name and not (' ' in full_name):
-        split_full_names = split_full_name_without_space(
-            romanize_method, full_name)
-        for index, names in enumerate(split_full_names):
-            given_name, family_name = names
-            romanized_given_names = romanize_method(given_name)
-            fields.extend(create_fields_for_rank('splited_full_name_given',
-                                                 romanized_names))
-            romanized_names_list.extend(romanized_given_names)
-            romanized_family_names = romanize_method(family_name)
-            fields.extend(create_fields_for_rank('splited_full_name_family',
-                                                 romanized_family_names))
-            romanized_names_list.extend(romanized_family_names)
-
     given_name = kwargs['given_name']
     family_name = kwargs['family_name']
-    given_names_family_names = []
-    given_names_family_names.append((given_name, family_name))
-    given_names_family_names.extend(split_full_names)
-    for index, given_name_family_name in enumerate(given_names_family_names):
-        given_name, family_name = given_name_family_name
-        full_name_fields, romanized_full_names = create_full_name_without_space_fields(
-            romanize_method, given_name, family_name, index)
-        fields.extend(full_name_fields)
-        romanized_names_list.extend(romanized_full_names)
+    full_name_fields, romanized_full_names = create_full_name_without_space_fields(
+        romanize_method, given_name, family_name)
+    fields.extend(full_name_fields)
+    romanized_names_list.extend(romanized_full_names)
 
     names = ':'.join([name for name in romanized_names_list if name])
     fields.append(
