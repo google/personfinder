@@ -7,20 +7,15 @@ import unittest
 
 
 class ScriptVariantTests(unittest.TestCase):
-    def test_romanize_japanese_name_by_name_dict(self):
-        assert script_variant.romanize_japanese_name_by_name_dict(
+    def test_romanize_japanese_word(self):
+        assert script_variant.romanize_japanese_word(
             u'雪歩') == [u'YUKIHO']
-        assert script_variant.romanize_japanese_name_by_name_dict(
+        assert script_variant.romanize_japanese_word(
             u'偶像大师') == [u'偶像大师']
-        assert script_variant.romanize_japanese_name_by_name_dict(
+        assert script_variant.romanize_japanese_word(
             u'天海') == [u'TENKAI', u'AMAMI', u'AMAGAI', u'AMAUMI']
-        assert script_variant.romanize_japanese_name_by_name_dict(
+        assert script_variant.romanize_japanese_word(
             u'') == [u'']
-
-    def test_romanize_japanese_location(self):
-        assert script_variant.romanize_japanese_location(u'中野') == [u'NAKANO']
-        assert script_variant.romanize_japanese_location(u'海门') == [u'海门']
-        assert script_variant.romanize_japanese_location(u'') == [u'']
 
     def test_romanize_word(self):
         assert script_variant.romanize_word_by_unidecode(u'Cœur') == [u'Coeur']

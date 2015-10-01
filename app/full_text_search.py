@@ -138,7 +138,7 @@ def search(repo, query_txt, max_results):
         sort_options=sort_opt,
         returned_fields=['record_id',
                          'names_romanized_by_romanize_word_by_unidecode',
-                         'names_romanized_by_romanize_japanese_name_by_name_dict'])
+                         'names_romanized_by_romanize_japanese_word'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -159,7 +159,7 @@ def search(repo, query_txt, max_results):
                 names = field.value
             if field.name == 'record_id':
                 id = field.value
-            if field.name == 'names_romanized_by_romanize_japanese_name_by_name_dict':
+            if field.name == 'names_romanized_by_romanize_japanese_word':
                 romanized_jp_names = field.value
 
         if regexp.search(names) or regexp.search(romanized_jp_names):
@@ -297,21 +297,16 @@ def create_document(person):
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
-    romanize_name_methods = [script_variant.romanize_word_by_unidecode,
-                             script_variant.romanize_japanese_name_by_name_dict]
+    romanize_methods = [script_variant.romanize_word_by_unidecode,
+                        script_variant.romanize_japanese_word]
 
-    romanize_location_mathods = [script_variant.romanize_word_by_unidecode,
-                                 script_variant.romanize_japanese_location]
-
-    for romanize_method in romanize_name_methods:
+    for romanize_method in romanize_methods:
         fields.extend(create_romanized_name_fields(
             romanize_method,
             given_name=person.given_name,
             family_name=person.family_name,
             full_name=person.full_name,
             alternate_names=person.alternate_names))
-
-    for romanize_method in romanize_location_mathods:
         fields.extend(create_romanized_location_fields(
             romanize_method,
             home_street=person.home_street,
