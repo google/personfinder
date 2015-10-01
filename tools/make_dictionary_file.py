@@ -1,3 +1,6 @@
+#!/usr/bin/python2.7
+
+import sys
 """
 Makes dictionary file from mozc
 (https://github.com/google/mozc/tree/master/src/data/dictionary_oss)
@@ -23,19 +26,24 @@ def make_dictionary(input_file_names, output_file_name, numbers):
     """
     yomigana_list = []
     for input_file_name in input_file_names:
-        input_file = open(input_file_name, 'r')
-        for line in input_file:
-            line = line.rstrip()
-            splited_line = line.split('\t')
-            id1 = int(splited_line[1])
-            id2 = int(splited_line[2])
-            if (check_number(id1, id2, numbers)):
-                yomigana = splited_line[0]
-                kanji = splited_line[4]
-                yomigana_list.append(kanji + '\t' + yomigana + '\n')
+        with open(input_file_name, 'r') as input_file:
+            input_file = open(input_file_name, 'r')
+            for line in input_file:
+                line = line.rstrip()
+                splited_line = line.split('\t')
+                if len(splited_line) == 5:
+                    id1 = int(splited_line[1])
+                    id2 = int(splited_line[2])
+                    if (check_number(id1, id2, numbers)):
+                        yomigana = splited_line[0]
+                        kanji = splited_line[4]
+                        yomigana_list.append(kanji + '\t' + yomigana + '\n')
+                else:
+                    print len(yomigana_list)
+                    print len(splited_line)
 
-    output_file = open(output_file_name, 'w')
-    output_file.writelines(yomigana_list)
+    with open(output_file_name, 'w') as output_file:
+        output_file.writelines(yomigana_list)
 
 
 def make_jp_name_dictionary(input_file_names):
@@ -58,3 +66,12 @@ def make_jp_location_dictionary(input_file_names):
     # (id1 == id2 == 1847 ~ 1850)
     numbers = [1847, 1848, 1849, 1850]
     make_dictionary(input_file_names, 'jp_location_dict.txt', numbers)
+
+def main(dictionaries):
+    make_jp_name_dictionary(dictionaries)
+    make_jp_location_dictionary(dictionaries)
+
+
+if __name__ == '__main__':
+    dictionaries = sys.argv
+    main(dictionaries)
