@@ -120,7 +120,8 @@ def get_person_ids_from_results(romanized_query, results_list):
     whose name contains at least one word in romanized_query.
     We need regexp to check romanized_query matches
     at least a part of person name.
-    To protect users' privacy, we should not return records matches location only.
+    To protect users' privacy, we should not return records
+    which match location only.
     It also removes dups.
     (i.e., If results_list contains multiple results with the same index_results,
     it returns just one of them)
@@ -196,12 +197,12 @@ def search(repo, query_txt, max_results):
 
     # To rank exact matches higher than non-exact matches with the same romanization.
     non_romanized_and_query = non_romanized_query + ' AND (repo: ' + repo + ')'
-    person_location_index_results_with_kanji = person_location_index.search(
+    non_romanized_person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=non_romanized_and_query, options=options)
     )
 
-    results_list = [person_location_index_results_with_kanji,
+    results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
 
     index_results = get_person_ids_from_results(query_txt, results_list)
@@ -290,7 +291,7 @@ def create_romanized_name_fields(romanize_method, **kwargs):
                                                  romanized_name))
         romanized_names_list.extend(romanized_names)
 
-    full_name_fields, romanized_full_names =\
+    full_name_fields, romanized_full_names = \
             create_full_name_without_space_fields(
         romanize_method, kwargs['given_name'], kwargs['family_name'])
     fields.extend(full_name_fields)
