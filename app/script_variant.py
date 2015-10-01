@@ -4,7 +4,7 @@ from unidecode import unidecode
 
 import os.path
 import re
-
+import logging
 def read_dictionary(file_name):
     """
     Reads dictionary file.
@@ -44,7 +44,16 @@ def has_kanji(word):
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
-def find_word_in_dict(word):
+def romanize_single_japanese_word_by_name_dict(word):
+    """
+    This method romanzies japanese name by using name dictionary.
+    If word isn't found in dictionary, this method doesn't
+    apply romanize.
+    This method can return multiple romanizations.
+    (because there are multiple ways to read the same kanji name in japanese)
+    Returns:
+        [romanized_jp_name, ...]
+    """
     if not word:
         return ['']
 
@@ -56,7 +65,7 @@ def find_word_in_dict(word):
     return [word]
 
 
-def romanize_japanese_name_by_name_dict(word):
+def romanize_japanese_name_by_name_dict(word, is_create=True):
     """
     This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
@@ -71,19 +80,23 @@ def romanize_japanese_name_by_name_dict(word):
 
     words = []
     for index in xrange(1, len(word)):
+        # split word because query word may not contains white space
         first_part = word[:index]
         last_part = word[index:]
-        romanized_first_parts = find_word_in_dict(first_part)
-        romanized_last_parts = find_word_in_dict(last_part)
+        romanized_first_parts = romanize_single_japanese_word_by_name_dict(
+            first_part)
+        romanized_last_parts = romanize_single_japanese_word_by_name_dict(
+            last_part)
         for romanized_first_part in romanized_first_parts:
             for romanized_last_part in romanized_last_parts:
-                if (romanized_first_part != first_part) and (
-                        romanized_last_part != last_part):
+                if romanized_first_part != first_part and\
+                   romanized_last_part != last_part:
                     words.append(romanized_first_part+romanized_last_part)
-                    words.append(romanized_last_part)
-                    words.append(romanized_first_part)
-    words.extend(find_word_in_dict(word))
-    return words
+                    if is_create:
+                        words.append(romanized_first_part)
+                        words.append(romanized_last_part)
+    words.extend(romanize_single_japanese_word_by_name_dict(word))
+    return list(set(words))
 
 
 def romanize_japanese_location(word):
@@ -143,7 +156,7 @@ def romanize_word(word):
 
     romanized_words = []
     if has_kanji(word):
-        romanized_words = romanize_japanese_name_by_name_dict(word)
+        romanized_words = romanize_japanese_name_by_name_dict(word, is_create=False)
         romanized_words.extend(romanize_japanese_location(word))
 
     if jautils.should_normalize(word):

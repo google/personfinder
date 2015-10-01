@@ -4,14 +4,25 @@
 
 import script_variant
 import unittest
-
+import sys
 
 class ScriptVariantTests(unittest.TestCase):
     def test_romanize_japanese_name_by_name_dict(self):
         results = script_variant.romanize_japanese_name_by_name_dict(u'天海')
         assert len(results) > 1
+        assert set(results) == set([u'HIROSHIWATARU', u'HIROSHIMARIN',
+                                    u'TAKASHIKAI', u'TAKASHIMARIN',
+                                    u'HIROSHIHIROSHI', u'UMI', u'TAKASHIHIROSHI',
+                                    u'TAKASHIHAI', u'MARIN', u'TENKAI',
+                                    u'HIROSHIUMI', u'HAI', u'HIROSHIKAI',
+                                    u'WATARU',u'TAKASHI', u'TAKASHIUMI',
+                                    u'HIROSHIHAI', u'AMAUMI', u'AMAMI',
+                                    u'HIROSHI', u'KAI', u'TAKASHIWATARU',
+                                    u'AMAGAI'])
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'偶像大师') == [u'偶像大师']
+        assert script_variant.romanize_japanese_name_by_name_dict(
+            u'響') == ['HIBIKI']
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'') == [u'']
 
@@ -20,8 +31,19 @@ class ScriptVariantTests(unittest.TestCase):
         assert script_variant.romanize_japanese_location(u'海门') == [u'海门']
         assert script_variant.romanize_japanese_location(u'') == [u'']
 
-    def test_romanize_word(self):
+    def test_romanize_word_by_unidecode(self):
         assert script_variant.romanize_word_by_unidecode(u'Cœur') == [u'Coeur']
         assert script_variant.romanize_word_by_unidecode(u'貴音') == [u'Gui Yin']
-        assert script_variant.romanize_word_by_unidecode(u'きくちまこと') == [u'KIKUCHIMAKOTO']
+        assert script_variant.romanize_word_by_unidecode(u'きくちまこと') ==\
+            [u'KIKUCHIMAKOTO']
         assert script_variant.romanize_word_by_unidecode(u'') == [u'']
+
+    def test_romanize_word(word):
+        results = script_variant.romanize_word(u'天海')
+        assert set(results) == set([u'TAKASHIWATARU', u'TAKASHIHIROSHI',
+                                    u'HIROSHIKAI', u'TAKASHIHAI', u'TENKAI',
+                                    u'HIROSHIWATARU', u'HIROSHIMARIN',
+                                    u'TAKASHIKAI', u'TAKASHIUMI', u'TAKASHIMARIN',
+                                    u'AMAMI', u'HIROSHIHIROSHI', u'HIROSHIUMI',
+                                    u'HIROSHIHAI', u'AMAGAI', u'AMAUMI', u'天海',
+                                    u'Tian Hai',])
