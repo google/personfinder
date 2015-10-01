@@ -31,20 +31,7 @@ def read_dictionary(file_name):
         return None
     return dictionary
 
-def combine_name_location_dictionary(name_dict, location_dict):
-    name_location_dict = dict(name_dict)
-    for kanji, hiragana_set in location_dict.items():
-        if kanji in name_dict:
-            name_location_dict[kanji] = name_dict[kanji].union(hiragana_set)
-        else:
-            name_location_dict[kanji] = hiragana_set.copy()
-    return name_location_dict
-
-JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
-JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
-
-JAPANESE_NAME_LOCATION_DICTIONARY = combine_name_location_dictionary(
-    JAPANESE_NAME_DICTIONARY, JAPANESE_LOCATION_DICTIONARY)
+JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('japanese_name_location_dict.txt')
 
 def has_kanji(word):
     """
