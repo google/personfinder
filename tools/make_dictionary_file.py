@@ -3,7 +3,9 @@
 import sys
 """
 Makes dictionary file from mozc
-(https://github.com/google/mozc/tree/master/src/data/dictionary_oss)
+(https://github.com/google/mozc/tree/master/src/data/dictionary_oss/dictionary*)
+
+The path to the output file: /personfinder/app/
 """
 
 def check_number(id1, id2, numbers):
@@ -63,11 +65,12 @@ def make_jp_location_dictionary(input_file_names):
     make_dictionary(input_file_names, 'jp_location_dict.txt', numbers)
 
 
-def main(dictionaries):
+def main():
+    dictionaries = sys.argv
+    dictionaries = dictionaries[1:]
     make_jp_name_dictionary(dictionaries)
     make_jp_location_dictionary(dictionaries)
 
 
 if __name__ == '__main__':
-    dictionaries = sys.argv
-    main(dictionaries[1:])
+    main()
