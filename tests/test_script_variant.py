@@ -11,6 +11,8 @@ class ScriptVariantTests(unittest.TestCase):
         assert script_variant.romanize_japanese_word(
             u'雪歩') == [u'YUKIHO']
         assert script_variant.romanize_japanese_word(
+            u'東京') == [u'TOKYO']
+        assert script_variant.romanize_japanese_word(
             u'偶像大师') == [u'偶像大师']
         assert script_variant.romanize_japanese_word(
             u'天海') == [u'TENKAI', u'AMAMI', u'AMAGAI', u'AMAUMI']
