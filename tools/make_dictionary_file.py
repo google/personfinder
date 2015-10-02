@@ -6,7 +6,7 @@ dictionary*)
 
 command line example: tools/make_dictionary_file.py dictionary.txt ...
 
-The path to the output file: app/jp_location_dict.txt, app/japanese_name_dict.txt
+The path to the output file: app/jp_name_location_dict.txt
 """
 import sys
 
@@ -45,32 +45,22 @@ def make_dictionary(input_file_names, output_file_name, numbers):
         output_file.writelines(yomigana_list)
 
 
-def make_jp_name_dictionary(input_file_names):
+def make_jp_name_location_dictionary(input_file_names):
     """
-    Makes japanese name dictionary.
+    Makes japanese name and location dictionary.
     """
     # 1845: id for given name in mozc dictionary
     # 1846: id for family name in mozc dictionary
-    # if we want to get given name, we need to get results (id1 == id2 == 1845)
-    numbers = [1845, 1846]
-    make_dictionary(input_file_names, 'app/japanese_name_dict.txt', numbers)
-
-
-def make_jp_location_dictionary(input_file_names):
-    """
-    Makes japanese location dictionary.
-    """
     # 1847 ~ 1850: ids for location in mozc dictionary
-    # if we want to get location, we need to get results
-    # (id1 == id2 == 1847 ~ 1850)
-    numbers = [1847, 1848, 1849, 1850]
-    make_dictionary(input_file_names, 'app/jp_location_dict.txt', numbers)
+    # if we want to get given name, we need to get results (id1 == id2 == 1845)
+    numbers = [1845, 1846, 1847, 1848, 1849, 1850]
+    make_dictionary(input_file_names, 'app/jp_name_location_dict.txt', numbers)
+
 
 def main():
     dictionaries = sys.argv
     dictionaries = dictionaries[1:]
-    make_jp_name_dictionary(dictionaries)
-    make_jp_location_dictionary(dictionaries)
+    make_jp_name_location_dictionary(dictionaries)
 
 
 if __name__ == '__main__':
