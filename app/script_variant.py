@@ -77,8 +77,8 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
     This method can return multiple romanizations.
     (because there are multiple ways to read the same kanji name in japanese)
     Args:
-        for_index: this method is called for indexing or not
-                   when you want to romanize query txt, set this False
+        for_index: Set this to True for indexing purpose.
+                   Set this to False when you want to romanize query text.
     Returns:
         [romanized_jp_name, and romanized_jp_name(split_word), ...]
     """
@@ -87,10 +87,11 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
 
     words = []
     for index in xrange(1, len(word)):
-        # split word because query word may not contains white space
-        # to support romanizing fullname without space.
-        # e.g., if the query (e.g., "山田太郎") doesn't contain white space,
-        # it would work return words ("yamatataro, yamadataro")
+        # Splits the word to support romanizing fullname without space.
+        # If the query is a full name without white space(e.g., "山田太郎"),
+        # and the first/last name is in the dictionary,
+        # but the full name is not in the dictionary,
+        # it can still return romanization "yamadataro".
         first_part = word[:index]
         last_part = word[index:]
         romanized_first_parts = romanize_single_japanese_word_by_name_dict(
@@ -107,6 +108,10 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
                     # we don't need these fields for search queries
                     # because we should return search result for search queries.
                     # ("yamadataro")
+                    # e.g., if there is a record [name = "山田太郎"],
+                    # you can search by query: "yamada", "taro" or "yamadataro"
+                    # if you add these fields for query (e.g., "山田太郎"),
+                    # results contain records which can be search by "yamada"
                     if for_index:
                         words.append(romanized_first_part)
                         words.append(romanized_last_part)
