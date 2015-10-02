@@ -1,3 +1,5 @@
+# coding:utf-8
+
 import jautils
 
 from unidecode import unidecode
@@ -46,11 +48,13 @@ def has_kanji(word):
 
 def romanize_single_japanese_word_by_name_dict(word):
     """
-    This method romanzies japanese name by using name dictionary.
+    This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
     This method can return multiple romanizations.
     (because there are multiple ways to read the same kanji name in japanese)
+    This method doesn't support romanizing full names using first/last
+    names in the dictionary.
     Returns:
         [romanized_jp_name, ...]
     """
@@ -65,15 +69,17 @@ def romanize_single_japanese_word_by_name_dict(word):
     return [word]
 
 
-def romanize_japanese_name_by_name_dict(word, is_create=True):
+def romanize_japanese_name_by_name_dict(word, for_index=True):
     """
     This method romanizes japanese name by using name dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
     This method can return multiple romanizations.
     (because there are multiple ways to read the same kanji name in japanese)
+    Args:
+        for_index: this method is called for indexing or not
     Returns:
-        [romanized_jp_name, ...]
+        [romanized_jp_name, and romanized_jp_name(split_word), ...]
     """
     if not word:
         return ['']
@@ -81,6 +87,8 @@ def romanize_japanese_name_by_name_dict(word, is_create=True):
     words = []
     for index in xrange(1, len(word)):
         # split word because query word may not contains white space
+        # e.g., if the query (e.g., "山田") doesn't contain white space,
+        # it would work return words ("yamata, yamada")
         first_part = word[:index]
         last_part = word[index:]
         romanized_first_parts = romanize_single_japanese_word_by_name_dict(
@@ -89,10 +97,12 @@ def romanize_japanese_name_by_name_dict(word, is_create=True):
             last_part)
         for romanized_first_part in romanized_first_parts:
             for romanized_last_part in romanized_last_parts:
-                if romanized_first_part != first_part and\
-                   romanized_last_part != last_part:
+                if romanized_first_part != first_part and \
+                        romanized_last_part != last_part:
                     words.append(romanized_first_part+romanized_last_part)
-                    if is_create:
+                    # To search by the query which doesn't contains white sapce,
+                    # we add them to index.
+                    if for_index:
                         words.append(romanized_first_part)
                         words.append(romanized_last_part)
     words.extend(romanize_single_japanese_word_by_name_dict(word))
@@ -156,7 +166,9 @@ def romanize_word(word):
 
     romanized_words = []
     if has_kanji(word):
-        romanized_words = romanize_japanese_name_by_name_dict(word, is_create=False)
+        # Add for_index parameter to normalize_word
+        romanized_words = romanize_japanese_name_by_name_dict(word,
+                                                              for_index=False)
         romanized_words.extend(romanize_japanese_location(word))
 
     if jautils.should_normalize(word):

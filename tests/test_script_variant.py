@@ -8,17 +8,11 @@ import sys
 
 class ScriptVariantTests(unittest.TestCase):
     def test_romanize_japanese_name_by_name_dict(self):
-        results = script_variant.romanize_japanese_name_by_name_dict(u'天海')
-        assert len(results) > 1
-        assert set(results) == set([u'HIROSHIWATARU', u'HIROSHIMARIN',
-                                    u'TAKASHIKAI', u'TAKASHIMARIN',
-                                    u'HIROSHIHIROSHI', u'UMI', u'TAKASHIHIROSHI',
-                                    u'TAKASHIHAI', u'MARIN', u'TENKAI',
-                                    u'HIROSHIUMI', u'HAI', u'HIROSHIKAI',
-                                    u'WATARU',u'TAKASHI', u'TAKASHIUMI',
-                                    u'HIROSHIHAI', u'AMAUMI', u'AMAMI',
-                                    u'HIROSHI', u'KAI', u'TAKASHIWATARU',
-                                    u'AMAGAI'])
+        results = script_variant.romanize_japanese_name_by_name_dict(u'天海春香')
+        assert set(results) == set([u"AMAMIHARUKA", u"TENKAI", u"TENKAIHARUKA",
+                                    u"AMAGAIHARUKA", u"AMAMI", u"HARUKA",
+                                    u"AMAGAI", u"AMAUMIHARUKA", u"AMAUMI",
+                                    u"天海春香", ])
         assert script_variant.romanize_japanese_name_by_name_dict(
             u'偶像大师') == [u'偶像大师']
         assert script_variant.romanize_japanese_name_by_name_dict(
