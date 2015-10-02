@@ -32,8 +32,8 @@ class ScriptVariantTests(unittest.TestCase):
             [u'KIKUCHIMAKOTO']
         assert script_variant.romanize_word_by_unidecode(u'') == [u'']
 
-    def test_romanize_word(word):
-        results = script_variant.romanize_word(u'天海')
+    def test_romanize_search_query(word):
+        results = script_variant.romanize_search_query(u'天海')
         assert set(results) == set([u'TAKASHIWATARU', u'TAKASHIHIROSHI',
                                     u'HIROSHIKAI', u'TAKASHIHAI', u'TENKAI',
                                     u'HIROSHIWATARU', u'HIROSHIMARIN',

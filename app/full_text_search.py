@@ -41,7 +41,7 @@ def make_or_regexp(query_txt):
     query_words = query_txt.split(' ')
     query_list = []
     for word in query_words:
-        romanized_word_list = script_variant.romanize_word(word)
+        romanized_word_list = script_variant.romanize_search_query(word)
         query_list.extend(romanized_word_list)
     regexp = '|'.join([re.escape(word) for word in query_list if word])
     return re.compile(regexp, re.I)
@@ -106,7 +106,7 @@ def create_romanized_query_txt(query_txt):
     query_words = query_txt.split(' ')
     query_list = []
     for word in query_words:
-        romanized_word_list = script_variant.romanize_word(word)
+        romanized_word_list = script_variant.romanize_search_query(word)
         romanized_word = ' OR '.join(enclose_in_double_quotes(word)
                                      for word in romanized_word_list)
         query_list.append(romanized_word)

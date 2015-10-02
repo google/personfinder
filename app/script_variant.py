@@ -78,6 +78,7 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
     (because there are multiple ways to read the same kanji name in japanese)
     Args:
         for_index: this method is called for indexing or not
+                   when you want to romanize query txt, set this False
     Returns:
         [romanized_jp_name, and romanized_jp_name(split_word), ...]
     """
@@ -87,8 +88,9 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
     words = []
     for index in xrange(1, len(word)):
         # split word because query word may not contains white space
-        # e.g., if the query (e.g., "山田") doesn't contain white space,
-        # it would work return words ("yamata, yamada")
+        # to support romanizing fullname without space.
+        # e.g., if the query (e.g., "山田太郎") doesn't contain white space,
+        # it would work return words ("yamatataro, yamadataro")
         first_part = word[:index]
         last_part = word[index:]
         romanized_first_parts = romanize_single_japanese_word_by_name_dict(
@@ -100,8 +102,11 @@ def romanize_japanese_name_by_name_dict(word, for_index=True):
                 if romanized_first_part != first_part and \
                         romanized_last_part != last_part:
                     words.append(romanized_first_part+romanized_last_part)
-                    # To search by the query which doesn't contains white sapce,
-                    # we add them to index.
+                    # if record contains a full name with kanji (e.g., "山田太郎"),
+                    # we need to add first/last name. ("taro", "yamada")
+                    # we don't need these fields for search queries
+                    # because we should return search result for search queries.
+                    # ("yamadataro")
                     if for_index:
                         words.append(romanized_first_part)
                         words.append(romanized_last_part)
@@ -150,9 +155,9 @@ def romanize_word_by_unidecode(word):
     return [romanized_word.strip()]
 
 
-def romanize_word(word):
+def romanize_search_query(word):
     """
-    This method romanizes all languages.
+    This method romanizes all languages for search query.
     If word is hiragana or katakana, it is romanized by jautils.
     Args:
         word: should be script varianted
@@ -166,7 +171,6 @@ def romanize_word(word):
 
     romanized_words = []
     if has_kanji(word):
-        # Add for_index parameter to normalize_word
         romanized_words = romanize_japanese_name_by_name_dict(word,
                                                               for_index=False)
         romanized_words.extend(romanize_japanese_location(word))
