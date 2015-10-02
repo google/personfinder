@@ -17,13 +17,13 @@
 """Tests for full_text_search.py"""
 
 import datetime
-import logging
 import unittest
 
 from google.appengine.ext import db
 from google.appengine.ext import testbed
 from google.appengine.api import search
-
+import sys
+import logging
 import delete
 import full_text_search
 import model
@@ -71,10 +71,10 @@ class FullTextSearchTests(unittest.TestCase):
         )
         self.p5 = model.Person.create_original_with_record_id(
             'haiti',
-            'haiti/0829',
-            given_name='Makoto',
-            family_name='Kikuchi',
-            full_name='Makoto Kikuchi',
+            'haiti/0522',
+            given_name='Ami',
+            family_name='Futami',
+            full_name='Ami Futami',
             entry_date=TEST_DATETIME
         )
         self.p6 = model.Person.create_original_with_record_id(
@@ -147,6 +147,18 @@ class FullTextSearchTests(unittest.TestCase):
             entry_date=TEST_DATETIME)
         self.p14 = model.Person.create_original_with_record_id(
             'haiti',
+            'haiti/0829',
+            given_name=u'真',
+            family_name=u'菊地',
+            entry_date=TEST_DATETIME)
+        self.p15 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/1829',
+            given_name=u'眞',
+            family_name=u'菊地',
+            entry_date=TEST_DATETIME)
+        self.p16 = model.Person.create_original_with_record_id(
+            'haiti',
             'haiti/0909',
             full_name=u'音無小鳥',
             entry_date=TEST_DATETIME)
@@ -171,6 +183,8 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p12)
         db.put(self.p13)
         db.put(self.p14)
+        db.put(self.p15)
+        db.put(self.p16)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -185,6 +199,9 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p12)
         full_text_search.add_record_to_index(self.p13)
         full_text_search.add_record_to_index(self.p14)
+        full_text_search.add_record_to_index(self.p15)
+        full_text_search.add_record_to_index(self.p16)
+
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -259,7 +276,7 @@ class FullTextSearchTests(unittest.TestCase):
 
         # Search deleted record
         delete.delete_person(self, self.p5)
-        results = full_text_search.search('haiti', 'Makoto', 5)
+        results = full_text_search.search('haiti', 'Ami', 5)
         assert not results
 
         # Check rank order (name match heigher than location match)
@@ -276,6 +293,16 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'千早 荒尾', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
+
+        # Check rank order
+        # (same kanji higher than different kanji with the same reading)
+
+        results = full_text_search.search('haiti', u'菊地 真', 5)
+        assert [r.record_id for r in results] == \
+            ['haiti/0829', 'haiti/1829']
+        results = full_text_search.search('haiti', u'菊地 眞', 5)
+        assert [r.record_id for r in results] == \
+            ['haiti/1829', 'haiti/0829']
 
         # Search kanji record by multi reading
         results = full_text_search.search('haiti', u'hagiwara', 5)
