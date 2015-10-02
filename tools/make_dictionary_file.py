@@ -6,7 +6,7 @@ dictionary*)
 
 command line example: tools/make_dictionary_file.py dictionary.txt ...
 
-The path to the output file: app/jp_name_location_dict.txt
+The path to the output file: app/japanese_name_location_dict.txt
 """
 import sys
 
@@ -54,7 +54,7 @@ def make_jp_name_location_dictionary(input_file_names):
     # 1847 ~ 1850: ids for location in mozc dictionary
     # if we want to get given name, we need to get results (id1 == id2 == 1845)
     numbers = [1845, 1846, 1847, 1848, 1849, 1850]
-    make_dictionary(input_file_names, 'app/jp_name_location_dict.txt', numbers)
+    make_dictionary(input_file_names, 'app/japanese_name_location_dict.txt', numbers)
 
 
 def main():
