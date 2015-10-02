@@ -1,3 +1,4 @@
+#!/usr/bin/python2.7
 """
 Makes dictionary file from mozc
 (https://github.com/google/Mozc dictionary/tree/master/src/data/dictionary_oss/
@@ -7,9 +8,6 @@ command line example: tools/make_dictionary_file.py dictionary.txt ...
 
 The path to the output file: app/jp_location_dict.txt, app/japanese_name_dict.txt
 """
-
-#!/usr/bin/python2.7
-
 import sys
 
 def check_number(id1, id2, numbers):
