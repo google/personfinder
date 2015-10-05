@@ -7,37 +7,51 @@ Steps to create the container
 -----------------------------
 
 1. Setup the environment for Docker (see Docker's webpage)
-2. From `personfinder/docker` folder, run
+2. Build Person Finder Docker image
 
-    $ docker build -t <image-name> .
+    From `personfinder/docker` folder, run
+
+        $ docker build -t <image-name> .
 
     e.g.
 
-    $ docker build -t personfinder-image .
+        $ docker build -t personfinder-image .
 
     This will take a while and will create the docker image.
 
-3. Create the container running
+3. Create the container
+
+    Run the following command
 
     $ ./run-container.sh <image-name> [<container-name>]
 
     e.g.
 
-    $ ./run-container.sh personfinder-image personfinder-container  # Container's name is optional
+        $ ./run-container.sh personfinder-image personfinder-container  # Container's name is optional
 
-    This will create and run the container image.
+    This will create and run at the same time the container image. To manage the container's lifecycle (start,
+    stop, destroy, etc.) please refer to the Docker's documentation.
 
-4. Run the Personfinder local server and test it from host's web browser (https://<container-ip-address>:8000
+4. Run the Person Finder local server and test it from host's web browser
 
-    $ gae-run-app.sh
+    In the SHELL created inside the Person Finder container, run the following command to run the
+    Person Finder local server:
 
-5. To initialize the datastore, open one more Shell inside the running container with the following command
+        # gae-run-app.sh
 
-    $ docker exec -it <container-name> /bin/bash
+    You will be able to access the server from the Host's web browser at https://<container-ip-address>:8000
+
+
+5. Initialize the datastore:
+
+    open one more SHELL inside the running container with the following command (Docker version 1.3.0 or higher,
+    for older Docker versions, docker attach command should do the job as well).
+
+        # docker exec -it <container-name> /bin/bash
 
     then run (password is "root")
 
-    $ setup_datastore.sh
+        # setup_datastore.sh
 
 
 NOTES
