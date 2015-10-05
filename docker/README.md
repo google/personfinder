@@ -51,7 +51,7 @@ Steps to create the container
     command on the Host (Docker version 1.3.0 or higher, for older Docker
     versions, docker's "attach" command should do the job as well).
 
-        # docker exec -it <container-name> /bin/bash
+        $ docker exec -it <container-name> /bin/bash
 
     then, inside the container, run the following (password is "root")
 
