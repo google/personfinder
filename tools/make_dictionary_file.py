@@ -1,10 +1,9 @@
 #!/usr/bin/python2.7
 """
 Makes dictionary file from mozc
-(https://github.com/google/Mozc dictionary/tree/master/src/data/dictionary_oss/
-dictionary*)
+(dictionary*.txt in https://github.com/google/mozc/tree/master/src/data/dictionary_oss/)
 
-command line example: tools/make_dictionary_file.py dictionary.txt ...
+command line example: tools/make_dictionary_file.py dictionary*.txt
 
 The path to the output file: app/japanese_name_location_dict.txt
 """
@@ -58,8 +57,7 @@ def make_jp_name_location_dictionary(input_file_names):
 
 
 def main():
-    dictionaries = sys.argv
-    dictionaries = dictionaries[1:]
+    dictionaries = sys.argv[1:]
     make_jp_name_location_dictionary(dictionaries)
 
 
