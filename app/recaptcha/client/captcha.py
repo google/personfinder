@@ -1,10 +1,13 @@
 # This file is originally from recaptcha-client 1.0.5 (obtained from pypi),
-# now modified to support custom translations.
+# now modified to use new Recaptcha.
 
 import urllib
 import urllib2
 
+import config
 import simplejson
+
+from django.utils.html import escape
 
 API_SSL_SERVER = 'https://www.google.com/recaptcha/api'
 # We leave out the URL scheme so that browsers won't complain when accessed
@@ -17,102 +20,74 @@ class RecaptchaResponse(object):
         self.is_valid = is_valid
         self.error_code = error_code
 
-def get_display_html(public_key, use_ssl=False, error=None,
-                     lang='en', custom_translations={}):
+def get_display_html(site_key, use_ssl=False, error=None,
+                     lang='en'):
     """Gets the HTML to display for reCAPTCHA
 
-    public_key -- The public api key
+    site_key -- The public api key
     use_ssl -- Should the request be sent over ssl?
     error -- An error message to display (from RecaptchaResponse.error_code)"""
 
-    error_param = ''
-    if error:
-        error_param = '&error=%s' % error
     server = API_SERVER
     if use_ssl:
         server = API_SSL_SERVER
 
-    # _('...') used to return objects that are unpalatable to simplejson.
-    # For better compatibility, we keep this conversion code, but execute it
-    # only when values are non-unicode to prevent UnicodeEncodeError.
-    if any(not isinstance(v, unicode) for v in custom_translations.values()):
-      custom_translations = dict((k, unicode(str(v), 'utf-8'))
-                                 for (k, v) in custom_translations.items())
-
-    options = {
-        'theme': 'white',
-        'lang': lang,
-        'custom_translations': custom_translations
-    }
-
-    return '''
-<script>
-  var RecaptchaOptions = %(options)s;
-</script>
-<script src="%(server)s/challenge?k=%(public_key)s%(error_param)s"></script>
-
+    html = '''
+<script src='%(server)s.js?hl=%(lang)s'></script>
+<div class='g-recaptcha' data-sitekey='%(site_key)s'></div>
 <noscript>
-  <iframe src="%(server)s/noscript?k=%(public_key)s%(error_param)s"
-      height="300" width="500" frameborder="0"></iframe><br>
-  <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-  <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
-</noscript>
+  <div style='width: 302px; height: 422px;'>
+    <div style='width: 302px; height: 422px; position: relative;'>
+      <div style='width: 302px; height: 422px; position: absolute;'>
+        <iframe src='%(server)s/fallback?k=%(site_key)s'
+                frameborder="0" scrolling="no"
+                style='width: 302px; height:422px; border-style: none;'>
+        </iframe>
+      </div>
+
+    </div>
+      <div style='width: 300px; height: 60px; border-style: none;
+                  bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                  background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;'>
+        <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                  class="g-recaptcha-response"
+                  style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                         margin: 10px 25px; padding: 0px; resize: none;">
+        </textarea>
+      </div>
+  </div>
+</noscript><br/><br/><br/>
 ''' % {
-    'options': simplejson.dumps(options),
     'server': server,
-    'public_key': public_key,
-    'error_param': error_param,
+    'lang': lang,
+    'site_key': site_key,
 }
+    if error:
+        return "<div>%(error)s</div>" % {'error': escape(error)} + html
+    else:
+        return html
 
 
-def submit (recaptcha_challenge_field,
-            recaptcha_response_field,
-            private_key,
-            remoteip):
+def submit (recaptcha_response):
     """
     Submits a reCAPTCHA request for verification. Returns RecaptchaResponse
     for the request
 
-    recaptcha_challenge_field -- The value of recaptcha_challenge_field from the form
-    recaptcha_response_field -- The value of recaptcha_response_field from the form
-    private_key -- your reCAPTCHA private key
-    remoteip -- the user's ip address
+    recaptcha_response -- The value of recaptcha_response
     """
 
-    if not (recaptcha_response_field and recaptcha_challenge_field and
-            len (recaptcha_response_field) and len (recaptcha_challenge_field)):
-        return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
-    
+    if not (recaptcha_response and len(recaptcha_response)):
+        return RecaptchaResponse (is_valid=False, error_code='incorrect-captcha-sol')
 
-    def encode_if_necessary(s):
-        if isinstance(s, unicode):
-            return s.encode('utf-8')
-        return s
-
-    params = urllib.urlencode ({
-            'privatekey': encode_if_necessary(private_key),
-            'remoteip' :  encode_if_necessary(remoteip),
-            'challenge':  encode_if_necessary(recaptcha_challenge_field),
-            'response' :  encode_if_necessary(recaptcha_response_field),
-            })
-
-    request = urllib2.Request (
-        url = "http://%s/verify" % VERIFY_SERVER,
-        data = params,
-        headers = {
-            "Content-type": "application/x-www-form-urlencoded",
-            "User-agent": "reCAPTCHA Python"
-            }
-        )
-    
-    httpresp = urllib2.urlopen (request)
-
-    return_values = httpresp.read ().splitlines ();
-    httpresp.close();
-
-    return_code = return_values [0]
-
-    if (return_code == "true"):
+    secret_key = config.get('captcha_secret_key')
+    request_url = (
+        "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s"
+        % (secret_key, recaptcha_response))
+    recaptcha_request = urllib2.Request (request_url)
+    response = urllib2.urlopen (recaptcha_request)
+    result = simplejson.load(response)
+    result_code = result['success']
+    if result_code:
         return RecaptchaResponse (is_valid=True)
     else:
-        return RecaptchaResponse (is_valid=False, error_code = return_values [1])
+        return RecaptchaResponse (is_valid=False, error_code=result['error-codes'][0])
