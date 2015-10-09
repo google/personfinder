@@ -88,6 +88,7 @@ HANDLER_CLASSES['api/subscribe'] = 'api.Subscribe'
 HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
 HANDLER_CLASSES['api/stats'] = 'api.Stats'
 HANDLER_CLASSES['api/handle_sms'] = 'api.HandleSMS'
+HANDLER_CLASSES['api/photo_upload'] = 'api.PhotoUpload'
 HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
@@ -455,14 +456,6 @@ class Main(webapp.RequestHandler):
 
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
-
-        # Setup datastore if that has not been done before.
-        # The first time Person Finder is run, the repository list
-        # is empty. Let's use this info to check whether
-        # setup_datastore has been called before.
-        if not model.Repo.list():
-            logging.info('First session on Person Finder: set datastore up')
-            setup.setup_datastore ()
 
         # If requested, set the clock before doing anything clock-related.
         # Only works on localhost for testing.  Specify ?utcnow=1293840000 to
