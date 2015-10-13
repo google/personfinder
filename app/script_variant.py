@@ -31,9 +31,7 @@ def read_dictionary(file_name):
         return None
     return dictionary
 
-JAPANESE_NAME_DICTIONARY = read_dictionary('japanese_name_dict.txt')
-JAPANESE_LOCATION_DICTIONARY = read_dictionary('jp_location_dict.txt')
-
+JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('japanese_name_location_dict.txt')
 
 def has_kanji(word):
     """
@@ -44,42 +42,21 @@ def has_kanji(word):
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
-def romanize_japanese_name_by_name_dict(word):
+def romanize_japanese_word(word):
     """
-    This method romanizes japanese name by using name dictionary.
-    If word isn't found in dictionary, this method doesn't
-    apply romanize.
-    This method can return multiple romanizations.
-    (because there are multiple ways to read the same kanji name in japanese)
-    Returns:
-        [romanized_jp_name, ...]
-    """
-    if not word:
-        return ['']
-
-    if word in JAPANESE_NAME_DICTIONARY:
-        yomigana_list = JAPANESE_NAME_DICTIONARY[word]
-        return [jautils.hiragana_to_romaji(yomigana)
-                for yomigana in yomigana_list]
-
-    return [word]
-
-
-def romanize_japanese_location(word):
-    """
-    This method romanizes japanese location by using name dictionary.
+    This method romanizes japanese word by using dictionary.
     If word isn't found in dictionary, this method doesn't
     apply romanize.
     This method can return multiple romanizations.
     (because there are multiple ways to read the same kanji location in japanese)
     Returns:
-        [romanized_jp_location, ...]
+        [romanized_jp_word, ...]
     """
     if not word:
         return ['']
 
-    if word in JAPANESE_LOCATION_DICTIONARY:
-        yomigana_list = JAPANESE_LOCATION_DICTIONARY[word]
+    if word in JAPANESE_NAME_LOCATION_DICTIONARY:
+        yomigana_list = JAPANESE_NAME_LOCATION_DICTIONARY[word]
         return [jautils.hiragana_to_romaji(yomigana)
                 for yomigana in yomigana_list]
 
@@ -122,8 +99,7 @@ def romanize_word(word):
 
     romanized_words = []
     if has_kanji(word):
-        romanized_words = romanize_japanese_name_by_name_dict(word)
-        romanized_words.extend(romanize_japanese_location(word))
+        romanized_words = romanize_japanese_word(word)
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)
