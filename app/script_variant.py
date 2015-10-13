@@ -1,10 +1,12 @@
+# coding:utf-8
+
 import jautils
 
 from unidecode import unidecode
 
 import os.path
 import re
-
+import logging
 def read_dictionary(file_name):
     """
     Reads dictionary file.
@@ -42,13 +44,15 @@ def has_kanji(word):
     return re.match(ur'([\u3400-\u9fff])', word)
 
 
-def romanize_japanese_word(word):
+def romanize_single_japanese_word(word):
     """
-    This method romanizes japanese word by using dictionary.
-    If word isn't found in dictionary, this method doesn't
-    apply romanize.
-    This method can return multiple romanizations.
-    (because there are multiple ways to read the same kanji location in japanese)
+    This method romanizes a single Japanese word using a dictionary.
+    If the word isn't found in the dictionary, this method returns the word as is.
+    This method can return multiple romanizations
+    (because there are multiple ways to read the same kanji name in Japanese).
+    This method doesn't support romanizing full names using first/last
+    names in the dictionary.
+
     Returns:
         [romanized_jp_word, ...]
     """
@@ -61,6 +65,65 @@ def romanize_japanese_word(word):
                 for yomigana in yomigana_list]
 
     return [word]
+
+
+def romanize_japanese_word(word, for_index=True):
+    """
+    This method romanizes a Japanese text chunk using a dictionary.
+    If the word isn't found in the dictionary, this method returns the word as is.
+    This method can return multiple romanizations
+    (because there are multiple ways to read the same kanji name in Japanese).
+
+    This method can romanize full names without a white space (e.g., "山田太郎")
+    if the first/last names are in the dictionary.
+
+    Args:
+        for_index: Set this to True for indexing purpose.
+                   Set this to False when you want to romanize query text.
+    Returns:
+        [romanized_jp_word, ...]
+    """
+    if not word:
+        return ['']
+
+    words = set()
+    for index in xrange(1, len(word)):
+        # Splits the word to support romanizing fullname without space.
+        # If the query is a full name without white space(e.g., "山田太郎"),
+        # and the first/last name is in the dictionary,
+        # but the full name is not in the dictionary,
+        # it can still return romanization "yamadataro".
+        first_part = word[:index]
+        last_part = word[index:]
+        romanized_first_parts = romanize_single_japanese_word(
+            first_part)
+        romanized_last_parts = romanize_single_japanese_word(
+            last_part)
+        for romanized_first_part in romanized_first_parts:
+            for romanized_last_part in romanized_last_parts:
+                if (romanized_first_part != first_part and
+                        romanized_last_part != last_part):
+                    words.add(romanized_first_part + romanized_last_part)
+                    # For indexing purpose, if the input is "山田太郎", we need
+                    # to add "yamada" and "taro" in addition to "yamadataro"
+                    # because it must match queries e.g., "山田" or "太郎".
+                    #
+                    # But, when we apply this method for search queries, we
+                    # must not do this. If the search query is [山田太郎] and
+                    # we return ["yamadataro", "yamada", "taro"], the query
+                    # will be "yamadataro OR yamada OR taro". Then it will
+                    # also match records with name "yamada hanako" etc., which
+                    # is bad.
+                    #
+                    # TODO(ichikawa) Consider applying this for search queries,
+                    #     but construct a query 'yamadataro OR "yamada taro"'
+                    #     instead. Then it will also match a record with name
+                    #     "yamada taro".
+                    if for_index:
+                        words.add(romanized_first_part)
+                        words.add(romanized_last_part)
+    words.update(romanize_single_japanese_word(word))
+    return list(words)
 
 
 def romanize_word_by_unidecode(word):
@@ -83,9 +146,9 @@ def romanize_word_by_unidecode(word):
     return [romanized_word.strip()]
 
 
-def romanize_word(word):
+def romanize_search_query(word):
     """
-    This method romanizes all languages.
+    This method romanizes all languages for search query.
     If word is hiragana or katakana, it is romanized by jautils.
     Args:
         word: should be script varianted
@@ -99,7 +162,7 @@ def romanize_word(word):
 
     romanized_words = []
     if has_kanji(word):
-        romanized_words = romanize_japanese_word(word)
+        romanized_words = romanize_japanese_word(word, for_index=False)
 
     if jautils.should_normalize(word):
         hiragana_word = jautils.normalize(word)

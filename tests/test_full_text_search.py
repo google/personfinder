@@ -157,6 +157,11 @@ class FullTextSearchTests(unittest.TestCase):
             given_name=u'眞',
             family_name=u'菊地',
             entry_date=TEST_DATETIME)
+        self.p16 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0909',
+            full_name=u'音無小鳥',
+            entry_date=TEST_DATETIME)
 
 
     def tearDown(self):
@@ -179,6 +184,7 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p13)
         db.put(self.p14)
         db.put(self.p15)
+        db.put(self.p16)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -194,6 +200,8 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p13)
         full_text_search.add_record_to_index(self.p14)
         full_text_search.add_record_to_index(self.p15)
+        full_text_search.add_record_to_index(self.p16)
+
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -323,6 +331,16 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'RitsukoAkiduki', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])
+
+        # Search full name without space record by given name and family name
+        results = full_text_search.search('haiti', u'Kotori Otonashi', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0909'])
+
+        # Search Cyrillic record by full name without space
+        results = full_text_search.search('haiti', u'OtonashiKotori', 5)
+        assert set([r.record_id for r in results]) == \
+            set(['haiti/0909'])
 
         # Search Chinese record by kanji
         results = full_text_search.search('haiti', u'真美', 5)

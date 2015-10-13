@@ -41,7 +41,7 @@ def make_or_regexp(query_txt):
     query_words = query_txt.split(' ')
     query_list = []
     for word in query_words:
-        romanized_word_list = script_variant.romanize_word(word)
+        romanized_word_list = script_variant.romanize_search_query(word)
         query_list.extend(romanized_word_list)
     regexp = '|'.join([re.escape(word) for word in query_list if word])
     return re.compile(regexp, re.I)
@@ -106,7 +106,7 @@ def create_romanized_query_txt(query_txt):
     query_words = query_txt.split(' ')
     query_list = []
     for word in query_words:
-        romanized_word_list = script_variant.romanize_word(word)
+        romanized_word_list = script_variant.romanize_search_query(word)
         romanized_word = ' OR '.join(enclose_in_double_quotes(word)
                                      for word in romanized_word_list)
         query_list.append(romanized_word)
@@ -213,7 +213,7 @@ def search(repo, query_txt, max_results):
             results.append(result)
     return results
 
-def create_fields_for_rank(field_name, value):
+def create_fields_for_rank(field_name, values):
     """
     Creates fields for ranking. (person name match > location match)
     MatchScorer class(assigns score) doesn't support to assign
@@ -221,19 +221,21 @@ def create_fields_for_rank(field_name, value):
     So we add 5 fields for each name params.
     Args:
         field_name: field name
-        value: field value
+        values: field values
     Returns:
         array of appengine_search.TextField(name=field_name, value=value)
            (length: REPEAT_COUNT_FOR_RANK)
     """
-    if not value:
+    if not values:
         return []
 
     fields = []
-    for x in xrange(REPEAT_COUNT_FOR_RANK):
-        fields.append(
-            appengine_search.TextField(name='%s_for_rank_%d' % (field_name, x),
-                                       value=value))
+    for index, value in enumerate(values):
+        for x in xrange(REPEAT_COUNT_FOR_RANK):
+            fields.append(
+                appengine_search.TextField(name='%s_%d_for_rank_%d' % (
+                    field_name, index, x),
+                    value=value))
     return fields
 
 
@@ -282,10 +284,11 @@ def create_romanized_name_fields(romanize_method, **kwargs):
     fields = []
     romanized_names_list = []
     romanize_method_name = romanize_method.__name__
+
     for field_name, field_value in kwargs.iteritems():
         romanized_names = romanize_method(field_value)
         for index, romanized_name in enumerate(romanized_names):
-            fields.extend(create_fields_for_rank('%s_%s_%d' %
+            fields.extend(create_fields_for_rank('%s_romanized_by_%s_%d' %
                                                  (field_name,
                                                   romanize_method_name, index),
                                                  romanized_name))
