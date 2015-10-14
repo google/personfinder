@@ -24,6 +24,7 @@ from utils import *
 import const
 import reveal
 import tasks
+import setup_pf as setup
 
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
@@ -67,6 +68,10 @@ class Handler(BaseHandler):
                         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
 
     def post(self):
+        if self.params.operation == 'setup_datastore':
+            setup.setup_datastore()
+            self.redirect('/admin')
+
         if self.params.operation == 'delete':
             # Redirect to the deletion handler with a valid signature.
             action = ('delete', str(self.params.id))
