@@ -35,7 +35,7 @@ import pfif
 import resources
 import utils
 import user_agents
-
+import setup_pf as setup
 
 # When no action or repo is specified, redirect to this action.
 HOME_ACTION = 'home.html'
@@ -496,6 +496,9 @@ class Main(webapp.RequestHandler):
         request, response, env = self.request, self.response, self.env
         if not env.action and not env.repo:
             # Redirect to the default home page.
+            self.redirect(env.global_url + '/' + HOME_ACTION)
+        elif env.action == "setup_datastore":
+            setup.setup_datastore()
             self.redirect(env.global_url + '/' + HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.

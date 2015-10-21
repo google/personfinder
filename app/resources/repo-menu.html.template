@@ -19,4 +19,6 @@
       {% if option.test_mode %}({% trans "in test mode" %}){% endif %}</a><br>
   {% endfor %}
   </ul>
+{% else %}
+<a href="{{env.global_url}}/setup_datastore">Setup datastore</a><br/>
 {% endif %}
