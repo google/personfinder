@@ -88,7 +88,6 @@ def write_clean_po(filename, catalog):
 
 
 def update_po(locale, new_msgids, header_comment):
-
     """Updates a .po file to contain the given set of messages and the given
     header comment, and returns the number of missing translations."""
     filename = get_po_filename(locale)
