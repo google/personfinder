@@ -16,6 +16,7 @@
 """Constants that aren't specific to a particular module or handler."""
 
 # We use lazy translation in this file because the language isn't set yet.
+import django_setup
 from django_setup import gettext_lazy as _
 
 # The root URL of this application.
@@ -87,6 +88,8 @@ LANGUAGE_ENDONYMS = {
     'no': u'Norsk',
     'pa': u'\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40',
     'pl': u'polski',
+    'prs': u'\u062F\u0631\u06CC',
+    'ps': u'\u067E\u069A\u062A\u0648',
     'pt-BR': u'Portugu\u00EAs (Brasil)',
     'pt-PT': u'Portugu\u00EAs (Portugal)',
     'ro': u'Rom\u00E2n\u0103',
@@ -173,6 +176,8 @@ LANGUAGE_EXONYMS = {
     'no': 'Norwegian',
     'pa': 'Punjabi',
     'pl': 'Polish',
+    'prs': 'Dari',
+    'ps': 'Pashto',
     'pt-BR': 'Portuguese (Brazil)',
     'pt-PT': 'Portuguese (Portugal)',
     'ro': 'Romanian',
@@ -219,6 +224,9 @@ LANGUAGE_SYNONYMS = {
     # accesses res._info even when res is None.
     'zh-HK': 'zhhk',
 }
+
+# RTL languages.
+LANGUAGES_BIDI = django_setup.LANGUAGES_BIDI + ['ps', 'prs']
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
 # http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
