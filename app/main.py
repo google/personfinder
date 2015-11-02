@@ -494,6 +494,16 @@ class Main(webapp.RequestHandler):
 
     def serve(self):
         request, response, env = self.request, self.response, self.env
+
+        # If the Person Finder instance has not been initialized yet,
+        # prepend to any served page a warning and a link to initialize
+        # the datastore.
+        if 0 == len(env.repo_options) and env.action != 'setup_datastore':
+            get_vars = lambda: {'env': env}
+            content = resources.get_rendered('setup_datastore.html', env.lang,
+                    (env.repo, env.charset), get_vars)
+            response.out.write(content)
+
         if not env.action and not env.repo:
             # Redirect to the default home page.
             self.redirect(env.global_url + '/' + HOME_ACTION)
@@ -518,7 +528,8 @@ class Main(webapp.RequestHandler):
                 env.action, env.lang, (env.repo, env.charset), get_vars)
             if content is None:
                 response.set_status(404)
-                response.out.write('Not found')
+                page_not_found = 'Page "%s" could not be found' % env.action
+                response.out.write(page_not_found)
             else:
                 content_type, encoding = mimetypes.guess_type(env.action)
                 response.headers['Content-Type'] = content_type or 'text/plain'
