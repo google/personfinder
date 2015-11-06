@@ -19,12 +19,18 @@ api_version: 1
 threadsafe: false
 
 handlers:
+# Remote API handlers. Note that login: admin must not be specified because the
+# handler performs its own authentication. /personfinder/remote_api is defined
+# for google.org/personfinder, which only accepts paths starting with
+# /personfinder.
+- url: /remote_api
+  script: google.appengine.ext.remote_api.handler.application
+- url: /personfinder/remote_api
+  script: google.appengine.ext.remote_api.handler.application
+
 # Administrative handlers
 - url: .*/admin/send_mail
   script: send_mail.py
-  login: admin
-- url: .*/remote_api
-  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
 
 # Everything else is handled by main.
