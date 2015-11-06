@@ -1,4 +1,4 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# Copyright 2015 Google Inc.  Licensed under the Apache License, Version   #}
 {# 2.0 (the "License"); you may not use this file except in compliance with #}
 {# the License.  You may obtain a copy of the License at:                   #}
 {#     http://www.apache.org/licenses/LICENSE-2.0                           #}
@@ -13,5 +13,5 @@
 {% load i18n %}
 
 <div>
-  <p>This instance of Person Finder <b>has not been initialized yet</b>, please click <a href="{{env.global_url}}/setup_datastore">here</a> to inizialize the datastore.
+  <p>This instance of Person Finder <b>has not been initialized yet</b>. Please go to the <a href="{{env.global_url}}/admin">admin page</a> and click on the <b>setup datastore</b> button.
 </div>

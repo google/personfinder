@@ -35,7 +35,6 @@ import pfif
 import resources
 import utils
 import user_agents
-import setup_pf as setup
 
 # When no action or repo is specified, redirect to this action.
 HOME_ACTION = 'home.html'
@@ -496,9 +495,9 @@ class Main(webapp.RequestHandler):
         request, response, env = self.request, self.response, self.env
 
         # If the Person Finder instance has not been initialized yet,
-        # prepend to any served page a warning and a link to initialize
-        # the datastore.
-        if 0 == len(env.repo_options) and env.action != 'setup_datastore':
+        # prepend to any served page a warning and a link to the admin
+        # page where the datastore can be initialized.
+        if not config.get('initialized') and env.action != 'admin':
             get_vars = lambda: {'env': env}
             content = resources.get_rendered('setup_datastore.html', env.lang,
                     (env.repo, env.charset), get_vars)
@@ -506,9 +505,6 @@ class Main(webapp.RequestHandler):
 
         if not env.action and not env.repo:
             # Redirect to the default home page.
-            self.redirect(env.global_url + '/' + HOME_ACTION)
-        elif env.action == "setup_datastore":
-            setup.setup_datastore()
             self.redirect(env.global_url + '/' + HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
@@ -528,8 +524,7 @@ class Main(webapp.RequestHandler):
                 env.action, env.lang, (env.repo, env.charset), get_vars)
             if content is None:
                 response.set_status(404)
-                page_not_found = 'Page "%s" could not be found' % env.action
-                response.out.write(page_not_found)
+                response.out.write('Not found')
             else:
                 content_type, encoding = mimetypes.guess_type(env.action)
                 response.headers['Content-Type'] = content_type or 'text/plain'

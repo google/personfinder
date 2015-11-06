@@ -24,7 +24,7 @@ from utils import *
 import const
 import reveal
 import tasks
-import setup_pf as setup
+import setup_pf
 
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
@@ -69,7 +69,7 @@ class Handler(BaseHandler):
 
     def post(self):
         if self.params.operation == 'setup_datastore':
-            setup.setup_datastore()
+            setup_pf.setup_datastore()
             self.redirect('/admin')
 
         if self.params.operation == 'delete':
