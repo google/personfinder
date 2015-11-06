@@ -104,12 +104,15 @@ pre {  /* code samples */
 
 .button input,
 .button-cancel input {
-  border-radius: 28px;
   border-style: none;
   color: white;
   display: block;
-  font-size: 20px;
+  font-size: 16px;
   padding: 5px 15px;
+}
+
+.button-cancel input:disabled {
+  background: #9e9e9e;
 }
 
 .button input {
@@ -248,7 +251,7 @@ over 10% in penetration ratio.
 }
 
 .fields-table .section {
-  border-bottom: 4px solid #e6e6e6;
+  border-bottom: 2px solid #e6e6e6;
   padding: 10px 4px 4px;
 }
 
@@ -419,7 +422,6 @@ td.submit {
 
 .main .action-outer {
   border: none;
-  border-radius: 28px;
   font-size: 20px;
   margin-bottom: 1em;
   max-width: 240px;
@@ -491,6 +493,21 @@ td.submit {
   border: 2px solid #e6e6e6;
 }
 
+.seek.results.border .query.seek {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+.seek.results.border .query.seek .header{
+  border: 0px;
+}
+
+.seek.results.border .query.seek input{
+  margin-left: 0px;
+}
+
 .query .instructions {
   padding-bottom: 0.5em;
 }
@@ -545,10 +562,16 @@ img.icon {
   width: 100%;
 }
 
-.view.note {
+.note.fields-table {
   background: #ffffff;
-  border: 8px solid #e6e6e6;
+  border: 2px solid #e6e6e6;
   margin-bottom: 10px;
+
+}
+
+.note.fields-table .button input,
+.note.fields-table .button-cancel input {
+  margin: 10px auto;
 }
 
 .view.note .source {
@@ -641,7 +664,7 @@ table.multiview {
 
 tr.sectionbottom td {
   padding-bottom: 0.5em;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 2px solid #e8e8e8;
 }
 
 /* Create page */
@@ -726,11 +749,25 @@ label.option {
 
 /* results page */
 
+.seek.results.border {
+  background: #fff;
+  border: 2px solid #e6e6e6;
+  padding: 20px;
+  padding-top: 0px;
+}
+
 img.resultImage {
   width: 80px;
   height: auto;
   max-width: 80px;
   max-height: 80px;
+}
+
+.resultsTitle {
+  border-top: 2px solid #e6e6e6;
+  font-size: 18px;
+  padding-top: 10px;
+  width: 100%;
 }
 
 resultsList {
@@ -766,6 +803,15 @@ resultsList {
   background: #cdf;
 }
 
+.resultDataLabel {
+  font-size: 14px;
+  color: #888;
+}
+
+.resultDataValue {
+  font-size: 14px;
+}
+
 .searchResults .resultDataPersonFound {
   background: lightGreen;
 }
@@ -775,10 +821,8 @@ resultsList {
 }
 
 .searchResults .resultDataTitle {
-  color: #00e;
-  font-size: 130%;
-  font-weight: bold;
-  text-decoration: underline;
+  color: #3b78e7;
+  font-size: 18px;
 }
 
 .searchResults .resultData {
