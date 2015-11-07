@@ -94,11 +94,11 @@
     {% endifequal %}
 
     {% ifequal params.role 'provide' %}
-      <h1>
+      <div class="resultsTitle">
         {% blocktrans with env.params_full_name as full_name %}
           Records Similar to: {{full_name}}
         {% endblocktrans %}
-      </h1>
+      </div>
       <p>
       {% if env.ui != "small" %}
         {% ifequal num_results 1 %}
