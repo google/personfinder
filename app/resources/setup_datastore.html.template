@@ -13,5 +13,9 @@
 {% load i18n %}
 
 <div>
-  <p>This instance of Person Finder <b>has not been initialized yet</b>. Please go to the <a href="{{env.global_url}}/admin">admin page</a> and click on the <b>setup datastore</b> button.
+<form method="post" class="main">
+  <input type=hidden name=operation value="setup_datastore">
+  Please initialize this Person Finder instance
+  <input type=submit value="Setup datastore">
+</form>
 </div>
