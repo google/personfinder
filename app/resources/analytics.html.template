@@ -10,7 +10,7 @@
 
 {# Template fragment for Google Analytics tracking.                         #}
 
-{% if env.enable_javascript and env.analytics_id %}
+{% if env.enable_analytics %}
   <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

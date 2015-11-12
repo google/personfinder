@@ -899,6 +899,36 @@
   </fieldset>
 
   <fieldset>
+    <legend>Zero-rating</legend>
+
+    <div class="config">
+      <p>Sometimes mobile carriers "zero-rate" our site so that users can see our site without normal data access fee. It is often applied per domain name. But when users access Person Finder, it also loads resource from other domains e.g., Google Maps, Google Analytics, Google Translate by default.</p>
+
+      <p>If you enable zero-rating mode, it disables all those features which loads resource from external domains, so that the users from the carriers can access Person Finder completely for free.</p>
+
+      <p>CAVEAT: Even if you enable zero-rating mode, the photos attached to person records or notes may be loaded from external domains, if the author has specified a URL of the photo instead of uploading it.</p>
+
+      <div class="option">
+        <input type="radio" name="zero_rating_mode" value="false"
+            id="zero_rating_mode_false"
+            {{view_config.zero_rating_mode|yesno:",checked"}}>
+        <label for="zero_rating_mode_false">
+          Disable zero-rating mode: Enable all features which loads resource from external domains.
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="zero_rating_mode" value="true"
+            id="zero_rating_mode_true"
+            {{view_config.zero_rating_mode|yesno:"checked,"}}>
+        <label for="zero_rating_mode_true">
+          Enable zero-rating mode: Disable all features which loads resource from external domains.
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
     <legend> Spam detection </legend>
     <div class="config">
       <label for="bad_words">

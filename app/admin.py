@@ -107,6 +107,7 @@ class Handler(BaseHandler):
                 updated_date=get_utcnow_timestamp(),
                 test_mode=False,
                 force_https=False,
+                zero_rating_mode=False,
             )
             self.redirect('/admin', new_repo)
 
@@ -117,7 +118,9 @@ class Handler(BaseHandler):
 
             if self.__update_config(
                     self.repo,
-                    # These settings are all entered in JSON.
+                    # These settings are all entered in JSON. It can be either:
+                    # - JSON object e.g., {"k1": "v1", "k2": "v2"}
+                    # - JSON boolean literal i.e., true or false
                     json_config_names=[
                         'allow_believed_dead_via_ui',
                         'family_name_first',
@@ -141,6 +144,7 @@ class Handler(BaseHandler):
                         'use_family_name',
                         'use_postal_code',
                         'view_page_custom_htmls',
+                        'zero_rating_mode',
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[

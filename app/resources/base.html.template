@@ -39,7 +39,7 @@
   {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';
-      {% if config.translate_api_key %}
+      {% if env.enable_translate %}
         var translate_api_key = '{{config.translate_api_key}}';
       {% else %}
         var translate_api_key = null;

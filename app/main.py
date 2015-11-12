@@ -395,6 +395,19 @@ def setup_env(request):
         # support UTF-8 but don't render UTF-8 symbols such as u'\xab'.
         env.back_chevron = u'<<'
 
+    env.enable_maps = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.maps_api_key)
+    env.enable_analytics = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.analytics_id)
+    env.enable_translate = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.config.translate_api_key)
+
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.

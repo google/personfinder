@@ -141,7 +141,7 @@
           {{note.last_known_location}}
         </span>
       </div>
-      {% if env.enable_javascript and env.maps_api_key %}
+      {% if env.enable_maps %}
         <div>
           <div id="map_{{note.record_id}}_show_link" style="display: none">
             <a href='#' onclick="toggleMarkeredMap('map_{{note.record_id}}'); return false;">
