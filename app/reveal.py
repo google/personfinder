@@ -102,9 +102,16 @@ class Handler(BaseHandler):
         if captcha_response.is_valid or self.env.test_mode:
             signature = sign(self.params.content_id)
             # self.params.target contains only the path part of the URL e.g.,
-            # "/test/view?...". Puts our own scheme and netloc to make it an
-            # absolute URL. We do this to allow only URLs in our domain as
-            # the target.
+            # "/test/view?...".
+            #
+            # - We verify that self.params.target starts with '/'.
+            # - We put our own scheme and netloc to make it an absolute URL.
+            #
+            # These two are required to allow only URLs in our domain as the
+            # target, avoiding this to be used as a redirector to aid phishing
+            # attacks.
+            if not self.params.target or self.params.target[0] != '/':
+                return self.error(400, 'Invalid target parameter')
             scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             target = '%s://%s%s' % (scheme, netloc, self.params.target)
             self.redirect(
