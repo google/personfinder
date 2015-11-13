@@ -38,7 +38,6 @@ import user_agents
 import setup_pf
 
 
-log = logging.getLogger('main')
 # When no action or repo is specified, redirect to this action.
 HOME_ACTION = 'home.html'
 
@@ -504,6 +503,7 @@ class Main(webapp.RequestHandler):
             if request.get('operation') == 'setup_datastore':
                 setup_pf.setup_datastore()
                 self.redirect(env.global_url + '/')
+                return
             else:
                 get_vars = lambda: {'env': env}
                 content = resources.get_rendered('setup_datastore.html', env.lang,
