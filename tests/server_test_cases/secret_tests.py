@@ -57,7 +57,7 @@ class SecretTests(ServerTestsBase):
         doc = self.go('/haiti/create')
         assert 'getTracker(' not in doc.content
 
-        db.put(Secret(key_name='analytics_id', secret='analytics_id_xyz'))
+        config.set(analytics_id='analytics_id_xyz')
 
         doc = self.go('/haiti/create')
         assert "getTracker('analytics_id_xyz')" in doc.content
@@ -76,7 +76,7 @@ class SecretTests(ServerTestsBase):
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
         assert 'id="clickable_map"' not in doc.content
 
-        db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
+        config.set(maps_api_key='maps_api_key_xyz')
 
         doc = self.go('/haiti/create?role=provide')
         assert 'maps_api_key_xyz' in doc.content
