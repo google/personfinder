@@ -41,7 +41,12 @@
 <script>
 
 //TODO: move to object-oriented!!
+//TODO: Put all JSON data into a single JSON e.g., var JSON_DATA.
 
+  {# NOTE: Directly embedding JSON like this can cause an XSS vulnerability: #}
+  {#     var ALL_VIEW_CONFIG = {{all_view_config_json|safe|default:'[]'}}; #}
+  {#   If the JSON contains "<\/script>", it is interpreted as the end of #}
+  {#   the script tag. "escapejs" filter escapes the tag. #}
   var LANGUAGES = JSON.parse(
       "{{view_config_json.language_menu_options|default:'[]'|escapejs}}");
   var LANGUAGE_EXONYMS = JSON.parse("{{language_exonyms_json|escapejs}}");
