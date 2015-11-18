@@ -906,7 +906,12 @@
 
       <p>If you enable zero-rating mode, it disables all those features which loads resource from external domains, so that the users from the carriers can access Person Finder completely for free.</p>
 
-      <p>CAVEAT: Even if you enable zero-rating mode, the photos attached to person records or notes may be loaded from external domains, if the author has specified a URL of the photo instead of uploading it.</p>
+      <p><b>CAVEAT:</b> This mode has not been implemented completely, and it still loads some resource from other domains even in zero-rating mode:</p>
+      <ul>
+        <li>Photos attached to person records or notes, if the author has specified a URL of the photo instead of uploading it. (<a target="_blank" href="https://github.com/google/personfinder/issues/218">Issue</a>)</li>
+        <li>reCAPTCHA</li>
+        <li><a target="_blank" href="https://google.org/personfinder/global/tos.html">Terms of Services</a></li>
+      </ul>
 
       <div class="option">
         <input type="radio" name="zero_rating_mode" value="false"
