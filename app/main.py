@@ -35,6 +35,7 @@ import pfif
 import resources
 import utils
 import user_agents
+import setup_pf
 
 
 # When no action or repo is specified, redirect to this action.
@@ -507,6 +508,21 @@ class Main(webapp.RequestHandler):
 
     def serve(self):
         request, response, env = self.request, self.response, self.env
+
+        # If the Person Finder instance has not been initialized yet,
+        # prepend to any served page a warning and a link to the admin
+        # page where the datastore can be initialized.
+        if not config.get('initialized'):
+            if request.get('operation') == 'setup_datastore':
+                setup_pf.setup_datastore()
+                self.redirect(env.global_url + '/')
+                return
+            else:
+                get_vars = lambda: {'env': env}
+                content = resources.get_rendered('setup_datastore.html', env.lang,
+                        (env.repo, env.charset), get_vars)
+                response.out.write(content)
+
         if not env.action and not env.repo:
             # Redirect to the default home page.
             self.redirect(env.global_url + '/' + HOME_ACTION)

@@ -64,7 +64,8 @@ def setup_configs():
     # A Google Translate API key with a very low quota, just for testing.
                translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
                repo_aliases={},
-               referrer_whitelist=[])
+               referrer_whitelist=[],
+               initialized=True)
 
     config.set_for_repo(
         'haiti',
