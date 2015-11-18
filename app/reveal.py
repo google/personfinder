@@ -110,7 +110,7 @@ class Handler(BaseHandler):
             # These two are required to allow only URLs in our domain as the
             # target, avoiding this to be used as a redirector to aid phishing
             # attacks.
-            if not self.params.target or self.params.target[0] != '/':
+            if not self.params.target.startswith('/'):
                 return self.error(400, 'Invalid target parameter')
             scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             target = '%s://%s%s' % (scheme, netloc, self.params.target)
