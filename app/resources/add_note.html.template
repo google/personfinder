@@ -69,7 +69,7 @@
         {% trans "Last known location" %}
       </h3>
       <div class="hint">
-        {% if env.enable_javascript and env.maps_api_key %}
+        {% if env.enable_maps %}
           {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
         {% else %}
           {% trans "Type an address." %}
@@ -82,7 +82,7 @@
               rows=2>{{params.last_known_location}}</textarea>
       </div>
       <div class="end-multi-columns"></div>
-      {% if env.enable_javascript and env.maps_api_key %}
+      {% if env.enable_maps %}
         <div class="field map-container">
           <div>
             <span id="clickable_map_show_link">
