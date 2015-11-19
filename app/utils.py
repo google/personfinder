@@ -360,12 +360,6 @@ def filter_sensitive_fields(records):
         if 'phone_of_found_person' in record:
             record['phone_of_found_person'] = ''
 
-def get_secret(name):
-    """Gets a secret from the datastore by name, or returns None if missing."""
-    secret = model.Secret.get_by_key_name(name)
-    if secret:
-        return secret.secret
-
 # The current time for testing as a datetime object, or None if using real time.
 _utcnow_for_test = None
 
@@ -500,15 +494,6 @@ def generate_random_key(length):
               '-_')
     rng = random.SystemRandom()
     return ''.join(rng.choice(source) for i in range(length))
-
-def get_secret_key(name='reveal', length=20):
-    """Gets the secret key for authorizing reveal operations etc."""
-    secret = model.Secret.get_by_key_name(name)
-    if not secret:
-        secret = model.Secret(key_name=name,
-                              secret=generate_random_key(length))
-        secret.put()
-    return secret.secret
 
 
 # ==== Decorators  ============================================================
@@ -914,7 +899,7 @@ class BaseHandler(webapp.RequestHandler):
 
         # Shows a custom error page here when the user is not an admin
         # instead of "login: admin" in app.yaml
-        # If we use it, user can't sign out 
+        # If we use it, user can't sign out
         # because the error page of "login: admin" doesn't have sign-out link.
         if self.admin_required:
             user = users.get_current_user()

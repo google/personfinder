@@ -231,12 +231,6 @@ def get_language_option(request, lang, is_selected):
         'is_selected': is_selected,
     }
 
-def get_secret(name):
-    """Gets a secret from the datastore by name, or returns None if missing."""
-    secret = model.Secret.get_by_key_name(name)
-    if secret:
-        return secret.secret
-
 def get_localized_message(localized_messages, lang, default):
     """Gets the localized message for lang from a dictionary that maps language
     codes to localized messages.  Falls back to English if language 'lang' is
@@ -268,9 +262,8 @@ def setup_env(request):
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 
-    # TODO(kpy): Make these global config settings and get rid of get_secret().
-    env.analytics_id = get_secret('analytics_id')
-    env.maps_api_key = get_secret('maps_api_key')
+    env.analytics_id = config.get('analytics_id')
+    env.maps_api_key = config.get('maps_api_key')
 
     # Internationalization-related stuff.
     env.charset = select_charset(request)

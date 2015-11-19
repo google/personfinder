@@ -455,3 +455,36 @@ class ConfigTests(ServerTestsBase):
         doc = self.go(
             '/haiti/view?id=test.google.com/person.1001&lang=ht')
         assert 'English view page message' in doc.text
+
+    def test_analytics_id(self):
+        """Checks that the analytics_id config is used for analytics."""
+        doc = self.go('/haiti/create')
+        assert 'getTracker(' not in doc.content
+
+        config.set(analytics_id='analytics_id_xyz')
+
+        doc = self.go('/haiti/create')
+        assert "getTracker('analytics_id_xyz')" in doc.content
+
+    def test_maps_api_key(self):
+        """Checks that maps don't appear when there is no maps_api_key."""
+        db.put(Person(
+            key_name='haiti:test.google.com/person.1001',
+            repo='haiti',
+            entry_date=ServerTestsBase.TEST_DATETIME,
+            full_name='_status_full_name',
+            author_name='_status_author_name'
+        ))
+        doc = self.go('/haiti/create?role=provide')
+        assert 'id="clickable_map"' not in doc.content
+        doc = self.go('/haiti/view?id=test.google.com/person.1001')
+        assert 'id="clickable_map"' not in doc.content
+
+        config.set(maps_api_key='maps_api_key_xyz')
+
+        doc = self.go('/haiti/create?role=provide')
+        assert 'maps_api_key_xyz' in doc.content
+        assert 'id="clickable_map"' in doc.content
+        doc = self.go('/haiti/view?id=test.google.com/person.1001')
+        assert 'maps_api_key_xyz' in doc.content
+        assert 'id="clickable_map"' in doc.content

@@ -38,9 +38,9 @@ def wipe_datastore(delete=None, keep=None):
         keys = query.with_cursor(query.cursor()).fetch(1000)
 
 def reset_datastore():
-    """Wipes everything in the datastore except Accounts and Secrets,
+    """Wipes everything in the datastore except Accounts,
     then sets up the datastore for new data."""
-    wipe_datastore(keep=['Account', 'Secret'])
+    wipe_datastore(keep=['Account'])
     setup_datastore()
 
 def setup_repos():
