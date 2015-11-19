@@ -671,7 +671,7 @@ class HandleSMS(utils.BaseHandler):
             responses.append(
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos.html')
+                'accuracy of this data google.org/personfinder/global/tos')
         elif self.config.enable_sms_record_input and add_self_m:
             name_string = add_self_m.group(1).strip()
             person = Person.create_original(
