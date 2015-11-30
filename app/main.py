@@ -73,6 +73,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/resources',
   'admin/review',
   'css',
+  'tos',
 ])
 
 # Exceptional cases where the module name doesn't match the URL.

@@ -2562,7 +2562,7 @@ _read_profile_url2</pfif:profile_urls>
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos.html'
+                'accuracy of this data google.org/personfinder/global/tos'
                 '</message_text>\n'
             '</response>\n')
         assert expected == doc.content, text_diff(expected, doc.content)
@@ -2579,7 +2579,7 @@ _read_profile_url2</pfif:profile_urls>
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos.html'
+                'accuracy of this data google.org/personfinder/global/tos'
                 '</message_text>\n'
             '</response>\n')
         assert expected == doc.content, text_diff(expected, doc.content)
