@@ -840,6 +840,12 @@ class BaseHandler(webapp.RequestHandler):
         else:
             return False
 
+    def __return_unimplemented_method_error(self):
+        return self.error(
+            405,
+            'HTTP method %s is not allowed for this URL.'
+                % self.request.method)
+
     def __init__(self, request, response, env):
         webapp.RequestHandler.__init__(self, request, response)
         self.params = Struct()
@@ -936,3 +942,31 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
+
+    def get(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def post(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def put(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def head(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def options(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def delete(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def trace(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
