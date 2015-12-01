@@ -4257,7 +4257,6 @@ _feed_profile_url2</pfif:profile_urls>
         It should fail.
         """
         person, note = self.setup_person_and_note()
-#        person_id = 'haiti.personfinder.google.org/person.123'
         view_doc = self.go('/haiti/view?id=%s' % person.person_record_id)
 
         # Delete the record with a faked captcha.
