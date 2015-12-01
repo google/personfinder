@@ -182,6 +182,9 @@ class Handler(BaseHandler):
                        '"believed_dead".'))
 
         person = Person.get(self.repo, self.params.id)
+        if not person:
+            return self.error(404,
+                _("This person's entry does not exist or has been deleted."))
         if person.notes_disabled:
             return self.error(
                 200, _('The author has disabled status updates '
