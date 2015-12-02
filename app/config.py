@@ -164,7 +164,14 @@ class Configuration(UserDict.DictMixin):
         return True
 
     def __getattr__(self, name):
-        return self[name]
+        if name == '__call__':
+            # A Configuration instance must not be callable.
+            # i.e., callable(c) must be False for a Configuration instance c.
+            # Otherwise writing config.xxx in Django template doesn't work as
+            # expected because it interprets the expression as config().xxx.
+            raise AttributeError('Configuration is not callable')
+        else:
+            return self[name]
 
     def __getitem__(self, name):
         """Gets a configuration setting for this repository.  Looks for a
