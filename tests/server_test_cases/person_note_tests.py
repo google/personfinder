@@ -4252,6 +4252,31 @@ _feed_profile_url2</pfif:profile_urls>
                       'query=_test_given_name+_test_family_name')
         assert 'No results found' in doc.text
 
+    def test_add_note_for_deleted_person(self):
+        """Tries to add a note to a person record which has been deleted.
+        It should fail.
+        """
+        person, note = self.setup_person_and_note()
+        view_doc = self.go('/haiti/view?id=%s' % person.person_record_id)
+
+        # Delete the record with a faked captcha.
+        doc = self.go(
+            '/haiti/delete',
+            data='id=%s&reason_for_deletion=spam_received&test_mode=yes'
+                % person.person_record_id)
+        assert 'The record has been deleted' in doc.text
+
+        # Try to add a note to the deleted person. It should fail.
+        note_form = view_doc.first('form')
+        doc = self.s.submit(
+            note_form,
+            text='test text',
+            author_name= 'test author',
+            author_made_contact= 'no')
+        assert self.s.status == 404
+        self.assert_error_deadend(
+            doc, "This person's entry does not exist or has been deleted.")
+
     def test_incoming_expired_record(self):
         """Tests that an incoming expired record can cause an existing record
         to expire and be deleted."""

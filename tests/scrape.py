@@ -170,8 +170,18 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     # Prepare the POST data.
     if not method:
         method = data and 'POST' or 'GET'
-    if data and not isinstance(data, str): # Unicode not allowed here
-        data = urlencode(data)
+
+    if not data:
+        data_str = ''
+    elif isinstance(data, str):
+        data_str = data
+    elif isinstance(data, unicode):
+        data_str = data.encode('utf-8')
+    elif isinstance(data, dict):
+        # urlencode() supports both of a dict of str and a dict of unicode.
+        data_str = urlencode(data)
+    else:
+        raise Exception('Unexpected type for data: %r' % data)
 
     # Get the cookies to send with this request.
     cookieheader = '; '.join([
@@ -179,9 +189,9 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
 
     # Make the HTTP headers to send.
     headers = {'host': host, 'accept': '*/*'}
-    if data:
+    if data_str:
         headers['content-type'] = 'application/x-www-form-urlencoded'
-        headers['content-length'] = len(data)
+        headers['content-length'] = len(data_str)
     if agent:
         headers['user-agent'] = agent
     if referrer:
@@ -198,9 +208,9 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
             path += '?' + query
-        reply = request(scheme, method, host, path, headers, data, verbose)
+        reply = request(scheme, method, host, path, headers, data_str, verbose)
     elif scheme == 'https':
-        reply = curl(url, headers, data, verbose)
+        reply = curl(url, headers, data_str, verbose)
     else:
         raise ValueError, scheme + ' not supported'
 
