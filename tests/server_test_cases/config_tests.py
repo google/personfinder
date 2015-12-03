@@ -488,3 +488,12 @@ class ConfigTests(ServerTestsBase):
         doc = self.go('/haiti/view?id=test.google.com/person.1001')
         assert 'maps_api_key_xyz' in doc.content
         assert 'id="clickable_map"' in doc.content
+
+    def test_configuration_not_callable(self):
+        """Checks that a Configuration instance is not callable.
+
+        This is required to make it work in Django template. See the comment of
+        config.Configuration.__getattr__() for details.
+        """
+        cfg = config.Configuration('xyz')
+        assert not callable(cfg)
