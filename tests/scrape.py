@@ -178,6 +178,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     elif isinstance(data, unicode):
         data_str = data.encode('utf-8')
     elif isinstance(data, dict):
+        # urlencode() supports both of a dict of str and a dict of unicode.
         data_str = urlencode(data)
     else:
         raise Exception('Unexpected type for data: %r' % data)
