@@ -5023,3 +5023,14 @@ _feed_profile_url2</pfif:profile_urls>
                                  some_have=([test_given_name]))
 
         self.verify_click_search_result(0, assert_params)
+
+    def test_http_get_for_api_write(self):
+        """Test that sending HTTP GET request to api/write results in an error
+        with HTTP status code 405. api/write only supports HTTP POST.
+
+        It returns 405 because api.Write.get() doesn't exist, so
+        utils.BaseHandler.get() is called.
+        """
+
+        doc = self.go('/haiti/api/write?key=domain_test_key')
+        assert self.s.status == 405
