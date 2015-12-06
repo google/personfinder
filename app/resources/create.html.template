@@ -428,11 +428,8 @@
 
           <div class="source section">
             <h3 class="mandatory">
-              {% trans "Source of this record (required)" %}
+              {% trans "Provide information about you (required)" %}
             </h3>
-            <div class="hint">
-              {% trans "Where did this information come from?" %}
-            </div>
             {% if env.enable_javascript %}
               <div class="field">
                 <div class="instructions">

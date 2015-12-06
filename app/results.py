@@ -232,8 +232,6 @@ class Handler(BaseHandler):
                 results = self.search(self.params.query)
                 results_url = self.get_results_url(self.params.query)
                 third_party_query_type = ''
-            if self.params.role == 'seek_volunteer':
-                self.params.role = 'volunteer'
             # Show the (possibly empty) matches.
             return self.render('results.html',
                                results=results,

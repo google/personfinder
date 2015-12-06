@@ -30,17 +30,20 @@
           <h3 class="sub_title">{% trans "I'm looking for volunteer(s)" %}</h3>
           <div class="{{params.error}}">
             {% if config.jp_mobile_carrier_redirect %}
-              {% trans "Enter the volunteer's name and/or location." %}
+              {% trans "Enter location where help needed and/or volunteer name." %}
             {% else %}
-              {% trans "Enter the volunteer's name and/or location." %}
+              {% trans "Enter location where help needed and/or volunteer name." %}
               <div class="hint">
-                {% trans "Ram chennai" %}
+                {% trans "Examples:" %}
               </div>
               <div class="hint">
-                {% trans "avadi Balaji" %}
+                {% trans "  Ram chennai" %}
               </div>
               <div class="hint">
-                {% trans "sashi 600101" %}
+                {% trans "  avadi Balaji" %}
+              </div>
+              <div class="hint">
+                {% trans "  sashi 600101" %}
               </div>
             {% endif %}
           </div>
@@ -189,10 +192,10 @@
         {% elif params.role == 'seek' or params.role == 'seek_volunteer' %}
           {% if env.ui == "facebook" %}
             <div style="margin-left: -70px"
-            <input type="submit" value="{% trans "Search for this person" %}">
+            <input type="submit" value="{% trans "Search" %}">
             </div>
           {% else %}
-            <input type="submit" value="{% trans "Search for this person" %}">
+            <input type="submit" value="{% trans "Search" %}">
           {% endif %}
         {% endif %}
       </div>

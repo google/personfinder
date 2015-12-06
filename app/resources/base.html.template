@@ -79,7 +79,6 @@
 
   {% if env.repo %}
     <h1>
-      {% trans "Person Finder" %}:
       <a class="repo" href="{{env.repo_title_url}}"
           {{env.target_attr|safe}}>{{env.repo_title}}</a>
     </h1>
@@ -104,11 +103,12 @@
     {% if env.repo and env.action and env.action != "start" %}
       {% if env.ui != "small" %}<p>{% endif %}
       <div class="backlink"><a href="{{env.start_url}}">
-        {{env.back_chevron}} {% trans "Back to start" %}
+        {{env.back_chevron}} {% trans "Back to homepage" %}
       </a></div>
     {% endif %}
   {% endblock backlink %}
 
+{% if env.show_footer %}
   <div class="footer" role="contentinfo">
     <div class="disclaimer">
       {% block disclaimer %}
@@ -144,7 +144,6 @@
           >{% trans "Terms of Service" %}</a>
     {% endblock footer %}
   </div>
-
-  {% include "analytics.html.template" %}
+{% endif %}
 {% endblock body %}</body>
 </html>

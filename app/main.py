@@ -39,7 +39,7 @@ import setup_pf
 
 
 # When no action or repo is specified, redirect to this action.
-HOME_ACTION = 'home.html'
+HOME_ACTION = '/chennai'
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -331,7 +331,7 @@ def setup_env(request):
     # Enables features which require JavaScript.
     env.enable_javascript = True
     # Enables operations which requires Captcha.
-    env.enable_captcha = True
+    env.enable_captcha = False 
     # Enables photo upload.
     env.enable_photo_upload = True
     # Enables to flag/unflag notes as spam, and to reveal spam notes.
@@ -339,9 +339,9 @@ def setup_env(request):
     # Enables duplicate marking mode.
     env.enable_dup_mode = True
     # Shows a logo on top of the page.
-    env.show_logo = True
+    env.show_logo = False
     # Shows language menu.
-    env.show_language_menu = True
+    env.show_language_menu = False
     # Uses short labels for buttons.
     env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
@@ -521,7 +521,7 @@ class Main(webapp.RequestHandler):
 
         if not env.action and not env.repo:
             # Redirect to the default home page.
-            self.redirect(env.global_url + '/' + HOME_ACTION)
+            self.redirect(HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
