@@ -13,7 +13,7 @@
 # limitations under the License.
 
 application: googlepersonfinder
-version: 1-4
+version: 1-5
 runtime: python27
 api_version: 1
 threadsafe: false
@@ -34,7 +34,6 @@ handlers:
 # Administrative handlers
 - url: .*/admin/send_mail
   script: send_mail.py
-  login: admin
 
 - url: /update_schema
   script: update_schema_handler.app  # path to webapp2 application definition.

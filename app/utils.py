@@ -756,8 +756,8 @@ class BaseHandler(webapp.RequestHandler):
     def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
-        #sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
-        sender = 'resilientchennai@gmail.com'
+        #sender = 'resilientchennai@gmail.com'
+        sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
         logging.info('Add mail task: sender %s, recipient %r, subject %r' % (sender, to, subject))
         taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,

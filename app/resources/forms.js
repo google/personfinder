@@ -290,7 +290,7 @@ function validate_volunteer_fields() {
 function validate_fields() {
   // Check that mandatory fields are filled in.
   // TODO(ryok): maybe just check full_name instead of given_name and family_name.
-  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name', 'home_city', 'home_neighborhood', 'phone_of_found_person'];
+  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name', 'home_city', 'home_neighborhood'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {

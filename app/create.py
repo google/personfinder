@@ -158,7 +158,7 @@ class Handler(BaseHandler):
             source_name=source_name,
             photo=photo,
             photo_url=photo_url,
-            role=self.params.role
+            role='seek'
         )
         person.update_index(['old', 'new'])
 
