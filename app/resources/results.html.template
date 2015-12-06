@@ -190,11 +190,27 @@
               {% endif %}
           </div>
           {% endif %}
+          {% if params.role == 'seek' %}
           <div>{% trans "Status" %}:
             <span class='resultDataPersonFound'>
               {{ result.latest_note_status }}
             </span>
           </div>
+          {% endif %}
+          {% if params.role == 'volunteer' %}
+          <div>{% trans "Phone" %}:
+            <span class='resultDataPersonFound'>
+              {{ result.author_phone }}
+            </span>
+          </div>
+          {% if result.skills %}
+          <div>{% trans "Skills" %}:
+            <span class='resultDataPersonFound'>
+              {{ result.skills }}
+            </span>
+          </div>
+          {% endif %}
+          {% endif %}
           {% if result.provider_name %}
           <div>
             {% trans "Provided by:" %} {{result.provider_name}}
@@ -256,7 +272,7 @@
     </p>
   {% endfor %}
 {% endif %}
-
+{% if params.role == 'seek' or params.role == 'provide' %}
 {% if results %}
   {% if env.ui != "small" %}
     <p>
@@ -272,8 +288,10 @@
     </p>
   {% endif %}
 {% endif %}
+{% endif %}
 
 <p>
+{% if params.role == 'seek' or params.role == 'provide' %}
 {% if env.ui != "small" and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
@@ -291,6 +309,7 @@
       {% endifequal %}
     {% endif %}
   </form>
+{% endif %}
 {% endif %}
 
 <p>

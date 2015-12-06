@@ -13,10 +13,13 @@
 # limitations under the License.
 
 application: googlepersonfinder
-version: 1
+version: 1-4
 runtime: python27
 api_version: 1
 threadsafe: false
+builtins:
+- deferred: on
+- remote_api: on
 
 handlers:
 # Remote API handlers. Note that login: admin must not be specified because the
@@ -32,6 +35,11 @@ handlers:
 - url: .*/admin/send_mail
   script: send_mail.py
   login: admin
+
+- url: /update_schema
+  script: update_schema_handler.app  # path to webapp2 application definition.
+  login: admin
+  secure: always
 
 # Everything else is handled by main.
 - url: /admin/api_keys.*

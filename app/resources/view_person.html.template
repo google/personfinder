@@ -75,35 +75,18 @@
                   <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                 </div>
               {% endif %}
-              {% if person.role == 'volunteer' %}
-                <div class="field">
-                  <span class="label">{% trans "Skills" %}:</span>
-                  <span class="value">{{person.skills}}</span>
-                </div>
-              {% endif %}
               <div class="end-multi-columns"></div>
             </div>
- 
+            
             <div class="person contact section">
-              {% if person.role == 'seek' %}
-                 <h3>{% trans "Person's family contact information" %}</h3>
-                 <div class="field">
-                   <span class="label">{% trans "Phone" %}:</span>
-                   <span class="value">{{person.phone_of_found_person}}</span>
-                 </div>
-               {% else %}
-                 <h3>{% trans "Volunteer's contact information" %}</h3>
-                 <div class="field">
-                   <span class="label">{% trans "Phone" %}:</span>
-                   <span class="value">{{person.author_phone}}</span>
-                   <span class="label">{% trans "Email" %}:</span>
-                   <span class="value">{{person.author_email}}</span>
-                 </div>
-               {% endif %}
+              <h3>{% trans "Family contact information" %}</h3>
+              <div class="field">
+                <span class="label">{% trans "Phone" %}:</span>
+                <span class="value">{{person.phone_of_found_person}}</span>
+              </div>
               <div class="end-multi-columns"></div>
             </div>
 
-              {% if person.role == 'seek' %}
             <div class="physical section">
               <h3>{% trans "Physical characteristics" %}</h3>
               <div class="field">
@@ -123,7 +106,6 @@
               </div>
               <div class="end-multi-columns"></div>
             </div>
-            {% endif %} 
 
             <div class="address section">
               <h3>{% trans "Home address" %}</h3>
@@ -207,13 +189,8 @@
               </div>
             {% endif %}
 
-            {% if person.role == 'seek' %}
             <div class="source section">
-              <h3>{% trans "Source of this record" %}</h3>
-              <div class="field">
-                <span class="label">{% trans "Author's name" %}:</span>
-                <span class="value">{{person.author_name}}</span>
-              </div>
+              <h3>{% trans "Contact information" %}</h3>
               {% if env.enable_captcha %}
                 <div class="field">
                   <span class="label">
@@ -290,7 +267,6 @@
               {% endif %}
               <div class="end-multi-columns"></div>
             </div>
-            {% endif %}
 
             {% if linked_person_info %}
               <div class="other section">
@@ -342,32 +318,12 @@
             </div>
           {% endif %}
 
-          {% if person.role == 'seek' %}
-          {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Subscribe to updates about this person" %}"
-                onclick="javascript:location.href='{{subscribe_url}}'"
-                id="subscribe_btn">
-            </div>
-          {% endif %}
-          {% endif %}
-
           {% if env.enable_captcha %}
             <div>
               <input type="button"
                 value="{% trans "Delete this record" %}"
                 onclick="javascript:location.href='{{delete_url}}'"
                 id="delete_btn">
-            </div>
-          {% endif %}
-
-          {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
-            <div>
-              <input type="button"
-                value="{% trans "Disable notes on this record" %}"
-                onclick="javascript:location.href='{{disable_notes_url}}'"
-                id="disable_notes_btn">
             </div>
           {% endif %}
 

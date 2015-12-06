@@ -169,7 +169,22 @@ def validate_checkbox_as_bool(val):
     return False
 
 def validate_role(string):
-    return (strip(string).lower() == 'provide') and 'provide' or 'seek'
+    if not string:
+        return
+    role = strip(string).lower()
+    if role  == 'provide':
+        return 'provide'
+    elif role == 'seek':
+        return 'seek'
+    elif role == 'volunteer':
+        return 'volunteer'
+    elif role == 'seek_volunteer':
+        return 'seek_volunteer'
+    else:
+        raise
+    #return (strip(string).lower() == 'provide') and 'provide' or 'seek'
+
+    #return (strip(string).lower() == 'provide') and 'provide' or 'seek'
 
 def validate_int(string):
     return string and int(strip(string))
@@ -421,10 +436,10 @@ def send_confirmation_email_to_record_author(
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     if action == 'enable':
-        subject = _('[Person Finder] Enable notes on "%(full_name)s"?'
+        subject = _('[TN Person Finder] Enable notes on "%(full_name)s"?'
                 ) % {'full_name': person.primary_full_name}
     elif action == 'disable':
-        subject = _('[Person Finder] Disable notes on "%(full_name)s"?'
+        subject = _('[TN Person Finder] Disable notes on "%(full_name)s"?'
                 ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
@@ -574,6 +589,7 @@ class BaseHandler(webapp.RequestHandler):
         'home_postal_code': strip,
         'home_state': strip,
         'home_street': strip,
+        'skills': strip,
         'id': strip,
         'id1': strip,
         'id2': strip,
@@ -740,8 +756,9 @@ class BaseHandler(webapp.RequestHandler):
     def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
-        sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
-        logging.info('Add mail task: recipient %r, subject %r' % (to, subject))
+        #sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
+        sender = 'resilientchennai@gmail.com'
+        logging.info('Add mail task: sender %s, recipient %r, subject %r' % (sender, to, subject))
         taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,

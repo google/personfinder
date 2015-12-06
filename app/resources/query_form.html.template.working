@@ -11,63 +11,36 @@
 {# Template fragment for the query form (used on query and results pages).  #}
 
 {% load i18n %}
+
 <form method="get" action="{{env.repo_path}}/results">
   {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <div class="fields-table query {{params.role}}" role="form">
       <div class="instructions">
-        {% if params.role == 'provide' %}
+        {% if params.role == 'provide'  %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
           <div class="{{params.error}}">
             {# TODO(ryok): rename to use_full_name_only #}
             {% if config.use_family_name %}
-              {% trans "Enter the person's information." %}
+              {% trans "Enter the person's given and family names." %}
             {% else %}
-              {% trans "Enter the person's information." %}
+              {% trans "Enter the person's name." %}
             {% endif %}
           </div>
-        {% elif params.role == 'seek_volunteer' %}
-          <h3 class="sub_title">{% trans "I'm looking for volunteer(s)" %}</h3>
-          <div class="{{params.error}}">
-            {% if config.jp_mobile_carrier_redirect %}
-              {% trans "Enter the volunteer's name and/or location." %}
-            {% else %}
-              {% trans "Enter the volunteer's name and/or location." %}
-              <div class="hint">
-                {% trans "Ram chennai" %}
-              </div>
-              <div class="hint">
-                {% trans "avadi Balaji" %}
-              </div>
-              <div class="hint">
-                {% trans "sashi 600101" %}
-              </div>
-            {% endif %}
-          </div>
-        {% elif params.role == 'seek' %}
-          <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          <div class="{{params.error}}">
-            {% if config.jp_mobile_carrier_redirect %}
-              {% trans "Enter the person's name and/or location." %}
-            {% else %}
-              {% trans "Enter the person's name and/or location." %}
-              <div class="hint">
-                {% trans "Ram chennai" %}
-              </div>
-              <div class="hint">
-                {% trans "avadi Balaji" %}
-              </div>
-              <div class="hint">
-                {% trans "sashi 600101" %}
-              </div>
-            {% endif %}
-          </div>
-        {% elif params.role == 'volunteer' %}
+        {% elif params.role == 'volunteer'  %}
           <h3 class="sub_title">{% trans "I'm a volunteer" %}</h3>
           <div class="{{params.error}}">
             {# TODO(ryok): rename to use_full_name_only #}
           </div>
-          {% endif %}
+        {% else %}
+          <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
+          <div class="{{params.error}}">
+            {% if config.jp_mobile_carrier_redirect %}
+              {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
+            {% else %}
+              {% trans "Enter the person's name or parts of the name." %}
+            {% endif %}
+          </div>
           {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
             <div class="error">
               {% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
@@ -78,6 +51,7 @@
               {{env.seek_query_form_custom_html|safe}}
             </div>
           {% endif %}
+        {% endif %}
       </div>
 
     {% if params.role == 'provide' %}
@@ -139,21 +113,109 @@
           </span>
         </div>
       {% endif %}
+    {% elif params.role == 'seek' %}
+      <div class="field">
+          {% if env.ui == "facebook" %}
+            <input id="query" name="query"
+                class="short-text-input"
+                value="{{params.query}}">
+          {% else %}
+            <input id="query" name="query"
+                class="long-text-input"
+                value="{{params.query}}">
+          {% endif %}
+      </div>
     {% endif %}
     {% if params.role == 'volunteer' %}
+      {% include "map.html.template" %}
+      {% if config.use_family_name and config.family_name_first %}
+        <div class="field">
+          <span class="label">
+            <label for="family_name">{% trans "Family name" %}:</label>
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
+              <input id="family_name" name="family_name"
+                  class="short-text-input"
+                  value="{{params.family_name}}">
+            {% else %}
+              <input id="family_name" name="family_name"
+                  class="medium-text-input"
+                  value="{{params.family_name}}">
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+        <div class="field">
+          <span class="label">
+            <label for="author_name">
+              {% if config.use_family_name %}
+                {% trans "Given name" %}:
+              {% else %}
+                {% trans "Name" %}:
+              {% endif %}
+            </label>
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
+              <input id="author_name" name="author_name"
+                  class="short-text-input"
+                  value="{{params.author_name}}">
+            {% else %}
+              <input id="author_name" name="author_name"
+                  class="medium-text-input"
+                  value="{{params.author_name}}">
+            {% endif %}
+          </span>
+        </div>
+      {% if config.use_family_name and not config.family_name_first %}
+        <div class="field">
+          <span class="label">
+            <label for="family_name">{% trans "Family name" %}:</label>
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
+              <input id="family_name" name="family_name"
+                  class="short-text-input"
+                  value="{{params.family_name}}">
+            {% else %}
+              <input id="family_name" name="family_name"
+                  class="medium-text-input"
+                  value="{{params.family_name}}">
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+        <div class="field">
+          <span class="label">
+            <label for="author_phone">
+                {% trans "Mobile number" %}:
+            </label>
+          </span>
+          <span class="value">
+            {% if env.ui == "facebook" %}
+              <input id="author_phone" name="author_phone"
+                  class="short-text-input"
+                  value="{{params.author_phone}}">
+            {% else %}
+              <input id="author_phone" name="author_phone"
+                  class="medium-text-input"
+                  value="{{params.author_phone}}">
+            {% endif %}
+          </span>
+        </div>
       <div class="field">
         <span class="label">
-          <label for="author_phone" id="author_phone">
-            {% trans "Phone number" %}:
+          <label for="author_email" id="author_email_original">
+            {% trans "Your e-mail address" %}:
           </label>
         </span>
         <span class="value">
-          <input name="author_phone" id="author_phone"
+          <input name="author_email" id="author_email"
               class="medium-text-input"
-              value="{{params.author_phone}}" />
+              value="{{params.author_email}}" />
         </span>
-      </div>
-    {% elif params.role == 'seek' or params.role == 'seek_volunteer'  %}
+    {% elif params.role == 'seek'  %}
       <div class="field">
           {% if env.ui == "facebook" %}
             <input id="query" name="query"
@@ -182,11 +244,11 @@
           {% endif %}
         {% elif params.role == 'volunteer' %}
           {% if env.use_short_buttons %}
-            <input type="submit" value="{% trans "Submit" %}">
+            <input type="submit" value="{% trans "Submit information" %}">
           {% else %}
-            <input type="submit" value="{% trans "Submit" %}">
+            <input type="submit" value="{% trans "Submit volunteer information" %}">
           {% endif %}
-        {% elif params.role == 'seek' or params.role == 'seek_volunteer' %}
+        {% elif params.role == 'seek' %}
           {% if env.ui == "facebook" %}
             <div style="margin-left: -70px"
             <input type="submit" value="{% trans "Search for this person" %}">

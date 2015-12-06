@@ -171,9 +171,13 @@ class Base(db.Model):
         return query
 
     @classmethod
-    def all_in_repo(cls, repo, filter_expired=True):
+    def all_in_repo(cls, repo, filter_expired=True, role=None):
         """Gets a query for all entities in a given repository."""
-        return cls.all(filter_expired=filter_expired).filter('repo =', repo)
+           
+        query = cls.all(filter_expired=filter_expired).filter('repo =', repo)
+        #if role:
+        #    query.filter('role =', role)
+        return query
 
     def get_record_id(self):
         """Returns the record ID of this record."""
@@ -270,9 +274,11 @@ class Person(Base):
     source_url = db.StringProperty(default='')
 
     # TODO(ryok): consider marking this required.
+    role = db.StringProperty()
     full_name = db.StringProperty(multiline=True)
     given_name = db.StringProperty()
     family_name = db.StringProperty()
+    skills = db.StringProperty()
     alternate_names = db.StringProperty(default='', multiline=True)
     description = db.TextProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
@@ -316,9 +322,13 @@ class Person(Base):
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
     # TODO(ryok): index address components.
-    _fields_to_index_properties = ['given_name', 'family_name', 'full_name']
-    _fields_to_index_by_prefix_properties = ['given_name', 'family_name',
-        'full_name']
+    #_fields_to_index_properties = ['given_name', 'family_name', 'full_name']
+    #_fields_to_index_by_prefix_properties = ['given_name', 'family_name',
+    #    'full_name']
+    _fields_to_index_properties = ['home_city', 'home_postal_code', 'home_neighborhood',
+        'given_name', 'family_name', 'full_name']
+    _fields_to_index_by_prefix_properties = ['home_city', 'home_postal_code', 'home_neighborhood',
+        'given_name', 'family_name', 'full_name']
 
     @staticmethod
     def past_due_records(repo):

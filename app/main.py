@@ -49,7 +49,9 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'query',
   'results',
   'create',
+  'create_volunteer',
   'view',
+  'view_volunteer',
   'multiview',
   'reveal',
   'photo',
@@ -264,8 +266,8 @@ def setup_env(request):
                      request.get('test_mode'))
 
     env.analytics_id = config.get('analytics_id')
-    env.maps_api_key = config.get('maps_api_key')
-
+    #env.maps_api_key = config.get('maps_api_key')
+    env.maps_api_key = 'AIzaSyCdcZW5oLpAH-zMLkG-ayIgKL-cvgZDKls'
     # Internationalization-related stuff.
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)

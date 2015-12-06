@@ -271,11 +271,26 @@ function mark_dup() {
   }
 }
 
+function validate_volunteer_fields() {
+  // Check that mandatory fields are filled in.
+  // TODO(ryok): maybe just check full_name instead of given_name and family_name.
+  var mandatory_fields = ['author_phone', 'home_postal_code'];
+  for (var i = 0; i < mandatory_fields.length; i++) {
+    field = $(mandatory_fields[i]);
+    if (field != null && field.value.match(/^\s*$/)) {
+      show($('mandatory_field_missing'));
+      field.focus();
+      return false;
+    }
+  }
+  hide($('mandatory_field_missing'));
+  return validate_fields();
+}
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
   // TODO(ryok): maybe just check full_name instead of given_name and family_name.
-  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
+  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name', 'home_city', 'home_neighborhood', 'phone_of_found_person'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {

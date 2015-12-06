@@ -31,6 +31,23 @@
           </a>
         </div>
       </div>
+      </div>
+    <div class="row">
+      <div class="action-outer start">
+        <div class="action-inner">
+          <a href="{{volunteer_url}}" tabindex="3">
+            {% trans "I want to volunteer" %}
+          </a>
+        </div>
+       </div>
+       <div class="action-outer end">
+        <div class="action-inner">
+          <a href="{{seek_volunteer}}" tabindex="4">
+            {% trans "I'm looking for a volunteer" %}
+          </a>
+        </div>
+      </div>
+      </div>
       <div class="end-multi-columns"></div>
     </div>
     <div class="row stats">

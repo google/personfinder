@@ -28,10 +28,10 @@ class TextQuery():
     words.  Future stuff we might add: indexing of phone numbers, extracting
     of locations for geo-search, synonym support."""
 
-    def __init__(self, query):
+    def __init__(self, query, unicode_word=False):
         self.query = query
-
-        query = unicode(query or '')
+        if unicode_word:
+            query = unicode(query or '')
         # Do we need a Japanese specific logic to normalize the query?
         if jautils.should_normalize(query):
             self.normalized = jautils.normalize(query)
