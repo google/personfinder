@@ -326,9 +326,9 @@ class Person(Base):
     #_fields_to_index_by_prefix_properties = ['given_name', 'family_name',
     #    'full_name']
     _fields_to_index_properties = ['home_city', 'home_postal_code', 'home_neighborhood',
-        'given_name', 'family_name', 'full_name']
+        'given_name', 'family_name', 'full_name', 'skills']
     _fields_to_index_by_prefix_properties = ['home_city', 'home_postal_code', 'home_neighborhood',
-        'given_name', 'family_name', 'full_name']
+        'given_name', 'family_name', 'full_name', 'skills']
 
     @staticmethod
     def past_due_records(repo):
