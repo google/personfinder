@@ -58,8 +58,6 @@ class Handler(BaseHandler):
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
                 
-        re.sub('[^A-Za-z0-9]+', '', self.params.author_phone)
-        
         
         if not self.params.author_name:
             self.params.author_name = self.params.given_name

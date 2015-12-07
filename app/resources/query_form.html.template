@@ -199,9 +199,17 @@
           {% endif %}
         {% elif params.role == 'volunteer' %}
           {% if env.use_short_buttons %}
-            <input type="submit" value="{% trans "Submit" %}">
+            <input type="submit" value="{% trans "Submit" %}"
+             {% if env.enable_javascript %}
+                    onclick="return validate_volunteer_fields()"
+                  {% endif %}
+            >
           {% else %}
-            <input type="submit" value="{% trans "Submit" %}">
+            <input type="submit" value="{% trans "Submit" %}"
+             {% if env.enable_javascript %}
+                    onclick="return validate_volunteer_fields()"
+                  {% endif %}
+            >
           {% endif %}
         {% elif params.role == 'seek' or params.role == 'seek_volunteer' %}
           {% if env.ui == "facebook" %}
@@ -212,6 +220,7 @@
             <input type="submit" value="{% trans "Search" %}">
           {% endif %}
         {% endif %}
+        {% include "errors.html.template" %}
       </div>
   </div>
 </form>

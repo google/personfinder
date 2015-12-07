@@ -282,6 +282,7 @@ function validate_volunteer_fields() {
       field.focus();
       return false;
     }
+    
     	
  }
   
@@ -315,9 +316,21 @@ function validate_fields() {
         return false;
      }
    }
+   var phone_field = $('author_phone')
+   var phone_value = $('author_phone').value;
+   var phone_filter = /^\d+$/;
+   console.log(phone_value.length);
+   console.log(phone_filter.test(phone_value));
+   console.log(phone_value);
+   if (phone_field != null && (!phone_filter.test(phone_value) || phone_value.length != 10)) {
+       show($('phone_no_improper_format'));
+       
+       phone_field.focus();
+       return false;
+    }
 
   hide($('email_id_improper_format'));
-
+ hide($('phone_no_improper_format'));
   // Check that the status and author_made_contact values are not inconsistent.
   if ($('status') && $('status').value == 'is_note_author' &&
       $('author_made_contact_no') && $('author_made_contact_no').checked) {

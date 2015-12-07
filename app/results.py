@@ -135,9 +135,11 @@ class Handler(BaseHandler):
         if self.params.role == 'volunteer':
             self.params.given_name = self.params.author_name
             author_phone = self.params.author_phone
-            author_phone = re.sub('[^A-Za-z0-9]+','',author_phone)
+            author_phone = re.sub('[^0-9]+','',author_phone)
             self.params.author_phone = author_phone
             logging.debug(self.params.author_phone)
+		    
+    	
             
             query = model.Person.all_in_repo(self.repo, role='volunteer')
             query.filter('author_phone =', author_phone) 
