@@ -187,6 +187,12 @@
               </span>
             </div>
             <div class="field">
+                <div class="value hint">
+                   {% trans "Enter 10 digit cell phone number or area code followed by the landline number without space, no special characters" %}
+                   {% trans "Ex: 4422222222 or 9898989898" %}
+                </div>
+              </div>
+            <div class="field">
               <span class="label">
                 <label for="author_email" id="author_email_original">
                   {% trans "Your e-mail address" %}:
@@ -328,7 +334,7 @@
             {% if config.use_postal_code %}
               <div class="field">
                 <span class="label">
-                  <label for="home_postal_code" class="mandatory">
+                  <label for="home_postal_code">
                     {% trans "Postal or zip code" %}:
                   </label>
                 </span>

@@ -24,6 +24,7 @@ import external_search
 import indexing
 import full_text_search
 import jp_mobile_carriers
+import re
 
 MAX_RESULTS = 100
 # U+2010: HYPHEN
@@ -134,6 +135,10 @@ class Handler(BaseHandler):
         if self.params.role == 'volunteer':
             self.params.given_name = self.params.author_name
             author_phone = self.params.author_phone
+            author_phone = re.sub('[^A-Za-z0-9]+','',author_phone)
+            self.params.author_phone = author_phone
+            logging.debug(self.params.author_phone)
+            
             query = model.Person.all_in_repo(self.repo, role='volunteer')
             query.filter('author_phone =', author_phone) 
             try:

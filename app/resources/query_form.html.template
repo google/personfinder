@@ -155,6 +155,17 @@
               class="medium-text-input"
               value="{{params.author_phone}}" />
         </span>
+        <div class="field">
+           <div class="value hint">
+                   {% trans "Enter 10 digit cell phone number or area code followed by the landline number without any space, no special characters.  " %}
+                   
+           </div>
+        </div>
+        <div class="field">   
+           <div class="value hint">
+                   {% trans "Example: 4422222222 or 9898989898" %}
+           </div>
+        </div>
       </div>
     {% elif params.role == 'seek' or params.role == 'seek_volunteer'  %}
       <div class="field">
