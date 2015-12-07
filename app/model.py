@@ -262,6 +262,7 @@ class Person(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+    phone_of_found_person = db.StringProperty(default='')
 
     # the original date we saw this record; it should not change.
     original_creation_date = db.DateTimeProperty(auto_now_add=True)

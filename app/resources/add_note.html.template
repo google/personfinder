@@ -201,7 +201,7 @@
         </span>
         <span class="value">
           <input name="phone_of_found_person"
-              id="phone_of_found_person"
+              id="note_phone_of_found_person"
               class="medium-text-input"
               value="{{params.phone_of_found_person}}" />
         </span>
@@ -245,7 +245,7 @@
       </div>
       <div class="field">
         <span class="label">
-          <label for="author_phone" id="author_phone_original">
+          <label for="author_phone" id="author_phone_original" class="mandatory">
             {% trans "Your phone number" %}:
           </label>
         </span>

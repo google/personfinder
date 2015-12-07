@@ -316,7 +316,7 @@ function validate_fields() {
         return false;
      }
    }
-   var phone_field = $('author_phone')
+   var phone_field = $('author_phone');
    var phone_value = $('author_phone').value;
    var phone_filter = /^\d+$/;
    console.log(phone_value.length);
@@ -328,6 +328,15 @@ function validate_fields() {
        phone_field.focus();
        return false;
     }
+
+   var found_person_phone_field = $('phone_of_found_person');
+   var found_person_phone_value = $('phone_of_found_person').value;
+   if (found_person_phone_field != null && (!phone_filter.test(found_person_phone_value) || found_person_phone_value.length != 10)) {
+       show($('phone_no_improper_format'));
+       found_person_phone_field.focus();
+       return false;
+    }
+
 
   hide($('email_id_improper_format'));
  hide($('phone_no_improper_format'));
