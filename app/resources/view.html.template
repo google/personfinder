@@ -353,14 +353,12 @@
           {% endif %}
           {% endif %}
 
-          {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Delete this record" %}"
-                onclick="javascript:location.href='{{delete_url}}'"
-                id="delete_btn">
-            </div>
-          {% endif %}
+          <div>
+            <input type="button"
+              value="{% trans "Delete this record" %}"
+              onclick="javascript:location.href='{{delete_url}}'"
+              id="delete_btn">
+          </div>
 
           {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
             <div>
@@ -378,8 +376,7 @@
             {{env.back_chevron}} {% trans "Back to results list" %}
           </a>
 
-        {% else %}
-
+        {% elif update_record_url %}
             <a href="{{update_record_url}}">
             {{env.back_chevron}} {% trans "Update this record" %}
           </a>

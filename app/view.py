@@ -112,22 +112,22 @@ class Handler(BaseHandler):
             '/feeds/note',
             person_record_id=self.params.id,
             repo=self.repo)
-        update_record_url = self.get_url('/create_volunteer', id=self.params.id,
-                                                              role='volunteer',
-                                                              family_name=person.family_name,
-                                                              given_name=person.given_name,
-                                                              skills=person.skills,
-                                                              author_phone=person.author_phone,
-                                                              author_email=person.author_email,
-                                                              home_street=person.home_street,
-                                                              home_neighborhood=person.home_neighborhood,
-                                                              home_city=person.home_city,
-                                                              home_state=person.home_state,
-                                                              home_postal_code=person.home_postal_code,
-
-
-
-                                         )
+        if person.role == 'volunteer':
+            update_record_url = self.get_url('/create_volunteer', id=self.params.id,
+                                                                  role='volunteer',
+                                                                  family_name=person.family_name,
+                                                                  given_name=person.given_name,
+                                                                  skills=person.skills,
+                                                                  author_phone=person.author_phone,
+                                                                  author_email=person.author_email,
+                                                                  home_street=person.home_street,
+                                                                  home_neighborhood=person.home_neighborhood,
+                                                                  home_city=person.home_city,
+                                                                  home_state=person.home_state,
+                                                                  home_postal_code=person.home_postal_code,
+                                             )
+        else:
+            update_record_url=''
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
         disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
@@ -156,7 +156,7 @@ class Handler(BaseHandler):
         html_page = 'view_person.html' if self.params.role == 'volunteer' else 'view.html'
         self.render(html_page,
                     person=person,
-                    role=self.params.role,
+                    role=person.role,
                     notes=notes,
                     linked_person_info=linked_person_info,
                     standalone=standalone,

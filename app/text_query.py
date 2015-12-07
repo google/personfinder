@@ -32,11 +32,7 @@ class TextQuery():
         self.query = query
         if unicode_word:
             query = unicode(query or '')
-        # Do we need a Japanese specific logic to normalize the query?
-        if jautils.should_normalize(query):
-            self.normalized = jautils.normalize(query)
-        else:
-            self.normalized = normalize(query)
+        self.normalized = normalize(query)
 
         # Split out each CJK ideograph as its own word.
         # The main CJK ideograph range is from U+4E00 to U+9FFF.
