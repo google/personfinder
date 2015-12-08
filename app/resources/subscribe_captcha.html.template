@@ -44,7 +44,7 @@
     </div>
     <br/><br/>
     {% if env.enable_captcha == True %}
-    {{captcha_html|safe}i}
+       {{captcha_html|safe}}
     {% endif %}
     <br/><br/>
     <div>
