@@ -331,7 +331,7 @@ def setup_env(request):
     # Enables features which require JavaScript.
     env.enable_javascript = True
     # Enables operations which requires Captcha.
-    env.enable_captcha = False 
+    env.enable_captcha = True
     # Enables photo upload.
     env.enable_photo_upload = True
     # Enables to flag/unflag notes as spam, and to reveal spam notes.

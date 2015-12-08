@@ -171,20 +171,24 @@ class Handler(BaseHandler):
                                    self.__get_person_record_link_html(person))
 
         # Check the captcha
-        captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.env.test_mode:
-            # Captcha is incorrect
-            captcha_html = self.get_captcha_html(captcha_response.error_code)
-            site_key = config.get('captcha_site_key')
-            form_action = self.get_url('/subscribe', id=self.params.id)
-            return self.render('subscribe_captcha.html',
-                               person=person,
-                               site_key=site_key,
-                               subscribe_email=self.params.subscribe_email,
-                               captcha_html=captcha_html,
-                               form_action=form_action,
-                               person_record_link_html=
-                                   self.__get_person_record_link_html(person))
+        captcha_enabled = os.environ.get('enable_captcha', False)
+        if captcha_enabled:
+            captcha_response = self.get_captcha_response()
+            if not captcha_response.is_valid and not self.env.test_mode:
+                # Captcha is incorrect
+                captcha_html = self.get_captcha_html(
+                    captcha_response.error_code)
+                site_key = config.get('captcha_site_key')
+                form_action = self.get_url('/subscribe', id=self.params.id)
+                return self.render(
+                    'subscribe_captcha.html',
+                    person=person,
+                    site_key=site_key,
+                    subscribe_email=self.params.subscribe_email,
+                    captcha_html=captcha_html,
+                    form_action=form_action,
+                    person_record_link_html=
+                    self.__get_person_record_link_html(person))
 
         subscription = subscribe_to(self, self.repo, person,
                                     self.params.subscribe_email, self.env.lang)
