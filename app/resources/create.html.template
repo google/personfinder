@@ -27,6 +27,9 @@
   <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="role" value="{{params.role}}">
+    <input type="hidden" name="person_id" id="person_id" value="{{params.id}}">
+    <input type="hidden" name="person_sex" id="person_sex" value="{{params.sex}}">
+
     <div class="create" role="form">
 
       <div class="column start">
@@ -182,10 +185,9 @@
               </span>
               <span class="value">
                 <select name="sex" id="sex">
-                  <option value="" selected></option>
-                  <option value="female">{% trans "female" %}</option>
-                  <option value="male">{% trans "male" %}</option>
-                  <option value="other">{% trans "other" %}</option>
+                   <option value="male" {% if "male" == params.sex %} selected {%endif%}> {% trans "male" %} </option>
+                   <option value="female" {% if "female" == params.sex %} selected {%endif%}> {% trans "female" %}</option>
+                   <option value="other" {% if "other" == params.sex %} selected {%endif%}> {% trans "other" %}</option>
                 </select>
               </span>
             </div>
