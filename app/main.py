@@ -40,6 +40,7 @@ import setup_pf
 
 # When no action or repo is specified, redirect to this action.
 HOME_ACTION = '/chennai'
+ENABLE_CAPTCHA = False
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -331,7 +332,7 @@ def setup_env(request):
     # Enables features which require JavaScript.
     env.enable_javascript = True
     # Enables operations which requires Captcha.
-    env.enable_captcha = False
+    env.enable_captcha = ENABLE_CAPTCHA
     # Enables photo upload.
     env.enable_photo_upload = True
     # Enables to flag/unflag notes as spam, and to reveal spam notes.
@@ -359,7 +360,7 @@ def setup_env(request):
         env.enable_javascript = False
         # Disables operations which requires Captcha because Captcha requires
         # JavaScript.
-        env.enable_captcha = False
+        env.enable_captcha = ENABLE_CAPTCHA 
         # Uploading is often not supported in feature phones.
         env.enable_photo_upload = False
         # Disables spam operations because it requires JavaScript and
