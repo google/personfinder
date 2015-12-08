@@ -226,6 +226,8 @@ def search(repo, query_obj, max_results, role=None):
     role = role or 'seek'
     if role == 'seek_volunteer':
         role = 'volunteer'
+    elif role == 'provide':
+        role ='seek'
     while filters_to_try:
         query = model.Person.all_in_repo(repo, role=role)
         query.filter('role =', role)
