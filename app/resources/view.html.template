@@ -343,14 +343,14 @@
           {% endif %}
 
           {% if person.role == 'seek' %}
-          {% if env.enable_captcha %}
+
             <div>
               <input type="button"
                 value="{% trans "Subscribe to updates about this person" %}"
                 onclick="javascript:location.href='{{subscribe_url}}'"
                 id="subscribe_btn">
             </div>
-          {% endif %}
+
           {% endif %}
 
           <div>
