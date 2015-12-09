@@ -171,8 +171,7 @@ class Handler(BaseHandler):
                                    self.__get_person_record_link_html(person))
 
         # Check the captcha
-        captcha_enabled = os.environ.get('enable_captcha', False)
-        if captcha_enabled:
+        if self.env.enable_captcha:
             captcha_response = self.get_captcha_response()
             if not captcha_response.is_valid and not self.env.test_mode:
                 # Captcha is incorrect
