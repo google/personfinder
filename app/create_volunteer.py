@@ -42,7 +42,7 @@ class Handler(BaseHandler):
         self.params.create_mode = True
         profile_websites = [add_profile_icon_url(website, self)
                 for website in self.config.profile_websites or []]
-        self.render('create.html',
+        self.render('create_volunteer.html',
                     profile_websites=profile_websites,
                     profile_websites_json=simplejson.dumps(profile_websites),
                     onload_function='view_page_loaded()')
@@ -57,31 +57,10 @@ class Handler(BaseHandler):
         else:
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
+                
+        
         if not self.params.author_name:
-            if self.params.clone:
-                return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
-            else:
-                return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
-
-        if self.params.add_note:
-            if not self.params.text:
-                return self.error(400, _('Message is required. Please go back and try again.'))
-            if self.params.status == 'is_note_author' and \
-                not self.params.author_made_contact:
-                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-            if (self.params.status == 'believed_dead' and \
-                not self.config.allow_believed_dead_via_ui):
-                return self.error(400, _('Not authorized to post notes with the status "I have received information that this person is dead".'))
-
-        source_date = None
-        if self.params.source_date:
-            try:
-                source_date = validate_date(self.params.source_date)
-            except ValueError:
-                return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > now:
-                return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
-
+            self.params.author_name = self.params.given_name
         expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
@@ -113,7 +92,7 @@ class Handler(BaseHandler):
             profile_urls.append(self.params.profile_url3)
 
         # Person records have to have a source_date; if none entered, use now.
-        source_date = source_date or now
+        source_date = now
 
         # Determine the source name, or fill it in if the record is original
         # (i.e. created for the first time here, not copied from elsewhere).
@@ -125,30 +104,42 @@ class Handler(BaseHandler):
                                                        self.params.referrer)
             else:
                 source_name = self.env.netloc
-        #import pdb; pdb.set_trace()
-        if self.request.params.getone('person_id'):
-            person = Person.create_original_with_record_id(self.repo,
-                                                           self.request.params.getone('person_id'),
+
+        if self.params.id:
+            person = Person.create_original_with_record_id(self.repo, self.params.id,
                                                            entry_date=now,
-                                                           expiry_date=expiry_date,
-                                                           role='seek',
-                                                           given_name=self.params.given_name,
-                                                           full_name=self.params.given_name,
-                                                           alternate_names=self.params.alternate_given_names,
-                                                           phone_of_found_person=self.params.phone_of_found_person,
-                                                           sex=self.params.sex,
-                                                           age=self.params.age,
-                                                           home_street=self.params.home_street,
-                                                           home_neighborhood=self.params.home_neighborhood,
-                                                           home_city=self.params.home_city,
-                                                           home_state=self.params.home_state,
-                                                           home_postal_code=self.params.home_postal_code,
-                                                           description=self.params.description,
-                                                           photo_url=self.params.photo_url,
-                                                           author_name=self.params.author_name,
-                                                           author_email=self.params.author_email,
-                                                           author_phone=self.params.author_phone,
+                                                            expiry_date=expiry_date,
+                                                            given_name=self.params.given_name,
+                                                            family_name=self.params.family_name,
+                                                            full_name=get_full_name(self.params.given_name,
+                                                                                    self.params.family_name,
+                                                                                    self.config),
+                                                            alternate_names=get_full_name(self.params.alternate_given_names,
+                                                                                          self.params.alternate_family_names,
+                                                                                          self.config),
+                                                            description=self.params.description,
+                                                            skills=self.params.skills,
+                                                            sex=self.params.sex,
+                                                            date_of_birth=self.params.date_of_birth,
+                                                            age=self.params.age,
+                                                            home_street=self.params.home_street,
+                                                            home_city=self.params.home_city,
+                                                            home_state=self.params.home_state,
+                                                            home_postal_code=self.params.home_postal_code,
+                                                            home_neighborhood=self.params.home_neighborhood,
+                                                            home_country=self.params.home_country,
+                                                            profile_urls='\n'.join(profile_urls),
+                                                            author_name=self.params.author_name,
+                                                            author_phone=self.params.author_phone,
+                                                            author_email=self.params.author_email,
+                                                            source_url=self.params.source_url,
+                                                            source_date=source_date,
+                                                            source_name=source_name,
+                                                            photo=photo,
+                                                            photo_url=photo_url,
+                                                            role=self.params.role
                                                            )
+
         else:
             person = Person.create_original(
                 self.repo,
@@ -163,10 +154,10 @@ class Handler(BaseHandler):
                                               self.params.alternate_family_names,
                                               self.config),
                 description=self.params.description,
+                skills=self.params.skills,
                 sex=self.params.sex,
                 date_of_birth=self.params.date_of_birth,
                 age=self.params.age,
-                phone_of_found_person=self.params.phone_of_found_person,
                 home_street=self.params.home_street,
                 home_city=self.params.home_city,
                 home_state=self.params.home_state,
@@ -182,7 +173,7 @@ class Handler(BaseHandler):
                 source_name=source_name,
                 photo=photo,
                 photo_url=photo_url,
-                role='seek'
+                role=self.params.role
             )
         person.update_index(['old', 'new'])
 
@@ -259,7 +250,7 @@ class Handler(BaseHandler):
         # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.
-            person.source_url = self.get_url('/view', id=person.record_id)
+            person.source_url = self.get_url('/view_volunteer', id=person.record_id)
             db.put(person)
 
         # TODO(ryok): batch-put person, note, photo, note_photo here.

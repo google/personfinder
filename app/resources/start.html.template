@@ -20,16 +20,33 @@
       <div class="action-outer start">
         <div class="action-inner">
           <a href="{{seek_url}}" tabindex="1">
-            {% trans "I'm looking for someone" %}
+            {% trans "Report/find missing person" %}
           </a>
         </div>
       </div>
       <div class="action-outer end">
         <div class="action-inner">
           <a href="{{provide_url}}" tabindex="2">
-            {% trans "I have information about someone" %}
+            {% trans "Update missing person status" %}
           </a>
         </div>
+      </div>
+      </div>
+    <div class="row">
+      <div class="action-outer start">
+        <div class="action-inner">
+          <a href="{{volunteer_url}}" tabindex="3">
+            {% trans "I want to volunteer" %}
+          </a>
+        </div>
+       </div>
+       <div class="action-outer end">
+        <div class="action-inner">
+          <a href="{{seek_volunteer}}" tabindex="4">
+            {% trans "Need volunteer help" %}
+          </a>
+        </div>
+      </div>
       </div>
       <div class="end-multi-columns"></div>
     </div>
@@ -42,4 +59,6 @@
       {{env.start_page_custom_html|default:""|safe}}
     </div>
   </div>
+  {% include "facebook.html.template" %}
+    <div class="fb-like" data-href="https://www.facebook.com/Help-Chennai-get-back-on-its-feet-1527226564262311/?fref=ts" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
 {% endblock %}

@@ -46,11 +46,11 @@
   {% if not standalone %}
     {% include "map.html.template" %}
   {% endif %}
-  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
+  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view_volunteer">
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="id" value="{{person.record_id}}">
     <input type="hidden" name="query" value="{{params.query}}">
-    <div class="view">
+    <div class="view_volunteer">
 
       <div class="column start">
         <div class="fields-table person">
@@ -75,35 +75,9 @@
                   <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                 </div>
               {% endif %}
-              {% if person.role == 'volunteer' %}
-                <div class="field">
-                  <span class="label">{% trans "Skills" %}:</span>
-                  <span class="value">{{person.skills}}</span>
-                </div>
-              {% endif %}
-              <div class="end-multi-columns"></div>
-            </div>
- 
-            <div class="person contact section">
-              {% if person.role == 'seek' %}
-                 <h3>{% trans "Person's family contact information" %}</h3>
-                 <div class="field">
-                   <span class="label">{% trans "Phone" %}:</span>
-                   <span class="value">{{person.phone_of_found_person}}</span>
-                 </div>
-               {% else %}
-                 <h3>{% trans "Volunteer's contact information" %}</h3>
-                 <div class="field">
-                   <span class="label">{% trans "Phone" %}:</span>
-                   <span class="value">{{person.author_phone}}</span>
-                   <span class="label">{% trans "Email" %}:</span>
-                   <span class="value">{{person.author_email}}</span>
-                 </div>
-               {% endif %}
               <div class="end-multi-columns"></div>
             </div>
 
-              {% if person.role == 'seek' %}
             <div class="physical section">
               <h3>{% trans "Physical characteristics" %}</h3>
               <div class="field">
@@ -123,7 +97,6 @@
               </div>
               <div class="end-multi-columns"></div>
             </div>
-            {% endif %} 
 
             <div class="address section">
               <h3>{% trans "Home address" %}</h3>
@@ -207,7 +180,6 @@
               </div>
             {% endif %}
 
-            {% if person.role == 'seek' %}
             <div class="source section">
               <h3>{% trans "Source of this record" %}</h3>
               <div class="field">
@@ -220,14 +192,7 @@
                     {% trans "Author's phone number" %}:
                   </span>
                   <span class="value">
-                    {% if show_private_info %}
-                      {{person.author_phone}}</span>
-                    {% else %}
-                      {% if person.author_phone %}
-                        <a href="{{reveal_url}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
-                    {% endif %}
+                      {{person.author_phone}}
                   </span>
                 </div>
                 <div class="field">
@@ -235,14 +200,7 @@
                     {% trans "Author's e-mail address" %}:
                   </span>
                   <span class="value">
-                    {% if show_private_info %}
                       {{person.author_email}}
-                    {% else %}
-                      {% if person.author_email %}
-                        <a href="{{reveal_url}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
-                    {% endif %}
                   </span>
                 </div>
               {% endif %}
@@ -290,7 +248,6 @@
               {% endif %}
               <div class="end-multi-columns"></div>
             </div>
-            {% endif %}
 
             {% if linked_person_info %}
               <div class="other section">
@@ -342,23 +299,23 @@
             </div>
           {% endif %}
 
-          {% if person.role == 'seek' %}
-
+          {% if env.enable_captcha %}
             <div>
               <input type="button"
                 value="{% trans "Subscribe to updates about this person" %}"
                 onclick="javascript:location.href='{{subscribe_url}}'"
                 id="subscribe_btn">
             </div>
-
           {% endif %}
 
-          <div>
-            <input type="button"
-              value="{% trans "Delete this record" %}"
-              onclick="javascript:location.href='{{delete_url}}'"
-              id="delete_btn">
-          </div>
+          {% if env.enable_captcha %}
+            <div>
+              <input type="button"
+                value="{% trans "Delete this record" %}"
+                onclick="javascript:location.href='{{delete_url}}'"
+                id="delete_btn">
+            </div>
+          {% endif %}
 
           {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
             <div>
@@ -375,21 +332,9 @@
           <a href="{{results_url}}">
             {{env.back_chevron}} {% trans "Back to results list" %}
           </a>
-
-        {% elif update_record_url %}
-            <a href="{{update_record_url}}">
-            {{env.back_chevron}} {% trans "Update this record" %}
-          </a>
-        {% endif %}
-        {% if params.role == "volunteer" %}
-         <a href="{{update_record_url}}">
-            {{env.back_chevron}} {% trans "Update this record" %}
-          </a>
-        {% endif %}
-        {% if params.role == "provide" %}
-        <br>
-         <a href="{{update_record_url}}">
-            {{env.back_chevron}} {% trans "Update this record" %}
+        {% else %}
+          <a href="{{env.start_url}}">
+            {{env.back_chevron}} {% trans "Back to start" %}
           </a>
         {% endif %}
       </div>

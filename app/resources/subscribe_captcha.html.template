@@ -43,7 +43,9 @@
       {{message}}
     </div>
     <br/><br/>
-    {{captcha_html|safe}}
+    {% if env.enable_captcha %}
+       {{captcha_html|safe}}
+    {% endif %}
     <br/><br/>
     <div>
       <input type="submit" value="{% trans 'Subscribe' %}" />

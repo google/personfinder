@@ -28,15 +28,11 @@ class TextQuery():
     words.  Future stuff we might add: indexing of phone numbers, extracting
     of locations for geo-search, synonym support."""
 
-    def __init__(self, query):
+    def __init__(self, query, unicode_word=False):
         self.query = query
-
-        query = unicode(query or '')
-        # Do we need a Japanese specific logic to normalize the query?
-        if jautils.should_normalize(query):
-            self.normalized = jautils.normalize(query)
-        else:
-            self.normalized = normalize(query)
+        if unicode_word:
+            query = unicode(query or '')
+        self.normalized = normalize(query)
 
         # Split out each CJK ideograph as its own word.
         # The main CJK ideograph range is from U+4E00 to U+9FFF.

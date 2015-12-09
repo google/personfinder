@@ -405,14 +405,71 @@ PFIF_1_4 = PfifVersion(
     },
     SERIALIZERS)
 
+PFIF_1_5 = PfifVersion(
+    '1.5',
+    'http://zesty.ca/pfif/1.5',
+    {
+        'person': [  # Fields of a <person> element in PFIF 1.5.
+            'person_record_id',
+            'entry_date',
+            'expiry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_name',
+            'source_date',
+            'source_url',
+            'full_name',
+            'given_name',
+            'family_name',
+            'alternate_names',
+            'description',
+            'sex',
+            'date_of_birth',
+            'age',
+            'home_street',
+            'home_neighborhood',
+            'home_city',
+            'home_state',
+            'home_postal_code',
+            'home_country',
+            'photo_url',
+            'profile_urls',
+            'skills'
+        ],
+        'note': [  # Fields of a <note> element in PFIF 1.5.
+            'note_record_id',
+            'person_record_id',
+            'linked_person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_date',
+            'author_made_contact',
+            'status',
+            'email_of_found_person',
+            'phone_of_found_person',
+            'last_known_location',
+            'text',
+            'photo_url',
+        ]
+    },
+    {  # Mandatory fields in <person> and <note> elements.
+        'person': ['person_record_id', 'source_date', 'full_name'],
+        'note': ['note_record_id', 'author_name', 'source_date', 'text'],
+    },
+    SERIALIZERS)
+
 PFIF_VERSIONS = {
     '1.1': PFIF_1_1,
     '1.2': PFIF_1_2,
     '1.3': PFIF_1_3,
-    '1.4': PFIF_1_4
+    '1.4': PFIF_1_4,
+    '1.5': PFIF_1_5,
 }
 
-PFIF_DEFAULT_VERSION = '1.4'
+PFIF_DEFAULT_VERSION = '1.5'
 
 assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 

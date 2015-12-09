@@ -271,11 +271,30 @@ function mark_dup() {
   }
 }
 
+function validate_volunteer_fields() {
+  // Check that mandatory fields are filled in.
+  // TODO(ryok): maybe just check full_name instead of given_name and family_name.
+  var mandatory_fields = ['author_phone'];
+  for (var i = 0; i < mandatory_fields.length; i++) {
+    field = $(mandatory_fields[i]);
+    if (field != null && field.value.match(/^\s*$/)) {
+      show($('mandatory_field_missing'));
+      field.focus();
+      return false;
+    }
+    
+    	
+ }
+  
+  hide($('mandatory_field_missing'));
+ 
+  return validate_fields();
+}
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
   // TODO(ryok): maybe just check full_name instead of given_name and family_name.
-  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
+  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name', 'home_city', 'home_neighborhood'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {
@@ -297,9 +316,30 @@ function validate_fields() {
         return false;
      }
    }
+   var phone_field = $('author_phone');
+   var phone_value = $('author_phone').value;
+   var phone_filter = /^\d+$/;
+   console.log(phone_value.length);
+   console.log(phone_filter.test(phone_value));
+   console.log(phone_value);
+   if (phone_field != null && (!phone_filter.test(phone_value) || phone_value.length != 10)) {
+       show($('phone_no_improper_format'));
+       
+       phone_field.focus();
+       return false;
+    }
+
+   var found_person_phone_field = $('phone_of_found_person');
+   var found_person_phone_value = $('phone_of_found_person').value;
+   if (found_person_phone_field != null && (!phone_filter.test(found_person_phone_value) || found_person_phone_value.length != 10)) {
+       show($('phone_no_improper_format'));
+       found_person_phone_field.focus();
+       return false;
+    }
+
 
   hide($('email_id_improper_format'));
-
+ hide($('phone_no_improper_format'));
   // Check that the status and author_made_contact values are not inconsistent.
   if ($('status') && $('status').value == 'is_note_author' &&
       $('author_made_contact_no') && $('author_made_contact_no').checked) {
