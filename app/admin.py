@@ -83,7 +83,7 @@ class Handler(BaseHandler):
                 repo_titles={'en': 'Earthquake', 'fr': u'S\xe9isme'},
                 keywords='person finder, people finder, person, people, ' +
                     'crisis, survivor, family',
-                use_family_name=True,
+                use_family_name=False,
                 use_alternate_names=True,
                 use_postal_code=True,
                 allow_believed_dead_via_ui=False,

@@ -44,12 +44,9 @@ def reset_datastore():
     setup_datastore()
 
 def setup_repos():
-    db.put([Repo(key_name='haiti'),
-            Repo(key_name='japan'),
-            Repo(key_name='pakistan')])
+    db.put([Repo(key_name='chennai')])
     # Set some repositories active so they show on the main page.
-    config.set_for_repo('japan', launched=True)
-    config.set_for_repo('haiti', launched=True)
+    config.set_for_repo('chennai', launched=True)
 
 def setup_configs():
     """Installs configuration settings used for testing by server_tests."""
@@ -85,7 +82,7 @@ def setup_configs():
             'famille', 'recherche de personnes', 'terremoto'
         ] + COMMON_KEYWORDS),
         # If false, hide the family_name field and use only given_name.
-        use_family_name=True,
+        use_family_name=False,
         # Presentation order for the given name and family name.
         family_name_first=False,
         # If true, show extra fields for alternate names.
@@ -130,7 +127,7 @@ def setup_configs():
             'es': u'2011 Terremoto en Jap\xf3n'
         },
         keywords=', '.join(COMMON_KEYWORDS),
-        use_family_name=True,
+        use_family_name=False,
         family_name_first=True,
         use_alternate_names=True,
         use_postal_code=True,
@@ -157,19 +154,19 @@ def setup_configs():
     )
 
     config.set_for_repo(
-        'pakistan',
+        'chennai',
         repo_titles={
-            'en': 'Pakistan Floods',
+            'en': 'Chennai Floods',
             'ur': u'\u067e\u0627\u06a9\u0633\u062a\u0627\u0646\u06cc \u0633\u06cc\u0644\u0627\u0628'
         },
         language_menu_options=['en', 'ur'],
         keywords=', '.join([
-            'pakistan', 'flood', 'pakistan flood', 'pakistani'
+            'chennai', 'flood', 'chennai flood', 'chennai'
         ] + COMMON_KEYWORDS),
         use_family_name=False,
         family_name_first=False,
-        use_alternate_names=False,
-        use_postal_code=False,
+        use_alternate_names=True,
+        use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
@@ -192,7 +189,7 @@ def setup_lang_test_config():
         repo_titles=dict((lang, lang) for lang in const.LANGUAGE_ENDONYMS),
         language_menu_options=list(const.LANGUAGE_ENDONYMS.keys()),
         keywords=', '.join(COMMON_KEYWORDS),
-        use_family_name=True,
+        use_family_name=False,
         family_name_first=True,
         use_alternate_names=True,
         use_postal_code=True,

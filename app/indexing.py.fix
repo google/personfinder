@@ -209,45 +209,42 @@ def sort_query_words(query_words):
     return sorted(sorted_query_words, key=len, reverse=True)
 
 
-def search(repo, query_obj, max_results, role=None):
+def search(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the
     # number of entries we can fetch at once, the order of query words could
     # potentially matter.  In particular, this is the case for most Japanese
     # names, many of which consist of 4 to 6 Chinese characters, each
     # coresponding to an additional filter.
-    query_words = sort_query_words(query_obj.query_words)
-    logging.debug('query_words: %r' % query_words)
+    #query_words = sort_query_words(query_obj.query_words)
+    query_words = query_obj.query_words
+    logging.info('query_words: %r' % query_words)
 
     # First try the query with all the filters, and then keep backing off
     # if we get NeedIndexError.
     fetch_limit = 400
     fetched = []
     filters_to_try = len(query_words)
-    role = role or 'seek'
-    if role == 'seek_volunteer':
-        role = 'volunteer'
-    elif role == 'provide':
-        role ='seek'
     while filters_to_try:
-        query = model.Person.all_in_repo(repo, role=role)
-        query.filter('role =', role)
+        query = model.Person.all_in_repo(repo)
         for word in query_words[:filters_to_try]:
             query.filter('names_prefixes =', word)
+         
         try:
             fetched = query.fetch(fetch_limit)
+            logging.info('indexing.search fetched: %s' % fetched)
             logging.debug('query succeeded with %d filters' % filters_to_try)
             break
         except db.NeedIndexError:
             filters_to_try -= 1
             continue
-    logging.debug('indexing.search fetched: %d' % len(fetched))
+    logging.info('indexing.search fetched: %d' % len(fetched))
 
     # Now perform any filtering that App Engine was unable to do for us.
     matched = []
     for result in fetched:
         for word in query_words:
             if word not in result.names_prefixes:
-                break
+                pass
         else:
             matched.append(result)
     logging.debug('indexing.search matched: %d' % len(matched))

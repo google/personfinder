@@ -334,6 +334,13 @@ indexes:
 - kind: Person
   properties:
   - name: is_expired
+  - name: names_prefixes
+  - name: repo
+  - name: role
+
+- kind: Person
+  properties:
+  - name: is_expired
   - name: repo
   - name: entry_date
 

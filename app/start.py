@@ -36,4 +36,6 @@ class Handler(BaseHandler):
 
         return {'num_people': num_people,
                 'seek_url': self.get_url('/query', role='seek'),
-                'provide_url': self.get_url('/query', role='provide')}
+                'seek_volunteer': self.get_url('/query', role='seek_volunteer'),
+                'provide_url': self.get_url('/query', role='provide'),
+                'volunteer_url': self.get_url('/query', role='volunteer')}

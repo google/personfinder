@@ -39,7 +39,8 @@ import setup_pf
 
 
 # When no action or repo is specified, redirect to this action.
-HOME_ACTION = 'home.html'
+HOME_ACTION = '/chennai'
+ENABLE_CAPTCHA = False
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -49,7 +50,9 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'query',
   'results',
   'create',
+  'create_volunteer',
   'view',
+  'view_volunteer',
   'multiview',
   'reveal',
   'photo',
@@ -264,8 +267,8 @@ def setup_env(request):
                      request.get('test_mode'))
 
     env.analytics_id = config.get('analytics_id')
-    env.maps_api_key = config.get('maps_api_key')
-
+    #env.maps_api_key = config.get('maps_api_key')
+    env.maps_api_key = 'AIzaSyCdcZW5oLpAH-zMLkG-ayIgKL-cvgZDKls'
     # Internationalization-related stuff.
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
@@ -329,7 +332,7 @@ def setup_env(request):
     # Enables features which require JavaScript.
     env.enable_javascript = True
     # Enables operations which requires Captcha.
-    env.enable_captcha = True
+    env.enable_captcha = ENABLE_CAPTCHA
     # Enables photo upload.
     env.enable_photo_upload = True
     # Enables to flag/unflag notes as spam, and to reveal spam notes.
@@ -337,9 +340,9 @@ def setup_env(request):
     # Enables duplicate marking mode.
     env.enable_dup_mode = True
     # Shows a logo on top of the page.
-    env.show_logo = True
+    env.show_logo = False
     # Shows language menu.
-    env.show_language_menu = True
+    env.show_language_menu = False
     # Uses short labels for buttons.
     env.use_short_buttons = False
     # Optional "target" attribute for links to non-small pages.
@@ -357,7 +360,7 @@ def setup_env(request):
         env.enable_javascript = False
         # Disables operations which requires Captcha because Captcha requires
         # JavaScript.
-        env.enable_captcha = False
+        env.enable_captcha = ENABLE_CAPTCHA 
         # Uploading is often not supported in feature phones.
         env.enable_photo_upload = False
         # Disables spam operations because it requires JavaScript and
@@ -519,7 +522,7 @@ class Main(webapp.RequestHandler):
 
         if not env.action and not env.repo:
             # Redirect to the default home page.
-            self.redirect(env.global_url + '/' + HOME_ACTION)
+            self.redirect(HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')

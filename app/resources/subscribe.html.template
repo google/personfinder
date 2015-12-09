@@ -12,7 +12,6 @@
 
 {% load i18n %}
 
-{% if env.enable_captcha %}
   <div class="field">
     <span class="label">
       <label for="subscribe-checkbox">
@@ -23,4 +22,3 @@
       <input id="subscribe-checkbox" type="checkbox" name="subscribe" checked>
     </span>
   </div>
-{% endif %}

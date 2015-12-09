@@ -112,42 +112,6 @@ class Handler(BaseHandler):
             '/feeds/note',
             person_record_id=self.params.id,
             repo=self.repo)
-        update_record_url=''
-        if person.role == 'volunteer':
-            update_record_url = self.get_url('/create_volunteer', id=self.params.id,
-                                                                  role='volunteer',
-                                                                  family_name=person.family_name,
-                                                                  given_name=person.given_name,
-                                                                  skills=person.skills,
-                                                                  author_phone=person.author_phone,
-                                                                  author_email=person.author_email,
-                                                                  home_street=person.home_street,
-                                                                  home_neighborhood=person.home_neighborhood,
-                                                                  home_city=person.home_city,
-                                                                  home_state=person.home_state,
-                                                                  home_postal_code=person.home_postal_code,
-                                             )
-        elif self.params.role == 'provide':
-
-            update_record_url = self.get_url('/create',
-                                             id=self.params.id,
-                                             role='seek',
-                                             given_name=person.given_name,
-                                             alternate_given_names=person.alternate_names,
-                                             phone_of_found_person=person.phone_of_found_person,
-                                             sex=person.sex,
-                                             age=person.age,
-                                             home_street=person.home_street,
-                                             home_neighborhood=person.home_neighborhood,
-                                             home_city=person.home_city,
-                                             home_state=person.home_state,
-                                             home_postal_code=person.home_postal_code,
-                                             description=person.description,
-                                             photo_url=person.photo_url,
-                                             author_name=person.author_name,
-                                             author_email=person.author_email,
-                                             author_phone=person.author_phone,
-                                             )
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
         disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
@@ -173,10 +137,10 @@ class Handler(BaseHandler):
 
         if person.profile_urls:
             person.profile_pages = get_profile_pages(person.profile_urls, self)
-        html_page = 'view_person.html' if self.params.role == 'volunteer' else 'view.html'
+        html_page = 'view_volunteer.html' if self.params.role == 'volunteer' else 'view.html'
         self.render(html_page,
                     person=person,
-                    role=person.role,
+                    role=self.params.role,
                     notes=notes,
                     linked_person_info=linked_person_info,
                     standalone=standalone,
@@ -186,7 +150,6 @@ class Handler(BaseHandler):
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
                     reveal_url=reveal_url,
-                    update_record_url=update_record_url,
                     feed_url=feed_url,
                     subscribe_url=subscribe_url,
                     delete_url=delete_url,
@@ -201,10 +164,12 @@ class Handler(BaseHandler):
             return self.error(
                 200, _('Message is required. Please go back and try again.'))
 
-        if not self.params.author_name:
+        if not self.params.given_name:
             return self.error(
                 200, _('Your name is required in the "About you" section.  '
                        'Please go back and try again.'))
+        if not self.params.author_name:
+            self.params.author_name = self.params.given_name
 
         if (self.params.status == 'is_note_author' and
             not self.params.author_made_contact):
