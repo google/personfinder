@@ -205,7 +205,7 @@ class PersonNoteTests(ServerTestsBase):
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
-        num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
+        num_initial_notes = len(details_page.cssselect('.self-notes .view.note'))
         note_form = details_page.first('form')
 
         # Advance the clock. The new note has a newer source_date by this.
@@ -223,21 +223,22 @@ class PersonNoteTests(ServerTestsBase):
             expected['status'] = str(NOTE_STATUS_TEXT.get(status))
 
         details_page = self.s.submit(note_form, **params)
-        notes = details_page.first(class_='self-notes').all(class_='view note')
+        notes = details_page.cssselect('.self-notes .view.note')
         assert len(notes) == num_initial_notes + 1
         new_note = notes[-1]
+        new_note_text = scrape.get_all_text(new_note)
         for field, text in expected.iteritems():
             if field in ['note_photo_url']:
                 url = utils.strip_url_scheme(text)
-                assert url in new_note.content, \
-                    'Note content %r missing %r' % (new_note.content, url)
+                assert new_note.cssselect('.photo')[0].get('src') == url, (
+                    'Note photo URL mismatch')
             else:
-                assert text in new_note.text, \
-                    'Note text %r missing %r' % (new_note.text, text)
+                assert text in new_note_text, (
+                    'Note text %r missing %r' % (new_note_text, text))
 
         # Show this text if and only if the person has been contacted
         assert ('This person has been in contact with someone'
-                in new_note.text) == author_made_contact
+                in new_note_text) == author_made_contact
 
     def verify_email_sent(self, message_count=1):
         """Verifies email was sent, firing manually from the taskqueue
