@@ -62,9 +62,9 @@ class PersonNoteTests(ServerTestsBase):
         Checks to make sure there's an error message that contains the given
         fragments.  On failure, fail assertion.  On success, step back.
         """
-        error_message = page.first(class_=re.compile(r'.*\berror\b.*'))
+        error_message = page.cssselect('.error')[0].text.strip()
         for fragment in fragments:
-            assert fragment in error_message.text, (
+            assert fragment in error_message, (
                 '%s missing from error message' % fragment)
         self.s.back()
 
@@ -83,22 +83,22 @@ class PersonNoteTests(ServerTestsBase):
         """
 
         # Check that the results are as expected
-        result_titles = self.s.doc.all(class_='resultDataTitle')
+        result_titles = self.s.doc.cssselect('.resultDataTitle')
         assert len(result_titles) == num_results
         for title in result_titles:
             for text in all_have:
-                assert text in title.content, \
-                    '%s must have %s' % (title.content, text)
+                assert text in title.text.strip(), (
+                    '%s must have %s' % (title.text.strip(), text))
         for text in some_have:
-            assert any(text in title.content for title in result_titles), \
-                'One of %s must have %s' % (result_titles, text)
+            assert any(text in title.text.strip() for title in result_titles), (
+                'One of %s must have %s' % (result_titles, text))
         if status:
-            result_statuses = self.s.doc.all(class_='resultDataPersonFound')
+            result_statuses = self.s.doc.cssselect('.resultDataPersonFound')
             assert len(result_statuses) == len(status)
             for expected_status, result_status in zip(status, result_statuses):
-                assert expected_status in result_status.content, \
+                assert result_status.text.strip() == expected_status, (
                     '"%s" missing expected status: "%s"' % (
-                    result_status, expected_status)
+                    result_status, expected_status))
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -164,14 +164,16 @@ class PersonNoteTests(ServerTestsBase):
 
         # Person info is stored in matching 'label' and 'value' cells.
         fields = dict(zip(
-            [label.text.strip() for label in details_page.all(class_='label')],
-            details_page.all(class_='value')))
+            [label.text.strip() for label in details_page.cssselect('.label')],
+            details_page.cssselect('.value')))
         for label, value in details.iteritems():
-            assert fields[label].text.strip() == value
+            assert self.get_all_text(fields[label]) == value, (
+                'value mismatch for the field named %s' % label)
 
-        actual_num_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
-        assert actual_num_notes == num_notes, \
-            'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
+        actual_num_notes = len(
+            details_page.cssselect('.self-notes')[0].cssselect('.view.note'))
+        assert actual_num_notes == num_notes, (
+            'expected %s notes, instead was %s' % (num_notes, actual_num_notes))
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
