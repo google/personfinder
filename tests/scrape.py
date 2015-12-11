@@ -1068,9 +1068,27 @@ class Document(Region):
         else:
             self.__etree_doc = None
 
+    def cssselect(self, expr, **kwargs):
+        """Evaluate a CSS selector expression against the document, and returns a
+        list of lxml.etree.ElementBase instances.
+
+        See http://lxml.de/api/lxml.etree._Element-class.html#cssselect for
+        details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
+        """
+        return self.__get_etree_doc().cssselect(expr, **kwargs)
+
     def xpath(self, path, **kwargs):
         """Evaluate an XPath expression against the document, and returns a
         list of lxml.etree.ElementBase instances.
+
+        It is generally recommended to use cssselect() instead if it can be
+        expressed with CSS selector.
 
         See http://lxml.de/api/lxml.etree._Element-class.html#xpath for
         details.
@@ -1081,10 +1099,14 @@ class Document(Region):
             or from the header)
           - charset is not RAW
         """
+        return self.__get_etree_doc().xpath(path, **kwargs)
+
+    def __get_etree_doc(self):
         assert self.__etree_doc is not None, (
             'The content type is neither text/html nor text/xml, '
             'charset is RAW, or the document is empty.')
-        return self.__etree_doc.xpath(path, **kwargs)
+        return self.__etree_doc
+
 
 def read(path):
     """Read and return the entire contents of the file at the given path."""
