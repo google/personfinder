@@ -5060,6 +5060,13 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/api/write?key=domain_test_key')
         assert self.s.status == 405
 
+    def test_cssselect(self):
+        """Test that Document.cssselect works. May delete later.
+        """
+        doc = self.go('/haiti/')
+        assert (doc.cssselect('a.repo')[0].text.strip()
+            == 'Haiti Earthquake')
+
     def test_xpath(self):
         """Test that Document.xpath works. May delete later.
         """
