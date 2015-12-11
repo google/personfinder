@@ -44,7 +44,10 @@ __version__ = '$Revision: 1.44 $'
 
 from urlparse import urlsplit, urljoin
 from htmlentitydefs import name2codepoint
-import sys, re
+import re
+import sys
+
+import lxml.etree
 
 RE_TYPE = type(re.compile(''))
 
@@ -248,16 +251,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if 'set-cookie' in headers:
         setcookies(cookiejar, host, headers['set-cookie'].split('\n'))
 
-    # Handle the 'charset' parameter.
-    if 'content-type' in headers and not charset:
-        for param in headers['content-type'].split(';')[1:]:
-            if param.strip().startswith('charset='):
-                charset = param.strip()[8:]
-                break
-    if charset and charset is not RAW:
-        content = content.decode(charset)
-
-    return url, status, message, headers, content, charset
+    return url, status, message, headers, content
 
 def multipart_encode(data, charset):
     """Encode 'data' for a multipart post. If any of the values is of type file,
@@ -335,8 +329,8 @@ class Session:
             referrer = self.url
 
         while 1:
-            (self.url, self.status, self.message, self.headers, self.content,
-             self.charset) = fetch(
+            (self.url, self.status, self.message, self.headers,
+             content_bytes) = fetch(
                 url, data, self.agent, referrer, charset, self.verbose,
                 self.cookiejar, type)
             if redirects:
@@ -347,7 +341,10 @@ class Session:
             break
 
         self.history.append(historyentry)
-        self.doc = Region(self.content, charset=self.charset)
+
+        self.doc = Document(content_bytes, headers=self.headers, charset=charset)
+        self.content = self.doc.content
+        self.charset = self.doc.charset
         return self.doc
 
     def back(self):
@@ -600,7 +597,7 @@ def matchattrs(specimen, desired):
                 return 0
     return 1
 
-class Region:
+class Region(object):
     """A Region object represents a contiguous region of a document (in terms
     of a starting and ending position in the document string) together with
     an associated HTML or XML tag and its attributes.  Dictionary-like access
@@ -1029,6 +1026,65 @@ class Region:
         a = attrs and ' matching %r' % attrs or ''
         c = content is not None and ' with content %r' % content or ''
         raise ScrapeError('no %s found%s%s' % (tag, a, c))
+
+class Document(Region):
+    """A document returned as an HTTP response.
+    """
+
+    def __init__(self, content_bytes, headers, charset):
+        """charset is used to decode content_bytes. If charset is None, it uses
+        the charset in headers['content-type'].
+        """
+        self.content_bytes = content_bytes
+        self.charset = charset
+
+        if 'content-type' in headers:
+            fields = headers['content-type'].split(';')
+            content_type = fields[0]
+            for field in fields[1:]:
+                if not self.charset and field.strip().startswith('charset='):
+                    self.charset = field.strip()[8:]
+                    break
+        else:
+            content_type = None
+
+        if self.charset and self.charset is not RAW:
+            content = content_bytes.decode(self.charset)
+        else:
+            # TODO(ichikawa): Consider setting None here, and use
+            #   content_bytes instead, after removing Region class.
+            content = content_bytes
+
+        super(Document, self).__init__(content, charset=self.charset)
+
+        if not content or not self.charset or self.charset == RAW:
+            self.__etree_doc = None
+        elif content_type == 'text/html':
+            self.__etree_doc = lxml.etree.HTML(
+                content_bytes, parser=lxml.etree.HTMLParser(encoding=self.charset))
+        elif content_type == 'text/xml':
+            self.__etree_doc = lxml.etree.XML(
+                content_bytes, parser=lxml.etree.XMLParser(encoding=self.charset))
+        else:
+            self.__etree_doc = None
+
+    def xpath(self, path, **kwargs):
+        """Evaluate an XPath expression against the document, and returns a
+        list of lxml.etree.ElementBase instances.
+
+        See http://lxml.de/api/lxml.etree._Element-class.html#xpath for
+        details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
+        """
+        assert self.__etree_doc is not None, (
+            'The content type is neither text/html nor text/xml, '
+            'charset is RAW, or the document is empty.')
+        return self.__etree_doc.xpath(path, **kwargs)
 
 def read(path):
     """Read and return the entire contents of the file at the given path."""

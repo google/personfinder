@@ -3214,7 +3214,7 @@ _feed_profile_url2</pfif:profile_urls>
             full_name='_test_full_name',
             entry_date=datetime.datetime.utcnow()
         ))
-        url, status, message, headers, content, charset = scrape.fetch(
+        url, status, message, headers, content = scrape.fetch(
             'http://' + self.hostport +
             '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')
@@ -5059,3 +5059,10 @@ _feed_profile_url2</pfif:profile_urls>
 
         doc = self.go('/haiti/api/write?key=domain_test_key')
         assert self.s.status == 405
+
+    def test_xpath(self):
+        """Test that Document.xpath works. May delete later.
+        """
+        doc = self.go('/haiti/')
+        assert (doc.xpath("//a[@class='repo']")[0].text.strip()
+            == 'Haiti Earthquake')
