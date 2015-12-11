@@ -353,19 +353,43 @@ class Session:
          self.headers, self.content, self.doc) = self.history.pop()
         return self.url
 
-    def follow(self, anchor, region=None):
+    def follow(self, anchor, context=None):
         """If 'anchor' is an element, follow the link in its 'href' attribute;
         if 'anchor' is a string or compiled RE, find the first link with that
-        anchor text, and follow it.  If 'region' is specified, only that region
-        is searched for a matching link, instead of the whole document."""
-        link = anchor
-        if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
-            link = (region or self.doc).first('a', content=anchor)
-        if not link:
-            raise ScrapeError('link %r not found' % anchor)
-        if not link.get('href', ''):
-            raise ScrapeError('link %r has no href' % link)
-        return self.go(link['href'])
+        anchor text, and follow it.  If 'context' is specified, a matching link
+        is searched only inside the 'context' element, instead of the whole
+        document.
+        """
+        if isinstance(anchor, Region) or isinstance(context, Region):
+            # TODO(ichikawa) Remove this after we stop using Region.
+            link = anchor
+            if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
+                link = (context or self.doc).first('a', content=anchor)
+            if not link:
+                raise ScrapeError('link %r not found' % anchor)
+            if not link.get('href', ''):
+                raise ScrapeError('link %r has no href' % link)
+            href = link['href']
+
+        else:
+            if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
+                link = None
+                for l in (context or self.doc).cssselect('a'):
+                    if get_all_text(l) == anchor:
+                        link = l
+                        break
+            elif isinstance(anchor, lxml.etree._Element):
+                link = anchor
+            else:
+                raise ScrapeError('Unexpected type for anchor: %r' % anchor)
+
+            if link is None:
+                raise ScrapeError('link %r not found' % anchor)
+            href = link.get('href')
+            if not href:
+                raise ScrapeError('link %r has no href' % link)
+
+        return self.go(href)
 
     def follow_button(self, button):
         """Follow the forward URL specified in the button's onclick handler."""
@@ -1142,5 +1166,11 @@ def getnumber(text):
             except:
                 continue
     raise ScrapeError('no number found in %r' % text)
+
+def get_all_text(elem):
+    """Returns all texts in the subtree of the element.
+    """
+    text = ''.join(elem.itertext())
+    return re.sub(r'\s+', ' ', text).strip()
 
 s = Session()
