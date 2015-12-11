@@ -3214,7 +3214,7 @@ _feed_profile_url2</pfif:profile_urls>
             full_name='_test_full_name',
             entry_date=datetime.datetime.utcnow()
         ))
-        url, status, message, headers, content, charset = scrape.fetch(
+        url, status, message, headers, content = scrape.fetch(
             'http://' + self.hostport +
             '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')

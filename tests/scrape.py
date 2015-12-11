@@ -251,14 +251,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if 'set-cookie' in headers:
         setcookies(cookiejar, host, headers['set-cookie'].split('\n'))
 
-    # Handle the 'charset' parameter.
-    if 'content-type' in headers and not charset:
-        for param in headers['content-type'].split(';')[1:]:
-            if param.strip().startswith('charset='):
-                charset = param.strip()[8:]
-                break
-
-    return url, status, message, headers, content, charset
+    return url, status, message, headers, content
 
 def multipart_encode(data, charset):
     """Encode 'data' for a multipart post. If any of the values is of type file,
@@ -337,7 +330,7 @@ class Session:
 
         while 1:
             (self.url, self.status, self.message, self.headers,
-             content_str, self.charset) = fetch(
+             content_bytes) = fetch(
                 url, data, self.agent, referrer, charset, self.verbose,
                 self.cookiejar, type)
             if redirects:
@@ -349,9 +342,9 @@ class Session:
 
         self.history.append(historyentry)
 
-        self.doc = Document(
-            content_str, headers=self.headers, charset=self.charset)
+        self.doc = Document(content_bytes, headers=self.headers, charset=charset)
         self.content = self.doc.content
+        self.charset = self.doc.charset
         return self.doc
 
     def back(self):
@@ -1038,27 +1031,40 @@ class Document(Region):
     """A document returned as an HTTP response.
     """
 
-    def __init__(self, content_str, headers, charset=None):
-        if charset and charset is not RAW:
-            content = content_str.decode(charset)
-        else:
-            content = content_str
-
-        super(Document, self).__init__(content, charset=charset)
+    def __init__(self, content_bytes, headers, charset):
+        """charset is used to decode content_bytes. If charset is None, it uses
+        the charset in headers['content-type'].
+        """
+        self.content_bytes = content_bytes
+        self.charset = charset
 
         if 'content-type' in headers:
-            content_type = headers['content-type'].split(';')[0]
+            fields = headers['content-type'].split(';')
+            content_type = fields[0]
+            for field in fields[1:]:
+                if not self.charset and field.strip().startswith('charset='):
+                    self.charset = field.strip()[8:]
+                    break
         else:
             content_type = None
 
-        if not content or charset == RAW:
+        if self.charset and self.charset is not RAW:
+            content = content_bytes.decode(self.charset)
+        else:
+            # TODO(ichikawa): Consider setting None here, and use
+            #   content_bytes instead, after removing Region class.
+            content = content_bytes
+
+        super(Document, self).__init__(content, charset=self.charset)
+
+        if not content or not self.charset or self.charset == RAW:
             self.__etree_doc = None
         elif content_type == 'text/html':
             self.__etree_doc = lxml.etree.HTML(
-                content_str, parser=lxml.etree.HTMLParser(encoding=charset))
+                content_bytes, parser=lxml.etree.HTMLParser(encoding=self.charset))
         elif content_type == 'text/xml':
             self.__etree_doc = lxml.etree.XML(
-                content_str, parser=lxml.etree.XMLParser(encoding=charset))
+                content_bytes, parser=lxml.etree.XMLParser(encoding=self.charset))
         else:
             self.__etree_doc = None
 
@@ -1068,6 +1074,12 @@ class Document(Region):
 
         See http://lxml.de/api/lxml.etree._Element-class.html#xpath for
         details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
         """
         assert self.__etree_doc is not None, (
             'The content type is neither text/html nor text/xml, '
