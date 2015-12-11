@@ -167,7 +167,7 @@ class PersonNoteTests(ServerTestsBase):
             [label.text.strip() for label in details_page.cssselect('.label')],
             details_page.cssselect('.value')))
         for label, value in details.iteritems():
-            assert self.get_all_text(fields[label]) == value, (
+            assert scrape.get_all_text(fields[label]) == value, (
                 'value mismatch for the field named %s' % label)
 
         actual_num_notes = len(
@@ -186,12 +186,11 @@ class PersonNoteTests(ServerTestsBase):
         """
 
         # Get the list of links.
-        results = self.s.doc.first('div', class_='searchResults')
-        result_link = results.all('a', class_='result-link')[n]
+        result_link = self.s.doc.cssselect('div.searchResults a.result-link')[n]
 
         # Verify and then follow the link.
-        url_test(result_link['href'])
-        self.s.go(result_link['href'])
+        url_test(result_link.get('href'))
+        self.s.follow(result_link)
 
     def verify_update_notes(self, author_made_contact, note_body, author,
                             status, **kwargs):
