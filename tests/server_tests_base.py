@@ -272,9 +272,3 @@ class ServerTestsBase(unittest.TestCase):
             param_regex = r'\b%s=%s\b' % (re.escape(key), re.escape(value))
             assert not re.search(param_regex, url), \
                 'URL %s must not contain %s=%s' % (url, key, value)
-
-    def get_all_text(self, elem):
-        """Returns all texts in the subtree of the element.
-        """
-        text = ''.join(elem.itertext())
-        return re.sub(r'\s+', ' ', text).strip()
