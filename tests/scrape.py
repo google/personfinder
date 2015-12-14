@@ -372,10 +372,16 @@ class Session:
             href = link['href']
 
         else:
-            if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
+            if isinstance(anchor, basestring):
                 link = None
                 for l in (context or self.doc).cssselect('a'):
                     if get_all_text(l) == anchor:
+                        link = l
+                        break
+            elif isinstance(anchor, RE_TYPE):
+                link = None
+                for l in (context or self.doc).cssselect('a'):
+                    if re.search(anchor, get_all_text(l)):
                         link = l
                         break
             elif isinstance(anchor, lxml.etree._Element):
@@ -1094,7 +1100,7 @@ class Document(Region):
 
     def cssselect(self, expr, **kwargs):
         """Evaluate a CSS selector expression against the document, and returns a
-        list of lxml.etree.ElementBase instances.
+        list of lxml.etree._Element instances.
 
         See http://lxml.de/api/lxml.etree._Element-class.html#cssselect for
         details.
@@ -1168,7 +1174,8 @@ def getnumber(text):
     raise ScrapeError('no number found in %r' % text)
 
 def get_all_text(elem):
-    """Returns all texts in the subtree of the element.
+    """Returns all texts in the subtree of the lxml.etree._Element, which is
+    returned by Document.cssselect() etc.
     """
     text = ''.join(elem.itertext())
     return re.sub(r'\s+', ' ', text).strip()
