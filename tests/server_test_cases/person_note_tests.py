@@ -45,6 +45,7 @@ import remote_api
 from resources import Resource, ResourceBundle
 import reveal
 import scrape
+from scrape import get_all_text, get_form_params
 import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
@@ -109,8 +110,10 @@ class PersonNoteTests(ServerTestsBase):
 
         # Click the button to create a new record
         found = False
-        for results_form in self.s.doc.all('form'):
-            if 'Create a new record' in results_form.content:
+        for results_form in self.s.doc.cssselect('form'):
+            submit_button = results_form.cssselect('input[type="submit"]')
+            if (submit_button and
+                'Create a new record' in submit_button[0].get('value', '')):
                 self.s.submit(results_form)
                 found = True
         assert found, "didn't find Create a new record in any form"
@@ -125,11 +128,12 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on the create page
         """
 
-        create_form = self.s.doc.first('form')
+        create_form = self.s.doc.cssselect('form')[0]
+        create_form_params = get_form_params(create_form)
         for key, value in (prefilled_params or {}).iteritems():
-            assert create_form.params[key] == value
+            assert create_form_params[key] == value
         for key in unfilled_params or ():
-            assert not create_form.params[key]
+            assert not create_form_params[key]
 
         # Try to submit without filling in required fields
         self.assert_error_deadend(
@@ -142,8 +146,8 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on a page with a note form.
         """
 
-        note_form = self.s.doc.first('form')
-        assert 'Tell us the status of this person' in note_form.content
+        note_form = self.s.doc.cssselect('form')[0]
+        assert 'Tell us the status of this person' in get_all_text(note_form)
         self.assert_error_deadend(
             self.s.submit(note_form), 'required', 'try again')
 
@@ -205,7 +209,7 @@ class PersonNoteTests(ServerTestsBase):
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
         num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
-        note_form = details_page.first('form')
+        note_form = details_page.cssselect('form')[0]
 
         # Advance the clock. The new note has a newer source_date by this.
         # This makes sure that the new note appears at the bottom of the view
@@ -299,8 +303,8 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti?ui=small')
         search_page = self.s.follow('I have information about someone')
-        search_form = search_page.first('form')
-        assert 'I have information about someone' in search_form.content
+        search_form = search_page.cssselect('form')[0]
+        assert 'I have information about someone' in get_all_text(search_form)
 
         self.assert_error_deadend(
             self.s.submit(search_form),
