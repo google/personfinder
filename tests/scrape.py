@@ -403,34 +403,35 @@ class Session:
 
     def submit(self, elem, paramdict=None, url=None, redirects=10, **params):
         """Submit a form, optionally by clicking a given button.  The 'elem'
-        argument can be the form itself or a button in the form to click.
-        Obtain the parameters to submit by (a) starting with the 'paramdict'
-        dictionary if specified, or the default parameter values as returned
-        by get_form_params; then (b) adding or replacing parameters in this
-        dictionary according to the keyword arguments.  The 'url' argument
-        overrides the form's action attribute and submits the form elsewhere.
-        After submission, follow redirections up to 'redirects' times."""
+        argument should be of type lxml.etree.Element and can be the form itself
+        or a button in the form to click.  Obtain the parameters to submit by
+        (a) starting with the 'paramdict' dictionary if specified, or the
+        default parameter values as returned by get_form_params; then (b) adding
+        or replacing parameters in this dictionary according to the keyword
+        arguments.  The 'url' argument overrides the form's action attribute and
+        submits the form elsewhere.  After submission, follow redirections up to
+        'redirects' times."""
 
         if isinstance(elem, Region):  # for backward compatibility.
-            form = elem.tagname == 'form' and elem or elem.enclosing('form')
+            form = elem if elem.tagname == 'form' else elem.enclosing('form')
             if not form:
                 raise ScrapeError('%r is not contained in a form' % elem)
             form_params = form.params
         else:
             try:
-                form = elem.tag == 'form' and elem or (
-                    elem.iterancestors('form')[0])
+                form = elem if elem.tag == 'form' else (
+                        elem.iterancestors('form')[0])
             except IndexError:
                 raise ScrapeError('%r is not contained in a form' % elem)
             form_params = get_form_params(form)
 
-        if paramdict is not None:
-            p = paramdict.copy()
-        else:
-            p = form_params
+        p = paramdict.copy() if paramdict is not None else form_params
+        # Include the (name, value) attributes of a submit button as part of the
+        # parameters e.g. <input type="submit" name="action" value="add">
         if elem.get('name'):
             p[elem.get('name')] = elem.get('value', '')
         p.update(params)
+
         method = form.get('method', '').lower() or 'get'
         url = url or form.get('action', self.url)
         multipart_post = any(map(lambda v: isinstance(v, file), p.itervalues()))
@@ -1204,8 +1205,7 @@ def get_form_params(form):
             elif selections:
                 params[select.get('name')] = selections[0]
     for textarea in form.cssselect('textarea'):
-        if (textarea.get('disabled') is None and
-            textarea.get('readonly') is None):
+        if textarea.get('disabled') is None:
             params[textarea.get('name')] = textarea.text or ''
     return params
 
