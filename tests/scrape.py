@@ -407,32 +407,44 @@ class Session:
             raise ScrapeError('button %r has no forward URL' % button)
         return self.go(location_match.group(1))
 
-    def submit(self, region, paramdict=None, url=None, redirects=10, **params):
-        """Submit a form, optionally by clicking a given button.  The 'region'
-        argument can be the form itself or a button in the form to click.
-        Obtain the parameters to submit by (a) starting with the 'paramdict'
-        dictionary if specified, or the default parameter values as returned
-        by get_params; then (b) adding or replacing parameters in this
-        dictionary according to the keyword arguments.  The 'url' argument
-        overrides the form's action attribute and submits the form elsewhere.
-        After submission, follow redirections up to 'redirects' times."""
-        form = region.tagname == 'form' and region or region.enclosing('form')
-        if not form:
-            raise ScrapeError('%r is not contained in a form' % region)
-        if paramdict is not None:
-            p = paramdict.copy()
+    def submit(self, elem, paramdict=None, url=None, redirects=10, **params):
+        """Submit a form, optionally by clicking a given button.  The 'elem'
+        argument should be of type lxml.etree._Element and can be the form
+        itself or a button in the form to click.  Obtain the parameters to
+        submit by (a) starting with the 'paramdict' dictionary if specified, or
+        the default parameter values as returned by get_form_params; then (b)
+        adding or replacing parameters in this dictionary according to the
+        keyword arguments.  The 'url' argument overrides the form's action
+        attribute and submits the form elsewhere.  After submission, follow
+        redirections up to 'redirects' times."""
+
+        if isinstance(elem, Region):  # for backward compatibility.
+            form = elem if elem.tagname == 'form' else elem.enclosing('form')
+            if not form:
+                raise ScrapeError('%r is not contained in a form' % elem)
+            form_params = form.params
         else:
-            p = form.params
-        if 'name' in region:
-            p[region['name']] = region.get('value', '')
+            try:
+                form = elem if elem.tag == 'form' else (
+                        elem.iterancestors('form')[0])
+            except IndexError:
+                raise ScrapeError('%r is not contained in a form' % elem)
+            form_params = get_form_params(form)
+
+        p = paramdict.copy() if paramdict is not None else form_params
+        # Include the (name, value) attributes of a submit button as part of the
+        # parameters e.g. <input type="submit" name="action" value="add">
+        if elem.get('name'):
+            p[elem.get('name')] = elem.get('value', '')
         p.update(params)
-        method = form['method'].lower() or 'get'
+
+        method = form.get('method', '').lower() or 'get'
         url = url or form.get('action', self.url)
         multipart_post = any(map(lambda v: isinstance(v, file), p.itervalues()))
         if multipart_post:
-            param_str, content_type = multipart_encode(p, region.charset)
+            param_str, content_type = multipart_encode(p, self.doc.charset)
         else:
-            param_str, content_type = urlencode(p, region.charset), None
+            param_str, content_type = urlencode(p, self.doc.charset), None
         if method == 'get':
             if multipart_post:
                 raise ScrapeError('can not upload a file with a GET request')
@@ -822,7 +834,7 @@ class Region(object):
             return self.attrs[name]
         raise AttributeError('no attribute named %r' % name)
 
-    def get(self, name, default):
+    def get(self, name, default=None):
         if name in self.attrs:
             return self.attrs[name]
         return default
@@ -1179,5 +1191,29 @@ def get_all_text(elem):
     """
     text = ''.join(elem.itertext())
     return re.sub(r'\s+', ' ', text).strip()
+
+def get_form_params(form):
+    """Get a dictionary of default values for all the form parameters.
+    If there is a <input type=file> tag, it tries to open a file object."""
+    params = {}
+    for input in form.cssselect('input'):
+        if input.get('name') and input.get('disabled') is None:
+            type = input.get('type', 'text').lower()
+            if type in ['text', 'password', 'hidden'] or (
+               type in ['checkbox', 'radio'] and input.get('checked') is not None):
+                params[input.get('name')] = input.get('value', '')
+    for select in form.cssselect('select'):
+        if select.get('disabled') is None:
+            selections = [option.get('value', '')
+                          for option in select.cssselect('option')
+                          if option.get('selected') is not None]
+            if select.get('multiple') is not None:
+                params[select.get('name')] = selections
+            elif selections:
+                params[select.get('name')] = selections[0]
+    for textarea in form.cssselect('textarea'):
+        if textarea.get('disabled') is None:
+            params[textarea.get('name')] = textarea.text or ''
+    return params
 
 s = Session()
