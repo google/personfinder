@@ -403,14 +403,14 @@ class Session:
 
     def submit(self, elem, paramdict=None, url=None, redirects=10, **params):
         """Submit a form, optionally by clicking a given button.  The 'elem'
-        argument should be of type lxml.etree.Element and can be the form itself
-        or a button in the form to click.  Obtain the parameters to submit by
-        (a) starting with the 'paramdict' dictionary if specified, or the
-        default parameter values as returned by get_form_params; then (b) adding
-        or replacing parameters in this dictionary according to the keyword
-        arguments.  The 'url' argument overrides the form's action attribute and
-        submits the form elsewhere.  After submission, follow redirections up to
-        'redirects' times."""
+        argument should be of type lxml.etree._Element and can be the form
+        itself or a button in the form to click.  Obtain the parameters to
+        submit by (a) starting with the 'paramdict' dictionary if specified, or
+        the default parameter values as returned by get_form_params; then (b)
+        adding or replacing parameters in this dictionary according to the
+        keyword arguments.  The 'url' argument overrides the form's action
+        attribute and submits the form elsewhere.  After submission, follow
+        redirections up to 'redirects' times."""
 
         if isinstance(elem, Region):  # for backward compatibility.
             form = elem if elem.tagname == 'form' else elem.enclosing('form')
