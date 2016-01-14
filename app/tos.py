@@ -17,6 +17,8 @@
 
 __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
 
+from django_setup import ugettext as _  # always keep this first
+
 import logging
 import traceback
 import urllib2
@@ -41,7 +43,8 @@ class Handler(utils.BaseHandler):
         # zero-rating mode.
         try:
             if self.config.tos_url:
-                res = urllib2.urlopen(self.config.tos_url)
+                url = self.config.tos_url % {'lang': self.env.lang}
+                res = urllib2.urlopen(url)
                 tos_html = res.read()
                 doc = lxml.etree.HTML(tos_html)
                 articles = doc.xpath("//div[@class='maia-article']")
@@ -53,16 +56,18 @@ class Handler(utils.BaseHandler):
                             # Converts relative URLs to absolute URLs.
                             anchor.attrib['href'] = urlparse.urljoin(
                                     res.geturl(), href)
-                            anchor.text += ' (external site)'
+                            anchor.text += ' (%s)' % _(
+                                'external site; '
+                                'normal connection fee may apply')
                     article_html = lxml.etree.tostring(article, method='html')
 
         except:
             logging.error(
                 'Error during fetching/parsing the ToS page from %s\n%s',
-                self.config.tos_url,
+                url,
                 traceback.format_exc())
 
         self.render(
                 'tos.html',
                 article_html=article_html,
-                tos_url=self.config.tos_url)
+                tos_url=url)
