@@ -21,15 +21,17 @@
 
   {% else %}{% if tos_url %}
 
-    <h1>Terms of Service</h1>
+    <h1>{% trans "Terms of Service" %}</h1>
 
     {# In case we fail to fetch/parse the ToS page (e.g., the page has       #}
     {# changed its layout), we fall back to show a link to the page instead. #}
-    <p><a href="{{tos_url}}">Click here to see the terms of service (external site)</a></p>
+    <p><a href="{{tos_url}}">
+      {% trans "Click here to see the terms of service (external site; normal connection fee may apply)" %}
+    </a></p>
 
   {% else %}
 
-    <h1>Terms of Service</h1>
+    <h1>{% trans "Terms of Service" %}</h1>
 
     <p>The term of service is not specified by the site owner.</p>
 
