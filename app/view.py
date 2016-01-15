@@ -24,7 +24,7 @@ import reveal
 import subscribe
 
 from django.utils.translation import ugettext as _
-from urlparse import urlparse
+import urlparse
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
@@ -35,7 +35,7 @@ def get_profile_pages(profile_urls, handler):
     for profile_url in profile_urls.splitlines():
         # Use the hostname as the website name by default.
         profile_page = {
-            'name': urlparse(profile_url).hostname,
+            'name': urlparse.urlparse(profile_url).hostname,
             'url': profile_url }
         for website in handler.config.profile_websites or []:
             if ('url_regexp' in website and
@@ -73,6 +73,9 @@ class Handler(BaseHandler):
         person.expiry_date_local_string = self.to_formatted_local_time(
             person.get_effective_expiry_date())
 
+        person.should_show_inline_photo = (
+            self.should_show_inline_photo(person.photo_url))
+
         # Get the notes and duplicate links.
         try:
             notes = person.get_notes()
@@ -80,7 +83,7 @@ class Handler(BaseHandler):
             notes = []
         person.sex_text = get_person_sex_text(person)
         for note in notes:
-            self.add_fields_to_notes(note)
+            self.__add_fields_to_note(note)
         try:
             linked_persons = person.get_all_linked_persons()
         except datastore_errors.NeedIndexError:
@@ -92,7 +95,7 @@ class Handler(BaseHandler):
             except datastore_errors.NeedIndexError:
                 linked_notes = []
             for note in linked_notes:
-                self.add_fields_to_notes(note)
+                self.__add_fields_to_note(note)
             linked_person_info.append(dict(
                 id=linked_person.record_id,
                 name=linked_person.primary_full_name,
@@ -281,7 +284,7 @@ class Handler(BaseHandler):
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)
 
-    def add_fields_to_notes(self, note):
+    def __add_fields_to_note(self, note):
         """Adds some fields used in the template to a note."""
         note.status_text = get_note_status_text(note)
         note.linked_person_url = \
@@ -292,3 +295,5 @@ class Handler(BaseHandler):
                          signature=self.params.signature)
         note.source_date_local_string = self.to_formatted_local_time(
             note.source_date)
+        note.should_show_inline_photo = self.should_show_inline_photo(
+            note.photo_url)
