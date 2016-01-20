@@ -46,11 +46,11 @@
     {{captcha_html|safe}}
     <br/><br/>
     <div class="button-box">
-      <div class="button">
+      <div class="button button-blue">
         <input type="submit" value="{% trans 'Subscribe' %}" />
       </div>
       <input type="hidden" name="id" value="{{person.record_id}}">
-      <div class="button-cancel">
+      <div class="button button-red">
         {% if context == 'create_person' or context == 'add_note' %}
           <input type="button" value="{% trans 'Skip' %}"
                  onclick="javascript:location.href='{{back_url}}'">

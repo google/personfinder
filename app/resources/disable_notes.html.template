@@ -36,10 +36,10 @@
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
     <div class="button-box">
-      <div class="button">
+      <div class="button button-blue">
         <input type="submit" value="{% trans "Yes, ask the record author to disable notes" %}">
       </div>
-      <div class="button-cancel">
+      <div class="button button-red">
         <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
       </div>
     </div>
