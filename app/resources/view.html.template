@@ -355,7 +355,7 @@
               id="enable_notes_btn">
           </div>
         {% else %}
-        <div class="button add-note">
+        <div class="button button-blue add-note">
           <input type="button" value="{% trans "I Have Information About This Person" %}"
               onclick="javascript:location.href='{{add_note_url}}'">
         </div>

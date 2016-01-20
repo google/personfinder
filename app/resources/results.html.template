@@ -128,7 +128,7 @@
         {% if has_possible_duplicates %}
           <b>{% trans "Possible duplicates found." %}</b><br />
         {% endif %}
-        <div class="button-cancel">
+        <div class="button button-red">
           <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
         </div>
       {% endif %}
@@ -234,7 +234,7 @@
             <input type='hidden' name='id1' id='id1' value=''>
             <input type='hidden' name='id2' id='id2' value=''>
             <input type='hidden' name='id3' id='id3' value=''>
-            <div class='button-cancel'>
+            <div class='button button-red'>
               <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark the selected records as duplicate" %}'>
               {% blocktrans with "<span id='dup_count'>0</span>"|safe as dup_count %}
                 {{dup_count}} records selected
@@ -299,7 +299,7 @@
       <input type="hidden" name="given_name" value="{{params.given_name}}">
       <input type="hidden" name="family_name" value="{{params.family_name}}">
       <input type="hidden" name="role" value="{{params.role}}">
-      <div class="searchResults button">
+      <div class="searchResults button button-blue">
       <input type="submit" value="{% trans "Create a new record" %}">
       </div>
     </form>

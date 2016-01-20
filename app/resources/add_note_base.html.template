@@ -282,7 +282,7 @@
       <div class="end-multi-columns"></div>
     </div>
   {% endif %}
-  <div class="submit button">
+  <div class="submit button button-blue">
     <input type="submit"
       {% if person.notes_disabled %}
        disabled="disabled"
@@ -298,7 +298,7 @@
       {% endif %}
     >
   </div>
-  <div class="submit button-cancel">
+  <div class="submit button button-red">
     {% if markdup %}
       <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
     {% endif %}

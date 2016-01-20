@@ -132,7 +132,7 @@
         {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}
       </div>
      {% endifequal %}
-      <div class="button">
+      <div class="button button-blue">
         {% ifequal params.role 'provide' %}
           {% if env.use_short_buttons %}
             <input type="submit" value="{% trans "Provide information" %}">

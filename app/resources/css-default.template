@@ -102,8 +102,7 @@ pre {  /* code samples */
   font-size: 12px;
 }
 
-.button input,
-.button-cancel input {
+.button input {
   border-style: none;
   color: white;
   display: block;
@@ -111,15 +110,15 @@ pre {  /* code samples */
   padding: 5px 15px;
 }
 
-.button-cancel input:disabled {
+.button input:disabled {
   background: #9e9e9e;
 }
 
-.button input {
+.button-blue input {
   background: #4285f4;  
 }
 
-.button-cancel input {
+.button-red input {
   background: #db4437;
 }
 
@@ -130,8 +129,7 @@ pre {  /* code samples */
   margin-right: -10px;
 }
 
-.button-box .button,
-.button-box .button-cancel {
+.button-box .button {
   margin-left: 10px;  
   margin-right: 10px;
 }
@@ -570,8 +568,7 @@ img.icon {
 
 }
 
-.note.fields-table .button input,
-.note.fields-table .button-cancel input {
+.note.fields-table .button input {
   margin: 10px auto;
 }
 
