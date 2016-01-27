@@ -125,14 +125,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Amaran: rekod ini akan tamat tempoh dalam masa kurang"
-" daripada %(expiration_days)s hari.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -147,12 +150,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s rekod dipilih\n"
-"          "
 
 #, python-format
 msgid ""
@@ -169,12 +177,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Rekod yang Serupa dengan: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -274,16 +293,6 @@ msgstr ""
 "      sila hubungi sumber asal.\n"
 "      Anda boleh melihat rekod asal di\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Tiada hasil carian ditemui untuk: %(query)s\n"
 "    "
 
 #, python-format
@@ -570,9 +579,6 @@ msgstr "Kira-kira 6 bulan (180 hari) dari sekarang"
 msgid "About Google Person Finder"
 msgstr "Mengenai Pencari Orang Google"
 
-msgid "About you (required)"
-msgstr "Mengenai anda (diperlukan)"
-
 msgid "Administration"
 msgstr "Pentadbiran"
 
@@ -648,6 +654,11 @@ msgstr "Batal"
 msgid "City"
 msgstr "Bandar"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Klik di sini untuk melihat hasil carian."
 
@@ -669,9 +680,6 @@ msgstr "Buat rekod baharu"
 msgid "Create a new record for"
 msgstr "Buat rekod baharu untuk"
 
-msgid "Create a new record for a missing person"
-msgstr "Buat rekod baharu untuk orang yang hilang"
-
 msgid "Crisis events"
 msgstr "Peristiwa krisis"
 
@@ -690,9 +698,6 @@ msgstr "Padamkan rekod ini"
 
 msgid "Describe how to identify this person."
 msgstr "Huraikan cara hendak mengenal pasti orang ini."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Huraikan ciri fizikal orang ini."
 
 msgid "Description"
 msgstr "Keterangan"
@@ -754,11 +759,16 @@ msgid "Expiry date of this record"
 msgstr "Tarikh tamat tempoh rekod ini"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Lanjutkan tarikh tamat tempoh selama %(extension_days)s hari"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Nama keluarga"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Suapan kemas kini mengenai orang ini"
@@ -781,6 +791,9 @@ msgstr "Nama penuh"
 
 msgid "Given name"
 msgstr "Nama berian"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Pencari Orang Google"
@@ -816,6 +829,9 @@ msgstr "Bagaimanakah hendak menghubungi orang ini sekarang?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Cara orang lain yang berminat dengan orang ini boleh menghubungi anda"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Saya sedang mencari maklumat"
@@ -956,9 +972,6 @@ msgstr ""
 msgid "Name"
 msgstr "Nama"
 
-msgid "Name (required)"
-msgstr "Nama (diperlukan)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Nama diperlukan. Sila undur dan cuba lagi."
 
@@ -981,6 +994,9 @@ msgstr "Tiada nota dengan ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Tiada nota telah dicatatkan"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1064,6 +1080,9 @@ msgstr "Nombor telefon"
 msgid "Photo"
 msgstr "Foto"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1073,6 +1092,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Ciri fizikal"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1212,23 +1236,33 @@ msgstr "Seseorang telah melaporkan bahawa orang ini hilang"
 msgid "Someone is seeking information about this person"
 msgstr "Seseorang mencari maklumat mengenai orang ini"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Sumber rekod ini"
-
-msgid "Source of this record (required)"
-msgstr "Sumber rekod ini (diperlukan)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Status orang ini"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Nama jalan"
 
 msgid "Street name only, no number"
 msgstr "Nama jalan sahaja, tiada nombor"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Langgan"
@@ -1245,9 +1279,6 @@ msgstr "Beralih ke alamat"
 
 msgid "Switch to lat/long"
 msgstr "Beralih ke lat/long"
-
-msgid "Tell us the status of this person"
-msgstr "Beritahu kami status orang ini"
 
 msgid "Terms of Service"
 msgstr "Syarat Perkhidmatan"
@@ -1360,6 +1391,9 @@ msgstr "Orang ini telah menghubungi seseorang"
 msgid "This person has posted a message"
 msgstr "Orang ini telah menyiarkan mesej"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Masukan orang ini tidak wujud atau telah dipadamkan."
 
@@ -1431,6 +1465,9 @@ msgstr "Muat naik rekod orang dalam format CSV"
 msgid "Upload your CSV file below"
 msgstr "Muat naik fail CSV anda di bawah ini"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Lihat rekod"
 
@@ -1445,9 +1482,6 @@ msgstr "Bila rekod ini harus luput?"
 
 msgid "Where did this information come from?"
 msgstr "Dari manakah asalnya maklumat ini?"
-
-msgid "Where is this person from?"
-msgstr "Dari manakah orang ini?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1547,8 +1581,8 @@ msgstr "Alamat e-mel anda:"
 msgid "Your email"
 msgstr "E-mel anda"
 
-msgid "Your name"
-msgstr "Nama anda"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1612,6 +1646,9 @@ msgstr "[Person Finder] Kemas kini status untuk %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Anda telah melanggan kemas kini status untuk %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "wanita"

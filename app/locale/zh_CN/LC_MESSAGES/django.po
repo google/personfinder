@@ -116,13 +116,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    警告：此记录将在 %(expiration_days)s 天内到期。\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -136,12 +140,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            已选定%(dup_count)s条记录\n"
-"          "
 
 #, python-format
 msgid ""
@@ -157,12 +166,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        与“%(full_name)s”类似的记录\n"
-"      "
 
 #, python-format
 msgid ""
@@ -258,16 +278,6 @@ msgstr ""
 "      如果要永久删除这条记录，请与原始源记录的创建者联系。\n"
 "      您可以在以下位置查看原始源记录：\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s。\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      找不到有关“%(query)s”的结果\n"
 "    "
 
 #, python-format
@@ -524,9 +534,6 @@ msgstr "从现在起大约 6 个月（180 天）"
 msgid "About Google Person Finder"
 msgstr "关于 Google Person Finder"
 
-msgid "About you (required)"
-msgstr "您的相关信息（必填）"
-
 msgid "Administration"
 msgstr "管理"
 
@@ -595,6 +602,11 @@ msgstr "取消"
 msgid "City"
 msgstr "城市"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "点击此处查看结果。"
 
@@ -616,9 +628,6 @@ msgstr "创建新记录"
 msgid "Create a new record for"
 msgstr "为此人创建新记录"
 
-msgid "Create a new record for a missing person"
-msgstr "为失踪人员创建新记录"
-
 msgid "Crisis events"
 msgstr "危机事件"
 
@@ -637,9 +646,6 @@ msgstr "删除此记录"
 
 msgid "Describe how to identify this person."
 msgstr "请描述此人的外貌与基本特征。"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "请描述此人的体貌特征。"
 
 msgid "Description"
 msgstr "描述"
@@ -697,11 +703,16 @@ msgid "Expiry date of this record"
 msgstr "此记录的失效日期"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "将有效期延长 %(extension_days)s 天"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "姓氏"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "关于此人最新动态的 Feed"
@@ -722,6 +733,9 @@ msgstr "全名"
 
 msgid "Given name"
 msgstr "名字"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -753,6 +767,9 @@ msgstr "现在如何与这个人取得联系？"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "同样关注此人的人员该如何与您取得联系"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "我正在寻找这个人的消息"
@@ -875,9 +892,6 @@ msgstr "系统找到 100 多条结果，目前只显示了前 100 条。请输�
 msgid "Name"
 msgstr "姓名"
 
-msgid "Name (required)"
-msgstr "姓名（必填）"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "必须填写姓名，请返回并重试。"
 
@@ -900,6 +914,9 @@ msgstr "没有 ID 为 %(id_str)s 的注释。"
 
 msgid "No notes have been posted"
 msgstr "没有发布任何注释"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -977,6 +994,9 @@ msgstr "电话号码"
 msgid "Photo"
 msgstr "照片"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -984,6 +1004,11 @@ msgstr "无法识别所上传照片的格式，请返回并重试。"
 
 msgid "Physical characteristics"
 msgstr "体貌特征"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1119,23 +1144,33 @@ msgstr "有人已报告这个人失踪了"
 msgid "Someone is seeking information about this person"
 msgstr "有人正在搜索关于此人的信息"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "此记录的来源"
-
-msgid "Source of this record (required)"
-msgstr "此记录的出处（必填）"
 
 msgid "Status"
 msgstr "状况"
 
-msgid "Status of this person"
-msgstr "这个人的状况"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "街道名称"
 
 msgid "Street name only, no number"
 msgstr "输入街道名称即可，无需输入门牌号"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "订阅"
@@ -1152,9 +1187,6 @@ msgstr "切换至地址"
 
 msgid "Switch to lat/long"
 msgstr "切换至纬度/经度"
-
-msgid "Tell us the status of this person"
-msgstr "告诉我们这个人的状况"
 
 msgid "Terms of Service"
 msgstr "服务条款"
@@ -1259,6 +1291,9 @@ msgstr "此人已与某人取得了联系"
 msgid "This person has posted a message"
 msgstr "此人已发布一条消息"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "此人的记录条目不存在或已删除。"
 
@@ -1326,6 +1361,9 @@ msgstr "上传寻人记录（采用 CSV 格式）"
 msgid "Upload your CSV file below"
 msgstr "上传下面的 CSV 文件"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "查看记录"
 
@@ -1340,9 +1378,6 @@ msgstr "此记录可在何时删除？"
 
 msgid "Where did this information come from?"
 msgstr "此信息的出处为何？"
-
-msgid "Where is this person from?"
-msgstr "这个人来自哪里？"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1436,8 +1471,8 @@ msgstr "您的电子邮件地址："
 msgid "Your email"
 msgstr "您的电子邮件地址"
 
-msgid "Your name"
-msgstr "您的姓名"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1496,6 +1531,9 @@ msgstr "[网上寻人] 关于“%(full_name)s”的状况更新"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[网上寻人] 您已订阅关于“%(full_name)s”的状况更新"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "女"

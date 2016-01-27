@@ -129,15 +129,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    ការ​រំលឹក​៖​: "
-"កំណត់​ត្រា​នេះ​នឹង​ផុត​កំណត់​ក្នុង​ពេល​តិច​ជាង %(expiration_days)s ថ្ងៃ​។"
-"\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -152,12 +154,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s កំណត់ត្រា​​បាន​ជ្រើស\n"
-"          "
 
 #, python-format
 msgid ""
@@ -174,12 +181,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        កំណត់​ត្រា​ស្រដៀង​ទៅ​នឹង៖ %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -280,16 +298,6 @@ msgstr ""
 "      ប្រសិន​បើ​អ្នក​ចង់​ឲ​វា​ត្រូវ​បាន​លុប​ជា​អចិន្រៃយ៍ "
 "សូម​ទាក់​ទង​ប្រភព​ដើម។\n"
 "អ្នក​អាច​មើល​កំណត់​ត្រា​ដើម​នៅ​ %(begin_tag)s%(source_name)s%(end_tag)s។\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      គ្មាន​លទ្ធផល​រក​ឃើញ​សម្រាប់​​៖ %(query)s\n"
 "    "
 
 #, python-format
@@ -575,9 +583,6 @@ msgstr "ប្រហែល​​៦​ខែ (១៨០​ថ្ងៃ) ចា�
 msgid "About Google Person Finder"
 msgstr "អំពី​ស្វែង​រក​មនុស្ស​ Google"
 
-msgid "About you (required)"
-msgstr "អំពី​អ្នក (ទាមទារ)"
-
 msgid "Administration"
 msgstr "រដ្ឋបាល"
 
@@ -654,6 +659,11 @@ msgstr "បោះបង់"
 msgid "City"
 msgstr "ទីក្រុង"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "សូម​ចុច​ទីនេះ​ដើម្បី​មើល​លទ្ធផល​។"
 
@@ -677,9 +687,6 @@ msgstr "បង្កើត​កំណត់ត្រា​ថ្មីមួយ
 msgid "Create a new record for"
 msgstr "បង្កើត​កំណត់​ត្រា​ថ្មី​មួយ​សម្រាប់"
 
-msgid "Create a new record for a missing person"
-msgstr "បង្កើត​កំណត់​ត្រា​ថ្មី​មួយ​សម្រាប់​មនុស្ស​ដែល​បាត់​ខ្លួន"
-
 msgid "Crisis events"
 msgstr "ព្រឹត្តិការណ៍​វិបត្តិ"
 
@@ -700,9 +707,6 @@ msgstr "លុប​កំណត់​ត្រា​នេះ"
 
 msgid "Describe how to identify this person."
 msgstr "ពណ៌នា​របៀប​កំណត់​អត្តសញ្ញាណ​បុគ្គល​នេះ​។"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "ពណ៌នា​លក្ខណៈរូប​​រាងកាយ​របស់​បុគ្គល​នេះ​។"
 
 msgid "Description"
 msgstr "​ពិពណ៌នា​"
@@ -760,11 +764,16 @@ msgid "Expiry date of this record"
 msgstr "កាល​បរិច្ឆេទ​ផុត​កំណត់​នៃ​កំណត់​ត្រា​នេះ"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "ពន្យារ​កាល​បរិច្ឆេទ​ផុត​កំណត់​%(extension_days)s​ថ្ងៃ"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "នាម​ត្រកូល"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "ព័ត៌មាន​បច្ចុប្បន្ន​ភាព​អំពី​បុគ្គល​នេះ"
@@ -787,6 +796,9 @@ msgstr "ឈ្មោះ​ពេញ"
 
 msgid "Given name"
 msgstr "នាម​ខ្លួន"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "កម្ម​វិធី​រក​មនុស្ស Google"
@@ -822,6 +834,9 @@ msgstr "តើ​អាច​ទៅ​ដល់​បុគ្គល​នេះ
 
 msgid "How others who are interested in this person can contact you"
 msgstr "របៀប​ដែល​អ្នក​ដទៃ​ដែល​បាន​ចាប់​អារម្មណ៍​លើ​បុគ្គល​នេះ​អាច​ទាក់ទង​អ្នក​"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "ខ្ញុំ​កំពុង​ស្វែង​រក​ព័ត៌​មាន"
@@ -962,9 +977,6 @@ msgstr ""
 msgid "Name"
 msgstr "ឈ្មោះ"
 
-msgid "Name (required)"
-msgstr "ឈ្មោះ (ទាមទារ)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "ឈ្មោះ​ត្រូវ​បាន​ទាមទារ​។ សូម​ត្រឡប់​ក្រោយ​ហើយ​ព្យាយាម​ម្ដង​ទៀត​។"
 
@@ -987,6 +999,9 @@ msgstr "មិន​មានកំណត់​ចំណាំ​ជាមួយ
 
 msgid "No notes have been posted"
 msgstr "មិនមាន​កំណត់​ចំណាំ​ត្រូវ​បាន​ប្រកាស​"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1073,6 +1088,9 @@ msgstr "លេខ​ទូរស័ព្ទ"
 msgid "Photo"
 msgstr "រូបថត"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1082,6 +1100,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "លក្ខណៈ​រូប​រាងកាយ"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1219,23 +1242,33 @@ msgstr "មាន​នរណា​ម្នាក់​បាន​រាយក
 msgid "Someone is seeking information about this person"
 msgstr "មាន​នរណា​ម្នាក់​កំពុង​ស្វែង​រក​ព័ត៌មាន​អំពី​បុគ្គល​នេះ"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "ប្រភព​នៃ​កំណត់​ត្រា​នេះ"
-
-msgid "Source of this record (required)"
-msgstr "ប្រភព​នៃ​កំណត់​ត្រា​នេះ (ទាមទារ)"
 
 msgid "Status"
 msgstr "ស្ថានភាព"
 
-msgid "Status of this person"
-msgstr "ស្ថានភាព​នៃ​បុគ្គល​នេះ"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "ឈ្មោះ​ផ្លូវ"
 
 msgid "Street name only, no number"
 msgstr "តែ​ឈ្មោះ​ផ្លូវ​ប៉ុណ្ណោះ​ គ្មាន​លេខ"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "ជា​វ​ប្រចាំ"
@@ -1252,9 +1285,6 @@ msgstr "ប្តូ​រ​ទៅ​អាសយដ្ឋាន​"
 
 msgid "Switch to lat/long"
 msgstr "ប្តូ​រ​ទៅ រយៈទទឹង/រយៈ​បណ្តោយ"
-
-msgid "Tell us the status of this person"
-msgstr "ប្រាប់​យើង​អំពី​ស្ថានភាព​នៃ​បុគ្គល​នេះ"
 
 msgid "Terms of Service"
 msgstr "លក្ខន្តិកៈ​នៃ​សេវាកម្ម"
@@ -1378,6 +1408,9 @@ msgstr "បុគ្គល​នេះ​បាន​នៅ​ក្នុង​
 msgid "This person has posted a message"
 msgstr "បុគ្គល​​នេះ​បាន​ប្រកាស​សារ​មួយ​"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "ទិន្នន័យ​របស់​បុគ្គល​នេះ​មិន​ទាន់​មាន​ ឬ​ត្រូវ​បាន​លុប​។"
 
@@ -1454,6 +1487,9 @@ msgstr "ផ្ទុកឡើង​កំណត់​ត្រា​​បុគ
 msgid "Upload your CSV file below"
 msgstr "ផ្ទុក​ឯកសារ​ CSV របស់​អ្នក​ខាង​ក្រោម​ឡើង"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "មើល​កំណត់​ត្រា​"
 
@@ -1468,9 +1504,6 @@ msgstr "ពេល​ណា​ដែល​កំណត់​ត្រា​នេ
 
 msgid "Where did this information come from?"
 msgstr "តើ​ព័ត៌​មាន​នេះ​បាន​មក​ពី​ណា​?"
-
-msgid "Where is this person from?"
-msgstr "តើ​បុគ្គល​នេះ​មក​ពី​ណា​?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1573,8 +1606,8 @@ msgstr "អាសយដ្ឋាន​អ៊ីមែល​របស់​អ្
 msgid "Your email"
 msgstr "អ៊ី​មែល​របស់​អ្នក"
 
-msgid "Your name"
-msgstr "ឈ្មោះ​របស់​អ្នក"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1651,6 +1684,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[អ្នក​ស្វែង​រក​មនុស្ស] "
 "អ្នក​បាន​ជាវ​ប្រចាំ​ទៅ​ស្ថានភាព​បច្ចុប្បន្ន​ភាព​សម្រាប់ %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "ស្រី"

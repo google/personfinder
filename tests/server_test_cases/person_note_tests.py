@@ -45,6 +45,7 @@ import remote_api
 from resources import Resource, ResourceBundle
 import reveal
 import scrape
+from scrape import get_all_text, get_form_params
 import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
@@ -62,9 +63,9 @@ class PersonNoteTests(ServerTestsBase):
         Checks to make sure there's an error message that contains the given
         fragments.  On failure, fail assertion.  On success, step back.
         """
-        error_message = page.first(class_=re.compile(r'.*\berror\b.*'))
+        error_message = page.cssselect('.error')[0].text.strip()
         for fragment in fragments:
-            assert fragment in error_message.text, (
+            assert fragment in error_message, (
                 '%s missing from error message' % fragment)
         self.s.back()
 
@@ -83,22 +84,22 @@ class PersonNoteTests(ServerTestsBase):
         """
 
         # Check that the results are as expected
-        result_titles = self.s.doc.all(class_='resultDataTitle')
+        result_titles = self.s.doc.cssselect('.resultDataTitle')
         assert len(result_titles) == num_results
         for title in result_titles:
             for text in all_have:
-                assert text in title.content, \
-                    '%s must have %s' % (title.content, text)
+                assert text in title.text.strip(), (
+                    '%s must have %s' % (title.text.strip(), text))
         for text in some_have:
-            assert any(text in title.content for title in result_titles), \
-                'One of %s must have %s' % (result_titles, text)
+            assert any(text in title.text.strip() for title in result_titles), (
+                'One of %s must have %s' % (result_titles, text))
         if status:
-            result_statuses = self.s.doc.all(class_='resultDataPersonFound')
+            result_statuses = self.s.doc.cssselect('.resultDataPersonFound')
             assert len(result_statuses) == len(status)
             for expected_status, result_status in zip(status, result_statuses):
-                assert expected_status in result_status.content, \
+                assert result_status.text.strip() == expected_status, (
                     '"%s" missing expected status: "%s"' % (
-                    result_status, expected_status)
+                    result_status, expected_status))
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -109,8 +110,10 @@ class PersonNoteTests(ServerTestsBase):
 
         # Click the button to create a new record
         found = False
-        for results_form in self.s.doc.all('form'):
-            if 'Create a new record' in results_form.content:
+        for results_form in self.s.doc.cssselect('form'):
+            submit_button = results_form.cssselect('input[type="submit"]')
+            if (submit_button and
+                'Create a new record' in submit_button[0].get('value', '')):
                 self.s.submit(results_form)
                 found = True
         assert found, "didn't find Create a new record in any form"
@@ -125,11 +128,12 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on the create page
         """
 
-        create_form = self.s.doc.first('form')
+        create_form = self.s.doc.cssselect('form')[0]
+        create_form_params = get_form_params(create_form)
         for key, value in (prefilled_params or {}).iteritems():
-            assert create_form.params[key] == value
+            assert create_form_params[key] == value
         for key in unfilled_params or ():
-            assert not create_form.params[key]
+            assert not create_form_params[key]
 
         # Try to submit without filling in required fields
         self.assert_error_deadend(
@@ -142,8 +146,8 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on a page with a note form.
         """
 
-        note_form = self.s.doc.first('form')
-        assert 'Tell us the status of this person' in note_form.content
+        note_form = self.s.doc.cssselect('form')[0]
+        assert 'Tell us the status of this person' in get_all_text(note_form)
         self.assert_error_deadend(
             self.s.submit(note_form), 'required', 'try again')
 
@@ -164,14 +168,16 @@ class PersonNoteTests(ServerTestsBase):
 
         # Person info is stored in matching 'label' and 'value' cells.
         fields = dict(zip(
-            [label.text.strip() for label in details_page.all(class_='label')],
-            details_page.all(class_='value')))
+            [label.text.strip() for label in details_page.cssselect('.label')],
+            details_page.cssselect('.value')))
         for label, value in details.iteritems():
-            assert fields[label].text.strip() == value
+            assert scrape.get_all_text(fields[label]) == value, (
+                'value mismatch for the field named %s' % label)
 
-        actual_num_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
-        assert actual_num_notes == num_notes, \
-            'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
+        actual_num_notes = len(
+            details_page.cssselect('.self-notes')[0].cssselect('.view.note'))
+        assert actual_num_notes == num_notes, (
+            'expected %s notes, instead was %s' % (num_notes, actual_num_notes))
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
@@ -184,12 +190,11 @@ class PersonNoteTests(ServerTestsBase):
         """
 
         # Get the list of links.
-        results = self.s.doc.first('div', class_='searchResults')
-        result_link = results.all('a', class_='result-link')[n]
+        result_link = self.s.doc.cssselect('div.searchResults a.result-link')[n]
 
         # Verify and then follow the link.
-        url_test(result_link['href'])
-        self.s.go(result_link['href'])
+        url_test(result_link.get('href'))
+        self.s.follow(result_link)
 
     def verify_update_notes(self, author_made_contact, note_body, author,
                             status, **kwargs):
@@ -204,8 +209,8 @@ class PersonNoteTests(ServerTestsBase):
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
-        num_initial_notes = len(details_page.first(class_='self-notes').all(class_='view note'))
-        note_form = details_page.first('form')
+        num_initial_notes = len(details_page.cssselect('.self-notes .view.note'))
+        note_form = details_page.cssselect('form')[0]
 
         # Advance the clock. The new note has a newer source_date by this.
         # This makes sure that the new note appears at the bottom of the view
@@ -222,21 +227,22 @@ class PersonNoteTests(ServerTestsBase):
             expected['status'] = str(NOTE_STATUS_TEXT.get(status))
 
         details_page = self.s.submit(note_form, **params)
-        notes = details_page.first(class_='self-notes').all(class_='view note')
+        notes = details_page.cssselect('.self-notes .view.note')
         assert len(notes) == num_initial_notes + 1
         new_note = notes[-1]
+        new_note_text = scrape.get_all_text(new_note)
         for field, text in expected.iteritems():
             if field in ['note_photo_url']:
                 url = utils.strip_url_scheme(text)
-                assert url in new_note.content, \
-                    'Note content %r missing %r' % (new_note.content, url)
+                assert new_note.cssselect('.photo')[0].get('src') == url, (
+                    'Note photo URL mismatch')
             else:
-                assert text in new_note.text, \
-                    'Note text %r missing %r' % (new_note.text, text)
+                assert text in new_note_text, (
+                    'Note text %r missing %r' % (new_note_text, text))
 
         # Show this text if and only if the person has been contacted
         assert ('This person has been in contact with someone'
-                in new_note.text) == author_made_contact
+                in new_note_text) == author_made_contact
 
     def verify_email_sent(self, message_count=1):
         """Verifies email was sent, firing manually from the taskqueue
@@ -299,8 +305,8 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti?ui=small')
         search_page = self.s.follow('I have information about someone')
-        search_form = search_page.first('form')
-        assert 'I have information about someone' in search_form.content
+        search_form = search_page.cssselect('form')[0]
+        assert 'I have information about someone' in get_all_text(search_form)
 
         self.assert_error_deadend(
             self.s.submit(search_form),
@@ -2562,7 +2568,7 @@ _read_profile_url2</pfif:profile_urls>
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos.html'
+                'accuracy of this data google.org/personfinder/global/tos'
                 '</message_text>\n'
             '</response>\n')
         assert expected == doc.content, text_diff(expected, doc.content)
@@ -2579,7 +2585,7 @@ _read_profile_url2</pfif:profile_urls>
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos.html'
+                'accuracy of this data google.org/personfinder/global/tos'
                 '</message_text>\n'
             '</response>\n')
         assert expected == doc.content, text_diff(expected, doc.content)
@@ -3214,7 +3220,7 @@ _feed_profile_url2</pfif:profile_urls>
             full_name='_test_full_name',
             entry_date=datetime.datetime.utcnow()
         ))
-        url, status, message, headers, content, charset = scrape.fetch(
+        url, status, message, headers, content = scrape.fetch(
             'http://' + self.hostport +
             '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')
@@ -4252,6 +4258,31 @@ _feed_profile_url2</pfif:profile_urls>
                       'query=_test_given_name+_test_family_name')
         assert 'No results found' in doc.text
 
+    def test_add_note_for_deleted_person(self):
+        """Tries to add a note to a person record which has been deleted.
+        It should fail.
+        """
+        person, note = self.setup_person_and_note()
+        view_doc = self.go('/haiti/view?id=%s' % person.person_record_id)
+
+        # Delete the record with a faked captcha.
+        doc = self.go(
+            '/haiti/delete',
+            data='id=%s&reason_for_deletion=spam_received&test_mode=yes'
+                % person.person_record_id)
+        assert 'The record has been deleted' in doc.text
+
+        # Try to add a note to the deleted person. It should fail.
+        note_form = view_doc.first('form')
+        doc = self.s.submit(
+            note_form,
+            text='test text',
+            author_name= 'test author',
+            author_made_contact= 'no')
+        assert self.s.status == 404
+        self.assert_error_deadend(
+            doc, "This person's entry does not exist or has been deleted.")
+
     def test_incoming_expired_record(self):
         """Tests that an incoming expired record can cause an existing record
         to expire and be deleted."""
@@ -5023,3 +5054,28 @@ _feed_profile_url2</pfif:profile_urls>
                                  some_have=([test_given_name]))
 
         self.verify_click_search_result(0, assert_params)
+
+    def test_http_get_for_api_write(self):
+        """Test that sending HTTP GET request to api/write results in an error
+        with HTTP status code 405. api/write only supports HTTP POST.
+
+        It returns 405 because api.Write.get() doesn't exist, so
+        utils.BaseHandler.get() is called.
+        """
+
+        doc = self.go('/haiti/api/write?key=domain_test_key')
+        assert self.s.status == 405
+
+    def test_cssselect(self):
+        """Test that Document.cssselect works. May delete later.
+        """
+        doc = self.go('/haiti/')
+        assert (doc.cssselect('a.repo')[0].text.strip()
+            == 'Haiti Earthquake')
+
+    def test_xpath(self):
+        """Test that Document.xpath works. May delete later.
+        """
+        doc = self.go('/haiti/')
+        assert (doc.xpath("//a[@class='repo']")[0].text.strip()
+            == 'Haiti Earthquake')

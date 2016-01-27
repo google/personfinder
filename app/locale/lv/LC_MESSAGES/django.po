@@ -125,14 +125,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Brīdinājums: šī ieraksta derīguma termiņš beigsies "
-"pēc mazāk nekā %(expiration_days)s dienām.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -147,12 +150,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            Atlasīti %(dup_count)s ieraksti\n"
-"          "
 
 #, python-format
 msgid ""
@@ -169,12 +177,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Ieraksti, kas līdzīgi ierakstiem par šādu personu: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -276,16 +295,6 @@ msgstr ""
 "      sazinieties ar sākotnējo autoru.\n"
 "      Sākotnējo ierakstu varat skatīt šeit:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Netika atrasts neviens rezultāts meklēšanas vaicājumam “%(query)s”\n"
 "    "
 
 #, python-format
@@ -572,9 +581,6 @@ msgstr "Apmēram 6 mēnešu (180 dienu) laikā no šī brīža"
 msgid "About Google Person Finder"
 msgstr "Par Google personu meklētāju"
 
-msgid "About you (required)"
-msgstr "Par jums (nepieciešams)"
-
 msgid "Administration"
 msgstr "Administrācija"
 
@@ -647,6 +653,11 @@ msgstr "Atcelt"
 msgid "City"
 msgstr "Pilsēta"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Noklikšķiniet šeit, lai skatītu rezultātus."
 
@@ -668,9 +679,6 @@ msgstr "Izveidot jaunu ierakstu"
 msgid "Create a new record for"
 msgstr "Izveidot jaunu ierakstu par"
 
-msgid "Create a new record for a missing person"
-msgstr "Izveidot jaunu ierakstu par pazudušo personu"
-
 msgid "Crisis events"
 msgstr "Krīzes notikumi"
 
@@ -689,9 +697,6 @@ msgstr "Dzēst šo ierakstu"
 
 msgid "Describe how to identify this person."
 msgstr "Aprakstiet, kā šo personu var atpazīt."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Raksturojiet šīs personas ārējo izskatu."
 
 msgid "Description"
 msgstr "Apraksts"
@@ -753,11 +758,16 @@ msgid "Expiry date of this record"
 msgstr "Ieraksta derīguma termiņš"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Pagarināt ieraksta derīguma termiņu par %(extension_days)s dienām."
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Uzvārds"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Šīs personas jaunumu plūsma"
@@ -780,6 +790,9 @@ msgstr "Pilns vārds"
 
 msgid "Given name"
 msgstr "Vārds"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google personu meklētājs"
@@ -815,6 +828,9 @@ msgstr "Kā tagad var sazināties ar šo personu?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kā ar jums var sazināties citi, kas interesējas par šo personu"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Es meklēju informāciju"
@@ -955,9 +971,6 @@ msgstr ""
 msgid "Name"
 msgstr "Vārds"
 
-msgid "Name (required)"
-msgstr "Vārds (nepieciešams)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Nepieciešams vārds. Lūdzu, atgriezieties un mēģiniet vēlreiz."
 
@@ -982,6 +995,9 @@ msgstr "Nav nevienas piezīmes ar šādu ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Nav publicēta neviena piezīme."
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1065,6 +1081,9 @@ msgstr "Tālruņa numurs"
 msgid "Photo"
 msgstr "Fotoattēls"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1074,6 +1093,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Pazīmes"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1213,23 +1237,33 @@ msgstr "Kāds ir ziņojis, ka šī persona ir pazudusi."
 msgid "Someone is seeking information about this person"
 msgstr "Kāds meklē informāciju par šo personu."
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Šī ieraksta avots"
-
-msgid "Source of this record (required)"
-msgstr "Šī ieraksta avots (nepieciešams)"
 
 msgid "Status"
 msgstr "Statuss"
 
-msgid "Status of this person"
-msgstr "Šīs personas statuss"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Iela"
 
 msgid "Street name only, no number"
 msgstr "Tikai ielas nosaukums bez mājas numura"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abonēt"
@@ -1246,9 +1280,6 @@ msgstr "Pārslēgt uz adresi"
 
 msgid "Switch to lat/long"
 msgstr "Pārslēgt uz ģeogrāfiskajām koordinātām"
-
-msgid "Tell us the status of this person"
-msgstr "Norādiet šīs personas statusu"
 
 msgid "Terms of Service"
 msgstr "Pakalpojumu sniegšanas noteikumi"
@@ -1362,6 +1393,9 @@ msgstr "Šī persona ir ar kādu sazinājusies."
 msgid "This person has posted a message"
 msgstr "Šī persona ir izlikusi ziņojumu."
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Ieraksts par šo personu neeksistē, vai arī tas ir dzēsts."
 
@@ -1435,6 +1469,9 @@ msgstr "Augšupielādēt personas datus CSV formātā"
 msgid "Upload your CSV file below"
 msgstr "Tālāk augšupielādējiet CSV failu."
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Skatīt ierakstu"
 
@@ -1449,9 +1486,6 @@ msgstr "Pēc cik ilga laika šo ierakstu var dzēst?"
 
 msgid "Where did this information come from?"
 msgstr "No kurienes ir šī informācija?"
-
-msgid "Where is this person from?"
-msgstr "No kurienes ir šī persona?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1553,8 +1587,8 @@ msgstr "Jūsu e-pasta adrese:"
 msgid "Your email"
 msgstr "Jūsu e-pasts"
 
-msgid "Your name"
-msgstr "Jūsu vārds"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1627,6 +1661,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Jūs esat abonējis statusa atjauninājumus par personu "
 "%(full_name)s."
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "sieviete"

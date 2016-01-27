@@ -119,14 +119,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    హెచ్చరిక: ఈ రికార్డ్‌కు గడువు ముగింపు తేదీ "
-"%(expiration_days)s రోజుల కంటే తక్కువగా ఉంది.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -140,12 +143,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s రికార్డ్‌లు ఎంచుకోబడ్డాయి\n"
-"          "
 
 #, python-format
 msgid ""
@@ -162,12 +170,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        దీనికి సారూప్యమైన రికార్డ్‌లు: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -270,16 +289,6 @@ msgstr ""
 "      దయచేసి వాస్తవ మూలాన్ని సంప్రదించండి.\n"
 "      మీరు వాస్తవ రికార్డ్‌ను %(begin_tag)s%(source_name)s%(end_tag)sలో\n"
 "      వీక్షించవచ్చు.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      దీని కోసం ఫలితాలు కనుగొనబడలేదు: %(query)s\n"
 "    "
 
 #, python-format
@@ -563,9 +572,6 @@ msgstr "ఇప్పటి నుండి సుమారు 6 నెలలు 
 msgid "About Google Person Finder"
 msgstr "Google వ్యక్తి శోధిని పరిచయం"
 
-msgid "About you (required)"
-msgstr "మీ పరిచయం (అవసరం)"
-
 msgid "Administration"
 msgstr "నిర్వహణ"
 
@@ -640,6 +646,11 @@ msgstr "రద్దు చేయి"
 msgid "City"
 msgstr "నగరం"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "ఫలితాలను వీక్షించడానికి ఇక్కడ క్లిక్ చేయండి."
 
@@ -663,9 +674,6 @@ msgstr "క్రొత్త రికార్డ్‌ను సృష్ట�
 msgid "Create a new record for"
 msgstr "వీరి కోసం క్రొత్త రికార్డ్‌ను సృష్టించండి"
 
-msgid "Create a new record for a missing person"
-msgstr "అందుబాటులో లేని వ్యక్తి కోసం క్రొత్త రికార్డ్‌ను సృష్టించండి"
-
 msgid "Crisis events"
 msgstr "విపత్తు ఈవెంట్‌లు"
 
@@ -686,9 +694,6 @@ msgstr "ఈ రికార్డ్‌ను తొలగించు"
 
 msgid "Describe how to identify this person."
 msgstr "ఈ వ్యక్తిని ఎలా గుర్తించాలో వివరించండి."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "ఈ వ్యక్తి యొక్క భౌతిక లక్షణాలను వివరించండి."
 
 msgid "Description"
 msgstr "వివరణ"
@@ -750,11 +755,16 @@ msgid "Expiry date of this record"
 msgstr "ఈ రికార్డ్ యొక్క గడువు ముగింపు తేదీ"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "గడువు ముగింపు తేదీని %(extension_days)s రోజులు పొడిగించండి"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "కుటుంబ పేరు"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "ఈ వ్యక్తి గురించి నవీకరణల ఫీడ్"
@@ -777,6 +787,9 @@ msgstr "పూర్తి పేరు"
 
 msgid "Given name"
 msgstr "పేరు"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google వ్యక్తి శోధిని"
@@ -810,6 +823,9 @@ msgstr "ప్రస్తుతం ఈ వ్యక్తిని ఎలా �
 
 msgid "How others who are interested in this person can contact you"
 msgstr "ఈ వ్యక్తి పట్ల ఆసక్తి ఉన్న ఇతరులు మిమ్మల్ని ఎలా సంప్రదించవచ్చు"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "నేను సమాచారాన్ని శోధిస్తున్నాను"
@@ -950,9 +966,6 @@ msgstr ""
 msgid "Name"
 msgstr "పేరు"
 
-msgid "Name (required)"
-msgstr "పేరు (అవసరం)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "పేరు అవసరం.  దయచేసి వెనుకకు వెళ్లి, మళ్లీ ప్రయత్నించండి."
 
@@ -975,6 +988,9 @@ msgstr "ఈ IDతో గమనిక లేదు: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "గమనికలను పోస్ట్ చేయలేదు"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1058,6 +1074,9 @@ msgstr "ఫోన్ నంబర్"
 msgid "Photo"
 msgstr "ఫోటో"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1067,6 +1086,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "భౌతిక లక్షణాలు"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1208,23 +1232,33 @@ msgstr "ఒకరు ఈ వ్యక్తి ఆచూకీ తెలియ�
 msgid "Someone is seeking information about this person"
 msgstr "ఒకరు ఈ వ్యక్తి గురించి సమాచారాన్ని కోరుతున్నారు"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "ఈ రికార్డ్ యొక్క మూలం"
-
-msgid "Source of this record (required)"
-msgstr "ఈ రికార్డ్ యొక్క మూలం (అవసరం)"
 
 msgid "Status"
 msgstr "స్థితి"
 
-msgid "Status of this person"
-msgstr "ఈ వ్యక్తి యొక్క స్థితి"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "వీధి పేరు"
 
 msgid "Street name only, no number"
 msgstr "వీధి పేరు మాత్రమే, నంబర్ కాదు"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "చందా పొందండి"
@@ -1241,9 +1275,6 @@ msgstr "చిరునామాకు మారండి"
 
 msgid "Switch to lat/long"
 msgstr "అక్షా./రేఖా.కి మారండి"
-
-msgid "Tell us the status of this person"
-msgstr "ఈ వ్యక్తి యొక్క స్థితిని మాకు తెలియజేయండి"
 
 msgid "Terms of Service"
 msgstr "సేవా నిబంధనలు"
@@ -1360,6 +1391,9 @@ msgstr "ఈ వ్యక్తి మరొకరితో పరిచయాన
 msgid "This person has posted a message"
 msgstr "ఈ వ్యక్తి సందేశాన్ని పోస్ట్ చేసారు"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "ఈ వ్యక్తి యొక్క నమోదు ఉనికిలో లేదు లేదా తొలగించబడింది."
 
@@ -1435,6 +1469,9 @@ msgstr "వ్యక్తి నివేదికలను CSV ఆకృతి
 msgid "Upload your CSV file below"
 msgstr "మీ CSV ఫైల్‌ను దిగువ అప్‌లోడ్ చేయండి"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "రికార్డ్‌ను వీక్షించండి"
 
@@ -1449,9 +1486,6 @@ msgstr "ఈ రికార్డ్ ఎప్పుడు కనిపించ
 
 msgid "Where did this information come from?"
 msgstr "ఈ సమాచారం ఎక్కడి నుండి వచ్చింది?"
-
-msgid "Where is this person from?"
-msgstr "ఈ వ్యక్తి ఎక్కడి వారు?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1555,8 +1589,8 @@ msgstr "మీ ఇ-మెయిల్ చిరునామా:"
 msgid "Your email"
 msgstr "మీ ఇమెయిల్"
 
-msgid "Your name"
-msgstr "మీ పేరు"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1624,6 +1658,9 @@ msgstr "[వ్యక్తి శోధిని] %(full_name)s కోసం �
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[వ్యక్తి శోధిని] మీరు %(full_name)s కోసం స్థితి నవీకరణలకు చందా పొందారు"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "స్త్రీ"

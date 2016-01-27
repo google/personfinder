@@ -126,14 +126,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Isexwayiso: le rekhodi izophelelwa yisikhathi "
-"ngaphansi kwezinsuku ezingu-%(expiration_days)s.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -148,12 +151,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s amarekhodi akhethiwe\n"
-"          "
 
 #, python-format
 msgid ""
@@ -170,12 +178,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Amarekhodi afana ne-: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -278,16 +297,6 @@ msgstr ""
 "      sicela uxhumane nomthombo wangempela.\n"
 "      Ungabuka irekhodi langempela "
 "ku-%(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Ayikho imiphumela etholelwe i-: %(query)s\n"
 "    "
 
 #, python-format
@@ -572,9 +581,6 @@ msgstr "Cishe izinyanga ezingu-6 (izinsuku ezingu-180) kusukela manje"
 msgid "About Google Person Finder"
 msgstr "Mayelana ne-Google Person Finder"
 
-msgid "About you (required)"
-msgstr "Mayelana nawe (okudingekayo)"
-
 msgid "Administration"
 msgstr "Ukulawula"
 
@@ -649,6 +655,11 @@ msgstr "Khansela"
 msgid "City"
 msgstr "Idolobha"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Chofoza lapha ukuze ubuke imiphumela."
 
@@ -672,9 +683,6 @@ msgstr "Dala irekhodi elisha"
 msgid "Create a new record for"
 msgstr "Dalela irekhodi elisha i-"
 
-msgid "Create a new record for a missing person"
-msgstr "Dalela irekhodi elisha umuntu olahlekile"
-
 msgid "Crisis events"
 msgstr "Imicimbi esengozini"
 
@@ -693,9 +701,6 @@ msgstr "Susa le rekhodi"
 
 msgid "Describe how to identify this person."
 msgstr "Chaza ukuthi angakhonjwa kanjani lo muntu."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Chaza ubunjalo bomzimba walo muntu."
 
 msgid "Description"
 msgstr "Incazelo"
@@ -755,11 +760,16 @@ msgid "Expiry date of this record"
 msgstr "Idethi yokuphelelwa yisikhathi kwale rekhodi"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Nweba idethi yokuphelelwa yisikhathi ngezinsuku ezingu-%(extension_days)s"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Igama lomndeni"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Okuphakelayo kwezibuyekezo mayelana nalo muntu"
@@ -782,6 +792,9 @@ msgstr "Igama eligcwele"
 
 msgid "Given name"
 msgstr "Igama elinikeziwe"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Isitholi Somuntu se-Google"
@@ -817,6 +830,9 @@ msgstr "Lo muntu angafinyeleleka kanjani manje?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Abanye abantu abanentshisekelo kulo muntu bangaxhumana kanjani nawe"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ngifuna ulwazi"
@@ -957,9 +973,6 @@ msgstr ""
 msgid "Name"
 msgstr "Igama"
 
-msgid "Name (required)"
-msgstr "Igama (okudingekayo)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Igama liyadingeka. Sicela ubuyele emuva uphinde uzame futhi."
 
@@ -984,6 +997,9 @@ msgstr "Alikho inothi eline-ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Awekho amanothi athunyelwe"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1067,6 +1083,9 @@ msgstr "Inombolo yefoni"
 msgid "Photo"
 msgstr "Isithombe"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1076,6 +1095,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Ubunjalo bomuntu"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1213,23 +1237,33 @@ msgstr "Umuntu othile ubike ukuthi lo muntu ulahlekile"
 msgid "Someone is seeking information about this person"
 msgstr "Umuntu othile ufuna ulwazi mayelana nalo muntu"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Umthombo waleli rekhodi"
-
-msgid "Source of this record (required)"
-msgstr "Umthombo waleli rekhodi (okudingekayo)"
 
 msgid "Status"
 msgstr "Isimo"
 
-msgid "Status of this person"
-msgstr "Isimo salo muntu"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Igama lomgwaqo"
 
 msgid "Street name only, no number"
 msgstr "Igama lomgwaqo kuphela, ngaphandle kwenombolo"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Bhalisela"
@@ -1246,9 +1280,6 @@ msgstr "Shintshela kukheli"
 
 msgid "Switch to lat/long"
 msgstr "Shintshela ku-lat/ubude"
-
-msgid "Tell us the status of this person"
-msgstr "Sitshele ngesimo salo muntu"
 
 msgid "Terms of Service"
 msgstr "Imigomo Yesevisi"
@@ -1367,6 +1398,9 @@ msgstr "Lo muntu uxhumane nomunye umuntu"
 msgid "This person has posted a message"
 msgstr "Lo muntu uthumele umlayezo"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Okufakiwe kwalo muntu akukho noma kususiwe."
 
@@ -1440,6 +1474,9 @@ msgstr "Layisha amarekhodi omuntu ngefomethi ye-CSV"
 msgid "Upload your CSV file below"
 msgstr "Layisha ifayela yakho ye-CSV ngezansi"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Buka irekhodi"
 
@@ -1454,9 +1491,6 @@ msgstr "Kufanele leli rekhodi linyamalale nini?"
 
 msgid "Where did this information come from?"
 msgstr "Luvele kuphi lolu lwazi?"
-
-msgid "Where is this person from?"
-msgstr "Lo muntu usuka kuphi?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1558,8 +1592,8 @@ msgstr "Ikheli lakho le-imeyili:"
 msgid "Your email"
 msgstr "I-imeyili yakho"
 
-msgid "Your name"
-msgstr "Igama lakho"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1625,6 +1659,9 @@ msgstr "[ISitholi sabantu] Isibuyekezo sesimo se-%(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ISitholi sabantu] Ubhalisele izibuyekezo zesimo ze-%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "owesifazane"

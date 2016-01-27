@@ -125,14 +125,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Ŵårñîñĝ: ţĥîš réçörð ŵîļļ éxþîré îñ ļéšš ţĥåñ "
-"ᐅ%(expiration_days)sᐊ ðåýš.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -146,12 +149,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            ᐅ%(dup_count)sᐊ réçörðš šéļéçţéð\n"
-"          "
 
 #, python-format
 msgid ""
@@ -168,12 +176,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        ®éçörðš Šîmîļår ţö: ᐅ%(full_name)sᐊ\n"
-"      "
 
 #, python-format
 msgid ""
@@ -274,16 +293,6 @@ msgstr ""
 "      þļéåšé çöñţåçţ ţĥé örîĝîñåļ šöûrçé.\n"
 "      Ýöû çåñ vîéŵ ţĥé örîĝîñåļ réçörð åţ\n"
 "      ᐅ%(begin_tag)sᐊᐅ%(source_name)sᐊᐅ%(end_tag)sᐊ.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Ñö réšûļţš ƒöûñð ƒör: ᐅ%(query)sᐊ\n"
 "    "
 
 #, python-format
@@ -570,9 +579,6 @@ msgstr "Åböûţ 6 möñţĥš (180 ðåýš) ƒröm ñöŵ"
 msgid "About Google Person Finder"
 msgstr "Åböûţ Ĝööĝļé Þéršöñ Fîñðér"
 
-msgid "About you (required)"
-msgstr "Åböûţ ýöû (réqûîréð)"
-
 msgid "Administration"
 msgstr "Åðmîñîšţråţîöñ"
 
@@ -645,6 +651,11 @@ msgstr "Çåñçéļ"
 msgid "City"
 msgstr "Çîţý"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Çļîçķ ĥéré ţö vîéŵ réšûļţš."
 
@@ -666,9 +677,6 @@ msgstr "Çréåţé å ñéŵ réçörð"
 msgid "Create a new record for"
 msgstr "Çréåţé å ñéŵ réçörð ƒör"
 
-msgid "Create a new record for a missing person"
-msgstr "Çréåţé å ñéŵ réçörð ƒör å mîššîñĝ þéršöñ"
-
 msgid "Crisis events"
 msgstr "Çrîšîš évéñţš"
 
@@ -687,9 +695,6 @@ msgstr "Ðéļéţé ţĥîš réçörð"
 
 msgid "Describe how to identify this person."
 msgstr "Ðéšçrîbé ĥöŵ ţö îðéñţîƒý ţĥîš þéršöñ."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Ðéšçrîbé ţĥé þĥýšîçåļ çĥåråçţérîšţîçš öƒ ţĥîš þéršöñ."
 
 msgid "Description"
 msgstr "Ðéšçrîþţîöñ"
@@ -749,11 +754,16 @@ msgid "Expiry date of this record"
 msgstr "Éxþîrý ðåţé öƒ ţĥîš réçörð"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Éxţéñð éxþîråţîöñ ðåţé bý ᐅ%(extension_days)sᐊ ðåýš"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Fåmîļý ñåmé"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Fééð öƒ ûþðåţéš åböûţ ţĥîš þéršöñ"
@@ -776,6 +786,9 @@ msgstr "Fûļļ ñåmé"
 
 msgid "Given name"
 msgstr "Ĝîvéñ ñåmé"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Ĝööĝļé Þéršöñ Fîñðér"
@@ -809,6 +822,9 @@ msgstr "Ĥöŵ çåñ ţĥîš þéršöñ bé réåçĥéð ñöŵ¿"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Ĥöŵ öţĥérš ŵĥö åré îñţéréšţéð îñ ţĥîš þéršöñ çåñ çöñţåçţ ýöû"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Î åm šééķîñĝ îñƒörmåţîöñ"
@@ -943,9 +959,6 @@ msgstr ""
 msgid "Name"
 msgstr "Ñåmé"
 
-msgid "Name (required)"
-msgstr "Ñåmé (réqûîréð)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Ñåmé îš réqûîréð.  Þļéåšé ĝö båçķ åñð ţrý åĝåîñ."
 
@@ -968,6 +981,9 @@ msgstr "Ñö ñöţé ŵîţĥ ÎÐ: ᐅ%(id_str)sᐊ."
 
 msgid "No notes have been posted"
 msgstr "Ñö ñöţéš ĥåvé bééñ þöšţéð"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1051,6 +1067,9 @@ msgstr "Þĥöñé ñûmbér"
 msgid "Photo"
 msgstr "Þĥöţö"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1060,6 +1079,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Þĥýšîçåļ çĥåråçţérîšţîçš"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1197,23 +1221,33 @@ msgstr "Šöméöñé ĥåš réþörţéð ţĥåţ ţĥîš þéršöñ îš m
 msgid "Someone is seeking information about this person"
 msgstr "Šöméöñé îš šééķîñĝ îñƒörmåţîöñ åböûţ ţĥîš þéršöñ"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Šöûrçé öƒ ţĥîš réçörð"
-
-msgid "Source of this record (required)"
-msgstr "Šöûrçé öƒ ţĥîš réçörð (réqûîréð)"
 
 msgid "Status"
 msgstr "Šţåţûš"
 
-msgid "Status of this person"
-msgstr "Šţåţûš öƒ ţĥîš þéršöñ"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Šţrééţ ñåmé"
 
 msgid "Street name only, no number"
 msgstr "Šţrééţ ñåmé öñļý, ñö ñûmbér"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Šûbšçrîbé"
@@ -1230,9 +1264,6 @@ msgstr "Šŵîţçĥ ţö åððréšš"
 
 msgid "Switch to lat/long"
 msgstr "Šŵîţçĥ ţö ļåţ/ļöñĝ"
-
-msgid "Tell us the status of this person"
-msgstr "Ţéļļ ûš ţĥé šţåţûš öƒ ţĥîš þéršöñ"
 
 msgid "Terms of Service"
 msgstr "Ţérmš öƒ Šérvîçé"
@@ -1347,6 +1378,9 @@ msgstr "Ţĥîš þéršöñ ĥåš bééñ îñ çöñţåçţ ŵîţĥ šömé
 msgid "This person has posted a message"
 msgstr "Ţĥîš þéršöñ ĥåš þöšţéð å méššåĝé"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Ţĥîš þéršöñ'š éñţrý ðöéš ñöţ éxîšţ ör ĥåš bééñ ðéļéţéð."
 
@@ -1418,6 +1452,9 @@ msgstr "Ûþļöåð þéršöñ réçörðš îñ ÇŠV ƒörmåţ"
 msgid "Upload your CSV file below"
 msgstr "Ûþļöåð ýöûr ÇŠV ƒîļé béļöŵ"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Vîéŵ ţĥé réçörð"
 
@@ -1432,9 +1469,6 @@ msgstr "Ŵĥéñ šĥöûļð ţĥîš réçörð ðîšåþþéår¿"
 
 msgid "Where did this information come from?"
 msgstr "Ŵĥéré ðîð ţĥîš îñƒörmåţîöñ çömé ƒröm¿"
-
-msgid "Where is this person from?"
-msgstr "Ŵĥéré îš ţĥîš þéršöñ ƒröm¿"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1536,8 +1570,8 @@ msgstr "Ýöûr é-måîļ åððréšš:"
 msgid "Your email"
 msgstr "Ýöûr émåîļ"
 
-msgid "Your name"
-msgstr "Ýöûr ñåmé"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1602,6 +1636,9 @@ msgstr "[Þéršöñ Fîñðér] Šţåţûš ûþðåţé ƒör ᐅ%(full_name)
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Þéršöñ Fîñðér] Ýöû åré šûbšçrîbéð ţö šţåţûš ûþðåţéš ƒör ᐅ%(full_name)sᐊ"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "ƒémåļé"

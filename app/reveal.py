@@ -29,7 +29,6 @@ import urlparse
 from google.appengine.api import users
 from recaptcha.client import captcha
 
-from model import Secret
 from utils import *
 
 REVEAL_KEY_LENGTH = 20
@@ -54,7 +53,7 @@ def hmac(key, data, hash=sha1_hash):
 def sign(data, lifetime=600):
     """Produces a limited-time signature for the given data."""
     expiry = int(time.time() + lifetime)
-    key = get_secret_key(name='reveal', length=REVEAL_KEY_LENGTH)
+    key = get_reveal_key(length=REVEAL_KEY_LENGTH)
     return hmac(key, (expiry, data)).encode('hex') + '.' + str(expiry)
 
 def verify(data, signature):
@@ -64,8 +63,17 @@ def verify(data, signature):
         mac, expiry = mac.decode('hex'), int(expiry)
     except (TypeError, ValueError):
         return False
-    key = get_secret_key(name='reveal', length=REVEAL_KEY_LENGTH)
+    key = get_reveal_key(length=REVEAL_KEY_LENGTH)
     return time.time() < expiry and hmac(key, (expiry, data)) == mac
+
+def get_reveal_key(length=REVEAL_KEY_LENGTH):
+    """Gets the key for authorizing reveal operations, or creates one if none
+    exist."""
+    key = config.get('reveal')
+    if not key:
+        key = generate_random_key(REVEAL_KEY_LENGTH)
+        config.set(reveal=key)
+    return key
 
 def make_reveal_url(handler, content_id):
     """Produces a link to this reveal handler that, on success, redirects back
@@ -102,9 +110,16 @@ class Handler(BaseHandler):
         if captcha_response.is_valid or self.env.test_mode:
             signature = sign(self.params.content_id)
             # self.params.target contains only the path part of the URL e.g.,
-            # "/test/view?...". Puts our own scheme and netloc to make it an
-            # absolute URL. We do this to allow only URLs in our domain as
-            # the target.
+            # "/test/view?...".
+            #
+            # - We verify that self.params.target starts with '/'.
+            # - We put our own scheme and netloc to make it an absolute URL.
+            #
+            # These two are required to allow only URLs in our domain as the
+            # target, avoiding this to be used as a redirector to aid phishing
+            # attacks.
+            if not self.params.target.startswith('/'):
+                return self.error(400, 'Invalid target parameter')
             scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             target = '%s://%s%s' % (scheme, netloc, self.params.target)
             self.redirect(

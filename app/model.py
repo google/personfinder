@@ -664,7 +664,7 @@ class Authorization(db.Model):
 
     DEFAULT_SETTINGS = dict(contact_name='', contact_email='',
                             organization_name='', domain_write_permission='',
-                            read_permission=False, full_read_permission=False, 
+                            read_permission=False, full_read_permission=False,
                             search_permission=True, subscribe_permission=False,
                             mark_notes_reviewed=False, is_valid=True, key='')
 
@@ -747,11 +747,6 @@ class ApiKeyManagementLog(db.Model):
     @property
     def authorization(self):
         return Authorization.get(self.repo, self.api_key)
-
-
-class Secret(db.Model):
-    """A place to store application-level secrets in the database."""
-    secret = db.BlobProperty()
 
 def encode_count_name(count_name):
     """Encode a name to printable ASCII characters so it can be safely

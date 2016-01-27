@@ -98,6 +98,8 @@ class Handler(BaseHandler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
+            result.should_show_inline_photo = (
+                self.should_show_inline_photo(result.photo_url))
             sanitize_urls(result)
         return results
 

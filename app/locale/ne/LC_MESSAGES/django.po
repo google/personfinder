@@ -111,14 +111,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    चेतावनी: यस रेकर्डको म्याद %(expiration_days)s दिन "
-"भन्दा कममा समाप्त हुने छ।\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -133,12 +136,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s रेकर्डहरू चयनित\n"
-"          "
 
 #, python-format
 msgid ""
@@ -155,12 +163,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        %(full_name)s सँग मिल्दाजुल्दा रेकर्डहरू\n"
-"      "
 
 #, python-format
 msgid ""
@@ -261,16 +280,6 @@ msgstr ""
 "      यदि तपाईँ यसलाई स्थायी रूपमा मेटाउन चाहनुहुन्छ भने कृपया मूल "
 "स्रोतसँग सम्पर्क राख्नुहोस्। तपाईँले मूल रेकर्डलाई %(begin_tag)s "
 "%(source_name)s %(end_tag)sमा हेर्न सक्नुहुन्छ।\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      %(query)sका लागि कुनै परिणामहरू भेटिएनन्\n"
 "    "
 
 #, python-format
@@ -525,9 +534,6 @@ msgstr "अहिलेबाट करिब ६ महिना (१८० द
 msgid "About Google Person Finder"
 msgstr "Google Person Finder को बारे"
 
-msgid "About you (required)"
-msgstr "तपाईँका बारे (आवश्यक)"
-
 msgid "Administration"
 msgstr "प्रशासन"
 
@@ -604,6 +610,11 @@ msgstr "रद्द गर्नुहोस्"
 msgid "City"
 msgstr "शहर"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "परिणामहरू हेर्नका लागि यहाँ क्लिक गर्नुहोस्"
 
@@ -627,9 +638,6 @@ msgstr "एउटा नयाँ रेकर्ड बनाउनुहोस
 msgid "Create a new record for"
 msgstr "यसका लागि नयाँ रेकर्ड बनाउनुहोस्"
 
-msgid "Create a new record for a missing person"
-msgstr "हराइरहेको व्यक्तिका लागि नयाँ रेकर्ड बनाउनुहोस्"
-
 msgid "Crisis events"
 msgstr "सङ्कट घटनाहरू"
 
@@ -648,9 +656,6 @@ msgstr "यस रेकर्डलाई मेटाउनुहोस्"
 
 msgid "Describe how to identify this person."
 msgstr "यस व्यक्तिलाई कसरी पहिचान गर्ने वर्णन गर्नुहोस्।"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "यस व्यक्तिका शारिरिक विशेषताहरू वर्णन गर्नुहोस्।"
 
 msgid "Description"
 msgstr "वर्णन"
@@ -710,11 +715,16 @@ msgid "Expiry date of this record"
 msgstr "यस रेकर्डको म्याद समाप्ति मिति"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "%(extension_days)sमा म्याद समाप्ति मिति नविकरण गर्नुहोस्"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "अन्तिम नाम"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "यस व्यक्तिका बारे अद्यावधिक फिड"
@@ -737,6 +747,9 @@ msgstr "पूरा नाम"
 
 msgid "Given name"
 msgstr "पहिलो नाम"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -772,6 +785,9 @@ msgstr "यस व्यक्तिसम्म अहिले कसरी �
 
 msgid "How others who are interested in this person can contact you"
 msgstr "यस व्यक्तिमा रुचि राख्ने अन्य मानिसहरूले तपाईँलाई कसरी सम्पर्क गर्न सक्छन्"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "म जानकारी खोजिरहेको छु"
@@ -912,9 +928,6 @@ msgstr ""
 msgid "Name"
 msgstr "नाम"
 
-msgid "Name (required)"
-msgstr "नाम (आवश्यक)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "नाम आवश्यक छ। कृपया फिर्ता जानुहोस् र पुनःप्रयास गर्नुहोस्।"
 
@@ -937,6 +950,9 @@ msgstr "ID का साथ कुनै टिप्पणी छैन: %(id_s
 
 msgid "No notes have been posted"
 msgstr "कुनै टिप्पणीहरू पोष्ट गरिएका छैनन्"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1020,6 +1036,9 @@ msgstr "फोन नम्बर"
 msgid "Photo"
 msgstr "तस्बिर"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1029,6 +1048,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "भौतिक विशेषताहरू"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1174,23 +1198,33 @@ msgstr "यो व्यक्ति हराइरहेको छ भने�
 msgid "Someone is seeking information about this person"
 msgstr "कसैले यस व्यक्तिका बारेमा जानकारी खोजिरहेको छ"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "यस रेकर्डका लागि स्रोत"
-
-msgid "Source of this record (required)"
-msgstr "यस रेकर्डका लागि स्रोत (आवश्यक)"
 
 msgid "Status"
 msgstr "वस्तुस्थिति"
 
-msgid "Status of this person"
-msgstr "यस व्यक्तिको वस्तुस्थिति"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "सडक नाम"
 
 msgid "Street name only, no number"
 msgstr "सडक नाम मात्र, नम्बर होइन"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "सदस्यता लिनुहोस्"
@@ -1208,11 +1242,8 @@ msgstr "ठेगानामा स्विच गर्नुहोस्"
 msgid "Switch to lat/long"
 msgstr "आक्षांश/देशान्तरमा स्विच गर्नुहोस्"
 
-msgid "Tell us the status of this person"
-msgstr "यस व्यक्तिको वस्तुस्थितिका बारे हामीलाई भन्नुहोस्"
-
 msgid "Terms of Service"
-msgstr "सेवाका सर्तहरू"
+msgstr "सेवा सर्तहरू"
 
 msgid "The API key has been updated successfully."
 msgstr "API किलाई सफलतापूर्वक अद्यावधिक गरिएको छ।"
@@ -1326,6 +1357,9 @@ msgstr "यो व्यक्ति कसैसँग सम्पर्कम
 msgid "This person has posted a message"
 msgstr "यस व्यक्तिले सन्देश पोष्ट गरेको छ"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "यस व्यक्तिको प्रविष्टि अवस्थित छैन वा मेटाइएको छ"
 
@@ -1399,6 +1433,9 @@ msgstr "CSV ढाँचामा व्यक्ति रेकर्डहर
 msgid "Upload your CSV file below"
 msgstr "तल तपाईँको CSV फाइल अपलोड गर्नुहोस्"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "रेकर्ड हेर्नुहोस्"
 
@@ -1413,9 +1450,6 @@ msgstr "यस रेकर्ड कहिले हट्नुपर्छ?"
 
 msgid "Where did this information come from?"
 msgstr "यो जानकारी कहाँबाट आयो?"
-
-msgid "Where is this person from?"
-msgstr "यो व्यक्ति कहाँबाट हो?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1517,8 +1551,8 @@ msgstr "तपाईँको इमेल ठेगाना:"
 msgid "Your email"
 msgstr "तपाईँको इमेल"
 
-msgid "Your name"
-msgstr "तपाईँको नाम"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1588,6 +1622,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] वस्तुस्थिति अद्यावधिक%(full_name)sका लागि तपाईँको सदस्यता"
 " कायम गरिएको छ"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "महिला"

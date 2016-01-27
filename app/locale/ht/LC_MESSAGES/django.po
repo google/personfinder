@@ -109,14 +109,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Atansyon: dosye sa a pral ekspire nan mwens pase "
-"%(expiration_days)s jou.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -131,12 +134,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s dosye chwazi\n"
-"          "
 
 #, python-format
 msgid ""
@@ -153,12 +161,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Dosye Menm jan ak: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -256,16 +275,6 @@ msgstr ""
 "      Si ou ta renmen li efase nèt, tanpri kontakte sous orijinal la. Ou "
 "kapab wè dosye orijinal la nan %(begin_tag)s %(source_name)s %(end_tag)s "
 ".\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Pa gen rezilta  pou: %(query)s\n"
 "    "
 
 #, python-format
@@ -516,9 +525,6 @@ msgstr "Nan apeprè 6 mwa (180 jou)"
 msgid "About Google Person Finder"
 msgstr "Konsènan Google Zouti Pou Chèche Moun"
 
-msgid "About you (required)"
-msgstr "Enfòmasyon sou ou menm (obligatwa)"
-
 msgid "Administration"
 msgstr "Administrasyon"
 
@@ -590,6 +596,11 @@ msgstr "Anile"
 msgid "City"
 msgstr "Vil"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Peze la pou ka wè resilta."
 
@@ -611,9 +622,6 @@ msgstr "Kreye yon nouvo dosye"
 msgid "Create a new record for"
 msgstr "Kreye yon nouvo dosye pou"
 
-msgid "Create a new record for a missing person"
-msgstr "Kreye yon nouvo dosye pou yon moun yo pa ka jwenn"
-
 msgid "Crisis events"
 msgstr "Evènman kriz"
 
@@ -632,9 +640,6 @@ msgstr "Efase dosye sa a"
 
 msgid "Describe how to identify this person."
 msgstr "Dekri kouman ou ta idantifye moun sa a."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Dekri karakteristik fizik moun sa a."
 
 msgid "Description"
 msgstr "Deskripsyon"
@@ -694,11 +699,16 @@ msgid "Expiry date of this record"
 msgstr "Dat ekspirasyon dosye sa a"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Pwolonje dat ekspirasyon an pa %(extension_days)s jou"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Non fanmi"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Mete dènye nouvèl sou moun sa"
@@ -721,6 +731,9 @@ msgstr "Non Konplè"
 
 msgid "Given name"
 msgstr "Premye non"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Zouti Pou Chèche Moun Google"
@@ -754,6 +767,9 @@ msgstr "Kouman nou ka kominike ak moun sa a  kounye a?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kouman lòt moun ki enterese a moun sa a ka kontakte ou"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
@@ -890,9 +906,6 @@ msgstr ""
 msgid "Name"
 msgstr "Non"
 
-msgid "Name (required)"
-msgstr "Non (obligatwa)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Non obligatwa. Tanpri retounen epi eseye ankò."
 
@@ -915,6 +928,9 @@ msgstr "Pa gen nòt ak ID: %(id_str)s ."
 
 msgid "No notes have been posted"
 msgstr "Pa gen nòt ki afiche"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -996,6 +1012,9 @@ msgstr "Nimewo telefòn"
 msgid "Photo"
 msgstr "Foto"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1003,6 +1022,11 @@ msgstr "Nou pa rekonèt fòma foto ou ajoute a. Tanpri retounen epi eseye ankò.
 
 msgid "Physical characteristics"
 msgstr "Karaktè fizik"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1140,23 +1164,33 @@ msgstr "Gen yon moun ki rapòte yo paka jwenn moun sa a"
 msgid "Someone is seeking information about this person"
 msgstr "Yon moun ap chèche enfomasyon sou moun sa a"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Sous dosye sa a"
-
-msgid "Source of this record (required)"
-msgstr "Sous dosye sa a (obligatwa)"
 
 msgid "Status"
 msgstr "Dènye nouvèl"
 
-msgid "Status of this person"
-msgstr "Dènye nouvèl sou moun sa a"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Non lari a"
 
 msgid "Street name only, no number"
 msgstr "Non lari a sèlman, pa ekri nimewo kay la"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abone"
@@ -1173,9 +1207,6 @@ msgstr "Chanje a adrès"
 
 msgid "Switch to lat/long"
 msgstr "Chanje a lat / long"
-
-msgid "Tell us the status of this person"
-msgstr "Bay nou dènye nouvèl moun sa a"
 
 msgid "Terms of Service"
 msgstr "Kondisyon Pou Itilize"
@@ -1287,6 +1318,9 @@ msgstr "Moun sa a poko kontakte okenn moun"
 msgid "This person has posted a message"
 msgstr "Moun sa a te poste yon mesaj."
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Enfòmasyon moun sa a pa egziste oswa li te efase."
 
@@ -1360,6 +1394,9 @@ msgstr "Telechaje dosye moun nan nan fòma CSV"
 msgid "Upload your CSV file below"
 msgstr "Telechanje fichye CSV ou pi ba a"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Gade dosye a"
 
@@ -1374,9 +1411,6 @@ msgstr "Kilè dozye sa a ta dwe disparèt?"
 
 msgid "Where did this information come from?"
 msgstr "Kote enfòmasyon sa a sòti?"
-
-msgid "Where is this person from?"
-msgstr "Ki kote moun sa a sòti?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1476,8 +1510,8 @@ msgstr "Adrès imèl ou"
 msgid "Your email"
 msgstr "Imèl ou"
 
-msgid "Your name"
-msgstr "Non ou"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1540,6 +1574,9 @@ msgstr "[Zouti Pou Chèche Moun] Dènye nouvèl pou %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Zouti Pou Chèche Moun] Ou abòne nan dènye nouvèl sou %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "fi"

@@ -44,7 +44,10 @@ __version__ = '$Revision: 1.44 $'
 
 from urlparse import urlsplit, urljoin
 from htmlentitydefs import name2codepoint
-import sys, re
+import re
+import sys
+
+import lxml.etree
 
 RE_TYPE = type(re.compile(''))
 
@@ -170,8 +173,18 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     # Prepare the POST data.
     if not method:
         method = data and 'POST' or 'GET'
-    if data and not isinstance(data, str): # Unicode not allowed here
-        data = urlencode(data)
+
+    if not data:
+        data_str = ''
+    elif isinstance(data, str):
+        data_str = data
+    elif isinstance(data, unicode):
+        data_str = data.encode('utf-8')
+    elif isinstance(data, dict):
+        # urlencode() supports both of a dict of str and a dict of unicode.
+        data_str = urlencode(data)
+    else:
+        raise Exception('Unexpected type for data: %r' % data)
 
     # Get the cookies to send with this request.
     cookieheader = '; '.join([
@@ -179,9 +192,9 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
 
     # Make the HTTP headers to send.
     headers = {'host': host, 'accept': '*/*'}
-    if data:
+    if data_str:
         headers['content-type'] = 'application/x-www-form-urlencoded'
-        headers['content-length'] = len(data)
+        headers['content-length'] = len(data_str)
     if agent:
         headers['user-agent'] = agent
     if referrer:
@@ -198,9 +211,9 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
             path += '?' + query
-        reply = request(scheme, method, host, path, headers, data, verbose)
+        reply = request(scheme, method, host, path, headers, data_str, verbose)
     elif scheme == 'https':
-        reply = curl(url, headers, data, verbose)
+        reply = curl(url, headers, data_str, verbose)
     else:
         raise ValueError, scheme + ' not supported'
 
@@ -238,16 +251,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     if 'set-cookie' in headers:
         setcookies(cookiejar, host, headers['set-cookie'].split('\n'))
 
-    # Handle the 'charset' parameter.
-    if 'content-type' in headers and not charset:
-        for param in headers['content-type'].split(';')[1:]:
-            if param.strip().startswith('charset='):
-                charset = param.strip()[8:]
-                break
-    if charset and charset is not RAW:
-        content = content.decode(charset)
-
-    return url, status, message, headers, content, charset
+    return url, status, message, headers, content
 
 def multipart_encode(data, charset):
     """Encode 'data' for a multipart post. If any of the values is of type file,
@@ -325,8 +329,8 @@ class Session:
             referrer = self.url
 
         while 1:
-            (self.url, self.status, self.message, self.headers, self.content,
-             self.charset) = fetch(
+            (self.url, self.status, self.message, self.headers,
+             content_bytes) = fetch(
                 url, data, self.agent, referrer, charset, self.verbose,
                 self.cookiejar, type)
             if redirects:
@@ -337,7 +341,10 @@ class Session:
             break
 
         self.history.append(historyentry)
-        self.doc = Region(self.content, charset=self.charset)
+
+        self.doc = Document(content_bytes, headers=self.headers, charset=charset)
+        self.content = self.doc.content
+        self.charset = self.doc.charset
         return self.doc
 
     def back(self):
@@ -346,19 +353,49 @@ class Session:
          self.headers, self.content, self.doc) = self.history.pop()
         return self.url
 
-    def follow(self, anchor, region=None):
+    def follow(self, anchor, context=None):
         """If 'anchor' is an element, follow the link in its 'href' attribute;
         if 'anchor' is a string or compiled RE, find the first link with that
-        anchor text, and follow it.  If 'region' is specified, only that region
-        is searched for a matching link, instead of the whole document."""
-        link = anchor
-        if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
-            link = (region or self.doc).first('a', content=anchor)
-        if not link:
-            raise ScrapeError('link %r not found' % anchor)
-        if not link.get('href', ''):
-            raise ScrapeError('link %r has no href' % link)
-        return self.go(link['href'])
+        anchor text, and follow it.  If 'context' is specified, a matching link
+        is searched only inside the 'context' element, instead of the whole
+        document.
+        """
+        if isinstance(anchor, Region) or isinstance(context, Region):
+            # TODO(ichikawa) Remove this after we stop using Region.
+            link = anchor
+            if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
+                link = (context or self.doc).first('a', content=anchor)
+            if not link:
+                raise ScrapeError('link %r not found' % anchor)
+            if not link.get('href', ''):
+                raise ScrapeError('link %r has no href' % link)
+            href = link['href']
+
+        else:
+            if isinstance(anchor, basestring):
+                link = None
+                for l in (context or self.doc).cssselect('a'):
+                    if get_all_text(l) == anchor:
+                        link = l
+                        break
+            elif isinstance(anchor, RE_TYPE):
+                link = None
+                for l in (context or self.doc).cssselect('a'):
+                    if re.search(anchor, get_all_text(l)):
+                        link = l
+                        break
+            elif isinstance(anchor, lxml.etree._Element):
+                link = anchor
+            else:
+                raise ScrapeError('Unexpected type for anchor: %r' % anchor)
+
+            if link is None:
+                raise ScrapeError('link %r not found' % anchor)
+            href = link.get('href')
+            if not href:
+                raise ScrapeError('link %r has no href' % link)
+
+        return self.go(href)
 
     def follow_button(self, button):
         """Follow the forward URL specified in the button's onclick handler."""
@@ -370,32 +407,44 @@ class Session:
             raise ScrapeError('button %r has no forward URL' % button)
         return self.go(location_match.group(1))
 
-    def submit(self, region, paramdict=None, url=None, redirects=10, **params):
-        """Submit a form, optionally by clicking a given button.  The 'region'
-        argument can be the form itself or a button in the form to click.
-        Obtain the parameters to submit by (a) starting with the 'paramdict'
-        dictionary if specified, or the default parameter values as returned
-        by get_params; then (b) adding or replacing parameters in this
-        dictionary according to the keyword arguments.  The 'url' argument
-        overrides the form's action attribute and submits the form elsewhere.
-        After submission, follow redirections up to 'redirects' times."""
-        form = region.tagname == 'form' and region or region.enclosing('form')
-        if not form:
-            raise ScrapeError('%r is not contained in a form' % region)
-        if paramdict is not None:
-            p = paramdict.copy()
+    def submit(self, elem, paramdict=None, url=None, redirects=10, **params):
+        """Submit a form, optionally by clicking a given button.  The 'elem'
+        argument should be of type lxml.etree._Element and can be the form
+        itself or a button in the form to click.  Obtain the parameters to
+        submit by (a) starting with the 'paramdict' dictionary if specified, or
+        the default parameter values as returned by get_form_params; then (b)
+        adding or replacing parameters in this dictionary according to the
+        keyword arguments.  The 'url' argument overrides the form's action
+        attribute and submits the form elsewhere.  After submission, follow
+        redirections up to 'redirects' times."""
+
+        if isinstance(elem, Region):  # for backward compatibility.
+            form = elem if elem.tagname == 'form' else elem.enclosing('form')
+            if not form:
+                raise ScrapeError('%r is not contained in a form' % elem)
+            form_params = form.params
         else:
-            p = form.params
-        if 'name' in region:
-            p[region['name']] = region.get('value', '')
+            try:
+                form = elem if elem.tag == 'form' else (
+                        elem.iterancestors('form')[0])
+            except IndexError:
+                raise ScrapeError('%r is not contained in a form' % elem)
+            form_params = get_form_params(form)
+
+        p = paramdict.copy() if paramdict is not None else form_params
+        # Include the (name, value) attributes of a submit button as part of the
+        # parameters e.g. <input type="submit" name="action" value="add">
+        if elem.get('name'):
+            p[elem.get('name')] = elem.get('value', '')
         p.update(params)
-        method = form['method'].lower() or 'get'
+
+        method = form.get('method', '').lower() or 'get'
         url = url or form.get('action', self.url)
         multipart_post = any(map(lambda v: isinstance(v, file), p.itervalues()))
         if multipart_post:
-            param_str, content_type = multipart_encode(p, region.charset)
+            param_str, content_type = multipart_encode(p, self.doc.charset)
         else:
-            param_str, content_type = urlencode(p, region.charset), None
+            param_str, content_type = urlencode(p, self.doc.charset), None
         if method == 'get':
             if multipart_post:
                 raise ScrapeError('can not upload a file with a GET request')
@@ -590,7 +639,7 @@ def matchattrs(specimen, desired):
                 return 0
     return 1
 
-class Region:
+class Region(object):
     """A Region object represents a contiguous region of a document (in terms
     of a starting and ending position in the document string) together with
     an associated HTML or XML tag and its attributes.  Dictionary-like access
@@ -785,7 +834,7 @@ class Region:
             return self.attrs[name]
         raise AttributeError('no attribute named %r' % name)
 
-    def get(self, name, default):
+    def get(self, name, default=None):
         if name in self.attrs:
             return self.attrs[name]
         return default
@@ -1020,6 +1069,87 @@ class Region:
         c = content is not None and ' with content %r' % content or ''
         raise ScrapeError('no %s found%s%s' % (tag, a, c))
 
+class Document(Region):
+    """A document returned as an HTTP response.
+    """
+
+    def __init__(self, content_bytes, headers, charset):
+        """charset is used to decode content_bytes. If charset is None, it uses
+        the charset in headers['content-type'].
+        """
+        self.content_bytes = content_bytes
+        self.charset = charset
+
+        if 'content-type' in headers:
+            fields = headers['content-type'].split(';')
+            content_type = fields[0]
+            for field in fields[1:]:
+                if not self.charset and field.strip().startswith('charset='):
+                    self.charset = field.strip()[8:]
+                    break
+        else:
+            content_type = None
+
+        if self.charset and self.charset is not RAW:
+            content = content_bytes.decode(self.charset)
+        else:
+            # TODO(ichikawa): Consider setting None here, and use
+            #   content_bytes instead, after removing Region class.
+            content = content_bytes
+
+        super(Document, self).__init__(content, charset=self.charset)
+
+        if not content or not self.charset or self.charset == RAW:
+            self.__etree_doc = None
+        elif content_type == 'text/html':
+            self.__etree_doc = lxml.etree.HTML(
+                content_bytes, parser=lxml.etree.HTMLParser(encoding=self.charset))
+        elif content_type == 'text/xml':
+            self.__etree_doc = lxml.etree.XML(
+                content_bytes, parser=lxml.etree.XMLParser(encoding=self.charset))
+        else:
+            self.__etree_doc = None
+
+    def cssselect(self, expr, **kwargs):
+        """Evaluate a CSS selector expression against the document, and returns a
+        list of lxml.etree._Element instances.
+
+        See http://lxml.de/api/lxml.etree._Element-class.html#cssselect for
+        details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
+        """
+        return self.__get_etree_doc().cssselect(expr, **kwargs)
+
+    def xpath(self, path, **kwargs):
+        """Evaluate an XPath expression against the document, and returns a
+        list of lxml.etree.ElementBase instances.
+
+        It is generally recommended to use cssselect() instead if it can be
+        expressed with CSS selector.
+
+        See http://lxml.de/api/lxml.etree._Element-class.html#xpath for
+        details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
+        """
+        return self.__get_etree_doc().xpath(path, **kwargs)
+
+    def __get_etree_doc(self):
+        assert self.__etree_doc is not None, (
+            'The content type is neither text/html nor text/xml, '
+            'charset is RAW, or the document is empty.')
+        return self.__etree_doc
+
+
 def read(path):
     """Read and return the entire contents of the file at the given path."""
     return open(path).read()
@@ -1054,5 +1184,36 @@ def getnumber(text):
             except:
                 continue
     raise ScrapeError('no number found in %r' % text)
+
+def get_all_text(elem):
+    """Returns all texts in the subtree of the lxml.etree._Element, which is
+    returned by Document.cssselect() etc.
+    """
+    text = ''.join(elem.itertext())
+    return re.sub(r'\s+', ' ', text).strip()
+
+def get_form_params(form):
+    """Get a dictionary of default values for all the form parameters.
+    If there is a <input type=file> tag, it tries to open a file object."""
+    params = {}
+    for input in form.cssselect('input'):
+        if input.get('name') and input.get('disabled') is None:
+            type = input.get('type', 'text').lower()
+            if type in ['text', 'password', 'hidden'] or (
+               type in ['checkbox', 'radio'] and input.get('checked') is not None):
+                params[input.get('name')] = input.get('value', '')
+    for select in form.cssselect('select'):
+        if select.get('disabled') is None:
+            selections = [option.get('value', '')
+                          for option in select.cssselect('option')
+                          if option.get('selected') is not None]
+            if select.get('multiple') is not None:
+                params[select.get('name')] = selections
+            elif selections:
+                params[select.get('name')] = selections[0]
+    for textarea in form.cssselect('textarea'):
+        if textarea.get('disabled') is None:
+            params[textarea.get('name')] = textarea.text or ''
+    return params
 
 s = Session()

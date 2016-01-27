@@ -128,14 +128,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    Avertisment: această înregistrare va expira în mai "
-"puțin de %(expiration_days)s (de) zile.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -150,12 +153,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s (de) înregistrări selectate\n"
-"          "
 
 #, python-format
 msgid ""
@@ -172,12 +180,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Înregistrări similare cu: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -278,16 +297,6 @@ msgstr ""
 "      contactați sursa originală a acesteia.\n"
 "      Puteți vedea înregistrarea originală la\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Niciun rezultat găsit pentru: %(query)s\n"
 "    "
 
 #, python-format
@@ -579,9 +588,6 @@ msgstr "Peste aproximativ 6 luni (180 de zile)"
 msgid "About Google Person Finder"
 msgstr "Despre Google Person Finder"
 
-msgid "About you (required)"
-msgstr "Despre dvs. (obligatoriu)"
-
 msgid "Administration"
 msgstr "Administrare"
 
@@ -656,6 +662,11 @@ msgstr "Anulați"
 msgid "City"
 msgstr "Oraș"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Dați clic aici pentru a afișa rezultatele."
 
@@ -679,9 +690,6 @@ msgstr "Creați o înregistrare nouă"
 msgid "Create a new record for"
 msgstr "Creați o înregistrare nouă pentru"
 
-msgid "Create a new record for a missing person"
-msgstr "Creați o înregistrare nouă pentru o persoană dispărută"
-
 msgid "Crisis events"
 msgstr "Situații de urgență"
 
@@ -702,9 +710,6 @@ msgstr "Ștergeți această înregistrare"
 
 msgid "Describe how to identify this person."
 msgstr "Descrieți cum poate fi identificată această persoană."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Descrieți caracteristicile fizice ale acestei persoane."
 
 msgid "Description"
 msgstr "Descriere"
@@ -766,11 +771,16 @@ msgid "Expiry date of this record"
 msgstr "Data de expirare a acestei înregistrări"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Extindeți data de expirare cu %(extension_days)s (de) zile"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Nume de familie"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed de actualizări despre această persoană"
@@ -793,6 +803,9 @@ msgstr "Nume complet"
 
 msgid "Given name"
 msgstr "Prenume"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -828,6 +841,9 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Modalitatea prin care puteți fi contactat(ă) de către alți oameni care "
 "sunt interesați de această persoană"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Caut informații"
@@ -970,9 +986,6 @@ msgstr ""
 msgid "Name"
 msgstr "Nume"
 
-msgid "Name (required)"
-msgstr "Nume (obligatoriu)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Introducerea unui nume este obligatorie. Reveniți la pasul anterior și "
@@ -997,6 +1010,9 @@ msgstr "Nu există nicio notă cu ID-ul: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Nu au fost postate note"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1080,6 +1096,9 @@ msgstr "Număr de telefon"
 msgid "Photo"
 msgstr "Fotografie"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1089,6 +1108,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Caracteristici fizice"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1230,23 +1254,33 @@ msgstr "Cineva a semnalat dispariția acestei persoane"
 msgid "Someone is seeking information about this person"
 msgstr "Cineva caută informații despre această persoană"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Sursa acestei înregistrări"
-
-msgid "Source of this record (required)"
-msgstr "Sursa acestei înregistrări (obligatoriu)"
 
 msgid "Status"
 msgstr "Stare"
 
-msgid "Status of this person"
-msgstr "Starea acestei persoane"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Nume stradă"
 
 msgid "Street name only, no number"
 msgstr "Nume stradă, fără număr"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abonați-vă"
@@ -1263,9 +1297,6 @@ msgstr "Comutați la adresă"
 
 msgid "Switch to lat/long"
 msgstr "Comutați la latitudine/longitudine"
-
-msgid "Tell us the status of this person"
-msgstr "Spuneți-ne care este starea acestei persoane"
 
 msgid "Terms of Service"
 msgstr "Termeni și condiții"
@@ -1383,6 +1414,9 @@ msgstr "Această persoană a intrat în contact cu cineva"
 msgid "This person has posted a message"
 msgstr "Această persoană a postat un mesaj"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Intrarea acestei persoane nu există sau a fost ștearsă."
 
@@ -1459,6 +1493,9 @@ msgstr "Încărcați înregistrările persoanei în format CSV"
 msgid "Upload your CSV file below"
 msgstr "Încărcați fișierul CSV mai jos"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "Afișați înregistrarea"
 
@@ -1473,9 +1510,6 @@ msgstr "Când ar trebui să dispară această înregistrare?"
 
 msgid "Where did this information come from?"
 msgstr "De unde provin aceste informații?"
-
-msgid "Where is this person from?"
-msgstr "De unde este această persoană?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1579,8 +1613,8 @@ msgstr "Adresa dvs. de e-mail:"
 msgid "Your email"
 msgstr "Adresa dvs. de e-mail"
 
-msgid "Your name"
-msgstr "Numele dvs."
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1651,6 +1685,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Sunteți abonat(ă) la actualizări ale stării pentru "
 "%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "feminin"

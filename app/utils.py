@@ -362,12 +362,6 @@ def filter_sensitive_fields(records):
         if 'phone_of_found_person' in record:
             record['phone_of_found_person'] = ''
 
-def get_secret(name):
-    """Gets a secret from the datastore by name, or returns None if missing."""
-    secret = model.Secret.get_by_key_name(name)
-    if secret:
-        return secret.secret
-
 # The current time for testing as a datetime object, or None if using real time.
 _utcnow_for_test = None
 
@@ -502,15 +496,6 @@ def generate_random_key(length):
               '-_')
     rng = random.SystemRandom()
     return ''.join(rng.choice(source) for i in range(length))
-
-def get_secret_key(name='reveal', length=20):
-    """Gets the secret key for authorizing reveal operations etc."""
-    secret = model.Secret.get_by_key_name(name)
-    if not secret:
-        secret = model.Secret(key_name=name,
-                              secret=generate_random_key(length))
-        secret.put()
-    return secret.secret
 
 
 # ==== Decorators  ============================================================
@@ -881,6 +866,30 @@ class BaseHandler(webapp.RequestHandler):
         else:
             return False
 
+    def should_show_inline_photo(self, photo_url):
+        """Returns True if we should show the photo in our site directly with
+        <img> tag. In zero-rating mode, it returns True only if the photo is
+        served by our domain, to avoid loading resources in other domains in
+        Person Finder.
+
+        See "Zero-rating" section of the admin page
+        (app/resources/admin.html.template) for details of zero-rating mode.
+        """
+        if not photo_url:
+            return False
+        elif self.env.config.zero_rating_mode:
+            _, our_netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+            _, photo_netloc, _, _, _ = urlparse.urlsplit(photo_url)
+            return photo_netloc == our_netloc
+        else:
+            return True
+
+    def __return_unimplemented_method_error(self):
+        return self.error(
+            405,
+            'HTTP method %s is not allowed for this URL.'
+                % self.request.method)
+
     def __init__(self, request, response, env):
         webapp.RequestHandler.__init__(self, request, response)
         self.params = Struct()
@@ -940,7 +949,7 @@ class BaseHandler(webapp.RequestHandler):
 
         # Shows a custom error page here when the user is not an admin
         # instead of "login: admin" in app.yaml
-        # If we use it, user can't sign out 
+        # If we use it, user can't sign out
         # because the error page of "login: admin" doesn't have sign-out link.
         if self.admin_required:
             user = users.get_current_user()
@@ -977,3 +986,31 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
+
+    def get(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def post(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def put(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def head(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def options(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def delete(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()
+
+    def trace(self, *args):
+        """Default handler implementation which returns HTTP status 405."""
+        return self.__return_unimplemented_method_error()

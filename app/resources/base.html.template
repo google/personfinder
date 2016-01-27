@@ -39,7 +39,7 @@
   {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';
-      {% if config.translate_api_key %}
+      {% if env.enable_translate %}
         var translate_api_key = '{{config.translate_api_key}}';
       {% else %}
         var translate_api_key = null;
@@ -140,7 +140,7 @@
             {{env.target_attr|safe}}>{% trans "Developers" %}</a>
         <span class="link-separator">&#xb7;</span>
       {% endif %}
-      <a href="{{env.global_url}}/tos.html" {{env.target_attr|safe}}
+      <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
           >{% trans "Terms of Service" %}</a>
     {% endblock footer %}
   </div>

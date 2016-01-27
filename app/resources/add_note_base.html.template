@@ -104,20 +104,25 @@
         <div class="end-multi-columns"></div>
         {% if env.enable_javascript and env.maps_api_key %}
           <div class="field map-container">
-            <div id="clickable_map_show_link">
-              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-                {% trans "Show Map" %}</a>
-            </div>
-            <div id="clickable_map_hide_link" style="display: none">
-              <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-                {% trans "Hide Map" %}</a>
+            <div>
+              <span id="clickable_map_show_link">
+                <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                  {% trans "Show Map" %}</a>
+              </span>
+              <span id="clickable_map_hide_link" style="display: none">
+                <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                  {% trans "Hide Map" %}</a>
+                &nbsp;&nbsp;
+                <a href='#' id="switch_to_latlng_link"
+                    onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                  {% trans "Switch to lat/long" %}</a>
+                <a href='#' id="switch_to_address_link" style="display: none"
+                    onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                  {% trans "Switch to address" %}</a>
+              </span>
               &nbsp;&nbsp;
-              <a href='#' id="switch_to_latlng_link"
-                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-                {% trans "Switch to lat/long" %}</a>
-              <a href='#' id="switch_to_address_link" style="display: none"
-                  onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-                {% trans "Switch to address" %}</a>
+              <a href='#' onclick="getUserGeolocation('clickable_map'); return false;">
+                {% trans "Use current location" %}</a>
             </div>
             <div id="clickable_map" class="map" style="display: none"></div>
           </div>

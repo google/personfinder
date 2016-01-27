@@ -123,14 +123,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
+
+msgid ""
 "\n"
-"                    انتباہ: اس ریکارڈ کی میعاد %(expiration_days)s دنوں "
-"سے کم میں ختم ہوجائے گی۔\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -145,12 +148,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
 msgstr ""
-"\n"
-"            %(dup_count)s منتخب کردہ ریکارڈز\n"
-"          "
 
 #, python-format
 msgid ""
@@ -167,12 +175,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        اس سے ملتے جلتے ریکارڈز: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -273,16 +292,6 @@ msgstr ""
 "      براہ کرم کرم اصل ماخذ سے رابطہ کریں۔\n"
 "      آپ اصل ریکارڈ\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s پر دیکھ سکتے ہیں۔\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      کوئی نتائج نہیں ملے برائے: %(query)s\n"
 "    "
 
 #, python-format
@@ -561,9 +570,6 @@ msgstr "اب سے تقریباً 6 ماہ (180 دن)"
 msgid "About Google Person Finder"
 msgstr "‏Google Person Finder کے بارے میں"
 
-msgid "About you (required)"
-msgstr "آپ کے بارے میں (مطلوب)"
-
 msgid "Administration"
 msgstr "انتظامیہ"
 
@@ -635,6 +641,11 @@ msgstr "منسوخ کریں"
 msgid "City"
 msgstr "شہر"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "نتائج دیکھنے کیلئے یہاں کلک کریں۔"
 
@@ -656,9 +667,6 @@ msgstr "ایک نیا ریکارڈ بنائیں"
 msgid "Create a new record for"
 msgstr "ایک نیا ریکارڈ بنائیں برائے"
 
-msgid "Create a new record for a missing person"
-msgstr "گمشدہ شخص کیلئے ایک نیا ریکارڈ بنائیں"
-
 msgid "Crisis events"
 msgstr "بحرانی ایونٹس"
 
@@ -677,9 +685,6 @@ msgstr "یہ ریکارڈ حذف کریں"
 
 msgid "Describe how to identify this person."
 msgstr "اس شخص کی نشاندہی کرنے کا طریقہ بیان کریں۔"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "اس شخص کی جسمانی خصوصیات بتائیں۔"
 
 msgid "Description"
 msgstr "تفصیل"
@@ -739,11 +744,16 @@ msgid "Expiry date of this record"
 msgstr "اس ریکارڈ کی اختتامی تاریخ"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "اختتامی تاریخ میں %(extension_days)s دنوں کی توسیع کریں"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "خاندانی نام"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "اس شخص کے بارے میں اپ ڈیٹس کی فیڈ"
@@ -766,6 +776,9 @@ msgstr "پورا نام"
 
 msgid "Given name"
 msgstr "رکھا گیا نام"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -799,6 +812,9 @@ msgstr "اس شخص تک اب کس طرح پہنچا جاسکتا ہے؟"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "اس شخص میں دلچسپی لینے والے دوسرے افراد آپ سے کس طرح رابطہ کرسکتے ہیں"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "میں معلومات حاصل کر رہا ہوں"
@@ -938,9 +954,6 @@ msgstr ""
 msgid "Name"
 msgstr "نام"
 
-msgid "Name (required)"
-msgstr "نام (مطلوب)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "نام مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ کوشش کریں۔"
 
@@ -963,6 +976,9 @@ msgstr "‏اس ID والا کوئی نوٹ نہیں ہے: %(id_str)s۔"
 
 msgid "No notes have been posted"
 msgstr "کوئی نوٹس شائع نہیں کیے گئے ہیں"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1046,6 +1062,9 @@ msgstr "فون نمبر"
 msgid "Photo"
 msgstr "تصویر"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1055,6 +1074,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "طبعی خصوصیات"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1194,23 +1218,33 @@ msgstr "کسی نے اطلاع دی ہے کہ یہ شخص گمشدہ ہے"
 msgid "Someone is seeking information about this person"
 msgstr "کوئی اس شخص کے بارے میں معلومات تلاش کر رہا ہے"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "اس ریکارڈ کا ماخذ"
-
-msgid "Source of this record (required)"
-msgstr "اس معلومات کا ماخذ (مطلوب)"
 
 msgid "Status"
 msgstr "اسٹیٹس"
 
-msgid "Status of this person"
-msgstr "اس شخص کی صورتحال"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "گلی کا نام"
 
 msgid "Street name only, no number"
 msgstr "صرف گلی کا نام، نمبر نہیں"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "سبسکرائب کریں"
@@ -1227,9 +1261,6 @@ msgstr "پتہ پر سوئچ کریں"
 
 msgid "Switch to lat/long"
 msgstr "‏lat/long پر سوئچ کریں"
-
-msgid "Tell us the status of this person"
-msgstr "ہمیں اس شخص کی صورتحال بتائیں"
 
 msgid "Terms of Service"
 msgstr "خدمت کی شرائط"
@@ -1344,6 +1375,9 @@ msgstr "یہ شخص کسی کے رابطے میں رہا ہے"
 msgid "This person has posted a message"
 msgstr "اس شخص نے ایک پیغام شائع کیا ہے"
 
+msgid "This person's entry does not exist and has been deleted."
+msgstr ""
+
 msgid "This person's entry does not exist or has been deleted."
 msgstr "اس شخص کا اندراج موجود نہیں ہے یا حذف کردیا گیا ہے۔"
 
@@ -1419,6 +1453,9 @@ msgstr "‏فرد کے ریکارڈز کو CSV فارمیٹ میں اپ لوڈ �
 msgid "Upload your CSV file below"
 msgstr "‏ذیل میں اپنی CSV فائل اپ لوڈ کریں"
 
+msgid "Use current location"
+msgstr ""
+
 msgid "View the record"
 msgstr "ریکارڈ دیکھیں"
 
@@ -1433,9 +1470,6 @@ msgstr "یہ ریکارڈ کب غائب ہو جانا چاہیے؟"
 
 msgid "Where did this information come from?"
 msgstr "یہ اطلاع کہاں سے آئی؟"
-
-msgid "Where is this person from?"
-msgstr "اس شخص کا تعلق کہاں سے ہے؟"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1537,8 +1571,8 @@ msgstr "آپ کا ای میل پتہ:"
 msgid "Your email"
 msgstr "آپ کا ای میل"
 
-msgid "Your name"
-msgstr "آپ کا نام"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1606,6 +1640,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "‏[Person Finder] آپ %(full_name)s کیلئے صورتحال کی اپ ڈیٹس کیلئے سبسکرائب"
 " ہیں"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "خاتون"

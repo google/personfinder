@@ -35,6 +35,7 @@ import pfif
 import resources
 import utils
 import user_agents
+import setup_pf
 
 
 # When no action or repo is specified, redirect to this action.
@@ -73,6 +74,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/review',
   'css',
   'add_note',
+  'tos',
 ])
 
 # Exceptional cases where the module name doesn't match the URL.
@@ -231,12 +233,6 @@ def get_language_option(request, lang, is_selected):
         'is_selected': is_selected,
     }
 
-def get_secret(name):
-    """Gets a secret from the datastore by name, or returns None if missing."""
-    secret = model.Secret.get_by_key_name(name)
-    if secret:
-        return secret.secret
-
 def get_localized_message(localized_messages, lang, default):
     """Gets the localized message for lang from a dictionary that maps language
     codes to localized messages.  Falls back to English if language 'lang' is
@@ -268,14 +264,13 @@ def setup_env(request):
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 
-    # TODO(kpy): Make these global config settings and get rid of get_secret().
-    env.analytics_id = get_secret('analytics_id')
-    env.maps_api_key = get_secret('maps_api_key')
+    env.analytics_id = config.get('analytics_id')
+    env.maps_api_key = config.get('maps_api_key')
 
     # Internationalization-related stuff.
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
-    env.rtl = env.lang in django_setup.LANGUAGES_BIDI
+    env.rtl = env.lang in const.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
 
     # Used for parsing query params. This must be done before accessing any
@@ -396,6 +391,19 @@ def setup_env(request):
         # support UTF-8 but don't render UTF-8 symbols such as u'\xab'.
         env.back_chevron = u'<<'
 
+    env.enable_maps = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.maps_api_key)
+    env.enable_analytics = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.analytics_id)
+    env.enable_translate = (
+        env.enable_javascript
+        and not env.config.zero_rating_mode
+        and env.config.translate_api_key)
+
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
@@ -495,6 +503,21 @@ class Main(webapp.RequestHandler):
 
     def serve(self):
         request, response, env = self.request, self.response, self.env
+
+        # If the Person Finder instance has not been initialized yet,
+        # prepend to any served page a warning and a link to the admin
+        # page where the datastore can be initialized.
+        if not config.get('initialized'):
+            if request.get('operation') == 'setup_datastore':
+                setup_pf.setup_datastore()
+                self.redirect(env.global_url + '/')
+                return
+            else:
+                get_vars = lambda: {'env': env}
+                content = resources.get_rendered('setup_datastore.html', env.lang,
+                        (env.repo, env.charset), get_vars)
+                response.out.write(content)
+
         if not env.action and not env.repo:
             # Redirect to the default home page.
             self.redirect(env.global_url + '/' + HOME_ACTION)
