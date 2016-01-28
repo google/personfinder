@@ -169,6 +169,7 @@ class Handler(BaseHandler):
                     extension_days=extension_days,
                     expiration_days=expiration_days)
 
+    # Posts a note.
     def post(self):
         if not self.params.text:
             return self.error(

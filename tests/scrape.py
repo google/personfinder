@@ -359,6 +359,10 @@ class Session:
         anchor text, and follow it.  If 'context' is specified, a matching link
         is searched only inside the 'context' element, instead of the whole
         document.
+
+        e.g.:
+          self.s.follow('Click here')
+          self.s.follow(self.s.doc.cssselect_one('a.link'))
         """
         if isinstance(anchor, Region) or isinstance(context, Region):
             # TODO(ichikawa) Remove this after we stop using Region.
@@ -416,7 +420,12 @@ class Session:
         adding or replacing parameters in this dictionary according to the
         keyword arguments.  The 'url' argument overrides the form's action
         attribute and submits the form elsewhere.  After submission, follow
-        redirections up to 'redirects' times."""
+        redirections up to 'redirects' times.
+
+        e.g.:
+          self.s.submit(self.s.doc.cssselect_one('form'))
+          self.s.submit(self.s.doc.cssselect_one('input[type="submit"]'))
+        """
 
         if isinstance(elem, Region):  # for backward compatibility.
             form = elem if elem.tagname == 'form' else elem.enclosing('form')
@@ -425,8 +434,10 @@ class Session:
             form_params = form.params
         else:
             try:
-                form = elem if elem.tag == 'form' else (
-                        elem.iterancestors('form')[0])
+                if elem.tag == 'form':
+                    form = elem
+                else:
+                    form = elem.iterancestors('form').next()
             except IndexError:
                 raise ScrapeError('%r is not contained in a form' % elem)
             form_params = get_form_params(form)
@@ -1114,6 +1125,9 @@ class Document(Region):
         """Evaluate a CSS selector expression against the document, and returns a
         list of lxml.etree._Element instances.
 
+        e.g.,
+          self.s.doc.cssselect('.my-class-name')
+
         See http://lxml.de/api/lxml.etree._Element-class.html#cssselect for
         details.
 
@@ -1124,6 +1138,33 @@ class Document(Region):
           - charset is not RAW
         """
         return self.__get_etree_doc().cssselect(expr, **kwargs)
+
+    def cssselect_one(self, expr, **kwargs):
+        """Evaluate a CSS selector expression against the document, and returns a
+        single lxml.etree._Element instance.
+
+        Throws AssertionError if zero or multiple elements match the expression.
+
+        e.g.,
+          self.s.doc.cssselect_one('.my-class-name')
+
+        See http://lxml.de/api/lxml.etree._Element-class.html#cssselect for
+        details.
+
+        This method is available only if:
+          - the content-type is either text/html or text/xml
+          - charset is known (either from charset parameter of the constructor
+            or from the header)
+          - charset is not RAW
+        """
+        elems = self.cssselect(expr, **kwargs)
+        assert elems, (
+            'cssselect_one(%r) was called, but there are no matching elements.'
+                % expr)
+        assert len(elems) == 1, (
+            'cssselect_one(%r) was called, but there are multiple matching '
+            'elements: %r' % (expr, elems))
+        return elems[0]
 
     def xpath(self, path, **kwargs):
         """Evaluate an XPath expression against the document, and returns a

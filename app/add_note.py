@@ -42,12 +42,14 @@ class Handler(BaseHandler):
             return self.error(404, _('No person id was specified.'))
         try:
             person = Person.get(self.repo, self.params.id)
+        # TODO(ichikawa) Consider removing this "except" clause.
+        #     I don't think ValueError is thrown here.
         except ValueError:
             return self.error(404,
-                _("This person's entry does not exist and has been deleted."))
+                _("This person's entry does not exist or has been deleted."))
         if not person:
             return self.error(404,
-                _("This person's entry does not exist and has been deleted."))
+                _("This person's entry does not exist or has been deleted."))
         standalone = self.request.get('standalone')
 
         # Render the page.
