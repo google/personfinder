@@ -476,18 +476,18 @@ class ConfigTests(ServerTestsBase):
             author_name='_status_author_name'
         ))
         doc = self.go('/haiti/create?role=provide')
-        assert 'id="clickable_map"' not in doc.content
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
-        assert 'id="clickable_map"' not in doc.content
+        assert not doc.cssselect('#clickable_map')
+        doc = self.go('/haiti/add_note?id=test.google.com/person.1001')
+        assert not doc.cssselect('#clickable_map')
 
         config.set(maps_api_key='maps_api_key_xyz')
 
         doc = self.go('/haiti/create?role=provide')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'id="clickable_map"' in doc.content
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
+        assert doc.cssselect('#clickable_map')
+        doc = self.go('/haiti/add_note?id=test.google.com/person.1001')
         assert 'maps_api_key_xyz' in doc.content
-        assert 'id="clickable_map"' in doc.content
+        assert doc.cssselect('#clickable_map')
 
     def test_configuration_not_callable(self):
         """Checks that a Configuration instance is not callable.

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
+
 import reveal
 
 import model
@@ -60,6 +62,8 @@ class Handler(utils.BaseHandler):
         captcha_response = self.get_captcha_response()
         if self.env.test_mode or captcha_response.is_valid:
             disable_notes_url = get_disable_notes_url(self, person)
+            # To make debug with local dev_appserver easier.
+            logging.info('Disable notes URL: %s' % disable_notes_url)
             utils.send_confirmation_email_to_record_author(self,
                                                            person,
                                                            "disable",
