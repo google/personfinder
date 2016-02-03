@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -125,17 +125,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Uwaga: wpis wygaśnie za mniej niż %(expiration_days)s"
+" dni.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Uwaga: wpis wygaśnie za mniej niż dzień.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -151,6 +157,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s zawiera wyniki wyszukiwania pasujące do "
+"tego zapytania.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -172,6 +190,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Wyniki wyszukiwania dla: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -733,7 +761,7 @@ msgstr "Data wygaśnięcia tego wpisu"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -760,6 +788,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Imię i nazwisko"
+
+msgid "Get a visual challenge"
+msgstr "Pobierz podpowiedź wizualną"
 
 msgid "Given name"
 msgstr "Imię"
@@ -1402,6 +1433,9 @@ msgstr "Wpisz adres lub otwórz mapę poniżej i wskaż lokalizację, klikając 
 
 msgid "Type an address."
 msgstr "Wpisz adres."
+
+msgid "Type what you hear:"
+msgstr "Wpisz to, co usłyszysz:"
 
 msgid "URL"
 msgstr "URL"

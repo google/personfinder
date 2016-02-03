@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -129,17 +129,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    သတိေပးခ်က္: ဤမွတ္တမ္းသည္  သက္တမ္းကုန္ ဆံုးရန္ "
+"ရက္ေပါင္း %(expiration_days)s သာက်န္ပါေတာ့သည္။\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    သတိေပးခ်က္။ ဤမွတ္တမ္း၏ သက္တမ္းကုန္ဆံုးရန္ "
+"တစ္ရက္ေတာင္မက်န္ေတာ့ပါ။\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -155,6 +162,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s မှာ ဤမေးမြန်းခြင်းနှင့် "
+"ကိုက်ညီသောအဖြေ(များ)အား ရှာဖွေတွေ့ရှိပါသည်။\n"
+"        "
 
 #, python-format
 msgid ""
@@ -176,6 +195,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        \"%(query)s\" အတြက္ ရွာေဖြျခင္းရလဒ္မ်ား။\n"
+"      "
 
 #, python-format
 msgid ""
@@ -747,7 +776,7 @@ msgstr "ဤမွတ္တမ္း၏ သက္တမ္းကုန္ဆံ�
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -776,6 +805,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "နာမည္ အျပည့္အစံု။"
+
+msgid "Get a visual challenge"
+msgstr "႐ုပ္ပံု စိန္ေခၚမႈ( a visual challenge)ကို ရယူပါ။"
 
 msgid "Given name"
 msgstr "ပေးထားသော နာမည်။"
@@ -1496,6 +1528,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "လိပ်စာတစ်ခုအား ရိုက်ထည့်ပါ။"
+
+msgid "Type what you hear:"
+msgstr "သင် ဘာကြားထားရသလဲဆိုတာ ရိုက်ထည့်ပါ။"
 
 msgid "URL"
 msgstr "URL"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -121,17 +121,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    ຄໍາເຕືອນ: ການບັນທຶກນີ້ຈະໝົດອາຍຸໃນເວລາໜ້ອຍກວ່າ "
+"%(expiration_days)s ມື້.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    ຄໍາເຕືອນ: ການບັນທຶກນີ້ຈະໝົດອາຍຸໃນເວລາໜ້ອຍກວ່າ 1 ມື້.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -147,6 +153,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s "
+"ມີ​ຜົນ​ການ​ຊອກ​ຫາ​ທີ່​ກົງ​ກັບ​ຄຳ​ຊອກ​ຫາ​ນີ້.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -168,6 +186,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        ຜົນການຊອກຫາສຳລັບ: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -711,7 +739,7 @@ msgstr "ມື້ໝົດອາຍຸຂອງບັນທຶກນີ້"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -736,6 +764,9 @@ msgstr "ສຳລັບໂທລະສັບອື່ນໆນອກເໜືອ
 
 msgid "Full name"
 msgstr "ຊື່ເຕັມ"
+
+msgid "Get a visual challenge"
+msgstr "ຮັບສິ່ງທ້າທາຍທາງສາຍຕາ"
 
 msgid "Given name"
 msgstr "ຊື່"
@@ -1369,6 +1400,9 @@ msgstr "ພິມທີ່ຢູ່ ຫຼື ເປີດແຜນທີ່ທ�
 
 msgid "Type an address."
 msgstr "ພິມທີ່ຢູ່."
+
+msgid "Type what you hear:"
+msgstr "ພິມສິ່ງທີ່ທ່ານໄດ້ຍິນ:"
 
 msgid "URL"
 msgstr "URL"

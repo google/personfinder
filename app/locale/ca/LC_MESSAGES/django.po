@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -124,17 +124,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Advertiment: aquest registre caducarà en menys de "
+"%(expiration_days)s dies.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Advertiment: aquest registre caducarà en menys d'un "
+"dia.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -150,6 +157,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s ha trobat resultats de la cerca que "
+"coincideixen amb aquesta consulta.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -171,6 +190,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Resultats de la cerca per a: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -725,7 +754,7 @@ msgstr "Data de caducitat d'aquest registre"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -752,6 +781,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Nom complet"
+
+msgid "Get a visual challenge"
+msgstr "Aconseguiu un repte visual"
 
 msgid "Given name"
 msgstr "Nom de pila"
@@ -1409,6 +1441,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Escriviu una adreça."
+
+msgid "Type what you hear:"
+msgstr "Escriviu el que sentiu:"
 
 msgid "URL"
 msgstr "URL"

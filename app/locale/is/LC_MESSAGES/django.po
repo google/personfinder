@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -128,17 +128,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Viðvörun: Þessi færsla rennur út innan "
+"%(expiration_days)s daga.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Viðvörun: Þessi færsla rennur út innan sólarhrings.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -154,6 +160,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s fann niðurstöðu(r) sem samsvara þessari "
+"fyrirspurn.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -175,6 +193,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Leitarniðurstöður fyrir: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -731,7 +759,7 @@ msgstr "Fyrningardagsetning þessarar færslu"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -758,6 +786,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Fullt nafn"
+
+msgid "Get a visual challenge"
+msgstr "Fá myndrænt próf"
 
 msgid "Given name"
 msgstr "Eiginnafn"
@@ -1413,6 +1444,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Sláðu inn heimilisfang."
+
+msgid "Type what you hear:"
+msgstr "Sláðu inn það sem þú heyrir:"
 
 msgid "URL"
 msgstr "Vefslóð"

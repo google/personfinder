@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -131,17 +131,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Obs! Den här posten gallras ut om mindre än "
+"%(expiration_days)s dagar.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Obs! Den här posten gallras ut om mindre än ett dygn."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -157,6 +164,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          Det finns sökresultat på %(search_engine_name)s som matchar den"
+" här sökfrågan.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -178,6 +197,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Sökresultat för %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -735,7 +764,7 @@ msgstr "Utgångsdatum för den här posten"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -760,6 +789,9 @@ msgstr "För andra telefoner än mobiltelefoner använder du 171-tjänsten från
 
 msgid "Full name"
 msgstr "Fullständigt namn"
+
+msgid "Get a visual challenge"
+msgstr "Få en visuell utmaning"
 
 msgid "Given name"
 msgstr "Förnamn"
@@ -1407,6 +1439,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Skriv en adress."
+
+msgid "Type what you hear:"
+msgstr "Skriv det du hör:"
 
 msgid "URL"
 msgstr "Webbadress"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -79,19 +79,25 @@ msgid ""
 "\n"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"                      Warning: this record will expire in less than "
-"%(expiration_days)s days.\n"
-"                    "
-msgstr ""
-
 msgid ""
 "\n"
 "                      Warning: this record will expire in less than a "
 "day.\n"
 "                    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
 
 #, python-format
@@ -555,7 +561,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"

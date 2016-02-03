@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -121,17 +121,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Զգուշացում. այս գրառման ժամկետը կսպառվի ավելի քիչ, "
+"քան %(expiration_days)s օրից:\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Զգուշացում. այս գրառումը կսպառվի ավելի քիչ, քան մեկ "
+"օրվա ընթացքում:\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -147,6 +154,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s որոնման համակարգը պարունակում է այս "
+"հարցմանը համապատասխանող որոնման արդյունք(ներ):\n"
+"        "
 
 #, python-format
 msgid ""
@@ -168,6 +187,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Որոնման արդյունքներ «%(query)s» հարցման համար\n"
+"      "
 
 #, python-format
 msgid ""
@@ -709,7 +738,7 @@ msgstr "Այս գրառման սպառման ժամկետը"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -736,6 +765,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Լրիվ անունը"
+
+msgid "Get a visual challenge"
+msgstr "Ստանալ պատկեր"
 
 msgid "Given name"
 msgstr "Անունը"
@@ -1380,6 +1412,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Մուտքագրեք հասցե:"
+
+msgid "Type what you hear:"
+msgstr "Մուտքագրեք այն, ինչ լսում եք՝"
 
 msgid "URL"
 msgstr "URL"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -125,17 +125,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Įspėjimas: šio įrašo galiojimo laikas baigsis po "
+"mažiau nei %(expiration_days)s d.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Įspėjimas: šio įrašo galiojimo laikas baigsis po "
+"mažiau nei dienos.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -151,6 +158,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          „%(search_engine_name)s“ yra šią užklausą atitinkantis (-ių) "
+"paieškos rezultatas (-ų).\n"
+"        "
 
 #, python-format
 msgid ""
@@ -172,6 +191,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Paieškos rezultatai pagal: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -724,7 +753,7 @@ msgstr "Šio įrašo galiojimo pabaigos data"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -749,6 +778,9 @@ msgstr "Jei naudojate ne mobilųjį telefoną, naudokite 171 paslaugą, pateikt�
 
 msgid "Full name"
 msgstr "Vardas ir pavardė"
+
+msgid "Get a visual challenge"
+msgstr "Gauti vaizdinę užduotį"
 
 msgid "Given name"
 msgstr "Suteiktas vardas"
@@ -1404,6 +1436,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Įveskite adresą."
+
+msgid "Type what you hear:"
+msgstr "Įveskite girdimą žodį:"
 
 msgid "URL"
 msgstr "URL"

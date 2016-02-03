@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -126,17 +126,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    எச்சரிக்கை: இந்தப் பதிவு %(expiration_days)s "
+"நாட்களுக்குள் காலாவதியாகிவிடும்.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    எச்சரிக்கை: இந்தப் பதிவு ஒரு நாளுக்குள் "
+"காலாவதியாகிவிடும்.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -152,6 +159,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          இந்த வினவலுடன் பொருந்துகின்ற தேடல் முடிவுகள் "
+"%(search_engine_name)s இல் உள்ளன.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -173,6 +192,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        இதற்கான தேடல் முடிவுகள்: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -734,7 +763,7 @@ msgstr "இந்தப் பதிவு காலாவதியாகும�
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -759,6 +788,9 @@ msgstr "மொபைல் அல்லாத தொலைபேசிகளு�
 
 msgid "Full name"
 msgstr "முழுப் பெயர்"
+
+msgid "Get a visual challenge"
+msgstr "விஷுவல் சவாலைப் பெறுக"
 
 msgid "Given name"
 msgstr "முதல் பெயர்"
@@ -1424,6 +1456,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "முகவரியைத் தட்டச்சு செய்யவும்."
+
+msgid "Type what you hear:"
+msgstr "நீங்கள் கேட்பதைத் தட்டச்சு செய்யவும்:"
 
 msgid "URL"
 msgstr "URL"

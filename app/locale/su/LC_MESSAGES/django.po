@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -125,17 +125,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Perhatosan: rékaman ieu bakal kadaluarsa dina waktos "
+"kirang ti %(expiration_days)s dinten.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Perhatosan: rékaman ieu bakal kadaluarsa dina waktos "
+"kirang ti sadinten.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -151,6 +158,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s ngagaduhan hasil pamilarian pikeun hal "
+"ieu.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -172,6 +191,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Milari Rékaman kanggo: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -716,7 +745,7 @@ msgstr "Tanggal kadaluarsa rékaman ieu"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -743,6 +772,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Nami lengkep"
+
+msgid "Get a visual challenge"
+msgstr "Kéngingkeun tantangan visual"
 
 msgid "Given name"
 msgstr "Nami anu dipasihkeun"
@@ -1401,6 +1433,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Ketik alamat."
+
+msgid "Type what you hear:"
+msgstr "Ketik naon anu anjeun dangukeun:"
 
 msgid "URL"
 msgstr "URL"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -127,17 +127,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    ಎಚ್ಚರಿಕೆ: ಈ ರೆಕಾರ್ಡ್ %(expiration_days)s ದಿನಗಳಿಗಿಂತಲೂ"
+" ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ ಅಂತ್ಯಗೊಳ್ಳಲಿದೆ.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    ಎಚ್ಚರಿಕೆ: ಈ ರೆಕಾರ್ಡ್ ಒಂದು ದಿನದೊಳಗೆ ಅಂತ್ಯಗೊಳ್ಳಲಿದೆ.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -153,6 +159,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          ಈ ಪ್ರಶ್ನೆಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಹುಡುಕಾಟ ಫಲಿತಾಂಶ(ಗಳನ್ನು) "
+"%(search_engine_name)s ಹೊಂದಿದೆ.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -174,6 +192,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        ಇದಕ್ಕಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -728,7 +756,7 @@ msgstr "ಈ ರೆಕಾರ್ಡ್‌ನ ಮುಕ್ತಾಯದ ದಿನಾ
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -755,6 +783,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "ಪೂರ್ಣ ಹೆಸರು"
+
+msgid "Get a visual challenge"
+msgstr "ದೃಶ್ಯ ಸವಾಲನ್ನು ಪಡೆಯಿರಿ"
 
 msgid "Given name"
 msgstr "ಹೆಸರು"
@@ -1412,6 +1443,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ."
+
+msgid "Type what you hear:"
+msgstr "ನೀವು ಆಲಿಸುವುದನ್ನು ಟೈಪ್ ಮಾಡಿ:"
 
 msgid "URL"
 msgstr "URL"

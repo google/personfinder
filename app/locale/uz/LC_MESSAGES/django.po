@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -124,17 +124,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Diqqat: ushbu yozuv muddati tugashiga "
+"%(expiration_days)s kundan oz vaqt qoldi.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Diqqat: ushbu yozuv muddati bir kundan so‘ng tugaydi."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -150,6 +157,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s so‘rovingiz bo‘yicha quyidagi "
+"natija(lar)ni topdi.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -171,6 +190,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        %(query)s so‘rovi natijalari:\n"
+"      "
 
 #, python-format
 msgid ""
@@ -724,7 +753,7 @@ msgstr "Ushbu yozuv muddati"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -751,6 +780,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "To‘liq ism-sharifi"
+
+msgid "Get a visual challenge"
+msgstr "Vizual chaqiruv olish"
 
 msgid "Given name"
 msgstr "Ismi"
@@ -1407,6 +1439,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Manzilni kiriting."
+
+msgid "Type what you hear:"
+msgstr "Eshitganingizni yozing:"
 
 msgid "URL"
 msgstr "URL"

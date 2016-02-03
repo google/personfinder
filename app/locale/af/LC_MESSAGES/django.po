@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -123,17 +123,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Let wel: hierdie rekord sal oor minder as "
+"%(expiration_days)s dae verval.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Let wel: hierdie rekord sal oor minder as 'n dag "
+"verval.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -149,6 +156,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s het soekresultaat(e) wat by hierdie "
+"navraag pas.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -170,6 +189,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Soekresultate vir: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -714,7 +743,7 @@ msgstr "Vervaldatum van hierdie rekord"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -739,6 +768,9 @@ msgstr "Vir fone benewens selfone, gebruik die 171-diens van NTT."
 
 msgid "Full name"
 msgstr "Volle naam"
+
+msgid "Get a visual challenge"
+msgstr "Kry 'n visuele uitdaging"
 
 msgid "Given name"
 msgstr "Voornaam"
@@ -1380,6 +1412,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Tik 'n adres."
+
+msgid "Type what you hear:"
+msgstr "Tik wat jy hoor:"
 
 msgid "URL"
 msgstr "URL"

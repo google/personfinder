@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -111,17 +111,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    चेतावनी: यस रेकर्डको म्याद %(expiration_days)s दिन "
+"भन्दा कममा समाप्त हुने छ।\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    चेतावनी: यस रेकर्डको एक दिन भन्दा कम समयमा म्याद "
+"समाप्त हुँदै छ।\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -137,6 +144,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s सँग यस क्वेरीसँग मिल्दा खोज परिणाम(हरू) "
+"छन्।\n"
+"        "
 
 #, python-format
 msgid ""
@@ -158,6 +177,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        %(query)sका लागि खोज परिणामहरू\n"
+"      "
 
 #, python-format
 msgid ""
@@ -685,7 +714,7 @@ msgstr "यस रेकर्डको म्याद समाप्ति �
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -712,6 +741,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "पूरा नाम"
+
+msgid "Get a visual challenge"
+msgstr "एउटा नयाँ दृश्य चुनौती प्राप्त गर्नुहोस्"
 
 msgid "Given name"
 msgstr "पहिलो नाम"
@@ -927,7 +959,7 @@ msgid "No person with ID: %(id_str)s."
 msgstr "यस ID %(id_str)s का साथ कुनै पनि व्यक्ति छैन।"
 
 msgid "No such Authorization entity."
-msgstr "यस्तो कुनै प्रमाणिकरण वस्तु छैन।"
+msgstr "यस्तो कुनै प्रमाणीकरण वस्तु छैन।"
 
 msgid ""
 "Not authorized to post notes with the status \"I have received "
@@ -1373,6 +1405,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "एउटा ठेगाना टाइप गर्नुहोस्।"
+
+msgid "Type what you hear:"
+msgstr "तपाई जे सुन्नुहुन्छ टाइप गर्नुहोस्:"
 
 msgid "URL"
 msgstr "URL"

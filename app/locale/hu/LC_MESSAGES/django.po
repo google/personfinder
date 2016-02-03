@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -125,17 +125,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Figyelem: ez a bejegyzés kevesebb mint "
+"%(expiration_days)s napon belül lejár.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Figyelem: ez a bejegyzés kevesebb mint egy napon "
+"belül lejár.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -151,6 +158,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          A(z) %(search_engine_name)s rendszerében van a keresésnek "
+"megfelelő találat.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -172,6 +191,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Találatok erre: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -727,7 +756,7 @@ msgstr "A bejegyzés lejáratának dátuma"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -754,6 +783,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Teljes név"
+
+msgid "Get a visual challenge"
+msgstr "Vizuális kihívás teljesítése"
 
 msgid "Given name"
 msgstr "Utónév"
@@ -1415,6 +1447,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Írja be a címet."
+
+msgid "Type what you hear:"
+msgstr "Írja be, amit hall:"
 
 msgid "URL"
 msgstr "URL"

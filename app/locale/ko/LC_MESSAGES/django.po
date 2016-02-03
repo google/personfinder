@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -121,17 +121,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"경고: 이 신상기록은 %(expiration_days)s일 이내에 만료됩니다."
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"경고: 이 신상기록은 24시간 이내에 만료됩니다."
 
 #, python-format
 msgid ""
@@ -147,6 +150,17 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s에 이 검색어와 일치하는 검색결과가 있습니다.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -168,6 +182,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        다음에 대한 검색결과: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -694,7 +718,7 @@ msgstr "이 신상기록의 만료일"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -719,6 +743,9 @@ msgstr "휴대전화가 아닌 일반 전화의 경우 NTT가 제공하는 171 �
 
 msgid "Full name"
 msgstr "전체 이름"
+
+msgid "Get a visual challenge"
+msgstr "화면으로 문제 받기"
 
 msgid "Given name"
 msgstr "이름"
@@ -1328,6 +1355,9 @@ msgstr "직접 주소를 입력하거나 아래에서 지도를 열고 클릭하
 
 msgid "Type an address."
 msgstr "주소를 입력하세요."
+
+msgid "Type what you hear:"
+msgstr "들은 내용 입력:"
 
 msgid "URL"
 msgstr "URL"

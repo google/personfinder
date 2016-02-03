@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -113,17 +113,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    هشدار: این سابقه تا %(expiration_days)s روز دیگر "
+"منقضی می‌شود.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    هشدار: این سابقه تا یک روز دیگر منقضی می‌شود.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -139,6 +145,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s نتیجه(های) جستجوی مطابق با این درخواست "
+"دارد.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -160,6 +178,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        نتایج جستجو برای: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -653,7 +681,7 @@ msgstr "این شخص در سایر وب‌سایت‌ها دارای صفحه�
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
-msgstr "‏دانلود %(begin_link)sاین الگوی Excel%(end_link)s و افزودن ردیف‌ها به آن"
+msgstr "‏بارگیری %(begin_link)sاین الگوی Excel%(end_link)s و افزودن ردیف به آن"
 
 msgid "E-mail"
 msgstr "ایمیل"
@@ -694,7 +722,7 @@ msgstr "تاریخ انقضای این سابقه"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -721,6 +749,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "نام کامل"
+
+msgid "Get a visual challenge"
+msgstr "دریافت معمای دیداری"
 
 msgid "Given name"
 msgstr "نام"
@@ -1368,6 +1399,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "آدرسی تایپ کنید."
+
+msgid "Type what you hear:"
+msgstr "آنچه را که می‌شنوید تایپ کنید:"
 
 msgid "URL"
 msgstr "نشانی وب"

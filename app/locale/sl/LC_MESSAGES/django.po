@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -124,17 +124,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Opozorilo: ta zapis bo potekel prej kot v "
+"%(expiration_days)s dneh.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Opozorilo: ta zapis bo potekel prej kot v enem dnevu."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -150,6 +157,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          Rezultati iskanja v iskalniku %(search_engine_name)s se ujemajo"
+" s to poizvedbo.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -171,6 +190,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Rezultati iskanja za: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -722,7 +751,7 @@ msgstr "Datum poteka zapisa"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -747,6 +776,9 @@ msgstr "Za vse telefone, razen mobilnih, uporabite storitev 171 podjetja NTT."
 
 msgid "Full name"
 msgstr "Polno ime"
+
+msgid "Get a visual challenge"
+msgstr "Poiščite slikovni izziv"
 
 msgid "Given name"
 msgstr "Ime"
@@ -1393,6 +1425,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Vnesite naslov."
+
+msgid "Type what you hear:"
+msgstr "Vnesite, kar slišite:"
 
 msgid "URL"
 msgstr "URL"

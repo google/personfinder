@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -129,17 +129,25 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    ការ​រំលឹក​៖​: "
+"កំណត់​ត្រា​នេះ​នឹង​ផុត​កំណត់​ក្នុង​ពេល​តិច​ជាង %(expiration_days)s ថ្ងៃ​។"
+"\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    ការ​រំលឹក​៖​: "
+"កំណត់​ត្រា​នេះ​នឹង​ផុត​កំណត់​ក្នុង​ពេល​តិច​ជាង​មួយ​ថ្ងៃ​។\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -155,6 +163,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s "
+"មាន​លទ្ធផល​ស្វែង​រក​ត្រូវ​គ្នា​នឹង​សំណួរ​នេះ។\n"
+"        "
 
 #, python-format
 msgid ""
@@ -176,6 +196,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        លទ្ធផល​ស្វែង​រក​សម្រាប់​៖ %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -734,7 +764,7 @@ msgstr "កាល​បរិច្ឆេទ​ផុត​កំណត់​ន
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -761,6 +791,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "ឈ្មោះ​ពេញ"
+
+msgid "Get a visual challenge"
+msgstr "ទទួល​បាន​ការ​ប្រឈម​ដែល​មើល​ឃើញមួយ"
 
 msgid "Given name"
 msgstr "នាម​ខ្លួន"
@@ -1427,6 +1460,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "សូម​វាយ​អាសយដ្ឋាន​មួយ​។"
+
+msgid "Type what you hear:"
+msgstr "សូម​វាយ​អ្វី​ដែល​អ្នក​ស្តាប់​]ឮ៖"
 
 msgid "URL"
 msgstr "URL"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -119,17 +119,23 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    హెచ్చరిక: ఈ రికార్డ్‌కు గడువు ముగింపు తేదీ "
+"%(expiration_days)s రోజుల కంటే తక్కువగా ఉంది.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    హెచ్చరిక: ఈ రికార్డ్ గడువు ఒక రోజులో ముగుస్తుంది.\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -145,6 +151,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s ఈ ప్రశ్నకు సరిపోలే శోధన ఫలితం(లు) కలిగి "
+"ఉంది.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -166,6 +184,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        దీని కోసం శోధన ఫలితాలు: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -726,7 +754,7 @@ msgstr "ఈ రికార్డ్ యొక్క గడువు ముగ�
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -753,6 +781,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "పూర్తి పేరు"
+
+msgid "Get a visual challenge"
+msgstr "దృశ్యమాన సవాలును పొందండి"
 
 msgid "Given name"
 msgstr "పేరు"
@@ -1410,6 +1441,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "చిరునామాను టైప్ చేయండి."
+
+msgid "Type what you hear:"
+msgstr "మీరు విన్నదాన్ని టైప్ చేయండి:"
 
 msgid "URL"
 msgstr "URL"

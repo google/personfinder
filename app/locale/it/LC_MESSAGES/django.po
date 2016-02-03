@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.2.0\n"
 
 msgid ""
 "\n"
@@ -128,17 +128,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than "
+"                    Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                    "
+"                  "
 msgstr ""
+"\n"
+"                    Avviso. Questo record scadrà entro meno di "
+"%(expiration_days)s giorni.\n"
+"                  "
 
 msgid ""
 "\n"
-"                      Warning: this record will expire in less than a "
-"day.\n"
-"                    "
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
 msgstr ""
+"\n"
+"                    Avviso. Questo record scadrà entro meno di un giorno."
+"\n"
+"                  "
 
 #, python-format
 msgid ""
@@ -154,6 +161,18 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"        "
+msgstr ""
+"\n"
+"          %(search_engine_name)s presenta risultati di ricerca "
+"corrispondenti alla query.\n"
+"        "
 
 #, python-format
 msgid ""
@@ -175,6 +194,16 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        Search Results for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Risultati di ricerca per: %(query)s\n"
+"      "
 
 #, python-format
 msgid ""
@@ -735,7 +764,7 @@ msgstr "Data di scadenza di questo record"
 #, python-format
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
-"                  "
+"                "
 msgstr ""
 
 msgid "Family name"
@@ -762,6 +791,9 @@ msgstr ""
 
 msgid "Full name"
 msgstr "Nome e cognome"
+
+msgid "Get a visual challenge"
+msgstr "Fai una verifica visiva"
 
 msgid "Given name"
 msgstr "Nome"
@@ -1415,6 +1447,9 @@ msgstr ""
 
 msgid "Type an address."
 msgstr "Digita un indirizzo."
+
+msgid "Type what you hear:"
+msgstr "Digita ciò che senti:"
 
 msgid "URL"
 msgstr "URL"
