@@ -121,65 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    ຄໍາເຕືອນ: ການບັນທຶກນີ້ຈະໝົດອາຍຸໃນເວລາໜ້ອຍກວ່າ "
-"%(expiration_days)s ມື້.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    ຄໍາເຕືອນ: ການບັນທຶກນີ້ຈະໝົດອາຍຸໃນເວລາໜ້ອຍກວ່າ 1 ມື້.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s ການບັນທຶກຖືກຄັດເລືອກ\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s "
-"ມີ​ຜົນ​ການ​ຊອກ​ຫາ​ທີ່​ກົງ​ກັບ​ຄຳ​ຊອກ​ຫາ​ນີ້.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        ການບັນທຶກທີ່ຄ້າຍຄືກັບ: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        ຜົນການຊອກຫາສຳລັບ: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -269,16 +257,6 @@ msgstr ""
 "      ກະລຸນາຕິດຕໍ່ແຫຼ່ງທີ່ມາຕົ້ນສະບັບ.\n"
 "      ທ່ານສາມາດເບິ່ງການບັນທຶກຕົ້ນສະບັບໄດ້ທີ່\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      ບໍ່ພົບຜົນການຊອກຫາສຳລັບ: %(query)s\n"
 "    "
 
 #, python-format
@@ -556,9 +534,6 @@ msgstr "ປະມານ 6 ເດືອນ (180 ມື້) ຈາກຕອນນ�
 msgid "About Google Person Finder"
 msgstr "ກ່ຽວກັບ Google Person Finder"
 
-msgid "About you (required)"
-msgstr "ກ່ຽວກັບທ່ານ (ຈຳເປັນ)"
-
 msgid "Administration"
 msgstr "ຜູ່ເບິ່ງແຍງລະບົບ"
 
@@ -633,6 +608,11 @@ msgstr "ຍົກເລີກ"
 msgid "City"
 msgstr "ເມືອງ"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "ຄລິກທີ່ນີ້ເພື່ອເບິ່ງຜົນການຊອກຫາ."
 
@@ -654,9 +634,6 @@ msgstr "ສ້າງບັນທຶກໃໝ່"
 msgid "Create a new record for"
 msgstr "ສ້າງບັນທຶກໃໝ່ສຳລັບ"
 
-msgid "Create a new record for a missing person"
-msgstr "ສ້າງບັນທຶກໃໝ່ສຳລັບບຸກຄົນທີ່ສູນຫາຍ"
-
 msgid "Crisis events"
 msgstr "ເຫດການວິກິດ"
 
@@ -675,9 +652,6 @@ msgstr "ລຶບບັນທຶກນີ້"
 
 msgid "Describe how to identify this person."
 msgstr "ບັນຍາຍເຖິງວິທີການລະບຸບຸກຄົນນີ້."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "ບັນຍາຍລັກສະນະທາງກາຍະພາບຂອງບຸກຄົນນີ້."
 
 msgid "Description"
 msgstr "ຄຳອະທິບາຍ"
@@ -735,11 +709,16 @@ msgid "Expiry date of this record"
 msgstr "ມື້ໝົດອາຍຸຂອງບັນທຶກນີ້"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "ຂະຫຍາຍມື້ໝົດອາຍຸໄປ %(extension_days)s ມື້"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "ນາມສະກຸນ"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "ຟີດສຳລັບອັບເດດກ່ຽວກັບບຸກຄົນນີ້"
@@ -758,11 +737,11 @@ msgstr "ສຳລັບໂທລະສັບອື່ນໆນອກເໜືອ
 msgid "Full name"
 msgstr "ຊື່ເຕັມ"
 
-msgid "Get a visual challenge"
-msgstr "ຮັບສິ່ງທ້າທາຍທາງສາຍຕາ"
-
 msgid "Given name"
 msgstr "ຊື່"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -794,6 +773,9 @@ msgstr "ປັດຈຸບັນນີ້ຈະສາມາດຕິດຕໍ່
 
 msgid "How others who are interested in this person can contact you"
 msgstr "ຜູ່ອື່ນທີ່ສົນໃຈບຸກຄົນນີ້ຈະສາມາດຕິດຕໍ່ທ່ານໄດ້ແນວໃດ?"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "ຂ້ອຍກຳລັງຊອກຫາຂໍ້ມູນ"
@@ -929,9 +911,6 @@ msgstr ""
 msgid "Name"
 msgstr "ຊື່"
 
-msgid "Name (required)"
-msgstr "ຊື່ (ຈຳເປັນ)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "ຈຳເປັນຕ້ອງມີຊື່. ກະລຸນາກັບໄປ ແລະລອງໃໝ່ອີກຄັ້ງ."
 
@@ -954,6 +933,9 @@ msgstr "ບໍ່ມີໂນ໋ດທີ່ໃຊ້ໄອດີ: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "ບໍ່ມີການໂພສໂນ໋ດໃດໆ"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1037,6 +1019,9 @@ msgstr "ເບີໂທລະສັບ"
 msgid "Photo"
 msgstr "ຮູບ"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1044,6 +1029,11 @@ msgstr "ຮູບທີ່ອັບໂຫລດຂຶ້ນຢູ່ໃນຮູ
 
 msgid "Physical characteristics"
 msgstr "ຈຸດເດັ່ນທາງກາຍະພາບ"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1181,23 +1171,33 @@ msgstr "ມີໃຜບາງຄົນແຈ້ງວ່າບຸກຄົນນ
 msgid "Someone is seeking information about this person"
 msgstr "ມີໃຜບາງຄົນກຳລັງຊອກຫາຂໍ້ມູນກ່ຽວກັບບຸກຄົນນີ້ຢູ່"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "ແຫຼ່ງຂໍ້ມູນຂອງບັນທຶກນີ້"
-
-msgid "Source of this record (required)"
-msgstr "ແຫຼ່ງຂໍ້ມູນຂອງບັນທຶກນີ້ (ຈຳເປັນ)"
 
 msgid "Status"
 msgstr "ສະຖານະ"
 
-msgid "Status of this person"
-msgstr "ສະຖານະຂອງບຸກຄົນນີ້"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "ຊື່ຖະຫນົນ"
 
 msgid "Street name only, no number"
 msgstr "ຊື່ຖະຫນົນເທົ່ານັ້ນ, ຫ້າມເປັນໂຕເລກ"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "ສະໝັກຮັບຂໍ້ມູນຂ່າວສານ"
@@ -1214,9 +1214,6 @@ msgstr "ສະລັບໄປຫາທີ່ຢູ່"
 
 msgid "Switch to lat/long"
 msgstr "ສະລັບໄປ ເສັ້ນຮຸ້ງ/ເສັ້ນແວງ"
-
-msgid "Tell us the status of this person"
-msgstr "ບອກພວກເຮົາກ່ຽວກັບສະຖານະຂອງບຸກຄົນນີ້"
 
 msgid "Terms of Service"
 msgstr "ເງື່ອນໄຂການໃຫ້ບໍລິການ"
@@ -1373,9 +1370,6 @@ msgstr "ພິມທີ່ຢູ່ ຫຼື ເປີດແຜນທີ່ທ�
 msgid "Type an address."
 msgstr "ພິມທີ່ຢູ່."
 
-msgid "Type what you hear:"
-msgstr "ພິມສິ່ງທີ່ທ່ານໄດ້ຍິນ:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1417,9 +1411,6 @@ msgstr "ທ່ານຕ້ອງການໃຫ້ບັນທຶກຂອງຂ
 
 msgid "Where did this information come from?"
 msgstr "ຂໍ້ມູນນີ້ມາຈາກໃສ?"
-
-msgid "Where is this person from?"
-msgstr "ບຸກຄົນນີ້ມາຈາກໃສ?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1523,8 +1514,8 @@ msgstr "ທີ່ຢູ່ອີເມວຂອງທ່ານ:"
 msgid "Your email"
 msgstr "ອີເມວຂອງທ່ານ"
 
-msgid "Your name"
-msgstr "ຊື່ຂອງທ່ານ"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1590,6 +1581,9 @@ msgstr "[Person Finder] ອັບເດດສະຖານະສຳລັບ %(fu
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] ທ່ານສະໝັກຮັບການອັບເດດສະຖານະສຳລັບ %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "ຍິງ"

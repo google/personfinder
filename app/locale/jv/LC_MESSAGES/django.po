@@ -123,66 +123,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Pepeling: laporan iki bakal kedaluwarsa ing kurang "
-"saka %(expiration_days)s dina.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Pepeling: laporan iki bakal kedaluwarsa ing kurang "
-"saka sadina.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s laporan sing dipilih\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s nggawe asil tlusuran sing cocog karo "
-"pitakonan iki.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Laporan sing padha karo: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Asil Tlusuran kanggo: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -271,16 +258,6 @@ msgstr ""
 "      Yen sampeyan pengin mbusak kanthi permanen, hubungi sumber asline. "
 "Sampeyan bisa ndeleng laporan asline ing %(begin_tag)s %(source_name)s "
 "%(end_tag)s .\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Ora ana asil kanggo: %(query)s\n"
 "    "
 
 #, python-format
@@ -549,9 +526,6 @@ msgstr "Kira-kira 6 sasi (180 dina) saka saiki"
 msgid "About Google Person Finder"
 msgstr "Babagan Google Person Finder"
 
-msgid "About you (required)"
-msgstr "Babagan sampeyan (wajib)"
-
 msgid "Administration"
 msgstr "Administrasi"
 
@@ -626,6 +600,11 @@ msgstr "Batalna"
 msgid "City"
 msgstr "Kutha"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Klik ing kene kanggo ndeleng asil."
 
@@ -649,9 +628,6 @@ msgstr "Gawe laporan anyar"
 msgid "Create a new record for"
 msgstr "Gawe laporan anyar kanggo"
 
-msgid "Create a new record for a missing person"
-msgstr "Gawe laporan anyar kanggo wong sing ora ana"
-
 msgid "Crisis events"
 msgstr "Acara penting"
 
@@ -670,9 +646,6 @@ msgstr "Busak laporan iki"
 
 msgid "Describe how to identify this person."
 msgstr "Gambarke cara ngenali wong iki."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Gambarke ciri-ciri fisik wong iki."
 
 msgid "Description"
 msgstr "Gambaran"
@@ -732,11 +705,16 @@ msgid "Expiry date of this record"
 msgstr "Tanggal kedaluwarsa laporan iki"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Tambah tanggal kedaluwarsa dening %(extension_days)s dina"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Jeneng kaluwarga"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed nganyari babagan wong iki"
@@ -757,11 +735,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Jeneng lengkap"
 
-msgid "Get a visual challenge"
-msgstr "Jaluk tantangan visual"
-
 msgid "Given name"
 msgstr "Jeneng timur"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -797,6 +775,9 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Piye carane manawa wong liya sing kesengsem karo wong iki bisa ngubungi "
 "sampeyan"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Aku lagi nggoleki informasi"
@@ -931,9 +912,6 @@ msgstr ""
 msgid "Name"
 msgstr "Jeneng"
 
-msgid "Name (required)"
-msgstr "Jeneng (wajib)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Jeneng wajib ditulis. Mangga mbalik banjur baleni maneh."
 
@@ -956,6 +934,9 @@ msgstr "Ora ana cathetan karo ID: %(id_str)s ."
 
 msgid "No notes have been posted"
 msgstr "Ora ana cathetan sing dikirim"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1041,6 +1022,9 @@ msgstr "Nomer telpon"
 msgid "Photo"
 msgstr "Foto"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1050,6 +1034,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Ciri-ciri fisik"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1189,23 +1178,33 @@ msgstr "Ana sing nglaporake manawa wong iki ilang"
 msgid "Someone is seeking information about this person"
 msgstr "Ana sing nggoleki informasi babagan wong iki"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Sumber laporan iki"
-
-msgid "Source of this record (required)"
-msgstr "Sumber laporan iki (wajib)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Status wong iki"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Jeneng dalan"
 
 msgid "Street name only, no number"
 msgstr "Mung jeneng dalan, ora perlu nomer"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Langganan:"
@@ -1222,9 +1221,6 @@ msgstr "Genti dadi alamat"
 
 msgid "Switch to lat/long"
 msgstr "Ganti dadi Buj/Lint"
-
-msgid "Tell us the status of this person"
-msgstr "Kandhani kita status wong iki"
 
 msgid "Terms of Service"
 msgstr "Katentuan Layanan"
@@ -1387,9 +1383,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Ketik alamat."
 
-msgid "Type what you hear:"
-msgstr "Ketik apa sing sampeyan rungokake:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1431,9 +1424,6 @@ msgstr "Kapan laporan iki bakal ilang?"
 
 msgid "Where did this information come from?"
 msgstr "Saka endi informasi iki?"
-
-msgid "Where is this person from?"
-msgstr "Saka endi wong iki?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1535,8 +1525,8 @@ msgstr "Alamat e-mail sampeyan:"
 msgid "Your email"
 msgstr "Email sampeyan"
 
-msgid "Your name"
-msgstr "Jeneng sampeyan"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1602,6 +1592,9 @@ msgstr "[Person Finder] Anyari status kanggo %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Sampeyan langganan karo anyari status kanggo %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "wadon"

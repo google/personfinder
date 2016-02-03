@@ -122,66 +122,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Upozorenje: taj će zapis isteći za manje od "
-"%(expiration_days)s dana.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Upozorenje: taj će zapis isteći za manje od jednog "
-"dana.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            Broj odabranih zapisa: %(dup_count)s\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          Tražilica %(search_engine_name)s ima jedan ili više rezultata "
-"pretraživanja koji odgovaraju tom upitu.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Zapisi slični sljedećem: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Rezultati pretraživanja za \"%(query)s\"\n"
-"      "
 
 #, python-format
 msgid ""
@@ -274,16 +261,6 @@ msgstr ""
 "      obratite se originalnom izvoru.\n"
 "      Izvorni zapis možete vidjeti na\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Nema rezultata za \"%(query)s\"\n"
 "    "
 
 #, python-format
@@ -559,9 +536,6 @@ msgstr "Oko 6 mjeseci (180 dana) od sada"
 msgid "About Google Person Finder"
 msgstr "O usluzi Google Person Finder"
 
-msgid "About you (required)"
-msgstr "O vama (obavezno)"
-
 msgid "Administration"
 msgstr "Administracija"
 
@@ -636,6 +610,11 @@ msgstr "Odustani"
 msgid "City"
 msgstr "Grad"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Kliknite ovdje za prikaz rezultata."
 
@@ -659,9 +638,6 @@ msgstr "Izradite novi zapis"
 msgid "Create a new record for"
 msgstr "Izradite novi zapis za"
 
-msgid "Create a new record for a missing person"
-msgstr "Izradite novi zapis za nestalu osobu"
-
 msgid "Crisis events"
 msgstr "Krizni događaji"
 
@@ -680,9 +656,6 @@ msgstr "Izbriši ovaj zapis"
 
 msgid "Describe how to identify this person."
 msgstr "Opišite kako se ta osoba može identificirati."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Opišite fizičke značajke te osobe."
 
 msgid "Description"
 msgstr "Opis"
@@ -742,11 +715,16 @@ msgid "Expiry date of this record"
 msgstr "Datum isteka ovog zapisa"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Produži datum isteka za ovoliko dana: %(extension_days)s"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Prezime"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed za ažuriranja o ovoj osobi"
@@ -765,11 +743,11 @@ msgstr "Za telefone koji nisu mobilni upotrijebite uslugu 171 tvrtke NTT."
 msgid "Full name"
 msgstr "Ime i prezime"
 
-msgid "Get a visual challenge"
-msgstr "Dohvati vizualni upit"
-
 msgid "Given name"
 msgstr "Ime"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -803,6 +781,9 @@ msgstr "Kako se sad može doći do te osobe?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kako vas ostali koje zanima ta osoba mogu kontaktirati"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Tražim informacije"
@@ -939,9 +920,6 @@ msgstr ""
 msgid "Name"
 msgstr "Ime"
 
-msgid "Name (required)"
-msgstr "Ime (obavezno)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Ime je obavezno. Vratite se i pokušajte ponovo."
 
@@ -964,6 +942,9 @@ msgstr "Nema bilješke s identifikacijskom oznakom: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Nije objavljena nijedna bilješka"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1047,6 +1028,9 @@ msgstr "Telefonski broj"
 msgid "Photo"
 msgstr "Fotografija"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1056,6 +1040,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Fizičke karakteristike"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1193,23 +1182,33 @@ msgstr "Netko je prijavio da je ta osoba nestala"
 msgid "Someone is seeking information about this person"
 msgstr "Netko traži informacije o ovoj osobi"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Izvor ovih zapisa"
-
-msgid "Source of this record (required)"
-msgstr "Izvor ovih zapisa (obavezno)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Status te osobe"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Ulica"
 
 msgid "Street name only, no number"
 msgstr "Samo ulica, bez kućnog broja"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Pretplata"
@@ -1226,9 +1225,6 @@ msgstr "Prijelaz na adresu"
 
 msgid "Switch to lat/long"
 msgstr "Prijelaz na zemljopisnu širinu/dužinu"
-
-msgid "Tell us the status of this person"
-msgstr "Javite nam status te osobe"
 
 msgid "Terms of Service"
 msgstr "Uvjeti pružanja usluge"
@@ -1389,9 +1385,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Upišite adresu."
 
-msgid "Type what you hear:"
-msgstr "Upišite što čujete:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1433,9 +1426,6 @@ msgstr "Kad bi trebao nestati ovaj zapis?"
 
 msgid "Where did this information come from?"
 msgstr "Odakle je ta informacija?"
-
-msgid "Where is this person from?"
-msgstr "Odakle je ta osoba?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1537,8 +1527,8 @@ msgstr "Vaša e-adresa:"
 msgid "Your email"
 msgstr "Vaša e-pošta"
 
-msgid "Your name"
-msgstr "Vaše ime"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1603,6 +1593,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Pretplaćeni ste na ažuriranje statusa o osobi "
 "%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "žensko"

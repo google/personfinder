@@ -142,20 +142,22 @@ class PersonNoteTests(ServerTestsBase):
     def verify_note_form(self):
         """Verifies the behavior of the add note form.
 
-        Precondition: the current session is on a page with a note form.
+        Precondition: the current session is on a page with a note form
+            e.g., "create", "add_note" page.
         Postcondition: the current session is still on a page with a note form.
         """
 
-        note_form = self.s.doc.cssselect('form')[0]
-        assert 'Tell us the status of this person' in get_all_text(note_form)
+        note_form = self.s.doc.cssselect_one('form')
+        assert note_form.cssselect('select[name="status"]')
+        assert note_form.cssselect('textarea[name="text"]')
         self.assert_error_deadend(
             self.s.submit(note_form), 'required', 'try again')
 
-    def verify_details_page(self, num_notes, details=None):
+    def verify_details_page(self, num_notes=None, full_name=None, details=None):
         """Verifies the content of the details page.
 
-        Verifies that the details contain the given number of notes and the
-        given details.
+        Verifies that the details contain the given number of notes, given full
+        name and the given details.
 
         Precondition: the current session is on the details page
         Postcondition: the current session is still on the details page
@@ -166,6 +168,10 @@ class PersonNoteTests(ServerTestsBase):
         details = details or {}
         details_page = self.s.doc
 
+        if full_name:
+            assert scrape.get_all_text(
+                details_page.cssselect_one('.full-name')) == full_name
+
         # Person info is stored in matching 'label' and 'value' cells.
         fields = dict(zip(
             [label.text.strip() for label in details_page.cssselect('.label')],
@@ -174,10 +180,12 @@ class PersonNoteTests(ServerTestsBase):
             assert scrape.get_all_text(fields[label]) == value, (
                 'value mismatch for the field named %s' % label)
 
-        actual_num_notes = len(
-            details_page.cssselect('.self-notes')[0].cssselect('.view.note'))
-        assert actual_num_notes == num_notes, (
-            'expected %s notes, instead was %s' % (num_notes, actual_num_notes))
+        if num_notes is not None:
+            actual_num_notes = len(details_page
+                .cssselect_one('.self-notes').cssselect('.view.note'))
+            assert actual_num_notes == num_notes, (
+                'expected %s notes, instead was %s'
+                    % (num_notes, actual_num_notes))
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
@@ -206,11 +214,16 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on the details page
         """
 
+        assert urlparse.urlparse(self.s.url).path.endswith('/view'), (
+            'Not currently at "view" page: %s' % self.s.url)
+
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
         num_initial_notes = len(details_page.cssselect('.self-notes .view.note'))
-        note_form = details_page.cssselect('form')[0]
+
+        add_note_page = self.go_to_add_note_page()
+        note_form = add_note_page.cssselect_one('form')
 
         # Advance the clock. The new note has a newer source_date by this.
         # This makes sure that the new note appears at the bottom of the view
@@ -264,6 +277,16 @@ class PersonNoteTests(ServerTestsBase):
             time.sleep(.1)
 
         self.assertEqual(message_count, len(self.mail_server.messages))
+
+    def go_to_add_note_page(self):
+        """Goes from the "view" page to the "add_note" page.
+
+        Precondition: the current session must be on the "view" page
+        Postcondition: the current session is on the "add_note" page
+        """
+        assert urlparse.urlparse(self.s.url).path.endswith('/view'), (
+            'Not currently at "view" page: %s' % self.s.url)
+        return self.s.submit(self.s.doc.cssselect_one('input.add-note'))
 
     def test_robots(self):
         """Check that <meta name="robots"> tags appear on the right pages."""
@@ -471,9 +494,10 @@ class PersonNoteTests(ServerTestsBase):
         # For now, the date of birth should be hidden.
         assert 'birth' not in self.s.content.lower()
 
-        self.verify_details_page(0, details={
-            'Full name:': '_test_given_name _test_family_name',
-            'Author\'s name:': '_test_author_name'})
+        self.verify_details_page(
+            num_notes=0,
+            full_name='_test_given_name _test_family_name',
+            details={'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
         self.s.submit(search_form, query='_test_given_name')
@@ -487,8 +511,12 @@ class PersonNoteTests(ServerTestsBase):
         person = Person.all().filter('given_name =', '_test_given_name').get()
         person.entry_date = datetime.datetime(2006, 6, 6, 6, 6, 6)
         db.put(person)
-        self.verify_details_page(0)
+        self.verify_details_page(num_notes=0)
+
+        self.go_to_add_note_page()
         self.verify_note_form()
+        self.s.back()
+
         self.verify_update_notes(
             False, '_test A note body', '_test A note author', None)
         # Advances the clock so that the new note is shown below the old notes.
@@ -564,28 +592,31 @@ class PersonNoteTests(ServerTestsBase):
                       expiry_option='foo',
                       description='_test_description')
 
-        self.verify_details_page(0, details={
-            'Full name:': '_test_given_name _test_family_name',
-            'Alternate names:': '_test_alternate_given_names _test_alternate_family_names',
-            'Sex:': 'female',
-            # 'Date of birth:': '1955',  # currently hidden
-            'Age:': '52',
-            'Street name:': '_test_home_street',
-            'Neighborhood:': '_test_home_neighborhood',
-            'City:': '_test_home_city',
-            'Province or state:': '_test_home_state',
-            'Postal or zip code:': '_test_home_postal_code',
-            'Home country:': '_test_home_country',
-            'Profile page 1:': 'Facebook',
-            'Profile page 2:': 'Twitter',
-            'Profile page 3:': 'www.foo.com',
-            'Author\'s name:': '_test_author_name',
-            'Author\'s phone number:': '(click to reveal)',
-            'Author\'s e-mail address:': '(click to reveal)',
-            'Original URL:': 'Link',
-            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
-            'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan 11, 2001, 12:00:05 AM UTC'})
+        self.verify_details_page(
+            num_notes=0,
+            full_name='_test_given_name _test_family_name',
+            details={
+                'Alternate names:':
+                    '_test_alternate_given_names _test_alternate_family_names',
+                'Sex:': 'female',
+                # 'Date of birth:': '1955',  # currently hidden
+                'Age:': '52',
+                'Street name:': '_test_home_street',
+                'Neighborhood:': '_test_home_neighborhood',
+                'City:': '_test_home_city',
+                'Province or state:': '_test_home_state',
+                'Postal or zip code:': '_test_home_postal_code',
+                'Home country:': '_test_home_country',
+                'Profile page 1:': 'Facebook',
+                'Profile page 2:': 'Twitter',
+                'Profile page 3:': 'www.foo.com',
+                'Author\'s name:': '_test_author_name',
+                'Author\'s phone number:': '(click to reveal)',
+                'Author\'s e-mail address:': '(click to reveal)',
+                'Original URL:': 'Link',
+                'Original posting date:': 'Jan 1, 2001 12:00:00 AM UTC',
+                'Original site name:': '_test_source_name',
+                'Expiry date of this record:': 'Jan 11, 2001 12:00:05 AM UTC'})
 
         # Check the icons and the links are there.
         assert 'facebook-16x16.png' in self.s.doc.content
@@ -621,9 +652,9 @@ class PersonNoteTests(ServerTestsBase):
         )])
 
         self.go('/japan/view?id=test.google.com/person.111&lang=en')
-        self.verify_details_page(1, {
-            'Original posting date:': 'Feb 3, 2001, 1:05:06 PM JST'
-        })
+        self.verify_details_page(
+            num_notes=1,
+            details={'Original posting date:': 'Feb 3, 2001 1:05:06 PM JST'})
         assert (
             'Posted by Fred on Feb 3, 2001, 4:08:09 PM JST' in self.s.doc.text)
 
@@ -650,9 +681,9 @@ class PersonNoteTests(ServerTestsBase):
         )])
 
         self.go('/haiti/view?id=test.google.com/person.111&lang=en')
-        self.verify_details_page(1, {
-            'Original posting date:': 'Feb 3, 2001, 4:05:06 AM UTC'
-        })
+        self.verify_details_page(
+            num_notes=1,
+            details={'Original posting date:': 'Feb 3, 2001 4:05:06 AM UTC'})
         assert (
             'Posted by Fred on Feb 3, 2001, 7:08:09 AM UTC' in self.s.doc.text)
         self.go('/haiti/multiview?id1=test.google.com/person.111'
@@ -834,9 +865,10 @@ class PersonNoteTests(ServerTestsBase):
                       author_name='_test_author_name',
                       text='_test A note body')
 
-        self.verify_details_page(1, details={
-            'Full name:': '_test_given_name _test_family_name',
-            'Author\'s name:': '_test_author_name'})
+        self.verify_details_page(
+            num_notes=1,
+            full_name='_test_given_name _test_family_name',
+            details={'Author\'s name:': '_test_author_name'})
 
         # Verify that UserActionLog entries are created for 'add' action.
         self.verify_user_action_log('add', 'Person', repo='haiti')
@@ -853,9 +885,12 @@ class PersonNoteTests(ServerTestsBase):
 
         # For now, the date of birth should be hidden.
         assert 'birth' not in self.s.content.lower()
-        self.verify_details_page(1)
+        self.verify_details_page(num_notes=1)
 
+        self.go_to_add_note_page()
         self.verify_note_form()
+        self.s.back()
+
         self.verify_update_notes(
             False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
@@ -898,26 +933,29 @@ class PersonNoteTests(ServerTestsBase):
                       text='_test A note body',
                       note_photo_url='_test_note_photo_url')
 
-        self.verify_details_page(1, details={
-            'Full name:': '_test_given_name _test_family_name',
-            'Alternate names:': '_test_alternate_given_names _test_alternate_family_names',
-            'Sex:': 'male',
-            # 'Date of birth:': '1970-01',  # currently hidden
-            'Age:': '30-40',
-            'Street name:': '_test_home_street',
-            'Neighborhood:': '_test_home_neighborhood',
-            'City:': '_test_home_city',
-            'Province or state:': '_test_home_state',
-            'Postal or zip code:': '_test_home_postal_code',
-            'Home country:': '_test_home_country',
-            'Profile page 1:': 'Facebook',
-            'Author\'s name:': '_test_author_name',
-            'Author\'s phone number:': '(click to reveal)',
-            'Author\'s e-mail address:': '(click to reveal)',
-            'Original URL:': 'Link',
-            'Original posting date:': 'Jan 1, 2001, 12:00:00 AM UTC',
-            'Original site name:': '_test_source_name',
-            'Expiry date of this record:': 'Jan 21, 2001, 12:00:02 AM UTC'})
+        self.verify_details_page(
+            num_notes=1,
+            full_name='_test_given_name _test_family_name',
+            details={
+                'Alternate names:':
+                    '_test_alternate_given_names _test_alternate_family_names',
+                'Sex:': 'male',
+                # 'Date of birth:': '1970-01',  # currently hidden
+                'Age:': '30-40',
+                'Street name:': '_test_home_street',
+                'Neighborhood:': '_test_home_neighborhood',
+                'City:': '_test_home_city',
+                'Province or state:': '_test_home_state',
+                'Postal or zip code:': '_test_home_postal_code',
+                'Home country:': '_test_home_country',
+                'Profile page 1:': 'Facebook',
+                'Author\'s name:': '_test_author_name',
+                'Author\'s phone number:': '(click to reveal)',
+                'Author\'s e-mail address:': '(click to reveal)',
+                'Original URL:': 'Link',
+                'Original posting date:': 'Jan 1, 2001 12:00:00 AM UTC',
+                'Original site name:': '_test_source_name',
+                'Expiry date of this record:': 'Jan 21, 2001 12:00:02 AM UTC'})
 
         # Check that UserActionLog entries were created.
         self.verify_user_action_log('add', 'Person', repo='haiti')
@@ -1146,12 +1184,14 @@ http://www.foo.com/_account_1''',
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go('/haiti/results?role=seek&query=_test_last_name')
-        assert 'Provided by: mytestdomain.com' in doc.content
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
+            'mytestdomain.com')
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go('/haiti/view?lang=en&id=mytestdomain.com/person.21009')
-        assert 'Provided by: mytestdomain.com' in doc.content
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
+            'mytestdomain.com')
         assert '_test_last_name' in doc.content
 
     def test_referer(self):
@@ -1194,9 +1234,9 @@ http://www.foo.com/_account_1''',
                       text='_test A note body')
 
         netloc = urlparse.urlparse(self.s.url).netloc
-        self.verify_details_page(1, details={
-            'Original site name:': '%s (referred by a.org)' % netloc
-            })
+        self.verify_details_page(
+            num_notes=1,
+            details={'Original site name:': '%s (referred by a.org)' % netloc})
 
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
@@ -1207,14 +1247,16 @@ http://www.foo.com/_account_1''',
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
             '/haiti/results?role=seek&query=_test_last_name')
-        assert 'Provided by: globaltestdomain.com' in doc.content
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
+            'globaltestdomain.com')
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go(
             '/haiti/view?lang=en&id=globaltestdomain.com/person.21009'
             )
-        assert 'Provided by: globaltestdomain.com' in doc.content
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
+            'globaltestdomain.com')
         assert '_test_last_name' in doc.content
 
     def test_note_status(self):
@@ -1242,7 +1284,8 @@ http://www.foo.com/_account_1''',
         view_url = self.s.url
 
         # Check that the right status options appear on the view page.
-        doc = self.s.go(view_url)
+        self.s.go(view_url)
+        doc = self.go_to_add_note_page()
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
@@ -1311,7 +1354,8 @@ http://www.foo.com/_account_1''',
 
         # Check that the believed_dead option does not appear
         # on the view page.
-        doc = self.s.go(view_url)
+        self.s.go(view_url)
+        doc = self.go_to_add_note_page()
         note = doc.first(class_='fields-table note')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
@@ -1323,9 +1367,11 @@ http://www.foo.com/_account_1''',
         self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
-        form = doc.first('form')
-        self.s.submit(form, author_name='_test_author2', text='_test_text',
-                                    status='believed_alive')
+        self.s.submit(
+            self.s.doc.cssselect_one('form'),
+            author_name='_test_author2',
+            text='_test_text',
+            status='believed_alive')
         doc = self.s.go(view_url)
         note = doc.last(class_='view note')
         assert 'believed_alive' in note.content
@@ -1344,12 +1390,9 @@ http://www.foo.com/_account_1''',
         self.advance_utcnow(seconds=1)
 
         # Set status to believed_dead, but allow_believed_dead_via_ui is false.
-        self.s.submit(form,
-                      author_name='_test_author',
-                      text='_believed_dead_test_text',
-                      status='believed_dead')
+        doc = self.go_to_add_note_page()
         self.assert_error_deadend(
-            self.s.submit(form,
+            self.s.submit(self.s.doc.cssselect_one('form'),
                           author_name='_test_author',
                           text='_test_text',
                           status='believed_dead'),
@@ -2414,6 +2457,7 @@ _read_profile_url2</pfif:profile_urls>
                       family_name='_search_1st_family_name',
                       author_name='_search_1st_author_name')
         # Add a note for this person.
+        self.go_to_add_note_page()
         self.s.submit(self.s.doc.first('form'),
                       author_made_contact='yes',
                       text='this is text for first person',
@@ -2426,6 +2470,7 @@ _read_profile_url2</pfif:profile_urls>
                       author_name='_search_2nd_author_name')
         record_id_2 = self.s.doc.first('form').params['id']
         # Add a note for this 2nd person.
+        self.go_to_add_note_page()
         self.s.submit(self.s.doc.first('form'),
                       author_made_contact='yes',
                       text='this is text for second person',
@@ -2475,7 +2520,7 @@ _read_profile_url2</pfif:profile_urls>
             # and check their notes are also retrieved.
             doc = self.go('/haiti/api/search?key=search_key' +
                           '&q=_search_given_name')
-            assert self.s.status not in [403,404]
+            assert self.s.status not in [403, 404]
             # Check we found the 2 records.
             assert '_search_1st_family_name' in doc.content
             assert '_search_2nd_family_name' in doc.content
@@ -3302,17 +3347,11 @@ _feed_profile_url2</pfif:profile_urls>
         # Check that there is a Delete button on the view page.
         p123_id = 'test.google.com/person.123'
         doc = self.go('/haiti/view?id=' + p123_id)
-        button = doc.firsttag('input', value='Delete this record')
         # verify no extend button for clone record
-        extend_button = None
-        try:
-            doc.firsttag('input', id='extend_btn')
-        except scrape.ScrapeError:
-            pass
-        assert not extend_button, 'Didn\'t expect to find expiry extend button'
+        assert not doc.cssselect('#extend-btn')
 
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.follow_button(button)
+        doc = self.s.follow(doc.cssselect_one('#delete-btn'))
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3440,14 +3479,6 @@ _feed_profile_url2</pfif:profile_urls>
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
         person, note = self.setup_person_and_note()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        # With no expiry date, there should be no extend button.
-        try:
-            tag = doc.firsttag('input', id='extend_btn')
-            assert True, 'unexpectedly found tag %s' % s
-        except scrape.ScrapeError:
-            pass
-        # Now add an expiry date.
         expiry_date = ServerTestsBase.TEST_DATETIME + datetime.timedelta(days=18)
         person.expiry_date = expiry_date
         db.put([person])
@@ -3457,13 +3488,8 @@ _feed_profile_url2</pfif:profile_urls>
         # There should be an expiration warning.
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert 'Warning: this record will expire' in doc.text
-        button = doc.firsttag('input', id='extend_btn')
-        assert button, 'Failed to find expiry extend button'
-        extend_url = '/haiti/extend?id=' + person.record_id
-        doc = self.s.submit(button, url=extend_url)
-        assert 'extend the expiration' in doc.text
         # Click the extend button.
-        doc = self.s.follow_button(button)
+        doc = self.s.follow(doc.cssselect_one('#extend-btn'))
         assert 'extend the expiration' in doc.text
         # Click the button on the confirmation page.
         button = doc.firsttag('input', value='Yes, extend the record')
@@ -3487,9 +3513,7 @@ _feed_profile_url2</pfif:profile_urls>
         p123_id = 'haiti.personfinder.google.org/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
-        button = doc.firsttag('input',
-                              value='Disable notes on this record')
-        doc = self.s.follow_button(button)
+        doc = self.s.follow(doc.cssselect_one('#disable-notes-btn'))
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -3560,16 +3584,13 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Redirect to view page, now we should not show the add_note panel,
         # instead, we show message and a button to enable comments.
-        assert not 'Tell us the status of this person' in doc.content
-        assert not 'add_note' in doc.content
+        assert not doc.cssselect('input.add-note')
         assert 'The author has disabled notes on ' \
                'this record.' in doc.content
 
         # Click the enable_notes button should lead to enable_notes
         # page with a CAPTCHA.
-        button = doc.firsttag('input',
-                              value='Enable notes on this record')
-        doc = self.s.follow_button(button)
+        doc = self.s.submit(doc.cssselect_one('input.enable-notes'))
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
@@ -3628,11 +3649,9 @@ _feed_profile_url2</pfif:profile_urls>
         self.verify_user_action_log('enable_notes', 'Person', repo='haiti',
             entity_key_name='haiti:haiti.personfinder.google.org/person.123')
 
-        # In the view page, now we should see add_note panel,
-        # also, we show the button to disable comments.
-        assert 'Tell us the status of this person' in doc.content
-        assert 'add_note' in doc.content
-        assert 'Save this record' in doc.content
+        # In the view page, now we should see add-note button,
+        # also, we show the link to disable comments.
+        assert doc.cssselect('input.add-note')
         assert 'Disable notes on this record' in doc.content
 
     def test_detect_note_with_bad_words(self):
@@ -3738,10 +3757,9 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Add a note with bad words to the existing person record.
         doc = self.s.go(view_url)
-        button = doc.firsttag('input', value='Save this record')
-        note_form = doc.first('form')
+        doc = self.go_to_add_note_page()
 
-        self.s.submit(note_form,
+        self.s.submit(doc.cssselect_one('form'),
                       author_name='_test_author2',
                       text='_test add note with bad words.',
                       status='believed_alive')
@@ -3826,8 +3844,7 @@ _feed_profile_url2</pfif:profile_urls>
         p123_id = 'haiti.personfinder.google.org/person.123'
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
-        button = doc.firsttag('input', value='Delete this record')
-        doc = self.s.follow_button(button)
+        doc = self.s.follow(doc.cssselect_one('#delete-btn'))
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
@@ -4492,12 +4509,11 @@ _feed_profile_url2</pfif:profile_urls>
         # Advances the clock so that the new note is shown below the old notes.
         self.advance_utcnow(seconds=1)
         doc = self.go('/haiti/view?id=test.google.com/person.1')
-        self.verify_details_page(1)
-        self.verify_note_form()
+        self.verify_details_page(num_notes=1)
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
-        self.verify_details_page(2)
+        self.verify_details_page(num_notes=2)
         self.verify_email_sent()
 
         # Verify email data
@@ -4542,11 +4558,10 @@ _feed_profile_url2</pfif:profile_urls>
         # Post a note on the person.3 details page and verify that
         # subscribers to Persons 1 and 2 are each notified once.
         doc = self.go('/haiti/view?id=test.google.com/person.3')
-        self.verify_note_form()
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
-        self.verify_details_page(1)
+        self.verify_details_page(num_notes=1)
         self.verify_email_sent(2)
         tos = set()
         for message in self.mail_server.messages:
@@ -4621,9 +4636,7 @@ _feed_profile_url2</pfif:profile_urls>
         self.mail_server.messages = []
 
         doc = self.go('/haiti/view?id=test.google.com/person.111')
-        assert 'Subscribe to updates about this person' in doc.text
-        button = doc.firsttag('input', id='subscribe_btn')
-        doc = self.s.follow_button(button)
+        doc = self.s.follow(doc.cssselect_one('#subscribe-btn'))
 
         # Empty email is an error.
         button = doc.firsttag('input', value='Subscribe')
@@ -4695,8 +4708,10 @@ _feed_profile_url2</pfif:profile_urls>
     def test_config_use_family_name(self):
         # use_family_name=True
         d = self.go('/haiti/create')
-        assert d.first('label', for_='given_name').text.strip() == 'Given name:'
-        assert d.first('label', for_='family_name').text.strip() == 'Family name:'
+        assert d.first('label', for_='given_name').text.strip() == (
+            'Given name (required):')
+        assert d.first('label', for_='family_name').text.strip() == (
+            'Family name (required):')
         assert d.firsttag('input', name='given_name')
         assert d.firsttag('input', name='family_name')
         assert d.first('label', for_='alternate_given_names').text.strip() == \
@@ -4714,14 +4729,11 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('div', class_='name section').all('div', class_='field')
-        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('span', class_='value').text.strip() == \
-            '_test_given _test_family'
-        assert f[1].first('span', class_='label').text.strip() == \
-            'Alternate names:'
-        assert f[1].first('span', class_='value').text.strip() == \
-            '_test_alternate_given _test_alternate_family'
+        self.verify_details_page(
+            full_name='_test_given _test_family',
+            details={
+                'Alternate names:':
+                    '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?query=_test_given+_test_family')
         self.verify_results_page(1, all_have=([
@@ -4745,12 +4757,9 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         d = self.go(
             '/pakistan/view?id=%s' % person.record_id)
-        f = d.first('div', class_='name section').all('div', class_='field')
-        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('span', class_='value').text.strip() == '_test_given'
-        assert 'Given name' not in d.text
-        assert 'Family name' not in d.text
-        assert '_test_family' not in d.first('body').text
+        assert scrape.get_all_text(d.cssselect_one('.full-name')) == (
+            '_test_given')
+        assert '_test_family' not in d.content
 
         self.go('/pakistan/results?query=_test_given+_test_family')
         self.verify_results_page(1)
@@ -4765,8 +4774,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/japan/create?lang=en')
         given_label = doc.first('label', for_='given_name')
         family_label = doc.first('label', for_='family_name')
-        assert given_label.text.strip() == 'Given name:'
-        assert family_label.text.strip() == 'Family name:'
+        assert given_label.text.strip() == 'Given name (required):'
+        assert family_label.text.strip() == 'Family name (required):'
         assert family_label.start < given_label.start
 
         given_input = doc.firsttag('input', name='given_name')
@@ -4792,15 +4801,13 @@ _feed_profile_url2</pfif:profile_urls>
                       alternate_family_names='_test_alternate_family',
                       author_name='_test_author')
         person = Person.all().get()
+
         doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
-        f = doc.first('div', class_='name section').all('div', class_='field')
-        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('span', class_='value').text.strip() == \
-            '_test_family _test_given'
-        assert f[1].first('span', class_='label').text.strip() == \
-            'Alternate names:'
-        assert f[1].first('span', class_='value').text.strip() == \
-            '_test_alternate_family _test_alternate_given'
+        self.verify_details_page(
+            full_name='_test_family _test_given',
+            details={
+                'Alternate names:':
+                    '_test_alternate_family _test_alternate_given'})
 
         self.go('/japan/results?query=_test_family+_test_given&lang=en')
         self.verify_results_page(1, all_have=([
@@ -4812,8 +4819,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/create')
         given_label = doc.first('label', for_='given_name')
         family_label = doc.first('label', for_='family_name')
-        assert given_label.text.strip() == 'Given name:'
-        assert family_label.text.strip() == 'Family name:'
+        assert given_label.text.strip() == 'Given name (required):'
+        assert family_label.text.strip() == 'Family name (required):'
         assert family_label.start > given_label.start
 
         given_input = doc.firsttag('input', name='given_name')
@@ -4840,14 +4847,11 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/haiti/view?id=%s' % person.record_id)
-        f = doc.first('div', class_='name section').all('div', class_='field')
-        assert f[0].first('span', class_='label').text.strip() == 'Full name:'
-        assert f[0].first('span', class_='value').text.strip() == \
-            '_test_given _test_family'
-        assert f[1].first('span', class_='label').text.strip() == \
-            'Alternate names:'
-        assert f[1].first('span', class_='value').text.strip() == \
-            '_test_alternate_given _test_alternate_family'
+        self.verify_details_page(
+            full_name='_test_given _test_family',
+            details={
+                'Alternate names:':
+                    '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?query=_test_given+_test_family')
         self.verify_results_page(1, all_have=([
@@ -4874,11 +4878,10 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
-        f = d.first('div', class_='name section').all('div', class_='field')
-        assert f[1].first('span', class_='label').text.strip() == \
-            'Alternate names:'
-        assert f[1].first('span', class_='value').text.strip() == \
-            '_test_alternate_given _test_alternate_family'
+        self.verify_details_page(
+            details={
+                'Alternate names:':
+                    '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?query=_test_given+_test_family')
         self.verify_results_page(1, all_have=([
@@ -4905,7 +4908,9 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         d = self.go(
             '/pakistan/view?id=%s' % person.record_id)
-        assert 'Alternate names' not in d.text
+        assert all(
+            scrape.get_all_text(e) != 'Alternate names:'
+            for e in d.cssselect('.label'))
         assert '_test_alternate_given' not in d.text
         assert '_test_alternate_family' not in d.text
 
@@ -4927,8 +4932,8 @@ _feed_profile_url2</pfif:profile_urls>
                       family_name='_test_family',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/haiti/view?id=%s' % person.record_id)
-        assert doc.all('option', value='believed_dead')
+        doc = self.go('/haiti/add_note?id=%s' % person.record_id)
+        assert doc.cssselect('option[value="believed_dead"]')
 
         # allow_believed_dead_via_ui=False
         config.set_for_repo('japan', allow_believed_dead_via_ui=False)
@@ -4938,8 +4943,8 @@ _feed_profile_url2</pfif:profile_urls>
                       family_name='_test_family',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/japan/view?id=%s' % person.record_id)
-        assert not doc.all('option', value='believed_dead')
+        doc = self.go('/japan/add_note?id=%s' % person.record_id)
+        assert not doc.cssselect('option[value="believed_dead"]')
 
 
     def test_config_use_postal_code(self):

@@ -128,65 +128,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Viðvörun: Þessi færsla rennur út innan "
-"%(expiration_days)s daga.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Viðvörun: Þessi færsla rennur út innan sólarhrings.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s færslur valdar\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s fann niðurstöðu(r) sem samsvara þessari "
-"fyrirspurn.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Færslur svipaðar: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Leitarniðurstöður fyrir: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -279,16 +267,6 @@ msgstr ""
 "      skaltu hafa samband við upprunalegan höfund.\n"
 "      Þú getur skoðað upphaflegu færsluna á\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Engar niðurstöður fundust fyrir: %(query)s\n"
 "    "
 
 #, python-format
@@ -574,9 +552,6 @@ msgstr "Eftir u.þ.b. sex mánuði (180 daga)"
 msgid "About Google Person Finder"
 msgstr "Um Google persónuleit"
 
-msgid "About you (required)"
-msgstr "Um þig (nauðsynlegt)"
-
 msgid "Administration"
 msgstr "Stjórnun"
 
@@ -651,6 +626,11 @@ msgstr "Hætta við"
 msgid "City"
 msgstr "Borg/bær"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Smelltu hér til að sjá niðurstöður."
 
@@ -674,9 +654,6 @@ msgstr "Búa til nýja færslu"
 msgid "Create a new record for"
 msgstr "Búa til nýja færslu fyrir"
 
-msgid "Create a new record for a missing person"
-msgstr "Búa til nýja færslu fyrir týnda manneskju"
-
 msgid "Crisis events"
 msgstr "Neyðartilvik"
 
@@ -695,9 +672,6 @@ msgstr "Eyða þessari færslu"
 
 msgid "Describe how to identify this person."
 msgstr "Lýstu hvernig bera má kennsl á þessa manneskju."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Lýstu líkamlegum einkennum þessarar manneskju."
 
 msgid "Description"
 msgstr "Lýsing"
@@ -755,11 +729,16 @@ msgid "Expiry date of this record"
 msgstr "Fyrningardagsetning þessarar færslu"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Lengja fyrningardagsetningu um %(extension_days)s daga"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Kenninafn"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Straumur með fréttum af þessari manneskju"
@@ -780,11 +759,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Fullt nafn"
 
-msgid "Get a visual challenge"
-msgstr "Fá myndrænt próf"
-
 msgid "Given name"
 msgstr "Eiginnafn"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google persónuleit"
@@ -820,6 +799,9 @@ msgstr "Hvernig er hægt að ná í þessa manneskju núna?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Hvernig aðrir sem hafa áhuga á þessari manneskju geta haft samband við þig"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ég er að leita eftir upplýsingum"
@@ -960,9 +942,6 @@ msgstr ""
 msgid "Name"
 msgstr "Nafn"
 
-msgid "Name (required)"
-msgstr "Nafn (nauðsynlegt)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Nafn er nauðsynlegt. Farðu til baka og reyndu aftur."
 
@@ -987,6 +966,9 @@ msgstr "Engin athugasemd með auðkennið: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Engar athugasemdir hafa verið birtar"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1070,6 +1052,9 @@ msgstr "Símanúmer"
 msgid "Photo"
 msgstr "Mynd"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1079,6 +1064,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Líkamleg einkenni"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1218,23 +1208,33 @@ msgstr "Einhver hefur tilkynnt að þessi manneskja sé týnd"
 msgid "Someone is seeking information about this person"
 msgstr "Einhver er að leita eftir upplýsingum um þessa manneskju"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Uppruni þessarar færslu"
-
-msgid "Source of this record (required)"
-msgstr "Uppruni þessarar færslu (nauðsynlegt)"
 
 msgid "Status"
 msgstr "Staða"
 
-msgid "Status of this person"
-msgstr "Staða þessarar manneskju"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Götuheiti"
 
 msgid "Street name only, no number"
 msgstr "Aðeins götuheiti, ekki húsnúmer"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Gerast áskrifandi"
@@ -1251,9 +1251,6 @@ msgstr "Skipta yfir í heimilisfang"
 
 msgid "Switch to lat/long"
 msgstr "Skipta yfir í lengdar-/breiddargráðu"
-
-msgid "Tell us the status of this person"
-msgstr "Segðu okkur hver staða þessarar manneskju er"
 
 msgid "Terms of Service"
 msgstr "Þjónustuskilmálar"
@@ -1417,9 +1414,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Sláðu inn heimilisfang."
 
-msgid "Type what you hear:"
-msgstr "Sláðu inn það sem þú heyrir:"
-
 msgid "URL"
 msgstr "Vefslóð"
 
@@ -1461,9 +1455,6 @@ msgstr "Hvenær ætti þessi færsla að hverfa?"
 
 msgid "Where did this information come from?"
 msgstr "Hvaðan koma þessar upplýsingar?"
-
-msgid "Where is this person from?"
-msgstr "Hvaðan er þessi manneskja?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1563,8 +1554,8 @@ msgstr "Netfangið þitt:"
 msgid "Your email"
 msgstr "Netfangið þitt"
 
-msgid "Your name"
-msgstr "Nafnið þitt"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1632,6 +1623,9 @@ msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "kona"

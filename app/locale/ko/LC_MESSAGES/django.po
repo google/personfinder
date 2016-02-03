@@ -121,61 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"경고: 이 신상기록은 %(expiration_days)s일 이내에 만료됩니다."
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"경고: 이 신상기록은 24시간 이내에 만료됩니다."
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            신상기록 %(dup_count)s개 선택됨\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s에 이 검색어와 일치하는 검색결과가 있습니다.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        이름(%(full_name)s)이 유사한 신상기록:\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        다음에 대한 검색결과: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -260,16 +252,6 @@ msgstr ""
 "      원본 소스에 문의하시기 바랍니다.\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s에서\n"
 "      원본 신상기록을 볼 수 있습니다."
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      다음에 대한 검색결과 없음: %(query)s\n"
-"    "
 
 #, python-format
 msgid ""
@@ -539,9 +521,6 @@ msgstr "약 6개월(180일) 후"
 msgid "About Google Person Finder"
 msgstr "Google 사람 찾기 정보"
 
-msgid "About you (required)"
-msgstr "내 정보(필수 항목)"
-
 msgid "Administration"
 msgstr "관리"
 
@@ -612,6 +591,11 @@ msgstr "취소"
 msgid "City"
 msgstr "시/군/구"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "결과를 보려면 여기를 클릭하세요."
 
@@ -633,9 +617,6 @@ msgstr "새 신상기록 만들기"
 msgid "Create a new record for"
 msgstr "신상기록 작성하기:"
 
-msgid "Create a new record for a missing person"
-msgstr "실종자에 대한 신상기록 새로 작성하기"
-
 msgid "Crisis events"
 msgstr "위기 이벤트"
 
@@ -654,9 +635,6 @@ msgstr "신상기록 삭제하기"
 
 msgid "Describe how to identify this person."
 msgstr "이 사람을 알아볼 수 있는 방법을 알려주세요."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "이 사람의 신체적 특징을 설명해 주세요."
 
 msgid "Description"
 msgstr "설명"
@@ -714,11 +692,16 @@ msgid "Expiry date of this record"
 msgstr "이 신상기록의 만료일"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "만료일 %(extension_days)s일 연장하기"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "성"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "이 사람에 대한 업데이트 피드"
@@ -737,11 +720,11 @@ msgstr "휴대전화가 아닌 일반 전화의 경우 NTT가 제공하는 171 �
 msgid "Full name"
 msgstr "전체 이름"
 
-msgid "Get a visual challenge"
-msgstr "화면으로 문제 받기"
-
 msgid "Given name"
 msgstr "이름"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google 사람 찾기"
@@ -773,6 +756,9 @@ msgstr "이 사람에게 지금 연락할 수 있는 방법은 무엇입니까?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "이 사람과 관련된 사람들이 내게 연락할 수 있도록 연락처를 남겨주세요."
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
@@ -899,9 +885,6 @@ msgstr "결과가 100개를 초과하면 처음 100개만 표시됩니다. 이�
 msgid "Name"
 msgstr "이름"
 
-msgid "Name (required)"
-msgstr "이름(필수 항목)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
 
@@ -924,6 +907,9 @@ msgstr "ID가 %(id_str)s인 메모가 없습니다."
 
 msgid "No notes have been posted"
 msgstr "게시된 메모가 없습니다."
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1001,6 +987,9 @@ msgstr "전화번호"
 msgid "Photo"
 msgstr "사진"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1008,6 +997,11 @@ msgstr "업로드한 사진의 형식을 인식할 수 없습니다. 이전으�
 
 msgid "Physical characteristics"
 msgstr "신체적 특징"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1143,23 +1137,33 @@ msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 msgid "Someone is seeking information about this person"
 msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "이 신상기록의 출처"
-
-msgid "Source of this record (required)"
-msgstr "신상기록의 출처(필수 항목)"
 
 msgid "Status"
 msgstr "상태"
 
-msgid "Status of this person"
-msgstr "이 사람의 상태"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "상세 주소 2"
 
 msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "수신"
@@ -1176,9 +1180,6 @@ msgstr "주소로 전환"
 
 msgid "Switch to lat/long"
 msgstr "위도/경도로 전환"
-
-msgid "Tell us the status of this person"
-msgstr "이 사람에 대해 제보하기"
 
 msgid "Terms of Service"
 msgstr "서비스 약관"
@@ -1328,9 +1329,6 @@ msgstr "직접 주소를 입력하거나 아래에서 지도를 열고 클릭하
 msgid "Type an address."
 msgstr "주소를 입력하세요."
 
-msgid "Type what you hear:"
-msgstr "들은 내용 입력:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1372,9 +1370,6 @@ msgstr "이 신상기록의 만료일을 언제로 지정하시겠습니까?"
 
 msgid "Where did this information come from?"
 msgstr "이 신상기록의 출처에 대해 알려주세요."
-
-msgid "Where is this person from?"
-msgstr "어디에 살던 사람입니까?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1468,8 +1463,8 @@ msgstr "이메일 주소:"
 msgid "Your email"
 msgstr "이메일"
 
-msgid "Your name"
-msgstr "작성자 이름"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1528,6 +1523,9 @@ msgstr "[Person Finder] %(full_name)s님 상태 업데이트"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] %(full_name)s님에 대한 소식을 수신 신청했습니다."
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "여자"

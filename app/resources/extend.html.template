@@ -25,8 +25,14 @@
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="submit" value="{% trans "Yes, extend the record" %}">
-    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+    <div class="button-box">
+      <div class="button button-blue">
+        <input type="submit" value="{% trans "Yes, extend the record" %}">
+      </div>
+      <div class="button button-red">
+        <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+      </div>
+    </div>
   </form>
 </div>
 <br/><br/>

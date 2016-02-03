@@ -121,66 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Զգուշացում. այս գրառման ժամկետը կսպառվի ավելի քիչ, "
-"քան %(expiration_days)s օրից:\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Զգուշացում. այս գրառումը կսպառվի ավելի քիչ, քան մեկ "
-"օրվա ընթացքում:\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s գրառում ընտրված է\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s որոնման համակարգը պարունակում է այս "
-"հարցմանը համապատասխանող որոնման արդյունք(ներ):\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Գրառումներ` նման %(full_name)s-ին\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Որոնման արդյունքներ «%(query)s» հարցման համար\n"
-"      "
 
 #, python-format
 msgid ""
@@ -270,16 +257,6 @@ msgstr ""
 "      կապվեք բնօրինակ աղբյուրի հետ:\n"
 "      Դուք կարող եք դիտել բնօրինակ գրառումն այստեղ`\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s:\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      %(query)s հարցման համար ոչ մի արդյունք չկա\n"
 "    "
 
 #, python-format
@@ -553,9 +530,6 @@ msgstr "Մոտ 6 ամիս (180 օր) հետո"
 msgid "About Google Person Finder"
 msgstr "Google Մարդկանց որոնման մասին"
 
-msgid "About you (required)"
-msgstr "Ձեր մասին (պարտադիր է)"
-
 msgid "Administration"
 msgstr "Ղեկավարում"
 
@@ -628,6 +602,11 @@ msgstr "Չեղարկել"
 msgid "City"
 msgstr "Քաղաքը"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Արդյունքները տեսնելու համար սեղմեք այստեղ:"
 
@@ -651,9 +630,6 @@ msgstr "Ստեղծել նոր գրառում"
 msgid "Create a new record for"
 msgstr "Ստեղծել նոր գրառում հետևյալի համար`"
 
-msgid "Create a new record for a missing person"
-msgstr "Ստեղծել նոր գրառում կորած անձի մասին"
-
 msgid "Crisis events"
 msgstr "Ճգնաժամային իրադարձություններ"
 
@@ -672,9 +648,6 @@ msgstr "Ջնջել այս գրառումը"
 
 msgid "Describe how to identify this person."
 msgstr "Ինչպե՞ս ճանաչել տվյալ անձին:"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Նկարագրեք տվյալ անձին:"
 
 msgid "Description"
 msgstr "Նկարագրություն"
@@ -734,11 +707,16 @@ msgid "Expiry date of this record"
 msgstr "Այս գրառման սպառման ժամկետը"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Երկարաձգել սպառման ժամկետը %(extension_days)s օրով"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Ազգանունը"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Այս անձի մասին թարմացումների հոսք"
@@ -759,11 +737,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Լրիվ անունը"
 
-msgid "Get a visual challenge"
-msgstr "Ստանալ պատկեր"
-
 msgid "Given name"
 msgstr "Անունը"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Մարդկանց որոնում"
@@ -795,6 +773,9 @@ msgstr "Ինչպե՞ս կարելի է կապվել այս անձի հետ հի�
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Ինչպես կարող են կապվել ձեզ հետ նրանք, ովքեր հետաքրքրված են այս անձով"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ես տեղեկություն եմ որոնում"
@@ -929,9 +910,6 @@ msgstr ""
 msgid "Name"
 msgstr "Անունը"
 
-msgid "Name (required)"
-msgstr "Անունը (պարտադիր է)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Անունը պարտադիր է: Վերադարձեք և կրկին փորձեք:"
 
@@ -956,6 +934,9 @@ msgstr "%(id_str)s-ով նշում չկա:"
 
 msgid "No notes have been posted"
 msgstr "Նշումներ չեն փակցվել"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1039,6 +1020,9 @@ msgstr "Հեռախոսահամար"
 msgid "Photo"
 msgstr "Լուսանկար"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1046,6 +1030,11 @@ msgstr "Վերբեռնված լուսանկարի ձևաչափը չի ճանաչ
 
 msgid "Physical characteristics"
 msgstr "Ֆիզիկական բնութագրեր"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1189,23 +1178,33 @@ msgstr "Ինչ-որ մեկը հայտնել է, որ այս մարդը որոն�
 msgid "Someone is seeking information about this person"
 msgstr "Ինչ-որ մեկը տեղեկություններ է փնտրում այս անձի վերաբերյալ"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Այս գրառման աղբյուրը"
-
-msgid "Source of this record (required)"
-msgstr "Այս գրառման աղբյուրը (պարտադիր է)"
 
 msgid "Status"
 msgstr "Կարգավիճակ"
 
-msgid "Status of this person"
-msgstr "Այս անձի կարգավիճակը"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Փողոցը"
 
 msgid "Street name only, no number"
 msgstr "Միայն փողոցի անունը (առանց տան համարի)"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Բաժանորդագրվել"
@@ -1222,9 +1221,6 @@ msgstr "Անցնել հասցեին"
 
 msgid "Switch to lat/long"
 msgstr "Անցնել կոորդինատներին"
-
-msgid "Tell us the status of this person"
-msgstr "Հայտնեք այս անձի կարգավիճակի մասին"
 
 msgid "Terms of Service"
 msgstr "Օգտագործման պայմաններ"
@@ -1385,9 +1381,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Մուտքագրեք հասցե:"
 
-msgid "Type what you hear:"
-msgstr "Մուտքագրեք այն, ինչ լսում եք՝"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1429,9 +1422,6 @@ msgstr "Ե՞րբ պետք է այս գրառումը հեռացվի:"
 
 msgid "Where did this information come from?"
 msgstr "Որտեղի՞ց է ստացվել այս տեղեկությունը:"
-
-msgid "Where is this person from?"
-msgstr "Որտեղի՞ց է տվյալ անձը:"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1531,8 +1521,8 @@ msgstr "Ձեր էլփոստի հասցեն`"
 msgid "Your email"
 msgstr "Ձեր էլփոստը"
 
-msgid "Your name"
-msgstr "Ձեր անունը"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1596,6 +1586,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Մարդկանց որոնում] Դուք բաժանորդագրվել եք «%(full_name)s»-ի մասին "
 "թարմացումներին"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "իգական"

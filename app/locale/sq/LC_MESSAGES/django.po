@@ -112,66 +112,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Njoftim: Ky raport do të skadojë së shfrytëzuari "
-"brenda më pak se %(expiration_days)s ditësh.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Njoftim: Ky raport do të skadojë së shfrytëzuari "
-"brenda më pak se një dite.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s raporte të përzgjedhura\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s ka rezultat(e) që përputhen me këtë term"
-" kërkimi\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Raporte të ngjashme me: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Rezultatet e kërkimit për: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -262,16 +249,6 @@ msgstr ""
 "      Nëse doni që ta fshini një herë e përgjithmonë, ju lutemi "
 "kontaktoni burimin origjinal. Ju mund ta shikoni raportin origjinal në "
 "%(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Asnjë rezultat nuk u gjet për: %(query)s\n"
 "    "
 
 #, python-format
@@ -532,9 +509,6 @@ msgstr "Rreth 6 muaj (180 ditë) nga sot"
 msgid "About Google Person Finder"
 msgstr "Rreth apl. \"Gjetësi i Personave i Google\""
 
-msgid "About you (required)"
-msgstr "Rreth jush (e domosdoshme për t'u përgjigjur)"
-
 msgid "Administration"
 msgstr "Administrimi"
 
@@ -611,6 +585,11 @@ msgstr "Anulo"
 msgid "City"
 msgstr "Qyteti"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Kliko këtu për të parë rezultatet."
 
@@ -634,9 +613,6 @@ msgstr "Krijo një raport të ri"
 msgid "Create a new record for"
 msgstr "Krijo një raport të ri për"
 
-msgid "Create a new record for a missing person"
-msgstr "Krijo një raport të ri për një person të humbur"
-
 msgid "Crisis events"
 msgstr "Ngjarjet e krizës"
 
@@ -657,9 +633,6 @@ msgstr "Fshije këtë raport"
 
 msgid "Describe how to identify this person."
 msgstr "Përshkruani se si mund të identifikohet ky person."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Përshkruani tiparet fizike të këtij personi."
 
 msgid "Description"
 msgstr "Përshkrimi"
@@ -721,11 +694,16 @@ msgid "Expiry date of this record"
 msgstr "Data e skadimit të këtij raporti"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Shtyni datën e skadimit me %(extension_days)s ditë të tjera"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Mbiemri"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Mekanizmi furnizues i njoftimeve rreth këtij personi"
@@ -746,11 +724,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Emri i plotë"
 
-msgid "Get a visual challenge"
-msgstr "Provoni përmes pamjes"
-
 msgid "Given name"
 msgstr "Emri i dhënë"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "\"Gjetësi i Personave i Google\""
@@ -786,6 +764,9 @@ msgstr "Si mund të kontaktohet me këtë person tani?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Si mund të kontaktojnë me ju, të tjerë të interesuar për këtë person"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Po kërkoj informacione"
@@ -928,9 +909,6 @@ msgstr ""
 msgid "Name"
 msgstr "Emri"
 
-msgid "Name (required)"
-msgstr "Emri (e domosdoshme për t'u përgjigjur)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Emri është i kërkueshëm me çdo kusht! Ju lutemi, kthehuni prapa dhe "
@@ -957,6 +935,9 @@ msgstr "Nuk ka asnjë shënim me id.-në %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Nuk është postuar asnjë shënim"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1041,6 +1022,9 @@ msgstr "Numri i telefonit"
 msgid "Photo"
 msgstr "Fotografitë"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1050,6 +1034,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Tiparet fizike"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1191,23 +1180,33 @@ msgstr "Dikush ka raportuar se ky person ka humbur"
 msgid "Someone is seeking information about this person"
 msgstr "Dikush po kërkon informacione në lidhje me këtë person"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Burimi i këtij raporti"
-
-msgid "Source of this record (required)"
-msgstr "Burimi i këtij raporti (e domosdoshme për t'u përgjigjur)"
 
 msgid "Status"
 msgstr "Statusi"
 
-msgid "Status of this person"
-msgstr "Statusi i këtij personi"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Emri i rrugës"
 
 msgid "Street name only, no number"
 msgstr "Vetëm emrin e rrugës, jo numrin e saj"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abonohu"
@@ -1224,9 +1223,6 @@ msgstr "Kalo tek adresa"
 
 msgid "Switch to lat/long"
 msgstr "Kalo në gjer./gjat."
-
-msgid "Tell us the status of this person"
-msgstr "Na tregoni statusin e këtij personi"
 
 msgid "Terms of Service"
 msgstr "Kushtet e shërbimit"
@@ -1401,9 +1397,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Shkruani një adresë."
 
-msgid "Type what you hear:"
-msgstr "Shkruani atë që dëgjoni:"
-
 msgid "URL"
 msgstr "URL-ja"
 
@@ -1445,9 +1438,6 @@ msgstr "Kur mund të hiqet ky raport?"
 
 msgid "Where did this information come from?"
 msgstr "Prej nga erdhi ky informacion?"
-
-msgid "Where is this person from?"
-msgstr "Prej nga është ky person?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1551,8 +1541,8 @@ msgstr "Adresa juaj e e-mail-it:"
 msgid "Your email"
 msgstr "E-mail-i juaj:"
 
-msgid "Your name"
-msgstr "Emri juaj"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1624,6 +1614,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Gjetësi i Personave] Ju jeni abonuar për të marrë çdo informacion të ri "
 "mbi %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "femër"

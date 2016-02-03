@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-# Copyright 2010 Google Inc.
+# Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,36 +24,26 @@ import reveal
 import subscribe
 
 from django.utils.translation import ugettext as _
-import urlparse
+from urlparse import urlparse
+
+# TODO(jessien): Clean up duplicate code here and in create.py.
+# https://github.com/google/personfinder/issues/157
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
 
-def get_profile_pages(profile_urls, handler):
-    profile_pages = []
-    for profile_url in profile_urls.splitlines():
-        # Use the hostname as the website name by default.
-        profile_page = {
-            'name': urlparse.urlparse(profile_url).hostname,
-            'url': profile_url }
-        for website in handler.config.profile_websites or []:
-            if ('url_regexp' in website and
-                re.match(website['url_regexp'], profile_url)):
-                profile_page = add_profile_icon_url(website, handler)
-                profile_page['url'] = profile_url
-                break
-        profile_pages.append(profile_page)
-    return profile_pages
 
 class Handler(BaseHandler):
 
     def get(self):
         # Check the request parameters.
         if not self.params.id:
-            return self.error(404, 'No person id was specified.')
+            return self.error(404, _('No person id was specified.'))
         try:
             person = Person.get(self.repo, self.params.id)
+        # TODO(ichikawa) Consider removing this "except" clause.
+        #     I don't think ValueError is thrown here.
         except ValueError:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
@@ -62,114 +52,15 @@ class Handler(BaseHandler):
                 _("This person's entry does not exist or has been deleted."))
         standalone = self.request.get('standalone')
 
-        # Check if private info should be revealed.
-        content_id = 'view:' + self.params.id
-        reveal_url = reveal.make_reveal_url(self, content_id)
-        show_private_info = reveal.verify(content_id, self.params.signature)
-
-        # Compute the local times for the date fields on the person.
-        person.source_date_local_string = self.to_formatted_local_date(
-            person.source_date)
-        person.source_time_local_string = self.to_formatted_local_time(
-            person.source_date)
-        person.expiry_date_local_string = self.to_formatted_local_date(
-            person.get_effective_expiry_date())        
-        person.expiry_time_local_string = self.to_formatted_local_time(
-            person.get_effective_expiry_date())
-
-        person.should_show_inline_photo = (
-            self.should_show_inline_photo(person.photo_url))
-
-        # Get the notes and duplicate links.
-        try:
-            notes = person.get_notes()
-        except datastore_errors.NeedIndexError:
-            notes = []
-        person.sex_text = get_person_sex_text(person)
-        for note in notes:
-            self.__add_fields_to_note(note)
-        try:
-            linked_persons = person.get_all_linked_persons()
-        except datastore_errors.NeedIndexError:
-            linked_persons = []
-        linked_person_info = []
-        for linked_person in linked_persons:
-            try:
-                linked_notes = linked_person.get_notes()
-            except datastore_errors.NeedIndexError:
-                linked_notes = []
-            for note in linked_notes:
-                self.__add_fields_to_note(note)
-            linked_person_info.append(dict(
-                id=linked_person.record_id,
-                name=linked_person.primary_full_name,
-                view_url=self.get_url('/view', id=linked_person.record_id),
-                notes=linked_notes))
-
         # Render the page.
-        dupe_notes_url = self.get_url(
-            '/view', id=self.params.id, dupe_notes='yes')
-        results_url = self.get_url(
-            '/results',
-            role=self.params.role,
-            query=self.params.query,
-            given_name=self.params.given_name,
-            family_name=self.params.family_name)
-        feed_url = self.get_url(
-            '/feeds/note',
-            person_record_id=self.params.id,
-            repo=self.repo)   
-        add_note_url = self.get_url(
-            '/add_note',
-             id=self.params.id)
-        subscribe_url = self.get_url('/subscribe', id=self.params.id)
-        delete_url = self.get_url('/delete', id=self.params.id)
-        disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
         enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
-        extend_url = None
-        extension_days = 0
-        expiration_days = None
-        expiry_date = person.get_effective_expiry_date()
-        if expiry_date and not person.is_clone():
-            expiration_delta = expiry_date - get_utcnow()
-            extend_url =  self.get_url('/extend', id=self.params.id)
-            extension_days = extend.get_extension_days(self)
-            if expiration_delta.days < EXPIRY_WARNING_THRESHOLD:
-                # round 0 up to 1, to make the msg read better.
-                expiration_days = expiration_delta.days + 1
 
-        if person.is_clone():
-            person.provider_name = person.get_original_domain()
-
-        sanitize_urls(person)
-        for note in notes:
-            sanitize_urls(note)
-
-        if person.profile_urls:
-            person.profile_pages = get_profile_pages(person.profile_urls, self)
-
-        self.render('view.html',
+        self.render('add_note.html',
                     person=person,
-                    notes=notes,
-                    linked_person_info=linked_person_info,
                     standalone=standalone,
-                    onload_function='view_page_loaded()',
-                    show_private_info=show_private_info,
-                    admin=users.is_current_user_admin(),
-                    dupe_notes_url=dupe_notes_url,
-                    results_url=results_url,
-                    reveal_url=reveal_url,
-                    feed_url=feed_url,
-                    subscribe_url=subscribe_url,
-                    delete_url=delete_url,
-                    disable_notes_url=disable_notes_url,
-                    enable_notes_url=enable_notes_url,
-                    extend_url=extend_url,
-                    add_note_url=add_note_url,
-                    extension_days=extension_days,
-                    expiration_days=expiration_days)
+                    enable_notes_url=enable_notes_url)
 
-    # Posts a note.
+
     def post(self):
         if not self.params.text:
             return self.error(
@@ -184,7 +75,7 @@ class Handler(BaseHandler):
             not self.params.author_made_contact):
             return self.error(
                 200, _('Please check that you have been in contact with '
-                       'the person after the earthquake, or change the '
+                       'the person after the disaster, or change the '
                        '"Status of this person" field.'))
 
         if (self.params.status == 'believed_dead' and
@@ -194,9 +85,6 @@ class Handler(BaseHandler):
                        '"believed_dead".'))
 
         person = Person.get(self.repo, self.params.id)
-        if not person:
-            return self.error(404,
-                _("This person's entry does not exist or has been deleted."))
         if person.notes_disabled:
             return self.error(
                 200, _('The author has disabled status updates '
@@ -291,18 +179,4 @@ class Handler(BaseHandler):
                                  context='add_note')
 
         # Redirect to this page so the browser's back button works properly.
-        self.redirect('/view', id=self.params.id, query=self.params.query)
-
-    def __add_fields_to_note(self, note):
-        """Adds some fields used in the template to a note."""
-        note.status_text = get_note_status_text(note)
-        note.linked_person_url = \
-            self.get_url('/view', id=note.linked_person_record_id)
-        note.flag_spam_url = \
-            self.get_url('/flag_note', id=note.note_record_id,
-                         hide=(not note.hidden) and 'yes' or 'no',
-                         signature=self.params.signature)
-        note.source_datetime_local_string = self.to_formatted_local_datetime(
-            note.source_date)
-        note.should_show_inline_photo = self.should_show_inline_photo(
-            note.photo_url)
+        self.redirect('/add_note', id=self.params.id, query=self.params.query)

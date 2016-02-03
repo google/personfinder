@@ -129,66 +129,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    သတိေပးခ်က္: ဤမွတ္တမ္းသည္  သက္တမ္းကုန္ ဆံုးရန္ "
-"ရက္ေပါင္း %(expiration_days)s သာက်န္ပါေတာ့သည္။\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    သတိေပးခ်က္။ ဤမွတ္တမ္း၏ သက္တမ္းကုန္ဆံုးရန္ "
-"တစ္ရက္ေတာင္မက်န္ေတာ့ပါ။\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s မွတ္တမ္းမ်ား ေရြးခ်ယ္ထားသည္။\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s မှာ ဤမေးမြန်းခြင်းနှင့် "
-"ကိုက်ညီသောအဖြေ(များ)အား ရှာဖွေတွေ့ရှိပါသည်။\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        : %(full_name)s ႏွင့္ဆင္တူေသာ မွတ္တမ္းမ်ား။\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        \"%(query)s\" အတြက္ ရွာေဖြျခင္းရလဒ္မ်ား။\n"
-"      "
 
 #, python-format
 msgid ""
@@ -280,16 +267,6 @@ msgstr ""
 " \n"
 " %(begin_tag)s%(source_name)s%(end_tag)s. တြင္ "
 "မႈရင္းမွတ္တမ္းအားႀကည့္႐ွဳႏိုင္ပါသည္။\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      : %(query)s အတြက္ ရလဒ္မရွိပါ။\n"
 "    "
 
 #, python-format
@@ -578,9 +555,6 @@ msgstr "ယခုမွစ၍ ေျခာက္လ(ရက္ေပါင္း 
 msgid "About Google Person Finder"
 msgstr "Google Person Finder အကြောင်း။"
 
-msgid "About you (required)"
-msgstr "သင့္အေႀကာင္း။ (လုိအပ္သည္။)"
-
 msgid "Administration"
 msgstr "စီမံခန့် ခွဲရေး။"
 
@@ -658,6 +632,11 @@ msgstr "ပယ္ဖ်က္ပါ။"
 msgid "City"
 msgstr "လမ်းနာမည်သာ၊ လမ်းနံပါတ်မပါ။"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "results ေခၚ ရလဒ္မ်ားကို ႀကည့္ရန္ ဒီမွာႏွိပ္ပါ။"
 
@@ -681,9 +660,6 @@ msgstr "မှတ်တမ်းအသစ်တစ်ခု ဖန်တီး�
 msgid "Create a new record for"
 msgstr "----အတွက်မှတ်တမ်း အသစ်တစ်ခု ဖန်တီးပါ။"
 
-msgid "Create a new record for a missing person"
-msgstr "ေပ်ာက္ဆံုးေနသာသူတစ္ေယာက္အတြက္ မွတ္တမ္းတစ္ခု ဖန္တီးပါ။"
-
 msgid "Crisis events"
 msgstr ""
 "သဘာ၀ေဘးအႏၲရာယ္စသည့္ အခက္အခဲကာလအတြင္း ျဖစ္ပြားေသာ အျဖစ္အပ်က္မ်ား။ (Crisis "
@@ -706,9 +682,6 @@ msgstr "ဤမွတ္တမ္းအား ဖ်က္ပါ။"
 
 msgid "Describe how to identify this person."
 msgstr "အဲဒီသူအား မည္သူမည္၀ါျဖစ္ေႀကာင္း ဘယ္လို ခြဲျခားရမည္ကို ေဖာ္ျပပါ။"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "အဲဒီသူ၏ ရုပ္ပုိင္းဆုိင္ရာပင္ကုိလကၡဏာမ်ားကို ေဖာ္ျပပါ။"
 
 msgid "Description"
 msgstr "ေဖၚျပခ်က္"
@@ -772,13 +745,16 @@ msgid "Expiry date of this record"
 msgstr "ဤမွတ္တမ္း၏ သက္တမ္းကုန္ဆံုးမည့္ရက္။"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
 msgstr ""
-"သက္တမ္းကုန္ဆံုးမည့္ရက္အား ရက္ေပါင္း%(extension_days)s ရက္ ထပ္မံ "
-"တိုးထည့္လိုက္ပါ။"
 
 msgid "Family name"
 msgstr "Family name ခေါ်မိသားစုနာမည်။"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "ဒီလူ၏အေႀကာင္း အပ္ဒိတ္ updates မ်ားကို အျမဲမျပတ္ ရရွိျခင္း။"
@@ -801,11 +777,11 @@ msgstr ""
 msgid "Full name"
 msgstr "နာမည္ အျပည့္အစံု။"
 
-msgid "Get a visual challenge"
-msgstr "႐ုပ္ပံု စိန္ေခၚမႈ( a visual challenge)ကို ရယူပါ။"
-
 msgid "Given name"
 msgstr "ပေးထားသော နာမည်။"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder ခေါ် ဂူဂယ်၏ လူရှာဖွေပေးသည့် ၀န်ဆောင်မှု။"
@@ -844,6 +820,9 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "ဒီလူႏွင့္ပတ္သတ္ၿပီး စိတ္၀င္စားေသာသူမ်ားက၊ သင့္ကို ဘယ္လိုဆက္\n"
 "သြယ္ႏိုင္သလဲ။"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "ကၽြန္ေတာ္(ကၽြန္မ) သတင္းအခ်က္အလက္မ်ားကို ရွာေဖြေနပါတယ္။"
@@ -995,9 +974,6 @@ msgstr ""
 msgid "Name"
 msgstr "နာမည်။"
 
-msgid "Name (required)"
-msgstr "နာမည် (လိုအပ်သည်။)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "နာမည္ လုိပါသည္။ ေက်းဇူးၿပဳၿပီး ေနာက္ျပန္သြား၍ ထပ္ႀကိဳးစားႀကည့္\n"
@@ -1024,6 +1000,9 @@ msgstr "%(id_str)s.အိုင္ဒီပါေသာ မွတ္စုမရ
 
 msgid "No notes have been posted"
 msgstr "မည်သည့် မှတ်စုမှ တင်မထားပါ။"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1110,6 +1089,9 @@ msgstr "ဖုန်းနံပါတ်။"
 msgid "Photo"
 msgstr "ဓာတ္ပံု။"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1119,6 +1101,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "ခႏၶာကိုယ္ေပၚရွိ အမွတ္အသားမ်ား။"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1277,23 +1264,33 @@ msgstr ""
 "အဲဒီလူ ႏွင့္ပတ္သတ္ၿပီး လူတစ္ေယာက္က သတင္းအခ်က္အလက္ေတြ\n"
 "ရွာေဖြေနတယ္။"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "ဤမှတ်တမ်း၏ Source ခေါ် မူရင်းနေရာ။"
-
-msgid "Source of this record (required)"
-msgstr "ဤမှတ်တမ်း၏ Source ခေါ် မူရင်းနေရာ။ (လိုအပ်သည်။)"
 
 msgid "Status"
 msgstr "စေတးတပ္ ေခၚ လက္ရွိအေျခအေန (Status)"
 
-msgid "Status of this person"
-msgstr "ဒီလူ၏ လက္ရွိအေျခအေန (Status)"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "လမ်းနာမည်။"
 
 msgid "Street name only, no number"
 msgstr "လမ်းနာမည်သာ၊ လမ်းနံပါတ်မပါ။"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr ""
@@ -1316,9 +1313,6 @@ msgstr "လိပ္စာသို ့သြားပါ။"
 
 msgid "Switch to lat/long"
 msgstr "လတၱီတြဒ္၊ေလာင္ဂ်ီတြဒ္ မ်ည္းမ်ားသို ့ သြားပါ။"
-
-msgid "Tell us the status of this person"
-msgstr "ဒီလူ၏ေနာက္ဆံုး စေတးတပ္ အေနအထားကို ကၽြႏ္ုပ္တို ့အားေျပာျပပါ။"
 
 msgid "Terms of Service"
 msgstr "၀န္ေဆာင္မႈမ်ား၏ သတ္မွတ္ခ်က္မ်ား။ (Terms of Service)"
@@ -1503,9 +1497,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "လိပ်စာတစ်ခုအား ရိုက်ထည့်ပါ။"
 
-msgid "Type what you hear:"
-msgstr "သင် ဘာကြားထားရသလဲဆိုတာ ရိုက်ထည့်ပါ။"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1547,9 +1538,6 @@ msgstr "ဒီမွတ္တမ္းက ဘယ္အခ်ိန္မွာ �
 
 msgid "Where did this information come from?"
 msgstr "ဒီသတင္းအခ်က္အလက္က ဘယ္ကေနရတာလဲ။"
-
-msgid "Where is this person from?"
-msgstr "ဒီလူက ဘယ္ကလဲ။"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1665,8 +1653,8 @@ msgstr "သင်၏ အီးမေးလ်လိပ်စာ။"
 msgid "Your email"
 msgstr "သင့်အီးမေးလ်"
 
-msgid "Your name"
-msgstr "သင့်နာမည်။"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1747,6 +1735,9 @@ msgstr ""
 "[Person Finder]  %(full_name)s ၏ ေနာက္ဆံုးအေနအထား အပ္ဒိတ္ (Status update)"
 " ကို သိရွိရန္ အီးေမးလ္လိပ္စာျဖင့္ သင္စာရင္းသြင္းထားသည္။ subscribe "
 "လုပ္ထားသည္။"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "အမ်ိဳးသမီး"

@@ -129,66 +129,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    გაფრთხილება: ამ ჩანაწერს ვადა %(expiration_days)s "
-"დღეზე ადრე ამოეწურება.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    გაფრთხილება: ამ ჩანაწერს ვადა ერთ დღეზე ნაკლებ დროში "
-"ამოეწურება.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            არჩეულია %(dup_count)s ჩანაწერი\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s-ს აქვს ამ საძიებო სიტყვის შესატყვისი "
-"ძიების შედეგ(ებ)ი.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        %(full_name)s-ის ჩანაწერების მსგავსი ჩანაწერები\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        ძიების შედეგები მოთხოვნაზე: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -279,16 +266,6 @@ msgstr ""
 "      გთხოვთ, დაუკავშირდეთ თავდაპირველ წყაროს.\n"
 "      თავდაპირველი ჩანაწერი იხილეთ:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      მოთხოვნაზე %(query)s შედეგები ვერ მოიძებნა\n"
 "    "
 
 #, python-format
@@ -577,9 +554,6 @@ msgstr "დაახლოებით კიდევ 6 თვე (180 დღ�
 msgid "About Google Person Finder"
 msgstr "Google-ის დაკარგული ადამიანების ძებნის სერვისის შესახებ"
 
-msgid "About you (required)"
-msgstr "თქვენ შესახებ (აუცილებელი)"
-
 msgid "Administration"
 msgstr "ადმინისტრაცია"
 
@@ -652,6 +626,11 @@ msgstr "გაუქმება"
 msgid "City"
 msgstr "ქალაქი"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "დააწკაპუნეთ აქ შედეგების სანახავად."
 
@@ -675,9 +654,6 @@ msgstr "ახალი ჩანაწერის შექმნა"
 msgid "Create a new record for"
 msgstr "ახალი ჩანაწერის შექმნა პიროვნებაზე:"
 
-msgid "Create a new record for a missing person"
-msgstr "ახალი ჩანაწერის შექმნა დაკარგული პიროვნების შესახებ"
-
 msgid "Crisis events"
 msgstr "კრიზისული მოვლენები"
 
@@ -696,9 +672,6 @@ msgstr "ამ ჩანაწერის წაშლა"
 
 msgid "Describe how to identify this person."
 msgstr "აღწერეთ, როგორ შეიძლება ამ პიროვნების იდენტიფიკაცია."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "აღწერეთ ამ პიროვნების ფიზიკური ნიშან-თვისებები."
 
 msgid "Description"
 msgstr "აღწერა"
@@ -760,11 +733,16 @@ msgid "Expiry date of this record"
 msgstr "ამ ჩანაწერის ვადა"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "ვადის გაგრძელება %(extension_days)s დღით"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "გვარი"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "არხი ან განახლებები ამ პიროვნების შესახებ"
@@ -785,11 +763,11 @@ msgstr ""
 msgid "Full name"
 msgstr "სრული სახელი"
 
-msgid "Get a visual challenge"
-msgstr "ვიზუალური შემოწმება"
-
 msgid "Given name"
 msgstr "სახელი"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google-ის დაკარგული ადამიანების ძებნა"
@@ -823,6 +801,9 @@ msgstr "როგორ შეიძლება ამ პიროვნებ
 
 msgid "How others who are interested in this person can contact you"
 msgstr "როგორ დაგიკავშირდნენ ამ პიროვნებით დაინტერესებული სხვა ადამიანები"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "მე ვეძებ ინფორმაციას"
@@ -962,9 +943,6 @@ msgstr ""
 msgid "Name"
 msgstr "სახელი"
 
-msgid "Name (required)"
-msgstr "სახელი (აუცილებელი)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "სახელი აუცილებელია.  გთხოვთ, დაბრუნდეთ და სცადოთ ხელახლა."
 
@@ -989,6 +967,9 @@ msgstr "შენიშვნა ID-ით %(id_str)s არ არის."
 
 msgid "No notes have been posted"
 msgstr "შენიშვნები არ არის გამოქვეყნებული"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1072,6 +1053,9 @@ msgstr "ტელეფონის ნომერი"
 msgid "Photo"
 msgstr "ფოტოები"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1079,6 +1063,11 @@ msgstr "ატვირთული ფოტოს ფორმატი ამ
 
 msgid "Physical characteristics"
 msgstr "ფიზიკური ნიშან-თვისებები"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1218,23 +1207,33 @@ msgstr "ვიღაცამ გამოგზავნა შეტყობ�
 msgid "Someone is seeking information about this person"
 msgstr "ვიღაც ეძებს ინფორმაციას ამ პიროვნების შესახებ"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "ამ ჩანაწერის წყარო"
-
-msgid "Source of this record (required)"
-msgstr "ამ ჩანაწერის წყარო (აუცილებელი)"
 
 msgid "Status"
 msgstr "სტატუსი"
 
-msgid "Status of this person"
-msgstr "ამ პიროვნების სტატუსი"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "ქუჩის სახელი"
 
 msgid "Street name only, no number"
 msgstr "მხოლოდ ქუჩის სახელი, ნომრის გარეშე"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "გამოწერა"
@@ -1251,9 +1250,6 @@ msgstr "გადართვა მისამართზე"
 
 msgid "Switch to lat/long"
 msgstr "გადართვა გრძ/განედზე"
-
-msgid "Tell us the status of this person"
-msgstr "გვითხარით ამ პიროვნების სტატუსი"
 
 msgid "Terms of Service"
 msgstr "მომსახურების პირობები"
@@ -1420,9 +1416,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "აკრიფეთ მისამართი."
 
-msgid "Type what you hear:"
-msgstr "აკრიფეთ, რაც გესმით:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1464,9 +1457,6 @@ msgstr "როდის გაქრეს ეს ჩანაწერი?"
 
 msgid "Where did this information come from?"
 msgstr "საიდან მოვიდა ეს ინფორმაცია?"
-
-msgid "Where is this person from?"
-msgstr "საიდან არის ეს პიროვნება?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1566,8 +1556,8 @@ msgstr "თქვენი ელფოსტის მისამართი:
 msgid "Your email"
 msgstr "თქვენი ელფოსტა"
 
-msgid "Your name"
-msgstr "თქვენი სახელი"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1641,6 +1631,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] თქვენ გამოიწერეთ სტატუსის განახლებები %(full_name)s-ის "
 "შესახებ"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "მდედრობითი"

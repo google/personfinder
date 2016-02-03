@@ -123,66 +123,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    चेतावणी: हे रेकॉर्ड %(expiration_days)s पेक्षा कमी "
-"दिवसांमध्ये कालबाह्य होईल.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    चेतावणी: हे रेकॉर्ड एका दिवसापेक्षा कमी वेळात "
-"कालबाह्य होईल.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s रेकॉर्ड निवडली\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          या क्वेरीशी जुळणारे शोध परिणाम %(search_engine_name)s कडे आहेत."
-"\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        यासारखी रेकॉर्ड: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        यासाठी शोध परिणाम: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -276,16 +263,6 @@ msgstr ""
 "      कृपया मूळ स्त्रोताशी संपर्क साधा.\n"
 "      येथे आपण मूळ रेकॉर्ड पाहू शकता\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      यासाठी परिणाम आढळले नाहीत: %(query)s\n"
 "    "
 
 #, python-format
@@ -572,9 +549,6 @@ msgstr "आतापासून सुमारे 6 महिने (180 द�
 msgid "About Google Person Finder"
 msgstr "Google व्यक्ती शोधक विषयी"
 
-msgid "About you (required)"
-msgstr "आपल्या विषयी (आवश्यक)"
-
 msgid "Administration"
 msgstr "प्रशासन"
 
@@ -649,6 +623,11 @@ msgstr "रद्द करा"
 msgid "City"
 msgstr "शहर"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "परिणाम पाहण्यासाठी येथे क्लिक करा."
 
@@ -670,9 +649,6 @@ msgstr "एक नवीन रेकॉर्ड तयार करा"
 msgid "Create a new record for"
 msgstr "यासाठी एक नवीन रेकॉर्ड तयार करा"
 
-msgid "Create a new record for a missing person"
-msgstr "एका हरविलेल्या व्यक्तीसाठी एक नवीन रेकॉर्ड तयार करा"
-
 msgid "Crisis events"
 msgstr "संकटकालीन इव्हेंट"
 
@@ -691,9 +667,6 @@ msgstr "हे रेकॉर्ड हटवा"
 
 msgid "Describe how to identify this person."
 msgstr "या व्यक्तीस कसे ओळखावे याचे वर्णन करा."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "या व्यक्तीच्या शारीरिक वैशिष्ट्यांचे वर्णन करा."
 
 msgid "Description"
 msgstr "वर्णन"
@@ -753,11 +726,16 @@ msgid "Expiry date of this record"
 msgstr "या रेकॉर्डची कालबाह्यता तारीख"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "कालबाह्यता तारीख %(extension_days)s दिवसांनी विस्तारित करा"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "आडनाव"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "या व्यक्तीविषयी अद्यतनांचे फीड"
@@ -778,11 +756,11 @@ msgstr ""
 msgid "Full name"
 msgstr "पूर्ण नाव"
 
-msgid "Get a visual challenge"
-msgstr "एक दृश्यमान आव्हान मिळवा"
-
 msgid "Given name"
 msgstr "नाव"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google व्यक्ती शोधक"
@@ -816,6 +794,9 @@ msgstr "या व्यक्तीकडे कसे पोहोचू श�
 
 msgid "How others who are interested in this person can contact you"
 msgstr "या व्यक्तीमध्ये स्वारस्य असलेले इतर आपल्याशी संपर्क कसे साधू शकतात"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "मी माहिती शोधत आहे"
@@ -954,9 +935,6 @@ msgstr ""
 msgid "Name"
 msgstr "नाव"
 
-msgid "Name (required)"
-msgstr "नाव (आवश्यक)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "नाव आवश्यक आहे. कृपया परत जा आणि पुन्हा प्रयत्न करा."
 
@@ -981,6 +959,9 @@ msgstr "ID सह कोणतीही टीप नाही: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "कोणत्याही टिपा पोस्ट करण्यात आल्या नाहीत"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1064,6 +1045,9 @@ msgstr "फोन नंबर"
 msgid "Photo"
 msgstr "फोटो"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1073,6 +1057,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "शारीरिक वैशिष्ट्ये"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1212,23 +1201,33 @@ msgstr "ही व्यक्ती हरविली असल्याची
 msgid "Someone is seeking information about this person"
 msgstr "या व्यक्तीविषयी माहिती कोणीतरी शोधत आहे"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "या रेकॉर्डचा स्त्रोत"
-
-msgid "Source of this record (required)"
-msgstr "या रेकॉर्डचा स्त्रोत (आवश्यक)"
 
 msgid "Status"
 msgstr "स्थिती"
 
-msgid "Status of this person"
-msgstr "या व्यक्तीची स्थिती"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "मार्ग नाव"
 
 msgid "Street name only, no number"
 msgstr "केवळ मार्ग नाव, नंबर नाही"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "सदस्यता घ्या"
@@ -1245,9 +1244,6 @@ msgstr "पत्त्यावर स्विच करा"
 
 msgid "Switch to lat/long"
 msgstr "अक्षांश/रेखांश वर स्विच करा"
-
-msgid "Tell us the status of this person"
-msgstr "आम्हाला या व्यक्तीची स्थिती सांगा"
 
 msgid "Terms of Service"
 msgstr "सेवा अटी"
@@ -1411,9 +1407,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "एक पत्ता टाइप करा."
 
-msgid "Type what you hear:"
-msgstr "आपण ऐकता ते टाइप करा:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1455,9 +1448,6 @@ msgstr "हे रेकॉर्ड अदृश्य केव्हा व�
 
 msgid "Where did this information come from?"
 msgstr "ही माहिती कुठून आली?"
-
-msgid "Where is this person from?"
-msgstr "ही व्यक्ती कुठली आहे?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1559,8 +1549,8 @@ msgstr "आपला ई-मेल पत्ता:"
 msgid "Your email"
 msgstr "आपला ईमेल"
 
-msgid "Your name"
-msgstr "आपले नाव"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1626,6 +1616,9 @@ msgstr "[व्यक्ती शोधक] %(full_name)s साठी स्�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[व्यक्ती शोधक] आपण %(full_name)s साठी स्थिती अद्यतनांची सदस्यता घेतली आहे"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "स्त्री"

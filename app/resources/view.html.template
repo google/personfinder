@@ -46,255 +46,246 @@
   {% if not standalone %}
     {% include "map.html.template" %}
   {% endif %}
-  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
-    {{env.hidden_input_tags_for_preserved_query_params|safe}}
-    <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="hidden" name="query" value="{{params.query}}">
-    <div class="view">
 
-      <div class="column start">
-        <div class="fields-table person">
-          <div>
+  <div class="view">
 
-            <h2>
-              {% trans "Identifying information" %}
-              {% if person.provider_name %}<br />
-              ({% trans "Provided by:" %} {{person.provider_name}})
-              {% endif %}
-            </h2>
+    <div class="column start">
+      <div class="fields-table person">
+        <div class="header section">
+          <h1 class="full-name">{{person.full_name_list|first}}
+        </div>
+        <div>
 
-            <div class="name section">
-              <h3>{% trans "Name" %}</h3>
-              <div class="field">
-                <span class="label">{% trans "Full name" %}:</span>
-                <span class="value">{{person.full_name_list|join:"<br>"}}</span>
-              </div>
-              {% if config.use_alternate_names %}
-                <div class="field">
-                  <span class="label">{% trans "Alternate names" %}:</span>
-                  <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
-                </div>
-              {% endif %}
-              <div class="end-multi-columns"></div>
-            </div>
+          <h2>
+            {% if person.provider_name %}<br />
+            ({% trans "Provided by:" %}
+            <span class="provider-name">{{person.provider_name}}</span>)
+            {% endif %}
+          </h2>
 
-            <div class="physical section">
-              <h3>{% trans "Physical characteristics" %}</h3>
+          <div class="name section">
+            <h2>{% trans "Identifying information" %}</h2>
+            {% if config.use_alternate_names %}
               <div class="field">
-                <span class="label">{% trans "Sex" %}:</span>
-                <span class="value">{{person.sex_text}}</span>
-              </div>
-              {% comment %}
-              Don't show the date of birth in the UI for now.
-              <div class="field">
-                <span class="label">{% trans "Date of birth" %}:</span>
-                <span class="value">{{person.date_of_birth}}</span>
-              </div>
-              {% endcomment %}
-              <div class="field">
-                <span class="label">{% trans "Age" %}:</span>
-                <span class="value">{{person.age}}</span>
-              </div>
-              <div class="end-multi-columns"></div>
-            </div>
-
-            <div class="address section">
-              <h3>{% trans "Home address" %}</h3>
-              <div class="field">
-                <span class="label">{% trans "Street name" %}:</span>
-                <span class="value">{{person.home_street}}</span>
-              </div>
-              <div class="field">
-                <span class="label">{% trans "Neighborhood" %}:</span>
-                <span class="value">{{person.home_neighborhood}}</span>
-              </div>
-              <div class="field">
-                <span class="label">{% trans "City" %}:</span>
-                <span class="value">{{person.home_city}}</span>
-              </div>
-              <div class="field">
-                <span class="label">{% trans "Province or state" %}:</span>
-                <span class="value">{{person.home_state}}</span>
-              </div>
-              {% if config.use_postal_code %}
-                <div class="field">
-                  <span class="label">{% trans "Postal or zip code" %}:</span>
-                  <span class="value">{{person.home_postal_code}}</span>
-                </div>
-              {% endif %}
-              <div class="field">
-                <span class="label">{% trans "Home country" %}:</span>
-                <span class="value">{{person.home_country}}</span>
-              </div>
-              <div class="end-multi-columns"></div>
-            </div>
-
-            {% if person.description %}
-              <div class="description section">
-                <h3>{% trans "Description" %}</h3>
-                <div class="field">
-                  <span>
-                    <textarea readonly="readonly" cols=40 rows=5
-                      >{{person.description}}</textarea>
-                  </span>
-                </div>
-                <div class="end-multi-columns"></div>
+                <span class="label">{% trans "Alternate names" %}:</span>
+                <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
               </div>
             {% endif %}
+            <div class="field">
+              <span class="label">{% trans "Sex" %}:</span>
+              <span class="value">{{person.sex_text}}</span>
+            </div>
+            {% comment %}
+            Don't show the date of birth in the UI for now.
+            <div class="field">
+              <span class="label">{% trans "Date of birth" %}:</span>
+              <span class="value">{{person.date_of_birth}}</span>
+            </div>
+            {% endcomment %}
+            <div class="field">
+              <span class="label">{% trans "Age" %}:</span>
+              <span class="value">{{person.age}}</span>
+            </div>
+            <div class="end-multi-columns"></div>
+          </div>
 
-            {% if person.photo_url %}
-              <div class="photo section">
-                <h3>{% trans "Photo" %}</h3>
+          <div class="address section">
+            <h2>{% trans "Home address" %}</h2>
+            <div class="field">
+              <span class="label">{% trans "Street name" %}:</span>
+              <span class="value">{{person.home_street}}</span>
+            </div>
+            <div class="field">
+              <span class="label">{% trans "Neighborhood" %}:</span>
+              <span class="value">{{person.home_neighborhood}}</span>
+            </div>
+            <div class="field">
+              <span class="label">{% trans "City" %}:</span>
+              <span class="value">{{person.home_city}}</span>
+            </div>
+            <div class="field">
+              <span class="label">{% trans "Province or state" %}:</span>
+              <span class="value">{{person.home_state}}</span>
+            </div>
+            {% if config.use_postal_code %}
+              <div class="field">
+                <span class="label">{% trans "Postal or zip code" %}:</span>
+                <span class="value">{{person.home_postal_code}}</span>
+              </div>
+            {% endif %}
+            <div class="field">
+              <span class="label">{% trans "Home country" %}:</span>
+              <span class="value">{{person.home_country}}</span>
+            </div>
+            <div class="end-multi-columns"></div>
+          </div>
+
+          {% if person.description %}
+            <div class="description section">
+              <h2>{% trans "Description" %}</h2>
+              <div class="field">
+                <textarea readonly="readonly" rows=5
+                  >{{person.description}}</textarea>
+              </div>
+              <div class="end-multi-columns"></div>
+            </div>
+          {% endif %}
+
+          {% if person.photo_url %}
+            <div class="photo section">
+              <h2>{% trans "Photo" %}</h2>
+              <div class="field">
+                <span class="centered-photo">
+                  <a href="{{person.photo_url_no_scheme}}">
+                    {% if person.should_show_inline_photo %}
+                      <img src="{{person.photo_url_no_scheme}}"
+                          class="photo" alt="[PHOTO]">
+                    {% else %}
+                      {% trans "Photo (external site; normal connection fee may apply)" %}
+                    {% endif %}
+                  </a>
+                </span>
+              </div>
+              <div class="end-multi-columns"></div>
+            </div>
+          {% endif %}
+
+          {% if person.profile_pages %}
+            <div class="profile section">
+              <h2>{% trans "Profile Pages" %}</h2>
+              {% for profile_page in person.profile_pages %}
                 <div class="field">
-                  <span>
-                    <a href="{{person.photo_url_no_scheme}}">
-                      {% if person.should_show_inline_photo %}
-                        <img src="{{person.photo_url_no_scheme}}"
-                            class="photo" alt="[PHOTO]">
-                      {% else %}
-                        {% trans "Photo (external site; normal connection fee may apply)" %}
-                      {% endif %}
+                  <span class="label">
+                    {% trans "Profile page" %} {{forloop.counter}}:
+                  </span>
+                  <span class="value">
+                    {% if profile_page.icon_url %}
+                      <img src="{{profile_page.icon_url}}"
+                          class="icon" alt="">
+                    {% endif %}
+                    <a href="{{profile_page.url}}" target="_blank">
+                      {{profile_page.name}}
                     </a>
                   </span>
                 </div>
-                <div class="end-multi-columns"></div>
-              </div>
-            {% endif %}
+              {% endfor %}
+              <div class="end-multi-columns"></div>
+            </div>
+          {% endif %}
 
-            {% if person.profile_pages %}
-              <div class="profile section">
-                <h3>{% trans "Profile Pages" %}</h3>
-                {% for profile_page in person.profile_pages %}
-                  <div class="field">
-                    <span class="label">
-                      {% trans "Profile page" %} {{forloop.counter}}:
-                    </span>
-                    <span class="value">
-                      {% if profile_page.icon_url %}
-                        <img src="{{profile_page.icon_url}}"
-                            class="icon" alt="">
-                      {% endif %}
-                      <a href="{{profile_page.url}}" target="_blank">
-                        {{profile_page.name}}
-                      </a>
-                    </span>
-                  </div>
-                {% endfor %}
-                <div class="end-multi-columns"></div>
-              </div>
-            {% endif %}
-
-            <div class="source section">
-              <h3>{% trans "Source of this record" %}</h3>
+          <div class="source section">
+            <h2>{% trans "Source of this record" %}</h2>
+            <div class="field">
+              <span class="label">{% trans "Author's name" %}:</span>
+              <span class="value">{{person.author_name}}</span>
+            </div>
+            {% if env.enable_captcha %}
               <div class="field">
-                <span class="label">{% trans "Author's name" %}:</span>
-                <span class="value">{{person.author_name}}</span>
+                <span class="label">
+                  {% trans "Author's phone number" %}:
+                </span>
+                <span class="value">
+                  {% if show_private_info %}
+                    {{person.author_phone}}</span>
+                  {% else %}
+                    {% if person.author_phone %}
+                      <a href="{{reveal_url}}">
+                        {% trans "(click to reveal)" %}</a>
+                    {% endif %}
+                  {% endif %}
+                </span>
               </div>
-              {% if env.enable_captcha %}
-                <div class="field">
-                  <span class="label">
-                    {% trans "Author's phone number" %}:
-                  </span>
-                  <span class="value">
-                    {% if show_private_info %}
-                      {{person.author_phone}}</span>
-                    {% else %}
-                      {% if person.author_phone %}
-                        <a href="{{reveal_url}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
+              <div class="field">
+                <span class="label">
+                  {% trans "Author's e-mail address" %}:
+                </span>
+                <span class="value">
+                  {% if show_private_info %}
+                    {{person.author_email}}
+                  {% else %}
+                    {% if person.author_email %}
+                      <a href="{{reveal_url}}">
+                        {% trans "(click to reveal)" %}</a>
                     {% endif %}
-                  </span>
-                </div>
+                  {% endif %}
+                </span>
+              </div>
+            {% endif %}
+            {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
+              <div class="field">
+                <span class="label">{% trans "Original URL" %}:</span>
+                <span class="value">
+                  <a href="{{person.source_url}}"
+                    >{% trans "Link" %}</a>
+                </span>
+              </div>
+              <div class="field">
+                <span class="label">
+                  {% trans "Original posting date" %}:
+                </span>
+                <span class="value">
+                  {% if person.source_date_local_string and person.source_time_local_string %}
+                    {{person.source_date_local_string}}<br/>
+                    {{person.source_time_local_string}}
+                    {{config.time_zone_abbreviation|default:"UTC"}}
+                  {% endif %}
+                </span>
+              </div>
+              <div class="field">
+                <span class="label">{% trans "Original site name" %}:</span>
+                <span class="value">{{person.source_name}}</span>
+              </div>
+              <div class="field">
+                <span class="label">
+                  {% trans "Expiry date of this record" %}:
+                </span>
+                <span class="value">
+                  {% if person.expiry_date_local_string and person.expiry_time_local_string %}
+                    {{person.expiry_date_local_string}}<br/>
+                    {{person.expiry_time_local_string}}
+                    {{config.time_zone_abbreviation|default:"UTC"}}
+                  {% endif %}
+                </span>
+              </div>
+              {% if person.expiry_date_local and env.repo_test_mode %}
                 <div class="field">
-                  <span class="label">
-                    {% trans "Author's e-mail address" %}:
-                  </span>
-                  <span class="value">
-                    {% if show_private_info %}
-                      {{person.author_email}}
-                    {% else %}
-                      {% if person.author_email %}
-                        <a href="{{reveal_url}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
-                    {% endif %}
-                  </span>
+                  <div class="warning">
+                    {% trans "While test mode is in effect, records that are over 24 hours old are deleted regardless of the expiry date." %}
+                  </div>
                 </div>
               {% endif %}
-              {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
+            {% endif %}
+            <div class="end-multi-columns"></div>
+          </div>
+
+          {% if linked_person_info %}
+            <div class="other section">
+              <h2>{% trans "Possible duplicates" %}</h2>
+              {% for linked_person in linked_person_info %}
                 <div class="field">
-                  <span class="label">{% trans "Original URL" %}:</span>
-                  <span class="value">
-                    <a href="{{person.source_url}}"
-                      >{% trans "Link" %}</a>
+                  <span>
+                    <a href="{{linked_person.view_url}}">
+                      {{linked_person.name}}
+                    </a>
+                    <span class="tracking">
+                      ({{linked_person.id}})
+                    </span>
                   </span>
                 </div>
-                <div class="field">
-                  <span class="label">
-                    {% trans "Original posting date" %}:
-                  </span>
-                  <span class="value">
-                    {% if person.source_date %}
-                      {{person.source_date_local_string}}
-                      {{config.time_zone_abbreviation|default:"UTC"}}
-                    {% endif %}
-                  </span>
-                </div>
-                <div class="field">
-                  <span class="label">{% trans "Original site name" %}:</span>
-                  <span class="value">{{person.source_name}}</span>
-                </div>
-                <div class="field">
-                  <span class="label">
-                    {% trans "Expiry date of this record" %}:
-                  </span>
-                  <span class="value">
-                    {% if person.expiry_date_local_string %}
-                      {{person.expiry_date_local_string}}
-                      {{config.time_zone_abbreviation|default:"UTC"}}
-                    {% endif %}
-                  </span>
-                </div>
-                {% if person.expiry_date_local and env.repo_test_mode %}
-                  <div class="field">
-                    <div class="warning">
-                      {% trans "While test mode is in effect, records that are over 24 hours old are deleted regardless of the expiry date." %}
-                    </div>
-                  </div>
-                {% endif %}
+              {% endfor %}
+              {% if not params.dupe_notes %}
+              <div class="field">
+                <span><a href="{{dupe_notes_url}}">
+                  {% trans "Show who marked these duplicates" %}
+                </a></span>
+              </div>
               {% endif %}
               <div class="end-multi-columns"></div>
             </div>
+          {% endif %}
 
-            {% if linked_person_info %}
-              <div class="other section">
-                <h3>{% trans "Possible duplicates" %}</h3>
-                {% for linked_person in linked_person_info %}
-                  <div class="field">
-                    <span>
-                      <a href="{{linked_person.view_url}}">
-                        {{linked_person.name}}
-                      </a>
-                      <span class="tracking">
-                        ({{linked_person.id}})
-                      </span>
-                    </span>
-                  </div>
-                {% endfor %}
-                {% if not params.dupe_notes %}
-                <div class="field">
-                  <span><a href="{{dupe_notes_url}}">
-                    {% trans "Show who marked these duplicates" %}
-                  </a></span>
-                </div>
-                {% endif %}
-                <div class="end-multi-columns"></div>
-              </div>
-            {% endif %}
-
-          </div>
-
+        </div>
+        <div class="section">
           {% if env.enable_captcha and extend_url %}
             {% if expiration_days %}
               <div class="warning">
@@ -309,114 +300,123 @@
                 {% endif %}
               </div>
             {% endif %}
-            <div>
-              <input type="button"
-                value="{% blocktrans %}Extend expiration date by {{extension_days}} days{% endblocktrans %}"
-                onclick="javascript:location.href='{{extend_url}}'"
-                id="extend_btn">
+            <div class="links">
+              <a id="extend-btn" href="{{extend_url}}">
+                {% blocktrans %}Extend expiration date by {{extension_days}} days
+                {% endblocktrans %}
+              </a>
             </div>
           {% endif %}
 
           {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Subscribe to updates about this person" %}"
-                onclick="javascript:location.href='{{subscribe_url}}'"
-                id="subscribe_btn">
+            <div class="links">
+              <a id="subscribe-btn" href="{{subscribe_url}}">
+                {% trans "Subscribe to updates about this person" %}
+              </a>
             </div>
           {% endif %}
 
           {% if env.enable_captcha %}
-            <div>
-              <input type="button"
-                value="{% trans "Delete this record" %}"
-                onclick="javascript:location.href='{{delete_url}}'"
-                id="delete_btn">
+            <div class="links">
+              <a id="delete-btn" href="{{delete_url}}">
+                {% trans "Delete this record" %}
+              </a>
             </div>
           {% endif %}
 
           {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
-            <div>
-              <input type="button"
-                value="{% trans "Disable notes on this record" %}"
-                onclick="javascript:location.href='{{disable_notes_url}}'"
-                id="disable_notes_btn">
+            <div class="links">
+            <a id="disable-notes-btn" href="{{disable_notes_url}}">
+              {% trans "Disable notes on this record" %}
+            </a>
             </div>
           {% endif %}
-
         </div>
-        <p>
-        {% if params.query or params.given_name or params.family_name %}
-          <a href="{{results_url}}">
-            {{env.back_chevron}} {% trans "Back to results list" %}
-          </a>
-        {% else %}
-          <a href="{{env.start_url}}">
-            {{env.back_chevron}} {% trans "Back to start" %}
-          </a>
-        {% endif %}
-      </div>
 
-      <div class="column end">
-        {% if notes %}
-          <div class="self-notes">
-            <h2>{% trans "Notes for this person" %}
-              <a href="{{feed_url}}"
-                 title="{% trans "Feed of updates about this person" %}">
-                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
+      </div>
+      <p>
+      {% if params.query or params.given_name or params.family_name %}
+        <a href="{{results_url}}">
+          {{env.back_chevron}} {% trans "Back to results list" %}
+        </a>
+      {% else %}
+        <a href="{{env.start_url}}">
+          {{env.back_chevron}} {% trans "Back to start" %}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="column end">
+      {% if person.notes_disabled %}
+        <form method="get" action="{{env.repo_path}}/enable_notes">
+          {{env.hidden_input_tags_for_preserved_query_params|safe}}
+          <input type="hidden" name="id" value="{{person.record_id}}">
+          <div class="mandatory">
+            <p>{% trans "The author has disabled notes on this record." %}</p>
+            <div class="button button-red">
+              <input type="submit"
+                class="enable-notes"
+                value="{% trans "Enable notes on this record" %}"
+                id="enable_notes_btn">
+            </div>
+          </div>
+        </form>
+      {% else %}
+        <form method="get" action="{{env.repo_path}}/add_note">
+          {{env.hidden_input_tags_for_preserved_query_params|safe}}
+          <input type="hidden" name="id" value="{{person.record_id}}">
+          <div class="button button-blue">
+            <input type="submit"
+              class="add-note"
+              value="{% trans "I Have Information About This Person" %}">
+          </div>
+        </form>
+      {% endif %}
+
+      {% if notes %}
+        <div class="self-notes">
+          <h1>{% trans "Notes for this person" %}
+            <a href="{{feed_url}}"
+               title="{% trans "Feed of updates about this person" %}">
+              <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
+            </a>
+          </h1>
+          {% for note in notes %}
+            {% if params.dupe_notes or not note.linked_person_record_id %}
+              {% include "note.html.template" %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="self-notes">
+          <h2>{% trans "No notes have been posted" %}
+            <a href="{{feed_url}}"
+               title="{% trans "Feed of updates about this person" %}">
+              <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
+            </a>
+          </h2>
+        </div>
+      {% endif %}
+      {% for linked_person in linked_person_info %}
+        {% if linked_person.notes %}
+          <div class="linked-notes">
+            <h2>
+              {% trans "Notes for a possible duplicate" %}
+              <a href="{{linked_person.view_url}}">
+                {{linked_person.name}}
               </a>
             </h2>
-            {% for note in notes %}
-              {% if params.dupe_notes or not note.linked_person_record_id %}
-                {% include "note.html.template" %}
-              {% endif %}
+            {% for note in linked_person.notes %}
+              {% include "note.html.template" %}
             {% endfor %}
           </div>
-        {% else %}
-          <div class="self-notes">
-            <h2>{% trans "No notes have been posted" %}
-              <a href="{{feed_url}}"
-                 title="{% trans "Feed of updates about this person" %}">
-                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
-              </a>
-            </h2>
-          </div>
         {% endif %}
-        {% for linked_person in linked_person_info %}
-          {% if linked_person.notes %}
-            <div class="linked-notes">
-              <h2>
-                {% trans "Notes for a possible duplicate" %}
-                <a href="{{linked_person.view_url}}">
-                  {{linked_person.name}}
-                </a>
-              </h2>
-              {% for note in linked_person.notes %}
-                {% include "note.html.template" %}
-              {% endfor %}
-            </div>
-          {% endif %}
-        {% endfor %}
-        <p>
-        {% if person.notes_disabled %}
-          <div class="mandatory">
-            {% trans "The author has disabled notes on this record." %}
-            <p>
-            <input type="button"
-              value="{% trans "Enable notes on this record" %}"
-              onclick="javascript:location.href='{{enable_notes_url}}'"
-              id="enable_notes_btn">
-          </div>
-        {% else %}
-          <div class="create" role="form">
-            {% include "add_note.html.template" %}
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="end-multi-columns"></div>
+      {% endfor %}
+      <p>
     </div>
-  </form>
+
+    <div class="end-multi-columns"></div>
+  </div>
   <p>
   <div class="custom-message">
     {{env.view_page_custom_html|default:""|safe}}

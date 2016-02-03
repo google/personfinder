@@ -119,64 +119,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    ማስጠንቀቂያ፦ ይህ መዝገብ ከ%(expiration_days)s ባነሱ ቀኖች ጊዜ ውስጥ "
-"ይቃጠላል።\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    ማስጠንቀቂያ፦ ይህ መዝገብ ከ1 ቀን በታች ባለ ጊዜ ውስጥ ይቃጠላል።\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s መዝገቦች ተመርጠዋል\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s ከዚህ መጠይቅ ጋር የሚዛመዱ የፍለጋ ውጤት/ቶች አሉት።\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        ለሚከተለው ጋር የሚመሳሰሉ መዝገቦች፦ %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        የፍለጋ ውጤቶች ለ፦ %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -264,16 +253,6 @@ msgstr ""
 "      የመጀመሪያውን ምንጭ ያግኙ።\n"
 "      የመጀመሪያውን መዝገብ በ%(begin_tag)s%(source_name)s%(end_tag)s\n"
 "      ላይ መመልከት ይችላሉ።\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      ለሚከተለው ምንም ውጤቶች አልተገኙም፦ %(query)s\n"
 "    "
 
 #, python-format
@@ -547,9 +526,6 @@ msgstr "ከ6 ወር (180 ቀኖች) ገደማ በኋላ"
 msgid "About Google Person Finder"
 msgstr "ስለ Google ሰው ማግኛ"
 
-msgid "About you (required)"
-msgstr "ስለእርስዎ (የሚያስፈልግ)"
-
 msgid "Administration"
 msgstr "አስተዳደር"
 
@@ -621,6 +597,11 @@ msgstr "ይቅር"
 msgid "City"
 msgstr "ከተማ"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "ውጤቶችን ለማየት እዚህ ጠቅ ያድርጉ"
 
@@ -642,9 +623,6 @@ msgstr "አዲስ መዝገብ ይፍጠሩ"
 msgid "Create a new record for"
 msgstr "አዲስ መዝገብ ይፍጠሩ ለ"
 
-msgid "Create a new record for a missing person"
-msgstr "ለጠፋ ሰው አዲስ መዝገብ ይፍጠሩ"
-
 msgid "Crisis events"
 msgstr "የአስቸኳይ ጊዜ ክስተቶች"
 
@@ -663,9 +641,6 @@ msgstr "ይህን መዝገብ ይሰርዙ"
 
 msgid "Describe how to identify this person."
 msgstr "ይህን ሰው እንዴት መለየት እንደሚቻል ያብራሩ።"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "የዚህን ሰው አካላዊ ገጽታ ያብራሩ።"
 
 msgid "Description"
 msgstr "ማብራሪያ"
@@ -723,11 +698,16 @@ msgid "Expiry date of this record"
 msgstr "ይህ መዝገብ የሚቃጠልበት ቀን"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "የሚቃጠልበት ቀን በ%(extension_days)s ቀኖች አርዝም"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "የቤተሰብ ስም"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "የዚህ ሰው ዝማኔዎች ምግብ"
@@ -746,11 +726,11 @@ msgstr "ከተንቀሳቃሽ ስልክ ውጪ ለሆኑ ስልኮች እባክ�
 msgid "Full name"
 msgstr "ሙሉ ስም"
 
-msgid "Get a visual challenge"
-msgstr "የምስል ፈተና ያግኙ"
-
 msgid "Given name"
 msgstr "የተሰጠ ስም"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google ሰው ማግኛ"
@@ -782,6 +762,9 @@ msgstr "ይህ ሰው እንዴት ነው አሁን ሊደረስበት የሚች
 
 msgid "How others who are interested in this person can contact you"
 msgstr "ይህን ሰው የሚፈልጉ ሌሎች እንዴት እርስዎን ማግኘት እንደሚችሉ"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "መረጃ እየፈለግሁ ነኝ"
@@ -912,9 +895,6 @@ msgstr "ከ100 በላይ ውጤቶች፣ የመጀመሪያዎቹ 100 ብቻ በ
 msgid "Name"
 msgstr "ስም"
 
-msgid "Name (required)"
-msgstr "ስም (የሚያስፈልግ)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "ስም ያስፈልጋል። እባክዎ ይመለሱና እንደገና ይሞክሩ።"
 
@@ -937,6 +917,9 @@ msgstr "ይህን መታወቂያ የያዘ ምንም ማስታወሻ የለም�
 
 msgid "No notes have been posted"
 msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1018,6 +1001,9 @@ msgstr "ስልክ ቁጥር"
 msgid "Photo"
 msgstr "ፎቶ"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1025,6 +1011,11 @@ msgstr "የተሰቀለው ፎቶ በማይታወቅ ቅርጸት ነው የተ�
 
 msgid "Physical characteristics"
 msgstr "አካላዊ ገጽታ"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1162,23 +1153,33 @@ msgstr "የሆነ ሰው ይህ ሰው እንደጠፋ መረጃ ደርሶታል
 msgid "Someone is seeking information about this person"
 msgstr "የሆነ ሰው ስለዚህ ሰው መረጃ እያፈላለገ ነው"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "የዚህ መዝገብ ምንጭ"
-
-msgid "Source of this record (required)"
-msgstr "የዚህ መዝገብ ምንጭ (የሚያስፈልግ)"
 
 msgid "Status"
 msgstr "ሁኔታ"
 
-msgid "Status of this person"
-msgstr "የዚህ ሰው ሁኔታ"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "የመንገድ ስም"
 
 msgid "Street name only, no number"
 msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "ለደንበኝነት ይመዝገቡ"
@@ -1195,9 +1196,6 @@ msgstr "ወደ አድራሻ ይቀይሩ"
 
 msgid "Switch to lat/long"
 msgstr "ወደ ኬክሮስ/ኬንትሮስ ይቀይሩ"
-
-msgid "Tell us the status of this person"
-msgstr "ስለዚህ ሰው ሁኔታ ይንገሩን"
 
 msgid "Terms of Service"
 msgstr "የአገልግሎት ውል"
@@ -1353,9 +1351,6 @@ msgstr "ከታች አድራሻ ይተይቡ ወይም ካርታውን ይክፈ�
 msgid "Type an address."
 msgstr "አድራሻ ይተይቡ።"
 
-msgid "Type what you hear:"
-msgstr "የሚሰሙትን ነገር ይተይቡ፦"
-
 msgid "URL"
 msgstr "ዩአርኤል"
 
@@ -1397,9 +1392,6 @@ msgstr "መቼ ነው ይህ መዝገብ መጥፋት ያለበት?"
 
 msgid "Where did this information come from?"
 msgstr "ይህ መረጃ ከዬት ነው የመጣው?"
-
-msgid "Where is this person from?"
-msgstr "ይህ ሰው ከዬት ነው የመጣው?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1495,8 +1487,8 @@ msgstr "የእርስዎ ኢሜይል አድራሻ፦"
 msgid "Your email"
 msgstr "የእርስዎ ኢሜይል"
 
-msgid "Your name"
-msgstr "የእርስዎ ስም"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1557,6 +1549,9 @@ msgstr "[ሰው ማግኛ] የ%(full_name)s ሁኔታ ዝማኔ"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ሰው ማግኛ] ለ%(full_name)s ሁኔታ ዝማኔዎች በደንበኝነት ተመዝግበዋል"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "ሴት"

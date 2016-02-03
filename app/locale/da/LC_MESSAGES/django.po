@@ -122,66 +122,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Advarsel! Denne journal udløber om mindre end "
-"%(expiration_days)s dage.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Advarsel! Denne journal udløber om mindre end en dag."
-"\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s journaler er valgt\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s har søgeresultater, der matcher denne "
-"forespørgsel.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Journaler, der ligner: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Søgeresultater for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -272,16 +259,6 @@ msgstr ""
 "      skal du kontakte den oprindelige kilde.\n"
 "      Du kan se den oprindelige journal på\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Der blev ikke fundet nogen resultater for: %(query)s\n"
 "    "
 
 #, python-format
@@ -564,9 +541,6 @@ msgstr "Omkring seks måneder (180 dage) fra nu"
 msgid "About Google Person Finder"
 msgstr "Om Google Person Finder"
 
-msgid "About you (required)"
-msgstr "Om dig (skal angives)"
-
 msgid "Administration"
 msgstr "Administration"
 
@@ -640,6 +614,11 @@ msgstr "Annuller"
 msgid "City"
 msgstr "By"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Klik her for at se resultaterne."
 
@@ -663,9 +642,6 @@ msgstr "Opret en ny journal"
 msgid "Create a new record for"
 msgstr "Opret en ny journal for"
 
-msgid "Create a new record for a missing person"
-msgstr "Opret en ny journal for en savnet person"
-
 msgid "Crisis events"
 msgstr "Krisesituationer"
 
@@ -684,9 +660,6 @@ msgstr "Slet denne journal"
 
 msgid "Describe how to identify this person."
 msgstr "Beskriv, hvordan man kan identificere denne person."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Beskriv denne persons fysiske træk."
 
 msgid "Description"
 msgstr "Beskrivelse"
@@ -746,11 +719,16 @@ msgid "Expiry date of this record"
 msgstr "Udløbsdato for denne journal"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Forlæng udløbsdato med %(extension_days)s dage"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Efternavn"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed med opdateringer om denne person"
@@ -771,11 +749,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Fulde navn"
 
-msgid "Get a visual challenge"
-msgstr "Få en visuel udfordring"
-
 msgid "Given name"
 msgstr "Fornavn"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -811,6 +789,9 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Sådan kan andre, der er interesseret i denne person, komme i kontakt med "
 "dig"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Jeg søger oplysninger"
@@ -949,9 +930,6 @@ msgstr ""
 msgid "Name"
 msgstr "Navn"
 
-msgid "Name (required)"
-msgstr "Navn (påkrævet)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Du skal angive et navn. Gå tilbage, og prøv igen."
 
@@ -976,6 +954,9 @@ msgstr "Der er ingen note med dette id: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Der er ikke indsendt nogen noter"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1059,6 +1040,9 @@ msgstr "Telefonnummer"
 msgid "Photo"
 msgstr "Billede"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1068,6 +1052,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Fysiske karakteristika"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1205,23 +1194,33 @@ msgstr "Nogen har meldt denne person savnet."
 msgid "Someone is seeking information about this person"
 msgstr "Nogen søger oplysninger om denne person"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Kilde til denne journal"
-
-msgid "Source of this record (required)"
-msgstr "Kilde til denne journal (skal angives)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Personstatus"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Gade"
 
 msgid "Street name only, no number"
 msgstr "Kun gade, intet nummer"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abonner"
@@ -1238,9 +1237,6 @@ msgstr "Skift til adresse"
 
 msgid "Switch to lat/long"
 msgstr "Skift til breddegrad/længdegrad"
-
-msgid "Tell us the status of this person"
-msgstr "Fortæl os om denne persons status"
 
 msgid "Terms of Service"
 msgstr "Servicevilkår"
@@ -1406,9 +1402,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Indtast en adresse."
 
-msgid "Type what you hear:"
-msgstr "Indtast det, du hører:"
-
 msgid "URL"
 msgstr "Webadresse"
 
@@ -1450,9 +1443,6 @@ msgstr "Hvornår bør denne journal forsvinde?"
 
 msgid "Where did this information come from?"
 msgstr "Hvor stammer disse oplysninger fra?"
-
-msgid "Where is this person from?"
-msgstr "Hvor kommer denne person fra?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1554,8 +1544,8 @@ msgstr "Din e-mailadresse:"
 msgid "Your email"
 msgstr "Din e-mailadresse"
 
-msgid "Your name"
-msgstr "Dit navn"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1616,6 +1606,9 @@ msgstr "[Person Finder] Statusopdatering for %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Du har abonneret på statusopdateringer for %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "kvinde"

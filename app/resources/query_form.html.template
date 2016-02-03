@@ -18,8 +18,10 @@
   <div class="fields-table query {{params.role}}" role="form">
       <div class="instructions">
         {% ifequal params.role 'provide' %}
-          <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
-          <div class="{{params.error}}">
+          <div class="header">
+            <h1>{% trans "I have information about someone" %}</h1>
+          </div>
+          <div class="{{params.error}} help-text">
             {# TODO(ryok): rename to use_full_name_only #}
             {% if config.use_family_name %}
               {% trans "Enter the person's given and family names." %}
@@ -28,8 +30,10 @@
             {% endif %}
           </div>
         {% else %}
-          <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          <div class="{{params.error}}">
+          <div class="header">
+            <h1>{% trans "I'm looking for someone" %}</h1>
+          </div>
+          <div class="{{params.error}} help-text">
             {% if config.jp_mobile_carrier_redirect %}
               {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
             {% else %}
@@ -128,7 +132,7 @@
         {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}
       </div>
      {% endifequal %}
-      <div class="submit">
+      <div class="button button-blue">
         {% ifequal params.role 'provide' %}
           {% if env.use_short_buttons %}
             <input type="submit" value="{% trans "Provide information" %}">

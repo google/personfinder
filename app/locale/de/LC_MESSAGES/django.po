@@ -126,66 +126,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Achtung: Dieser Datensatz läuft in weniger als "
-"%(expiration_days)s Tagen ab.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Achtung: Dieser Datensatz läuft in weniger als einem "
-"Tag ab.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s Datensätze ausgewählt\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s bietet Suchergebnisse, die dieser "
-"Suchanfrage entsprechen.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Datensätze ähnlich wie: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Suchergebnisse für: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -275,16 +262,6 @@ msgstr ""
 "      Wenn Sie ihn endgültig löschen möchten, wenden Sie sich bitte an "
 "die Originalquelle. Den Originaldatensatz finden Sie unter "
 "%(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Keine Ergebnisse für: %(query)s\n"
 "    "
 
 #, python-format
@@ -562,9 +539,6 @@ msgstr "In ca. 6 Monaten (180 Tagen)"
 msgid "About Google Person Finder"
 msgstr "Über Google Vermisstensuche"
 
-msgid "About you (required)"
-msgstr "Meine Daten (erforderlich)"
-
 msgid "Administration"
 msgstr "Verwaltung"
 
@@ -639,6 +613,11 @@ msgstr "Abbrechen"
 msgid "City"
 msgstr "Stadt"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Klicken Sie hier, um die Ergebnisse anzusehen."
 
@@ -662,9 +641,6 @@ msgstr "Neuen Datensatz erstellen"
 msgid "Create a new record for"
 msgstr "Neuen Datensatz erstellen für"
 
-msgid "Create a new record for a missing person"
-msgstr "Neuen Datensatz für eine vermisste Person erstellen"
-
 msgid "Crisis events"
 msgstr "Krisensituationen"
 
@@ -685,9 +661,6 @@ msgstr "Datensatz löschen"
 
 msgid "Describe how to identify this person."
 msgstr "Beschreiben Sie, wie diese Person identifiziert werden kann."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Beschreiben Sie das Aussehen der gesuchten Person."
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -749,11 +722,16 @@ msgid "Expiry date of this record"
 msgstr "Ablaufdatum dieses Datensatzes"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Ablaufdatum um %(extension_days)s Tage verlängern"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Nachname"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed mit Updates zu dieser Person"
@@ -774,11 +752,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Vollständiger Name"
 
-msgid "Get a visual challenge"
-msgstr "Captcha abrufen"
-
 msgid "Given name"
 msgstr "Vorname"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Vermisstensuche"
@@ -814,6 +792,9 @@ msgstr "Wie kann diese Person jetzt erreicht werden?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "So können andere, die Interesse an dieser Person haben, Sie kontaktieren:"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ich suche nach Informationen."
@@ -956,9 +937,6 @@ msgstr ""
 msgid "Name"
 msgstr "Name"
 
-msgid "Name (required)"
-msgstr "Name (erforderlich)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Die Eingabe des Namens ist erforderlich. Bitte gehen Sie zurück und "
@@ -983,6 +961,9 @@ msgstr "Keine Notiz mit der ID: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "Es wurden keine Notizen gepostet."
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1069,6 +1050,9 @@ msgstr "Telefonnummer"
 msgid "Photo"
 msgstr "Foto"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1078,6 +1062,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Aussehen"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1219,23 +1208,33 @@ msgstr "Jemand hat gemeldet, dass diese Person vermisst wird."
 msgid "Someone is seeking information about this person"
 msgstr "Jemand sucht nach Informationen zu dieser Person."
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Quelle dieses Datensatzes"
-
-msgid "Source of this record (required)"
-msgstr "Quelle dieses Datensatzes (erforderlich)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Status dieser Person"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Straßenname"
 
 msgid "Street name only, no number"
 msgstr "Nur Straßenname, keine Hausnummer"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abonnieren"
@@ -1252,9 +1251,6 @@ msgstr "Zur Adresse wechseln"
 
 msgid "Switch to lat/long"
 msgstr "Zur Längen-/Breitengradansicht wechseln"
-
-msgid "Tell us the status of this person"
-msgstr "Teilen Sie uns den Status dieser Person mit."
 
 msgid "Terms of Service"
 msgstr "Nutzungsbedingungen"
@@ -1428,9 +1424,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Geben Sie eine Adresse ein."
 
-msgid "Type what you hear:"
-msgstr "Geben Sie das Gehörte ein:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1472,9 +1465,6 @@ msgstr "Wann soll dieser Datensatz nicht mehr angezeigt werden?"
 
 msgid "Where did this information come from?"
 msgstr "Woher stammen diese Informationen?"
-
-msgid "Where is this person from?"
-msgstr "Woher stammt diese Person?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1578,8 +1568,8 @@ msgstr "Meine E-Mail-Adresse:"
 msgid "Your email"
 msgstr "Meine E-Mail-Adresse"
 
-msgid "Your name"
-msgstr "Mein Name"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1647,6 +1637,9 @@ msgstr "[Vermisstensuche] Statusupdate für %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Vermisstensuche] Sie haben Statusupdates für %(full_name)s abonniert."
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "weiblich"

@@ -121,63 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    警告: この記録は %(expiration_days)s 日以内に期限切れとなります。\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    警告: この 記録は 1 日以内に期限切れとなります。\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s 件の記録が選択されています\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          この検索キーワードと一致する検索結果が %(search_engine_name)s にあります。\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        「%(full_name)s」さんと類似する記録\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        「%(query)s」の検索結果\n"
-"      "
 
 #, python-format
 msgid ""
@@ -265,16 +255,6 @@ msgstr ""
 "      情報源に連絡してください。\n"
 "      元の記録は %(begin_tag)s%(source_name)s%(end_tag)s で\n"
 "      確認できます。\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      「%(query)s」に一致する検索結果は見つかりませんでした\n"
 "    "
 
 #, python-format
@@ -547,9 +527,6 @@ msgstr "約 6 か月（180 日）後"
 msgid "About Google Person Finder"
 msgstr "Google パーソンファインダーについて"
 
-msgid "About you (required)"
-msgstr "あなたについて（必須）"
-
 msgid "Administration"
 msgstr "管理"
 
@@ -618,6 +595,11 @@ msgstr "キャンセル"
 msgid "City"
 msgstr "市区町村"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "結果を表示するにはここをクリックしてください。"
 
@@ -639,9 +621,6 @@ msgstr "新しい記録を作成"
 msgid "Create a new record for"
 msgstr "次の人の新しい記録を作成:"
 
-msgid "Create a new record for a missing person"
-msgstr "行方不明者の新しい記録を作成"
-
 msgid "Crisis events"
 msgstr "災害"
 
@@ -660,9 +639,6 @@ msgstr "この記録を削除"
 
 msgid "Describe how to identify this person."
 msgstr "この人の特徴を入力してください。"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "この人の身体の特徴を入力してください。"
 
 msgid "Description"
 msgstr "説明"
@@ -720,11 +696,16 @@ msgid "Expiry date of this record"
 msgstr "この記録の有効期限"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "有効期限を %(extension_days)s 日延長する"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "姓"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "この人に関する新着情報のフィード"
@@ -743,11 +724,11 @@ msgstr "携帯電話以外の電話の場合は、NTT の 171 サービスをご
 msgid "Full name"
 msgstr "姓名"
 
-msgid "Get a visual challenge"
-msgstr "画像による認証を取得"
-
 msgid "Given name"
 msgstr "名"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google パーソンファインダー (安否情報)"
@@ -779,6 +760,9 @@ msgstr "現在この人と連絡を取ることができる手段を指定して
 
 msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "情報を探している"
@@ -901,9 +885,6 @@ msgstr "100 件以上見つかりました。最初の 100 件のみが表示さ
 msgid "Name"
 msgstr "名前"
 
-msgid "Name (required)"
-msgstr "名前（必須）"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "[名前] は必須です。前に戻って入力してください。"
 
@@ -926,6 +907,9 @@ msgstr "次の ID のメモは見つかりません: %(id_str)s"
 
 msgid "No notes have been posted"
 msgstr "メモはまだありません"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1003,6 +987,9 @@ msgstr "電話番号"
 msgid "Photo"
 msgstr "写真"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1010,6 +997,11 @@ msgstr "アップロードした写真の形式を認識できません。前に
 
 msgid "Physical characteristics"
 msgstr "身体の特徴"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1145,23 +1137,33 @@ msgstr "この人を行方不明者として報告した人がいます"
 msgid "Someone is seeking information about this person"
 msgstr "この人についての情報を求めている人がいます"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "この記録の情報源"
-
-msgid "Source of this record (required)"
-msgstr "この記録の情報源（必須）"
 
 msgid "Status"
 msgstr "状況"
 
-msgid "Status of this person"
-msgstr "この人の状況"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "町名"
 
 msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "新着情報を受け取る"
@@ -1178,9 +1180,6 @@ msgstr "住所に切り替える"
 
 msgid "Switch to lat/long"
 msgstr "緯度経度に切り替える"
-
-msgid "Tell us the status of this person"
-msgstr "この人の状況について教えてください"
 
 msgid "Terms of Service"
 msgstr "利用規約"
@@ -1328,9 +1327,6 @@ msgstr "住所を入力するか下の地図を開き、地図上をクリック
 msgid "Type an address."
 msgstr "住所を入力してください。"
 
-msgid "Type what you hear:"
-msgstr "聞こえたことを入力してください:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1372,9 +1368,6 @@ msgstr "この記録をいつ削除するか指定してください。"
 
 msgid "Where did this information come from?"
 msgstr "この記録の情報源を指定してください。"
-
-msgid "Where is this person from?"
-msgstr "この人の住所を入力してください。"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1468,8 +1461,8 @@ msgstr "あなたのメール アドレス:"
 msgid "Your email"
 msgstr "メール アドレス"
 
-msgid "Your name"
-msgstr "あなたの名前"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1528,6 +1521,9 @@ msgstr "[パーソンファインダー] %(full_name)s さんについての新�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "女性"

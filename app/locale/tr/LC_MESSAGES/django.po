@@ -127,66 +127,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Uyarı: Bu kaydın süresinin bitmesine "
-"%(expiration_days)s günden az kaldı.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Uyarı: Bu kaydın süresinin bitmesine bir günden az "
-"kaldı.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s kayıt seçildi\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s, bu sorguyla eşleşen arama sonuçları "
-"içeriyor.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Şuna Benzer Kayıtlar: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Şunun İçin Arama Sonuçları: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -279,16 +266,6 @@ msgstr ""
 "      lütfen orijinal kaynakla iletişime geçin.\n"
 "      Orijinal kaydı şu adresten görebilirsiniz:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Şunun için arama sonucu bulunamadı: %(query)s\n"
 "    "
 
 #, python-format
@@ -575,9 +552,6 @@ msgstr "Bugünden itibaren yaklaşık 6 ay (180 gün)"
 msgid "About Google Person Finder"
 msgstr "Google Kişi Bulucu Hakkında"
 
-msgid "About you (required)"
-msgstr "Hakkınızda (zorunlu)"
-
 msgid "Administration"
 msgstr "Yönetim"
 
@@ -652,6 +626,11 @@ msgstr "İptal"
 msgid "City"
 msgstr "Şehir"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Sonuçları görüntülemek için burayı tıklayın."
 
@@ -673,9 +652,6 @@ msgstr "Yeni kayıt oluştur"
 msgid "Create a new record for"
 msgstr "Şunun için yeni bir kayıt oluştur:"
 
-msgid "Create a new record for a missing person"
-msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
-
 msgid "Crisis events"
 msgstr "Kriz etkinlikleri"
 
@@ -694,9 +670,6 @@ msgstr "Bu kaydı sil"
 
 msgid "Describe how to identify this person."
 msgstr "Bu kişiyi tarif edin."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Bu kişinin fiziksel özelliklerini tanımlayın."
 
 msgid "Description"
 msgstr "Açıklama"
@@ -756,11 +729,16 @@ msgid "Expiry date of this record"
 msgstr "Bu kaydın süre sonu tarihi"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Süre sonu tarihini %(extension_days)s gün uzat"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Soyadı"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Bu kişi hakkında güncelleme özet akışı"
@@ -781,11 +759,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Tam adı"
 
-msgid "Get a visual challenge"
-msgstr "Görüntülü soru al"
-
 msgid "Given name"
 msgstr "Adı"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Kişi Bulucu"
@@ -819,6 +797,9 @@ msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Bilgi arıyorum"
@@ -955,9 +936,6 @@ msgstr ""
 msgid "Name"
 msgstr "Adı"
 
-msgid "Name (required)"
-msgstr "Adı (zorunlu)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Ad gerekiyor. Lütfen geri dönün ve tekrar deneyin."
 
@@ -980,6 +958,9 @@ msgstr "Şu kimliğe sahip hiç not yok: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Hiç not yayınlanmadı"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1063,6 +1044,9 @@ msgstr "Telefon numarası"
 msgid "Photo"
 msgstr "Fotoğraf"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1072,6 +1056,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Fiziksel özellikler"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1211,23 +1200,33 @@ msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
 msgid "Someone is seeking information about this person"
 msgstr "Birisi bu kişi hakkında bilgi arıyor"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Bu kaydın kaynağı"
-
-msgid "Source of this record (required)"
-msgstr "Bu kaydın kaynağı (zorunlu)"
 
 msgid "Status"
 msgstr "Durum"
 
-msgid "Status of this person"
-msgstr "Bu kişinin durumu"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Sokak adı"
 
 msgid "Street name only, no number"
 msgstr "Yalnızca sokak adı, numara yok"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Abone ol"
@@ -1244,9 +1243,6 @@ msgstr "Adresi göster"
 
 msgid "Switch to lat/long"
 msgstr "Enl./boyl. göster"
-
-msgid "Tell us the status of this person"
-msgstr "Bu kişinin durumu hakkında bilgi verin"
 
 msgid "Terms of Service"
 msgstr "Hizmet Şartları"
@@ -1407,9 +1403,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Bir adres yazın."
 
-msgid "Type what you hear:"
-msgstr "Duyduğunuzu yazın:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1451,9 +1444,6 @@ msgstr "Bu kayıt ne zaman kaldırılmalı?"
 
 msgid "Where did this information come from?"
 msgstr "Bu bilgiler nereden geldi?"
-
-msgid "Where is this person from?"
-msgstr "Bu kişi nereli?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1553,8 +1543,8 @@ msgstr "E-posta adresiniz:"
 msgid "Your email"
 msgstr "E-posta adresiniz"
 
-msgid "Your name"
-msgstr "Adınız"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1624,6 +1614,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Kişi Bulucu] %(full_name)s ile ilgili durum güncellemelerine abone "
 "oldunuz"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "kadın"

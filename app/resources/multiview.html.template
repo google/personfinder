@@ -229,7 +229,7 @@
           </tr>
           <tr>
             <td class="label">{% trans "Original posting date" %}:</td>
-            {% for val in person.source_date_local_string %}
+            {% for val in person.source_datetime_local_string %}
               <td class="field">
                 {% if val %}
                   {{val}}
@@ -261,7 +261,7 @@
   </table>
   &nbsp;
   <div class="column">
-    {% include "add_note.html.template" %}
+    {% include "add_note_base.html.template" %}
   </div>
 </form>
 {% endblock %}

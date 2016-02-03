@@ -124,66 +124,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Эскертүү: бул жазуу %(expiration_days)s күнгө жетпей "
-"жараксыз болуп калат.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Эскертүү: бул жазуу бир күнгө жетпей жараксыз болуп "
-"калат.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s жазуу тандалды\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          бул талапка туура келген %(search_engine_name)s издөө "
-"табылгалары бар\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Буга окшош жазуулар: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        %(query)s үчүн издөө натыйжалары\n"
-"      "
 
 #, python-format
 msgid ""
@@ -274,16 +261,6 @@ msgstr ""
 "      түпнуска булагы менен байланышыңыз.\n"
 "      Жазуунун түпнускасын кийинкиден көрө аласыз:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      %(query)s боюнча эч нерсе табылган жок\n"
 "    "
 
 #, python-format
@@ -560,9 +537,6 @@ msgstr "Азыркыдан тартып 6 айга (180 күнгө) чейин"
 msgid "About Google Person Finder"
 msgstr "Google Киши Издегич тууралуу"
 
-msgid "About you (required)"
-msgstr "Өзүңүз тууралуу (милдеттүү)"
-
 msgid "Administration"
 msgstr "Башкаруу"
 
@@ -635,6 +609,11 @@ msgstr "Жокко чыгаруу"
 msgid "City"
 msgstr "Шаар"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Натыйжаларды көрүш үчүн бул жерди басыңыз."
 
@@ -658,9 +637,6 @@ msgstr "Жаңы жазуу жаратуу"
 msgid "Create a new record for"
 msgstr "Бул үчүн жаңы жазуу жаратуу:"
 
-msgid "Create a new record for a missing person"
-msgstr "Жоголгон киши жөнүндө жаңы жазуу жаратуу"
-
 msgid "Crisis events"
 msgstr "Кризистер"
 
@@ -679,9 +655,6 @@ msgstr "Бул жазууну өчүрүү"
 
 msgid "Describe how to identify this person."
 msgstr "Бул кишини кантип тааныса болот, сүрөттөп бериңиз."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Бул кишинин кебете-кешпирин сүрөттөп бериңиз."
 
 msgid "Description"
 msgstr "Сүрөттөмөсү"
@@ -739,11 +712,16 @@ msgid "Expiry date of this record"
 msgstr "Бул жазуунун жарамдуулук мөөнөтү"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Жарамдуулук мөөнөтүн %(extension_days)s күнгө узартуу"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Фамилиясы"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Бул киши үчүн жаңыртуулар түрмөгү"
@@ -762,11 +740,11 @@ msgstr "Мобилдик эмес телефондор үчүн NTT камсыз
 msgid "Full name"
 msgstr "Толук аты-жөнү"
 
-msgid "Get a visual challenge"
-msgstr "Визуалдык сыноо алуу"
-
 msgid "Given name"
 msgstr "Аты"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Киши Тапкыч"
@@ -800,6 +778,9 @@ msgstr "Ал кишини менен азыр кантип байланышса 
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Бул кишиге кызыккан башка кишилер сиз менен кантип байланыша алышат?"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Мен маалымат издеймин"
@@ -938,9 +919,6 @@ msgstr ""
 msgid "Name"
 msgstr "Аты"
 
-msgid "Name (required)"
-msgstr "Аты (милдеттүү)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Аты талап кылынат.  Артка кайтып, кайрадан аракет кылыңыз."
 
@@ -963,6 +941,9 @@ msgstr "%(id_str)s ID'си менен билдирүү жок."
 
 msgid "No notes have been posted"
 msgstr "Эч бир билдирүү жарыялана элек"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1048,6 +1029,9 @@ msgstr "Телефон номуру"
 msgid "Photo"
 msgstr "Сүрөтү"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1055,6 +1039,11 @@ msgstr "Сүрөт белгисиз форматта жүктөлдү. Артк�
 
 msgid "Physical characteristics"
 msgstr "Сырткы кебетеси"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1192,23 +1181,33 @@ msgstr "Кимдир бирөө бул киши жоголду деп билди
 msgid "Someone is seeking information about this person"
 msgstr "Кимдир бирөө бул киши тууралуу маалымат издеп жүрөт"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Бул жазуунун булагы"
-
-msgid "Source of this record (required)"
-msgstr "Бул жазуунун булагы (милдеттүү)"
 
 msgid "Status"
 msgstr "Статусу"
 
-msgid "Status of this person"
-msgstr "Бул кишинин статусу"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Көчөнүн аты"
 
 msgid "Street name only, no number"
 msgstr "Көчөнүн аты гана, номурсуз"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Жазылуу"
@@ -1225,9 +1224,6 @@ msgstr "Дарекке өтүү"
 
 msgid "Switch to lat/long"
 msgstr "Кең./узун. өтүү"
-
-msgid "Tell us the status of this person"
-msgstr "Бизге бул кишинин статусун айтып бериңиз"
 
 msgid "Terms of Service"
 msgstr "Кызматтын шарттары"
@@ -1390,9 +1386,6 @@ msgstr "Дарегин киргизиңиз, же төмөнкү картаны 
 msgid "Type an address."
 msgstr "Дарегин териңиз."
 
-msgid "Type what you hear:"
-msgstr "Укканыңызды териңиз:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1434,9 +1427,6 @@ msgstr "Бул жазуу качан жок кылынышы керек?"
 
 msgid "Where did this information come from?"
 msgstr "Бул маалымат кайдан алынды?"
-
-msgid "Where is this person from?"
-msgstr "Бул киши кайдан болот?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1536,8 +1526,8 @@ msgstr "Сиздин эмейл дарегиңиз:"
 msgid "Your email"
 msgstr "Сиздин эмейлиңиз"
 
-msgid "Your name"
-msgstr "Сиздин атыңыз"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1604,6 +1594,9 @@ msgstr "[Киши Тапкыч] %(full_name)s статусу жаңыртылд�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Киши Издегич] %(full_name)s статус жаңыртууларына жазылгансыз"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "аял"

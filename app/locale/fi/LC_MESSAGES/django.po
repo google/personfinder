@@ -126,65 +126,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Varoitus: nämä tiedot vanhenevat alle "
-"%(expiration_days)s päivässä.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Varoitus: nämä tiedot vanhenevat alle päivässä.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s tallennetta valittu\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s on hakenut tätä kyselyä vastaavia "
-"tuloksia.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Tallenteet, jotka ovat samankaltaisia kuin %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Hakutulokset haulle %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -276,16 +264,6 @@ msgstr ""
 "      ota yhteyttä alkuperäiseen lähteeseen.\n"
 "      Alkuperäiset tiedot näkyvät osoitteessa\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Ei tuloksia haulla %(query)s\n"
 "    "
 
 #, python-format
@@ -566,9 +544,6 @@ msgstr "Noin kuuden kuukauden (180 päivän) kuluttua"
 msgid "About Google Person Finder"
 msgstr "Tietoja Google Person Finderista"
 
-msgid "About you (required)"
-msgstr "Tietoja sinusta (pakollinen)"
-
 msgid "Administration"
 msgstr "Hallinto"
 
@@ -643,6 +618,11 @@ msgstr "Peruuta"
 msgid "City"
 msgstr "Kaupunki"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Näet tulokset klikkaamalla tätä."
 
@@ -666,9 +646,6 @@ msgstr "Luo uusi tallenne"
 msgid "Create a new record for"
 msgstr "Luo uusi tallenne henkilölle"
 
-msgid "Create a new record for a missing person"
-msgstr "Luo uusi tallenne kadonneelle henkilölle"
-
 msgid "Crisis events"
 msgstr "Kriisitapahtumat"
 
@@ -687,9 +664,6 @@ msgstr "Poista nämä tiedot"
 
 msgid "Describe how to identify this person."
 msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Kuvaa henkilön ulkonäköä."
 
 msgid "Description"
 msgstr "Kuvaus"
@@ -747,11 +721,16 @@ msgid "Expiry date of this record"
 msgstr "Tietojen vanhentumispäivä"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Jatka vanhentumispäivää %(extension_days)s päivällä"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Sukunimi"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Syötteet tätä henkilöä koskevista päivityksistä"
@@ -770,11 +749,11 @@ msgstr "Käytä lankapuhelinnumerojen tapauksessa NTT:n 171-palvelua."
 msgid "Full name"
 msgstr "Koko nimi"
 
-msgid "Get a visual challenge"
-msgstr "Uusi visuaalinen haaste"
-
 msgid "Given name"
 msgstr "Etunimi"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -810,6 +789,9 @@ msgstr "Miten tähän henkilöön voidaan ottaa yhteyttä?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Etsin tietoja"
@@ -950,9 +932,6 @@ msgstr ""
 msgid "Name"
 msgstr "Nimi"
 
-msgid "Name (required)"
-msgstr "Nimi (pakollinen)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
 
@@ -975,6 +954,9 @@ msgstr "Ei löydy muistiinpanoa tunnuksella: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Muistiinpanoja ei ole lisätty"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1058,6 +1040,9 @@ msgstr "Puhelinnumero"
 msgid "Photo"
 msgstr "Valokuva"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1067,6 +1052,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Fyysiset ominaisuudet"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1206,23 +1196,33 @@ msgstr "Joku on ilmoittanut, että tämä henkilö on kadonnut"
 msgid "Someone is seeking information about this person"
 msgstr "Joku etsii tietoja tästä henkilöstä"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Tämän tallenteen lähde"
-
-msgid "Source of this record (required)"
-msgstr "Tämän tallenteen lähde (pakollinen)"
 
 msgid "Status"
 msgstr "Tila"
 
-msgid "Status of this person"
-msgstr "Tämän henkilön tila"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Kadun nimi"
 
 msgid "Street name only, no number"
 msgstr "Vain kadun nimi, ei numeroa"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Tilaa"
@@ -1239,9 +1239,6 @@ msgstr "Vaihda osoitteeseen"
 
 msgid "Switch to lat/long"
 msgstr "Vaihda pituus-/leveysasteisiin"
-
-msgid "Tell us the status of this person"
-msgstr "Ilmoita tämän henkilön tila"
 
 msgid "Terms of Service"
 msgstr "Käyttöehdot"
@@ -1404,9 +1401,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Kirjoita osoite."
 
-msgid "Type what you hear:"
-msgstr "Kirjoita kuulemasi:"
-
 msgid "URL"
 msgstr "URL-osoite"
 
@@ -1448,9 +1442,6 @@ msgstr "Milloin nämä tiedot tulee poistaa näkyvistä?"
 
 msgid "Where did this information come from?"
 msgstr "Mistä nämä tiedot ovat peräisin?"
-
-msgid "Where is this person from?"
-msgstr "Mistä tämä henkilö on kotoisin?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1552,8 +1543,8 @@ msgstr "Sähköpostiosoite:"
 msgid "Your email"
 msgstr "Sähköpostiosoite:"
 
-msgid "Your name"
-msgstr "Nimi"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1630,6 +1621,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Olet tilannut seuraavaa henkilöä koskevat "
 "tilapäivitykset: %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "nainen"

@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  background: #f2f0f0;
   font-family: arial, sans-serif;
   font-size: 13px;
   margin: auto;
@@ -101,6 +102,38 @@ pre {  /* code samples */
   font-size: 12px;
 }
 
+.button input {
+  border-style: none;
+  color: white;
+  display: block;
+  font-size: 16px;
+  padding: 5px 15px;
+}
+
+.button input:disabled {
+  background: #9e9e9e;
+}
+
+.button-blue input {
+  background: #4285f4;  
+}
+
+.button-red input {
+  background: #db4437;
+}
+
+.button-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.button-box .button {
+  margin-left: 10px;  
+  margin-right: 10px;
+}
+
 /* Language menu */
 
 div.languages {
@@ -133,6 +166,10 @@ input {
   font-size: 13px;
   margin-bottom: .5em;
   max-width: 100%;
+}
+
+.input {
+  margin-bottom: .5em;
 }
 
 textarea {
@@ -179,6 +216,11 @@ select {
   float: {{start}};
 }
 
+.column.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .column h2 {
   margin: 2px 0 6px;
   padding-{{start}}: 6px;
@@ -203,18 +245,47 @@ over 10% in penetration ratio.
 */
 
 .fields-table {
-  background: #e8e8e8;
   padding: 4px;
 }
 
 .fields-table .section {
-  padding: 4px;
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 2px solid #e6e6e6;
+  padding: 10px 4px 4px;
+}
+
+.fields-table .section h1 {
+  font-size: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fields-table .section h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.fields-table .section .links {
+  border-style: none;  
+}
+
+.fields-table .section .links a {
+  color: #4285f4;
+  display: block;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 4px 4px;
+  text-align: center;
+}
+
+.fields-table .section textarea {
+  width: 100%;
 }
 
 .fields-table .field {
   clear: both;
+  display: flex;
   margin-{{start}}: 0;
 }
 
@@ -222,16 +293,15 @@ over 10% in penetration ratio.
   display: block; /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
-  max-width: 160px;
   text-align: right;
-  width: 100%;
+  width: 45%;
+  margin-{{end}}: 10px;
 }
 
 .fields-table .value {
   display: block;  /* to make float/width attribute work */
   float: {{end}};
-  max-width: 160px;
-  width: 100%;
+  width: 50%;
 }
 
 .fields-table .long-text-input {
@@ -284,6 +354,7 @@ td.label {
   font-size: 9px;
   color: #888;
   text-align: {{end}};
+  padding-top: 10px;
 }
 
 td.submit {
@@ -349,6 +420,7 @@ td.submit {
 
 .main .action-outer {
   border: none;
+  font-size: 20px;
   margin-bottom: 1em;
   max-width: 240px;
   min-height: 70px;
@@ -356,14 +428,19 @@ td.submit {
   width: 100%;
 }
 
+.main .action-outer a {
+  color: white;
+  text-decoration: none;
+}
+
 .main .action-outer.start {
-  background: #bea;
+  background: #4285f4;
   float: {{start}};
   margin-right: 58px;
 }
 
 .main .action-outer.end {
-  background: #bcf;
+  background: #15a04a;
   float: left;
 }
 
@@ -376,10 +453,6 @@ td.submit {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
-
-.main .action-outer a {
-  font-weight: bold;
 }
 
 .custom-message {
@@ -399,30 +472,74 @@ td.submit {
   width: 100%;
 }
 
-.query.seek {
-  background: #bea;
+.query h1 {
+  font-size: 20px;
+  margin-bottom: 0px;  
+}
+
+.query .header {
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.query.seek,
+.query.provide {
+  background: #fff;
+  border: 2px solid #e6e6e6;
+}
+
+.seek.results.border .query.seek,
+.seek.results.border .query.provide{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.seek.results.border .query.seek .header{
+  border: 0px;
+}
+
+.seek.results.border .query.seek input{
+  margin-left: 0px;
 }
 
 .query .instructions {
   padding-bottom: 0.5em;
 }
 
-.query .submit {
-  padding-top: 0.5em;
+.query .help-text {
+  padding-top: 10px;
+}
+
+.query .button {
+  margin-top: 20px;
+}
+
+.query .button input {
+  margin: 10px auto;
 }
 
 /* View page */
 
 .view .person {
-  background: #e8e8e8;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
 }
 
 .view .person .section {
-  background: #f8f8f8;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 2px solid #e6e6e6;
 }
 
-.view .person .value {
+.view .person .section .centered-photo {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.view .person .section .links {
+  border-style: none;
+}
+
+.view .person .label {
   font-weight: bold;
 }
 
@@ -436,15 +553,34 @@ img.icon {
   vertical-align: middle;
 }
 
-.view.note {
-  margin: 1em 0;
-  background: #e8e8e8;
-  padding: 4px;
+.view input.add-note {
+  width: 100%;
+}
+
+.note.fields-table {
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  margin-bottom: 10px;
+
+}
+
+.note.fields-table .button input {
+  margin: 10px auto;
 }
 
 .view.note .source {
+  background: #e6e6e6;
+  padding-top: 10px;
   padding-{{start}}: 4px;
-  color: #888;
+  text-align: {{end}};
+}
+
+.view .note .report-spam a {
+  color: red;
+  }
+
+.self-notes {
+  margin-top: 30px;
 }
 
 .self-notes .view.note.duplicate {
@@ -467,8 +603,8 @@ img.icon {
 }
 
 .note .contents {
-  background: #f8f8f8;
-  padding: 4px;
+  background: #ffffff;
+  padding: 8px;
   margin-top: 4px;
 }
 
@@ -522,7 +658,7 @@ table.multiview {
 
 tr.sectionbottom td {
   padding-bottom: 0.5em;
-  border-bottom: 4px solid #e8e8e8;
+  border-bottom: 2px solid #e8e8e8;
 }
 
 /* Create page */
@@ -532,12 +668,29 @@ label.option {
 }
 
 .create .fields-table {
-  background: #c0d0ff;
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
 }
 
 .create .fields-table .section {
-  background: #f0f4ff;
-  border-bottom: 4px solid #c0d0ff;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.create .fields-table .subsection {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.create .fields-table h1 {
+  font-size: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.create .fields-table h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
 .create .fields-table .photo .radio {
@@ -564,12 +717,11 @@ label.option {
   display: block;
   float: {{start}};
   width: 30px;
+  margin-left: 30px;
 }
 
 .create .fields-table .profile .value {
   display: block;
-  float: {{start}};
-  text-align: {{end}};
   width: 220px;
 }
 
@@ -579,6 +731,11 @@ label.option {
   width: 70px;
 }
 
+.create .fields-table .button input {
+  margin: 10px auto;
+  min-width: 50%;
+}
+
 .source .instructions {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -586,11 +743,25 @@ label.option {
 
 /* results page */
 
+.seek.results.border {
+  background: #fff;
+  border: 2px solid #e6e6e6;
+  padding: 20px;
+  padding-top: 0px;
+}
+
 img.resultImage {
   width: 80px;
   height: auto;
   max-width: 80px;
   max-height: 80px;
+}
+
+.resultsTitle {
+  border-top: 2px solid #e6e6e6;
+  font-size: 18px;
+  padding-top: 10px;
+  width: 100%;
 }
 
 resultsList {
@@ -626,6 +797,15 @@ resultsList {
   background: #cdf;
 }
 
+.resultDataLabel {
+  font-size: 14px;
+  color: #888;
+}
+
+.resultDataValue {
+  font-size: 14px;
+}
+
 .searchResults .resultDataPersonFound {
   background: lightGreen;
 }
@@ -635,10 +815,8 @@ resultsList {
 }
 
 .searchResults .resultDataTitle {
-  color: #00e;
-  font-size: 130%;
-  font-weight: bold;
-  text-decoration: underline;
+  color: #3b78e7;
+  font-size: 18px;
 }
 
 .searchResults .resultData {

@@ -125,65 +125,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Анхааруулга: энэ бичлэг %(expiration_days)s өдрийн "
-"дотор хугацаа нь дуусна.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Анхааруулга: энэ бичлэг нэг өдрийн дотор хугацаа нь "
-"дуусна.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s бичлэг сонгогдсон\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          %(search_engine_name)s-д энэ асуулгад тохирох илэрцүүд байна.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        %(full_name)s-тай төстэй бичлэгүүд\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Дараах хайлтын илэрцүүд: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -273,16 +261,6 @@ msgstr ""
 "      эх сурвалжтай нь холбоо барина уу.\n"
 "      Та эх бичлэгийг %(begin_tag)s%(source_name)s%(end_tag)s дээр харж "
 "болно.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      %(query)s хайлтад илэрц гарсангүй\n"
 "    "
 
 #, python-format
@@ -558,9 +536,6 @@ msgstr "6 сарын дараа (180 өдөр)"
 msgid "About Google Person Finder"
 msgstr "Google Хүн Хайгчийн тухай"
 
-msgid "About you (required)"
-msgstr "Таны тухай (шаардлагатай)"
-
 msgid "Administration"
 msgstr "Захиргаа"
 
@@ -635,6 +610,11 @@ msgstr "Цуцлах"
 msgid "City"
 msgstr "Хот"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Илэрцүүдийг харахын тулд энд товшино уу."
 
@@ -658,9 +638,6 @@ msgstr "Шинэ бичлэг үүсгэх"
 msgid "Create a new record for"
 msgstr "Шинэ бичлэг үүсгэх"
 
-msgid "Create a new record for a missing person"
-msgstr "Алга болсон хүний тухай шинэ бичлэг үүсгэх"
-
 msgid "Crisis events"
 msgstr "Гамшгийн үйл явдал"
 
@@ -679,9 +656,6 @@ msgstr "Энэ бичлэгийг устгах"
 
 msgid "Describe how to identify this person."
 msgstr "Энэ хүнийг таних аргыг тодорхойлно уу."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Энэ хүний биет шинж тэмдгийг тодорхойлно уу."
 
 msgid "Description"
 msgstr "Тодорхойлолт"
@@ -739,11 +713,16 @@ msgid "Expiry date of this record"
 msgstr "Энэ бичлэгийн дуусах хугацаа"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Дуусах хугацааг %(extension_days)s өдрөөр сунгах"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Овог"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Энэ хүний тухай шинэ мэдээллийн фийд"
@@ -762,11 +741,11 @@ msgstr "Гар утаснаас бусад утасны хувьд NTT-н 171 ү
 msgid "Full name"
 msgstr "Бүтэн нэр"
 
-msgid "Get a visual challenge"
-msgstr "Дүрс дуудлага авах"
-
 msgid "Given name"
 msgstr "Өөрийн нэр"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Хүн Хайгч"
@@ -798,6 +777,9 @@ msgstr "Энэ хүнтэй одоо хэрхэн холбоо барьж бол
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Энэ хүнийг сонирхсон бусад хүмүүс тантай хэрхэн холбоо барьж болох вэ"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Би мэдээлэл хайж байна"
@@ -939,9 +921,6 @@ msgstr ""
 msgid "Name"
 msgstr "Нэр"
 
-msgid "Name (required)"
-msgstr "Нэр (шаардлагатай)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Нэр шаардлагатай.  Буцаж очоод дахин оролдоно уу."
 
@@ -964,6 +943,9 @@ msgstr "Дараах ID-тай тэмдэглэл байхгүй: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Тэмдэглэл нийтлэгдээгүй байна"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1047,6 +1029,9 @@ msgstr "Утасны дугаар"
 msgid "Photo"
 msgstr "Зураг"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1056,6 +1041,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Биет шинж тэмдэг"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1193,23 +1183,33 @@ msgstr "Энэ хүнийг сураггүй болсон тухай хэн нэ
 msgid "Someone is seeking information about this person"
 msgstr "Энэ хүний тухай мэдээллийг хэн нэгэн хайж байна"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Энэ бичлэгийн эх сурвалж"
-
-msgid "Source of this record (required)"
-msgstr "Энэ бичлэгийн эх сурвалж (шаардлагатай)"
 
 msgid "Status"
 msgstr "Статус"
 
-msgid "Status of this person"
-msgstr "Энэ хүний статус"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Гудамжны нэр"
 
 msgid "Street name only, no number"
 msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Бүртгүүлэх"
@@ -1226,9 +1226,6 @@ msgstr "Хаяг руу сэлгэх"
 
 msgid "Switch to lat/long"
 msgstr "Урт/өрг рүү сэлгэх"
-
-msgid "Tell us the status of this person"
-msgstr "Энэ хүний статусын талаар бидэнд мэдэгдэнэ үү"
 
 msgid "Terms of Service"
 msgstr "Үйлчилгээний Нөхцөл"
@@ -1389,9 +1386,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Хаяг бичнэ үү."
 
-msgid "Type what you hear:"
-msgstr "Юу сонсож байгаагаа бичнэ үү:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1433,9 +1427,6 @@ msgstr "Энэ бичлэг хэзээ арилах ёстой вэ?"
 
 msgid "Where did this information come from?"
 msgstr "Энэ мэдээлэл хаанаас ирсэн бэ?"
-
-msgid "Where is this person from?"
-msgstr "Энэ хүн хаанаас ирсэн бэ?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1535,8 +1526,8 @@ msgstr "Таны имэйл хаяг:"
 msgid "Your email"
 msgstr "Таны имэйл"
 
-msgid "Your name"
-msgstr "Нэрээ оруулна уу"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1606,6 +1597,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Хүн Хайгч] Та %(full_name)s-н статусын шинэчлэлийн талаар мэдээлэл "
 "авахаар бүртгүүлсэн"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "эмэгтэй"

@@ -121,66 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Babala: mag-e-expire ang talaang ito sa loob ng hindi"
-" hihigit sa %(expiration_days)s (na) araw.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Babala: mag-e-expire ang talaang ito sa loob ng hindi"
-" hihigit sa isang araw.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s (na) talaan ang napili\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          May mga resulta ng paghahanap ang %(search_engine_name)s na "
-"tumutugma sa query na ito.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Mga Talaan na Katulad ng: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Mga Resulta ng Paghahanap para sa: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -270,16 +257,6 @@ msgstr ""
 "mangyaring makipag-ugnayan sa orihinal na pinagmulan.\n"
 "Maaari mong tingnan ang orihinal na record sa\n"
 "%(begin_tag)s%(source_name)s%(end_tag)s."
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Walang nakitang mga resulta para sa: %(query)s\n"
-"    "
 
 #, python-format
 msgid ""
@@ -561,9 +538,6 @@ msgstr "Humigit-kumulang 6 na buwan (180 araw) mula ngayon"
 msgid "About Google Person Finder"
 msgstr "Tungkol sa Google Person Finder"
 
-msgid "About you (required)"
-msgstr "Tungkol sa iyo (kinakailangan)"
-
 msgid "Administration"
 msgstr "Administration"
 
@@ -641,6 +615,11 @@ msgstr "Kanselahin"
 msgid "City"
 msgstr "Lungsod"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Mag-click dito upang tingnan ang mga resulta."
 
@@ -664,9 +643,6 @@ msgstr "Gumawa ng bagong record"
 msgid "Create a new record for"
 msgstr "Gumawa ng bagong record para kay"
 
-msgid "Create a new record for a missing person"
-msgstr "Gumawa ng bagong record para sa isang nawawalang tao"
-
 msgid "Crisis events"
 msgstr "Mga kaganapan ng krisis"
 
@@ -687,9 +663,6 @@ msgstr "Tanggalin ang talaang ito"
 
 msgid "Describe how to identify this person."
 msgstr "Ilarawan kung paano kikilalanin ang taong ito."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Ilarawan ang pisikal na anyo ng taong ito."
 
 msgid "Description"
 msgstr "Paglalarawan"
@@ -749,11 +722,16 @@ msgid "Expiry date of this record"
 msgstr "Expiration date ng talaang ito"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Pahabain ang expiration date nang %(extension_days)s (na) araw"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Apelyido"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Feed ng mga update tungkol sa taong ito"
@@ -774,11 +752,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Buong pangalan"
 
-msgid "Get a visual challenge"
-msgstr "Makakuha ng nakikitang hamon"
-
 msgid "Given name"
 msgstr "Pangalan"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -814,6 +792,9 @@ msgstr "Paano makakaugnayan ang taong ito sa ngayon?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Paano makikipag-ugnay sa iyo ang iba pang mga interesado sa taong ito"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Naghahanap ako ng impormasyon"
@@ -956,9 +937,6 @@ msgstr ""
 msgid "Name"
 msgstr "Pangalan"
 
-msgid "Name (required)"
-msgstr "Pangalan (kinakailangan)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Kailangan ang pangalan.  Mangyaring bumalik at subukang muli."
 
@@ -983,6 +961,9 @@ msgstr "Walang tala na may ID: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Walang mga talang na-post"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1068,6 +1049,9 @@ msgstr "Numero ng telepono"
 msgid "Photo"
 msgstr "Larawan"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1077,6 +1061,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Mga pisikal na katangian"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1214,23 +1203,33 @@ msgstr "May nag-ulat na nawawala ang taong ito"
 msgid "Someone is seeking information about this person"
 msgstr "May taong naghahanap ng impormasyon tungkol sa taong ito"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Pinagmulan ng talaang ito"
-
-msgid "Source of this record (required)"
-msgstr "Pinagmulan ng talaang ito (kinakailangan)"
 
 msgid "Status"
 msgstr "Status"
 
-msgid "Status of this person"
-msgstr "Status ng taong ito"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Pangalan ng kalye"
 
 msgid "Street name only, no number"
 msgstr "Pangalan lang ng kalye, walang numero"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Mag-subscribe"
@@ -1247,9 +1246,6 @@ msgstr "Lumipat sa address"
 
 msgid "Switch to lat/long"
 msgstr "Lumipat sa lat/long"
-
-msgid "Tell us the status of this person"
-msgstr "Sabihin sa amin ang status ng taong ito"
 
 msgid "Terms of Service"
 msgstr "Mga Tuntunin ng Serbisyo"
@@ -1420,9 +1416,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Mag-type ng address."
 
-msgid "Type what you hear:"
-msgstr "I-type ang iyong maririnig:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1464,9 +1457,6 @@ msgstr "Kailan dapat mawala ang talaang ito?"
 
 msgid "Where did this information come from?"
 msgstr "Saan nagmula ang impormasyong ito?"
-
-msgid "Where is this person from?"
-msgstr "Saan nagmula ang taong ito?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1568,8 +1558,8 @@ msgstr "Ang iyong email address:"
 msgid "Your email"
 msgstr "Ang iyong email"
 
-msgid "Your name"
-msgstr "Ang iyong pangalan"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1645,6 +1635,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Naka-subscribe ka sa mga update sa status para kay "
 "%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "babae"

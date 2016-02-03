@@ -51,8 +51,8 @@ class Handler(BaseHandler):
                 any_person[prop] = any_person[prop] or val
 
         # Compute the local times for the date fields on the person and format.
-        person['source_date_local_string'] = map(
-            self.to_formatted_local_time, person['source_date'])
+        person['source_datetime_local_string'] = map(
+            self.to_formatted_local_datetime, person['source_date'])
 
         # Check if private info should be revealed.
         content_id = 'multiview:' + ','.join(person['person_record_id'])

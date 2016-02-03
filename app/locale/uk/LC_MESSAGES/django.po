@@ -121,66 +121,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    Застереження. Термін дії цього запису закінчиться "
-"менше ніж через %(expiration_days)s дн.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    Застереження. Термін дії цього запису закінчиться "
-"менше ніж через день.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            Вибрано записів: %(dup_count)s\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          Пошукова система %(search_engine_name)s знайшла результати, що "
-"відповідають цьому запиту.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Записи, подібні до %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Результати пошуку для запиту %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -268,16 +255,6 @@ msgstr ""
 "      зв’яжіться з початковим джерелом.\n"
 "      Початковий запис можна переглянути на сторінці\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      Немає результатів для запиту %(query)s\n"
 "    "
 
 #, python-format
@@ -560,9 +537,6 @@ msgstr "Приблизно 6 місяців (180 днів) відтепер"
 msgid "About Google Person Finder"
 msgstr "Про Службу пошуку людей Google"
 
-msgid "About you (required)"
-msgstr "Про вас (обов’язково)"
-
 msgid "Administration"
 msgstr "Адміністрування"
 
@@ -636,6 +610,11 @@ msgstr "Скасувати"
 msgid "City"
 msgstr "Місто"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Натисніть тут, щоб переглянути результати."
 
@@ -659,9 +638,6 @@ msgstr "Створити новий запис"
 msgid "Create a new record for"
 msgstr "Створити новий запис про особу"
 
-msgid "Create a new record for a missing person"
-msgstr "Створити новий запис про зниклу особу"
-
 msgid "Crisis events"
 msgstr "Надзвичайні події"
 
@@ -680,9 +656,6 @@ msgstr "Видалити цей запис"
 
 msgid "Describe how to identify this person."
 msgstr "Опишіть, як упізнати цю особу."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Опишіть фізичні характеристики цієї особи."
 
 msgid "Description"
 msgstr "Опис"
@@ -744,11 +717,16 @@ msgid "Expiry date of this record"
 msgstr "Дата закінчення терміну дії цього запису"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Продовжити термін дії на %(extension_days)s дн."
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Прізвище"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Канал оновлень про цю особу"
@@ -769,11 +747,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Повне ім’я"
 
-msgid "Get a visual challenge"
-msgstr "Отримати зображення"
-
 msgid "Given name"
 msgstr "Ім’я"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Служба пошуку людей Google"
@@ -809,6 +787,9 @@ msgstr "Як можна зв’язатися з цією особою зара�
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Як інші люди, які шукають цю особу, можуть з вами зв’язатися"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Я шукаю інформацію"
@@ -947,9 +928,6 @@ msgstr ""
 msgid "Name"
 msgstr "Ім’я та прізвище"
 
-msgid "Name (required)"
-msgstr "Ім’я та прізвище (обов’язково)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Потрібно ввести ім’я та прізвище. Поверніться та повторіть спробу."
 
@@ -974,6 +952,9 @@ msgstr "Немає нотатки з ідентифікатором %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "Немає опублікованих нотаток"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1057,6 +1038,9 @@ msgstr "Номер телефону"
 msgid "Photo"
 msgstr "Фотографія"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1066,6 +1050,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Фізичні характеристики"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1203,23 +1192,33 @@ msgstr "Хтось повідомив, що ця особа зникла"
 msgid "Someone is seeking information about this person"
 msgstr "Хтось шукає інформацію про цю особу"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Джерело цього запису"
-
-msgid "Source of this record (required)"
-msgstr "Джерело цього запису (обов’язково)"
 
 msgid "Status"
 msgstr "Статус"
 
-msgid "Status of this person"
-msgstr "Статус цієї особи"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Назва вулиці"
 
 msgid "Street name only, no number"
 msgstr "Лише назва вулиці, без номера будинку"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Підписатися"
@@ -1236,9 +1235,6 @@ msgstr "Перейти до адреси"
 
 msgid "Switch to lat/long"
 msgstr "Перейти до широти й довготи"
-
-msgid "Tell us the status of this person"
-msgstr "Повідомте про статус цієї особи"
 
 msgid "Terms of Service"
 msgstr "Загальні положення та умови"
@@ -1405,9 +1401,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Введіть адресу."
 
-msgid "Type what you hear:"
-msgstr "Введіть, що ви почули:"
-
 msgid "URL"
 msgstr "URL-адреса"
 
@@ -1449,9 +1442,6 @@ msgstr "Коли має зникнути цей запис?"
 
 msgid "Where did this information come from?"
 msgstr "Звідки ця інформація?"
-
-msgid "Where is this person from?"
-msgstr "Звідки ця особа?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1551,8 +1541,8 @@ msgstr "Ваша електронна адреса:"
 msgid "Your email"
 msgstr "Ваша електронна адреса"
 
-msgid "Your name"
-msgstr "Ваші ім’я та прізвище"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1625,6 +1615,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Служба пошуку людей] Ви підписалися на оновлення статусу особи "
 "%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "жінка"

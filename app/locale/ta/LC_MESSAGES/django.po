@@ -126,66 +126,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    எச்சரிக்கை: இந்தப் பதிவு %(expiration_days)s "
-"நாட்களுக்குள் காலாவதியாகிவிடும்.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    எச்சரிக்கை: இந்தப் பதிவு ஒரு நாளுக்குள் "
-"காலாவதியாகிவிடும்.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s பதிவுகள் தேர்ந்தெடுக்கப்பட்டன\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          இந்த வினவலுடன் பொருந்துகின்ற தேடல் முடிவுகள் "
-"%(search_engine_name)s இல் உள்ளன.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        இதனை ஒத்தப் பதிவுகள்: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        இதற்கான தேடல் முடிவுகள்: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -276,16 +263,6 @@ msgstr ""
 "      அசல் மூலத்தைத் தொடர்புகொள்ளவும்.\n"
 "      அசல் பதிவை\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s இல் பார்க்கலாம்.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      இதற்கு முடிவுகள் கண்டறியப்படவில்லை: %(query)s\n"
 "    "
 
 #, python-format
@@ -574,9 +551,6 @@ msgstr "இன்றிலிருந்து சுமார் 6 மாத�
 msgid "About Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான் அறிமுகம்"
 
-msgid "About you (required)"
-msgstr "உங்களைப் பற்றி (அவசியம்)"
-
 msgid "Administration"
 msgstr "நிர்வாகம்"
 
@@ -651,6 +625,11 @@ msgstr "ரத்துசெய்"
 msgid "City"
 msgstr "நகரம்"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "முடிவுகளைக் காண இங்கே கிளிக் செய்யவும்."
 
@@ -674,9 +653,6 @@ msgstr "புதிய பதிவை உருவாக்கு"
 msgid "Create a new record for"
 msgstr "இவருக்கான புதிய பதிவை உருவாக்கு"
 
-msgid "Create a new record for a missing person"
-msgstr "தொலைந்த நபருக்கான புதிய பதிவை உருவாக்கு"
-
 msgid "Crisis events"
 msgstr "நெருக்கடி நிகழ்வுகள்"
 
@@ -697,9 +673,6 @@ msgstr "இந்தப் பதிவை நீக்கு"
 
 msgid "Describe how to identify this person."
 msgstr "இந்த நபரை எப்படி அடையாளம் காணலாம் என்பதை விவரிக்கவும்."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "இந்த நபரின் தோற்ற விவரங்களை விவரிக்கவும்."
 
 msgid "Description"
 msgstr "விவரம்"
@@ -759,11 +732,16 @@ msgid "Expiry date of this record"
 msgstr "இந்தப் பதிவு காலாவதியாகும் தேதி"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "காலாவதியைகும் தேதியை %(extension_days)s நாட்களுக்கு நீட்டிக்கவும்"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "குடும்பப் பெயர்"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "இந்த நபரைப் பற்றிய புதுப்பிப்புகளின் ஊட்டம்"
@@ -782,11 +760,11 @@ msgstr "மொபைல் அல்லாத தொலைபேசிகளு�
 msgid "Full name"
 msgstr "முழுப் பெயர்"
 
-msgid "Get a visual challenge"
-msgstr "விஷுவல் சவாலைப் பெறுக"
-
 msgid "Given name"
 msgstr "முதல் பெயர்"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான்"
@@ -822,6 +800,9 @@ msgstr "இந்த நபரை இப்போது எப்படித்
 
 msgid "How others who are interested in this person can contact you"
 msgstr "இந்த நபரைப் பற்றி அறிய விரும்பும் பிறர் உங்களை எப்படித் தொடர்புகொள்ளலாம்"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "நான் தகவலைத் தேடுகிறேன்"
@@ -962,9 +943,6 @@ msgstr ""
 msgid "Name"
 msgstr "பெயர்"
 
-msgid "Name (required)"
-msgstr "பெயர் (தேவை)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "பெயர் தேவைப்படுகிறது. திரும்பச் சென்று மீண்டும் முயற்சிக்கவும்"
 
@@ -989,6 +967,9 @@ msgstr "இந்த ஐடியில் எந்தக் குறிப்
 
 msgid "No notes have been posted"
 msgstr "எந்தக் குறிப்புகளும் இடுகையிடப்படவில்லை"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1074,6 +1055,9 @@ msgstr "தொலைபேசி எண்"
 msgid "Photo"
 msgstr "படம்"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1083,6 +1067,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "தோற்ற விவரங்கள்"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1224,23 +1213,33 @@ msgstr "இவர் தொலைந்துவிட்டதாக ஒரு�
 msgid "Someone is seeking information about this person"
 msgstr "இந்த நபரைப் பற்றிய தகவலை ஒருவர் தேடிக்கொண்டிருக்கிறார்"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "இந்தப் பதிவின் மூலம்"
-
-msgid "Source of this record (required)"
-msgstr "இந்தப் பதிவின் மூலம் (அவசியம்)"
 
 msgid "Status"
 msgstr "நிலை"
 
-msgid "Status of this person"
-msgstr "இந்த நபரின் நிலை"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "தெருப் பெயர்"
 
 msgid "Street name only, no number"
 msgstr "தெருப் பெயர் மட்டும், எண் வேண்டாம்"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "குழுசேர்"
@@ -1257,9 +1256,6 @@ msgstr "முகவரிக்கு மாறு"
 
 msgid "Switch to lat/long"
 msgstr "அட்சரேகை/தீர்க்கரேகைக்கு மாறு"
-
-msgid "Tell us the status of this person"
-msgstr "இந்தப் பயனரின் நிலை குறித்து எங்களிடம் கூறவும்"
 
 msgid "Terms of Service"
 msgstr "சேவை விதிமுறைகள்"
@@ -1429,9 +1425,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "முகவரியைத் தட்டச்சு செய்யவும்."
 
-msgid "Type what you hear:"
-msgstr "நீங்கள் கேட்பதைத் தட்டச்சு செய்யவும்:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1473,9 +1466,6 @@ msgstr "இந்த விவரத்தை எத்தனை நாள் �
 
 msgid "Where did this information come from?"
 msgstr "இந்தத் தகவல் எங்கிருந்து வந்தது?"
-
-msgid "Where is this person from?"
-msgstr "இவர் எந்த ஊரைச் சேர்ந்தவர்?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1580,8 +1570,8 @@ msgstr "உங்கள் மின்னஞ்சல் முகவரி:"
 msgid "Your email"
 msgstr "உங்கள் மின்னஞ்சல்"
 
-msgid "Your name"
-msgstr "உங்கள் பெயர்"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1659,6 +1649,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[நபர் கண்டுபிடிப்பான்] நீங்கள் %(full_name)s இன் நிலை குறித்த "
 "புதுப்பிப்புகளில் குழுசேர்ந்துள்ளீர்கள்"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "பெண்"

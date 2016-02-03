@@ -122,63 +122,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"Внимание! Срок хранения этой записи истекает менее чем через "
-"%(expiration_days)s д."
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"Внимание! Срок хранения этой записи истекает менее чем через один день."
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            Выбрано записей: %(dup_count)s\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          В системе \"%(search_engine_name)s\" найдены результаты по "
-"этому запросу.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        Записи, похожие на: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        Результаты поиска по запросу: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -264,16 +254,6 @@ msgstr ""
 "      свяжитесь с источником.\n"
 "      Он доступен по адресу:\n"
 "      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      По запросу \"%(query)s\" ничего не найдено\n"
 "    "
 
 #, python-format
@@ -548,9 +528,6 @@ msgstr "6 месяцев (180 дней)"
 msgid "About Google Person Finder"
 msgstr "О сервисе"
 
-msgid "About you (required)"
-msgstr "О себе (обязательно)"
-
 msgid "Administration"
 msgstr "Администрирование"
 
@@ -622,6 +599,11 @@ msgstr "Отмена"
 msgid "City"
 msgstr "Город"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "Нажмите здесь, чтобы просмотреть результаты."
 
@@ -645,9 +627,6 @@ msgstr "Добавить запись"
 msgid "Create a new record for"
 msgstr "+"
 
-msgid "Create a new record for a missing person"
-msgstr "Добавить запись о пропавшем человеке"
-
 msgid "Crisis events"
 msgstr "Кризисные события"
 
@@ -666,9 +645,6 @@ msgstr "Удалить запись"
 
 msgid "Describe how to identify this person."
 msgstr "Как узнать этого человека?"
-
-msgid "Describe the physical characteristics of this person."
-msgstr "Опишите этого человека."
 
 msgid "Description"
 msgstr "Описание"
@@ -730,11 +706,16 @@ msgid "Expiry date of this record"
 msgstr "Срок хранения записи"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "Продлить срок хранения на %(extension_days)s дн."
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "Фамилия"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "Фид новостей об этом человеке"
@@ -755,11 +736,11 @@ msgstr ""
 msgid "Full name"
 msgstr "Имя и фамилия"
 
-msgid "Get a visual challenge"
-msgstr "Использовать проверочную видеозапись"
-
 msgid "Given name"
 msgstr "Имя"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "Google Поиск пропавших людей"
@@ -795,6 +776,9 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Как другие люди, которые интересуются этим человеком, могут связаться с "
 "вами?"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Я ищу информацию"
@@ -932,9 +916,6 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-msgid "Name (required)"
-msgstr "Имя (обязательно)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "Необходимо указать имя. Вернитесь назад и повторите попытку."
 
@@ -957,6 +938,9 @@ msgstr "Не найдена заметка с идентификатором: %(
 
 msgid "No notes have been posted"
 msgstr "Заметки не опубликованы"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1042,6 +1026,9 @@ msgstr "Номер телефона"
 msgid "Photo"
 msgstr "Фотография"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1051,6 +1038,11 @@ msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Характеристики"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1190,23 +1182,33 @@ msgstr "Кто-то сообщил, что этот человек пропал 
 msgid "Someone is seeking information about this person"
 msgstr "Кто-то ищет сведения об этом человеке"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "Источник"
-
-msgid "Source of this record (required)"
-msgstr "Источник (обязательно)"
 
 msgid "Status"
 msgstr "Статус"
 
-msgid "Status of this person"
-msgstr "Что вам известно?"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "Улица"
 
 msgid "Street name only, no number"
 msgstr "Только название улицы (без номера)"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "Подписаться"
@@ -1223,9 +1225,6 @@ msgstr "Перейти к адресу"
 
 msgid "Switch to lat/long"
 msgstr "Перейти к координатам"
-
-msgid "Tell us the status of this person"
-msgstr "Сообщите нам статус этого человека"
 
 msgid "Terms of Service"
 msgstr "Условия использования"
@@ -1385,9 +1384,6 @@ msgstr "Введите адрес или отметьте место на кар
 msgid "Type an address."
 msgstr "Введите адрес."
 
-msgid "Type what you hear:"
-msgstr "Введите, что вы услышали:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1429,9 +1425,6 @@ msgstr "Время, через которое запись можно будет
 
 msgid "Where did this information come from?"
 msgstr "Об этом уже сообщалось ранее?"
-
-msgid "Where is this person from?"
-msgstr "Откуда этот человек?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1531,8 +1524,8 @@ msgstr "Ваш адрес эл. почты:"
 msgid "Your email"
 msgstr "Ваш адрес эл. почты"
 
-msgid "Your name"
-msgstr "Ваше имя"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1603,6 +1596,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Вы подписались на обновления для статуса человека "
 "%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "женский"

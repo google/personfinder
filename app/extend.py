@@ -65,7 +65,7 @@ class Handler(utils.BaseHandler):
                 person.put()
                 person.put_expiry_flags()
                 self.render('extend_done.html',
-                    expiry_date_local_string = self.to_formatted_local_time(
+                    expiry_datetime_local_string = self.to_formatted_local_datetime(
                         person.expiry_date),
                     view_url=self.get_url('/view', id=person.record_id))
             else: 

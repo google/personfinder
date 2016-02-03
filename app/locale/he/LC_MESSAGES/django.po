@@ -119,64 +119,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than "
+"                      Warning: this record will expire in less than "
 "%(expiration_days)s days.\n"
-"                  "
+"                    "
 msgstr ""
-"\n"
-"                    אזהרה: התוקף של הרשומה הזו יפוג בתוך פחות "
-"מ-%(expiration_days)s ימים.\n"
-"                  "
 
 msgid ""
 "\n"
-"                    Warning: this record will expire in less than a day.\n"
-"                  "
+"                      Warning: this record will expire in less than a "
+"day.\n"
+"                    "
 msgstr ""
-"\n"
-"                    אזהרה: התוקף של הרשומה הזו יפוג בתוך פחות מיום.\n"
-"                  "
 
 #, python-format
 msgid ""
 "\n"
-"            %(dup_count)s records selected\n"
-"          "
+"                %(dup_count)s records selected\n"
+"              "
 msgstr ""
-"\n"
-"            %(dup_count)s רשומות נבחרו\n"
-"          "
 
 #, python-format
 msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
+"          "
 msgstr ""
-"\n"
-"          ב-%(search_engine_name)s יש תוצאות התואמות לשאילתה הזו.\n"
-"        "
 
 #, python-format
 msgid ""
 "\n"
-"        Records Similar to: %(full_name)s\n"
-"      "
+"          Records Similar to: %(full_name)s\n"
+"        "
 msgstr ""
-"\n"
-"        רשומות דומות ל: %(full_name)s\n"
-"      "
 
 #, python-format
 msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
 "      "
 msgstr ""
-"\n"
-"        תוצאות חיפוש עבור: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -265,16 +254,6 @@ msgstr ""
 "     פנה למקור.\n"
 "     תוכל להציג את הרשומה המקורית "
 "ב-%(begin_tag)s%(source_name)s%(end_tag)s.\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      No results found for: %(query)s\n"
-"    "
-msgstr ""
-"\n"
-"      לא נמצאו תוצאות עבור: %(query)s\n"
 "    "
 
 #, python-format
@@ -547,9 +526,6 @@ msgstr "כשישה חודשים (180 יום) מעכשיו"
 msgid "About Google Person Finder"
 msgstr "‏מידע על הכלי של Google לאיתור אנשים"
 
-msgid "About you (required)"
-msgstr "מידע אודותיך (חובה)"
-
 msgid "Administration"
 msgstr "ניהול"
 
@@ -621,6 +597,11 @@ msgstr "ביטול"
 msgid "City"
 msgstr "עיר"
 
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+
 msgid "Click here to view results."
 msgstr "לחץ כאן כדי להציג את התוצאות."
 
@@ -642,9 +623,6 @@ msgstr "יצירת רשומה חדשה"
 msgid "Create a new record for"
 msgstr "יצירת רשומה חדשה עבור"
 
-msgid "Create a new record for a missing person"
-msgstr "יצירת רשומה חדשה עבור אדם נעדר"
-
 msgid "Crisis events"
 msgstr "אירועי משבר"
 
@@ -663,9 +641,6 @@ msgstr "מחק את הרשומה הזו"
 
 msgid "Describe how to identify this person."
 msgstr "תאר כיצד ניתן לזהות את האדם הזה."
-
-msgid "Describe the physical characteristics of this person."
-msgstr "תאר את המאפיינים הפיזיים של האדם הזה."
 
 msgid "Description"
 msgstr "תיאור"
@@ -723,11 +698,16 @@ msgid "Expiry date of this record"
 msgstr "תאריך התפוגה של הרשומה הזו"
 
 #, python-format
-msgid "Extend expiration date by %(extension_days)s days"
-msgstr "הארך את מועד התפוגה ב-%(extension_days)s ימים"
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                  "
+msgstr ""
 
 msgid "Family name"
 msgstr "שם משפחה"
+
+msgid "Family name (required)"
+msgstr ""
 
 msgid "Feed of updates about this person"
 msgstr "עדכונים על האדם הזה"
@@ -746,11 +726,11 @@ msgstr "‏עבור טלפונים שאינם טלפונים ניידים, הש�
 msgid "Full name"
 msgstr "שם מלא"
 
-msgid "Get a visual challenge"
-msgstr "קבל אתגר חזותי"
-
 msgid "Given name"
 msgstr "שם פרטי"
+
+msgid "Given name (required)"
+msgstr ""
 
 msgid "Google Person Finder"
 msgstr "‏כלי Google לאיתור אנשים"
@@ -782,6 +762,9 @@ msgstr "כיצד ניתן להגיע אל האדם הזה כעת?"
 
 msgid "How others who are interested in this person can contact you"
 msgstr "כיצד אנשים אחרים המעוניינים באדם הזה יכולים ליצור איתך קשר"
+
+msgid "I Have Information About This Person"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "אני מחפש מידע"
@@ -912,9 +895,6 @@ msgstr "יותר מ-100 תוצאות; מוצגות רק 100 הראשונות. �
 msgid "Name"
 msgstr "שם"
 
-msgid "Name (required)"
-msgstr "שם (חובה)"
-
 msgid "Name is required.  Please go back and try again."
 msgstr "דרוש שם. חזור ונסה שוב."
 
@@ -937,6 +917,9 @@ msgstr "אין רשומה עם המזהה: %(id_str)s."
 
 msgid "No notes have been posted"
 msgstr "לא פורסמו הערות"
+
+msgid "No person id was specified."
+msgstr ""
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1018,6 +1001,9 @@ msgstr "מספר טלפון"
 msgid "Photo"
 msgstr "תמונה"
 
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1025,6 +1011,11 @@ msgstr "התמונה שהועלתה היא בפורמט לא מוכר. חזור 
 
 msgid "Physical characteristics"
 msgstr "מאפיינים פיזיים"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1162,23 +1153,33 @@ msgstr "מישהו דיווח שהאדם הזה נעדר"
 msgid "Someone is seeking information about this person"
 msgstr "מישהו מחפש מידע על האדם הזה"
 
+msgid "Source of Record"
+msgstr ""
+
 msgid "Source of this record"
 msgstr "המקור של הרשומה הזו"
-
-msgid "Source of this record (required)"
-msgstr "המקור של האלבום הזה (חובה)"
 
 msgid "Status"
 msgstr "סטטוס"
 
-msgid "Status of this person"
-msgstr "הסטטוס של האדם הזה"
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr ""
+
+msgid "Status of Person"
+msgstr ""
+
+msgid "Status of this person:"
+msgstr ""
 
 msgid "Street name"
 msgstr "שם רחוב"
 
 msgid "Street name only, no number"
 msgstr "שם רחוב בלבד, ללא מספר"
+
+msgid "Submit"
+msgstr ""
 
 msgid "Subscribe"
 msgstr "הירשם"
@@ -1195,9 +1196,6 @@ msgstr "עבור לכתובת"
 
 msgid "Switch to lat/long"
 msgstr "עבור לקווי רוחב/אורך"
-
-msgid "Tell us the status of this person"
-msgstr "ספר לנו מה הסטטוס של האדם הזה"
 
 msgid "Terms of Service"
 msgstr "תנאים והגבלות"
@@ -1355,9 +1353,6 @@ msgstr "הקלד כתובת או פתח את המפה למטה וציין את �
 msgid "Type an address."
 msgstr "הקלד כתובת."
 
-msgid "Type what you hear:"
-msgstr "הקלד את מה שאתה שומע:"
-
 msgid "URL"
 msgstr "כתובת אתר"
 
@@ -1399,9 +1394,6 @@ msgstr "מתי הרשומה הזו אמורה להיעלם?"
 
 msgid "Where did this information come from?"
 msgstr "מאיפה המידע הזה הגיע?"
-
-msgid "Where is this person from?"
-msgstr "מאיפה האדם הזה?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1499,8 +1491,8 @@ msgstr "כתובת האימייל שלך:"
 msgid "Your email"
 msgstr "כתובת האימייל שלך"
 
-msgid "Your name"
-msgstr "השם שלך"
+msgid "Your name (required)"
+msgstr ""
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1561,6 +1553,9 @@ msgstr "‏[כלי Google לאיתור אנשים] עדכון סטטוס עבו�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "‏[כלי Google לאיתור אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
 
 msgid "female"
 msgstr "נקבה"
