@@ -579,11 +579,21 @@ msgstr "Aproximadamente seis meses (180 días) a partir de hoy"
 msgid "About Google Person Finder"
 msgstr "Acerca del Localizador de personas de Google"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr "Se agregó el registro de la persona encontrada: %(person_name)s"
+
 msgid "Administration"
 msgstr "Administración"
 
 msgid "Age"
 msgstr "Edad"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr "Toda la información ingresada en Person Finder está disponible de forma pública y puede ser usada por cualquier persona. Google no revisa o verifica la veracidad de la información google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Apellidos alternativos"
@@ -789,6 +799,10 @@ msgstr ""
 "Si el número no corresponde a un teléfono móvil, utiliza el servicio que "
 "proporciona NTT a través del número 171."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr "De: %(home_location)s"
+
 msgid "Full name"
 msgstr "Nombre completo"
 
@@ -962,6 +976,10 @@ msgid "Missing person's current phone number"
 msgstr "Número de teléfono actual de la persona desaparecida"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr "Más en: %(url)s"
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -1014,6 +1032,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "No hay ninguna persona con el ID %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "No existe esa entidad de autorización."
