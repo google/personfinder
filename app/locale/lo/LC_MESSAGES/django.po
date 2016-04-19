@@ -556,11 +556,21 @@ msgstr "ປະມານ 6 ເດືອນ (180 ມື້) ຈາກຕອນນ�
 msgid "About Google Person Finder"
 msgstr "ກ່ຽວກັບ Google Person Finder"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "ຜູ່ເບິ່ງແຍງລະບົບ"
 
 msgid "Age"
 msgstr "ອາຍຸ"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "ນາມສະກຸນສຳຮອງ"
@@ -760,6 +770,10 @@ msgid ""
 "NTT."
 msgstr "ສຳລັບໂທລະສັບອື່ນໆນອກເໜືອຈາກມືຖື, ກະລຸນາໃຊ້ການບໍລິການ 171 ໂດຍ NTT."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "ຊື່ເຕັມ"
 
@@ -920,6 +934,10 @@ msgid "Missing person's current phone number"
 msgstr "ຂາດເບີໂທລະສັບປັດຈຸບັນຂອງບຸກຄົນນີ້"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -966,6 +984,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "ບໍ່ມີບຸກຄົນທີ່ໃຊ້ໄອດີ: %(id_str)s ."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "ບໍ່ມີ Authorization entity ດັ່ງກ່າວ."

@@ -575,11 +575,21 @@ msgstr "Bugünden itibaren yaklaşık 6 ay (180 gün)"
 msgid "About Google Person Finder"
 msgstr "Google Kişi Bulucu Hakkında"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Yönetim"
 
 msgid "Age"
 msgstr "Yaş"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Alternatif soyadları"
@@ -783,6 +793,10 @@ msgstr ""
 "Cep telefonu dışındaki numaralar için lütfen NTT tarafından sağlanan 171 "
 "hizmetini kullanın."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Tam adı"
 
@@ -946,6 +960,10 @@ msgid "Missing person's current phone number"
 msgstr "Kayıp kişinin geçerli telefon numarası"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -992,6 +1010,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Şu kimliğe sahip hiç kimse yok: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Böyle bir yetkilendirme öğesi yok."

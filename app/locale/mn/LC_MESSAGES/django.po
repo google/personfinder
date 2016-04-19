@@ -559,11 +559,21 @@ msgstr "6 сарын дараа (180 өдөр)"
 msgid "About Google Person Finder"
 msgstr "Google Хүн Хайгчийн тухай"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Захиргаа"
 
 msgid "Age"
 msgstr "Нас"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Гэр бүлийн өөр нэр"
@@ -765,6 +775,10 @@ msgid ""
 "NTT."
 msgstr "Гар утаснаас бусад утасны хувьд NTT-н 171 үйлчилгээг ашиглана уу."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Бүтэн нэр"
 
@@ -931,6 +945,10 @@ msgid "Missing person's current phone number"
 msgstr "Сураггүй болсон хүний одоогийн утасны дугаар"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -977,6 +995,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Дараах ID-тай хүн алга байна: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Ийм Эрхжүүлэгч байгууллага байхгүй байна."

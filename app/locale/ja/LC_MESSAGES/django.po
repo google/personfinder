@@ -187,8 +187,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
-"      "
+"%(query)s に一致する情報は見つかりませんでした。"
 
 #, python-format
 msgid ""
@@ -548,11 +547,21 @@ msgstr "約 6 か月（180 日）後"
 msgid "About Google Person Finder"
 msgstr "Google パーソンファインダーについて"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
 msgid "Age"
 msgstr "年齢"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "姓（よみがな）"
@@ -730,7 +739,7 @@ msgid "Family name"
 msgstr "姓"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "姓（必須）"
 
 msgid "Feed of updates about this person"
 msgstr "この人に関する新着情報のフィード"
@@ -746,6 +755,10 @@ msgid ""
 "NTT."
 msgstr "携帯電話以外の電話の場合は、NTT の 171 サービスをご利用ください。"
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "姓名"
 
@@ -753,7 +766,7 @@ msgid "Given name"
 msgstr "名"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "名（必須）"
 
 msgid "Google Person Finder"
 msgstr "Google パーソンファインダー (安否情報)"
@@ -787,7 +800,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "この人についての安否情報を提供する"
 
 msgid "I am seeking information"
 msgstr "情報を探している"
@@ -897,6 +910,10 @@ msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -939,6 +956,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
@@ -1165,7 +1186,7 @@ msgid "Someone is seeking information about this person"
 msgstr "この人についての情報を求めている人がいます"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "情報源"
 
 msgid "Source of this record"
 msgstr "この記録の情報源"
@@ -1178,10 +1199,10 @@ msgid "Status of %(full_name)s "
 msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "この人の状況"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "この人の状況:"
 
 msgid "Street name"
 msgstr "町名"
@@ -1190,7 +1211,7 @@ msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "送信"
 
 msgid "Subscribe"
 msgstr "新着情報を受け取る"
@@ -1379,7 +1400,7 @@ msgid "Upload your CSV file below"
 msgstr "以下の CSV ファイルをアップロードします"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "現在位置を使う"
 
 msgid "View the record"
 msgstr "記録を見る"
@@ -1489,7 +1510,7 @@ msgid "Your email"
 msgstr "メール アドレス"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "あなたの名前（必須）"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "

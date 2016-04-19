@@ -525,11 +525,21 @@ msgstr "从现在起大约 6 个月（180 天）"
 msgid "About Google Person Finder"
 msgstr "关于 Google Person Finder"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
 msgid "Age"
 msgstr "年龄"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "姓氏别称"
@@ -723,6 +733,10 @@ msgid ""
 "NTT."
 msgstr "如果是手机以外的电话，请使用日本电信电话株式会社 (NTT) 提供的 171 服务。"
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "全名"
 
@@ -874,6 +888,10 @@ msgid "Missing person's current phone number"
 msgstr "失踪人员的当前电话号码"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -916,6 +934,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "没有 ID 为 %(id_str)s 的个人。"
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "没有这样的授权实体。"

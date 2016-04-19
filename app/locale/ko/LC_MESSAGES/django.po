@@ -540,11 +540,21 @@ msgstr "약 6개월(180일) 후"
 msgid "About Google Person Finder"
 msgstr "Google 사람 찾기 정보"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "관리"
 
 msgid "Age"
 msgstr "나이"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "보조 성"
@@ -740,6 +750,10 @@ msgid ""
 "NTT."
 msgstr "휴대전화가 아닌 일반 전화의 경우 NTT가 제공하는 171 서비스를 사용하세요."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "전체 이름"
 
@@ -895,6 +909,10 @@ msgid "Missing person's current phone number"
 msgstr "실종자의 현재 전화번호"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -937,6 +955,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "ID가 %(id_str)s인 사람이 없습니다."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "해당 승인 항목이 없습니다."
