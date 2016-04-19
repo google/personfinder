@@ -150,6 +150,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -158,18 +161,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s on hakenut tätä kyselyä vastaavia "
-"tuloksia.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -177,6 +172,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -184,6 +182,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -191,15 +192,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Hakutulokset haulle %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -650,6 +644,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Näet tulokset klikkaamalla tätä."
@@ -753,12 +749,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "Sukunimi"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Syötteet tätä henkilöä koskevista päivityksistä"
@@ -777,14 +775,11 @@ msgstr "Käytä lankapuhelinnumerojen tapauksessa NTT:n 171-palvelua."
 msgid "Full name"
 msgstr "Koko nimi"
 
-msgid "Get a visual challenge"
-msgstr "Uusi visuaalinen haaste"
-
 msgid "Given name"
 msgstr "Etunimi"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -822,7 +817,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Etsin tietoja"
@@ -987,7 +982,7 @@ msgid "No notes have been posted"
 msgstr "Muistiinpanoja ei ole lisätty"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1058,6 +1053,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Henkilöhaku"
@@ -1072,7 +1069,7 @@ msgid "Photo"
 msgstr "Valokuva"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1088,6 +1085,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1228,7 +1227,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Joku etsii tietoja tästä henkilöstä"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Tämän tallenteen lähde"
@@ -1238,13 +1237,13 @@ msgstr "Tila"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Kadun nimi"
@@ -1253,7 +1252,7 @@ msgid "Street name only, no number"
 msgstr "Vain kadun nimi, ei numeroa"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Tilaa"
@@ -1432,9 +1431,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Kirjoita osoite."
 
-msgid "Type what you hear:"
-msgstr "Kirjoita kuulemasi:"
-
 msgid "URL"
 msgstr "URL-osoite"
 
@@ -1460,7 +1456,7 @@ msgid "Upload your CSV file below"
 msgstr "Lähetä CSV-tiedostosi alta"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Katso tiedot"
@@ -1578,7 +1574,7 @@ msgid "Your email"
 msgstr "Sähköpostiosoite:"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1657,7 +1653,7 @@ msgstr ""
 "tilapäivitykset: %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "nainen"

@@ -154,6 +154,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -162,18 +165,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s မှာ ဤမေးမြန်းခြင်းနှင့် "
-"ကိုက်ညီသောအဖြေ(များ)အား ရှာဖွေတွေ့ရှိပါသည်။\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -181,6 +176,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -188,6 +186,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -195,15 +196,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        \"%(query)s\" အတြက္ ရွာေဖြျခင္းရလဒ္မ်ား။\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -665,6 +659,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "results ေခၚ ရလဒ္မ်ားကို ႀကည့္ရန္ ဒီမွာႏွိပ္ပါ။"
@@ -778,12 +774,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "Family name ခေါ်မိသားစုနာမည်။"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "ဒီလူ၏အေႀကာင္း အပ္ဒိတ္ updates မ်ားကို အျမဲမျပတ္ ရရွိျခင္း။"
@@ -806,14 +804,11 @@ msgstr ""
 msgid "Full name"
 msgstr "နာမည္ အျပည့္အစံု။"
 
-msgid "Get a visual challenge"
-msgstr "႐ုပ္ပံု စိန္ေခၚမႈ( a visual challenge)ကို ရယူပါ။"
-
 msgid "Given name"
 msgstr "ပေးထားသော နာမည်။"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder ခေါ် ဂူဂယ်၏ လူရှာဖွေပေးသည့် ၀န်ဆောင်မှု။"
@@ -854,7 +849,7 @@ msgstr ""
 "သြယ္ႏိုင္သလဲ။"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "ကၽြန္ေတာ္(ကၽြန္မ) သတင္းအခ်က္အလက္မ်ားကို ရွာေဖြေနပါတယ္။"
@@ -1034,7 +1029,7 @@ msgid "No notes have been posted"
 msgstr "မည်သည့် မှတ်စုမှ တင်မထားပါ။"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1108,6 +1103,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Person Finder ခေါ်လူရှာဖွေပေးသည့် ၀န်ဆောင်မှု။"
@@ -1122,7 +1119,7 @@ msgid "Photo"
 msgstr "ဓာတ္ပံု။"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1138,6 +1135,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1297,7 +1296,7 @@ msgstr ""
 "ရွာေဖြေနတယ္။"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "ဤမှတ်တမ်း၏ Source ခေါ် မူရင်းနေရာ။"
@@ -1307,13 +1306,13 @@ msgstr "စေတးတပ္ ေခၚ လက္ရွိအေျခအေန 
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "လမ်းနာမည်။"
@@ -1322,7 +1321,7 @@ msgid "Street name only, no number"
 msgstr "လမ်းနာမည်သာ၊ လမ်းနံပါတ်မပါ။"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr ""
@@ -1529,9 +1528,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "လိပ်စာတစ်ခုအား ရိုက်ထည့်ပါ။"
 
-msgid "Type what you hear:"
-msgstr "သင် ဘာကြားထားရသလဲဆိုတာ ရိုက်ထည့်ပါ။"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1557,7 +1553,7 @@ msgid "Upload your CSV file below"
 msgstr "သင်C့SV ဖိုင်ကိုအောက်တွင်Uploadလုပ်ပါ။"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "မှတ်တမ်းကို ကြည့်ပါ။"
@@ -1689,7 +1685,7 @@ msgid "Your email"
 msgstr "သင့်အီးမေးလ်"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1772,7 +1768,7 @@ msgstr ""
 "လုပ္ထားသည္။"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "အမ်ိဳးသမီး"

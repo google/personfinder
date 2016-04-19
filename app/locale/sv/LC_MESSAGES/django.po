@@ -156,6 +156,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -164,18 +167,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          Det finns sökresultat på %(search_engine_name)s som matchar den"
-" här sökfrågan.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -183,6 +178,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -190,6 +188,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -197,15 +198,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Sökresultat för %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -661,6 +655,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Klicka här om du vill visa resultaten."
@@ -766,12 +762,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "Efternamn"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Flöden med uppdateringar om den här personen"
@@ -790,14 +788,11 @@ msgstr "För andra telefoner än mobiltelefoner använder du 171-tjänsten från
 msgid "Full name"
 msgstr "Fullständigt namn"
 
-msgid "Get a visual challenge"
-msgstr "Få en visuell utmaning"
-
 msgid "Given name"
 msgstr "Förnamn"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -833,7 +828,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Så kan andra som vill ha information om personen nå dig"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Jag söker information"
@@ -996,7 +991,7 @@ msgid "No notes have been posted"
 msgstr "Inga medelanden har lämnats"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1067,6 +1062,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1081,7 +1078,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1095,6 +1092,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1233,7 +1232,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Någon söker information om personen"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Postens källa"
@@ -1243,13 +1242,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Gatunamn"
@@ -1258,7 +1257,7 @@ msgid "Street name only, no number"
 msgstr "Bara gatans namn, inte husnummer"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Prenumerera"
@@ -1440,9 +1439,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Skriv en adress."
 
-msgid "Type what you hear:"
-msgstr "Skriv det du hör:"
-
 msgid "URL"
 msgstr "Webbadress"
 
@@ -1468,7 +1464,7 @@ msgid "Upload your CSV file below"
 msgstr "Överför CSV-filen nedan"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Visa posten"
@@ -1584,7 +1580,7 @@ msgid "Your email"
 msgstr "Din e-postadress"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1647,7 +1643,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Du prenumererar på statusuppdateringar om %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "kvinna"

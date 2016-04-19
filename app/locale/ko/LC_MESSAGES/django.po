@@ -142,6 +142,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -150,17 +153,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s에 이 검색어와 일치하는 검색결과가 있습니다.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -168,6 +164,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -175,6 +174,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -182,15 +184,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        다음에 대한 검색결과: %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -619,6 +614,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "결과를 보려면 여기를 클릭하세요."
@@ -720,12 +717,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "성"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "이 사람에 대한 업데이트 피드"
@@ -744,14 +743,11 @@ msgstr "휴대전화가 아닌 일반 전화의 경우 NTT가 제공하는 171 �
 msgid "Full name"
 msgstr "전체 이름"
 
-msgid "Get a visual challenge"
-msgstr "화면으로 문제 받기"
-
 msgid "Given name"
 msgstr "이름"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google 사람 찾기"
@@ -785,7 +781,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "이 사람과 관련된 사람들이 내게 연락할 수 있도록 연락처를 남겨주세요."
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
@@ -936,7 +932,7 @@ msgid "No notes have been posted"
 msgstr "게시된 메모가 없습니다."
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1001,6 +997,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "사람 찾기"
@@ -1015,7 +1013,7 @@ msgid "Photo"
 msgstr "사진"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1029,6 +1027,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1165,7 +1165,7 @@ msgid "Someone is seeking information about this person"
 msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "이 신상기록의 출처"
@@ -1175,13 +1175,13 @@ msgstr "상태"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "상세 주소 2"
@@ -1190,7 +1190,7 @@ msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "수신"
@@ -1356,9 +1356,6 @@ msgstr "직접 주소를 입력하거나 아래에서 지도를 열고 클릭하
 msgid "Type an address."
 msgstr "주소를 입력하세요."
 
-msgid "Type what you hear:"
-msgstr "들은 내용 입력:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1384,7 +1381,7 @@ msgid "Upload your CSV file below"
 msgstr "아래 CSV 파일 업로드"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "신상기록 보기"
@@ -1494,7 +1491,7 @@ msgid "Your email"
 msgstr "이메일"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1555,7 +1552,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] %(full_name)s님에 대한 소식을 수신 신청했습니다."
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "여자"

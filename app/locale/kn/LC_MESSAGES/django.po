@@ -151,6 +151,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -159,18 +162,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          ಈ ಪ್ರಶ್ನೆಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಹುಡುಕಾಟ ಫಲಿತಾಂಶ(ಗಳನ್ನು) "
-"%(search_engine_name)s ಹೊಂದಿದೆ.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -178,6 +173,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -185,6 +183,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -192,15 +193,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        ಇದಕ್ಕಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು: %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -653,6 +647,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ."
@@ -758,12 +754,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "ಕುಟುಂಬದ ಹೆಸರು"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತ ನವೀಕರಣಗಳ ಫೀಡ್"
@@ -784,14 +782,11 @@ msgstr ""
 msgid "Full name"
 msgstr "ಪೂರ್ಣ ಹೆಸರು"
 
-msgid "Get a visual challenge"
-msgstr "ದೃಶ್ಯ ಸವಾಲನ್ನು ಪಡೆಯಿರಿ"
-
 msgid "Given name"
 msgstr "ಹೆಸರು"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ"
@@ -829,7 +824,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಬಗ್ಗೆ ತಿಳಿಯಲು ಆಸಕ್ತಿ ಇರುವ ಇತರರು ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "ಮಾಹಿತಿಯ ಹುಡುಕಾಟದಲ್ಲಿದ್ದೇನೆ"
@@ -994,7 +989,7 @@ msgid "No notes have been posted"
 msgstr "ಯಾವುದೇ ಟಿಪ್ಪಣಿಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿಲ್ಲ"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1067,6 +1062,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ"
@@ -1081,7 +1078,7 @@ msgid "Photo"
 msgstr "ಫೋಟೋ"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1097,6 +1094,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1239,7 +1238,7 @@ msgid "Someone is seeking information about this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತು ಯಾರೋ ಒಬ್ಬರು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕುತ್ತಿದ್ದಾರೆ"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "ಈ ರೆಕಾರ್ಡ್‌ನ ಮೂಲ"
@@ -1249,13 +1248,13 @@ msgstr "ಸ್ಥಿತಿ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "ಗಲ್ಲಿ ಹೆಸರು"
@@ -1264,7 +1263,7 @@ msgid "Street name only, no number"
 msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ. ಸಂಖ್ಯೆ ಬೇಡ"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "ಸಬ್‌ಸ್ಕ್ರೈಬ್‌"
@@ -1444,9 +1443,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ."
 
-msgid "Type what you hear:"
-msgstr "ನೀವು ಆಲಿಸುವುದನ್ನು ಟೈಪ್ ಮಾಡಿ:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1472,7 +1468,7 @@ msgid "Upload your CSV file below"
 msgstr "ಕೆಳಗೆ ನಿಮ್ಮ CSV ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "ರೆಕಾರ್ಡ್ ವೀಕ್ಷಿಸು"
@@ -1592,7 +1588,7 @@ msgid "Your email"
 msgstr "ನಿಮ್ಮ ಇಮೇಲ್"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1672,7 +1668,7 @@ msgstr ""
 "ಚಂದಾದಾರರಾಗಿರುವಿರಿ"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "ಸ್ತ್ರೀ"
