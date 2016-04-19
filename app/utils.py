@@ -449,7 +449,7 @@ def get_repo_url(request, repo, scheme=None):
     """Constructs the absolute root URL for a given repository."""
     req_scheme, req_netloc, req_path, _, _ = urlparse.urlsplit(request.url)
     prefix = req_path.startswith('/personfinder') and '/personfinder' or ''
-    if req_netloc.split(':')[0] == 'localhost':
+    if is_dev_app_server():
         scheme = 'http'  # HTTPS is not available when using dev_appserver
     return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
 
@@ -473,6 +473,9 @@ def strip_url_scheme(url):
         return url
     _, netloc, path, query, segment = urlparse.urlsplit(url)
     return urlparse.urlunsplit(('', netloc, path, query, segment))
+
+def is_dev_app_server():
+    return os.environ['APPLICATION_ID'].startswith('dev~')
 
 
 # ==== Struct ==================================================================
@@ -926,8 +929,8 @@ class BaseHandler(webapp.RequestHandler):
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
 
-        # Check for SSL (unless running on localhost for development).
-        if self.https_required and self.env.domain != 'localhost':
+        # Check for SSL (unless running local dev app server).
+        if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
