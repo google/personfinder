@@ -561,11 +561,21 @@ msgstr "O 6 mesiacov (180 dní) od dnešného dňa"
 msgid "About Google Person Finder"
 msgstr "O službe Hľadanie ľudí Google"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Správa"
 
 msgid "Age"
 msgstr "Vek"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Ďalšie priezviská"
@@ -771,6 +781,10 @@ msgstr ""
 "V prípade iných ako mobilných telefónov použite službu spoločnosti NTT "
 "dostupnú na telefónnom čísle 171."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Celé meno"
 
@@ -936,6 +950,10 @@ msgid "Missing person's current phone number"
 msgstr "Aktuálne telefónne číslo nezvestnej osoby"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -982,6 +1000,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Osoba s ID %(id_str)s sa nenašla."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Daná entita s právami autorizácie neexistuje."

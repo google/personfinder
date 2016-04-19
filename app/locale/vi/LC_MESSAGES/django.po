@@ -558,11 +558,21 @@ msgstr "Khoảng 6 tháng (180 ngày) kể từ bây giờ"
 msgid "About Google Person Finder"
 msgstr "Giới thiệu về Công cụ tìm kiếm người thân của Google"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Quản trị"
 
 msgid "Age"
 msgstr "Tuổi"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Họ thay thế"
@@ -764,6 +774,10 @@ msgstr ""
 "Đối với điện thoại không phải là điện thoại di động, vui lòng sử dụng "
 "dịch vụ 171 do NTT cung cấp."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Họ và tên"
 
@@ -929,6 +943,10 @@ msgid "Missing person's current phone number"
 msgstr "Số điện thoại hiện tại của người bị mất tích"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -977,6 +995,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Không có người nào có ID: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Không có tổ chức ủy quyền như vậy."

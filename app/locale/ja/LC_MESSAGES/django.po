@@ -548,11 +548,21 @@ msgstr "約 6 か月（180 日）後"
 msgid "About Google Person Finder"
 msgstr "Google パーソンファインダーについて"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
 msgid "Age"
 msgstr "年齢"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "姓（よみがな）"
@@ -746,6 +756,10 @@ msgid ""
 "NTT."
 msgstr "携帯電話以外の電話の場合は、NTT の 171 サービスをご利用ください。"
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "姓名"
 
@@ -897,6 +911,10 @@ msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -939,6 +957,10 @@ msgstr "No person id was specified."
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
