@@ -76,5 +76,8 @@ class Handler(utils.BaseHandler):
                 self.response.set_status(500)
                 self.write('Bad HTTP status code: %d' % response.status_code)
         except urlfetch_errors.Error as e:
+            logging.exception('HTTP fetch failed')
             self.response.set_status(500)
-            self.write('HTTP fetch failed: %s' % e.message)
+            # No more detailed information e.g., e.message, to avoid leaking
+            # the URL which contains signature.
+            self.write('HTTP fetch failed')
