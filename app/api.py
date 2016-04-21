@@ -31,6 +31,7 @@ from django.utils.translation import ugettext as _
 from google.appengine import runtime
 from google.appengine.ext import db
 from google.appengine.api import images
+from unidecode import unidecode
 
 import config
 import external_search
@@ -45,8 +46,8 @@ import utils
 import xlrd
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
-from utils import Struct
 from photo import create_photo, PhotoError
+from utils import Struct
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
@@ -733,13 +734,20 @@ class HandleSMS(utils.BaseHandler):
               usage_str += ' OR "I am John"'
             responses.append(usage_str)
 
+        # Convert the response into ASCII because the SMS pipeline doesn't
+        # support UTF-8.
+        # e.g., It removes diacritics such as "ú" -> "u".
+        # This seems acceptable for Spanish, but may not be for other
+        # languages.
+        ascii_response = unidecode(' ## '.join(responses))
+
         self.response.headers['Content-Type'] = 'application/xml'
         self.write(
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
             '  <message_text>%s</message_text>\n'
             '</response>\n'
-            % django.utils.html.escape(' ## '.join(responses)))
+            % django.utils.html.escape(ascii_response))
 
     def render_person(self, person):
         fields = []
