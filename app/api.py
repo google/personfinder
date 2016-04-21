@@ -759,7 +759,7 @@ class HandleSMS(utils.BaseHandler):
             # into a str object.
             #
             # TODO(ichikawa) Use ugettext_lazy() instead of gettext_lazy() in
-            #     const.py so that it can be directly converted into uncide
+            #     const.py so that it can be directly converted into unicode
             #     object here.
             fields.append(
                 unicode(str(utils.get_person_status_text(person)), 'utf-8'))
