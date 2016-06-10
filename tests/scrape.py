@@ -296,7 +296,7 @@ class Session:
         message - the status message of the last request
         headers - the headers of the last request as a dictionary
         content - the content of the last fetched document
-        doc     - the Region spanning the last fetched document
+        doc     - the Document currently opened.
     """
 
     def __init__(self, agent=None, verbose=0):
@@ -309,9 +309,11 @@ class Session:
         self.cookiejar = {}
         self.history = []
 
-    def go(self, url, data='', redirects=10, referrer=True, charset=None,
-           type=None):
-        """Navigate to a given URL.  If the URL is relative, it is resolved
+    def go(self, url_or_doc, data='', redirects=10, referrer=True,
+           charset=None, type=None):
+        """Navigate to a given URL or a document.
+
+        If the URL is relative, it is resolved
         with respect to the current URL.  If 'data' is provided, do a POST;
         otherwise do a GET.  Follow redirections up to 'redirects' times.
         If 'referrer' is given, send it as the referrer; if 'referrer' is
@@ -321,29 +323,49 @@ class Session:
         leaves the content undecoded in an 8-bit string.  If the document is
         successfully fetched, return a Region spanning the entire document.
         Any relevant previously stored cookies will be included in the
-        request, and any received cookies will be stored for future use."""
-        historyentry = (self.url, self.status, self.message,
-                        self.headers, self.content, self.doc)
-        url = self.resolve(url)
-        if referrer is True:
-            referrer = self.url
+        request, and any received cookies will be stored for future use.
 
-        while 1:
-            (self.url, self.status, self.message, self.headers,
-             content_bytes) = fetch(
-                url, data, self.agent, referrer, charset, self.verbose,
-                self.cookiejar, type)
-            if redirects:
-                if self.status in [301, 302] and 'location' in self.headers:
-                    url, data = urljoin(url, self.headers['location']), ''
-                    redirects -= 1
-                    continue
-            break
+        If a scrape.Document instance is given, it just make it the current
+        document (self.doc) in the session, without making any extra HTTP
+        requests.
+        """
+        self.history.append(
+            (self.url, self.status, self.message,
+             self.headers, self.content, self.doc))
 
-        self.history.append(historyentry)
+        if isinstance(url_or_doc, Document):
+            self.doc = url_or_doc
 
-        self.doc = Document(content_bytes, headers=self.headers, charset=charset)
+        else:
+            url = self.resolve(url_or_doc)
+            if referrer is True:
+                referrer = self.url
+
+            while 1:
+                (self.url, self.status, self.message, self.headers,
+                 content_bytes) = fetch(
+                    url, data, self.agent, referrer, charset, self.verbose,
+                    self.cookiejar, type)
+                if redirects:
+                    if self.status in [301, 302] and 'location' in self.headers:
+                        url, data = urljoin(url, self.headers['location']), ''
+                        redirects -= 1
+                        continue
+                break
+
+            self.doc = Document(
+                content_bytes,
+                url=self.url,
+                status=self.status,
+                message=self.message,
+                headers=self.headers,
+                charset=charset)
+
+        self.url = self.doc.url
         self.content = self.doc.content
+        self.status = self.doc.status
+        self.message = self.doc.message
+        self.headers = self.doc.headers
         self.charset = self.doc.charset
         return self.doc
 
@@ -1084,11 +1106,15 @@ class Document(Region):
     """A document returned as an HTTP response.
     """
 
-    def __init__(self, content_bytes, headers, charset):
+    def __init__(self, content_bytes, url, status, message, headers, charset):
         """charset is used to decode content_bytes. If charset is None, it uses
         the charset in headers['content-type'].
         """
         self.content_bytes = content_bytes
+        self.url = url
+        self.status = status
+        self.message = message
+        self.headers = headers
         self.charset = charset
 
         if 'content-type' in headers:
