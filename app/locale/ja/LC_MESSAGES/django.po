@@ -144,6 +144,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -152,17 +155,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          この検索キーワードと一致する検索結果が %(search_engine_name)s にあります。\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -170,6 +166,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -177,6 +176,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -184,16 +186,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        「%(query)s」の検索結果\n"
-"      "
+"%(query)s に一致する情報は見つかりませんでした。"
 
 #, python-format
 msgid ""
@@ -553,11 +547,21 @@ msgstr "約 6 か月（180 日）後"
 msgid "About Google Person Finder"
 msgstr "Google パーソンファインダーについて"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
 msgid "Age"
 msgstr "年齢"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "姓（よみがな）"
@@ -625,6 +629,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "結果を表示するにはここをクリックしてください。"
@@ -726,12 +732,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "姓"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "姓（必須）"
 
 msgid "Feed of updates about this person"
 msgstr "この人に関する新着情報のフィード"
@@ -747,17 +755,18 @@ msgid ""
 "NTT."
 msgstr "携帯電話以外の電話の場合は、NTT の 171 サービスをご利用ください。"
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "姓名"
-
-msgid "Get a visual challenge"
-msgstr "画像による認証を取得"
 
 msgid "Given name"
 msgstr "名"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "名（必須）"
 
 msgid "Google Person Finder"
 msgstr "Google パーソンファインダー (安否情報)"
@@ -791,7 +800,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "この人についての安否情報を提供する"
 
 msgid "I am seeking information"
 msgstr "情報を探している"
@@ -901,6 +910,10 @@ msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -938,11 +951,15 @@ msgid "No notes have been posted"
 msgstr "メモはまだありません"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "次の ID の人は見つかりません: %(id_str)s"
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
@@ -1002,7 +1019,7 @@ msgstr "その他のウェブサイト"
 msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
-msgstr ""
+msgstr "注: 入力したデータはすべて公開され、誰でも使用できます。Google では、データの正確性の確認は行っていません。"
 
 msgid "Person Finder"
 msgstr "パーソンファインダー (安否情報)"
@@ -1017,7 +1034,7 @@ msgid "Photo"
 msgstr "写真"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1031,6 +1048,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1167,7 +1186,7 @@ msgid "Someone is seeking information about this person"
 msgstr "この人についての情報を求めている人がいます"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "情報源"
 
 msgid "Source of this record"
 msgstr "この記録の情報源"
@@ -1177,13 +1196,13 @@ msgstr "状況"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "この人の状況"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "この人の状況:"
 
 msgid "Street name"
 msgstr "町名"
@@ -1192,7 +1211,7 @@ msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
 msgid "Submit"
-msgstr ""
+msgstr "送信"
 
 msgid "Subscribe"
 msgstr "新着情報を受け取る"
@@ -1356,9 +1375,6 @@ msgstr "住所を入力するか下の地図を開き、地図上をクリック
 msgid "Type an address."
 msgstr "住所を入力してください。"
 
-msgid "Type what you hear:"
-msgstr "聞こえたことを入力してください:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1384,7 +1400,7 @@ msgid "Upload your CSV file below"
 msgstr "以下の CSV ファイルをアップロードします"
 
 msgid "Use current location"
-msgstr ""
+msgstr "現在位置を使う"
 
 msgid "View the record"
 msgstr "記録を見る"
@@ -1494,7 +1510,7 @@ msgid "Your email"
 msgstr "メール アドレス"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "あなたの名前（必須）"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1555,7 +1571,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "女性"

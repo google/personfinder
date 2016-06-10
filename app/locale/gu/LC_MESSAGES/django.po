@@ -145,6 +145,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -153,18 +156,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s માં આ ક્વેરીથી મેળ ખાતાં શોધ "
-"પરિણામ(પરિણામો) છે.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -172,6 +167,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -179,6 +177,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -186,15 +187,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        આ માટે શોધ પરિણામો: %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -570,11 +564,21 @@ msgstr "હમણાંથી લગભગ 6 મહિના (180 દિવસ)"
 msgid "About Google Person Finder"
 msgstr "Google વ્યક્તિ શોધક વિશે"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "વ્યવસ્થા"
 
 msgid "Age"
 msgstr "ઉંમર"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "વૈકલ્પિક કૌટુંબિક નામો"
@@ -648,6 +652,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "પરિણામો જોવા માટે અહીં ક્લિક કરો."
@@ -751,12 +757,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "અટક"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "આ વ્યક્તિ વિશેના અપડેટ્સની ફીડ"
@@ -774,17 +782,18 @@ msgstr ""
 "મોબાઇલ ફોન્સ સિવાયના અન્ય ફોન્સ માટે, કૃપા કરીને NTT દ્વારા પૂરી પાડવામાં"
 " આવેલ 171 સેવાનો ઉપયોગ કરો."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "પૂરું નામ"
-
-msgid "Get a visual challenge"
-msgstr "એક દૃશ્યાત્મક પડકાર મેળવો"
 
 msgid "Given name"
 msgstr "નામ"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google વ્યક્તિ શોધક"
@@ -822,7 +831,7 @@ msgstr ""
 "શકશે"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "હું માહિતી શોધું છું"
@@ -944,6 +953,10 @@ msgid "Missing person's current phone number"
 msgstr "ગુમ થયેલા વ્યક્તિનો વર્તમાન ફોન નંબર"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -985,11 +998,15 @@ msgid "No notes have been posted"
 msgstr "કોઈ નોટ્સ પોસ્ટ કરવામાં આવી નથી"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "આ ID ધરાવતી કોઈ વ્યક્તિ નથી: %(id_str)s ."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "આવો કોઈ અધિકૃત અસ્તિત્વ નથી."
@@ -1056,6 +1073,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "વ્યક્તિ શોધક"
@@ -1070,7 +1089,7 @@ msgid "Photo"
 msgstr "ફોટો"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1086,6 +1105,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1230,7 +1251,7 @@ msgid "Someone is seeking information about this person"
 msgstr "કોઇક આ વ્યક્તિ વિશે માહિતી શોધી રહ્યાં છે"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "આ રેકોર્ડનો સ્રોત"
@@ -1240,13 +1261,13 @@ msgstr "સ્થિતિ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "ગલીનું નામ"
@@ -1255,7 +1276,7 @@ msgid "Street name only, no number"
 msgstr "ફક્ત ગલીનું નામ, નંબર નહીં"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "સબ્સ્ક્રાઇબ કરો"
@@ -1433,9 +1454,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "એક સરનામું લખો."
 
-msgid "Type what you hear:"
-msgstr "તમે જે સાંભળો છો તે લખો:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1461,7 +1479,7 @@ msgid "Upload your CSV file below"
 msgstr "તમારી CSV ફાઇલને નીચે અપલોડ કરો"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "રેકોર્ડ જુઓ"
@@ -1577,7 +1595,7 @@ msgid "Your email"
 msgstr "તમારું ઇમેઇલ"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1647,7 +1665,7 @@ msgstr ""
 "કર્યું છે"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "સ્ત્રી"

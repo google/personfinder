@@ -149,6 +149,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -157,18 +160,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s ha trobat resultats de la cerca que "
-"coincideixen amb aquesta consulta.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -176,6 +171,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -183,6 +181,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -190,15 +191,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Resultats de la cerca per a: %(query)s\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -571,11 +565,21 @@ msgstr "D'aquí a aproximadament sis mesos (180 dies)"
 msgid "About Google Person Finder"
 msgstr "Sobre el Cercador de persones de Google"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administració"
 
 msgid "Age"
 msgstr "Edat"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Cognoms alternatius"
@@ -587,10 +591,10 @@ msgid "Alternate names"
 msgstr "Noms alternatius"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Esteu segur que aquesta nota no és activitat brossa?"
+msgstr "Esteu segur que aquesta nota no és contingut brossa?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Esteu segur que voleu marcar aquesta nota com a activitat brossa?"
+msgstr "Esteu segur que voleu marcar aquesta nota com a contingut brossa?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Esteu segur que voleu restaurar aquest registre després de suprimir-lo?"
@@ -649,6 +653,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Feu clic aquí per visualitzar els resultats."
@@ -756,12 +762,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "Cognom"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed de novetats sobre aquesta persona"
@@ -779,17 +787,18 @@ msgstr ""
 "Per a telèfons que no siguin mòbils, feu servir el servei 171 "
 "subministrat per NTT."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Nom complet"
-
-msgid "Get a visual challenge"
-msgstr "Aconseguiu un repte visual"
 
 msgid "Given name"
 msgstr "Nom de pila"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Cercador de persones de Google"
@@ -829,7 +838,7 @@ msgstr ""
 "contactar-vos"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Cerco informació"
@@ -856,10 +865,10 @@ msgid "I have received information that this person is dead"
 msgstr "He rebut informació que aquesta persona és morta"
 
 msgid "I have received spam due to this note."
-msgstr "He rebut activitat brossa a causa d'aquesta nota."
+msgstr "He rebut contingut brossa a causa d'aquesta nota."
 
 msgid "I have received spam."
-msgstr "He rebut activitat brossa."
+msgstr "He rebut contingut brossa."
 
 msgid "I prefer not to specify."
 msgstr "Prefereixo no especificar-ho."
@@ -951,6 +960,10 @@ msgid "Missing person's current phone number"
 msgstr "Número de telèfon actual de la persona desapareguda"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -994,11 +1007,15 @@ msgid "No notes have been posted"
 msgstr "No s'ha publicat cap nota."
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "No hi ha cap entitat d'autorització."
@@ -1014,7 +1031,7 @@ msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "No esteu autoritzat a publicar notes amb l'estat \"believed_dead\"."
 
 msgid "Not spam"
-msgstr "No és activitat brossa."
+msgstr "No és contingut brossa."
 
 msgid "Note author"
 msgstr "Autor de la nota"
@@ -1065,6 +1082,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Cercador de persones"
@@ -1079,7 +1098,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1095,6 +1114,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1171,7 +1192,7 @@ msgid "Remove"
 msgstr "Elimina"
 
 msgid "Report spam"
-msgstr "Marca-ho com a activitat brossa"
+msgstr "Marca-ho com a contingut brossa"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1233,7 +1254,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Alguna persona cerca informació sobre aquesta persona."
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Origen d'aquest registre"
@@ -1243,13 +1264,13 @@ msgstr "Estat"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Carrer"
@@ -1258,7 +1279,7 @@ msgid "Street name only, no number"
 msgstr "Només el nom del carrer, sense el número"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Subscriviu-vos"
@@ -1306,7 +1327,7 @@ msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
 
 msgid "The reason this note is being marked as spam:"
-msgstr "El motiu pel qual aquesta nota es marca com a activitat brossa:"
+msgstr "El motiu pel qual aquesta nota es marca com a contingut brossa:"
 
 msgid "The record cannot be extended."
 msgstr "El registre no es pot ampliar."
@@ -1375,7 +1396,7 @@ msgid "This link is invalid."
 msgstr "Aquest enllaç no és vàlid."
 
 msgid "This note has been marked as spam."
-msgstr "Aquesta nota s'ha marcat com a activitat brossa."
+msgstr "Aquesta nota s'ha marcat com a contingut brossa."
 
 msgid "This note is inappropriate."
 msgstr "Aquesta nota és inadequada."
@@ -1384,7 +1405,7 @@ msgid "This note is incorrect or untrue."
 msgstr "Aquesta nota és incorrecta o bé falsa."
 
 msgid "This note is spam."
-msgstr "Aquesta nota és activitat brossa."
+msgstr "Aquesta nota és contingut brossa."
 
 msgid "This person has been in contact with someone"
 msgstr "Aquesta persona ha estat en contacte amb alguna persona."
@@ -1408,7 +1429,7 @@ msgid "This record is inappropriate."
 msgstr "Aquest registre és inadequat."
 
 msgid "This record is spam."
-msgstr "Aquest registre és activitat brossa."
+msgstr "Aquest registre és contingut brossa."
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
@@ -1442,9 +1463,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Escriviu una adreça."
 
-msgid "Type what you hear:"
-msgstr "Escriviu el que sentiu:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1470,7 +1488,7 @@ msgid "Upload your CSV file below"
 msgstr "Pengeu el fitxer CSV a continuació."
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Mostra el registre"
@@ -1592,7 +1610,7 @@ msgid "Your email"
 msgstr "El vostre correu electrònic"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1666,7 +1684,7 @@ msgstr ""
 " %(full_name)s."
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "dona"

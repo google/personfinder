@@ -64,17 +64,21 @@ PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets', 'referrer']
 
 # ==== Field value text ========================================================
 
+
 def get_person_sex_text(person):
     """Returns the UI text for a person's sex field."""
     return const.PERSON_SEX_TEXT.get(person.sex or '')
+
 
 def get_note_status_text(note):
     """Returns the UI text for a note's status field."""
     return const.NOTE_STATUS_TEXT.get(note.status or '')
 
+
 def get_person_status_text(person):
     """Returns the UI text for a person's latest_status."""
     return const.PERSON_STATUS_TEXT.get(person.latest_status or '')
+
 
 # Things that occur as prefixes of global paths (i.e. no repository name).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
@@ -82,29 +86,35 @@ GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 
 # ==== String formatting =======================================================
 
+
 def format_boolean(value):
     return value and 'true' or 'false'
+
 
 def format_utc_datetime(dt):
     if not dt:
         return ''
     return dt.replace(microsecond=0).isoformat() + 'Z'
 
+
 def format_utc_timestamp(timestamp):
     if not isinstance(timestamp, (int, float)):
         return ''
     return format_utc_datetime(datetime.utcfromtimestamp(timestamp))
+
 
 def format_sitemaps_datetime(dt):
     integer_dt = datetime(
         dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
     return integer_dt.isoformat() + '+00:00'
 
+
 def encode(string, encoding='utf-8'):
     """If unicode, encode to encoding; if 8-bit string, leave unchanged."""
     if isinstance(string, unicode):
         string = string.encode(encoding)
     return string
+
 
 def urlencode(params, encoding='utf-8'):
     """Encode the key-value pairs in 'params' into a query string, applying
@@ -115,6 +125,7 @@ def urlencode(params, encoding='utf-8'):
     return urllib.urlencode([
         (encode(key, encoding), encode(params[key], encoding))
         for key in keys if isinstance(params[key], basestring)])
+
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
@@ -137,9 +148,11 @@ def set_url_param(url, param, value):
     url_parts[4] = set_param(url_parts[4], param, value)
     return urlparse.urlunparse(url_parts)
 
+
 def anchor_start(href):
     """Returns the HREF escaped and embedded in an anchor tag."""
     return '<a href="%s">' % django.utils.html.escape(href)
+
 
 def anchor(href, body):
     """Returns a string anchor HTML element with the given href and body."""
@@ -152,35 +165,44 @@ def anchor(href, body):
 # Each validator should return a parsed, sanitized value, or return a default
 # value, or raise ValueError to display an error message to the user.
 
+
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
     return string.strip().rstrip('\0')
 
+
 def strip_and_lower(string):
     return strip(string).lower()
+
 
 def validate_yes(string):
     return (strip(string).lower() == 'yes') and 'yes' or ''
 
+
 def validate_checkbox(string):
     return (strip(string).lower() == 'on') and 'yes' or ''
+
 
 def validate_checkbox_as_bool(val):
     if val.lower() in ['on', 'yes', 'true']:
         return True
     return False
 
+
 def validate_role(string):
     return (strip(string).lower() == 'provide') and 'provide' or 'seek'
 
+
 def validate_int(string):
     return string and int(strip(string))
+
 
 def validate_sex(string):
     """Validates the 'sex' parameter, returning a canonical value or ''."""
     if string:
         string = strip(string).lower()
     return string in pfif.PERSON_SEX_VALUES and string or ''
+
 
 def validate_expiry(value):
     """Validates that the 'expiry_option' parameter is a positive integer.
@@ -196,7 +218,9 @@ def validate_expiry(value):
         return None
     return value > 0 and value or None
 
+
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
+
 
 def validate_approximate_date(string):
     if string:
@@ -205,11 +229,13 @@ def validate_approximate_date(string):
             return string
     return ''
 
+
 AGE_RE = re.compile(r'^\d+(-\d+)?$')
 # Hyphen with possibly surrounding whitespaces.
 HYPHEN_RE = re.compile(
     ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
     re.UNICODE)
+
 
 def validate_age(string):
     """Validates the 'age' parameter, returning a canonical value or ''."""
@@ -221,6 +247,7 @@ def validate_age(string):
             return string
     return ''
 
+
 def validate_status(string):
     """Validates an incoming status parameter, returning one of the canonical
     status strings or ''.  Note that '' is always used as the Python value
@@ -229,7 +256,9 @@ def validate_status(string):
         string = strip(string).lower()
     return string in pfif.NOTE_STATUS_VALUES and string or ''
 
+
 DATETIME_RE = re.compile(r'^(2\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
+
 
 def validate_datetime(string):
     if not string:
@@ -239,11 +268,13 @@ def validate_datetime(string):
         return datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % string)
 
+
 def validate_timestamp(string):
     try:
         return string and datetime.utcfromtimestamp(float(strip(string)))
     except:
         raise ValueError('Bad timestamp: %s' % string)
+
 
 def validate_image(bytestring):
     try:
@@ -255,13 +286,16 @@ def validate_image(bytestring):
     except:
         return False
 
+
 def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+
 REPO_RE = re.compile('^[a-z0-9-]+$')
+
 
 def validate_repo(string):
     string = (string or '').strip()
@@ -277,6 +311,7 @@ def validate_repo(string):
 
 RESOURCE_NAME_RE = re.compile('^[a-z0-9._-]+$')
 
+
 def validate_resource_name(string):
     """A resource name or bundle label."""
     string = (string or '').strip().lower()
@@ -288,6 +323,7 @@ def validate_resource_name(string):
 
 
 LANG_RE = re.compile('^[A-Za-z0-9-]+$')
+
 
 def validate_lang(string):
     """A BCP 47 language tag."""
@@ -309,15 +345,18 @@ def validate_cache_seconds(string):
 
 # ==== Other utilities =========================================================
 
+
 def url_is_safe(url):
     current_scheme, _, _, _, _ = urlparse.urlsplit(url)
     return current_scheme in ['http', 'https']
+
 
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense.  This only works in
     the context of the appserver (eg remote_api can't use it)."""
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
+
 
 def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
@@ -333,6 +372,7 @@ def sanitize_urls(record):
         if len(urls) != len(sanitized_urls):
             setattr(record, field, '\n'.join(sanitized_urls))
 
+
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
     """Return the host name, without version specific details."""
@@ -342,11 +382,13 @@ def get_host(host=None):
     else:
         return host
 
+
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client
     has full read authorization."""
     if not (auth and auth.full_read_permission):
         filter_sensitive_fields(records)
+
 
 def filter_sensitive_fields(records):
     """Removes sensitive fields from a list of dictionaries."""
@@ -362,8 +404,10 @@ def filter_sensitive_fields(records):
         if 'phone_of_found_person' in record:
             record['phone_of_found_person'] = ''
 
+
 # The current time for testing as a datetime object, or None if using real time.
 _utcnow_for_test = None
+
 
 def set_utcnow_for_test(now):
     """Sets the current time for testing purposes.  Pass in a datetime object
@@ -373,19 +417,23 @@ def set_utcnow_for_test(now):
         now = datetime.utcfromtimestamp(float(now))
     _utcnow_for_test = now
 
+
 def get_utcnow():
     """Returns the current UTC datetime (settable with set_utcnow_for_test)."""
     global _utcnow_for_test
     return (_utcnow_for_test is None) and datetime.utcnow() or _utcnow_for_test
 
+
 def get_timestamp(dt):
     """Converts datetime object to a float value in epoch seconds."""
     return calendar.timegm(dt.utctimetuple()) + dt.microsecond * 1e-6
+
 
 def get_utcnow_timestamp():
     """Returns the current time in epoch seconds (settable with
     set_utcnow_for_test)."""
     return get_timestamp(get_utcnow())
+
 
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):
@@ -399,6 +447,7 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
             handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
+
 def get_full_name(given_name, family_name, config):
     """Return full name string obtained by concatenating given_name and
     family_name in the order specified by config.family_name_first, or just
@@ -411,6 +460,7 @@ def get_full_name(given_name, family_name, config):
             return separator.join([given_name, family_name])
     else:
         return given_name
+
 
 def send_confirmation_email_to_record_author(
     handler, person, action, confirm_url, record_id):
@@ -445,13 +495,15 @@ def send_confirmation_email_to_record_author(
         )
     )
 
+
 def get_repo_url(request, repo, scheme=None):
     """Constructs the absolute root URL for a given repository."""
     req_scheme, req_netloc, req_path, _, _ = urlparse.urlsplit(request.url)
     prefix = req_path.startswith('/personfinder') and '/personfinder' or ''
-    if req_netloc.split(':')[0] == 'localhost':
+    if is_dev_app_server():
         scheme = 'http'  # HTTPS is not available when using dev_appserver
     return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
+
 
 def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
@@ -463,16 +515,22 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     query = urlencode(params, charset)
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
+
 def add_profile_icon_url(website, handler):
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
+
 
 def strip_url_scheme(url):
     if not url:
         return url
     _, netloc, path, query, segment = urlparse.urlsplit(url)
     return urlparse.urlunsplit(('', netloc, path, query, segment))
+
+
+def is_dev_app_server():
+    return os.environ['APPLICATION_ID'].startswith('dev~')
 
 
 # ==== Struct ==================================================================
@@ -926,8 +984,8 @@ class BaseHandler(webapp.RequestHandler):
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
 
-        # Check for SSL (unless running on localhost for development).
-        if self.https_required and self.env.domain != 'localhost':
+        # Check for SSL (unless running local dev app server).
+        if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 

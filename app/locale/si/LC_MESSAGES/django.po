@@ -146,6 +146,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -154,18 +157,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s හට මෙම සෙවීම් විමසුමට ගැළපෙන ප්‍රතිඵල "
-"ඇත.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -173,6 +168,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -180,6 +178,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -187,15 +188,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        \"%(query)s\" සඳහා සෙවුම් ප්‍රතිඵල\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -562,11 +556,21 @@ msgstr "දැන් සිට මාස 6 ක් පමණ (දින 180 ක�
 msgid "About Google Person Finder"
 msgstr "Google පුද්ගල සෙවුම පිළිබඳ"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "පරිපාලනය"
 
 msgid "Age"
 msgstr "වයස"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "විකල්ප පවුල් නාම"
@@ -640,6 +644,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "ප්‍රතිඵල බැලීමට මෙහි ක්ලික් කරන්න."
@@ -741,12 +747,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "පෙළපත් නාමය"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "මෙම පුද්ගලයා පිළිබඳ යාවත්කාලීන සංග්‍රහය"
@@ -764,17 +772,18 @@ msgstr ""
 "ජංගම දුරකථන හැර වෙනත් දුරකථන සඳහා NTT මගින් සපයන ලද 171 සේවාව භාවිතා "
 "කරන්න."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "සම්පූර්ණ නම"
-
-msgid "Get a visual challenge"
-msgstr "දෘශ්‍ය අභියෝගයක් ලබා ගන්න"
 
 msgid "Given name"
 msgstr "දෙන ලද නාමය"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google පුද්ගල සෙවුම"
@@ -810,7 +819,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "මෙම පුද්ගලයා කෙරෙහි රුචිකත්වයක් ඇති වෙනත් අය ඔබව අමතන්නේ කෙසේද"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "මම තොරතුරු ඉල්ලමින් සිටිමි"
@@ -930,6 +939,10 @@ msgid "Missing person's current phone number"
 msgstr "අතුරුදන් වූ පුද්ගලයාගේ වර්තමාන දුරකථන අංකය"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -971,11 +984,15 @@ msgid "No notes have been posted"
 msgstr "සටහන් කිසිවක් පළ කර නැත"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "මෙම ID එක සහිත පුද්ගලයකු නැත: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "එවැනි අනුමත කිරීමේ භුතාර්ථයක් නැත."
@@ -1042,6 +1059,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "පුද්ගල සෙවුම"
@@ -1056,7 +1075,7 @@ msgid "Photo"
 msgstr "ඡායාරූපය"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1072,6 +1091,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1212,7 +1233,7 @@ msgid "Someone is seeking information about this person"
 msgstr "මෙම පුද්ගලයා පිළිබඳ තොරතුරු යම් කෙනෙකු ඉල්ලමින් සිටී"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "මෙම වාර්තාවේ මූලාශ්‍රය"
@@ -1222,13 +1243,13 @@ msgstr "තත්වය"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "වීථි නම"
@@ -1237,7 +1258,7 @@ msgid "Street name only, no number"
 msgstr "වීථි නම පමණී, අංකයක් නැත"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "දායකවන්න"
@@ -1418,9 +1439,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "ලිපිනයක් ටයිප් කරන්න"
 
-msgid "Type what you hear:"
-msgstr "ඔබට ඇසෙන දේ ටයිප් කරන්න:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1446,7 +1464,7 @@ msgid "Upload your CSV file below"
 msgstr "ඔබගේ CSV ගොනුව පහත උඩුගත කරන්න"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "වාර්තාව බලන්න"
@@ -1562,7 +1580,7 @@ msgid "Your email"
 msgstr "ඔබගේ ඊ-තැපැල්"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1629,7 +1647,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[පුද්ගල සෙවුම] %(full_name)s සඳහා තත්ව යාවත්කාලීන වලට ඔබ දායක වී ඇත."
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "ගැහැණු"
