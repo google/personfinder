@@ -300,7 +300,8 @@ class CreateRecordsLoadTest(LoadTest):
 class SearchRecordsLoadTest(LoadTest):
     """Load test for searching records.
 
-    It searches for names randomly chosen from:
+    It searches for given names, family names or full names in equal
+    probability. The names are taken randomly from:
       - the first num_records entries in tests/load_test/names_in_db.txt
       - the first num_records entries in tests/load_test/names_not_in_db.txt
     """
@@ -322,11 +323,22 @@ class SearchRecordsLoadTest(LoadTest):
     def generate_input(self):
         r = random.Random()
         r.seed(0)  # For reproducible result.
-        names = (
+
+        full_names = (
             self.load_names('tests/load_test/names_in_db.txt')
                 [:self.config['num_records']] +
             self.load_names('tests/load_test/names_not_in_db.txt')
                 [:self.config['num_records']])
+
+        given_names = []
+        family_names = []
+        for full_name in full_names:
+            (given_name, family_name) = full_name.split(' ')
+            given_names.append(given_name)
+            family_names.append(family_name)
+
+        names = full_names + given_names + family_names
+
         for _ in xrange(self.config['num_queries']):
             yield r.choice(names)
 
