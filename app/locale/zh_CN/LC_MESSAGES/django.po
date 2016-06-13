@@ -139,6 +139,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -147,17 +150,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s搜索到与此查询相匹配的结果。\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -165,6 +161,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -172,6 +171,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -179,15 +181,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        有关“%(query)s”的搜索结果\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -530,11 +525,21 @@ msgstr "从现在起大约 6 个月（180 天）"
 msgid "About Google Person Finder"
 msgstr "关于 Google Person Finder"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
 msgid "Age"
 msgstr "年龄"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "姓氏别称"
@@ -602,6 +607,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "点击此处查看结果。"
@@ -703,12 +710,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "姓氏"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "关于此人最新动态的 Feed"
@@ -724,17 +733,18 @@ msgid ""
 "NTT."
 msgstr "如果是手机以外的电话，请使用日本电信电话株式会社 (NTT) 提供的 171 服务。"
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "全名"
-
-msgid "Get a visual challenge"
-msgstr "获取图片验证码"
 
 msgid "Given name"
 msgstr "名字"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -768,7 +778,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "同样关注此人的人员该如何与您取得联系"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "我正在寻找这个人的消息"
@@ -878,6 +888,10 @@ msgid "Missing person's current phone number"
 msgstr "失踪人员的当前电话号码"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -915,11 +929,15 @@ msgid "No notes have been posted"
 msgstr "没有发布任何注释"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "没有 ID 为 %(id_str)s 的个人。"
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "没有这样的授权实体。"
@@ -980,6 +998,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -994,7 +1014,7 @@ msgid "Photo"
 msgstr "照片"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1008,6 +1028,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1144,7 +1166,7 @@ msgid "Someone is seeking information about this person"
 msgstr "有人正在搜索关于此人的信息"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "此记录的来源"
@@ -1154,13 +1176,13 @@ msgstr "状况"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "街道名称"
@@ -1169,7 +1191,7 @@ msgid "Street name only, no number"
 msgstr "输入街道名称即可，无需输入门牌号"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "订阅"
@@ -1333,9 +1355,6 @@ msgstr "输入地址，或打开下方的地图并点击地图上的位置以指
 msgid "Type an address."
 msgstr "输入地址。"
 
-msgid "Type what you hear:"
-msgstr "输入您听到的内容："
-
 msgid "URL"
 msgstr "网址"
 
@@ -1361,7 +1380,7 @@ msgid "Upload your CSV file below"
 msgstr "上传下面的 CSV 文件"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "查看记录"
@@ -1471,7 +1490,7 @@ msgid "Your email"
 msgstr "您的电子邮件地址"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1532,7 +1551,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[网上寻人] 您已订阅关于“%(full_name)s”的状况更新"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "女"

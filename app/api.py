@@ -1,4 +1,5 @@
 #!/usr/bin/python2.7
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +18,8 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
+import django_setup
+
 import calendar
 import csv
 import logging
@@ -25,9 +28,11 @@ import StringIO
 import xml.dom.minidom
 
 import django.utils.html
+from django.utils.translation import ugettext as _
 from google.appengine import runtime
 from google.appengine.ext import db
 from google.appengine.api import images
+from unidecode import unidecode
 
 import config
 import external_search
@@ -42,8 +47,8 @@ import utils
 import xlrd
 from model import Person, Note, ApiActionLog
 from text_query import TextQuery
-from utils import Struct
 from photo import create_photo, PhotoError
+from utils import Struct
 
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
@@ -610,6 +615,14 @@ class HandleSMS(utils.BaseHandler):
 
     MAX_RESULTS = 3
 
+    # (language code, action, regex) for each query pattern.
+    QUERY_PATTERNS = [
+        ('en', 'search', r'^search\s+(.+)$'),
+        ('en', 'add', r'^i am\s+(.+)$'),
+        ('es', 'search', r'^buscar\s+(.+)$'),
+        ('es', 'add', r'^yo soy\s+(.+)$'),
+    ]
+
     def post(self):
         if not (self.auth and self.auth.search_permission
                 and self.auth.domain_write_permission == '*'):
@@ -619,7 +632,7 @@ class HandleSMS(utils.BaseHandler):
                     '"key" URL parameter is either missing, invalid or '
                     'lacks required permissions. The key\'s repo must be "*", '
                     'search_permission must be True, and it must have write '
-                    'permission.',
+                    'permission with domain name "*".',
                 style='plain')
             return
 
@@ -654,26 +667,44 @@ class HandleSMS(utils.BaseHandler):
                 style='plain')
             return
 
+        query_lang = None
+        query_action = None
+        match = None
+        for lang, action, regex in HandleSMS.QUERY_PATTERNS:
+            match = re.search(regex, message_text.strip(), re.I)
+            if match:
+                query_lang = lang
+                query_action = action
+                break
+
+        if query_lang:
+            # Use the language for the following calls of _().
+            django_setup.activate(query_lang)
+
         responses = []
-        search_m = re.search(r'^search\s+(.+)$', message_text.strip(), re.I)
-        add_self_m = re.search(r'^i am\s+(.+)$', message_text.strip(), re.I)
-        if search_m:
-            query_string = search_m.group(1).strip()
+
+        if query_action == 'search':
+            query_string = match.group(1).strip()
             query = TextQuery(query_string)
             persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
             if persons:
                 for person in persons:
                     responses.append(self.render_person(person))
             else:
-                responses.append('No results found for: %s' % query_string)
+                responses.append(
+                    _('No results found for: %(query)s')
+                        % {'query': query_string})
             responses.append(
-                'More at: google.org/personfinder/%s?ui=light' % repo)
+                _('More at: %(url)s')
+                    % {'url': 'google.org/personfinder/%s?ui=light' % repo})
             responses.append(
-                'All data entered in Person Finder is available to the public '
-                'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos')
-        elif self.config.enable_sms_record_input and add_self_m:
-            name_string = add_self_m.group(1).strip()
+                _('All data entered in Person Finder is available to the '
+                  'public and usable by anyone. Google does not review or '
+                  'verify the accuracy of this data '
+                  'google.org/personfinder/global/tos'))
+
+        elif self.config.enable_sms_record_input and query_action == 'add':
+            name_string = match.group(1).strip()
             person = Person.create_original(
                 repo,
                 entry_date=utils.get_utcnow(),
@@ -695,12 +726,21 @@ class HandleSMS(utils.BaseHandler):
             person.update_from_note(note)
             db.put(person)
             model.UserActionLog.put_new('add', person, copy_properties=False)
-            responses.append('Added record for found person: %s' % name_string)
+            responses.append(_('Added record for found person: %(person_name)s')
+                % {'person_name': name_string})
+
         else:
             usage_str = 'Usage: "Search John"'
             if self.config.enable_sms_record_input:
               usage_str += ' OR "I am John"'
             responses.append(usage_str)
+
+        # Convert the response into ASCII because the SMS pipeline doesn't
+        # support UTF-8.
+        # e.g., It removes diacritics such as "ú" -> "u".
+        # This seems acceptable for Spanish, but may not be for other
+        # languages.
+        ascii_response = unidecode(' ## '.join(responses))
 
         self.response.headers['Content-Type'] = 'application/xml'
         self.write(
@@ -708,24 +748,30 @@ class HandleSMS(utils.BaseHandler):
             '<response>\n'
             '  <message_text>%s</message_text>\n'
             '</response>\n'
-            % django.utils.html.escape(' ## '.join(responses)))
+            % django.utils.html.escape(ascii_response))
 
     def render_person(self, person):
         fields = []
         fields.append(person.full_name)
         if person.latest_status:
             # The result of utils.get_person_status_text() may be a Django's
-            # proxy object for lazy translation. Use unicode() to convert it
-            # into a unicode object. We must not specify an encoding for
-            # unicode() in this case.
-            fields.append(unicode(
-                utils.get_person_status_text(person)))
-        if person.sex: fields.append(person.sex)
+            # proxy object generated by gettext_lazy(). Use str() to convert it
+            # into a str object.
+            #
+            # TODO(ichikawa) Use ugettext_lazy() instead of gettext_lazy() in
+            #     const.py so that it can be directly converted into unicode
+            #     object here.
+            fields.append(
+                unicode(str(utils.get_person_status_text(person)), 'utf-8'))
+        if person.sex:
+            fields.append(
+                unicode(str(utils.get_person_sex_text(person)), 'utf-8'))
         if person.age: fields.append(person.age)
         if person.home_city or person.home_state:
             fields.append(
-                'From: ' +
-                ' '.join(filter(None, [person.home_city, person.home_state])))
+                _('From: %(home_location)s')
+                    % {'home_location':
+                        ' '.join(filter(None, [person.home_city, person.home_state]))})
         return ' / '.join(fields)
 
     def get_element_text(self, doc, tag_name):

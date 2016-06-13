@@ -146,6 +146,9 @@ msgid ""
 "                %(dup_count)s records selected\n"
 "              "
 msgstr ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
 
 #, python-format
 msgid ""
@@ -154,18 +157,10 @@ msgid ""
 "query.\n"
 "          "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"          %(search_engine_name)s has search result(s) matching this "
+"            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
-"        "
-msgstr ""
-"\n"
-"          %(search_engine_name)s axtarış mühərrikinin bu sorğuya uyğun "
-"nəticələri var.\n"
-"        "
+"          "
 
 #, python-format
 msgid ""
@@ -173,6 +168,9 @@ msgid ""
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -180,6 +178,9 @@ msgid ""
 "          Search Results for: %(query)s\n"
 "        "
 msgstr ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
 
 #, python-format
 msgid ""
@@ -187,15 +188,8 @@ msgid ""
 "        No results found for: %(query)s\n"
 "      "
 msgstr ""
-
-#, python-format
-msgid ""
 "\n"
-"        Search Results for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        %(query)s üçün axtarış nəticələri\n"
+"        No results found for: %(query)s\n"
 "      "
 
 #, python-format
@@ -569,11 +563,21 @@ msgstr "Təxminən 6 ay (180 gün) sonra"
 msgid "About Google Person Finder"
 msgstr "Google Person Finder haqqında"
 
+#, python-format
+msgid "Added record for found person: %(person_name)s"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administrasiya"
 
 msgid "Age"
 msgstr "Yaş"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
 
 msgid "Alternate family names"
 msgstr "Əlavə soyadlar"
@@ -645,6 +649,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Nəticələri görmək üçün buraya klikləyin."
@@ -750,12 +756,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
 
 msgid "Family name"
 msgstr "Soyad"
 
 msgid "Family name (required)"
-msgstr ""
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Bu şəxs haqqında lent yenilikləri"
@@ -773,17 +781,18 @@ msgstr ""
 "Mobil olmayan telefonlar üçün lütfən, NTT tərəfindən təmin edilən 171 "
 "xidmətindən istifadə edin."
 
+#, python-format
+msgid "From: %(home_location)s"
+msgstr ""
+
 msgid "Full name"
 msgstr "Tam ad"
-
-msgid "Get a visual challenge"
-msgstr "Vizual çağırış əldə edin"
 
 msgid "Given name"
 msgstr "Ad"
 
 msgid "Given name (required)"
-msgstr ""
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -819,7 +828,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Bu şəxslə maraqlananlar Sizinlə necə əlaqə yarada bilərlər"
 
 msgid "I Have Information About This Person"
-msgstr ""
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Məlumat axtarıram"
@@ -941,6 +950,10 @@ msgid "Missing person's current phone number"
 msgstr "İtkin şəxsin hazırkı telefon nömrəsi"
 
 #, python-format
+msgid "More at: %(url)s"
+msgstr ""
+
+#, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
@@ -982,11 +995,15 @@ msgid "No notes have been posted"
 msgstr "Heç bir not dərc edilməyib"
 
 msgid "No person id was specified."
-msgstr ""
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
 msgstr "Bu ID ilə qeyd olunmuş heç kim yoxdur: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr ""
 
 msgid "No such Authorization entity."
 msgstr "Belə bir Avtorizasiya obyekti yoxdur."
@@ -1053,6 +1070,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1067,7 +1086,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1083,6 +1102,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1223,7 +1244,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Bir nəfər bu şəxs haqqında məlumat axtarır"
 
 msgid "Source of Record"
-msgstr ""
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Bu rekordun mənbəyi"
@@ -1233,13 +1254,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr ""
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr ""
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr ""
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Küçə adı"
@@ -1248,7 +1269,7 @@ msgid "Street name only, no number"
 msgstr "Sadəcə küçə adı, nömrə yox"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Abunə olun"
@@ -1427,9 +1448,6 @@ msgstr ""
 msgid "Type an address."
 msgstr "Bir ünvan yazın."
 
-msgid "Type what you hear:"
-msgstr "Eşitdiyinizi yazın:"
-
 msgid "URL"
 msgstr "URL"
 
@@ -1455,7 +1473,7 @@ msgid "Upload your CSV file below"
 msgstr "CSV faylınızı aşağıya yükləyin"
 
 msgid "Use current location"
-msgstr ""
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Qeydə baxın"
@@ -1573,7 +1591,7 @@ msgid "Your email"
 msgstr "E-poçtunuz"
 
 msgid "Your name (required)"
-msgstr ""
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1641,7 +1659,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Siz %(full_name)s üçün olan status yeniliyinə abunəsiniz"
 
 msgid "external site; normal connection fee may apply"
-msgstr ""
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "qadın"
