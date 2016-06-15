@@ -101,6 +101,7 @@ import Queue
 
 from google.appengine.ext import db
 
+import config
 import model
 import remote_api
 
@@ -162,9 +163,9 @@ class WorkerPool(object):
 class LoadTest(object):
     """Base class for a load testing job."""
 
-    def __init__(self, name, config):
+    def __init__(self, name, conf):
         self.name = name
-        self.config = config
+        self.conf = conf
         self.data = {
             'request_latency_seconds': [],
             'request_interval_seconds': [],
@@ -175,7 +176,7 @@ class LoadTest(object):
         """Calls self.execute_one() for each input returned by
         self.generate_input() in QPS specified by self.get_qps().
         """
-        pool = WorkerPool(self.config['num_threads'])
+        pool = WorkerPool(self.conf['num_threads'])
         for input in self.generate_input():
             start_time = datetime.datetime.now()
             pool.do_async(self.execute_one_internal, input)
@@ -199,11 +200,11 @@ class LoadTest(object):
         It may be used for more detailed analysis later.
         """
         file_name = '%s/%s_%s_result.json' % (
-            self.config['output_dir'],
+            self.conf['output_dir'],
             self.name,
             datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
         output = {
-            'config': self.config,
+            'conf': self.conf,
             'data': self.data,
         }
         with open(file_name, 'w') as f:
@@ -246,35 +247,34 @@ class LoadTest(object):
 class CreateRecordsLoadTest(LoadTest):
     """Load test for creating person records.
 
-    It creates records with first num_records entries (specified in config)
+    It creates records with first num_records entries (specified in conf)
     in tests/load_test/names_in_db.txt.
     """
 
-    def __init__(self, config):
-        super(CreateRecordsLoadTest, self).__init__('create_record', config)
+    def __init__(self, conf):
+        super(CreateRecordsLoadTest, self).__init__('create_record', conf)
 
-        repo_exists = self.config['repo'] in model.Repo.list()
-        if not self.config['test_mode'] and repo_exists:
+        repo_exists = self.conf['repo'] in model.Repo.list()
+        if not self.conf['test_mode'] and repo_exists:
             raise Exception(
                 '"create" task must be done against a new repository, but a '
                 'repository "%s" already exists. If you really want to do '
                 'this, set "test_mode" to true in the config JSON.'
-                % self.config['repo'])
+                % self.conf['repo'])
         if not repo_exists:
-            logging.info('Create repo: %s', self.config['repo'])
-            db.put([model.Repo(key_name=self.config['repo'])])
+            self.create_repo(self.conf['repo'])
 
         scraper = scrape.Session(verbose=1)
         self.create_page = scraper.go(
             '%s/%s/create?role=provide'
-                % (self.config['base_url'], self.config['repo']))
+                % (self.conf['base_url'], self.conf['repo']))
 
     def get_qps(self):
-        return self.config['create_record_qps']
+        return self.conf['create_record_qps']
 
     def generate_input(self):
         names = (self.load_names('tests/load_test/names_in_db.txt')
-            [:self.config['num_records']])
+            [:self.conf['num_records']])
         for name in names:
             yield name
 
@@ -296,6 +296,43 @@ class CreateRecordsLoadTest(LoadTest):
             text='This is a record created by load_test.py.')
         self.data['http_statuses'].append(scraper.status)
 
+    def create_repo(self, repo):
+        logging.info('Create repo: %s', repo)
+        db.put([model.Repo(key_name=repo)])
+        # Provides some defaults.
+        config.set_for_repo(
+            repo,
+            language_menu_options=['en'],
+            repo_titles={'en': repo},
+            keywords='',
+            use_family_name=True,
+            use_alternate_names=True,
+            use_postal_code=True,
+            allow_believed_dead_via_ui=False,
+            min_query_word_length=1,
+            show_profile_entry=False,
+            profile_websites=[],
+            map_default_zoom=6,
+            map_default_center=[0, 0],
+            map_size_pixels=[400, 280],
+            read_auth_key_required=True,
+            search_auth_key_required=True,
+            deactivated=False,
+            launched=False,
+            deactivation_message_html='',
+            start_page_custom_htmls={},
+            results_page_custom_htmls={},
+            view_page_custom_htmls={},
+            seek_query_form_custom_htmls={},
+            footer_custom_htmls={},
+            bad_words='',
+            published_date=0.0,
+            updated_date=0.0,
+            test_mode=False,
+            force_https=False,
+            zero_rating_mode=False,
+        )
+
 
 class SearchRecordsLoadTest(LoadTest):
     """Load test for searching records.
@@ -306,19 +343,19 @@ class SearchRecordsLoadTest(LoadTest):
       - the first num_records entries in tests/load_test/names_not_in_db.txt
     """
 
-    def __init__(self, config):
-        super(SearchRecordsLoadTest, self).__init__('search_record', config)
+    def __init__(self, conf):
+        super(SearchRecordsLoadTest, self).__init__('search_record', conf)
 
-        assert self.config['repo'] in model.Repo.list(), (
-            'Repository "%s" doesn\'t exist.' % self.config['repo'])
+        assert self.conf['repo'] in model.Repo.list(), (
+            'Repository "%s" doesn\'t exist.' % self.conf['repo'])
 
         scraper = scrape.Session(verbose=1)
         self.search_page = scraper.go(
             '%s/%s/query?role=seek'
-                % (self.config['base_url'], self.config['repo']))
+                % (self.conf['base_url'], self.conf['repo']))
         
     def get_qps(self):
-        return self.config['search_record_qps']
+        return self.conf['search_record_qps']
 
     def generate_input(self):
         r = random.Random()
@@ -326,9 +363,9 @@ class SearchRecordsLoadTest(LoadTest):
 
         full_names = (
             self.load_names('tests/load_test/names_in_db.txt')
-                [:self.config['num_records']] +
+                [:self.conf['num_records']] +
             self.load_names('tests/load_test/names_not_in_db.txt')
-                [:self.config['num_records']])
+                [:self.conf['num_records']])
 
         given_names = []
         family_names = []
@@ -339,7 +376,7 @@ class SearchRecordsLoadTest(LoadTest):
 
         names = full_names + given_names + family_names
 
-        for _ in xrange(self.config['num_queries']):
+        for _ in xrange(self.conf['num_queries']):
             yield r.choice(names)
 
     def execute_one(self, query):
@@ -362,17 +399,17 @@ if __name__ == '__main__':
             'tools/load_test config.json search\n')
 
     with open(sys.argv[1]) as f:
-        config = json.load(f)
+        conf = json.load(f)
 
-    if not os.path.exists(config['output_dir']):
-        os.makedirs(config['output_dir'])
+    if not os.path.exists(conf['output_dir']):
+        os.makedirs(conf['output_dir'])
 
-    remote_api.connect(config['base_url'])
+    remote_api.connect(conf['base_url'])
 
     if len(sys.argv) == 3 and sys.argv[2] == 'create':
-        load_test = CreateRecordsLoadTest(config)
+        load_test = CreateRecordsLoadTest(conf)
     elif sys.argv[2] == 'search':
-        load_test = SearchRecordsLoadTest(config)
+        load_test = SearchRecordsLoadTest(conf)
     else:
         raise Exception('Should not happen')
 
