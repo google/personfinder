@@ -22,8 +22,8 @@ Usage:
 It generates mixture of English and Japanese names. Japanese names are added
 because Person Finder performs some Japanese specific handling in search.
 
-English names are generated using random 3-10 Latin alphabets. This is because
-it should not matter whether the generated names are natural or not.
+English names are generated using random 3-10 Latin alphabet characters. This
+is because it should not matter whether the generated names are natural or not.
 
 Japanese names are generated using the name dictionary we use to get sound of
 names. This is because we believe that most of the names are covered by the
@@ -51,7 +51,7 @@ def generate_english_name_component():
 
 
 if __name__ == '__main__':
-	# To get reproducible output.
+    # To get reproducible output.
     random.seed(0)
     
     with open('app/japanese_name_location_dict.txt') as f:
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     ja_output_names = set()
     while len(ja_output_names) < NUM_NAMES_PER_LANGUAGE:
         ja_output_names.add(
-        	'%s %s' % (random.choice(ja_words), random.choice(ja_words)))
+            '%s %s' % (random.choice(ja_words), random.choice(ja_words)))
 
     en_output_names = set()
     while len(en_output_names) < NUM_NAMES_PER_LANGUAGE:

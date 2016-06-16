@@ -296,7 +296,7 @@ class Session:
         message - the status message of the last request
         headers - the headers of the last request as a dictionary
         content - the content of the last fetched document
-        doc     - the Document currently opened.
+        doc     - the Document instance currently opened.
     """
 
     def __init__(self, agent=None, verbose=0):
