@@ -226,7 +226,7 @@ class PyTestPlugin:
             thread.wait_until_ready()
 
         # Connect to the datastore.
-        url, app_id = remote_api.connect(url)
+        remote_api.connect(url, server_type='local')
 
         # Reset the datastore for the first test.
         reset_data()
