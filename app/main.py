@@ -63,8 +63,9 @@ class AdminEnv(object):
                 for repo in sorted(model.Repo.list())]
         except:
             # Logs the exception here because exceptions thrown during template
-            # variable evaluation is silently ignored.
-            logging.exception('exception')
+            # variable evaluation is silently ignored. Note that
+            # logging.exception() logs the current exception by default.
+            logging.exception('Exception thrown')
             return None
 
 

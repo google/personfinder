@@ -142,7 +142,7 @@ class Handler(utils.BaseHandler):
         anchors = (
             ['<a href="%s">Admin page</a>' % self.get_url('admin')] +
             ['<a class="%s" href="%s">%s</a>' %
-                (args == last and 'sel', self.get_admin_url(*args), html(anchor))
+                ('sel' if args == last else '', self.get_admin_url(*args), html(anchor))
              for anchor, args in crumbs])
         return '<div class="nav">%s</div>' % (' &gt; '.join(anchors))
 
