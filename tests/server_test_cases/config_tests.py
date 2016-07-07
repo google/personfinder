@@ -133,8 +133,8 @@ class ConfigTests(ServerTestsBase):
         assert cfg_sub.translate_api_key == 'global_hijk'
 
     def test_repo_admin_page(self):
-        # Load the repository administration page.
-        doc = self.go_as_admin('/haiti/admin')
+        # Load the page to create a repository.
+        doc = self.go_as_admin('/global/admin/create_repo')
         self.assertEquals(self.s.status, 200)
 
         # Activate a new repository.

@@ -23,11 +23,16 @@ import types
 import webob
 import urllib
 
+from google.appengine.ext import testbed
 from google.appengine.ext import webapp
 
 def initialize_handler(
         handler_class, action, repo='haiti', environ=None, params=None):
+    tb = testbed.Testbed()
+    tb.activate()
+    tb.init_user_stub()
     model.Repo(key_name=repo).put()
+
     params_str = ('?' + urllib.urlencode(params)) if params else ''
     request = webapp.Request(webob.Request.blank(
         '/' + repo + '/' + action + params_str, environ=environ).environ)
