@@ -29,6 +29,11 @@ body {
   width: 100%;
 }
 
+/* Do not apply the max width constraint for admin pages. */
+body.admin {
+  max-width: none;
+}
+
 img {
   max-width: 100%;
 }
@@ -115,7 +120,7 @@ pre {  /* code samples */
 }
 
 .button-blue input {
-  background: #4285f4;  
+  background: #4285f4;
 }
 
 .button-red input {
@@ -130,7 +135,7 @@ pre {  /* code samples */
 }
 
 .button-box .button {
-  margin-left: 10px;  
+  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -266,7 +271,7 @@ over 10% in penetration ratio.
 }
 
 .fields-table .section .links {
-  border-style: none;  
+  border-style: none;
 }
 
 .fields-table .section .links a {
@@ -474,7 +479,7 @@ td.submit {
 
 .query h1 {
   font-size: 20px;
-  margin-bottom: 0px;  
+  margin-bottom: 0px;
 }
 
 .query .header {
@@ -849,6 +854,34 @@ div.embed pre {
 
 /* Admin page */
 
+.admin-root {
+  display: flex;
+}
+
+.admin-side-bar {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 170px;
+  background-color: #d0d0d0;
+  padding: 10px;
+}
+
+.admin-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-width: 800px;
+  padding: 0px 10px;
+}
+
+.admin-side-bar ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.admin-side-bar li {
+  padding: 5px 0px;
+}
+
 form.admin fieldset {
   border: 1px solid #888;
   margin: 24px 6px;
@@ -905,7 +938,7 @@ table.review th, table.review td {
 table.review th {
   font-weight: normal;
 }
-  
+
 table.review th.colgroup {
   font-size: 10px;
   text-transform: uppercase;
@@ -995,7 +1028,7 @@ table.api-keys th, table.api-keys td {
 table.api-keys th {
   font-weight: normal;
 }
-  
+
 table.api-keys th.colgroup {
   font-size: 10px;
   text-transform: uppercase;

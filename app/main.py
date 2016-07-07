@@ -24,6 +24,7 @@ import os
 import urlparse
 
 from google.appengine.api import memcache
+from google.appengine.api import users
 from google.appengine.ext import webapp
 
 import config
@@ -36,6 +37,35 @@ import resources
 import utils
 import user_agents
 import setup_pf
+
+
+class AdminEnv(object):
+    """Template variables for admin pages."""
+
+    def __init__(self, request):
+        self.request = request
+        self.user = users.get_current_user()
+        self.logout_url = users.create_logout_url(self.request.url)
+
+    @property
+    def repo_options(self):
+        """This is different from env.repo_options because this contains all
+        repositories including deactivated ones.
+
+        This is defined as a property so that it is evaluated lazily only
+        when necessary.
+        """
+        try:
+            return [
+                utils.Struct(
+                    repo=repo,
+                    url=utils.get_repo_url(self.request, repo) + '/admin')
+                for repo in sorted(model.Repo.list())]
+        except:
+            # Logs the exception here because exceptions thrown during template
+            # variable evaluation is silently ignored.
+            logging.exception('exception')
+            return None
 
 
 # When no action or repo is specified, redirect to this action.
@@ -69,6 +99,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_post_flagged_note',
   'third_party_search',
   'admin',
+  'admin/create_repo',
   'admin/dashboard',
   'admin/resources',
   'admin/review',
@@ -403,6 +434,8 @@ def setup_env(request):
         env.enable_javascript
         and not env.config.zero_rating_mode
         and env.config.translate_api_key)
+
+    env.admin = AdminEnv(request)
 
     # Repo-specific information.
     if env.repo:
