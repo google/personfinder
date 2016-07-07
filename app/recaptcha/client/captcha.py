@@ -90,4 +90,7 @@ def submit (recaptcha_response):
     if result_code:
         return RecaptchaResponse (is_valid=True)
     else:
-        return RecaptchaResponse (is_valid=False, error_code=result['error-codes'][0])
+        error_codes = result.get('error-codes')
+        # It seems 'error-codes' attribute is sometimes missing.
+        error_code = error_codes[0] if error_codes else 'unknown-error'
+        return RecaptchaResponse (is_valid=False, error_code=error_code)
