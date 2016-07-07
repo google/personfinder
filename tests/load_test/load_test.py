@@ -230,14 +230,21 @@ class LoadTest(object):
             else:
                 http_status_freqs[status] = 1
         for status, freq in http_status_freqs.iteritems():
-            print '  %d: %d (%.1f%%)' % (
-                status, freq, 100.0 * freq / len(self.data['http_statuses']))
+            status_str = str(status) if status else 'Error'
+            print '  %s: %d (%.1f%%)' % (
+                status_str, freq, 100.0 * freq / len(self.data['http_statuses']))
 
     def average(self, deltas):
-        return sum(deltas) / len(deltas)
+        if deltas:
+            return sum(deltas, 0.0) / len(deltas)
+        else:
+            return float('nan')
 
     def ninety_percentile(self, deltas):
-        return sorted(deltas)[int(len(deltas) * 0.9)]
+        if deltas:
+            return sorted(deltas)[int(len(deltas) * 0.9)]
+        else:
+            return float('nan')
 
     def load_names(self, file_name):
         with open(file_name) as f:
@@ -279,22 +286,27 @@ class CreateRecordsLoadTest(LoadTest):
             yield name
 
     def execute_one(self, name):
-        logging.info('Create record: %s', name)
+        status = None
+        try:
+            logging.info('Create record: %s', name)
 
-        # Creates a new scrape.Session instance here because scrape.Session
-        # is not thread-safe. Note that this scraper.go() doesn't cause extra
-        # HTTP request.
-        scraper = scrape.Session(verbose=1)
-        scraper.go(self.create_page)
+            # Creates a new scrape.Session instance here because scrape.Session
+            # is not thread-safe. Note that this scraper.go() doesn't cause
+            # extra HTTP request.
+            scraper = scrape.Session(verbose=1)
+            scraper.go(self.create_page)
 
-        (given_name, family_name) = name.split(' ')
-        scraper.submit(
-            scraper.doc.cssselect_one('form'),
-            given_name=given_name,
-            family_name=family_name,
-            author_name='load_test.py',
-            text='This is a record created by load_test.py.')
-        self.data['http_statuses'].append(scraper.status)
+            (given_name, family_name) = name.split(' ')
+            scraper.submit(
+                scraper.doc.cssselect_one('form'),
+                given_name=given_name,
+                family_name=family_name,
+                author_name='load_test.py',
+                text='This is a record created by load_test.py.')
+            status = scraper.status
+
+        finally:
+            self.data['http_statuses'].append(status)
 
     def create_repo(self, repo):
         logging.info('Create repo: %s', repo)
@@ -380,13 +392,17 @@ class SearchRecordsLoadTest(LoadTest):
             yield r.choice(names)
 
     def execute_one(self, query):
-        logging.info('Search record: %s', query)
-        scraper = scrape.Session(verbose=1)
-        scraper.go(self.search_page)
-        scraper.submit(
-            scraper.doc.cssselect_one('form'),
-            query=query)
-        self.data['http_statuses'].append(scraper.status)
+        status = None
+        try:
+            logging.info('Search record: %s', query)
+            scraper = scrape.Session(verbose=1)
+            scraper.go(self.search_page)
+            scraper.submit(
+                scraper.doc.cssselect_one('form'),
+                query=query)
+            status = scraper.status
+        finally:
+            self.data['http_statuses'].append(status)
 
 
 if __name__ == '__main__':
