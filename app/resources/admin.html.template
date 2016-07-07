@@ -10,24 +10,10 @@
 
 {# Template for the repository settings page (see admin.py).                #}
 
-{% extends "app-base.html.template" %}
+{% extends "admin-base.html.template" %}
 {% load i18n %}
 
 {% block content %}
-<h2>{% trans "Administration" %}</h2>
-<p>
-{% if user %}
-  {% blocktrans with "<span class=\"email\">"|safe as begin_span_tag and user.email as email and "</span>"|safe as end_span_tag %}You are currently signed in as {{begin_span_tag}}{{email}}{{end_span_tag}}.{% endblocktrans %}
-  <a href="{{logout_url}}">{% trans "Sign out" %}</a>
-{% else %}
-  {% trans "You are not currently signed in." %}
-  <a href="{{login_url}}">{% trans "Sign in" %}</a>
-{% endif %}
-
-{% if env.repo %}
-  <p><a href="../global/admin">Global admin page</a></p>
-{% endif %}
-
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
@@ -35,8 +21,6 @@
   person_record_id: <input name="id" id="id" size=50 value="{{id}}">
   <input type=submit value="Delete (with confirmation)">
 </form>
-
-<h2>Select a repository</h2>
 
 <script>
 
@@ -53,24 +37,12 @@
   var ALL_VIEW_CONFIG =
       JSON.parse("{{all_view_config_json|default:'[]'|escapejs}}");
   var MULTILINGUAL_TABLE_IDS = [
-    'start_page_custom_htmls', 
-    'results_page_custom_htmls', 
-    'view_page_custom_htmls', 
-    'seek_query_form_custom_htmls', 
+    'start_page_custom_htmls',
+    'results_page_custom_htmls',
+    'view_page_custom_htmls',
+    'seek_query_form_custom_htmls',
     'footer_custom_htmls'
   ];
-
-  function $(id) {
-    return document.getElementById(id);
-  }
-
-  function select_repo_changed() {
-    if ($('select_repo').value == '__new__') {
-      $('create_repo').style.display = 'inline';
-    } else {
-      window.location = $('select_repo').value;
-    }
-  }
 
   /* Validates the settings and languages and prepares them as JSON to POST. */
   function validate_settings() {
@@ -82,7 +54,7 @@
     for (var dropdown_index = 1;
          $('repo_titles_language_selection_' + dropdown_index) != null;
          dropdown_index++) {
-      var language_code = $('repo_titles_language_selection_' + 
+      var language_code = $('repo_titles_language_selection_' +
                              dropdown_index).value;
       if (language_code == 'unused' ||
           language_code_index_map[language_code] !== undefined) {
@@ -118,7 +90,7 @@
   }
 
   function get_selected_language_option(row_number) {
-    var selected_language_codes = 
+    var selected_language_codes =
         $('repo_titles_language_selection_' + row_number);
     var selected_index = selected_language_codes.selectedIndex;
     var selected_language_option = selected_language_codes[selected_index];
@@ -222,7 +194,7 @@
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
     var cur_col = 0;
-  
+
     var selected_language_col = row.insertCell(cur_col++);
     var selected_language = document.createElement('span');
     var selected_language_text = document.createTextNode(language);
@@ -236,7 +208,7 @@
     title.cols = 72;
     title.id = table_id + '_language_value_' + iteration;
     title_col.appendChild(title);
-    return iteration; 
+    return iteration;
   }
 
   // Adds a language in repo_titles_table and custom_message_table.
@@ -283,7 +255,7 @@
       var table_values = ALL_VIEW_CONFIG[table_id];
       for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
         var language = LANGUAGES[lang_num];
-        var row_number = 
+        var row_number =
             add_language_to_custom_message_table(table_id, language);
         if (table_values !== undefined &&
             table_values[language] !== undefined) {
@@ -322,40 +294,8 @@
   }
 </script>
 
-<p>
-  <form method="get" style="display: inline-block" class="admin">
-    <select name="repo" id="select_repo" onchange="select_repo_changed()">
-      {% if not env.repo %}
-        <option>Select a repository:</option>
-      {% endif %}
-      {% for option in repo_options %}
-        <option value="{{option.url}}"
-          {% ifequal option.repo env.repo %}
-            selected
-          {% endifequal %}
-        >
-          {{option.repo}}
-        </option>
-      {% endfor %}
-      <option value="__new__">Create new...</option>
-    </select>
-  </form>
-  <form id="create_repo" method="post" style="display: none" class="admin">
-    <input type="hidden" name="operation" value="create_repo">
-    <input name="new_repo" id="new_repo" size=15>
-    <input type="submit" value="Create">
-  </form>
-
 {% if env.repo %}
-<h2>Admin tools for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
-<ul>
-  <li><a href="admin/dashboard">Dashboard</a></li>
-  <li><a href="admin/review">Review notes</a></li>
-  <li><a href="admin/api_keys">Create an API key</a></li>
-  <li><a href="admin/api_keys/list">List API keys</a></li>
-</ul>
-
-<h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
+<h2>Repository settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
 
 <form id="save_repo" method="post" class="admin"
     onsubmit="return validate_settings()">
@@ -967,14 +907,7 @@
 
 {% else %}
 
-<h2>Global admin tools</h2>
-<ul>
-  <li><a href="admin/resources">Manage resources</a></li>
-  <li><a href="admin/api_keys">Create an API key to access all repositories</a></li>
-  <li><a href="admin/api_keys/list">List API keys to access all repositories</a></li>
-</ul>
-
-<h2>Edit global settings</h2>
+<h2>Global settings</h2>
 
 <form id="save_global" method="post" class="admin">
   <fieldset>
@@ -1004,8 +937,8 @@
       <label for="repo_aliases">
         Repository alias mapping.<br>
         e.g., If it is
-        <code>{"jp": "japan", "ht": "haiti"}</code>, 
-	you can use 
+        <code>{"jp": "japan", "ht": "haiti"}</code>,
+	you can use
 	<a href="http://google.org/personfinder/jp">
 	  http://google.org/personfinder/jp
 	</a>
@@ -1013,8 +946,8 @@
 	<a href="http://google.org/personfinder/japan">
 	  http://http://google.org/personfinder/japan
 	</a>
-	 and the same for "ht". 
-	This is especially useful combined with the short URL e.g., 
+	 and the same for "ht".
+	This is especially useful combined with the short URL e.g.,
 	<a href="http://g.co.pf/jp">
 	  http://g.co.pf/jp
 	</a>

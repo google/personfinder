@@ -74,44 +74,6 @@ class Handler(BaseHandler):
             self.redirect('/delete', id=self.params.id,
                           signature=reveal.sign(action))
 
-        elif self.params.operation == 'create_repo':
-            new_repo = self.params.new_repo
-            Repo(key_name=new_repo).put()
-            config.set_for_repo(  # Provide some defaults.
-                new_repo,
-                language_menu_options=['en', 'fr'],
-                repo_titles={'en': 'Earthquake', 'fr': u'S\xe9isme'},
-                keywords='person finder, people finder, person, people, ' +
-                    'crisis, survivor, family',
-                use_family_name=True,
-                use_alternate_names=True,
-                use_postal_code=True,
-                allow_believed_dead_via_ui=False,
-                min_query_word_length=2,
-                show_profile_entry=False,
-                profile_websites=DEFAULT_PROFILE_WEBSITES,
-                map_default_zoom=6,
-                map_default_center=[0, 0],
-                map_size_pixels=[400, 280],
-                read_auth_key_required=True,
-                search_auth_key_required=True,
-                deactivated=False,
-                launched=False,
-                deactivation_message_html='',
-                start_page_custom_htmls={'en': '', 'fr': ''},
-                results_page_custom_htmls={'en': '', 'fr': ''},
-                view_page_custom_htmls={'en': '', 'fr': ''},
-                seek_query_form_custom_htmls={'en': '', 'fr': ''},
-                footer_custom_htmls={'en': '', 'fr': ''},
-                bad_words='',
-                published_date=get_utcnow_timestamp(),
-                updated_date=get_utcnow_timestamp(),
-                test_mode=False,
-                force_https=False,
-                zero_rating_mode=False,
-            )
-            self.redirect('/admin', new_repo)
-
         elif self.params.operation == 'save_repo':
             if not self.repo:
                 self.redirect('/admin')
