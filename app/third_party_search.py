@@ -23,6 +23,7 @@ import urllib
 import simplejson
 
 from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch_errors
 
 import utils
 
@@ -66,10 +67,17 @@ class Handler(utils.BaseHandler):
         else:
             headers = {}
         logging.info('urlfetch.fetch(%r, headers=%r)' % (url, headers))
-        response = urlfetch.fetch(url, headers=headers, deadline=60)
-        if response.status_code == 200:
-            self.response.headers['Content-Type'] = 'application/json'
-            self.write(response.content)
-        else:
+        try:
+            response = urlfetch.fetch(url, headers=headers, deadline=60)
+            if response.status_code == 200:
+                self.response.headers['Content-Type'] = 'application/json'
+                self.write(response.content)
+            else:
+                self.response.set_status(response.status_code)
+                self.write('Bad HTTP status code: %d' % response.status_code)
+        except urlfetch_errors.Error as e:
+            logging.exception('HTTP fetch failed')
             self.response.set_status(500)
-            self.write('Bad HTTP status code: %d' % response.status_code)
+            # No more detailed information e.g., e.message, to avoid leaking
+            # the URL which contains signature.
+            self.write('HTTP fetch failed')
