@@ -73,7 +73,7 @@ class Handler(utils.BaseHandler):
                 self.response.headers['Content-Type'] = 'application/json'
                 self.write(response.content)
             else:
-                self.response.set_status(500)
+                self.response.set_status(response.status_code)
                 self.write('Bad HTTP status code: %d' % response.status_code)
         except urlfetch_errors.Error as e:
             logging.exception('HTTP fetch failed')
