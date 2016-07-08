@@ -14,14 +14,6 @@
 {% load i18n %}
 
 {% block content %}
-<h2>Delete a record</h2>
-<p>
-<form method="post" class="admin">
-  <input type=hidden name=operation value=delete>
-  person_record_id: <input name="id" id="id" size=50 value="{{id}}">
-  <input type=submit value="Delete (with confirmation)">
-</form>
-
 <script>
 
 //TODO: move to object-oriented!!
@@ -894,7 +886,7 @@
   <fieldset>
     <legend>SMS</legend>
     <div class="config">
-      Go to <a href="../global/admin">Global admin page</a> to configure SMS
+      Go to <a href="../global/admin">Global settings</a> to configure SMS
       numbers mapping.
     </div>
   </fieldset>
