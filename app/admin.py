@@ -22,7 +22,6 @@ from const import *
 from model import *
 from utils import *
 import const
-import reveal
 import tasks
 
 
@@ -68,13 +67,7 @@ class Handler(BaseHandler):
                         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
 
     def post(self):
-        if self.params.operation == 'delete':
-            # Redirect to the deletion handler with a valid signature.
-            action = ('delete', str(self.params.id))
-            self.redirect('/delete', id=self.params.id,
-                          signature=reveal.sign(action))
-
-        elif self.params.operation == 'save_repo':
+        if self.params.operation == 'save_repo':
             if not self.repo:
                 self.redirect('/admin')
                 return
