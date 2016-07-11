@@ -53,6 +53,9 @@ Usage:
     "Interval between requests" should roughly match the QPS specified in the
     config file. If it is much longer than expected, you need to increase
     num_threads.
+  
+  - Don't forget to deactivate the repository in the PF admin page to free up
+    the datastore for the dummy records.
 
 Config file reference:
 
