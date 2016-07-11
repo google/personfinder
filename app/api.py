@@ -740,7 +740,7 @@ class HandleSMS(utils.BaseHandler):
         # e.g., It removes diacritics such as "ú" -> "u".
         # This seems acceptable for Spanish, but may not be for other
         # languages.
-        ascii_response = unidecode(' ## '.join(responses))
+        ascii_response = unidecode(u' ## '.join(responses))
 
         self.response.headers['Content-Type'] = 'application/xml'
         self.write(
