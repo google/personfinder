@@ -53,7 +53,7 @@ class PhotoTests(ServerTestsBase):
     """Tests that verify photo upload and serving."""
     def submit_create(self, **kwargs):
         doc = self.go('/haiti/create?role=provide')
-        form = doc.first('form')
+        form = doc.cssselect_one('form')
         return self.s.submit(form,
                              given_name='_test_given_name',
                              family_name='_test_family_name',
@@ -68,17 +68,17 @@ class PhotoTests(ServerTestsBase):
         original_image = images.Image(photo.read())
         doc = self.submit_create(photo=photo)
         # Verify the image is uploaded and displayed on the view page.
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 1
+        photo = doc.cssselect_one('img.photo')
+        photo_anchor = doc.xpath_one('//a[img[@class="photo"]]')
         # Verify the image is served properly by checking the image metadata.
-        doc = self.s.go(photos[0].attrs['src'])
-        image = images.Image(doc.content)
+        doc = self.s.go(photo.get('src'))
+        image = images.Image(doc.content_bytes)
         assert image.format == images.PNG
         assert image.width == original_image.width
         assert image.height == original_image.height
         # Follow the link on the image and verify the same image is served.
-        doc = self.s.follow(photos[0].enclosing('a'))
-        image = images.Image(doc.content)
+        doc = self.s.follow(photo_anchor)
+        image = images.Image(doc.content_bytes)
         assert image.format == images.PNG
         assert image.width == original_image.width
         assert image.height == original_image.height
@@ -93,17 +93,17 @@ class PhotoTests(ServerTestsBase):
         original_image = images.Image(photo.read())
         doc = self.submit_create(photo=photo, note_photo=note_photo)
         # Verify the images are uploaded and displayed on the view page.
-        photos = doc.alltags('img', class_='photo')
+        photos = doc.cssselect('img.photo')
         assert len(photos) == 2
         # Verify the profile image is converted to png.
-        doc = self.s.go(photos[0].attrs['src'])
-        image = images.Image(doc.content)
+        doc = self.s.go(photos[0].get('src'))
+        image = images.Image(doc.content_bytes)
         assert image.format == images.PNG
         assert image.width == original_image.width
         assert image.height == original_image.height
         # Verify the note image is resized to match MAX_IMAGE_DIMENSION.
-        doc = self.s.go(photos[1].attrs['src'])
-        image = images.Image(doc.content)
+        doc = self.s.go(photos[1].get('src'))
+        image = images.Image(doc.content_bytes)
         assert image.format == images.PNG
         assert image.width == MAX_IMAGE_DIMENSION
         assert image.height == MAX_IMAGE_DIMENSION
@@ -115,8 +115,7 @@ class PhotoTests(ServerTestsBase):
         doc = self.submit_create(photo=photo)
         # Verify there is no img tag in the view page.
         assert '_test_given_name' in doc.text
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 0
+        assert not doc.cssselect('img.photo')
 
     def test_upload_broken_photo(self):
         """Uploads a broken image and verifies an error message is displayed."""
@@ -124,8 +123,6 @@ class PhotoTests(ServerTestsBase):
         photo = file('tests/testdata/broken_image.png')
         doc = self.submit_create(photo=photo)
         # Verify an error message is displayed.
-        photos = doc.alltags('img', class_='photo')
-        assert len(photos) == 0
+        assert not doc.cssselect('img.photo')
         assert 'unrecognized format' in doc.text
-
 
