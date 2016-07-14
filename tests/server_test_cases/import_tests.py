@@ -72,7 +72,7 @@ class ImportTests(ServerTestsBase):
     def test_import_no_csv(self):
         """Verifies an error message is shown when no CSV file is uploaded."""
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key')
         assert 'Please specify at least one CSV file.' in doc.text
 
@@ -83,7 +83,7 @@ class ImportTests(ServerTestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='bad_key', content=open(self.filename))
         assert 'Missing or invalid authorization key' in doc.text
 
@@ -94,7 +94,7 @@ class ImportTests(ServerTestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'The CSV file is formatted incorrectly' in doc.text
         assert Person.all().count() == 0
@@ -107,7 +107,7 @@ class ImportTests(ServerTestsBase):
             'test.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
@@ -139,7 +139,7 @@ class ImportTests(ServerTestsBase):
             '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
 
         assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
@@ -167,7 +167,7 @@ class ImportTests(ServerTestsBase):
             '1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert Person.all().count() == 1
@@ -186,7 +186,7 @@ class ImportTests(ServerTestsBase):
             'different.google.com/person1,2013-02-26T09:10:00Z,_test_full_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'Person records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
         assert 'Not in authorized domain' in doc.text
@@ -204,7 +204,7 @@ class ImportTests(ServerTestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
@@ -230,7 +230,7 @@ class ImportTests(ServerTestsBase):
             'test.google.com/note1,_test_author_name',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
         assert 'Person records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
         assert 'Note records Imported 1 of 1' in re.sub('\\s+', ' ', doc.text)
@@ -256,7 +256,7 @@ class ImportTests(ServerTestsBase):
             '_test_author_name,2013-02-26T09:10:00Z,believed_alive',
             ])
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key', content=open(self.filename))
 
         assert 'Note records Imported 0 of 1' in re.sub('\\s+', ' ', doc.text)
@@ -267,7 +267,7 @@ class ImportTests(ServerTestsBase):
     def test_import_xlsx(self):
         """Verifies an xlsx file import."""
         doc = self.go('/haiti/api/import')
-        form = doc.cssselect('form')[-1]
+        form = doc.last('form')
         doc = self.s.submit(form, key='test_key',
             content=open(self.get_test_filepath('persons.xlsx')))
         assert 'Person records Imported 3 of 3' in re.sub('\\s+', ' ', doc.text)

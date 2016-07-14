@@ -45,19 +45,12 @@ import remote_api
 from resources import Resource, ResourceBundle
 import reveal
 import scrape
-from scrape import get_all_text, get_all_attrs, get_form_params
+from scrape import get_all_text, get_form_params
 import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
 from server_tests_base import ServerTestsBase
-
-
-# Namespaces used for PFIF XML responses.
-PFIF_NAMESPACES = {
-    'status': 'http://zesty.ca/pfif/1.4/status',
-    'pfif': 'http://zesty.ca/pfif/1.4',
-    }
 
 
 class PersonNoteTests(ServerTestsBase):
@@ -135,7 +128,7 @@ class PersonNoteTests(ServerTestsBase):
         Postcondition: the current session is still on the create page
         """
 
-        create_form = self.s.doc.cssselect_one('form')
+        create_form = self.s.doc.cssselect('form')[0]
         create_form_params = get_form_params(create_form)
         for key, value in (prefilled_params or {}).iteritems():
             assert create_form_params[key] == value
@@ -227,8 +220,7 @@ class PersonNoteTests(ServerTestsBase):
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
         details_page = self.s.doc
-        num_initial_notes = len(details_page.cssselect(
-            '.self-notes .view.note'))
+        num_initial_notes = len(details_page.cssselect('.self-notes .view.note'))
 
         add_note_page = self.go_to_add_note_page()
         note_form = add_note_page.cssselect_one('form')
@@ -271,9 +263,9 @@ class PersonNoteTests(ServerTestsBase):
         # Explicitly fire the send-mail task if necessary
         doc = self.go_as_admin('/_ah/admin/tasks?queue=send-mail')
         try:
-            for button in doc.cssselect('button.ae-taskqueues-run-now'):
+            for button in doc.alltags('button', class_='ae-taskqueues-run-now'):
                 doc = self.s.submit(d.first('form', name='queue_run_now'),
-                                    run_now=button.get('id'))
+                                    run_now=button.id)
         except scrape.ScrapeError, e:
             # button not found, assume task completed
             pass
@@ -310,17 +302,17 @@ class PersonNoteTests(ServerTestsBase):
 
         # Robots are okay on the start page.
         doc = self.go('/haiti')
-        assert not doc.xpath('//meta[@name="robots"]')
+        assert not doc.alltags('meta', name='robots')
 
         # Robots are not okay on the view page.
         doc = self.go('/haiti/view?id=test.google.com/person.111')
         assert '_test_full_name' in doc.content
-        assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
+        assert doc.firsttag('meta', name='robots', content='noindex')
 
         # Robots are not okay on the results page.
         doc = self.go('/haiti/results?role=seek&query=_test_full_name')
         assert '_test_full_name' in doc.content
-        assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
+        assert doc.firsttag('meta', name='robots', content='noindex')
 
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
@@ -336,7 +328,7 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti?ui=small')
         search_page = self.s.follow('I have information about someone')
-        search_form = search_page.cssselect_one('form')
+        search_form = search_page.cssselect('form')[0]
         assert 'I have information about someone' in get_all_text(search_form)
 
         self.assert_error_deadend(
@@ -357,11 +349,10 @@ class PersonNoteTests(ServerTestsBase):
         create_page = self.s.follow('Follow this link to create a new record')
 
         assert 'ui=small' not in self.s.url
-        given_name_input = create_page.xpath_one('//input[@name="given_name"]')
-        assert '_test_given_name' in given_name_input.get('value')
-        family_name_input = create_page.xpath_one(
-                '//input[@name="family_name"]')
-        assert '_test_family_name' in family_name_input.get('value')
+        given_name_input = create_page.firsttag('input', name='given_name')
+        assert '_test_given_name' in given_name_input.content
+        family_name_input = create_page.firsttag('input', name='family_name')
+        assert '_test_family_name' in family_name_input.content
 
         # Create a person to search for:
         person = Person(
@@ -435,16 +426,15 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti?ui=small')
         search_page = self.s.follow('I\'m looking for someone')
-        submit_button = search_page.xpath_one('//input[@type="submit"]')
-        assert 'Search for this person' in submit_button.get('value')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
-        assert self.s.doc.cssselect('a.create-new-record')
+        assert self.s.doc.firsttag('a', class_='create-new-record')
 
         person = Person(
             key_name='haiti:test.google.com/person.111',
@@ -464,8 +454,8 @@ class PersonNoteTests(ServerTestsBase):
         # Now the search should yield a result.
         self.s.submit(search_form, query='_test_given_name')
         assert_params()
-        link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query=_test_given_name' in link.get('href')
+        link = self.s.doc.firsttag('a', class_='results-found')
+        assert 'query=_test_given_name' in link.content
 
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
@@ -483,11 +473,10 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
         search_page = self.s.follow('I\'m looking for someone')
-        submit_button = search_page.xpath_one('//input[@type="submit"]')
-        assert 'Search for this person' in submit_button.get('value')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query='_test_given_name')
         assert_params()
         self.verify_results_page(0)
@@ -496,7 +485,7 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Submit the create form with minimal information.
-        create_form = self.s.doc.cssselect_one('form')
+        create_form = self.s.doc.first('form')
         self.s.submit(create_form,
                       given_name='_test_given_name',
                       family_name='_test_family_name',
@@ -712,11 +701,10 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/haiti')
         search_page = self.s.follow('I\'m looking for someone')
-        submit_button = search_page.xpath_one('//input[@type="submit"]')
-        assert 'Search for this person' in submit_button.get('value')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query='ABCD EFGH IJKL MNOP')
         assert_params()
         self.verify_results_page(0)
@@ -725,7 +713,7 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Submit the create form with a valid given and family name
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       given_name='ABCD EFGH',
                       family_name='IJKL MNOP',
                       alternate_given_names='QRST UVWX',
@@ -774,11 +762,10 @@ class PersonNoteTests(ServerTestsBase):
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/japan-test')
         search_page = self.s.follow('I\'m looking for someone')
-        submit_button = search_page.xpath_one('//input[@type="submit"]')
-        assert 'Search for this person' in submit_button.get('value')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query='山田 太郎')
         assert_params()
         self.verify_results_page(0)
@@ -787,7 +774,7 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Submit the create form with a valid given and family name.
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       family_name='山田',
                       given_name='太郎',
                       alternate_family_names='やまだ',
@@ -848,8 +835,8 @@ class PersonNoteTests(ServerTestsBase):
 
         self.go('/haiti')
         search_page = self.s.follow('I have information about someone')
-        search_form = search_page.cssselect_one('form')
-        assert 'I have information about someone' in get_all_text(search_form)
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
 
         self.assert_error_deadend(
             self.s.submit(search_form),
@@ -871,7 +858,7 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_note_form()
 
         # Submit the create form with minimal information
-        create_form = self.s.doc.cssselect_one('form')
+        create_form = self.s.doc.first('form')
         self.s.submit(create_form,
                       given_name='_test_given_name',
                       family_name='_test_family_name',
@@ -1050,8 +1037,7 @@ http://www.foo.com/_account_1''',
         assert 'http://www.facebook.com/_account_2' in doc.content
 
         # Mark all three as duplicates.
-        button = doc.xpath_one(
-                '//input[@value="Yes, these are the same person"]')
+        button = doc.firsttag('input', value='Yes, these are the same person')
         doc = self.s.submit(button, text='duplicate test', author_name='foo')
 
         # We should arrive back at the first record, with two duplicate notes.
@@ -1066,22 +1052,21 @@ http://www.foo.com/_account_1''',
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_full_name_1' in doc.content
-        notes = doc.cssselect('.self-notes div.view.note.duplicate')
+        notes = doc.first(class_='self-notes').all(
+            'div', class_='view note duplicate')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
         # simultaneously.
-        note_222_text = get_all_text(notes[0])
-        note_333_text = get_all_text(notes[1])
-        if 'person.222' in note_333_text:
-            note_333_text, note_222_text = note_222_text, note_333_text
-        assert 'Posted by foo' in note_222_text
-        assert 'duplicate test' in note_222_text
+        note_222 = notes[0] if 'person.222' in notes[0].text else notes[1]
+        note_333 = notes[0] if 'person.333' in notes[0].text else notes[1]
+        assert 'Posted by foo' in note_222.text
+        assert 'duplicate test' in note_222.text
         assert ('This record is a duplicate of test.google.com/person.222' in
-                note_222_text)
-        assert 'Posted by foo' in note_333_text
-        assert 'duplicate test' in note_333_text
+                note_222.text)
+        assert 'Posted by foo' in note_333.text
+        assert 'duplicate test' in note_333.text
         assert ('This record is a duplicate of test.google.com/person.333' in
-                note_333_text)
+                note_333.text)
 
     def test_reveal(self):
         """Test the hiding and revealing of contact information in the UI."""
@@ -1130,16 +1115,15 @@ http://www.foo.com/_account_1''',
 
         # Clicking the '(click to reveal)' link should bring the user
         # to a captcha turing test page.
-        reveal_region = doc.xpath(
-                '//a[normalize-space(text())="(click to reveal)"]')[0]
-        url = reveal_region.get('href')
+        reveal_region = doc.first('a',  u'(click to reveal)')
+        url = reveal_region.get('href', '')
         doc = self.go(url[url.find('/haiti/reveal'):])
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
 
         # Try to continue with an invalid captcha response. Get redirected
         # back to the same page.
-        button = doc.xpath_one('//input[@value="Proceed"]')
+        button = doc.firsttag('input', value='Proceed')
         doc = self.s.submit(button)
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
@@ -1200,13 +1184,13 @@ http://www.foo.com/_account_1''',
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go('/haiti/results?role=seek&query=_test_last_name')
-        assert get_all_text(doc.cssselect_one('.provider-name')) == (
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
             'mytestdomain.com')
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go('/haiti/view?lang=en&id=mytestdomain.com/person.21009')
-        assert get_all_text(doc.cssselect_one('.provider-name')) == (
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
             'mytestdomain.com')
         assert '_test_last_name' in doc.content
 
@@ -1227,8 +1211,8 @@ http://www.foo.com/_account_1''',
 
         self.go('/haiti?referrer=a.org')
         search_page = self.s.follow('I have information about someone')
-        search_form = search_page.cssselect_one('form')
-        assert 'I have information about someone' in get_all_text(search_form)
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
 
         self.s.submit(search_form,
                       given_name='_test_given_name',
@@ -1242,7 +1226,7 @@ http://www.foo.com/_account_1''',
         self.verify_note_form()
 
         # Submit the create form with minimal information
-        create_form = self.s.doc.cssselect_one('form')
+        create_form = self.s.doc.first('form')
         self.s.submit(create_form,
                       given_name='_test_given_name',
                       family_name='_test_family_name',
@@ -1263,7 +1247,7 @@ http://www.foo.com/_account_1''',
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
             '/haiti/results?role=seek&query=_test_last_name')
-        assert get_all_text(doc.cssselect_one('.provider-name')) == (
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
             'globaltestdomain.com')
         assert '_test_last_name' in doc.content
 
@@ -1271,7 +1255,7 @@ http://www.foo.com/_account_1''',
         doc = self.go(
             '/haiti/view?lang=en&id=globaltestdomain.com/person.21009'
             )
-        assert get_all_text(doc.cssselect_one('.provider-name')) == (
+        assert scrape.get_all_text(doc.cssselect_one('.provider-name')) == (
             'globaltestdomain.com')
         assert '_test_last_name' in doc.content
 
@@ -1284,14 +1268,14 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
-        options = note.xpath('descendant::select[@name="status"]/option')
+        note = doc.first(class_='fields-table note')
+        options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
-            assert text in option.get('value')
+            assert text in option.attrs['value']
 
         # Create a record with no status and get the new record's ID.
-        form = doc.cssselect_one('form')
+        form = doc.first('form')
         doc = self.s.submit(form,
                             given_name='_test_given',
                             family_name='_test_family',
@@ -1302,11 +1286,11 @@ http://www.foo.com/_account_1''',
         # Check that the right status options appear on the view page.
         self.s.go(view_url)
         doc = self.go_to_add_note_page()
-        note = doc.cssselect_one('.fields-table.note')
-        options = note.xpath('descendant::select[@name="status"]/option')
+        note = doc.first(class_='fields-table note')
+        options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
-            assert text in option.get('value')
+            assert text in option.attrs['value']
 
         # Advance the clock. The new note has a newer source_date by this.
         # This makes sure that the new note appears at the bottom of the view
@@ -1314,22 +1298,22 @@ http://www.foo.com/_account_1''',
         self.advance_utcnow(seconds=1)
 
         # Set the status in a note and check that it appears on the view page.
-        form = doc.cssselect_one('form')
+        form = doc.first('form')
         self.s.submit(form, author_name='_test_author2', text='_test_text',
                       status='believed_alive')
         doc = self.s.go(view_url)
-        note = doc.cssselect('.view.note')[-1]
-        note_attrs = get_all_attrs(note)
-        assert [v for k, v in note_attrs if 'believed_alive' in v], note_attrs
-        assert not [v for k, v in note_attrs if 'believed_dead' in v], \
-                note_attrs
+        note = doc.last(class_='view note')
+        assert 'believed_alive' in note.content, \
+            text_diff('believed_alive', note.content)
+        assert 'believed_dead' not in note.content, \
+            text_diff('believed_dead', note.content)
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
-                                    repo='haiti',
-                                    detail='_test_given _test_family',
-                                    ip_address='',
-                                    Note_text='_test_text',
-                                    Note_status='believed_alive')
+                               repo='haiti',
+                               detail='_test_given _test_family',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
         db.delete(UserActionLog.all().fetch(10))
 
         # Set status to is_note_author, but don't check author_made_contact.
@@ -1352,15 +1336,15 @@ http://www.foo.com/_account_1''',
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
-        options = note.xpath('descendant::select[@name="status"]/option')
+        note = doc.first(class_='fields-table note')
+        options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
-            assert text in option.get('value')
-            assert option.get('value') != 'believed_dead'
+            assert text in option.attrs['value']
+            assert option.attrs['value'] != 'believed_dead'
 
         # Create a record with no status and get the new record's ID.
-        form = doc.cssselect_one('form')
+        form = doc.first('form')
         doc = self.s.submit(form,
                             given_name='_test_given',
                             family_name='_test_family',
@@ -1372,12 +1356,12 @@ http://www.foo.com/_account_1''',
         # on the view page.
         self.s.go(view_url)
         doc = self.go_to_add_note_page()
-        note = doc.cssselect_one('.fields-table.note')
-        options = note.xpath('descendant::select[@name="status"]/option')
+        note = doc.first(class_='fields-table note')
+        options = note.first('select', name='status').all('option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
-            assert text in option.get('value')
-            assert option.get('value') != 'believed_dead'
+            assert text in option.attrs['value']
+            assert option.attrs['value'] != 'believed_dead'
 
         # Advance the clock. Same as above.
         self.advance_utcnow(seconds=1)
@@ -1389,19 +1373,17 @@ http://www.foo.com/_account_1''',
             text='_test_text',
             status='believed_alive')
         doc = self.s.go(view_url)
-        note = doc.cssselect('.view.note')[-1]
-        note_attrs = get_all_attrs(note)
-        assert [v for k, v in note_attrs if 'believed_alive' in v], note_attrs
-        assert not [v for k, v in note_attrs if 'believed_dead' in v], \
-                note_attrs
+        note = doc.last(class_='view note')
+        assert 'believed_alive' in note.content
+        assert 'believed_dead' not in note.content
 
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
-                                    repo='japan',
-                                    detail='_test_family _test_given',
-                                    ip_address='',
-                                    Note_text='_test_text',
-                                    Note_status='believed_alive')
+                               repo='japan',
+                               detail='_test_family _test_given',
+                               ip_address='',
+                               Note_text='_test_text',
+                               Note_status='believed_alive')
         db.delete(UserActionLog.all().fetch(10))
 
         # Advance the clock. Same as above.
@@ -1769,10 +1751,8 @@ http://www.foo.com/_account_1''',
 </pfif>''', type='application/xml')
 
         # The Person record should have been accepted.
-        person_status = doc.xpath(
-                '//status:write', namespaces=PFIF_NAMESPACES)[0]
-        self.assertEquals(person_status.xpath(
-            'status:written', namespaces=PFIF_NAMESPACES)[0].text, '1')
+        person_status = doc.first('status:write')
+        self.assertEquals(person_status.first('status:written').text, '1')
 
         # An empty Person entity should be in the datastore.
         person = Person.get('haiti', 'test.google.com/person.empty')
@@ -1784,22 +1764,16 @@ http://www.foo.com/_account_1''',
                       data=data, type='application/xml')
 
         # The Person record should have been rejected.
-        person_status = doc.xpath(
-                '//status:write', namespaces=PFIF_NAMESPACES)[0]
-        assert person_status.xpath(
-                'status:written', namespaces=PFIF_NAMESPACES)[0].text == '0'
+        person_status = doc.first('status:write')
+        assert person_status.first('status:written').text == '0'
         assert ('Not in authorized domain' in
-                person_status.xpath(
-                    '*/status:error', namespaces=PFIF_NAMESPACES)[0].text)
+                person_status.first('status:error').text)
 
         # Both of the Note records should have been rejected.
-        note_status = doc.xpath('//status:write', namespaces=PFIF_NAMESPACES)[1]
-        assert note_status.xpath(
-                'status:written', namespaces=PFIF_NAMESPACES)[0].text == '0'
-        first_error = note_status.xpath(
-                '*/status:error', namespaces=PFIF_NAMESPACES)[0]
-        second_error = note_status.xpath(
-                '*/status:error', namespaces=PFIF_NAMESPACES)[1]
+        note_status = person_status.next('status:write')
+        assert note_status.first('status:written').text == '0'
+        first_error = note_status.first('status:error')
+        second_error = first_error.next('status:error')
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
 
@@ -1850,19 +1824,14 @@ http://www.foo.com/_account_1''',
             '/haiti/api/write?key=not_allow_believed_dead_test_key',
             data=data, type='application/xml')
         # The Person record should not be updated
-        person_status = doc.xpath(
-                'status:write', namespaces=PFIF_NAMESPACES)[0]
-        assert person_status.xpath(
-                'status:written', namespaces=PFIF_NAMESPACES)[0].text == '0'
+        person_status = doc.first('status:write')
+        assert person_status.first('status:written').text == '0'
         # The Note record should be rejected with error message
-        note_status = doc.xpath('//status:write', namespaces=PFIF_NAMESPACES)[1]
-        assert note_status.xpath(
-                'status:parsed', namespaces=PFIF_NAMESPACES)[0].text == '1'
-        assert note_status.xpath(
-                'status:written', namespaces=PFIF_NAMESPACES)[0].text == '0'
+        note_status = person_status.next('status:write')
+        assert note_status.first('status:parsed').text == '1'
+        assert note_status.first('status:written').text == '0'
         assert ('Not authorized to post notes with the status \"believed_dead\"'
-                in note_status.xpath('*/status:error',
-                    namespaces=PFIF_NAMESPACES)[0].text)
+                in note_status.first('status:error').text)
 
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""
@@ -2390,7 +2359,7 @@ _read_profile_url2</pfif:profile_urls>
 
         # Fetch a PFIF 1.1 document.
         doc = self.go('/haiti/api/read?id=test.google.com/person.123'
-                      '&version=1.1')
+                      '&version=1.1') #, charset='UTF-8')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -2403,7 +2372,7 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-'''.decode('utf-8')
+'''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -2423,7 +2392,7 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-''', doc.content.encode('utf-8'))
+''', doc.content)
         # verify the self.log was written.
         self.verify_api_log(ApiActionLog.READ, api_key='')
 
@@ -2445,7 +2414,7 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-'''.decode('utf-8')
+'''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -2469,7 +2438,7 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:profile_urls>korean a = \xec\x95\x84</pfif:profile_urls>
   </pfif:person>
 </pfif:pfif>
-'''.decode('utf-8')
+'''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -2483,27 +2452,26 @@ _read_profile_url2</pfif:profile_urls>
         Also check that it optionally requires a search-enabled API key."""
         # Add a first person to datastore.
         self.go('/haiti/create')
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       given_name='_search_given_name',
                       family_name='_search_1st_family_name',
                       author_name='_search_1st_author_name')
         # Add a note for this person.
         self.go_to_add_note_page()
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       author_made_contact='yes',
                       text='this is text for first person',
                       author_name='_search_1st_note_author_name')
         # Add a 2nd person with same given name but different family name.
         self.go('/haiti/create')
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       given_name='_search_given_name',
                       family_name='_search_2nd_family_name',
                       author_name='_search_2nd_author_name')
-        form_params = get_form_params(self.s.doc.cssselect_one('form'))
-        record_id_2 = form_params['id']
+        record_id_2 = self.s.doc.first('form').params['id']
         # Add a note for this 2nd person.
         self.go_to_add_note_page()
-        self.s.submit(self.s.doc.cssselect_one('form'),
+        self.s.submit(self.s.doc.first('form'),
                       author_made_contact='yes',
                       text='this is text for second person',
                       author_name='_search_2nd_note_author_name')
@@ -3139,8 +3107,8 @@ _feed_profile_url2</pfif:profile_urls>
     <content>chinese a = \xe4\xba\x9c</content>
   </entry>
 </feed>
-'''.decode('utf-8') % (self.hostport, self.hostport, self.hostport,
-        self.hostport, self.hostport)
+''' % (self.hostport, self.hostport, self.hostport, self.hostport,
+       self.hostport)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -3387,7 +3355,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
-        button = doc.xpath_one('//input[@value="Yes, delete the record"]')
+        button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
@@ -3459,7 +3427,7 @@ _feed_profile_url2</pfif:profile_urls>
             # Should be available in the 'haiti' repo.
             doc = self.go('/haiti/photo?id=%s' % id)
             assert self.s.status == 200
-            assert doc.content_bytes == 'xyz'
+            assert doc.content == 'xyz'
             # Should not be available in a different repo.
             self.go('/pakistan/photo?id=%s' % id)
             assert self.s.status == 404
@@ -3524,7 +3492,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.follow(doc.cssselect_one('#extend-btn'))
         assert 'extend the expiration' in doc.text
         # Click the button on the confirmation page.
-        button = doc.xpath_one('//input[@value="Yes, extend the record"]')
+        button = doc.firsttag('input', value='Yes, extend the record')
         doc = self.s.submit(button)
         # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
@@ -3548,8 +3516,9 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.follow(doc.cssselect_one('#disable-notes-btn'))
         assert 'disable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
-        button = doc.xpath_one(
-            '//input[@value="Yes, ask the record author to disable notes"]')
+        button = doc.firsttag(
+            'input',
+            value='Yes, ask the record author to disable notes')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
@@ -3581,8 +3550,9 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'reason_for_disabling_notes' in doc.content, doc.content
         assert 'The record will still be visible on this site' in doc.text, \
             utils.encode(doc.text)
-        button = doc.xpath_one(
-            '//input[@value="Yes, disable notes on this record."]')
+        button = doc.firsttag(
+            'input',
+            value='Yes, disable notes on this record.')
         doc = self.s.submit(button,
                             reason_for_disabling_notes='spam_received')
 
@@ -3623,8 +3593,9 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.submit(doc.cssselect_one('input.enable-notes'))
         assert 'enable notes on ' \
                '"_test_given_name _test_family_name"' in doc.text
-        button = doc.xpath_one(
-            '//input[@value="Yes, ask the record author to enable notes"]')
+        button = doc.firsttag(
+            'input',
+            value='Yes, ask the record author to enable notes')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
@@ -3698,7 +3669,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/create?given_name=_test_given_name&'
                       'family_name=_test_family_name&role=provide')
 
-        create_form = doc.cssselect_one('form')
+        create_form = doc.first('form')
         # Submit the create form with complete information.
         # Note contains bad words
         self.s.submit(create_form,
@@ -3721,8 +3692,8 @@ _feed_profile_url2</pfif:profile_urls>
         # Ask for author's email address.
         assert 'enter your e-mail address below' in self.s.doc.text
         assert 'author_email' in self.s.doc.content
-        author_email = self.s.doc.cssselect_one('input#author_email')
-        button = self.s.doc.xpath_one('//input[@value="Send email"]')
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
         doc = self.s.submit(button,
                             author_email='test1@example.com')
         assert 'Your request has been processed successfully' in doc.text
@@ -3782,7 +3753,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Check that a UserActionLog row was created for 'mark_dead' action.
         keyname = 'haiti:%s' % note.get_record_id()
         self.verify_user_action_log('mark_dead', 'Note', repo='haiti',
-                                    entity_key_name=keyname)
+                               entity_key_name=keyname)
 
         # Add a note with bad words to the existing person record.
         doc = self.s.go(view_url)
@@ -3796,8 +3767,8 @@ _feed_profile_url2</pfif:profile_urls>
         # Ask for author's email address.
         assert 'enter your e-mail address below' in self.s.doc.text
         assert 'author_email' in self.s.doc.content
-        author_email = self.s.doc.cssselect_one('input#author_email')
-        button = self.s.doc.xpath_one('//input[@value="Send email"]')
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
         doc = self.s.submit(button,
                             author_email='test2@example.com')
         assert 'request has been processed successfully' in self.s.doc.text
@@ -3855,7 +3826,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Check that a UserActionLog row was created for 'mark_alive' action.
         keyname = "haiti:%s" % note.get_record_id()
         self.verify_user_action_log('mark_alive', 'Note', repo='haiti',
-                                    entity_key_name=keyname)
+                               entity_key_name=keyname)
 
 
     def test_delete_and_restore(self):
@@ -3876,7 +3847,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.follow(doc.cssselect_one('#delete-btn'))
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text, utils.encode(doc.text)
-        button = doc.xpath_one('//input[@value="Yes, delete the record"]')
+        button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
@@ -4061,8 +4032,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'captcha' in doc.content
 
         # Fake a valid captcha and actually reverse the deletion
-        form = [f for f in doc.cssselect('form') if
-                f.get('action').endswith('/restore')][0]
+        form = doc.first('form', action=re.compile('.*/restore'))
         doc = self.s.submit(form, test_mode='yes')
         assert 'Identifying information' in doc.text
         assert '_test_given_name _test_family_name' in doc.text
@@ -4320,7 +4290,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'The record has been deleted' in doc.text
 
         # Try to add a note to the deleted person. It should fail.
-        note_form = view_doc.cssselect_one('form')
+        note_form = view_doc.first('form')
         doc = self.s.submit(
             note_form,
             text='test text',
@@ -4404,7 +4374,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'TestingSpam' in doc.text
         assert 'captcha' not in doc.content
 
-        button = doc.xpath_one('//input[@value="Yes, update the note"]')
+        button = doc.firsttag('input', value='Yes, update the note')
         doc = self.s.submit(button)
         assert 'Notes for this person' in doc.text
         assert 'This note has been marked as spam.' in doc.text
@@ -4412,11 +4382,10 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'Reveal note' in doc.text
 
         # When a note is flagged, these new links appear.
-        assert doc.cssselect('a#reveal-note')
-        assert doc.cssselect('a#hide-note')
+        assert doc.first('a', id='reveal-note')
+        assert doc.first('a', id='hide-note')
         # When a note is flagged, the contents of the note are hidden.
-        assert doc.cssselect_one('div.contents').get('style') == \
-                'display: none;'
+        assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
         # Make sure that a UserActionLog entry was created.
         assert len(UserActionLog.all().fetch(10)) == 1
@@ -4430,15 +4399,12 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'TestingSpam' not in doc.content
         doc = self.go('/haiti/feeds/person')
         assert 'TestingSpam' not in doc.content
-        doc_feed_note = self.go(
+        doc_feed_note = self.go( \
             '/haiti/feeds/note?person_record_id=test.google.com/person.123')
-        assert not doc_feed_note.xpath(
-                '//pfif:text', namespaces=PFIF_NAMESPACES)[0].text
+        assert doc_feed_note.first('pfif:text').text == ''
         doc_feed_person = self.go( \
             '/haiti/feeds/person?person_record_id=test.google.com/person.123')
-        assert not doc_feed_person.xpath(
-                '//pfif:note/pfif:text',
-                namespaces=PFIF_NAMESPACES)[0].text
+        assert doc_feed_person.first('pfif:note').first('pfif:text').text == ''
 
         # Unmark the note as spam.
         doc = self.go('/haiti/view?id=test.google.com/person.123')
@@ -4568,8 +4534,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/multiview' +
                       '?id1=test.google.com/person.1' +
                       '&id2=test.google.com/person.2')
-        button = doc.xpath_one(
-                '//input[@value="Yes, these are the same person"]')
+        button = doc.firsttag('input', value='Yes, these are the same person')
         doc = self.s.submit(button, text='duplicate test', author_name='foo')
 
         # Verify subscribers were notified
@@ -4674,14 +4639,14 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.s.follow(doc.cssselect_one('#subscribe-btn'))
 
         # Empty email is an error.
-        button = doc.xpath_one('//input[@value="Subscribe"]')
+        button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button)
         assert 'Invalid e-mail address. Please try again.' in doc.text
         assert len(person.get_subscriptions()) == 0
 
         # Invalid captcha response is an error
         self.s.back()
-        button = doc.xpath_one('//input[@value="Subscribe"]')
+        button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
@@ -4743,20 +4708,20 @@ _feed_profile_url2</pfif:profile_urls>
     def test_config_use_family_name(self):
         # use_family_name=True
         d = self.go('/haiti/create')
-        assert d.xpath_one('//label[@for="given_name"]').text.strip() == (
+        assert d.first('label', for_='given_name').text.strip() == (
             'Given name (required):')
-        assert d.xpath_one('//label[@for="family_name"]').text.strip() == (
+        assert d.first('label', for_='family_name').text.strip() == (
             'Family name (required):')
-        assert d.xpath('//input[@name="given_name"]')
-        assert d.xpath('//input[@name="family_name"]')
-        assert d.xpath_one('//label[@for="alternate_given_names"]').text.strip() == \
+        assert d.firsttag('input', name='given_name')
+        assert d.firsttag('input', name='family_name')
+        assert d.first('label', for_='alternate_given_names').text.strip() == \
             'Alternate given names:'
-        assert d.xpath_one('//label[@for="alternate_family_names"]').text.strip() == \
+        assert d.first('label', for_='alternate_family_names').text.strip() == \
             'Alternate family names:'
-        assert d.xpath('//input[@name="alternate_given_names"]')
-        assert d.xpath('//input[@name="alternate_family_names"]')
+        assert d.firsttag('input', name='alternate_given_names')
+        assert d.firsttag('input', name='alternate_family_names')
 
-        self.s.submit(d.cssselect_one('form'),
+        self.s.submit(d.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4778,14 +4743,14 @@ _feed_profile_url2</pfif:profile_urls>
 
         # use_family_name=False
         d = self.go('/pakistan/create')
-        assert d.xpath_one('//label[@for="given_name"]').text.strip() == 'Name:'
-        assert not d.xpath('//label[@for="family_name"]')
-        assert d.xpath('//input[@name="given_name"]')
-        assert not d.xpath('//input[@name="family_name"]')
+        assert d.first('label', for_='given_name').text.strip() == 'Name:'
+        assert not d.all('label', for_='family_name')
+        assert d.firsttag('input', name='given_name')
+        assert not d.alltags('input', name='family_name')
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
 
-        self.s.submit(d.cssselect_one('form'),
+        self.s.submit(d.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4798,7 +4763,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         self.go('/pakistan/results?query=_test_given+_test_family')
         self.verify_results_page(1)
-        first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
+        first_title = self.s.doc.first(class_='resultDataTitle').content
         assert '_test_given' in first_title
         assert '_test_family' not in first_title
         person.delete()
@@ -4807,33 +4772,29 @@ _feed_profile_url2</pfif:profile_urls>
     def test_config_family_name_first(self):
         # family_name_first=True
         doc = self.go('/japan/create?lang=en')
-        given_label = doc.xpath_one('//label[@for="given_name"]')
-        family_label = doc.xpath_one('//label[@for="family_name"]')
+        given_label = doc.first('label', for_='given_name')
+        family_label = doc.first('label', for_='family_name')
         assert given_label.text.strip() == 'Given name (required):'
         assert family_label.text.strip() == 'Family name (required):'
-        assert family_label.sourceline < given_label.sourceline
+        assert family_label.start < given_label.start
 
-        given_input = doc.xpath_one('//input[@name="given_name"]')
-        family_input = doc.xpath_one('//input[@name="family_name"]')
-        assert family_input.sourceline < given_input.sourceline
+        given_input = doc.firsttag('input', name='given_name')
+        family_input = doc.firsttag('input', name='family_name')
+        assert family_input.start < given_input.start
 
-        alternate_given_label = doc.xpath_one(
-                '//label[@for="alternate_given_names"]')
-        alternate_family_label = doc.xpath_one(
-                '//label[@for="alternate_family_names"]')
+        alternate_given_label = doc.first('label', for_='alternate_given_names')
+        alternate_family_label = doc.first('label', for_='alternate_family_names')
         assert alternate_given_label.text.strip() == 'Alternate given names:'
         assert alternate_family_label.text.strip() == 'Alternate family names:'
-        assert (alternate_family_label.sourceline <
-                alternate_given_label.sourceline)
+        assert alternate_family_label.start < alternate_given_label.start
 
-        alternate_given_input = doc.xpath_one(
-            '//input[@name="alternate_given_names"]')
-        alternate_family_input = doc.xpath_one(
-            '//input[@name="alternate_family_names"]')
-        assert (alternate_family_input.sourceline <
-                alternate_given_input.sourceline)
+        alternate_given_input = doc.firsttag(
+            'input', name='alternate_given_names')
+        alternate_family_input = doc.firsttag(
+            'input', name='alternate_family_names')
+        assert alternate_family_input.start < alternate_given_input.start
 
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4856,33 +4817,29 @@ _feed_profile_url2</pfif:profile_urls>
 
         # family_name_first=False
         doc = self.go('/haiti/create')
-        given_label = doc.xpath_one('//label[@for="given_name"]')
-        family_label = doc.xpath_one('//label[@for="family_name"]')
+        given_label = doc.first('label', for_='given_name')
+        family_label = doc.first('label', for_='family_name')
         assert given_label.text.strip() == 'Given name (required):'
         assert family_label.text.strip() == 'Family name (required):'
-        assert family_label.sourceline > given_label.sourceline
+        assert family_label.start > given_label.start
 
-        given_input = doc.xpath_one('//input[@name="given_name"]')
-        family_input = doc.xpath_one('//input[@name="family_name"]')
-        assert family_input.sourceline > given_input.sourceline
+        given_input = doc.firsttag('input', name='given_name')
+        family_input = doc.firsttag('input', name='family_name')
+        assert family_input.start > given_input.start
 
-        alternate_given_label = doc.xpath_one(
-                '//label[@for="alternate_given_names"]')
-        alternate_family_label = doc.xpath_one(
-                '//label[@for="alternate_family_names"]')
+        alternate_given_label = doc.first('label', for_='alternate_given_names')
+        alternate_family_label = doc.first('label', for_='alternate_family_names')
         assert alternate_given_label.text.strip() == 'Alternate given names:'
         assert alternate_family_label.text.strip() == 'Alternate family names:'
-        assert (alternate_family_label.sourceline >
-                alternate_given_label.sourceline)
+        assert alternate_family_label.start > alternate_given_label.start
 
-        alternate_given_input = doc.xpath_one(
-            '//input[@name="alternate_given_names"]')
-        alternate_family_input = doc.xpath_one(
-            '//input[@name="alternate_family_names"]')
-        assert (alternate_family_input.sourceline >
-                alternate_given_input.sourceline)
+        alternate_given_input = doc.firsttag(
+            'input', name='alternate_given_names')
+        alternate_family_input = doc.firsttag(
+            'input', name='alternate_family_names')
+        assert alternate_family_input.start > alternate_given_input.start
 
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4906,16 +4863,14 @@ _feed_profile_url2</pfif:profile_urls>
         # use_alternate_names=True
         config.set_for_repo('haiti', use_alternate_names=True)
         d = self.go('/haiti/create')
-        assert d.xpath_one(
-                '//label[@for="alternate_given_names"]').text.strip() == \
-                        'Alternate given names:'
-        assert d.xpath_one(
-                '//label[@for="alternate_family_names"]').text.strip() == \
-                        'Alternate family names:'
-        assert d.xpath('//input[@name="alternate_given_names"]')
-        assert d.xpath('//input[@name="alternate_family_names"]')
+        assert d.first('label', for_='alternate_given_names').text.strip() == \
+            'Alternate given names:'
+        assert d.first('label', for_='alternate_family_names').text.strip() == \
+            'Alternate family names:'
+        assert d.firsttag('input', name='alternate_given_names')
+        assert d.firsttag('input', name='alternate_family_names')
 
-        self.s.submit(d.cssselect_one('form'),
+        self.s.submit(d.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4937,14 +4892,14 @@ _feed_profile_url2</pfif:profile_urls>
         # use_alternate_names=False
         config.set_for_repo('pakistan', use_alternate_names=False)
         d = self.go('/pakistan/create')
-        assert not d.xpath('//label[@for="alternate_given_names"]')
-        assert not d.xpath('//label[@for="alternate_family_names"]')
-        assert not d.xpath('//input[@name="alternate_given_names"]')
-        assert not d.xpath('//input[@name="alternate_family_names"]')
+        assert not d.all('label', for_='alternate_given_names')
+        assert not d.all('label', for_='alternate_family_names')
+        assert not d.alltags('input', name='alternate_given_names')
+        assert not d.alltags('input', name='alternate_family_names')
         assert 'Alternate given names' not in d.text
         assert 'Alternate family names' not in d.text
 
-        self.s.submit(d.cssselect_one('form'),
+        self.s.submit(d.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4961,7 +4916,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         self.go('/pakistan/results?query=_test_given+_test_family')
         self.verify_results_page(1)
-        first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
+        first_title = self.s.doc.first(class_='resultDataTitle').content
         assert '_test_given' in first_title
         assert '_test_alternate_given' not in first_title
         assert '_test_alternate_family' not in first_title
@@ -4972,7 +4927,7 @@ _feed_profile_url2</pfif:profile_urls>
         # allow_believed_dead_via_ui=True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/haiti/create')
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4983,7 +4938,7 @@ _feed_profile_url2</pfif:profile_urls>
         # allow_believed_dead_via_ui=False
         config.set_for_repo('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/japan/create')
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4995,10 +4950,10 @@ _feed_profile_url2</pfif:profile_urls>
     def test_config_use_postal_code(self):
         # use_postal_code=True
         doc = self.go('/haiti/create')
-        assert doc.xpath('//label[@for="home_postal_code"]')
-        assert doc.xpath('//input[@name="home_postal_code"]')
+        assert doc.first('label', for_='home_postal_code')
+        assert doc.firsttag('input', name='home_postal_code')
 
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5011,10 +4966,10 @@ _feed_profile_url2</pfif:profile_urls>
 
         # use_postal_code=False
         doc = self.go('/pakistan/create')
-        assert not doc.xpath('//label[@for="home_postal_code"]')
-        assert not doc.xpath('//input[@name="home_postal_code"]')
+        assert not doc.all('label', for_='home_postal_code')
+        assert not doc.alltags('input', name='home_postal_code')
 
-        self.s.submit(doc.cssselect_one('form'),
+        self.s.submit(doc.first('form'),
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5071,15 +5026,14 @@ _feed_profile_url2</pfif:profile_urls>
         self.go('/haiti?lang=ja&charsets=shift_jis')
         query_page = self.s.follow(ja_i_have_info)
         assert_params()
-        query_form = query_page.cssselect_one('form')
+        query_form = query_page.first('form')
 
         # Input a given name and a family name.
-        create_page = self.s.submit(
-                query_form,
-                given_name=test_given_name,
-                family_name=test_family_name)
+        create_page = self.s.submit(query_form,
+                      given_name=test_given_name,
+                      family_name=test_family_name)
         assert_params()
-        create_form = create_page.cssselect_one('form')
+        create_form = create_page.first('form')
 
         # Submit a person record.
         self.s.submit(create_form,
@@ -5095,7 +5049,7 @@ _feed_profile_url2</pfif:profile_urls>
         self.go('/haiti?lang=ja&charsets=shift_jis')
         search_page = self.s.follow(ja_looking_for_someone)
         assert_params()
-        search_form = search_page.cssselect_one('form')
+        search_form = search_page.first('form')
 
         # Search for the record just submitted.
         self.s.submit(
@@ -5121,10 +5075,12 @@ _feed_profile_url2</pfif:profile_urls>
         """Test that Document.cssselect works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert (doc.cssselect('a.repo')[0].text.strip()
+            == 'Haiti Earthquake')
 
     def test_xpath(self):
         """Test that Document.xpath works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert (doc.xpath("//a[@class='repo']")[0].text.strip()
+            == 'Haiti Earthquake')

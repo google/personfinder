@@ -132,54 +132,60 @@ class ReadOnlyTests(ServerTestsBase):
         """Checks that pages are delivered in the requested charset."""
 
         # Try with no specified charset.
-        doc = self.go('/haiti?lang=ja')
+        doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
-        assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
-                doc.content_bytes)
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
         # Try with a specific requested charset.
-        doc = self.go('/haiti?lang=ja&charsets=shift_jis')
+        doc = self.go('/haiti?lang=ja&charsets=shift_jis',
+                      charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
-        assert 'content="text/html; charset=shift_jis"' in doc.content
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that spelling of charset is preserved.
-        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS')
+        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
+                      charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
-        assert 'content="text/html; charset=Shift-JIS"' in doc.content
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that UTF-8 takes precedence.
-        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8')
+        doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
+                      charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=utf-8'
         # UTF-8 encoding of title text
-        assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
-                doc.content_bytes)
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
     def test_kddi_charsets(self):
         """Checks that pages are delivered in Shift_JIS if the user agent is a
         feature phone by KDDI."""
         self.s.agent = 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0'
-        doc = self.go('/haiti?lang=ja')
+        doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
-        assert 'content="text/html; charset=Shift_JIS"' in doc.content
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=Shift_JIS'
         # Shift_JIS encoding of title text
-        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
         
     def test_query(self):
         """Check the query page."""
         doc = self.go('/haiti/query')
-        button = doc.xpath_one('//input[@type="submit"]')
-        assert button.get('value') == 'Search for this person'
+        button = doc.firsttag('input', type='submit')
+        assert button['value'] == 'Search for this person'
 
         doc = self.go('/haiti/query?role=provide')
-        button = doc.xpath_one('//input[@type="submit"]')
-        assert button.get('value') == 'Provide information about this person'
+        button = doc.firsttag('input', type='submit')
+        assert button['value'] == 'Provide information about this person'
 
     def test_results(self):
         """Check the results page."""
@@ -220,71 +226,72 @@ class ReadOnlyTests(ServerTestsBase):
             'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
         ]
         doc = self.go('/haiti/create?' + '&'.join(params))
-        tag = doc.xpath_one('//input[@name="family_name"]')
-        assert tag.get('value') == '__FAMILY_NAME__'
+        tag = doc.firsttag('input', name='family_name')
+        assert tag['value'] == '__FAMILY_NAME__'
 
-        tag = doc.xpath_one('//input[@name="given_name"]')
-        assert tag.get('value') == '__GIVEN_NAME__'
+        tag = doc.firsttag('input', name='given_name')
+        assert tag['value'] == '__GIVEN_NAME__'
 
-        tag = doc.xpath_one('//input[@name="home_street"]')
-        assert tag.get('value') == '__HOME_STREET__'
+        tag = doc.firsttag('input', name='home_street')
+        assert tag['value'] == '__HOME_STREET__'
 
-        tag = doc.xpath_one('//input[@name="home_neighborhood"]')
-        assert tag.get('value') == '__HOME_NEIGHBORHOOD__'
+        tag = doc.firsttag('input', name='home_neighborhood')
+        assert tag['value'] == '__HOME_NEIGHBORHOOD__'
 
-        tag = doc.xpath_one('//input[@name="home_city"]')
-        assert tag.get('value') == '__HOME_CITY__'
+        tag = doc.firsttag('input', name='home_city')
+        assert tag['value'] == '__HOME_CITY__'
 
-        tag = doc.xpath_one('//input[@name="home_state"]')
-        assert tag.get('value') == '__HOME_STATE__'
+        tag = doc.firsttag('input', name='home_state')
+        assert tag['value'] == '__HOME_STATE__'
 
-        tag = doc.xpath_one('//input[@name="home_postal_code"]')
-        assert tag.get('value') == '__HOME_POSTAL_CODE__'
+        tag = doc.firsttag('input', name='home_postal_code')
+        assert tag['value'] == '__HOME_POSTAL_CODE__'
 
-        tag = doc.xpath_one('//textarea[@name="description"]')
+        tag = doc.first('textarea', name='description')
         assert tag.text == '__DESCRIPTION__'
 
-        tag = doc.xpath_one('//input[@name="photo_url"]')
-        assert tag.get('value') == '__PHOTO_URL__'
+        tag = doc.firsttag('input', name='photo_url')
+        assert tag['value'] == '__PHOTO_URL__'
 
-        tag = doc.cssselect_one('input#clone_yes')
-        assert tag.get('checked') == 'checked'
+        tag = doc.firsttag('input', id='clone_yes')
+        assert tag['checked'] == 'checked'
 
-        tag = doc.xpath_one('//input[@name="author_name"]')
-        assert tag.get('value') == '__AUTHOR_NAME__'
+        tag = doc.firsttag('input', name='author_name')
+        assert tag['value'] == '__AUTHOR_NAME__'
 
-        tag = doc.xpath_one('//input[@name="author_phone"]')
-        assert tag.get('value') == '__AUTHOR_PHONE__'
+        tag = doc.firsttag('input', name='author_phone')
+        assert tag['value'] == '__AUTHOR_PHONE__'
 
-        tag = doc.xpath_one('//input[@name="author_email"]')
-        assert tag.get('value') == '__AUTHOR_EMAIL__'
+        tag = doc.firsttag('input', name='author_email')
+        assert tag['value'] == '__AUTHOR_EMAIL__'
 
-        tag = doc.xpath_one('//input[@name="source_url"]')
-        assert tag.get('value') == '__SOURCE_URL__'
+        tag = doc.firsttag('input', name='source_url')
+        assert tag['value'] == '__SOURCE_URL__'
 
-        tag = doc.xpath_one('//input[@name="source_date"]')
-        assert tag.get('value') == '__SOURCE_DATE__'
+        tag = doc.firsttag('input', name='source_date')
+        assert tag['value'] == '__SOURCE_DATE__'
 
-        tag = doc.xpath_one('//input[@name="source_name"]')
-        assert tag.get('value') == '__SOURCE_NAME__'
+        tag = doc.firsttag('input', name='source_name')
+        assert tag['value'] == '__SOURCE_NAME__'
 
-        tag = doc.xpath_one('//option[@value="believed_alive"]')
-        assert tag.get('selected') == 'selected'
+        tag = doc.first('select', name='status')
+        tag = doc.firsttag('option', value='believed_alive')
+        assert tag['selected'] == 'selected'
 
-        tag = doc.xpath_one('//textarea[@name="text"]')
+        tag = doc.first('textarea', name='text')
         assert tag.text == '__TEXT__'
 
-        tag = doc.xpath_one('//textarea[@name="last_known_location"]')
+        tag = doc.first('textarea', name='last_known_location')
         assert tag.text == '__LAST_KNOWN_LOCATION__'
 
-        tag = doc.cssselect_one('input#author_made_contact_yes')
-        assert tag.get('checked') == 'checked'
+        tag = doc.firsttag('input', id='author_made_contact_yes')
+        assert tag['checked'] == 'checked'
 
-        tag = doc.xpath_one('//input[@name="phone_of_found_person"]')
-        assert tag.get('value') == '__PHONE_OF_FOUND_PERSON__'
+        tag = doc.firsttag('input', name='phone_of_found_person')
+        assert tag['value'] == '__PHONE_OF_FOUND_PERSON__'
 
-        tag = doc.xpath_one('//input[@name="email_of_found_person"]')
-        assert tag.get('value') == '__EMAIL_OF_FOUND_PERSON__'
+        tag = doc.firsttag('input', name='email_of_found_person')
+        assert tag['value'] == '__EMAIL_OF_FOUND_PERSON__'
 
     def test_view(self):
         """Check the view page."""
@@ -305,7 +312,7 @@ class ReadOnlyTests(ServerTestsBase):
         """Check that the static files are accessible."""
         doc = self.go('/static/no-photo.gif')
         self.assertEqual(self.s.status, 200)
-        assert doc.content_bytes.startswith('GIF89a')
+        assert doc.content.startswith('GIF89a')
 
     def test_embed(self):
         """Check the embed page."""
@@ -328,49 +335,46 @@ class ReadOnlyTests(ServerTestsBase):
 
     def test_config_repo_titles(self):
         doc = self.go('/haiti')
-        assert 'Haiti Earthquake' in scrape.get_all_text(
-                doc.cssselect_one('h1'))
+        assert 'Haiti Earthquake' in doc.first('h1').text
 
         doc = self.go('/pakistan')
-        assert 'Pakistan Floods' in scrape.get_all_text(doc.cssselect_one('h1'))
+        assert 'Pakistan Floods' in doc.first('h1').text
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')
-        select = doc.cssselect_one('select#language_picker')
-        options = select.cssselect('option')
+        select = doc.first('select', id='language_picker')
+        options = select.all('option')
 
         # It first lists languages in the repository config.
         # These are set in setup_configs() in setup_pf.py.
-        assert options[0].text.strip() == u'English'  # en
-        assert options[1].text.strip() == u'Krey\xf2l'  # ht
-        assert options[2].text.strip() == u'Fran\xe7ais'  # fr
-        assert options[3].text.strip() == u'espa\u00F1ol'  # es
+        assert options[0].text == u'English'  # en
+        assert options[1].text == u'Krey\xf2l'  # ht
+        assert options[2].text == u'Fran\xe7ais'  # fr
+        assert options[3].text == u'espa\u00F1ol'  # es
 
         # All other languages follow.
-        assert select.xpath('//option[normalize-space(.)="%s"]' %
-                u'\u0627\u0631\u062F\u0648')  # ur
+        assert select.first('option', u'\u0627\u0631\u062F\u0648')  # ur
 
         doc = self.go('/pakistan')
-        select = doc.cssselect_one('select#language_picker')
-        options = select.cssselect('option')
+        select = doc.first('select', id='language_picker')
+        options = select.all('option')
 
         # It first lists languages in the repository config.
         # These are set in setup_configs() in setup_pf.py.
-        assert options[0].text.strip() == u'English'  # en
-        assert options[1].text.strip() == u'\u0627\u0631\u062F\u0648'  # ur
+        assert options[0].text == u'English'  # en
+        assert options[1].text == u'\u0627\u0631\u062F\u0648'  # ur
 
         # All other languages follow.
-        assert select.xpath('//option[normalize-space(.)="%s"]' %
-                u'Fran\xe7ais')  # fr
+        assert select.first('option', u'Fran\xe7ais')  # fr
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
-        meta = doc.xpath_one('//meta[@name="keywords"]')
-        assert 'tremblement' in meta.get('content')
+        meta = doc.firsttag('meta', name='keywords')
+        assert 'tremblement' in meta['content']
 
         doc = self.go('/pakistan')
-        meta = doc.xpath_one('//meta[@name="keywords"]')
-        assert 'pakistan flood' in meta.get('content')
+        meta = doc.firsttag('meta', name='keywords')
+        assert 'pakistan flood' in meta['content']
 
     def test_css(self):
         """Check that the CSS files are accessible."""

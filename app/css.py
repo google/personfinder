@@ -22,7 +22,7 @@ class Handler(BaseHandler):
     ignore_deactivation = True
 
     def get(self):
-        self.response.headers['Content-Type'] = 'text/css; charset=utf-8'
+        self.response.headers['Content-Type'] = 'text/css'
         if self.env.ui in ['small', 'light']:
             template_name = 'css-%s' % self.env.ui
         else:
