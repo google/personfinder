@@ -70,7 +70,8 @@ class Handler(utils.BaseHandler):
         try:
             response = urlfetch.fetch(url, headers=headers, deadline=60)
             if response.status_code == 200:
-                self.response.headers['Content-Type'] = 'application/json'
+                self.response.headers['Content-Type'] = (
+                        'application/json; charset=utf-8')
                 self.write(response.content)
             else:
                 self.response.set_status(response.status_code)

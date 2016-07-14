@@ -339,7 +339,7 @@ class Read(utils.BaseHandler):
         notes = model.Note.get_by_person_record_id(self.repo, record_id)
         notes = [note for note in notes if not note.hidden]
 
-        self.response.headers['Content-Type'] = 'application/xml'
+        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
         records = [pfif_version.person_to_dict(person, person.is_expired)]
         note_records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -381,7 +381,7 @@ class PhotoUpload(utils.BaseHandler):
         # So feel free to use it right away!
         photo.put()
 
-        self.response.headers['Content-Type'] = 'application/xml'
+        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
         self.write('<?xml version="1.0"?>\n')
         self.write('<response><url>')
         self.write(django.utils.html.escape(photo_url))
@@ -411,9 +411,11 @@ class Write(utils.BaseHandler):
         believed_dead_permission = bool(
             self.auth.believed_dead_permission)
 
-        self.response.headers['Content-Type'] = 'application/xml'
+        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
         self.write('<?xml version="1.0"?>\n')
-        self.write('<status:status>\n')
+        self.write('<status:status ' +
+                'xmlns:status="http://zesty.ca/pfif/1.4/status" ' +
+                'xmlns:pfif="http://zesty.ca/pfif/1.4">\n')
 
         create_person = importer.create_person
         num_people_written, people_skipped, total = importer.import_records(
@@ -516,7 +518,7 @@ class Search(utils.BaseHandler):
             utils.optionally_filter_sensitive_fields(records, self.auth)
             return records
 
-        self.response.headers['Content-Type'] = 'application/xml'
+        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
@@ -604,7 +606,8 @@ class Stats(utils.BaseHandler):
             ).filter('hidden =', True
             ).order('-entry_date')))
 
-        self.response.headers['Content-Type'] = 'application/json'
+        self.response.headers['Content-Type'] = (
+                'application/json; charset=utf-8')
         self.write(simplejson.dumps({'person': person_counts,
                                      'note': note_counts}))
 
@@ -742,7 +745,7 @@ class HandleSMS(utils.BaseHandler):
         # languages.
         ascii_response = unidecode(u' ## '.join(responses))
 
-        self.response.headers['Content-Type'] = 'application/xml'
+        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
         self.write(
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<response>\n'
