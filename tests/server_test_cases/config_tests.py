@@ -67,9 +67,9 @@ class ConfigTests(ServerTestsBase):
         self.go('/haiti?lang=en&flush=config')
 
     def get_admin_page_error_message(self):
-        error_div = self.s.doc.first('div', class_='error')
-        if error_div:
-            return 'Error message: %s' % error_div.text
+        error_divs = self.s.doc.cssselect('div.error')
+        if error_divs:
+            return 'Error message: %s' % error_divs[0].text
         else:
             return 'Whole page HTML:\n%s' % self.s.doc.content
 
@@ -139,12 +139,12 @@ class ConfigTests(ServerTestsBase):
 
         # Activate a new repository.
         assert not Repo.get_by_key_name('xyz')
-        create_form = doc.first('form', id='create_repo')
+        create_form = doc.cssselect_one('form#create_repo')
         doc = self.s.submit(create_form, new_repo='xyz')
         assert Repo.get_by_key_name('xyz')
 
         # Change some settings for the new repository.
-        settings_form = doc.first('form', id='save_repo')
+        settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["no"]',
             repo_titles='{"no": "Jordskjelv"}',
@@ -193,7 +193,7 @@ class ConfigTests(ServerTestsBase):
         self.advance_utcnow(seconds=1)
 
         # Change settings again and make sure they took effect.
-        settings_form = doc.first('form', id='save_repo')
+        settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["nl"]',
             repo_titles='{"nl": "Aardbeving"}',
@@ -244,13 +244,13 @@ class ConfigTests(ServerTestsBase):
         # Verifies that there is a javascript constant with languages in it
         # (for the dropdown); thus, a language that is NOT used but IS
         # supported should appear
-        assert self.s.doc.find('bg')
-        assert self.s.doc.find('Bulgarian')
+        assert 'bg' in doc.content
+        assert 'Bulgarian' in doc.content
 
         # Verifies that there is a javascript constant with the previously
         # saved languages and titles in it
-        assert self.s.doc.find('nl')
-        assert self.s.doc.find('Aardbeving')
+        assert 'nl' in doc.content
+        assert 'Aardbeving' in doc.content
 
     def test_global_admin_page(self):
         # Load the global administration page.
@@ -258,7 +258,7 @@ class ConfigTests(ServerTestsBase):
         assert self.s.status == 200
 
         # Change some settings.
-        settings_form = doc.first('form', id='save_global')
+        settings_form = doc.cssselect_one('form#save_global')
         doc = self.s.submit(settings_form,
             sms_number_to_repo=
                 '{"+198765432109": "haiti", "+8101234567890": "japan"}'
@@ -269,7 +269,7 @@ class ConfigTests(ServerTestsBase):
         doc = self.go_as_admin('/global/admin')
         assert self.s.status == 200
         assert (simplejson.loads(
-                    doc.first('textarea', id='sms_number_to_repo').text) ==
+                    doc.cssselect_one('textarea#sms_number_to_repo').text) ==
                 {'+198765432109': 'haiti', '+8101234567890': 'japan'})
 
         # Also check if the change took effect in the config.
@@ -277,7 +277,7 @@ class ConfigTests(ServerTestsBase):
             {'+198765432109': 'haiti', '+8101234567890': 'japan'})
 
         # Change settings again and make sure they took effect.
-        settings_form = doc.first('form', id='save_global')
+        settings_form = doc.cssselect_one('form#save_global')
         doc = self.s.submit(settings_form,
             sms_number_to_repo=
                 '{"+198765432109": "test", "+8101234567890": "japan"}'
@@ -296,7 +296,7 @@ class ConfigTests(ServerTestsBase):
         self.advance_utcnow(seconds=1)
 
         # Deactivate an existing repository.
-        settings_form = doc.first('form', id='save_repo')
+        settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
@@ -325,10 +325,10 @@ class ConfigTests(ServerTestsBase):
             doc = self.go('/haiti%s' % path)
             assert 'de<i>acti</i>vated' in doc.content, \
                 'path: %s, content: %s' % (path, doc.content)
-            assert doc.alltags('form') == []
-            assert doc.alltags('input') == []
-            assert doc.alltags('table') == []
-            assert doc.alltags('td') == []
+            assert not doc.cssselect('form')
+            assert not doc.cssselect('input')
+            assert not doc.cssselect('table')
+            assert not doc.cssselect('td')
 
     def test_the_test_mode(self):
         HTML_PATHS = ['', '/query', '/results', '/create', '/view',
@@ -349,7 +349,7 @@ class ConfigTests(ServerTestsBase):
         self.advance_utcnow(seconds=1)
 
         # Enable test-mode for an existing repository.
-        settings_form = doc.first('form', id='save_repo')
+        settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
@@ -378,7 +378,7 @@ class ConfigTests(ServerTestsBase):
         assert self.s.status == 200
 
         # Edit the custom text fields
-        settings_form = doc.first('form', id='save_repo')
+        settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',

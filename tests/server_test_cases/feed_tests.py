@@ -84,7 +84,7 @@ class FeedTests(ServerTestsBase):
 
     def test_repo_feed_activated_repo(self):
         doc = self.go('/haiti/feeds/repo')
-        expected_content = '''\
+        expected_content = u'''\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
@@ -134,7 +134,7 @@ class FeedTests(ServerTestsBase):
         # which are 'launched' and not 'deactivated' i.e., only 'japan' should
         # appear in the feed.
         doc = self.go('/global/feeds/repo')
-        expected_content = '''\
+        expected_content = u'''\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
