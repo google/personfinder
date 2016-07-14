@@ -95,74 +95,77 @@ class ResourceTests(ServerTestsBase):
         bundle = ResourceBundle(key_name='1')
         Resource(parent=bundle, key_name='foo.txt', content='hello').put()
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'hello'
+        assert doc.content_bytes == 'hello'
 
         # Add a localized Resource.
         fr_key = Resource(parent=bundle, key_name='foo.txt:fr',
                           content='bonjour').put()
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'hello'  # original Resource remains cached
+        assert doc.content_bytes == 'hello'  # original Resource remains cached
 
         # The cached version should expire after 1 second.
         self.advance_utcnow(seconds=1.1)
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'
+        assert doc.content_bytes == 'bonjour'
 
         # Change the non-localized Resource.
         Resource(parent=bundle, key_name='foo.txt', content='goodbye').put()
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'  # no effect on the localized Resource
+        assert doc.content_bytes == 'bonjour'
+                # no effect on the localized Resource
 
         # Remove the localized Resource.
         db.delete(fr_key)
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'bonjour'  # localized Resource remains cached
+        assert doc.content_bytes == 'bonjour'
+                # localized Resource remains cached
 
         # The cached version should expire after 1 second.
         self.advance_utcnow(seconds=1.1)
         doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content == 'goodbye'
+        assert doc.content_bytes == 'goodbye'
 
     def test_admin_resources(self):
         # Verify that the bundle listing loads.
         doc = self.go_as_admin('/global/admin/resources')
 
         # Add a new bundle (redirects to the new bundle's resource listing).
-        doc = self.s.submit(doc.last('form'), resource_bundle='xyz')
-        assert doc.first('a', class_='sel', content='Bundle: xyz')
+        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='xyz')
+        assert doc.cssselect_one('a.sel').text == 'Bundle: xyz'
         bundle = ResourceBundle.get_by_key_name('xyz')
-        assert(bundle)
+        assert bundle
 
         # Add a resource (redirects to the resource's edit page).
-        doc = self.s.submit(doc.first('form'), resource_name='abc')
-        assert doc.first('a', class_='sel', content='Resource: abc')
+        doc = self.s.submit(doc.cssselect('form')[0], resource_name='abc')
+        assert doc.cssselect_one('a.sel').text == 'Resource: abc'
 
         # The new Resource shouldn't exist in the datastore until it is saved.
         assert not Resource.get_by_key_name('abc', parent=bundle)
 
         # Enter some content for the resource.
-        doc = self.s.submit(doc.first('form'), content='pqr')
+        doc = self.s.submit(doc.cssselect('form')[0], content='pqr')
         assert Resource.get_by_key_name('abc', parent=bundle).content == 'pqr'
 
         # Use the breadcrumb navigation bar to go back to the resource listing.
         doc = self.s.follow('Bundle: xyz')
 
         # Add a localized variant of the resource.
-        row = doc.first('td', content='abc').enclosing('tr')
-        doc = self.s.submit(row.first('form'), resource_lang='pl')
-        assert doc.first('a', class_='sel', content='pl: Polish')
+        row = doc.xpath_one('//tr[td[normalize-space(.)="abc"]]')
+        doc = self.s.submit(row.cssselect('form')[0], resource_lang='pl')
+        assert doc.cssselect_one('a.sel').text == 'pl: Polish'
 
         # Enter some content for the localized resource.
-        doc = self.s.submit(doc.first('form'), content='jk')
+        doc = self.s.submit(doc.cssselect('form')[0], content='jk')
         assert Resource.get_by_key_name('abc:pl', parent=bundle).content == 'jk'
 
         # Confirm that both the generic and localized resource are listed.
         doc = self.s.follow('Bundle: xyz')
-        assert doc.first('a', class_='resource', content='abc')
-        assert doc.first('a', class_='resource', content='pl')
+        resource_texts = [a.text for a in doc.cssselect('a.resource')]
+        assert 'abc' in resource_texts
+        assert 'pl' in resource_texts
 
         # Copy all the resources to a new bundle.
-        doc = self.s.submit(doc.last('form'), resource_bundle='zzz',
+        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='zzz',
                             resource_bundle_original='xyz')
         parent = ResourceBundle.get_by_key_name('zzz')
         assert Resource.get_by_key_name('abc', parent=parent).content == 'pqr'
@@ -173,28 +176,30 @@ class ResourceTests(ServerTestsBase):
         assert(bundle)
         doc = self.go_as_admin('/global/admin/resources')
         doc = self.s.follow('1 (default)')
-        self.s.submit(doc.first('form'), resource_name='abc')
+        self.s.submit(doc.cssselect('form')[0], resource_name='abc')
         assert not Resource.get_by_key_name('abc', parent=bundle)
 
         # Verify that we can't edit a resource in the default bundle.
         self.s.back()
         doc = self.s.follow('base.html.template')
-        self.s.submit(doc.first('form'), content='xyz')
+        self.s.submit(doc.cssselect('form')[0], content='xyz')
         assert not Resource.get_by_key_name('base.html.template', parent=bundle)
 
         # Verify that we can't copy resources into the default bundle.
         doc = self.go_as_admin('/global/admin/resources')
         doc = self.s.follow('xyz')
-        doc = self.s.submit(doc.last('form'), resource_bundle='1',
+        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='1',
                             resource_bundle_original='xyz')
         assert not Resource.get_by_key_name('abc', parent=bundle)
 
         # Switch the default bundle version.
         doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.submit(doc.first('form'), resource_bundle_default='xyz')
+        doc = self.s.submit(
+                doc.cssselect('form')[0], resource_bundle_default='xyz')
         assert 'xyz (default)' in doc.text
         # Undo.
-        doc = self.s.submit(doc.first('form'), resource_bundle_default='1')
+        doc = self.s.submit(
+                doc.cssselect('form')[0], resource_bundle_default='1')
         assert '1 (default)' in doc.text
 
 
