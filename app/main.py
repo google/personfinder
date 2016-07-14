@@ -577,9 +577,7 @@ class Main(webapp.RequestHandler):
                 response.out.write('Not found')
             else:
                 content_type, encoding = mimetypes.guess_type(env.action)
-                response.headers['Content-Type'] = (
-                        (content_type or 'text/plain') +
-                        ('; charset=%s' % encoding if encoding else ''))
+                response.headers['Content-Type'] = content_type or 'text/plain'
                 response.out.write(content)
 
     def get(self):

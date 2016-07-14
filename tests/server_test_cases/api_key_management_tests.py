@@ -96,7 +96,7 @@ from server_tests_base import ServerTestsBase
 #        doc = self.go_as_operator(url)
 #        assert self.s.status == 200
 #        assert 'API Key Management' in doc.text
-#        form = doc.cssselect_one('form#create-or-update-api-key')
+#        form = doc.first('form', id='create-or-update-api-key')
 #        contact_name = 'Test User'
 #        contact_email = 'user@example.com'
 #        organization_name = 'Example, Inc.'
@@ -144,7 +144,7 @@ from server_tests_base import ServerTestsBase
 #        doc = self.go_as_admin(url)
 #        assert self.s.status == 200
 #        assert 'Listing API keys for japan' in doc.text
-#        form = doc.cssselect_one('form')
+#        form = doc.first('form')
 #        doc = self.s.submit(form)
 #        assert self.s.status == 200
 #        assert 'Detailed information of an API key for japan' in doc.text
@@ -154,7 +154,7 @@ from server_tests_base import ServerTestsBase
 #        contact_email = 'user@example.jp'
 #        organization_name = 'Example, Corp.'
 #
-#        form = doc.cssselect_one('form')
+#        form = doc.first('form')
 #        doc = self.s.submit(
 #            form,
 #            contact_name=contact_name,

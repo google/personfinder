@@ -56,7 +56,7 @@ class Repo(utils.BaseHandler):
         if self.repo:
             repos = [self.repo] if self.repo in repos else []
 
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+        self.response.headers['Content-Type'] = 'application/xml'
         atom.REPO_1_0.write_feed(
             self.response.out, repos, self.request.url, self.TITLE,
             get_latest_repo_updated_date(repos))
@@ -106,7 +106,7 @@ class Person(utils.BaseHandler):
         persons = query.fetch(max_results, offset=skip)
         updated = get_latest_entry_date(persons)
 
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+        self.response.headers['Content-Type'] = 'application/xml'
         records = [pfif_version.person_to_dict(person, person.is_expired)
                    for person in persons]
         utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -161,7 +161,7 @@ class Note(utils.BaseHandler):
         # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
         make_hidden_notes_blank(notes)
 
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+        self.response.headers['Content-Type'] = 'application/xml'
         records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
         atom_version.write_note_feed(

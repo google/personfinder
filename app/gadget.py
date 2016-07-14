@@ -17,5 +17,5 @@ import utils
 
 class Handler(utils.BaseHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+        self.response.headers['Content-Type'] = 'application/xml'
         self.render('gadget.xml')
