@@ -67,9 +67,9 @@ class ConfigTests(ServerTestsBase):
         self.go('/haiti?lang=en&flush=config')
 
     def get_admin_page_error_message(self):
-        error_div = self.s.doc.cssselect('div.error')
-        if error_div:
-            return 'Error message: %s' % error_div[0].text
+        error_divs = self.s.doc.cssselect('div.error')
+        if error_divs:
+            return 'Error message: %s' % error_divs[0].text
         else:
             return 'Whole page HTML:\n%s' % self.s.doc.content
 
