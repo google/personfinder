@@ -145,6 +145,12 @@
         {% endif %}
         <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
             >{% trans "Terms of Service" %}</a>
+        {% if config.privacy_policy_url %}
+          <span class="link-separator">&#xb7;</span>
+          {# TODO(ichikawa) Proxy this in the same way as TOS. #}
+          <a href="{{config.privacy_policy_url}}"
+              {{env.target_attr|safe}}>{% trans "Privacy Policy" %}</a>
+        {% endif %}
       {% endblock footer %}
     </div>
 
