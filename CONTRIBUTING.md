@@ -25,34 +25,34 @@ use Github pull requests for this purpose.
 #### For Person Finder team members
 
 1. Make sure that you are [a member of the team](https://github.com/orgs/google/teams/personfinder). Ask @gimite to add you if you are not.
-1. Install hub commandline tool.
-    <br/>https://github.com/github/hub
-1. Find an issue to work on, or create a new one.
-   <br/>https://github.com/google/personfinder/issues
+1. Find an issue to work on, or create a new one, in [the issue list](https://github.com/google/personfinder/issues).
 1. Create a new branch, prefixed with your username.
    <br/>`$ git checkout -b $USER-your-new-feature`
 1. Make changes and commit. Repeat the step until you are ready for code review.
    <br/>`$ git commit -a`
+1. Make sure the unit tests and the server tests pass.
+   <br/>`$ tools/all_tests`
 1. Push your local changes to the remote repository.
    <br/>`$ git push -u origin $USER-your-new-feature`
-1. Create a new pull request. (-i is optional, but strongly encouraged.)
+1. Create a new pull request. If you go to https://github.com/google/personfinder, it should show a button to suggest creating a pull request for your branch. Or, you can install [hub commandline tool](https://github.com/github/hub) and run:
    <br/>`$ hub pull-request -i <issue #>`
+   <br/>(-i is optional, but strongly encouraged.)
 1. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
-   (@gimite or @skywhale as of 2015/10).
+   (@gimite as of 2016/8).
 
 #### For non-team members
 
-1. Find an issue to work on, or create a new one.
-   <br/>https://github.com/google/personfinder/issues
+1. Find an issue to work on, or create a new one, in [the issue list](https://github.com/google/personfinder/issues).
 1. Fork [google/personfinder project](https://github.com/google/personfinder) on Github.
 1. Make changes and push to your fork. Repeat the step until you are ready for code review.
    <br/>`$ git commit -a`
    <br/>`$ git push -u origin $YOUR_BRANCH`
+1. Make sure the unit tests and the server tests pass.
 1. Create a new pull request.
 1. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
-   (@gimite or @skywhale as of 2015/10).
+   (@gimite as of 2016/8).
 
 ### The small print
 Contributions made by corporations are covered by a different agreement than
