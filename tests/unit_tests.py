@@ -41,7 +41,7 @@ os.chdir(os.environ['APP_DIR'])
 import _pytest.config
 original_parse_setoption = _pytest.config.Parser.parse_setoption
 _pytest.config.Parser.parse_setoption = \
-    lambda *args: original_parse_setoption(*args) or [os.environ['TESTS_DIR']]
+    lambda *args, **kwargs: original_parse_setoption(*args, **kwargs) or [os.environ['TESTS_DIR']]
 
 # Run the tests, using sys.exit to set exit status (nonzero for failure).
 sys.exit(pytest.main())
