@@ -119,7 +119,16 @@
             {% trans "To delete your data, access Person Finder from your desktop." %}
             <br>
           {% endif %}
+
           {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+
+          {% if config.privacy_policy_url %}
+            {# TODO(ichikawa) Proxy this in the same way as TOS. #}
+            {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
+              Learn more about Google
+              <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>.
+            {% endblocktrans %}
+          {% endif %}
         {% endblock disclaimer %}
       </div>
 
@@ -145,12 +154,6 @@
         {% endif %}
         <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
             >{% trans "Terms of Service" %}</a>
-        {% if config.privacy_policy_url %}
-          <span class="link-separator">&#xb7;</span>
-          {# TODO(ichikawa) Proxy this in the same way as TOS. #}
-          <a href="{{config.privacy_policy_url}}"
-              {{env.target_attr|safe}}>{% trans "Privacy Policy" %}</a>
-        {% endif %}
       {% endblock footer %}
     </div>
 
