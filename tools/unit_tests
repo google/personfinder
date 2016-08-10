@@ -10,6 +10,10 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
+# Some tests assumes that the current directory is the root of the working
+# directory.
+cd "$(dirname $0)/.."
+
 echo
 echo "--- Running unit tests"
 TZ=UTC $PYTHON $TESTS_DIR/unit_tests.py --pyargs --tb=short "$@"
