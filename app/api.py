@@ -421,7 +421,7 @@ class Write(utils.BaseHandler):
         num_people_written, people_skipped, total = importer.import_records(
             self.repo, source_domain, create_person, person_records)
         self.write_status(
-            'person', num_people_written, people_skipped, total, 
+            'person', num_people_written, people_skipped, total,
             'person_record_id')
 
         create_note = importer.create_note
@@ -433,8 +433,8 @@ class Write(utils.BaseHandler):
             'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
         self.write('</status:status>\n')
-        utils.log_api_action(self, ApiActionLog.WRITE,          
-                             num_people_written, num_notes_written,  
+        utils.log_api_action(self, ApiActionLog.WRITE,
+                             num_people_written, num_notes_written,
                              len(people_skipped), len(notes_skipped))
 
 
@@ -729,7 +729,7 @@ class HandleSMS(utils.BaseHandler):
             person.update_from_note(note)
             db.put(person)
             model.UserActionLog.put_new('add', person, copy_properties=False)
-            responses.append(_('Added record for found person: %(person_name)s')
+            responses.append(_('Added a record for: %(person_name)s')
                 % {'person_name': name_string})
 
         else:
