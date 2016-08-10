@@ -14,7 +14,11 @@
 # limitations under the License.
 
 """Storage for configuration settings.  Settings can be global or specific
-to a repository, and their values can be of any JSON-encodable type."""
+to a repository, and their values can be of any JSON-encodable type.
+
+See here for usage examples:
+https://github.com/google/personfinder/wiki/DeveloperFaq
+"""
 
 from google.appengine.ext import db
 import UserDict, model, random, simplejson
