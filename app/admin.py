@@ -44,6 +44,7 @@ class Handler(BaseHandler):
                 (name, encoder.encode(value))
                 for name, value in view_config.iteritems())
         all_view_config_json = encoder.encode(view_config)
+
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
@@ -108,6 +109,8 @@ class Handler(BaseHandler):
                         'deactivation_message_html',
                         'keywords',
                         'launch_status',
+                        'admin_user_email',
+                        'thres_unreviewed_notes',
                     ],
                     # Update updated_date if any of the following settings are
                     # changed.
@@ -137,6 +140,7 @@ class Handler(BaseHandler):
             literal_config_names,
             updating_config_names=[]):
         values = {}
+
         for name in json_config_names:
             try:
                 values[name] = simplejson.loads(self.request.get(name))

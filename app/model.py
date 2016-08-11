@@ -629,6 +629,13 @@ class Note(Base):
             query.with_cursor(query.cursor())  # Continue where fetch left off.
             notes = query.fetch(Note.FETCH_LIMIT)
 
+    @staticmethod
+    def get_unreviewed_record_count(repo, filter_expired=True):
+        """Gets the number of unreviewed notes."""
+        query = Note.all_in_repo(repo, filter_expired=filter_expired
+            ).filter('reviewed =', False)
+        return query.count()
+
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
     spam_score = db.FloatProperty(default=0)

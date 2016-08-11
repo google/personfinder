@@ -25,6 +25,7 @@ from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
 import config
+import const
 import delete
 import model
 import utils
@@ -74,8 +75,7 @@ class ScanForExpired(utils.BaseHandler):
                     next_cursor = query.cursor()
                     was_expired = person.is_expired
                     person.put_expiry_flags()
-                    if (utils.get_utcnow() - person.get_effective_expiry_date()
-                        > EXPIRED_TTL):
+                    if (utils.get_utcnow() - person.get_effective_expiry_date() > EXPIRED_TTL):
                         person.wipe_contents()
                     else:
                         # treat this as a regular deletion.
@@ -111,6 +111,7 @@ class DeleteOld(ScanForExpired):
 
     def query(self):
         return model.Person.potentially_expired_records(self.repo)
+
 
 class CleanUpInTestMode(utils.BaseHandler):
     """If the repository is in "test mode", this task deletes all entries older
@@ -379,3 +380,65 @@ class Reindex(CountBase):
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])
         person.put()
+
+
+class NotifyBadReviewStatus(utils.BaseHandler):
+    """This task sends email notification when the number of unreviewed notes
+    exceeds threshold.
+    """
+    ACTION = 'tasks/notify_bad_review_status'
+
+    def task_name(self):
+        return 'notify-bad-review-status'
+
+    def get(self):
+        if self.repo:
+            try:
+                count_of_unreviewed_notes = \
+                    model.Note.unreviewed_record_count(self.repo)
+            except runtime.DeadlineExceededError:
+                logging.info("DeadlineExceededError occurs")
+                self.add_task_for_repo(
+                    self.repo, self.task_name(), self.ACTION)
+            except datastore_errors.Timeout:
+                logging.info("Timeout occurs in datastore")
+                self.add_task_for_repo(
+                    self.repo, self.task_name(), self.ACTION)
+            finally:
+                self._notify(count_of_unreviewed_notes)
+
+    def _notify(self, count_of_unreviewed_notes):
+        # TODO: Response should be modified
+        if self._is_ok_to_notify(count_of_unreviewed_notes):
+            self.send_mail(self._get_admin_user_email(),
+                           subject="PersonFinder: Please review your notes",
+                           body="{0} notes are not reviewed".format(
+                               count_of_unreviewed_notes))
+            return True
+        else:
+            return False
+
+    def _is_ok_to_notify(self, count_of_unreviewed_notes):
+        email = self._get_admin_user_email()
+        if not email:
+            return False
+
+        thres = self._get_thres_unreviewed_notes()
+        if count_of_unreviewed_notes >= thres:
+            return True
+        else:
+            return False
+
+    def _get_admin_user_email(self):
+        return self.config.get('admin_user_email')
+
+    def _get_thres_unreviewed_notes(self):
+        try:
+            return int(self.config.get('thres_unreviewed_notes'))
+        except (KeyError, ValueError, TypeError):
+            logging.info(
+                "'thres_unreviewed_notes' is not properly defined. " +
+                "Use DEFAULT_THRES_NUM_UNREVIEWED_NOTES({0}) instead".format(
+                    const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES
+                ))
+        return const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES

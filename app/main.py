@@ -138,6 +138,7 @@ HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
+HANDLER_CLASSES['tasks/notify_bad_review_status'] = 'tasks.NotifyBadReviewStatus'
 
 def is_development_server():
     """Returns True if the app is running in development."""

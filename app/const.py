@@ -302,3 +302,7 @@ DEFAULT_PROFILE_WEBSITES = [
         'url_regexp': 'https?://(www\\.)?linkedin\\.com/.*',
     },
 ]
+
+# The threshold for email notification to an admin user. When the number of
+# unreviewed notes is greater than this value, PF will send email notification.
+DEFAULT_THRES_NUM_UNREVIEWED_NOTES = 5

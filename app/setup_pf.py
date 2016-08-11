@@ -116,6 +116,8 @@ def setup_configs():
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
         published_date=get_timestamp(datetime(2010, 1, 12)),
         updated_date=get_timestamp(datetime(2010, 1, 12)),
+        admin_user_email=get_current_user_email(),
+        thres_unreviewed_notes=const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES,
     )
 
     config.set_for_repo(
@@ -154,6 +156,8 @@ def setup_configs():
         jp_mobile_carrier_redirect=True,
         published_date=get_timestamp(datetime(2011, 3, 11)),
         updated_date=get_timestamp(datetime(2011, 3, 11)),
+        admin_user_email=get_current_user_email(),
+        thres_unreviewed_notes=const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES,
     )
 
     config.set_for_repo(
@@ -183,7 +187,9 @@ def setup_configs():
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
         published_date=get_timestamp(datetime(2010, 8, 6)),
         updated_date=get_timestamp(datetime(2010, 8, 6)),
-    )
+        admin_user_email=get_current_user_email(),
+        thres_unreviewed_notes=const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES,    )
+
 
 def setup_lang_test_config():
     config.set_for_repo(
@@ -207,4 +213,6 @@ def setup_lang_test_config():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        admin_user_email=get_current_user_email(),
+        thres_unreviewed_notes=const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES,
     )

@@ -21,8 +21,10 @@ import calendar
 import datetime
 import logging
 import mox
+import os
 import sys
 import unittest
+import urllib
 import webob
 
 from google.appengine import runtime
@@ -30,23 +32,31 @@ from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
+from google.appengine.ext import testbed
 from google.appengine.ext import webapp
 
 import config
+import const
 import delete
 import model
 import tasks
 import test_handler
 from utils import get_utcnow, set_utcnow_for_test
 
+
+
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
-    def initialize_handler(self, handler_class):
-        return test_handler.initialize_handler(
-            handler_class, handler_class.ACTION)
-
     def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        self.testbed.init_user_stub()
+        self.testbed.init_datastore_v3_stub()
+        self.testbed.init_memcache_stub()
+        self.testbed.init_taskqueue_stub()
+        model.Repo(key_name='haiti').put()
+
         logging.basicConfig(level=logging.INFO, stream=sys.stderr)
         self.mox = None
 
@@ -101,17 +111,20 @@ class TasksTests(unittest.TestCase):
         self.to_delete = [self.p1, self.p2, self.n1_1, self.photo]
 
     def tearDown(self):
+        self.testbed.deactivate()
+
+        # TODO(yaboo@): delete below
         db.delete(self.to_delete)
         if self.mox:
             self.mox.UnsetStubs()
-
 
     def test_delete_expired(self):
         """Test the flagging and deletion of expired records."""
 
         def run_delete_expired_task():
             """Runs the DeleteExpired task."""
-            self.initialize_handler(tasks.DeleteExpired).get()
+            test_handler.initialize_handler(tasks.DeleteExpired,
+                                            tasks.DeleteExpired.ACTION).get()
 
         def assert_past_due_count(expected):
             actual = len(list(model.Person.past_due_records(repo='haiti')))
@@ -139,7 +152,8 @@ class TasksTests(unittest.TestCase):
                       params={'cursor': cursor, 'queue_name': 'expiry'},
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        delexp = self.initialize_handler(tasks.DeleteExpired)
+        delexp = test_handler.initialize_handler(tasks.DeleteExpired,
+                                                 tasks.DeleteExpired.ACTION)
         delexp.schedule_next_task(query.cursor())
         self.mox.VerifyAll()
 
@@ -251,7 +265,9 @@ class TasksTests(unittest.TestCase):
 
         def run_clean_up_in_test_mode_task():
             """Runs the CleanUpInTestMode task."""
-            self.initialize_handler(tasks.CleanUpInTestMode).get()
+            test_handler.initialize_handler(tasks.CleanUpInTestMode,
+                                            tasks.CleanUpInTestMode.ACTION
+                                            ).get()
 
         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
 
@@ -294,7 +310,9 @@ class TasksTests(unittest.TestCase):
                       },
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        cleanup = self.initialize_handler(tasks.CleanUpInTestMode)
+        cleanup = \
+            test_handler.initialize_handler(tasks.CleanUpInTestMode,
+                                            tasks.CleanUpInTestMode.ACTION)
         cleanup.schedule_next_task(query.cursor(), utcnow)
         self.mox.UnsetStubs()
         self.mox.VerifyAll()
@@ -336,7 +354,9 @@ class TasksTests(unittest.TestCase):
         utcnow = datetime.datetime(2010, 1, 1, 7, 0, 0)
         set_utcnow_for_test(utcnow)
         self.mox = mox.Mox()
-        cleanup = self.initialize_handler(tasks.CleanUpInTestMode)
+        cleanup = \
+            test_handler.initialize_handler(tasks.CleanUpInTestMode,
+                                            tasks.CleanUpInTestMode.ACTION)
         listener = Listener()
         cleanup.set_listener(listener)
 
@@ -383,3 +403,85 @@ class TasksTests(unittest.TestCase):
         (delete.send_delete_notice(
                 mox.IsA(tasks.CleanUpInTestMode), mox.IsA(model.Person)).
             MultipleTimes())
+
+
+class NotifyBadReviewStatusTests(unittest.TestCase):
+    handler = None
+
+    def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        self.testbed.init_user_stub()
+        self.testbed.init_datastore_v3_stub()
+        self.testbed.init_memcache_stub()
+        self.testbed.init_mail_stub()
+        # root_path must be set the the location of queue.yaml.
+        # Otherwise, only the 'default' queue will be available.
+        path_to_app = os.path.join(os.path.dirname(__file__), '../app')
+        self.testbed.init_taskqueue_stub(root_path=path_to_app)
+
+        model.Repo(key_name='haiti').put()
+
+    def tearDown(self):
+        self.testbed.deactivate()
+
+    def get_handler(self):
+        if not self.handler:
+            self.handler = test_handler.initialize_handler(
+                handler_class=tasks.NotifyBadReviewStatus,
+                action=tasks.NotifyBadReviewStatus.ACTION,
+                repo='haiti', environ=None, params=None)
+        return self.handler
+
+    def clear_db_config(self):
+        [db.delete(entry) for entry in db.GqlQuery('SELECT * FROM ConfigEntry')]
+
+    def test_notify(self):
+        handler = self.get_handler()
+        self.assertEqual(handler._notify(10), False)
+        admin_email = 'inna-testing@gmail.com'
+        thres_unreviewed_notes = 10
+        config.set_for_repo('haiti', admin_user_email=admin_email)
+        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
+        self.assertEqual(handler._notify(10), True)
+        self.clear_db_config()
+
+    def test_is_ok_to_notify(self):
+        handler = self.get_handler()
+        count_unreviwed_notes = 10
+        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), False)
+        admin_email = 'inna-testing@gmail.com'
+        thres_unreviewed_notes = 5
+        config.set_for_repo('haiti', admin_user_email=admin_email)
+        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
+        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), True)
+        thres_unreviewed_notes = 10
+        config.set_for_repo('haiti', admin_user_email=admin_email)
+        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
+        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), True)
+        thres_unreviewed_notes = 20
+        config.set_for_repo('haiti', admin_user_email=admin_email)
+        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
+        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), False)
+        self.clear_db_config()
+
+    def test_get_admin_user_email(self):
+        handler = self.get_handler()
+        self.assertEqual(handler._get_admin_user_email(), None)
+        admin_email = 'inna-testing@gmail.com'
+        config.set_for_repo('haiti', admin_user_email=admin_email)
+        self.assertEquals(handler._get_admin_user_email(), admin_email)
+        self.clear_db_config()
+        self.assertEqual(handler._get_admin_user_email(), None)
+
+    def test_get_thres_unreviewed_notes(self):
+        handler = self.get_handler()
+        self.assertEquals(handler._get_thres_unreviewed_notes(),
+                          const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES)
+        thres_unreviewed_notes = 50
+        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
+        self.assertEquals(handler._get_thres_unreviewed_notes(),
+                          thres_unreviewed_notes)
+        self.clear_db_config()
+        self.assertEquals(handler._get_thres_unreviewed_notes(),
+                          const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES)

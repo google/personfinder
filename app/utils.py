@@ -533,6 +533,15 @@ def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
 
+def get_current_user_email(require_admin_user_email=True):
+    """Get e-mail address of admin user."""
+    # TODO: Need Test Case (yaboo)
+    if require_admin_user_email and not users.is_current_user_admin():
+        return ''
+    else:
+        return users.get_current_user().email()
+
+
 # ==== Struct ==================================================================
 
 class Struct:
@@ -802,6 +811,7 @@ class BaseHandler(webapp.RequestHandler):
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
         logging.info('Add mail task: recipient %r, subject %r' % (to, subject))
+        print "hoge"
         taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,
