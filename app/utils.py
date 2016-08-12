@@ -811,7 +811,6 @@ class BaseHandler(webapp.RequestHandler):
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
         logging.info('Add mail task: recipient %r, subject %r' % (to, subject))
-        print "hoge"
         taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,
