@@ -112,8 +112,6 @@ class TasksTests(unittest.TestCase):
 
     def tearDown(self):
         self.testbed.deactivate()
-
-        # TODO(yaboo@): delete below
         db.delete(self.to_delete)
         if self.mox:
             self.mox.UnsetStubs()
@@ -405,7 +403,7 @@ class TasksTests(unittest.TestCase):
             MultipleTimes())
 
 
-class NotifyBadReviewStatusTests(unittest.TestCase):
+class NotifyManyUnreviewedNotesTests(unittest.TestCase):
     handler = None
 
     def setUp(self):
@@ -419,69 +417,58 @@ class NotifyBadReviewStatusTests(unittest.TestCase):
         # Otherwise, only the 'default' queue will be available.
         path_to_app = os.path.join(os.path.dirname(__file__), '../app')
         self.testbed.init_taskqueue_stub(root_path=path_to_app)
-
         model.Repo(key_name='haiti').put()
+        self.handler = test_handler.initialize_handler(
+            handler_class=tasks.NotifyManyUnreviewedNotes,
+            action=tasks.NotifyManyUnreviewedNotes.ACTION,
+            repo='haiti', environ=None, params=None)
 
     def tearDown(self):
         self.testbed.deactivate()
 
-    def get_handler(self):
-        if not self.handler:
-            self.handler = test_handler.initialize_handler(
-                handler_class=tasks.NotifyBadReviewStatus,
-                action=tasks.NotifyBadReviewStatus.ACTION,
-                repo='haiti', environ=None, params=None)
-        return self.handler
+    def test_maybe_notify(self):
+        # _maybe_notify fails if unreviewed_notes_email is set to ''
+        config.set(unreviewed_notes_email='',
+                   unreviewed_notes_email_threshold='100')
+        self.assert_(not self.handler._maybe_notify(10))
 
-    def clear_db_config(self):
-        [db.delete(entry) for entry in db.GqlQuery('SELECT * FROM ConfigEntry')]
+        config.set(unreviewed_notes_email='inna-testing@gmail.com',
+                   unreviewed_notes_email_threshold='10')
+        self.assert_(self.handler._maybe_notify(10))
 
-    def test_notify(self):
-        handler = self.get_handler()
-        self.assertEqual(handler._notify(10), False)
-        admin_email = 'inna-testing@gmail.com'
-        thres_unreviewed_notes = 10
-        config.set_for_repo('haiti', admin_user_email=admin_email)
-        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
-        self.assertEqual(handler._notify(10), True)
-        self.clear_db_config()
+    def test_should_modify(self):
+        # Default settings
+        config.set(unreviewed_notes_email='',
+                   unreviewed_notes_email_threshold='100')
+        self.assert_(not self.handler._should_modify(10))
 
-    def test_is_ok_to_notify(self):
-        handler = self.get_handler()
-        count_unreviwed_notes = 10
-        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), False)
-        admin_email = 'inna-testing@gmail.com'
-        thres_unreviewed_notes = 5
-        config.set_for_repo('haiti', admin_user_email=admin_email)
-        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
-        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), True)
-        thres_unreviewed_notes = 10
-        config.set_for_repo('haiti', admin_user_email=admin_email)
-        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
-        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), True)
-        thres_unreviewed_notes = 20
-        config.set_for_repo('haiti', admin_user_email=admin_email)
-        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
-        self.assertEqual(handler._is_ok_to_notify(count_unreviwed_notes), False)
-        self.clear_db_config()
+        # Custom settings
+        config.set(unreviewed_notes_email='inna-testing@gmail.com',
+                   unreviewed_notes_email_threshold='100')
+        self.assert_(self.handler._should_modify(101))
+        self.assert_(self.handler._should_modify(100))
+        self.assert_(not self.handler._should_modify(99))
 
-    def test_get_admin_user_email(self):
-        handler = self.get_handler()
-        self.assertEqual(handler._get_admin_user_email(), None)
-        admin_email = 'inna-testing@gmail.com'
-        config.set_for_repo('haiti', admin_user_email=admin_email)
-        self.assertEquals(handler._get_admin_user_email(), admin_email)
-        self.clear_db_config()
-        self.assertEqual(handler._get_admin_user_email(), None)
+    def test_get_unreviewed_notes_email(self):
+        # Default settings
+        config.set(unreviewed_notes_email=const.DEFAULT_UNREVIEWED_NOTES_EMAIL)
+        self.assertEqual(self.handler._get_unreviewed_notes_email(), '')
 
-    def test_get_thres_unreviewed_notes(self):
-        handler = self.get_handler()
-        self.assertEquals(handler._get_thres_unreviewed_notes(),
-                          const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES)
-        thres_unreviewed_notes = 50
-        config.set_for_repo('haiti', thres_unreviewed_notes=thres_unreviewed_notes)
-        self.assertEquals(handler._get_thres_unreviewed_notes(),
-                          thres_unreviewed_notes)
-        self.clear_db_config()
-        self.assertEquals(handler._get_thres_unreviewed_notes(),
-                          const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES)
+        # Custom settings
+        config.set(unreviewed_notes_email='inna-testing@gmail.com')
+        self.assertEquals(
+            self.handler._get_unreviewed_notes_email(),
+            'inna-testing@gmail.com')
+
+    def test_get_unreviewed_notes_email_threshold(self):
+        # Default settings
+        config.set(unreviewed_notes_email_threshold=(
+            const.DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD))
+        self.assertEqual(
+            self.handler._get_unreviewed_notes_email_threshold(),
+            const.DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD)
+
+        # Custom settings
+        config.set(unreviewed_notes_email_threshold='50')
+        self.assertEquals(
+            self.handler._get_unreviewed_notes_email_threshold(), 50)

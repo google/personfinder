@@ -666,26 +666,6 @@
   </fieldset>
 
   <fieldset>
-    <legend>Notification settings</legend>
-
-    <div class="config">
-        <label for="admin_user_email">Default admin user email:</label>
-        <div class="response">
-           <input type="email" name="admin_user_email" id="admin_user_email" size=24
-               value="{{view_config.admin_user_email}}"">
-        </div>
-    </div>
-
-    <div class="config">
-        <label for="thres_unreviewed_notes">Default threshold for # of unreviewed notes:</label>
-        <div class="response">
-            <input type="number" min="0" name="thres_unreviewed_notes" id="thres_unreviewed_notes"
-                size=24 value="{{view_config.thres_unreviewed_notes}}">
-        </div>
-    </div>
-  </fieldset>
-
-  <fieldset>
     <legend>Map options</legend>
 
     <div class="config">
@@ -972,6 +952,32 @@
             id="repo_aliases" rows=10 cols=80
             >{{view_config_json.repo_aliases}}</textarea>
       </div>
+    </div>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Notification settings</legend>
+      <label for="sms_number_to_repo">
+        Alert mail setting.<br>
+        Alert mails are periodically sent to 'Email Address' when some conditions are met (e.g.
+        the number of unreviewed notes exceeds 'Unreviewed notes email threshold'). By default,
+        conditions are checked every 24 hours. If you want to change this interval, change cron
+        settings by editing app/cron.yaml.
+      </label>
+      <div class="config">
+        <label for="unreviewed_notes_email">Email address:</label>
+        <div class="response">
+           <input type="email" name="unreviewed_notes_email" id="unreviewed_notes_email" size=24
+               value="{{view_config.unreviewed_notes_email}}"">
+        </div>
+    </div>
+    <div class="config">
+        <label for="unreviewed_notes_email_threshold">Unreviewed notes email threshold:</label>
+        <div class="response">
+            <input type="number" min="0" name="unreviewed_notes_email_threshold" id="unreviewed_notes_email_threshold"
+                size=24 value="{{view_config.unreviewed_notes_email_threshold}}">
+        </div>
     </div>
   </fieldset>
 

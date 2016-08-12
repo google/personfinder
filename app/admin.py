@@ -109,8 +109,6 @@ class Handler(BaseHandler):
                         'deactivation_message_html',
                         'keywords',
                         'launch_status',
-                        'admin_user_email',
-                        'thres_unreviewed_notes',
                     ],
                     # Update updated_date if any of the following settings are
                     # changed.
@@ -130,6 +128,8 @@ class Handler(BaseHandler):
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
+                        'unreviewed_notes_email',
+                        'unreviewed_notes_email_threshold',
                     ]):
                 self.redirect('/admin')
 

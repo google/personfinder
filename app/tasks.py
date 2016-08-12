@@ -75,7 +75,8 @@ class ScanForExpired(utils.BaseHandler):
                     next_cursor = query.cursor()
                     was_expired = person.is_expired
                     person.put_expiry_flags()
-                    if (utils.get_utcnow() - person.get_effective_expiry_date() > EXPIRED_TTL):
+                    if (utils.get_utcnow() - person.get_effective_expiry_date()
+                            > EXPIRED_TTL):
                         person.wipe_contents()
                     else:
                         # treat this as a regular deletion.
@@ -382,11 +383,11 @@ class Reindex(CountBase):
         person.put()
 
 
-class NotifyBadReviewStatus(utils.BaseHandler):
+class NotifyManyUnreviewedNotes(utils.BaseHandler):
     """This task sends email notification when the number of unreviewed notes
     exceeds threshold.
     """
-    ACTION = 'tasks/notify_bad_review_status'
+    ACTION = 'tasks/notify_many_unreviewed_notes'
 
     def task_name(self):
         return 'notify-bad-review-status'
@@ -394,8 +395,9 @@ class NotifyBadReviewStatus(utils.BaseHandler):
     def get(self):
         if self.repo:
             try:
-                count_of_unreviewed_notes = \
-                    model.Note.unreviewed_record_count(self.repo)
+                count_of_unreviewed_notes = (
+                    model.Note.unreviewed_record_count(self.repo))
+                self._maybe_notify(count_of_unreviewed_notes)
             except runtime.DeadlineExceededError:
                 logging.info("DeadlineExceededError occurs")
                 self.add_task_for_repo(
@@ -404,41 +406,33 @@ class NotifyBadReviewStatus(utils.BaseHandler):
                 logging.info("Timeout occurs in datastore")
                 self.add_task_for_repo(
                     self.repo, self.task_name(), self.ACTION)
-            finally:
-                self._notify(count_of_unreviewed_notes)
 
-    def _notify(self, count_of_unreviewed_notes):
+    def _maybe_notify(self, count_of_unreviewed_notes):
         # TODO: Response should be modified
-        if self._is_ok_to_notify(count_of_unreviewed_notes):
-            self.send_mail(self._get_admin_user_email(),
+        if self._should_modify(count_of_unreviewed_notes):
+            self.send_mail(self._get_unreviewed_notes_email(),
                            subject="PersonFinder: Please review your notes",
-                           body="{0} notes are not reviewed".format(
-                               count_of_unreviewed_notes))
+                           body="%d notes are not reviewed" %(
+                               count_of_unreviewed_notes,
+                           ))
             return True
         else:
             return False
 
-    def _is_ok_to_notify(self, count_of_unreviewed_notes):
-        email = self._get_admin_user_email()
-        if not email:
+    def _should_modify(self, count_of_unreviewed_notes):
+        email = self._get_unreviewed_notes_email()
+        if email == const.DEFAULT_UNREVIEWED_NOTES_EMAIL or not email:
             return False
 
-        thres = self._get_thres_unreviewed_notes()
-        if count_of_unreviewed_notes >= thres:
+        threshold = self._get_unreviewed_notes_email_threshold()
+        if count_of_unreviewed_notes >= threshold:
             return True
         else:
             return False
 
-    def _get_admin_user_email(self):
-        return self.config.get('admin_user_email')
+    def _get_unreviewed_notes_email(self):
+        return self.config.get('unreviewed_notes_email')
 
-    def _get_thres_unreviewed_notes(self):
-        try:
-            return int(self.config.get('thres_unreviewed_notes'))
-        except (KeyError, ValueError, TypeError):
-            logging.info(
-                "'thres_unreviewed_notes' is not properly defined. " +
-                "Use DEFAULT_THRES_NUM_UNREVIEWED_NOTES({0}) instead".format(
-                    const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES
-                ))
-        return const.DEFAULT_THRES_NUM_UNREVIEWED_NOTES
+    def _get_unreviewed_notes_email_threshold(self):
+        # TODO(yaboo@): need to work for removing int casting.
+        return int(self.config.get('unreviewed_notes_email_threshold'))

@@ -66,7 +66,3 @@ class APITests(unittest.TestCase):
             home_state='California',
             entry_date=datetime.datetime(2010, 1, 1))
         assert handler.render_person(person) == 'John Smith / From: California'
-
-
-if __name__ == '__main__':
-    unittest.main()

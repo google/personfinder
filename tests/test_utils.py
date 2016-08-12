@@ -186,7 +186,7 @@ class HandlerTests(unittest.TestCase):
     def tearDown(self):
         db.delete(config.ConfigEntry.all())
         resources.get_rendered = self.original_get_rendered
-        self.testbed.init_mail_stub()
+        self.testbed.deactivate()
 
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)

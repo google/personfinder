@@ -305,4 +305,5 @@ DEFAULT_PROFILE_WEBSITES = [
 
 # The threshold for email notification to an admin user. When the number of
 # unreviewed notes is greater than this value, PF will send email notification.
-DEFAULT_THRES_NUM_UNREVIEWED_NOTES = 5
+DEFAULT_UNREVIEWED_NOTES_EMAIL = ''
+DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD = 100

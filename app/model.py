@@ -630,10 +630,10 @@ class Note(Base):
             notes = query.fetch(Note.FETCH_LIMIT)
 
     @staticmethod
-    def get_unreviewed_record_count(repo, filter_expired=True):
+    def get_unreviewed_notes_count(repo, filter_expired=True):
         """Gets the number of unreviewed notes."""
         query = Note.all_in_repo(repo, filter_expired=filter_expired
-            ).filter('reviewed =', False)
+            ).filter('reviewed =', False).filter('hidden =', False)
         return query.count()
 
 class NoteWithBadWords(Note):
