@@ -15,43 +15,48 @@
 {% if not markdup %}
   <input type="hidden" name="add_note" value="yes">
   <input type="hidden" name="id" value="{{params.id}}">
-{% endif %}
+{% endif %} 
 
-<div class="fields-table note" role="complementary">
-  <div class="header section">
-    <h1>
-      {% if not markdup %}
-        {% if person.full_name %}
-          {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
-        {% else %}
-          {% trans "Status of Person" %}
-        {% endif %}
-      {% else %}
-        {% trans "Mark records as duplicate" %}
-      {% endif %}
-    </h1>
-  </div>
+<div class="status section">
   {% if not markdup %}
-    <div class="section">
-      <h2>Status</h2>
-      <div class="status subsection">
-        <h3>
-          {% trans "Status of this person:" %}
-        </h3>
-        <div class="field">
-          <select id="status" name="status">
-            {% for status in env.status_options %}
-              <option value="{{status.value}}"
-                  {% ifequal params.status status.value %}
-                    selected='selected'
-                  {% endifequal %}>
-                {{status.text}}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="end-multi-columns"></div>
+    <h2>Status</h2>
+    <div class="status subsection">
+      <h3>
+        {% trans "Status of this person:" %}
+      </h3>
+      <div class="field">
+        <select id="status" name="status">
+          {% for status in env.status_options %}
+            <option value="{{status.value}}"
+                {% ifequal params.status status.value %}
+                  selected='selected'
+                {% endifequal %}>
+              {{status.text}}
+            </option>
+          {% endfor %}
+        </select>
       </div>
+      <div class="end-multi-columns"></div>
+    </div>
+
+    <div class="message subsection">
+      <h3 class="mandatory text">
+        {% trans "Message (required)" %}
+      </h3>
+      <div class="hint">
+        {% if not markdup %}
+          {% trans "A message for this person or others seeking this person" %}
+        {% else %}
+          {% trans "Please explain why you think these are the same person" %}
+        {% endif %}
+      </div>
+      <div class="field">
+          <textarea name="text" id="text"
+            class="long-text-input"
+            rows=5>{{params.text}}</textarea>
+      </div>
+      <div class="end-multi-columns"></div>
+    </div>    
 
       <div class="author_made_contact subsection">
         <h3 class="mandatory">
@@ -129,37 +134,13 @@
           <div class="end-multi-columns"></div>
         {% endif %}
       </div>
-    </div>
   {% endif %}
 
-
-
-  <div class="section">
-    <h2>Message</h2>
-    <h3 class="mandatory text">
-      {% trans "Message (required)" %}
-    </h3>
-    <div class="hint">
-      {% if not markdup %}
-        {% trans "A message for this person or others seeking this person" %}
-      {% else %}
-        {% trans "Please explain why you think these are the same person" %}
-      {% endif %}
-    </div>
-    <div class="field">
-        <textarea name="text" id="text"
-          class="long-text-input"
-          rows=5>{{params.text}}</textarea>
-    </div>
-    <div class="end-multi-columns"></div>
-  </div>
   
-  {% if not markdup %}
-
-    
+  {% if not markdup %}    
     {% if env.enable_photo_upload %}
-      <div class="photo section">
-        <h2>Photo</h2>
+      <div class="photo subsection">
+        <h3>Photo</h3>
         <div class="hint">
           {% trans "To attach a photo to this note, upload it or enter its URL." %}
         </div>
@@ -195,6 +176,7 @@
         <div class="end-multi-columns"></div>
       </div>
     {% endif %}
+  </div>
 
 
     
@@ -259,6 +241,19 @@
               value="{{params.author_name}}" />
         </span>
       </div>
+      {% include "subscribe.html.template" %}      
+      <div class="field">
+        <span class="label">
+          <label for="author_email" id="author_email_original">
+            {% trans "Your e-mail address" %}:
+          </label>
+        </span>
+        <span class="value">
+          <input name="author_email" id="author_email"
+              class="medium-text-input"
+              value="{{params.author_email}}" />
+        </span>
+      </div>      
       <div class="field">
         <span class="label">
           <label for="author_phone" id="author_phone_original">
@@ -271,19 +266,6 @@
               value="{{params.author_phone}}" />
         </span>
       </div>
-      <div class="field">
-        <span class="label">
-          <label for="author_email" id="author_email_original">
-            {% trans "Your e-mail address" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="author_email" id="author_email"
-              class="medium-text-input"
-              value="{{params.author_email}}" />
-        </span>
-      </div>
-      {% include "subscribe.html.template" %}
       <div class="end-multi-columns"></div>
     </div>
   {% endif %}
@@ -309,4 +291,4 @@
     {% endif %}
   </div>
   {% include "errors.html.template" %}
-</div>
+

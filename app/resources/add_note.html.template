@@ -63,9 +63,23 @@
               id="enable_notes_btn">
           </div>
         {% else %}
-          <div class="create" role="form">
-            {% include "add_note_base.html.template" %}
-          </div>
+          <div class="create" role="form">         
+            <div class="fields-table note" role="complementary">
+              <div class="header section">
+                <h1>
+                  {% if not markdup %}
+                    {% if person.full_name %}
+                      {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
+                    {% else %}
+                      {% trans "Status of Person" %}
+                    {% endif %}
+                  {% else %}
+                    {% trans "Mark records as duplicate" %}
+                  {% endif %}
+                </h1>
+              </div>
+              {% include "add_note_base.html.template" %}
+            </div>
         {% endif %}
       </div>
 
