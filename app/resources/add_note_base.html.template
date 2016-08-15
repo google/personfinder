@@ -19,27 +19,27 @@
 
 <div class="status section">
   {% if not markdup %}
-    <center><h2>Status</h2></center>
-      <div class="status subsection">
-        <h3>
-          {% trans "Status of this person:" %}
-        </h3>
-        <div class="field">
-          <select id="status" name="status">
-            {% for status in env.status_options %}
-              <option value="{{status.value}}"
-                  {% ifequal params.status status.value %}
-                    selected='selected'
-                  {% endifequal %}>
-                {{status.text}}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="end-multi-columns"></div>
+    <h2>Status</h2>
+    <div class="status subsection">
+      <h3>
+        {% trans "Status of this person:" %}
+      </h3>
+      <div class="field">
+        <select id="status" name="status">
+          {% for status in env.status_options %}
+            <option value="{{status.value}}"
+                {% ifequal params.status status.value %}
+                  selected='selected'
+                {% endifequal %}>
+              {{status.text}}
+            </option>
+          {% endfor %}
+        </select>
       </div>
+      <div class="end-multi-columns"></div>
+    </div>
 
-    <div class="message section">
+    <div class="message subsection">
       <h3 class="mandatory text">
         {% trans "Message (required)" %}
       </h3>
@@ -139,7 +139,7 @@
   
   {% if not markdup %}    
     {% if env.enable_photo_upload %}
-      <div class="photo section">
+      <div class="photo subsection">
         <h3>Photo</h3>
         <div class="hint">
           {% trans "To attach a photo to this note, upload it or enter its URL." %}
@@ -224,7 +224,7 @@
   {% endif %}
   {% if not params.create_mode %}
     <div class="source section">
-      <center><h2>About You</h2></center>
+      <h2>About You</h2>
       <div class="hint">
         {% trans "How others who are interested in this person can contact you" %}
       </div>

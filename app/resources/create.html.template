@@ -28,8 +28,7 @@
     {{env.hidden_input_tags_for_preserved_query_params|safe}}
     <input type="hidden" name="role" value="{{params.role}}">
     <div class="create" role="form">
-    <div class="column centered">
-      <div class="column start">
+      <div class="column centered">
         <div class="fields-table person">
           <div class="header section">
             <h1>
@@ -40,62 +39,62 @@
               {% endifequal %}
             </h1>
           </div>
-          <div class="identifyinfo section">
+          <div class="identify section">
             <h2>
-            <center>{% trans "Identifying information" %}</center>
+              {% trans "Identifying information" %}
             </h2>
-              <div class="hint">
-                {% trans "What is this person's name?" %}
-              </div>
-              {% if config.use_family_name and config.family_name_first %}
-                <div class="field">
-                  <div class="label">
-                    <label for="family_name" class="mandatory">
-                      {% trans "Family name (required)" %}:
-                    </label>
-                  </div>
-                  <div class="value">
-                    <input name="family_name" id="family_name"
-                        class="medium-text-input"
-                        value="{{params.family_name}}"
-                        autocomplete="off">
-                  </div>
+            <div class="hint">
+              {% trans "What is this person's name?" %}
+            </div>
+            {% if config.use_family_name and config.family_name_first %}
+              <div class="field">
+                <div class="label">
+                  <label for="family_name" class="mandatory">
+                    {% trans "Family name (required)" %}:
+                  </label>
                 </div>
-              {% endif %}
+                <div class="value">
+                  <input name="family_name" id="family_name"
+                      class="medium-text-input"
+                      value="{{params.family_name}}"
+                      autocomplete="off">
+                </div>
+              </div>
+            {% endif %}
+            <div class="field">
+              <span class="label">
+                <label for="given_name" class="mandatory">
+                  {% if config.use_family_name %}
+                    {% trans "Given name (required)" %}:
+                  {% else %}
+                    {% trans "Name" %}:
+                  {% endif %}
+                </label>
+              </span>
+              <span class="value">
+                <input name="given_name" id="given_name"
+                    class="medium-text-input"
+                    value="{{params.given_name}}"
+                    autocomplete="off">
+              </span>
+            </div>
+            {% if config.use_family_name and not config.family_name_first %}
               <div class="field">
                 <span class="label">
-                  <label for="given_name" class="mandatory">
-                    {% if config.use_family_name %}
-                      {% trans "Given name (required)" %}:
-                    {% else %}
-                      {% trans "Name" %}:
-                    {% endif %}
+                  <label for="family_name" class="mandatory">
+                    {% trans "Family name (required)" %}:
                   </label>
                 </span>
                 <span class="value">
-                  <input name="given_name" id="given_name"
+                  <input name="family_name" id="family_name"
                       class="medium-text-input"
-                      value="{{params.given_name}}"
+                      value="{{params.family_name}}"
                       autocomplete="off">
                 </span>
               </div>
-              {% if config.use_family_name and not config.family_name_first %}
-                <div class="field">
-                  <span class="label">
-                    <label for="family_name" class="mandatory">
-                      {% trans "Family name (required)" %}:
-                    </label>
-                  </span>
-                  <span class="value">
-                    <input name="family_name" id="family_name"
-                        class="medium-text-input"
-                        value="{{params.family_name}}"
-                        autocomplete="off">
-                  </span>
-                </div>
-              {% endif %}
+            {% endif %}
 
-          <div class="name section">
+          <div class="name subsection">
               <h3>
                 {% trans "Name" %}
               </h3> 
@@ -183,7 +182,7 @@
               <div class="end-multi-columns"></div>
           </div>
 
-          <div class="address section">
+          <div class="address subsection">
             <h3>
               {% trans "Home Address" %}
             </h3>
@@ -280,7 +279,7 @@
             <div class="end-multi-columns"></div>
             </div>
 
-          <div class="description section">
+          <div class="description subsection">
             <h3><label for="description">
               {% trans "Description" %}
             </label></h3>
@@ -296,7 +295,7 @@
           </div>
 
           {% if env.enable_photo_upload %}
-            <div class="photo section">
+            <div class="photo subsection">
               <h3><label for="photo_url">
                   {% trans "Photo" %}
               </label></h3>
@@ -335,7 +334,7 @@
           {% endif %}
 
           {% if config.show_profile_entry and env.enable_javascript %}
-            <div class="profile section">
+            <div class="profile subsection">
               <h3>{% trans "Profile Pages" %}</h3>
               <div class="hint">
                 {% trans "Does this person have profile pages at other websites?" %}
@@ -380,13 +379,10 @@
           {% endif %}
           </div>
 
-          <div class="sourcerecord section">
-            <center><h2>
+          <div class="source section">
+            <h2>
               {% trans "Source of Record" %}
-            </h2></center>
-            <div class="hint">
-              {% trans "Where did this information come from?" %}
-            </div>
+            </h2>
             {% if env.enable_javascript %}
               <div class="field">
                 <div class="instructions">
@@ -420,6 +416,9 @@
               {# Only clone=no is supported when JavaScript is disabled. #}
               <input type="hidden" name="clone" value="no">
             {% endif %}
+            <div class="hint">
+              {% trans "Where did this information come from?" %}
+            </div>
             <div class="field">
               <span class="label">
                 <label for="author_name" class="mandatory"
@@ -459,7 +458,7 @@
               </span>
             </div>         
 
-          <div class="yourinfo section">
+          <div class="your-info subsection">
             <h3>
               {% trans "Your information" %}
             </h3>
@@ -483,7 +482,7 @@
               </span>
             </div>
           </div>            
-          <div class="expiry section">
+          <div class="expiry subsection">
             <h3><label for="expiry_option">
                 {% trans "Expiry" %}
             </label></h3>
@@ -552,7 +551,7 @@
               </div>
             {% endif %}
             <div class="end-multi-columns"></div>
-            </div>
+          </div>
           
           {% ifequal params.role "provide" %}
             {% include "add_note_base.html.template" %}
@@ -572,11 +571,9 @@
 
         </div>
       </div>
-      </div>
 
-      <div class="column end"></div>
       <div class="end-multi-columns"></div>
 
-      </div>
+    </div>
   </form>
 {% endblock %}
