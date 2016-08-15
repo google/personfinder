@@ -99,7 +99,7 @@
               <h3>
                 {% trans "Name" %}
               </h3> 
-                             
+
               {% if config.use_alternate_names %}
                 {% if config.use_family_name and config.family_name_first %}
               
@@ -554,9 +554,7 @@
             <div class="end-multi-columns"></div>
             </div>
 
-            <div class="status section">
-              {% include "add_note_base.html.template" %}
-            </div>                
+            {% include "add_note_base.html.template" %}
 
           {% ifnotequal params.role "provide" %}
             <div class="submit button button-blue">

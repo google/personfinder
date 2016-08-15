@@ -1284,7 +1284,7 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.status.section')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
@@ -1352,7 +1352,7 @@ http://www.foo.com/_account_1''',
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.status.section')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
