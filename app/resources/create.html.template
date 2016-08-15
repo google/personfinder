@@ -553,8 +553,10 @@
             {% endif %}
             <div class="end-multi-columns"></div>
             </div>
-
+          
+          {% ifequal params.role "provide" %}
             {% include "add_note_base.html.template" %}
+          {% endifequal %}     
 
           {% ifnotequal params.role "provide" %}
             <div class="submit button button-blue">
@@ -572,10 +574,7 @@
       </div>
       </div>
 
-      {% ifequal params.role "provide" %}
-        <div class="column end"></div>
-      {% endifequal %}
-
+      <div class="column end"></div>
       <div class="end-multi-columns"></div>
 
       </div>

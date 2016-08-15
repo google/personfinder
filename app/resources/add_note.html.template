@@ -63,11 +63,7 @@
               id="enable_notes_btn">
           </div>
         {% else %}
-          <div class="create" role="form">
-            {% if not markdup %}
-              <input type="hidden" name="add_note" value="yes">
-              <input type="hidden" name="id" value="{{params.id}}">
-            {% endif %}          
+          <div class="create" role="form">         
             <div class="fields-table note" role="complementary">
               <div class="header section">
                 <h1>
