@@ -12,6 +12,21 @@
 
 {% load i18n %}
 
+{% if env.enable_javascript %}
+   <script type="text/javascript">
+   jQuery(document).ready(function(){
+     jQuery("div.status-expand").hide();
+     jQuery("a.status-button").click(function(){
+       if (jQuery("div.status-expand").is(":hidden"))
+           jQuery("div.status-expand").slideDown("slow");
+       else
+           jQuery("div.status-expand").slideUp("slow");
+       return false;
+     });
+   });
+   </script>
+{% endif %}
+
 {% if not markdup %}
   <input type="hidden" name="add_note" value="yes">
   <input type="hidden" name="id" value="{{params.id}}">
@@ -89,6 +104,15 @@
         <div class="end-multi-columns"></div>
       </div>
 
+      <div class="hint">
+        {% trans "Information about: Last known location/ other photos :" %}
+      </div> 
+
+      <a href="#" class="status-button" style="text-decoration:none">
+        + Other status of person detail    
+      </a>
+
+    <div class="status-expand">
       <div class="location subsection">
         <h3>
           {% trans "Last known location" %}
@@ -177,7 +201,7 @@
       </div>
     {% endif %}
   </div>
-
+</div>
 
     
     <div class="contact section" id="contact_row"
