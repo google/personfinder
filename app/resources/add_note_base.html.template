@@ -104,12 +104,11 @@
         <div class="end-multi-columns"></div>
       </div>
 
-      <div class="hint">
-        {% trans "Information about: Last known location/ other photos :" %}
-      </div> 
-
       <a href="#" class="status-button" style="text-decoration:none">
-        + Other status of person detail    
+        {% trans "+ Other status of person detail" %} <br>
+        <span class=hint>
+        {% trans "(Last known location/ other photos)" %}
+        </span>    
       </a>
 
     <div class="status-expand">

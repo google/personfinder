@@ -99,15 +99,6 @@
               </span>
             </div>
 
-            <div class="hint">
-              {% trans "Information about: Alternate name/ Address/ Person's photo :" %}
-            </div>
-
-            <a href="#" class="identify-button" style="text-decoration:none">
-              + Other personal identify detail
-            </a>
-
-          <div class="identify-expand">
             {% if config.use_family_name and not config.family_name_first %}
               <div class="field">
                 <span class="label">
@@ -124,6 +115,14 @@
               </div>
             {% endif %}
 
+            <a href="#" class="identify-button" style="text-decoration:none">
+              {% trans "+ Other personal identify detail" %} <br>
+              <span class=hint>
+              {% trans "(Alternate name/ Home address/ Description/ Person's photo)" %}
+              </span>
+            </a>
+
+        <div class="identify-expand">            
           <div class="name subsection">
               <h3>
                 {% trans "Name" %}
@@ -487,14 +486,13 @@
                     class="medium-text-input"
                     value="{{params.author_email}}" />
               </span>
-            </div>
-
-            <div class="hint">
-              {% trans "Information about: Your phone number/ Expiry :" %}
-            </div>            
+            </div>          
 
             <a href="#" class="record-button" style="text-decoration:none">
-              + Other source of record detail
+              {% trans "+ Other source of record detail" %} <br>
+              <span class=hint>
+              {% trans "(Your phone number/ Expiry)" %}
+              </span>
             </a>         
 
         <div class="record-expand">
