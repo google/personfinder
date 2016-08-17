@@ -330,7 +330,7 @@ function validate_fields() {
   return true;
 }
 
-// Be Able to expand the form to see the detail form
+// Make it possible to expand the form to see the detail form
 function make_form_expandable(expandedSection) {
   var expandedPart = jQuery(expandedSection).find("div.expanded-part");
   var expandButton = jQuery(expandedSection).find("a.expand-button");     

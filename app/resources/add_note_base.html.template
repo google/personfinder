@@ -91,6 +91,48 @@
       <div class="end-multi-columns"></div>
     </div>
 
+    <div class="contact subsection" id="contact_row"
+        {# Always shows this section when Javascript is #}
+        {# disabled. #}
+        {% if env.enable_javascript %}
+          style="display: none"
+        {% endif %}
+        >
+      <h3>
+        {% trans "Missing person's current contact information" %}
+      </h3>
+      <div class="hint">
+        {% trans "How can this person be reached now?" %}
+      </div>
+      <div class="field">
+        <span class="label">
+          <label for="phone_of_found_person">
+            {% trans "Phone number" %}:
+          </label>
+        </span>
+        <span class="value">
+          <input name="phone_of_found_person"
+              id="phone_of_found_person"
+              class="medium-text-input"
+              value="{{params.phone_of_found_person}}" />
+        </span>
+      </div>
+      <div class="field">
+        <span class="label">
+          <label for="email_of_found_person">
+            {% trans "E-mail address" %}:
+          </label>
+        </span>
+        <span class="value">
+          <input name="email_of_found_person"
+              id="email_of_found_person"
+              class="medium-text-input"
+              value="{{params.email_of_found_person}}" />
+        </span>
+      </div>
+      <div class="end-multi-columns"></div>
+    </div>
+
     <a href="#" class="expand-button">
       {% trans "+ More information about status of the person" %} <br>
       <span class="hint">
@@ -183,48 +225,6 @@
           <div class="end-multi-columns"></div>
         </div>
       {% endif %}
-    </div>
-
-    <div class="contact section" id="contact_row"
-        {# Always shows this section when Javascript is #}
-        {# disabled. #}
-        {% if env.enable_javascript %}
-          style="display: none"
-        {% endif %}
-        >
-      <h3>
-        {% trans "Missing person's current contact information" %}
-      </h3>
-      <div class="hint">
-        {% trans "How can this person be reached now?" %}
-      </div>
-      <div class="field">
-        <span class="label">
-          <label for="phone_of_found_person">
-            {% trans "Phone number" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="phone_of_found_person"
-              id="phone_of_found_person"
-              class="medium-text-input"
-              value="{{params.phone_of_found_person}}" />
-        </span>
-      </div>
-      <div class="field">
-        <span class="label">
-          <label for="email_of_found_person">
-            {% trans "E-mail address" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="email_of_found_person"
-              id="email_of_found_person"
-              class="medium-text-input"
-              value="{{params.email_of_found_person}}" />
-        </span>
-      </div>
-      <div class="end-multi-columns"></div>
     </div>
   {% endif %}
 </div>  
