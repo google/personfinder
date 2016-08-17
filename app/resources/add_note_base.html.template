@@ -38,57 +38,109 @@
       </div>
       <div class="end-multi-columns"></div>
     </div>
+  {% endif %}
+  <div class="message subsection">
+    <h3 class="mandatory text">
+      {% trans "Message (required)" %}
+    </h3>
+    <div class="hint">
+      {% if not markdup %}
+        {% trans "A message for this person or others seeking this person" %}
+      {% else %}
+        {% trans "Please explain why you think these are the same person" %}
+      {% endif %}
+    </div>
+    <div class="field">
+        <textarea name="text" id="text"
+          class="long-text-input"
+          rows=5>{{params.text}}</textarea>
+    </div>
+    <div class="end-multi-columns"></div>
+  </div>
 
-    <div class="message subsection">
-      <h3 class="mandatory text">
-        {% trans "Message (required)" %}
+  {% if not markdup %}
+
+    <div class="author_made_contact subsection">
+      <h3 class="mandatory">
+        {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
       </h3>
-      <div class="hint">
-        {% if not markdup %}
-          {% trans "A message for this person or others seeking this person" %}
-        {% else %}
-          {% trans "Please explain why you think these are the same person" %}
-        {% endif %}
+      <div class="field">
+        <input type="radio" name="author_made_contact"
+            value="yes" id="author_made_contact_yes"
+            onchange="update_contact()"
+            onclick="update_contact()"
+            {% ifequal params.author_made_contact "yes" %}
+              checked="checked"
+            {% endifequal %}>
+        <label class="option" for="author_made_contact_yes">
+          {% trans "Yes" %}
+        </label>
       </div>
       <div class="field">
-          <textarea name="text" id="text"
-            class="long-text-input"
-            rows=5>{{params.text}}</textarea>
+        <input type="radio" name="author_made_contact"
+            value="no" id="author_made_contact_no"
+            onchange="update_contact()"
+            onclick="update_contact()"
+            {% ifnotequal params.author_made_contact "yes" %}
+              checked="checked"
+            {% endifnotequal %}>
+        <label class="option" for="author_made_contact_no">
+          {% trans "No" %}
+        </label>
       </div>
       <div class="end-multi-columns"></div>
-    </div>    
+    </div>
 
-      <div class="author_made_contact subsection">
-        <h3 class="mandatory">
-          {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
-        </h3>
-        <div class="field">
-          <input type="radio" name="author_made_contact"
-              value="yes" id="author_made_contact_yes"
-              onchange="update_contact()"
-              onclick="update_contact()"
-              {% ifequal params.author_made_contact "yes" %}
-                checked="checked"
-              {% endifequal %}>
-          <label class="option" for="author_made_contact_yes">
-            {% trans "Yes" %}
-          </label>
-        </div>
-        <div class="field">
-          <input type="radio" name="author_made_contact"
-              value="no" id="author_made_contact_no"
-              onchange="update_contact()"
-              onclick="update_contact()"
-              {% ifnotequal params.author_made_contact "yes" %}
-                checked="checked"
-              {% endifnotequal %}>
-          <label class="option" for="author_made_contact_no">
-            {% trans "No" %}
-          </label>
-        </div>
-        <div class="end-multi-columns"></div>
+    <div class="contact subsection" id="contact_row"
+        {# Always shows this section when Javascript is #}
+        {# disabled. #}
+        {% if env.enable_javascript %}
+          style="display: none"
+        {% endif %}
+        >
+      <h3>
+        {% trans "Missing person's current contact information" %}
+      </h3>
+      <div class="hint">
+        {% trans "How can this person be reached now?" %}
       </div>
+      <div class="field">
+        <span class="label">
+          <label for="phone_of_found_person">
+            {% trans "Phone number" %}:
+          </label>
+        </span>
+        <span class="value">
+          <input name="phone_of_found_person"
+              id="phone_of_found_person"
+              class="medium-text-input"
+              value="{{params.phone_of_found_person}}" />
+        </span>
+      </div>
+      <div class="field">
+        <span class="label">
+          <label for="email_of_found_person">
+            {% trans "E-mail address" %}:
+          </label>
+        </span>
+        <span class="value">
+          <input name="email_of_found_person"
+              id="email_of_found_person"
+              class="medium-text-input"
+              value="{{params.email_of_found_person}}" />
+        </span>
+      </div>
+      <div class="end-multi-columns"></div>
+    </div>
 
+    <a href="#" class="expand-button">
+      {% trans "+ More information about status of the person" %} <br>
+      <span class="hint">
+        {% trans "(Last known location / other photos)" %}
+      </span>    
+    </a>
+
+    <div class="expanded-part">
       <div class="location subsection">
         <h3>
           {% trans "Last known location" %}
@@ -134,161 +186,117 @@
           <div class="end-multi-columns"></div>
         {% endif %}
       </div>
-  {% endif %}
-
   
-  {% if not markdup %}    
-    {% if env.enable_photo_upload %}
-      <div class="photo subsection">
-        <h3>Photo</h3>
-        <div class="hint">
-          {% trans "To attach a photo to this note, upload it or enter its URL." %}
+      {% if env.enable_photo_upload %}
+        <div class="photo subsection">
+          <h3>Photo</h3>
+          <div class="hint">
+            {% trans "To attach a photo to this note, upload it or enter its URL." %}
+          </div>
+          <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
+            <span class="radio">
+                <input id="note_photo_url_radio" type="radio"
+                    checked="checked" name="note_photo_input">
+            </span>
+            <span class="label">
+              {% trans "URL" %}:
+            </span>
+            <span class="value">
+              <input name="note_photo_url" id="note_photo_url"
+                  class="medium-text-input"
+                  value="{{params.photo_url}}" />
+            </span>
+          </div>
+          <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
+            {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
+            <span class="radio">
+              <input id="note_photo_upload_radio" type="radio"
+                  name="note_photo_input">
+            </span>
+            <span class="label">
+              {% trans "Upload" %}:
+            </span>
+            <span class="value">
+              <input id="note_photo_upload" type="file"
+                  name="note_photo" disabled="disabled">
+            </span>
+            {% comment %} see above comment {% endcomment %}
+          </div>
+          <div class="end-multi-columns"></div>
         </div>
-        <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
-          <span class="radio">
-              <input id="note_photo_url_radio" type="radio"
-                  checked="checked" name="note_photo_input">
-          </span>
-          <span class="label">
-            {% trans "URL" %}:
-          </span>
-          <span class="value">
-            <input name="note_photo_url" id="note_photo_url"
-                class="medium-text-input"
-                value="{{params.photo_url}}" />
-          </span>
-        </div>
-        <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
-          {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-          <span class="radio">
-            <input id="note_photo_upload_radio" type="radio"
-                name="note_photo_input">
-          </span>
-          <span class="label">
-            {% trans "Upload" %}:
-          </span>
-          <span class="value">
-            <input id="note_photo_upload" type="file"
-                name="note_photo" disabled="disabled">
-          </span>
-          {% comment %} see above comment {% endcomment %}
-        </div>
-        <div class="end-multi-columns"></div>
-      </div>
-    {% endif %}
-  </div>
-
-
-    
-    <div class="contact section" id="contact_row"
-        {# Always shows this section when Javascript is #}
-        {# disabled. #}
-        {% if env.enable_javascript %}
-          style="display: none"
-        {% endif %}
-        >
-      <h3>
-        {% trans "Missing person's current contact information" %}
-      </h3>
-      <div class="hint">
-        {% trans "How can this person be reached now?" %}
-      </div>
-      <div class="field">
-        <span class="label">
-          <label for="phone_of_found_person">
-            {% trans "Phone number" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="phone_of_found_person"
-              id="phone_of_found_person"
-              class="medium-text-input"
-              value="{{params.phone_of_found_person}}" />
-        </span>
-      </div>
-      <div class="field">
-        <span class="label">
-          <label for="email_of_found_person">
-            {% trans "E-mail address" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="email_of_found_person"
-              id="email_of_found_person"
-              class="medium-text-input"
-              value="{{params.email_of_found_person}}" />
-        </span>
-      </div>
-      <div class="end-multi-columns"></div>
+      {% endif %}
     </div>
   {% endif %}
-  {% if not params.create_mode %}
-    <div class="source section">
-      <h2>About You</h2>
-      <div class="hint">
-        {% trans "How others who are interested in this person can contact you" %}
-      </div>
-      <div class="field">
-        <span class="label">
-          <label for="author_name" class="mandatory"
-              id="author_name_original">
-            {% trans "Your name (required)" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="author_name" id="author_name"
-              class="medium-text-input"
-              value="{{params.author_name}}" />
-        </span>
-      </div>
-      {% include "subscribe.html.template" %}      
-      <div class="field">
-        <span class="label">
-          <label for="author_email" id="author_email_original">
-            {% trans "Your e-mail address" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="author_email" id="author_email"
-              class="medium-text-input"
-              value="{{params.author_email}}" />
-        </span>
-      </div>      
-      <div class="field">
-        <span class="label">
-          <label for="author_phone" id="author_phone_original">
-            {% trans "Your phone number" %}:
-          </label>
-        </span>
-        <span class="value">
-          <input name="author_phone" id="author_phone"
-              class="medium-text-input"
-              value="{{params.author_phone}}" />
-        </span>
-      </div>
-      <div class="end-multi-columns"></div>
+</div>  
+
+{% if not params.create_mode %}
+  <div class="your-info section">
+    <h2>About You</h2>
+    <div class="hint">
+      {% trans "How others who are interested in this person can contact you" %}
     </div>
-  {% endif %}
-  <div class="submit button button-blue">
-    <input type="submit"
-      {% if person.notes_disabled %}
-       disabled="disabled"
-      {% endif %}
-      value="{% spaceless %}
-        {% if markdup %}
-          {% trans "Yes, these are the same person" %}
-        {% else %}
-          {% trans "Submit" %}
-        {% endif %}{% endspaceless %}"
-      {% if env.enable_javascript %}
-        onclick="return validate_fields()"
-      {% endif %}
-    >
+    <div class="field">
+      <span class="label">
+        <label for="author_name" class="mandatory"
+            id="author_name_original">
+          {% trans "Your name (required)" %}:
+        </label>
+      </span>
+      <span class="value">
+        <input name="author_name" id="author_name"
+            class="medium-text-input"
+            value="{{params.author_name}}" />
+      </span>
+    </div>
+    {% include "subscribe.html.template" %}      
+    <div class="field">
+      <span class="label">
+        <label for="author_email" id="author_email_original">
+          {% trans "Your e-mail address" %}:
+        </label>
+      </span>
+      <span class="value">
+        <input name="author_email" id="author_email"
+            class="medium-text-input"
+            value="{{params.author_email}}" />
+      </span>
+    </div>      
+    <div class="field">
+      <span class="label">
+        <label for="author_phone" id="author_phone_original">
+          {% trans "Your phone number" %}:
+        </label>
+      </span>
+      <span class="value">
+        <input name="author_phone" id="author_phone"
+            class="medium-text-input"
+            value="{{params.author_phone}}" />
+      </span>
+    </div>
+    <div class="end-multi-columns"></div>
   </div>
-  <div class="submit button button-red">
-    {% if markdup %}
-      <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
+{% endif %}
+
+<div class="submit button button-blue">
+  <input type="submit"
+    {% if person.notes_disabled %}
+     disabled="disabled"
     {% endif %}
-  </div>
-  {% include "errors.html.template" %}
+    value="{% spaceless %}
+      {% if markdup %}
+        {% trans "Yes, these are the same person" %}
+      {% else %}
+        {% trans "Submit" %}
+      {% endif %}{% endspaceless %}"
+    {% if env.enable_javascript %}
+      onclick="return validate_fields()"
+    {% endif %}
+  >
+</div>
+<div class="submit button button-red">
+  {% if markdup %}
+    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
+  {% endif %}
+</div>
+{% include "errors.html.template" %}
 

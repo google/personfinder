@@ -329,3 +329,17 @@ function validate_fields() {
 
   return true;
 }
+
+// Make it possible to expand the form to see the detail form
+function make_form_expandable(expandedSection) {
+  var expandedPart = jQuery(expandedSection).find("div.expanded-part");
+  var expandButton = jQuery(expandedSection).find("a.expand-button");     
+  expandedPart.hide();
+  expandButton.click(function() {
+    if (expandedPart.is(":visible"))
+      expandedPart.slideUp("slow");
+    else
+      expandedPart.slideDown("slow");
+    return false;
+  });
+}

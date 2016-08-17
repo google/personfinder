@@ -38,6 +38,10 @@
         set_display('hide-note', !hidden);
         set_display(note_contents_id + '-mark-not-spam', !hidden);
       }
+
+      jQuery(document).ready(function() {
+        make_form_expandable(".status.section");
+      });
     </script>
   {% endif %}
 {% endblock head %}
