@@ -56,10 +56,10 @@
         </div>
         <div>
           {% if person.provider_name %}<br />
-          <h2>
-            ({% trans "Provided by:" %}
-            <span class="provider-name">{{person.provider_name}}</span>)
-          </h2>
+            <h2>
+              ({% trans "Provided by:" %}
+              <span class="provider-name">{{person.provider_name}}</span>)
+            </h2>
           {% endif %}
 
           {% if person.alternate_names or person.sex_text or person.age %}
