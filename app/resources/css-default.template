@@ -203,20 +203,21 @@ select {
 
 /* Expand Forms */
 
-.identify-expand, .record-expand, .status-expand{
-  background : #FFF9C4;
-  padding : 5px;
-  border : 1px solid gray;
+.expand-part {
+  background: #FFF9C4;
+  padding: 5px;
+  border: 1px solid gray;
   margin-left: auto;
   margin-right: auto;
  }
 
-.identify-button, .record-button, .status-button{
-  display:block;
+a.expand-button {
+  display: block;
   text-align: center;
-  background : #FFF9C4;
-  border : 1px solid gray;
+  background: #FFF9C4;
+  border: 1px solid gray;
   margin: 0 auto;
+  text-decoration:none  
  }
 
 /* Multi-column page */

@@ -329,3 +329,19 @@ function validate_fields() {
 
   return true;
 }
+
+// Expand the form to see the detail form
+function expand_forms(expandSection) {
+  jQuery(document).ready(function() {
+    var expandPart = jQuery(expandSection).children("div.expand-part");
+    var expandButton = jQuery(expandSection).children("a.expand-button");     
+    expandPart.hide();
+    expandButton.click(function() {
+      if (expandPart.is(":visible"))
+        expandPart.slideUp("slow");
+      else
+        expandPart.slideDown("slow");
+      return false;
+    });
+  });
+}

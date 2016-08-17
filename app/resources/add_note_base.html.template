@@ -12,21 +12,6 @@
 
 {% load i18n %}
 
-{% if env.enable_javascript %}
-   <script type="text/javascript">
-   jQuery(document).ready(function(){
-     jQuery("div.status-expand").hide();
-     jQuery("a.status-button").click(function(){
-       if (jQuery("div.status-expand").is(":hidden"))
-           jQuery("div.status-expand").slideDown("slow");
-       else
-           jQuery("div.status-expand").slideUp("slow");
-       return false;
-     });
-   });
-   </script>
-{% endif %}
-
 {% if not markdup %}
   <input type="hidden" name="add_note" value="yes">
   <input type="hidden" name="id" value="{{params.id}}">
@@ -104,103 +89,103 @@
         <div class="end-multi-columns"></div>
       </div>
 
-      <a href="#" class="status-button" style="text-decoration:none">
-        {% trans "+ Other status of person detail" %} <br>
-        <span class=hint>
-        {% trans "(Last known location/ other photos)" %}
-        </span>    
-      </a>
+        <a href="#" class="expand-button">
+          {% trans "+ More information about status of the person" %} <br>
+          <span class="hint">
+          {% trans "(Last known location / other photos)" %}
+          </span>    
+        </a>
 
-    <div class="status-expand">
-      <div class="location subsection">
-        <h3>
-          {% trans "Last known location" %}
-        </h3>
-        <div class="hint">
-          {% if env.enable_javascript and env.maps_api_key %}
-            {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
-          {% else %}
-            {% trans "Type an address." %}
-          {% endif %}
-        </div>
-        <div class="field">
-            <textarea name="last_known_location"
-                id="clickable_map_location_field"
-                class="long-text-input"
-                rows=2>{{params.last_known_location}}</textarea>
-        </div>
-        <div class="end-multi-columns"></div>
-        {% if env.enable_javascript and env.maps_api_key %}
-          <div class="field map-container">
-            <div>
-              <span id="clickable_map_show_link">
-                <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-                  {% trans "Show Map" %}</a>
-              </span>
-              <span id="clickable_map_hide_link" style="display: none">
-                <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
-                  {% trans "Hide Map" %}</a>
-                &nbsp;&nbsp;
-                <a href='#' id="switch_to_latlng_link"
-                    onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-                  {% trans "Switch to lat/long" %}</a>
-                <a href='#' id="switch_to_address_link" style="display: none"
-                    onclick="toggleLatLngAndAddress('clickable_map'); return false;">
-                  {% trans "Switch to address" %}</a>
-              </span>
-              &nbsp;&nbsp;
-              <a href='#' onclick="getUserGeolocation('clickable_map'); return false;">
-                {% trans "Use current location" %}</a>
+        <div class="expand-part">
+          <div class="location subsection">
+            <h3>
+              {% trans "Last known location" %}
+            </h3>
+            <div class="hint">
+              {% if env.enable_javascript and env.maps_api_key %}
+                {% trans "Type an address or open the map below and indicate the location by clicking on the map." %}
+              {% else %}
+                {% trans "Type an address." %}
+              {% endif %}
             </div>
-            <div id="clickable_map" class="map" style="display: none"></div>
+            <div class="field">
+                <textarea name="last_known_location"
+                    id="clickable_map_location_field"
+                    class="long-text-input"
+                    rows=2>{{params.last_known_location}}</textarea>
+            </div>
+            <div class="end-multi-columns"></div>
+            {% if env.enable_javascript and env.maps_api_key %}
+              <div class="field map-container">
+                <div>
+                  <span id="clickable_map_show_link">
+                    <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                      {% trans "Show Map" %}</a>
+                  </span>
+                  <span id="clickable_map_hide_link" style="display: none">
+                    <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
+                      {% trans "Hide Map" %}</a>
+                    &nbsp;&nbsp;
+                    <a href='#' id="switch_to_latlng_link"
+                        onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                      {% trans "Switch to lat/long" %}</a>
+                    <a href='#' id="switch_to_address_link" style="display: none"
+                        onclick="toggleLatLngAndAddress('clickable_map'); return false;">
+                      {% trans "Switch to address" %}</a>
+                  </span>
+                  &nbsp;&nbsp;
+                  <a href='#' onclick="getUserGeolocation('clickable_map'); return false;">
+                    {% trans "Use current location" %}</a>
+                </div>
+                <div id="clickable_map" class="map" style="display: none"></div>
+              </div>
+              <div class="end-multi-columns"></div>
+            {% endif %}
           </div>
-          <div class="end-multi-columns"></div>
+      {% endif %}
+
+      
+      {% if not markdup %}    
+        {% if env.enable_photo_upload %}
+          <div class="photo subsection">
+            <h3>Photo</h3>
+            <div class="hint">
+              {% trans "To attach a photo to this note, upload it or enter its URL." %}
+            </div>
+            <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
+              <span class="radio">
+                  <input id="note_photo_url_radio" type="radio"
+                      checked="checked" name="note_photo_input">
+              </span>
+              <span class="label">
+                {% trans "URL" %}:
+              </span>
+              <span class="value">
+                <input name="note_photo_url" id="note_photo_url"
+                    class="medium-text-input"
+                    value="{{params.photo_url}}" />
+              </span>
+            </div>
+            <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
+              {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
+              <span class="radio">
+                <input id="note_photo_upload_radio" type="radio"
+                    name="note_photo_input">
+              </span>
+              <span class="label">
+                {% trans "Upload" %}:
+              </span>
+              <span class="value">
+                <input id="note_photo_upload" type="file"
+                    name="note_photo" disabled="disabled">
+              </span>
+              {% comment %} see above comment {% endcomment %}
+            </div>
+            <div class="end-multi-columns"></div>
+          </div>
         {% endif %}
       </div>
-  {% endif %}
-
-  
-  {% if not markdup %}    
-    {% if env.enable_photo_upload %}
-      <div class="photo subsection">
-        <h3>Photo</h3>
-        <div class="hint">
-          {% trans "To attach a photo to this note, upload it or enter its URL." %}
-        </div>
-        <div class="field" onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
-          <span class="radio">
-              <input id="note_photo_url_radio" type="radio"
-                  checked="checked" name="note_photo_input">
-          </span>
-          <span class="label">
-            {% trans "URL" %}:
-          </span>
-          <span class="value">
-            <input name="note_photo_url" id="note_photo_url"
-                class="medium-text-input"
-                value="{{params.photo_url}}" />
-          </span>
-        </div>
-        <div class="field" onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
-          {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-          <span class="radio">
-            <input id="note_photo_upload_radio" type="radio"
-                name="note_photo_input">
-          </span>
-          <span class="label">
-            {% trans "Upload" %}:
-          </span>
-          <span class="value">
-            <input id="note_photo_upload" type="file"
-                name="note_photo" disabled="disabled">
-          </span>
-          {% comment %} see above comment {% endcomment %}
-        </div>
-        <div class="end-multi-columns"></div>
-      </div>
-    {% endif %}
-  </div>
-</div>
+    </div>
 
     
     <div class="contact section" id="contact_row"
