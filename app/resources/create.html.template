@@ -19,10 +19,11 @@
     <script>
       var profile_websites = {{profile_websites_json|safe}};
 
-      expand_forms(".identify.section");
-      expand_forms(".source.section");
-      expand_forms(".status.section");
-
+      jQuery(document).ready(function() {
+        make_form_expandable(".identify.section");
+        make_form_expandable(".source.section");
+        make_form_expandable(".status.section");        
+      });
     </script>
   {% endif %}
 {% endblock head %}
@@ -100,299 +101,299 @@
               </div>
             {% endif %}
 
-              <a href="#" class="expand-button">
-                {% trans "+ More information to identify the person" %} <br>
-                <span class="hint">
+            <a href="#" class="expand-button">
+              {% trans "+ More information to identify the person" %} <br>
+              <span class="hint">
                 {% trans "(Alternate name / Home address / Description / Person's photo)" %}
-                </span>
-              </a>
+              </span>
+            </a>
 
-              <div class="expand-part">            
-                <div class="name subsection">
-                    <h3>
-                      {% trans "Name" %}
-                    </h3> 
+            <div class="expanded-part">            
+              <div class="name subsection">
+                <h3>
+                  {% trans "Name" %}
+                </h3> 
 
-                    {% if config.use_alternate_names %}
-                      {% if config.use_family_name and config.family_name_first %}
-                    
-                        <div class="field">
-                          <span class="label">
-                            <label for="alternate_family_names">
-                              {% trans "Alternate family names" %}:
-                            </label>
-                          </span>
-                          <span class="value">
-                            <input name="alternate_family_names"
-                                id="alternate_family_names"
-                                class="medium-text-input"
-                                value="{{params.alternate_family_names}}"
-                                autocomplete="off">
-                          </span>
-                        </div>
-                      {% endif %}
-                      <div class="field">
-                        <span class="label">
-                          <label for="alternate_given_names">
-                            {% if config.use_family_name %}
-                              {% trans "Alternate given names" %}:
-                            {% else %}
-                              {% trans "Alternate names" %}:
-                            {% endif %}
-                          </label>
-                        </span>
-                        <span class="value">
-                          <input name="alternate_given_names"
-                              id="alternate_given_names"
-                              class="medium-text-input"
-                              value="{{params.alternate_given_names}}"
-                              autocomplete="off">
-                        </span>
-                      </div>
-                      {% if config.use_family_name and not config.family_name_first %}
-                        <div class="field">
-                          <span class="label">
-                            <label for="alternate_family_names">
-                              {% trans "Alternate family names" %}:
-                            </label>
-                          </span>
-                          <span class="value">
-                            <input name="alternate_family_names"
-                                id="alternate_family_names"
-                                class="medium-text-input"
-                                value="{{params.alternate_family_names}}"
-                                autocomplete="off">
-                          </span>
-                        </div>
-                      {% endif %}
-                    {% endif %}
-
+                {% if config.use_alternate_names %}
+                  {% if config.use_family_name and config.family_name_first %}
+                
                     <div class="field">
                       <span class="label">
-                        <label for="sex">{% trans "Sex" %}:</label>
-                      </span>
-                      <span class="value">
-                        <select name="sex" id="sex" class="input">
-                          <option value="" selected></option>
-                          <option value="female">{% trans "female" %}</option>
-                          <option value="male">{% trans "male" %}</option>
-                          <option value="other">{% trans "other" %}</option>
-                        </select>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <span class="label">
-                        <label for="age">{% trans "Age" %}:</label>
-                      </span>
-                      <span class="value">
-                        <input name="age" id="age"
-                            class="short-text-input"
-                            autocomplete="off">
-                        <div class="value hint">
-                          {% trans "Number or range (e.g. 20-30)" %}
-                        </div>
-                      </span>
-                    </div>
-                    <div class="end-multi-columns"></div>
-                </div>
-
-                <div class="address subsection">
-                  <h3>
-                    {% trans "Home Address" %}
-                  </h3>
-                    <div class="field">
-                      <span class="label">
-                        <label for="home_street">
-                          {% trans "Street name" %}:
+                        <label for="alternate_family_names">
+                          {% trans "Alternate family names" %}:
                         </label>
                       </span>
                       <span class="value">
-                        <input name="home_street" id="home_street"
+                        <input name="alternate_family_names"
+                            id="alternate_family_names"
                             class="medium-text-input"
-                            value="{{params.home_street}}"
-                            autocomplete="off">
-                        <div class="value hint">
-                          {% trans "Street name only, no number" %}
-                        </div>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <span class="label">
-      {% comment %}
-      # i18n: For Pakistan, translate this as "Neighborhood, village, or town"
-      # i18n: since cities usually refer to large metropolitan areas.  Villages
-      # i18n: and towns are usually associated with the nearby metropolitan area,
-      # i18n: thus it makes more sense at a separate level than "City".
-      {% endcomment %}
-                      <label for="home_neighborhood">
-                        {% trans "Neighborhood" %}:
-                      </label>
-                    </span>
-                    <span class="value">
-                      <input name="home_neighborhood" id="home_neighborhood"
-                          class="medium-text-input"
-                          value="{{params.home_neighborhood}}"
-                          autocomplete="off">
-                    </span>
-                  </div>
-                  <div class="field">
-                    <span class="label">
-                      <label for="home_city">{% trans "City" %}:</label>
-                    </span>
-                    <span class="value">
-                      <input name="home_city" id="home_city"
-                          class="medium-text-input"
-                          value="{{params.home_city}}"
-                          autocomplete="off">
-                    </span>
-                  </div>
-                  <div class="field">
-                    <span class="label">
-                      <label for="home_state">
-                        {% trans "Province or state" %}:
-                      </label>
-                    </span>
-                    <span class="value">
-                      {# This field uses medium-text-input, not short-text-input #}
-                      {# because province/state names can be long in some languages #}
-                      {# such as Polish. #}
-                      <input name="home_state" id="home_state"
-                          class="medium-text-input"
-                          value="{{params.home_state}}"
-                          autocomplete="off">
-                    </span>
-                  </div>
-                  {% if config.use_postal_code %}
-                    <div class="field">
-                      <span class="label">
-                        <label for="home_postal_code">
-                          {% trans "Postal or zip code" %}:
-                        </label>
-                      </span>
-                      <span class="value">
-                        <input name="home_postal_code" id="home_postal_code"
-                            class="short-text-input"
-                            value="{{params.home_postal_code}}"
+                            value="{{params.alternate_family_names}}"
                             autocomplete="off">
                       </span>
                     </div>
                   {% endif %}
                   <div class="field">
                     <span class="label">
-                      <label for="home_country">
-                        {% trans "Home country" %}:
+                      <label for="alternate_given_names">
+                        {% if config.use_family_name %}
+                          {% trans "Alternate given names" %}:
+                        {% else %}
+                          {% trans "Alternate names" %}:
+                        {% endif %}
                       </label>
                     </span>
                     <span class="value">
-                      <input name="home_country" id="home_country"
+                      <input name="alternate_given_names"
+                          id="alternate_given_names"
                           class="medium-text-input"
-                          value="{{params.home_country}}"
+                          value="{{params.alternate_given_names}}"
                           autocomplete="off">
                     </span>
                   </div>
-                  <div class="end-multi-columns"></div>
-                  </div>
+                  {% if config.use_family_name and not config.family_name_first %}
+                    <div class="field">
+                      <span class="label">
+                        <label for="alternate_family_names">
+                          {% trans "Alternate family names" %}:
+                        </label>
+                      </span>
+                      <span class="value">
+                        <input name="alternate_family_names"
+                            id="alternate_family_names"
+                            class="medium-text-input"
+                            value="{{params.alternate_family_names}}"
+                            autocomplete="off">
+                      </span>
+                    </div>
+                  {% endif %}
+                {% endif %}
 
-                <div class="description subsection">
-                  <h3><label for="description">
-                    {% trans "Description" %}
-                  </label></h3>
-                  <div class="hint">
-                    {% trans "Describe how to identify this person." %}
+                <div class="field">
+                  <span class="label">
+                    <label for="sex">{% trans "Sex" %}:</label>
+                  </span>
+                  <span class="value">
+                    <select name="sex" id="sex" class="input">
+                      <option value="" selected></option>
+                      <option value="female">{% trans "female" %}</option>
+                      <option value="male">{% trans "male" %}</option>
+                      <option value="other">{% trans "other" %}</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="field">
+                  <span class="label">
+                    <label for="age">{% trans "Age" %}:</label>
+                  </span>
+                  <span class="value">
+                    <input name="age" id="age"
+                        class="short-text-input"
+                        autocomplete="off">
+                    <div class="value hint">
+                      {% trans "Number or range (e.g. 20-30)" %}
+                    </div>
+                  </span>
+                </div>
+                <div class="end-multi-columns"></div>
+              </div>
+
+              <div class="address subsection">
+                <h3>
+                  {% trans "Home Address" %}
+                </h3>
+                  <div class="field">
+                    <span class="label">
+                      <label for="home_street">
+                        {% trans "Street name" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="home_street" id="home_street"
+                          class="medium-text-input"
+                          value="{{params.home_street}}"
+                          autocomplete="off">
+                      <div class="value hint">
+                        {% trans "Street name only, no number" %}
+                      </div>
+                    </span>
                   </div>
                   <div class="field">
-                    <textarea name="description" id="description"
-                      class="long-text-input" rows="5"
-                      >{{params.description}}</textarea>
+                    <span class="label">
+{% comment %}
+# i18n: For Pakistan, translate this as "Neighborhood, village, or town"
+# i18n: since cities usually refer to large metropolitan areas.  Villages
+# i18n: and towns are usually associated with the nearby metropolitan area,
+# i18n: thus it makes more sense at a separate level than "City".
+{% endcomment %}
+                    <label for="home_neighborhood">
+                      {% trans "Neighborhood" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="home_neighborhood" id="home_neighborhood"
+                        class="medium-text-input"
+                        value="{{params.home_neighborhood}}"
+                        autocomplete="off">
+                  </span>
+                </div>
+                <div class="field">
+                  <span class="label">
+                    <label for="home_city">{% trans "City" %}:</label>
+                  </span>
+                  <span class="value">
+                    <input name="home_city" id="home_city"
+                        class="medium-text-input"
+                        value="{{params.home_city}}"
+                        autocomplete="off">
+                  </span>
+                </div>
+                <div class="field">
+                  <span class="label">
+                    <label for="home_state">
+                      {% trans "Province or state" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    {# This field uses medium-text-input, not short-text-input #}
+                    {# because province/state names can be long in some languages #}
+                    {# such as Polish. #}
+                    <input name="home_state" id="home_state"
+                        class="medium-text-input"
+                        value="{{params.home_state}}"
+                        autocomplete="off">
+                  </span>
+                </div>
+                {% if config.use_postal_code %}
+                  <div class="field">
+                    <span class="label">
+                      <label for="home_postal_code">
+                        {% trans "Postal or zip code" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="home_postal_code" id="home_postal_code"
+                          class="short-text-input"
+                          value="{{params.home_postal_code}}"
+                          autocomplete="off">
+                    </span>
+                  </div>
+                {% endif %}
+                <div class="field">
+                  <span class="label">
+                    <label for="home_country">
+                      {% trans "Home country" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="home_country" id="home_country"
+                        class="medium-text-input"
+                        value="{{params.home_country}}"
+                        autocomplete="off">
+                  </span>
+                </div>
+                <div class="end-multi-columns"></div>
+              </div>
+
+              <div class="description subsection">
+                <h3><label for="description">
+                  {% trans "Description" %}
+                </label></h3>
+                <div class="hint">
+                  {% trans "Describe how to identify this person." %}
+                </div>
+                <div class="field">
+                  <textarea name="description" id="description"
+                    class="long-text-input" rows="5"
+                    >{{params.description}}</textarea>
+                </div>
+                <div class="end-multi-columns"></div>
+              </div>
+
+              {% if env.enable_photo_upload %}
+                <div class="photo subsection">
+                  <h3><label for="photo_url">
+                      {% trans "Photo" %}
+                  </label></h3>
+                  <div class="hint">
+                    {% trans "If you have a photo of this person, upload it or enter its URL address." %}
+                  </div>
+                  <div class="field" onclick="$('photo_url_radio').checked=true; update_image_input(false);">
+                    <span class="radio">
+                      <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
+                    </span>
+                    <span class="label">
+                      {% trans "URL" %}:
+                    </span>
+                    <span class="value">
+                      <input name="photo_url" id="photo_url"
+                          class="medium-text-input"
+                          value="{{params.photo_url}}" />
+                    </span>
+                  </div>
+                  <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
+                    {% comment %} This span can be removed if uploading needs to be disabled {% endcomment %}
+                    <span class="radio">
+                      <input id="photo_upload_radio" type="radio" name="photo_input">
+                    </span>
+                    <span class="label">
+                      {% trans "Upload" %}:
+                    </span>
+                    <span class="value">
+                      <input id="photo_upload" type="file" name="photo"
+                          class="medium-text-input" disabled="disabled">
+                    </span>
+                    {% comment %} see above comment {% endcomment %}
                   </div>
                   <div class="end-multi-columns"></div>
                 </div>
+              {% endif %}
 
-                {% if env.enable_photo_upload %}
-                  <div class="photo subsection">
-                    <h3><label for="photo_url">
-                        {% trans "Photo" %}
-                    </label></h3>
-                    <div class="hint">
-                      {% trans "If you have a photo of this person, upload it or enter its URL address." %}
-                    </div>
-                    <div class="field" onclick="$('photo_url_radio').checked=true; update_image_input(false);">
-                      <span class="radio">
-                        <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
-                      </span>
-                      <span class="label">
-                        {% trans "URL" %}:
+              {% if config.show_profile_entry and env.enable_javascript %}
+                <div class="profile subsection">
+                  <h3>{% trans "Profile Pages" %}</h3>
+                  <div class="hint">
+                    {% trans "Does this person have profile pages at other websites?" %}
+                  </div>
+                  {# Can add at most 3 profile pages #}
+                  {% for i in '123'|make_list %}
+                    <div id="profile_entry{{i}}" class="field"
+                         style="display:none">
+                      <span class="icon">
+                        <span style="width:16px;height:16px"
+                             id="profile_icon{{i}}"></span>
+                        {# This &nbsp; is needed to keep position of #}
+                        {# <span class="value"> below when the icon #}
+                        {# doesn't exist. #}
+                        &nbsp;
                       </span>
                       <span class="value">
-                        <input name="photo_url" id="photo_url"
+                        <input type="hidden" id="profile_website_index{{i}}" />
+                        <input type="text" id="profile_url{{i}}"
+                            name="profile_url{{i}}"
                             class="medium-text-input"
-                            value="{{params.photo_url}}" />
+                            placeholder="{% trans "Link to profile page" %}" />
+                      </span>
+                      <span class="remove">
+                        <a href="javascript:remove_profile_entry({{i}})"
+                          >{% trans "Remove" %}</a>
                       </span>
                     </div>
-                    <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
-                      {% comment %} This span can be removed if uploading needs to be disabled {% endcomment %}
-                      <span class="radio">
-                        <input id="photo_upload_radio" type="radio" name="photo_input">
-                      </span>
-                      <span class="label">
-                        {% trans "Upload" %}:
-                      </span>
-                      <span class="value">
-                        <input id="photo_upload" type="file" name="photo"
-                            class="medium-text-input" disabled="disabled">
-                      </span>
-                      {% comment %} see above comment {% endcomment %}
-                    </div>
-                    <div class="end-multi-columns"></div>
+                  {% endfor %}
+                  <div id="add_profile_entry" class="field">
+                    <select id="add_profile_entry_select"
+                        onchange="add_profile_entry(this)">
+                      <option>{% trans "Select a website to add a profile page..." %}</option>
+                      {% for website in profile_websites %}
+                        <option>{{website.name}}</option>
+                      {% endfor %}
+                      <option>{% trans "Other website" %}</option>
+                    </select>
                   </div>
-                {% endif %}
-
-                {% if config.show_profile_entry and env.enable_javascript %}
-                  <div class="profile subsection">
-                    <h3>{% trans "Profile Pages" %}</h3>
-                    <div class="hint">
-                      {% trans "Does this person have profile pages at other websites?" %}
-                    </div>
-                    {# Can add at most 3 profile pages #}
-                    {% for i in '123'|make_list %}
-                      <div id="profile_entry{{i}}" class="field"
-                           style="display:none">
-                        <span class="icon">
-                          <span style="width:16px;height:16px"
-                               id="profile_icon{{i}}"></span>
-                          {# This &nbsp; is needed to keep position of #}
-                          {# <span class="value"> below when the icon #}
-                          {# doesn't exist. #}
-                          &nbsp;
-                        </span>
-                        <span class="value">
-                          <input type="hidden" id="profile_website_index{{i}}" />
-                          <input type="text" id="profile_url{{i}}"
-                              name="profile_url{{i}}"
-                              class="medium-text-input"
-                              placeholder="{% trans "Link to profile page" %}" />
-                        </span>
-                        <span class="remove">
-                          <a href="javascript:remove_profile_entry({{i}})"
-                            >{% trans "Remove" %}</a>
-                        </span>
-                      </div>
-                    {% endfor %}
-                    <div id="add_profile_entry" class="field">
-                      <select id="add_profile_entry_select"
-                          onchange="add_profile_entry(this)">
-                        <option>{% trans "Select a website to add a profile page..." %}</option>
-                        {% for website in profile_websites %}
-                          <option>{{website.name}}</option>
-                        {% endfor %}
-                        <option>{% trans "Other website" %}</option>
-                      </select>
-                    </div>
-                    <div class="end-multi-columns"></div>
-                  </div>
-                {% endif %}
+                  <div class="end-multi-columns"></div>
                 </div>
-              </div>
+              {% endif %}
+            </div>
+          </div>
 
           <div class="source section">
             <h2>
@@ -473,37 +474,37 @@
               </span>
             </div>          
 
-              <a href="#" class="expand-button">
-                {% trans "+ More information about source of record" %} <br>
-                <span class="hint">
+            <a href="#" class="expand-button">
+              {% trans "+ More information about source of record" %} <br>
+              <span class="hint">
                 {% trans "(Your phone number / Expiry)" %}
-                </span>
-              </a>         
+              </span>
+            </a>         
 
-              <div class="expand-part">
-                <div class="your-info subsection">
-                  <h3>
-                    {% trans "Your information" %}
-                  </h3>           
-                  <div class="field">
-                    <span class="label">
-                      <label for="author_phone" id="author_phone_original">
-                        {% trans "Your phone number" %}:
+            <div class="expanded-part">
+              <div class="your-info subsection">
+                <h3>
+                  {% trans "Your information" %}
+                </h3>           
+                <div class="field">
+                  <span class="label">
+                    <label for="author_phone" id="author_phone_original">
+                      {% trans "Your phone number" %}:
+                    </label>
+                    {% if env.enable_javascript %}
+                      <label for="author_phone"
+                          id="author_phone_clone" style="display: none">
+                        {% trans "Author's phone number" %}:
                       </label>
-                      {% if env.enable_javascript %}
-                        <label for="author_phone"
-                            id="author_phone_clone" style="display: none">
-                          {% trans "Author's phone number" %}:
-                        </label>
-                      {% endif %}
-                    </span>
-                    <span class="value">
-                      <input name="author_phone" id="author_phone"
-                          class="medium-text-input"
-                          value="{{params.author_phone}}" />
-                    </span>
-                  </div>
-                </div>            
+                    {% endif %}
+                  </span>
+                  <span class="value">
+                    <input name="author_phone" id="author_phone"
+                        class="medium-text-input"
+                        value="{{params.author_phone}}" />
+                  </span>
+                </div>
+              </div>            
               <div class="expiry subsection">
                 <h3><label for="expiry_option">
                     {% trans "Expiry" %}
@@ -591,10 +592,8 @@
               {% include "errors.html.template" %}
             </div>
           {% endifnotequal %}
-
         </div>
       </div>
-
     </div>
   </form>
 {% endblock %}

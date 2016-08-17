@@ -39,8 +39,9 @@
         set_display(note_contents_id + '-mark-not-spam', !hidden);
       }
 
-      expand_forms(".status.section");
-      
+      jQuery(document).ready(function() {
+        make_form_expandable(".status.section");
+      });
     </script>
   {% endif %}
 {% endblock head %}

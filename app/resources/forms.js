@@ -330,18 +330,16 @@ function validate_fields() {
   return true;
 }
 
-// Expand the form to see the detail form
-function expand_forms(expandSection) {
-  jQuery(document).ready(function() {
-    var expandPart = jQuery(expandSection).children("div.expand-part");
-    var expandButton = jQuery(expandSection).children("a.expand-button");     
-    expandPart.hide();
-    expandButton.click(function() {
-      if (expandPart.is(":visible"))
-        expandPart.slideUp("slow");
-      else
-        expandPart.slideDown("slow");
-      return false;
-    });
+// Be Able to expand the form to see the detail form
+function make_form_expandable(expandedSection) {
+  var expandedPart = jQuery(expandedSection).find("div.expanded-part");
+  var expandButton = jQuery(expandedSection).find("a.expand-button");     
+  expandedPart.hide();
+  expandButton.click(function() {
+    if (expandedPart.is(":visible"))
+      expandedPart.slideUp("slow");
+    else
+      expandedPart.slideDown("slow");
+    return false;
   });
 }
