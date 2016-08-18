@@ -404,7 +404,6 @@ class TasksTests(unittest.TestCase):
 
 
 class NotifyManyUnreviewedNotesTests(unittest.TestCase):
-    handler = None
 
     def setUp(self):
         self.testbed = testbed.Testbed()
@@ -426,49 +425,17 @@ class NotifyManyUnreviewedNotesTests(unittest.TestCase):
     def tearDown(self):
         self.testbed.deactivate()
 
-    def test_maybe_notify(self):
-        # _maybe_notify fails if unreviewed_notes_email is set to ''
-        config.set(unreviewed_notes_email='',
-                   unreviewed_notes_email_threshold='100')
-        self.assert_(not self.handler._maybe_notify(10))
+    def test_should_notify(self):
+        # If email is empty, always False is returned.
+        config.set(notification_email='',
+                   unreviewed_notes_threshold=9)
+        self.assert_(not self.handler._should_notify(10))
 
-        config.set(unreviewed_notes_email='inna-testing@gmail.com',
-                   unreviewed_notes_email_threshold='10')
-        self.assert_(self.handler._maybe_notify(10))
-
-    def test_should_modify(self):
-        # Default settings
-        config.set(unreviewed_notes_email='',
-                   unreviewed_notes_email_threshold='100')
-        self.assert_(not self.handler._should_modify(10))
-
-        # Custom settings
-        config.set(unreviewed_notes_email='inna-testing@gmail.com',
-                   unreviewed_notes_email_threshold='100')
-        self.assert_(self.handler._should_modify(101))
-        self.assert_(self.handler._should_modify(100))
-        self.assert_(not self.handler._should_modify(99))
-
-    def test_get_unreviewed_notes_email(self):
-        # Default settings
-        config.set(unreviewed_notes_email=const.DEFAULT_UNREVIEWED_NOTES_EMAIL)
-        self.assertEqual(self.handler._get_unreviewed_notes_email(), '')
-
-        # Custom settings
-        config.set(unreviewed_notes_email='inna-testing@gmail.com')
-        self.assertEquals(
-            self.handler._get_unreviewed_notes_email(),
-            'inna-testing@gmail.com')
-
-    def test_get_unreviewed_notes_email_threshold(self):
-        # Default settings
-        config.set(unreviewed_notes_email_threshold=(
-            const.DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD))
-        self.assertEqual(
-            self.handler._get_unreviewed_notes_email_threshold(),
-            const.DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD)
-
-        # Custom settings
-        config.set(unreviewed_notes_email_threshold='50')
-        self.assertEquals(
-            self.handler._get_unreviewed_notes_email_threshold(), 50)
+        config.set(notification_email='inna-testing@gmail.com',
+                   unreviewed_notes_threshold=100)
+        # The number of unreviewed_notes larger than threshold: True
+        self.assert_(self.handler._should_notify(101))
+        # The number of unreviewed_notes is equal to threshold: False
+        self.assert_(not self.handler._should_notify(100))
+        # The number of unreviewed_notes is smaller than threshold: False
+        self.assert_(not self.handler._should_notify(99))

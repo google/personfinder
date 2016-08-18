@@ -303,7 +303,12 @@ DEFAULT_PROFILE_WEBSITES = [
     },
 ]
 
-# The threshold for email notification to an admin user. When the number of
-# unreviewed notes is greater than this value, PF will send email notification.
-DEFAULT_UNREVIEWED_NOTES_EMAIL = ''
-DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD = 100
+# Default values used in the notification process which sends emails to notify
+# bad status in repositories. The notification process will run every 6 hours
+# by default and you can change this interval by editing app/cron.yaml.
+
+# The email address which is used in the notification process.
+DEFAULT_NOTIFICATION_EMAIL = ''
+# The threshold for the number of unreviewed notes. If the number of unreviewed
+# notes exceeds this threshold, notification process will notify it by an email.
+DEFAULT_UNREVIEWED_NOTES_THRESHOLD = 100

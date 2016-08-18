@@ -387,6 +387,7 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
     """This task sends email notification when the number of unreviewed notes
     exceeds threshold.
     """
+    repo_required = False  # can run without a repo
     ACTION = 'tasks/notify_many_unreviewed_notes'
 
     def task_name(self):
@@ -396,7 +397,7 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
         if self.repo:
             try:
                 count_of_unreviewed_notes = (
-                    model.Note.unreviewed_record_count(self.repo))
+                    model.Note.get_unreviewed_notes_count(self.repo))
                 self._maybe_notify(count_of_unreviewed_notes)
             except runtime.DeadlineExceededError:
                 logging.info("DeadlineExceededError occurs")
@@ -406,33 +407,35 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
                 logging.info("Timeout occurs in datastore")
                 self.add_task_for_repo(
                     self.repo, self.task_name(), self.ACTION)
+        else:
+            for repo in model.Repo.list():
+                self.add_task_for_repo(
+                    repo, self.task_name(), self.ACTION)
+
+    def _subject(self):
+        return "Please review your notes in %(repo_name)s" % {
+            "repo_name": self.env.repo,
+        }
+
+    def _body(self, count_of_unreviewed_notes):
+        return "%(repo_name)s has %(num_unreviewed)s unreviewed notes." % {
+            "repo_name": self.env.repo,
+            "num_unreviewed": count_of_unreviewed_notes,
+        }
 
     def _maybe_notify(self, count_of_unreviewed_notes):
-        # TODO: Response should be modified
-        if self._should_modify(count_of_unreviewed_notes):
-            self.send_mail(self._get_unreviewed_notes_email(),
-                           subject="PersonFinder: Please review your notes",
-                           body="%d notes are not reviewed" %(
-                               count_of_unreviewed_notes,
-                           ))
+        # TODO(yaboo@): Response should be modified
+        if self._should_notify(count_of_unreviewed_notes):
+            self.send_mail(self.config.get('notification_email'),
+                           subject=self._subject(),
+                           body=self._body(count_of_unreviewed_notes))
+
+    def _should_notify(self, count_of_unreviewed_notes):
+        if not self.config.get('notification_email'):
+            return False
+
+        if count_of_unreviewed_notes > self.config.get(
+                'unreviewed_notes_threshold'):
             return True
         else:
             return False
-
-    def _should_modify(self, count_of_unreviewed_notes):
-        email = self._get_unreviewed_notes_email()
-        if email == const.DEFAULT_UNREVIEWED_NOTES_EMAIL or not email:
-            return False
-
-        threshold = self._get_unreviewed_notes_email_threshold()
-        if count_of_unreviewed_notes >= threshold:
-            return True
-        else:
-            return False
-
-    def _get_unreviewed_notes_email(self):
-        return self.config.get('unreviewed_notes_email')
-
-    def _get_unreviewed_notes_email_threshold(self):
-        # TODO(yaboo@): need to work for removing int casting.
-        return int(self.config.get('unreviewed_notes_email_threshold'))

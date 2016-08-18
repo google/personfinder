@@ -532,16 +532,6 @@ def strip_url_scheme(url):
 def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
-
-def get_current_user_email(require_unreviewed_notes_email=True):
-    """Get e-mail address of admin user."""
-    # TODO: Need Test Case (yaboo)
-    if require_unreviewed_notes_email and not users.is_current_user_admin():
-        return ''
-    else:
-        return users.get_current_user().email()
-
-
 # ==== Struct ==================================================================
 
 class Struct:

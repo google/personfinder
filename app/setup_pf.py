@@ -66,8 +66,9 @@ def setup_configs():
                repo_aliases={},
                referrer_whitelist=[],
                initialized=True,
-               unreviewed_notes_email=const.DEFAULT_UNREVIEWED_NOTES_EMAIL,
-               unreviewed_notes_email_threshold=const.DEFAULT_UNREVIEWED_NOTES_EMAIL_THRESHOLD,
+               notification_email=const.DEFAULT_NOTIFICATION_EMAIL,
+               unreviewed_notes_threshold=(
+                   const.DEFAULT_UNREVIEWED_NOTES_THRESHOLD),
                )
 
     config.set_for_repo(

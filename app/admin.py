@@ -125,11 +125,11 @@ class Handler(BaseHandler):
                     json_config_names=[
                         'sms_number_to_repo',
                         'repo_aliases',
+                        'unreviewed_notes_threshold',
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
-                        'unreviewed_notes_email',
-                        'unreviewed_notes_email_threshold',
+                        'notification_email',
                     ]):
                 self.redirect('/admin')
 

@@ -245,7 +245,7 @@ class ModelTests(unittest.TestCase):
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
 
-    def test_gt_unreviewed_notes_count(self):
+    def test_get_unreviewed_notes_count(self):
         assert model.Note.get_unreviewed_notes_count('haiti') == \
             self.COUNT_OF_UNREVIEWED_NOTES
 
