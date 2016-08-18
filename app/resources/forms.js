@@ -44,6 +44,14 @@ function hide(element) {
   }
 }
 
+// Dynamic behavior for the whole form.
+function update_form() {
+  var hide_contact = $('own_info_yes').checked ? '' : 'none';
+  $('source_record').style.display = hide_contact;
+  $('status_info').style.display = hide_contact;
+  $('made_contact_info').style.display = hide_contact;
+}
+
 // Dynamic behavior for the Person entry form.
 function update_clone() {
   var display_original = $('clone_no').checked ? 'inline' : 'none';
@@ -56,6 +64,7 @@ function update_clone() {
   $('author_name_clone').style.display = display_clone;
   $('author_phone_clone').style.display = display_clone;
   $('author_email_clone').style.display = display_clone;
+  $('source_title_row').style.display = display_source;  
   $('source_url_row').style.display = display_source;
   $('source_date_row').style.display = display_source;
   $('source_date_hint_row').style.display = display_source;

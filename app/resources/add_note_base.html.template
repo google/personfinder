@@ -20,7 +20,7 @@
 <div class="status section">
   {% if not markdup %}
     <h2>Status</h2>
-    <div class="status subsection">
+    <div class="status subsection" id="status_info">
       <h3>
         {% trans "Status of this person:" %}
       </h3>
@@ -60,7 +60,7 @@
 
   {% if not markdup %}
 
-    <div class="author_made_contact subsection">
+    <div class="author_made_contact subsection" id="made_contact_info">
       <h3 class="mandatory">
         {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
       </h3>
