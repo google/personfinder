@@ -49,9 +49,45 @@
             <h2>
               {% trans "Identifying information" %}
             </h2>
+
+            {% if env.enable_javascript %}            
+              <div class="subsection">
+                <div class="instructions">
+                  <div>
+                    <input type="radio" name="own_info" value="no"
+                        id="own_info_no"
+                        {% ifnotequal params.own_info "yes" %}
+                          checked="checked"
+                        {% endifnotequal %}
+                        onclick="update_form()"
+                        onchange="update_form()">
+                    <label class="option" for="own_info_no">
+                      {% trans "I want to input information about this person." %}
+                    </label>
+                  </div>
+                  <div>
+                    <input type="radio" name="own_info" value="yes"
+                        id="own_info_yes"
+                        {% ifequal params.own_info "yes" %}
+                          checked="checked"
+                        {% endifequal %}
+                        onchange="update_form()"
+                        onclick="update_form()">
+                    <label class="option" for="own_info_yes">
+                      {% trans "I am this person. (input my own information)" %}                      
+                    </label>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              {# Only own-info=no is supported when JavaScript is disabled. #}
+              <input type="hidden" name="own-info" value="no">
+            {% endif %}           
+
             <div class="hint">
               {% trans "What is this person's name?" %}
-            </div>
+            </div>            
+
             {% if config.use_family_name and config.family_name_first %}
               <div class="field">
                 <div class="label">
@@ -100,6 +136,7 @@
                 </span>
               </div>
             {% endif %}
+
 
             <a href="#" class="expand-button">
               {% trans "+ More information to identify the person" %} <br>
@@ -395,7 +432,7 @@
             </div>
           </div>
 
-          <div class="source section">
+          <div class="source section" id="source_record">
             <h2>
               {% trans "Source of Record" %}
             </h2>
@@ -472,7 +509,58 @@
                     class="medium-text-input"
                     value="{{params.author_email}}" />
               </span>
-            </div>          
+            </div>  
+
+            {% if env.enable_javascript %}
+              <div class="subsection" id="source_title_row" style="display: none">
+                <h3>
+                  {% trans "Record information" %}
+                </h3>
+                <span class="hint">
+                  {% trans "Where did this record come from?" %}
+                </span>                        
+                <div class="field" id="source_url_row" style="display: none">
+                  <span class="label">
+                    <label for="source_url">
+                      {% trans "URL of original record" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_url" id="source_url"
+                        class="medium-text-input"
+                        value="{{params.source_url}}" />
+                  </span>
+                </div>
+                <div class="field" id="source_date_row" style="display: none">
+                  <span class="label">
+                    <label for="source_date">
+                      {% trans "Original posting date" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_date" id="source_date"
+                        class="medium-text-input"
+                        value="{{params.source_date}}" />
+                  </span>
+                </div>
+                <div class="field" id="source_date_hint_row"
+                    style="display: none">
+                  <div class="value hint">{% trans "Enter as YYYY-MM-DD" %}</div>
+                </div>
+                <div class="field" id="source_name_row" style="display: none">
+                  <span class="label">
+                    <label for="source_name">
+                      {% trans "Original site name" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_name" id="source_name"
+                        class="medium-text-input"
+                        value="{{params.source_name}}" />
+                  </span>
+                </div>
+              </div>
+            {% endif %}
 
             <a href="#" class="expand-button">
               {% trans "+ More information about source of record" %} <br>
@@ -529,54 +617,10 @@
                   </select>
                 </div>
                 <div class="end-multi-columns"></div>
-              </div>
-            </div>            
+              </div>          
+            </div>
+          </div>  
 
-            {% if env.enable_javascript %}
-              <div class="field" id="source_url_row" style="display: none">
-                <span class="label">
-                  <label for="source_url">
-                    {% trans "URL of original record" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_url" id="source_url"
-                      class="medium-text-input"
-                      value="{{params.source_url}}" />
-                </span>
-              </div>
-              <div class="field" id="source_date_row" style="display: none">
-                <span class="label">
-                  <label for="source_date">
-                    {% trans "Original posting date" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_date" id="source_date"
-                      class="medium-text-input"
-                      value="{{params.source_date}}" />
-                </span>
-              </div>
-              <div class="field" id="source_date_hint_row"
-                  style="display: none">
-                <div class="value hint">{% trans "Enter as YYYY-MM-DD" %}</div>
-              </div>
-              <div class="field" id="source_name_row" style="display: none">
-                <span class="label">
-                  <label for="source_name">
-                    {% trans "Original site name" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_name" id="source_name"
-                      class="medium-text-input"
-                      value="{{params.source_name}}" />
-                </span>
-              </div>
-            {% endif %}
-            <div class="end-multi-columns"></div>
-          </div>
-          
           {% ifequal params.role "provide" %}
             {% include "add_note_base.html.template" %}
           {% endifequal %}     

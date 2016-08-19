@@ -58,11 +58,18 @@ class Handler(BaseHandler):
         else:
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
-        if not self.params.author_name:
-            if self.params.clone:
-                return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
-            else:
-                return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
+
+        if self.params.own_info == 'yes':
+            self.params.author_name = self.params.given_name
+            self.params.status = 'is_note_author' 
+            self.params.author_made_contact = 'yes'
+
+        else:
+            if not self.params.author_name:
+                if self.params.clone:
+                    return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
+                else:
+                    return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
 
         if self.params.add_note:
             if not self.params.text:

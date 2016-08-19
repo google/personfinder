@@ -198,8 +198,8 @@
             <h2>{% trans "Source of this record" %}</h2>
             <div class="field">
               <span class="label">{% trans "Author's name" %}:</span>
-              <span class="value">{{person.author_name}}</span>
-            </div>
+              <span class="value">{{person.author_name}}</span>                
+            </div>            
             {% if env.enable_captcha %}
               {% if person.author_phone %}
                 <div class="field">

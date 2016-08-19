@@ -44,6 +44,14 @@ function hide(element) {
   }
 }
 
+// Dynamic behavior for the whole form.
+function update_form() {
+  var display_contact = $('own_info_no').checked ? '' : 'none';
+  $('source_record').style.display = display_contact;
+  $('status_info').style.display = display_contact;
+  $('made_contact_info').style.display = display_contact;
+}
+
 // Dynamic behavior for the Person entry form.
 function update_clone() {
   var display_original = $('clone_no').checked ? 'inline' : 'none';
@@ -56,6 +64,7 @@ function update_clone() {
   $('author_name_clone').style.display = display_clone;
   $('author_phone_clone').style.display = display_clone;
   $('author_email_clone').style.display = display_clone;
+  $('source_title_row').style.display = display_source;  
   $('source_url_row').style.display = display_source;
   $('source_date_row').style.display = display_source;
   $('source_date_hint_row').style.display = display_source;
@@ -274,8 +283,12 @@ function mark_dup() {
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
-  // TODO(ryok): maybe just check full_name instead of given_name and family_name.
-  var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
+  // TODO(ryok): maybe just check full_name instead of given_name and family_name. 
+  if ($('own_info_yes').checked)
+    var mandatory_fields = ['given_name', 'family_name', 'text'];
+  else
+    var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
+
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {
