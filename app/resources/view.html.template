@@ -196,17 +196,10 @@
 
           <div class="source section">
             <h2>{% trans "Source of this record" %}</h2>
-            {% if person.author_name %}
-              <div class="field">
-                <span class="label">{% trans "Author's name" %}:</span>
-                <span class="value">{{person.author_name}}</span>                
-              </div>            
-            {% else %}
-              <div class="field">
-                <span class="label">{% trans "Author's name" %}:</span>
-                <span class="value">{{person.full_name}}</span>
-              </div>                          
-            {% endif %}  
+            <div class="field">
+              <span class="label">{% trans "Author's name" %}:</span>
+              <span class="value">{{person.author_name}}</span>                
+            </div>            
             {% if env.enable_captcha %}
               {% if person.author_phone %}
                 <div class="field">
