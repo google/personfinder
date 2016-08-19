@@ -690,6 +690,7 @@ class BaseHandler(webapp.RequestHandler):
         'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
+        'own_info': validate_yes,
     }
 
     def redirect(self, path, repo=None, permanent=False, **params):
