@@ -44,6 +44,7 @@ class Handler(BaseHandler):
                 (name, encoder.encode(value))
                 for name, value in view_config.iteritems())
         all_view_config_json = encoder.encode(view_config)
+
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
@@ -124,9 +125,11 @@ class Handler(BaseHandler):
                     json_config_names=[
                         'sms_number_to_repo',
                         'repo_aliases',
+                        'unreviewed_notes_threshold',
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
+                        'notification_email',
                     ]):
                 self.redirect('/admin')
 
@@ -137,6 +140,7 @@ class Handler(BaseHandler):
             literal_config_names,
             updating_config_names=[]):
         values = {}
+
         for name in json_config_names:
             try:
                 values[name] = simplejson.loads(self.request.get(name))

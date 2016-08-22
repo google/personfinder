@@ -19,18 +19,23 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 import logging
 
+
 class EmailSender(webapp.RequestHandler):
     """Simple handler to send email; intended to be called from a taskqueue
     task so email sending can be throttled to stay below app engine quotas."""
     def post(self):
-        subject = self.request.get('subject')
-        to = self.request.get('to')
+        self.send_mail(sender=self.request.get('sender'),
+                       subject=self.request.get('subject'),
+                       to=self.request.get('to'),
+                       body=self.request.get('body'))
+
+    @staticmethod
+    def send_mail(sender, subject, to, body):
+        """Send mail.
+        """
         logging.info('Sending mail: recipient %r, subject %r' % (to, subject))
         try:
-            mail.send_mail(sender=self.request.get('sender'),
-                           subject=subject,
-                           to=to,
-                           body=self.request.get('body'))
+            mail.send_mail(sender=sender, subject=subject, to=to, body=body)
         except mail_errors.Error, e:
             # we swallow mail_error exceptions on send, since they're not ever
             # transient

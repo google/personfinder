@@ -112,7 +112,12 @@ class ModelTests(unittest.TestCase):
             person_record_id=self.p3.record_id,
             linked_person_record_id=self.p1.record_id,
             entry_date=get_utcnow(),
-            source_date=datetime(2000, 2, 2))
+            source_date=datetime(2000, 2, 2),
+            reviewed=True)
+
+        # This value should be updated if the number of reviewed notes change.
+        self.COUNT_OF_UNREVIEWED_NOTES = 6
+
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
         self.key_n1_3 = db.put(self.n1_3)
@@ -239,6 +244,10 @@ class ModelTests(unittest.TestCase):
             self.n1_1.record_id
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
+
+    def test_get_unreviewed_notes_count(self):
+        assert model.Note.get_unreviewed_notes_count('haiti') == \
+            self.COUNT_OF_UNREVIEWED_NOTES
 
     def test_linked_persons(self):
         assert self.p2.record_id in self.p1.get_linked_person_ids()
