@@ -434,8 +434,6 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
         if not self.config.get('notification_email'):
             return False
 
-        if count_of_unreviewed_notes > self.config.get(
-                'unreviewed_notes_threshold'):
-            return True
-        else:
-            return False
+        return  count_of_unreviewed_notes > self.config.get(
+                'unreviewed_notes_threshold')
+

@@ -287,7 +287,7 @@ class ConfigTests(ServerTestsBase):
         assert self.s.status == 200, self.get_admin_page_error_message()
         assert (config.get('sms_number_to_repo') ==
             {'+198765432109': 'test', '+8101234567890': 'japan'})
-        assert (config.get('unreviewed_notes_threshold') == 100)
+        assert config.get('unreviewed_notes_threshold') == 100
 
     def test_deactivation(self):
         # Load the administration page.
