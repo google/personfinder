@@ -3,7 +3,6 @@
 import jautils
 
 from unidecode import unidecode
-
 import os.path
 import re
 import logging
@@ -34,6 +33,7 @@ def read_dictionary(file_name):
     return dictionary
 
 JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('japanese_name_location_dict.txt')
+CHINESE_FAMILY_NAME_DICTIONARY = read_dictionary('chinese_family_name_dict.txt')
 
 def has_kanji(word):
     """
@@ -145,6 +145,37 @@ def romanize_word_by_unidecode(word):
     romanized_word = unidecode(word)
     return [romanized_word.strip()]
 
+def is_chinese_person_name(word):
+    surname, lastname  = split_chinese_name(word)
+    return surname is not None and lastname is not None
+
+def split_chinese_name(word):
+    if not word or not 2 <= len(word) <= 4:
+        return None, None
+
+    if word[:2] in CHINESE_FAMILY_NAME_DICTIONARY and len(word) > 2:
+        return word[:2], word[2:]
+
+    elif word[0] in CHINESE_FAMILY_NAME_DICTIONARY:
+        return word[0], word[1:]
+
+    return None, None
+
+def romanize_chinese_person_name(word):
+    """
+    This method romanizes a chinese person name including surname and last name.
+
+    Returns:
+        romanized_cn_name
+    """
+
+    surname, lastname = split_chinese_name(word)
+    if not surname or not lastname:
+        return []
+
+    romanized_surname_list = list(CHINESE_FAMILY_NAME_DICTIONARY[surname])
+    return romanized_surname_list[0].capitalize() + unidecode(lastname).strip()
+
 
 def romanize_search_query(word):
     """
@@ -168,6 +199,6 @@ def romanize_search_query(word):
         hiragana_word = jautils.normalize(word)
         romanized_words.append(jautils.hiragana_to_romaji(hiragana_word))
 
-    romanized_word = unidecode(word)
+    romanized_word = romanize_chinese_person_name(word) if is_chinese_person_name(word) else unidecode(word)
     romanized_words.append(romanized_word.strip())
     return romanized_words
