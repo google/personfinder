@@ -214,6 +214,14 @@ def romanize_search_query(word):
         hiragana_word = jautils.normalize(word)
         romanized_words.append(jautils.hiragana_to_romaji(hiragana_word))
 
-    romanized_word = romanize_chinese_person_name(word) if is_chinese_person_name(word) else unidecode(word)
-    romanized_words.append(romanized_word.strip())
+    # if the name is a Chinese name and the chinese_romanize can produce
+    # a different result, append the result to the romanzied_words with
+    # unidecode results together
+    unidecode_romanize_word = unidecode(word).strip()
+    if is_chinese_person_name(word):
+        chinese_romanize_word = romanize_chinese_person_name(word)
+        if chinese_romanize_word != unidecode_romanize_word:
+            romanized_words.append(chinese_romanize_word)
+    romanized_words.append(unidecode_romanize_word)
+
     return romanized_words
