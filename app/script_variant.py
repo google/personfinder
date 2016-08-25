@@ -146,11 +146,26 @@ def romanize_word_by_unidecode(word):
     return [romanized_word.strip()]
 
 def is_chinese_person_name(word):
+    """
+    This method checks if a unicode string is a chinese person name by figuring out
+    if it contains valid a chinese surname and a given name.
+    
+    Return:
+        Boolean
+    """
     surname, lastname  = split_chinese_name(word)
     return surname is not None and lastname is not None
 
 def split_chinese_name(word):
-    if not word or not 2 <= len(word) <= 4:
+    """
+    This method tries to split a chinese name into two parts: surname and lastname
+    Args:
+        word: a chinese name string
+    Returns:
+        surname, lastname if it is a valid chinese name
+        else None, None
+    """
+    if not word or not 2 <= len(word) <= 4 or len(word) != len(re.findall(ur"[\u4e00-\u9fa5]", word)):
         return None, None
 
     if word[:2] in CHINESE_FAMILY_NAME_DICTIONARY and len(word) > 2:
