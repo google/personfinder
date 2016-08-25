@@ -165,6 +165,7 @@ def split_chinese_name(word):
         surname, lastname if it is a valid chinese name
         else None, None
     """
+    word = word.replace(" ", "")
     if not word or not 2 <= len(word) <= 4 or len(word) != len(re.findall(ur"[\u4e00-\u9fa5]", word)):
         return None, None
 
