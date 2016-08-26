@@ -166,10 +166,10 @@ def split_chinese_name(word):
         else None, None
     """
     word = word.replace(" ", "")
-    if not word or not 2 <= len(word) <= 4 or len(word) != len(re.findall(ur"[\u4e00-\u9fa5]", word)):
+    if len(word) != len(re.findall(ur"[\u4e00-\u9fa5]", word)):
         return None, None
 
-    if word[:2] in CHINESE_FAMILY_NAME_DICTIONARY and len(word) > 2:
+    if word[:2] in CHINESE_FAMILY_NAME_DICTIONARY:
         return word[:2], word[2:]
 
     elif word[0] in CHINESE_FAMILY_NAME_DICTIONARY:
