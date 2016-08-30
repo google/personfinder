@@ -204,149 +204,158 @@ class FullTextSearchTests(unittest.TestCase):
 
 
         # Search by alternate name
-        results = full_text_search.search('haiti', 'Iorin', 5)
+        results = full_text_search.search('haiti', ['Iorin', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
         # Search by family name
-        results = full_text_search.search('haiti', 'Minase', 5)
+        results = full_text_search.search('haiti', ['Minase', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
         # Search by given name
-        results = full_text_search.search('haiti', 'Iori', 5)
+        results = full_text_search.search('haiti', ['Iori', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
         # Search by given name + family name
-        results = full_text_search.search('haiti', 'Minase Iori', 5)
+        results = full_text_search.search('haiti', ['Minase Iori', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
         # Search by full name
-        resutls = full_text_search.search('haiti', 'Iori Minase', 5)
+        resutls = full_text_search.search('haiti', ['Iori Minase', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0505'])
 
         # Search by name & location
-        results = full_text_search.search('haiti', 'Chihaya Arao', 5)
+        results = full_text_search.search('haiti', ['Chihaya', 'Arao'], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
 
         # Search Cyrillic record by name & location
-        results = full_text_search.search('haiti', 'Ritsuko Tottori', 5)
+        results = full_text_search.search('haiti', ['Ritsuko', 'Tottori'], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])
 
-        # Search by home_street only
-        results = full_text_search.search('haiti', 'Kunaideme72', 5)
+        # Search by home_street only ( input inside the name box)
+        results = full_text_search.search('haiti', ['Kunaideme72', ''], 5)
         assert not results
 
-        # Search by home_city only
-        results = full_text_search.search('haiti', 'Arao', 5)
+        # Search by home_city only ( input inside the location box)
+        results = full_text_search.search('haiti', ['', 'Arao'], 5)
         assert not results
 
-        # Search by home_state only
-        results = full_text_search.search('haiti', 'Kumamoto', 5)
+        # Search by home_state only ( input inside the location box)
+        results = full_text_search.search('haiti', ['', 'Kumamoto'], 5)
         assert not results
 
-        # Search by home_postal_code only
-        results = full_text_search.search('haiti', '864-0003', 5)
+        # Search by home_postal_code only ( input inside the name box)
+        results = full_text_search.search('haiti', ['864-0003', ''], 5)
         assert not results
 
-        # Search by home_neighborhood only
-        results = full_text_search.search('haiti', 'Araokeibajou', 5)
+        # Search by home_neighborhood only ( input inside the location box)
+        results = full_text_search.search('haiti', ['', 'Araokeibajou'], 5)
         assert not results
 
-        # Search by home_country only
-        results = full_text_search.search('haiti', 'Japan', 5)
+        # Search by home_country only ( input inside the name box)
+        results = full_text_search.search('haiti', ['Japan', ''], 5)
         assert not results
 
         # Search in a different repository
-        results = full_text_search.search('japan', 'Iori', 5)
+        results = full_text_search.search('japan', ['Iori', ''], 5)
         assert not results
 
         # Check no results
-        results = full_text_search.search('haiti', 'Producer san', 5)
+        results = full_text_search.search('haiti', ['Producer san', ''], 5)
         assert not results
 
         # Search with no query text
-        results = full_text_search.search('haiti', '', 5)
+        results = full_text_search.search('haiti', ['', ''], 5)
         assert not results
 
         # Search deleted record
         delete.delete_person(self, self.p5)
-        results = full_text_search.search('haiti', 'Ami', 5)
+        results = full_text_search.search('haiti', ['Ami', ''], 5)
         assert not results
 
-        # Check rank order (name match heigher than location match)
-        results = full_text_search.search('haiti', 'Rin Shibuya', 5)
-        assert [r.record_id for r in results] == \
-               ['haiti:0810', 'haiti:0203']
+        # Search by full name
+        results = full_text_search.search('haiti', ['Rin Shibuya', ''], 5)
+        assert set([r.record_id for r in results]) == \
+               set(['haiti:0810'])
 
         # Search romaji record by kanji name
-        results = full_text_search.search('haiti', u'千早', 5)
+        results = full_text_search.search('haiti', [u'千早', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
 
         # Search romaji record by kanji name and location
-        results = full_text_search.search('haiti', u'千早 荒尾', 5)
+        results = full_text_search.search('haiti', [u'千早', u'荒尾'], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
 
         # Check rank order
         # (same kanji higher than different kanji with the same reading)
 
-        results = full_text_search.search('haiti', u'菊地 真', 5)
+        results = full_text_search.search('haiti', [u'菊地 真', ''], 5)
         assert [r.record_id for r in results] == \
             ['haiti/0829', 'haiti/1829']
-        results = full_text_search.search('haiti', u'菊地 眞', 5)
+        results = full_text_search.search('haiti', [u'菊地 眞', ''], 5)
         assert [r.record_id for r in results] == \
             ['haiti/1829', 'haiti/0829']
 
         # Search kanji record by multi reading
-        results = full_text_search.search('haiti', u'hagiwara', 5)
+        results = full_text_search.search('haiti', [u'hagiwara', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/1224'])
-        results = full_text_search.search('haiti', u'ogiwara', 5)
+        results = full_text_search.search('haiti', [u'ogiwara', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/1224'])
 
         # Search romaji record by hiragana name and location
-        results = full_text_search.search('haiti', u'ちはや あらお', 5)
+        results = full_text_search.search('haiti', [u'ちはや', u'あらお'], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0225'])
 
         # Search by full name without space
-        results = full_text_search.search('haiti', 'HibikiGanaha', 5)
+        results = full_text_search.search('haiti', ['HibikiGanaha', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/1010'])
 
         # Search kanji record by full name without space
-        results = full_text_search.search('haiti', u'AzusaMiura', 5)
+        results = full_text_search.search('haiti', [u'AzusaMiura', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0719'])
 
         # Search Cyrillic record by full name without space
-        results = full_text_search.search('haiti', u'RitsukoAkiduki', 5)
+        results = full_text_search.search('haiti', [u'RitsukoAkiduki', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0623'])
 
         # Search full name without space record by given name and family name
-        results = full_text_search.search('haiti', u'Kotori Otonashi', 5)
+        results = full_text_search.search('haiti', [u'Kotori Otonashi', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0909'])
 
         # Search Cyrillic record by full name without space
-        results = full_text_search.search('haiti', u'OtonashiKotori', 5)
+        results = full_text_search.search('haiti', [u'OtonashiKotori', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0909'])
 
         # Search Chinese record by kanji
-        results = full_text_search.search('haiti', u'真美', 5)
+        results = full_text_search.search('haiti', [u'真美', ''], 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0523'])
 
+        # Search Name with Location part contain a part of person's name
+        results = full_text_search.search('haiti',
+                                          ['Rin Shibuya', 'Shinjuku Rin'], 5)
+        assert not results            
+
+        # Input the name and location in the wrong box
+        results = full_text_search.search('haiti',
+                                          ['Shinjuku', 'Rin Shibuya'], 5)
+        assert not results         
 
     def test_delete_record_from_index(self):
         db.put(self.p4)

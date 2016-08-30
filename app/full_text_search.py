@@ -14,9 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
 import re
-
+import logging
 from google.appengine.api import search as appengine_search
 
 import model
@@ -24,27 +23,11 @@ import script_variant
 
 # The index name for full text search.
 # This index contains person name and location.
-PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
+PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'name_location_information'
 
 # This is for ranking (person name match higher than location)
 REPEAT_COUNT_FOR_RANK = 5
 
-def make_or_regexp(query_txt):
-    """
-    Creates compiled regular expression for OR search.
-    Args:
-        query_txt: Search query
-
-    Returns:
-        query_word | query_word | ...
-    """
-    query_words = query_txt.split(' ')
-    query_list = []
-    for word in query_words:
-        romanized_word_list = script_variant.romanize_search_query(word)
-        query_list.extend(romanized_word_list)
-    regexp = '|'.join([re.escape(word) for word in query_list if word])
-    return re.compile(regexp, re.I)
 
 def create_sort_expressions():
     """
@@ -57,6 +40,7 @@ def create_sort_expressions():
         direction=appengine_search.SortExpression.DESCENDING,
         default_value=0.0
     )]
+
 
 def enclose_in_parenthesis(query_txt):
     """
@@ -114,47 +98,74 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def get_person_ids_from_results(romanized_query, results_list):
+def is_query_match(query_txt, values, romanized_values):
+    """
+    To check if the query match the field value
+    Args:
+        query_txt: Search query
+        values: field value for unidecode method
+        romanized_values: romanized field value
+    Returns:
+        Boolean
+    """
+    if not query_txt:
+        return True
+
+    romanized_query_list = (script_variant.romanize_search_query(query_txt))
+
+    for name in romanized_query_list:
+        words = name.split(" ")
+        for word_index, word in enumerate(words):
+            if not re.search(word, values + " " + romanized_values, re.I):
+                break
+            if word_index == len(words) - 1:
+                return True
+    return False
+
+
+def get_person_ids_from_results(romanized_query_list, results_list):
     """
     Returns person record_id of persons
-    whose name contains at least one word in romanized_query.
-    We need regexp to check romanized_query matches
-    at least a part of person name.
-    To protect users' privacy, we should not return records
-    which match location only.
-    It also removes dups.
-    (i.e., If results_list contains multiple results with the same index_results,
-    it returns just one of them)
     """
-    regexp = make_or_regexp(romanized_query)
+    name_query_txt = romanized_query_list[0]
+    location_query_txt = romanized_query_list[1] \
+        if len(romanized_query_list) > 1 else ''
     index_results = []
+    added_results = set()
     for results in results_list:
         for document in results:
-            romanized_jp_names = ''
-            for field in document.fields:
-                if field.name == 'names_romanized_by_romanize_word_by_unidecode':
-                    names = field.value
-                if field.name == 'record_id':
-                    id = field.value
-                if field.name == 'names_romanized_by_romanize_japanese_word':
-                    romanized_jp_names = field.value
-            
-            if id in index_results:
+            field_dict = {field.name: field.value for field in
+                          document.fields}
+            names = field_dict[
+                'names_romanized_by_romanize_word_by_unidecode']
+            record_id = field_dict['record_id']
+            romanized_jp_names = field_dict['names_romanized_by' \
+                                            '_romanize_japanese_word']
+            locations = field_dict['full_location_romanized_by' \
+                                   '_romanize_word_by_unidecode']
+            romanized_locations = field_dict['full_location_romanized_by' \
+                                             '_romanize_japanese_word']
+        # use set to faster the speed. 
+        # average time complexity: set-O(1) list-O(n)
+            if  record_id in added_results:
                 continue
 
-            if regexp.search(names) or regexp.search(romanized_jp_names):
-                index_results.append(id)
+            if  is_query_match(name_query_txt, names, romanized_jp_names) and \
+                    is_query_match(location_query_txt,
+                                            locations, romanized_locations):
+                index_results.append(record_id)
+                added_results.add(record_id)
     return index_results
 
 
-def search(repo, query_txt, max_results):
+def search(repo, query_list, max_results):
     """
     Searches person with index.
     Query_txt must match at least a part of person name.
     (It's not allowed to search only by location.)
     Args:
         repo: The name of repository
-        query_txt: Search query
+        query_list: Search query list, (name_query, location_query)
         max_results: The max number of results you want.(Maximum: 1000)
 
     Returns:
@@ -165,17 +176,24 @@ def search(repo, query_txt, max_results):
         search.Error: An error occurred when the index name is unknown
                       or the query has syntax error.
     """
-    if not query_txt:
+    if len(query_list) != 2 or not query_list[0]:
         return []
 
-    # Remove double quotes so that we can safely apply enclose_in_double_quotes().
-    query_txt = re.sub('"', '', query_txt)
-    romanized_query = create_romanized_query_txt(query_txt)
-    non_romanized_query = create_non_romanized_query(query_txt)
+    query_list_cleaned = query_list if query_list[1] else query_list[:1]
 
+    # Remove double quotes so that we can safely apply
+    # enclose_in_double_quotes().
+    for index, query in enumerate(query_list_cleaned):
+        query_list_cleaned[index] = re.sub('"', '', query)
+
+    romanized_query_list = [create_romanized_query_txt(query)
+                            for query in query_list_cleaned]
+    non_romanized_query_list = [create_non_romanized_query(query)
+                                for query in query_list_cleaned]
+
+    # search and sort options
     person_location_index = appengine_search.Index(
         name=PERSON_LOCATION_FULL_TEXT_INDEX_NAME)
-
     expressions = create_sort_expressions()
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
@@ -185,33 +203,38 @@ def search(repo, query_txt, max_results):
         sort_options=sort_opt,
         returned_fields=['record_id',
                          'names_romanized_by_romanize_word_by_unidecode',
-                         'names_romanized_by_romanize_japanese_word'])
+                         'names_romanized_by_romanize_japanese_word',
+                         'full_location_romanized_by_romanize_word_by_unidecode',
+                         'full_location_romanized_by_romanize_japanese_word'])
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
     # (e.g., "repo: repository_name", "test: test", "test AND test").
-    and_query = romanized_query + ' AND (repo: ' + repo + ')'
+    and_query = ' AND '.join(
+        romanized_query_list) + ' AND (repo: ' + repo + ')'
     person_location_index_results = person_location_index.search(
         appengine_search.Query(
             query_string=and_query, options=options))
 
-    # To rank exact matches higher than non-exact matches with the same romanization.
-    non_romanized_and_query = non_romanized_query + ' AND (repo: ' + repo + ')'
-    non_romanized_person_location_index_results = person_location_index.search(
-        appengine_search.Query(
-            query_string=non_romanized_and_query, options=options)
-    )
+    # To rank exact matches higher than
+    # non-exact matches with the same romanization.
+    non_romanized_and_query = ' AND '.join(non_romanized_query_list) \
+                              + ' AND (repo: ' + repo + ')'
+    non_romanized_person_location_index_results = \
+        person_location_index.search(appengine_search.Query(
+            query_string=non_romanized_and_query, options=options))
 
     results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
-    index_results = get_person_ids_from_results(query_txt, results_list)
 
+    index_results = get_person_ids_from_results(query_list, results_list)
     results = []
-    for id in index_results:
-        result = model.Person.get(repo, id, filter_expired=True)
+    for record_id in index_results:
+        result = model.Person.get(repo, record_id, filter_expired=True)
         if result:
             results.append(result)
     return results
+
 
 def create_fields_for_rank(field_name, values):
     """
@@ -235,7 +258,7 @@ def create_fields_for_rank(field_name, values):
             fields.append(
                 appengine_search.TextField(name='%s_%d_for_rank_%d' % (
                     field_name, index, x),
-                    value=value))
+                                           value=value))
     return fields
 
 
@@ -254,7 +277,8 @@ def create_full_name_list_without_space(given_names, family_names):
     return full_names
 
 
-def create_full_name_without_space_fields(romanize_method, given_name, family_name):
+def create_full_name_without_space_fields(romanize_method, given_name,
+                                          family_name):
     """
     Creates fields with the full name without white spaces.
     Returns:
@@ -290,20 +314,22 @@ def create_romanized_name_fields(romanize_method, **kwargs):
         for index, romanized_name in enumerate(romanized_names):
             fields.extend(create_fields_for_rank('%s_romanized_by_%s_%d' %
                                                  (field_name,
-                                                  romanize_method_name, index),
+                                                  romanize_method_name,
+                                                  index),
                                                  romanized_name))
         romanized_names_list.extend(romanized_names)
 
     full_name_fields, romanized_full_names = \
-            create_full_name_without_space_fields(
-        romanize_method, kwargs['given_name'], kwargs['family_name'])
+        create_full_name_without_space_fields(
+            romanize_method, kwargs['given_name'], kwargs['family_name'])
     fields.extend(full_name_fields)
     romanized_names_list.extend(romanized_full_names)
 
     names = ':'.join([name for name in romanized_names_list if name])
     fields.append(
-        appengine_search.TextField(name='names_romanized_by_'+romanize_method_name,
-                                   value=names))
+        appengine_search.TextField(
+            name='names_romanized_by_' + romanize_method_name,
+            value=names))
 
     return fields
 
@@ -313,7 +339,6 @@ def create_romanized_location_fields(romanize_method, **kwargs):
     Creates romanized location fields (romanized by romanize_method)
     for full text search.
     """
-    # TODO: combine name dict and location dict
     fields = []
     romanize_method_name = romanize_method.__name__
     for field in kwargs:
@@ -325,7 +350,13 @@ def create_romanized_location_fields(romanize_method, **kwargs):
                         field, romanize_method_name, index),
                     value=romanized_location)
             )
+    full_romanized_location = ':'.join(
+        location.value for location in fields if location.value)
+    fields.append(appengine_search.TextField(
+        name='full_location_romanized_by_' + romanize_method_name,
+        value=full_romanized_location))
     return fields
+
 
 def create_non_romanized_fields(**kwargs):
     """
@@ -341,6 +372,7 @@ def create_non_romanized_fields(**kwargs):
             name=field_name, value=kwargs[field_name]))
     return fields
 
+
 def create_document(person):
     """
     Creates document for full text search.
@@ -353,19 +385,20 @@ def create_document(person):
     record_id = person.record_id
     doc_id = repo + ':' + record_id
     fields.append(appengine_search.TextField(name='repo', value=repo))
-    fields.append(appengine_search.TextField(name='record_id', value=record_id))
+    fields.append(
+        appengine_search.TextField(name='record_id', value=record_id))
 
     fields.extend(create_non_romanized_fields(
-            given_name=person.given_name,
-            family_name=person.family_name,
-            full_name=person.full_name,
-            alternate_names=person.alternate_names,
-            home_street=person.home_street,
-            home_city=person.home_city,
-            home_state=person.home_state,
-            home_postal_code=person.home_postal_code,
-            home_neighborhood=person.home_neighborhood,
-            home_country=person.home_country))
+        given_name=person.given_name,
+        family_name=person.family_name,
+        full_name=person.full_name,
+        alternate_names=person.alternate_names,
+        home_street=person.home_street,
+        home_city=person.home_city,
+        home_state=person.home_state,
+        home_postal_code=person.home_postal_code,
+        home_neighborhood=person.home_neighborhood,
+        home_country=person.home_country))
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.

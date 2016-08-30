@@ -94,7 +94,7 @@
             {% endif %}
           </span>
         </div>
-      {% if config.use_family_name and not config.family_name_first %}
+       {% if config.use_family_name and not config.family_name_first %}
         <div class="field">
           <span class="label">
             <label for="family_name">{% trans "Family name" %}:</label>
@@ -114,15 +114,32 @@
       {% endif %}
     {% else %}
       <div class="field">
-          {% if env.ui == "facebook" %}
-            <input id="query" name="query"
-                class="short-text-input"
-                value="{{params.query}}">
-          {% else %}
-            <input id="query" name="query"
-                class="long-text-input"
-                value="{{params.query}}">
-          {% endif %}
+        {% if env.ui == "facebook" %}
+          <input id="query_name" name="query_name"
+              class="short-text-input"
+              value="{{params.query_name}}">
+        {% else %}
+          <span class="mandatory label">
+            {% trans "Name (required)" %}:
+          </span>
+          <input id="query_name" name="query_name"
+              class="long-text-input"
+              value="{{params.query_name}}" placeholder="person's name, parts of the name">
+        {% endif %}
+      </div>
+      <div class="field">
+        {% if env.ui == "facebook" %}
+          <input id="query_location" name="query_location"
+              class="short-text-input"
+              value="{{params.query_location}}">
+        {% else %}
+          <span class="label">
+            {% trans "Location(optional)" %}:
+          </span>
+          <input id="query_location" name="query_location"
+              class="long-text-input"
+              value="{{params.query_location}}" placeholder="example: Tokyo">
+        {% endif %}
       </div>
     {% endifequal %}
     <div class="end-multi-columns"></div>

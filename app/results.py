@@ -70,8 +70,14 @@ def max_word_length(query_words):
 
 
 class Handler(BaseHandler):
-    def search(self, query_txt):
-        """Performs a search and adds view_url attributes to the results."""
+    def search(self, query_list):
+        """
+        Performs a search and adds view_url attributes to the results.
+        Args:
+            query_list: A list contains two queries: Name query and Location query
+        """
+
+        query_txt = " ".join(query_list)
         results = None
         if self.config.external_search_backends:
             results = external_search.search(
@@ -83,10 +89,10 @@ class Handler(BaseHandler):
         if not results:
             if config.get('enable_fulltext_search'):
                 results = full_text_search.search(self.repo,
-                                                  query_txt, MAX_RESULTS)
+                                                  query_list, MAX_RESULTS)
             else:
                 results = indexing.search(self.repo,
-                                          TextQuery(query_txt), MAX_RESULTS)
+                                          TextQuery(query_txt), MAX_RESULTS)  
 
         for result in results:
             result.view_url = self.get_url('/view',
@@ -114,6 +120,7 @@ class Handler(BaseHandler):
             '/results',
             ui='' if self.env.ui == 'small' else self.env.ui,
             query=query,
+            role=self.params.role,            
             given_name=self.params.given_name,
             family_name=self.params.family_name)
 
@@ -154,7 +161,7 @@ class Handler(BaseHandler):
             # for key in criteria:
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
-            results = self.search(query_txt)
+            results = self.search([query_txt, ""])
             # Filter out results with addresses matching part of the query.
             results = [result for result in results
                        if not getattr(result, 'is_address_match', False)]
@@ -183,6 +190,10 @@ class Handler(BaseHandler):
                     return self.redirect('/create', **self.params.__dict__)
 
         if self.params.role == 'seek':
+
+            query_list = [self.params.query_name, self.params.query_location]
+            self.params.query = " ".join(query_list)
+
             query = TextQuery(self.params.query)
 
             # If a query looks like a phone number, show the user a result
@@ -205,7 +216,7 @@ class Handler(BaseHandler):
                 return self.reject_query(query)
             else:
                 # Look for prefix matches.
-                results = self.search(self.params.query)
+                results = self.search(query_list)
                 results_url = self.get_results_url(self.params.query)
                 third_party_query_type = ''
 
