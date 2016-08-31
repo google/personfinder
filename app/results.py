@@ -94,7 +94,7 @@ class Handler(BaseHandler):
                                                   query_dict, MAX_RESULTS)
             else:
                 results = indexing.search(self.repo,
-                                          TextQuery(query_txt), MAX_RESULTS)  
+                                          TextQuery(query_txt), MAX_RESULTS)
 
         for result in results:
             result.view_url = self.get_url('/view',

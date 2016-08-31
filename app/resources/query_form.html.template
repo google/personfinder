@@ -94,7 +94,7 @@
             {% endif %}
           </span>
         </div>
-       {% if config.use_family_name and not config.family_name_first %}
+      {% if config.use_family_name and not config.family_name_first %}
         <div class="field">
           <span class="label">
             <label for="family_name">{% trans "Family name" %}:</label>

@@ -4770,7 +4770,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?role=seek&query_name=_test_given+_test_family&query_location=')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4796,7 +4797,8 @@ _feed_profile_url2</pfif:profile_urls>
             '_test_given')
         assert '_test_family' not in d.content
 
-        self.go('/pakistan/results?role=seek&query_name=_test_given+_test_family&query_location')
+        self.go('/pakistan/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1)
         first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
         assert '_test_given' in first_title
@@ -4848,7 +4850,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_family _test_alternate_given'})
 
-        self.go('/japan/results?role=seek&query_name=_test_family+_test_given&lang=en&query_location=')
+        self.go('/japan/results?role=seek&'
+                'query_name=_test_family+_test_given&lang=en&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_family _test_given',
             '(_test_alternate_family _test_alternate_given)']))
@@ -4896,7 +4899,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?role=seek&query_name=_test_given+_test_family&query_location')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4928,7 +4932,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?role=seek&query_name=_test_given+_test_family&query_location=')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4965,6 +4970,41 @@ _feed_profile_url2</pfif:profile_urls>
         assert '_test_given' in first_title
         assert '_test_alternate_given' not in first_title
         assert '_test_alternate_family' not in first_title
+        person.delete()
+
+
+    def test_search_name_and_location(self):
+        # enable_fulltext_search=True
+        config.set(enable_fulltext_search=True)
+        d = self.go('/haiti/create')
+        assert d.xpath('//input[@name="given_name"]')
+        assert d.xpath('//input[@name="family_name"]')
+        assert d.xpath('//label[@for="home_street"]')
+        assert d.xpath('//input[@name="home_street"]')
+        assert d.xpath('//label[@for="home_neighborhood"]')
+        assert d.xpath('//input[@name="home_neighborhood"]')
+        assert d.xpath('//label[@for="home_city"]')
+        assert d.xpath('//input[@name="home_city"]')
+        assert d.xpath('//label[@for="home_state"]')
+        assert d.xpath('//input[@name="home_state"]')
+        assert d.xpath('//label[@for="home_country"]')
+        assert d.xpath('//input[@name="home_country"]')
+        # Submit a person record.
+        self.s.submit(d.cssselect_one('form'),
+                      given_name='_test_given',
+                      family_name='_test_family',
+                      home_street='_test_home_street',
+                      home_neighborhood='_test_home_neighborhood',
+                      home_city='_test_home_city',
+                      home_state='_test_home_state',
+                      home_country='_test_home_country',
+                      author_name='_test_author')
+        person = Person.all().get()
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&'
+                'query_location=_test_home_street+_test_home_neighborhood+'
+                '_test_home_city+_test_home_state+_test_home_country')
+        self.verify_results_page(1)
         person.delete()
 
 

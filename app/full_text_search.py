@@ -99,22 +99,25 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def is_query_match(query_txt, values_romanized_unidecode,
-                   values_romanized_jp_words):
+def search_terms(query_txt, values_romanized_unidecode,
+                 values_romanized_jp_words):
     """
-    Checks if the query matches the field value
+    Checks if a query matches a record
+    It should be called in get_person_ids_from_results method.
     Args:
         query_txt: Search query
-        values: field value for unidecode method
-        romanized_values: romanized field value
+        values_romanized_unidecode: field value for unidecode
+        values_romanized_jp_words: field value for jp words
     Returns:
         Boolean
     """
+    # empty matches everything
     if not query_txt:
         return True
 
     romanized_query_list = (script_variant.romanize_search_query(query_txt))
 
+    # A query matches a record if all search_terms appear in the record
     for name in romanized_query_list:
         words = name.split(" ")
         for word_index, word in enumerate(words):
@@ -129,9 +132,9 @@ def is_query_match(query_txt, values_romanized_unidecode,
 def get_person_ids_from_results(query_dict, results_list):
     """
     Returns person record_id of persons
-    whose name and location contain at least one word
-    in romanized_name_query and romanized_location_query.
-    We use is_query_match to check if romanized_querys matche
+    whose name contain in romanized_name_query and
+    location contain in romanized_location_query.
+    We use search_terms to check if romanized_querys match
     at least a part of person name and location.
     To protect users' privacy, we should not return records
     which match location only.
@@ -162,9 +165,9 @@ def get_person_ids_from_results(query_dict, results_list):
             if record_id in added_results:
                 continue
 
-            if is_query_match(name_query_txt, names, romanized_jp_names) and \
-                    is_query_match(location_query_txt,
-                                   locations_romanized_unidecode, locations_romanized_jp):
+            if search_terms(name_query_txt, names, romanized_jp_names) and \
+                    search_terms(location_query_txt,
+                                 locations_romanized_unidecode, locations_romanized_jp):
                 index_results.append(record_id)
                 added_results.add(record_id)
     return index_results
@@ -177,7 +180,7 @@ def search(repo, query_dict, max_results):
     (It's not allowed to search only by location.)
     Args:
         repo: The name of repository
-        query_list: Search query list, (name_query, location_query)
+        query_dict: Search query dict, {name: name_query, location: location_query}
         max_results: The max number of results you want.(Maximum: 1000)
 
     Returns:
