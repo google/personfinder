@@ -14,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import re
 import logging
+import re
+
 from google.appengine.api import search as appengine_search
 
 import model
@@ -98,9 +99,10 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def is_query_match(query_txt, values, romanized_values):
+def is_query_match(query_txt, values_romanized_unidecode,
+                   values_romanized_jp_words):
     """
-    To check if the query match the field value
+    Checks if the query matches the field value
     Args:
         query_txt: Search query
         values: field value for unidecode method
@@ -116,20 +118,30 @@ def is_query_match(query_txt, values, romanized_values):
     for name in romanized_query_list:
         words = name.split(" ")
         for word_index, word in enumerate(words):
-            if not re.search(word, values + " " + romanized_values, re.I):
+            if not re.search(word, values_romanized_unidecode + " " +
+                    values_romanized_jp_words, re.I):
                 break
             if word_index == len(words) - 1:
                 return True
     return False
 
 
-def get_person_ids_from_results(romanized_query_list, results_list):
+def get_person_ids_from_results(query_dict, results_list):
     """
     Returns person record_id of persons
+    whose name and location contain at least one word
+    in romanized_name_query and romanized_location_query.
+    We use is_query_match to check if romanized_querys matche
+    at least a part of person name and location.
+    To protect users' privacy, we should not return records
+    which match location only.
+    It also removes dups.
+    (i.e., If results_list contains multiple results with the same index_results,
+    it returns just one of them)
     """
-    name_query_txt = romanized_query_list[0]
-    location_query_txt = romanized_query_list[1] \
-        if len(romanized_query_list) > 1 else ''
+    name_query_txt = query_dict.get('name', '')
+    location_query_txt = query_dict.get('location', '')
+
     index_results = []
     added_results = set()
     for results in results_list:
@@ -139,26 +151,26 @@ def get_person_ids_from_results(romanized_query_list, results_list):
             names = field_dict[
                 'names_romanized_by_romanize_word_by_unidecode']
             record_id = field_dict['record_id']
-            romanized_jp_names = field_dict['names_romanized_by' \
+            romanized_jp_names = field_dict['names_romanized_by'
                                             '_romanize_japanese_word']
-            locations = field_dict['full_location_romanized_by' \
+            locations_romanized_unidecode = field_dict['full_location_romanized_by'
                                    '_romanize_word_by_unidecode']
-            romanized_locations = field_dict['full_location_romanized_by' \
+            locations_romanized_jp = field_dict['full_location_romanized_by'
                                              '_romanize_japanese_word']
-        # use set to faster the speed. 
-        # average time complexity: set-O(1) list-O(n)
-            if  record_id in added_results:
+            # use set to faster the speed.
+            # average time complexity: set-O(1) list-O(n)
+            if record_id in added_results:
                 continue
 
-            if  is_query_match(name_query_txt, names, romanized_jp_names) and \
+            if is_query_match(name_query_txt, names, romanized_jp_names) and \
                     is_query_match(location_query_txt,
-                                            locations, romanized_locations):
+                                   locations_romanized_unidecode, locations_romanized_jp):
                 index_results.append(record_id)
                 added_results.add(record_id)
     return index_results
 
 
-def search(repo, query_list, max_results):
+def search(repo, query_dict, max_results):
     """
     Searches person with index.
     Query_txt must match at least a part of person name.
@@ -176,10 +188,14 @@ def search(repo, query_list, max_results):
         search.Error: An error occurred when the index name is unknown
                       or the query has syntax error.
     """
-    if len(query_list) != 2 or not query_list[0]:
+    name = query_dict.get('name', '')
+    location = query_dict.get('location', '')
+    if not name:
         return []
 
-    query_list_cleaned = query_list if query_list[1] else query_list[:1]
+    # Order does not matter
+    query_list= [name, location]
+    query_list_cleaned = query_list if location else [name]
 
     # Remove double quotes so that we can safely apply
     # enclose_in_double_quotes().
@@ -227,7 +243,7 @@ def search(repo, query_list, max_results):
     results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
 
-    index_results = get_person_ids_from_results(query_list, results_list)
+    index_results = get_person_ids_from_results(query_dict, results_list)
     results = []
     for record_id in index_results:
         result = model.Person.get(repo, record_id, filter_expired=True)
