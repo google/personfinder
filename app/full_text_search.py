@@ -99,8 +99,8 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def search_terms(query_txt, values_romanized_unidecode,
-                 values_romanized_jp_words):
+def is_query_match(query_txt, values_romanized_unidecode,
+                   values_romanized_jp_words):
     """
     Checks if a query matches a record
     It should be called in get_person_ids_from_results method.
@@ -118,8 +118,8 @@ def search_terms(query_txt, values_romanized_unidecode,
     romanized_query_list = (script_variant.romanize_search_query(query_txt))
 
     # A query matches a record if all search_terms appear in the record
-    for name in romanized_query_list:
-        words = name.split(" ")
+    for search_terms in romanized_query_list:
+        words = search_terms.split(" ")
         for word_index, word in enumerate(words):
             if not re.search(word, values_romanized_unidecode + " " +
                     values_romanized_jp_words, re.I):
@@ -134,7 +134,7 @@ def get_person_ids_from_results(query_dict, results_list):
     Returns person record_id of persons
     whose name contain in romanized_name_query and
     location contain in romanized_location_query.
-    We use search_terms to check if romanized_querys match
+    We use is_query_match to check if romanized_querys match
     at least a part of person name and location.
     To protect users' privacy, we should not return records
     which match location only.
@@ -165,9 +165,9 @@ def get_person_ids_from_results(query_dict, results_list):
             if record_id in added_results:
                 continue
 
-            if search_terms(name_query_txt, names, romanized_jp_names) and \
-                    search_terms(location_query_txt,
-                                 locations_romanized_unidecode, locations_romanized_jp):
+            if is_query_match(name_query_txt, names, romanized_jp_names) and \
+                    is_query_match(location_query_txt,
+                                   locations_romanized_unidecode, locations_romanized_jp):
                 index_results.append(record_id)
                 added_results.add(record_id)
     return index_results
