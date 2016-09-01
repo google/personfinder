@@ -170,7 +170,7 @@ class ReadOnlyTests(ServerTestsBase):
         assert 'content="text/html; charset=Shift_JIS"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
-        
+
     def test_query(self):
         """Check the query page."""
         doc = self.go('/haiti/query')
@@ -183,7 +183,7 @@ class ReadOnlyTests(ServerTestsBase):
 
     def test_results(self):
         """Check the results page."""
-        doc = self.go('/haiti/results?query=xy')
+        doc = self.go('/haiti/results?query_name=xy')
         assert 'We have nothing' in doc.text
 
     def test_create(self):
@@ -329,7 +329,7 @@ class ReadOnlyTests(ServerTestsBase):
     def test_config_repo_titles(self):
         doc = self.go('/haiti')
         assert 'Haiti Earthquake' in scrape.get_all_text(
-                doc.cssselect_one('h1'))
+            doc.cssselect_one('h1'))
 
         doc = self.go('/pakistan')
         assert 'Pakistan Floods' in scrape.get_all_text(doc.cssselect_one('h1'))
@@ -348,7 +348,7 @@ class ReadOnlyTests(ServerTestsBase):
 
         # All other languages follow.
         assert select.xpath('//option[normalize-space(.)="%s"]' %
-                u'\u0627\u0631\u062F\u0648')  # ur
+                            u'\u0627\u0631\u062F\u0648')  # ur
 
         doc = self.go('/pakistan')
         select = doc.cssselect_one('select#language_picker')
@@ -361,7 +361,7 @@ class ReadOnlyTests(ServerTestsBase):
 
         # All other languages follow.
         assert select.xpath('//option[normalize-space(.)="%s"]' %
-                u'Fran\xe7ais')  # fr
+                            u'Fran\xe7ais')  # fr
 
     def test_config_keywords(self):
         doc = self.go('/haiti')
