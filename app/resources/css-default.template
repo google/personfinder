@@ -217,7 +217,7 @@ a.expand-button {
   background: #FFF9C4;
   border: 1px solid gray;
   margin: 0 auto;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 /* Multi-column page */
@@ -274,7 +274,6 @@ over 10% in penetration ratio.
 
 .fields-table h2 {
   margin: auto;
-  border-bottom: 2px solid #e6e6e6;
   padding: 0px 10px 10px;
   text-align: center;
 }
@@ -826,6 +825,12 @@ resultsList {
 
 .searchResults .resultItem:hover {
   background: #cdf;
+}
+
+.searchResults .resultItem .resultOrder {
+  padding-right: 5px;
+  float: left;
+  color: #888;
 }
 
 .resultDataLabel {

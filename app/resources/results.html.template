@@ -55,7 +55,7 @@
                 search_engine_id: id
             },
             dataType: 'json'
-        }).done(function(r) { 
+        }).done(function(r) {
           console_log('Third-party search response: ', r);
           if (r.status == 'OK') {
             if (typeof(r.url) != 'string') {
@@ -139,10 +139,13 @@
           {% if result.is_address_match %}
             <hr style="margin-top:30px;">
             <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
-          {% endif %}
+        {% endif %}
         {% endifchanged %}
         <div class="resultItem" data-url="{{result.view_url}}" data-status="{{result.latest_status}}"
             onclick="on_result_item_click(event, this);">
+          <div class="resultOrder">
+            {{ forloop.counter }}
+          </div>
           {# No whitespace inside .resultImageContainer. #}
           {# Image width/height are specified as attributes here as well as #}
           {# in CSS, so that they are applied if CSS is disabled e.g. on #}
@@ -215,11 +218,6 @@
                 {{result.provider_name}}
               </span>
             </div>
-            {% endif %}
-            {% if env.show_record_ids_in_results %}
-              <span class="tracking">
-                ID: {{result.record_id}}
-              </span>
             {% endif %}
           </div>
           <br clear='all'>
