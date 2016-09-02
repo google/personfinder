@@ -139,7 +139,7 @@
           {% if result.is_address_match %}
             <hr style="margin-top:30px;">
             <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
-        {% endif %}
+          {% endif %}
         {% endifchanged %}
         <div class="resultItem" data-url="{{result.view_url}}" data-status="{{result.latest_status}}"
             onclick="on_result_item_click(event, this);">

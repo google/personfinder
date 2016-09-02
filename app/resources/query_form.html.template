@@ -119,28 +119,32 @@
               class="short-text-input"
               value="{{params.query_name}}">
         {% else %}
-          <span class="mandatory label">
-            {% trans "Name (required)" %}:
-          </span>
+          {% if config.enable_fulltext_search %}
+            <span class="mandatory label">
+              {% trans "Name (required)" %}:
+            </span>
+          {% endif %}
           <input id="query_name" name="query_name"
               class="long-text-input"
-              value="{{params.query_name}}" placeholder="person's name, parts of the name">
+              value="{{params.query_name}}" placeholder="example: Will Smith">
         {% endif %}
       </div>
-      <div class="field">
-        {% if env.ui == "facebook" %}
-          <input id="query_location" name="query_location"
-              class="short-text-input"
-              value="{{params.query_location}}">
-        {% else %}
-          <span class="label">
-            {% trans "Location(optional)" %}:
-          </span>
-          <input id="query_location" name="query_location"
-              class="long-text-input"
-              value="{{params.query_location}}" placeholder="example: Tokyo">
-        {% endif %}
-      </div>
+      {% if config.enable_fulltext_search %}
+        <div class="field">
+          {% if env.ui == "facebook" %}
+            <input id="query_location" name="query_location"
+                class="short-text-input"
+                value="{{params.query_location}}">
+          {% else %}
+            <span class="label">
+              {% trans "Location(optional)" %}:
+            </span>
+            <input id="query_location" name="query_location"
+                class="long-text-input"
+                value="{{params.query_location}}" placeholder="example: Tokyo">
+          {% endif %}
+        </div>
+      {% endif %}
     {% endifequal %}
     <div class="end-multi-columns"></div>
     
