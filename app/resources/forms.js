@@ -49,10 +49,16 @@ function update_form() {
   var display_contact = $('other_info_no').checked ? 'none' : '';
   var display_info = $('other_info_yes').checked ? 'none' : '';
   $('source_record').style.display = display_contact;
-  $('status_info').style.display = display_contact;
-  $('made_contact_info').style.display = display_contact;
   $('own_info_subscribe').style.display = display_info;
   $('own_info_contact').style.display = display_info;
+
+  if($('status_info')){
+    $('status_info').style.display = display_contact;
+  }
+
+  if($('made_contact_info')){
+    $('made_contact_info').style.display = display_contact;
+  }
 }
 
 // Dynamic behavior for the Person entry form.
@@ -287,8 +293,11 @@ function mark_dup() {
 function validate_fields() {
   // Check that mandatory fields are filled in.
   // TODO(ryok): maybe just check full_name instead of given_name and family_name.
-  if ($('other_info_no').checked)
-    var mandatory_fields = ['given_name', 'family_name', 'text'];
+  if($('other_info_no')) {
+    if ($('other_info_no').checked)
+      var mandatory_fields = ['given_name', 'family_name', 'text'];
+  }
+
   else
     var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
 

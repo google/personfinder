@@ -22,7 +22,9 @@
     <h2>Status</h2>
     <div class="status subsection" id="status_info"
       {% if env.enable_javascript %}
-        style="display: none"
+         {% if params.create_mode %}
+            style="display: none"
+         {% endif %}
       {% endif %}
       >
       <h3>
@@ -66,7 +68,9 @@
 
     <div class="author_made_contact subsection" id="made_contact_info"
       {% if env.enable_javascript %}
-        style="display: none"
+         {% if params.create_mode %}
+            style="display: none"
+         {% endif %}
       {% endif %}
       >
       <h3 class="mandatory">
