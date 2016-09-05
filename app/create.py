@@ -251,6 +251,10 @@ class Handler(BaseHandler):
 
         # TODO(ryok): batch-put person, note, photo, note_photo here.
 
+        # if unchecked the subscribe updates about your own record, skip the subscribe page
+        if not self.params.subscribe_own_info:
+            self.params.subscribe = False
+
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:
             return self.redirect('/subscribe',
@@ -260,6 +264,4 @@ class Handler(BaseHandler):
 
         self.redirect('/view', id=person.record_id)
 
-        # if uncheck the subscribe updates about your own record, skip the subscribe page
-        if not self.params.subscribe_own_info:
-            self.params.subscribe = False
+
