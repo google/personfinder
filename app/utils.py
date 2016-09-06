@@ -178,8 +178,6 @@ def strip_and_lower(string):
 def validate_yes(string):
     return (strip(string).lower() == 'yes') and 'yes' or ''
 
-def validate_no(string):
-    return (strip(string).lower() == 'no') and 'no' or ''
 
 def validate_checkbox(string):
     return (strip(string).lower() == 'on') and 'yes' or ''
@@ -697,7 +695,7 @@ class BaseHandler(webapp.RequestHandler):
         'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
-        'other_info': validate_no,
+        'own_info': validate_yes,
     }
 
     def redirect(self, path, repo=None, permanent=False, **params):

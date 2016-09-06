@@ -60,7 +60,7 @@ class Handler(BaseHandler):
                 return self.error(400, _('Name is required.  Please go back and try again.'))
 
         # If user is inputting his/her own information, set some params automatically
-        if self.params.other_info == 'no':
+        if self.params.own_info == 'yes':
             self.params.author_name = self.params.given_name
             self.params.status = 'is_note_author'
             self.params.author_made_contact = 'yes'

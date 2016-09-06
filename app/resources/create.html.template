@@ -54,34 +54,34 @@
               <div class="subsection">
                 <div class="instructions">
                   <div>
-                    <input type="radio" name="other_info" value="no"
-                        id="other_info_no"
-                        {% ifnotequal params.other_info "yes" %}
+                    <input type="radio" name="own_info" value="yes"
+                        id="own_info_yes"
+                        {% ifnotequal params.own_info "no" %}
                           checked="checked"
                         {% endifnotequal %}
                         onchange="update_form()"
                         onclick="update_form()">
-                    <label class="option" for="other_info_no">
+                    <label class="option" for="own_info_yes">
                       {% trans "I want to input my own information" %}
                     </label>
                   </div>
                   <div>
-                    <input type="radio" name="other_info" value="yes"
-                        id="other_info_yes"
-                        {% ifequal params.other_info "yes" %}
+                    <input type="radio" name="own_info" value="no"
+                        id="own_info_no"
+                        {% ifequal params.own_info "no" %}
                           checked="checked"
                         {% endifequal %}
                         onclick="update_form()"
                         onchange="update_form()">
-                    <label class="option" for="other_info_yes">
+                    <label class="option" for="own_info_no">
                       {% trans "I want to input someone else's information" %}
                     </label>
                   </div>
                 </div>
               </div>
             {% else %}
-              {# Only other-info=yes is supported when JavaScript is disabled. #}
-              <input type="hidden" name="other-info" value="yes">
+              {# Only own-info=no is supported when JavaScript is disabled. #}
+              <input type="hidden" name="own-info" value="no">
             {% endif %}
 
             {% if config.use_family_name and config.family_name_first %}
@@ -165,20 +165,20 @@
                   </h3>
                   <div class="field">
                     <span class="label">
-                      <label for="your_own_email" id="your_own_email">
-                      {% trans "Email address" %}:
+                      <label for="your_own_email" id="your_own_email_original">
+                        {% trans "Email address" %}:
                       </label>
                     </span>
                     <span class="value">
                       <input name="your_own_email" id="your_own_email"
                           class="medium-text-input"
-                          value="{{params.your_own_email}}"/>
+                          value="{{params.your_own_email}}" />
                     </span>
                   </div>
                   <div class="field">
                     <span class="label">
-                      <label for="your_own_phone" id="your_own_phone">
-                      {% trans "Phone number" %}:
+                      <label for="your_own_phone" id="your_own_phone_original">
+                        {% trans "Phone number" %}:
                       </label>
                     </span>
                     <span class="value">
