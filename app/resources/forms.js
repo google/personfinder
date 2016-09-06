@@ -367,3 +367,13 @@ function make_form_expandable(expandedSection) {
     return false;
   });
 }
+
+function form_confirmation() {
+   var personName = $('given_name').value + ' ' + $('family_name').value;
+   if (confirm('Do you want to create a record for ' + personName + '?\n' +
+               'Press OK to submit the form.\n' +
+               'Press Cancel to return to the form.'))
+      return validate_fields();
+   else
+      return false;
+}

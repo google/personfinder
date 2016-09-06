@@ -301,7 +301,7 @@
         {% trans "Submit" %}
       {% endif %}{% endspaceless %}"
     {% if env.enable_javascript %}
-      onclick="return validate_fields()"
+      onclick="return form_confirmation()"
     {% endif %}
   >
 </div>
