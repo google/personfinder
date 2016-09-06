@@ -59,10 +59,15 @@ class Handler(BaseHandler):
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
 
+        # If user is inputting his/her own information, set some params automatically
         if self.params.own_info == 'yes':
             self.params.author_name = self.params.given_name
-            self.params.status = 'is_note_author' 
+            self.params.status = 'is_note_author'
             self.params.author_made_contact = 'yes'
+            if self.params.your_own_email:
+                self.params.author_email = self.params.your_own_email
+            if self.params.your_own_phone:
+                self.params.author_phone = self.params.your_own_phone
 
         else:
             if not self.params.author_name:
@@ -246,6 +251,10 @@ class Handler(BaseHandler):
 
         # TODO(ryok): batch-put person, note, photo, note_photo here.
 
+        # if unchecked the subscribe updates about your own record, skip the subscribe page
+        if not self.params.subscribe_own_info:
+            self.params.subscribe = False
+
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:
             return self.redirect('/subscribe',
@@ -254,3 +263,5 @@ class Handler(BaseHandler):
                                  context='create_person')
 
         self.redirect('/view', id=person.record_id)
+
+

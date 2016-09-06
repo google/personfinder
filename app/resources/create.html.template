@@ -22,7 +22,7 @@
       jQuery(document).ready(function() {
         make_form_expandable(".identify.section");
         make_form_expandable(".source.section");
-        make_form_expandable(".status.section");        
+        make_form_expandable(".status.section");
       });
     </script>
   {% endif %}
@@ -50,31 +50,31 @@
               {% trans "Identifying information" %}
             </h2>
 
-            {% if env.enable_javascript %}            
+            {% if env.enable_javascript %}
               <div class="subsection">
                 <div class="instructions">
                   <div>
-                    <input type="radio" name="own_info" value="no"
-                        id="own_info_no"
-                        {% ifnotequal params.own_info "yes" %}
-                          checked="checked"
-                        {% endifnotequal %}
-                        onclick="update_form()"
-                        onchange="update_form()">
-                    <label class="option" for="own_info_no">
-                      {% trans "I want to input information about this person." %}
-                    </label>
-                  </div>
-                  <div>
                     <input type="radio" name="own_info" value="yes"
                         id="own_info_yes"
-                        {% ifequal params.own_info "yes" %}
+                        {% ifnotequal params.own_info "no" %}
                           checked="checked"
-                        {% endifequal %}
+                        {% endifnotequal %}
                         onchange="update_form()"
                         onclick="update_form()">
                     <label class="option" for="own_info_yes">
-                      {% trans "I am this person. (input my own information)" %}                      
+                      {% trans "I want to input my own information" %}
+                    </label>
+                  </div>
+                  <div>
+                    <input type="radio" name="own_info" value="no"
+                        id="own_info_no"
+                        {% ifequal params.own_info "no" %}
+                          checked="checked"
+                        {% endifequal %}
+                        onclick="update_form()"
+                        onchange="update_form()">
+                    <label class="option" for="own_info_no">
+                      {% trans "I want to input someone else's information" %}
                     </label>
                   </div>
                 </div>
@@ -82,11 +82,7 @@
             {% else %}
               {# Only own-info=no is supported when JavaScript is disabled. #}
               <input type="hidden" name="own-info" value="no">
-            {% endif %}           
-
-            <div class="hint">
-              {% trans "What is this person's name?" %}
-            </div>            
+            {% endif %}
 
             {% if config.use_family_name and config.family_name_first %}
               <div class="field">
@@ -137,6 +133,22 @@
               </div>
             {% endif %}
 
+            {% if env.enable_javascript %}
+              <div id="own_info_subscribe">
+                {% if env.enable_captcha %}
+                  <div class="field">
+                    <span class="label">
+                      <label for="subscribe-checkbox">
+                        {% trans "Subscribe for updates about your record" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input id="subscribe-checkbox" type="checkbox" name="subscribe_own_info" checked>
+                    </span>
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
 
             <a href="#" class="expand-button">
               {% trans "+ More information to identify the person" %} <br>
@@ -145,15 +157,46 @@
               </span>
             </a>
 
-            <div class="expanded-part">            
+            <div class="expanded-part">
+              {% if env.enable_javascript %}
+                <div class="subsection" id="own_info_contact">
+                  <h3>
+                    {% trans "Contact information" %}
+                  </h3>
+                  <div class="field">
+                    <span class="label">
+                      <label for="your_own_email" id="your_own_email_original">
+                        {% trans "Email address" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="your_own_email" id="your_own_email"
+                          class="medium-text-input"
+                          value="{{params.your_own_email}}" />
+                    </span>
+                  </div>
+                  <div class="field">
+                    <span class="label">
+                      <label for="your_own_phone" id="your_own_phone_original">
+                        {% trans "Phone number" %}:
+                      </label>
+                    </span>
+                    <span class="value">
+                      <input name="your_own_phone" id="your_own_phone"
+                          class="medium-text-input"
+                          value="{{params.your_own_phone}}" />
+                    </span>
+                  </div>
+                </div>
+              {% endif %}
               <div class="name subsection">
                 <h3>
                   {% trans "Name" %}
-                </h3> 
+                </h3>
 
                 {% if config.use_alternate_names %}
                   {% if config.use_family_name and config.family_name_first %}
-                
+
                     <div class="field">
                       <span class="label">
                         <label for="alternate_family_names">
@@ -432,7 +475,11 @@
             </div>
           </div>
 
-          <div class="source section" id="source_record">
+          <div class="source section" id="source_record"
+            {% if env.enable_javascript %}
+              style="display: none"
+            {% endif %}
+            >
             <h2>
               {% trans "Source of Record" %}
             </h2>
@@ -491,34 +538,13 @@
                     value="{{params.author_name}}" />
               </span>
             </div>
-            {% include "subscribe.html.template" %}            
-            <div class="field">
-              <span class="label">
-                <label for="author_email" id="author_email_original">
-                  {% trans "Your e-mail address" %}:
-                </label>
-                {% if env.enable_javascript %}
-                  <label for="author_email"
-                      id="author_email_clone" style="display: none">
-                    {% trans "Author's e-mail address" %}:
-                  </label>
-                {% endif %}
-              </span>
-              <span class="value">
-                <input name="author_email" id="author_email"
-                    class="medium-text-input"
-                    value="{{params.author_email}}" />
-              </span>
-            </div>  
+            {% include "subscribe.html.template" %}
 
             {% if env.enable_javascript %}
               <div class="subsection" id="source_title_row" style="display: none">
-                <h3>
-                  {% trans "Record information" %}
-                </h3>
                 <span class="hint">
                   {% trans "Where did this record come from?" %}
-                </span>                        
+                </span>
                 <div class="field" id="source_url_row" style="display: none">
                   <span class="label">
                     <label for="source_url">
@@ -565,15 +591,30 @@
             <a href="#" class="expand-button">
               {% trans "+ More information about source of record" %} <br>
               <span class="hint">
-                {% trans "(Your phone number / Expiry)" %}
+                {% trans "(author's email/ author's phone number / Expiry)" %}
               </span>
-            </a>         
+            </a>
 
             <div class="expanded-part">
-              <div class="your-info subsection">
-                <h3>
-                  {% trans "Your information" %}
-                </h3>           
+              <div class="subsection">
+                <div class="field">
+                  <span class="label">
+                    <label for="author_email" id="author_email_original">
+                      {% trans "Your e-mail address" %}:
+                    </label>
+                    {% if env.enable_javascript %}
+                      <label for="author_email"
+                          id="author_email_clone" style="display: none">
+                        {% trans "Author's e-mail address" %}:
+                      </label>
+                    {% endif %}
+                  </span>
+                  <span class="value">
+                    <input name="author_email" id="author_email"
+                        class="medium-text-input"
+                        value="{{params.author_email}}" />
+                  </span>
+                </div>
                 <div class="field">
                   <span class="label">
                     <label for="author_phone" id="author_phone_original">
@@ -592,7 +633,7 @@
                         value="{{params.author_phone}}" />
                   </span>
                 </div>
-              </div>            
+              </div>
               <div class="expiry subsection">
                 <h3><label for="expiry_option">
                     {% trans "Expiry" %}
@@ -617,13 +658,13 @@
                   </select>
                 </div>
                 <div class="end-multi-columns"></div>
-              </div>          
+              </div>
             </div>
-          </div>  
+          </div>
 
           {% ifequal params.role "provide" %}
             {% include "add_note_base.html.template" %}
-          {% endifequal %}     
+          {% endifequal %}
 
           {% ifnotequal params.role "provide" %}
             <div class="submit button button-blue">
@@ -640,4 +681,10 @@
       </div>
     </div>
   </form>
+  {# To avoid some html and js inconsistencies #}
+  {% if env.enable_javascript %}
+    <script>
+      update_form()
+    </script>
+  {% endif %}
 {% endblock %}

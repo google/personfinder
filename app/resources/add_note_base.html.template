@@ -15,12 +15,18 @@
 {% if not markdup %}
   <input type="hidden" name="add_note" value="yes">
   <input type="hidden" name="id" value="{{params.id}}">
-{% endif %} 
+{% endif %}
 
 <div class="status section">
   {% if not markdup %}
     <h2>Status</h2>
-    <div class="status subsection" id="status_info">
+    <div class="status subsection" id="status_info"
+      {% if env.enable_javascript %}
+         {% if params.create_mode %}
+            style="display: none"
+         {% endif %}
+      {% endif %}
+      >
       <h3>
         {% trans "Status of this person:" %}
       </h3>
@@ -60,7 +66,13 @@
 
   {% if not markdup %}
 
-    <div class="author_made_contact subsection" id="made_contact_info">
+    <div class="author_made_contact subsection" id="made_contact_info"
+      {% if env.enable_javascript %}
+         {% if params.create_mode %}
+            style="display: none"
+         {% endif %}
+      {% endif %}
+      >
       <h3 class="mandatory">
         {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
       </h3>
@@ -137,7 +149,7 @@
       {% trans "+ More information about status of the person" %} <br>
       <span class="hint">
         {% trans "(Last known location / other photos)" %}
-      </span>    
+      </span>
     </a>
 
     <div class="expanded-part">
@@ -186,7 +198,7 @@
           <div class="end-multi-columns"></div>
         {% endif %}
       </div>
-  
+
       {% if env.enable_photo_upload %}
         <div class="photo subsection">
           <h3>Photo</h3>
@@ -227,7 +239,7 @@
       {% endif %}
     </div>
   {% endif %}
-</div>  
+</div>
 
 {% if not params.create_mode %}
   <div class="your-info section">
@@ -248,7 +260,7 @@
             value="{{params.author_name}}" />
       </span>
     </div>
-    {% include "subscribe.html.template" %}      
+    {% include "subscribe.html.template" %}
     <div class="field">
       <span class="label">
         <label for="author_email" id="author_email_original">
@@ -260,7 +272,7 @@
             class="medium-text-input"
             value="{{params.author_email}}" />
       </span>
-    </div>      
+    </div>
     <div class="field">
       <span class="label">
         <label for="author_phone" id="author_phone_original">

@@ -498,6 +498,7 @@ class PersonNoteTests(ServerTestsBase):
         # Submit the create form with minimal information.
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name')
@@ -576,6 +577,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with complete information
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='_test_author_email',
                       author_phone='_test_author_phone',
@@ -726,6 +728,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with a valid given and family name
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='ABCD EFGH',
                       family_name='IJKL MNOP',
                       alternate_given_names='QRST UVWX',
@@ -873,6 +876,7 @@ class PersonNoteTests(ServerTestsBase):
         # Submit the create form with minimal information
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name',
@@ -913,6 +917,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with complete information
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='_test_author_email',
                       author_phone='_test_author_phone',
@@ -979,6 +984,39 @@ class PersonNoteTests(ServerTestsBase):
                                ip_address='127.0.0.1',
                                Note_text='_test A note body',
                                Note_status='believed_dead')
+
+    def test_inputting_own_information(self):
+        """Check if some params are set automatically
+        when "I want to input my own information" is selected"""
+        d = self.go('/haiti/create?role=provide')
+        self.s.submit(d.cssselect_one('form'),
+                      own_info='yes',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      your_own_email='_test_email',
+                      your_own_phone='_test_phone',
+                      text='_test A note body')
+        person = Person.all().get()
+
+        # Check if author's information set to
+        # person's given name, own email and phone automatically
+        self.verify_details_page(
+            num_notes=1,
+            full_name='_test_given_name _test_family_name',
+            details={
+                'Author\'s name:': '_test_given_name',
+                'Author\'s phone number:': '(click to reveal)',
+                'Author\'s e-mail address:': '(click to reveal)'})
+
+        view_url = '/haiti/view?id=' + person.record_id
+        doc = self.s.go(view_url)
+        note = doc.cssselect('.view.note')[-1]
+        note_attrs = get_all_attrs(note)
+
+        # Check if the status set to is_note_author automatically
+        assert [v for k, v in note_attrs if 'is_note_author' in v], note_attrs
+        assert not [v for k, v in note_attrs if 'believed_dead' in v], \
+                note_attrs
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -1244,6 +1282,7 @@ http://www.foo.com/_account_1''',
         # Submit the create form with minimal information
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name',
@@ -1293,6 +1332,7 @@ http://www.foo.com/_account_1''',
         # Create a record with no status and get the new record's ID.
         form = doc.cssselect_one('form')
         doc = self.s.submit(form,
+                            own_info='no',
                             given_name='_test_given',
                             family_name='_test_family',
                             author_name='_test_author',
@@ -1315,7 +1355,7 @@ http://www.foo.com/_account_1''',
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.cssselect_one('form')
-        self.s.submit(form, author_name='_test_author2', text='_test_text',
+        self.s.submit(form, own_info='no', author_name='_test_author2', text='_test_text',
                       status='believed_alive')
         doc = self.s.go(view_url)
         note = doc.cssselect('.view.note')[-1]
@@ -1334,11 +1374,13 @@ http://www.foo.com/_account_1''',
 
         # Set status to is_note_author, but don't check author_made_contact.
         self.s.submit(form,
+                      own_info='no',
                       author_name='_test_author',
                       text='_test_text',
                       status='is_note_author')
         self.assert_error_deadend(
             self.s.submit(form,
+                          own_info='no',
                           author_name='_test_author',
                           text='_test_text',
                           status='is_note_author'),
@@ -1362,6 +1404,7 @@ http://www.foo.com/_account_1''',
         # Create a record with no status and get the new record's ID.
         form = doc.cssselect_one('form')
         doc = self.s.submit(form,
+                            own_info='no',
                             given_name='_test_given',
                             family_name='_test_family',
                             author_name='_test_author',
@@ -1385,6 +1428,7 @@ http://www.foo.com/_account_1''',
         # Set the status in a note and check that it appears on the view page.
         self.s.submit(
             self.s.doc.cssselect_one('form'),
+            own_info='no',
             author_name='_test_author2',
             text='_test_text',
             status='believed_alive')
@@ -1411,6 +1455,7 @@ http://www.foo.com/_account_1''',
         doc = self.go_to_add_note_page()
         self.assert_error_deadend(
             self.s.submit(self.s.doc.cssselect_one('form'),
+                          own_info='no',
                           author_name='_test_author',
                           text='_test_text',
                           status='believed_dead'),
@@ -2484,18 +2529,21 @@ _read_profile_url2</pfif:profile_urls>
         # Add a first person to datastore.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_search_given_name',
                       family_name='_search_1st_family_name',
                       author_name='_search_1st_author_name')
         # Add a note for this person.
         self.go_to_add_note_page()
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       author_made_contact='yes',
                       text='this is text for first person',
                       author_name='_search_1st_note_author_name')
         # Add a 2nd person with same given name but different family name.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_search_given_name',
                       family_name='_search_2nd_family_name',
                       author_name='_search_2nd_author_name')
@@ -2504,6 +2552,7 @@ _read_profile_url2</pfif:profile_urls>
         # Add a note for this 2nd person.
         self.go_to_add_note_page()
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       author_made_contact='yes',
                       text='this is text for second person',
                       author_name='_search_2nd_note_author_name')
@@ -3702,6 +3751,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Submit the create form with complete information.
         # Note contains bad words
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='test1@example.com',
                       author_phone='_test_author_phone',
@@ -3724,6 +3774,7 @@ _feed_profile_url2</pfif:profile_urls>
         author_email = self.s.doc.cssselect_one('input#author_email')
         button = self.s.doc.xpath_one('//input[@value="Send email"]')
         doc = self.s.submit(button,
+                            own_info='no',
                             author_email='test1@example.com')
         assert 'Your request has been processed successfully' in doc.text
 
@@ -3789,6 +3840,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go_to_add_note_page()
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       author_name='_test_author2',
                       text='_test add note with bad words.',
                       status='believed_alive')
@@ -3799,6 +3851,7 @@ _feed_profile_url2</pfif:profile_urls>
         author_email = self.s.doc.cssselect_one('input#author_email')
         button = self.s.doc.xpath_one('//input[@value="Send email"]')
         doc = self.s.submit(button,
+                            own_info='no',
                             author_email='test2@example.com')
         assert 'request has been processed successfully' in self.s.doc.text
 
@@ -4063,7 +4116,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Fake a valid captcha and actually reverse the deletion
         form = [f for f in doc.cssselect('form') if
                 f.get('action').endswith('/restore')][0]
-        doc = self.s.submit(form, test_mode='yes')
+        doc = self.s.submit(form, own_info='no', test_mode='yes')
         assert 'Identifying information' in doc.text
         assert '_test_given_name _test_family_name' in doc.text
 
@@ -4323,6 +4376,7 @@ _feed_profile_url2</pfif:profile_urls>
         note_form = view_doc.cssselect_one('form')
         doc = self.s.submit(
             note_form,
+            own_info='no',
             text='test text',
             author_name= 'test author',
             author_made_contact= 'no')
@@ -4570,7 +4624,7 @@ _feed_profile_url2</pfif:profile_urls>
                       '&id2=test.google.com/person.2')
         button = doc.xpath_one(
                 '//input[@value="Yes, these are the same person"]')
-        doc = self.s.submit(button, text='duplicate test', author_name='foo')
+        doc = self.s.submit(button, own_info='no', text='duplicate test', author_name='foo')
 
         # Verify subscribers were notified
         self.verify_email_sent(2)
@@ -4682,7 +4736,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid captcha response is an error
         self.s.back()
         button = doc.xpath_one('//input[@value="Subscribe"]')
-        doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
+        doc = self.s.submit(button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
@@ -4690,14 +4744,14 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid email is an error (even with valid captcha)
         INVALID_EMAIL = 'test@example'
         doc = self.s.submit(
-            button, subscribe_email=INVALID_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=INVALID_EMAIL, test_mode='yes')
         assert 'Invalid e-mail address. Please try again.' in doc.text
         assert len(person.get_subscriptions()) == 0
 
         # Valid email and captcha is success
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'successfully subscribed. ' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()
@@ -4717,7 +4771,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person is shown info page
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'already subscribed. ' in doc.text
         assert 'for _test_full_name' in doc.text
         assert len(person.get_subscriptions()) == 1
@@ -4725,7 +4779,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person with new language is success
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
         assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()
@@ -4757,6 +4811,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert d.xpath('//input[@name="alternate_family_names"]')
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4787,6 +4842,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'Family name' not in d.text
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4836,6 +4892,7 @@ _feed_profile_url2</pfif:profile_urls>
                 alternate_given_input.sourceline)
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4886,6 +4943,7 @@ _feed_profile_url2</pfif:profile_urls>
                 alternate_given_input.sourceline)
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4920,6 +4978,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert d.xpath('//input[@name="alternate_family_names"]')
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4950,6 +5009,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'Alternate family names' not in d.text
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -5013,6 +5073,7 @@ _feed_profile_url2</pfif:profile_urls>
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/haiti/create')
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -5024,6 +5085,7 @@ _feed_profile_url2</pfif:profile_urls>
         config.set_for_repo('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/japan/create')
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -5039,6 +5101,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert doc.xpath('//input[@name="home_postal_code"]')
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5055,6 +5118,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not doc.xpath('//input[@name="home_postal_code"]')
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5123,6 +5187,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Submit a person record.
         self.s.submit(create_form,
+                      own_info='no',
                       given_name=test_given_name,
                       family_name=test_family_name,
                       author_name='_test_author_name',
