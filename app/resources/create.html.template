@@ -681,4 +681,10 @@
       </div>
     </div>
   </form>
+  {# To avoid some html and js inconsistencies #}
+  {% if env.enable_javascript %}
+    <script>
+      update_form()
+    </script>
+  {% endif %}
 {% endblock %}
