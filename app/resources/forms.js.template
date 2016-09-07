@@ -369,11 +369,10 @@ function make_form_expandable(expandedSection) {
   });
 }
 
-// Check validation of fields before asking comfirmation
-// Ask for confirmation when submitting a form
+// Check validation of fields and ask for confirmation when submitting a form
 // familyNameFirst: true or false
 function confirm_submit(familyNameFirst) {
-  var personName
+  var personName;
 
   if (familyNameFirst)
     personName = $('family_name').value + ' ' + $('given_name').value;
