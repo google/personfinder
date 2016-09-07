@@ -301,7 +301,7 @@
         {% trans "Submit" %}
       {% endif %}{% endspaceless %}"
     {% if env.enable_javascript %}
-      onclick="return form_confirmation()"
+      onclick="return confirm_submit({{config.family_name_first|yesno:"true,false"}})"
     {% endif %}
   >
 </div>

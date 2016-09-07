@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+{% load i18n %}
 
 function $(id) {
   return document.getElementById(id);
@@ -368,12 +369,18 @@ function make_form_expandable(expandedSection) {
   });
 }
 
-function form_confirmation() {
-   var personName = $('given_name').value + ' ' + $('family_name').value;
-   if (confirm('Do you want to create a record for ' + personName + '?\n' +
-               'Press OK to submit the form.\n' +
-               'Press Cancel to return to the form.'))
-      return validate_fields();
-   else
-      return false;
+// Ask for confirmation when submitting a form
+// familyNameFirst: true or false
+function confirm_submit(familyNameFirst) {
+  var personName = $('given_name').value + ' ' + $('family_name').value;
+
+  if (familyNameFirst)
+    personName = $('family_name').value + ' ' + $('given_name').value;
+
+  if (validate_fields())
+    return (confirm('{% trans "Do you want to create a record for the following person?" %}'
+      + '\n' + personName));
+  else 
+    return false;
 }
+
