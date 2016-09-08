@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+{% load i18n %}
 
 function $(id) {
   return document.getElementById(id);
@@ -367,3 +368,21 @@ function make_form_expandable(expandedSection) {
     return false;
   });
 }
+
+// Check validation of fields and ask for confirmation when submitting a form
+// familyNameFirst: true or false
+function confirm_submit(familyNameFirst) {
+  var personName;
+
+  if (familyNameFirst)
+    personName = $('family_name').value + ' ' + $('given_name').value;
+  else
+    personName = $('given_name').value + ' ' + $('family_name').value;
+
+  if (validate_fields())
+    return (confirm('{% trans "Are you sure to submit a record for the following person?" %}'
+      + '\n' + personName));
+  else 
+    return false;
+}
+

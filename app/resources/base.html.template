@@ -47,9 +47,9 @@
     </script>
     <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
-      // Lets jQuery not overwrite "$" symbol defined in forms.js.
+      // Lets jQuery not overwrite "$" symbol defined in forms.js.template.
       // Use "jQuery" instead of "$".
-      // TODO(ichikawa) Remove "$" from forms.js and use jQuery's "$" instead.
+      // TODO(ichikawa) Remove "$" from forms.js.template and use jQuery's "$" instead.
       jQuery.noConflict();
     </script>
     <script src="{{env.global_url}}/forms.js"></script>

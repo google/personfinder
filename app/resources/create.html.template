@@ -671,7 +671,7 @@
               <input type="submit"
                   value="{% trans "Save this record" %}"
                   {% if env.enable_javascript %}
-                    onclick="return validate_fields()"
+                    onclick="return confirm_submit({{config.family_name_first|yesno:"true,false"}})"
                   {% endif %}
                   >
               {% include "errors.html.template" %}
