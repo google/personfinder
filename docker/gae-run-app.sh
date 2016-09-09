@@ -4,7 +4,7 @@ PORT=8000
 HOST_PORT=8001
 API_PORT=49532
 
-IP_ADDR=`ifconfig eth0 | grep -o "addr:[0-9][0-9][0-9]\.[0-9]*\.[0-9]*\.[0-9]*" | awk -F ":" '{print $2}'`
+IP_ADDR=`ip addr list eth0 | grep 'inet ' | cut -d' ' -f6 | cut -d'/' -f1`
 
 cd ${PERSONFINDER_DIR}
 echo "Starting Person Finder server"
