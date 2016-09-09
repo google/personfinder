@@ -24,9 +24,9 @@ RUN tar xvfz Imaging-1.1.7.tar.gz && cd Imaging-1.1.7 && python2.7 setup.py inst
 
 WORKDIR   /opt/
 RUN wget  https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.25.zip
-RUN unzip google_appengine_1.9.25.zip 
+RUN unzip google_appengine_1.9.25.zip
 
-RUN easy_install-2.7 pytest
+RUN easy_install pytest
 RUN apt-get install -y gettext
 
 ADD gae-run-app.sh      /usr/bin/
