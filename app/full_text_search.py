@@ -370,7 +370,8 @@ def create_document(person):
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
     romanize_methods = [script_variant.romanize_word_by_unidecode,
-                        script_variant.romanize_japanese_word]
+                        script_variant.romanize_japanese_word,
+                        script_variant.romanize_chinese_name]
 
     for romanize_method in romanize_methods:
         fields.extend(create_romanized_name_fields(
