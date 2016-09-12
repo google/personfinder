@@ -204,9 +204,7 @@ select {
 /* Expand Forms */
 
 .expanded-part {
-  padding: 8px;
-  margin-left: 5px;
-  margin-right: auto;
+  margin: 8px 13px 8px 13px;
 }
 
 a.expand-button {
@@ -220,14 +218,14 @@ a.expand-button {
   font-weight: bold;
 }
 
-/*Icon for the expand-button before the form is expanded*/
+/* Icon for the expand-button before the form is expanded */
 .expand-button-icon-down {
   background: url({{env.global_url}}/expand-icon-down.png);
   background-repeat: no-repeat;
   background-position: right;
 }
 
-/*Icon for the expand-button after the form is expanded*/
+/* Icon for the expand-button after the form is expanded */
 .expand-button-icon-up {
   background: url({{env.global_url}}/expand-icon-up.png);  
   background-repeat: no-repeat;
@@ -282,38 +280,48 @@ We don't use "display: table" because IE 6/7 doesn't support it. IE 6/7 is
 over 10% in penetration ratio.
 */
 
-.fields-table {
-  padding: 4px;
+.card {
+  background: #ffffff;
+  border: 1px solid #dadada;
+  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
 }
 
-.fields-table h2 {
+.card h1 {
+  margin: auto;
+  padding: 10px;
+}
+
+.card h2 {
   margin: auto;
   padding: 0px 10px 10px;
-  text-align: center;
 }
 
-.fields-table .section {
+/* card section is used in view page */
+.card .section {
   border-bottom: 2px solid #e6e6e6;
   padding: 10px 4px 4px;
 }
 
-.fields-table .section h1 {
+.card .section h1 {
   font-size: 20px;
   margin-bottom: 0;
   text-align: center;
 }
 
-.fields-table .section h2 {
+.card .section h2 {
   font-size: 16px;
   font-weight: normal;
   margin-top: 5px;
 }
 
-.fields-table .section .links {
+.card .links {
   border-style: none;
 }
 
-.fields-table .section .links a {
+.card .links a {
   color: #4285f4;
   display: block;
   font-size: 16px;
@@ -323,17 +331,17 @@ over 10% in penetration ratio.
   text-align: center;
 }
 
-.fields-table .section textarea {
+.card textarea {
   width: 100%;
 }
 
-.fields-table .field {
+.card .field {
   clear: both;
   display: flex;
   margin-{{start}}: 0;
 }
 
-.fields-table .label {
+.card .label {
   display: block; /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
@@ -342,23 +350,23 @@ over 10% in penetration ratio.
   margin-{{end}}: 10px;
 }
 
-.fields-table .value {
+.card .value {
   display: block;  /* to make float/width attribute work */
   float: {{end}};
   width: 50%;
 }
 
-.fields-table .long-text-input {
+.card .long-text-input {
   max-width: 280px;
   width: 100%;
 }
 
-.fields-table .medium-text-input {
+.card .medium-text-input {
   max-width: 140px;
   width: 100%;
 }
 
-.fields-table .short-text-input {
+.card .short-text-input {
   width: 70px;
 }
 
@@ -704,24 +712,9 @@ label.option {
   font-weight: bold;
 }
 
-.create .fields-table {
-  background: #ffffff;
-  border: 2px solid #e6e6e6;
-}
-
-.create .fields-table .section {
-  border-bottom: 2px solid #e6e6e6;
-}
-
 .create .subsection {
   padding-bottom: 10px;
   padding-top: 10px;
-}
-
-.create .fields-table h1 {
-  font-size: 20px;
-  margin-bottom: 0;
-  text-align: center;
 }
 
 .create h2 {
@@ -729,39 +722,39 @@ label.option {
   margin-top: 5px;
 }
 
-.create .fields-table .photo .radio {
+.create .card .photo .radio {
   display: block;
   float: {{start}};
   width: 30px;
 }
 
-.create .fields-table .photo .label {
+.create .card .photo .label {
   display: block;
   float: {{start}};
   text-align: {{end}};
   width: 70px;
 }
 
-.create .fields-table .photo .value {
+.create .card .photo .value {
   display: block;
   float: {{end}};
   max-width: 220px;
   width: 100%;
 }
 
-.create .fields-table .profile .icon {
+.create .card .profile .icon {
   display: block;
   float: {{start}};
   width: 30px;
   margin-left: 30px;
 }
 
-.create .fields-table .profile .value {
+.create .card .profile .value {
   display: block;
   width: 220px;
 }
 
-.create .fields-table .profile .remove {
+.create .card .profile .remove {
   display: block;
   float: {{end}};
   width: 70px;
@@ -1138,19 +1131,4 @@ table.api-keys td.empty {
   html {
     padding: 5px;
   }
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #dadada;
-  box-shadow: 2px 2px 3px 0px #AAA;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 3px;
-}
-
-.card h1 {
-  margin: auto;
-  padding: 10px;
-  text-align: center;
 }

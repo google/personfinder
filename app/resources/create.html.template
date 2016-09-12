@@ -83,17 +83,17 @@
           </h1>
           {% if config.use_family_name and config.family_name_first %}
             <div class="field">
-              <div class="label">
+              <span class="label">
                 <label for="family_name" class="mandatory">
                   {% trans "Family name (required)" %}:
                 </label>
-              </div>
-              <div class="value">
+              </span>
+              <span class="value">
                 <input name="family_name" id="family_name"
                     class="medium-text-input"
                     value="{{params.family_name}}"
                     autocomplete="off">
-              </div>
+              </span>
             </div>
           {% endif %}
           <div class="field">

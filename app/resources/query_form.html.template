@@ -15,7 +15,7 @@
 <form method="get" action="{{env.repo_path}}/results">
   {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
-  <div class="fields-table query {{params.role}}" role="form">
+  <div class="card query {{params.role}}" role="form">
       <div class="instructions">
         {% ifequal params.role 'provide' %}
           <div class="header">
@@ -126,7 +126,7 @@
           {% endif %}
           <input id="query_name" name="query_name"
               class="long-text-input"
-              value="{{params.query_name}}" placeholder="{% trans 'Will Smith, Will, Smith' %}">
+              value="{{params.query_name}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
         {% endif %}
       </div>
       {% if config.enable_fulltext_search %}
@@ -141,7 +141,7 @@
             </span>
             <input id="query_location" name="query_location"
                 class="long-text-input"
-                value="{{params.query_location}}" placeholder="{% trans 'Street name, Neighborhood, City...etc' %}">
+                value="{{params.query_location}}" placeholder="{% trans 'Street name, neighborhood, city, etc.' %}">
           {% endif %}
         </div>
       {% endif %}
