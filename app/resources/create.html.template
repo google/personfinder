@@ -534,54 +534,6 @@
           </div>
           {% include "subscribe.html.template" %}
 
-          {% if env.enable_javascript %}
-            <div class="subsection" id="source_title_row" style="display: none">
-              <span class="hint">
-                {% trans "Where did this record come from?" %}
-              </span>
-              <div class="field" id="source_url_row" style="display: none">
-                <span class="label">
-                  <label for="source_url">
-                    {% trans "URL of original record" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_url" id="source_url"
-                      class="medium-text-input"
-                      value="{{params.source_url}}" />
-                </span>
-              </div>
-              <div class="field" id="source_date_row" style="display: none">
-                <span class="label">
-                  <label for="source_date">
-                    {% trans "Original posting date" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_date" id="source_date"
-                      class="medium-text-input"
-                      value="{{params.source_date}}" />
-                </span>
-              </div>
-              <div class="field" id="source_date_hint_row"
-                  style="display: none">
-                <div class="value hint">{% trans "Enter as YYYY-MM-DD" %}</div>
-              </div>
-              <div class="field" id="source_name_row" style="display: none">
-                <span class="label">
-                  <label for="source_name">
-                    {% trans "Original site name" %}:
-                  </label>
-                </span>
-                <span class="value">
-                  <input name="source_name" id="source_name"
-                      class="medium-text-input"
-                      value="{{params.source_name}}" />
-                </span>
-              </div>
-            </div>
-          {% endif %}
-
           <a href="#" class="expand-button expand-button-icon-down" >
             {% trans "More information about source of record" %}
           </a>
@@ -625,6 +577,55 @@
                 </span>
               </div>
             </div>
+
+            {% if env.enable_javascript %}
+              <div class="subsection" id="source_title_row" style="display: none">
+                <span class="hint">
+                  {% trans "Where did this record come from?" %}
+                </span>
+                <div class="field" id="source_url_row" style="display: none">
+                  <span class="label">
+                    <label for="source_url">
+                      {% trans "URL of original record" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_url" id="source_url"
+                        class="medium-text-input"
+                        value="{{params.source_url}}" />
+                  </span>
+                </div>
+                <div class="field" id="source_date_row" style="display: none">
+                  <span class="label">
+                    <label for="source_date">
+                      {% trans "Original posting date" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_date" id="source_date"
+                        class="medium-text-input"
+                        value="{{params.source_date}}" />
+                  </span>
+                </div>
+                <div class="field" id="source_date_hint_row"
+                    style="display: none">
+                  <div class="value hint">{% trans "Enter as YYYY-MM-DD" %}</div>
+                </div>
+                <div class="field" id="source_name_row" style="display: none">
+                  <span class="label">
+                    <label for="source_name">
+                      {% trans "Original site name" %}:
+                    </label>
+                  </span>
+                  <span class="value">
+                    <input name="source_name" id="source_name"
+                        class="medium-text-input"
+                        value="{{params.source_name}}" />
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+
             <div class="expiry subsection">
               <h3><label for="expiry_option">
                   {% trans "Expiry" %}
