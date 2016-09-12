@@ -126,7 +126,7 @@
           {% endif %}
           <input id="query_name" name="query_name"
               class="long-text-input"
-              value="{{params.query_name}}" placeholder="example: Will Smith">
+              value="{{params.query_name}}" placeholder="{% trans 'Will Smith, Will, Smith' %}">
         {% endif %}
       </div>
       {% if config.enable_fulltext_search %}
@@ -137,11 +137,11 @@
                 value="{{params.query_location}}">
           {% else %}
             <span class="label">
-              {% trans "Location(optional)" %}:
+              {% trans "Home location" %}:
             </span>
             <input id="query_location" name="query_location"
                 class="long-text-input"
-                value="{{params.query_location}}" placeholder="example: Tokyo">
+                value="{{params.query_location}}" placeholder="{% trans 'Street name, Neighborhood, City...etc' %}">
           {% endif %}
         </div>
       {% endif %}

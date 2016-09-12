@@ -17,9 +17,9 @@
   <input type="hidden" name="id" value="{{params.id}}">
 {% endif %}
 
-<div class="status section">
+<div class="status card">
   {% if not markdup %}
-    <h2>Status</h2>
+    <h1>Status</h1>
     <div class="status subsection" id="status_info"
       {% if env.enable_javascript %}
          {% if params.create_mode %}
@@ -145,11 +145,8 @@
       <div class="end-multi-columns"></div>
     </div>
 
-    <a href="#" class="expand-button">
-      {% trans "+ More information about status of the person" %} <br>
-      <span class="hint">
-        {% trans "(Last known location / other photos)" %}
-      </span>
+    <a href="#" class="expand-button expand-button-icon-down">
+      {% trans "More information about status of the person" %}
     </a>
 
     <div class="expanded-part">
@@ -242,8 +239,8 @@
 </div>
 
 {% if not params.create_mode %}
-  <div class="your-info section">
-    <h2>About You</h2>
+  <div class="your-info card">
+    <h1>About You</h1>
     <div class="hint">
       {% trans "How others who are interested in this person can contact you" %}
     </div>
@@ -301,7 +298,7 @@
         {% trans "Submit" %}
       {% endif %}{% endspaceless %}"
     {% if env.enable_javascript %}
-      onclick="return confirm_submit({{config.family_name_first|yesno:"true,false"}})"
+      onclick="return validate_fields()"
     {% endif %}
   >
 </div>

@@ -189,10 +189,10 @@ class ReadOnlyTests(ServerTestsBase):
     def test_create(self):
         """Check the create page."""
         doc = self.go('/haiti/create')
-        assert 'Identify who you are looking for' in doc.text
+        assert 'Who you are looking for' in doc.text
 
         doc = self.go('/haiti/create?role=provide')
-        assert 'Identify who you have information about' in doc.text
+        assert 'Who you have information about' in doc.text
 
         params = [
             'role=provide',

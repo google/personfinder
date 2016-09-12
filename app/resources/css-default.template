@@ -204,20 +204,34 @@ select {
 /* Expand Forms */
 
 .expanded-part {
-  background: #FFF9C4;
-  padding: 5px;
-  border: 1px solid gray;
-  margin-left: auto;
+  padding: 8px;
+  margin-left: 5px;
   margin-right: auto;
 }
 
 a.expand-button {
   display: block;
-  text-align: center;
-  background: #FFF9C4;
-  border: 1px solid gray;
-  margin: 0 auto;
+  padding: 10px 10px 10px 0px;
+  border-top: 2px solid #dadada;
+  margin-top: 5px;
+  margin-bottom: 0px;
   text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/*Icon for the expand-button before the form is expanded*/
+.expand-button-icon-down {
+  background: url({{env.global_url}}/expand-icon-down.png);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+/*Icon for the expand-button after the form is expanded*/
+.expand-button-icon-up {
+  background: url({{env.global_url}}/expand-icon-up.png);  
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 /* Multi-column page */
@@ -587,14 +601,7 @@ img.icon {
   width: 100%;
 }
 
-.note.fields-table {
-  background: #ffffff;
-  border: 2px solid #e6e6e6;
-  margin-bottom: 10px;
-
-}
-
-.note.fields-table .button input {
+.note .button input {
   margin: 10px auto;
 }
 
@@ -706,7 +713,7 @@ label.option {
   border-bottom: 2px solid #e6e6e6;
 }
 
-.create .fields-table .subsection {
+.create .subsection {
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -717,9 +724,8 @@ label.option {
   text-align: center;
 }
 
-.create .fields-table h2 {
-  font-size: 16px;
-  font-weight: normal;
+.create h2 {
+  font-size: 14px;
   margin-top: 5px;
 }
 
@@ -761,7 +767,7 @@ label.option {
   width: 70px;
 }
 
-.create .fields-table .button input {
+.create .button input {
   margin: 10px auto;
   min-width: 50%;
 }
@@ -1132,4 +1138,19 @@ table.api-keys td.empty {
   html {
     padding: 5px;
   }
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #dadada;
+  box-shadow: 2px 2px 3px 0px #AAA;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
+}
+
+.card h1 {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
 }

@@ -359,30 +359,24 @@ function validate_fields() {
 function make_form_expandable(expandedSection) {
   var expandedPart = jQuery(expandedSection).find("div.expanded-part");
   var expandButton = jQuery(expandedSection).find("a.expand-button");
+
   expandedPart.hide();
   expandButton.click(function() {
-    if (expandedPart.is(":visible"))
+    if (expandedPart.is(":visible")) {
       expandedPart.slideUp("slow");
-    else
+      if (expandButton.hasClass('expand-button-icon-up')){
+        expandButton.removeClass('expand-button-icon-up').addClass('expand-button-icon-down');
+      }
+    }
+
+    else {
       expandedPart.slideDown("slow");
+      if (expandButton.hasClass('expand-button-icon-down')){
+        expandButton.removeClass('expand-button-icon-down').addClass('expand-button-icon-up');
+      }      
+    }
     return false;
   });
 }
 
-// Check validation of fields and ask for confirmation when submitting a form
-// familyNameFirst: true or false
-function confirm_submit(familyNameFirst) {
-  var personName;
-
-  if (familyNameFirst)
-    personName = $('family_name').value + ' ' + $('given_name').value;
-  else
-    personName = $('given_name').value + ' ' + $('family_name').value;
-
-  if (validate_fields())
-    return (confirm('{% trans "Are you sure to submit a record for the following person?" %}'
-      + '\n' + personName));
-  else 
-    return false;
-}
 
