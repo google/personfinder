@@ -262,7 +262,7 @@ a.expand-button {
   padding-{{start}}: 6px;
 }
 
-/* Tables which show a label and a value of each field e.g. in /view page.
+/* Cards which show a label and a value of each field e.g. in /view page.
 
 See app/resources/view.html.template for a usage example.
 
@@ -290,12 +290,11 @@ over 10% in penetration ratio.
 }
 
 .card h1 {
-  margin: auto;
-  padding: 10px;
+  font-size: 20px;
+  padding: 0px 10px 0px;
 }
 
 .card h2 {
-  margin: auto;
   padding: 0px 10px 10px;
 }
 
@@ -777,6 +776,12 @@ label.option {
   border: 2px solid #e6e6e6;
   padding: 20px;
   padding-top: 0px;
+  box-sizing: border-box;
+  margin: 2em auto;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  border-radius: 3px;
 }
 
 img.resultImage {
@@ -787,7 +792,6 @@ img.resultImage {
 }
 
 .resultsTitle {
-  border-top: 2px solid #e6e6e6;
   font-size: 18px;
   padding-top: 10px;
   width: 100%;
