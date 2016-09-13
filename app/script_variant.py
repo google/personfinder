@@ -215,7 +215,8 @@ def romanize_search_query(word):
     # a different result, append the result to the romanzied_words with
     # unidecode results together
     unidecode_romanize_word = unidecode(word).strip()
-    chinese_romanize_word = romanize_chinese_name(word)[0]
+    chinese_romanize_list = romanize_chinese_name(word)
+    chinese_romanize_word = chinese_romanize_list[0] if chinese_romanize_list else ''
     if chinese_romanize_word and chinese_romanize_word != unidecode_romanize_word:
         romanized_words.append(chinese_romanize_word)
     romanized_words.append(unidecode_romanize_word)
