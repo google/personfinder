@@ -186,7 +186,7 @@ def romanize_chinese_name(word):
         return []
 
     romanized_surname_list = list(CHINESE_FAMILY_NAME_DICTIONARY[family_name])
-    return romanized_surname_list[0] + unidecode(given_name).strip()
+    return [romanized_surname_list[0] + unidecode(given_name).strip()]
 
 
 def romanize_search_query(word):
@@ -215,7 +215,7 @@ def romanize_search_query(word):
     # a different result, append the result to the romanzied_words with
     # unidecode results together
     unidecode_romanize_word = unidecode(word).strip()
-    chinese_romanize_word = romanize_chinese_name(word)
+    chinese_romanize_word = romanize_chinese_name(word)[0]
     if chinese_romanize_word and chinese_romanize_word != unidecode_romanize_word:
         romanized_words.append(chinese_romanize_word)
     romanized_words.append(unidecode_romanize_word)
