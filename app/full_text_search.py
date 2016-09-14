@@ -26,6 +26,10 @@ import script_variant
 # This index contains person name and location.
 PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
 
+ROMANIZE_METHODS = [script_variant.romanize_word_by_unidecode,
+                    script_variant.romanize_japanese_word,
+                    script_variant.romanize_chinese_name]
+
 # This is for ranking (person name match higher than location)
 REPEAT_COUNT_FOR_RANK = 5
 
@@ -114,7 +118,7 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def get_person_ids_from_results(romanized_query, results_list):
+def get_person_ids_from_results(romanized_query, results_list, returned_fields):
     """
     Returns person record_id of persons
     whose name contains at least one word in romanized_query.
@@ -130,19 +134,15 @@ def get_person_ids_from_results(romanized_query, results_list):
     index_results = []
     for results in results_list:
         for document in results:
-            romanized_jp_names = ''
-            for field in document.fields:
-                if field.name == 'names_romanized_by_romanize_word_by_unidecode':
-                    names = field.value
-                if field.name == 'record_id':
-                    id = field.value
-                if field.name == 'names_romanized_by_romanize_japanese_word':
-                    romanized_jp_names = field.value
-            
-            if id in index_results:
+            fields = {field.name:field.value for field in document.fields}
+            id = fields.get('record_id', None)
+            romanized_fields = (value for name, value in fields.items()
+                                if name in returned_fields)
+
+            if id is None or id in index_results:
                 continue
 
-            if regexp.search(names) or regexp.search(romanized_jp_names):
+            if any(regexp.search(value) for value in romanized_fields):
                 index_results.append(id)
     return index_results
 
@@ -180,12 +180,16 @@ def search(repo, query_txt, max_results):
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
+
+    # Define the fields need to be returned per romanzie method
+    returned_name_fields = [u'names_romanized_by_' + method.__name__ for method in ROMANIZE_METHODS]
+    returned_fields = returned_name_fields + ['record_id']
+
     options = appengine_search.QueryOptions(
         limit=max_results,
         sort_options=sort_opt,
-        returned_fields=['record_id',
-                         'names_romanized_by_romanize_word_by_unidecode',
-                         'names_romanized_by_romanize_japanese_word'])
+        returned_fields=returned_fields)
+
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -204,7 +208,7 @@ def search(repo, query_txt, max_results):
 
     results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
-    index_results = get_person_ids_from_results(query_txt, results_list)
+    index_results = get_person_ids_from_results(query_txt, results_list, returned_fields)
 
     results = []
     for id in index_results:
@@ -369,9 +373,7 @@ def create_document(person):
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
-    romanize_methods = [script_variant.romanize_word_by_unidecode,
-                        script_variant.romanize_japanese_word,
-                        script_variant.romanize_chinese_name]
+    romanize_methods = ROMANIZE_METHODS
 
     for romanize_method in romanize_methods:
         fields.extend(create_romanized_name_fields(
