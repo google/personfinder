@@ -531,29 +531,11 @@ msgstr ""
 "\n"
 "لإلغاء الاشتراك، اتبع هذا الرابط: %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(انقر للإظهار)"
 
 msgid "(unknown)"
 msgstr "(غير معروف)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "رسالة لهذا الشخص أو للآخرين الذين يبحثون عنه"
@@ -609,9 +591,6 @@ msgstr "أسماء بديلة"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "هل أنت متأكد من أن هذه الملاحظة ليست من ضمن الملاحظات غير المرغوب فيها؟"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "هل تريد بالتأكيد وضع علامة على هذه الملاحظة تشير إلى أنها غير مرغوب فيها؟"
@@ -845,6 +824,9 @@ msgstr "عنوان المنزل"
 msgid "Home country"
 msgstr "مسقط الرأس"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "كيف يمكن الوصول إلى هذا الشخص في الوقت الحالي؟"
 
@@ -895,12 +877,6 @@ msgstr ""
 
 msgid "I'm looking for someone"
 msgstr "أبحث عن شخص ما"
-
-msgid "Identify who you are looking for"
-msgstr "تحديد هوية الشخص الذي تبحث عنه"
-
-msgid "Identify who you have information about"
-msgstr "تحديد هوية الشخص الذي تمتلك معلومات عنه"
 
 msgid "Identifying information"
 msgstr "معلومات تحديد الهوية"
@@ -954,9 +930,6 @@ msgstr "ربط بصفحة الملف الشخصي"
 msgid "List API keys"
 msgstr "عرض مفاتيح واجهة برمجة التطبيقات"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "وضع علامة على السجلات كمكررة"
 
@@ -982,6 +955,12 @@ msgstr "رقم الهاتف الحالي للشخص المفقود"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -989,6 +968,9 @@ msgid ""
 msgstr ""
 "يمكن الآن لمطوري البرامج العثور على مزيد من المعلومات "
 "%(developers_link_html)sهنا%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1296,6 +1278,9 @@ msgstr "اسم الشارع"
 msgid "Street name only, no number"
 msgstr "اسم الشارع فقط، بلا رقم"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1528,6 +1513,12 @@ msgstr ""
 "أثناء تفعيل الوضع التجريبي، يتم حذف السجلات التي يتجاوز عمرها 6 ساعات بغض"
 " النظر عن تاريخ انتهاء الصلاحية."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "نعم"
 
@@ -1666,6 +1657,9 @@ msgstr "[الباحث عن الأشخاص] تحديث حالة %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[الباحث عن الأشخاص] لقد اشتركت في تحديثات حالة %(full_name)s"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

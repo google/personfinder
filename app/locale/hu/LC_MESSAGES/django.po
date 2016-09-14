@@ -544,29 +544,11 @@ msgstr ""
 "\n"
 "A leiratkozáshoz nyissa meg ezt a linket: %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(kattintson a megjelenítéshez)"
 
 msgid "(unknown)"
 msgstr "(ismeretlen)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "Üzenet ennek a személynek, vagy azoknak, akik őt keresik"
@@ -622,9 +604,6 @@ msgstr "Alternatív nevek"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Biztos benne, hogy ez a megjegyzés nem spam?"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Biztosan megjelöli ezt a megjegyzést spamként?"
@@ -865,6 +844,9 @@ msgstr "Otthoni cím"
 msgid "Home country"
 msgstr "Ország"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Hogyan érhető el ez a személy jelenleg?"
 
@@ -915,12 +897,6 @@ msgstr ""
 
 msgid "I'm looking for someone"
 msgstr "Keresek valakit"
-
-msgid "Identify who you are looking for"
-msgstr "Azonosítsa be, kit keres"
-
-msgid "Identify who you have information about"
-msgstr "Azonosítsa be, kiről rendelkezik információval"
 
 msgid "Identifying information"
 msgstr "Azonosítási információ"
@@ -980,9 +956,6 @@ msgstr "Link a profiloldalra"
 msgid "List API keys"
 msgstr "API-kulcsok listázása"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "Bejegyzések megjelölése ismétlődésként"
 
@@ -1008,6 +981,12 @@ msgstr "Az eltűnt személy jelenlegi telefonszáma"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -1015,6 +994,9 @@ msgid ""
 msgstr ""
 "Fejlesztők számára további információ "
 "%(developers_link_html)sitt%(link_end_html)s található."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1330,6 +1312,9 @@ msgstr "Utca neve"
 msgid "Street name only, no number"
 msgstr "Csak az utca neve, a házszám nem"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1576,6 +1561,12 @@ msgstr ""
 "A tesztüzemmód során a 6 óránál régebbi bejegyzéseket a rendszer a "
 "lejárati dátumtól függetlenül törli."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "Igen"
 
@@ -1727,6 +1718,9 @@ msgstr "[Személykereső] Állapotfrissítés a következő személynél: %(full
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Személykereső] Feliratkozott %(full_name)s állapotfrissítéseire"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

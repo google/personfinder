@@ -553,29 +553,11 @@ msgstr ""
 "Per annullare l'iscrizione, fai clic su questo link: %(unsubscribe_link)s"
 "\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(fai clic per mostrare)"
 
 msgid "(unknown)"
 msgstr "(sconosciuto)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "Un messaggio per questa persona o altre persone che la stanno cercando."
@@ -631,9 +613,6 @@ msgstr "Nomi alternativi"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Sei sicuro che questa nota non sia spam?"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Vuoi segnalare questa nota come spam?"
@@ -875,6 +854,9 @@ msgstr "Indirizzo di casa"
 msgid "Home country"
 msgstr "Paese di residenza"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Adesso come può essere contattata questa persona?"
 
@@ -925,12 +907,6 @@ msgstr ""
 
 msgid "I'm looking for someone"
 msgstr "Sto cercando qualcuno"
-
-msgid "Identify who you are looking for"
-msgstr "Identifica la persona che stai cercando"
-
-msgid "Identify who you have information about"
-msgstr "Identifica la persona su cui possiedi informazioni"
 
 msgid "Identifying information"
 msgstr "Informazioni di identificazione"
@@ -990,9 +966,6 @@ msgstr "Link alla pagina del profilo"
 msgid "List API keys"
 msgstr "Elenca chiavi API"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "Contrassegna record come duplicati"
 
@@ -1018,6 +991,12 @@ msgstr "Numero di telefono corrente della persona dispersa"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -1025,6 +1004,9 @@ msgid ""
 msgstr ""
 "Ulteriori informazioni per gli sviluppatori sono disponibili "
 "%(developers_link_html)squi%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1336,6 +1318,9 @@ msgstr "Nome della via"
 msgid "Street name only, no number"
 msgstr "Solo il nome della via, senza numero civico"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1576,6 +1561,12 @@ msgstr ""
 "Mentre è attiva la modalità di test, i record creati da più di sei ore "
 "vengono eliminati, indipendentemente dalla data di scadenza."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "Sì"
 
@@ -1727,6 +1718,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] Sei iscritto agli aggiornamenti di stato relativi a "
 "%(full_name)s"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

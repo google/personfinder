@@ -558,29 +558,11 @@ msgstr ""
 "\n"
 "അൺസബ്‌സ്‌ക്രൈബുചെയ്യുന്നതിന്, ഈ ലിങ്ക് പിന്തുടരുക: %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(പ്രദർശിപ്പിക്കുന്നതിന് ക്ലിക്കുചെയ്യുക)"
 
 msgid "(unknown)"
 msgstr "(അജ്ഞാതം)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "ഈ വ്യക്തിക്കായി തിരയുന്ന ഈ വ്യക്തിക്കോ മറ്റുള്ളവർക്കോ വേണ്ടിയുള്ള സന്ദേശം"
@@ -636,9 +618,6 @@ msgstr "ഇതര നാമങ്ങൾ"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "ഈ കുറിപ്പ് സ്‌പാം അല്ലെന്ന് നിങ്ങൾക്ക് തീർച്ചയാണോ?"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "ഈ കുറിപ്പ് ഒരു സ്‌പാമായി അടയാളപ്പെടുത്തണമെന്ന് നിങ്ങൾക്ക് തീർച്ചയാണോ?"
@@ -876,6 +855,9 @@ msgstr "വീട്ടുവിലാസങ്ങൾ"
 msgid "Home country"
 msgstr "മാതൃരാജ്യം"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "എങ്ങനെ ഈ വ്യക്തിയ്‌ക്ക് ഇപ്പോൾ എത്തിച്ചേരാനാകും?"
 
@@ -928,12 +910,6 @@ msgstr ""
 
 msgid "I'm looking for someone"
 msgstr "ഞാൻ ഒരാളെ തിരയുകയാണ്"
-
-msgid "Identify who you are looking for"
-msgstr "നിങ്ങൾ തിരയുന്നവരെ തിരിച്ചറിയുക"
-
-msgid "Identify who you have information about"
-msgstr "നിങ്ങളുടെ പക്കൽ ആരെക്കുറിച്ചാണോ വിവരമുള്ളത് അവരെ തിരിച്ചറിയുക"
 
 msgid "Identifying information"
 msgstr "തിരിച്ചറിയാനുള്ള വിവരങ്ങൾ"
@@ -994,9 +970,6 @@ msgstr "പ്രൊഫൈൽ പേജിലേക്കുള്ള ലിങ�
 msgid "List API keys"
 msgstr "API കീകൾ ലിസ്റ്റുചെയ്യുക"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "റെക്കോർഡുകൾ തനിപ്പകർപ്പായി അടയാളപ്പെടുത്തുക"
 
@@ -1022,6 +995,12 @@ msgstr "കാണാതായ വ്യക്തിയുടെ നിലവി�
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -1029,6 +1008,9 @@ msgid ""
 msgstr ""
 "ഡവലപ്പർമാർക്കായുള്ള കൂടുതൽ വിവരങ്ങൾ ഇപ്പോൾ "
 "%(developers_link_html)sഇവിടെ%(link_end_html)s കണ്ടെത്താനാകും."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1349,6 +1331,9 @@ msgstr "സ്‌ട്രീറ്റിന്റെ പേര്"
 msgid "Street name only, no number"
 msgstr "സ്‌ട്രീറ്റിന്റെ പേര് മാത്രം, നമ്പർ ആവശ്യമില്ല"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1594,6 +1579,12 @@ msgstr ""
 "പരീക്ഷണ മോഡ് പ്രവർത്തനക്ഷമമാകുമ്പോൾ, 6 മണിക്കൂറിലധികം പഴക്കമുള്ള "
 "റെക്കോർഡുകൾ അവയുടെ കാലഹരണ തീയതി പരിഗണിക്കാതെ ഇല്ലാതാക്കപ്പെടും."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "അതെ"
 
@@ -1757,6 +1748,9 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 "[Person Finder] %(full_name)s എന്നയാൾക്കായുള്ള സ്റ്റാറ്റസ് "
 "അപ്‌ഡേറ്റുകൾക്കായി നിങ്ങൾ സബ്‌സ്‌ക്രൈബുചെയ്‌തു"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

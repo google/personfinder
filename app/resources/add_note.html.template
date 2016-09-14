@@ -40,7 +40,7 @@
       }
 
       jQuery(document).ready(function() {
-        make_form_expandable(".status.section");
+        make_form_expandable(".status.card");
       });
     </script>
   {% endif %}
@@ -67,25 +67,23 @@
               id="enable_notes_btn">
           </div>
         {% else %}
-          <div class="create" role="form">         
-            <div class="fields-table note" role="complementary">
-              <div class="header section">
-                <h1>
-                  {% if not markdup %}
-                    {% if person.full_name %}
-                      {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
-                    {% else %}
-                      {% trans "Status of Person" %}
-                    {% endif %}
+          <div class="create note" role="form">         
+            <div class="header card">
+              <h1>
+                {% if not markdup %}
+                  {% if person.full_name %}
+                    {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
                   {% else %}
-                    {% trans "Mark records as duplicate" %}
+                    {% trans "Status of Person" %}
                   {% endif %}
-                </h1>
-              </div>
-              {% include "add_note_base.html.template" %}
+                {% else %}
+                  {% trans "Mark records as duplicate" %}
+                {% endif %}
+              </h1>
             </div>
+            {% include "add_note_base.html.template" %}
+          </div>
         {% endif %}
-      </div>
 
       <div class="end-multi-columns"></div>
     </div>

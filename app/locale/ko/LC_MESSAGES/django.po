@@ -516,29 +516,11 @@ msgstr ""
 "\n"
 "수신 취소하려면 다음 링크를 클릭하세요. %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(표시하려면 클릭)"
 
 msgid "(unknown)"
 msgstr "(알 수 없음)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "이 사람 또는 이 사람을 찾는 다른 사람을 위한 메시지를 남기세요."
@@ -594,9 +576,6 @@ msgstr "보조 성명"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "이 메모가 스팸이 아니라고 확신하십니까?"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "이 메모를 스팸으로 표시하시겠습니까?"
@@ -824,6 +803,9 @@ msgstr "집 주소"
 msgid "Home country"
 msgstr "출생 국가"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "이 사람에게 지금 연락할 수 있는 방법은 무엇입니까?"
 
@@ -875,12 +857,6 @@ msgstr ""
 msgid "I'm looking for someone"
 msgstr "사람 찾기"
 
-msgid "Identify who you are looking for"
-msgstr "실종자 신원정보"
-
-msgid "Identify who you have information about"
-msgstr "신상정보 입력하기"
-
 msgid "Identifying information"
 msgstr "신상정보"
 
@@ -929,9 +905,6 @@ msgstr "프로필 페이지 링크"
 msgid "List API keys"
 msgstr "API 키 목록으로 표시"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "중복된 신상기록으로 표시하기"
 
@@ -957,11 +930,20 @@ msgstr "실종자의 현재 전화번호"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr "개발자를 위한 추가 정보를 보려면 %(developers_link_html)s여기%(link_end_html)s를 참조하세요."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1259,6 +1241,9 @@ msgstr "상세 주소 2"
 msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1481,6 +1466,12 @@ msgid ""
 "deleted regardless of the expiry date."
 msgstr "테스트 모드를 사용 중일 때 6시간이 경과한 신상기록은 만료일과 관계 없이 삭제됩니다."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "예"
 
@@ -1617,6 +1608,9 @@ msgstr "[Person Finder] %(full_name)s님 상태 업데이트"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] %(full_name)s님에 대한 소식을 수신 신청했습니다."
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

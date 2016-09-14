@@ -526,29 +526,11 @@ msgstr ""
 "\n"
 "如要取消訂閱，請前往以下連結：%(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(按一下即可顯示)"
 
 msgid "(unknown)"
 msgstr "(未知)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
@@ -604,9 +586,6 @@ msgstr "其他名稱"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "您確定這項註解並非垃圾資訊嗎？"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "您確定要將這項註解標示為垃圾資訊嗎？"
@@ -832,6 +811,9 @@ msgstr "住所地址"
 msgid "Home country"
 msgstr "居住國家/地區"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "現在可以如何聯絡這個人？"
 
@@ -883,12 +865,6 @@ msgstr ""
 msgid "I'm looking for someone"
 msgstr "我正在尋找某人"
 
-msgid "Identify who you are looking for"
-msgstr "請說明您要尋找的人是誰"
-
-msgid "Identify who you have information about"
-msgstr "請說明您有關於哪個人的消息"
-
 msgid "Identifying information"
 msgstr "身分識別資訊"
 
@@ -933,9 +909,6 @@ msgstr "個人資料頁面連結"
 msgid "List API keys"
 msgstr "列出 API 金鑰"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "將記錄標示為重複項目"
 
@@ -961,11 +934,20 @@ msgstr "失踨人士目前使用的電話號碼"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr "請前往%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1263,6 +1245,9 @@ msgstr "街道名稱"
 msgid "Street name only, no number"
 msgstr "輸入路名即可，不必輸入門牌號碼"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1483,6 +1468,12 @@ msgid ""
 "deleted regardless of the expiry date."
 msgstr "雖然測試模式仍屬有效，但系統會將超過 6 小時的資料刪除，不論有效期的設定如何。"
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "是"
 
@@ -1619,6 +1610,9 @@ msgstr "[尋人工具]「%(full_name)s」的狀態更新"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[尋人工具] 您已訂閱「%(full_name)s」的狀態更新"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

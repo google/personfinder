@@ -523,29 +523,11 @@ msgstr ""
 "\n"
 "登録を解除するには、次のリンクにアクセスしてください: %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
 
 msgid "(unknown)"
 msgstr "（不明）"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "この人へのメッセージ、またはこの人を探している人へのメッセージ"
@@ -601,9 +583,6 @@ msgstr "名前（よみがな）"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "このメモは本当にスパムではありませんか？"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "このメモをスパムとして登録してもよろしいですか？"
@@ -829,6 +808,9 @@ msgstr "自宅住所"
 msgid "Home country"
 msgstr "出身国"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "現在この人と連絡を取ることができる手段を指定してください。"
 
@@ -880,12 +862,6 @@ msgstr ""
 msgid "I'm looking for someone"
 msgstr "人を探している"
 
-msgid "Identify who you are looking for"
-msgstr "探している人を特定できる情報を入力してください"
-
-msgid "Identify who you have information about"
-msgstr "この人を特定できる情報を入力してください"
-
 msgid "Identifying information"
 msgstr "識別情報"
 
@@ -930,9 +906,6 @@ msgstr "プロフィール ページへのリンク"
 msgid "List API keys"
 msgstr "API キーを一覧表示"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "重複している記録として登録する"
 
@@ -958,11 +931,20 @@ msgstr "行方不明者の現在の電話番号"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr "開発者情報について詳しくは%(developers_link_html)sこちら%(link_end_html)sをご覧ください。"
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1258,6 +1240,9 @@ msgstr "町名"
 msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "送信"
 
@@ -1478,6 +1463,12 @@ msgid ""
 "deleted regardless of the expiry date."
 msgstr "体験版では、6 時間以上が経過した記録は有効期限に関わらず削除されます。"
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "はい"
 
@@ -1614,6 +1605,9 @@ msgstr "[パーソンファインダー] %(full_name)s さんについての新�
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"

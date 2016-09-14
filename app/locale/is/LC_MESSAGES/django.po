@@ -550,29 +550,11 @@ msgstr ""
 "\n"
 "Opnaðu þennan tengil til að segja upp áskriftinni: %(unsubscribe_link)s\n"
 
-msgid "(Alternate name / Home address / Description / Person's photo)"
-msgstr ""
-
-msgid "(Last known location / other photos)"
-msgstr ""
-
-msgid "(author's email/ author's phone number / Expiry)"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr "(smelltu til að sýna)"
 
 msgid "(unknown)"
 msgstr "(óþekkt)"
-
-msgid "+ More information about source of record"
-msgstr ""
-
-msgid "+ More information about status of the person"
-msgstr ""
-
-msgid "+ More information to identify the person"
-msgstr ""
 
 msgid "A message for this person or others seeking this person"
 msgstr "Skilaboð til þessarar manneskju eða annarra sem leita að henni"
@@ -628,9 +610,6 @@ msgstr "Önnur nöfn"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Ertu viss um að þessi athugasemd sé ekki rusl?"
-
-msgid "Are you sure to submit a record for the following person?"
-msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Ertu viss um að þú viljir merkja þessa athugasemd sem ruslefni?"
@@ -870,6 +849,9 @@ msgstr "Heimilisfang"
 msgid "Home country"
 msgstr "Heimaland"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Hvernig er hægt að ná í þessa manneskju núna?"
 
@@ -920,12 +902,6 @@ msgstr ""
 
 msgid "I'm looking for someone"
 msgstr "Ég er að leita að einhverjum"
-
-msgid "Identify who you are looking for"
-msgstr "Tilgreindu hverjum þú ert að leita að"
-
-msgid "Identify who you have information about"
-msgstr "Tilgreindu hvern þú býrð yfir upplýsingum um"
 
 msgid "Identifying information"
 msgstr "Auðkennandi upplýsingar"
@@ -985,9 +961,6 @@ msgstr "Tengill á prófílsíðu"
 msgid "List API keys"
 msgstr "Skoða forritaskilalykla"
 
-msgid "Location(optional)"
-msgstr ""
-
 msgid "Mark records as duplicate"
 msgstr "Merkja færslur sem tvíteknar"
 
@@ -1013,6 +986,12 @@ msgstr "Núverandi símanúmer týndrar manneskju"
 msgid "More at: %(url)s"
 msgstr "More at: %(url)s"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -1020,6 +999,9 @@ msgid ""
 msgstr ""
 "Frekari upplýsingar fyrir forritara fást "
 "%(developers_link_html)shér%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1333,6 +1315,9 @@ msgstr "Götuheiti"
 msgid "Street name only, no number"
 msgstr "Aðeins götuheiti, ekki húsnúmer"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Submit"
 
@@ -1573,6 +1558,12 @@ msgstr ""
 "Á meðan prófunarstilling er virk er færslum sem eru eldri en sex "
 "klukkustunda gamlar eytt, burtséð frá fyrningardagsetningu."
 
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
+
 msgid "Yes"
 msgstr "Já"
 
@@ -1720,6 +1711,9 @@ msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "external site; normal connection fee may apply"
