@@ -69,24 +69,21 @@
     class="{{env.ui}} {% block extra_body_class%}{% endblock %}"
     onload="{{onload_function}}">
   {% block body %}
-    <div class="header" role="banner">
+    <div class="header title-bar" role="banner">
       {% block header %}
-        {% if env.show_language_menu %}
-          {% include "language-menu.html.template" %}
-        {% endif %}
         {% if env.show_logo %}
           {% block logo %}{% endblock %}
         {% endif %}
       {% endblock header %}
-    </div>
 
-    {% if env.repo %}
-      <h1>
+      {% if env.repo %}
         <a class="repo" href="{{env.repo_title_url}}" {{env.target_attr|safe}}>
           {{env.repo_title}}
         </a>
-      </h1>
-    {% endif %}
+      {% endif %}      
+
+    </div>
+
 
     {% if env.repo_test_mode %}
       <div class="header-notification">
@@ -136,27 +133,34 @@
         {{env.footer_custom_html|default:""|safe}}
       </div>
 
-      {% block footer %}
-        {% if env.repo and env.ui == "light" %}
-          <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
-          <span class="link-separator">&#xb7;</span>
-        {% endif %}
-        <a href="{{env.global_url}}" {{env.target_attr|safe}}
-            >{% trans "About Google Person Finder" %}</a>
-        <span class="link-separator">&#xb7;</span>
-        <a href="https://support.google.com/personfinder/contact/pf_feedback"
-            {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
-        <span class="link-separator">&#xb7;</span>
-        {% if env.ui != "light" %}
-          <a href="https://github.com/google/personfinder"
-              {{env.target_attr|safe}}>{% trans "Developers" %}</a>
-          <span class="link-separator">&#xb7;</span>
-        {% endif %}
-        <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
-            >{% trans "Terms of Service" %}</a>
-      {% endblock footer %}
-    </div>
+      <div id="mySidenav" class="sidenav">
+        <span class="google-logo"><img src="https://material.google.com/static/images/nav_google_logo.svg" alt=""/></span>
 
+        {% block footer %}
+          {% if env.repo and env.ui == "light" %}
+            <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}" {{env.target_attr|safe}}
+              >{% trans "About Google Person Finder" %}</a>
+          <span class="link-separator"></span>
+          <a href="https://support.google.com/personfinder/contact/pf_feedback"
+              {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+          <span class="link-separator"></span>
+          {% if env.ui != "light" %}
+            <a href="https://github.com/google/personfinder"
+                {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
+              >{% trans "Terms of Service" %}</a>
+          {% if env.show_language_menu %}
+            {% include "language-menu.html.template" %}
+          {% endif %}
+        {% endblock footer %}
+      </div>
+    </div>
     {% include "analytics.html.template" %}
+    <div id="overLay" class="overlay" onclick="menuCloseNav()"></div>
   {% endblock body %}
 </body></html>

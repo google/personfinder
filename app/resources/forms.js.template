@@ -375,4 +375,14 @@ function make_form_expandable(expandedSection) {
   });
 }
 
+// Show the side menu
+function menuOpenNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("overLay").style.width = "100%";
+}
 
+// Close the side menu
+function menuCloseNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("overLay").style.width = "0";
+}

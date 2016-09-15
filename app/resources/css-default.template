@@ -27,6 +27,7 @@ body {
   margin: auto;
   max-width: 800px;
   width: 100%;
+  margin-top: 65px;
 }
 
 /* Do not apply the max width constraint for admin pages. */
@@ -60,8 +61,8 @@ h3 {
 }
 
 .header {
-  border-bottom: 1px solid #dadada;
-  padding: 1em 0;
+  padding: 0;
+  width: 100%;
 }
 
 .header a {
@@ -139,12 +140,46 @@ pre {  /* code samples */
   margin-right: 10px;
 }
 
+/* Title bar */
+
+.title-bar {
+  background-color: #FB8C00;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.title-bar a {
+  font-size: 20px;
+  text-decoration: none;
+  padding-top: 20px;
+  display: block;
+  color: white;
+}
+
+.title-bar button {
+  background-color: transparent;
+  width: 64px;
+  height: 64px;
+  border: none;
+  padding: 0;
+  float: left;
+}
+
+button .menu img {
+  height: 24px;
+  width: 24px;
+}
+
 /* Language menu */
 
 div.languages {
-  float: {{end}};
-  margin: 10px 0;
-  padding: 0;
+  padding: 15px 8px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  border-top: 1px solid #dadada;
 }
 
 div.languages img {
@@ -157,6 +192,13 @@ ul.repo-menu {
   margin: 0 0 1em 0;
   padding: 0;
   list-style-type: none;
+}
+
+a.repo {
+  font-size: 10px;
+  text-decoration: none;
+  color: white;
+  padding: 0 0 0 190px;
 }
 
 /* Forms */
@@ -422,7 +464,6 @@ td.submit {
 .footer {
   clear: both;
   margin: 2em 0;
-  text-align: center;
   color: #666;
 }
 
@@ -1135,4 +1176,42 @@ table.api-keys td.empty {
   html {
     padding: 5px;
   }
+}
+
+/* Side menu */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidenav a {
+  padding: 15px 8px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  border-top: 1px solid #dadada;
+}
+
+.google-logo img {
+  padding: 12px 8px;
+  height: 32px;
+}
+
+.overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.5);
+  overflow-x: hidden;
 }

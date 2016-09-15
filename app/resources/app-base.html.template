@@ -13,7 +13,8 @@
 {% block title %}{{block.super}}{% endblock title %}
 
 {% block logo %}
-  <a href="{{env.global_url}}"><img src="{{env.global_url}}/logo.png" alt=""></a>
+  <button class="menu" onclick="menuOpenNav()"><img src="{{env.global_url}}/menu.png" alt="Menu"></button>
+  <a href="{{env.global_url}}">Google Person Finder</a>
 {% endblock %}
 
 {# Header above page content. #}
