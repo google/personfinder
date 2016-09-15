@@ -118,7 +118,7 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def get_person_ids_from_results(romanized_query, results_list, returned_fields):
+def get_person_ids_from_results(romanized_query, results_list, romanized_name_fields):
     """
     Returns person record_id of persons
     whose name contains at least one word in romanized_query.
@@ -135,14 +135,14 @@ def get_person_ids_from_results(romanized_query, results_list, returned_fields):
     for results in results_list:
         for document in results:
             fields = {field.name:field.value for field in document.fields}
-            id = fields.get('record_id', None)
-            romanized_fields = (value for name, value in fields.items()
-                                if name in returned_fields)
+            id = fields['record_id']
+            romanized_names = (value for name, value in fields.items()
+                                if name in romanized_name_fields)
 
-            if id is None or id in index_results:
+            if id in index_results:
                 continue
 
-            if any(regexp.search(value) for value in romanized_fields):
+            if any(regexp.search(value) for value in romanized_names):
                 index_results.append(id)
     return index_results
 
@@ -182,7 +182,8 @@ def search(repo, query_txt, max_results):
 
 
     # Define the fields need to be returned per romanzie method
-    returned_name_fields = [u'names_romanized_by_' + method.__name__ for method in ROMANIZE_METHODS]
+    returned_name_fields = [u'names_romanized_by_' + method.__name__
+                            for method in ROMANIZE_METHODS]
     returned_fields = returned_name_fields + ['record_id']
 
     options = appengine_search.QueryOptions(
@@ -208,7 +209,8 @@ def search(repo, query_txt, max_results):
 
     results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
-    index_results = get_person_ids_from_results(query_txt, results_list, returned_fields)
+    index_results = get_person_ids_from_results(query_txt, results_list,
+                                                returned_name_fields)
 
     results = []
     for id in index_results:
@@ -373,9 +375,8 @@ def create_document(person):
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
-    romanize_methods = ROMANIZE_METHODS
 
-    for romanize_method in romanize_methods:
+    for romanize_method in ROMANIZE_METHODS:
         fields.extend(create_romanized_name_fields(
             romanize_method,
             given_name=person.given_name,

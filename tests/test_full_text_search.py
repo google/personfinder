@@ -366,19 +366,19 @@ class FullTextSearchTests(unittest.TestCase):
             set(['haiti/0523'])
 
         # Search by Special Chinese Family Name
-        # Where Documents are written in English
+        # while records are written in English
         results = full_text_search.search('haiti', u'单鱼', 5)
         assert set([r.record_id for r in results]) == \
                set(['haiti/0911'])
 
         # Search by Pinyin(Chinese Romaji)
-        # while Documents are written in Chinese
+        # while records are written in Chinese
         results = full_text_search.search('haiti', u'Zeng Cheng', 5)
         assert set([r.record_id for r in results]) == \
                set(['haiti/0910'])
 
         # Search by Chinese
-        # while Documents are written in Chinese
+        # while records are written in Chinese
         results = full_text_search.search('haiti', u'曾诚', 5)
         assert set([r.record_id for r in results]) == \
                set(['haiti/0910'])
