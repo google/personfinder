@@ -162,6 +162,21 @@ class FullTextSearchTests(unittest.TestCase):
             'haiti/0909',
             full_name=u'音無小鳥',
             entry_date=TEST_DATETIME)
+        self.p17 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0910',
+            full_name=u'曾诚',
+            family_name = u'曾',
+            given_name = u'诚',
+            entry_date=TEST_DATETIME)
+
+        self.p18 = model.Person.create_original_with_record_id(
+            'haiti',
+            'haiti/0911',
+            full_name=u'Shan Yu',
+            family_name=u'Shan',
+            given_name=u'Yu',
+            entry_date=TEST_DATETIME)
 
 
     def tearDown(self):
@@ -185,6 +200,8 @@ class FullTextSearchTests(unittest.TestCase):
         db.put(self.p14)
         db.put(self.p15)
         db.put(self.p16)
+        db.put(self.p17)
+        db.put(self.p18)
         full_text_search.add_record_to_index(self.p1)
         full_text_search.add_record_to_index(self.p2)
         full_text_search.add_record_to_index(self.p3)
@@ -201,7 +218,8 @@ class FullTextSearchTests(unittest.TestCase):
         full_text_search.add_record_to_index(self.p14)
         full_text_search.add_record_to_index(self.p15)
         full_text_search.add_record_to_index(self.p16)
-
+        full_text_search.add_record_to_index(self.p17)
+        full_text_search.add_record_to_index(self.p18)
 
         # Search by alternate name
         results = full_text_search.search('haiti', 'Iorin', 5)
@@ -346,6 +364,24 @@ class FullTextSearchTests(unittest.TestCase):
         results = full_text_search.search('haiti', u'真美', 5)
         assert set([r.record_id for r in results]) == \
             set(['haiti/0523'])
+
+        # Search by Special Chinese Family Name
+        # while records are written in English
+        results = full_text_search.search('haiti', u'单鱼', 5)
+        assert set([r.record_id for r in results]) == \
+               set(['haiti/0911'])
+
+        # Search by Pinyin(Chinese Romaji)
+        # while records are written in Chinese
+        results = full_text_search.search('haiti', u'Zeng Cheng', 5)
+        assert set([r.record_id for r in results]) == \
+               set(['haiti/0910'])
+
+        # Search by Chinese
+        # while records are written in Chinese
+        results = full_text_search.search('haiti', u'曾诚', 5)
+        assert set([r.record_id for r in results]) == \
+               set(['haiti/0910'])
 
 
     def test_delete_record_from_index(self):
