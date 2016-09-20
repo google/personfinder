@@ -17,6 +17,16 @@
   {{person.full_name}} - {{block.super}}
 {% endblock %}
 
+{% if params.query or params.given_name or params.family_name %}
+  {% block logo %}
+    {% if env.rtl %}
+      <button class="title-bar-button"><a href="{{results_url}}"><img src="{{env.global_url}}/forward_arrow.png" alt=""></a></button>Google Person Finder
+    {% else %}
+      <button class="title-bar-button"><a href="{{results_url}}"><img src="{{env.global_url}}/back_arrow.png" alt=""></a></button>Google Person Finder
+    {% endif %}
+  {% endblock %}
+{% endif %}
+
 {% block head %}
   {{block.super}}
   {% if env.enable_javascript %}
@@ -360,15 +370,6 @@
 
       </div>
       <p>
-      {% if params.query or params.given_name or params.family_name %}
-        <a href="{{results_url}}">
-          {{env.back_chevron}} {% trans "Back to results list" %}
-        </a>
-      {% else %}
-        <a href="{{env.start_url}}">
-          {{env.back_chevron}} {% trans "Back to start" %}
-        </a>
-      {% endif %}
     </div>
 
     <div class="column end">

@@ -75,15 +75,13 @@
           {% block logo %}{% endblock %}
         {% endif %}
       {% endblock header %}
-
-      {% if env.repo %}
-        <a class="repo" href="{{env.repo_title_url}}" {{env.target_attr|safe}}>
-          {{env.repo_title}}
-        </a>
-      {% endif %}      
-
     </div>
 
+    {% if env.repo %}
+      <div class="subtitle-bar">
+        {{env.repo_title}}
+      </div>
+    {% endif %}
 
     {% if env.repo_test_mode %}
       <div class="header-notification">
@@ -91,76 +89,71 @@
       </div>
     {% endif %}
 
-    {% block container %}
-      <div class="container">
-        <div class="content" role="main">
-          {% block content %}
-          {% endblock content %}
+    <div class=window>
+      {% block container %}
+        <div class="container">
+          <div class="content" role="main">
+            {% block content %}
+            {% endblock content %}
+          </div>
         </div>
-      </div>
-    {% endblock container %}
+      {% endblock container %}
 
-    {% block backlink %}
-      {% if env.repo and env.action and env.action != "start" %}
-        {% if env.ui != "small" %}<p>{% endif %}
-        <div class="backlink"><a href="{{env.start_url}}">
-          {{env.back_chevron}} {% trans "Back to start" %}
-        </a></div>
-      {% endif %}
-    {% endblock backlink %}
+      <div class="footer" role="contentinfo">
+        <div class="disclaimer">
+          {% block disclaimer %}
+            {% if env.ui == "light" %}
+              {% trans "To delete your data, access Person Finder from your desktop." %}
+              <br>
+            {% endif %}
 
-    <div class="footer" role="contentinfo">
-      <div class="disclaimer">
-        {% block disclaimer %}
-          {% if env.ui == "light" %}
-            {% trans "To delete your data, access Person Finder from your desktop." %}
-            <br>
-          {% endif %}
+            {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
 
-          {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+            {% if env.show_language_menu %}
+              {% include "language-menu.html.template" %}
+            {% endif %}
 
-          {% if config.privacy_policy_url %}
-            {# TODO(ichikawa) Proxy this in the same way as TOS. #}
-            {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
-              Learn more about Google
-              <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>.
-            {% endblocktrans %}
-          {% endif %}
-        {% endblock disclaimer %}
-      </div>
+          {% endblock disclaimer %}
+        </div>
 
-      <div>
-        {{env.footer_custom_html|default:""|safe}}
-      </div>
+        <div>
+          {{env.footer_custom_html|default:""|safe}}
+        </div>
 
-      <div id="mySidenav" class="sidenav">
-        <span class="google-logo"><img src="https://material.google.com/static/images/nav_google_logo.svg" alt=""/></span>
-
-        {% block footer %}
-          {% if env.repo and env.ui == "light" %}
-            <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
-            <span class="link-separator"></span>
-          {% endif %}
-          <a href="{{env.global_url}}" {{env.target_attr|safe}}
-              >{% trans "About Google Person Finder" %}</a>
-          <span class="link-separator"></span>
-          <a href="https://support.google.com/personfinder/contact/pf_feedback"
-              {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
-          <span class="link-separator"></span>
-          {% if env.ui != "light" %}
-            <a href="https://github.com/google/personfinder"
-                {{env.target_attr|safe}}>{% trans "Developers" %}</a>
-            <span class="link-separator"></span>
-          {% endif %}
-          <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
-              >{% trans "Terms of Service" %}</a>
-          {% if env.show_language_menu %}
-            {% include "language-menu.html.template" %}
-          {% endif %}
-        {% endblock footer %}
+        {% include "analytics.html.template" %}
       </div>
     </div>
-    {% include "analytics.html.template" %}
-    <div id="overLay" class="overlay" onclick="menuCloseNav()"></div>
+
+    <div id="sidenav" class="sidenav">
+      {% block footer %}
+        {% if env.repo and env.ui == "light" %}
+          <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+          <span class="link-separator"></span>
+        {% endif %}
+        <a href="{{env.global_url}}" {{env.target_attr|safe}}
+            >{% trans "About Google Person Finder" %}</a>
+        <span class="link-separator"></span>
+        {% include "repo-menu.html.template" %}
+        <span class="link-separator"></span>
+        <a href="https://support.google.com/personfinder/contact/pf_feedback"
+            {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+        <span class="link-separator"></span>
+        {% if env.ui != "light" %}
+          <a href="https://github.com/google/personfinder"
+              {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+          <span class="link-separator"></span>
+        {% endif %}
+        <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
+            >{% trans "Terms of Service" %}</a>
+        {% if config.privacy_policy_url %}
+          {# TODO(ichikawa) Proxy this in the same way as TOS. #}
+          {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
+            Learn more about Google
+            <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>
+          {% endblocktrans %}
+        {% endif %}
+      {% endblock footer %}
+    </div>
+    <div id="overlay" class="overlay" onclick="closeSideMenu()"></div>
   {% endblock body %}
 </body></html>

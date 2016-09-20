@@ -16,18 +16,17 @@
 
 /* All pages */
 
-html {
-  padding: 15px;
+.window {
+  max-width: 900px;
+  padding: 5px;
+  margin: auto;
 }
 
 body {
   background: #f2f0f0;
   font-family: arial, sans-serif;
   font-size: 13px;
-  margin: auto;
-  max-width: 800px;
-  width: 100%;
-  margin-top: 65px;
+  margin: 0;
 }
 
 /* Do not apply the max width constraint for admin pages. */
@@ -58,11 +57,6 @@ h3 {
   font-size: 13px;
   font-weight: bold;
   margin: 0;
-}
-
-.header {
-  padding: 0;
-  width: 100%;
 }
 
 .header a {
@@ -122,6 +116,7 @@ pre {  /* code samples */
 
 .button-blue input {
   background: #4285f4;
+  margin-top: 10px;
 }
 
 .button-red input {
@@ -143,43 +138,40 @@ pre {  /* code samples */
 /* Title bar */
 
 .title-bar {
-  background-color: #FB8C00;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  position: absolute;
-}
-
-.title-bar a {
   font-size: 20px;
-  text-decoration: none;
-  padding-top: 20px;
-  display: block;
   color: white;
+  background-color: #616161;
 }
 
 .title-bar button {
   background-color: transparent;
-  width: 64px;
   height: 64px;
   border: none;
-  padding: 0;
-  float: left;
+  width: 64px;
 }
 
-button .menu img {
+button .title-bar-button img {
   height: 24px;
   width: 24px;
+}
+
+div.subtitle-bar {
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 0;
+  box-shadow: 0 2px 1px -1px #a0a0a0;
+  background-color: #ffffff;
+  display: block;
+  padding: 20px 64px;
+  color: #424242;
 }
 
 /* Language menu */
 
 div.languages {
-  padding: 15px 8px;
   text-decoration: none;
   color: black;
-  display: block;
-  border-top: 1px solid #dadada;
+  float: right;
 }
 
 div.languages img {
@@ -192,13 +184,6 @@ ul.repo-menu {
   margin: 0 0 1em 0;
   padding: 0;
   list-style-type: none;
-}
-
-a.repo {
-  font-size: 10px;
-  text-decoration: none;
-  color: white;
-  padding: 0 0 0 190px;
 }
 
 /* Forms */
@@ -463,7 +448,7 @@ td.submit {
 
 .footer {
   clear: both;
-  margin: 2em 0;
+  padding: 0 2em;
   color: #666;
 }
 
@@ -496,8 +481,6 @@ td.submit {
 
 .main {
   font-size: 16px;
-  margin: auto;
-  width: 650px;
   width: 100%;
 }
 
@@ -514,6 +497,7 @@ td.submit {
   border: none;
   font-size: 20px;
   margin-bottom: 1em;
+  margin-left: 40px;
   max-width: 240px;
   min-height: 70px;
   padding: 16px;
@@ -528,7 +512,7 @@ td.submit {
 .main .action-outer.start {
   background: #4285f4;
   float: {{start}};
-  margin-right: 58px;
+  margin-right: 18px;
 }
 
 .main .action-outer.end {
@@ -548,7 +532,8 @@ td.submit {
 }
 
 .custom-message {
-  width: 500px;
+  max-width: 500px;
+  width: 90%;
   margin: 1em 0;
 }
 
@@ -948,15 +933,6 @@ div.embed pre {
   padding: 0px 10px;
 }
 
-.admin-side-bar ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-.admin-side-bar li {
-  padding: 5px 0px;
-}
-
 form.admin fieldset {
   border: 1px solid #888;
   margin: 24px 6px;
@@ -1172,17 +1148,12 @@ table.api-keys td.empty {
   overflow: auto;
 }
 
-@media screen and (max-width: 320px) {
-  html {
-    padding: 5px;
-  }
-}
-
 /* Side menu */
 
 .sidenav {
   height: 100%;
-  width: 0;
+  width: 80%;
+  max-width: 0;
   position: fixed;
   z-index: 3;
   top: 0;
@@ -1190,6 +1161,23 @@ table.api-keys td.empty {
   background-color: #ffffff;
   overflow-x: hidden;
   transition: 0.5s;
+}
+
+.sidenav h2 {
+  margin: 8px;
+}
+
+.sidenav div {
+  padding: 15px 8px;
+}
+
+.sidenav div a {
+  color: blue;
+  display: inline;
+}
+
+.sidenav select {
+  margin: 8px;
 }
 
 .sidenav a {
@@ -1206,12 +1194,12 @@ table.api-keys td.empty {
 }
 
 .overlay {
-  position:fixed;
-  top:0;
-  left:0;
-  height: 100%;
-  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   background: rgba(0,0,0,0.5);
-  overflow-x: hidden;
+  display: none;
 }

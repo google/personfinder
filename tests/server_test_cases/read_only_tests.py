@@ -329,10 +329,10 @@ class ReadOnlyTests(ServerTestsBase):
     def test_config_repo_titles(self):
         doc = self.go('/haiti')
         assert 'Haiti Earthquake' in scrape.get_all_text(
-            doc.cssselect_one('a.repo'))
+            doc.cssselect_one('div.subtitle-bar'))
 
         doc = self.go('/pakistan')
-        assert 'Pakistan Floods' in scrape.get_all_text(doc.cssselect_one('a.repo'))
+        assert 'Pakistan Floods' in scrape.get_all_text(doc.cssselect_one('div.subtitle-bar'))
 
     def test_config_language_menu_options(self):
         doc = self.go('/haiti')

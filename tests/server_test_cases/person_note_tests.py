@@ -465,7 +465,7 @@ class PersonNoteTests(ServerTestsBase):
         self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query=_test_given_name' in link.get('href')
+        assert 'query_name=_test_given_name' in link.get('href')
 
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
@@ -5226,10 +5226,10 @@ _feed_profile_url2</pfif:profile_urls>
         """Test that Document.cssselect works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert doc.cssselect_one('div.subtitle-bar').text.strip() == 'Haiti Earthquake'
 
     def test_xpath(self):
         """Test that Document.xpath works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert doc.cssselect_one('div.subtitle-bar').text.strip() == 'Haiti Earthquake'

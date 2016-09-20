@@ -13,8 +13,15 @@
 {% block title %}{{block.super}}{% endblock title %}
 
 {% block logo %}
-  <button class="menu" onclick="menuOpenNav()"><img src="{{env.global_url}}/menu.png" alt="Menu"></button>
-  <a href="{{env.global_url}}">Google Person Finder</a>
+  {% if env.repo and env.action and env.action != "start" %}
+    {% if env.rtl %}
+	  <button class="title-bar-button"><a href="{{env.start_url}}"><img src="{{env.global_url}}/forward_arrow.png" alt=""></a></button>Google Person Finder
+    {% else %}
+      <button class="title-bar-button"><a href="{{env.start_url}}"><img src="{{env.global_url}}/back_arrow.png" alt=""></a></button>Google Person Finder
+    {% endif %}
+  {% else %}
+    <button class="title-bar-button" id="menu-button" onclick="showSideMenu()"><img src="{{env.global_url}}/menu.png" alt="Menu"></button>Google Person Finder
+  {% endif %}
 {% endblock %}
 
 {# Header above page content. #}

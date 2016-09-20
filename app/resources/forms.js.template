@@ -376,13 +376,13 @@ function make_form_expandable(expandedSection) {
 }
 
 // Show the side menu
-function menuOpenNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("overLay").style.width = "100%";
+function showSideMenu() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("sidenav").style.maxWidth = "250px";
 }
 
 // Close the side menu
-function menuCloseNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("overLay").style.width = "0";
+function closeSideMenu() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("sidenav").style.maxWidth = "0";
 }
