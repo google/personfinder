@@ -15,13 +15,14 @@
 {% block logo %}
   {% if env.repo and env.action and env.action != "start" %}
     {% if env.rtl %}
-	  <button class="title-bar-button"><a href="{{env.start_url}}"><img src="{{env.global_url}}/forward_arrow.png" alt=""></a></button>Google Person Finder
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
     {% else %}
-      <button class="title-bar-button"><a href="{{env.start_url}}"><img src="{{env.global_url}}/back_arrow.png" alt=""></a></button>Google Person Finder
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
     {% endif %}
   {% else %}
-    <button class="title-bar-button" id="menu-button" onclick="showSideMenu()"><img src="{{env.global_url}}/menu.png" alt="Menu"></button>Google Person Finder
+    <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
   {% endif %}
+  Google Person Finder
 {% endblock %}
 
 {# Header above page content. #}
@@ -39,7 +40,7 @@
   {{block.super}}
 {% endblock disclaimer %}
 
-{# Footer at the bottom of every page. #}
-{% block footer %}
+{# Sidenav at the left side of every page. #}
+{% block sidenav %}
   {{block.super}}
-{% endblock footer %}
+{% endblock sidenav %}

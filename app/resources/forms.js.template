@@ -376,13 +376,15 @@ function make_form_expandable(expandedSection) {
 }
 
 // Show the side menu
+// Change the sidenav maxWidth for animation
 function showSideMenu() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("sidenav").style.maxWidth = "250px";
 }
 
 // Close the side menu
-function closeSideMenu() {
+// Change the sidenav maxWidth for animation
+function hideSideMenu() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("sidenav").style.maxWidth = "0";
 }

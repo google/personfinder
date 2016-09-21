@@ -101,7 +101,8 @@ class Handler(BaseHandler):
                                            id=result.record_id,
                                            role=self.params.role,
                                            query_name=self.params.query_name,
-                                           query_location=self.params.query_location,
+                                           query_location=
+                                               self.params.query_location,
                                            given_name=self.params.given_name,
                                            family_name=self.params.family_name)
             result.latest_note_status = get_person_status_text(result)
@@ -221,7 +222,8 @@ class Handler(BaseHandler):
             else:
                 # Look for prefix matches.
                 results = self.search(query_dict)
-                results_url = self.get_results_url(self.params.query_name, self.params.query_location)
+                results_url = self.get_results_url(self.params.query_name,
+                                                   self.params.query_location)
                 third_party_query_type = ''
 
             # Show the (possibly empty) matches.

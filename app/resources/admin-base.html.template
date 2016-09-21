@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block logo %}
-    <button class="title-bar-button" id="menu-button" onclick="showSideMenu()"><img src="{{env.global_url}}/menu.png" alt="Menu"></button>Google Person Finder
+  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">Google Person Finder
 {% endblock %}
 
 {% block body %}
@@ -41,7 +41,7 @@
 
 {% endblock body %}
 
-{% block footer %}
+{% block sidenav %}
   <div><span class="email">{{env.admin.user.email}}<a href="{{env.admin.logout_url}}">Sign out</a></div>
 
   <h2>Global</h2>
@@ -76,4 +76,4 @@
     <a href="{{env.repo_url}}/admin/api_keys/list">Repository API keys</a>
     <a href="{{env.repo_url}}/admin/delete_record">Delete a record</a>
   {% endif %}
-{% endblock footer %}
+{% endblock sidenav %}

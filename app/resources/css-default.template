@@ -16,12 +16,6 @@
 
 /* All pages */
 
-.window {
-  max-width: 900px;
-  padding: 5px;
-  margin: auto;
-}
-
 body {
   background: #f2f0f0;
   font-family: arial, sans-serif;
@@ -65,6 +59,14 @@ h3 {
 
 .container {
   clear: both;
+}
+
+/* outer-container contains everything 
+    except for the header and the side bar */
+.outer-container {
+  max-width: 900px;
+  padding: 5px;
+  margin: auto;
 }
 
 .hidden {
@@ -116,7 +118,6 @@ pre {  /* code samples */
 
 .button-blue input {
   background: #4285f4;
-  margin-top: 10px;
 }
 
 .button-red input {
@@ -141,27 +142,22 @@ pre {  /* code samples */
   font-size: 20px;
   color: white;
   background-color: #616161;
-}
-
-.title-bar button {
-  background-color: transparent;
   height: 64px;
-  border: none;
-  width: 64px;
+  line-height: 64px; /* vertical center text */
 }
 
-button .title-bar-button img {
+.title-bar-button {
   height: 24px;
   width: 24px;
+  float: {{start}};
+  padding: 20px;
 }
 
 div.subtitle-bar {
   font-size: 20px;
   font-weight: normal;
-  margin-top: 0;
   box-shadow: 0 2px 1px -1px #a0a0a0;
   background-color: #ffffff;
-  display: block;
   padding: 20px 64px;
   color: #424242;
 }
@@ -171,7 +167,7 @@ div.subtitle-bar {
 div.languages {
   text-decoration: none;
   color: black;
-  float: right;
+  float: {{end}};
 }
 
 div.languages img {
@@ -632,6 +628,7 @@ img.icon {
 
 .view input.add-note {
   width: 100%;
+  margin-top: 10px;
 }
 
 .note .button input {
@@ -836,9 +833,13 @@ resultsList {
 }
 
 .result-link {
-  color: inherit;
+  color: #3b78e7;
   display: block;
   text-decoration: none;
+}
+
+.result-link:visited {
+  color: #00008b;
 }
 
 .searchResults {
@@ -858,7 +859,7 @@ resultsList {
 
 .searchResults .resultItem .resultOrder {
   padding-right: 5px;
-  float: left;
+  float: {{start}};
   color: #888;
 }
 
@@ -880,7 +881,6 @@ resultsList {
 }
 
 .searchResults .resultDataTitle {
-  color: #3b78e7;
   font-size: 18px;
 }
 
@@ -1161,6 +1161,7 @@ table.api-keys td.empty {
   background-color: #ffffff;
   overflow-x: hidden;
   transition: 0.5s;
+  white-space: nowrap;
 }
 
 .sidenav h2 {

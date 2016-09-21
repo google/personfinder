@@ -83,13 +83,13 @@
       </div>
     {% endif %}
 
-    {% if env.repo_test_mode %}
-      <div class="header-notification">
-        {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 24 hours old are deleted." %}
-      </div>
-    {% endif %}
+    <div class="outer-container">
+      {% if env.repo_test_mode %}
+        <div class="header-notification">
+          {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 24 hours old are deleted." %}
+        </div>
+      {% endif %}
 
-    <div class=window>
       {% block container %}
         <div class="container">
           <div class="content" role="main">
@@ -125,7 +125,7 @@
     </div>
 
     <div id="sidenav" class="sidenav">
-      {% block footer %}
+      {% block sidenav %}
         {% if env.repo and env.ui == "light" %}
           <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
           <span class="link-separator"></span>
@@ -152,8 +152,8 @@
             <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>
           {% endblocktrans %}
         {% endif %}
-      {% endblock footer %}
+      {% endblock sidenav %}
     </div>
-    <div id="overlay" class="overlay" onclick="closeSideMenu()"></div>
+    <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
   {% endblock body %}
 </body></html>

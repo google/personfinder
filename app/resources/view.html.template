@@ -17,15 +17,22 @@
   {{person.full_name}} - {{block.super}}
 {% endblock %}
 
-{% if params.query or params.given_name or params.family_name %}
-  {% block logo %}
+{% block logo %}
+  {% if params.query_name or params.given_name or params.family_name %}
     {% if env.rtl %}
-      <button class="title-bar-button"><a href="{{results_url}}"><img src="{{env.global_url}}/forward_arrow.png" alt=""></a></button>Google Person Finder
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
     {% else %}
-      <button class="title-bar-button"><a href="{{results_url}}"><img src="{{env.global_url}}/back_arrow.png" alt=""></a></button>Google Person Finder
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
     {% endif %}
-  {% endblock %}
-{% endif %}
+  {% else %}
+    {% if env.rtl %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
+    {% else %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
+    {% endif %}
+  {% endif %}
+  Google Person Finder
+{% endblock %}
 
 {% block head %}
   {{block.super}}
