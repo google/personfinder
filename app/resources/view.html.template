@@ -27,7 +27,7 @@
   {% else %}
     {{block.super}}
   {% endif %}
-  Google Person Finder
+  {% trans "Google Person Finder" %}
 {% endblock %}
 
 {% block head %}

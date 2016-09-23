@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block logo %}
-  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">Google Person Finder
+  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">{% trans "Google Person Finder" %}
 {% endblock %}
 
 {% block body %}

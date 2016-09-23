@@ -1,6 +1,7 @@
 {# Template for app pages (e.g. start, query, results, view, create, etc.). #}
 
 {% extends "base.html.template" %}
+{% load i18n %}
 
 {# To customize your site, replace, append, or prepend to the blocks below. #}
 
@@ -22,7 +23,7 @@
   {% else %}
     <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
   {% endif %}
-  Google Person Finder
+  {% trans "Google Person Finder" %}
 {% endblock %}
 
 {# Header above page content. #}

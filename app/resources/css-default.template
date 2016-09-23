@@ -143,7 +143,7 @@ pre {  /* code samples */
   color: white;
   background-color: #616161;
   height: 64px;
-  line-height: 64px; /* Vertically center the text */
+  line-height: 64px;  /* Vertically center the text */
 }
 
 .title-bar-button {
@@ -167,7 +167,7 @@ div.subtitle-bar {
 div.languages {
   text-decoration: none;
   color: black;
-  float: {{end}};
+  text-align: {{end}};
 }
 
 div.languages img {
@@ -364,7 +364,7 @@ over 10% in penetration ratio.
 }
 
 .card .label {
-  display: block; /* to make float/width attribute work */
+  display: block;  /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
   text-align: right;
@@ -628,7 +628,7 @@ img.icon {
 
 .view input.add-note {
   width: 100%;
-  margin-top: 10px; /* Vertically align blue buttom with record card */
+  margin-top: 10px;  /* To vertically align the "Add note" button with the record card */
 }
 
 .note .button input {
@@ -885,7 +885,7 @@ resultsList {
 }
 
 .searchResults .resultData {
-  margin-{{start}}: 100px; /* 80px for image + 20px gutter */
+  margin-{{start}}: 100px;  /* 80px for image + 20px gutter */
 }
 
 .searchResults .resultImageContainer,
@@ -1157,7 +1157,7 @@ table.api-keys td.empty {
   position: fixed;
   z-index: 3;
   top: 0;
-  left: 0;
+  {{start}}: 0;
   background-color: #ffffff;
   overflow-x: hidden;
   transition: 0.5s;
