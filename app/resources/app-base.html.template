@@ -15,7 +15,7 @@
 {% block logo %}
   {% if env.repo and env.action and env.action != "start" %}
     {% if env.rtl %}
-      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
     {% else %}
       <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
     {% endif %}

@@ -20,16 +20,12 @@
 {% block logo %}
   {% if params.query_name or params.given_name or params.family_name %}
     {% if env.rtl %}
-      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
     {% else %}
       <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
     {% endif %}
   {% else %}
-    {% if env.rtl %}
-      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Forward"></a>
-    {% else %}
-      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
-    {% endif %}
+    {{block.super}}
   {% endif %}
   Google Person Finder
 {% endblock %}
