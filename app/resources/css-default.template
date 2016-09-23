@@ -441,12 +441,12 @@ td.submit {
 .main .action-outer.start {
   background: #4285f4;
   float: {{start}};
-  margin-right: 58px;
+  margin-{{end}}: 58px;
 }
 
 .main .action-outer.end {
   background: #15a04a;
-  float: left;
+  float: {{start}};
 }
 
 .main .action-inner {
