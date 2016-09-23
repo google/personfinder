@@ -493,7 +493,7 @@ td.submit {
   border: none;
   font-size: 20px;
   margin-bottom: 1em;
-  margin-left: 40px;
+  margin-{{start}}: 40px;
   max-width: 240px;
   min-height: 70px;
   padding: 16px;
@@ -508,12 +508,12 @@ td.submit {
 .main .action-outer.start {
   background: #4285f4;
   float: {{start}};
-  margin-right: 18px;
+  margin-{{end}}: 18px;
 }
 
 .main .action-outer.end {
   background: #15a04a;
-  float: left;
+  float: {{start}};
 }
 
 .main .action-inner {
