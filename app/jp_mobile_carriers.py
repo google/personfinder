@@ -147,24 +147,31 @@ def look_up_number(number):
         Exception when failed to scrape.
     """
     # Scrape Docomo's gateway page and get a hidden time stamp param.
-    scrape = urllib2.urlopen(DOCOMO_URL).read()
-    hidden_param = DOCOMO_HIDDEN_RE.findall(scrape)[0]
-
-    # Encode the number and the above param as POST data
-    data = get_docomo_post_data(number, hidden_param)
-    encoded_data = urllib.urlencode(data)
-    # Scrape Docomo's answer on the number
-    scrape = urllib2.urlopen(DOCOMO_URL, encoded_data).read()
-
-    # Extract a further redirect url, if any.
-    url = extract_redirect_url(scrape)
-    if url:
-        return url
-    elif docomo_has_messages(scrape):
-        # Checks if Docomo has messages for the number, and returns the url
-        # for Docomo if it does.
-        return DOCOMO_URL + '?' + encoded_data
-
+    try:
+        scrape = urllib2.urlopen(DOCOMO_URL).read()
+    except (urllib2.URLError, httplib.HTTPException, socket.error) as e:
+        raise e
+    else:
+        hidden_param = DOCOMO_HIDDEN_RE.findall(scrape)[0]
+    
+        # Encode the number and the above param as POST data
+        data = get_docomo_post_data(number, hidden_param)
+        encoded_data = urllib.urlencode(data)
+        # Scrape Docomo's answer on the number
+        try:
+            scrape = urllib2.urlopen(DOCOMO_URL, encoded_data).read()
+        except (urllib2.URLError, httplib.HTTPException, socket.error) as e:
+            raise e
+        else:
+            # Extract a further redirect url, if any.
+            url = extract_redirect_url(scrape)
+            if url:
+                return url
+            elif docomo_has_messages(scrape):
+                # Checks if Docomo has messages for the number, and returns the url
+                # for Docomo if it does.
+                return DOCOMO_URL + '?' + encoded_data
+        
 def handle_phone_number(handler, query):
     """Handles a phone number query. If the query is a mobile phone number,
     looks up the number for registered messages in the mobile carriers-provided
@@ -176,16 +183,23 @@ def handle_phone_number(handler, query):
     Returns:
         True if the query string is a phone number and has been properly
         handled, and False otherwise.
+
+    Throws:
+        Exception when failed to look up phone number.
     """
     phone_number = get_phone_number(unicode(query))
     if phone_number:
         if is_mobile_number(phone_number):
-            url = look_up_number(phone_number)
-            if url:
-                handler.redirect(url)
+            try:
+                url = look_up_number(phone_number)
+            except Exception as e:
+                raise e
             else:
-                handler.render('results.html',
-                               results=[], jp_phone_number_query=True)
+                if url:
+                    handler.redirect(url)
+                else:
+                    handler.render('results.html',
+                                   results=[], jp_phone_number_query=True)
         else:
             handler.render('query.html',
                            show_jp_171_suggestion=True)
