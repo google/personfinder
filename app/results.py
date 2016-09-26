@@ -100,7 +100,9 @@ class Handler(BaseHandler):
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
                                            role=self.params.role,
-                                           query=self.params.query,
+                                           query_name=self.params.query_name,
+                                           query_location=
+                                               self.params.query_location,
                                            given_name=self.params.given_name,
                                            family_name=self.params.family_name)
             result.latest_note_status = get_person_status_text(result)
@@ -117,11 +119,12 @@ class Handler(BaseHandler):
         return self.redirect(
             '/query', role=self.params.role, error='error', query=query.query)
 
-    def get_results_url(self, query):
+    def get_results_url(self, query_name, query_location):
         return self.get_url(
             '/results',
             ui='' if self.env.ui == 'small' else self.env.ui,
-            query=query,
+            query_name=query_name,
+            query_location=query_location,
             role=self.params.role,
             given_name=self.params.given_name,
             family_name=self.params.family_name)
@@ -148,7 +151,7 @@ class Handler(BaseHandler):
                 self.params.given_name, self.params.family_name, self.config)
 
             query = TextQuery(query_txt)
-            results_url = self.get_results_url(query_txt)
+            results_url = self.get_results_url(query_txt, '')
             # Ensure that required parameters are present.
             if not self.params.given_name:
                 return self.reject_query(query)
@@ -180,7 +183,8 @@ class Handler(BaseHandler):
                                    create_url=create_url,
                                    third_party_search_engines=
                                        third_party_search_engines,
-                                   query=self.params.query)
+                                   query_name=self.params.query_name,
+                                   query_location=self.params.query_location,)
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
@@ -218,7 +222,8 @@ class Handler(BaseHandler):
             else:
                 # Look for prefix matches.
                 results = self.search(query_dict)
-                results_url = self.get_results_url(self.params.query)
+                results_url = self.get_results_url(self.params.query_name,
+                                                   self.params.query_location)
                 third_party_query_type = ''
 
             # Show the (possibly empty) matches.
@@ -231,5 +236,6 @@ class Handler(BaseHandler):
                                create_url=create_url,
                                third_party_search_engines=
                                    third_party_search_engines,
-                               query=self.params.query,
+                               query_name=self.params.query_name,
+                               query_location=self.params.query_location,
                                third_party_query_type=third_party_query_type)

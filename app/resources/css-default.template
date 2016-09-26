@@ -16,17 +16,11 @@
 
 /* All pages */
 
-html {
-  padding: 15px;
-}
-
 body {
   background: #f2f0f0;
   font-family: arial, sans-serif;
   font-size: 13px;
-  margin: auto;
-  max-width: 800px;
-  width: 100%;
+  margin: 0;
 }
 
 /* Do not apply the max width constraint for admin pages. */
@@ -59,17 +53,20 @@ h3 {
   margin: 0;
 }
 
-.header {
-  border-bottom: 1px solid #dadada;
-  padding: 1em 0;
-}
-
 .header a {
   text-decoration: none;
 }
 
 .container {
   clear: both;
+}
+
+/* outer-container contains everything 
+    except for the header and the side bar */
+.outer-container {
+  max-width: 900px;
+  padding: 5px;
+  margin: auto;
 }
 
 .hidden {
@@ -139,12 +136,38 @@ pre {  /* code samples */
   margin-right: 10px;
 }
 
+/* Title bar */
+
+.title-bar {
+  font-size: 20px;
+  color: white;
+  background-color: #616161;
+  height: 64px;
+  line-height: 64px;  /* Vertically center the text */
+}
+
+.title-bar-button {
+  height: 24px;
+  width: 24px;
+  float: {{start}};
+  padding: 20px;
+}
+
+div.subtitle-bar {
+  font-size: 20px;
+  font-weight: normal;
+  box-shadow: 0 2px 1px -1px #a0a0a0;
+  background-color: #ffffff;
+  padding: 20px 64px;
+  color: #424242;
+}
+
 /* Language menu */
 
 div.languages {
-  float: {{end}};
-  margin: 10px 0;
-  padding: 0;
+  text-decoration: none;
+  color: black;
+  text-align: {{end}};
 }
 
 div.languages img {
@@ -222,14 +245,14 @@ a.expand-button {
 .expand-button-icon-down {
   background: url({{env.global_url}}/expand-icon-down.png);
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: {{end}};
 }
 
 /* Icon for the expand-button after the form is expanded */
 .expand-button-icon-up {
   background: url({{env.global_url}}/expand-icon-up.png);  
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: {{end}};
 }
 
 /* Multi-column page */
@@ -341,7 +364,7 @@ over 10% in penetration ratio.
 }
 
 .card .label {
-  display: block; /* to make float/width attribute work */
+  display: block;  /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
   text-align: right;
@@ -421,8 +444,7 @@ td.submit {
 
 .footer {
   clear: both;
-  margin: 2em 0;
-  text-align: center;
+  padding: 0 2em;
   color: #666;
 }
 
@@ -455,8 +477,6 @@ td.submit {
 
 .main {
   font-size: 16px;
-  margin: auto;
-  width: 650px;
   width: 100%;
 }
 
@@ -473,6 +493,7 @@ td.submit {
   border: none;
   font-size: 20px;
   margin-bottom: 1em;
+  margin-{{start}}: 40px;
   max-width: 240px;
   min-height: 70px;
   padding: 16px;
@@ -487,12 +508,12 @@ td.submit {
 .main .action-outer.start {
   background: #4285f4;
   float: {{start}};
-  margin-right: 58px;
+  margin-{{end}}: 18px;
 }
 
 .main .action-outer.end {
   background: #15a04a;
-  float: left;
+  float: {{start}};
 }
 
 .main .action-inner {
@@ -507,7 +528,8 @@ td.submit {
 }
 
 .custom-message {
-  width: 500px;
+  max-width: 500px;
+  width: 90%;
   margin: 1em 0;
 }
 
@@ -606,6 +628,8 @@ img.icon {
 
 .view input.add-note {
   width: 100%;
+  margin-top: 10px;  /* To vertically align the "Add note" button
+                        with the record card */
 }
 
 .note .button input {
@@ -810,9 +834,13 @@ resultsList {
 }
 
 .result-link {
-  color: inherit;
+  color: #3b78e7;
   display: block;
   text-decoration: none;
+}
+
+.result-link:visited {
+  color: #00008b;
 }
 
 .searchResults {
@@ -832,7 +860,7 @@ resultsList {
 
 .searchResults .resultItem .resultOrder {
   padding-right: 5px;
-  float: left;
+  float: {{start}};
   color: #888;
 }
 
@@ -854,12 +882,11 @@ resultsList {
 }
 
 .searchResults .resultDataTitle {
-  color: #3b78e7;
   font-size: 18px;
 }
 
 .searchResults .resultData {
-  margin-{{start}}: 100px; /* 80px for image + 20px gutter */
+  margin-{{start}}: 100px;  /* 80px for image + 20px gutter */
 }
 
 .searchResults .resultImageContainer,
@@ -905,15 +932,6 @@ div.embed pre {
   flex-shrink: 1;
   max-width: 800px;
   padding: 0px 10px;
-}
-
-.admin-side-bar ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-.admin-side-bar li {
-  padding: 5px 0px;
 }
 
 form.admin fieldset {
@@ -987,7 +1005,9 @@ table.review th.note.colgroup {
   background: #555;
 }
 
-table.review .person, table.review .person a, table.review .person a:visited {
+table.review .person,
+table.review .person a,
+table.review .person a:visited {
   color: #04c;
 }
 
@@ -1082,7 +1102,9 @@ table.api-keys th.operation {
   color: #fff;
 }
 
-table.api-keys .contact, table.api-keys .contact a, table.api-keys .contact a:visited {
+table.api-keys .contact,
+table.api-keys .contact a,
+table.api-keys .contact a:visited {
   color: #04c;
 }
 
@@ -1131,8 +1153,59 @@ table.api-keys td.empty {
   overflow: auto;
 }
 
-@media screen and (max-width: 320px) {
-  html {
-    padding: 5px;
-  }
+/* Side menu */
+
+.sidenav {
+  height: 100%;
+  width: 80%;
+  max-width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  {{start}}: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  white-space: nowrap;
+}
+
+.sidenav h2 {
+  margin: 8px;
+}
+
+.sidenav div {
+  padding: 15px 8px;
+}
+
+.sidenav div a {
+  color: blue;
+  display: inline;
+}
+
+.sidenav select {
+  margin: 8px;
+}
+
+.sidenav a {
+  padding: 15px 8px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  border-top: 1px solid #dadada;
+}
+
+.google-logo img {
+  padding: 12px 8px;
+  height: 32px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.5);
+  display: none;
 }

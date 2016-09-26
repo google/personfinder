@@ -35,7 +35,7 @@
     <input type="hidden" name="role" value="{{params.role}}">
     <div class="create" role="form">
       <div class="column centered">
-        <div class="header card">
+        <div class="card">
           <h1>
             {% ifequal params.role "provide" %}
               {% trans "Who you have information about" %}

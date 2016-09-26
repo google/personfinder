@@ -375,4 +375,16 @@ function make_form_expandable(expandedSection) {
   });
 }
 
+// Show the side menu
+function showSideMenu() {
+  document.getElementById("overlay").style.display = "block";
+  // Change the sidenav maxWidth for animation
+  document.getElementById("sidenav").style.maxWidth = "250px";
+}
 
+// Close the side menu
+function hideSideMenu() {
+  document.getElementById("overlay").style.display = "none";
+  // Change the sidenav maxWidth for animation
+  document.getElementById("sidenav").style.maxWidth = "0";
+}

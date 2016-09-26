@@ -68,7 +68,7 @@
           </div>
         {% else %}
           <div class="create note" role="form">         
-            <div class="header card">
+            <div class="card">
               <h1>
                 {% if not markdup %}
                   {% if person.full_name %}

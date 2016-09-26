@@ -17,17 +17,12 @@
 {# Header above page content. #}
 {% block header %}
   {{block.super}}
+  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">{% trans "Google Person Finder" %}
 {% endblock header %}
 
 {# Container around page content. #}
 {% block container %}
   {{block.super}}
-  <div class="sidebar" role="navigation">
-    {% block sidebar %}
-      {% include "repo-menu.html.template" %}
-      <a href="{{env.global_url}}">Home</a>
-    {% endblock sidebar %}
-  </div>
 {% endblock container %}
 
 {# Disclaimer text at the bottom of every page. #}
@@ -35,7 +30,7 @@
   {{block.super}}
 {% endblock disclaimer %}
 
-{# Footer at the bottom of every page. #}
-{% block footer %}
+{# Sidenav at the left/right side of every page. #}
+{% block sidenav %}
   {{block.super}}
 {% endblock %}
