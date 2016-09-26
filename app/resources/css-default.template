@@ -110,6 +110,8 @@ pre {  /* code samples */
   display: block;
   font-size: 16px;
   padding: 5px 15px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .button input:disabled {
@@ -194,6 +196,23 @@ input {
   font-size: 13px;
   margin-bottom: .5em;
   max-width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgb(169, 169, 169);
+  background: transparent;
+}
+
+input:focus {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #3b78e7;
+}
+
+input:not([type]):disabled {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px dotted rgb(169, 169, 169);
+  background: transparent;
 }
 
 .input {
@@ -206,6 +225,10 @@ textarea {
 
 select {
   max-width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgb(169, 169, 169);
+  background: transparent;
 }
 
 .mandatory {
@@ -306,7 +329,7 @@ over 10% in penetration ratio.
 .card {
   background: #ffffff;
   border: 1px solid #dadada;
-  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
   padding: 10px;
   margin: 10px;
   border-radius: 3px;
@@ -498,6 +521,8 @@ td.submit {
   min-height: 70px;
   padding: 16px;
   width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .main .action-outer a {
@@ -765,6 +790,16 @@ label.option {
   width: 100%;
 }
 
+#photo_upload {
+  border: 0;
+  outline: 0;
+}
+
+#note_photo_upload {
+  border: 0;
+  outline: 0;
+}
+
 .create .card .profile .icon {
   display: block;
   float: {{start}};
@@ -804,7 +839,7 @@ label.option {
   margin: 2em auto;
   max-width: 380px;
   width: 100%;
-  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
   border-radius: 3px;
 }
 
