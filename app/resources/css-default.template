@@ -198,7 +198,7 @@ input {
   max-width: 100%;
   border: 0;
   outline: 0;
-  border-bottom: 1px solid rgb(169, 169, 169);
+  border-bottom: 1px solid #a9a9a9;
   background: transparent;
 }
 
@@ -208,11 +208,17 @@ input:focus {
   border-bottom: 2px solid #3b78e7;
 }
 
+/* Show disabled input states with dotted line */
 input:not([type]):disabled {
   border: 0;
   outline: 0;
-  border-bottom: 1px dotted rgb(169, 169, 169);
+  border-bottom: 1px dotted #a9a9a9;
   background: transparent;
+}
+
+input[type="file"] {
+  border: 0;
+  outline: 0;
 }
 
 .input {
@@ -227,7 +233,7 @@ select {
   max-width: 100%;
   border: 0;
   outline: 0;
-  border-bottom: 1px solid rgb(169, 169, 169);
+  border-bottom: 1px solid #a9a9a9;
   background: transparent;
 }
 
@@ -788,16 +794,6 @@ label.option {
   float: {{end}};
   max-width: 220px;
   width: 100%;
-}
-
-#photo_upload {
-  border: 0;
-  outline: 0;
-}
-
-#note_photo_upload {
-  border: 0;
-  outline: 0;
 }
 
 .create .card .profile .icon {
