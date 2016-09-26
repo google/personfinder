@@ -11,7 +11,7 @@
 {# Base template for admin pages. #}
 
 {% extends "app-base.html.template" %}
-
+{% load i18n %}
 {# Add "admin" class to the body element to remove max-width constraint from #}
 {# the body element. #}
 {% block extra_body_class%}
