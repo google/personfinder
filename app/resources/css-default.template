@@ -196,33 +196,43 @@ input {
   font-size: 13px;
   margin-bottom: .5em;
   max-width: 100%;
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid #a9a9a9;
-  background: transparent;
-}
-
-input:focus {
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #3b78e7;
 }
 
 /* Show disabled input states with dotted line */
-input:not([type]):disabled {
+input:not([type]):disabled {  /* not([type] means default input type */
   border: 0;
   outline: 0;
   border-bottom: 1px dotted #a9a9a9;
   background: transparent;
 }
 
-input[type="file"] {
+input:not([type]),  /* not([type] means default input type */
+input[type="text"] {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #a9a9a9;
+  background: transparent;
+}
+
+input:not([type]):focus,  /* not([type] means default input type */
+input[type="text"]:focus {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #3b78e7;
+}
+
+/* Remove the focus for photo upload input */
+input[type="file"]:focus {
   border: 0;
   outline: 0;
 }
 
 .input {
   margin-bottom: .5em;
+}
+
+.photo-upload-input {
+  width: 200px;
 }
 
 textarea {
@@ -822,6 +832,13 @@ label.option {
 .source .instructions {
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+/* cancel icon */
+.photo-upload-cancel {
+  height: 10px;
+  width: 10px;
+  vertical-align: middle;
 }
 
 /* results page */
