@@ -404,7 +404,7 @@
                         value="{{params.photo_url}}" />
                   </span>
                 </div>
-                <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
+                <div class="field" onclick="$('photo_upload_radio').checked=true; update_image_input(false)">
                   {% comment %} This span can be removed if uploading needs to be disabled {% endcomment %}
                   <span class="radio">
                     <input id="photo_upload_radio" type="radio" name="photo_input">
@@ -413,8 +413,8 @@
                     {% trans "Upload" %}:
                   </span>
                   <span class="value">
-                    <input id="photo_upload" type="file" name="photo"
-                        class="medium-text-input" disabled="disabled">
+                    <input class="photo-upload-input" id="photo_upload" type="file" name="photo" disabled="disabled" onchange="show_photo_remove_icon('photo_upload')">
+                    <a href="javascript:remove_photo_upload('photo_upload')" id="remove_photo_upload" style="display: none"><img class="photo-upload-cancel" src="{{env.global_url}}/cancel.png" alt="Cancel"></a>
                   </span>
                   {% comment %} see above comment {% endcomment %}
                 </div>

@@ -156,6 +156,17 @@ function remove_profile_entry(profile_entry_index) {
   show($('add_profile_entry'));
 }
 
+// Show photo remove icon
+function show_photo_remove_icon(photo_id) {
+  show($('remove_'+ photo_id));
+}
+
+// Hide photo remove icon and remove the photo for upload
+function remove_photo_upload(photo_id) {
+  $(photo_id).value = '';
+  hide($('remove_' + photo_id));
+}
+
 // Sends a single request to the Google Translate API.  If the API returns a
 // successful result, the continuation is called with the source language,
 // target language, and translated text.
@@ -377,14 +388,14 @@ function make_form_expandable(expandedSection) {
 
 // Show the side menu
 function showSideMenu() {
-  document.getElementById("overlay").style.display = "block";
+  $("overlay").style.display = "block";
   // Change the sidenav maxWidth for animation
-  document.getElementById("sidenav").style.maxWidth = "250px";
+  $("sidenav").style.maxWidth = "250px";
 }
 
 // Close the side menu
 function hideSideMenu() {
-  document.getElementById("overlay").style.display = "none";
+  $("overlay").style.display = "none";
   // Change the sidenav maxWidth for animation
-  document.getElementById("sidenav").style.maxWidth = "0";
+  $("sidenav").style.maxWidth = "0";
 }

@@ -110,6 +110,8 @@ pre {  /* code samples */
   display: block;
   font-size: 16px;
   padding: 5px 15px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .button input:disabled {
@@ -196,8 +198,39 @@ input {
   max-width: 100%;
 }
 
+input:not([type]),  /* type attribute is not specified */
+input[type="text"] {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #a9a9a9;
+  background: transparent;
+}
+
+input:not([type]):focus,  /* type attribute is not specified */
+input[type="text"]:focus {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #3b78e7;
+}
+
+/* Show disabled input states with dotted line */
+input:not([type]):disabled,  /* type attribute is not specified */
+input[type="text"]:disabled {
+  border-bottom: 1px dotted #a9a9a9;
+}
+
+/* Remove the focus frame for file upload input */
+input[type="file"]:focus {
+  border: 0;
+  outline: 0;
+}
+
 .input {
   margin-bottom: .5em;
+}
+
+.photo-upload-input {
+  width: 200px;
 }
 
 textarea {
@@ -206,6 +239,10 @@ textarea {
 
 select {
   max-width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #a9a9a9;
+  background: transparent;
 }
 
 .mandatory {
@@ -306,7 +343,7 @@ over 10% in penetration ratio.
 .card {
   background: #ffffff;
   border: 1px solid #dadada;
-  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
   padding: 10px;
   margin: 10px;
   border-radius: 3px;
@@ -498,6 +535,8 @@ td.submit {
   min-height: 70px;
   padding: 16px;
   width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .main .action-outer a {
@@ -793,6 +832,13 @@ label.option {
   padding-bottom: 1em;
 }
 
+/* cancel icon */
+.photo-upload-cancel {
+  height: 10px;
+  width: 10px;
+  vertical-align: middle;
+}
+
 /* results page */
 
 .seek.results.border {
@@ -804,7 +850,7 @@ label.option {
   margin: 2em auto;
   max-width: 380px;
   width: 100%;
-  box-shadow: 2px 2px 3px 0px #a0a0a0;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
   border-radius: 3px;
 }
 
