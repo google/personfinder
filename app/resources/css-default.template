@@ -214,7 +214,8 @@ input[type="text"]:focus {
 }
 
 /* Show disabled input states with dotted line */
-input:not([type]):disabled {  /* type attribute is not specified */
+input:not([type]):disabled,  /* type attribute is not specified */
+input[type="text"]:disabled {
   border-bottom: 1px dotted #a9a9a9;
 }
 
