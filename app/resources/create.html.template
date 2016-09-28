@@ -413,8 +413,8 @@
                     {% trans "Upload" %}:
                   </span>
                   <span class="value">
-                    <input class="photo-upload-input" id="photo_upload" type="file" name="photo" disabled="disabled" onchange="show_photo_remove('photo_upload')">
-                    <a href="javascript:remove_photo_upload('photo_upload')" id="remove_photo_upload" style="display:none"><img class="photo-upload-cancel" src="{{env.global_url}}/cancel.png" alt="Cancel"></a>
+                    <input class="photo-upload-input" id="photo_upload" type="file" name="photo" disabled="disabled" onchange="show_photo_remove_icon('photo_upload')">
+                    <a href="javascript:remove_photo_upload('photo_upload')" id="remove_photo_upload" style="display: none"><img class="photo-upload-cancel" src="{{env.global_url}}/cancel.png" alt="Cancel"></a>
                   </span>
                   {% comment %} see above comment {% endcomment %}
                 </div>

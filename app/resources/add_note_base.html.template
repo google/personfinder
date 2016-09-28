@@ -227,8 +227,8 @@
             </span>
             <span class="value">
               <input class="photo-upload-input" id="note_photo_upload" type="file"
-                  name="note_photo" disabled="disabled" onchange="show_photo_remove('note_photo_upload')">
-              <a href="javascript:remove_photo_upload('note_photo_upload')" id="remove_note_photo_upload" style="display:none"><img class="photo-upload-cancel" src="{{env.global_url}}/cancel.png" alt="Cancel"></a>
+                  name="note_photo" disabled="disabled" onchange="show_photo_remove_icon('note_photo_upload')">
+              <a href="javascript:remove_photo_upload('note_photo_upload')" id="remove_note_photo_upload" style="display: none"><img class="photo-upload-cancel" src="{{env.global_url}}/cancel.png" alt="Cancel"></a>
             </span>
             {% comment %} see above comment {% endcomment %}
           </div>

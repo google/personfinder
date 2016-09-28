@@ -157,14 +157,14 @@ function remove_profile_entry(profile_entry_index) {
 }
 
 // Show photo remove icon
-function show_photo_remove(photo_id) {
-  $('remove_'+ photo_id).style.display = '';
+function show_photo_remove_icon(photo_id) {
+  show($('remove_'+ photo_id));
 }
 
-// Hide photo remove icon and remove the upload photo
+// Hide photo remove icon and remove the photo for upload
 function remove_photo_upload(photo_id) {
   $(photo_id).value = '';
-  $('remove_' + photo_id).style.display = 'none';
+  hide($('remove_' + photo_id));
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
