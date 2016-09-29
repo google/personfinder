@@ -303,9 +303,9 @@ class ReadOnlyTests(ServerTestsBase):
 
     def test_static(self):
         """Check that the static files are accessible."""
-        doc = self.go('/static/no-photo.gif')
+        doc = self.go('/static/no-photo.png')
         self.assertEqual(self.s.status, 200)
-        assert doc.content_bytes.startswith('GIF89a')
+        assert doc.content_bytes.startswith('PNG')
 
     def test_embed(self):
         """Check the embed page."""
