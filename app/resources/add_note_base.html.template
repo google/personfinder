@@ -196,7 +196,9 @@
         {% endif %}
       </div>
 
-      {% if env.enable_photo_upload %}
+      {# Hide the photo upload fields for the note record in create form #}
+      {# Two photo upload fields show at the same time are a bit confusing. #}
+      {% if not params.create_mode and env.enable_photo_upload %}
         <div class="photo subsection">
           <h3>Photo</h3>
           <div class="hint">
