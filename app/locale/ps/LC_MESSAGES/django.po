@@ -120,6 +120,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -127,7 +134,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
 
@@ -135,6 +142,13 @@ msgstr ""
 msgid ""
 "\n"
 "        No results found for: %(query)s\n"
+"      "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
 "      "
 msgstr ""
 
@@ -431,9 +445,6 @@ msgstr "د ليکونکي ټليفون شمېره"
 
 msgid "Authorization key"
 msgstr "د اختيار/ واک کلي"
-
-msgid "Back to start"
-msgstr "بيرته پيل ته ولاړ شئ"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1267,6 +1278,9 @@ msgid "Use current location"
 msgstr ""
 
 msgid "View the record"
+msgstr ""
+
+msgid "We have nothing matching your search but we have something matching for "
 msgstr ""
 
 msgid "We have nothing matching your search."
