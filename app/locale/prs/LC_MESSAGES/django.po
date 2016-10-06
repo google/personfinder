@@ -127,6 +127,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -136,13 +144,6 @@ msgid ""
 "\n"
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 msgstr ""
 
 #, python-format
@@ -566,9 +567,6 @@ msgstr ""
 msgid "Enter the person's given and family names."
 msgstr "اسم و اسم فامیلی شخص را درج نمائید"
 
-msgid "Enter the person's name or parts of the name."
-msgstr "اسم شخص ویا قسمتی از اسمش را بنویسید"
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 
@@ -797,6 +795,9 @@ msgid "Name (required)"
 msgstr ""
 
 msgid "Name is required.  Please go back and try again."
+msgstr ""
+
+msgid "Name or mobile phone number (required)"
 msgstr ""
 
 msgid "Neighborhood"

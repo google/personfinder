@@ -184,6 +184,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -197,16 +205,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -761,9 +759,6 @@ msgstr "YYYY-OO-KK shaklida kiriting"
 msgid "Enter the person's given and family names."
 msgstr "Shaxsning ismi va oilasi nomlarini kiriting."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Shaxsning ismini to‘liq yoki qisman kiriting."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Shaxsning to‘liq ismini hamda mobil telefoni raqamini kiriting."
 
@@ -1016,6 +1011,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Ism to‘ldirilishi shart.  Orqaga qayting va qaytadan urinib ko‘ring."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Tuman:"

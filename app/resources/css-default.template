@@ -112,6 +112,7 @@ pre {  /* code samples */
   padding: 5px 15px;
   border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-appearance: none;  /* for ios button */
 }
 
 .button input:disabled {
@@ -200,7 +201,7 @@ input {
   box-sizing: border-box;
   font-family: arial, sans-serif;
   font-size: 13px;
-  margin-bottom: .5em;
+  margin-bottom: 8px;
   max-width: 100%;
 }
 
@@ -217,6 +218,7 @@ input[type="text"]:focus {
   border: 0;
   outline: 0;
   border-bottom: 2px solid #3b78e7;
+  margin-bottom: 7px;
 }
 
 /* Show disabled input states with dotted line */
@@ -603,6 +605,16 @@ td.submit {
 .query.provide {
   background: #fff;
   border: 2px solid #e6e6e6;
+}
+
+.query.seek .field {
+  display: block;
+  margin: 8px 20px;
+}
+
+.query.seek .label {
+  width: 100%;
+  text-align: left;
 }
 
 .seek.results.border .query.seek,

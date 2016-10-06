@@ -178,6 +178,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -191,16 +199,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -736,9 +734,6 @@ msgstr "‏הזן כ-YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "הזן את השם של האדם או חלקים משמו."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "הזן את השם, חלקים מתוך השם או מספר טלפון נייד של האדם הזה."
 
@@ -976,6 +971,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "דרוש שם. חזור ונסה שוב."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "שכונה"

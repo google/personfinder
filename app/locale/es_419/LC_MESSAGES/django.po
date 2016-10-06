@@ -184,6 +184,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -197,16 +205,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -754,9 +752,6 @@ msgstr "Para ingresar la fecha, respeta el formato AAAA-MM-DD."
 msgid "Enter the person's given and family names."
 msgstr "Ingresa el nombre de pila y el apellido de la persona."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Ingresa el nombre de la persona o partes de él."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 "Ingresa el nombre de la persona, partes de él o el número de teléfono "
@@ -1012,6 +1007,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "El nombre es obligatorio. Vuelve atrás e inténtalo nuevamente."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Barrio"

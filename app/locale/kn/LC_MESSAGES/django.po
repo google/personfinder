@@ -186,6 +186,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -199,16 +207,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -764,9 +762,6 @@ msgstr "YYYY-MM-DD ರೂಪದಲ್ಲಿ ನಮೂದಿಸಿ"
 msgid "Enter the person's given and family names."
 msgstr "ವ್ಯಕ್ತಿಯ ಹಾಗೂ ಅವರ ಕುಟುಂಬದ ಹೆಸರುಗಳನ್ನು ನಮೂದಿಸಿ."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "ವ್ಯಕ್ತಿಯ ಹೆಸರು ಅಥವಾ ಹೆಸರಿನ ಭಾಗಗಳನ್ನು ನಮೂದಿಸಿ."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "ವ್ಯಕ್ತಿಯ ಹೆಸರು, ಹೆಸರಿನ ಭಾಗಗಳು, ಅಥವಾ ಮೊಬೈಲ್ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ."
 
@@ -1020,6 +1015,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "ಹೆಸರು ಅಗತ್ಯವಿದೆ. ಹಿಂತಿರುಗಿ ಹಾಗೂ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "ನೆರೆಹೊರೆ"

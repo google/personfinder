@@ -185,6 +185,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -198,16 +206,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -759,9 +757,6 @@ msgstr "Anna muodossa VVVV-KK-PP"
 msgid "Enter the person's given and family names."
 msgstr "Anna henkilön etu- ja sukunimi."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Anna henkilön nimi tai osia nimestä."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Anna henkilön nimi, nimen osia tai matkapuhelinnumero."
 
@@ -1013,6 +1008,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Naapurusto"

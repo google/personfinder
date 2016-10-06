@@ -184,6 +184,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -197,16 +205,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -751,9 +749,6 @@ msgstr "YYYY-MM-DD форматында киргизиңиз"
 msgid "Enter the person's given and family names."
 msgstr "Кишинин атын, фамилиясын киргизиңиз."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Кишинин атын же атынын бир бөлүгүн киргизиңиз."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Кишинин атын, атынын бир бөлүгүн, же мобилдик телефонун киргизиңиз."
 
@@ -1001,6 +996,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Аты талап кылынат.  Артка кайтып, кайрадан аракет кылыңыз."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Район"

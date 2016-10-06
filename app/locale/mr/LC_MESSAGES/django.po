@@ -183,6 +183,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -196,16 +204,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -765,9 +763,6 @@ msgstr "YYYY-MM-DD म्हणून प्रविष्ट करा"
 msgid "Enter the person's given and family names."
 msgstr "व्यक्तीचे नाव आणि आडनावे प्रविष्ट करा."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "व्यक्तीचे नाव किंवा नावाचे भाग प्रविष्ट करा."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "व्यक्तीचे नाव, नावाचे भाग किंवा मोबाईल फोन नंबर प्रविष्ट करा."
 
@@ -1017,6 +1012,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "नाव आवश्यक आहे. कृपया परत जा आणि पुन्हा प्रयत्न करा."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "अतिपरिचित क्षेत्र"

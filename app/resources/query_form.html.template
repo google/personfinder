@@ -33,13 +33,6 @@
           <div class="header">
             <h1>{% trans "I'm looking for someone" %}</h1>
           </div>
-          <div class="{{params.error}} help-text">
-            {% if config.jp_mobile_carrier_redirect %}
-              {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
-            {% else %}
-              {% trans "Enter the person's name or parts of the name." %}
-            {% endif %}
-          </div>
           {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
             <div class="error">
               {% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
@@ -121,7 +114,11 @@
         {% else %}
           {% if config.enable_fulltext_search %}
             <span class="mandatory label">
-              {% trans "Name (required)" %}:
+              {% if config.jp_mobile_carrier_redirect %}
+                {% trans "Name or mobile phone number (required)" %}:
+              {% else %}
+                {% trans "Name (required)" %}:
+              {% endif %}
             </span>
           {% endif %}
           <input id="query_name" name="query_name"

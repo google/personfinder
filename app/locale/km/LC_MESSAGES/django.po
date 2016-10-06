@@ -190,6 +190,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -203,16 +211,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -772,9 +770,6 @@ msgstr "បញ្ចូល​ជា YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "បញ្ចូល​នាម​ខ្លួន​ ​​និង​នាម​ត្រកូល​​របស់​បុគ្គល​នោះ​​។"
 
-msgid "Enter the person's name or parts of the name."
-msgstr "បញ្ចូល​ឈ្មោះ​របស់​បុគ្គល​ ឬ​ផ្នែក​នៃ​ឈ្មោះ​។"
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "បញ្ចូល​ឈ្មោះ​របស់​បុគ្គល​ ផ្នែក​នៃ​ឈ្មោះ​ ឬ​លេខ​ទូរស័ព្ទ​ចល័ត​។"
 
@@ -1028,6 +1023,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "ឈ្មោះ​ត្រូវ​បាន​ទាមទារ​។ សូម​ត្រឡប់​ក្រោយ​ហើយ​ព្យាយាម​ម្ដង​ទៀត​។"
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "អ្នក​ជិត​ខាង"

@@ -186,6 +186,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -199,16 +207,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -758,9 +756,6 @@ msgstr "YYYY-MM-DD হিসাবে লিখুন"
 msgid "Enter the person's given and family names."
 msgstr "ব্যক্তিটির নাম ও পদবি লিখুন৷"
 
-msgid "Enter the person's name or parts of the name."
-msgstr "ব্যক্তিটির নাম বা নামের অংশগুলি লিখুন৷"
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "ব্যক্তিটির নাম বা নামের অংশগুলি বা মোবাইল ফোন নম্বর লিখুন৷"
 
@@ -1012,6 +1007,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "নাম প্রয়োজন৷  দয়া করে ফিরে যান এবং আবার চেষ্টা করুন৷"
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "খুব পরিচিত ক্ষেত্র"
