@@ -177,6 +177,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -187,12 +194,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-"\n"
-"          Šéårçĥ ®éšûļţš ƒör: ᐅ%(query)sᐊ\n"
-"        "
 
 #, python-format
 msgid ""
@@ -203,6 +207,13 @@ msgstr ""
 "\n"
 "        Ñö réšûļţš ƒöûñð ƒör: ᐅ%(query)sᐊ\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
+"      "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -627,9 +638,6 @@ msgstr "Åûţĥör'š þĥöñé ñûmbér"
 
 msgid "Authorization key"
 msgstr "Åûţĥörîžåţîöñ ķéý"
-
-msgid "Back to start"
-msgstr "Båçķ ţö šţårţ"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1508,6 +1516,9 @@ msgstr "Ûšé çûrréñţ ļöçåţîöñ"
 
 msgid "View the record"
 msgstr "Vîéŵ ţĥé réçörð"
+
+msgid "We have nothing matching your search but we have something matching for "
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Ŵé ĥåvé ñöţĥîñĝ måţçĥîñĝ ýöûr šéårçĥ."

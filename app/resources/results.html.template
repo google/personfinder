@@ -85,11 +85,26 @@
 {% include "query_form.html.template" %}
 
 <div class='seek results border'>
+
+  {% if not results_based_on_input %}
+    <h1>
+      <img class="warning" src="{{env.global_url}}/warning.png" alt="Warning">
+      {% blocktrans %}
+        No results found for: {{query_name}} {{query_location_original}}
+      {% endblocktrans %}
+    </h1>
+    {% if results %}
+      <p class="bold-message">{% trans "We have nothing matching your search but we have something matching for " %}{{query_name}}</p><div class="under-line"></div>
+    {% else %}
+      <p>{% trans "We have nothing matching your search." %}</p>
+    {% endif %}
+  {% endif %}
+
   {% if results %}
     {% ifequal params.role 'seek' %}
       <div class='resultsTitle'>
-        {% blocktrans with params.query as query %}
-          Search Results for: {{query}}
+        {% blocktrans %}
+          Search Results for: {{query_name}} {{query_location}}
         {% endblocktrans %}
       </div>
     {% endifequal %}
@@ -247,15 +262,19 @@
   {% else %}
 
     {% if not jp_phone_number_query %}
-    <h1>
-      {% blocktrans with params.query as query %}
-        No results found for: {{query}}
-      {% endblocktrans %}
-    </h1>
-    <p>
-    {% trans "We have nothing matching your search." %}
+      {# if no results for both (name + location) and (name) #}
+      {# only show one message for "No results for (name + location)" #}
+      {% if results_based_on_input %}
+        <h1>
+          <img class="warning" src="{{env.global_url}}/warning.png" alt="Warning">
+          {% blocktrans %}
+            No results found for: {{query_name}} {{query_location}}
+          {% endblocktrans %}
+        </h1>
+        <p>{% trans "We have nothing matching your search." %}</p>
+      {% endif %}
     {% else %}
-    <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
+      <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
     {% endif %}
 
   {% endif %}

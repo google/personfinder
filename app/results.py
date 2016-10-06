@@ -200,6 +200,7 @@ class Handler(BaseHandler):
                           'location': self.params.query_location}
             self.params.query = " ".join(q for q in query_dict.values() if q)
             query = TextQuery(self.params.query)
+            results_based_on_input = True
 
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
@@ -224,7 +225,21 @@ class Handler(BaseHandler):
                 results = self.search(query_dict)
                 results_url = self.get_results_url(self.params.query_name,
                                                    self.params.query_location)
+                results_url_without_location = self.get_results_url(
+                                                    self.params.query_name, '')
                 third_party_query_type = ''
+                query_location = self.params.query_location
+
+                # If there is no results match for both name and location
+                # Check if there have results match for name
+                if not results:
+                    if self.params.query_location:
+                        query_dict = {'name': self.params.query_name,
+                                      'location': ''}
+                        results = self.search(query_dict)
+                        # search result not based on the user input
+                        results_based_on_input = False
+                        query_location = ''
 
             # Show the (possibly empty) matches.
             return self.render('results.html',
@@ -237,5 +252,8 @@ class Handler(BaseHandler):
                                third_party_search_engines=
                                    third_party_search_engines,
                                query_name=self.params.query_name,
-                               query_location=self.params.query_location,
-                               third_party_query_type=third_party_query_type)
+                               query_location_original=
+                                    self.params.query_location,
+                               query_location=query_location,
+                               third_party_query_type=third_party_query_type,
+                               results_based_on_input=results_based_on_input)

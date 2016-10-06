@@ -177,6 +177,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -187,12 +194,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
 
 #, python-format
 msgid ""
@@ -203,6 +207,13 @@ msgstr ""
 "\n"
 "        No results found for: %(query)s\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
+"      "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -629,9 +640,6 @@ msgstr "Numer telefonu autora"
 
 msgid "Authorization key"
 msgstr "Klucz autoryzacji"
-
-msgid "Back to start"
-msgstr "Powrót do początku"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1517,6 +1525,9 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Wyświetl wpis"
+
+msgid "We have nothing matching your search but we have something matching for "
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Brak pasujących wyników wyszukiwania."

@@ -172,6 +172,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -182,12 +189,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
 
 #, python-format
 msgid ""
@@ -197,6 +201,13 @@ msgid ""
 msgstr ""
 "\n"
 "%(query)s に一致する情報は見つかりませんでした。"
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
+"      "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -604,9 +615,6 @@ msgstr "作成者の電話番号"
 
 msgid "Authorization key"
 msgstr "承認キー"
-
-msgid "Back to start"
-msgstr "先頭に戻る"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1437,6 +1445,9 @@ msgstr "現在位置を使う"
 
 msgid "View the record"
 msgstr "記録を見る"
+
+msgid "We have nothing matching your search but we have something matching for "
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"

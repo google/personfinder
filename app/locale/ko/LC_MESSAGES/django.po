@@ -170,6 +170,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -180,12 +187,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
 
 #, python-format
 msgid ""
@@ -196,6 +200,13 @@ msgstr ""
 "\n"
 "        No results found for: %(query)s\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
+"      "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -597,9 +608,6 @@ msgstr "작성자 전화번호"
 
 msgid "Authorization key"
 msgstr "인증 키"
-
-msgid "Back to start"
-msgstr "시작으로 돌아가기"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1440,6 +1448,9 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "신상기록 보기"
+
+msgid "We have nothing matching your search but we have something matching for "
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."

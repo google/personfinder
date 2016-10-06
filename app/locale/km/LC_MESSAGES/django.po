@@ -183,6 +183,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -193,12 +200,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
 
 #, python-format
 msgid ""
@@ -209,6 +213,13 @@ msgstr ""
 "\n"
 "        No results found for: %(query)s\n"
 "      "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query_name)s %(query_location_original)s\n"
+"      "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -632,9 +643,6 @@ msgstr "លេខ​ទូរស័ព្ទ​របស់​អ្នកនិ
 
 msgid "Authorization key"
 msgstr "កូន​សោរ​អនុញ្ញាត"
-
-msgid "Back to start"
-msgstr "ត្រលប់​ទៅ​ចាប់​ផ្តើ​ម"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -1544,6 +1552,9 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "មើល​កំណត់​ត្រា​"
+
+msgid "We have nothing matching your search but we have something matching for "
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "យើង​មិន​មាន​អ្វី​ដែល​ត្រូវ​គ្នា​នឹង​ការ​ស្វែងរក​របស់​អ្នក​ទេ។"

@@ -138,6 +138,12 @@ pre {  /* code samples */
   margin-right: 10px;
 }
 
+/* A line for separating No searching results 
+  and search results without location */
+.under-line {
+  border-bottom: 2px solid #e6e6e6
+}
+
 /* Title bar */
 
 .title-bar {
@@ -890,10 +896,19 @@ resultsList {
   color: #00008b;
 }
 
+/* warning icon for no searching results */
+.warning {
+  vertical-align: text-bottom;
+}
+
 .searchResults {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.bold-message {
+  font-weight: bold;
 }
 
 .searchResults .resultItem {
