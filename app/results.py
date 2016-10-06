@@ -192,8 +192,9 @@ class Handler(BaseHandler):
                     if jp_mobile_carriers.handle_phone_number(self, query.query):
                         return
                 except Exception as e:
-                    logging.error('failed to scrape phone number')
-                    return
+                    logging.error('failed to scrape search result for the phone number.')
+                    return self.error(
+                        500, _('Failed to obtain search result for the phone number.'))
 
             if is_possible_phone_number(query.query):
                 # If the query looks like a phone number, we show an empty
