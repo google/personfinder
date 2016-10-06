@@ -172,6 +172,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -185,16 +193,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -731,9 +729,6 @@ msgstr "Shkruajeni datën në formatin \"YYYY-MM-DD\""
 msgid "Enter the person's given and family names."
 msgstr "Futni emrin dhe mbiemrin e personit."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Futni emrin e plotë ose pjesë të emrit të personit."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 "Futni emrin e personit, pjesë të emrit ose numrin e telefonit celular të "
@@ -993,6 +988,9 @@ msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Emri është i kërkueshëm me çdo kusht! Ju lutemi, kthehuni prapa dhe "
 "provoni sërish."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Lagjja"

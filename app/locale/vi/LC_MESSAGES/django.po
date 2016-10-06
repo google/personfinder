@@ -181,6 +181,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -194,16 +202,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -749,9 +747,6 @@ msgstr "Nhập dưới dạng DD-MM-YYYY"
 msgid "Enter the person's given and family names."
 msgstr "Nhập họ và tên của người này."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Nhập tên hoặc một phần tên của người này."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Nhập tên, một phần tên hoặc số điện thoại di động của người này."
 
@@ -1001,6 +996,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Bắt buộc phải có tên. Vui lòng quay lại và thử lại."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Vùng lân cận"

@@ -181,6 +181,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -194,16 +202,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -753,9 +751,6 @@ msgstr "Sartu UUUU-HH-EE formatuan"
 msgid "Enter the person's given and family names."
 msgstr "Idatzi pertsonaren izena eta abizenak."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Idatzi pertsonaren izena edo izenaren zati bat."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Sartu pertsonaren izena edo zati bat."
 
@@ -1007,6 +1002,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Izena beharrezkoa da. Joan atzera eta saiatu berriro."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Auzoa"

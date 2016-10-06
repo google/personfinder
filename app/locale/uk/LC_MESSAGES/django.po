@@ -181,6 +181,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -194,16 +202,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -754,9 +752,6 @@ msgstr "Введіть у форматі РРРР-ММ-ДД"
 msgid "Enter the person's given and family names."
 msgstr "Введіть ім’я та прізвище особи."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Введіть ім’я та прізвище особи повністю або декілька букв."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 "Введіть ім’я та прізвище (повністю або лише або декілька букв) чи номер "
@@ -1010,6 +1005,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Потрібно ввести ім’я та прізвище. Поверніться та повторіть спробу."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Район"

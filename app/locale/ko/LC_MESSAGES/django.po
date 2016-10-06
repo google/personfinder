@@ -177,6 +177,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -190,16 +198,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -727,9 +725,6 @@ msgstr "YYYY-MM-DD 형식으로 입력"
 msgid "Enter the person's given and family names."
 msgstr "제보하려는 사람의 이름과 성을 입력하세요."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "찾으려는 사람의 이름 또는 이름의 일부를 입력하세요."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "찾고 있는 사람의 이름이나 그 일부, 또는 휴대전화 번호를 입력하세요."
 
@@ -963,6 +958,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "상세 주소 1"

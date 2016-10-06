@@ -180,6 +180,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -193,16 +201,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -747,9 +745,6 @@ msgstr "ໃສ່ເປັນ YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "ກະລຸນາໃສ່ຊື່ ແລະນາມສະກຸນຂອງບຸກຄົນດັ່ງກ່າວ."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "ໃສ່ຊື່ທັງໝົດ ຫຼື ຊື່ບາງສ່ວນຂອງບຸກຄົນດັ່ງກ່າວ."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "ໃສ່ຊື່, ບາງສ່ວນຂອງຊື່ ຫຼື ເບີໂທລະສັບມືຖືຂອງບຸກຄົນດັ່ງກ່າວ."
 
@@ -992,6 +987,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "ຈຳເປັນຕ້ອງມີຊື່. ກະລຸນາກັບໄປ ແລະລອງໃໝ່ອີກຄັ້ງ."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "ຄຸ້ມບ້ານ"

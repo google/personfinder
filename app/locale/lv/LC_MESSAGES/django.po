@@ -185,6 +185,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -198,16 +206,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -763,9 +761,6 @@ msgstr "Ievadiet datumu formātā GGGG-MM-DD."
 msgid "Enter the person's given and family names."
 msgstr "Ievadiet personas vārdu un uzvārdu."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Ievadiet pilnu personas vārdu vai tās vārda dažus burtus."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 "Ievadiet personas vārdu, uzvārdu, vārda un uzvārda dažus burtus vai "
@@ -1021,6 +1016,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nepieciešams vārds. Lūdzu, atgriezieties un mēģiniet vēlreiz."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Apkaime"

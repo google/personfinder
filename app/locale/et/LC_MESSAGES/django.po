@@ -182,6 +182,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"          No results found for: %(query_name)s "
+"%(query_location_original)s\n"
+"        "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
@@ -195,16 +203,6 @@ msgid ""
 "          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -750,9 +748,6 @@ msgstr "Sisestage kujul AAAA-KK-PP"
 msgid "Enter the person's given and family names."
 msgstr "Sisestage inimese ees- ja perekonnanimi."
 
-msgid "Enter the person's name or parts of the name."
-msgstr "Sisestage inimese nimi või nime osad."
-
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Sisestage inimese nimi, nime osad või mobiiltelefoni number."
 
@@ -1004,6 +999,9 @@ msgstr ""
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nimi on nõutav. Minge tagasi ja proovige uuesti."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Piirkond"
