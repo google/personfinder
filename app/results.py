@@ -230,16 +230,16 @@ class Handler(BaseHandler):
                 third_party_query_type = ''
                 query_location = self.params.query_location
 
-            # If there is no results match for both name and location
-            # Check if there have results match for name
-            if not results:
-                if self.params.query_location:
-                    query_dict = {'name': self.params.query_name,
-                                  'location': ''}
-                    results = self.search(query_dict)
-                    # search result not based on the user input
-                    results_based_on_input = False
-                    query_location = ''
+                # If there is no results match for both name and location
+                # Check if there have results match for name
+                if not results:
+                    if self.params.query_location:
+                        query_dict = {'name': self.params.query_name,
+                                      'location': ''}
+                        results = self.search(query_dict)
+                        # search result not based on the user input
+                        results_based_on_input = False
+                        query_location = ''
 
             # Show the (possibly empty) matches.
             return self.render('results.html',

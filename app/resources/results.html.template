@@ -94,7 +94,6 @@
       {% endblocktrans %}
     </h1>
     {% if results %}
-      {# Emphasized this message by adding bold #}
       <p class="bold-message">{% trans "We have nothing matching your search but we have something matching for " %}{{query_name}}</p><div class="under-line"></div>
     {% else %}
       <p>{% trans "We have nothing matching your search." %}</p>
