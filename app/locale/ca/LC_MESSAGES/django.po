@@ -177,6 +177,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -184,9 +202,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -198,13 +215,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -758,11 +768,6 @@ msgstr "La data ha de tenir el format AAAA-MM-DD."
 msgid "Enter the person's given and family names."
 msgstr "Introduïu el nom i els cognoms de la persona."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Escriviu el nom de la persona, alguna part del seu nom o el seu número de"
-" telèfon mòbil."
-
 msgid "Enter the person's name."
 msgstr "Introduïu el nom de la persona."
 
@@ -1181,9 +1186,6 @@ msgstr "Proporcioneu una adreça electrònica vàlida."
 msgid "Possible duplicates"
 msgstr "Possibles duplicats"
 
-msgid "Possible duplicates found."
-msgstr "S'han trobat possibles duplicats."
-
 msgid "Postal or zip code"
 msgstr "Codi postal"
 
@@ -1531,9 +1533,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Mostra el registre"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "La vostra cerca no correspon amb cap registre."

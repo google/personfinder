@@ -164,6 +164,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -171,9 +189,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -185,13 +202,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -720,9 +730,6 @@ msgstr "YYYY-MM-DD का रूपमा प्रविष्टि गर्�
 msgid "Enter the person's given and family names."
 msgstr "व्यक्तिको पहिलो र अन्तिम नामहरू प्रविष्टि गर्नुहोस्।"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "व्यक्तिको नाम, नामका अंशहरू वा मोबाइल फोन नम्बर प्रविष्टि गर्नुहोस्।"
-
 msgid "Enter the person's name."
 msgstr "व्यक्तिको नाम प्रविष्टि गर्नुहोस्।"
 
@@ -1147,9 +1154,6 @@ msgstr "एउटा मान्य इमेल ठेगाना प्र�
 msgid "Possible duplicates"
 msgstr "सम्भावित डुप्लिकेटहरू"
 
-msgid "Possible duplicates found."
-msgstr "सम्भावित डुप्लिकेट फेला पर्‍यो।"
-
 msgid "Postal or zip code"
 msgstr "पोष्टल वा जिप कोड"
 
@@ -1493,9 +1497,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "रेकर्ड हेर्नुहोस्"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "तपाईँको खोजसँग मेल खाने कुनै पनि चीज छैन।"

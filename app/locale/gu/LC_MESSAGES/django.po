@@ -173,6 +173,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -180,9 +198,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -194,13 +211,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -755,9 +765,6 @@ msgstr "YYYY-MM-DD રૂપે દાખલ કરો"
 msgid "Enter the person's given and family names."
 msgstr "વ્યક્તિના આપવામાં આવેલ અને કુટુંબ નામો દાખલ કરો."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "વ્યક્તિનું નામ, નામનો ભાગ અથવા મોબાઇલ ફોન નંબર દાખલ કરો."
-
 msgid "Enter the person's name."
 msgstr "વ્યક્તિનું નામ દાખલ કરો."
 
@@ -1178,9 +1185,6 @@ msgstr "કૃપા કરીને એક માન્ય ઇમેઇલ સ�
 msgid "Possible duplicates"
 msgstr "સંભવિત ડુપ્લિકેટ્સ"
 
-msgid "Possible duplicates found."
-msgstr "સંભવિત ડુપ્લિકેટ્સ મળ્યાં."
-
 msgid "Postal or zip code"
 msgstr "પોસ્ટલ અથવા ઝીપ કોડ"
 
@@ -1522,9 +1526,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "રેકોર્ડ જુઓ"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "અમારી પાસે તમારી શોધથી મેળ ખાતું કંઈ નથી."

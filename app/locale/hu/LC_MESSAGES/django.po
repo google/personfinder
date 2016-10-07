@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -762,9 +772,6 @@ msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
 msgid "Enter the person's given and family names."
 msgstr "Adja meg a személy utó- és családnevét."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Adja meg a személy nevét, nevének egy részét vagy mobiltelefonszámát."
-
 msgid "Enter the person's name."
 msgstr "Adja meg a személy nevét."
 
@@ -1183,9 +1190,6 @@ msgstr "Kérjük, érvényes e-mail címet adjon meg."
 msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
 
-msgid "Possible duplicates found."
-msgstr "Lehetséges ismétlődések érzékelve."
-
 msgid "Postal or zip code"
 msgstr "Postai irányítószám"
 
@@ -1537,9 +1541,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Bejegyzés megtekintése"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Semmi sem egyezik a keresésével."

@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -766,11 +776,6 @@ msgstr "Respectez le format AAAA-MM-JJ."
 msgid "Enter the person's given and family names."
 msgstr "Saisissez le nom et le prénom de la personne."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Saisissez tout ou partie du nom de la personne ou son numéro de téléphone"
-" mobile."
-
 msgid "Enter the person's name."
 msgstr "Saisissez le nom de la personne."
 
@@ -1199,9 +1204,6 @@ msgstr "Veuillez fournir une adresse e-mail valide."
 msgid "Possible duplicates"
 msgstr "Doublons éventuels"
 
-msgid "Possible duplicates found."
-msgstr "Doublons éventuels trouvés."
-
 msgid "Postal or zip code"
 msgstr "Code postal"
 
@@ -1565,9 +1567,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Afficher l'avis de recherche"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Aucun résultat ne correspond à votre recherche."

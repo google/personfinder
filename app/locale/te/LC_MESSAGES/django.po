@@ -171,6 +171,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -178,9 +196,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -192,13 +209,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -758,11 +768,6 @@ msgstr "DD-MM-YYYY వలె నమోదు చేయండి"
 msgid "Enter the person's given and family names."
 msgstr "వ్యక్తి యొక్క పెట్టిన మరియు కుటుంబ పేర్లను నమోదు చేయండి."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"వ్యక్తి పేరును, పేరులో కొంత భాగాన్ని లేదా మొబైల్ ఫోన్ నంబర్‌ను నమోదు "
-"చేయండి."
-
 msgid "Enter the person's name."
 msgstr "వ్యక్తి పేరును నమోదు చేయండి."
 
@@ -1181,9 +1186,6 @@ msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమ
 msgid "Possible duplicates"
 msgstr "సంభావ్య నకిలీలు"
 
-msgid "Possible duplicates found."
-msgstr "నకిలీ కావడానికి అవకాశం ఉన్నవి కనుగొనబడ్డాయి."
-
 msgid "Postal or zip code"
 msgstr "పోస్టల్ లేదా జిప్ కోడ్"
 
@@ -1531,9 +1533,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "రికార్డ్‌ను వీక్షించండి"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "మీ శోధనకు సరిపోలేవి మా వద్ద లేవు."

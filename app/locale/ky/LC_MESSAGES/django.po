@@ -177,6 +177,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -184,9 +202,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -198,13 +215,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -749,9 +759,6 @@ msgstr "YYYY-MM-DD форматында киргизиңиз"
 msgid "Enter the person's given and family names."
 msgstr "Кишинин атын, фамилиясын киргизиңиз."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Кишинин атын, атынын бир бөлүгүн, же мобилдик телефонун киргизиңиз."
-
 msgid "Enter the person's name."
 msgstr "Кишинин атын киргизиңиз."
 
@@ -1162,9 +1169,6 @@ msgstr "Сураныч, жарактуу эмейл дарек бериңиз."
 msgid "Possible duplicates"
 msgstr "Булар кайталанмалар болушу ыктымал"
 
-msgid "Possible duplicates found."
-msgstr "Мүмкүн болгон кайталоолор табылды."
-
 msgid "Postal or zip code"
 msgstr "Почта индекси же zip код"
 
@@ -1507,9 +1511,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Жазууну көрүү"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Сиздин издөөөңүз боюнча эч нерсе табылган жок."

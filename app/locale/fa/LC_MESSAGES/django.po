@@ -166,6 +166,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -173,9 +191,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -187,13 +204,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -729,9 +739,6 @@ msgstr "‏‫به صورت YYYY-MM-DD وارد کنید"
 msgid "Enter the person's given and family names."
 msgstr "نام و نام خانوادگی شخص را وارد کنید."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "نام شخص، قسمتی از نام شخص، یا شماره تلفن همراه او را وارد کنید."
-
 msgid "Enter the person's name."
 msgstr "نام شخص را وارد کنید."
 
@@ -1146,9 +1153,6 @@ msgstr "لطفاً یک آدرس رایانامه معتبر ارائه دهید
 msgid "Possible duplicates"
 msgstr "موارد تکراری ممکن"
 
-msgid "Possible duplicates found."
-msgstr "موارد احتمالاً تکراری یافت شد."
-
 msgid "Postal or zip code"
 msgstr "کد پستی"
 
@@ -1492,9 +1496,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "مشاهده سابقه"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."

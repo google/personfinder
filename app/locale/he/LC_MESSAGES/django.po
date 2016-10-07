@@ -171,6 +171,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -178,9 +196,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -192,13 +209,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -734,9 +744,6 @@ msgstr "‏הזן כ-YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "הזן את השם, חלקים מתוך השם או מספר טלפון נייד של האדם הזה."
-
 msgid "Enter the person's name."
 msgstr "הזן את השם של האדם."
 
@@ -1133,9 +1140,6 @@ msgstr "ספק כתובת אימייל חוקית."
 msgid "Possible duplicates"
 msgstr "כפילויות אפשריות"
 
-msgid "Possible duplicates found."
-msgstr "נמצאו רשומות שעשויות להיות כפולות."
-
 msgid "Postal or zip code"
 msgstr "דואר או מיקוד"
 
@@ -1473,9 +1477,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "הצג את הרשומה"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "לא נמצא שום דבר התואם לחיפוש שלך."

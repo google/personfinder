@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -759,9 +769,6 @@ msgstr "Įveskite MMMM-MM-DD formatu"
 msgid "Enter the person's given and family names."
 msgstr "Įveskite asmens vardą ir pavardę."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Įveskite asmens vardą, dalį vardo ar mobiliojo telefono numerį."
-
 msgid "Enter the person's name."
 msgstr "Įveskite asmens vardą."
 
@@ -1174,9 +1181,6 @@ msgstr "Pateikite teisingą el. pašto adresą."
 msgid "Possible duplicates"
 msgstr "Gali būti pasikartojantys įrašai"
 
-msgid "Possible duplicates found."
-msgstr "Rastos galimos kopijos."
-
 msgid "Postal or zip code"
 msgstr "Pašto kodas"
 
@@ -1526,9 +1530,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Žiūrėti įrašą"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Nėra jokių įrašų, atitinkančių jūsų paiešką."

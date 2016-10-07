@@ -173,6 +173,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -180,9 +198,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -194,13 +211,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -745,9 +755,6 @@ msgstr "ໃສ່ເປັນ YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "ກະລຸນາໃສ່ຊື່ ແລະນາມສະກຸນຂອງບຸກຄົນດັ່ງກ່າວ."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ໃສ່ຊື່, ບາງສ່ວນຂອງຊື່ ຫຼື ເບີໂທລະສັບມືຖືຂອງບຸກຄົນດັ່ງກ່າວ."
-
 msgid "Enter the person's name."
 msgstr "ໃສ່ຊື່ຂອງບຸກຄົນດັ່ງກ່າວ."
 
@@ -1151,9 +1158,6 @@ msgstr "ກະລຸນາໃສ່ທີ່ຢູ່ອີເມວທີ່ຖ
 msgid "Possible duplicates"
 msgstr "ມີຄວາມເປັນໄປໄດ້ວ່າຊ້ຳກັນ"
 
-msgid "Possible duplicates found."
-msgstr "ພົບຂໍ້ມູນຊ້ຳທີ່ເປັນໄປໄດ້."
-
 msgid "Postal or zip code"
 msgstr "ໄປສະນີ ຫຼື ລະຫັດໄປສະນີ"
 
@@ -1490,9 +1494,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "ເບິ່ງບັນທຶກ"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ພວກເຮົາມີບໍ່ພົບຫຍັງທີ່ກົງກັບທີ່ທ່ານຊອກຫາ."

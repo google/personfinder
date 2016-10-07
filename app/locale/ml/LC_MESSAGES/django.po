@@ -183,6 +183,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -190,9 +208,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -204,13 +221,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -775,9 +785,6 @@ msgstr "YYYY-MM-DD എന്ന രീതിയിൽ നൽകുക"
 msgid "Enter the person's given and family names."
 msgstr "വ്യക്തിയുടെ പേരും കുടുംബ പേരുകളും നൽകുക."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "വ്യക്തിയുടെ പേരോ പേരിന്റെ ഭാഗങ്ങളോ മൊബൈൽ ഫോൺ നമ്പറോ നൽകുക."
-
 msgid "Enter the person's name."
 msgstr "വ്യക്തിയുടെ പേര് നൽകുക."
 
@@ -1202,9 +1209,6 @@ msgstr "സാധുവായ ഇമെയിൽ വിലാസം നൽകു
 msgid "Possible duplicates"
 msgstr "സാധ്യമായ തനിപ്പകർപ്പുകൾ"
 
-msgid "Possible duplicates found."
-msgstr "സാധ്യമായ തനിപ്പകർപ്പുകൾ കണ്ടെത്തി."
-
 msgid "Postal or zip code"
 msgstr "തപാൽ കോഡ് അല്ലെങ്കിൽ പിൻ കോഡ്"
 
@@ -1555,9 +1559,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "റെക്കോർഡ് കാണുക"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ഞങ്ങൾക്ക് നിങ്ങളുടെ തിരയലുമായി പൊരുത്തപ്പെടുന്നതൊന്നുമില്ല."

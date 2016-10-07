@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -750,9 +760,6 @@ msgstr "YYYY-MM-DD байдлаар оруулна уу"
 msgid "Enter the person's given and family names."
 msgstr "Тухайн хүний нэр болон овгийг оруулна уу."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Тухайн хүний нэр, нэрний хэсэг буюу гар утасны дугаарыг оруулна уу."
-
 msgid "Enter the person's name."
 msgstr "Тухайн хүний нэрийг оруулна уу."
 
@@ -1164,9 +1171,6 @@ msgstr "Зөв имэйл хаяг оруулна уу."
 msgid "Possible duplicates"
 msgstr "Давхардсан байж магадгүй"
 
-msgid "Possible duplicates found."
-msgstr "Давхардсан байж магадгүй."
-
 msgid "Postal or zip code"
 msgstr "Шуудан буюу зип код"
 
@@ -1507,9 +1511,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Бичлэгийг харах"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Таны хайлтад таарах зүйл алга байна."

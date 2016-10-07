@@ -225,8 +225,6 @@ class Handler(BaseHandler):
                 results = self.search(query_dict)
                 results_url = self.get_results_url(self.params.query_name,
                                                    self.params.query_location)
-                results_url_without_location = self.get_results_url(
-                                                    self.params.query_name, '')
                 third_party_query_type = ''
                 query_location = self.params.query_location
 

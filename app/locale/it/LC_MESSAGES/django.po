@@ -181,6 +181,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -188,9 +206,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -202,13 +219,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -770,9 +780,6 @@ msgstr "Inserisci nel formato AAAA-MM-GG"
 msgid "Enter the person's given and family names."
 msgstr "Inserisci nome e cognome della persona."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Inserisci il nome della persona, parti del nome o il numero di cellulare."
-
 msgid "Enter the person's name."
 msgstr "Inserisci il nome della persona."
 
@@ -1191,9 +1198,6 @@ msgstr "Specifica un indirizzo email valido."
 msgid "Possible duplicates"
 msgstr "Possibili duplicati"
 
-msgid "Possible duplicates found."
-msgstr "Individuati potenziali duplicati."
-
 msgid "Postal or zip code"
 msgstr "Codice postale"
 
@@ -1537,9 +1541,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Visualizza il record"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Nessun risultato corrispondente alla tua ricerca."

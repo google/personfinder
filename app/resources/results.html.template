@@ -88,15 +88,22 @@
 
   {% ifequal params.role 'seek' %}
     {% if not results_based_on_input %}
-      <h1>
-        <img class="warning" src="{{env.global_url}}/warning.png" alt="Warning">
-        {% blocktrans %}
-          No results found for: {{query_name}} {{query_location_original}}
-        {% endblocktrans %}
-      </h1>
       {% if results %}
-        <p class="bold-message">{% trans "We have nothing matching your search but we have something matching for " %}{{query_name}}</p><div class="under-line"></div>
+        <h1>
+          {% blocktrans %}
+            No results found for: "{{query_name}} {{query_location_original}}"
+            <p>
+            Results for "{{query_name}}" (in any location):
+          {% endblocktrans %}
+          <p>
+          <div class="under-line"></div>
+        </h1>
       {% else %}
+        <h1>
+          {% blocktrans %}
+            No results found for: "{{query_name}} {{query_location_original}}"
+          {% endblocktrans %}
+        </h1>
         <p>{% trans "We have nothing matching your search." %}</p>
       {% endif %}
     {% endif %}
@@ -104,11 +111,13 @@
 
   {% if results %}
     {% ifequal params.role 'seek' %}
-      <div class='resultsTitle'>
-        {% blocktrans %}
-          Search Results for: {{query_name}} {{query_location}}
-        {% endblocktrans %}
-      </div>
+      {% if results_based_on_input %}
+        <div class='resultsTitle'>
+          {% blocktrans %}
+            Search Results for: {{query_name}} {{query_location}}
+          {% endblocktrans %}
+        </div>
+      {% endif %}
     {% endifequal %}
 
     {% ifequal params.role 'provide' %}
@@ -141,15 +150,6 @@
     {% else %}
       <p>
       {% trans "To view or add information, select a name below." %}
-      {% if env.enable_dup_mode and results|length > 1 %}
-        <p>
-        {% if has_possible_duplicates %}
-          <b>{% trans "Possible duplicates found." %}</b><br />
-        {% endif %}
-        <div class="button button-red">
-          <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
-        </div>
-      {% endif %}
       <p>
       <div class='searchResults'>
       {% for result in results %}
@@ -268,7 +268,6 @@
       {# only show one message for "No results for (name + location)" #}
       {% if results_based_on_input %}
         <h1>
-          <img class="warning" src="{{env.global_url}}/warning.png" alt="Warning">
           {% blocktrans %}
             No results found for: {{query_name}} {{query_location}}
           {% endblocktrans %}
@@ -293,6 +292,13 @@
         </a>
       </p>
     {% endfor %}
+  {% endif %}
+
+  <p>
+  {% if env.enable_dup_mode and results|length > 1 and has_possible_duplicates %}
+    <div class="button button-red">
+      <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
+    </div>
   {% endif %}
 
   {% if results %}

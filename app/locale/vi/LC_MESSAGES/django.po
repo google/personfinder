@@ -174,6 +174,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -181,9 +199,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -195,13 +212,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -747,9 +757,6 @@ msgstr "Nhập dưới dạng DD-MM-YYYY"
 msgid "Enter the person's given and family names."
 msgstr "Nhập họ và tên của người này."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Nhập tên, một phần tên hoặc số điện thoại di động của người này."
-
 msgid "Enter the person's name."
 msgstr "Nhập tên của người này."
 
@@ -1164,9 +1171,6 @@ msgstr "Vui lòng cung cấp địa chỉ email hợp lệ."
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
 
-msgid "Possible duplicates found."
-msgstr "Đã tìm thấy hồ sơ có thể trùng lặp."
-
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
 
@@ -1508,9 +1512,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Xem hồ sơ"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."

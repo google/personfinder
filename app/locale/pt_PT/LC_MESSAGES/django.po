@@ -176,6 +176,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -183,9 +201,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -197,13 +214,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -757,9 +767,6 @@ msgstr "Introduza como AAAA-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Introduza o nome próprio e o apelido da pessoa."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Introduza o nome da pessoa, partes do nome ou o número do telemóvel."
-
 msgid "Enter the person's name."
 msgstr "Introduza o nome da pessoa."
 
@@ -1172,9 +1179,6 @@ msgstr "Forneça um endereço de email válido."
 msgid "Possible duplicates"
 msgstr "Possíveis duplicados"
 
-msgid "Possible duplicates found."
-msgstr "Foram encontrados possíveis duplicados."
-
 msgid "Postal or zip code"
 msgstr "Código postal"
 
@@ -1521,9 +1525,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Ver o registo"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Não temos nada que corresponda à sua pesquisa."

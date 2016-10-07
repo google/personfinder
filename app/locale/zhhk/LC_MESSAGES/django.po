@@ -172,6 +172,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -179,9 +197,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -193,13 +210,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -733,9 +743,6 @@ msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 msgid "Enter the person's given and family names."
 msgstr "輸入這個人的名字和姓氏。"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "輸入這個人的全名、部分姓名或手機號碼。"
-
 msgid "Enter the person's name."
 msgstr "輸入這個人的姓名。"
 
@@ -1118,9 +1125,6 @@ msgstr "請提供有效的電郵地址。"
 msgid "Possible duplicates"
 msgstr "可能的重複項目"
 
-msgid "Possible duplicates found."
-msgstr "發現可能重複的記錄。"
-
 msgid "Postal or zip code"
 msgstr "郵遞區號"
 
@@ -1448,9 +1452,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "檢視記錄"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "系統找不到相符的搜尋結果。"

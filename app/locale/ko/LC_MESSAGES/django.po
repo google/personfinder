@@ -170,6 +170,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -177,9 +195,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -191,13 +208,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -725,9 +735,6 @@ msgstr "YYYY-MM-DD 형식으로 입력"
 msgid "Enter the person's given and family names."
 msgstr "제보하려는 사람의 이름과 성을 입력하세요."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "찾고 있는 사람의 이름이나 그 일부, 또는 휴대전화 번호를 입력하세요."
-
 msgid "Enter the person's name."
 msgstr "해당하는 사람의 이름을 입력하세요."
 
@@ -1114,9 +1121,6 @@ msgstr "유효한 이메일 주소를 입력하세요."
 msgid "Possible duplicates"
 msgstr "가능한 중복 신상기록"
 
-msgid "Possible duplicates found."
-msgstr "중복 가능성이 있는 신상기록이 발견되었습니다."
-
 msgid "Postal or zip code"
 msgstr "우편번호"
 
@@ -1446,9 +1450,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "신상기록 보기"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."

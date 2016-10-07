@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -761,11 +771,6 @@ msgstr "Ievadiet datumu formātā GGGG-MM-DD."
 msgid "Enter the person's given and family names."
 msgstr "Ievadiet personas vārdu un uzvārdu."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Ievadiet personas vārdu, uzvārdu, vārda un uzvārda dažus burtus vai "
-"mobilā tālruņa numuru."
-
 msgid "Enter the person's name."
 msgstr "Ievadiet personas vārdu."
 
@@ -1184,9 +1189,6 @@ msgstr "Lūdzu, norādiet derīgu e-pasta adresi."
 msgid "Possible duplicates"
 msgstr "Iespējamie dublikāti"
 
-msgid "Possible duplicates found."
-msgstr "Atrasti iespējami dublikāti."
-
 msgid "Postal or zip code"
 msgstr "Pasta indekss"
 
@@ -1531,9 +1533,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Skatīt ierakstu"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Jūsu meklējumam nav atbilstošu rezultātu."

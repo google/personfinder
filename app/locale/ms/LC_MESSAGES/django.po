@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,13 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -762,11 +772,6 @@ msgstr "Masukkan sebagai DD-MM-YYYY"
 msgid "Enter the person's given and family names."
 msgstr "Masukkan nama berian dan nama keluarga orang tersebut."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Masukkan nama, sebahagian daripada nama atau nombor telefon mudah alih "
-"orang tersebut."
-
 msgid "Enter the person's name."
 msgstr "Masukkan nama orang tersebut."
 
@@ -1185,9 +1190,6 @@ msgstr "Sila berikan alamat e-mel yang sah."
 msgid "Possible duplicates"
 msgstr "Pendua yang sesuai"
 
-msgid "Possible duplicates found."
-msgstr "Kemungkinan pendua ditemui."
-
 msgid "Postal or zip code"
 msgstr "Poskod atau kod zip"
 
@@ -1527,9 +1529,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Lihat rekod"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Kami tidak mempunyai sebarang padanan untuk carian anda."

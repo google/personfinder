@@ -120,6 +120,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -127,22 +145,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
 "        "
 msgstr ""
 
@@ -567,9 +577,6 @@ msgstr ""
 msgid "Enter the person's given and family names."
 msgstr "اسم و اسم فامیلی شخص را درج نمائید"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-
 msgid "Enter the person's name."
 msgstr ""
 
@@ -950,9 +957,6 @@ msgstr ""
 msgid "Possible duplicates"
 msgstr ""
 
-msgid "Possible duplicates found."
-msgstr ""
-
 msgid "Postal or zip code"
 msgstr ""
 
@@ -1279,9 +1283,6 @@ msgid "Use current location"
 msgstr ""
 
 msgid "View the record"
-msgstr ""
-
-msgid "We have nothing matching your search but we have something matching for "
 msgstr ""
 
 msgid "We have nothing matching your search."

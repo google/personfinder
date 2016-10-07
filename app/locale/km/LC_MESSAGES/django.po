@@ -183,6 +183,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (in any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -190,9 +208,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -204,13 +221,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -770,9 +780,6 @@ msgstr "បញ្ចូល​ជា YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "បញ្ចូល​នាម​ខ្លួន​ ​​និង​នាម​ត្រកូល​​របស់​បុគ្គល​នោះ​​។"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "បញ្ចូល​ឈ្មោះ​របស់​បុគ្គល​ ផ្នែក​នៃ​ឈ្មោះ​ ឬ​លេខ​ទូរស័ព្ទ​ចល័ត​។"
-
 msgid "Enter the person's name."
 msgstr "បញ្ចូល​ឈ្មោះ​របស់​បុគ្គល។"
 
@@ -1192,9 +1199,6 @@ msgstr "សូម​ផ្ដល់​នូវ​អាសយដ្ឋាន​
 msgid "Possible duplicates"
 msgstr "ភាព​ស្ទួន​ដែល​អាច​កើត​ឡើង​"
 
-msgid "Possible duplicates found."
-msgstr "រក​ឃើ​ញ​ភាព​ស្ទួន​ដែល​មាន​។"
-
 msgid "Postal or zip code"
 msgstr "ប្រៃសណីយ៍​ ឬ​កូដ​តំបន់"
 
@@ -1550,9 +1554,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "មើល​កំណត់​ត្រា​"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "យើង​មិន​មាន​អ្វី​ដែល​ត្រូវ​គ្នា​នឹង​ការ​ស្វែងរក​របស់​អ្នក​ទេ។"
