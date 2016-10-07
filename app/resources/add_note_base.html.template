@@ -145,9 +145,11 @@
       <div class="end-multi-columns"></div>
     </div>
 
-    <a href="#" class="expand-button expand-button-icon-down">
-      {% trans "More information about status of the person" %}
-    </a>
+    {% if env.ui != "light" %}
+      <a href="#" class="expand-button expand-button-icon-down">
+        {% trans "More information about status of the person" %}
+      </a>
+    {% endif %}
 
     <div class="expanded-part">
       <div class="location subsection">
