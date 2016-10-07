@@ -175,6 +175,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -182,9 +200,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -196,20 +213,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -747,9 +750,6 @@ msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
 msgid "Enter the person's given and family names."
 msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ป้อนชื่อ บางส่วนของชื่อ หรือหมายเลขโทรศัพท์มือถือของบุคคลนี้"
-
 msgid "Enter the person's name."
 msgstr "ป้อนชื่อบุคคลดังกล่าว"
 
@@ -1156,9 +1156,6 @@ msgstr "โปรดป้อนที่อยู่อีเมลที่ถ
 msgid "Possible duplicates"
 msgstr "บันทึกที่อาจซ้ำกัน"
 
-msgid "Possible duplicates found."
-msgstr "พบข้อมูลซ้ำที่เป็นไปได้"
-
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
 
@@ -1495,9 +1492,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "ดูบันทึกข้อมูล"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"

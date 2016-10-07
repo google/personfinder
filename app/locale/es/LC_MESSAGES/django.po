@@ -182,6 +182,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -189,9 +207,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -203,20 +220,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -771,11 +774,6 @@ msgstr "La fecha debe tener el formato AAAA-MM-DD."
 msgid "Enter the person's given and family names."
 msgstr "Introduce el nombre y los apellidos de la persona."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Introduce el nombre completo o partes del nombre de la persona o su "
-"número de teléfono móvil."
-
 msgid "Enter the person's name."
 msgstr "Introduce el nombre de la persona."
 
@@ -1208,9 +1206,6 @@ msgstr "Introduce una dirección de correo electrónico válida."
 msgid "Possible duplicates"
 msgstr "Duplicados posibles"
 
-msgid "Possible duplicates found."
-msgstr "Se han encontrado posibles duplicados."
-
 msgid "Postal or zip code"
 msgstr "Código postal"
 
@@ -1565,9 +1560,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Ver el registro"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "No hay resultados que coincidan con la búsqueda."

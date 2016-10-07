@@ -184,6 +184,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -191,9 +209,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -205,20 +222,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -770,9 +773,6 @@ msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Ange personens förnamn och efternamn."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ange personens namn, delar av namnet eller personens mobilnummer."
-
 msgid "Enter the person's name."
 msgstr "Ange personens namn."
 
@@ -1181,9 +1181,6 @@ msgstr "Ange en giltig e-postadress."
 msgid "Possible duplicates"
 msgstr "Möjliga dubbletter"
 
-msgid "Possible duplicates found."
-msgstr "Möjliga dubbletter hittades."
-
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
@@ -1529,9 +1526,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Visa posten"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Vi har ingenting som matchar din sökning."

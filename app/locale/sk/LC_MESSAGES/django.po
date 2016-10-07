@@ -174,6 +174,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -181,9 +199,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -195,20 +212,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -754,9 +757,6 @@ msgstr "Zadajte v tvare RRRR-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Zadajte meno a priezvisko osoby."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Zadajte meno, časti mena alebo číslo mobilného telefónu osoby."
-
 msgid "Enter the person's name."
 msgstr "Zadajte meno osoby."
 
@@ -1175,9 +1175,6 @@ msgstr "Uveďte platnú e-mailovú adresu."
 msgid "Possible duplicates"
 msgstr "Možné duplikáty"
 
-msgid "Possible duplicates found."
-msgstr "Našli sa možné duplicitné záznamy."
-
 msgid "Postal or zip code"
 msgstr "PSČ"
 
@@ -1521,9 +1518,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Zobraziť záznam"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Nemáme žiadne informácie zodpovedajúce vášmu vyhľadávaniu."

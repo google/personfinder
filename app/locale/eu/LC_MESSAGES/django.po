@@ -174,6 +174,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -181,9 +199,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -195,20 +212,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -751,9 +754,6 @@ msgstr "Sartu UUUU-HH-EE formatuan"
 msgid "Enter the person's given and family names."
 msgstr "Idatzi pertsonaren izena eta abizenak."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Sartu pertsonaren izena edo zati bat."
-
 msgid "Enter the person's name."
 msgstr "Sartu pertsonaren izena."
 
@@ -1172,9 +1172,6 @@ msgstr "Eman baliozko helbide elektroniko bat."
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
 
-msgid "Possible duplicates found."
-msgstr "Datuak bikoiztuta egon litezkeela hauteman da."
-
 msgid "Postal or zip code"
 msgstr "Posta-kodea edo zip kodea"
 
@@ -1515,9 +1512,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Ikusi erregistroa"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Ez dugu zure bilaketarekin bat datorren erregistrorik aurkitu."

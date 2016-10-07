@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -761,11 +764,6 @@ msgstr "Masukkan dengan format TTTT-BB-HH"
 msgid "Enter the person's given and family names."
 msgstr "Ketikkan nama depan dan nama keluarga orang itu."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Masukkan nama orang tersebut, bagian dari namanya (julukan atau gelar), "
-"atau nomor ponsel."
-
 msgid "Enter the person's name."
 msgstr "Ketikkan nama orang itu."
 
@@ -1176,9 +1174,6 @@ msgstr "Berikan alamat email yang valid."
 msgid "Possible duplicates"
 msgstr "Kemungkinan duplikat"
 
-msgid "Possible duplicates found."
-msgstr "Kemungkinan duplikat ditemukan."
-
 msgid "Postal or zip code"
 msgstr "Kode pos atau ZIP"
 
@@ -1518,9 +1513,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Lihat rekaman"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Kami tidak menemukan kecocokan untuk penelusuran Anda."

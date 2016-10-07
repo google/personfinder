@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -769,9 +772,6 @@ msgstr "YYYY-MM-DD என்ற முறையில் உள்ளிடவ�
 msgid "Enter the person's given and family names."
 msgstr "நபரின் முதல் பெயர் மற்றும் குடும்பப் பெயர்களை உள்ளிடவும்."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "நபரின் பெயர், பெயரின் பகுதிகள் அல்லது மொபைல் எண்ணை உள்ளிடவும்."
-
 msgid "Enter the person's name."
 msgstr "நபரின் பெயரை உள்ளிடவும்."
 
@@ -1192,9 +1192,6 @@ msgstr "சரியான மின்னஞ்சல் முகவரிய�
 msgid "Possible duplicates"
 msgstr "சாத்தியமுள்ள நகல்கள்"
 
-msgid "Possible duplicates found."
-msgstr "சாத்தியமான பிரதிகள் கண்டறியப்பட்டன."
-
 msgid "Postal or zip code"
 msgstr "தபால் குறியீடு அல்லது அஞ்சல் குறியீடு"
 
@@ -1546,9 +1543,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "பதிவைக் காட்டு"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "உங்கள் தேடலுடன் பொருந்தும் எதுவும் எங்களிடம் இல்லை."

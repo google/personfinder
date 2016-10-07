@@ -173,6 +173,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -180,9 +198,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -194,20 +211,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -744,9 +747,6 @@ msgstr "‏إدخال بتنسيق YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "أدخل الاسم الأول للشخص واسم عائلته."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "أدخل اسم الشخص أو أجزاء من الاسم أو رقم الهاتف الجوال."
-
 msgid "Enter the person's name."
 msgstr "أدخل اسم الشخص."
 
@@ -1149,9 +1149,6 @@ msgstr "الرجاء تقديم عنوان بريد إلكتروني صالح."
 msgid "Possible duplicates"
 msgstr "النتائج المكررة المحتملة"
 
-msgid "Possible duplicates found."
-msgstr "تم العثور على تكرارات محتملة."
-
 msgid "Postal or zip code"
 msgstr "الرمز البريدي"
 
@@ -1489,9 +1486,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "عرض السجل"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ليس لدينا أي شيء يتطابق مع بحثك."

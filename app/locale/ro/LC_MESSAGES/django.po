@@ -181,6 +181,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -188,9 +206,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -202,20 +219,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -774,11 +777,6 @@ msgstr "Introduceți în format AAAA-LL-ZZ"
 msgid "Enter the person's given and family names."
 msgstr "Introduceți numele și prenumele persoanei."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Introduceți numele persoanei, părți ale numelui sau numărul de telefon "
-"mobil."
-
 msgid "Enter the person's name."
 msgstr "Introduceți numele persoanei."
 
@@ -1201,9 +1199,6 @@ msgstr "Introduceți o adresă de e-mail validă."
 msgid "Possible duplicates"
 msgstr "Duplicate posibile"
 
-msgid "Possible duplicates found."
-msgstr "S-au găsit posibile înregistrări duplicate."
-
 msgid "Postal or zip code"
 msgstr "Cod poștal"
 
@@ -1555,9 +1550,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Afișați înregistrarea"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Nu am găsit nimic care să corespundă căutării dvs."

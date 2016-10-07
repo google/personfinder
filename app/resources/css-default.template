@@ -208,6 +208,7 @@ input {
 input:not([type]),  /* type attribute is not specified */
 input[type="text"] {
   border: 0;
+  border-radius: 0;
   outline: 0;
   border-bottom: 1px solid #a9a9a9;
   background: transparent;
@@ -215,8 +216,6 @@ input[type="text"] {
 
 input:not([type]):focus,  /* type attribute is not specified */
 input[type="text"]:focus {
-  border: 0;
-  outline: 0;
   border-bottom: 2px solid #3b78e7;
   margin-bottom: 7px;
 }
@@ -230,6 +229,7 @@ input[type="text"]:disabled {
 /* Remove the focus frame for file upload input */
 input[type="file"]:focus {
   border: 0;
+  border-radius: 0;
   outline: 0;
 }
 
@@ -248,6 +248,7 @@ textarea {
 select {
   max-width: 100%;
   border: 0;
+  border-radius: 0;
   outline: 0;
   border-bottom: 1px solid #a9a9a9;
   background: transparent;
@@ -908,19 +909,10 @@ resultsList {
   color: #00008b;
 }
 
-/* warning icon for no searching results */
-.warning {
-  vertical-align: text-bottom;
-}
-
 .searchResults {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.bold-message {
-  font-weight: bold;
 }
 
 .searchResults .resultItem {

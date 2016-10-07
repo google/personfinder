@@ -180,6 +180,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -187,9 +205,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -201,20 +218,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -765,9 +768,6 @@ msgstr "Færðu inn sem ÁÁÁÁ-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Færðu inn eiginafn og kenninafn manneskjunnar."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Færðu inn nafn manneskjunnar, hluta nafnsins eða farsímanúmer."
-
 msgid "Enter the person's name."
 msgstr "Færðu inn nafn manneskjunnar."
 
@@ -1186,9 +1186,6 @@ msgstr "Skráðu gilt netfang."
 msgid "Possible duplicates"
 msgstr "Mögulegar tvítekningar"
 
-msgid "Possible duplicates found."
-msgstr "Hugsanleg tvítekning fannst."
-
 msgid "Postal or zip code"
 msgstr "Póstnúmer"
 
@@ -1534,9 +1531,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Skoða færsluna"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Ekkert passar við leitina þína."

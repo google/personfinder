@@ -176,6 +176,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -183,9 +201,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -197,20 +214,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -749,9 +752,6 @@ msgstr "‏YYYY-MM-DD کے بطور درج کریں"
 msgid "Enter the person's given and family names."
 msgstr "اس شخص کا رکھا گیا اور خاندانی نام درج کریں۔"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "اس شخص کا نام، نام کے حصے، یا موبائل فون نمبر درج کریں۔"
-
 msgid "Enter the person's name."
 msgstr "اس شخص کا نام درج کریں۔"
 
@@ -1167,9 +1167,6 @@ msgstr "براہ کرم ایک درست ای میل پتہ فراہم کریں۔
 msgid "Possible duplicates"
 msgstr "ممکنہ ڈپلیکیٹس"
 
-msgid "Possible duplicates found."
-msgstr "ممکنہ ڈپلیکیٹس ملے۔"
-
 msgid "Postal or zip code"
 msgstr "ڈاک یا زپ کوڈ"
 
@@ -1515,9 +1512,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "ریکارڈ دیکھیں"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ہمارے پاس آپ کی تلاش سے مماثل کچھ نہیں ہے۔"

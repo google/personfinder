@@ -182,6 +182,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -189,9 +207,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -203,20 +220,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -780,11 +783,6 @@ msgstr "ခုနှစ်-လ-ရက် (YYYY-MM-DD) ကိုရိုက်�
 msgid "Enter the person's given and family names."
 msgstr "သူ၏ အမည် နှင့် family names ခေါ်မိသားစုအမည် ကိုရိုက်ထည့်ပါ။"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"သူ၏ နာမည္၊ နာမည္တစ္စိတ္တစ္ပိုင္း သုိ႔မဟုတ္ မိုဘိုင္းဖုန္းနံပါတ္ကို\n"
-"႐ိုက္ထည့္ပါ။"
-
 msgid "Enter the person's name."
 msgstr "သူ၏ နာမည်ကိုရိုက်ထည့်ပါ။"
 
@@ -1232,9 +1230,6 @@ msgstr "ေက်းဇူးၿပဳၿပီး အီးေမးလ္လ�
 msgid "Possible duplicates"
 msgstr "မူရင္းမဟုတ္သည့္ အပြားမ်ားျဖစ္ႏိုင္သည္။"
 
-msgid "Possible duplicates found."
-msgstr "ျဖစ္ႏိုင္ေျခရွိတဲ ့မူပြားပံုတူမ်ားကို ေတြ ့ရသည္။"
-
 msgid "Postal or zip code"
 msgstr "Postal or zip code ခေါ် စာတိုက်လိပ်စာ နံပါတ်။"
 
@@ -1618,9 +1613,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "မှတ်တမ်းကို ကြည့်ပါ။"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "သင်ရှာဖွေသည့်အရာ နှင့် ကိုက်ညီတာ ကျွန်ုပ်တို့ မှာဘာမှမရှိပါ။"

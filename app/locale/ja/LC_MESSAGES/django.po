@@ -172,6 +172,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -179,9 +197,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -193,20 +210,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -731,9 +734,6 @@ msgstr "YYYY-MM-DD の形式で入力してください"
 msgid "Enter the person's given and family names."
 msgstr "その人の姓名を入力してください。"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "その人の名前、名前の一部、または携帯電話番号を入力してください。"
-
 msgid "Enter the person's name."
 msgstr "その人の名前を入力してください。"
 
@@ -1114,9 +1114,6 @@ msgstr "有効なメール アドレスを指定してください。"
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-msgid "Possible duplicates found."
-msgstr "重複している可能性のある記録が見つかりました。"
-
 msgid "Postal or zip code"
 msgstr "郵便番号"
 
@@ -1444,9 +1441,6 @@ msgstr "現在位置を使う"
 
 msgid "View the record"
 msgstr "記録を見る"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"

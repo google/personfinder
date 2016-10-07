@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -762,9 +765,6 @@ msgstr "YYYY-MM-DD ರೂಪದಲ್ಲಿ ನಮೂದಿಸಿ"
 msgid "Enter the person's given and family names."
 msgstr "ವ್ಯಕ್ತಿಯ ಹಾಗೂ ಅವರ ಕುಟುಂಬದ ಹೆಸರುಗಳನ್ನು ನಮೂದಿಸಿ."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ವ್ಯಕ್ತಿಯ ಹೆಸರು, ಹೆಸರಿನ ಭಾಗಗಳು, ಅಥವಾ ಮೊಬೈಲ್ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ."
-
 msgid "Enter the person's name."
 msgstr "ವ್ಯಕ್ತಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ."
 
@@ -1185,9 +1185,6 @@ msgstr "ದಯವಿಟ್ಟು ಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸ
 msgid "Possible duplicates"
 msgstr "ಸಂಭಾವ್ಯ ನಕಲುಗಳು"
 
-msgid "Possible duplicates found."
-msgstr "ಕಂಡುಬಂದಿರುವ ಸಂಭಾವ್ಯ ನಕಲುಗಳು."
-
 msgid "Postal or zip code"
 msgstr "ಅಂಚೆ ಅಥವಾ ಪಿನ್ ಕೋಡ್"
 
@@ -1533,9 +1530,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "ರೆಕಾರ್ಡ್ ವೀಕ್ಷಿಸು"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದನ್ನೂ ನಾವು ಹೊಂದಿಲ್ಲ."

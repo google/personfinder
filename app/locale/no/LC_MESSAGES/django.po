@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,20 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -757,11 +760,6 @@ msgstr "Angi som ÅÅÅÅ-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Skriv inn personens for- og etternavn."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Skriv inn personens navn, deler av navnet eller vedkommendes "
-"mobiltelefonnummer."
-
 msgid "Enter the person's name."
 msgstr "Skriv inn personens navn."
 
@@ -1172,9 +1170,6 @@ msgstr "Oppgi en gyldig e-postadresse."
 msgid "Possible duplicates"
 msgstr "Mulige duplikater"
 
-msgid "Possible duplicates found."
-msgstr "Mulige duplikater er funnet."
-
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
@@ -1521,9 +1516,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Se oppføringen"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Finner ingen samsvar med søkeordet."

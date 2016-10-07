@@ -81,6 +81,13 @@
           <h1>
             {% trans "Identifying information" %}
           </h1>
+
+          {% if env.ui == "light" %}
+            <h3>
+              {% trans "Name" %}
+            </h3>
+          {% endif %}
+
           {% if config.use_family_name and config.family_name_first %}
             <div class="field">
               <span class="label">
@@ -147,9 +154,11 @@
             </div>
           {% endif %}
 
-          <a href="#" class="expand-button expand-button-icon-down">
-            {% trans "More information to identify the person" %}
-          </a>
+          {% if env.ui != "light" %}
+            <a href="#" class="expand-button expand-button-icon-down">
+              {% trans "More information to identify the person" %}
+            </a>
+          {% endif %}
 
           <div class="expanded-part">
             {% if env.enable_javascript %}
@@ -183,10 +192,13 @@
                 </div>
               </div>
             {% endif %}
+
             <div class="name subsection">
-              <h3>
-                {% trans "Name" %}
-              </h3>
+              {% if env.ui != "light" %}
+                <h3>
+                  {% trans "Name" %}
+                </h3>
+              {% endif %}
 
               {% if config.use_alternate_names %}
                 {% if config.use_family_name and config.family_name_first %}
@@ -534,9 +546,11 @@
           </div>
           {% include "subscribe.html.template" %}
 
-          <a href="#" class="expand-button expand-button-icon-down" >
-            {% trans "More information about source of record" %}
-          </a>
+          {% if env.ui != "light" %}
+            <a href="#" class="expand-button expand-button-icon-down" >
+              {% trans "More information about source of record" %}
+            </a>
+          {% endif %}
 
           <div class="expanded-part">
             <div class="subsection">

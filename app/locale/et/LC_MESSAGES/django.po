@@ -175,6 +175,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -182,9 +200,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -196,20 +213,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -748,9 +751,6 @@ msgstr "Sisestage kujul AAAA-KK-PP"
 msgid "Enter the person's given and family names."
 msgstr "Sisestage inimese ees- ja perekonnanimi."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Sisestage inimese nimi, nime osad või mobiiltelefoni number."
-
 msgid "Enter the person's name."
 msgstr "Sisestage inimese nimi."
 
@@ -1163,9 +1163,6 @@ msgstr "Edastage kehtiv e-posti aadress."
 msgid "Possible duplicates"
 msgstr "Võimalikud duplikaadid"
 
-msgid "Possible duplicates found."
-msgstr "Leiti võimalikud duplikaadid."
-
 msgid "Postal or zip code"
 msgstr "Sihtnumber"
 
@@ -1506,9 +1503,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Vaadake kirjet"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Meil ei ole midagi teie otsinguga sobivat."

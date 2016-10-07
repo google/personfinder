@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -756,9 +759,6 @@ msgstr "YYYY-MM-DD হিসাবে লিখুন"
 msgid "Enter the person's given and family names."
 msgstr "ব্যক্তিটির নাম ও পদবি লিখুন৷"
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ব্যক্তিটির নাম বা নামের অংশগুলি বা মোবাইল ফোন নম্বর লিখুন৷"
-
 msgid "Enter the person's name."
 msgstr "ব্যক্তিটির নাম লিখুন৷"
 
@@ -1175,9 +1175,6 @@ msgstr "দয়া করে একটি বৈধ ইমেল ঠিকান�
 msgid "Possible duplicates"
 msgstr "সম্ভাব্য অনুরূপগুলি"
 
-msgid "Possible duplicates found."
-msgstr "সম্ভাব্য প্রতিলিপি পাওয়া গিয়েছে৷"
-
 msgid "Postal or zip code"
 msgstr "ডাক বা জিপ কোড"
 
@@ -1523,9 +1520,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "রেকর্ডটি দেখুন"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "আমরা আপনার অনুসন্ধানের সাথে কোনো মিল পায়নি৷"

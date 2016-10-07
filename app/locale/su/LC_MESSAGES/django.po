@@ -178,6 +178,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -185,9 +203,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -199,20 +216,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -751,9 +754,6 @@ msgstr "Lebetkeun janten YYYY-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Lebetkeun nami jalmana sareng nami kulawarga na."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Lebetkeun nami jalma, sabagian tina namina, atanapi nomer handphone na."
-
 msgid "Enter the person's name."
 msgstr "Lebetkeun nami jalma na."
 
@@ -1175,9 +1175,6 @@ msgstr "Punten sayogikeun alamat email anu leres."
 msgid "Possible duplicates"
 msgstr "Kamungkinan duplikat"
 
-msgid "Possible duplicates found."
-msgstr "Kamungkinan duplikat kapendak."
-
 msgid "Postal or zip code"
 msgstr "Kodeu pos"
 
@@ -1523,9 +1520,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Tingali rékamanana"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Kami henteu ngagaduhan anu cocog sareng pamilarian anjeun."

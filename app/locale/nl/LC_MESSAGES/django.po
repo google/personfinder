@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -770,11 +773,6 @@ msgstr "Gebruik de notatie JJJJ-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Geef de voor- en achternaam van de persoon."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Geef de naam, gedeelten van de naam of het mobiele telefoonnummer van de "
-"persoon."
-
 msgid "Enter the person's name."
 msgstr "Geef de naam van de persoon."
 
@@ -1193,9 +1191,6 @@ msgstr "Geef een geldig e-mailadres op."
 msgid "Possible duplicates"
 msgstr "Mogelijke duplicaten"
 
-msgid "Possible duplicates found."
-msgstr "Mogelijke dubbele exemplaren gevonden."
-
 msgid "Postal or zip code"
 msgstr "Postcode"
 
@@ -1541,9 +1536,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "De vermelding bekijken"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."

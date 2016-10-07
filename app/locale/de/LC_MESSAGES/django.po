@@ -179,6 +179,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -186,9 +204,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -200,20 +217,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -757,11 +760,6 @@ msgstr "Im Format jjjj-mm-tt eingeben"
 msgid "Enter the person's given and family names."
 msgstr "Geben Sie den Vor- und Nachnamen der Person ein."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Geben Sie den Namen, einen Namensteil oder die Mobiltelefonnummer der "
-"Person ein."
-
 msgid "Enter the person's name."
 msgstr "Geben Sie den Namen der Person ein."
 
@@ -1189,9 +1187,6 @@ msgstr "Geben Sie eine gültige E-Mail-Adresse ein."
 msgid "Possible duplicates"
 msgstr "Möglicherweise doppelte Datensätze"
 
-msgid "Possible duplicates found."
-msgstr "Mögliche Duplikate gefunden"
-
 msgid "Postal or zip code"
 msgstr "Postleitzahl"
 
@@ -1545,9 +1540,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Datensatz ansehen"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Mit Ihrer Suche stimmen keine Datensätze überein."

@@ -180,6 +180,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -187,9 +205,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -201,20 +218,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -763,9 +766,6 @@ msgstr "YYYY-MM-DD के रूप में डालें"
 msgid "Enter the person's given and family names."
 msgstr "व्यक्ति का दिया गया और पारिवारिक नाम डालें."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "व्यक्ति का नाम, नाम के भाग या मोबाइल फ़ोन नंबर डालें."
-
 msgid "Enter the person's name."
 msgstr "व्यक्ति का नाम डालें."
 
@@ -1182,9 +1182,6 @@ msgstr "कृपया एक मान्य ईमेल पता प्र�
 msgid "Possible duplicates"
 msgstr "संभव डुप्लिकेट"
 
-msgid "Possible duplicates found."
-msgstr "संभावित डुप्लिकेट मिले."
-
 msgid "Postal or zip code"
 msgstr "डाक या ज़िप कोड"
 
@@ -1526,9 +1523,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "रिकॉर्ड देखें"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."

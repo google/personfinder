@@ -177,6 +177,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -184,9 +202,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -198,20 +215,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -755,11 +758,6 @@ msgstr "Vnesite v obliki LLLL-MM-DD"
 msgid "Enter the person's given and family names."
 msgstr "Vnesite ime in priimek osebe."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Vnesite ime osebe, del njenega imena ali njeno številko mobilnega "
-"telefona."
-
 msgid "Enter the person's name."
 msgstr "Vnesite ime osebe."
 
@@ -1170,9 +1168,6 @@ msgstr "Vnesite veljaven e-poštni naslov."
 msgid "Possible duplicates"
 msgstr "Možni dvojniki"
 
-msgid "Possible duplicates found."
-msgstr "Najdene so morebitne podvojitve."
-
 msgid "Postal or zip code"
 msgstr "Poštna številka"
 
@@ -1515,9 +1510,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Oglejte si zapis"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Ni podatkov, ki bi se ujemali z vašim iskanjem."

@@ -180,6 +180,24 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "            No results found for: %(query_name)s %(query_location)s\n"
 "          "
 msgstr ""
@@ -187,9 +205,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          No results found for: %(query_name)s "
-"%(query_location_original)s\n"
-"        "
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
 msgstr ""
 
 #, python-format
@@ -201,20 +218,6 @@ msgstr ""
 "\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query_name)s %(query_location)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query_name)s %(query_location_original)s\n"
-"      "
-msgstr ""
 
 #, python-format
 msgid ""
@@ -766,9 +769,6 @@ msgstr "YYYY-AA-GG olarak girin"
 msgid "Enter the person's given and family names."
 msgstr "Kişinin adını ve soyadını girin."
 
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Kişinin adını, adının bir bölümünü veya cep telefonu numarasını girin."
-
 msgid "Enter the person's name."
 msgstr "Kişinin adını girin."
 
@@ -1181,9 +1181,6 @@ msgstr "Lütfen geçerli bir e-posta adresi sağlayın."
 msgid "Possible duplicates"
 msgstr "Olası yinelemeler"
 
-msgid "Possible duplicates found."
-msgstr "Olası yinelenen kayıtlar bulundu."
-
 msgid "Postal or zip code"
 msgstr "Posta veya alan kodu"
 
@@ -1524,9 +1521,6 @@ msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Kaydı görüntüle"
-
-msgid "We have nothing matching your search but we have something matching for "
-msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Aramanızla eşleşen hiçbir bilgi yok."
