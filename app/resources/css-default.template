@@ -216,9 +216,6 @@ input[type="text"] {
 
 input:not([type]):focus,  /* type attribute is not specified */
 input[type="text"]:focus {
-  border: 0;
-  border-radius: 0;
-  outline: 0;
   border-bottom: 2px solid #3b78e7;
   margin-bottom: 7px;
 }
