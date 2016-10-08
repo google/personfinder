@@ -147,7 +147,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Ընտրվել է %(dup_count)s գրառում\n"
 "              "
 
 #, python-format
@@ -158,6 +158,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -167,8 +172,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s որոնման համակարգը պարունակում է այս "
+"հարցմանը համապատասխանող որոնման արդյունք(ներ):\n"
 "          "
 
 #, python-format
@@ -178,7 +183,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          «%(full_name)s» անվանը նման գրառումներ\n"
 "        "
 
 #, python-format
@@ -188,7 +193,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Որոնման արդյունքներ «%(query)s» հարցման համար\n"
 "        "
 
 #, python-format
@@ -198,7 +203,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        «%(query)s» հարցմամբ ոչ մի արդյունք չի գտնվել\n"
 "      "
 
 #, python-format
@@ -355,7 +360,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Մուտքագրված էլփոստի հասցեն անվավեր է:\n"
 "  "
 
 msgid ""
@@ -564,7 +569,7 @@ msgstr "Google Մարդկանց որոնման մասին"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Տարիքը"
@@ -574,9 +579,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Մարդկանց որոնման կայքերում մուտքագրված բոլոր տվյալները հասանելի են "
+"բոլորին: Google-ը չի ստուգում այս տվյալները և չի հաստատում դրանց "
+"ճշտությունը google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Այլընտրանքային ընտանեկան անուններ"
@@ -648,8 +653,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Սեղմեք այստեղ՝ օգտագործման պայմաններին ծանոթանալու համար (արտաքին կայք. "
+"կգործեն կապի սովորական սակագները)"
 
 msgid "Click here to view results."
 msgstr "Արդյունքները տեսնելու համար սեղմեք այստեղ:"
@@ -755,20 +760,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Երկարացնել սպառման ժամկետը %(extension_days)s օրով\n"
 "                "
 
 msgid "Family name"
 msgstr "Ազգանունը"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Ազգանուն (պարտադիր է)"
 
 msgid "Feed of updates about this person"
 msgstr "Այս անձի մասին թարմացումների հոսք"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Հետադարձ կապ"
 
 msgid "Follow this link to create a new record"
 msgstr "Անցեք այս հղումով` նոր գրառում ստեղծելու համար"
@@ -782,7 +787,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Ումից՝ %(home_location)s"
 
 msgid "Full name"
 msgstr "Լրիվ անունը"
@@ -791,7 +796,7 @@ msgid "Given name"
 msgstr "Անունը"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Անուն (պարտադիր է)"
 
 msgid "Google Person Finder"
 msgstr "Google Մարդկանց որոնում"
@@ -825,7 +830,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Ինչպես կարող են կապվել ձեզ հետ նրանք, ովքեր հետաքրքրված են այս անձով"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Ես այս անձի վերաբերյալ տեղեկություններ ունեմ"
 
 msgid "I am seeking information"
 msgstr "Ես տեղեկություն եմ որոնում"
@@ -944,7 +949,7 @@ msgstr "Որոնվող անձի ներկայիս հեռախոսահամարը"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Ավելին՝ %(url)s"
 
 #, python-format
 msgid ""
@@ -990,7 +995,7 @@ msgid "No notes have been posted"
 msgstr "Նշումներ չեն փակցվել"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Որևէ անձի ID նշված չէ:"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -998,7 +1003,7 @@ msgstr "%(id_str)s-ով անձինք չկան:"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "«%(query)s» հարցմամբ ոչ մի արդյունք չի գտնվել"
 
 msgid "No such Authorization entity."
 msgstr "Այսպիսի նույնականացումով անձ չկա:"
@@ -1065,8 +1070,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ՆԿԱՏԻ ՈՒՆԵՑԵՔ. մուտքագրված բոլոր տվյալները հասանելի են բոլորին: Google-ը "
+"չի ստուգում այս տվյալները և չի հաստատում դրանց ճշտությունը:"
 
 msgid "Person Finder"
 msgstr "Մարդկանց որոնում"
@@ -1081,7 +1086,7 @@ msgid "Photo"
 msgstr "Լուսանկար"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Լուսանկար (արտաքին կայք. կգործեն կապի սովորական սակագները)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1095,8 +1100,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Նշեք, որ աղետից հետո շփվել եք այս անձի հետ, կամ փոխեք «Այս անձի "
+"կարգավիճակը» դաշտը:"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1226,7 +1231,7 @@ msgid "Sign out"
 msgstr "Դուրս գալ"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Բաց թողնել"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Ինչ-որ մեկն ունի տեղեկություն, որ այս անձը կենդանի է"
@@ -1241,7 +1246,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Ինչ-որ մեկը տեղեկություններ է փնտրում այս անձի վերաբերյալ"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Գրառման աղբյուրը"
 
 msgid "Source of this record"
 msgstr "Այս գրառման աղբյուրը"
@@ -1251,13 +1256,13 @@ msgstr "Կարգավիճակ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s-ի կարգավիճակը "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Անձի կարգավիճակը"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Այս անձի կարգավիճակը՝"
 
 msgid "Street name"
 msgstr "Փողոցը"
@@ -1266,7 +1271,7 @@ msgid "Street name only, no number"
 msgstr "Միայն փողոցի անունը (առանց տան համարի)"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Ուղարկել"
 
 msgid "Subscribe"
 msgstr "Բաժանորդագրվել"
@@ -1306,7 +1311,7 @@ msgstr "Հեղինակնն անջատել է այս գրառման կարգավ�
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s-ի համար նշումն ավելացվեց"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Տրամադրված պատկերը չափազանց մեծ է: Վերբեռնեք ավելի փոքրը:"
@@ -1319,7 +1324,7 @@ msgstr "Գրառումը հնարավոր չէ երկարացնել:"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s-ի համար գրառումը գրանցվեց"
 
 msgid "The record has been deleted."
 msgstr "Գրառումը ջնջվեց:"
@@ -1468,7 +1473,7 @@ msgid "Upload your CSV file below"
 msgstr "Վերբեռնեք ձեր CSV ֆայլը ստորև"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Օգտագործել ընթացիկ տեղադրությունը"
 
 msgid "View the record"
 msgstr "Դիտել գրառումը"
@@ -1548,8 +1553,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Մուտքագրելով ձեր էլփոստի հասցեն այստեղ՝ դուք կարող եք բաժանորդագրվել "
+"%(full_name)s-ի մասին նորություններին"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1578,7 +1583,7 @@ msgid "Your email"
 msgstr "Ձեր էլփոստը"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Ձեր անունը (պարտադիր է)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1644,7 +1649,7 @@ msgstr ""
 "թարմացումներին"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "արտաքին կայք. կգործեն կապի սովորական սակագները"
 
 msgid "female"
 msgstr "իգական"

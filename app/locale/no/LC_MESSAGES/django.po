@@ -151,7 +151,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s oppføringer er valgt\n"
 "              "
 
 #, python-format
@@ -162,6 +162,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -171,8 +176,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s har søkeresultater som samsvarer med "
+"dette søket.\n"
 "          "
 
 #, python-format
@@ -182,7 +187,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Oppføringer som ligner på: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -192,7 +197,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Søkeresultater for: %(query)s\n"
 "        "
 
 #, python-format
@@ -202,7 +207,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Fant ingen resultater for: %(query)s\n"
 "      "
 
 #, python-format
@@ -363,7 +368,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  E-postadressen du skrev inn, er ikke gyldig.\n"
 "  "
 
 msgid ""
@@ -575,7 +580,7 @@ msgstr "Om Google Personsøk"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Alder"
@@ -585,8 +590,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Alle data som legges inn i Savnede personer, er tilgjengelige for alle og"
+" kan brukes av alle. Google verken vurderer opplysningene eller bekrefter"
+" at de er riktige. Du kan finne ut mer på "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -661,8 +667,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Klikk her for å se vilkårene for bruk (eksternt nettsted – du kan bli "
+"belastet en vanlig tilkoblingsavgift)"
 
 msgid "Click here to view results."
 msgstr "Klikk her for å se resultater."
@@ -770,20 +776,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Forleng utløpsdatoen med %(extension_days)s dager\n"
 "                "
 
 msgid "Family name"
 msgstr "Etternavn"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Etternavn (påkrevd)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed med oppdateringer om denne personen"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Tilbakemelding"
 
 msgid "Follow this link to create a new record"
 msgstr "Følg denne linken for å opprette en ny oppføring"
@@ -795,7 +801,7 @@ msgstr "For andre telefoner enn mobiltelefoner kan du bruke 171-tjenesten fra NT
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Fra: %(home_location)s"
 
 msgid "Full name"
 msgstr "Fullt navn"
@@ -804,7 +810,7 @@ msgid "Given name"
 msgstr "Fornavn"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Fornavn (påkrevd)"
 
 msgid "Google Person Finder"
 msgstr "Google Personsøk"
@@ -842,7 +848,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Måter andre som er interessert i denne personen kan kontakte deg på"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Jeg har informasjon om denne personen"
 
 msgid "I am seeking information"
 msgstr "Jeg er på jakt etter informasjon"
@@ -965,7 +971,7 @@ msgstr "Nåværende telefonnummer for savnet person"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Finn ut mer på: %(url)s"
 
 #, python-format
 msgid ""
@@ -1009,7 +1015,7 @@ msgid "No notes have been posted"
 msgstr "Ingen notater er lagt ut"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ingen person-ID er angitt."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1017,7 +1023,7 @@ msgstr "Ingen person med ID-en: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Fant ingen resultater for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Denne autorisasjonsinstansen eksisterer ikke."
@@ -1084,8 +1090,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"MERK: Alle data som legges inn, er tilgjengelig for alle og kan ses av "
+"alle. Google verken vurderer opplysningene eller bekrefter om de er "
+"riktige."
 
 msgid "Person Finder"
 msgstr "Personsøk"
@@ -1100,7 +1107,7 @@ msgid "Photo"
 msgstr "Bilde"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Foto (eksternt nettsted – du kan bli belastet en vanlig tilkoblingsavgift)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1114,8 +1121,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Merk av for at du har vært i kontakt med denne personen etter "
+"katastrofen, eller endre feltet «Status for denne personen»."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1239,7 +1246,7 @@ msgid "Sign out"
 msgstr "Logg av"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Hopp over"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Noen har fått informasjon om at denne personen er i live"
@@ -1254,7 +1261,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Noen søker etter opplysninger om denne personen"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Kilde for oppføringen"
 
 msgid "Source of this record"
 msgstr "Oppføringens kilde"
@@ -1264,13 +1271,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Status for %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Status for personen"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Denne personens status:"
 
 msgid "Street name"
 msgstr "Gatenavn"
@@ -1279,7 +1286,7 @@ msgid "Street name only, no number"
 msgstr "Kun gatenavn, ikke nummer"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Send inn"
 
 msgid "Subscribe"
 msgstr "Abonner"
@@ -1321,7 +1328,7 @@ msgstr "Forfatteren har deaktivert statusoppdateringer for denne oppføringen."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Notatet for %(full_name)s er lagt til"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Bildet er for stort. Last opp et mindre bilde."
@@ -1334,7 +1341,7 @@ msgstr "Oppføringen kan ikke forlenges."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Oppføringen for %(full_name)s er registrert"
 
 msgid "The record has been deleted."
 msgstr "Oppføringen er slettet."
@@ -1487,7 +1494,7 @@ msgid "Upload your CSV file below"
 msgstr "Last opp CSV-filen din nedenfor"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Bruk den nåværende posisjonen"
 
 msgid "View the record"
 msgstr "Se oppføringen"
@@ -1567,8 +1574,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Du kan abonnere på oppdateringer om %(full_name)s ved å angi "
+"e-postadressen din her"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1597,7 +1604,7 @@ msgid "Your email"
 msgstr "E-posten din"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Navnet ditt (påkrevd)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1660,7 +1667,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Personsøk] Du abonnerer på statusoppdateringer for %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "eksternt nettsted – du kan bli belastet en vanlig tilkoblingsavgift"
 
 msgid "female"
 msgstr "kvinne"

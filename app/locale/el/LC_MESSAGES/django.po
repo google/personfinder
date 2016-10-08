@@ -159,7 +159,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Έχουν επιλεγεί %(dup_count)s εγγραφές\n"
 "              "
 
 #, python-format
@@ -170,6 +170,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -179,8 +184,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            Η μηχανή αναζήτησης %(search_engine_name)s έχει αποτελέσματα "
+"αναζήτησης που αντιστοιχούν σε αυτό το ερώτημα.\n"
 "          "
 
 #, python-format
@@ -190,7 +195,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Εγγραφές παρόμοιες με: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -200,7 +205,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Αποτελέσματα αναζήτησης για: %(query)s\n"
 "        "
 
 #, python-format
@@ -210,7 +215,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Δεν βρέθηκαν αποτελέσματα για: %(query)s\n"
 "      "
 
 #, python-format
@@ -377,7 +382,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Η διεύθυνση ηλεκτρονικού ταχυδρομείου που καταχωρίσατε δεν είναι "
+"έγκυρη.\n"
 "  "
 
 msgid ""
@@ -601,7 +607,7 @@ msgstr "Σχετικά με τον Εντοπισμό ατόμων Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Ηλικία"
@@ -611,8 +617,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Όλα τα δεδομένα που καταχωρίστηκαν στην Εύρεση ατόμων είναι διαθέσιμα στο"
+" κοινό και μπορούν να χρησιμοποιηθούν από οποιονδήποτε. Η Google δεν "
+"ελέγχει ούτε επαληθεύει την ακρίβεια αυτών των δεδομένων "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -688,8 +695,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Κάντε κλικ εδώ, για να δείτε τους όρους παροχής υπηρεσιών (εξωτερικός "
+"ιστότοπος, ενδέχεται να υπάρχει κανονική χρέωση σύνδεσης)"
 
 msgid "Click here to view results."
 msgstr "Κάντε κλικ εδώ για να δείτε τα αποτελέσματα."
@@ -799,20 +806,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Επεκτείνετε την ημερομηνία λήξης κατά %(extension_days)s ημέρες\n"
 "                "
 
 msgid "Family name"
 msgstr "Επώνυμο"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Επώνυμο (απαιτείται)"
 
 msgid "Feed of updates about this person"
 msgstr "Ροή ενημερώσεων σχετικά με αυτό το άτομο"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Σχόλια"
 
 msgid "Follow this link to create a new record"
 msgstr "Ακολουθήστε αυτόν το σύνδεσμο για να δημιουργήσετε μια νέα εγγραφή"
@@ -826,7 +833,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Από: %(home_location)s"
 
 msgid "Full name"
 msgstr "Πλήρες όνομα"
@@ -835,7 +842,7 @@ msgid "Given name"
 msgstr "Όνομα"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Όνομα (απαιτείται)"
 
 msgid "Google Person Finder"
 msgstr "Εντοπισμός ατόμων Google"
@@ -873,7 +880,7 @@ msgstr ""
 " σε επαφή μαζί σας;"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Έχω πληροφορίες σχετικά με αυτό το άτομο"
 
 msgid "I am seeking information"
 msgstr "Αναζητώ πληροφορίες"
@@ -1000,7 +1007,7 @@ msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμέ�
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Περισσότερα στη διεύθυνση: %(url)s"
 
 #, python-format
 msgid ""
@@ -1048,7 +1055,7 @@ msgid "No notes have been posted"
 msgstr "Δεν έχουν δημοσιευτεί σημειώσεις"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Δεν καθορίστηκε κανένα αναγνωριστικό ατόμου."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1056,7 +1063,7 @@ msgstr "Δεν υπάρχει άτομο με αναγνωριστικό: %(id_s
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Δεν βρέθηκαν αποτελέσματα για: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Δεν υπάρχει τέτοια οντότητα εξουσιοδότησης."
@@ -1125,8 +1132,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ΣΗΜΕΙΩΣΗ: Όλα τα δεδομένα που καταχωρίστηκαν είναι διαθέσιμα στο κοινό "
+"και μπορούν να χρησιμοποιηθούν από οποιονδήποτε. Η Google δεν ελέγχει "
+"ούτε επαληθεύει την ακρίβεια αυτών των δεδομένων."
 
 msgid "Person Finder"
 msgstr "Εντοπισμός ατόμων"
@@ -1141,7 +1149,9 @@ msgid "Photo"
 msgstr "Φωτογραφία"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Φωτογραφία (εξωτερικός ιστότοπος, ενδέχεται να υπάρχει κανονική χρέωση "
+"σύνδεσης)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1157,8 +1167,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Βεβαιωθείτε ότι έχετε επαφή με αυτό το άτομο μετά από την καταστροφή ή "
+"αλλάξτε το πεδίο \"Κατάσταση αυτού του ατόμου\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1288,7 +1298,7 @@ msgid "Sign out"
 msgstr "Έξοδος"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Παράβλεψη"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
@@ -1303,7 +1313,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Κάποιος αναζητά πληροφορίες σχετικά με αυτό το άτομο"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Πηγή εγγραφής"
 
 msgid "Source of this record"
 msgstr "Προέλευση αυτής της εγγραφής"
@@ -1313,13 +1323,13 @@ msgstr "Κατάσταση"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Κατάσταση του ατόμου: %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Κατάσταση ατόμου"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Κατάσταση αυτού του ατόμου:"
 
 msgid "Street name"
 msgstr "Όνομα οδού"
@@ -1328,7 +1338,7 @@ msgid "Street name only, no number"
 msgstr "Μόνο όνομα οδού. Όχι αριθμός."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Υποβολή"
 
 msgid "Subscribe"
 msgstr "Εγγραφή"
@@ -1374,7 +1384,7 @@ msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Η σημείωση για το χρήστη %(full_name)s έχει προστεθεί"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Η παρεχόμενη εικόνα είναι πολύ μεγάλη. Μεταφορτώστε μια μικρότερη."
@@ -1387,7 +1397,7 @@ msgstr "Δεν είναι δυνατή η επέκταση του αρχείου
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Η εγγραφή για το χρήστη %(full_name)s έχει καταχωριστεί"
 
 msgid "The record has been deleted."
 msgstr "Η εγγραφή διαγράφηκε."
@@ -1542,7 +1552,7 @@ msgid "Upload your CSV file below"
 msgstr "Μεταφόρτωση του αρχείου CSV παρακάτω"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Χρήση τρέχουσας τοποθεσίας"
 
 msgid "View the record"
 msgstr "Προβολή εγγραφής"
@@ -1628,8 +1638,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Μπορείτε να εγγραφείτε στις αυτόματες ενημερώσεις σχετικά με το χρήστη "
+"%(full_name)s εισαγάγοντας τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας εδώ"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1660,7 +1670,7 @@ msgid "Your email"
 msgstr "Το ηλεκτρονικό ταχυδρομείο σας"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Το όνομά σας (απαιτείται)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1744,7 +1754,7 @@ msgstr ""
 "άτομο %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "εξωτερικός ιστότοπος, ενδέχεται να υπάρχει κανονική χρέωση σύνδεσης"
 
 msgid "female"
 msgstr "γυναίκα"

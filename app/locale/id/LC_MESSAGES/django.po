@@ -152,7 +152,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s catatan dipilih\n"
 "              "
 
 #, python-format
@@ -163,6 +163,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -172,8 +177,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s memiliki hasil penelusuran yang cocok "
+"dengan kueri ini.\n"
 "          "
 
 #, python-format
@@ -183,7 +188,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Catatan Mirip dengan: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -193,7 +198,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Hasil Penelusuran untuk: %(query)s\n"
 "        "
 
 #, python-format
@@ -203,7 +208,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Tidak ditemukan hasil untuk: %(query)s\n"
 "      "
 
 #, python-format
@@ -364,7 +369,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Alamat Email yang Anda masukkan tidak valid.\n"
 "  "
 
 msgid ""
@@ -581,7 +586,7 @@ msgstr "Tentang Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Usia"
@@ -591,9 +596,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Semua data yang dimasukkan di Pencari Orang tersedia untuk publik dan "
+"dapat digunakan oleh semua orang. Google tidak meninjau atau "
+"memverifikasi keakuratan data ini google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Nama keluarga alternatif"
@@ -667,8 +672,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Klik di sini untuk melihat persyaratan layanan (situs eksternal; biaya "
+"sambungan normal mungkin berlaku)"
 
 msgid "Click here to view results."
 msgstr "Klik di sini untuk melihat hasil."
@@ -774,20 +779,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Perpanjang tanggal berlaku sebanyak %(extension_days)s hari\n"
 "                "
 
 msgid "Family name"
 msgstr "Nama keluarga"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Nama keluarga (wajib)"
 
 msgid "Feed of updates about this person"
 msgstr "Umpan pembaruan tentang orang ini"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Masukan"
 
 msgid "Follow this link to create a new record"
 msgstr "Ikuti tautan ini untuk membuat rekaman baru"
@@ -799,7 +804,7 @@ msgstr "Untuk telepon selain ponsel, gunakan layanan 171 yang disediakan oleh NT
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Dari: %(home_location)s"
 
 msgid "Full name"
 msgstr "Nama lengkap"
@@ -808,7 +813,7 @@ msgid "Given name"
 msgstr "Nama depan"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Nama depan (wajib)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -848,7 +853,7 @@ msgstr ""
 "menghubungi Anda"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Saya Memiliki Informasi Tentang Orang Ini"
 
 msgid "I am seeking information"
 msgstr "Saya mencari informasi"
@@ -969,7 +974,7 @@ msgstr "Nomor telepon saat ini untuk si orang hilang"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Selengkapnya di: %(url)s"
 
 #, python-format
 msgid ""
@@ -1013,7 +1018,7 @@ msgid "No notes have been posted"
 msgstr "Belum ada catatan yang diposkan"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Tidak ada identitas orang yang ditentukan."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1021,7 +1026,7 @@ msgstr "Tidak ada orang dengan ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Tidak ditemukan hasil untuk: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Tidak ada entitas Otorisasi seperti itu."
@@ -1088,8 +1093,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"PERHATIKAN: Semua data yang dimasukkan tersedia untuk publik dan dapat "
+"digunakan oleh semua orang.  Google tidak meninjau atau memverifikasi "
+"keakuratan data ini."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1104,7 +1110,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Foto (situs eksternal; biaya sambungan normal mungkin berlaku)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1118,8 +1124,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Periksa apakah Anda berkomunikasi dengan orang tersebut setelah "
+"terjadinya bencana, atau ubah bidang \"Status orang ini\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1243,7 +1249,7 @@ msgid "Sign out"
 msgstr "Keluar"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Lewati"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Seseorang telah menerima informasi bahwa orang ini masih hidup"
@@ -1258,7 +1264,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Seseorang mencari informasi tentang orang ini"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Sumber Catatan"
 
 msgid "Source of this record"
 msgstr "Sumber rekaman ini"
@@ -1268,13 +1274,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Status %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Status Orang"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Status orang ini:"
 
 msgid "Street name"
 msgstr "Nama jalan"
@@ -1283,7 +1289,7 @@ msgid "Street name only, no number"
 msgstr "Nama jalan saja, tanpa nomor"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Kirim"
 
 msgid "Subscribe"
 msgstr "Langganan"
@@ -1323,7 +1329,7 @@ msgstr "Pengarang telah menonaktifkan pembaruan status pada rekaman ini."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Catatan untuk %(full_name)s telah ditambahkan"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Gambar yang diunggah terlalu besar. Unggah yang lebih kecil."
@@ -1336,7 +1342,7 @@ msgstr "Rekaman tidak dapat diperpanjang."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Catatan untuk %(full_name)s telah didaftarkan"
 
 msgid "The record has been deleted."
 msgstr "Rekaman telah dihapus."
@@ -1484,7 +1490,7 @@ msgid "Upload your CSV file below"
 msgstr "Unggah file CSV Anda di bawah"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Gunakan lokasi terkini"
 
 msgid "View the record"
 msgstr "Lihat rekaman"
@@ -1566,8 +1572,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Anda dapat berlangganan untuk menerima pembaruan tentang %(full_name)s, "
+"dengan memasukkan alamat email Anda di sini"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1596,7 +1602,7 @@ msgid "Your email"
 msgstr "Email Anda"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Nama Anda (wajib)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1660,7 +1666,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Anda berlangganan pembaruan status untuk %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "situs eksternal; biaya sambungan normal mungkin berlaku"
 
 msgid "female"
 msgstr "wanita"

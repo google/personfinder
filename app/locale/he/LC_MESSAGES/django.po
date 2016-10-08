@@ -144,7 +144,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s רשומות נבחרו\n"
 "              "
 
 #, python-format
@@ -155,6 +155,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -164,8 +169,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            ב-%(search_engine_name)s יש תוצאות חיפוש התואמות לשאילתה הזו."
+"\n"
 "          "
 
 #, python-format
@@ -175,7 +180,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          רשומות דומות ל: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -185,7 +190,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          תוצאות חיפוש עבור: %(query)s\n"
 "        "
 
 #, python-format
@@ -195,7 +200,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        לא נמצאו תוצאות עבור: %(query)s\n"
 "      "
 
 #, python-format
@@ -352,7 +357,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  כתובת האימייל שהוזנה אינה כתובת חוקית.\n"
 "  "
 
 msgid ""
@@ -559,7 +564,7 @@ msgstr "‏מידע על הכלי של Google לאיתור אנשים"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "גיל"
@@ -569,8 +574,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"‏כל הנתונים שהוזנו באיתור אנשים זמינים לציבור וכל אחד יכול להשתמש בהם. "
+"Google אינה בודקת או מאמתת את הדיוק של נתונים אלה "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -641,9 +646,7 @@ msgstr "עיר"
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
-msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+msgstr "לחץ כאן כדי לראות את התנאים וההגבלות (אתר חיצוני, ייתכנו דמי חיבור רגילים)"
 
 msgid "Click here to view results."
 msgstr "לחץ כאן כדי להציג את התוצאות."
@@ -745,20 +748,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"הארך את מועד התפוגה ב-%(extension_days)s ימים\n"
 "                "
 
 msgid "Family name"
 msgstr "שם משפחה"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "שם משפחה (חובה)"
 
 msgid "Feed of updates about this person"
 msgstr "עדכונים על האדם הזה"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "משוב"
 
 msgid "Follow this link to create a new record"
 msgstr "הפעל את הקישור הזה ליצירת רשומה חדש"
@@ -770,7 +773,7 @@ msgstr "‏עבור טלפונים שאינם טלפונים ניידים, הש�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "מ: %(home_location)s"
 
 msgid "Full name"
 msgstr "שם מלא"
@@ -779,7 +782,7 @@ msgid "Given name"
 msgstr "שם פרטי"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "שם פרטי (חובה)"
 
 msgid "Google Person Finder"
 msgstr "‏כלי Google לאיתור אנשים"
@@ -813,7 +816,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "כיצד אנשים אחרים המעוניינים באדם הזה יכולים ליצור איתך קשר"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "יש לי מידע על האדם הזה"
 
 msgid "I am seeking information"
 msgstr "אני מחפש מידע"
@@ -930,7 +933,7 @@ msgstr "מספר הטלפון הנוכחי של האדם הנעדר"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "עוד בכתובת: %(url)s"
 
 #, python-format
 msgid ""
@@ -972,7 +975,7 @@ msgid "No notes have been posted"
 msgstr "לא פורסמו הערות"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "לא צוין מזהה אדם."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -980,7 +983,7 @@ msgstr "אין אדם עם המזהה: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "לא נמצאו תוצאות עבור: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "אין יישות הרשאה כזו."
@@ -1045,8 +1048,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"‏שים לב: כל הנתונים שהוזנו זמינים לציבור וכל אחד יכול להשתמש בהם. Google "
+"אינה בודקת או מאמתת את הדיוק של הנתונים האלה."
 
 msgid "Person Finder"
 msgstr "כלי לאיתור אנשים"
@@ -1061,7 +1064,7 @@ msgid "Photo"
 msgstr "תמונה"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "תמונה (אתר חיצוני, ייתכנו דמי חיבור רגילים)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1075,8 +1078,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"סמן אם היית בקשר עם האדם הזה לאחר האסון, או שנה את השדה \"הסטטוס של האדם "
+"הזה\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1200,7 +1203,7 @@ msgid "Sign out"
 msgstr "התנתק"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "דילוג"
 
 msgid "Someone has received information that this person is alive"
 msgstr "מישהו קיבל מידע שהאדם הזה חי"
@@ -1215,7 +1218,7 @@ msgid "Someone is seeking information about this person"
 msgstr "מישהו מחפש מידע על האדם הזה"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "מקור הרשומה"
 
 msgid "Source of this record"
 msgstr "המקור של הרשומה הזו"
@@ -1225,13 +1228,13 @@ msgstr "סטטוס"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "סטטוס של %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "סטטוס של אדם"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "הסטטוס של האדם הזה:"
 
 msgid "Street name"
 msgstr "שם רחוב"
@@ -1240,7 +1243,7 @@ msgid "Street name only, no number"
 msgstr "שם רחוב בלבד, ללא מספר"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "שלח"
 
 msgid "Subscribe"
 msgstr "הירשם"
@@ -1280,7 +1283,7 @@ msgstr "המחבר השבית עדכוני סטטוס ברשומה זו."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "ההערה עבור %(full_name)s נוספה"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "התמונה שסיפקת גדולה מדי. העלה תמונה קטנה יותר."
@@ -1293,7 +1296,7 @@ msgstr "לא ניתן להאריך את תוקף הרשומה."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "הרשומה של %(full_name)s נרשמה"
 
 msgid "The record has been deleted."
 msgstr "הרשומה נמחקה."
@@ -1439,7 +1442,7 @@ msgid "Upload your CSV file below"
 msgstr "‏העלה את קובץ ה-CSV שלך בהמשך"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "השתמש במיקום הנוכחי"
 
 msgid "View the record"
 msgstr "הצג את הרשומה"
@@ -1518,9 +1521,7 @@ msgstr "ניתן %(begin_tag)sלהציג את הרשומה%(end_tag)s לפני 
 msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
-msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+msgstr "תוכל להירשם לעדכונים בנושא %(full_name)s על-ידי הזנת כתובת האימייל שלך כאן"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1547,7 +1548,7 @@ msgid "Your email"
 msgstr "כתובת האימייל שלך"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "השם שלך (חובה)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1610,7 +1611,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "‏[כלי Google לאיתור אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "אתר חיצוני, ייתכנו דמי חיבור רגילים"
 
 msgid "female"
 msgstr "נקבה"

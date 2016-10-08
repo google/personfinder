@@ -145,7 +145,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s 件の記録が選択されています\n"
 "              "
 
 #, python-format
@@ -156,6 +156,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -165,8 +170,7 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            この検索キーワードと一致する検索結果が %(search_engine_name)s にあります。\n"
 "          "
 
 #, python-format
@@ -176,7 +180,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          %(full_name)s さんと類似する記録\n"
 "        "
 
 #, python-format
@@ -186,7 +190,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          「%(query)s」の検索結果\n"
 "        "
 
 #, python-format
@@ -348,7 +352,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  入力したメールアドレスが無効です。\n"
 "  "
 
 msgid ""
@@ -558,7 +562,7 @@ msgstr "Google パーソンファインダーについて"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "年齢"
@@ -568,9 +572,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"パーソンファインダーで入力したデータはすべて公開され、誰でも使用できます。Google "
+"では、データの正確性の確認は行っていません（google.org/personfinder/global/tos）。"
 
 msgid "Alternate family names"
 msgstr "姓（よみがな）"
@@ -637,9 +640,7 @@ msgstr "市区町村"
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
-msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+msgstr "こちらをクリックして利用規約をご確認ください（外部サイト: 規定の通信料が発生する場合があります）"
 
 msgid "Click here to view results."
 msgstr "結果を表示するにはここをクリックしてください。"
@@ -741,7 +742,7 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"有効期限を %(extension_days)s 日延長する\n"
 "                "
 
 msgid "Family name"
@@ -754,7 +755,7 @@ msgid "Feed of updates about this person"
 msgstr "この人に関する新着情報のフィード"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "フィードバック"
 
 msgid "Follow this link to create a new record"
 msgstr "このリンクから新しい記録を作成できます"
@@ -766,7 +767,7 @@ msgstr "携帯電話以外の電話の場合は、NTT の 171 サービスをご
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "「%(home_location)s」から"
 
 msgid "Full name"
 msgstr "姓名"
@@ -920,7 +921,7 @@ msgstr "行方不明者の現在の電話番号"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "%(url)s で詳細を見る"
 
 #, python-format
 msgid ""
@@ -960,7 +961,7 @@ msgid "No notes have been posted"
 msgstr "メモはまだありません"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "探す人の ID が指定されていません。"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -968,7 +969,7 @@ msgstr "次の ID の人は見つかりません: %(id_str)s"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "「%(query)s」に一致する検索結果は見つかりませんでした"
 
 msgid "No such Authorization entity."
 msgstr "このような Authorization エンティティはありません。"
@@ -1043,7 +1044,7 @@ msgid "Photo"
 msgstr "写真"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "写真（外部サイト: 規定の通信料が発生する場合があります）"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1056,9 +1057,7 @@ msgstr "身体の特徴"
 msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
-msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+msgstr "災害の後にこの人と連絡を取ったと指定するか、[この人の状況] フィールドを変更してください。"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1180,7 +1179,7 @@ msgid "Sign out"
 msgstr "ログアウト"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "スキップ"
 
 msgid "Someone has received information that this person is alive"
 msgstr "この人が生きているという情報を入手した人がいます"
@@ -1205,7 +1204,7 @@ msgstr "状況"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s さんの状況 "
 
 msgid "Status of Person"
 msgstr "この人の状況"
@@ -1260,7 +1259,7 @@ msgstr "作成者がこの記録に関する新着情報を無効にしました
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s さんのメモが追加されました"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "提供された画像は大きすぎます。もっと小さい画像をアップロードしてください。"
@@ -1273,7 +1272,7 @@ msgstr "この記録は有効期限を延長できません。"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s さんの記録が登録されました"
 
 msgid "The record has been deleted."
 msgstr "記録が削除されました。"
@@ -1484,9 +1483,7 @@ msgstr "記録を削除する前に、%(begin_tag)s記録を確認%(end_tag)sで
 msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
-msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+msgstr "ここにメールアドレスを入力すると、%(full_name)s さんの新着情報を受け取ることができます"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1574,7 +1571,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[パーソンファインダー] %(full_name)s さんについての新着情報を受け取るよう設定しました"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "外部サイト: 規定の通信料が発生する場合があります"
 
 msgid "female"
 msgstr "女性"

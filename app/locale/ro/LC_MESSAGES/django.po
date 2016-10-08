@@ -154,7 +154,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s înregistrări selectate\n"
 "              "
 
 #, python-format
@@ -165,6 +165,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -174,8 +179,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s are rezultate de căutare care se "
+"potrivesc cu această interogare.\n"
 "          "
 
 #, python-format
@@ -185,7 +190,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Înregistrări similare cu: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -195,7 +200,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Rezultatele de căutare pentru: %(query)s\n"
 "        "
 
 #, python-format
@@ -205,7 +210,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Niciun rezultat găsit pentru: %(query)s\n"
 "      "
 
 #, python-format
@@ -369,7 +374,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Adresa de e-mail introdusă nu este validă.\n"
 "  "
 
 msgid ""
@@ -590,7 +595,7 @@ msgstr "Despre Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Vârstă"
@@ -600,9 +605,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Toate datele introduse în Localizator de persoane sunt disponibile public"
+" și pot fi folosite de oricine. Google nu examinează și nu verifică "
+"precizia acestor date google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Nume de familie alternative"
@@ -676,8 +681,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Dați clic aici pentru a consulta termenii și condițiile (site extern; se "
+"poate aplica taxa normală de conexiune)"
 
 msgid "Click here to view results."
 msgstr "Dați clic aici pentru a afișa rezultatele."
@@ -787,14 +792,14 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Extindeți data de expirare cu %(extension_days)s zile\n"
 "                "
 
 msgid "Family name"
 msgstr "Nume de familie"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Numele de familie (obligatoriu)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed de actualizări despre această persoană"
@@ -814,7 +819,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Din: %(home_location)s"
 
 msgid "Full name"
 msgstr "Nume complet"
@@ -823,7 +828,7 @@ msgid "Given name"
 msgstr "Prenume"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Prenumele (obligatoriu)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -861,7 +866,7 @@ msgstr ""
 "sunt interesați de această persoană"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Dețin informații despre această persoană"
 
 msgid "I am seeking information"
 msgstr "Caut informații"
@@ -988,7 +993,7 @@ msgstr "Numărul de telefon actual al persoanei dispărute"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Mai multe la: %(url)s"
 
 #, python-format
 msgid ""
@@ -1034,7 +1039,7 @@ msgid "No notes have been posted"
 msgstr "Nu au fost postate note"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Nu s-a specificat niciun document de identitate pentru persoană."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1042,7 +1047,7 @@ msgstr "Nu există nicio persoană cu ID-ul: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Niciun rezultat găsit pentru: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Nu există o astfel de entitate de autorizare."
@@ -1109,8 +1114,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"REȚINEȚI: toate datele introduse sunt disponibile public și pot fi "
+"folosite de oricine. Google nu examinează și nu verifică precizia acestor"
+" date."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1125,7 +1131,7 @@ msgid "Photo"
 msgstr "Fotografie"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Fotografie (site extern; se poate aplica taxa normală de conexiune)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1141,8 +1147,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Confirmați dacă ați intrat în legătură cu această persoană după dezastru "
+"sau modificați câmpul „Starea acestei persoane”."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1270,7 +1276,7 @@ msgid "Sign out"
 msgstr "Deconectați-vă"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Omiteți"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Cineva a primit informații conform cărora această persoană este în viață"
@@ -1285,7 +1291,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Cineva caută informații despre această persoană"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Sursa înregistrării"
 
 msgid "Source of this record"
 msgstr "Sursa acestei înregistrări"
@@ -1295,13 +1301,13 @@ msgstr "Stare"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Starea pentru %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Starea persoanei"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Starea acestei persoane:"
 
 msgid "Street name"
 msgstr "Nume stradă"
@@ -1310,7 +1316,7 @@ msgid "Street name only, no number"
 msgstr "Nume stradă, fără număr"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Trimiteți"
 
 msgid "Subscribe"
 msgstr "Abonați-vă"
@@ -1354,7 +1360,7 @@ msgstr "Autorul a dezactivat actualizările stării pentru această înregistrar
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Nota pentru %(full_name)s a fost adăugată"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Imaginea trimisă este prea mare. Încărcați o imagine mai mică."
@@ -1367,7 +1373,7 @@ msgstr "Înregistrarea nu poate fi extinsă."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Înregistrarea pentru %(full_name)s a fost făcută"
 
 msgid "The record has been deleted."
 msgstr "Înregistrarea a fost ștearsă."
@@ -1521,7 +1527,7 @@ msgid "Upload your CSV file below"
 msgstr "Încărcați fișierul CSV mai jos"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Folosiți locația actuală"
 
 msgid "View the record"
 msgstr "Afișați înregistrarea"
@@ -1603,8 +1609,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Vă puteți abona la actualizări despre %(full_name)s introducând adresa "
+"dvs. de e-mail aici"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1633,7 +1639,7 @@ msgid "Your email"
 msgstr "Adresa dvs. de e-mail"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Numele dvs. (obligatoriu)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1706,7 +1712,7 @@ msgstr ""
 "%(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "site extern; se poate aplica taxa normală de conexiune"
 
 msgid "female"
 msgstr "feminin"

@@ -147,7 +147,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s erregistro hautatu dira\n"
 "              "
 
 #, python-format
@@ -158,6 +158,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -167,8 +172,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s bilatzaileak bilaketa honekin bat "
+"datozen emaitzak aurkitu ditu.\n"
 "          "
 
 #, python-format
@@ -178,7 +183,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Honen antzeko erregistroak: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -188,7 +193,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Honen bilaketa-emaitzak: %(query)s\n"
 "        "
 
 #, python-format
@@ -198,7 +203,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Ez da aurkitu honen emaitzarik: %(query)s\n"
 "      "
 
 #, python-format
@@ -358,7 +363,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Idatzi duzun helbide elektronikoak ez du balio.\n"
 "  "
 
 msgid ""
@@ -573,7 +578,7 @@ msgstr "Google Person Finder zerbitzuari buruz"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Adina"
@@ -583,8 +588,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Pertsona-bilatzailea eginbidean idatzitako datu guztiak publikoki egongo "
+"dira erabilgarri eta edonork erabili ahal izango ditu. Google-k ez ditu "
+"egiaztatzen datuen egiazkotasuna eta zehaztasuna. "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -657,8 +663,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Egin klik hemen zerbitzu-baldintzak ikusteko (kanpoko gunea; baliteke "
+"ohiko konexioen tarifa aplikatzea)"
 
 msgid "Click here to view results."
 msgstr "Egin klik hemen emaitzak ikusteko."
@@ -762,20 +768,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Atzeratu iraungitze-data %(extension_days)s egun\n"
 "                "
 
 msgid "Family name"
 msgstr "Abizenak"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Abizena (derrigorrezkoa)"
 
 msgid "Feed of updates about this person"
 msgstr "Pertsona honi buruzko eguneratzeen jarioa"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Iritzia"
 
 msgid "Follow this link to create a new record"
 msgstr "Jarraitu esteka hau erregistroa sortzeko"
@@ -789,7 +795,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Kokapena: %(home_location)s"
 
 msgid "Full name"
 msgstr "Izen-abizenak"
@@ -798,7 +804,7 @@ msgid "Given name"
 msgstr "Izena"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Izena (derrigorrezkoa)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -838,7 +844,7 @@ msgstr ""
 "harremanetan?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Pertsona honi buruzko informazioa dut"
 
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
@@ -959,7 +965,7 @@ msgstr "Desagertutako pertsonaren uneko telefono-zenbakia"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Informazio gehiago: %(url)s"
 
 #, python-format
 msgid ""
@@ -1005,7 +1011,7 @@ msgid "No notes have been posted"
 msgstr "Ez da oharrik argitaratu"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ez da zehaztu pertsonaren IDa."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1013,7 +1019,7 @@ msgstr "Ez dago %(id_str)s IDa duen pertsonarik."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Ez da aurkitu honen emaitzarik: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ez dago horrelako erakunde jaulkitzailerik."
@@ -1080,8 +1086,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"OHARRA: idatzitako datu guztiak publikoki egongo dira erabilgarri eta "
+"edonork erabili ahal izango ditu. Google-k ez ditu egiaztatzen datuen "
+"egiazkotasuna eta zehaztasuna."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1096,7 +1103,7 @@ msgid "Photo"
 msgstr "Argazkia"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Argazkia (kanpoko gunea; baliteke ohiko konexioen tarifa aplikatzea)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1112,8 +1119,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Egiaztatu pertsonarekin harremanetan egon zarela hondamendiaren ondoren, "
+"edo aldatu \"Pertsonaren egoera\" eremua."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1239,7 +1246,7 @@ msgid "Sign out"
 msgstr "Amaitu saioa"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Saltatu"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
@@ -1254,7 +1261,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Norbait pertsona honi buruzko informazioa bilatzen ari da"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Erregistroaren iturburua"
 
 msgid "Source of this record"
 msgstr "Erregistroaren iturburua"
@@ -1264,13 +1271,13 @@ msgstr "Egoera"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Egoera - %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Pertsonaren egoera"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Pertsona honen egoera:"
 
 msgid "Street name"
 msgstr "Kale-helbidea"
@@ -1279,7 +1286,7 @@ msgid "Street name only, no number"
 msgstr "Kalearen izena soilik, zenbakirik gabe"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Bidali"
 
 msgid "Subscribe"
 msgstr "Harpidetu"
@@ -1319,7 +1326,7 @@ msgstr "Egileak egoera-eguneratzeak desgaitu ditu erregistro honetan."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Gehitu da %(full_name)s erabiltzailearentzako oharra"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
@@ -1332,7 +1339,7 @@ msgstr "Ezin da erregistroaren iraungitze-data atzeratu."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Erregistratu da %(full_name)s erabiltzailearentzako erregistroa"
 
 msgid "The record has been deleted."
 msgstr "Erregistroa ezabatu da."
@@ -1481,7 +1488,7 @@ msgid "Upload your CSV file below"
 msgstr "Kargatu CSV fitxategia behean"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Erabili uneko kokapena"
 
 msgid "View the record"
 msgstr "Ikusi erregistroa"
@@ -1563,8 +1570,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"%(full_name)s erabiltzaileari buruzko berritasunetara harpidetzeko, "
+"idatzi helbide elektronikoa hemen behean"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1593,7 +1600,7 @@ msgid "Your email"
 msgstr "Zure helbide elektronikoa"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Zure izena (derrigorrezkoa)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1668,7 +1675,7 @@ msgstr ""
 "harpidetuta zaude"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "kanpoko gunea; baliteke ohiko konexioen tarifa aplikatzea"
 
 msgid "female"
 msgstr "emakumea"

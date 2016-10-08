@@ -147,7 +147,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s ਰਿਕਾਰਡ ਚੁਣੇ ਗਏ\n"
 "              "
 
 #, python-format
@@ -158,6 +158,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -167,8 +172,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s ਕੋਲ ਇਸ ਪੁੱਛਗਿੱਛ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਖੋਜ "
+"ਨਤੀਜਾ/ਨਤੀਜੇ ਹਨ।\n"
 "          "
 
 #, python-format
@@ -178,7 +183,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          ਇਸ ਨਾਮ ਨਾਲ ਮਿਲਦੇ-ਜੁਲਦੇ ਰਿਕਾਰਡ: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -188,7 +193,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          ਇਸ ਪੁੱਛਗਿੱਛ ਲਈ ਖੋਜ ਨਤੀਜੇ: %(query)s\n"
 "        "
 
 #, python-format
@@ -198,7 +203,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        ਇਸ ਪੁੱਛਗਿੱਛ ਲਈ ਕੋਈ ਖੋਜ ਨਤੀਜੇ ਨਹੀਂ ਮਿਲੇ: %(query)s\n"
 "      "
 
 #, python-format
@@ -350,7 +355,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  ਤੁਹਾਡੇ ਦੁਆਰਾ ਦਾਖ਼ਲ ਕੀਤਾ ਈਮੇਲ ਪਤਾ ਵੈਧ ਨਹੀਂ ਹੈ।\n"
 "  "
 
 msgid ""
@@ -559,7 +564,7 @@ msgstr "Google Person ਖੋਜਕ ਦੇ ਬਾਰੇ ਵਿੱਚ"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "ਉਮਰ"
@@ -569,9 +574,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"ਵਿਅਕਤੀ ਖੋਜੀ ਵਿੱਚ ਦਾਖਲ ਕੀਤਾ ਗਿਆ ਸਾਰਾ ਡੈਟਾ ਜਨਤਾ ਲਈ ਉਪਲਬਧ ਹੁੰਦਾ ਹੈ ਅਤੇ ਕੋਈ "
+"ਵੀ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦਾ ਹੈ। Google ਇਸ ਡੈਟੇ ਦੀ ਸਟੀਕਤਾ ਦੀ ਸਮੀਖਿਆ ਜਾਂ ਪੁਸ਼ਟੀ "
+"ਨਹੀਂ ਕਰਦਾ ਹੈ google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "ਵਟਾਵੇਂ ਪਰਵਾਰ ਨਾਮ"
@@ -643,8 +648,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"ਸੇਵਾ ਦੀਆਂ ਮਦਾਂ ਵੇਖਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ (ਬਾਹਰੀ ਸਾਈਟ; ਆਮ ਕਨੈਕਸ਼ਨ ਫ਼ੀਸ ਲਾਗੂ "
+"ਹੋ ਸਕਦੀ ਹੈ)"
 
 msgid "Click here to view results."
 msgstr "ਨਤੀਜੀਆਂ ਨੂੰ ਦੇਖਣ ਲਈ ਇੱਥੇ ਕਲਿਕ ਕਰੋ."
@@ -750,20 +755,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"ਮਿਆਦ ਸਮਾਪਤੀ ਦੀ ਮਿਤੀ ਨੂੰ %(extension_days)s ਦਿਨ ਅੱਗੇ ਵਧਾਓ\n"
 "                "
 
 msgid "Family name"
 msgstr "ਪਰਵਾਰ ਦਾ ਨਾਮ"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "ਗੋਤ (ਲੋੜੀਂਦਾ)"
 
 msgid "Feed of updates about this person"
 msgstr "ਇਸ ਵਿਅਕਤੀ ਦੇ ਬਾਰੇ ਅਪਡੇਟ ਦੀ ਫੀਡ"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "ਪ੍ਰਤੀਕਰਮ"
 
 msgid "Follow this link to create a new record"
 msgstr "ਇੱਕ ਨਵਾਂ ਰਿਕਾਰਡ ਬਣਾਉਣ ਲਈ ਇਸ ਲਿੰਕ ਦਾ ਪਾਲਣ ਕਰੋ"
@@ -777,7 +782,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "ਇਸ ਤੋਂ: %(home_location)s"
 
 msgid "Full name"
 msgstr "ਪੂਰਾ ਨਾਮ"
@@ -786,7 +791,7 @@ msgid "Given name"
 msgstr "ਦਿੱਤੇ ਗਏ ਨਾਮ"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "ਦਿੱਤਾ ਗਿਆ ਨਾਮ (ਲੋੜੀਂਦਾ)"
 
 msgid "Google Person Finder"
 msgstr "Google ਵਿਅਕਤੀ ਖੋਜਕ"
@@ -824,7 +829,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "ਦੂਸਰੇ ਲੋਗ ਜੋ ਇਸ ਵਿਅਕਤੀ ਵਿੱਚ ਰੁਚੀ ਰੱਖਦੇ ਹਨ, ਤੁਹਾਨੂੰ ਕਿਵੇਂ ਸੰਪਰਕ ਕਰ ਸੱਕਦੇ ਹਨ"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ਮੇਰੇ ਕੋਲ ਇਸ ਵਿਅਕਤੀ ਬਾਰੇ ਜਾਣਕਾਰੀ ਹੈ"
 
 msgid "I am seeking information"
 msgstr "ਮੈਂ ਜਾਣਕਾਰੀ ਲੈ ਰਿਹਾ ਹਾਂ"
@@ -948,7 +953,7 @@ msgstr "ਬੇਪਤਾ ਵਿਅਕਤੀ ਦਾ ਵਰਤਮਾਨ ਫੋਨ �
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "ਹੋਰ ਜਾਣਕਾਰੀ ਏਥੇ: %(url)s"
 
 #, python-format
 msgid ""
@@ -992,7 +997,7 @@ msgid "No notes have been posted"
 msgstr "ਕੋਈ ਨੋਟ ਪੋਸਟ ਨਹੀ ਕੀਤਾ ਗਿਆ ਹੈ"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "ਕੋਈ ਵਿਅਕਤੀ ਆਈ.ਡੀ. ਨਿਰਧਾਰਤ ਨਹੀਂ ਕੀਤੀ ਗਈ ਸੀ।"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1000,7 +1005,7 @@ msgstr "%(id_str)s :ਆਈਡੀ ਦੇ ਨਾਲ ਕੋਈ ਵਿਅਕਤੀ �
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "ਇਸ ਪੁੱਛਗਿੱਛ ਲਈ ਕੋਈ ਖੋਜ ਨਤੀਜੇ ਨਹੀਂ ਮਿਲੇ: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "ਅਜਿਹੀ ਕੋਈ ਪ੍ਰਾਧਿਕਰਣ ਸੰਸਥਾ ਨਹੀ."
@@ -1067,8 +1072,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ: ਦਾਖਲ ਕੀਤਾ ਗਿਆ ਸਾਰਾ ਡੈਟਾ ਜਨਤਾ ਲਈ ਉਪਲਬਧ ਹੁੰਦਾ ਹੈ ਅਤੇ "
+"ਕੋਈ ਵੀ ਇਸ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦਾ ਹੈ। Google ਇਸ ਡੈਟੇ ਦੀ ਸਟੀਕਤਾ ਦੀ ਸਮੀਖਿਆ ਜਾਂ "
+"ਪੁਸ਼ਟੀ ਨਹੀਂ ਕਰਦਾ ਹੈ।"
 
 msgid "Person Finder"
 msgstr "ਵਿਅਕਤੀ ਖੋਜਕ"
@@ -1083,7 +1089,7 @@ msgid "Photo"
 msgstr "ਫੋਟੋ"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "ਫ਼ੋਟੋ (ਬਾਹਰੀ ਸਾਈਟ; ਆਮ ਕਨੈਕਸ਼ਨ ਫ਼ੀਸ ਲਾਗੂ ਹੋ ਸਕਦੀ ਹੈ)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1097,8 +1103,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਸੀਂ ਕਿਸੇ ਮੁਸੀਬਤ ਤੋਂ ਬਾਅਦ ਇਸ ਵਿਅਕਤੀ ਦੇ ਸੰਪਰਕ "
+"ਵਿੱਚ ਰਹੇ ਹੋ, ਜਾਂ \"ਇਸ ਵਿਅਕਤੀ ਦੀ ਅਵਸਥਾ\" ਖੇਤਰ ਨੂੰ ਬਦਲੋ।"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1224,7 +1230,7 @@ msgid "Sign out"
 msgstr "ਸਾਇਨ ਆਉਟ"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "ਛੱਡੋ"
 
 msgid "Someone has received information that this person is alive"
 msgstr "ਕਿਸੇ ਨੂੰ ਇਸ ਵਿਅਕਤੀ ਦੇ ਜਿੰਦੇ ਹੋਣ ਦੀ ਸੂਚਨਾ ਪ੍ਰਾਪਤ ਹੋਈ ਹੈ"
@@ -1239,7 +1245,7 @@ msgid "Someone is seeking information about this person"
 msgstr "ਕੋਈ ਇਸ ਵਿਅਕਤੀ ਦੇ ਬਾਰੇ ਵਿੱਚ ਜਾਣਕਾਰੀ ਲੈ ਰਿਹਾ ਹੈ"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "ਰਿਕਾਰਡ ਦਾ ਸਰੋਤ"
 
 msgid "Source of this record"
 msgstr "ਇਸ ਰਿਕਾਰਡ ਦੇ ਸਰੋਤ"
@@ -1249,13 +1255,13 @@ msgstr "ਹੈਸਿਅਤ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s ਦੀ ਅਵਸਥਾ "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "ਵਿਅਕਤੀ ਦੀ ਅਵਸਥਾ"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "ਇਸ ਵਿਅਕਤੀ ਦੀ ਅਵਸਥਾ:"
 
 msgid "Street name"
 msgstr "ਸੜਕ ਦਾ ਨਾਮ"
@@ -1264,7 +1270,7 @@ msgid "Street name only, no number"
 msgstr "ਕੇਵਲ ਸੜਕ ਦਾ ਨਾਮ, ਕੋਈ ਨੰਬਰ ਨਹੀ"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "ਸਪੁਰਦ ਕਰੋ"
 
 msgid "Subscribe"
 msgstr "ਮੈਂਬਰੀ ਲਵੋ"
@@ -1306,7 +1312,7 @@ msgstr "ਲੇਖਕ ਨੇ ਇਸ ਰਿਕਾਰਡ ਉੱਤੇ ਹਾਲਤ 
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s ਲਈ ਨੋਟ ਨੂੰ ਸ਼ਾਮਿਲ ਕੀਤਾ ਗਿਆ ਹੈ"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ਪ੍ਰਦਾਨ ਕੀਤੀ ਗਈ ਛਵੀ ਬਹੁਤ ਵੱਡੀ ਹੈ. ਇੱਕ ਛੋਟੀ ਅਪਲੋਡ ਕਰੋ."
@@ -1319,7 +1325,7 @@ msgstr "ਰਿਕਾਰਡ ਨੂੰ ਵਧਾਇਆ ਨਹੀਂ ਜਾ ਸਕ�
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s ਲਈ ਰਿਕਾਰਡ ਨੂੰ ਰਜਿਸਟਰ ਕੀਤਾ ਗਿਆ ਹੈ"
 
 msgid "The record has been deleted."
 msgstr "ਰਿਕਾਰਡ ਨੂੰ ਨਸ਼ਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ."
@@ -1467,7 +1473,7 @@ msgid "Upload your CSV file below"
 msgstr "ਹੇਠਾਂ ਆਪਣੀ ਸੀਏਸਵੀ ਫਾਇਲ ਅਪਲੋਡ ਕਰੋ"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "ਵਰਤਮਾਨ ਟਿਕਾਣੇ ਦੀ ਵਰਤੋਂ ਕਰੋ"
 
 msgid "View the record"
 msgstr "ਰਿਕਾਰਡ ਵੇਖੋ"
@@ -1547,8 +1553,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"ਤੁਸੀਂ ਇੱਥੇ ਆਪਣੀ ਈ-ਮੇਲ ਪਤਾ ਦਾਖ਼ਲ ਕਰਕੇ %(full_name)s ਬਾਰੇ ਅਪਡੇਟਸ ਵਿੱਚ "
+"ਸਬਸਕ੍ਰਾਈਬ ਕਰ ਸਕਦੇ ਹੋ"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1577,7 +1583,7 @@ msgid "Your email"
 msgstr "ਤੁਹਾਡਾ ਈ-ਮੇਲ"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "ਤੁਹਾਡਾ ਨਾਮ (ਲੋੜੀਂਦਾ)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1649,7 +1655,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ਵਿਅਕਤੀ ਖੋਜਕ] ਦੇ ਲਈ ਤੁਹਾਡੇ ਹਾਲਤ ਅਦਿਅਤਨ ਦੀ ਸਦੱਸਤਾ %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "ਬਾਹਰੀ ਸਾਈਟ; ਆਮ ਕਨੈਕਸ਼ਨ ਫ਼ੀਸ ਲਾਗੂ ਹੋ ਸਕਦੀ ਹੈ"
 
 msgid "female"
 msgstr "ਨਾਰੀ"

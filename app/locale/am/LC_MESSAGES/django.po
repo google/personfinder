@@ -144,7 +144,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s መዝገቦች ተመርጠዋል\n"
 "              "
 
 #, python-format
@@ -155,6 +155,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -164,8 +169,7 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s ከዚህ መጠይቅ ጋር የሚዛመድ/ዱ የፍለጋ ውጤት/ቶች አሉት።\n"
 "          "
 
 #, python-format
@@ -175,7 +179,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          ከሚከተለው ጋር የሚመሳሰሉ መዝገቦች፦ %(full_name)s\n"
 "        "
 
 #, python-format
@@ -185,7 +189,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          የፍለጋ ውጤቶች ለ፦ %(query)s\n"
 "        "
 
 #, python-format
@@ -195,7 +199,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        ለሚከተለው ምንም ውጤቶች አልተገኙም፦ %(query)s\n"
 "      "
 
 #, python-format
@@ -351,7 +355,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  ያስገቡት የኢሜል አድራሻ ትክክለኛ አድራሻ አይደለም።\n"
 "  "
 
 msgid ""
@@ -559,7 +563,7 @@ msgstr "ስለ Google ሰው ማግኛ"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "እድሜ"
@@ -569,9 +573,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"በሰው ማግኛ ውስጥ የገባው ውሂብ ሁሉ በይፋ የሚገኝ እና በማንኛውም ሰው ሥራ ላይ ሊውል የሚችል ነው። Google "
+"የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "ተለዋጭ የቤተሰብ ስሞች"
@@ -641,9 +644,7 @@ msgstr "ከተማ"
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
-msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+msgstr "የአገልግሎት ውሉን ለመመልከት እዚህ ጠቅ ያድርጉ (ውጫዊ ጣቢያ፤ መደበኛ የግንኙነት ክፍያ ተፈጻሚ ሊሆን ይችላል)"
 
 msgid "Click here to view results."
 msgstr "ውጤቶችን ለማየት እዚህ ጠቅ ያድርጉ"
@@ -745,20 +746,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"አገልግሎት የሚያበቃበትን ቀን በ%(extension_days)s ቀናት አራዝም\n"
 "                "
 
 msgid "Family name"
 msgstr "የቤተሰብ ስም"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "የቤተሰብ ስም (የሚያስፈልግ)"
 
 msgid "Feed of updates about this person"
 msgstr "የዚህ ሰው ዝማኔዎች ምግብ"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "ግብረመልስ"
 
 msgid "Follow this link to create a new record"
 msgstr "አዲስ መዝገብ ለመፍጠር ይህን አገናኝ ይከተሉ"
@@ -770,7 +771,7 @@ msgstr "ከተንቀሳቃሽ ስልክ ውጪ ለሆኑ ስልኮች እባክ�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "ከ፦ %(home_location)s"
 
 msgid "Full name"
 msgstr "ሙሉ ስም"
@@ -779,7 +780,7 @@ msgid "Given name"
 msgstr "የተሰጠ ስም"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "መጠሪያ ስም (የሚያስፈልግ)"
 
 msgid "Google Person Finder"
 msgstr "Google ሰው ማግኛ"
@@ -813,7 +814,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "ይህን ሰው የሚፈልጉ ሌሎች እንዴት እርስዎን ማግኘት እንደሚችሉ"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ስለዚህ ግለሰብ መረጃ አለኝ"
 
 msgid "I am seeking information"
 msgstr "መረጃ እየፈለግሁ ነኝ"
@@ -932,7 +933,7 @@ msgstr "የጠፋው ሰው የአሁኑ ስልክ ቁጥር"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "እዚህ ላይ ተጨማሪ፦ %(url)s"
 
 #, python-format
 msgid ""
@@ -972,7 +973,7 @@ msgid "No notes have been posted"
 msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "ምንም የግለሰብ መታወቂያ አልተጠቀሰም።"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -980,7 +981,7 @@ msgstr "ይህን መታወቂያ የያዘ ማንም ሰው የለም፦ %(id_s
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "ለሚከተለው ምንም ውጤቶች አልተገኙም፦ %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "እንደዚህ ያለ የፈቀዳ አካል የለም።"
@@ -1045,8 +1046,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"እባክዎ ልብ ይበሉ፦ የገባው ውሂብ ሁሉ በይፋ የሚገኝና በማንኛውም ሰው ሥራ ላይ ሊውል የሚችል ይሆናል። Google "
+"የዚህን ውሂብ ትክክለኛነት አይገመግምም ወይም አያረጋግጥም።"
 
 msgid "Person Finder"
 msgstr "የሰው ማግኛ"
@@ -1061,7 +1062,7 @@ msgid "Photo"
 msgstr "ፎቶ"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "ፎቶ (ውጫዊ ጣቢያ፤ መደበኛ የግንኙነት ክፍያ ተፈጻሚ ሊሆን ይችላል)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1075,8 +1076,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"እባክዎ ከአደጋው በኋላ ከሰውዬው/ሴትዮዋ ጋር መገናኘትዎን ወይም አለመገናኘትዎን ያረጋግጡ፣ ወይም ደግሞ የ«የዚህ "
+"ግለሰብ ሁኔታ» መስኩን ይቀይሩት።"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1200,7 +1201,7 @@ msgid "Sign out"
 msgstr "ዘግተህ ውጣ"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "ዝለል"
 
 msgid "Someone has received information that this person is alive"
 msgstr "የሆነ ሰው ይህ ሰው በህይወት እንዳለ መረጃ ደርሶታል"
@@ -1215,7 +1216,7 @@ msgid "Someone is seeking information about this person"
 msgstr "የሆነ ሰው ስለዚህ ሰው መረጃ እያፈላለገ ነው"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "የመዝገብ ምንጭ"
 
 msgid "Source of this record"
 msgstr "የዚህ መዝገብ ምንጭ"
@@ -1225,13 +1226,13 @@ msgstr "ሁኔታ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "የ%(full_name)s ሁኔታ "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "የግለሰብ ሁኔታ"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "የዚህ(ች) ግለሰብ ሁኔታ፦"
 
 msgid "Street name"
 msgstr "የመንገድ ስም"
@@ -1240,7 +1241,7 @@ msgid "Street name only, no number"
 msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "አስገባ"
 
 msgid "Subscribe"
 msgstr "ለደንበኝነት ይመዝገቡ"
@@ -1280,7 +1281,7 @@ msgstr "ጸሐፊው በዚህ መዝገብ ላይ የሁኔታ ዝማኔዎች�
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "የ%(full_name)s ማስታወሻ ታክሏል"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "የቀረበው ምስል በጣም ትልቅ ነው።  እባክዎ ያነሰ ይስቀሉ።"
@@ -1293,7 +1294,7 @@ msgstr "መዝገቡ ሊራዘም አይችልም።"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "የ%(full_name)s መዝገብ ተመዝግቧል"
 
 msgid "The record has been deleted."
 msgstr "መዝገቡ ተሰርዟል።"
@@ -1437,7 +1438,7 @@ msgid "Upload your CSV file below"
 msgstr "ከታች ያለውን የእርስዎ CSV ፋይል ይስቀሉ"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "የአሁኑን አካባቢ ተጠቀም"
 
 msgid "View the record"
 msgstr "መዝገቡን ይመልከቱ"
@@ -1514,9 +1515,7 @@ msgstr "ከመሰረዝዎ በፊት %(begin_tag)sመዝገቡን ማየት%(end
 msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
-msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+msgstr "የኢሜይል አድራሻዎን እዚህ በማስገባት ስለ%(full_name)s ዝማኔዎችን ለማግኘት ለደንበኝነት መመዝገብ ይችላሉ"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1543,7 +1542,7 @@ msgid "Your email"
 msgstr "የእርስዎ ኢሜይል"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "የእርስዎ ስም (የሚያስፈልግ)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1606,7 +1605,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ሰው ማግኛ] ለ%(full_name)s ሁኔታ ዝማኔዎች በደንበኝነት ተመዝግበዋል"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "ውጫዊ ጣቢያ፤ መደበኛ የግንኙነት ክፍያ ተፈጻሚ ሊሆን ይችላል"
 
 msgid "female"
 msgstr "ሴት"

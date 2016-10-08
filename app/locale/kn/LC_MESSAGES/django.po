@@ -152,7 +152,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s ದಾಖಲೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ\n"
 "              "
 
 #, python-format
@@ -163,6 +163,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -172,8 +177,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            ಈ ಪ್ರಶ್ನೆಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಹುಡುಕಾಟ ಫಲಿತಾಂಶ(ಗಳನ್ನು) "
+"%(search_engine_name)s ಹೊಂದಿದೆ.\n"
 "          "
 
 #, python-format
@@ -183,7 +188,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          ದಾಖಲೆಗಳು ಇದನ್ನು ಹೋಲುತ್ತವೆ: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -193,7 +198,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          ಇದಕ್ಕಾಗಿ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು: %(query)s\n"
 "        "
 
 #, python-format
@@ -203,7 +208,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        ಇದಕ್ಕಾಗಿ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ: %(query)s\n"
 "      "
 
 #, python-format
@@ -364,7 +369,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  ನೀವು ನಮೂದಿಸಿದ ಇಮೇಲ್ ವಿಳಾಸವು ಮಾನ್ಯವಾಗಿಲ್ಲ.\n"
 "  "
 
 msgid ""
@@ -549,7 +554,7 @@ msgid "(click to reveal)"
 msgstr "(ಬಹಿರಂಗಪಡಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ)"
 
 msgid "(unknown)"
-msgstr "(ಅಜ್ಞಾತ)"
+msgstr "(ಅಪರಿಚಿತ)"
 
 msgid "A message for this person or others seeking this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಗೆ ಅಥವಾ ಇವರನ್ನು ಹುಡುಕುತ್ತಿರುವ ಇತರರಿಗಾಗಿ ಸಂದೇಶ"
@@ -580,7 +585,7 @@ msgstr "Google ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ ಬಗ್ಗ
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "ವಯಸ್ಸು"
@@ -590,9 +595,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆಯಲ್ಲಿ ನಮೂದಿಸಲಾಗಿರುವ ಎಲ್ಲಾ ಡೇಟಾ ಸಾರ್ವಜನಿಕರಿಗೆ ಲಭ್ಯವಿದೆ "
+"ಹಾಗೂ ಅದನ್ನು ಯಾರಾದರೂ ಬಳಸಿಕೊಳ್ಳಬಹುದು. ಈ ಡೇಟಾದ ನಿಖರತೆಯನ್ನು Google "
+"ವಿಮರ್ಶಿಸುವುದಿಲ್ಲ ಅಥವಾ ಪರಿಶೀಲಿಸುವುದಿಲ್ಲ google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "ಪರ್ಯಾಯ ಕುಟುಂಬ ಹೆಸರುಗಳು"
@@ -666,8 +671,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"ಸೇವಾ ನಿಯಮಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ (ಬಾಹ್ಯ ಸೈಟ್; ಸಾಮಾನ್ಯ ಸಂಪರ್ಕ "
+"ಶುಲ್ಕ ಅನ್ವಯಿಸಬಹುದು)"
 
 msgid "Click here to view results."
 msgstr "ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ."
@@ -773,20 +778,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"ಮುಕ್ತಾಯದ ದಿನಾಂಕವನ್ನು %(extension_days)s ದಿನಗಳವರೆಗೆ ವಿಸ್ತರಿಸಿ\n"
 "                "
 
 msgid "Family name"
 msgstr "ಕುಟುಂಬದ ಹೆಸರು"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "ಕುಟುಂಬದ ಹೆಸರು (ಕಡ್ಡಾಯ)"
 
 msgid "Feed of updates about this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತ ನವೀಕರಣಗಳ ಫೀಡ್"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "ಪ್ರತಿಕ್ರಿಯೆ"
 
 msgid "Follow this link to create a new record"
 msgstr "ಹೊಸ ರೆಕಾರ್ಡ್ ರಚಿಸಲು ಈ ಲಿಂಕ್ ಅನುಸರಿಸಿ"
@@ -800,7 +805,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "ಇಲ್ಲಿಂದ: %(home_location)s"
 
 msgid "Full name"
 msgstr "ಪೂರ್ಣ ಹೆಸರು"
@@ -809,7 +814,7 @@ msgid "Given name"
 msgstr "ಹೆಸರು"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "ಒದಗಿಸಿದ ಹೆಸರು (ಕಡ್ಡಾಯ)"
 
 msgid "Google Person Finder"
 msgstr "Google ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ"
@@ -847,7 +852,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಬಗ್ಗೆ ತಿಳಿಯಲು ಆಸಕ್ತಿ ಇರುವ ಇತರರು ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತು ಮಾಹಿತಿ ನನ್ನಲ್ಲಿದೆ"
 
 msgid "I am seeking information"
 msgstr "ಮಾಹಿತಿಯ ಹುಡುಕಾಟದಲ್ಲಿದ್ದೇನೆ"
@@ -972,7 +977,7 @@ msgstr "ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಸ್ತುತ 
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "ಇನ್ನಷ್ಟು ಇಲ್ಲಿದೆ: %(url)s"
 
 #, python-format
 msgid ""
@@ -1016,7 +1021,7 @@ msgid "No notes have been posted"
 msgstr "ಯಾವುದೇ ಟಿಪ್ಪಣಿಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿಲ್ಲ"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "ಯಾವುದೇ ವ್ಯಕ್ತಿಯ ಐಡಿಯನ್ನು ನಿರ್ದಿಷ್ಟಪಡಿಸಿಲ್ಲ."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1024,7 +1029,7 @@ msgstr "ID ಯೊಂದಿಗೆ ಯಾವ ವ್ಯಕ್ತಿಯೂ ಇಲ್
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "ಇದಕ್ಕಾಗಿ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "ಅಂಥ ಯಾವುದೇ ದೃಢೀಕರಣ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ."
@@ -1093,8 +1098,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ದಯವಿಟ್ಟು ಗಮನಿಸಿ: ನಮೂದಿಸಲಾಗಿರುವ ಎಲ್ಲಾ ಡೇಟಾವು ಸಾರ್ವಜನಿಕವಾಗಿ ಲಭ್ಯವಿದೆ ಹಾಗೂ "
+"ಅದನ್ನು ಯಾರಾದರೂ ಬಳಸಿಕೊಳ್ಳಬಹುದು. ಈ ಡೇಟಾದ ನಿಖರತೆಯನ್ನು Google "
+"ವಿಮರ್ಶಿಸುವುದಿಲ್ಲ ಅಥವಾ ಪರಿಶೀಲಿಸುವುದಿಲ್ಲ."
 
 msgid "Person Finder"
 msgstr "ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ"
@@ -1109,7 +1115,7 @@ msgid "Photo"
 msgstr "ಫೋಟೋ"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "ಫೋಟೋ (ಬಾಹ್ಯ ಸೈಟ್; ಸಾಮಾನ್ಯ ಸಂಪರ್ಕ ಶುಲ್ಕ ಅನ್ವಯಿಸಬಹುದು)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1125,8 +1131,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"ದುರಂತದ ನಂತರ ನೀವು ವ್ಯಕ್ತಿಯ ಜೊತೆಗೆ ಸಂಪರ್ಕವನ್ನು ಹೊಂದಿರುವಿರಾ ಎಂಬುದನ್ನು "
+"ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ, ಅಥವಾ \"ಈ ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ\" ಕ್ಷೇತ್ರವನ್ನು ಬದಲಾಯಿಸಿ."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1254,7 +1260,7 @@ msgid "Sign out"
 msgstr "ಸೈನ್ ಔಟ್"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "ಸ್ಕಿಪ್"
 
 msgid "Someone has received information that this person is alive"
 msgstr "ಈ ವ್ಯಕ್ತಿ ಜೀವಂತವಾಗಿದ್ದಾರೆ ಎಂಬ ಮಾಹಿತಿ ಯಾರೋ ಒಬ್ಬರಿಗೆ ಲಭಿಸಿದೆ"
@@ -1269,7 +1275,7 @@ msgid "Someone is seeking information about this person"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಕುರಿತು ಯಾರೋ ಒಬ್ಬರು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕುತ್ತಿದ್ದಾರೆ"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "ದಾಖಲೆಯ ಮೂಲ"
 
 msgid "Source of this record"
 msgstr "ಈ ರೆಕಾರ್ಡ್‌ನ ಮೂಲ"
@@ -1279,13 +1285,13 @@ msgstr "ಸ್ಥಿತಿ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s ಅವರ ಸ್ಥಿತಿ "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "ಈ ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ:"
 
 msgid "Street name"
 msgstr "ಗಲ್ಲಿ ಹೆಸರು"
@@ -1294,7 +1300,7 @@ msgid "Street name only, no number"
 msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ. ಸಂಖ್ಯೆ ಬೇಡ"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "ಸಲ್ಲಿಸು"
 
 msgid "Subscribe"
 msgstr "ಸಬ್‌ಸ್ಕ್ರೈಬ್‌"
@@ -1336,7 +1342,7 @@ msgstr "ಈ ರೆಕಾರ್ಡ್‌ನಲ್ಲಿ ಲೇಖಕರು ಸ್
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s ಅವರಿಗೆ ಟಿಪ್ಪಣಿಯನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ಒದಗಿಸಿರುವ ಚಿತ್ರ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಚಿಕ್ಕ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ."
@@ -1349,7 +1355,7 @@ msgstr "ರೆಕಾರ್ಡ್ ಅನ್ನು ವಿಸ್ತರಿಸಲು 
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s ಅವರಿಗೆ ರೆಕಾರ್ಡ್ ಅನ್ನು ನೋಂದಾಯಿಸಲಾಗಿದೆ"
 
 msgid "The record has been deleted."
 msgstr "ರೆಕಾರ್ಡ್ ಅಳಿಸಲಾಗಿದೆ."
@@ -1499,7 +1505,7 @@ msgid "Upload your CSV file below"
 msgstr "ಕೆಳಗೆ ನಿಮ್ಮ CSV ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "ಇತ್ತೀಚಿನ ಸ್ಥಳವನ್ನು ಬಳಸಿ"
 
 msgid "View the record"
 msgstr "ರೆಕಾರ್ಡ್ ವೀಕ್ಷಿಸು"
@@ -1581,8 +1587,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"ಇಲ್ಲಿ ನಿಮ್ಮ ಇ-ಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸುವ ಮೂಲಕ ನೀವು %(full_name)s ಕುರಿತು "
+"ಅಪ್‌ಡೇಟ್‌ಗಳಿಗೆ ಸಬ್‌ಸ್ಕ್ರೈಬ್ ಮಾಡಬಹುದು"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1611,7 +1617,7 @@ msgid "Your email"
 msgstr "ನಿಮ್ಮ ಇಮೇಲ್"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "ನಿಮ್ಮ ಹೆಸರು (ಕಡ್ಡಾಯ)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1691,7 +1697,7 @@ msgstr ""
 "ಚಂದಾದಾರರಾಗಿರುವಿರಿ"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "ಬಾಹ್ಯ ಸೈಟ್; ಸಾಮಾನ್ಯ ಸಂಪರ್ಕ ಶುಲ್ಕ ಅನ್ವಯಿಸಬಹುದು"
 
 msgid "female"
 msgstr "ಸ್ತ್ರೀ"

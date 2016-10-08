@@ -151,7 +151,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s rékaman dipilih\n"
 "              "
 
 #, python-format
@@ -162,6 +162,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -171,8 +176,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s ngagaduhan hasil anu cocog sareng "
+"patarosan ieu.\n"
 "          "
 
 #, python-format
@@ -182,7 +187,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Rékaman Mirip sareng: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -192,7 +197,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Milari Rékaman kanggo: %(query)s\n"
 "        "
 
 #, python-format
@@ -202,7 +207,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Teu aya hasil anu kapanggih kanggo: %(query)s\n"
 "      "
 
 #, python-format
@@ -363,7 +368,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Alamat Surélék anu diasupkeun henteu valid.\n"
 "  "
 
 msgid ""
@@ -573,7 +578,7 @@ msgstr "Tentang Pamilari Jalma Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Umur"
@@ -583,9 +588,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Sadaya data anu diasupkeun kana Panimu Jalma atos sadia kanggo umum jeung"
+" tiasa dianggo ku saha waé. Google henteu nempoan atawa pariksa bener "
+"henteuna data ieu google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Nami kulawarga sanésna"
@@ -659,8 +664,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Klik di dieu pikeun nempo watesan ladénan (loka luar; béaya sambungan "
+"normal tiasa aya)"
 
 msgid "Click here to view results."
 msgstr "Klik di dieu pikeun ningali hasilna."
@@ -762,20 +767,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Nambahkeun tanggal kadaluarsa dina %(extension_days)s dinten\n"
 "                "
 
 msgid "Family name"
 msgstr "Nami kulawarga"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Ngaran kulawarga (diperlukeun)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed pangénggalan ngeunaan jalma ieu"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Eupan balik"
 
 msgid "Follow this link to create a new record"
 msgstr "Tuturkeun tautan ieu pikeun ngadamel rékaman énggal."
@@ -789,7 +794,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Ti: %(home_location)s"
 
 msgid "Full name"
 msgstr "Nami lengkep"
@@ -798,7 +803,7 @@ msgid "Given name"
 msgstr "Nami anu dipasihkeun"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Ngaran anu dipasihkeun (peryogi)"
 
 msgid "Google Person Finder"
 msgstr "Panimu Jalma Google"
@@ -836,7 +841,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Kumaha batur anu minat ka jalma ieu tiasa ngawartosan anjeun"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Kuring Boga Inpo Tentang Jelema Ieu"
 
 msgid "I am seeking information"
 msgstr "Abdi milarian béja"
@@ -964,7 +969,7 @@ msgstr "Nomer telepon jalma anu leungit"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Langkung seueur di: %(url)s"
 
 #, python-format
 msgid ""
@@ -1008,7 +1013,7 @@ msgid "No notes have been posted"
 msgstr "Henteu aya catetan anu dipasang"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Teu aya jalma anu ditangtukeun."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1016,7 +1021,7 @@ msgstr "Henteu aya jalma nganggo ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Teu aya hasil pamilarian kanggo: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Henteu aya badan Otoritas sapertos kitu."
@@ -1083,8 +1088,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"PERHATIKEUN: Sadaya data anu diasupkeun sadia keur umum jeung bisa dipaké"
+" ku saha waé. Google henteu nempoan atawa mariksa bener henteuna data "
+"ieu."
 
 msgid "Person Finder"
 msgstr "Panimu Jalma"
@@ -1099,7 +1105,7 @@ msgid "Photo"
 msgstr "Poto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Poto (loka luar; béaya sambungan normal tiasa aya)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1115,8 +1121,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Mangga pariksa yén anjeun atos aya kontak sareng jalma ieu saator "
+"musibah, atawa robah widang \"Kaayaan ieu jelema\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1242,7 +1248,7 @@ msgid "Sign out"
 msgstr "Kaluar"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Liwat"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Aya anu nampi béja yén jalma ieu hirup kénéh"
@@ -1257,7 +1263,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Aya anu milari béja ngeunaan jalma ieu"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Sumber Rékaman"
 
 msgid "Source of this record"
 msgstr "Sumber tina rékaman ieu"
@@ -1267,13 +1273,13 @@ msgstr "Kaayaan"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Kaayaan %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Kaayaan Jelema"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Kaayaan jalma ieu:"
 
 msgid "Street name"
 msgstr "Nami jalan"
@@ -1282,7 +1288,7 @@ msgid "Street name only, no number"
 msgstr "Nami jalan hungkul, henteu aya nomer"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Kirim"
 
 msgid "Subscribe"
 msgstr "Ngalanggan"
@@ -1324,7 +1330,7 @@ msgstr "Panulis parantos mareuman pangénggalan status dina rékaman ieu."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Catetan keur %(full_name)s atos ditambahkeun"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1339,7 +1345,7 @@ msgstr "Rékaman henteu tiasa dipanjangkeun."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Catetan keur %(full_name)s atos kadaptar"
 
 msgid "The record has been deleted."
 msgstr "Rékaman parantos dihapus."
@@ -1489,7 +1495,7 @@ msgid "Upload your CSV file below"
 msgstr "Unggah berkas CSV anjeun di handap"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Paké lokasi kiwari"
 
 msgid "View the record"
 msgstr "Tingali rékamanana"
@@ -1571,8 +1577,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Anjeun bisa ngalanggan ka apdét ngeunaan %(full_name)s ku cara nuliskeun "
+"alamat surélék anjeun ka dieu"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1601,7 +1607,7 @@ msgid "Your email"
 msgstr "Email anjeun"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Ngaran anjeun (peryogi)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1671,7 +1677,7 @@ msgstr ""
 "%(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "loka luar; béaya sambungan normal tiasa aya"
 
 msgid "female"
 msgstr "awéwé"

@@ -148,7 +148,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s изабрана(их) уноса\n"
 "              "
 
 #, python-format
@@ -159,6 +159,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -168,8 +173,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s има резултате претраге који се "
+"подударају са овим упитом.\n"
 "          "
 
 #, python-format
@@ -179,7 +184,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Уноси слични са: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -189,7 +194,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Резултати претраге за: %(query)s\n"
 "        "
 
 #, python-format
@@ -199,7 +204,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Нема пронађених резултата за: %(query)s\n"
 "      "
 
 #, python-format
@@ -361,7 +366,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Унета имејл адреса није важећа.\n"
 "  "
 
 msgid ""
@@ -572,7 +577,7 @@ msgstr "О Google тражењу особа"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Узраст"
@@ -582,9 +587,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Сви подаци унети у Проналазач несталих лица су јавно доступни и сви могу "
+"да их користе. Google не прегледа ове податке нити проверава њихову "
+"тачност google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Алтернативна презимена"
@@ -658,8 +663,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Кликните овде да бисте видели услове коришћења услуге (спољни сајт; може "
+"да важи стандардна тарифа за повезивање)"
 
 msgid "Click here to view results."
 msgstr "Кликните овде да бисте видели резултате."
@@ -761,20 +766,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Продужи датум истека за %(extension_days)s дана\n"
 "                "
 
 msgid "Family name"
 msgstr "Презиме"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Презиме (обавезно)"
 
 msgid "Feed of updates about this person"
 msgstr "Фид новости о овој особи"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Повратне информације"
 
 msgid "Follow this link to create a new record"
 msgstr "Пратите овај линк да бисте направили нови запис"
@@ -786,7 +791,7 @@ msgstr "За телефоне који нису мобилни користит�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Из: %(home_location)s"
 
 msgid "Full name"
 msgstr "Име и презиме"
@@ -795,7 +800,7 @@ msgid "Given name"
 msgstr "Име"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Име (обавезно)"
 
 msgid "Google Person Finder"
 msgstr "Google тражење особа"
@@ -833,7 +838,7 @@ msgstr ""
 " вама"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Имам информације о овој особи"
 
 msgid "I am seeking information"
 msgstr "Тражим информације"
@@ -956,7 +961,7 @@ msgstr "Актуелни број телефона нестале особе"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Додатне информације на: %(url)s"
 
 #, python-format
 msgid ""
@@ -1002,7 +1007,7 @@ msgid "No notes have been posted"
 msgstr "Није постављена ниједна белешка"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Није наведен ниједан ИД особе."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1010,7 +1015,7 @@ msgstr "Не постоји ниједна особа са ИД-ом: %(id_str)s
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Нема пронађених резултата за: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Не постоји такав ентитет за овлашћења."
@@ -1075,8 +1080,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"НАПОМЕНА: Сви унети подаци су јавно доступни и сви могу да их користе. "
+"Google не прегледа ове податке нити проверава њихову тачност."
 
 msgid "Person Finder"
 msgstr "Тражење особа"
@@ -1091,7 +1096,7 @@ msgid "Photo"
 msgstr "Слика"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Слика (спољни сајт; може да важи стандардна тарифа за повезивање)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1105,8 +1110,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Потврдите да сте у контакту са особом после несреће или промените "
+"вредност у пољу „Статус ове особе“."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1230,7 +1235,7 @@ msgid "Sign out"
 msgstr "Одјави ме"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Прескочи"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Неко је добио информације да је ова особа жива"
@@ -1245,7 +1250,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Неко тражи информације о овој особи"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Извор уноса"
 
 msgid "Source of this record"
 msgstr "Порекло овог записа"
@@ -1255,13 +1260,13 @@ msgstr "Статус"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Статус за %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Статус особе"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Статус ове особе:"
 
 msgid "Street name"
 msgstr "Назив улице"
@@ -1270,7 +1275,7 @@ msgid "Street name only, no number"
 msgstr "Само назив улице, без броја"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Пошаљи"
 
 msgid "Subscribe"
 msgstr "Пријави ме"
@@ -1310,7 +1315,7 @@ msgstr "Аутор је онемогућио ажурирања статуса �
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Додали смо напомену за особу %(full_name)s"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Достављена слика је превелика. Отпремите мању."
@@ -1323,7 +1328,7 @@ msgstr "Рок важења записа не може да се продужи.
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Регистровали смо унос за особу %(full_name)s"
 
 msgid "The record has been deleted."
 msgstr "Запис је избрисан."
@@ -1474,7 +1479,7 @@ msgid "Upload your CSV file below"
 msgstr "Отпремите CSV датотеку у наставку"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Користи актуелну локацију"
 
 msgid "View the record"
 msgstr "Прикажи запис"
@@ -1556,8 +1561,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Можете да се пријавите за добијање новости о особи %(full_name)s тако што"
+" ћете овде унети имејл адресу"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1586,7 +1591,7 @@ msgid "Your email"
 msgstr "Имејл адреса"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Име и презиме (обавезно)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1651,7 +1656,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Тражење особа] Пријављени сте за ажурирања статуса особе %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "спољни сајт; може да важи стандардна тарифа за повезивање"
 
 msgid "female"
 msgstr "женски"

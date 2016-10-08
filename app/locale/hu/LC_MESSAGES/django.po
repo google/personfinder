@@ -151,7 +151,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s bejegyzés kiválasztva\n"
 "              "
 
 #, python-format
@@ -162,6 +162,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -171,8 +176,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            A(z) %(search_engine_name)s rendszerében van a keresésnek "
+"megfelelő találat.\n"
 "          "
 
 #, python-format
@@ -182,7 +187,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          A következőhöz hasonló bejegyzések: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -192,7 +197,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Találatok a következőre: %(query)s\n"
 "        "
 
 #, python-format
@@ -202,7 +207,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Nincs találat a következőre: %(query)s\n"
 "      "
 
 #, python-format
@@ -362,7 +367,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  A megadott e-mail-cím nem érvényes.\n"
 "  "
 
 msgid ""
@@ -402,7 +407,7 @@ msgstr ""
 "Egy felhasználó törölte „%(full_name)s” bejegyzését a %(site_url)s "
 "webhelyen.\n"
 "\n"
-"Azért értesítjük a törlésről, mert a rendszer ezt az e-mail címet "
+"Azért értesítjük a törlésről, mert a rendszer ezt az e-mail-címet "
 "rögzítette a bejegyzéshez fűzött egyik megjegyzés szerzőjeként.\n"
 
 #, python-format
@@ -579,7 +584,7 @@ msgstr "A Google Személykeresőről"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Kor"
@@ -589,9 +594,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"A Személykeresőbe bevitt összes adat nyilvános, és bárki által "
+"felhasználható. A Google nem ellenőrzi vagy hitelesíti ezen adatok "
+"pontosságát (google.org/personfinder/global/tos)"
 
 msgid "Alternate family names"
 msgstr "Alternatív családnevek"
@@ -666,8 +671,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Kattintson ide az általános szerződési feltételek megtekintéséhez (külső "
+"webhely; a szolgáltató normál kapcsolódási díjat számíthat fel)"
 
 msgid "Click here to view results."
 msgstr "Kattintson ide a találatok megtekintéséhez."
@@ -773,20 +778,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Lejárati dátum meghosszabbítása %(extension_days)s nappal\n"
 "                "
 
 msgid "Family name"
 msgstr "Családnév"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Családi név (kötelező)"
 
 msgid "Feed of updates about this person"
 msgstr "A személy frissítéseinek hírcsatornája"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Visszajelzés"
 
 msgid "Follow this link to create a new record"
 msgstr "Nyissa meg ezt a linket új bejegyzés létrehozásához"
@@ -800,7 +805,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "A következő helyről: %(home_location)s"
 
 msgid "Full name"
 msgstr "Teljes név"
@@ -809,7 +814,7 @@ msgid "Given name"
 msgstr "Utónév"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Utónév (kötelező)"
 
 msgid "Google Person Finder"
 msgstr "Google Személykereső"
@@ -845,7 +850,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Hogyan léphetnek kapcsolatba Önnel azok, akik érdeklődnek a személy iránt?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Vannak információim erről a személyről"
 
 msgid "I am seeking information"
 msgstr "Információt keresek"
@@ -970,7 +975,7 @@ msgstr "Az eltűnt személy jelenlegi telefonszáma"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Továbbiak: %(url)s"
 
 #, python-format
 msgid ""
@@ -1014,7 +1019,7 @@ msgid "No notes have been posted"
 msgstr "Nem lett közzétéve megjegyzés"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Nincs megadva személyi azonosító."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1022,7 +1027,7 @@ msgstr "Nem létezik személy a következő azonosítóval: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Nincs találat a következőre: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Nincs ilyen engedélyező entitás."
@@ -1091,8 +1096,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"FIGYELEM: Minden bevitt adat nyilvános, és bárki által felhasználható. A "
+"Google nem ellenőrzi vagy hitelesíti ezen adatok pontosságát."
 
 msgid "Person Finder"
 msgstr "Személykereső"
@@ -1107,7 +1112,9 @@ msgid "Photo"
 msgstr "Fénykép"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Fotó (külső webhely; a szolgáltató normál kapcsolódási díjat számíthat "
+"fel)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1123,8 +1130,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a "
+"katasztrófát követően, vagy módosítsa „A személy állapota” mezőt."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1154,7 +1161,7 @@ msgid "Please fill in your email address."
 msgstr "Kérjük, adja meg az e-mail címét."
 
 msgid "Please provide an valid email address."
-msgstr "Kérjük, érvényes e-mail címet adjon meg."
+msgstr "Kérjük, érvényes e-mail-címet adjon meg."
 
 msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
@@ -1252,7 +1259,7 @@ msgid "Sign out"
 msgstr "Kilépés"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Kihagyás"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Valakinek információja van róla, hogy ez a személy életben van"
@@ -1267,7 +1274,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Valaki információ után tudakozódik erről a személyről"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "A bejegyzés forrása"
 
 msgid "Source of this record"
 msgstr "A bejegyzés forrása"
@@ -1277,13 +1284,13 @@ msgstr "Állapot"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s állapota "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "A személy állapota"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "A személy állapota:"
 
 msgid "Street name"
 msgstr "Utca neve"
@@ -1292,7 +1299,7 @@ msgid "Street name only, no number"
 msgstr "Csak az utca neve, a házszám nem"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Küldés"
 
 msgid "Subscribe"
 msgstr "Feliratkozás"
@@ -1336,7 +1343,7 @@ msgstr "A szerző letiltotta az állapotfrissítéseket ezen a bejegyzésen."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "A következő személyhez tartozó jegyzet hozzáadva: %(full_name)s"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
@@ -1349,7 +1356,7 @@ msgstr "A bejegyzést nem lehet meghosszabbítani."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "A következő személyhez tartozó rekord regisztrálva: %(full_name)s"
 
 msgid "The record has been deleted."
 msgstr "A bejegyzés törölve."
@@ -1503,7 +1510,7 @@ msgid "Upload your CSV file below"
 msgstr "Töltse fel alább a CSV-fájlt"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Jelenlegi hely használata"
 
 msgid "View the record"
 msgstr "Bejegyzés megtekintése"
@@ -1583,8 +1590,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Feliratkozhat a következő személlyel kapcsolatos új információk "
+"fogadására: %(full_name)s. Ehhez itt adja meg e-mail-címét"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1613,7 +1620,7 @@ msgid "Your email"
 msgstr "Az Ön e-mail címe"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Az Ön neve (kötelező)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1687,7 +1694,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Személykereső] Feliratkozott %(full_name)s állapotfrissítéseire"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "külső webhely; a szolgáltató normál kapcsolódási díjat számíthat fel"
 
 msgid "female"
 msgstr "nő"

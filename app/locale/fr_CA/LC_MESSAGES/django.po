@@ -151,7 +151,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s avis de recherche sélectionnés\n"
 "              "
 
 #, python-format
@@ -162,6 +162,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -171,8 +176,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            Un ou plusieurs résultats de recherche correspondent à cette "
+"requête dans %(search_engine_name)s.\n"
 "          "
 
 #, python-format
@@ -182,7 +187,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Avis de recherche semblables à %(full_name)s\n"
 "        "
 
 #, python-format
@@ -192,7 +197,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Résultats de recherche pour %(query)s\n"
 "        "
 
 #, python-format
@@ -202,7 +207,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Aucun résultat pour : %(query)s\n"
 "      "
 
 #, python-format
@@ -364,7 +369,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  L'adresse de courriel que vous avez entrée n'est pas valide.\n"
 "  "
 
 msgid ""
@@ -585,7 +590,7 @@ msgstr "À propos du service Recherche de personnes de Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Âge"
@@ -595,8 +600,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Toutes les données entrées dans l'outil Recherche de personnes sont "
+"accessibles au public et utilisables par tous. Google ne révise pas ces "
+"données et ne vérifie pas leur exactitude "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -671,8 +677,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Cliquez ici pour consulter les modalités (site externe : des frais de "
+"connexion standards peuvent s'appliquer)"
 
 msgid "Click here to view results."
 msgstr "Cliquez ici pour voir les résultats."
@@ -782,20 +788,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Repousser la date d'expiration de %(extension_days)s jours\n"
 "                "
 
 msgid "Family name"
 msgstr "Nom de famille"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Nom de famille (obligatoire)"
 
 msgid "Feed of updates about this person"
 msgstr "Flux des mises à jour concernant cette personne"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Commentaires"
 
 msgid "Follow this link to create a new record"
 msgstr "Cliquez sur ce lien pour créer un avis de recherche."
@@ -809,7 +815,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "De : %(home_location)s"
 
 msgid "Full name"
 msgstr "Nom et prénom"
@@ -818,7 +824,7 @@ msgid "Given name"
 msgstr "Prénom"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Prénom (obligatoire)"
 
 msgid "Google Person Finder"
 msgstr "Service Recherche de personnes de Google"
@@ -856,7 +862,7 @@ msgstr ""
 "communiquer avec vous?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "J'ai des renseignements concernant cette personne"
 
 msgid "I am seeking information"
 msgstr "Je cherche de l'information"
@@ -985,7 +991,7 @@ msgstr "Numéro de téléphone actuel de la personne portée disparue"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Rendez-vous à l'adresse %(url)s pour en savoir plus"
 
 #, python-format
 msgid ""
@@ -1035,7 +1041,7 @@ msgid "No notes have been posted"
 msgstr "Aucun commentaire n'a été publié"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Aucun identifiant de personne n'a été précisé."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1043,7 +1049,7 @@ msgstr "Personne ne correspond à l'identifiant %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Aucun résultat pour : %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Aucune entité d'autorisation de ce type."
@@ -1112,8 +1118,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"REMARQUE IMPORTANTE : Toutes les données entrées sont accessibles au "
+"public et utilisables par tous. Google ne révise pas ces données et ne "
+"vérifie pas leur exactitude."
 
 msgid "Person Finder"
 msgstr "Recherche de personnes"
@@ -1128,7 +1135,9 @@ msgid "Photo"
 msgstr "Photo"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Photo (site externe : des frais de connexion standards peuvent "
+"s'appliquer)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1144,8 +1153,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Indiquez si vous avez été en contact avec la personne après la "
+"catastrophe ou modifiez le champ « État de cette personne »."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1227,7 +1236,7 @@ msgstr ""
 "« %(query)s »"
 
 msgid "Remove"
-msgstr "Retirer"
+msgstr "Supprimer"
 
 msgid "Report spam"
 msgstr "Signaler du pourriel"
@@ -1281,7 +1290,7 @@ msgid "Sign out"
 msgstr "Déconnexion"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Ignorer"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Quelqu'un a reçu de l'information comme quoi cette personne est vivante"
@@ -1296,7 +1305,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Quelqu'un cherche de l'information concernant cette personne"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Source de l'avis de recherche"
 
 msgid "Source of this record"
 msgstr "Source de l'information"
@@ -1306,13 +1315,13 @@ msgstr "État"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "État de %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "État de la personne"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "État de cette personne :"
 
 msgid "Street name"
 msgstr "Nom de la rue"
@@ -1321,7 +1330,7 @@ msgid "Street name only, no number"
 msgstr "Uniquement le nom de la rue, sans numéro"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Envoyer"
 
 msgid "Subscribe"
 msgstr "S'abonner"
@@ -1365,7 +1374,7 @@ msgstr "L'auteur a désactivé les mises à jour d'état pour cet avis de recher
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "La note pour %(full_name)s a été ajoutée"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "L'image est trop grande. Veuillez en téléverser une plus petite."
@@ -1378,7 +1387,7 @@ msgstr "Impossible de repousser la date d'expiration de l'avis de recherche."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "La fiche pour %(full_name)s a été enregistrée"
 
 msgid "The record has been deleted."
 msgstr "L'avis de recherche a été supprimé."
@@ -1534,7 +1543,7 @@ msgid "Upload your CSV file below"
 msgstr "Téléversez votre fichier CSV ci-dessous"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Utiliser ma position actuelle"
 
 msgid "View the record"
 msgstr "Afficher l'avis de recherche"
@@ -1620,8 +1629,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Vous pouvez vous abonner aux mises à jour concernant %(full_name)s en "
+"entrant votre adresse de courriel ici"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1652,7 +1661,7 @@ msgid "Your email"
 msgstr "Votre courriel"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Votre nom (obligatoire)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1740,7 +1749,7 @@ msgstr ""
 "jour d'état concernant « %(full_name)s »"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "site externe; des frais de connexion standard peuvent s'appliquer"
 
 msgid "female"
 msgstr "femme"

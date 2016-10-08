@@ -155,7 +155,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                မှတ်တမ်း %(dup_count)s ခုကို ရွေးချယ်ထားသည်\n"
 "              "
 
 #, python-format
@@ -166,6 +166,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -175,8 +180,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s တွင် ဤရှာဖွေမှုနှင့် ကိုက်ညီသည့် "
+"ရလဒ်(များ) ရှိပါသည်။\n"
 "          "
 
 #, python-format
@@ -186,7 +191,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          မှတ်တမ်းများသည် ဤအကောင့်နှင့် တူညီပါသည် − %(full_name)s\n"
 "        "
 
 #, python-format
@@ -196,7 +201,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          ဤရှာဖွေမှုအတွက် ရလဒ်များ − %(query)s\n"
 "        "
 
 #, python-format
@@ -206,7 +211,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        ဤရှာဖွေမှုအတွက် ရလဒ်များမရှိပါ  − %(query)s\n"
 "      "
 
 #, python-format
@@ -371,7 +376,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  သင်ထည့်သွင်းခဲ့သည့် အီးမေးလ်လိပ်စာသည် မမှန်ကန်ပါ။\n"
 "  "
 
 msgid ""
@@ -589,7 +594,7 @@ msgstr "Google Person Finder အကြောင်း။"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "အသက်"
@@ -599,9 +604,10 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Person Finder တွင် ထည့်သွင်းခဲ့သည့် ဒေတာများအားလုံးကို "
+"လူတိုင်းသုံးစွဲနိုင်ပါသည်။ Google သည် ၎င်းဒေတာ "
+"google.org/personfinder/global/tos ကို ပြန်လည်သုံးသပ်ခြင်း သို့မဟုတ် "
+"မှန်ကန်မှုရှိမရှိ အတည်ပြုခြင်း မရှိပါ"
 
 msgid "Alternate family names"
 msgstr "အခြားသင့်တွင်ရှိသော  family names ခေါ်မိသားစုနာမည်။"
@@ -678,8 +684,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"ဝန်ဆောင်မှု စည်းမျဉ်းများကို ကြည့်ရန် ဤနေရာတွင် နှိပ်ပါ (ပြင်ပဆိုက်၊ "
+"ပုံမှန်ချိတ်ဆက်မှုနှုန်းများ ကျခံရနိုင်ပါသည်)"
 
 msgid "Click here to view results."
 msgstr "results ေခၚ ရလဒ္မ်ားကို ႀကည့္ရန္ ဒီမွာႏွိပ္ပါ။"
@@ -793,20 +799,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"ကုန်ဆုံးရက် %(extension_days)s ရက် တိုးချဲ့ပါ\n"
 "                "
 
 msgid "Family name"
 msgstr "Family name ခေါ်မိသားစုနာမည်။"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "မိသားစုအမည် (လိုအပ်ပါသည်)"
 
 msgid "Feed of updates about this person"
 msgstr "ဒီလူ၏အေႀကာင္း အပ္ဒိတ္ updates မ်ားကို အျမဲမျပတ္ ရရွိျခင္း။"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "အကြံပြုချက်"
 
 msgid "Follow this link to create a new record"
 msgstr ""
@@ -822,7 +828,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "မှ − %(home_location)s"
 
 msgid "Full name"
 msgstr "နာမည္ အျပည့္အစံု။"
@@ -831,7 +837,7 @@ msgid "Given name"
 msgstr "ပေးထားသော အမည်။"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "ရှေ့အမည် (လိုအပ်ပါသည်)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder ခေါ် ဂူဂယ်၏ လူရှာဖွေပေးသည့် ၀န်ဆောင်မှု။"
@@ -872,7 +878,7 @@ msgstr ""
 "သြယ္ႏိုင္သလဲ။"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ဤပုဂ္ဂိုလ်အကြောင်း အချက်အလက်များ ကျွန်ုပ်တွင် ရှိပါသည်"
 
 msgid "I am seeking information"
 msgstr "ကၽြန္ေတာ္(ကၽြန္မ) သတင္းအခ်က္အလက္မ်ားကို ရွာေဖြေနပါတယ္။"
@@ -1008,7 +1014,7 @@ msgstr "ေပ်ာက္ဆံုးေနသူ၏ လက္ရွိဖု�
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "နောက်ထပ် − %(url)s"
 
 #, python-format
 msgid ""
@@ -1056,7 +1062,7 @@ msgid "No notes have been posted"
 msgstr "မည်သည့် မှတ်စုမှ တင်မထားပါ။"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "ပုဂ္ဂိုလ်အိုင်ဒီများ သတ်မှတ်မထားပါ။"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1064,7 +1070,7 @@ msgstr "%(id_str)s. အိုင်ဒီနှင့် ဘယ်သူ့ က�
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "ဤရှာဖွေမှုအတွက် ရလဒ်များ မရှိပါ − %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "ထုိကဲ့သုိ႔သီးျခား လုပ္ပုိင္ခြင့္မရွိပါ။"
@@ -1134,8 +1140,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"မှတ်ချက် − ထည့်သွင်းခဲ့သည့် ဒေတာများအားလုံးကို လူတိုင်းသုံးစွဲနိုင်ပါသည်။"
+" Google သည် ၎င်းဒေတာကို ပြန်လည်သုံးသပ်ခြင်း သို့မဟုတ် မှန်ကန်မှုရှိမရှိ "
+"အတည်ပြုခြင်း မရှိပါ။"
 
 msgid "Person Finder"
 msgstr "Person Finder ခေါ်လူရှာဖွေပေးသည့် ၀န်ဆောင်မှု။"
@@ -1150,7 +1157,7 @@ msgid "Photo"
 msgstr "ဓာတ္ပံု။"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "ဓာတ်ပုံ (ပြင်ပဆိုက်၊ ပုံမှန်ချိတ်ဆက်မှုနှုန်းများ ကျခံရနိုင်ပါသည်)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1166,8 +1173,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"ဘေးအန္တရာယ်ကျရောက်ပြီးနောက် ထိုပုဂ္ဂိုလ်နှင့် အဆက်အသွယ်ရှိမရှိ စစ်ဆေးပါ "
+"သို့မဟုတ် \"ဤပုဂ္ဂိုလ်၏ အခြေအနေ\" ကို ပြောင်းပါ။"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1306,7 +1313,7 @@ msgid "Sign out"
 msgstr "ဆိုင်းအောက် Sign out"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "ကျော်ရန်"
 
 msgid "Someone has received information that this person is alive"
 msgstr ""
@@ -1327,7 +1334,7 @@ msgstr ""
 "ရွာေဖြေနတယ္။"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "မှတ်တမ်းအရင်းအမြစ်"
 
 msgid "Source of this record"
 msgstr "ဤမှတ်တမ်း၏ Source ခေါ် မူရင်းနေရာ။"
@@ -1337,13 +1344,13 @@ msgstr "စေတးတပ္ ေခၚ လက္ရွိအေျခအေန 
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s ၏ အခြေအနေ "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "ပုဂ္ဂိုလ်၏ အခြေအနေ"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "ဤပုဂ္ဂိုလ်၏ အခြေအနေ −"
 
 msgid "Street name"
 msgstr "လမ်းနာမည်။"
@@ -1352,7 +1359,7 @@ msgid "Street name only, no number"
 msgstr "လမ်းနာမည်သာ၊ လမ်းနံပါတ်မပါ။"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "ပေးပို့ရန်"
 
 msgid "Subscribe"
 msgstr ""
@@ -1404,7 +1411,7 @@ msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s အတွက် မှတ်စုကို ထည့်သွင်းပြီးပါပြီ"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1419,7 +1426,7 @@ msgstr "ဤမှတ်တမ်းအား ထပ်မံသက်တမ်�
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s အတွက် မှတ်တမ်းကို စာရင်းသွင်းပြီးပါပြီ"
 
 msgid "The record has been deleted."
 msgstr "မွတ္တမ္းအား ဖ်က္ထားလိုက္ၿပီ။"
@@ -1584,7 +1591,7 @@ msgid "Upload your CSV file below"
 msgstr "သင်C့SV ဖိုင်ကိုအောက်တွင်Uploadလုပ်ပါ။"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "လက်ရှိတည်နေရာကို အသုံးပြုပါ"
 
 msgid "View the record"
 msgstr "မှတ်တမ်းကို ကြည့်ပါ။"
@@ -1671,8 +1678,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"ဤနေရာတွင် သင့်အီးမေးလ်လိပ်စာကို ထည့်သွင်းခြင်းဖြင့် %(full_name)s "
+"အကြောင်း အပ်ဒိတ်များအားရယူရန် စာရင်းပေးသွင်းနိုင်သည်"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1708,7 +1715,7 @@ msgid "Your email"
 msgstr "သင့်အီးမေးလ်"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "သင့်အမည် (လိုအပ်ပါသည်)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1791,7 +1798,7 @@ msgstr ""
 "လုပ္ထားသည္။"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "ပြင်ပဆိုက်၊ ပုံမှန်ချိတ်ဆက်မှုနှုန်းများ ကျခံရနိုင်ပါသည်"
 
 msgid "female"
 msgstr "အမ်ိဳးသမီး"

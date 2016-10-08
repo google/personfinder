@@ -150,7 +150,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s жазуу тандалды\n"
 "              "
 
 #, python-format
@@ -161,6 +161,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -170,8 +175,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            Бул талапка туура келген %(search_engine_name)s издөө "
+"жыйынтыгы бар\n"
 "          "
 
 #, python-format
@@ -181,7 +186,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Буга окшош жазуулар: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -191,7 +196,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          %(query)s үчүн издөө натыйжалары\n"
 "        "
 
 #, python-format
@@ -201,7 +206,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        %(query)s боюнча эч нерсе табылган жок\n"
 "      "
 
 #, python-format
@@ -362,7 +367,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Киргизилген электрондук почта дареги жараксыз.\n"
 "  "
 
 msgid ""
@@ -571,7 +576,7 @@ msgstr "Google Киши Издегич тууралуу"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Жашы"
@@ -581,9 +586,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Киши Тапкычка киргизилген бардык дайындар жалпыга ачык жана баарына "
+"жеткиликтүү. Google бул маалыматты кароодон өткөзбөйт жана тактыгын "
+"текшербейт. Толугураак: google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Башка фамилиялары"
@@ -655,8 +660,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Тейлөө шарттарын көрүү үчүн бул жерди чыкылдатыңыз (сырткы сайт; кадимки "
+"байланыш үчүн акы алынышы мүмкүн)"
 
 msgid "Click here to view results."
 msgstr "Натыйжаларды көрүш үчүн бул жерди басыңыз."
@@ -760,20 +765,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Жарамдуулук мөөнөтүн %(extension_days)s күнгө узартуу\n"
 "                "
 
 msgid "Family name"
 msgstr "Фамилиясы"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Фамилиясы (милдеттүү)"
 
 msgid "Feed of updates about this person"
 msgstr "Бул киши үчүн жаңыртуулар түрмөгү"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Жооп пикир"
 
 msgid "Follow this link to create a new record"
 msgstr "Жаңы жазуу жаратыш үчүн бул шилтемени ээрчиңиз"
@@ -785,7 +790,7 @@ msgstr "Мобилдик эмес телефондор үчүн NTT камсыз
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Бул жерден: %(home_location)s"
 
 msgid "Full name"
 msgstr "Толук аты-жөнү"
@@ -794,7 +799,7 @@ msgid "Given name"
 msgstr "Аты"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Аты (милдеттүү)"
 
 msgid "Google Person Finder"
 msgstr "Google Киши Тапкыч"
@@ -830,7 +835,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Бул кишиге кызыккан башка кишилер сиз менен кантип байланыша алышат?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Менде бул киши жөнүндө маалымат бар"
 
 msgid "I am seeking information"
 msgstr "Мен маалымат издеймин"
@@ -953,7 +958,7 @@ msgstr "Жоголгон кишинин учурдагы телефон ному
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Кеңири: %(url)s"
 
 #, python-format
 msgid ""
@@ -997,7 +1002,7 @@ msgid "No notes have been posted"
 msgstr "Эч бир билдирүү жарыялана элек"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Эч бир адамдын ID'си көрсөтүлгөн жок."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1005,7 +1010,7 @@ msgstr "%(id_str)s ID'си менен эч ким жок."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "%(query)s боюнча эч нерсе табылган жок"
 
 msgid "No such Authorization entity."
 msgstr "Андай аутентификация бирдиги табылган жок."
@@ -1074,8 +1079,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ЭСКЕ АЛЫҢЫЗ: Киргизилген бардык дайындар жалпыга ачык жана баарына "
+"жеткиликтүү. Google бул маалыматты кароодон өткөзбөйт жана тактыгын "
+"текшербейт."
 
 msgid "Person Finder"
 msgstr "Киши Тапкыч"
@@ -1090,7 +1096,7 @@ msgid "Photo"
 msgstr "Сүрөтү"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Сүрөт (сырткы сайт; кадимки байланыш үчүн акы алынышы мүмкүн)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1104,8 +1110,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Апааттан кийин сиз бул киши менен байланышканыңызды белгилеңиз, же \"Бул "
+"кишинин статусу\" талаасын өзгөртүңүз."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1229,7 +1235,7 @@ msgid "Sign out"
 msgstr "Чыгуу"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Өткөрүп жиберүү"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Кимдир бирөө бул киши тирүү деген маалымат алган"
@@ -1244,7 +1250,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Кимдир бирөө бул киши тууралуу маалымат издеп жүрөт"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Жазуу булагы"
 
 msgid "Source of this record"
 msgstr "Бул жазуунун булагы"
@@ -1254,13 +1260,13 @@ msgstr "Статусу"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s абалы "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Кишинин абалы"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Бул кишинин абалы:"
 
 msgid "Street name"
 msgstr "Көчөнүн аты"
@@ -1269,7 +1275,7 @@ msgid "Street name only, no number"
 msgstr "Көчөнүн аты гана, номурсуз"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Тапшыруу"
 
 msgid "Subscribe"
 msgstr "Жазылуу"
@@ -1313,7 +1319,7 @@ msgstr "Жазуунун автору статус жаңыртууларын т
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s үчүн кыска жазуу кошулду"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Берилген сүрөт өтө чоң.  Кичирээгин жүктөңүз."
@@ -1326,7 +1332,7 @@ msgstr "Жазууну кеңейтүү мүмкүн эмес."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s үчүн жаздырылган нерсе катталды"
 
 msgid "The record has been deleted."
 msgstr "Жазуу өчүрүлдү"
@@ -1473,7 +1479,7 @@ msgid "Upload your CSV file below"
 msgstr "Өзүңүздүн CSV файлыңызды төмөндө жүктөңүз"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Учурдагы жайгашкан жерди колдонуу"
 
 msgid "View the record"
 msgstr "Жазууну көрүү"
@@ -1553,8 +1559,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Электрондук почта дарегиңизди бул жерге киргизип, %(full_name)s тууралуу "
+"жаңылыктарга жазыла аласыз"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1583,7 +1589,7 @@ msgid "Your email"
 msgstr "Сиздин эмейлиңиз"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Аты-жөнүңүз (милдеттүү)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1652,7 +1658,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Киши Издегич] %(full_name)s статус жаңыртууларына жазылгансыз"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "сырткы сайт; кадимки байланыш үчүн акы алынышы мүмкүн"
 
 msgid "female"
 msgstr "аял"

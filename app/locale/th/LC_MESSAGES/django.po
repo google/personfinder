@@ -148,7 +148,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                เลือกบันทึกแล้ว %(dup_count)s รายการ\n"
 "              "
 
 #, python-format
@@ -159,6 +159,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -168,8 +173,7 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s มีผลการค้นหาที่ตรงกับคำค้นหานี้\n"
 "          "
 
 #, python-format
@@ -179,7 +183,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          บันทึกที่คล้ายกับ %(full_name)s\n"
 "        "
 
 #, python-format
@@ -189,7 +193,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          ผลการค้นหาสำหรับ %(query)s\n"
 "        "
 
 #, python-format
@@ -199,7 +203,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        ไม่พบผลการค้นหาสำหรับ %(query)s\n"
 "      "
 
 #, python-format
@@ -358,7 +362,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  ที่อยู่อีเมลที่คุณป้อนไม่ถูกต้อง\n"
 "  "
 
 msgid ""
@@ -571,7 +575,7 @@ msgstr "เกี่ยวกับ Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "อายุ"
@@ -581,8 +585,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"ข้อมูลทั้งหมดที่ป้อนใน Person Finder "
+"จะปรากฏต่อสาธารณะและทุกคนสามารถใช้งานได้ Google "
+"ไม่ได้ตรวจสอบหรือยืนยันความถูกต้องของข้อมูลนี้ "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -655,8 +660,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"คลิกที่นี่เพื่อดูข้อกำหนดในการให้บริการ "
+"(อาจมีค่าบริการเชื่อมต่อตามปกติสำหรับเว็บไซต์ภายนอก)"
 
 msgid "Click here to view results."
 msgstr "คลิกที่นี่เพื่อดูผลลัพธ์"
@@ -758,20 +763,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"ขยายวันหมดอายุเป็นเวลา %(extension_days)s วัน\n"
 "                "
 
 msgid "Family name"
 msgstr "นามสกุล"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "นามสกุล (จำเป็น)"
 
 msgid "Feed of updates about this person"
 msgstr "ฟีดข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "ความคิดเห็น"
 
 msgid "Follow this link to create a new record"
 msgstr "คลิกลิงก์นี้เพื่อสร้างบันทึกใหม่"
@@ -785,7 +790,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "จาก %(home_location)s"
 
 msgid "Full name"
 msgstr "ชื่อและนามสกุล"
@@ -794,7 +799,7 @@ msgid "Given name"
 msgstr "ชื่อ"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "ชื่อ (จำเป็น)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -830,7 +835,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "คนอื่นที่สนใจบุคคลนี้จะติดต่อคุณได้อย่างไร"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ฉันมีข้อมูลเกี่ยวกับบุคคลนี้"
 
 msgid "I am seeking information"
 msgstr "ฉันกำลังหาข้อมูล"
@@ -949,7 +954,7 @@ msgstr "หมายเลขโทรศัพท์ปัจจุบันข
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "ดูข้อมูลเพิ่มเติมที่ %(url)s"
 
 #, python-format
 msgid ""
@@ -993,7 +998,7 @@ msgid "No notes have been posted"
 msgstr "ไม่มีข้อความที่ถูกโพสต์"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "ไม่ได้ระบุหมายเลขประจำตัวไว้"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1001,7 +1006,7 @@ msgstr "ไม่มีบุคคลที่มี ID: %(id_str)s"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "ไม่พบผลการค้นหา %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "ไม่มีบุคคลที่ได้รับอนุญาตดังกล่าว"
@@ -1068,8 +1073,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"โปรดทราบ ข้อมูลทั้งหมดที่ป้อนจะปรากฏต่อสาธารณะและทุกคนสามารถใช้งานได้ "
+"Google ไม่ได้ตรวจสอบหรือยืนยันความถูกต้องของข้อมูลนี้"
 
 msgid "Person Finder"
 msgstr "ค้นหาบุคคล"
@@ -1084,7 +1089,7 @@ msgid "Photo"
 msgstr "ภาพ"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "รูปภาพ (อาจมีค่าบริการเชื่อมต่อตามปกติสำหรับเว็บไซต์ภายนอก)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1098,8 +1103,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"โปรดตรวจสอบว่าคุณได้ติดต่อกับบุคคลดังกล่าวหลังเกิดภัยพิบัติ "
+"หรือเปลี่ยนช่อง \"สถานะของบุคคลนี้\" แล้ว"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1223,7 +1228,7 @@ msgid "Sign out"
 msgstr "ออกจากระบบ"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "ข้าม"
 
 msgid "Someone has received information that this person is alive"
 msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
@@ -1238,7 +1243,7 @@ msgid "Someone is seeking information about this person"
 msgstr "มีผู้กำลังค้นหาข้อมูลเกี่ยวกับบุคคลนี้"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "แหล่งที่มาของบันทึก"
 
 msgid "Source of this record"
 msgstr "แหล่งที่มาของบันทึกนี้"
@@ -1248,13 +1253,13 @@ msgstr "สถานะ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "สถานะของ %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "สถานะของบุคคล"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "สถานะของบุคคลนี้:"
 
 msgid "Street name"
 msgstr "ชื่อถนน"
@@ -1263,7 +1268,7 @@ msgid "Street name only, no number"
 msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "ส่ง"
 
 msgid "Subscribe"
 msgstr "สมัครรับข้อมูล"
@@ -1303,7 +1308,7 @@ msgstr "ผู้ให้ข้อมูลปิดใช้งานการ
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "เพิ่มโน้ตสำหรับ %(full_name)s แล้ว"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
@@ -1316,7 +1321,7 @@ msgstr "ไม่สามารถขยายเวลาบันทึกไ
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "ลงทะเบียนบันทึกสำหรับ %(full_name)s แล้ว"
 
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
@@ -1461,7 +1466,7 @@ msgid "Upload your CSV file below"
 msgstr "อัปโหลดไฟล์ CSV ของคุณด้านล่าง"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "ใช้ตำแหน่งปัจจุบัน"
 
 msgid "View the record"
 msgstr "ดูบันทึกข้อมูล"
@@ -1541,8 +1546,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"คุณสามารถสมัครรับข้อมูลการอัปเดตเกี่ยวกับ %(full_name)s "
+"โดยป้อนที่อยู่อีเมลของคุณที่นี่"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1571,7 +1576,7 @@ msgid "Your email"
 msgstr "อีเมลของคุณ"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "ชื่อของคุณ (จำเป็น)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1637,7 +1642,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] คุณได้สมัครรับข้อมูลการอัปเดตสถานะสำหรับ %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "อาจมีค่าบริการเชื่อมต่อตามปกติสำหรับเว็บไซต์ภายนอก"
 
 msgid "female"
 msgstr "หญิง"

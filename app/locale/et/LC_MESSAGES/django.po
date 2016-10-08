@@ -148,7 +148,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s kirjet on valitud\n"
 "              "
 
 #, python-format
@@ -159,6 +159,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -168,8 +173,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            Otsingumootoril %(search_engine_name)s on sellele päringule "
+"vastav(aid) otsingutulemus(i).\n"
 "          "
 
 #, python-format
@@ -179,7 +184,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Kirjed, mis sarnanevad järgmisega: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -189,7 +194,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Otsingutulemused järgmise päringu kohta: %(query)s\n"
 "        "
 
 #, python-format
@@ -199,7 +204,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Järgmisele päringule ei leitud ühtegi tulemust: %(query)s\n"
 "      "
 
 #, python-format
@@ -356,7 +361,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Teie sisestatud e-posti aadress on sobimatu.\n"
 "  "
 
 msgid ""
@@ -566,7 +571,7 @@ msgstr "Teave Google'i isikuotsingu kohta"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Vanus"
@@ -576,8 +581,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Kõik teenuses Inimeste leidja sisestatud andmed on avalikud ja kõikidele "
+"kasutatavad. Google ei vaata üle ega kinnita andmete täpsust\n"
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -652,8 +657,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Teenusetingimuste vaatamiseks klõpsake siin (väline sait; lisanduda võib "
+"tavapärane ühendustasu)"
 
 msgid "Click here to view results."
 msgstr "Tulemuste vaatamiseks klõpsake siin."
@@ -759,20 +764,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Pikendage aegumiskuupäeva %(extension_days)s päeva võrra\n"
 "                "
 
 msgid "Family name"
 msgstr "Perekonnanimi"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Perekonnanimi (kohustuslik)"
 
 msgid "Feed of updates about this person"
 msgstr "Selle inimese uudisvoog"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Tagasiside"
 
 msgid "Follow this link to create a new record"
 msgstr "Kasutage seda linki uue kirje loomiseks"
@@ -784,7 +789,7 @@ msgstr "Tavatelefonide puhul kasutage NTT pakutavat teenust 171."
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Asukohast: %(home_location)s"
 
 msgid "Full name"
 msgstr "Täisnimi"
@@ -793,7 +798,7 @@ msgid "Given name"
 msgstr "Eesnimi"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Eesnimi (kohustuslik)"
 
 msgid "Google Person Finder"
 msgstr "Google'i isikuotsing"
@@ -831,7 +836,7 @@ msgstr ""
 " võtta?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Mul on selle isiku kohta teavet"
 
 msgid "I am seeking information"
 msgstr "Otsin teavet"
@@ -956,7 +961,7 @@ msgstr "Kadunud inimese praegune telefoninumber"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Rohkem: %(url)s"
 
 #, python-format
 msgid ""
@@ -1000,7 +1005,7 @@ msgid "No notes have been posted"
 msgstr "Märkmeid pole postitatud"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ühtegi isiku ID-d ei määratud."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1008,7 +1013,7 @@ msgstr "Pole inimest, kelle ID on %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Järgmisele päringule ei leitud ühtegi tulemust: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ühtegi sellist volitamise üksust pole."
@@ -1075,8 +1080,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"PANGE TÄHELE: kõik sisestatud andmed on avalikud ja kõikidele "
+"kasutatavad. Google ei vaata üle ega kinnita andmete täpsust."
 
 msgid "Person Finder"
 msgstr "Isikuotsing"
@@ -1091,7 +1096,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Foto (väline sait; lisanduda võib tavapärane ühendustasu)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1105,8 +1110,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Kontrollige, kas olete inimesega pärast katastroofi ühenduses olnud, või "
+"muutke välja „Selle isiku olek”."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1230,7 +1235,7 @@ msgid "Sign out"
 msgstr "Logi välja"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Jäta vahele"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Keegi on saanud teavet, et see inimene on elus"
@@ -1245,7 +1250,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Keegi otsib teavet selle inimese kohta"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Kirje allikas"
 
 msgid "Source of this record"
 msgstr "Selle kirje allikas"
@@ -1255,13 +1260,13 @@ msgstr "Olek"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Isiku %(full_name)s olek "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Isiku olek"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Selle isiku olek:"
 
 msgid "Street name"
 msgstr "Tänava nimi"
@@ -1270,7 +1275,7 @@ msgid "Street name only, no number"
 msgstr "Ainult tänava nimi, ilma numbrita"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Esita"
 
 msgid "Subscribe"
 msgstr "Telli"
@@ -1310,7 +1315,7 @@ msgstr "Autor on selle kirje puhul olekuvärskendused keelanud."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Märge isiku %(full_name)s jaoks on lisatud"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pilt on liiga suur. Laadige üles väiksem pilt."
@@ -1323,7 +1328,7 @@ msgstr "Kirjet ei saa pikendada."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Kirje isiku %(full_name)s jaoks on registreeritud"
 
 msgid "The record has been deleted."
 msgstr "See kirje on kustutatud."
@@ -1472,7 +1477,7 @@ msgid "Upload your CSV file below"
 msgstr "Laadige oma CSV-fail üles allpool"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Kasuta praegust asukohta"
 
 msgid "View the record"
 msgstr "Vaadake kirjet"
@@ -1552,8 +1557,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Võite tellida värskendusi isiku %(full_name)s kohta, kui sisestate oma "
+"e-posti aadressi siia"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1580,7 +1585,7 @@ msgid "Your email"
 msgstr "Teie e-post"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Teie nimi (kohustuslik)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1645,7 +1650,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Isikuotsing] Olete tellinud inimese %(full_name)s olekuvärskendused"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "väline sait; lisanduda võib tavapärane ühendustasu"
 
 msgid "female"
 msgstr "naine"

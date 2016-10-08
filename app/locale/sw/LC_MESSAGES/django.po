@@ -148,7 +148,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Rekodi %(dup_count)s zimechaguliwa\n"
 "              "
 
 #, python-format
@@ -159,6 +159,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -168,8 +173,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s ina matokeo ya utafutaji yanayolingana"
+" na hoja hii.\n"
 "          "
 
 #, python-format
@@ -179,7 +184,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Rekodi Sawa na: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -189,7 +194,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Matokeo ya Utafutaji wa: %(query)s\n"
 "        "
 
 #, python-format
@@ -199,7 +204,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Hakuna matokeo yaliyopatikana ya: %(query)s\n"
 "      "
 
 #, python-format
@@ -357,7 +362,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Anwani ya barua pepe uliyoweka si sahihi.\n"
 "  "
 
 msgid ""
@@ -567,7 +572,7 @@ msgstr "Kuhusu Tovuti ya Kutafuta Waliopotea kutoka Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Umri"
@@ -577,9 +582,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Data yote iliyowekwa katika Tovuti ya Kutafuta Waliopotea inapatikana "
+"hadharani na mtu yeyote anaweza kuitumia. Google haikagui wala "
+"kuthibitisha usahihi wa data hii google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Majina mbadala ya familia"
@@ -653,8 +658,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Bofya hapa ili uangalie sheria na masharti (tovuti ya nje; ada ya "
+"muunganisho wa kawaida huenda ikatumika)"
 
 msgid "Click here to view results."
 msgstr "Bofya hapa ili utazame matokeo."
@@ -762,20 +767,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Ongeza tarehe ya kuisha muda kwa siku %(extension_days)s\n"
 "                "
 
 msgid "Family name"
 msgstr "Jina la familia"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Jina la familia (linahitajika)"
 
 msgid "Feed of updates about this person"
 msgstr "Mlisho wa taarifa kuhusu mtu huyu"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Maoni"
 
 msgid "Follow this link to create a new record"
 msgstr "Fuata kiungo hiki ili kuunda rekodi mpya"
@@ -789,7 +794,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Kutoka: %(home_location)s"
 
 msgid "Full name"
 msgstr "Jina kamili"
@@ -798,7 +803,7 @@ msgid "Given name"
 msgstr "Majina mengine"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Jina la kwanza (linahitajika)"
 
 msgid "Google Person Finder"
 msgstr "Tovuti ya Kutafuta Waliopotea kutoka Google"
@@ -834,7 +839,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Jinsi wengine wanaomtafuta mtu huyu wanaweza kuwasiliana nawe"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Nina Maelezo Kuhusu Mtu Huyu"
 
 msgid "I am seeking information"
 msgstr "Natafuta maelezo"
@@ -957,7 +962,7 @@ msgstr "Nambari ya simu ya hivi sasa ya mtu aliyepotea"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Pata maelezo zaidi katika: %(url)s"
 
 #, python-format
 msgid ""
@@ -1003,7 +1008,7 @@ msgid "No notes have been posted"
 msgstr "Hakuna ujumbe ulioachwa"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Haikubainisha kitambulisho cha mtu yeyote."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1011,7 +1016,7 @@ msgstr "Hakuna mtu aliye na kitambulisho: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Hakuna matokeo yaliyopatikana ya: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Hakuna huluki la uidhinishaji kama huo."
@@ -1078,8 +1083,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"TAFADHALI KUMBUKA: Data yote iliyowekwa inapatikana hadharani na mtu "
+"yeyote anaweza kuitumia. Google haikagui wala kuthibitisha usahihi wa "
+"data hii."
 
 msgid "Person Finder"
 msgstr "Tovuti ya Kutafuta Waliopotea"
@@ -1094,7 +1100,7 @@ msgid "Photo"
 msgstr "Picha"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Picha (tovuti ya nje; ada ya muunganisho wa kawaida huenda ikatumika)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1110,8 +1116,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Tafadhali hakikisha kwamba umewasiliana na mtu huyo baada ya mkasa, au "
+"ubadilishe sehemu ya \"Hali ya mtu huyu\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1239,7 +1245,7 @@ msgid "Sign out"
 msgstr "Ondoka kwenye akaunti"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Ruka"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Mtu amepokea habari kwamba mtu huyu yuko hai"
@@ -1254,7 +1260,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Kuna mtu anatafuta habari kuhusu mtu huyu"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Chanzo cha Rekodi"
 
 msgid "Source of this record"
 msgstr "Chanzo cha rekodi hii"
@@ -1264,13 +1270,13 @@ msgstr "Hali"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Hali ya %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Hali ya Mtu"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Hali ya mtu huyu:"
 
 msgid "Street name"
 msgstr "Jina la mtaa"
@@ -1279,7 +1285,7 @@ msgid "Street name only, no number"
 msgstr "Jina la mtaa pekee, hakuna nambari"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Wasilisha"
 
 msgid "Subscribe"
 msgstr "Jisajili"
@@ -1321,7 +1327,7 @@ msgstr "Mwandishi amezima hali ya taarifa kwenye rekodi hii."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Dokezo la %(full_name)s limeongezwa"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Picha iliyotolewa ni kubwa mno. Tafadhali pakia picha ndogo."
@@ -1334,7 +1340,7 @@ msgstr "Rekodi haiwezi kuongezwa."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Rekodi ya %(full_name)s imesajiliwa"
 
 msgid "The record has been deleted."
 msgstr "Rekodi imefutwa."
@@ -1486,7 +1492,7 @@ msgid "Upload your CSV file below"
 msgstr "Pakia faili yako ya CSV hapa chini"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Tumia mahali pa sasa"
 
 msgid "View the record"
 msgstr "Tazama rekodi"
@@ -1566,8 +1572,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Unaweza kujiunga ili upokee taarifa kuhusu %(full_name)s kwa kuweka "
+"anwani yako ya barua pepe hapa"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1596,7 +1602,7 @@ msgid "Your email"
 msgstr "Barua pepe yako"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Jina lako (linahitajika)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1679,7 +1685,7 @@ msgstr ""
 "%(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "tovuti ya nje; ada ya muunganisho wa kawaida huenda ikatumika"
 
 msgid "female"
 msgstr "mwanamke"

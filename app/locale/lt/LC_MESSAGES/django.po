@@ -151,7 +151,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Pasirinkta įrašų: %(dup_count)s\n"
 "              "
 
 #, python-format
@@ -162,6 +162,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -171,8 +176,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            „%(search_engine_name)s“ rado šią užklausą atitinkančių "
+"paieškos rezultatų.\n"
 "          "
 
 #, python-format
@@ -182,7 +187,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Įrašai, panašūs į: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -192,7 +197,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Paieškos rezultatai pagal: %(query)s\n"
 "        "
 
 #, python-format
@@ -202,7 +207,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Nerasta jokių rezultatų pagal: %(query)s\n"
 "      "
 
 #, python-format
@@ -360,7 +365,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Įvedėte netinkamą el. pašto adresą.\n"
 "  "
 
 msgid ""
@@ -577,7 +582,7 @@ msgstr "Apie „Google“ žmonių ieškojimo priemonę"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Amžius"
@@ -587,9 +592,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Asmens ieškiklyje įvesti duomenys pasiekiami viešai ir juos gali naudoti "
+"bet kas. „Google“ neperžiūri ir nepatvirtina šių duomenų tikslumo. Žr. "
+"adresu google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Papildomos pavardės"
@@ -663,8 +668,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Spustelėkite čia, kad galėtumėte peržiūrėti paslaugų teikimo sąlygas "
+"(išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai)"
 
 msgid "Click here to view results."
 msgstr "Spustelėkite čia, jei norite peržiūrėti rezultatus."
@@ -770,20 +775,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Pratęskite galiojimo pabaigos datą %(extension_days)s d.\n"
 "                "
 
 msgid "Family name"
 msgstr "Pavardė"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Pavardė (reikia nurodyti)"
 
 msgid "Feed of updates about this person"
 msgstr "Naujausių žinių apie šį asmenį sklaidos kanalas"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Atsiliepimai"
 
 msgid "Follow this link to create a new record"
 msgstr "Spustelėkite šią nuorodą, jei norite sukurti naują įrašą"
@@ -795,7 +800,7 @@ msgstr "Jei naudojate ne mobilųjį telefoną, naudokite 171 paslaugą, pateikt�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Iš: %(home_location)s"
 
 msgid "Full name"
 msgstr "Vardas ir pavardė"
@@ -804,7 +809,7 @@ msgid "Given name"
 msgstr "Suteiktas vardas"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Vardas (reikia nurodyti)"
 
 msgid "Google Person Finder"
 msgstr "„Google“ žmonių ieškojimo priemonė"
@@ -840,7 +845,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Kaip kiti šio asmens ieškantys žmonės gali susisiekti su jumis"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Turiu informacijos apie šį asmenį"
 
 msgid "I am seeking information"
 msgstr "Ieškau informacijos"
@@ -963,7 +968,7 @@ msgstr "Dingusio asmens dabartinis telefono numeris"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Daugiau adresu %(url)s"
 
 #, python-format
 msgid ""
@@ -1007,7 +1012,7 @@ msgid "No notes have been posted"
 msgstr "Nėra paskelbtų pastabų"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Nenurodytas asmens ID."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1015,7 +1020,7 @@ msgstr "Nėra asmens su šiuo ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Nerasta jokių rezultatų pagal: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Tokio prieigos teisės subjekto nėra."
@@ -1082,8 +1087,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ATMINKITE: visi įvesti duomenys pasiekiami viešai ir juos gali naudoti "
+"bet kas. „Google“ neperžiūri ir nepatvirtina šių duomenų tikslumo."
 
 msgid "Person Finder"
 msgstr "Žmonių ieškojimo priemonė"
@@ -1098,7 +1103,7 @@ msgid "Photo"
 msgstr "Nuotrauka"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Nuotrauka (išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1114,8 +1119,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Nurodykite, ar bendravote su asmeniu po nelaimės, arba pakeiskite lauko "
+"„Šio asmens būsena“ vertę."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1241,7 +1246,7 @@ msgid "Sign out"
 msgstr "Atsijungti"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Praleisti"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Kažkas gavo informacijos, jog šis asmuo yra gyvas"
@@ -1256,7 +1261,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Kažkas ieško informacijos apie šį asmenį"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Įrašo šaltinis"
 
 msgid "Source of this record"
 msgstr "Šio įrašo šaltinis"
@@ -1266,13 +1271,13 @@ msgstr "Būsena"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s būsena "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Asmens būsena"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Šio asmens būsena:"
 
 msgid "Street name"
 msgstr "Gatvės pavadinimas"
@@ -1281,7 +1286,7 @@ msgid "Street name only, no number"
 msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Pateikti"
 
 msgid "Subscribe"
 msgstr "Prenumeruoti"
@@ -1325,7 +1330,7 @@ msgstr "Autorius neleidžia šio įrašo būsenos naujinių."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Pridėta %(full_name)s pastaba"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
@@ -1338,7 +1343,7 @@ msgstr "Įrašo galiojimo laiko negalima pratęsti."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Užregistruotas %(full_name)s rekordas"
 
 msgid "The record has been deleted."
 msgstr "Įrašas ištrintas."
@@ -1492,7 +1497,7 @@ msgid "Upload your CSV file below"
 msgstr "Įkelkite CSV failą toliau"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Naudoti dabartinę vietą"
 
 msgid "View the record"
 msgstr "Žiūrėti įrašą"
@@ -1572,8 +1577,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Galite prenumeruoti naujinius apie %(full_name)s įvedę el. pašto adresą "
+"čia"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1600,7 +1605,7 @@ msgid "Your email"
 msgstr "Jūsų el. paštas"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Jūsų vardas (reikia nurodyti)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1673,7 +1678,7 @@ msgstr ""
 "atnaujinimus"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai"
 
 msgid "female"
 msgstr "moteris"

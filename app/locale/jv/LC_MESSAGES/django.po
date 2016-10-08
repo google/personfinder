@@ -149,7 +149,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s laporan sing dipilih\n"
 "              "
 
 #, python-format
@@ -160,6 +160,11 @@ msgid ""
 "Policy</a>.\n"
 "            "
 msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
 
 #, python-format
 msgid ""
@@ -169,8 +174,8 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s nggawe asil tlusuran sing cocog karo "
+"pitakonan iki.\n"
 "          "
 
 #, python-format
@@ -180,7 +185,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Laporan sing padha karo: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -190,7 +195,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Search Results for: %(query)s\n"
+"          Asil Tlusuran kanggo: %(query)s\n"
 "        "
 
 #, python-format
@@ -200,7 +205,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        No results found for: %(query)s\n"
+"        Ora ana asil kanggo: %(query)s\n"
 "      "
 
 #, python-format
@@ -357,7 +362,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Alamat Email sing sampeyan ketik ora sah.\n"
 "  "
 
 msgid ""
@@ -560,7 +565,7 @@ msgstr "Babagan Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Added a record for: %(person_name)s"
 
 msgid "Age"
 msgstr "Umur"
@@ -570,9 +575,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Kabeh data sing dilebokake ing Panggolek Wong kasedhiya kanggo publik lan"
+" bisa digunakake karo kabeh wong. Google ora moco utawa verifikasi "
+"akurasi data iki google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Jeneng kulawarga alternatif"
@@ -646,8 +651,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Klik nang kene kanggo ndeleng syarat layanan (situs eksternal; ragad "
+"sambungan normal bisa diterapake)"
 
 msgid "Click here to view results."
 msgstr "Klik ing kene kanggo ndeleng asil."
@@ -753,20 +758,20 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Tambah tanggal kedaluwarsa dening %(extension_days)s dina\n"
 "                "
 
 msgid "Family name"
 msgstr "Jeneng kaluwarga"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Jeneng kaluwarga (wajib)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed nganyari babagan wong iki"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Tanggepan"
 
 msgid "Follow this link to create a new record"
 msgstr "Bukak tautan iki kanggo nggawe laporan anyar"
@@ -780,7 +785,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Saka: %(home_location)s"
 
 msgid "Full name"
 msgstr "Jeneng lengkap"
@@ -789,7 +794,7 @@ msgid "Given name"
 msgstr "Jeneng timur"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Jeneng timur (wajib)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -827,7 +832,7 @@ msgstr ""
 "sampeyan"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Aku Duwe Informasi Babagan Wong Iki"
 
 msgid "I am seeking information"
 msgstr "Aku lagi nggoleki informasi"
@@ -946,7 +951,7 @@ msgstr "Nomer telpon duweke wong sing ilang"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Liyane ing: %(url)s"
 
 #, python-format
 msgid ""
@@ -990,7 +995,7 @@ msgid "No notes have been posted"
 msgstr "Ora ana cathetan sing dikirim"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ora onok ID wong sing disebutake."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -998,7 +1003,7 @@ msgstr "Ora ana wong karo ID: %(id_str)s ."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Ora ana asil kanggo: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ora ana entitas wewenang."
@@ -1067,8 +1072,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ELINGA: Kabeh data sing dilebokake kasedhiya kanggo publik lan bisa "
+"digunakake karo kabeh wong.  Google ora moco utawa verifikasi akurasi "
+"data iki."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1083,7 +1089,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Foto (situs eksternal; ragad sambungan normal bisa diterapake)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1099,8 +1105,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Priksa manawa sampeyan wis ngubungi wong iki sabanjure musibah, utawa "
+"genti kolom \"Status wong iki\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1226,7 +1232,7 @@ msgid "Sign out"
 msgstr "Metu"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Liwati"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Ana sing wis nampa informasi manawa wong iki isih urip"
@@ -1241,7 +1247,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Ana sing nggoleki informasi babagan wong iki"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Sumber Laporan"
 
 msgid "Source of this record"
 msgstr "Sumber laporan iki"
@@ -1251,13 +1257,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Status %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Status Wong"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Status wong iki:"
 
 msgid "Street name"
 msgstr "Jeneng dalan"
@@ -1266,7 +1272,7 @@ msgid "Street name only, no number"
 msgstr "Mung jeneng dalan, ora perlu nomer"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Kirim"
 
 msgid "Subscribe"
 msgstr "Langganan:"
@@ -1308,7 +1314,7 @@ msgstr "Pengarang wis mateni anyari status ing laporan iki."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Cathetan kanggo %(full_name)s wis ditambahake"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Gambar sing diwenehi kegedhen. Unggah sing luwih cilik."
@@ -1321,7 +1327,7 @@ msgstr "Wektu kedhaluwarsa laporan ora bisa ditambah."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Laporan kanggo %(full_name)s wis didhaptarake"
 
 msgid "The record has been deleted."
 msgstr "Laporan iki wis dibusak."
@@ -1470,7 +1476,7 @@ msgid "Upload your CSV file below"
 msgstr "Unggah file CSV ing ngisor iki"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Gunakake lokasi saiki"
 
 msgid "View the record"
 msgstr "Deleng laporan"
@@ -1550,8 +1556,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Sampeyan bisa langganan kabar anyar babagan %(full_name)s kanthi ngetik "
+"alamat email sampeyan ing kene"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1580,7 +1586,7 @@ msgid "Your email"
 msgstr "Email sampeyan"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Jeneng sampeyan (wajib)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1648,7 +1654,7 @@ msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] Sampeyan langganan karo anyari status kanggo %(full_name)s"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "situs eksternal; ragad sambungan normal bisa diterapake"
 
 msgid "female"
 msgstr "wadon"
