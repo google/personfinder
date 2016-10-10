@@ -26,6 +26,7 @@ use Github pull requests for this purpose.
 
 1. Make sure that you are [a member of the team](https://github.com/orgs/google/teams/personfinder). Ask @gimite to add you if you are not.
 1. Find an issue to work on, or create a new one, in [the issue list](https://github.com/google/personfinder/issues).
+    * If it is the first time for you to contribute to this project, I recommend you to start from one of the issues marked as [low hanging](https://github.com/google/personfinder/issues?q=is%3Aissue+is%3Aopen+label%3A%22low+hanging%22).
 1. Create a new branch, prefixed with your username.
    <br/>`$ git checkout -b $USER-your-new-feature`
 1. Make changes and commit. Repeat the step until you are ready for code review.
@@ -44,6 +45,7 @@ use Github pull requests for this purpose.
 #### For non-team members
 
 1. Find an issue to work on, or create a new one, in [the issue list](https://github.com/google/personfinder/issues).
+    * If it is the first time for you to contribute to this project, I recommend you to start from one of the issues marked as [low hanging](https://github.com/google/personfinder/issues?q=is%3Aissue+is%3Aopen+label%3A%22low+hanging%22).
 1. Fork [google/personfinder project](https://github.com/google/personfinder) on Github.
 1. Make changes and push to your fork. Repeat the step until you are ready for code review.
    <br/>`$ git commit -a`
