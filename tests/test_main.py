@@ -17,6 +17,7 @@
 """Tests for the Main handler."""
 
 import unittest
+from google.appengine.ext import testbed
 from google.appengine.ext import webapp
 import webob
 
@@ -30,6 +31,14 @@ def setup_request(path):
     return webapp.Request(webob.Request.blank(path).environ)
 
 class MainTests(unittest.TestCase):
+    def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        self.testbed.init_user_stub()
+
+    def tearDown(self):
+        self.testbed.deactivate()
+
     def test_get_repo_and_action(self):
         def check(path, repo, action):
             request = setup_request(path)

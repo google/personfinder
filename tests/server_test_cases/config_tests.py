@@ -261,7 +261,8 @@ class ConfigTests(ServerTestsBase):
         settings_form = doc.cssselect_one('form#save_global')
         doc = self.s.submit(settings_form,
             sms_number_to_repo=
-                '{"+198765432109": "haiti", "+8101234567890": "japan"}'
+                '{"+198765432109": "haiti", "+8101234567890": "japan"}',
+            unreviewed_notes_threshold='100',
         )
         assert self.s.status == 200, self.get_admin_page_error_message()
 
@@ -280,11 +281,13 @@ class ConfigTests(ServerTestsBase):
         settings_form = doc.cssselect_one('form#save_global')
         doc = self.s.submit(settings_form,
             sms_number_to_repo=
-                '{"+198765432109": "test", "+8101234567890": "japan"}'
+                '{"+198765432109": "test", "+8101234567890": "japan"}',
+            unreviewed_notes_threshold = '100',
         )
         assert self.s.status == 200, self.get_admin_page_error_message()
         assert (config.get('sms_number_to_repo') ==
             {'+198765432109': 'test', '+8101234567890': 'japan'})
+        assert config.get('unreviewed_notes_threshold') == 100
 
     def test_deactivation(self):
         # Load the administration page.

@@ -61,7 +61,7 @@ h3 {
   clear: both;
 }
 
-/* outer-container contains everything 
+/* outer-container contains everything
     except for the header and the side bar */
 .outer-container {
   max-width: 900px;
@@ -139,7 +139,7 @@ pre {  /* code samples */
   margin-right: 10px;
 }
 
-/* A line for separating No searching results 
+/* A line for separating No searching results
   and search results without location */
 .under-line {
   border-bottom: 2px solid #e6e6e6
@@ -296,7 +296,7 @@ a.expand-button {
 
 /* Icon for the expand-button after the form is expanded */
 .expand-button-icon-up {
-  background: url({{env.global_url}}/expand-icon-up.png);  
+  background: url({{env.global_url}}/expand-icon-up.png);
   background-repeat: no-repeat;
   background-position: {{end}};
 }

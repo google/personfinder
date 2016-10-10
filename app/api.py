@@ -624,6 +624,10 @@ class HandleSMS(utils.BaseHandler):
         ('en', 'add', r'^i am\s+(.+)$'),
         ('es', 'search', r'^buscar\s+(.+)$'),
         ('es', 'add', r'^yo soy\s+(.+)$'),
+        ('ht', 'search', r'^chache\s+(.+)$'),
+        ('ht', 'add', r'^mwen se\s+(.+)$'),
+        ('fr', 'search', r'^chercher\s+(.+)$'),
+        ('fr', 'add', r'^je suis\s+(.+)$'),
     ]
 
     def post(self):
