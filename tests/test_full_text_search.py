@@ -279,7 +279,8 @@ class FullTextSearchTests(unittest.TestCase):
         assert not results
 
         # Search by home_neighborhood only ( input inside the location box)
-        results = full_text_search.search('haiti', {'location': 'Araokeibajou'}, 5)
+        results = full_text_search.search(
+                                    'haiti', {'location': 'Araokeibajou'}, 5)
         assert not results
 
         # Search by home_country only ( input inside the name box)
@@ -295,7 +296,8 @@ class FullTextSearchTests(unittest.TestCase):
         assert not results
 
         # Search with no query text
-        results = full_text_search.search('haiti', {'name': '', 'location': ''}, 5)
+        results = full_text_search.search(
+                                    'haiti', {'name': '', 'location': ''}, 5)
         assert not results
 
         # Search deleted record
