@@ -188,8 +188,16 @@ class Handler(BaseHandler):
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:
-                if jp_mobile_carriers.handle_phone_number(self, query.query):
-                    return 
+                try:
+                    if jp_mobile_carriers.handle_phone_number(
+                            self, query.query):
+                        return
+                except Exception as e:
+                    logging.exception(
+                        'failed to scrape search result for the phone number.')
+                    return self.error(
+                        500, _('Failed to obtain search result '
+                               'for the phone number.'))
 
             if is_possible_phone_number(query.query):
                 # If the query looks like a phone number, we show an empty
