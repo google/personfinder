@@ -18,20 +18,16 @@
 __author__ = 'lschumacher@google.com (Lee Schumacher)'
 
 import main
-import model
-import types
 import webob
 import urllib
 
-from google.appengine.ext import testbed
 from google.appengine.ext import webapp
+
 
 def initialize_handler(
         handler_class, action, repo='haiti', environ=None, params=None):
-    tb = testbed.Testbed()
-    tb.activate()
-    tb.init_user_stub()
-    model.Repo(key_name=repo).put()
+    """Initialize handler_cless and return initialized handler.
+    """
 
     params_str = ('?' + urllib.urlencode(params)) if params else ''
     request = webapp.Request(webob.Request.blank(

@@ -18,15 +18,23 @@
 __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
 
 import datetime
-import logging
-import sys
 import unittest
 
 import api
 import model
 import test_handler
 
+from google.appengine.ext import testbed
+
+
 class APITests(unittest.TestCase):
+    def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        self.testbed.init_user_stub()
+
+    def tearDown(self):
+        self.testbed.deactivate()
 
     def test_sms_render_person(self):
         handler = test_handler.initialize_handler(

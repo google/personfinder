@@ -24,7 +24,11 @@ import script_variant
 
 # The index name for full text search.
 # This index contains person name and location.
-PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'name_location_information'
+PERSON_LOCATION_FULL_TEXT_INDEX_NAME = 'person_location_information'
+
+ROMANIZE_METHODS = [script_variant.romanize_word_by_unidecode,
+                    script_variant.romanize_japanese_word,
+                    script_variant.romanize_chinese_name]
 
 # This is for ranking (person name match higher than location)
 REPEAT_COUNT_FOR_RANK = 5
@@ -99,15 +103,13 @@ def create_romanized_query_txt(query_txt):
     return enclose_in_parenthesis(romanized_query)
 
 
-def is_query_match(query_txt, values_romanized_unidecode,
-                   values_romanized_jp_words):
+def is_query_match(query_txt, romanized_values):
     """
     Checks if a query matches a record
     It should be called in get_person_ids_from_results method.
     Args:
         query_txt: Search query
-        values_romanized_unidecode: field value for unidecode
-        values_romanized_jp_words: field value for jp words
+        romanized_values: field values
     Returns:
         Boolean
     """
@@ -121,15 +123,15 @@ def is_query_match(query_txt, values_romanized_unidecode,
     for search_terms in romanized_query_list:
         words = search_terms.split(" ")
         for word_index, word in enumerate(words):
-            if not re.search(word, values_romanized_unidecode + " " +
-                    values_romanized_jp_words, re.I):
+            if not re.search(word, " ".join(romanized_values), re.I):
                 break
             if word_index == len(words) - 1:
                 return True
     return False
 
 
-def get_person_ids_from_results(query_dict, results_list):
+def get_person_ids_from_results(
+    query_dict, results_list, romanized_name_fields, romanized_location_fields):
     """
     Returns person record_id of persons
     whose name contain in romanized_name_query and
@@ -149,25 +151,23 @@ def get_person_ids_from_results(query_dict, results_list):
     added_results = set()
     for results in results_list:
         for document in results:
-            field_dict = {field.name: field.value for field in
+            fields = {field.name: field.value for field in
                           document.fields}
-            names = field_dict[
-                'names_romanized_by_romanize_word_by_unidecode']
-            record_id = field_dict['record_id']
-            romanized_jp_names = field_dict['names_romanized_by'
-                                            '_romanize_japanese_word']
-            locations_romanized_unidecode = field_dict['full_location_romanized_by'
-                                   '_romanize_word_by_unidecode']
-            locations_romanized_jp = field_dict['full_location_romanized_by'
-                                             '_romanize_japanese_word']
+
+            record_id = fields['record_id']
+
             # use set to faster the speed.
             # average time complexity: set-O(1) list-O(n)
             if record_id in added_results:
                 continue
 
-            if is_query_match(name_query_txt, names, romanized_jp_names) and \
-                    is_query_match(location_query_txt,
-                                   locations_romanized_unidecode, locations_romanized_jp):
+            romanized_names = [value for name, value in fields.items()
+                                        if name in romanized_name_fields]
+            romanized_locations = [value for name, value in fields.items()
+                                        if name in romanized_location_fields]
+
+            if (is_query_match(name_query_txt, romanized_names) and
+                is_query_match(location_query_txt, romanized_locations)):
                 index_results.append(record_id)
                 added_results.add(record_id)
     return index_results
@@ -217,14 +217,21 @@ def search(repo, query_dict, max_results):
     sort_opt = appengine_search.SortOptions(
         expressions=expressions, match_scorer=appengine_search.MatchScorer())
 
+
+    # Define the fields need to be returned per romanzie method
+    returned_name_fields = [u'names_romanized_by_' + method.__name__
+                            for method in ROMANIZE_METHODS]
+
+    returned_location_fields = [u'full_location_romanized_by_' + method.__name__
+                            for method in ROMANIZE_METHODS]
+
+    returned_fields = (returned_name_fields +
+                       returned_location_fields + ['record_id'])
+
     options = appengine_search.QueryOptions(
         limit=max_results,
         sort_options=sort_opt,
-        returned_fields=['record_id',
-                         'names_romanized_by_romanize_word_by_unidecode',
-                         'names_romanized_by_romanize_japanese_word',
-                         'full_location_romanized_by_romanize_word_by_unidecode',
-                         'full_location_romanized_by_romanize_japanese_word'])
+        returned_fields=returned_fields)
 
     # enclose_in_double_quotes is used for avoiding query_txt
     # which specifies index field name, contains special symbol, ...
@@ -237,16 +244,18 @@ def search(repo, query_dict, max_results):
 
     # To rank exact matches higher than
     # non-exact matches with the same romanization.
-    non_romanized_and_query = ' AND '.join(non_romanized_query_list) \
-                              + ' AND (repo: ' + repo + ')'
-    non_romanized_person_location_index_results = \
+    non_romanized_and_query = (' AND '.join(non_romanized_query_list)
+                                + ' AND (repo: ' + repo + ')')
+    non_romanized_person_location_index_results = (
         person_location_index.search(appengine_search.Query(
-            query_string=non_romanized_and_query, options=options))
+            query_string=non_romanized_and_query, options=options)))
 
     results_list = [non_romanized_person_location_index_results,
                     person_location_index_results]
 
-    index_results = get_person_ids_from_results(query_dict, results_list)
+    index_results = get_person_ids_from_results(query_dict,
+        results_list, returned_name_fields, returned_location_fields)
+
     results = []
     for record_id in index_results:
         result = model.Person.get(repo, record_id, filter_expired=True)
@@ -338,9 +347,9 @@ def create_romanized_name_fields(romanize_method, **kwargs):
                                                  romanized_name))
         romanized_names_list.extend(romanized_names)
 
-    full_name_fields, romanized_full_names = \
+    full_name_fields, romanized_full_names = (
         create_full_name_without_space_fields(
-            romanize_method, kwargs['given_name'], kwargs['family_name'])
+            romanize_method, kwargs['given_name'], kwargs['family_name']))
     fields.extend(full_name_fields)
     romanized_names_list.extend(romanized_full_names)
 
@@ -381,7 +390,7 @@ def create_non_romanized_fields(**kwargs):
     """
     Creates non romanized fields to rank exact matches higher than
     non-exact matches with the same romanization.
-    e.g., 
+    e.g.,
     if there are records record1:[name=菊地真], record2:[name=菊地眞],
     get results(1st: 菊地真、2nd: 菊地眞) when search by "菊地 真"
     """
@@ -421,10 +430,8 @@ def create_document(person):
 
     # Applies two methods because kanji is used in Chinese and Japanese,
     # and romanizing in chinese and japanese is different.
-    romanize_methods = [script_variant.romanize_word_by_unidecode,
-                        script_variant.romanize_japanese_word]
 
-    for romanize_method in romanize_methods:
+    for romanize_method in ROMANIZE_METHODS:
         fields.extend(create_romanized_name_fields(
             romanize_method,
             given_name=person.given_name,

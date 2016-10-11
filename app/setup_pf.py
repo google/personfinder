@@ -65,7 +65,11 @@ def setup_configs():
                translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
                repo_aliases={},
                referrer_whitelist=[],
-               initialized=True)
+               initialized=True,
+               notification_email=const.DEFAULT_NOTIFICATION_EMAIL,
+               unreviewed_notes_threshold=(
+                   const.DEFAULT_UNREVIEWED_NOTES_THRESHOLD),
+               )
 
     config.set_for_repo(
         'haiti',
@@ -184,6 +188,7 @@ def setup_configs():
         published_date=get_timestamp(datetime(2010, 8, 6)),
         updated_date=get_timestamp(datetime(2010, 8, 6)),
     )
+
 
 def setup_lang_test_config():
     config.set_for_repo(

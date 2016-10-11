@@ -2,7 +2,7 @@
 # Initialize the Person Finder's datastore the first time it is run on this machine.
 
 PORT=8000
-IP_ADDR=`ifconfig eth0 | grep -o "addr:[0-9][0-9][0-9]\.[0-9]*\.[0-9]*\.[0-9]*" | awk -F ":" '{print $2}'`
+IP_ADDR=`ip addr list eth0 | grep 'inet ' | cut -d' ' -f6 | cut -d'/' -f1`
 
 if [ 0 = ${INIT_DATASTORE} ]; then
     echo "Setting datastore for server at ${IP_ADDR}:${PORT}"

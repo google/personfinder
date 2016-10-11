@@ -532,7 +532,6 @@ def strip_url_scheme(url):
 def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
-
 # ==== Struct ==================================================================
 
 class Struct:

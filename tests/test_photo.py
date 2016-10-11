@@ -23,7 +23,19 @@ import model
 import photo
 import test_handler
 
+from google.appengine.ext import testbed
+
+
 class PhotoTests(unittest.TestCase):
+
+    def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        self.testbed.init_user_stub()
+
+    def tearDown(self):
+        self.testbed.deactivate()
+
     def test_get_photo_url(self):
         entity = model.Photo.create('haiti', image_data='xyz')
         entity.put()

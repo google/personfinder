@@ -25,6 +25,7 @@ from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
 import config
+import const
 import delete
 import model
 import utils
@@ -75,7 +76,7 @@ class ScanForExpired(utils.BaseHandler):
                     was_expired = person.is_expired
                     person.put_expiry_flags()
                     if (utils.get_utcnow() - person.get_effective_expiry_date()
-                        > EXPIRED_TTL):
+                            > EXPIRED_TTL):
                         person.wipe_contents()
                     else:
                         # treat this as a regular deletion.
@@ -111,6 +112,7 @@ class DeleteOld(ScanForExpired):
 
     def query(self):
         return model.Person.potentially_expired_records(self.repo)
+
 
 class CleanUpInTestMode(utils.BaseHandler):
     """If the repository is in "test mode", this task deletes all entries older
@@ -379,3 +381,59 @@ class Reindex(CountBase):
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])
         person.put()
+
+
+class NotifyManyUnreviewedNotes(utils.BaseHandler):
+    """This task sends email notification when the number of unreviewed notes
+    exceeds threshold.
+    """
+    repo_required = False  # can run without a repo
+    ACTION = 'tasks/notify_many_unreviewed_notes'
+
+    def task_name(self):
+        return 'notify-bad-review-status'
+
+    def get(self):
+        if self.repo:
+            try:
+                count_of_unreviewed_notes = (
+                    model.Note.get_unreviewed_notes_count(self.repo))
+                self._maybe_notify(count_of_unreviewed_notes)
+            except runtime.DeadlineExceededError:
+                logging.info("DeadlineExceededError occurs")
+                self.add_task_for_repo(
+                    self.repo, self.task_name(), self.ACTION)
+            except datastore_errors.Timeout:
+                logging.info("Timeout occurs in datastore")
+                self.add_task_for_repo(
+                    self.repo, self.task_name(), self.ACTION)
+        else:
+            for repo in model.Repo.list():
+                self.add_task_for_repo(
+                    repo, self.task_name(), self.ACTION)
+
+    def _subject(self):
+        return "Please review your notes in %(repo_name)s" % {
+            "repo_name": self.env.repo,
+        }
+
+    def _body(self, count_of_unreviewed_notes):
+        return "%(repo_name)s has %(num_unreviewed)s unreviewed notes." % {
+            "repo_name": self.env.repo,
+            "num_unreviewed": count_of_unreviewed_notes,
+        }
+
+    def _maybe_notify(self, count_of_unreviewed_notes):
+        # TODO(yaboo@): Response should be modified
+        if self._should_notify(count_of_unreviewed_notes):
+            self.send_mail(self.config.get('notification_email'),
+                           subject=self._subject(),
+                           body=self._body(count_of_unreviewed_notes))
+
+    def _should_notify(self, count_of_unreviewed_notes):
+        if not self.config.get('notification_email'):
+            return False
+
+        return  count_of_unreviewed_notes > self.config.get(
+                'unreviewed_notes_threshold')
+
