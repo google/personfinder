@@ -50,6 +50,7 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
     OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
+    BIND_RE = re.compile('BindError:') # this output is for appserver's port error
     debug = False  # set to True to see all log messages, ignoring OMIT_RE
 
     def __init__(self, name, args):
@@ -158,6 +159,13 @@ class AppServerRunner(ProcessRunner):
             # sure that the query see the data after the write is applied.
             '--datastore_consistency_policy=consistent',
         ])
+
+    def flush_output(self):
+      """Flushes the buffered output from this subprocess to stderr."""
+      self.output, lines_to_print = [], self.output
+      if lines_to_print:
+        if self.BIND_RE.search('\n'.join(lines_to_print)):
+            sys.stderr.write('%s failed port 8081 already in use.\n' % self.name)
 
 
 class MailThread(threading.Thread):
