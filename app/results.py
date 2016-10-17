@@ -36,6 +36,7 @@ MAX_RESULTS = 100
 POSSIBLE_PHONE_NUMBER_RE = re.compile(
     ur'^[\d\(\)\.\-\s\u2010\u2012\u2013\u2015\u2212\u301c\u30fc]+$')
 
+
 def has_possible_duplicates(results):
     """Returns True if it detects that there are possible duplicate records
     in the results i.e. identical full name."""
@@ -50,6 +51,7 @@ def has_possible_duplicates(results):
 def is_possible_phone_number(query_str):
     return re.search(POSSIBLE_PHONE_NUMBER_RE,
         unicodedata.normalize('NFKC', unicode(query_str)))
+
 
 def max_word_length(query_words):
     max_length = max(map(len, query_words))
@@ -70,8 +72,14 @@ def max_word_length(query_words):
 
 
 class Handler(BaseHandler):
-    def search(self, query_txt):
-        """Performs a search and adds view_url attributes to the results."""
+    def search(self, query_dict):
+        """
+        Performs a search and adds view_url attributes to the results.
+        Args:
+            query_dict: A list contains two queries: Name query and Location query
+        """
+
+        query_txt = " ".join(query_dict.values())
         results = None
         if self.config.external_search_backends:
             results = external_search.search(
@@ -83,7 +91,7 @@ class Handler(BaseHandler):
         if not results:
             if config.get('enable_fulltext_search'):
                 results = full_text_search.search(self.repo,
-                                                  query_txt, MAX_RESULTS)
+                                                  query_dict, MAX_RESULTS)
             else:
                 results = indexing.search(self.repo,
                                           TextQuery(query_txt), MAX_RESULTS)
@@ -92,7 +100,9 @@ class Handler(BaseHandler):
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
                                            role=self.params.role,
-                                           query=self.params.query,
+                                           query_name=self.params.query_name,
+                                           query_location=
+                                               self.params.query_location,
                                            given_name=self.params.given_name,
                                            family_name=self.params.family_name)
             result.latest_note_status = get_person_status_text(result)
@@ -109,11 +119,13 @@ class Handler(BaseHandler):
         return self.redirect(
             '/query', role=self.params.role, error='error', query=query.query)
 
-    def get_results_url(self, query):
+    def get_results_url(self, query_name, query_location):
         return self.get_url(
             '/results',
             ui='' if self.env.ui == 'small' else self.env.ui,
-            query=query,
+            query_name=query_name,
+            query_location=query_location,
+            role=self.params.role,
             given_name=self.params.given_name,
             family_name=self.params.family_name)
 
@@ -139,7 +151,7 @@ class Handler(BaseHandler):
                 self.params.given_name, self.params.family_name, self.config)
 
             query = TextQuery(query_txt)
-            results_url = self.get_results_url(query_txt)
+            results_url = self.get_results_url(query_txt, '')
             # Ensure that required parameters are present.
             if not self.params.given_name:
                 return self.reject_query(query)
@@ -154,7 +166,7 @@ class Handler(BaseHandler):
             # for key in criteria:
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
-            results = self.search(query_txt)
+            results = self.search({'name':query_txt})
             # Filter out results with addresses matching part of the query.
             results = [result for result in results
                        if not getattr(result, 'is_address_match', False)]
@@ -171,7 +183,8 @@ class Handler(BaseHandler):
                                    create_url=create_url,
                                    third_party_search_engines=
                                        third_party_search_engines,
-                                   query=self.params.query)
+                                   query_name=self.params.query_name,
+                                   query_location=self.params.query_location,)
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
@@ -183,7 +196,11 @@ class Handler(BaseHandler):
                     return self.redirect('/create', **self.params.__dict__)
 
         if self.params.role == 'seek':
+            query_dict = {'name': self.params.query_name,
+                          'location': self.params.query_location}
+            self.params.query = " ".join(q for q in query_dict.values() if q)
             query = TextQuery(self.params.query)
+            results_based_on_input = True
 
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
@@ -213,9 +230,22 @@ class Handler(BaseHandler):
                 return self.reject_query(query)
             else:
                 # Look for prefix matches.
-                results = self.search(self.params.query)
-                results_url = self.get_results_url(self.params.query)
+                results = self.search(query_dict)
+                results_url = self.get_results_url(self.params.query_name,
+                                                   self.params.query_location)
                 third_party_query_type = ''
+                query_location = self.params.query_location
+
+                # If there is no results match for both name and location
+                # Check if there have results match for name
+                if not results:
+                    if self.params.query_location:
+                        query_dict = {'name': self.params.query_name,
+                                      'location': ''}
+                        results = self.search(query_dict)
+                        # search result not based on the user input
+                        results_based_on_input = False
+                        query_location = ''
 
             # Show the (possibly empty) matches.
             return self.render('results.html',
@@ -227,5 +257,9 @@ class Handler(BaseHandler):
                                create_url=create_url,
                                third_party_search_engines=
                                    third_party_search_engines,
-                               query=self.params.query,
-                               third_party_query_type=third_party_query_type)
+                               query_name=self.params.query_name,
+                               query_location_original=
+                                    self.params.query_location,
+                               query_location=query_location,
+                               third_party_query_type=third_party_query_type,
+                               results_based_on_input=results_based_on_input)

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -145,22 +145,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                Počet vybraných záznamů: %(dup_count)s\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -170,9 +156,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s má výsledky vyhledávání pro tento "
-"dotaz.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -181,28 +208,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Záznamy podobné jako: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Výsledky vyhledávání pro dotaz: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Žádné výsledky pro dotaz: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -356,7 +363,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Zadaná e-mailová adresa není platná.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -567,7 +574,7 @@ msgstr "O Vyhledávači ztracených osob Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Věk"
@@ -577,9 +584,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Data zadaná do Vyhledávače ztracených osob jsou veřejná a může je použít "
-"kdokoliv. Společnost Google nekontroluje ani neověřuje správnost těchto "
-"dat.\n"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -615,12 +621,6 @@ msgstr "Telefonní číslo autora"
 msgid "Authorization key"
 msgstr "Autorizační klíč"
 
-msgid "Back to results list"
-msgstr "Zpět na seznam výsledků"
-
-msgid "Back to start"
-msgstr "Zpět na začátek"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -654,8 +654,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Kliknutím sem zobrazíte smluvní podmínky (externí web, mohou být účtovány"
-" běžné poplatky za připojení)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Výsledky zobrazíte kliknutím sem."
@@ -665,6 +665,9 @@ msgstr "Zavřít okno"
 
 msgid "Compare these records"
 msgstr "Porovnat tyto záznamy"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -729,6 +732,9 @@ msgstr "E-mailová adresa"
 msgid "Edit"
 msgstr "Upravit"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Vložení aplikace"
 
@@ -740,12 +746,6 @@ msgstr "Zadejte datum ve formátu RRRR-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "Zadejte jméno a příjmení osoby."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Zadejte jméno nebo části jména osoby."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Zadejte jméno, části jména nebo číslo mobilního telefonu osoby."
 
 msgid "Enter the person's name."
 msgstr "Zadejte jméno osoby."
@@ -761,20 +761,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Prodloužit datum vypršení platnosti o %(extension_days)s d\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Příjmení"
 
 msgid "Family name (required)"
-msgstr "Příjmení (povinné)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Zdroj aktualizací o této osobě"
 
 msgid "Feedback"
-msgstr "Zpětná vazba"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Pomocí tohoto odkazu vytvoříte nový záznam"
@@ -788,7 +791,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Místo pobytu: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Jméno a příjmení"
@@ -797,7 +800,7 @@ msgid "Given name"
 msgstr "Křestní jméno"
 
 msgid "Given name (required)"
-msgstr "Jméno (povinné)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Vyhledávač ztracených osob Google"
@@ -826,6 +829,9 @@ msgstr "Bydliště"
 msgid "Home country"
 msgstr "Domovská země"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Jak lze nyní tuto osobu kontaktovat?"
 
@@ -833,7 +839,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Jak vás mohou kontaktovat další uživatelé, kteří se zajímají o tuto osobu."
 
 msgid "I Have Information About This Person"
-msgstr "Mám informace o této osobě"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Hledám informace"
@@ -868,14 +874,14 @@ msgstr "Obdržel(a) jsem spam."
 msgid "I prefer not to specify."
 msgstr "Tyto informace nechci uvést."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Někoho hledám"
-
-msgid "Identify who you are looking for"
-msgstr "Identifikujte osobu, po níž pátráte"
-
-msgid "Identify who you have information about"
-msgstr "Identifikujte osobu, o níž máte informace"
 
 msgid "Identifying information"
 msgstr "Identifikační údaje"
@@ -958,7 +964,13 @@ msgstr "Aktuální telefonní číslo pohřešované osoby"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Další informace: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -967,6 +979,9 @@ msgid ""
 msgstr ""
 "Další informace pro vývojáře nyní naleznete "
 "%(developers_link_html)szde%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -978,8 +993,14 @@ msgstr ""
 msgid "Name"
 msgstr "Jméno"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Jméno je povinné. Vraťte se zpět a zkuste to znovu."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Čtvrť"
@@ -1002,7 +1023,7 @@ msgid "No notes have been posted"
 msgstr "Nebyly zveřejněny žádné poznámky"
 
 msgid "No person id was specified."
-msgstr "Nebylo zadáno ID osoby."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1010,7 +1031,7 @@ msgstr "Osoba s ID %(id_str)s nebyla nalezena."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Žádné výsledky pro dotaz: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Entita s tímto povolením neexistuje."
@@ -1077,9 +1098,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"POZNÁMKA: Veškeré zadané údaje jsou veřejně dostupné a může je použít "
-"kdokoliv. Společnost Google nekontroluje ani neověřuje správnost těchto "
-"dat."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Vyhledávač ztracených osob"
@@ -1094,7 +1114,7 @@ msgid "Photo"
 msgstr "Fotografie"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Fotka (externí web, mohou být účtovány běžné poplatky za připojení)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1110,8 +1130,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Zaškrtněte, že jste po katastrofě s osobou byli v kontaktu, nebo změňte "
-"pole Stav této osoby."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1143,9 +1163,6 @@ msgstr "Uveďte prosím platnou e-mailovou adresu."
 
 msgid "Possible duplicates"
 msgstr "Možné duplicitní položky"
-
-msgid "Possible duplicates found."
-msgstr "Byly nalezeny možné duplicitní záznamy."
 
 msgid "Postal or zip code"
 msgstr "Poštovní směrovací číslo"
@@ -1235,7 +1252,7 @@ msgid "Sign out"
 msgstr "Odhlásit se"
 
 msgid "Skip"
-msgstr "Přeskočit"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Někdo obdržel informaci, že je tato osoba naživu"
@@ -1250,7 +1267,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Někdo hledá informace o této osobě"
 
 msgid "Source of Record"
-msgstr "Zdroj záznamu"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Zdroj tohoto záznamu"
@@ -1260,13 +1277,13 @@ msgstr "Stav"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Stav osoby %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Stav osoby"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Stav této osoby:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Název ulice"
@@ -1274,11 +1291,17 @@ msgstr "Název ulice"
 msgid "Street name only, no number"
 msgstr "Název ulice bez čísla popisného"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Odeslat"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Přihlásit se k odběru"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1317,7 +1340,7 @@ msgstr "Autor u tohoto záznamu aktualizace stavu zakázal."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Poznámka k osobě %(full_name)s byla přidána"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Fotografie je příliš velká. Nahrajte prosím snímek o menší velikosti."
@@ -1330,7 +1353,7 @@ msgstr "Platnost záznamu nelze prodloužit."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Záznam o osobě %(full_name)s byl zaregistrován"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Záznam byl vymazán."
@@ -1479,7 +1502,7 @@ msgid "Upload your CSV file below"
 msgstr "Nahrajte soubor CSV níže."
 
 msgid "Use current location"
-msgstr "Použít aktuální polohu"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Zobrazit záznam"
@@ -1487,14 +1510,14 @@ msgstr "Zobrazit záznam"
 msgid "We have nothing matching your search."
 msgstr "Vašemu vyhledávacímu dotazu nic neodpovídá."
 
-msgid "What is this person's name?"
-msgstr "Jak se tato osoba jmenuje?"
-
 msgid "When should this record disappear?"
 msgstr "Kdy by měl tento záznam zmizet?"
 
 msgid "Where did this information come from?"
 msgstr "Odkud pocházejí tyto informace?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1509,6 +1532,12 @@ msgid ""
 msgstr ""
 "V testovacím režimu se záznamy starší než 6 hodin smažou bez ohledu na "
 "datum vypršení platnosti."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ano"
@@ -1559,8 +1588,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"K odběru novinek o osobě %(full_name)s se můžete přihlásit tak, že sem "
-"zadáte e-mailovou adresu"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1589,7 +1618,7 @@ msgid "Your email"
 msgstr "Vaše e-mailová adresa"
 
 msgid "Your name (required)"
-msgstr "Vaše jméno a příjmení (povinné)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1667,8 +1696,11 @@ msgstr ""
 "[Vyhledávač ztracených osob] Jste přihlášeni k odběru aktualizací stavu o"
 " osobě %(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "externí web, mohou být účtovány běžné poplatky za připojení"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "žena"

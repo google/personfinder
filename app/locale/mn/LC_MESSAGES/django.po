@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -151,22 +151,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s бичлэг сонгосон\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -176,8 +162,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            Энэ асуулгад тохирох илэрц %(search_engine_name)s-д байна.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -186,28 +214,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Дараахтай төстэй бичлэг: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Дараах хайлтын илэрц: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Дараахад илэрц олдсонгүй: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -364,7 +372,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Таны оруулсан имэйл хаяг буруу байна.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -574,7 +582,7 @@ msgstr "Google Хүн Хайгчийн тухай"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Нас"
@@ -584,9 +592,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Хүн Хайгчид оруулсан бүх өгөгдөл нийтэд нээлттэй бөгөөд дурын хүн ашиглах"
-" боломжтой. Google энэ өгөгдлийн үнэн зөв эсэхийг шалгах болон "
-"баталгаажуулдаггүй болно google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Гэр бүлийн өөр нэр"
@@ -621,12 +629,6 @@ msgstr "Зохиогчийн утасны дугаар"
 msgid "Authorization key"
 msgstr "Эрхжүүлэлтийн түлхүүр"
 
-msgid "Back to results list"
-msgstr "Илэрцийн жагсаалт руу буцах"
-
-msgid "Back to start"
-msgstr "Эхлэл рүү буцах"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -660,8 +662,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Үйлчилгээний нөхцөлийг энд дарж үзнэ үү (гадаад сайт; холболтын энгийн "
-"хураамж тооцно)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Илэрцүүдийг харахын тулд энд товшино уу."
@@ -671,6 +673,9 @@ msgstr "Цонхыг хаах"
 
 msgid "Compare these records"
 msgstr "Эдгээр бичлэгүүдийг харьцуулах"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -733,6 +738,9 @@ msgstr "Имэйл хаяг"
 msgid "Edit"
 msgstr "Засах"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Аппликешныг оруулж байна"
 
@@ -744,12 +752,6 @@ msgstr "YYYY-MM-DD байдлаар оруулна уу"
 
 msgid "Enter the person's given and family names."
 msgstr "Тухайн хүний нэр болон овгийг оруулна уу."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Тухайн хүний нэр буюу нэрний хэсгийг оруулна уу."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Тухайн хүний нэр, нэрний хэсэг буюу гар утасны дугаарыг оруулна уу."
 
 msgid "Enter the person's name."
 msgstr "Тухайн хүний нэрийг оруулна уу."
@@ -765,20 +767,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Дуусах хугацааг %(extension_days)s хоногоор сунгах\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Овог"
 
 msgid "Family name (required)"
-msgstr "Овог (шаардлагатай)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Энэ хүний тухай шинэ мэдээллийн фийд"
 
 msgid "Feedback"
-msgstr "Санал хүсэлт"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Шинэ бичлэг үүсгэхийн тулд энэ холбоосыг дагна уу"
@@ -790,7 +795,7 @@ msgstr "Гар утаснаас бусад утасны хувьд NTT-н 171 ү
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Хаанаас: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Бүтэн нэр"
@@ -799,7 +804,7 @@ msgid "Given name"
 msgstr "Өөрийн нэр"
 
 msgid "Given name (required)"
-msgstr "Нэр (шаардлагатай)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Хүн Хайгч"
@@ -826,6 +831,9 @@ msgstr "Гэрийн хаяг"
 msgid "Home country"
 msgstr "Эх орон"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Энэ хүнтэй одоо хэрхэн холбоо барьж болох вэ?"
 
@@ -833,7 +841,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Энэ хүнийг сонирхсон бусад хүмүүс тантай хэрхэн холбоо барьж болох вэ"
 
 msgid "I Have Information About This Person"
-msgstr "Надад энэ хүний талаарх мэдээлэл байна"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Би мэдээлэл хайж байна"
@@ -868,14 +876,14 @@ msgstr "Би спам хүлээж авсан."
 msgid "I prefer not to specify."
 msgstr "Би тодорхойлохыг хүсэхгүй байна."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Би хэн нэгнийг хайж байна"
-
-msgid "Identify who you are looking for"
-msgstr "Хэнийг хайж байгаагаа таниулна уу"
-
-msgid "Identify who you have information about"
-msgstr "Хэний тухай мэдээлэлтэй байгаагаа таниулна уу"
 
 msgid "Identifying information"
 msgstr "Таниулах мэдээлэл"
@@ -959,7 +967,13 @@ msgstr "Сураггүй болсон хүний одоогийн утасны �
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Дэлгэрэнгүй: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -968,6 +982,9 @@ msgid ""
 msgstr ""
 "Хөгжүүлэгчдэд зориулсан өөр мэдээллийг "
 "%(developers_link_html)sэндээс%(link_end_html)s авч болно."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -979,8 +996,14 @@ msgstr ""
 msgid "Name"
 msgstr "Нэр"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Нэр шаардлагатай.  Буцаж очоод дахин оролдоно уу."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Хөрш"
@@ -1003,7 +1026,7 @@ msgid "No notes have been posted"
 msgstr "Тэмдэглэл нийтлэгдээгүй байна"
 
 msgid "No person id was specified."
-msgstr "Id-г нь тогтоосон хүн алга."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1011,7 +1034,7 @@ msgstr "Дараах ID-тай хүн алга байна: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Дараахад илэрц олдсонгүй: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ийм Эрхжүүлэгч байгууллага байхгүй байна."
@@ -1078,9 +1101,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"САНУУЛГА: Oруулсан бүх өгөгдөл нийтэд нээлттэй бөгөөд дурын хүн ашиглах "
-"боломжтой.  Google энэ өгөгдлийн үнэн зөв эсэхийг шалгах болон "
-"баталгаажуулдаггүй болно."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Хүн Хайгч"
@@ -1095,7 +1117,7 @@ msgid "Photo"
 msgstr "Зураг"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Зураг (гадаад сайт; холболтын энгийн хураамж тооцно)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1111,8 +1133,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Та гамшигт үзэгдлийн дараа энэ хүнтэй холбоо барьсан гэж тэмдэглэх, эсвэл"
-" \"Энэ хүний байдал\" хэсгийг өөрчилнө үү."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1144,9 +1166,6 @@ msgstr "Зөв имэйл хаяг оруулна уу."
 
 msgid "Possible duplicates"
 msgstr "Давхардсан байж магадгүй"
-
-msgid "Possible duplicates found."
-msgstr "Давхардсан байж магадгүй."
 
 msgid "Postal or zip code"
 msgstr "Шуудан буюу зип код"
@@ -1236,7 +1255,7 @@ msgid "Sign out"
 msgstr "Гарах"
 
 msgid "Skip"
-msgstr "Алгасах"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Энэ хүн амьд байгаа тухай мэдээллийг хэн нэгэн хүлээж авсан"
@@ -1251,7 +1270,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Энэ хүний тухай мэдээллийг хэн нэгэн хайж байна"
 
 msgid "Source of Record"
-msgstr "Бичлэгийн эх сурвалж"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Энэ бичлэгийн эх сурвалж"
@@ -1261,13 +1280,13 @@ msgstr "Статус"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "%(full_name)s-н байдал "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Хүний байдал"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Энэ хүний байдал:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Гудамжны нэр"
@@ -1275,11 +1294,17 @@ msgstr "Гудамжны нэр"
 msgid "Street name only, no number"
 msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Илгээх"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Бүртгүүлэх"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1318,7 +1343,7 @@ msgstr "Зохиогч нь энэ бичлэг дээр статус шинэч
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "%(full_name)s-н тэмдэглэлийг нэмсэн"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Өгсөн зураг хэт том байна. Жижиг зураг байршуулна уу."
@@ -1331,7 +1356,7 @@ msgstr "Бичлэгийн хугацааг сунгах боломжгүй."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "%(full_name)s-н бичлэгийг бүртгэсэн"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Бичлэг устсан."
@@ -1478,7 +1503,7 @@ msgid "Upload your CSV file below"
 msgstr "Өөрийн CSV файлыг доор байршуулна уу"
 
 msgid "Use current location"
-msgstr "Одоогийн байршлыг ашиглах"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Бичлэгийг харах"
@@ -1486,14 +1511,14 @@ msgstr "Бичлэгийг харах"
 msgid "We have nothing matching your search."
 msgstr "Таны хайлтад таарах зүйл алга байна."
 
-msgid "What is this person's name?"
-msgstr "Энэ хүний нэр хэн бэ?"
-
 msgid "When should this record disappear?"
 msgstr "Энэ бичлэг хэзээ арилах ёстой вэ?"
 
 msgid "Where did this information come from?"
 msgstr "Энэ мэдээлэл хаанаас ирсэн бэ?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1508,6 +1533,12 @@ msgid ""
 msgstr ""
 "Тестийн горим идэвхжсэн үед 6 цаг болсон бичлэгүүд дуусах хугацаанаас "
 "хамаарахгүйгээр устана."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Тийм"
@@ -1558,8 +1589,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Та имэйл хаягаа энд оруулснаар %(full_name)s-н тухай шинэчлэлтийг "
-"захиалах боломжтой"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1588,7 +1619,7 @@ msgid "Your email"
 msgstr "Таны имэйл"
 
 msgid "Your name (required)"
-msgstr "Таны нэр (шаардлагатай)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1659,8 +1690,11 @@ msgstr ""
 "[Хүн Хайгч] Та %(full_name)s-н статусын шинэчлэлийн талаар мэдээлэл "
 "авахаар бүртгүүлсэн"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "гадаад сайт; холболтын энгийн хураамж тооцно"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "эмэгтэй"

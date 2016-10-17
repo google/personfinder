@@ -55,7 +55,7 @@
                 search_engine_id: id
             },
             dataType: 'json'
-        }).done(function(r) { 
+        }).done(function(r) {
           console_log('Third-party search response: ', r);
           if (r.status == 'OK') {
             if (typeof(r.url) != 'string') {
@@ -82,15 +82,42 @@
 {% endblock head %}
 
 {% block content %}
+{% include "query_form.html.template" %}
+
 <div class='seek results border'>
-  {% include "query_form.html.template" %}
+
+  {% ifequal params.role 'seek' %}
+    {% if not results_based_on_input %}
+      {% if results %}
+        <h1>
+          {% blocktrans %}
+            No results found for: "{{query_name}} {{query_location_original}}"
+            <p>
+            Results for "{{query_name}}" (any location):
+          {% endblocktrans %}
+          <p>
+          <div class="under-line"></div>
+        </h1>
+      {% else %}
+        <h1>
+          {% blocktrans %}
+            No results found for: "{{query_name}} {{query_location_original}}"
+          {% endblocktrans %}
+        </h1>
+        <p>{% trans "We have nothing matching your search." %}</p>
+      {% endif %}
+    {% endif %}
+  {% endifequal %}
+
   {% if results %}
     {% ifequal params.role 'seek' %}
-      <div class='resultsTitle'>
-        {% blocktrans with params.query as query %}
-          Search Results for: {{query}}
-        {% endblocktrans %}
-      </div>
+      {% if results_based_on_input %}
+        <div class='resultsTitle'>
+          {% blocktrans %}
+            Search Results for: {{query_name}} {{query_location}}
+          {% endblocktrans %}
+        </div>
+      {% endif %}
     {% endifequal %}
 
     {% ifequal params.role 'provide' %}
@@ -123,15 +150,6 @@
     {% else %}
       <p>
       {% trans "To view or add information, select a name below." %}
-      {% if env.enable_dup_mode and results|length > 1 %}
-        <p>
-        {% if has_possible_duplicates %}
-          <b>{% trans "Possible duplicates found." %}</b><br />
-        {% endif %}
-        <div class="button button-red">
-          <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
-        </div>
-      {% endif %}
       <p>
       <div class='searchResults'>
       {% for result in results %}
@@ -143,6 +161,9 @@
         {% endifchanged %}
         <div class="resultItem" data-url="{{result.view_url}}" data-status="{{result.latest_status}}"
             onclick="on_result_item_click(event, this);">
+          <div class="resultOrder">
+            {{ forloop.counter }}
+          </div>
           {# No whitespace inside .resultImageContainer. #}
           {# Image width/height are specified as attributes here as well as #}
           {# in CSS, so that they are applied if CSS is disabled e.g. on #}
@@ -156,7 +177,7 @@
             /></div>
           {% else %}
             <div class="resultImageContainer"
-              ><img class="resultImage" src="{{env.global_url}}/no-photo.gif"
+              ><img class="resultImage" src="{{env.global_url}}/no-photo.png"
                     width='80' height='80' align='left' alt=''
             /></div>
           {% endif %}
@@ -216,11 +237,6 @@
               </span>
             </div>
             {% endif %}
-            {% if env.show_record_ids_in_results %}
-              <span class="tracking">
-                ID: {{result.record_id}}
-              </span>
-            {% endif %}
           </div>
           <br clear='all'>
         </div>
@@ -248,15 +264,18 @@
   {% else %}
 
     {% if not jp_phone_number_query %}
-    <h1>
-      {% blocktrans with params.query as query %}
-        No results found for: {{query}}
-      {% endblocktrans %}
-    </h1>
-    <p>
-    {% trans "We have nothing matching your search." %}
+      {# if no results for both (name + location) and (name) #}
+      {# only show one message for "No results for (name + location)" #}
+      {% if results_based_on_input %}
+        <h1>
+          {% blocktrans %}
+            No results found for: {{query_name}} {{query_location}}
+          {% endblocktrans %}
+        </h1>
+        <p>{% trans "We have nothing matching your search." %}</p>
+      {% endif %}
     {% else %}
-    <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
+      <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
     {% endif %}
 
   {% endif %}
@@ -273,6 +292,13 @@
         </a>
       </p>
     {% endfor %}
+  {% endif %}
+
+  <p>
+  {% if env.enable_dup_mode and results|length > 1 and has_possible_duplicates %}
+    <div class="button button-red">
+      <input type="button" onclick="return enable_dup_mode(this);" value="{% trans "Mark records as duplicate" %}">
+    </div>
   {% endif %}
 
   {% if results %}

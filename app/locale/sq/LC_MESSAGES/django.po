@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -138,22 +138,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s regjistrime të zgjedhura\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -163,9 +149,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s ka rezultat(e) që përputhen me këtë "
-"term kërkimi\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -174,28 +201,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Regjistrime të ngjashme me %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Rezultatet e kërkimit për %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Asnjë rezultat nuk u gjet për %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -353,7 +360,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Adresa e mail-it që fute nuk është e vlefshme.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -548,7 +555,7 @@ msgstr "Rreth apl. \"Gjetësi i Personave i Google\""
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Mosha"
@@ -558,9 +565,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Të gjitha të dhënat e futura te \"Gjetësi i personave\" janë të "
-"disponueshme për publikun dhe mund të përdoren nga të gjithë. Google nuk "
-"e rishikon apo verifikon saktësinë e këtyre të dhënave "
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -595,12 +601,6 @@ msgstr "Numri i telefonit të autorit"
 
 msgid "Authorization key"
 msgstr "Çelësi autorizues"
-
-msgid "Back to results list"
-msgstr "Kthehu tek lista e rezultateve"
-
-msgid "Back to start"
-msgstr "Kthehu tek fillimi"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -637,8 +637,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Kliko këtu për të parë kushtet e shërbimit (sajt i jashtëm; mund të "
-"zbatohet tarifa normale e lidhjes)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Kliko këtu për të parë rezultatet."
@@ -648,6 +648,9 @@ msgstr "Mbyll dritaren"
 
 msgid "Compare these records"
 msgstr "Krahasoni këto të dhëna"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -714,6 +717,9 @@ msgstr "Adresa e e-mail-it"
 msgid "Edit"
 msgstr "Ndrysho"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Duke instaluar aplikacionin"
 
@@ -725,14 +731,6 @@ msgstr "Shkruajeni datën në formatin \"YYYY-MM-DD\""
 
 msgid "Enter the person's given and family names."
 msgstr "Futni emrin dhe mbiemrin e personit."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Futni emrin e plotë ose pjesë të emrit të personit."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Futni emrin e personit, pjesë të emrit ose numrin e telefonit celular të "
-"personit."
 
 msgid "Enter the person's name."
 msgstr "Futni emrin e personit."
@@ -748,20 +746,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Shtyje datën e skadimit me %(extension_days)s ditë\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Mbiemri"
 
 msgid "Family name (required)"
-msgstr "Mbiemri (kërkohet)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Mekanizmi furnizues i njoftimeve rreth këtij personi"
 
 msgid "Feedback"
-msgstr "Komente"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Ndiqni këtë lidhje për të krijuar një raport të ri"
@@ -775,7 +776,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Nga: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Emri i plotë"
@@ -784,7 +785,7 @@ msgid "Given name"
 msgstr "Emri i dhënë"
 
 msgid "Given name (required)"
-msgstr "Emri i dhënë (kërkohet)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "\"Gjetësi i Personave i Google\""
@@ -815,6 +816,9 @@ msgstr "Vendbanimi"
 msgid "Home country"
 msgstr "Shteti i lindjes"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Si mund të kontaktohet me këtë person tani?"
 
@@ -822,7 +826,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Si mund të kontaktojnë me ju, të tjerë të interesuar për këtë person"
 
 msgid "I Have Information About This Person"
-msgstr "Unë kam informacione rreth këtij personi"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Po kërkoj informacione"
@@ -857,14 +861,14 @@ msgstr "Kam marrë mesazhe të padëshirueshme (spam)."
 msgid "I prefer not to specify."
 msgstr "Preferoj të mos specifikoj."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Po kërkoj dikë"
-
-msgid "Identify who you are looking for"
-msgstr "Identifikoni personin që po kërkoni"
-
-msgid "Identify who you have information about"
-msgstr "Identifikoni personin për të cilin keni informacione"
 
 msgid "Identifying information"
 msgstr "Informacioni identifikues"
@@ -949,7 +953,13 @@ msgstr "Numri aktual i telefonit të personit të humbur"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Më shumë në %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -958,6 +968,9 @@ msgid ""
 msgstr ""
 "Më shumë informacione për programuesit, tani mund të gjenden "
 "%(developers_link_html)skëtu%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -969,10 +982,16 @@ msgstr ""
 msgid "Name"
 msgstr "Emri"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Emri është i kërkueshëm me çdo kusht! Ju lutemi, kthehuni prapa dhe "
 "provoni sërish."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Lagjja"
@@ -997,7 +1016,7 @@ msgid "No notes have been posted"
 msgstr "Nuk është postuar asnjë shënim"
 
 msgid "No person id was specified."
-msgstr "Nuk u specifikua asnjë ID e personit."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1005,7 +1024,7 @@ msgstr "Nuk ka asnjë person me id.-në %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Asnjë rezultat nuk u gjet për %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Nuk keni një autorizim i tillë."
@@ -1073,9 +1092,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"SHËNIM. Të gjitha të dhënat e futura janë të disponueshme për publikun "
-"dhe mund të përdoren nga të gjithë. Google nuk e rishikon apo verifikon "
-"saktësinë e këtyre të dhënave."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "\"Gjetësi i Personave\""
@@ -1090,7 +1108,7 @@ msgid "Photo"
 msgstr "Fotografitë"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Fotografia (sajt i jashtëm; mund të zbatohet tarifa normale e lidhjes)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1106,8 +1124,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Kontrollo që ke qenë në kontakt me personin pas katastrofës ose ndrysho "
-"fushën \"Statusi i këtij personi\"."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1143,9 +1161,6 @@ msgstr "Ju lutemi, ofroni një adresë të vlefshme e-mail-i."
 
 msgid "Possible duplicates"
 msgstr "Dublikatë e mundshme"
-
-msgid "Possible duplicates found."
-msgstr "Një dublikatë e mundshme u gjet!"
 
 msgid "Postal or zip code"
 msgstr "Kodi postar"
@@ -1235,7 +1250,7 @@ msgid "Sign out"
 msgstr "Dilni"
 
 msgid "Skip"
-msgstr "Kapërce"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Dikush ka marrë informacione se ky person është gjallë"
@@ -1250,7 +1265,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Dikush po kërkon informacione në lidhje me këtë person"
 
 msgid "Source of Record"
-msgstr "Burimi i regjistrimit"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Burimi i këtij raporti"
@@ -1260,13 +1275,13 @@ msgstr "Statusi"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Statusi i %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Statusi i personit"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Statusi i këtij personi:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Emri i rrugës"
@@ -1274,11 +1289,17 @@ msgstr "Emri i rrugës"
 msgid "Street name only, no number"
 msgstr "Vetëm emrin e rrugës, jo numrin e saj"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Dorëzo"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Abonohu"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1319,7 +1340,7 @@ msgstr "Autori e ka çaktivizuar mundësinë e rinovimit të statusit në këtë
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Shënimi për %(full_name)s është shtuar"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1334,7 +1355,7 @@ msgstr "Afati i shfrytëzimit të raportit nuk mund të shtyhet më tej."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Regjistrimi për %(full_name)s është regjistruar"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Raporti është fshirë."
@@ -1491,7 +1512,7 @@ msgid "Upload your CSV file below"
 msgstr "Ngarko skedarin CSV më poshtë"
 
 msgid "Use current location"
-msgstr "Përdor vendndodhjen aktuale"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Shiko raportin"
@@ -1499,14 +1520,14 @@ msgstr "Shiko raportin"
 msgid "We have nothing matching your search."
 msgstr "Nuk kemi asgjë që t'i përputhet kërkimit tuaj."
 
-msgid "What is this person's name?"
-msgstr "Si quhet ky person?"
-
 msgid "When should this record disappear?"
 msgstr "Kur mund të hiqet ky raport?"
 
 msgid "Where did this information come from?"
 msgstr "Prej nga erdhi ky informacion?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1521,6 +1542,12 @@ msgid ""
 msgstr ""
 "Duke qenë se kjo bazë të dhënash është në testim, raportet që i kalojnë 6"
 " orë nga publikimi, fshihen pavarësisht datës së skadimit."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Po"
@@ -1575,8 +1602,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Mund të abonohesh te përditësimet për %(full_name)s duke futur adresën "
-"tënde të mail-it këtu"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1605,7 +1632,7 @@ msgid "Your email"
 msgstr "E-mail-i juaj:"
 
 msgid "Your name (required)"
-msgstr "Emri yt (kërkohet)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1678,8 +1705,11 @@ msgstr ""
 "[Gjetësi i Personave] Ju jeni abonuar për të marrë çdo informacion të ri "
 "mbi %(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "sajt i jashtëm; mund të zbatohet tarifa normale e lidhjes"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "femër"

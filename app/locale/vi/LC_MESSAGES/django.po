@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -147,22 +147,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                Đã chọn %(dup_count)s hồ sơ\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -172,9 +158,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s có (các) kết quả tìm kiếm khớp với "
-"truy vấn này.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -183,28 +210,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Hồ sơ tương tự với: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Kết quả tìm kiếm cho: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Không tìm thấy kết quả nào cho: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -363,7 +370,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Địa chỉ email bạn đã nhập không hợp lệ.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -574,7 +581,7 @@ msgstr "Giới thiệu về Công cụ tìm kiếm người thân của Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Tuổi"
@@ -584,9 +591,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Tất cả dữ liệu đã nhập vào Tìm kiếm người thân sẽ được công khai và bất "
-"kỳ ai cũng có thể sử dụng dữ liệu đó. Google không đánh giá hay xác minh "
-"tính chính xác của dữ liệu này google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Họ thay thế"
@@ -621,12 +628,6 @@ msgstr "Số điện thoại của tác giả"
 msgid "Authorization key"
 msgstr "Khóa ủy quyền"
 
-msgid "Back to results list"
-msgstr "Trở lại danh sách kết quả"
-
-msgid "Back to start"
-msgstr "Quay lại để bắt đầu"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -660,8 +661,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Nhấp vào đây để xem điều khoản dịch vụ (trang web bên ngoài; có thể tính "
-"phí kết nối bình thường)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Nhấp vào đây để xem kết quả."
@@ -671,6 +672,9 @@ msgstr "Đóng cửa sổ"
 
 msgid "Compare these records"
 msgstr "So sánh các hồ sơ này"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
@@ -731,6 +735,9 @@ msgstr "Địa chỉ email"
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Nhúng Ứng dụng"
 
@@ -742,12 +749,6 @@ msgstr "Nhập dưới dạng DD-MM-YYYY"
 
 msgid "Enter the person's given and family names."
 msgstr "Nhập họ và tên của người này."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Nhập tên hoặc một phần tên của người này."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Nhập tên, một phần tên hoặc số điện thoại di động của người này."
 
 msgid "Enter the person's name."
 msgstr "Nhập tên của người này."
@@ -763,20 +764,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Gia hạn thêm %(extension_days)s ngày\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Họ"
 
 msgid "Family name (required)"
-msgstr "Tên gia đình (bắt buộc)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Nguồn cấp dữ liệu của các cập nhật về người này"
 
 msgid "Feedback"
-msgstr "Phản hồi"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
@@ -790,7 +794,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Từ: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Họ và tên"
@@ -799,7 +803,7 @@ msgid "Given name"
 msgstr "Tên"
 
 msgid "Given name (required)"
-msgstr "Tên thánh (bắt buộc)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Công cụ tìm kiếm người thân của Google"
@@ -828,6 +832,9 @@ msgstr "Địa chỉ nhà riêng"
 msgid "Home country"
 msgstr "Quê hương"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Hiện có thể liên lạc với người này bằng cách nào?"
 
@@ -835,7 +842,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
 
 msgid "I Have Information About This Person"
-msgstr "Tôi có thông tin về người này"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
@@ -870,14 +877,14 @@ msgstr "Tôi đã nhận được spam."
 msgid "I prefer not to specify."
 msgstr "Tôi không muốn chỉ rõ."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Tôi đang tìm kiếm một người"
-
-msgid "Identify who you are looking for"
-msgstr "Nhận dạng người mà bạn đang tìm kiếm"
-
-msgid "Identify who you have information about"
-msgstr "Nhận dạng người mà bạn có thông tin về người đó"
 
 msgid "Identifying information"
 msgstr "Thông tin nhận dạng"
@@ -958,7 +965,13 @@ msgstr "Số điện thoại hiện tại của người bị mất tích"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Xem thêm tại: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -967,6 +980,9 @@ msgid ""
 msgstr ""
 "Hiện có thể tìm thêm thông tin dành cho nhà phát triển "
 "%(developers_link_html)stại đây%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -978,8 +994,14 @@ msgstr ""
 msgid "Name"
 msgstr "Tên"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Bắt buộc phải có tên. Vui lòng quay lại và thử lại."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Vùng lân cận"
@@ -1004,7 +1026,7 @@ msgid "No notes have been posted"
 msgstr "Chưa có ghi chú nào được đăng"
 
 msgid "No person id was specified."
-msgstr "Không có id cá nhân nào được xác định."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1012,7 +1034,7 @@ msgstr "Không có người nào có ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Không tìm thấy kết quả nào cho: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Không có tổ chức ủy quyền như vậy."
@@ -1079,9 +1101,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"XIN LƯU Ý: Tất cả dữ liệu đã nhập sẽ được công khai và bất kỳ ai cũng có "
-"thể sử dụng dữ liệu đó. Google không đánh giá hay xác minh tính chính xác"
-" của dữ liệu này."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Công cụ tìm kiếm người thân"
@@ -1096,7 +1117,7 @@ msgid "Photo"
 msgstr "Ảnh"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Ảnh (trang web bên ngoài; có thể tính phí kết nối bình thường)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1110,8 +1131,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Vui lòng kiểm tra rằng bạn đã liên lạc với người này sau thảm họa hoặc "
-"thay đổi trường \"Tình trạng của người này\"."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1145,9 +1166,6 @@ msgstr "Vui lòng cung cấp địa chỉ email hợp lệ."
 
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
-
-msgid "Possible duplicates found."
-msgstr "Đã tìm thấy hồ sơ có thể trùng lặp."
 
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
@@ -1237,7 +1255,7 @@ msgid "Sign out"
 msgstr "Đăng xuất"
 
 msgid "Skip"
-msgstr "Bỏ qua"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
@@ -1252,7 +1270,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Một người nào đó đang tìm kiếm thông tin về người này"
 
 msgid "Source of Record"
-msgstr "Nguồn hồ sơ"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Nguồn của hồ sơ này"
@@ -1262,13 +1280,13 @@ msgstr "Tình trạng"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Tình trạng của %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Tình trạng cá nhân"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Tình trạng của người này:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Tên phố"
@@ -1276,11 +1294,17 @@ msgstr "Tên phố"
 msgid "Street name only, no number"
 msgstr "Chỉ tên phố, không có số"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Gửi"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Đăng ký"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1317,7 +1341,7 @@ msgstr "Tác giả đã tắt cập nhật tình trạng trên hồ sơ này."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Đã thêm ghi chú cho %(full_name)s"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ảnh đã cung cấp quá lớn. Hãy tải lên một ảnh nhỏ hơn."
@@ -1330,7 +1354,7 @@ msgstr "Không thể gia hạn hồ sơ."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Đã đăng ký hồ sơ cho %(full_name)s"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Hồ sơ này đã bị xóa."
@@ -1480,7 +1504,7 @@ msgid "Upload your CSV file below"
 msgstr "Tải lên tệp CSV của bạn ở bên dưới"
 
 msgid "Use current location"
-msgstr "Sử dụng vị trí hiện tại"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Xem hồ sơ"
@@ -1488,14 +1512,14 @@ msgstr "Xem hồ sơ"
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
 
-msgid "What is this person's name?"
-msgstr "Tên của người này là gì?"
-
 msgid "When should this record disappear?"
 msgstr "Khi nào hồ sơ này sẽ biến mất?"
 
 msgid "Where did this information come from?"
 msgstr "Thông tin này lấy từ đâu?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1510,6 +1534,12 @@ msgid ""
 msgstr ""
 "Trong khi chế độ thử nghiệm đang còn hiệu lực, các hồ sơ kéo dài hơn 6 "
 "giờ sẽ bị xóa bất kể ngày kết hạn."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Có"
@@ -1560,8 +1590,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Bạn có thể đăng ký nhận cập nhật về %(full_name)s bằng cách nhập địa chỉ "
-"e-mail của mình tại đây"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1590,7 +1620,7 @@ msgid "Your email"
 msgstr "Email của bạn"
 
 msgid "Your name (required)"
-msgstr "Tên của bạn (bắt buộc)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1663,8 +1693,11 @@ msgstr ""
 "[Công cụ tìm kiếm người thân] Bạn đã được đăng ký nhận thông tin cập nhật"
 " về tình trạng cho %(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "trang web bên ngoài; có thể tính phí kết nối bình thường"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "nữ"

@@ -15,7 +15,7 @@
 <form method="get" action="{{env.repo_path}}/results">
   {{env.hidden_input_tags_for_preserved_query_params|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
-  <div class="fields-table query {{params.role}}" role="form">
+  <div class="card query {{params.role}}" role="form">
       <div class="instructions">
         {% ifequal params.role 'provide' %}
           <div class="header">
@@ -32,13 +32,6 @@
         {% else %}
           <div class="header">
             <h1>{% trans "I'm looking for someone" %}</h1>
-          </div>
-          <div class="{{params.error}} help-text">
-            {% if config.jp_mobile_carrier_redirect %}
-              {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
-            {% else %}
-              {% trans "Enter the person's name or parts of the name." %}
-            {% endif %}
           </div>
           {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
             <div class="error">
@@ -114,16 +107,41 @@
       {% endif %}
     {% else %}
       <div class="field">
-          {% if env.ui == "facebook" %}
-            <input id="query" name="query"
-                class="short-text-input"
-                value="{{params.query}}">
-          {% else %}
-            <input id="query" name="query"
-                class="long-text-input"
-                value="{{params.query}}">
+        {% if env.ui == "facebook" %}
+          <input id="query_name" name="query_name"
+              class="short-text-input"
+              value="{{params.query_name}}">
+        {% else %}
+          {% if config.enable_fulltext_search %}
+            <span class="mandatory label">
+              {% if config.jp_mobile_carrier_redirect %}
+                {% trans "Name or mobile phone number (required)" %}:
+              {% else %}
+                {% trans "Name (required)" %}:
+              {% endif %}
+            </span>
           {% endif %}
+          <input id="query_name" name="query_name"
+              class="long-text-input"
+              value="{{params.query_name}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
+        {% endif %}
       </div>
+      {% if config.enable_fulltext_search %}
+        <div class="field">
+          {% if env.ui == "facebook" %}
+            <input id="query_location" name="query_location"
+                class="short-text-input"
+                value="{{params.query_location}}">
+          {% else %}
+            <span class="label">
+              {% trans "Home location" %}:
+            </span>
+            <input id="query_location" name="query_location"
+                class="long-text-input"
+                value="{{params.query_location}}" placeholder="{% trans 'Street name, neighborhood, city, etc.' %}">
+          {% endif %}
+        </div>
+      {% endif %}
     {% endifequal %}
     <div class="end-multi-columns"></div>
     

@@ -16,17 +16,11 @@
 
 /* All pages */
 
-html {
-  padding: 15px;
-}
-
 body {
   background: #f2f0f0;
   font-family: arial, sans-serif;
   font-size: 13px;
-  margin: auto;
-  max-width: 800px;
-  width: 100%;
+  margin: 0;
 }
 
 /* Do not apply the max width constraint for admin pages. */
@@ -59,17 +53,20 @@ h3 {
   margin: 0;
 }
 
-.header {
-  border-bottom: 1px solid #dadada;
-  padding: 1em 0;
-}
-
 .header a {
   text-decoration: none;
 }
 
 .container {
   clear: both;
+}
+
+/* outer-container contains everything 
+    except for the header and the side bar */
+.outer-container {
+  max-width: 900px;
+  padding: 5px;
+  margin: auto;
 }
 
 .hidden {
@@ -113,6 +110,9 @@ pre {  /* code samples */
   display: block;
   font-size: 16px;
   padding: 5px 15px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-appearance: none;  /* for ios button */
 }
 
 .button input:disabled {
@@ -139,12 +139,44 @@ pre {  /* code samples */
   margin-right: 10px;
 }
 
+/* A line for separating No searching results 
+  and search results without location */
+.under-line {
+  border-bottom: 2px solid #e6e6e6
+}
+
+/* Title bar */
+
+.title-bar {
+  font-size: 20px;
+  color: white;
+  background-color: #616161;
+  height: 64px;
+  line-height: 64px;  /* Vertically center the text */
+}
+
+.title-bar-button {
+  height: 24px;
+  width: 24px;
+  float: {{start}};
+  padding: 20px;
+}
+
+div.subtitle-bar {
+  font-size: 20px;
+  font-weight: normal;
+  box-shadow: 0 2px 1px -1px #a0a0a0;
+  background-color: #ffffff;
+  padding: 20px 64px;
+  color: #424242;
+}
+
 /* Language menu */
 
 div.languages {
-  float: {{end}};
-  margin: 10px 0;
-  padding: 0;
+  text-decoration: none;
+  color: black;
+  text-align: {{end}};
 }
 
 div.languages img {
@@ -169,12 +201,44 @@ input {
   box-sizing: border-box;
   font-family: arial, sans-serif;
   font-size: 13px;
-  margin-bottom: .5em;
+  margin-bottom: 8px;
   max-width: 100%;
+}
+
+input:not([type]),  /* type attribute is not specified */
+input[type="text"] {
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  border-bottom: 1px solid #a9a9a9;
+  background: transparent;
+}
+
+input:not([type]):focus,  /* type attribute is not specified */
+input[type="text"]:focus {
+  border-bottom: 2px solid #3b78e7;
+  margin-bottom: 7px;
+}
+
+/* Show disabled input states with dotted line */
+input:not([type]):disabled,  /* type attribute is not specified */
+input[type="text"]:disabled {
+  border-bottom: 1px dotted #a9a9a9;
+}
+
+/* Remove the focus frame for file upload input */
+input[type="file"]:focus {
+  border: 0;
+  border-radius: 0;
+  outline: 0;
 }
 
 .input {
   margin-bottom: .5em;
+}
+
+.photo-upload-input {
+  width: 200px;
 }
 
 textarea {
@@ -183,6 +247,11 @@ textarea {
 
 select {
   max-width: 100%;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  border-bottom: 1px solid #a9a9a9;
+  background: transparent;
 }
 
 .mandatory {
@@ -199,6 +268,37 @@ select {
 .hint .warning {
   color: red;
   font-weight: normal;
+}
+
+/* Expand Forms */
+
+.expanded-part {
+  margin: 8px 13px 8px 13px;
+}
+
+a.expand-button {
+  display: block;
+  padding: 10px 10px 10px 0px;
+  border-top: 2px solid #dadada;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Icon for the expand-button before the form is expanded */
+.expand-button-icon-down {
+  background: url({{env.global_url}}/expand-icon-down.png);
+  background-repeat: no-repeat;
+  background-position: {{end}};
+}
+
+/* Icon for the expand-button after the form is expanded */
+.expand-button-icon-up {
+  background: url({{env.global_url}}/expand-icon-up.png);  
+  background-repeat: no-repeat;
+  background-position: {{end}};
 }
 
 /* Multi-column page */
@@ -231,7 +331,7 @@ select {
   padding-{{start}}: 6px;
 }
 
-/* Tables which show a label and a value of each field e.g. in /view page.
+/* Cards which show a label and a value of each field e.g. in /view page.
 
 See app/resources/view.html.template for a usage example.
 
@@ -249,32 +349,47 @@ We don't use "display: table" because IE 6/7 doesn't support it. IE 6/7 is
 over 10% in penetration ratio.
 */
 
-.fields-table {
-  padding: 4px;
+.card {
+  background: #ffffff;
+  border: 1px solid #dadada;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
 }
 
-.fields-table .section {
+.card h1 {
+  font-size: 20px;
+  padding: 0px 10px;
+}
+
+.card h2 {
+  padding: 0px 10px 10px;
+}
+
+/* card section is used in view page */
+.card .section {
   border-bottom: 2px solid #e6e6e6;
   padding: 10px 4px 4px;
 }
 
-.fields-table .section h1 {
+.card .section h1 {
   font-size: 20px;
   margin-bottom: 0;
   text-align: center;
 }
 
-.fields-table .section h2 {
+.card .section h2 {
   font-size: 16px;
   font-weight: normal;
   margin-top: 5px;
 }
 
-.fields-table .section .links {
+.card .links {
   border-style: none;
 }
 
-.fields-table .section .links a {
+.card .links a {
   color: #4285f4;
   display: block;
   font-size: 16px;
@@ -284,18 +399,18 @@ over 10% in penetration ratio.
   text-align: center;
 }
 
-.fields-table .section textarea {
+.card textarea {
   width: 100%;
 }
 
-.fields-table .field {
+.card .field {
   clear: both;
   display: flex;
   margin-{{start}}: 0;
 }
 
-.fields-table .label {
-  display: block; /* to make float/width attribute work */
+.card .label {
+  display: block;  /* to make float/width attribute work */
   float: {{start}};
   height: 100%;
   text-align: right;
@@ -303,23 +418,23 @@ over 10% in penetration ratio.
   margin-{{end}}: 10px;
 }
 
-.fields-table .value {
+.card .value {
   display: block;  /* to make float/width attribute work */
   float: {{end}};
   width: 50%;
 }
 
-.fields-table .long-text-input {
+.card .long-text-input {
   max-width: 280px;
   width: 100%;
 }
 
-.fields-table .medium-text-input {
+.card .medium-text-input {
   max-width: 140px;
   width: 100%;
 }
 
-.fields-table .short-text-input {
+.card .short-text-input {
   width: 70px;
 }
 
@@ -375,8 +490,7 @@ td.submit {
 
 .footer {
   clear: both;
-  margin: 2em 0;
-  text-align: center;
+  padding: 0 2em;
   color: #666;
 }
 
@@ -409,8 +523,6 @@ td.submit {
 
 .main {
   font-size: 16px;
-  margin: auto;
-  width: 650px;
   width: 100%;
 }
 
@@ -427,10 +539,13 @@ td.submit {
   border: none;
   font-size: 20px;
   margin-bottom: 1em;
+  margin-{{start}}: 40px;
   max-width: 240px;
   min-height: 70px;
   padding: 16px;
   width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .main .action-outer a {
@@ -441,7 +556,7 @@ td.submit {
 .main .action-outer.start {
   background: #4285f4;
   float: {{start}};
-  margin-{{end}}: 58px;
+  margin-{{end}}: 18px;
 }
 
 .main .action-outer.end {
@@ -461,7 +576,8 @@ td.submit {
 }
 
 .custom-message {
-  width: 500px;
+  max-width: 500px;
+  width: 90%;
   margin: 1em 0;
 }
 
@@ -490,6 +606,16 @@ td.submit {
 .query.provide {
   background: #fff;
   border: 2px solid #e6e6e6;
+}
+
+.query.seek .field {
+  display: block;
+  margin: 8px 20px;
+}
+
+.query.seek .label {
+  width: 100%;
+  text-align: left;
 }
 
 .seek.results.border .query.seek,
@@ -560,16 +686,11 @@ img.icon {
 
 .view input.add-note {
   width: 100%;
+  margin-top: 10px;  /* To vertically align the "Add note" button
+                        with the record card */
 }
 
-.note.fields-table {
-  background: #ffffff;
-  border: 2px solid #e6e6e6;
-  margin-bottom: 10px;
-
-}
-
-.note.fields-table .button input {
+.note .button input {
   margin: 10px auto;
 }
 
@@ -672,71 +793,55 @@ label.option {
   font-weight: bold;
 }
 
-.create .fields-table {
-  background: #ffffff;
-  border: 2px solid #e6e6e6;
-}
-
-.create .fields-table .section {
-  border-bottom: 2px solid #e6e6e6;
-}
-
-.create .fields-table .subsection {
+.create .subsection {
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
-.create .fields-table h1 {
-  font-size: 20px;
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.create .fields-table h2 {
-  font-size: 16px;
-  font-weight: normal;
+.create h2 {
+  font-size: 14px;
   margin-top: 5px;
 }
 
-.create .fields-table .photo .radio {
+.create .card .photo .radio {
   display: block;
   float: {{start}};
   width: 30px;
 }
 
-.create .fields-table .photo .label {
+.create .card .photo .label {
   display: block;
   float: {{start}};
   text-align: {{end}};
   width: 70px;
 }
 
-.create .fields-table .photo .value {
+.create .card .photo .value {
   display: block;
   float: {{end}};
   max-width: 220px;
   width: 100%;
 }
 
-.create .fields-table .profile .icon {
+.create .card .profile .icon {
   display: block;
   float: {{start}};
   width: 30px;
   margin-left: 30px;
 }
 
-.create .fields-table .profile .value {
+.create .card .profile .value {
   display: block;
   width: 220px;
 }
 
-.create .fields-table .profile .remove {
+.create .card .profile .remove {
   display: block;
   float: {{end}};
   width: 70px;
 }
 
-.create .fields-table .button input {
+.create .button input {
   margin: 10px auto;
   min-width: 50%;
 }
@@ -746,6 +851,13 @@ label.option {
   padding-bottom: 1em;
 }
 
+/* cancel icon */
+.photo-upload-cancel {
+  height: 10px;
+  width: 10px;
+  vertical-align: middle;
+}
+
 /* results page */
 
 .seek.results.border {
@@ -753,6 +865,12 @@ label.option {
   border: 2px solid #e6e6e6;
   padding: 20px;
   padding-top: 0px;
+  box-sizing: border-box;
+  margin: 2em auto;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.26);
+  border-radius: 3px;
 }
 
 img.resultImage {
@@ -760,10 +878,10 @@ img.resultImage {
   height: auto;
   max-width: 80px;
   max-height: 80px;
+  border: 1px solid #dadada;
 }
 
 .resultsTitle {
-  border-top: 2px solid #e6e6e6;
   font-size: 18px;
   padding-top: 10px;
   width: 100%;
@@ -782,9 +900,13 @@ resultsList {
 }
 
 .result-link {
-  color: inherit;
+  color: #3b78e7;
   display: block;
   text-decoration: none;
+}
+
+.result-link:visited {
+  color: #00008b;
 }
 
 .searchResults {
@@ -800,6 +922,12 @@ resultsList {
 
 .searchResults .resultItem:hover {
   background: #cdf;
+}
+
+.searchResults .resultItem .resultOrder {
+  padding-right: 5px;
+  float: {{start}};
+  color: #888;
 }
 
 .resultDataLabel {
@@ -820,12 +948,11 @@ resultsList {
 }
 
 .searchResults .resultDataTitle {
-  color: #3b78e7;
   font-size: 18px;
 }
 
 .searchResults .resultData {
-  margin-{{start}}: 100px; /* 80px for image + 20px gutter */
+  margin-{{start}}: 100px;  /* 80px for image + 20px gutter */
 }
 
 .searchResults .resultImageContainer,
@@ -871,15 +998,6 @@ div.embed pre {
   flex-shrink: 1;
   max-width: 800px;
   padding: 0px 10px;
-}
-
-.admin-side-bar ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-.admin-side-bar li {
-  padding: 5px 0px;
 }
 
 form.admin fieldset {
@@ -953,7 +1071,9 @@ table.review th.note.colgroup {
   background: #555;
 }
 
-table.review .person, table.review .person a, table.review .person a:visited {
+table.review .person,
+table.review .person a,
+table.review .person a:visited {
   color: #04c;
 }
 
@@ -1048,7 +1168,9 @@ table.api-keys th.operation {
   color: #fff;
 }
 
-table.api-keys .contact, table.api-keys .contact a, table.api-keys .contact a:visited {
+table.api-keys .contact,
+table.api-keys .contact a,
+table.api-keys .contact a:visited {
   color: #04c;
 }
 
@@ -1097,8 +1219,59 @@ table.api-keys td.empty {
   overflow: auto;
 }
 
-@media screen and (max-width: 320px) {
-  html {
-    padding: 5px;
-  }
+/* Side menu */
+
+.sidenav {
+  height: 100%;
+  width: 80%;
+  max-width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  {{start}}: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  white-space: nowrap;
+}
+
+.sidenav h2 {
+  margin: 8px;
+}
+
+.sidenav div {
+  padding: 15px 8px;
+}
+
+.sidenav div a {
+  color: blue;
+  display: inline;
+}
+
+.sidenav select {
+  margin: 8px;
+}
+
+.sidenav a {
+  padding: 15px 8px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  border-top: 1px solid #dadada;
+}
+
+.google-logo img {
+  padding: 12px 8px;
+  height: 32px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.5);
+  display: none;
 }

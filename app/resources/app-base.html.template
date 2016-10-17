@@ -1,6 +1,7 @@
 {# Template for app pages (e.g. start, query, results, view, create, etc.). #}
 
 {% extends "base.html.template" %}
+{% load i18n %}
 
 {# To customize your site, replace, append, or prepend to the blocks below. #}
 
@@ -13,7 +14,16 @@
 {% block title %}{{block.super}}{% endblock title %}
 
 {% block logo %}
-  <a href="{{env.global_url}}"><img src="{{env.global_url}}/logo.png" alt=""></a>
+  {% if env.repo and env.action and env.action != "start" %}
+    {% if env.rtl %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
+    {% else %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
+    {% endif %}
+  {% else %}
+    <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
+  {% endif %}
+  {% trans "Google Person Finder" %}
 {% endblock %}
 
 {# Header above page content. #}
@@ -31,7 +41,7 @@
   {{block.super}}
 {% endblock disclaimer %}
 
-{# Footer at the bottom of every page. #}
-{% block footer %}
+{# Sidenav at the left side of every page. #}
+{% block sidenav %}
   {{block.super}}
-{% endblock footer %}
+{% endblock sidenav %}

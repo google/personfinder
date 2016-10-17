@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -103,15 +103,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
 "          "
@@ -120,22 +111,49 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
 msgstr ""
 
 #, python-format
@@ -432,12 +450,6 @@ msgstr ""
 msgid "Authorization key"
 msgstr ""
 
-msgid "Back to results list"
-msgstr ""
-
-msgid "Back to start"
-msgstr ""
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -473,6 +485,9 @@ msgid "Close window"
 msgstr ""
 
 msgid "Compare these records"
+msgstr ""
+
+msgid "Contact information"
 msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
@@ -534,6 +549,9 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr ""
 
@@ -544,12 +562,6 @@ msgid "Enter as YYYY-MM-DD"
 msgstr ""
 
 msgid "Enter the person's given and family names."
-msgstr ""
-
-msgid "Enter the person's name or parts of the name."
-msgstr ""
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
 
 msgid "Enter the person's name."
@@ -565,6 +577,9 @@ msgstr ""
 msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
+msgstr ""
+
+msgid "Failed to obtain search result for the phone number."
 msgstr ""
 
 msgid "Family name"
@@ -625,6 +640,9 @@ msgstr ""
 msgid "Home country"
 msgstr ""
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr ""
 
@@ -667,13 +685,13 @@ msgstr ""
 msgid "I prefer not to specify."
 msgstr ""
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
-msgstr ""
-
-msgid "Identify who you are looking for"
-msgstr ""
-
-msgid "Identify who you have information about"
 msgstr ""
 
 msgid "Identifying information"
@@ -745,10 +763,19 @@ msgstr ""
 msgid "More at: %(url)s"
 msgstr ""
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+
+msgid "More information to identify the person"
 msgstr ""
 
 msgid ""
@@ -759,7 +786,13 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
+msgstr ""
+
+msgid "Name or mobile phone number (required)"
 msgstr ""
 
 msgid "Neighborhood"
@@ -910,9 +943,6 @@ msgstr ""
 msgid "Possible duplicates"
 msgstr ""
 
-msgid "Possible duplicates found."
-msgstr ""
-
 msgid "Postal or zip code"
 msgstr ""
 
@@ -1040,10 +1070,16 @@ msgstr ""
 msgid "Street name only, no number"
 msgstr ""
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr ""
 
 msgid "Subscribe"
+msgstr ""
+
+msgid "Subscribe for updates about your record"
 msgstr ""
 
 #, python-format
@@ -1238,13 +1274,13 @@ msgstr ""
 msgid "We have nothing matching your search."
 msgstr ""
 
-msgid "What is this person's name?"
-msgstr ""
-
 msgid "When should this record disappear?"
 msgstr ""
 
 msgid "Where did this information come from?"
+msgstr ""
+
+msgid "Where did this record come from?"
 msgstr ""
 
 msgid ""
@@ -1255,6 +1291,12 @@ msgstr ""
 msgid ""
 "While test mode is in effect, records that are over 6 hours old are "
 "deleted regardless of the expiry date."
+msgstr ""
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
 msgstr ""
 
 msgid "Yes"
@@ -1390,6 +1432,9 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+
+msgid "e.g., Will Smith, Will or Smith"
 msgstr ""
 
 msgid "external site; normal connection fee may apply"

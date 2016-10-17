@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -147,22 +147,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                Ընտրվել է %(dup_count)s գրառում\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -172,9 +158,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s որոնման համակարգը պարունակում է այս "
-"հարցմանը համապատասխանող որոնման արդյունք(ներ):\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -183,28 +210,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          «%(full_name)s» անվանը նման գրառումներ\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Որոնման արդյունքներ «%(query)s» հարցման համար\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        «%(query)s» հարցմամբ ոչ մի արդյունք չի գտնվել\n"
-"      "
 
 #, python-format
 msgid ""
@@ -360,7 +367,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Մուտքագրված էլփոստի հասցեն անվավեր է:\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -569,7 +576,7 @@ msgstr "Google Մարդկանց որոնման մասին"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Տարիքը"
@@ -579,9 +586,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Մարդկանց որոնման կայքերում մուտքագրված բոլոր տվյալները հասանելի են "
-"բոլորին: Google-ը չի ստուգում այս տվյալները և չի հաստատում դրանց "
-"ճշտությունը google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Այլընտրանքային ընտանեկան անուններ"
@@ -616,12 +623,6 @@ msgstr "Հեղինակի հեռախոսահամարը"
 msgid "Authorization key"
 msgstr "Լիազորման բանալին"
 
-msgid "Back to results list"
-msgstr "Վերադառնալ արդյունքների ցանկ"
-
-msgid "Back to start"
-msgstr "Սկիզբ"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -653,8 +654,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Սեղմեք այստեղ՝ օգտագործման պայմաններին ծանոթանալու համար (արտաքին կայք. "
-"կգործեն կապի սովորական սակագները)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Արդյունքները տեսնելու համար սեղմեք այստեղ:"
@@ -664,6 +665,9 @@ msgstr "Փակել պատուհանը"
 
 msgid "Compare these records"
 msgstr "Համեմատեք այս գրառումները"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -728,6 +732,9 @@ msgstr "Էլփոստի հասցե"
 msgid "Edit"
 msgstr "Խմբագրել"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Ծրագրի ներկառուցում"
 
@@ -739,12 +746,6 @@ msgstr "Մուտքագրել որպես YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "Մուտքագրեք անձի անունը և ազգանունը:"
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Մուտքագրեք անձի անունը կամ անվան ինչ-որ մասը:"
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Մուտքագրեք անձի անունը, անվան ինչ-որ մասը կամ բջջային հեռախոսահամարը:"
 
 msgid "Enter the person's name."
 msgstr "Մուտքագրեք անձի անունը:"
@@ -760,20 +761,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Երկարացնել սպառման ժամկետը %(extension_days)s օրով\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Ազգանունը"
 
 msgid "Family name (required)"
-msgstr "Ազգանուն (պարտադիր է)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Այս անձի մասին թարմացումների հոսք"
 
 msgid "Feedback"
-msgstr "Հետադարձ կապ"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Անցեք այս հղումով` նոր գրառում ստեղծելու համար"
@@ -787,7 +791,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Ումից՝ %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Լրիվ անունը"
@@ -796,7 +800,7 @@ msgid "Given name"
 msgstr "Անունը"
 
 msgid "Given name (required)"
-msgstr "Անուն (պարտադիր է)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Մարդկանց որոնում"
@@ -823,6 +827,9 @@ msgstr "Բնակության հասցե"
 msgid "Home country"
 msgstr "Բնակության երկիրը"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Ինչպե՞ս կարելի է կապվել այս անձի հետ հիմա:"
 
@@ -830,7 +837,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Ինչպես կարող են կապվել ձեզ հետ նրանք, ովքեր հետաքրքրված են այս անձով"
 
 msgid "I Have Information About This Person"
-msgstr "Ես այս անձի վերաբերյալ տեղեկություններ ունեմ"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Ես տեղեկություն եմ որոնում"
@@ -865,14 +872,14 @@ msgstr "Ես ստացել եմ լցոն:"
 msgid "I prefer not to specify."
 msgstr "Ես նախընտրում եմ չմանրամասնել:"
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Ես փնտրում եմ ինչ-որ մեկին"
-
-msgid "Identify who you are looking for"
-msgstr "Բնութագրեք, թե ում եք փնտրում"
-
-msgid "Identify who you have information about"
-msgstr "Բնութագրեք, թե ում մասին տեղեկություն ունեք"
 
 msgid "Identifying information"
 msgstr "Նույնականացման տեղեկություններ"
@@ -949,7 +956,13 @@ msgstr "Որոնվող անձի ներկայիս հեռախոսահամարը"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Ավելին՝ %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -958,6 +971,9 @@ msgid ""
 msgstr ""
 "Մշակողների մասին այլ տեղեկություններ կարելի է գտնել "
 "%(developers_link_html)sայստեղ%(link_end_html)s:"
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -969,8 +985,14 @@ msgstr ""
 msgid "Name"
 msgstr "Անունը"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Անունը պարտադիր է: Վերադարձեք և կրկին փորձեք:"
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Թաղամասը"
@@ -995,7 +1017,7 @@ msgid "No notes have been posted"
 msgstr "Նշումներ չեն փակցվել"
 
 msgid "No person id was specified."
-msgstr "Որևէ անձի ID նշված չէ:"
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1003,7 +1025,7 @@ msgstr "%(id_str)s-ով անձինք չկան:"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "«%(query)s» հարցմամբ ոչ մի արդյունք չի գտնվել"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Այսպիսի նույնականացումով անձ չկա:"
@@ -1070,8 +1092,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"ՆԿԱՏԻ ՈՒՆԵՑԵՔ. մուտքագրված բոլոր տվյալները հասանելի են բոլորին: Google-ը "
-"չի ստուգում այս տվյալները և չի հաստատում դրանց ճշտությունը:"
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Մարդկանց որոնում"
@@ -1086,7 +1108,7 @@ msgid "Photo"
 msgstr "Լուսանկար"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Լուսանկար (արտաքին կայք. կգործեն կապի սովորական սակագները)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1100,8 +1122,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Նշեք, որ աղետից հետո շփվել եք այս անձի հետ, կամ փոխեք «Այս անձի "
-"կարգավիճակը» դաշտը:"
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1139,9 +1161,6 @@ msgstr "Խնդրում ենք մուտքագրել վավեր էլփոստի հ�
 
 msgid "Possible duplicates"
 msgstr "Հնարավոր կրկնօրինակներ"
-
-msgid "Possible duplicates found."
-msgstr "Հնարավոր կրկնօրինակներ են գտնվել:"
 
 msgid "Postal or zip code"
 msgstr "Փոստային կամ ZIP ինդեքս"
@@ -1231,7 +1250,7 @@ msgid "Sign out"
 msgstr "Դուրս գալ"
 
 msgid "Skip"
-msgstr "Բաց թողնել"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Ինչ-որ մեկն ունի տեղեկություն, որ այս անձը կենդանի է"
@@ -1246,7 +1265,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Ինչ-որ մեկը տեղեկություններ է փնտրում այս անձի վերաբերյալ"
 
 msgid "Source of Record"
-msgstr "Գրառման աղբյուրը"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Այս գրառման աղբյուրը"
@@ -1256,13 +1275,13 @@ msgstr "Կարգավիճակ"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "%(full_name)s-ի կարգավիճակը "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Անձի կարգավիճակը"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Այս անձի կարգավիճակը՝"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Փողոցը"
@@ -1270,11 +1289,17 @@ msgstr "Փողոցը"
 msgid "Street name only, no number"
 msgstr "Միայն փողոցի անունը (առանց տան համարի)"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Ուղարկել"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Բաժանորդագրվել"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1311,7 +1336,7 @@ msgstr "Հեղինակնն անջատել է այս գրառման կարգավ�
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "%(full_name)s-ի համար նշումն ավելացվեց"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Տրամադրված պատկերը չափազանց մեծ է: Վերբեռնեք ավելի փոքրը:"
@@ -1324,7 +1349,7 @@ msgstr "Գրառումը հնարավոր չէ երկարացնել:"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "%(full_name)s-ի համար գրառումը գրանցվեց"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Գրառումը ջնջվեց:"
@@ -1473,7 +1498,7 @@ msgid "Upload your CSV file below"
 msgstr "Վերբեռնեք ձեր CSV ֆայլը ստորև"
 
 msgid "Use current location"
-msgstr "Օգտագործել ընթացիկ տեղադրությունը"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Դիտել գրառումը"
@@ -1481,14 +1506,14 @@ msgstr "Դիտել գրառումը"
 msgid "We have nothing matching your search."
 msgstr "Մենք չունենք ձեր որոնմանը համապատասխան նյութեր:"
 
-msgid "What is this person's name?"
-msgstr "Ինչպե՞ս է տվյալ անձի անունը:"
-
 msgid "When should this record disappear?"
 msgstr "Ե՞րբ պետք է այս գրառումը հեռացվի:"
 
 msgid "Where did this information come from?"
 msgstr "Որտեղի՞ց է ստացվել այս տեղեկությունը:"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1503,6 +1528,12 @@ msgid ""
 msgstr ""
 "Փորձնական ռեժիմում այն գրառումները, որոնք արվել է 6 ամիս առաջ հեռացվում "
 "են` անկախ դրանց սպառման ժամկետից:"
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Այո"
@@ -1553,8 +1584,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Մուտքագրելով ձեր էլփոստի հասցեն այստեղ՝ դուք կարող եք բաժանորդագրվել "
-"%(full_name)s-ի մասին նորություններին"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1583,7 +1614,7 @@ msgid "Your email"
 msgstr "Ձեր էլփոստը"
 
 msgid "Your name (required)"
-msgstr "Ձեր անունը (պարտադիր է)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1648,8 +1679,11 @@ msgstr ""
 "[Մարդկանց որոնում] Դուք բաժանորդագրվել եք «%(full_name)s»-ի մասին "
 "թարմացումներին"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "արտաքին կայք. կգործեն կապի սովորական սակագները"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "իգական"
