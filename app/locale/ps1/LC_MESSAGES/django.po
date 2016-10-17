@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -156,20 +156,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Ļéårñ möré åböûţ Ĝööĝļé\n"
-"              <å ĥréƒ=\"ᐅ%(privacy_policy_url)sᐊ\" "
-"ᐅ%(target_attr)sᐊ>Þrîvåçý Þöļîçý</a>.\n"
-"            "
-
-#, python-format
-msgid ""
-"\n"
 "            %(search_engine_name)s has search result(s) matching this "
 "query.\n"
 "          "
@@ -182,32 +168,53 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "          Records Similar to: %(full_name)s\n"
 "        "
 msgstr ""
 "\n"
 "          ®éçörðš Šîmîļår ţö: ᐅ%(full_name)sᐊ\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Šéårçĥ ®éšûļţš ƒör: ᐅ%(query)sᐊ\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Ñö réšûļţš ƒöûñð ƒör: ᐅ%(query)sᐊ\n"
-"      "
 
 #, python-format
 msgid ""
@@ -586,7 +593,7 @@ msgstr "Åböûţ Ĝööĝļé Þéršöñ Fîñðér"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Åððéð å réçörð ƒör: ᐅ%(person_name)sᐊ"
+msgstr ""
 
 msgid "Age"
 msgstr "Åĝé"
@@ -633,12 +640,6 @@ msgstr "Åûţĥör'š þĥöñé ñûmbér"
 msgid "Authorization key"
 msgstr "Åûţĥörîžåţîöñ ķéý"
 
-msgid "Back to results list"
-msgstr "Båçķ ţö réšûļţš ļîšţ"
-
-msgid "Back to start"
-msgstr "Båçķ ţö šţårţ"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -681,6 +682,9 @@ msgstr "Çļöšé ŵîñðöŵ"
 
 msgid "Compare these records"
 msgstr "Çömþåré ţĥéšé réçörðš"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Çöþý åñð þåšţé ţĥé ƒöļļöŵîñĝ ĤŢMĻ çöðé ţö þûţ ţĥîš ţööļ öñ ýöûr šîţé"
@@ -743,6 +747,9 @@ msgstr "É-måîļ åððréšš"
 msgid "Edit"
 msgstr "Éðîţ"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Émbéððîñĝ ţĥé Åþþļîçåţîöñ"
 
@@ -754,12 +761,6 @@ msgstr "Éñţér åš ÝÝÝÝ-MM-ÐÐ"
 
 msgid "Enter the person's given and family names."
 msgstr "Éñţér ţĥé þéršöñ'š ĝîvéñ åñð ƒåmîļý ñåméš."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Éñţér ţĥé þéršöñ'š ñåmé ör þårţš öƒ ţĥé ñåmé."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Éñţér ţĥé þéršöñ'š ñåmé, þårţš öƒ ţĥé ñåmé, ör möbîļé þĥöñé ñûmbér."
 
 msgid "Enter the person's name."
 msgstr "Éñţér ţĥé þéršöñ'š ñåmé."
@@ -777,6 +778,9 @@ msgid ""
 msgstr ""
 "Éxţéñð éxþîråţîöñ ðåţé bý ᐅ%(extension_days)sᐊ ðåýš\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Fåmîļý ñåmé"
@@ -840,6 +844,9 @@ msgstr "Ĥömé åððréšš"
 msgid "Home country"
 msgstr "Ĥömé çöûñţrý"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Ĥöŵ çåñ ţĥîš þéršöñ bé réåçĥéð ñöŵ¿"
 
@@ -882,14 +889,14 @@ msgstr "Î ĥåvé réçéîvéð šþåm."
 msgid "I prefer not to specify."
 msgstr "Î þréƒér ñöţ ţö šþéçîƒý."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Î'm ļööķîñĝ ƒör šöméöñé"
-
-msgid "Identify who you are looking for"
-msgstr "Îðéñţîƒý ŵĥö ýöû åré ļööķîñĝ ƒör"
-
-msgid "Identify who you have information about"
-msgstr "Îðéñţîƒý ŵĥö ýöû ĥåvé îñƒörmåţîöñ åböûţ"
 
 msgid "Identifying information"
 msgstr "Îðéñţîƒýîñĝ îñƒörmåţîöñ"
@@ -968,6 +975,12 @@ msgstr "Mîššîñĝ þéršöñ'š çûrréñţ þĥöñé ñûmbér"
 msgid "More at: %(url)s"
 msgstr "Möré åţ: ᐅ%(url)sᐊ"
 
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
+
 #, python-format
 msgid ""
 "More information for developers can now be found "
@@ -975,6 +988,9 @@ msgid ""
 msgstr ""
 "Möré îñƒörmåţîöñ ƒör ðévéļöþérš çåñ ñöŵ bé ƒöûñð "
 "ᐅ%(developers_link_html)sᐊĥéréᐅ%(link_end_html)sᐊ."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -986,8 +1002,14 @@ msgstr ""
 msgid "Name"
 msgstr "Ñåmé"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Ñåmé îš réqûîréð.  Þļéåšé ĝö båçķ åñð ţrý åĝåîñ."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Ñéîĝĥbörĥööð"
@@ -1151,9 +1173,6 @@ msgstr "Þļéåšé þrövîðé åñ våļîð émåîļ åððréšš."
 msgid "Possible duplicates"
 msgstr "Þöššîbļé ðûþļîçåţéš"
 
-msgid "Possible duplicates found."
-msgstr "Þöššîbļé ðûþļîçåţéš ƒöûñð."
-
 msgid "Postal or zip code"
 msgstr "Þöšţåļ ör žîþ çöðé"
 
@@ -1281,11 +1300,17 @@ msgstr "Šţrééţ ñåmé"
 msgid "Street name only, no number"
 msgstr "Šţrééţ ñåmé öñļý, ñö ñûmbér"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
 msgstr "Šûbmîţ"
 
 msgid "Subscribe"
 msgstr "Šûbšçrîbé"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1493,14 +1518,14 @@ msgstr "Vîéŵ ţĥé réçörð"
 msgid "We have nothing matching your search."
 msgstr "Ŵé ĥåvé ñöţĥîñĝ måţçĥîñĝ ýöûr šéårçĥ."
 
-msgid "What is this person's name?"
-msgstr "Ŵĥåţ îš ţĥîš þéršöñ'š ñåmé¿"
-
 msgid "When should this record disappear?"
 msgstr "Ŵĥéñ šĥöûļð ţĥîš réçörð ðîšåþþéår¿"
 
 msgid "Where did this information come from?"
 msgstr "Ŵĥéré ðîð ţĥîš îñƒörmåţîöñ çömé ƒröm¿"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1515,6 +1540,12 @@ msgid ""
 msgstr ""
 "Ŵĥîļé ţéšţ möðé îš îñ éƒƒéçţ, réçörðš ţĥåţ åré övér 6 ĥöûrš öļð åré "
 "ðéļéţéð réĝårðļéšš öƒ ţĥé éxþîrý ðåţé."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ýéš"
@@ -1660,6 +1691,9 @@ msgstr "[Þéršöñ Fîñðér] Šţåţûš ûþðåţé ƒör ᐅ%(full_name)
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Þéršöñ Fîñðér] Ýöû åré šûbšçrîbéð ţö šţåţûš ûþðåţéš ƒör ᐅ%(full_name)sᐊ"
+
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr "éxţérñåļ šîţé; ñörmåļ çöññéçţîöñ ƒéé måý åþþļý"

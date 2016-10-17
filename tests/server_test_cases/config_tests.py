@@ -439,13 +439,13 @@ class ConfigTests(ServerTestsBase):
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=en')
+        doc = self.go('/haiti/results?query_name=xy&role=seek&lang=en')
         assert 'English results page message' in doc.text
         assert 'English query form message' in doc.text
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=fr')
+        doc = self.go('/haiti/results?query_name=xy&role=seek&lang=fr')
         assert 'French results page message' in doc.text
         assert 'French query form message' in doc.text
-        doc = self.go('/haiti/results?query=xy&role=seek&lang=ht')
+        doc = self.go('/haiti/results?query_name=xy&role=seek&lang=ht')
         assert 'English results page message' in doc.text
         assert 'English query form message' in doc.text
 

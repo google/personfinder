@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -152,22 +152,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s amarekhodi akhethiwe\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -177,9 +163,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            I-%(search_engine_name)s inemiphumela yosesho efana nalo "
-"mbuzo.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -188,28 +215,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Amarekhodi afana ne-: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Imiphumela yosesho lwe-: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Ayikho imiphumela etholelwe i-: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -372,7 +379,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Ikheli le-imeyili olifakile alivumelekile.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -588,7 +595,7 @@ msgstr "Mayelana ne-Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Ubudala"
@@ -598,9 +605,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Yonke idatha efakwe Kusitholi sabantu iyatholakala esidlangalaleni futhi "
-"ingasetshenziswa inoma ubani. I-Google ayibuyekezi noma ayiqinisekisi "
-"ukunemba kwale datha ku-google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Amanye amagama womndeni"
@@ -635,12 +642,6 @@ msgstr "Inombolo yefoni yombhali"
 msgid "Authorization key"
 msgstr "Ukhiye wokugunyazwa"
 
-msgid "Back to results list"
-msgstr "Buyela emuva kuhlu lwemiphumela"
-
-msgid "Back to start"
-msgstr "Buyela ekuqaleni"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -674,8 +675,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Chofoza lapha ukuze ubone imigomo yesevisi (isayithi elingaphandle, "
-"izindleko ezijwayelekile zokuxhumeka zingasebenza)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Chofoza lapha ukuze ubuke imiphumela."
@@ -685,6 +686,9 @@ msgstr "Vala iwindi"
 
 msgid "Compare these records"
 msgstr "Qhathanisa lawa marekhodi"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -749,6 +753,9 @@ msgstr "Ikheli le-imeyili"
 msgid "Edit"
 msgstr "Hlela"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Ukushumeka uhlelo lokusebenza"
 
@@ -760,12 +767,6 @@ msgstr "Faka njengo-YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "Faka igama lomuntu elinikeziwe namagama womndeni."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Faka igama lomuntu noma izingxenye zegama."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Faka igama lomuntu, izingxenye zegama, noma inombolo yeselula foni."
 
 msgid "Enter the person's name."
 msgstr "Faka igama lomuntu."
@@ -781,20 +782,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Nweba idethi yokuphelelwa isikhathi ngezinsuku ezingu-%(extension_days)s\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Igama lomndeni"
 
 msgid "Family name (required)"
-msgstr "Igama lomndeni (kuyadingeka)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Okuphakelayo kwezibuyekezo mayelana nalo muntu"
 
 msgid "Feedback"
-msgstr "Impendulo"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Landela lesi sixhumanisi ukuze udale irekhodi elisha"
@@ -808,7 +812,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Kusuka ku-: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Igama eligcwele"
@@ -817,7 +821,7 @@ msgid "Given name"
 msgstr "Igama elinikeziwe"
 
 msgid "Given name (required)"
-msgstr "Igama elinikeziwe (kuyadingeka)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Isitholi Somuntu se-Google"
@@ -848,6 +852,9 @@ msgstr "Ikheli lasekhaya"
 msgid "Home country"
 msgstr "Izwe lasekhaya"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Lo muntu angafinyeleleka kanjani manje?"
 
@@ -855,7 +862,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Abanye abantu abanentshisekelo kulo muntu bangaxhumana kanjani nawe"
 
 msgid "I Have Information About This Person"
-msgstr "Nginolwazi mayelana nalo muntu"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Ngifuna ulwazi"
@@ -890,14 +897,14 @@ msgstr "Ngithole ugaxekile."
 msgid "I prefer not to specify."
 msgstr "Ngincamela ukungacacisi."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Ngifuna umuntu othile"
-
-msgid "Identify who you are looking for"
-msgstr "Khomba ukuthi ufuna bani"
-
-msgid "Identify who you have information about"
-msgstr "Khomba ukuthi ubani onolwazi ngaye"
 
 msgid "Identifying information"
 msgstr "Ikhomba ulwazi"
@@ -980,7 +987,13 @@ msgstr "Inombolo yefoni yamanje yomuntu olahlekile"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Okuningi ku-: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -989,6 +1002,9 @@ msgid ""
 msgstr ""
 "Ulwazi oluningi lonjiniyela manje selingatholwa "
 "%(developers_link_html)slapha%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1000,8 +1016,14 @@ msgstr ""
 msgid "Name"
 msgstr "Igama"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Igama liyadingeka. Sicela ubuyele emuva uphinde uzame futhi."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Endaweni"
@@ -1026,7 +1048,7 @@ msgid "No notes have been posted"
 msgstr "Awekho amanothi athunyelwe"
 
 msgid "No person id was specified."
-msgstr "Ayikho i-id yomuntu eye yacaciswa."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1034,7 +1056,7 @@ msgstr "Akekho umuntu one-ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Ayikho imiphumela etholelwe i-: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Alikho ibhizinisi eligunyaziwe."
@@ -1101,9 +1123,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"SICELA WAZI: Yonke idatha efakiwe iyatholakala esidlangalaleni futhi "
-"ingasetshenziswa inoma ubani. I-Google ayibuyekezi noma iqinisekise "
-"ukunemba kwale datha."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "ISitholi sabantu"
@@ -1118,9 +1139,7 @@ msgid "Photo"
 msgstr "Isithombe"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
-"Isithombe (isayithi langaphandle; izindleko ezijwayelekile zokuxhumeka "
-"zingasebenza)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1136,8 +1155,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Sicela uhlole ukuthi uxhumane nalo muntu ngemuva kwenhlekelele, noma "
-"shintsha inkambu \"Yesimo salo muntu\"."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1169,9 +1188,6 @@ msgstr "Sicela unikeze ngekheli le-imeyili elivumelekile."
 
 msgid "Possible duplicates"
 msgstr "Okungenzeka kube izimpinda"
-
-msgid "Possible duplicates found."
-msgstr "Kutholakele ukufana okungase kube khona."
 
 msgid "Postal or zip code"
 msgstr "Ikhodi yeposi noma ye-zip"
@@ -1261,7 +1277,7 @@ msgid "Sign out"
 msgstr "Phuma ngemvume"
 
 msgid "Skip"
-msgstr "Yeqa"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Umuntu othile uthole ulwazi lokuthi lo muntu uyaphila"
@@ -1276,7 +1292,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Umuntu othile ufuna ulwazi mayelana nalo muntu"
 
 msgid "Source of Record"
-msgstr "Umthombo werekhodi"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Umthombo waleli rekhodi"
@@ -1286,13 +1302,13 @@ msgstr "Isimo"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Isimo sika-%(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Isimo somuntu"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Isimo salo muntu:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Igama lomgwaqo"
@@ -1300,11 +1316,17 @@ msgstr "Igama lomgwaqo"
 msgid "Street name only, no number"
 msgstr "Igama lomgwaqo kuphela, ngaphandle kwenombolo"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Hambisa"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Bhalisela"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1345,7 +1367,7 @@ msgstr "Umbhali ukhubaze izibuyekezo zesimo kuleli rekhodi."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Inothi le-%(full_name)s lingeziwe"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Isithombe esinikeziwe sikhulu kakhulu. Sicela ulayishe esincane."
@@ -1358,7 +1380,7 @@ msgstr "Irekhodi alikwazi ukunwetshwa."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Irekhodi le-%(full_name)s libhalisiwe"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Irekhodi lisusiwe."
@@ -1510,7 +1532,7 @@ msgid "Upload your CSV file below"
 msgstr "Layisha ifayela yakho ye-CSV ngezansi"
 
 msgid "Use current location"
-msgstr "Sebenzisa indawo yamanje"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Buka irekhodi"
@@ -1518,14 +1540,14 @@ msgstr "Buka irekhodi"
 msgid "We have nothing matching your search."
 msgstr "Asinalutho olufana nokusesha kwakho."
 
-msgid "What is this person's name?"
-msgstr "Ubani igama lalo muntu?"
-
 msgid "When should this record disappear?"
 msgstr "Kufanele leli rekhodi linyamalale nini?"
 
 msgid "Where did this information come from?"
 msgstr "Luvele kuphi lolu lwazi?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1540,6 +1562,12 @@ msgid ""
 msgstr ""
 "Ngenkathi indlela yokuhlola isebenza, amarekhodi angaphezulu kwamahora "
 "angu-6 ubudala ayasuswa ngokunganaki idethi yokuphelelwa yisikhathi."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Yebo"
@@ -1590,8 +1618,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Ungabhalisela izibuyekezo ezimayelana ne-%(full_name)s ngokufaka ikheli "
-"lakho le-imeyili lapha"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1620,7 +1648,7 @@ msgid "Your email"
 msgstr "I-imeyili yakho"
 
 msgid "Your name (required)"
-msgstr "Igama lakho (kuyadingeka)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1687,8 +1715,11 @@ msgstr "[ISitholi sabantu] Isibuyekezo sesimo se-%(full_name)s"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[ISitholi sabantu] Ubhalisele izibuyekezo zesimo ze-%(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "isayithi langaphandle; izindleko ezijwayelekile zokuxhumeka zingasebenza"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "owesifazane"

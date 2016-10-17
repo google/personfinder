@@ -608,6 +608,8 @@ class BaseHandler(webapp.RequestHandler):
         'author_made_contact': validate_yes,
         'author_name': strip,
         'author_phone': strip,
+        'your_own_email': strip,
+        'your_own_phone': strip,
         'believed_dead_permission': validate_checkbox_as_bool,
         'cache_seconds': validate_cache_seconds,
         'clone': validate_yes,
@@ -658,6 +660,8 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url2': strip,
         'profile_url3': strip,
         'query': strip,
+        'query_name': strip,
+        'query_location': strip,
         'query_type': strip,
         'read_permission': validate_checkbox_as_bool,
         'referrer': strip,
@@ -681,6 +685,7 @@ class BaseHandler(webapp.RequestHandler):
         'status': validate_status,
         'style': strip,
         'subscribe': validate_checkbox,
+        'subscribe_own_info': validate_checkbox,
         'subscribe_email': strip,
         'subscribe_permission': validate_checkbox_as_bool,
         'suppress_redirect': validate_yes,
@@ -689,6 +694,7 @@ class BaseHandler(webapp.RequestHandler):
         'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
+        'own_info': validate_yes,
     }
 
     def redirect(self, path, repo=None, permanent=False, **params):

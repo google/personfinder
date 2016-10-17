@@ -7,9 +7,8 @@ body {
 
 .header {
   padding: 1em;
-  border-bottom: 1px solid #dadada;
   overflow: auto;
-  width: 855px;
+  width: 100%;
 }
 
 .header a {
@@ -19,14 +18,10 @@ body {
 .container {
   width: 100%;
   float: right;
-  margin: 0 0 0 -205px;
 }
 
 .content {
-  padding: 2em 1em 3em;
-  margin-left: 205px;
-  width: 650px;
-  border-left: 1px solid #dadada;
+  margin: 2em;
 }
 
 .sidebar {
@@ -69,4 +64,3 @@ h2 {
 .footer {
   border-top: 1px solid #dadada;
 }
-

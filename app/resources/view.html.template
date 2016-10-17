@@ -17,6 +17,19 @@
   {{person.full_name}} - {{block.super}}
 {% endblock %}
 
+{% block logo %}
+  {% if params.query_name or params.given_name or params.family_name %}
+    {% if env.rtl %}
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
+    {% else %}
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
+    {% endif %}
+  {% else %}
+    {{block.super}}
+  {% endif %}
+  {% trans "Google Person Finder" %}
+{% endblock %}
+
 {% block head %}
   {{block.super}}
   {% if env.enable_javascript %}
@@ -50,75 +63,96 @@
   <div class="view">
 
     <div class="column start">
-      <div class="fields-table person">
+      <div class="card person">
         <div class="header section">
           <h1 class="full-name">{{person.full_name_list|first}}
         </div>
         <div>
+          {% if person.provider_name %}<br />
+            <h2>
+              ({% trans "Provided by:" %}
+              <span class="provider-name">{{person.provider_name}}</span>)
+            </h2>
+          {% endif %}
 
-          <h2>
-            {% if person.provider_name %}<br />
-            ({% trans "Provided by:" %}
-            <span class="provider-name">{{person.provider_name}}</span>)
-            {% endif %}
-          </h2>
-
-          <div class="name section">
-            <h2>{% trans "Identifying information" %}</h2>
-            {% if config.use_alternate_names %}
+          {% if person.alternate_names or person.sex_text or person.age %}
+            <div class="name section">
+              <h2>{% trans "Identifying information" %}</h2>
+              {% if config.use_alternate_names %}
+                {% if person.alternate_names %}
+                  <div class="field">
+                    <span class="label">{% trans "Alternate names" %}:</span>
+                    <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
+                  </div>
+                {% endif %} 
+              {% endif %}
+              {% if person.sex_text %}           
+                <div class="field">
+                  <span class="label">{% trans "Sex" %}:</span>
+                  <span class="value">{{person.sex_text}}</span>
+                </div>
+              {% endif %} 
+              {% comment %}
+              Don't show the date of birth in the UI for now.
               <div class="field">
-                <span class="label">{% trans "Alternate names" %}:</span>
-                <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
+                <span class="label">{% trans "Date of birth" %}:</span>
+                <span class="value">{{person.date_of_birth}}</span>
               </div>
-            {% endif %}
-            <div class="field">
-              <span class="label">{% trans "Sex" %}:</span>
-              <span class="value">{{person.sex_text}}</span>
+              {% endcomment %}
+              {% if person.age %}
+                <div class="field">
+                  <span class="label">{% trans "Age" %}:</span>
+                  <span class="value">{{person.age}}</span>
+                </div>
+              {% endif %}  
+              <div class="end-multi-columns"></div>
             </div>
-            {% comment %}
-            Don't show the date of birth in the UI for now.
-            <div class="field">
-              <span class="label">{% trans "Date of birth" %}:</span>
-              <span class="value">{{person.date_of_birth}}</span>
-            </div>
-            {% endcomment %}
-            <div class="field">
-              <span class="label">{% trans "Age" %}:</span>
-              <span class="value">{{person.age}}</span>
-            </div>
-            <div class="end-multi-columns"></div>
-          </div>
+          {% endif %}  
 
-          <div class="address section">
-            <h2>{% trans "Home address" %}</h2>
-            <div class="field">
-              <span class="label">{% trans "Street name" %}:</span>
-              <span class="value">{{person.home_street}}</span>
-            </div>
-            <div class="field">
-              <span class="label">{% trans "Neighborhood" %}:</span>
-              <span class="value">{{person.home_neighborhood}}</span>
-            </div>
-            <div class="field">
-              <span class="label">{% trans "City" %}:</span>
-              <span class="value">{{person.home_city}}</span>
-            </div>
-            <div class="field">
-              <span class="label">{% trans "Province or state" %}:</span>
-              <span class="value">{{person.home_state}}</span>
-            </div>
-            {% if config.use_postal_code %}
+          {% if person.home_street or person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}          
+            <div class="address section">
+              <h2>{% trans "Home address" %}</h2>
+              {% if person.home_street %}
+                <div class="field">
+                  <span class="label">{% trans "Street name" %}:</span>
+                  <span class="value">{{person.home_street}}</span>
+                </div>
+              {% endif %}
+              {% if person.home_neighborhood %}  
+                <div class="field">
+                  <span class="label">{% trans "Neighborhood" %}:</span>
+                  <span class="value">{{person.home_neighborhood}}</span>
+                </div>
+              {% endif %}
+              {% if person.home_city %}
+                <div class="field">
+                  <span class="label">{% trans "City" %}:</span>
+                  <span class="value">{{person.home_city}}</span>
+                </div>
+              {% endif %}
+              {% if person.home_state %}
+                <div class="field">
+                  <span class="label">{% trans "Province or state" %}:</span>
+                  <span class="value">{{person.home_state}}</span>
+                </div>
+              {% endif %}
+              {% if config.use_postal_code %}
+                {% if person.home_postal_code %}
+                  <div class="field">
+                    <span class="label">{% trans "Postal or zip code" %}:</span>
+                    <span class="value">{{person.home_postal_code}}</span>
+                  </div>
+                {% endif %}
+              {% endif %}
+              {% if person.home_country %}
               <div class="field">
-                <span class="label">{% trans "Postal or zip code" %}:</span>
-                <span class="value">{{person.home_postal_code}}</span>
+                <span class="label">{% trans "Home country" %}:</span>
+                <span class="value">{{person.home_country}}</span>
               </div>
-            {% endif %}
-            <div class="field">
-              <span class="label">{% trans "Home country" %}:</span>
-              <span class="value">{{person.home_country}}</span>
+              {% endif %}
+              <div class="end-multi-columns"></div>
             </div>
-            <div class="end-multi-columns"></div>
-          </div>
+          {% endif %}  
 
           {% if person.description %}
             <div class="description section">
@@ -177,39 +211,43 @@
             <h2>{% trans "Source of this record" %}</h2>
             <div class="field">
               <span class="label">{% trans "Author's name" %}:</span>
-              <span class="value">{{person.author_name}}</span>
-            </div>
+              <span class="value">{{person.author_name}}</span>                
+            </div>            
             {% if env.enable_captcha %}
-              <div class="field">
-                <span class="label">
-                  {% trans "Author's phone number" %}:
-                </span>
-                <span class="value">
-                  {% if show_private_info %}
-                    {{person.author_phone}}</span>
-                  {% else %}
-                    {% if person.author_phone %}
-                      <a href="{{reveal_url}}">
-                        {% trans "(click to reveal)" %}</a>
+              {% if person.author_phone %}
+                <div class="field">
+                  <span class="label">
+                    {% trans "Author's phone number" %}:
+                  </span>
+                  <span class="value">
+                    {% if show_private_info %}
+                      {{person.author_phone}}</span>
+                    {% else %}
+                      {% if person.author_phone %}
+                        <a href="{{reveal_url}}">
+                          {% trans "(click to reveal)" %}</a>
+                      {% endif %}
                     {% endif %}
-                  {% endif %}
-                </span>
-              </div>
-              <div class="field">
-                <span class="label">
-                  {% trans "Author's e-mail address" %}:
-                </span>
-                <span class="value">
-                  {% if show_private_info %}
-                    {{person.author_email}}
-                  {% else %}
-                    {% if person.author_email %}
-                      <a href="{{reveal_url}}">
-                        {% trans "(click to reveal)" %}</a>
+                  </span>
+                </div>
+              {% endif %}
+              {% if person.author_email %}
+                <div class="field">
+                  <span class="label">
+                    {% trans "Author's e-mail address" %}:
+                  </span>
+                  <span class="value">
+                    {% if show_private_info %}
+                      {{person.author_email}}
+                    {% else %}
+                      {% if person.author_email %}
+                        <a href="{{reveal_url}}">
+                          {% trans "(click to reveal)" %}</a>
+                      {% endif %}
                     {% endif %}
-                  {% endif %}
-                </span>
-              </div>
+                  </span>
+                </div>
+              {% endif %}  
             {% endif %}
             {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
               <div class="field">
@@ -335,15 +373,6 @@
 
       </div>
       <p>
-      {% if params.query or params.given_name or params.family_name %}
-        <a href="{{results_url}}">
-          {{env.back_chevron}} {% trans "Back to results list" %}
-        </a>
-      {% else %}
-        <a href="{{env.start_url}}">
-          {{env.back_chevron}} {% trans "Back to start" %}
-        </a>
-      {% endif %}
     </div>
 
     <div class="column end">

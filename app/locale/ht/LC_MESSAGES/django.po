@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -135,22 +135,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s dosye chwazi\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -160,9 +146,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s gen rezilta rechèch (yo) ki koresponn "
-"ak rechèch sa a.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -171,28 +198,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Dosye ki Menm jan ak: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Rezilta rechèch pou: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Pa gen rezilta  pou: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -345,7 +352,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Adrès imel la ou antre a pa valab.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -532,7 +539,7 @@ msgstr "Konsènan Google Zouti Pou Chèche Moun"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Nou ajoute nan list la: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Laj"
@@ -542,8 +549,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Tout done yo te antre nan Chèche Moun la disponib ak piblik la ak nenpòt "
-"moun ka itilize. Google pa revize oswa verifye presizyon nan done sa a "
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -579,12 +586,6 @@ msgstr "Nimewo telefòn otè a"
 msgid "Authorization key"
 msgstr "Kle Otorizasyon"
 
-msgid "Back to results list"
-msgstr "Retounen nan lis rezilta a"
-
-msgid "Back to start"
-msgstr "Retounen nan komansman"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -615,8 +616,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Klike la pou wè kondisyon sou sèvis (sit ekstèn; yo ka aplike frè nòmal "
-"pou koneksyon)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Peze la pou ka wè resilta."
@@ -626,6 +627,9 @@ msgstr "Fèmen fenèt la"
 
 msgid "Compare these records"
 msgstr "Konpare dosye sa yo"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Kopye epi kole kòd HTML sa a pou mete zouti sa a sou sit ou a."
@@ -688,6 +692,9 @@ msgstr "Imèl"
 msgid "Edit"
 msgstr "Modifye"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Entegrasyon aplikasyon an"
 
@@ -699,12 +706,6 @@ msgstr "Mete tankou AAAA-MM-JJ"
 
 msgid "Enter the person's given and family names."
 msgstr "Antre non moun nan ak tout non fanmi li"
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Antre non moun nan oswa yon pati nan non li."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Antre non moun nan, yon pati nan non li, oswa nimewo telefòn mobil li."
 
 msgid "Enter the person's name."
 msgstr "Antre non moun nan."
@@ -720,20 +721,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Pwolonje dat ekspirasyon an pa %(extension_days)s jou\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Non fanmi"
 
 msgid "Family name (required)"
-msgstr "Non Fanmi (nesesè)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Mete dènye nouvèl sou moun sa"
 
 msgid "Feedback"
-msgstr "Reyaksyon"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Suiv lyen sa pou kreye yon nouvo dosye"
@@ -747,7 +751,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Soti nan: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Non Konplè"
@@ -756,7 +760,7 @@ msgid "Given name"
 msgstr "Premye non"
 
 msgid "Given name (required)"
-msgstr "Bay non (nesesè)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Zouti Pou Chèche Moun Google"
@@ -785,6 +789,9 @@ msgstr "Adrès kay la"
 msgid "Home country"
 msgstr "Peyi kote ou moun"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Kouman nou ka kominike ak moun sa a  kounye a?"
 
@@ -792,7 +799,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Kouman lòt moun ki enterese a moun sa a ka kontakte ou"
 
 msgid "I Have Information About This Person"
-msgstr "Mwen Gen Enfòmasyon Sou Moun Sa a"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
@@ -827,14 +834,14 @@ msgstr "Mwen te resevwa espam"
 msgid "I prefer not to specify."
 msgstr "Mwen prefere pa presize."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Mwen ap chèche yon moun"
-
-msgid "Identify who you are looking for"
-msgstr "Idantifye moun ou ap chèche a"
-
-msgid "Identify who you have information about"
-msgstr "Idantifye moun ou genyen enfòmasyon sou li a"
 
 msgid "Identifying information"
 msgstr "Enfomasyon pou idantifikasyon"
@@ -913,7 +920,13 @@ msgstr "Telefòn moun nou paka jwenn nan genyen kounye a"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Plis nan: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -922,6 +935,9 @@ msgid ""
 msgstr ""
 "W ap  jwenn plis enfòmasyon pou devlopè kounye a ka "
 "%(developers_link_html)s la a %(link_end_html)s ."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -933,8 +949,14 @@ msgstr ""
 msgid "Name"
 msgstr "Non"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Non obligatwa. Tanpri retounen epi eseye ankò."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Katye"
@@ -957,7 +979,7 @@ msgid "No notes have been posted"
 msgstr "Pa gen nòt ki afiche"
 
 msgid "No person id was specified."
-msgstr "Yo pa te espesifye id pèson."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -965,7 +987,7 @@ msgstr "Pa gen moun ak idantite: %(id_str)s ."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Pa gen rezilta  pou: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Pa gen okenn antite Otorizasyon."
@@ -1030,8 +1052,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"TANPRI REMAKE: Tout enfòmasyon ou mete disponib ak piblik la ak nenpòt "
-"moun ka itilize. Google pa revize oswa verifye presizyon nan done sa a."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Zouti Pou Chèche Moun"
@@ -1046,7 +1068,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Foto (sit ekstèn; nòmal frè koneksyon ka aplike)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1060,8 +1082,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Tanpri tchke si ou antre an kontak avèk moun sa a aprè tranbleman tè a, "
-"oswa chanje domèn sou \"Dènye nouvèl moun sa a\"."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1093,9 +1115,6 @@ msgstr "Tanpri bay yon adrès imèl ki valab."
 
 msgid "Possible duplicates"
 msgstr "Kapab se yon doub"
-
-msgid "Possible duplicates found."
-msgstr "Nou jwenn yo posib kopi."
 
 msgid "Postal or zip code"
 msgstr "Kòd postal"
@@ -1185,7 +1204,7 @@ msgid "Sign out"
 msgstr "Dekonekte"
 
 msgid "Skip"
-msgstr "Sote"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Gen yon moun ki resevwa enfòmasyon moun sa an vi"
@@ -1200,7 +1219,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Yon moun ap chèche enfomasyon sou moun sa a"
 
 msgid "Source of Record"
-msgstr "Sous Dosye"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Sous dosye sa a"
@@ -1210,13 +1229,13 @@ msgstr "Dènye nouvèl"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Ki dènye nouvèl sou %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Ki dènye nouvèl sou moun la"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Dènye nouvèl sou moun sa a"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Non lari a"
@@ -1224,11 +1243,17 @@ msgstr "Non lari a"
 msgid "Street name only, no number"
 msgstr "Non lari a sèlman, pa ekri nimewo kay la"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Soumèt"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Abone"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1265,7 +1290,7 @@ msgstr "Èske otè a te dezaktive denyè nouvèl sou dosye sa a."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Nòt pou %(full_name)s te ajoute"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Imaj ou telechaje a twò lou. Tanpri telechaje yon lòt ki pi piti."
@@ -1278,7 +1303,7 @@ msgstr "Dosye a pa kapab pwolonje."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Dosye pou %(full_name)s te anrejistre"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Dosye a te efase."
@@ -1427,7 +1452,7 @@ msgid "Upload your CSV file below"
 msgstr "Telechanje fichye CSV ou pi ba a"
 
 msgid "Use current location"
-msgstr "Itilize kote aktyèl la"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Gade dosye a"
@@ -1435,14 +1460,14 @@ msgstr "Gade dosye a"
 msgid "We have nothing matching your search."
 msgstr "Nou pa jwen anyen ki koresponn ak rechèch ou a."
 
-msgid "What is this person's name?"
-msgstr "Kijan moun lan rele?"
-
 msgid "When should this record disappear?"
 msgstr "Kilè dozye sa a ta dwe disparèt?"
 
 msgid "Where did this information come from?"
 msgstr "Kote enfòmasyon sa a sòti?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1457,6 +1482,12 @@ msgid ""
 msgstr ""
 "Pandan mòd tès la aktive, dosye ki gen plis pase 6 èdtan yo ap efase "
 "kèlkeswa dat ekspirasyon."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Wi"
@@ -1507,8 +1538,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Ou ka abòne dènye enfòmasyon sou %(full_name)s pandan w ap antre adrès "
-"e-mail ou isit la"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1537,7 +1568,7 @@ msgid "Your email"
 msgstr "Imèl ou"
 
 msgid "Your name (required)"
-msgstr "Non ou (nesesè)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1601,8 +1632,11 @@ msgstr "[Zouti Pou Chèche Moun] Dènye nouvèl pou %(full_name)s"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Zouti Pou Chèche Moun] Ou abòne nan dènye nouvèl sou %(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "sit ekstèn; yo ka aplike frè pou koneksyon nòmal"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "fi"

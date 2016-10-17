@@ -318,7 +318,7 @@ class PersonNoteTests(ServerTestsBase):
         assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
 
         # Robots are not okay on the results page.
-        doc = self.go('/haiti/results?role=seek&query=_test_full_name')
+        doc = self.go('/haiti/results?role=seek&query_name=_test_full_name&query_location=')
         assert '_test_full_name' in doc.content
         assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
 
@@ -440,7 +440,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -462,10 +462,10 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query=_test_given_name' in link.get('href')
+        assert 'query_name=_test_given_name' in link.get('href')
 
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
@@ -488,7 +488,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -498,6 +498,7 @@ class PersonNoteTests(ServerTestsBase):
         # Submit the create form with minimal information.
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name')
@@ -511,7 +512,7 @@ class PersonNoteTests(ServerTestsBase):
             details={'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_given_name']),
                                  some_have=(['_test_given_name']),
@@ -564,7 +565,7 @@ class PersonNoteTests(ServerTestsBase):
         person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(
             1, all_have=['_test_given_name'], some_have=['_test_given_name'],
@@ -576,6 +577,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with complete information
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='_test_author_email',
                       author_phone='_test_author_phone',
@@ -717,7 +719,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='ABCD EFGH IJKL MNOP')
+        self.s.submit(search_form, query_name='ABCD EFGH IJKL MNOP')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -726,6 +728,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with a valid given and family name
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='ABCD EFGH',
                       family_name='IJKL MNOP',
                       alternate_given_names='QRST UVWX',
@@ -733,27 +736,27 @@ class PersonNoteTests(ServerTestsBase):
                       author_name='author_name')
 
         # Try a middle-name match.
-        self.s.submit(search_form, query='EFGH')
+        self.s.submit(search_form, query_name='EFGH')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try a middle-name non-match.
-        self.s.submit(search_form, query='ABCDEF')
+        self.s.submit(search_form, query_name='ABCDEF')
         self.verify_results_page(0)
 
         # Try a middle-name prefix match.
-        self.s.submit(search_form, query='MNO')
+        self.s.submit(search_form, query_name='MNO')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try a multiword match.
-        self.s.submit(search_form, query='MNOP IJK ABCD EFG')
+        self.s.submit(search_form, query_name='MNOP IJK ABCD EFG')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try an alternate-name prefix non-match.
-        self.s.submit(search_form, query='QRS')
+        self.s.submit(search_form, query_name='QRS')
         self.verify_results_page(0)
 
         # Try a multiword match on an alternate name.
-        self.s.submit(search_form, query='ABCD EFG QRST UVWX')
+        self.s.submit(search_form, query_name='ABCD EFG QRST UVWX')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
     def test_indexing_japanese_names(self):
@@ -779,7 +782,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='山田 太郎')
+        self.s.submit(search_form, query_name='山田 太郎')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -795,42 +798,42 @@ class PersonNoteTests(ServerTestsBase):
                       author_name='author_name')
 
         # Try a family name match.
-        self.s.submit(search_form, query='山田')
+        self.s.submit(search_form, query_name='山田')
         self.verify_results_page(1, all_have=([u'山田 太郎',
                                                u'やまだ たろう']))
 
         # Try a full name prefix match.
-        self.s.submit(search_form, query='山田太')
+        self.s.submit(search_form, query_name='山田太')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try a full name match, where given and family names are not segmented.
-        self.s.submit(search_form, query='山田太郎')
+        self.s.submit(search_form, query_name='山田太郎')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate family name match.
-        self.s.submit(search_form, query='やまだ')
+        self.s.submit(search_form, query_name='やまだ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name match with given name and family name segmented.
-        self.s.submit(search_form, query='やまだ たろう')
+        self.s.submit(search_form, query_name='やまだ たろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name match without given name and family name
         # segmented.
-        self.s.submit(search_form, query='やまだたろう')
+        self.s.submit(search_form, query_name='やまだたろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name prefix match, but we don't index prefixes for
         # alternate names.
-        self.s.submit(search_form, query='やまだたろ')
+        self.s.submit(search_form, query_name='やまだたろ')
         self.verify_results_page(0)
 
         # Try an alternate family name match with katakana variation.
-        self.s.submit(search_form, query='ヤマダ')
+        self.s.submit(search_form, query_name='ヤマダ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate family name match with romaji variation.
-        self.s.submit(search_form, query='YAMADA')
+        self.s.submit(search_form, query_name='YAMADA')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
     def test_have_information_regular(self):
@@ -873,6 +876,7 @@ class PersonNoteTests(ServerTestsBase):
         # Submit the create form with minimal information
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name',
@@ -913,6 +917,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Submit the create form with complete information
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='_test_author_email',
                       author_phone='_test_author_phone',
@@ -979,6 +984,39 @@ class PersonNoteTests(ServerTestsBase):
                                ip_address='127.0.0.1',
                                Note_text='_test A note body',
                                Note_status='believed_dead')
+
+    def test_inputting_own_information(self):
+        """Check if some params are set automatically
+        when "I want to input my own information" is selected"""
+        d = self.go('/haiti/create?role=provide')
+        self.s.submit(d.cssselect_one('form'),
+                      own_info='yes',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      your_own_email='_test_email',
+                      your_own_phone='_test_phone',
+                      text='_test A note body')
+        person = Person.all().get()
+
+        # Check if author's information set to
+        # person's given name, own email and phone automatically
+        self.verify_details_page(
+            num_notes=1,
+            full_name='_test_given_name _test_family_name',
+            details={
+                'Author\'s name:': '_test_given_name',
+                'Author\'s phone number:': '(click to reveal)',
+                'Author\'s e-mail address:': '(click to reveal)'})
+
+        view_url = '/haiti/view?id=' + person.record_id
+        doc = self.s.go(view_url)
+        note = doc.cssselect('.view.note')[-1]
+        note_attrs = get_all_attrs(note)
+
+        # Check if the status set to is_note_author automatically
+        assert [v for k, v in note_attrs if 'is_note_author' in v], note_attrs
+        assert not [v for k, v in note_attrs if 'believed_dead' in v], \
+                note_attrs
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -1199,7 +1237,7 @@ http://www.foo.com/_account_1''',
                 data=data, type='application/xml')
 
         # On Search results page,  we should see Provided by: domain
-        doc = self.go('/haiti/results?role=seek&query=_test_last_name')
+        doc = self.go('/haiti/results?role=seek&query_name=_test_last_name&query_location=')
         assert get_all_text(doc.cssselect_one('.provider-name')) == (
             'mytestdomain.com')
         assert '_test_last_name' in doc.content
@@ -1244,6 +1282,7 @@ http://www.foo.com/_account_1''',
         # Submit the create form with minimal information
         create_form = self.s.doc.cssselect_one('form')
         self.s.submit(create_form,
+                      own_info='no',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
                       author_name='_test_author_name',
@@ -1262,7 +1301,7 @@ http://www.foo.com/_account_1''',
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
-            '/haiti/results?role=seek&query=_test_last_name')
+            '/haiti/results?role=seek&query_name=_test_last_name&query_location=')
         assert get_all_text(doc.cssselect_one('.provider-name')) == (
             'globaltestdomain.com')
         assert '_test_last_name' in doc.content
@@ -1284,7 +1323,7 @@ http://www.foo.com/_account_1''',
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.status.card')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
@@ -1293,6 +1332,7 @@ http://www.foo.com/_account_1''',
         # Create a record with no status and get the new record's ID.
         form = doc.cssselect_one('form')
         doc = self.s.submit(form,
+                            own_info='no',
                             given_name='_test_given',
                             family_name='_test_family',
                             author_name='_test_author',
@@ -1302,7 +1342,7 @@ http://www.foo.com/_account_1''',
         # Check that the right status options appear on the view page.
         self.s.go(view_url)
         doc = self.go_to_add_note_page()
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.create.note')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS)
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
@@ -1315,7 +1355,7 @@ http://www.foo.com/_account_1''',
 
         # Set the status in a note and check that it appears on the view page.
         form = doc.cssselect_one('form')
-        self.s.submit(form, author_name='_test_author2', text='_test_text',
+        self.s.submit(form, own_info='no', author_name='_test_author2', text='_test_text',
                       status='believed_alive')
         doc = self.s.go(view_url)
         note = doc.cssselect('.view.note')[-1]
@@ -1334,11 +1374,13 @@ http://www.foo.com/_account_1''',
 
         # Set status to is_note_author, but don't check author_made_contact.
         self.s.submit(form,
+                      own_info='no',
                       author_name='_test_author',
                       text='_test_text',
                       status='is_note_author')
         self.assert_error_deadend(
             self.s.submit(form,
+                          own_info='no',
                           author_name='_test_author',
                           text='_test_text',
                           status='is_note_author'),
@@ -1352,7 +1394,7 @@ http://www.foo.com/_account_1''',
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.status.card')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
@@ -1362,6 +1404,7 @@ http://www.foo.com/_account_1''',
         # Create a record with no status and get the new record's ID.
         form = doc.cssselect_one('form')
         doc = self.s.submit(form,
+                            own_info='no',
                             given_name='_test_given',
                             family_name='_test_family',
                             author_name='_test_author',
@@ -1372,7 +1415,7 @@ http://www.foo.com/_account_1''',
         # on the view page.
         self.s.go(view_url)
         doc = self.go_to_add_note_page()
-        note = doc.cssselect_one('.fields-table.note')
+        note = doc.cssselect_one('.create.note')
         options = note.xpath('descendant::select[@name="status"]/option')
         assert len(options) == len(ServerTestsBase.NOTE_STATUS_OPTIONS) - 1
         for option, text in zip(options, ServerTestsBase.NOTE_STATUS_OPTIONS):
@@ -1385,6 +1428,7 @@ http://www.foo.com/_account_1''',
         # Set the status in a note and check that it appears on the view page.
         self.s.submit(
             self.s.doc.cssselect_one('form'),
+            own_info='no',
             author_name='_test_author2',
             text='_test_text',
             status='believed_alive')
@@ -1411,6 +1455,7 @@ http://www.foo.com/_account_1''',
         doc = self.go_to_add_note_page()
         self.assert_error_deadend(
             self.s.submit(self.s.doc.cssselect_one('form'),
+                          own_info='no',
                           author_name='_test_author',
                           text='_test_text',
                           status='believed_dead'),
@@ -2484,18 +2529,21 @@ _read_profile_url2</pfif:profile_urls>
         # Add a first person to datastore.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_search_given_name',
                       family_name='_search_1st_family_name',
                       author_name='_search_1st_author_name')
         # Add a note for this person.
         self.go_to_add_note_page()
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       author_made_contact='yes',
                       text='this is text for first person',
                       author_name='_search_1st_note_author_name')
         # Add a 2nd person with same given name but different family name.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_search_given_name',
                       family_name='_search_2nd_family_name',
                       author_name='_search_2nd_author_name')
@@ -2504,6 +2552,7 @@ _read_profile_url2</pfif:profile_urls>
         # Add a note for this 2nd person.
         self.go_to_add_note_page()
         self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
                       author_made_contact='yes',
                       text='this is text for second person',
                       author_name='_search_2nd_note_author_name')
@@ -3702,6 +3751,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Submit the create form with complete information.
         # Note contains bad words
         self.s.submit(create_form,
+                      own_info='no',
                       author_name='_test_author_name',
                       author_email='test1@example.com',
                       author_phone='_test_author_phone',
@@ -3724,6 +3774,7 @@ _feed_profile_url2</pfif:profile_urls>
         author_email = self.s.doc.cssselect_one('input#author_email')
         button = self.s.doc.xpath_one('//input[@value="Send email"]')
         doc = self.s.submit(button,
+                            own_info='no',
                             author_email='test1@example.com')
         assert 'Your request has been processed successfully' in doc.text
 
@@ -3789,6 +3840,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go_to_add_note_page()
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       author_name='_test_author2',
                       text='_test add note with bad words.',
                       status='believed_alive')
@@ -3799,6 +3851,7 @@ _feed_profile_url2</pfif:profile_urls>
         author_email = self.s.doc.cssselect_one('input#author_email')
         button = self.s.doc.xpath_one('//input[@value="Send email"]')
         doc = self.s.submit(button,
+                            own_info='no',
                             author_email='test2@example.com')
         assert 'request has been processed successfully' in self.s.doc.text
 
@@ -3938,7 +3991,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4063,7 +4116,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Fake a valid captcha and actually reverse the deletion
         form = [f for f in doc.cssselect('form') if
                 f.get('action').endswith('/restore')][0]
-        doc = self.s.submit(form, test_mode='yes')
+        doc = self.s.submit(form, own_info='no', test_mode='yes')
         assert 'Identifying information' in doc.text
         assert '_test_given_name _test_family_name' in doc.text
 
@@ -4104,7 +4157,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' not in doc.text
 
         # The read API should show a record with all the fields present,
@@ -4244,7 +4297,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4302,7 +4355,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
     def test_add_note_for_deleted_person(self):
@@ -4323,6 +4376,7 @@ _feed_profile_url2</pfif:profile_urls>
         note_form = view_doc.cssselect_one('form')
         doc = self.s.submit(
             note_form,
+            own_info='no',
             text='test text',
             author_name= 'test author',
             author_made_contact= 'no')
@@ -4570,7 +4624,7 @@ _feed_profile_url2</pfif:profile_urls>
                       '&id2=test.google.com/person.2')
         button = doc.xpath_one(
                 '//input[@value="Yes, these are the same person"]')
-        doc = self.s.submit(button, text='duplicate test', author_name='foo')
+        doc = self.s.submit(button, own_info='no', text='duplicate test', author_name='foo')
 
         # Verify subscribers were notified
         self.verify_email_sent(2)
@@ -4682,7 +4736,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid captcha response is an error
         self.s.back()
         button = doc.xpath_one('//input[@value="Subscribe"]')
-        doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
+        doc = self.s.submit(button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
@@ -4690,14 +4744,14 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid email is an error (even with valid captcha)
         INVALID_EMAIL = 'test@example'
         doc = self.s.submit(
-            button, subscribe_email=INVALID_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=INVALID_EMAIL, test_mode='yes')
         assert 'Invalid e-mail address. Please try again.' in doc.text
         assert len(person.get_subscriptions()) == 0
 
         # Valid email and captcha is success
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'successfully subscribed. ' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()
@@ -4717,7 +4771,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person is shown info page
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'already subscribed. ' in doc.text
         assert 'for _test_full_name' in doc.text
         assert len(person.get_subscriptions()) == 1
@@ -4725,7 +4779,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person with new language is success
         self.s.back()
         doc = self.s.submit(
-            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
+            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
         assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()
@@ -4757,6 +4811,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert d.xpath('//input[@name="alternate_family_names"]')
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4770,7 +4825,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?query=_test_given+_test_family')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4786,6 +4842,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'Family name' not in d.text
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4796,7 +4853,8 @@ _feed_profile_url2</pfif:profile_urls>
             '_test_given')
         assert '_test_family' not in d.content
 
-        self.go('/pakistan/results?query=_test_given+_test_family')
+        self.go('/pakistan/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1)
         first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
         assert '_test_given' in first_title
@@ -4834,6 +4892,7 @@ _feed_profile_url2</pfif:profile_urls>
                 alternate_given_input.sourceline)
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4848,7 +4907,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_family _test_alternate_given'})
 
-        self.go('/japan/results?query=_test_family+_test_given&lang=en')
+        self.go('/japan/results?role=seek&'
+                'query_name=_test_family+_test_given&lang=en&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_family _test_given',
             '(_test_alternate_family _test_alternate_given)']))
@@ -4883,6 +4943,7 @@ _feed_profile_url2</pfif:profile_urls>
                 alternate_given_input.sourceline)
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4896,7 +4957,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?query=_test_given+_test_family')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4916,6 +4978,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert d.xpath('//input[@name="alternate_family_names"]')
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4928,7 +4991,8 @@ _feed_profile_url2</pfif:profile_urls>
                 'Alternate names:':
                     '_test_alternate_given _test_alternate_family'})
 
-        self.go('/haiti/results?query=_test_given+_test_family')
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4945,6 +5009,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'Alternate family names' not in d.text
 
         self.s.submit(d.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       alternate_given_names='_test_alternate_given',
@@ -4959,7 +5024,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert '_test_alternate_given' not in d.text
         assert '_test_alternate_family' not in d.text
 
-        self.go('/pakistan/results?query=_test_given+_test_family')
+        self.go('/pakistan/results?role=seek&query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1)
         first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
         assert '_test_given' in first_title
@@ -4968,11 +5033,47 @@ _feed_profile_url2</pfif:profile_urls>
         person.delete()
 
 
+    def test_search_name_and_location(self):
+        # enable_fulltext_search=True
+        config.set(enable_fulltext_search=True)
+        d = self.go('/haiti/create')
+        assert d.xpath('//input[@name="given_name"]')
+        assert d.xpath('//input[@name="family_name"]')
+        assert d.xpath('//label[@for="home_street"]')
+        assert d.xpath('//input[@name="home_street"]')
+        assert d.xpath('//label[@for="home_neighborhood"]')
+        assert d.xpath('//input[@name="home_neighborhood"]')
+        assert d.xpath('//label[@for="home_city"]')
+        assert d.xpath('//input[@name="home_city"]')
+        assert d.xpath('//label[@for="home_state"]')
+        assert d.xpath('//input[@name="home_state"]')
+        assert d.xpath('//label[@for="home_country"]')
+        assert d.xpath('//input[@name="home_country"]')
+        # Submit a person record.
+        self.s.submit(d.cssselect_one('form'),
+                      given_name='_test_given',
+                      family_name='_test_family',
+                      home_street='_test_home_street',
+                      home_neighborhood='_test_home_neighborhood',
+                      home_city='_test_home_city',
+                      home_state='_test_home_state',
+                      home_country='_test_home_country',
+                      author_name='_test_author')
+        person = Person.all().get()
+        self.go('/haiti/results?role=seek&'
+                'query_name=_test_given+_test_family&'
+                'query_location=_test_home_street+_test_home_neighborhood+'
+                '_test_home_city+_test_home_state+_test_home_country')
+        self.verify_results_page(1)
+        person.delete()
+
+
     def test_config_allow_believed_dead_via_ui(self):
         # allow_believed_dead_via_ui=True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/haiti/create')
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4984,6 +5085,7 @@ _feed_profile_url2</pfif:profile_urls>
         config.set_for_repo('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/japan/create')
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       author_name='_test_author')
@@ -4999,6 +5101,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert doc.xpath('//input[@name="home_postal_code"]')
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5015,6 +5118,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert not doc.xpath('//input[@name="home_postal_code"]')
 
         self.s.submit(doc.cssselect_one('form'),
+                      own_info='no',
                       given_name='_test_given',
                       family_name='_test_family',
                       home_postal_code='_test_12345',
@@ -5083,6 +5187,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Submit a person record.
         self.s.submit(create_form,
+                      own_info='no',
                       given_name=test_given_name,
                       family_name=test_family_name,
                       author_name='_test_author_name',
@@ -5099,7 +5204,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record just submitted.
         self.s.submit(
-            search_form, query=u'%s %s' % (test_given_name, test_family_name))
+            search_form, query_name=u'%s %s' % (test_given_name, test_family_name))
         assert_params()
         self.verify_results_page(1, all_have=([test_given_name]),
                                  some_have=([test_given_name]))
@@ -5121,10 +5226,10 @@ _feed_profile_url2</pfif:profile_urls>
         """Test that Document.cssselect works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert doc.cssselect_one('div.subtitle-bar').text.strip() == 'Haiti Earthquake'
 
     def test_xpath(self):
         """Test that Document.xpath works. May delete later.
         """
         doc = self.go('/haiti/')
-        assert doc.cssselect_one('a.repo').text.strip() == 'Haiti Earthquake'
+        assert doc.cssselect_one('div.subtitle-bar').text.strip() == 'Haiti Earthquake'

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -150,22 +150,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s жазуу тандалды\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -175,9 +161,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            Бул талапка туура келген %(search_engine_name)s издөө "
-"жыйынтыгы бар\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -186,28 +213,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Буга окшош жазуулар: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          %(query)s үчүн издөө натыйжалары\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        %(query)s боюнча эч нерсе табылган жок\n"
-"      "
 
 #, python-format
 msgid ""
@@ -367,7 +374,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Киргизилген электрондук почта дареги жараксыз.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -576,7 +583,7 @@ msgstr "Google Киши Издегич тууралуу"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Жашы"
@@ -586,9 +593,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Киши Тапкычка киргизилген бардык дайындар жалпыга ачык жана баарына "
-"жеткиликтүү. Google бул маалыматты кароодон өткөзбөйт жана тактыгын "
-"текшербейт. Толугураак: google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Башка фамилиялары"
@@ -623,12 +630,6 @@ msgstr "Автордун телефон номуру"
 msgid "Authorization key"
 msgstr "Авторизация ачкычы"
 
-msgid "Back to results list"
-msgstr "Натыйжалар тизмесине кайтуу"
-
-msgid "Back to start"
-msgstr "Башталышына кайтуу"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -660,8 +661,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Тейлөө шарттарын көрүү үчүн бул жерди чыкылдатыңыз (сырткы сайт; кадимки "
-"байланыш үчүн акы алынышы мүмкүн)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Натыйжаларды көрүш үчүн бул жерди басыңыз."
@@ -671,6 +672,9 @@ msgstr "Терезени жабуу"
 
 msgid "Compare these records"
 msgstr "Бул жазууларды салыштырыңыз"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -733,6 +737,9 @@ msgstr "Эмейл дареги"
 msgid "Edit"
 msgstr "Өзгөртүү"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Колдонмону киргизүү"
 
@@ -744,12 +751,6 @@ msgstr "YYYY-MM-DD форматында киргизиңиз"
 
 msgid "Enter the person's given and family names."
 msgstr "Кишинин атын, фамилиясын киргизиңиз."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Кишинин атын же атынын бир бөлүгүн киргизиңиз."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Кишинин атын, атынын бир бөлүгүн, же мобилдик телефонун киргизиңиз."
 
 msgid "Enter the person's name."
 msgstr "Кишинин атын киргизиңиз."
@@ -765,20 +766,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Жарамдуулук мөөнөтүн %(extension_days)s күнгө узартуу\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Фамилиясы"
 
 msgid "Family name (required)"
-msgstr "Фамилиясы (милдеттүү)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Бул киши үчүн жаңыртуулар түрмөгү"
 
 msgid "Feedback"
-msgstr "Жооп пикир"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Жаңы жазуу жаратыш үчүн бул шилтемени ээрчиңиз"
@@ -790,7 +794,7 @@ msgstr "Мобилдик эмес телефондор үчүн NTT камсыз
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Бул жерден: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Толук аты-жөнү"
@@ -799,7 +803,7 @@ msgid "Given name"
 msgstr "Аты"
 
 msgid "Given name (required)"
-msgstr "Аты (милдеттүү)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Киши Тапкыч"
@@ -828,6 +832,9 @@ msgstr "Үй дареги"
 msgid "Home country"
 msgstr "Мекени"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Ал кишини менен азыр кантип байланышса болот?"
 
@@ -835,7 +842,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Бул кишиге кызыккан башка кишилер сиз менен кантип байланыша алышат?"
 
 msgid "I Have Information About This Person"
-msgstr "Менде бул киши жөнүндө маалымат бар"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Мен маалымат издеймин"
@@ -870,14 +877,14 @@ msgstr "Мен спам алдым."
 msgid "I prefer not to specify."
 msgstr "Мен тактоону каалабаймын."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Мен бирөөнү издеймин"
-
-msgid "Identify who you are looking for"
-msgstr "Сиз кимди издегениңизди тактаңыз"
-
-msgid "Identify who you have information about"
-msgstr "Сизде ким тууралуу маалымат бар экендигин тактаңыз"
 
 msgid "Identifying information"
 msgstr "Тактоочу маалыматтар"
@@ -958,7 +965,13 @@ msgstr "Жоголгон кишинин учурдагы телефон ному
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Кеңири: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -967,6 +980,9 @@ msgid ""
 msgstr ""
 "Өнүктүрүүчүлөр үчүн кеңири маалыматты %(developers_link_html)sбул "
 "жерден%(link_end_html)s тапса болот."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -978,8 +994,14 @@ msgstr ""
 msgid "Name"
 msgstr "Аты"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Аты талап кылынат.  Артка кайтып, кайрадан аракет кылыңыз."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Район"
@@ -1002,7 +1024,7 @@ msgid "No notes have been posted"
 msgstr "Эч бир билдирүү жарыялана элек"
 
 msgid "No person id was specified."
-msgstr "Эч бир адамдын ID'си көрсөтүлгөн жок."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1010,7 +1032,7 @@ msgstr "%(id_str)s ID'си менен эч ким жок."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "%(query)s боюнча эч нерсе табылган жок"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Андай аутентификация бирдиги табылган жок."
@@ -1079,9 +1101,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"ЭСКЕ АЛЫҢЫЗ: Киргизилген бардык дайындар жалпыга ачык жана баарына "
-"жеткиликтүү. Google бул маалыматты кароодон өткөзбөйт жана тактыгын "
-"текшербейт."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Киши Тапкыч"
@@ -1096,7 +1117,7 @@ msgid "Photo"
 msgstr "Сүрөтү"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Сүрөт (сырткы сайт; кадимки байланыш үчүн акы алынышы мүмкүн)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1110,8 +1131,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Апааттан кийин сиз бул киши менен байланышканыңызды белгилеңиз, же \"Бул "
-"кишинин статусу\" талаасын өзгөртүңүз."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1143,9 +1164,6 @@ msgstr "Сураныч, жарактуу эмейл дарек бериңиз."
 
 msgid "Possible duplicates"
 msgstr "Булар кайталанмалар болушу ыктымал"
-
-msgid "Possible duplicates found."
-msgstr "Мүмкүн болгон кайталоолор табылды."
 
 msgid "Postal or zip code"
 msgstr "Почта индекси же zip код"
@@ -1235,7 +1253,7 @@ msgid "Sign out"
 msgstr "Чыгуу"
 
 msgid "Skip"
-msgstr "Өткөрүп жиберүү"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Кимдир бирөө бул киши тирүү деген маалымат алган"
@@ -1250,7 +1268,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Кимдир бирөө бул киши тууралуу маалымат издеп жүрөт"
 
 msgid "Source of Record"
-msgstr "Жазуу булагы"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Бул жазуунун булагы"
@@ -1260,13 +1278,13 @@ msgstr "Статусу"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "%(full_name)s абалы "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Кишинин абалы"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Бул кишинин абалы:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Көчөнүн аты"
@@ -1274,11 +1292,17 @@ msgstr "Көчөнүн аты"
 msgid "Street name only, no number"
 msgstr "Көчөнүн аты гана, номурсуз"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Тапшыруу"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Жазылуу"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1319,7 +1343,7 @@ msgstr "Жазуунун автору статус жаңыртууларын т
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "%(full_name)s үчүн кыска жазуу кошулду"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Берилген сүрөт өтө чоң.  Кичирээгин жүктөңүз."
@@ -1332,7 +1356,7 @@ msgstr "Жазууну кеңейтүү мүмкүн эмес."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "%(full_name)s үчүн жаздырылган нерсе катталды"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Жазуу өчүрүлдү"
@@ -1479,7 +1503,7 @@ msgid "Upload your CSV file below"
 msgstr "Өзүңүздүн CSV файлыңызды төмөндө жүктөңүз"
 
 msgid "Use current location"
-msgstr "Учурдагы жайгашкан жерди колдонуу"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Жазууну көрүү"
@@ -1487,14 +1511,14 @@ msgstr "Жазууну көрүү"
 msgid "We have nothing matching your search."
 msgstr "Сиздин издөөөңүз боюнча эч нерсе табылган жок."
 
-msgid "What is this person's name?"
-msgstr "Бул кишинин аты ким?"
-
 msgid "When should this record disappear?"
 msgstr "Бул жазуу качан жок кылынышы керек?"
 
 msgid "Where did this information come from?"
 msgstr "Бул маалымат кайдан алынды?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1509,6 +1533,12 @@ msgid ""
 msgstr ""
 "Сыноо абалында иштеп турганда, жазуулардын жарактуулук мөөнөтүнө "
 "карабастан, алар 6 сааттан кийин өчүрүлөт."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ооба"
@@ -1559,8 +1589,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Электрондук почта дарегиңизди бул жерге киргизип, %(full_name)s тууралуу "
-"жаңылыктарга жазыла аласыз"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1589,7 +1619,7 @@ msgid "Your email"
 msgstr "Сиздин эмейлиңиз"
 
 msgid "Your name (required)"
-msgstr "Аты-жөнүңүз (милдеттүү)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1657,8 +1687,11 @@ msgstr "[Киши Тапкыч] %(full_name)s статусу жаңыртылд�
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Киши Издегич] %(full_name)s статус жаңыртууларына жазылгансыз"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "сырткы сайт; кадимки байланыш үчүн акы алынышы мүмкүн"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "аял"

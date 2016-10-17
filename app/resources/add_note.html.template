@@ -38,6 +38,10 @@
         set_display('hide-note', !hidden);
         set_display(note_contents_id + '-mark-not-spam', !hidden);
       }
+
+      jQuery(document).ready(function() {
+        make_form_expandable(".status.card");
+      });
     </script>
   {% endif %}
 {% endblock head %}
@@ -63,11 +67,23 @@
               id="enable_notes_btn">
           </div>
         {% else %}
-          <div class="create" role="form">
+          <div class="create note" role="form">         
+            <div class="card">
+              <h1>
+                {% if not markdup %}
+                  {% if person.full_name %}
+                    {% blocktrans with person.full_name as full_name %}Status of {{full_name}} {% endblocktrans %}
+                  {% else %}
+                    {% trans "Status of Person" %}
+                  {% endif %}
+                {% else %}
+                  {% trans "Mark records as duplicate" %}
+                {% endif %}
+              </h1>
+            </div>
             {% include "add_note_base.html.template" %}
           </div>
         {% endif %}
-      </div>
 
       <div class="end-multi-columns"></div>
     </div>

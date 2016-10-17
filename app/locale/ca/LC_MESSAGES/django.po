@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -150,22 +150,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s registres seleccionats\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -175,9 +161,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s ha trobat resultats de la cerca que "
-"coincideixen amb aquesta consulta.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -186,28 +213,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Registres similars a: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Resultats de la cerca per a: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        No s'ha trobat cap resultat per a: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -362,7 +369,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  L'adreça electrònica que heu introduït no és vàlida.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -581,7 +588,7 @@ msgstr "Sobre el Cercador de persones de Google"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Edat"
@@ -591,9 +598,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Totes les dades introduïdes al Localitzador de persones estan disponibles"
-" públicament i les pot fer servir qualsevol persona. Google no les revisa"
-" ni en verifica l'exactitud, tal com es descriu a "
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -629,12 +635,6 @@ msgstr "Número de telèfon de l'autor"
 msgid "Authorization key"
 msgstr "Clau d'autorització"
 
-msgid "Back to results list"
-msgstr "Torna a la llista de resultats"
-
-msgid "Back to start"
-msgstr "Torna a l'inici"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -668,8 +668,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Fes clic aquí per consultar les Condicions del servei (és un lloc extern,"
-" i és possible que s'apliqui la tarifa de connexió habitual)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Feu clic aquí per visualitzar els resultats."
@@ -679,6 +679,9 @@ msgstr "Tanca la finestra"
 
 msgid "Compare these records"
 msgstr "Compara aquests registres"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -743,6 +746,9 @@ msgstr "Adreça electrònica"
 msgid "Edit"
 msgstr "Edita"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Inserció de l'aplicació"
 
@@ -754,14 +760,6 @@ msgstr "La data ha de tenir el format AAAA-MM-DD."
 
 msgid "Enter the person's given and family names."
 msgstr "Introduïu el nom i els cognoms de la persona."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Introduïu el nom o part del nom de la persona."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr ""
-"Escriviu el nom de la persona, alguna part del seu nom o el seu número de"
-" telèfon mòbil."
 
 msgid "Enter the person's name."
 msgstr "Introduïu el nom de la persona."
@@ -777,20 +775,23 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Amplia %(extension_days)s dies més la data de caducitat\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Cognom"
 
 msgid "Family name (required)"
-msgstr "Cognom (obligatori)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed de novetats sobre aquesta persona"
 
 msgid "Feedback"
-msgstr "Suggeriments"
+msgstr "Feedback"
 
 msgid "Follow this link to create a new record"
 msgstr "Seguiu aquest enllaç per crear un registre nou."
@@ -804,7 +805,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Des de: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Nom complet"
@@ -813,7 +814,7 @@ msgid "Given name"
 msgstr "Nom de pila"
 
 msgid "Given name (required)"
-msgstr "Nom (obligatori)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Cercador de persones de Google"
@@ -844,6 +845,9 @@ msgstr "Adreça"
 msgid "Home country"
 msgstr "País d'origen"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Com es pot contactar amb aquesta persona ara?"
 
@@ -853,7 +857,7 @@ msgstr ""
 "contactar-vos"
 
 msgid "I Have Information About This Person"
-msgstr "Tinc informació sobre aquesta persona"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Cerco informació"
@@ -888,14 +892,14 @@ msgstr "He rebut contingut brossa."
 msgid "I prefer not to specify."
 msgstr "Prefereixo no especificar-ho."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "Cerco algú"
-
-msgid "Identify who you are looking for"
-msgstr "Identifiqueu la persona que cerqueu."
-
-msgid "Identify who you have information about"
-msgstr "Identifiqueu la persona de la qual teniu informació"
 
 msgid "Identifying information"
 msgstr "Informació d'identificació personal"
@@ -976,7 +980,13 @@ msgstr "Número de telèfon actual de la persona desapareguda"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Més informació a: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -985,6 +995,9 @@ msgid ""
 msgstr ""
 "Trobareu més informació per a desenvolupadors en "
 "%(developers_link_html)saquesta pàgina%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -996,8 +1009,14 @@ msgstr ""
 msgid "Name"
 msgstr "Nom"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Cal un nom. Aneu enrere i torneu-ho a provar."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Barri"
@@ -1022,7 +1041,7 @@ msgid "No notes have been posted"
 msgstr "No s'ha publicat cap nota."
 
 msgid "No person id was specified."
-msgstr "No s'ha especificat cap identificador de persona."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1030,7 +1049,7 @@ msgstr "No hi ha cap persona amb l'identificador: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No s'ha trobat cap resultat per a: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "No hi ha cap entitat d'autorització."
@@ -1097,9 +1116,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"NOTA: totes les dades introduïdes estan disponibles públicament i les pot"
-" fer servir qualsevol persona. Google no les revisa ni en verifica "
-"l'exactitud."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Cercador de persones"
@@ -1114,9 +1132,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
-"Foto (és un lloc extern, i és possible que s'apliqui la tarifa de "
-"connexió habitual)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1132,8 +1148,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Comprova que hagis estat en contacte amb la persona després de la "
-"catàstrofe o bé canvia el camp Estat d'aquesta persona."
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1165,9 +1181,6 @@ msgstr "Proporcioneu una adreça electrònica vàlida."
 
 msgid "Possible duplicates"
 msgstr "Possibles duplicats"
-
-msgid "Possible duplicates found."
-msgstr "S'han trobat possibles duplicats."
 
 msgid "Postal or zip code"
 msgstr "Codi postal"
@@ -1257,7 +1270,7 @@ msgid "Sign out"
 msgstr "Tanca la sessió"
 
 msgid "Skip"
-msgstr "Omet"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Algú ha rebut informació que aquesta persona és viva"
@@ -1272,7 +1285,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Alguna persona cerca informació sobre aquesta persona."
 
 msgid "Source of Record"
-msgstr "Font del registre"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Origen d'aquest registre"
@@ -1282,13 +1295,13 @@ msgstr "Estat"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Estat de: %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Estat de la persona"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Estat d'aquesta persona:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Carrer"
@@ -1296,11 +1309,17 @@ msgstr "Carrer"
 msgid "Street name only, no number"
 msgstr "Només el nom del carrer, sense el número"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Envia"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Subscriviu-vos"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1339,7 +1358,7 @@ msgstr "L'autor ha desactivat les actualitzacions d'estat en aquest registre."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "La nota per a %(full_name)s s'ha afegit"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
@@ -1352,7 +1371,7 @@ msgstr "El registre no es pot ampliar."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "L'enregistrament per a %(full_name)s s'ha enregistrat"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "S'ha suprimit el registre."
@@ -1506,7 +1525,7 @@ msgid "Upload your CSV file below"
 msgstr "Pengeu el fitxer CSV a continuació."
 
 msgid "Use current location"
-msgstr "Utilitza la ubicació actual"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Mostra el registre"
@@ -1514,14 +1533,14 @@ msgstr "Mostra el registre"
 msgid "We have nothing matching your search."
 msgstr "La vostra cerca no correspon amb cap registre."
 
-msgid "What is this person's name?"
-msgstr "Com es diu aquesta persona?"
-
 msgid "When should this record disappear?"
 msgstr "Quan ha de desaparèixer aquest registre?"
 
 msgid "Where did this information come from?"
 msgstr "D'on prové aquesta informació?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1538,6 +1557,12 @@ msgstr ""
 "Mentre les proves estiguin vigents, els registres que portin més de sis "
 "hores publicats se suprimiran independentment de la seva data de "
 "caducitat."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Sí"
@@ -1590,8 +1615,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Per rebre qualsevol informació nova sobre %(full_name)s, introdueix la "
-"teva adreça electrònica aquí"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1620,7 +1645,7 @@ msgid "Your email"
 msgstr "El vostre correu electrònic"
 
 msgid "Your name (required)"
-msgstr "El teu nom (obligatori)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1693,10 +1718,11 @@ msgstr ""
 "[Cercador de persones] Esteu subscrit a les actualitzacions d'estat sobre"
 " %(full_name)s."
 
-msgid "external site; normal connection fee may apply"
+msgid "e.g., Will Smith, Will or Smith"
 msgstr ""
-"és un lloc extern, i és possible que s'apliqui la tarifa de connexió "
-"habitual"
+
+msgid "external site; normal connection fee may apply"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "dona"

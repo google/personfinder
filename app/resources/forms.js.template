@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+{% load i18n %}
 
 function $(id) {
   return document.getElementById(id);
@@ -44,6 +45,23 @@ function hide(element) {
   }
 }
 
+// Dynamic behavior for the whole form.
+function update_form() {
+  var display_if_own = $('own_info_yes').checked ? 'none' : '';
+  var display_if_other = $('own_info_no').checked ? 'none' : '';
+  $('source_record').style.display = display_if_own;
+  $('own_info_subscribe').style.display = display_if_other;
+  $('own_info_contact').style.display = display_if_other;
+
+  if($('status_info')){
+    $('status_info').style.display = display_if_own;
+  }
+
+  if($('made_contact_info')){
+    $('made_contact_info').style.display = display_if_own;
+  }
+}
+
 // Dynamic behavior for the Person entry form.
 function update_clone() {
   var display_original = $('clone_no').checked ? 'inline' : 'none';
@@ -56,6 +74,7 @@ function update_clone() {
   $('author_name_clone').style.display = display_clone;
   $('author_phone_clone').style.display = display_clone;
   $('author_email_clone').style.display = display_clone;
+  $('source_title_row').style.display = display_source;
   $('source_url_row').style.display = display_source;
   $('source_date_row').style.display = display_source;
   $('source_date_hint_row').style.display = display_source;
@@ -135,6 +154,17 @@ function remove_profile_entry(profile_entry_index) {
   $('profile_url' + profile_entry_index).value = '';
   hide($('profile_entry' + profile_entry_index));
   show($('add_profile_entry'));
+}
+
+// Show photo remove icon
+function show_photo_remove_icon(photo_id) {
+  show($('remove_'+ photo_id));
+}
+
+// Hide photo remove icon and remove the photo for upload
+function remove_photo_upload(photo_id) {
+  $(photo_id).value = '';
+  hide($('remove_' + photo_id));
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
@@ -276,6 +306,12 @@ function validate_fields() {
   // Check that mandatory fields are filled in.
   // TODO(ryok): maybe just check full_name instead of given_name and family_name.
   var mandatory_fields = ['given_name', 'family_name', 'text', 'author_name'];
+
+  if($('own_info_yes')) {
+    if ($('own_info_yes').checked)
+      var mandatory_fields = ['given_name', 'family_name', 'text'];
+  }
+
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {
@@ -328,4 +364,38 @@ function validate_fields() {
   }
 
   return true;
+}
+
+// Make it possible to expand the form to see the detail form
+function make_form_expandable(expandedSection) {
+  var expandedPart = jQuery(expandedSection).find("div.expanded-part");
+  var expandButton = jQuery(expandedSection).find("a.expand-button");
+
+  expandedPart.hide();
+  expandButton.click(function() {
+    if (expandedPart.is(":visible")) {
+      expandedPart.slideUp("slow");  
+      expandButton.removeClass(
+        'expand-button-icon-up').addClass('expand-button-icon-down');
+    } else {
+      expandedPart.slideDown("slow");
+      expandButton.removeClass(
+        'expand-button-icon-down').addClass('expand-button-icon-up');  
+    }
+    return false;
+  });
+}
+
+// Show the side menu
+function showSideMenu() {
+  $("overlay").style.display = "block";
+  // Change the sidenav maxWidth for animation
+  $("sidenav").style.maxWidth = "250px";
+}
+
+// Close the side menu
+function hideSideMenu() {
+  $("overlay").style.display = "none";
+  // Change the sidenav maxWidth for animation
+  $("sidenav").style.maxWidth = "0";
 }

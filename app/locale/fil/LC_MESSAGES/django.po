@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -147,22 +147,8 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s (na) talaan ang napili\n"
+"                %(dup_count)s records selected\n"
 "              "
-
-#, python-format
-msgid ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
-msgstr ""
-"\n"
-"              Learn more about Google\n"
-"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
-"Policy</a>.\n"
-"            "
 
 #, python-format
 msgid ""
@@ -172,9 +158,50 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            May mga resulta ng paghahanap ang %(search_engine_name)s na "
-"tumutugma sa query na ito.\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
 "          "
+
+#, python-format
+msgid ""
+"\n"
+"            Learn more about Google\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: \"%(query_name)s "
+"%(query_location_original)s\"\n"
+"            <p>\n"
+"            Results for \"%(query_name)s\" (any location):\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            No results found for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"            Search Results for: %(query_name)s %(query_location)s\n"
+"          "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -183,28 +210,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Mga Tala na Katulad ni: %(full_name)s\n"
+"          Records Similar to: %(full_name)s\n"
 "        "
-
-#, python-format
-msgid ""
-"\n"
-"          Search Results for: %(query)s\n"
-"        "
-msgstr ""
-"\n"
-"          Mga Resulta ng Paghahanap para sa: %(query)s\n"
-"        "
-
-#, python-format
-msgid ""
-"\n"
-"        No results found for: %(query)s\n"
-"      "
-msgstr ""
-"\n"
-"        Walang nakitang mga resulta para sa: %(query)s\n"
-"      "
 
 #, python-format
 msgid ""
@@ -362,7 +369,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Di-wasto ang inilagay mong Email address.\n"
+"  The Email address you entered is not valid.\n"
 "  "
 
 msgid ""
@@ -577,7 +584,7 @@ msgstr "Tungkol sa Google Person Finder"
 
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr "Added a record for: %(person_name)s"
+msgstr ""
 
 msgid "Age"
 msgstr "Edad"
@@ -587,9 +594,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"Ang lahat ng ilalagay na data sa Person Finder ay makikita ng publiko at "
-"magagamit ninuman. Hindi sinusuri o vine-verify ng Google ang pagiging "
-"tumpak ng data na ito google.org/personfinder/global/tos"
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Mga kahaliling apelyido"
@@ -626,12 +633,6 @@ msgstr "Numero ng telepono ng may-akda"
 msgid "Authorization key"
 msgstr "Key ng pahintulot"
 
-msgid "Back to results list"
-msgstr "Bumalik sa listahan ng mga resulta"
-
-msgid "Back to start"
-msgstr "Bumalik sa simula"
-
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -666,8 +667,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Mag-click dito upang tingnan ang mga tuntunin ng serbisyo (external na "
-"site; maaaring magkaroon ng normal na bayarin sa koneksyon)"
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
 
 msgid "Click here to view results."
 msgstr "Mag-click dito upang tingnan ang mga resulta."
@@ -677,6 +678,9 @@ msgstr "Isara ang window"
 
 msgid "Compare these records"
 msgstr "Paghambingin ang mga talaang ito"
+
+msgid "Contact information"
+msgstr ""
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -743,6 +747,9 @@ msgstr "Email address"
 msgid "Edit"
 msgstr "I-edit"
 
+msgid "Email address"
+msgstr ""
+
 msgid "Embedding the Application"
 msgstr "Pag-e-embed ng Application"
 
@@ -754,12 +761,6 @@ msgstr "Ilagay bilang YYYY-MM-DD"
 
 msgid "Enter the person's given and family names."
 msgstr "Ilagay ang pangalan at apelyido ng tao."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
-
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ilagay ang pangalan ng tao, mga bahagi ng pangalan, o numero ng cellphone."
 
 msgid "Enter the person's name."
 msgstr "Ilagay ang pangalan ng tao."
@@ -775,14 +776,17 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Pahabain ang petsa ng expiration nang %(extension_days)s (na) araw\n"
+"Extend expiration date by %(extension_days)s days\n"
 "                "
+
+msgid "Failed to obtain search result for the phone number."
+msgstr ""
 
 msgid "Family name"
 msgstr "Apelyido"
 
 msgid "Family name (required)"
-msgstr "Apelyido (kinakailangan)"
+msgstr "Family name (required)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed ng mga update tungkol sa taong ito"
@@ -802,7 +806,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "Mula sa: %(home_location)s"
+msgstr "From: %(home_location)s"
 
 msgid "Full name"
 msgstr "Buong pangalan"
@@ -811,7 +815,7 @@ msgid "Given name"
 msgstr "Pangalan"
 
 msgid "Given name (required)"
-msgstr "Pangalan (kinakailangan)"
+msgstr "Given name (required)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -842,6 +846,9 @@ msgstr "Address ng bahay"
 msgid "Home country"
 msgstr "Bansang pinagmulan"
 
+msgid "Home location"
+msgstr ""
+
 msgid "How can this person be reached now?"
 msgstr "Paano makakaugnayan ang taong ito sa ngayon?"
 
@@ -849,7 +856,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Paano makikipag-ugnay sa iyo ang iba pang mga interesado sa taong ito"
 
 msgid "I Have Information About This Person"
-msgstr "May Impormasyon Ako Tungkol sa Taong Ito"
+msgstr "I Have Information About This Person"
 
 msgid "I am seeking information"
 msgstr "Naghahanap ako ng impormasyon"
@@ -886,14 +893,14 @@ msgstr "Nakatanggap ako ng spam."
 msgid "I prefer not to specify."
 msgstr "Mas gusto kong huwag tukuyin."
 
+msgid "I want to input my own information"
+msgstr ""
+
+msgid "I want to input someone else's information"
+msgstr ""
+
 msgid "I'm looking for someone"
 msgstr "May hinahanap akong isang tao"
-
-msgid "Identify who you are looking for"
-msgstr "Kilalanin kung sino ang iyong hinahanap"
-
-msgid "Identify who you have information about"
-msgstr "Tukuyin kung tungkol kanino ang nalalaman mong impormasyon"
 
 msgid "Identifying information"
 msgstr "Impormasyon sa pagkilala"
@@ -976,7 +983,13 @@ msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "Higit pa sa: %(url)s"
+msgstr "More at: %(url)s"
+
+msgid "More information about source of record"
+msgstr ""
+
+msgid "More information about status of the person"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -985,6 +998,9 @@ msgid ""
 msgstr ""
 "Maaaring makita ang higit pang impormasyon para sa mga developer "
 "%(developers_link_html)sdito%(link_end_html)s."
+
+msgid "More information to identify the person"
+msgstr ""
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -996,8 +1012,14 @@ msgstr ""
 msgid "Name"
 msgstr "Pangalan"
 
+msgid "Name (required)"
+msgstr ""
+
 msgid "Name is required.  Please go back and try again."
 msgstr "Kailangan ang pangalan.  Mangyaring bumalik at subukang muli."
+
+msgid "Name or mobile phone number (required)"
+msgstr ""
 
 msgid "Neighborhood"
 msgstr "Pamilyar na lugar"
@@ -1022,7 +1044,7 @@ msgid "No notes have been posted"
 msgstr "Walang mga talang na-post"
 
 msgid "No person id was specified."
-msgstr "Walang tinukoy na pagkakakilanlan ng tao."
+msgstr "No person id was specified."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1030,7 +1052,7 @@ msgstr "Walang taong may ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "Walang nakitang mga resulta para sa: %(query)s"
+msgstr "No results found for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Walang ganoong entity sa Pagpapahintulot."
@@ -1099,9 +1121,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PAKITANDAAN: Ang lahat ng ilalagay na data ay makikita ng publiko at "
-"magagamit ninuman.  Hindi sinusuri o vine-verify ng Google ang pagiging "
-"tumpak ng data na ito."
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1116,9 +1137,7 @@ msgid "Photo"
 msgstr "Larawan"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
-"Larawan (external na site; maaaring magkaroon ng normal na bayarin sa "
-"koneksyon)"
+msgstr "Photo (external site; normal connection fee may apply)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1134,8 +1153,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Pakitiyak na nakaugnayan mo ang taong ito pagkatapos ng sakuna, o baguhin"
-" ang field na \"Status ng taong ito.\""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1167,9 +1186,6 @@ msgstr "Mangyaring magbigay ng wastong email address."
 
 msgid "Possible duplicates"
 msgstr "Mga posibleng duplicate"
-
-msgid "Possible duplicates found."
-msgstr "Nakakita ng mga posibleng duplicate."
 
 msgid "Postal or zip code"
 msgstr "Postal o zip code"
@@ -1259,7 +1275,7 @@ msgid "Sign out"
 msgstr "Mag-sign out"
 
 msgid "Skip"
-msgstr "Laktawan"
+msgstr "Skip"
 
 msgid "Someone has received information that this person is alive"
 msgstr "May nakatanggap ng impormasyong buhay ang taong ito"
@@ -1274,7 +1290,7 @@ msgid "Someone is seeking information about this person"
 msgstr "May taong naghahanap ng impormasyon tungkol sa taong ito"
 
 msgid "Source of Record"
-msgstr "Pinagmulan ng Tala"
+msgstr "Source of Record"
 
 msgid "Source of this record"
 msgstr "Pinagmulan ng talaang ito"
@@ -1284,13 +1300,13 @@ msgstr "Status"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status ni %(full_name)s "
+msgstr "Status of %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status ng Taong Ito"
+msgstr "Status of Person"
 
 msgid "Status of this person:"
-msgstr "Status ng taong ito:"
+msgstr "Status of this person:"
 
 msgid "Street name"
 msgstr "Pangalan ng kalye"
@@ -1298,11 +1314,17 @@ msgstr "Pangalan ng kalye"
 msgid "Street name only, no number"
 msgstr "Pangalan lang ng kalye, walang numero"
 
+msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
 msgid "Submit"
-msgstr "Isumite"
+msgstr "Submit"
 
 msgid "Subscribe"
 msgstr "Mag-subscribe"
+
+msgid "Subscribe for updates about your record"
+msgstr ""
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
@@ -1343,7 +1365,7 @@ msgstr "Na-disable ng may-akda ang mga update sa status sa talaang ito."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "Naidagdag na ang tala para kay %(full_name)s"
+msgstr "The note for %(full_name)s has been added"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1358,7 +1380,7 @@ msgstr "Hindi maaaring pahabain ang record."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "Nakarehistro na ang talaan para kay %(full_name)s"
+msgstr "The record for %(full_name)s has been registered"
 
 msgid "The record has been deleted."
 msgstr "Tinanggal na ang record."
@@ -1511,7 +1533,7 @@ msgid "Upload your CSV file below"
 msgstr "I-upload ang iyong CSV file sa ibaba"
 
 msgid "Use current location"
-msgstr "Gamitin ang kasalukuyang lokasyon"
+msgstr "Use current location"
 
 msgid "View the record"
 msgstr "Tingnan ang record"
@@ -1519,14 +1541,14 @@ msgstr "Tingnan ang record"
 msgid "We have nothing matching your search."
 msgstr "Walang kaming nakita na tumutugma sa iyong hinahanap."
 
-msgid "What is this person's name?"
-msgstr "Ano ang pangalan ng taong ito?"
-
 msgid "When should this record disappear?"
 msgstr "Kailan dapat mawala ang talaang ito?"
 
 msgid "Where did this information come from?"
 msgstr "Saan nagmula ang impormasyong ito?"
+
+msgid "Where did this record come from?"
+msgstr ""
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1541,6 +1563,12 @@ msgid ""
 msgstr ""
 "Habang nasa test mode, matatanggal ang mga talaang lagpas 6 na oras na "
 "ang tagal, anumang ang expiration date."
+
+msgid "Who you are looking for"
+msgstr ""
+
+msgid "Who you have information about"
+msgstr ""
 
 msgid "Yes"
 msgstr "Oo"
@@ -1591,8 +1619,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"Maaari kang mag-subscribe sa mga update tungkol kay %(full_name)s sa "
-"pamamagitan ng paglalagay ng iyong e-mail address dito"
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1621,7 +1649,7 @@ msgid "Your email"
 msgstr "Ang iyong email"
 
 msgid "Your name (required)"
-msgstr "Pangalan mo (kinakailangan)"
+msgstr "Your name (required)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1698,8 +1726,11 @@ msgstr ""
 "[Person Finder] Naka-subscribe ka sa mga update sa status para kay "
 "%(full_name)s"
 
+msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
 msgid "external site; normal connection fee may apply"
-msgstr "external na site; maaaring magkaroon ng normal na bayarin sa koneksyon"
+msgstr "external site; normal connection fee may apply"
 
 msgid "female"
 msgstr "babae"
