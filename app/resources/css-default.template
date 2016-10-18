@@ -1112,6 +1112,7 @@ table.review .entry-date {
 
 table.counts {
   border-collapse: collapse;
+  width: 100%;
 }
 
 table.counts tr.head {
@@ -1120,8 +1121,8 @@ table.counts tr.head {
 
 table.counts th, table.counts td {
   min-width: 3em;
-  padding: 4px 8px;
-  border: 1px solid #aaa;
+  padding: 8px;
+  border: 1px solid #aaaaaa;
 }
 
 table.counts th {
@@ -1130,7 +1131,29 @@ table.counts th {
 }
 
 table.counts td {
-  text-align: {{end}};
+  text-align: {{start}};
+}
+
+/* PF history usage summary page */
+
+table.summary {
+  width: 100%;
+  background: #ffffff;
+  border-collapse: collapse;
+}
+
+table.summary thead {
+  color: #2a2a2a;
+}
+
+table.summary th, table.summary td {
+  padding: 8px;
+  text-align: {{start}};
+  border: 1px solid #dadada;
+}
+
+table.summary tbody tr:hover{
+  background-color: #f4f4f4;
 }
 
 /* API key management page */

@@ -105,6 +105,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/delete_record',
   'admin/resources',
   'admin/review',
+  'admin/summary',
   'css',
   'add_note',
   'tos',

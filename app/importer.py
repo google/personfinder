@@ -125,7 +125,8 @@ def create_person(repo, fields):
             person_fields['given_name'],
             person_fields['family_name'],
             config.Configuration(repo))
-
+    # TODO(liuhsinwen): Separate existed and non-existed record id and
+    # increment person counter for new records
     record_id = strip(fields.get('person_record_id'))
     if record_id:  # create a record that might overwrite an existing one
         if is_clone(repo, record_id):
@@ -134,6 +135,7 @@ def create_person(repo, fields):
             return Person.create_original_with_record_id(
                 repo, record_id, **person_fields)
     else:  # create a new original record
+        UsageCounter.increment_person_counter(repo)
         return Person.create_original(repo, **person_fields)
 
 def create_note(repo, fields):
@@ -160,7 +162,8 @@ def create_note(repo, fields):
         photo_url=fields.get('photo_url'),
         entry_date=get_utcnow(),
     )
-
+    # TODO(liuhsinwen): Separate existed and non-existed record id and
+    # increment note counter for new records
     record_id = strip(fields.get('note_record_id'))
     if record_id:  # create a record that might overwrite an existing one
         if is_clone(repo, record_id):
@@ -169,6 +172,7 @@ def create_note(repo, fields):
             return Note.create_original_with_record_id(
                 repo, record_id, **note_fields)
     else:  # create a new original record
+        UsageCounter.increment_note_counter(repo)
         return Note.create_original(repo, **note_fields)
 
 def filter_new_notes(entities, repo):

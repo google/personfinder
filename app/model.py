@@ -999,3 +999,37 @@ class UniqueId(db.Model):
         unique_id = UniqueId()
         unique_id.put()
         return unique_id.key().id()
+
+class UsageCounter(db.Model):
+    """Count the history usage for each repo"""
+    repo = db.StringProperty(required=True)
+    person_counter = db.IntegerProperty(default=0, required=True)
+    note_counter = db.IntegerProperty(default=0, required=True)
+
+    @staticmethod
+    def create(repo, person_counter=0, note_counter=0):
+        """Create a new counter"""
+        return UsageCounter(key_name=repo, repo=repo,
+            person_counter=person_counter, note_counter=note_counter)
+
+    @staticmethod
+    def get(repo):
+        return UsageCounter.get_by_key_name('%s' % (repo))
+
+    @classmethod
+    @db.transactional
+    def increment_person_counter(cls, repo):
+        count = cls.get(repo)
+        if not count:
+            count = cls.create(repo)
+        count.person_counter += 1
+        count.put()
+
+    @classmethod
+    @db.transactional
+    def increment_note_counter(cls, repo):
+        count = cls.get(repo)
+        if not count:
+            count = cls.create(repo)
+        count.note_counter += 1
+        count.put()

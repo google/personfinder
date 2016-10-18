@@ -198,6 +198,7 @@ class Handler(BaseHandler):
 
                 # Write the new NoteWithBadWords to the datastore
                 db.put(note)
+                UsageCounter.increment_note_counter(self.repo)
                 UserActionLog.put_new('add', note, copy_properties=False)
                 # Write the person record to datastore before redirect
                 db.put(person)
@@ -230,6 +231,7 @@ class Handler(BaseHandler):
 
                 # Write the new Note to the datastore
                 db.put(note)
+                UsageCounter.increment_note_counter(self.repo)
                 UserActionLog.put_new('add', note, copy_properties=False)
                 person.update_from_note(note)
 
@@ -241,6 +243,7 @@ class Handler(BaseHandler):
 
         # Write the person record to datastore
         db.put(person)
+        UsageCounter.increment_person_counter(self.repo)
         UserActionLog.put_new('add', person, copy_properties=False)
 
         # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
