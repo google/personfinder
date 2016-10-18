@@ -15,7 +15,6 @@
 
 import logging
 import sys
-import random
 
 from model import *
 from utils import *
