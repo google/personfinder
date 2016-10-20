@@ -41,5 +41,29 @@
     <div class="row custom-message">
       {{env.start_page_custom_html|default:""|safe}}
     </div>
+    <div class="row social">
+
+
+     <!--script src="https://apis.google.com/js/plusone.js"></script>
+      <g:plus action="share"></g:plus-->
+
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <div class="fb-share-button" data-href="https://google.org/personfinder/global/home.html" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoogle.org%2Fpersonfinder%2Fglobal%2Fhome.html&amp;src=sdkpreparse">Share</a></div>
+
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://google.org/personfinder/global/home.html">Tweet</a>
+
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <g:plusone size="medium" aligh="left"></g:plusone>
+
+
+    </div>
   </div>
 {% endblock %}
