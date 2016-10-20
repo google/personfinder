@@ -1134,25 +1134,26 @@ table.counts td {
   text-align: {{start}};
 }
 
-/* PF history usage summary page */
+/* Historical statistics page */
 
-table.summary {
+table.statistics {
   width: 100%;
   background: #ffffff;
   border-collapse: collapse;
 }
 
-table.summary thead {
+table.statistics thead {
   color: #2a2a2a;
 }
 
-table.summary th, table.summary td {
+table.statistics th,
+table.statistics td {
   padding: 8px;
   text-align: {{start}};
   border: 1px solid #dadada;
 }
 
-table.summary tbody tr:hover{
+table.statistics tbody tr:hover{
   background-color: #f4f4f4;
 }
 

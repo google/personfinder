@@ -8,16 +8,15 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template for the summary page (see admin_summary.py).                #}
+{# Template for the summary page (see admin_statistics.py).                 #}
 
 {% extends "admin-base.html.template" %}
-{% load i18n %}
 
 {% block content %}
 
-<h2>PF usage summary</h2>
+<h2>Historical statistics</h2>
 
-<table class="summary">
+<table class="statistics">
   <thead>
     <tr>
       <th>Repository</th>
@@ -26,11 +25,11 @@
     </tr>
   </thead>
   <tbody>
-  {% for data in total_usage %}
+  {% for usage in all_usage %}
     <tr>
-      <td id="{{data.0}}-repo">{{data.0}}</td>  {# Repo #}
-      <td id="{{data.0}}-persons">{{data.1}}</td>  {# Persons #}
-      <td id="{{data.0}}-notes">{{data.2}}</td>  {# Notes #}
+      <td id="{{usage.repo}}-repo">{{usage.repo}}</td>
+      <td id="{{usage.repo}}-persons">{{usage.num_persons}}</td>
+      <td id="{{usage.repo}}-notes">{{usage.num_notes}}</td>
     </tr>
   {% endfor %}
   </tbody>

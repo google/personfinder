@@ -636,6 +636,17 @@ class Note(Base):
             ).filter('reviewed =', False).filter('hidden =', False)
         return query.count()
 
+    @staticmethod
+    def put_note(repo, entity):
+        """Write the new note to datastore. 'entity' is the entity
+        that was operated on, which is a new original entity or
+        a new clone entity for note. note_counter increment because
+        a new note is created. Also, logs user actions is updated."""
+        db.put(entity)
+        UsageCounter.increment_note_counter(repo)
+        UserActionLog.put_new('add', entity, copy_properties=False)
+
+
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
     spam_score = db.FloatProperty(default=0)
@@ -1001,35 +1012,52 @@ class UniqueId(db.Model):
         return unique_id.key().id()
 
 class UsageCounter(db.Model):
-    """Count the history usage for each repo"""
+    """Counters count the historical statistics for a given repository.
+    To see how this is used, check out admin_stastics.py.
+    Unlike the Counter class, UsageCounter object increment when
+    a new record or a new note is created, which means, the UsageCounter
+    will not decrement when a record/note is expired/deleted."""
+
+    # repo stored as a seperate property so it can be indexed and queried.
     repo = db.StringProperty(required=True)
+    # person_counter increment when a new person record is created.
     person_counter = db.IntegerProperty(default=0, required=True)
+    # note_counter increment when a new note is added in a person's record.
     note_counter = db.IntegerProperty(default=0, required=True)
 
     @staticmethod
-    def create(repo, person_counter=0, note_counter=0):
-        """Create a new counter"""
-        return UsageCounter(key_name=repo, repo=repo,
-            person_counter=person_counter, note_counter=note_counter)
+    def get(repo):
+        """Gets the entity with a given repository."""
+        return UsageCounter.get_by_key_name('%s' % repo)
 
     @staticmethod
-    def get(repo):
-        return UsageCounter.get_by_key_name('%s' % (repo))
+    def add_person(count, amount):
+        """Do the calculation to increment the person_counter
+        This should be called in increment_person_counter method"""
+        count.person_counter += amount
+        count.put()
 
-    @classmethod
-    @db.transactional
-    def increment_person_counter(cls, repo):
-        count = cls.get(repo)
-        if not count:
-            count = cls.create(repo)
-        count.person_counter += 1
+    @staticmethod
+    def add_note(count, amount):
+        """Do the calculation to increment the note_counter
+        This should be called in increment_note_counter method"""
+        count.note_counter += amount
         count.put()
 
     @classmethod
-    @db.transactional
-    def increment_note_counter(cls, repo):
-        count = cls.get(repo)
-        if not count:
-            count = cls.create(repo)
-        count.note_counter += 1
-        count.put()
+    def increment_person_counter(cls, repo, amount=1):
+        """Use get_or_insert() method to return the entity or insert
+        a new entity when there is no entity with the given kind and name.
+        add_person method do the calculation for incrementing person_counter"""
+        count = cls.get_or_insert(key_name=repo, repo=repo,
+                                  person_counter=0, note_counter=0)
+        db.run_in_transaction(cls.add_person, count, amount)
+
+    @classmethod
+    def increment_note_counter(cls, repo, amount=1):
+        """Use get_or_insert() method to return the entity or insert
+        a new entity when there is no entity with the given kind and name.
+        add_note method do the calculation for incrementing note_counter"""
+        count = cls.get_or_insert(key_name=repo, repo=repo,
+                                  person_counter=0, note_counter=0)
+        db.run_in_transaction(cls.add_note, count, amount)

@@ -236,9 +236,7 @@ class Handler(BaseHandler):
                 spam_score=spam_score,
                 confirmed=False)
             # Write the new NoteWithBadWords to the datastore
-            db.put(note)
-            UsageCounter.increment_note_counter(self.repo)
-            UserActionLog.put_new('add', note, copy_properties=False)
+            Note.put_note(self.repo, note)
             # When the note is detected as spam, we do not update person record
             # or log action. We ask the note author for confirmation first.
             return self.redirect('/post_flagged_note', id=note.get_record_id(),
@@ -262,9 +260,7 @@ class Handler(BaseHandler):
                 photo=photo,
                 photo_url=photo_url)
             # Write the new regular Note to the datastore
-            db.put(note)
-            UsageCounter.increment_note_counter(self.repo)
-            UserActionLog.put_new('add', note, copy_properties=False)
+            Note.put_note(self.repo, note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':

@@ -31,7 +31,7 @@ class AdminSummaryTests(ServerTestsBase):
                       family_name='_test_family_name',
                       author_name='_test_author_name')
 
-    def add_note_record(self):
+    def add_person_and_note_record(self):
         """Add a new note in haiti repo, redirect to view page."""
         self.create_person_record()  # person's view page
         self.s.submit(
@@ -45,25 +45,26 @@ class AdminSummaryTests(ServerTestsBase):
     def test_person_counter(self):
         """Test if person_counter increment correctly"""
         num_persons = 3
-        # create persons_num of person's records
+        # create num_persons of person's records
         for _ in range(num_persons):
             self.create_person_record()
-        doc = self.go_as_admin('/global/admin/summary')
+        doc = self.go_as_admin('/global/admin/statistics')
         assert 'haiti' in doc.text
         assert '# Persons' in doc.text
-        # person_num of persons are created
+        # num_persons of persons are created
+        repo = doc.cssselect_one('#haiti-repo')
         persons = doc.cssselect_one('#haiti-persons')
         assert persons.text == str(num_persons)
 
     def test_note_counter(self):
         """Test of note_counter increment correctly"""
         num_notes = 5
-        # create a notes_num of note records
+        # create a num_notes of note records
         for _ in range(num_notes):
-            self.add_note_record()
-        doc = self.go_as_admin('/global/admin/summary')
+            self.add_person_and_note_record()
+        doc = self.go_as_admin('/global/admin/statistics')
         assert 'haiti' in doc.text
         assert '# Notes' in doc.text
-        # one person's record and notes_num of notes are created
+        # one person's record and num_notes of notes are created
         notes = doc.cssselect_one('#haiti-notes')
         assert notes.text == str(num_notes)

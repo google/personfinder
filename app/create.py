@@ -197,9 +197,7 @@ class Handler(BaseHandler):
                     confirmed=False)
 
                 # Write the new NoteWithBadWords to the datastore
-                db.put(note)
-                UsageCounter.increment_note_counter(self.repo)
-                UserActionLog.put_new('add', note, copy_properties=False)
+                Note.put_note(self.repo, note)
                 # Write the person record to datastore before redirect
                 db.put(person)
                 UserActionLog.put_new('add', person, copy_properties=False)
@@ -230,9 +228,7 @@ class Handler(BaseHandler):
                     photo_url=note_photo_url)
 
                 # Write the new Note to the datastore
-                db.put(note)
-                UsageCounter.increment_note_counter(self.repo)
-                UserActionLog.put_new('add', note, copy_properties=False)
+                Note.put_note(self.repo, note)
                 person.update_from_note(note)
 
             # Specially log 'believed_dead'.
@@ -266,5 +262,3 @@ class Handler(BaseHandler):
                                  context='create_person')
 
         self.redirect('/view', id=person.record_id)
-
-
