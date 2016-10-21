@@ -137,7 +137,7 @@ def create_person(repo, fields):
     else:  # create a new original record
         # TODO(liuhsinwen): fix performance problem by incrementing the counter
         # by the number of upload records
-        UsageCounter.increment_person_counter(repo)
+        # UsageCounter.increment_person_counter(repo)
         return Person.create_original(repo, **person_fields)
 
 def create_note(repo, fields):
@@ -176,7 +176,7 @@ def create_note(repo, fields):
     else:  # create a new original record
         # TODO(liuhsinwen): fix performance problem by incrementing the counter
         # by the number of upload notes
-        UsageCounter.increment_note_counter(repo)
+        # UsageCounter.increment_note_counter(repo)
         return Note.create_original(repo, **note_fields)
 
 def filter_new_notes(entities, repo):
