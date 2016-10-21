@@ -112,15 +112,13 @@
               class="short-text-input"
               value="{{params.query_name}}">
         {% else %}
-          {% if config.enable_fulltext_search %}
-            <span class="mandatory label">
-              {% if config.jp_mobile_carrier_redirect %}
-                {% trans "Name or mobile phone number (required)" %}:
-              {% else %}
-                {% trans "Name (required)" %}:
-              {% endif %}
-            </span>
-          {% endif %}
+          <span class="mandatory label">
+            {% if config.jp_mobile_carrier_redirect %}
+              {% trans "Name or mobile phone number (required)" %}:
+            {% else %}
+              {% trans "Name (required)" %}:
+            {% endif %}
+          </span>
           <input id="query_name" name="query_name"
               class="long-text-input"
               value="{{params.query_name}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
