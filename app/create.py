@@ -197,7 +197,7 @@ class Handler(BaseHandler):
                     confirmed=False)
 
                 # Write the new NoteWithBadWords to the datastore
-                note.put_new(self.repo)
+                note.put_new()
                 # Write the person record to datastore before redirect
                 db.put(person)
                 UserActionLog.put_new('add', person, copy_properties=False)
@@ -228,7 +228,7 @@ class Handler(BaseHandler):
                     photo_url=note_photo_url)
 
                 # Write the new Note to the datastore
-                note.put_new(self.repo)
+                note.put_new()
                 person.update_from_note(note)
 
             # Specially log 'believed_dead'.
@@ -238,7 +238,7 @@ class Handler(BaseHandler):
                     self.request.remote_addr)
 
         # Write the person record to datastore
-        person.put_new(self.repo)
+        person.put_new()
 
         # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
         if not person.source_url and not self.params.clone:

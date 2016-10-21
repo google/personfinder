@@ -13,15 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-import sys
-
 import model
 import utils
 
-
 class Handler(utils.BaseHandler):
-    # Show numbers of new records and notes created in each repository.
+    """Show various statistics for each repository,
+    including repositories which are no longer active."""
     repo_required = False
     admin_required = True
 
@@ -38,9 +35,6 @@ class Handler(utils.BaseHandler):
         {'repo': haiti, 'num_persons': 10, 'num_notes': 5}
         """
         counters = model.UsageCounter.get(repo)
-        usage = {
-            'repo': repo,
-            'num_persons': counters.person_counter if counters else 0,
-            'num_notes': counters.note_counter if counters else 0
-        }
-        return usage
+        return {'repo': repo,
+                'num_persons': counters.person_counter if counters else 0,
+                'num_notes': counters.note_counter if counters else 0}
