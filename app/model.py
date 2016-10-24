@@ -1035,8 +1035,7 @@ class UsageCounter(db.Model):
     @classmethod
     def create(cls, repo):
         """Create a new counter"""
-        return UsageCounter(key_name=repo, repo=repo,
-                            person_counter=0, note_counter=0)
+        return UsageCounter(key_name=repo, repo=repo)
 
     @classmethod
     def get(cls, repo):
@@ -1047,7 +1046,7 @@ class UsageCounter(db.Model):
     @db.transactional
     def increment_person_counter(cls, repo, amount=1):
         """Increase the counter for the number of person records
-        based on the given amount of new created person records"""
+        based on the given amount of newly created person records"""
         count = cls.get(repo)
         if not count:
             count = cls.create(repo)
