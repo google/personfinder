@@ -548,6 +548,14 @@ class Person(Base):
             self.latest_status_source_date = status_source_date
             self.put()
 
+    def put_new(self):
+        """Write the new person record to datastore. Increments person_counter
+        because a new record is created. Logs user actions is updated too.
+        We should never call this method against an existing record."""
+        db.put(self)
+        UsageCounter.increment_person_counter(self.repo)
+        UserActionLog.put_new('add', self, copy_properties=False)
+
 
 # Old indexing
 # TODO(ryok): This is obsolete. Remove it.
@@ -635,6 +643,15 @@ class Note(Base):
         query = Note.all_in_repo(repo, filter_expired=filter_expired
             ).filter('reviewed =', False).filter('hidden =', False)
         return query.count()
+
+    def put_new(self):
+        """Write the new note to datastore. Increments note_counter because
+        a new note is created. Also, logs user actions is updated. We should
+        never call this method against an existing record."""
+        db.put(self)
+        UsageCounter.increment_note_counter(self.repo)
+        UserActionLog.put_new('add', self, copy_properties=False)
+
 
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
@@ -999,3 +1016,50 @@ class UniqueId(db.Model):
         unique_id = UniqueId()
         unique_id.put()
         return unique_id.key().id()
+
+class UsageCounter(db.Model):
+    """Counters which count the historical statistics for each repository.
+    To see how this is used, check out admin_statistics.py.
+    Unlike the Counter class, UsageCounter object increments when
+    a new record or a new note is created, which means, the UsageCounter
+    will not decrement when a record/note is expired/deleted."""
+
+    # repo stored as a seperate property so it can be indexed and queried.
+    repo = db.StringProperty(required=True)
+    # Total number of person records created so far,
+    # including deleted/expired ones.
+    person_counter = db.IntegerProperty(default=0, required=True)
+    # Total number of notes created so far, including deleted/expired ones.
+    note_counter = db.IntegerProperty(default=0, required=True)
+
+    @classmethod
+    def create(cls, repo):
+        """Create a new counter"""
+        return UsageCounter(key_name=repo, repo=repo)
+
+    @classmethod
+    def get(cls, repo):
+        """Gets the entity with a given repository."""
+        return UsageCounter.get_by_key_name(repo)
+
+    @classmethod
+    @db.transactional
+    def increment_person_counter(cls, repo, amount=1):
+        """Increase the counter for the number of person records
+        based on the given amount of newly created person records"""
+        count = cls.get(repo)
+        if not count:
+            count = cls.create(repo)
+        count.person_counter += amount
+        count.put()
+
+    @classmethod
+    @db.transactional
+    def increment_note_counter(cls, repo, amount=1):
+        """Increase the counter for the number of notes
+        based on the given amount of new notes"""
+        count = cls.get(repo)
+        if not count:
+            count = cls.create(repo)
+        count.note_counter += amount
+        count.put()

@@ -1,0 +1,39 @@
+{# Copyright 2016 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the summary page (see admin_statistics.py).                 #}
+
+{% extends "admin-base.html.template" %}
+
+{% block content %}
+
+<h2>Historical statistics</h2>
+
+<table class="statistics">
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th># Persons</th>
+      <th># Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for usage in all_usage %}
+    <tr>
+      <td id="{{usage.repo}}-repo">{{usage.repo}}</td>
+      <td id="{{usage.repo}}-persons">{{usage.num_persons}}</td>
+      <td id="{{usage.repo}}-notes">{{usage.num_notes}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p>
+
+{% endblock %}
