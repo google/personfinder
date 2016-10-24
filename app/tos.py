@@ -41,6 +41,9 @@ class Handler(utils.BaseHandler):
         # in our domain in zero-rating mode. See "Zero-rating" section of the
         # admin page (app/resources/admin.html.template) for details of
         # zero-rating mode.
+        #
+        # e.g., To show Google ToS, set config tos_url to:
+        # 'https://www.google.com/policies/terms/?hl=%(lang)s'
         try:
             if self.config.tos_url:
                 url = self.config.tos_url % {'lang': self.env.lang}
