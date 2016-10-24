@@ -60,7 +60,7 @@ class Handler(BaseHandler):
                     standalone=standalone,
                     enable_notes_url=enable_notes_url)
 
-
+    # Add a note in person's record view page
     def post(self):
         if not self.params.text:
             return self.error(
@@ -177,4 +177,4 @@ class Handler(BaseHandler):
                                  context='add_note')
 
         # Redirect to this page so the browser's back button works properly.
-        self.redirect('/add_note', id=self.params.id, query=self.params.query)
+        self.redirect('/view', id=self.params.id, query=self.params.query)
