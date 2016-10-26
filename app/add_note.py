@@ -60,8 +60,8 @@ class Handler(BaseHandler):
                     standalone=standalone,
                     enable_notes_url=enable_notes_url)
 
-
     def post(self):
+        """Post a note in person's record view page"""
         if not self.params.text:
             return self.error(
                 200, _('Message is required. Please go back and try again.'))
@@ -176,5 +176,5 @@ class Handler(BaseHandler):
                                  subscribe_email=self.params.author_email,
                                  context='add_note')
 
-        # Redirect to this page so the browser's back button works properly.
-        self.redirect('/add_note', id=self.params.id, query=self.params.query)
+        # Redirect to view page so the browser's back button works properly.
+        self.redirect('/view', id=self.params.id, query=self.params.query)
