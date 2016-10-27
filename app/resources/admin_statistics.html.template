@@ -27,9 +27,39 @@
   <tbody>
   {% for usage in all_usage %}
     <tr>
-      <td id="{{usage.repo}}-repo">{{usage.repo}}</td>
+      <td id="{{usage.repo}}-history">{{usage.repo}}</td>
       <td id="{{usage.repo}}-persons">{{usage.num_persons}}</td>
       <td id="{{usage.repo}}-notes">{{usage.num_notes}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p>
+
+<h2>Notes statistics</h2>
+
+<table class="statistics">
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>is_note_author</th>
+      <th>believed_alive</th>
+      <th>believed_dead</th>
+      <th>believed_missing</th>
+      <th>information_sought</th>
+      <th>unspecified</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for usage in all_usage %}
+    <tr>
+      <td id="{{usage.repo}}-note-statistics">{{usage.repo}}</td>
+      <td id="{{usage.repo}}-is_note_author">{{usage.is_note_author}}</td>
+      <td id="{{usage.repo}}-believed_alive">{{usage.believed_alive}}</td>
+      <td id="{{usage.repo}}-believed_dead">{{usage.believed_dead}}</td>
+      <td id="{{usage.repo}}-believed_missing">{{usage.believed_missing}}</td>
+      <td id="{{usage.repo}}-information_sought">{{usage.information_sought}}</td>
+      <td id="{{usage.repo}}-unspecified">{{usage.unspecified}}</td>
     </tr>
   {% endfor %}
   </tbody>

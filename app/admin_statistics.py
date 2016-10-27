@@ -32,9 +32,16 @@ class Handler(utils.BaseHandler):
         Get num_persons and notes for specific repository
         Return: dictionary contains repository name,
         number of persons and notes, e.g.
-        {'repo': haiti, 'num_persons': 10, 'num_notes': 5}
+        {'repo': haiti, 'num_persons': 10, 'num_notes': 5, ...etc}
         """
         counters = model.UsageCounter.get(repo)
         return {'repo': repo,
-                'num_persons': counters.person_counter if counters else 0,
-                'num_notes': counters.note_counter if counters else 0}
+                'num_persons': getattr(counters, 'person', 0),
+                'num_notes': getattr(counters, 'note', 0),
+                'is_note_author': getattr(counters, 'is_note_author', 0),
+                'believed_alive': getattr(counters, 'believed_alive', 0),
+                'believed_dead': getattr(counters, 'believed_dead', 0),
+                'believed_missing': getattr(counters, 'believed_missing', 0),
+                'information_sought': getattr(counters, 'information_sought', 0),
+                'unspecified': getattr(counters, 'unspecified', 0)
+                }

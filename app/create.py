@@ -232,9 +232,25 @@ class Handler(BaseHandler):
 
             # Specially log 'believed_dead'.
             if note.status == 'believed_dead':
+                UsageCounter.increment_counter(self.repo, 'believed_dead')
                 UserActionLog.put_new(
                     'mark_dead', note, person.primary_full_name,
                     self.request.remote_addr)
+
+            if note.status == 'is_note_author':
+                UsageCounter.increment_counter(self.repo, 'is_note_author')
+
+            if note.status == 'believed_alive':
+                UsageCounter.increment_counter(self.repo, 'believed_alive')
+
+            if note.status == 'believed_missing':
+                UsageCounter.increment_counter(self.repo, 'believed_missing')
+
+            if note.status == 'information_sought':
+                UsageCounter.increment_counter(self.repo, 'information_sought')
+
+            if note.status == '':
+                UsageCounter.increment_counter(self.repo, 'unspecified')
 
         # Write the person record to datastore
         person.put_new()
