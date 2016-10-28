@@ -35,6 +35,7 @@ class Handler(utils.BaseHandler):
 
     def get(self):
         article_html = None
+        url = None
 
         # Fetches the ToS page and embed it in the page. We do this instead of
         # just redirecting to the ToS page because we need to host the content
