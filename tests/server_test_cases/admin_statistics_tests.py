@@ -39,11 +39,11 @@ class AdminSummaryTests(ServerTestsBase):
         return self.s.submit(self.s.doc.cssselect_one('form'),
                       own_info='no',
                       author_made_contact='yes',
-                      text='_note_text',
+                      text='_note_text',  # unspecified note status
                       author_name='_note_author_name')
 
     def test_person_counter(self):
-        """Test if person_counter increment correctly"""
+        """Test if person counter increment correctly"""
         num_persons = 3
         # create num_persons of person's records
         for _ in range(num_persons):
@@ -52,12 +52,11 @@ class AdminSummaryTests(ServerTestsBase):
         assert 'haiti' in doc.text
         assert '# Persons' in doc.text
         # num_persons of persons are created
-        repo = doc.cssselect_one('#haiti-repo')
         persons = doc.cssselect_one('#haiti-persons')
         assert persons.text == str(num_persons)
 
     def test_note_counter(self):
-        """Test of note_counter increment correctly"""
+        """Test of note counter increment correctly"""
         num_notes = 5
         # create a num_notes of note records
         for _ in range(num_notes):
@@ -68,3 +67,46 @@ class AdminSummaryTests(ServerTestsBase):
         # one person's record and num_notes of notes are created
         notes = doc.cssselect_one('#haiti-notes')
         assert notes.text == str(num_notes)
+        # test unspecified status note counter
+        unspecified_status = doc.cssselect_one('#haiti-num_notes_unspecified')
+        assert unspecified_status.text == str(num_notes)
+
+    def test_is_note_author_counter(self):
+        """Test if the is_note_author_counter increment when choose
+        I want to input my own information in the create form"""
+        doc = self.go('/japan/create?given_name=_test_given_name&'
+                      'family_name=_test_family_name&role=provide')
+        form = doc.cssselect_one('form')
+        self.s.submit(form,
+                      own_info='yes',  # status == 'is_note_author'
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      text='_note_text')
+        doc = self.go_as_admin('/global/admin/statistics')
+        assert 'japan' in doc.text
+        is_note_author_counter = doc.cssselect_one('#japan-num_notes_is_note_author')
+        assert is_note_author_counter.text == '1'
+
+    def test_status_counter(self):
+        """Test of counter increment based on the given status_name"""
+        def increment_counter_and_assert(status_name, amount):
+            self.create_person_record()
+            for _ in range(amount):
+              self.s.submit(self.s.doc.cssselect_one('input.add-note'))
+              self.s.submit(self.s.doc.cssselect_one('form'),
+                            own_info='no',
+                            author_made_contact='yes',
+                            status=status_name,
+                            text='_note_text',
+                            author_name='_note_author_name')
+            doc = self.go_as_admin('/global/admin/statistics')
+            assert 'haiti' in doc.text
+            assert status_name in doc.text
+            status_name_counter = doc.cssselect_one('#haiti-num_notes_' + status_name)
+            assert status_name_counter.text == str(amount)
+
+        increment_counter_and_assert('is_note_author', 3)
+        increment_counter_and_assert('believed_alive', 5)
+        increment_counter_and_assert('believed_dead', 2)
+        increment_counter_and_assert('believed_missing', 4)
+        increment_counter_and_assert('information_sought', 6)

@@ -27,9 +27,36 @@
   <tbody>
   {% for usage in all_usage %}
     <tr>
-      <td id="{{usage.repo}}-repo">{{usage.repo}}</td>
+      <td id="{{usage.repo}}-history">{{usage.repo}}</td>
       <td id="{{usage.repo}}-persons">{{usage.num_persons}}</td>
       <td id="{{usage.repo}}-notes">{{usage.num_notes}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p>
+
+<h2>Notes statistics</h2>
+
+<table class="statistics">
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>is_note_author</th>
+      <th>believed_alive</th>
+      <th>believed_dead</th>
+      <th>believed_missing</th>
+      <th>information_sought</th>
+      <th>unspecified</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for usage in all_usage %}
+    <tr>
+      <td id="{{usage.repo}}-note-statistics">{{usage.repo}}</td>
+      {% for note_status in note_status_list %}
+        <td id="{{usage.repo}}-{{note_status}}">{{usage|get_value:note_status}}</td>
+      {% endfor %}
     </tr>
   {% endfor %}
   </tbody>
