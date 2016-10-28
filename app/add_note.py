@@ -160,24 +160,6 @@ class Handler(BaseHandler):
             person.latest_status not in ['believed_alive', 'is_note_author']):
             UserActionLog.put_new('mark_alive', note, person.primary_full_name)
 
-        if note.status == 'is_note_author':
-            UsageCounter.increment_counter(self.repo, 'is_note_author')
-
-        if note.status == 'believed_alive':
-            UsageCounter.increment_counter(self.repo, 'believed_alive')
-
-        if note.status == 'believed_dead':
-            UsageCounter.increment_counter(self.repo, 'believed_dead')
-
-        if note.status == 'believed_missing':
-            UsageCounter.increment_counter(self.repo, 'believed_missing')
-
-        if note.status == 'information_sought':
-            UsageCounter.increment_counter(self.repo, 'information_sought')
-
-        if note.status == '':
-            UsageCounter.increment_counter(self.repo, 'unspecified')
-
         # Update the Person based on the Note.
         if person:
             person.update_from_note(note)

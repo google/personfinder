@@ -54,12 +54,11 @@
   {% for usage in all_usage %}
     <tr>
       <td id="{{usage.repo}}-note-statistics">{{usage.repo}}</td>
-      <td id="{{usage.repo}}-is_note_author">{{usage.is_note_author}}</td>
-      <td id="{{usage.repo}}-believed_alive">{{usage.believed_alive}}</td>
-      <td id="{{usage.repo}}-believed_dead">{{usage.believed_dead}}</td>
-      <td id="{{usage.repo}}-believed_missing">{{usage.believed_missing}}</td>
-      <td id="{{usage.repo}}-information_sought">{{usage.information_sought}}</td>
-      <td id="{{usage.repo}}-unspecified">{{usage.unspecified}}</td>
+      {% for note_status in note_status_list %}
+        {% with "num_notes_"|add:note_status as key %}
+          <td id="{{usage.repo}}-{{note_status}}">{{usage|get_value:key}}</td>
+        {% endwith %}
+      {% endfor %}
     </tr>
   {% endfor %}
   </tbody>

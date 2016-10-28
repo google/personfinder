@@ -22,17 +22,22 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
-from google.appengine.api import search
 
 import config
 import full_text_search
 import indexing
 import pfif
 import prefix
-from const import HOME_DOMAIN
+from const import HOME_DOMAIN, NOTE_STATUS_TEXT
+from django.template.defaulttags import register
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
+
+@register.filter
+def get_value(dictionary, key):
+    """Django Template filter"""
+    return dictionary.get(key)
 
 # ==== PFIF record IDs =====================================================
 
@@ -553,9 +558,8 @@ class Person(Base):
         because a new record is created. Logs user actions is updated too.
         We should never call this method against an existing record."""
         db.put(self)
-        UsageCounter.increment_counter(self.repo, 'person')
+        UsageCounter.increment_counter(self.repo, ['person'])
         UserActionLog.put_new('add', self, copy_properties=False)
-
 
 # Old indexing
 # TODO(ryok): This is obsolete. Remove it.
@@ -649,9 +653,13 @@ class Note(Base):
         a new note is created. Also, logs user actions is updated. We should
         never call this method against an existing record."""
         db.put(self)
-        UsageCounter.increment_counter(self.repo, 'note')
         UserActionLog.put_new('add', self, copy_properties=False)
-
+        for note_status in NOTE_STATUS_TEXT:
+            if self.status == note_status:
+                if note_status == '':
+                    UsageCounter.increment_counter(self.repo, ['note','unspecified'])
+                else:
+                    UsageCounter.increment_counter(self.repo, ['note', note_status])
 
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
@@ -1039,13 +1047,14 @@ class UsageCounter(db.Expando):
 
     @classmethod
     @db.transactional
-    def increment_counter(cls, repo, counter_name, amount=1):
+    def increment_counter(cls, repo, counter_list, amount=1):
         """Increase the counter for the counter value
         based on the given amount. Each Counter has a dynamic property
         and is named based on a given counter_name."""
         counter = cls.get(repo)
         if not counter:
             counter = cls.create(repo)
-        counter_value = getattr(counter, counter_name, 0)
-        setattr(counter, counter_name, counter_value + amount)
+        for counter_name in counter_list:
+            counter_value = getattr(counter, counter_name, 0)
+            setattr(counter, counter_name, counter_value + amount)
         counter.put()

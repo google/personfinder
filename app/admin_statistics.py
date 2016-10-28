@@ -16,6 +16,8 @@
 import model
 import utils
 
+from const import NOTE_STATUS_TEXT
+
 class Handler(utils.BaseHandler):
     """Show various statistics for each repository,
     including repositories which are no longer active."""
@@ -25,7 +27,16 @@ class Handler(utils.BaseHandler):
     def get(self):
         repos = sorted(model.Repo.list())
         all_usage = [self.get_repo_usage(repo) for repo in repos]
-        self.render('admin_statistics.html', all_usage=all_usage)
+        note_status_list = []
+        for note_status in NOTE_STATUS_TEXT:
+            if note_status == '':
+                continue
+            note_status_list.append(note_status)
+        note_status_list.append('unspecified')
+
+        self.render('admin_statistics.html',
+                    all_usage=all_usage,
+                    note_status_list=note_status_list)
 
     def get_repo_usage(self, repo):
         """
@@ -35,13 +46,15 @@ class Handler(utils.BaseHandler):
         {'repo': haiti, 'num_persons': 10, 'num_notes': 5, ...etc}
         """
         counters = model.UsageCounter.get(repo)
-        return {'repo': repo,
-                'num_persons': getattr(counters, 'person', 0),
-                'num_notes': getattr(counters, 'note', 0),
-                'is_note_author': getattr(counters, 'is_note_author', 0),
-                'believed_alive': getattr(counters, 'believed_alive', 0),
-                'believed_dead': getattr(counters, 'believed_dead', 0),
-                'believed_missing': getattr(counters, 'believed_missing', 0),
-                'information_sought': getattr(counters, 'information_sought', 0),
-                'unspecified': getattr(counters, 'unspecified', 0)
-                }
+        repo_usage = {'repo': repo,
+                      'num_persons': getattr(counters, 'person', 0),
+                      'num_notes': getattr(counters, 'note', 0)}
+
+        for note_status in NOTE_STATUS_TEXT:
+            if note_status == '':
+                repo_usage[
+                'num_notes_unspecified'] = getattr(counters, 'unspecified', 0)
+            else:
+                repo_usage[
+                'num_notes_' + note_status] = getattr(counters, note_status, 0)
+        return repo_usage

@@ -89,7 +89,7 @@ class AdminSummaryTests(ServerTestsBase):
 
     def test_status_counter(self):
         """Test of counter increment based on the given status_name"""
-        def increment_counter(status_name, amount):
+        def increment_counter_and_assert(status_name, amount):
             self.create_person_record()
             for _ in range(amount):
               self.s.submit(self.s.doc.cssselect_one('input.add-note'))
@@ -104,8 +104,9 @@ class AdminSummaryTests(ServerTestsBase):
             assert status_name in doc.text
             status_name_counter = doc.cssselect_one('#haiti-' + status_name)
             assert status_name_counter.text == str(amount)
-        increment_counter('is_note_author', 3)
-        increment_counter('believed_alive', 5)
-        increment_counter('believed_dead', 2)
-        increment_counter('believed_missing', 4)
-        increment_counter('information_sought', 6)
+
+        increment_counter_and_assert('is_note_author', 3)
+        increment_counter_and_assert('believed_alive', 5)
+        increment_counter_and_assert('believed_dead', 2)
+        increment_counter_and_assert('believed_missing', 4)
+        increment_counter_and_assert('information_sought', 6)
