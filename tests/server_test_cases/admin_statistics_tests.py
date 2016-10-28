@@ -68,7 +68,7 @@ class AdminSummaryTests(ServerTestsBase):
         notes = doc.cssselect_one('#haiti-notes')
         assert notes.text == str(num_notes)
         # test unspecified status note counter
-        unspecified_status = doc.cssselect_one('#haiti-unspecified')
+        unspecified_status = doc.cssselect_one('#haiti-num_notes_unspecified')
         assert unspecified_status.text == str(num_notes)
 
     def test_is_note_author_counter(self):
@@ -84,7 +84,7 @@ class AdminSummaryTests(ServerTestsBase):
                       text='_note_text')
         doc = self.go_as_admin('/global/admin/statistics')
         assert 'japan' in doc.text
-        is_note_author_counter = doc.cssselect_one('#japan-is_note_author')
+        is_note_author_counter = doc.cssselect_one('#japan-num_notes_is_note_author')
         assert is_note_author_counter.text == '1'
 
     def test_status_counter(self):
@@ -102,7 +102,7 @@ class AdminSummaryTests(ServerTestsBase):
             doc = self.go_as_admin('/global/admin/statistics')
             assert 'haiti' in doc.text
             assert status_name in doc.text
-            status_name_counter = doc.cssselect_one('#haiti-' + status_name)
+            status_name_counter = doc.cssselect_one('#haiti-num_notes_' + status_name)
             assert status_name_counter.text == str(amount)
 
         increment_counter_and_assert('is_note_author', 3)

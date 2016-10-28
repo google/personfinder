@@ -55,9 +55,7 @@
     <tr>
       <td id="{{usage.repo}}-note-statistics">{{usage.repo}}</td>
       {% for note_status in note_status_list %}
-        {% with "num_notes_"|add:note_status as key %}
-          <td id="{{usage.repo}}-{{note_status}}">{{usage|get_value:key}}</td>
-        {% endwith %}
+        <td id="{{usage.repo}}-{{note_status}}">{{usage|get_value:note_status}}</td>
       {% endfor %}
     </tr>
   {% endfor %}

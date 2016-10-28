@@ -34,6 +34,7 @@ import urlparse
 import base64
 
 import django.utils.html
+from django.template.defaulttags import register
 from google.appengine.api import images
 from google.appengine.api import mail
 from google.appengine.api import taskqueue
@@ -61,6 +62,10 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # env.hidden_input_tags_for_preserved_query_params.
 PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets', 'referrer']
 
+@register.filter
+def get_value(dictionary, key):
+    """Django Template filter to get dictionary value based on the given key"""
+    return dictionary.get(key)
 
 # ==== Field value text ========================================================
 

@@ -29,15 +29,9 @@ import indexing
 import pfif
 import prefix
 from const import HOME_DOMAIN, NOTE_STATUS_TEXT
-from django.template.defaulttags import register
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
-
-@register.filter
-def get_value(dictionary, key):
-    """Django Template filter"""
-    return dictionary.get(key)
 
 # ==== PFIF record IDs =====================================================
 
@@ -654,12 +648,8 @@ class Note(Base):
         never call this method against an existing record."""
         db.put(self)
         UserActionLog.put_new('add', self, copy_properties=False)
-        for note_status in NOTE_STATUS_TEXT:
-            if self.status == note_status:
-                if note_status == '':
-                    UsageCounter.increment_counter(self.repo, ['note','unspecified'])
-                else:
-                    UsageCounter.increment_counter(self.repo, ['note', note_status])
+        note_status = self.status if self.status else 'unspecified'
+        UsageCounter.increment_counter(self.repo, ['note', note_status])
 
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector

@@ -29,10 +29,10 @@ class Handler(utils.BaseHandler):
         all_usage = [self.get_repo_usage(repo) for repo in repos]
         note_status_list = []
         for note_status in NOTE_STATUS_TEXT:
-            if note_status == '':
-                continue
-            note_status_list.append(note_status)
-        note_status_list.append('unspecified')
+            if not note_status:
+                note_status_list.append('num_notes_unspecified')
+            else:
+                note_status_list.append('num_notes_' + note_status)
 
         self.render('admin_statistics.html',
                     all_usage=all_usage,
@@ -51,10 +51,8 @@ class Handler(utils.BaseHandler):
                       'num_notes': getattr(counters, 'note', 0)}
 
         for note_status in NOTE_STATUS_TEXT:
-            if note_status == '':
-                repo_usage[
-                'num_notes_unspecified'] = getattr(counters, 'unspecified', 0)
-            else:
-                repo_usage[
-                'num_notes_' + note_status] = getattr(counters, note_status, 0)
+            if not note_status:
+                note_status = 'unspecified'
+            repo_usage['num_notes_' + note_status] = (
+                getattr(counters, note_status, 0))
         return repo_usage
