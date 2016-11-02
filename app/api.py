@@ -27,6 +27,11 @@ import re
 import StringIO
 import xml.dom.minidom
 
+#For GA MP
+import uuid
+import urllib
+import urllib2
+
 import django.utils.html
 from django.utils.translation import ugettext as _
 from google.appengine import runtime
@@ -524,6 +529,7 @@ class Search(utils.BaseHandler):
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 
+
 class Subscribe(utils.BaseHandler):
     https_required = True
 
@@ -691,6 +697,7 @@ class HandleSMS(utils.BaseHandler):
         responses = []
 
         if query_action == 'search':
+            self.gamp('search')
             query_string = match.group(1).strip()
             query = TextQuery(query_string)
             persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
@@ -711,6 +718,7 @@ class HandleSMS(utils.BaseHandler):
                   'google.org/personfinder/global/tos'))
 
         elif self.config.enable_sms_record_input and query_action == 'add':
+            self.gamp('add')
             name_string = match.group(1).strip()
             person = Person.create_original(
                 repo,
@@ -791,3 +799,21 @@ class HandleSMS(utils.BaseHandler):
             return text.encode('utf-8')
         else:
             return None
+
+    #Send hit to GA
+    def gamp(e,ec):
+        ga_cid = uuid.uuid4()
+        params = urllib.urlencode({
+            'v': 1,
+            'tid': 'UA-17770602-2',
+            'cid': ga_cid,
+            't': 'event',
+            'ec': ec,
+            'ea': 'SMS',
+            'dp': '/sms_action'
+        })
+        url = 'http://www.google-analytics.com/collect'
+        try:
+            f = urllib2.urlopen(url, params)
+        except urllib2.URLError:
+            logging.exception('Caught exception fetching url')
