@@ -529,7 +529,6 @@ class Search(utils.BaseHandler):
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 
-
 class Subscribe(utils.BaseHandler):
     https_required = True
 
