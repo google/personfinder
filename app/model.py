@@ -22,14 +22,13 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
-from google.appengine.api import search
 
 import config
 import full_text_search
 import indexing
 import pfif
 import prefix
-from const import HOME_DOMAIN
+from const import HOME_DOMAIN, NOTE_STATUS_TEXT
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
@@ -553,9 +552,8 @@ class Person(Base):
         because a new record is created. Logs user actions is updated too.
         We should never call this method against an existing record."""
         db.put(self)
-        UsageCounter.increment_person_counter(self.repo)
+        UsageCounter.increment_counter(self.repo, ['person'])
         UserActionLog.put_new('add', self, copy_properties=False)
-
 
 # Old indexing
 # TODO(ryok): This is obsolete. Remove it.
@@ -649,9 +647,9 @@ class Note(Base):
         a new note is created. Also, logs user actions is updated. We should
         never call this method against an existing record."""
         db.put(self)
-        UsageCounter.increment_note_counter(self.repo)
         UserActionLog.put_new('add', self, copy_properties=False)
-
+        note_status = self.status if self.status else 'unspecified'
+        UsageCounter.increment_counter(self.repo, ['note', note_status])
 
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
@@ -1017,7 +1015,7 @@ class UniqueId(db.Model):
         unique_id.put()
         return unique_id.key().id()
 
-class UsageCounter(db.Model):
+class UsageCounter(db.Expando):
     """Counters which count the historical statistics for each repository.
     To see how this is used, check out admin_statistics.py.
     Unlike the Counter class, UsageCounter object increments when
@@ -1026,11 +1024,6 @@ class UsageCounter(db.Model):
 
     # repo stored as a seperate property so it can be indexed and queried.
     repo = db.StringProperty(required=True)
-    # Total number of person records created so far,
-    # including deleted/expired ones.
-    person_counter = db.IntegerProperty(default=0, required=True)
-    # Total number of notes created so far, including deleted/expired ones.
-    note_counter = db.IntegerProperty(default=0, required=True)
 
     @classmethod
     def create(cls, repo):
@@ -1044,22 +1037,14 @@ class UsageCounter(db.Model):
 
     @classmethod
     @db.transactional
-    def increment_person_counter(cls, repo, amount=1):
-        """Increase the counter for the number of person records
-        based on the given amount of newly created person records"""
-        count = cls.get(repo)
-        if not count:
-            count = cls.create(repo)
-        count.person_counter += amount
-        count.put()
-
-    @classmethod
-    @db.transactional
-    def increment_note_counter(cls, repo, amount=1):
-        """Increase the counter for the number of notes
-        based on the given amount of new notes"""
-        count = cls.get(repo)
-        if not count:
-            count = cls.create(repo)
-        count.note_counter += amount
-        count.put()
+    def increment_counter(cls, repo, counter_list, amount=1):
+        """Increase the counter for the counter value
+        based on the given amount. Each Counter has a dynamic property
+        and is named based on a given counter_name."""
+        counter = cls.get(repo)
+        if not counter:
+            counter = cls.create(repo)
+        for counter_name in counter_list:
+            counter_value = getattr(counter, counter_name, 0)
+            setattr(counter, counter_name, counter_value + amount)
+        counter.put()
