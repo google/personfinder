@@ -27,10 +27,10 @@ import re
 import StringIO
 import xml.dom.minidom
 
-#For GA MP
-import uuid
+# For Google Analytics Measument Protocol
 import urllib
 import urllib2
+import uuid
 
 import django.utils.html
 from django.utils.translation import ugettext as _
@@ -696,7 +696,7 @@ class HandleSMS(utils.BaseHandler):
         responses = []
 
         if query_action == 'search':
-            self.gamp('search')
+            self.ga_send_hit('search')
             query_string = match.group(1).strip()
             query = TextQuery(query_string)
             persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
@@ -717,7 +717,7 @@ class HandleSMS(utils.BaseHandler):
                   'google.org/personfinder/global/tos'))
 
         elif self.config.enable_sms_record_input and query_action == 'add':
-            self.gamp('add')
+            self.ga_send_hit('add')
             name_string = match.group(1).strip()
             person = Person.create_original(
                 repo,
@@ -799,20 +799,23 @@ class HandleSMS(utils.BaseHandler):
         else:
             return None
 
-    #Send hit to GA
-    def gamp(e,ec):
+    # ga_send_hit sends hit to Google Analytics via Measurment Protocol.
+    # With Measurement Protocol, you can send data by making HTTP requests.
+    # You can find more on developer guide.
+    # https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide
+    def ga_send_hit(self, event_category):
         ga_cid = uuid.uuid4()
         params = urllib.urlencode({
             'v': 1,
-            'tid': 'UA-17770602-2',
+            'tid': self.env.analytics_id,
             'cid': ga_cid,
             't': 'event',
-            'ec': ec,
+            'ec': event_category,
             'ea': 'SMS',
             'dp': '/sms_action'
         })
         url = 'http://www.google-analytics.com/collect'
         try:
-            f = urllib2.urlopen(url, params)
+            urllib2.urlopen(url, params)
         except urllib2.URLError:
-            logging.exception('Caught exception fetching url')
+            logging.exception('Caught exception when sending Google Analytics hit')
