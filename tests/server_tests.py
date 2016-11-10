@@ -50,7 +50,8 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
     OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
-    BIND_RE = re.compile('BindError: Unable to bind (.*):(\d*)') # this output is for appserver's port error
+    # this output is for appserver's port error
+    BIND_RE = re.compile('BindError: Unable to bind (.*):(\d+)')
     debug = False  # set to True to see all log messages, ignoring OMIT_RE
 
     def __init__(self, name, args):
@@ -164,10 +165,18 @@ class AppServerRunner(ProcessRunner):
       """Flushes the buffered output from this subprocess to stderr."""
       self.output, original_output = [], self.output
       if original_output:
-          matchOB = self.BIND_RE.search('\n'.join(original_output), re.MULTILINE);
-          if matchOB:
-              sys.stderr.write('%s failed %s port %s is already in use.\n\n' %
-                               (self.name, matchOB.group(1), matchOB.group(2)))
+          error = '\n'.join(original_output)
+          match = self.BIND_RE.search(error, re.MULTILINE)
+          if match:
+              host = match.group(1)
+              port = match.group(2)
+              sys.stderr.write('%s failed %s port %s is already in use.\n' %
+                               (self.name, host, port))
+              sys.stderr.write('Please turn down local Person Finder ' +
+                               'server or the server test if any.\n\n')
+          else:
+              sys.stderr.write('\n--- output from %s ---\n' % self.name)
+              sys.stderr.write(error + '\n\n')
 
 
 class MailThread(threading.Thread):
