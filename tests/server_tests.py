@@ -165,8 +165,8 @@ class AppServerRunner(ProcessRunner):
       """Flushes the buffered output from this subprocess to stderr."""
       self.output, original_output = [], self.output
       if original_output:
-          error = '\n'.join(original_output)
-          match = self.BIND_RE.search(error, re.MULTILINE)
+          original_output_text = '\n'.join(original_output)
+          match = self.BIND_RE.search(original_output_text, re.MULTILINE)
           if match:
               host = match.group(1)
               port = match.group(2)
@@ -176,7 +176,7 @@ class AppServerRunner(ProcessRunner):
                                'server or the server test if any.\n\n')
           else:
               sys.stderr.write('\n--- output from %s ---\n' % self.name)
-              sys.stderr.write(error + '\n\n')
+              sys.stderr.write(original_output_text + '\n\n')
 
 
 class MailThread(threading.Thread):
