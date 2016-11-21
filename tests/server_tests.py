@@ -50,6 +50,8 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
     OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
+    # this output is for appserver's port error
+    BIND_RE = re.compile('BindError: Unable to bind (.*):(\d+)')
     debug = False  # set to True to see all log messages, ignoring OMIT_RE
 
     def __init__(self, name, args):
@@ -158,6 +160,23 @@ class AppServerRunner(ProcessRunner):
             # sure that the query see the data after the write is applied.
             '--datastore_consistency_policy=consistent',
         ])
+
+    def flush_output(self):
+      """Flushes the buffered output from this subprocess to stderr."""
+      self.output, original_output = [], self.output
+      if original_output:
+          original_output_text = '\n'.join(original_output)
+          match = self.BIND_RE.search(original_output_text, re.MULTILINE)
+          if match:
+              host = match.group(1)
+              port = match.group(2)
+              sys.stderr.write('%s failed %s port %s is already in use.\n' %
+                               (self.name, host, port))
+              sys.stderr.write('Please turn down local Person Finder ' +
+                               'server or the server test if any.\n\n')
+          else:
+              sys.stderr.write('\n--- output from %s ---\n' % self.name)
+              sys.stderr.write(original_output_text + '\n\n')
 
 
 class MailThread(threading.Thread):

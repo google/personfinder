@@ -5,7 +5,7 @@
 # Use -k to select particular test classes or methods by a substring match:
 #     tools/server_tests -k ConfigTests
 #     tools/server_tests -k test_delete_and_restore
-# 
+#
 # Specify -v to show the name of each test as it runs (rather than just dots).
 # Specify -s to see the messages printed by all tests as they run (by default,
 #     stdout/stderr will be captured and then shown only for failing tests).
@@ -23,7 +23,7 @@ $TOOLS_DIR/update_messages
 echo
 echo "--- Running server tests"
 # Both production App Engine and dev_appserver run in the UTC timezone.
-# However, the App Engine SDK uses datetime.now(), not datetime.utcnow().  
+# However, the App Engine SDK uses datetime.now(), not datetime.utcnow().
 # This means that auto_now properties will get local times when written by
 # server_tests.py, but UTC times when written by the dev_appserver.  So,
 # to make tests work properly, we have to set the local time zone to UTC.
