@@ -804,28 +804,26 @@ class HandleSMS(utils.BaseHandler):
         With Measurement Protocol, you can send data by making HTTP requests.
         You can find more on developer guide.
         https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide
+
         Args:
             event_category: Google Analytics Event Category.
         """
 
-        # Check Google Analytics property setting
-        try:
-            tid = self.env.analytics_id
-        except:
-            tid = 'UA-17770602-2'
-
-        analytics_cid = uuid.uuid4()
-        params = urllib.urlencode({
-            'v': 1,
-            'tid': tid,
-            'cid': analytics_cid,
-            't': 'event',
-            'ec': event_category,
-            'ea': 'SMS',
-            'dp': '/sms_action'
-        })
-        url = 'http://www.google-analytics.com/collect'
-        try:
-            urllib2.urlopen(url, params)
-        except urllib2.URLError:
-            logging.exception('Caught exception when sending Google Analytics hit')
+        if self.env.analytics_id:
+            analytics_cid = uuid.uuid4()
+            params = urllib.urlencode({
+                'v': 1,
+                'tid': self.env.analytics_id,
+                'cid': analytics_cid,
+                't': 'event',
+                'ec': event_category,
+                'ea': 'SMS',
+                'dp': '/sms_action'
+            })
+            url = 'http://www.google-analytics.com/collect'
+            try:
+                urllib2.urlopen(url, params)
+            except urllib2.URLError:
+                logging.exception('Caught exception when sending Google Analytics hit')
+        else:
+            return None
