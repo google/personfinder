@@ -825,5 +825,4 @@ class HandleSMS(utils.BaseHandler):
                 urllib2.urlopen(url, params)
             except urllib2.URLError:
                 logging.exception('Caught exception when sending Google Analytics hit')
-        else:
-            return None
+
