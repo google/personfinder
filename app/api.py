@@ -27,6 +27,11 @@ import re
 import StringIO
 import xml.dom.minidom
 
+# For Google Analytics Measument Protocol
+import urllib
+import urllib2
+import uuid
+
 import django.utils.html
 from django.utils.translation import ugettext as _
 from google.appengine import runtime
@@ -691,6 +696,7 @@ class HandleSMS(utils.BaseHandler):
         responses = []
 
         if query_action == 'search':
+            self.send_hit_to_google_analytics('search')
             query_string = match.group(1).strip()
             query = TextQuery(query_string)
             persons = indexing.search(repo, query, HandleSMS.MAX_RESULTS)
@@ -711,6 +717,7 @@ class HandleSMS(utils.BaseHandler):
                   'google.org/personfinder/global/tos'))
 
         elif self.config.enable_sms_record_input and query_action == 'add':
+            self.send_hit_to_google_analytics('add')
             name_string = match.group(1).strip()
             person = Person.create_original(
                 repo,
@@ -791,3 +798,31 @@ class HandleSMS(utils.BaseHandler):
             return text.encode('utf-8')
         else:
             return None
+
+    def send_hit_to_google_analytics(self, event_category):
+        """Sends hit to Google Analytics via Measurment Protocol.
+        With Measurement Protocol, you can send data by making HTTP requests.
+        You can find more on developer guide.
+        https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide
+
+        Args:
+            event_category: Google Analytics Event Category.
+        """
+
+        if self.env.analytics_id:
+            analytics_cid = uuid.uuid4()
+            params = urllib.urlencode({
+                'v': 1,
+                'tid': self.env.analytics_id,
+                'cid': analytics_cid,
+                't': 'event',
+                'ec': event_category,
+                'ea': 'SMS',
+                'dp': '/sms_action'
+            })
+            url = 'http://www.google-analytics.com/collect'
+            try:
+                urllib2.urlopen(url, params)
+            except urllib2.URLError:
+                logging.exception('Caught exception when sending Google Analytics hit')
+
