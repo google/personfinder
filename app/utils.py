@@ -665,7 +665,6 @@ class BaseHandler(webapp.RequestHandler):
         'profile_url2': strip,
         'profile_url3': strip,
         'query': strip,
-        'query_name': strip,
         'query_location': strip,
         'query_type': strip,
         'read_permission': validate_checkbox_as_bool,

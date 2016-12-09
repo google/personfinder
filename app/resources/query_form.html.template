@@ -108,9 +108,9 @@
     {% else %}
       <div class="field">
         {% if env.ui == "facebook" %}
-          <input id="query_name" name="query_name"
+          <input id="query" name="query"
               class="short-text-input"
-              value="{{params.query_name}}">
+              value="{{params.query}}">
         {% else %}
           <span class="mandatory label">
             {% if config.jp_mobile_carrier_redirect %}
@@ -119,9 +119,9 @@
               {% trans "Name (required)" %}:
             {% endif %}
           </span>
-          <input id="query_name" name="query_name"
+          <input id="query" name="query"
               class="long-text-input"
-              value="{{params.query_name}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
+              value="{{params.query}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
         {% endif %}
       </div>
       {% if config.enable_fulltext_search %}

@@ -100,7 +100,7 @@ class Handler(BaseHandler):
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
                                            role=self.params.role,
-                                           query_name=self.params.query_name,
+                                           query=self.params.query,
                                            query_location=
                                                self.params.query_location,
                                            given_name=self.params.given_name,
@@ -119,11 +119,11 @@ class Handler(BaseHandler):
         return self.redirect(
             '/query', role=self.params.role, error='error', query=query.query)
 
-    def get_results_url(self, query_name, query_location):
+    def get_results_url(self, query, query_location):
         return self.get_url(
             '/results',
             ui='' if self.env.ui == 'small' else self.env.ui,
-            query_name=query_name,
+            query=query,
             query_location=query_location,
             role=self.params.role,
             given_name=self.params.given_name,
@@ -183,7 +183,7 @@ class Handler(BaseHandler):
                                    create_url=create_url,
                                    third_party_search_engines=
                                        third_party_search_engines,
-                                   query_name=self.params.query_name,
+                                   query=self.params.query,
                                    query_location=self.params.query_location,)
             else:
                 if self.env.ui == 'small':
@@ -196,7 +196,7 @@ class Handler(BaseHandler):
                     return self.redirect('/create', **self.params.__dict__)
 
         if self.params.role == 'seek':
-            query_dict = {'name': self.params.query_name,
+            query_dict = {'name': self.params.query,
                           'location': self.params.query_location}
             self.params.query = " ".join(q for q in query_dict.values() if q)
             query = TextQuery(self.params.query)
@@ -231,7 +231,7 @@ class Handler(BaseHandler):
             else:
                 # Look for prefix matches.
                 results = self.search(query_dict)
-                results_url = self.get_results_url(self.params.query_name,
+                results_url = self.get_results_url(self.params.query,
                                                    self.params.query_location)
                 third_party_query_type = ''
                 query_location = self.params.query_location
@@ -240,7 +240,7 @@ class Handler(BaseHandler):
                 # Check if there have results match for name
                 if not results:
                     if self.params.query_location:
-                        query_dict = {'name': self.params.query_name,
+                        query_dict = {'name': self.params.query,
                                       'location': ''}
                         results = self.search(query_dict)
                         # search result not based on the user input
@@ -257,7 +257,7 @@ class Handler(BaseHandler):
                                create_url=create_url,
                                third_party_search_engines=
                                    third_party_search_engines,
-                               query_name=self.params.query_name,
+                               query=self.params.query,
                                query_location_original=
                                     self.params.query_location,
                                query_location=query_location,

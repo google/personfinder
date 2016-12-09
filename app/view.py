@@ -112,7 +112,7 @@ class Handler(BaseHandler):
         results_url = self.get_url(
             '/results',
             role=self.params.role,
-            query_name=self.params.query_name,
+            query=self.params.query,
             query_location=self.params.query_location,
             given_name=self.params.given_name,
             family_name=self.params.family_name)
