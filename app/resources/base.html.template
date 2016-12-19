@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
 <head>{% block head %}
+  {% include "gtm.html.template" %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
@@ -120,7 +121,6 @@
           {{env.footer_custom_html|default:""|safe}}
         </div>
 
-        {% include "analytics.html.template" %}
       </div>
     </div>
 
