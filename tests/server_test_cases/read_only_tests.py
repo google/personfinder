@@ -155,7 +155,7 @@ class ReadOnlyTests(ServerTestsBase):
 
     def test_results(self):
         """Check the results page."""
-        doc = self.go('/haiti/results?query=xy')
+        doc = self.go('/haiti/results?query_name=xy')
         assert 'We have nothing' in doc.text
 
     def test_create(self):

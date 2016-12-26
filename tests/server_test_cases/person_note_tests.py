@@ -299,7 +299,7 @@ class PersonNoteTests(ServerTestsBase):
         assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
 
         # Robots are not okay on the results page.
-        doc = self.go('/haiti/results?role=seek&query=_test_full_name&query_location=')
+        doc = self.go('/haiti/results?role=seek&query_name=_test_full_name&query_location=')
         assert '_test_full_name' in doc.content
         assert doc.xpath('//meta[@name="robots" and @content="noindex"]')
 
@@ -421,7 +421,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -443,10 +443,10 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query=_test_given_name' in link.get('href')
+        assert 'query_name=_test_given_name' in link.get('href')
 
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
@@ -469,7 +469,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -493,7 +493,7 @@ class PersonNoteTests(ServerTestsBase):
             details={'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_given_name']),
                                  some_have=(['_test_given_name']),
@@ -546,7 +546,7 @@ class PersonNoteTests(ServerTestsBase):
         person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
-        self.s.submit(search_form, query='_test_given_name')
+        self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(
             1, all_have=['_test_given_name'], some_have=['_test_given_name'],
@@ -700,7 +700,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='ABCD EFGH IJKL MNOP')
+        self.s.submit(search_form, query_name='ABCD EFGH IJKL MNOP')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -717,27 +717,27 @@ class PersonNoteTests(ServerTestsBase):
                       author_name='author_name')
 
         # Try a middle-name match.
-        self.s.submit(search_form, query='EFGH')
+        self.s.submit(search_form, query_name='EFGH')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try a middle-name non-match.
-        self.s.submit(search_form, query='ABCDEF')
+        self.s.submit(search_form, query_name='ABCDEF')
         self.verify_results_page(0)
 
         # Try a middle-name prefix match.
-        self.s.submit(search_form, query='MNO')
+        self.s.submit(search_form, query_name='MNO')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try a multiword match.
-        self.s.submit(search_form, query='MNOP IJK ABCD EFG')
+        self.s.submit(search_form, query_name='MNOP IJK ABCD EFG')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
         # Try an alternate-name prefix non-match.
-        self.s.submit(search_form, query='QRS')
+        self.s.submit(search_form, query_name='QRS')
         self.verify_results_page(0)
 
         # Try a multiword match on an alternate name.
-        self.s.submit(search_form, query='ABCD EFG QRST UVWX')
+        self.s.submit(search_form, query_name='ABCD EFG QRST UVWX')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
     def test_indexing_japanese_names(self):
@@ -763,7 +763,7 @@ class PersonNoteTests(ServerTestsBase):
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query='山田 太郎')
+        self.s.submit(search_form, query_name='山田 太郎')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -779,42 +779,42 @@ class PersonNoteTests(ServerTestsBase):
                       author_name='author_name')
 
         # Try a family name match.
-        self.s.submit(search_form, query='山田')
+        self.s.submit(search_form, query_name='山田')
         self.verify_results_page(1, all_have=([u'山田 太郎',
                                                u'やまだ たろう']))
 
         # Try a full name prefix match.
-        self.s.submit(search_form, query='山田太')
+        self.s.submit(search_form, query_name='山田太')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try a full name match, where given and family names are not segmented.
-        self.s.submit(search_form, query='山田太郎')
+        self.s.submit(search_form, query_name='山田太郎')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate family name match.
-        self.s.submit(search_form, query='やまだ')
+        self.s.submit(search_form, query_name='やまだ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name match with given name and family name segmented.
-        self.s.submit(search_form, query='やまだ たろう')
+        self.s.submit(search_form, query_name='やまだ たろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name match without given name and family name
         # segmented.
-        self.s.submit(search_form, query='やまだたろう')
+        self.s.submit(search_form, query_name='やまだたろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate name prefix match, but we don't index prefixes for
         # alternate names.
-        self.s.submit(search_form, query='やまだたろ')
+        self.s.submit(search_form, query_name='やまだたろ')
         self.verify_results_page(0)
 
         # Try an alternate family name match with katakana variation.
-        self.s.submit(search_form, query='ヤマダ')
+        self.s.submit(search_form, query_name='ヤマダ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
         # Try an alternate family name match with romaji variation.
-        self.s.submit(search_form, query='YAMADA')
+        self.s.submit(search_form, query_name='YAMADA')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
     def test_have_information_regular(self):
@@ -1218,7 +1218,7 @@ http://www.foo.com/_account_1''',
                 data=data, type='application/xml')
 
         # On Search results page,  we should see Provided by: domain
-        doc = self.go('/haiti/results?role=seek&query=_test_last_name&query_location=')
+        doc = self.go('/haiti/results?role=seek&query_name=_test_last_name&query_location=')
         assert get_all_text(doc.cssselect_one('.provider-name')) == (
             'mytestdomain.com')
         assert '_test_last_name' in doc.content
@@ -1282,7 +1282,7 @@ http://www.foo.com/_account_1''',
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
-            '/haiti/results?role=seek&query=_test_last_name&query_location=')
+            '/haiti/results?role=seek&query_name=_test_last_name&query_location=')
         assert get_all_text(doc.cssselect_one('.provider-name')) == (
             'globaltestdomain.com')
         assert '_test_last_name' in doc.content
@@ -3972,7 +3972,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name&query_location=')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4138,7 +4138,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name&query_location=')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' not in doc.text
 
         # The read API should show a record with all the fields present,
@@ -4278,7 +4278,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name&query_location=')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4336,7 +4336,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_given_name+_test_family_name&query_location=')
+                      'query_name=_test_given_name+_test_family_name&query_location=')
         assert 'No results found' in doc.text
 
     def test_add_note_for_deleted_person(self):
@@ -4807,7 +4807,7 @@ _feed_profile_url2</pfif:profile_urls>
                     '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?role=seek&'
-                'query=_test_given+_test_family&query_location=')
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4835,7 +4835,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert '_test_family' not in d.content
 
         self.go('/pakistan/results?role=seek&'
-                'query=_test_given+_test_family&query_location')
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1)
         first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
         assert '_test_given' in first_title
@@ -4889,7 +4889,7 @@ _feed_profile_url2</pfif:profile_urls>
                     '_test_alternate_family _test_alternate_given'})
 
         self.go('/japan/results?role=seek&'
-                'query=_test_family+_test_given&lang=en&query_location=')
+                'query_name=_test_family+_test_given&lang=en&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_family _test_given',
             '(_test_alternate_family _test_alternate_given)']))
@@ -4939,7 +4939,7 @@ _feed_profile_url2</pfif:profile_urls>
                     '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?role=seek&'
-                'query=_test_given+_test_family&query_location')
+                'query_name=_test_given+_test_family&query_location')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -4973,7 +4973,7 @@ _feed_profile_url2</pfif:profile_urls>
                     '_test_alternate_given _test_alternate_family'})
 
         self.go('/haiti/results?role=seek&'
-                'query=_test_given+_test_family&query_location=')
+                'query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1, all_have=([
             '_test_given _test_family',
             '(_test_alternate_given _test_alternate_family)']))
@@ -5005,7 +5005,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert '_test_alternate_given' not in d.text
         assert '_test_alternate_family' not in d.text
 
-        self.go('/pakistan/results?role=seek&query=_test_given+_test_family&query_location=')
+        self.go('/pakistan/results?role=seek&query_name=_test_given+_test_family&query_location=')
         self.verify_results_page(1)
         first_title = get_all_text(self.s.doc.cssselect('.resultDataTitle')[0])
         assert '_test_given' in first_title
@@ -5042,7 +5042,7 @@ _feed_profile_url2</pfif:profile_urls>
                       author_name='_test_author')
         person = Person.all().get()
         self.go('/haiti/results?role=seek&'
-                'query=_test_given+_test_family&'
+                'query_name=_test_given+_test_family&'
                 'query_location=_test_home_street+_test_home_neighborhood+'
                 '_test_home_city+_test_home_state+_test_home_country')
         self.verify_results_page(1)
@@ -5185,7 +5185,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Search for the record just submitted.
         self.s.submit(
-            search_form, query=u'%s %s' % (test_given_name, test_family_name))
+            search_form, query_name=u'%s %s' % (test_given_name, test_family_name))
         assert_params()
         self.verify_results_page(1, all_have=([test_given_name]),
                                  some_have=([test_given_name]))

@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block logo %}
-  {% if params.query or params.given_name or params.family_name %}
+  {% if params.query_name or params.given_name or params.family_name %}
     {% if env.rtl %}
       <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
     {% else %}
