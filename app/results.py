@@ -247,6 +247,9 @@ class Handler(BaseHandler):
                         results_based_on_input = False
                         query_location = ''
 
+            concatenate_query = ('%s %s' % (self.params.query_name,
+                                 self.params.query_location))
+
             # Show the (possibly empty) matches.
             return self.render('results.html',
                                results=results,
@@ -261,5 +264,6 @@ class Handler(BaseHandler):
                                query_location_original=
                                     self.params.query_location,
                                query_location=query_location,
+                               query=concatenate_query,
                                third_party_query_type=third_party_query_type,
                                results_based_on_input=results_based_on_input)
