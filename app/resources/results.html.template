@@ -92,7 +92,9 @@
         <h1>
           {% blocktrans %}
             No results found for: "{{query}}"
+          {% endblocktrans %}
             <p>
+          {% blocktrans %}
             Results for "{{query_name}}" (any location):
           {% endblocktrans %}
           <p>
