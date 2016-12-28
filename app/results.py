@@ -234,7 +234,6 @@ class Handler(BaseHandler):
                 results_url = self.get_results_url(self.params.query_name,
                                                    self.params.query_location)
                 third_party_query_type = ''
-                query_location = self.params.query_location
 
                 # If there is no results match for both name and location
                 # Check if there have results match for name
