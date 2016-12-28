@@ -116,7 +116,7 @@
       {% if results_based_on_input %}
         <div class='resultsTitle'>
           {% blocktrans %}
-            Search Results for: {{query}}
+            Search Results for: "{{query}}"
           {% endblocktrans %}
         </div>
       {% endif %}
@@ -271,7 +271,7 @@
       {% if results_based_on_input %}
         <h1>
           {% blocktrans %}
-            No results found for: {{query}}
+            No results found for: "{{query}}"
           {% endblocktrans %}
         </h1>
         <p>{% trans "We have nothing matching your search." %}</p>
