@@ -245,7 +245,6 @@ class Handler(BaseHandler):
                         results = self.search(query_dict)
                         # search result not based on the user input
                         results_based_on_input = False
-                        query_location = ''
 
             concatenated_query = ('%s %s' % (self.params.query_name,
                                  self.params.query_location))
