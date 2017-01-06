@@ -234,7 +234,6 @@ class Handler(BaseHandler):
                 results_url = self.get_results_url(self.params.query_name,
                                                    self.params.query_location)
                 third_party_query_type = ''
-                query_location = self.params.query_location
 
                 # If there is no results match for both name and location
                 # Check if there have results match for name
@@ -245,7 +244,9 @@ class Handler(BaseHandler):
                         results = self.search(query_dict)
                         # search result not based on the user input
                         results_based_on_input = False
-                        query_location = ''
+
+            concatenated_query = ('%s %s' % (self.params.query_name,
+                                 self.params.query_location))
 
             # Show the (possibly empty) matches.
             return self.render('results.html',
@@ -258,8 +259,6 @@ class Handler(BaseHandler):
                                third_party_search_engines=
                                    third_party_search_engines,
                                query_name=self.params.query_name,
-                               query_location_original=
-                                    self.params.query_location,
-                               query_location=query_location,
+                               query=concatenated_query,
                                third_party_query_type=third_party_query_type,
                                results_based_on_input=results_based_on_input)

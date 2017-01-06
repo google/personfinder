@@ -91,8 +91,10 @@
       {% if results %}
         <h1>
           {% blocktrans %}
-            No results found for: "{{query_name}} {{query_location_original}}"
+            No results found for: "{{query}}"
+          {% endblocktrans %}
             <p>
+          {% blocktrans %}
             Results for "{{query_name}}" (any location):
           {% endblocktrans %}
           <p>
@@ -101,7 +103,7 @@
       {% else %}
         <h1>
           {% blocktrans %}
-            No results found for: "{{query_name}} {{query_location_original}}"
+            No results found for: "{{query}}"
           {% endblocktrans %}
         </h1>
         <p>{% trans "We have nothing matching your search." %}</p>
@@ -114,7 +116,7 @@
       {% if results_based_on_input %}
         <div class='resultsTitle'>
           {% blocktrans %}
-            Search Results for: {{query_name}} {{query_location}}
+            Search Results for: "{{query}}"
           {% endblocktrans %}
         </div>
       {% endif %}
@@ -269,7 +271,7 @@
       {% if results_based_on_input %}
         <h1>
           {% blocktrans %}
-            No results found for: {{query_name}} {{query_location}}
+            No results found for: "{{query}}"
           {% endblocktrans %}
         </h1>
         <p>{% trans "We have nothing matching your search." %}</p>
