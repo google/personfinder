@@ -18,7 +18,10 @@
     try {
       var num_results = '{{num_results}}';
       if (num_results != '') {
-	dataLayer.push({'event': 'search'});
+	dataLayer.push({
+	  'num_results': {{num_results}},
+	  'event': 'search'
+        });
       }
     } catch(err) {
       if (window['console']) { console.log(err); }
