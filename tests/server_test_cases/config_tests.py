@@ -440,7 +440,7 @@ class ConfigTests(ServerTestsBase):
         config.set(analytics_id='analytics_id_xyz')
 
         doc = self.go('/haiti/create')
-        assert "getTracker('analytics_id_xyz')" in doc.content
+        assert "gaProperty': 'analytics_id_xyz'" in doc.content
 
     def test_maps_api_key(self):
         """Checks that maps don't appear when there is no maps_api_key."""
