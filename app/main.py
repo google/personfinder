@@ -23,9 +23,12 @@ import re
 import os
 import urlparse
 
+import fix_path
+
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import webapp
+
 
 import config
 import const
