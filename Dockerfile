@@ -32,13 +32,12 @@ RUN unzip -qq google_appengine_1.9.25.zip && rm google_appengine_1.9.25.zip
 
 ADD gae-run-app.sh      /usr/bin/
 ADD setup_datastore.sh  /usr/bin/
+ADD requirements.txt 	/tmp/
 
 COPY . /opt/personfinder
 WORKDIR /opt/personfinder/
 
-# install requirements
-RUN bash setup.sh
-
+RUN pip install -b app/lib --requirement /tmp/requirements.txt 
 
 # Clean up
 RUN rm -rf /tmp/* /var/tmp/*
