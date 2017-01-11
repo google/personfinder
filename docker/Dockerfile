@@ -15,11 +15,14 @@ RUN apt-get update && apt-get install -y \
 	unzip \
 	python2.7 \
 	libpython2.7-dev \
+	python-pip \
 	git \
 	time \
 	gettext \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade pip && pip install pytest
 
 # Install app engine
 WORKDIR   /opt/
