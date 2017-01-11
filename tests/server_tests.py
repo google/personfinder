@@ -39,6 +39,8 @@ import tempfile
 import threading
 import time
 
+import fix_path
+
 from model import *
 import remote_api
 import setup_pf as setup

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -266,6 +266,20 @@ msgid ""
 "  "
 msgstr ""
 
+msgid ""
+"\n"
+"<p class=\"help\">To install bookmarklets, drag the link to your "
+"bookmarks\n"
+"toolbar, or right-click the link and add it to your bookmarks. Now you "
+"can\n"
+"select the bookmarklet from any page in the site.  Note that some of "
+"these\n"
+"bookmarklets require you to be viewing the site from a computer "
+"designated\n"
+"as \"internal\" (talk to your system administrator if you aren't sure if\n"
+"your computer is \"internal\").</p>\n"
+msgstr ""
+
 #, python-format
 msgid ""
 "\n"
@@ -360,10 +374,322 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is not a valid value for a primary key."
+msgstr ""
+
+#, python-format
+msgid "%(count)s %(name)s was changed successfully."
+msgid_plural "%(count)s %(name)s were changed successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(ct_name)s objects don't have a get_absolute_url() method"
+msgstr ""
+
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; "
+"it may be ambiguous or it may not exist."
+msgstr ""
+
+#, python-format
+msgid "%(field_name)s must be unique for %(date_field)s %(lookup)s."
+msgstr ""
+
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr ""
+
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#, python-format
+msgid "%(name)s object with primary key %(key)r does not exist."
+msgstr ""
+
+#, python-format
+msgid "%(number)d %(type)s"
+msgstr ""
+
+#, python-format
+msgid "%(site_name)s comments"
+msgstr ""
+
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(total_count)s selected"
+msgid_plural "All %(total_count)s selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f billion"
+msgid_plural "%(value).1f billion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f decillion"
+msgid_plural "%(value).1f decillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f googol"
+msgid_plural "%(value).1f googol"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f million"
+msgid_plural "%(value).1f million"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f nonillion"
+msgid_plural "%(value).1f nonillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f octillion"
+msgid_plural "%(value).1f octillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f quadrillion"
+msgid_plural "%(value).1f quadrillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f quintillion"
+msgid_plural "%(value).1f quintillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f septillion"
+msgid_plural "%(value).1f septillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f sextillion"
+msgid_plural "%(value).1f sextillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value).1f trillion"
+msgid_plural "%(value).1f trillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s billion"
+msgid_plural "%(value)s billion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s decillion"
+msgid_plural "%(value)s decillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s googol"
+msgid_plural "%(value)s googol"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s million"
+msgid_plural "%(value)s million"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s nonillion"
+msgid_plural "%(value)s nonillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s octillion"
+msgid_plural "%(value)s octillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s quadrillion"
+msgid_plural "%(value)s quadrillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s quintillion"
+msgid_plural "%(value)s quintillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s septillion"
+msgid_plural "%(value)s septillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s sextillion"
+msgid_plural "%(value)s sextillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(value)s trillion"
+msgid_plural "%(value)s trillion"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#, python-format
+msgid "%s administration"
+msgstr ""
+
+#, python-format
+msgid "%s does not appear to be a urlpattern object"
+msgstr ""
+
+#, python-format
+msgid "'%s' value has an invalid date format. It must be in YYYY-MM-DD format."
+msgstr ""
+
+#, python-format
+msgid ""
+"'%s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#, python-format
+msgid ""
+"'%s' value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr ""
+
+#, python-format
+msgid ""
+"'%s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#, python-format
+msgid ""
+"'%s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) "
+"but it is an invalid date/time."
+msgstr ""
+
+#, python-format
+msgid "'%s' value has the correct format (YYYY-MM-DD) but it is an invalid date."
+msgstr ""
+
+#, python-format
+msgid "'%s' value must be a decimal number."
+msgstr ""
+
+#, python-format
+msgid "'%s' value must be a float."
+msgstr ""
+
+#, python-format
+msgid "'%s' value must be an integer."
+msgstr ""
+
+#, python-format
+msgid "'%s' value must be either None, True or False."
+msgstr ""
+
+#, python-format
+msgid "'%s' value must be either True or False."
+msgstr ""
+
+msgid "(None)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr ""
 
 msgid "(unknown)"
+msgstr ""
+
+msgid ", "
+msgstr ""
+
+#, python-format
+msgid ", %(number)d %(type)s"
+msgstr ""
+
+#, python-format
+msgid "0 of %(cnt)s selected"
+msgstr ""
+
+#, python-format
+msgid "1 comment was successfully %(action)s."
+msgid_plural "%(count)s comments were successfully %(action)s."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "A Coruna"
+msgstr ""
+
+msgid "A Macedonian municipality (2 character code)"
 msgstr ""
 
 msgid "A message for this person or others seeking this person"
@@ -372,7 +698,16 @@ msgstr ""
 msgid "A new API key has been created successfully."
 msgstr ""
 
+msgid "A user with that username already exists."
+msgstr ""
+
+msgid "AM"
+msgstr ""
+
 msgid "API Key Management"
+msgstr ""
+
+msgid "Aargau"
 msgstr ""
 
 msgid "About 1 month (30 days) from now"
@@ -393,17 +728,94 @@ msgstr ""
 msgid "About Google Person Finder"
 msgstr ""
 
+msgid "Aceh"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Action:"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#, python-format
+msgid "Add %s"
+msgstr ""
+
+msgid "Add Another"
+msgstr ""
+
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#, python-format
+msgid "Added \"%(object)s\"."
+msgstr ""
+
+#, python-format
+msgid "Added %(name)s \"%(object)s\"."
+msgstr ""
+
 #, python-format
 msgid "Added a record for: %(person_name)s"
 msgstr ""
 
+msgid "Advanced options"
+msgstr ""
+
+msgid "Adygeya, Respublika"
+msgstr ""
+
+msgid "Aerodrom"
+msgstr ""
+
 msgid "Age"
+msgstr ""
+
+msgid "Aguascalientes"
+msgstr ""
+
+msgid "Aichi"
+msgstr ""
+
+msgid "Akita"
+msgstr ""
+
+msgid "Alacant"
+msgstr ""
+
+msgid "Albacete"
+msgstr ""
+
+msgid "Albanian"
+msgstr ""
+
+msgid "All"
 msgstr ""
 
 msgid ""
 "All data entered in Person Finder is available to the public and usable "
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
+msgstr ""
+
+msgid "All dates"
+msgstr ""
+
+msgid "Almeria"
+msgstr ""
+
+msgid "Altay, Respublika"
+msgstr ""
+
+msgid "Altayskiy Kray"
 msgstr ""
 
 msgid "Alternate family names"
@@ -415,7 +827,77 @@ msgstr ""
 msgid "Alternate names"
 msgstr ""
 
+msgid "Amurskaya oblast'"
+msgstr ""
+
+msgid ""
+"An error occurred when transforming the geometry to the SRID of the "
+"geometry form field."
+msgstr ""
+
+msgid "Andalusia"
+msgstr ""
+
+msgid "Antrim"
+msgstr ""
+
+msgid "Antwerp"
+msgstr ""
+
+msgid "Any date"
+msgstr ""
+
+msgid "Aomori"
+msgstr ""
+
+#, python-format
+msgid "App %r not found"
+msgstr ""
+
+msgid "Appenzell Ausserrhoden"
+msgstr ""
+
+msgid "Appenzell Innerrhoden"
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Approve a comment"
+msgstr ""
+
+msgid "Approve selected comments"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Aragon"
+msgstr ""
+
+msgid "Arava"
+msgstr ""
+
+msgid "Aračinovo"
+msgstr ""
+
 msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s "
+"\"%(escaped_object)s\"? All of the following related items will be "
+"deleted:"
+msgstr ""
+
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the"
+" following objects and their related items will be deleted:"
 msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
@@ -424,7 +906,40 @@ msgstr ""
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
 
+msgid "Are you sure?"
+msgstr ""
+
+msgid "Argentinian Spanish"
+msgstr ""
+
+msgid "Arkhangel'skaya oblast'"
+msgstr ""
+
+msgid "Armagh"
+msgstr ""
+
+msgid "As above, but opens the admin page in a new window."
+msgstr ""
+
+msgid "Astrakhanskaya oblast'"
+msgstr ""
+
+msgid "Asturias"
+msgstr ""
+
 msgid "Atom feed of updates about this person"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "Australian Phone number"
+msgstr ""
+
+msgid "Australian Postcode"
+msgstr ""
+
+msgid "Australian State"
 msgstr ""
 
 msgid "Author's e-mail address"
@@ -439,6 +954,207 @@ msgstr ""
 msgid "Authorization key"
 msgstr ""
 
+msgid "Avila"
+msgstr ""
+
+msgid "Azerbaijani"
+msgstr ""
+
+msgid "Badajoz"
+msgstr ""
+
+msgid "Baden-Wuerttemberg"
+msgstr ""
+
+msgid "Baja California"
+msgstr ""
+
+msgid "Baja California Sur"
+msgstr ""
+
+msgid "Balearic Islands"
+msgstr ""
+
+msgid "Bali"
+msgstr ""
+
+msgid "Bandung"
+msgstr ""
+
+msgid "Banovce nad Bebravou"
+msgstr ""
+
+msgid "Banska Bystrica"
+msgstr ""
+
+msgid "Banska Bystrica region"
+msgstr ""
+
+msgid "Banska Stiavnica"
+msgstr ""
+
+msgid "Banten"
+msgstr ""
+
+msgid "Banyumas"
+msgstr ""
+
+msgid "Barcelona"
+msgstr ""
+
+msgid "Bardejov"
+msgstr ""
+
+msgid "Basel-Land"
+msgstr ""
+
+msgid "Basel-Stadt"
+msgstr ""
+
+msgid "Bashkortostan, Respublika"
+msgstr ""
+
+msgid "Basque"
+msgstr ""
+
+msgid "Basque Country"
+msgstr ""
+
+msgid "Bavaria"
+msgstr ""
+
+msgid "Bedfordshire"
+msgstr ""
+
+msgid "Belgorodskaya oblast'"
+msgstr ""
+
+msgid "Bengali"
+msgstr ""
+
+msgid "Bengkulu"
+msgstr ""
+
+msgid "Berlin"
+msgstr ""
+
+msgid "Berne"
+msgstr ""
+
+msgid "Berovo"
+msgstr ""
+
+msgid "Big (8 byte) integer"
+msgstr ""
+
+msgid "Bitola"
+msgstr ""
+
+msgid "Bizkaia"
+msgstr ""
+
+msgid "Bjelovarsko-bilogorska županija"
+msgstr ""
+
+msgid "Blekinge"
+msgstr ""
+
+msgid "Bogdanci"
+msgstr ""
+
+msgid "Bogor"
+msgstr ""
+
+msgid "Bogovinje"
+msgstr ""
+
+msgid "Bojonegoro"
+msgstr ""
+
+msgid "Bookmarklets"
+msgstr ""
+
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+msgid "Borders"
+msgstr ""
+
+msgid "Bosilovo"
+msgstr ""
+
+msgid "Bosnian"
+msgstr ""
+
+msgid "Brandenburg"
+msgstr ""
+
+msgid "Bratislava I"
+msgstr ""
+
+msgid "Bratislava II"
+msgstr ""
+
+msgid "Bratislava III"
+msgstr ""
+
+msgid "Bratislava IV"
+msgstr ""
+
+msgid "Bratislava V"
+msgstr ""
+
+msgid "Bratislava region"
+msgstr ""
+
+msgid "Brazilian Portuguese"
+msgstr ""
+
+msgid "Bremen"
+msgstr ""
+
+msgid "Brezno"
+msgstr ""
+
+msgid "British English"
+msgstr ""
+
+msgid "Brodsko-posavska županija"
+msgstr ""
+
+msgid "Brussels"
+msgstr ""
+
+msgid "Brussels Capital Region"
+msgstr ""
+
+msgid "Brvenica"
+msgstr ""
+
+msgid "Bryanskaya oblast'"
+msgstr ""
+
+msgid "Buckinghamshire"
+msgstr ""
+
+msgid "Bulgarian"
+msgstr ""
+
+msgid "Burgenland"
+msgstr ""
+
+msgid "Burgos"
+msgstr ""
+
+msgid "Buryatia, Respublika"
+msgstr ""
+
+msgid "Butel"
+msgstr ""
+
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
 " still be a part of the record, but will require an extra click to view "
@@ -449,22 +1165,175 @@ msgstr ""
 msgid "By unmarking this note as spam, you will make it visible by default."
 msgstr ""
 
+msgid "Bytca"
+msgstr ""
+
 msgid "CSV file"
+msgstr ""
+
+msgid "Caceres"
+msgstr ""
+
+msgid "Cadca"
+msgstr ""
+
+msgid "Cadiz"
+msgstr ""
+
+msgid "Campeche"
 msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
 msgstr ""
 
+msgid "Canary Islands"
+msgstr ""
+
 msgid "Cancel"
+msgstr ""
+
+#, python-format
+msgid "Cannot delete %(name)s"
+msgstr ""
+
+msgid "Cantabria"
+msgstr ""
+
+msgid "Card issue number cannot be zero"
+msgstr ""
+
+msgid "Carinthia"
+msgstr ""
+
+msgid "Carlow"
+msgstr ""
+
+msgid "Carlsbad Region"
+msgstr ""
+
+msgid "Castello"
+msgstr ""
+
+msgid "Castile and Leon"
+msgstr ""
+
+msgid "Castile-La Mancha"
+msgstr ""
+
+msgid "Catalan"
+msgstr ""
+
+msgid "Catalonia"
+msgstr ""
+
+msgid "Cavan"
+msgstr ""
+
+msgid "Centar"
+msgstr ""
+
+msgid "Centar-Župa"
+msgstr ""
+
+msgid "Central Bohemian Region"
+msgstr ""
+
+msgid "Central Federal County"
+msgstr ""
+
+msgid "Central Scotland"
+msgstr ""
+
+msgid "Ceuta"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+#, python-format
+msgid "Change %s"
+msgstr ""
+
+#, python-format
+msgid "Change history: %s"
+msgstr ""
+
+msgid "Change my password"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+#, python-format
+msgid "Change password: %s"
+msgstr ""
+
+#, python-format
+msgid "Changed \"%(object)s\" - %(changes)s"
+msgstr ""
+
+#, python-format
+msgid "Changed %(list)s for %(name)s \"%(object)s\"."
+msgstr ""
+
+#, python-format
+msgid "Changed %s."
+msgstr ""
+
+msgid "Chechenskaya Respublika"
+msgstr ""
+
+msgid ""
+"Check this box if the comment is inappropriate. A \"This comment has been"
+" removed\" message will be displayed instead."
+msgstr ""
+
+msgid "Chelyabinskaya oblast'"
+msgstr ""
+
+msgid "Cheshire"
+msgstr ""
+
+msgid "Chiapas"
+msgstr ""
+
+msgid "Chiba"
+msgstr ""
+
+msgid "Chihuahua"
+msgstr ""
+
+msgid "Chukotskiy avtonomnyy okrug"
+msgstr ""
+
+msgid "Chuvashskaya Respublika"
+msgstr ""
+
+msgid "Cirebon"
 msgstr ""
 
 msgid "City"
 msgstr ""
 
+msgid "Ciudad Real"
+msgstr ""
+
+msgid "Clare"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Clear selection"
+msgstr ""
+
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
+msgstr ""
+
+msgid "Click here to select the objects across all pages"
 msgstr ""
 
 msgid "Click here to view results."
@@ -473,13 +1342,78 @@ msgstr ""
 msgid "Close window"
 msgstr ""
 
+msgid "Clwyd"
+msgstr ""
+
+msgid "Co-ordination numbers are not allowed."
+msgstr ""
+
+msgid "Coahuila"
+msgstr ""
+
+msgid "Colima"
+msgstr ""
+
+msgid "Comma-separated integers"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
 msgid "Compare these records"
+msgstr ""
+
+msgid "Confirm password:"
 msgstr ""
 
 msgid "Contact information"
 msgstr ""
 
+msgid "Content"
+msgstr ""
+
+#, python-format
+msgid "Content type %(ct_id)s object %(obj_id)s doesn't exist"
+msgstr ""
+
+#, python-format
+msgid "Content type %(ct_id)s object has no associated model"
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+
+msgid "Cordoba"
+msgstr ""
+
+msgid "Cork"
+msgstr ""
+
+msgid "Cornwall and Isles of Scilly"
+msgstr ""
+
+msgid "Corps Consulate"
+msgstr ""
+
+msgid "Corps Diplomatic"
+msgstr ""
+
+msgid "County Antrim"
+msgstr ""
+
+msgid "County Armagh"
+msgstr ""
+
+msgid "County Down"
+msgstr ""
+
+msgid "County Fermanagh"
+msgstr ""
+
+msgid "County Londonderry"
+msgstr ""
+
+msgid "County Tyrone"
 msgstr ""
 
 msgid "Create a new API key"
@@ -494,8 +1428,41 @@ msgstr ""
 msgid "Crisis events"
 msgstr ""
 
+msgid "Croatian"
+msgstr ""
+
+msgid "Cuenca"
+msgstr ""
+
+msgid "Cumbria"
+msgstr ""
+
+msgid "Currently"
+msgstr ""
+
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
+msgid "Dagestan, Respublika"
+msgstr ""
+
+msgid "Dalarna"
+msgstr ""
+
+msgid "Danish"
+msgstr ""
+
+msgid "Database error"
+msgstr ""
+
+msgid "Date (with time)"
+msgstr ""
+
+msgid "Date (without time)"
 msgstr ""
 
 msgid "Date cannot be in the future.  Please go back and try again."
@@ -504,7 +1471,87 @@ msgstr ""
 msgid "Date of birth"
 msgstr ""
 
+msgid "Date/time"
+msgstr ""
+
+msgid "Date:"
+msgstr ""
+
+msgid "Debar"
+msgstr ""
+
+msgid "Debarca"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Decimal number"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete multiple objects"
+msgstr ""
+
+#, python-format
+msgid "Delete selected %(verbose_name_plural)s"
+msgstr ""
+
 msgid "Delete this record"
+msgstr ""
+
+msgid "Delete?"
+msgstr ""
+
+#, python-format
+msgid "Deleted \"%(object)s.\""
+msgstr ""
+
+#, python-format
+msgid "Deleted %(name)s \"%(object)s\"."
+msgstr ""
+
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting "
+"the following protected related objects:"
+msgstr ""
+
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in "
+"deleting related objects, but your account doesn't have permission to "
+"delete the following types of objects:"
+msgstr ""
+
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following"
+" types of objects:"
+msgstr ""
+
+msgid "Delčevo"
+msgstr ""
+
+msgid "Demir Hisar"
+msgstr ""
+
+msgid "Demir Kapija"
+msgstr ""
+
+msgid "Derbyshire"
+msgstr ""
+
+msgid "Derry"
 msgstr ""
 
 msgid "Describe how to identify this person."
@@ -513,20 +1560,105 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid ""
+"Designates that this user has all permissions without explicitly "
+"assigning them."
+msgstr ""
+
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
 msgid "Desktop version"
+msgstr ""
+
+msgid "Detva"
 msgstr ""
 
 msgid "Developers"
 msgstr ""
 
+msgid "Devon"
+msgstr ""
+
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Distrito Federal"
+msgstr ""
+
+msgid "Django administration"
+msgstr ""
+
+msgid "Django site admin"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Documentation bookmarklets"
+msgstr ""
+
+msgid "Documentation for this page"
 msgstr ""
 
 msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
+msgid "Dolneni"
+msgstr ""
+
+msgid "Dolny Kubin"
+msgstr ""
+
+msgid "Donegal"
+msgstr ""
+
+msgid "Dorset"
+msgstr ""
+
+msgid "Down"
+msgstr ""
+
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+
+msgid "Drenthe"
+msgstr ""
+
+msgid "Drugovo"
+msgstr ""
+
+msgid "Dublin"
+msgstr ""
+
+msgid "Dubrovačko-neretvanska županija"
+msgstr ""
+
+msgid "Dumfries and Galloway"
+msgstr ""
+
+msgid "Dunajska Streda"
+msgstr ""
+
+msgid "Durango"
+msgstr ""
+
+msgid "Durham"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "Dyfed"
 msgstr ""
 
 msgid "E-mail"
@@ -535,7 +1667,28 @@ msgstr ""
 msgid "E-mail address"
 msgstr ""
 
+msgid "E-mail address:"
+msgstr ""
+
+msgid "East Flanders"
+msgstr ""
+
+msgid "East Sussex"
+msgstr ""
+
+msgid "Eastern Cape"
+msgstr ""
+
 msgid "Edit"
+msgstr ""
+
+msgid "Edit this object (current window)"
+msgstr ""
+
+msgid "Edit this object (new window)"
+msgstr ""
+
+msgid "Ehime"
 msgstr ""
 
 msgid "Email address"
@@ -544,16 +1697,390 @@ msgstr ""
 msgid "Embedding the Application"
 msgstr ""
 
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
 msgid "Enable notes on this record"
 msgstr ""
 
+msgid "England"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+#, python-format
+msgid "Ensure that there are no more than %s decimal places."
+msgstr ""
+
+#, python-format
+msgid "Ensure that there are no more than %s digits before the decimal point."
+msgstr ""
+
+#, python-format
+msgid "Ensure that there are no more than %s digits in total."
+msgstr ""
+
+#, python-format
+msgid "Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr ""
+
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+msgid "Enter a 4 digit postcode."
+msgstr ""
+
+msgid "Enter a Swedish postal code in the format XXXXX."
+msgstr ""
+
+msgid "Enter a U.S. state or territory."
+msgstr ""
+
+msgid "Enter a birth number in the format XXXXXX/XXXX or XXXXXXXXXX."
+msgstr ""
+
+msgid "Enter a list of values."
+msgstr ""
+
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr ""
+
+msgid "Enter a number."
+msgstr ""
+
+msgid "Enter a passport number in the format XX XXXXXXX."
+msgstr ""
+
+msgid "Enter a passport number in the format XXXX XXXXXX."
+msgstr ""
+
+msgid "Enter a post code in the format XXXXXX."
+msgstr ""
+
+msgid "Enter a postal code in the format NNNN or ANNNNAAA."
+msgstr ""
+
+msgid "Enter a postal code in the format XX-XXX."
+msgstr ""
+
+msgid "Enter a postal code in the format XXX XXX."
+msgstr ""
+
+msgid "Enter a postal code in the format XXXXX"
+msgstr ""
+
+msgid "Enter a postal code in the format XXXXX or XXX XX."
+msgstr ""
+
+msgid "Enter a postal code in the format XXXXX."
+msgstr ""
+
+msgid "Enter a postal code in the format XXXXXX."
+msgstr ""
+
+msgid "Enter a postal code in the format XXXXXXX or XXX-XXXX."
+msgstr ""
+
+msgid ""
+"Enter a tax number field (NIP) in the format XXX-XXX-XX-XX, XXX-XX-XX-XXX"
+" or XXXXXXXXXX."
+msgstr ""
+
+msgid "Enter a username and password."
+msgstr ""
+
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or "
+"hyphens."
+msgstr ""
+
+msgid "Enter a valid 11 digit OIB"
+msgstr ""
+
+msgid "Enter a valid 13 digit JMBG"
+msgstr ""
+
+msgid "Enter a valid 19 digit JMBAG starting with 601983"
+msgstr ""
+
+msgid "Enter a valid 5 digit postal code"
+msgstr ""
+
+msgid "Enter a valid Austrian Social Security Number in XXXX XXXXXX format."
+msgstr ""
+
+msgid "Enter a valid CI number in X.XXX.XXX-X,XXXXXXX-X or XXXXXXXX format."
+msgstr ""
+
+msgid "Enter a valid CI number."
+msgstr ""
+
+msgid "Enter a valid CIF."
+msgstr ""
+
+msgid "Enter a valid CNP."
+msgstr ""
+
+msgid "Enter a valid CUIT in XX-XXXXXXXX-X or XXXXXXXXXXXX format."
+msgstr ""
+
+msgid "Enter a valid CURP."
+msgstr ""
+
+msgid "Enter a valid Canadian Social Insurance number in XXX-XXX-XXX format."
+msgstr ""
+
+msgid "Enter a valid Chilean RUT."
+msgstr ""
+
+msgid "Enter a valid Chilean RUT. The format is XX.XXX.XXX-X."
+msgstr ""
+
+msgid "Enter a valid Finnish social security number."
+msgstr ""
+
+msgid ""
+"Enter a valid German identity card number in XXXXXXXXXXX-XXXXXXX-"
+"XXXXXXX-X format."
+msgstr ""
+
+msgid "Enter a valid IBAN in ROXX-XXXX-XXXX-XXXX-XXXX-XXXX format"
+msgstr ""
+
+msgid "Enter a valid IC number."
+msgstr ""
+
+msgid "Enter a valid ID number."
+msgstr ""
+
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+msgid "Enter a valid Icelandic identification number. The format is XXXXXX-XXXX."
+msgstr ""
+
+msgid "Enter a valid Kuwaiti Civil ID number"
+msgstr ""
+
+msgid "Enter a valid NIK/KTP number"
+msgstr ""
+
+msgid "Enter a valid Norwegian social security number."
+msgstr ""
+
+msgid "Enter a valid RFC."
+msgstr ""
+
+msgid "Enter a valid SoFi number"
+msgstr ""
+
+msgid "Enter a valid Social Security number."
+msgstr ""
+
+msgid "Enter a valid South African ID number"
+msgstr ""
+
+msgid "Enter a valid South African postal code"
+msgstr ""
+
+msgid "Enter a valid Swedish organisation number."
+msgstr ""
+
+msgid "Enter a valid Swedish personal identity number."
+msgstr ""
+
+msgid ""
+"Enter a valid Swiss identity or passport card number in X1234567<0 or "
+"1234567890 format."
+msgstr ""
+
+msgid "Enter a valid Turkish Identification number."
+msgstr ""
+
+msgid "Enter a valid U.S. Social Security number in XXX-XX-XXXX format."
+msgstr ""
+
+msgid "Enter a valid URL."
+msgstr ""
+
+msgid "Enter a valid VAT number."
+msgstr ""
+
+msgid "Enter a valid area or mobile network code"
+msgstr ""
+
+msgid "Enter a valid birth number."
+msgstr ""
+
+msgid "Enter a valid cell number."
+msgstr ""
+
+msgid "Enter a valid date."
+msgstr ""
+
+msgid "Enter a valid date/time."
+msgstr ""
+
+msgid "Enter a valid e-mail address."
+msgstr ""
+
+msgid "Enter a valid location code"
+msgstr ""
+
+msgid "Enter a valid phone number"
+msgstr ""
+
+msgid ""
+"Enter a valid phone number in one of the formats 0x xxx xx xx, 0xx xx xx "
+"xx, 04xx xx xx xx, 0x/xxx.xx.xx, 0xx/xx.xx.xx, 04xx/xx.xx.xx, "
+"0x.xxx.xx.xx, 0xx.xx.xx.xx, 04xx.xx.xx.xx, 0xxxxxxxx or 04xxxxxxxx."
+msgstr ""
+
+msgid ""
+"Enter a valid phone number in one of the formats 6XXXXXXXX, 8XXXXXXXX or "
+"9XXXXXXXX."
+msgstr ""
+
+msgid "Enter a valid phone number."
+msgstr ""
+
+msgid "Enter a valid post code"
+msgstr ""
+
+msgid "Enter a valid postal code"
+msgstr ""
+
+msgid "Enter a valid postal code in the format XXXXXX"
+msgstr ""
+
+msgid "Enter a valid postal code in the range and format 01XXX - 52XXX."
+msgstr ""
+
+msgid "Enter a valid postal code in the range and format 1XXX - 9XXX."
+msgstr ""
+
+msgid "Enter a valid postcode."
+msgstr ""
+
+msgid "Enter a valid tax number in form SIXXXXXXXX"
+msgstr ""
+
+msgid "Enter a valid time."
+msgstr ""
+
+msgid "Enter a valid value."
+msgstr ""
+
+msgid "Enter a valid vehicle license plate number"
+msgstr ""
+
+msgid "Enter a valid zip code in the format XXXXX."
+msgstr ""
+
+msgid "Enter a valid zip code."
+msgstr ""
+
+msgid "Enter a whole number."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXX-XXX."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXX."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXXX or XXXXX-XXXX."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXXX-XXX."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXXX."
+msgstr ""
+
+msgid "Enter a zip code in the format XXXXXX or XXX XXX."
+msgstr ""
+
+msgid "Enter an Indian state or territory."
+msgstr ""
+
 msgid "Enter as YYYY-MM-DD"
+msgstr ""
+
+msgid "Enter new password"
+msgstr ""
+
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+msgid "Enter phone number in form +386XXXXXXXX or 0XXXXXXXX."
 msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr ""
 
 msgid "Enter the person's name."
+msgstr ""
+
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+msgid "Error in date segment"
+msgstr ""
+
+msgid "Esperanto"
+msgstr ""
+
+msgid "Essex"
+msgstr ""
+
+msgid "Estado de México"
+msgstr ""
+
+msgid "Estonian"
+msgstr ""
+
+msgid "Evreyskaya avtonomnaja oblast'"
+msgstr ""
+
+msgid ""
+"Example: '/about/contact/'. Make sure to have leading and trailing "
+"slashes."
+msgstr ""
+
+msgid ""
+"Example: 'flatpages/contact_page.html'. If this isn't provided, the "
+"system will use 'flatpages/default.html'."
 msgstr ""
 
 msgid "Expiry"
@@ -568,6 +2095,9 @@ msgid ""
 "                "
 msgstr ""
 
+msgid "Extremadura"
+msgstr ""
+
 msgid "Failed to obtain search result for the phone number."
 msgstr ""
 
@@ -577,10 +2107,78 @@ msgstr ""
 msgid "Family name (required)"
 msgstr ""
 
+msgid "Far-East Federal County"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "Federal Government"
+msgstr ""
+
 msgid "Feed of updates about this person"
 msgstr ""
 
 msgid "Feedback"
+msgstr ""
+
+msgid "Fermanagh"
+msgstr ""
+
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#, python-format
+msgid "Fields on %s objects"
+msgstr ""
+
+msgid "Fife"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "File path"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more "
+"user options."
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "Flag selected comments"
+msgstr ""
+
+msgid "Flag this comment"
+msgstr ""
+
+#, python-format
+msgid "Flatpage with url %(url)s already exists for site %(site)s"
+msgstr ""
+
+msgid "Flemish Brabant"
+msgstr ""
+
+msgid "Flemish Region"
+msgstr ""
+
+msgid "Flevoland"
+msgstr ""
+
+msgid "Floating point number"
 msgstr ""
 
 msgid "Follow this link to create a new record"
@@ -591,11 +2189,109 @@ msgid ""
 "NTT."
 msgstr ""
 
+msgid "Foral Community of Navarre"
+msgstr ""
+
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+msgid "Forgotten your password or username?"
+msgstr ""
+
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll "
+"e-mail instructions for setting a new one."
+msgstr ""
+
+msgid "Free State"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Fribourg"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Friesland"
+msgstr ""
+
+msgid "Frisian"
+msgstr ""
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr ""
 
+msgid "Fukui"
+msgstr ""
+
+msgid "Fukuoka"
+msgstr ""
+
+msgid "Fukushima"
+msgstr ""
+
 msgid "Full name"
+msgstr ""
+
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
+msgstr ""
+
+msgid "Galanta"
+msgstr ""
+
+msgid "Galicia"
+msgstr ""
+
+msgid "Galician"
+msgstr ""
+
+msgid "Galway"
+msgstr ""
+
+msgid "Garut"
+msgstr ""
+
+msgid "Gauteng"
+msgstr ""
+
+msgid "Gazi Baba"
+msgstr ""
+
+msgid "Gelderland"
+msgstr ""
+
+msgid "Gelnica"
+msgstr ""
+
+msgid "Geneva"
+msgstr ""
+
+msgid "Geometry collection"
+msgstr ""
+
+msgid "Georgian"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Gevgelija"
+msgstr ""
+
+msgid "Gifu"
+msgstr ""
+
+msgid "Girona"
 msgstr ""
 
 msgid "Given name"
@@ -604,20 +2300,143 @@ msgstr ""
 msgid "Given name (required)"
 msgstr ""
 
+msgid "Gjorče Petrov"
+msgstr ""
+
+msgid "Glarus"
+msgstr ""
+
+msgid "Gloucestershire"
+msgstr ""
+
+msgid "Go"
+msgstr ""
+
 msgid "Google Person Finder"
 msgstr ""
 
+msgid "Gorontalo"
+msgstr ""
+
+msgid "Gostivar"
+msgstr ""
+
+msgid "Gotland"
+msgstr ""
+
+msgid "Grad Zagreb"
+msgstr ""
+
+msgid "Gradsko"
+msgstr ""
+
+msgid "Grampian"
+msgstr ""
+
+msgid "Granada"
+msgstr ""
+
+msgid "Graubuenden"
+msgstr ""
+
+msgid "Greater London"
+msgstr ""
+
+msgid "Greater Manchester"
+msgstr ""
+
+msgid "Greater Poland"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Groningen"
+msgstr ""
+
+msgid "Guadalajara"
+msgstr ""
+
+msgid "Guanajuato"
+msgstr ""
+
+msgid "Guerrero"
+msgstr ""
+
+msgid "Guipuzkoa"
+msgstr ""
+
+msgid "Gunma"
+msgstr ""
+
+msgid "Gwent"
+msgstr ""
+
+msgid "Gwynedd"
+msgstr ""
+
+msgid "Gävleborg"
+msgstr ""
+
+msgid "Hainaut"
+msgstr ""
+
+msgid "Halland"
+msgstr ""
+
+msgid "Hamburg"
+msgstr ""
+
+msgid "Hampshire"
+msgstr ""
+
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+
+msgid "Hebrew"
 msgstr ""
 
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
 
+msgid "Hertfordshire"
+msgstr ""
+
+msgid "Hessen"
+msgstr ""
+
+msgid "Hidalgo"
+msgstr ""
+
 msgid "Hide Map"
 msgstr ""
 
 msgid "Hide note"
+msgstr ""
+
+msgid "Highland"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hiroshima"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Hlohovec"
+msgstr ""
+
+msgid "Hokkaido"
+msgstr ""
+
+msgid "Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgstr ""
+
+msgid "Home"
 msgstr ""
 
 msgid "Home Address"
@@ -636,6 +2455,24 @@ msgid "How can this person be reached now?"
 msgstr ""
 
 msgid "How others who are interested in this person can contact you"
+msgstr ""
+
+msgid "Hradec Region"
+msgstr ""
+
+msgid "Huelva"
+msgstr ""
+
+msgid "Huesca"
+msgstr ""
+
+msgid "Humenne"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Hyogo"
 msgstr ""
 
 msgid "I Have Information About This Person"
@@ -683,12 +2520,35 @@ msgstr ""
 msgid "I'm looking for someone"
 msgstr ""
 
+msgid "ID Card Number consists of 15 or 18 digits."
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "IPv4 address"
+msgstr ""
+
+msgid "Ibaraki"
+msgstr ""
+
+msgid "Icelandic"
+msgstr ""
+
 msgid "Identifying information"
+msgstr ""
+
+msgid ""
+"Identity card numbers must contain either 4 to 7 digits or an uppercase "
+"letter and 7 digits."
 msgstr ""
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
+msgstr ""
+
+msgid "If this is checked, only logged-in users will be able to view the page."
 msgstr ""
 
 msgid ""
@@ -703,19 +2563,456 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 
+msgid "If you enter anything in this field your comment will be treated as spam"
+msgstr ""
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+
+msgid "Ilava"
+msgstr ""
+
+msgid "Ilinden"
+msgstr ""
+
+msgid "Illes Balears"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Important dates"
 msgstr ""
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 msgstr ""
 
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+msgid "Indonesian"
+msgstr ""
+
+msgid "Ingushskaya Respublika"
+msgstr ""
+
+msgid "Integer"
+msgstr ""
+
+msgid "Invalid CNPJ number."
+msgstr ""
+
+msgid "Invalid CPF number."
+msgstr ""
+
+msgid "Invalid CUIT."
+msgstr ""
+
+msgid "Invalid ID Card Number: Wrong birthdate"
+msgstr ""
+
+msgid "Invalid ID Card Number: Wrong checksum"
+msgstr ""
+
+msgid "Invalid ID Card Number: Wrong location code"
+msgstr ""
+
+msgid "Invalid checksum for CIF."
+msgstr ""
+
+msgid "Invalid checksum for CURP."
+msgstr ""
+
+msgid "Invalid checksum for NIE."
+msgstr ""
+
+msgid "Invalid checksum for NIF."
+msgstr ""
+
+msgid "Invalid checksum for RFC."
+msgstr ""
+
+msgid "Invalid checksum for bank account number."
+msgstr ""
+
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
 msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+msgid "Invalid geometry type."
+msgstr ""
+
+msgid "Invalid geometry value."
+msgstr ""
+
+msgid "Invalid optional parameter Gender, valid values are 'f' and 'm'"
+msgstr ""
+
+#, python-format
+msgid "Invalid page (%(page_number)s)"
+msgstr ""
+
+msgid "Irish"
+msgstr ""
+
+msgid "Irkutskaya oblast'"
+msgstr ""
+
+msgid "Ishikawa"
+msgstr ""
+
+msgid "Istarska županija"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid ""
+"Items must be selected in order to perform actions on them. No items have"
+" been changed."
+msgstr ""
+
+msgid "Ivanovskaya oblast'"
+msgstr ""
+
+msgid "Iwate"
+msgstr ""
+
+msgid "Jaen"
+msgstr ""
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Jalisco"
+msgstr ""
+
+msgid "Jambi"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Jawa Barat"
+msgstr ""
+
+msgid "Jawa Tengah"
+msgstr ""
+
+msgid "Jawa Timur"
+msgstr ""
+
+msgid "Jegunovce"
+msgstr ""
+
+msgid "Jember"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "Jumps to the admin page for pages that represent a single object."
+msgstr ""
+
+msgid ""
+"Jumps you from any page to the documentation for the view that generates "
+"that page."
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "Jura"
+msgstr ""
+
+msgid "Jämtland"
+msgstr ""
+
+msgid "Jönköping"
+msgstr ""
+
+msgid "Kabardino-Balkarskaya Respublika"
+msgstr ""
+
+msgid "Kagawa"
+msgstr ""
+
+msgid "Kagoshima"
+msgstr ""
+
+msgid "Kalimantan Barat"
+msgstr ""
+
+msgid "Kalimantan Selatan"
+msgstr ""
+
+msgid "Kalimantan Tengah"
+msgstr ""
+
+msgid "Kalimantan Timur"
+msgstr ""
+
+msgid "Kaliningradskaya oblast'"
+msgstr ""
+
+msgid "Kalmar"
+msgstr ""
+
+msgid "Kalmykia, Respublika"
+msgstr ""
+
+msgid "Kaluzhskaya oblast'"
+msgstr ""
+
+msgid "Kamchatskiy Kray"
+msgstr ""
+
+msgid "Kanagawa"
+msgstr ""
+
+msgid "Kannada"
+msgstr ""
+
+msgid "Karachaevo-Cherkesskaya Respublika"
+msgstr ""
+
+msgid "Karbinci"
+msgstr ""
+
+msgid "Karelia, Respublika"
+msgstr ""
+
+msgid "Karlovačka županija"
+msgstr ""
+
+msgid "Karpoš"
+msgstr ""
+
+msgid "Kavadarci"
+msgstr ""
+
+msgid "Kazakh"
+msgstr ""
+
+msgid "Kediri"
+msgstr ""
+
+msgid "Kemerovskaya oblast'"
+msgstr ""
+
+msgid "Kent"
+msgstr ""
+
+msgid "Kepulauan Bangka Belitung"
+msgstr ""
+
+msgid "Kepulauan Bangka-Belitung"
+msgstr ""
+
+msgid "Kepulauan Riau"
+msgstr ""
+
+msgid "Kerry"
+msgstr ""
+
+msgid "Kezmarok"
+msgstr ""
+
+msgid "Khabarovskiy Kray"
+msgstr ""
+
+msgid "Khakassiya, Respublika"
+msgstr ""
+
+msgid "Khanty-Mansiyskiy avtonomnyy okrug - Yugra"
+msgstr ""
+
+msgid "Khmer"
+msgstr ""
+
+msgid "Kildare"
+msgstr ""
+
+msgid "Kilkenny"
+msgstr ""
+
+msgid "Kirovskaya oblast'"
+msgstr ""
+
+msgid "Kisela Voda"
+msgstr ""
+
+msgid "Kičevo"
+msgstr ""
+
+msgid "Kochi"
+msgstr ""
+
+msgid "Komarno"
+msgstr ""
+
+msgid "Komi, Respublika"
+msgstr ""
+
+msgid "Konče"
+msgstr ""
+
+msgid "Koprivničko-križevačka županija"
+msgstr ""
+
+msgid "Korean"
+msgstr ""
+
+msgid "Kosice - okolie"
+msgstr ""
+
+msgid "Kosice I"
+msgstr ""
+
+msgid "Kosice II"
+msgstr ""
+
+msgid "Kosice III"
+msgstr ""
+
+msgid "Kosice IV"
+msgstr ""
+
+msgid "Kosice region"
+msgstr ""
+
+msgid "Kostromskaya oblast'"
+msgstr ""
+
+msgid "Koćani"
+msgstr ""
+
+msgid "Krapinsko-zagorska županija"
+msgstr ""
+
+msgid "Krasnodarskiy Kray"
+msgstr ""
+
+msgid "Krasnoyarskiy Kray"
+msgstr ""
+
+msgid "Kratovo"
+msgstr ""
+
+msgid "Kriva Palanka"
+msgstr ""
+
+msgid "Krivogaštani"
+msgstr ""
+
+msgid "Kronoberg"
+msgstr ""
+
+msgid "Krupina"
+msgstr ""
+
+msgid "Kruševo"
+msgstr ""
+
+msgid "Kumamoto"
+msgstr ""
+
+msgid "Kumanovo"
+msgstr ""
+
+msgid "Kurganskaya oblast'"
+msgstr ""
+
+msgid "Kurskaya oblast'"
+msgstr ""
+
+msgid "Kuyavia-Pomerania"
+msgstr ""
+
+msgid "KwaZulu-Natal"
+msgstr ""
+
+msgid "Kyoto"
+msgstr ""
+
+msgid "Kysucke Nove Mesto"
+msgstr ""
+
+msgid "La Rioja"
+msgstr ""
+
+msgid "Lampung"
+msgstr ""
+
+msgid "Lancashire"
 msgstr ""
 
 msgid "Language selection"
 msgstr ""
 
+msgid "Laois"
+msgstr ""
+
+msgid "Las Palmas"
+msgstr ""
+
 msgid "Last known location"
+msgstr ""
+
+#, python-format
+msgid "Latest comments on %(site_name)s"
+msgstr ""
+
+msgid "Latvian"
+msgstr ""
+
+msgid "Leicestershire"
+msgstr ""
+
+msgid "Leitrim"
+msgstr ""
+
+msgid "Leningradskaya oblast'"
+msgstr ""
+
+msgid "Leon"
+msgstr ""
+
+msgid "Lesser Poland"
+msgstr ""
+
+msgid "Levice"
+msgstr ""
+
+msgid "Levoca"
+msgstr ""
+
+msgid "Liberec Region"
+msgstr ""
+
+msgid "Liege"
+msgstr ""
+
+msgid "Limburg"
+msgstr ""
+
+msgid "Limerick"
+msgstr ""
+
+msgid "Limpopo"
+msgstr ""
+
+msgid "Lincolnshire"
+msgstr ""
+
+msgid "Line string"
 msgstr ""
 
 msgid "Link"
@@ -724,7 +3021,139 @@ msgstr ""
 msgid "Link to profile page"
 msgstr ""
 
+msgid "Lipeckaya oblast'"
+msgstr ""
+
+msgid "Lipkovo"
+msgstr ""
+
+msgid "Liptovsky Mikulas"
+msgstr ""
+
 msgid "List API keys"
+msgstr ""
+
+msgid "Lithuanian"
+msgstr ""
+
+msgid "Ličko-senjska županija"
+msgstr ""
+
+msgid "Lleida"
+msgstr ""
+
+msgid "Lodz"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Log in again"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "LogEntry Object"
+msgstr ""
+
+msgid "Logged out"
+msgstr ""
+
+msgid "Longford"
+msgstr ""
+
+msgid "Lookup"
+msgstr ""
+
+msgid "Lothian"
+msgstr ""
+
+msgid "Louth"
+msgstr ""
+
+msgid "Lower Austria"
+msgstr ""
+
+msgid "Lower Saxony"
+msgstr ""
+
+msgid "Lower Silesia"
+msgstr ""
+
+msgid "Lozovo"
+msgstr ""
+
+msgid "Lublin"
+msgstr ""
+
+msgid "Lubusz"
+msgstr ""
+
+msgid "Lucenec"
+msgstr ""
+
+msgid "Lucerne"
+msgstr ""
+
+msgid "Lugo"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macedonian"
+msgstr ""
+
+msgid "Macedonian identity card number"
+msgstr ""
+
+msgid "Madiun"
+msgstr ""
+
+msgid "Madrid"
+msgstr ""
+
+msgid "Madura"
+msgstr ""
+
+msgid "Magadanskaya oblast'"
+msgstr ""
+
+msgid "Magelang"
+msgstr ""
+
+msgid "Makedonska Kamenica"
+msgstr ""
+
+msgid "Makedonski Brod"
+msgstr ""
+
+msgid "Malacky"
+msgstr ""
+
+msgid "Malaga"
+msgstr ""
+
+msgid "Malang"
+msgstr ""
+
+msgid "Malayalam"
+msgstr ""
+
+msgid "Maluku"
+msgstr ""
+
+msgid "Maluku Utara"
+msgstr ""
+
+msgid "Many-to-many relationship"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "Mariy Ehl, Respublika"
 msgstr ""
 
 msgid "Mark records as duplicate"
@@ -733,10 +3162,73 @@ msgstr ""
 msgid "Mark the selected records as duplicate"
 msgstr ""
 
+msgid "Martin"
+msgstr ""
+
+msgid "Masovia"
+msgstr ""
+
+msgid "Mavrovo i Rostuša"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "Mayo"
+msgstr ""
+
+msgid "Meath"
+msgstr ""
+
+msgid "Mecklenburg-Western Pomerania"
+msgstr ""
+
+msgid "Medzilaborce"
+msgstr ""
+
+msgid "Melilla"
+msgstr ""
+
+msgid "Merseyside"
+msgstr ""
+
 msgid "Message (required)"
 msgstr ""
 
 msgid "Message is required. Please go back and try again."
+msgstr ""
+
+msgid "Metadata"
+msgstr ""
+
+msgid "Mexican CURP"
+msgstr ""
+
+msgid "Mexican RFC"
+msgstr ""
+
+msgid "Mexican Spanish"
+msgstr ""
+
+msgid "Mexico state (three uppercase letters)"
+msgstr ""
+
+msgid "Mexico zip code"
+msgstr ""
+
+msgid "Međimurska županija"
+msgstr ""
+
+msgid "Michalovce"
+msgstr ""
+
+msgid "Michoacán"
+msgstr ""
+
+msgid "Mid Glamorgan"
+msgstr ""
+
+msgid "Mie"
 msgstr ""
 
 msgid "Missing person's current contact information"
@@ -746,6 +3238,48 @@ msgid "Missing person's current e-mail address"
 msgstr ""
 
 msgid "Missing person's current phone number"
+msgstr ""
+
+msgid "Miyagi"
+msgstr ""
+
+msgid "Miyazaki"
+msgstr ""
+
+#, python-format
+msgid "Model %(model)s with pk %(pk)r does not exist."
+msgstr ""
+
+#, python-format
+msgid "Model %(model_name)r not found in app %(app_label)r"
+msgstr ""
+
+msgid "Models"
+msgstr ""
+
+#, python-format
+msgid "Models available in the %(name)s application."
+msgstr ""
+
+msgid "Mogila"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Monaghan"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Mongolian"
+msgstr ""
+
+msgid "Moravian-Silesian Region"
+msgstr ""
+
+msgid "Mordovia, Respublika"
 msgstr ""
 
 #, python-format
@@ -772,6 +3306,60 @@ msgid ""
 "the name"
 msgstr ""
 
+msgid "Morelos"
+msgstr ""
+
+msgid "Moskovskaya oblast'"
+msgstr ""
+
+msgid "Moskva"
+msgstr ""
+
+msgid "Mpumalanga"
+msgstr ""
+
+msgid "Multi polygon"
+msgstr ""
+
+msgid "Multi-line string"
+msgstr ""
+
+msgid "Multi-point"
+msgstr ""
+
+msgid "Murcia"
+msgstr ""
+
+msgid "Murmanskaya oblast'"
+msgstr ""
+
+msgid "My Actions"
+msgstr ""
+
+msgid "Myjava"
+msgstr ""
+
+msgid "NTB - Lombok"
+msgstr ""
+
+msgid "NTB - Sumbawa"
+msgstr ""
+
+msgid "NTT - Flores"
+msgstr ""
+
+msgid "NTT - Sumba"
+msgstr ""
+
+msgid "NTT - Timor"
+msgstr ""
+
+msgid "Nagano"
+msgstr ""
+
+msgid "Nagasaki"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -784,17 +3372,115 @@ msgstr ""
 msgid "Name or mobile phone number (required)"
 msgstr ""
 
+msgid "Namestovo"
+msgstr ""
+
+msgid "Namur"
+msgstr ""
+
+msgid "Nanggroe Aceh Darussalam"
+msgstr ""
+
+msgid "Nara"
+msgstr ""
+
+msgid "National Business Register Number (REGON) consists of 9 or 14 digits."
+msgstr ""
+
+msgid "National ID Card Number consists of 3 letters and 6 digits."
+msgstr ""
+
+msgid "National Identification Number consists of 11 digits."
+msgstr ""
+
+msgid "Navarre"
+msgstr ""
+
+msgid "Nayarit"
+msgstr ""
+
+msgid "Negotino"
+msgstr ""
+
 msgid "Neighborhood"
+msgstr ""
+
+msgid "Neneckiy autonomnyy okrug"
+msgstr ""
+
+msgid "Nepali"
+msgstr ""
+
+msgid "Neuchatel"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "New password confirmation"
+msgstr ""
+
+msgid "New password:"
+msgstr ""
+
+msgid "Nicaraguan Spanish"
+msgstr ""
+
+msgid "Nidwalden"
+msgstr ""
+
+msgid "Niigata"
+msgstr ""
+
+msgid "Nitra"
+msgstr ""
+
+msgid "Nitra region"
+msgstr ""
+
+msgid "Nizhegorodskaja oblast'"
 msgstr ""
 
 msgid "No"
 msgstr ""
 
 #, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+msgid "No action selected."
+msgstr ""
+
+#, python-format
 msgid "No author email for record %(id)s."
 msgstr ""
 
+msgid "No day specified"
+msgstr ""
+
+msgid "No feeds are registered."
+msgstr ""
+
+msgid "No fields changed."
+msgstr ""
+
+msgid "No file was submitted."
+msgstr ""
+
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+msgid "No geometry value provided."
+msgstr ""
+
 msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "No month specified"
 msgstr ""
 
 #, python-format
@@ -802,6 +3488,10 @@ msgid "No note with ID: %(id_str)s."
 msgstr ""
 
 msgid "No notes have been posted"
+msgstr ""
+
+#, python-format
+msgid "No page '%s'"
 msgstr ""
 
 msgid "No person id was specified."
@@ -815,7 +3505,68 @@ msgstr ""
 msgid "No results found for: %(query)s"
 msgstr ""
 
+#, python-format
+msgid "No sitemap available for section: %r"
+msgstr ""
+
 msgid "No such Authorization entity."
+msgstr ""
+
+msgid "No week specified"
+msgstr ""
+
+msgid "No year specified"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "None available"
+msgstr ""
+
+msgid "Noord-Brabant"
+msgstr ""
+
+msgid "Noord-Holland"
+msgstr ""
+
+msgid "Norfolk"
+msgstr ""
+
+msgid "Norrbotten"
+msgstr ""
+
+msgid "North Rhine-Westphalia"
+msgstr ""
+
+msgid "North West"
+msgstr ""
+
+msgid "North Yorkshire"
+msgstr ""
+
+msgid "North-Caucasian Federal County"
+msgstr ""
+
+msgid "North-West Federal County"
+msgstr ""
+
+msgid "Northamptonshire"
+msgstr ""
+
+msgid "Northern Cape"
+msgstr ""
+
+msgid "Northern Ireland"
+msgstr ""
+
+msgid "Northumberland"
+msgstr ""
+
+msgid "Norwegian Bokmal"
+msgstr ""
+
+msgid "Norwegian Nynorsk"
 msgstr ""
 
 msgid ""
@@ -841,13 +3592,94 @@ msgstr ""
 msgid "Notes for this person"
 msgstr ""
 
+msgid "Nottinghamshire"
+msgstr ""
+
+msgid "Novaci"
+msgstr ""
+
+msgid "Nove Mesto nad Vahom"
+msgstr ""
+
+msgid "Nove Zamky"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "Novgorodskaya oblast'"
+msgstr ""
+
+msgid "Novo Selo"
+msgstr ""
+
+msgid "Novosibirskaya oblast'"
+msgstr ""
+
+msgid "Nuevo León"
+msgstr ""
+
 msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+msgid "Number part cannot be zero"
+msgstr ""
+
+msgid "Nusa Tenggara Barat"
+msgstr ""
+
+msgid "Nusa Tenggara Timur"
+msgstr ""
+
+msgid "Oaxaca"
+msgstr ""
+
+msgid "Obwalden"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "Offaly"
+msgstr ""
+
+msgid "Ohrid"
+msgstr ""
+
+msgid "Oita"
+msgstr ""
+
+msgid "Okayama"
+msgstr ""
+
+msgid "Okinawa"
+msgstr ""
+
+msgid "Old password"
+msgstr ""
+
+msgid "Olomouc Region"
+msgstr ""
+
+msgid "Omskaya oblast'"
+msgstr ""
+
+msgid "One-to-one relationship"
+msgstr ""
+
+msgid "Opole"
 msgstr ""
 
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle "
 "Gadget%(link_end_html)s."
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Orenburgskaya oblast'"
 msgstr ""
 
 msgid "Original URL"
@@ -867,7 +3699,31 @@ msgstr ""
 msgid "Original site name"
 msgstr ""
 
+msgid "Orkney Islands"
+msgstr ""
+
+msgid "Orlovskaya oblast'"
+msgstr ""
+
+msgid "Osaka"
+msgstr ""
+
+msgid "Osječko-baranjska županija"
+msgstr ""
+
+msgid "Oslomej"
+msgstr ""
+
 msgid "Other website"
+msgstr ""
+
+msgid "Ourense"
+msgstr ""
+
+msgid "Overijssel"
+msgstr ""
+
+msgid "Oxfordshire"
 msgstr ""
 
 msgid ""
@@ -875,13 +3731,138 @@ msgid ""
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
 
+msgid "PM"
+msgstr ""
+
+#, python-format
+msgid "Page %s empty"
+msgstr ""
+
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+msgid "Page not found"
+msgstr ""
+
+msgid "Palencia"
+msgstr ""
+
+msgid "Papua"
+msgstr ""
+
+msgid "Papua Barat"
+msgstr ""
+
+msgid "Papua dan Papua Barat"
+msgstr ""
+
+msgid "Pardubice Region"
+msgstr ""
+
+msgid "Partizanske"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password (again)"
+msgstr ""
+
+msgid "Password change"
+msgstr ""
+
+msgid "Password change successful"
+msgstr ""
+
+msgid "Password changed successfully."
+msgstr ""
+
+msgid "Password confirmation"
+msgstr ""
+
+msgid "Password reset"
+msgstr ""
+
+msgid "Password reset complete"
+msgstr ""
+
+msgid "Password reset confirmation"
+msgstr ""
+
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""
+
+msgid "Password reset successful"
+msgstr ""
+
+msgid "Password reset unsuccessful"
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid "Past 7 days"
+msgstr ""
+
+msgid "Pati"
+msgstr ""
+
+msgid "Pehčevo"
+msgstr ""
+
+msgid "Pekalongan"
+msgstr ""
+
+msgid "Penzenskaya oblast'"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Permskiy Kray"
+msgstr ""
+
+msgid "Persian"
+msgstr ""
+
 msgid "Person Finder"
+msgstr ""
+
+msgid "Personal info"
+msgstr ""
+
+msgid "Petrovec"
+msgstr ""
+
+msgid "Pezinok"
 msgstr ""
 
 msgid "Phone"
 msgstr ""
 
 msgid "Phone number"
+msgstr ""
+
+msgid "Phone numbers must be in 02X-8X or 03X-7X or 04X-6X format."
+msgstr ""
+
+msgid "Phone numbers must be in 0X XX XX XX XX format."
+msgstr ""
+
+msgid "Phone numbers must be in 0XXX XXX XXXX format."
+msgstr ""
+
+msgid "Phone numbers must be in XX-XXXX-XXXX format."
+msgstr ""
+
+msgid "Phone numbers must be in XXX-XXX-XXXX format."
+msgstr ""
+
+msgid "Phone numbers must be in XXXX-XXXXXX format."
+msgstr ""
+
+msgid "Phone numbers must have 9 digits, or start by + or 00."
 msgstr ""
 
 msgid "Photo"
@@ -896,6 +3877,15 @@ msgid ""
 msgstr ""
 
 msgid "Physical characteristics"
+msgstr ""
+
+msgid "Piestany"
+msgstr ""
+
+msgid "Pilsen Region"
+msgstr ""
+
+msgid "Plasnica"
 msgstr ""
 
 msgid ""
@@ -914,7 +3904,68 @@ msgstr ""
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr ""
 
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique"
+" for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+msgid "Please correct the error below"
+msgid_plural "Please correct the errors below"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+msgid ""
+"Please enter a correct username and password. Note that both fields are "
+"case-sensitive."
+msgstr ""
+
+msgid "Please enter a valid NIF or NIE."
+msgstr ""
+
+msgid "Please enter a valid NIF, NIE, or CIF."
+msgstr ""
+
+msgid ""
+"Please enter a valid bank account number in format XXXX-XXXX-XX-"
+"XXXXXXXXXX."
+msgstr ""
+
+msgid ""
+"Please enter the correct username and password for a staff account. Note "
+"that both fields are case-sensitive."
+msgstr ""
+
 msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+msgid ""
+"Please enter your old password, for security's sake, and then enter your "
+"new password twice so we can verify you typed it in correctly."
 msgstr ""
 
 msgid "Please explain why you think these are the same person"
@@ -926,16 +3977,115 @@ msgstr ""
 msgid "Please fill in your email address."
 msgstr ""
 
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+msgid "Please log in again, because your session has expired."
+msgstr ""
+
 msgid "Please provide an valid email address."
 msgstr ""
 
+msgid "Podlasie"
+msgstr ""
+
+msgid "Point"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Poltar"
+msgstr ""
+
+msgid "Polygon"
+msgstr ""
+
+msgid "Pomerania"
+msgstr ""
+
+msgid "Pontevedra"
+msgstr ""
+
+msgid "Poprad"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
+
+msgid "Positive integer"
+msgstr ""
+
+msgid "Positive small integer"
+msgstr ""
+
 msgid "Possible duplicates"
+msgstr ""
+
+msgid "Post"
+msgstr ""
+
+msgid "Post your comment"
 msgstr ""
 
 msgid "Postal or zip code"
 msgstr ""
 
 msgid "Posted by"
+msgstr ""
+
+#, python-format
+msgid ""
+"Posted by %(user)s at %(date)s\n"
+"\n"
+"%(comment)s\n"
+"\n"
+"http://%(domain)s%(url)s"
+msgstr ""
+
+msgid "Povazska Bystrica"
+msgstr ""
+
+msgid "Powys"
+msgstr ""
+
+msgid "Požeško-slavonska županija"
+msgstr ""
+
+msgid "Prague"
+msgstr ""
+
+msgid "Presov"
+msgstr ""
+
+msgid "Presov region"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Preview your comment"
+msgstr ""
+
+msgid "Prievidza"
+msgstr ""
+
+msgid "Prilep"
+msgstr ""
+
+msgid "Primorskiy Kray"
+msgstr ""
+
+msgid "Primorsko-goranska županija"
+msgstr ""
+
+msgid "Principality of Asturias"
+msgstr ""
+
+msgid "Privolzhsky Federal County"
+msgstr ""
+
+msgid "Probištip"
 msgstr ""
 
 msgid "Proceed"
@@ -959,20 +4109,91 @@ msgstr ""
 msgid "Province or state"
 msgstr ""
 
+msgid "Pskovskaya oblast'"
+msgstr ""
+
+msgid "Puchov"
+msgstr ""
+
+msgid "Puebla"
+msgstr ""
+
+msgid "Punjabi"
+msgstr ""
+
+msgid "Purwakarta"
+msgstr ""
+
+msgid "Querétaro"
+msgstr ""
+
+msgid "Quintana Roo"
+msgstr ""
+
+msgid "Radoviš"
+msgstr ""
+
+msgid "Rankovce"
+msgstr ""
+
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a "
+"href=\"password/\">this form</a>."
+msgstr ""
+
+msgid "Really flag this comment?"
+msgstr ""
+
+msgid "Really make this comment public?"
+msgstr ""
+
+msgid "Really remove this comment?"
+msgstr ""
+
 msgid "Reason for deletion:"
 msgstr ""
 
 msgid "Reason for disabling notes:"
 msgstr ""
 
+msgid "Recent Actions"
+msgstr ""
+
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
+
+msgid "Region of Murcia"
 msgstr ""
 
 msgid "Remove"
 msgstr ""
 
+msgid "Remove a comment"
+msgstr ""
+
+msgid "Remove from sorting"
+msgstr ""
+
+msgid "Remove selected comments"
+msgstr ""
+
 msgid "Report spam"
+msgstr ""
+
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+msgid ""
+"Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ "
+"characters"
+msgstr ""
+
+msgid "Resen"
+msgstr ""
+
+msgid "Reset my password"
 msgstr ""
 
 #, python-format
@@ -982,7 +4203,130 @@ msgstr ""
 msgid "Reveal note"
 msgstr ""
 
+msgid "Revuca"
+msgstr ""
+
+msgid "Rhineland-Palatinate"
+msgstr ""
+
+msgid "Riau"
+msgstr ""
+
+msgid "Rimavska Sobota"
+msgstr ""
+
+msgid "Rjazanskaya oblast'"
+msgstr ""
+
+msgid "Romanian"
+msgstr ""
+
+msgid "Roscommon"
+msgstr ""
+
+msgid "Rosoman"
+msgstr ""
+
+msgid "Rostovskaya oblast'"
+msgstr ""
+
+msgid "Roznava"
+msgstr ""
+
+msgid "Run the selected action"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Ruzomberok"
+msgstr ""
+
+msgid "Saarland"
+msgstr ""
+
+msgid "Sabinov"
+msgstr ""
+
+msgid "Saga"
+msgstr ""
+
+msgid "Saint-Peterburg"
+msgstr ""
+
+msgid "Saitama"
+msgstr ""
+
+msgid "Sakha, Respublika (Yakutiya)"
+msgstr ""
+
+msgid "Sakhalinskaya oblast'"
+msgstr ""
+
+msgid "Sala"
+msgstr ""
+
+msgid "Salamanca"
+msgstr ""
+
+msgid "Salzburg"
+msgstr ""
+
+msgid "Samarskaya oblast'"
+msgstr ""
+
+msgid "San Luis Potosí"
+msgstr ""
+
+msgid "Santa Cruz de Tenerife"
+msgstr ""
+
+msgid "Saraj"
+msgstr ""
+
+msgid "Saratovskaya oblast'"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save and add another"
+msgstr ""
+
+msgid "Save and continue editing"
+msgstr ""
+
+msgid "Save as new"
+msgstr ""
+
 msgid "Save this record"
+msgstr ""
+
+msgid "Saxony"
+msgstr ""
+
+msgid "Saxony-Anhalt"
+msgstr ""
+
+msgid "Schaffhausen"
+msgstr ""
+
+msgid "Schleswig-Holstein"
+msgstr ""
+
+msgid "Schwyz"
+msgstr ""
+
+msgid "Scotland"
+msgstr ""
+
+msgid "Search"
 msgstr ""
 
 msgid "Search for this person"
@@ -992,19 +4336,101 @@ msgstr ""
 msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
 msgstr ""
 
+msgid "Segovia"
+msgstr ""
+
+#, python-format
+msgid "Select %s"
+msgstr ""
+
+#, python-format
+msgid "Select %s to change"
+msgstr ""
+
+msgid ""
+"Select a valid brazilian state. That state is not one of the available "
+"states."
+msgstr ""
+
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#, python-format
+msgid "Select a valid choice. %s is not one of the available choices."
+msgstr ""
+
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
 msgid "Select a website to add a profile page..."
+msgstr ""
+
+#, python-format
+msgid "Select all %(total_count)s %(module_name)s"
 msgstr ""
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 
+msgid "Semarang"
+msgstr ""
+
 msgid "Send email"
+msgstr ""
+
+msgid "Senec"
+msgstr ""
+
+msgid "Senica"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "Serbian"
+msgstr ""
+
+msgid "Serbian Latin"
+msgstr ""
+
+msgid "Server Error <em>(500)</em>"
+msgstr ""
+
+msgid "Server error"
+msgstr ""
+
+msgid "Server error (500)"
+msgstr ""
+
+msgid "Severnaya Osetia, Respublika (Alania)"
+msgstr ""
+
+msgid "Seville"
 msgstr ""
 
 msgid "Sex"
 msgstr ""
 
+msgid "Shetland Islands"
+msgstr ""
+
+msgid "Shiga"
+msgstr ""
+
+msgid "Shimane"
+msgstr ""
+
+msgid "Shizuoka"
+msgstr ""
+
 msgid "Show Map"
+msgstr ""
+
+msgid "Show all"
+msgstr ""
+
+msgid "Show object ID"
 msgstr ""
 
 msgid "Show sensitive information"
@@ -1013,13 +4439,80 @@ msgstr ""
 msgid "Show who marked these duplicates"
 msgstr ""
 
+msgid ""
+"Shows the content-type and unique ID for pages that represent a single "
+"object."
+msgstr ""
+
+msgid "Shropshire"
+msgstr ""
+
+msgid "Siberian Federal County"
+msgstr ""
+
+msgid "Sidoarjo"
+msgstr ""
+
 msgid "Sign in"
 msgstr ""
 
 msgid "Sign out"
 msgstr ""
 
+msgid "Silesia"
+msgstr ""
+
+msgid "Simplified Chinese"
+msgstr ""
+
+msgid "Sinaloa"
+msgstr ""
+
+msgid "Sisačko-moslavačka županija"
+msgstr ""
+
+msgid "Site administration"
+msgstr ""
+
+msgid "Skalica"
+msgstr ""
+
 msgid "Skip"
+msgstr ""
+
+msgid "Skåne"
+msgstr ""
+
+msgid "Sligo"
+msgstr ""
+
+msgid "Slovak"
+msgstr ""
+
+msgid "Slovenian"
+msgstr ""
+
+#, python-format
+msgid "Slug %r isn't registered."
+msgstr ""
+
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+msgid "Small integer"
+msgstr ""
+
+msgid "Smolenskaya oblast'"
+msgstr ""
+
+msgid "Snina"
+msgstr ""
+
+msgid "Sobrance"
+msgstr ""
+
+msgid "Solothurn"
 msgstr ""
 
 msgid "Someone has received information that this person is alive"
@@ -1034,10 +4527,71 @@ msgstr ""
 msgid "Someone is seeking information about this person"
 msgstr ""
 
+msgid "Somerset"
+msgstr ""
+
+msgid ""
+"Something's wrong with your database installation. Make sure the "
+"appropriate database tables have been created, and make sure the database"
+" is readable by the appropriate user."
+msgstr ""
+
+msgid "Sonora"
+msgstr ""
+
+msgid "Sopište"
+msgstr ""
+
+msgid "Soria"
+msgstr ""
+
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
 msgid "Source of Record"
 msgstr ""
 
 msgid "Source of this record"
+msgstr ""
+
+msgid "South Bohemian Region"
+msgstr ""
+
+msgid "South Federal County"
+msgstr ""
+
+msgid "South Glamorgan"
+msgstr ""
+
+msgid "South Moravian Region"
+msgstr ""
+
+msgid "South Yorkshire"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Spisska Nova Ves"
+msgstr ""
+
+msgid "Splitsko-dalmatinska županija"
+msgstr ""
+
+msgid "St. Gallen"
+msgstr ""
+
+msgid "Staffordshire"
+msgstr ""
+
+msgid "Star Dojran"
+msgstr ""
+
+msgid "Stara Lubovna"
+msgstr ""
+
+msgid "Staro Nagoričane"
 msgstr ""
 
 msgid "Status"
@@ -1053,6 +4607,15 @@ msgstr ""
 msgid "Status of this person:"
 msgstr ""
 
+msgid "Stavropol'siyy Kray"
+msgstr ""
+
+msgid "Stockholm"
+msgstr ""
+
+msgid "Strathclyde"
+msgstr ""
+
 msgid "Street name"
 msgstr ""
 
@@ -1060,6 +4623,28 @@ msgid "Street name only, no number"
 msgstr ""
 
 msgid "Street name, neighborhood, city, etc."
+msgstr ""
+
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+msgid "Stropkov"
+msgstr ""
+
+msgid "Struga"
+msgstr ""
+
+msgid "Strumica"
+msgstr ""
+
+msgid "Studeničani"
+msgstr ""
+
+msgid "Styria"
+msgstr ""
+
+msgid "Subcarpatia"
 msgstr ""
 
 msgid "Submit"
@@ -1078,16 +4663,211 @@ msgstr ""
 msgid "Subscribe to updates about this person"
 msgstr ""
 
+#, python-format
+msgid "Successfully deleted %(count)d %(items)s."
+msgstr ""
+
+msgid "Suffolk"
+msgstr ""
+
+msgid "Sulawesi Barat"
+msgstr ""
+
+msgid "Sulawesi Selatan"
+msgstr ""
+
+msgid "Sulawesi Tengah"
+msgstr ""
+
+msgid "Sulawesi Tenggara"
+msgstr ""
+
+msgid "Sulawesi Utara"
+msgstr ""
+
+msgid "Sulawesi Utara Daratan"
+msgstr ""
+
+msgid "Sulawesi Utara Kepulauan"
+msgstr ""
+
+msgid "Sumatera Barat"
+msgstr ""
+
+msgid "Sumatera Selatan"
+msgstr ""
+
+msgid "Sumatera Utara"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Surabaya"
+msgstr ""
+
+msgid "Surakarta - Solo"
+msgstr ""
+
+msgid "Surrey"
+msgstr ""
+
+msgid "Sverdlovskaya oblast'"
+msgstr ""
+
+msgid "Sveti Nikole"
+msgstr ""
+
+msgid "Svidnik"
+msgstr ""
+
+msgid "Swahili"
+msgstr ""
+
+msgid "Swedish"
+msgstr ""
+
+msgid "Swietokrzyskie"
+msgstr ""
+
 msgid "Switch to address"
 msgstr ""
 
 msgid "Switch to lat/long"
 msgstr ""
 
+msgid "Södermanland"
+msgstr ""
+
+msgid "Tabasco"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+msgid "Tamaulipas"
+msgstr ""
+
+msgid "Tambovskaya oblast'"
+msgstr ""
+
+msgid "Tamil"
+msgstr ""
+
+msgid "Tapanuli"
+msgstr ""
+
+msgid "Tarragona"
+msgstr ""
+
+msgid "Tatar"
+msgstr ""
+
+msgid "Tatarstan, Respublika"
+msgstr ""
+
+msgid "Tayside"
+msgstr ""
+
+msgid "Tearce"
+msgstr ""
+
+msgid "Telugu"
+msgstr ""
+
+msgid "Templates"
+msgstr ""
+
 msgid "Terms of Service"
 msgstr ""
 
+msgid "Teruel"
+msgstr ""
+
+msgid "Tetovo"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Thai"
+msgstr ""
+
+msgid "Thank you for your comment"
+msgstr ""
+
+msgid "Thanks for approving"
+msgstr ""
+
+msgid "Thanks for commenting"
+msgstr ""
+
+msgid "Thanks for flagging"
+msgstr ""
+
+msgid "Thanks for removing"
+msgstr ""
+
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+msgid ""
+"Thanks for taking the time to improve the quality of discussion on our "
+"site"
+msgstr ""
+
+msgid "Thanks for using our site!"
+msgstr ""
+
+msgid ""
+"That e-mail address doesn't have an associated user account. Are you sure"
+" you've registered?"
+msgstr ""
+
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was added successfully."
+msgstr ""
+
+#, python-format
+msgid ""
+"The %(name)s \"%(obj)s\" was added successfully. You may edit it again "
+"below."
+msgstr ""
+
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was changed successfully."
+msgstr ""
+
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was deleted successfully."
+msgstr ""
+
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#, python-format
+msgid "The %(verbose_name)s was created successfully."
+msgstr ""
+
+#, python-format
+msgid "The %(verbose_name)s was deleted."
+msgstr ""
+
+#, python-format
+msgid "The %(verbose_name)s was updated successfully."
+msgstr ""
+
 msgid "The API key has been updated successfully."
+msgstr ""
+
+msgid "The Chilean RUT is not valid."
+msgstr ""
+
+msgid "The EMSO is not valid."
 msgstr ""
 
 msgid ""
@@ -1095,7 +4875,13 @@ msgid ""
 " again."
 msgstr ""
 
+msgid "The Icelandic identification number is not valid."
+msgstr ""
+
 msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+
+msgid "The UMCN is not valid."
 msgstr ""
 
 msgid "The author has disabled notes on this record."
@@ -1104,8 +4890,33 @@ msgstr ""
 msgid "The author has disabled status updates on this record."
 msgstr ""
 
+msgid "The base GIS field -- maps to the OpenGIS Specification Geometry type."
+msgstr ""
+
+msgid "The first 7 digits of the EMSO must represent a valid past date."
+msgstr ""
+
+msgid "The first 7 digits of the UMCN must represent a valid past date."
+msgstr ""
+
+msgid ""
+"The groups this user belongs to. A user will get all permissions granted "
+"to each of his/her group."
+msgstr ""
+
+msgid "The inline foreign key did not match the parent instance primary key."
+msgstr ""
+
 #, python-format
 msgid "The note for %(full_name)s has been added"
+msgstr ""
+
+msgid ""
+"The password reset link was invalid, possibly because it has already been"
+" used.  Please request a new password reset."
+msgstr ""
+
+msgid "The phone nubmer is too long"
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
@@ -1130,12 +4941,23 @@ msgid ""
 "person."
 msgstr ""
 
+msgid "The submitted file is empty."
+msgstr ""
+
 #, python-format
 msgid "The token %(token)s was invalid"
 msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid."
+msgstr ""
+
+msgid "The two password fields didn't match."
+msgstr ""
+
+msgid ""
+"The user account associated with this e-mail address cannot reset the "
+"password."
 msgstr ""
 
 #, python-format
@@ -1157,16 +4979,75 @@ msgid ""
 "please check that the format of your request is correct."
 msgstr ""
 
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0"
 " license%(link_end_html)s."
 msgstr ""
 
+msgid "This URL appears to be a broken link."
+msgstr ""
+
+msgid "This account is inactive."
+msgstr ""
+
+msgid ""
+"This can be either an absolute path (as above) or a full URL starting "
+"with 'http://'."
+msgstr ""
+
+msgid ""
+"This comment was posted by an authenticated user and thus the email is "
+"read-only."
+msgstr ""
+
+msgid ""
+"This comment was posted by an authenticated user and thus the name is "
+"read-only."
+msgstr ""
+
+msgid "This field cannot be blank."
+msgstr ""
+
+msgid "This field cannot be null."
+msgstr ""
+
+msgid "This field is required."
+msgstr ""
+
+msgid "This field requires 11 digits."
+msgstr ""
+
+msgid "This field requires 7 or 8 digits."
+msgstr ""
+
+msgid "This field requires 8 digits."
+msgstr ""
+
+msgid "This field requires at least 14 digits"
+msgstr ""
+
+msgid "This field requires at most 11 digits or 14 characters."
+msgstr ""
+
+msgid "This field requires only numbers."
+msgstr ""
+
+msgid "This field should contain exactly 13 digits."
+msgstr ""
+
 msgid "This is a new record."
 msgstr ""
 
 msgid "This link is invalid."
+msgstr ""
+
+msgid "This month"
 msgstr ""
 
 msgid "This note has been marked as spam."
@@ -1179,6 +5060,11 @@ msgid "This note is incorrect or untrue."
 msgstr ""
 
 msgid "This note is spam."
+msgstr ""
+
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via "
+"this admin site."
 msgstr ""
 
 msgid "This person has been in contact with someone"
@@ -1210,6 +5096,49 @@ msgid ""
 "records that are over 24 hours old are deleted."
 msgstr ""
 
+msgid ""
+"This should be an absolute path, excluding the domain name. Example: "
+"'/events/search/'."
+msgstr ""
+
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+msgid ""
+"This value must contain only letters, numbers, dots, underscores, dashes,"
+" slashes or tildes."
+msgstr ""
+
+msgid "This year"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Thurgau"
+msgstr ""
+
+msgid "Thuringia"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Ticino"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time:"
+msgstr ""
+
+msgid "Tipperary"
+msgstr ""
+
+msgid "Tlaxcala"
+msgstr ""
+
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
@@ -1222,6 +5151,81 @@ msgstr ""
 msgid "To view or add information, select a name below."
 msgstr ""
 
+msgid "Tochigi"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+msgid "Toggle sorting"
+msgstr ""
+
+msgid "Tokushima"
+msgstr ""
+
+msgid "Tokyo"
+msgstr ""
+
+msgid "Toledo"
+msgstr ""
+
+msgid "Tomskaya oblast'"
+msgstr ""
+
+msgid "Topolcany"
+msgstr ""
+
+msgid "Tottori"
+msgstr ""
+
+msgid "Toyama"
+msgstr ""
+
+msgid "Traditional Chinese"
+msgstr ""
+
+msgid "Trebisov"
+msgstr ""
+
+msgid "Trencin"
+msgstr ""
+
+msgid "Trencin region"
+msgstr ""
+
+msgid "Trnava"
+msgstr ""
+
+msgid "Trnava region"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Tul'skaya oblast'"
+msgstr ""
+
+msgid "Turcianske Teplice"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Turkish Identification number must be 11 digits."
+msgstr ""
+
+msgid "Tverskaya oblast'"
+msgstr ""
+
+msgid "Tvrdosin"
+msgstr ""
+
+msgid "Tyne and Wear"
+msgstr ""
+
 msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
@@ -1230,10 +5234,55 @@ msgstr ""
 msgid "Type an address."
 msgstr ""
 
+msgid "Tyrol"
+msgstr ""
+
+msgid "Tyrone"
+msgstr ""
+
+msgid "Tyumenskaya oblast'"
+msgstr ""
+
+msgid "Tyva, Respublika (Tuva)"
+msgstr ""
+
+msgid "U.S. postal code (two uppercase letters)"
+msgstr ""
+
+msgid "U.S. state (two uppercase letters)"
+msgstr ""
+
 msgid "URL"
 msgstr ""
 
+msgid "URL is missing a leading slash."
+msgstr ""
+
+msgid "URL is missing a trailing slash."
+msgstr ""
+
 msgid "URL of original record"
+msgstr ""
+
+msgid "Udmurtskaya Respublika"
+msgstr ""
+
+msgid "Ukrainian"
+msgstr ""
+
+msgid "Ul'ianovskaya oblast'"
+msgstr ""
+
+msgid "Uncheck this box to make the comment effectively disappear from the site."
+msgstr ""
+
+msgid "Unique master citizen number (13 digits)"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Unknown content"
 msgstr ""
 
 msgid "Unspecified"
@@ -1245,6 +5294,11 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
 msgid "Upload notes in CSV format"
 msgstr ""
 
@@ -1254,13 +5308,228 @@ msgstr ""
 msgid "Upload your CSV file below"
 msgstr ""
 
+msgid "Upper Austria"
+msgstr ""
+
+msgid "Uppsala"
+msgstr ""
+
+msgid "Ural Federal County"
+msgstr ""
+
+msgid "Urdu"
+msgstr ""
+
+msgid "Uri"
+msgstr ""
+
 msgid "Use current location"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username:"
+msgstr ""
+
+msgid "Usti Region"
+msgstr ""
+
+msgid "Utrecht"
+msgstr ""
+
+msgid "Valais"
+msgstr ""
+
+msgid "Valandovo"
+msgstr ""
+
+msgid "Valencia"
+msgstr ""
+
+msgid "Valencian Community"
+msgstr ""
+
+msgid "Valladolid"
+msgstr ""
+
+#, python-format
+msgid "Value %r is not a valid choice."
+msgstr ""
+
+msgid "Varaždinska županija"
+msgstr ""
+
+msgid "Vasilevo"
+msgstr ""
+
+msgid "Vaud"
+msgstr ""
+
+msgid "Veles"
+msgstr ""
+
+msgid "Velky Krtis"
+msgstr ""
+
+msgid "Veracruz"
+msgstr ""
+
+msgid "Vevčani"
+msgstr ""
+
+msgid "Vienna"
+msgstr ""
+
+msgid "Vietnamese"
+msgstr ""
+
+msgid "View on site"
 msgstr ""
 
 msgid "View the record"
 msgstr ""
 
+msgid "Views"
+msgstr ""
+
+msgid "Vinica"
+msgstr ""
+
+msgid "Virovitičko-podravska županija"
+msgstr ""
+
+msgid "Vladimirskaya oblast'"
+msgstr ""
+
+msgid "Volgogradskaya oblast'"
+msgstr ""
+
+msgid "Vologodskaya oblast'"
+msgstr ""
+
+msgid "Vorarlberg"
+msgstr ""
+
+msgid "Voronezhskaya oblast'"
+msgstr ""
+
+msgid "Vraneštica"
+msgstr ""
+
+msgid "Vranov nad Toplou"
+msgstr ""
+
+msgid "Vrapčište"
+msgstr ""
+
+msgid "Vukovarsko-srijemska županija"
+msgstr ""
+
+msgid "Vysocina Region"
+msgstr ""
+
+msgid "Värmland"
+msgstr ""
+
+msgid "Västerbotten"
+msgstr ""
+
+msgid "Västernorrland"
+msgstr ""
+
+msgid "Västmanland"
+msgstr ""
+
+msgid "Västra Götaland"
+msgstr ""
+
+msgid "Wakayama"
+msgstr ""
+
+msgid "Wales"
+msgstr ""
+
+msgid "Wallonia"
+msgstr ""
+
+msgid "Walloon Brabant"
+msgstr ""
+
+msgid "Warmia-Masuria"
+msgstr ""
+
+msgid "Warwickshire"
+msgstr ""
+
+#, python-format
+msgid "Watch your mouth! The word %s is not allowed here."
+msgid_plural "Watch your mouth! The words %s are not allowed here."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Waterford"
+msgstr ""
+
+msgid ""
+"We apologize, but your form has expired. Please continue filling out the "
+"form from this page."
+msgstr ""
+
 msgid "We have nothing matching your search."
+msgstr ""
+
+msgid "We're sorry, but the requested page could not be found."
+msgstr ""
+
+msgid ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted. You should be receiving it shortly."
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Welcome,"
+msgstr ""
+
+msgid "Welsh"
+msgstr ""
+
+msgid "West Flanders"
+msgstr ""
+
+msgid "West Glamorgan"
+msgstr ""
+
+msgid "West Midlands"
+msgstr ""
+
+msgid "West Pomerania"
+msgstr ""
+
+msgid "West Sussex"
+msgstr ""
+
+msgid "West Yorkshire"
+msgstr ""
+
+msgid "Western Cape"
+msgstr ""
+
+msgid "Western Isles"
+msgstr ""
+
+msgid "Westmeath"
+msgstr ""
+
+msgid "Wexford"
 msgstr ""
 
 msgid "When should this record disappear?"
@@ -1288,7 +5557,46 @@ msgstr ""
 msgid "Who you have information about"
 msgstr ""
 
+msgid "Wicklow"
+msgstr ""
+
+msgid "Wiltshire"
+msgstr ""
+
+msgid "Worcestershire"
+msgstr ""
+
+msgid "Wrong checksum for the National Business Register Number (REGON)."
+msgstr ""
+
+msgid "Wrong checksum for the National ID Card Number."
+msgstr ""
+
+msgid "Wrong checksum for the National Identification Number."
+msgstr ""
+
+msgid "Wrong checksum for the Tax Number (NIP)."
+msgstr ""
+
+msgid "Yamagata"
+msgstr ""
+
+msgid "Yamaguchi"
+msgstr ""
+
+msgid "Yamalo-Neneckiy avtonomnyy okrug"
+msgstr ""
+
+msgid "Yamanashi"
+msgstr ""
+
+msgid "Yaroslavskaya oblast'"
+msgstr ""
+
 msgid "Yes"
+msgstr ""
+
+msgid "Yes, I'm sure"
 msgstr ""
 
 msgid "Yes, ask the record author to disable notes"
@@ -1313,6 +5621,9 @@ msgid "Yes, these are the same person"
 msgstr ""
 
 msgid "Yes, update the note"
+msgstr ""
+
+msgid "Yogyakarta"
 msgstr ""
 
 msgid "You are already subscribed. "
@@ -1342,10 +5653,20 @@ msgstr ""
 msgid "You can view the full record at %(view_url)s"
 msgstr ""
 
+msgid "You don't have permission to edit anything."
+msgstr ""
+
 msgid "You have successfully subscribed."
 msgstr ""
 
 msgid "You have successfully unsubscribed."
+msgstr ""
+
+#, python-format
+msgid "You may add another %s below."
+msgstr ""
+
+msgid "You may edit it again below."
 msgstr ""
 
 msgid ""
@@ -1353,7 +5674,22 @@ msgid ""
 "the following person:\n"
 msgstr ""
 
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset for "
+"your user account at %(site_name)s."
+msgstr ""
+
+msgid ""
+"Your Web browser doesn't appear to have cookies enabled. Cookies are "
+"required for logging in."
+msgstr ""
+
 msgid "Your e-mail address"
+msgstr ""
+
+#, python-format
+msgid "Your e-mail address is not your username. Try '%s' instead."
 msgstr ""
 
 msgid "Your e-mail address:"
@@ -1375,12 +5711,87 @@ msgid ""
 "again."
 msgstr ""
 
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr ""
+
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+msgid "Your password was changed."
+msgstr ""
+
 msgid "Your phone number"
 msgstr ""
 
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
+msgstr ""
+
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+msgid "Yucatán"
+msgstr ""
+
+msgid "Zabaykalskiy Kray"
+msgstr ""
+
+msgid "Zacatecas"
+msgstr ""
+
+msgid "Zadarska županija"
+msgstr ""
+
+msgid "Zagrebačka županija"
+msgstr ""
+
+msgid "Zajas"
+msgstr ""
+
+msgid "Zamora"
+msgstr ""
+
+msgid "Zaragoza"
+msgstr ""
+
+msgid "Zarnovica"
+msgstr ""
+
+msgid "Zeeland"
+msgstr ""
+
+msgid "Zelenikovo"
+msgstr ""
+
+msgid "Ziar nad Hronom"
+msgstr ""
+
+msgid "Zilina"
+msgstr ""
+
+msgid "Zilina region"
+msgstr ""
+
+msgid "Zlate Moravce"
+msgstr ""
+
+msgid "Zlin Region"
+msgstr ""
+
+msgid "Zrnovci"
+msgstr ""
+
+msgid "Zug"
+msgstr ""
+
+msgid "Zuid-Holland"
+msgstr ""
+
+msgid "Zurich"
+msgstr ""
+
+msgid "Zvolen"
 msgstr ""
 
 #, python-format
@@ -1423,24 +5834,493 @@ msgstr ""
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
 
+#, python-format
+msgid "a minute ago"
+msgid_plural "%(count)s minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "a minute from now"
+msgid_plural "%(count)s minutes from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "a second ago"
+msgid_plural "%(count)s seconds ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "a second from now"
+msgid_plural "%(count)s seconds from now"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "a.m."
+msgstr ""
+
+msgid "action flag"
+msgstr ""
+
+msgid "action time"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "algorithm"
+msgstr ""
+
+#, python-format
+msgid "all %s"
+msgstr ""
+
+#, python-format
+msgid "an hour ago"
+msgid_plural "%(count)s hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "an hour from now"
+msgid_plural "%(count)s hours from now"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "and"
+msgstr ""
+
+msgid "approved"
+msgid_plural "approved"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "apr"
+msgstr ""
+
+msgid "aug"
+msgstr ""
+
+msgid "change message"
+msgstr ""
+
+msgid "checksum"
+msgstr ""
+
+msgid "codename"
+msgstr ""
+
+msgid "comment"
+msgstr ""
+
+msgid "comment flag"
+msgstr ""
+
+msgid "comment flags"
+msgstr ""
+
+msgid "comments"
+msgstr ""
+
+msgid "content"
+msgstr ""
+
+msgid "content type"
+msgstr ""
+
+msgid "content types"
+msgstr ""
+
+msgid "date"
+msgstr ""
+
+msgid "date joined"
+msgstr ""
+
+msgid "date/time submitted"
+msgstr ""
+
+msgid "day"
+msgid_plural "days"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "dec"
+msgstr ""
+
+msgid "display name"
+msgstr ""
+
+msgid "domain name"
+msgstr ""
+
+msgid "e-mail address"
+msgstr ""
+
 msgid "e.g., Will Smith, Will or Smith"
+msgstr ""
+
+msgid "eight"
+msgstr ""
+
+msgid "enable comments"
+msgstr ""
+
+msgid "expire date"
 msgstr ""
 
 msgid "external site; normal connection fee may apply"
 msgstr ""
 
+msgid "feb"
+msgstr ""
+
 msgid "female"
 msgstr ""
 
+msgid "filter:"
+msgstr ""
+
+msgid "first name"
+msgstr ""
+
+msgid "first step"
+msgstr ""
+
+msgid "five"
+msgstr ""
+
+msgid "flag"
+msgstr ""
+
+msgid "flagged"
+msgid_plural "flagged"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "flat page"
+msgstr ""
+
+msgid "flat pages"
+msgstr ""
+
+msgid "four"
+msgstr ""
+
+msgid "group"
+msgstr ""
+
+msgid "groups"
+msgstr ""
+
+msgid "hash"
+msgstr ""
+
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "in test mode"
+msgstr ""
+
+msgid "is public"
+msgstr ""
+
+msgid "is removed"
+msgstr ""
+
+msgid "iterations"
+msgstr ""
+
+msgid "jan"
+msgstr ""
+
+msgid "jul"
+msgstr ""
+
+msgid "jun"
+msgstr ""
+
+msgid "last login"
+msgstr ""
+
+msgid "last name"
+msgstr ""
+
+msgid "lazy message"
+msgstr ""
+
+msgid "log entries"
+msgstr ""
+
+msgid "log entry"
 msgstr ""
 
 msgid "male"
 msgstr ""
 
+msgid "mar"
+msgstr ""
+
+msgid "may"
+msgstr ""
+
+msgid "midnight"
+msgstr ""
+
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "minutes"
+msgstr ""
+
+msgid "model:"
+msgstr ""
+
+msgid "month"
+msgid_plural "months"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "name"
+msgstr ""
+
+msgid "nd"
+msgstr ""
+
+msgid "nine"
+msgstr ""
+
+msgid "noon"
+msgstr ""
+
+msgid "nov"
+msgstr ""
+
+msgid "now"
+msgstr ""
+
+#, python-format
+msgid "number of %s"
+msgstr ""
+
+msgid "object ID"
+msgstr ""
+
+msgid "object id"
+msgstr ""
+
+msgid "object repr"
+msgstr ""
+
+msgid "oct"
+msgstr ""
+
 msgid "on"
 msgstr ""
 
+msgid "one"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "or make changes"
+msgstr ""
+
 msgid "other"
+msgstr ""
+
+msgid "p.m."
+msgstr ""
+
+msgid "password"
+msgstr ""
+
+msgid "permission"
+msgstr ""
+
+msgid "permissions"
+msgstr ""
+
+msgid "prev step"
+msgstr ""
+
+msgid "python model class name"
+msgstr ""
+
+msgid "rd"
+msgstr ""
+
+msgid "redirect"
+msgstr ""
+
+msgid "redirect from"
+msgstr ""
+
+msgid "redirect to"
+msgstr ""
+
+msgid "redirects"
+msgstr ""
+
+msgid "registration required"
+msgstr ""
+
+#, python-format
+msgid "related `%(app_label)s.%(object_name)s` objects"
+msgstr ""
+
+msgid "removed"
+msgid_plural "removed"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "salt"
+msgstr ""
+
+msgid "sep"
+msgstr ""
+
+msgid "session"
+msgstr ""
+
+msgid "session data"
+msgstr ""
+
+msgid "session key"
+msgstr ""
+
+msgid "sessions"
+msgstr ""
+
+msgid "seven"
+msgstr ""
+
+msgid "site"
+msgstr ""
+
+msgid "sites"
+msgstr ""
+
+msgid "six"
+msgstr ""
+
+msgid "st"
+msgstr ""
+
+msgid "staff status"
+msgstr ""
+
+msgid "submit"
+msgstr ""
+
+msgid "superuser status"
+msgstr ""
+
+msgid "tag:"
+msgstr ""
+
+msgid "template name"
+msgstr ""
+
+msgid "th"
+msgstr ""
+
+#, python-format
+msgid "the related `%(app_label)s.%(data_type)s` object"
+msgstr ""
+
+msgid "three"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "today"
+msgstr ""
+
+msgid "tomorrow"
+msgstr ""
+
+msgid "two"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "user permissions"
+msgstr ""
+
+msgid "user's URL"
+msgstr ""
+
+msgid "user's email address"
+msgstr ""
+
+msgid "user's name"
+msgstr ""
+
+msgid "username"
+msgstr ""
+
+msgid "users"
+msgstr ""
+
+msgid "view:"
+msgstr ""
+
+msgid "week"
+msgid_plural "weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "work factor"
+msgstr ""
+
+msgid "year"
+msgid_plural "years"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "yes,no,maybe"
+msgstr ""
+
+msgid "yesterday"
+msgstr ""
+
+msgid "Örebro"
+msgstr ""
+
+msgid "Östergötland"
+msgstr ""
+
+msgid "Čair"
+msgstr ""
+
+msgid "Čaška"
+msgstr ""
+
+msgid "Češinovo-Obleševo"
+msgstr ""
+
+msgid "Čučer-Sandevo"
+msgstr ""
+
+msgid "Šibensko-kninska županija"
+msgstr ""
+
+msgid "Štip"
+msgstr ""
+
+msgid "Šuto Orizari"
+msgstr ""
+
+msgid "Želino"
 msgstr ""
 
