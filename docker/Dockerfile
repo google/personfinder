@@ -7,7 +7,7 @@ CMD ["/sbin/my_init"]
 ENV DEBIAN_FRONTEND noninteractive
 ENV PATH $PATH:/opt/google_appengine
 ENV APPENGINE_DIR /opt/google_appengine/
-ENV PERSONFINDER_DIR /opt/personfinder
+ENV PERSONFINDER_DIR /opt/personfinder/
 ENV INIT_DATASTORE 0
 
 RUN apt-get update && apt-get install -y \
@@ -29,8 +29,6 @@ RUN unzip -qq google_appengine_1.9.25.zip && rm google_appengine_1.9.25.zip
 ADD gae-run-app.sh      /usr/bin/
 ADD setup_datastore.sh  /usr/bin/
 
-
-COPY . /opt/personfinder
 WORKDIR /opt/personfinder/
 
 # Clean up
