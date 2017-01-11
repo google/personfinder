@@ -22,6 +22,8 @@ import os
 import pytest
 import sys
 
+import fix_path
+
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
 
