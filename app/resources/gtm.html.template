@@ -1,4 +1,4 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# Copyright 2017 Google Inc.  Licensed under the Apache License, Version   #}
 {# 2.0 (the "License"); you may not use this file except in compliance with #}
 {# the License.  You may obtain a copy of the License at:                   #}
 {#     http://www.apache.org/licenses/LICENSE-2.0                           #}
@@ -8,27 +8,30 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template fragment for Google Analytics tracking.                         #}
+{# Template fragment for Google Tag Manager.                                #}
 
 {% if env.enable_analytics %}
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
+  <script>
+    dataLayer = [{
+      'gaProperty': '{{env.analytics_id}}'
+    }];
     try {
-      var pageTracker = _gat._getTracker('{{env.analytics_id}}');
-      pageTracker._trackPageview();
-      var path = window.location.pathname;
-      if (path.match(/\/(create|results|view)$/)) {
-        pageTracker._trackPageview(path);
-      }
       var num_results = '{{num_results}}';
       if (num_results != '') {
-        pageTracker._trackEvent('search', 'search', 'results', num_results - 0, true);
+	dataLayer.push({
+	  'num_results': num_results,
+	  'event': 'search'
+        });
       }
     } catch(err) {
       if (window['console']) { console.log(err); }
     }
   </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TDTR2K');</script>
+  <!-- End Google Tag Manager -->
 {% endif %}
