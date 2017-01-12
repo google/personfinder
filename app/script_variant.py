@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 # coding:utf-8
 
-import jautils
 
 from unidecode import unidecode
+
+import jautils
 
 import os.path
 import re
