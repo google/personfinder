@@ -77,6 +77,7 @@ django.conf.settings.TEMPLATES = [
 # Django framework.
 django.setup()
 
+
 class TemplateLoader(django.template.loaders.base.Loader):
     """Our custom template loader, which loads templates from Resources."""
 
