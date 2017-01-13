@@ -54,7 +54,7 @@ export PYTHONPATH=\
 "$TESTS_DIR":\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
-"$APPENGINE_DIR/lib/django-1.2":\
+"$APPENGINE_DIR/lib/django-1.9":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
 "$APPENGINE_DIR/lib/webapp2-2.5.1":\
 "$APPENGINE_DIR/lib/webob_0_9":\
