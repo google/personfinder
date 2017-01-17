@@ -33,6 +33,7 @@ import os
 import utils
 
 import django.template
+import django.template.base
 
 from google.appengine.ext import db
 from google.appengine.ext import webapp
@@ -95,7 +96,7 @@ from google.appengine.ext import webapp
 #
 # Suppose the dynamic page '/<repo>/view' is now requested.  Assume that R3
 # is still cached from the above request.  The expected sequence of calls is:
-# 
+#
 # request for dynamic page, action='view', with an 'id' query parameter
 # > view.Handler.get()
 #   > model.Person.get_by_key_name(person_record_id)
@@ -195,7 +196,9 @@ class Resource(db.Model):
         if not hasattr(self, 'template'):
             try:
                 self.template = django.template.Template(
-                    self.content.decode('utf-8'), 'Resource', self.key().name())
+                    self.content.decode('utf-8'),
+                    origin=django.template.base.Origin('Resource'),
+                    name=self.key().name())
             except:
                 # Exception here is silently ignored otherwise.
                 logging.error(
@@ -203,8 +206,8 @@ class Resource(db.Model):
                     exc_info=True)
                 self.template = django.template.Template(
                     'Internal Server Error',
-                    'Resource',
-                    self.key().name())
+                    origin=django.template.base.Origin('Resource'),
+                    name=self.key().name())
         return self.template
 
 

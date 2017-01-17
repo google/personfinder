@@ -92,17 +92,22 @@ class ResourcesTests(unittest.TestCase):
         test_self = self
 
         @staticmethod
-        def resource_get_by_key_name_for_test(key_name, parent):
+        def resource_get_by_key_name_for_test(
+                key_name, parent, *args, **kwargs):
             test_self.fetched.append(key_name)  # track datastore fetches
-            return test_self.resource_get_by_key_name_original(key_name, parent)
+            return test_self.resource_get_by_key_name_original(
+                key_name, parent, *args, **kwargs)
 
-        def template_init_for_test(self, content, origin, name):
+        def template_init_for_test(
+                self, content, origin, name, *args, **kwargs):
             test_self.compiled.append(name)  # track template compilations
-            return test_self.template_init_original(self, content, origin, name)
+            return test_self.template_init_original(
+                self, content, origin, name, *args, **kwargs)
 
-        def template_render_for_test(self, context):
+        def template_render_for_test(self, context, *args, **kwargs):
             test_self.rendered.append(self.name)  # track render calls
-            return test_self.template_render_original(self, context)
+            return test_self.template_render_original(
+                self, context, *args, **kwargs)
 
         Resource.get_by_key_name = resource_get_by_key_name_for_test
         django.template.Template.__init__ = template_init_for_test

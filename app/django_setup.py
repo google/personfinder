@@ -24,9 +24,10 @@ selected; ugettext for those after (ugettext is safe to use in all Handlers)."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
+import django
 import django.conf
 import django.template
-import django.template.loader
+import django.template.loaders.base
 import django.utils.translation
 import os
 from django.utils.translation import activate, gettext_lazy, ugettext
@@ -39,10 +40,7 @@ if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     import urllib
     urllib.getproxies_macosx_sysconf = lambda: {}
 
-try:
-    django.conf.settings.configure()
-except:
-    pass
+django.conf.settings.configure()
 django.conf.settings.LANGUAGE_CODE = LANGUAGE_CODE
 # Enables Django translation system e.g. {% trans %} tag
 django.conf.settings.USE_I18N = True
@@ -51,24 +49,51 @@ django.conf.settings.USE_I18N = True
 django.conf.settings.USE_L10N = True
 django.conf.settings.LOCALE_PATHS = ('locale',)
 django.conf.settings.LANGUAGES_BIDI = LANGUAGES_BIDI
-django.conf.settings.TEMPLATE_LOADERS = ('django_setup.TemplateLoader',)
+
+# https://docs.djangoproject.com/en/1.9/ref/templates/upgrading/#the-templates-settings
+django.conf.settings.TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'django_setup.TemplateLoader',
+            ]
+        },
+    },
+]
+
+# It's required to call this function when we use Django features outside
+# Django framework.
+django.setup()
 
 
-class TemplateLoader(django.template.loader.BaseLoader):
+class TemplateLoader(django.template.loaders.base.Loader):
     """Our custom template loader, which loads templates from Resources."""
-    is_usable = True  # Django requires this flag
 
-    def load_template(self, name, dirs):
+    def get_template(self, name, template_dirs=None, skip=None):
         import resources
         lang = django.utils.translation.get_language()  # currently active lang
         resource = resources.get_localized(name, lang)
         template = resource and resource.get_template()
         if template:
-            return template, name + ':' + lang
+            return template
         else:
             raise django.template.TemplateDoesNotExist(name)
 
-    def load_template_source(self, name, dirs):
-        # Silly Django requires custom TemplateLoaders to have this method,
-        # but the framework actually only calls load_template().
-        pass
+    def get_contents(self, origin):
+        # Defining this method is necessary so that Django recognizes that
+        # this loader is in the new format (using get_template() instead of
+        # load_template()). But this method is actually not called when
+        # get_template() is overridden.
+        raise Exception('Not expected to be called')
