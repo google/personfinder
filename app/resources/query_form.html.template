@@ -114,6 +114,11 @@
         {% else %}
           <span class="mandatory label">
             {% if config.jp_mobile_carrier_redirect %}
+              {% comment %}
+                Translators: The label of a field for either the name of the
+                person or their mobile phone number, in the form to search
+                person records.
+              {% endcomment %}
               {% trans "Name or mobile phone number (required)" %}:
             {% else %}
               {% trans "Name (required)" %}:
@@ -121,7 +126,14 @@
           </span>
           <input id="query_name" name="query_name"
               class="long-text-input"
-              value="{{params.query_name}}" placeholder="{% trans 'e.g., Will Smith, Will or Smith' %}">
+              value="{{params.query_name}}"
+              {% comment %}
+                Translators: A placeholder text for the name field in the form
+                to search person records. It indicates that the user can put
+                either a full name, a given name or a family name. The example
+                name should be changed to a typical name in the language.
+              {% endcomment %}
+              placeholder="{% trans 'e.g., Will Smith, Will, or Smith' %}">
         {% endif %}
       </div>
       {% if config.enable_fulltext_search %}
@@ -132,17 +144,26 @@
                 value="{{params.query_location}}">
           {% else %}
             <span class="label">
+              {% comment %}
+                Translators: A label the home location field in the form to
+                search person records.
+              {% endcomment %}
               {% trans "Home location" %}:
             </span>
             <input id="query_location" name="query_location"
                 class="long-text-input"
-                value="{{params.query_location}}" placeholder="{% trans 'Street name, neighborhood, city, etc.' %}">
+                value="{{params.query_location}}"
+                {% comment %}
+                  Translators: A placeholder text for the home location field
+                  in the form to search person records.
+                {% endcomment %}
+                placeholder="{% trans 'Street name, neighborhood, city, etc.' %}">
           {% endif %}
         </div>
       {% endif %}
     {% endifequal %}
     <div class="end-multi-columns"></div>
-    
+
      {% ifequal num_results 100 %}
       <div class="warning">
         {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}

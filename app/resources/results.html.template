@@ -90,10 +90,18 @@
     {% if not results_based_on_input %}
       {% if results %}
         <h1>
+          {% comment %}
+            Translators: The title of the search results when there are no
+            results found.
+          {% endcomment %}
           {% blocktrans %}
             No results found for: "{{query}}"
           {% endblocktrans %}
             <p>
+          {% comment %}
+            Translators: The title of the search results which show a list
+            of persons with the given person name in any locations.
+          {% endcomment %}
           {% blocktrans %}
             Results for "{{query_name}}" (any location):
           {% endblocktrans %}
@@ -102,6 +110,10 @@
         </h1>
       {% else %}
         <h1>
+          {% comment %}
+            Translators: The title of the search results when there are no
+            results found.
+          {% endcomment %}
           {% blocktrans %}
             No results found for: "{{query}}"
           {% endblocktrans %}
@@ -115,8 +127,11 @@
     {% ifequal params.role 'seek' %}
       {% if results_based_on_input %}
         <div class='resultsTitle'>
+          {% comment %}
+            Translators: The title of the search results for the given query.
+          {% endcomment %}
           {% blocktrans %}
-            Search Results for: "{{query}}"
+            Search results for: "{{query}}"
           {% endblocktrans %}
         </div>
       {% endif %}

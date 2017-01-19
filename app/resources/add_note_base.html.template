@@ -147,6 +147,11 @@
 
     {% if env.ui != "light" %}
       <a href="#" class="expand-button expand-button-icon-down">
+        {% comment %}
+          Translators: A link to expand the form to allow the user to input
+          more information about the status of the person, in the form to either
+          register a person record or add a note to an existing record.
+        {% endcomment %}
         {% trans "More information about status of the person" %}
       </a>
     {% endif %}

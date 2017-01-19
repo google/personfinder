@@ -38,8 +38,18 @@
         <div class="card">
           <h1>
             {% ifequal params.role "provide" %}
+              {% comment %}
+                Translators: The title of a section to input information about
+                the person whom the user have information about, in the form to
+                register a person record.
+              {% endcomment %}
               {% trans "Who you have information about" %}
             {% else %}
+              {% comment %}
+                Translators: The title of a section to input information about
+                the person whom the user is looking for, in the form to register
+                a person record.
+              {% endcomment %}
               {% trans "Who you are looking for" %}
             {% endifequal %}
           </h1>
@@ -55,6 +65,11 @@
                       onchange="update_form()"
                       onclick="update_form()">
                   <label class="option" for="own_info_yes">
+                    {% comment %}
+                      Translators: The label of an option to input the user's
+                      own information, not someone else's, in the form to
+                      register a person record.
+                    {% endcomment %}
                     {% trans "I want to input my own information" %}
                   </label>
                 </div>
@@ -67,6 +82,11 @@
                       onclick="update_form()"
                       onchange="update_form()">
                   <label class="option" for="own_info_no">
+                    {% comment %}
+                      Translators: The label of an option to input someone
+                      else's information, not of the user themselves, in the
+                      form to register a person record.
+                    {% endcomment %}
                     {% trans "I want to input someone else's information" %}
                   </label>
                 </div>
@@ -75,8 +95,8 @@
           {% else %}
             {# Only own-info=no is supported when JavaScript is disabled. #}
             <input type="hidden" name="own-info" value="no">
-          {% endif %}            
-        </div>      
+          {% endif %}
+        </div>
         <div class="identify card">
           <h1>
             {% trans "Identifying information" %}
@@ -143,7 +163,12 @@
                 <div class="field">
                   <span class="label">
                     <label for="subscribe-checkbox">
-                      {% trans "Subscribe for updates about your record" %}:
+                      {% comment %}
+                        Translators: The label for a check-box to subscribe to
+                        updates about the person record the user creates, in the
+                        form to register a person record.
+                      {% endcomment %}
+                      {% trans "Subscribe to updates about your record" %}:
                     </label>
                   </span>
                   <span class="value">
@@ -156,6 +181,11 @@
 
           {% if env.ui != "light" %}
             <a href="#" class="expand-button expand-button-icon-down">
+              {% comment %}
+                Translators: A link to expand the form to allow the user to
+                input more detailed information to identify the person, in the
+                form to register a person record.
+              {% endcomment %}
               {% trans "More information to identify the person" %}
             </a>
           {% endif %}
@@ -164,11 +194,19 @@
             {% if env.enable_javascript %}
               <div class="subsection" id="own_info_contact">
                 <h3>
+                  {% comment %}
+                    Translators: The title of a section to input the user's own
+                    email address and phone number, in the form to register a
+                    person record.
+                  {% endcomment %}
                   {% trans "Contact information" %}
                 </h3>
                 <div class="field">
                   <span class="label">
                     <label for="your_own_email" id="your_own_email_original">
+                    {% comment %}
+                      Translators: The label for an email address field.
+                    {% endcomment %}
                       {% trans "Email address" %}:
                     </label>
                   </span>
@@ -523,6 +561,11 @@
             <input type="hidden" name="clone" value="no">
           {% endif %}
           <div class="hint">
+            {% comment %}
+              Translators: A title of a section to input the source of the
+              person information e.g., the name of the person who originally
+              provided the information.
+            {% endcomment %}
             {% trans "Where did this information come from?" %}
           </div>
           <div class="field">
@@ -548,6 +591,11 @@
 
           {% if env.ui != "light" %}
             <a href="#" class="expand-button expand-button-icon-down" >
+              {% comment %}
+                Translators: A link to expand the form to allow the user to
+                input more detailed information about the source of the record,
+                in the form to register a person record.
+              {% endcomment %}
               {% trans "More information about source of record" %}
             </a>
           {% endif %}

@@ -740,6 +740,8 @@ class HandleSMS(utils.BaseHandler):
             person.update_from_note(note)
             db.put(person)
             model.UserActionLog.put_new('add', person, copy_properties=False)
+            # Translators: An SMS message sent to a user when the user
+            # successfully added a record for the given person.
             responses.append(_('Added a record for: %(person_name)s')
                 % {'person_name': name_string})
 

@@ -164,7 +164,7 @@ class Handler(BaseHandler):
             # Look for *similar* names, not prefix matches.
             # Eyalf: we need to full query string
             # for key in criteria:
-            #     criteria[key] = criteria[key][:3]  
+            #     criteria[key] = criteria[key][:3]
             # "similar" = same first 3 letters
             results = self.search({'name':query_txt})
             # Filter out results with addresses matching part of the query.
@@ -213,6 +213,9 @@ class Handler(BaseHandler):
                     logging.exception(
                         'failed to scrape search result for the phone number.')
                     return self.error(
+                        # Translators: An error message indicating that we
+                        # failed to obtain search result for the phone number
+                        # given by the user.
                         500, _('Failed to obtain search result '
                                'for the phone number.'))
 
