@@ -147,6 +147,10 @@
             >{% trans "Terms of Service" %}</a>
         {% if config.privacy_policy_url %}
           {# TODO(ichikawa) Proxy this in the same way as TOS. #}
+          {% comment %}
+            Translators: Text in the footer which provides a link to our privacy
+            policy.
+          {% endcomment %}
           {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
             Learn more about Google
             <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>
