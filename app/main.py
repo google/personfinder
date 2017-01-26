@@ -18,6 +18,7 @@ handled by this handler, which dispatches to all other dynamic handlers."""
 
 import django_setup  # always keep this first
 
+import fix_path
 import mimetypes
 import re
 import os
