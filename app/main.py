@@ -18,10 +18,12 @@ handled by this handler, which dispatches to all other dynamic handlers."""
 
 import django_setup  # always keep this first
 
-import fix_path
 import mimetypes
 import re
 import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), 'vendors'))
+
 import urlparse
 
 from google.appengine.api import memcache

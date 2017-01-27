@@ -18,7 +18,6 @@
 Instead of running this script directly, use the 'unit_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
 
-import fix_path
 import os
 import pytest
 import sys

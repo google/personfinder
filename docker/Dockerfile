@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip && pip install pytest django==1.4 lxml==3.7.2
+RUN pip install --upgrade pip && pip install pytest lxml
 
 # Install app engine
 WORKDIR   /opt/
