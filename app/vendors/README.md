@@ -1,3 +1,5 @@
+A directory for third-party libraries.
+
 To update contents of this directory, run this command at the root directory:
 ```
 $ pip install -r requirements.txt -t app/vendors
