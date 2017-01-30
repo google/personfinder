@@ -51,6 +51,7 @@ fi
 
 export PYTHONPATH=\
 "$APP_DIR":\
+"$APP_DIR/vendors":\
 "$TESTS_DIR":\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
