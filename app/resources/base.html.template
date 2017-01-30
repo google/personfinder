@@ -110,6 +110,18 @@
 
             {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
 
+            {% if config.privacy_policy_url %}
+              {# TODO(ichikawa) Proxy this in the same way as TOS. #}
+              {% comment %}
+                Translators: Text in the footer which provides a link to our privacy
+                policy.
+              {% endcomment %}
+              {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
+                Learn more about Google
+                <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>.
+              {% endblocktrans %}
+            {% endif %}
+
             {% if env.show_language_menu %}
               {% include "language-menu.html.template" %}
             {% endif %}
@@ -145,17 +157,6 @@
         {% endif %}
         <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
             >{% trans "Terms of Service" %}</a>
-        {% if config.privacy_policy_url %}
-          {# TODO(ichikawa) Proxy this in the same way as TOS. #}
-          {% comment %}
-            Translators: Text in the footer which provides a link to our privacy
-            policy.
-          {% endcomment %}
-          {% blocktrans with config.privacy_policy_url as privacy_policy_url and env.target_attr|safe as target_attr %}
-            Learn more about Google
-            <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>
-          {% endblocktrans %}
-        {% endif %}
       {% endblock sidenav %}
     </div>
     <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>

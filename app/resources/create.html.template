@@ -643,6 +643,10 @@
             {% if env.enable_javascript %}
               <div class="subsection" id="source_title_row" style="display: none">
                 <span class="hint">
+                  {% comment %}
+                    Translators: A title of a section to input the source of the
+                    person record e.g., the URL which contains the record.
+                  {% endcomment %}
                   {% trans "Where did this record come from?" %}
                 </span>
                 <div class="field" id="source_url_row" style="display: none">
