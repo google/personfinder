@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -151,9 +151,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s rékaman dipilih\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -162,6 +164,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Diajar ngeunaan Google\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>Privacy Policy</a>.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -171,30 +178,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s ngagaduhan hasil anu cocog sareng "
+"patarosan ieu.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Teu aya hasil keur: \"%(query)s\"\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Hasil keur \"%(query_name)s\" (lokasi mana waé):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Hasil keur: \"%(query)s\"\n"
+"          "
 
 #, python-format
 msgid ""
@@ -203,7 +224,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Rékaman Mirip sareng: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -364,7 +385,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Alamat Surélék anu diasupkeun henteu valid.\n"
 "  "
 
 msgid ""
@@ -572,9 +593,11 @@ msgstr "Sakitar 6 bulan (180 dinten) ti ayeuna"
 msgid "About Google Person Finder"
 msgstr "Tentang Pamilari Jalma Google"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Nambahkeun catetan keur: %(person_name)s"
 
 msgid "Age"
 msgstr "Umur"
@@ -584,9 +607,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Sadaya data anu diasupkeun kana Panimu Jalma atos sadia kanggo umum jeung"
+" tiasa dianggo ku saha waé. Google henteu nempoan atawa pariksa bener "
+"henteuna data ieu google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Nami kulawarga sanésna"
@@ -654,8 +677,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Klik di dieu pikeun nempo watesan ladénan (loka luar; béaya sambungan "
+"normal tiasa aya)"
 
 msgid "Click here to view results."
 msgstr "Klik di dieu pikeun ningali hasilna."
@@ -666,8 +689,11 @@ msgstr "Tutup jandéla"
 msgid "Compare these records"
 msgstr "Bandingkeun rékaman-rékaman ieu"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Inpormasi kontak"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Salin sareng témpel kodeu HTML pikeun nyimpen tool ieu dina situsn anjeun"
@@ -728,8 +754,9 @@ msgstr "Alamat e-mail"
 msgid "Edit"
 msgstr "Robah"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Alamat Surélék"
 
 msgid "Embedding the Application"
 msgstr "Ngalebetkeun Aplikasi"
@@ -757,23 +784,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Nambahkeun tanggal kadaluarsa dina %(extension_days)s dinten\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Gagal nampa hasil pamilarian keur nomer telepon"
 
 msgid "Family name"
 msgstr "Nami kulawarga"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Ngaran kulawarga (diperlukeun)"
 
 msgid "Feed of updates about this person"
 msgstr "Feed pangénggalan ngeunaan jalma ieu"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Eupan balik"
 
 msgid "Follow this link to create a new record"
 msgstr "Tuturkeun tautan ieu pikeun ngadamel rékaman énggal."
@@ -787,7 +817,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Ti: %(home_location)s"
 
 msgid "Full name"
 msgstr "Nami lengkep"
@@ -796,7 +826,7 @@ msgid "Given name"
 msgstr "Nami anu dipasihkeun"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Ngaran anu dipasihkeun (peryogi)"
 
 msgid "Google Person Finder"
 msgstr "Panimu Jalma Google"
@@ -827,8 +857,10 @@ msgstr "Alamat Bumi"
 msgid "Home country"
 msgstr "Nagara asal"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Lokasi asal"
 
 msgid "How can this person be reached now?"
 msgstr "Kumaha cara ngahontal jalma ieu ayeuna?"
@@ -837,7 +869,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Kumaha batur anu minat ka jalma ieu tiasa ngawartosan anjeun"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Kuring Boga Inpo Tentang Jelema Ieu"
 
 msgid "I am seeking information"
 msgstr "Abdi milarian béja"
@@ -872,11 +904,17 @@ msgstr "Kuring kantos nampi spam."
 msgid "I prefer not to specify."
 msgstr "Kuring mendingan henteu ngawartosan."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Kuring hayang asupkeun inpormasi sorangan"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Kuring hayang asupkeun inpormasi batur"
 
 msgid "I'm looking for someone"
 msgstr "Kuring milari salah saurang jalma"
@@ -965,13 +1003,19 @@ msgstr "Nomer telepon jalma anu leungit"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Langkung seueur di: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Langkung seueur inpormasi ngeunaan sumber catetan"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Langkung seueur inpormasi ngeunaan jalma"
 
 #, python-format
 msgid ""
@@ -981,8 +1025,11 @@ msgstr ""
 "Langkung seueur inpormasi kanggo pangembang ayeuna tiasa dipendakan di "
 "%(developers_link_html)sdieu%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Langkung seueur inpormasi keur ngaidentipikasi jalma"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -995,13 +1042,16 @@ msgid "Name"
 msgstr "Nami"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Nami (peryogi)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nami diperyogikeun. Mangga balik deui sareng cobian deui."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Ngaran atawa nomer telepon sélulér (diperlukeun)"
 
 msgid "Neighborhood"
 msgstr "Daérah"
@@ -1024,7 +1074,7 @@ msgid "No notes have been posted"
 msgstr "Henteu aya catetan anu dipasang"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Teu aya jalma anu ditangtukeun."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1032,7 +1082,7 @@ msgstr "Henteu aya jalma nganggo ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Teu aya hasil pamilarian kanggo: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Henteu aya badan Otoritas sapertos kitu."
@@ -1099,8 +1149,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"PERHATIKEUN: Sadaya data anu diasupkeun sadia keur umum jeung bisa dipaké"
+" ku saha waé. Google henteu nempoan atawa mariksa bener henteuna data "
+"ieu."
 
 msgid "Person Finder"
 msgstr "Panimu Jalma"
@@ -1115,7 +1166,7 @@ msgid "Photo"
 msgstr "Poto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Poto (loka luar; béaya sambungan normal tiasa aya)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1131,8 +1182,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Mangga pariksa yén anjeun atos aya kontak sareng jalma ieu saator "
+"musibah, atawa robah widang \"Kaayaan ieu jelema\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1255,7 +1306,7 @@ msgid "Sign out"
 msgstr "Kaluar"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Liwat"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Aya anu nampi béja yén jalma ieu hirup kénéh"
@@ -1270,7 +1321,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Aya anu milari béja ngeunaan jalma ieu"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Sumber Rékaman"
 
 msgid "Source of this record"
 msgstr "Sumber tina rékaman ieu"
@@ -1280,13 +1331,13 @@ msgstr "Kaayaan"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Kaayaan %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Kaayaan Jelema"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Kaayaan jalma ieu:"
 
 msgid "Street name"
 msgstr "Nami jalan"
@@ -1294,11 +1345,13 @@ msgstr "Nami jalan"
 msgid "Street name only, no number"
 msgstr "Nami jalan hungkul, henteu aya nomer"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Ngaran jalan, lingkunga, kota, jsb."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Kirim"
 
 msgid "Subscribe"
 msgstr "Ngalanggan"
@@ -1310,8 +1363,11 @@ msgstr "Ngalanggan pikeun pangénggalan tentang %(full_name)s"
 msgid "Subscribe to updates about this person"
 msgstr "Ngalanggan pikeun pangénggalan tentang jalma ieu"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Ngalanggan keur ngaapdét ngeunaan catetan anjeun"
 
 msgid "Switch to address"
 msgstr "Pindah kana alamat"
@@ -1343,7 +1399,7 @@ msgstr "Panulis parantos mareuman pangénggalan status dina rékaman ieu."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Catetan keur %(full_name)s atos ditambahkeun"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1358,7 +1414,7 @@ msgstr "Rékaman henteu tiasa dipanjangkeun."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Catetan keur %(full_name)s atos kadaptar"
 
 msgid "The record has been deleted."
 msgstr "Rékaman parantos dihapus."
@@ -1508,7 +1564,7 @@ msgid "Upload your CSV file below"
 msgstr "Unggah berkas CSV anjeun di handap"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Paké lokasi kiwari"
 
 msgid "View the record"
 msgstr "Tingali rékamanana"
@@ -1519,11 +1575,16 @@ msgstr "Kami henteu ngagaduhan anu cocog sareng pamilarian anjeun."
 msgid "When should this record disappear?"
 msgstr "Iraha rékaman ieu kedah dihapus?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Timana béja ieu datangna?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Ti mana catetan ieu asalna?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1539,11 +1600,17 @@ msgstr ""
 "Nalika nuju dina modeu tés, rékaman anu umurna langkung ti 6 jam bakalan "
 "dihapus henteu paduli tanggal kadaluarsana."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Saha anu anjeun pilari"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Inpormasi saha anu anjeun boga"
 
 msgid "Yes"
 msgstr "Leres"
@@ -1596,8 +1663,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Anjeun bisa ngalanggan ka apdét ngeunaan %(full_name)s ku cara nuliskeun "
+"alamat surélék anjeun ka dieu"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1626,7 +1693,7 @@ msgid "Your email"
 msgstr "Email anjeun"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Ngaran anjeun (peryogi)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1695,11 +1762,15 @@ msgstr ""
 "[Panimu Jalma] Anjeun ngalanggan kana pangénggalan status pikeun "
 "%(full_name)s"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "misalna, Will Smith, Will, atawa Smith"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "loka luar; béaya sambungan normal tiasa aya"
 
 msgid "female"
 msgstr "awéwé"

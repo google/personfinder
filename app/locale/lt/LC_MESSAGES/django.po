@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -151,9 +151,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Pasirinkta įrašų: %(dup_count)s\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -162,6 +164,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Sužinokite daugiau apie „Google“\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>privatumo politiką</a>.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -171,30 +178,45 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            „%(search_engine_name)s“ rado šią užklausą atitinkančių "
+"paieškos rezultatų.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Nerasta jokių rezultatų pagal užklausą: „%(query)s“\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Rezultatai pagal užklausą „%(query_name)s“ (bet kuri "
+"vietovė):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Paieškos rezultatai pagal užklausą: „%(query)s“\n"
+"          "
 
 #, python-format
 msgid ""
@@ -203,7 +225,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Įrašai, panašūs į: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -361,7 +383,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Įvedėte netinkamą el. pašto adresą.\n"
 "  "
 
 msgid ""
@@ -576,9 +598,11 @@ msgstr "Apie 6 mėnesius (180 dienų) nuo dabar"
 msgid "About Google Person Finder"
 msgstr "Apie „Google“ žmonių ieškojimo priemonę"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Pridėtas įrašas, susijęs su: %(person_name)s"
 
 msgid "Age"
 msgstr "Amžius"
@@ -588,9 +612,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Asmens ieškiklyje įvesti duomenys pasiekiami viešai ir juos gali naudoti "
+"bet kas. „Google“ neperžiūri ir nepatvirtina šių duomenų tikslumo. Žr. "
+"adresu google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Papildomos pavardės"
@@ -658,8 +682,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Spustelėkite čia, kad galėtumėte peržiūrėti paslaugų teikimo sąlygas "
+"(išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai)"
 
 msgid "Click here to view results."
 msgstr "Spustelėkite čia, jei norite peržiūrėti rezultatus."
@@ -670,8 +694,11 @@ msgstr "Uždaryti langą"
 msgid "Compare these records"
 msgstr "Palyginti šiuos įrašus"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Kontaktinė informacija"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -736,8 +763,9 @@ msgstr "El. pašto adresas"
 msgid "Edit"
 msgstr "Redaguoti"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "El. pašto adresas"
 
 msgid "Embedding the Application"
 msgstr "Programos įterpimas"
@@ -765,23 +793,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Pratęskite galiojimo pabaigos datą %(extension_days)s d.\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Nepavyko gauti paieškos rezultatų pagal telefono numerį."
 
 msgid "Family name"
 msgstr "Pavardė"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Pavardė (reikia nurodyti)"
 
 msgid "Feed of updates about this person"
 msgstr "Naujausių žinių apie šį asmenį sklaidos kanalas"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Atsiliepimai"
 
 msgid "Follow this link to create a new record"
 msgstr "Spustelėkite šią nuorodą, jei norite sukurti naują įrašą"
@@ -793,7 +824,7 @@ msgstr "Jei naudojate ne mobilųjį telefoną, naudokite 171 paslaugą, pateikt�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Iš: %(home_location)s"
 
 msgid "Full name"
 msgstr "Vardas ir pavardė"
@@ -802,7 +833,7 @@ msgid "Given name"
 msgstr "Suteiktas vardas"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Vardas (reikia nurodyti)"
 
 msgid "Google Person Finder"
 msgstr "„Google“ žmonių ieškojimo priemonė"
@@ -831,8 +862,10 @@ msgstr "Namų adresas"
 msgid "Home country"
 msgstr "Gimtoji šalis"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Namų vietovė"
 
 msgid "How can this person be reached now?"
 msgstr "Kaip dabar galima susisiekti su šiuo asmeniu?"
@@ -841,7 +874,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Kaip kiti šio asmens ieškantys žmonės gali susisiekti su jumis"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Turiu informacijos apie šį asmenį"
 
 msgid "I am seeking information"
 msgstr "Ieškau informacijos"
@@ -876,11 +909,17 @@ msgstr "Gavau šlamšto."
 msgid "I prefer not to specify."
 msgstr "Nenoriu nurodyti."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Noriu įvesti savo informaciją"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Noriu įvesti kito asmens informaciją"
 
 msgid "I'm looking for someone"
 msgstr "Aš ieškau asmens"
@@ -964,13 +1003,19 @@ msgstr "Dingusio asmens dabartinis telefono numeris"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Daugiau adresu %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Daugiau informacijos apie įrašo šaltinį"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Daugiau informacijos asmens būseną"
 
 #, python-format
 msgid ""
@@ -980,8 +1025,11 @@ msgstr ""
 "Daugiau informacijos kūrėjams žr. "
 "%(developers_link_html)sčia%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Daugiau informacijos asmeniui nustatyti"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -994,13 +1042,16 @@ msgid "Name"
 msgstr "Vardas"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Vardas (būtina)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Būtina įvesti vardą. Grįžkite atgal ir bandykite dar kartą."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Vardas arba mobiliojo telefono numeris (būtina nurodyti)"
 
 msgid "Neighborhood"
 msgstr "Kaimynystė"
@@ -1023,7 +1074,7 @@ msgid "No notes have been posted"
 msgstr "Nėra paskelbtų pastabų"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Nenurodytas asmens ID."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1031,7 +1082,7 @@ msgstr "Nėra asmens su šiuo ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Nerasta jokių rezultatų pagal: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Tokio prieigos teisės subjekto nėra."
@@ -1098,8 +1149,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ATMINKITE: visi įvesti duomenys pasiekiami viešai ir juos gali naudoti "
+"bet kas. „Google“ neperžiūri ir nepatvirtina šių duomenų tikslumo."
 
 msgid "Person Finder"
 msgstr "Žmonių ieškojimo priemonė"
@@ -1114,7 +1165,7 @@ msgid "Photo"
 msgstr "Nuotrauka"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Nuotrauka (išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1130,8 +1181,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Nurodykite, ar bendravote su asmeniu po nelaimės, arba pakeiskite lauko "
+"„Šio asmens būsena“ vertę."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1254,7 +1305,7 @@ msgid "Sign out"
 msgstr "Atsijungti"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Praleisti"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Kažkas gavo informacijos, jog šis asmuo yra gyvas"
@@ -1269,7 +1320,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Kažkas ieško informacijos apie šį asmenį"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Įrašo šaltinis"
 
 msgid "Source of this record"
 msgstr "Šio įrašo šaltinis"
@@ -1279,13 +1330,13 @@ msgstr "Būsena"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s būsena "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Asmens būsena"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Šio asmens būsena:"
 
 msgid "Street name"
 msgstr "Gatvės pavadinimas"
@@ -1293,11 +1344,13 @@ msgstr "Gatvės pavadinimas"
 msgid "Street name only, no number"
 msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Gatvės pavadinimas, namų apylinkės, miestas ir kt."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Pateikti"
 
 msgid "Subscribe"
 msgstr "Prenumeruoti"
@@ -1309,8 +1362,11 @@ msgstr "Prenumeruoti naujausias žinias apie „%(full_name)s“"
 msgid "Subscribe to updates about this person"
 msgstr "Prenumeruoti naujausias žinias apie šį asmenį"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Prenumeruoti naujinius apie įrašą"
 
 msgid "Switch to address"
 msgstr "Perjungti į adresą"
@@ -1344,7 +1400,7 @@ msgstr "Autorius neleidžia šio įrašo būsenos naujinių."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Pridėta %(full_name)s pastaba"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
@@ -1357,7 +1413,7 @@ msgstr "Įrašo galiojimo laiko negalima pratęsti."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Užregistruotas %(full_name)s rekordas"
 
 msgid "The record has been deleted."
 msgstr "Įrašas ištrintas."
@@ -1511,7 +1567,7 @@ msgid "Upload your CSV file below"
 msgstr "Įkelkite CSV failą toliau"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Naudoti dabartinę vietą"
 
 msgid "View the record"
 msgstr "Žiūrėti įrašą"
@@ -1522,11 +1578,16 @@ msgstr "Nėra jokių įrašų, atitinkančių jūsų paiešką."
 msgid "When should this record disappear?"
 msgstr "Kada šis įrašas nebebus rodomas?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Iš kur gauta ši informacija?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Iš kur gautas šis įrašas?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1542,11 +1603,17 @@ msgstr ""
 "Kol veikia bandomasis režimas, senesni nei 6 val. įrašai ištrinami, "
 "neatsižvelgiant į galiojimo pabaigos datą."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Ko ieškote"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Apie ką informacijos turite"
 
 msgid "Yes"
 msgstr "Taip"
@@ -1597,8 +1664,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Galite prenumeruoti naujinius apie %(full_name)s įvedę el. pašto adresą "
+"čia"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1625,7 +1692,7 @@ msgid "Your email"
 msgstr "Jūsų el. paštas"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Jūsų vardas (reikia nurodyti)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1697,11 +1764,15 @@ msgstr ""
 "[Žmonių ieškojimo priemonė] Užsiprenumeravote „%(full_name)s“ būsenos "
 "atnaujinimus"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "pvz., Willas Smithas, Willas arba Smithas"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "išorinė svetainė; gali būti taikomi įprasti ryšio įkainiai"
 
 msgid "female"
 msgstr "moteris"

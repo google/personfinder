@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -152,9 +152,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)sটি রেকর্ড নির্বাচন করা হয়েছে\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -163,6 +165,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Google এর\n"
+"            <a href=\"%(privacy_policy_url)s\" %(target_attr)s>গোপনীয়তা "
+"নীতি</a> সম্বন্ধে আরো জানুন৷\n"
+"              "
 
 #, python-format
 msgid ""
@@ -172,30 +179,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            এই ক্যোয়ারীর সঙ্গে মিলে যাওয়া অনুসন্ধান ফলাফল(গুলি) "
+"%(search_engine_name)s এ রয়েছে৷\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query)s'' এর কোনো ফলাফল পাওয়া যায়নি\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query_name)s\" এর ফলাফল (যে কোনো অবস্থান):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query)s\" এর অনুসন্ধান ফলাফল\n"
+"          "
 
 #, python-format
 msgid ""
@@ -204,7 +225,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          এর অনুরুপ রেকর্ডগুলি: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -365,7 +386,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  আপনার লেখা ইমেল ঠিকানাটি বৈধ নয়।\n"
 "  "
 
 msgid ""
@@ -388,7 +409,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  আপনার নোট পোস্ট করতে দয়া করে আপনার ইমেল ঠিকানাটি নীচে প্রবেশ করুন এবং "
+"  আপনার নোট পোস্ট করতে দয়া করে আপনার ইমেল ঠিকানাটি নিচে প্রবেশ করুন এবং "
 "আপনি যে নিশ্চয়তার লিঙ্কটি পাবেন তা অনুসরণ করুন৷\n"
 "  "
 
@@ -575,9 +596,11 @@ msgstr "এখন থেকে প্রায় ৬ মাস ( ১৮০ দ�
 msgid "About Google Person Finder"
 msgstr "Google ব্যক্তি অনুসন্ধন সম্পর্কে"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "%(person_name)s এর একটি রেকর্ড যোগ করা হয়েছে"
 
 msgid "Age"
 msgstr "বয়স"
@@ -587,9 +610,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"ব্যক্তি অনুসন্ধানে ঢোকানো সমস্ত ডেটা সার্বজনীনভাবে উপলব্ধ হয় এবং যে কোনো "
+"ব্যক্তি ব্যবহার করতে পারবেন৷ Google এই ডেটার সঠিকতা পর্যালোচনা বা যাচাই "
+"করে না google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "বিকল্প পদবিগুলি"
@@ -657,8 +680,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"পরিষেবার শর্তাবলি দেখতে এখানে ক্লিক করুন (আলাদা সাইট; স্বাভাবিক সংযোগের "
+"ফি লাগতে পারে)"
 
 msgid "Click here to view results."
 msgstr "ফলাফল দেখতে এখানে ক্লিক করুন৷"
@@ -669,8 +692,11 @@ msgstr "উইন্ডো বন্ধ করুন"
 msgid "Compare these records"
 msgstr "এই রেকর্ডগুলির তুলনা করুন"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "যোগাযোগের তথ্য"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "আপনার সাইটে এই সরঞ্জামটি রাখতে নিম্নলিখিত HTML কোডটি কপি করুন এবং আটকান"
@@ -733,8 +759,9 @@ msgstr "ইমেল ঠিকানা"
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "ইমেল ঠিকানা"
 
 msgid "Embedding the Application"
 msgstr "অ্যাপ্লিকেশানটি এম্বেড করা হচ্ছে"
@@ -762,23 +789,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"মেয়াদ শেষের তারিখ %(extension_days)s দিন বাড়ান\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "ফোন নম্বরটির অনুসন্ধানের ফলাফল পাওয়া গেল না।"
 
 msgid "Family name"
 msgstr "পদবি"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "পারিবারিক নাম (আবশ্যক)"
 
 msgid "Feed of updates about this person"
 msgstr "এই ব্যক্তি সম্পর্কে আপডেটগুলির ফিড"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "প্রতিক্রিয়া"
 
 msgid "Follow this link to create a new record"
 msgstr "একটি নতুন রেকর্ড তৈরি করতে এই লিঙ্কটি অনুসরণ করুন"
@@ -792,7 +822,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "এর থেকে: %(home_location)s"
 
 msgid "Full name"
 msgstr "সম্পূর্ণ নাম"
@@ -801,7 +831,7 @@ msgid "Given name"
 msgstr "ব্যক্তির নাম"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "প্রদত্ত নাম (আবশ্যক)"
 
 msgid "Google Person Finder"
 msgstr "Google ব্যক্তি অনুসন্ধন"
@@ -832,8 +862,10 @@ msgstr "বাড়ির ঠিকানা"
 msgid "Home country"
 msgstr "নিজের দেশ"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "বাড়ির অবস্থান"
 
 msgid "How can this person be reached now?"
 msgstr "কিভাবে এই ব্যক্তির কাছে এখন যাওয়া যেতে পারে?"
@@ -842,7 +874,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "এই ব্যক্তির প্রতি আগ্রহী অন্যান্যরা কিভাবে আপনার সঙ্গে যোগাযোগ করতে পারবেন"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "আমার কাছে এই ব্যক্তির সম্পর্কে তথ্য রয়েছে"
 
 msgid "I am seeking information"
 msgstr "আমি তথ্য খুজঁছি"
@@ -877,11 +909,17 @@ msgstr "আমি স্প্যাম পেয়েছি৷"
 msgid "I prefer not to specify."
 msgstr "নির্দিষ্ট না করতে আমি পছন্দ করি৷"
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "আমি নিজের তথ্য দিতে চাই"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "আমি অন্য কারোর তথ্য দিতে চাই"
 
 msgid "I'm looking for someone"
 msgstr "আমি কাউকে খুঁজছি"
@@ -965,13 +1003,19 @@ msgstr "নিখোঁজ ব্যক্তির বর্তমান ফো
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "এতে আরো: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "রেকর্ডের উৎস সম্পর্কে আরো তথ্য"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "ব্যক্তির স্থিতি সম্পর্কে আরো তথ্য"
 
 #, python-format
 msgid ""
@@ -981,8 +1025,11 @@ msgstr ""
 "বিকাশকারীদের জন্য এখন আরো তথ্য %(link_end_html)s এখানে "
 "%(developers_link_html)s পাওয়া যাবে৷"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "ব্যক্তিকে চিহ্নিত করার সম্পর্কে আরো তথ্য"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -995,13 +1042,16 @@ msgid "Name"
 msgstr "নাম"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "নাম (প্রয়োজনীয়)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "নাম প্রয়োজন৷  দয়া করে ফিরে যান এবং আবার চেষ্টা করুন৷"
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "নাম বা মোবাইল ফোন নম্বর (প্রয়োজন)"
 
 msgid "Neighborhood"
 msgstr "খুব পরিচিত ক্ষেত্র"
@@ -1024,7 +1074,7 @@ msgid "No notes have been posted"
 msgstr "কোনো নোট পোস্ট করা হয়নি"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "কোন ব্যক্তি আইডি নির্দিষ্ট ছিল না৷"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1032,7 +1082,7 @@ msgstr "ID সহ কোনো ব্যক্তি নেই:%(id_str)s"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "এর জন্য কোনো ফলাফল পাওয়া যায়নি: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "এমন কোনো অনুমোদনের অস্তিত্ব নেই৷"
@@ -1099,8 +1149,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"অনুগ্রহ করে মনে রাখবেন: ঢোকানো সমস্ত ডেটা সার্বজনীনভাবে উপলব্ধ হবে এবং যে"
+" কোনো ব্যক্তি ব্যবহার করতে পারবেন৷ Google এই ডেটার সঠিকতা পর্যালোচনা বা "
+"যাচাই করে না৷"
 
 msgid "Person Finder"
 msgstr "ব্যক্তি অনুসন্ধন"
@@ -1115,7 +1166,7 @@ msgid "Photo"
 msgstr "ফটো"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "ফটো (আলাদা সাইট; স্বাভাবিক সংযোগের ফি লাগতে পারে)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1131,8 +1182,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"দুর্যোগের পর এই ব্যক্তির সঙ্গে আপনার যোগাযোগ হয়েছিল কিনা চেক করুন, অথবা "
+"\"এই ব্যক্তির স্থিতি\" ক্ষেত্রটি পরিবর্তন করুন৷"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1208,7 +1259,7 @@ msgid "Remove"
 msgstr "সরান"
 
 msgid "Report spam"
-msgstr "স্প্যাম প্রতিবেদন করুন"
+msgstr "স্প্যাম অভিযোগ করুন"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1255,7 +1306,7 @@ msgid "Sign out"
 msgstr "প্রস্থান করুন"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "এড়িয়ে যান"
 
 msgid "Someone has received information that this person is alive"
 msgstr "এই ব্যক্তি জীবিত কেউ কেউ এমন তথ্য পেয়েছে"
@@ -1270,7 +1321,7 @@ msgid "Someone is seeking information about this person"
 msgstr "কেউ একজন এই ব্যক্তির সম্পর্কে তথ্য খুঁজছে"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "রেকর্ডের উৎস"
 
 msgid "Source of this record"
 msgstr "এই রেকর্ডটির উৎস"
@@ -1280,13 +1331,13 @@ msgstr "স্থিতি"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s এর স্থিতি "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "ব্যক্তির স্থিতি"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "এই ব্যক্তিটির স্থিতি:"
 
 msgid "Street name"
 msgstr "রাস্তার নাম"
@@ -1294,11 +1345,13 @@ msgstr "রাস্তার নাম"
 msgid "Street name only, no number"
 msgstr "কেবলমাত্র রাস্তার নাম, কোনো নম্বর নয়"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "রাস্তার নাম, খুব পরিচিত ক্ষেত্র, শহর, ইত্যাদি।"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "জমা দিন"
 
 msgid "Subscribe"
 msgstr "সদস্যতা নিন"
@@ -1310,8 +1363,11 @@ msgstr "%(full_name)s সম্পর্কে আপডেটগুলিতে
 msgid "Subscribe to updates about this person"
 msgstr "এই ব্যক্তি সম্পর্কে আপডেটগুলি জানতে এটা টিক করুন"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "আপনার রেকর্ড সম্পর্কে আপডেটগুলিতে সদস্যতা নিন"
 
 msgid "Switch to address"
 msgstr "ঠিকানাতে স্যুইচ করুন"
@@ -1343,7 +1399,7 @@ msgstr "এই লেখক এই রেকর্ডটির জন্য স�
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s এর জন্য নোট যোগ করা হয়েছে"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "প্রদত্ত চিত্রটি অত্যন্ত বড়৷ দয়া করে একটি ছোট চিত্র আপলোড করুন৷"
@@ -1356,7 +1412,7 @@ msgstr "রেকর্ডটি বাড়ানো যাবে না৷"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s এর জন্য রেকর্ড নথিভুক্ত করা হয়েছে"
 
 msgid "The record has been deleted."
 msgstr "রেকর্ডটি মুছে ফেলা হয়েছে৷"
@@ -1505,10 +1561,10 @@ msgid "Upload person records in CSV format"
 msgstr "ব্যক্তির রেকর্ডগুলিকে CSV ফর্ম্যাটে আপলোড করুন"
 
 msgid "Upload your CSV file below"
-msgstr "নীচে আপনার CSV ফাইল আপলোড করুন"
+msgstr "নিচে আপনার CSV ফাইল আপলোড করুন"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "বর্তমান অবস্থান ব্যবহার করুন"
 
 msgid "View the record"
 msgstr "রেকর্ডটি দেখুন"
@@ -1519,11 +1575,16 @@ msgstr "আমরা আপনার অনুসন্ধানের সাথ
 msgid "When should this record disappear?"
 msgstr "কখন এই রেকর্ডটির অদৃশ্য হওয়া উচিত?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "এই তথ্য কোথায় থেকে এসেছে?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "এই রেকর্ডটি কোথা থেকে এসেছে?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1539,11 +1600,17 @@ msgstr ""
 "পরীক্ষামূলক মোড কার্যকরী হলেও, ৬ ঘন্টার বেশি পুরানো রেকর্ডগুলি মেয়াদ শেষ"
 " হওয়ার তারিখ নির্বিশেষে মুছে ফেলা হবে৷"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "আপনি কাকে খুঁজছেন"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "আপনার কাছে কার তথ্য রয়েছে"
 
 msgid "Yes"
 msgstr "হ্যাঁ"
@@ -1594,8 +1661,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"আপনি এখানে আপনার ই-মেল ঠিকানা লিখে %(full_name)s এর সম্বন্ধে আপডেটগুলি "
+"পাওয়ার জন্য গ্রাহক হতে পারেন"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1624,7 +1691,7 @@ msgid "Your email"
 msgstr "আপনার ইমেল"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "আপনার নাম (আবশ্যক)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1695,11 +1762,15 @@ msgstr ""
 "[ব্যক্তি অনুসন্ধন] %(full_name)s এর জন্য আপনি স্থিতি আপডেটগুলিতে সদস্যতা "
 "নিয়েছেন"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "যেমন, উইল স্মিথ, উইল বা স্মিথ"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "আলাদা সাইট; স্বাভাবিক সংযোগের ফি লাগতে পারে"
 
 msgid "female"
 msgstr "স্ত্রী"

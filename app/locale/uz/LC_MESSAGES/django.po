@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -150,9 +150,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s ta yozuv belgilandi\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -161,6 +163,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Google <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>maxfiylik siyosati</a>\n"
+"                haqida batafsil ma’lumot.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -170,30 +177,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s so‘rovingiz bo‘yicha quyidagi "
+"natija(lar)ni topdi.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            “%(query)s” so‘rovi bo‘yicha hech narsa topilmadi\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            “%(query_name)s” uchun natijalar (hamma joy):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            “%(query)s” uchun qidiruv natijalari\n"
+"          "
 
 #, python-format
 msgid ""
@@ -202,7 +223,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Quyidagiga o‘xshash yozuvlar: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -363,7 +384,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Siz kiritgan e-pochta manzili yaroqsiz.\n"
 "  "
 
 msgid ""
@@ -573,9 +594,11 @@ msgstr "Taxminan 6 oy (180 kun) ichida"
 msgid "About Google Person Finder"
 msgstr "\"Google odam izlovchi\" xizmati haqida"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "%(person_name)s haqida yozuv qo‘shildi"
 
 msgid "Age"
 msgstr "Yosh"
@@ -585,9 +608,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Barcha kiritilgan ma’lumotlar hammaga ko‘rinadi. Google bu "
+"ma’lumotlarning aniqligini tekshirmaydi "
+"(google.org/personfinder/global/tos)"
 
 msgid "Alternate family names"
 msgstr "Muqobil familiyalar"
@@ -658,8 +681,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Foydalanish shartlarini (tashqi sayt; trafik uchun to‘lov olinishi "
+"mumkin) ko‘rish uchun bu yerga bosing"
 
 msgid "Click here to view results."
 msgstr "Natijalarni ko‘rish uchun bu yerga bosing."
@@ -670,8 +693,11 @@ msgstr "Oynani yopish"
 msgid "Compare these records"
 msgstr "Ushbu yozuvlarni solishtirish"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Kontakt ma’lumoti"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Quyidagi HTML koddan nusxa ko‘chirib, saytingizga joylashtiring"
@@ -736,8 +762,9 @@ msgstr "E-pochta manzili"
 msgid "Edit"
 msgstr "Tahrirlash"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "E-pochta manzili"
 
 msgid "Embedding the Application"
 msgstr "Biritktirilgan ilova dastur"
@@ -765,23 +792,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Muddatni %(extension_days)s kunga uzaytirish\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Bu telefon raqami bo‘yicha qidiruv natijalarini olib bo‘lmadi."
 
 msgid "Family name"
 msgstr "Familiyasi"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Familiyasi (majburiy)"
 
 msgid "Feed of updates about this person"
 msgstr "Ushbu shaxs haqidagi yangiliklar tasmasi"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Fikr-mulohaza"
 
 msgid "Follow this link to create a new record"
 msgstr "Yangi yozuv yaratish uchun quyidagi linkni bosing"
@@ -795,7 +825,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Manzili: %(home_location)s"
 
 msgid "Full name"
 msgstr "To‘liq ism-sharifi"
@@ -804,7 +834,7 @@ msgid "Given name"
 msgstr "Ismi"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Ismi (majburiy)"
 
 msgid "Google Person Finder"
 msgstr "Google odam izlovchi"
@@ -835,8 +865,10 @@ msgstr "Uy manzili"
 msgid "Home country"
 msgstr "Vatani"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Uy manzili"
 
 msgid "How can this person be reached now?"
 msgstr "Bu odam bilan hozir qanday bog‘lansa bo‘ladi?"
@@ -845,7 +877,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Bu odam bilan qiziqayotganlar siz bilan qanday bog‘lansa bo‘ladi?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Menda bu odam haqida ma’lumot bor"
 
 msgid "I am seeking information"
 msgstr "Men ma'lumot izlayapman"
@@ -880,11 +912,17 @@ msgstr "Men spam qabul qildim."
 msgid "I prefer not to specify."
 msgstr "Sababini ko‘rsatishni xohlamayman."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "O‘zim haqimda ma’lumot kiritmoqchiman"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Boshqa kishi haqida ma’lumot kiritmoqchiman"
 
 msgid "I'm looking for someone"
 msgstr "Men bir odamni izlayapman"
@@ -969,13 +1007,19 @@ msgstr "Qidirilayotgan odamning hozirgi telefon raqami"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Batafsil bu yerda: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Yozuv manbasi haqida batafsil ma’lumot"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Shaxsning holati haqida boshqa ma’lumotlar"
 
 #, python-format
 msgid ""
@@ -985,8 +1029,11 @@ msgstr ""
 "Dasturchilar uchun ko‘proq ma'lumot %(developers_link_html)smana bu "
 "yerda%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Shaxsni aniqlash uchun boshqa ma’lumotlar"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -999,13 +1046,16 @@ msgid "Name"
 msgstr "Ism"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Ism (to‘ldirilishi shart)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Ism to‘ldirilishi shart.  Orqaga qayting va qaytadan urinib ko‘ring."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Ismi yoki mobil telefon raqami (majburiy)"
 
 msgid "Neighborhood"
 msgstr "Tuman:"
@@ -1028,7 +1078,7 @@ msgid "No notes have been posted"
 msgstr "Eslatmalar kiritilmagan."
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Shaxsni tasdiqlovchi identifikator ko‘rsatilmagan."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1036,7 +1086,7 @@ msgstr "%(id_str)s nomli shaxs mavjud emas."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Quyidagi bo‘yicha hech narsa topilmadi: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Bunday tasdiqdan o‘tgan kishi yo‘q."
@@ -1103,8 +1153,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ESDA TUTING: Barcha kiritilgan ma’lumotlar hammaga ko‘rinadi. Google bu "
+"ma’lumotlarning aniqligini tekshirmaydi."
 
 msgid "Person Finder"
 msgstr "Odam izlovchi"
@@ -1119,7 +1169,7 @@ msgid "Photo"
 msgstr "Fotosurat"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Surat (tashqi sayt; trafik uchun to‘lov olinishi mumkin)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1135,8 +1185,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Falokatdan keyin bu odam bilan aloqaga chiqqaningizni belgilang yoki “Bu "
+"odamning holati” maydonchasiga o‘zgartirish kiriting."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1259,7 +1309,7 @@ msgid "Sign out"
 msgstr "Chiqish"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "O‘tkazib yuborish"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Kimdir bu odamning tirikligi haqidagi xabarni olgan"
@@ -1274,7 +1324,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Kimdir bu odam haqidagi ma'lumotlarni izlamoqda"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Yozuvlar manbasi"
 
 msgid "Source of this record"
 msgstr "Yozuv manbasi"
@@ -1284,13 +1334,13 @@ msgstr "Holati"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s holati "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Odamning holati"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Bu odamning holati:"
 
 msgid "Street name"
 msgstr "Ko‘cha nomi"
@@ -1298,11 +1348,13 @@ msgstr "Ko‘cha nomi"
 msgid "Street name only, no number"
 msgstr "Ko‘cha nomi xolos, raqam kerak emas"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Ko‘cha nomi, mahalla, shahar va h.k."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Yuborish"
 
 msgid "Subscribe"
 msgstr "Obuna bo‘lish"
@@ -1314,8 +1366,11 @@ msgstr "%(full_name)s haqidagi yangiliklarga obuna bo‘lish"
 msgid "Subscribe to updates about this person"
 msgstr "Ushbu odam haqidagi yangiliklarga obuna bo‘lish"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Bu yozuv haqidagi yangiliklarga obuna bo‘lish"
 
 msgid "Switch to address"
 msgstr "Manzilni almashtirish"
@@ -1347,7 +1402,7 @@ msgstr "Muallif ushbu yozuv holati yangilanishlarini o‘chirib qo‘ygan."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s uchun eslatma qo‘shildi"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ko‘rsatlgan rasm hajmi juda katta. Kichikroq hajmdagi rasm yuklang."
@@ -1360,7 +1415,7 @@ msgstr "Yozuv muddatini uzaytirib bo‘lmaydi."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s uchun yozuv ro‘yxatga olindi"
 
 msgid "The record has been deleted."
 msgstr "Yozuv o‘chirildi."
@@ -1514,7 +1569,7 @@ msgid "Upload your CSV file below"
 msgstr "CSV fayni yuklash"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Joriy manzildan foydalanish"
 
 msgid "View the record"
 msgstr "Yozuvni ko‘rish"
@@ -1525,11 +1580,16 @@ msgstr "So‘rovingiz bo‘yicha hech narsa topa olmadik."
 msgid "When should this record disappear?"
 msgstr "Ushbu yozuv qachon olib tashlansin?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Bu ma'lumot qayerdan olingan?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Bu qayd qayerdan olingan?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1545,11 +1605,17 @@ msgstr ""
 "Sinov usulida bo‘lganda 6 soatdan ‘ yozuvlar muddatidan qat'iy nazar "
 "o'chib ketadi."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Kimni qidiryapsiz"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Sizda kim haqida ma’lumot bor"
 
 msgid "Yes"
 msgstr "Ha"
@@ -1602,8 +1668,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"%(full_name)s haqidagi yangiliklarga obuna bo‘lish uchun bu yerga "
+"e-pochtangiz manzilini kiriting."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1632,7 +1698,7 @@ msgid "Your email"
 msgstr "E-pochta manzilingiz"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Ismingiz (majburiy)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1702,11 +1768,15 @@ msgstr ""
 "[Odam izlovchi] Siz %(full_name)s uchun holat yangilanishlariga obuna "
 "bo‘ldingiz."
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "masalan, Abror Qodirov, Abror yoki Qodirov"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "tashqi sayt; trafik uchun to‘lov olinishi mumkin"
 
 msgid "female"
 msgstr "ayol"

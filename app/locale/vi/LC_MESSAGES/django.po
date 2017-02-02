@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -147,9 +147,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Đã chọn %(dup_count)s hồ sơ\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -158,6 +160,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Tìm hiểu thêm về\n"
+"                <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Chính "
+"sách bảo mật</a> của Google.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -167,30 +174,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s có (các) kết quả tìm kiếm khớp với "
+"truy vấn này.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Không tìm thấy kết quả nào cho: \"%(query)s\"\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Kết quả cho \"%(query_name)s\" (bất kỳ vị trí nào):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Kết quả tìm kiếm cho: \"%(query)s\"\n"
+"          "
 
 #, python-format
 msgid ""
@@ -199,7 +220,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Hồ sơ tương tự với: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -359,7 +380,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Địa chỉ email bạn đã nhập không hợp lệ.\n"
 "  "
 
 msgid ""
@@ -568,9 +589,11 @@ msgstr "Khoảng 6 tháng (180 ngày) kể từ bây giờ"
 msgid "About Google Person Finder"
 msgstr "Giới thiệu về Công cụ tìm kiếm người thân của Google"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Đã thêm bản ghi cho: %(person_name)s"
 
 msgid "Age"
 msgstr "Tuổi"
@@ -580,9 +603,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Tất cả dữ liệu đã nhập vào Tìm kiếm người thân sẽ được công khai và bất "
+"kỳ ai cũng có thể sử dụng dữ liệu đó. Google không đánh giá hay xác minh "
+"tính chính xác của dữ liệu này google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Họ thay thế"
@@ -650,8 +673,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Nhấp vào đây để xem điều khoản dịch vụ (trang web bên ngoài; có thể tính "
+"phí kết nối bình thường)"
 
 msgid "Click here to view results."
 msgstr "Nhấp vào đây để xem kết quả."
@@ -662,8 +685,11 @@ msgstr "Đóng cửa sổ"
 msgid "Compare these records"
 msgstr "So sánh các hồ sơ này"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Thông tin liên hệ"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
@@ -724,8 +750,9 @@ msgstr "Địa chỉ email"
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Địa chỉ email"
 
 msgid "Embedding the Application"
 msgstr "Nhúng Ứng dụng"
@@ -753,23 +780,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Gia hạn thêm %(extension_days)s ngày\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Không nhận được kết quả tìm kiếm cho số điện thoại."
 
 msgid "Family name"
 msgstr "Họ"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Tên gia đình (bắt buộc)"
 
 msgid "Feed of updates about this person"
 msgstr "Nguồn cấp dữ liệu của các cập nhật về người này"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Phản hồi"
 
 msgid "Follow this link to create a new record"
 msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
@@ -783,7 +813,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Từ: %(home_location)s"
 
 msgid "Full name"
 msgstr "Họ và tên"
@@ -792,7 +822,7 @@ msgid "Given name"
 msgstr "Tên"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Tên thánh (bắt buộc)"
 
 msgid "Google Person Finder"
 msgstr "Công cụ tìm kiếm người thân của Google"
@@ -821,8 +851,10 @@ msgstr "Địa chỉ nhà riêng"
 msgid "Home country"
 msgstr "Quê hương"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Địa chỉ nhà"
 
 msgid "How can this person be reached now?"
 msgstr "Hiện có thể liên lạc với người này bằng cách nào?"
@@ -831,7 +863,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Tôi có thông tin về người này"
 
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
@@ -866,11 +898,17 @@ msgstr "Tôi đã nhận được spam."
 msgid "I prefer not to specify."
 msgstr "Tôi không muốn chỉ rõ."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Tôi muốn nhập thông tin của riêng mình"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Tôi muốn nhập thông tin của người khác"
 
 msgid "I'm looking for someone"
 msgstr "Tôi đang tìm kiếm một người"
@@ -954,13 +992,19 @@ msgstr "Số điện thoại hiện tại của người bị mất tích"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Xem thêm tại: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Thêm thông tin về nguồn bản ghi"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Thêm thông tin về trạng thái cá nhân"
 
 #, python-format
 msgid ""
@@ -970,8 +1014,11 @@ msgstr ""
 "Hiện có thể tìm thêm thông tin dành cho nhà phát triển "
 "%(developers_link_html)stại đây%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Thêm thông tin để nhận dạng cá nhân"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -984,13 +1031,16 @@ msgid "Name"
 msgstr "Tên"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Tên (bắt buộc)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Bắt buộc phải có tên. Vui lòng quay lại và thử lại."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Tên hoặc số điện thoại di động (bắt buộc)"
 
 msgid "Neighborhood"
 msgstr "Vùng lân cận"
@@ -1015,7 +1065,7 @@ msgid "No notes have been posted"
 msgstr "Chưa có ghi chú nào được đăng"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Không có id cá nhân nào được xác định."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1023,7 +1073,7 @@ msgstr "Không có người nào có ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Không tìm thấy kết quả nào cho: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Không có tổ chức ủy quyền như vậy."
@@ -1090,8 +1140,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"XIN LƯU Ý: Tất cả dữ liệu đã nhập sẽ được công khai và bất kỳ ai cũng có "
+"thể sử dụng dữ liệu đó. Google không đánh giá hay xác minh tính chính xác"
+" của dữ liệu này."
 
 msgid "Person Finder"
 msgstr "Công cụ tìm kiếm người thân"
@@ -1106,7 +1157,7 @@ msgid "Photo"
 msgstr "Ảnh"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Ảnh (trang web bên ngoài; có thể tính phí kết nối bình thường)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1120,8 +1171,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Vui lòng kiểm tra rằng bạn đã liên lạc với người này sau thảm họa hoặc "
+"thay đổi trường \"Tình trạng của người này\"."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1244,7 +1295,7 @@ msgid "Sign out"
 msgstr "Đăng xuất"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Bỏ qua"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
@@ -1259,7 +1310,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Một người nào đó đang tìm kiếm thông tin về người này"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Nguồn hồ sơ"
 
 msgid "Source of this record"
 msgstr "Nguồn của hồ sơ này"
@@ -1269,13 +1320,13 @@ msgstr "Tình trạng"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Tình trạng của %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Tình trạng cá nhân"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Tình trạng của người này:"
 
 msgid "Street name"
 msgstr "Tên phố"
@@ -1283,11 +1334,13 @@ msgstr "Tên phố"
 msgid "Street name only, no number"
 msgstr "Chỉ tên phố, không có số"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Tên đường, khu phố, thành phố, v.v."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Gửi"
 
 msgid "Subscribe"
 msgstr "Đăng ký"
@@ -1299,8 +1352,11 @@ msgstr "Đăng ký các cập nhật về %(full_name)s"
 msgid "Subscribe to updates about this person"
 msgstr "Đăng ký các cập nhật về người này"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Đăng ký nhận cập nhật về bản ghi của bạn"
 
 msgid "Switch to address"
 msgstr "Chuyển sang địa chỉ"
@@ -1330,7 +1386,7 @@ msgstr "Tác giả đã tắt cập nhật tình trạng trên hồ sơ này."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Đã thêm ghi chú cho %(full_name)s"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ảnh đã cung cấp quá lớn. Hãy tải lên một ảnh nhỏ hơn."
@@ -1343,7 +1399,7 @@ msgstr "Không thể gia hạn hồ sơ."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Đã đăng ký hồ sơ cho %(full_name)s"
 
 msgid "The record has been deleted."
 msgstr "Hồ sơ này đã bị xóa."
@@ -1493,7 +1549,7 @@ msgid "Upload your CSV file below"
 msgstr "Tải lên tệp CSV của bạn ở bên dưới"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Sử dụng vị trí hiện tại"
 
 msgid "View the record"
 msgstr "Xem hồ sơ"
@@ -1504,11 +1560,16 @@ msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạ
 msgid "When should this record disappear?"
 msgstr "Khi nào hồ sơ này sẽ biến mất?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Thông tin này lấy từ đâu?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Bản ghi này đến từ đâu?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1524,11 +1585,17 @@ msgstr ""
 "Trong khi chế độ thử nghiệm đang còn hiệu lực, các hồ sơ kéo dài hơn 6 "
 "giờ sẽ bị xóa bất kể ngày kết hạn."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Người bạn đang tìm kiếm"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Người bạn có thông tin"
 
 msgid "Yes"
 msgstr "Có"
@@ -1579,8 +1646,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Bạn có thể đăng ký nhận cập nhật về %(full_name)s bằng cách nhập địa chỉ "
+"e-mail của mình tại đây"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1609,7 +1676,7 @@ msgid "Your email"
 msgstr "Email của bạn"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Tên của bạn (bắt buộc)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1682,11 +1749,15 @@ msgstr ""
 "[Công cụ tìm kiếm người thân] Bạn đã được đăng ký nhận thông tin cập nhật"
 " về tình trạng cho %(full_name)s"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "e.g., Will Smith, Will hoặc Smith"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "trang web bên ngoài; có thể tính phí kết nối bình thường"
 
 msgid "female"
 msgstr "nữ"

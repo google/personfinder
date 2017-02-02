@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -143,9 +143,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s개 기록 선택됨\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -154,6 +156,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Google <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>개인정보처리방침</a>에 관해\n"
+"            자세히 알아보세요.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -163,30 +170,43 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s에 이 검색어와 일치하는 검색결과가 있습니다.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            '%(query)s'에 관한 검색결과 없음\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            '%(query_name)s'에 관한 검색결과(모든 위치)\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            '%(query)s'에 관한 검색결과\n"
+"          "
 
 #, python-format
 msgid ""
@@ -195,7 +215,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          이름(%(full_name)s)이 유사한 기록\n"
 "        "
 
 #, python-format
@@ -345,7 +365,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  입력하신 이메일 주소가 잘못되었습니다.\n"
 "  "
 
 msgid ""
@@ -550,9 +570,11 @@ msgstr "약 6개월(180일) 후"
 msgid "About Google Person Finder"
 msgstr "Google 사람 찾기 정보"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "%(person_name)s님의 신상기록을 추가했습니다."
 
 msgid "Age"
 msgstr "나이"
@@ -562,9 +584,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"사람 찾기에 입력하는 모든 데이터는 공개되며 누구나 사용할 수 있습니다. Google은 이러한 데이터의 정확성을 검토하거나 확인하지"
+" 않습니다(google.org/personfinder/global/tos)."
 
 msgid "Alternate family names"
 msgstr "보조 성"
@@ -627,9 +648,7 @@ msgstr "시/군/구"
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
-msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+msgstr "여기를 클릭하여 서비스 약관 확인(외부 사이트, 일반 연결 요금이 적용될 수 있음)"
 
 msgid "Click here to view results."
 msgstr "결과를 보려면 여기를 클릭하세요."
@@ -640,8 +659,11 @@ msgstr "창 닫기"
 msgid "Compare these records"
 msgstr "신상기록 비교"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "연락처 정보"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하여 붙여넣으세요."
@@ -702,8 +724,9 @@ msgstr "이메일 주소"
 msgid "Edit"
 msgstr "수정"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "이메일 주소"
 
 msgid "Embedding the Application"
 msgstr "응용프로그램 퍼가기"
@@ -731,23 +754,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"만료일을 %(extension_days)s일 연장\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "입력하신 전화번호에 관한 검색결과를 가져올 수 없습니다."
 
 msgid "Family name"
 msgstr "성"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "성(필수)"
 
 msgid "Feed of updates about this person"
 msgstr "이 사람에 대한 업데이트 피드"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "의견"
 
 msgid "Follow this link to create a new record"
 msgstr "링크로 이동하여 새 신상기록 만들기"
@@ -759,7 +785,7 @@ msgstr "휴대전화가 아닌 일반 전화의 경우 NTT가 제공하는 171 �
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "거주지: %(home_location)s"
 
 msgid "Full name"
 msgstr "전체 이름"
@@ -768,7 +794,7 @@ msgid "Given name"
 msgstr "이름"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "이름(필수)"
 
 msgid "Google Person Finder"
 msgstr "Google 사람 찾기"
@@ -795,8 +821,10 @@ msgstr "집 주소"
 msgid "Home country"
 msgstr "출생 국가"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "집 위치"
 
 msgid "How can this person be reached now?"
 msgstr "이 사람에게 지금 연락할 수 있는 방법은 무엇입니까?"
@@ -805,7 +833,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "이 사람과 관련된 사람들이 내게 연락할 수 있도록 연락처를 남겨주세요."
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "이 사람에 대한 정보가 있습니다."
 
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
@@ -840,11 +868,17 @@ msgstr "스팸을 받았습니다."
 msgid "I prefer not to specify."
 msgstr "명시하고 싶지 않습니다."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "내 정보를 입력하려고 합니다."
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "다른 사람의 정보를 입력하려고 합니다."
 
 msgid "I'm looking for someone"
 msgstr "사람 찾기"
@@ -920,13 +954,19 @@ msgstr "실종자의 현재 전화번호"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "자세히 알아보기: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "신상기록 출처 정보 추가하기"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "개인 상태 정보 추가하기"
 
 #, python-format
 msgid ""
@@ -934,8 +974,11 @@ msgid ""
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr "개발자를 위한 추가 정보를 보려면 %(developers_link_html)s여기%(link_end_html)s를 참조하세요."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "개인 식별 정보 추가하기"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -946,13 +989,16 @@ msgid "Name"
 msgstr "이름"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "이름(필수 항목)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "이름 또는 휴대전화 번호(필수)"
 
 msgid "Neighborhood"
 msgstr "상세 주소 1"
@@ -975,7 +1021,7 @@ msgid "No notes have been posted"
 msgstr "게시된 메모가 없습니다."
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "지정된 사용자 ID가 없습니다."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -983,7 +1029,7 @@ msgstr "ID가 %(id_str)s인 사람이 없습니다."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "다음에 대한 검색결과 없음: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "해당 승인 항목이 없습니다."
@@ -1044,8 +1090,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"참고: 입력한 모든 데이터는 공개되며 누구나 사용할 수 있습니다. Google은 이러한 데이터의 정확성을 검토하거나 확인하지 "
+"않습니다."
 
 msgid "Person Finder"
 msgstr "사람 찾기"
@@ -1060,7 +1106,7 @@ msgid "Photo"
 msgstr "사진"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "사진(외부 사이트, 일반 연결 요금이 적용될 수 있음)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1073,9 +1119,7 @@ msgstr "신체적 특징"
 msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
-msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+msgstr "재난 발생 후 이 사람과 계속 연락이 되었는지 확인해 주세요. 또는 '이 사람의 상태' 입력란을 변경해 주세요."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1194,7 +1238,7 @@ msgid "Sign out"
 msgstr "로그아웃"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "건너뛰기"
 
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
@@ -1209,7 +1253,7 @@ msgid "Someone is seeking information about this person"
 msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "기록 출처"
 
 msgid "Source of this record"
 msgstr "이 신상기록의 출처"
@@ -1219,13 +1263,13 @@ msgstr "상태"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s의 상태 "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "이 사람의 상태"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "이 사람의 상태:"
 
 msgid "Street name"
 msgstr "상세 주소 2"
@@ -1233,11 +1277,13 @@ msgstr "상세 주소 2"
 msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "도로명, 지역, 시 등"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "제출"
 
 msgid "Subscribe"
 msgstr "수신"
@@ -1249,8 +1295,11 @@ msgstr "%(full_name)s님에 대한 소식 받기"
 msgid "Subscribe to updates about this person"
 msgstr "이 사람에 대한 소식 받기"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "내 신상기록 관련 업데이트 내용 구독"
 
 msgid "Switch to address"
 msgstr "주소로 전환"
@@ -1280,7 +1329,7 @@ msgstr "작성자가 이 신상기록에서 상태 업데이트를 사용 중지
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s 관련 메모가 추가되었습니다."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
@@ -1293,7 +1342,7 @@ msgstr "신상기록의 유효기간을 연장할 수 없습니다."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s 관련 기록이 등록되었습니다."
 
 msgid "The record has been deleted."
 msgstr "신상기록이 삭제되었습니다."
@@ -1431,7 +1480,7 @@ msgid "Upload your CSV file below"
 msgstr "아래 CSV 파일 업로드"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "현재 위치 사용"
 
 msgid "View the record"
 msgstr "신상기록 보기"
@@ -1442,11 +1491,16 @@ msgstr "일치하는 검색결과가 없습니다."
 msgid "When should this record disappear?"
 msgstr "이 신상기록의 만료일을 언제로 지정하시겠습니까?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "이 신상기록의 출처에 대해 알려주세요."
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "이 신상기록의 출처를 알려주세요."
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1458,11 +1512,17 @@ msgid ""
 "deleted regardless of the expiry date."
 msgstr "테스트 모드를 사용 중일 때 6시간이 경과한 신상기록은 만료일과 관계 없이 삭제됩니다."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "내가 찾는 사람"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "내가 관련 정보를 가진 사람"
 
 msgid "Yes"
 msgstr "예"
@@ -1512,9 +1572,7 @@ msgstr "삭제하기 전에 %(begin_tag)s신상기록을 확인%(end_tag)s할 �
 msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
-msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+msgstr "여기에 이메일 주소를 입력하여 %(full_name)s 관련 업데이트 내용을 구독하세요."
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1541,7 +1599,7 @@ msgid "Your email"
 msgstr "이메일"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "내 이름(필수)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1601,11 +1659,15 @@ msgstr "[Person Finder] %(full_name)s님 상태 업데이트"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Person Finder] %(full_name)s님에 대한 소식을 수신 신청했습니다."
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "예: 홍길동, 홍 또는 길동"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "외부 사이트, 일반 연결 요금이 적용될 수 있음"
 
 msgid "female"
 msgstr "여자"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -150,9 +150,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                Wybrane wpisy: %(dup_count)s\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -161,6 +163,10 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Więcej informacji o <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>Polityce prywatności</a> Google\n"
+"              "
 
 #, python-format
 msgid ""
@@ -170,30 +176,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s zawiera wyniki wyszukiwania pasujące "
+"do tego zapytania.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Brak wyników dla zapytania „%(query)s”\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Wyniki dla zapytania „%(query_name)s” (dowolna lokalizacja):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Wyniki wyszukiwania dla zapytania „%(query)s”\n"
+"          "
 
 #, python-format
 msgid ""
@@ -202,7 +222,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Wpisy podobne do: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -367,7 +387,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Podany adres e-mail jest nieprawidłowy.\n"
 "  "
 
 msgid ""
@@ -582,9 +602,11 @@ msgstr "Za około 6 miesięcy (180 dni) od teraz"
 msgid "About Google Person Finder"
 msgstr "O Lokalizatorze osób Google"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Dodano wpis o osobie %(person_name)s"
 
 msgid "Age"
 msgstr "Wiek"
@@ -594,8 +616,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Wszystkie dane wprowadzone do Lokalizatora osób są dostępne publicznie i "
+"każdy może z nich korzystać. Google nie sprawdza poprawności ani "
+"dokładności tych danych. Warunki usługi: "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -664,8 +687,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Kliknij tutaj, by zapoznać się z warunkami usługi (zewnętrzna strona "
+"internetowa; mogą być naliczane normalne opłaty za połączenie)"
 
 msgid "Click here to view results."
 msgstr "Kliknij tutaj, aby wyświetlić wyniki."
@@ -676,8 +699,11 @@ msgstr "Zamknij okno"
 msgid "Compare these records"
 msgstr "Porównaj te wpisy"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Informacje kontaktowe"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -742,8 +768,9 @@ msgstr "Adres e-mail"
 msgid "Edit"
 msgstr "Edytuj"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Adres e-mail"
 
 msgid "Embedding the Application"
 msgstr "Umieszczanie aplikacji na stronie"
@@ -771,23 +798,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Opóźnij datę wygaśnięcia o %(extension_days)s dni\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Nie udało się uzyskać wyników wyszukiwania numeru telefonu."
 
 msgid "Family name"
 msgstr "Nazwisko"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Nazwisko (wymagane)"
 
 msgid "Feed of updates about this person"
 msgstr "Kanał aktualizacji dotyczących tej osoby"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Prześlij opinię"
 
 msgid "Follow this link to create a new record"
 msgstr "Skorzystaj z tego linku, aby utworzyć nowy wpis"
@@ -801,7 +831,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Z: %(home_location)s"
 
 msgid "Full name"
 msgstr "Imię i nazwisko"
@@ -810,7 +840,7 @@ msgid "Given name"
 msgstr "Imię"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Imię (wymagane)"
 
 msgid "Google Person Finder"
 msgstr "Lokalizator osób Google"
@@ -839,8 +869,10 @@ msgstr "Adres domowy"
 msgid "Home country"
 msgstr "Kraj zamieszkania"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Lokalizacja domu"
 
 msgid "How can this person be reached now?"
 msgstr "Jak można teraz skontaktować się z tą osobą?"
@@ -849,7 +881,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Jak inni użytkownicy zainteresowani tą osobą mogą się z Tobą skontaktować?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Mam informacje o tej osobie"
 
 msgid "I am seeking information"
 msgstr "Szukam informacji"
@@ -884,11 +916,17 @@ msgstr "Wysłano mi spam"
 msgid "I prefer not to specify."
 msgstr "Wolę nie podawać"
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Chcę wpisać informacje o sobie"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Chcę wpisać informacje o innej osobie"
 
 msgid "I'm looking for someone"
 msgstr "Szukam kogoś"
@@ -970,13 +1008,19 @@ msgstr "Aktualny numer telefonu zaginionej osoby"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Więcej na: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Więcej informacji na temat źródła wpisu"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Więcej informacji na temat statusu osoby"
 
 #, python-format
 msgid ""
@@ -986,8 +1030,11 @@ msgstr ""
 "Więcej informacji dla programistów znajdziesz obecnie "
 "%(developers_link_html)stutaj%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Więcej informacji ułatwiających identyfikację osoby"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1000,13 +1047,16 @@ msgid "Name"
 msgstr "Imię i nazwisko"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Imię i nazwisko (wymagane)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Wymagane jest nazwisko. Wróć i spróbuj ponownie."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Imię i nazwisko lub numer telefonu komórkowego (wymagane)"
 
 msgid "Neighborhood"
 msgstr "Dzielnica lub obszar"
@@ -1031,7 +1081,7 @@ msgid "No notes have been posted"
 msgstr "Nie opublikowano żadnych notatek"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Nie podano identyfikatora osoby."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1039,7 +1089,7 @@ msgstr "Brak osoby o identyfikatorze %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Nie znaleziono żadnych wyników dla: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Brak takiego podmiotu autoryzacji."
@@ -1108,8 +1158,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"UWAGA: wszystkie dane wprowadzone do Lokalizatora osób są dostępne "
+"publicznie i każdy może z nich korzystać. Google nie sprawdza poprawności"
+" ani dokładności tych danych."
 
 msgid "Person Finder"
 msgstr "Lokalizator osób"
@@ -1124,7 +1175,9 @@ msgid "Photo"
 msgstr "Zdjęcie"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Zdjęcie (zewnętrzna strona internetowa; mogą być naliczane normalne "
+"opłaty za połączenie)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1138,8 +1191,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Zaznacz opcję informującą, że udało Ci się skontaktować z daną osobą po "
+"katastrofie, lub zmień zawartość pola „Stan tej osoby”."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1179,7 +1232,7 @@ msgid "Posted by"
 msgstr "Opublikowane przez użytkownika"
 
 msgid "Proceed"
-msgstr "Kontynuuj"
+msgstr "Dalej"
 
 msgid "Profile Pages"
 msgstr "Strony profilów"
@@ -1262,7 +1315,7 @@ msgid "Sign out"
 msgstr "Wyloguj się"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Pomiń"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Ktoś otrzymał informacje, że ta osoba żyje"
@@ -1277,7 +1330,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Ktoś szuka informacji o tej osobie"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Źródło wpisu"
 
 msgid "Source of this record"
 msgstr "Źródło wpisu"
@@ -1287,13 +1340,13 @@ msgstr "Stan"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s – stan tej osoby "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Stan osoby"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Stan tej osoby:"
 
 msgid "Street name"
 msgstr "Ulica"
@@ -1301,11 +1354,13 @@ msgstr "Ulica"
 msgid "Street name only, no number"
 msgstr "Tylko ulica, bez numeru"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Nazwa ulicy, osiedle, miejscowość itd."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Prześlij"
 
 msgid "Subscribe"
 msgstr "Subskrybuj"
@@ -1317,8 +1372,11 @@ msgstr "Zasubskrybuj aktualizacje dotyczące osoby %(full_name)s"
 msgid "Subscribe to updates about this person"
 msgstr "Zasubskrybuj aktualizacje dotyczące tej osoby"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Zasubskrybuj aktualizacje dotyczące Twojego wpisu"
 
 msgid "Switch to address"
 msgstr "Przełącz na adres"
@@ -1348,7 +1406,7 @@ msgstr "Autor wyłączył aktualizacje stanu tego wpisu."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Dodano notatkę o: %(full_name)s"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Udostępnione zdjęcie jest zbyt duże. Prześlij mniejsze."
@@ -1361,7 +1419,7 @@ msgstr "Nie można przedłużyć ważności wpisu."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Zarejestrowano wpis o: %(full_name)s"
 
 msgid "The record has been deleted."
 msgstr "Wpis został usunięty."
@@ -1506,7 +1564,7 @@ msgid "Upload your CSV file below"
 msgstr "Prześlij poniżej plik CSV"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Użyj bieżącej lokalizacji"
 
 msgid "View the record"
 msgstr "Wyświetl wpis"
@@ -1517,11 +1575,16 @@ msgstr "Brak pasujących wyników wyszukiwania."
 msgid "When should this record disappear?"
 msgstr "Kiedy ten wpis powinien zniknąć?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Skąd pochodzą te informacje?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Skąd pochodzi ten rekord?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1537,11 +1600,17 @@ msgstr ""
 "Podczas pracy w trybie testowym wpisy starsze niż 6 godzin są usuwane bez"
 " względu na datę wygaśnięcia."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Kogo szukasz"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "O kim masz informacje"
 
 msgid "Yes"
 msgstr "Tak"
@@ -1592,8 +1661,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Aby zasubskrybować powiadomienia o tej osobie (%(full_name)s), podaj tu "
+"swój adres e-mail"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1622,7 +1691,7 @@ msgid "Your email"
 msgstr "Twój adres e-mail"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Twoje imię i nazwisko (wymagane)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1699,11 +1768,17 @@ msgstr "[Lokalizator osób] Aktualizacja stanu osoby %(full_name)s"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Lokalizator osób] Subskrybujesz aktualizacje stanu osoby %(full_name)s"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "np. Jan Kowalski, Jan lub Kowalski"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr ""
+"zewnętrzna strona internetowa; mogą być naliczane normalne opłaty za "
+"połączenie"
 
 msgid "female"
 msgstr "Kobieta"

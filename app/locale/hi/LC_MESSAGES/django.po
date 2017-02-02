@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -153,9 +153,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s रिकॉर्ड का चयन किया गया\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -164,6 +166,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Google\n"
+"                <a href=\"%(privacy_policy_url)s\" %(target_attr)s>निजता "
+"नीति</a> के बारे में और जानें.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -173,30 +180,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s में इस क्वेरी से मेल खाने वाला (वाले) "
+"खोज परिणाम है(हैं).\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            इसके लिए कोई परिणाम नहीं मिला: \"%(query)s\"\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query_name)s\" के लिए परिणाम (कोई भी स्थान):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            इसके लिए खोज परिणाम: \"%(query)s\"\n"
+"          "
 
 #, python-format
 msgid ""
@@ -205,7 +226,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          निम्न के समान रिकॉर्ड: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -365,7 +386,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  आपके द्वारा डाला गया ईमेल पता मान्य नहीं है.\n"
 "  "
 
 msgid ""
@@ -580,9 +601,11 @@ msgstr "अब से लगभग 6 महीने (180 दिन) में"
 msgid "About Google Person Finder"
 msgstr "Google व्यक्ति फ़ाइंडर के बारे में:"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "इसके लिए एक रिकॉर्ड जोड़ा गया: %(person_name)s"
 
 msgid "Age"
 msgstr "आयु"
@@ -592,9 +615,10 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Person Finder में दिया गया सभी डेटा सार्वजनिक रूप से उपलब्ध है और हर किसी"
+" के लिए उपयोग करने योग्य है. Google इस डेटा "
+"google.org/personfinder/global/tos की सटीकता की समीक्षा नहीं करता है या "
+"इसे सत्यापित नहीं करता है"
 
 msgid "Alternate family names"
 msgstr "वैकल्पिक परिवार नाम"
@@ -662,8 +686,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"सेवा की शर्तों को देखने के लिए यहां पर क्लिक करें (बाहरी साइट; सामान्य "
+"कनेक्शन शुल्क लागू हो सकता है)"
 
 msgid "Click here to view results."
 msgstr "परिणाम देखने के लिए यहां क्लिक करें."
@@ -674,8 +698,11 @@ msgstr "विंडो बंद करें"
 msgid "Compare these records"
 msgstr "इन रिकॉर्ड की तुलना करें"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "संपर्क जानकारी"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -723,7 +750,7 @@ msgid "Disable notes on this record"
 msgstr "इस रिकॉर्ड पर नोट अक्षम करें"
 
 msgid "Does this person have profile pages at other websites?"
-msgstr "क्या इस व्यक्ति के अन्य वेबसाइटों पर प्रोफ़ाइल पृष्ठ हैं?"
+msgstr "क्या इस व्यक्ति के अन्य वेबसाइटों पर प्रोफ़ाइल पेज हैं?"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
@@ -740,8 +767,9 @@ msgstr "ई-मेल पता"
 msgid "Edit"
 msgstr "संपादित करें"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "ईमेल पता"
 
 msgid "Embedding the Application"
 msgstr "ऐप्स  एम्बेड करना"
@@ -769,23 +797,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"समय-सीमा दिनांक को %(extension_days)s दिन आगे बढ़ा दें\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "फ़ोन नंबर के लिए खोज परिणाम नहीं मिल सका."
 
 msgid "Family name"
 msgstr "पारिवारिक नाम"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "पारिवारिक नाम (आवश्यक)"
 
 msgid "Feed of updates about this person"
 msgstr "इस व्यक्ति के बारे में अपडेट की फ़ीड"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "फ़ीडबैक"
 
 msgid "Follow this link to create a new record"
 msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
@@ -799,7 +830,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "प्रेषक: %(home_location)s"
 
 msgid "Full name"
 msgstr "पूरा नाम"
@@ -808,7 +839,7 @@ msgid "Given name"
 msgstr "दिया गया नाम"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "नाम दें (आवश्यक)"
 
 msgid "Google Person Finder"
 msgstr "Google व्यक्ति फ़ाइंडर"
@@ -837,8 +868,10 @@ msgstr "घर का पता"
 msgid "Home country"
 msgstr "गृह देश"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "घर का स्थान"
 
 msgid "How can this person be reached now?"
 msgstr "इस व्यक्ति तक अब कैसे पहुंचा जा सकता है?"
@@ -847,7 +880,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "इस व्यक्ति में रुचि रखने वाले अन्य लोग आपसे कैसे संपर्क कर सकते हैं"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "मेरे पास इस व्यक्ति की जानकारी है"
 
 msgid "I am seeking information"
 msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
@@ -882,11 +915,17 @@ msgstr "मुझे अनचाहा प्राप्त हुआ."
 msgid "I prefer not to specify."
 msgstr "मैं न बताना पसंद करूंगा/करूंगी."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "मैं अपनी जानकारी डालना चाहता/चाहती हूं"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "मैं किसी और की जानकारी डालना चाहता/चाहती हूं"
 
 msgid "I'm looking for someone"
 msgstr "मैं किसी को ढूंढ रहा/रही हूं"
@@ -944,7 +983,7 @@ msgid "Link"
 msgstr "लिंक करें"
 
 msgid "Link to profile page"
-msgstr "प्रोफ़ाइल पृष्ठ से लिंक करें"
+msgstr "प्रोफ़ाइल पेज से लिंक करें"
 
 msgid "List API keys"
 msgstr "API कुंजियां सूचीबद्ध करें"
@@ -972,13 +1011,19 @@ msgstr "गुम व्यक्ति का वर्तमान फ़ोन �
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "निम्न पर अधिक: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "रिकॉर्ड के स्रोत के बारे में अधिक जानकारी"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "व्यक्ति की स्‍थिति के बारे में अधिक जानकारी"
 
 #, python-format
 msgid ""
@@ -988,8 +1033,11 @@ msgstr ""
 "डेवलपर के बारे में और जानकारी "
 "%(developers_link_html)sयहां%(link_end_html)s पाई जा सकती है."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "व्यक्ति की पहचान करने के लिए अधिक जानकारी"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1002,13 +1050,16 @@ msgid "Name"
 msgstr "नाम"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "नाम (आवश्यक)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "नाम आवश्यक है.  कृपया वापस जाएं और फिर से प्रयास करें."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "नाम या मोबाइल फ़ोन नंबर (आवश्यक)"
 
 msgid "Neighborhood"
 msgstr "पड़ोसी"
@@ -1031,7 +1082,7 @@ msgid "No notes have been posted"
 msgstr "कोई नोट पोस्ट नहीं किया गया"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "किसी व्यक्ति का आईडी निर्दिष्ट नहीं किया गया था."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1039,7 +1090,7 @@ msgstr "इस आईडी वाला कोई व्यक्ति नह�
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "निम्न का कोई परिणाम नहीं मिला: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "ऐसी कोई प्राधिकरण इकाई नहीं."
@@ -1106,8 +1157,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"कृपया ध्यान दें: दिया गया सभी डेटा सार्वजनिक रूप से उपलब्ध है और हर किसी "
+"के लिए उपयोग करने योग्य है.  Google इस डेटा की समीक्षा नहीं करता या इसकी "
+"सटीकता को सत्यापित नहीं करता."
 
 msgid "Person Finder"
 msgstr "व्यक्ति फ़ाइंडर"
@@ -1122,7 +1174,7 @@ msgid "Photo"
 msgstr "फ़ोटो"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "फ़ोटो (बाहरी साइट; सामान्य कनेक्शन शुल्क लागू हो सकता है)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1138,8 +1190,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"कृपया जांचें कि आप आपदा के बाद इस व्यक्ति के संपर्क में रहे हैं या \"इस "
+"व्यक्ति की स्थिति\" फ़ील्ड बदलें."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1184,10 +1236,10 @@ msgid "Proceed"
 msgstr "आगे बढ़ें"
 
 msgid "Profile Pages"
-msgstr "प्रोफ़ाइल पृष्ठ"
+msgstr "प्रोफ़ाइल पेज"
 
 msgid "Profile page"
-msgstr "प्रोफ़ाइल पृष्ठ"
+msgstr "प्रोफ़ाइल पेज"
 
 msgid "Provide information"
 msgstr "जानकारी प्रदान करें"
@@ -1235,7 +1287,7 @@ msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
 msgstr "और निर्देशों के लिए %(begin_tag)sविकी%(end_tag)s देखें"
 
 msgid "Select a website to add a profile page..."
-msgstr "प्रोफ़ाइल पृष्ठ जोड़ने के लिए वेबसाइट का चयन करें..."
+msgstr "प्रोफ़ाइल पेज जोड़ने के लिए वेबसाइट का चयन करें..."
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक का चयन करें:"
@@ -1262,7 +1314,7 @@ msgid "Sign out"
 msgstr "प्रस्थान करें"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "अभी नहीं"
 
 msgid "Someone has received information that this person is alive"
 msgstr "किसी व्यक्ति को यह जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
@@ -1277,7 +1329,7 @@ msgid "Someone is seeking information about this person"
 msgstr "कोई व्यक्ति इस व्यक्ति के बारे में जानकारी ढूंढ रहा है"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "रिकॉर्ड के स्रोत"
 
 msgid "Source of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
@@ -1287,13 +1339,13 @@ msgstr "स्थिति"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s की स्थिति "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "व्यक्ति की स्थिति"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "इस व्यक्ति की स्थिति:"
 
 msgid "Street name"
 msgstr "सड़क का नाम"
@@ -1301,11 +1353,13 @@ msgstr "सड़क का नाम"
 msgid "Street name only, no number"
 msgstr "केवल सड़क का नाम, कोई संख्या नहीं"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "सड़क का नाम, आस-पड़ोस, शहर आदि."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "सबमिट करें"
 
 msgid "Subscribe"
 msgstr "सदस्यता लें"
@@ -1317,8 +1371,11 @@ msgstr "%(full_name)s के बारे में अपडेट की स�
 msgid "Subscribe to updates about this person"
 msgstr "इस व्यक्ति के बारे में अपडेट की सदस्यता लें"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "रिकॉर्ड के अपडेट के लिए सदस्य बनें"
 
 msgid "Switch to address"
 msgstr "पते पर स्विच करें"
@@ -1350,7 +1407,7 @@ msgstr "लेखक ने इस रिकॉर्ड पर स्थित�
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)s के लिए नोट जोड़ दिया गया है"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "प्रदान किया गया चित्र बहुत बड़ा है.  कृपया कोई छोटा चित्र अपलोड करें."
@@ -1363,7 +1420,7 @@ msgstr "रिकॉर्ड की समय-सीमा समाप्त�
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s के लिए रिकॉर्ड पंजीकृत कर दिया गया है"
 
 msgid "The record has been deleted."
 msgstr "रिकॉर्ड को हटा दिया गया है."
@@ -1511,7 +1568,7 @@ msgid "Upload your CSV file below"
 msgstr "नीचे अपनी CSV फ़ाइल अपलोड करें"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "वर्तमान स्थान उपयोग करें"
 
 msgid "View the record"
 msgstr "रिकॉर्ड देखें"
@@ -1522,11 +1579,16 @@ msgstr "हमारे पास आपकी खोज से मेल खा
 msgid "When should this record disappear?"
 msgstr "यह रिकॉर्ड कब गायब होना चाहिए?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "यह जानकारी कहां से मिली थी?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "यह रिकॉर्ड कहां से मिला?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1542,11 +1604,17 @@ msgstr ""
 "जब परीक्षण मोड प्रभाव में होता है, तब 6 घंटे से अधिक पुराने रिकॉर्ड "
 "समय-सीमा समाप्ति तिथि पर ध्यान दिए बिना हटा दिए जाते हैं."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "आप जिसे ढूंढ रहे हैं"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "आपके पास जिसके बारे में जानकारी है"
 
 msgid "Yes"
 msgstr "हां"
@@ -1597,8 +1665,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"आप यहां अपना ई-मेल पता डालकर %(full_name)s पर अपडेट पाने के लिए सदस्य बन "
+"सकते हैं"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1627,7 +1695,7 @@ msgid "Your email"
 msgstr "आपका ईमेल"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "आपका नाम (आवश्यक)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1696,11 +1764,15 @@ msgstr ""
 "[व्यक्ति फ़ाइंडर] आपने %(full_name)s के लिए स्थिति अपडेट की सदस्यता ली "
 "हुई है"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "उदा., विल स्मिथ, विल या स्मिथ"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "बाहरी साइट; सामान्य कनेक्शन शुल्क लागू हो सकता है"
 
 msgid "female"
 msgstr "महिला"

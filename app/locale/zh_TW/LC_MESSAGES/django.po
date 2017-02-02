@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -145,9 +145,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                已選取 %(dup_count)s 項紀錄\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -156,6 +158,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                進一步瞭解 Google 的\n"
+"                《<a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>隱私權政策</a>》\n"
+"              "
 
 #, python-format
 msgid ""
@@ -165,30 +172,43 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s 有符合這個查詢條件的搜尋結果。\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            找不到與「%(query)s」相符的結果\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            「%(query_name)s」的搜尋結果 (任何地點)：\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            「%(query)s」的搜尋結果\n"
+"          "
 
 #, python-format
 msgid ""
@@ -197,7 +217,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          與「%(full_name)s」相似的紀錄\n"
 "        "
 
 #, python-format
@@ -352,7 +372,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  你所輸入的電子郵件地址無效。\n"
 "  "
 
 msgid ""
@@ -560,9 +580,11 @@ msgstr "從現在起約 6 個月 (180 天) 後"
 msgid "About Google Person Finder"
 msgstr "關於 Google 尋人服務"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "已新增一筆「%(person_name)s」的紀錄"
 
 msgid "Age"
 msgstr "年齡"
@@ -572,9 +594,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"你在「尋人服務」網站上輸入的資料全部會開放大眾查閱及使用。Google "
+"不會檢查或確認這些資料是否正確。google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "其他姓氏"
@@ -635,9 +656,7 @@ msgstr "鄉鎮縣市"
 msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
-msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+msgstr "按這裡查看服務條款 (外部網站，可能須支付一般連線費用)"
 
 msgid "Click here to view results."
 msgstr "按這裡查看結果。"
@@ -648,8 +667,11 @@ msgstr "關閉視窗"
 msgid "Compare these records"
 msgstr "比較以下紀錄"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "聯絡資訊"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
@@ -710,8 +732,9 @@ msgstr "電子郵件地址"
 msgid "Edit"
 msgstr "編輯"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "電子郵件地址"
 
 msgid "Embedding the Application"
 msgstr "嵌入應用程式"
@@ -739,23 +762,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"將到期日延後 %(extension_days)s 天\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "無法取得這組電話號碼的搜尋結果。"
 
 msgid "Family name"
 msgstr "姓氏"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "姓氏 (必填)"
 
 msgid "Feed of updates about this person"
 msgstr "這個人的最新消息資訊提供"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "提供意見"
 
 msgid "Follow this link to create a new record"
 msgstr "請前往此連結建立新紀錄"
@@ -767,7 +793,7 @@ msgstr "如果是手機以外的電話，請使用 NTT 所提供的 171 災害�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "來自：%(home_location)s"
 
 msgid "Full name"
 msgstr "全名"
@@ -776,7 +802,7 @@ msgid "Given name"
 msgstr "名字"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "名字 (必填)"
 
 msgid "Google Person Finder"
 msgstr "Google 尋人服務"
@@ -803,8 +829,10 @@ msgstr "住家地址"
 msgid "Home country"
 msgstr "居住國家/地區"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "住家地址"
 
 msgid "How can this person be reached now?"
 msgstr "現在要如何聯絡這個人？"
@@ -813,7 +841,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "想要聯絡這個人的其他人要如何聯絡您"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "我有這個人的消息"
 
 msgid "I am seeking information"
 msgstr "我正在找尋這個人的消息"
@@ -848,11 +876,17 @@ msgstr "我收到垃圾資訊。"
 msgid "I prefer not to specify."
 msgstr "保留。"
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "我想輸入自己的資訊"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "我想輸入他人的資訊"
 
 msgid "I'm looking for someone"
 msgstr "我正在尋找某人"
@@ -924,13 +958,19 @@ msgstr "失踨人士目前使用的電話號碼"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "查看更多資訊：%(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "紀錄來源的詳細資訊"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "當事人的詳細狀態資訊"
 
 #, python-format
 msgid ""
@@ -938,8 +978,11 @@ msgid ""
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr "請前往%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "當事人的詳細識別資訊"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -950,13 +993,16 @@ msgid "Name"
 msgstr "姓名"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "姓名 (必填)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "[姓名] 欄位為必填，請回到上一步再試一次。"
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "姓名或手機號碼 (必填)"
 
 msgid "Neighborhood"
 msgstr "社區"
@@ -979,7 +1025,7 @@ msgid "No notes have been posted"
 msgstr "沒有已發佈的註記"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "未指定失蹤人士 ID。"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -987,7 +1033,7 @@ msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "找不到與「%(query)s」相符的搜尋結果"
 
 msgid "No such Authorization entity."
 msgstr "沒有這類授權實體。"
@@ -1047,9 +1093,7 @@ msgstr "其他網站"
 msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
-msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+msgstr "請注意：你輸入的資料全部會開放大眾查閱及使用。Google 不會檢查或確認資料是否正確。"
 
 msgid "Person Finder"
 msgstr "尋人服務"
@@ -1064,7 +1108,7 @@ msgid "Photo"
 msgstr "相片"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "相片 (外部網站，可能須支付一般連線費用)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1077,9 +1121,7 @@ msgstr "外貌特徵"
 msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
-msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+msgstr "請確認災難發生後你曾經與這個人接觸過，或是變更 [這個人的狀態] 欄位。"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1198,7 +1240,7 @@ msgid "Sign out"
 msgstr "登出"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "略過"
 
 msgid "Someone has received information that this person is alive"
 msgstr "有人收到消息指出這個人還活著"
@@ -1213,7 +1255,7 @@ msgid "Someone is seeking information about this person"
 msgstr "有人想知道這個人的下落"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "紀錄來源"
 
 msgid "Source of this record"
 msgstr "這筆紀錄的來源"
@@ -1223,13 +1265,13 @@ msgstr "狀態"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s的狀態 "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "個人的狀態"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "這個人的狀態："
 
 msgid "Street name"
 msgstr "街道名稱"
@@ -1237,11 +1279,13 @@ msgstr "街道名稱"
 msgid "Street name only, no number"
 msgstr "輸入路名即可，不需輸入門牌號碼"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "街道名稱、鄰里、城市等等"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "提交"
 
 msgid "Subscribe"
 msgstr "訂閱"
@@ -1253,8 +1297,11 @@ msgstr "訂閱「%(full_name)s」的最新消息"
 msgid "Subscribe to updates about this person"
 msgstr "訂閱這個人的最新消息"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "訂閱與你的紀錄相關的最新消息"
 
 msgid "Switch to address"
 msgstr "切換為地址模式"
@@ -1284,7 +1331,7 @@ msgstr "發佈者已停用這筆紀錄的狀態更新功能。"
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "已新增「%(full_name)s」的註解"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "提供的圖片檔案太大，請上傳檔案較小的圖片。"
@@ -1297,7 +1344,7 @@ msgstr "紀錄效期無法延長。"
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "已登載「%(full_name)s」的紀錄"
 
 msgid "The record has been deleted."
 msgstr "紀錄已刪除。"
@@ -1433,7 +1480,7 @@ msgid "Upload your CSV file below"
 msgstr "上傳下列 CSV 檔案"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "使用目前位置"
 
 msgid "View the record"
 msgstr "查看紀錄"
@@ -1444,11 +1491,16 @@ msgstr "系統找不到相符的搜尋結果。"
 msgid "When should this record disappear?"
 msgstr "移除這筆紀錄的時間"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "這個消息的出處為何？"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "這筆紀錄的出處為何？"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1460,11 +1512,17 @@ msgid ""
 "deleted regardless of the expiry date."
 msgstr "雖然測試模式仍屬有效，但系統會將超過 6 小時的資料刪除，無論效期設定為何。"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "你要尋找的人"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "你有相關資訊的人"
 
 msgid "Yes"
 msgstr "是"
@@ -1514,9 +1572,7 @@ msgstr "您可先%(begin_tag)s查看紀錄%(end_tag)s，然後再行刪除。"
 msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
-msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+msgstr "只要在這裡輸入你的電子郵件地址，即可訂閱「%(full_name)s」的最新動態"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1543,7 +1599,7 @@ msgid "Your email"
 msgstr "您的電子郵件"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "你的姓名 (必填)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1603,11 +1659,15 @@ msgstr "[尋人服務]「%(full_name)s」的狀態更新"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[尋人服務] 您已訂閱「%(full_name)s」的狀態更新"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "例如王大明、王或大明"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "外部網站，可能須支付一般連線費用"
 
 msgid "female"
 msgstr "女性"

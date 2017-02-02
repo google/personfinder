@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -147,9 +147,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s erregistro hautatu dira\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -158,6 +160,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Lortu informazio gehiago Google <a "
+"href=\"%(privacy_policy_url)s\" %(target_attr)s>Pribatutasun-"
+"gidalerroei</a> buruz.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -167,30 +174,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s bilatzaileak bilaketa honekin bat "
+"datozen emaitzak aurkitu ditu.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Ez da aurkitu \"%(query)s\" bilaketaren emaitzarik\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query_name)s\" bilaketaren emaitzak (edonongoak):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query)s\" bilaketaren emaitzak\n"
+"          "
 
 #, python-format
 msgid ""
@@ -199,7 +220,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Honen antzeko erregistroak: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -359,7 +380,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Idatzi duzun helbide elektronikoak ez du balio.\n"
 "  "
 
 msgid ""
@@ -572,9 +593,11 @@ msgstr "6 hilabete (180 egun) inguru barru"
 msgid "About Google Person Finder"
 msgstr "Google Person Finder zerbitzuari buruz"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Informazioa gehitu da honi buruz: %(person_name)s"
 
 msgid "Age"
 msgstr "Adina"
@@ -584,8 +607,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Pertsona-bilatzailea eginbidean idatzitako datu guztiak publikoki egongo "
+"dira erabilgarri eta edonork erabili ahal izango ditu. Google-k ez ditu "
+"egiaztatzen datuen egiazkotasuna eta zehaztasuna. "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -607,7 +631,7 @@ msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Ziur ezabatutako erregistro hau leheneratu nahi duzula?"
 
 msgid "Atom feed of updates about this person"
-msgstr "Pertsona honi buruzko eguneratzeen Atom jarioa"
+msgstr "Pertsona honi buruzko berritasunen Atom jarioa"
 
 msgid "Author's e-mail address"
 msgstr "Egilearen helbide elektronikoa"
@@ -652,8 +676,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Egin klik hemen zerbitzu-baldintzak ikusteko (kanpoko gunea; baliteke "
+"ohiko konexioen tarifa aplikatzea)"
 
 msgid "Click here to view results."
 msgstr "Egin klik hemen emaitzak ikusteko."
@@ -664,8 +688,11 @@ msgstr "Itxi leihoa"
 msgid "Compare these records"
 msgstr "Alderatu erregistro hauek"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Harremanetarako informazioa"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Kopiatu eta itsatsi HTML kode hau tresna zure gunean ezartzeko"
@@ -728,8 +755,9 @@ msgstr "Helbide elektronikoa"
 msgid "Edit"
 msgstr "Editatu"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Helbide elektronikoa"
 
 msgid "Embedding the Application"
 msgstr "Aplikazioa kapsulatu"
@@ -757,23 +785,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Atzeratu iraungitze-data %(extension_days)s egun\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Ez da aurkitu ezer telefono-zenbakia bilatuta."
 
 msgid "Family name"
 msgstr "Abizenak"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Abizena (derrigorrezkoa)"
 
 msgid "Feed of updates about this person"
-msgstr "Pertsona honi buruzko eguneratzeen jarioa"
+msgstr "Pertsona honi buruzko berritasunen jarioa"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Iritzia"
 
 msgid "Follow this link to create a new record"
 msgstr "Jarraitu esteka hau erregistroa sortzeko"
@@ -787,7 +818,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Kokapena: %(home_location)s"
 
 msgid "Full name"
 msgstr "Izen-abizenak"
@@ -796,7 +827,7 @@ msgid "Given name"
 msgstr "Izena"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Izena (derrigorrezkoa)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -827,8 +858,10 @@ msgstr "Etxeko helbidea"
 msgid "Home country"
 msgstr "Jaioterria"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Etxearen kokapena"
 
 msgid "How can this person be reached now?"
 msgstr "Nola jar daiteke pertsona honekin harremanetan orain?"
@@ -839,7 +872,7 @@ msgstr ""
 "harremanetan?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Pertsona honi buruzko informazioa dut"
 
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
@@ -848,7 +881,7 @@ msgid "I am this person"
 msgstr "Pertsona hori naiz"
 
 msgid "I do not want any more updates on this record."
-msgstr "Ez dut erregistro honen eguneratze gehiagorik jaso nahi."
+msgstr "Ez dut erregistro honen berritasun gehiagorik jaso nahi."
 
 msgid "I do not want my information online anymore."
 msgstr "Ez dut nire informazioa linean egoterik nahi."
@@ -874,11 +907,17 @@ msgstr "Spama jaso dut."
 msgid "I prefer not to specify."
 msgstr "Nahiago dut ez zehaztu."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Niri buruzko informazioa gehitu nahi dut"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Beste norbaiti buruzko informazioa gehitu nahi dut"
 
 msgid "I'm looking for someone"
 msgstr "Norbaiten bila nabil"
@@ -960,13 +999,19 @@ msgstr "Desagertutako pertsonaren uneko telefono-zenbakia"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Informazio gehiago: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Informazio gehiago informazio-iturburuari buruz"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Informazio gehiago pertsonaren egoerari buruz"
 
 #, python-format
 msgid ""
@@ -976,8 +1021,11 @@ msgstr ""
 "Garatzaileentzako informazio gehiago eskura daiteke "
 "%(developers_link_html)shemen%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Pertsona identifikatzeko informazio gehiago"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -990,13 +1038,16 @@ msgid "Name"
 msgstr "Izena"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Izena (beharrezkoa)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Izena beharrezkoa da. Joan atzera eta saiatu berriro."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Izena edo mugikorreko telefono-zenbakia (derrigorrezkoa)"
 
 msgid "Neighborhood"
 msgstr "Auzoa"
@@ -1021,7 +1072,7 @@ msgid "No notes have been posted"
 msgstr "Ez da oharrik argitaratu"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ez da zehaztu pertsonaren IDa."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1029,7 +1080,7 @@ msgstr "Ez dago %(id_str)s IDa duen pertsonarik."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Ez da aurkitu honen emaitzarik: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ez dago horrelako erakunde jaulkitzailerik."
@@ -1096,8 +1147,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"OHARRA: idatzitako datu guztiak publikoki egongo dira erabilgarri eta "
+"edonork erabili ahal izango ditu. Google-k ez ditu egiaztatzen datuen "
+"egiazkotasuna eta zehaztasuna."
 
 msgid "Person Finder"
 msgstr "Person Finder"
@@ -1112,7 +1164,7 @@ msgid "Photo"
 msgstr "Argazkia"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Argazkia (kanpoko gunea; baliteke ohiko konexioen tarifa aplikatzea)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1128,8 +1180,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Egiaztatu pertsonarekin harremanetan egon zarela hondamendiaren ondoren, "
+"edo aldatu \"Pertsonaren egoera\" eremua."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1144,10 +1196,10 @@ msgstr ""
 "datorren."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Berretsi helbide elektronikoa eguneratzeetara harpidetzeko"
+msgstr "Berretsi helbide elektronikoa berritasunetara harpidetzeko"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Sartu helbide elektronikoa eguneratzeetara harpidetzeko"
+msgstr "Idatzi helbide elektronikoa berritasunetara harpidetzeko"
 
 msgid "Please explain why you think these are the same person"
 msgstr "Azaldu zergatik uste duzun pertsona bera direla"
@@ -1252,7 +1304,7 @@ msgid "Sign out"
 msgstr "Amaitu saioa"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Saltatu"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
@@ -1267,7 +1319,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Norbait pertsona honi buruzko informazioa bilatzen ari da"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Erregistroaren iturburua"
 
 msgid "Source of this record"
 msgstr "Erregistroaren iturburua"
@@ -1277,13 +1329,13 @@ msgstr "Egoera"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Egoera - %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Pertsonaren egoera"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Pertsona honen egoera:"
 
 msgid "Street name"
 msgstr "Kale-helbidea"
@@ -1291,24 +1343,29 @@ msgstr "Kale-helbidea"
 msgid "Street name only, no number"
 msgstr "Kalearen izena soilik, zenbakirik gabe"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Kalearen izena, auzoa, hiria, etab."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Bidali"
 
 msgid "Subscribe"
 msgstr "Harpidetu"
 
 #, python-format
 msgid "Subscribe to updates about %(full_name)s"
-msgstr "Harpidetu pertsona honi buruzko eguneratzeetara: %(full_name)s"
+msgstr "Harpidetu pertsona honi buruzko berritasunetara: %(full_name)s"
 
 msgid "Subscribe to updates about this person"
-msgstr "Harpidetu pertsona honi buruzko eguneratzeetara"
+msgstr "Harpidetu pertsona honi buruzko berritasunetara"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Harpidetu erregistratu duzun pertsonari buruzko berritasunetara"
 
 msgid "Switch to address"
 msgstr "Aldatu helbidera"
@@ -1334,11 +1391,11 @@ msgid "The author has disabled notes on this record."
 msgstr "Egileak oharrak desgaitu ditu erregistro honetan."
 
 msgid "The author has disabled status updates on this record."
-msgstr "Egileak egoera-eguneratzeak desgaitu ditu erregistro honetan."
+msgstr "Egileak egoera-berritasunak desgaitu ditu erregistro honetan."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Gehitu da %(full_name)s erabiltzailearentzako oharra"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
@@ -1351,7 +1408,7 @@ msgstr "Ezin da erregistroaren iraungitze-data atzeratu."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Erregistratu da %(full_name)s erabiltzailearentzako erregistroa"
 
 msgid "The record has been deleted."
 msgstr "Erregistroa ezabatu da."
@@ -1500,7 +1557,7 @@ msgid "Upload your CSV file below"
 msgstr "Kargatu CSV fitxategia behean"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Erabili uneko kokapena"
 
 msgid "View the record"
 msgstr "Ikusi erregistroa"
@@ -1511,11 +1568,16 @@ msgstr "Ez dugu zure bilaketarekin bat datorren erregistrorik aurkitu."
 msgid "When should this record disappear?"
 msgstr "Noiz desagertu beharko luke erregistro horrek?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Nondik jaso da informazioa?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Nondik jaso da informazio hori?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1531,11 +1593,17 @@ msgstr ""
 "Probaldiak dirauen artean, 6 ordu baino gehiago dituzten erregistroak "
 "ezabatu egingo dira, haien iraungitze-data edozein dela ere."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Nor aurkitu nahi duzun"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Nori buruzko informazioa duzun"
 
 msgid "Yes"
 msgstr "Bai"
@@ -1588,8 +1656,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"%(full_name)s erabiltzaileari buruzko berritasunetara harpidetzeko, "
+"idatzi helbide elektronikoa hemen behean"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1605,7 +1673,7 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
-"Pertsona honen eguneratzeetara harpidetu zarelako jaso duzu jakinarazpen "
+"Pertsona honen berritasunetara harpidetu zarelako jaso duzu jakinarazpen "
 "hau:\n"
 
 msgid "Your e-mail address"
@@ -1618,7 +1686,7 @@ msgid "Your email"
 msgstr "Zure helbide elektronikoa"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Zure izena (derrigorrezkoa)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1689,14 +1757,18 @@ msgstr "[Person Finder] %(full_name)s erregistroa eguneratzearen oharra"
 #, python-format
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr ""
-"[Person Finder] %(full_name)s erregistroaren egoera-eguneratzeetara "
+"[Person Finder] %(full_name)s erregistroaren egoera-berritasunetara "
 "harpidetuta zaude"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "adibidez, Eneko Txapartegi, Eneko, edo Txapartegi"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "kanpoko gunea; baliteke ohiko konexioen tarifa aplikatzea"
 
 msgid "female"
 msgstr "emakumea"

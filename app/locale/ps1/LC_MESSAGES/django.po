@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -153,6 +153,8 @@ msgstr ""
 "                ᐅ%(dup_count)sᐊ réçörðš šéļéçţéð\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -161,6 +163,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Ļéårñ möré åböûţ Ĝööĝļé\n"
+"                <å ĥréƒ=\"ᐅ%(privacy_policy_url)sᐊ\" "
+"ᐅ%(target_attr)sᐊ>Þrîvåçý Þöļîçý</a>.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -174,26 +181,40 @@ msgstr ""
 "qûérý.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Ñö réšûļţš ƒöûñð ƒör: \"ᐅ%(query)sᐊ\"\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            ®éšûļţš ƒör \"ᐅ%(query_name)sᐊ\" (åñý ļöçåţîöñ):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Šéårçĥ réšûļţš ƒör: \"ᐅ%(query)sᐊ\"\n"
+"          "
 
 #, python-format
 msgid ""
@@ -580,9 +601,11 @@ msgstr "Åböûţ 6 möñţĥš (180 ðåýš) ƒröm ñöŵ"
 msgid "About Google Person Finder"
 msgstr "Åböûţ Ĝööĝļé Þéršöñ Fîñðér"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Åððéð å réçörð ƒör: ᐅ%(person_name)sᐊ"
 
 msgid "Age"
 msgstr "Åĝé"
@@ -672,8 +695,11 @@ msgstr "Çļöšé ŵîñðöŵ"
 msgid "Compare these records"
 msgstr "Çömþåré ţĥéšé réçörðš"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Çöñţåçţ îñƒörmåţîöñ"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Çöþý åñð þåšţé ţĥé ƒöļļöŵîñĝ ĤŢMĻ çöðé ţö þûţ ţĥîš ţööļ öñ ýöûr šîţé"
@@ -736,8 +762,9 @@ msgstr "É-måîļ åððréšš"
 msgid "Edit"
 msgstr "Éðîţ"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Émåîļ åððréšš"
 
 msgid "Embedding the Application"
 msgstr "Émbéððîñĝ ţĥé Åþþļîçåţîöñ"
@@ -768,8 +795,11 @@ msgstr ""
 "Éxţéñð éxþîråţîöñ ðåţé bý ᐅ%(extension_days)sᐊ ðåýš\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Fåîļéð ţö öbţåîñ šéårçĥ réšûļţ ƒör ţĥé þĥöñé ñûmbér."
 
 msgid "Family name"
 msgstr "Fåmîļý ñåmé"
@@ -833,8 +863,10 @@ msgstr "Ĥömé åððréšš"
 msgid "Home country"
 msgstr "Ĥömé çöûñţrý"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Ĥömé ļöçåţîöñ"
 
 msgid "How can this person be reached now?"
 msgstr "Ĥöŵ çåñ ţĥîš þéršöñ bé réåçĥéð ñöŵ¿"
@@ -878,11 +910,17 @@ msgstr "Î ĥåvé réçéîvéð šþåm."
 msgid "I prefer not to specify."
 msgstr "Î þréƒér ñöţ ţö šþéçîƒý."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Î ŵåñţ ţö îñþûţ mý öŵñ îñƒörmåţîöñ"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Î ŵåñţ ţö îñþûţ šöméöñé éļšé'š îñƒörmåţîöñ"
 
 msgid "I'm looking for someone"
 msgstr "Î'm ļööķîñĝ ƒör šöméöñé"
@@ -964,11 +1002,17 @@ msgstr "Mîššîñĝ þéršöñ'š çûrréñţ þĥöñé ñûmbér"
 msgid "More at: %(url)s"
 msgstr "Möré åţ: ᐅ%(url)sᐊ"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Möré îñƒörmåţîöñ åböûţ šöûrçé öƒ réçörð"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Möré îñƒörmåţîöñ åböûţ šţåţûš öƒ ţĥé þéršöñ"
 
 #, python-format
 msgid ""
@@ -978,8 +1022,11 @@ msgstr ""
 "Möré îñƒörmåţîöñ ƒör ðévéļöþérš çåñ ñöŵ bé ƒöûñð "
 "ᐅ%(developers_link_html)sᐊĥéréᐅ%(link_end_html)sᐊ."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Möré îñƒörmåţîöñ ţö îðéñţîƒý ţĥé þéršöñ"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -992,13 +1039,16 @@ msgid "Name"
 msgstr "Ñåmé"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Ñåmé (réqûîréð)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Ñåmé îš réqûîréð.  Þļéåšé ĝö båçķ åñð ţrý åĝåîñ."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Ñåmé ör möbîļé þĥöñé ñûmbér (réqûîréð)"
 
 msgid "Neighborhood"
 msgstr "Ñéîĝĥbörĥööð"
@@ -1289,8 +1339,10 @@ msgstr "Šţrééţ ñåmé"
 msgid "Street name only, no number"
 msgstr "Šţrééţ ñåmé öñļý, ñö ñûmbér"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Šţrééţ ñåmé, ñéîĝĥbörĥööð, çîţý, éţç."
 
 msgid "Submit"
 msgstr "Šûbmîţ"
@@ -1305,8 +1357,11 @@ msgstr "Šûbšçrîbé ţö ûþðåţéš åböûţ ᐅ%(full_name)sᐊ"
 msgid "Subscribe to updates about this person"
 msgstr "Šûbšçrîbé ţö ûþðåţéš åböûţ ţĥîš þéršöñ"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Šûbšçrîbé ţö ûþðåţéš åböûţ ýöûr réçörð"
 
 msgid "Switch to address"
 msgstr "Šŵîţçĥ ţö åððréšš"
@@ -1510,11 +1565,16 @@ msgstr "Ŵé ĥåvé ñöţĥîñĝ måţçĥîñĝ ýöûr šéårçĥ."
 msgid "When should this record disappear?"
 msgstr "Ŵĥéñ šĥöûļð ţĥîš réçörð ðîšåþþéår¿"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Ŵĥéré ðîð ţĥîš îñƒörmåţîöñ çömé ƒröm¿"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Ŵĥéré ðîð ţĥîš réçörð çömé ƒröm¿"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1530,11 +1590,17 @@ msgstr ""
 "Ŵĥîļé ţéšţ möðé îš îñ éƒƒéçţ, réçörðš ţĥåţ åré övér 6 ĥöûrš öļð åré "
 "ðéļéţéð réĝårðļéšš öƒ ţĥé éxþîrý ðåţé."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Ŵĥö ýöû åré ļööķîñĝ ƒör"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Ŵĥö ýöû ĥåvé îñƒörmåţîöñ åböûţ"
 
 msgid "Yes"
 msgstr "Ýéš"
@@ -1681,8 +1747,12 @@ msgstr "[Þéršöñ Fîñðér] Šţåţûš ûþðåţé ƒör ᐅ%(full_name)
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Þéršöñ Fîñðér] Ýöû åré šûbšçrîbéð ţö šţåţûš ûþðåţéš ƒör ᐅ%(full_name)sᐊ"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "é.ĝ., Ŵîļļ Šmîţĥ, Ŵîļļ, ör Šmîţĥ"
 
 msgid "external site; normal connection fee may apply"
 msgstr "éxţérñåļ šîţé; ñörmåļ çöññéçţîöñ ƒéé måý åþþļý"

@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -148,9 +148,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s kirjet on valitud\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -159,6 +161,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Lisateave Google'i\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>privaatsuseeskirjade</a> kohta.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -168,30 +175,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            Otsingumootoril %(search_engine_name)s on sellele päringule "
+"vastav(aid) otsingutulemus(i).\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Päringu „%(query)s” kohta ei leitud ühtegi tulemust\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Päringu „%(query_name)s” tulemused (mis tahes asukoht):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Päringu „%(query)s” otsingutulemused\n"
+"          "
 
 #, python-format
 msgid ""
@@ -200,7 +221,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Kirjed, mis sarnanevad järgmisega: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -357,7 +378,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Teie sisestatud e-posti aadress on sobimatu.\n"
 "  "
 
 msgid ""
@@ -565,9 +586,11 @@ msgstr "Umbes 6 kuud (180 päeva) tänasest"
 msgid "About Google Person Finder"
 msgstr "Teave Google'i isikuotsingu kohta"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Lisati kirje isiku %(person_name)s kohta"
 
 msgid "Age"
 msgstr "Vanus"
@@ -577,8 +600,8 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"Kõik teenuses Inimeste leidja sisestatud andmed on avalikud ja kõikidele "
+"kasutatavad. Google ei vaata üle ega kinnita andmete täpsust\n"
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -647,8 +670,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Teenusetingimuste vaatamiseks klõpsake siin (väline sait; lisanduda võib "
+"tavapärane ühendustasu)"
 
 msgid "Click here to view results."
 msgstr "Tulemuste vaatamiseks klõpsake siin."
@@ -659,8 +682,11 @@ msgstr "Sulge aken"
 msgid "Compare these records"
 msgstr "Võrrelge neid kirjeid"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Kontaktteave"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -725,8 +751,9 @@ msgstr "E-posti aadress"
 msgid "Edit"
 msgstr "Muutmine"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "E-posti aadress"
 
 msgid "Embedding the Application"
 msgstr "Rakenduse manustamine"
@@ -754,23 +781,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Pikendage aegumiskuupäeva %(extension_days)s päeva võrra\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Telefoninumbri kohta ei õnnestunud otsingutulemusi hankida."
 
 msgid "Family name"
 msgstr "Perekonnanimi"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Perekonnanimi (kohustuslik)"
 
 msgid "Feed of updates about this person"
 msgstr "Selle inimese uudisvoog"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Tagasiside"
 
 msgid "Follow this link to create a new record"
 msgstr "Kasutage seda linki uue kirje loomiseks"
@@ -782,7 +812,7 @@ msgstr "Tavatelefonide puhul kasutage NTT pakutavat teenust 171."
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Asukohast: %(home_location)s"
 
 msgid "Full name"
 msgstr "Täisnimi"
@@ -791,7 +821,7 @@ msgid "Given name"
 msgstr "Eesnimi"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Eesnimi (kohustuslik)"
 
 msgid "Google Person Finder"
 msgstr "Google'i isikuotsing"
@@ -820,8 +850,10 @@ msgstr "Kodune aadress"
 msgid "Home country"
 msgstr "Kodumaa"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Kodu asukoht"
 
 msgid "How can this person be reached now?"
 msgstr "Kuidas praegu selle inimesega ühendust saada?"
@@ -832,7 +864,7 @@ msgstr ""
 " võtta?"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Mul on selle isiku kohta teavet"
 
 msgid "I am seeking information"
 msgstr "Otsin teavet"
@@ -867,11 +899,17 @@ msgstr "Olen saanud rämpsposti."
 msgid "I prefer not to specify."
 msgstr "Ma ei soovi täpsustada."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Soovin sisestada teabe enda kohta"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Soovin sisestada teabe kellegi teise kohta"
 
 msgid "I'm looking for someone"
 msgstr "Otsin kedagi"
@@ -957,13 +995,19 @@ msgstr "Kadunud inimese praegune telefoninumber"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Rohkem: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Lisateave kirje allika kohta"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Lisateave isiku staatuse kohta"
 
 #, python-format
 msgid ""
@@ -973,8 +1017,11 @@ msgstr ""
 "Arendajatele mõeldud lisateavet saab nüüd "
 "%(developers_link_html)ssiit%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Lisateave isiku tuvastamiseks"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -987,13 +1034,16 @@ msgid "Name"
 msgstr "Nimi"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Nimi (nõutav)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nimi on nõutav. Minge tagasi ja proovige uuesti."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Nimi või mobiiltelefoni number (nõutav)"
 
 msgid "Neighborhood"
 msgstr "Piirkond"
@@ -1016,7 +1066,7 @@ msgid "No notes have been posted"
 msgstr "Märkmeid pole postitatud"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Ühtegi isiku ID-d ei määratud."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1024,7 +1074,7 @@ msgstr "Pole inimest, kelle ID on %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Järgmisele päringule ei leitud ühtegi tulemust: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ühtegi sellist volitamise üksust pole."
@@ -1091,8 +1141,8 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"PANGE TÄHELE: kõik sisestatud andmed on avalikud ja kõikidele "
+"kasutatavad. Google ei vaata üle ega kinnita andmete täpsust."
 
 msgid "Person Finder"
 msgstr "Isikuotsing"
@@ -1107,7 +1157,7 @@ msgid "Photo"
 msgstr "Foto"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Foto (väline sait; lisanduda võib tavapärane ühendustasu)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1121,8 +1171,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Kontrollige, kas olete inimesega pärast katastroofi ühenduses olnud, või "
+"muutke välja „Selle isiku olek”."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1243,7 +1293,7 @@ msgid "Sign out"
 msgstr "Logi välja"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Jäta vahele"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Keegi on saanud teavet, et see inimene on elus"
@@ -1258,7 +1308,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Keegi otsib teavet selle inimese kohta"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Kirje allikas"
 
 msgid "Source of this record"
 msgstr "Selle kirje allikas"
@@ -1268,13 +1318,13 @@ msgstr "Olek"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Isiku %(full_name)s olek "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Isiku olek"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Selle isiku olek:"
 
 msgid "Street name"
 msgstr "Tänava nimi"
@@ -1282,11 +1332,13 @@ msgstr "Tänava nimi"
 msgid "Street name only, no number"
 msgstr "Ainult tänava nimi, ilma numbrita"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Tänava nimi, linnaosa, linn jne."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Esita"
 
 msgid "Subscribe"
 msgstr "Telli"
@@ -1298,8 +1350,11 @@ msgstr "Värskenduste tellimine inimese %(full_name)s kohta"
 msgid "Subscribe to updates about this person"
 msgstr "Telli värskendused selle isiku kohta"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Tellige värskendused oma kirje kohta"
 
 msgid "Switch to address"
 msgstr "Lülitu aadressile"
@@ -1329,7 +1384,7 @@ msgstr "Autor on selle kirje puhul olekuvärskendused keelanud."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Märge isiku %(full_name)s jaoks on lisatud"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pilt on liiga suur. Laadige üles väiksem pilt."
@@ -1342,7 +1397,7 @@ msgstr "Kirjet ei saa pikendada."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Kirje isiku %(full_name)s jaoks on registreeritud"
 
 msgid "The record has been deleted."
 msgstr "See kirje on kustutatud."
@@ -1491,7 +1546,7 @@ msgid "Upload your CSV file below"
 msgstr "Laadige oma CSV-fail üles allpool"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Kasuta praegust asukohta"
 
 msgid "View the record"
 msgstr "Vaadake kirjet"
@@ -1502,11 +1557,16 @@ msgstr "Meil ei ole midagi teie otsinguga sobivat."
 msgid "When should this record disappear?"
 msgstr "Millal peaks see kirje kaduma?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Kust see info tuli?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Kust see kirje pärineb?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1522,11 +1582,17 @@ msgstr ""
 "Kui testrežiim töötab, kustutatakse üle 6 tunni vanused kirjed olenemata "
 "aegumiskuupäevast."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Keda otsite?"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Kelle kohta on teil teavet?"
 
 msgid "Yes"
 msgstr "Jah"
@@ -1577,8 +1643,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Võite tellida värskendusi isiku %(full_name)s kohta, kui sisestate oma "
+"e-posti aadressi siia"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1605,7 +1671,7 @@ msgid "Your email"
 msgstr "Teie e-post"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Teie nimi (kohustuslik)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1669,11 +1735,15 @@ msgstr "[Isikuotsing] Olekuvärskendus inimese %(full_name)s kohta"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Isikuotsing] Olete tellinud inimese %(full_name)s olekuvärskendused"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "nt Will Smith, Will või Smith"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "väline sait; lisanduda võib tavapärane ühendustasu"
 
 msgid "female"
 msgstr "naine"

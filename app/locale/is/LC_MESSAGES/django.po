@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -153,9 +153,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s færslur valdar\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -164,6 +166,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Fáðu frekari upplýsingar um\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>persónuverndarstefnu Google</a>.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -173,30 +180,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s fann niðurstöðu(r) sem samsvara "
+"þessari fyrirspurn.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Engar niðurstöður fundust fyrir: „%(query)s“\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            Niðurstöður fyrir „%(query_name)s“ (hvar sem er):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            Leitarniðurstöður fyrir: „%(query)s“\n"
+"          "
 
 #, python-format
 msgid ""
@@ -205,7 +226,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          Færslur svipaðar: %(full_name)s\n"
 "        "
 
 #, python-format
@@ -371,7 +392,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  Netfangið sem þú gafst upp er ekki gilt.\n"
 "  "
 
 msgid ""
@@ -584,9 +605,11 @@ msgstr "Eftir u.þ.b. sex mánuði (180 daga)"
 msgid "About Google Person Finder"
 msgstr "Um Google persónuleit"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "Bætti færslu við fyrir: %(person_name)s"
 
 msgid "Age"
 msgstr "Aldur"
@@ -596,9 +619,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
-"google.org/personfinder/global/tos"
+"Öll gögn sem færð eru inn í persónuleit eru aðgengileg almenningi og "
+"allir geta skoðað þau og notað. Google fer ekki yfir þessi gögn eða "
+"staðfestir að þau séu rétt google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
 msgstr "Önnur ættarnöfn"
@@ -666,8 +689,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"Smelltu hér til að sjá þjónustuskilmálana (ytra vefsvæði, venjuleg "
+"netgjöld gætu átt við)"
 
 msgid "Click here to view results."
 msgstr "Smelltu hér til að sjá niðurstöður."
@@ -678,8 +701,11 @@ msgstr "Loka glugga"
 msgid "Compare these records"
 msgstr "Berðu færslurnar saman"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "Samskiptaupplýsingar"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -742,8 +768,9 @@ msgstr "Netfang"
 msgid "Edit"
 msgstr "Breyta"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "Netfang"
 
 msgid "Embedding the Application"
 msgstr "Forritið fellt inn"
@@ -771,23 +798,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"Lengja lokadagsetningu um %(extension_days)s daga\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "Ekki tókst að sækja leitarniðurstöður fyrir símanúmerið."
 
 msgid "Family name"
 msgstr "Kenninafn"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "Eftirnafn (krafist)"
 
 msgid "Feed of updates about this person"
 msgstr "Straumur með fréttum af þessari manneskju"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Ábendingar"
 
 msgid "Follow this link to create a new record"
 msgstr "Opnaðu þennan tengil til að búa til nýja færslu"
@@ -801,7 +831,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "Frá: %(home_location)s"
 
 msgid "Full name"
 msgstr "Fullt nafn"
@@ -810,7 +840,7 @@ msgid "Given name"
 msgstr "Eiginnafn"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "Eiginnafn (krafist)"
 
 msgid "Google Person Finder"
 msgstr "Google persónuleit"
@@ -841,8 +871,10 @@ msgstr "Heimilisfang"
 msgid "Home country"
 msgstr "Heimaland"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "Heimilisfang"
 
 msgid "How can this person be reached now?"
 msgstr "Hvernig er hægt að ná í þessa manneskju núna?"
@@ -851,7 +883,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "Hvernig aðrir sem hafa áhuga á þessari manneskju geta haft samband við þig"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "Ég bý yfir upplýsingum um þessa manneskju"
 
 msgid "I am seeking information"
 msgstr "Ég er að leita eftir upplýsingum"
@@ -886,11 +918,17 @@ msgstr "Ég hef fengið ruslpóst."
 msgid "I prefer not to specify."
 msgstr "Ég kýs að tilgreina ekki nánar."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "Ég vil setja inn mínar eigin upplýsingar"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "Ég vil setja inn upplýsingar fyrir einhvern annan"
 
 msgid "I'm looking for someone"
 msgstr "Ég er að leita að einhverjum"
@@ -976,13 +1014,19 @@ msgstr "Núverandi símanúmer týndrar manneskju"
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "Meira á: %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "Frekari upplýsingar um uppruna færslu"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "Frekari upplýsingar um stöðu viðkomandi"
 
 #, python-format
 msgid ""
@@ -992,8 +1036,11 @@ msgstr ""
 "Frekari upplýsingar fyrir forritara fást "
 "%(developers_link_html)shér%(link_end_html)s."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "Frekari upplýsingar til að bera kennsl á viðkomandi"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1006,13 +1053,16 @@ msgid "Name"
 msgstr "Nafn"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "Nafn (nauðsynlegt)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "Nafn er nauðsynlegt. Farðu til baka og reyndu aftur."
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "Nafn eða farsímanúmer (krafist)"
 
 msgid "Neighborhood"
 msgstr "Hverfi"
@@ -1037,7 +1087,7 @@ msgid "No notes have been posted"
 msgstr "Engar athugasemdir hafa verið birtar"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "Auðkenni einstaklings var ekki tilgreint."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1045,7 +1095,7 @@ msgstr "Engin manneskja með auðkennið: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "Engar niðurstöður fundust fyrir: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Engin slík sannvottunareigind."
@@ -1112,8 +1162,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"ATHUGIÐ: Öll gögn sem færð eru inn eru aðgengileg almenningi og allir "
+"geta notað þau. Google fer ekki yfir þessi gögn eða staðfestir að þau séu"
+" rétt."
 
 msgid "Person Finder"
 msgstr "Persónuleit"
@@ -1128,7 +1179,7 @@ msgid "Photo"
 msgstr "Mynd"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "Mynd (ytra vefsvæði, venjuleg netgjöld gætu átt við)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1144,8 +1195,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"Merktu við að þú hafir verið í sambandi við manneskjuna eftir "
+"hættuástandið eða breyttu reitnum „Staða þessarar manneskju“."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1268,7 +1319,7 @@ msgid "Sign out"
 msgstr "Skrá út"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "Sleppa"
 
 msgid "Someone has received information that this person is alive"
 msgstr "Einhver hefur fengið upplýsingar um að þessi manneskja sé á lífi"
@@ -1283,7 +1334,7 @@ msgid "Someone is seeking information about this person"
 msgstr "Einhver er að leita eftir upplýsingum um þessa manneskju"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "Uppruni færslu"
 
 msgid "Source of this record"
 msgstr "Uppruni þessarar færslu"
@@ -1293,13 +1344,13 @@ msgstr "Staða"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "Staða %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "Staða einstaklings"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "Staða þessa einstaklings:"
 
 msgid "Street name"
 msgstr "Götuheiti"
@@ -1307,11 +1358,13 @@ msgstr "Götuheiti"
 msgid "Street name only, no number"
 msgstr "Aðeins götuheiti, ekki húsnúmer"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "Götuheiti, hverfi, borg o.s.frv."
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "Senda inn"
 
 msgid "Subscribe"
 msgstr "Gerast áskrifandi"
@@ -1323,8 +1376,11 @@ msgstr "Gerast áskrifandi að fréttum af %(full_name)s"
 msgid "Subscribe to updates about this person"
 msgstr "Gerast áskrifandi að fréttum af þessari manneskju"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "Gerast áskrifandi að uppfærslum á færslunni þinni"
 
 msgid "Switch to address"
 msgstr "Skipta yfir í heimilisfang"
@@ -1356,7 +1412,7 @@ msgstr "Höfundurinn hefur gert stöðuuppfærslur óvirkar fyrir færsluna."
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "Glósunni um %(full_name)s hefur verið bætt við"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Innsend mynd er of stór. Hladdu inn minni mynd."
@@ -1369,7 +1425,7 @@ msgstr "Ekki er hægt að framlengja þessa færslu."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "Færslan um %(full_name)s hefur verið skráð"
 
 msgid "The record has been deleted."
 msgstr "Færslunni hefur verið eytt."
@@ -1519,7 +1575,7 @@ msgid "Upload your CSV file below"
 msgstr "Sendu CSV-skrána þína inn hér að neðan"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "Nota núgildandi staðsetningu"
 
 msgid "View the record"
 msgstr "Skoða færsluna"
@@ -1530,11 +1586,16 @@ msgstr "Ekkert passar við leitina þína."
 msgid "When should this record disappear?"
 msgstr "Hvenær ætti þessi færsla að hverfa?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "Hvaðan koma þessar upplýsingar?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "Hvaðan kom þessi skráning?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1550,11 +1611,17 @@ msgstr ""
 "Á meðan prófunarstilling er virk er færslum sem eru eldri en sex "
 "klukkustunda gamlar eytt, burtséð frá fyrningardagsetningu."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "Manneskjan sem þú leitar að"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "Manneskja sem þú býrð yfir upplýsingum um"
 
 msgid "Yes"
 msgstr "Já"
@@ -1605,8 +1672,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"Þú getur gerst áskrifandi að uppfærslum sem %(full_name)s setur inn með "
+"því að slá netfangið þitt inn hér"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1635,7 +1702,7 @@ msgid "Your email"
 msgstr "Netfangið þitt"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "Nafnið þitt (krafist)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1704,11 +1771,15 @@ msgstr "[Persónuleit] Stöðuuppfærsla fyrir %(full_name)s"
 msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
 msgstr "[Persónuleit] Þú ert áskrifandi að stöðuuppfærslum fyrir %(full_name)s"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "t.d. Davíð Stefánsson, Davíð eða Stefánsson"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "ytra vefsvæði, venjuleg netgjöld gætu átt við"
 
 msgid "female"
 msgstr "kona"

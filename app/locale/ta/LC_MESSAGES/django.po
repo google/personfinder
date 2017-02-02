@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -152,9 +152,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                %(dup_count)s பதிவுகள் தேர்ந்தெடுக்கப்பட்டன\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -163,6 +165,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                Google\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>தனியுரிமைக் கொள்கை</a> பற்றி மேலும் அறிக.\n"
+"              "
 
 #, python-format
 msgid ""
@@ -172,30 +179,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            இந்த வினவலுடன் பொருந்தும் தேடல் முடிவு(கள்) "
+"%(search_engine_name)s இல் உள்ளன.\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query)s\"க்கான முடிவுகள் ஏதும் இல்லை\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query_name)s\"க்கான முடிவுகள் (எல்லா இருப்பிடமும்):\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            \"%(query)s\"க்கான தேடல் முடிவுகள்\n"
+"          "
 
 #, python-format
 msgid ""
@@ -204,7 +225,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          %(full_name)sஐ ஒத்த பதிவுகள்\n"
 "        "
 
 #, python-format
@@ -366,7 +387,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  உள்ளிட்ட மின்னஞ்சல் முகவரி தவறானது.\n"
 "  "
 
 msgid ""
@@ -584,9 +605,11 @@ msgstr "இன்றிலிருந்து சுமார் 6 மாத�
 msgid "About Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான் அறிமுகம்"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "%(person_name)sக்கான பதிவு சேர்க்கப்பட்டது"
 
 msgid "Age"
 msgstr "வயது"
@@ -596,8 +619,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"நபர் கண்டுபிடிப்பானில் உள்ளிட்ட எல்லா தரவும் பொதுவில் கிடைப்பதோடு, "
+"அனைவரும் பயன்படுத்தக்கூடியதாக இருக்கும். Google இந்தத் தரவின் "
+"துல்லியத்தன்மையை மதிப்பாய்வு செய்வதில்லை அல்லது சரிபார்ப்பதில்லை "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -666,8 +690,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"சேவை விதிமுறைகளைப் பார்க்க, இங்கே கிளிக் செய்யவும் (வெளிப்புறத் தளம்; "
+"வழக்கமான இணைப்புக் கட்டணம் விதிக்கப்படலாம்)"
 
 msgid "Click here to view results."
 msgstr "முடிவுகளைக் காண இங்கே கிளிக் செய்யவும்."
@@ -678,8 +702,11 @@ msgstr "சாளரத்தை மூடு"
 msgid "Compare these records"
 msgstr "இந்தப் பதிவுகளை ஒப்பிடு"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "தொடர்புத் தகவல்"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -746,8 +773,9 @@ msgstr "மின்னஞ்சல் முகவரி"
 msgid "Edit"
 msgstr "திருத்து"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "மின்னஞ்சல் முகவரி"
 
 msgid "Embedding the Application"
 msgstr "பயன்பாட்டை உட்பொதித்தல்"
@@ -775,23 +803,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"காலாவதித் தேதியை %(extension_days)s நாட்களுக்கு நீட்டிக்கவும்\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "ஃபோன் எண்ணுக்கான தேடல் முடிவைப் பெற முடியவில்லை."
 
 msgid "Family name"
 msgstr "குடும்பப் பெயர்"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "குடும்பப் பெயர் (அவசியம்)"
 
 msgid "Feed of updates about this person"
 msgstr "இந்த நபரைப் பற்றிய புதுப்பிப்புகளின் ஊட்டம்"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "கருத்து தெரிவி"
 
 msgid "Follow this link to create a new record"
 msgstr "புதிய பதிவை உருவாக்க இந்த இணைப்பைப் பின்தொடரவும்"
@@ -803,7 +834,7 @@ msgstr "மொபைல் அல்லாத தொலைபேசிகளு�
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "இருப்பிடம்: %(home_location)s"
 
 msgid "Full name"
 msgstr "முழுப் பெயர்"
@@ -812,7 +843,7 @@ msgid "Given name"
 msgstr "முதல் பெயர்"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "முதல் பெயர் (அவசியம்)"
 
 msgid "Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான்"
@@ -843,8 +874,10 @@ msgstr "வீட்டு முகவரி"
 msgid "Home country"
 msgstr "சொந்த நாடு"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "வீட்டு இருப்பிடம்"
 
 msgid "How can this person be reached now?"
 msgstr "இந்த நபரை இப்போது எப்படித் தொடர்புகொள்ளலாம்?"
@@ -853,7 +886,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "இந்த நபரைப் பற்றி அறிய விரும்பும் பிறர் உங்களை எப்படித் தொடர்புகொள்ளலாம்"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "என்னிடம் இவரைப் பற்றிய தகவல் உள்ளது"
 
 msgid "I am seeking information"
 msgstr "நான் தகவலைத் தேடுகிறேன்"
@@ -888,11 +921,17 @@ msgstr "ஸ்பேமைப் பெற்றுள்ளேன்."
 msgid "I prefer not to specify."
 msgstr "நான் எதையும் குறிப்பிட விரும்பவில்லை."
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "எனது சொந்தத் தகவலை உள்ளிட விரும்புகிறேன்"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "பிறரின் தகவலை உள்ளிட விரும்புகிறேன்"
 
 msgid "I'm looking for someone"
 msgstr "ஒருவரைத் தேடிக்கொண்டிருக்கிறேன்"
@@ -978,13 +1017,19 @@ msgstr "தொலைந்தவரின் நடப்பு தொலைப�
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "%(url)s என்பதில் மேலும் பார்க்கவும்"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "பதிவின் ஆதாரம் பற்றிய கூடுதல் தகவல்"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "நபரின் நிலை பற்றிய கூடுதல் தகவல்"
 
 #, python-format
 msgid ""
@@ -994,8 +1039,11 @@ msgstr ""
 "டெவெலப்பர்களுக்கான கூடுதல் தகவலை இப்போது "
 "%(developers_link_html)sஇங்கு%(link_end_html)s கண்டறியலாம்."
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "நபரை அடையாளங்காண்பதற்கான கூடுதல் தகவல்"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1008,13 +1056,16 @@ msgid "Name"
 msgstr "பெயர்"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "பெயர் (தேவை)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "பெயர் தேவைப்படுகிறது. திரும்பச் சென்று மீண்டும் முயற்சிக்கவும்"
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "பெயர் அல்லது மொபைல் எண் (தேவை)"
 
 msgid "Neighborhood"
 msgstr "சுற்றுப்புறங்கள்"
@@ -1039,7 +1090,7 @@ msgid "No notes have been posted"
 msgstr "எந்தக் குறிப்புகளும் இடுகையிடப்படவில்லை"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "நபரின் ஐடி குறிப்பிடப்படவில்லை."
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1047,7 +1098,7 @@ msgstr "இந்த ஐடியில் எந்த நபரும் இ�
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "%(query)sக்கான முடிவுகள் இல்லை"
 
 msgid "No such Authorization entity."
 msgstr "அதுபோன்ற அங்கீகார உட்கூறு இல்லை."
@@ -1116,8 +1167,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"உங்கள் கவனத்திற்கு: உள்ளிட்ட எல்லா தரவும் பொதுவில் கிடைப்பதோடு, அனைவரும் "
+"பார்க்கக்கூடியதாக இருக்கும். Google இந்தத் தரவின் துல்லியத்தன்மையை "
+"மதிப்பாய்வு செய்வதில்லை அல்லது சரிபார்ப்பதில்லை."
 
 msgid "Person Finder"
 msgstr "நபர் கண்டுபிடிப்பான்"
@@ -1132,7 +1184,7 @@ msgid "Photo"
 msgstr "படம்"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "படம் (வெளிப்புறத் தளம்; வழக்கமான இணைப்புக் கட்டணம் விதிக்கப்படலாம்)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1148,8 +1200,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"பேரிடருக்குப் பின்னர் இவருடன் தொடர்பில் இருந்தீர்கள் என்பதை "
+"உறுதிப்படுத்தவும் அல்லது \"இந்த நபரின் நிலை\" என்ற புலத்தை மாற்றவும்."
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1274,7 +1326,7 @@ msgid "Sign out"
 msgstr "வெளியேறு"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "தவிர்"
 
 msgid "Someone has received information that this person is alive"
 msgstr "இவர் உயிரோடு இருப்பதாக ஒருவருக்குத் தகவல் கிடைத்துள்ளது"
@@ -1289,7 +1341,7 @@ msgid "Someone is seeking information about this person"
 msgstr "இந்த நபரைப் பற்றிய தகவலை ஒருவர் தேடிக்கொண்டிருக்கிறார்"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "பதிவு ஆதாரம்"
 
 msgid "Source of this record"
 msgstr "இந்தப் பதிவின் மூலம்"
@@ -1299,13 +1351,13 @@ msgstr "நிலை"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "%(full_name)s இன் நிலை "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "நபரின் நிலை"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "இந்த நபரின் நிலை:"
 
 msgid "Street name"
 msgstr "தெருப் பெயர்"
@@ -1313,11 +1365,13 @@ msgstr "தெருப் பெயர்"
 msgid "Street name only, no number"
 msgstr "தெருப் பெயர் மட்டும், எண் வேண்டாம்"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "தெருப் பெயர், சுற்றுப்புறங்கள், நகரம், மேலும் பல"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "சமர்ப்பி"
 
 msgid "Subscribe"
 msgstr "குழுசேர்"
@@ -1329,8 +1383,11 @@ msgstr "%(full_name)s பற்றிய புதுப்பிப்புக
 msgid "Subscribe to updates about this person"
 msgstr "இந்த நபரைப் பற்றிய புதுப்பிப்புகளைத் தெரிவி"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "உங்கள் பதிவு பற்றிய அறிவிப்புகளுக்கு, குழு சேரவும்"
 
 msgid "Switch to address"
 msgstr "முகவரிக்கு மாறு"
@@ -1362,7 +1419,7 @@ msgstr "இந்தப் பதிவில் நிலை குறித்
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "%(full_name)sக்கான குறிப்பு சேர்க்கப்பட்டது"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "வழங்கியுள்ள படம் மிகவும் பெரிதாக உள்ளது. சிறிய ஒன்றைப் பதிவேற்றவும்."
@@ -1375,7 +1432,7 @@ msgstr "பதிவை நீட்டிக்க முடியாது."
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "%(full_name)sக்கான தகவல் பதிவுசெய்யப்பட்டது"
 
 msgid "The record has been deleted."
 msgstr "பதிவு நீக்கப்பட்டது."
@@ -1531,7 +1588,7 @@ msgid "Upload your CSV file below"
 msgstr "கீழே உங்கள் CSV கோப்பைப் பதிவேற்றவும்"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "தற்போதைய இருப்பிடத்தைப் பயன்படுத்துக"
 
 msgid "View the record"
 msgstr "பதிவைக் காட்டு"
@@ -1542,11 +1599,16 @@ msgstr "உங்கள் தேடலுடன் பொருந்தும�
 msgid "When should this record disappear?"
 msgstr "இந்த விவரத்தை எத்தனை நாள் வைத்திருக்க வேண்டும்?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "இந்தத் தகவல் எங்கிருந்து வந்தது?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "இந்தப் பதிவு எங்கிருந்து வந்தது?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1563,11 +1625,17 @@ msgstr ""
 "சோதனைப் பயன்முறை செயலில் இருக்கும்போது, 6 மணிநேரத்திற்கு மேல் இருக்கும் "
 "பதிவுகள் அதன் காலாவதியாகும் நேரத்தைப் பொருட்படுத்தாமல் நீக்கப்படும்."
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "யாரைத் தேடுகிறீர்கள்"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "யாரைப் பற்றிய தகவல் உங்களிடம் உள்ளது"
 
 msgid "Yes"
 msgstr "ஆம்"
@@ -1620,8 +1688,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"இங்கே உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடுவதன் மூலம், %(full_name)s பற்றிய "
+"அறிவிப்புகளைப் பெறலாம்"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1650,7 +1718,7 @@ msgid "Your email"
 msgstr "உங்கள் மின்னஞ்சல்"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "உங்கள் பெயர் (அவசியம்)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1729,11 +1797,15 @@ msgstr ""
 "[நபர் கண்டுபிடிப்பான்] நீங்கள் %(full_name)s இன் நிலை குறித்த "
 "புதுப்பிப்புகளில் குழுசேர்ந்துள்ளீர்கள்"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "எ.கா., வினோத் குமார், வினோத் அல்லது குமார்"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "வெளிப்புறத் தளம்; வழக்கமான இணைப்புக் கட்டணம் விதிக்கப்படலாம்"
 
 msgid "female"
 msgstr "பெண்"

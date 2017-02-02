@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.2.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -156,9 +156,11 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                %(dup_count)s records selected\n"
+"                កំណត់ត្រា %(dup_count)s ត្រូវបានជ្រើស\n"
 "              "
 
+#. Translators: Text in the footer which provides a link to our privacy
+#. policy.
 #, python-format
 msgid ""
 "\n"
@@ -167,6 +169,11 @@ msgid ""
 "%(target_attr)s>Privacy Policy</a>.\n"
 "              "
 msgstr ""
+"\n"
+"                ស្វែងយល់​បន្ថែម​អំពី\n"
+"                <a href=\"%(privacy_policy_url)s\" "
+"%(target_attr)s>គោលការណ៍​ឯកជនភាព</a> Google ។\n"
+"              "
 
 #, python-format
 msgid ""
@@ -176,30 +183,44 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"            %(search_engine_name)s has search result(s) matching this "
-"query.\n"
+"            %(search_engine_name)s "
+"មាន​លទ្ធផល​ស្វែង​រក​ត្រូវ​គ្នា​នឹង​សំណួរ​នេះ។\n"
 "          "
 
+#. Translators: The title of the search results when there are no
+#. results found.
 #, python-format
 msgid ""
 "\n"
 "            No results found for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            រក​មិនឃើញ​លទ្ធផល​សម្រាប់៖ \"%(query)s\" ទេ\n"
+"          "
 
+#. Translators: The title of the search results which show a list
+#. of persons with the given person name in any locations.
 #, python-format
 msgid ""
 "\n"
 "            Results for \"%(query_name)s\" (any location):\n"
 "          "
 msgstr ""
+"\n"
+"            លទ្ធផល​សម្រាប់ \"%(query_name)s\" (គ្រប់ទីកន្លែង)៖\n"
+"          "
 
+#. Translators: The title of the search results for the given query.
 #, python-format
 msgid ""
 "\n"
 "            Search results for: \"%(query)s\"\n"
 "          "
 msgstr ""
+"\n"
+"            លទ្ធផល​ស្វែងរក​សម្រាប់៖ \"%(query)s\"\n"
+"          "
 
 #, python-format
 msgid ""
@@ -208,7 +229,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Records Similar to: %(full_name)s\n"
+"          កំណត់​ត្រា​ស្រដៀង​ទៅ​នឹង៖ %(full_name)s\n"
 "        "
 
 #, python-format
@@ -369,7 +390,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  The Email address you entered is not valid.\n"
+"  អាសយដ្ឋានអ៊ីមែលដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវទេ។\n"
 "  "
 
 msgid ""
@@ -585,9 +606,11 @@ msgstr "ប្រហែល​​៦​ខែ (១៨០​ថ្ងៃ) ចា�
 msgid "About Google Person Finder"
 msgstr "អំពី​ស្វែង​រក​មនុស្ស​ Google"
 
+#. Translators: An SMS message sent to a user when the user
+#. successfully added a record for the given person.
 #, python-format
 msgid "Added a record for: %(person_name)s"
-msgstr ""
+msgstr "បាន​បញ្ចូលកំណត់ត្រា​សម្រាប់៖ %(person_name)s"
 
 msgid "Age"
 msgstr "អាយុ"
@@ -597,8 +620,9 @@ msgid ""
 "by anyone. Google does not review or verify the accuracy of this data "
 "google.org/personfinder/global/tos"
 msgstr ""
-"All data entered in Person Finder is available to the public and usable "
-"by anyone. Google does not review or verify the accuracy of this data "
+"ទិន្នន័យទាំងអស់ដែលបានបញ្ចូលទៅក្នុងកម្មវិធីស្វែងរកមនុស្សមានផ្តល់ជូនសម្រាប់សាធារណៈជន"
+" និងអាចប្រើបានដោយអ្នករាល់គ្នា។ Google មិនពិនិត្យមើល "
+"ឬផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃទិន្នន័យនេះទេ "
 "google.org/personfinder/global/tos"
 
 msgid "Alternate family names"
@@ -669,8 +693,8 @@ msgid ""
 "Click here to see the terms of service (external site; normal connection "
 "fee may apply)"
 msgstr ""
-"Click here to see the terms of service (external site; normal connection "
-"fee may apply)"
+"ចុចទីនេះដើម្បីមើលលក្ខខណ្ឌប្រើប្រាស់ (គេហទំព័រខាងក្រៅ "
+"អាចអនុវត្តតម្លៃនៃការតភ្ជាប់ធម្មតា)"
 
 msgid "Click here to view results."
 msgstr "សូម​ចុច​ទីនេះ​ដើម្បី​មើល​លទ្ធផល​។"
@@ -681,8 +705,11 @@ msgstr "បិទ​បង្អួច"
 msgid "Compare these records"
 msgstr "ប្រៀប​ធៀប​កំណត់​ត្រា​ទាំងនេះ"
 
+#. Translators: The title of a section to input the user's own
+#. email address and phone number, in the form to register a
+#. person record.
 msgid "Contact information"
-msgstr ""
+msgstr "ព័ត៌មាន​ទំនាក់​ទំនង"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
@@ -747,8 +774,9 @@ msgstr "អាសយដ្ឋាន​អ៊ី​មែល"
 msgid "Edit"
 msgstr "កែសម្រួល"
 
+#. Translators: The label for an email address field.
 msgid "Email address"
-msgstr ""
+msgstr "អាសយដ្ឋាន​អ៊ីមែល​"
 
 msgid "Embedding the Application"
 msgstr "ការ​បង្កប់​កម្មវិធី"
@@ -776,23 +804,26 @@ msgid ""
 "Extend expiration date by %(extension_days)s days\n"
 "                "
 msgstr ""
-"Extend expiration date by %(extension_days)s days\n"
+"ពន្យារកាលបរិច្ឆេទផុតកំណត់ត្រឹម %(extension_days)s ថ្ងៃ\n"
 "                "
 
+#. Translators: An error message indicating that we
+#. failed to obtain search result for the phone number
+#. given by the user.
 msgid "Failed to obtain search result for the phone number."
-msgstr ""
+msgstr "មិនអាច​​ទាញយកលទ្ធផល​ស្វែងរក​សម្រាប់​លេខ​ទូរសព្ទ​នេះ​បានទេ។"
 
 msgid "Family name"
 msgstr "នាម​ត្រកូល"
 
 msgid "Family name (required)"
-msgstr "Family name (required)"
+msgstr "ត្រកូល (តម្រូវឲ្យមាន)"
 
 msgid "Feed of updates about this person"
 msgstr "ព័ត៌មាន​បច្ចុប្បន្ន​ភាព​អំពី​បុគ្គល​នេះ"
 
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "មតិស្ថាបនា"
 
 msgid "Follow this link to create a new record"
 msgstr "សូម​អនុវត្ត​តាម​តំណ​ភ្ជាប់​នេះ​ដើម្បី​បង្កើត​កំណត់ត្រា​ថ្មីមួយ"
@@ -806,7 +837,7 @@ msgstr ""
 
 #, python-format
 msgid "From: %(home_location)s"
-msgstr "From: %(home_location)s"
+msgstr "ពី៖ %(home_location)s"
 
 msgid "Full name"
 msgstr "ឈ្មោះ​ពេញ"
@@ -815,7 +846,7 @@ msgid "Given name"
 msgstr "នាម​ខ្លួន"
 
 msgid "Given name (required)"
-msgstr "Given name (required)"
+msgstr "នាមខ្លួន (តម្រូវឲ្យមាន)"
 
 msgid "Google Person Finder"
 msgstr "កម្ម​វិធី​រក​មនុស្ស Google"
@@ -846,8 +877,10 @@ msgstr "អាសយដ្ឋាន​ទីលំនៅ"
 msgid "Home country"
 msgstr "ប្រទេស​កំណើត"
 
+#. Translators: A label the home location field in the form to
+#. search person records.
 msgid "Home location"
-msgstr ""
+msgstr "ទីតាំង​ផ្ទះ"
 
 msgid "How can this person be reached now?"
 msgstr "តើ​អាច​ទៅ​ដល់​បុគ្គល​នេះ​បាន​ដោយ​របៀប​ណា​​​ឥឡូវ​នេះ​?"
@@ -856,7 +889,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr "របៀប​ដែល​អ្នក​ដទៃ​ដែល​បាន​ចាប់​អារម្មណ៍​លើ​បុគ្គល​នេះ​អាច​ទាក់ទង​អ្នក​"
 
 msgid "I Have Information About This Person"
-msgstr "I Have Information About This Person"
+msgstr "ខ្ញុំមានព័ត៌មានអំពីបុគ្គលម្នាក់នេះ"
 
 msgid "I am seeking information"
 msgstr "ខ្ញុំ​កំពុង​ស្វែង​រក​ព័ត៌​មាន"
@@ -891,11 +924,17 @@ msgstr "ខ្ញុំ​បាន​ទទួល​សារ​ឥត​បា
 msgid "I prefer not to specify."
 msgstr "ខ្ញុំ​ពេញ​ចិត្ត​​មិន​បញ្ជាក់​។"
 
+#. Translators: The label of an option to input the user's
+#. own information, not someone else's, in the form to
+#. register a person record.
 msgid "I want to input my own information"
-msgstr ""
+msgstr "ខ្ញុំ​ចង់បញ្ចូល​ព័ត៌មាន​ផ្ទាល់ខ្លួន​របស់​ខ្ញុំ"
 
+#. Translators: The label of an option to input someone
+#. else's information, not of the user themselves, in the
+#. form to register a person record.
 msgid "I want to input someone else's information"
-msgstr ""
+msgstr "ខ្ញុំ​ចង់បញ្ចូល​ព័ត៌មាន​របស់​អ្នកផ្សេង"
 
 msgid "I'm looking for someone"
 msgstr "ខ្ញុំ​កំពុង​តែ​ស្វែង​រក​នរណា​ម្នាក់"
@@ -981,13 +1020,19 @@ msgstr "លេខ​ទូរស័ព្ទ​បច្ចុប្បន្ន
 
 #, python-format
 msgid "More at: %(url)s"
-msgstr "More at: %(url)s"
+msgstr "ព័ត៌មានបន្ថែមនៅ៖ %(url)s"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information about the source of the record,
+#. in the form to register a person record.
 msgid "More information about source of record"
-msgstr ""
+msgstr "ព័ត៌មាន​បន្ថែម​អំពី​ប្រភពនៃ​កំណត់ត្រា"
 
+#. Translators: A link to expand the form to allow the user to input
+#. more information about the status of the person, in the form to either
+#. register a person record or add a note to an existing record.
 msgid "More information about status of the person"
-msgstr ""
+msgstr "ព័ត៌មាន​បន្ថែម​អំពី​ស្ថានភាព​របស់​បុគ្គល"
 
 #, python-format
 msgid ""
@@ -997,8 +1042,11 @@ msgstr ""
 "ព័ត៌មាន​បន្ថែម​ទៀត​សម្រាប់​អ្នក​អភិវឌ្ឍន៍អាច​រក​ឃើញ​បាន​ឥឡូវ "
 "%(developers_link_html)sទីនេះ%(link_end_html)s។"
 
+#. Translators: A link to expand the form to allow the user to
+#. input more detailed information to identify the person, in the
+#. form to register a person record.
 msgid "More information to identify the person"
-msgstr ""
+msgstr "ព័ត៌មាន​បន្ថែម​ដើម្បី​កំណត់​អត្តសញ្ញាណ​បុគ្គល"
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -1011,13 +1059,16 @@ msgid "Name"
 msgstr "ឈ្មោះ"
 
 msgid "Name (required)"
-msgstr ""
+msgstr "ឈ្មោះ (ទាមទារ)"
 
 msgid "Name is required.  Please go back and try again."
 msgstr "ឈ្មោះ​ត្រូវ​បាន​ទាមទារ​។ សូម​ត្រឡប់​ក្រោយ​ហើយ​ព្យាយាម​ម្ដង​ទៀត​។"
 
+#. Translators: The label of a field for either the name of the
+#. person or their mobile phone number, in the form to search
+#. person records.
 msgid "Name or mobile phone number (required)"
-msgstr ""
+msgstr "ឈ្មោះ ឬ​លេខ​ទូរសព្ទ​ចល័ត (តម្រូវ​ឲ្យ​មាន)"
 
 msgid "Neighborhood"
 msgstr "អ្នក​ជិត​ខាង"
@@ -1040,7 +1091,7 @@ msgid "No notes have been posted"
 msgstr "មិនមាន​កំណត់​ចំណាំ​ត្រូវ​បាន​ប្រកាស​"
 
 msgid "No person id was specified."
-msgstr "No person id was specified."
+msgstr "គ្មានលេខសម្គាល់បុគ្គលណាបានបញ្ជាក់ទេ"
 
 #, python-format
 msgid "No person with ID: %(id_str)s."
@@ -1048,7 +1099,7 @@ msgstr "មិន​មាន​បុគ្គល​ជាមួយ​លេខ
 
 #, python-format
 msgid "No results found for: %(query)s"
-msgstr "No results found for: %(query)s"
+msgstr "រកមិនឃើញលទ្ធផលសម្រាប់៖ %(query)s ទេ"
 
 msgid "No such Authorization entity."
 msgstr "មិន​មាន​​ធាតុ​​អនុញ្ញាត​បែប​នេះ​ទេ។"
@@ -1118,8 +1169,9 @@ msgid ""
 "PLEASE NOTE: All data entered is available to the public and usable by "
 "anyone.  Google does not review or verify the accuracy of this data."
 msgstr ""
-"PLEASE NOTE: All data entered is available to the public and usable by "
-"anyone.  Google does not review or verify the accuracy of this data."
+"សូមចំណាំ៖ ទិន្នន័យទាំងអស់មានផ្តល់ជូនសម្រាប់សាធារណៈជន "
+"និងអាចប្រើបានដោយអ្នករាល់គ្នា។ Google មិនពិនិត្យមើល "
+"ឬផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃទិន្នន័យនេះទេ។"
 
 msgid "Person Finder"
 msgstr "កម្ម​វិធី​រក​មនុស្ស"
@@ -1134,7 +1186,7 @@ msgid "Photo"
 msgstr "រូបថត"
 
 msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Photo (external site; normal connection fee may apply)"
+msgstr "រូបថត (គេហទំព័រខាងក្រៅ អាចអនុវត្តតម្លៃនៃការតភ្ជាប់ធម្មតា)"
 
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
@@ -1150,8 +1202,8 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
-"Please check that you have been in contact with the person after the "
-"disaster, or change the \"Status of this person\" field."
+"សូមពិនិត្យមើលថាអ្នកបានធ្វើការទាក់ទងជាមួយបុគ្គលនេះបន្ទាប់ពីគ្រោះមហន្តរាយ "
+"ឬផ្លាស់ប្តូរប្រអប់ \"ស្ថានភាពបុគ្គលនេះ\"។"
 
 msgid ""
 "Please check that you have been in contact with the person after the "
@@ -1272,7 +1324,7 @@ msgid "Sign out"
 msgstr "ចេញ"
 
 msgid "Skip"
-msgstr "Skip"
+msgstr "រំលង"
 
 msgid "Someone has received information that this person is alive"
 msgstr "មាន​នរណា​ម្នាក់​បាន​ទទួល​ព័​ត៌​មាន​ថា​បុគ្គល​នេះ​គឺ​នៅ​រស់"
@@ -1287,7 +1339,7 @@ msgid "Someone is seeking information about this person"
 msgstr "មាន​នរណា​ម្នាក់​កំពុង​ស្វែង​រក​ព័ត៌មាន​អំពី​បុគ្គល​នេះ"
 
 msgid "Source of Record"
-msgstr "Source of Record"
+msgstr "ប្រភពនៃកំណត់ត្រា"
 
 msgid "Source of this record"
 msgstr "ប្រភព​នៃ​កំណត់​ត្រា​នេះ"
@@ -1297,13 +1349,13 @@ msgstr "ស្ថានភាព"
 
 #, python-format
 msgid "Status of %(full_name)s "
-msgstr "Status of %(full_name)s "
+msgstr "ស្ថានភាព %(full_name)s "
 
 msgid "Status of Person"
-msgstr "Status of Person"
+msgstr "ស្ថានភាពបុគ្គល"
 
 msgid "Status of this person:"
-msgstr "Status of this person:"
+msgstr "ស្ថានភាពបុគ្គលនេះ៖"
 
 msgid "Street name"
 msgstr "ឈ្មោះ​ផ្លូវ"
@@ -1311,11 +1363,13 @@ msgstr "ឈ្មោះ​ផ្លូវ"
 msgid "Street name only, no number"
 msgstr "តែ​ឈ្មោះ​ផ្លូវ​ប៉ុណ្ណោះ​ គ្មាន​លេខ"
 
+#. Translators: A placeholder text for the home location field
+#. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
-msgstr ""
+msgstr "ឈ្មោះ​ផ្លូវ តំបន់ ទីក្រុង ។ល។"
 
 msgid "Submit"
-msgstr "Submit"
+msgstr "ដាក់​ស្នើ"
 
 msgid "Subscribe"
 msgstr "ជា​វ​ប្រចាំ"
@@ -1327,8 +1381,11 @@ msgstr "ជា​វ​ប្រចាំ​ទៅ​ភាព​ទាន់ស
 msgid "Subscribe to updates about this person"
 msgstr "ជា​វ​ប្រចាំ​ដើម្បី​ទទួល​បច្ចុប្បន្នភាព​របស់​បុគ្គល​នេះ"
 
+#. Translators: The label for a check-box to subscribe to
+#. updates about the person record the user creates, in the
+#. form to register a person record.
 msgid "Subscribe to updates about your record"
-msgstr ""
+msgstr "ជាវ​ការធ្វើ​បច្ចុប្បន្នភាព​អំពី​កំណត់ត្រា​របស់​អ្នក"
 
 msgid "Switch to address"
 msgstr "ប្តូ​រ​ទៅ​អាសយដ្ឋាន​"
@@ -1362,7 +1419,7 @@ msgstr "អ្នកនិពន្ធ​បាន​បិទ​ការ​ធ
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
-msgstr "The note for %(full_name)s has been added"
+msgstr "ចំណាំសម្រាប់ %(full_name)s ត្រូវបានបន្ថែម"
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1377,7 +1434,7 @@ msgstr "កំណត់​ត្រា​មិន​អាច​ត្រូវ
 
 #, python-format
 msgid "The record for %(full_name)s has been registered"
-msgstr "The record for %(full_name)s has been registered"
+msgstr "កំណត់ត្រាសម្រាប់ %(full_name)s ត្រូវបានចុះឈ្មោះ"
 
 msgid "The record has been deleted."
 msgstr "កំណត់​ត្រា​ត្រូវ​បាន​លុប​។"
@@ -1535,7 +1592,7 @@ msgid "Upload your CSV file below"
 msgstr "ផ្ទុក​ឯកសារ​ CSV របស់​អ្នក​ខាង​ក្រោម​ឡើង"
 
 msgid "Use current location"
-msgstr "Use current location"
+msgstr "ប្រើទីតាំងបច្ចុប្បន្ន"
 
 msgid "View the record"
 msgstr "មើល​កំណត់​ត្រា​"
@@ -1546,11 +1603,16 @@ msgstr "យើង​មិន​មាន​អ្វី​ដែល​ត្រ
 msgid "When should this record disappear?"
 msgstr "ពេល​ណា​ដែល​កំណត់​ត្រា​នេះ​គួរ​តែ​បាត់​ទៅវិញ​?"
 
+#. Translators: A title of a section to input the source of the
+#. person information e.g., the name of the person who originally
+#. provided the information.
 msgid "Where did this information come from?"
 msgstr "តើ​ព័ត៌​មាន​នេះ​បាន​មក​ពី​ណា​?"
 
+#. Translators: A title of a section to input the source of the
+#. person record e.g., the URL which contains the record.
 msgid "Where did this record come from?"
-msgstr ""
+msgstr "តើ​កំណត់​ត្រា​នេះ​បាន​មក​ពី​ណា?"
 
 msgid ""
 "While test mode is in effect, records that are over 24 hours old are "
@@ -1568,11 +1630,17 @@ msgstr ""
 "កំណត់​ត្រា​ដែល​មាន​អាយុ​លើស​ពី 6 "
 "ម៉ោង​ត្រូវ​បាន​លុប​ដោយ​មិន​គិត​ពី​កាល​បរិច្ឆេទ​ផុតកំណត់​។"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user is looking for, in the form to register
+#. a person record.
 msgid "Who you are looking for"
-msgstr ""
+msgstr "បុគ្គល​ដែល​អ្នក​កំពុង​ស្វែងរក"
 
+#. Translators: The title of a section to input information about
+#. the person whom the user have information about, in the form to
+#. register a person record.
 msgid "Who you have information about"
-msgstr ""
+msgstr "បុគ្គល​ដែល​អ្នក​មាន​ព័ត៌មាន"
 
 msgid "Yes"
 msgstr "បាទ/ចាស"
@@ -1623,8 +1691,8 @@ msgid ""
 "You can subscribe to updates about %(full_name)s by entering your e-mail "
 "address here"
 msgstr ""
-"You can subscribe to updates about %(full_name)s by entering your e-mail "
-"address here"
+"អ្នកអាចជាវដើម្បីទទួលបានការអាប់ដេតអំពី %(full_name)s "
+"ដោយបញ្ចូលអាសយដ្ឋានអ៊ីមែលរបស់អ្នកនៅទីនេះ"
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -1654,7 +1722,7 @@ msgid "Your email"
 msgstr "អ៊ី​មែល​របស់​អ្នក"
 
 msgid "Your name (required)"
-msgstr "Your name (required)"
+msgstr "ឈ្មោះរបស់អ្នក (តម្រូវឲ្យមាន)"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
@@ -1732,11 +1800,15 @@ msgstr ""
 "[អ្នក​ស្វែង​រក​មនុស្ស] "
 "អ្នក​បាន​ជាវ​ប្រចាំ​ទៅ​ស្ថានភាព​បច្ចុប្បន្ន​ភាព​សម្រាប់ %(full_name)s"
 
+#. Translators: A placeholder text for the name field in the form
+#. to search person records. It indicates that the user can put
+#. either a full name, a given name or a family name. The example
+#. name should be changed to a typical name in the language.
 msgid "e.g., Will Smith, Will, or Smith"
-msgstr ""
+msgstr "ឧ៖ Will Smith, Will, ឬ Smith"
 
 msgid "external site; normal connection fee may apply"
-msgstr "external site; normal connection fee may apply"
+msgstr "គេហទំព័រខាងក្រៅ អាចអនុវត្តតម្លៃនៃការតភ្ជាប់ធម្មតា"
 
 msgid "female"
 msgstr "ស្រី"
