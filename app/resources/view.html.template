@@ -19,15 +19,19 @@
 
 {% block logo %}
   {% if params.query_name or params.given_name or params.family_name %}
+    {% comment %}
+      Change the destination of the back button to the search result page
+      (The default is the repository start page).
+    {% endcomment %}
     {% if env.rtl %}
       <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
     {% else %}
       <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
     {% endif %}
+    {% trans "Google Person Finder" %}
   {% else %}
     {{block.super}}
   {% endif %}
-  {% trans "Google Person Finder" %}
 {% endblock %}
 
 {% block head %}
@@ -84,14 +88,14 @@
                     <span class="label">{% trans "Alternate names" %}:</span>
                     <span class="value">{{person.alternate_names_list|join:"<br>"}}</span>
                   </div>
-                {% endif %} 
+                {% endif %}
               {% endif %}
-              {% if person.sex_text %}           
+              {% if person.sex_text %}
                 <div class="field">
                   <span class="label">{% trans "Sex" %}:</span>
                   <span class="value">{{person.sex_text}}</span>
                 </div>
-              {% endif %} 
+              {% endif %}
               {% comment %}
               Don't show the date of birth in the UI for now.
               <div class="field">
@@ -104,12 +108,12 @@
                   <span class="label">{% trans "Age" %}:</span>
                   <span class="value">{{person.age}}</span>
                 </div>
-              {% endif %}  
+              {% endif %}
               <div class="end-multi-columns"></div>
             </div>
-          {% endif %}  
+          {% endif %}
 
-          {% if person.home_street or person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}          
+          {% if person.home_street or person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}
             <div class="address section">
               <h2>{% trans "Home address" %}</h2>
               {% if person.home_street %}
@@ -118,7 +122,7 @@
                   <span class="value">{{person.home_street}}</span>
                 </div>
               {% endif %}
-              {% if person.home_neighborhood %}  
+              {% if person.home_neighborhood %}
                 <div class="field">
                   <span class="label">{% trans "Neighborhood" %}:</span>
                   <span class="value">{{person.home_neighborhood}}</span>
@@ -152,7 +156,7 @@
               {% endif %}
               <div class="end-multi-columns"></div>
             </div>
-          {% endif %}  
+          {% endif %}
 
           {% if person.description %}
             <div class="description section">
@@ -211,8 +215,8 @@
             <h2>{% trans "Source of this record" %}</h2>
             <div class="field">
               <span class="label">{% trans "Author's name" %}:</span>
-              <span class="value">{{person.author_name}}</span>                
-            </div>            
+              <span class="value">{{person.author_name}}</span>
+            </div>
             {% if env.enable_captcha %}
               {% if person.author_phone %}
                 <div class="field">
@@ -247,7 +251,7 @@
                     {% endif %}
                   </span>
                 </div>
-              {% endif %}  
+              {% endif %}
             {% endif %}
             {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
               <div class="field">
