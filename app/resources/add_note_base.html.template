@@ -19,7 +19,7 @@
 
 <div class="status card">
   {% if not markdup %}
-    <h1>Status</h1>
+    <h1>{% trans "Status" %}</h1>
     <div class="status subsection" id="status_info"
       {% if env.enable_javascript %}
          {% if params.create_mode %}
