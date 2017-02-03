@@ -127,8 +127,11 @@ class Handler(BaseHandler):
             'given_name': self.params.given_name,
             'family_name': self.params.family_name,
         }
+        # Links to the default UI from the small UI. Otherwise preserves "ui"
+        # param of the current page. Note that get_url() preserves "ui" param
+        # by default (i.e., when it's not specified in +params+).
         if self.env.ui == 'small':
-            params['ui'] = None  # Links to the default UI.
+            params['ui'] = None
         return self.get_url('/results', **params)
 
     def get(self):
@@ -137,8 +140,11 @@ class Handler(BaseHandler):
             'given_name': self.params.given_name,
             'family_name': self.params.family_name,
         }
+        # Links to the default UI from the small UI. Otherwise preserves "ui"
+        # param of the current page. Note that get_url() preserves "ui" param
+        # by default (i.e., when it's not specified in +params+).
         if self.env.ui == 'small':
-            params['ui'] = None  # Links to the default UI.
+            params['ui'] = None
         create_url = self.get_url('/create', **params)
 
         min_query_word_length = self.config.min_query_word_length
