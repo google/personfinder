@@ -120,22 +120,33 @@ class Handler(BaseHandler):
             '/query', role=self.params.role, error='error', query=query.query)
 
     def get_results_url(self, query_name, query_location):
-        return self.get_url(
-            '/results',
-            ui='' if self.env.ui == 'small' else self.env.ui,
-            query_name=query_name,
-            query_location=query_location,
-            role=self.params.role,
-            given_name=self.params.given_name,
-            family_name=self.params.family_name)
+        params = {
+            'query_name': query_name,
+            'query_location': query_location,
+            'role': self.params.role,
+            'given_name': self.params.given_name,
+            'family_name': self.params.family_name,
+        }
+        # Links to the default UI from the small UI. Otherwise preserves "ui"
+        # param of the current page. Note that get_url() preserves "ui" param
+        # by default (i.e., when it's not specified in +params+).
+        if self.env.ui == 'small':
+            params['ui'] = None
+        return self.get_url('/results', **params)
 
     def get(self):
-        create_url = self.get_url(
-            '/create',
-            ui='' if self.env.ui == 'small' else self.env.ui,
-            role=self.params.role,
-            given_name=self.params.given_name,
-            family_name=self.params.family_name)
+        params = {
+            'role': self.params.role,
+            'given_name': self.params.given_name,
+            'family_name': self.params.family_name,
+        }
+        # Links to the default UI from the small UI. Otherwise preserves "ui"
+        # param of the current page. Note that get_url() preserves "ui" param
+        # by default (i.e., when it's not specified in +params+).
+        if self.env.ui == 'small':
+            params['ui'] = None
+        create_url = self.get_url('/create', **params)
+
         min_query_word_length = self.config.min_query_word_length
 
         third_party_search_engines = []
@@ -192,8 +203,7 @@ class Handler(BaseHandler):
                                        create_url=create_url)
                 else:
                     # No matches; proceed to create a new record.
-                    logging.info(repr(self.params.__dict__))
-                    return self.redirect('/create', **self.params.__dict__)
+                    return self.redirect(create_url)
 
         if self.params.role == 'seek':
             query_dict = {'name': self.params.query_name,
