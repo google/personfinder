@@ -847,11 +847,6 @@ class BaseHandler(webapp.RequestHandler):
 
     def __get_env_language_for_babel(self):
         language_code = self.env.lang
-        # A hack to avoid rejecting zh-hk locale.
-        # This corresponds to the hack with LANGUAGE_SYNONYMS in const.py.
-        # TODO: remove these 2 lines when a original code can be passed to here.
-        if language_code == 'zhhk':
-            language_code = 'zh-hk'
         try:
             return babel.Locale.parse(language_code, sep='-')
         except babel.UnknownLocaleError as e:
