@@ -29,8 +29,8 @@ WORKDIR   /opt/
 ADD https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.50.zip /opt/
 RUN unzip -qq google_appengine_1.9.50.zip && rm google_appengine_1.9.50.zip
 
-ADD gae-run-app.sh      /usr/bin/
-ADD setup_datastore.sh  /usr/bin/
+ADD docker/gae-run-app.sh      /usr/bin/
+ADD docker/setup_datastore.sh  /usr/bin/
 
 WORKDIR /opt/personfinder/
 
