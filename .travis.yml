@@ -11,8 +11,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.10.0
 
-before_install:
-
+install: sudo pip install -r requirements.txt -t app/vendors
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -21,5 +20,5 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
 
-script: docker-compose exec pf_web tools/all_tests
+script: docker-compose exec web tools/all_tests
 
