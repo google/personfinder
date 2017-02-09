@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+      - "49532:8002"
+    volumes:
+      - .:/opt/personfinder
+
+    command: docker/gae-run-app.sh
