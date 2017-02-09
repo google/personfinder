@@ -11,7 +11,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.10.0
 
-install: sudo pip install -r requirements.txt -t app/vendors
+install: true 
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
