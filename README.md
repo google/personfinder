@@ -1,6 +1,4 @@
-# Person Finder
-
-[![Build Status](https://travis-ci.org/google/personfinder.svg?branch=master)](https://travis-ci.org/google/personfinder)
+# Person Finder [![Build Status](https://travis-ci.org/google/personfinder.svg?branch=master)](https://travis-ci.org/google/personfinder)
 
 Person Finder is a searchable missing person database written in Python and
 hosted on App Engine.
