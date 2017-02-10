@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PFIF Diff</title>
+  </head>
+  <body>
+    <form action="/diff/results" method="post"
+        enctype="multipart/form-data">
+
+      <h1>Diff: File A</h1>
+      <p>Put PFIF XML here to validate it:</p>
+      <div><textarea name="pfif_xml_1" rows="3" cols="60"></textarea></div>
+      <div>Or, upload a file: <input name="pfif_xml_file_1" type="file">
+      </div>
+      <div>Or, choose the URL of a PFIF XML file:
+        <input type="text" name="pfif_xml_url_1"></div>
+
+      <h1>Diff: File B</h1>
+      <p>Put PFIF XML here to validate it:</p>
+      <div><textarea name="pfif_xml_2" rows="3" cols="60"></textarea></div>
+      <div>Or, upload a file: <input name="pfif_xml_file_2" type="file">
+      </div>
+      <div>Or, choose the URL of a PFIF XML file:
+        <input type="text" name="pfif_xml_url_2"> </div>
+
+      <br>
+      <div><input type="checkbox" name="options"
+        value="group_messages_by_record" checked>Group Messages by Record</div>
+      <div><input type="checkbox" name="options"
+        value="text_is_case_sensitive" checked>Case Sensitive Diff?</div>
+      <div><input type="checkbox" name="options" value="omit_blank_fields">
+        Omit Blank Fields. Normally, a blank field is different from if that
+        field is not present at all.  If you check this box, they will be the
+        same.</div>
+      <div><input type="text" name="ignore_fields">Ignore these fields. They
+          will not count as added, removed, or changed.  Use a space-delimited
+          list of fields (ie, "source_date age photo_url" without the
+          quotes).</div>
+
+      <div><input type="submit" value="Find Differences"></div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+/* Copyright 2011 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Inspiration (and some CSS) for the output design from the W3 validator.
+ * See the W3C Software Notice and Licence at
+ * http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+ */
+div.all_messages {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding:0;
+  border-top: 1px solid #EAEBEE;
+  line-height: 135%;
+  margin-bottom: .65em;
+}
+
+div.message {
+  border: 1px solid #EAEBEE;
+  border-top: 0;
+  list-style-position: inside;
+  padding: 1em;
+  padding-bottom: 2em;
+  clear: both;
+}
+
+div.message:hover {
+  background-color: #fcfcfc;
+}
+
+span.message_line_number {
+  font-style:italic;
+}
+
+span.message_category {
+  font-weight:bold;
+}
+
+span.message_data {
+  font-weight:bold;
+}
+
+div.message_xml_full_line {
+  color: black;
+  background-color: #EAEBEE;
+  font-family: monospace;
+  white-space: pre;
+  display: block;
+}
+
+div.grouped_record_header {
+  font-weight:bold;
+}
