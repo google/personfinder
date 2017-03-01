@@ -1,0 +1,11 @@
+# .coveragerc to control coverage.  Modified from
+# http://nedbatchelder.com/code/coverage/config.html
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+  # Have to re-enable the standard pragma
+  pragma: no cover
+  # unit tests can't test this, so don't worry if it isn't covered
+  if __name__ == .__main__.:
+

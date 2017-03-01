@@ -1,0 +1,14 @@
+#!/bin/bash
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+echo "Erasing old coverage data..."
+coverage erase > /dev/null 2>&1
+
+echo "Running unit tests with coverage..."
+$TOOLS_DIR/unit_tests --with-coverage > /dev/null 2>&1
+
+# Run coverage testing on every python file in the root of the app directory.
+# Give line numbers for missing coverage.
+echo "Coverage Report:"
+coverage report --show-missing --rcfile=$TOOLS_DIR/.coveragerc $APP_DIR/*.py

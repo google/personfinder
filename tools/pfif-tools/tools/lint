@@ -1,0 +1,37 @@
+#!/bin/bash
+# From Google Person Finder: http://code.google.com/p/googlepersonfinder/
+
+# use pylint to check the args.
+# requires installing pylint http://www.logilab.org/project/pylint
+# short form: easy_install pylint (may require root)
+LINT=$(which pylint)
+# Don't generate a full report; only display the issues
+REPORTS="no"
+# Indent two spaces, not four spaces
+INDENT_STRING="  "
+# Long method names are okay
+METHOD_REGEX="[a-z_][a-z0-9_]+$"
+# We want to know the lint IDs so that we can disable them if need be
+INCLUDE_IDS="yes"
+# Colorization is easier to read than plain text
+FORMAT="colorized"
+# All methods are public, so it's okay to have lots of public methods
+DISABLE="R0904"
+# It's okay to have container classes that don't have any methods
+DISABLE="${DISABLE},R0903"
+# It's okay to have lots of arguments
+DISABLE="${DISABLE},R0913"
+# It's okay to have long files
+DISABLE="${DISABLE},C0302"
+# When we pylint: disable something, we don't need to hear about it
+DISABLE="${DISABLE},I0011"
+
+if [ -z "$LINT" ]; then
+  echo "pylint not found, please install."
+  exit 1
+fi
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+${LINT} --reports=${REPORTS} "--indent-string=${INDENT_STRING}" \
+  "--method-rgx=${METHOD_REGEX}" --disable=${DISABLE} \
+  --include-ids=${INCLUDE_IDS} --output-format=${FORMAT} "$@"

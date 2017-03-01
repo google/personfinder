@@ -1,0 +1,15 @@
+#!/bin/bash
+# Runs the lint script on every .py file in the app directory and test
+# directories.
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+# lint_files is an array contains all files in app_dir or tests_dir
+lint_files=( $APP_DIR/*.py $TESTS_DIR/*.py )
+
+# pfif.py is maintained by Google Person Finder and has different style
+# conventions, so we don't include it.
+# {array[@]} expands to all elements in the array.
+# {array[@]#foo} expands to all elements in the array excluding foo.
+# see http://tldp.org/LDP/abs/html/arrays.html
+$TOOLS_DIR/lint ${lint_files[@]#*/pfif.py} "$@"
