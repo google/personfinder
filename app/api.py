@@ -618,6 +618,12 @@ class Stats(utils.BaseHandler):
 
 
 class HandleSMS(utils.BaseHandler):
+    """Person Finder doesn't directly handle SMSes from users. They are handled
+    by Google internal SMS gateway. When the gateway receives an SMS, it sends
+    an XML HTTP request to Person Finder, and sends back its response to the
+    user via SMS. This feature only works on the Google official instance of
+    Person Finder unless you provide an equivalent gateway by yourself.
+    """
     https_required = True
     repo_required = False
 
