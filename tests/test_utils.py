@@ -27,6 +27,9 @@ from google.appengine.ext import testbed
 from google.appengine.ext import webapp
 from pytest import raises
 
+from google.appengine.api import apiproxy_stub_map
+from google.appengine.api.memcache import memcache_stub
+
 import config
 import pfif
 import main
@@ -37,6 +40,7 @@ import utils
 
 class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""
+    apiproxy_stub_map.apiproxy.RegisterStub('memcache', memcache_stub.MemcacheServiceStub())
 
     def test_get_app_name(self):
         app_id = 'test'
