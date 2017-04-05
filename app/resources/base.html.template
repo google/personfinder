@@ -71,6 +71,9 @@
     onload="{{onload_function}}">
   {% block body %}
     <div class="header title-bar" role="banner">
+      {% if env.show_language_menu %}
+        {% include "language-menu.html.template" %}
+      {% endif %}
       {% block header %}
         {% if env.show_logo %}
           {% block logo %}{% endblock %}
@@ -120,10 +123,6 @@
                 Learn more about Google
                 <a href="{{privacy_policy_url}}" {{target_attr}}>Privacy Policy</a>.
               {% endblocktrans %}
-            {% endif %}
-
-            {% if env.show_language_menu %}
-              {% include "language-menu.html.template" %}
             {% endif %}
 
           {% endblock disclaimer %}
