@@ -71,9 +71,6 @@
     onload="{{onload_function}}">
   {% block body %}
     <div class="header title-bar" role="banner">
-      {% if env.show_language_menu %}
-        {% include "language-menu.html.template" %}
-      {% endif %}
       {% block header %}
         {% if env.show_logo %}
           {% block logo %}{% endblock %}
@@ -85,6 +82,10 @@
       <div class="subtitle-bar">
         {{env.repo_title}}
       </div>
+    {% endif %}
+
+    {% if env.show_language_menu %}
+      {% include "language-menu.html.template" %}
     {% endif %}
 
     <div class="outer-container">
