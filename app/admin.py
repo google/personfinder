@@ -24,6 +24,8 @@ from utils import *
 import const
 import tasks
 
+from google.appengine.api import memcache
+
 
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
@@ -160,6 +162,7 @@ class Handler(BaseHandler):
                 break
 
         config.set_for_repo(repo, **self.__view_config_to_model_config(values))
+        memcache.flush_all()
         return True
 
     def __model_config_to_view_config(self, model_config):

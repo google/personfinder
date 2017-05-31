@@ -26,6 +26,7 @@ import logging
 import datetime
 import utils
 from datetime import timedelta
+from google.appengine.api import memcache
 
 
 class ConfigurationCache:
@@ -110,6 +111,7 @@ class ConfigurationCache:
     def enable(self, value):
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
+        memcache.set("*:config_cache_enable", simplejson.dumps(bool(value)))
         db.put(ConfigEntry(key_name="*:config_cache_enable",
                            value=simplejson.dumps(bool(value))))
         self.delete('*')
@@ -127,12 +129,19 @@ class ConfigEntry(db.Model):
 
 def get(name, default=None, repo='*'):
     """Gets a configuration setting from cache if it is enabled,
-       otherwise from the database."""
+       otherwise from the memcache then check the database."""
     if cache.is_enabled():
         return cache.get_config(repo, name, default)
-    entry = ConfigEntry.get_by_key_name(repo + ':' + name)
+
+    mem_entry_value = memcache.get(repo + ':' + name)
+    if mem_entry_value is None:
+      entry = ConfigEntry.get_by_key_name(repo + ':' + name)
+    else:
+      return simplejson.loads(mem_entry_value)
+
     if entry:
-        return simplejson.loads(entry.value)
+      memcache.set(repo + ':' + name, entry.value, 3600)
+      return simplejson.loads(entry.value)
     return default
 
 def set(repo='*', **kwargs):
@@ -141,8 +150,13 @@ def set(repo='*', **kwargs):
         raise Exception(
             'Config "launched_repos" is deprecated. Use per-repository '
             'config "launched" instead.')
+
     db.put(ConfigEntry(key_name=repo + ':' + name,
            value=simplejson.dumps(value)) for name, value in kwargs.items())
+
+    for name, value in kwargs.items():
+      memcache.set(repo + ':' + name, simplejson.dumps(value), 3600)
+
     cache.delete(repo)
 
 def get_for_repo(repo, name, default=None):
