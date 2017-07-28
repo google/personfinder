@@ -1,0 +1,47 @@
+{# Template for app pages (e.g. start, query, results, view, create, etc.). #}
+
+{% extends "ampbase.html.template" %}
+{% load i18n %}
+
+{# To customize your site, replace, append, or prepend to the blocks below. #}
+
+{# Contents of the <head> element.  Use this to add stylesheets. #}
+{% block head %}
+  {{block.super}}
+{% endblock head %}
+
+{# Page title (used in the <title> element). #}
+{% block title %}{{block.super}}{% endblock title %}
+
+{% block logo %}
+  {% if env.repo and env.action and env.action != "start" %}
+    {% if env.rtl %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
+    {% else %}
+      <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
+    {% endif %}
+  {% else %}
+    <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
+  {% endif %}
+  {% trans "Google Person Finder" %}
+{% endblock %}
+
+{# Header above page content. #}
+{% block header %}
+  {{block.super}}
+{% endblock header %}
+
+{# Container around page content. #}
+{% block container %}
+  {{block.super}}
+{% endblock container %}
+
+{# Disclaimer text at the bottom of every page. #}
+{% block disclaimer %}
+  {{block.super}}
+{% endblock disclaimer %}
+
+{# Sidenav at the left side of every page. #}
+{% block sidenav %}
+  {{block.super}}
+{% endblock sidenav %}

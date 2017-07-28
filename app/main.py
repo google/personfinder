@@ -80,6 +80,7 @@ HOME_ACTION = 'home.html'
 # regularizing the module and class names or adding a URL attribute to handlers.
 HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'start',
+  'amp',
   'query',
   'results',
   'create',
@@ -345,6 +346,10 @@ def setup_env(request):
         get_hidden_input_tags_for_preserved_query_params(request))
 
     ui_param = request.get('ui', '').strip().lower()
+
+    # This setting is for AMP page URL.
+    #if re.search(r"(\.html)", request.url):
+    env.ampurl = utils.set_amp_url_param(request.url, 'lang', env.lang)
 
     # Interprets "small" and "style" parameters for backward compatibility.
     # TODO(ichikawa): Delete these in near future when we decide to drop

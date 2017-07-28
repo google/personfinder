@@ -16,14 +16,16 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
+<html amp lang="{{env.lang}}">
 <head>
   <meta charset="utf-8">
   {% block head %}
   {% include "gtm.html.template" %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
-  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1, initial-scale=1" />
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
@@ -31,7 +33,7 @@
         href="{{feed_url}}">
   {% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
-  <link rel="amphtml" href="{{env.ampurl}}">
+  <link rel="canonical" href="{{env.url}}">
   <title>
     {% block title %}
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
@@ -40,38 +42,10 @@
   <link
       rel="stylesheet"
       href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
-  {% if env.enable_javascript %}
-    <script type="text/javascript">
-      var lang = '{{env.lang}}';
-      {% if env.enable_translate %}
-        var translate_api_key = '{{config.translate_api_key}}';
-      {% else %}
-        var translate_api_key = null;
-      {% endif %}
-    </script>
-    <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript">
-      // Lets jQuery not overwrite "$" symbol defined in forms.js.template.
-      // Use "jQuery" instead of "$".
-      // TODO(ichikawa) Remove "$" from forms.js.template and use jQuery's "$" instead.
-      jQuery.noConflict();
-    </script>
-    <script src="{{env.global_url}}/forms.js"></script>
-    {% if env.virtual_keyboard_layout %}
-      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-      <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
-      <script type="text/javascript">
-        google.setOnLoadCallback(function() {
-          initialize_keyboard('{{env.virtual_keyboard_layout}}');
-        });
-      </script>
-    {% endif %}
-  {% endif %}
 {% endblock head %}</head>
 
 <body
-    class="{{env.ui}} {% block extra_body_class%}{% endblock %}"
-    onload="{{onload_function}}">
+    class="{{env.ui}} {% block extra_body_class%}{% endblock %}">
   {% block body %}
     <div class="header title-bar" role="banner">
       {% block header %}
@@ -85,10 +59,6 @@
       <div class="subtitle-bar">
         {{env.repo_title}}
       </div>
-    {% endif %}
-
-    {% if env.show_language_menu %}
-      {% include "language-menu.html.template" %}
     {% endif %}
 
     <div class="outer-container">
@@ -162,6 +132,6 @@
             >{% trans "Terms of Service" %}</a>
       {% endblock sidenav %}
     </div>
-    <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+    <div id="overlay" class="overlay"></div>
   {% endblock body %}
 </body></html>
