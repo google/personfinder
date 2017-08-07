@@ -18,18 +18,18 @@
   <div class="main">
     <div class="row">
       <div class="action-outer start">
-        <div class="action-inner">
-          <a href="{{seek_url}}" tabindex="1">
+        <a href="{{seek_url}}" tabindex="1">
+          <div class="action-inner">
             {% trans "I'm looking for someone" %}
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
       <div class="action-outer end">
-        <div class="action-inner">
-          <a href="{{provide_url}}" tabindex="2">
+        <a href="{{provide_url}}" tabindex="2">
+          <div class="action-inner">
             {% trans "I have information about someone" %}
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
       <div class="end-multi-columns"></div>
     </div>
