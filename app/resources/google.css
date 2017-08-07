@@ -1,0 +1,69 @@
+body {
+  /* Override css-default.template */
+  overflow-x: visible;
+}
+
+.container {
+  /* Override css-default.template */
+  overflow: visible;
+}
+
+.storyboard {
+  display: table;
+  margin: 2em auto 0;
+  color: #777;
+}
+
+.storyboard-section {
+  /* Place the sections horizontally. */
+  display: table-cell;
+}
+
+.storyboard td {
+  padding: 0.5em;
+  width: 160px;
+  text-align: center;
+}
+
+.teasers {
+  display: table;
+  margin: 0 auto;
+}
+
+.teasers-section {
+  /* Place the sections horizontally. */
+  display: table-cell;
+  max-width: 400px;
+  padding: 1em;
+}
+
+.teasers h2 {
+  font-size: 16px;
+  margin: 1em 0 0.5em;
+}
+
+.teasers ul {
+  padding: 0;
+  margin: 1em 0 1em 2em;
+}
+
+.teasers li {
+  padding: 0;
+  margin: 0;
+}
+
+.teasers td {
+  padding: 1em;
+}
+
+img.inset {
+  float: right;
+  margin-left: 2em;
+}
+
+@media (max-width: 961px) {
+  /* Place the sections vertically on small screens like mobile phones. */
+  .storyboard-section, .teasers-section {
+    display: table-row;
+  }
+}

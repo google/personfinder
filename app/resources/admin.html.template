@@ -981,6 +981,41 @@
     </div>
   </fieldset>
 
+  <fieldset>
+    <legend>Branding</legend>
+      <div class="config">
+        <div class="option">
+          <input
+              type="radio" name="brand" value="google"
+              id="brand_google"
+              {% if view_config.brand == "google" %}
+                checked
+              {% endif %}>
+          <label for="brand_google">
+            Google
+          </label>
+          <div class="note">
+            Select this if you are running Person Finder as Google. It changes the home page etc. to Google branded version.
+          </div>
+        </div>
+        <div class="option">
+          <input
+              type="radio" name="brand" value="none"
+              id="brand_open_source"
+              {% if view_config.brand == "none" %}
+                checked
+              {% endif %}>
+          <label for="brand_none">
+            None
+          </label>
+          <div class="note">
+            Select this if you are running Person Finder as any organization other than Google.
+          </div>
+        </div>
+      </div>
+    </legend>
+  </fieldset>
+
   <p>
     <input type="hidden" name="operation" value="save_global">
     <input type="submit" value="Save these settings">
