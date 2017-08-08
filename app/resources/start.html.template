@@ -19,14 +19,14 @@
     <div class="row">
       <div class="action-outer start">
         <a href="{{seek_url}}" tabindex="1">
-          <div class="action-inner">
+          <div class="action-inner" onclick="location.href={{seek_url}};" tabindex="1" style="cursor:pointer;">
             {% trans "I'm looking for someone" %}
           </div>
         </a>
       </div>
       <div class="action-outer end">
         <a href="{{provide_url}}" tabindex="2">
-          <div class="action-inner">
+          <div class="action-inner" onclick="location.href={{provide_url}};" tabindex="1" style="cursor:pointer;">
             {% trans "I have information about someone" %}
           </div>
         </a>
