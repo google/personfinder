@@ -579,6 +579,7 @@ class Main(webapp.RequestHandler):
         else:
             # Serve a static page or file.
             env.robots_ok = True
+            env.amp = False
             get_vars = lambda: {'env': env, 'config': env.config}
             content = resources.get_rendered(
                 env.action, env.lang, (env.repo, env.charset), get_vars)
