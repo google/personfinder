@@ -39,9 +39,21 @@
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
-  <link
-      rel="stylesheet"
-      href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
+  <style type="text/css" amp-custom>
+  {% if env.rtl %}
+    {% with "right" as start %}
+    {% with "left" as end %}
+    {% include "css-default.template" %}
+    {% endwith %}
+    {% endwith %}
+  {% else %}
+    {% with "left" as start %}
+    {% with "right" as end %}
+    {% include "css-default.template" %}
+    {% endwith %}
+    {% endwith %}
+  {% endif %}
+</style>
 {% endblock head %}</head>
 
 <body

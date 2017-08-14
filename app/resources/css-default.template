@@ -162,6 +162,20 @@ pre {  /* code samples */
   padding: 20px;
 }
 
+.amp-title-bar-button {
+  height: 64px;
+  width: 64px;
+}
+
+.amp-menu {
+  height: 24px;
+  width: 24px;
+  display: inline;
+  float: {{start}};
+  padding: 20px;
+  line-height: 0px
+}
+
 div.subtitle-bar {
   font-size: 20px;
   font-weight: normal;
@@ -1307,8 +1321,9 @@ table.api-keys td.empty {
   display: none;
 }
 
+{% if not env.amp %}
 /* Share buttons */
-
 .fb-share-button {
   vertical-align: top !important;
 }
+{% endif %}

@@ -22,6 +22,7 @@ class Handler(BaseHandler):
 
     def get(self):
         self.env.robots_ok = True
+        self.env.amp = True
         self.render('ampstart.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):
