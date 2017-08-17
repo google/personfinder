@@ -169,14 +169,13 @@
           {% endif %}
         </div>
         <div class="field">
-            <textarea name="last_known_location"
-                id="clickable_map_location_field"
-                class="long-text-input"
-                rows=2>{{params.last_known_location}}</textarea>
+          <textarea name="last_known_location"
+              id="clickable_map_location_field"
+              class="long-text-input"
+              rows=2>{{params.last_known_location}}</textarea>
         </div>
-        <div class="end-multi-columns"></div>
         {% if env.enable_javascript and env.maps_api_key %}
-          <div class="field map-container">
+          <div class="map-container">
             <div>
               <span id="clickable_map_show_link">
                 <a href='#' onclick="toggleClickableMap('clickable_map'); return false;">
@@ -199,8 +198,8 @@
             </div>
             <div id="clickable_map" class="map" style="display: none"></div>
           </div>
-          <div class="end-multi-columns"></div>
         {% endif %}
+        <div class="end-multi-columns"></div>
       </div>
 
       {# Hide the photo upload fields for the note record in create form #}
