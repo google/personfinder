@@ -129,6 +129,7 @@ class Handler(BaseHandler):
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
+                        'brand',
                         'notification_email',
                     ]):
                 self.redirect('/admin')

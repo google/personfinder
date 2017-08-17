@@ -6,8 +6,7 @@
   {% if config.brand == "google" %}
 
     <h1>
-      Google Person Finder helps people reconnect with friends and loved ones
-      in the aftermath of natural and humanitarian disasters.
+      Google パーソンファインダーは、災害時において、友人や家族の安否を確認する手助けをします。
     </h1>
 
     <div class="storyboard">
@@ -22,8 +21,8 @@
             </td>
           </tr>
           <tr class="captions">
-            <td>A crisis strikes and people get separated.</td>
-            <td>They let the world know they are looking for someone.</td>
+            <td>災害時離ればなれになってしまった人々が...</td>
+            <td>探している人について情報を募集すると...</td>
           </tr>
         </table>
       </div>
@@ -38,8 +37,8 @@
             </td>
           </tr>
           <tr class="captions">
-            <td>Individuals and organizations provide information.</td>
-            <td>People find information about their friends and family.</td>
+            <td>個人や団体が知っている情報を提供し...</td>
+            <td>友人や家族の安否情報を見つけることができます</td>
           </tr>
         </table>
       </div>
@@ -47,24 +46,24 @@
 
     <div class="teasers">
       <div class="teasers-section">
-          <h2>Responders</h2>
-          You can help people find each other in the aftermath of a disaster:
-          <ul>
-            <li>Embed Google Person Finder in your site
-            <li>Download data from Google Person Finder
-            <li>Upload data into Google Person Finder
-          </ul>
-          <a href="{{env.global_url}}/responders.html">See how &#xbb;</a>
+        <h2>災害に対応する</h2>
+        災害後、人々が互いの安否を確認する手助けができます。
+        <ul>
+          <li>あなたのサイトに Google パーソンファインダーを埋め込む。
+          <li>Google パーソンファインダーからデータをダウンロードする。
+          <li>Google パーソンファインダーへデータをアップロードする。
+        </ul>
+        <a href="{{env.global_url}}/responders.html">詳細 &#xbb;</a>
       </div>
       <div class="teasers-section">
-          <h2>Developers</h2>
-          You can help continue to improve Google Person Finder:
-          <ul>
-            <li>Learn about the PFIF data model
-            <li>Customize or improve Person Finder
-          </ul>
-          <a href="https://github.com/google/personfinder">
-              Get started &#xbb;</a>
+        <h2>サービスを開発する</h2>
+        Google パーソンファインダーを改良することができます。
+        <ul>
+          <li>PFIFデータモデルを理解する。
+          <li>パーソンファインダーをカスタマイズ・改良する。
+        </ul>
+        <a href="https://github.com/google/personfinder/wiki/IndexJapanese">
+            詳細 &#xbb;</a>
       </div>
     </div>
 

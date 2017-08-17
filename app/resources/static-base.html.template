@@ -9,10 +9,19 @@
 {% block head %}
   {{block.super}}
   <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+  {% if config.brand == "google" %}
+    <link rel="stylesheet" href="{{env.global_url}}/google.css">
+  {% endif %}
 {% endblock head %}
 
 {# Page title (used in the <title> element). #}
-{% block title %}{{block.super}}{% endblock title %}
+{% block title %}
+  {% if config.brand == "google" %}
+    {% trans "Google Person Finder" %}
+  {% else %}
+    {{block.super}}
+  {% endif %}
+{% endblock title %}
 
 {# Header above page content. #}
 {% block header %}
@@ -32,5 +41,41 @@
 
 {# Sidenav at the left/right side of every page. #}
 {% block sidenav %}
-  {{block.super}}
-{% endblock %}
+  {% if config.brand == "google" %}
+    {% if env.repo and env.ui == "light" %}
+      <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+      <span class="link-separator"></span>
+    {% endif %}
+    <a href="{{env.global_url}}" {{env.target_attr|safe}}
+        >{% trans "About Google Person Finder" %}</a>
+    <span class="link-separator"></span>
+    {% include "repo-menu.html.template" %}
+    <span class="link-separator"></span>
+    <a href="https://support.google.com/personfinder/contact/pf_feedback"
+        {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+    <span class="link-separator"></span>
+    {% if env.ui != "light" %}
+      {% comment %}
+        Translators: The title of a page of frequently asked questions.
+      {% endcomment %}
+      <a href="http://support.google.com/personfinder/?hl={{env.lang}}"
+          >{% trans "Frequently asked questions" %}</a>
+      <span class="link-separator"></span>
+      {% comment %}
+        Translators: The title of a page for people who respond to disasters.
+      {% endcomment %}
+      <a href="{{env.global_url}}/responders.html">{% trans "For responders" %}</a>
+      <span class="link-separator"></span>
+      <a href="https://github.com/google/personfinder"
+          {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+      <span class="link-separator"></span>
+    {% endif %}
+    <a href="{{env.global_url}}/howto.html"
+       {{env.target_attr|safe}}>{% trans "User's Guide" %}</a>
+    <span class="link-separator"></span>
+    <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
+        >{% trans "Terms of Service" %}</a>
+  {% else %}
+    {{block.super}}
+  {% endif %}
+{% endblock sidenav %}
