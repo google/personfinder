@@ -155,8 +155,12 @@
               {{env.target_attr|safe}}>{% trans "Developers" %}</a>
           <span class="link-separator"></span>
         {% endif %}
-        <a href="{{env.global_url}}/howto.html"
-            {{env.target_attr|safe}}>{% trans "User's Guide" %}</a>
+        <a href="{{env.global_url}}/howto.html" {{env.target_attr|safe}}
+            {% comment %}
+              Translators: The title of the page which explains how to use
+              Person Finder.
+            {% endcomment %}
+            >{% trans "User's Guide" %}</a>
         <span class="link-separator"></span>
         <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
             >{% trans "Terms of Service" %}</a>
