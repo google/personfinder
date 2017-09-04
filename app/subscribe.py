@@ -172,7 +172,7 @@ class Handler(BaseHandler):
 
         # Check the captcha
         captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.env.test_mode:
+        if not captcha_response.is_valid:
             # Captcha is incorrect
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             site_key = config.get('captcha_site_key')

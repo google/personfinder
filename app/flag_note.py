@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from google.appengine.ext import db
-from recaptcha.client import captcha 
+from recaptcha.client import captcha
 
 import model
 import reveal
@@ -49,7 +49,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No note with ID: %r' % self.params.id)
 
         captcha_response = note.hidden and self.get_captcha_response()
-        if not note.hidden or captcha_response.is_valid or self.env.test_mode:
+        if not note.hidden or captcha_response.is_valid:
             note.hidden = not note.hidden
             # When "hidden" changes, update source_date and entry_date (melwitt)
             # http://code.google.com/p/googlepersonfinder/issues/detail?id=58

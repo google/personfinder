@@ -27,17 +27,17 @@ EXPIRED_EXTENSION_DAYS = 60
 
 def get_extension_days(handler):
     return handler.config.default_extension_days or EXPIRED_EXTENSION_DAYS
-    
+
 
 class Handler(utils.BaseHandler):
     """Handles a user request to extend expiration of a person record."""
 
-    def show_page(self, person, error_code=None): 
+    def show_page(self, person, error_code=None):
         self.render('extend.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html(error_code=error_code))
-        
+
     def get(self):
         """Prompts the user with a Turing test before carrying out extension."""
         person = model.Person.get(self.repo, self.params.id)
@@ -52,7 +52,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
         captcha_response = self.get_captcha_response()
-        if self.env.test_mode or captcha_response.is_valid:
+        if captcha_response.is_valid:
             # Log the user action.
             if person.is_original():
                 model.UserActionLog.put_new('extend', person)
@@ -68,7 +68,7 @@ class Handler(utils.BaseHandler):
                     expiry_datetime_local_string = self.to_formatted_local_datetime(
                         person.expiry_date),
                     view_url=self.get_url('/view', id=person.record_id))
-            else: 
+            else:
                 # this shouldn't happen in normal work flow.
                 return self.info(200, _('The record cannot be extended.',))
         else:
