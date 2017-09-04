@@ -29,7 +29,7 @@ from django.utils.translation import ugettext as _
 RESTORED_RECORD_TTL = datetime.timedelta(60, 0, 0)
 
 
-class RestoreError(Exception): 
+class RestoreError(Exception):
     """Container for user-facing error messages about the restore operation."""
     pass
 
@@ -49,19 +49,19 @@ class Handler(utils.BaseHandler):
 
         self.render('restore.html',
                     captcha_html=self.get_captcha_html(),
-                    token=token, 
+                    token=token,
                     id=self.params.id)
 
     def post(self):
         """If the Turing test response is valid, restores the record by setting
         its expiry date into the future.  Otherwise, offer another test."""
-        try: 
+        try:
             person, token = self.get_person_and_verify_params()
         except RestoreError, err:
             return self.error(400, unicode(err))
 
         captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.env.test_mode:
+        if not captcha_response.is_valid:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('restore.html',
                         captcha_html=captcha_html,
@@ -92,13 +92,13 @@ class Handler(utils.BaseHandler):
             )
 
         self.redirect(record_url)
-        
+
     def get_person_and_verify_params(self):
         """Checks the request for a valid person id and valid crypto token.
 
         Returns a tuple containing: (person, token)
-            
-        If there is an error we raise a RestoreError, instead of pretending 
+
+        If there is an error we raise a RestoreError, instead of pretending
         we're using C."""
         person = model.Person.get_by_key_name(self.params.id)
         if not person:

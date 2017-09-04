@@ -834,6 +834,13 @@ class BaseHandler(webapp.RequestHandler):
     def get_captcha_response(self):
         """Returns an object containing the CAPTCHA response information for the
         given request's CAPTCHA field information."""
+        # Allows faking the CAPTCHA response by an HTTP request parameter, but
+        # only locally, for testing purpose.
+        faked_captcha_response = self.request.get('faked_captcha_response')
+        if faked_captcha_response and self.request.remote_addr == '127.0.0.1':
+            return captcha.RecaptchaResponse(
+                is_valid=faked_captcha_response == 'success')
+
         captcha_response = self.request.get('g-recaptcha-response')
         return captcha.submit(captcha_response)
 

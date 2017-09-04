@@ -107,7 +107,7 @@ class Handler(BaseHandler):
 
     def post(self):
         captcha_response = self.get_captcha_response()
-        if captcha_response.is_valid or self.env.test_mode:
+        if captcha_response.is_valid:
             signature = sign(self.params.content_id)
             # self.params.target contains only the path part of the URL e.g.,
             # "/test/view?...".
