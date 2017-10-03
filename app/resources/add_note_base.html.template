@@ -249,7 +249,11 @@
 
 {% if not params.create_mode %}
   <div class="your-info card">
-    <h1>About You</h1>
+    {% comment %}
+      Translators: The title of a section in a form where the user inputs their
+      own information e.g., "Your name", "Your e-mail address".
+    {% endcomment %}
+    <h1>{% trans "About You" %}</h1>
     <div class="hint">
       {% trans "How others who are interested in this person can contact you" %}
     </div>
