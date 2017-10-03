@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import const
 from utils import *
 from model import *
 
@@ -34,6 +35,10 @@ class Handler(BaseHandler):
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        return {'num_people': num_people,
-                'seek_url': self.get_url('/query', role='seek'),
-                'provide_url': self.get_url('/query', role='provide')}
+        return {
+            'num_people': num_people,
+            'seek_url': self.get_url('/query', role='seek'),
+            'provide_url': self.get_url('/query', role='provide'),
+            'facebook_locale':
+                const.FACEBOOK_LOCALES.get(self.env.lang, 'en_US'),
+        }
