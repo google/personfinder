@@ -50,6 +50,12 @@
     $('submit').disabled = false;
     return true;
   }
+
+  jQuery(function() {
+    $('write_permission').checked =
+        $('domain_write_permission').value.length > 0;
+    update_write_domain();
+  });
 </script>
 
 <form method="post" id="create-or-update-api-key" class="admin">
