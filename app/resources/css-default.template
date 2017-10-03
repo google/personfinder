@@ -588,6 +588,12 @@ td.submit {
   margin: 1em 0;
 }
 
+.social {
+  /* A trick to align all social share buttons vertically.
+     https://stackoverflow.com/a/21919504/4339963 */
+  line-height: 10px;
+}
+
 /* Query page */
 
 .query {
