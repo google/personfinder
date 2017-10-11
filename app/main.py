@@ -144,59 +144,6 @@ HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
 
-# Avoid serving dynamic page templates as static pages.
-# Otherwise e.g., the admin page template is accessible via /global/admin.html
-# without authentication, which is bad.
-#
-# TODO(gimite): Figure out a better solution.
-BLACKLISTED_ACTIONS_FOR_STATIC_SERVING = set([
-    'add_note.html',
-    'add_note_base.html',
-    'admin-base.html',
-    'admin.html',
-    'admin_api_key_form.html',
-    'admin_api_keys.html',
-    'admin_api_keys_list.html',
-    'admin_create_repo.html',
-    'admin_dashboard.html',
-    'admin_delete_record.html',
-    'admin_review.html',
-    'admin_statistics.html',
-    'app-base.html',
-    'base.html',
-    'confirm_disable_notes.html',
-    'create.html',
-    'delete.html',
-    'disable_notes.html',
-    'embed.html',
-    'enable_notes.html',
-    'errors.html',
-    'extend.html',
-    'extend_done.html',
-    'flag_note.html',
-    'gtm.html',
-    'import.html',
-    'language-menu.html',
-    'map.html',
-    'message.html',
-    'multiview.html',
-    'not_admin_error.html',
-    'note.html',
-    'post_flagged_note.html',
-    'query.html',
-    'query_form.html',
-    'repo-menu.html',
-    'restore.html',
-    'results.html',
-    'reveal.html',
-    'setup_datastore.html',
-    'small-create.html',
-    'static-base.html',
-    'subscribe.html',
-    'subscribe_captcha.html',
-    'view.html',
-])
-
 def is_development_server():
     """Returns True if the app is running in development."""
     server = os.environ.get('SERVER_SOFTWARE', '')
@@ -620,15 +567,15 @@ class Main(webapp.RequestHandler):
             # Don't serve template source code.
             response.set_status(404)
             response.out.write('Not found')
-        elif env.action in BLACKLISTED_ACTIONS_FOR_STATIC_SERVING:
-            response.set_status(404)
-            response.out.write('Not found')
         else:
-            # Serve a static page or file.
+            # Serve a static page or file in app/resources/static directory.
             env.robots_ok = True
             get_vars = lambda: {'env': env, 'config': env.config}
             content = resources.get_rendered(
-                env.action, env.lang, (env.repo, env.charset), get_vars)
+                'static/%s' % env.action,
+                env.lang,
+                (env.repo, env.charset),
+                get_vars)
             if content is None:
                 response.set_status(404)
                 response.out.write('Not found')

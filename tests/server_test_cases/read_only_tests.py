@@ -43,11 +43,6 @@ class ReadOnlyTests(ServerTestsBase):
         doc = self.go('/global/home.html')
         assert 'You are now running Person Finder.' in doc.text
 
-    def test_tos(self):
-        """Check the generic TOS page."""
-        doc = self.go('/global/tos.html')
-        assert 'Terms of Service' in doc.text
-
     def test_start(self):
         """Check the start page with no language specified."""
         doc = self.go('/haiti')
