@@ -65,12 +65,13 @@ class ResourceTests(ServerTestsBase):
 
         # Add a Resource to be served as the static file.
         bundle = ResourceBundle(key_name='1')
-        Resource(parent=bundle, key_name='foo.txt', content='hello').put()
+        Resource(
+            parent=bundle, key_name='static/foo.txt', content='hello').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content_bytes == 'hello'
 
         # Add a localized Resource.
-        fr_key = Resource(parent=bundle, key_name='foo.txt:fr',
+        fr_key = Resource(parent=bundle, key_name='static/foo.txt:fr',
                           content='bonjour').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content_bytes == 'hello'  # original Resource remains cached
@@ -81,7 +82,8 @@ class ResourceTests(ServerTestsBase):
         assert doc.content_bytes == 'bonjour'
 
         # Change the non-localized Resource.
-        Resource(parent=bundle, key_name='foo.txt', content='goodbye').put()
+        Resource(
+            parent=bundle, key_name='static/foo.txt', content='goodbye').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content_bytes == 'bonjour'
                 # no effect on the localized Resource
