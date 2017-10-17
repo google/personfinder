@@ -20,4 +20,4 @@ class AMPstartHandler(Handler):
     repo_required = False
 
     def get(self):
-        self.render()
+        self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
