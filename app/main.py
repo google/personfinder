@@ -80,7 +80,7 @@ HOME_ACTION = 'home.html'
 # regularizing the module and class names or adding a URL attribute to handlers.
 HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'start',
-  'amp',
+  'amp_start',
   'query',
   'results',
   'create',
@@ -348,8 +348,9 @@ def setup_env(request):
     ui_param = request.get('ui', '').strip().lower()
 
     # This setting is for AMP page URL.
-    #if re.search(r"(\.html)", request.url):
-    env.ampurl = utils.set_amp_url_param(request.url, 'lang', env.lang)
+    env.amp_url = utils.set_amp_url_param(request.url, 'lang', env.lang)
+    # Canonical URL for AMP page.
+    env.canonical_url = utils.set_canonical_url_param(request.url, 'lang', env.lang)
 
     # Interprets "small" and "style" parameters for backward compatibility.
     # TODO(ichikawa): Delete these in near future when we decide to drop
@@ -549,6 +550,14 @@ class Main(webapp.RequestHandler):
     def serve(self):
         request, response, env = self.request, self.response, self.env
 
+        # env.amp handles a AMP template flag.
+        url_parts = list(urlparse.urlparse(request.url))
+        match = re.search(r"amp_start", url_parts[2])
+        if match is not None:
+          env.amp = True
+        else:
+          env.amp = False
+
         # If the Person Finder instance has not been initialized yet,
         # prepend to any served page a warning and a link to the admin
         # page where the datastore can be initialized.
@@ -579,7 +588,6 @@ class Main(webapp.RequestHandler):
         else:
             # Serve a static page or file.
             env.robots_ok = True
-            env.amp = False
             get_vars = lambda: {'env': env, 'config': env.config}
             content = resources.get_rendered(
                 env.action, env.lang, (env.repo, env.charset), get_vars)

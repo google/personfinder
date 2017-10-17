@@ -13,13 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from utils import *
-from model import *
+from utils import BaseHandler
+from model import Counter
 
 
 class Handler(BaseHandler):
     repo_required = False
-
     def get(self):
         self.env.robots_ok = True
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)

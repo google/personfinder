@@ -1,4 +1,4 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# Copyright 2017 Google Inc.  Licensed under the Apache License, Version   #}
 {# 2.0 (the "License"); you may not use this file except in compliance with #}
 {# the License.  You may obtain a copy of the License at:                   #}
 {#     http://www.apache.org/licenses/LICENSE-2.0                           #}
@@ -16,31 +16,49 @@
 {% load i18n %}
 
 <!DOCTYPE html>
+{% if not env.amp %}
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
+{% else %}
+<html amp lang="{{env.lang}}">
+{% endif %}
+
 <head>
   <meta charset="utf-8">
   {% block head %}
   {% include "gtm.html.template" %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
+
+  {% if not env.amp %}
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
+  {% else %}
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  {% endif %}
+
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
         title="{% trans 'Atom feed of updates about this person' %}"
         href="{{feed_url}}">
   {% endif %}
+  {% if not env.amp %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
-  <link rel="amphtml" href="{{env.ampurl}}">
+  {% else %}
+  <link rel="canonical" href="{{env.canonical_url}}">
+  {% endif %}
   <title>
     {% block title %}
       {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
       {{env.repo_title}}{% endif %}
   </title>
+
+  {% if not env.amp %}
   <link
       rel="stylesheet"
       href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
-  {% if env.enable_javascript %}
+   {% if env.enable_javascript %}
     <script type="text/javascript">
       var lang = '{{env.lang}}';
       {% if env.enable_translate %}
@@ -66,12 +84,33 @@
         });
       </script>
     {% endif %}
-  {% endif %}
+   {% endif %}
+  {% else %}
+   <style type="text/css" amp-custom>
+   {% if env.rtl %}
+     {% with "right" as start %}
+     {% with "left" as end %}
+     {% include "css-default.template" %}
+     {% endwith %}
+     {% endwith %}
+   {% else %}
+     {% with "left" as start %}
+     {% with "right" as end %}
+     {% include "css-default.template" %}
+     {% endwith %}
+     {% endwith %}
+   </style>
+   {% endif %}
+ {% endif %}
 {% endblock head %}</head>
 
 <body
-    class="{{env.ui}} {% block extra_body_class%}{% endblock %}"
+    class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
+    {% if not env.amp %}
     onload="{{onload_function}}">
+    {% else %}
+    >
+    {% endif %}
   {% block body %}
     <div class="header title-bar" role="banner">
       {% block header %}
@@ -86,9 +125,10 @@
         {{env.repo_title}}
       </div>
     {% endif %}
-
-    {% if env.show_language_menu %}
+    {% if not env.amp %}
+     {% if env.show_language_menu %}
       {% include "language-menu.html.template" %}
+     {% endif %}
     {% endif %}
 
     <div class="outer-container">
@@ -139,6 +179,7 @@
       </div>
     </div>
 
+    {% if not env.amp %}
     <div id="sidenav" class="sidenav">
       {% block sidenav %}
         {% if env.repo and env.ui == "light" %}
@@ -162,6 +203,11 @@
             >{% trans "Terms of Service" %}</a>
       {% endblock sidenav %}
     </div>
+    {% endif %}
+    {% if not env.amp %}
     <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+    {% else %}
+    <div id="overlay" class="overlay"></div>
+    {% endif %}
   {% endblock body %}
 </body></html>

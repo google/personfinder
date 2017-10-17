@@ -173,7 +173,7 @@ pre {  /* code samples */
   display: inline;
   float: {{start}};
   padding: 20px;
-  line-height: 0px
+  line-height: 0px;
 }
 
 div.subtitle-bar {
@@ -1322,8 +1322,8 @@ table.api-keys td.empty {
 }
 
 {% if not env.amp %}
-/* Share buttons */
-.fb-share-button {
-  vertical-align: top !important;
-}
+  /* Share buttons */
+  .fb-share-button {
+    vertical-align: top !important;
+  }
 {% endif %}
