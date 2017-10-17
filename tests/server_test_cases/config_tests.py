@@ -376,6 +376,7 @@ class ConfigTests(ServerTestsBase):
                 '{"en": "<b>English</b> footer message",'
                 ' "fr": "<b>French</b> footer message"}',
         )
+        assert self.s.status == 200
 
         cfg = config.Configuration('haiti')
         assert cfg.start_page_custom_htmls == \

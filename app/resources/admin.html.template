@@ -695,7 +695,31 @@
             value="{{view_config_json.map_size_pixels}}">
       </div>
     </div>
+  </fieldset>
 
+  <fieldset>
+    <legend>Time zones</legend>
+
+    <p>These are used to display timestamps of person records and notes.</p>
+
+    <div class="config">
+      <label for="time_zone_offset">Time zone offset (-12 to 14):</label>
+      <div class="response">
+        UTC +
+        <input type="number" name="time_zone_offset" id="time_zone_offset"
+            value="{{view_config_json.time_zone_offset}}">
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="time_zone_abbreviation">
+        Time zone name (in 3 letters e.g., JST):
+      </label>
+      <div class="response">
+        <input name="time_zone_abbreviation" id="time_zone_abbreviation" size=3
+            value="{{view_config.time_zone_abbreviation}}">
+      </div>
+    </div>
   </fieldset>
 
   <fieldset>
