@@ -243,7 +243,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu desactivar les notes per a %(full_name)s?\n"
+"      Confirmeu que voleu desactivar les notes per a %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -254,7 +254,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu desactivar les notes al registre de "
+"      Confirmeu que voleu desactivar les notes al registre de "
 "%(full_name)s?\n"
 "    "
 
@@ -265,7 +265,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu activar les notes per a %(full_name)s?\n"
+"      Confirmeu que voleu activar les notes per a %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -276,7 +276,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Esteu segur que voleu ampliar la data de caducitat del registre "
+"      Confirmeu que voleu ampliar la data de caducitat del registre "
 "%(full_name)s?\n"
 "    "
 
@@ -447,8 +447,8 @@ msgid ""
 "deleted.\n"
 msgstr ""
 "\n"
-"D'aquí a %(days_until_deletion)s dies, el registre se suprimirà de manera"
-" permanent.\n"
+"D'aquí a %(days_until_deletion)s dies, el registre se suprimirà "
+"permanentment.\n"
 
 #, python-format
 msgid ""
@@ -596,6 +596,9 @@ msgstr "D'aquí a aproximadament sis mesos (180 dies)"
 msgid "About Google Person Finder"
 msgstr "Sobre el Cercador de persones de Google"
 
+msgid "About You"
+msgstr ""
+
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
 #, python-format
@@ -625,13 +628,13 @@ msgid "Alternate names"
 msgstr "Noms alternatius"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Esteu segur que aquesta nota no és contingut brossa?"
+msgstr "Confirmeu que aquesta nota no és contingut brossa?"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Esteu segur que voleu marcar aquesta nota com a contingut brossa?"
+msgstr "Confirmeu que voleu marcar aquesta nota com a contingut brossa?"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Esteu segur que voleu restaurar aquest registre després de suprimir-lo?"
+msgstr "Confirmeu que voleu restaurar aquest registre després de suprimir-lo?"
 
 msgid "Atom feed of updates about this person"
 msgstr "Feed d'Atom de novetats sobre aquesta persona"
@@ -823,6 +826,14 @@ msgstr ""
 "Per a telèfons que no siguin mòbils, feu servir el servei 171 "
 "subministrat per NTT."
 
+#. Translators: The title of a page for people who respond to disasters.
+msgid "For responders"
+msgstr "Per als serveis d'emergència"
+
+#. Translators: The title of a page of frequently asked questions.
+msgid "Frequently asked questions"
+msgstr "Preguntes freqüents"
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr "Des de: %(home_location)s"
@@ -885,7 +896,7 @@ msgid "I am seeking information"
 msgstr "Cerco informació"
 
 msgid "I am this person"
-msgstr "Sóc aquesta persona"
+msgstr "Soc aquesta persona"
 
 msgid "I do not want any more updates on this record."
 msgstr "No vull rebre cap novetat més sobre aquest registre."
@@ -1574,6 +1585,11 @@ msgstr "Pengeu el fitxer CSV a continuació."
 
 msgid "Use current location"
 msgstr "Utilitza la ubicació actual"
+
+#. Translators: The title of the page which explains how to use
+#. Person Finder.
+msgid "User's Guide"
+msgstr "Guia de l'usuari"
 
 msgid "View the record"
 msgstr "Mostra el registre"

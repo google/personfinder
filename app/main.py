@@ -298,10 +298,6 @@ def setup_env(request):
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
-    # TODO(ryok): Rename to local_test_mode or something alike to disambiguate
-    # better from repository's test_mode.
-    env.test_mode = (request.remote_addr == '127.0.0.1' and
-                     request.get('test_mode'))
 
     env.analytics_id = config.get('analytics_id')
     env.maps_api_key = config.get('maps_api_key')
@@ -586,11 +582,14 @@ class Main(webapp.RequestHandler):
             response.set_status(404)
             response.out.write('Not found')
         else:
-            # Serve a static page or file.
+            # Serve a static page or file in app/resources/static directory.
             env.robots_ok = True
             get_vars = lambda: {'env': env, 'config': env.config}
             content = resources.get_rendered(
-                env.action, env.lang, (env.repo, env.charset), get_vars)
+                'static/%s' % env.action,
+                env.lang,
+                (env.repo, env.charset),
+                get_vars)
             if content is None:
                 response.set_status(404)
                 response.out.write('Not found')

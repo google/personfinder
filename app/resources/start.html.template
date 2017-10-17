@@ -29,14 +29,16 @@
  {% endif %}
   <div class="main">
     <div class="row">
-      <div class="action-outer start">
+      {# Following onclick is to make the whole button clickable. #}
+      <div class="action-outer start" onclick="location.href = '{{seek_url}}';" style="cursor: pointer;">
         <div class="action-inner">
           <a href="{{seek_url}}" tabindex="1">
             {% trans "I'm looking for someone" %}
           </a>
         </div>
       </div>
-      <div class="action-outer end">
+      {# Following onclick is to make the whole button clickable. #}
+      <div class="action-outer end" onclick="location.href = '{{provide_url}}';" style="cursor: pointer;">
         <div class="action-inner">
           <a href="{{provide_url}}" tabindex="2">
             {% trans "I have information about someone" %}
@@ -62,7 +64,7 @@
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.8";
+      js.src = "//connect.facebook.net/{{facebook_locale}}/sdk.js#xfbml=1&version=v2.8";
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
       <div class="fb-share-button" data-href="{{env.url}}" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{env.url|urlencode:""}}">Share</a></div>

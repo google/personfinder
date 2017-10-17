@@ -333,11 +333,9 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      သင္႐ိုက္ထည့္လိုက္ေသာ URLသည္ တမွန္တကယ္ အတည္ျပဳထားေသာ %(website)s "
-"profile URL ႏွင့္မတူပါ။.\n"
-"ေက်းဇူးၿပဳၿပီး %(website)sေပၚရွိ ထိုသူ၏profile စာမ်က္နွာကိုသြား၍ "
-"ထိုURLအား ဒီမွာcopyလုပ္ၿပီး၊ paste လုပ္ပါ။\n"
-"      "
+"သင်ပေးလိုက်သော URL သည် အမှန်တကယ်ရှိသော %(website)s လိပ်စာ မဟုတ်ပါ။ "
+"ကျေးဇူးပြုပြီး ဤပုဂ္ဂိုလ်၏ စာမျက်နှာ %(website)s ကို သွား၍၊ URL လိပ်စာကို"
+"  ကူးယူလာပြီး ပြန်ဖြည့်ပါ။​"
 
 #, python-format
 msgid ""
@@ -415,10 +413,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  မွတ္ခ်က္ေပးရန္အတြက္ ေအာက္တြင္သင့္အီးေမးလ္လိပ္စာကိုေရးထည့္ၿပီး၊ သင္ရရွိ\n"
-"မည့္ အတည္ျပဳေပးသည့္လင့္ခ္ (confirmation link) အား  ႏွိပ္ၿပီး "
-"ၫႊန္ႀကားခ်က္မ်ားကို လိုက္နာပါ။\n"
-"  "
+"မှတ်ချက်တင်ပေးရန်အတွက် အောက်တွင် သင့် အီးမေးလ်လိပ်စာကို ရေးထည့်ပြီး၊ "
+"ရရှိလာမည့် အတည့်ပြု လင့်ခ် ကို နှိပ်ပါ။ "
 
 #, python-format
 msgid ""
@@ -608,6 +604,9 @@ msgstr "ယခုမွစ၍ ေျခာက္လ(ရက္ေပါင္း 
 msgid "About Google Person Finder"
 msgstr "Google Person Finder အကြောင်း။"
 
+msgid "About You"
+msgstr ""
+
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
 #, python-format
@@ -716,8 +715,8 @@ msgstr "ဆက်သွယ်ရန် အချက်အလက်"
 
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"သင္၏၀က္ဗ္ဆိုက္တြင္ ဤ tool ေခၚပ႐ိုဂရမ္အေသးစား တစ္ခုအား တင္ရန္\n"
-"ေအာက္ပါ HTML ကုတ္ကို Copy လုပ္ၿပီး paste လုပ္ပါ။"
+"သင်၏ ဝဘ်ဆိုက်တွင် ဤကိရိယာ tool ကိုတင်ရန် အောက်ပါ HTML ကုဒ်ကိုကူးယူပြီး "
+"ဖြတ်ညှပ်ကပ် အသုံးပြုပါ။"
 
 msgid "Create a new API key"
 msgstr "API ကီးအသစ် ပြုလုပ်ရန်။"
@@ -739,8 +738,8 @@ msgstr "%(num_people)s ၏မွတ္တမ္းမ်ားကို ေလ�
 
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
-"ရက္စြဲသည္ အနာဂါတ္ တြင္ျဖစ္လို ့မရပါ။ ေက်းဇူးၿပဳ၍ ေနာက္ျပန္သြားၿပီး\n"
-"ထပ္မံႀကိဳးစားႀကည့္ပါ။"
+"ရက်စွဲသည် အနာဂါတ်တွင် ဖြစ်၍မရပါ။ ကျေးဇူးပြု၍ နောက်ပြန်သွားပြီး "
+"ထပ်မံကြိုးစားကြည့်ပါ။"
 
 msgid "Date of birth"
 msgstr "မွေးနေ့"
@@ -769,8 +768,8 @@ msgstr "အျခား၀က္ဗ္ဆိုက္မ်ားတြင္ �
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr ""
-"%(begin_link)sဤExcelပုံစံပြားကို%(end_link)s ေဒါင္းလုပ္ၿပီး၊ "
-"ဇယားကြက္အတန္း(rows)မ်ား ထည့္ပါ။"
+"%(begin_link)sဤ Excel ပုံစံ%(end_link)s ကို ဒေါင်းလုဒ်လုပ်ပြီး "
+"ဇယားကွက်တန်းများ ထပ်ထည့်ပါ။"
 
 msgid "E-mail"
 msgstr "အီးမေးလ်"
@@ -846,6 +845,14 @@ msgstr ""
 "မိုဘိုင္းမဟုတ္ေသာဖုန္းမ်ားအတြက္၊ ေက်းဇူၿပဳ၍ NTT မွ၀န္ေဆာင္မႈေပးေသာ 171 \n"
 "ဆားဗစ္အား သံုးပါ။"
 
+#. Translators: The title of a page for people who respond to disasters.
+msgid "For responders"
+msgstr "ကယ်ဆယ်ရေးသမားများ အတွက်"
+
+#. Translators: The title of a page of frequently asked questions.
+msgid "Frequently asked questions"
+msgstr "မကြာခဏမေးတတ်သော မေးခွန်းများ"
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr "မှ − %(home_location)s"
@@ -870,9 +877,8 @@ msgstr ""
 #, python-format
 msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
 msgstr ""
-"ဒီဟာမွာ နမူနာ%(begin_tag)s CSV ဖိုင္ပါ။ %(end_tag)s "
-"သင္တည္းျဖတ္လုပ္ႏိုင္ၿပီး၊ အင္တာနက္\n"
-"ေပၚသို ့ upload လုပ္ႏိုင္ပါသည္။"
+"ဤအရာသည် တည်းဖြတ်ပြီး ပြန်တင်နိုင်သော %(begin_tag)sနမူနာ CSV ဖိုင် "
+"%(end_tag)sဖြစ်သည်။"
 
 msgid "Hide Map"
 msgstr "ေျမပံုကို ျမင္ကြင္းမွ ဖံုးကြယ္ထားပါ။ Hide လုပ္ထားပါ။"
@@ -999,8 +1005,8 @@ msgstr ""
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 msgstr ""
-"Excelထဲတွင်, File &gt; Save as ......ကိုသုံးကာ... CSV ဖိုင်ပုံစံ(.csv) "
-"ဖြင့်သိမ်းထားပါ။"
+"Excel ထဲတွင် File &gt; Save as... ကို သုံးပြီး CSV ဖိုင်အမျိုးအစား (.csv)"
+" ဖြင့် သိမ်းထားပါ။"
 
 msgid "Invalid e-mail address. Please try again."
 msgstr "အီးေမးလ္လိပ္စာ မမွန္ပါ။ ေက်းဇူးျပဳျပီး ထပ္မံႀကိဳးစားႀကည့္ပါ။"
@@ -1031,8 +1037,8 @@ msgstr "မက်ဆေ့ Message  (လိုအပ်သည်။)"
 
 msgid "Message is required. Please go back and try again."
 msgstr ""
-"မက္ေဆ့ Message ေရးရန္လိုအပ္သည္။ ေက်းဇူးၿပဳၿပီး ေနာက္ျပန္သြား၍\n"
-"ထပ္ႀကိဳးစားႀကည့္ပါ။ ."
+"မက်ဆေ့ဂျ်ရေးရန် လိုအပ်သည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍ "
+"ထပ်ကြိုးစားကြည့်ပါ။"
 
 msgid "Missing person's current contact information"
 msgstr "ေပ်ာက္ဆံုးေနသူအား လက္ရွိဆက္သြယ္ႏိုင္မည့္ အခ်က္အလက္မ်ား။"
@@ -1087,9 +1093,7 @@ msgid "Name (required)"
 msgstr "အမည် (လိုအပ်သည်။)"
 
 msgid "Name is required.  Please go back and try again."
-msgstr ""
-"နာမည္ လုိပါသည္။ ေက်းဇူးၿပဳၿပီး ေနာက္ျပန္သြား၍ ထပ္ႀကိဳးစားႀကည့္\n"
-"ပါ။"
+msgstr "နာမည် လိုပါသည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍ ထပ်ကြိုးစားကြည့်ပါ။"
 
 #. Translators: The label of a field for either the name of the
 #. person or their mobile phone number, in the form to search
@@ -1184,9 +1188,9 @@ msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
-"မူလ တင္ထားသည့္ရက္စြဲသည္ ႏွစ္-လ-ရက္ (ဥပမာ ၂၀၁၃-၀၆-၂၈) ပံုစံ မဟုတ္ပါ။ သို "
-"့မဟုတ္ ရက္စြဲမပါရွိပါ။  ေက်းဇူးျပဳၿပီး ေနာက္ျပန္သြား၍၊ ျပန္ႀကိဳးစား\n"
-"ႀကည့္ပါ။"
+"မူလတင်ထားသည့် ရက်စွဲသည် နှစ်-လ-ရက် ပုံစံ မဟုတ်ပါ။ သို့မဟုတ် "
+"ရက်စွဲ​မှားယွင်းနေပါသည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍ "
+"ထပ်မံကြိုးစားကြည့်ပါ။"
 
 msgid "Original site name"
 msgstr "မူရင်း ၀က်ဗ်ဆိုက် အမည်။"
@@ -1221,8 +1225,8 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"upload ေခၚတင္လိုက္သည့္ ဓာတ္ပံုသည္ ကၽြန္ပ်ဳတာမွ မသိတဲ့ format ပံုစံျဖစ္ေန\n"
-"ပါသည္။ ေက်းဇူးၿပဳၿပီးေနာက္ျပန္သြား၍၊ ျပန္ႀကိဳးစားႀကည့္ပါ။"
+"တင်လိုက်သော ဓာတ်ပုံသည် အသိအမှတ်မပြုနိုင်သော ဖိုင်အမျိုးအစား ဖြစ်နေပါသည်။ "
+"ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍ ထပ်မံကြိုးစားကြည့်ပါ။ "
 
 msgid "Physical characteristics"
 msgstr "ခႏၶာကိုယ္ေပၚရွိ အမွတ္အသားမ်ား။"
@@ -1308,9 +1312,7 @@ msgstr "မွတ္စုမ်ားကို disable လုပ္ရတဲ့
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
-"\"%(query)s\" ႏွင့္ ကိုက္ညီေသာ နာမည္ႏွင့္ လိပ္စာမ်ားပါရွိသည့္ "
-"မွတ္တမ္းမ်ား။"
+msgstr "\"%(query)s\" နှင့် ကိုက်ညီသော အမည်နှင့် လိပ်စာပါရှိသည့် မှတ်တမ်းများ"
 
 msgid "Remove"
 msgstr "ဖယ္ပါ။"
@@ -1459,13 +1461,13 @@ msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
-"ေပးထားသည့္နာမည္ ႏွင့္.Family name ေခၚမိသားစုနာမည္ မ်ား လိုအပ္ပါသည္။ "
-"ေက်းဇူးၿပဳၿပီးေနာက္ျပန္သြား၍ ျပန္ႀကိဳးစားႀကည့္ပါ။"
+"ကိုယ်ပိုင်အမည်နှင့် မိသားစုအမည် နှစ်မျိုးစလုံး လိုအပ်ပါသည်။ "
+"နောက်ပြန်သွားပြီး ထပ်မံကြိုးစားကြည့်ပါ။"
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
-"မူရင္း ေရးသားသူ၏ နာမည္ လိုအပ္ပါသည္။  ေက်းဇူးၿပဳၿပီး\n"
-"ေနာက္ျပန္သြား၍ ျပန္ႀကိဳးစားႀကည့္ပါ။"
+"မူရင်းရေးသားသူ၏ အမည် လိုအပ်ပါသည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍ "
+"ထပ်ကြိုးစားကြည့်ပါ။ "
 
 msgid "The author has disabled notes on this record."
 msgstr "ဒီမွတ္တမ္းေပၚရွိ မွတ္စုမ်ားကို ေရးသားသူမွ disable လုပ္ထားပါသည္။"
@@ -1626,8 +1628,8 @@ msgid ""
 "Type an address or open the map below and indicate the location by "
 "clicking on the map."
 msgstr ""
-"လိပ္စာတစ္ခုကို ႐ိုက္ထည့္ပါ သို ့မဟုတ္ ေအာက္ရွိေျမပံုကိုဖြင့္ၿပီး၊ ေနရာ\n"
-"တစ္ခုအားclick ႏွိပ္ၿပီးေဖာ္ျပပါ။"
+"တည်နေရာကို ညွှန်ပြရန် လိပ်စာကို ရိုက်ထည့်ပါ၊ သို့မဟုတ် မြေပုံကို "
+"ဖွင့်ပြီး ကလစ်ထောက်ပြပါ။ "
 
 msgid "Type an address."
 msgstr "လိပ်စာတစ်ခုအား ရိုက်ထည့်ပါ။"
@@ -1658,6 +1660,11 @@ msgstr "သင်C့SV ဖိုင်ကိုအောက်တွင်Uploa
 
 msgid "Use current location"
 msgstr "လက်ရှိတည်နေရာကို အသုံးပြုပါ"
+
+#. Translators: The title of the page which explains how to use
+#. Person Finder.
+msgid "User's Guide"
+msgstr "အသုံးပြုသူ လမ်းညွှန်"
 
 msgid "View the record"
 msgstr "မှတ်တမ်းကို ကြည့်ပါ။"
@@ -1804,15 +1811,15 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and "
 "try again."
 msgstr ""
-"\"သင့္အေႀကာင္း\" ဆိုသည့္ ေခါင္းစဥ္ေအာက္တြင္ သင့္နာမည္ ကို႐ိုက္\n"
-"ထည့္ရန္ လုိအပ္သည္။ ေက်းဇူးၿပဳၿပီးေနာက္ျပန္သြား၍၊ ျပန္ႀကိဳးစားႀကည့္ပါ။"
+"\"သင့်အကြောင်း\" ဆိုသည့် ခေါင်းစဉ်အောက်တွင် သင့်နာမည်ကို ရိုက်ထည့်ရန် "
+"လိုအပ်သည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍၊ ပြန်ကြိုးစားကြည့်ပါ။"
 
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"\"Source\" ဆိုသည့္ ေခါင္းစဥ္ေအာက္တြင္ သင့္နာမည္ ကို႐ိုက္\n"
-"ထည့္ရန္ လုိအပ္သည္။ ေက်းဇူးၿပဳၿပီးေနာက္ျပန္သြား၍၊ ျပန္ႀကိဳးစားႀကည့္ပါ။"
+"\"Source\" ဆိုသည့် ခေါင်းစဉ်အောက်တွင် သင့်နာမည်ကို ရိုက်ထည့်ရန် "
+"လိုအပ်သည်။ ကျေးဇူးပြုပြီး နောက်ပြန်သွား၍၊ ထပ်ကြိုးစားကြည့်ပါ။ "
 
 msgid "Your phone number"
 msgstr "သင့်ဖုန်းနံပါတ်။"
@@ -1821,9 +1828,8 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-"သင္၏ ေတာင္းဆိုခ်က္  request အား အေႀကာင္းျပန္လိုက္ၿပီျဖစ္သည္။ "
-"ေက်းဇူးၿပဳၿပီး သင္၏အီးေမးလ္အား စစ္ပါ။ သင္ရရွိသည့္အီးေမးလ္ထဲတြင္ embedded "
-"လုပ္ထားေသာ  url ကို ႏွိပ္ၿပီး သင္ပို ့ခ်င္ေသာမွတ္စုကို အတည္ျပဳေပးပါ။"
+"သင့်တောင်းဆိုချက်အတိုင်း ဆောင်ရွက်ပြီးပါပြီ။ အဝင်အီးမေးလ်ကို စစ်ဆေးပြီး "
+"ပို့ပေးထားသော url ကို နှိပ်၍ သင့်စာစုကိုတင်ရန် အတည်ပြုပေးပါ။"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""

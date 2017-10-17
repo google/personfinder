@@ -50,6 +50,12 @@
     $('submit').disabled = false;
     return true;
   }
+
+  jQuery(function() {
+    $('write_permission').checked =
+        $('domain_write_permission').value.length > 0;
+    update_write_domain();
+  });
 </script>
 
 <form method="post" id="create-or-update-api-key" class="admin">
@@ -83,77 +89,118 @@
       </div>
     </div>
   </fieldset>
+
   <fieldset>
-    <legend>Permissions</legend>
+    <legend>Validity</legend>
     <div class="config">
-      <label for="domain_write_permission" id="domain_write_label">
-        A domain name when writing with the API.
-        Leave it blank if you don't want to give a write permission.
-      </label>
-      <div class="response">
-        <input name="domain_write_permission" id="domain_write_permission"
-               size="40" value="{{target_key.domain_write_permission|default_if_none:""}}" 
-               disabled="true">
-      </div>
-    </div>
-    <div class="config">
-      <label>
-	Permission flags
-      </label>
-      <div class="response">
-        <input type="checkbox" name="write_permission" id="write_permission" onChange="update_write_domain();">
-        Write permission
-        <span class="warning">This permission should go with the domain name above.</span>
-      </div>
-      <div class="response">
-        <input type="checkbox" name="read_permission" id="read_permission"
-               {{target_key.read_permission|yesno:"checked,"}}>
-        Read permission
-      </div>
-      <div class="response">
-        <input type="checkbox" name="full_read_permission"
-               id="full_read_permission"
-               {{target_key.full_read_permission|yesno:"checked,"}}>
-               Full read permission
-	<span class="warning">Think twice before turning this on.</span>
-      </div>
-      <div class="response">
-        <input type="checkbox" name="search_permission" id="search_permission"
-               {{target_key.search_permission|yesno:"checked,"}}>
-        Search permission
-      </div>
-      <div class="response">
-        <input type="checkbox" name="subscribe_permission"
-               id="subscribe_permission"
-               {{target_key.subscribe_permission|yesno:"checked,"}}>
-        Subscribe permission
-      </div>
-      <div class="response">
-        <input type="checkbox" name="mark_notes_reviewed"
-               id="mark_notes_reviewed"
-               {{target_key.mark_notes_reviewed|yesno:"checked,"}}>
-        Skip review process for notes
-      </div>
-      <div class="response">
-        <input type="checkbox" name="believed_dead_permission"
-               id="believed_dead_permission"
-               {{target_key.believed_dead_permission|yesno:"checked,"}}>
-        Allow marking records as "believed dead"
-	<span class="warning">Think twice before turning this on.</span>
-      </div>
-      <div class="response">
-        <input type="checkbox" name="stats_permission"
-               id="stats_permission"
-               {{target_key.stats_permission|yesno:"checked,"}}>
-        Stats permission
-      </div>
-      <div class="response">
-        <input type="checkbox" name="is_valid" id="is_valid"
-               {{target_key.is_valid|yesno:"checked,"}}>
-        The key is valid
-      </div>
+      <input type="checkbox" name="is_valid" id="is_valid"
+             {{target_key.is_valid|yesno:"checked,"}}>
+      The key is valid
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>Permissions</legend>
+
+    <div class="config">
+      <input type="checkbox" name="write_permission" id="write_permission"
+             onChange="update_write_domain();">
+      <strong>WRITE</strong>:
+      Allow the client to create and update person/note records.
+      <div class="response">
+        <div>
+          <label for="domain_write_permission" id="domain_write_label">
+            A domain name which identifies the source of the records:
+          </label>
+        </div>
+        <div>
+          <input name="domain_write_permission" id="domain_write_permission"
+                 size="40"
+                 value="{{target_key.domain_write_permission|default_if_none:""}}"
+                 disabled="true">
+        </div>
+        <div>
+          The domain name is required for WRITE permission. This must match the
+          domain name specified in the write API. You can specify
+          <strong>*</strong> to allow the client to create/update records using
+          arbitrary domain names. But <span class="warning">* must not be
+          specified for third party clients</span>.
+        </div>
+      </div>
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="read_permission" id="read_permission"
+             {{target_key.read_permission|yesno:"checked,"}}>
+      <strong>BULK READ</strong>:
+      Allow the client to read <strong>all</strong> person/note records in bulk.
+      <div class="response">
+        <span class="warning">Think twice before turning this on.</span>
+        SEARCH is sufficient if the client only need to read records which match
+        search queries.
+      </div>
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="full_read_permission"
+             id="full_read_permission"
+             {{target_key.full_read_permission|yesno:"checked,"}}>
+      <strong>FULL BULK READ</strong>:
+      Same as BULK READ, but also allow reading sensitive information.
+      <div class="response">
+      	<span class="warning">Think twice before turning this on.</span>
+        Sensitive information is email addresses, phone numbers and dates of
+        birth.
+      </div>
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="search_permission" id="search_permission"
+             {{target_key.search_permission|yesno:"checked,"}}>
+      <strong>SEARCH</strong>:
+      Allow the client to search for person records.
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="subscribe_permission"
+             id="subscribe_permission"
+             {{target_key.subscribe_permission|yesno:"checked,"}}>
+      <strong>SUBSCRIBE</strong>:
+      Allow the client to subscribe to records using email addresses.
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="mark_notes_reviewed"
+             id="mark_notes_reviewed"
+             {{target_key.mark_notes_reviewed|yesno:"checked,"}}>
+      <strong>SKIP REVIEW</strong>:
+      Skip review process for notes created by this API key.
+      <div class="response">
+        Check this for trusted data sources.
+      </div>
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="believed_dead_permission"
+             id="believed_dead_permission"
+             {{target_key.believed_dead_permission|yesno:"checked,"}}>
+      <strong>BELIEVED DEAD</strong>:
+      Allow marking records as "believed dead".
+      <div class="response">
+      	<span class="warning">Think twice before turning this on.</span>
+      </div>
+    </div>
+
+    <div class="config">
+      <input type="checkbox" name="stats_permission"
+             id="stats_permission"
+             {{target_key.stats_permission|yesno:"checked,"}}>
+      <strong>STATS</strong>:
+      Allow the client to get statistics of the repository such as the number of
+      records.
+    </div>
+  </fieldset>
+
   <p>
     <input type="hidden" name="key" value="{{target_key.key}}">
     <input type="submit" name="submit" value="{{operation_name}}" id="submit"
