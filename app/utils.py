@@ -154,34 +154,6 @@ def set_url_param(url, param, value):
     return urlparse.urlunparse(url_parts)
 
 
-def set_amp_url_param(url, param, value):
-    """This modifies a URL setting the given param to the specified amp url value.
-    This may add the param or override an existing value, or, if the value is None,
-    it will remove the param. Note that value must be a basestring and can't be
-    an int, for example."""
-    url_parts = list(urlparse.urlparse(url))
-    match = re.search(r"(\w*).html", url_parts[2])
-    if match is not None:
-      url_parts[2] = re.sub(r'(\w*).html', 'amp_start' + match.group(0), url_parts[2])
-    else:
-      url_parts[2] = url_parts[2] + '/amp_start'
-    url_parts[4] = set_param(url_parts[4], param, value)
-    return urlparse.urlunparse(url_parts)
-
-
-def set_canonical_url_param(url, param, value):
-    """This modifies a URL setting the given param to the specified canonical url value.
-    This may add the param or override an existing value, or, if the value is None,
-    it will remove the param. Note that value must be a basestring and can't be
-    an int, for example."""
-    url_parts = list(urlparse.urlparse(url))
-    match = re.search(r"amp_start", url_parts[2])
-    if match is not None:
-      url_parts[2] = url_parts[2].replace('/amp_start', '')
-    url_parts[4] = set_param(url_parts[4], param, value)
-    return urlparse.urlunparse(url_parts)
-
-
 def anchor_start(href):
     """Returns the HREF escaped and embedded in an anchor tag."""
     return '<a href="%s">' % django.utils.html.escape(href)
