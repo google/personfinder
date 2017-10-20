@@ -16,8 +16,8 @@
 {% block logo %}
   {% if env.amp %}
     <div class="header-space">
-      <a href="{{env.start_url}}">
-        <amp-img class="amp-title-bar-button" width="24" height="24" src="{{env.global_url}}/back_arrow.png" alt="Back to Original Page">
+      <a href="/global/">
+        <amp-img width="24" height="24" src="{{env.global_url}}/back_arrow.png" alt="About Person Finder">
       </a>
     </div>
   {% else %}
