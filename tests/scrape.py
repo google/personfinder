@@ -665,7 +665,7 @@ def get_form_params(form):
             elif type in ['file', 'submit', 'image', 'reset', 'button']:
                 add_value = False
             else:
-                # Ordinaly input fields such as 'text' or 'hidden'. Note that
+                # Ordinary input fields such as 'text' or 'hidden'. Note that
                 # there are many types in this category in HTML5 like 'number'.
                 add_value = True
             if add_value:
