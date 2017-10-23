@@ -382,7 +382,7 @@ def setup_env(request):
     env.target_attr = ''
     # Shows record IDs in the results page.
     env.show_record_ids_in_results = True
-    # Shows non AMP html pages for default settings.
+    # Shows non AMP HTML pages by default.
     env.amp = False
 
     if env.ui == 'small':

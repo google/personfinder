@@ -30,7 +30,11 @@
     <div class="main">
       <div class="row">
         {# Following onclick is to make the whole button clickable. #}
-        <div class="action-outer start"{% if not env.amp %} onclick="location.href = '{{seek_url}}';" style="cursor: pointer;"{% endif %}>
+        <div class="action-outer start"
+          {% if not env.amp %}
+            onclick="location.href = '{{seek_url}}';" style="cursor: pointer;"
+          {% endif %}
+        >
           <div class="action-inner">
             <a href="{{seek_url}}" tabindex="1">
               {% trans "I'm looking for someone" %}
@@ -38,7 +42,11 @@
           </div>
         </div>
         {# Following onclick is to make the whole button clickable. #}
-        <div class="action-outer end"{% if not env.amp %} onclick="location.href = '{{provide_url}}';" style="cursor: pointer;"{% endif %}>
+        <div class="action-outer end"
+          {% if not env.amp %}
+            onclick="location.href = '{{provide_url}}';" style="cursor: pointer;"
+          {% endif %}
+        >
           <div class="action-inner">
             <a href="{{provide_url}}" tabindex="2">
               {% trans "I have information about someone" %}
@@ -56,27 +64,27 @@
         {{env.start_page_custom_html|default:""|safe}}
       </div>
 
-      {# TODO To supoprt AMP share buttons. #}
-      {% if not env.amp %}
-        <div class="row social">
-          {# Facebook share button #}
-          <div id="fb-root"></div>
-          <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/{{facebook_locale}}/sdk.js#xfbml=1&version=v2.8";
-          fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));</script>
-          <div class="fb-share-button" data-href="{{env.url}}" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{env.url|urlencode:""}}">Share</a></div>
+    {# TODO To supoprt AMP share buttons. #}
+    {% if not env.amp %}
+      <div class="row social">
+        {# Facebook share button #}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/{{facebook_locale}}/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-share-button" data-href="{{env.url}}" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{env.url|urlencode:""}}">Share</a></div>
 
-          {# Twitter share button #}
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{env.url}}">Tweet</a>
+        {# Twitter share button #}
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{env.url}}">Tweet</a>
 
-          {# Google+ share button #}
-          <script src="https://apis.google.com/js/platform.js" async defer></script>
-          <g:plusone size="medium" aligh="left"></g:plusone>
-        </div>
-      {% endif %}
+        {# Google+ share button #}
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <g:plusone size="medium" aligh="left"></g:plusone>
+      </div>
+    {% endif %}
 {% endblock %}

@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import urlparse
 import const
+import urlparse
 import utils
 from model import Counter
 
@@ -24,7 +24,7 @@ class Handler(utils.BaseHandler):
 
     def get(self):
         self.env.robots_ok = True
-        self.env.amp_url = self.set_amp_url_param(self.request.url, 'lang', self.env.lang)
+        self.env.amp_url = self.get_url('/amp_start')
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):
@@ -44,13 +44,3 @@ class Handler(utils.BaseHandler):
             'facebook_locale':
                 const.FACEBOOK_LOCALES.get(self.env.lang, 'en_US'),
         }
-
-    def set_amp_url_param(self, url, param, value):
-        """This modifies a URL setting the given param to the specified amp url value.
-        This may add the param or override an existing value, or, if the value is None,
-        it will remove the param. Note that value must be a basestring and can't be
-        an int, for example."""
-        url_parts = list(urlparse.urlparse(url))
-        url_parts[2] = url_parts[2] + '/amp_start'
-        url_parts[4] = utils.set_param(url_parts[4], param, value)
-        return urlparse.urlunparse(url_parts)
