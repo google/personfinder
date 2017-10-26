@@ -14,7 +14,6 @@
 # limitations under the License.
 
 import const
-import urlparse
 import utils
 from model import Counter
 

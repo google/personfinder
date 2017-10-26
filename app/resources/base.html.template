@@ -21,14 +21,10 @@
 
 <head>
   {% block head %}
+    {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
+    <meta charset="{{env.charset}}">
     {% include "gtm.html.template" %}
     <meta name="keywords" content="{{config.keywords}}">
-    {% if env.amp %}
-      {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
-      <meta charset="{{env.charset}}">
-    {% else %}
-      <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
-    {% endif %}
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     {% if env.amp %}
       <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -172,37 +168,37 @@
     </div>
 
     {% if not env.amp %}
-    <div id="sidenav" class="sidenav">
-      {% block sidenav %}
-        {% if env.repo and env.ui == "light" %}
-          <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+      <div id="sidenav" class="sidenav">
+        {% block sidenav %}
+          {% if env.repo and env.ui == "light" %}
+            <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}" {{env.target_attr|safe}}
+              >{% trans "About Google Person Finder" %}</a>
           <span class="link-separator"></span>
-        {% endif %}
-        <a href="{{env.global_url}}" {{env.target_attr|safe}}
-            >{% trans "About Google Person Finder" %}</a>
-        <span class="link-separator"></span>
-        {% include "repo-menu.html.template" %}
-        <span class="link-separator"></span>
-        <a href="https://support.google.com/personfinder/contact/pf_feedback"
-            {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
-        <span class="link-separator"></span>
-        {% if env.ui != "light" %}
-          <a href="https://github.com/google/personfinder"
-              {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+          {% include "repo-menu.html.template" %}
           <span class="link-separator"></span>
-        {% endif %}
-        <a href="{{env.global_url}}/howto.html" {{env.target_attr|safe}}
-            {% comment %}
-              Translators: The title of the page which explains how to use
-              Person Finder.
-            {% endcomment %}
-            >{% trans "User's Guide" %}</a>
-        <span class="link-separator"></span>
-        <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
-            >{% trans "Terms of Service" %}</a>
-      {% endblock sidenav %}
-    </div>
-    <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+          <a href="https://support.google.com/personfinder/contact/pf_feedback"
+              {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+          <span class="link-separator"></span>
+          {% if env.ui != "light" %}
+            <a href="https://github.com/google/personfinder"
+                {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}/howto.html" {{env.target_attr|safe}}
+              {% comment %}
+                Translators: The title of the page which explains how to use
+                Person Finder.
+              {% endcomment %}
+              >{% trans "User's Guide" %}</a>
+          <span class="link-separator"></span>
+          <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
+              >{% trans "Terms of Service" %}</a>
+        {% endblock sidenav %}
+      </div>
+      <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
     {% endif %}
   {% endblock body %}
 </body></html>

@@ -14,13 +14,13 @@
 # limitations under the License.
 
 import start
-import urlparse
-import utils
 
 
 class Handler(start.Handler):
+    """This handler shows AMP (Accelerated Mobile Pages)
+    version of the repository's start page."""
 
     def get(self):
         self.env.amp = True
-        self.env.canonical_url = self.get_url('/')
+        self.env.canonical_url = self.get_url('/', lang=self.env.lang)
         super(Handler, self).get()
