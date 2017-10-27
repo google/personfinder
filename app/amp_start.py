@@ -22,5 +22,5 @@ class Handler(start.Handler):
 
     def get(self):
         self.env.amp = True
-        self.env.canonical_url = self.get_url('/', lang=self.env.lang)
+        self.env.canonical_url = self.get_url('/', lang=self.params.lang)
         super(Handler, self).get()

@@ -23,7 +23,7 @@ class Handler(utils.BaseHandler):
 
     def get(self):
         self.env.robots_ok = True
-        self.env.amp_url = self.get_url('/amp_start')
+        self.env.amp_url = self.get_url('/amp_start', lang=self.params.lang)
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):
