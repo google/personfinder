@@ -22,7 +22,8 @@ class Handler(start.Handler):
 
     def get(self):
         self.env.amp = True
-        # The reason for setting params.lang instead of env.lang is to prevent 
-        # the default lang=en from being set on the search index.
+        # The reason for setting params.lang instead of env.lang
+        # is not to attach lang parameter to the URL if it is not explicitly
+        # specified in the current request.
         self.env.canonical_url = self.get_url('/', lang=self.params.lang)
         super(Handler, self).get()
