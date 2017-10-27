@@ -24,8 +24,8 @@ class Handler(utils.BaseHandler):
 
     def get(self):
         self.env.robots_ok = True
-        """The reason for setting params.lang instead of env.lang is to prevent 
-        the default lang=en from being set on the search index."""
+        # The reason for setting params.lang instead of env.lang is to prevent
+        # the default lang=en from being set on the search index.
         self.env.amp_url = self.get_url('/amp_start', lang=self.params.lang)
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
