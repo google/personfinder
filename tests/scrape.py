@@ -660,8 +660,15 @@ def get_form_params(form):
     for input in form.cssselect('input'):
         if input.get('name') and input.get('disabled') is None:
             type = input.get('type', 'text').lower()
-            if type in ['text', 'password', 'hidden'] or (
-               type in ['checkbox', 'radio'] and input.get('checked') is not None):
+            if type in ['checkbox', 'radio']:
+                add_value = input.get('checked') is not None
+            elif type in ['file', 'submit', 'image', 'reset', 'button']:
+                add_value = False
+            else:
+                # Ordinary input fields such as 'text' or 'hidden'. Note that
+                # there are many types in this category in HTML5 like 'number'.
+                add_value = True
+            if add_value:
                 params[input.get('name')] = input.get('value', '')
     for select in form.cssselect('select'):
         if select.get('disabled') is None:

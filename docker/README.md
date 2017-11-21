@@ -24,7 +24,7 @@ Steps to create the container
 
     Run the following command
 
-    $ ./run-container.sh <image-name> [<container-name>]
+        $ ./run-container.sh <image-name> [<container-name>]
 
     e.g. (Container's name is optional)
 
