@@ -101,7 +101,7 @@ class ReadOnlyTests(ServerTestsBase):
         # Try with no specified charset.
         doc = self.go('/haiti?lang=ja')
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        assert 'charset="utf-8"' in doc.content
         # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
         assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
                 doc.content_bytes)
@@ -109,21 +109,21 @@ class ReadOnlyTests(ServerTestsBase):
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis')
         assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
-        assert 'content="text/html; charset=shift_jis"' in doc.content
+        assert 'charset="shift_jis"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS')
         assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
-        assert 'content="text/html; charset=Shift-JIS"' in doc.content
+        assert 'charset="Shift-JIS"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8')
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        assert 'charset="utf-8"' in doc.content
         # UTF-8 encoding of title text
         assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
                 doc.content_bytes)
@@ -134,7 +134,7 @@ class ReadOnlyTests(ServerTestsBase):
         self.s.agent = 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0'
         doc = self.go('/haiti?lang=ja')
         assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
-        assert 'content="text/html; charset=Shift_JIS"' in doc.content
+        assert 'charset="Shift_JIS"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 

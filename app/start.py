@@ -14,15 +14,20 @@
 # limitations under the License.
 
 import const
-from utils import *
-from model import *
+import utils
+from model import Counter
 
 
-class Handler(BaseHandler):
+class Handler(utils.BaseHandler):
+    """This handler shows the repository's start page."""
     repo_required = False
 
     def get(self):
         self.env.robots_ok = True
+        # The reason for setting params.lang instead of env.lang
+        # is not to attach lang parameter to the URL if it is not explicitly
+        # specified in the current request.
+        self.env.amp_url = self.get_url('/amp_start', lang=self.params.lang)
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):

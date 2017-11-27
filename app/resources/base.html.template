@@ -1,4 +1,4 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# Copyright 2017 Google Inc.  Licensed under the Apache License, Version   #}
 {# 2.0 (the "License"); you may not use this file except in compliance with #}
 {# the License.  You may obtain a copy of the License at:                   #}
 {#     http://www.apache.org/licenses/LICENSE-2.0                           #}
@@ -16,59 +16,91 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
-<head>{% block head %}
-  {% include "gtm.html.template" %}
-  <meta name="keywords" content="{{config.keywords}}">
-  <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
-  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-  {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
-  {% if feed_url %}
-    <link rel="alternate" type="application/atom+xml"
+
+<html {% if env.amp %}amp {% endif %}dir="{{env.rtl|yesno:"rtl,ltr"}}" lang="{{env.lang}}">
+
+<head>
+  {% block head %}
+    {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
+    <meta charset="{{env.charset}}">
+    {% include "gtm.html.template" %}
+    <meta name="keywords" content="{{config.keywords}}">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    {% if env.amp %}
+      <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+      <script async src="https://cdn.ampproject.org/v0.js"></script>
+    {% endif %}
+
+    {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
+    {% if feed_url %}
+      <link rel="alternate" type="application/atom+xml"
         title="{% trans 'Atom feed of updates about this person' %}"
         href="{{feed_url}}">
-  {% endif %}
-  <link rel="alternate" media="handheld" href="{{env.url}}">
-  <title>
-    {% block title %}
-      {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
-      {{env.repo_title}}{% endif %}
-  </title>
-  <link
-      rel="stylesheet"
-      href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
-  {% if env.enable_javascript %}
-    <script type="text/javascript">
-      var lang = '{{env.lang}}';
-      {% if env.enable_translate %}
-        var translate_api_key = '{{config.translate_api_key}}';
+    {% endif %}
+    {% if env.amp %}
+    <link rel="canonical" href="{{env.canonical_url}}">
+    {% else %}
+      <link rel="alternate" media="handheld" href="{{env.url}}">
+    {% endif %}
+    <title>
+      {% block title %}
+        {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
+        {{env.repo_title}}{% endif %}
+    </title>
+
+  {% if env.amp %}
+    <style type="text/css" amp-custom>
+      {% if env.rtl %}
+        {% with "right" as start %}
+        {% with "left" as end %}
+        {% include "css-default.template" %}
+        {% endwith %}
+        {% endwith %}
       {% else %}
-        var translate_api_key = null;
+        {% with "left" as start %}
+        {% with "right" as end %}
+        {% include "css-default.template" %}
+        {% endwith %}
+        {% endwith %}
       {% endif %}
-    </script>
-    <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript">
-      // Lets jQuery not overwrite "$" symbol defined in forms.js.template.
-      // Use "jQuery" instead of "$".
-      // TODO(ichikawa) Remove "$" from forms.js.template and use jQuery's "$" instead.
-      jQuery.noConflict();
-    </script>
-    <script src="{{env.global_url}}/forms.js"></script>
-    {% if env.virtual_keyboard_layout %}
-      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-      <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+    </style>
+  {% else %}
+    <link
+       rel="stylesheet"
+       href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
+    {% if env.enable_javascript %}
       <script type="text/javascript">
-        google.setOnLoadCallback(function() {
-          initialize_keyboard('{{env.virtual_keyboard_layout}}');
-        });
+        var lang = '{{env.lang}}';
+        {% if env.enable_translate %}
+          var translate_api_key = '{{config.translate_api_key}}';
+        {% else %}
+          var translate_api_key = null;
+        {% endif %}
       </script>
+      <script src="{{env.global_url}}/jquery-2.1.0.min.js"></script>
+      <script type="text/javascript">
+        // Lets jQuery not overwrite "$" symbol defined in forms.js.template.
+        // Use "jQuery" instead of "$".
+        // TODO(ichikawa) Remove "$" from forms.js.template and use jQuery's "$" instead.
+        jQuery.noConflict();
+      </script>
+      <script src="{{env.global_url}}/forms.js"></script>
+      {% if env.virtual_keyboard_layout %}
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
+        <script type="text/javascript">
+          google.setOnLoadCallback(function() {
+            initialize_keyboard('{{env.virtual_keyboard_layout}}');
+          });
+        </script>
+      {% endif %}
     {% endif %}
   {% endif %}
 {% endblock head %}</head>
 
 <body
-    class="{{env.ui}} {% block extra_body_class%}{% endblock %}"
-    onload="{{onload_function}}">
+    class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
+    {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
   {% block body %}
     <div class="header title-bar" role="banner">
       {% block header %}
@@ -83,8 +115,7 @@
         {{env.repo_title}}
       </div>
     {% endif %}
-
-    {% if env.show_language_menu %}
+    {% if not env.amp and env.show_language_menu %}
       {% include "language-menu.html.template" %}
     {% endif %}
 
@@ -136,36 +167,38 @@
       </div>
     </div>
 
-    <div id="sidenav" class="sidenav">
-      {% block sidenav %}
-        {% if env.repo and env.ui == "light" %}
-          <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+    {% if not env.amp %}
+      <div id="sidenav" class="sidenav">
+        {% block sidenav %}
+          {% if env.repo and env.ui == "light" %}
+            <a href="{{env.default_ui_url}}">{% trans "Desktop version" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}" {{env.target_attr|safe}}
+              >{% trans "About Google Person Finder" %}</a>
           <span class="link-separator"></span>
-        {% endif %}
-        <a href="{{env.global_url}}" {{env.target_attr|safe}}
-            >{% trans "About Google Person Finder" %}</a>
-        <span class="link-separator"></span>
-        {% include "repo-menu.html.template" %}
-        <span class="link-separator"></span>
-        <a href="https://support.google.com/personfinder/contact/pf_feedback"
-            {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
-        <span class="link-separator"></span>
-        {% if env.ui != "light" %}
-          <a href="https://github.com/google/personfinder"
-              {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+          {% include "repo-menu.html.template" %}
           <span class="link-separator"></span>
-        {% endif %}
-        <a href="{{env.global_url}}/howto.html" {{env.target_attr|safe}}
-            {% comment %}
-              Translators: The title of the page which explains how to use
-              Person Finder.
-            {% endcomment %}
-            >{% trans "User's Guide" %}</a>
-        <span class="link-separator"></span>
-        <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
-            >{% trans "Terms of Service" %}</a>
-      {% endblock sidenav %}
-    </div>
-    <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+          <a href="https://support.google.com/personfinder/contact/pf_feedback"
+              {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+          <span class="link-separator"></span>
+          {% if env.ui != "light" %}
+            <a href="https://github.com/google/personfinder"
+                {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+            <span class="link-separator"></span>
+          {% endif %}
+          <a href="{{env.global_url}}/howto.html" {{env.target_attr|safe}}
+              {% comment %}
+                Translators: The title of the page which explains how to use
+                Person Finder.
+              {% endcomment %}
+              >{% trans "User's Guide" %}</a>
+          <span class="link-separator"></span>
+          <a href="{{env.global_url}}/tos" {{env.target_attr|safe}}
+              >{% trans "Terms of Service" %}</a>
+        {% endblock sidenav %}
+      </div>
+      <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+    {% endif %}
   {% endblock body %}
 </body></html>

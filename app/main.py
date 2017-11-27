@@ -80,6 +80,7 @@ HOME_ACTION = 'home.html'
 # regularizing the module and class names or adding a URL attribute to handlers.
 HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'start',
+  'amp_start',
   'query',
   'results',
   'create',
@@ -381,6 +382,8 @@ def setup_env(request):
     env.target_attr = ''
     # Shows record IDs in the results page.
     env.show_record_ids_in_results = True
+    # Shows non AMP HTML pages by default.
+    env.amp = False
 
     if env.ui == 'small':
         env.show_logo = False

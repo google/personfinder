@@ -162,6 +162,15 @@ pre {  /* code samples */
   padding: 20px;
 }
 
+.title-bar-button-container {
+  height: 24px;
+  width: 24px;
+  display: inline;
+  float: {{start}};
+  padding: 20px;
+  line-height: 0px;
+}
+
 div.subtitle-bar {
   font-size: 20px;
   font-weight: normal;
@@ -1313,8 +1322,9 @@ table.api-keys td.empty {
   display: none;
 }
 
-/* Share buttons */
-
-.fb-share-button {
-  vertical-align: top !important;
-}
+{% if not env.amp %}
+  /* Share buttons */
+  .fb-share-button {
+    vertical-align: top !important;
+  }
+{% endif %}
