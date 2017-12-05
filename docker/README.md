@@ -42,26 +42,13 @@ Steps to create the container
         # gae-run-app.sh
 
     You will be able to access the server from the Host's web browser at
-    https://<container-ip-address>:8000
-
-
-5. Initialize the datastore:
-
-    Open one more SHELL inside the running container by running the following
-    command on the Host (Docker version 1.3.0 or higher, for older Docker
-    versions, docker's "attach" command should do the job as well).
-
-        $ docker exec -it <container-name> /bin/bash
-
-    then, inside the container, run the following (password is "root")
-
-        # setup_datastore.sh
+    http://localhost:8000
 
 
 NOTES
 -----
 
-The Personfinder's source code folder is shared among host and Docker container,
+The Person Finder's source code folder is shared among host and Docker container,
 in order to let the developer choose the development tools (e.g. IDE) which
 he/she prefers. In the Docker container, the Personfider's source code will be
 available in `/opt/personfinder` folder.
