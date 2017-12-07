@@ -558,8 +558,8 @@ class Main(webapp.RequestHandler):
                 response.out.write(content)
 
         if not env.action and not env.repo:
-            # Redirect to the default home page.
-            self.redirect(env.global_url + '/' + HOME_ACTION)
+            # A request for the root path ('/'). Renders the home page.
+            self.serve_static_content(HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
@@ -571,23 +571,27 @@ class Main(webapp.RequestHandler):
             response.set_status(404)
             response.out.write('Not found')
         else:
-            # Serve a static page or file in app/resources/static directory.
-            env.robots_ok = True
-            get_vars = lambda: {'env': env, 'config': env.config}
-            content = resources.get_rendered(
-                'static/%s' % env.action,
-                env.lang,
-                (env.repo, env.charset),
-                get_vars)
-            if content is None:
-                response.set_status(404)
-                response.out.write('Not found')
-            else:
-                content_type, encoding = mimetypes.guess_type(env.action)
-                response.headers['Content-Type'] = (
-                        (content_type or 'text/plain') +
-                        ('; charset=%s' % encoding if encoding else ''))
-                response.out.write(content)
+            self.serve_static_content(self.env.action)
+
+    def serve_static_content(self, resource_name):
+        """Serve a static page or file in app/resources/static directory."""
+        response, env = self.response, self.env
+        env.robots_ok = True
+        get_vars = lambda: {'env': env, 'config': env.config}
+        content = resources.get_rendered(
+            'static/%s' % resource_name,
+            env.lang,
+            (env.repo, env.charset),
+            get_vars)
+        if content is None:
+            response.set_status(404)
+            response.out.write('Not found')
+        else:
+            content_type, encoding = mimetypes.guess_type(resource_name)
+            response.headers['Content-Type'] = (
+                    (content_type or 'text/plain') +
+                    ('; charset=%s' % encoding if encoding else ''))
+            response.out.write(content)
 
     def get(self):
         self.serve()
