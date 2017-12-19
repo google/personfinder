@@ -593,8 +593,12 @@ td.submit {
 
 .custom-message {
   max-width: 500px;
-  width: 90%;
   margin: 1em 0;
+}
+
+.main .row.custom-message {
+  display: table;
+  margin: 24px auto;
 }
 
 .social {
