@@ -23,7 +23,9 @@
   {% block head %}
     {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
     <meta charset="{{env.charset}}">
-    {% include "gtm.html.template" %}
+    {% if not env.amp %}
+      {% include "gtm.html.template" %}
+    {% endif %}
     <meta name="keywords" content="{{config.keywords}}">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     {% if env.amp %}
@@ -64,6 +66,9 @@
         {% endwith %}
       {% endif %}
     </style>
+    <!-- AMP Analytics -->
+    <script async custom-element="amp-analytics"
+            src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   {% else %}
     <link
        rel="stylesheet"
@@ -102,6 +107,10 @@
     class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
     {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
   {% block body %}
+    {% if env.amp %}
+      <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MVDGQ3H"
+                     data-credentials="include"></amp-analytics>
+    {% endif %}
     <div class="header title-bar" role="banner">
       {% block header %}
         {% if env.show_logo %}
