@@ -66,7 +66,7 @@
         {% endwith %}
       {% endif %}
     </style>
-    <!-- AMP Analytics -->
+    {# AMP Analytics #}
     <script async custom-element="amp-analytics"
             src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   {% else %}
@@ -107,8 +107,8 @@
     class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
     {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
   {% block body %}
-    {% if env.amp %}
-      <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MVDGQ3H"
+    {% if env.amp and env.enable_analytics %}
+      <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_analytics_id}}"
                      data-credentials="include"></amp-analytics>
     {% endif %}
     <div class="header title-bar" role="banner">
