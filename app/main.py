@@ -300,6 +300,7 @@ def setup_env(request):
     env.config = config.Configuration(env.repo or '*')
 
     env.analytics_id = config.get('analytics_id')
+    env.amp_analytics_id = config.get('amp_analytics_id')
     env.maps_api_key = config.get('maps_api_key')
 
     # Internationalization-related stuff.
