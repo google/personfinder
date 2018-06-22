@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip==9.0.3 && pip install pytest lxml cssselect pillow==4.1.0
+RUN pip -vv install --upgrade pip && pip -vv install --user pytest lxml cssselect pillow==4.1.0
 
 # Install app engine
 WORKDIR   /opt/
