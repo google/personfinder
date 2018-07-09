@@ -41,6 +41,11 @@ class Handler(BaseHandler):
             if not id:
                 break
             p = Person.get(self.repo, id)
+            if not p:
+                return self.error(
+                    404,
+                    _("This person's entry does not exist or has been "
+                      "deleted."))
             sanitize_urls(p)
 
             for prop in COMPARE_FIELDS:
@@ -103,7 +108,7 @@ class Handler(BaseHandler):
                 for other_id in ids - set([person_id]):
                     note = Note.create_original(
                         self.repo,
-                        entry_date=get_utcnow(),                        
+                        entry_date=get_utcnow(),
                         person_record_id=person_id,
                         linked_person_record_id=other_id,
                         text=self.params.text,
