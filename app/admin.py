@@ -132,8 +132,16 @@ class Handler(BaseHandler):
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
+                        'amp_analytics_id',
+                        'analytics_id',
                         'brand',
+                        'captcha_secret_key',
+                        'captcha_site_key',
+                        'maps_api_key',
                         'notification_email',
+                        'privacy_policy_url',
+                        'tos_url',
+                        'translate_api_key',
                     ]):
                 self.redirect('/admin')
 
