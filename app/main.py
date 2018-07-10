@@ -217,17 +217,30 @@ def select_charset(request):
 
 def select_lang(request, config=None):
     """Selects the best language to use for a given request.  The 'lang' query
-    parameter has priority, then the django_language cookie, then the first
-    language in the language menu, then the default setting."""
-    default_lang = (config and
-                    config.language_menu_options and
-                    config.language_menu_options[0])
+    parameter has priority, then the django_language cookie, then
+    'Accept-Language' HTTP header, then the first language in the language menu,
+    then the default setting."""
+    default_lang = (
+        (config and
+         config.language_menu_options and
+         config.language_menu_options[0]) or
+            django_setup.LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
-            default_lang or
-            django_setup.LANGUAGE_CODE)
+            select_lang_from_header(request, default_lang=default_lang))
     lang = re.sub('[^A-Za-z0-9-]', '', lang)
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
+
+def select_lang_from_header(request, default_lang):
+    """Selects the best language matching 'Accept-Language' HTTP header."""
+    # Either of the first item in the first argument or the default_match
+    # argument is used as the default depending on the situation. So we need to
+    # put the default language to both. See:
+    #   https://docs.pylonsproject.org/projects/webob/en/stable/api/webob.html#webob.acceptparse.AcceptLanguageValidHeader.best_match
+    #   https://docs.pylonsproject.org/projects/webob/en/stable/api/webob.html#webob.acceptparse.AcceptLanguageNoHeader.best_match
+    return request.accept_language.best_match(
+        [default_lang] + const.LANGUAGE_ENDONYMS.keys(),
+        default_match=default_lang)
 
 def get_repo_options(request, lang):
     """Returns a list of the names and titles of the launched repositories."""

@@ -121,12 +121,18 @@ def setcookies(cookiejar, host, lines):
 RAW = object() # This sentinel value for 'charset' means "don't decode".
 
 def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
-          cookiejar={}, type=None, method=None):
-    """Make an HTTP or HTTPS request.  If 'data' is given, do a POST;
-    otherwise do a GET.  If 'agent' and/or 'referrer' are given, include
-    them as User-Agent and Referer headers in the request, respectively.
+          cookiejar={}, type=None, method=None, accept_language=None):
+    """Make an HTTP or HTTPS request.
+
+    If 'data' is given, do a POST; otherwise do a GET.
+
+    If 'agent', 'referrer' and/or 'accept_language' are given, include them as
+    User-Agent, Referer and Accept-Language headers in the request,
+    respectively.
+
     'cookiejar' should have the form {domain: {path: {name: value, ...}}};
     cookies will be sent from it and received cookies will be stored in it.
+
     Return the 5-element tuple (url, status, message, headers, content)
     where 'url' is the final URL retrieved, 'status' is the integer status
     code, 'message' is the reply status message, 'headers' is a dictionary of
@@ -134,9 +140,12 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     For multiple occurrences of the same header, 'headers' will contain a
     single key-value pair where the values are joined together with newlines.
     If the Content-Type header specifies a 'charset' parameter, 'content'
-    will be a Unicode string, decoded using the given charset.  Giving the
-    'charset' argument overrides any received 'charset' parameter; a charset
-    of RAW ensures that the content is left undecoded in an 8-bit string."""
+    will be a Unicode string, decoded using the given charset.
+
+    Giving the 'charset' argument overrides any received 'charset' parameter; a
+    charset of RAW ensures that the content is left undecoded in an 8-bit
+    string.
+    """
     scheme, host, path, query, fragment = urlsplit(url)
     host = host.split('@')[-1]
 
@@ -173,6 +182,8 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
         headers['cookie'] = cookieheader
     if type:
         headers['content-type'] = type
+    if accept_language:
+        headers['accept-language'] = accept_language
 
     # Make the HTTP or HTTPS request using Python or cURL.
     if verbose:
@@ -280,20 +291,29 @@ class Session:
         self.history = []
 
     def go(self, url_or_doc, data='', redirects=10, referrer=True,
-           charset=None, type=None):
+           charset=None, type=None, accept_language=None):
         """Navigate to a given URL or a document.
 
-        If the URL is relative, it is resolved
-        with respect to the current URL.  If 'data' is provided, do a POST;
-        otherwise do a GET.  Follow redirections up to 'redirects' times.
+        If the URL is relative, it is resolved with respect to the current URL.
+
+        If 'data' is provided, do a POST; otherwise do a GET.
+
+        Follow redirections up to 'redirects' times.
+
         If 'referrer' is given, send it as the referrer; if 'referrer' is
         True (default), send the current URL as the referrer; if 'referrer'
-        is a false value, send no referrer.  If 'charset' is given, it
-        overrides any received 'charset' parameter; setting 'charset' to RAW
-        leaves the content undecoded in an 8-bit string.  If the document is
-        successfully fetched, return a Document spanning the entire document.
-        Any relevant previously stored cookies will be included in the
-        request, and any received cookies will be stored for future use.
+        is a false value, send no referrer.
+
+        If 'charset' is given, it overrides any received 'charset' parameter;
+        setting 'charset' to RAW leaves the content undecoded in an 8-bit
+        string.
+
+        If 'accept_language' is given, include it as Accept-Language headers in
+        the request.
+
+        If the document is successfully fetched, return a Document spanning the
+        entire document. Any relevant previously stored cookies will be included
+        in the request, and any received cookies will be stored for future use.
 
         If a scrape.Document instance is given, it just make it the current
         document (self.doc) in the session, without making any extra HTTP
@@ -314,8 +334,15 @@ class Session:
             while 1:
                 (self.url, self.status, self.message, self.headers,
                  content_bytes) = fetch(
-                    url, data, self.agent, referrer, charset, self.verbose,
-                    self.cookiejar, type)
+                    url=url,
+                    data=data,
+                    agent=self.agent,
+                    referrer=referrer,
+                    charset=charset,
+                    verbose=self.verbose,
+                    cookiejar=self.cookiejar,
+                    type=type,
+                    accept_language=accept_language)
                 if redirects:
                     if self.status in [301, 302] and 'location' in self.headers:
                         url, data = urljoin(url, self.headers['location']), ''
@@ -452,6 +479,7 @@ class Session:
         scheme, host, path, query, fragment = urlsplit(self.url)
         host = host.split('@')[-1]
         setcookies(self.cookiejar, host, [cookieline])
+
 
 urlquoted = dict((chr(i), '%%%02X' % i) for i in range(256))
 urlquoted.update(dict((c, c) for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
