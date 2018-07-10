@@ -15,14 +15,16 @@ RUN apt-get update && apt-get install -y \
 	unzip \
 	python2.7 \
 	libpython2.7-dev \
-	python-pip \
 	git \
 	time \
 	gettext \
+	curl \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN pip -vv install --upgrade pip && pip -vv install --user pytest lxml cssselect pillow==4.1.0
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+CMD python get-pip.py
+CMD pip -vv install --upgrade pip && pip -vv install --user pytest lxml cssselect pillow==4.1.0
 
 # Install app engine
 WORKDIR   /opt/
