@@ -258,8 +258,9 @@ class Handler(BaseHandler):
                         # search result not based on the user input
                         results_based_on_input = False
 
-            concatenated_query = ('%s %s' % (self.params.query_name,
-                                 self.params.query_location))
+            concatenated_query = (
+                ('%s %s' % (self.params.query_name, self.params.query_location))
+                    .strip())
 
             # Show the (possibly empty) matches.
             return self.render('results.html',
