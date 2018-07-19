@@ -10,7 +10,7 @@ Steps to create the container
 1. Setup the environment for Docker (see Docker's webpage)
 2. Build Person Finder Docker image
 
-    From `personfinder/docker` folder, run
+    From `personfinder` folder, run
 
         $ docker build -t <image-name> .
 
