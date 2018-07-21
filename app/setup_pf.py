@@ -118,6 +118,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        time_zone_offset=0,
+        time_zone_abbreviation='UTC',
         published_date=get_timestamp(datetime(2010, 1, 12)),
         updated_date=get_timestamp(datetime(2010, 1, 12)),
     )
@@ -185,6 +187,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        time_zone_offset=0,
+        time_zone_abbreviation='UTC',
         published_date=get_timestamp(datetime(2010, 8, 6)),
         updated_date=get_timestamp(datetime(2010, 8, 6)),
     )

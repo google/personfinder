@@ -78,6 +78,7 @@ class Handler(BaseHandler):
                     # These settings are all entered in JSON. It can be either:
                     # - JSON object e.g., {"k1": "v1", "k2": "v2"}
                     # - JSON boolean literal i.e., true or false
+                    # - JSON number literal e.g., 1, 2, 3
                     json_config_names=[
                         'allow_believed_dead_via_ui',
                         'family_name_first',
@@ -97,6 +98,7 @@ class Handler(BaseHandler):
                         'show_profile_entry',
                         'start_page_custom_htmls',
                         'test_mode',
+                        'time_zone_offset',
                         'use_alternate_names',
                         'use_family_name',
                         'use_postal_code',
@@ -109,6 +111,7 @@ class Handler(BaseHandler):
                         'deactivation_message_html',
                         'keywords',
                         'launch_status',
+                        'time_zone_abbreviation',
                     ],
                     # Update updated_date if any of the following settings are
                     # changed.
@@ -129,7 +132,16 @@ class Handler(BaseHandler):
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
+                        'amp_analytics_id',
+                        'analytics_id',
+                        'brand',
+                        'captcha_secret_key',
+                        'captcha_site_key',
+                        'maps_api_key',
                         'notification_email',
+                        'privacy_policy_url',
+                        'tos_url',
+                        'translate_api_key',
                     ]):
                 self.redirect('/admin')
 

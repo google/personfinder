@@ -63,5 +63,7 @@ class Handler(BaseHandler):
             test_mode=False,
             force_https=False,
             zero_rating_mode=False,
+            time_zone_offset=0,
+            time_zone_abbreviation='UTC',
         )
         self.redirect('/admin', new_repo)

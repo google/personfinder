@@ -162,6 +162,15 @@ pre {  /* code samples */
   padding: 20px;
 }
 
+.title-bar-button-container {
+  height: 24px;
+  width: 24px;
+  display: inline;
+  float: {{start}};
+  padding: 20px;
+  line-height: 0px;
+}
+
 div.subtitle-bar {
   font-size: 20px;
   font-weight: normal;
@@ -584,8 +593,18 @@ td.submit {
 
 .custom-message {
   max-width: 500px;
-  width: 90%;
   margin: 1em 0;
+}
+
+.main .row.custom-message {
+  display: table;
+  margin: 24px auto;
+}
+
+.social {
+  /* A trick to align all social share buttons vertically.
+     https://stackoverflow.com/a/21919504/4339963 */
+  line-height: 10px;
 }
 
 /* Query page */
@@ -1307,8 +1326,9 @@ table.api-keys td.empty {
   display: none;
 }
 
-/* Share buttons */
-
-.fb-share-button {
-  vertical-align: top !important;
-}
+{% if not env.amp %}
+  /* Share buttons */
+  .fb-share-button {
+    vertical-align: top !important;
+  }
+{% endif %}

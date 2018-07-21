@@ -231,7 +231,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Վստա՞հ եք, որ ցանկանում եք ջնջել «%(full_name)s» գրառումը:\n"
+"      Իսկապե՞ս ուզում եք ջնջել «%(full_name)s» գրառումը:\n"
 "    "
 
 #, python-format
@@ -241,7 +241,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Վստա՞հ եք, որ ցանկանում եք անջատել «%(full_name)s»-ի նշումները:\n"
+"      Իսկապե՞ս ուզում եք անջատել «%(full_name)s»-ի նշումները:\n"
 "    "
 
 #, python-format
@@ -252,8 +252,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Վստա՞հ եք, որ ցանկանում եք անջատել «%(full_name)s»-ի գրառումների "
-"նշումները:\n"
+"      Իսկապե՞ս ուզում եք անջատել «%(full_name)s»-ի գրառումների նշումները:"
+"\n"
 "    "
 
 #, python-format
@@ -263,7 +263,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Վստա՞հ եք, որ ցանկանում եք միացնել «%(full_name)s»-ի նշումները:\n"
+"      Իսկապե՞ս ուզում եք միացնել «%(full_name)s»-ի նշումները:\n"
 "    "
 
 #, python-format
@@ -274,8 +274,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Վստա՞հ եք, որ ցանկանում եք երկարացնել սպառման ժամկետը "
-"«%(full_name)s» գրառման համար:\n"
+"      Իսկապե՞ս ուզում եք երկարացնել սպառման ժամկետը «%(full_name)s» "
+"գրառման համար:\n"
 "    "
 
 msgid ""
@@ -585,6 +585,9 @@ msgstr "Մոտ 6 ամիս (180 օր) հետո"
 msgid "About Google Person Finder"
 msgstr "Google Մարդկանց որոնման մասին"
 
+msgid "About You"
+msgstr ""
+
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
 #, python-format
@@ -613,13 +616,13 @@ msgid "Alternate names"
 msgstr "Այլընտրանքային անուններ"
 
 msgid "Are you sure this note isn't spam?"
-msgstr "Համոզվա՞ծ եք, որ այս նշումը լցոն չէ:"
+msgstr "Համոզվա՞ծ եք, որ այս նշումը սպամ չէ:"
 
 msgid "Are you sure you want to mark this note as spam?"
-msgstr "Վստա՞հ եք, որ ցանկանում եք նշել այս նշումը որպես լցոն:"
+msgstr "Իսկապե՞ս ուզում եք նշել այս նշումը որպես սպամ:"
 
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Վստա՞հ եք, որ ցանկանում եք վերականգնել այս գրառումը:"
+msgstr "Իսկապե՞ս ուզում եք վերականգնել այս գրառումը:"
 
 msgid "Atom feed of updates about this person"
 msgstr "Թարմացումների Atom հոսք այս անձի վերաբերյալ"
@@ -642,13 +645,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
-"Այս գրառումը լցոն նշելով` այն ըստ կանխադրման կթաքցվի: Այն կմնա որպես "
+"Այս գրառումը սպամ նշելով` այն ըստ կանխադրման կթաքցվի: Այն կմնա որպես "
 "գրառման մաս, սակայն նշման բովանդակությունը կարդալու համար անհրաժեշտ կլինի"
-" լրացուցիչ սեղմել: Օգտատերերը նաև կկարողանան հեռացնել լցոնի պիտակը այս "
+" լրացուցիչ սեղմել: Օգտատերերը նաև կկարողանան հեռացնել սպամի պիտակը այս "
 "նշումից:"
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr "Այս նշումը լռելյայն կդառնա տեսանելի որպես լցոն ապանշելուց հետո:"
+msgstr "Այս նշումը լռելյայն կդառնա տեսանելի որպես սպամ ապանշելուց հետո:"
 
 msgid "CSV file"
 msgstr "CSV ֆայլ"
@@ -809,6 +812,14 @@ msgstr ""
 "Հեռախոսների կամ շարժական սարքերի համար օգտագործեք NTT-ի կողմից տրամադրվող"
 " 171 ծառայությունը:"
 
+#. Translators: The title of a page for people who respond to disasters.
+msgid "For responders"
+msgstr "Առաջին օգնություն ցուցաբերողների համար"
+
+#. Translators: The title of a page of frequently asked questions.
+msgid "Frequently asked questions"
+msgstr "Հաճախակի տրվող հարցեր"
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr "Ումից՝ %(home_location)s"
@@ -886,10 +897,10 @@ msgid "I have received information that this person is dead"
 msgstr "Ես ունեմ տեղեկություն, որ այս անձը մահացած է"
 
 msgid "I have received spam due to this note."
-msgstr "Ես լցոն եմ ստացել այս նշման վերաբերյալ:"
+msgstr "Ես սպամ եմ ստացել այս նշման վերաբերյալ:"
 
 msgid "I have received spam."
-msgstr "Ես ստացել եմ լցոն:"
+msgstr "Ես ստացել եմ սպամ:"
 
 msgid "I prefer not to specify."
 msgstr "Ես նախընտրում եմ չմանրամասնել:"
@@ -1081,7 +1092,7 @@ msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "«believed_dead» կարգավիճակի հրապարակման համար անհրաժեշտ է լիազորում:"
 
 msgid "Not spam"
-msgstr "Լցոն չէ"
+msgstr "Սպամ չէ"
 
 msgid "Note author"
 msgstr "Նշման հեղինակը"
@@ -1243,7 +1254,7 @@ msgid "Remove"
 msgstr "Հեռացնել"
 
 msgid "Report spam"
-msgstr "Հաղորդել որպես լցոն"
+msgstr "Հաղորդել որպես սպամ"
 
 #, python-format
 msgid "Return to the record for %(full_name)s."
@@ -1387,7 +1398,7 @@ msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Տրամադրված պատկերը չափազանց մեծ է: Վերբեռնեք ավելի փոքրը:"
 
 msgid "The reason this note is being marked as spam:"
-msgstr "Այս նշումը որպես լցոն նշելու պատճառը`"
+msgstr "Այս նշումը որպես սպամ նշելու պատճառը`"
 
 msgid "The record cannot be extended."
 msgstr "Գրառումը հնարավոր չէ երկարացնել:"
@@ -1452,7 +1463,7 @@ msgid "This link is invalid."
 msgstr "Այս հղումն անվավեր է:"
 
 msgid "This note has been marked as spam."
-msgstr "Այս գրառումը նշվել է որպես լցոն:"
+msgstr "Այս գրառումը նշվել է որպես սպամ:"
 
 msgid "This note is inappropriate."
 msgstr "Այս գրառումն անտեղի է:"
@@ -1461,7 +1472,7 @@ msgid "This note is incorrect or untrue."
 msgstr "Այս գրառումը ճիշտ չէ կամ չի համապատասխանում իրականությանը:"
 
 msgid "This note is spam."
-msgstr "Այս գրառումը լցոն է:"
+msgstr "Այս գրառումը սպամ է:"
 
 msgid "This person has been in contact with someone"
 msgstr "Այս անձը շփվել է ինչ-որ մեկի հետ"
@@ -1485,7 +1496,7 @@ msgid "This record is inappropriate."
 msgstr "Անհամապատասխան գրառում է:"
 
 msgid "This record is spam."
-msgstr "Այս գրառումը լցոն է:"
+msgstr "Այս գրառումը սպամ է:"
 
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
@@ -1544,6 +1555,11 @@ msgstr "Վերբեռնեք ձեր CSV ֆայլը ստորև"
 
 msgid "Use current location"
 msgstr "Օգտագործել ընթացիկ տեղադրությունը"
+
+#. Translators: The title of the page which explains how to use
+#. Person Finder.
+msgid "User's Guide"
+msgstr "Օգտատիրոջ ուղեցույց"
 
 msgid "View the record"
 msgstr "Դիտել գրառումը"

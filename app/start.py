@@ -13,15 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from utils import *
-from model import *
+import const
+import utils
+from model import Counter
 
 
-class Handler(BaseHandler):
+class Handler(utils.BaseHandler):
+    """This handler shows the repository's start page."""
     repo_required = False
 
     def get(self):
         self.env.robots_ok = True
+        # The reason for setting params.lang instead of env.lang
+        # is not to attach lang parameter to the URL if it is not explicitly
+        # specified in the current request.
+        self.env.amp_url = self.get_url('/amp_start', lang=self.params.lang)
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):
@@ -34,6 +40,10 @@ class Handler(BaseHandler):
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        return {'num_people': num_people,
-                'seek_url': self.get_url('/query', role='seek'),
-                'provide_url': self.get_url('/query', role='provide')}
+        return {
+            'num_people': num_people,
+            'seek_url': self.get_url('/query', role='seek'),
+            'provide_url': self.get_url('/query', role='provide'),
+            'facebook_locale':
+                const.FACEBOOK_LOCALES.get(self.env.lang, 'en_US'),
+        }

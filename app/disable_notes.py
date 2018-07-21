@@ -60,7 +60,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
         captcha_response = self.get_captcha_response()
-        if self.env.test_mode or captcha_response.is_valid:
+        if captcha_response.is_valid:
             disable_notes_url = get_disable_notes_url(self, person)
             # To make debug with local dev_appserver easier.
             logging.info('Disable notes URL: %s' % disable_notes_url)

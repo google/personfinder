@@ -80,6 +80,7 @@ HOME_ACTION = 'home.html'
 # regularizing the module and class names or adding a URL attribute to handlers.
 HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'start',
+  'amp_start',
   'query',
   'results',
   'create',
@@ -143,59 +144,6 @@ HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
-
-# Avoid serving dynamic page templates as static pages.
-# Otherwise e.g., the admin page template is accessible via /global/admin.html
-# without authentication, which is bad.
-#
-# TODO(gimite): Figure out a better solution.
-BLACKLISTED_ACTIONS_FOR_STATIC_SERVING = set([
-    'add_note.html',
-    'add_note_base.html',
-    'admin-base.html',
-    'admin.html',
-    'admin_api_key_form.html',
-    'admin_api_keys.html',
-    'admin_api_keys_list.html',
-    'admin_create_repo.html',
-    'admin_dashboard.html',
-    'admin_delete_record.html',
-    'admin_review.html',
-    'admin_statistics.html',
-    'app-base.html',
-    'base.html',
-    'confirm_disable_notes.html',
-    'create.html',
-    'delete.html',
-    'disable_notes.html',
-    'embed.html',
-    'enable_notes.html',
-    'errors.html',
-    'extend.html',
-    'extend_done.html',
-    'flag_note.html',
-    'gtm.html',
-    'import.html',
-    'language-menu.html',
-    'map.html',
-    'message.html',
-    'multiview.html',
-    'not_admin_error.html',
-    'note.html',
-    'post_flagged_note.html',
-    'query.html',
-    'query_form.html',
-    'repo-menu.html',
-    'restore.html',
-    'results.html',
-    'reveal.html',
-    'setup_datastore.html',
-    'small-create.html',
-    'static-base.html',
-    'subscribe.html',
-    'subscribe_captcha.html',
-    'view.html',
-])
 
 def is_development_server():
     """Returns True if the app is running in development."""
@@ -269,17 +217,30 @@ def select_charset(request):
 
 def select_lang(request, config=None):
     """Selects the best language to use for a given request.  The 'lang' query
-    parameter has priority, then the django_language cookie, then the first
-    language in the language menu, then the default setting."""
-    default_lang = (config and
-                    config.language_menu_options and
-                    config.language_menu_options[0])
+    parameter has priority, then the django_language cookie, then
+    'Accept-Language' HTTP header, then the first language in the language menu,
+    then the default setting."""
+    default_lang = (
+        (config and
+         config.language_menu_options and
+         config.language_menu_options[0]) or
+            django_setup.LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
-            default_lang or
-            django_setup.LANGUAGE_CODE)
+            select_lang_from_header(request, default_lang=default_lang))
     lang = re.sub('[^A-Za-z0-9-]', '', lang)
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
+
+def select_lang_from_header(request, default_lang):
+    """Selects the best language matching 'Accept-Language' HTTP header."""
+    # Either of the first item in the first argument or the default_match
+    # argument is used as the default depending on the situation. So we need to
+    # put the default language to both. See:
+    #   https://docs.pylonsproject.org/projects/webob/en/stable/api/webob.html#webob.acceptparse.AcceptLanguageValidHeader.best_match
+    #   https://docs.pylonsproject.org/projects/webob/en/stable/api/webob.html#webob.acceptparse.AcceptLanguageNoHeader.best_match
+    return request.accept_language.best_match(
+        [default_lang] + const.LANGUAGE_ENDONYMS.keys(),
+        default_match=default_lang)
 
 def get_repo_options(request, lang):
     """Returns a list of the names and titles of the launched repositories."""
@@ -350,12 +311,9 @@ def setup_env(request):
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
-    # TODO(ryok): Rename to local_test_mode or something alike to disambiguate
-    # better from repository's test_mode.
-    env.test_mode = (request.remote_addr == '127.0.0.1' and
-                     request.get('test_mode'))
 
     env.analytics_id = config.get('analytics_id')
+    env.amp_analytics_id = config.get('amp_analytics_id')
     env.maps_api_key = config.get('maps_api_key')
 
     # Internationalization-related stuff.
@@ -438,6 +396,8 @@ def setup_env(request):
     env.target_attr = ''
     # Shows record IDs in the results page.
     env.show_record_ids_in_results = True
+    # Shows non AMP HTML pages by default.
+    env.amp = False
 
     if env.ui == 'small':
         env.show_logo = False
@@ -612,8 +572,8 @@ class Main(webapp.RequestHandler):
                 response.out.write(content)
 
         if not env.action and not env.repo:
-            # Redirect to the default home page.
-            self.redirect(env.global_url + '/' + HOME_ACTION)
+            # A request for the root path ('/'). Renders the home page.
+            self.serve_static_content(HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
@@ -624,24 +584,28 @@ class Main(webapp.RequestHandler):
             # Don't serve template source code.
             response.set_status(404)
             response.out.write('Not found')
-        elif env.action in BLACKLISTED_ACTIONS_FOR_STATIC_SERVING:
+        else:
+            self.serve_static_content(self.env.action)
+
+    def serve_static_content(self, resource_name):
+        """Serve a static page or file in app/resources/static directory."""
+        response, env = self.response, self.env
+        env.robots_ok = True
+        get_vars = lambda: {'env': env, 'config': env.config}
+        content = resources.get_rendered(
+            'static/%s' % resource_name,
+            env.lang,
+            (env.repo, env.charset),
+            get_vars)
+        if content is None:
             response.set_status(404)
             response.out.write('Not found')
         else:
-            # Serve a static page or file.
-            env.robots_ok = True
-            get_vars = lambda: {'env': env, 'config': env.config}
-            content = resources.get_rendered(
-                env.action, env.lang, (env.repo, env.charset), get_vars)
-            if content is None:
-                response.set_status(404)
-                response.out.write('Not found')
-            else:
-                content_type, encoding = mimetypes.guess_type(env.action)
-                response.headers['Content-Type'] = (
-                        (content_type or 'text/plain') +
-                        ('; charset=%s' % encoding if encoding else ''))
-                response.out.write(content)
+            content_type, encoding = mimetypes.guess_type(resource_name)
+            response.headers['Content-Type'] = (
+                    (content_type or 'text/plain') +
+                    ('; charset=%s' % encoding if encoding else ''))
+            response.out.write(content)
 
     def get(self):
         self.serve()

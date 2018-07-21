@@ -60,8 +60,8 @@ msgstr ""
 "\n"
 "%(author_name)s عزیز،\n"
 "کاربری درخواست کرده است یادداشت‌ها در سابقه «%(full_name)s» فعال شود.\n"
-"آدرس رایانامه شما به عنوان نویسنده این سابقه ثبت شده است. برای فعال‌سازی "
-"یادداشت‌ها\n"
+"نشانی رایانامه شما به عنوان نویسنده این سابقه ثبت شده است. برای فعال‌سازی"
+" یادداشت‌ها\n"
 "در این سابقه، ظرف ۳ روز این پیوند را دنبال کنید:\n"
 "%(confirm_url)s\n"
 "\n"
@@ -86,7 +86,7 @@ msgstr ""
 "\n"
 "%(author_name)s عزیز،\n"
 "کاربری درخواست کرده است یادداشت‌ها در سابقه «%(full_name)s» غیرفعال شود.\n"
-"آدرس رایانامه شما به عنوان نویسنده این سابقه ثبت می‌شود. برای "
+"نشانی رایانامه شما به عنوان نویسنده این سابقه ثبت می‌شود. برای "
 "غیرفعال‌سازی\n"
 "یادداشت‌ها در این سابقه، ظرف ۳ روز این پیوند را دنبال کنید:\n"
 "%(confirm_url)s\n"
@@ -399,7 +399,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  برای پست کردن یادداشت خود، لطفاً آدرس رایانامه خود را در زیر وارد کنید\n"
+"  برای پست کردن یادداشت خود، لطفاً نشانی رایانامه خود را در زیر وارد کنید"
+"\n"
 " و پیوند تأییدی را که دریافت می‌کنید دنبال نمایید.\n"
 "  "
 
@@ -414,7 +415,7 @@ msgid ""
 msgstr ""
 "\n"
 "کاربری سابقه «%(full_name)s» را در %(site_url)s حذف کرده است.\n"
-"چون آدرس رایانامه شما به عنوان نویسنده یادداشتی در این سابقه\n"
+"چون نشانی رایانامه شما به عنوان نویسنده یادداشتی در این سابقه\n"
 "ثبت شده است این حذف را به شما اطلاع دادیم.\n"
 
 #, python-format
@@ -428,7 +429,7 @@ msgid ""
 msgstr ""
 "\n"
 "کاربری سابقه «%(full_name)s» را در %(site_url)s حذف کرده است.\n"
-"چون آدرس رایانامه شما به عنوان نویسنده این سابقه\n"
+"چون نشانی رایانامه شما به عنوان نویسنده این سابقه\n"
 "ثبت شده است این حذف را به شما اطلاع دادیم.\n"
 
 #, python-format
@@ -472,7 +473,7 @@ msgstr ""
 "\n"
 "این پیوند را دنبال کنید:\n"
 " %(record_url)s\n"
-"به این دلیل به شما اطلاع می‌دهیم که آدرس رایانامه شما با سابقه این شخص\n"
+"به این دلیل به شما اطلاع می‌دهیم که نشانی رایانامه شما با سابقه این شخص\n"
 "یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
@@ -491,7 +492,7 @@ msgstr ""
 "یادداشت‌ها اکنون در سابقه «%(full_name)s» فعال است. برای مشاهده سابقه،\n"
 "این پیوند را دنبال کنید:\n"
 " %(record_url)s\n"
-"به این دلیل به شما اطلاع می‌دهیم که آدرس رایانامه شما با سابقه این شخص\n"
+"به این دلیل به شما اطلاع می‌دهیم که نشانی رایانامه شما با سابقه این شخص\n"
 "یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
@@ -511,7 +512,7 @@ msgstr ""
 " این سابقه را بازیابی کرده است. برای مشاهده سابقه،\n"
 " این پیوند را دنبال کنید:\n"
 " %(record_url)s\n"
-"به این دلیل به شما اطلاع می‌دهیم که آدرس رایانامه شما\n"
+"به این دلیل به شما اطلاع می‌دهیم که نشانی رایانامه شما\n"
 " با سابقه این شخص یا یادداشتی در سابقه مرتبط است.\n"
 
 #, python-format
@@ -572,6 +573,9 @@ msgstr "تقریباً ۶ ماه (۱۸۰ روز) دیگر"
 msgid "About Google Person Finder"
 msgstr "‏درباره Google Person Finder"
 
+msgid "About You"
+msgstr ""
+
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
 #, python-format
@@ -612,7 +616,7 @@ msgid "Atom feed of updates about this person"
 msgstr "‏فید Atom برای به‌روزرسانی‌های مربوط به این شخص"
 
 msgid "Author's e-mail address"
-msgstr "آدرس رایانامه نویسنده"
+msgstr "نشانی رایانامه نویسنده"
 
 msgid "Author's name"
 msgstr "نام نویسنده"
@@ -794,6 +798,14 @@ msgstr ""
 "‏‫برای شماره تلفن‌های غیر از تلفن‌ همراه لطفاً از سرویس ۱۷۱ ارائه شده "
 "توسط NTT استفاده کنید."
 
+#. Translators: The title of a page for people who respond to disasters.
+msgid "For responders"
+msgstr "برای پاسخ‌دهندگان"
+
+#. Translators: The title of a page of frequently asked questions.
+msgid "Frequently asked questions"
+msgstr "سؤالات متداول"
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr "از: %(home_location)s"
@@ -903,8 +915,8 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"اگر هیچ‌کدام از این سوابق با شخص مورد نظر شما مطابقت نداشت، می‌توانید "
-"برای ایجاد سابقه جدید، روی قسمت زیر کلیک کنید."
+"اگر هیچ‌کدام از این سوابق با شخص موردنظر شما مطابقت نداشت، می‌توانید برای"
+" ایجاد سابقه جدید، روی قسمت زیر کلیک کنید."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -937,7 +949,7 @@ msgstr ""
 "(‎.csv) ذخیره کنید"
 
 msgid "Invalid e-mail address. Please try again."
-msgstr "آدرس رایانامه نامعتبر. لطفاً دوباره امتحان کنید."
+msgstr "نشانی رایانامه نامعتبر. لطفاً دوباره امتحان کنید."
 
 msgid "Language selection"
 msgstr "انتخاب زبان"
@@ -1170,10 +1182,10 @@ msgstr ""
 "مورد او منتشر کنید یا نه."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس رایانامه خود را تأیید کنید تا برای به‌روزرسانی‌ها مشترک شوید"
+msgstr "لطفاً نشانی رایانامه خود را تأیید کنید تا برای به‌روزرسانی‌ها مشترک شوید"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس رایانامه خود را وارد کنید تا برای به‌روزرسانی‌ها مشترک شوید"
+msgstr "لطفاً نشانی رایانامه خود را وارد کنید تا برای به‌روزرسانی‌ها مشترک شوید"
 
 msgid "Please explain why you think these are the same person"
 msgstr "لطفاً توضیح دهید که چرا فکر می‌کنید اینها یک نفر هستند"
@@ -1182,10 +1194,10 @@ msgid "Please fill in all the required fields."
 msgstr "لطفاً تمام فیلدهای ضروری را پر کنید."
 
 msgid "Please fill in your email address."
-msgstr "لطفاً آدرس رایانامه خود را پر کنید."
+msgstr "لطفاً نشانی رایانامه خود را پر کنید."
 
 msgid "Please provide an valid email address."
-msgstr "لطفاً یک آدرس رایانامه معتبر ارائه دهید."
+msgstr "لطفاً یک نشانی رایانامه معتبر ارائه دهید."
 
 msgid "Possible duplicates"
 msgstr "موارد تکراری ممکن"
@@ -1536,6 +1548,11 @@ msgstr "‏بارگذاری فایل CSV شما در زیر"
 msgid "Use current location"
 msgstr "استفاده از مکان کنونی"
 
+#. Translators: The title of the page which explains how to use
+#. Person Finder.
+msgid "User's Guide"
+msgstr "راهنمای کاربر"
+
 msgid "View the record"
 msgstr "مشاهده سابقه"
 
@@ -1617,7 +1634,7 @@ msgstr "اشتراک شما قبلاً لغو شده است."
 
 #, python-format
 msgid "You are currently signed in as %(user_email)s."
-msgstr "در حال حاضر با نام %(user_email)s به سیستم وارد شده‌اید."
+msgstr "درحال‌حاضر با %(user_email)s به سیستم وارد شده‌اید."
 
 msgid "You are not currently signed in."
 msgstr "در حال حاضر وارد سیستم نشده‌اید."
@@ -1652,10 +1669,10 @@ msgstr ""
 "را دریافت کردید:\n"
 
 msgid "Your e-mail address"
-msgstr "آدرس رایانامه شما"
+msgstr "نشانی رایانامه شما"
 
 msgid "Your e-mail address:"
-msgstr "آدرس رایانامه شما:‏"
+msgstr "نشانی رایانامه شما:‏"
 
 msgid "Your email"
 msgstr "رایانامه شما"

@@ -217,6 +217,81 @@ LANGUAGE_SYNONYMS = {
 # RTL languages.
 LANGUAGES_BIDI = django_setup.LANGUAGES_BIDI + ['ps', 'prs']
 
+# Mapping from language codes to Facebook locale codes.
+#
+# Created manually based on the list of Facebook locales, available here for
+# example:
+# https://github.com/akarve/facebook-locales-to-json/blob/master/data/FacebookLocales.xml
+# This list only contains languages supported by both us and Facebook.
+FACEBOOK_LOCALES = {
+    'af': 'af_ZA',
+    'ar': 'ar_AR',
+    'az': 'az_AZ',
+    'bg': 'bg_BG',
+    'bn': 'bn_IN',
+    'ca': 'ca_ES',
+    'cs': 'cs_CZ',
+    'da': 'da_DK',
+    'de': 'de_DE',
+    'el': 'el_GR',
+    'en': 'en_US',
+    'en-GB': 'en_GB',
+    'es': 'es_ES',
+    'es-419': 'es_LA',
+    'et': 'et_EE',
+    'eu': 'eu_ES',
+    'fa': 'fa_IR',
+    'fi': 'fi_FI',
+    'fr': 'fr_FR',
+    'fr-CA': 'fr_CA',
+    'gl': 'gl_ES',
+    'he': 'he_IL',
+    'hi': 'hi_IN',
+    'hr': 'hr_HR',
+    'hu': 'hu_HU',
+    'hy': 'hy_AM',
+    'id': 'id_ID',
+    'is': 'is_IS',
+    'it': 'it_IT',
+    'ja': 'ja_JP',
+    'jv': 'jv_ID',
+    'ka': 'ka_GE',
+    'km': 'km_KH',
+    'kn': 'kn_IN',
+    'ko': 'ko_KR',
+    'lt': 'lt_LT',
+    'lv': 'lv_LV',
+    'mk': 'mk_MK',
+    'ml': 'ml_IN',
+    'ms': 'ms_MY',
+    'ne': 'ne_NP',
+    'nl': 'nl_NL',
+    'pa': 'pa_IN',
+    'pl': 'pl_PL',
+    'ps': 'ps_AF',
+    'pt-BR': 'pt_BR',
+    'pt-PT': 'pt_PT',
+    'ro': 'ro_RO',
+    'ru': 'ru_RU',
+    'si': 'si_LK',
+    'sk': 'sk_SK',
+    'sl': 'sl_SI',
+    'sq': 'sq_AL',
+    'sr': 'sr_RS',
+    'sv': 'sv_SE',
+    'sw': 'sw_KE',
+    'ta': 'ta_IN',
+    'te': 'te_IN',
+    'th': 'th_TH',
+    'tr': 'tr_TR',
+    'uk': 'uk_UA',
+    'ur': 'ur_PK',
+    'vi': 'vi_VN',
+    'zh-CN': 'zh_CN',
+    'zh-HK': 'zh_HK',
+    'zh-TW': 'zh_TW',
+}
+
 # Mapping from language codes to the names of LayoutCode constants.  See:
 # http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
 VIRTUAL_KEYBOARD_LAYOUTS = {

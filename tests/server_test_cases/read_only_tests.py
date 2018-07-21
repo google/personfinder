@@ -43,11 +43,6 @@ class ReadOnlyTests(ServerTestsBase):
         doc = self.go('/global/home.html')
         assert 'You are now running Person Finder.' in doc.text
 
-    def test_tos(self):
-        """Check the generic TOS page."""
-        doc = self.go('/global/tos.html')
-        assert 'Terms of Service' in doc.text
-
     def test_start(self):
         """Check the start page with no language specified."""
         doc = self.go('/haiti')
@@ -67,6 +62,55 @@ class ReadOnlyTests(ServerTestsBase):
         """Check the Creole start page."""
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
+
+    def test_language(self):
+        """Tests logic to choose the language of the page."""
+        # Defaults to the first language in the language menu for the repository
+        # if no other hint is available.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/japan')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+
+        # Follows "lang" URL parameter when avaiable. Once you specify "lang"
+        # URL parameter, it remembers the choice in a cookie.
+        # "lang" URL parameter precedes the cookie.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti')
+        assert doc.xpath_one('/html').get('lang') == 'en'
+        doc = self.go('/haiti?lang=ja')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+        doc = self.go('/haiti')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+        doc = self.go('/haiti?lang=ko')
+        assert doc.xpath_one('/html').get('lang') == 'ko'
+
+        # Follows "Accept-Language" HTTP header when available.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti', accept_language='ko')
+        assert doc.xpath_one('/html').get('lang') == 'ko'
+
+        # Uses one with higher quality value (defaults to 1) in the header.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti', accept_language='ko,ja;q=0.9')
+        assert doc.xpath_one('/html').get('lang') == 'ko'
+
+        # Falls back to lower quality languages when the language is not
+        # supported.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti', accept_language='xx,ja;q=0.9,ko;q=0.8')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+
+        # "lang" URL parameter precedes "Accept-Language" HTTP header.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti?lang=ja', accept_language='ko')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+
+        # The cookie precedes "Accept-Language" HTTP header.
+        self.s = scrape.Session(verbose=1)
+        doc = self.go('/haiti?lang=ja')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
+        doc = self.go('/haiti', accept_language='ko')
+        assert doc.xpath_one('/html').get('lang') == 'ja'
 
     def test_language_xss(self):
         """Regression test for an XSS vulnerability in the 'lang' parameter."""
@@ -106,7 +150,7 @@ class ReadOnlyTests(ServerTestsBase):
         # Try with no specified charset.
         doc = self.go('/haiti?lang=ja')
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        assert 'charset="utf-8"' in doc.content
         # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
         assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
                 doc.content_bytes)
@@ -114,21 +158,21 @@ class ReadOnlyTests(ServerTestsBase):
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis')
         assert self.s.headers['content-type'] == 'text/html; charset=shift_jis'
-        assert 'content="text/html; charset=shift_jis"' in doc.content
+        assert 'charset="shift_jis"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS')
         assert self.s.headers['content-type'] == 'text/html; charset=Shift-JIS'
-        assert 'content="text/html; charset=Shift-JIS"' in doc.content
+        assert 'charset="Shift-JIS"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8')
         assert self.s.headers['content-type'] == 'text/html; charset=utf-8'
-        assert 'content="text/html; charset=utf-8"' in doc.content
+        assert 'charset="utf-8"' in doc.content
         # UTF-8 encoding of title text
         assert ('\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in
                 doc.content_bytes)
@@ -139,7 +183,7 @@ class ReadOnlyTests(ServerTestsBase):
         self.s.agent = 'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0'
         doc = self.go('/haiti?lang=ja')
         assert self.s.headers['content-type'] == 'text/html; charset=Shift_JIS'
-        assert 'content="text/html; charset=Shift_JIS"' in doc.content
+        assert 'charset="Shift_JIS"' in doc.content
         # Shift_JIS encoding of title text
         assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content_bytes
 

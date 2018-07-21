@@ -1,4 +1,4 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# Copyright 2017 Google Inc.  Licensed under the Apache License, Version   #}
 {# 2.0 (the "License"); you may not use this file except in compliance with #}
 {# the License.  You may obtain a copy of the License at:                   #}
 {#     http://www.apache.org/licenses/LICENSE-2.0                           #}
@@ -8,59 +8,84 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template for the repository starting page.                               #}
+{# Template for the repository starting page for both HTML and AMP.         #}
 
 {% extends "app-base.html.template" %}
+
+ {% block head %}
+   {{block.super}}
+   {% if not env.amp %}
+     <link rel="amphtml" href="{{env.amp_url}}">
+   {% endif %}
+ {% endblock head %}
 {% load i18n %}
 
 {% block content %}
-
-  <div class="main">
-    <div class="row">
-      <div class="action-outer start">
-        <div class="action-inner">
-          <a href="{{seek_url}}" tabindex="1">
-            {% trans "I'm looking for someone" %}
-          </a>
-        </div>
-      </div>
-      <div class="action-outer end">
-        <div class="action-inner">
-          <a href="{{provide_url}}" tabindex="2">
-            {% trans "I have information about someone" %}
-          </a>
-        </div>
-      </div>
-      <div class="end-multi-columns"></div>
+  {% if env.amp %}
+    <div class="languages">
+      <a href="{{env.start_url}}">Other Languages</a>
     </div>
-    <div class="row stats">
-      {% if num_people %}
-        {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+  {% endif %}
+
+    <div class="main">
+      <div class="row">
+        {# Following onclick is to make the whole button clickable. #}
+        <div class="action-outer start"
+          {% if not env.amp %}
+            onclick="location.href = '{{seek_url}}';" style="cursor: pointer;"
+          {% endif %}
+        >
+          <div class="action-inner">
+            <a href="{{seek_url}}" tabindex="1">
+              {% trans "I'm looking for someone" %}
+            </a>
+          </div>
+        </div>
+        {# Following onclick is to make the whole button clickable. #}
+        <div class="action-outer end"
+          {% if not env.amp %}
+            onclick="location.href = '{{provide_url}}';" style="cursor: pointer;"
+          {% endif %}
+        >
+          <div class="action-inner">
+            <a href="{{provide_url}}" tabindex="2">
+              {% trans "I have information about someone" %}
+            </a>
+          </div>
+        </div>
+        <div class="end-multi-columns"></div>
+      </div>
+      <div class="row stats">
+        {% if num_people %}
+          {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+        {% endif %}
+      </div>
+      <div class="row custom-message">
+        {{env.start_page_custom_html|default:""|safe}}
+      </div>
+
+      {# TODO To supoprt AMP share buttons. #}
+      {% if not env.amp %}
+        <div class="row social">
+          {# Facebook share button #}
+          <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/{{facebook_locale}}/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+          <div class="fb-share-button" data-href="{{env.url}}" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{env.url|urlencode:""}}">Share</a></div>
+
+          {# Twitter share button #}
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{env.url}}">Tweet</a>
+
+          {# Google+ share button #}
+          <script src="https://apis.google.com/js/platform.js" async defer></script>
+          <g:plusone size="medium" aligh="left"></g:plusone>
+        </div>
       {% endif %}
     </div>
-    <div class="row custom-message">
-      {{env.start_page_custom_html|default:""|safe}}
-    </div>
-
-    <div class="row social">
-      {# Facebook share button #}
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.8";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-      <div class="fb-share-button" data-href="{{env.url}}" data-layout="button_count" data-size="small" data-mobile-iframe="true" line-height="0"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{env.url|urlencode:""}}">Share</a></div>
-
-      {# Twitter share button #}
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{env.url}}">Tweet</a>
-      
-      {# Google+ share button #}
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
-      <g:plusone size="medium" aligh="left"></g:plusone>
-    </div>
-  </div>
 {% endblock %}

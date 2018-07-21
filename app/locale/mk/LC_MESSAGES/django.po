@@ -333,11 +333,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Се чини дека УРЛ адресата што ја внесовте е неважечка УРЛ-адреса на"
+"      Се чини дека URL адресата што ја внесовте е неважечка URL-адреса на"
 " профилот на %(website)s.\n"
 "      Одете на страницата на профилот на лицето %(website)s, а потоа "
 "копирајте ја и залепете ја\n"
-"      истата УРЛ-адреса овде.\n"
+"      истата URL-адреса овде.\n"
 "      "
 
 #, python-format
@@ -604,6 +604,9 @@ msgstr "Околу 6 месеци (180 дена) од сега"
 msgid "About Google Person Finder"
 msgstr "За „Пронаоѓач на лица на Google“"
 
+msgid "About You"
+msgstr ""
+
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
 #, python-format
@@ -830,6 +833,14 @@ msgstr ""
 "За телефони различни од мобилни телефони, ве молиме користете ја услугата"
 " 171 што ја обезбедува NTT."
 
+#. Translators: The title of a page for people who respond to disasters.
+msgid "For responders"
+msgstr "За итните служби"
+
+#. Translators: The title of a page of frequently asked questions.
+msgid "Frequently asked questions"
+msgstr "Често поставувани прашања"
+
 #, python-format
 msgid "From: %(home_location)s"
 msgstr "Од: %(home_location)s"
@@ -963,7 +974,7 @@ msgstr ""
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Ако имате слика од ова лице, поставете ја или внесете ја нејзината "
-"УРЛ-адреса."
+"URL-адреса."
 
 msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
 msgstr ""
@@ -1134,7 +1145,7 @@ msgstr ""
 " Google%(link_end_html)s."
 
 msgid "Original URL"
-msgstr "Оригинална УРЛ-адреса"
+msgstr "Оригинална URL-адреса"
 
 msgid "Original author's name"
 msgstr "Име на оригиналниот автор"
@@ -1525,7 +1536,7 @@ msgstr ""
 msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 "За да прикачите фотографија во оваа белешка, поставете ја или внесете ја "
-"нејзината УРЛ.."
+"нејзината URL.."
 
 msgid "To delete your data, access Person Finder from your desktop."
 msgstr ""
@@ -1549,10 +1560,10 @@ msgid "Type an address."
 msgstr "Впишете адреса."
 
 msgid "URL"
-msgstr "УРЛ"
+msgstr "URL"
 
 msgid "URL of original record"
-msgstr "УРЛ на оригинален запис"
+msgstr "URL на оригинален запис"
 
 msgid "Unspecified"
 msgstr "Неодредено"
@@ -1574,6 +1585,11 @@ msgstr "Поставете ваша датотека CSV подолу"
 
 msgid "Use current location"
 msgstr "Користете ја моменталната локација"
+
+#. Translators: The title of the page which explains how to use
+#. Person Finder.
+msgid "User's Guide"
+msgstr "Упатство за корисникот"
 
 msgid "View the record"
 msgstr "Видете го записот"
@@ -1725,7 +1741,7 @@ msgid ""
 msgstr ""
 "Вашето барање успешно се обработи. Проверете го вашето сандаче за "
 "дојдовна пошта и потврдете дека сакате да ја објавите вашата белешка со "
-"следење на вметнатната УРЛ-адреса."
+"следење на вметнатната URL-адреса."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""

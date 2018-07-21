@@ -1159,12 +1159,12 @@ http://www.foo.com/_account_1''',
         # Try to continue with an invalid captcha response. Get redirected
         # back to the same page.
         button = doc.xpath_one('//input[@value="Proceed"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
 
         # Continue as if captcha is valid. All information should be viewable.
-        doc = self.s.submit(button, test_mode='yes')
+        doc = self.s.submit(button, faked_captcha_response='success')
         assert '_reveal_author_email' in doc.content
         assert '_reveal_author_phone' in doc.content
         assert '_reveal_note_author_email' in doc.content
@@ -3418,7 +3418,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         # Click the button to delete a record.
         button = doc.xpath_one('//input[@value="Yes, delete the record"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
@@ -3430,7 +3430,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go(
             '/haiti/delete',
             data='id=test.google.com/person.123&' +
-                 'reason_for_deletion=spam_received&test_mode=yes')
+                 'reason_for_deletion=spam_received&' +
+                 'faked_captcha_response=success')
 
         # Both entities should be gone.
         assert not db.get(person.key())
@@ -3555,12 +3556,13 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'extend the expiration' in doc.text
         # Click the button on the confirmation page.
         button = doc.xpath_one('//input[@value="Yes, extend the record"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
         # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
         # Simulate passing the captcha.
         doc = self.go('/haiti/extend',
-                      data='id=' + str(person.record_id) + '&test_mode=yes')
+                      data='id=' + str(person.record_id) +
+                           '&faked_captcha_response=success')
         # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
         self.assertEquals(expiry_date + datetime.timedelta(days=60),
@@ -3580,7 +3582,7 @@ _feed_profile_url2</pfif:profile_urls>
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.xpath_one(
             '//input[@value="Yes, ask the record author to disable notes"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
@@ -3592,7 +3594,8 @@ _feed_profile_url2</pfif:profile_urls>
         # that a proper message has been sent to the record author.
         doc = self.go(
             '/haiti/disable_notes',
-            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&' +
+                 'faked_captcha_response=success')
         self.verify_email_sent(1)
         messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
@@ -3655,7 +3658,7 @@ _feed_profile_url2</pfif:profile_urls>
                '"_test_given_name _test_family_name"' in doc.text
         button = doc.xpath_one(
             '//input[@value="Yes, ask the record author to enable notes"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
@@ -3666,7 +3669,8 @@ _feed_profile_url2</pfif:profile_urls>
         # has been sent to the record author.
         doc = self.go(
             '/haiti/enable_notes',
-            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&' +
+                 'faked_captcha_response=success')
         assert 'confirm that you want to enable notes on this record.' \
             in doc.text, utils.encode(doc.text)
         # Check that a request email has been sent to the author.
@@ -3911,7 +3915,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'delete the record for "_test_given_name ' + \
                '_test_family_name"' in doc.text, utils.encode(doc.text)
         button = doc.xpath_one('//input[@value="Yes, delete the record"]')
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, faked_captcha_response='failure')
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
@@ -3924,7 +3928,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go(
             '/haiti/delete',
             data='id=haiti.personfinder.google.org/person.123&' +
-                 'reason_for_deletion=spam_received&test_mode=yes')
+                 'reason_for_deletion=spam_received&' +
+                 'faked_captcha_response=success')
         assert 'The record has been deleted' in doc.text
 
         # Should send 2 messages: one to person author, one to note author.
@@ -4097,7 +4102,8 @@ _feed_profile_url2</pfif:profile_urls>
         # Fake a valid captcha and actually reverse the deletion
         form = [f for f in doc.cssselect('form') if
                 f.get('action').endswith('/restore')][0]
-        doc = self.s.submit(form, own_info='no', test_mode='yes')
+        doc = self.s.submit(
+            form, own_info='no', faked_captcha_response='success')
         assert 'Identifying information' in doc.text
         assert '_test_given_name _test_family_name' in doc.text
 
@@ -4252,7 +4258,8 @@ _feed_profile_url2</pfif:profile_urls>
         # (test_delete_and_restore already tests this flow in more detail.)
         doc = self.go('/haiti/delete',
                       data='id=haiti.personfinder.google.org/person.123&' +
-                           'reason_for_deletion=spam_received&test_mode=yes')
+                           'reason_for_deletion=spam_received&' +
+                           'faked_captcha_response=success')
 
         # Run the DeleteExpired task.
         doc = self.go('/haiti/tasks/delete_expired')
@@ -4349,8 +4356,9 @@ _feed_profile_url2</pfif:profile_urls>
         # Delete the record with a faked captcha.
         doc = self.go(
             '/haiti/delete',
-            data='id=%s&reason_for_deletion=spam_received&test_mode=yes'
-                % person.person_record_id)
+            data=('id=%s&reason_for_deletion=spam_received&' +
+                  'faked_captcha_response=success')
+                    % person.person_record_id)
         assert 'The record has been deleted' in doc.text
 
         # Try to add a note to the deleted person. It should fail.
@@ -4488,7 +4496,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert 'TestingSpam' in doc.text
 
         # Simulate successful completion of the Turing test.
-        doc = self.s.submit(button, test_mode='yes')
+        doc = self.s.submit(button, faked_captcha_response='success')
         assert 'This note has been marked as spam.' not in doc.text
         assert 'Notes for this person' in doc.text, utils.encode(doc.text)
         assert 'Report spam' in doc.text
@@ -4717,7 +4725,11 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid captcha response is an error
         self.s.back()
         button = doc.xpath_one('//input[@value="Subscribe"]')
-        doc = self.s.submit(button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL)
+        doc = self.s.submit(
+            button,
+            own_info='no',
+            subscribe_email=SUBSCRIBE_EMAIL,
+            faked_captcha_response='failure')
         assert 'iframe' in doc.content
         assert 'g-recaptcha-response' in doc.content
         assert len(person.get_subscriptions()) == 0
@@ -4725,14 +4737,20 @@ _feed_profile_url2</pfif:profile_urls>
         # Invalid email is an error (even with valid captcha)
         INVALID_EMAIL = 'test@example'
         doc = self.s.submit(
-            button, own_info='no', subscribe_email=INVALID_EMAIL, test_mode='yes')
+            button,
+            own_info='no',
+            subscribe_email=INVALID_EMAIL,
+            faked_captcha_response='success')
         assert 'Invalid e-mail address. Please try again.' in doc.text
         assert len(person.get_subscriptions()) == 0
 
         # Valid email and captcha is success
         self.s.back()
         doc = self.s.submit(
-            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button,
+            own_info='no',
+            subscribe_email=SUBSCRIBE_EMAIL,
+            faked_captcha_response='success')
         assert 'successfully subscribed. ' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()
@@ -4752,7 +4770,10 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person is shown info page
         self.s.back()
         doc = self.s.submit(
-            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+            button,
+            own_info='no',
+            subscribe_email=SUBSCRIBE_EMAIL,
+            faked_captcha_response='success')
         assert 'already subscribed. ' in doc.text
         assert 'for _test_full_name' in doc.text
         assert len(person.get_subscriptions()) == 1
@@ -4760,7 +4781,11 @@ _feed_profile_url2</pfif:profile_urls>
         # Already subscribed person with new language is success
         self.s.back()
         doc = self.s.submit(
-            button, own_info='no', subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
+            button,
+            own_info='no',
+            subscribe_email=SUBSCRIBE_EMAIL,
+            faked_captcha_response='success',
+            lang='fr')
         assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_full_name' in doc.text
         subscriptions = person.get_subscriptions()

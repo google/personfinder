@@ -57,11 +57,11 @@ def get_restore_url(handler, person, ttl=3*24*3600):
     """Returns a URL to be used for restoring a deleted person record.
     The default TTL for a restoration URL is 3 days."""
     key_name = person.key().name()
-    data = 'restore:%s' % key_name 
+    data = 'restore:%s' % key_name
     token = reveal.sign(data, ttl)
     if person.is_original():
         return handler.get_url('/restore', token=token, id=key_name)
-    else: 
+    else:
         return None
 
 def delete_person(handler, person, send_notices=True):
@@ -125,7 +125,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
         captcha_response = self.get_captcha_response()
-        if self.env.test_mode or captcha_response.is_valid:
+        if captcha_response.is_valid:
             # Log the user action.
             model.UserActionLog.put_new(
                 'delete', person, self.request.get('reason_for_deletion'))
