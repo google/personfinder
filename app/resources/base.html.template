@@ -110,6 +110,7 @@
     {% if env.amp and env.enable_analytics %}
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_analytics_id}}"
                      data-credentials="include">
+        //AMP variable for dynamic GA property setting
         <script type="application/json">
         {
           "vars": {
