@@ -111,6 +111,7 @@
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_analytics_id}}"
                      data-credentials="include">
         <script type="application/json">
+        // Analytics ID for AMP GTM
         {
           "vars": {
           "gaProperty": "{{env.analytics_id}}"
