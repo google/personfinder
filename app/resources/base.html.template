@@ -162,6 +162,7 @@
             {% endif %}
 
             {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+            {% trans "Google may share the data with public and private organizations participating in disaster response efforts." %}
 
             {% if config.privacy_policy_url %}
               {# TODO(ichikawa) Proxy this in the same way as TOS. #}
