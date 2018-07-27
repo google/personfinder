@@ -64,6 +64,7 @@ def setup_configs():
     # A Google Translate API key with a very low quota, just for testing.
                translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
                repo_aliases={},
+               sms_number_to_repo={},
                referrer_whitelist=[],
                initialized=True,
                notification_email=const.DEFAULT_NOTIFICATION_EMAIL,
