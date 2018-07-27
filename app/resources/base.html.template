@@ -109,7 +109,16 @@
   {% block body %}
     {% if env.amp and env.enable_analytics %}
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_analytics_id}}"
-                     data-credentials="include"></amp-analytics>
+                     data-credentials="include">
+        //AMP variable for dynamic GA property setting
+        <script type="application/json">
+        {
+          "vars": {
+            "gaProperty": "{{env.analytics_id}}"
+          }
+        }
+        </script> 
+      </amp-analytics>
     {% endif %}
     <div class="header title-bar" role="banner">
       {% block header %}
