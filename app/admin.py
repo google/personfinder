@@ -132,7 +132,7 @@ class Handler(BaseHandler):
                     ],
                     # These settings are literal strings (not JSON).
                     literal_config_names=[
-                        'amp_analytics_id',
+                        'amp_gtm_id',
                         'analytics_id',
                         'brand',
                         'captcha_secret_key',
