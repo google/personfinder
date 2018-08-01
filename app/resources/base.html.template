@@ -117,7 +117,7 @@
             "gaProperty": "{{env.analytics_id}}"
           }
         }
-        </script> 
+        </script>
       </amp-analytics>
     {% endif %}
     <div class="header title-bar" role="banner">
@@ -162,6 +162,10 @@
             {% endif %}
 
             {% trans "PLEASE NOTE: All data entered is available to the public and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+
+            {% comment %}
+              Translators: A sentence in the privacy statement in the footer of pages.
+            {% endcomment %}
             {% trans "Google may share the data with public and private organizations participating in disaster response efforts." %}
 
             {% if config.privacy_policy_url %}
