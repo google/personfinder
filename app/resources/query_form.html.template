@@ -50,7 +50,7 @@
       {% if config.use_family_name and config.family_name_first %}
         <div class="field">
           <span class="label">
-            <label for="family_name">{% trans "Family name" %}:</label>
+            <label for="family_name">{% trans "Family name (Surname)" %}:</label>
           </span>
           <span class="value">
             {% if env.ui == "facebook" %}
@@ -69,7 +69,7 @@
           <span class="label">
             <label for="given_name">
               {% if config.use_family_name %}
-                {% trans "Given name" %}:
+                {% trans "Given name (First name)" %}:
               {% else %}
                 {% trans "Name" %}:
               {% endif %}
@@ -90,7 +90,7 @@
       {% if config.use_family_name and not config.family_name_first %}
         <div class="field">
           <span class="label">
-            <label for="family_name">{% trans "Family name" %}:</label>
+            <label for="family_name">{% trans "Family name (Surname)" %}:</label>
           </span>
           <span class="value">
             {% if env.ui == "facebook" %}

@@ -4804,9 +4804,9 @@ _feed_profile_url2</pfif:profile_urls>
         # use_family_name=True
         d = self.go('/haiti/create')
         assert d.xpath_one('//label[@for="given_name"]').text.strip() == (
-            'Given name (required):')
+            'Given name (First name) (required):')
         assert d.xpath_one('//label[@for="family_name"]').text.strip() == (
-            'Family name (required):')
+            'Family name (Surname) (required):')
         assert d.xpath('//input[@name="given_name"]')
         assert d.xpath('//input[@name="family_name"]')
         assert d.xpath_one('//label[@for="alternate_given_names"]').text.strip() == \
@@ -4873,8 +4873,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/japan/create?lang=en')
         given_label = doc.xpath_one('//label[@for="given_name"]')
         family_label = doc.xpath_one('//label[@for="family_name"]')
-        assert given_label.text.strip() == 'Given name (required):'
-        assert family_label.text.strip() == 'Family name (required):'
+        assert given_label.text.strip() == 'Given name (First name) (required):'
+        assert family_label.text.strip() == 'Family name (Surname) (required):'
         assert family_label.sourceline < given_label.sourceline
 
         given_input = doc.xpath_one('//input[@name="given_name"]')
@@ -4924,8 +4924,8 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/create')
         given_label = doc.xpath_one('//label[@for="given_name"]')
         family_label = doc.xpath_one('//label[@for="family_name"]')
-        assert given_label.text.strip() == 'Given name (required):'
-        assert family_label.text.strip() == 'Family name (required):'
+        assert given_label.text.strip() == 'Given name (First name) (required):'
+        assert family_label.text.strip() == 'Family name (Surname) (required):'
         assert family_label.sourceline > given_label.sourceline
 
         given_input = doc.xpath_one('//input[@name="given_name"]')

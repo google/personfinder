@@ -112,7 +112,7 @@
             <div class="field">
               <span class="label">
                 <label for="family_name" class="mandatory">
-                  {% trans "Family name (required)" %}:
+                  {% trans "Family name (Surname) (required)" %}:
                 </label>
               </span>
               <span class="value">
@@ -127,7 +127,7 @@
             <span class="label">
               <label for="given_name" class="mandatory">
                 {% if config.use_family_name %}
-                  {% trans "Given name (required)" %}:
+                  {% trans "Given name (First name) (required)" %}:
                 {% else %}
                   {% trans "Name" %}:
                 {% endif %}
@@ -145,7 +145,7 @@
             <div class="field">
               <span class="label">
                 <label for="family_name" class="mandatory">
-                  {% trans "Family name (required)" %}:
+                  {% trans "Family name (Surname) (required)" %}:
                 </label>
               </span>
               <span class="value">
