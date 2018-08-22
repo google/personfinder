@@ -112,6 +112,12 @@
             <div class="field">
               <span class="label">
                 <label for="family_name" class="mandatory">
+                  {% comment %}
+                    Translators: The label for a text field to input the family
+                    name of the person record. "(Surname)" is just added for
+                    clarification. You don't need to translate both if the
+                    language has a single clear term for "family name".
+                  {% endcomment %}
                   {% trans "Family name (Surname) (required)" %}:
                 </label>
               </span>
@@ -127,6 +133,12 @@
             <span class="label">
               <label for="given_name" class="mandatory">
                 {% if config.use_family_name %}
+                  {% comment %}
+                    Translators: The label for a text field to input the given
+                    name of the person record. "(First name)" is just added for
+                    clarification. You don't need to translate both if the
+                    language has a single clear term for "given name".
+                  {% endcomment %}
                   {% trans "Given name (First name) (required)" %}:
                 {% else %}
                   {% trans "Name" %}:
@@ -145,6 +157,12 @@
             <div class="field">
               <span class="label">
                 <label for="family_name" class="mandatory">
+                  {% comment %}
+                    Translators: The label for a text field to input the family
+                    name of the person record. "(Surname)" is just added for
+                    clarification. You don't need to translate both if the
+                    language has a single clear term for "family name".
+                  {% endcomment %}
                   {% trans "Family name (Surname) (required)" %}:
                 </label>
               </span>
