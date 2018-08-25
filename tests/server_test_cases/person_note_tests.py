@@ -2638,28 +2638,28 @@ _read_profile_url2</pfif:profile_urls>
 
         test_data = {
             ('good_request_data', 'Search _test_family_name', '+12345678901',
-                '/global/api/handle_sms?key=sms_key&lang=en'):
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
             (200, '_test_given_name _test_family_name / '
-                'Someone has received information that this person is alive / '
-                'female / 52 / From: _test_home_city _test_home_state ## '
-                'More at: google.org/personfinder/haiti?ui=light ## '
-                'All data entered in Person Finder is available to the public '
-                'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos'),
+                 'Someone has received information that this person is alive / '
+                 'female / 52 / From: _test_home_city _test_home_state ## '
+                 'More at: google.org/personfinder/haiti?ui=light ## '
+                 'All data entered in Person Finder is available to the public '
+                 'and usable by anyone. Google does not review or verify the '
+                 'accuracy of this data google.org/personfinder/global/tos'),
             ('request_data_with_no_result', 'Search _non_existent_family_name',
                  '+12345678901', '/global/api/handle_sms?key=sms_key&lang=en'):
             (200, 'No results found for: _non_existent_family_name ## '
-                'More at: google.org/personfinder/haiti?ui=light ## '
-                'All data entered in Person Finder is available to the public '
-                'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos'),
+                 'More at: google.org/personfinder/haiti?ui=light ## '
+                 'All data entered in Person Finder is available to the public '
+                 'and usable by anyone. Google does not review or verify the '
+                 'accuracy of this data google.org/personfinder/global/tos'),
             ('request_data_with_bad_text', 'Hello', '+12345678901',
                  '/global/api/handle_sms?key=sms_key&lang=en'):
             (200, 'Usage: &quot;Search John&quot;'),
             ('request_data_with_unknown_number', 'Hello', '+10987654321',
                  '/global/api/handle_sms?key=sms_key&lang=en'):
             (400, 'The given receiver_phone_number is not found in '
-                'sms_number_to_repo config.'),
+                 'sms_number_to_repo config.'),
             ('request_without_key', 'Search _test_family_name', '+12345678901',
                  '/global/api/handle_sms?lang=en'):
             (403, '&quot;key&quot; URL parameter is either missing, invalid or '
