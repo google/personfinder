@@ -2710,11 +2710,67 @@ _read_profile_url2</pfif:profile_urls>
         assert 1 == len(db_res)
 
 
+    def test_sms_non_english(self):
+        """Tests the SMS API in languages other than English."""
+        self.setup_person_and_note()
+
+        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+        config.set(enable_sms_record_input=True)
+
+        test_data = {
+            ('es_search', 'buscar _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, '_test_given_name _test_family_name / Alguien tiene '
+                 'informacion de que esta persona esta viva / mujer / 52 / De: '
+                 '_test_home_city _test_home_state ## Mas en: '
+                 'google.org/personfinder/haiti?ui=light ## Toda la '
+                 'informacion ingresada en Person Finder esta disponible de '
+                 'forma publica y puede ser usada por cualquier persona. '
+                 'Google no revisa o verifica la veracidad de la informacion '
+                 'google.org/personfinder/global/tos'),
+            ('es_add', 'Yo soy Arturo Gutierrez', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Se ha anadido un registro para Arturo Gutierrez'),
+            ('ht_search', 'chache _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, '_test_given_name _test_family_name / Gen yon moun ki '
+                 'resevwa enfomasyon moun sa an vi / fi / 52 / Soti nan: '
+                 '_test_home_city _test_home_state ## Plis nan: '
+                 'google.org/personfinder/haiti?ui=light ## Tout done yo te '
+                 'antre nan Cheche Moun la disponib ak piblik la ak nenpot '
+                 'moun ka itilize. Google pa revize oswa verifye presizyon nan '
+                 'done sa a google.org/personfinder/global/tos'),
+            ('ht_add', 'mwen se Rene Martin', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Nou ajoute nan list la: Rene Martin'),
+            ('fr_search', 'chercher _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, '_test_given_name _test_family_name / Quelqu&#39;un a recu '
+                 'des informations indiquant que cette personne est en vie. / '
+                 'femme / 52 / De : _test_home_city _test_home_state ## Plus '
+                 'd&#39;informations a l&#39;adresse '
+                 'google.org/personfinder/haiti?ui=light ## Toutes les donnees '
+                 'saisies dans l&#39;outil Recherche de personnes sont '
+                 'accessibles au public et utilisables par tous. Google ne '
+                 'revise pas ces donnees et ne verifie pas leur exactitude '
+                 '(google.org/personfinder/global/tos).'),
+            ('fr_add', 'je suis Christophe Macron', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Une fiche sur Christophe Macron a ete ajoutee')
+        }
+        self.verify_sms_responses(test_data)
+        db_res = indexing.search('haiti', TextQuery('Arturo Gutierrez'), 1)
+        db_res = indexing.search('haiti', TextQuery('Rene Martin'), 1)
+        db_res = indexing.search('haiti', TextQuery('Christophe Macron'), 1)
+        assert 1 == len(db_res)
+
+
     def test_sms_altogether_invalid(self):
         """Tests SMS API requests that are completely invalid."""
         self.setup_person_and_note()
 
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+        config.set(enable_sms_record_input=False)
 
         test_data = {
             ('request_data_with_unknown_number', 'Hello', '+10987654321',
