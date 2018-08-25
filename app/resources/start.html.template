@@ -29,31 +29,33 @@
 
     <div class="main">
       <div class="row">
-        {# Following onclick is to make the whole button clickable. #}
-        <div class="action-outer start"
-          {% if not env.amp %}
-            onclick="location.href = '{{seek_url}}';" style="cursor: pointer;"
-          {% endif %}
-        >
-          <div class="action-inner">
-            <a href="{{seek_url}}" tabindex="1">
-              {% trans "I'm looking for someone" %}
-            </a>
+        <div class="action-wrapper">
+          {# Following onclick is to make the whole button clickable. #}
+          <div class="action-outer start"
+            {% if not env.amp %}
+              onclick="location.href = '{{seek_url}}';" style="cursor: pointer;"
+            {% endif %}
+          >
+            <div class="action-inner">
+              <a href="{{seek_url}}" tabindex="1">
+                {% trans "I'm looking for someone" %}
+              </a>
+            </div>
           </div>
-        </div>
-        {# Following onclick is to make the whole button clickable. #}
-        <div class="action-outer end"
-          {% if not env.amp %}
-            onclick="location.href = '{{provide_url}}';" style="cursor: pointer;"
-          {% endif %}
-        >
-          <div class="action-inner">
-            <a href="{{provide_url}}" tabindex="2">
-              {% trans "I have information about someone" %}
-            </a>
+          {# Following onclick is to make the whole button clickable. #}
+          <div class="action-outer end"
+            {% if not env.amp %}
+              onclick="location.href = '{{provide_url}}';" style="cursor: pointer;"
+            {% endif %}
+          >
+            <div class="action-inner">
+              <a href="{{provide_url}}" tabindex="2">
+                {% trans "I have information about someone" %}
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="end-multi-columns"></div>
+          <div class="end-multi-columns"></div>
+	</div>
       </div>
       <div class="row stats">
         {% if num_people %}

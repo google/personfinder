@@ -544,6 +544,7 @@ td.submit {
 
 .main .row {
   margin: 24px;
+  text-align: center;
 }
 
 .main .stats {
@@ -551,11 +552,14 @@ td.submit {
   text-align: center;
 }
 
+.action-wrapper {
+  text-align: center;
+}
+
 .main .action-outer {
   border: none;
   font-size: 20px;
   margin-bottom: 1em;
-  margin-{{start}}: 40px;
   max-width: 240px;
   min-height: 70px;
   padding: 16px;
@@ -569,15 +573,16 @@ td.submit {
   text-decoration: none;
 }
 
+.main .action-outer {
+  margin: 0 auto 10px;
+}
+
 .main .action-outer.start {
   background: #4285f4;
-  float: {{start}};
-  margin-{{end}}: 18px;
 }
 
 .main .action-outer.end {
   background: #15a04a;
-  float: {{start}};
 }
 
 .main .action-inner {
@@ -605,6 +610,16 @@ td.submit {
   /* A trick to align all social share buttons vertically.
      https://stackoverflow.com/a/21919504/4339963 */
   line-height: 10px;
+}
+
+@media (min-width: 700px) {
+  .main .action-wrapper {
+    display: inline-block;
+  }
+  .main .action-outer {
+    float: left;
+    margin: 10px;
+  }
 }
 
 /* Query page */
