@@ -30,6 +30,7 @@ import reveal
 import scrape
 from scrape import get_all_text, get_all_attrs, get_form_params
 from test_pfif import text_diff
+from text_query import TextQuery
 import utils
 from server_tests_base import ServerTestsBase
 
@@ -2630,50 +2631,7 @@ _read_profile_url2</pfif:profile_urls>
             config.set_for_repo('haiti', search_auth_key_required=False)
 
 
-    def test_sms_api(self):
-        """Tests the behavior of SMS API."""
-        self.setup_person_and_note()
-
-        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
-
-        test_data = {
-            ('good_request_data', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, '_test_given_name _test_family_name / '
-                 'Someone has received information that this person is alive / '
-                 'female / 52 / From: _test_home_city _test_home_state ## '
-                 'More at: google.org/personfinder/haiti?ui=light ## '
-                 'All data entered in Person Finder is available to the public '
-                 'and usable by anyone. Google does not review or verify the '
-                 'accuracy of this data google.org/personfinder/global/tos'),
-            ('request_data_with_no_result', 'Search _non_existent_family_name',
-                 '+12345678901', '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'No results found for: _non_existent_family_name ## '
-                 'More at: google.org/personfinder/haiti?ui=light ## '
-                 'All data entered in Person Finder is available to the public '
-                 'and usable by anyone. Google does not review or verify the '
-                 'accuracy of this data google.org/personfinder/global/tos'),
-            ('request_data_with_bad_text', 'Hello', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Usage: &quot;Search John&quot;'),
-            ('request_data_with_unknown_number', 'Hello', '+10987654321',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (400, 'The given receiver_phone_number is not found in '
-                 'sms_number_to_repo config.'),
-            ('request_without_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.'),
-            ('non_global_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=search_key&lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.'),
-            ('non_search_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=global_test_key&lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.')
-        }
-
+    def verify_sms_responses(self, test_data):
         for test_input, exp_output in test_data.iteritems():
           request_data = (
               '<?xml version="1.0" encoding="utf-8"?>'
@@ -2699,6 +2657,84 @@ _read_profile_url2</pfif:profile_urls>
             assert exp_output[1] in doc.content, (
                 'Failure on content for %s\nexpected content: %s\nnot in %s' % (
                     test_input[0], exp_output[1], doc.content))
+
+
+    def test_sms_api_search(self):
+        """Tests the search function of the SMS API."""
+        self.setup_person_and_note()
+
+        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+        config.set(enable_sms_record_input=False)
+
+        test_data = {
+            ('good_request_data', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, '_test_given_name _test_family_name / '
+                 'Someone has received information that this person is alive / '
+                 'female / 52 / From: _test_home_city _test_home_state ## '
+                 'More at: google.org/personfinder/haiti?ui=light ## '
+                 'All data entered in Person Finder is available to the public '
+                 'and usable by anyone. Google does not review or verify the '
+                 'accuracy of this data google.org/personfinder/global/tos'),
+            ('request_data_with_no_result', 'Search _non_existent_family_name',
+                 '+12345678901', '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'No results found for: _non_existent_family_name ## '
+                 'More at: google.org/personfinder/haiti?ui=light ## '
+                 'All data entered in Person Finder is available to the public '
+                 'and usable by anyone. Google does not review or verify the '
+                 'accuracy of this data google.org/personfinder/global/tos'),
+            ('request_data_with_bad_text', 'Hello', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Usage: &quot;Search John&quot;')
+        }
+        self.verify_sms_responses(test_data)
+
+
+    def test_sms_api_add(self):
+        """Tests the add function of the SMS API."""
+        self.setup_person_and_note()
+
+        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+        config.set(enable_sms_record_input=True)
+
+        test_data = {
+            ('good_add_request', 'I am Gilbert Smith', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Added a record for: Gilbert Smith'),
+            ('request_data_with_bad_text', 'Hello', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Usage: &quot;Search John&quot; OR &quot;I am John&quot;'),
+        }
+        self.verify_sms_responses(test_data)
+        db_res = indexing.search('haiti', TextQuery('Gilbert Smith'), 1)
+        assert 1 == len(db_res)
+
+
+    def test_sms_altogether_invalid(self):
+        """Tests SMS API requests that are completely invalid."""
+        self.setup_person_and_note()
+
+        config.set(sms_number_to_repo={'+12345678901': 'haiti'})
+
+        test_data = {
+            ('request_data_with_unknown_number', 'Hello', '+10987654321',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (400, 'The given receiver_phone_number is not found in '
+                 'sms_number_to_repo config.'),
+            ('request_without_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.'),
+            ('non_search_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=global_test_key&lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.'),
+            ('non_global_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=search_key&lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.')
+        }
+        self.verify_sms_responses(test_data)
 
 
     def test_person_feed(self):
