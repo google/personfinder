@@ -2636,106 +2636,69 @@ _read_profile_url2</pfif:profile_urls>
 
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
 
-        good_request_data = (
-            '<?xml version="1.0" encoding="utf-8"?>'
-            '<request>'
-            '    <message_text>Search _test_family_name</message_text>'
-            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
-            '</request>')
-        request_data_with_no_result = (
-            '<?xml version="1.0" encoding="utf-8"?>'
-            '<request>'
-            '    <message_text>Search _non_existent_family_name</message_text>'
-            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
-            '</request>')
-        request_data_with_bad_text = (
-            '<?xml version="1.0" encoding="utf-8"?>'
-            '<request>'
-            '    <message_text>Hello</message_text>'
-            '    <receiver_phone_number>+12345678901</receiver_phone_number>'
-            '</request>')
-        request_data_with_unknown_number = (
-            '<?xml version="1.0" encoding="utf-8"?>'
-            '<request>'
-            '    <message_text>Hello</message_text>'
-            '    <receiver_phone_number>+10987654321</receiver_phone_number>'
-            '</request>')
-
-        # Search request which matches a person record.
-        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
-                      data=good_request_data, type='application/xml')
-        assert self.s.status == 200
-        expected = (
-            '<?xml version="1.0" encoding="utf-8"?>\n'
-            '<response>\n'
-            '  <message_text>'
-                '_test_given_name _test_family_name / '
+        test_data = {
+            ('good_request_data', 'Search _test_family_name', '+12345678901',
+                '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, '_test_given_name _test_family_name / '
                 'Someone has received information that this person is alive / '
                 'female / 52 / From: _test_home_city _test_home_state ## '
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos'
-                '</message_text>\n'
-            '</response>\n')
-        assert expected == doc.content, text_diff(expected, doc.content)
-
-        # Search request which matches no person records.
-        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
-                      data=request_data_with_no_result, type='application/xml')
-        assert self.s.status == 200
-        expected = (
-            '<?xml version="1.0" encoding="utf-8"?>\n'
-            '<response>\n'
-            '  <message_text>'
-                'No results found for: _non_existent_family_name ## '
+                'accuracy of this data google.org/personfinder/global/tos'),
+            ('request_data_with_no_result', 'Search _non_existent_family_name',
+                 '+12345678901', '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'No results found for: _non_existent_family_name ## '
                 'More at: google.org/personfinder/haiti?ui=light ## '
                 'All data entered in Person Finder is available to the public '
                 'and usable by anyone. Google does not review or verify the '
-                'accuracy of this data google.org/personfinder/global/tos'
-                '</message_text>\n'
-            '</response>\n')
-        assert expected == doc.content, text_diff(expected, doc.content)
+                'accuracy of this data google.org/personfinder/global/tos'),
+            ('request_data_with_bad_text', 'Hello', '+12345678901',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (200, 'Usage: &quot;Search John&quot;'),
+            ('request_data_with_unknown_number', 'Hello', '+10987654321',
+                 '/global/api/handle_sms?key=sms_key&lang=en'):
+            (400, 'The given receiver_phone_number is not found in '
+                'sms_number_to_repo config.'),
+            ('request_without_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.'),
+            ('non_global_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=search_key&lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.'),
+            ('non_search_key', 'Search _test_family_name', '+12345678901',
+                 '/global/api/handle_sms?key=global_test_key&lang=en'):
+            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
+                 'lacks required permissions.')
+        }
 
-        # The text doesn't begin with "Search".
-        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
-                      data=request_data_with_bad_text, type='application/xml')
-        assert self.s.status == 200
-        expected = (
-            '<?xml version="1.0" encoding="utf-8"?>\n'
-            '<response>\n'
-            '  <message_text>Usage: &quot;Search John&quot;</message_text>\n'
-            '</response>\n')
-        assert expected == doc.content, text_diff(expected, doc.content)
-
-        # The receiver phone number is not associated with a repository.
-        doc = self.go('/global/api/handle_sms?key=sms_key&lang=en',
-                      data=request_data_with_unknown_number,
-                      type='application/xml')
-        assert self.s.status == 400
-        assert ('The given receiver_phone_number is not found in '
-            'sms_number_to_repo config.') in doc.content
-
-        # A request without a key.
-        doc = self.go('/global/api/handle_sms?lang=en',
-                      data=good_request_data, type='application/xml')
-        assert self.s.status == 403
-        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
-            'lacks required permissions.') in doc.content
-
-        # The key is associated with a repository, not global.
-        doc = self.go('/global/api/handle_sms?key=search_key&lang=en',
-                      data=good_request_data, type='application/xml')
-        assert self.s.status == 403
-        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
-            'lacks required permissions.') in doc.content
-
-        # The key doesn't have "search" permission.
-        doc = self.go('/global/api/handle_sms?key=global_test_key&lang=en',
-                      data=good_request_data, type='application/xml')
-        assert self.s.status == 403
-        assert ('&quot;key&quot; URL parameter is either missing, invalid or '
-            'lacks required permissions.') in doc.content
+        for test_input, exp_output in test_data.iteritems():
+          request_data = (
+              '<?xml version="1.0" encoding="utf-8"?>'
+              '<request>'
+              '    <message_text>%s</message_text>'
+              '    <receiver_phone_number>%s</receiver_phone_number>'
+              '</request>') % (test_input[1], test_input[2])
+          doc = self.go(test_input[3], data=request_data,
+                        type='application/xml')
+          assert exp_output[0] == self.s.status, (
+              'Failure on status for %s, %d != %d' % (
+                  test_input[0], exp_output[0], self.s.status))
+          if exp_output[0] == 200:
+            expected_data = (
+                '<?xml version="1.0" encoding="utf-8"?>\n'
+                '<response>\n'
+                '  <message_text>%s</message_text>\n'
+                '</response>\n') % exp_output[1]
+            assert expected_data == doc.content, (
+                'Failure on content for %s, diff: %s' % (
+                    test_input[0], text_diff(expected_data, doc.content)))
+          else:
+            assert exp_output[1] in doc.content, (
+                'Failure on content for %s\nexpected content: %s\nnot in %s' % (
+                    test_input[0], exp_output[1], doc.content))
 
 
     def test_person_feed(self):
