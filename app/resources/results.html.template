@@ -187,9 +187,9 @@
           {# ui=light. #}
           {# <img align='left'> and <br clear='all'> are for cases where CSS #}
           {# is disabled e.g. on ui=light. #}
-          {% if result.photo_url and result.should_show_inline_photo %}
+          {% if result.should_show_inline_photo and result.thumbnail_url %}
             <div class="resultImageContainer"
-              ><img class='resultImage' src='{{result.photo_url}}'
+              ><img class='resultImage' src='{{result.thumbnail_url}}'
                     width='80' height='80' align='left' alt=''
             /></div>
           {% else %}

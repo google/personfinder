@@ -955,6 +955,15 @@ class BaseHandler(webapp.RequestHandler):
         else:
             return True
 
+    def get_thumbnail_url(self, photo_url):
+        if not photo_url:
+            return None
+        parsed_url = list(urlparse.urlparse(photo_url))
+        params_dict = dict(urlparse.parse_qsl(parsed_url[4]))
+        params_dict['thumb'] = 'true'
+        parsed_url[4] = urllib.urlencode(params_dict)
+        return urlparse.urlunparse(parsed_url)
+
     def __return_unimplemented_method_error(self):
         return self.error(
             405,

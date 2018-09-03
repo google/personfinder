@@ -110,6 +110,8 @@ class Handler(BaseHandler):
                 result.provider_name = result.get_original_domain()
             result.should_show_inline_photo = (
                 self.should_show_inline_photo(result.photo_url))
+            if result.should_show_inline_photo:
+                result.thumbnail_url = self.get_thumbnail_url(result.photo_url)
             sanitize_urls(result)
         return results
 
