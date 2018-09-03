@@ -2631,32 +2631,27 @@ _read_profile_url2</pfif:profile_urls>
             config.set_for_repo('haiti', search_auth_key_required=False)
 
 
-    def verify_sms_responses(self, test_data):
-        for test_input, exp_output in test_data.iteritems():
-          request_data = (
-              '<?xml version="1.0" encoding="utf-8"?>'
-              '<request>'
-              '    <message_text>%s</message_text>'
-              '    <receiver_phone_number>%s</receiver_phone_number>'
-              '</request>') % (test_input[1], test_input[2])
-          doc = self.go(test_input[3], data=request_data,
-                        type='application/xml')
-          assert exp_output[0] == self.s.status, (
-              'Failure on status for %s, %d != %d' % (
-                  test_input[0], exp_output[0], self.s.status))
-          if exp_output[0] == 200:
+    def verify_sms_response(
+            self, message_text, phone_number, path, expected_response_code,
+            expected_response):
+        request_data = (
+            '<?xml version="1.0" encoding="utf-8"?>'
+            '<request>'
+            '    <message_text>%(message_text)s</message_text>'
+            '    <receiver_phone_number>%(phone_number)s</receiver_phone_number>'
+            '</request>' % {
+                'message_text': message_text, 'phone_number': phone_number})
+        doc = self.go(path, data=request_data, type='application/xml')
+        assert self.s.status == expected_response_code
+        if expected_response_code == 200:
             expected_data = (
                 '<?xml version="1.0" encoding="utf-8"?>\n'
                 '<response>\n'
                 '  <message_text>%s</message_text>\n'
-                '</response>\n') % exp_output[1]
-            assert expected_data == doc.content, (
-                'Failure on content for %s, diff: %s' % (
-                    test_input[0], text_diff(expected_data, doc.content)))
-          else:
-            assert exp_output[1] in doc.content, (
-                'Failure on content for %s\nexpected content: %s\nnot in %s' % (
-                    test_input[0], exp_output[1], doc.content))
+                '</response>\n') % expected_response
+            assert doc.content == expected_data
+        else:
+            assert expected_response in doc.content
 
 
     def test_sms_api_search(self):
@@ -2666,28 +2661,34 @@ _read_profile_url2</pfif:profile_urls>
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
         config.set(enable_sms_record_input=False)
 
-        test_data = {
-            ('good_request_data', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, '_test_given_name _test_family_name / '
+        self.verify_sms_response(
+            message_text='Search _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='_test_given_name _test_family_name / '
                  'Someone has received information that this person is alive / '
                  'female / 52 / From: _test_home_city _test_home_state ## '
                  'More at: google.org/personfinder/haiti?ui=light ## '
                  'All data entered in Person Finder is available to the public '
                  'and usable by anyone. Google does not review or verify the '
-                 'accuracy of this data google.org/personfinder/global/tos'),
-            ('request_data_with_no_result', 'Search _non_existent_family_name',
-                 '+12345678901', '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'No results found for: _non_existent_family_name ## '
-                 'More at: google.org/personfinder/haiti?ui=light ## '
+                 'accuracy of this data google.org/personfinder/global/tos')
+        self.verify_sms_response(
+            message_text='Search _non_existent_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='No results found for: _non_existent_family_name '
+                 '## More at: google.org/personfinder/haiti?ui=light ## '
                  'All data entered in Person Finder is available to the public '
                  'and usable by anyone. Google does not review or verify the '
-                 'accuracy of this data google.org/personfinder/global/tos'),
-            ('request_data_with_bad_text', 'Hello', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Usage: &quot;Search John&quot;')
-        }
-        self.verify_sms_responses(test_data)
+                 'accuracy of this data google.org/personfinder/global/tos')
+        self.verify_sms_response(
+            message_text='Hello',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Usage: &quot;Search John&quot;')
 
 
     def test_sms_api_add(self):
@@ -2697,17 +2698,21 @@ _read_profile_url2</pfif:profile_urls>
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
         config.set(enable_sms_record_input=True)
 
-        test_data = {
-            ('good_add_request', 'I am Gilbert Smith', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Added a record for: Gilbert Smith'),
-            ('request_data_with_bad_text', 'Hello', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Usage: &quot;Search John&quot; OR &quot;I am John&quot;'),
-        }
-        self.verify_sms_responses(test_data)
+        self.verify_sms_response(
+            message_text='I am Gilbert Smith',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Added a record for: Gilbert Smith')
+        self.verify_sms_response(
+            message_text='Hello',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Usage: &quot;Search John&quot; OR &quot;I am '
+                'John&quot;')
         db_res = indexing.search('haiti', TextQuery('Gilbert Smith'), 1)
-        assert 1 == len(db_res)
+        assert len(db_res) == 1
 
 
     def test_sms_non_english(self):
@@ -2717,52 +2722,69 @@ _read_profile_url2</pfif:profile_urls>
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
         config.set(enable_sms_record_input=True)
 
-        test_data = {
-            ('es_search', 'buscar _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, '_test_given_name _test_family_name / Alguien tiene '
-                 'informacion de que esta persona esta viva / mujer / 52 / De: '
-                 '_test_home_city _test_home_state ## Mas en: '
+        self.verify_sms_response(
+            message_text='buscar _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='_test_given_name _test_family_name / Alguien '
+                 'tiene informacion de que esta persona esta viva / mujer / 52 '
+                 '/ De: _test_home_city _test_home_state ## Mas en: '
                  'google.org/personfinder/haiti?ui=light ## Toda la '
                  'informacion ingresada en Person Finder esta disponible de '
                  'forma publica y puede ser usada por cualquier persona. '
                  'Google no revisa o verifica la veracidad de la informacion '
-                 'google.org/personfinder/global/tos'),
-            ('es_add', 'Yo soy Arturo Gutierrez', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Se ha anadido un registro para Arturo Gutierrez'),
-            ('ht_search', 'chache _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, '_test_given_name _test_family_name / Gen yon moun ki '
-                 'resevwa enfomasyon moun sa an vi / fi / 52 / Soti nan: '
-                 '_test_home_city _test_home_state ## Plis nan: '
+                 'google.org/personfinder/global/tos')
+        self.verify_sms_response(
+            message_text='Yo soy Arturo Gutierrez',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Se ha anadido un registro para Arturo Gutierrez')
+        self.verify_sms_response(
+            message_text='chache _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='_test_given_name _test_family_name / Gen yon '
+                 'moun ki resevwa enfomasyon moun sa an vi / fi / 52 / Soti '
+                 'nan: _test_home_city _test_home_state ## Plis nan: '
                  'google.org/personfinder/haiti?ui=light ## Tout done yo te '
                  'antre nan Cheche Moun la disponib ak piblik la ak nenpot '
                  'moun ka itilize. Google pa revize oswa verifye presizyon nan '
-                 'done sa a google.org/personfinder/global/tos'),
-            ('ht_add', 'mwen se Rene Martin', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Nou ajoute nan list la: Rene Martin'),
-            ('fr_search', 'chercher _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, '_test_given_name _test_family_name / Quelqu&#39;un a recu '
-                 'des informations indiquant que cette personne est en vie. / '
-                 'femme / 52 / De : _test_home_city _test_home_state ## Plus '
-                 'd&#39;informations a l&#39;adresse '
+                 'done sa a google.org/personfinder/global/tos')
+        self.verify_sms_response(
+            message_text='mwen se Rene Martin',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Nou ajoute nan list la: Rene Martin')
+        self.verify_sms_response(
+            message_text='chercher _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='_test_given_name _test_family_name / '
+                 'Quelqu&#39;un a recu des informations indiquant que cette '
+                 'personne est en vie. / femme / 52 / De : _test_home_city '
+                 '_test_home_state ## Plus d&#39;informations a l&#39;adresse '
                  'google.org/personfinder/haiti?ui=light ## Toutes les donnees '
                  'saisies dans l&#39;outil Recherche de personnes sont '
                  'accessibles au public et utilisables par tous. Google ne '
                  'revise pas ces donnees et ne verifie pas leur exactitude '
-                 '(google.org/personfinder/global/tos).'),
-            ('fr_add', 'je suis Christophe Macron', '+12345678901',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (200, 'Une fiche sur Christophe Macron a ete ajoutee')
-        }
-        self.verify_sms_responses(test_data)
+                 '(google.org/personfinder/global/tos).')
+        self.verify_sms_response(
+            message_text='je suis Christophe Macron',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=200,
+            expected_response='Une fiche sur Christophe Macron a ete ajoutee')
         db_res = indexing.search('haiti', TextQuery('Arturo Gutierrez'), 1)
+        assert len(db_res) == 1
         db_res = indexing.search('haiti', TextQuery('Rene Martin'), 1)
+        assert len(db_res) == 1
         db_res = indexing.search('haiti', TextQuery('Christophe Macron'), 1)
-        assert 1 == len(db_res)
+        assert len(db_res) == 1
 
 
     def test_sms_altogether_invalid(self):
@@ -2772,25 +2794,34 @@ _read_profile_url2</pfif:profile_urls>
         config.set(sms_number_to_repo={'+12345678901': 'haiti'})
         config.set(enable_sms_record_input=False)
 
-        test_data = {
-            ('request_data_with_unknown_number', 'Hello', '+10987654321',
-                 '/global/api/handle_sms?key=sms_key&lang=en'):
-            (400, 'The given receiver_phone_number is not found in '
-                 'sms_number_to_repo config.'),
-            ('request_without_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.'),
-            ('non_search_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=global_test_key&lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.'),
-            ('non_global_key', 'Search _test_family_name', '+12345678901',
-                 '/global/api/handle_sms?key=search_key&lang=en'):
-            (403, '&quot;key&quot; URL parameter is either missing, invalid or '
-                 'lacks required permissions.')
-        }
-        self.verify_sms_responses(test_data)
+        self.verify_sms_response(
+            message_text='Hello',
+            phone_number='+10987654321',
+            path='/global/api/handle_sms?key=sms_key&lang=en',
+            expected_response_code=400,
+            expected_response='The given receiver_phone_number is not found in '
+                 'sms_number_to_repo config.')
+        self.verify_sms_response(
+            message_text='Search _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?lang=en',
+            expected_response_code=403,
+            expected_response='&quot;key&quot; URL parameter is either '
+                 'missing, invalid or lacks required permissions.')
+        self.verify_sms_response(
+            message_text='Search _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=global_test_key&lang=en',
+            expected_response_code=403,
+            expected_response='&quot;key&quot; URL parameter is either '
+                 'missing, invalid or lacks required permissions.')
+        self.verify_sms_response(
+            message_text='Search _test_family_name',
+            phone_number='+12345678901',
+            path='/global/api/handle_sms?key=search_key&lang=en',
+            expected_response_code=403,
+            expected_response='&quot;key&quot; URL parameter is either '
+                 'missing, invalid or lacks required permissions.')
 
 
     def test_person_feed(self):
