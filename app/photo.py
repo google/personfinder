@@ -111,4 +111,7 @@ class Handler(utils.BaseHandler):
         if not photo:
             return self.error(404, 'There is no photo for the specified id.')
         self.response.headers['Content-Type'] = 'image/png'
-        self.response.out.write(photo.image_data)
+        if self.params.thumb and photo.thumbnail_data:
+            self.response.out.write(photo.thumbnail_data)
+        else:
+            self.response.out.write(photo.image_data)

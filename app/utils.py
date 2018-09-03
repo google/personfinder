@@ -696,6 +696,7 @@ class BaseHandler(webapp.RequestHandler):
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
+        'thumb': validate_checkbox_as_bool,
         'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
