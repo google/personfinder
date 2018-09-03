@@ -25,6 +25,7 @@ from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 
 MAX_IMAGE_DIMENSION = 300
+MAX_THUMBNAIL_DIMENSION = 80
 
 class PhotoError(Exception):
     message = _('There was a problem processing the image.  '
@@ -70,6 +71,29 @@ def create_photo(image, handler):
     photo = model.Photo.create(handler.repo, image_data=image_data)
     photo_url = get_photo_url(photo, handler)
     return (photo, photo_url)
+
+
+def set_thumbnail(photo):
+    image = images.Image(photo.image_data)
+    if max(image.width, image.height) <= MAX_THUMBNAIL_DIMENSION:
+        # Don't need a thumbnail, it's small enough already.
+        return
+    elif image.width > image.height:
+        image.resize(MAX_THUMBNAIL_DIMENSION,
+                     image.height * MAX_THUMBNAIL_DIMENSION / image.width)
+    else:
+        image.resize(image.width * MAX_THUMBNAIL_DIMENSION / image.height,
+                     MAX_THUMBNAIL_DIMENSION)
+    try:
+        thumbnail_data = image.execute_transforms(output_encoding=images.PNG)
+    except RequestTooLargeError:
+        raise SizeTooLargeError()
+    except Exception:
+        raise PhotoError()
+
+    photo.thumbnail_data = thumbnail_data
+    photo.save()
+
 
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
