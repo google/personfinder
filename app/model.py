@@ -669,7 +669,8 @@ class Photo(db.Model):
     repo = db.StringProperty(required=True)
     image_data = db.BlobProperty()  # sanitized, resized image in PNG format
     upload_date = db.DateTimeProperty(auto_now_add=True)
-    thumbnail_data = db.BlobProperty()  # thumbnail image in PNG format
+    # thumbnail image in PNG format
+    thumbnail_data = db.BlobProperty(default=None)
 
     @staticmethod
     def create(repo, **kwargs):

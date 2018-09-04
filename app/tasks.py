@@ -28,6 +28,7 @@ import config
 import const
 import delete
 import model
+import photo
 import utils
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
@@ -436,4 +437,14 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
 
         return  count_of_unreviewed_notes > self.config.get(
                 'unreviewed_notes_threshold')
+
+
+class ThumbnailPreparer(utils.BaseHandler):
+
+    repo_required = False
+    ACTION = 'tasks/thumbnail_preparer'
+
+    def get(self):
+        for p in model.Photo.all().filter('thumbnail_data =', None):
+            photo.set_thumbnail(p)
 
