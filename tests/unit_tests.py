@@ -37,11 +37,11 @@ os.environ['APPLICATION_ID'] = 'personfinder-unittest'
 os.chdir(os.environ['APP_DIR'])
 
 # ...but we want pytest to default to finding tests in TESTS_DIR, not the cwd.
-# So, when no arguments are given, we make the option parser return TESTS_DIR.
-import _pytest.config
-original_parse_setoption = _pytest.config.Parser.parse_setoption
-_pytest.config.Parser.parse_setoption = (lambda *args, **kwargs: 
-    original_parse_setoption(*args, **kwargs) or [os.environ['TESTS_DIR']])
+# So, when no arguments besides options are given, we add TESTS_DIR to the list
+# of options passed to pytest.
+args = sys.argv[1:]
+if all([arg.startswith('-') for arg in args]):
+  args += [os.environ['TESTS_DIR']]
 
 # Run the tests, using sys.exit to set exit status (nonzero for failure).
-sys.exit(pytest.main())
+sys.exit(pytest.main(args))
