@@ -38,9 +38,9 @@ os.chdir(os.environ['APP_DIR'])
 
 # ...but we want pytest to default to finding tests in TESTS_DIR, not the cwd.
 # So, when no arguments are given, we make the option parser return TESTS_DIR.
-import _pytest.config
-original_parse_setoption = _pytest.config.Parser.parse_setoption
-_pytest.config.Parser.parse_setoption = (lambda *args, **kwargs: 
+import _pytest.config.argparsing
+original_parse_setoption = _pytest.config.argparsing.Parser.parse_setoption
+_pytest.config.argparsing.Parser.parse_setoption = (lambda *args, **kwargs: 
     original_parse_setoption(*args, **kwargs) or [os.environ['TESTS_DIR']])
 
 # Run the tests, using sys.exit to set exit status (nonzero for failure).
