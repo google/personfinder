@@ -19,7 +19,7 @@ import prefix
 import unittest
 
 
-class TestPerson(db.Model):
+class _TestPerson(db.Model):
     name = db.StringProperty()
 
 
@@ -35,18 +35,18 @@ class PrefixTests(unittest.TestCase):
         prefix_properties = ['name']
         prefix_types = ['_n_', '_n1_', '_n2_']
         all_properties = ['name', 'name_n1_', 'name_n2_', 'name_n_']
-        prefix.add_prefix_properties(TestPerson, 'name')
+        prefix.add_prefix_properties(_TestPerson, 'name')
         # Test the list of prefix properties was recorded
-        assert TestPerson._prefix_properties == prefix_properties
+        assert _TestPerson._prefix_properties == prefix_properties
         # Test all prefix properties have been added
         for prefix_type in prefix_types:
-            assert hasattr(TestPerson, 'name' + prefix_type)
+            assert hasattr(_TestPerson, 'name' + prefix_type)
         # Test that the model class was updated
-        assert sorted(TestPerson.properties()) == all_properties
+        assert sorted(_TestPerson.properties()) == all_properties
 
     def test_update_prefix_properties(self):
-        prefix.add_prefix_properties(TestPerson, 'name')
-        test_person = TestPerson(name='John')
+        prefix.add_prefix_properties(_TestPerson, 'name')
+        test_person = _TestPerson(name='John')
         prefix.update_prefix_properties(test_person)
         assert test_person.name_n_ == 'JOHN'
         assert test_person.name_n1_ == 'J'
@@ -54,22 +54,22 @@ class PrefixTests(unittest.TestCase):
 
     def test_filter_prefix(self):
         # Test 1-char prefix filter
-        test_query = TestPerson.all()
+        test_query = _TestPerson.all()
         test_criteria = {'name': 'b'}
         prefix.filter_prefix(test_query, **test_criteria)
         assert test_query._get_query() == {'name_n1_ =': u'B'}
         # Test 2-char prefix filter
-        test_query = TestPerson.all()
+        test_query = _TestPerson.all()
         test_criteria = {'name': 'bryan'}
         prefix.filter_prefix(test_query, **test_criteria)
         assert test_query._get_query() == {'name_n2_ =': u'BR'}
 
     def test_get_prefix_matches(self):
-        db.put(TestPerson(name='Bryan'))
-        db.put(TestPerson(name='Bruce'))
-        db.put(TestPerson(name='Benny'))
-        db.put(TestPerson(name='Lenny'))
-        test_query = TestPerson.all().order('name')
+        db.put(_TestPerson(name='Bryan'))
+        db.put(_TestPerson(name='Bruce'))
+        db.put(_TestPerson(name='Benny'))
+        db.put(_TestPerson(name='Lenny'))
+        test_query = _TestPerson.all().order('name')
         # Test full string match
         test_criteria = {'name': 'bryan'}
         test_people = list(person.name for person in prefix.get_prefix_matches(
