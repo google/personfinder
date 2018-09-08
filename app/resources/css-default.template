@@ -612,12 +612,15 @@ td.submit {
   line-height: 10px;
 }
 
+/* We want to display the "I have info"/"I'm seeking info" buttons side-by-side
+   on desktop, but stacked on top of each other on mobile, so we have an extra
+   couple CSS rules for larger screens. */
 @media (min-width: 700px) {
   .main .action-wrapper {
     display: inline-block;
   }
   .main .action-outer {
-    float: left;
+    display: inline-block;
     margin: 10px;
   }
 }
