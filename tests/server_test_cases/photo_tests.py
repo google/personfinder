@@ -18,8 +18,10 @@
 
 
 
+import model
+
 from google.appengine.api import images
-from photo import MAX_IMAGE_DIMENSION
+from photo import MAX_IMAGE_DIMENSION, MAX_THUMBNAIL_DIMENSION, set_thumbnail
 from server_tests_base import ServerTestsBase
 
 
@@ -100,3 +102,32 @@ class PhotoTests(ServerTestsBase):
         assert not doc.cssselect('img.photo')
         assert 'unrecognized format' in doc.text
 
+    def test_set_thumbnail(self):
+        """Tests that a thumbnail is generated."""
+        photo = model.Photo.create(
+            'haiti', image_data=file('tests/testdata/small_image.png').read())
+        photo.save()
+        self.go('/haiti/tasks/thumbnail_preparer')
+        doc = self.s.go('/haiti/photo?id=%s&thumb=true' %
+                        photo.key().name().split(':')[1])
+        image = images.Image(doc.content_bytes)
+        assert image.format == images.PNG
+        assert image.height == MAX_THUMBNAIL_DIMENSION
+        assert image.width == MAX_THUMBNAIL_DIMENSION
+
+    def test_skip_thumbnail_for_small_enough_images(self):
+        """Tests that a thumbnail isn't generated for small enough images."""
+        photo = model.Photo.create(
+            'haiti', image_data=file('tests/testdata/tiny_image.png').read())
+        photo.save()
+        self.go('/haiti/tasks/thumbnail_preparer')
+        db_photo = model.Photo.get_by_key_name(photo.key().name())
+        # tiny_image.png is 40x40, so it shouldn't bother generating a
+        # thumbnail.
+        assert not db_photo.thumbnail_data
+        doc = self.s.go('/haiti/photo?id=%s&thumb=true' %
+                        photo.key().name().split(':')[1])
+        image = images.Image(doc.content_bytes)
+        assert image.format == images.PNG
+        assert image.height == 40
+        assert image.width == 40
