@@ -445,6 +445,12 @@ class ThumbnailPreparer(utils.BaseHandler):
     ACTION = 'tasks/thumbnail_preparer'
 
     def get(self):
-        for p in model.Photo.all().filter('thumbnail_data =', None):
-            photo.set_thumbnail(p)
+        if self.repo:
+            for p in (model.Photo.all()
+                      .filter('thumbnail_data =', None)
+                      .filter('repo =', self.repo)):
+                photo.set_thumbnail(p)
+        else:
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, 'prepare-thumbnails', self.ACTION)
 
