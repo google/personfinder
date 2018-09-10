@@ -56,7 +56,7 @@ def dict_to_entity(dict):
     return entity
 
 
-class _TestCase:
+class PFIFTestCase:
     """A container for test data and expected results."""
     def __init__(self, pfif_version, xml, person_records=[], note_records=[],
                  do_parse_test=True, do_write_test=True, is_expired=False):
@@ -75,8 +75,8 @@ class _TestCase:
         self.is_expired = is_expired
 
 
-# The tests iterate over this list of _TestCases and check each one.  Testing
-# changes to PFIF should just require appending new _TestCases to this list.
+# The tests iterate over this list of PFIFTestCases and check each one.  Testing
+# changes to PFIF should just require appending new PFIFTestCases to this list.
 TEST_CASES = []
 
 # The records corresponding to the PFIF 1.4 XML documents below.
@@ -135,7 +135,7 @@ NOTE_RECORD_1_4 = {
 
 TEST_CASES.append((
     'PFIF 1.4 with tag prefixes',
-    _TestCase('1.4', '''\
+    PFIFTestCase('1.4', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
@@ -192,7 +192,7 @@ _test_profile_url2</pfif:profile_urls>
 
 TEST_CASES.append((
     'PFIF 1.4 with tag prefixes, with the person_record_id after the note',
-    _TestCase('1.4', '''\
+    PFIFTestCase('1.4', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
@@ -249,7 +249,7 @@ _test_profile_url2</pfif:profile_urls>
 
 TEST_CASES.append((
     'PFIF 1.4 with notes only',
-    _TestCase('1.4', '''\
+    PFIFTestCase('1.4', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.4">
   <note>
@@ -276,7 +276,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.4 for an expired record with data that should be hidden',
-    _TestCase('1.4', '''\
+    PFIFTestCase('1.4', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
@@ -291,7 +291,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.4 for an expired record with data that has been wiped',
-    _TestCase('1.4', '''\
+    PFIFTestCase('1.4', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
   <pfif:person>
@@ -358,7 +358,7 @@ NOTE_RECORD_1_3 = {
 
 TEST_CASES.append((
     'PFIF 1.3 with tag prefixes',
-    _TestCase('1.3', '''\
+    PFIFTestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -411,7 +411,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.3 with tag prefixes, with the person_record_id after the note',
-    _TestCase('1.3', '''\
+    PFIFTestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -464,7 +464,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.3 with notes only',
-    _TestCase('1.3', '''\
+    PFIFTestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.3">
   <note>
@@ -490,7 +490,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.3 for an expired record with data that should be hidden',
-    _TestCase('1.3', '''\
+    PFIFTestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -505,7 +505,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.3 for an expired record with data that has been wiped',
-    _TestCase('1.3', '''\
+    PFIFTestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -564,7 +564,7 @@ NOTE_RECORD_1_2 = {
 
 TEST_CASES.append((
     'PFIF 1.2 XML document with tag prefixes',
-    _TestCase('1.2', '''\
+    PFIFTestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -615,7 +615,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.2 XML document without tag prefixes',
-    _TestCase('1.2', '''\
+    PFIFTestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.2">
   <person>
@@ -666,7 +666,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.2 with tag prefixes, with the person_record_id after the note',
-    _TestCase('1.2', '''\
+    PFIFTestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -717,7 +717,7 @@ TEST_CASES.append((
 
 TEST_CASES.append((
     'PFIF 1.2 XML document with notes only',
-    _TestCase('1.2', '''\
+    PFIFTestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.2">
   <note>
@@ -780,7 +780,7 @@ NOTE_RECORD_1_1 = {
 
 TEST_CASES.append((
     'PFIF 1.1 XML document with tag prefixes',
-    _TestCase('1.1', '''\
+    PFIFTestCase('1.1', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -835,7 +835,7 @@ PERSON_RECORD_WITH_NON_ASCII = {
 # A PFIF document containing some non-ASCII characters in UTF-8 encoding.
 TEST_CASES.append((
     'PFIF 1.2 with non-ASCII characters',
-    _TestCase('1.2', '''\
+    PFIFTestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
