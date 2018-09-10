@@ -552,10 +552,6 @@ td.submit {
   text-align: center;
 }
 
-.action-wrapper {
-  text-align: center;
-}
-
 .main .action-outer {
   border: none;
   font-size: 20px;
@@ -616,9 +612,6 @@ td.submit {
    on desktop, but stacked on top of each other on mobile, so we have an extra
    couple CSS rules for larger screens. */
 @media (min-width: 700px) {
-  .main .action-wrapper {
-    display: inline-block;
-  }
   .main .action-outer {
     display: inline-block;
     margin: 10px;
