@@ -43,6 +43,7 @@ os.chdir(os.environ['APP_DIR'])
 parser = argparse.ArgumentParser()
 parser.add_argument('--tb')
 parser.add_argument('--pyargs', action='store_true')
+parser.add_argument('-q', action='store_true')
 parser.add_argument('-k', type=str,
                     help='Keyword expressions to pass to pytest.')
 parser.add_argument('test_files', nargs='*', default=[os.environ['TESTS_DIR']])
@@ -52,6 +53,8 @@ if args.tb:
   pytest_args += ['--tb', args.tb]
 if args.pyargs:
   pytest_args.append('--pyargs')
+if args.q:
+  pytest_args.append('-q')
 if args.k:
   pytest_args += ['-k', args.k]
 pytest_args += args.test_files
