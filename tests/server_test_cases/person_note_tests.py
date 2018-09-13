@@ -620,6 +620,25 @@ class PersonNoteTests(ServerTestsBase):
         assert 'http://www.twitter.com/_test_account2' in self.s.doc.content
         assert 'http://www.foo.com/_test_account3' in self.s.doc.content
 
+    def test_seeking_someone_with_query_param(self):
+        """Visit the results page with the query (rather than query_name) param.
+        """
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            repo='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
+            full_name='_test_given_name _test_family_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+        self.go('/haiti/results?role=seek&query=_test_given_name')
+        link = self.s.doc.cssselect_one('a.result-link')
+        assert 'query_name=_test_given_name' in link.get('href')
+
     def test_seeking_someone_regular_by_full_text_search(self):
         config.set(enable_full_text_search = True)
         self.run_test_seeking_someone_regular()
