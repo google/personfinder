@@ -206,10 +206,14 @@ class Handler(BaseHandler):
                     return self.redirect(create_url)
 
         if self.params.role == 'seek':
+            # The query_name parameter was previously called "query", and we
+            # continue to support it for third-parties that link directly to
+            # search results pages.
+            if self.params.query:
+                self.params.query_name = self.params.query
             query_dict = {'name': self.params.query_name,
                           'location': self.params.query_location}
-            self.params.query = " ".join(q for q in query_dict.values() if q)
-            query = TextQuery(self.params.query)
+            query = TextQuery(" ".join(q for q in query_dict.values() if q))
             results_based_on_input = True
 
             # If a query looks like a phone number, show the user a result
