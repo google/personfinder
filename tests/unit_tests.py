@@ -18,6 +18,7 @@
 Instead of running this script directly, use the 'unit_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
 
+import argparse
 import os
 import pytest
 import sys
@@ -37,11 +38,23 @@ os.environ['APPLICATION_ID'] = 'personfinder-unittest'
 os.chdir(os.environ['APP_DIR'])
 
 # ...but we want pytest to default to finding tests in TESTS_DIR, not the cwd.
-# So, when no arguments are given, we make the option parser return TESTS_DIR.
-import _pytest.config.argparsing
-original_parse_setoption = _pytest.config.argparsing.Parser.parse_setoption
-_pytest.config.argparsing.Parser.parse_setoption = (lambda *args, **kwargs: 
-    original_parse_setoption(*args, **kwargs) or [os.environ['TESTS_DIR']])
+# So, when no arguments are given, we use TESTS_DIR by default for the test
+# files we pass to pytest.
+parser = argparse.ArgumentParser()
+parser.add_argument('--tb')
+parser.add_argument('--pyargs', action='store_true')
+parser.add_argument('-k', type=str,
+                    help='Keyword expressions to pass to pytest.')
+parser.add_argument('test_files', nargs='*', default=[os.environ['TESTS_DIR']])
+args = parser.parse_args()
+pytest_args = []
+if args.tb:
+  pytest_args += ['--tb', args.tb]
+if args.pyargs:
+  pytest_args.append('--pyargs')
+if args.k:
+  pytest_args += ['-k', args.k]
+pytest_args += args.test_files
 
 # Run the tests, using sys.exit to set exit status (nonzero for failure).
-sys.exit(pytest.main())
+sys.exit(pytest.main(pytest_args))
