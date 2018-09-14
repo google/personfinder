@@ -96,11 +96,12 @@ class Handler(BaseHandler):
                 results = indexing.search(self.repo,
                                           TextQuery(query_txt), MAX_RESULTS)
 
+        query_name = self.params.query_name or self.params.query
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
                                            role=self.params.role,
-                                           query_name=self.params.query_name,
+                                           query_name=query_name,
                                            query_location=
                                                self.params.query_location,
                                            given_name=self.params.given_name,
@@ -185,17 +186,18 @@ class Handler(BaseHandler):
             if results:
                 # Perhaps the person you wanted to report has already been
                 # reported?
-                return self.render('results.html',
-                                   results=results,
-                                   num_results=len(results),
-                                   has_possible_duplicates=
-                                       has_possible_duplicates(results),
-                                   results_url=results_url,
-                                   create_url=create_url,
-                                   third_party_search_engines=
-                                       third_party_search_engines,
-                                   query_name=self.params.query_name,
-                                   query_location=self.params.query_location,)
+                return self.render(
+                    'results.html',
+                    results=results,
+                    num_results=len(results),
+                    has_possible_duplicates=
+                        has_possible_duplicates(results),
+                    results_url=results_url,
+                    create_url=create_url,
+                    third_party_search_engines=
+                        third_party_search_engines,
+                    query_name=self.params.query_name or self.params.query,
+                    query_location=self.params.query_location,)
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
@@ -209,9 +211,8 @@ class Handler(BaseHandler):
             # The query_name parameter was previously called "query", and we
             # continue to support it for third-parties that link directly to
             # search results pages.
-            if self.params.query:
-                self.params.query_name = self.params.query
-            query_dict = {'name': self.params.query_name,
+            query_name = self.params.query_name or self.params.query
+            query_dict = {'name': query_name,
                           'location': self.params.query_location}
             query = TextQuery(" ".join(q for q in query_dict.values() if q))
             results_based_on_input = True
@@ -248,7 +249,7 @@ class Handler(BaseHandler):
             else:
                 # Look for prefix matches.
                 results = self.search(query_dict)
-                results_url = self.get_results_url(self.params.query_name,
+                results_url = self.get_results_url(query_name,
                                                    self.params.query_location)
                 third_party_query_type = ''
 
@@ -256,14 +257,13 @@ class Handler(BaseHandler):
                 # Check if there have results match for name
                 if not results:
                     if self.params.query_location:
-                        query_dict = {'name': self.params.query_name,
-                                      'location': ''}
+                        query_dict = {'name': query_name, 'location': ''}
                         results = self.search(query_dict)
                         # search result not based on the user input
                         results_based_on_input = False
 
             concatenated_query = (
-                ('%s %s' % (self.params.query_name, self.params.query_location))
+                ('%s %s' % (query_name, self.params.query_location))
                     .strip())
 
             # Show the (possibly empty) matches.
@@ -276,7 +276,7 @@ class Handler(BaseHandler):
                                create_url=create_url,
                                third_party_search_engines=
                                    third_party_search_engines,
-                               query_name=self.params.query_name,
+                               query_name=query_name,
                                query=concatenated_query,
                                third_party_query_type=third_party_query_type,
                                results_based_on_input=results_based_on_input)
