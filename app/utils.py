@@ -644,6 +644,7 @@ class BaseHandler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
+        'index': validate_int,
         'is_valid': validate_checkbox_as_bool,
         'key': strip,
         'lang': validate_lang,

@@ -17,6 +17,8 @@ import calendar
 import datetime
 import logging
 import time
+import csv
+import StringIO
 
 from google.appengine import runtime
 from google.appengine.api import datastore_errors
@@ -24,15 +26,18 @@ from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
+import cloud_storage
 import config
 import const
 import delete
 import model
 import utils
+import pfif
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
+PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 
 
 
@@ -437,3 +442,122 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
         return  count_of_unreviewed_notes > self.config.get(
                 'unreviewed_notes_threshold')
 
+
+# Writers for both types of records.
+# TODO: Move them from download_feed.py
+class CsvWriter:
+    def __init__(self, file, fields=None):
+        self.file = file
+        if fields:
+            self.fields = fields
+        self.writer = csv.DictWriter(self.file, self.fields)
+
+    def write_header(self):
+        self.writer.writeheader()
+
+    def write(self, records):
+        for record in records:
+            self.writer.writerow(dict(
+                (name, record.get(name, '').encode('utf-8'))
+                for name in self.fields))
+        self.file.flush()
+
+    def close(self):
+        self.file.close()
+
+
+class PersonCsvWriter(CsvWriter):
+    fields = PFIF.fields['person']
+
+
+class NoteCsvWriter(CsvWriter):
+    fields = PFIF.fields['note']
+
+
+import time  # kari
+
+
+# TODO:
+# - Remove temp objects
+# - Keep 2 generations and remove older ones
+# - Set up cron
+# - Consider overlapping run
+# - Remove stale objects
+# - Remove objects on deactivated repo
+# - Rename classes
+# - Clean up
+# - Make gcs bucket name configurable
+# - Separate composition task
+# - Remove sensitive fields
+class ExportCSV(utils.BaseHandler):
+    repo_required = False
+    ACTION = 'tasks/export_csv'
+    MAX_COMPOSED_OBJECTS = 32
+    MAX_FETCH_TIME = datetime.timedelta(seconds=5)
+    # MAX_FETCH_TIME = datetime.timedelta(minutes=5)
+
+    def task_name(self):
+        return 'export-csv'
+
+    def schedule_next_task(self, cursor, index):
+        """Schedule the next task for to carry on with this query.
+        """
+        self.add_task_for_repo(
+                self.repo,
+                self.task_name(),
+                self.ACTION,
+                cursor=cursor,
+                index=index)
+
+    def get(self):
+        storage = cloud_storage.CloudStorage()
+
+        if not self.repo:
+            storage.set_objects_lifetime(lifetime_days=1)
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
+            return
+
+        start_time = utils.get_utcnow()
+        index = self.params.index or 0
+        base_name = '%s-persons' % self.repo
+        logging.info('task repo=%s index=%d cursor=%s', self.repo, index, self.params.cursor)
+
+        query = model.Person.all_in_repo(self.repo).order('entry_date')
+        if self.params.cursor:
+            query.with_cursor(self.params.cursor)
+
+        csv_io = StringIO.StringIO()
+        writer = PersonCsvWriter(csv_io)
+        if not self.params.cursor:
+            writer.write_header()
+
+        has_data = False
+        while True:
+            persons = query.fetch(limit=100)
+            if persons:
+                has_data = True
+            else:
+                break
+            writer.write([PFIF.person_to_dict(person) for person in persons])
+            if utils.get_utcnow() >= start_time + self.MAX_FETCH_TIME:
+                break
+            query.with_cursor(query.cursor())
+
+        if has_data:
+            storage.insert_object('%s.%d.csv' % (base_name, index), 'text/csv', csv_io.getvalue())
+            self.schedule_next_task(query.cursor(), index + 1)
+        else:
+            num_objects = index
+            if num_objects:
+                intermediate_names = []
+                for begin in xrange(0, num_objects, self.MAX_COMPOSED_OBJECTS):
+                    end = min(begin + self.MAX_COMPOSED_OBJECTS, num_objects)
+                    intermediate_name = '%s.%d-%d.csv' % (base_name, begin, end)
+                    storage.compose_objects(
+                        ['%s.%d.csv' % (base_name, i) for i in xrange(begin, end)],
+                        intermediate_name,
+                        'text/csv')
+                    intermediate_names.append(intermediate_name)
+                storage.compose_objects(intermediate_names, '%s.csv' % base_name, 'text/csv')
+            logging.info('done')

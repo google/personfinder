@@ -122,6 +122,7 @@ HANDLER_CLASSES['admin/api_keys/list'] = 'admin_api_keys.ListApiKeys'
 HANDLER_CLASSES['api/import'] = 'api.Import'
 HANDLER_CLASSES['api/import/notes'] = 'api.Import'
 HANDLER_CLASSES['api/import/persons'] = 'api.Import'
+HANDLER_CLASSES['api/export'] = 'api.Export'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
@@ -144,6 +145,7 @@ HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
+HANDLER_CLASSES['tasks/export_csv'] = 'tasks.ExportCSV'
 
 def is_development_server():
     """Returns True if the app is running in development."""
