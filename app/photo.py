@@ -94,6 +94,8 @@ def set_thumbnail(photo):
     except RequestTooLargeError:
         raise SizeTooLargeError()
     except Exception:
+        # There are various images.Error exceptions that can be raised, as well
+        # as e.g. IOError if the image is corrupt.
         raise PhotoError()
 
     photo.thumbnail_data = thumbnail_data
