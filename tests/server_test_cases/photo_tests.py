@@ -40,9 +40,9 @@ class PhotoTests(ServerTestsBase):
     def test_upload_photo(self):
         """Verifies a photo is uploaded and properly served on the server."""
         # Create a new person record with a profile photo.
-        photo = file('tests/testdata/small_image.png')
-        original_image = images.Image(photo.read())
-        doc = self.submit_create(photo=photo)
+        with open('tests/testdata/small_image.png') as photo:
+            original_image = images.Image(photo.read())
+            doc = self.submit_create(photo=photo)
         # Verify the image is uploaded and displayed on the view page.
         photo = doc.cssselect_one('img.photo')
         photo_anchor = doc.xpath_one('//a[img[@class="photo"]]')
@@ -64,10 +64,10 @@ class PhotoTests(ServerTestsBase):
         properly transformed and served on the server i.e., jpg is converted to
         png and a large image is resized to match MAX_IMAGE_DIMENSION."""
         # Create a new person record with a profile photo and a note photo.
-        photo = file('tests/testdata/small_image.jpg')
-        note_photo = file('tests/testdata/large_image.png')
-        original_image = images.Image(photo.read())
-        doc = self.submit_create(photo=photo, note_photo=note_photo)
+        with open('tests/testdata/small_image.png') as photo:
+            with open('tests/testdata/large_image.png') as note_photo:
+                original_image = images.Image(photo.read())
+                doc = self.submit_create(photo=photo, note_photo=note_photo)
         # Verify the images are uploaded and displayed on the view page.
         photos = doc.cssselect('img.photo')
         assert len(photos) == 2
@@ -87,8 +87,8 @@ class PhotoTests(ServerTestsBase):
     def test_upload_empty_photo(self):
         """Uploads an empty image and verifies no img tag in the view page."""
         # Create a new person record with a zero-byte profile photo.
-        photo = file('tests/testdata/empty_image.png')
-        doc = self.submit_create(photo=photo)
+        with open('tests/testdata/empty_image.png') as photo:
+            doc = self.submit_create(photo=photo)
         # Verify there is no img tag in the view page.
         assert '_test_given_name' in doc.text
         assert not doc.cssselect('img.photo')
@@ -96,16 +96,16 @@ class PhotoTests(ServerTestsBase):
     def test_upload_broken_photo(self):
         """Uploads a broken image and verifies an error message is displayed."""
         # Create a new person record with a broken profile photo.
-        photo = file('tests/testdata/broken_image.png')
-        doc = self.submit_create(photo=photo)
+        with open('tests/testdata/broken_image.png') as photo:
+            doc = self.submit_create(photo=photo)
         # Verify an error message is displayed.
         assert not doc.cssselect('img.photo')
         assert 'unrecognized format' in doc.text
 
     def test_set_thumbnail(self):
         """Tests that a thumbnail is generated."""
-        photo = model.Photo.create(
-            'haiti', image_data=file('tests/testdata/small_image.png').read())
+        with open('tests/testdata/small_image.png') as image_file:
+            photo = model.Photo.create('haiti', image_data=image_file.read())
         photo.save()
         self.go('/haiti/tasks/thumbnail_preparer')
         doc = self.s.go('/haiti/photo?id=%s&thumb=true' %
@@ -117,8 +117,8 @@ class PhotoTests(ServerTestsBase):
 
     def test_skip_thumbnail_for_small_enough_images(self):
         """Tests that a thumbnail isn't generated for small enough images."""
-        photo = model.Photo.create(
-            'haiti', image_data=file('tests/testdata/tiny_image.png').read())
+        with open('tests/testdata/tiny_image.png') as image_file:
+            photo = model.Photo.create('haiti', image_data=image_file.read())
         photo.save()
         self.go('/haiti/tasks/thumbnail_preparer')
         db_photo = model.Photo.get_by_key_name(photo.key().name())
