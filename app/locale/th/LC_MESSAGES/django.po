@@ -162,7 +162,7 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"                เรียนรู้เพิ่มเติมเกี่ยวกับ Google\n"
+"                ดูข้อมูลเพิ่มเติมเกี่ยวกับ Google\n"
 "            <a href=\"%(privacy_policy_url)s\" "
 "%(target_attr)s>นโยบายความเป็นส่วนตัว</a>\n"
 "              "
@@ -590,8 +590,10 @@ msgstr "ประมาณ 6 เดือน (180 วัน) นับจาก�
 msgid "About Google Person Finder"
 msgstr "เกี่ยวกับ Google Person Finder"
 
+#. Translators: The title of a section in a form where the user inputs their
+#. own information e.g., "Your name", "Your e-mail address".
 msgid "About You"
-msgstr ""
+msgstr "เกี่ยวกับคุณ"
 
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
@@ -792,11 +794,19 @@ msgstr ""
 msgid "Failed to obtain search result for the phone number."
 msgstr "ไม่สามารถเรียกผลการค้นหาหมายเลขโทรศัพท์"
 
+#. Translators: The label for a text field to input the family
+#. name of the person record. "(Surname)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "family name".
 msgid "Family name (Surname)"
-msgstr ""
+msgstr "นามสกุล"
 
+#. Translators: The label for a text field to input the family
+#. name of the person record. "(Surname)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "family name".
 msgid "Family name (Surname) (required)"
-msgstr ""
+msgstr "นามสกุล (ต้องระบุ)"
 
 msgid "Feed of updates about this person"
 msgstr "ฟีดข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
@@ -829,19 +839,30 @@ msgstr "จาก %(home_location)s"
 msgid "Full name"
 msgstr "ชื่อและนามสกุล"
 
+#. Translators: The label for a text field to input the given
+#. name of the person record. "(First name)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "given name".
 msgid "Given name (First name)"
-msgstr ""
+msgstr "ชื่อ"
 
+#. Translators: The label for a text field to input the given
+#. name of the person record. "(First name)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "given name".
 msgid "Given name (First name) (required)"
-msgstr ""
+msgstr "ชื่อ (ต้องระบุ)"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
+#. Translators: A sentence in the privacy statement in the footer of pages.
 msgid ""
 "Google may share the data with public and private organizations "
 "participating in disaster response efforts."
 msgstr ""
+"Google "
+"อาจแชร์ข้อมูลกับองค์กรภาครัฐและเอกชนที่มีส่วนร่วมในการสนับสนุนการตอบสนองต่อภัยพิบัติ"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัว \"หลัง\" เหตุภัยพิบัติไหม (ต้องระบุ)"

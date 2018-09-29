@@ -605,8 +605,10 @@ msgstr "இன்றிலிருந்து சுமார் 6 மாத�
 msgid "About Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான் அறிமுகம்"
 
+#. Translators: The title of a section in a form where the user inputs their
+#. own information e.g., "Your name", "Your e-mail address".
 msgid "About You"
-msgstr ""
+msgstr "சுய அறிமுகம்"
 
 #. Translators: An SMS message sent to a user when the user
 #. successfully added a record for the given person.
@@ -790,7 +792,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD என்ற முறையில் உள்ளிடவும்"
 
 msgid "Enter the person's given and family names."
-msgstr "நபரின் முதல் பெயர் மற்றும் குடும்பப் பெயர்களை உள்ளிடவும்."
+msgstr "நபரின் பெயரின் முற்பகுதி மற்றும் குடும்பப் பெயர்களை உள்ளிடவும்."
 
 msgid "Enter the person's name."
 msgstr "நபரின் பெயரை உள்ளிடவும்."
@@ -815,11 +817,19 @@ msgstr ""
 msgid "Failed to obtain search result for the phone number."
 msgstr "ஃபோன் எண்ணுக்கான தேடல் முடிவைப் பெற முடியவில்லை."
 
+#. Translators: The label for a text field to input the family
+#. name of the person record. "(Surname)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "family name".
 msgid "Family name (Surname)"
-msgstr ""
+msgstr "குடும்பப் பெயர்"
 
+#. Translators: The label for a text field to input the family
+#. name of the person record. "(Surname)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "family name".
 msgid "Family name (Surname) (required)"
-msgstr ""
+msgstr "குடும்பப் பெயர் (அவசியம்)"
 
 msgid "Feed of updates about this person"
 msgstr "இந்த நபரைப் பற்றிய புதுப்பிப்புகளின் ஊட்டம்"
@@ -850,19 +860,30 @@ msgstr "இருப்பிடம்: %(home_location)s"
 msgid "Full name"
 msgstr "முழுப் பெயர்"
 
+#. Translators: The label for a text field to input the given
+#. name of the person record. "(First name)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "given name".
 msgid "Given name (First name)"
-msgstr ""
+msgstr "வழங்கிய பெயர் (பெயரின் முற்பகுதி)"
 
+#. Translators: The label for a text field to input the given
+#. name of the person record. "(First name)" is just added for
+#. clarification. You don't need to translate both if the
+#. language has a single clear term for "given name".
 msgid "Given name (First name) (required)"
-msgstr ""
+msgstr "வழங்கிய பெயர் (பெயரின் முற்பகுதி) (அவசியம்)"
 
 msgid "Google Person Finder"
 msgstr "Google நபர் கண்டுபிடிப்பான்"
 
+#. Translators: A sentence in the privacy statement in the footer of pages.
 msgid ""
 "Google may share the data with public and private organizations "
 "participating in disaster response efforts."
 msgstr ""
+"பேரிடர் மீட்புப் பணிகளில் பங்கேற்கும் பொது மற்றும் தனியார் நிறுவனங்களுடன்"
+" Google இந்தத் தரவைப் பகிரலாம்."
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
@@ -1421,8 +1442,8 @@ msgid ""
 "The Given name and Family name are both required.  Please go back and try"
 " again."
 msgstr ""
-"முதல் பெயர் மற்றும் குடும்பப் பெயர் ஆகிய இரண்டும் தேவை. திரும்பச் சென்று "
-"மீண்டும் முயற்சிக்கவும்."
+"பெயரின் முற்பகுதி மற்றும் குடும்பப் பெயர் ஆகிய இரண்டும் தேவை. திரும்பச் "
+"சென்று மீண்டும் முயற்சிக்கவும்."
 
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "முதலில் வெளியிட்டவரின் பெயர் தேவை. மீண்டும் முயற்சிக்கவும்."
