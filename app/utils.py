@@ -955,6 +955,8 @@ class BaseHandler(webapp.RequestHandler):
         else:
             return True
 
+    URL_PARSE_QUERY_INDEX = 4;
+
     def get_thumbnail_url(self, photo_url):
         """Get a thumbnail URL for an uploaded photo's URL.
 
@@ -964,9 +966,11 @@ class BaseHandler(webapp.RequestHandler):
         if not photo_url:
             return None
         parsed_url = list(urlparse.urlparse(photo_url))
-        params_dict = dict(urlparse.parse_qsl(parsed_url[4]))
+        params_dict = dict(urlparse.parse_qsl(
+            parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX]))
         params_dict['thumb'] = 'true'
-        parsed_url[4] = urllib.urlencode(params_dict)
+        parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX] = urllib.urlencode(
+            params_dict)
         return urlparse.urlunparse(parsed_url)
 
     def __return_unimplemented_method_error(self):
