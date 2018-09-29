@@ -74,6 +74,11 @@ def create_photo(image, handler):
 
 
 def set_thumbnail(photo):
+    """Sets thumbnail data for a photo.
+
+    Args:
+        photo: the Photo object to set the thumbnail for
+    """
     image = images.Image(photo.image_data)
     if max(image.width, image.height) <= MAX_THUMBNAIL_DIMENSION:
         # Don't need a thumbnail, it's small enough already.

@@ -956,6 +956,11 @@ class BaseHandler(webapp.RequestHandler):
             return True
 
     def get_thumbnail_url(self, photo_url):
+        """Get a thumbnail URL for an uploaded photo's URL.
+
+        Args:
+            photo_url: a photo URL for an uploaded photo
+        """
         if not photo_url:
             return None
         parsed_url = list(urlparse.urlparse(photo_url))
