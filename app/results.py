@@ -96,7 +96,7 @@ class Handler(BaseHandler):
                 results = indexing.search(self.repo,
                                           TextQuery(query_txt), MAX_RESULTS)
 
-        query_name = self.params.query_name or self.params.query
+        query_name = self.get_query_value()
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
@@ -119,6 +119,12 @@ class Handler(BaseHandler):
         #       redirect().
         return self.redirect(
             '/query', role=self.params.role, error='error', query=query.query)
+
+    def get_query_value(self):
+        # The query_name parameter used to be called simply "query", and we
+        # continue to accept it because some third-parties have links that
+        # depend on it.
+        return self.params.query_name or self.params.query
 
     def get_results_url(self, query_name, query_location):
         params = {
@@ -196,7 +202,7 @@ class Handler(BaseHandler):
                     create_url=create_url,
                     third_party_search_engines=
                         third_party_search_engines,
-                    query_name=self.params.query_name or self.params.query,
+                    query_name=self.get_query_value(),
                     query_location=self.params.query_location,)
             else:
                 if self.env.ui == 'small':
@@ -211,7 +217,7 @@ class Handler(BaseHandler):
             # The query_name parameter was previously called "query", and we
             # continue to support it for third-parties that link directly to
             # search results pages.
-            query_name = self.params.query_name or self.params.query
+            query_name = self.get_query_value()
             query_dict = {'name': query_name,
                           'location': self.params.query_location}
             query = TextQuery(" ".join(q for q in query_dict.values() if q))
