@@ -440,11 +440,16 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
 
 
 class ThumbnailPreparer(utils.BaseHandler):
+    """A class to run the thumbnail preparation job (for uploaded photos)."""
 
     repo_required = False
     ACTION = 'tasks/thumbnail_preparer'
 
     def get(self):
+        # We don't retry this task automatically, because it's looking for
+        # everything that doesn't already have a thumbnail every time --
+        # anything that doesn't get done now will be retried anyway on the next
+        # iteration of the cron job.
         if self.repo:
             for p in (model.Photo.all()
                       .filter('thumbnail_data =', None)
