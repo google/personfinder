@@ -955,7 +955,7 @@ class BaseHandler(webapp.RequestHandler):
         else:
             return True
 
-    URL_PARSE_QUERY_INDEX = 4;
+    URL_PARSE_QUERY_INDEX = 4
 
     def get_thumbnail_url(self, photo_url):
         """Get a thumbnail URL for an uploaded photo's URL.
