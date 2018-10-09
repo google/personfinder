@@ -57,6 +57,14 @@ use Github pull requests for this purpose.
 1. The pull request will be reviewed by one of the code reviewers (*) and
    merged to the master branch after addressing reviewer's comments.
    (@gimite as of 2016/8).
+   
+#### For code reviewers
+
+1. Assign yourself as a reviewer of the pull request if it hasn't.
+1. Review the code and leave comments. Check that it follows [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md).
+1. Approve the pull request once you are happy.
+1. Confirm that all system checks have passed. If CLA check is failing, point the author to this page and ask them to sign CLA.
+1. Choose and click [Squash and merge] to pull the change. That's the best option to keep the Git commit tree clean.
 
 ### The small print
 Contributions made by corporations are covered by a different agreement than
