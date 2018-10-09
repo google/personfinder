@@ -1034,6 +1034,13 @@
             value="{{view_config.tos_url}}">
       </div>
     </div>
+    <div class="config">
+      <label for="feedback_url">Feedback URL:</label>
+      <div class="response">
+        <input type="text" name="feedback_url" id="feedback_url" size=60
+            value="{{view_config.feedback_url}}">
+      </div>
+    </div>
   </fieldset>
 
   <fieldset>

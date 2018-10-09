@@ -50,9 +50,11 @@
         >{% trans "About Google Person Finder" %}</a>
     <span class="link-separator"></span>
     {% include "repo-menu.html.template" %}
-    <span class="link-separator"></span>
-    <a href="https://support.google.com/personfinder/contact/pf_feedback"
-        {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+    {% if config.feedback_url %}
+      <span class="link-separator"></span>
+      <a href="{{config.feedback_url}}"
+          {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+    {% endif %}
     <span class="link-separator"></span>
     {% if env.ui != "light" %}
       <a href="http://support.google.com/personfinder/?hl={{env.lang}}"

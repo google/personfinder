@@ -137,6 +137,7 @@ class Handler(BaseHandler):
                         'brand',
                         'captcha_secret_key',
                         'captcha_site_key',
+                        'feedback_url',
                         'maps_api_key',
                         'notification_email',
                         'privacy_policy_url',
