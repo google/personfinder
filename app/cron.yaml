@@ -33,3 +33,6 @@ cron:
 - description: Send email notification when there are many unreviewed notes
   url: /global/tasks/notify_many_unreviewed_notes
   schedule: every 6 hours
+- description: prepare thumbnails
+  url: /global/tasks/thumbnail_preparer
+  schedule: every 30 minutes

@@ -28,6 +28,7 @@ import config
 import const
 import delete
 import model
+import photo
 import utils
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
@@ -436,4 +437,25 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
 
         return  count_of_unreviewed_notes > self.config.get(
                 'unreviewed_notes_threshold')
+
+
+class ThumbnailPreparer(utils.BaseHandler):
+    """A class to run the thumbnail preparation job (for uploaded photos)."""
+
+    repo_required = False
+    ACTION = 'tasks/thumbnail_preparer'
+
+    def get(self):
+        # We don't retry this task automatically, because it's looking for
+        # everything that doesn't already have a thumbnail every time --
+        # anything that doesn't get done now will be retried anyway on the next
+        # iteration of the cron job.
+        if self.repo:
+            for p in (model.Photo.all()
+                      .filter('thumbnail_data =', None)
+                      .filter('repo =', self.repo)):
+                photo.set_thumbnail(p)
+        else:
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, 'prepare-thumbnails', self.ACTION)
 

@@ -6,3 +6,5 @@ queue:
 # expiry query for ScanExpired tasks
 - name: expiry
   rate: 5/m
+- name: prepare-thumbnails
+  rate: 5/m

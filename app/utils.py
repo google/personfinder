@@ -696,6 +696,7 @@ class BaseHandler(webapp.RequestHandler):
         'suppress_redirect': validate_yes,
         'target': strip,
         'text': strip,
+        'thumb': validate_checkbox_as_bool,
         'ui': strip_and_lower,
         'utcnow': validate_timestamp,
         'version': validate_version,
@@ -953,6 +954,24 @@ class BaseHandler(webapp.RequestHandler):
             return photo_netloc == our_netloc
         else:
             return True
+
+    URL_PARSE_QUERY_INDEX = 4
+
+    def get_thumbnail_url(self, photo_url):
+        """Get a thumbnail URL for an uploaded photo's URL.
+
+        Args:
+            photo_url: a photo URL for an uploaded photo
+        """
+        if not photo_url:
+            return None
+        parsed_url = list(urlparse.urlparse(photo_url))
+        params_dict = dict(urlparse.parse_qsl(
+            parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX]))
+        params_dict['thumb'] = 'true'
+        parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX] = urllib.urlencode(
+            params_dict)
+        return urlparse.urlunparse(parsed_url)
 
     def __return_unimplemented_method_error(self):
         return self.error(
