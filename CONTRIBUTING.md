@@ -60,7 +60,7 @@ use Github pull requests for this purpose.
    
 #### For code reviewers
 
-1. Assign yourself as a reviewer of the pull request if it hasn't.
+1. Assign yourself as a reviewer of the pull request if it doesn't have one.
 1. Review the code and leave comments. Check that it follows [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md).
 1. Approve the pull request once you are happy.
 1. Confirm that all system checks have passed. If CLA check is failing, point the author to this page and ask them to sign CLA.
