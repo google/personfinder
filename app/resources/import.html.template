@@ -72,6 +72,24 @@
     </form>
   {% endif %}
 
+  <h2>{% trans "Download all person records in CSV format" %}</h2>
+  <form method="post" action="{{env.repo_path}}/api/export">
+    <table>
+      {% if params.key %}
+        <input type="hidden" name="key" value="{{params.key|safe}}" />
+      {% else %}
+        <tr>
+          <td>{% trans "Authorization key" %}:</td>
+          <td><input type="text" name="key"></td>
+        </tr>
+      {% endif %}
+      <tr>
+        <td></td>
+        <td><input type="submit" value="{% trans "Download" %}"></td>
+      </tr>
+    </table>
+  </form>
+
   {% if stats %}
     <!-- TODO(ryok): i18n -->
     <div class="stats">

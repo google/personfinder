@@ -20,11 +20,14 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import django_setup
 
+import base64
 import calendar
 import csv
+from datetime import datetime, timedelta
 import logging
 import re
 import StringIO
+import time
 import xml.dom.minidom
 
 # For Google Analytics Measument Protocol
@@ -34,11 +37,15 @@ import uuid
 
 import django.utils.html
 from django.utils.translation import ugettext as _
+from googleapiclient.discovery import build
 from google.appengine import runtime
 from google.appengine.ext import db
+from google.appengine.api import app_identity
 from google.appengine.api import images
+from oauth2client.client import GoogleCredentials
 from unidecode import unidecode
 
+import cloud_storage
 import config
 import external_search
 import full_text_search
@@ -54,7 +61,6 @@ from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from photo import create_photo, PhotoError
 from utils import Struct
-
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 PHOTO_UPLOAD_MAX_SIZE = 10485760 # Currently 10MB is the maximum upload size
@@ -310,6 +316,20 @@ class Import(utils.BaseHandler):
                                skipped=notes_skipped,
                                total=notes_total)],
                     **get_tag_params(self))
+
+
+class Export(utils.BaseHandler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.read_permission):
+            # TODO(gimite): i18n
+            self.error(403, message='Missing or invalid authorization key.')
+            return
+
+        storage = cloud_storage.CloudStorage()
+        csv_url = storage.sign_url('%s-persons.csv' % self.repo)
+        self.render('export_csv.html', csv_url=csv_url)
 
 
 class Read(utils.BaseHandler):
