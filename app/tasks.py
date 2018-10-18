@@ -17,6 +17,8 @@ import calendar
 import datetime
 import logging
 import time
+import csv
+import StringIO
 
 from google.appengine import runtime
 from google.appengine.api import datastore_errors
@@ -24,16 +26,19 @@ from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
+import cloud_storage
 import config
 import const
 import delete
 import model
 import photo
 import utils
+import pfif
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
+PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 
 
 
@@ -459,3 +464,122 @@ class ThumbnailPreparer(utils.BaseHandler):
             for repo in model.Repo.list():
                 self.add_task_for_repo(repo, 'prepare-thumbnails', self.ACTION)
 
+
+# Writers for both types of records.
+# TODO: Move them from download_feed.py
+class CsvWriter:
+    def __init__(self, file, fields=None):
+        self.file = file
+        if fields:
+            self.fields = fields
+        self.writer = csv.DictWriter(self.file, self.fields)
+
+    def write_header(self):
+        self.writer.writeheader()
+
+    def write(self, records):
+        for record in records:
+            self.writer.writerow(dict(
+                (name, record.get(name, '').encode('utf-8'))
+                for name in self.fields))
+        self.file.flush()
+
+    def close(self):
+        self.file.close()
+
+
+class PersonCsvWriter(CsvWriter):
+    fields = PFIF.fields['person']
+
+
+class NoteCsvWriter(CsvWriter):
+    fields = PFIF.fields['note']
+
+
+import time  # kari
+
+
+# TODO:
+# - Set up cron
+# - Rename classes
+# - Clean up
+class DumpCSV(utils.BaseHandler):
+    repo_required = False
+    ACTION = 'tasks/dump_csv'
+    MAX_COMPOSED_OBJECTS = 32
+    MAX_FETCH_TIME = datetime.timedelta(seconds=5)
+    # MAX_FETCH_TIME = datetime.timedelta(minutes=5)
+    
+    def __init__(self, *args, **kwargs):
+        super(utils.BaseHandler, self).__init__(*args, **kwargs)
+        self.storage = cloud_storage.CloudStorage()
+
+    def task_name(self):
+        return 'dump-csv'
+
+    def schedule_next_task(self, cursor, timestamp):
+        """Schedule the next task for to carry on with this query.
+        """
+        self.add_task_for_repo(
+                self.repo,
+                self.task_name(),
+                self.ACTION,
+                cursor=cursor,
+                timestamp=str(calendar.timegm(timestamp.utctimetuple())))
+
+    def get(self):
+        if self.repo:
+            self.run_task_for_repo(self.repo)
+        else:
+            self.storage.set_objects_lifetime(lifetime_days=1)
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
+
+    def run_task_for_repo(self, repo):
+        start_time = utils.get_utcnow()
+        timestamp = self.params.timestamp or start_time
+        base_name = '%s-persons-%s' % (repo, timestamp.strftime('%Y-%m-%d-%H%M%S'))
+        is_first = not self.params.cursor
+        logging.info('task repo=%s cursor=%s', repo, self.params.cursor)
+
+        query = model.Person.all_in_repo(repo).order('entry_date')
+        if self.params.cursor:
+            query.with_cursor(self.params.cursor)
+
+        csv_io = StringIO.StringIO()
+        writer = PersonCsvWriter(csv_io)
+        if not self.params.cursor:
+            writer.write_header()
+
+        has_data = False
+        scan_completed = False
+        while True:
+#             persons = query.fetch(limit=100)
+            persons = query.fetch(limit=1)
+            if persons:
+                has_data = True
+            else:
+                scan_completed = True
+                break
+            records = [PFIF.person_to_dict(person) for person in persons]
+            utils.filter_sensitive_fields(records)
+            writer.write(records)
+            break  # kari
+            if utils.get_utcnow() >= start_time + self.MAX_FETCH_TIME:
+                break
+            query.with_cursor(query.cursor())
+
+        temp_csv_name = '%s.temp.csv' % base_name
+        final_csv_name = '%s.csv' % base_name
+
+        if has_data:
+            if is_first:
+                self.storage.insert_object(final_csv_name, 'text/csv', '')
+            self.storage.insert_object(temp_csv_name, 'text/csv', csv_io.getvalue())
+            self.storage.compose_objects([final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
+            time.sleep(1)  # kari
+            self.schedule_next_task(query.cursor(), timestamp)
+
+        if scan_completed:
+            config.set_for_repo(repo, latest_csv_object_name=final_csv_name)
+            logging.info('done')
