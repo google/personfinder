@@ -28,45 +28,89 @@ import config
 import utils
 
 
+# Lifetime of the generated signed URL.
 SIGNED_URL_LIFETIME = datetime.timedelta(minutes=10)
 
 
 class CloudStorage(object):
+    """A class to use Google Cloud Storage.
+    
+    It uses the application default credentials and the default Cloud Storage
+    bucket for the App Engine app.
+    
+    If you use this class in the dev app server, you need to:
+      1. Manually set up the application default credentials using:
+           $ gcloud auth application-default login
+      2. Point config "gcs_bucket_name" to a valid Cloud Storage bucket name,
+         which allows read/write access from the credentials above.
+    """
 
     def __init__(self):
-        # Note that you need to manually set up the application default credentials using:
-        #   $ gcloud auth application-default login
-        # on the dev app server.
         credentials = GoogleCredentials.get_application_default()
         self.service = build('storage', 'v1', credentials=credentials)
         self.bucket_name = (
-            config.get('gcs_bucket_name') or app_identity.get_default_gcs_bucket_name()).encode('utf-8')
+            config.get('gcs_bucket_name') or
+            app_identity.get_default_gcs_bucket_name()).encode('utf-8')
 
     def insert_object(self, object_name, content_type, data):
+        """Uploads an object to the bucket.
+        
+        Args:
+            object_name (str): Name of the object.
+            content_type (str): MIME type string of the object.
+            data (str): The content of the object.
+        """
         media = MediaIoBaseUpload(StringIO.StringIO(data), mimetype=content_type)
         self.service.objects().insert(
             bucket=self.bucket_name,
             name=object_name,
             media_body=media).execute()
 
-    def compose_objects(self, source_names, destination_name, destination_content_type):
-        # Compose preferred over resumable because of 256KB chunk restriction
+    def compose_objects(
+        self,
+        source_object_names,
+        destination_object_name,
+        destination_content_type):
+        """Concatenates the source objects to generate the destination object.
+        
+        Args:
+            source_object_names (list of str): Names of the source objects.
+            destination_object_name (str): Name of the destination object.
+            destination_content_type (str): MIME type of the destination object.
+        """
         self.service.objects().compose(
             destinationBucket=self.bucket_name,
-            destinationObject=destination_name,
+            destinationObject=destination_object_name,
             body={
-                'sourceObjects': [{'name': name} for name in source_names],
+                'sourceObjects': [{'name': name} for name in source_object_names],
                 'destination': {
                     'contentType': destination_content_type,
-                    #'contentDisposition': 'attachment; filename=%s' % destination_name,
+                    # This let browsers to download the file instead of opening
+                    # it in a browser.
+                    'contentDisposition':
+                       'attachment; filename=%s' % destination_object_name,
                 },
             }).execute()
 
     def sign_url(self, object_name):
-        """ Generates Google Cloud Storage signed URL to download Google Cloud Storage object without sign in.
+        """ Generates Cloud Storage signed URL to download Google Cloud Storage
+        object without sign in.
 
         See: https://cloud.google.com/storage/docs/access-control/signed-urls
+        
+        This only works on a real App Engine app, not in a dev app server.
+        
+        Args:
+            object_name (str): The name of the object which is signed.
         """
+        if utils.is_dev_app_server():
+            # Not working on a dev app server because it doesn't support
+            # app_identity.sign_blob(). An alternative implementation would
+            # be needed to make it work on a dev app server.
+            raise Exception(
+                'sign_url only works on a real App Engine app, not on a dev '
+                'app server.')
+
         method = 'GET'
         expiration_time = utils.get_utcnow() + SIGNED_URL_LIFETIME
         expiration_sec = int(time.mktime(expiration_time.timetuple()))
@@ -93,6 +137,12 @@ class CloudStorage(object):
         return 'https://storage.googleapis.com%s?%s' % (path, urllib.urlencode(query_params))
 
     def set_objects_lifetime(self, lifetime_days):
+        """Sets lifetime of all objects in the bucket in days.
+        
+        An object is deleted the specified days after it is created.
+
+        lifetime_days (int): Lifetime of objects in a number of days.
+        """
         self.service.buckets().patch(bucket=self.bucket_name, body={
             'lifecycle': {
                 'rule': [
