@@ -32,6 +32,7 @@ APP_DIR = os.path.join(PROJECT_DIR, 'app')
 sys.path.append(APP_DIR)
 
 import pfif
+import record_writer
 import urllib
 import urlparse
 
@@ -60,60 +61,9 @@ class NoteParser:
 parsers = {'person': PersonParser, 'note': NoteParser}
 
 
-# Writers for both types of records.
-class CsvWriter:
-    def __init__(self, file, fields=None):
-        self.file = file
-        if fields:
-            self.fields = fields
-        self.writer = csv.DictWriter(self.file, self.fields)
-        self.writer.writerow(dict((name, name) for name in self.fields))
-
-    def write(self, records):
-        for record in records:
-            self.writer.writerow(dict(
-                (name, record.get(name, '').encode('utf-8'))
-                for name in self.fields))
-        self.file.flush()
-
-    def close(self):
-        self.file.close()
-
-
-class PersonCsvWriter(CsvWriter):
-    fields = PFIF.fields['person']
-
-
-class NoteCsvWriter(CsvWriter):
-    fields = PFIF.fields['note']
-
-
-class XmlWriter:
-    def __init__(self, file, fields=None):
-        self.file = file
-        self.file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % PFIF.ns)
-
-    def write(self, records):
-        for record in records:
-            self.write_record(self.file, record, indent='  ')
-        self.file.flush()
-
-    def close(self):
-        self.file.write('</pfif:pfif>\n')
-        self.file.close()
-
-
-class PersonXmlWriter(XmlWriter):
-    write_record = PFIF.write_person
-
-
-class NoteXmlWriter(XmlWriter):
-    write_record = PFIF.write_note
-
 writers = {
-    'xml': {'person': PersonXmlWriter, 'note': NoteXmlWriter},
-    'csv': {'person': PersonCsvWriter, 'note': NoteCsvWriter}
+    'xml': {'person': record_writer.PersonXmlWriter, 'note': record_writer.NoteXmlWriter},
+    'csv': {'person': record_writer.PersonCsvWriter, 'note': record_writer.NoteCsvWriter}
 }
 
 

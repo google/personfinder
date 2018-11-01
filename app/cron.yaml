@@ -36,3 +36,6 @@ cron:
 - description: prepare thumbnails
   url: /global/tasks/thumbnail_preparer
   schedule: every 30 minutes
+- description: dump CSV
+  url: /global/tasks/dump_csv
+  schedule: every 24 hours
