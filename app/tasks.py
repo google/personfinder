@@ -519,7 +519,8 @@ class DumpCSV(utils.BaseHandler):
     def run_task_for_repo(self, repo):
         start_time = utils.get_utcnow()
         timestamp = self.params.timestamp or start_time
-        base_name = '%s-persons-%s' % (repo, timestamp.strftime('%Y-%m-%d-%H%M%S'))
+        base_name = '%s-persons-%s' % (
+            repo, timestamp.strftime('%Y-%m-%d-%H%M%S'))
         is_first = not self.params.cursor
 
         query = model.Person.all_in_repo(repo).order('entry_date')
@@ -553,9 +554,12 @@ class DumpCSV(utils.BaseHandler):
             self.storage.insert_object(final_csv_name, 'text/csv', '')
 
         if has_data:
-            # Creates a temporary CSV file with new records, and append it to the final CSV file.
-            self.storage.insert_object(temp_csv_name, 'text/csv', csv_io.getvalue())
-            self.storage.compose_objects([final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
+            # Creates a temporary CSV file with new records, and append it to
+            # the final CSV file.
+            self.storage.insert_object(
+                temp_csv_name, 'text/csv', csv_io.getvalue())
+            self.storage.compose_objects(
+                [final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
 
         if scan_completed:
             config.set_for_repo(repo, latest_csv_object_name=final_csv_name)

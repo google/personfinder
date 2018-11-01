@@ -58,12 +58,18 @@ class NoteParser:
         # Do not rename fields to PFIF 1.4
         return pfif.parse_file(file, rename_fields=False)[1]
 
+
 parsers = {'person': PersonParser, 'note': NoteParser}
 
-
 writers = {
-    'xml': {'person': record_writer.PersonXmlWriter, 'note': record_writer.NoteXmlWriter},
-    'csv': {'person': record_writer.PersonCsvWriter, 'note': record_writer.NoteCsvWriter}
+    'xml': {
+        'person': record_writer.PersonXmlWriter,
+        'note': record_writer.NoteXmlWriter,
+    },
+    'csv': {
+        'person': record_writer.PersonCsvWriter,
+        'note': record_writer.NoteCsvWriter,
+    },
 }
 
 
