@@ -508,9 +508,19 @@ class DumpCSV(utils.BaseHandler):
         if self.repo:
             self.run_task_for_repo(self.repo)
         else:
-            # Sets lifetime of objects in Google Cloud Storage to 2 days. It is
-            # enough to call this only once for the bucket, but here is just a
-            # convenient place to call it.
+            # Sets lifetime of objects in Google Cloud Storage to 2 days. This
+            # cleans up old CSV files, while it makes sure that it doesn't
+            # delete CSV files users are currently downloading. Note that CSV
+            # files are updated every 24 hours.
+            #
+            # The lifetime is applied globally for all objects in the bucket.
+            # This is OK because Cloud Storage is only used for CSV files for
+            # now. It may need a way to control lifetime per object (see the
+            # docstring of cloud_storage.CloudStorage) if it starts using
+            # Cloud Storage for other purposes.
+            #
+            # It is enough to call this only once for the bucket, but here is
+            # just a convenient place to call it.
             self.storage.set_objects_lifetime(lifetime_days=2)
 
             for repo in model.Repo.list():
@@ -551,9 +561,9 @@ class DumpCSV(utils.BaseHandler):
         temp_csv_name = '%s.temp.csv' % base_name
 
         if is_first:
-            self.storage.insert_object(final_csv_name, 'text/csv', '')
-
-        if has_data:
+            self.storage.insert_object(
+                final_csv_name, 'text/csv', csv_io.getvalue())
+        elif has_data:
             # Creates a temporary CSV file with new records, and append it to
             # the final CSV file.
             self.storage.insert_object(

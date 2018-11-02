@@ -38,4 +38,5 @@ cron:
   schedule: every 30 minutes
 - description: dump CSV
   url: /global/tasks/dump_csv
-  schedule: every 24 hours
+  schedule: every day 0:00
+  timezone: UTC

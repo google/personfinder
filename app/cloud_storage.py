@@ -28,10 +28,6 @@ import config
 import utils
 
 
-# Lifetime of the generated signed URL.
-SIGNED_URL_LIFETIME = datetime.timedelta(minutes=10)
-
-
 class CloudStorage(object):
     """A class to use Google Cloud Storage.
     
@@ -43,6 +39,14 @@ class CloudStorage(object):
            $ gcloud auth application-default login
       2. Point config "gcs_bucket_name" to a valid Cloud Storage bucket name,
          which allows read/write access from the credentials above.
+
+    This class currently only supports a single object lifetime applied to all
+    objects in the bucket, by set_objects_lifetime().
+    If you want to store objects with different lifetimes, you may extend this
+    class to either:
+      - store objects in multiple buckets
+      - set object holds:
+        https://cloud.google.com/storage/docs/bucket-lock#object-holds
     """
 
     def __init__(self):
@@ -92,7 +96,7 @@ class CloudStorage(object):
                 },
             }).execute()
 
-    def sign_url(self, object_name):
+    def sign_url(self, object_name, url_lifetime):
         """ Generates Cloud Storage signed URL to download Google Cloud Storage
         object without sign in.
 
@@ -102,6 +106,8 @@ class CloudStorage(object):
         
         Args:
             object_name (str): The name of the object which is signed.
+            url_lifetime (datetime.timedelta): Lifetime of the signed URL. The
+                server rejects any requests received after this time from now.
         """
         if utils.is_dev_app_server():
             # Not working on a dev app server because it doesn't support
@@ -112,7 +118,7 @@ class CloudStorage(object):
                 'app server.')
 
         method = 'GET'
-        expiration_time = utils.get_utcnow() + SIGNED_URL_LIFETIME
+        expiration_time = utils.get_utcnow() + url_lifetime
         expiration_sec = int(time.mktime(expiration_time.timetuple()))
         path = '/%s/%s' % (self.bucket_name, object_name)
 
