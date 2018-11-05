@@ -1,0 +1,1675 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Мы отправляем автору записи сообщение с просьбой подтвердить, что он "
+"разрешает отключить или включить заметки. Если вы являетесь автором, "
+"после нажатия на кнопку ниже проверьте свой почтовый ящик.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)s!\n"
+"\n"
+"Вы получили запрос на включение заметок к записи о человеке:\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Ваш адрес эл. почты был указан при добавлении этой записи. Чтобы включить"
+" заметки к записи, в течение трех дней нажмите на ссылку ниже:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)s!\n"
+"\n"
+"Вы получили запрос на отключение заметок к записи о человеке:\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Ваш адрес эл. почты был указан при добавлении этой записи. Чтобы "
+"запретить добавлять заметки к записи, в течение трех дней нажмите на "
+"ссылку:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)s!\n"
+"Вы добавили заметку к записи о человеке \"%(full_name)s\".\n"
+"Чтобы опубликовать эту заметку, в течение трех дней нажмите на ссылку:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"Внимание! Срок хранения этой записи истекает менее чем через "
+"%(expiration_days)s д."
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"Внимание! Срок хранения этой записи истекает менее чем через один день."
+
+#, python-format
+msgid ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+"\n"
+"                Выбрано записей: %(dup_count)s\n"
+"              "
+
+#, python-format
+msgid ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"          "
+msgstr ""
+"\n"
+"            В системе \"%(search_engine_name)s\" найдены результаты по "
+"этому запросу.\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+"\n"
+"          Записи, похожие на: %(full_name)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+"\n"
+"          Результаты поиска по запросу \"%(query)s\"\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        По запросу \"%(query)s\" ничего не найдено\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"Удалить запись \"%(full_name)s\"?"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Отключить заметки о человеке \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Отключить заметки к записи о человеке \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Включить заметки о человеке \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"Продлить срок хранения записи \"%(full_name)s\"?"
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Подтверждение\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      После удаления поиск и просмотр этой записи на сайте будет "
+"недоступен.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Чтобы навсегда удалить запись,\n"
+"      свяжитесь с источником.\n"
+"      Он доступен по адресу:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Введенный URL профиля %(website)s недействителен.\n"
+"      Перейдите на страницу профиля (%(website)s), скопируйте URL и "
+"вставьте его\n"
+"      в это поле.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Срок действия записи был продлен до %(expiry_date)s.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Эта запись скопирована из другого источника.\n"
+"      Ее можно удалить,\n"
+"      но это не исключает\n"
+"      появления аналогичных записей, скопированных из источника.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Мы отправляем автору записи сообщение с просьбой подтвердить, что он "
+"разрешает отключить или включить заметки. Если вы являетесь автором, "
+"после нажатия на кнопку ниже проверьте свой почтовый ящик.\n"
+"  "
+
+msgid ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  Недействительный адрес электронной почты.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Запись по-прежнему будет доступна на этом сайте, но никто уже не сможет"
+" добавлять к ней заметки.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Чтобы опубликовать заметку, введите свой адрес эл. почты ниже, а затем "
+"подтвердите его, нажав на ссылку в полученном от нас сообщении.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Запись \"%(full_name)s\" на сайте %(site_url)s удалена.\n"
+"\n"
+"Вы получили это сообщение, так как Ваш адрес электронной почты был указан"
+" при добавлении заметки к этой записи.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Запись \"%(full_name)s\" на сайте %(site_url)s удалена.\n"
+"\n"
+"Вы получили это сообщение, так как Ваш адрес электронной почты был указан"
+" при добавлении записи.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Через %(days_until_deletion)s дня запись будет удалена окончательно.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"ПРИМЕЧАНИЕ. Если запись была удалена по ошибке, ее можно\n"
+"восстановить. Для этого в течение %(days_until_deletion)s дней перейдите "
+"по следующей ссылке:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Заметки к записи \"%(full_name)s\" отключены. Чтобы просмотреть запись,\n"
+"нажмите на ссылку:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Вы получили это сообщение, так как Ваш адрес электронной почты связан с "
+"записью об этом человеке или заметкой к записи.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Заметки к записи \"%(full_name)s\" включены. Чтобы просмотреть запись,\n"
+"нажмите на ссылку:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Вы получили это сообщение, так как Ваш адрес электронной почты связан с "
+"записью об этом человеке или заметкой к записи.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Автор восстановил запись \"%(full_name)s\". Чтобы просмотреть ее, "
+"перейдите по следующей ссылке:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Вы получили это сообщение, так как Ваш адрес электронной почты связан с "
+"записью об этом человеке или заметкой к записи.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Новая заметка к записи о человеке \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Вы подписаны на заметки к записи \"%(full_name)s\".\n"
+"\n"
+"Запись можно просмотреть здесь:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Если вы не хотите получать сообщения, нажмите на эту ссылку: "
+"%(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "показать"
+
+msgid "(unknown)"
+msgstr "(неизвестно)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Информация для этого человека или для тех, кто его ищет"
+
+msgid "A new API key has been created successfully."
+msgstr "Создан новый ключ API."
+
+msgid "API Key Management"
+msgstr "Управление ключами API"
+
+msgid "About 1 month (30 days) from now"
+msgstr "1 месяц (30 дней)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "1 год (360 дней)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "2 месяца (60 дней)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "3 месяца (90 дней)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "6 месяцев (180 дней)"
+
+msgid "About Google Person Finder"
+msgstr "О сервисе"
+
+#, python-format
+msgid "Added a record for: %(person_name)s"
+msgstr "Added a record for: %(person_name)s"
+
+msgid "Age"
+msgstr "Возраст"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
+"Все введенные данные будут общедоступны. Google не проверяет и не "
+"подтверждает их точность. Ознакомьтесь с Условиями использования: "
+"google.org/personfinder/global/tos"
+
+msgid "Alternate family names"
+msgstr "Другие фамилии"
+
+msgid "Alternate given names"
+msgstr "Варианты имени"
+
+msgid "Alternate names"
+msgstr "Другие имена"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Заметка не является спамом?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Пометить эту заметку как спам?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Восстановить эту запись?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Фид обновлений Atom об этом человеке"
+
+msgid "Author's e-mail address"
+msgstr "Адрес эл. почты автора"
+
+msgid "Author's name"
+msgstr "Имя автора"
+
+msgid "Author's phone number"
+msgstr "Номер телефона автора"
+
+msgid "Authorization key"
+msgstr "Код авторизации"
+
+msgid "Back to results list"
+msgstr "Назад к списку результатов"
+
+msgid "Back to start"
+msgstr "К началу"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Если отметить эту заметку как спам, она будет скрыта по умолчанию, однако"
+" останется частью записи. Для просмотра заметки необходимо будет нажать "
+"на нее. При необходимости пользователи смогут снять отметку \"спам\"."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr "Если снять пометку \"спам\", заметка будет по умолчанию видна."
+
+msgid "CSV file"
+msgstr "CSV-файл"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Не удается найти заметку с идентификатором %(id)s"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "City"
+msgstr "Город"
+
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+"Чтобы открыть Условия использования, перейдите по ссылке (внешний сайт, "
+"может взиматься оплата за трафик)."
+
+msgid "Click here to view results."
+msgstr "Нажмите здесь, чтобы просмотреть результаты."
+
+msgid "Close window"
+msgstr "Закрыть окно"
+
+msgid "Compare these records"
+msgstr "Сравните записи"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Чтобы внедрить этот инструмент на свой веб-сайт, скопируйте и вставьте "
+"следующий HTML-код"
+
+msgid "Create a new API key"
+msgstr "Создать новый ключ API"
+
+msgid "Create a new record"
+msgstr "Добавить запись"
+
+msgid "Create a new record for"
+msgstr "+"
+
+msgid "Crisis events"
+msgstr "Кризисные события"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Примерное число записей: %(num_people)s"
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Указанная дата еще не наступила. Вернитесь назад и повторите попытку."
+
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+msgid "Delete this record"
+msgstr "Удалить запись"
+
+msgid "Describe how to identify this person."
+msgstr "Как узнать этого человека?"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Desktop version"
+msgstr "Версия для компьютера"
+
+msgid "Developers"
+msgstr "Разработчикам"
+
+msgid "Disable notes on this record"
+msgstr "Отключить заметки к этой записи"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "У этого человека есть страницы профиля на других веб-сайтах?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Скачайте %(begin_link)sэтот шаблон Excel%(end_link)s и добавьте в него "
+"строки."
+
+msgid "E-mail"
+msgstr "Электронная почта"
+
+msgid "E-mail address"
+msgstr "Адрес эл. почты"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Embedding the Application"
+msgstr "Встраивание приложения"
+
+msgid "Enable notes on this record"
+msgstr "Включить заметки к этой записи"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Формат дат: ГГГГ-ММ-ДД"
+
+msgid "Enter the person's given and family names."
+msgstr "Укажите имя и фамилию человека."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Введите имя (полностью или первые несколько букв)."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+"Укажите имя человека (полностью или первые несколько букв) или номер его "
+"мобильного телефона."
+
+msgid "Enter the person's name."
+msgstr "Укажите имя человека."
+
+msgid "Expiry"
+msgstr "Срок хранения"
+
+msgid "Expiry date of this record"
+msgstr "Срок хранения записи"
+
+#, python-format
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
+msgstr ""
+"Продлить срок действия на %(extension_days)s дн.\n"
+"                "
+
+msgid "Family name"
+msgstr "Фамилия"
+
+msgid "Family name (required)"
+msgstr "Фамилия (обязательно)"
+
+msgid "Feed of updates about this person"
+msgstr "Фид новостей об этом человеке"
+
+msgid "Feedback"
+msgstr "Отзыв"
+
+msgid "Follow this link to create a new record"
+msgstr "Перейдите по ссылке, чтобы добавить запись"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Если указанный номер не является номером мобильного телефона, наберите "
+"171 (услуга предоставляется оператором NTT)."
+
+#, python-format
+msgid "From: %(home_location)s"
+msgstr "Адрес: %(home_location)s"
+
+msgid "Full name"
+msgstr "Имя и фамилия"
+
+msgid "Given name"
+msgstr "Имя"
+
+msgid "Given name (required)"
+msgstr "Имя (обязательно)"
+
+msgid "Google Person Finder"
+msgstr "Google Поиск пропавших людей"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Вы лично говорили с этим человеком ПОСЛЕ происшествия? (обязательно)"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"%(begin_tag)sОбразец CSV-файла%(end_tag)s, который можно редактировать и "
+"загружать"
+
+msgid "Hide Map"
+msgstr "Скрыть карту"
+
+msgid "Hide note"
+msgstr "Скрыть заметку"
+
+msgid "Home Address"
+msgstr "Домашний адрес"
+
+msgid "Home address"
+msgstr "Домашний адрес"
+
+msgid "Home country"
+msgstr "Гражданство"
+
+msgid "How can this person be reached now?"
+msgstr "Как теперь связаться с этим человеком?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Как другие люди, которые интересуются этим человеком, могут связаться с "
+"вами?"
+
+msgid "I Have Information About This Person"
+msgstr "У меня есть информация об этом человеке"
+
+msgid "I am seeking information"
+msgstr "Я ищу информацию"
+
+msgid "I am this person"
+msgstr "Я этот человек"
+
+msgid "I do not want any more updates on this record."
+msgstr "Больше не получать сведения об обновлениях этой записи."
+
+msgid "I do not want my information online anymore."
+msgstr "Я больше не хочу, чтобы мои данные отображались в Интернете"
+
+msgid "I have information about someone"
+msgstr "У меня есть информация о человеке"
+
+msgid "I have reason to think this person is missing"
+msgstr "Этот человек пропал без вести"
+
+msgid "I have received information that this person is alive"
+msgstr "Этот человек жив"
+
+msgid "I have received information that this person is dead"
+msgstr "Этот человек мертв"
+
+msgid "I have received spam due to this note."
+msgstr "Из-за этой заметки мне прислали спам"
+
+msgid "I have received spam."
+msgstr "Мне прислали спам"
+
+msgid "I prefer not to specify."
+msgstr "Предпочитаю не указывать"
+
+msgid "I'm looking for someone"
+msgstr "Я ищу человека"
+
+msgid "Identify who you are looking for"
+msgstr "Укажите, кого вы ищете"
+
+msgid "Identify who you have information about"
+msgstr "Укажите, о ком у вас есть данные"
+
+msgid "Identifying information"
+msgstr "Идентификационная информация"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr "Нужного человека нет в списке? Нажмите кнопку ниже, чтобы создать запись."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Если вы – автор этой заметки, нажмите на ссылку в отправленном вам "
+"электронном сообщении, чтобы подтвердить отключение заметок к этой "
+"записи. В противном случае дождитесь, пока автор записи подтвердит ваш "
+"запрос."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Если вы – автор этой заметки, нажмите на ссылку в отправленном вам "
+"электронном сообщении, чтобы подтвердить включение заметок к этой записи."
+" В противном случае дождитесь, пока автор записи подтвердит ваш запрос."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Если у вас есть фотография этого человека, загрузите ее или укажите ее "
+"URL."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"В программе Excel нажмите \"Файл &gt; Сохранить как\" и выберите формат "
+"CSV."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Недопустимый адрес эл. почты. Повторите попытку."
+
+msgid "Language selection"
+msgstr "Выбрать язык"
+
+msgid "Last known location"
+msgstr "Последнее известное местонахождение"
+
+msgid "Link"
+msgstr "ссылка"
+
+msgid "Link to profile page"
+msgstr "Ссылка на страницу профиля"
+
+msgid "List API keys"
+msgstr "Составить список ключей API"
+
+msgid "Mark records as duplicate"
+msgstr "Отметить записи как повторяющиеся"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Пометить выбранные записи как дублирующиеся"
+
+msgid "Message (required)"
+msgstr "Сообщение (обязательно)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Необходимо ввести текст сообщения. Вернитесь и повторите попытку."
+
+msgid "Missing person's current contact information"
+msgstr "Актуальная контактная информация"
+
+msgid "Missing person's current e-mail address"
+msgstr "Текущий адрес эл. почты пропавшего человека"
+
+msgid "Missing person's current phone number"
+msgstr "Текущий номер телефона пропавшего человека"
+
+#, python-format
+msgid "More at: %(url)s"
+msgstr "Подробнее: %(url)s"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Подробная информация для разработчиков представлена "
+"%(developers_link_html)sздесь%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Найдено больше 100 результатов, показаны только первые 100. Попробуйте "
+"ввести больше символов в имени."
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Необходимо указать имя. Вернитесь назад и повторите попытку."
+
+msgid "Neighborhood"
+msgstr "Район"
+
+msgid "No"
+msgstr "Нет"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Не указан адрес эл. почты автора записи %(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "У оператора мобильной связи нет сведений об отправленных сообщениях."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Не найдена заметка с идентификатором: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Заметки не опубликованы"
+
+msgid "No person id was specified."
+msgstr "Не указан идентификатор человека."
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Не найден человек с идентификатором: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr "По запросу \"%(query)s\" ничего не найдено"
+
+msgid "No such Authorization entity."
+msgstr "Отсутствует указанный объект авторизации."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Недостаточно прав для размещения заметок со статусом \"Этот человек "
+"мертв\"."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+"Для публикации заметок со статусом \"believed_dead\" требуется "
+"авторизация."
+
+msgid "Not spam"
+msgstr "Не спам"
+
+msgid "Note author"
+msgstr "Автор заметки"
+
+msgid "Note text"
+msgstr "Примечание"
+
+msgid "Notes for a possible duplicate"
+msgstr "Заметки для возможных дублирующихся записей"
+
+msgid "Notes for this person"
+msgstr "Заметки об этом человеке"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Точный или приблизительный (например, от 20 до 30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Приложение можно также добавить на веб-сайт как "
+"%(gadget_link_html)sГаджет Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "URL записи"
+
+msgid "Original author's name"
+msgstr "Имя автора источника"
+
+msgid "Original posting date"
+msgstr "Дата публикации"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Дата публикации указана не в формате ГГГГ-ММ-ДД или не существует. "
+"Вернитесь назад и повторите попытку."
+
+msgid "Original site name"
+msgstr "Веб-сайт"
+
+msgid "Other website"
+msgstr "Другой веб-сайт"
+
+msgid ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
+msgstr ""
+"ВНИМАНИЕ! Все введенные данные будут общедоступны. Google не проверяет и "
+"не подтверждает их точность."
+
+msgid "Person Finder"
+msgstr "Поиск пропавших людей"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Phone number"
+msgstr "Номер телефона"
+
+msgid "Photo"
+msgstr "Фотография"
+
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr "Фото (внешний сайт, может взиматься плата за трафик)"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Фотография загружена в неизвестном формате. Вернитесь назад и повторите "
+"попытку."
+
+msgid "Physical characteristics"
+msgstr "Характеристики"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
+"Укажите, что вы вступали в контакт с этим человеком после бедствия, либо "
+"измените поле \"Статус человека\"."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Укажите, что вы вступали в контакт с этим человеком после землетрясения, "
+"либо измените поле \"Статус этого человека\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Проверьте, относятся ли они к тому человеку, о котором вы собирались "
+"сообщить."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Укажите свой адрес и введите символы, которые вы видите на картинке."
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Вы указали не все данные."
+
+msgid "Please explain why you think these are the same person"
+msgstr "Почему вы считаете, что это один и тот же человек?"
+
+msgid "Please fill in all the required fields."
+msgstr "Заполните все обязательные поля."
+
+msgid "Please fill in your email address."
+msgstr "Введите свой адрес эл. почты."
+
+msgid "Please provide an valid email address."
+msgstr "Укажите действительный адрес эл. почты."
+
+msgid "Possible duplicates"
+msgstr "Возможные повторения"
+
+msgid "Possible duplicates found."
+msgstr "Найдены возможные дублирующиеся записи."
+
+msgid "Postal or zip code"
+msgstr "Почтовый индекс"
+
+msgid "Posted by"
+msgstr "Опубликовано пользователем"
+
+msgid "Proceed"
+msgstr "Продолжить"
+
+msgid "Profile Pages"
+msgstr "Страницы профиля"
+
+msgid "Profile page"
+msgstr "Страница профиля"
+
+msgid "Provide information"
+msgstr "Предоставить данные"
+
+msgid "Provide information about this person"
+msgstr "Предоставить данные об этом человеке"
+
+msgid "Provided by:"
+msgstr "Предоставлено:"
+
+msgid "Province or state"
+msgstr "Область или штат"
+
+msgid "Reason for deletion:"
+msgstr "Причина:"
+
+msgid "Reason for disabling notes:"
+msgstr "Причина отключения заметок:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Записи, содержащие имена и адреса, по запросу \"%(query)s\""
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Report spam"
+msgstr "Сообщить о спаме"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Вернуться к записи об этом человеке: %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Подробнее..."
+
+msgid "Save this record"
+msgstr "Сохранить запись"
+
+msgid "Search for this person"
+msgstr "Найти этого человека"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Подробные инструкции см. на %(begin_tag)sпортале вики%(end_tag)s"
+
+msgid "Select a website to add a profile page..."
+msgstr "Выбрать веб-сайт для создания страницы профиля..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Выберите не более трех записей."
+
+msgid "Send email"
+msgstr "Отправить сообщение"
+
+msgid "Sex"
+msgstr "Пол"
+
+msgid "Show Map"
+msgstr "Показать карту"
+
+msgid "Show sensitive information"
+msgstr "Показать конфиденциальную информацию"
+
+msgid "Show who marked these duplicates"
+msgstr "Показать, кто отметил эти записи как дубликаты"
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Sign out"
+msgstr "Выйти"
+
+msgid "Skip"
+msgstr "Пропустить"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Кто-то получил информацию, что этот человек жив"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Кто-то получил информацию, что этот человек мертв"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Кто-то сообщил, что этот человек пропал без вести"
+
+msgid "Someone is seeking information about this person"
+msgstr "Кто-то ищет сведения об этом человеке"
+
+msgid "Source of Record"
+msgstr "Источник"
+
+msgid "Source of this record"
+msgstr "Источник"
+
+msgid "Status"
+msgstr "Статус"
+
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr "Статус: %(full_name)s "
+
+msgid "Status of Person"
+msgstr "Статус человека"
+
+msgid "Status of this person:"
+msgstr "Статус человека:"
+
+msgid "Street name"
+msgstr "Улица"
+
+msgid "Street name only, no number"
+msgstr "Только название улицы (без номера)"
+
+msgid "Submit"
+msgstr "Отправить"
+
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Подписка на новости (%(full_name)s)"
+
+msgid "Subscribe to updates about this person"
+msgstr "Подписаться на новости об этом человеке"
+
+msgid "Switch to address"
+msgstr "Перейти к адресу"
+
+msgid "Switch to lat/long"
+msgstr "Перейти к координатам"
+
+msgid "Terms of Service"
+msgstr "Условия использования"
+
+msgid "The API key has been updated successfully."
+msgstr "Ключ API обновлен."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Необходимо указать имя и фамилию. Вернитесь назад и повторите попытку."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Необходимо указать имя автора источника. Вернитесь назад и повторите "
+"попытку."
+
+msgid "The author has disabled notes on this record."
+msgstr "Автор отключил заметки к этой записи."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Автор отключил обновления статусов этой записи."
+
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "%(full_name)s – добавлено Новая заметка"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Изображение слишком велико. Загрузите изображение меньшего размера."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Причина:"
+
+msgid "The record cannot be extended."
+msgstr "Невозможно продлить срок хранения записи."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "%(full_name)s – добавлена запись"
+
+msgid "The record has been deleted."
+msgstr "Запись удалена."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Выбранный вами статус означает, что вы являетесь этим человеком. Если это"
+" так, нажмите \"Да\", чтобы указать также, что вы общались с этим "
+"человеком."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Токен %(token)s недействителен"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Токен %(token)s недействителен."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Есть несколько (%(num_results)s) записей с похожими именами."
+
+msgid "There are some existing records with similar names."
+msgstr "Есть несколько записей с похожими именами."
+
+msgid "There is one existing record with a similar name."
+msgstr "Есть одна запись с похожим именем."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Ошибка обработки изображения. Выберите другое изображение."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Ошибка обработки запроса. Приносим извинения за неудобства. Наши "
+"администраторы постараются выяснить причину ошибки, тем не менее, просим "
+"вас проверить формат своего запроса."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Эти гаджеты предоставляются по %(apache_link_html)sлицензии Apache "
+"2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Это новая информация"
+
+msgid "This link is invalid."
+msgstr "Ссылка недействительна."
+
+msgid "This note has been marked as spam."
+msgstr "Запись помечена как спам."
+
+msgid "This note is inappropriate."
+msgstr "Заметка неуместна"
+
+msgid "This note is incorrect or untrue."
+msgstr "Заметка содержит неверные или ложные сведения"
+
+msgid "This note is spam."
+msgstr "Заметка является спамом"
+
+msgid "This person has been in contact with someone"
+msgstr "Этот человек общался с кем-то"
+
+msgid "This person has posted a message"
+msgstr "Этот человек отправил сообщение"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Запись об этом человеке не существует или удалена."
+
+msgid "This record has served its purpose."
+msgstr "Запись больше не нужна"
+
+msgid "This record is a duplicate of"
+msgstr "Запись совпадает с"
+
+msgid "This record is copied from another source."
+msgstr "Данные скопированы из другого источника"
+
+msgid "This record is inappropriate."
+msgstr "Запись неуместна"
+
+msgid "This record is spam."
+msgstr "Запись является спамом"
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 24 hours old are deleted."
+msgstr ""
+"В настоящее время хранилище используется в тестовом режиме: записи, "
+"опубликованные более 24 часов назад, удаляются."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Чтобы прикрепить фотографию, загрузите ее или введите ее URL."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Чтобы удалить данные, откройте Поиск пропавших людей на компьютере."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Если вы не хотите получать сообщения, перейдите по этой ссылке"
+
+msgid "To view or add information, select a name below."
+msgstr "Выберите имя, чтобы просмотреть или добавить информацию."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr "Введите адрес или отметьте место на карте, нажав на нее."
+
+msgid "Type an address."
+msgstr "Введите адрес."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL источника"
+
+msgid "Unspecified"
+msgstr "Не указано"
+
+msgid "Update an existing key"
+msgstr "Обновить ключ"
+
+msgid "Upload"
+msgstr "Загрузить"
+
+msgid "Upload notes in CSV format"
+msgstr "Загрузить данные в формате CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Загрузить список имен в формате CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Загрузите ниже свой CSV-файл"
+
+msgid "Use current location"
+msgstr "Использовать текущее местоположение"
+
+msgid "View the record"
+msgstr "Посмотреть запись"
+
+msgid "We have nothing matching your search."
+msgstr "Не найдено данных, соответствующих поисковому запросу."
+
+msgid "What is this person's name?"
+msgstr "Как зовут этого человека?"
+
+msgid "When should this record disappear?"
+msgstr "Время, через которое запись можно будет удалить."
+
+msgid "Where did this information come from?"
+msgstr "Об этом уже сообщалось ранее?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"В тестовом режиме записи, опубликованные более 24 часов назад, удаляются "
+"независимо от срока их действия."
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"В тестовом режиме записи, созданные более 6 часов назад, удаляются "
+"независимо от срока их действия."
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Да, попросить автора записи отключить заметки"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Да, попросить автора записи включить заметки"
+
+msgid "Yes, delete the record"
+msgstr "Удалить запись"
+
+msgid "Yes, disable notes on this record."
+msgstr "Да, отключить заметки для этой записи."
+
+msgid "Yes, extend the record"
+msgstr "Продлить"
+
+msgid "Yes, restore this record"
+msgstr "Восстановить"
+
+msgid "Yes, these are the same person"
+msgstr "Да, это один и тот же человек"
+
+msgid "Yes, update the note"
+msgstr "Сохранить"
+
+msgid "You are already subscribed. "
+msgstr "Вы уже подписаны. "
+
+msgid "You are already unsubscribed."
+msgstr "Вы уже отменили подписку."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Выполнен вход в аккаунт: %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Вход не выполнен."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "%(begin_tag)sПросмотреть запись%(end_tag)s"
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"Чтобы подписаться на новости о пользователе %(full_name)s, укажите свой "
+"адрес электронной почты"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Полную запись можно просмотреть по адресу: %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Вы оформили подписку."
+
+msgid "You have successfully unsubscribed."
+msgstr "Вы отменили подписку."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Вы получили это сообщение, так как подписаны на обновления записей об "
+"этом человеке:\n"
+
+msgid "Your e-mail address"
+msgstr "Ваш адрес эл. почты"
+
+msgid "Your e-mail address:"
+msgstr "Ваш адрес эл. почты:"
+
+msgid "Your email"
+msgstr "Ваш адрес эл. почты"
+
+msgid "Your name (required)"
+msgstr "Ваше имя (обязательно)"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Необходимо указать имя в разделе \"О себе\". Вернитесь и повторите "
+"попытку."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Необходимо указать имя в разделе \"Источник\". Вернитесь и повторите "
+"попытку."
+
+msgid "Your phone number"
+msgstr "Ваш номер телефона"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Ваш запрос обработан. Проверьте входящие сообщения эл. почты и нажмите на"
+" URL подтверждения, чтобы опубликовать заметку."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Поиск пропавших людей] Подтвердить заметку о человеке \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr ""
+"[Поиск пропавших людей] Уведомление об удалении данных о человеке "
+"\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Поиск пропавших людей] Отключить заметки о человеке \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Поиск пропавших людей] Включить заметки о человеке \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Поиск пропавших людей] Включение уведомлений о заметках о человеке "
+"\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Поиск пропавших людей] Отключены заметки о человеке \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Поиск пропавших людей] Включены заметки о человеке \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Поиск пропавших людей] Восстановление записи о человеке \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Поиск пропавших людей] Обновление статуса о человеке %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Person Finder] Вы подписались на обновления для статуса человека "
+"%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr "внешний сайт, может взиматься плата за трафик"
+
+msgid "female"
+msgstr "женский"
+
+msgid "in test mode"
+msgstr "в тестовом режиме"
+
+msgid "male"
+msgstr "мужской"
+
+msgid "on"
+msgstr ""
+
+msgid "other"
+msgstr "другое"
+

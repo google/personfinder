@@ -1,0 +1,83 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the add note to record page (see add_note.py).              #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block title %}
+  {{person.full_name}} - {{block.super}}
+{% endblock %}
+
+{% block head %}
+  {{block.super}}
+  {% if env.enable_javascript %}
+    <script type="text/javascript">
+      function set_display(id_or_elem, hide) {
+        var hide_text = hide ? 'none' : '';
+        if (typeof(id_or_elem) == 'string') {
+          document.getElementById(id_or_elem).style.display = hide_text;
+        } else {
+          id_or_elem.style.display = hide_text;
+        }
+      }
+
+      function hide_unhide_note_contents(note_contents_id) {
+        var note = document.getElementById(note_contents_id + '-contents');
+        var hidden = note.style.display == 'none';
+        set_display(note, !hidden);
+        set_display('reveal-note', hidden);
+        set_display('hide-note', !hidden);
+        set_display(note_contents_id + '-mark-not-spam', !hidden);
+      }
+    </script>
+  {% endif %}
+{% endblock head %}
+
+{% block content %}
+  {% if not standalone %}
+    {% include "map.html.template" %}
+  {% endif %}
+  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="hidden" name="query" value="{{params.query}}">
+    <div class="view">
+
+      <div class="column centered">
+        {% if person.notes_disabled %}
+          <div class="mandatory">
+            {% trans "The author has disabled notes on this record." %}
+            <p>
+            <input type="button"
+              value="{% trans "Enable notes on this record" %}"
+              onclick="javascript:location.href='{{enable_notes_url}}'"
+              id="enable_notes_btn">
+          </div>
+        {% else %}
+          <div class="create" role="form">
+            {% include "add_note_base.html.template" %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="end-multi-columns"></div>
+    </div>
+  </form>
+  <p>
+  <div class="custom-message">
+    {{env.view_page_custom_html|default:""|safe}}
+  </div>
+{% endblock %}
+
+{# Remove "Back to start" link from the bottom of the page, as it's already #}
+{# included in the template above, at the bottom of the "person" column. #}
+{% block backlink %}{% endblock backlink %}

@@ -1,0 +1,89 @@
+{# Copyright 2016 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Base template for admin pages. #}
+
+{% extends "app-base.html.template" %}
+
+{# Add "admin" class to the body element to remove max-width constraint from #}
+{# the body element. #}
+{% block extra_body_class%}
+  admin
+{% endblock %}
+
+{% block body %}
+  <script>
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    function select_repo_changed() {
+      if ($('select_repo').value == '__new__') {
+        window.location.href = '{{env.global_url|escapejs}}/admin/create_repo';
+      } else {
+        window.location.href = $('select_repo').value;
+      }
+    }
+  </script>
+
+  <div class="admin-root">
+
+    <div class="admin-side-bar">
+
+      <div><span class="email">{{env.admin.user.email}}</div>
+      <div><a href="{{env.admin.logout_url}}">Sign out</a></div>
+
+      <h2>Global</h2>
+
+      <ul>
+        <li><a href="{{env.global_url}}/admin">Global settings</a></li>
+        <li><a href="{{env.global_url}}/admin/create_repo">Create new repository</a></li>
+        <li><a href="{{env.global_url}}/admin/resources">Resources</a></li>
+        <li><a href="{{env.global_url}}/admin/api_keys/list">Global API keys</a></li>
+      </ul>
+
+      <h2>Repository</h2>
+
+      <form method="get" style="display: inline-block" class="admin">
+        <select name="repo" id="select_repo" onchange="select_repo_changed()">
+          {% if not env.repo %}
+            <option>Select a repository:</option>
+          {% endif %}
+          {% for option in env.admin.repo_options %}
+            <option value="{{option.url}}"
+              {% ifequal option.repo env.repo %}
+                selected
+              {% endifequal %}
+            >
+              {{option.repo}}
+            </option>
+          {% endfor %}
+          <option value="__new__">Create new...</option>
+        </select>
+      </form>
+
+      {% if env.repo %}
+        <ul>
+          <li><a href="{{env.repo_url}}/admin">Repository settings</a></li>
+          <li><a href="{{env.repo_url}}/admin/dashboard">Dashboard</a></li>
+          <li><a href="{{env.repo_url}}/admin/review">Review notes</a></li>
+          <li><a href="{{env.repo_url}}/admin/api_keys/list">Repository API keys</a></li>
+          <li><a href="{{env.repo_url}}/admin/delete_record">Delete a record</a></li>
+        </ul>
+      {% endif %}
+
+    </div>
+
+    <div class="admin-content">
+      {{block.super}}
+    </div>
+
+  </div>
+{% endblock body %}

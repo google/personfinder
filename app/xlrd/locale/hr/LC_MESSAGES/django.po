@@ -1,0 +1,1678 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Kako bi se bilješke onemogućile ili omogućile jedino uz dozvolu autora "
+"zapisa, poslat će mu se poruka za potvrdu. \n"
+"Ako ste vi autor, provjerite e-poštu nakon što kliknete gumb u nastavku.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Pozdrav %(author_name)s,\n"
+"\n"
+"jedan korisnik zatražio je omogućavanje bilježaka o zapisima za sljedeću "
+"osobu: \"%(full_name)s\".\n"
+"\n"
+"Vaša e-adresa navedena je kao autor tih zapisa. Da biste omogućili "
+"bilješke o tim zapisima, kliknite ovu vezu u sljedeća tri dana:\n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Pozdrav %(author_name)s,\n"
+"\n"
+"jedan korisnik zatražio je da onemogućite bilješke o zapisima za sljedeću"
+" osobu: \"%(full_name)s\".\n"
+"\n"
+"Vaša e-adresa navedena je kao autor tih zapisa. Da biste onemogućili "
+"bilješke o tim zapisima, kliknite ovu vezu u sljedeća tri dana:\n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Pozdrav %(author_name)s,\n"
+"upravo ste unijeli bilješku o zapisima za sljedeću osobu: "
+"\"%(full_name)s\".\n"
+"Da biste objavili tu bilješku, kliknite ovu vezu u sljedeća tri dana:\n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Upozorenje: taj će zapis isteći za manje od "
+"%(expiration_days)s dana.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Upozorenje: taj će zapis isteći za manje od jednog "
+"dana.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+"\n"
+"                Odabranih evidencija: %(dup_count)s\n"
+"              "
+
+#, python-format
+msgid ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"          "
+msgstr ""
+"\n"
+"            Tražilica %(search_engine_name)s ima jedan ili više rezultata"
+" pretraživanja koji odgovaraju tom upitu.\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+"\n"
+"          Evidencije slične sljedećoj: %(full_name)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+"\n"
+"          Rezultati pretraživanja za: %(query)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Nema rezultata za: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeste li sigurni da želite izbrisati zapis za osobu "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeste li sigurni da želite onemogućiti bilješke o sljedećoj osobi: "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeste li sigurni da želite onemogućiti bilješke o zapisima o "
+"sljedećoj osobi: \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeste li sigurni da želite omogućiti bilješke o sljedećoj osobi "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Jeste li sigurni da želite produžiti rok isteka za zapis "
+"\"%(full_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Potvrdite svoju bilješku\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Ako nastavite s brisanjem, ovaj se zapis više neće moći "
+"pretraživati ni prikazivati na ovoj web-lokaciji.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Ako želite da se trajno izbriše,\n"
+"      obratite se originalnom izvoru.\n"
+"      Izvorni zapis možete vidjeti na\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      URL koji ste unijeli ne izgleda kao važeći URL profila na web-"
+"lokaciji %(website)s.\n"
+"      Idite na stranicu profila te osobe na web-lokaciji %(website)s pa "
+"kopirajte i\n"
+"      zalijepite taj URL ovdje.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Zapis je produžen do %(expiry_date)s.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Taj je zapis kopija zapisa iz drugog izvora.\n"
+"      Možete izbrisati zapis ovdje,\n"
+"      ali imajte na umu da\n"
+"      možemo kasnije ponovo primiti kopiju zapisa iz originalnog izvora.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Kako bi se bilješke onemogućile ili omogućile jedino uz dozvolu "
+"autora zapisa, poslat će mu se poruka za potvrdu. Ako ste vi autor, "
+"provjerite e-poštu nakon što kliknete gumb u nastavku.\n"
+"  "
+
+msgid ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  E-adresa koju ste unijeli nije važeća.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Zapisi će još uvijek biti vidljivi na ovoj web-lokaciji, ali više nitko"
+" neće moći objavljivati bilješke o njima.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Da biste objavili bilješku, u nastavku unesite svoju e-adresu i "
+"kliknite vezu za potvrdu koju ćete primiti.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Korisnik je izbrisao zapis za osobu \"%(full_name)s\" na %(site_url)s. "
+"Obavještavamo vas o brisanju jer je vaša e-adresa navedena kao autor "
+"poruke o tom zapisu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Korisnik je izbrisao zapis za osobu \"%(full_name)s\"\n"
+"na %(site_url)s.\n"
+"\n"
+"Obavještavamo vas o brisanju jer je vaša e-adresa navedena kao autor tog "
+"zapisa.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Zapis će se trajno izbrisati nakon %(days_until_deletion)s dana.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"NAPOMENA: ako smatrate da je ovaj zapis izbrisan pogreškom, možete ga "
+"obnoviti putem ove veze u roku sljedećih ovoliko dana: "
+"%(days_until_deletion)s.\n"
+"\n"
+"%(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Bilješke o zapisima za osobu \"%(full_name)s\" sada su onemogućene. Za "
+"prikaz zapisa slijedite ovu vezu:\n"
+"\n"
+"%(record_url)s\n"
+"\n"
+"Obavještavamo vas jer je vaša e-adresa povezana sa zapisima o toj osobi "
+"ili bilješkom o tom zapisu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Bilješke o zapisima za osobu \"%(full_name)s\" sada su omogućene. Za "
+"prikaz zapisa slijedite ovu vezu:\n"
+"\n"
+"%(record_url)s\n"
+"\n"
+"Obavještavamo vas jer je vaša e-adresa povezana sa zapisima o toj osobi "
+"ili bilješkom o tom zapisu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Autor zapisa za osobu \"%(full_name)s\"\n"
+"(koji je prethodno bio izbrisan) vratio je zapis. Za prikaz zapisa "
+"slijedite ovu vezu: \n"
+"\n"
+"%(record_url)s\n"
+"\n"
+"Obavještavamo vas zato jer je vaša e-adresa povezana sa zapisom te osobe "
+"ili porukom u zapisu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Pojavila se nova bilješka o zapisima za osobu: \"%(full_name)s\".\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Pretplatili ste se na bilješke o sljedećoj osobi \"%(full_name)s\".\n"
+"\n"
+"Te zapise možete pogledati na adresi\n"
+"\n"
+"%(view_url)s\n"
+"\n"
+"Za poništavanje pretplate slijedite ovu vezu: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(kliknite za otkrivanje)"
+
+msgid "(unknown)"
+msgstr "(nepoznato)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Poruka za tu osobu ili za druge koji traže tu osobu"
+
+msgid "A new API key has been created successfully."
+msgstr "Novi ključ API-ja uspješno je izrađen."
+
+msgid "API Key Management"
+msgstr "Upravljanje ključevima API-ja"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Oko 1 mjesec (30 dana) od sada"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Oko 1 godinu (360 dana) od sada"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Oko 2 mjeseca (60 dana) od sada"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Oko 3 mjeseca (90 dana) od sada"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Oko 6 mjeseci (180 dana) od sada"
+
+msgid "About Google Person Finder"
+msgstr "O usluzi Google Person Finder"
+
+#, python-format
+msgid "Added a record for: %(person_name)s"
+msgstr "Added a record for: %(person_name)s"
+
+msgid "Age"
+msgstr "Dob"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
+"Svi podaci uneseni na Lokator osoba dostupni su javnosti i svatko ih može"
+" upotrijebiti. Google ne pregledava te podatke niti provjerava njihovu "
+"točnost google.org/personfinder/global/tos"
+
+msgid "Alternate family names"
+msgstr "Zamjenska prezimena"
+
+msgid "Alternate given names"
+msgstr "Zamjenska imena"
+
+msgid "Alternate names"
+msgstr "Zamjenska imena"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Jeste li sigurni da ova poruka nije neželjena pošta?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Jeste li sigurni da ovu poruku želite označiti kao neželjenu poštu?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Jeste li sigurni da želite vratiti ovaj zapis iz izbrisanih stavki?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Atom feed za ažuriranja o ovoj osobi"
+
+msgid "Author's e-mail address"
+msgstr "E-adresa autora"
+
+msgid "Author's name"
+msgstr "Ime autora"
+
+msgid "Author's phone number"
+msgstr "Telefonski broj autora"
+
+msgid "Authorization key"
+msgstr "Ključ za autorizaciju"
+
+msgid "Back to results list"
+msgstr "Natrag na popis rezultata"
+
+msgid "Back to start"
+msgstr "Natrag na početak"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Ako označite tu bilješku kao neželjeni sadržaj, bit će skrivena prema "
+"zadanim postavkama. I dalje će biti dio zapisa, no za prikazivanje "
+"njezina sadržaja bit će potreban dodatni klik. Korisnici će također moći "
+"ukloniti oznaku neželjenog sadržaja s te poruke."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Ako uklonite oznaku neželjenog sadržaja s te bilješke, postat će vidljiva"
+" prema zadanim postavkama."
+
+msgid "CSV file"
+msgstr "CSV datoteka"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Nije moguće pronaći bilješku s identifikacijskom oznakom %(id)s"
+
+msgid "Cancel"
+msgstr "Odustani"
+
+msgid "City"
+msgstr "Grad"
+
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+"Kliknite ovdje da biste pregledali Uvjete pružanja usluge (vanjska web-"
+"lokacija; možda će se naplatiti uobičajena naknada za povezivanje)"
+
+msgid "Click here to view results."
+msgstr "Kliknite ovdje za prikaz rezultata."
+
+msgid "Close window"
+msgstr "Zatvori prozor"
+
+msgid "Compare these records"
+msgstr "Usporedite te zapise"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Kopirajte i zalijepite sljedeći HTML kôd za postavljanje tog alata na "
+"web-lokaciju"
+
+msgid "Create a new API key"
+msgstr "Izrada novog ključa API-ja"
+
+msgid "Create a new record"
+msgstr "Izradite novi zapis"
+
+msgid "Create a new record for"
+msgstr "Izradite novi zapis za"
+
+msgid "Crisis events"
+msgstr "Krizni događaji"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Trenutačno se prati približno ovoliko zapisa: %(num_people)s."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Datum ne može biti u budućnosti. Vratite se i pokušajte ponovo."
+
+msgid "Date of birth"
+msgstr "Datum rođenja"
+
+msgid "Delete this record"
+msgstr "Izbriši ovaj zapis"
+
+msgid "Describe how to identify this person."
+msgstr "Opišite kako se ta osoba može identificirati."
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Desktop version"
+msgstr "Verzija za radnu površinu"
+
+msgid "Developers"
+msgstr "Razvojni programeri"
+
+msgid "Disable notes on this record"
+msgstr "Onemogući bilješke za ovaj zapis"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Ima li ta osoba stranice profila na drugim web-lokacijama?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Preuzmite %(begin_link)sovaj Excel obrazac%(end_link)s i dodajte retke u "
+"njega"
+
+msgid "E-mail"
+msgstr "E-pošta"
+
+msgid "E-mail address"
+msgstr "E-adresa"
+
+msgid "Edit"
+msgstr "Uredi"
+
+msgid "Embedding the Application"
+msgstr "Ugradnja aplikacije"
+
+msgid "Enable notes on this record"
+msgstr "Omogućavanje bilježaka o tim zapisima"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Unesite kao GGGG-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Unesite ime i prezime osobe."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Unesite ime osobe ili dio imena."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Unesite ime osobe, dijelove imena ili broj mobilnog telefona."
+
+msgid "Enter the person's name."
+msgstr "Unesite ime osobe."
+
+msgid "Expiry"
+msgstr "Istek"
+
+msgid "Expiry date of this record"
+msgstr "Datum isteka ovog zapisa"
+
+#, python-format
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
+msgstr ""
+"Produži datum isteka za %(extension_days)s dan/dana\n"
+"                "
+
+msgid "Family name"
+msgstr "Prezime"
+
+msgid "Family name (required)"
+msgstr "Prezime (obavezno)"
+
+msgid "Feed of updates about this person"
+msgstr "Feed za ažuriranja o ovoj osobi"
+
+msgid "Feedback"
+msgstr "Povratne informacije"
+
+msgid "Follow this link to create a new record"
+msgstr "Slijedite vezu za izradu novog zapisa"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr "Za telefone koji nisu mobilni upotrijebite uslugu 171 tvrtke NTT."
+
+#, python-format
+msgid "From: %(home_location)s"
+msgstr "Prebivalište: %(home_location)s"
+
+msgid "Full name"
+msgstr "Ime i prezime"
+
+msgid "Given name"
+msgstr "Ime"
+
+msgid "Given name (required)"
+msgstr "Ime (obavezno)"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Jeste li osobno razgovarali s tom osobom NAKON nepogode? (obavezno)"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Ovo je %(begin_tag)sprimjer CSV datoteke%(end_tag)s koju možete urediti i"
+" prenijeti"
+
+msgid "Hide Map"
+msgstr "Sakrij kartu"
+
+msgid "Hide note"
+msgstr "Sakrij poruku"
+
+msgid "Home Address"
+msgstr "Adresa stanovanja"
+
+msgid "Home address"
+msgstr "Adresa stanovanja"
+
+msgid "Home country"
+msgstr "Zemlja porijekla"
+
+msgid "How can this person be reached now?"
+msgstr "Kako se sad može doći do te osobe?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Kako vas ostali koje zanima ta osoba mogu kontaktirati"
+
+msgid "I Have Information About This Person"
+msgstr "Imam informacije o toj osobi"
+
+msgid "I am seeking information"
+msgstr "Tražim informacije"
+
+msgid "I am this person"
+msgstr "Ja sam ta osoba"
+
+msgid "I do not want any more updates on this record."
+msgstr "Ne želim više primati ažuriranja o tim zapisima."
+
+msgid "I do not want my information online anymore."
+msgstr "Ne želim više da se informacije o meni prikazuju na mreži."
+
+msgid "I have information about someone"
+msgstr "Imam informacije o nekom"
+
+msgid "I have reason to think this person is missing"
+msgstr "Postoje razlozi zbog kojih mislim da je ta osoba nestala"
+
+msgid "I have received information that this person is alive"
+msgstr "Imam informacije da je ta osoba živa"
+
+msgid "I have received information that this person is dead"
+msgstr "Imam informacije da je ta osoba mrtva"
+
+msgid "I have received spam due to this note."
+msgstr "Zbog ove obavijesti primam neželjenu poštu."
+
+msgid "I have received spam."
+msgstr "Primam neželjenu poštu."
+
+msgid "I prefer not to specify."
+msgstr "Ne želim navesti."
+
+msgid "I'm looking for someone"
+msgstr "Tražim nekog"
+
+msgid "Identify who you are looking for"
+msgstr "Ustanovite identitet osobe koju tražite"
+
+msgid "Identify who you have information about"
+msgstr "Ustanovite identitet osobe o kojoj imate informacije"
+
+msgid "Identifying information"
+msgstr "Informacije za identifikaciju"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Ako nijedan zapis ne odgovara osobi na koju ste mislili, možete kliknuti "
+"u nastavku da biste izradili novi zapis."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ako ste autor te bilješke, u svojoj e-pošti potražite vezu putem koje "
+"ćete potvrditi da želite onemogućiti bilješke o tim zapisima. U "
+"suprotnom, pričekajte da autor zapisa potvrdi vaš zahtjev."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ako ste autor te bilješke, u svojoj e-pošti potražite vezu putem koje "
+"ćete potvrditi da želite omogućiti bilješke o tim zapisima. U suprotnom, "
+"pričekajte da autor zapisa potvrdi vaš zahtjev."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Ako imate fotografiju te osobe, prenesite je ili unesite njenu URL-adresu."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"U Excelu upotrijebite naredbu Datoteka &gt; Spremi kao... i spremite "
+"dokument u CSV formatu (.csv)"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Nevažeća e-adresa. Pokušajte ponovo."
+
+msgid "Language selection"
+msgstr "Odabir jezika"
+
+msgid "Last known location"
+msgstr "Posljednja poznata lokacija"
+
+msgid "Link"
+msgstr "Poveži"
+
+msgid "Link to profile page"
+msgstr "Veza na stranicu profila"
+
+msgid "List API keys"
+msgstr "Popis ključeva API-ja"
+
+msgid "Mark records as duplicate"
+msgstr "Označite zapise kao dvostruke"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Označi odabrane zapise kao duplikate"
+
+msgid "Message (required)"
+msgstr "Poruka (obavezna)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+
+msgid "Missing person's current contact information"
+msgstr "Trenutačni kontaktni podaci nestale osobe"
+
+msgid "Missing person's current e-mail address"
+msgstr "Trenutačna e-adresa nestale osobe"
+
+msgid "Missing person's current phone number"
+msgstr "Trenutačni telefonski broj nestale osobe"
+
+#, python-format
+msgid "More at: %(url)s"
+msgstr "Više na %(url)s"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Više informacija za razvojne programere dostupno je "
+"%(developers_link_html)sovdje%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Više od 100 rezultata. Prikazuje se samo prvih 100. Pokušajte unijeti "
+"veći dio imena"
+
+msgid "Name"
+msgstr "Ime"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Ime je obavezno. Vratite se i pokušajte ponovo."
+
+msgid "Neighborhood"
+msgstr "Gradska četvrt"
+
+msgid "No"
+msgstr "Ne"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Nema e-pošte autora za zapis %(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "Nisu pronađene poruke registrirane na usluzi oglasne ploče operatera."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Nema bilješke s identifikacijskom oznakom: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Nije objavljena nijedna bilješka"
+
+msgid "No person id was specified."
+msgstr "ID osobe nije naveden."
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Nema osobe s identifikacijskom oznakom: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr "Nema rezultata za: %(query)s"
+
+msgid "No such Authorization entity."
+msgstr "Taj entitet za autorizaciju ne postoji."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Niste ovlašteni za objavljivanje bilježaka sa statusom \"Dobio sam "
+"informacije da je ta osoba mrtva\"."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Niste ovlašteni za objavljivanje bilježaka sa statusom \"believed_dead\"."
+
+msgid "Not spam"
+msgstr "Nije neželjena pošta"
+
+msgid "Note author"
+msgstr "Autor bilješke"
+
+msgid "Note text"
+msgstr "Tekst bilješke"
+
+msgid "Notes for a possible duplicate"
+msgstr "Bilješke za mogući duplikat"
+
+msgid "Notes for this person"
+msgstr "Bilješke o toj osobi"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Broj ili raspon (npr. 20-30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Ili dodajte na svoju web-lokaciju kao %(gadget_link_html)sGoogleov "
+"gadget%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Izvorni URL"
+
+msgid "Original author's name"
+msgstr "Ime izvornog autora"
+
+msgid "Original posting date"
+msgstr "Izvorni datum slanja"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Izvorni datum slanja nije u formatu GGGG-MM-DD ili je datum nepostojeći. "
+"Vratite se i pokušajte ponovo."
+
+msgid "Original site name"
+msgstr "Naziv izvorne web-lokacije"
+
+msgid "Other website"
+msgstr "Druga web-lokacija"
+
+msgid ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
+msgstr ""
+"NAPOMENA: svi uneseni podaci dostupni su javnosti i svatko ih može "
+"upotrijebiti. Google ne pregledava te podatke niti provjerava njihovu "
+"točnost."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Phone number"
+msgstr "Telefonski broj"
+
+msgid "Photo"
+msgstr "Fotografija"
+
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Fotografija (vanjska web-lokacija; možda će se naplatiti uobičajena "
+"naknada za povezivanje)"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Prenesena je fotografija u neprepoznatom formatu. Vratite se i pokušajte "
+"ponovo."
+
+msgid "Physical characteristics"
+msgstr "Fizičke karakteristike"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
+"Označite jeste li bili u kontaktu s osobom nakon nepogode ili izmijenite "
+"polje \"Status te osobe\"."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Označite jeste li ostali u kontaktu s osobom nakon potresa ili izmijenite"
+" polje \"Status te osobe\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Provjerite odgovara li osobi o kojoj namjeravate izvijestiti."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Potvrdite e-adresu kako biste se pretplatili na ažuriranja"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Unesite e-adresu kako biste se pretplatili na ažuriranja"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Objasnite zašto mislite da je riječ o istoj osobi"
+
+msgid "Please fill in all the required fields."
+msgstr "Ispunite sva obavezna polja."
+
+msgid "Please fill in your email address."
+msgstr "Unesite svoju e-adresu."
+
+msgid "Please provide an valid email address."
+msgstr "Unesite važeću e-adresu."
+
+msgid "Possible duplicates"
+msgstr "Moguće dvostruke informacije"
+
+msgid "Possible duplicates found."
+msgstr "Pronađeni su mogući duplikati."
+
+msgid "Postal or zip code"
+msgstr "Poštanski broj"
+
+msgid "Posted by"
+msgstr "Objavio korisnik"
+
+msgid "Proceed"
+msgstr "Nastavite"
+
+msgid "Profile Pages"
+msgstr "Stranice profila"
+
+msgid "Profile page"
+msgstr "Stranica profila"
+
+msgid "Provide information"
+msgstr "Pružite informacije"
+
+msgid "Provide information about this person"
+msgstr "Navedite informacije o toj osobi"
+
+msgid "Provided by:"
+msgstr "Omogućuje:"
+
+msgid "Province or state"
+msgstr "Županija ili država"
+
+msgid "Reason for deletion:"
+msgstr "Razlog brisanja:"
+
+msgid "Reason for disabling notes:"
+msgstr "Razlog onemogućavanja bilježaka:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Zapisi s podudarnim imenima i adresama \"%(query)s\""
+
+msgid "Remove"
+msgstr "Ukloni"
+
+msgid "Report spam"
+msgstr "Prijava neželjene pošte"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Vraćanje na zapis za osobu %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Otkrij bilješku"
+
+msgid "Save this record"
+msgstr "Spremi ove zapise"
+
+msgid "Search for this person"
+msgstr "Traži se ova osoba"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Pogledajte %(begin_tag)swiki unos%(end_tag)s za detaljnije upute"
+
+msgid "Select a website to add a profile page..."
+msgstr "Odaberite web-lokaciju da biste dodali stranicu profila..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Odaberite najviše 3 zapisa da biste ih označili kao dvostruke:"
+
+msgid "Send email"
+msgstr "Slanje e-pošte"
+
+msgid "Sex"
+msgstr "Spol"
+
+msgid "Show Map"
+msgstr "Prikaži kartu"
+
+msgid "Show sensitive information"
+msgstr "Prikaži osjetljive informacije"
+
+msgid "Show who marked these duplicates"
+msgstr "Prikaži tko je označio te duplikate"
+
+msgid "Sign in"
+msgstr "Prijava"
+
+msgid "Sign out"
+msgstr "Odjava"
+
+msgid "Skip"
+msgstr "Preskoči"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Netko je dobio informaciju da je ta osoba živa"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Netko je dobio informaciju da je ta osoba mrtva"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Netko je prijavio da je ta osoba nestala"
+
+msgid "Someone is seeking information about this person"
+msgstr "Netko traži informacije o ovoj osobi"
+
+msgid "Source of Record"
+msgstr "Izvor evidencije"
+
+msgid "Source of this record"
+msgstr "Izvor ovih zapisa"
+
+msgid "Status"
+msgstr "Status"
+
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr "%(full_name)s – status "
+
+msgid "Status of Person"
+msgstr "Status osobe"
+
+msgid "Status of this person:"
+msgstr "Status te osobe:"
+
+msgid "Street name"
+msgstr "Ulica"
+
+msgid "Street name only, no number"
+msgstr "Samo ulica, bez kućnog broja"
+
+msgid "Submit"
+msgstr "Pošalji"
+
+msgid "Subscribe"
+msgstr "Pretplata"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Pretplata na ažuriranja o osobi: %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Pretplata na ažuriranja o ovoj osobi"
+
+msgid "Switch to address"
+msgstr "Prijelaz na adresu"
+
+msgid "Switch to lat/long"
+msgstr "Prijelaz na zemljopisnu širinu/dužinu"
+
+msgid "Terms of Service"
+msgstr "Uvjeti pružanja usluge"
+
+msgid "The API key has been updated successfully."
+msgstr "Ključ API-ja uspješno je ažuriran."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Ime i prezime su obavezni. Vratite se i pokušajte ponovo."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Obavezno je ime izvornog autora. Vratite se i pokušajte ponovo."
+
+msgid "The author has disabled notes on this record."
+msgstr "Autor je onemogućio bilješke o tim zapisima."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Autor je onemogućio ažuriranja statusa o tim zapisima."
+
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "Dodana je napomena za osobu: %(full_name)s"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Unesena je slika prevelika. Prenesite manju."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Razlog označavanja ove poruke kao neželjene pošte:"
+
+msgid "The record cannot be extended."
+msgstr "Zapis nije moguće produžiti."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "Registriran je zapis za osobu: %(full_name)s"
+
+msgid "The record has been deleted."
+msgstr "Zapis je izbrisan."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Status koji ste odabrali pokazuje da ste vi ta osoba. Ako je to točno, "
+"odaberite \"Da\" kako biste naznačili da ste kontaktirali tu osobu."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Oznaka %(token)s nije bila važeća"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Oznaka %(token)s nije bila važeća."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Broj zapisa sa sličnim imenima: %(num_results)s."
+
+msgid "There are some existing records with similar names."
+msgstr "Postoje zapisi sa sličnim imenima."
+
+msgid "There is one existing record with a similar name."
+msgstr "Postoji jedan rezultat sa sličnim imenom."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Došlo je do problema prilikom obrade slike. Pokušajte s drugom slikom."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Došlo je do pogreške prilikom obrade vašeg zahtjeva. Ispričavamo se zbog "
+"neugodnosti. Naši će administratori istražiti izvor problema, ali "
+"provjerite je li format vašeg zahtjeva točan."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Ti gadgeti dostupni su pod %(apache_link_html)slicencom Apache "
+"2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "To je nov zapis."
+
+msgid "This link is invalid."
+msgstr "Ta je veza nevažeća."
+
+msgid "This note has been marked as spam."
+msgstr "Ta je poruka označena kao neželjena pošta."
+
+msgid "This note is inappropriate."
+msgstr "Ta je poruka neprikladna."
+
+msgid "This note is incorrect or untrue."
+msgstr "Ta je poruka netočna ili neistinita."
+
+msgid "This note is spam."
+msgstr "Ta je poruka neželjena pošta."
+
+msgid "This person has been in contact with someone"
+msgstr "Ta je osoba bila u kontaktu s nekim"
+
+msgid "This person has posted a message"
+msgstr "Ta je osoba poslala poruku"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Unos te osobe ne postoji ili je izbrisan."
+
+msgid "This record has served its purpose."
+msgstr "Taj je zapis odgovarao svrsi."
+
+msgid "This record is a duplicate of"
+msgstr "Taj je zapis duplikat zapisa"
+
+msgid "This record is copied from another source."
+msgstr "Taj je zapis kopiran iz drugog izvora."
+
+msgid "This record is inappropriate."
+msgstr "Taj je zapis neprikladan."
+
+msgid "This record is spam."
+msgstr "Taj je zapis neželjena pošta."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 24 hours old are deleted."
+msgstr ""
+"Ovo spremište trenutačno je u testnom načinu. Za vrijeme testnog načina "
+"brišu se zapisi stariji od 24 sata."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "Da biste priložili fotografiju toj bilješci, prenesite je ili upišite URL."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Da biste izbrisali svoje podatke, pristupite usluzi Person Finder na "
+"računalu."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Za poništavanje pretplate slijedite ovu vezu"
+
+msgid "To view or add information, select a name below."
+msgstr "Da biste pogledali ili dodali informacije, u nastavku odaberite ime."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Upišite adresu ili otvorite kartu u nastavku pa naznačite lokaciju klikom"
+" na kartu."
+
+msgid "Type an address."
+msgstr "Upišite adresu."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL izvornog zapisa"
+
+msgid "Unspecified"
+msgstr "Neodređeno"
+
+msgid "Update an existing key"
+msgstr "Ažuriranje postojećeg ključa"
+
+msgid "Upload"
+msgstr "Prenesi"
+
+msgid "Upload notes in CSV format"
+msgstr "Prenesite bilješke u CSV formatu"
+
+msgid "Upload person records in CSV format"
+msgstr "Prenesi zapise o osobama u CSV formatu"
+
+msgid "Upload your CSV file below"
+msgstr "Prenesite svoju CSV datoteku u nastavku"
+
+msgid "Use current location"
+msgstr "Koristi trenutačnu lokaciju"
+
+msgid "View the record"
+msgstr "Prikaz zapisa"
+
+msgid "We have nothing matching your search."
+msgstr "Ništa ne odgovara vašem pretraživanju."
+
+msgid "What is this person's name?"
+msgstr "Kako se zove ta osoba?"
+
+msgid "When should this record disappear?"
+msgstr "Kad bi trebao nestati ovaj zapis?"
+
+msgid "Where did this information come from?"
+msgstr "Odakle je ta informacija?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Za vrijeme probnog načina rada zapisi stariji od 24 sata brišu se "
+"neovisno o datumu isteka."
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Za vrijeme probnog načina rada zapisi stariji od 6 sati brišu se neovisno"
+" o datumu isteka."
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Da, zamolite autora zapisa da onemogući bilješke"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Da, zamolite autora zapisa da omogući bilješke"
+
+msgid "Yes, delete the record"
+msgstr "Da, izbriši zapis"
+
+msgid "Yes, disable notes on this record."
+msgstr "Da, onemogućite bilješke o tom zapisu."
+
+msgid "Yes, extend the record"
+msgstr "Da, produži zapis"
+
+msgid "Yes, restore this record"
+msgstr "Da, vrati zapis"
+
+msgid "Yes, these are the same person"
+msgstr "Da, riječ je o istoj osobi"
+
+msgid "Yes, update the note"
+msgstr "Da, ažuriraj poruku"
+
+msgid "You are already subscribed. "
+msgstr "Već ste pretplaćeni. "
+
+msgid "You are already unsubscribed."
+msgstr "Već ste poništili pretplatu."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Trenutačno ste prijavljeni kao %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Trenutačno niste prijavljeni."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Možete %(begin_tag)spogledati zapise%(end_tag)s prije brisanja."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"Ovdje unesite svoju e-adresu kako biste se pretplatili na ažuriranja o "
+"osobi: %(full_name)s"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Potpuni zapis možete pogledati na %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Uspješno ste se pretplatili."
+
+msgid "You have successfully unsubscribed."
+msgstr "Uspješno ste se otkazali pretplatu."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Ovu ste obavijest dobili jer ste se pretplatili na ažuriranja o toj "
+"osobi:\n"
+
+msgid "Your e-mail address"
+msgstr "Vaša e-adresa"
+
+msgid "Your e-mail address:"
+msgstr "Vaša e-adresa:"
+
+msgid "Your email"
+msgstr "Vaša e-pošta"
+
+msgid "Your name (required)"
+msgstr "Vaše ime (obavezno)"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr "Vaše je ime obavezno u odjeljku \"O vama\". Vratite se i pokušajte ponovo."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "Vaše je ime obavezno u odjeljku \"Izvor\". Vratite se i pokušajte ponovo."
+
+msgid "Your phone number"
+msgstr "Vaš telefonski broj"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Vaš je zahtjev uspješno obrađen. Provjerite pristiglu poštu i potvrdite "
+"da želite objaviti svoju bilješku slijedeći ugrađeni URL."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Person Finder] Potvrdite bilješku o osobi \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Person Finder] Obavijest o brisanju osobe \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Onemogućiti bilješke o osobi \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Person Finder] Omogućiti bilješke o osobi \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Person Finder] Omogućavanje obavijesti o bilješkama za osobu "
+"\"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Onemogućene su bilješke o osobi \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Person Finder] Omogućene su bilješke za osobu \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Person Finder] Obavijest o vraćanju zapisa za osobu \"%(full_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Person Finder] Ažuriranje statusa za osobu %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Person Finder] Pretplaćeni ste na ažuriranje statusa o osobi "
+"%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr ""
+"vanjska web-lokacija; možda će se naplatiti uobičajena naknada za "
+"povezivanje"
+
+msgid "female"
+msgstr "žensko"
+
+msgid "in test mode"
+msgstr "u probnom načinu"
+
+msgid "male"
+msgstr "muško"
+
+msgid "on"
+msgstr "o osobi"
+
+msgid "other"
+msgstr "ostalo"
+

@@ -1,0 +1,41 @@
+{# Template for static pages (e.g. home.html).                              #}
+
+{% extends "base.html.template" %}
+{% load i18n %}
+
+{# To customize your site, replace, append, or prepend to the blocks below. #}
+
+{# Contents of the <head> element.  Use this to add stylesheets. #}
+{% block head %}
+  {{block.super}}
+  <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+{% endblock head %}
+
+{# Page title (used in the <title> element). #}
+{% block title %}{{block.super}}{% endblock title %}
+
+{# Header above page content. #}
+{% block header %}
+  {{block.super}}
+{% endblock header %}
+
+{# Container around page content. #}
+{% block container %}
+  {{block.super}}
+  <div class="sidebar" role="navigation">
+    {% block sidebar %}
+      {% include "repo-menu.html.template" %}
+      <a href="{{env.global_url}}">Home</a>
+    {% endblock sidebar %}
+  </div>
+{% endblock container %}
+
+{# Disclaimer text at the bottom of every page. #}
+{% block disclaimer %}
+  {{block.super}}
+{% endblock disclaimer %}
+
+{# Footer at the bottom of every page. #}
+{% block footer %}
+  {{block.super}}
+{% endblock %}

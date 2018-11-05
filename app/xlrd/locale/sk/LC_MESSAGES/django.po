@@ -1,0 +1,1691 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Keďže chceme zaručiť, aby boli poznámky povolené alebo zakázané len so "
+"súhlasom autora záznamu, zašleme autorovi záznamu potvrdzujúcu správu. Ak"
+" ste autor, po kliknutí na tlačidlo nižšie skontrolujte svoj e-mail.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Vážený/-á %(author_name)s,\n"
+"\n"
+"používateľ požiadal o povolenie poznámok k záznamu o osobe\n"
+"%(full_name)s.\n"
+"\n"
+"Pri autorovi tohto záznamu je uvedená Vaša e-mailová adresa. Poznámky\n"
+"k záznamu môžete povoliť do 3 dní pomocou tohto odkazu:\n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Vážený/-á %(author_name)s,\n"
+"\n"
+"používateľ požiadal o zakázanie poznámok k záznamu o osobe\n"
+"%(full_name)s.\n"
+"\n"
+"Pri autorovi tohto záznamu je uvedená Vaša e-mailová adresa. Poznámky\n"
+"k záznamu môžete zakázať do 3 dní pomocou tohto odkazu:\n"
+"\n"
+"%(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Vážený/-á %(author_name)s,\n"
+"práve ste zadali poznámku k záznamu o osobe %(full_name)s.  \n"
+"Poznámku môžete zverejniť do 3 dní pomocou tohto odkazu:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Upozornenie: Platnosť tohto záznamu vyprší o menej "
+"ako %(expiration_days)s dní.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Upozornenie: Platnosť tohto záznamu vyprší o menej "
+"ako 1 deň.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+"\n"
+"                Počet vybraných záznamov: %(dup_count)s\n"
+"              "
+
+#, python-format
+msgid ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"          "
+msgstr ""
+"\n"
+"            Vyhľadávač %(search_engine_name)s našiel výsledky "
+"zodpovedajúce tomuto dopytu.\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+"\n"
+"          Záznamy podobné ako: %(full_name)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+"\n"
+"          Výsledky vyhľadávania pre dopyt: %(query)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Nenašli sa žiadne výsledky pre dopyt: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naozaj chcete odstrániť záznam pre osobu %(full_name)s?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naozaj chcete zakázať poznámky o osobe %(full_name)s?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naozaj chcete zakázať poznámky k záznamu o osobe %(full_name)s?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naozaj chcete povoliť poznámky o osobe %(full_name)s?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naozaj chcete predĺžiť dobu platnosti záznamu pre osobu "
+"%(full_name)s?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      Potvrďte poznámku\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Ak záznam odstránite, nebude ho už možné na týchto stránkach "
+"zobraziť ani vyhľadať.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Ak ho chcete natrvalo odstrániť,\n"
+"      kontaktujte pôvodný zdroj.\n"
+"      Pôvodný zdroj nájdete tu:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      Zadaná webová adresa pravdepodobne nie je platnou webovou adresou "
+"profilu stránok %(website)s.\n"
+"      Prejdite na stránku profilu tejto osoby na adrese %(website)s a "
+"skopírujte a vložte\n"
+"      danú webovú adresu na toto miesto.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Platnosť záznamu bola predĺžená do %(expiry_date)s.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Tento záznam je kópiou záznamu z iného zdroja.\n"
+"      Záznam tu môžete odstrániť,\n"
+"      ale upozorňujeme,\n"
+"      že neskôr môžeme dostať jeho ďalšiu kópiu z pôvodného zdroja.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Keďže chceme zaručiť, aby boli poznámky povolené alebo zakázané len\n"
+"    so súhlasom autora záznamu, zašleme autorovi záznamu potvrdzujúcu "
+"správu.\n"
+"    Ak ste autor, po kliknutí na tlačidlo nižšie skontrolujte svoj "
+"e-mail.\n"
+"  "
+
+msgid ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  Zadaná e-mailová adresa nie je platná.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  Záznam bude na týchto webových stránkach stále viditeľný, no nikto k "
+"nemu\n"
+"  nebude môcť pridať ďalšie poznámky.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  Ak chcete uverejniť poznámku, zadajte svoju e-mailovú adresu nižšie a "
+"kliknite\n"
+"  na potvrdzujúci odkaz, ktorý dostanete.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Používateľ odstránil záznam pre osobu %(full_name)s\n"
+"na stránke %(site_url)s.\n"
+"\n"
+"Na odstránenie vás upozorňujeme, pretože vaša e-mailová adresa\n"
+"bola uvedená v tomto zázname ako adresa autora poznámky.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Používateľ odstránil záznam pre osobu %(full_name)s\n"
+"na stránkach %(site_url)s.\n"
+"\n"
+"Na odstránenie vás upozorňujeme, pretože vaša e-mailová adresa je\n"
+"uvedená ako autor tohto záznamu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Po uplynutí %(days_until_deletion)s dní bude záznam natrvalo odstránený.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"POZNÁMKA: Ak sa domnievate, že bol tento záznam odstránený omylom,\n"
+"môžete ho počas nasledujúcich %(days_until_deletion)s dní obnoviť pomocou"
+" tohto odkazu:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Poznámky k záznamu o osobe %(full_name)s boli zakázané. Záznam zobrazíte\n"
+"pomocou tohto odkazu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Toto oznámenie sme Vám poslali, pretože Vaša e-mailová adresa\n"
+"je priradená k záznamu o tejto osobe alebo k poznámke k záznamu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Poznámky k záznamu o osobe %(full_name)s boli povolené. Záznam zobrazíte\n"
+"pomocou tohto odkazu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Toto oznámenie sme Vám poslali, pretože Vaša e-mailová adresa\n"
+"je priradená k záznamu o tejto osobe alebo k poznámke k záznamu.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Autor záznamu pre osobu %(full_name)s\n"
+"(ktorý bol predtým odstránený) záznam obnovil. Ak chcete záznam zobraziť,"
+"\n"
+"prejdite na tento odkaz:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Informujeme vás, pretože vaša e-mailová adresa je združená s týmto\n"
+"záznamom osoby alebo s poznámkou v zázname.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Máme novú poznámku k záznamu o osobe %(full_name)s.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Prihlásili ste sa na odber poznámok o osobe %(full_name)s.\n"
+"\n"
+"Tento záznam môžete zobraziť na adrese\n"
+"\n"
+"    %(view_url)s\n"
+"\n"
+"Ak chcete odber zrušiť, použite tento odkaz: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(kliknutím zobraziť)"
+
+msgid "(unknown)"
+msgstr "(neznámy)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Správa pre túto osobu alebo ľudí, ktorí túto osobu hľadajú"
+
+msgid "A new API key has been created successfully."
+msgstr "Nový kľúč API bol úspešne vytvorený."
+
+msgid "API Key Management"
+msgstr "Správa kľúčov API Key"
+
+msgid "About 1 month (30 days) from now"
+msgstr "O 1 mesiac (30 dní) od dnešného dňa"
+
+msgid "About 1 year (360 days) from now"
+msgstr "O 1 rok (360 dní) od dnešného dňa"
+
+msgid "About 2 months (60 days) from now"
+msgstr "O 2 mesiace (60 dní) od dnešného dňa"
+
+msgid "About 3 months (90 days) from now"
+msgstr "O 3 mesiace (90 dní) od dnešného dňa"
+
+msgid "About 6 months (180 days) from now"
+msgstr "O 6 mesiacov (180 dní) od dnešného dňa"
+
+msgid "About Google Person Finder"
+msgstr "O službe Hľadanie ľudí Google"
+
+#, python-format
+msgid "Added a record for: %(person_name)s"
+msgstr "Added a record for: %(person_name)s"
+
+msgid "Age"
+msgstr "Vek"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
+"Všetky údaje zadané do služby Hľadanie ľudí sú verejné a môže ich "
+"ktokoľvek použiť. Google nekontroluje ani neoveruje správnosť týchto "
+"údajov google.org/personfinder/global/tos"
+
+msgid "Alternate family names"
+msgstr "Ďalšie priezviská"
+
+msgid "Alternate given names"
+msgstr "Ďalšie krstné mená"
+
+msgid "Alternate names"
+msgstr "Ďalšie mená"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Naozaj táto poznámka nie je spam?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Naozaj chcete označiť túto poznámku ako spam?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Naozaj chcete zrušiť odstránenie tohto záznamu?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Informačný kanál Atom s aktualizáciami o tejto osobe"
+
+msgid "Author's e-mail address"
+msgstr "E-mailová adresa autora"
+
+msgid "Author's name"
+msgstr "Meno autora"
+
+msgid "Author's phone number"
+msgstr "Telefónne číslo autora"
+
+msgid "Authorization key"
+msgstr "Autorizačný kľúč"
+
+msgid "Back to results list"
+msgstr "Späť na zoznam výsledkov"
+
+msgid "Back to start"
+msgstr "Späť na začiatok"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Označením tejto poznámky ako spam ju v predvolenom nastavení skryjete. "
+"Bude stále súčasťou záznamu, ale zobrazenie jej obsahu bude vyžadovať "
+"ďalšie kliknutie. Používatelia budú tiež môcť z tejto poznámky odstrániť "
+"označenie spamu."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Zrušením označenia tejto poznámky ako spam ju znova v predvolenom "
+"nastavení zobrazíte."
+
+msgid "CSV file"
+msgstr "Súbor CSV"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Poznámka s id %(id)s sa nenašla"
+
+msgid "Cancel"
+msgstr "Zrušiť"
+
+msgid "City"
+msgstr "Mesto"
+
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+"Ak si chcete zobraziť zmluvné podmienky, kliknite tu (externý web; môžu "
+"sa účtovať bežné poplatky za pripojenie)"
+
+msgid "Click here to view results."
+msgstr "Kliknutím tu zobrazíte výsledky."
+
+msgid "Close window"
+msgstr "Zatvoriť okno"
+
+msgid "Compare these records"
+msgstr "Porovnať tieto záznamy"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Ak chcete tento nástroj pridať na svoje webové stránky, skopírujte a "
+"vložte nasledujúci kód HTML"
+
+msgid "Create a new API key"
+msgstr "Vytvorenie nového kľúča API"
+
+msgid "Create a new record"
+msgstr "Vytvoriť nový záznam"
+
+msgid "Create a new record for"
+msgstr "Vytvoriť nový záznam pre"
+
+msgid "Crisis events"
+msgstr "Krízové udalosti"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "V súčasnosti je vedených %(num_people)s záznamov."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Dátum nemôže byť v budúcnosti. Prejdite späť a skúste to znova."
+
+msgid "Date of birth"
+msgstr "Dátum narodenia"
+
+msgid "Delete this record"
+msgstr "Odstrániť tento záznam"
+
+msgid "Describe how to identify this person."
+msgstr "Popíšte, ako túto osobu identifikovať."
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Desktop version"
+msgstr "Verzia pre počítače"
+
+msgid "Developers"
+msgstr "Vývojári"
+
+msgid "Disable notes on this record"
+msgstr "Zakázať poznámky k tomuto záznamu"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Má táto osoba stránky s profilom na iných webových lokalitách?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Stiahnite si %(begin_link)stúto šablónu pre aplikáciu Excel%(end_link)s a"
+" pridajte do nej riadky"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "E-mail address"
+msgstr "E-mailová adresa"
+
+msgid "Edit"
+msgstr "Upraviť"
+
+msgid "Embedding the Application"
+msgstr "Vloženie aplikácie"
+
+msgid "Enable notes on this record"
+msgstr "Povoliť poznámky k tomuto záznamu"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Zadajte v tvare RRRR-MM-DD"
+
+msgid "Enter the person's given and family names."
+msgstr "Zadajte meno a priezvisko osoby."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Zadajte meno osoby alebo časti mena."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Zadajte meno, časti mena alebo číslo mobilného telefónu osoby."
+
+msgid "Enter the person's name."
+msgstr "Zadajte meno osoby."
+
+msgid "Expiry"
+msgstr "Vypršanie platnosti"
+
+msgid "Expiry date of this record"
+msgstr "Dátum vypršania platnosti tohto záznamu"
+
+#, python-format
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
+msgstr ""
+"Predĺžte dátum vypršania platnosti o nasledujúci počet dní: "
+"%(extension_days)s\n"
+"                "
+
+msgid "Family name"
+msgstr "Priezvisko"
+
+msgid "Family name (required)"
+msgstr "Priezvisko (povinné)"
+
+msgid "Feed of updates about this person"
+msgstr "Informačný kanál s aktualizáciami o tejto osobe"
+
+msgid "Feedback"
+msgstr "Spätná väzba"
+
+msgid "Follow this link to create a new record"
+msgstr "Pomocou tohto odkazu vytvoríte nový záznam"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"V prípade iných ako mobilných telefónov použite službu spoločnosti NTT "
+"dostupnú na telefónnom čísle 171."
+
+#, python-format
+msgid "From: %(home_location)s"
+msgstr "Pôvod: %(home_location)s"
+
+msgid "Full name"
+msgstr "Celé meno"
+
+msgid "Given name"
+msgstr "Krstné meno"
+
+msgid "Given name (required)"
+msgstr "Meno (povinné)"
+
+msgid "Google Person Finder"
+msgstr "Hľadanie ľudí Google"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Rozprávali ste sa s touto osobou osobne PO katastrofe? (povinné)"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Tu je %(begin_tag)svzorový súbor CSV%(end_tag)s, ktorý môžete upraviť a "
+"nahrať"
+
+msgid "Hide Map"
+msgstr "Skryť mapu"
+
+msgid "Hide note"
+msgstr "Skryť poznámku"
+
+msgid "Home Address"
+msgstr "Adresa bydliska"
+
+msgid "Home address"
+msgstr "Adresa bydliska"
+
+msgid "Home country"
+msgstr "Domovská krajina"
+
+msgid "How can this person be reached now?"
+msgstr "Ako je možné túto osobu v súčasnosti kontaktovať?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Ako vás môžu kontaktovať ďalší, ktorí sa zaujímajú o túto osobu"
+
+msgid "I Have Information About This Person"
+msgstr "Mám informácie o tejto osobe"
+
+msgid "I am seeking information"
+msgstr "Hľadám informácie"
+
+msgid "I am this person"
+msgstr "Som táto osoba"
+
+msgid "I do not want any more updates on this record."
+msgstr "Nechcem žiadne ďalšie aktualizácie o tomto zázname."
+
+msgid "I do not want my information online anymore."
+msgstr "Už si neprajem, aby boli moje informácie zverejnené online."
+
+msgid "I have information about someone"
+msgstr "Mám o niekom informácie"
+
+msgid "I have reason to think this person is missing"
+msgstr "Mám dôvod domnievať sa, že táto je osoba nezvestná"
+
+msgid "I have received information that this person is alive"
+msgstr "Mám informácie, podľa ktorých je táto osoba živá"
+
+msgid "I have received information that this person is dead"
+msgstr "Mám informácie, podľa ktorých je táto osoba mŕtva"
+
+msgid "I have received spam due to this note."
+msgstr "Pre túto poznámku som dostal(-a) spam."
+
+msgid "I have received spam."
+msgstr "Dostal(-a) som spam."
+
+msgid "I prefer not to specify."
+msgstr "Neželám si uviesť."
+
+msgid "I'm looking for someone"
+msgstr "Niekoho hľadám"
+
+msgid "Identify who you are looking for"
+msgstr "Identifikujte osobu, ktorú hľadáte"
+
+msgid "Identify who you have information about"
+msgstr "Identifikujte osobu, o ktorej máte informácie"
+
+msgid "Identifying information"
+msgstr "Identifikačné údaje"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Ak žiadny z týchto záznamov nezodpovedá osobe, ktorú ste mali na mysli, "
+"kliknite nižšie a vytvorte nový záznam."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ak ste autorom tejto poznámky, dostanete e-mailovú správu s odkazom, "
+"pomocou ktorého môžete potvrdiť, že chcete poznámky k tomuto záznamu "
+"zakázať. V opačnom prípade počkajte, kým autor potvrdí vašu žiadosť."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ak ste autorom tejto poznámky, dostanete e-mailovú správu s odkazom, "
+"pomocou ktorého môžete potvrdiť, že chcete poznámky k tomuto záznamu "
+"povoliť. V opačnom prípade počkajte, kým autor potvrdí vašu žiadosť."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Ak máte fotografiu tejto osoby, nahrajte ju alebo zadajte jej webovú "
+"adresu."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"V aplikácii Excel použite možnosť Súbor &gt; Uložiť ako... a uložte súbor"
+" vo formáte CSV (.csv)"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Neplatná e-mailová adresa. Skúste to znova."
+
+msgid "Language selection"
+msgstr "Výber jazyka"
+
+msgid "Last known location"
+msgstr "Posledná známa poloha"
+
+msgid "Link"
+msgstr "Prepojiť"
+
+msgid "Link to profile page"
+msgstr "Odkaz na stránku s profilom"
+
+msgid "List API keys"
+msgstr "Zobraziť zoznam kľúčov rozhrania API"
+
+msgid "Mark records as duplicate"
+msgstr "Označiť záznamy ako duplikát"
+
+msgid "Mark the selected records as duplicate"
+msgstr "Označiť vybraté záznamy za duplicitné"
+
+msgid "Message (required)"
+msgstr "Správa (povinné)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Správa je povinná. Prejdite späť a skúste to znova."
+
+msgid "Missing person's current contact information"
+msgstr "Aktuálne kontaktné informácie nezvestnej osoby"
+
+msgid "Missing person's current e-mail address"
+msgstr "Aktuálna e-mailová adresa nezvestnej osoby"
+
+msgid "Missing person's current phone number"
+msgstr "Aktuálne telefónne číslo nezvestnej osoby"
+
+#, python-format
+msgid "More at: %(url)s"
+msgstr "Viac na adrese: %(url)s"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Viac informácií pre vývojárov nájdete "
+"%(developers_link_html)stu%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Viac ako 100 výsledkov; zobrazuje sa iba prvých 100. Skúste zadať väčšiu "
+"časť mena"
+
+msgid "Name"
+msgstr "Meno"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Meno je povinné. Prejdite späť a skúste to znova."
+
+msgid "Neighborhood"
+msgstr "Štvrť"
+
+msgid "No"
+msgstr "Nie"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Záznam %(id)s nemá uvedený e-mail autora."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "Nenašli sa žiadne správy zaregistrované do výveskovej služby operátora."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Poznámka s ID %(id_str)s sa nenašla."
+
+msgid "No notes have been posted"
+msgstr "Neboli uverejnené žiadne poznámky"
+
+msgid "No person id was specified."
+msgstr "Nebolo uvedené žiadne ID osoby."
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Osoba s ID %(id_str)s sa nenašla."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr "Nenašli sa žiadne výsledky pre dopyt: %(query)s"
+
+msgid "No such Authorization entity."
+msgstr "Daná entita s právami autorizácie neexistuje."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"Nemáte oprávnenie uverejňovať poznámky so stavom „Dostal(-a) som "
+"informácie, že táto osoba zomrela“."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr "Nemáte oprávnenie uverejňovať poznámky so stavom „believed_dead“."
+
+msgid "Not spam"
+msgstr "Nie je spam"
+
+msgid "Note author"
+msgstr "Autor poznámky"
+
+msgid "Note text"
+msgstr "Text poznámky"
+
+msgid "Notes for a possible duplicate"
+msgstr "Poznámky k možnému duplicitnému záznamu"
+
+msgid "Notes for this person"
+msgstr "Poznámka k tejto osobe"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Číslo alebo rozsah (napríklad 20–30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Alebo pridať na vaše stránky ako %(gadget_link_html)smodul gadget "
+"Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Pôvodná webová adresa"
+
+msgid "Original author's name"
+msgstr "Meno pôvodného autora"
+
+msgid "Original posting date"
+msgstr "Pôvodný dátum uverejnenia"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Pôvodný dátum uverejnenia nie je uvedený vo formáte RRRR-MM-DD alebo "
+"neexistuje. Prejdite späť a skúste to znova."
+
+msgid "Original site name"
+msgstr "Pôvodný názov webových stránok"
+
+msgid "Other website"
+msgstr "Iné webové stránky"
+
+msgid ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
+msgstr ""
+"UPOZORNENIE: Všetky zadané údaje sú verejné a môže ich ktokoľvek použiť. "
+"Spoločnosť Google nekontroluje ani neoveruje správnosť týchto údajov."
+
+msgid "Person Finder"
+msgstr "Hľadanie ľudí"
+
+msgid "Phone"
+msgstr "Telefón"
+
+msgid "Phone number"
+msgstr "Telefónne číslo"
+
+msgid "Photo"
+msgstr "Fotografia"
+
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr "Fotka (externý web; môžu sa účtovať bežné poplatky za pripojenie)"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Nahraná fotografia je v nerozpoznanom formáte. Prejdite späť a skúste to "
+"znova."
+
+msgid "Physical characteristics"
+msgstr "Fyzické rysy"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
+"Začiarknite možnosť, že ste boli po katastrofe s osobou v kontakte, alebo"
+" zmeňte pole „Stav tejto osoby“."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Začiarknite možnosť, že ste boli po zemetrasení s osobou v kontakte, "
+"alebo zmeňte pole „Stav tejto osoby“."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Skontrolujte, či existuje záznam zodpovedajúci osobe, ktorú ste chceli "
+"nahlásiť."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+"Ak sa chcete prihlásiť na odber aktualizácií, potvrďte svoju e-mailovú "
+"adresu"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+"Ak sa chcete prihlásiť na odber aktualizácií, zadajte svoju e-mailovú "
+"adresu"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Vysvetlite, prečo sa domnievate, že ide o tú istú osobu"
+
+msgid "Please fill in all the required fields."
+msgstr "Vyplňte všetky požadované polia."
+
+msgid "Please fill in your email address."
+msgstr "Vyplňte svoju e-mailovú adresu."
+
+msgid "Please provide an valid email address."
+msgstr "Uveďte platnú e-mailovú adresu."
+
+msgid "Possible duplicates"
+msgstr "Možné duplikáty"
+
+msgid "Possible duplicates found."
+msgstr "Našli sa možné duplicitné záznamy."
+
+msgid "Postal or zip code"
+msgstr "PSČ"
+
+msgid "Posted by"
+msgstr "Uverejnil"
+
+msgid "Proceed"
+msgstr "Pokračovať"
+
+msgid "Profile Pages"
+msgstr "Stránky s profilmi"
+
+msgid "Profile page"
+msgstr "Stránka s profilom"
+
+msgid "Provide information"
+msgstr "Poskytnite informácie"
+
+msgid "Provide information about this person"
+msgstr "Poskytnite informácie o tejto osobe"
+
+msgid "Provided by:"
+msgstr "Poskytuje:"
+
+msgid "Province or state"
+msgstr "Provincia alebo štát"
+
+msgid "Reason for deletion:"
+msgstr "Dôvod odstránenia:"
+
+msgid "Reason for disabling notes:"
+msgstr "Dôvod zakázania poznámok:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Záznamy s menami a adresami, ktoré zodpovedajú dopytu „%(query)s“"
+
+msgid "Remove"
+msgstr "Odstrániť"
+
+msgid "Report spam"
+msgstr "Nahlásiť spam"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Vrátiť sa na záznam pre osobu %(full_name)s."
+
+msgid "Reveal note"
+msgstr "Zobraziť poznámku"
+
+msgid "Save this record"
+msgstr "Uložiť tento záznam"
+
+msgid "Search for this person"
+msgstr "Hľadať túto osobu"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "Ďalšie pokyny nájdete v %(begin_tag)sčlánku wiki%(end_tag)s"
+
+msgid "Select a website to add a profile page..."
+msgstr "Ak chcete pridať stránku s profilom, vyberte webovú lokalitu..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Vyberte maximálne 3 záznamy, ktoré chcete označiť ako duplikát:"
+
+msgid "Send email"
+msgstr "Poslať e-mail"
+
+msgid "Sex"
+msgstr "Pohlavie"
+
+msgid "Show Map"
+msgstr "Zobraziť mapu"
+
+msgid "Show sensitive information"
+msgstr "Zobraziť citlivé informácie"
+
+msgid "Show who marked these duplicates"
+msgstr "Zobraziť, kto označil tieto duplikáty"
+
+msgid "Sign in"
+msgstr "Prihlásiť sa"
+
+msgid "Sign out"
+msgstr "Odhlásiť sa"
+
+msgid "Skip"
+msgstr "Preskočiť"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Niekto má informácie, podľa ktorých je táto osoba živá"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Niekto má informácie, podľa ktorých je táto osoba mŕtva"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Niekto nahlásil túto osobu ako nezvestnú"
+
+msgid "Someone is seeking information about this person"
+msgstr "Niekto hľadá informácie o tejto osobe"
+
+msgid "Source of Record"
+msgstr "Zdroj záznamu"
+
+msgid "Source of this record"
+msgstr "Zdroj tohto záznamu"
+
+msgid "Status"
+msgstr "Stav"
+
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr "Stav osoby %(full_name)s "
+
+msgid "Status of Person"
+msgstr "Stav osoby"
+
+msgid "Status of this person:"
+msgstr "Stav tejto osoby:"
+
+msgid "Street name"
+msgstr "Názov ulice"
+
+msgid "Street name only, no number"
+msgstr "Iba názov ulice, bez čísla"
+
+msgid "Submit"
+msgstr "Odoslať"
+
+msgid "Subscribe"
+msgstr "Prihlásiť sa na odber"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Prihláste sa na odber aktualizácií o osobe %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Prihlásiť sa na odber aktualizácií o tejto osobe"
+
+msgid "Switch to address"
+msgstr "Prepnúť na adresu"
+
+msgid "Switch to lat/long"
+msgstr "Prepnúť na zemepisnú šírku/dĺžku"
+
+msgid "Terms of Service"
+msgstr "Zmluvné podmienky"
+
+msgid "The API key has been updated successfully."
+msgstr "Kľúč API bol úspešne aktualizovaný."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Meno a priezvisko sú povinné. Prejdite späť a skúste to znova."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Meno pôvodného autora je povinné. Prejdite späť a skúste to znova."
+
+msgid "The author has disabled notes on this record."
+msgstr "Autor zakázal poznámky k tomuto záznamu."
+
+msgid "The author has disabled status updates on this record."
+msgstr "Autor zakázal aktualizácie stavu tohto záznamu."
+
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "Poznámka k osobe %(full_name)s bola pridaná"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Poskytnutý obrázok je príliš veľký. Nahrajte menší."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Dôvod, prečo bola táto poznámka označená ako spam:"
+
+msgid "The record cannot be extended."
+msgstr "Platnosť záznamu nie je možné predĺžiť."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "Záznam osoby %(full_name)s bol zaregistrovaný"
+
+msgid "The record has been deleted."
+msgstr "Záznam bol odstránený."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Stav, ktorý ste vybrali, udáva, že ste táto osoba. Ak je to pravda, "
+"zvoľte aj možnosť Áno, čím potvrdíte, že ste túto osobu kontaktovali."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "Token %(token)s bol neplatný"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "Token %(token)s bol neplatný."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Počet nájdených záznamov s podobnými menami: %(num_results)s."
+
+msgid "There are some existing records with similar names."
+msgstr "Našlo sa viac záznamov s podobnými menami."
+
+msgid "There is one existing record with a similar name."
+msgstr "Našiel sa jeden záznam s podobným menom."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Počas spracovania obrázka sa vyskytol problém. Skúste použiť iný obrázok."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Počas spracovania vašej žiadosti sa vyskytla chyba. Ospravedlňujeme sa za"
+" spôsobené problémy. Naši správcovia zdroj problému prešetria. "
+"Skontrolujte však, či je formát vašej žiadosti správny."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Tieto moduly gadget sú sprístupnené pod %(apache_link_html)slicenciou "
+"Apache 2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Toto je nový záznam."
+
+msgid "This link is invalid."
+msgstr "Odkaz je neplatný."
+
+msgid "This note has been marked as spam."
+msgstr "Táto poznámka bola označená ako spam."
+
+msgid "This note is inappropriate."
+msgstr "Táto poznámka je nevhodná."
+
+msgid "This note is incorrect or untrue."
+msgstr "Táto poznámka je nesprávna alebo nepravá."
+
+msgid "This note is spam."
+msgstr "Táto poznámka je spam."
+
+msgid "This person has been in contact with someone"
+msgstr "Osoba je s niekým v kontakte"
+
+msgid "This person has posted a message"
+msgstr "Táto osoba uverejnila správu"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Záznam tejto osoby neexistuje alebo bol odstránený."
+
+msgid "This record has served its purpose."
+msgstr "Tento záznam splnil svoj účel."
+
+msgid "This record is a duplicate of"
+msgstr "Tento záznam je duplikátom záznamu"
+
+msgid "This record is copied from another source."
+msgstr "Tento záznam je skopírovaný z iného zdroja."
+
+msgid "This record is inappropriate."
+msgstr "Tento záznam je nevhodný."
+
+msgid "This record is spam."
+msgstr "Tento záznam je spam."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 24 hours old are deleted."
+msgstr ""
+"Tento odkladací priestor je momentálne v testovacom režime. Počas "
+"testovacieho režimu sa záznamy staršie ako 24 hodín automaticky "
+"odstraňujú."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"Ak chcete k tejto poznámke pripojiť fotografiu, nahrajte ju alebo zadajte"
+" jej webovú adresu."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr ""
+"Ak chcete odstrániť svoje údaje, pristúpte k službe Hľadanie ľudí zo "
+"svojho počítača."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Ak chcete odber zrušiť, kliknite na tento odkaz"
+
+msgid "To view or add information, select a name below."
+msgstr "Ak chcete zobraziť alebo pridať informácie, vyberte meno nižšie."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Zadajte adresu alebo otvorte mapu nižšie a kliknutím na mapu označte "
+"miesto."
+
+msgid "Type an address."
+msgstr "Zadajte adresu."
+
+msgid "URL"
+msgstr "Webová adresa"
+
+msgid "URL of original record"
+msgstr "Webová adresa pôvodného záznamu"
+
+msgid "Unspecified"
+msgstr "Nie je uvedené"
+
+msgid "Update an existing key"
+msgstr "Aktualizovať existujúci kľúč"
+
+msgid "Upload"
+msgstr "Nahrať"
+
+msgid "Upload notes in CSV format"
+msgstr "Nahrať poznámky vo formáte CSV"
+
+msgid "Upload person records in CSV format"
+msgstr "Nahrať záznamy osôb vo formáte CSV"
+
+msgid "Upload your CSV file below"
+msgstr "Nahrajte súbor CSV nižšie"
+
+msgid "Use current location"
+msgstr "Použiť aktuálnu polohu"
+
+msgid "View the record"
+msgstr "Zobraziť záznam"
+
+msgid "We have nothing matching your search."
+msgstr "Nemáme žiadne informácie zodpovedajúce vášmu vyhľadávaniu."
+
+msgid "What is this person's name?"
+msgstr "Ako sa táto osoba volá?"
+
+msgid "When should this record disappear?"
+msgstr "Kedy by mal tento záznam zmiznúť?"
+
+msgid "Where did this information come from?"
+msgstr "Odkiaľ tieto informácie pochádzajú?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Počas testovacieho režimu sa záznamy staršie ako 24 hodín automaticky "
+"odstraňujú bez ohľadu na dátum vypršania platnosti."
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"Počas testovacieho režimu sa záznamy staršie ako 6 hodín automaticky "
+"odstraňujú bez ohľadu na dátum vypršania platnosti."
+
+msgid "Yes"
+msgstr "Áno"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Áno, požiadať autora záznamu o zakázanie poznámok"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Áno, požiadať autora záznamu o povolenie poznámok"
+
+msgid "Yes, delete the record"
+msgstr "Áno, odstrániť záznam"
+
+msgid "Yes, disable notes on this record."
+msgstr "Áno, zakázať poznámky k tomuto záznamu."
+
+msgid "Yes, extend the record"
+msgstr "Áno, chcem predĺžiť platnosť záznamu"
+
+msgid "Yes, restore this record"
+msgstr "Áno, obnoviť tento záznam"
+
+msgid "Yes, these are the same person"
+msgstr "Áno, ide o tú istú osobu"
+
+msgid "Yes, update the note"
+msgstr "Áno, aktualizovať poznámku"
+
+msgid "You are already subscribed. "
+msgstr "Na odber ste už prihlásený/-á. "
+
+msgid "You are already unsubscribed."
+msgstr "Z tohto odberu ste sa už odhlásili."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Momentálne ste prihlásený/-á ako používateľ %(user_email)s."
+
+msgid "You are not currently signed in."
+msgstr "Momentálne nie ste prihlásený/-á."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "Pred odstránením si %(begin_tag)smôžete záznam zobraziť%(end_tag)s."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"Na odber noviniek o osobe %(full_name)s sa môžete prihlásiť tak, že tu "
+"zadáte svoju e-mailovú adresu"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Úplný záznam môžete zobraziť na stránke %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Prihlásili ste sa na odber."
+
+msgid "You have successfully unsubscribed."
+msgstr "Odhlásili ste sa z odberu."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Toto upozornenie ste dostali, pretože ste sa prihlásili na odber "
+"aktualizácií pre osobu:\n"
+
+msgid "Your e-mail address"
+msgstr "Vaša e-mailová adresa"
+
+msgid "Your e-mail address:"
+msgstr "Vaša e-mailová adresa:"
+
+msgid "Your email"
+msgstr "Vaša e-mailová adresa"
+
+msgid "Your name (required)"
+msgstr "Vaše meno (povinné)"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Vaše meno je v sekcii „Informácie o vás“ povinné. Prejdite späť a skúste "
+"to znova."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "Vaše meno v sekcii „Zdroj“ je povinné. Prejdite späť a skúste to znova."
+
+msgid "Your phone number"
+msgstr "Vaše telefónne číslo"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Vaša žiadosť bola spracovaná. Skontrolujte svoju doručenú poštu a pomocou"
+" vloženej webovej adresy potvrďte, že chcete poznámku zverejniť."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Hľadanie ľudí] Potvrďte poznámku k osobe %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Hľadanie ľudí] Upozornenie o odstránení pre osobu %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr "[Hľadanie ľudí] Zakázať poznámky k osobe %(full_name)s?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr "[Hľadanie ľudí] Povoliť poznámky k osobe %(full_name)s?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Hľadanie ľudí] Prebieha povolenie upozornenia na poznámky k osobe "
+"%(full_name)s"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli zakázané"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli povolené"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Hľadanie ľudí] Upozornenie o obnovení záznamu pre osobu %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Hľadanie ľudí] Aktualizácia stavu pre osobu %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr ""
+"[Hľadanie ľudí] Ste prihlásený/-á na odber aktualizácií stavu pre osobu "
+"%(full_name)s"
+
+msgid "external site; normal connection fee may apply"
+msgstr "externý web; môžu sa účtovať bežné poplatky za pripojenie"
+
+msgid "female"
+msgstr "žena"
+
+msgid "in test mode"
+msgstr "v testovacom režime"
+
+msgid "male"
+msgstr "muž"
+
+msgid "on"
+msgstr "dňa"
+
+msgid "other"
+msgstr "iné"
+

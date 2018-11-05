@@ -1,0 +1,311 @@
+/*
+ * Copyright 2010 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* All pages */
+
+body {
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  margin: 0 auto;
+  width: 24em;
+  max-width: 40em;
+  padding: 0;
+}
+
+body.facebook {
+  font-size: 10px;
+  width: 200px;
+  max-width: 200px;
+}
+
+h1 {
+  margin-top: 0.5em;
+  font-size: 14px;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 2px 0 2px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+h3, .header h1 {
+  font-size: 13px;
+  text-align: center;
+}
+
+h1 .repo {
+  white-space: nowrap;
+}
+
+body.facebook h3, body.facebook .header h1 {
+  margin: 0 0 5px 0;
+}
+
+h3.sub_title {
+  margin-top: -4px;
+  margin-bottom: 6px;
+}
+
+body.facebook h3.sub_title {
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+span.var {
+  font-style: italic;
+  color: green;
+}
+
+.header-notification {
+  color: #f00;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border: 1px solid #f00;
+  background: #ffe;
+}
+
+.end-multi-columns {
+  clear: both;
+}
+
+/* Language menu */
+
+div.languages {
+  float: {{end}};
+  font-size: smaller;
+  margin: 0;
+  padding: 0;
+}
+
+div.languages img {
+  cursor: pointer;
+}
+
+/* Forms */
+
+form {
+  margin: 0;
+}
+
+.mandatory {
+  font-size: 12px;
+  color: #f00;
+  font-weight: bold;
+}
+
+.hint {
+  font-weight: normal;
+  color: #000;
+  font-size: 12px;
+}
+
+/* Tables */
+
+tr {
+  vertical-align: baseline;
+}
+
+th, td {
+  padding: 1px;
+  text-align: {{start}};
+}
+
+tr.columns {
+  vertical-align: top;
+}
+
+table.person, table.note {
+  border: 1px solid #000;
+  margin-bottom: 1em;
+}
+
+table.fields {
+  width: 24em;
+}
+
+table.person tr.photo {
+  vertical-align: top;
+}
+
+tr.text, tr.description, tr.location, tr.other {
+  vertical-align: top;
+}
+
+label {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.tracking {
+  font-size: 9px;
+  color: #888;
+  text-align: {{end}};
+}
+
+table.input td {
+  white-space: nowrap;
+}
+
+textarea, input {
+  font-family: arial, monospace;
+  font-size: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+td.submit {
+  text-align: {{start}};
+}
+
+tr.address, tr.photo, tr.author, tr.location, tr.contact {
+  background: #eff1f6;
+}
+
+/* Footer */
+
+.disclaimer {
+  margin: 0 0 1em 0;
+  text-align: {{start}};
+  font-size: 10px;
+  color: #888;
+}
+
+body.facebook .disclaimer {
+  font-size: 8px;
+}
+
+.footer {
+  margin: 1em auto;
+  font-size: 10px;
+  text-align: center;
+}
+
+body.facebook .footer {
+  float: {{start}};
+}
+
+body.facebook .footer a {
+  display: block;
+  text-align: {{start}};
+}
+
+body.facebook .link-separator {
+  display: none;
+}
+
+/* Error message and info message pages */
+
+.error {
+  color: #f00;
+}
+
+.deactivation {
+  margin: 2em 1em;
+}
+
+/* Main page */
+
+.main {
+  font-size: 13px;
+}
+
+.main .stats {
+  text-align: center;
+  font-size: 10px;
+  color: #888;
+}
+
+.main .action-outer {
+  width: 9em;
+  height: 70px;
+  border-{{end}}: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  padding: 0.5em;
+}
+
+.main .action-outer.start {
+  background: #bea;
+  float: {{start}};
+}
+
+.main .action-outer.end {
+  background: #bcf;
+  float: {{end}};
+}
+
+.main .action-inner {
+  width: 9em;
+  height: 70px;
+  /* "display: table-cell" to make vertical-align work.
+     Vertical centering doesn't work on IE 6/7 because it doesn't support
+     "display: table-cell". But it would be acceptable. */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.main .action-outer a {
+  font-weight: bold;
+}
+
+.custom-message {
+  margin: 1em 0;
+}
+
+img {
+  display: block;
+  margin-{{start}}: auto;
+  margin-{{end}}: auto 
+}
+
+/* Query page */
+
+.query {
+  margin: 1em auto;
+  padding: 0.5em;
+  border-{{end}}: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  background: #bcf;
+}
+
+.query.seek {
+  background: #bea;
+}
+
+.query .label {
+  text-align: {{end}};
+  width: 6em;
+}
+
+.results-found {
+  background: lightGreen;
+}
+
+/* Embedding instructions */
+
+div.embed pre {
+  font-size: 80%;
+  padding: 0.5em;
+  background: #eee;
+  border: 1px solid #ddd;
+}

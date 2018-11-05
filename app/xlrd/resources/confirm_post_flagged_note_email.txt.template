@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}{% comment %}
+# i18n: Body text of an e-mail message sent to the e-mail addresses
+# i18n: of the author of a person record when the record is deleted.
+{% endcomment %}{% blocktrans %}
+
+Dear {{author_name}},
+You just entered a note on the record for "{{full_name}}".  
+To publish your note, follow this link within 3 days:
+
+   {{confirm_url}}
+
+{% endblocktrans %}{% endautoescape %}
+
+

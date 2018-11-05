@@ -1,0 +1,1713 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+msgid ""
+"\n"
+"\n"
+"  To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"  permission, a confirmation message will be sent to the record author.\n"
+"  If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"  Annak érdekében, hogy a megjegyzéseket csak a bejegyzés készítőjének \n"
+"    engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog "
+"egy megerősítő üzenetet. \n"
+"    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
+"kattintott.\n"
+"\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To enable "
+"notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s!\n"
+"\n"
+"Egy felhasználó kérte a megjegyzések engedélyezését\n"
+"„%(full_name)s” bejegyzésénél.\n"
+"\n"
+"A rendszer az Ön e-mail címét rögzítette a bejegyzés szerzőjeként. Ahhoz,"
+" hogy engedélyezze a megjegyzéseket ennél a bejegyzésnél, nyissa meg ezt "
+"a linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested that you disable notes on the record for\n"
+"\"%(full_name)s\".\n"
+"\n"
+"Your e-mail address is recorded as the author of this record.  To disable"
+" notes\n"
+"on this record, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s!\n"
+"\n"
+"Egy felhasználó kérte a megjegyzések letiltását\n"
+"„%(full_name)s” bejegyzésénél.\n"
+"\n"
+"A rendszer az Ön e-mail címét rögzítette a bejegyzés szerzőjeként. Ahhoz,"
+" hogy letiltsa a megjegyzéseket ennél a bejegyzésnél, nyissa meg ezt a "
+"linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"You just entered a note on the record for \"%(full_name)s\".  \n"
+"To publish your note, follow this link within 3 days:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s!\n"
+"Ön írt egy megjegyzést „%(full_name)s” bejegyzéséhez.  \n"
+"Megjegyzésének közzétételéhez nyissa meg ezt a linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+
+#, python-format
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than "
+"%(expiration_days)s days.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Figyelem: ez a bejegyzés kevesebb mint "
+"%(expiration_days)s napon belül lejár.\n"
+"                  "
+
+msgid ""
+"\n"
+"                    Warning: this record will expire in less than a day.\n"
+"                  "
+msgstr ""
+"\n"
+"                    Figyelem: ez a bejegyzés kevesebb mint egy napon "
+"belül lejár.\n"
+"                  "
+
+#, python-format
+msgid ""
+"\n"
+"                %(dup_count)s records selected\n"
+"              "
+msgstr ""
+"\n"
+"                %(dup_count)s bejegyzés kiválasztva\n"
+"              "
+
+#, python-format
+msgid ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+msgstr ""
+"\n"
+"              Learn more about Google\n"
+"              <a href=\"%(privacy_policy_url)s\" %(target_attr)s>Privacy "
+"Policy</a>.\n"
+"            "
+
+#, python-format
+msgid ""
+"\n"
+"            %(search_engine_name)s has search result(s) matching this "
+"query.\n"
+"          "
+msgstr ""
+"\n"
+"            A(z) %(search_engine_name)s rendszerében van a keresésnek "
+"megfelelő találat.\n"
+"          "
+
+#, python-format
+msgid ""
+"\n"
+"          Records Similar to: %(full_name)s\n"
+"        "
+msgstr ""
+"\n"
+"          A következőhöz hasonló bejegyzések: %(full_name)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"          Search Results for: %(query)s\n"
+"        "
+msgstr ""
+"\n"
+"          Találatok a következőre: %(query)s\n"
+"        "
+
+#, python-format
+msgid ""
+"\n"
+"        No results found for: %(query)s\n"
+"      "
+msgstr ""
+"\n"
+"        Nincs találat a következőre: %(query)s\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Biztosan törli „%(full_name)s” bejegyzését?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Biztosan letiltja „%(full_name)s” megjegyzéseit?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Biztosan letiltja a megjegyzéseket „%(full_name)s” bejegyzésénél?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Biztosan engedélyezi „%(full_name)s” megjegyzéseit?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Biztosan meg akarja változtatni „%(full_name)s” bejegyzésének "
+"lejárati dátumát?\n"
+"    "
+
+msgid ""
+"\n"
+"      Confirm your note\n"
+"    "
+msgstr ""
+"\n"
+"      A megjegyzés megerősítése\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Ha folytatja a törlést, akkor ez a bejegyzés többé nem lesz "
+"kereshető és látható ezen a webhelyen.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+msgstr ""
+"\n"
+"      Ha szeretné véglegesen törölni,\n"
+"      vegye fel a kapcsolatot az eredeti forrással.\n"
+"      Az eredeti bejegyzést itt tekintheti meg:\n"
+"      %(begin_tag)s%(source_name)s%(end_tag)s.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      The URL you entered doesn't look like a valid %(website)s profile "
+"URL.\n"
+"      Please go to this person's profile page on %(website)s, then copy "
+"and paste\n"
+"      that URL here.\n"
+"      "
+msgstr ""
+"\n"
+"      A beírt URL nem tűnik érvényes %(website)s profil-URL-nek.\n"
+"      Kérjük, nyissa meg a személy %(website)s profiloldalát, majd "
+"másolja be ide azt az URL-t.\n"
+"      "
+
+#, python-format
+msgid ""
+"\n"
+"      The record has been extended to %(expiry_date)s.\n"
+"    "
+msgstr ""
+"\n"
+"      A bejegyzést meghosszabbították eddig: %(expiry_date)s.\n"
+"    "
+
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"    "
+msgstr ""
+"\n"
+"      Ez a bejegyzés egy másik forrásból származó bejegyzés másolata.\n"
+"      A bejegyzést törölheti itt,\n"
+"      ám arra felhívjuk figyelmét,\n"
+"      hogy később kaphatunk róla egy másik másolatot az eredeti "
+"forrásból.\n"
+"    "
+
+msgid ""
+"\n"
+"    To ensure that notes are only disabled or enabled with the record "
+"author's\n"
+"    permission, a confirmation message will be sent to the record author."
+"\n"
+"    If you are the author, check your e-mail after clicking the button "
+"below.\n"
+"  "
+msgstr ""
+"\n"
+"    Annak érdekében, hogy a megjegyzéseket csak a bejegyzés készítőjének "
+"\n"
+"    engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog "
+"egy megerősítő üzenetet. \n"
+"    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
+"kattintott.\n"
+"  "
+
+msgid ""
+"\n"
+"  The Email address you entered is not valid.\n"
+"  "
+msgstr ""
+"\n"
+"  A megadott e-mail-cím nem érvényes.\n"
+"  "
+
+msgid ""
+"\n"
+"  The record will still be visible on this site, but no one will be able "
+"to post\n"
+"  further notes on it.\n"
+"  "
+msgstr ""
+"\n"
+"  A bejegyzés továbbra is látható lesz ezen a webhelyen, de senki sem fog"
+" tudni további megjegyzéseket fűzni hozzá.\n"
+"  "
+
+msgid ""
+"\n"
+"  To post your note, please enter your e-mail address below and follow "
+"the\n"
+"  confirmation link that you will receive.\n"
+"  "
+msgstr ""
+"\n"
+"  A megjegyzés közzétételéhez adja meg alább e-mail címét, majd nyissa "
+"meg a kapott megerősítő linket.\n"
+"  "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Egy felhasználó törölte „%(full_name)s” bejegyzését a %(site_url)s "
+"webhelyen.\n"
+"\n"
+"Azért értesítjük a törlésről, mert a rendszer ezt az e-mail-címet "
+"rögzítette a bejegyzéshez fűzött egyik megjegyzés szerzőjeként.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(full_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+msgstr ""
+"\n"
+"Egy felhasználó törölte „%(full_name)s” bejegyzését\n"
+"a %(site_url)s webhelyen.\n"
+"\n"
+"Azért értesítjük erről, mert a rendszer az Ön e-mail címét rögzítette a "
+"bejegyzés szerzőjeként.\n"
+
+#, python-format
+msgid ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"A rendszer %(days_until_deletion)s nap múlva véglegesen törli a "
+"bejegyzést.\n"
+
+#, python-format
+msgid ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+msgstr ""
+"\n"
+"MEGJEGYZÉS: Ha úgy véli, hogy a bejegyzést tévesen törölték, "
+"visszaállíthatja, ha a következő %(days_until_deletion)s napon belül "
+"felkeresi ezt a linket:\n"
+"\n"
+"    %(restore_url)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now disabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"A megjegyzések jelenleg nem engedélyezettek „%(full_name)s” "
+"bejegyzésénél. A bejegyzés megtekintéséhez\n"
+"nyissa meg ezt a linket:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Azért küldtük ezt az értesítést, mert a rendszer az Ön e-mail címét "
+"társította ehhez a személyi bejegyzéshez vagy a bejegyzés egy "
+"megjegyzéséhez.\n"
+
+#, python-format
+msgid ""
+"\n"
+"Notes are now enabled on the record for \"%(full_name)s\".  To view the "
+"record,\n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"A megjegyzések engedélyezettek „%(full_name)s” bejegyzésénél. A bejegyzés"
+" megtekintéséhez\n"
+"nyissa meg ezt a linket:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Azért küldtük ezt az értesítést, mert a rendszer az Ön e-mail címét "
+"társította ehhez a személyi bejegyzéshez vagy a bejegyzés egy "
+"megjegyzéséhez.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(full_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"„%(full_name)s” (korábban már törölt) bejegyzésének szerzője\n"
+"visszaállította a bejegyzést. A bejegyzés megtekintéséhez\n"
+"nyissa meg ezt a linket:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Azért küldtük ezt az értesítést, mert a rendszer az Ön e-mail címét "
+"társította ehhez a személyi bejegyzéshez vagy a bejegyzés egy "
+"megjegyzéséhez.\n"
+
+#, python-format
+msgid ""
+"\n"
+"There is a new note on the record for \"%(full_name)s\".\n"
+msgstr ""
+"\n"
+"Új megjegyzést írtak „%(full_name)s” bejegyzéséhez.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to notes on \"%(full_name)s\".\n"
+"\n"
+"You can view this record at\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Feliratkozott „%(full_name)s” állapotfrissítéseire.\n"
+"\n"
+"A bejegyzést a következő címen tekintheti meg:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"A leiratkozáshoz nyissa meg ezt a linket: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(kattintson a megjelenítéshez)"
+
+msgid "(unknown)"
+msgstr "(ismeretlen)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Üzenet ennek a személynek, vagy azoknak, akik őt keresik"
+
+msgid "A new API key has been created successfully."
+msgstr "Az új API-kulcs létrehozása sikeres volt."
+
+msgid "API Key Management"
+msgstr "API-kulcsok kezelése"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Nagyjából 1 hónap (30 nap) múlva"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Nagyjából 1 év (360 nap) múlva"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Nagyjából 2 hónap (60 nap) múlva"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Nagyjából 3 hónap (90 nap) múlva"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Nagyjából 6 hónap (180 nap) múlva"
+
+msgid "About Google Person Finder"
+msgstr "A Google Személykeresőről"
+
+#, python-format
+msgid "Added a record for: %(person_name)s"
+msgstr "Added a record for: %(person_name)s"
+
+msgid "Age"
+msgstr "Kor"
+
+msgid ""
+"All data entered in Person Finder is available to the public and usable "
+"by anyone. Google does not review or verify the accuracy of this data "
+"google.org/personfinder/global/tos"
+msgstr ""
+"A Személykeresőbe bevitt összes adat nyilvános, és bárki által "
+"felhasználható. A Google nem ellenőrzi vagy hitelesíti ezen adatok "
+"pontosságát (google.org/personfinder/global/tos)"
+
+msgid "Alternate family names"
+msgstr "Alternatív családnevek"
+
+msgid "Alternate given names"
+msgstr "Alternatív utónevek"
+
+msgid "Alternate names"
+msgstr "Alternatív nevek"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Biztos benne, hogy ez a megjegyzés nem spam?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Biztosan megjelöli ezt a megjegyzést spamként?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Biztosan helyreállítja ezt a törölt bejegyzést?"
+
+msgid "Atom feed of updates about this person"
+msgstr "A személy frissítéseinek Atom hírcsatornája"
+
+msgid "Author's e-mail address"
+msgstr "Szerző e-mail címe"
+
+msgid "Author's name"
+msgstr "Szerző neve"
+
+msgid "Author's phone number"
+msgstr "Szerző telefonszáma"
+
+msgid "Authorization key"
+msgstr "Engedélyezési kulcs"
+
+msgid "Back to results list"
+msgstr "Vissza a találatokhoz"
+
+msgid "Back to start"
+msgstr "Vissza az elejére"
+
+msgid ""
+"By marking this note as spam, you will make it hidden by default. It will"
+" still be a part of the record, but will require an extra click to view "
+"the contents of the note. Users will also be able to remove the spam mark"
+" from this note."
+msgstr ""
+"Ha spamként jelöli meg a jegyzetet, azzal alapértelmezés szerint el is "
+"rejti. A jegyzet továbbra is a bejegyzés része marad, de egy külön "
+"kattintásra lesz szükség a tartalmának a megtekintéséhez. A "
+"felhasználóknak lehetőségük lesz eltávolítani a spam jelölést a "
+"jegyzetről."
+
+msgid "By unmarking this note as spam, you will make it visible by default."
+msgstr ""
+"Ha a jegyzetről eltávolítja a spam jelölést, akkor alapértelmezés szerint"
+" láthatóvá teszi azt."
+
+msgid "CSV file"
+msgstr "CSV-fájl"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr "Nem található megjegyzés a következő azonosítóval: %(id)s"
+
+msgid "Cancel"
+msgstr "Mégse"
+
+msgid "City"
+msgstr "Város"
+
+msgid ""
+"Click here to see the terms of service (external site; normal connection "
+"fee may apply)"
+msgstr ""
+"Kattintson ide az általános szerződési feltételek megtekintéséhez (külső "
+"webhely; a szolgáltató normál kapcsolódási díjat számíthat fel)"
+
+msgid "Click here to view results."
+msgstr "Kattintson ide a találatok megtekintéséhez."
+
+msgid "Close window"
+msgstr "Ablak bezárása"
+
+msgid "Compare these records"
+msgstr "E bejegyzések összehasonlítása"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Másolja ki, majd illessze be a következő HTML-kódot, ha az eszközt el "
+"szeretné helyezni a webhelyén"
+
+msgid "Create a new API key"
+msgstr "Új API-kulcs létrehozása"
+
+msgid "Create a new record"
+msgstr "Új bejegyzés létrehozása"
+
+msgid "Create a new record for"
+msgstr "Új bejegyzés létrehozása a következőről:"
+
+msgid "Crisis events"
+msgstr "Válsághelyzetek"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "A dátum nem lehet jövőbeli. Kérjük, lépjen vissza és próbálja újra."
+
+msgid "Date of birth"
+msgstr "Születési dátum"
+
+msgid "Delete this record"
+msgstr "Bejegyzés törlése"
+
+msgid "Describe how to identify this person."
+msgstr "Írja le, hogyan azonosítható ez a személy."
+
+msgid "Description"
+msgstr "Leírás"
+
+msgid "Desktop version"
+msgstr "Asztali verzió"
+
+msgid "Developers"
+msgstr "Fejlesztők"
+
+msgid "Disable notes on this record"
+msgstr "Megjegyzések letiltása a bejegyzésen"
+
+msgid "Does this person have profile pages at other websites?"
+msgstr "Ennek a személynek vannak profiloldalai más webhelyeken?"
+
+#, python-format
+msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
+msgstr ""
+"Töltse le %(begin_link)sezt az Excel-sablont%(end_link)s, és adjon hozzá "
+"sorokat"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "E-mail address"
+msgstr "E-mail cím"
+
+msgid "Edit"
+msgstr "Szerkesztés"
+
+msgid "Embedding the Application"
+msgstr "Alkalmazás beágyazása"
+
+msgid "Enable notes on this record"
+msgstr "Megjegyzések engedélyezése a bejegyzésen"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
+
+msgid "Enter the person's given and family names."
+msgstr "Adja meg a személy utó- és családnevét."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Adja meg a személy nevét, vagy nevének egy részét."
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Adja meg a személy nevét, nevének egy részét vagy mobiltelefonszámát."
+
+msgid "Enter the person's name."
+msgstr "Adja meg a személy nevét."
+
+msgid "Expiry"
+msgstr "Lejár"
+
+msgid "Expiry date of this record"
+msgstr "A bejegyzés lejáratának dátuma"
+
+#, python-format
+msgid ""
+"Extend expiration date by %(extension_days)s days\n"
+"                "
+msgstr ""
+"Lejárati dátum meghosszabbítása %(extension_days)s nappal\n"
+"                "
+
+msgid "Family name"
+msgstr "Családnév"
+
+msgid "Family name (required)"
+msgstr "Családi név (kötelező)"
+
+msgid "Feed of updates about this person"
+msgstr "A személy frissítéseinek hírcsatornája"
+
+msgid "Feedback"
+msgstr "Visszajelzés"
+
+msgid "Follow this link to create a new record"
+msgstr "Nyissa meg ezt a linket új bejegyzés létrehozásához"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+"Nem mobiltelefonok esetében, kérjük, használja az NTT által biztosított "
+"171-szolgáltatást."
+
+#, python-format
+msgid "From: %(home_location)s"
+msgstr "A következő helyről: %(home_location)s"
+
+msgid "Full name"
+msgstr "Teljes név"
+
+msgid "Given name"
+msgstr "Utónév"
+
+msgid "Given name (required)"
+msgstr "Utónév (kötelező)"
+
+msgid "Google Person Finder"
+msgstr "Google Személykereső"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Személyesen beszélt ezzel a személlyel a katasztrófa UTÁN? (szükséges)"
+
+#, python-format
+msgid "Here is %(begin_tag)sa sample CSV file%(end_tag)s you can edit and upload"
+msgstr ""
+"Itt van egy szerkeszthető és feltölthető %(begin_tag)sminta "
+"CSV-fájl%(end_tag)s"
+
+msgid "Hide Map"
+msgstr "Térkép elrejtése"
+
+msgid "Hide note"
+msgstr "Megjegyzés elrejtése"
+
+msgid "Home Address"
+msgstr "Otthoni cím"
+
+msgid "Home address"
+msgstr "Otthoni cím"
+
+msgid "Home country"
+msgstr "Ország"
+
+msgid "How can this person be reached now?"
+msgstr "Hogyan érhető el ez a személy jelenleg?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Hogyan léphetnek kapcsolatba Önnel azok, akik érdeklődnek a személy iránt?"
+
+msgid "I Have Information About This Person"
+msgstr "Vannak információim erről a személyről"
+
+msgid "I am seeking information"
+msgstr "Információt keresek"
+
+msgid "I am this person"
+msgstr "Én vagyok ez a személy"
+
+msgid "I do not want any more updates on this record."
+msgstr "Nem kérek több frissítést ezzel a bejegyzéssel kapcsolatban."
+
+msgid "I do not want my information online anymore."
+msgstr "Szeretném eltávolítani az adataimat az internetről."
+
+msgid "I have information about someone"
+msgstr "Információm van valakiről"
+
+msgid "I have reason to think this person is missing"
+msgstr "Okom van feltételezni, hogy ez a személy eltűnt"
+
+msgid "I have received information that this person is alive"
+msgstr "Információm van róla, hogy ez a személy életben van"
+
+msgid "I have received information that this person is dead"
+msgstr "Információm van róla, hogy ez a személy meghalt"
+
+msgid "I have received spam due to this note."
+msgstr "Spamet kaptam emiatt a megjegyzés miatt."
+
+msgid "I have received spam."
+msgstr "Spamet kaptam."
+
+msgid "I prefer not to specify."
+msgstr "Nem szeretném megadni."
+
+msgid "I'm looking for someone"
+msgstr "Keresek valakit"
+
+msgid "Identify who you are looking for"
+msgstr "Azonosítsa be, kit keres"
+
+msgid "Identify who you have information about"
+msgstr "Azonosítsa be, kiről rendelkezik információval"
+
+msgid "Identifying information"
+msgstr "Azonosítási információ"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Ha ezek közül egyik bejegyzés sem illik arra a személyre, akire Ön "
+"gondolt, alább kattintva létrehozhat egy új bejegyzést."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to disable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ha Ön a bejegyzés szerzője, nézze meg e-mailjeit, és keresse meg a "
+"linket, amellyel megerősítheti, hogy letiltja a megjegyzéseket ennél a "
+"bejegyzésnél. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti"
+" kérelmét."
+
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ha Ön a bejegyzés szerzője, nézze meg e-mailjeit, és keresse meg a "
+"linket, amellyel megerősítheti, hogy engedélyezi a megjegyzéseket ezen a "
+"bejegyzésen. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti "
+"kérelmét."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Ha rendelkezik fényképpel erről a személyről, töltse fel vagy adja meg az"
+" URL-címét."
+
+msgid "In Excel, use File &gt; Save as... and save in CSV format (.csv)"
+msgstr ""
+"Excelben használja a Fájl &gt; Mentés másként… lehetőséget, és mentsen "
+"CSV formátumban (.csv)"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Érvénytelen e-mail-cím. Próbálja újra."
+
+msgid "Language selection"
+msgstr "Nyelv kiválasztása"
+
+msgid "Last known location"
+msgstr "Utolsó ismert hely"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Link to profile page"
+msgstr "Link a profiloldalra"
+
+msgid "List API keys"
+msgstr "API-kulcsok listázása"
+
+msgid "Mark records as duplicate"
+msgstr "Bejegyzések megjelölése ismétlődésként"
+
+msgid "Mark the selected records as duplicate"
+msgstr "A kiválasztott adatok megjelölése ismétlődőként"
+
+msgid "Message (required)"
+msgstr "Üzenet (szükséges)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+
+msgid "Missing person's current contact information"
+msgstr "Az eltűnt személy jelenlegi elérhetőségei"
+
+msgid "Missing person's current e-mail address"
+msgstr "Az eltűnt személy jelenlegi e-mail címe"
+
+msgid "Missing person's current phone number"
+msgstr "Az eltűnt személy jelenlegi telefonszáma"
+
+#, python-format
+msgid "More at: %(url)s"
+msgstr "Továbbiak: %(url)s"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Fejlesztők számára további információ "
+"%(developers_link_html)sitt%(link_end_html)s található."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Több mint 100 találat; az első 100 megjelenítve. Próbáljon többet megadni"
+" a névből."
+
+msgid "Name"
+msgstr "Név"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Meg kell adnia egy nevet. Kérjük, lépjen vissza és próbálja újra."
+
+msgid "Neighborhood"
+msgstr "Környék"
+
+msgid "No"
+msgstr "Nem"
+
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr "Nem található szerzői e-mail-cím a következő bejegyzéshez: %(id)s."
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr "A szolgáltató üzenőtábla-szolgáltatásában nincs regisztrált üzenet."
+
+#, python-format
+msgid "No note with ID: %(id_str)s."
+msgstr "Nem létezik megjegyzés a következő azonosítóval: %(id_str)s."
+
+msgid "No notes have been posted"
+msgstr "Nem lett közzétéve megjegyzés"
+
+msgid "No person id was specified."
+msgstr "Nincs megadva személyi azonosító."
+
+#, python-format
+msgid "No person with ID: %(id_str)s."
+msgstr "Nem létezik személy a következő azonosítóval: %(id_str)s."
+
+#, python-format
+msgid "No results found for: %(query)s"
+msgstr "Nincs találat a következőre: %(query)s"
+
+msgid "No such Authorization entity."
+msgstr "Nincs ilyen engedélyező entitás."
+
+msgid ""
+"Not authorized to post notes with the status \"I have received "
+"information that this person is dead\"."
+msgstr ""
+"A következő állapottal nem lehet jegyzetet közzétenni: „Arról értesültem,"
+" hogy ez a személy elhalálozott”."
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+"„Believed_dead” (halottnak vélt) állapottal nem tehet közzé "
+"megjegyzéseket."
+
+msgid "Not spam"
+msgstr "Nem spam"
+
+msgid "Note author"
+msgstr "A megjegyzés szerzője"
+
+msgid "Note text"
+msgstr "A megjegyzés szövege"
+
+msgid "Notes for a possible duplicate"
+msgstr "Feljegyzés lehetséges ismétlődéssel kapcsolatban"
+
+msgid "Notes for this person"
+msgstr "Megjegyzések ehhez a személyhez"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "Szám vagy tartomány (pl. 20–30)"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Vagy adja hozzá webhelyéhez %(gadget_link_html)sGoogle-"
+"modulként%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Eredeti URL"
+
+msgid "Original author's name"
+msgstr "Eredeti szerző neve"
+
+msgid "Original posting date"
+msgstr "Az eredeti közzététel dátuma"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Az eredeti közzétételi dátum nem ÉÉÉÉ-HH-NN formátumban van, vagy nem "
+"létező dátum. Kérjük, lépjen vissza és próbálja újra."
+
+msgid "Original site name"
+msgstr "Az eredeti webhely neve"
+
+msgid "Other website"
+msgstr "Másik webhely"
+
+msgid ""
+"PLEASE NOTE: All data entered is available to the public and usable by "
+"anyone.  Google does not review or verify the accuracy of this data."
+msgstr ""
+"FIGYELEM: Minden bevitt adat nyilvános, és bárki által felhasználható. A "
+"Google nem ellenőrzi vagy hitelesíti ezen adatok pontosságát."
+
+msgid "Person Finder"
+msgstr "Személykereső"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Phone number"
+msgstr "Telefonszám"
+
+msgid "Photo"
+msgstr "Fénykép"
+
+msgid "Photo (external site; normal connection fee may apply)"
+msgstr ""
+"Fotó (külső webhely; a szolgáltató normál kapcsolódási díjat számíthat "
+"fel)"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"A feltöltött fénykép nem felismerhető formátumban van. Kérjük, lépjen "
+"vissza és próbálja újra."
+
+msgid "Physical characteristics"
+msgstr "Fizikai jellemzők"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"disaster, or change the \"Status of this person\" field."
+msgstr ""
+"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a "
+"katasztrófát követően, vagy módosítsa „A személy állapota” mezőt."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a "
+"földrengés után, vagy módosítsa a „Személy állapota” mezőt."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Kérjük, ellenőrizze, hátha egyezik a személlyel, akiről bejelentést kíván"
+" tenni."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Kérjük, erősítse meg e-mail címét, hogy feliratkozhasson a frissítésekre"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Kérjük, adja meg e-mail címét, hogy feliratkozhasson a frissítésekre"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Kérjük, mondja el, miből gondolja, hogy ők azonos személyek"
+
+msgid "Please fill in all the required fields."
+msgstr "Töltse ki az összes kötelező mezőt."
+
+msgid "Please fill in your email address."
+msgstr "Kérjük, adja meg az e-mail címét."
+
+msgid "Please provide an valid email address."
+msgstr "Kérjük, érvényes e-mail-címet adjon meg."
+
+msgid "Possible duplicates"
+msgstr "Lehetséges duplikátumok"
+
+msgid "Possible duplicates found."
+msgstr "Lehetséges ismétlődések érzékelve."
+
+msgid "Postal or zip code"
+msgstr "Postai irányítószám"
+
+msgid "Posted by"
+msgstr "Közzétette:"
+
+msgid "Proceed"
+msgstr "Továbblépés"
+
+msgid "Profile Pages"
+msgstr "Profiloldalak"
+
+msgid "Profile page"
+msgstr "Profiloldal"
+
+msgid "Provide information"
+msgstr "Információ megadása"
+
+msgid "Provide information about this person"
+msgstr "Információ megadása erről a személyről"
+
+msgid "Provided by:"
+msgstr "Megadta:"
+
+msgid "Province or state"
+msgstr "Tartomány vagy állam"
+
+msgid "Reason for deletion:"
+msgstr "A törlés oka:"
+
+msgid "Reason for disabling notes:"
+msgstr "A megjegyzések letiltásának oka:"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "Bejegyzések a következővel egyező névvel és címmel: „%(query)s”"
+
+msgid "Remove"
+msgstr "Eltávolítás"
+
+msgid "Report spam"
+msgstr "Spam jelentése"
+
+#, python-format
+msgid "Return to the record for %(full_name)s."
+msgstr "Visszatérés %(full_name)s bejegyzéséhez."
+
+msgid "Reveal note"
+msgstr "Megjegyzés megjelenítése"
+
+msgid "Save this record"
+msgstr "Bejegyzés mentése"
+
+msgid "Search for this person"
+msgstr "A személy keresése"
+
+#, python-format
+msgid "See %(begin_tag)sthe wiki%(end_tag)s for more instructions"
+msgstr "További útmutatásért olvassa el a %(begin_tag)swikit%(end_tag)s"
+
+msgid "Select a website to add a profile page..."
+msgstr "Profiloldal hozzáadásához válasszon egy webhelyet..."
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr ""
+"Válasszon ki legfeljebb 3 bejegyzést, amelyeket ismétlődésként kíván "
+"megjelölni:"
+
+msgid "Send email"
+msgstr "E-mail küldése"
+
+msgid "Sex"
+msgstr "Nem"
+
+msgid "Show Map"
+msgstr "Térkép megjelenítése"
+
+msgid "Show sensitive information"
+msgstr "Bizalmas adatok megjelenítése"
+
+msgid "Show who marked these duplicates"
+msgstr "Azok megjelenítése, akik ismétlődőként jelölték meg ezeket"
+
+msgid "Sign in"
+msgstr "Bejelentkezés"
+
+msgid "Sign out"
+msgstr "Kilépés"
+
+msgid "Skip"
+msgstr "Kihagyás"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Valakinek információja van róla, hogy ez a személy életben van"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Valakinek információja van róla, hogy ez a személy meghalt"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Valaki bejelentette, hogy ez a személy eltűnt"
+
+msgid "Someone is seeking information about this person"
+msgstr "Valaki információ után tudakozódik erről a személyről"
+
+msgid "Source of Record"
+msgstr "A bejegyzés forrása"
+
+msgid "Source of this record"
+msgstr "A bejegyzés forrása"
+
+msgid "Status"
+msgstr "Állapot"
+
+#, python-format
+msgid "Status of %(full_name)s "
+msgstr "%(full_name)s állapota "
+
+msgid "Status of Person"
+msgstr "A személy állapota"
+
+msgid "Status of this person:"
+msgstr "A személy állapota:"
+
+msgid "Street name"
+msgstr "Utca neve"
+
+msgid "Street name only, no number"
+msgstr "Csak az utca neve, a házszám nem"
+
+msgid "Submit"
+msgstr "Küldés"
+
+msgid "Subscribe"
+msgstr "Feliratkozás"
+
+#, python-format
+msgid "Subscribe to updates about %(full_name)s"
+msgstr "Feliratkozás a vele kapcsolatos frissítésekre: %(full_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Feliratkozás az ezzel a személlyel kapcsolatos frissítésekre"
+
+msgid "Switch to address"
+msgstr "Váltás a címre"
+
+msgid "Switch to lat/long"
+msgstr "Váltás a szélességi/hosszúsági adatokra"
+
+msgid "Terms of Service"
+msgstr "Általános Szerződési Feltételek"
+
+msgid "The API key has been updated successfully."
+msgstr "Az API-kulcs frissítése sikeres volt."
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Az utónév és a vezetéknév is szükséges. Kérjük, lépjen vissza és próbálja"
+" újra."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Meg kell adnia az eredeti szerző nevét. Kérjük, lépjen vissza és próbálja"
+" újra."
+
+msgid "The author has disabled notes on this record."
+msgstr "A szerző letiltotta a megjegyzéseket ezen a bejegyzésen."
+
+msgid "The author has disabled status updates on this record."
+msgstr "A szerző letiltotta az állapotfrissítéseket ezen a bejegyzésen."
+
+#, python-format
+msgid "The note for %(full_name)s has been added"
+msgstr "A következő személyhez tartozó jegyzet hozzáadva: %(full_name)s"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
+
+msgid "The record cannot be extended."
+msgstr "A bejegyzést nem lehet meghosszabbítani."
+
+#, python-format
+msgid "The record for %(full_name)s has been registered"
+msgstr "A következő személyhez tartozó rekord regisztrálva: %(full_name)s"
+
+msgid "The record has been deleted."
+msgstr "A bejegyzés törölve."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"A kiválasztott állapot azt jelzi, hogy Ön ez a személy. Ha ez így van, "
+"akkor válassza az „Igen” lehetőséget is annak jelzésére, hogy kapcsolatba"
+" lépett ezzel a személlyel."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr "A(z) %(token)s token érvénytelen volt"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr "A(z) %(token)s token érvénytelen volt."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "%(num_results)s létező bejegyzésben hasonló a név."
+
+msgid "There are some existing records with similar names."
+msgstr "Néhány létező bejegyzésben hasonló a név."
+
+msgid "There is one existing record with a similar name."
+msgstr "Már van egy bejegyzés, amelyben hasonló a név."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Probléma lépett fel a kép feldolgozása során. Kérjük, próbálkozzon másik "
+"képpel."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Hiba lépett fel a kérelme feldolgozása során. Elnézést kérünk a "
+"kellemetlenségért. Adminisztrátoraink felderítik a hiba forrását, ám "
+"kérjük, ellenőrizze, hogy a kérelem formátuma helyes-e."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Ezek a modulok az %(apache_link_html)sApache 2.0 licenc%(link_end_html)s "
+"alatt állnak rendelkezésre."
+
+msgid "This is a new record."
+msgstr "Ez egy új bejegyzés."
+
+msgid "This link is invalid."
+msgstr "Ez a link érvénytelen."
+
+msgid "This note has been marked as spam."
+msgstr "A megjegyzés megjelölve spamként."
+
+msgid "This note is inappropriate."
+msgstr "Ez a megjegyzés nem megfelelő."
+
+msgid "This note is incorrect or untrue."
+msgstr "Ez a megjegyzés téves vagy valótlan."
+
+msgid "This note is spam."
+msgstr "Ez a megjegyzés spam."
+
+msgid "This person has been in contact with someone"
+msgstr "Ez a személy kapcsolatba lépett valakivel"
+
+msgid "This person has posted a message"
+msgstr "Ez a személy küldött egy üzenetet"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "A személy bejegyzése nem létezik, vagy törölték."
+
+msgid "This record has served its purpose."
+msgstr "Ez a bejegyzés elérte célját."
+
+msgid "This record is a duplicate of"
+msgstr "Ez a bejegyzés a következő duplikátuma:"
+
+msgid "This record is copied from another source."
+msgstr "Ezt a bejegyzést egy másik forrásból másolták."
+
+msgid "This record is inappropriate."
+msgstr "Ez a bejegyzés nem megfelelő."
+
+msgid "This record is spam."
+msgstr "Ez a bejegyzés spam."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 24 hours old are deleted."
+msgstr ""
+"Ez az adattár jelenleg tesztüzemmódban van. A tesztüzemmód során a "
+"rendszer törli a 24 óránál régebbi bejegyzéseket."
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+"Ha fotót szeretne csatolni ehhez a megjegyzéshez, töltse fel vagy adja "
+"meg az URL-jét."
+
+msgid "To delete your data, access Person Finder from your desktop."
+msgstr "Az adatok törléséhez nyissa meg a Személykeresőt az asztalról."
+
+msgid "To unsubscribe, follow this link"
+msgstr "Leiratkozáshoz nyissa meg ezt a linket"
+
+msgid "To view or add information, select a name below."
+msgstr ""
+"Információ megtekintéséhez vagy hozzáadásához válasszon ki egy nevet az "
+"alábbiak közül."
+
+msgid ""
+"Type an address or open the map below and indicate the location by "
+"clicking on the map."
+msgstr ""
+"Írja be a címet, vagy nyissa meg alább a térképet, majd tüntesse fel a "
+"helyet a térképre kattintva."
+
+msgid "Type an address."
+msgstr "Írja be a címet."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "Az eredeti bejegyzés URL-je"
+
+msgid "Unspecified"
+msgstr "Meghatározatlan"
+
+msgid "Update an existing key"
+msgstr "Meglévő kulcs frissítése"
+
+msgid "Upload"
+msgstr "Feltöltés"
+
+msgid "Upload notes in CSV format"
+msgstr "Jegyzetek feltöltése CSV formátumban"
+
+msgid "Upload person records in CSV format"
+msgstr "Személyi adatok feltöltése CSV formátumban"
+
+msgid "Upload your CSV file below"
+msgstr "Töltse fel alább a CSV-fájlt"
+
+msgid "Use current location"
+msgstr "Jelenlegi hely használata"
+
+msgid "View the record"
+msgstr "Bejegyzés megtekintése"
+
+msgid "We have nothing matching your search."
+msgstr "Semmi sem egyezik a keresésével."
+
+msgid "What is this person's name?"
+msgstr "Mi a személy neve?"
+
+msgid "When should this record disappear?"
+msgstr "Meddig maradjon meg ez a bejegyzés?"
+
+msgid "Where did this information come from?"
+msgstr "Honnan származik ez az információ?"
+
+msgid ""
+"While test mode is in effect, records that are over 24 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"A tesztüzemmód során a 24 óránál régebbi felvételeket a rendszer a "
+"lejárati dátumtól függetlenül törli."
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
+"A tesztüzemmód során a 6 óránál régebbi bejegyzéseket a rendszer a "
+"lejárati dátumtól függetlenül törli."
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid "Yes, ask the record author to disable notes"
+msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy tiltsa le a megjegyzéseket"
+
+msgid "Yes, ask the record author to enable notes"
+msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy engedélyezze a megjegyzéseket"
+
+msgid "Yes, delete the record"
+msgstr "Igen, törlöm a bejegyzést"
+
+msgid "Yes, disable notes on this record."
+msgstr "Igen, letiltom a megjegyzéseket a bejegyzésen."
+
+msgid "Yes, extend the record"
+msgstr "Igen, meghosszabbítom a bejegyzést"
+
+msgid "Yes, restore this record"
+msgstr "Igen, helyreállítom a bejegyzést"
+
+msgid "Yes, these are the same person"
+msgstr "Igen, ők azonos személyek"
+
+msgid "Yes, update the note"
+msgstr "Igen, frissítem a megjegyzést"
+
+msgid "You are already subscribed. "
+msgstr "Már feliratkozott. "
+
+msgid "You are already unsubscribed."
+msgstr "Már leiratkozott."
+
+#, python-format
+msgid "You are currently signed in as %(user_email)s."
+msgstr "Jelenleg %(user_email)s e-mail címmel van bejelentkezve."
+
+msgid "You are not currently signed in."
+msgstr "Jelenleg nincs bejelentkezve."
+
+#, python-format
+msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
+msgstr "%(begin_tag)sMegtekintheti a bejegyzést%(end_tag)s, mielőtt törölné."
+
+#, python-format
+msgid ""
+"You can subscribe to updates about %(full_name)s by entering your e-mail "
+"address here"
+msgstr ""
+"Feliratkozhat a következő személlyel kapcsolatos új információk "
+"fogadására: %(full_name)s. Ehhez itt adja meg e-mail-címét"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "A következő címen tekintheti meg a teljes bejegyzést: %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Sikeresen feliratkozott."
+
+msgid "You have successfully unsubscribed."
+msgstr "Sikeresen leiratkozott."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+"Azért kapta ezt az üzenetet, mert feliratkozott a következő személlyel "
+"kapcsolatos állapotfrissítésekre:\n"
+
+msgid "Your e-mail address"
+msgstr "Az Ön e-mail címe"
+
+msgid "Your e-mail address:"
+msgstr "Az Ön e-mail címe:"
+
+msgid "Your email"
+msgstr "Az Ön e-mail címe"
+
+msgid "Your name (required)"
+msgstr "Az Ön neve (kötelező)"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Az „Önről” részben az Ön neve szükséges. Kérjük, lépjen vissza és "
+"próbálja újra."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"A „Forrás” részben az Ön neve szükséges. Kérjük, lépjen vissza és "
+"próbálja újra."
+
+msgid "Your phone number"
+msgstr "Az Ön telefonszáma"
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+"Kérését sikeresen feldolgozták. Kérjük, ellenőrizze beérkezett üzeneteit,"
+" és a beágyazott URL megnyitásával erősítse meg, hogy közzéteszi-e "
+"megjegyzését."
+
+#, python-format
+msgid "[Person Finder] Confirm your note on \"%(full_name)s\""
+msgstr "[Személykereső] Megjegyzés megerősítése – „%(full_name)s”"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(full_name)s\""
+msgstr "[Személykereső] Értesítés „%(full_name)s” törléséről"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(full_name)s\"?"
+msgstr ""
+"[Személykereső] Letiltja a megjegyzéseket a következő személynél: "
+"„%(full_name)s”?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
+msgstr ""
+"[Személykereső] Engedélyezi a megjegyzéseket a következő személynél: "
+"„%(full_name)s”?"
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
+msgstr ""
+"[Személykereső] Megjegyzésekről szóló értesítés engedélyezése "
+"„%(full_name)s” esetében"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Személykereső] A megjegyzések le vannak tiltva „%(full_name)s” esetében"
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
+msgstr "[Személykereső] A megjegyzések engedélyezettek „%(full_name)s” esetében"
+
+#, python-format
+msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
+msgstr "[Személykereső] Értesítés „%(full_name)s” bejegyzésének helyreállításáról"
+
+#, python-format
+msgid "[Person Finder] Status update for %(full_name)s"
+msgstr "[Személykereső] Állapotfrissítés a következő személynél: %(full_name)s"
+
+#, python-format
+msgid "[Person Finder] You are subscribed to status updates for %(full_name)s"
+msgstr "[Személykereső] Feliratkozott %(full_name)s állapotfrissítéseire"
+
+msgid "external site; normal connection fee may apply"
+msgstr "külső webhely; a szolgáltató normál kapcsolódási díjat számíthat fel"
+
+msgid "female"
+msgstr "nő"
+
+msgid "in test mode"
+msgstr "tesztüzemmódban"
+
+msgid "male"
+msgstr "férfi"
+
+msgid "on"
+msgstr "dátum:"
+
+msgid "other"
+msgstr "egyéb"
+

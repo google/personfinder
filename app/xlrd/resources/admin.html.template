@@ -1,0 +1,991 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the repository settings page (see admin.py).                #}
+
+{% extends "admin-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<script>
+
+//TODO: move to object-oriented!!
+//TODO: Put all JSON data into a single JSON e.g., var JSON_DATA.
+
+  {# NOTE: Directly embedding JSON like this can cause an XSS vulnerability: #}
+  {#     var ALL_VIEW_CONFIG = {{all_view_config_json|safe|default:'[]'}}; #}
+  {#   If the JSON contains "<\/script>", it is interpreted as the end of #}
+  {#   the script tag. "escapejs" filter escapes the tag. #}
+  var LANGUAGES = JSON.parse(
+      "{{view_config_json.language_menu_options|default:'[]'|escapejs}}");
+  var LANGUAGE_EXONYMS = JSON.parse("{{language_exonyms_json|escapejs}}");
+  var ALL_VIEW_CONFIG =
+      JSON.parse("{{all_view_config_json|default:'[]'|escapejs}}");
+  var MULTILINGUAL_TABLE_IDS = [
+    'start_page_custom_htmls',
+    'results_page_custom_htmls',
+    'view_page_custom_htmls',
+    'seek_query_form_custom_htmls',
+    'footer_custom_htmls'
+  ];
+
+  /* Validates the settings and languages and prepares them as JSON to POST. */
+  function validate_settings() {
+    //find all languages that the user specified with "Use?" checkboxes and
+    //their associated titles.  Only allows titles from used languages.
+    var used_languages = [];
+    var language_code_index_map = {};
+    //there is a title row in the table, so the dropdowns are 1-indexed
+    for (var dropdown_index = 1;
+         $('repo_titles_language_selection_' + dropdown_index) != null;
+         dropdown_index++) {
+      var language_code = $('repo_titles_language_selection_' +
+                             dropdown_index).value;
+      if (language_code == 'unused' ||
+          language_code_index_map[language_code] !== undefined) {
+        continue;
+      }
+      language_code_index_map[language_code] = dropdown_index;
+      used_languages.push(language_code);
+    }
+
+    // Copy the dropdowns and the titles into the text boxes that will
+    // actually be POSTed (language_menu_options and repo_titles).
+    $('language_menu_options').value = JSON.stringify(used_languages);
+
+    var repo_titles = {};
+    for (var language_code in language_code_index_map) {
+      var index = language_code_index_map[language_code];
+      var language_value = $('repo_titles_language_value_' + index).value
+      repo_titles[language_code] = language_value;
+    }
+    $('repo_titles').value = JSON.stringify(repo_titles);
+
+    for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
+      var custom_messages = {};
+      var table_id = MULTILINGUAL_TABLE_IDS[id_num];
+      for (var language_code in language_code_index_map) {
+        var index = language_code_index_map[language_code];
+        var language_value = $(table_id + '_language_value_' + index).value;
+        custom_messages[language_code] = language_value;
+      }
+      $(table_id).value = JSON.stringify(custom_messages);
+    }
+    return true;
+  }
+
+  function get_selected_language_option(row_number) {
+    var selected_language_codes =
+        $('repo_titles_language_selection_' + row_number);
+    var selected_index = selected_language_codes.selectedIndex;
+    var selected_language_option = selected_language_codes[selected_index];
+    return selected_language_option;
+  }
+
+  function validate_selected_languages(row_number) {
+    var used_languages = {};
+    var language_num = $('repo_titles_table').rows.length;
+    for (var index = 1; index < language_num; index++) {
+      var language_code = get_selected_language_option(index).value;
+      if (language_code != 'unused' && used_languages[language_code] != null) {
+        alert('You entered the same language!!');
+      }
+      used_languages[language_code] = 1;
+    }
+  }
+
+  function escape_html(str) {
+    var escape_table = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;',
+      '\'': '&#x27;',
+    };
+    var escaped_str = str.replace(/[<>&"\']/g, function (match) {
+      return escape_table[match];
+    });
+    return escaped_str;
+  }
+
+  function update_language_selected(row_number) {
+    var selected_language = get_selected_language_option(row_number).text;
+    var language_selected_elements = document.getElementsByClassName(
+                                     'language_selected_' + row_number);
+    var escaped_language = escape_html(selected_language);
+    for (var i = 0; i < language_selected_elements.length; i++) {
+      language_selected_elements[i].innerHTML = escaped_language;
+    }
+  }
+
+  /* Adds a row to the languages table so that the user can add a new language
+   * and give it a title.
+   * Returns the number of the row that was added
+   */
+  function add_language_to_repo_titles_table() {
+    var table = $('repo_titles_table');
+    var iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+    var cur_col = 0;
+
+    //add the 'x'
+    var x_col = row.insertCell(cur_col++);
+    var x_link = document.createElement('a');
+    var x_link_text = document.createTextNode('x');
+    x_link.href = 'JavaScript:void(0);'
+    x_link.onclick = function() {remove_language(iteration)};
+    x_link.appendChild(x_link_text);
+    x_col.appendChild(x_link);
+
+    //add the languages dropdown
+    var languages_col = row.insertCell(cur_col++);
+    var languages = document.createElement('select');
+    languages.id = 'repo_titles_language_selection_' + iteration;
+    languages.onchange = function() {
+        update_language_selected(iteration);
+        validate_selected_languages(iteration);
+    };
+
+    //add a blank option to display basic help text
+    var blank_option = document.createElement('option');
+    blank_option.text = "Choose a Language";
+    blank_option.value = "unused";
+    languages.appendChild(blank_option);
+
+    //add every other supported language as an option
+    for (var lang_num = 0; lang_num < LANGUAGE_EXONYMS.length; lang_num++) {
+      var code = LANGUAGE_EXONYMS[lang_num].code;
+      var exonym = LANGUAGE_EXONYMS[lang_num].exonym;
+      var select_display = exonym + ' (' + code + ')';
+      var option = document.createElement('option');
+      option.text = select_display;
+      option.value = code;
+      languages.appendChild(option);
+    }
+    languages_col.appendChild(languages);
+
+    //add the title box
+    var title_col = row.insertCell(cur_col++);
+    var title = document.createElement('input');
+    title.type = 'text';
+    title.id = 'repo_titles_language_value_' + iteration;
+    title_col.appendChild(title);
+    return iteration;
+  }
+
+  // Adds a language in custom_message_table.
+  function add_language_to_custom_message_table(table_id, language) {
+    var table = $(table_id + '_table');
+    var iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+    var cur_col = 0;
+
+    var selected_language_col = row.insertCell(cur_col++);
+    var selected_language = document.createElement('span');
+    var selected_language_text = document.createTextNode(language);
+    selected_language.className = 'language_selected_' + iteration;
+    selected_language.appendChild(selected_language_text);
+    selected_language_col.style.verticalAlign = 'top';
+    selected_language_col.appendChild(selected_language);
+
+    var title_col = row.insertCell(cur_col++);
+    var title = document.createElement('textarea');
+    title.cols = 72;
+    title.id = table_id + '_language_value_' + iteration;
+    title_col.appendChild(title);
+    return iteration;
+  }
+
+  // Adds a language in repo_titles_table and custom_message_table.
+  function add_language() {
+    add_language_to_repo_titles_table();
+    for(var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++){
+      add_language_to_custom_message_table(
+          MULTILINGUAL_TABLE_IDS[id_num], 'not selected');
+    }
+  }
+
+  /* Hides a language from the user's view and marks it so that it will not be
+   * submitted.
+   */
+  function remove_language(row_number) {
+    $('repo_titles_language_selection_' + row_number).value = 'unused';
+    var repo_table = $('repo_titles_table');
+    repo_table.rows[row_number].hidden = true;
+    for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
+      var table_id = MULTILINGUAL_TABLE_IDS[id_num];
+      var table = $(table_id + '_table');
+      var row = table.rows[row_number];
+      row.hidden = true;
+    }
+  }
+
+  // Adds rows to the languages table for each language already in the database
+  function add_initial_languages() {
+    // Saved languages and titles for this repository
+    //foreach language, add that language, its title and optional custom messages
+    var repo_title_values = ALL_VIEW_CONFIG['repo_titles']
+    for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
+      var row_number = add_language_to_repo_titles_table();
+      var language = LANGUAGES[lang_num];
+      $('repo_titles_language_selection_' + row_number).value = language;
+      if (repo_title_values[language] !== undefined) {
+        $('repo_titles_language_value_' + row_number).value =
+            repo_title_values[language];
+      }
+    }
+
+    for (var id_num = 0; id_num < MULTILINGUAL_TABLE_IDS.length; id_num++) {
+      var table_id = MULTILINGUAL_TABLE_IDS[id_num];
+      var table_values = ALL_VIEW_CONFIG[table_id];
+      for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
+        var language = LANGUAGES[lang_num];
+        var row_number =
+            add_language_to_custom_message_table(table_id, language);
+        if (table_values !== undefined &&
+            table_values[language] !== undefined) {
+          $(table_id + '_language_value_' + row_number).value
+              = table_values[language];
+        }
+      }
+    }
+    if($('repo_titles_table') === null) return;
+    var language_num = $('repo_titles_table').rows.length;
+    for (var row_num = 1; row_num < language_num; row_num++) {
+      update_language_selected(row_num);
+    }
+
+  }
+
+  function insert_profile_websites_example() {
+    $('profile_websites').value = [
+        '[',
+        '    {',
+        '        "name": "Facebook",',
+        '        "icon_filename": "facebook-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?facebook\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "Twitter",',
+        '        "icon_filename": "twitter-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?twitter\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "LinkedIn",',
+        '        "icon_filename": "linkedin-16x16.png",',
+        '        "url_regexp": "http://(www\\\\.)?linkedin\\\\.com/.*"',
+        '    }',
+        ']'].join('\n');
+  }
+</script>
+
+{% if env.repo %}
+<h2>Repository settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
+
+<form id="save_repo" method="post" class="admin"
+    onsubmit="return validate_settings()">
+
+  <fieldset>
+    <legend>Activation mode</legend>
+
+    <div class="config">
+      <div class="option">
+        <input
+            type="radio" name="launch_status" value="staging"
+            id="launch_status_staging"
+            {% if view_config.launch_status == "staging" %}
+              checked
+            {% endif %}>
+        <label for="launch_status_staging">
+          Staging
+        </label>
+        <div class="note">
+          <div>
+            <strong>Use case:</strong> Keep a repository in this mode while
+            testing the repository before public announcement.
+          </div>
+          <div>
+            <strong>Effect:</strong> The repository is neither listed on
+            <a href="{{env.global_url}}" target="_blank">the home page</a> nor
+            <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+            repository feed</a>. So only people who know the URL can discover
+            the repository. It is the same as "Activated" except for that.
+          </div>
+        </div>
+      </div>
+      <div class="option">
+        <input
+            type="radio" name="launch_status" value="activated"
+            id="launch_status_activated"
+            {% if view_config.launch_status == "activated" %}
+              checked
+            {% endif %}>
+        <label for="launch_status_activated">
+          Activated
+        </label>
+        <div class="note">
+          <div>
+            <strong>Use case:</strong> Keep a repository in this mode while the
+            repository is used by end users.
+          </div>
+          <div>
+            <strong>Effect:</strong> The repository is listed on
+            <a href="{{env.global_url}}" target="_blank">the home page</a> and
+            <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+            repository feed</a>. So end users can discover the repository.
+          </div>
+        </div>
+      </div>
+      <div class="option">
+        <input
+            type="radio" name="launch_status" value="deactivated"
+            id="launch_status_deactivated"
+            {% if view_config.launch_status == "deactivated" %}
+              checked
+            {% endif %}>
+        <label for="launch_status_deactivated">
+          Deactivated
+        </label>
+        <div class="note">
+          <div>
+            <strong>Use case:</strong> Switch to this mode to deactivate the
+            repository.
+          </div>
+          <div>
+            <strong>Effect:</strong> Replaces content of all pages with the
+            deactivation message below. People cannot interact with the
+            repository either via web interface or API. The repository is
+            neither listed on
+            <a href="{{env.global_url}}" target="_blank">the home page</a> nor
+            <a href="{{env.global_url}}/feeds/repo" target="_blank">the
+            repository feed</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="deactivation_message_html">
+        Deactivation message (HTML):</label>
+      <div class="response">
+        <textarea name="deactivation_message_html"
+            id="deactivation_message_html" rows=6 cols=80
+            >{{view_config.deactivation_message_html|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Data retention mode</legend>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="test_mode" value="true"
+          id="test_mode_true"
+          {{view_config.test_mode|yesno:"checked,"}}>
+        <label for="test_mode_true">
+          Test mode
+        </label>
+        <div class="note">
+          <div>
+            <strong>Use case:</strong> This mode is usually used for always-on
+            repository such as "japan" repository, while no crisis is
+            on-going.
+          </div>
+          <div>
+            <strong>Effect:</strong> In this mode, all records are deleted
+            about {{test_mode_min_age_hours}} hours after they are created,
+            regardless of their specified expiry date. We do this to clean up
+            spams, because it's not feasible to perform manual spam monitoring
+            all the time for always-on repositories.
+          </div>
+          <div>
+            <strong>Note:</strong> If you switch from real mode to
+            test mode, existing records that are more than
+            {{test_mode_min_age_hours}} old will soon be deleted.
+            Also note that (unlike regular deletions or expirations)
+            these deletions do not generate expiry notices
+            in the outgoing PFIF feeds,
+            so any clients that import test records into their own repositories
+            cannot be expected to delete them on the same short schedule.
+          </div>
+        </div>
+      </div>
+      <div class="option">
+        <input type="radio" name="test_mode" value="false"
+            id="test_mode_false"
+            {{view_config.test_mode|yesno:",checked"}}>
+        <label for="test_mode_false">
+          Real mode
+        </label>
+        <div class="note">
+          <div>
+            <strong>Use case:</strong> Use this mode while the repository is
+            actively used for a real crisis.
+          </div>
+          <div>
+            <strong>Effect:</strong> In this mode, records last until their
+            specified expiry date.
+          </div>
+          <div>
+            <strong>Note:</strong> If you switch from test mode to real mode,
+            any existing records are retained and will be treated as normal.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>General</legend>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="force_https" value="true"
+          id="force_https_true"
+          {{view_config.force_https|yesno:"checked,"}}>
+        <label for="force_https_true">
+          Force https
+        </label>
+        <div class="note">
+          Force all requests to this repo to be redirected through https.
+        </div>
+      </div>
+      <div class="option">
+        <input type="radio" name="force_https" value="false"
+            id="force_https_false"
+            {{view_config.force_https|yesno:",checked"}}>
+        <label for="force_https_false">
+          Allow http and https traffic
+        </label>
+        <div class="note">
+          Allow requests to this repo over http or https.
+        </div>
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="available_languages">
+        Available Languages (they will appear in the order shown here; the first
+        one will be default):
+      </label>
+
+      <table id="repo_titles_table">
+        <tr>
+          <th><!--for the 'x' to remove a row--></th>
+          <th>Language</th>
+          <th>Title</th>
+        </tr>
+      </table>
+      <p><a href="JavaScript:void(0);" onClick="add_language()">
+        Add Another Language
+      </a></p>
+      <!-- Aggregates the above forms into one form for ease of parsing -->
+      <input name="language_menu_options" id="language_menu_options"
+             value="{{view_config_json.language_menu_options}}"
+             type="hidden" />
+      <input name="repo_titles" id="repo_titles"
+             value="{{view_config_json.repo_titles}}" type="hidden" />
+    </div>
+
+    <div class="config">
+      <label for="keywords">
+        Keywords in all languages (keywords separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="keywords" id="keywords" rows=4 cols=80
+          >{{view_config.keywords|default:""}}</textarea>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Forms</legend>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_family_name" value="true"
+          id="use_family_name_true"
+          {{view_config.use_family_name|yesno:"checked,"}}>
+        <label for="use_family_name_true">
+          Use both given and family name fields
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_family_name" value="false"
+            id="use_family_name_false"
+            {{view_config.use_family_name|yesno:",checked"}}>
+        <label for="use_family_name_false">
+          Use only a single name field
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="family_name_first" value="false"
+            id="family_name_first_false"
+            {{view_config.family_name_first|yesno:",checked"}}>
+        <label for="family_name_first_false">
+          Show given name first, then family name
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="family_name_first" value="true"
+            id="family_name_first_true"
+            {{view_config.family_name_first|yesno:"checked,"}}>
+        <label for="family_name_first_true">
+          Show family name first, then given name
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="false"
+            id="use_alternate_names_false"
+            {{view_config.use_alternate_names|yesno:",checked"}}>
+        <label for="use_alternate_names_false">
+          Don't use alternate name fields (e.g. readings of Japanese names)
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="true"
+            id="use_alternate_names_true"
+            {{view_config.use_alternate_names|yesno:"checked,"}}>
+        <label for="use_alternate_names_true">
+          Use alternate name fields (e.g. readings of Japanese names)
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_postal_code" value="true"
+            id="use_postal_code_true"
+            {{view_config.use_postal_code|yesno:"checked,"}}>
+        <label for="use_postal_code_true">
+          Use the postal code field
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_postal_code" value="false"
+            id="use_postal_code_false"
+            {{view_config.use_postal_code|yesno:",checked"}}>
+        <label for="use_postal_code_false">
+          Hide the postal code field
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="true"
+            id="allow_believed_dead_via_ui"
+            {{view_config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+        <label for="allow_believed_dead_via_ui_true">
+          Allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="false"
+            id="allow_believed_dead_via_ui"
+            {{view_config.allow_believed_dead_via_ui|yesno:",checked"}}>
+        <label for="allow_believed_dead_via_ui_false">
+          Don't allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+    </div>
+
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="min_query_word_length" value="1"
+            id="min_query_word_length_1"
+            {% ifequal view_config.min_query_word_length 1 %}
+              checked
+            {% endifequal %}
+        >
+        <label for="min_query_word_length_1">
+          Accept queries with only 1 character
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="min_query_word_length" value="2"
+            id="min_query_word_length_2"
+            {% ifnotequal view_config.min_query_word_length 1 %}
+              checked
+            {% endifnotequal %}
+        >
+        <label for="min_query_word_length_2">
+          Require query words to have at least 2 characters
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="show_profile_entry" value="true"
+            id="show_profile_entry_true"
+            {{view_config.show_profile_entry|yesno:"checked,"}}>
+        <label for="show_profile_entry_true">
+          Show input fields for profile pages
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="show_profile_entry" value="false"
+            id="show_profile_entry_false"
+            {{view_config.show_profile_entry|yesno:",checked"}}>
+        <label for="show_profile_entry_false">
+          Hide input fields for profile pages
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="profile_websites">External websites to show as the
+      default options for profile pages (JSON list of dictionaries sorted in the
+      order of display) <a href="javascript:insert_profile_websites_example()"
+      >click to insert an example</a>:</label>
+      <div class="response">
+        <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
+          >{{view_config_json.profile_websites|default:"[]"}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Map options</legend>
+
+    <div class="config">
+      <label for="map_default_zoom">Default zoom level (integer):</label>
+      <div class="response">
+        <input name="map_default_zoom" id="map_default_zoom" size=24
+            value="{{view_config_json.map_default_zoom}}">
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="map_default_center">
+        Default center [latitude north, longitude east]:
+      </label>
+      <div class="response">
+        <input name="map_default_center" id="map_default_center" size=24
+            value="{{view_config_json.map_default_center}}">
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="map_default_center">
+        Map size in pixels [width, height]:
+      </label>
+      <div class="response">
+        <input name="map_size_pixels" id="map_size_pixels" size=24
+            value="{{view_config_json.map_size_pixels}}">
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Access control</legend>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="search_auth_key_required" value="false"
+            id="search_auth_key_required_false"
+            {{view_config.search_auth_key_required|yesno:",checked"}}>
+        <label for="search_auth_key_required_false">
+          Allow anyone to use the search API
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="search_auth_key_required" value="true"
+            id="search_auth_key_required_true"
+            {{view_config.search_auth_key_required|yesno:"checked,"}}>
+        <label for="search_auth_key_required_true">
+          Require an authorization key to use the search API
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="read_auth_key_required" value="false"
+            id="read_auth_key_required_false"
+            {{view_config.read_auth_key_required|yesno:",checked"}}>
+        <label for="read_auth_key_required_false">
+          Allow anyone to use the read API and read the feeds
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="read_auth_key_required" value="true"
+               id="read_auth_key_required_true"
+               {{view_config.read_auth_key_required|yesno:"checked,"}}>
+        <label for="read_auth_key_required_true">
+          Require an authorization key to use the read API and read the feeds
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Optional custom messages</legend>
+
+    <div class="config">
+      <label for="start_page_custom_htmls">
+        Custom message for start page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <table id="start_page_custom_htmls_table">
+          <tr>
+            <th>Language</th>
+            <th>Custom Message</th>
+          </tr>
+        </table>
+        <!-- Aggregates the above forms into one form for ease of parsing -->
+        <input name="start_page_custom_htmls" id="start_page_custom_htmls"
+               value="{{view_config_json.start_page_custom_htmls}}" type="hidden" />
+
+     </div>
+   </div>
+
+   <div class="config">
+     <label for="results_page_custom_htmls">
+       Custom message for search results page in each language
+       (JSON dictionary with HTML values):
+     </label>
+     <div class="response">
+       <table id="results_page_custom_htmls_table">
+         <tr>
+           <th>Language</th>
+           <th>Custom Message</th>
+         </tr>
+       </table>
+       <!-- Aggregates the above forms into one form for ease of parsing -->
+       <input name="results_page_custom_htmls" id="results_page_custom_htmls"
+              value="{{view_config_json.results_page_custom_htmls}}" type="hidden" />
+     </div>
+   </div>
+
+   <div class="config">
+     <label for="view_page_custom_htmls">
+       Custom message for person record view page in each language
+       (JSON dictionary with HTML values):
+     </label>
+     <div class="response">
+       <table id="view_page_custom_htmls_table">
+         <tr>
+           <th>Language</th>
+           <th>Custom Message</th>
+         </tr>
+       </table>
+       <!-- Aggregates the above forms into one form for ease of parsing -->
+       <input name="view_page_custom_htmls" id="view_page_custom_htmls"
+              value="{{view_config_json.view_page_custom_htmls}}" type="hidden" />
+      </div>
+   </div>
+
+   <div class="config">
+     <label for="seek_query_form_custom_htmls">
+       Custom message for the query form when role=seek in each language
+       (JSON dictionary with HTML values):
+     </label>
+     <div class="response">
+       <table id="seek_query_form_custom_htmls_table">
+         <tr>
+           <th>Language</th>
+           <th>Custom Message</th>
+         </tr>
+       </table>
+       <!-- Aggregates the above forms into one form for ease of parsing -->
+       <input name="seek_query_form_custom_htmls" id="seek_query_form_custom_htmls"
+              value="{{view_config_json.seek_query_form_custom_htmls}}" type="hidden" />
+     </div>
+   </div>
+
+   <div class="config">
+     <label for="footer_custom_htmls">
+       Custom message for the footer in all pages in each language
+       (JSON dictionary with HTML values):
+     </label>
+     <div class="response">
+       <table id="footer_custom_htmls_table">
+         <tr>
+           <th>Language</th>
+           <th>Custom Message</th>
+         </tr>
+       </table>
+       <!-- Aggregates the above forms into one form for ease of parsing -->
+       <input name="footer_custom_htmls" id="footer_custom_htmls"
+              value="{{view_config_json.footer_custom_htmls}}" type="hidden" />
+     </div>
+   </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Zero-rating</legend>
+
+    <div class="config">
+      <p>Sometimes mobile carriers "zero-rate" our site so that users can see our site without normal data access fee. It is often applied per domain name. But when users access Person Finder, it also loads resource from other domains e.g., Google Maps, Google Analytics, Google Translate by default.</p>
+
+      <p>If you enable zero-rating mode, it disables all those features which loads resource from external domains, so that the users from the carriers can access Person Finder completely for free.</p>
+
+      <p><b>CAVEAT:</b> This mode has not been implemented completely, and it still loads some resource from other domains even in zero-rating mode:</p>
+      <ul>
+        <li><a href="https://github.com/google/personfinder/issues/239">reCAPTCHA</a></li>
+      </ul>
+
+      <div class="option">
+        <input type="radio" name="zero_rating_mode" value="false"
+            id="zero_rating_mode_false"
+            {{view_config.zero_rating_mode|yesno:",checked"}}>
+        <label for="zero_rating_mode_false">
+          Disable zero-rating mode: Enable all features which loads resource from external domains.
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="zero_rating_mode" value="true"
+            id="zero_rating_mode_true"
+            {{view_config.zero_rating_mode|yesno:"checked,"}}>
+        <label for="zero_rating_mode_true">
+          Enable zero-rating mode: Disable all features which loads resource from external domains.
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend> Spam detection </legend>
+    <div class="config">
+      <label for="bad_words">
+        Bad words in all languages (words separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="bad_words" id="bad_words" rows=4 cols=80
+          >{{view_config.bad_words|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>SMS</legend>
+    <div class="config">
+      Go to <a href="../global/admin">Global settings</a> to configure SMS
+      numbers mapping.
+    </div>
+  </fieldset>
+
+  <p>
+    <input type="hidden" name="operation" value="save_repo">
+    <input type="submit" value="Save these settings">
+  </p>
+</form>
+
+{% else %}
+
+<h2>Global settings</h2>
+
+<form id="save_global" method="post" class="admin">
+  <fieldset>
+    <legend>SMS</legend>
+    <div class="config">
+      <label for="sms_number_to_repo">
+        SMS numbers mapping.<br>
+        e.g., If it is
+        <code>{"+198765432109": "test", "+8101234567890": "japan"}</code>, SMS
+        messages to +198765432109 are interpreted as requests for "test"
+        repository, and messages to +8101234567890 are interpreted as requests
+        to "japan" repository.<br>
+        JSON dictionary where the key is an international phone number and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="sms_number_to_repo"
+            id="sms_number_to_repo" rows=10 cols=80
+            >{{view_config_json.sms_number_to_repo}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Repository aliases</legend>
+    <div class="config">
+      <label for="repo_aliases">
+        Repository alias mapping.<br>
+        e.g., If it is
+        <code>{"jp": "japan", "ht": "haiti"}</code>,
+	you can use
+	<a href="http://google.org/personfinder/jp">
+	  http://google.org/personfinder/jp
+	</a>
+	 as an alias of
+	<a href="http://google.org/personfinder/japan">
+	  http://http://google.org/personfinder/japan
+	</a>
+	 and the same for "ht".
+	This is especially useful combined with the short URL e.g.,
+	<a href="http://g.co.pf/jp">
+	  http://g.co.pf/jp
+	</a>
+	.<br>
+        JSON dictionary where the key is an alias for repository and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="repo_aliases"
+            id="repo_aliases" rows=10 cols=80
+            >{{view_config_json.repo_aliases}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Notification settings</legend>
+      <div class="config">
+        Notification setting.<br>
+        Notifications are sent to 'Notification Email' according to some conditions (e.g.
+        the number of unreviewed notes exceeds 'Unreviewed notes threshold'). By default,
+        these conditions are checked every 6 hours. If you want to change this interval,
+        please change cron settings in app/cron.yaml.
+      </div>
+      <div class="config">
+        <label for="notification_email">Notification Email:</label>
+        <div class="response">
+           <input type="email" name="notification_email" id="notification_email" size=24
+               value="{{view_config.notification_email}}"">
+        </div>
+    </div>
+    <div class="config">
+        <label for="unreviewed_notes_threshold">Unreviewed notes threshold:</label>
+        <div class="response">
+            <input type="number" min="0" name="unreviewed_notes_threshold" id="unreviewed_notes_threshold"
+                size=24 value="{{view_config_json.unreviewed_notes_threshold}}">
+        </div>
+    </div>
+  </fieldset>
+
+  <p>
+    <input type="hidden" name="operation" value="save_global">
+    <input type="submit" value="Save these settings">
+  </p>
+</form>
+
+{% endif %}
+{% endblock %}

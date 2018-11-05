@@ -1,0 +1,108 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the confirmation page for posting a flagged note.           #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<div>
+  {% if env.enable_javascript %}
+    <script type="text/javascript">
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      // Returns true if the given email address is valid to submit.
+      function validate_email() {
+        // Check that mandatory fields are filled in.
+        var field = $('author_email');
+        if (field != null && field.value.length == 0) {
+          $('mandatory_field_missing').setAttribute('style', '');
+          field.focus();
+          return false;
+        }
+        $('mandatory_field_missing').setAttribute('style', 'display: none');
+
+        // Check that the input email address is valid.
+        var email = field.value;
+        var at_pos = email.indexOf("@");
+        var stop_pos = email.lastIndexOf(".");
+        if ((at_pos == -1 || stop_pos == -1) || 
+            (stop_pos - at_pos == 1) || 
+            (stop_pos < at_pos)) {
+          $('invalid_email_address_found').setAttribute('style', '');
+          return false;
+        }
+
+        $('invalid_email_address_found').setAttribute('style', 'display: none');
+        return true;
+      }
+    </script>
+  {% endif %}
+
+  <h2>
+    {% blocktrans %}
+      Confirm your note
+    {% endblocktrans %}
+  </h2>
+
+  <p>
+    {% include "note.html.template" %}
+  <p>
+  {% blocktrans %}
+  To post your note, please enter your e-mail address below and follow the
+  confirmation link that you will receive.
+  {% endblocktrans %}
+
+
+  <form method="post" action="{{env.repo_path}}/post_flagged_note">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
+    <table class="fields">
+      <tr>
+        <td class="label" align=left>
+          <label for="author_email" class="mandatory"
+              id="author_email_original">
+            {% trans "Your email" %}:
+          </label>
+        </td>
+        <td>
+          <input type="text" name="author_email" id="author_email" size="20"
+              value="{{author_email}}" />
+        </td>
+      </tr>
+      <tr>
+        <td align=left class="submit">
+          <input type="submit" 
+              value="{% trans "Send email" %}"
+              onclick="return validate_email();">        
+          <input type="button"
+              value="{% trans "Cancel" %}" onclick="history.go(-1);">
+        </td>
+      </tr>
+    </table>
+
+    <div id="mandatory_field_missing"
+        class="mandatory" style="display: none">
+        {% trans "Please fill in your email address." %}
+        <br/>
+    </div>         
+    <div id="invalid_email_address_found"
+        class="mandatory" style="display: none">
+        {% trans "Please provide an valid email address." %}
+    </div>
+    <br/>
+    <input type="hidden" name="id" value="{{id}}">
+  </form>
+
+</div>
+<br/><br/>
+{% endblock content %}

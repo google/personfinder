@@ -1,0 +1,45 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the repository starting page.                               #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+
+  <div class="main">
+    <div class="row">
+      <div class="action-outer start">
+        <div class="action-inner">
+          <a href="{{seek_url}}" tabindex="1">
+            {% trans "I'm looking for someone" %}
+          </a>
+        </div>
+      </div>
+      <div class="action-outer end">
+        <div class="action-inner">
+          <a href="{{provide_url}}" tabindex="2">
+            {% trans "I have information about someone" %}
+          </a>
+        </div>
+      </div>
+      <div class="end-multi-columns"></div>
+    </div>
+    <div class="row stats">
+      {% if num_people %}
+        {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+      {% endif %}
+    </div>
+    <div class="row custom-message">
+      {{env.start_page_custom_html|default:""|safe}}
+    </div>
+  </div>
+{% endblock %}

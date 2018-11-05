@@ -1,0 +1,66 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the subscription confirmation page.                         #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+
+<div>
+
+  {% if context == 'create_person' %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}The record for {{full_name}} has been registered{% endblocktrans %}</h2>
+  {% else %}{% if context == 'add_note' %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}The note for {{full_name}} has been added{% endblocktrans %}</h2>
+  {% else %}
+    <h2>{% blocktrans with person_record_link_html|safe as full_name %}Subscribe to updates about {{full_name}}{% endblocktrans %}</h2>
+  {% endif %}{% endif %}
+
+  {% if context == 'create_person' or context == 'add_note' %}
+    <p>{% blocktrans with person_record_link_html|safe as full_name %}You can subscribe to updates about {{full_name}} by entering your e-mail address here{% endblocktrans %}</p>
+  {% else %}{% if subscribe_email %}
+    <p>{% trans "Please confirm your e-mail address to subscribe to updates" %}</p>
+  {% else %}
+    <p>{% trans "Please enter your e-mail address to subscribe to updates" %}</p>
+  {% endif %}{% endif %}
+
+  <form method="post" action="{{form_action}}">
+    {{env.hidden_input_tags_for_preserved_query_params|safe}}
+    <span id="subscribe_label">
+      {% trans "Your e-mail address:" %}
+    </span>
+    <input type="text" name="subscribe_email" value="{{subscribe_email}}" />
+    <div class="subscribe_email_error">
+      {{message}}
+    </div>
+    <br/><br/>
+    {{captcha_html|safe}}
+    <br/><br/>
+    <div class="button-box">
+      <div class="button button-blue">
+        <input type="submit" value="{% trans 'Subscribe' %}" />
+      </div>
+      <input type="hidden" name="id" value="{{person.record_id}}">
+      <div class="button button-red">
+        {% if context == 'create_person' or context == 'add_note' %}
+          <input type="button" value="{% trans 'Skip' %}"
+                 onclick="javascript:location.href='{{back_url}}'">
+        {% else %}
+          <input type="button" value="{% trans 'Cancel' %}"
+                 onclick="javascript:location.href='{{back_url}}'">
+        {% endif %}
+      </div>
+    </div>
+  </form>
+</div>
+<br/><br/>
+{% endblock %}
