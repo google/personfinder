@@ -33,8 +33,8 @@ def main():
      print ("Directory", dirName3, "already exists")
 
  # Move all the BaseHandlers to handlers subdirectory
- os.system('grep -ril "utils.BaseHandler" ../app | xargs mv -t ../app/utils/')
- os.system('grep -Ril --exclude-dir=../app/utils/ "BaseHandler" ../app/ | xargs mv -t ../app/handlers/')
+ os.system('grep -Ril "BaseHandler" ../app/ | xargs mv -t ../app/handlers/')
+ os.system('grep -Ril --exclude-dir=../app/handlers/ "utils.BaseHandler" ../app/ | xargs mv -t ../app/utils/')
  if os.path.exists(file1):
      os.system('mv ../app/japanese_name_location_dict.txt ../app/data/')
  else:
