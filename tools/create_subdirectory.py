@@ -44,7 +44,7 @@ def main():
  
  # Move all remaining files under app/ to utils/
  os.system('find ../app/*.py -type f ! -name main.py ! -name model.py -exec mv -t ../app/utils/ {} +')
- os.system('mv ../app/*.yaml ../app/utils/')
+ os.system('mv ../app/queue.yaml ../app/utils/')
 
  if os.path.exists(file1):
      os.system('mv ../app/japanese_name_location_dict.txt ../app/data/')
