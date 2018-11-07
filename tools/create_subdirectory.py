@@ -41,6 +41,10 @@ def main():
  # Move all files to handlers except few from utils directory 
 
  os.system('find ../app/utils/* ! -name utils.py -exec mv -t ../app/handlers/ {} +')
+ 
+ # Move all remaining files under app/ to utils/
+ os.system('find ../app/*.py -type f ! -name main.py ! -name model.py -exec mv -t ../app/utils/ {} +')
+ os.system('mv ../app/*.yaml ../app/utils/')
 
  if os.path.exists(file1):
      os.system('mv ../app/japanese_name_location_dict.txt ../app/data/')
