@@ -21,7 +21,15 @@
 
 {% block content %}
   <div class="info">
+    {% comment %}
+      Translators: A message shown when the browser is about to start
+      downloading a file.
+    {% endcomment %}
     {% trans "Your download should start automatically." %}
+    {% comment %}
+      Translators: A link text to go back to the form where the user
+      can import or export records in the site.
+    {% endcomment %}
     <a href="{{env.repo_path}}/api/import">{% trans "Back to import/export form" %}</a>
   </div>
 {% endblock %}

@@ -342,6 +342,8 @@ class Import(utils.BaseHandler):
         else:
             self.error(
                 404,
+                # Translators: An error message indicating that the data
+                # requested by the user is not available yet.
                 message=_('The data is not ready yet. Try again in 24 hours.'))
 
 

@@ -22,7 +22,7 @@
       <li>{% blocktrans %}In Excel, use File &gt; Save as... and save in CSV format (.csv){% endblocktrans %}
       <li>{% blocktrans %}Upload your CSV file below{% endblocktrans %}
     </ol>
-    <form method="post" enctype="multipart/form-data">
+    <form id="notes-import-form" method="post" enctype="multipart/form-data">
       <table>
         {% if params.key %}
           <input type="hidden" name="key" value="{{params.key|safe}}" />
@@ -53,7 +53,7 @@
       <li>{% blocktrans with begin_sample_anchor_tag|safe as begin_tag and end_sample_anchor_tag|safe as end_tag %}Here is {{begin_tag}}a sample CSV file{{end_tag}} you can edit and upload{% endblocktrans %}
       <li>{% blocktrans with begin_document_anchor_tag|safe as begin_tag and end_document_anchor_tag|safe as end_tag %}See {{begin_tag}}the wiki{{end_tag}} for more instructions{% endblocktrans %}
     </ul>
-    <form method="post" enctype="multipart/form-data">
+    <form id="persons-import-form" method="post" enctype="multipart/form-data">
       <table>
         {% if params.key %}
           <input type="hidden" name="key" value="{{params.key|safe}}" />
@@ -75,8 +75,12 @@
     </form>
   {% endif %}
 
+  {% comment %}
+    Translators: The title of a section where the user can download person
+    records in the site.
+  {% endcomment %}
   <h2>{% trans "Download all person records in CSV format" %}</h2>
-  <form method="post" action="{{env.repo_path}}/api/import">
+  <form id="export-form" method="post">
     <table>
       {% if params.key %}
         <input type="hidden" name="key" value="{{params.key|safe}}" />
@@ -88,6 +92,9 @@
       {% endif %}
       <tr>
         <td><input type="hidden" name="action" value="export"></td>
+        {% comment %}
+          Translators: A button label to download a file.
+        {% endcomment %}
         <td><input type="submit" value="{% trans "Download" %}"></td>
       </tr>
     </table>
