@@ -16,6 +16,9 @@
 
 """Tests for const."""
 
+import sys
+sys.path.append('../app/handlers/')
+
 import const
 import pfif
 import unittest
