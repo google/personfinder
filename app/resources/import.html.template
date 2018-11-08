@@ -37,7 +37,10 @@
           <td><input type="file" name="content"></td>
         </tr>
         <tr>
-          <td><input type="hidden" name="format" value="notes"></td>
+          <td>
+            <input type="hidden" name="action" value="import">
+            <input type="hidden" name="format" value="notes">
+          </td>
           <td><input type="submit" value="{% trans "Upload" %}"></td>
         </tr>
       </table>
@@ -65,7 +68,7 @@
           <td><input type="file" name="content"></td>
         </tr>
         <tr>
-          <td></td>
+          <td><input type="hidden" name="action" value="import"></td>
           <td><input type="submit" value="{% trans "Upload" %}"></td>
         </tr>
       </table>
@@ -73,7 +76,7 @@
   {% endif %}
 
   <h2>{% trans "Download all person records in CSV format" %}</h2>
-  <form method="post" action="{{env.repo_path}}/api/export">
+  <form method="post" action="{{env.repo_path}}/api/import">
     <table>
       {% if params.key %}
         <input type="hidden" name="key" value="{{params.key|safe}}" />
@@ -84,7 +87,7 @@
         </tr>
       {% endif %}
       <tr>
-        <td></td>
+        <td><input type="hidden" name="action" value="export"></td>
         <td><input type="submit" value="{% trans "Download" %}"></td>
       </tr>
     </table>

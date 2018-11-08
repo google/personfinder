@@ -18,16 +18,14 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-import django_setup
+import django_setup  # always keep this first
 
-import base64
 import calendar
 import csv
-from datetime import datetime, timedelta
+import datetime
 import logging
 import re
 import StringIO
-import time
 import xml.dom.minidom
 
 # For Google Analytics Measument Protocol
@@ -37,16 +35,14 @@ import uuid
 
 import django.utils.html
 from django.utils.translation import ugettext as _
-from googleapiclient.discovery import build
 from google.appengine import runtime
 from google.appengine.ext import db
-from google.appengine.api import app_identity
 from google.appengine.api import images
-from oauth2client.client import GoogleCredentials
 from unidecode import unidecode
 
 import cloud_storage
 import config
+from django_setup import ugettext as _
 import external_search
 import full_text_search
 import importer
@@ -208,7 +204,13 @@ def convert_xsl_to_csv(contents):
     return csv_output.getvalue(), None
 
 
+# TODO(gimite): Rename this class name and URL because it now supports both
+#     import and export, maybe after we decide to use CSV or Excel file for
+#     import and export.
 class Import(utils.BaseHandler):
+    """A web UI for users to import or export records in CSV / Excel format.
+    """
+
     https_required = True
 
     def get(self):
@@ -217,6 +219,14 @@ class Import(utils.BaseHandler):
                     **get_tag_params(self))
 
     def post(self):
+        if self.params.action == 'import':
+            self.import_records()
+        elif self.params.action == 'export':
+            self.export_records()
+        else:
+            self.error(404, 'Unknown action.')
+
+    def import_records(self):
         if not (self.auth and self.auth.domain_write_permission):
             # TODO(ryok): i18n
             self.error(403, message='Missing or invalid authorization key.')
@@ -317,19 +327,22 @@ class Import(utils.BaseHandler):
                                total=notes_total)],
                     **get_tag_params(self))
 
-
-class Export(utils.BaseHandler):
-    https_required = True
-
-    def post(self):
+    def export_records(self):
         if not (self.auth and self.auth.read_permission):
             # TODO(gimite): i18n
             self.error(403, message='Missing or invalid authorization key.')
             return
 
         storage = cloud_storage.CloudStorage()
-        csv_url = storage.sign_url('%s-persons.csv' % self.repo)
-        self.render('export_csv.html', csv_url=csv_url)
+        object_name = self.config.latest_csv_object_name
+        if object_name:
+            csv_url = storage.sign_url(
+                object_name, url_lifetime=datetime.timedelta(minutes=10))
+            self.render('export.html', csv_url=csv_url)
+        else:
+            self.error(
+                404,
+                message=_('The data is not ready yet. Try again in 24 hours.'))
 
 
 class Read(utils.BaseHandler):

@@ -68,6 +68,12 @@ class CloudStorage(object):
         self.service.objects().insert(
             bucket=self.bucket_name,
             name=object_name,
+            body={
+                # This let browsers to download the file instead of opening
+                # it in a browser.
+                'contentDisposition':
+                    'attachment; filename=%s' % object_name,
+            },
             media_body=media).execute()
 
     def compose_objects(
@@ -133,7 +139,7 @@ class CloudStorage(object):
             str(expiration_sec),
             path,
         ])
-        (_, signature) = app_identity.sign_blob(signed_text)
+        (_, signature) = app_identity.sign_blob(signed_text.encode('utf-8'))
 
         query_params = {
             'GoogleAccessId': app_identity.get_service_account_name(),
