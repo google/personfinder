@@ -17,7 +17,6 @@ import calendar
 import datetime
 import logging
 import time
-import csv
 import StringIO
 
 from google.appengine import runtime
@@ -32,14 +31,15 @@ import const
 import delete
 import model
 import photo
-import utils
 import pfif
+import record_writer
+import utils
+
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
 PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
-
 
 
 class ScanForExpired(utils.BaseHandler):
@@ -465,63 +465,36 @@ class ThumbnailPreparer(utils.BaseHandler):
                 self.add_task_for_repo(repo, 'prepare-thumbnails', self.ACTION)
 
 
-# Writers for both types of records.
-# TODO: Move them from download_feed.py
-class CsvWriter:
-    def __init__(self, file, fields=None):
-        self.file = file
-        if fields:
-            self.fields = fields
-        self.writer = csv.DictWriter(self.file, self.fields)
+class DumpCSV(utils.BaseHandler):
+    """Dumps a CSV file containing all the records in each repository to Google
+    Cloud Storage.
+    
+    People with BULK_READ API access can download the CSV file.
+    
+    Currently the CSV file only contains person records.
+    
+    This task requires special setup to run on a dev app server. See the
+    docstring of cloud_storage.CloudStorage class for instruction.
+    """
+    # TODO(gimite): Implement web UI to serve the files.
+    # TODO(gimite): Include note records in the CSV file.
 
-    def write_header(self):
-        self.writer.writeheader()
-
-    def write(self, records):
-        for record in records:
-            self.writer.writerow(dict(
-                (name, record.get(name, '').encode('utf-8'))
-                for name in self.fields))
-        self.file.flush()
-
-    def close(self):
-        self.file.close()
-
-
-class PersonCsvWriter(CsvWriter):
-    fields = PFIF.fields['person']
-
-
-class NoteCsvWriter(CsvWriter):
-    fields = PFIF.fields['note']
-
-
-import time  # kari
-
-
-# TODO:
-# - Remove temp objects
-# - Keep 2 generations and remove older ones
-# - Set up cron
-# - Consider overlapping run
-# - Remove stale objects
-# - Remove objects on deactivated repo
-# - Rename classes
-# - Clean up
-# - Make gcs bucket name configurable
-# - Separate composition task
-# - Remove sensitive fields
-class ExportCSV(utils.BaseHandler):
     repo_required = False
-    ACTION = 'tasks/export_csv'
-    MAX_COMPOSED_OBJECTS = 32
-    MAX_FETCH_TIME = datetime.timedelta(seconds=5)
-    # MAX_FETCH_TIME = datetime.timedelta(minutes=5)
+    ACTION = 'tasks/dump_csv'
+
+    # Lifetime of a single task is 10 min. It stops fetching and starts
+    # uploading after 4 min, assuming uploading takes similar time as
+    # fetching.
+    MAX_FETCH_TIME = datetime.timedelta(minutes=4)
+    
+    def __init__(self, *args, **kwargs):
+        super(DumpCSV, self).__init__(*args, **kwargs)
+        self.storage = cloud_storage.CloudStorage()
 
     def task_name(self):
-        return 'export-csv'
+        return 'dump-csv'
 
-    def schedule_next_task(self, cursor, index):
+    def schedule_next_task(self, cursor, timestamp):
         """Schedule the next task for to carry on with this query.
         """
         self.add_task_for_repo(
@@ -529,57 +502,76 @@ class ExportCSV(utils.BaseHandler):
                 self.task_name(),
                 self.ACTION,
                 cursor=cursor,
-                index=index)
+                timestamp=str(calendar.timegm(timestamp.utctimetuple())))
 
     def get(self):
-        storage = cloud_storage.CloudStorage()
+        if self.repo:
+            self.run_task_for_repo(self.repo)
+        else:
+            # Sets lifetime of objects in Google Cloud Storage to 2 days. This
+            # cleans up old CSV files, while it makes sure that it doesn't
+            # delete CSV files users are currently downloading. Note that CSV
+            # files are updated every 24 hours.
+            #
+            # The lifetime is applied globally for all objects in the bucket.
+            # This is OK because Cloud Storage is only used for CSV files for
+            # now. It may need a way to control lifetime per object (see the
+            # docstring of cloud_storage.CloudStorage) if it starts using
+            # Cloud Storage for other purposes.
+            #
+            # It is enough to call this only once for the bucket, but here is
+            # just a convenient place to call it.
+            self.storage.set_objects_lifetime(lifetime_days=2)
 
-        if not self.repo:
-            storage.set_objects_lifetime(lifetime_days=1)
             for repo in model.Repo.list():
                 self.add_task_for_repo(repo, self.task_name(), self.ACTION)
-            return
 
+    def run_task_for_repo(self, repo):
         start_time = utils.get_utcnow()
-        index = self.params.index or 0
-        base_name = '%s-persons' % self.repo
-        logging.info('task repo=%s index=%d cursor=%s', self.repo, index, self.params.cursor)
+        timestamp = self.params.timestamp or start_time
+        base_name = '%s-persons-%s' % (
+            repo, timestamp.strftime('%Y-%m-%d-%H%M%S'))
+        is_first = not self.params.cursor
 
-        query = model.Person.all_in_repo(self.repo).order('entry_date')
+        query = model.Person.all_in_repo(repo).order('entry_date')
         if self.params.cursor:
             query.with_cursor(self.params.cursor)
 
         csv_io = StringIO.StringIO()
-        writer = PersonCsvWriter(csv_io)
-        if not self.params.cursor:
-            writer.write_header()
+        writer = record_writer.PersonCsvWriter(csv_io, write_header=is_first)
 
         has_data = False
+        scan_completed = False
         while True:
-            persons = query.fetch(limit=100)
+            persons = query.fetch(limit=FETCH_LIMIT)
             if persons:
                 has_data = True
             else:
+                scan_completed = True
                 break
-            writer.write([PFIF.person_to_dict(person) for person in persons])
+            records = [PFIF.person_to_dict(person) for person in persons]
+            # So far it only supports dump of records without sensitive fields.
+            utils.filter_sensitive_fields(records)
+            writer.write(records)
             if utils.get_utcnow() >= start_time + self.MAX_FETCH_TIME:
                 break
             query.with_cursor(query.cursor())
 
-        if has_data:
-            storage.insert_object('%s.%d.csv' % (base_name, index), 'text/csv', csv_io.getvalue())
-            self.schedule_next_task(query.cursor(), index + 1)
+        final_csv_name = '%s.csv' % base_name
+        temp_csv_name = '%s.temp.csv' % base_name
+
+        if is_first:
+            self.storage.insert_object(
+                final_csv_name, 'text/csv', csv_io.getvalue())
+        elif has_data:
+            # Creates a temporary CSV file with new records, and append it to
+            # the final CSV file.
+            self.storage.insert_object(
+                temp_csv_name, 'text/csv', csv_io.getvalue())
+            self.storage.compose_objects(
+                [final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
+
+        if scan_completed:
+            config.set_for_repo(repo, latest_csv_object_name=final_csv_name)
         else:
-            num_objects = index
-            if num_objects:
-                intermediate_names = []
-                for begin in xrange(0, num_objects, self.MAX_COMPOSED_OBJECTS):
-                    end = min(begin + self.MAX_COMPOSED_OBJECTS, num_objects)
-                    intermediate_name = '%s.%d-%d.csv' % (base_name, begin, end)
-                    storage.compose_objects(
-                        ['%s.%d.csv' % (base_name, i) for i in xrange(begin, end)],
-                        intermediate_name,
-                        'text/csv')
-                    intermediate_names.append(intermediate_name)
-                storage.compose_objects(intermediate_names, '%s.csv' % base_name, 'text/csv')
-            logging.info('done')
+            self.schedule_next_task(query.cursor(), timestamp)

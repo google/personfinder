@@ -1,4 +1,4 @@
-Metadata-Version: 2.0
+Metadata-Version: 2.1
 Name: google-api-python-client
 Version: 1.7.4
 Summary: Google API Client Library for Python
@@ -20,9 +20,9 @@ Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Operating System :: OS Independent
 Classifier: Topic :: Internet :: WWW/HTTP
+Requires-Dist: httplib2 (<1dev,>=0.9.2)
 Requires-Dist: google-auth (>=1.4.1)
 Requires-Dist: google-auth-httplib2 (>=0.0.3)
-Requires-Dist: httplib2 (<1dev,>=0.9.2)
 Requires-Dist: six (<2dev,>=1.6.1)
 Requires-Dist: uritemplate (<4dev,>=3.0.0)
 
