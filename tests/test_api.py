@@ -24,6 +24,7 @@ import unittest
 
 import sys
 sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 import api
 import model

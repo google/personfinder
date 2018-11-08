@@ -16,6 +16,11 @@
 
 import datetime
 import unittest
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 from google.appengine.ext import db
 from pytest import raises

@@ -15,6 +15,11 @@
 # limitations under the License.
 
 """Tests for utils."""
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 import datetime
 import os

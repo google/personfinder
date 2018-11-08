@@ -14,6 +14,11 @@
 # limitations under the License.
 
 """Tests for send_mail.py."""
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 from google.appengine.api import mail
 from google.appengine.api import mail_errors

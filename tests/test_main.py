@@ -15,6 +15,11 @@
 # limitations under the License.
 
 """Tests for the Main handler."""
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 import unittest
 from google.appengine.ext import testbed

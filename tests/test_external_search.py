@@ -17,6 +17,12 @@
 
 __author__ = 'ryok@google.com (Ryo Kawaguchi)'
 
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
+
 import datetime
 import logging
 import mox

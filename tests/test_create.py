@@ -19,6 +19,12 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 import datetime
 import unittest
 
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
+
 from google.appengine.ext import webapp
 from pytest import raises
 

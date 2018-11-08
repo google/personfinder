@@ -15,6 +15,11 @@
 """Tests for photo.py."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 import os
 import unittest

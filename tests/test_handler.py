@@ -17,6 +17,12 @@
 
 __author__ = 'lschumacher@google.com (Lee Schumacher)'
 
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
+
 import main
 import webob
 import urllib

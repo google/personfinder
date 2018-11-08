@@ -13,6 +13,11 @@
 # limitations under the License.
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 import StringIO
 import difflib

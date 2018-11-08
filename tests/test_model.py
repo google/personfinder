@@ -13,6 +13,11 @@
 # limitations under the License.
 
 """Tests for model.py."""
+# added by Ashutosh Narayan
+
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 from datetime import datetime
 from google.appengine.ext import db
