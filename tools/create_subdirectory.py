@@ -52,6 +52,9 @@ def main():
  # Maintain path for data files in script_variant.py code
  os.system("sed -i 's/japanese_name_location_dict.txt/..\/app\/data\/japanese_name_location_dict.txt/g' ../app/handlers/script_variant.py")
  os.system("sed -i 's/chinese_family_name_dict.txt/..\/app\/data\/chinese_family_name_dict.txt/g' ../app/handlers/script_variant.py")
+ 
+ # Move const module under utils
+ os.system('mv ../app/handlers/const.py ../app/utils/')
 
  if os.path.exists(file1):
      os.system('mv ../app/japanese_name_location_dict.txt ../app/data/')
