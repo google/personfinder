@@ -17,6 +17,10 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 from django_setup import ugettext as _  # always keep this first
 
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
+
 import calendar
 import cgi
 from datetime import datetime, timedelta
@@ -48,7 +52,7 @@ from babel.dates import format_datetime
 from babel.dates import format_time
 import babel
 
-from utils import const
+import const
 import config
 import model
 import pfif
