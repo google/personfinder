@@ -710,6 +710,10 @@ msgstr "Salīdzināt šos ierakstus"
 msgid "Contact information"
 msgstr "Kontaktinformācija"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Lai ievietotu šo rīku savā vietnē, nokopējiet un ielīmējiet šo HTML kodu."
 
@@ -1302,6 +1306,9 @@ msgstr "Piezīmju atspējošanas iemesls:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Ieraksti, kuros vārdi, uzvārdi un adreses atbilst vaicājumam “%(query)s”"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Noņemt"
 
@@ -1445,6 +1452,9 @@ msgstr "Autors ir atspējojis piezīmes par šo ierakstu."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Autors ir atspējojis statusa atjauninājumus par šo ierakstu."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1593,6 +1603,18 @@ msgstr "Sākotnējā ieraksta URL"
 
 msgid "Unspecified"
 msgstr "Nav norādīts"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Atjaunināt esošu atslēgu"

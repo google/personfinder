@@ -703,6 +703,10 @@ msgstr "Comparar estes registos"
 msgid "Contact information"
 msgstr "Informações de contacto"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Copie e cole o código HTML seguinte para colocar esta ferramenta no seu "
@@ -1290,6 +1294,9 @@ msgstr "Motivo para a desativação das notas:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Registos com nomes e endereços correspondentes a \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Remover"
 
@@ -1431,6 +1438,9 @@ msgstr "O autor desativou as notas neste registo."
 
 msgid "The author has disabled status updates on this record."
 msgstr "O autor desativou as atualizações de estado neste registo."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1581,6 +1591,18 @@ msgstr "URL do registo original"
 
 msgid "Unspecified"
 msgstr "Não especificado"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Atualizar uma chave existente"

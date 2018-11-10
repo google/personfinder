@@ -675,6 +675,10 @@ msgstr "これらの記録の比較"
 msgid "Contact information"
 msgstr "連絡先情報"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "このツールをサイト上に配置するには、次の HTML コードをコピーして貼り付けます"
 
@@ -1221,6 +1225,9 @@ msgstr "メモを無効にする理由:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "名前や住所が「%(query)s」に一致する記録"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "削除"
 
@@ -1361,6 +1368,9 @@ msgstr "作成者がこの記録に関するメモを無効にしました。"
 msgid "The author has disabled status updates on this record."
 msgstr "作成者がこの記録に関する新着情報を無効にしました。"
 
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
+
 #, python-format
 msgid "The note for %(full_name)s has been added"
 msgstr "%(full_name)s さんのメモが追加されました"
@@ -1495,6 +1505,18 @@ msgstr "元の記録の URL"
 
 msgid "Unspecified"
 msgstr "指定なし"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "既存のキーを更新"

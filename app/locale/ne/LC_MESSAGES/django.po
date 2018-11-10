@@ -665,6 +665,10 @@ msgstr "यी रेकर्डहरू तुलना गर्नुहो
 msgid "Contact information"
 msgstr "सम्पर्क जानकारी"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "यस उपकरणलाई तपाईँको साइटमा राख्नका लागि निम्न HTML कोड प्रतिलिपि गरी टाँस"
@@ -1265,6 +1269,9 @@ msgstr "टिप्पणी असक्षम पार्नका लाग
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "\"%(query)s\" सँग मिल्दो नाम ठेगानासहितको रेकर्डहरू"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "हटाउनुहोस्"
 
@@ -1404,6 +1411,9 @@ msgstr "यस रेकर्डमा टिप्पणीहरू सर्
 
 msgid "The author has disabled status updates on this record."
 msgstr "सर्जकले यस रेकर्डमा वस्तुस्थिति अद्यावधिक असक्षम पारेका छन्।"
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1555,6 +1565,18 @@ msgstr "मूल रेकर्डको URL"
 
 msgid "Unspecified"
 msgstr "नतोकिएको"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "एउटा मौजुदा कि अद्यावधिक गर्नुहोस्"

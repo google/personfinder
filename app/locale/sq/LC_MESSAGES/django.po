@@ -673,6 +673,10 @@ msgstr "Krahasoni këto të dhëna"
 msgid "Contact information"
 msgstr "Informacioni i kontaktit"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopjoni dhe ngjitni kodin e mëposhtëm HTML për ta vendosur këtë mjet në "
@@ -1277,6 +1281,9 @@ msgstr "Arsyeja për çaktivizimin e shënimeve:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Raportet me emrat dhe adresat që përputhen me \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Hiqni"
 
@@ -1420,6 +1427,9 @@ msgstr "Autori e ka çaktivizuar mundësinë për të futur shënime në këtë 
 
 msgid "The author has disabled status updates on this record."
 msgstr "Autori e ka çaktivizuar mundësinë e rinovimit të statusit në këtë raport."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1578,6 +1588,18 @@ msgstr "URL-ja e raportit origjinal"
 
 msgid "Unspecified"
 msgstr "E paspecifikuar"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Rinovo çelësin ekzistues"

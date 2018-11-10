@@ -14,6 +14,9 @@
 # limitations under the License.
 
 """Constants that aren't specific to a particular module or handler."""
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 # We use lazy translation in this file because the language isn't set yet.
 import django_setup

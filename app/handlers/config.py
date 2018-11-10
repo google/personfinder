@@ -19,6 +19,9 @@ to a repository, and their values can be of any JSON-encodable type.
 See here for usage examples:
 https://github.com/google/personfinder/wiki/DeveloperFaq
 """
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
 
 from google.appengine.ext import db
 import UserDict, model, random, simplejson

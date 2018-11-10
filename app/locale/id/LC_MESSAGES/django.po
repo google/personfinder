@@ -708,6 +708,10 @@ msgstr "Bandingkan rekaman ini"
 msgid "Contact information"
 msgstr "Informasi kontak"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Salin dan tempel kode HTML berikut untuk menyematkan alat ini ke situs "
@@ -1291,6 +1295,9 @@ msgstr "Alasan menonaktifkan catatan:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Rekaman dengan nama dan alamat yang cocok \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Hapus"
 
@@ -1430,6 +1437,9 @@ msgstr "Pengarang telah menonaktifkan catatan pada rekaman ini."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Pengarang telah menonaktifkan pembaruan status pada rekaman ini."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1577,6 +1587,18 @@ msgstr "URL rekaman asli"
 
 msgid "Unspecified"
 msgstr "Belum ditetapkan"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Perbarui kunci yang sudah ada"

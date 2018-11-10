@@ -703,6 +703,10 @@ msgstr "এই রেকর্ডগুলির তুলনা করুন"
 msgid "Contact information"
 msgstr "যোগাযোগের তথ্য"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "আপনার সাইটে এই টুলটি রাখতে নিম্নলিখিত HTML কোডটি কপি করে পেস্ট করুন"
 
@@ -1292,6 +1296,9 @@ msgstr "নোটগুলি অক্ষম করার কারণ:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "নাম ও ঠিকানাগুলি সহ রেকর্ডগুলি \"%(query)s\" এর সাথে মিলে যাচ্ছে"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "সরান"
 
@@ -1433,6 +1440,9 @@ msgstr "এই লেখক এই রেকর্ডটির জন্য ন�
 
 msgid "The author has disabled status updates on this record."
 msgstr "এই লেখক এই রেকর্ডটির জন্য স্থিতি আপডেটগুলি অক্ষম করেছে৷"
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1584,6 +1594,18 @@ msgstr "মূল রেকর্ডের আসল URL টি"
 
 msgid "Unspecified"
 msgstr "অনির্দিষ্ট"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "একটি বিদ্যমান কী আপডেট করুন"

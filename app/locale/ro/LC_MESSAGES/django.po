@@ -717,6 +717,10 @@ msgstr "Comparați aceste înregistrări"
 msgid "Contact information"
 msgstr "Informații de contact"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Copiați și inserați următorul cod HTML pentru a pune acest instrument pe "
@@ -1316,6 +1320,9 @@ msgstr "Motivul dezactivării notelor:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Înregistrări cu nume și adrese care se potrivesc cu „%(query)s”"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Eliminați"
 
@@ -1461,6 +1468,9 @@ msgstr "Autorul a dezactivat notele pentru această înregistrare."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Autorul a dezactivat actualizările stării pentru această înregistrare."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1614,6 +1624,18 @@ msgstr "Adresa URL a înregistrării inițiale"
 
 msgid "Unspecified"
 msgstr "Nespecificată"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Actualizați o cheie existentă"

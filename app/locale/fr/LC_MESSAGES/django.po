@@ -710,6 +710,10 @@ msgstr "Comparer ces avis de recherche"
 msgid "Contact information"
 msgstr "Coordonnées"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Pour intégrer cet outil à votre site Web, vous devez copier le code HTML "
@@ -1319,6 +1323,9 @@ msgstr ""
 "Avis de recherche contenant un nom ou une adresse correspondant à "
 "\"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -1470,6 +1477,9 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 "L'auteur a désactivé les mises à jour relatives au statut pour cet avis "
 "de recherche."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1627,6 +1637,18 @@ msgstr "URL de l'avis de recherche d'origine"
 
 msgid "Unspecified"
 msgstr "Non spécifié"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Mettre à jour une clé"

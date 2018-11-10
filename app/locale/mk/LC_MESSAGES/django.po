@@ -711,6 +711,10 @@ msgstr "Споредете ги овие записи"
 msgid "Contact information"
 msgstr "Информации за контакт"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Копирајте го и залепете го следниот ХТМЛ код за да ја ставите оваа алатка"
@@ -1302,6 +1306,9 @@ msgstr "Причина за оневозможување белешки:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Записи со имиња и адреси кои се совпаѓаат со „%(query)s“"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Отстранете"
 
@@ -1443,6 +1450,9 @@ msgstr "Авторот оневозможил белешки на овој за�
 
 msgid "The author has disabled status updates on this record."
 msgstr "Авторот оневозможил ажурирања на статус на овој запис."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1593,6 +1603,18 @@ msgstr "URL на оригинален запис"
 
 msgid "Unspecified"
 msgstr "Неодредено"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Ажурирајте постоечки клуч"

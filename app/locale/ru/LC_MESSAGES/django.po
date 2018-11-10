@@ -684,6 +684,10 @@ msgstr "Сравните записи"
 msgid "Contact information"
 msgstr "Контактная информация"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Чтобы внедрить этот инструмент на свой веб-сайт, скопируйте и вставьте "
@@ -1275,6 +1279,9 @@ msgstr "Причина отключения заметок:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Записи, содержащие имена и адреса, по запросу \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Удалить"
 
@@ -1416,6 +1423,9 @@ msgstr "Автор отключил заметки к этой записи."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Автор отключил обновления статусов этой записи."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1561,6 +1571,18 @@ msgstr "URL источника"
 
 msgid "Unspecified"
 msgstr "Не указано"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Обновить ключ"

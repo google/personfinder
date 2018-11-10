@@ -705,6 +705,10 @@ msgstr "Vertaa näitä tallenteita"
 msgid "Contact information"
 msgstr "Yhteystiedot"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopioi ja liitä seuraava HTML-koodi, jos haluat lisätä tämän työkalun "
@@ -1294,6 +1298,9 @@ msgstr "Syy muistiinpanojen käytöstä poistamiseen:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Tiedot, joiden nimi ja osoite vastaa kyselyä %(query)s"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Poista"
 
@@ -1435,6 +1442,9 @@ msgstr "Näiden tietojen kirjoittaja on poistanut muistiinpanot käytöstä."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Näiden tietojen kirjoittaja on poistanut tilapäivitykset käytöstä."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1583,6 +1593,18 @@ msgstr "Alkuperäisen tallenteen URL-osoite"
 
 msgid "Unspecified"
 msgstr "Määrittämätön"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Päivitä olemassa oleva avain"

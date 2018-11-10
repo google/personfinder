@@ -653,6 +653,10 @@ msgstr "比较以下记录"
 msgid "Contact information"
 msgstr "联系信息"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "复制并粘贴下面的 HTML 代码，即可将此工具放到您的网站上"
 
@@ -1199,6 +1203,9 @@ msgstr "停用注释功能的原因："
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "姓名和地址与“%(query)s”匹配的记录"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "删除"
 
@@ -1339,6 +1346,9 @@ msgstr "创建者已停用此记录的注释功能。"
 msgid "The author has disabled status updates on this record."
 msgstr "创建者已停用此记录的状况更新功能。"
 
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
+
 #, python-format
 msgid "The note for %(full_name)s has been added"
 msgstr "已为“%(full_name)s”添加了注释"
@@ -1473,6 +1483,18 @@ msgstr "原始记录的网址"
 
 msgid "Unspecified"
 msgstr "不详"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "更新现有密钥"

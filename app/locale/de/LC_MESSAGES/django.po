@@ -701,6 +701,10 @@ msgstr "Diese Datensätze vergleichen"
 msgid "Contact information"
 msgstr "Kontaktinformationen"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Falls Sie dieses Tool in Ihre Website einbetten möchten, kopieren Sie den"
@@ -1305,6 +1309,9 @@ msgstr "Grund für die Deaktivierung von Notizen:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Datensätze mit Namen und Adressen, die mit \"%(query)s\" übereinstimmen"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -1448,6 +1455,9 @@ msgstr "Der Ersteller hat Notizen zu diesem Datensatz deaktiviert."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Der Ersteller hat Statusupdates zu diesem Datensatz deaktiviert."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1605,6 +1615,18 @@ msgstr "URL des Originaldatensatzes"
 
 msgid "Unspecified"
 msgstr "Nicht angegeben"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Bestehenden Schlüssel aktualisieren"

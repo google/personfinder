@@ -716,6 +716,10 @@ msgstr "Comparar estos registros"
 msgid "Contact information"
 msgstr "Información de contacto"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Para insertar esta herramienta en tu sitio, copia y pega el código HTML "
@@ -1326,6 +1330,9 @@ msgstr ""
 "Registros con nombres y direcciones que coinciden con la consulta "
 "\"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -1471,6 +1478,9 @@ msgstr ""
 
 msgid "The author has disabled status updates on this record."
 msgstr "El autor ha inhabilitado las novedades sobre el estado en este registro."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1625,6 +1635,18 @@ msgstr "URL del registro original"
 
 msgid "Unspecified"
 msgstr "No especificado"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Actualizar una clave"

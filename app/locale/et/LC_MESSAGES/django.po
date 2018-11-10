@@ -693,6 +693,10 @@ msgstr "Võrrelge neid kirjeid"
 msgid "Contact information"
 msgstr "Kontaktteave"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopeerige ja kleepige järgmine HTML-kood selle tööriista lisamiseks oma "
@@ -1279,6 +1283,9 @@ msgstr "Märkmete keelamise põhjus:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Kirjed, mille nimed ja aadressid sobivad päringuga „%(query)s”"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Eemalda"
 
@@ -1418,6 +1425,9 @@ msgstr "Autor on selle kirje puhul märkmed keelanud."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Autor on selle kirje puhul olekuvärskendused keelanud."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1566,6 +1576,18 @@ msgstr "Algse kirje URL"
 
 msgid "Unspecified"
 msgstr "Määramata"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Olemasoleva võtme uuendamine"

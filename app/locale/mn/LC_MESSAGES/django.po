@@ -696,6 +696,10 @@ msgstr "Эдгээр бичлэгүүдийг харьцуулах"
 msgid "Contact information"
 msgstr "Холбоо барих мэдээлэл"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Энэ хэрэгслийг өөрийн сайтад оруулах бол дараах HTML кодыг хуулж буулгана"
@@ -1280,6 +1284,9 @@ msgstr "Тэмдэглэлийг идэвхгүйжүүлэх шалтгаан:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Нэр болон хаяг нь \"%(query)s\"-тай таарч буй бичлэгүүд"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Хасах"
 
@@ -1421,6 +1428,9 @@ msgstr "Зохиогч нь энэ бичлэг дээр тэмдэглэлий�
 
 msgid "The author has disabled status updates on this record."
 msgstr "Зохиогч нь энэ бичлэг дээр статус шинэчлэлтийг идэвхгүйжүүлсэн."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1567,6 +1577,18 @@ msgstr "Эх бичлэгийн URL"
 
 msgid "Unspecified"
 msgstr "Заагаагүй"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Байгаа түлхүүрийг шинэчлэх"

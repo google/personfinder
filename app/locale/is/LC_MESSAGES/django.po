@@ -712,6 +712,10 @@ msgstr "Berðu færslurnar saman"
 msgid "Contact information"
 msgstr "Samskiptaupplýsingar"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Afritaðu og límdu eftirfarandi HTML-kóða til að setja þetta tól á "
@@ -1303,6 +1307,9 @@ msgstr "Ástæða fyrir því að gera athugasemdir óvirkar:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Færslur með nöfnum og heimilisföngum sem stemma við „%(query)s“"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Fjarlægja"
 
@@ -1446,6 +1453,9 @@ msgstr "Höfundurinn hefur gert athugasemdir við færsluna óvirkar."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Höfundurinn hefur gert stöðuuppfærslur óvirkar fyrir færsluna."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1595,6 +1605,18 @@ msgstr "Vefslóð upprunalegu færslunnar"
 
 msgid "Unspecified"
 msgstr "Ótilgreind"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Uppfæra fyrirliggjandi lykil"

@@ -696,6 +696,10 @@ msgstr "เปรียบเทียบบันทึกเหล่านี
 msgid "Contact information"
 msgstr "ข้อมูลติดต่อ"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "คัดลอกและวางโค้ด HTML ต่อไปนี้เพื่อใส่เครื่องมือนี้บนไซต์ของคุณ"
 
@@ -1272,6 +1276,9 @@ msgstr "สาเหตุที่ปิดใช้งานข้อควา
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "บันทึกที่มีชื่อและที่อยู่ตรงกับ \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "ลบ"
 
@@ -1411,6 +1418,9 @@ msgstr "ผู้ให้ข้อมูลปิดใช้งานข้อ
 
 msgid "The author has disabled status updates on this record."
 msgstr "ผู้ให้ข้อมูลปิดใช้งานการอัปเดตสถานะของบันทึกนี้"
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1555,6 +1565,18 @@ msgstr "URL ของบันทึกเดิม"
 
 msgid "Unspecified"
 msgstr "ไม่ระบุ"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "อัปเดตคีย์ที่มีอยู่"

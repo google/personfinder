@@ -699,6 +699,10 @@ msgstr "Porovnať tieto záznamy"
 msgid "Contact information"
 msgstr "Kontaktné informácie"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Ak chcete tento nástroj pridať na svoje webové stránky, skopírujte a "
@@ -1292,6 +1296,9 @@ msgstr "Dôvod zakázania poznámok:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Záznamy s menami a adresami, ktoré zodpovedajú dopytu „%(query)s“"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Odstrániť"
 
@@ -1431,6 +1438,9 @@ msgstr "Autor zakázal poznámky k tomuto záznamu."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Autor zakázal aktualizácie stavu tohto záznamu."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1582,6 +1592,18 @@ msgstr "Webová adresa pôvodného záznamu"
 
 msgid "Unspecified"
 msgstr "Nie je uvedené"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Aktualizovať existujúci kľúč"

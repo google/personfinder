@@ -696,6 +696,10 @@ msgstr "So sánh các hồ sơ này"
 msgid "Contact information"
 msgstr "Thông tin liên hệ"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
 
@@ -1281,6 +1285,9 @@ msgstr "Lý do tắt ghi chú:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Các hồ sơ có tên và địa chỉ khớp với \"%(query)s\""
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Xóa"
 
@@ -1420,6 +1427,9 @@ msgstr "Tác giả đã tắt ghi chú trên hồ sơ này."
 
 msgid "The author has disabled status updates on this record."
 msgstr "Tác giả đã tắt cập nhật tình trạng trên hồ sơ này."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1569,6 +1579,18 @@ msgstr "URL của hồ sơ gốc"
 
 msgid "Unspecified"
 msgstr "Không xác định"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Cập nhật khóa hiện có"

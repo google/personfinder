@@ -707,6 +707,10 @@ msgstr "E bejegyzések összehasonlítása"
 msgid "Contact information"
 msgstr "Kapcsolatfelvételi adatok"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Másolja ki, majd illessze be a következő HTML-kódot, ha az eszközt el "
@@ -1301,6 +1305,9 @@ msgstr "A megjegyzések letiltásának oka:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Bejegyzések a következővel egyező névvel és címmel: „%(query)s”"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -1446,6 +1453,9 @@ msgstr "A szerző letiltotta a megjegyzéseket ezen a bejegyzésen."
 
 msgid "The author has disabled status updates on this record."
 msgstr "A szerző letiltotta az állapotfrissítéseket ezen a bejegyzésen."
+
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
 
 #, python-format
 msgid "The note for %(full_name)s has been added"
@@ -1599,6 +1609,18 @@ msgstr "Az eredeti bejegyzés URL-je"
 
 msgid "Unspecified"
 msgstr "Meghatározatlan"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "Meglévő kulcs frissítése"

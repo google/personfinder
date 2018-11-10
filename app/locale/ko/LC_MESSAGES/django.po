@@ -670,6 +670,10 @@ msgstr "신상기록 비교"
 msgid "Contact information"
 msgstr "연락처 정보"
 
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하여 붙여넣으세요."
 
@@ -1222,6 +1226,9 @@ msgstr "메모 사용 중지 이유:"
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "'%(query)s'와(과) 일치하는 이름 또는 주소가 있는 신상기록"
 
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""
+
 msgid "Remove"
 msgstr "삭제"
 
@@ -1362,6 +1369,9 @@ msgstr "작성자가 이 신상기록에서 메모를 사용 중지했습니다.
 msgid "The author has disabled status updates on this record."
 msgstr "작성자가 이 신상기록에서 상태 업데이트를 사용 중지했습니다."
 
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
+
 #, python-format
 msgid "The note for %(full_name)s has been added"
 msgstr "%(full_name)s 관련 메모가 추가되었습니다."
@@ -1498,6 +1508,18 @@ msgstr "원본 신상기록 URL"
 
 msgid "Unspecified"
 msgstr "지정하지 않음"
+
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
 
 msgid "Update an existing key"
 msgstr "기존 키 업데이트"
