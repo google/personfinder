@@ -18,7 +18,7 @@ import logging
 from google.appengine.ext import db
 from google.appengine.api import users
 
-import const
+from utils import const
 import model
 import utils
 

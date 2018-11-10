@@ -25,7 +25,7 @@ import unittest
 import sys
 sys.path.append('../app/handlers/')
 sys.path.append('../app/utils/')
-
+from utils import const
 import api
 import model
 import test_handler

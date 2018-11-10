@@ -31,7 +31,7 @@ import sys
 import unittest
 import urllib
 import webob
-
+from utils import const
 from google.appengine import runtime
 from google.appengine.api import users
 from google.appengine.ext import db
@@ -41,7 +41,7 @@ from google.appengine.ext import testbed
 from google.appengine.ext import webapp
 
 import config
-import const
+from utils import const
 import delete
 import model
 import tasks

@@ -32,7 +32,7 @@ import send_mail
 import test_handler
 import unittest
 import webob
-
+from utils import const
 class SendMailTests(unittest.TestCase):
     '''Test the send_mail error handling.'''
 

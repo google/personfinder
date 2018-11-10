@@ -16,6 +16,10 @@
 """The main request handler.  All dynamic requests except for remote_api are
 handled by this handler, which dispatches to all other dynamic handlers."""
 
+import sys
+sys.path.append('../app/handlers/')
+sys.path.append('../app/utils/')
+
 import django_setup  # always keep this first
 
 import mimetypes
@@ -31,7 +35,8 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 
 import config
-import const
+#import const
+from utils import const
 import django.utils.html
 import logging
 import model

@@ -48,7 +48,7 @@ from babel.dates import format_datetime
 from babel.dates import format_time
 import babel
 
-import const
+from utils import const
 import config
 import model
 import pfif

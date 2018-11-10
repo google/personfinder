@@ -26,7 +26,7 @@ import pfif
 import pprint
 import sys
 import unittest
-
+from utils import const
 # utility function duplicated here from server_tests.
 # TODO(lschumacher): find a happy place to share this.
 def text_diff(expected, actual):

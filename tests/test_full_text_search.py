@@ -32,7 +32,7 @@ import logging
 import delete
 import full_text_search
 import model
-
+from utils import const
 TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
 
 class FullTextSearchTests(unittest.TestCase):

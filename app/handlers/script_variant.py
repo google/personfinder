@@ -36,8 +36,8 @@ def read_dictionary(file_name):
         return None
     return dictionary
 
-JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('japanese_name_location_dict.txt')
-CHINESE_FAMILY_NAME_DICTIONARY = read_dictionary('chinese_family_name_dict.txt')
+JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('../app/data/japanese_name_location_dict.txt')
+CHINESE_FAMILY_NAME_DICTIONARY = read_dictionary('../app/data/chinese_family_name_dict.txt')
 
 def has_kanji(word):
     """

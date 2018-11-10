@@ -29,7 +29,7 @@ import photo
 import test_handler
 
 from google.appengine.ext import testbed
-
+from utils import const
 
 class PhotoTests(unittest.TestCase):
 

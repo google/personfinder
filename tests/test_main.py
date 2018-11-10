@@ -30,7 +30,7 @@ import config
 import django.utils
 import main
 import test_handler
-
+from utils import const
 def setup_request(path):
     """Constructs a webapp.Request object for a given request path."""
     return webapp.Request(webob.Request.blank(path).environ)

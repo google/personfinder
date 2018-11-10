@@ -18,7 +18,7 @@
 import sys
 sys.path.append('../app/handlers/')
 sys.path.append('../app/utils/')
-
+from utils import const
 
 """A command line tool to perform load test of Person Finder.
 

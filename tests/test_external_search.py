@@ -35,6 +35,7 @@ import external_search
 import model
 import text_query
 import utils
+from utils import const
 from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
 

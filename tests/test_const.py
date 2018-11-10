@@ -22,7 +22,7 @@ sys.path.append('../app/handlers/')
 sys.path.append('../app/utils/')
 
 
-import const
+from utils import const
 import pfif
 import unittest
 

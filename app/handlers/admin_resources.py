@@ -20,7 +20,7 @@ import datetime
 import mimetypes
 
 import config
-import const
+from utils import const
 from resources import Resource, ResourceBundle
 import utils
 

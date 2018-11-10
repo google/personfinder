@@ -25,6 +25,8 @@ import sys
 sys.path.append('../app/handlers/')
 sys.path.append('../app/utils/')
 
+from utils import const
+
 from google.appengine.ext import webapp
 from pytest import raises
 

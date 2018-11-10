@@ -38,7 +38,7 @@ import main
 import model
 import resources
 import utils
-
+from utils import const
 
 class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""

@@ -27,7 +27,7 @@ from google.appengine.ext import db
 
 import cloud_storage
 import config
-import const
+from utils import const
 import delete
 import model
 import photo

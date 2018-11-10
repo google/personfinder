@@ -22,6 +22,8 @@ sys.path.append('../app/utils/')
 import unittest
 import subscribe
 
+from utils import const
+
 class SubscribeTests(unittest.TestCase):
     '''Test Subscribe.'''
 

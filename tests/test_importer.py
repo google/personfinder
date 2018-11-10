@@ -27,7 +27,7 @@ from pytest import raises
 
 import model
 import importer
-
+from utils import const
 
 TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
 

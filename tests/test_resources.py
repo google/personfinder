@@ -30,7 +30,7 @@ import resources
 from resources import Resource, ResourceBundle
 import utils
 import sys
-
+from utils import const
 
 class RamCacheTests(unittest.TestCase):
     def setUp(self):

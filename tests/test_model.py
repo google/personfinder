@@ -24,7 +24,7 @@ from google.appengine.ext import db
 import unittest
 import model
 from utils import get_utcnow, set_utcnow_for_test
-
+from utils import const
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
