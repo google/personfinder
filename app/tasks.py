@@ -476,7 +476,6 @@ class DumpCSV(utils.BaseHandler):
     This task requires special setup to run on a dev app server. See the
     docstring of cloud_storage.CloudStorage class for instruction.
     """
-    # TODO(gimite): Implement web UI to serve the files.
     # TODO(gimite): Include note records in the CSV file.
 
     repo_required = False

@@ -605,6 +605,7 @@ class BaseHandler(webapp.RequestHandler):
 
     # List all accepted query parameters here with their associated validators.
     auto_params = {
+        'action': strip,
         'add_note': validate_yes,
         'age': validate_age,
         'alternate_family_names': strip,

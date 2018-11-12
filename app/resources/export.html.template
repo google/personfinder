@@ -1,0 +1,35 @@
+{# Copyright 2018 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the page which redirects to an exported CSV file            #}
+{# (see api.py).                                                            #}
+
+{% extends "app-base.html.template" %}
+{% load i18n %}
+
+{% block head %}
+  {{block.super}}
+  <meta http-equiv="refresh" content="0;URL='{{csv_url}}'">
+{% endblock head %}
+
+{% block content %}
+  <div class="info">
+    {% comment %}
+      Translators: A message shown when the browser is about to start
+      downloading a file.
+    {% endcomment %}
+    {% trans "Your download should start automatically." %}
+    {% comment %}
+      Translators: A link text to go back to the form where the user
+      can import or export records in the site.
+    {% endcomment %}
+    <a href="{{env.repo_path}}/api/import">{% trans "Back to import/export form" %}</a>
+  </div>
+{% endblock %}

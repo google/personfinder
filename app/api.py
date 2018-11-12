@@ -18,10 +18,11 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-import django_setup
+import django_setup  # always keep this first
 
 import calendar
 import csv
+import datetime
 import logging
 import re
 import StringIO
@@ -39,7 +40,9 @@ from google.appengine.ext import db
 from google.appengine.api import images
 from unidecode import unidecode
 
+import cloud_storage
 import config
+from django_setup import ugettext as _
 import external_search
 import full_text_search
 import importer
@@ -54,7 +57,6 @@ from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 from photo import create_photo, PhotoError
 from utils import Struct
-
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 PHOTO_UPLOAD_MAX_SIZE = 10485760 # Currently 10MB is the maximum upload size
@@ -202,7 +204,13 @@ def convert_xsl_to_csv(contents):
     return csv_output.getvalue(), None
 
 
+# TODO(gimite): Rename this class name and URL because it now supports both
+#     import and export, maybe after we decide to use CSV or Excel file for
+#     import and export.
 class Import(utils.BaseHandler):
+    """A web UI for users to import or export records in CSV / Excel format.
+    """
+
     https_required = True
 
     def get(self):
@@ -211,6 +219,14 @@ class Import(utils.BaseHandler):
                     **get_tag_params(self))
 
     def post(self):
+        if self.params.action == 'import':
+            self.import_records()
+        elif self.params.action == 'export':
+            self.export_records()
+        else:
+            self.error(404, 'Unknown action.')
+
+    def import_records(self):
         if not (self.auth and self.auth.domain_write_permission):
             # TODO(ryok): i18n
             self.error(403, message='Missing or invalid authorization key.')
@@ -310,6 +326,25 @@ class Import(utils.BaseHandler):
                                skipped=notes_skipped,
                                total=notes_total)],
                     **get_tag_params(self))
+
+    def export_records(self):
+        if not (self.auth and self.auth.read_permission):
+            # TODO(gimite): i18n
+            self.error(403, message='Missing or invalid authorization key.')
+            return
+
+        storage = cloud_storage.CloudStorage()
+        object_name = self.config.latest_csv_object_name
+        if object_name:
+            csv_url = storage.sign_url(
+                object_name, url_lifetime=datetime.timedelta(minutes=10))
+            self.render('export.html', csv_url=csv_url)
+        else:
+            self.error(
+                404,
+                # Translators: An error message indicating that the data
+                # requested by the user is not available yet.
+                message=_('The data is not ready yet. Try again in 24 hours.'))
 
 
 class Read(utils.BaseHandler):
