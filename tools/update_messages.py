@@ -157,7 +157,10 @@ if __name__ == '__main__':
 
     # Run makemessages to update the English .po file.
     django_admin(
-        'makemessages', '-l', 'en', '-i', 'vendors', *makemessages_args)
+        'makemessages',
+        '--locale=en',
+        '--ignore=vendors',
+        *makemessages_args)
 
     # Get the set of messages in the new English .po file.
     new_template = read_po(open(en_filename))
