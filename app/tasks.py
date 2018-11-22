@@ -522,7 +522,7 @@ class DumpCSV(utils.BaseHandler):
             # just a convenient place to call it.
             self.storage.set_objects_lifetime(lifetime_days=2)
 
-            for repo in model.Repo.list():
+            for repo in model.Repo.list_active():
                 self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
     def run_task_for_repo(self, repo):
