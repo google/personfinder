@@ -19,9 +19,26 @@
 import csv
 
 import pfif
+import utils
 
 
 PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
+
+
+def get_person_note_joined_record_fields():
+    """Returns a list of field names in a joined record of a person and a note.
+    """
+    joined_fields = []
+    for person_field in PFIF.fields['person']:
+        joined_field = utils.get_field_name_for_joined_record(
+            person_field, 'person')
+        joined_fields.append(joined_field)
+    for note_field in PFIF.fields['note']:
+        joined_field = utils.get_field_name_for_joined_record(
+            note_field, 'note')
+        if joined_field not in joined_fields:
+            joined_fields.append(joined_field)
+    return joined_fields
 
 
 class RecordCsvWriter(object):
@@ -70,6 +87,12 @@ class NoteCsvWriter(RecordCsvWriter):
     fields = PFIF.fields['note']
 
     
+class PersonWithNoteCsvWriter(RecordCsvWriter):
+    """A class to write a joined record of person and note in CSV format."""
+
+    fields = get_person_note_joined_record_fields()
+
+
 class RecordXmlWriter(object):
     """Base class to write records in XML format."""
 
