@@ -28,17 +28,13 @@ PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 def get_person_note_joined_record_fields():
     """Returns a list of field names in a joined record of a person and a note.
     """
-    joined_fields = []
-    for person_field in PFIF.fields['person']:
-        joined_field = utils.get_field_name_for_joined_record(
-            person_field, 'person')
-        joined_fields.append(joined_field)
-    for note_field in PFIF.fields['note']:
-        joined_field = utils.get_field_name_for_joined_record(
-            note_field, 'note')
-        if joined_field not in joined_fields:
-            joined_fields.append(joined_field)
-    return joined_fields
+    person_fields = [
+        utils.get_field_name_for_joined_record(f, 'person')
+        for f in PFIF.fields['person']]
+    note_fields = [
+        utils.get_field_name_for_joined_record(f, 'note')
+        for f in PFIF.fields['note']]
+    return person_fields + [f for f in note_fields if f not in person_fields]
 
 
 class RecordCsvWriter(object):

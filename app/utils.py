@@ -433,7 +433,7 @@ def join_person_and_note_record(person_record, note_record):
     """Join a person record and a note record into a single dictionary.
 
     The field names are prefixed with 'person_' or 'note_' to avoid name
-    collision. note_record can be None. In that casse, person record field
+    collision. note_record can be None. In that case, person record field
     names are still prefixed.
 
     Args:
