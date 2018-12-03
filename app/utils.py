@@ -388,26 +388,87 @@ def get_host(host=None):
         return host
 
 
+# List of sensitive field names in person and note records.
+SENSITIVE_FIELDS = [
+  'date_of_birth',
+  'author_email',
+  'author_phone',
+  'email_of_found_person',
+  'phone_of_found_person',
+]
+
+
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client
-    has full read authorization."""
+    has full read authorization.
+
+    Args:
+        records (list of dict): A list of dictionaries which represent either of:
+            - a person record
+            - a note record
+            - a joined record of a person and a note
+    """
     if not (auth and auth.full_read_permission):
         filter_sensitive_fields(records)
 
 
 def filter_sensitive_fields(records):
-    """Removes sensitive fields from a list of dictionaries."""
+    """Removes sensitive fields from a list of dictionaries.
+
+    Args:
+        records (list of dict): A list of dictionaries which represent either of:
+            - a person record
+            - a note record
+            - a joined record of a person and a note
+    """
     for record in records:
-        if 'date_of_birth' in record:
-            record['date_of_birth'] = ''
-        if 'author_email' in record:
-            record['author_email'] = ''
-        if 'author_phone' in record:
-            record['author_phone'] = ''
-        if 'email_of_found_person' in record:
-            record['email_of_found_person'] = ''
-        if 'phone_of_found_person' in record:
-            record['phone_of_found_person'] = ''
+        for prefix in ['', 'person_', 'note_']:
+            for field in SENSITIVE_FIELDS:
+                prefixed_field = prefix + field
+                if prefixed_field in record:
+                    record[prefixed_field] = ''
+
+
+def join_person_and_note_record(person_record, note_record):
+    """Join a person record and a note record into a single dictionary.
+
+    The field names are prefixed with 'person_' or 'note_' to avoid name
+    collision. note_record can be None. In that case, person record field
+    names are still prefixed.
+
+    Args:
+        person_record (dict): A dictionary representation of a person record.
+            Cannot be None.
+        note_record (dict): A dictionary representation of a note record for
+            the person. Can be None.
+    """
+    joined_record = {}
+    for name, value in person_record.iteritems():
+        new_name = get_field_name_for_joined_record(name, 'person')
+        joined_record[new_name] = value
+    if note_record:
+        assert (note_record['person_record_id'] ==
+                person_record['person_record_id'])
+        for name, value in note_record.iteritems():
+            new_name = get_field_name_for_joined_record(name, 'note')
+            joined_record[new_name] = value
+    return joined_record
+
+
+def get_field_name_for_joined_record(original_field_name, record_type):
+    """Converts a field name in a person/note record into a field name used in
+    a joined record of a person and a note.
+
+    See also join_person_and_note_record().
+
+    Args:
+        original_field_name (str): A field name in a person/note record.
+        record_type (str): 'person' or 'note'.
+    """
+    if original_field_name in ('person_record_id', 'note_record_id'):
+        return original_field_name
+    else:
+        return '%s_%s' % (record_type, original_field_name)
 
 
 # The current time for testing as a datetime object, or None if using real time.

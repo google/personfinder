@@ -537,7 +537,8 @@ class DumpCSV(utils.BaseHandler):
             query.with_cursor(self.params.cursor)
 
         csv_io = StringIO.StringIO()
-        writer = record_writer.PersonCsvWriter(csv_io, write_header=is_first)
+        writer = record_writer.PersonWithNoteCsvWriter(
+            csv_io, write_header=is_first)
 
         has_data = False
         scan_completed = False
@@ -548,7 +549,7 @@ class DumpCSV(utils.BaseHandler):
             else:
                 scan_completed = True
                 break
-            records = [PFIF.person_to_dict(person) for person in persons]
+            records = self.get_person_records_with_notes(repo, persons)
             # So far it only supports dump of records without sensitive fields.
             utils.filter_sensitive_fields(records)
             writer.write(records)
@@ -574,3 +575,23 @@ class DumpCSV(utils.BaseHandler):
             config.set_for_repo(repo, latest_csv_object_name=final_csv_name)
         else:
             self.schedule_next_task(query.cursor(), timestamp)
+
+    def get_person_records_with_notes(self, repo, persons):
+        records = []
+        for person in persons:
+            person_record = PFIF.person_to_dict(person)
+            notes = person.get_notes()
+            if notes:
+                for note in notes:
+                    note_record = PFIF.note_to_dict(note)
+                    if note.hidden:
+                        note_record['text'] = ''
+                    records.append(utils.join_person_and_note_record(
+                        person_record, note_record))
+            else:
+                # Add a row with blank note fields.
+                # Uses join_person_and_note_record() here too to prefix field
+                # names consistently.
+                records.append(utils.join_person_and_note_record(
+                    person_record, None))
+        return records

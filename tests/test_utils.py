@@ -244,6 +244,122 @@ class HandlerTests(unittest.TestCase):
         assert 'Invalid language tag' in response.body
         assert '<script' not in response.body
 
+    def test_filter_sensitive_fields_in_person_record(self):
+        """Test passing a person recrod to utils.filter_sensitive_fields().
+        """
+        person_record = {
+            'person_record_id': 'person.1',
+            'full_name': 'Taro Yamada',
+            'date_of_birth': '2000-01-01',
+            'author_email': 'taro@example.com',
+            'author_phone': '01234567890',
+        }
+        utils.filter_sensitive_fields([person_record])
+        assert person_record['person_record_id'] == 'person.1'
+        assert person_record['full_name'] == 'Taro Yamada'
+        assert person_record['date_of_birth'] == ''
+        assert person_record['author_email'] == ''
+        assert person_record['author_phone'] == ''
+        
+    def test_filter_sensitive_fields_in_note_record(self):
+        """Test passing a note recrod to utils.filter_sensitive_fields().
+        """
+        note_record = {
+            'note_record_id': 'note.1',
+            'person_record_id': 'person.1',
+            'status': 'is_note_author',
+            'text': 'I am safe',
+            'author_email': 'taro@example.com',
+            'author_phone': '01234567890',
+        }
+        utils.filter_sensitive_fields([note_record])
+        assert note_record['note_record_id'] == 'note.1'
+        assert note_record['person_record_id'] == 'person.1'
+        assert note_record['status'] == 'is_note_author'
+        assert note_record['text'] == 'I am safe'
+        assert note_record['author_email'] == ''
+        assert note_record['author_phone'] == ''
+
+    def test_filter_sensitive_fields_in_joined_record(self):
+        """Test passing a joined recrod of a person and a note to
+        utils.filter_sensitive_fields().
+        """
+        joined_record = {
+            'person_record_id': 'person.1',
+            'person_full_name': 'Taro Yamada',
+            'person_date_of_birth': '2000-01-01',
+            'person_author_email': 'taro@example.com',
+            'person_author_phone': '01234567890',
+            'note_record_id': 'note.1',
+            'note_status': 'is_note_author',
+            'note_text': 'I am safe',
+            'note_author_email': 'taro@example.com',
+            'note_author_phone': '01234567890',
+        }
+        utils.filter_sensitive_fields([joined_record])
+        assert joined_record['person_record_id'] == 'person.1'
+        assert joined_record['person_full_name'] == 'Taro Yamada'
+        assert joined_record['person_date_of_birth'] == ''
+        assert joined_record['person_author_email'] == ''
+        assert joined_record['person_author_phone'] == ''
+        assert joined_record['note_record_id'] == 'note.1'
+        assert joined_record['note_status'] == 'is_note_author'
+        assert joined_record['note_text'] == 'I am safe'
+        assert joined_record['note_author_email'] == ''
+        assert joined_record['note_author_phone'] == ''
+
+    def test_join_person_and_note_record(self):
+        """Test passing a person and note recrod to
+        utils.join_person_and_note_record().
+        """
+        person_record = {
+            'person_record_id': 'person.1',
+            'full_name': 'Taro Yamada',
+        }
+        note_record = {
+            'note_record_id': 'note.1',
+            'person_record_id': 'person.1',
+            'status': 'is_note_author',
+        }
+        joined_record = utils.join_person_and_note_record(
+            person_record, note_record)
+        assert joined_record['person_record_id'] == 'person.1'
+        assert joined_record['person_full_name'] == 'Taro Yamada'
+        assert joined_record['note_record_id'] == 'note.1'
+        assert joined_record['note_status'] == 'is_note_author'
+
+    def test_join_person_and_none_note_record(self):
+        """Test passing None as a note record to
+        utils.join_person_and_note_record().
+        """
+        person_record = {
+            'person_record_id': 'person.1',
+            'full_name': 'Taro Yamada',
+        }
+        joined_record = utils.join_person_and_note_record(
+            person_record, None)
+        assert joined_record['person_record_id'] == 'person.1'
+        assert joined_record['person_full_name'] == 'Taro Yamada'
+
+    def test_get_field_name_for_joined_record(self):
+        assert (
+          utils.get_field_name_for_joined_record('full_name', 'person')
+              == 'person_full_name')
+        assert (
+          utils.get_field_name_for_joined_record('status', 'note')
+              == 'note_status')
+
+        # person_record_id and note_record_id don't change.
+        assert (
+          utils.get_field_name_for_joined_record('person_record_id', 'person')
+              == 'person_record_id')
+        assert (
+          utils.get_field_name_for_joined_record('note_record_id', 'note')
+              == 'note_record_id')
+        assert (
+          utils.get_field_name_for_joined_record('person_record_id', 'note')
+              == 'person_record_id')
+
 
 if __name__ == '__main__':
     unittest.main()
