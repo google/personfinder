@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Sample query for counting all the Person entries between dates.
 
 query = Person.all(filter_expired=False).filter(
@@ -10,4 +11,4 @@ while True:
         break
     count += current_count
     query.with_cursor(query.cursor())
-print '# of persons =', count
+print('# of persons =', count)

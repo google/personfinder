@@ -17,6 +17,7 @@
 
 Instead of running this script directly, use the 'batch_delete' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
+from __future__ import print_function
 
 import optparse
 
@@ -96,11 +97,11 @@ Example:
                 attr_value = str(entity.key().id_or_name())
             else:
                 attr_value = getattr(entity, options.output_attr)
-            print '%s %s with %s = %r' % (
+            print('%s %s with %s = %r' % (
                     message_prefix,
                     type(entity).kind(),
                     options.output_attr,
-                    attr_value)
+                    attr_value))
 
         if options.mode == 'delete':
             db.delete(entities)

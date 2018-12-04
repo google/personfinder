@@ -27,6 +27,7 @@ that are raised contain the Python traceback information, which can be used to
 deduce where in the process the failure occurred. DO NOT PASS SUCH INFORMATION
 to your users.
 """
+from __future__ import print_function
 
 import hashlib
 import os

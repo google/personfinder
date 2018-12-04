@@ -19,6 +19,7 @@
 Implementation based on the book Algorithm Design by Michael T. Goodrich and
 Roberto Tamassia, 2002.
 """
+from __future__ import print_function
 
 from rsa._compat import range
 import rsa.common

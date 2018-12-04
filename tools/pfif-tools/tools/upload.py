@@ -28,6 +28,7 @@ Supported version control systems:
 It is important for Git/Mercurial users to specify a tree/node/branch to diff
 against by using the '--rev' option.
 """
+from __future__ import print_function
 # This code is derived from appcfg.py in the App Engine SDK (open source),
 # and from ASPN recipe #146306.
 # Copied from Google Person Finder: http://code.google.com/p/googlepersonfinder
@@ -132,12 +133,12 @@ def StatusUpdate(msg):
     msg: The string to print.
   """
   if verbosity > 0:
-    print msg
+    print(msg)
 
 
 def ErrorExit(msg):
   """Print an error message to stderr and exit."""
-  print >>sys.stderr, msg
+  print(msg, file=sys.stderr)
   sys.exit(1)
 
 
@@ -286,32 +287,32 @@ class AbstractRpcServer(object):
         auth_token = self._GetAuthToken(credentials[0], credentials[1])
       except ClientLoginError, e:
         if e.reason == "BadAuthentication":
-          print >>sys.stderr, "Invalid username or password."
+          print("Invalid username or password.", file=sys.stderr)
           continue
         if e.reason == "CaptchaRequired":
-          print >>sys.stderr, (
+          print((
               "Please go to\n"
               "https://www.google.com/accounts/DisplayUnlockCaptcha\n"
-              "and verify you are a human.  Then try again.")
+              "and verify you are a human.  Then try again."), file=sys.stderr)
           break
         if e.reason == "NotVerified":
-          print >>sys.stderr, "Account not verified."
+          print("Account not verified.", file=sys.stderr)
           break
         if e.reason == "TermsNotAgreed":
-          print >>sys.stderr, "User has not agreed to TOS."
+          print("User has not agreed to TOS.", file=sys.stderr)
           break
         if e.reason == "AccountDeleted":
-          print >>sys.stderr, "The user account has been deleted."
+          print("The user account has been deleted.", file=sys.stderr)
           break
         if e.reason == "AccountDisabled":
-          print >>sys.stderr, "The user account has been disabled."
+          print("The user account has been disabled.", file=sys.stderr)
           break
         if e.reason == "ServiceDisabled":
-          print >>sys.stderr, ("The user's access to the service has been "
-                               "disabled.")
+          print(("The user's access to the service has been "
+                               "disabled."), file=sys.stderr)
           break
         if e.reason == "ServiceUnavailable":
-          print >>sys.stderr, "The service is not available; try again later."
+          print("The service is not available; try again later.", file=sys.stderr)
           break
         raise
       self._GetAuthCookie(auth_token)
@@ -606,7 +607,7 @@ def RunShellWithReturnCode(command, print_output=False,
       line = p.stdout.readline()
       if not line:
         break
-      print line.strip("\n")
+      print(line.strip("\n"))
       output_array.append(line)
     output = "".join(output_array)
   else:
@@ -614,7 +615,7 @@ def RunShellWithReturnCode(command, print_output=False,
   p.wait()
   errout = p.stderr.read()
   if print_output and errout:
-    print >>sys.stderr, errout
+    print(errout, file=sys.stderr)
   p.stdout.close()
   p.stderr.close()
   return output, p.returncode
@@ -660,9 +661,9 @@ class VersionControlSystem(object):
     """Show an "are you sure?" prompt if there are unknown files."""
     unknown_files = self.GetUnknownFiles()
     if unknown_files:
-      print "The following files are not added to version control:"
+      print("The following files are not added to version control:")
       for line in unknown_files:
-        print line
+        print(line)
       prompt = "Are you sure to continue?(y/N) "
       answer = raw_input(prompt).strip()
       if answer != "y":
@@ -722,7 +723,7 @@ class VersionControlSystem(object):
         content = ""
       checksum = md5(content).hexdigest()
       if options.verbose > 0 and not file_too_large:
-        print "Uploading %s file for %s" % (type, filename)
+        print("Uploading %s file for %s" % (type, filename))
       url = "/%d/upload_content/%d/%d" % (int(issue), int(patchset), file_id)
       form_fields = [("filename", filename),
                      ("status", status),
@@ -1330,7 +1331,7 @@ def UploadSeparatePatches(issue, rpc_server, patchset, data, options):
     files = [("data", "data.diff", patch[1])]
     ctype, body = EncodeMultipartFormData(form_fields, files)
     url = "/%d/upload_patch/%d" % (int(issue), int(patchset))
-    print "Uploading patch for " + patch[0]
+    print("Uploading patch for " + patch[0])
     response_body = rpc_server.Send(url, body, content_type=ctype)
     lines = response_body.splitlines()
     if not lines or lines[0] != "OK":
@@ -1576,8 +1577,8 @@ def RealMain(argv, data=None):
     guessed_base = vcs.GuessBase(options.download_base)
     if base:
       if guessed_base and base != guessed_base:
-        print "Using base URL \"%s\" from --base_url instead of \"%s\"" % \
-            (base, guessed_base)
+        print("Using base URL \"%s\" from --base_url instead of \"%s\"" % \
+            (base, guessed_base))
     else:
       base = guessed_base
 
@@ -1590,7 +1591,7 @@ def RealMain(argv, data=None):
     data = vcs.GenerateDiff(args)
   files = vcs.GetBaseFiles(data)
   if verbosity >= 1:
-    print "Upload server:", options.server, "(change with -s/--server)"
+    print("Upload server:", options.server, "(change with -s/--server)")
   if options.issue:
     prompt = "Message describing this patch set: "
   else:
@@ -1635,7 +1636,7 @@ def RealMain(argv, data=None):
   form_fields.append(("base_hashes", base_hashes))
   if options.private:
     if options.issue:
-      print "Warning: Private flag ignored when updating an existing issue."
+      print("Warning: Private flag ignored when updating an existing issue.")
     else:
       form_fields.append(("private", "1"))
   # If we're uploading base files, don't send the email before the uploads, so
@@ -1645,7 +1646,7 @@ def RealMain(argv, data=None):
   if not options.download_base:
     form_fields.append(("content_upload", "1"))
   if len(data) > MAX_UPLOAD_SIZE:
-    print "Patch is large, so uploading file patches separately."
+    print("Patch is large, so uploading file patches separately.")
     uploaded_diff_file = []
     form_fields.append(("separate_patches", "1"))
   else:
@@ -1685,7 +1686,7 @@ def main():
   try:
     RealMain(sys.argv)
   except KeyboardInterrupt:
-    print
+    print()
     StatusUpdate("Interrupted.")
     sys.exit(1)
 

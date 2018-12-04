@@ -27,6 +27,7 @@ Specify -v to show the name of each test as it runs (rather than just dots).
 Specify -s to see the messages printed by all tests as they run (by default,
     stdout/stderr will be captured and then shown only for failing tests).
 """
+from __future__ import print_function
 
 import os
 import pytest
@@ -104,10 +105,10 @@ class ProcessRunner(threading.Thread):
         self.clean_up()
         if self.failed:
             self.flush_output()
-            print >>sys.stderr, '%s failed (status %s).\n' % (
-                self.name, self.process.returncode)
+            print('%s failed (status %s).\n' % (
+                self.name, self.process.returncode), file=sys.stderr)
         else:
-            print >>sys.stderr, '%s stopped.' % self.name
+            print('%s stopped.' % self.name, file=sys.stderr)
 
     def flush_output(self):
         """Flushes the buffered output from this subprocess to stderr."""
@@ -126,7 +127,7 @@ class ProcessRunner(threading.Thread):
             if not self.ready:
                 self.flush_output()  # after each second, show output
         if self.ready:
-            print >>sys.stderr, '%s started.' % self.name
+            print('%s started.' % self.name, file=sys.stderr)
         else:
             raise RuntimeError('%s failed to start.' % self.name)
 
@@ -191,19 +192,19 @@ class MailThread(threading.Thread):
     def run(self):
         class MailServer(smtpd.SMTPServer):
             def process_message(self, peer, mailfrom, rcpttos, data):
-                print >>sys.stderr, 'mail from:', mailfrom, 'to:', rcpttos
+                print('mail from:', mailfrom, 'to:', rcpttos, file=sys.stderr)
                 MailThread.messages.append(
                     {'from': mailfrom, 'to': rcpttos, 'data': data})
 
         try:
             server = MailServer(('localhost', self.port), None)
         except Exception, e:
-            print >>sys.stderr, 'SMTP server failed: %s' % e
+            print('SMTP server failed: %s' % e, file=sys.stderr)
             sys.exit(-1)
-        print >>sys.stderr, 'SMTP server started.'
+        print('SMTP server started.', file=sys.stderr)
         while not self.stop_requested:
             smtpd.asyncore.loop(timeout=0.5, count=1)
-        print >>sys.stderr, 'SMTP server stopped.'
+        print('SMTP server stopped.', file=sys.stderr)
 
     def stop(self):
         self.stop_requested = True

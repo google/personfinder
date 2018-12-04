@@ -19,6 +19,7 @@
 
 Instead of running this script directly, use the 'console' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
+from __future__ import print_function
 
 import code
 import getpass
@@ -62,12 +63,12 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
     if not app_id:
         app_id = get_app_id()
-    print 'Application ID: %s' % app_id
-    print 'Server: %s' % server
+    print('Application ID: %s' % app_id)
+    print('Server: %s' % server)
     if not username:
         username = raw_input('Username: ')
     else:
-        print 'Username: %s' % username
+        print('Username: %s' % username)
     # Sets up users.get_current_user() inside of the console
     os.environ['USER_EMAIL'] = username
     if not password:

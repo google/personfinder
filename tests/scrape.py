@@ -26,6 +26,7 @@ Features:
   - store and send cookies according to domain and path
   - submit forms with file upload
 """
+from __future__ import print_function
 
 __author__ = 'Ka-Ping Yee <ping@zesty.ca>'
 __date__ = '$Date: 2012/09/22 00:00:00 $'.split()[1].replace('/', '-')
@@ -56,12 +57,12 @@ def request(scheme, method, host, path, headers, data='', verbose=0):
     import socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     if verbose >= 3:
-        print >>sys.stderr, 'connect:', host, port
+        print('connect:', host, port, file=sys.stderr)
     sock.connect((host, int(port)))
     file = scheme == 'https' and socket.ssl(sock) or sock.makefile()
     if verbose >= 3:
-        print >>sys.stderr, ('\r\n' + request.rstrip()).replace(
-            '\r\n', '\nrequest: ').lstrip()
+        print(('\r\n' + request.rstrip()).replace(
+            '\r\n', '\nrequest: ').lstrip(), file=sys.stderr)
     file.write(request)
     if hasattr(file, 'flush'):
         file.flush()
@@ -90,7 +91,7 @@ def curl(url, headers={}, data=None, verbose=0):
         command += ' --header ' + shellquote('%s: %s' % (name, value))
     command += ' ' + shellquote(url)
     if verbose >= 3:
-        print >>sys.stderr, 'execute:', command
+        print('execute:', command, file=sys.stderr)
     os.system(command + ' > ' + tempname)
     reply = open(tempname).read()
     os.remove(tempname)
@@ -187,7 +188,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
 
     # Make the HTTP or HTTPS request using Python or cURL.
     if verbose:
-        print >>sys.stderr, '>', method, url
+        print('>', method, url, file=sys.stderr)
     import socket
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
@@ -209,12 +210,12 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     head = head.replace('\r\n', '\n').replace('\r', '\n')
     response, head = head.split('\n', 1)
     if verbose >= 3:
-        print >>sys.stderr, 'reply:', response.rstrip()
+        print('reply:', response.rstrip(), file=sys.stderr)
     status = int(response.split()[1])
     message = ' '.join(response.split()[2:])
     for line in head.split('\n'):
         if verbose >= 3:
-            print >>sys.stderr, 'reply:', line.rstrip()
+            print('reply:', line.rstrip(), file=sys.stderr)
         name, value = line.split(': ', 1)
         name = name.lower()
         if name in headers:
@@ -222,11 +223,11 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
         else:
             headers[name] = value
     if verbose >= 2:
-        print >>sys.stderr, 'content: %d byte%s\n' % (
-            len(content), content != 1 and 's' or '')
+        print('content: %d byte%s\n' % (
+            len(content), content != 1 and 's' or ''), file=sys.stderr)
     if verbose >= 3:
         for line in content.rstrip('\n').split('\n'):
-            print >>sys.stderr, 'content: ' + repr(line + '\n')
+            print('content: ' + repr(line + '\n'), file=sys.stderr)
 
     # Store any received cookies.
     if 'set-cookie' in headers:

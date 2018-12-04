@@ -32,6 +32,7 @@ Usage:
 The arguments should be options to pass to the django "makemessages" command.
 If no arguments are specified, -e '.py,.html,.txt,.template' is assumed.
 """
+from __future__ import print_function
 
 import datetime
 import os
@@ -143,7 +144,7 @@ def django_admin(*args):
 if __name__ == '__main__':
     args = sys.argv[1:]
     if '-h' in args or '--help' in args:
-        print __doc__
+        print(__doc__)
         sys.exit(1)
     force = '-f' in args or '--force' in args
     makemessages_args = [arg for arg in args if arg not in ['-f', '--force']]
@@ -171,8 +172,8 @@ if __name__ == '__main__':
 
     # Update the other .po files if necessary.
     if new_msgids != old_msgids or force:
-        print '%d messages added, %d removed.' % (
-            len(new_msgids - old_msgids), len(old_msgids - new_msgids))
+        print('%d messages added, %d removed.' % (
+            len(new_msgids - old_msgids), len(old_msgids - new_msgids)))
         print_flush('Updating:')
         missing = {}
         for locale in sorted(os.listdir(LOCALE_DIR)):
@@ -180,11 +181,11 @@ if __name__ == '__main__':
                 print_flush(' ' + locale)
                 missing[locale] = update_po(
                     locale, new_msgids, new_template.header_comment)
-        print
+        print()
         for locale in sorted(missing):
-            print '%s: %d missing' % (locale, missing[locale])
+            print('%s: %d missing' % (locale, missing[locale]))
     else:
-        print 'No messages have changed.'
+        print('No messages have changed.')
 
     # Run compilemessages to generate all the .mo files.
     sys.stderr = open('/dev/null', 'w')  # suppress the listing of all files
