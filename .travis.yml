@@ -1,15 +1,21 @@
-sudo: required
-
 language: python
-
-python:
-  - 2.7
 
 services:
   - docker
 
-env:
-  DOCKER_COMPOSE_VERSION: 1.10.0
+matrix:
+  include:
+    - python: 2.7
+      env:
+        - DOCKERFILE="Dockerfile"
+          DOCKER_COMPOSE_VERSION: 1.10.0
+    - python: 3.7
+      env:
+        - DOCKERFILE="Dockerfile_Python37"
+          DOCKER_COMPOSE_VERSION: 1.10.0
+      dist: xenial  # required for Python >= 3.7 (travis-ci/travis-ci#9069)
+  allow_failures:
+    - python: 3.7
 
 install: true 
 
@@ -21,4 +27,3 @@ before_install:
   - docker-compose up -d
 
 script: docker-compose exec web tools/all_tests
-
