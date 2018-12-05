@@ -20,7 +20,6 @@ is builtin, extractors for other sources can be added using very simple plugins.
 The main entry points into the extraction functionality are the functions
 `extract_from_dir` and `extract_from_file`.
 """
-from __future__ import print_function
 
 import os
 try:
@@ -306,7 +305,7 @@ def extract(method, fileobj, keywords=DEFAULT_KEYWORDS, comment_tags=(),
             # An empty string msgid isn't valid, emit a warning
             where = '%s:%i' % (hasattr(fileobj, 'name') and \
                                    fileobj.name or '(unknown)', lineno)
-            print(empty_msgid_warning % where, file=sys.stderr)
+            print >> sys.stderr, empty_msgid_warning % where
             continue
 
         messages = tuple(msgs)

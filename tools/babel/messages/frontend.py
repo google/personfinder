@@ -13,7 +13,6 @@
 # history and logs, available at http://babel.edgewall.org/log/.
 
 """Frontends for the message extraction functionality."""
-from __future__ import print_function
 
 from ConfigParser import RawConfigParser
 from datetime import datetime
@@ -636,9 +635,9 @@ class CommandLineInterface(object):
             for identifier in identifiers:
                 locale = Locale.parse(identifier)
                 output = format % (identifier, locale.english_name)
-                print(output.encode(sys.stdout.encoding or
+                print output.encode(sys.stdout.encoding or
                                     getpreferredencoding() or
-                                    'ascii', 'replace'))
+                                    'ascii', 'replace')
             return 0
 
         if not args:
@@ -667,14 +666,14 @@ class CommandLineInterface(object):
         handler.setFormatter(formatter)
 
     def _help(self):
-        print(self.parser.format_help())
-        print("commands:")
+        print self.parser.format_help()
+        print "commands:"
         longest = max([len(command) for command in self.commands])
         format = "  %%-%ds %%s" % max(8, longest + 1)
         commands = self.commands.items()
         commands.sort()
         for name, description in commands:
-            print(format % (name, description))
+            print format % (name, description)
 
     def compile(self, argv):
         """Subcommand for compiling a message catalog to a MO file.

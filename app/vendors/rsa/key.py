@@ -32,7 +32,6 @@ of pyasn1.
     or unauthenticated source.
 
 """
-from __future__ import print_function
 
 import logging
 import warnings
