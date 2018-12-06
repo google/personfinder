@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import calendar
+import copy
 import datetime
 import logging
 import time
@@ -528,17 +529,16 @@ class DumpCSV(utils.BaseHandler):
     def run_task_for_repo(self, repo):
         start_time = utils.get_utcnow()
         timestamp = self.params.timestamp or start_time
-        base_name = '%s-persons-%s' % (
-            repo, timestamp.strftime('%Y-%m-%d-%H%M%S'))
         is_first = not self.params.cursor
 
         query = model.Person.all_in_repo(repo).order('entry_date')
         if self.params.cursor:
             query.with_cursor(self.params.cursor)
 
-        csv_io = StringIO.StringIO()
-        writer = record_writer.PersonWithNoteCsvWriter(
-            csv_io, write_header=is_first)
+        basic_writer = record_writer.PersonWithNoteCsvWriter(
+            StringIO.StringIO(), write_header=is_first)
+        full_writer = record_writer.PersonWithNoteCsvWriter(
+            StringIO.StringIO(), write_header=is_first)
 
         has_data = False
         scan_completed = False
@@ -549,31 +549,40 @@ class DumpCSV(utils.BaseHandler):
             else:
                 scan_completed = True
                 break
-            records = self.get_person_records_with_notes(repo, persons)
-            # So far it only supports dump of records without sensitive fields.
-            utils.filter_sensitive_fields(records)
-            writer.write(records)
+
+            full_records = self.get_person_records_with_notes(repo, persons)
+            full_writer.write(full_records)
+
+            basic_records = copy.deepcopy(full_records)
+            utils.filter_sensitive_fields(basic_records)
+            basic_writer.write(basic_records)
+
             if utils.get_utcnow() >= start_time + self.MAX_FETCH_TIME:
                 break
             query.with_cursor(query.cursor())
 
-        final_csv_name = '%s.csv' % base_name
-        temp_csv_name = '%s.temp.csv' % base_name
+        for kind, writer in [('basic', basic_writer), ('full', full_writer)]:
+            base_name = '%s-persons-%s-%s' % (
+                repo, kind, timestamp.strftime('%Y-%m-%d-%H%M%S'))
+            final_csv_name = '%s.csv' % base_name
+            temp_csv_name = '%s.temp.csv' % base_name
 
-        if is_first:
-            self.storage.insert_object(
-                final_csv_name, 'text/csv', csv_io.getvalue())
-        elif has_data:
-            # Creates a temporary CSV file with new records, and append it to
-            # the final CSV file.
-            self.storage.insert_object(
-                temp_csv_name, 'text/csv', csv_io.getvalue())
-            self.storage.compose_objects(
-                [final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
+            if is_first:
+                self.storage.insert_object(
+                    final_csv_name, 'text/csv', writer.io.getvalue())
+            elif has_data:
+                # Creates a temporary CSV file with new records, and append it to
+                # the final CSV file.
+                self.storage.insert_object(
+                    temp_csv_name, 'text/csv', writer.io.getvalue())
+                self.storage.compose_objects(
+                    [final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
 
-        if scan_completed:
-            config.set_for_repo(repo, latest_csv_object_name=final_csv_name)
-        else:
+            if scan_completed:
+                key = 'latest_%s_csv_object_name' % kind
+                config.set_for_repo(repo, **{key: final_csv_name})
+
+        if not scan_completed:
             self.schedule_next_task(query.cursor(), timestamp)
 
     def get_person_records_with_notes(self, repo, persons):
