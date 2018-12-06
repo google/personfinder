@@ -15,6 +15,7 @@
 # limitations under the License.
 
 """Test cases for end-to-end testing.  Run with the server_tests script."""
+from __future__ import print_function
 
 import calendar
 import datetime
@@ -208,7 +209,7 @@ class ServerTestsBase(unittest.TestCase):
             message = message.encode('utf-8')
         else:
             message = str(message)
-        print >>sys.stderr, '%6.2f:' % (now - last_star), message, args or ''
+        print('%6.2f:' % (now - last_star), message, args or '', file=sys.stderr)
         if message[:1] == '*':
             last_star = now
 

@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Sample query for counting all the Person entries between dates.
 from __future__ import print_function
 import datetime

@@ -22,6 +22,7 @@ Usage:
 PO file format:
     http://www.gnu.org/software/hello/manual/gettext/PO-Files.html
 """
+from __future__ import print_function
 
 import optparse
 import os
@@ -101,7 +102,7 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             # Remove all but the missing messages.
             for id in missing_ids:
                 if not translations[id]: 
-                    print >>sys.stderr, 'missing id: %s' % id
+                    print('missing id: %s' % id, file=sys.stderr)
                     continue
                 translations[id].string = ''  # remove fuzzy translations
                 if 'fuzzy' in translations[id].flags:  # remove the fuzzy flag
@@ -120,14 +121,14 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             translations = pofile.read_po(open(get_po_filename('en')))
             ids = set(message.id for message in translations)
             if missing_ids:
-                print '%s: %d missing' % (filename, len(missing_ids))
+                print('%s: %d missing' % (filename, len(missing_ids)))
             new_file = open(filename, 'w')
             for id in ids - set(missing_ids):
                 del translations[id]
             pofile.write_po(new_file, translations, no_location=True,
                             omit_header=True, sort_output=True)
             new_file.close()
-        print '\n\n# LANGUAGE = %s\n' % locale
+        print('\n\n# LANGUAGE = %s\n' % locale)
 
     if options.format == 'xmb':
         # Produce one XMB file for each set of locales that have the same
@@ -136,7 +137,7 @@ or 'xmb' to get a file of the missing translations in XMB format''')
                                   key=lambda t: (len(t), t)):
             filename = '.'.join(locales_by_missing_ids[missing_ids]) + '.xmb'
             if missing_ids:
-                print '%s: %d missing' % (filename, len(missing_ids))
+                print('%s: %d missing' % (filename, len(missing_ids)))
             file = open(filename, 'w')
             file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             file.write('<messagebundle>\n')
@@ -152,17 +153,17 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             locales_by_missing_ids, key=lambda t: (len(t), t)):
             locales = ' '.join(locales_by_missing_ids[missing_ids])
             if missing_ids:
-                print '%s: %d missing' % (locales, len(missing_ids))
+                print('%s: %d missing' % (locales, len(missing_ids)))
                 for id in sorted(missing_ids)[:10]:
                     if isinstance(id, tuple):
                         id = id[0]
                     id_repr = repr(id.encode('ascii', 'ignore'))
                     truncated = len(id_repr) > 70
-                    print '    %s%s' % (id_repr[:70], truncated and '...' or '')
+                    print('    %s%s' % (id_repr[:70], truncated and '...' or ''))
                 if len(missing_ids) > 10:
-                    print '    ... (%d more)' % (len(missing_ids) - 10)
+                    print('    ... (%d more)' % (len(missing_ids) - 10))
             else:
-                print '%s: ok' % locales
+                print('%s: ok' % locales)
 
     if options.format == 'list':
         # List all the missing messages, collecting together the locales
@@ -171,8 +172,8 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             locales_by_missing_ids, key=lambda t: (len(t), t)):
             locales = ' '.join(locales_by_missing_ids[missing_ids])
             if missing_ids:
-                print '%s: %d missing' % (locales, len(missing_ids))
+                print('%s: %d missing' % (locales, len(missing_ids)))
                 for id in sorted(missing_ids):
-                    print '    ' + repr(id.encode('ascii', 'ignore'))
+                    print('    ' + repr(id.encode('ascii', 'ignore')))
             else:
-                print '%s: ok' % locales
+                print('%s: ok' % locales)

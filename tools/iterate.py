@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
 import time
 import re
 import sys
@@ -28,14 +29,14 @@ def iterate(query, callback=lambda x: x, batch_size=1000, verbose=True):
         for row in results:
             output = callback(row)
             if output:
-                print output
+                print(output)
             count += 1
         if verbose:
-            print '%s rows processed in %.1fs' % (count, time.time() - rstart)
-            print 'total time: %.1fs' % (time.time() - start)
+            print('%s rows processed in %.1fs' % (count, time.time() - rstart))
+            print('total time: %.1fs' % (time.time() - start))
         results = query.with_cursor(query.cursor()).fetch(batch_size)
     callback()
-    print 'total rows: %s, total time: %.1fs' % (count, time.time() - start)
+    print('total rows: %s, total time: %.1fs' % (count, time.time() - start))
 
 
 def dangling_pic(pic):

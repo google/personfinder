@@ -52,6 +52,7 @@ When merging messages from a source file into a target file:
   - To minimize unnecessary changes from version to version, the target file
     has no "#: filename:line" comments and the messages are sorted by msgid.
 """
+from __future__ import print_function
 
 import babel.messages
 from babel.messages import pofile
@@ -95,7 +96,7 @@ class XmbCatalogReader(xml.sax.handler.ContentHandler):
 
 def log(text):
     """Prints out Unicode text."""
-    print text.encode('utf-8')
+    print(text.encode('utf-8'))
 
 
 def log_change(old_message, new_message):
@@ -104,7 +105,7 @@ def log_change(old_message, new_message):
         if new_message.id:
             log('+ msgid "%s"' % str(new_message.id))
         else:
-            print >>sys.stderr, 'no message id: %s' % new_message
+            print('no message id: %s' % new_message, file=sys.stderr)
         log('+ msgstr "%s"' % str(new_message.string.encode('ascii', 'ignore')))
         if new_message.flags:
             log('+ #, %s' % ', '.join(sorted(new_message.flags)))
@@ -166,7 +167,7 @@ def merge_file(source_filename, target_filename, template_filename):
 if __name__ == '__main__':
     args = sys.argv[1:]
     if len(args) not in [1, 2, 3]:
-        print __doc__
+        print(__doc__)
         sys.exit(1)
     args = (args + [None, None])[:3]
     source_path = args[0]
@@ -176,13 +177,13 @@ if __name__ == '__main__':
     # If a single file is specified, merge it.
     if ((source_path.endswith('.po') or source_path.endswith('.xml')) and
         target_path.endswith('.po')):
-        print target_path
+        print(target_path)
         merge_file(source_path, target_path, template_path)
         sys.exit(0)
 
     # Otherwise, we expect two directories.
     if not os.path.isdir(source_path) or not os.path.isdir(target_path):
-        print __doc__
+        print(__doc__)
         sys.exit(1)
 
     # Find all the source files.
@@ -199,5 +200,5 @@ if __name__ == '__main__':
     # Merge them into the target files.
     for locale in sorted(source_filenames.keys()):
         target = os.path.join(target_path, locale, 'LC_MESSAGES', 'django.po')
-        print target
+        print(target)
         merge_file(source_filenames[locale], target, template_path)

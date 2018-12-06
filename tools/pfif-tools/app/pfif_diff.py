@@ -30,6 +30,7 @@
   changed.  For each of these, it will display the id of the containing person
   or note, the field name, whether the field was missing, added, or changed, the
   current text (if present), and the expected text (if present)."""
+from __future__ import print_function
 
 __author__ = 'samking@google.com (Sam King)'
 
@@ -93,7 +94,7 @@ def objectify_parents(parents, is_person, object_map, tree,
     record_id = tree.get_field_text(parent, record_id_tag)
     if record_id is None:
       # TODO(samking): better handling of this error?
-      print 'Invalid PFIF XML: a record is missing its ' + record_id_tag
+      print('Invalid PFIF XML: a record is missing its ' + record_id_tag)
     else:
       record_map = object_map.setdefault(
           record_id_to_key(record_id, is_person), {})
@@ -229,11 +230,11 @@ def main():
       text_is_case_sensitive=options.text_is_case_sensitive,
       ignore_fields=options.ignore_fields,
       omit_blank_fields=options.omit_blank_fields)
-  print utils.MessagesOutput.generate_message_summary(messages, is_html=False)
+  print(utils.MessagesOutput.generate_message_summary(messages, is_html=False))
   if options.group_by_record_id:
-    print utils.MessagesOutput.messages_to_str_by_id(messages)
+    print(utils.MessagesOutput.messages_to_str_by_id(messages))
   else:
-    print utils.MessagesOutput.messages_to_str(messages)
+    print(utils.MessagesOutput.messages_to_str(messages))
 
 if __name__ == '__main__':
   main()

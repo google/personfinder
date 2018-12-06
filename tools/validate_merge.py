@@ -38,6 +38,7 @@ Verify_translations takes no arguments.  To use:
 PO file format:
     http://www.gnu.org/software/hello/manual/gettext/PO-Files.html
 """
+from __future__ import print_function
 
 from babel.messages import pofile
 from find_missing_translations import get_po_filename
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     count = 0
     def printsep():
         if count > 0:
-            print '-------------------------------------'
+            print('-------------------------------------')
 
     for msg in english: 
         # Each newly translated string will have msg.string set
@@ -59,14 +60,14 @@ if __name__ == '__main__':
                 # TODO(lschumacher): deal with plurals properly, 
                 if msg.string[0] or msg.string[1]:
                     printsep()
-                    print 'msg id: %s\nmsgstr: %s' % (msg.id, msg.string)
+                    print('msg id: %s\nmsgstr: %s' % (msg.id, msg.string))
                     count += 1
             else:
                 printsep()
-                print text_diff(msg.id, msg.string)
+                print(text_diff(msg.id, msg.string))
                 count += 1
     if count:
         printsep()
-        print 'Found %s bad translations' % count
+        print('Found %s bad translations' % count)
     else:
-        print 'Translation OK'
+        print('Translation OK')

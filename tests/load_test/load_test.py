@@ -89,6 +89,7 @@ Config file reference:
   test_mode:
     If true, allows running "create" test for an existing repository.
 """
+from __future__ import print_function
 
 import datetime
 import logging
@@ -214,7 +215,7 @@ class LoadTest(object):
             json.dump(output, f)
 
     def print_stats(self):
-        print
+        print()
         print ('Average request latency (sec):\t%.3f'
             % self.average(self.data['request_latency_seconds']))
         print ('90%%tile request latency (sec):\t%.3f'
@@ -224,8 +225,8 @@ class LoadTest(object):
         print ('90%%tile interval between requests (sec):\t%.3f'
             % self.ninety_percentile(self.data['request_interval_seconds']))
 
-        print
-        print 'http_status:'
+        print()
+        print('http_status:')
         http_status_freqs = {}
         for status in self.data['http_statuses']:
             if status in http_status_freqs:
@@ -234,8 +235,8 @@ class LoadTest(object):
                 http_status_freqs[status] = 1
         for status, freq in http_status_freqs.iteritems():
             status_str = str(status) if status else 'Error'
-            print '  %s: %d (%.1f%%)' % (
-                status_str, freq, 100.0 * freq / len(self.data['http_statuses']))
+            print('  %s: %d (%.1f%%)' % (
+                status_str, freq, 100.0 * freq / len(self.data['http_statuses'])))
 
     def average(self, deltas):
         if deltas:

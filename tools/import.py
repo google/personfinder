@@ -14,6 +14,7 @@
 # limitations under the License.
 
 """Unix command-line utility: import CSV files into the datastore."""
+from __future__ import print_function
 
 import remote_api
 
@@ -24,17 +25,17 @@ import sys
 SHOW_ERRORS = 5
 
 def import_from_file(host, repo, kind, converter, filename):
-    print '%s: importing %s records from %s' % (host, kind, filename)
+    print('%s: importing %s records from %s' % (host, kind, filename))
     written, skipped, total = importer.import_records(
         repo, source_domain, converter,
         importer.utf8_decoder(csv.DictReader(open(filename))))
     for error, record in skipped[:SHOW_ERRORS]:
-        print '    - %s: %r' % (error, record)
+        print('    - %s: %r' % (error, record))
     if len(skipped) > SHOW_ERRORS:
-        print '    (more errors not shown)'
+        print('    (more errors not shown)')
 
-    print 'wrote %d of %d (skipped %d with errors)' % (
-        written, total, len(skipped))
+    print('wrote %d of %d (skipped %d with errors)' % (
+        written, total, len(skipped)))
 
 if __name__ == '__main__':
     if len(sys.argv) < 6:
