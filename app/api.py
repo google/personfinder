@@ -337,7 +337,7 @@ class Import(utils.BaseHandler):
         if self.auth.full_read_permission:
             object_name = self.config.latest_full_csv_object_name
         else:
-            object_name = self.config.latest_basic_csv_object_name
+            object_name = self.config.latest_filtered_csv_object_name
         if object_name:
             csv_url = storage.sign_url(
                 object_name, url_lifetime=datetime.timedelta(minutes=10))

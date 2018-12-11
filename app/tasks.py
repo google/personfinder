@@ -535,7 +535,7 @@ class DumpCSV(utils.BaseHandler):
         if self.params.cursor:
             query.with_cursor(self.params.cursor)
 
-        basic_writer = record_writer.PersonWithNoteCsvWriter(
+        filtered_writer = record_writer.PersonWithNoteCsvWriter(
             StringIO.StringIO(), write_header=is_first)
         full_writer = record_writer.PersonWithNoteCsvWriter(
             StringIO.StringIO(), write_header=is_first)
@@ -553,15 +553,16 @@ class DumpCSV(utils.BaseHandler):
             full_records = self.get_person_records_with_notes(repo, persons)
             full_writer.write(full_records)
 
-            basic_records = copy.deepcopy(full_records)
-            utils.filter_sensitive_fields(basic_records)
-            basic_writer.write(basic_records)
+            filtered_records = copy.deepcopy(full_records)
+            utils.filter_sensitive_fields(filtered_records)
+            filtered_writer.write(filtered_records)
 
             if utils.get_utcnow() >= start_time + self.MAX_FETCH_TIME:
                 break
             query.with_cursor(query.cursor())
 
-        for kind, writer in [('basic', basic_writer), ('full', full_writer)]:
+        for kind, writer in [
+                ('filtered', filtered_writer), ('full', full_writer)]:
             base_name = '%s-persons-%s-%s' % (
                 repo, kind, timestamp.strftime('%Y-%m-%d-%H%M%S'))
             final_csv_name = '%s.csv' % base_name
