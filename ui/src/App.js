@@ -8,6 +8,8 @@ import RepoHome from "./pages/RepoHome.js";
 import Results from "./pages/Results.js";
 import View from "./pages/View.js";
 
+import './css/all.scss';
+
 const App = () => (
   <BrowserRouter>
     <div>
