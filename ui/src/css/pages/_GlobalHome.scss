@@ -1,0 +1,124 @@
+.globalhome-wrapper {
+  text-align: center;
+}
+
+.globalhome-wrapper .mdc-card {
+  text-align: initial;
+}
+
+.globalhome-wrapper .mdc-typography--headline1 {
+  color: #5e6367;
+  font-size: 24px;
+  line-height: 64px;
+  margin: 0;
+}
+
+.globalhome-wrapper .mdc-typography--headline1 img {
+  height: 32px;
+  margin: 0 24px 4px 0;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.globalhome-headerdesc {
+  color: #757575;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0 20px;
+}
+
+.globalhome-howsitworkbutton {
+  margin: 40px 0;
+}
+
+.globalhome-thirdpartywrapper .endbars-headerline-wrapper {
+  margin-bottom: 8px;
+}
+
+.globalhome-thirdpartywrapper {
+  margin-top: 8px;
+}
+
+.globalhome-thirdpartywrapper .mdc-layout-grid {
+  max-width: 1200px;
+}
+
+.globalhome-thirdpartycard {
+  background-color: #eee;
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.globalhome-thirdpartycard h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 16px;
+}
+
+.globalhome-thirdpartycard p {
+  line-height: 36px;
+}
+
+.globalhome-thirdpartycard ul {
+  margin: 0;
+}
+
+.repocard {
+  @include mdc-card-shape-radius(8px, true);
+}
+
+.repocard-content {
+  flex-direction: row;
+  padding: 0;
+}
+
+.repocard-image {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  min-width: 100px;
+}
+
+.repocard-imagedisplaycat0 {
+  background-color: #0097A7;
+}
+
+.repocard-imagedisplaycat1 {
+  background-color: #F57C01;
+}
+
+.repocard-imagedisplaycat2 {
+  background-color: #512CA8;
+}
+
+.repocard-imagedisplaycat3 {
+  background-color: #C2185B;
+}
+
+.repocard-imagedisplaycat4 {
+  background-color: #689F38;
+}
+
+.repocard-image p {
+  font-size: 46px;
+  font-weight: bold;
+  margin: 0 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.repocard-info {
+  padding: 16px;
+}
+
+.repocard-title {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0 0 12px;
+}
+
+.repocard-recordcount {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
