@@ -10,6 +10,7 @@ import Card, {
 import {Cell, Grid, Row} from '@material/react-layout-grid';
 
 import Footer from "./../components/Footer.js";
+import LoadingIndicator from "./../components/LoadingIndicator.js";
 
 const messages = defineMessages({
   developers: {
@@ -215,7 +216,7 @@ class GlobalHome extends Component {
       return <div>An error occurred</div>
     }
     if (!this.state.isLoaded) {
-      return <div>Loading...</div>;
+      return <LoadingIndicator />;
     }
     return (
       <div className="globalhome-wrapper">
