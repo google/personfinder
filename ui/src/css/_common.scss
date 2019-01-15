@@ -1,0 +1,80 @@
+.mdc-button {
+  text-transform: none;
+}
+
+.mdc-card__primary-action {
+  padding: 0 8px;
+}
+
+.mdc-card__actions {
+  padding: 0;
+}
+
+.mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  background-color: #1a73e7;
+}
+
+.mdc-typography--headline5 {
+  margin: 0.5em 0;
+}
+
+.mdc-text-field .mdc-text-field__input {
+  caret-color: #757575;
+}
+
+body {
+  margin: 0;
+}
+
+input[type=file] {
+  display: none;
+}
+
+@media only screen and (min-width: 482px) {
+  /**
+   * We still want a largely vertical/linear view on most pages even on wider
+   * screens, but we put a border around them so they don't look weird.
+   */
+  .pf-linearwrap {
+    border-left: 1px solid #dadce0;
+    border-right: 1px solid #dadce0;
+    margin: 0 auto;
+    max-width: 480px;
+  }
+}
+
+.pf-button-primary {
+  @include mdc-button-filled-accessible(#1a73e7);
+  @include mdc-button-ink-color(#fff);
+}
+
+.pf-button-secondary {
+  @include mdc-button-filled-accessible(#fff);
+  @include mdc-button-ink-color(#1a73e7);
+}
+
+/*
+ * These classes are to support the section headers that are styled like this:
+ *      --- Title or whatever ---
+ */
+.endbars-headerline {
+  color: #80868b;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.endbars-headerline:before, .endbars-headerline:after {
+  background-color: #dadce0;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  position: relative;
+  vertical-align: middle;
+  width: 32px;
+}
+.endbars-headerline:before {
+  right: 8px;
+}
+.endbars-headerline:after {
+  left: 8px;
+}
