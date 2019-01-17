@@ -4,7 +4,7 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 const messages = defineMessages({
   disclaimerText: {
     id: 'Footer.disclaimerText',
-    defaultMessage: ('PLEASE NOTE: all data entered is available to the public '
+    defaultMessage: ('PLEASE NOTE: All data entered is available to the public '
         + 'and usable by anyone. Google does not review or verify the accuracy '
         + 'of this data. Google may share the data with public and private '
         + 'organizations participating in disaster response efforts.'),
@@ -12,16 +12,12 @@ const messages = defineMessages({
   },
 });
 
-class Footer extends Component {
-  render() {
-    return (
-      <div className="footer">
-        <p className="mdc-typography--body1">
-          <FormattedMessage {...messages.disclaimerText} />
-        </p>
-      </div>
-    );
-  }
+const Footer = () => (
+  <div className="footer">
+    <p className="mdc-typography--body1">
+      <FormattedMessage {...messages.disclaimerText} />
+    </p>
+  </div>
 }
 
 export default injectIntl(Footer);
