@@ -13,6 +13,9 @@ import './css/all.scss';
 const App = () => (
   <BrowserRouter>
     <div>
+      /**
+       * TODO(nworden): include support for legacy homepage URL: global/home.html
+       */
       <Route exact path="/" component={GlobalHome} />
       <Route exact path="/:repoId" component={RepoHome} />
       <Route exact path="/:repoId/create" component={Create} />
