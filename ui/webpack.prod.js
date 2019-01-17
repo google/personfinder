@@ -3,9 +3,12 @@ const webpack = require('webpack');
 
 const common = require('./webpack.common.js');
 
+/**
+ * TODO(nworden): add the rest of the languages
+ */
 const LANGS = ['en', 'es'];
 
-module.exports = LANGS.map(function(lang) {
+module.exports = LANGS.map((lang) => {
   return merge(common, {
     name: lang + '-bundle',
     mode: 'production',
