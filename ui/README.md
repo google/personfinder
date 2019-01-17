@@ -22,6 +22,18 @@ You can run `tools/ui buildtoae` to compile the React app into language-specific
 bundles and automatically move them (and static resources, like icons) to the
 Django app's static directory.
 
+## CSS
+
+We use Sass to produce the CSS for the React UI. The source .scss files are
+almost exactly like CSS files, but you can use variables and other neat things,
+and it's particularly helpful to use it with the Material Web libraries (as you
+can define values used by the Material CSS).
+
+Most of our files (with the exception of `all.scss`) have names that start with
+underscores. That's a signal to the Sass compiler that it's a partial file,
+meant only for import from another file, so that the compiler doesn't generate a
+standalone CSS file for it.
+
 ## Translations
 
 We use react-intl, by Yahoo, for translations:
