@@ -18,9 +18,10 @@ Please be careful not to commit this change.
 
 ## Deployment
 
-You can run `tools/ui buildtoae` to compile the React app into language-specific
-bundles and automatically move them (and static resources, like icons) to the
-Django app's static directory.
+You can run `tools/ui buildtoae` to compile the React app into
+bundles (one for each language Person Finder supports, i.e., `en-bundle.js`,
+`es-bundle.js`, etc.) and automatically move them (and static resources, like
+icons) to the Django app's static directory.
 
 ## CSS
 
