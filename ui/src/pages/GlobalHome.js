@@ -148,6 +148,7 @@ class GlobalHome extends Component {
           <FormattedMessage {...messages.tagline} />
         </p>
         {/* TODO(nworden): implement this link/page */}
+        {/* TODO(nworden): see if we can support right-click targets */}
         <Button
           className="pf-button-secondary globalhome-howsitworkbutton"
           raised
