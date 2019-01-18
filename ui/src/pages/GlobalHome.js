@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, {Component} from 'react';
 import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
@@ -19,7 +35,7 @@ const messages = defineMessages({
     description: ('A header for a section about how software developers can '
         + 'use the product to help with a disaster response.'),
   },
-  developersHowToHelp: {
+  developersHowToHelpHTML: {
     id: 'GlobalHome.developersHowToHelp',
     defaultMessage: ('You can help continue to improve Google Person Finder:'
         + '<ul><li>Learn about the PFIF data model</li><li>Customize or '
@@ -51,6 +67,12 @@ const messages = defineMessages({
     description: ('Name of the product. Person Finder is a tool that helps '
         + 'people reconnect with friends/family after a disaster.'),
   },
+  repoRecordCount: {
+    id: 'GlobalHome.repoRecordCount',
+    defaultMessage: 'Tracking {recordCount} records',
+    description: ('A message displaying how many data records we have in the '
+        + 'database.'),
+  },
   responders: {
     id: 'GlobalHome.responders',
     defaultMessage: 'Responders',
@@ -58,7 +80,7 @@ const messages = defineMessages({
         + 'local officials, nonprofit organizations, etc., can use the product '
         + 'to help.'),
   },
-  respondersHowToHelp: {
+  respondersHowToHelpHTML: {
     id: 'GlobalHome.respondersHowToHelp',
     defaultMessage: ('You can help people find each other in the aftermath of '
         + 'a disaster:<ul><li>Embed Google Person Finder in your site</li>'
@@ -79,6 +101,8 @@ const messages = defineMessages({
   }
 });
 
+const NUMBER_OF_DISPLAY_CATEGORY_COLORS = 5;
+
 class GlobalHome extends Component {
   constructor(props) {
     super(props);
@@ -94,8 +118,10 @@ class GlobalHome extends Component {
       .then(res => res.json())
       .then(
         (repos) => {
-          for (var i = 0; i < repos.length; i++) {
-            repos[i]['displayCat'] = i % 5;
+          // We have multiple possible colors for the card backgrounds, and we
+          // assign them to cards round-robin.
+          for (let i = 0; i < repos.length; i++) {
+            repos[i].displayCategory = i % NUMBER_OF_DISPLAY_CATEGORY_COLORS;
           }
           this.setState({
             isLoaded: true,
@@ -121,6 +147,7 @@ class GlobalHome extends Component {
         <p className="mdc-typography--body1 globalhome-headerdesc">
           <FormattedMessage {...messages.tagline} />
         </p>
+        {/* TODO(nworden): implement this link/page */}
         <Button
           className="pf-button-secondary globalhome-howsitworkbutton"
           raised
@@ -140,11 +167,12 @@ class GlobalHome extends Component {
             <FormattedMessage {...messages.responders} />
           </h3>
           <p className="mdc-typography--body1">
-            <FormattedHTMLMessage {...messages.respondersHowToHelp} />
+            <FormattedHTMLMessage {...messages.respondersHowToHelpHTML} />
           </p>
         </div>
         <CardActions>
           <CardActionButtons>
+            {/* TODO(nworden): implement this link/page */}
             <Button
               className="pf-button-secondary"
               raised
@@ -166,11 +194,12 @@ class GlobalHome extends Component {
             <FormattedMessage {...messages.developers} />
           </h3>
           <p className="mdc-typography--body1">
-            <FormattedHTMLMessage {...messages.developersHowToHelp} />
+            <FormattedHTMLMessage {...messages.developersHowToHelpHTML} />
           </p>
         </div>
         <CardActions>
           <CardActionButtons>
+            {/* TODO(nworden): implement this link/page */}
             <Button
               className="pf-button-secondary"
               raised
@@ -203,9 +232,9 @@ class GlobalHome extends Component {
   }
 
   renderRepoList() {
-    var cells = this.state.repos.map(repo => (
+    let cells = this.state.repos.map(repo => (
       <Cell key={repo.repoId}>
-        <RepoCard repoInfo={repo} />
+        <RepoCard repo={repo} />
       </Cell>
     ));
     return <Grid><Row>{cells}</Row></Grid>;
@@ -213,6 +242,7 @@ class GlobalHome extends Component {
 
   render() {
     if (this.state.error) {
+      /* TODO(nworden): write a better (and i18n'd) error message */
       return <div>An error occurred</div>
     }
     if (!this.state.isLoaded) {
@@ -232,16 +262,6 @@ class GlobalHome extends Component {
 /**
  * RepoCard is a component for a card in the repo list.
  */
-
-const repoCardMessages = defineMessages({
-  repoRecordCount: {
-    id: 'RepoCard.repoRecordCount',
-    defaultMessage: 'Tracking {recordCount} records.',
-    description: ('A message displaying how many data records we have in the '
-        + 'database.'),
-  },
-});
-
 class RepoCardImpl extends Component {
   constructor(props) {
     super(props);
@@ -249,21 +269,21 @@ class RepoCardImpl extends Component {
   }
 
   goTo() {
-    this.props.history.push("/" + this.props.repoInfo.repoId);
+    this.props.history.push("/" + this.props.repo.repoId);
   }
 
   render() {
-    var repocardImageClassName = (
-        "repocard-image repocard-imagedisplaycat" +
-        this.props.repoInfo.displayCat);
-    var recordCountContent = null;
-    if (this.props.repoInfo.recordCount > 0) {
+    let repocardImageClassName = (
+        "repocard-image repocard-imagedisplaycategory" +
+        this.props.repo.displayCategory);
+    let recordCountContent = null;
+    if (this.props.repo.recordCount > 0) {
       recordCountContent = (
         <p className="mdc-typography--body1 repocard-recordcount">
           <FormattedMessage
-            {...repoCardMessages.repoRecordCount }
+            {...messages.repoRecordCount }
             values={{
-              "recordCount": this.props.repoInfo.recordCount
+              "recordCount": this.props.repo.recordCount
             }} />
         </p>
       );
@@ -273,12 +293,12 @@ class RepoCardImpl extends Component {
         <CardPrimaryContent className="repocard-content" onClick={this.goTo}>
           <div className={repocardImageClassName}>
             <p className="mdc-typography--body1">
-              {this.props.repoInfo.title[0]}
+              {Array.from(this.props.repo.title)[0]}
             </p>
           </div>
           <div className="repocard-info">
             <h5 className="mdc-typography--headline5 repocard-title">
-              {this.props.repoInfo.title}
+              {this.props.repo.title}
             </h5>
             {recordCountContent}
           </div>
