@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+/*
+ * This file is for the prod Webpack config. It produces compiled JS bundles for
+ * each of the languages Person Finder supports, with filenames in the form
+ * <language code>-bundle.js (e.g., es-bundle.js).
+ */
+
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 

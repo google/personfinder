@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/*
+ * This file is for the dev Webpack config (i.e., the config used to run a local
+ * development server).
+ */
+
 const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');

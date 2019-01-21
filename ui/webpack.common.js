@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+/*
+ * This file is for the parts of the Webpack config shared between dev and prod.
+ */
+
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
