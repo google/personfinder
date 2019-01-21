@@ -1,0 +1,50 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "UI for Person Finder",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.1",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.10.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.5"
+  },
+  "dependencies": {
+    "@material/react-button": "^0.6.2",
+    "@material/react-card": "^0.6.2",
+    "@material/react-checkbox": "^0.7.1",
+    "@material/react-fab": "^0.7.1",
+    "@material/react-layout-grid": "^0.6.2",
+    "@material/react-select": "^0.7.1",
+    "@material/react-tab": "^0.7.1",
+    "@material/react-tab-bar": "^0.7.1",
+    "@material/react-tab-indicator": "^0.7.1",
+    "@material/react-text-field": "^0.7.0",
+    "@material/shape": "^0.41.0",
+    "@material/typography": "^0.41.0",
+    "babel-plugin-react-intl": "^3.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-intl": "^2.7.2",
+    "react-router-dom": "^4.3.1"
+  }
+}
