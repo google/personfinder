@@ -1,0 +1,110 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Material generally prefers button text to be uppercase, so that's their
+ * default:
+ * https://material.io/design/components/buttons.html#anatomy
+ * We don't want the text to be uppercased though, so we override that here. */
+.mdc-button {
+  text-transform: none;
+}
+
+/* We modify the padding on the cards to support a background color that extends
+ * all the way to the edge.
+ * TODO(nworden): make our own class for this */
+.mdc-card__primary-action {
+  padding: 0 8px;
+}
+
+.mdc-card__actions {
+  padding: 0;
+}
+
+/* Material is going to use our secondary color for this by default, which isn't
+ * good because our secondary color is white.
+ * TODO(nworden): handle this a better way (maybe just tell Material our
+ * secondary color is gray) */
+.mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  background-color: #1a73e7;
+}
+
+.mdc-text-field .mdc-text-field__input {
+  caret-color: #757575;
+}
+
+/* Supporting a text size that isn't part of the Material spec.
+ * TODO(nworden): check in with Travis about whether we really want this */
+.mdc-typography--headline5 {
+  margin: 0.5em 0;
+}
+
+body {
+  margin: 0;
+}
+
+/* You can't style a file upload button, but you can hide it and use a regular
+ * button as a proxy for the file upload input element. */
+input[type=file].proxied-upload {
+  display: none;
+}
+
+@media only screen and (min-width: 482px) {
+  /* We still want a largely vertical/linear view on most pages even on wider
+   * screens, but we put a border around them so they don't look weird. */
+  .pf-linearwrap {
+    border-left: 1px solid #dadce0;
+    border-right: 1px solid #dadce0;
+    margin: 0 auto;
+    max-width: 480px;
+  }
+}
+
+.pf-button-primary {
+  @include mdc-button-filled-accessible(#1a73e7);
+  @include mdc-button-ink-color(#fff);
+}
+
+.pf-button-secondary {
+  @include mdc-button-filled-accessible(#fff);
+  @include mdc-button-ink-color(#1a73e7);
+}
+
+/*
+ * These classes are to support the section headers that are styled like this:
+ *      --- Title or whatever ---
+ * TODO(nworden): make sure this WAI with RTL languages
+ */
+.endbars-headerline {
+  color: #80868b;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.endbars-headerline:before, .endbars-headerline:after {
+  background-color: #dadce0;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  position: relative;
+  vertical-align: middle;
+  width: 32px;
+}
+.endbars-headerline:before {
+  right: 8px;
+}
+.endbars-headerline:after {
+  left: 8px;
+}
