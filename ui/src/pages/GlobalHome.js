@@ -101,6 +101,9 @@ const messages = defineMessages({
   }
 });
 
+// This should be set to the number of categories in
+// ui/src/css/pages/_GlobalHome.scss (the classes called
+// repocard-imagedisplaycategory0, repocard-imagedisplaycategory1, etc.).
 const NUMBER_OF_DISPLAY_CATEGORY_COLORS = 5;
 
 class GlobalHome extends Component {
