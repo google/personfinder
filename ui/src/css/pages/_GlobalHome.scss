@@ -1,0 +1,143 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.globalhome-wrapper {
+  text-align: center;
+}
+
+.globalhome-wrapper .mdc-card {
+  text-align: initial;
+}
+
+.globalhome-wrapper .mdc-typography--headline1 {
+  color: #5e6367;
+  font-size: 24px;
+  line-height: 64px;
+  margin: 0;
+}
+
+.globalhome-wrapper .mdc-typography--headline1 img {
+  height: 32px;
+  margin: 0 24px 4px 0;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.globalhome-headerdesc {
+  color: #757575;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0 20px;
+}
+
+.globalhome-howsitworkbutton {
+  margin: 40px 0;
+}
+
+.globalhome-thirdpartywrapper {
+  margin-top: 8px;
+}
+
+.globalhome-thirdpartywrapper .endbars-headerline-wrapper {
+  margin-bottom: 8px;
+}
+
+.globalhome-thirdpartywrapper .mdc-layout-grid {
+  max-width: 1200px;
+}
+
+.globalhome-thirdpartycard {
+  background-color: #eee;
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.globalhome-thirdpartycard h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 16px;
+}
+
+.globalhome-thirdpartycard p {
+  line-height: 36px;
+}
+
+.globalhome-thirdpartycard ul {
+  margin: 0;
+}
+
+.repocard {
+  @include mdc-card-shape-radius(8px, true);
+}
+
+.repocard-content {
+  flex-direction: row;
+  padding: 0;
+}
+
+.repocard-image {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  min-width: 100px;
+}
+
+// If you increase or decrease the number of repo card display categories, you
+// must update NUMBER_OF_DISPLAY_CATEGORY_COLORS in GlobalHome.js.
+
+.repocard-imagedisplaycategory0 {
+  background-color: #0097A7;
+}
+
+.repocard-imagedisplaycategory1 {
+  background-color: #F57C01;
+}
+
+.repocard-imagedisplaycategory2 {
+  background-color: #512CA8;
+}
+
+.repocard-imagedisplaycategory3 {
+  background-color: #C2185B;
+}
+
+.repocard-imagedisplaycategory4 {
+  background-color: #689F38;
+}
+
+.repocard-image p {
+  font-size: 46px;
+  font-weight: bold;
+  margin: 0 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.repocard-info {
+  padding: 16px;
+}
+
+.repocard-title {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0 0 12px;
+}
+
+.repocard-recordcount {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
