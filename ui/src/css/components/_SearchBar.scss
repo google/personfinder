@@ -1,0 +1,13 @@
+.searchbar {
+  background-image: url('/static/icons/maticon_search.svg');
+  background-repeat: no-repeat;
+  background-position: 16px center;
+}
+
+.searchbar .mdc-text-field__input {
+  margin-left: 40px;
+}
+
+.searchbar .mdc-floating-label:not(.mdc-floating-label--float-above) {
+  margin-left: 48px;
+}
