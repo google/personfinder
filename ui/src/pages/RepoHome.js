@@ -1,11 +1,27 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, {Component} from 'react';
 import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import Button from '@material/react-button';
 
-import Footer from "./../components/Footer.js";
-import LoadingIndicator from "./../components/LoadingIndicator.js";
-import RepoHeader from "./../components/RepoHeader.js";
-import SearchBar from "./../components/SearchBar.js";
+import Footer from './../components/Footer.js';
+import LoadingIndicator from './../components/LoadingIndicator.js';
+import RepoHeader from './../components/RepoHeader.js';
+import SearchBar from './../components/SearchBar.js';
 
 const messages = defineMessages({
   provideInfoAboutSomeone: {
@@ -42,18 +58,18 @@ class RepoHome extends Component {
   }
 
   goToAdd() {
-    this.props.history.push("/" + this.props.match.params.repoId + "/create");
+    this.props.history.push('/' + this.props.match.params.repoId + '/create');
   }
 
   handleSearchFn(query) {
     this.props.history.push({
-        pathname: "/" + this.props.match.params.repoId + "/results",
-        search: "?query_name=" + query,
+        pathname: '/' + this.props.match.params.repoId + '/results',
+        search: '?query_name=' + query,
       });
   }
 
   componentDidMount() {
-    const apiUrl = "/" + this.props.match.params.repoId + "/d/repoinfo";
+    const apiUrl = '/' + this.props.match.params.repoId + '/d/repoinfo';
     fetch(apiUrl)
       .then(res => res.json())
       .then(
@@ -82,11 +98,11 @@ class RepoHome extends Component {
     var recordCountContent = null;
     if (this.state.repoInfo.recordCount > 0) {
       recordCountContent = (
-          <p className="mdc-typography--body1 repohome-recordcount">
+          <p className='mdc-typography--body1 repohome-recordcount'>
             <FormattedMessage
               {...messages.repoRecordCount}
               values={{
-                "recordCount": this.state.repoInfo.recordCount
+                'recordCount': this.state.repoInfo.recordCount
               }} />
           </p>
       );
@@ -94,19 +110,19 @@ class RepoHome extends Component {
     return (
       <div>
         <RepoHeader repoInfo={this.state.repoInfo} />
-        <div className="repohome-body">
+        <div className='repohome-body'>
           <SearchBar
               repoId={this.props.match.params.repoId}
-              initialValue=""
+              initialValue=''
               handleSearchFn={this.handleSearchFn} />
           {recordCountContent}
-          <div className="endbars-headerline-wrapper" dir="ltr">
-            <span className="mdc-typography--overline endbars-headerline">
+          <div className='endbars-headerline-wrapper' dir='ltr'>
+            <span className='mdc-typography--overline endbars-headerline'>
               <FormattedMessage {...messages.or} />
             </span>
           </div>
           <Button
-            className="pf-button-secondary"
+            className='pf-button-secondary'
             raised
             onClick={this.goToAdd}
           >
