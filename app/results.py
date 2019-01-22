@@ -18,6 +18,7 @@ import unicodedata
 
 from model import *
 from utils import *
+from search.searcher import Searcher
 from text_query import TextQuery
 import config
 import external_search
@@ -72,6 +73,13 @@ def max_word_length(query_words):
 
 
 class Handler(BaseHandler):
+
+    def __init__(self, request, response, env):
+        BaseHandler.__init__(self, request, response, env)
+        self._searcher = Searcher(
+            self.repo, self.config.external_search_backends,
+            config.get('enable_fulltext_search'), MAX_RESULTS)
+
     def search(self, query_dict):
         """
         Performs a search and adds view_url attributes to the results.
@@ -79,22 +87,10 @@ class Handler(BaseHandler):
             query_dict: A list contains two queries: Name query and Location query
         """
 
-        query_txt = " ".join(query_dict.values())
-        results = None
-        if self.config.external_search_backends:
-            results = external_search.search(
-                self.repo, TextQuery(query_txt), MAX_RESULTS,
-                self.config.external_search_backends)
-
-        # External search backends are not always complete. Fall back to the
-        # original search when they fail or return no results.
-        if not results:
-            if config.get('enable_fulltext_search'):
-                results = full_text_search.search(self.repo,
-                                                  query_dict, MAX_RESULTS)
-            else:
-                results = indexing.search(self.repo,
-                                          TextQuery(query_txt), MAX_RESULTS)
+        searcher = Searcher(
+            self.repo, self.config.external_search_backends,
+            config.get('enable_fulltext_search'), MAX_RESULTS)
+        results = searcher.search(query_dict)
 
         query_name = self.get_query_value()
         for result in results:
