@@ -39,29 +39,32 @@ const messages = defineMessages({
   },
   repoRecordCount: {
     id: 'RepoHome.repoRecordCount',
-    defaultMessage: 'Currently tracking {recordCount} records.',
+    defaultMessage: 'Currently tracking {recordCount} records',
     description: ('A message displaying how many data records we have in the '
         + 'database.'),
   },
 });
 
+/*
+ * A component for repo homepages.
+ */
 class RepoHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
       error: null,
-      repoInfo: null
+      repo: null
     };
-    this.goToAdd = this.goToAdd.bind(this);
-    this.handleSearchFn = this.handleSearchFn.bind(this);
+    this.goToCreate = this.goToCreate.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  goToAdd() {
+  goToCreate() {
     this.props.history.push('/' + this.props.match.params.repoId + '/create');
   }
 
-  handleSearchFn(query) {
+  handleSearch(query) {
     this.props.history.push({
         pathname: '/' + this.props.match.params.repoId + '/results',
         search: '?query_name=' + query,
@@ -73,10 +76,10 @@ class RepoHome extends Component {
     fetch(apiUrl)
       .then(res => res.json())
       .then(
-        (repoInfo) => {
+        (repo) => {
           this.setState({
             isLoaded: true,
-            repoInfo: repoInfo
+            repo: repo
           });
         },
         (error) => {
@@ -96,13 +99,13 @@ class RepoHome extends Component {
       return <LoadingIndicator />;
     }
     var recordCountContent = null;
-    if (this.state.repoInfo.recordCount > 0) {
+    if (this.state.repo.recordCount > 0) {
       recordCountContent = (
           <p className='mdc-typography--body1 repohome-recordcount'>
             <FormattedMessage
               {...messages.repoRecordCount}
               values={{
-                'recordCount': this.state.repoInfo.recordCount
+                'recordCount': this.state.repo.recordCount
               }} />
           </p>
       );
@@ -110,14 +113,14 @@ class RepoHome extends Component {
     return (
       <div>
         <RepoHeader
-          repoInfo={this.state.repoInfo}
-          backButtonTarget={'/' + this.state.repoInfo.repoId}
+          repo={this.state.repo}
+          backButtonTarget={'/' + this.state.repo.repoId}
         />
         <div className='repohome-body'>
           <SearchBar
               repoId={this.props.match.params.repoId}
               initialValue=''
-              handleSearchFn={this.handleSearchFn} />
+              onSearch={this.handleSearch} />
           {recordCountContent}
           <div className='endbars-headerline-wrapper' dir='ltr'>
             <span className='mdc-typography--overline endbars-headerline'>
@@ -127,7 +130,7 @@ class RepoHome extends Component {
           <Button
             className='pf-button-secondary'
             raised
-            onClick={this.goToAdd}
+            onClick={this.goToCreate}
           >
             {this.props.intl.formatMessage(messages.provideInfoAboutSomeone)}
           </Button>
