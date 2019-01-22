@@ -15,10 +15,12 @@
  */
 
 import React, {Component} from 'react';
-import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
-import {Link} from "react-router-dom";
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import {Link} from 'react-router-dom';
 
 const messages = defineMessages({
+  // TODO(nworden): figure out how to make this configurable for users other
+  // than Google
   productName: {
     id: 'RepoHeader.productName',
     defaultMessage: 'Google Person Finder',
@@ -32,13 +34,13 @@ class RepoHeader extends Component {
     return (
       <div id='repoheader'>
         <div id='repoheader-backbutton'>
-          <Link to={'/' + this.props.repoInfo.repoId}>
+          <Link to={this.props.backButtonTarget}>
             <div><img src='/static/icons/maticon_arrow_back.svg' /></div>
           </Link>
         </div>
         <div id='repoheader-info'>
           <p className='mdc-typography--subtitle1'>
-            <FormattedHTMLMessage {...messages.productName} />
+            <FormattedMessage {...messages.productName} />
           </p>
           <p className='mdc-typography--subtitle2'>
             {this.props.repoInfo.title}
