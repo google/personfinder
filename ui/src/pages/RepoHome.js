@@ -109,7 +109,10 @@ class RepoHome extends Component {
     }
     return (
       <div>
-        <RepoHeader repoInfo={this.state.repoInfo} />
+        <RepoHeader
+          repoInfo={this.state.repoInfo}
+          backButtonTarget={'/' + this.state.repoInfo.repoId}
+        />
         <div className='repohome-body'>
           <SearchBar
               repoId={this.props.match.params.repoId}
