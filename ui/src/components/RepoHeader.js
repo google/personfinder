@@ -43,7 +43,7 @@ class RepoHeader extends Component {
             <FormattedMessage {...messages.productName} />
           </p>
           <p className='mdc-typography--subtitle2'>
-            {this.props.repoInfo.title}
+            {this.props.repo.title}
           </p>
         </div>
       </div>
