@@ -64,7 +64,7 @@ class Results extends Component {
   loadResults() {
     const query = new URL(window.location.href).searchParams.get('query_name');
     const apiURLs = [
-        '/' + this.repoId + '/d/repoinfo',
+        '/' + this.repoId + '/d/repo',
         '/' + this.repoId + '/d/results?query=' + encodeURIComponent(query),
         ];
     Promise.all(apiURLs.map(url => fetch(url)))
