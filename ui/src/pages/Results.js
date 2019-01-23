@@ -49,6 +49,7 @@ class Results extends Component {
       repo: null,
       results: null
     };
+    this.repoId = this.props.match.params.repoId;
     this.goToAdd = this.goToAdd.bind(this);
     this.loadResults = this.loadResults.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -56,24 +57,24 @@ class Results extends Component {
 
   goToAdd() {
     this.props.history.push({
-          pathname: '/' + this.props.match.params.repoId + '/create',
+          pathname: '/' + this.repoId + '/create',
       });
   }
 
   loadResults() {
     const query = new URL(window.location.href).searchParams.get('query_name');
-    var apiCalls = [
-        '/' + this.props.match.params.repoId + '/d/repoinfo',
-        '/' + this.props.match.params.repoId + '/d/results?query=' + query,
+    const apiURLs = [
+        '/' + this.repoId + '/d/repoinfo',
+        '/' + this.repoId + '/d/results?query=' + encodeURIComponent(query),
         ];
-    Promise.all(apiCalls.map(url => fetch(url)))
+    Promise.all(apiURLs.map(url => fetch(url)))
         .then(res => Promise.all(res.map(r => r.json())))
         .then(
-          (res) => {
+          ([repo, results]) => {
             this.setState({
               isLoaded: true,
-              repo: res[0],
-              results: res[1]
+              repo: repo,
+              results: results,
             });
           },
           (error) => {
@@ -89,8 +90,8 @@ class Results extends Component {
   handleSearch(query) {
     this.setState({isLoaded: false});
     this.props.history.push({
-        pathname: '/' + this.props.match.params.repoId + '/results',
-        search: '?query_name=' + query,
+        pathname: '/' + this.repoId + '/results',
+        search: '?query_name=' + encodeURIComponent(query),
       });
     this.loadResults();
   }
@@ -103,7 +104,7 @@ class Results extends Component {
         </p>
       );
     }
-    var results = this.state.results.map(result => (
+    const results = this.state.results.map(result => (
       <SearchResult
         key={result.personId}
         repo={this.state.repo}
@@ -120,7 +121,8 @@ class Results extends Component {
           onClick={this.goToAdd}
           icon={<img src='/static/icons/maticon_add.svg' />}
           textLabel={this.props.intl.formatMessage(
-              messages.createNewRecord)} />
+              messages.createNewRecord)}
+      />
     );
   }
 
@@ -135,19 +137,21 @@ class Results extends Component {
       <div id='results-wrapper'>
         <RepoHeader
           repo={this.state.repo}
-          backButtonTarget={'/' + this.state.repo.repoId}
+          backButtonTarget={'/' + this.repoId}
         />
         <div className='results-body'>
           <SearchBar
-              repoId={this.props.match.params.repoId}
-              initialValue={
-                  new URL(window.location.href).searchParams.get('query_name')}
-              onSearch={this.handleSearch} />
+            repoId={this.repoId}
+            initialValue={
+                new URL(window.location.href).searchParams.get('query_name')}
+            onSearch={this.handleSearch}
+          />
           {this.renderResults()}
           <Footer />
         </div>
         {this.renderAddPersonFab()}
-      </div>);
+      </div>
+    );
   }
 }
 
@@ -157,18 +161,17 @@ class Results extends Component {
 class SearchResultImpl extends Component {
   constructor(props) {
     super(props);
-    this.goTo = this.goTo.bind(this);
+    this.goToView = this.goToView.bind(this);
   }
 
-  goTo() {
-    this.props.history.push(
-        '/' + this.props.repo.repoId + '/view?id='
-        + this.props.result.personId);
+  goToView() {
+    this.props.history.push('/' + this.props.repo.repoId + '/view?id='
+        + encodeURIComponent(this.props.result.personId));
   }
 
   render() {
     return (
-      <li className='results-result' onClick={this.goTo}>
+      <li className='results-result' onClick={this.goToView}>
         <div className='results-resultphoto'>
           <img src={this.props.result.photoUrl} />
         </div>
