@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, {Component} from 'react';
+import React from 'react';
 
 /*
  * A component for headers with bars on the ends.
@@ -22,16 +22,12 @@ import React, {Component} from 'react';
  * They look something like this:
  *      ----- Title or whatever -----
  */
-class EndBarHeader extends Component {
-  render() {
-    return (
-      <div className='endbars-headerline-wrapper' dir='ltr'>
-        <span className='mdc-typography--overline endbars-headerline'>
-          {this.props.children}
-        </span>
-      </div>
-    );
-  }
-}
+const EndBarHeader = (props) => (
+  <div className='endbars-headerline-wrapper' dir='ltr'>
+    <span className='mdc-typography--overline endbars-headerline'>
+      {props.children}
+    </span>
+  </div>
+);
 
 export default EndBarHeader;
