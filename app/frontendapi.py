@@ -20,7 +20,7 @@ class FrontendApiHandler(utils.BaseHandler):
         self.write(simplejson.dumps(data))
 
 
-class RepoInfo(FrontendApiHandler):
+class Repo(FrontendApiHandler):
 
     repo_required = False
 
@@ -71,7 +71,7 @@ class Results(FrontendApiHandler):
         self._return_json([self._result_to_dict(r) for r in results])
 
 
-class PersonInfo(FrontendApiHandler):
+class Person(FrontendApiHandler):
 
     repo_required = True
 
