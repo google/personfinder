@@ -130,10 +130,6 @@ HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
 HANDLER_CLASSES['api/stats'] = 'api.Stats'
 HANDLER_CLASSES['api/handle_sms'] = 'api.HandleSMS'
 HANDLER_CLASSES['api/photo_upload'] = 'api.PhotoUpload'
-HANDLER_CLASSES['d/create'] = 'frontendapi.Create'
-HANDLER_CLASSES['d/person'] = 'frontendapi.Person'
-HANDLER_CLASSES['d/repo'] = 'frontendapi.Repo'
-HANDLER_CLASSES['d/results'] = 'frontendapi.Results'
 HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
@@ -150,6 +146,11 @@ HANDLER_CLASSES['tasks/dump_csv'] = 'tasks.DumpCSV'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
 HANDLER_CLASSES['tasks/thumbnail_preparer'] = 'tasks.ThumbnailPreparer'
+if config.get('enable_react_ui'):
+    HANDLER_CLASSES['d/create'] = 'frontendapi.Create'
+    HANDLER_CLASSES['d/person'] = 'frontendapi.Person'
+    HANDLER_CLASSES['d/repo'] = 'frontendapi.Repo'
+    HANDLER_CLASSES['d/results'] = 'frontendapi.Results'
 
 def is_development_server():
     """Returns True if the app is running in development."""
@@ -577,7 +578,7 @@ class Main(webapp.RequestHandler):
                         (env.repo, env.charset), get_vars)
                 response.out.write(content)
 
-        if config.get('use_react_ui'):
+        if config.get('enable_react_ui'):
             if env.repo == 'static':
                 self.serve_static_content(self.env.action)
             elif not env.action.startswith('d/'):
