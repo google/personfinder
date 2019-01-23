@@ -38,7 +38,7 @@ class SearchBar extends Component {
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      this.props.handleSearchFn(this.state.value);
+      this.props.onSearch(this.state.value);
     }
   }
 
