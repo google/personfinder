@@ -18,6 +18,7 @@ import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import Utils from './../Utils.js';
 
 class View extends Component {
   constructor(props) {
@@ -31,21 +32,22 @@ class View extends Component {
   }
 
   componentDidMount() {
-    const personId = new URL(window.location.href).searchParams.get('id');
+    const personId = Utils.getURLParam('id');
     // TODO(nworden): consider if we could have a global cache of repo info to
     // avoid calling for it on each page load
-    var apiCalls = [
+    const apiURLs = [
         '/' + this.props.match.params.repoId + '/d/repoinfo',
-        '/' + this.props.match.params.repoId + '/d/personinfo?id=' + personId,
+        '/' + this.props.match.params.repoId + '/d/personinfo?id='
+            + encodeURIComponent(personId),
         ];
-    Promise.all(apiCalls.map(url => fetch(url)))
+    Promise.all(apiURLs.map(url => fetch(url)))
         .then(res => Promise.all(res.map(r => r.json())))
         .then(
-          (res) => {
+          ([repo, person]) => {
             this.setState({
               isLoaded: true,
-              repo: res[0],
-              person: res[1]
+              repo: repo,
+              person: person,
             });
           },
           (error) => {
