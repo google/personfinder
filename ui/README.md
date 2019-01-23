@@ -13,8 +13,8 @@ Changes you make to the JS and CSS will take effect when you refresh the page.
 If you make other changes (e.g., to install a new module or modify the Webpack
 config) you'll likely need to restart the server.
 
-Currently, it is necessary to change `USE_REACT_UI` in `app/main.py` to `True`.
-Please be careful not to commit this change.
+Since the React UI is currently disabled by default, you need to change the
+`enable_react_ui` config setting to True.
 
 ## Deployment
 
