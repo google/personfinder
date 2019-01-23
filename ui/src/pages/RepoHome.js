@@ -18,6 +18,7 @@ import React, {Component} from 'react';
 import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import Button from '@material/react-button';
 
+import EndBarHeader from './../components/EndBarHeader.js';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import RepoHeader from './../components/RepoHeader.js';
@@ -56,23 +57,24 @@ class RepoHome extends Component {
       error: null,
       repo: null
     };
+    this.repoId = this.props.match.params.repoId;
     this.goToCreate = this.goToCreate.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   goToCreate() {
-    this.props.history.push('/' + this.props.match.params.repoId + '/create');
+    this.props.history.push('/' + this.repoId + '/create');
   }
 
   handleSearch(query) {
     this.props.history.push({
-        pathname: '/' + this.props.match.params.repoId + '/results',
-        search: '?query_name=' + query,
+        pathname: '/' + this.repoId + '/results',
+        search: encodeURIComponent('?query_name=' + query),
       });
   }
 
   componentDidMount() {
-    const apiUrl = '/' + this.props.match.params.repoId + '/d/repoinfo';
+    const apiUrl = '/' + this.repoId + '/d/repoinfo';
     fetch(apiUrl)
       .then(res => res.json())
       .then(
@@ -114,19 +116,17 @@ class RepoHome extends Component {
       <div>
         <RepoHeader
           repo={this.state.repo}
-          backButtonTarget={'/' + this.state.repo.repoId}
+          backButtonTarget={'/' + this.repoId}
         />
         <div className='repohome-body'>
           <SearchBar
-              repoId={this.props.match.params.repoId}
+              repoId={this.repoId}
               initialValue=''
               onSearch={this.handleSearch} />
           {recordCountContent}
-          <div className='endbars-headerline-wrapper' dir='ltr'>
-            <span className='mdc-typography--overline endbars-headerline'>
-              <FormattedMessage {...messages.or} />
-            </span>
-          </div>
+          <EndBarHeader>
+            <FormattedMessage {...messages.or} />
+          </EndBarHeader>
           <Button
             className='pf-button-secondary'
             raised
