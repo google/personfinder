@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$1" == "run" ]; then
+    npm run --prefix ui start
+elif [ "$1" == "buildtoae" ]; then
+    npm run --prefix ui build
+    mkdir -p app/resources/static/ui_bundles
+    mv ui/dist/*-bundle.js app/resources/static/ui_bundles/
+    mv ui/dist/bundle.css app/resources/static/ui_bundles/bundle.css
+    cp -r --no-clobber ui/static/static/* app/resources/static/
+fi
