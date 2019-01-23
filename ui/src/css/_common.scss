@@ -81,30 +81,3 @@ input[type=file].proxied-upload {
   @include mdc-button-filled-accessible(#fff);
   @include mdc-button-ink-color(#1a73e7);
 }
-
-/*
- * These classes are to support the section headers that are styled like this:
- *      --- Title or whatever ---
- * TODO(nworden): make sure this WAI with RTL languages
- */
-.endbars-headerline {
-  color: #80868b;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 0 5px;
-}
-.endbars-headerline:before, .endbars-headerline:after {
-  background-color: #dadce0;
-  content: "";
-  display: inline-block;
-  height: 4px;
-  position: relative;
-  vertical-align: middle;
-  width: 32px;
-}
-.endbars-headerline:before {
-  right: 8px;
-}
-.endbars-headerline:after {
-  left: 8px;
-}
