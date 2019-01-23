@@ -130,6 +130,10 @@ HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
 HANDLER_CLASSES['api/stats'] = 'api.Stats'
 HANDLER_CLASSES['api/handle_sms'] = 'api.HandleSMS'
 HANDLER_CLASSES['api/photo_upload'] = 'api.PhotoUpload'
+HANDLER_CLASSES['d/create'] = 'frontendapi.Create'
+HANDLER_CLASSES['d/personinfo'] = 'frontendapi.PersonInfo'
+HANDLER_CLASSES['d/repoinfo'] = 'frontendapi.RepoInfo'
+HANDLER_CLASSES['d/results'] = 'frontendapi.Results'
 HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
@@ -572,6 +576,16 @@ class Main(webapp.RequestHandler):
                 content = resources.get_rendered('setup_datastore.html', env.lang,
                         (env.repo, env.charset), get_vars)
                 response.out.write(content)
+
+        if config.get('use_react_ui'):
+            if env.repo == 'static':
+                self.serve_static_content(self.env.action)
+            elif not env.action.startswith('d/'):
+                response.out.write(
+                    resources.get_rendered(
+                        'react_index.html', env.lang,
+                        get_vars=lambda: {'env': env}))
+            return
 
         if not env.action and not env.repo:
             # A request for the root path ('/'). Renders the home page.
