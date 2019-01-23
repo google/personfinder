@@ -1,0 +1,37 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.endbars-headerline {
+  color: #80868b;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.endbars-headerline:before, .endbars-headerline:after {
+  background-color: #dadce0;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  position: relative;
+  vertical-align: middle;
+  width: 32px;
+}
+.endbars-headerline:before {
+  right: 8px;
+}
+.endbars-headerline:after {
+  left: 8px;
+}

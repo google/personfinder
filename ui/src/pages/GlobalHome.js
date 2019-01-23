@@ -25,8 +25,9 @@ import Card, {
 } from '@material/react-card';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
 
-import Footer from "./../components/Footer.js";
-import LoadingIndicator from "./../components/LoadingIndicator.js";
+import EndBarHeader from './../components/EndBarHeader.js';
+import Footer from './../components/Footer.js';
+import LoadingIndicator from './../components/LoadingIndicator.js';
 
 const messages = defineMessages({
   developers: {
@@ -220,11 +221,9 @@ class GlobalHome extends Component {
   renderThirdPartyHelpCards() {
     return (
       <div className="globalhome-thirdpartywrapper">
-        <div className="endbars-headerline-wrapper" dir="ltr">
-          <span className="mdc-typography--overline endbars-headerline">
-            <FormattedMessage {...messages.youCanHelp} />
-          </span>
-        </div>
+        <EndBarHeader>
+          <FormattedMessage {...messages.youCanHelp} />
+        </EndBarHeader>
         <Grid>
           <Row>
             <Cell desktopColumns={6}>{this.renderRespondersCard()}</Cell>
