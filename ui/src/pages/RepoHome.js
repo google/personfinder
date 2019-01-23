@@ -74,7 +74,7 @@ class RepoHome extends Component {
   }
 
   componentDidMount() {
-    const apiUrl = '/' + this.repoId + '/d/repoinfo';
+    const apiUrl = '/' + this.repoId + '/d/repo';
     fetch(apiUrl)
       .then(res => res.json())
       .then(
