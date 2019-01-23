@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, {Component} from 'react';
+import React from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {Link} from 'react-router-dom';
 
@@ -29,26 +29,22 @@ const messages = defineMessages({
   },
 });
 
-class RepoHeader extends Component {
-  render() {
-    return (
-      <div id='repoheader'>
-        <div id='repoheader-backbutton'>
-          <Link to={this.props.backButtonTarget}>
-            <div><img src='/static/icons/maticon_arrow_back.svg' /></div>
-          </Link>
-        </div>
-        <div id='repoheader-info'>
-          <p className='mdc-typography--subtitle1'>
-            <FormattedMessage {...messages.productName} />
-          </p>
-          <p className='mdc-typography--subtitle2'>
-            {this.props.repo.title}
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
+const RepoHeader = (props) => (
+  <div id='repoheader'>
+    <div id='repoheader-backbutton'>
+      <Link to={props.backButtonTarget}>
+        <div><img src='/static/icons/maticon_arrow_back.svg' /></div>
+      </Link>
+    </div>
+    <div id='repoheader-info'>
+      <p className='mdc-typography--subtitle1'>
+        <FormattedMessage {...messages.productName} />
+      </p>
+      <p className='mdc-typography--subtitle2'>
+        {props.repo.title}
+      </p>
+    </div>
+  </div>
+);
 
 export default injectIntl(RepoHeader);
