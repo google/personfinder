@@ -36,8 +36,8 @@ class View extends Component {
     // TODO(nworden): consider if we could have a global cache of repo info to
     // avoid calling for it on each page load
     const apiURLs = [
-        '/' + this.props.match.params.repoId + '/d/repoinfo',
-        '/' + this.props.match.params.repoId + '/d/personinfo?id='
+        '/' + this.props.match.params.repoId + '/d/repo',
+        '/' + this.props.match.params.repoId + '/d/person?id='
             + encodeURIComponent(personId),
         ];
     Promise.all(apiURLs.map(url => fetch(url)))
