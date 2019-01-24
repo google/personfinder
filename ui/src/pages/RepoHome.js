@@ -63,13 +63,13 @@ class RepoHome extends Component {
   }
 
   goToCreate() {
-    this.props.history.push('/' + this.repoId + '/create');
+    this.props.history.push(`/${this.repoId}/create`);
   }
 
   handleSearch(query) {
     this.props.history.push({
         pathname: '/' + this.repoId + '/results',
-        search: encodeURIComponent('?query_name=' + query),
+        search: '?query_name=' + encodeURIComponent(query),
       });
   }
 
