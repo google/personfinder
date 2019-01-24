@@ -68,13 +68,13 @@ class RepoHome extends Component {
 
   handleSearch(query) {
     this.props.history.push({
-        pathname: '/' + this.repoId + '/results',
+        pathname: `/${this.repoId}/results`,
         search: '?query_name=' + encodeURIComponent(query),
       });
   }
 
   componentDidMount() {
-    const apiUrl = '/' + this.repoId + '/d/repo';
+    const apiUrl = `/${this.repoId}/d/repo`;
     fetch(apiUrl)
       .then(res => res.json())
       .then(
@@ -116,7 +116,7 @@ class RepoHome extends Component {
       <div>
         <RepoHeader
           repo={this.state.repo}
-          backButtonTarget={'/' + this.repoId}
+          backButtonTarget={`/${this.repoId}`}
         />
         <div className='repohome-body'>
           <SearchBar
