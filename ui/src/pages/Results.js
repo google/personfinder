@@ -23,6 +23,7 @@ import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
+import Utils from './../Utils.js';
 
 const messages = defineMessages({
   createNewRecord: {
@@ -62,7 +63,7 @@ class Results extends Component {
   }
 
   loadResults() {
-    const query = new URL(window.location.href).searchParams.get('query_name');
+    const query = Utils.getURLParam(this.props, 'query_name');
     const apiURLs = [
         `/${this.repoId}/d/repo`,
         '/' + this.repoId + '/d/results?query=' + encodeURIComponent(query),
@@ -87,13 +88,18 @@ class Results extends Component {
     this.loadResults();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props != prevProps) {
+      this.loadResults();
+    }
+  }
+
   handleSearch(query) {
     this.setState({isLoaded: false});
     this.props.history.push({
         pathname: `/${this.repoId}/results`,
         search: '?query_name=' + encodeURIComponent(query),
       });
-    this.loadResults();
   }
 
   renderResults() {

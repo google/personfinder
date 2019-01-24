@@ -32,7 +32,7 @@ class View extends Component {
   }
 
   componentDidMount() {
-    const personId = Utils.getURLParam('id');
+    const personId = Utils.getURLParam(this.props, 'id');
     // TODO(nworden): consider if we could have a global cache of repo info to
     // avoid calling for it on each page load
     const apiURLs = [

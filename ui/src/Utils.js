@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
+import queryString from 'query-string';
+
 /*
  * A class for utility functions.
  */
 class Utils {
 
-  /*
-   * Get the value of the given URL param from the window.
-   */
-  static getURLParam(paramName) {
-    return new URL(window.location.href).searchParams.get(paramName);
+  static getURLParam(props, paramName) {
+    return queryString.parse(props.location.search)[paramName];
   }
 }
 
