@@ -38,6 +38,8 @@ const messages = defineMessages({
     description: ('A heading for a section with one or more alternatives to '
         + 'the main option.'),
   },
+  // TODO(nworden): confirm with UX that this should differ (begins with
+  // "currently") from the similar message on the global homepage.
   repoRecordCount: {
     id: 'RepoHome.repoRecordCount',
     defaultMessage: 'Currently tracking {recordCount} records',
