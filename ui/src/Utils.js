@@ -19,6 +19,9 @@
  */
 class Utils {
 
+  /*
+   * Get the value of the given URL param from the window.
+   */
   static getURLParam(paramName) {
     return new URL(window.location.href).searchParams.get(paramName);
   }
