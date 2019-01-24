@@ -1,4 +1,4 @@
-i/*
+/*
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import LoadingIndicator from './../components/LoadingIndicator.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
 import RepoHeader from './../components/RepoHeader.js';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   addSite: {
     id: 'Create.addSite',
     defaultMessage: 'Add site',
@@ -56,9 +56,9 @@ const messages = defineMessages({
     defaultMessage: 'Facebook',
     description: 'The social media site.',
   },
-  familyOrSurameRequired: {
-    id: 'Create.familyOrSurnameRequired',
-    defaultMessage: 'Family or Surname (required)',
+  familyNameOrSurameRequired: {
+    id: 'Create.familyNameOrSurnameRequired',
+    defaultMessage: 'Family name or Surname (required)',
     description: 'A label for a form field for a person\'s surname.',
   },
   givenNameOrFirstNameRequired: {
@@ -70,6 +70,12 @@ const messages = defineMessages({
     id: 'Create.homeStreetAddress',
     defaultMessage: 'Home street address',
     description: 'A label for a form field for a person\'s street address.',
+  },
+  identifyingInformation: {
+    id: 'Create.identifyingInformation',
+    defaultMessage: 'Identifying information',
+    description: 'A header for a section of a form with identifying '
+        + 'information (name, age, etc.).'
   },
   infoAboutMe: {
     id: 'Create.infoAboutMe',
@@ -168,16 +174,16 @@ const messages = defineMessages({
  * The Create page has two tabs: one for adding yourself and one for adding
  * another person. This enum is used to refer to the two cases.
  */
-const CREATE_TAB_INDICES = Object.freeze({
+const TAB_INDICES = Object.freeze({
   ABOUT_ME: 0,
   ABOUT_SOMEONE_ELSE: 1
 });
 
-const CREATE_PROFILE_PAGE_SITES = Object.freeze({
-  'facebook': messages.facebook,
-  'twitter': messages.twitter,
-  'linkedin': messages.linkedin,
-  'other': messages.otherWebsite,
+const PROFILE_PAGE_SITES = Object.freeze({
+  'facebook': MESSAGES.facebook,
+  'twitter': MESSAGES.twitter,
+  'linkedin': MESSAGES.linkedin,
+  'other': MESSAGES.otherWebsite,
 });
 
 /*
@@ -192,7 +198,7 @@ class Create extends Component {
       repo: null,
       // Which of the two tabs (adding yourself or adding another person) is
       // active.
-      activeTabIndex: CREATE_TAB_INDICES.ABOUT_ME,
+      activeTabIndex: TAB_INDICES.ABOUT_ME,
       // By default, we hide a bunch of fields in a zippy. If this is true, we
       // show them.
       showAllIdInfoFields: false,
@@ -209,7 +215,7 @@ class Create extends Component {
       formSex: '',
       formAge: '',
       formHomeStreetAddress: '',
-      formPhotoFile: '',
+      formPhotoFile: null,
       formPhotoUrl: '',
       formProfilePages: [],
     };
@@ -217,8 +223,8 @@ class Create extends Component {
     // When you display stuff in a list with React, React needs a unique ID
     // (called a key) for each one. The list of profile page fields don't have
     // any data that would naturally make for a good key, so we use this counter
-    // to assign them IDs.
-    this.profileFieldIdCounter = 0;
+    // to assign them keys.
+    this.profileFieldKeyCounter = 0;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addProfilePageField = this.addProfilePageField.bind(this);
     this.removeProfilePageField = this.removeProfilePageField.bind(this);
@@ -252,25 +258,26 @@ class Create extends Component {
           className='mdc-typography--body1'
           onClick={(e) => this.setState({showAllIdInfoFields: true})}
         >
-          <FormattedHTMLMessage {...messages.moreDropdown} />
+          <FormattedHTMLMessage {...MESSAGES.moreDropdown} />
         </span>
       </div>
     )
   }
 
   renderPhotoFields() {
-    var photoFilenameSpan = this.state.formPhotoFile
+    const photoFilenameSpan = this.state.formPhotoFile
         ? <span>{this.state.formPhotoFile.name}</span>
         : null;
-    var photoDeleteButton = null;
+    let photoDeleteButton = null;
     if (this.state.formPhotoFile) {
       photoDeleteButton = (
         <span onClick={(e) => {this.setState({formPhotoFile: ''})}}>X</span>
       );
     }
     return (
-      <PFNotchedOutline label={this.props.intl.formatMessage(messages.photo)}>
+      <PFNotchedOutline label={this.props.intl.formatMessage(MESSAGES.photo)}>
         <input
+          className='proxied-upload'
           type='file'
           ref={this.photoUploadInput}
           onChange={(e) => this.setState({formPhotoFile: e.target.files[0]})} />
@@ -279,18 +286,18 @@ class Create extends Component {
           type='button'
           onClick={() => this.photoUploadInput.current.click()}
           disabled={this.state.formPhotoUrl != ""}>
-          {this.props.intl.formatMessage(messages.uploadPhoto)}
+          {this.props.intl.formatMessage(MESSAGES.uploadPhoto)}
         </Button>
         {photoFilenameSpan}
         {photoDeleteButton}
         <TextField
-          label={this.props.intl.formatMessage(messages.orEnterPhotoUrl)}
+          label={this.props.intl.formatMessage(MESSAGES.orEnterPhotoUrl)}
           outlined
         >
           <Input
             value={this.state.formPhotoUrl}
             onChange={(e) => this.setState({formPhotoUrl: e.target.value})}
-            disabled={this.state.formPhotoFile != ""} />
+            disabled={this.state.formPhotoFile != null} />
         </TextField>
       </PFNotchedOutline>
     );
@@ -311,7 +318,7 @@ class Create extends Component {
    * Removes the given profile page field from the form.
    */
   removeProfilePageField(index) {
-    var newProfileList = this.state.formProfilePages.slice(0, index);
+    let newProfileList = this.state.formProfilePages.slice(0, index);
     if (index < this.state.formProfilePages.length - 1) {
       newProfileList = newProfileList.concat(
           this.state.formProfilePages.slice(
@@ -331,7 +338,7 @@ class Create extends Component {
       <li
         className='mdc-typography--body1'
         onClick={() => this.addProfilePageField(site)}>
-        <FormattedMessage {...CREATE_PROFILE_PAGE_SITES[site]} />
+        <FormattedMessage {...PROFILE_PAGE_SITES[site]} />
       </li>
     );
   }
@@ -340,13 +347,13 @@ class Create extends Component {
    * Render the profile page link fields (if any) and the "Add site" button.
    */
   renderProfilePageFields() {
-    var profilePageFields = this.state.formProfilePages.map((page, index) => (
+    const profilePageFields = this.state.formProfilePages.map((page, index) => (
       <div
         className='create-profilefieldwrap'
-        key={this.profileFieldIdCounter++}>
+        key={this.profileFieldKeyCounter++}>
         <TextField
           label={this.props.intl.formatMessage(
-              CREATE_PROFILE_PAGE_SITES[page.get('site')])}
+              PROFILE_PAGE_SITES[page.get('site')])}
           outlined
         >
           <Input
@@ -355,7 +362,7 @@ class Create extends Component {
               // A component's state shouldn't be mutated directly. We need to
               // update a map in an array, so we copy the map and do some
               // splicing to produce a new array with the new map.
-              var newPageMap = new Map(this.state.formProfilePages[index]);
+              let newPageMap = new Map(this.state.formProfilePages[index]);
               newPageMap['value'] = e.target.value;
               const newPagesArr = this.state.formProfilePages.slice(0, index)
                   .concat(newPageMap)
@@ -371,7 +378,7 @@ class Create extends Component {
         </div>
       </div>
     ));
-    var profilePageOptions = (
+    const profilePageOptions = (
       <MenuSurface
         open={this.state.showProfilePageOptions}
         onClose={() => this.setState({showProfilePageOptions: false})}
@@ -388,7 +395,7 @@ class Create extends Component {
     // TODO(nworden): check with UX about how this button should be styled
     return (
       <PFNotchedOutline
-        label={this.props.intl.formatMessage(messages.profilePages)}>
+        label={this.props.intl.formatMessage(MESSAGES.profilePages)}>
         {profilePageFields}
         <div
           className='mdc-menu-surface--anchor'
@@ -402,7 +409,7 @@ class Create extends Component {
             raised
             type='button'
             onClick={() => {this.setState({showProfilePageOptions: true})}}>
-            {this.props.intl.formatMessage(messages.addSite)}
+            {this.props.intl.formatMessage(MESSAGES.addSite)}
           </Button>
           {profilePageOptions}
         </div>
@@ -417,24 +424,24 @@ class Create extends Component {
     return (
       <div className='create-formgroupwrapper'>
         <Select
-          label={this.props.intl.formatMessage(messages.sex)}
+          label={this.props.intl.formatMessage(MESSAGES.sex)}
           onChange={(e) => this.setState({formSex: e.target.value})}
           value={this.state.formSex}
           outlined
         >
           <option value='' />
           <option value='male'>
-            {this.props.intl.formatMessage(messages.sexMale)}
+            {this.props.intl.formatMessage(MESSAGES.sexMale)}
           </option>
           <option value='female'>
-            {this.props.intl.formatMessage(messages.sexFemale)}
+            {this.props.intl.formatMessage(MESSAGES.sexFemale)}
           </option>
           <option value='other'>
-            {this.props.intl.formatMessage(messages.sexOther)}
+            {this.props.intl.formatMessage(MESSAGES.sexOther)}
           </option>
         </Select>
         <TextField
-          label={this.props.intl.formatMessage(messages.age)}
+          label={this.props.intl.formatMessage(MESSAGES.age)}
           outlined
         >
           <Input
@@ -443,7 +450,7 @@ class Create extends Component {
             onChange={(e) => this.setState({formAge: e.target.value})} />
         </TextField>
         <TextField
-          label={this.props.intl.formatMessage(messages.homeStreetAddress)}
+          label={this.props.intl.formatMessage(MESSAGES.homeStreetAddress)}
           outlined
         >
           <Input
@@ -454,7 +461,7 @@ class Create extends Component {
             })} />
         </TextField>
         <TextField
-          label={this.props.intl.formatMessage(messages.city)}
+          label={this.props.intl.formatMessage(MESSAGES.city)}
           outlined
         >
           <Input
@@ -463,7 +470,7 @@ class Create extends Component {
             onChange={(e) => this.setState({formCity: e.target.value})} />
         </TextField>
         <TextField
-          label={this.props.intl.formatMessage(messages.provinceOrState)}
+          label={this.props.intl.formatMessage(MESSAGES.provinceOrState)}
           outlined
         >
           <Input
@@ -473,7 +480,7 @@ class Create extends Component {
               (e) => this.setState({formProvinceState: e.target.value})} />
         </TextField>
         <TextField
-          label={this.props.intl.formatMessage(messages.country)}
+          label={this.props.intl.formatMessage(MESSAGES.country)}
           outlined
         >
           <Input
@@ -494,18 +501,18 @@ class Create extends Component {
   }
 
   renderIdentifyingInfoFields() {
-    var moreFields = this.state.showAllIdInfoFields ?
+    const moreFields = this.state.showAllIdInfoFields ?
         this.renderMoreIdentifyingInfoFields() :
         this.renderMoreFieldsButton();
     return (
       <div className='create-formsectionwrapper'>
         <div className='create-formgroupwrapper'>
           <span className='mdc-typography--overline'>
-            Identifying information
+            <FormattedMessage {...MESSAGES.identifyingInformation} />
           </span>
           <TextField
             label={this.props.intl.formatMessage(
-                messages.familyOrSurameRequired)}
+                MESSAGES.familyNameOrSurameRequired)}
             outlined
           >
             <Input
@@ -515,7 +522,7 @@ class Create extends Component {
           </TextField>
           <TextField
             label={this.props.intl.formatMessage(
-                messages.givenNameOrFirstNameRequired)}
+                MESSAGES.givenNameOrFirstNameRequired)}
             outlined
           >
             <Input
@@ -539,7 +546,7 @@ class Create extends Component {
           <label
             className='mdc-typography--body1'
             htmlFor='subscribetoupdates-checkbox'>
-            <FormattedMessage {...messages.subscribeToUpdates} />
+            <FormattedMessage {...MESSAGES.subscribeToUpdates} />
           </label>
         </div>
         {moreFields}
@@ -557,9 +564,10 @@ class Create extends Component {
   }
 
   handleSubmit(e) {
+    // TODO(nworden): show the loading indicator as soon as the search starts
     e.preventDefault();
     const apiUrl = '/' + this.repoId + '/d/create';
-    var formData = new FormData(e.target);
+    const formData = new FormData(e.target);
     formData.set('photo', this.state.formPhotoFile);
     fetch(apiUrl, {method: 'POST', body: formData})
       .then(res => res.json())
@@ -586,12 +594,12 @@ class Create extends Component {
     if (!this.state.isLoaded) {
       return <LoadingIndicator />;
     }
-    var formContent = null;
+    let formContent = null;
     switch (this.state.activeTabIndex) {
-      case CREATE_TAB_INDICES.ABOUT_ME:
+      case TAB_INDICES.ABOUT_ME:
         formContent = this.renderAboutMeForm();
         break;
-      case CREATE_TAB_INDICES.ABOUT_SOMEONE_ELSE:
+      case TAB_INDICES.ABOUT_SOMEONE_ELSE:
         // TODO(nworden): support the form for someone else
         formContent = <div>form for someone else here</div>;
         break;
@@ -613,12 +621,12 @@ class Create extends Component {
           >
             <Tab>
               <span className='mdc-tab__text-label'>
-                <FormattedMessage {...messages.infoAboutMe} />
+                <FormattedMessage {...MESSAGES.infoAboutMe} />
               </span>
             </Tab>
             <Tab>
               <span className='mdc-tab__text-label'>
-                <FormattedMessage {...messages.someoneElse} />
+                <FormattedMessage {...MESSAGES.someoneElse} />
               </span>
             </Tab>
           </TabBar>
@@ -626,14 +634,14 @@ class Create extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type='hidden'
-            name='addType'
+            name='add_type'
             value={this.state.activeTabIndex}
           />
           {formContent}
           <Button
             className='pf-button-primary create-submitbutton'
             type='submit'>
-            {this.props.intl.formatMessage(messages.submitRecord)}
+            {this.props.intl.formatMessage(MESSAGES.submitRecord)}
           </Button>
         </form>
         <Footer />
