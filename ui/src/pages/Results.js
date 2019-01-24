@@ -50,21 +50,21 @@ class Results extends Component {
       results: null
     };
     this.repoId = this.props.match.params.repoId;
-    this.goToAdd = this.goToAdd.bind(this);
+    this.goToCreate = this.goToCreate.bind(this);
     this.loadResults = this.loadResults.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  goToAdd() {
+  goToCreate() {
     this.props.history.push({
-          pathname: '/' + this.repoId + '/create',
+          pathname: `/${this.repoId}/create`,
       });
   }
 
   loadResults() {
     const query = new URL(window.location.href).searchParams.get('query_name');
     const apiURLs = [
-        '/' + this.repoId + '/d/repo',
+        `/${this.repoId}/d/repo`,
         '/' + this.repoId + '/d/results?query=' + encodeURIComponent(query),
         ];
     Promise.all(apiURLs.map(url => fetch(url)))
@@ -90,7 +90,7 @@ class Results extends Component {
   handleSearch(query) {
     this.setState({isLoaded: false});
     this.props.history.push({
-        pathname: '/' + this.repoId + '/results',
+        pathname: `/${this.repoId}/results`,
         search: '?query_name=' + encodeURIComponent(query),
       });
     this.loadResults();
@@ -118,7 +118,7 @@ class Results extends Component {
     return (
       <Fab
           className='results-addpersonfab'
-          onClick={this.goToAdd}
+          onClick={this.goToCreate}
           icon={<img src='/static/icons/maticon_add.svg' />}
           textLabel={this.props.intl.formatMessage(
               messages.createNewRecord)}
@@ -137,7 +137,7 @@ class Results extends Component {
       <div id='results-wrapper'>
         <RepoHeader
           repo={this.state.repo}
-          backButtonTarget={'/' + this.repoId}
+          backButtonTarget={`/${this.repoId}`}
         />
         <div className='results-body'>
           <SearchBar
