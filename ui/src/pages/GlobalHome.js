@@ -118,7 +118,7 @@ class GlobalHome extends Component {
   }
 
   componentDidMount() {
-    fetch('/global/d/repoinfo')
+    fetch('/global/d/repo')
       .then(res => res.json())
       .then(
         (repos) => {
