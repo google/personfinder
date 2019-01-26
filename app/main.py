@@ -523,6 +523,8 @@ class Main(webapp.RequestHandler):
     """The main request handler.  All dynamic requests except for remote_api are
     handled by this handler, which dispatches to all other dynamic handlers."""
 
+    NON_REACT_UI_PATHS = ['api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/']
+
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
 
@@ -561,6 +563,12 @@ class Main(webapp.RequestHandler):
         # Activate the appropriate resource bundle.
         resources.set_active_bundle_name(self.env.resource_bundle)
 
+    def should_serve_react_ui(self):
+        for path_prefix in Main.NON_REACT_UI_PATHS:
+            if self.env.action.startswith(path_prefix):
+                return False
+        return True
+
     def serve(self):
         request, response, env = self.request, self.response, self.env
 
@@ -579,14 +587,15 @@ class Main(webapp.RequestHandler):
                 response.out.write(content)
 
         if config.get('enable_react_ui'):
+            # TODO(nworden): serve static files from /global/static
             if env.repo == 'static':
                 self.serve_static_content(self.env.action)
-            elif not env.action.startswith('d/'):
+            elif self.should_serve_react_ui():
                 response.out.write(
                     resources.get_rendered(
                         'react_index.html', env.lang,
                         get_vars=lambda: {'env': env}))
-            return
+                return
 
         if not env.action and not env.repo:
             # A request for the root path ('/'). Renders the home page.

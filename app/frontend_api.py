@@ -47,12 +47,6 @@ class Results(FrontendApiHandler):
 
     repo_required = True
 
-    def __init__(self, request, response, env):
-        FrontendApiHandler.__init__(self, request, response, env)
-        self._searcher = search.Searcher(
-            self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'))
-
     def _result_to_dict(self, person):
         # TODO: implement this
         return {
@@ -61,7 +55,10 @@ class Results(FrontendApiHandler):
         }
 
     def get(self):
-        results = self._searcher.search(
+        searcher = search.Searcher(
+            self.repo, self.config.external_search_backends,
+            config.get('enable_fulltext_search'))
+        results = searcher.search(
             self.params.query_name or self.params.query)
         self._return_json([self._result_to_dict(r) for r in results])
 
@@ -78,9 +75,6 @@ class Person(FrontendApiHandler):
 class Create(FrontendApiHandler):
 
     repo_required = True
-
-    def __init__(self, request, response, env):
-        FrontendApiHandler.__init__(self, request, response, env)
 
     def post(self):
         # TODO: factor all this out somewhere shared
