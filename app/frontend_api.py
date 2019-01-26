@@ -1,5 +1,3 @@
-from django.http import JsonResponse
-
 import config
 from model import Person
 import photo
@@ -11,12 +9,9 @@ import utils
 class FrontendApiHandler(utils.BaseHandler):
     """Base handler for frontend API handlers."""
 
-    def __init__(self, request, response, env):
-        utils.BaseHandler.__init__(self, request, response, env)
-
     def _return_json(self, data):
         self.response.headers['Content-Type'] = (
-            'application/json; charsetutf-8')
+            'application/json; charset=utf-8')
         self.write(simplejson.dumps(data))
 
 

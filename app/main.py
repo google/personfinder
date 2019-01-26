@@ -147,10 +147,10 @@ HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
 HANDLER_CLASSES['tasks/thumbnail_preparer'] = 'tasks.ThumbnailPreparer'
 if config.get('enable_react_ui'):
-    HANDLER_CLASSES['d/create'] = 'frontendapi.Create'
-    HANDLER_CLASSES['d/person'] = 'frontendapi.Person'
-    HANDLER_CLASSES['d/repo'] = 'frontendapi.Repo'
-    HANDLER_CLASSES['d/results'] = 'frontendapi.Results'
+    HANDLER_CLASSES['d/create'] = 'frontend_api.Create'
+    HANDLER_CLASSES['d/person'] = 'frontend_api.Person'
+    HANDLER_CLASSES['d/repo'] = 'frontend_api.Repo'
+    HANDLER_CLASSES['d/results'] = 'frontend_api.Results'
 
 def is_development_server():
     """Returns True if the app is running in development."""
