@@ -74,12 +74,6 @@ def max_word_length(query_words):
 
 class Handler(BaseHandler):
 
-    def __init__(self, request, response, env):
-        BaseHandler.__init__(self, request, response, env)
-        self._searcher = Searcher(
-            self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'), MAX_RESULTS)
-
     def search(self, query_dict):
         """
         Performs a search and adds view_url attributes to the results.

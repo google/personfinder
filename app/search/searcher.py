@@ -5,7 +5,7 @@ import indexing
 
 
 class Searcher(object):
-    """A utility class for searching repositories."""
+    """A utility class for searching person records in repositories."""
 
     def __init__(
         self, repo, external_search_backends, enable_fulltext_search,
