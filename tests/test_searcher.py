@@ -23,20 +23,20 @@ class SearcherTests(unittest.TestCase):
             indexing_mock.return_value = []
             external_search_mock.return_value = (
                 SearcherTests.EXTERNAL_SEARCH_RETURN_VALUE)
-            external_search_value = 'abc external search'
+            external_search_backends_value = 'abc external search'
             searcher = Searcher(
                 SearcherTests.REPO_NAME,
-                external_search_backends=external_search_value,
+                external_search_backends=external_search_backends_value,
                 enable_fulltext_search=False,
                 max_results=SearcherTests.MAX_RESULTS)
-            assert (searcher.search({'name': 'matt'}) ==
+            assert (searcher.search('matt') ==
                     SearcherTests.EXTERNAL_SEARCH_RETURN_VALUE)
-            assert 1 == len(external_search_mock.call_args_list)
+            assert len(external_search_mock.call_args_list) == 1
             call_args, _ = external_search_mock.call_args_list[0]
             assert call_args[0] == SearcherTests.REPO_NAME
             assert call_args[1].query == 'matt'
             assert call_args[2] == SearcherTests.MAX_RESULTS
-            assert call_args[3] == external_search_value
+            assert call_args[3] == external_search_backends_value
 
     def test_indexing_results(self):
         """Fall back to indexing.search results.
@@ -54,9 +54,9 @@ class SearcherTests(unittest.TestCase):
                 external_search_backends='any value',
                 enable_fulltext_search=False,
                 max_results=SearcherTests.MAX_RESULTS)
-            assert (searcher.search({'name': 'matt'}) ==
+            assert (searcher.search('matt') ==
                     SearcherTests.INDEXING_RETURN_VALUE)
-            assert 1 == len(indexing_mock.call_args_list)
+            assert len(indexing_mock.call_args_list) == 1
             call_args, _ = indexing_mock.call_args_list[0]
             assert call_args[0] == SearcherTests.REPO_NAME
             assert call_args[1].query == 'matt'
@@ -78,9 +78,9 @@ class SearcherTests(unittest.TestCase):
                 external_search_backends='any value',
                 enable_fulltext_search=True,
                 max_results=SearcherTests.MAX_RESULTS)
-            assert (searcher.search({'name': 'matt'}) ==
+            assert (searcher.search('matt') ==
                     SearcherTests.FULLTEXT_RETURN_VALUE)
-            assert 1 == len(full_text_search_mock.call_args_list)
+            assert len(full_text_search_mock.call_args_list) == 1
             call_args, _ = full_text_search_mock.call_args_list[0]
             assert call_args[0] == SearcherTests.REPO_NAME
             assert call_args[1] == {'name': 'matt'}

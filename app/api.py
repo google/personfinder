@@ -533,7 +533,7 @@ class Search(utils.BaseHandler):
             searcher = Searcher(
                 self.repo, self.config.external_search_backends,
                 config.get('enable_fulltext_search'), max_results)
-            results = searcher.search({'name': query_string})
+            results = searcher.search(query_string)
         else:
             self.info(
                 400,
