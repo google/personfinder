@@ -4,6 +4,7 @@
 
 """Unittest for text_query.py module."""
 
+from __future__ import absolute_import
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 from google.appengine.ext import db
