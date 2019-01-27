@@ -18,9 +18,9 @@
 This module converts between PFIF XML documents (PFIF 1.1, 1.2, 1.3, or 1.4) and
 plain Python dictionaries that have PFIF 1.4 field names as keys (always 1.4)
 and Unicode strings as values.  Some useful constants are also defined here
-according to the PFIF specification.  Use parse() to parse PFIF 1.1, 1.2, 1.3,
-or 1.4; use PFIF_1_1, PFIF_1_2, PFIF_1_3, or PFIF_1_4 to serialize to the
-desired version."""
+according to the PFIF specification.  Use parse_file() to parse PFIF 1.1, 1.2,
+1.3, or 1.4 files; use PFIF_1_1, PFIF_1_2, PFIF_1_3, or PFIF_1_4 to serialize to
+the desired version."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
@@ -502,13 +502,3 @@ def parse_file(pfif_utf8_file, rename_fields=True):
         for record in handler.person_records + handler.note_records:
             rename_fields_to_latest(record)
     return handler.person_records, handler.note_records
-
-def parse(pfif_text, rename_fields=True):
-    """Takes the text of a PFIF document, as a Unicode string or UTF-8 string,
-    and returns a list of person records and a list of note records.  Each
-    record is a plain dictionary of strings, with PFIF 1.4 field names as keys
-    if rename_fields is True; otherwise, the field names are kept as is in the
-    input XML file."""
-    if isinstance(pfif_text, unicode):
-        pfif_text = pfif_text.decode('utf-8')
-    return parse_file(StringIO.StringIO(pfif_text), rename_fields)
