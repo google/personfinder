@@ -36,7 +36,7 @@ class Searcher(object):
         if not results:
             query_dict = {'name': query_name}
             if query_location:
-                query_dict['location'] + query_location
+                query_dict['location'] = query_location
             if self._enable_fulltext_search:
                 results = full_text_search.search(
                     self._repo, query_dict, self._max_results)
