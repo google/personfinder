@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import List from 'immutable';
 import React, {Component} from 'react';
 import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import Button from '@material/react-button';
@@ -217,7 +218,7 @@ class Create extends Component {
       formHomeStreetAddress: '',
       formPhotoFile: null,
       formPhotoUrl: '',
-      formProfilePages: [],
+      formProfilePages: List.of(),
     };
     this.repoId = this.props.match.params.repoId;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -309,7 +310,7 @@ class Create extends Component {
    */
   addProfilePageField(site) {
     this.setState({
-      formProfilePages: this.state.formProfilePages.concat(
+      formProfilePages: this.state.formProfilePages.push(
           {'site': site, 'value': ''}),
       showProfilePageOptions: false,
     });
@@ -319,14 +320,8 @@ class Create extends Component {
    * Removes the given profile page field from the form.
    */
   removeProfilePageField(index) {
-    let newProfileList = this.state.formProfilePages.slice(0, index);
-    if (index < this.state.formProfilePages.length - 1) {
-      newProfileList = newProfileList.concat(
-          this.state.formProfilePages.slice(
-              index + 1, this.state.formProfilePages.length));
-    }
     this.setState({
-      formProfilePages: newProfileList,
+      formProfilePages: this.state.formProfilePages.delete(index),
     });
   }
 
@@ -349,14 +344,12 @@ class Create extends Component {
     // object (with the same site) in the array, so we do a little splicing to
     // produce a new array with a new object.
     let newPage = {
-        'site': this.state.formProfilePages[index].site,
+        'site': this.state.formProfilePages.get(index).site,
         'value': newValue,
     }
-    const newPagesArr = this.state.formProfilePages.slice(0, index)
-        .concat(newPage)
-        .concat(this.state.formProfilePages.slice(
-            index+1, this.state.formProfilePages.length));
-    this.setState({formProfilePages: newPagesArr});
+    this.setState({
+        formProfilePages: this.state.formProfilePages.set(index, newPage),
+    });
   }
 
   /*
