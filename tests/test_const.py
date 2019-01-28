@@ -16,6 +16,7 @@
 
 """Tests for const."""
 
+from __future__ import absolute_import
 import const
 import pfif
 import unittest
