@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+import six
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 import unicodedata
@@ -31,7 +33,7 @@ class TextQuery():
     def __init__(self, query):
         self.query = query
 
-        query = unicode(query or '')
+        query = six.text_type(query or '')
         # Do we need a Japanese specific logic to normalize the query?
         if jautils.should_normalize(query):
             self.normalized = jautils.normalize(query)
@@ -55,7 +57,7 @@ class TextQuery():
 def normalize(string):
     """Normalize a string to all uppercase, remove accents, delete apostrophes,
     and replace non-letters with spaces."""
-    string = unicode(string or '').strip().upper()
+    string = six.text_type(string or '').strip().upper()
     letters = []
     """TODO(eyalf): we need to have a better list of types we are keeping
         one that will work for non latin languages"""
