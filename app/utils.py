@@ -36,7 +36,6 @@ import base64
 import django.utils.html
 from django.template.defaulttags import register
 from google.appengine.api import images
-from google.appengine.api import mail
 from google.appengine.api import taskqueue
 from google.appengine.api import users
 from google.appengine.ext import webapp
