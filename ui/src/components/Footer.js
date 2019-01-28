@@ -17,7 +17,7 @@
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   disclaimerText: {
     id: 'Footer.disclaimerText',
     defaultMessage: ('PLEASE NOTE: All data entered is available to the public '
@@ -31,7 +31,7 @@ const messages = defineMessages({
 const Footer = () => (
   <div className="footer">
     <p className="mdc-typography--body1">
-      <FormattedMessage {...messages.disclaimerText} />
+      <FormattedMessage {...MESSAGES.disclaimerText} />
     </p>
   </div>
 );

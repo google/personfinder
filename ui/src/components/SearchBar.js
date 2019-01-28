@@ -19,7 +19,7 @@ import {defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   searchForAPerson: {
     id: 'SearchBar.searchForAPerson',
     defaultMessage: 'Search for a person',
@@ -45,7 +45,7 @@ class SearchBar extends Component {
   render() {
     return (
       <TextField
-        label={this.props.intl.formatMessage(messages.searchForAPerson)}
+        label={this.props.intl.formatMessage(MESSAGES.searchForAPerson)}
         outlined
         className='searchbar'
       >

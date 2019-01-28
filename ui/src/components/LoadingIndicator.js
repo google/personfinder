@@ -17,7 +17,7 @@
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   loading: {
     id: 'LoadingIndicator.loading',
     defaultMessage: 'Loading...',
@@ -26,7 +26,7 @@ const messages = defineMessages({
 });
 
 const LoadingIndicator = () => (
-  <FormattedMessage {...messages.loading} />
+  <FormattedMessage {...MESSAGES.loading} />
 );
 
 export default injectIntl(LoadingIndicator);

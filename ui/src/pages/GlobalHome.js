@@ -29,7 +29,7 @@ import EndBarHeader from './../components/EndBarHeader.js';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   developers: {
     id: 'GlobalHome.developers',
     defaultMessage: 'Developers',
@@ -146,10 +146,10 @@ class GlobalHome extends Component {
       <div>
         <h1 className='mdc-typography--headline1'>
           <img src='/static/icons/maticon_person_pin.svg' />
-          <FormattedHTMLMessage {...messages.productNameWithEmphasis} />
+          <FormattedHTMLMessage {...MESSAGES.productNameWithEmphasis} />
         </h1>
         <p className='mdc-typography--body1 globalhome-headerdesc'>
-          <FormattedMessage {...messages.tagline} />
+          <FormattedMessage {...MESSAGES.tagline} />
         </p>
         {/* TODO(nworden): implement this link/page */}
         {/* TODO(nworden): see if we can support right-click targets */}
@@ -158,7 +158,7 @@ class GlobalHome extends Component {
           raised
           onClick={() => console.log('clicked!')}
         >
-          {this.props.intl.formatMessage(messages.howDoesItWork)}
+          {this.props.intl.formatMessage(MESSAGES.howDoesItWork)}
         </Button>
       </div>
     );
@@ -169,10 +169,10 @@ class GlobalHome extends Component {
       <Card className='globalhome-thirdpartycard'>
         <div>
           <h3 className='mdc-typography--headline3'>
-            <FormattedMessage {...messages.responders} />
+            <FormattedMessage {...MESSAGES.responders} />
           </h3>
           <p className='mdc-typography--body1'>
-            <FormattedHTMLMessage {...messages.respondersHowToHelpHTML} />
+            <FormattedHTMLMessage {...MESSAGES.respondersHowToHelpHTML} />
           </p>
         </div>
         <CardActions>
@@ -183,7 +183,7 @@ class GlobalHome extends Component {
               raised
               onClick={() => console.log('clicked!')}
             >
-              {this.props.intl.formatMessage(messages.learnHow)}
+              {this.props.intl.formatMessage(MESSAGES.learnHow)}
             </Button>
           </CardActionButtons>
         </CardActions>
@@ -196,10 +196,10 @@ class GlobalHome extends Component {
       <Card className='globalhome-thirdpartycard'>
         <div>
           <h3 className='mdc-typography--headline3'>
-            <FormattedMessage {...messages.developers} />
+            <FormattedMessage {...MESSAGES.developers} />
           </h3>
           <p className='mdc-typography--body1'>
-            <FormattedHTMLMessage {...messages.developersHowToHelpHTML} />
+            <FormattedHTMLMessage {...MESSAGES.developersHowToHelpHTML} />
           </p>
         </div>
         <CardActions>
@@ -210,7 +210,7 @@ class GlobalHome extends Component {
               raised
               onClick={() => console.log('clicked!')}
             >
-              {this.props.intl.formatMessage(messages.getStarted)}
+              {this.props.intl.formatMessage(MESSAGES.getStarted)}
             </Button>
           </CardActionButtons>
         </CardActions>
@@ -222,7 +222,7 @@ class GlobalHome extends Component {
     return (
       <div className='globalhome-thirdpartywrapper'>
         <EndBarHeader>
-          <FormattedMessage {...messages.youCanHelp} />
+          <FormattedMessage {...MESSAGES.youCanHelp} />
         </EndBarHeader>
         <Grid>
           <Row>
@@ -284,7 +284,7 @@ class RepoCardImpl extends Component {
       recordCountContent = (
         <p className='mdc-typography--body1 repocard-recordcount'>
           <FormattedMessage
-            {...messages.repoRecordCount }
+            {...MESSAGES.repoRecordCount }
             values={{
               'recordCount': this.props.repo.recordCount
             }} />

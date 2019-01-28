@@ -18,7 +18,7 @@ import React from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {Link} from 'react-router-dom';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   // TODO(nworden): figure out how to make this configurable for users other
   // than Google
   productName: {
@@ -38,7 +38,7 @@ const RepoHeader = (props) => (
     </div>
     <div id='repoheader-info'>
       <p className='mdc-typography--subtitle1'>
-        <FormattedMessage {...messages.productName} />
+        <FormattedMessage {...MESSAGES.productName} />
       </p>
       <p className='mdc-typography--subtitle2'>
         {props.repo.title}
