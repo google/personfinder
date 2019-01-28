@@ -24,7 +24,7 @@ import LoadingIndicator from './../components/LoadingIndicator.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   provideInfoAboutSomeone: {
     id: 'RepoHome.provideInfoAboutSomeone',
     defaultMessage: 'Provide information about someone',
@@ -107,7 +107,7 @@ class RepoHome extends Component {
       recordCountContent = (
           <p className='mdc-typography--body1 repohome-recordcount'>
             <FormattedMessage
-              {...messages.repoRecordCount}
+              {...MESSAGES.repoRecordCount}
               values={{
                 'recordCount': this.state.repo.recordCount
               }} />
@@ -127,14 +127,14 @@ class RepoHome extends Component {
               onSearch={this.handleSearch} />
           {recordCountContent}
           <EndBarHeader>
-            <FormattedMessage {...messages.or} />
+            <FormattedMessage {...MESSAGES.or} />
           </EndBarHeader>
           <Button
             className='pf-button-secondary'
             raised
             onClick={this.goToCreate}
           >
-            {this.props.intl.formatMessage(messages.provideInfoAboutSomeone)}
+            {this.props.intl.formatMessage(MESSAGES.provideInfoAboutSomeone)}
           </Button>
         </div>
         <Footer />

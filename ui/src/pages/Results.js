@@ -25,7 +25,7 @@ import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
 import Utils from './../Utils.js';
 
-const messages = defineMessages({
+const MESSAGES = defineMessages({
   createNewRecord: {
     id: 'Results.createNewRecord',
     defaultMessage: 'Create new record',
@@ -106,7 +106,7 @@ class Results extends Component {
     if (this.state.results.length == 0) {
       return (
         <p className='mdc-typography--body1'>
-          <FormattedMessage {...messages.noResultsFound} />
+          <FormattedMessage {...MESSAGES.noResultsFound} />
         </p>
       );
     }
@@ -127,7 +127,7 @@ class Results extends Component {
           onClick={this.goToCreate}
           icon={<img src='/static/icons/maticon_add.svg' />}
           textLabel={this.props.intl.formatMessage(
-              messages.createNewRecord)}
+              MESSAGES.createNewRecord)}
       />
     );
   }
