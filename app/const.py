@@ -16,6 +16,7 @@
 """Constants that aren't specific to a particular module or handler."""
 
 # We use lazy translation in this file because the language isn't set yet.
+from __future__ import absolute_import
 import django_setup
 from django_setup import gettext_lazy as _
 
