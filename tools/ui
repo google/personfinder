@@ -20,5 +20,6 @@ case "$1" in
     ;;
 *)
     echo "Specify either run or buildtoae."
+    exit 1
     ;;
 esac
