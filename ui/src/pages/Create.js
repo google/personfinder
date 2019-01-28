@@ -220,11 +220,6 @@ class Create extends Component {
       formProfilePages: [],
     };
     this.repoId = this.props.match.params.repoId;
-    // When you display stuff in a list with React, React needs a unique ID
-    // (called a key) for each one. The list of profile page fields don't have
-    // any data that would naturally make for a good key, so we use this counter
-    // to assign them keys.
-    this.profileFieldKeyCounter = 0;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addProfilePageField = this.addProfilePageField.bind(this);
     this.removeProfilePageField = this.removeProfilePageField.bind(this);
@@ -276,6 +271,12 @@ class Create extends Component {
     }
     return (
       <PFNotchedOutline label={this.props.intl.formatMessage(MESSAGES.photo)}>
+        {/*
+          * You can't really style an input element, but we don't want to
+          * display it as-is, so we hide the actual input element and use a
+          * styled button as a proxy. The Button below this will call click() on
+          * the input when it's clicked.
+          */}
         <input
           className='proxied-upload'
           type='file'
@@ -308,8 +309,8 @@ class Create extends Component {
    */
   addProfilePageField(site) {
     this.setState({
-      formProfilePages: this.state.formProfilePages.concat(new Map(
-          [['site', site], ['value', '']])),
+      formProfilePages: this.state.formProfilePages.concat(
+          {'site': site, 'value': ''}),
       showProfilePageOptions: false,
     });
   }
@@ -348,24 +349,28 @@ class Create extends Component {
    */
   renderProfilePageFields() {
     const profilePageFields = this.state.formProfilePages.map((page, index) => (
+      // Be careful with the key for this list -- for our use case, we can use
+      // the index as the key, but that's not always the case.
       <div
         className='create-profilefieldwrap'
-        key={this.profileFieldKeyCounter++}>
+        key={index}>
         <TextField
           label={this.props.intl.formatMessage(
-              PROFILE_PAGE_SITES[page.get('site')])}
+              PROFILE_PAGE_SITES[page.site])}
           outlined
         >
           <Input
-            value={this.state.formProfilePages[index].value}
+            value={page.value}
             onChange={(e) => {
               // A component's state shouldn't be mutated directly. We need to
-              // update a map in an array, so we copy the map and do some
-              // splicing to produce a new array with the new map.
-              let newPageMap = new Map(this.state.formProfilePages[index]);
-              newPageMap['value'] = e.target.value;
+              // place a new object (with the same site) in the array, so we do
+              // a little splicing to produce a new array with a new object.
+              let newPage = {
+                  'site': this.state.formProfilePages[index].site,
+                  'value': e.target.value,
+              }
               const newPagesArr = this.state.formProfilePages.slice(0, index)
-                  .concat(newPageMap)
+                  .concat(newPage)
                   .concat(this.state.formProfilePages.slice(
                       index+1, this.state.formProfilePages.length));
               this.setState({formProfilePages: newPagesArr});
