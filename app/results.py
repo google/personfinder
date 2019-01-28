@@ -86,7 +86,7 @@ class Handler(BaseHandler):
             config.get('enable_fulltext_search'), MAX_RESULTS)
         results = searcher.search(
             query_dict['name'],
-            query_dict['location'] if 'location' in query_dict else None)
+            query_dict.get('location'))
 
         query_name = self.get_query_value()
         for result in results:

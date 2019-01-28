@@ -19,8 +19,8 @@ class Searcher(object):
         """Get results for a query.
 
         Args:
-          query_name: A name to query for.
-          query_location: A location to query for (optional).
+          query_name: A name to query for (string).
+          query_location: A location to query for (optional, string).
         """
         text_query = TextQuery(
             '%s %s' % (query_name, query_location)
