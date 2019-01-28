@@ -56,7 +56,7 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Facebook',
     description: 'The social media site.',
   },
-  familyNameOrSurameRequired: {
+  familyNameOrSurnameRequired: {
     id: 'Create.familyNameOrSurnameRequired',
     defaultMessage: 'Family name or Surname (required)',
     description: 'A label for a form field for a person\'s surname.',
@@ -344,6 +344,21 @@ class Create extends Component {
     );
   }
 
+  updateProfilePageValue(index, newValue) {
+    // A component's state shouldn't be mutated directly. We need to place a new
+    // object (with the same site) in the array, so we do a little splicing to
+    // produce a new array with a new object.
+    let newPage = {
+        'site': this.state.formProfilePages[index].site,
+        'value': newValue,
+    }
+    const newPagesArr = this.state.formProfilePages.slice(0, index)
+        .concat(newPage)
+        .concat(this.state.formProfilePages.slice(
+            index+1, this.state.formProfilePages.length));
+    this.setState({formProfilePages: newPagesArr});
+  }
+
   /*
    * Render the profile page link fields (if any) and the "Add site" button.
    */
@@ -361,20 +376,8 @@ class Create extends Component {
         >
           <Input
             value={page.value}
-            onChange={(e) => {
-              // A component's state shouldn't be mutated directly. We need to
-              // place a new object (with the same site) in the array, so we do
-              // a little splicing to produce a new array with a new object.
-              let newPage = {
-                  'site': this.state.formProfilePages[index].site,
-                  'value': e.target.value,
-              }
-              const newPagesArr = this.state.formProfilePages.slice(0, index)
-                  .concat(newPage)
-                  .concat(this.state.formProfilePages.slice(
-                      index+1, this.state.formProfilePages.length));
-              this.setState({formProfilePages: newPagesArr});
-            }} />
+            onChange={(e) => this.updateProfilePageValue(index, e.target.value)}
+          />
         </TextField>
         <div className='create-profilefielddelete'>
           <span onClick={() => this.removeProfilePageField(index)}>
@@ -422,6 +425,20 @@ class Create extends Component {
     );
   }
 
+  renderTextFieldAndInput(formKey, inputName, labelMessage) {
+    return (
+        <TextField
+          label={this.props.intl.formatMessage(labelMessage)}
+          outlined
+        >
+          <Input
+            name={inputName}
+            value={this.state[formKey]}
+            onChange={(e) => this.setState({[formKey]: e.target.value})} />
+        </TextField>
+    );
+  }
+
   /*
    * Renders identifying info fields that are hidden in a zippy by default.
    */
@@ -445,54 +462,14 @@ class Create extends Component {
             {this.props.intl.formatMessage(MESSAGES.sexOther)}
           </option>
         </Select>
-        <TextField
-          label={this.props.intl.formatMessage(MESSAGES.age)}
-          outlined
-        >
-          <Input
-            name='age'
-            value={this.state.formAge}
-            onChange={(e) => this.setState({formAge: e.target.value})} />
-        </TextField>
-        <TextField
-          label={this.props.intl.formatMessage(MESSAGES.homeStreetAddress)}
-          outlined
-        >
-          <Input
-            name='home_street'
-            value={this.state.formHomeStreetAddress}
-            onChange={(e) => this.setState({
-                formHomeStreetAddress: e.target.value,
-            })} />
-        </TextField>
-        <TextField
-          label={this.props.intl.formatMessage(MESSAGES.city)}
-          outlined
-        >
-          <Input
-            name='home_city'
-            value={this.state.formCity}
-            onChange={(e) => this.setState({formCity: e.target.value})} />
-        </TextField>
-        <TextField
-          label={this.props.intl.formatMessage(MESSAGES.provinceOrState)}
-          outlined
-        >
-          <Input
-            name='home_state'
-            value={this.state.formProvinceState}
-            onChange={
-              (e) => this.setState({formProvinceState: e.target.value})} />
-        </TextField>
-        <TextField
-          label={this.props.intl.formatMessage(MESSAGES.country)}
-          outlined
-        >
-          <Input
-            name='home_country'
-            value={this.state.formCountry}
-            onChange={(e) => this.setState({formCountry: e.target.value})} />
-        </TextField>
+        {this.renderTextFieldAndInput('formAge', 'age', MESSAGES.age)}
+        {this.renderTextFieldAndInput(
+            'formHomeStreetAddress', 'home_street', MESSAGES.homeStreetAddress)}
+        {this.renderTextFieldAndInput('formCity', 'home_city', MESSAGES.city)}
+        {this.renderTextFieldAndInput(
+            'formProvinceState', 'home_state', MESSAGES.provinceOrState)}
+        {this.renderTextFieldAndInput(
+            'formCountry', 'home_country', MESSAGES.country)}
         {/*
         TODO(nworden): add description field. We may need to implement our
         own notched textarea field due to an issue with the Material
@@ -515,27 +492,12 @@ class Create extends Component {
           <span className='mdc-typography--overline'>
             <FormattedMessage {...MESSAGES.identifyingInformation} />
           </span>
-          <TextField
-            label={this.props.intl.formatMessage(
-                MESSAGES.familyNameOrSurameRequired)}
-            outlined
-          >
-            <Input
-              name='family_name'
-              value={this.state.formSurname}
-              onChange={(e) => this.setState({formSurname: e.target.value})} />
-          </TextField>
-          <TextField
-            label={this.props.intl.formatMessage(
-                MESSAGES.givenNameOrFirstNameRequired)}
-            outlined
-          >
-            <Input
-              name='given_name'
-              value={this.state.formGivenName}
-              onChange={
-                (e) => this.setState({formGivenName: e.target.value})} />
-          </TextField>
+          {this.renderTextFieldAndInput(
+              'formSurname', 'family_name',
+              MESSAGES.familyNameOrSurnameRequired)}
+          {this.renderTextFieldAndInput(
+              'formGivenName', 'given_name',
+              MESSAGES.givenNameOrFirstNameRequired)}
           {/*
           TODO(nworden): figure out why the checkbox doesn't line up with the
           label
