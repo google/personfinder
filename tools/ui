@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This script is to help with developing the React UI. It does two things:
+# * Runs a local server (tools/ui run)
+# * Does a production build of the React UI and places the JS and CSS bundles in
+#   the appropriate locations in the /app directory.
+
+set -eu
+
+case "$1" in
+"run")
+    npm run --prefix ui start
+    ;;
+"buildtoae")
+    npm run --prefix ui build
+    mkdir -p app/resources/static/ui_bundles
+    mv ui/dist/*-bundle.js app/resources/static/ui_bundles/
+    mv ui/dist/bundle.css app/resources/static/ui_bundles/bundle.css
+    cp -r --no-clobber ui/static/static/* app/resources/static/
+    ;;
+*)
+    echo "Specify either run or buildtoae."
+    exit 1
+    ;;
+esac
