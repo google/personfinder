@@ -152,6 +152,8 @@ if config.get('enable_react_ui'):
     HANDLER_CLASSES['d/repo'] = 'frontend_api.Repo'
     HANDLER_CLASSES['d/results'] = 'frontend_api.Results'
 
+NON_REACT_UI_PATHS = ['api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/']
+
 def is_development_server():
     """Returns True if the app is running in development."""
     server = os.environ.get('SERVER_SOFTWARE', '')
@@ -523,8 +525,6 @@ class Main(webapp.RequestHandler):
     """The main request handler.  All dynamic requests except for remote_api are
     handled by this handler, which dispatches to all other dynamic handlers."""
 
-    NON_REACT_UI_PATHS = ['api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/']
-
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
 
@@ -564,7 +564,7 @@ class Main(webapp.RequestHandler):
         resources.set_active_bundle_name(self.env.resource_bundle)
 
     def should_serve_react_ui(self):
-        for path_prefix in Main.NON_REACT_UI_PATHS:
+        for path_prefix in NON_REACT_UI_PATHS:
             if self.env.action.startswith(path_prefix):
                 return False
         return True
