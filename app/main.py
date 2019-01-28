@@ -146,6 +146,13 @@ HANDLER_CLASSES['tasks/dump_csv'] = 'tasks.DumpCSV'
 HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
 HANDLER_CLASSES['tasks/thumbnail_preparer'] = 'tasks.ThumbnailPreparer'
+if config.get('enable_react_ui'):
+    HANDLER_CLASSES['d/create'] = 'frontend_api.Create'
+    HANDLER_CLASSES['d/person'] = 'frontend_api.Person'
+    HANDLER_CLASSES['d/repo'] = 'frontend_api.Repo'
+    HANDLER_CLASSES['d/results'] = 'frontend_api.Results'
+
+NON_REACT_UI_PATHS = ['api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/']
 
 def is_development_server():
     """Returns True if the app is running in development."""
@@ -556,6 +563,12 @@ class Main(webapp.RequestHandler):
         # Activate the appropriate resource bundle.
         resources.set_active_bundle_name(self.env.resource_bundle)
 
+    def should_serve_react_ui(self):
+        for path_prefix in NON_REACT_UI_PATHS:
+            if self.env.action.startswith(path_prefix):
+                return False
+        return True
+
     def serve(self):
         request, response, env = self.request, self.response, self.env
 
@@ -572,6 +585,17 @@ class Main(webapp.RequestHandler):
                 content = resources.get_rendered('setup_datastore.html', env.lang,
                         (env.repo, env.charset), get_vars)
                 response.out.write(content)
+
+        if config.get('enable_react_ui'):
+            # TODO(nworden): serve static files from /global/static
+            if env.repo == 'static':
+                self.serve_static_content(self.env.action)
+            elif self.should_serve_react_ui():
+                response.out.write(
+                    resources.get_rendered(
+                        'react_index.html', env.lang,
+                        get_vars=lambda: {'env': env}))
+                return
 
         if not env.action and not env.repo:
             # A request for the root path ('/'). Renders the home page.
