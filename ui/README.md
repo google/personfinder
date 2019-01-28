@@ -13,8 +13,8 @@ Changes you make to the JS and CSS will take effect when you refresh the page.
 If you make other changes (e.g., to install a new module or modify the Webpack
 config) you'll likely need to restart the server.
 
-Currently, it is necessary to change `USE_REACT_UI` in `app/main.py` to `True`.
-Please be careful not to commit this change.
+Since the React UI is currently disabled by default, you need to change the
+`enable_react_ui` config setting to True.
 
 ## Deployment
 
@@ -75,3 +75,12 @@ this.props.intl.formatMessage(messages.repoRecordCount, {"recordCount": 123})
 Another place you'll need to do it this way is for button texts: the React
 Material Button component evidently doesn't like having other components as the
 text, so you have to give it a string.
+
+## Static files
+
+For now, our static files are placed in /static/static for development. The
+reason for this is that the Webpack dev server looks for static files in the
+static directory and serves them from the root directory. However, in prod, we
+don't serve static files from root; we serve them from a subdirectory, and
+that's where the HTML React produces should point to. So, we reproduce the prod
+directory structure inside the static directory Webpack uses.

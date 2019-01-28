@@ -881,18 +881,6 @@ class PfifTests(unittest.TestCase):
             'description:_test_description\nsome_field: _test_some_value') == \
             'description:_test_description\nsome_field: _test_some_value'
 
-    def test_parse_strings(self):
-        """Tests XML parsing for each test case."""
-        for test_name, test_case in TEST_CASES:
-            if not test_case.do_parse_test:
-                continue
-            person_records, note_records = pfif.parse(test_case.xml)
-            assert person_records == test_case.person_records, (
-                test_name + ':\n' + pprint_diff(
-                    test_case.person_records, person_records))
-            assert note_records == test_case.note_records, (test_name +
-                ':\n' + pprint_diff(test_case.note_records, note_records))
-
     def test_parse_files(self):
         """Tests parsing of an XML file for each test case."""
         for test_name, test_case in TEST_CASES:

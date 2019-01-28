@@ -54,6 +54,7 @@ import subscribe
 import utils
 import xlrd
 from model import Person, Note, ApiActionLog
+from search.searcher import Searcher
 from text_query import TextQuery
 from photo import create_photo, PhotoError
 from utils import Struct
@@ -529,20 +530,10 @@ class Search(utils.BaseHandler):
             if person:
                 results = [person]
         elif query_string:
-            # Search by query words.
-            if self.config.external_search_backends:
-                query = TextQuery(query_string)
-                results = external_search.search(self.repo, query, max_results,
-                    self.config.external_search_backends)
-            # External search backends are not always complete. Fall back to
-            # the original search when they fail or return no results.
-            if not results:
-                if config.get('enable_fulltext_search'):
-                    results = full_text_search.search(
-                        self.repo, query_string, max_results)
-                else:
-                    results = indexing.search(
-                        self.repo, TextQuery(query_string), max_results)
+            searcher = Searcher(
+                self.repo, self.config.external_search_backends,
+                config.get('enable_fulltext_search'), max_results)
+            results = searcher.search(query_string)
         else:
             self.info(
                 400,

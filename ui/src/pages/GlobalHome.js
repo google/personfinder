@@ -118,7 +118,7 @@ class GlobalHome extends Component {
   }
 
   componentDidMount() {
-    fetch("/global/d/repoinfo")
+    fetch('/global/d/repo')
       .then(res => res.json())
       .then(
         (repos) => {
@@ -144,17 +144,17 @@ class GlobalHome extends Component {
   renderHeader() {
     return (
       <div>
-        <h1 className="mdc-typography--headline1">
-          <img src="/static/icons/maticon_person_pin.svg" />
+        <h1 className='mdc-typography--headline1'>
+          <img src='/static/icons/maticon_person_pin.svg' />
           <FormattedHTMLMessage {...messages.productNameWithEmphasis} />
         </h1>
-        <p className="mdc-typography--body1 globalhome-headerdesc">
+        <p className='mdc-typography--body1 globalhome-headerdesc'>
           <FormattedMessage {...messages.tagline} />
         </p>
         {/* TODO(nworden): implement this link/page */}
         {/* TODO(nworden): see if we can support right-click targets */}
         <Button
-          className="pf-button-secondary globalhome-howsitworkbutton"
+          className='pf-button-secondary globalhome-howsitworkbutton'
           raised
           onClick={() => console.log('clicked!')}
         >
@@ -166,12 +166,12 @@ class GlobalHome extends Component {
 
   renderRespondersCard() {
     return (
-      <Card className="globalhome-thirdpartycard">
+      <Card className='globalhome-thirdpartycard'>
         <div>
-          <h3 className="mdc-typography--headline3">
+          <h3 className='mdc-typography--headline3'>
             <FormattedMessage {...messages.responders} />
           </h3>
-          <p className="mdc-typography--body1">
+          <p className='mdc-typography--body1'>
             <FormattedHTMLMessage {...messages.respondersHowToHelpHTML} />
           </p>
         </div>
@@ -179,7 +179,7 @@ class GlobalHome extends Component {
           <CardActionButtons>
             {/* TODO(nworden): implement this link/page */}
             <Button
-              className="pf-button-secondary"
+              className='pf-button-secondary'
               raised
               onClick={() => console.log('clicked!')}
             >
@@ -193,12 +193,12 @@ class GlobalHome extends Component {
 
   renderDevelopersCard() {
     return (
-      <Card className="globalhome-thirdpartycard">
+      <Card className='globalhome-thirdpartycard'>
         <div>
-          <h3 className="mdc-typography--headline3">
+          <h3 className='mdc-typography--headline3'>
             <FormattedMessage {...messages.developers} />
           </h3>
-          <p className="mdc-typography--body1">
+          <p className='mdc-typography--body1'>
             <FormattedHTMLMessage {...messages.developersHowToHelpHTML} />
           </p>
         </div>
@@ -206,7 +206,7 @@ class GlobalHome extends Component {
           <CardActionButtons>
             {/* TODO(nworden): implement this link/page */}
             <Button
-              className="pf-button-secondary"
+              className='pf-button-secondary'
               raised
               onClick={() => console.log('clicked!')}
             >
@@ -220,7 +220,7 @@ class GlobalHome extends Component {
 
   renderThirdPartyHelpCards() {
     return (
-      <div className="globalhome-thirdpartywrapper">
+      <div className='globalhome-thirdpartywrapper'>
         <EndBarHeader>
           <FormattedMessage {...messages.youCanHelp} />
         </EndBarHeader>
@@ -252,7 +252,7 @@ class GlobalHome extends Component {
       return <LoadingIndicator />;
     }
     return (
-      <div className="globalhome-wrapper">
+      <div className='globalhome-wrapper'>
         {this.renderHeader()}
         {this.renderRepoList()}
         {this.renderThirdPartyHelpCards()}
@@ -268,39 +268,39 @@ class GlobalHome extends Component {
 class RepoCardImpl extends Component {
   constructor(props) {
     super(props);
-    this.goTo = this.goTo.bind(this);
+    this.goToRepo = this.goToRepo.bind(this);
   }
 
-  goTo() {
-    this.props.history.push("/" + this.props.repo.repoId);
+  goToRepo() {
+    this.props.history.push('/' + this.props.repo.repoId);
   }
 
   render() {
     let repocardImageClassName = (
-        "repocard-image repocard-imagedisplaycategory" +
+        'repocard-image repocard-imagedisplaycategory' +
         this.props.repo.displayCategory);
     let recordCountContent = null;
     if (this.props.repo.recordCount > 0) {
       recordCountContent = (
-        <p className="mdc-typography--body1 repocard-recordcount">
+        <p className='mdc-typography--body1 repocard-recordcount'>
           <FormattedMessage
             {...messages.repoRecordCount }
             values={{
-              "recordCount": this.props.repo.recordCount
+              'recordCount': this.props.repo.recordCount
             }} />
         </p>
       );
     }
     return (
-      <Card className="repocard">
-        <CardPrimaryContent className="repocard-content" onClick={this.goTo}>
+      <Card className='repocard'>
+        <CardPrimaryContent className='repocard-content' onClick={this.goToRepo}>
           <div className={repocardImageClassName}>
-            <p className="mdc-typography--body1">
+            <p className='mdc-typography--body1'>
               {Array.from(this.props.repo.title)[0]}
             </p>
           </div>
-          <div className="repocard-info">
-            <h5 className="mdc-typography--headline5 repocard-title">
+          <div className='repocard-info'>
+            <h5 className='mdc-typography--headline5 repocard-title'>
               {this.props.repo.title}
             </h5>
             {recordCountContent}
