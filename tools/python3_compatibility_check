@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2010 Google Inc.
+# Copyright 2019 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,11 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Runs all the tests.
+# Checks that files that have been made compatible with Python 3 don't regress
+# (at least not as far as python-modernize can tell).
+# We only check the files that have been made compatible; more files should be
+# added to this list as we make the compatible.
 
-pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
-
-$TOOLS_DIR/unit_tests -q && \
-    $TOOLS_DIR/server_tests -q && \
-    $TOOLS_DIR/python3_compatibility_check && \
-    echo "Unit and server tests, and Python 3 compatibility check, passed."
+python-modernize --enforce \
+  app/amp_start.py \
+  app/const.py \
+  app/text_query.py \
+  tests/test_const.py \
+  tests/test_text_query.py
