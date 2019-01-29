@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import List from 'immutable';
+import Immutable from 'immutable';
 import React, {Component} from 'react';
 import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import Button from '@material/react-button';
@@ -218,7 +218,7 @@ class Create extends Component {
       formHomeStreetAddress: '',
       formPhotoFile: null,
       formPhotoUrl: '',
-      formProfilePages: List.of(),
+      formProfilePages: Immutable.List(),
     };
     this.repoId = this.props.match.params.repoId;
     this.handleSubmit = this.handleSubmit.bind(this);
