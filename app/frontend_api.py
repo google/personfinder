@@ -1,7 +1,7 @@
 import config
 from model import Person
 import photo
-import search
+from search.searcher import Searcher
 import simplejson
 import utils
 
@@ -47,6 +47,8 @@ class Results(FrontendApiHandler):
 
     repo_required = True
 
+    MAX_RESULTS = 100
+
     def _result_to_dict(self, person):
         # TODO: implement this
         return {
@@ -55,9 +57,9 @@ class Results(FrontendApiHandler):
         }
 
     def get(self):
-        searcher = search.Searcher(
+        searcher = Searcher(
             self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'))
+            config.get('enable_fulltext_search'), Results.MAX_RESULTS)
         results = searcher.search(
             self.params.query_name or self.params.query)
         self._return_json([self._result_to_dict(r) for r in results])
