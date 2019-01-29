@@ -24,12 +24,12 @@ import React, {Component} from 'react';
  * pretty sparse and b) I'm not sure Material supports using their
  * NotchedOutline with anything other than TextField and Select components.
  */
-const PFNotchedOutline = () => (
+const PFNotchedOutline = (props) => (
   <div className='pf-notchedoutline'>
     <label className='mdc-typography--body1 pf-notchedoutline-label'>
-      {this.props.label}
+      {props.label}
     </label>
-    <div className='pf-notchedoutline-content'>{this.props.children}</div>
+    <div className='pf-notchedoutline-content'>{props.children}</div>
   </div>
 );
 
