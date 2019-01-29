@@ -311,7 +311,7 @@ class Create extends Component {
   addProfilePageField(site) {
     this.setState({
       formProfilePages: this.state.formProfilePages.push(
-          {'site': site, 'value': ''}),
+          {site: site, value: ''}),
       showProfilePageOptions: false,
     });
   }
@@ -340,12 +340,9 @@ class Create extends Component {
   }
 
   updateProfilePageValue(index, newValue) {
-    // A component's state shouldn't be mutated directly. We need to place a new
-    // object (with the same site) in the array, so we do a little splicing to
-    // produce a new array with a new object.
     let newPage = {
-        'site': this.state.formProfilePages.get(index).site,
-        'value': newValue,
+        site: this.state.formProfilePages.get(index).site,
+        value: newValue,
     }
     this.setState({
         formProfilePages: this.state.formProfilePages.set(index, newPage),
