@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from google.appengine.api import mail
 from recaptcha.client import captcha
 
 from model import db
