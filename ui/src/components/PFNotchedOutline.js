@@ -23,6 +23,8 @@ import React, {Component} from 'react';
  * the Material team, but a) the documentation for the React NotchedOutline is
  * pretty sparse and b) I'm not sure Material supports using their
  * NotchedOutline with anything other than TextField and Select components.
+ *
+ * @param {object} props
  */
 const PFNotchedOutline = (props) => (
   <div className='pf-notchedoutline'>
