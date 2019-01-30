@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
 	unzip \
 	python2.7 \
 	libpython2.7-dev \
+        python-lxml \
 	curl \
 	git \
 	time \
