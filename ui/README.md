@@ -7,14 +7,16 @@ This directory is for the React (non-lite/AMP) UI.
 The easiest way to develop the UI is to run two local servers:
 
 1. Run the Django (backend) server as usual, at port 8000.
-2. Run the UI with `tools/ui run`. It will talk to the backend at port 8000.
+2. Enable the React UI support (currently disabled by default) in the backend by setting `enable_react_ui` config to True:
+    ```
+    $ ./tools/console localhost:8000
+    > config.set(enable_react_ui=True)
+    ```
+3. Run the UI with `tools/ui run`. It will talk to the backend at port 8000.
 
 Changes you make to the JS and CSS will take effect when you refresh the page.
 If you make other changes (e.g., to install a new module or modify the Webpack
 config) you'll likely need to restart the server.
-
-Since the React UI is currently disabled by default, you need to change the
-`enable_react_ui` config setting to True.
 
 ## Deployment
 
