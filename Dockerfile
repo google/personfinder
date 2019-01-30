@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && /usr/bin/python2.7 get-pip.py
-RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock
+RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 
 # Install app engine
 WORKDIR   /opt/
