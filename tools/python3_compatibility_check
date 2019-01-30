@@ -16,7 +16,7 @@
 # Checks that files that have been made compatible with Python 3 don't regress
 # (at least not as far as python-modernize can tell).
 # We only check the files that have been made compatible; more files should be
-# added to this list as we make the compatible.
+# added to this list as we make them compatible.
 
 python-modernize --enforce \
   app/amp_start.py \
