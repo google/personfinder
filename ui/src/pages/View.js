@@ -226,10 +226,14 @@ class View extends Component {
               <FormattedMessage {...MESSAGES.homeAddress} />
             </h2>
             <div className='mdc-typography--body1'>
-              {this.renderField(MESSAGES.streetName, this.state.person.home_street)}
-              {this.renderField(MESSAGES.city, this.state.person.home_city)}
-              {this.renderField(MESSAGES.provinceOrState, this.state.person.home_state)}
-              {this.renderField(MESSAGES.country, this.state.person.home_country)}
+              {this.renderField(
+                   MESSAGES.streetName, this.state.person.home_street)}
+              {this.renderField(
+                   MESSAGES.city, this.state.person.home_city)}
+              {this.renderField(
+                   MESSAGES.provinceOrState, this.state.person.home_state)}
+              {this.renderField(
+                   MESSAGES.country, this.state.person.home_country)}
             </div>
           </div>
 
