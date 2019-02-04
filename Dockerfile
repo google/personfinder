@@ -27,8 +27,8 @@ RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 
 # Install app engine
 WORKDIR   /opt/
-ADD https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.50.zip /opt/
-RUN unzip -qq google_appengine_1.9.50.zip && rm google_appengine_1.9.50.zip
+ADD https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.62.zip /opt/
+RUN unzip -qq google_appengine_1.9.62.zip && rm google_appengine_1.9.62.zip
 
 ADD docker/gae-run-app.sh      /usr/bin/
 ADD docker/setup_datastore.sh  /usr/bin/
