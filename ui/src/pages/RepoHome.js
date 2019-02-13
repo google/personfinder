@@ -118,7 +118,7 @@ class RepoHome extends Component {
       <div>
         <RepoHeader
           repo={this.state.repo}
-          backButtonTarget={`/${this.repoId}`}
+          backButtonTarget={'/'}
         />
         <div className='repohome-body'>
           <SearchBar
