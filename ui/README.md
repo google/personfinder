@@ -4,17 +4,34 @@ This directory is for the React (non-lite/AMP) UI.
 
 ## Development server
 
-The easiest way to develop the UI is to run two local servers:
+Before you get started with development of the React UI, you need to install a
+couple things. First, you need Node.js and NPM (the Node.js package manager,
+often included with Node.js). You can refer to the Node.js website for
+instructions on [downloading Node.js directly](https://nodejs.org/en/download/)
+or [via a package manager](https://nodejs.org/en/download/package-manager/).
+
+Once you have Node.js and NPM, you can run `npm install` from the `ui` directory
+to get the dependencies for our React app.
+
+Once you have everything, the easiest way to develop the UI is to run two local
+servers:
 
 1. Run the Django (backend) server as usual, at port 8000.
-2. Run the UI with `tools/ui run`. It will talk to the backend at port 8000.
+2. Enable the React UI support (currently disabled by default) in the backend by
+   setting `enable_react_ui` config to True:
+    ```
+    $ ./tools/console localhost:8000
+    > config.set(enable_react_ui=True)
+    ```
+3. Run the UI with `tools/ui run`. It will talk to the backend at port 8000 when
+   it needs to make API calls. There is currently an issue with uploaded photos:
+   the Webpack dev server is not set up to proxy requests for photo URLs, but it
+   also can't serve the photos on its own, so photos will not correctly appear
+   on a local server when you run the UI dev server with Webpack.
 
 Changes you make to the JS and CSS will take effect when you refresh the page.
 If you make other changes (e.g., to install a new module or modify the Webpack
 config) you'll likely need to restart the server.
-
-Since the React UI is currently disabled by default, you need to change the
-`enable_react_ui` config setting to True.
 
 ## Deployment
 
