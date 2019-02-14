@@ -34,8 +34,8 @@ const MESSAGES = defineMessages({
   authorOfThisRecord: {
     id: 'View.authorOfThisRecord',
     defaultMessage: 'Author of this record',
-    description: ('The title of a section in a person record which contains '
-        + 'information of the author of the record.'),
+    description: ('The title of a section with information about the source / '
+        + 'author of the rest of the information on the page.'),
   },
   city: {
     id: 'View.city',
@@ -50,8 +50,8 @@ const MESSAGES = defineMessages({
   description: {
     id: 'View.description',
     defaultMessage: 'Description',
-    description: ('The title of a section in a person record which contains '
-        + 'free text description of the person.'),
+    description: ('The title of a section with free text description to '
+        + 'identify a specific person.'),
   },
   homeAddress: {
     id: 'View.homeAddress',
@@ -67,8 +67,9 @@ const MESSAGES = defineMessages({
   notesForThisPerson: {
     id: 'View.notesForThisPerson',
     defaultMessage: 'Notes for this person',
-    description: ('The title of a section which contains notes for the person '
-        + 'record.'),
+    description: ('The title of a section which contains notes with updates '
+        + 'or additional information about the status of the person described '
+        + 'on the page.'),
   },
   profilePages: {
     id: 'View.profilePages',
@@ -127,10 +128,6 @@ class View extends Component {
       person: null
     };
     this.handleSearch = this.handleSearch.bind(this);
-    this.renderField = this.renderField.bind(this);
-    this.getSexValue = this.getSexValue.bind(this);
-    this.renderPerson = this.renderPerson.bind(this);
-    this.renderNotes = this.renderNotes.bind(this);
   }
 
   componentDidMount() {
@@ -248,6 +245,7 @@ class View extends Component {
             <h2 className='mdc-typography--subtitle2'>
               <FormattedMessage {...MESSAGES.profilePages} />
             </h2>
+            {/* TODO(gimite): Implement this. */}
             <div>TBD</div>
           </div>
         </div>
@@ -258,6 +256,7 @@ class View extends Component {
               <h2 className='mdc-typography--subtitle2'>
                 <FormattedMessage {...MESSAGES.authorOfThisRecord} />
               </h2>
+              {/* TODO(gimite): Implement this. */}
               <div>TBD</div>
             </div>
           </div>
@@ -270,6 +269,7 @@ class View extends Component {
     return (
       <div>
         <h1><FormattedMessage {...MESSAGES.notesForThisPerson} /></h1>
+        {/* TODO(gimite): Implement this. */}
         <div>TBD</div>
       </div>
     );
