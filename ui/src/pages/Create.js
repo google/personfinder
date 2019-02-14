@@ -29,6 +29,7 @@ import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
 import RepoHeader from './../components/RepoHeader.js';
+import Utils from './../Utils.js';
 
 const MESSAGES = defineMessages({
   addSite: {
@@ -51,11 +52,6 @@ const MESSAGES = defineMessages({
     id: 'Create.country',
     defaultMessage: 'Country',
     description: 'A label for a form field for a person\'s country.',
-  },
-  facebook: {
-    id: 'Create.facebook',
-    defaultMessage: 'Facebook',
-    description: 'The social media site.',
   },
   familyNameOrSurnameRequired: {
     id: 'Create.familyNameOrSurnameRequired',
@@ -84,11 +80,6 @@ const MESSAGES = defineMessages({
     description: ('A label on a tab for users to submit information about '
         + 'themselves.'),
   },
-  linkedin: {
-    id: 'Create.linkedin',
-    defaultMessage: 'LinkedIn',
-    description: 'The networking site.',
-  },
   moreDropdown: {
     id: 'Create.moreDropdown',
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
@@ -100,12 +91,6 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Or enter photo URL',
     description: ('A label for a form field where users can submit a photo URL '
         + '(as opposed to uploading a photo directly)'),
-  },
-  otherWebsite: {
-    id: 'Create.otherWebsite',
-    defaultMessage: 'Other website',
-    description: ('A label for a button for users to add a link to a site '
-        + 'other than a site on a pre-defined list.'),
   },
   photo: {
     id: 'Create.photo',
@@ -159,11 +144,6 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Subscribe to updates',
     description: 'A label on a checkbox to subscribe to updates.',
   },
-  twitter: {
-    id: 'Create.twitter',
-    defaultMessage: 'Twitter',
-    description: 'The social media site.',
-  },
   uploadPhoto: {
     id: 'Create.uploadPhoto',
     defaultMessage: 'Upload photo',
@@ -178,13 +158,6 @@ const MESSAGES = defineMessages({
 const TAB_INDICES = Object.freeze({
   ABOUT_ME: 0,
   ABOUT_SOMEONE_ELSE: 1
-});
-
-const PROFILE_PAGE_SITES = Object.freeze({
-  'facebook': MESSAGES.facebook,
-  'twitter': MESSAGES.twitter,
-  'linkedin': MESSAGES.linkedin,
-  'other': MESSAGES.otherWebsite,
 });
 
 /*
@@ -334,7 +307,7 @@ class Create extends Component {
       <li
         className='mdc-typography--body1'
         onClick={() => this.addProfilePageField(site)}>
-        <FormattedMessage {...PROFILE_PAGE_SITES[site]} />
+        <FormattedMessage {...Utils.PROFILE_PAGE_SITES[site]} />
       </li>
     );
   }
@@ -361,7 +334,7 @@ class Create extends Component {
         key={index}>
         <TextField
           label={this.props.intl.formatMessage(
-              PROFILE_PAGE_SITES[page.site])}
+              Utils.PROFILE_PAGE_SITES[page.site])}
           outlined
         >
           <Input
