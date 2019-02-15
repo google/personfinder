@@ -1,0 +1,90 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * TODO(gimite): Consider sharing some rules with _Results.scss because they
+ * are similar.
+ */
+
+.view-body {
+  /* The 100px bottom margin ensures that the page can be scrolled far enough to
+   * show the footer text without it being covered by the new record FAB. */
+  margin: 16px 0 100px;
+  text-align: center;
+}
+
+.view-card {
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  padding: 0 16px;
+  margin: 16px;
+}
+
+.view-section {
+  align-items: center;
+  border-bottom: 1px solid #dadce0;
+  padding: 16px 0;
+  text-align: left;
+  &:last-child {
+    border: none;
+  }
+}
+
+.view-section .mdc-typography--headline5 {
+  margin: 0;
+}
+
+.view-headline {
+  display: flex;
+  flex-direction: row;
+}
+
+.view-headlinephoto {
+  background-color: #dadce0;
+  border-radius: 4px;
+  height: 80px;
+  overflow: hidden;
+  width: 80px;
+}
+
+.view-headlinephoto img {
+  max-height: 80px;
+  max-width: 80px;
+}
+
+.view-headlinecontent {
+  padding: 0 16px;
+}
+
+.view-topic {
+  margin-bottom: 32px;
+}
+
+.view-topic .mdc-typography--subtitle2 {
+  margin: 8px 0;
+}
+
+.view-topic .mdc-typography--body1 {
+  margin: 8px 0;
+}
+
+.view-fieldname {
+  color: #757575;
+}
+
+.view-fieldvalue {
+  color: #212121;
+}
