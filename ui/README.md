@@ -33,6 +33,12 @@ Changes you make to the JS and CSS will take effect when you refresh the page.
 If you make other changes (e.g., to install a new module or modify the Webpack
 config) you'll likely need to restart the server.
 
+## Testing
+
+Tests can be run with `tools/ui test` or (from within the `ui` directory) `npm
+run test`. The test file for a file `X.js` should be co-located with `X.js` and
+should be called `X.test.js`.
+
 ## Deployment
 
 You can run `tools/ui buildtoae` to compile the React app into
