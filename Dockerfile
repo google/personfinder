@@ -29,6 +29,7 @@ RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 # https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash
 RUN apt-get install -y nodejs
+RUN npm --prefix ui install
 
 # Install app engine
 WORKDIR   /opt/
@@ -41,7 +42,6 @@ ADD docker/setup_datastore.sh  /usr/bin/
 RUN echo "opt_in: false\ntimestamp: $(date +%s)\n" > /root/.appcfg_nag
 
 WORKDIR /opt/personfinder/
-RUN npm --prefix ui install
 
 # Clean up
 RUN rm -rf /tmp/* /var/tmp/*
