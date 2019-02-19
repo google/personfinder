@@ -29,7 +29,6 @@ RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 # https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash
 RUN apt-get install -y nodejs
-RUN npm --prefix ui install
 
 # Install app engine
 WORKDIR   /opt/
