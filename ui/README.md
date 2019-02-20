@@ -37,7 +37,7 @@ config) you'll likely need to restart the server.
 
 Tests can be run with `tools/ui test` or (from within the `ui` directory) `npm
 run test`. The test file for a file `X.js` should be co-located with `X.js` and
-should be called `X.test.js`.
+should be called `X_test.js`.
 
 ## Deployment
 
