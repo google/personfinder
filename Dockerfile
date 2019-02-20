@@ -27,7 +27,7 @@ RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 
 # Just apt-get installing nodejs doesn't work; these commands come from:
 # https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt-get install -y nodejs
 
 # Install app engine
