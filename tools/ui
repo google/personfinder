@@ -11,6 +11,9 @@ case "$1" in
 "run")
     npm run --prefix ui start
     ;;
+"test")
+    npm run --prefix ui test
+    ;;
 "buildtoae")
     npm run --prefix ui build
     mkdir -p app/resources/static/ui_bundles
@@ -19,7 +22,7 @@ case "$1" in
     cp -r --no-clobber ui/static/static/* app/resources/static/
     ;;
 *)
-    echo "Specify either run or buildtoae."
+    echo "Specify run, test, or buildtoae."
     exit 1
     ;;
 esac

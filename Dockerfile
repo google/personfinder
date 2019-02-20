@@ -25,6 +25,11 @@ RUN apt-get update && apt-get install -y \
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && /usr/bin/python2.7 get-pip.py
 RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
 
+# Just apt-get installing nodejs doesn't work; these commands come from:
+# https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+
 # Install app engine
 WORKDIR   /opt/
 ADD https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.62.zip /opt/
