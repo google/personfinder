@@ -10,8 +10,10 @@
   },
   "license": "Apache-2.0",
   "jest": {
-    "testMatch": ["**/__tests__/**/*.[jt]s?(x)",
-                  "**/?(*_)+(spec|test).[jt]s?(x)"]
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*_)+(spec|test).[jt]s?(x)"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -21,6 +23,8 @@
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
     "jest": "^24.1.0",
