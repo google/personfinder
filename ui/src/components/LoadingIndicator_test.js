@@ -5,7 +5,7 @@ import React from 'react';
 import LoadingIndicator from './LoadingIndicator';
 import {mountWithIntl} from '../testing/enzyme-intl-helper';
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({adapter: new Adapter()});
 
 test('loading indicator should say loading', () => {
   const wrapper = mountWithIntl(
