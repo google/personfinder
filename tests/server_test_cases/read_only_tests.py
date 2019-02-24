@@ -336,11 +336,9 @@ class ReadOnlyTests(ServerTestsBase):
 
     def test_sitemap(self):
         """Check the sitemap generator."""
-        doc = self.go('/haiti/sitemap')
-        assert '</sitemapindex>' in doc.content
-
-        doc = self.go('/haiti/sitemap?shard_index=1')
-        assert '</urlset>' in doc.content
+        doc = self.go('/global/sitemap')
+        assert 'haiti?lang=en' in doc.content
+        assert 'haiti?lang=es' in doc.content
 
     def test_config_repo_titles(self):
         doc = self.go('/haiti')
