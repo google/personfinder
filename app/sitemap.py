@@ -57,6 +57,8 @@ def _get_static_sitemap_info(repo):
 
 class SiteMap(BaseHandler):
 
+    repo_required = False
+
     def get(self):
         langs = const.LANGUAGE_ENDONYMS.keys()
         urlpaths = []
