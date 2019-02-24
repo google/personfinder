@@ -16,12 +16,12 @@ limitations under the License.
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for urlpath in urlpaths %}
   <url>
-    <loc>http://{{env.netloc}}/{{ urlpath.en }}</loc>
+    <loc>https://{{env.netloc}}/{{ urlpath.en }}</loc>
     {% for lang, path in urlpath.items %}
       <xhtml:link
         rel="alternate"
         hreflang="{{lang}}"
-        href="http://{{env.netloc}}/{{path}}" />
+        href="https://{{env.netloc}}/{{path}}" />
     {% endfor %}
   </url>
 {% endfor %}
