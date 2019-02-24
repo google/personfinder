@@ -83,6 +83,9 @@ describe('testing GlobalHome', () => {
   test('snapshot test for GlobalHome', (done) => {
     runPageTest(done,
         () => {
+          // We don't use setupPageWrapper here because we need to avoid passing
+          // a history object: it will generate random keys that mess up the
+          // snapshot.
           fetch.mockResponseOnce(JSON.stringify([
             {repoId: 'haiti', title: 'Haiti', recordCount: 400},
             {repoId: 'japan', title: 'Japan', recordCount: 100},
