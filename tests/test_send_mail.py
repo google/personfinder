@@ -24,7 +24,6 @@ import model
 import mox
 import os
 import send_mail
-import test_handler
 import unittest
 import webob
 
