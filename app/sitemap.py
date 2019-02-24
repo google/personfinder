@@ -21,6 +21,7 @@ import logging
 
 from datetime import datetime, timedelta
 from google.appengine.api import urlfetch
+import const
 from model import *
 from time import *
 from utils import *
@@ -55,53 +56,15 @@ def _get_static_sitemap_info(repo):
         return info
 
 class SiteMap(BaseHandler):
-    _FETCH_LIMIT = 1000
 
     def get(self):
-        requested_shard_index = self.request.get('shard_index')
-        sitemap_info = _get_static_sitemap_info(self.repo)
-        shard_size_seconds = sitemap_info.shard_size_seconds
-        then = sitemap_info.static_sitemaps_generation_time
-
-        if not requested_shard_index:
-            max_shard_index = _compute_max_shard_index(
-                get_utcnow(), then, shard_size_seconds)
-            shards = []
-            for shard_index in range(max_shard_index + 1):
-                shard = {}
-                shard['index'] = shard_index
-                offset_seconds = shard_size_seconds * (shard_index + 1)
-                shard['lastmod'] = format_sitemaps_datetime(
-                    then + timedelta(seconds=offset_seconds))
-                shards.append(shard)
-            self.render('sitemap-index.xml', shards=shards,
-                        static_lastmod=format_sitemaps_datetime(then),
-                        static_map_files=sitemap_info.static_sitemaps)
-        else:
-            shard_index = int(requested_shard_index)
-            assert 0 <= shard_index < 50000    #TODO: nicer error (400 maybe)
-            persons = []
-            time_lower = \
-                then + timedelta(seconds=shard_size_seconds * shard_index)
-            time_upper = time_lower + timedelta(seconds=shard_size_seconds)
-            query = Person.all_in_repo(self.repo
-                         ).filter('last_modified >', time_lower
-                         ).filter('last_modified <=', time_upper
-                         ).order('last_modified')
-            fetched_persons = query.fetch(self._FETCH_LIMIT)
-            while fetched_persons:
-                persons.extend(fetched_persons)
-                last_value = fetched_persons[-1].last_modified
-                query = Person.all_in_repo(self.repo
-                             ).filter('last_modified >', last_value
-                             ).filter('last_modified <=', time_upper
-                             ).order('last_modified')
-                fetched_persons = query.fetch(self._FETCH_LIMIT)
-            urlinfos = [
-                {'person_record_id': p.record_id,
-                 'lastmod': format_sitemaps_datetime(p.last_modified)}
-                for p in persons]
-            self.render('sitemap.xml', urlinfos=urlinfos)
+        langs = const.LANGUAGE_ENDONYMS.keys()
+        urlpaths = []
+        urlpaths.append({lang: '?lang=%s' % lang for lang in langs})
+        for repo in Repo.list_launched():
+            urlpaths.append({
+                lang: '%s?lang=%s' % (repo, lang) for lang in langs})
+        self.render('sitemap.xml', urlpaths=urlpaths)
 
 class SiteMapPing(BaseHandler):
     """Pings the index server with sitemap files that are new since last ping"""
