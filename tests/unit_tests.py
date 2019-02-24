@@ -33,6 +33,8 @@ apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
 
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
+# The requests library wants this to be set for some reason.
+os.environ['SERVER_SOFTWARE'] = 'testing'
 
 # When the appserver is running, the APP_DIR should be the current directory...
 os.chdir(os.environ['APP_DIR'])
