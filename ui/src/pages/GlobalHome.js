@@ -237,7 +237,7 @@ class GlobalHome extends Component {
   renderRepoList() {
     let cells = this.state.repos.map(repo => (
       <Cell key={repo.repoId}>
-        <RepoCard repo={repo} />
+        <RepoCard history={this.props.history} repo={repo} />
       </Cell>
     ));
     return <Grid><Row>{cells}</Row></Grid>;
@@ -311,6 +311,6 @@ class RepoCardImpl extends Component {
   }
 }
 
-const RepoCard = withRouter(injectIntl(RepoCardImpl));
+const RepoCard = injectIntl(RepoCardImpl);
 
 export default injectIntl(GlobalHome);
