@@ -1,5 +1,6 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import toJson from 'enzyme-to-json';
 import {createMemoryHistory} from 'history';
 import React from 'react';
 import {MemoryRouter} from 'react-router';
@@ -76,6 +77,30 @@ describe('testing GlobalHome', () => {
           repoCardImages.at(1).simulate('click');
           expect(history.entries.length).toBe(2);
           expect(history.entries[1].pathname).toBe('/japan');
+        });
+  });
+
+  test('snapshot test for GlobalHome', (done) => {
+    runPageTest(done,
+        () => {
+          fetch.mockResponseOnce(JSON.stringify([
+            {repoId: 'haiti', title: 'Haiti', recordCount: 400},
+            {repoId: 'japan', title: 'Japan', recordCount: 100},
+            {repoId: 'albany', title: 'Albany', recordCount: 100},
+            {repoId: 'seattle', title: 'Seattle', recordCount: 800},
+            {repoId: 'montreal', title: 'Montreal', recordCount: 500},
+            {repoId: 'belgium', title: 'Belgium', recordCount: 100},
+            {repoId: 'boise', title: 'Boise', recordCount: 100},
+          ]));
+          const wrapper = mountWithIntl(
+            <MemoryRouter>
+              <GlobalHome />
+            </MemoryRouter>
+          );
+          return [wrapper, null];
+        },
+        (wrapper, _) => {
+          expect(toJson(wrapper.find(GlobalHome).at(0))).toMatchSnapshot();
         });
   });
 });
