@@ -15,8 +15,6 @@
 
 """Exports the URLs of all person entries to a sitemap.xml file."""
 
-__author__ = 'jocatalano@google.com (Joe Catalano) and many other Googlers'
-
 import logging
 import time
 import urllib
@@ -46,7 +44,10 @@ class SiteMap(BaseHandler):
 
 class SiteMapPing(BaseHandler):
     """Pings the index server."""
-    _INDEXER_MAP = {'google': 'http://www.google.com/ping?sitemap=%s'}
+    _INDEXER_MAP = {
+        'bing': 'http://www.example.com/ping?sitemap=%s',
+        'google': 'http://www.example.com/ping?sitemap=%s',
+    }
 
     repo_required = False
 
