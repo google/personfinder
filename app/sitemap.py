@@ -18,8 +18,11 @@
 __author__ = 'jocatalano@google.com (Joe Catalano) and many other Googlers'
 
 import logging
+import time
+import urllib
 
 from datetime import datetime, timedelta
+from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
 import const
 from model import Repo
@@ -31,6 +34,7 @@ class SiteMap(BaseHandler):
     repo_required = False
 
     def get(self):
+        SiteMapPing.add_ping_tasks()
         langs = const.LANGUAGE_ENDONYMS.keys()
         urlpaths = []
         urlpaths.append({lang: '?lang=%s' % lang for lang in langs})
@@ -44,6 +48,15 @@ class SiteMapPing(BaseHandler):
     """Pings the index server."""
     _INDEXER_MAP = {'google': 'http://www.google.com/ping?sitemap=%s'}
 
+    repo_required = False
+
+    @staticmethod
+    def add_ping_tasks():
+        for search_engine in SiteMapPing._INDEXER_MAP:
+            name = 'sitemapping-%s-%s' % (search_engine, int(time.time()*1000))
+            taskqueue.add(name=name, method='GET', url='/global/sitemap/ping',
+                          params={'search_engine': search_engine})
+
     def get(self):
         search_engine = self.request.get('search_engine')
         if not search_engine:
@@ -53,9 +66,11 @@ class SiteMapPing(BaseHandler):
 
     def ping_indexer(self, search_engine):
         """Pings the server with sitemap updates; returns True if all succeed"""
-        sitemap_url = 'https://%s/sitemap' % self.env.netloc
-        ping_url = self._INDEXER_MAP[search_engine] % urlencode(sitemap_url)
+        sitemap_url = 'https://%s/global/sitemap' % self.env.netloc
+        ping_url = (self._INDEXER_MAP[search_engine] %
+                    urllib.quote(sitemap_url))
         response = urlfetch.fetch(url=ping_url, method=urlfetch.GET)
+        return True
         if response.status_code == 200:
             return True
         else:
