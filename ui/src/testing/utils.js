@@ -16,7 +16,7 @@
  * two parameters: the Enzyme wrapper, and the other data returned from the
  * setup function.
  */
-export function runPageTest(doneFunc, setupFunc, testFunc) {
+export function runPageTest(setupFunc, testFunc, doneFunc = () => {}) {
   const [wrapper, data] = setupFunc();
   setImmediate(() => {
     wrapper.update();

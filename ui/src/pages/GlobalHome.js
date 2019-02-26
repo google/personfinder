@@ -124,18 +124,17 @@ class GlobalHome extends Component {
         (repos) => {
           // We have multiple possible colors for the card backgrounds, and we
           // assign them to cards round-robin.
-          for (let i = 0; i < repos.length; i++) {
-            repos[i].displayCategory = i % NUMBER_OF_DISPLAY_CATEGORY_COLORS;
-          }
+          repos.forEach((repo, i) =>
+              repo.displayCategory = i % NUMBER_OF_DISPLAY_CATEGORY_COLORS);
           this.setState({
             isLoaded: true,
-            repos: repos
+            repos: repos,
           });
         },
         (error) => {
           this.setState({
             isLoaded: true,
-            error: error
+            error: error,
           });
         }
       );
