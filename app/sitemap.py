@@ -23,6 +23,7 @@ from datetime import datetime, timedelta
 from google.appengine.api import urlfetch
 import const
 from model import Repo
+from utils import BaseHandler
 
 
 class SiteMap(BaseHandler):
@@ -54,12 +55,11 @@ class SiteMapPing(BaseHandler):
         """Pings the server with sitemap updates; returns True if all succeed"""
         sitemap_url = 'https://%s/sitemap' % self.env.netloc
         ping_url = self._INDEXER_MAP[search_engine] % urlencode(sitemap_url)
-        try:
-            response = urlfetch.fetch(url=ping_url, method=urlfetch.GET)
-            if response.status_code == 200:
-                return True
-            else:
-                #TODO(nworden): Retry or email konbit-personfinder on failure.
-                logging.error('Received %d pinging %s'
-                              response.status_code, ping_url)
-                return False
+        response = urlfetch.fetch(url=ping_url, method=urlfetch.GET)
+        if response.status_code == 200:
+            return True
+        else:
+            #TODO(nworden): Retry or email konbit-personfinder on failure.
+            logging.error('Received %d pinging %s',
+                          response.status_code, ping_url)
+            return False
