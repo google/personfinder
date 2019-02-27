@@ -7,7 +7,7 @@ import {MemoryRouter} from 'react-router';
 
 import GlobalHome from './GlobalHome';
 import {mountWithIntl} from '../testing/enzyme-intl-helper';
-import {runPageTest, flushPromises} from '../testing/utils';
+import {flushPromises} from '../testing/utils';
 
 Enzyme.configure({adapter: new Adapter()});
 
