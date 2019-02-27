@@ -7,5 +7,5 @@
  * wait for componentDidMount. We use setImmediate to get around this.
  */
 export function flushPromises() {
-  return new Promise((res) => setImmediate(res));
+  return new Promise(setImmediate);
 };

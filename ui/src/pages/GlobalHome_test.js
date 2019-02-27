@@ -37,9 +37,9 @@ describe('testing GlobalHome', () => {
     fetch.resetMocks();
   });
 
-  test('repo cards are rendered', (done) => {
-    const [wrapper, _] = setupPageWrapper();
-    flushPromises().then(() => {
+  test('repo cards are rendered', () => {
+    const [wrapper] = setupPageWrapper();
+    return flushPromises().then(() => {
       wrapper.update();
       const repoCardTitles = wrapper.find('h5.repocard-title');
       expect(repoCardTitles.length).toBe(7);
@@ -50,13 +50,12 @@ describe('testing GlobalHome', () => {
         expect(repoCardTitles.at(i).text()).toBe(expectedTitles[i]);
       }
       wrapper.unmount();
-      done();
     });
   });
 
-  test('assigns display categories to repos', (done) => {
-    const [wrapper, _] = setupPageWrapper();
-    flushPromises().then(() => {
+  test('assigns display categories to repos', () => {
+    const [wrapper] = setupPageWrapper();
+    return flushPromises().then(() => {
       wrapper.update();
       const expectedDisplayCategories = [0, 1, 2, 3, 4, 0, 1];
       for (let i = 0; i < expectedDisplayCategories.length; i++) {
@@ -64,13 +63,12 @@ describe('testing GlobalHome', () => {
             .toBe(expectedDisplayCategories[i]);
       }
       wrapper.unmount();
-      done();
     });
   });
 
-  test('repo cards point to the right place', (done) => {
+  test('repo cards point to the right place', () => {
     const [wrapper, history] = setupPageWrapper();
-    flushPromises().then(() => {
+    return flushPromises().then(() => {
       wrapper.update();
       const repoCardImages = wrapper.find('.repocard-image');
       expect(repoCardImages.length).toBe(7);
@@ -78,11 +76,10 @@ describe('testing GlobalHome', () => {
       expect(history.entries.length).toBe(2);
       expect(history.entries[1].pathname).toBe('/japan');
       wrapper.unmount();
-      done();
     });
   });
 
-  test('snapshot test for GlobalHome', (done) => {
+  test('snapshot test for GlobalHome', () => {
     // We don't use setupPageWrapper here because we need to avoid passing
     // a history object: it will generate random keys that mess up the
     // snapshot.
@@ -92,11 +89,10 @@ describe('testing GlobalHome', () => {
         <GlobalHome />
       </MemoryRouter>
     );
-    flushPromises().then(() => {
+    return flushPromises().then(() => {
       wrapper.update();
       expect(toJson(wrapper.find(GlobalHome).at(0))).toMatchSnapshot();
       wrapper.unmount();
-      done();
     });
   });
 });
