@@ -23,7 +23,6 @@ import urllib
 
 from datetime import datetime, timedelta
 from google.appengine.api import taskqueue
-from google.appengine.api import urlfetch
 
 import const
 from model import Repo
