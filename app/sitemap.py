@@ -78,7 +78,6 @@ class SiteMapPing(BaseHandler):
         sitemap_url = 'https://%s/global/sitemap' % self.env.netloc
         ping_url = self._INDEXER_MAP[search_engine] % urllib.quote(sitemap_url)
         response = requests.get(ping_url)
-        return True
         if response.status_code == 200:
             return True
         else:
