@@ -16,15 +16,24 @@
 """Exports the URLs of all person entries to a sitemap.xml file."""
 
 import logging
+import requests
+import requests_toolbelt.adapters.appengine
 import time
 import urllib
 
 from datetime import datetime, timedelta
 from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
+
 import const
 from model import Repo
 from utils import BaseHandler
+
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+# TODO(nworden): see if we should condition this on the runtime (Python 2 vs. 3)
+requests_toolbelt.adapters.appengine.monkeypatch()
 
 
 class SiteMap(BaseHandler):
@@ -45,8 +54,8 @@ class SiteMap(BaseHandler):
 class SiteMapPing(BaseHandler):
     """Pings the index server."""
     _INDEXER_MAP = {
-        'bing': 'http://www.example.com/ping?sitemap=%s',
-        'google': 'http://www.example.com/ping?sitemap=%s',
+        'bing': 'http://www.bing.com/ping?sitemap=%s',
+        'google': 'http://www.google.com/ping?sitemap=%s',
     }
 
     repo_required = False
@@ -68,9 +77,8 @@ class SiteMapPing(BaseHandler):
     def ping_indexer(self, search_engine):
         """Pings the server with sitemap updates; returns True if all succeed"""
         sitemap_url = 'https://%s/global/sitemap' % self.env.netloc
-        ping_url = (self._INDEXER_MAP[search_engine] %
-                    urllib.quote(sitemap_url))
-        response = urlfetch.fetch(url=ping_url, method=urlfetch.GET)
+        ping_url = self._INDEXER_MAP[search_engine] % urllib.quote(sitemap_url)
+        response = requests.get(ping_url)
         return True
         if response.status_code == 200:
             return True

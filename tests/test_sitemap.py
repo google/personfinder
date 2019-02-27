@@ -1,3 +1,4 @@
+from mock import patch
 import unittest
 
 from google.appengine.ext import testbed
@@ -11,12 +12,9 @@ class SitemapTests(unittest.TestCase):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
         self.testbed.init_taskqueue_stub()
-        self.testbed.init_urlfetch_stub()
         self.testbed.init_user_stub()
         self.taskqueue_stub = self.testbed.get_stub(
             testbed.TASKQUEUE_SERVICE_NAME)
-        self.urlfetch_stub = self.testbed.get_stub(
-            testbed.URLFETCH_SERVICE_NAME)
 
     def tearDown(self):
         self.testbed.deactivate()
@@ -31,7 +29,11 @@ class SitemapTests(unittest.TestCase):
             tasks[1].url, '/global/sitemap/ping?search_engine=google')
 
     def testPingIndexer(self):
-        handler = test_handler.initialize_handler(
-            sitemap.SiteMapPing, 'sitemap/ping')
-        handler.ping_indexer('google')
-        print self.urlfetch_stub.__dir__()
+        with patch('requests.get') as requests_mock:
+            handler = test_handler.initialize_handler(
+                sitemap.SiteMapPing, 'sitemap/ping')
+            handler.ping_indexer('google')
+            assert len(requests_mock.call_args_list) == 1
+            call_args, _ = requests_mock.call_args_list[0]
+            assert call_args[0] == ('http://www.google.com/ping?sitemap='
+                                    'https%3A//localhost/global/sitemap')
