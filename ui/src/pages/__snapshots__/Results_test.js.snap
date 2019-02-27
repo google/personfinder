@@ -1,0 +1,856 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing Results snapshot test for Results 1`] = `
+<InjectIntl(Results)
+  location={
+    Object {
+      "search": "query_name=th%C3%A1tcher",
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "repoId": "albany",
+      },
+    }
+  }
+>
+  <Results
+    intl={
+      Object {
+        "defaultFormats": Object {},
+        "defaultLocale": "en",
+        "formatDate": [Function],
+        "formatHTMLMessage": [Function],
+        "formatMessage": [Function],
+        "formatNumber": [Function],
+        "formatPlural": [Function],
+        "formatRelative": [Function],
+        "formatTime": [Function],
+        "formats": Object {},
+        "formatters": Object {
+          "getDateTimeFormat": [Function],
+          "getMessageFormat": [Function],
+          "getNumberFormat": [Function],
+          "getPluralFormat": [Function],
+          "getRelativeFormat": [Function],
+        },
+        "locale": "en",
+        "messages": Object {},
+        "now": [Function],
+        "onError": [Function],
+        "textComponent": "span",
+        "timeZone": null,
+      }
+    }
+    location={
+      Object {
+        "search": "query_name=th%C3%A1tcher",
+      }
+    }
+    match={
+      Object {
+        "params": Object {
+          "repoId": "albany",
+        },
+      }
+    }
+  >
+    <div
+      id="results-wrapper"
+    >
+      <InjectIntl(RepoHeader)
+        backButtonTarget="/albany"
+        repo={
+          Object {
+            "recordCount": 100,
+            "repoId": "albany",
+            "title": "Albany",
+          }
+        }
+      >
+        <RepoHeader
+          backButtonTarget="/albany"
+          intl={
+            Object {
+              "defaultFormats": Object {},
+              "defaultLocale": "en",
+              "formatDate": [Function],
+              "formatHTMLMessage": [Function],
+              "formatMessage": [Function],
+              "formatNumber": [Function],
+              "formatPlural": [Function],
+              "formatRelative": [Function],
+              "formatTime": [Function],
+              "formats": Object {},
+              "formatters": Object {
+                "getDateTimeFormat": [Function],
+                "getMessageFormat": [Function],
+                "getNumberFormat": [Function],
+                "getPluralFormat": [Function],
+                "getRelativeFormat": [Function],
+              },
+              "locale": "en",
+              "messages": Object {},
+              "now": [Function],
+              "onError": [Function],
+              "textComponent": "span",
+              "timeZone": null,
+            }
+          }
+          repo={
+            Object {
+              "recordCount": 100,
+              "repoId": "albany",
+              "title": "Albany",
+            }
+          }
+        >
+          <div
+            id="repoheader"
+          >
+            <div
+              id="repoheader-backbutton"
+            >
+              <Link
+                replace={false}
+                to="/albany"
+              >
+                <a
+                  href="/albany"
+                  onClick={[Function]}
+                >
+                  <div>
+                    <img
+                      src="/static/icons/maticon_arrow_back.svg"
+                    />
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div
+              id="repoheader-info"
+            >
+              <p
+                className="mdc-typography--subtitle1"
+              >
+                <FormattedMessage
+                  defaultMessage="Google Person Finder"
+                  id="RepoHeader.productName"
+                  values={Object {}}
+                >
+                  <span>
+                    Google Person Finder
+                  </span>
+                </FormattedMessage>
+              </p>
+              <p
+                className="mdc-typography--subtitle2"
+              >
+                Albany
+              </p>
+            </div>
+          </div>
+        </RepoHeader>
+      </InjectIntl(RepoHeader)>
+      <div
+        className="results-body"
+      >
+        <InjectIntl(SearchBar)
+          initialValue="thátcher"
+          onSearch={[Function]}
+          repoId="albany"
+        >
+          <SearchBar
+            initialValue="thátcher"
+            intl={
+              Object {
+                "defaultFormats": Object {},
+                "defaultLocale": "en",
+                "formatDate": [Function],
+                "formatHTMLMessage": [Function],
+                "formatMessage": [Function],
+                "formatNumber": [Function],
+                "formatPlural": [Function],
+                "formatRelative": [Function],
+                "formatTime": [Function],
+                "formats": Object {},
+                "formatters": Object {
+                  "getDateTimeFormat": [Function],
+                  "getMessageFormat": [Function],
+                  "getNumberFormat": [Function],
+                  "getPluralFormat": [Function],
+                  "getRelativeFormat": [Function],
+                },
+                "locale": "en",
+                "messages": Object {},
+                "now": [Function],
+                "onError": [Function],
+                "textComponent": "span",
+                "timeZone": null,
+              }
+            }
+            onSearch={[Function]}
+            repoId="albany"
+          >
+            <TextField
+              className="searchbar"
+              dense={false}
+              floatingLabelClassName=""
+              fullWidth={false}
+              helperText={null}
+              isRtl={false}
+              label="Search for a person"
+              leadingIcon={null}
+              lineRippleClassName=""
+              notchedOutlineClassName=""
+              outlined={true}
+              textarea={false}
+              trailingIcon={null}
+            >
+              <div
+                className="mdc-text-field searchbar mdc-text-field--outlined"
+                key="text-field-container"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+              >
+                <Input
+                  className=""
+                  disabled={false}
+                  foundation={
+                    MDCTextFieldFoundation {
+                      "adapter_": Object {
+                        "activateLineRipple": [Function],
+                        "addClass": [Function],
+                        "closeOutline": [Function],
+                        "deactivateLineRipple": [Function],
+                        "deregisterInputInteractionHandler": [Function],
+                        "deregisterTextFieldInteractionHandler": [Function],
+                        "deregisterValidationAttributeChangeHandler": [Function],
+                        "floatLabel": [Function],
+                        "getLabelWidth": [Function],
+                        "getNativeInput": [Function],
+                        "hasClass": [Function],
+                        "hasLabel": [Function],
+                        "hasOutline": [Function],
+                        "isFocused": [Function],
+                        "isRtl": [Function],
+                        "notchOutline": [Function],
+                        "registerInputInteractionHandler": [Function],
+                        "registerTextFieldInteractionHandler": [Function],
+                        "registerValidationAttributeChangeHandler": [Function],
+                        "removeClass": [Function],
+                        "setLineRippleTransformOrigin": [Function],
+                        "shakeLabel": [Function],
+                      },
+                      "helperText_": Object {
+                        "setValidity": [Function],
+                        "showToScreenReader": [Function],
+                      },
+                      "inputBlurHandler_": [Function],
+                      "inputFocusHandler_": [Function],
+                      "inputInputHandler_": [Function],
+                      "isFocused_": false,
+                      "isValid_": true,
+                      "leadingIcon_": undefined,
+                      "receivedUserInput_": false,
+                      "setPointerXOffset_": [Function],
+                      "textFieldInteractionHandler_": [Function],
+                      "trailingIcon_": undefined,
+                      "useCustomValidityChecking_": false,
+                      "useNativeValidation_": true,
+                      "validationAttributeChangeHandler_": [Function],
+                      "validationObserver_": undefined,
+                    }
+                  }
+                  handleFocusChange={[Function]}
+                  handleValueChange={[Function]}
+                  id={null}
+                  inputType="input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseDown={[Function]}
+                  onTouchStart={[Function]}
+                  setDisabled={[Function]}
+                  setInputId={[Function]}
+                  value="thátcher"
+                >
+                  <input
+                    className="mdc-text-field__input"
+                    disabled={false}
+                    id={null}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    onTouchStart={[Function]}
+                    value="thátcher"
+                  />
+                </Input>
+                <FloatingLabel
+                  className=""
+                  float={true}
+                  handleWidthChange={[Function]}
+                  htmlFor={null}
+                >
+                  <label
+                    className="mdc-floating-label mdc-floating-label--float-above"
+                    htmlFor={null}
+                    onAnimationEnd={[Function]}
+                  >
+                    Search for a person
+                  </label>
+                </FloatingLabel>
+                <NotchedOutline
+                  className=""
+                  isRtl={false}
+                  notch={true}
+                  notchWidth={0}
+                >
+                  <div
+                    className="mdc-notched-outline mdc-notched-outline--notched"
+                    key="notched-outline"
+                  >
+                    <svg
+                      focusable="false"
+                    >
+                      <path
+                        className="mdc-notched-outline__path"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    className="mdc-notched-outline__idle"
+                    key="notched-outline-idle"
+                  />
+                </NotchedOutline>
+              </div>
+            </TextField>
+          </SearchBar>
+        </InjectIntl(SearchBar)>
+        <ul
+          className="results-list"
+        >
+          <withRouter(InjectIntl(SearchResultImpl))
+            key="123"
+            repo={
+              Object {
+                "recordCount": 100,
+                "repoId": "albany",
+                "title": "Albany",
+              }
+            }
+            result={
+              Object {
+                "name": "Fred",
+                "personId": "123",
+              }
+            }
+          >
+            <Route>
+              <InjectIntl(SearchResultImpl)
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "canGo": [Function],
+                    "createHref": [Function],
+                    "entries": Array [
+                      Object {
+                        "hash": "",
+                        "key": "abc123",
+                        "pathname": "/albany/results",
+                        "search": "",
+                      },
+                    ],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "index": 0,
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "key": "abc123",
+                      "pathname": "/albany/results",
+                      "search": "",
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "abc123",
+                    "pathname": "/albany/results",
+                    "search": "",
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": false,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+                repo={
+                  Object {
+                    "recordCount": 100,
+                    "repoId": "albany",
+                    "title": "Albany",
+                  }
+                }
+                result={
+                  Object {
+                    "name": "Fred",
+                    "personId": "123",
+                  }
+                }
+              >
+                <SearchResultImpl
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "canGo": [Function],
+                      "createHref": [Function],
+                      "entries": Array [
+                        Object {
+                          "hash": "",
+                          "key": "abc123",
+                          "pathname": "/albany/results",
+                          "search": "",
+                        },
+                      ],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "index": 0,
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "key": "abc123",
+                        "pathname": "/albany/results",
+                        "search": "",
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  intl={
+                    Object {
+                      "defaultFormats": Object {},
+                      "defaultLocale": "en",
+                      "formatDate": [Function],
+                      "formatHTMLMessage": [Function],
+                      "formatMessage": [Function],
+                      "formatNumber": [Function],
+                      "formatPlural": [Function],
+                      "formatRelative": [Function],
+                      "formatTime": [Function],
+                      "formats": Object {},
+                      "formatters": Object {
+                        "getDateTimeFormat": [Function],
+                        "getMessageFormat": [Function],
+                        "getNumberFormat": [Function],
+                        "getPluralFormat": [Function],
+                        "getRelativeFormat": [Function],
+                      },
+                      "locale": "en",
+                      "messages": Object {},
+                      "now": [Function],
+                      "onError": [Function],
+                      "textComponent": "span",
+                      "timeZone": null,
+                    }
+                  }
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "abc123",
+                      "pathname": "/albany/results",
+                      "search": "",
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": false,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  repo={
+                    Object {
+                      "recordCount": 100,
+                      "repoId": "albany",
+                      "title": "Albany",
+                    }
+                  }
+                  result={
+                    Object {
+                      "name": "Fred",
+                      "personId": "123",
+                    }
+                  }
+                >
+                  <li
+                    className="results-result"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="results-resultphoto"
+                    >
+                      <img />
+                    </div>
+                    <div
+                      className="results-resultcontent"
+                    >
+                      <h5
+                        className="mdc-typography--headline5"
+                      >
+                        Fred
+                      </h5>
+                      <p
+                        className="mdc-typography--body1"
+                      >
+                        Record created on March 31
+                      </p>
+                    </div>
+                  </li>
+                </SearchResultImpl>
+              </InjectIntl(SearchResultImpl)>
+            </Route>
+          </withRouter(InjectIntl(SearchResultImpl))>
+          <withRouter(InjectIntl(SearchResultImpl))
+            key="456"
+            repo={
+              Object {
+                "recordCount": 100,
+                "repoId": "albany",
+                "title": "Albany",
+              }
+            }
+            result={
+              Object {
+                "name": "Alan",
+                "personId": "456",
+              }
+            }
+          >
+            <Route>
+              <InjectIntl(SearchResultImpl)
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "canGo": [Function],
+                    "createHref": [Function],
+                    "entries": Array [
+                      Object {
+                        "hash": "",
+                        "key": "abc123",
+                        "pathname": "/albany/results",
+                        "search": "",
+                      },
+                    ],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "index": 0,
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "key": "abc123",
+                      "pathname": "/albany/results",
+                      "search": "",
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "key": "abc123",
+                    "pathname": "/albany/results",
+                    "search": "",
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": false,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+                repo={
+                  Object {
+                    "recordCount": 100,
+                    "repoId": "albany",
+                    "title": "Albany",
+                  }
+                }
+                result={
+                  Object {
+                    "name": "Alan",
+                    "personId": "456",
+                  }
+                }
+              >
+                <SearchResultImpl
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "canGo": [Function],
+                      "createHref": [Function],
+                      "entries": Array [
+                        Object {
+                          "hash": "",
+                          "key": "abc123",
+                          "pathname": "/albany/results",
+                          "search": "",
+                        },
+                      ],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "index": 0,
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "key": "abc123",
+                        "pathname": "/albany/results",
+                        "search": "",
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  intl={
+                    Object {
+                      "defaultFormats": Object {},
+                      "defaultLocale": "en",
+                      "formatDate": [Function],
+                      "formatHTMLMessage": [Function],
+                      "formatMessage": [Function],
+                      "formatNumber": [Function],
+                      "formatPlural": [Function],
+                      "formatRelative": [Function],
+                      "formatTime": [Function],
+                      "formats": Object {},
+                      "formatters": Object {
+                        "getDateTimeFormat": [Function],
+                        "getMessageFormat": [Function],
+                        "getNumberFormat": [Function],
+                        "getPluralFormat": [Function],
+                        "getRelativeFormat": [Function],
+                      },
+                      "locale": "en",
+                      "messages": Object {},
+                      "now": [Function],
+                      "onError": [Function],
+                      "textComponent": "span",
+                      "timeZone": null,
+                    }
+                  }
+                  location={
+                    Object {
+                      "hash": "",
+                      "key": "abc123",
+                      "pathname": "/albany/results",
+                      "search": "",
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": false,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  repo={
+                    Object {
+                      "recordCount": 100,
+                      "repoId": "albany",
+                      "title": "Albany",
+                    }
+                  }
+                  result={
+                    Object {
+                      "name": "Alan",
+                      "personId": "456",
+                    }
+                  }
+                >
+                  <li
+                    className="results-result"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="results-resultphoto"
+                    >
+                      <img />
+                    </div>
+                    <div
+                      className="results-resultcontent"
+                    >
+                      <h5
+                        className="mdc-typography--headline5"
+                      >
+                        Alan
+                      </h5>
+                      <p
+                        className="mdc-typography--body1"
+                      >
+                        Record created on March 31
+                      </p>
+                    </div>
+                  </li>
+                </SearchResultImpl>
+              </InjectIntl(SearchResultImpl)>
+            </Route>
+          </withRouter(InjectIntl(SearchResultImpl))>
+        </ul>
+        <InjectIntl(Footer)>
+          <Footer
+            intl={
+              Object {
+                "defaultFormats": Object {},
+                "defaultLocale": "en",
+                "formatDate": [Function],
+                "formatHTMLMessage": [Function],
+                "formatMessage": [Function],
+                "formatNumber": [Function],
+                "formatPlural": [Function],
+                "formatRelative": [Function],
+                "formatTime": [Function],
+                "formats": Object {},
+                "formatters": Object {
+                  "getDateTimeFormat": [Function],
+                  "getMessageFormat": [Function],
+                  "getNumberFormat": [Function],
+                  "getPluralFormat": [Function],
+                  "getRelativeFormat": [Function],
+                },
+                "locale": "en",
+                "messages": Object {},
+                "now": [Function],
+                "onError": [Function],
+                "textComponent": "span",
+                "timeZone": null,
+              }
+            }
+          >
+            <div
+              className="footer"
+            >
+              <p
+                className="mdc-typography--body1"
+              >
+                <FormattedMessage
+                  defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts."
+                  id="Footer.disclaimerText"
+                  values={Object {}}
+                >
+                  <span>
+                    PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts.
+                  </span>
+                </FormattedMessage>
+              </p>
+            </div>
+          </Footer>
+        </InjectIntl(Footer)>
+      </div>
+      <WithRipple(Fab)
+        className="results-addpersonfab"
+        disabled={false}
+        icon={
+          <img
+            src="/static/icons/maticon_add.svg"
+          />
+        }
+        initRipple={[Function]}
+        mini={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        style={Object {}}
+        textLabel="Create new record"
+        unbounded={false}
+      >
+        <Fab
+          className="results-addpersonfab"
+          disabled={false}
+          icon={
+            <img
+              src="/static/icons/maticon_add.svg"
+            />
+          }
+          initRipple={[Function]}
+          mini={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+          style={Object {}}
+          textLabel="Create new record"
+          unbounded={false}
+        >
+          <button
+            className="mdc-fab results-addpersonfab mdc-fab--extended"
+            disabled={false}
+            icon={
+              <img
+                src="/static/icons/maticon_add.svg"
+              />
+            }
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            style={Object {}}
+          >
+            <img
+              className="mdc-fab__icon"
+              src="/static/icons/maticon_add.svg"
+            />
+            <span
+              className="mdc-fab__label"
+            >
+              Create new record
+            </span>
+          </button>
+        </Fab>
+      </WithRipple(Fab)>
+    </div>
+  </Results>
+</InjectIntl(Results)>
+`;
