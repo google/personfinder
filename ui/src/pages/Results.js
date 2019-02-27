@@ -148,8 +148,7 @@ class Results extends Component {
         <div className='results-body'>
           <SearchBar
             repoId={this.repoId}
-            initialValue={
-                new URL(window.location.href).searchParams.get('query_name')}
+            initialValue={Utils.getURLParam(this.props, 'query_name')}
             onSearch={this.handleSearch}
           />
           {this.renderResults()}
