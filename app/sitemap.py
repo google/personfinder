@@ -40,7 +40,6 @@ class SiteMap(BaseHandler):
     repo_required = False
 
     def get(self):
-        SiteMapPing.add_ping_tasks()
         langs = const.LANGUAGE_ENDONYMS.keys()
         urlpaths = []
         urlpaths.append({lang: '?lang=%s' % lang for lang in langs})
