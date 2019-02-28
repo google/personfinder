@@ -42,7 +42,9 @@ class SiteMap(BaseHandler):
     def get(self):
         langs = const.LANGUAGE_ENDONYMS.keys()
         urlpaths = []
+        # Include the root/global homepage.
         urlpaths.append({lang: '?lang=%s' % lang for lang in langs})
+        # Include the repo homepages.
         for repo in Repo.list_launched():
             urlpaths.append({
                 lang: '%s?lang=%s' % (repo, lang) for lang in langs})
