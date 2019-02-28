@@ -18,9 +18,6 @@ cron:
   url: /global/tasks/count/update_dead_status
   schedule: every 5 minutes
 
-- description: sitemap ping
-  url: /sitemap/ping?search_engine=google
-  schedule: every 15 minutes
 - description: delete expired
   url: /global/tasks/delete_expired
   schedule: every 60 minutes
