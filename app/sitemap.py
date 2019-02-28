@@ -58,6 +58,8 @@ class SiteMapPing(BaseHandler):
         'google': 'http://www.google.com/ping?sitemap=%s',
     }
 
+    GET_PARAM_SEARCH_ENGINE = 'search_engine'
+
     repo_required = False
 
     @staticmethod
@@ -65,10 +67,10 @@ class SiteMapPing(BaseHandler):
         for search_engine in SiteMapPing._INDEXER_MAP:
             name = 'sitemapping-%s-%s' % (search_engine, int(time.time()*1000))
             taskqueue.add(name=name, method='GET', url='/global/sitemap/ping',
-                          params={'search_engine': search_engine})
+                          params={GET_PARAM_SEARCH_ENGINE: search_engine})
 
     def get(self):
-        search_engine = self.request.get('search_engine')
+        search_engine = self.request.get(GET_PARAM_SEARCH_ENGINE)
         if not search_engine:
             self.error(500)
         if not self.ping_indexer(search_engine):
