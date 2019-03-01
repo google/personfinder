@@ -74,10 +74,10 @@ class SiteMapPing(BaseHandler):
         search_engine = self.request.get(SiteMapPing._GET_PARAM_SEARCH_ENGINE)
         if not search_engine:
             self.error(500)
-        if not self.ping_indexer(search_engine):
+        if not self._ping_indexer(search_engine):
             self.error(500)
 
-    def ping_indexer(self, search_engine):
+    def _ping_indexer(self, search_engine):
         """Pings the server with sitemap updates; returns True if all succeed"""
         sitemap_url = 'https://%s/global/sitemap' % self.env.netloc
         ping_url = self._INDEXER_MAP[search_engine] % urllib.quote(sitemap_url)
