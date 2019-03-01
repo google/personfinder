@@ -597,6 +597,10 @@ def strip_url_scheme(url):
 def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
+
+def is_prod_server():
+    return os.environ['APPLICATION_ID'] == 'googlepersonfinder'
+
 # ==== Struct ==================================================================
 
 class Struct:
