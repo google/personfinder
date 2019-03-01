@@ -238,7 +238,11 @@ def select_lang(request, config=None):
             request.cookies.get('django_language', None) or
             select_lang_from_header(request, default_lang=default_lang))
     lang = re.sub('[^A-Za-z0-9-]', '', lang)
-    return const.LANGUAGE_SYNONYMS.get(lang, lang)
+    lang = const.LANGUAGE_SYNONYMS.get(lang, lang)
+    if lang in const.LANGUAGE_ENDONYMS.keys():
+        return lang
+    else:
+        return default_lang
 
 def select_lang_from_header(request, default_lang):
     """Selects the best language matching 'Accept-Language' HTTP header."""
