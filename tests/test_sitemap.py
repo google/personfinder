@@ -31,8 +31,9 @@ class SitemapTests(unittest.TestCase):
     def testPingIndexer(self):
         with patch('requests.get') as requests_mock:
             handler = test_handler.initialize_handler(
-                sitemap.SiteMapPing, 'sitemap/ping')
-            handler.ping_indexer('google')
+                sitemap.SiteMapPing, action='sitemap/ping', repo='global',
+                params={'search_engine': 'google'})
+            handler.get()
             assert len(requests_mock.call_args_list) == 1
             call_args, _ = requests_mock.call_args_list[0]
             assert call_args[0] == ('http://www.google.com/ping?sitemap='
