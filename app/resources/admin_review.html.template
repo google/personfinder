@@ -32,6 +32,7 @@
     </h1>
     <p>
     <form method="post" id="review-form">
+      <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
       <input name="status" value="{{params.status}}" type="hidden">
       <input name="source" value="{{params.source}}" type="hidden">
       <input name="skip" value="{{params.skip}}" type="hidden">

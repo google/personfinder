@@ -40,7 +40,6 @@ class Handler(utils.BaseHandler):
         if not self.is_current_user_authorized():
             return self.redirect(users.create_login_url('/admin/review'))
 
-        #
         # Make the navigation links.
         status = self.request.get('status') or 'all'
         source = self.request.get('source') or 'all'
@@ -120,6 +119,8 @@ class Handler(utils.BaseHandler):
         else:
             next_url = None
 
+        user = users.get_current_user()
+        xsrf_tool = utils.XsrfTool()
         return self.render(
             'admin_review.html',
             notes=notes,
@@ -127,9 +128,17 @@ class Handler(utils.BaseHandler):
             source_nav_html=source_nav_html,
             next_url=next_url,
             first=skip + 1,
-            last=skip + len(notes[:NOTES_PER_PAGE]))
+            last=skip + len(notes[:NOTES_PER_PAGE]),
+            xsrf_token=xsrf_tool.generate_token(
+                user.user_id(), 'admin_review'))
 
     def post(self):
+        user = users.get_current_user()
+        xsrf_tool = utils.XsrfTool()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                    self.params.xsrf_token, user.user_id(), 'admin_review')):
+            self.error(403)
+            return False
         if not self.is_current_user_authorized():
             return self.redirect(users.create_login_url('/admin/review'))
 

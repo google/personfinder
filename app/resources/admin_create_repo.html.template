@@ -17,6 +17,7 @@
   <h2>Create new repository</h2>
 
   <form id="create_repo" method="post" class="admin">
+    <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
     <input name="new_repo" id="new_repo" size=15 placeholder="Repository ID">
     <input type="submit" value="Create">
   </form>

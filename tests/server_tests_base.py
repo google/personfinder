@@ -78,6 +78,7 @@ class ServerTestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=1)
         self.set_utcnow_for_test(ServerTestsBase.TEST_TIMESTAMP, flush='*')
+        config.set(xsrf_token_key='abc123')
 
     def tearDown(self):
         """Resets the datastore."""

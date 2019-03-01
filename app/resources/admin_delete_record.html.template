@@ -18,6 +18,7 @@
   <h2>Delete a record</h2>
 
   <form method="post" class="admin">
+    <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
     <input type="hidden" name="operation" value="delete">
     person_record_id: <input name="id" id="id" size="50" value="{{id}}">
     <input type="submit" value="Delete (with confirmation)">
