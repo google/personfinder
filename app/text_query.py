@@ -15,7 +15,6 @@
 
 from __future__ import absolute_import
 import six
-
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 import unicodedata
