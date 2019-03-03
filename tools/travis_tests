@@ -17,18 +17,7 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
-case "${TRAVIS_PY_VERSION}" in
-
-    py27)
-        $TOOLS_DIR/unit_tests -q && \
-            $TOOLS_DIR/server_tests -q && \
-            $TOOLS_DIR/ui test && \
-            echo "All Python 2.7 tests passed."
-        ;;
-    py37)
-        $TOOLS_DIR/py3_unit_tests -q && \
-            $TOOLS_DIR/python3_compatibility_check && \
-            echo "All Python 3.7 tests passed."
-        ;;
-
-esac
+$TOOLS_DIR/unit_tests -q && \
+    $TOOLS_DIR/server_tests -q && \
+    $TOOLS_DIR/ui test && \
+    echo "All Python 2.7 tests passed."
