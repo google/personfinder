@@ -26,7 +26,7 @@ class TextQueryTests(unittest.TestCase):
         q = text_query.TextQuery(u'foo\u4f59\u5609bar\u5e73')
         assert q.words == ['FOO', u'\u4f59', u'\u5609', 'BAR', u'\u5e73']
         assert q.words == q.query_words
-        
+
     def test_parsing(self):
         q = text_query.TextQuery('abcd  e  fghij')
         assert ['ABCD', 'E', 'FGHIJ'] == q.words
