@@ -15,6 +15,7 @@
 
 from __future__ import absolute_import
 import six
+
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 import unicodedata
@@ -43,7 +44,7 @@ class TextQuery():
         # Split out each CJK ideograph as its own word.
         # The main CJK ideograph range is from U+4E00 to U+9FFF.
         # CJK Extension A is from U+3400 to U+4DFF.
-        cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', self.normalized)
+        cjk_separated = re.sub(six.u(r'([\u3400-\u9fff])'), r' \1 ', self.normalized)
 
         # Separate the query into words.
         self.words = cjk_separated.split()
