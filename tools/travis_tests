@@ -13,7 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Runs all the tests.
+# Runs all the tests for either Python 2.7 or 3.7. Travis will run our tests
+# under two separate environments (one with Python 2.7, one with 3.7), so we
+# can't simply run all the tests at once (like we do locally with
+# tools/all_tests). Instead, we have two separate paths in this file, which will
+# each get executed once on Travis.
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
