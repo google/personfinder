@@ -4,6 +4,7 @@ language: python
 
 python:
   - 2.7
+  - 3.7
 
 services:
   - docker
@@ -11,7 +12,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.10.0
 
-install: true 
+install: true
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
