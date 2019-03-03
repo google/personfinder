@@ -58,8 +58,8 @@ class Results(FrontendApiHandler):
 
     def get(self):
         searcher = Searcher(
-            self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'), Results.MAX_RESULTS)
+            self.repo, config.get('enable_fulltext_search'),
+            Results.MAX_RESULTS)
         results = searcher.search(
             self.params.query_name or self.params.query)
         self._return_json([self._result_to_dict(r) for r in results])
