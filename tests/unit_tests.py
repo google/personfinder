@@ -26,6 +26,7 @@ import sys
 
 # The test files that should be run by default when we're running Python 3.
 PY3_TEST_FILES = [
+    'test_jautils.py',
     'test_text_query.py',
 ]
 
