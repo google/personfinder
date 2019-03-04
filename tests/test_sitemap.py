@@ -3,6 +3,7 @@ import unittest
 
 from google.appengine.ext import testbed
 
+import config
 import sitemap
 import test_handler
 
@@ -29,12 +30,11 @@ class SitemapTests(unittest.TestCase):
             tasks[1].url, '/global/sitemap/ping?search_engine=google')
 
     def testPingIndexer(self):
-        with patch('requests.get') as requests_mock, \
-             patch('utils.is_prod_server') as is_prod_server_mock:
-            # We pretend it's prod, so that it will really try to ping the index
-            # server. Since we're also mocking out requests.get though, it won't
-            # really ping anything.
-            is_prod_server_mock.return_value = True
+        # We set it to "really" ping index servers for the test. Since we're
+        # also mocking out requests.get though, it won't really succeed in
+        # pinging anything.
+        config.set(ping_sitemap_indexers=True)
+        with patch('requests.get') as requests_mock:
             handler = test_handler.initialize_handler(
                 sitemap.SiteMapPing, action='sitemap/ping', repo='global',
                 params={'search_engine': 'google'})

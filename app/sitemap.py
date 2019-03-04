@@ -24,9 +24,10 @@ import urllib
 from datetime import datetime, timedelta
 from google.appengine.api import taskqueue
 
+import config
 import const
 from model import Repo
-import utils
+from utils import BaseHandler
 
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
@@ -35,7 +36,7 @@ import utils
 requests_toolbelt.adapters.appengine.monkeypatch()
 
 
-class SiteMap(utils.BaseHandler):
+class SiteMap(BaseHandler):
 
     repo_required = False
 
@@ -51,7 +52,7 @@ class SiteMap(utils.BaseHandler):
         self.render('sitemap.xml', urlpaths=urlpaths)
 
 
-class SiteMapPing(utils.BaseHandler):
+class SiteMapPing(BaseHandler):
     """Pings the index server."""
     _INDEXER_MAP = {
         'bing': 'http://www.bing.com/ping?sitemap=%s',
@@ -71,9 +72,8 @@ class SiteMapPing(utils.BaseHandler):
                 params={SiteMapPing._GET_PARAM_SEARCH_ENGINE: search_engine})
 
     def get(self):
-        if not utils.is_prod_server():
-            # We don't want to send non-prod sitemap URLs to index servers.
-            logging.info('Skipping sitemap ping because this isn\'t prod.')
+        if not config.get('ping_sitemap_indexers'):
+            logging.info('Skipping sitemap ping because it\'s disabled.')
             return
         search_engine = self.request.get(SiteMapPing._GET_PARAM_SEARCH_ENGINE)
         if not search_engine:

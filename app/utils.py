@@ -597,17 +597,6 @@ def strip_url_scheme(url):
 def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
-
-def is_prod_server():
-    """Returns True if this is the production server.
-
-    This is not the simple opposite of is_dev_app_server (above), because it
-    only returns True if this is "the" prod server (i.e., the one that serves
-    google.org/personfinder). It won't return True for other servers that happen
-    to be running on App Engine (e.g., people's dev instances).
-    """
-    return os.environ['APPLICATION_ID'] == 'googlepersonfinder'
-
 # ==== Struct ==================================================================
 
 class Struct:
