@@ -292,6 +292,8 @@
 <form id="save_repo" method="post" class="admin"
     onsubmit="return validate_settings()">
 
+  <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
+
   <fieldset>
     <legend>Activation mode</legend>
 
@@ -926,6 +928,7 @@
 <h2>Global settings</h2>
 
 <form id="save_global" method="post" class="admin">
+  <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
   <fieldset>
     <legend>SMS</legend>
     <div class="config">

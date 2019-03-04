@@ -14,6 +14,7 @@
 # limitations under the License.
 
 from google.appengine.ext import db
+from google.appengine.api import users
 import base64
 import cgi
 import datetime
@@ -163,6 +164,22 @@ class Handler(utils.BaseHandler):
         if not ResourceBundle.get_by_key_name(self.env.default_resource_bundle):
             ResourceBundle(key_name=self.env.default_resource_bundle).put()
 
+        if not operation:
+            self.write(PREFACE + self.format_nav_html(bundle_name, name, lang))
+            if bundle_name and name:
+                self.show_resource(bundle_name, key_name, name, lang, editable)
+            elif bundle_name:
+                self.list_resources(bundle_name, editable)
+            else:
+                self.list_bundles()
+            return
+
+        user = users.get_current_user()
+        xsrf_tool = utils.XsrfTool()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                self.params.xsrf_token, user.user_id(), 'admin_resources')):
+            return self.error(403)
+
         if operation == 'set_preview':
             # Set the resource_bundle cookie.  This causes all pages to render
             # using the selected bundle (see main.py).  We use a cookie so that
@@ -206,21 +223,13 @@ class Handler(utils.BaseHandler):
                          cache_seconds=self.params.cache_seconds)
             return self.redirect(self.get_admin_url(bundle_name))
 
-        if not operation:
-            self.write(PREFACE + self.format_nav_html(bundle_name, name, lang))
-            if bundle_name and name:
-                self.show_resource(bundle_name, key_name, name, lang, editable)
-            elif bundle_name:
-                self.list_resources(bundle_name, editable)
-            else:
-                self.list_bundles()
-
     def show_resource(self, bundle_name, key_name, name, lang, editable):
         """Displays a single resource, optionally for editing."""
         resource = Resource.get(key_name, bundle_name) or Resource()
         content = resource.content or ''
         self.write('''
 <form method="post" class="%(class)s" enctype="multipart/form-data">
+  <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
   <input type="hidden" name="operation" value="put_resource">
   <input type="hidden" name="resource_bundle" value="%(bundle_name)s">
   <input type="hidden" name="resource_name" value="%(name)s">
@@ -267,7 +276,8 @@ function delete_resource() {
                 'lang': lang,
                 'content_html': format_content_html(content, name, editable),
                 'cache_seconds': resource.cache_seconds,
-                'maybe_readonly': not editable and 'readonly' or ''})
+                'maybe_readonly': not editable and 'readonly' or '',
+                'xsrf_token': self._get_xsrf_token()})
 
     def list_resources(self, bundle_name, editable):
         """Displays a list of the resources in a bundle."""
@@ -298,6 +308,7 @@ function delete_resource() {
   <td>%(generic)s</td>
   <td>%(variants)s
     <form method="post" class="%(class)s">
+      <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
       <input type="hidden" name="operation" value="add_resource">
       <input type="hidden" name="resource_name" value="%(name)s">
       <input name="resource_lang" size=3 class="hide-when-readonly"
@@ -309,7 +320,8 @@ function delete_resource() {
             'generic': generic,
             'variants': ', '.join(variants),
             'class': editable_class,
-            'name': name})
+            'name': name,
+            'xsrf_token': self._get_xsrf_token()})
 
         self.write('''
 <table cellpadding=0 cellspacing=0>
@@ -323,6 +335,7 @@ function delete_resource() {
 </th><th>Localized variants</th></tr>
 <tr class="add"><td>
   <form method="post" class="%(class)s">
+    <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
     <input type="hidden" name="operation" value="add_resource">
     <input name="resource_name" size="36" class="hide-when-readonly"
         placeholder="resource filename">
@@ -344,6 +357,7 @@ function show_unaltered(show) {
 show_unaltered(false);
 </script>
 <form method="post" action="%(action)s">
+  <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
   <input type="hidden" name="operation" value="add_bundle">
   <input type="hidden" name="resource_bundle_original" value="%(bundle_name)s">
   <table cellpadding=0 cellspacing=0>
@@ -357,7 +371,8 @@ show_unaltered(false);
 </form>''' % {'class': editable_class,
               'rows': ''.join(rows),
               'action': self.get_admin_url(),
-              'bundle_name': bundle_name})
+              'bundle_name': bundle_name,
+              'xsrf_token': self._get_xsrf_token()})
 
     def list_bundles(self):
         """Displays a list of all the resource bundles."""
@@ -386,10 +401,12 @@ show_unaltered(false);
     'bundle_name_html': bundle_name_html,
     'default_checked': is_default and 'checked' or '',
     'created': format_datetime(bundle.created),
-    'preview': self.get_admin_url(bundle_name, operation='set_preview')})
+    'preview': self.get_admin_url(bundle_name, operation='set_preview'),
+    'xsrf_token': self._get_xsrf_token()})
 
         self.write('''
 <form method="post">
+  <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
   <input type="hidden" name="operation" value="set_default">
   <table cellpadding=0 cellspacing=0>
     <tr><th>Bundle name</th><th>Created</th>
@@ -401,9 +418,16 @@ show_unaltered(false);
 </form>
 <div class="add">
   <form method="post">
+    <input type="hidden" name="xsrf_token" value="%(xsrf_token)s" />
     <input type="hidden" name="operation" value="add_bundle">
     <input name="resource_bundle" size="18" placeholder="bundle name">
     <input type="submit" value="Add bundle">
   </form>
 </div>''' % {'reset': self.get_admin_url(operation='set_preview'),
-             'rows': ''.join(rows)})
+             'rows': ''.join(rows),
+              'xsrf_token': self._get_xsrf_token()})
+
+    def _get_xsrf_token(self):
+        user = users.get_current_user()
+        xsrf_tool = utils.XsrfTool()
+        return xsrf_tool.generate_token(user.user_id(), 'admin_resources')

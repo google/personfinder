@@ -14,6 +14,8 @@
 # limitations under the License.
 
 
+from google.appengine.api import users
+
 from const import *
 from model import *
 from utils import *
@@ -26,9 +28,19 @@ class Handler(BaseHandler):
     admin_required = True
 
     def get(self):
-        self.render('admin_create_repo.html')
+        user = users.get_current_user()
+        xsrf_tool = XsrfTool()
+        self.render(
+            'admin_create_repo.html',
+            xsrf_token=xsrf_tool.generate_token(
+                user.user_id(), 'admin_create_repo'))
 
     def post(self):
+        user = users.get_current_user()
+        xsrf_tool = XsrfTool()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                self.params.xsrf_token, user.user_id(), 'admin_create_repo')):
+            return self.error(403)
         new_repo = self.params.new_repo
         Repo(key_name=new_repo).put()
         config.set_for_repo(  # Provide some defaults.
