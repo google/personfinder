@@ -70,11 +70,14 @@ class ListApiKeys(utils.BaseHandler):
                        escape(_('Create a new API key'))))
         user_email_with_tags = ('<span class="email">%s</span>'
                 % escape(user.email()))
+        xsrf_tool = utils.XsrfTool()
         return self.render('admin_api_keys_list.html',
                            nav_html=nav_html,
                            admin_api_keys_url=self.get_url('/admin/api_keys'),
                            user=user, authorizations=authorizations,
-                           user_email_with_tags=user_email_with_tags)
+                           user_email_with_tags=user_email_with_tags,
+                           xsrf_token=xsrf_tool.generate_token(
+                               user.user_id(), 'admin_api_keys'))
 
 
 class CreateOrUpdateApiKey(utils.BaseHandler):
@@ -155,7 +158,7 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
             return self.render_form(authorization)
 
         # Handle authorization form submission
-        if not (self.params.contact_name and 
+        if not (self.params.contact_name and
                 self.params.contact_email and
                 self.params.organization_name):
             return self.error(400, _('Please fill in all the required fields.'))

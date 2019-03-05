@@ -26,6 +26,7 @@ import logging
 import os
 import random
 import re
+import string
 import sys
 import time
 import traceback
@@ -1176,8 +1177,19 @@ class XsrfTool(object):
     # XSRF tokens expire after 4 hours.
     TOKEN_EXPIRATION_TIME = 60 * 60 * 4
 
+    # Characters with which to choose a key if it's not set yet.
+    TOKEN_CHARACTER_SET = string.letters + string.digits
+
     def __init__(self):
-        self._key = config.get('xsrf_token_key').encode('utf-8')
+        configured_key = config.get('xsrf_token_key')
+        if configured_key:
+            # config.get returns unicode, but hmac is going to want a str
+            self._key = configured_key.encode('utf-8')
+        else:
+            configured_key = ''.join([
+                XsrfTool.TOKEN_CHARACTER_SET for _ in range(20)])
+            config.set(xsrf_token_key=configured_key)
+            self._key = configured_key
 
     def generate_token(self, user_id, action_id):
         action_time = get_utcnow_timestamp()
