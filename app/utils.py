@@ -1055,6 +1055,8 @@ class BaseHandler(webapp.RequestHandler):
         # Set default Content-Type header.
         self.response.headers['Content-Type'] = (
             'text/html; charset=%s' % self.charset)
+        if self.admin_required:
+            self.response.headers['X-Frame-Options'] = 'SAMEORIGIN'
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
