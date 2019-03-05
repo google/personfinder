@@ -1,8 +1,9 @@
-from mock import patch
+from mock import patch, MagicMock
 import unittest
 
 from google.appengine.ext import testbed
 
+import config
 import sitemap
 import test_handler
 
@@ -29,10 +30,15 @@ class SitemapTests(unittest.TestCase):
             tasks[1].url, '/global/sitemap/ping?search_engine=google')
 
     def testPingIndexer(self):
+        # We set it to "really" ping index servers for the test. Since we're
+        # also mocking out requests.get though, it won't really succeed in
+        # pinging anything.
+        config.set(ping_sitemap_indexers=True)
         with patch('requests.get') as requests_mock:
             handler = test_handler.initialize_handler(
-                sitemap.SiteMapPing, 'sitemap/ping')
-            handler.ping_indexer('google')
+                sitemap.SiteMapPing, action='sitemap/ping', repo='global',
+                params={'search_engine': 'google'})
+            handler.get()
             assert len(requests_mock.call_args_list) == 1
             call_args, _ = requests_mock.call_args_list[0]
             assert call_args[0] == ('http://www.google.com/ping?sitemap='
