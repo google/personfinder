@@ -1177,6 +1177,9 @@ class XsrfTool(object):
     # XSRF tokens expire after 4 hours.
     TOKEN_EXPIRATION_TIME = 60 * 60 * 4
 
+    # Characters with which to choose a key if it's not set yet.
+    TOKEN_CHARACTER_SET = string.letters + string.digits
+
     def __init__(self):
         configured_key = config.get('xsrf_token_key')
         if configured_key:
@@ -1184,8 +1187,7 @@ class XsrfTool(object):
             self._key = configured_key.encode('utf-8')
         else:
             configured_key = ''.join([
-                random.choice(string.letters + string.digits)
-                for i in range(20)])
+                XsrfTool.TOKEN_CHARACTER_SET for _ in range(20)])
             config.set(xsrf_token_key=configured_key)
             self._key = configured_key
 
