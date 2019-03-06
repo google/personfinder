@@ -21,7 +21,6 @@ from utils import *
 from search.searcher import Searcher
 from text_query import TextQuery
 import config
-import external_search
 import indexing
 import full_text_search
 import jp_mobile_carriers
@@ -82,8 +81,7 @@ class Handler(BaseHandler):
         """
 
         searcher = Searcher(
-            self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'), MAX_RESULTS)
+            self.repo, config.get('enable_fulltext_search'), MAX_RESULTS)
         results = searcher.search(
             query_dict['name'],
             query_dict.get('location'))
