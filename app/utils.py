@@ -1189,7 +1189,7 @@ class XsrfTool(object):
             self._key = configured_key.encode('utf-8')
         else:
             configured_key = ''.join([
-                XsrfTool.TOKEN_CHARACTER_SET for _ in range(20)])
+                random.choice(XsrfTool.TOKEN_CHARACTER_SET) for _ in range(20)])
             config.set(xsrf_token_key=configured_key)
             self._key = configured_key
 
