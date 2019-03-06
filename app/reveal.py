@@ -26,7 +26,6 @@ import sha
 import time
 import urlparse
 
-from google.appengine.api import users
 from recaptcha.client import captcha
 
 from utils import *
@@ -98,12 +97,7 @@ def make_reveal_url(handler, content_id):
 
 class Handler(BaseHandler):
     def get(self):
-        # For now, signing in is sufficient to reveal information.
-        # We could put a Turing test here instead.
-        user = users.get_current_user()
-        self.render('reveal.html',
-                    user=user,
-                    captcha_html=self.get_captcha_html())
+        self.render('reveal.html', captcha_html=self.get_captcha_html())
 
     def post(self):
         captcha_response = self.get_captcha_response()
@@ -127,6 +121,5 @@ class Handler(BaseHandler):
         else:
             self.render(
                 'reveal.html',
-                user=users.get_current_user(),
                 captcha_html=self.get_captcha_html(),
                 content_id=self.params.content_id)
