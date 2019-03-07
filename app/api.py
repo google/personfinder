@@ -43,7 +43,6 @@ from unidecode import unidecode
 import cloud_storage
 import config
 from django_setup import ugettext as _
-import external_search
 import full_text_search
 import importer
 import indexing
@@ -531,8 +530,7 @@ class Search(utils.BaseHandler):
                 results = [person]
         elif query_string:
             searcher = Searcher(
-                self.repo, self.config.external_search_backends,
-                config.get('enable_fulltext_search'), max_results)
+                self.repo, config.get('enable_fulltext_search'), max_results)
             results = searcher.search(query_string)
         else:
             self.info(

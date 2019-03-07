@@ -20,6 +20,7 @@ import sys
 
 from const import *
 from model import *
+import sitemap
 from utils import *
 import const
 import tasks
@@ -53,6 +54,7 @@ class Handler(BaseHandler):
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         repo_options = [Struct(repo=repo, url=self.get_url('/admin', repo))
                         for repo in sorted(Repo.list())]
+        xsrf_tool = XsrfTool()
         self.render('admin.html',
                     user=user,
                     repo_options=repo_options,
@@ -65,9 +67,17 @@ class Handler(BaseHandler):
                     onload_function="add_initial_languages()",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
-                        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
+                        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0,
+                    xsrf_token=xsrf_tool.generate_token(
+                        user.user_id(), 'admin'))
 
     def post(self):
+        user = users.get_current_user()
+        xsrf_tool = XsrfTool()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                    self.params.xsrf_token, user.user_id(), 'admin')):
+            self.error(403)
+            return False
         if self.params.operation == 'save_repo':
             if not self.repo:
                 self.redirect('/admin')
@@ -119,6 +129,7 @@ class Handler(BaseHandler):
                         'launch_status',
                         'test_mode',
                     ]):
+                sitemap.SiteMapPing.add_ping_tasks()
                 self.redirect('/admin')
 
         elif self.params.operation == 'save_global':

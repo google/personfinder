@@ -124,18 +124,17 @@ class GlobalHome extends Component {
         (repos) => {
           // We have multiple possible colors for the card backgrounds, and we
           // assign them to cards round-robin.
-          for (let i = 0; i < repos.length; i++) {
-            repos[i].displayCategory = i % NUMBER_OF_DISPLAY_CATEGORY_COLORS;
-          }
+          repos.forEach((repo, i) =>
+              repo.displayCategory = i % NUMBER_OF_DISPLAY_CATEGORY_COLORS);
           this.setState({
             isLoaded: true,
-            repos: repos
+            repos: repos,
           });
         },
         (error) => {
           this.setState({
             isLoaded: true,
-            error: error
+            error: error,
           });
         }
       );
@@ -237,7 +236,7 @@ class GlobalHome extends Component {
   renderRepoList() {
     let cells = this.state.repos.map(repo => (
       <Cell key={repo.repoId}>
-        <RepoCard repo={repo} />
+        <RepoCard history={this.props.history} repo={repo} />
       </Cell>
     ));
     return <Grid><Row>{cells}</Row></Grid>;
@@ -311,6 +310,6 @@ class RepoCardImpl extends Component {
   }
 }
 
-const RepoCard = withRouter(injectIntl(RepoCardImpl));
+const RepoCard = injectIntl(RepoCardImpl);
 
 export default injectIntl(GlobalHome);

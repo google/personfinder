@@ -2,8 +2,12 @@ sudo: required
 
 language: python
 
-python:
-  - 2.7
+matrix:
+    include:
+        - python: 2.7
+          dist: trusty
+        - python: 3.7
+          dist: xenial
 
 services:
   - docker
@@ -11,7 +15,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.10.0
 
-install: true 
+install: true
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -20,5 +24,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
 
-script: docker-compose exec web tools/all_tests
+before_script:
+  - npm --prefix ui install
 
+script: docker-compose exec web tools/travis_tests

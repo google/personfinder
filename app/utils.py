@@ -20,11 +20,13 @@ from django_setup import ugettext as _  # always keep this first
 import calendar
 import cgi
 from datetime import datetime, timedelta
+import hmac
 import httplib
 import logging
 import os
 import random
 import re
+import string
 import sys
 import time
 import traceback
@@ -763,6 +765,7 @@ class BaseHandler(webapp.RequestHandler):
         'utcnow': validate_timestamp,
         'version': validate_version,
         'own_info': validate_yes,
+        'xsrf_token': strip,
     }
 
     def redirect(self, path, repo=None, permanent=False, **params):
@@ -1052,6 +1055,8 @@ class BaseHandler(webapp.RequestHandler):
         # Set default Content-Type header.
         self.response.headers['Content-Type'] = (
             'text/html; charset=%s' % self.charset)
+        if self.admin_required:
+            self.response.headers['X-Frame-Options'] = 'SAMEORIGIN'
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
@@ -1165,3 +1170,46 @@ class BaseHandler(webapp.RequestHandler):
     def trace(self, *args):
         """Default handler implementation which returns HTTP status 405."""
         return self.__return_unimplemented_method_error()
+
+
+# ==== XSRF protection =========================================================
+
+class XsrfTool(object):
+
+    # XSRF tokens expire after 4 hours.
+    TOKEN_EXPIRATION_TIME = 60 * 60 * 4
+
+    # Characters with which to choose a key if it's not set yet.
+    TOKEN_CHARACTER_SET = string.letters + string.digits
+
+    def __init__(self):
+        configured_key = config.get('xsrf_token_key')
+        if configured_key:
+            # config.get returns unicode, but hmac is going to want a str
+            self._key = configured_key.encode('utf-8')
+        else:
+            configured_key = generate_random_key(20)
+            config.set(xsrf_token_key=configured_key)
+            self._key = configured_key
+
+    def generate_token(self, user_id, action_id):
+        action_time = get_utcnow_timestamp()
+        return '%s/%f' % (
+            self._generate_hmac_digest(user_id, action_id, action_time),
+            action_time)
+
+    def verify_token(self, token, user_id, action_id):
+        [hmac_digest, action_time_str] = token.split('/')
+        action_time = float(action_time_str)
+        if (action_time + XsrfTool.TOKEN_EXPIRATION_TIME <
+            get_utcnow_timestamp()):
+          return False
+        expected_hmac_digest = self._generate_hmac_digest(
+            user_id, action_id, action_time)
+        return hmac.compare_digest(
+            hmac_digest.encode('utf-8'), expected_hmac_digest)
+
+    def _generate_hmac_digest(self, user_id, action_id, action_time):
+        hmac_obj = hmac.new(
+            self._key, '%s/%s/%f' % (user_id, action_id, action_time))
+        return hmac_obj.hexdigest()

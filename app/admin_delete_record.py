@@ -31,10 +31,22 @@ class Handler(BaseHandler):
     admin_required = True
 
     def get(self):
+        xsrf_tool = XsrfTool()
+        user = users.get_current_user()
         self.render(
-            'admin_delete_record.html', id=self.env.domain + '/person.')
+            'admin_delete_record.html',
+            id=self.env.domain + '/person.',
+            xsrf_token=xsrf_tool.generate_token(
+                user.user_id(), 'admin_delete_record'))
 
     def post(self):
+        xsrf_tool = XsrfTool()
+        user = users.get_current_user()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                    self.params.xsrf_token, user.user_id(),
+                    'admin_delete_record')):
+            self.error(403)
+            return False
         # Redirect to the deletion handler with a valid signature.
         action = ('delete', str(self.params.id))
         self.redirect('/delete', id=self.params.id,

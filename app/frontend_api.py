@@ -58,8 +58,8 @@ class Results(FrontendApiHandler):
 
     def get(self):
         searcher = Searcher(
-            self.repo, self.config.external_search_backends,
-            config.get('enable_fulltext_search'), Results.MAX_RESULTS)
+            self.repo, config.get('enable_fulltext_search'),
+            Results.MAX_RESULTS)
         results = searcher.search(
             self.params.query_name or self.params.query)
         self._return_json([self._result_to_dict(r) for r in results])
@@ -88,7 +88,7 @@ class Person(FrontendApiHandler):
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           ''',
-          'author_name': 'Hiroshi Ichikawa',
+          'author_name': 'Hard-coded author',
           'source_date': '2019-01-01T01:01:01Z',
           'source_name': 'Google.org',
           'profile_pages': [

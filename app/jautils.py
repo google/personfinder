@@ -16,12 +16,14 @@
 
 """Utility functions specific for Japanese language."""
 
+from __future__ import absolute_import
+import six
 import re
 import unicodedata
 
 
 # Hiragana to romaji.
-# This table is copied from: http://code.google.com/p/mozc/source/browse/trunk/src/data/preedit/hiragana-romanji.tsv 
+# This table is copied from: http://code.google.com/p/mozc/source/browse/trunk/src/data/preedit/hiragana-romanji.tsv
 HIRAGANA_TO_ROMAJI = [
     [u"う゛ぁ", u"VA", u""],
     [u"う゛ぃ", u"VI", u""],
@@ -473,7 +475,7 @@ def should_normalize(string):
     #  - hiragana
     #  - full/half width katakana
     #  - full width alphabets
-    return re.search(ur'[\u3040-\u30ff\uff00-\uff9f]', string) != None
+    return re.search(six.u(r'[\u3040-\u30ff\uff00-\uff9f]'), string) != None
 
 
 def normalize(string):
@@ -505,7 +507,7 @@ def normalize(string):
 def is_hiragana(string):
     """Returns True if the argument is a non-empty string of only
     hiragana characters."""
-    return re.match(ur'^[\u3040-\u309f]+$', string) != None
+    return re.match(six.u(r'^[\u3040-\u309f]+$'), string) != None
 
 
 def normalize_hiragana(string):

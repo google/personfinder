@@ -14,10 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 {% endcomment %}<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for urlinfo in urlinfos %}
+{% for urlpath in urlpaths %}
   <url>
-    <loc>http://{{env.netloc}}/view?id={{ urlinfo.person_record_id }}</loc>
-    <lastmod>{{ urlinfo.lastmod }}</lastmod>
+    <loc>https://{{env.netloc}}/{{ urlpath.en }}</loc>
+    {% for lang, path in urlpath.items %}
+      <xhtml:link
+        rel="alternate"
+        hreflang="{{lang}}"
+        href="https://{{env.netloc}}/{{path}}" />
+    {% endfor %}
   </url>
 {% endfor %}
 </urlset>

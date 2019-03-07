@@ -70,6 +70,7 @@
     <td class="operation">
       <form method="POST" action="{{admin_api_keys_url}}"
             id="edit-form-{{forloop.counter}}">
+        <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
         <input type="hidden" name="authorization_key"
                value="{{authorization.key}}">
         <input type="hidden" name="edit_form" value="1">

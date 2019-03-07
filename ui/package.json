@@ -6,9 +6,18 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "license": "Apache-2.0",
+  "jest": {
+    "setupFiles": [
+      "./src/testing/setup-jest.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*_)+(spec|test).[jt]s?(x)"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
@@ -17,11 +26,17 @@
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme-to-json": "^3.3.5",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
+    "jest": "^24.1.0",
+    "jest-fetch-mock": "^2.1.1",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "sinon": "^7.2.4",
     "style-loader": "^0.23.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.1",

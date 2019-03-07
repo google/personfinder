@@ -59,6 +59,7 @@
 </script>
 
 <form method="post" id="create-or-update-api-key" class="admin">
+  <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
   <fieldset>
     <legend>Contact Information</legend>
     <div class="config">

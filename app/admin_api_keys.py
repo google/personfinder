@@ -70,11 +70,14 @@ class ListApiKeys(utils.BaseHandler):
                        escape(_('Create a new API key'))))
         user_email_with_tags = ('<span class="email">%s</span>'
                 % escape(user.email()))
+        xsrf_tool = utils.XsrfTool()
         return self.render('admin_api_keys_list.html',
                            nav_html=nav_html,
                            admin_api_keys_url=self.get_url('/admin/api_keys'),
                            user=user, authorizations=authorizations,
-                           user_email_with_tags=user_email_with_tags)
+                           user_email_with_tags=user_email_with_tags,
+                           xsrf_token=xsrf_tool.generate_token(
+                               user.user_id(), 'admin_api_keys'))
 
 
 class CreateOrUpdateApiKey(utils.BaseHandler):
@@ -103,6 +106,7 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
                         escape(_('List API keys'))))
         user_email_with_tags = ('<span class="email">%s</span>'
                 % escape(user.email()))
+        xsrf_tool = utils.XsrfTool()
         return self.render(
             'admin_api_keys.html',
             user=user, target_key=authorization,
@@ -111,6 +115,8 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
             logout_url=users.create_logout_url(self.request.url),
             operation_name=operation_name, message=message,
             nav_html=nav_html,
+            xsrf_token=xsrf_tool.generate_token(
+                user.user_id(), 'admin_api_keys'),
         )
 
     @utils.require_api_key_management_permission
@@ -138,6 +144,12 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
     def post(self):
         """Handle a post request from the create/update/edit form"""
 
+        user = users.get_current_user()
+        xsrf_tool = utils.XsrfTool()
+        if not (self.params.xsrf_token and xsrf_tool.verify_token(
+                self.params.xsrf_token, user.user_id(), 'admin_api_keys')):
+            return self.error(403)
+
         # Handle a form submission from list page
         if self.request.get('edit_form'):
             authorization = db.get(self.request.get('authorization_key'))
@@ -146,7 +158,7 @@ class CreateOrUpdateApiKey(utils.BaseHandler):
             return self.render_form(authorization)
 
         # Handle authorization form submission
-        if not (self.params.contact_name and 
+        if not (self.params.contact_name and
                 self.params.contact_email and
                 self.params.organization_name):
             return self.error(400, _('Please fill in all the required fields.'))
