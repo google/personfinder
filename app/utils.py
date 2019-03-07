@@ -1179,9 +1179,6 @@ class XsrfTool(object):
     # XSRF tokens expire after 4 hours.
     TOKEN_EXPIRATION_TIME = 60 * 60 * 4
 
-    # Characters with which to choose a key if it's not set yet.
-    TOKEN_CHARACTER_SET = string.letters + string.digits
-
     def __init__(self):
         configured_key = config.get('xsrf_token_key')
         if configured_key:
