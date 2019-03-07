@@ -543,7 +543,9 @@ class Main(webapp.RequestHandler):
                 utils.set_utcnow_for_test(float(utcnow))
 
         # If requested, flush caches before we touch anything that uses them.
-        flush_caches(*request.get('flush', '').split(','))
+        # This is used for certain tests.
+        if utils.is_dev_app_server():
+            flush_caches(*request.get('flush', '').split(','))
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
