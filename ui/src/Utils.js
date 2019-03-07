@@ -51,6 +51,10 @@ class Utils {
   }
 }
 
+/**
+ * A mapping from a profile page site ID to a MessageDescriptor of the name of
+ * the site.
+ */
 Utils.PROFILE_PAGE_SITES = Object.freeze({
   'facebook': MESSAGES.facebook,
   'twitter': MESSAGES.twitter,
