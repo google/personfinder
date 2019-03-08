@@ -131,6 +131,29 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_expiry('abc') == None
         assert utils.validate_expiry(-100) == None
 
+    def test_validate_email(self):
+        # These email addresses are correct
+        email = 'test@example.com'
+        assert utils.validate_email(email) == True
+        email = 'test2@example.com'
+        assert utils.validate_email(email) == True
+        email = 'test3.test@example.com'
+        assert utils.validate_email(email) == True
+        email = 'test4.test$test@example.com'
+        assert utils.validate_email(email) == True
+        email = 'test6.test$test%test@example.com'
+        assert utils.validate_email(email) == True
+
+        # These email addresses are incorrect
+        email = 'test@example'
+        assert utils.validate_email(email) == False
+        email = 'test.com'
+        assert utils.validate_email(email) == False
+
+        # Empty string instead of email address
+        email = ''
+        assert utils.validate_email(email) == None
+
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS:
             assert utils.validate_version(version) == pfif.PFIF_VERSIONS[

@@ -24,21 +24,6 @@ from utils import *
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
-EMAIL_PATTERN = re.compile(r'(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+'
-                           '[a-z]{2,6}(?:\s|$)', re.IGNORECASE)
-
-def is_email_valid(email):
-    """Validates an email address, returning True on correct,
-    False on incorrect, None on empty string."""
-    # Note that google.appengine.api.mail.is_email_valid() is unhelpful;
-    # it checks only for the empty string
-    if not email:
-        return None
-    if EMAIL_PATTERN.match(email):
-        return True
-    else:
-        return False
-
 
 def get_unsubscribe_link(handler, person, email, ttl=7*24*3600):
     """Returns a link that will remove the given email address from the list
@@ -92,7 +77,7 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
             for email, (subscribed_person, language) in subscribers.items():
                 subscribed_person_url = \
                     handler.get_url('/view', id=subscribed_person.record_id)
-                if is_email_valid(email):
+                if validate_email(email):
                     django.utils.translation.activate(language)
                     subject = _(
                             '[Person Finder] Status update for %(full_name)s'
@@ -154,7 +139,7 @@ class Handler(BaseHandler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        if not is_email_valid(self.params.subscribe_email):
+        if not validate_email(self.params.subscribe_email):
             # Invalid email
             captcha_html = self.get_captcha_html()
             site_key = config.get('captcha_site_key')
