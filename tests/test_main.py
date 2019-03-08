@@ -91,6 +91,16 @@ class MainTests(unittest.TestCase):
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
 
+    def test_content_security_policy_for_react(self):
+        """Verify CSP is set when the React UI is enabled."""
+        config.set(enable_react_ui=True)
+        request = setup_request('/')
+        response = webapp.Response()
+        handler = main.Main(request, response)
+        handler.get()
+        assert 'Content-Security-Policy' in response.headers
+        assert 'nonce-' in response.headers['Content-Security-Policy']
+
 
 if __name__ == '__main__':
     unittest.main()
