@@ -19,6 +19,7 @@
 import unittest
 from google.appengine.ext import testbed
 from google.appengine.ext import webapp
+from mock import patch
 import webob
 
 import config
@@ -90,6 +91,20 @@ class MainTests(unittest.TestCase):
         handler = main.Main(request, webapp.Response())
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
+
+    def test_content_security_policy_for_react(self):
+        """Verify CSP is set when the React UI is enabled."""
+        config.set(enable_react_ui=True)
+        request = setup_request('/')
+        response = webapp.Response()
+        handler = main.Main(request, response)
+        with patch('utils.generate_random_key') as generate_random_key_mock:
+            generate_random_key_mock.return_value = 'totallyrandomkey'
+            handler.get()
+            assert 'Content-Security-Policy' in response.headers
+            assert ('nonce-totallyrandomkey' in
+                    response.headers['Content-Security-Policy'])
+            assert 'nonce="totallyrandomkey"' in response.body
 
 
 if __name__ == '__main__':

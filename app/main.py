@@ -575,6 +575,18 @@ class Main(webapp.RequestHandler):
                 return False
         return True
 
+    def set_content_security_policy(self):
+        """Sets the CSP in the headers. Returns the nonce to use for scripts."""
+        csp_nonce = utils.generate_random_key(20)
+        csp_value = (
+            'object-src \'none\'; '
+            'script-src \'nonce-%s\' \'unsafe-inline\' '
+            '\'strict-dynamic\' https: http:; '
+            'base-uri \'none\';'
+        ) % csp_nonce
+        self.response.headers['Content-Security-Policy'] = csp_value
+        return csp_nonce
+
     def serve(self):
         request, response, env = self.request, self.response, self.env
 
@@ -597,10 +609,11 @@ class Main(webapp.RequestHandler):
             if env.repo == 'static':
                 self.serve_static_content(self.env.action)
             elif self.should_serve_react_ui():
+                csp_nonce = self.set_content_security_policy()
                 response.out.write(
                     resources.get_rendered(
                         'react_index.html', env.lang,
-                        get_vars=lambda: {'env': env}))
+                        get_vars=lambda: {'env': env, 'csp_nonce': csp_nonce}))
                 return
 
         if not env.action and not env.repo:
