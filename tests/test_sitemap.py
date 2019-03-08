@@ -41,5 +41,5 @@ class SitemapTests(unittest.TestCase):
             handler.get()
             assert len(requests_mock.call_args_list) == 1
             call_args, _ = requests_mock.call_args_list[0]
-            assert call_args[0] == ('http://www.google.com/ping?sitemap='
+            assert call_args[0] == ('https://www.google.com/ping?sitemap='
                                     'https%3A//localhost/global/sitemap')
