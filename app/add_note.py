@@ -86,7 +86,8 @@ class Handler(BaseHandler):
 
         if (self.params.author_email and
             not utils.validate_email(self.params.author_email)):
-            return self.error(200, _('The email address you entered appears to be invalid.'))
+            return self.error(200, _(
+                'The email address you entered appears to be invalid.'))
 
         person = Person.get(self.repo, self.params.id)
         if person.notes_disabled:
