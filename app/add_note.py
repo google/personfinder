@@ -22,6 +22,7 @@ from detect_spam import SpamDetector
 import extend
 import reveal
 import subscribe
+import utils
 
 from django.utils.translation import ugettext as _
 from urlparse import urlparse
@@ -77,12 +78,15 @@ class Handler(BaseHandler):
                 200, _('Please check that you have been in contact with '
                        'the person after the disaster, or change the '
                        '"Status of this person" field.'))
-
         if (self.params.status == 'believed_dead' and
             not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '
                        '"believed_dead".'))
+
+        if (self.params.author_email and
+            not utils.validate_email(self.params.author_email)):
+            return self.error(200, _('The email address you entered appears to be invalid.'))
 
         person = Person.get(self.repo, self.params.id)
         if person.notes_disabled:

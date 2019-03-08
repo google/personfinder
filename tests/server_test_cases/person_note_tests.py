@@ -4478,6 +4478,33 @@ _feed_profile_url2</pfif:profile_urls>
         self.assert_error_deadend(
             doc, "This person's entry does not exist or has been deleted.")
 
+    def test_add_note_invalid_email(self):
+        """Tries to add a note with an invalid email. It should fail."""
+        person = Person(
+            key_name='haiti:test.google.com/person.112',
+            repo='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            full_name='_test_full_name',
+            entry_date=datetime.datetime.utcnow())
+        person.update_index(['old', 'new'])
+        person.put()
+
+        doc = self.go('/haiti/view?id=test.google.com/person.112')
+        add_note_page = self.go_to_add_note_page()
+        note_form = add_note_page.cssselect_one('form')
+        params = {'own_info': 'no',
+                  'given_name': '_test_given',
+                  'family_name': '_test_family',
+                  'author_name': '_test_author',
+                  'text': 'here is some text',
+                  'author_email': 'NotAValidEmailAdddress'}
+        doc = self.s.submit(note_form, params)
+        self.assertEqual(self.s.status, 200)
+        expected_err_msg = (
+            'The email address you entered appears to be invalid.')
+        assert expected_err_msg in doc.content
+
     def test_incoming_expired_record(self):
         """Tests that an incoming expired record can cause an existing record
         to expire and be deleted."""
@@ -5257,6 +5284,21 @@ _feed_profile_url2</pfif:profile_urls>
         # No redirect.
         self.go('/japan/', redirects=0)
         self.assertEqual(self.s.status, 200)
+
+    def test_create_with_invalid_email(self):
+        doc = self.go('/haiti/create')
+        doc = self.s.submit(
+            doc.cssselect_one('form'),
+            own_info='no',
+            given_name='_test_given',
+            family_name='_test_family',
+            home_postal_code='_test_12345',
+            author_name='_test_author',
+            author_email='NotAValidEmailAddress')
+        self.assertEqual(self.s.status, 400)
+        expected_err_msg = (
+            'The email address you entered appears to be invalid.')
+        assert expected_err_msg in doc.content
 
     def test_create_and_seek_with_nondefault_charset(self):
         """Follow the basic create/seek flow with non-default charset
