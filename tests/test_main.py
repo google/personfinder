@@ -19,6 +19,7 @@
 import unittest
 from google.appengine.ext import testbed
 from google.appengine.ext import webapp
+from mock import patch
 import webob
 
 import config
@@ -97,9 +98,12 @@ class MainTests(unittest.TestCase):
         request = setup_request('/')
         response = webapp.Response()
         handler = main.Main(request, response)
-        handler.get()
-        assert 'Content-Security-Policy' in response.headers
-        assert 'nonce-' in response.headers['Content-Security-Policy']
+        with patch('utils.generate_random_key') as generate_random_key_mock:
+            generate_random_key_mock.return_value = 'totallyrandomkey'
+            handler.get()
+            assert 'Content-Security-Policy' in response.headers
+            assert ('nonce-totallyrandomkey' in
+                    response.headers['Content-Security-Policy'])
 
 
 if __name__ == '__main__':
