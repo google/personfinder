@@ -65,34 +65,34 @@ class Handler(BaseHandler):
         """Post a note in person's record view page"""
         if not self.params.text:
             return self.error(
-                200, _('Message is required. Please go back and try again.'))
+                400, _('Message is required. Please go back and try again.'))
 
         if not self.params.author_name:
             return self.error(
-                200, _('Your name is required in the "About you" section.  '
+                400, _('Your name is required in the "About you" section.  '
                        'Please go back and try again.'))
 
         if (self.params.status == 'is_note_author' and
             not self.params.author_made_contact):
             return self.error(
-                200, _('Please check that you have been in contact with '
+                400, _('Please check that you have been in contact with '
                        'the person after the disaster, or change the '
                        '"Status of this person" field.'))
         if (self.params.status == 'believed_dead' and
             not self.config.allow_believed_dead_via_ui):
             return self.error(
-                200, _('Not authorized to post notes with the status '
+                400, _('Not authorized to post notes with the status '
                        '"believed_dead".'))
 
         if (self.params.author_email and
             not utils.validate_email(self.params.author_email)):
-            return self.error(200, _(
+            return self.error(400, _(
                 'The email address you entered appears to be invalid.'))
 
         person = Person.get(self.repo, self.params.id)
         if person.notes_disabled:
             return self.error(
-                200, _('The author has disabled status updates '
+                400, _('The author has disabled status updates '
                        'on this record.'))
 
         # If a photo was uploaded, create and store a new Photo entry and get

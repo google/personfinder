@@ -4500,7 +4500,7 @@ _feed_profile_url2</pfif:profile_urls>
                   'text': 'here is some text',
                   'author_email': 'NotAValidEmailAdddress'}
         doc = self.s.submit(note_form, params)
-        self.assertEqual(self.s.status, 200)
+        self.assertEqual(self.s.status, 400)
         expected_err_msg = (
             'The email address you entered appears to be invalid.')
         assert expected_err_msg in doc.content
