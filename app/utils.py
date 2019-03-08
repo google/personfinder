@@ -294,7 +294,7 @@ def validate_image(bytestring):
 
 
 EMAIL_PATTERN = re.compile(r'(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+'
-                           '[a-z]{2,6}(?:\s|$)', re.IGNORECASE)
+                           '[a-z]{2,63}(?:\s|$)', re.IGNORECASE)
 
 
 def validate_email(email):

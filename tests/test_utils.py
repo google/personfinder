@@ -143,6 +143,9 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_email(email) == True
         email = 'test6.test$test%test@example.com'
         assert utils.validate_email(email) == True
+        email = ('test7.test@domain.whywouldyoueventwantatldthislonggoodgrief'
+                 'thisisprettyridiculous')
+        assert utils.validate_email(email) == True
 
         # These email addresses are incorrect
         email = 'test@example'
@@ -150,6 +153,9 @@ class UtilsTests(unittest.TestCase):
         email = 'test.com'
         assert utils.validate_email(email) == False
         email = 'usernamenoatsymbol.com'
+        assert utils.validate_email(email) == False
+        email = ('test@domain.thistldistoolongasitssixtyfourcharactersandthere'
+                 'arerulesafterall')
         assert utils.validate_email(email) == False
 
         # Empty string instead of email address
