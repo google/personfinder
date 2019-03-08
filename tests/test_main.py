@@ -104,6 +104,7 @@ class MainTests(unittest.TestCase):
             assert 'Content-Security-Policy' in response.headers
             assert ('nonce-totallyrandomkey' in
                     response.headers['Content-Security-Policy'])
+            assert 'nonce="totallyrandomkey"' in response.body
 
 
 if __name__ == '__main__':
