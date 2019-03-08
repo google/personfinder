@@ -333,7 +333,6 @@ def setup_env(request):
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in const.LANGUAGES_BIDI
-    env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
 
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below

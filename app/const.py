@@ -293,12 +293,6 @@ FACEBOOK_LOCALES = {
     'zh-TW': 'zh_TW',
 }
 
-# Mapping from language codes to the names of LayoutCode constants.  See:
-# http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
-VIRTUAL_KEYBOARD_LAYOUTS = {
-    'ur': 'URDU'
-}
-
 # Charset string for UTF-8 used in env.charset.
 CHARSET_UTF8 = 'utf-8'
 

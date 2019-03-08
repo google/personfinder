@@ -90,15 +90,6 @@
         jQuery.noConflict();
       </script>
       <script src="{{env.global_url}}/forms.js"></script>
-      {% if env.virtual_keyboard_layout %}
-        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
-        <script type="text/javascript">
-          google.setOnLoadCallback(function() {
-            initialize_keyboard('{{env.virtual_keyboard_layout}}');
-          });
-        </script>
-      {% endif %}
     {% endif %}
   {% endif %}
 {% endblock head %}</head>
