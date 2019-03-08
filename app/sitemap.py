@@ -55,8 +55,8 @@ class SiteMap(BaseHandler):
 class SiteMapPing(BaseHandler):
     """Pings the index server."""
     _INDEXER_MAP = {
-        'bing': 'http://www.bing.com/ping?sitemap=%s',
-        'google': 'http://www.google.com/ping?sitemap=%s',
+        'bing': 'https://www.bing.com/ping?sitemap=%s',
+        'google': 'https://www.google.com/ping?sitemap=%s',
     }
 
     _GET_PARAM_SEARCH_ENGINE = 'search_engine'
