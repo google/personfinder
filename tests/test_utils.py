@@ -149,6 +149,8 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_email(email) == False
         email = 'test.com'
         assert utils.validate_email(email) == False
+        email = 'usernamenoatsymbol.com'
+        assert utils.validate_email(email) == False
 
         # Empty string instead of email address
         email = ''
