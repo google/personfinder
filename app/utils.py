@@ -15,8 +15,6 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-from django_setup import ugettext as _  # always keep this first
-
 import calendar
 import cgi
 from datetime import datetime, timedelta
@@ -36,6 +34,7 @@ import urlparse
 import base64
 
 import django.utils.html
+from django.utils.translation import ugettext as _
 from django.template.defaulttags import register
 from google.appengine.api import images
 from google.appengine.api import taskqueue
