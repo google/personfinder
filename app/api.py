@@ -18,8 +18,6 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-import django_setup  # always keep this first
-
 import calendar
 import csv
 import datetime
@@ -34,6 +32,7 @@ import urllib2
 import uuid
 
 import django.utils.html
+from django.utils.translation import activate
 from django.utils.translation import ugettext as _
 from google.appengine import runtime
 from google.appengine.ext import db
@@ -42,7 +41,6 @@ from unidecode import unidecode
 
 import cloud_storage
 import config
-from django_setup import ugettext as _
 import full_text_search
 import importer
 import indexing
@@ -724,7 +722,7 @@ class HandleSMS(utils.BaseHandler):
 
         if query_lang:
             # Use the language for the following calls of _().
-            django_setup.activate(query_lang)
+            activate(query_lang)
 
         responses = []
 
