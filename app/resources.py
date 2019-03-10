@@ -25,8 +25,6 @@ Similar to App Engine's app versions, there is a concept of an "active bundle"
 from which resources are obtained.  Previewing or releasing a new set of
 resources is a matter of setting the active bundle."""
 
-import django_setup
-
 import datetime
 import logging
 import os
