@@ -89,7 +89,7 @@ class Person(FrontendApiHandler):
             culpa qui officia deserunt mollit anim id est laborum.
           ''',
           'author_name': 'Hard-coded author',
-          'source_date': '2019-01-01T01:01:01Z',
+          'source_date': 'Jan 1, 2019 01:01AM',
           'source_name': 'Google.org',
           'profile_pages': [
             {'site': 'facebook', 'value': 'https://www.facebook.com/hardcoded.placeholder.123'},

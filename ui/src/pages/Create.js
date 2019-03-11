@@ -28,6 +28,7 @@ import TextField, {HelperText, Input} from '@material/react-text-field';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
+import ProfilePageUtils from './../ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
 import Utils from './../Utils.js';
 
@@ -307,7 +308,7 @@ class Create extends Component {
       <li
         className='mdc-typography--body1'
         onClick={() => this.addProfilePageField(site)}>
-        <FormattedMessage {...Utils.PROFILE_PAGE_SITES[site]} />
+        <FormattedMessage {...ProfilePageUtils.SITES[site]} />
       </li>
     );
   }
@@ -334,7 +335,7 @@ class Create extends Component {
         key={index}>
         <TextField
           label={this.props.intl.formatMessage(
-              Utils.PROFILE_PAGE_SITES[page.site])}
+              ProfilePageUtils.SITES[page.site])}
           outlined
         >
           <Input

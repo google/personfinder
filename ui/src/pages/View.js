@@ -19,6 +19,7 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import ProfilePageUtils from './../ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
 import Utils from './../Utils.js';
@@ -89,12 +90,14 @@ const MESSAGES = defineMessages({
   originalPostingDate: {
     id: 'View.originalPostingDate',
     defaultMessage: 'Original posting date',
-    description: 'A label for a date when the person information was originally posted.',
+    description: ('A label for a date when the information on this page was '
+        + 'originally posted.'),
   },
   originalSiteName: {
     id: 'View.originalSiteName',
     defaultMessage: 'Original site name',
-    description: 'A label for the name of a site where the person information was originally posted.',
+    description: ('A label for the name of a site where the information on '
+        + 'this page was originally posted.'),
   },
   phoneNumber: {
     id: 'View.phoneNumber',
@@ -193,12 +196,12 @@ class View extends Component {
       });
   }
 
-  renderField(labelMessage, value) {
+  renderField(labelMessage, value, key) {
     if (value == null || value === '') {
       return null;
     }
     return (
-      <div key={labelMessage.id}>
+      <div key={key}>
         <span className='view-fieldname'>
           <FormattedMessage {...labelMessage} />:
         </span>
@@ -219,21 +222,14 @@ class View extends Component {
     }
   }
   
-  getSourceDateValue() {
-    if (this.state.person.source_date == null) {
-      return null;
-    } else {
-      return new Date(this.state.person.source_date).toLocaleString();
-    }
-  }
-  
   renderProfilePages() {
-    return this.state.person.profile_pages.map(page => {
+    return this.state.person.profile_pages.map((page, index) => {
       // TODO(gimite): Change the link text from URL to profile name
       // e.g., '@google' for Twitter.
       return this.renderField(
-          Utils.PROFILE_PAGE_SITES[page.site],
-          <a target='_blank' href={page.value}>{page.value}</a>);
+          ProfilePageUtils.SITES[page.site],
+          <a target='_blank' href={page.value}>{page.value}</a>,
+          index);
     });
   }
 
@@ -294,7 +290,7 @@ class View extends Component {
             </div>
           </div>
 
-          {this.state.person.profile_pages.length > 0 &&
+          {this.state.person.profile_pages.length > 0 ?
               <div className='view-topic'>
                 <h2 className='mdc-typography--subtitle2'>
                   <FormattedMessage {...MESSAGES.profilePages} />
@@ -303,6 +299,7 @@ class View extends Component {
                   {this.renderProfilePages()}
                 </div>
               </div>
+              : null
           }
         </div>
 
@@ -318,7 +315,7 @@ class View extends Component {
                    <a href='#'><FormattedMessage {...MESSAGES.clickToReveal} /></a>)}
               {this.renderField(MESSAGES.email,
                    <a href='#'><FormattedMessage {...MESSAGES.clickToReveal} /></a>)}
-              {this.renderField(MESSAGES.originalPostingDate, this.getSourceDateValue())}
+              {this.renderField(MESSAGES.originalPostingDate, this.state.person.source_date)}
               {this.renderField(MESSAGES.originalSiteName, this.state.person.source_name)}
             </div>
           </div>
