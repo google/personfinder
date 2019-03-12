@@ -26,4 +26,4 @@ before_install:
 before_script:
   - npm --prefix ui install
 
-script: echo $TRAVIS_PYTHON_VERSION; docker-compose exec web tools/travis_tests
+script: docker-compose exec web tools/travis_tests $TRAVIS_PYTHON_VERSION

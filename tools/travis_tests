@@ -21,7 +21,7 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
-case "${TRAVIS_PYTHON_VERSION}" in
+case "$1" in
 
     2.7)
         $TOOLS_DIR/unit_tests -q && \
@@ -35,7 +35,7 @@ case "${TRAVIS_PYTHON_VERSION}" in
             echo "All Python 3.7 tests passed."
         ;;
     *)
-        echo "This shouldn't happen -- Travis version is $TRAVIS_PYTHON_VERSION"
+        echo "Unexpected Python version: $1"
         exit 1
         ;;
 
