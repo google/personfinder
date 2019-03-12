@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM ubuntu:bionic
 LABEL authors="Carlo Lobrano <c.lobrano@gmail.com>, Mathieu Tortuyaux <mathieu.tortuyaux@gmail.com>"
 
 CMD ["/sbin/my_init"]
@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
 	unzip \
 	python2.7 \
 	libpython2.7-dev \
+	python3.7 \
+	python3-distutils \
 	curl \
 	git \
 	time \
@@ -22,8 +24,11 @@ RUN apt-get update && apt-get install -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && /usr/bin/python2.7 get-pip.py
-RUN pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+	&& /usr/bin/python2.7 get-pip.py \
+	&& /usr/bin/python3.7 get-pip.py
+RUN python2.7 -m pip install pytest==3.7.4 lxml cssselect pillow==4.1.0 mock modernize six
+RUN python3.7 -m pip install pytest lxml cssselect pillow mock modernize six
 
 # Just apt-get installing nodejs doesn't work; these commands come from:
 # https://askubuntu.com/questions/720784/how-to-install-latest-node-inside-a-docker-container
