@@ -574,7 +574,6 @@ class PersonNoteTests(ServerTestsBase):
                       sex='female',
                       date_of_birth='1955',
                       age='52',
-                      home_street='_test_home_street',
                       home_neighborhood='_test_home_neighborhood',
                       home_city='_test_home_city',
                       home_state='_test_home_state',
@@ -596,7 +595,6 @@ class PersonNoteTests(ServerTestsBase):
                 'Sex:': 'female',
                 # 'Date of birth:': '1955',  # currently hidden
                 'Age:': '52',
-                'Street name:': '_test_home_street',
                 'Neighborhood:': '_test_home_neighborhood',
                 'City:': '_test_home_city',
                 'Province or state:': '_test_home_state',
@@ -933,7 +931,6 @@ class PersonNoteTests(ServerTestsBase):
                       sex='male',
                       date_of_birth='1970-01',
                       age='30-40',
-                      home_street='_test_home_street',
                       home_neighborhood='_test_home_neighborhood',
                       home_city='_test_home_city',
                       home_state='_test_home_state',
@@ -961,7 +958,6 @@ class PersonNoteTests(ServerTestsBase):
                 'Sex:': 'male',
                 # 'Date of birth:': '1970-01',  # currently hidden
                 'Age:': '30-40',
-                'Street name:': '_test_home_street',
                 'Neighborhood:': '_test_home_neighborhood',
                 'City:': '_test_home_city',
                 'Province or state:': '_test_home_state',
@@ -5150,8 +5146,6 @@ _feed_profile_url2</pfif:profile_urls>
         d = self.go('/haiti/create')
         assert d.xpath('//input[@name="given_name"]')
         assert d.xpath('//input[@name="family_name"]')
-        assert d.xpath('//label[@for="home_street"]')
-        assert d.xpath('//input[@name="home_street"]')
         assert d.xpath('//label[@for="home_neighborhood"]')
         assert d.xpath('//input[@name="home_neighborhood"]')
         assert d.xpath('//label[@for="home_city"]')
@@ -5164,7 +5158,6 @@ _feed_profile_url2</pfif:profile_urls>
         self.s.submit(d.cssselect_one('form'),
                       given_name='_test_given',
                       family_name='_test_family',
-                      home_street='_test_home_street',
                       home_neighborhood='_test_home_neighborhood',
                       home_city='_test_home_city',
                       home_state='_test_home_state',
@@ -5173,8 +5166,8 @@ _feed_profile_url2</pfif:profile_urls>
         person = Person.all().get()
         self.go('/haiti/results?role=seek&'
                 'query_name=_test_given+_test_family&'
-                'query_location=_test_home_street+_test_home_neighborhood+'
-                '_test_home_city+_test_home_state+_test_home_country')
+                'query_location=_test_home_neighborhood+_test_home_city+'
+                '_test_home_state+_test_home_country')
         self.verify_results_page(1)
         person.delete()
 
