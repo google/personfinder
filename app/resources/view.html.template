@@ -113,15 +113,9 @@
             </div>
           {% endif %}
 
-          {% if person.home_street or person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}
+          {% if person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}
             <div class="address section">
               <h2>{% trans "Home address" %}</h2>
-              {% if person.home_street %}
-                <div class="field">
-                  <span class="label">{% trans "Street name" %}:</span>
-                  <span class="value">{{person.home_street}}</span>
-                </div>
-              {% endif %}
               {% if person.home_neighborhood %}
                 <div class="field">
                   <span class="label">{% trans "Neighborhood" %}:</span>

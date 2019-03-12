@@ -159,7 +159,6 @@ class Handler(BaseHandler):
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
-            home_street=self.params.home_street,
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_postal_code=self.params.home_postal_code,
