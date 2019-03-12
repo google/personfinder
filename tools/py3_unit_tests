@@ -16,4 +16,6 @@ cd "$(dirname $0)/.."
 
 echo
 echo "--- Running Python 3 unit tests"
+echo "DEBUGGING LINE HERE"
+echo "PYTHON3 is $PYTHON3"
 TZ=UTC $PYTHON3 $TESTS_DIR/unit_tests.py --pyargs --tb=short "$@"
