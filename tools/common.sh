@@ -49,6 +49,18 @@ if [ -z "$PYTHON" ]; then
     exit 1
 fi
 
+for python3 in \
+    "$PYTHON3" \
+    $(which python3.7) \
+    /usr/local/bin/python3.7 \
+    /usr/bin/python3.7 \
+    /Library/Frameworks/Python.framework/Versions/3.7/bin/python; do
+    if [ -x "$python3" ]; then
+        export PYTHON3="$python3"
+        break
+    fi
+done
+
 export PYTHONPATH=\
 "$APP_DIR":\
 "$APP_DIR/vendors":\
