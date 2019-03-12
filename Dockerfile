@@ -13,6 +13,9 @@ ENV INIT_DATASTORE 0
 RUN apt-get update && apt-get install -y \
 	build-essential \
 	unzip \
+	python2.7 \
+	libpython2.7-dev \
+	python3.7 \
 	curl \
 	git \
 	time \

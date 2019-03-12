@@ -2,13 +2,6 @@ sudo: required
 
 language: python
 
-matrix:
-    include:
-        - python: 2.7
-          dist: trusty
-        - python: 3.7
-          dist: xenial # required for Python >= 3.7
-
 services:
   - docker
 
@@ -27,5 +20,4 @@ before_install:
 before_script:
   - npm --prefix ui install
 
-script: docker-compose exec web tools/all_tests $TRAVIS_PYTHON_VERSION
-
+script: docker-compose exec web tools/all_tests
