@@ -34,5 +34,7 @@ case "${TRAVIS_PYTHON_VERSION}" in
             $TOOLS_DIR/python3_compatibility_check && \
             echo "All Python 3.7 tests passed."
         ;;
+    *)
+        echo "This shouldn't happen -- Travis version is $TRAVIS_PYTHON_VERSION"
 
- esac
+esac
