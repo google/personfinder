@@ -52,8 +52,10 @@ os.environ['SERVER_SOFTWARE'] = 'testing'
 os.chdir(os.environ['APP_DIR'])
 
 if six.PY2:
+    print 'running unit_tests.py with Python 2'
     default_test_files = [os.environ['TESTS_DIR']]
 else:
+    print 'running unit_tests.py with Python 3'
     default_test_files = [
         os.path.join(os.environ['TESTS_DIR'], test_file)
         for test_file in PY3_TEST_FILES

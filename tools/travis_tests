@@ -30,7 +30,7 @@ case "$1" in
             echo "All Python 2.7 tests passed."
         ;;
     3.7)
-        export PYTHON3=python
+        export PYTHON3=python3
         $TOOLS_DIR/py3_unit_tests -q && \
             $TOOLS_DIR/python3_compatibility_check && \
             echo "All Python 3.7 tests passed."
