@@ -30,11 +30,8 @@ case "$1" in
             echo "All Python 2.7 tests passed."
         ;;
     3.7)
-        # Travis doesn't need to use the py3_unit_tests script, because its
-        # default Python version is 3 here. It'd also be inconvenient for it to
-        # use the py3_ script, because that script assumes you have a PYTHON3
-        # environment variable.
-        $TOOLS_DIR/unit_tests -q && \
+        export PYTHON3=$PYTHON
+        $TOOLS_DIR/py3_unit_tests -q && \
             $TOOLS_DIR/python3_compatibility_check && \
             echo "All Python 3.7 tests passed."
         ;;
