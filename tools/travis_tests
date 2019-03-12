@@ -36,5 +36,7 @@ case "${TRAVIS_PYTHON_VERSION}" in
         ;;
     *)
         echo "This shouldn't happen -- Travis version is $TRAVIS_PYTHON_VERSION"
+        exit 1
+        ;;
 
 esac
