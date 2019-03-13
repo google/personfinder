@@ -519,7 +519,7 @@ class PersonNoteTests(ServerTestsBase):
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
             last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz')
+            note_photo_url='http://xyz.com/abc.jpg')
 
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
@@ -912,7 +912,7 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             None, last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz')
+            note_photo_url='http://xyz.com/abc.jpg')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1029,7 +1029,7 @@ class PersonNoteTests(ServerTestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-            photo_url='http://photo1',
+            photo_url='http://example.com/photo1',
             profile_urls='''http://www.facebook.com/_account_1
 http://www.twitter.com/_account_1
 http://www.foo.com/_account_1''',
@@ -1045,7 +1045,7 @@ http://www.foo.com/_account_1''',
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-            photo_url='http://photo2',
+            photo_url='http://example.com/photo2',
             profile_urls='http://www.facebook.com/_account_2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
@@ -1059,7 +1059,7 @@ http://www.foo.com/_account_1''',
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-            photo_url='http://photo3',
+            photo_url='http://example.com/photo3',
         )])
 
         # All three records should appear on the multiview page.
@@ -1076,9 +1076,9 @@ http://www.foo.com/_account_1''',
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
-        assert 'http://photo1' in doc.content
-        assert 'http://photo2' in doc.content
-        assert 'http://photo3' in doc.content
+        assert 'http://example.com/photo1' in doc.content
+        assert 'http://example.com/photo2' in doc.content
+        assert 'http://example.com/photo3' in doc.content
         assert 'http://www.facebook.com/_account_1' in doc.content
         assert 'http://www.twitter.com/_account_1' in doc.content
         assert 'http://www.foo.com/_account_1' in doc.content
@@ -3603,10 +3603,10 @@ _feed_profile_url2</pfif:profile_urls>
         for record in [person, note]:
             doc = self.go('/haiti/view?id=' + person.record_id)
             assert record.photo_url not in doc.content
-            record.photo_url = 'http://xyz'
+            record.photo_url = 'http://xyz.com/abc.jpg'
             record.put()
             doc = self.go('/haiti/view?id=' + person.record_id)
-            assert '//xyz' in doc.content
+            assert '//xyz.com/abc.jpg' in doc.content
             record.photo_url = 'bad_things://xyz'
             record.put()
             doc = self.go('/haiti/view?id=' + person.record_id)
@@ -3622,7 +3622,7 @@ _feed_profile_url2</pfif:profile_urls>
         assert person.source_url not in doc.content
 
     def test_xss_profile_urls(self):
-        profile_urls = ['http://abc', 'http://def', 'http://ghi']
+        profile_urls = ['http://abc.com', 'http://def.org', 'http://ghi.net']
         person, note = self.setup_person_and_note()
         person.profile_urls = '\n'.join(profile_urls)
         person.put()
