@@ -385,7 +385,7 @@ def sanitize_urls(record):
                 continue
             try:
                 url_validator(url)
-                sanitized_urls.add(url)
+                sanitized_urls.append(url)
             except ValidationError:
                 logging.warning(
                     'Unsanitary URL in database on %s' % record.record_id)
