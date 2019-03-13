@@ -35,6 +35,7 @@ import urllib
 import urlparse
 import base64
 
+from django.core.validators import URLValidator, ValidationError
 import django.utils.html
 from django.template.defaulttags import register
 from google.appengine.api import images
@@ -352,11 +353,6 @@ def validate_cache_seconds(string):
 # ==== Other utilities =========================================================
 
 
-def url_is_safe(url):
-    current_scheme, _, _, _, _ = urlparse.urlsplit(url)
-    return current_scheme in ['http', 'https']
-
-
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense.  This only works in
     the context of the appserver (eg remote_api can't use it)."""
@@ -365,16 +361,34 @@ def get_app_name():
 
 
 def sanitize_urls(record):
-    """Clean up URLs to protect against XSS."""
+    """Clean up URLs to protect against XSS.
+
+    We check URLs submitted through Person Finder, but bad data might come in
+    through the API.
+    """
+    url_validator = URLValidator()
     # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
-        if url and not url_is_safe(url):
+        if not url:
+            continue
+        try:
+            url_validator(url)
+        except ValidationError:
             setattr(record, field, None)
     # Multi-line URLs.
     for field in ['profile_urls']:
         urls = (getattr(record, field, None) or '').splitlines()
-        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
+        sanitized_urls = []
+        for url in urls:
+            if not url:
+                continue
+            try:
+                url_validator(url)
+                sanitized_urls.add(url)
+            except ValidationError:
+                logging.warning(
+                    'Unsanitary URL in database on %s' % record.record_id)
         if len(urls) != len(sanitized_urls):
             setattr(record, field, '\n'.join(sanitized_urls))
 
