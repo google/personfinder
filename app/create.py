@@ -103,13 +103,10 @@ class Handler(BaseHandler):
         expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
-        profile_urls = []
-        if self.params.profile_url1:
-            profile_urls.append(self.params.profile_url1)
-        if self.params.profile_url2:
-            profile_urls.append(self.params.profile_url2)
-        if self.params.profile_url3:
-            profile_urls.append(self.params.profile_url3)
+        profile_urls = filter(
+            lambda url: url, [self.params.profile_url1,
+                              self.params.profile_url2,
+                              self.params.profile_url3])
         url_validator = URLValidator()
         for profile_url in profile_urls:
             try:

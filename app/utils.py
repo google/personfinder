@@ -398,14 +398,13 @@ def sanitize_urls(record):
         urls = (getattr(record, field, None) or '').splitlines()
         sanitized_urls = []
         for url in urls:
-            if not url:
-                continue
-            try:
-                url_validator(url)
-                sanitized_urls.append(url)
-            except ValidationError:
-                logging.warning(
-                    'Unsanitary URL in database on %s' % record.record_id)
+            if url:
+                try:
+                    url_validator(url)
+                    sanitized_urls.append(url)
+                except ValidationError:
+                    logging.warning(
+                        'Unsanitary URL in database on %s' % record.record_id)
         if len(urls) != len(sanitized_urls):
             setattr(record, field, '\n'.join(sanitized_urls))
 
