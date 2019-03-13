@@ -294,6 +294,23 @@ def validate_image(bytestring):
         return False
 
 
+EMAIL_PATTERN = re.compile(r'(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+'
+                           '[a-z]{2,63}(?:\s|$)', re.IGNORECASE)
+
+
+def validate_email(email):
+    """Validates an email address, returning True on correct,
+    False on incorrect, None on empty string."""
+    # Note that google.appengine.api.mail.is_email_valid() is unhelpful;
+    # it checks only for the empty string
+    if not email:
+        return None
+    if EMAIL_PATTERN.match(email):
+        return True
+    else:
+        return False
+
+
 def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
@@ -716,7 +733,6 @@ class BaseHandler(webapp.RequestHandler):
         'home_neighborhood': strip,
         'home_postal_code': strip,
         'home_state': strip,
-        'home_street': strip,
         'id': strip,
         'id1': strip,
         'id2': strip,

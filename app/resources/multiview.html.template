@@ -84,12 +84,6 @@
             </td>
           </tr>
           <tr>
-            <td class="label">{% trans "Street name" %}:</td>
-            {% for val in person.home_street %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-          </tr>
-          <tr>
             <td class="label">{% trans "Neighborhood" %}:</td>
             {% for val in person.home_neighborhood %}
               <td class="field">{{val}}</td>

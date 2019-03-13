@@ -60,6 +60,10 @@ class Handler(BaseHandler):
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
 
+        if (self.params.author_email and
+            not validate_email(self.params.author_email)):
+            return self.error(400, _('The email address you entered appears to be invalid.'))
+
         # If user is inputting his/her own information, set some params automatically
         if self.params.own_info == 'yes':
             self.params.author_name = self.params.given_name
@@ -163,7 +167,6 @@ class Handler(BaseHandler):
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
-            home_street=self.params.home_street,
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_postal_code=self.params.home_postal_code,
