@@ -35,7 +35,7 @@ import urllib
 import urlparse
 import base64
 
-from django.core.validators import URLValidator, ValidationError
+from django.core.validators import EmailValidator, URLValidator, ValidationError
 import django.utils.html
 from django.template.defaulttags import register
 from google.appengine.api import images
@@ -294,8 +294,7 @@ def validate_image(bytestring):
         return False
 
 
-EMAIL_PATTERN = re.compile(r'(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+'
-                           '[a-z]{2,63}(?:\s|$)', re.IGNORECASE)
+EMAIL_VALIDATOR = EmailValidator()
 
 
 def validate_email(email):
@@ -305,9 +304,10 @@ def validate_email(email):
     # it checks only for the empty string
     if not email:
         return None
-    if EMAIL_PATTERN.match(email):
+    try:
+        EMAIL_VALIDATOR(email)
         return True
-    else:
+    except ValidationError:
         return False
 
 
