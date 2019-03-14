@@ -214,7 +214,6 @@ class ReadOnlyTests(ServerTestsBase):
             'role=provide',
             'family_name=__FAMILY_NAME__',
             'given_name=__GIVEN_NAME__',
-            'home_street=__HOME_STREET__',
             'home_neighborhood=__HOME_NEIGHBORHOOD__',
             'home_city=__HOME_CITY__',
             'home_state=__HOME_STATE__',
@@ -241,9 +240,6 @@ class ReadOnlyTests(ServerTestsBase):
 
         tag = doc.xpath_one('//input[@name="given_name"]')
         assert tag.get('value') == '__GIVEN_NAME__'
-
-        tag = doc.xpath_one('//input[@name="home_street"]')
-        assert tag.get('value') == '__HOME_STREET__'
 
         tag = doc.xpath_one('//input[@name="home_neighborhood"]')
         assert tag.get('value') == '__HOME_NEIGHBORHOOD__'
