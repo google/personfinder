@@ -13,7 +13,6 @@
 # limitations under the License.
 
 """Tests for subscribe.py."""
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
