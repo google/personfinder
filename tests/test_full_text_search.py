@@ -18,7 +18,6 @@
 
 import datetime
 import unittest
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
