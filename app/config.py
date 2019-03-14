@@ -20,14 +20,12 @@ See here for usage examples:
 https://github.com/google/personfinder/wiki/DeveloperFaq
 """
 import sys
-sys.path.append('../app/handlers/')
-sys.path.append('../app/utils/')
 
 from google.appengine.ext import db
 import UserDict, model, random, simplejson
 import logging
 import datetime
-import utils
+#import utils
 from datetime import timedelta
 
 
