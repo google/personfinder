@@ -17,7 +17,6 @@
 
 __author__ = 'ryok@google.com (Ryo Kawaguchi)'
 
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
