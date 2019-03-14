@@ -14,7 +14,6 @@
 # limitations under the License.
 
 """Tests for send_mail.py."""
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
