@@ -26,6 +26,12 @@
   text-align: center;
 }
 
+.view-body .mdc-typography--headline5 {
+  text-align: left;
+  margin: 16px;
+  color: #212121;
+}
+
 /* Person information card */
 
 .view-card {
@@ -89,46 +95,4 @@
 
 .view-fieldvalue {
   color: #212121;
-}
-
-/* Note card */
-
-.view-note-card {
-  border-radius: 4px;
-  padding: 0 16px;
-  margin: 16px;
-}
-
-.view-note-section {
-  align-items: center;
-  border-bottom: 1px solid #dadce0;
-  padding: 16px 0;
-  text-align: left;
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.view-note-headline {
-  display: flex;
-  flex-direction: row;
-}
-
-// TBD update below
-
-.view-note-headlinephoto {
-  background-color: #dadce0;
-  border-radius: 4px;
-  height: 80px;
-  overflow: hidden;
-  width: 80px;
-}
-
-.view-note-headlinephoto img {
-  max-height: 80px;
-  max-width: 80px;
-}
-
-.view-note-headlinecontent {
-  padding: 0 16px;
 }

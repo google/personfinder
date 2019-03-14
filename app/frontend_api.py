@@ -96,17 +96,17 @@ class Person(FrontendApiHandler):
           'notes': [
             {
               'note_record_id': 'person1.1',
-              'source_date': '2019-01-01T01:01:01Z',
+              'source_date': 'Jan 1, 2019 01:01AM',
               'author_name': 'Note Author 1',
-              'author_made_contact': false,
+              'author_made_contact': False,
               'status': 'information_sought',
               'text': 'Trying to find this person.',
             },
             {
               'note_record_id': 'person1.2',
-              'source_date': '2019-01-02T01:01:01Z',
+              'source_date': 'Jan 2, 2019 02:02AM',
               'author_name': 'Note Author 2',
-              'author_made_contact': true,
+              'author_made_contact': True,
               'status': 'is_note_author',
               'last_known_location': 'Roppongi, Tokyo',
               'text': 'I am safe!',

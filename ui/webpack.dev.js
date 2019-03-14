@@ -35,7 +35,9 @@ module.exports = merge(common, {
         secure: false
       }
     },
-    port: 3000,
+    host: '0.0.0.0',
+    disableHostCheck: true,
+    port: 19001,
     publicPath: 'http://localhost:3000/dist/',
     historyApiFallback: true,
     hotOnly: true
