@@ -19,10 +19,10 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
-import ProfilePageUtils from './../ProfilePageUtils.js';
+import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
-import Utils from './../Utils.js';
+import Utils from './../utils/Utils.js';
 
 // TODO(gimite): Consider sharing some messages with Create.js because they
 // have many overlaps.

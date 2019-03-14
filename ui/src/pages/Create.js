@@ -28,9 +28,9 @@ import TextField, {HelperText, Input} from '@material/react-text-field';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
-import ProfilePageUtils from './../ProfilePageUtils.js';
+import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
-import Utils from './../Utils.js';
+import Utils from './../utils/Utils.js';
 
 const MESSAGES = defineMessages({
   addSite: {
