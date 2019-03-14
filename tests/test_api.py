@@ -20,7 +20,6 @@ __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
 import datetime
 import unittest
 
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
