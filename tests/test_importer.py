@@ -16,18 +16,13 @@
 
 import datetime
 import unittest
-# added by Ashutosh Narayan
-
-import sys
-sys.path.append('../app/handlers/')
-sys.path.append('../app/utils/')
 
 from google.appengine.ext import db
 from pytest import raises
 
 import model
 import importer
-from utils import const
+#from utils import const
 
 TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
 
