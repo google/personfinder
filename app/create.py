@@ -19,6 +19,7 @@ from utils import *
 from detect_spam import SpamDetector
 import simplejson
 
+from django.core.validators import URLValidator, ValidationError
 from django.utils.translation import ugettext as _
 from const import NOTE_STATUS_TEXT
 
@@ -59,6 +60,10 @@ class Handler(BaseHandler):
             if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
 
+        if (self.params.author_email and
+            not validate_email(self.params.author_email)):
+            return self.error(400, _('The email address you entered appears to be invalid.'))
+
         # If user is inputting his/her own information, set some params automatically
         if self.params.own_info == 'yes':
             self.params.author_name = self.params.given_name
@@ -98,6 +103,18 @@ class Handler(BaseHandler):
         expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
+        profile_urls = filter(
+            lambda url: url, [self.params.profile_url1,
+                              self.params.profile_url2,
+                              self.params.profile_url3])
+        url_validator = URLValidator()
+        for profile_url in profile_urls:
+            try:
+                url_validator(profile_url)
+            except ValidationError:
+                return self.error(
+                    400, _('Please only enter valid profile URLs.'))
+
         # If nothing was uploaded, just use the photo_url that was provided.
         photo, photo_url = (None, self.params.photo_url)
         note_photo, note_photo_url = (None, self.params.note_photo_url)
@@ -116,14 +133,6 @@ class Handler(BaseHandler):
             photo.put()
         if note_photo:
             note_photo.put()
-
-        profile_urls = []
-        if self.params.profile_url1:
-            profile_urls.append(self.params.profile_url1)
-        if self.params.profile_url2:
-            profile_urls.append(self.params.profile_url2)
-        if self.params.profile_url3:
-            profile_urls.append(self.params.profile_url3)
 
         # Person records have to have a source_date; if none entered, use now.
         source_date = source_date or now
@@ -155,7 +164,6 @@ class Handler(BaseHandler):
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
-            home_street=self.params.home_street,
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_postal_code=self.params.home_postal_code,

@@ -345,22 +345,6 @@
               </h3>
                 <div class="field">
                   <span class="label">
-                    <label for="home_street">
-                      {% trans "Street name" %}:
-                    </label>
-                  </span>
-                  <span class="value">
-                    <input name="home_street" id="home_street"
-                        class="medium-text-input"
-                        value="{{params.home_street}}"
-                        autocomplete="off">
-                    <div class="value hint">
-                      {% trans "Street name only, no number" %}
-                    </div>
-                  </span>
-                </div>
-                <div class="field">
-                  <span class="label">
 {% comment %}
 # i18n: For Pakistan, translate this as "Neighborhood, village, or town"
 # i18n: since cities usually refer to large metropolitan areas.  Villages

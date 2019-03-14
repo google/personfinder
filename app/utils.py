@@ -35,6 +35,7 @@ import urllib
 import urlparse
 import base64
 
+from django.core.validators import EmailValidator, URLValidator, ValidationError
 import django.utils.html
 from django.template.defaulttags import register
 from google.appengine.api import images
@@ -293,6 +294,23 @@ def validate_image(bytestring):
         return False
 
 
+EMAIL_VALIDATOR = EmailValidator()
+
+
+def validate_email(email):
+    """Validates an email address, returning True on correct,
+    False on incorrect, None on empty string."""
+    # Note that google.appengine.api.mail.is_email_valid() is unhelpful;
+    # it checks only for the empty string
+    if not email:
+        return None
+    try:
+        EMAIL_VALIDATOR(email)
+        return True
+    except ValidationError:
+        return False
+
+
 def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
@@ -352,11 +370,6 @@ def validate_cache_seconds(string):
 # ==== Other utilities =========================================================
 
 
-def url_is_safe(url):
-    current_scheme, _, _, _, _ = urlparse.urlsplit(url)
-    return current_scheme in ['http', 'https']
-
-
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense.  This only works in
     the context of the appserver (eg remote_api can't use it)."""
@@ -365,16 +378,33 @@ def get_app_name():
 
 
 def sanitize_urls(record):
-    """Clean up URLs to protect against XSS."""
+    """Clean up URLs to protect against XSS.
+
+    We check URLs submitted through Person Finder, but bad data might come in
+    through the API.
+    """
+    url_validator = URLValidator()
     # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
-        if url and not url_is_safe(url):
+        if not url:
+            continue
+        try:
+            url_validator(url)
+        except ValidationError:
             setattr(record, field, None)
     # Multi-line URLs.
     for field in ['profile_urls']:
         urls = (getattr(record, field, None) or '').splitlines()
-        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
+        sanitized_urls = []
+        for url in urls:
+            if url:
+                try:
+                    url_validator(url)
+                    sanitized_urls.append(url)
+                except ValidationError:
+                    logging.warning(
+                        'Unsanitary URL in database on %s' % record.record_id)
         if len(urls) != len(sanitized_urls):
             setattr(record, field, '\n'.join(sanitized_urls))
 
@@ -702,7 +732,6 @@ class BaseHandler(webapp.RequestHandler):
         'home_neighborhood': strip,
         'home_postal_code': strip,
         'home_state': strip,
-        'home_street': strip,
         'id': strip,
         'id1': strip,
         'id2': strip,
@@ -1178,9 +1207,6 @@ class XsrfTool(object):
 
     # XSRF tokens expire after 4 hours.
     TOKEN_EXPIRATION_TIME = 60 * 60 * 4
-
-    # Characters with which to choose a key if it's not set yet.
-    TOKEN_CHARACTER_SET = string.letters + string.digits
 
     def __init__(self):
         configured_key = config.get('xsrf_token_key')

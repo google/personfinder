@@ -333,7 +333,6 @@ def setup_env(request):
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in const.LANGUAGES_BIDI
-    env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
 
     # Used for parsing query params. This must be done before accessing any
     # query params which may have multi-byte value, such as "given_name" below
@@ -543,7 +542,9 @@ class Main(webapp.RequestHandler):
                 utils.set_utcnow_for_test(float(utcnow))
 
         # If requested, flush caches before we touch anything that uses them.
-        flush_caches(*request.get('flush', '').split(','))
+        # This is used for certain tests.
+        if utils.is_dev_app_server():
+            flush_caches(*request.get('flush', '').split(','))
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
@@ -573,6 +574,18 @@ class Main(webapp.RequestHandler):
                 return False
         return True
 
+    def set_content_security_policy(self):
+        """Sets the CSP in the headers. Returns the nonce to use for scripts."""
+        csp_nonce = utils.generate_random_key(20)
+        csp_value = (
+            'object-src \'none\'; '
+            'script-src \'nonce-%s\' \'unsafe-inline\' '
+            '\'strict-dynamic\' https: http:; '
+            'base-uri \'none\';'
+        ) % csp_nonce
+        self.response.headers['Content-Security-Policy'] = csp_value
+        return csp_nonce
+
     def serve(self):
         request, response, env = self.request, self.response, self.env
 
@@ -595,10 +608,11 @@ class Main(webapp.RequestHandler):
             if env.repo == 'static':
                 self.serve_static_content(self.env.action)
             elif self.should_serve_react_ui():
+                csp_nonce = self.set_content_security_policy()
                 response.out.write(
                     resources.get_rendered(
                         'react_index.html', env.lang,
-                        get_vars=lambda: {'env': env}))
+                        get_vars=lambda: {'env': env, 'csp_nonce': csp_nonce}))
                 return
 
         if not env.action and not env.repo:

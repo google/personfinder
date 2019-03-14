@@ -23,7 +23,7 @@ import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
-import Utils from './../Utils.js';
+import Utils from './../utils/Utils.js';
 
 const MESSAGES = defineMessages({
   createNewRecord: {

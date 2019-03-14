@@ -19,9 +19,10 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
-import Utils from './../Utils.js';
+import Utils from './../utils/Utils.js';
 
 // TODO(gimite): Consider sharing some messages with Create.js because they
 // have many overlaps.
@@ -42,6 +43,11 @@ const MESSAGES = defineMessages({
     defaultMessage: 'City',
     description: 'A label for a person\'s city.',
   },
+  clickToReveal: {
+    id: 'View.clickToReveal',
+    defaultMessage: 'Click to reveal',
+    description: 'A label for a button to show sensitive information which is hidden by default e.g., phone number.',
+  },
   country: {
     id: 'View.country',
     defaultMessage: 'Country',
@@ -52,6 +58,11 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Description',
     description: ('The title of a section with free text description to '
         + 'identify a specific person.'),
+  },
+  email: {
+    id: 'View.email',
+    defaultMessage: 'Email',
+    description: 'A label for a person\'s email address.',
   },
   homeAddress: {
     id: 'View.homeAddress',
@@ -64,12 +75,34 @@ const MESSAGES = defineMessages({
     description: 'The title of a section which contains a person\'s '
         + 'identifying information (name, age, etc.).'
   },
+  name: {
+    id: 'View.name',
+    defaultMessage: 'Name',
+    description: 'A label for a person\'s name.',
+  },
   notesForThisPerson: {
     id: 'View.notesForThisPerson',
     defaultMessage: 'Notes for this person',
     description: ('The title of a section which contains notes with updates '
         + 'or additional information about the status of the person described '
         + 'on the page.'),
+  },
+  originalPostingDate: {
+    id: 'View.originalPostingDate',
+    defaultMessage: 'Original posting date',
+    description: ('A label for a date when the information on this page was '
+        + 'originally posted.'),
+  },
+  originalSiteName: {
+    id: 'View.originalSiteName',
+    defaultMessage: 'Original site name',
+    description: ('A label for the name of a site where the information on '
+        + 'this page was originally posted.'),
+  },
+  phoneNumber: {
+    id: 'View.phoneNumber',
+    defaultMessage: 'Phone number',
+    description: 'A label for a person\'s phone number.',
   },
   profilePages: {
     id: 'View.profilePages',
@@ -163,9 +196,12 @@ class View extends Component {
       });
   }
 
-  renderField(labelMessage, value) {
+  renderField(labelMessage, value, key) {
+    if (value == null || value === '') {
+      return null;
+    }
     return (
-      <div>
+      <div key={key}>
         <span className='view-fieldname'>
           <FormattedMessage {...labelMessage} />:
         </span>
@@ -179,11 +215,22 @@ class View extends Component {
 
   getSexValue() {
     if (this.state.person.sex == null) {
-      return '';
+      return null;
     } else {
       return this.props.intl.formatMessage(
           SEX_VALUE_MESSAGES[this.state.person.sex]);
     }
+  }
+  
+  renderProfilePages() {
+    return this.state.person.profile_pages.map((page, index) => {
+      // TODO(gimite): Change the link text from URL to profile name
+      // e.g., '@google' for Twitter.
+      return this.renderField(
+          ProfilePageUtils.SITES[page.site],
+          <a target='_blank' href={page.value}>{page.value}</a>,
+          index);
+    });
   }
 
   renderPerson() {
@@ -234,30 +281,42 @@ class View extends Component {
             </div>
           </div>
 
-          <div className='mdc-typography--body1'>
+          <div className='view-topic'>
             <h2 className='mdc-typography--subtitle2'>
               <FormattedMessage {...MESSAGES.description} />
             </h2>
-            <div className='view-fieldvalue'>{this.state.person.description}</div>
+            <div className='mdc-typography--body1'>
+              <div className='view-fieldvalue'>{this.state.person.description}</div>
+            </div>
           </div>
 
-          <div className='mdc-typography--body1'>
-            <h2 className='mdc-typography--subtitle2'>
-              <FormattedMessage {...MESSAGES.profilePages} />
-            </h2>
-            {/* TODO(gimite): Implement this. */}
-            <div>TBD</div>
-          </div>
+          {this.state.person.profile_pages.length > 0 ?
+              <div className='view-topic'>
+                <h2 className='mdc-typography--subtitle2'>
+                  <FormattedMessage {...MESSAGES.profilePages} />
+                </h2>
+                <div className='mdc-typography--body1'>
+                  {this.renderProfilePages()}
+                </div>
+              </div>
+              : null
+          }
         </div>
 
         <div className='view-section'>
-          <div className='view-sectioncontent'>
+          <div className='view-topic'>
+            <h2 className='mdc-typography--subtitle2'>
+              <FormattedMessage {...MESSAGES.authorOfThisRecord} />
+            </h2>
             <div className='mdc-typography--body1'>
-              <h2 className='mdc-typography--subtitle2'>
-                <FormattedMessage {...MESSAGES.authorOfThisRecord} />
-              </h2>
-              {/* TODO(gimite): Implement this. */}
-              <div>TBD</div>
+              {this.renderField(MESSAGES.name, this.state.person.author_name)}
+              {/* TODO(gimite): Implement these. */}
+              {this.renderField(MESSAGES.phoneNumber,
+                   <a href='#'><FormattedMessage {...MESSAGES.clickToReveal} /></a>)}
+              {this.renderField(MESSAGES.email,
+                   <a href='#'><FormattedMessage {...MESSAGES.clickToReveal} /></a>)}
+              {this.renderField(MESSAGES.originalPostingDate, this.state.person.source_date)}
+              {this.renderField(MESSAGES.originalSiteName, this.state.person.source_name)}
             </div>
           </div>
         </div>

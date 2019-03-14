@@ -417,7 +417,6 @@ def create_document(person):
         family_name=person.family_name,
         full_name=person.full_name,
         alternate_names=person.alternate_names,
-        home_street=person.home_street,
         home_city=person.home_city,
         home_state=person.home_state,
         home_postal_code=person.home_postal_code,
@@ -436,7 +435,6 @@ def create_document(person):
             alternate_names=person.alternate_names))
         fields.extend(create_romanized_location_fields(
             romanize_method,
-            home_street=person.home_street,
             home_city=person.home_city,
             home_state=person.home_state,
             home_postal_code=person.home_postal_code,

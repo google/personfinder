@@ -75,7 +75,6 @@ class Person(FrontendApiHandler):
           'name': 'Hard-coded placeholder',
           'sex': 'male',
           'age': '42',
-          'home_street': 'Amphitheatre Pkwy',
           'home_city': 'Mountain View',
           'home_state': 'CA',
           'home_country': 'U.S.',
@@ -88,6 +87,12 @@ class Person(FrontendApiHandler):
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           ''',
+          'author_name': 'Hard-coded author',
+          'source_date': 'Jan 1, 2019 01:01AM',
+          'source_name': 'Google.org',
+          'profile_pages': [
+            {'site': 'facebook', 'value': 'https://www.facebook.com/hardcoded.placeholder.123'},
+          ],
           'notes': [
             {
               'note_record_id': 'person1.1',
@@ -106,7 +111,7 @@ class Person(FrontendApiHandler):
               'last_known_location': 'Roppongi, Tokyo',
               'text': 'I am safe!',
             },
-          ]
+          ],
         })
 
 
@@ -123,7 +128,6 @@ class Create(FrontendApiHandler):
             given_name=self.params.given_name,
             age=self.params.age,
             sex=self.params.sex,
-            home_street=self.params.home_street,
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_country=self.params.home_country,

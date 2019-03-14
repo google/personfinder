@@ -56,7 +56,7 @@ from model import Person, Note, ApiActionLog
 from search.searcher import Searcher
 from text_query import TextQuery
 from photo import create_photo, PhotoError
-from utils import Struct
+from utils import Struct, validate_email
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 PHOTO_UPLOAD_MAX_SIZE = 10485760 # Currently 10MB is the maximum upload size
@@ -563,7 +563,7 @@ class Subscribe(utils.BaseHandler):
         if not (self.auth and self.auth.subscribe_permission):
             return self.error(403, 'Missing or invalid authorization key')
 
-        if not subscribe.is_email_valid(self.params.subscribe_email):
+        if not validate_email(self.params.subscribe_email):
             return self.error(400, 'Invalid email address')
 
         person = model.Person.get(self.repo, self.params.id)
