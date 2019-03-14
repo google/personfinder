@@ -15,7 +15,6 @@
 # limitations under the License.
 
 """Tests for the Main handler."""
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
