@@ -16,7 +16,6 @@
 """Unittest for tasks.py module."""
 
 __author__ = 'pfritzsche@google.com (Phil Fritzsche)'
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
