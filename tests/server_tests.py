@@ -27,7 +27,6 @@ Specify -v to show the name of each test as it runs (rather than just dots).
 Specify -s to see the messages printed by all tests as they run (by default,
     stdout/stderr will be captured and then shown only for failing tests).
 """
-# added by Ashutosh Narayan
 
 import sys
 sys.path.append('../app/handlers/')
