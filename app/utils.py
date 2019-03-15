@@ -1101,16 +1101,6 @@ class BaseHandler(webapp.RequestHandler):
                                      self.config.referrer_whitelist):
             setattr(self.params, 'referrer', '')
 
-        # Log the User-Agent header.
-        sample_rate = float(
-            self.config and self.config.user_agent_sample_rate or 0)
-        if random.random() < sample_rate:
-            model.UserAgentLog(
-                repo=self.repo, sample_rate=sample_rate,
-                user_agent=self.request.headers.get('User-Agent'), lang=lang,
-                accept_charset=self.request.headers.get('Accept-Charset', ''),
-                ip_address=self.request.remote_addr).put()
-
         # Check for SSL (unless running local dev app server).
         if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
