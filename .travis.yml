@@ -2,26 +2,31 @@ sudo: required
 
 language: python
 
-python:
-  - 2.7
+matrix:
+  include:
+  - name: "Python 2 tests"
+    python: 2.7
+  - name: "Python 3 tests"
+    python: 3.7
+    # The default is currently Trusty, which doesn't have Python 3.7 available.
+    dist: xenial
 
-services:
-  - docker
-
-env:
-  DOCKER_COMPOSE_VERSION: 1.10.0
-
-install: true 
-
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod a+x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - docker-compose up -d
-
-before_script:
+install:
+  - |
+    sudo apt-get install -y \
+      build-essential \
+      curl \
+      gettext \
+      git \
+      time \
+      unzip
+  - wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.62.zip -O /tmp/appengine.zip
+  - unzip -qq /tmp/appengine.zip
+  - pip install cssselect lxml mock modernize pillow==4.1.0 pytest
   - npm --prefix ui install
 
-script: docker-compose exec web tools/all_tests
+before_script:
+  - export APPENGINE_DIR=google_appengine
 
+script:
+  - tools/travis_tests

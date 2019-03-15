@@ -160,6 +160,11 @@ class AppServerRunner(ProcessRunner):
             # write then test if it's visible in the web page. This flag makes
             # sure that the query see the data after the write is applied.
             '--datastore_consistency_policy=consistent',
+            # We'll get notified if we're behind when we run local instances,
+            # and we don't want this to get in the way of automated tests (it
+            # will stop everything and wait for user input when it asks
+            # permission to check).
+            '--skip_sdk_update_check',
         ])
 
     def flush_output(self):

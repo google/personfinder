@@ -37,6 +37,18 @@ for python in \
     fi
 done
 
+for python3 in \
+    "$PYTHON3" \
+    $(which python3.7) \
+    /usr/local/bin/python3.7 \
+    /usr/bin/python3.7 \
+    /Library/Frameworks/Python.framework/Versions/3.7/bin/python; do
+    if [ -x "$python3" ]; then
+        export PYTHON3="$python3"
+        break
+    fi
+done
+
 if [ -z "$PYTHON" ]; then
     DEFAULT_PYTHON=$(which python)
     if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.7" ]]; then
