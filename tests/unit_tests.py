@@ -21,15 +21,27 @@ which sets up the PYTHONPATH and other necessary environment variables."""
 import argparse
 import os
 import pytest
+import six
 import sys
 
-from google.appengine.api import apiproxy_stub_map
-from google.appengine.api import datastore_file_stub
+# The test files that should be run by default when we're running Python 3.
+PY3_TEST_FILES = [
+    'test_jautils.py',
+    'test_text_query.py',
+]
 
-# Create a new apiproxy and temp datastore to use for this test suite
-apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
-temp_db = datastore_file_stub.DatastoreFileStub('x', None, None, trusted=True)
-apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
+# These dependencies don't support Python 3. Also, they're only used for tests
+# involving App Engine APIs, which we won't be running with Python 3. So, only
+# import them when we're running Python 2.
+if six.PY2:
+    from google.appengine.api import apiproxy_stub_map
+    from google.appengine.api import datastore_file_stub
+
+    # Create a new apiproxy and temp datastore to use for this test suite
+    apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
+    temp_db = datastore_file_stub.DatastoreFileStub(
+        'x', None, None, trusted=True)
+    apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
 
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
@@ -38,6 +50,14 @@ os.environ['SERVER_SOFTWARE'] = 'testing'
 
 # When the appserver is running, the APP_DIR should be the current directory...
 os.chdir(os.environ['APP_DIR'])
+
+if six.PY2:
+    default_test_files = [os.environ['TESTS_DIR']]
+else:
+    default_test_files = [
+        os.path.join(os.environ['TESTS_DIR'], test_file)
+        for test_file in PY3_TEST_FILES
+    ]
 
 # ...but we want pytest to default to finding tests in TESTS_DIR, not the cwd.
 # So, when no arguments are given, we use TESTS_DIR by default for the test
@@ -48,7 +68,7 @@ parser.add_argument('--pyargs', action='store_true')
 parser.add_argument('-q', action='store_true')
 parser.add_argument('-k', type=str,
                     help='Keyword expressions to pass to pytest.')
-parser.add_argument('test_files', nargs='*', default=[os.environ['TESTS_DIR']])
+parser.add_argument('test_files', nargs='*', default=default_test_files)
 args = parser.parse_args()
 pytest_args = []
 if args.tb:
