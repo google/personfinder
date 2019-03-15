@@ -4,8 +4,14 @@ language: python
 
 matrix:
   include:
-  - name: "Python 2 tests"
+  # As of 2019-03-15, App Engine's Python 2.7 runtime uses 2.7.12.
+  - name: "Python 2.7.12 tests"
+    python: 2.7.12
+  # To be safe if/when App Engine upgrades, also run tests on a recent version
+  # of Python 2.7.
+  - name: "Python 2.7.recent tests"
     python: 2.7
+    dist: xenial
   - name: "Python 3 tests"
     python: 3.7
     # The default is currently Trusty, which doesn't have Python 3.7 available.
