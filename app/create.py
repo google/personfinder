@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import requests
+import requests_toolbelt.adapters.appengine
+
 from model import *
 from photo import create_photo, PhotoError
 from utils import *
@@ -22,6 +25,13 @@ import simplejson
 from django.core.validators import URLValidator, ValidationError
 from django.utils.translation import ugettext as _
 from const import NOTE_STATUS_TEXT
+
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+# TODO(nworden): see if we should condition this on the runtime (Python 2 vs. 3)
+requests_toolbelt.adapters.appengine.monkeypatch()
+
 
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
@@ -115,17 +125,11 @@ class Handler(BaseHandler):
                 return self.error(
                     400, _('Please only enter valid profile URLs.'))
 
-        # If nothing was uploaded, just use the photo_url that was provided.
-        photo, photo_url = (None, self.params.photo_url)
-        note_photo, note_photo_url = (None, self.params.note_photo_url)
         try:
-            # If a photo was uploaded, create a Photo entry and get the URL
-            # where we serve it.
-            if self.params.photo is not None:
-                photo, photo_url = create_photo(self.params.photo, self)
-            if self.params.note_photo is not None:
-                note_photo, note_photo_url = \
-                    create_photo(self.params.note_photo, self)
+            photo, photo_url = self._get_photo(
+                self.params.photo, self.params.photo_url)
+            note_photo, note_photo_url = self._get_photo(
+                self.params.note_photo, self.params.note_photo_url)
         except PhotoError, e:
             return self.error(400, e.message)
         # Finally, store the Photo. Past this point, we should NOT self.error.
@@ -268,3 +272,20 @@ class Handler(BaseHandler):
                                  context='create_person')
 
         self.redirect('/view', id=person.record_id)
+
+    def _get_photo(self, photo_upload, photo_url):
+        """Gets a photo based on an upload parameter and a URL parameter.
+
+        Either of the parameters may be used (but not both). Either way, it will
+        return a Photo object and a URL with which to serve it.
+
+        If neither parameter is provided, returns (Note, None).
+        """
+        if photo_upload:
+            return create_photo(photo_upload, self)
+        elif photo_url:
+            response = requests.get(photo_url)
+            image = validate_image(response.content)
+            if image:
+                return create_photo(image, self)
+        return (None, None)
