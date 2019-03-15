@@ -40,6 +40,24 @@ class SizeTooLargeError(PhotoError):
                 'Please upload a smaller one.')
 
 
+def create_photo_with_url(handler, photo_upload, photo_url):
+    """Gets a photo based on an upload parameter and a URL parameter.
+
+    Either of the parameters may be used (but not both). Either way, it will
+    return a Photo object and a URL with which to serve it.
+
+    If neither parameter is provided, returns (Note, None).
+    """
+    if photo_upload:
+        return create_photo(photo_upload, handler)
+    elif photo_url:
+        response = requests.get(photo_url)
+        image = validate_image(response.content)
+        if image:
+            return create_photo(image, handler)
+    return (None, None)
+
+
 def create_photo(image, handler):
     """Creates a new Photo entity for the provided image of type images.Image
     after resizing it and converting to PNG.  It may throw a PhotoError on

@@ -17,7 +17,7 @@ import requests
 import requests_toolbelt.adapters.appengine
 
 from model import *
-from photo import create_photo, PhotoError
+from photo import create_photo_with_url, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import simplejson
@@ -126,10 +126,10 @@ class Handler(BaseHandler):
                     400, _('Please only enter valid profile URLs.'))
 
         try:
-            photo, photo_url = self._get_photo(
-                self.params.photo, self.params.photo_url)
-            note_photo, note_photo_url = self._get_photo(
-                self.params.note_photo, self.params.note_photo_url)
+            photo, photo_url = create_photo_with_url(
+                self, self.params.photo, self.params.photo_url)
+            note_photo, note_photo_url = create_photo_with_url(
+                self, self.params.note_photo, self.params.note_photo_url)
         except PhotoError, e:
             return self.error(400, e.message)
         # Finally, store the Photo. Past this point, we should NOT self.error.
@@ -272,20 +272,3 @@ class Handler(BaseHandler):
                                  context='create_person')
 
         self.redirect('/view', id=person.record_id)
-
-    def _get_photo(self, photo_upload, photo_url):
-        """Gets a photo based on an upload parameter and a URL parameter.
-
-        Either of the parameters may be used (but not both). Either way, it will
-        return a Photo object and a URL with which to serve it.
-
-        If neither parameter is provided, returns (Note, None).
-        """
-        if photo_upload:
-            return create_photo(photo_upload, self)
-        elif photo_url:
-            response = requests.get(photo_url)
-            image = validate_image(response.content)
-            if image:
-                return create_photo(image, self)
-        return (None, None)
