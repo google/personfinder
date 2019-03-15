@@ -189,39 +189,12 @@ def select_charset(request):
 
     If the selected charset is UTF-8, it always returns
     'utf-8' (const.CHARSET_UTF8), not 'utf8', 'UTF-8', etc.
+
+    For now, we always use UTF-8, because supporting anything else with WebOB
+    1.2.3 and webapp2 is impractical. We might revisit this once we migrate to
+    Django, with which it shouldn't be so difficult to support other character
+    sets.
     """
-    # We assume that any client that doesn't support UTF-8 will specify a
-    # preferred encoding in the Accept-Charset header, and will use this
-    # encoding for content, query parameters, and form data.  We make this
-    # assumption across all repositories.
-
-    # Get a list of the charsets that the client supports.
-    if request.get('charsets'):
-        charsets = request.get('charsets').split(',')
-    elif user_agents.prefer_sjis_charset(request):
-        # Some Japanese feature phones don't (fully) support UTF-8.
-        # They only support Shift_JIS. But they may not send Accept-Charset
-        # header. Also, we haven't confirmed, but there may be phones whose
-        # Accept-Charset header includes UTF-8 but its UTF-8 support is buggy.
-        # So we always use Shift_JIS regardless of Accept-Charset header.
-        charsets = ['Shift_JIS']
-    else:
-        charsets = request.accept_charset.best_matches()
-
-    # Always prefer UTF-8 if the client supports it.
-    for charset in charsets:
-        if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-            return const.CHARSET_UTF8
-
-    # Otherwise, look for a requested charset that Python supports.
-    for charset in charsets:
-        try:
-            'xyz'.encode(charset, 'replace')  # test if charset is known
-            return charset
-        except:
-            continue
-
-    # If Python doesn't know any of the requested charsets, use UTF-8.
     return const.CHARSET_UTF8
 
 def select_lang(request, config=None):
@@ -333,11 +306,6 @@ def setup_env(request):
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
     env.rtl = env.lang in const.LANGUAGES_BIDI
-
-    # Used for parsing query params. This must be done before accessing any
-    # query params which may have multi-byte value, such as "given_name" below
-    # in this function.
-    request.charset = env.charset
 
     # Determine the resource bundle to use.
     env.default_resource_bundle = config.get('default_resource_bundle', '1')
