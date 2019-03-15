@@ -16,6 +16,8 @@
 """Handler for retrieving uploaded photos for display."""
 
 import os
+import requests
+import requests_toolbelt.adapters.appengine
 
 import model
 import utils
@@ -23,6 +25,11 @@ import utils
 from django.utils.translation import ugettext_lazy as _
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+# TODO(nworden): see if we should condition this on the runtime (Python 2 vs. 3)
+requests_toolbelt.adapters.appengine.monkeypatch()
 
 MAX_IMAGE_DIMENSION = 300
 MAX_THUMBNAIL_DIMENSION = 80

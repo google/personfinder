@@ -13,9 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import requests
-import requests_toolbelt.adapters.appengine
-
 from model import *
 from photo import create_photo_with_url, PhotoError
 from utils import *
@@ -25,12 +22,6 @@ import simplejson
 from django.core.validators import URLValidator, ValidationError
 from django.utils.translation import ugettext as _
 from const import NOTE_STATUS_TEXT
-
-
-# Use the App Engine Requests adapter. This makes sure that Requests uses
-# URLFetch.
-# TODO(nworden): see if we should condition this on the runtime (Python 2 vs. 3)
-requests_toolbelt.adapters.appengine.monkeypatch()
 
 
 def validate_date(string):
