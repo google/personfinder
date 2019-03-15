@@ -13,7 +13,6 @@ import unittest
 
 class TextQueryTests(unittest.TestCase):
     def test_normalize(self):
-        print 'oh no, a Python 2 print statement'
         assert text_query.normalize(u'hi there') == u'HI THERE'
         assert text_query.normalize(u'salut l\xe0') == u'SALUT LA'
         assert text_query.normalize(

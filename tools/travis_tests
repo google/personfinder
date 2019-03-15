@@ -20,6 +20,9 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
+# Print the Python version, it's useful to have for debugging.
+python -V
+
 case "${TRAVIS_PYTHON_VERSION}" in
 
     "2.7")
