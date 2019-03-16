@@ -58,7 +58,7 @@ class Handler(BaseHandler):
         min_time = max_time - timedelta(7)
 
         # Gather the data into a table, with a column for each repository.  See:
-        # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
+        # https://developers.google.com/chart/interactive/docs/reference?csw=1#dataparam
         active_repos = sorted(Repo.list_active())
         launched_repos = sorted(Repo.list_launched())
         if self.repo:

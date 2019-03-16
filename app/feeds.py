@@ -85,7 +85,7 @@ class Person(utils.BaseHandler):
             notes = model.Note.get_by_person_record_id(
                 self.repo, person['person_record_id'])
             # Show hidden notes as blank in the Person feed (melwitt)
-            # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+            # https://web.archive.org/web/20111228161607/http://code.google.com/p/googlepersonfinder/issues/detail?id=58
             make_hidden_notes_blank(notes)
 
             records = map(pfif_version.note_to_dict, notes)
@@ -158,7 +158,7 @@ class Note(utils.BaseHandler):
         updated = get_latest_entry_date(notes)
 
         # Show hidden notes as blank in the Note feed (melwitt)
-        # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+        # https://web.archive.org/web/20111228161607/http://code.google.com/p/googlepersonfinder/issues/detail?id=58
         make_hidden_notes_blank(notes)
 
         self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'

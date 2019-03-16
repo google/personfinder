@@ -36,7 +36,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
-    # See http://code.google.com/p/googleappengine/issues/detail?id=985
+    # See https://web.archive.org/web/20160916120959/http://code.google.com/p/googleappengine/issues/detail?id=985
     import urllib
     urllib.getproxies_macosx_sysconf = lambda: {}
 
