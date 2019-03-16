@@ -51,7 +51,7 @@
     return true;
   }
 
-  jQuery(function() {
+  document.addEventListener('DOMContentLoaded', function() {
     $('write_permission').checked =
         $('domain_write_permission').value.length > 0;
     update_write_domain();

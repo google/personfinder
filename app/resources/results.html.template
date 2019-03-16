@@ -46,16 +46,20 @@
       // third party search API directly here, to workaround AJAX's same
       // origin policy, and for authorization.
       function perform_third_party_search(id) {
-        jQuery.ajax({
-            url: repo_url + '/third_party_search',
-            data: {
-                query: query,
-                lang: lang,
-                query_type: query_type,
-                search_engine_id: id
-            },
-            dataType: 'json'
-        }).done(function(r) {
+        fetch(repo_url + '/third_party_search', {
+	  method: 'POST',
+	  body: JSON.stringify({
+	    query: query,
+	    lang: lang,
+	    query_type: query_type,
+	    search_engine_id: id,
+	  }),
+	  headers: {
+	    'Content-Type': 'application/json',
+	  },
+	})
+	.then(r => r.json())
+        .then(function(r) {
           console_log('Third-party search response: ', r);
           if (r.status == 'OK') {
             if (typeof(r.url) != 'string') {
@@ -64,15 +68,18 @@
                   'not a string');
               return;
             }
-            jQuery('#third_party_search_result_link' + id).attr('href', r.url);
-            jQuery('#third_party_search_result' + id).show();
+            document.querySelector(
+                '#third_party_search_result_link' + id).href = r.url;
+            document.querySelector(
+                '#third_party_search_result' + id).style.display = 'inline';
           }
-        }).fail(function(r) {
+        })
+	.catch(function(r) {
           console_error('Third-party search request has failed: ', r);
         });
       }
 
-      jQuery(document).ready(function() {
+      document.addEventListener('DOMContentLoaded', function() {
         for (var i = 0; i < num_third_party_search_engines; ++i) {
           perform_third_party_search(i);
         }

@@ -367,22 +367,25 @@ function validate_fields() {
 }
 
 // Make it possible to expand the form to see the detail form
-function make_form_expandable(expandedSection) {
-  var expandedPart = jQuery(expandedSection).find("div.expanded-part");
-  var expandButton = jQuery(expandedSection).find("a.expand-button");
+function make_form_expandable(expandedSectionSelector) {
+  var expandedSection = document.querySelector(expandedSectionSelector);
+  if (expandedSection == null) {
+    return;
+  }
+  var expandedPart = expandedSection.querySelector('div.expanded-part');
+  var expandButton = expandedSection.querySelector('a.expand-button');
 
-  expandedPart.hide();
-  expandButton.click(function() {
-    if (expandedPart.is(":visible")) {
-      expandedPart.slideUp("slow");
-      expandButton.removeClass(
-        'expand-button-icon-up').addClass('expand-button-icon-down');
+  expandedPart.style.display = 'none';
+  expandButton.addEventListener('click', function() {
+    if (expandedPart.style.display == 'block') {
+      expandedPart.style.display = 'none';
+      expandButton.classList.remove('expand-button-icon-up');
+      expandButton.classList.add('expand-button-icon-down');
     } else {
-      expandedPart.slideDown("slow");
-      expandButton.removeClass(
-        'expand-button-icon-down').addClass('expand-button-icon-up');
+      expandedPart.style.display = 'block';
+      expandButton.classList.remove('expand-button-icon-down');
+      expandButton.classList.add('expand-button-icon-up');
     }
-    return false;
   });
 }
 
