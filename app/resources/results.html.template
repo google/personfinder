@@ -47,18 +47,18 @@
       // origin policy, and for authorization.
       function perform_third_party_search(id) {
         fetch(repo_url + '/third_party_search', {
-	  method: 'POST',
-	  body: JSON.stringify({
-	    query: query,
-	    lang: lang,
-	    query_type: query_type,
-	    search_engine_id: id,
-	  }),
-	  headers: {
-	    'Content-Type': 'application/json',
-	  },
-	})
-	.then(r => r.json())
+          method: 'POST',
+          body: JSON.stringify({
+            query: query,
+            lang: lang,
+            query_type: query_type,
+            search_engine_id: id,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(r => r.json())
         .then(function(r) {
           console_log('Third-party search response: ', r);
           if (r.status == 'OK') {
@@ -74,7 +74,7 @@
                 '#third_party_search_result' + id).style.display = 'inline';
           }
         })
-	.catch(function(r) {
+        .catch(function(r) {
           console_error('Third-party search request has failed: ', r);
         });
       }
