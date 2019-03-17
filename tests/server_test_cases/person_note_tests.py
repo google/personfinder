@@ -3596,50 +3596,6 @@ _feed_profile_url2</pfif:profile_urls>
             self.go('/pakistan/photo?id=%s' % id)
             assert self.s.status == 404
 
-    def test_xss_photo(self):
-        person, note = self.setup_person_and_note()
-        photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
-        for record in [person, note]:
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-            record.photo_url = 'http://xyz.com/abc.jpg'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert '//xyz.com/abc.jpg' in doc.content
-            record.photo_url = 'bad_things://xyz'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-
-    def test_xss_source_url(self):
-        person, note = self.setup_person_and_note()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.source_url in doc.content
-        person.source_url = 'javascript:alert(1);'
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.source_url not in doc.content
-
-    def test_xss_profile_urls(self):
-        profile_urls = ['http://abc.com', 'http://def.org', 'http://ghi.net']
-        person, note = self.setup_person_and_note()
-        person.profile_urls = '\n'.join(profile_urls)
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        for profile_url in profile_urls:
-            assert profile_url in doc.content
-        XSS_URL_INDEX = 1
-        profile_urls[XSS_URL_INDEX] = 'javascript:alert(1);'
-        person.profile_urls = '\n'.join(profile_urls)
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        for i, profile_url in enumerate(profile_urls):
-            if i == XSS_URL_INDEX:
-                assert profile_url not in doc.content
-            else:
-                assert profile_url in doc.content
-
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
         person, note = self.setup_person_and_note()
