@@ -47,7 +47,7 @@ class FeedTests(ServerTestsBase):
         doc = self.go('/haiti/feeds/repo')
         expected_content = '''\
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
+<feed xmlns="https://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
       xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/haiti/feeds/repo</id>
@@ -61,7 +61,7 @@ class FeedTests(ServerTestsBase):
         doc = self.go('/haiti/feeds/repo')
         expected_content = u'''\
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
+<feed xmlns="https://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
       xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/haiti/feeds/repo</id>
@@ -111,7 +111,7 @@ class FeedTests(ServerTestsBase):
         doc = self.go('/global/feeds/repo')
         expected_content = u'''\
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
+<feed xmlns="https://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
       xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/global/feeds/repo</id>
