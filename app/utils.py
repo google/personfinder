@@ -1014,7 +1014,7 @@ class BaseHandler(webapp.RequestHandler):
         # repository name in URLs. This is especially useful combined with
         # the short URL. e.g., You can access
         # https://www.google.org/personfinder/2014-jammu-kashmir-floods
-        # by http://g.co/pf/jam .
+        # by https://g.co/pf/jam .
         if not self.repo:
             return False
         repo_aliases = config.get('repo_aliases', default={})
