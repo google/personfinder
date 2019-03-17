@@ -55,7 +55,7 @@ def create_photo_with_url(handler, photo_upload, photo_url):
 
     If neither parameter is provided, returns (Note, None).
     """
-    if photo_upload:
+    if photo_upload is not None:
         return create_photo(photo_upload, handler)
     elif photo_url:
         response = requests.get(photo_url)
