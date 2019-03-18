@@ -3163,7 +3163,7 @@ _feed_profile_url2</pfif:profile_urls>
     def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
-        # See: http://www.w3.org/TR/REC-xml/#charsets
+        # See: https://www.w3.org/TR/REC-xml/#charsets
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
