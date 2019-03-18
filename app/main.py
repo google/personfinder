@@ -298,9 +298,9 @@ def setup_env(request):
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
 
-    env.analytics_id = config.get('analytics_id')
-    env.amp_gtm_id = config.get('amp_gtm_id')
-    env.maps_api_key = config.get('maps_api_key')
+    env.analytics_id = env.config.get('analytics_id')
+    env.amp_gtm_id = env.config.get('amp_gtm_id')
+    env.maps_api_key = env.config.get('maps_api_key')
 
     # Internationalization-related stuff.
     env.charset = select_charset(request)
@@ -308,7 +308,8 @@ def setup_env(request):
     env.rtl = env.lang in const.LANGUAGES_BIDI
 
     # Determine the resource bundle to use.
-    env.default_resource_bundle = config.get('default_resource_bundle', '1')
+    env.default_resource_bundle = (
+        env.config.get('default_resource_bundle') or '1')
     env.resource_bundle = (request.cookies.get('resource_bundle', '') or
                            env.default_resource_bundle)
 
@@ -560,7 +561,7 @@ class Main(webapp.RequestHandler):
         # If the Person Finder instance has not been initialized yet,
         # prepend to any served page a warning and a link to the admin
         # page where the datastore can be initialized.
-        if not config.get('initialized'):
+        if not env.config.get('initialized'):
             if request.get('operation') == 'setup_datastore':
                 setup_pf.setup_datastore()
                 self.redirect(env.global_url + '/')
@@ -571,7 +572,7 @@ class Main(webapp.RequestHandler):
                         (env.repo, env.charset), get_vars)
                 response.out.write(content)
 
-        if config.get('enable_react_ui'):
+        if env.config.get('enable_react_ui'):
             # TODO(nworden): serve static files from /global/static
             if env.repo == 'static':
                 self.serve_static_content(self.env.action)

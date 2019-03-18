@@ -122,7 +122,7 @@ class Handler(BaseHandler):
 
         form_action = self.get_url('/subscribe', id=self.params.id)
         back_url = self.get_url('/view', id=self.params.id)
-        site_key = config.get('captcha_site_key')
+        site_key = self.config.get('captcha_site_key')
         self.render('subscribe_captcha.html',
                     site_key=site_key,
                     person=person,
@@ -142,7 +142,7 @@ class Handler(BaseHandler):
         if not validate_email(self.params.subscribe_email):
             # Invalid email
             captcha_html = self.get_captcha_html()
-            site_key = config.get('captcha_site_key')
+            site_key = self.config.get('captcha_site_key')
             form_action = self.get_url('/subscribe', id=self.params.id)
             return self.render('subscribe_captcha.html',
                                person=person,
@@ -160,7 +160,7 @@ class Handler(BaseHandler):
         if not captcha_response.is_valid:
             # Captcha is incorrect
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            site_key = config.get('captcha_site_key')
+            site_key = self.config.get('captcha_site_key')
             form_action = self.get_url('/subscribe', id=self.params.id)
             return self.render('subscribe_captcha.html',
                                person=person,
