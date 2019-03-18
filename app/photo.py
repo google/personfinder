@@ -47,29 +47,16 @@ class SizeTooLargeError(PhotoError):
                 'Please upload a smaller one.')
 
 
-def create_photo_with_url(handler, photo_upload, photo_url):
-    """Gets a photo based on an upload parameter and a URL parameter.
-
-    Either of the parameters may be used (but not both). Either way, it will
-    return a Photo object and a URL with which to serve it.
-
-    If neither parameter is provided, returns (None, None).
-
-    Args:
-      handler: a request handler (needed to generate URLs)
-      photo_upload: optional; an images.Image for an uploaded photo
-      photo_url: optional; a user-provided URL for a photo
+def create_photo_from_url(handler, photo_url):
+    """Creates a photo from a URL.
 
     Returns:
       A tuple with an Image and URL with which to serve it, or (None, None) if
-      neither an uploaded photo nor a URL was provided.
+      the image is invalid.
     """
-    if photo_upload is not None:
-        return create_photo(photo_upload, handler)
-    elif photo_url:
-        response = requests.get(photo_url)
-        image = utils.validate_image(response.content)
-        if image:
+    response = requests.get(photo_url)
+    image = utils.validate_image(response.content)
+    if image:
             return create_photo(image, handler)
     return (None, None)
 

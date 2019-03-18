@@ -143,7 +143,7 @@ class PhotoTests(ServerTestsBase):
         handler.get_url.return_value = 'photo_url_value'
         with mock.patch('requests.get') as mock_requests_get:
             mock_requests_get.return_value = photo_response
-            res = photo.create_photo_with_url(handler, None, photo_url)
+            res = photo.create_photo_from_url(handler, photo_url)
             mock_requests_get.assert_called_once_with(photo_url)
             res_image = images.Image(res[0].image_data)
             assert res_image.height == 40

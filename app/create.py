@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from model import *
-from photo import create_photo_with_url, PhotoError
+from photo import create_photo, create_photo_from_url, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import simplejson
@@ -36,6 +36,29 @@ def days_to_date(days):
     Returns:
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
+
+def create_photo_from_input(handler, photo_upload, photo_url):
+    """Creates a photo from a user-provided photo or URL.
+
+    Either of the parameters may be used (but not both). Either way, it will
+    return a Photo object and a URL with which to serve it.
+
+    If neither parameter is provided, returns (None, None).
+
+    Args:
+      handler: a request handler (needed to generate URLs)
+      photo_upload: optional; an images.Image for an uploaded photo
+      photo_url: optional; a user-provided URL for a photo
+
+    Returns:
+      A tuple with an Image and URL with which to serve it, or (None, None) if
+      neither an uploaded photo nor a URL was provided.
+    """
+    if photo_upload is not None:
+        return create_photo(photo_upload, handler)
+    elif photo_url:
+        return create_photo_from_url(handler, photo_url)
+    return (None, None)
 
 
 class Handler(BaseHandler):
@@ -116,9 +139,9 @@ class Handler(BaseHandler):
                     400, _('Please only enter valid profile URLs.'))
 
         try:
-            photo, photo_url = create_photo_with_url(
+            photo, photo_url = create_photo_from_input(
                 self, self.params.photo, self.params.photo_url)
-            note_photo, note_photo_url = create_photo_with_url(
+            note_photo, note_photo_url = create_photo_from_input(
                 self, self.params.note_photo, self.params.note_photo_url)
         except PhotoError, e:
             return self.error(400, e.message)
