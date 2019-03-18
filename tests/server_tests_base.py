@@ -38,7 +38,6 @@ import config
 from const import ROOT_URL, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 import download_feed
 from model import *
-from photo import MAX_IMAGE_DIMENSION
 import remote_api
 from resources import Resource, ResourceBundle
 import reveal

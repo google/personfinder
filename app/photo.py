@@ -16,6 +16,8 @@
 """Handler for retrieving uploaded photos for display."""
 
 import os
+import requests
+import requests_toolbelt.adapters.appengine
 
 import model
 import utils
@@ -23,6 +25,11 @@ import utils
 from django.utils.translation import ugettext_lazy as _
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
+
+# Use the App Engine Requests adapter. This makes sure that Requests uses
+# URLFetch.
+# TODO(nworden): see if we should condition this on the runtime (Python 2 vs. 3)
+requests_toolbelt.adapters.appengine.monkeypatch()
 
 MAX_IMAGE_DIMENSION = 300
 MAX_THUMBNAIL_DIMENSION = 80
@@ -38,6 +45,20 @@ class FormatUnrecognizedError(PhotoError):
 class SizeTooLargeError(PhotoError):
     message = _('The provided image is too large.  '
                 'Please upload a smaller one.')
+
+
+def create_photo_from_url(photo_url, handler):
+    """Creates a photo from a URL.
+
+    Returns:
+      A tuple with an Image and URL with which to serve it, or (None, None) if
+      the image is invalid.
+    """
+    response = requests.get(photo_url)
+    image = utils.validate_image(response.content)
+    if image:
+            return create_photo(image, handler)
+    return (None, None)
 
 
 def create_photo(image, handler):
