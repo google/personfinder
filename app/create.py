@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import copy
 from model import *
 from photo import create_photo, PhotoError
 from utils import *
@@ -41,8 +42,11 @@ def days_to_date(days):
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
-        profile_websites = [add_profile_icon_url(website, self)
-                for website in self.config.profile_websites or []]
+        profile_websites = [
+            # add_profile_icon_url is going to modify website, so we make a copy
+            # of the config setting to avoid modifying the original.
+            add_profile_icon_url(website, self)
+            for website in copy.deepcopy(self.config.profile_websites) or []]
         self.render('create.html',
                     profile_websites=profile_websites,
                     profile_websites_json=simplejson.dumps(profile_websites),

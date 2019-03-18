@@ -163,6 +163,13 @@ def set_for_repo(repo, **kwargs):
 class Configuration(UserDict.DictMixin):
     def __init__(self, repo):
         self.repo = repo
+        db_entries = model.filter_by_prefix(
+            ConfigEntry.all(), self.repo + ':')
+        self.entries = {
+            entry.key().name().split(':', 1)[1]: simplejson.loads(entry.value)
+            for entry in db_entries
+        }
+        self.global_config = None if repo == '*' else Configuration('*')
 
     def __nonzero__(self):
         return True
@@ -180,8 +187,11 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this repository.  Looks for a
         repository-specific setting, then falls back to a global setting."""
-        return get_for_repo(self.repo, name)
+        if name in self.entries:
+            return self.entries[name]
+        elif self.global_config:
+            return self.global_config[name]
+        return None
 
     def keys(self):
-        entries = model.filter_by_prefix(ConfigEntry.all(), self.repo + ':')
-        return [entry.key().name().split(':', 1)[1] for entry in entries]
+        return self.entries.keys()
