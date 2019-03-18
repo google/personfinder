@@ -54,6 +54,15 @@ def create_photo_with_url(handler, photo_upload, photo_url):
     return a Photo object and a URL with which to serve it.
 
     If neither parameter is provided, returns (None, None).
+
+    Args:
+      handler: a request handler (needed to generate URLs)
+      photo_upload: optional; an images.Image for an uploaded photo
+      photo_url: optional; a user-provided URL for a photo
+
+    Returns:
+      A tuple with an Image and URL with which to serve it, or (None, None) if
+      neither an uploaded photo nor a URL was provided.
     """
     if photo_upload is not None:
         return create_photo(photo_upload, handler)
