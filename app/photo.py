@@ -47,7 +47,7 @@ class SizeTooLargeError(PhotoError):
                 'Please upload a smaller one.')
 
 
-def create_photo_from_url(handler, photo_url):
+def create_photo_from_url(photo_url, handler):
     """Creates a photo from a URL.
 
     Returns:

@@ -61,7 +61,7 @@ def create_photo_from_input(handler, photo_upload, photo_url):
     if photo_upload is not None:
         return create_photo(photo_upload, handler)
     elif photo_url:
-        return create_photo_from_url(handler, photo_url)
+        return create_photo_from_url(photo_url, handler)
     return (None, None)
 
 
