@@ -37,6 +37,10 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
+# TODO(nworden): find a more appropriate place for this
+# This function is going to get used by other record/note-creation code (the CSV
+# importer, the React frontend's API, and the partner API). Those things should
+# share a bunch of code, but I haven't made a place for it yet.
 def create_photo_from_input(handler, photo_upload, photo_url):
     """Creates a photo from a user-provided photo or URL.
 
