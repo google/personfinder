@@ -74,7 +74,7 @@ class AtomRepoVersion:
 
     def write_feed(self, file, repos, url, title, updated):
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        file.write('<feed xmlns="https://www.w3.org/2005/Atom"\n')
+        file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
         file.write('      xmlns:gpf="%s"\n' % self.GPF_NAMESPACE_URI)
         file.write('      xmlns:georss="%s">\n' % self.GEORSS_NAMESPACE_URI)
         indent = '  '
@@ -140,7 +140,7 @@ class AtomPfifVersion:
         of note records for each person, and writes a PFIF Atom feed to the
         given file."""
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        file.write('<feed xmlns="https://www.w3.org/2005/Atom"\n')
+        file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
         file.write('      xmlns:pfif="%s">\n' % self.pfif_version.ns)
         write_element(file, 'id', url, '  ')
         write_element(file, 'title', title, '  ')
@@ -171,7 +171,7 @@ class AtomPfifVersion:
     def write_note_feed(self, file, notes, url, title, subtitle, updated):
         """Takes a list of notes and writes a PFIF Atom feed to a file."""
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        file.write('<feed xmlns="https://www.w3.org/2005/Atom"\n')
+        file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
         file.write('      xmlns:pfif="%s">\n' % self.pfif_version.ns)
         write_element(file, 'id', url, '  ')
         write_element(file, 'title', title, '  ')

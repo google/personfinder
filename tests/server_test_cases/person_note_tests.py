@@ -2898,7 +2898,7 @@ _read_profile_url2</pfif:profile_urls>
         # entry_date is probably a better choice.
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
@@ -2968,7 +2968,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Test the omit_notes parameter.
         doc = self.go('/haiti/feeds/person?omit_notes=yes')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person?omit_notes=yes</id>
   <title>%s</title>
@@ -3022,7 +3022,7 @@ _feed_profile_url2</pfif:profile_urls>
         # Fetch the entry, with full read authorization.
         doc = self.go('/haiti/feeds/person?key=full_read_key')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person?key=full_read_key</id>
   <title>%s</title>
@@ -3126,7 +3126,7 @@ _feed_profile_url2</pfif:profile_urls>
         # utils.filter_sensitive_fields).
         doc = self.go('/haiti/feeds/note')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/note</id>
   <title>%s</title>
@@ -3180,7 +3180,7 @@ _feed_profile_url2</pfif:profile_urls>
         # utils.filter_sensitive_fields).
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
@@ -3237,7 +3237,7 @@ _feed_profile_url2</pfif:profile_urls>
         # utils.filter_sensitive_fields).
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
@@ -4101,7 +4101,7 @@ _feed_profile_url2</pfif:profile_urls>
         # The outgoing person feed should contain an expired record.
         doc = self.go('/haiti/feeds/person')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
@@ -4132,7 +4132,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         doc = self.go('/haiti/feeds/person?version=1.3')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
   <title>%s</title>
@@ -4163,7 +4163,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         doc = self.go('/haiti/feeds/person?version=1.2')  # PFIF 1.2
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/personfinder/haiti/feeds/person?version=1.2</id>
   <title>%s</title>
@@ -4277,7 +4277,7 @@ _feed_profile_url2</pfif:profile_urls>
         # The outgoing feed should contain a complete record also.
         doc = self.go('/haiti/feeds/person')  # PFIF 1.4
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom"
+<feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.4">
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
