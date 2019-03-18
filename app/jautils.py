@@ -23,7 +23,8 @@ import unicodedata
 
 
 # Hiragana to romaji.
-# This table is copied from: http://code.google.com/p/mozc/source/browse/trunk/src/data/preedit/hiragana-romanji.tsv
+# This table is copied from:
+# https://github.com/google/mozc/blob/master/src/data/preedit/hiragana-romanji.tsv
 HIRAGANA_TO_ROMAJI = [
     [u"う゛ぁ", u"VA", u""],
     [u"う゛ぃ", u"VI", u""],

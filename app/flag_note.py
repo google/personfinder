@@ -52,7 +52,7 @@ class Handler(utils.BaseHandler):
         if not note.hidden or captcha_response.is_valid:
             note.hidden = not note.hidden
             # When "hidden" changes, update source_date and entry_date (melwitt)
-            # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+            # https://web.archive.org/web/20111228161607/http://code.google.com/p/googlepersonfinder/issues/detail?id=58
             now = utils.get_utcnow()
             note.source_date = now
             note.entry_date = now
