@@ -104,6 +104,16 @@ class ConfigTests(ServerTestsBase):
         # the global domain is retrieved.
         assert cfg_sub.translate_api_key == 'global_hijk'
 
+    def test_no_exception_for_unset_key(self):
+        # Tests that a config will return None, and not throw an exception, when
+        # asked for the value of an unknown key.
+        config.set_for_repo('*', good_key_1='abc', good_key_2='def')
+        config.set_for_repo('foo', good_key_1='ghi')
+        cfg = config.Configuration('foo')
+        assert cfg['good_key_1'] == 'ghi'
+        assert cfg['good_key_2'] == 'def'
+        assert cfg['unknown_key'] == None
+
     def test_repo_admin_page(self):
         # Load the page to create a repository.
         doc = self.go_as_admin('/global/admin/create_repo')
