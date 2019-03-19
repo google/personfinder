@@ -15,7 +15,6 @@
 
 from google.appengine.api import datastore_errors
 
-import copy
 from model import *
 from photo import create_photo, PhotoError
 from utils import *
@@ -41,9 +40,7 @@ def get_profile_pages(profile_urls, handler):
         profile_page = {
             'name': urlparse.urlparse(profile_url).hostname,
             'url': profile_url }
-        # add_profile_icon_url is going to modify website, so we make a copy of
-        # the config setting to avoid modifying the original.
-        for website in copy.deepcopy(handler.config.profile_websites) or []:
+        for website in handler.config.profile_websites or []:
             if ('url_regexp' in website and
                 re.match(website['url_regexp'], profile_url)):
                 profile_page = add_profile_icon_url(website, handler)

@@ -19,6 +19,7 @@ from django_setup import ugettext as _  # always keep this first
 
 import calendar
 import cgi
+import copy
 from datetime import datetime, timedelta
 import hmac
 import httplib
@@ -614,6 +615,7 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
 
 
 def add_profile_icon_url(website, handler):
+    website = copy.deepcopy(website) # avoid modifying the original
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
