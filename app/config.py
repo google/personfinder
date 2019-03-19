@@ -163,6 +163,8 @@ def set_for_repo(repo, **kwargs):
 class Configuration(UserDict.DictMixin):
     def __init__(self, repo):
         self.repo = repo
+        # We fetch all the config entries at once here, so that we don't have to
+        # make many Datastore queries for each individual entry later.
         db_entries = model.filter_by_prefix(
             ConfigEntry.all(), self.repo + ':')
         self.entries = {
