@@ -195,5 +195,8 @@ class Configuration(UserDict.DictMixin):
             return self.global_config[name]
         return None
 
+    def get(self, name, default=None):
+        return self[name] or default
+
     def keys(self):
         return self.entries.keys()

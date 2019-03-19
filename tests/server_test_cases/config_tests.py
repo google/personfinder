@@ -114,6 +114,11 @@ class ConfigTests(ServerTestsBase):
         assert cfg['good_key_2'] == 'def'
         assert cfg['unknown_key'] == None
 
+    def test_get_with_default(self):
+        config.set_for_repo('foo', key_1='abc')
+        cfg = config.Configuration('foo')
+        assert cfg.get('unknown_key', 'default_value') == 'default_value'
+
     def test_repo_admin_page(self):
         # Load the page to create a repository.
         doc = self.go_as_admin('/global/admin/create_repo')

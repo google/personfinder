@@ -308,8 +308,7 @@ def setup_env(request):
     env.rtl = env.lang in const.LANGUAGES_BIDI
 
     # Determine the resource bundle to use.
-    env.default_resource_bundle = (
-        env.config.get('default_resource_bundle') or '1')
+    env.default_resource_bundle = env.config.get('default_resource_bundle', '1')
     env.resource_bundle = (request.cookies.get('resource_bundle', '') or
                            env.default_resource_bundle)
 
