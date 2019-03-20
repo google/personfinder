@@ -237,7 +237,7 @@ def validate_approximate_date(string):
     return ''
 
 
-AGE_RE = re.compile(r'^\d+(-\d+)?$')
+AGE_RE = re.compile(r'^(\d+)(-(\d+))?$')
 # Hyphen with possibly surrounding whitespaces.
 HYPHEN_RE = re.compile(
     ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
@@ -365,6 +365,31 @@ def validate_cache_seconds(string):
     if string:
         return float(string)
     return 1.0
+
+
+# ==== Fuzzification functions =================================================
+
+# The range should be no more specific than a five year period.
+MIN_AGE_RANGE = 5
+
+def fuzzify_age(value):
+    parse = AGE_RE.match(value)
+    if not parse:
+        raise ValueError('Invalid age value.')
+    range_start = int(parse.group(1))
+    range_end = int(parse.group(3)) if parse.group(3) else None
+    if not range_end:
+        # If no range was given, use a round five years around the given age.
+        range_start -= range_start % MIN_AGE_RANGE
+        return '%d-%d' % (range_start, range_start + MIN_AGE_RANGE)
+    if (range_end - range_start) >= MIN_AGE_RANGE:
+        # If the range we were given is already acceptably wide, leave it as-is.
+        return value
+    # If we were given too specific a range, pad it out to a round five year
+    # range.
+    range_start -= range_start % MIN_AGE_RANGE
+    range_end += MIN_AGE_RANGE - ((range_end) % MIN_AGE_RANGE)
+    return '%d-%d' % (range_start, range_end)
 
 
 # ==== Other utilities =========================================================
