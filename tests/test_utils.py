@@ -189,6 +189,8 @@ class UtilsTests(unittest.TestCase):
         assert utils.fuzzify_age('21-22') == '20-25'
         assert utils.fuzzify_age('40-48') == '40-48'
         assert utils.fuzzify_age('40-40') == '40-45'
+        assert utils.fuzzify_age(None) == None
+        raises (ValueError, utils.fuzzify_age, 'banana')
 
     def test_set_utcnow_for_test(self):
         max_delta = datetime.timedelta(0,0,100)

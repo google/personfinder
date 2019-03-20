@@ -373,6 +373,8 @@ def validate_cache_seconds(string):
 MIN_AGE_RANGE = 5
 
 def fuzzify_age(value):
+    if not value:
+        return None
     parse = AGE_RE.match(value)
     if not parse:
         raise ValueError('Invalid age value.')
