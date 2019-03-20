@@ -125,6 +125,10 @@ class ConfigEntry(db.Model):
     value = db.TextProperty(default='')
 
 
+# If calling from code where a Configuration object is available (e.g., from
+# within a handler), prefer Configuration.get. Configuration objects get all
+# config entries when they're initialized, so they don't need to make an
+# additional Datastore query.
 def get(name, default=None, repo='*'):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
@@ -145,6 +149,10 @@ def set(repo='*', **kwargs):
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(repo)
 
+# If calling from code where a Configuration object is available (e.g., from
+# within a handler), prefer Configuration.get. Configuration objects get all
+# config entries when they're initialized, so they don't need to make an
+# additional Datastore query.
 def get_for_repo(repo, name, default=None):
     """Gets a configuration setting for a particular repository.  Looks for a
     setting specific to the repository, then falls back to a global setting."""

@@ -112,7 +112,7 @@ class ConfigTests(ServerTestsBase):
         cfg = config.Configuration('foo')
         assert cfg['good_key_1'] == 'ghi'
         assert cfg['good_key_2'] == 'def'
-        assert cfg['unknown_key'] == None
+        assert cfg['unknown_key'] is None
 
     def test_get_with_default(self):
         config.set_for_repo('foo', key_1='abc')

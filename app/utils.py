@@ -615,7 +615,7 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
 
 
 def add_profile_icon_url(website, handler):
-    website = copy.deepcopy(website) # avoid modifying the original
+    website = copy.deepcopy(website)  # avoid modifying the original
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
