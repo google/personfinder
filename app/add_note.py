@@ -15,8 +15,9 @@
 
 from google.appengine.api import datastore_errors
 
+from create import create_photo_from_input
 from model import *
-from photo import create_photo, PhotoError
+from photo import PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
@@ -95,14 +96,12 @@ class Handler(BaseHandler):
                 400, _('The author has disabled status updates '
                        'on this record.'))
 
-        # If a photo was uploaded, create and store a new Photo entry and get
-        # the URL where it's served; otherwise, use the note_photo_url provided.
-        photo, photo_url = (None, self.params.note_photo_url)
-        if self.params.note_photo is not None:
-            try:
-                photo, photo_url = create_photo(self.params.note_photo, self)
-            except PhotoError, e:
-                return self.error(400, e.message)
+        try:
+            photo, photo_url = create_photo_from_input(
+                self, self.params.note_photo, self.params.note_photo_url)
+        except PhotoError, e:
+            return self.error(400, e.message)
+        if photo:
             photo.put()
 
         spam_detector = SpamDetector(self.config.bad_words)
