@@ -163,18 +163,14 @@
             </div>
           {% endif %}
 
-          {% if person.photo_url %}
+          {% if person.local_photo_url_no_scheme %}
             <div class="photo section">
               <h2>{% trans "Photo" %}</h2>
               <div class="field">
                 <span class="centered-photo">
-                  <a href="{{person.photo_url_no_scheme}}">
-                    {% if person.should_show_inline_photo %}
-                      <img src="{{person.photo_url_no_scheme}}"
-                          class="photo" alt="[PHOTO]">
-                    {% else %}
-                      {% trans "Photo (external site; normal connection fee may apply)" %}
-                    {% endif %}
+                  <a href="{{person.local_photo_url_no_scheme}}">
+                    <img src="{{person.local_photo_url_no_scheme}}"
+                        class="photo" alt="[PHOTO]">
                   </a>
                 </span>
               </div>

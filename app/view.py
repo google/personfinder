@@ -77,8 +77,11 @@ class Handler(BaseHandler):
         person.expiry_time_local_string = self.to_formatted_local_time(
             person.get_effective_expiry_date())
 
-        person.should_show_inline_photo = (
-            self.should_show_inline_photo(person.photo_url))
+        if person.photo:
+            # TODO (nworden): see if there's a reason these need to not include
+            # the scheme.
+            person.local_photo_url_no_scheme = utils.strip_url_scheme(
+                photo.get_photo_url(person.photo, self))
 
         # Get the notes and duplicate links.
         try:
@@ -177,5 +180,6 @@ class Handler(BaseHandler):
                          signature=self.params.signature)
         note.source_datetime_local_string = self.to_formatted_local_datetime(
             note.source_date)
-        note.should_show_inline_photo = self.should_show_inline_photo(
-            note.photo_url)
+        if note.photo:
+            note.local_photo_url_no_scheme = utils.strip_url_scheme(
+                photo.get_photo_url(note.photo, self))

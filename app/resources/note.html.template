@@ -100,14 +100,10 @@
         </div>
       {% endif %}
     {% endif %}
-    {% if note.photo_url %}
+    {% if note.local_photo_url_no_scheme %}
       <div>
-        <a href="{{note.photo_url_no_scheme}}">
-          {% if note.should_show_inline_photo %}
-            <img src="{{note.photo_url_no_scheme}}" class="photo">
-          {% else %}
-            {% trans "Photo (external site; normal connection fee may apply)" %}
-          {% endif %}
+        <a href="{{note.local_photo_url_no_scheme}}">
+          <img src="{{note.local_photo_url_no_scheme}}" class="photo">
         </a>
       </div>
     {% endif %}
