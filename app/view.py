@@ -80,7 +80,7 @@ class Handler(BaseHandler):
         if person.photo:
             # TODO (nworden): see if there's a reason these need to not include
             # the scheme.
-            person.local_photo_url_no_scheme = utils.strip_url_scheme(
+            person.local_photo_url_no_scheme = strip_url_scheme(
                 photo.get_photo_url(person.photo, self))
 
         # Get the notes and duplicate links.
@@ -181,5 +181,5 @@ class Handler(BaseHandler):
         note.source_datetime_local_string = self.to_formatted_local_datetime(
             note.source_date)
         if note.photo:
-            note.local_photo_url_no_scheme = utils.strip_url_scheme(
+            note.local_photo_url_no_scheme = strip_url_scheme(
                 photo.get_photo_url(note.photo, self))
