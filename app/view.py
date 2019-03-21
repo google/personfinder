@@ -16,7 +16,7 @@
 from google.appengine.api import datastore_errors
 
 from model import *
-from photo import create_photo, PhotoError
+from photo import create_photo, get_photo_url, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
@@ -81,7 +81,7 @@ class Handler(BaseHandler):
             # TODO (nworden): see if there's a reason these need to not include
             # the scheme.
             person.local_photo_url_no_scheme = strip_url_scheme(
-                photo.get_photo_url(person.photo, self))
+                get_photo_url(person.photo, self))
 
         # Get the notes and duplicate links.
         try:
@@ -182,4 +182,4 @@ class Handler(BaseHandler):
             note.source_date)
         if note.photo:
             note.local_photo_url_no_scheme = strip_url_scheme(
-                photo.get_photo_url(note.photo, self))
+                get_photo_url(note.photo, self))
