@@ -457,10 +457,11 @@ class ApiPersonPostProcessor(utils.BaseHandler):
 
     def get(self):
         person = model.Person.get(self.repo, self.params.id)
-        photo_obj, _ = photo.create_photo_from_url(person.photo_url, self)
-        photo_obj.put()
-        person.photo = photo_obj
-        person.put()
+        if person.photo_url:
+            photo_obj, _ = photo.create_photo_from_url(person.photo_url, self)
+            photo_obj.put()
+            person.photo = photo_obj
+            person.put()
 
 
 class ApiNotePostProcessor(utils.BaseHandler):
@@ -475,10 +476,11 @@ class ApiNotePostProcessor(utils.BaseHandler):
 
     def get(self):
         note = model.Note.get(self.repo, self.params.id)
-        photo_obj, _ = photo.create_photo_from_url(note.photo_url, self)
-        photo_obj.put()
-        note.photo = photo_obj
-        note.put()
+        if note.photo_url:
+            photo_obj, _ = photo.create_photo_from_url(note.photo_url, self)
+            photo_obj.put()
+            note.photo = photo_obj
+            note.put()
 
 
 class ThumbnailPreparer(utils.BaseHandler):
