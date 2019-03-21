@@ -106,7 +106,7 @@
               {% if person.age %}
                 <div class="field">
                   <span class="label">{% trans "Age" %}:</span>
-                  <span class="value">{{person.age}}</span>
+                  <span class="value">{{person.fuzzified_age}}</span>
                 </div>
               {% endif %}
               <div class="end-multi-columns"></div>

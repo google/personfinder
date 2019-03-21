@@ -593,7 +593,7 @@ class PersonNoteTests(ServerTestsBase):
                     '_test_alternate_given_names _test_alternate_family_names',
                 'Sex:': 'female',
                 # 'Date of birth:': '1955',  # currently hidden
-                'Age:': '52',
+                'Age:': '50-55',
                 'Neighborhood:': '_test_home_neighborhood',
                 'City:': '_test_home_city',
                 'Province or state:': '_test_home_state',

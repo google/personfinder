@@ -184,7 +184,7 @@ class Handler(BaseHandler):
             description=self.params.description,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
-            age=self.params.age,
+            age=fuzzify_age(self.params.age),
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_postal_code=self.params.home_postal_code,
