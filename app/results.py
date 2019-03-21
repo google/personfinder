@@ -24,6 +24,7 @@ import config
 import indexing
 import full_text_search
 import jp_mobile_carriers
+import photo
 
 MAX_RESULTS = 100
 # U+2010: HYPHEN
@@ -99,12 +100,10 @@ class Handler(BaseHandler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
-            result.should_show_inline_photo = (
-                self.should_show_inline_photo(result.photo_url))
-            if result.should_show_inline_photo and result.photo:
-                # Only use a thumbnail URL if the photo was uploaded; we don't
-                # have thumbnails for other photos.
-                result.thumbnail_url = self.get_thumbnail_url(result.photo_url)
+            if result.photo:
+                # result.photo_url might be a URL on a partner's domain.
+                result.thumbnail_url = self.get_thumbnail_url(
+                    photo.get_photo_url(result.photo, self))
             sanitize_urls(result)
         return results
 
