@@ -60,22 +60,6 @@ class InputEscapingTests(ServerTestsBase):
                   'text': InputEscapingTests.SCRIPT_CONTENT}
         details_page = self.s.submit(note_form, **params)
 
-    def test_xss_photo(self):
-        person, note = self.setup_person_and_note()
-        photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
-        for record in [person, note]:
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-            record.photo_url = 'http://xyz.com/abc.jpg'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert '//xyz.com/abc.jpg' in doc.content
-            record.photo_url = 'bad_things://xyz'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-
     def test_xss_source_url(self):
         person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
