@@ -30,7 +30,7 @@ from google.appengine.api import datastore_errors
 import subscribe
 from model import *
 from utils import validate_sex, validate_status, validate_approximate_date, \
-                  validate_age, get_utcnow, get_full_name
+                  validate_age, get_utcnow, get_full_name, BaseHandler
 
 DEFAULT_PUT_RETRIES = 3
 MAX_PUT_BATCH = 100
@@ -355,5 +355,16 @@ def import_records(repo, domain, converter, records,
     while entities:
         put_batch(entities[:MAX_PUT_BATCH])
         entities[:MAX_PUT_BATCH] = []
+
+    for person in persons.values():
+        if person.photo_url:
+            BaseHandler.add_task_for_repo(
+                repo, 'api-post-processing', 'tasks/api_person_post_processor',
+                id=person.person_record_id)
+    for note in notes.values():
+        if note.photo_url:
+            BaseHandler.add_task_for_repo(
+                repo, 'api-post-processing', 'tasks/api_note_post_processor',
+                id=note.note_record_id)
 
     return written, skipped, total

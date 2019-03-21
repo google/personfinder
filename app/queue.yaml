@@ -6,5 +6,8 @@ queue:
 # expiry query for ScanExpired tasks
 - name: expiry
   rate: 5/m
+# Queue for post-processing of records that come through the API.
+- name: api-post-processing
+  rate: 1/s
 - name: prepare-thumbnails
   rate: 5/m

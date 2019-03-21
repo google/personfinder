@@ -445,6 +445,42 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
                 'unreviewed_notes_threshold')
 
 
+class ApiPersonPostProcessor(utils.BaseHandler):
+    """A class to do post-processing on Persons received through the API.
+
+    Currently, this just pulls photos from URLs and stores them. If any other
+    post-processing is ever required for Persons, it should also be done in this
+    task, to avoid race conditions.
+    """
+
+    ACTION = 'tasks/api_person_post_processor'
+
+    def get(self):
+        person = model.Person.get(self.repo, self.params.id)
+        photo_obj, _ = photo.create_photo_from_url(person.photo_url, self)
+        photo_obj.put()
+        person.photo = photo_obj
+        person.put()
+
+
+class ApiNotePostProcessor(utils.BaseHandler):
+    """A class to do post-processing on Notes received through the API.
+
+    Currently, this just pulls photos from URLs and stores them. If any other
+    post-processing is ever required for Notes, it should also be done in this
+    task, to avoid race conditions.
+    """
+
+    ACTION = 'tasks/api_note_post_processor'
+
+    def get(self):
+        note = model.Note.get(self.repo, self.params.id)
+        photo_obj, _ = photo.create_photo_from_url(note.photo_url, self)
+        photo_obj.put()
+        note.photo = photo_obj
+        note.put()
+
+
 class ThumbnailPreparer(utils.BaseHandler):
     """A class to run the thumbnail preparation job (for uploaded photos)."""
 
