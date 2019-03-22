@@ -134,7 +134,7 @@ class Handler(BaseHandler):
             lambda url: url, [self.params.profile_url1,
                               self.params.profile_url2,
                               self.params.profile_url3])
-        url_validator = URLValidator()
+        url_validator = URLValidator(schemes=['http', 'https'])
         for profile_url in profile_urls:
             try:
                 url_validator(profile_url)

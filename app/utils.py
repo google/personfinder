@@ -383,7 +383,7 @@ def sanitize_urls(record):
     We check URLs submitted through Person Finder, but bad data might come in
     through the API.
     """
-    url_validator = URLValidator()
+    url_validator = URLValidator(schemes=['http', 'https'])
     # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
