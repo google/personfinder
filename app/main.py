@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""The main request handler.  All dynamic requests except for remote_api are
+"""The main request handler. All dynamic requests except for remote_api are
 handled by this handler, which dispatches to all other dynamic handlers."""
 
 import django_setup  # always keep this first
