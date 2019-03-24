@@ -1484,7 +1484,6 @@ http://www.foo.com/_account_1''',
         assert person.home_postal_code == u'_test_home_postal_code'
         assert person.home_country == u'US'
         assert person.record_id == u'test.google.com/person.21009'
-        assert person.photo_url == u'_test_photo_url'
         assert person.profile_urls == u'_test_profile_url1\n_test_profile_url2'
         assert person.source_name == u'_test_source_name'
         assert person.source_url == u'_test_source_url'
@@ -1516,7 +1515,6 @@ http://www.foo.com/_account_1''',
         assert note.record_id == u'test.google.com/note.27009'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'_test_text'
-        assert note.photo_url == u'_test_note_photo_url'
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
         assert note.entry_date == utils.get_utcnow()
@@ -1578,7 +1576,6 @@ http://www.foo.com/_account_1''',
         assert person.home_postal_code == u'_test_home_postal_code'
         assert person.home_country == u'US'
         assert person.record_id == u'test.google.com/person.21009'
-        assert person.photo_url == u'_test_photo_url'
         assert person.source_name == u'_test_source_name'
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
@@ -1741,7 +1738,6 @@ http://www.foo.com/_account_1''',
         assert person.home_state == u'_test_home_state'
         assert person.home_postal_code == u'_test_home_zip'
         assert person.record_id == u'test.google.com/person.21009'
-        assert person.photo_url == u'_test_photo_url'
         assert person.source_name == u'_test_source_name'
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)

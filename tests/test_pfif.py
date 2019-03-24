@@ -104,7 +104,6 @@ PERSON_RECORD_1_4 = {
     u'home_state': u'_test_home_state',
     u'home_postal_code': u'_test_home_postal_code',
     u'home_country': u'US',
-    u'photo_url': u'_test_photo_url',
     u'profile_urls': u'_test_profile_url1\n_test_profile_url2',
 }
 
@@ -130,7 +129,6 @@ NOTE_RECORD_1_4 = {
     u'phone_of_found_person': u'_test_phone_of_found_person',
     u'last_known_location': u'_test_last_known_location',
     u'text': u'_test_text\n    line two\n',
-    u'photo_url': u'_test_note_photo_url',
 }
 
 TEST_CASES.append((
@@ -164,7 +162,6 @@ _test_alternate_name2</pfif:alternate_names>
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:profile_urls>_test_profile_url1
 _test_profile_url2</pfif:profile_urls>
     <pfif:note>
@@ -184,7 +181,6 @@ _test_profile_url2</pfif:profile_urls>
       <pfif:text>_test_text
     line two
 </pfif:text>
-      <pfif:photo_url>_test_note_photo_url</pfif:photo_url>
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
@@ -220,7 +216,6 @@ _test_alternate_name2</pfif:alternate_names>
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:profile_urls>_test_profile_url1
 _test_profile_url2</pfif:profile_urls>
     <pfif:note>
@@ -240,7 +235,6 @@ _test_profile_url2</pfif:profile_urls>
       <pfif:text>_test_text
     line two
 </pfif:text>
-      <pfif:photo_url>_test_note_photo_url</pfif:photo_url>
     </pfif:note>
     <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
   </pfif:person>
@@ -269,7 +263,6 @@ TEST_CASES.append((
     <text>_test_text
     line two
 </text>
-    <photo_url>_test_note_photo_url</photo_url>
   </note>
 </pfif>
 ''', [], [NOTE_RECORD_1_4], True, False)))
@@ -329,7 +322,6 @@ PERSON_RECORD_1_3 = {
     u'home_state': u'_test_home_state',
     u'home_postal_code': u'_test_home_postal_code',
     u'home_country': u'US',
-    u'photo_url': u'_test_photo_url',
 }
 
 PERSON_RECORD_EXPIRED_1_3 = {
@@ -383,7 +375,6 @@ TEST_CASES.append((
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:other>description:
     _test_description &amp; &lt; &gt; "
 </pfif:other>
@@ -435,7 +426,6 @@ TEST_CASES.append((
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:other>description:
     _test_description &amp; &lt; &gt; "
 </pfif:other>
@@ -542,7 +532,6 @@ PERSON_RECORD_1_2 = {
     u'home_state': u'_test_home_state',
     u'home_postal_code': u'_test_home_postal_code',
     u'home_country': u'US',
-    u'photo_url': u'_test_photo_url',
 }
 
 NOTE_RECORD_1_2 = {
@@ -587,7 +576,6 @@ TEST_CASES.append((
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:other>description:
     _test_description &amp; &lt; &gt; "
 </pfif:other>
@@ -638,7 +626,6 @@ TEST_CASES.append((
     <home_state>_test_home_state</home_state>
     <home_postal_code>_test_home_postal_code</home_postal_code>
     <home_country>US</home_country>
-    <photo_url>_test_photo_url</photo_url>
     <other>description:
     _test_description &amp; &lt; &gt; "
 </other>
@@ -688,7 +675,6 @@ TEST_CASES.append((
     <pfif:home_state>_test_home_state</pfif:home_state>
     <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>US</pfif:home_country>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:other>description:
     _test_description &amp; &lt; &gt; "
 </pfif:other>
@@ -760,7 +746,6 @@ PERSON_RECORD_1_1 = {
     u'home_city': u'_test_home_city',
     u'home_state': u'_test_home_state',
     u'home_postal_code': u'_test_home_zip',
-    u'photo_url': u'_test_photo_url',
 }
 
 NOTE_RECORD_1_1 = {
@@ -799,7 +784,6 @@ TEST_CASES.append((
     <pfif:home_neighborhood>_test_home_neighborhood</pfif:home_neighborhood>
     <pfif:home_street>_test_home_street</pfif:home_street>
     <pfif:home_zip>_test_home_zip</pfif:home_zip>
-    <pfif:photo_url>_test_photo_url</pfif:photo_url>
     <pfif:other>description:
     _test_description &amp; &lt; &gt; "
 </pfif:other>
