@@ -204,7 +204,7 @@ class CleanUpInTestMode(utils.BaseHandler):
                 # This exception is sometimes raised, maybe when the query
                 # object live too long?
                 self.schedule_next_task(cursor, utcnow)
-                
+
         else:
             for repo in model.Repo.list():
                 if self.in_test_mode(repo):
@@ -216,7 +216,7 @@ class CleanUpInTestMode(utils.BaseHandler):
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query up to FETCH_LIMIT.
-    
+
     Returns False if we finished counting all entries."""
     # Get the next batch of entities.
     query = make_query()
@@ -507,11 +507,11 @@ class ThumbnailPreparer(utils.BaseHandler):
 class DumpCSV(utils.BaseHandler):
     """Dumps a CSV file containing all the records in each repository to Google
     Cloud Storage.
-    
+
     People with BULK_READ API access can download the CSV file.
-    
+
     Currently the CSV file only contains person records.
-    
+
     This task requires special setup to run on a dev app server. See the
     docstring of cloud_storage.CloudStorage class for instruction.
     """
@@ -524,7 +524,7 @@ class DumpCSV(utils.BaseHandler):
     # uploading after 4 min, assuming uploading takes similar time as
     # fetching.
     MAX_FETCH_TIME = datetime.timedelta(minutes=4)
-    
+
     def __init__(self, *args, **kwargs):
         super(DumpCSV, self).__init__(*args, **kwargs)
         self.storage = cloud_storage.CloudStorage()
