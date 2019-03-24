@@ -29,7 +29,7 @@ import utils
 
 class Handler(utils.BaseHandler):
     """Proxy to perform search with third-party search engine."""
-    def post(self):
+    def get(self):
         if (self.params.search_engine_id >=
                 len(self.config.third_party_search_engines or [])):
             self.response.set_status(500)
