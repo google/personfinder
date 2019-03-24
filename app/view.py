@@ -76,7 +76,7 @@ class Handler(BaseHandler):
         person.source_time_local_string = self.to_formatted_local_time(
             person.source_date)
         person.expiry_date_local_string = self.to_formatted_local_date(
-            person.get_effective_expiry_date())        
+            person.get_effective_expiry_date())
         person.expiry_time_local_string = self.to_formatted_local_time(
             person.get_effective_expiry_date())
 
