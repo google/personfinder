@@ -18,6 +18,7 @@ import datetime
 import unittest
 
 from google.appengine.ext import db
+from google.appengine.ext import testbed
 from pytest import raises
 
 import model
@@ -41,9 +42,19 @@ def put_dummy_person_record(repo, person_record_id):
 class ImporterTests(unittest.TestCase):
     """Test the import utilities."""
 
+    def setUp(self):
+        self.testbed = testbed.Testbed()
+        self.testbed.activate()
+        # root_path needs to be the directory with queue.yaml to support queues
+        # other than the default queue.
+        self.testbed.init_taskqueue_stub(root_path='../app')
+        self.taskqueue_stub = self.testbed.get_stub(
+            testbed.TASKQUEUE_SERVICE_NAME)
+
     def tearDown(self):
         db.delete(model.Person.all())
         db.delete(model.Note.all())
+        self.testbed.deactivate()
 
     def test_strip(self):
         assert importer.strip('') == ''
@@ -205,6 +216,22 @@ class ImporterTests(unittest.TestCase):
         # Also confirm that 15 records were put into the datastore.
         assert model.Person.all().count() == 15
 
+    def test_import_person_records_with_photo_url(self):
+        """Tests that importing a record with a photo URL enqueues a task."""
+        records = [
+            {'given_name': 'given_name_0',
+             'family_name': 'family_name_0',
+             'person_record_id': 'test_domain/0',
+             'source_date': '2010-01-01T01:23:45Z',
+             'photo_url': 'http://www.example.com/photo.jpg'}
+        ]
+        importer.import_records(
+            'haiti', 'test_domain', importer.create_person, records)
+        tasks = self.taskqueue_stub.get_filtered_tasks()
+        self.assertEqual(len(tasks), 1)
+        assert tasks[0].url == ('/haiti/tasks/api_person_post_processor?'
+                                'id=test_domain%2F0')
+
     def test_import_note_records(self):
         # Prepare person records which the notes will be added to.
         for domain in ['test_domain', 'other_domain']:
@@ -268,6 +295,22 @@ class ImporterTests(unittest.TestCase):
         for note in model.Note.all():
             assert note.reviewed == False
 
+    def test_import_note_records_with_photo_url(self):
+        """Tests that importing a note with a photo URL enqueues a task."""
+        put_dummy_person_record('haiti', 'test_domain/person_0')
+        records = [
+            {'person_record_id': 'test_domain/person_0',
+             'note_record_id': 'test_domain/note_0',
+             'source_date': '2010-01-01T01:23:45Z',
+             'photo_url': 'http://www.example.org/photo.jpg'}
+        ]
+        importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records)
+        tasks = self.taskqueue_stub.get_filtered_tasks()
+        self.assertEqual(len(tasks), 1)
+        assert tasks[0].url == ('/haiti/tasks/api_note_post_processor?'
+                                'id=test_domain%2Fnote_0')
+
     def test_authorize_write_believed_dead_note_records(self):
         # Prepare person records which the notes will be added to.
         for i in range(20):
@@ -284,13 +327,13 @@ class ImporterTests(unittest.TestCase):
             # Records 0, 8, and 16 have status 'believed_dead'.
             if not i % 8:
                 status = 'believed_dead'
-           
+
             records.append({'person_record_id': person_id,
                             'note_record_id': note_id,
                             'source_date': source_date,
                             'status': status})
- 
-        # Disallow import notes with status 'believed_dead'.        
+
+        # Disallow import notes with status 'believed_dead'.
         written, skipped, total = importer.import_records(
             'haiti', 'test_domain', importer.create_note, records, False,
             False, None)
