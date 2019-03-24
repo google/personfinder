@@ -31,7 +31,7 @@ import subscribe
 from model import *
 import tasks
 from utils import validate_sex, validate_status, validate_approximate_date, \
-                  validate_age, get_utcnow, get_full_name, BaseHandler
+                  validate_age, get_utcnow, get_full_name
 
 DEFAULT_PUT_RETRIES = 3
 MAX_PUT_BATCH = 100

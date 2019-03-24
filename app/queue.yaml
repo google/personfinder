@@ -7,7 +7,8 @@ queue:
 - name: expiry
   rate: 5/m
 # Queue for post-processing of records that come through the API.
+# We keep it to 2/s in case partners can't handle high QPS fetching images.
 - name: api-post-processing
-  rate: 1/s
+  rate: 2/s
 - name: prepare-thumbnails
   rate: 5/m
