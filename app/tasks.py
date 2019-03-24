@@ -457,6 +457,9 @@ class ApiPersonPostProcessor(utils.BaseHandler):
 
     def get(self):
         person = model.Person.get(self.repo, self.params.id)
+        if person is None:
+            raise Exception(
+                'Post-processor called for unstored person %s' % self.params.id)
         if person.photo_url:
             photo_obj, _ = photo.create_photo_from_url(person.photo_url, self)
             photo_obj.put()
@@ -476,6 +479,9 @@ class ApiNotePostProcessor(utils.BaseHandler):
 
     def get(self):
         note = model.Note.get(self.repo, self.params.id)
+        if note is None:
+            raise Exception(
+                'Post-processor called for unstored note %s' % self.params.id)
         if note.photo_url:
             photo_obj, _ = photo.create_photo_from_url(note.photo_url, self)
             photo_obj.put()
