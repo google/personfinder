@@ -455,11 +455,23 @@ class ApiPersonPostProcessor(utils.BaseHandler):
 
     ACTION = 'tasks/api_person_post_processor'
 
+    @classmethod
+    def enqueue(cls, repo, person_id, countdown=0):
+        task_name = '%s-api-person-post-processing-%s' % (
+            repo, int(time.time()*1000))
+        path = '/%s/tasks/api_person_post_processor' % repo
+        taskqueue.add(name=task_name, method='GET', url=path,
+                      queue_name='api-post-processing',
+                      params={'id': person_id}, countdown=countdown)
+
     def get(self):
         person = model.Person.get(self.repo, self.params.id)
         if person is None:
-            raise Exception(
-                'Post-processor called for unstored person %s' % self.params.id)
+            # If the person record hasn't been written yet, enqueue a retry
+            # task.
+            ApiPersonPostProcessor.enqueue(
+                self.repo, self.params.id, countdown=10)
+            return
         if person.photo_url:
             photo_obj, _ = photo.create_photo_from_url(person.photo_url, self)
             photo_obj.put()
@@ -477,11 +489,23 @@ class ApiNotePostProcessor(utils.BaseHandler):
 
     ACTION = 'tasks/api_note_post_processor'
 
+    @classmethod
+    def enqueue(cls, repo, note_id, countdown=0):
+        task_name = '%s-api-note-post-processing-%s' % (
+            repo, int(time.time()*1000))
+        path = '/%s/tasks/api_note_post_processor' % repo
+        taskqueue.add(name=task_name, method='GET', url=path,
+                      queue_name='api-post-processing',
+                      params={'id': note_id}, countdown=countdown)
+
     def get(self):
         note = model.Note.get(self.repo, self.params.id)
         if note is None:
-            raise Exception(
-                'Post-processor called for unstored note %s' % self.params.id)
+            # If the person record hasn't been written yet, enqueue a retry
+            # task.
+            ApiNotePostProcessor.enqueue(
+                self.repo, self.params.id, countdown=10)
+            return
         if note.photo_url:
             photo_obj, _ = photo.create_photo_from_url(note.photo_url, self)
             photo_obj.put()

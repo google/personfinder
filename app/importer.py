@@ -29,6 +29,7 @@ from google.appengine.api import datastore_errors
 
 import subscribe
 from model import *
+import tasks
 from utils import validate_sex, validate_status, validate_approximate_date, \
                   validate_age, get_utcnow, get_full_name, BaseHandler
 
@@ -358,13 +359,9 @@ def import_records(repo, domain, converter, records,
 
     for person in persons.values():
         if person.photo_url:
-            BaseHandler.add_task_for_repo(
-                repo, 'api-post-processing', 'tasks/api_person_post_processor',
-                id=person.person_record_id)
+            tasks.ApiPersonPostProcessor.enqueue(repo, person.person_record_id)
     for note in notes.values():
         if note.photo_url:
-            BaseHandler.add_task_for_repo(
-                repo, 'api-post-processing', 'tasks/api_note_post_processor',
-                id=note.note_record_id)
+            tasks.ApiNotePostProcessor.enqueue(repo, note.note_record_id)
 
     return written, skipped, total

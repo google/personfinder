@@ -895,7 +895,6 @@ class BaseHandler(webapp.RequestHandler):
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 
-    # TODO(nworden): move this out of BaseHandler
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):
         """Queues up a task for an individual repository."""
