@@ -204,7 +204,13 @@ class Configuration(UserDict.DictMixin):
         return None
 
     def get(self, name, default=None):
-        return self[name] or default
+        # UserDict.DictMixin.get isn't going to do what we want, because it only
+        # returns the default if __getitem__ raises an exception (which ours
+        # never does).
+        res = self[name]
+        if res is None:
+            return default
+        return res
 
     def keys(self):
         return self.entries.keys()
