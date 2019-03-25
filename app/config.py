@@ -125,6 +125,10 @@ class ConfigEntry(db.Model):
     value = db.TextProperty(default='')
 
 
+# If calling from code where a Configuration object is available (e.g., from
+# within a handler), prefer Configuration.get. Configuration objects get all
+# config entries when they're initialized, so they don't need to make an
+# additional Datastore query.
 def get(name, default=None, repo='*'):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
@@ -145,6 +149,10 @@ def set(repo='*', **kwargs):
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(repo)
 
+# If calling from code where a Configuration object is available (e.g., from
+# within a handler), prefer Configuration.get. Configuration objects get all
+# config entries when they're initialized, so they don't need to make an
+# additional Datastore query.
 def get_for_repo(repo, name, default=None):
     """Gets a configuration setting for a particular repository.  Looks for a
     setting specific to the repository, then falls back to a global setting."""
@@ -163,6 +171,15 @@ def set_for_repo(repo, **kwargs):
 class Configuration(UserDict.DictMixin):
     def __init__(self, repo):
         self.repo = repo
+        # We fetch all the config entries at once here, so that we don't have to
+        # make many Datastore queries for each individual entry later.
+        db_entries = model.filter_by_prefix(
+            ConfigEntry.all(), self.repo + ':')
+        self.entries = {
+            entry.key().name().split(':', 1)[1]: simplejson.loads(entry.value)
+            for entry in db_entries
+        }
+        self.global_config = None if repo == '*' else Configuration('*')
 
     def __nonzero__(self):
         return True
@@ -180,8 +197,20 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this repository.  Looks for a
         repository-specific setting, then falls back to a global setting."""
-        return get_for_repo(self.repo, name)
+        if name in self.entries:
+            return self.entries[name]
+        elif self.global_config:
+            return self.global_config[name]
+        return None
+
+    def get(self, name, default=None):
+        # UserDict.DictMixin.get isn't going to do what we want, because it only
+        # returns the default if __getitem__ raises an exception (which ours
+        # never does).
+        res = self[name]
+        if res is None:
+            return default
+        return res
 
     def keys(self):
-        entries = model.filter_by_prefix(ConfigEntry.all(), self.repo + ':')
-        return [entry.key().name().split(':', 1)[1] for entry in entries]
+        return self.entries.keys()

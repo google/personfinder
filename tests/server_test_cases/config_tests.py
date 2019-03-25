@@ -85,13 +85,11 @@ class ConfigTests(ServerTestsBase):
     def test_config_namespaces(self):
         # Tests the cache's ability to retrieve global or repository-specific
         # configuration entries.
-        cfg_sub = config.Configuration('_foo')
-        cfg_global = config.Configuration('*')
-
         config.set_for_repo('*',
                             captcha_private_key='global_abcd',
                             captcha_public_key='global_efgh',
                             translate_api_key='global_hijk')
+        cfg_global = config.Configuration('*')
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
         assert cfg_global.translate_api_key == 'global_hijk'
@@ -99,11 +97,27 @@ class ConfigTests(ServerTestsBase):
         config.set_for_repo('_foo',
                             captcha_private_key='abcd',
                             captcha_public_key='efgh')
+        cfg_sub = config.Configuration('_foo')
         assert cfg_sub.captcha_private_key == 'abcd'
         assert cfg_sub.captcha_public_key == 'efgh'
         # If a key isn't present for a repository, its value for
         # the global domain is retrieved.
         assert cfg_sub.translate_api_key == 'global_hijk'
+
+    def test_no_exception_for_unset_key(self):
+        # Tests that a config will return None, and not throw an exception, when
+        # asked for the value of an unknown key.
+        config.set_for_repo('*', good_key_1='abc', good_key_2='def')
+        config.set_for_repo('foo', good_key_1='ghi')
+        cfg = config.Configuration('foo')
+        assert cfg['good_key_1'] == 'ghi'
+        assert cfg['good_key_2'] == 'def'
+        assert cfg['unknown_key'] is None
+
+    def test_get_with_default(self):
+        config.set_for_repo('foo', key_1='abc')
+        cfg = config.Configuration('foo')
+        assert cfg.get('unknown_key', 'default_value') == 'default_value'
 
     def test_repo_admin_page(self):
         # Load the page to create a repository.
