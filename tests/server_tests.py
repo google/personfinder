@@ -144,8 +144,6 @@ class AppServerRunner(ProcessRunner):
 
     def __init__(self, port, smtp_port):
         self.__datastore_file = tempfile.NamedTemporaryFile()
-        # The requests library needs this to be set.
-        os.environ['SERVER_SOFTWARE'] = 'testing'
         ProcessRunner.__init__(self, 'appserver', [
             os.environ['PYTHON'],
             os.path.join(os.environ['APPENGINE_DIR'], 'dev_appserver.py'),
