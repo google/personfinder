@@ -377,7 +377,7 @@ def fuzzify_age(value):
         return None
     parse = AGE_RE.match(value)
     if not parse:
-        raise ValueError('Invalid age value.')
+        return None
     range_start = int(parse.group(1))
     range_end = int(parse.group(3)) if parse.group(3) else None
     if not range_end:
