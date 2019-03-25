@@ -466,7 +466,7 @@ class ApiPersonPostProcessor(utils.BaseHandler):
 
     def get(self):
         person = model.Person.get(self.repo, self.params.id)
-        if person is None:
+        if not person:
             # If the person record hasn't been written yet, enqueue a retry
             # task.
             ApiPersonPostProcessor.enqueue(
@@ -500,7 +500,7 @@ class ApiNotePostProcessor(utils.BaseHandler):
 
     def get(self):
         note = model.Note.get(self.repo, self.params.id)
-        if note is None:
+        if not note:
             # If the person record hasn't been written yet, enqueue a retry
             # task.
             ApiNotePostProcessor.enqueue(
