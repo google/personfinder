@@ -39,7 +39,7 @@
         set_display(note_contents_id + '-mark-not-spam', !hidden);
       }
 
-      jQuery(document).ready(function() {
+      document.addEventListener('DOMContentLoaded', function() {
         make_form_expandable(".status.card");
       });
     </script>

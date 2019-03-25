@@ -19,7 +19,7 @@
     <script>
       var profile_websites = {{profile_websites_json|safe}};
 
-      jQuery(document).ready(function() {
+      document.addEventListener('DOMContentLoaded', function() {
         make_form_expandable(".identify.card");
         make_form_expandable(".source.card");
         make_form_expandable(".status.card");

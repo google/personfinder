@@ -46,33 +46,34 @@
       // third party search API directly here, to workaround AJAX's same
       // origin policy, and for authorization.
       function perform_third_party_search(id) {
-        jQuery.ajax({
-            url: repo_url + '/third_party_search',
-            data: {
-                query: query,
-                lang: lang,
-                query_type: query_type,
-                search_engine_id: id
-            },
-            dataType: 'json'
-        }).done(function(r) {
-          console_log('Third-party search response: ', r);
-          if (r.status == 'OK') {
-            if (typeof(r.url) != 'string') {
-              console_error(
+        var req = new XMLHttpRequest();
+        var url = (
+            repo_url + '/third_party_search?query=' + encodeURIComponent(query)
+            + '&lang=' + encodeURIComponent(lang) + '&query_type='
+            + encodeURIComponent(query_type) + '&search_engine_id='
+            + encodeURIComponent(id));
+        req.open('GET', url);
+        req.onload = function(e) {
+          r = JSON.parse(req.responseText);
+          if (r.status != 'OK') {
+            console_error('Error received from /third_party_search.');
+            return;
+          }
+          if (typeof(r.url) != 'string') {
+            console_error(
                   'url attribute of third-party search response is ' +
                   'not a string');
-              return;
-            }
-            jQuery('#third_party_search_result_link' + id).attr('href', r.url);
-            jQuery('#third_party_search_result' + id).show();
+            return;
           }
-        }).fail(function(r) {
-          console_error('Third-party search request has failed: ', r);
-        });
+          document.querySelector(
+              '#third_party_search_result_link' + id).href = r.url;
+          document.querySelector(
+              '#third_party_search_result' + id).style.display = 'block';
+        }
+        req.send();
       }
 
-      jQuery(document).ready(function() {
+      document.addEventListener('DOMContentLoaded', function() {
         for (var i = 0; i < num_third_party_search_engines; ++i) {
           perform_third_party_search(i);
         }
