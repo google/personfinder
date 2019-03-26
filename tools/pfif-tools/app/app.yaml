@@ -17,4 +17,8 @@ handlers:
   static_files: static/diff.html
   upload: static/diff.html
 - url: /.*
-  script: controller.py
+  script: wsgi.application
+
+libraries:
+- name: django
+  version: "1.11"

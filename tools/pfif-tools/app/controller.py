@@ -19,6 +19,9 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 from StringIO import StringIO
+
+from django.http import HttpResponse
+
 import pfif_validator
 import pfif_diff
 import utils
@@ -161,14 +164,5 @@ class ValidatorController(PfifController):
       self.response.out.write(marked_up_message)
     self.write_footer()
 
-APPLICATION = webapp.WSGIApplication(
-    [('/validate/results', ValidatorController),
-     ('/diff/results', DiffController)],
-    debug=True)
-
-def main():
-  """Sets up the controller."""
-  run_wsgi_app(APPLICATION)
-
-if __name__ == "__main__":
-  main()
+def test_view(request):
+  return HttpResponse('i am a test')
