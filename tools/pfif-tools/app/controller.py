@@ -27,7 +27,6 @@ import utils
 class PfifController(View):
   """Provides common functionality to the different PFIF Tools controllers."""
 
-  # TODO(samking): maybe use Django?
   def write_header(self, title):
     """Writes an HTML page header and open the body."""
     self.response.write("""<!DOCTYPE HTML>
@@ -58,12 +57,12 @@ class PfifController(View):
     desired_file = None
     filename = None
 
-    if paste_name in self.request.POST and self.request.POST[paste_name]:
+    if self.request.POST.get(paste_name):
       desired_file = StringIO(self.request.POST[paste_name])
     elif upload_name in self.request.FILES:
       desired_file = StringIO(self.request.FILES[upload_name].read())
       filename = self.request.FILES[upload_name].name
-    elif self.request.POST[url_name]:
+    elif self.request.POST.get(url_name):
       url = self.request.POST[url_name]
       # make a file-like object out of the URL's xml so we can seek on it
       desired_file = StringIO(utils.open_url(url).read())
@@ -108,7 +107,8 @@ class DiffController(PfifController):
       self.write_missing_input_file()
     else:
       options = self.request.POST.getlist('options')
-      ignore_fields = self.request.POST['ignore_fields'].split()
+      ignore_fields = self.request.POST.get(
+          'ignore_fields', default='').split()
       messages = pfif_diff.pfif_file_diff(
           file_1, file_2,
           text_is_case_sensitive='text_is_case_sensitive' in options,
