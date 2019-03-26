@@ -3,5 +3,5 @@ from django.conf.urls import url
 import controller
 
 urlpatterns = [
-    url(r'^test', controller.test_view),
+    url(r'^validate/results', controller.ValidatorController.as_view()),
 ]
