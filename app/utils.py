@@ -373,6 +373,15 @@ def validate_cache_seconds(string):
 MIN_AGE_RANGE = 5
 
 def fuzzify_age(value):
+    """Fuzzifies the age value for privacy.
+
+    Args:
+        value: a PFIF-compliant age value (a number or range, e.g., 45-49).
+
+    Returns:
+        A range of at least five years that includes the given value, or None if
+        the input value is None or invalid.
+    """
     if not value:
         return None
     parse = AGE_RE.match(value)
