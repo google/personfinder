@@ -17,10 +17,8 @@
 """Test cases for end-to-end testing.  Run with the server_tests script."""
 
 
-import mock
 
 import model
-import photo
 
 from google.appengine.api import images
 from photo import MAX_IMAGE_DIMENSION, MAX_THUMBNAIL_DIMENSION, set_thumbnail
@@ -133,18 +131,3 @@ class PhotoTests(ServerTestsBase):
         assert image.format == images.PNG
         assert image.height == 40
         assert image.width == 40
-
-    def test_download_photo(self):
-        photo_url = 'http://www.example.com/photo.jpg'
-        photo_response = mock.MagicMock()
-        photo_response.content = open('tests/testdata/tiny_image.png').read()
-        handler = mock.MagicMock()
-        handler.repo = 'test'
-        handler.get_url.return_value = 'photo_url_value'
-        with mock.patch('requests.get') as mock_requests_get:
-            mock_requests_get.return_value = photo_response
-            res = photo.create_photo_from_url(photo_url, handler)
-            mock_requests_get.assert_called_once_with(photo_url)
-            res_image = images.Image(res[0].image_data)
-            assert res_image.height == 40
-            assert res_image.width == 40

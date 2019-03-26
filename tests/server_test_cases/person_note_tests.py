@@ -518,7 +518,8 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
-            last_known_location='Port-au-Prince')
+            last_known_location='Port-au-Prince',
+            note_photo_url='http://xyz.com/abc.jpg')
 
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
@@ -578,7 +579,7 @@ class PersonNoteTests(ServerTestsBase):
                       home_state='_test_home_state',
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
-                      photo=open('tests/testdata/small_image.png'),
+                      photo_url='_test_photo_url',
                       profile_url1='http://www.facebook.com/_test_account1',
                       profile_url2='http://www.twitter.com/_test_account2',
                       profile_url3='http://www.foo.com/_test_account3',
@@ -910,7 +911,8 @@ class PersonNoteTests(ServerTestsBase):
             False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            None, last_known_location='Port-au-Prince')
+            None, last_known_location='Port-au-Prince',
+            note_photo_url='http://xyz.com/abc.jpg')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -934,7 +936,7 @@ class PersonNoteTests(ServerTestsBase):
                       home_state='_test_home_state',
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
-                      photo=open('tests/testdata/small_image.png'),
+                      photo_url='_test_photo_url',
                       profile_url1='http://www.facebook.com/_test_account',
                       expiry_option='20',
                       description='_test_description',
@@ -945,7 +947,7 @@ class PersonNoteTests(ServerTestsBase):
                       phone_of_found_person='_test_phone_of_found_person',
                       last_known_location='_test_last_known_location',
                       text='_test A note body',
-                      note_photo=open('tests/testdata/small_image.png'))
+                      note_photo_url='_test_note_photo_url')
 
         self.verify_details_page(
             num_notes=1,

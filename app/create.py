@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from model import *
-from photo import create_photo, create_photo_from_url, PhotoError
+from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import simplejson
@@ -36,33 +36,6 @@ def days_to_date(days):
     Returns:
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
-
-# TODO(nworden): find a more appropriate place for this
-# This function is going to get used by other record/note-creation code (the CSV
-# importer, the React frontend's API, and the partner API). Those things should
-# share a bunch of code, but I haven't made a place for it yet.
-def create_photo_from_input(handler, photo_upload, photo_url):
-    """Creates a photo from a user-provided photo or URL.
-
-    Either of the parameters may be used (but not both). Either way, it will
-    return a Photo object and a URL with which to serve it.
-
-    If neither parameter is provided, returns (None, None).
-
-    Args:
-      handler: a request handler (needed to generate URLs)
-      photo_upload: optional; an images.Image for an uploaded photo
-      photo_url: optional; a user-provided URL for a photo
-
-    Returns:
-      A tuple with an Image and URL with which to serve it, or (None, None) if
-      neither an uploaded photo nor a URL was provided.
-    """
-    if photo_upload is not None:
-        return create_photo(photo_upload, handler)
-    elif photo_url:
-        return create_photo_from_url(photo_url, handler)
-    return (None, None)
 
 
 class Handler(BaseHandler):
@@ -143,11 +116,17 @@ class Handler(BaseHandler):
                 return self.error(
                     400, _('Please only enter valid profile URLs.'))
 
+        # If nothing was uploaded, just use the photo_url that was provided.
+        photo, photo_url = (None, self.params.photo_url)
+        note_photo, note_photo_url = (None, self.params.note_photo_url)
         try:
-            photo, photo_url = create_photo_from_input(
-                self, self.params.photo, self.params.photo_url)
-            note_photo, note_photo_url = create_photo_from_input(
-                self, self.params.note_photo, self.params.note_photo_url)
+            # If a photo was uploaded, create a Photo entry and get the URL
+            # where we serve it.
+            if self.params.photo is not None:
+                photo, photo_url = create_photo(self.params.photo, self)
+            if self.params.note_photo is not None:
+                note_photo, note_photo_url = \
+                    create_photo(self.params.note_photo, self)
         except PhotoError, e:
             return self.error(400, e.message)
         # Finally, store the Photo. Past this point, we should NOT self.error.
