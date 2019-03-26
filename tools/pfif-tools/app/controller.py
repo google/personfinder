@@ -99,15 +99,16 @@ class PfifController(View):
 class DiffController(PfifController):
   """Displays the diff results page."""
 
-  def post(self):
+  def post(self, request, *args, **kwargs):
+    self.response = HttpResponse()
     file_1, filename_1 = self.get_file(1, return_filename=True)
     file_2, filename_2 = self.get_file(2, return_filename=True)
     self.write_header('PFIF Diff: Results')
     if file_1 is None or file_2 is None:
       self.write_missing_input_file()
     else:
-      options = self.request.get_all('options')
-      ignore_fields = self.request.get('ignore_fields').split()
+      options = self.request.POST.getlist('options')
+      ignore_fields = self.request.POST['ignore_fields'].split()
       messages = pfif_diff.pfif_file_diff(
           file_1, file_2,
           text_is_case_sensitive='text_is_case_sensitive' in options,
@@ -126,6 +127,7 @@ class DiffController(PfifController):
             utils.MessagesOutput.messages_to_str(
                 messages, show_error_type=False, is_html=True))
     self.write_footer()
+    return self.response
 
 class ValidatorController(PfifController):
   """Displays the validation results page."""
