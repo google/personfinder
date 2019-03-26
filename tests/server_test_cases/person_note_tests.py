@@ -519,7 +519,7 @@ class PersonNoteTests(ServerTestsBase):
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
             last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz.com/abc.jpg')
+            note_photo_url='http://localhost:8081/abc.jpg')
 
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
@@ -912,7 +912,7 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             None, last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz.com/abc.jpg')
+            note_photo_url='http://localhost:8081/abc.jpg')
 
         # Submit the create form with complete information
         self.s.submit(create_form,

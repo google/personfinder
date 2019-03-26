@@ -106,7 +106,10 @@
           {% if note.should_show_inline_photo %}
             <img src="{{note.photo_url_no_scheme}}" class="photo">
           {% else %}
-            {% trans "Photo (external site; normal connection fee may apply)" %}
+            {% trans "External photo" %}
+            {% if config.zero_rating_mode %}
+              {% trans " (normal connection fee may apply)" %}
+            {% endif %}
           {% endif %}
         </a>
       </div>
