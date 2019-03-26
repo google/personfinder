@@ -103,10 +103,10 @@
                 <span class="value">{{person.date_of_birth}}</span>
               </div>
               {% endcomment %}
-              {% if person.age %}
+              {% if person.fuzzified_age %}
                 <div class="field">
                   <span class="label">{% trans "Age" %}:</span>
-                  <span class="value">{{person.age}}</span>
+                  <span class="value">{{person.fuzzified_age}}</span>
                 </div>
               {% endif %}
               <div class="end-multi-columns"></div>

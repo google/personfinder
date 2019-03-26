@@ -357,6 +357,11 @@ class Person(Base):
         return self.alternate_names.splitlines() if self.alternate_names else []
 
     @property
+    def fuzzified_age(self):
+        import utils
+        return utils.fuzzify_age(self.age) if self.age else None
+
+    @property
     def profile_urls_list(self):
         return self.profile_urls.splitlines() if self.profile_urls else []
 
