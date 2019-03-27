@@ -16,15 +16,17 @@
 
 """Tests for validator_controller.py"""
 
-import unittest
 import copy
-import controller
-from StringIO import StringIO
-import tests.pfif_xml as PfifXml
-import utils
 import os
+from StringIO import StringIO
+import unittest
+import utils
+
 from django.test import RequestFactory
 from django.test.utils import setup_test_environment, teardown_test_environment
+
+import controller
+import tests.pfif_xml as PfifXml
 
 class ControllerTests(unittest.TestCase):
   """Tests for the controller."""
