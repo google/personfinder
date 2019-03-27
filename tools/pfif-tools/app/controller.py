@@ -28,25 +28,6 @@ import utils
 class PfifController(View):
   """Provides common functionality to the different PFIF Tools controllers."""
 
-  def write_header(self, title):
-    """Writes an HTML page header and open the body."""
-    self.response.write("""<!DOCTYPE HTML>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>""" + title + """</title>
-      <link rel="stylesheet" type="text/css" href="/static/style.css">
-    </head>
-    <body>""")
-
-  def write_footer(self):
-    """Closes the body and html tags."""
-    self.response.write('</body></html>')
-
-  def write_missing_input_file(self):
-    """Writes that there is a missing input file."""
-    self.response.write('<h1>Missing Input File</h1>')
-
   def get_file(self, file_number=1, return_filename=False):
     """Gets a file that was pasted in, uploaded, or given by a URL.  If multiple
     files are provided, specify the number of the desired file as file_number.
@@ -82,53 +63,86 @@ class PfifController(View):
       else:
         return None
 
-  def write_filename(self, filename, shorthand_name):
-    """Writes out a mapping from shorthand_name to filename."""
-    self.response.write('<p>File ' + shorthand_name + ': ')
-    if filename is None:
-      self.response.write('pasted in')
-    else:
-      self.response.write(filename)
-    self.response.write('</p>\n')
-
-  def write_filenames(self, filename_1, filename_2):
-    """Writes the names of filename_1 and filename_2."""
-    self.write_filename(filename_1, 'A')
-    self.write_filename(filename_2, 'B')
-
 class DiffController(PfifController):
   """Displays the diff results page."""
 
   def post(self, request, *args, **kwargs):
     self.response = HttpResponse()
+    page_ctx = {'page_title': 'PFIF Diff: Results'}
     file_1, filename_1 = self.get_file(1, return_filename=True)
     file_2, filename_2 = self.get_file(2, return_filename=True)
-    self.write_header('PFIF Diff: Results')
     if file_1 is None or file_2 is None:
-      self.write_missing_input_file()
+      page_ctx['error'] = 'Missing Input File'
+      return render(request, 'error.html', page_ctx)
+    page_ctx['filenames'] = [
+        {'filename': filename_1, 'shorthand_name': 'A'},
+        {'filename': filename_2, 'shorthand_name': 'B'},
+    ]
+    options = self.request.POST.getlist('options')
+    ignore_fields = self.request.POST.get(
+        'ignore_fields', default='').split()
+    messages = pfif_diff.pfif_file_diff(
+        file_1, file_2,
+        text_is_case_sensitive='text_is_case_sensitive' in options,
+        ignore_fields=ignore_fields,
+        omit_blank_fields='omit_blank_fields' in options)
+    page_ctx['msgs_by_category'] = (
+        utils.MessagesOutput.group_messages_by_category(messages))
+    if 'group_messages_by_record' in options:
+      page_ctx['group_messages'] = True
+      messages = utils.MessagesOutput.truncate(
+          messages, utils.MessagesOutput.GROUPED_TRUNCATE_THRESHOLD)
+      messages_by_category = utils.MessagesOutput.group_messages_by_category(
+          messages)
+      added_record_msgs = messages_by_category.get(
+          utils.Categories.ADDED_RECORD)
+      if added_record_msgs:
+          page_ctx['added_record_ids'] = (
+          utils.MessagesOutput.get_field_from_messages(
+              added_record_msgs, 'record_id'))
+      deleted_record_msgs = messages_by_category.get(
+          utils.Categories.DELETED_RECORD)
+      if deleted_record_msgs:
+          page_ctx['deleted_record_ids'] = (
+              utils.MessagesOutput.get_field_from_messages(
+                  deleted_record_msgs, 'record_id'))
+      field_change_messages = []
+      for category in [utils.Categories.ADDED_FIELD,
+                       utils.Categories.DELETED_FIELD,
+                       utils.Categories.CHANGED_FIELD]:
+        field_change_messages.extend(messages_by_category.get(category, []))
+      messages_by_record = {}
+      for record_id, record_list in (
+          utils.MessagesOutput.group_messages_by_record(
+              field_change_messages).items()):
+        record_messages = {'list': record_list}
+        record_messages_by_category = (
+            utils.MessagesOutput.group_messages_by_category(record_list))
+        added_field_msgs = record_messages_by_category.get(
+            utils.Categories.ADDED_FIELD, [])
+        if added_field_msgs:
+          record_messages['added_field_tags'] = (
+              utils.MessagesOutput.get_field_from_messages(
+                  added_field_msgs, 'xml_tag'))
+        deleted_field_msgs = record_messages_by_category.get(
+            utils.Categories.DELETED_FIELD, [])
+        if deleted_field_msgs:
+          record_messages['deleted_field_tags'] = (
+              utils.MessagesOutput.get_field_from_messages(
+                  deleted_field_msgs, 'xml_tag'))
+        changed_field_msgs = record_messages_by_category.get(
+            utils.Categories.CHANGED_FIELD, [])
+        if changed_field_msgs:
+          record_messages['changed_field_tags'] = (
+              utils.MessagesOutput.get_field_from_messages(
+                  changed_field_msgs, 'xml_tag'))
+        messages_by_record[record_id] = record_messages
+      page_ctx['msgs_by_record'] = messages_by_record
     else:
-      options = self.request.POST.getlist('options')
-      ignore_fields = self.request.POST.get(
-          'ignore_fields', default='').split()
-      messages = pfif_diff.pfif_file_diff(
-          file_1, file_2,
-          text_is_case_sensitive='text_is_case_sensitive' in options,
-          ignore_fields=ignore_fields,
-          omit_blank_fields='omit_blank_fields' in options)
       self.response.write(
-          '<h1>Diff: ' + str(len(messages)) + ' Messages</h1>')
-      self.response.write(
-          utils.MessagesOutput.generate_message_summary(messages, is_html=True))
-      self.write_filenames(filename_1, filename_2)
-      if 'group_messages_by_record' in options:
-        self.response.write(
-            utils.MessagesOutput.messages_to_str_by_id(messages, is_html=True))
-      else:
-        self.response.write(
-            utils.MessagesOutput.messages_to_str(
-                messages, show_error_type=False, is_html=True))
-    self.write_footer()
-    return self.response
+          utils.MessagesOutput.messages_to_str(
+              messages, show_error_type=False, is_html=True))
+    return render(request, 'diff_results.html', page_ctx)
 
 class ValidatorController(PfifController):
   """Displays the validation results page."""
