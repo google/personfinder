@@ -29,7 +29,7 @@
 {% for filename in filenames %}
   <p>
     File {{ filename.shorthand_name }}:
-    {% if filename %}
+    {% if filename.filename %}
       {{ filename.filename }}
     {% else %}
       pasted in
