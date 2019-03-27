@@ -9,80 +9,76 @@
 
 <body>
 
-{% if error %}
-  <h1>{{error}}</h1>
-{% else %}
-  <h1>Validation: {{ messages|length }} Messages</h1>
+<h1>Validation: {{ messages|length }} Messages</h1>
 
-  {% if msgs_by_category %}
-    <table>
+{% if msgs_by_category %}
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Number of Messages</th>
+    </tr>
+    {% for category, msgs in msgs_by_category.items %}
       <tr>
-        <th>Category</th>
-        <th>Number of Messages</th>
+        <td>{{ category }}</td>
+        <td>{{ msgs|length }}</td>
       </tr>
-      {% for category, msgs in msgs_by_category.items %}
-        <tr>
-          <td>{{ category }}</td>
-          <td>{{ msgs|length }}</td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% endif %}
-
-  <div class="all_messages">
-    {% for msg in msgs %}
-      <div class="message">
-        <span class="message_type">
-          {% if msg.is_error %}
-            ERROR
-          {% else %}
-            WARNING
-          {% endif %}
-        </span>
-        {% if show_line_numbers %}
-          <span class="message_line_number">
-            LINE {{ msg.xml_line_number }}:
-          </span>
-        {% endif %}
-        <span class="message_category">
-          {{ msg.category }}
-          {% if msg.extra_data %}
-            <span class="message_data">: {{msg.extra_data}}</span>
-          {% endif %}
-        </span>
-        {% if show_record_ids %}
-          {% if msg.person_record_id %}
-            <div class="message_person_record_id">
-              The relevant person_record_id is:
-              <span class="message_data">{{ msg.person_record_id }}</span>
-            </div>
-          {% endif %}
-          {% if msg.note_record_id %}
-            <div class="message_note_record_id">
-              The relevant note_record_id is:
-              <span class="message_data">{{ msg.note_record_id }}</span>
-            </div>
-          {% endif %}
-        {% endif %}
-        {% if show_xml_tag and msg.xml_tag %}
-          <div class="message_xml_tag">
-            The tag of the relevant PFIF XML node:
-            <span class="message_data">{{ msg.xml_tag }}</span>
-          </div>
-        {% endif %}
-        {% if show_xml_text and msg.xml_text %}
-          <div class="message_xml_text">
-            The text of the relevant PFIF XML node:
-            <span class="message_data">{{ msg.xml_text }}</span>
-          </div>
-        {% endif %}
-        {% if show_full_line and msg.full_xml_line %}
-          <div class="message_xml_full_line">{{ msg.full_xml_line }}</div>
-        {% endif %}
-      </div>
     {% endfor %}
-  </div>
+  </table>
 {% endif %}
+
+<div class="all_messages">
+  {% for msg in msgs %}
+    <div class="message">
+      <span class="message_type">
+        {% if msg.is_error %}
+          ERROR
+        {% else %}
+          WARNING
+        {% endif %}
+      </span>
+      {% if show_line_numbers %}
+        <span class="message_line_number">
+          LINE {{ msg.xml_line_number }}:
+        </span>
+      {% endif %}
+      <span class="message_category">
+        {{ msg.category }}
+        {% if msg.extra_data %}
+          <span class="message_data">: {{msg.extra_data}}</span>
+        {% endif %}
+      </span>
+      {% if show_record_ids %}
+        {% if msg.person_record_id %}
+          <div class="message_person_record_id">
+            The relevant person_record_id is:
+            <span class="message_data">{{ msg.person_record_id }}</span>
+          </div>
+        {% endif %}
+        {% if msg.note_record_id %}
+          <div class="message_note_record_id">
+            The relevant note_record_id is:
+            <span class="message_data">{{ msg.note_record_id }}</span>
+          </div>
+        {% endif %}
+      {% endif %}
+      {% if show_xml_tag and msg.xml_tag %}
+        <div class="message_xml_tag">
+          The tag of the relevant PFIF XML node:
+          <span class="message_data">{{ msg.xml_tag }}</span>
+        </div>
+      {% endif %}
+      {% if show_xml_text and msg.xml_text %}
+        <div class="message_xml_text">
+          The text of the relevant PFIF XML node:
+          <span class="message_data">{{ msg.xml_text }}</span>
+        </div>
+      {% endif %}
+      {% if show_full_line and msg.full_xml_line %}
+        <div class="message_xml_full_line">{{ msg.full_xml_line }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
 </body>
 

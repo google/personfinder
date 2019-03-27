@@ -138,28 +138,28 @@ class ValidatorController(PfifController):
     xml_file = self.get_file()
     if xml_file is None:
       page_ctx['error'] = 'Missing Input File'
-    else:
-      validator = pfif_validator.PfifValidator(xml_file)
-      messages = validator.run_validations()
-      for msg in messages:
-        if msg.xml_line_number != None:
-          msg.full_xml_line = validator.tree.lines[msg.xml_line_number - 1]
-      page_ctx['messages'] = messages
-      page_ctx['msgs_by_category'] = (
-          utils.MessagesOutput.group_messages_by_category(messages))
-      # print_options is a list of all printing options passed in via
-      # checkboxes.  It will contain 'show_errors' if the user checked that box,
-      # for instance.  Thus, saying show_errors='show_errors' in print_options
-      # will set show_errors to True if the box was checked and false otherwise.
-      print_options = self.request.POST.getlist('print_options')
-      show_errors = 'show_errors' in print_options
-      show_warnings = 'show_warnings' in print_options
-      page_ctx['msgs'] = list(filter(
-          lambda msg: ((show_errors and msg.is_error) or
-                       (show_warnings and not msg.is_error)), messages))
-      page_ctx['show_line_numbers'] = 'show_line_numbers' in print_options
-      page_ctx['show_record_ids'] = 'show_record_ids' in print_options
-      page_ctx['show_xml_tag'] = 'show_xml_tag' in print_options
-      page_ctx['show_xml_text'] = 'show_xml_text' in print_options
-      page_ctx['show_full_line'] = 'show_full_line' in print_options
+      return render(request, 'error.html', page_ctx)
+    validator = pfif_validator.PfifValidator(xml_file)
+    messages = validator.run_validations()
+    for msg in messages:
+      if msg.xml_line_number != None:
+        msg.full_xml_line = validator.tree.lines[msg.xml_line_number - 1]
+    page_ctx['messages'] = messages
+    page_ctx['msgs_by_category'] = (
+        utils.MessagesOutput.group_messages_by_category(messages))
+    # print_options is a list of all printing options passed in via checkboxes.
+    # It will contain 'show_errors' if the user checked that box, for instance.
+    # Thus, saying show_errors='show_errors' in print_options will set
+    # show_errors to True if the box was checked and false otherwise.
+    print_options = self.request.POST.getlist('print_options')
+    show_errors = 'show_errors' in print_options
+    show_warnings = 'show_warnings' in print_options
+    page_ctx['msgs'] = list(filter(
+        lambda msg: ((show_errors and msg.is_error) or
+                     (show_warnings and not msg.is_error)), messages))
+    page_ctx['show_line_numbers'] = 'show_line_numbers' in print_options
+    page_ctx['show_record_ids'] = 'show_record_ids' in print_options
+    page_ctx['show_xml_tag'] = 'show_xml_tag' in print_options
+    page_ctx['show_xml_text'] = 'show_xml_text' in print_options
+    page_ctx['show_full_line'] = 'show_full_line' in print_options
     return render(request, 'validate_results.html', page_ctx)
