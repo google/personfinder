@@ -84,6 +84,7 @@ class DiffController(PfifController):
         text_is_case_sensitive='text_is_case_sensitive' in options,
         ignore_fields=ignore_fields,
         omit_blank_fields='omit_blank_fields' in options)
+    page_ctx['msgs'] = messages
     page_ctx['msgs_by_category'] = (
         utils.MessagesOutput.group_messages_by_category(messages))
     if 'group_messages_by_record' in options:
@@ -136,8 +137,6 @@ class DiffController(PfifController):
                   changed_field_msgs, 'xml_tag'))
         messages_by_record[record_id] = record_messages
       page_ctx['msgs_by_record'] = messages_by_record
-    else:
-      page_ctx['msgs'] = messages
     return render(request, 'diff_results.html', page_ctx)
 
 class ValidatorController(PfifController):
