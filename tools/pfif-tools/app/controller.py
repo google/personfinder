@@ -18,6 +18,7 @@
 from StringIO import StringIO
 
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views import View
 
 import pfif_validator
@@ -133,35 +134,32 @@ class ValidatorController(PfifController):
   """Displays the validation results page."""
 
   def post(self, request, *args, **kwargs):
-    self.response = HttpResponse()
+    page_ctx = {'page_title': 'PFIF Validator: Results'}
     xml_file = self.get_file()
-    self.write_header('PFIF Validator: Results')
     if xml_file is None:
-      self.write_missing_input_file()
-    else:
-      validator = pfif_validator.PfifValidator(xml_file)
-      messages = validator.run_validations()
-      self.response.write('<h1>Validation: ' +
-                              str(len(messages)) + ' Messages</h1>')
-      self.response.write(
-          utils.MessagesOutput.generate_message_summary(messages, is_html=True))
-      # print_options is a list of all printing options passed in via
-      # checkboxes.  It will contain 'show_errors' if the user checked that box,
-      # for instance.  Thus, saying show_errors='show_errors' in print_options
-      # will set show_errors to True if the box was checked and false otherwise.
-      print_options = self.request.POST.getlist('print_options')
-      marked_up_message = validator.validator_messages_to_str(
-          messages,
-          show_errors='show_errors' in print_options,
-          show_warnings='show_warnings' in print_options,
-          show_line_numbers='show_line_numbers' in print_options,
-          show_record_ids='show_record_ids' in print_options,
-          show_xml_tag='show_xml_tag' in print_options,
-          show_xml_text='show_xml_text' in print_options,
-          show_full_line='show_full_line' in print_options,
-          is_html=True)
-      # don't escape the message since is_html escapes all input and contains
-      # html that should be interpreted as html
-      self.response.write(marked_up_message)
-    self.write_footer()
-    return self.response
+      page_ctx['error'] = 'Missing Input File'
+      return render(request, 'error.html', page_ctx)
+    validator = pfif_validator.PfifValidator(xml_file)
+    messages = validator.run_validations()
+    for msg in messages:
+      if msg.xml_line_number != None:
+        msg.full_xml_line = validator.tree.lines[msg.xml_line_number - 1]
+    page_ctx['messages'] = messages
+    page_ctx['msgs_by_category'] = (
+        utils.MessagesOutput.group_messages_by_category(messages))
+    # print_options is a list of all printing options passed in via checkboxes.
+    # It will contain 'show_errors' if the user checked that box, for instance.
+    # Thus, saying show_errors='show_errors' in print_options will set
+    # show_errors to True if the box was checked and false otherwise.
+    print_options = self.request.POST.getlist('print_options')
+    show_errors = 'show_errors' in print_options
+    show_warnings = 'show_warnings' in print_options
+    page_ctx['msgs'] = list(filter(
+        lambda msg: ((show_errors and msg.is_error) or
+                     (show_warnings and not msg.is_error)), messages))
+    page_ctx['show_line_numbers'] = 'show_line_numbers' in print_options
+    page_ctx['show_record_ids'] = 'show_record_ids' in print_options
+    page_ctx['show_xml_tag'] = 'show_xml_tag' in print_options
+    page_ctx['show_xml_text'] = 'show_xml_text' in print_options
+    page_ctx['show_full_line'] = 'show_full_line' in print_options
+    return render(request, 'validate_results.html', page_ctx)
