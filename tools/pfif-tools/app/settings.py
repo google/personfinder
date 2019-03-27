@@ -5,8 +5,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # If we actually did anything that used the secret key we'd need to set it to
 # some constant value and find a way to secretly store it. However, pfif-tools
-# doesn't use it for anything, we just need to set it to something to make
-# Django happy.
+# doesn't use it for anything. We need to set it to something to make Django
+# happy though, and we set it to something random to be safe in case we
+# unknowingly do something in the future that uses it (better to have a password
+# reset token break because this changed or something like that than a security
+# hole we don't know about).
 SECRET_KEY = os.urandom(30)
 
 if 'Development' in os.environ.get('SERVER_SOFTWARE', ''):
