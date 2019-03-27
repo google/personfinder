@@ -279,9 +279,9 @@ class HandlerTests(unittest.TestCase):
         _, _, handler = self.handler_for_url('/haiti/create')
         # localhost is the base URL for handlers in the test environment
         assert handler.should_show_inline_photo(
-            'http://localhost/photo.jpg') == True
-        assert handler.should_show_inline_photo(
-            'http://www.example.com/photo.jpg') == False
+            'http://localhost/photo.jpg')
+        assert not handler.should_show_inline_photo(
+            'http://www.example.com/photo.jpg')
 
     def test_filter_sensitive_fields_in_person_record(self):
         """Test passing a person recrod to utils.filter_sensitive_fields().
