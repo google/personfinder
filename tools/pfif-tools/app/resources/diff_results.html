@@ -9,7 +9,7 @@
 
 <body>
 
-<h1>Diff: {{ messages|length }} Messages</h1>
+<h1>Diff: {{ msgs|length }} Messages</h1>
 
 {% if msgs_by_category %}
   <table>
@@ -97,6 +97,7 @@
       </div>
     {% endfor %}
   {% else %}
+    {% include "messages.html" with show_record_ids=True show_xml_tag=True show_xml_text=True %}
   {% endif %}
 </div>
 

@@ -17,7 +17,6 @@
 
 from StringIO import StringIO
 
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
@@ -67,7 +66,6 @@ class DiffController(PfifController):
   """Displays the diff results page."""
 
   def post(self, request, *args, **kwargs):
-    self.response = HttpResponse()
     page_ctx = {'page_title': 'PFIF Diff: Results'}
     file_1, filename_1 = self.get_file(1, return_filename=True)
     file_2, filename_2 = self.get_file(2, return_filename=True)
@@ -139,9 +137,7 @@ class DiffController(PfifController):
         messages_by_record[record_id] = record_messages
       page_ctx['msgs_by_record'] = messages_by_record
     else:
-      self.response.write(
-          utils.MessagesOutput.messages_to_str(
-              messages, show_error_type=False, is_html=True))
+      page_ctx['msgs'] = messages
     return render(request, 'diff_results.html', page_ctx)
 
 class ValidatorController(PfifController):
