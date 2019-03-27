@@ -22,45 +22,55 @@ from StringIO import StringIO
 import unittest
 import utils
 
-from django.test import RequestFactory
+import django
+from django.test import Client
 from django.test.utils import setup_test_environment, teardown_test_environment
 
 import controller
+import settings
 import tests.pfif_xml as PfifXml
 
 class ControllerTests(unittest.TestCase):
   """Tests for the controller."""
 
   def setUp(self):
+    # TODO(nworden): see if there's a way to avoid this. You'd think
+    # settings.BASE_DIR would be useful here but I can't figure out how to make
+    # it work for prod, local servers, and tests without overriding the value in
+    # tests.
+    # The Django test client doesn't actually run a whole server, which is
+    # really nice because it's much faster, but it does seem to mess with the
+    # template loader, I guess because it's not running from where it normally
+    # would (in the app directory).
+    settings.TEMPLATES[0]['DIRS'] = ['app/resources']
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
+    django.setup()
     setup_test_environment()
-    self.request_factory = RequestFactory()
+    self.client = Client()
 
   def tearDown(self):
     teardown_test_environment()
 
   def make_request(
-      self, content, handler_cls=controller.ValidatorController):
+      self, post_data, path='/validate/results'):
     """Makes a request for the validator with content as the HTTP POST content.
     Returns the response."""
-    request = self.request_factory.post('/validator', copy.deepcopy(content))
-    return handler_cls.as_view()(request)
+    return self.client.post(path, copy.deepcopy(post_data))
 
   # file tests
 
   def test_no_xml_fails_gracefully(self):
     """If the user tries to validate with no input, there should not be an
     exception."""
-    for handler_cls in [controller.ValidatorController,
-                        controller.DiffController]:
-      response = self.make_request({}, handler_cls=handler_cls)
+    for path in ['/validate/results', '/diff/results']:
+      response = self.make_request({}, path=path)
       self.assertTrue("html" in response.content)
 
   def test_pasting_xml(self):
     """The page should have the correct number of errors in the header when
     using the pfif_xml_1 POST variable to send PFIF XML."""
-    response = self.make_request({'pfif_xml_1' :
-                                         PfifXml.XML_TWO_DUPLICATE_NO_CHILD})
+    response = self.make_request(
+        {'pfif_xml_1' : PfifXml.XML_TWO_DUPLICATE_NO_CHILD})
     self.assertTrue("3 Messages" in response.content)
 
   def test_file_upload(self):
@@ -131,16 +141,14 @@ class ControllerTests(unittest.TestCase):
     post_dict = {
         'pfif_xml_file_1' : xml_file, 'pfif_xml_url_2' : 'fake_url',
         'options' : ['text_is_case_sensitive']}
-    response = self.make_request(
-        post_dict, handler_cls=controller.DiffController)
+    response = self.make_request(post_dict, path='/diff/results')
     response_str = response.content
 
     # set the test file again because the first one will be at the end, and the
     # xml parser doesn't have to seek(0) on it.
     utils.set_file_for_test(StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_2))
     post_dict['options'].append('group_messages_by_record')
-    grouped_response = self.make_request(
-        post_dict, handler_cls=controller.DiffController)
+    grouped_response = self.make_request(post_dict, path='/diff/results')
     grouped_response_str = grouped_response.content
 
     # The header should have 'Diff' and 'Messages' in it along with the filename
@@ -161,8 +169,7 @@ class ControllerTests(unittest.TestCase):
                'pfif_xml_2' : PfifXml.XML_ADDED_DELETED_CHANGED_2,
                'options' : 'text_is_case_sensitive',
                'ignore_fields' : 'foo bar source_date'}
-    response = self.make_request(
-        request, handler_cls=controller.DiffController)
+    response = self.make_request(request, path='/diff/results')
     response_str = response.content
     for field in ['foo', 'bar', 'source_date']:
       self.assertFalse(field in response_str, field + ' is ignored and should '
@@ -174,7 +181,7 @@ class ControllerTests(unittest.TestCase):
     response = self.make_request(
         {'pfif_xml_1' : PfifXml.XML_ADDED_DELETED_CHANGED_1,
          'pfif_xml_2' : PfifXml.XML_ADDED_DELETED_CHANGED_2},
-        handler_cls=controller.DiffController)
+        path='/diff/results')
     response_str = response.content
     self.assertTrue('pasted in' in response_str)
 
