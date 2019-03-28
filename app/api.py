@@ -208,7 +208,7 @@ class BaseApiHandler(utils.BaseHandler):
 
     def __init__(self, request, response, env):
         super(BaseApiHandler, self).__init__(request, response, env)
-        self.set_auth(self.params.key)
+        self.set_auth()
 
 
 # TODO(gimite): Rename this class name and URL because it now supports both

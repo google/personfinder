@@ -1099,15 +1099,15 @@ class BaseHandler(webapp.RequestHandler):
             params_dict)
         return urlparse.urlunparse(parsed_url)
 
-    def set_auth(self, key):
+    def set_auth(self):
         self.auth = None
-        if key:
+        if self.params.key:
             if self.repo:
                 # check for domain specific one.
-                self.auth = model.Authorization.get(self.repo, key)
+                self.auth = model.Authorization.get(self.repo, self.params.key)
             if not self.auth:
                 # perhaps this is a global key ('*' for consistency with config).
-                self.auth = model.Authorization.get('*', key)
+                self.auth = model.Authorization.get('*', self.params.key)
         if self.auth and not self.auth.is_valid:
             self.auth = None
 

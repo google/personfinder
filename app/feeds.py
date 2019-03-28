@@ -47,7 +47,7 @@ class BaseFeedsHandler(utils.BaseHandler):
 
     def __init__(self, request, response, env):
         super(BaseFeedsHandler, self).__init__(request, response, env)
-        self.set_auth(self.params.key)
+        self.set_auth()
 
 
 class Repo(BaseFeedsHandler):
