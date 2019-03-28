@@ -98,7 +98,7 @@ const STATUS_MESSAGES = {
   'believed_alive': MESSAGES.believedAlive,
   'believed_missing': MESSAGES.believedMissing,
   'believed_dead': MESSAGES.believedDead,
-}
+};
 
 /**
  * A component which shows a single note record.
