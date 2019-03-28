@@ -43,7 +43,14 @@ def make_hidden_notes_blank(notes):
             note.text = ''
 
 
-class Repo(utils.BaseHandler):
+class BaseFeedsHandler(utils.BaseHandler):
+
+    def __init__(self, request, response, env):
+        super(BaseFeedsHandler, self).__init__(request, response, env)
+        self.set_auth(self.params.key)
+
+
+class Repo(BaseFeedsHandler):
     TITLE = 'Person Finder Repository Feed'
 
     repo_required = False
@@ -63,7 +70,7 @@ class Repo(utils.BaseHandler):
         utils.log_api_action(self, model.ApiActionLog.REPO)
 
 
-class Person(utils.BaseHandler):
+class Person(BaseFeedsHandler):
     https_required = True
 
     def get(self):
@@ -118,7 +125,7 @@ class Person(utils.BaseHandler):
                              self.num_notes)
 
 
-class Note(utils.BaseHandler):
+class Note(BaseFeedsHandler):
     # SSL check is done in get() if person_record_id is not specified.
     https_required = False
 

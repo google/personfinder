@@ -1099,6 +1099,18 @@ class BaseHandler(webapp.RequestHandler):
             params_dict)
         return urlparse.urlunparse(parsed_url)
 
+    def set_auth(self, key):
+        self.auth = None
+        if key:
+            if self.repo:
+                # check for domain specific one.
+                self.auth = model.Authorization.get(self.repo, key)
+            if not self.auth:
+                # perhaps this is a global key ('*' for consistency with config).
+                self.auth = model.Authorization.get('*', key)
+        if self.auth and not self.auth.is_valid:
+            self.auth = None
+
     def __return_unimplemented_method_error(self):
         return self.error(
             405,
@@ -1141,18 +1153,6 @@ class BaseHandler(webapp.RequestHandler):
         # Handles repository alias.
         if self.maybe_redirect_for_repo_alias(request):
             return
-
-        # Check for an authorization key.
-        self.auth = None
-        if self.params.key:
-            if self.repo:
-                # check for domain specific one.
-                self.auth = model.Authorization.get(self.repo, self.params.key)
-            if not self.auth:
-                # perhaps this is a global key ('*' for consistency with config).
-                self.auth = model.Authorization.get('*', self.params.key)
-        if self.auth and not self.auth.is_valid:
-            self.auth = None
 
         # Shows a custom error page here when the user is not an admin
         # instead of "login: admin" in app.yaml
