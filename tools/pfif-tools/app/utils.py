@@ -199,90 +199,48 @@ class MessagesOutput:
   # less in need of truncation.
   GROUPED_TRUNCATE_THRESHOLD = 400
 
-  def __init__(self, is_html, html_class='all_messages'):
-    self.is_html = is_html
+  def __init__(self):
     self.output = []
-    if is_html:
-      self.output.append('<div class="' + html_class + '">')
 
   def get_output(self):
     """Turns the stored data into a string.  Call at most once per instance of
     MessagesOutput."""
-    if self.is_html:
-      # closes all_messages div
-      self.output.append('</div>')
     return ''.join(self.output)
-
-  def start_new_message(self):
-    """Call once at the start of each message before calling
-    make_message_part"""
-    if self.is_html:
-      self.output.append('<div class="message">')
 
   def end_new_message(self):
     """Call once at the end of each message after all calls to
     make_message_part"""
-    if self.is_html:
-      # clases message div
-      self.output.append('</div>')
     self.output.append('\n')
 
-  def make_message_part(self, text, html_class, inline, data=None):
+  def make_message_part(self, text, inline, data=None):
     """Call once for each different part of the message (ie, the main text, the
-    line number).  text is the body of the message.  html_class is the class of
-    the span or div that will contain the text.  inline should be True if spans
-    are desired and False if divs are desired.  data will be enclosed in a
+    line number). text is the body of the message. inline should be True if
+    spans are desired and False if divs are desired.  data will be enclosed in a
     message_data span regardless of whethether the message part as a whole is
     inline or not."""
-    if self.is_html:
-      if inline:
-        tag_type = 'span'
-      else:
-        tag_type = 'div'
-      self.output.append('<' + tag_type + ' class="' + html_class + '">')
-      self.output.append(cgi.escape(text))
-      if data != None:
-        self.output.append('<span class="message_data">' + data + '</span>')
-      self.output.append('</' + tag_type + '>')
-    else:
-      if not inline:
-        self.output.append('\n')
-      self.output.append(text)
-      if data != None:
-        self.output.append(data)
+    if not inline:
+      self.output.append('\n')
+    self.output.append(text)
+    if data != None:
+      self.output.append(data)
 
-  def make_message_part_division(self, text, html_class, data=None):
+  def make_message_part_division(self, text, data=None):
     """Wrapper for make_message_part that is not inline."""
-    self.make_message_part(text, html_class, inline=False, data=data)
+    self.make_message_part(text, inline=False, data=data)
 
-  def make_message_part_inline(self, text, html_class, data=None):
+  def make_message_part_inline(self, text, data=None):
     """Wrapper for make_message_part that is inline."""
-    self.make_message_part(text, html_class, inline=True, data=data)
+    self.make_message_part(text, inline=True, data=data)
 
   def start_table(self, headers):
     """Adds a table header to the output.  Call before using make_table_row."""
-    if self.is_html:
-      self.output.append('<table>')
     self.make_table_row(headers, row_tag='th')
-
-  def end_table(self):
-    """Closes a table header.  Call after using make_table_row."""
-    if self.is_html:
-      self.output.append('</table>')
 
   def make_table_row(self, elements, row_tag='td'):
     """Makes a table row where every element in elements is in the row."""
-    if self.is_html:
-      self.output.append('<tr>')
     for element in elements:
-      if self.is_html:
-        self.output.append('<' + row_tag + '>' + element + '</' + row_tag + '>')
-      else:
-        self.output.append(element + '\t')
-    if self.is_html:
-      self.output.append('</tr>')
-    else:
-      self.output.append('\n')
+      self.output.append(element + '\t')
+    self.output.append('\n')
 
   # TODO(samking): add ability to turn off truncate in controller and main
   @staticmethod
@@ -336,24 +294,23 @@ class MessagesOutput:
       return [message.__dict__[field] for message in messages]
 
   @staticmethod
-  def generate_message_summary(messages, is_html):
+  def generate_message_summary(messages):
     """Returns a string with a summary of the categories of each message."""
-    output = MessagesOutput(is_html, html_class="summary")
+    output = MessagesOutput()
     messages_by_category = MessagesOutput.group_messages_by_category(messages)
     output.start_table(['Category', 'Number of Messages'])
     for category, messages_list in messages_by_category.items():
       output.make_table_row([category, str(len(messages_list))])
-    output.end_table()
     return output.get_output()
 
   @staticmethod
-  def messages_to_str_by_id(messages, is_html=False, truncate=True):
+  def messages_to_str_by_id(messages, truncate=True):
     """Returns a string containing all messages grouped together by record.
     Only works on diff messages."""
     if truncate:
       messages = MessagesOutput.truncate(
           messages, MessagesOutput.GROUPED_TRUNCATE_THRESHOLD)
-    output = MessagesOutput(is_html)
+    output = MessagesOutput()
     list_records_categories = [Categories.ADDED_RECORD,
                                Categories.DELETED_RECORD]
     list_fields_categories =  [Categories.ADDED_FIELD,
@@ -365,15 +322,12 @@ class MessagesOutput:
     for category in list_records_categories:
       changed_records_messages = messages_by_category.get(category)
       if changed_records_messages:
-        output.start_new_message()
         output.make_message_part_division(
-            category + ': ' + str(len(changed_records_messages)) + ' messages.',
-            'grouped_record_header')
+            category + ': ' + str(len(changed_records_messages)) + ' messages.')
         record_ids_changed = MessagesOutput.get_field_from_messages(
             changed_records_messages, 'record_id')
         output.make_message_part_division(
-            'Record IDs: ', 'grouped_record_list',
-            data=', '.join(record_ids_changed))
+            'Record IDs: ', data=', '.join(record_ids_changed))
         output.end_new_message()
 
     # Extract Messages with Changed Records
@@ -385,10 +339,8 @@ class MessagesOutput:
 
     # Output Records Changed
     for record, record_list in messages_by_record.items():
-      output.start_new_message()
       output.make_message_part_division(
-          str(len(record_list)) + ' messages for record: ' + record,
-          'grouped_record_header')
+          str(len(record_list)) + ' messages for record: ' + record)
       record_messages_by_category = MessagesOutput.group_messages_by_category(
           record_list)
       for category in list_fields_categories:
@@ -396,7 +348,7 @@ class MessagesOutput:
             record_messages_by_category.get(category, []), 'xml_tag')
         if tag_list:
           output.make_message_part_division(
-              category + ': ', 'grouped_record_list', data=', '.join(tag_list))
+              category + ': ', data=', '.join(tag_list))
       output.end_new_message()
 
     return output.get_output()
@@ -406,18 +358,17 @@ class MessagesOutput:
   def messages_to_str(messages, show_error_type=True, show_errors=True,
                       show_warnings=True, show_line_numbers=True,
                       show_full_line=True, show_record_ids=True,
-                      show_xml_tag=True, show_xml_text=True, is_html=False,
-                      xml_lines=None, truncate=True):
+                      show_xml_tag=True, show_xml_text=True, xml_lines=None,
+                      truncate=True):
     # pylint: enable=R0912
     """Returns a string containing all messages formatted per the options."""
     if truncate:
       messages = MessagesOutput.truncate(
           messages, MessagesOutput.TRUNCATE_THRESHOLD)
-    output = MessagesOutput(is_html)
+    output = MessagesOutput()
     for message in messages:
       if (message.is_error and show_errors) or (
           not message.is_error and show_warnings):
-        output.start_new_message()
         if show_error_type and message.is_error:
           output.make_message_part_inline('ERROR ', 'message_type')
         if show_error_type and not message.is_error:
@@ -435,21 +386,21 @@ class MessagesOutput:
           if message.person_record_id != None:
             output.make_message_part_division(
                 'The relevant person_record_id is: ',
-                'message_person_record_id', data=message.person_record_id)
+                data=message.person_record_id)
           if message.note_record_id != None:
             output.make_message_part_division(
                 'The relevant note_record_id is: ',
-                'message_note_record_id', data=message.note_record_id)
+                data=message.note_record_id)
         if show_xml_tag and message.xml_tag:
           output.make_message_part_division(
-              'The tag of the relevant PFIF XML node: ', 'message_xml_tag',
+              'The tag of the relevant PFIF XML node: ',
               data=message.xml_tag)
         if show_xml_text and message.xml_text:
           output.make_message_part_division(
-              'The text of the relevant PFIF XML node: ', 'message_xml_text',
+              'The text of the relevant PFIF XML node: ',
               data=message.xml_text)
         if (show_full_line and message.xml_line_number != None):
           output.make_message_part_division(
-              xml_lines[message.xml_line_number - 1], 'message_xml_full_line')
+              xml_lines[message.xml_line_number - 1])
         output.end_new_message()
     return output.get_output()
