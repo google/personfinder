@@ -32,7 +32,7 @@ import urllib2
 import uuid
 
 import django.utils.html
-from django.utils.translation import activate
+from django.utils import translation
 from django.utils.translation import ugettext as _
 from google.appengine import runtime
 from google.appengine.ext import db
@@ -722,7 +722,7 @@ class HandleSMS(utils.BaseHandler):
 
         if query_lang:
             # Use the language for the following calls of _().
-            activate(query_lang)
+            translation.activate(query_lang)
 
         responses = []
 
