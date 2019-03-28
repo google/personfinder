@@ -539,6 +539,9 @@ msgstr ""
 " %(view_url)s\n"
 "برای لغو مشارکت، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(برای نمایش کلیک کنید)‏"
 
@@ -628,8 +631,10 @@ msgstr "شماره تلفن نویسنده"
 msgid "Authorization key"
 msgstr "کلید مجوز"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "برگشت به وارد کردن/صادر کردن از"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -728,15 +733,18 @@ msgstr "غیرفعال کردن یادداشت‌‌ها در این سابقه"
 msgid "Does this person have profile pages at other websites?"
 msgstr "این شخص در سایر وب‌سایت‌ها دارای صفحه‌های نمایه است؟"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "بارگیری"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "‏بارگیری %(begin_link)sاین الگوی Excel%(end_link)s و افزودن ردیف به آن"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "‏بارگیری همه سوابق فرد در قالب CSV"
 
 msgid "E-mail"
 msgstr "ایمیل "
@@ -779,6 +787,9 @@ msgid ""
 msgstr ""
 "تمدید تاریخ انقضا برای %(extension_days)s روز دیگر\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1185,9 +1196,6 @@ msgstr "شماره تلفن"
 msgid "Photo"
 msgstr "عکس"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "عکس (سایت خارجی؛ ممکن است هزینه اتصال معمولی اعمال شود)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1360,9 +1368,6 @@ msgstr "وضعیت فرد"
 msgid "Status of this person:"
 msgstr "وضعیت این شخص:"
 
-msgid "Street name only, no number"
-msgstr "فقط نام خیابان، بدون شماره"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1415,8 +1420,10 @@ msgstr "نویسنده یادداشت‌ها را در این سابقه غیر�
 msgid "The author has disabled status updates on this record."
 msgstr "نویسنده به‌روزرسانی‌های وضعیت را در این سابقه غیرفعال کرده است."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "داده‌ها هنوز آماده نیست. ۲۴ ساعت دیگر دوباره امتحان کنید."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1708,8 +1715,10 @@ msgstr ""
 "چون برای دریافت به‌روزرسانی‌های مربوط به شخص زیر مشترک شده‌اید این اعلان "
 "را دریافت کردید:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "بارگیری شما باید به‌طور خودکار شروع شود."
 
 msgid "Your e-mail address"
 msgstr "نشانی ایمیل  شما"

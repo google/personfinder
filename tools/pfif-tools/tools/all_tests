@@ -25,14 +25,4 @@ if [ $u -gt 0 ]; then
     exit 1
 fi
 
-$TOOLS_DIR/server_tests
-s=$?
-
-if [ $s -gt 0 ]; then
-    echo "server tests failed."
-    exit 1
-fi 
-
-if [ $u -eq 0 -a $s -eq 0 ]; then 
-    echo "Unit and server tests passed."
-fi
+echo "Unit tests passed."

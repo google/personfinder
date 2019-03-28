@@ -547,6 +547,9 @@ msgstr ""
 "\n"
 "如要取消訂閱，請點選以下連結：%(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(按這裡查看)"
 
@@ -635,8 +638,10 @@ msgstr "提供者的電話號碼"
 msgid "Authorization key"
 msgstr "授權金鑰"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "返回匯入/匯出表單"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -727,15 +732,18 @@ msgstr "停用這筆記錄的註記功能"
 msgid "Does this person have profile pages at other websites?"
 msgstr "這個人在其他網站上有個人資料頁面嗎？"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "下載"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "下載%(begin_link)s這個 Excel 範本%(end_link)s並在其中新增資料列"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "以 CSV 格式下載所有個人記錄"
 
 msgid "E-mail"
 msgstr "電子郵件"
@@ -778,6 +786,9 @@ msgid ""
 msgstr ""
 "將到期日延後 %(extension_days)s 天\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1151,9 +1162,6 @@ msgstr "電話號碼"
 msgid "Photo"
 msgstr "相片"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "相片 (外部網站，可能須支付一般連線費用)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1320,9 +1328,6 @@ msgstr "個人的狀態"
 msgid "Status of this person:"
 msgstr "這個人的狀態："
 
-msgid "Street name only, no number"
-msgstr "輸入路名即可，不需輸入門牌號碼"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1373,8 +1378,10 @@ msgstr "發佈者已停用這筆記錄的註記功能。"
 msgid "The author has disabled status updates on this record."
 msgstr "發佈者已停用這筆記錄的狀態更新功能。"
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "資料尚未準備完成，請於 24 小時後再試一次。"
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1644,8 +1651,10 @@ msgid ""
 "the following person:\n"
 msgstr "由於您訂閱了以下使用者的更新，因此我們特地發送這封郵件通知您：\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "系統應該會自動開始下載檔案。"
 
 msgid "Your e-mail address"
 msgstr "您的電子郵件地址"

@@ -357,6 +357,11 @@ class Person(Base):
         return self.alternate_names.splitlines() if self.alternate_names else []
 
     @property
+    def fuzzified_age(self):
+        import utils
+        return utils.fuzzify_age(self.age) if self.age else None
+
+    @property
     def profile_urls_list(self):
         return self.profile_urls.splitlines() if self.profile_urls else []
 
@@ -981,17 +986,6 @@ class UserActionLog(db.Expando):
                     value = value.key()
                 setattr(entry, kind + '_' + name, value)
         entry.put()
-
-
-class UserAgentLog(db.Model):
-    """Logs information about the user agent."""
-    timestamp = db.DateTimeProperty(auto_now=True)
-    repo = db.StringProperty()
-    user_agent = db.StringProperty()
-    lang = db.StringProperty()
-    accept_charset = db.StringProperty()
-    ip_address = db.StringProperty()
-    sample_rate = db.FloatProperty()
 
 
 class StaticSiteMapInfo(db.Model):

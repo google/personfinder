@@ -417,25 +417,31 @@ class NotifyManyUnreviewedNotesTests(unittest.TestCase):
         path_to_app = os.path.join(os.path.dirname(__file__), '../app')
         self.testbed.init_taskqueue_stub(root_path=path_to_app)
         model.Repo(key_name='haiti').put()
-        self.handler = test_handler.initialize_handler(
-            handler_class=tasks.NotifyManyUnreviewedNotes,
-            action=tasks.NotifyManyUnreviewedNotes.ACTION,
-            repo='haiti', environ=None, params=None)
 
     def tearDown(self):
         self.testbed.deactivate()
 
-    def test_should_notify(self):
+    def test_should_notify_empty_email(self):
         # If email is empty, always False is returned.
         config.set(notification_email='',
                    unreviewed_notes_threshold=9)
-        self.assert_(not self.handler._should_notify(10))
+        handler = self.get_handler()
+        self.assert_(not handler._should_notify(10))
 
+    def test_should_notify_threshold(self):
         config.set(notification_email='inna-testing@gmail.com',
                    unreviewed_notes_threshold=100)
+        handler = self.get_handler()
         # The number of unreviewed_notes larger than threshold: True
-        self.assert_(self.handler._should_notify(101))
+        self.assert_(handler._should_notify(101))
         # The number of unreviewed_notes is equal to threshold: False
-        self.assert_(not self.handler._should_notify(100))
+        self.assert_(not handler._should_notify(100))
         # The number of unreviewed_notes is smaller than threshold: False
-        self.assert_(not self.handler._should_notify(99))
+        self.assert_(not handler._should_notify(99))
+
+    def get_handler(self):
+        # The handler can't be initialized until after the config is set up.
+        return test_handler.initialize_handler(
+            handler_class=tasks.NotifyManyUnreviewedNotes,
+            action=tasks.NotifyManyUnreviewedNotes.ACTION,
+            repo='haiti', environ=None, params=None)

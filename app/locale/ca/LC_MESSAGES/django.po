@@ -561,6 +561,9 @@ msgstr ""
 "Per cancel·lar la subscripció, seguiu aquest enllaç: %(unsubscribe_link)s"
 "\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(feu clic per mostrar la informació)"
 
@@ -653,8 +656,10 @@ msgstr "Número de telèfon de l'autor"
 msgid "Authorization key"
 msgstr "Clau d'autorització"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "Torna al formulari per importar o exportar registres"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -755,8 +760,9 @@ msgstr "Desactiva les notes en aquest registre"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Aquesta persona té pàgines de perfil en altres llocs web?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "Baixa"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
@@ -764,8 +770,10 @@ msgstr ""
 "Baixeu %(begin_link)saquesta plantilla d'Excel%(end_link)s i afegiu-hi "
 "files"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "Baixa tots els registres de persones en format CSV"
 
 msgid "E-mail"
 msgstr "Correu electrònic"
@@ -808,6 +816,9 @@ msgid ""
 msgstr ""
 "Amplia %(extension_days)s dies més la data de caducitat\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1218,11 +1229,6 @@ msgstr "Número de telèfon"
 msgid "Photo"
 msgstr "Foto"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
-"Foto (és un lloc extern, i és possible que s'apliqui la tarifa de "
-"connexió habitual)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1395,9 +1401,6 @@ msgstr "Estat de la persona"
 msgid "Status of this person:"
 msgstr "Estat d'aquesta persona:"
 
-msgid "Street name only, no number"
-msgstr "Només el nom del carrer, sense el número"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1450,8 +1453,10 @@ msgstr "L'autor ha desactivat les notes en aquest registre."
 msgid "The author has disabled status updates on this record."
 msgstr "L'autor ha desactivat les actualitzacions d'estat en aquest registre."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "Les dades encara no estan a punt. Torna-ho a provar d'aquí a 24 hores."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1751,8 +1756,10 @@ msgstr ""
 "Heu rebut aquesta notificació perquè us heu subscrit a les novetats sobre"
 " aquesta persona:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "La baixada s'iniciarà automàticament."
 
 msgid "Your e-mail address"
 msgstr "La vostra adreça electrònica"

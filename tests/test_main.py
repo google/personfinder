@@ -59,25 +59,6 @@ class MainTests(unittest.TestCase):
         assert '\n' not in env.lang, env.lang
         assert ':' not in env.lang, env.lang
 
-    def test_shiftjis_get(self):
-        """Tests Shift-JIS encoding of GET query parameters."""
-        request = setup_request(
-            '/japan/results?charsets=shift_jis&query=%8D%B2%93%A1&role=seek&')
-        handler = main.Main(request, webapp.Response())
-        assert handler.env.charset == 'shift_jis'
-        assert request.charset == 'shift_jis'
-        assert request.get('query') == u'\u4F50\u85E4'
-
-    def test_shiftjis_post(self):
-        """Tests Shift-JIS encoding of POST query parameters."""
-        request = setup_request('/japan/post?')
-        request.body = 'charsets=shift_jis&given_name=%8D%B2%93%A1'
-        request.method = 'POST'
-        handler = main.Main(request, webapp.Response())
-        assert handler.env.charset == 'shift_jis'
-        assert request.charset == 'shift_jis'
-        assert request.get('given_name') == u'\u4F50\u85E4'
-
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
         request = setup_request('/haiti/start')

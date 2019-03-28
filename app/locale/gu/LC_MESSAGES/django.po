@@ -561,6 +561,9 @@ msgstr ""
 "\n"
 "અનસબ્સ્ક્રાઇબ કરવા માટે, આ લિંકને ફૉલો કરો: %(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(દર્શાવવા માટે ક્લિક કરો)"
 
@@ -650,8 +653,10 @@ msgstr "લેખકનો ફોન નંબર"
 msgid "Authorization key"
 msgstr "અધિકરણ કી"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "આયાત/નિકાસ ફોર્મ પર પાછા ફરો"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -749,8 +754,9 @@ msgstr "આ રેકોર્ડ પર નોટને બંધ કરો"
 msgid "Does this person have profile pages at other websites?"
 msgstr "શું આ વ્યક્તિ પાસે અન્ય વેબસાઇટ્સ પર પ્રોફાઇલ પૃષ્ઠો છે?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "ડાઉનલોડ કરો"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
@@ -758,8 +764,10 @@ msgstr ""
 "%(begin_link)sઆ Excel નમૂનો%(end_link)s ડાઉનલોડ કરો અને તેમાં પંક્તિઓ "
 "ઉમેરો"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "બધી વ્યક્તિઓના રેકોર્ડ CSV ફોર્મેટમાં ડાઉનલોડ કરો"
 
 msgid "E-mail"
 msgstr "ઇ-મેઇલ"
@@ -802,6 +810,9 @@ msgid ""
 msgstr ""
 "સમાપ્તિ તારીખ %(extension_days)s દિવસ વધારો\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1210,9 +1221,6 @@ msgstr "ફોન નંબર"
 msgid "Photo"
 msgstr "ફોટો"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "ફોટો (બાહ્ય સાઇટ; સામાન્ય કનેક્શન શુલ્ક લાગુ થઈ શકે છે)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1391,9 +1399,6 @@ msgstr "વ્યક્તિની સ્થિતિ"
 msgid "Status of this person:"
 msgstr "આ વ્યક્તિની સ્થિતિ:"
 
-msgid "Street name only, no number"
-msgstr "ફક્ત ગલીનું નામ, નંબર નહીં"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1444,8 +1449,10 @@ msgstr "આ લેખકે આ રેકોર્ડ પર નોટ્સ અ
 msgid "The author has disabled status updates on this record."
 msgstr "આ લેખકે આ રેકોર્ડ પર સ્થિતિ અપડેટ્સ અક્ષમ કર્યું છે."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "ડેટા હજી સુધી તૈયાર નથી. 24 કલાક પછી ફરી પ્રયાસ કરજો."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1737,8 +1744,10 @@ msgstr ""
 "તમને આ નોટિફિકેશન પ્રાપ્ત થયું છે કારણ કે નીચેની વ્યક્તિ પર અપડેટ માટે "
 "સબ્સ્ક્રાઇબ કર્યું છે:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "તમારું ડાઉનલોડ ઑટોમૅટિક રીતે શરૂ થવું જોઈએ."
 
 msgid "Your e-mail address"
 msgstr "તમારું ઇ-મેઇલ સરનામું"

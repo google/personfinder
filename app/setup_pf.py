@@ -61,8 +61,6 @@ def setup_configs():
     # They should be replaced with real keys upon launch.
     config.set(captcha_site_key='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
                captcha_secret_key='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
-    # A Google Translate API key with a very low quota, just for testing.
-               translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE',
                repo_aliases={},
                sms_number_to_repo={},
                referrer_whitelist=[],

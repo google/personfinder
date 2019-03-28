@@ -556,6 +556,9 @@ msgstr ""
 "дээрээс үзэж болно. Цуцлахын тулд дараах холбоосыг дагна уу: "
 "%(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(ил гаргахын тулд товшино уу)"
 
@@ -645,8 +648,10 @@ msgstr "Зохиогчийн утасны дугаар"
 msgid "Authorization key"
 msgstr "Эрхжүүлэлтийн түлхүүр"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "Импорт/экспортын маягт руу буцах"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -747,15 +752,18 @@ msgstr "Энэ бичлэг дээр тэмдэглэлийг идэвхгүйж
 msgid "Does this person have profile pages at other websites?"
 msgstr "Энэ хүнд өөр вебсайтууд дээр профайл хуудас байгаа юу?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "Татах"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "Энэ %(begin_link)sExcel загварыг%(end_link)s татаж аваад мөр нэмнэ үү"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "Бүх хүний бүртгэлийг CSV форматаар татах"
 
 msgid "E-mail"
 msgstr "Имэйл"
@@ -798,6 +806,9 @@ msgid ""
 msgstr ""
 "Дуусах хугацааг %(extension_days)s хоногоор сунгах\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1201,9 +1212,6 @@ msgstr "Утасны дугаар"
 msgid "Photo"
 msgstr "Зураг"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Зураг (гадаад сайт; холболтын энгийн хураамж тооцно)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1376,9 +1384,6 @@ msgstr "Хүний байдал"
 msgid "Status of this person:"
 msgstr "Энэ хүний байдал:"
 
-msgid "Street name only, no number"
-msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1431,8 +1436,10 @@ msgstr "Зохиогч нь энэ бичлэг дээр тэмдэглэлий�
 msgid "The author has disabled status updates on this record."
 msgstr "Зохиогч нь энэ бичлэг дээр статус шинэчлэлтийг идэвхгүйжүүлсэн."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "Өгөгдөл хараахан бэлэн биш байна. 24 цагийн дараа дахин оролдоно уу."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1721,8 +1728,10 @@ msgstr ""
 "Та дараах хүний талаар шинэ мэдээлэл авахаар бүртгүүлсэн учир энэ "
 "мэдэгдлийг хүлээн авч байна:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "Таны таталт автоматаар эхлэх ёстой."
 
 msgid "Your e-mail address"
 msgstr "Таны имэйл хаяг"

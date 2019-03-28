@@ -560,6 +560,9 @@ msgstr ""
 "Wenn Sie das Abo beenden möchten, klicken Sie auf diesen Link: "
 "%(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(zum Anzeigen klicken)"
 
@@ -650,8 +653,10 @@ msgstr "Telefonnummer des Erstellers"
 msgid "Authorization key"
 msgstr "Autorisierungsschlüssel"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "Zurück zum Import-/Exportformular"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -754,8 +759,9 @@ msgstr "Notizen zu diesem Datensatz deaktivieren"
 msgid "Does this person have profile pages at other websites?"
 msgstr "Hat diese Person ein Profil auf anderen Websites?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "Herunterladen"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
@@ -763,8 +769,10 @@ msgstr ""
 "Laden Sie %(begin_link)sdiese Excel-Vorlage%(end_link)s herunter und "
 "fügen Sie Zeilen hinzu."
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "Personendaten im CSV-Format herunterladen"
 
 msgid "E-mail"
 msgstr "E-Mail"
@@ -807,6 +815,9 @@ msgid ""
 msgstr ""
 "Ablaufdatum um %(extension_days)s Tage verlängern\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1222,9 +1233,6 @@ msgstr "Telefonnummer"
 msgid "Photo"
 msgstr "Foto"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Foto (externe Website, normale Verbindungsgebühr möglich)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1401,9 +1409,6 @@ msgstr "Status der Person"
 msgid "Status of this person:"
 msgstr "Status dieser Person:"
 
-msgid "Street name only, no number"
-msgstr "Nur Straßenname, keine Hausnummer"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1458,8 +1463,12 @@ msgstr "Der Ersteller hat Notizen zu diesem Datensatz deaktiviert."
 msgid "The author has disabled status updates on this record."
 msgstr "Der Ersteller hat Statusupdates zu diesem Datensatz deaktiviert."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
 msgstr ""
+"Die Daten sind noch nicht verfügbar. Versuchen Sie es in 24 Stunden noch "
+"einmal."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1761,8 +1770,10 @@ msgstr ""
 "Sie erhalten diese Benachrichtigung, weil Sie Updates zu folgender Person"
 " abonniert haben:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "Ihr Download sollte automatisch starten."
 
 msgid "Your e-mail address"
 msgstr "Meine E-Mail-Adresse"

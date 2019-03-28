@@ -530,6 +530,9 @@ msgstr ""
 "Raportin e plotë mund ta shikoni në %(view_url)s. Për t'u çabonuar, "
 "ndiqni këtë lidhje: %(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(kliko për ta publikuar)"
 
@@ -620,8 +623,10 @@ msgstr "Numri i telefonit të autorit"
 msgid "Authorization key"
 msgstr "Çelësi autorizues"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "Kthehu prapa te formulari i importimit/eksportimit"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -726,8 +731,9 @@ msgstr "Çaktivizo mundësinë për shënime në këtë raport"
 msgid "Does this person have profile pages at other websites?"
 msgstr "A ka faqe profili apo faqe interneti të tjera ky person?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "Shkarko"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
@@ -735,8 +741,10 @@ msgstr ""
 "Shkarko %(begin_link)skëtë shabllon në formatin \"Excel\" %(end_link)s "
 "dhe shto rreshta në të"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "Shkarko të gjitha regjistrimet e personit në formatin CSV"
 
 msgid "E-mail"
 msgstr "E-mail"
@@ -779,6 +787,9 @@ msgid ""
 msgstr ""
 "Shtyje datën e skadimit me %(extension_days)s ditë\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1194,9 +1205,6 @@ msgstr "Numri i telefonit"
 msgid "Photo"
 msgstr "Fotografitë"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "Fotografia (sajt i jashtëm; mund të zbatohet tarifa normale e lidhjes)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1373,9 +1381,6 @@ msgstr "Statusi i personit"
 msgid "Status of this person:"
 msgstr "Statusi i këtij personi:"
 
-msgid "Street name only, no number"
-msgstr "Vetëm emrin e rrugës, jo numrin e saj"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1430,8 +1435,10 @@ msgstr "Autori e ka çaktivizuar mundësinë për të futur shënime në këtë 
 msgid "The author has disabled status updates on this record."
 msgstr "Autori e ka çaktivizuar mundësinë e rinovimit të statusit në këtë raport."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "Të dhënat nuk janë ende gati. Provo përsëri pas 24 orësh."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1736,8 +1743,10 @@ msgstr ""
 "Ju morët këtë njoftim, pasi jeni abonuar për të marrë çdo informacion të "
 "ri mbi personin e mëposhtëm:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "Shkarkimi yt duhet të fillojë automatikisht."
 
 msgid "Your e-mail address"
 msgstr "Adresa juaj e e-mail-it"

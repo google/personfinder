@@ -19,6 +19,7 @@ from django_setup import ugettext as _  # always keep this first
 
 import calendar
 import cgi
+import copy
 from datetime import datetime, timedelta
 import hmac
 import httplib
@@ -237,7 +238,7 @@ def validate_approximate_date(string):
     return ''
 
 
-AGE_RE = re.compile(r'^\d+(-\d+)?$')
+AGE_RE = re.compile(r'^(\d+)(-(\d+))?$')
 # Hyphen with possibly surrounding whitespaces.
 HYPHEN_RE = re.compile(
     ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
@@ -367,6 +368,42 @@ def validate_cache_seconds(string):
     return 1.0
 
 
+# ==== Fuzzification functions =================================================
+
+# The range should be no more specific than a five year period.
+MIN_AGE_RANGE = 5
+
+def fuzzify_age(value):
+    """Fuzzifies the age value for privacy.
+
+    Args:
+        value: a PFIF-compliant age value (a number or range, e.g., 45-49).
+
+    Returns:
+        A range of at least five years that includes the given value, or None if
+        the input value is None or invalid.
+    """
+    if not value:
+        return None
+    parse = AGE_RE.match(value)
+    if not parse:
+        return None
+    range_start = int(parse.group(1))
+    range_end = int(parse.group(3)) if parse.group(3) else None
+    if not range_end:
+        # If no range was given, use a round five years around the given age.
+        range_start -= range_start % MIN_AGE_RANGE
+        return '%d-%d' % (range_start, range_start + MIN_AGE_RANGE)
+    if (range_end - range_start) >= MIN_AGE_RANGE:
+        # If the range we were given is already acceptably wide, leave it as-is.
+        return value
+    # If we were given too specific a range, pad it out to a round five year
+    # range.
+    range_start -= range_start % MIN_AGE_RANGE
+    range_end += MIN_AGE_RANGE - ((range_end) % MIN_AGE_RANGE)
+    return '%d-%d' % (range_start, range_end)
+
+
 # ==== Other utilities =========================================================
 
 
@@ -383,7 +420,7 @@ def sanitize_urls(record):
     We check URLs submitted through Person Finder, but bad data might come in
     through the API.
     """
-    url_validator = URLValidator()
+    url_validator = URLValidator(schemes=['http', 'https'])
     # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
@@ -614,6 +651,7 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
 
 
 def add_profile_icon_url(website, handler):
+    website = copy.deepcopy(website)  # avoid modifying the original
     website['icon_url'] = \
         handler.env.global_url + '/' + website['icon_filename']
     return website
@@ -1014,7 +1052,7 @@ class BaseHandler(webapp.RequestHandler):
         # repository name in URLs. This is especially useful combined with
         # the short URL. e.g., You can access
         # https://www.google.org/personfinder/2014-jammu-kashmir-floods
-        # by http://g.co/pf/jam .
+        # by https://g.co/pf/jam .
         if not self.repo:
             return False
         repo_aliases = config.get('repo_aliases', default={})
@@ -1033,21 +1071,15 @@ class BaseHandler(webapp.RequestHandler):
 
     def should_show_inline_photo(self, photo_url):
         """Returns True if we should show the photo in our site directly with
-        <img> tag. In zero-rating mode, it returns True only if the photo is
-        served by our domain, to avoid loading resources in other domains in
-        Person Finder.
-
-        See "Zero-rating" section of the admin page
-        (app/resources/admin.html.template) for details of zero-rating mode.
+        <img> tag. Returns True only if the photo is served by our domain, to
+        avoid loading resources in other domains in Person Finder.
         """
         if not photo_url:
             return False
-        elif self.env.config.zero_rating_mode:
+        else:
             _, our_netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             _, photo_netloc, _, _, _ = urlparse.urlsplit(photo_url)
             return photo_netloc == our_netloc
-        else:
-            return True
 
     URL_PARSE_QUERY_INDEX = 4
 
@@ -1100,16 +1132,6 @@ class BaseHandler(webapp.RequestHandler):
         if self.params.referrer and (not self.params.referrer in
                                      self.config.referrer_whitelist):
             setattr(self.params, 'referrer', '')
-
-        # Log the User-Agent header.
-        sample_rate = float(
-            self.config and self.config.user_agent_sample_rate or 0)
-        if random.random() < sample_rate:
-            model.UserAgentLog(
-                repo=self.repo, sample_rate=sample_rate,
-                user_agent=self.request.headers.get('User-Agent'), lang=lang,
-                accept_charset=self.request.headers.get('Accept-Charset', ''),
-                ip_address=self.request.remote_addr).put()
 
         # Check for SSL (unless running local dev app server).
         if self.https_required and not is_dev_app_server():

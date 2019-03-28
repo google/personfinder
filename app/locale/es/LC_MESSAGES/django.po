@@ -577,6 +577,9 @@ msgstr ""
 "Para cancelar la suscripción, haz clic en el siguiente enlace: "
 "%(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "(hacer clic para mostrar la información)"
 
@@ -667,8 +670,10 @@ msgstr "Número de teléfono del autor"
 msgid "Authorization key"
 msgstr "Clave de autorización"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "Volver al formulario de exportación o importación"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -769,15 +774,18 @@ msgstr "Inhabilitar notas en este registro"
 msgid "Does this person have profile pages at other websites?"
 msgstr "¿Esta persona tiene páginas de perfil en otros sitios web?"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "Descarga %(begin_link)sesta plantilla de Excel%(end_link)s y añade filas"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "Descargar todos los registros de personas en formato CSV"
 
 msgid "E-mail"
 msgstr "Correo electrónico"
@@ -820,6 +828,9 @@ msgid ""
 msgstr ""
 "Ampliar la fecha de caducidad %(extension_days)s días\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1003,7 +1014,7 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Si eres el autor de la nota, consulta tu correo electrónico y busca un "
-"mensaje que contiene un enlace que te permitirá confirmar que deseas "
+"mensaje que contiene un enlace que te permitirá confirmar que quieres "
 "inhabilitar la publicación de notas en este registro. En caso contrario, "
 "espera a que el autor del registro confirme tu solicitud."
 
@@ -1013,7 +1024,7 @@ msgid ""
 "please wait for the record author to confirm your request."
 msgstr ""
 "Si eres el autor de la nota, consulta tu correo electrónico y busca un "
-"mensaje que contiene un enlace que te permitirá confirmar que deseas "
+"mensaje que contiene un enlace que te permitirá confirmar que quieres "
 "habilitar la publicación de notas en este registro. En caso contrario, "
 "espera a que el autor del registro confirme tu solicitud."
 
@@ -1237,11 +1248,6 @@ msgstr "Número de teléfono"
 msgid "Photo"
 msgstr "Foto"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr ""
-"Foto (sitio web externo; es posible que se aplique la tarifa de conexión "
-"habitual)"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1422,9 +1428,6 @@ msgstr "Estado de la persona"
 msgid "Status of this person:"
 msgstr "Estado de esta persona:"
 
-msgid "Street name only, no number"
-msgstr "Solo el nombre de la calle, sin el número"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1481,8 +1484,10 @@ msgstr ""
 msgid "The author has disabled status updates on this record."
 msgstr "El autor ha inhabilitado las novedades sobre el estado en este registro."
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "Aún no están listos los datos. Vuelve a intentarlo cuando pasen 24 horas."
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1781,8 +1786,10 @@ msgstr ""
 "Has recibido esta notificación porque te has suscrito para recibir "
 "novedades sobre la siguiente persona:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "La descarga debería iniciarse automáticamente."
 
 msgid "Your e-mail address"
 msgstr "Tu dirección de correo electrónico"
@@ -1819,7 +1826,7 @@ msgid ""
 msgstr ""
 "Tu solicitud se ha procesado correctamente. Consulta tu correo "
 "electrónico y haz clic en la URL insertada en el mensaje que recibirás "
-"para confirmar que deseas publicar la nota."
+"para confirmar que quieres publicar la nota."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(full_name)s\""

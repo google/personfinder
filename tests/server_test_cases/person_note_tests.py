@@ -519,7 +519,7 @@ class PersonNoteTests(ServerTestsBase):
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
             last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz.com/abc.jpg')
+            note_photo_url='http://localhost:8081/abc.jpg')
 
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
@@ -594,7 +594,7 @@ class PersonNoteTests(ServerTestsBase):
                     '_test_alternate_given_names _test_alternate_family_names',
                 'Sex:': 'female',
                 # 'Date of birth:': '1955',  # currently hidden
-                'Age:': '52',
+                'Age:': '50-55',
                 'Neighborhood:': '_test_home_neighborhood',
                 'City:': '_test_home_city',
                 'Province or state:': '_test_home_state',
@@ -912,7 +912,7 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             None, last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz.com/abc.jpg')
+            note_photo_url='http://localhost:8081/abc.jpg')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -3163,7 +3163,7 @@ _feed_profile_url2</pfif:profile_urls>
     def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
-        # See: http://www.w3.org/TR/REC-xml/#charsets
+        # See: https://www.w3.org/TR/REC-xml/#charsets
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
@@ -3595,50 +3595,6 @@ _feed_profile_url2</pfif:profile_urls>
             # Should not be available in a different repo.
             self.go('/pakistan/photo?id=%s' % id)
             assert self.s.status == 404
-
-    def test_xss_photo(self):
-        person, note = self.setup_person_and_note()
-        photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
-        for record in [person, note]:
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-            record.photo_url = 'http://xyz.com/abc.jpg'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert '//xyz.com/abc.jpg' in doc.content
-            record.photo_url = 'bad_things://xyz'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-
-    def test_xss_source_url(self):
-        person, note = self.setup_person_and_note()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.source_url in doc.content
-        person.source_url = 'javascript:alert(1);'
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        assert person.source_url not in doc.content
-
-    def test_xss_profile_urls(self):
-        profile_urls = ['http://abc.com', 'http://def.org', 'http://ghi.net']
-        person, note = self.setup_person_and_note()
-        person.profile_urls = '\n'.join(profile_urls)
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        for profile_url in profile_urls:
-            assert profile_url in doc.content
-        XSS_URL_INDEX = 1
-        profile_urls[XSS_URL_INDEX] = 'javascript:alert(1);'
-        person.profile_urls = '\n'.join(profile_urls)
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        for i, profile_url in enumerate(profile_urls):
-            if i == XSS_URL_INDEX:
-                assert profile_url not in doc.content
-            else:
-                assert profile_url in doc.content
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""

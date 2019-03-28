@@ -24,12 +24,12 @@ from django_setup import gettext_lazy as _
 ROOT_URL = 'http://google.org/personfinder'
 
 # The domain name of this application.  The application hosts multiple
-# repositories; each repository ID is http://<HOME_DOMAIN>/<REPO>.
+# repositories; each repository ID is https://<HOME_DOMAIN>/<REPO>.
 HOME_DOMAIN = 'personfinder.google.org'
 
 # Mapping from language codes to endonyms for all available languages.
 # You can get the list of language names in each language in Unicode CLDR data.
-# Go to http://unicode.org/Public/cldr/latest , download core.zip and look
+# Go to https://unicode.org/Public/cldr/latest , download core.zip and look
 # at common/main/*.xml in it.
 # Some names are taken from Wikipedia because they are missing in CLDR data or
 # they are in different script from our translation.
@@ -119,7 +119,7 @@ LANGUAGE_ENDONYMS = {
 
 # Mapping from language codes to English names for all available languages.
 # You can get the list of language names in each language in Unicode CLDR data.
-# Go to http://unicode.org/Public/cldr/latest , download core.zip and look
+# Go to https://unicode.org/Public/cldr/latest , download core.zip and look
 # at common/main/*.xml in it.
 LANGUAGE_EXONYMS = {
     'af': 'Afrikaans',

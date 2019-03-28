@@ -28,23 +28,24 @@ from django.utils.translation import ugettext as _
 API_KEY_LENGTH = 16
 KEYS_PER_PAGE = 50
 
+AUTHORIZATION_PARAMS_LIST = [
+    'contact_name',
+    'contact_email',
+    'organization_name',
+    'domain_write_permission',
+    'read_permission',
+    'full_read_permission',
+    'search_permission',
+    'subscribe_permission',
+    'mark_notes_reviewed',
+    'believed_dead_permission',
+    'stats_permission',
+    'is_valid',
+]
+
 def to_authorization_params(param):
-    param_list = [
-        'contact_name',
-        'contact_email',
-        'organization_name',
-        'domain_write_permission',
-        'read_permission',
-        'full_read_permission',
-        'search_permission',
-        'subscribe_permission',
-        'mark_notes_reviewed',
-        'believed_dead_permission',
-        'stats_permission',
-        'is_valid',
-    ]
     ret = {}
-    for param_name in param_list:
+    for param_name in AUTHORIZATION_PARAMS_LIST:
         ret[param_name] = getattr(param, param_name)
     return ret
 

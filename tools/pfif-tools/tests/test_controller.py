@@ -16,148 +16,140 @@
 
 """Tests for validator_controller.py"""
 
-import unittest
-import controller
+import copy
+import os
 from StringIO import StringIO
-from google.appengine.ext import webapp
-import tests.pfif_xml as PfifXml
+import unittest
 import utils
-from webob.multidict import MultiDict
 
-class FakeFieldStorage(object):
-  """A mock to test Field Storage files used in WebOb requests."""
+import django
+from django.test import Client
+from django.test.utils import setup_test_environment, teardown_test_environment
 
-  def __init__(self, filename, value):
-    self.filename = filename
-    self.value = value
-
-  def __repr__(self):
-    return self.value
+import controller
+import settings
+import tests.pfif_xml as PfifXml
 
 class ControllerTests(unittest.TestCase):
   """Tests for the controller."""
 
-  # pylint: disable=C0301
-  # advice from
-  # http://stackoverflow.com/questions/6222528/unittesting-the-webapp-requesthandler-in-gae-python
-  # for testing webapp server
-  # pylint: enable=C0301
-  @staticmethod
-  def make_webapp_request(content, handler_init_method=None):
-    """Makes a webapp request for the validator with content as the HTTP POST
-    content.  Returns the response."""
-    if handler_init_method is None:
-      handler_init_method = controller.ValidatorController
-    request = webapp.Request({'wsgi.input' : StringIO(),
-                              'REQUEST_METHOD' : 'POST',
-                              'PATH_INFO' : '/validator'})
-    for key, val in content.items():
-      request.POST.add(key, val)
-    response = webapp.Response()
-    handler = handler_init_method()
-    handler.initialize(request, response)
-    handler.post()
-    return response
+  def setUp(self):
+    # TODO(nworden): see if there's a way to avoid this. You'd think
+    # settings.BASE_DIR would be useful here but I can't figure out how to make
+    # it work for prod, local servers, and tests without overriding the value in
+    # tests.
+    # The Django test client doesn't actually run a whole server, which is
+    # really nice because it's much faster, but it does seem to mess with the
+    # template loader, I guess because it's not running from where it normally
+    # would (in the app directory).
+    settings.TEMPLATES[0]['DIRS'] = ['app/resources']
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
+    django.setup()
+    setup_test_environment()
+    self.client = Client()
+
+  def tearDown(self):
+    teardown_test_environment()
+
+  def make_request(
+      self, post_data, path='/validate/results'):
+    """Makes a request for the validator with content as the HTTP POST content.
+    Returns the response."""
+    return self.client.post(path, copy.deepcopy(post_data))
 
   # file tests
 
   def test_no_xml_fails_gracefully(self):
     """If the user tries to validate with no input, there should not be an
     exception."""
-    for handler_method in [controller.ValidatorController,
-                           controller.DiffController]:
-      response = self.make_webapp_request(
-          {}, handler_init_method=handler_method)
-      self.assertTrue("html" in response.out.getvalue())
+    for path in ['/validate/results', '/diff/results']:
+      response = self.make_request({}, path=path)
+      self.assertTrue("html" in response.content)
 
   def test_pasting_xml(self):
     """The page should have the correct number of errors in the header when
     using the pfif_xml_1 POST variable to send PFIF XML."""
-    response = self.make_webapp_request({'pfif_xml_1' :
-                                         PfifXml.XML_TWO_DUPLICATE_NO_CHILD})
-    self.assertTrue("3 Messages" in response.out.getvalue())
+    response = self.make_request(
+        {'pfif_xml_1' : PfifXml.XML_TWO_DUPLICATE_NO_CHILD})
+    self.assertTrue("3 Messages" in response.content)
 
   def test_file_upload(self):
     """The page should have the correct number of errors in the header when
     using the pfif_xml_file_1 POST variable to send PFIF XML."""
-    fake_file = FakeFieldStorage('two_duplicate_no_child.xml',
-                                 PfifXml.XML_TWO_DUPLICATE_NO_CHILD)
-    response = self.make_webapp_request({'pfif_xml_file_1' :
-                                         fake_file})
-    self.assertTrue("3 Messages" in response.out.getvalue())
+    xml_file = StringIO(PfifXml.XML_TWO_DUPLICATE_NO_CHILD)
+    xml_file.name = 'two_duplicate_no_child.xml'
+    response = self.make_request({'pfif_xml_file_1': xml_file})
+    self.assertTrue("3 Messages" in response.content)
 
   def test_url_upload(self):
     """The page should have the correct number of errors in the header when
     using the pfif_xml_url_1 POST variable to send PFIF XML."""
     utils.set_file_for_test(StringIO(PfifXml.XML_TWO_DUPLICATE_NO_CHILD))
-    response = self.make_webapp_request({'pfif_xml_url_1' : 'dummy_url'})
-    self.assertTrue("3 Messages" in response.out.getvalue())
+    response = self.make_request({'pfif_xml_url_1' : 'dummy_url'})
+    self.assertTrue("3 Messages" in response.content)
 
   # validator
 
   def test_validator_options(self):
     """The validator results page should have a span or div for each print
     option."""
-    fake_file = FakeFieldStorage('xml_expire_99_empty_data.xml',
-                                 PfifXml.XML_EXPIRE_99_EMPTY_DATA)
-    request = MultiDict({'pfif_xml_file_1' : fake_file})
+    xml_file = StringIO(PfifXml.XML_EXPIRE_99_EMPTY_DATA)
+    xml_file.name = 'xml_expire_99_empty_data.xml'
+    post_dict = {'pfif_xml_file_1' : xml_file,
+                 'print_options': ['show_errors']}
+    response = self.make_request(post_dict)
+    self.assertTrue('ERROR' in response.content)
+    self.assertTrue('message_type' in response.content)
+    self.assertTrue('message_category' in response.content)
 
-    request['print_options'] = 'show_errors'
-    response = self.make_webapp_request(request)
-    self.assertTrue('ERROR' in response.out.getvalue())
-    self.assertTrue('message_type' in response.out.getvalue())
-    self.assertTrue('message_category' in response.out.getvalue())
+    post_dict['print_options'].append('show_warnings')
+    response = self.make_request(post_dict)
+    self.assertTrue('WARNING' in response.content)
 
-    request.add('print_options', 'show_warnings')
-    response = self.make_webapp_request(request)
-    self.assertTrue('WARNING' in response.out.getvalue())
+    post_dict['print_options'].append('show_line_numbers')
+    response = self.make_request(post_dict)
+    self.assertTrue('message_line_number' in response.content)
 
-    request.add('print_options', 'show_line_numbers')
-    response = self.make_webapp_request(request)
-    self.assertTrue('message_line_number' in response.out.getvalue())
+    post_dict['print_options'].append('show_record_ids')
+    response = self.make_request(post_dict)
+    self.assertTrue('record_id' in response.content)
 
-    request.add('print_options', 'show_record_ids')
-    response = self.make_webapp_request(request)
-    self.assertTrue('record_id' in response.out.getvalue())
-
-    request.add('print_options', 'show_full_line')
-    response = self.make_webapp_request(request)
-    self.assertTrue('message_xml_full_line' in response.out.getvalue())
+    post_dict['print_options'].append('show_full_line')
+    response = self.make_request(post_dict)
+    self.assertTrue('message_xml_full_line' in response.content)
 
     # EXPIRE_99 doesn't have any errors with xml element text or tag, so we use
     # a different XML file
-    fake_file = FakeFieldStorage('xml_incorrect_format_11.xml',
-                                 PfifXml.XML_INCORRECT_FORMAT_11)
-    request['pfif_xml_file_1'] = fake_file
-    request.add('print_options', 'show_xml_tag')
-    response = self.make_webapp_request(request)
-    self.assertTrue('message_xml_tag' in response.out.getvalue())
+    xml_file = StringIO(PfifXml.XML_INCORRECT_FORMAT_11)
+    xml_file.name = 'xml_incorrect_format_11.xml'
+    post_dict['pfif_xml_file_1'] = xml_file
+    post_dict['print_options'].append('show_xml_tag')
+    response = self.make_request(post_dict)
+    self.assertTrue('message_xml_tag' in response.content)
 
-    request.add('print_options', 'show_xml_text')
-    response = self.make_webapp_request(request)
-    self.assertTrue('message_xml_text' in response.out.getvalue())
+    post_dict['print_options'].append('show_xml_text')
+    response = self.make_request(post_dict)
+    self.assertTrue('message_xml_text' in response.content)
 
   # diff
 
   def test_diff(self):
     """The diff results page should have a header and a div for each message."""
-    fake_file_1 = FakeFieldStorage('added_deleted_changed_1.xml',
-                                   PfifXml.XML_ADDED_DELETED_CHANGED_1)
+    xml_file = StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_1)
+    xml_file.name = 'added_deleted_changed_1.xml'
     utils.set_file_for_test(StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_2))
-    request = MultiDict({
-        'pfif_xml_file_1' : fake_file_1, 'pfif_xml_url_2' : 'fake_url',
-        'options' : 'text_is_case_sensitive'})
-    response = self.make_webapp_request(
-        request, handler_init_method=controller.DiffController)
-    response_str = response.out.getvalue()
+    post_dict = {
+        'pfif_xml_file_1' : xml_file, 'pfif_xml_url_2' : 'fake_url',
+        'options' : ['text_is_case_sensitive']}
+    response = self.make_request(post_dict, path='/diff/results')
+    response_str = response.content
 
     # set the test file again because the first one will be at the end, and the
     # xml parser doesn't have to seek(0) on it.
     utils.set_file_for_test(StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_2))
-    request.add('options', 'group_messages_by_record')
-    grouped_response = self.make_webapp_request(
-        request, handler_init_method=controller.DiffController)
-    grouped_response_str = grouped_response.out.getvalue()
+    post_dict['options'].append('group_messages_by_record')
+    grouped_response = self.make_request(post_dict, path='/diff/results')
+    grouped_response_str = grouped_response.content
 
     # The header should have 'Diff' and 'Messages' in it along with the filename
     # or url.
@@ -177,9 +169,8 @@ class ControllerTests(unittest.TestCase):
                'pfif_xml_2' : PfifXml.XML_ADDED_DELETED_CHANGED_2,
                'options' : 'text_is_case_sensitive',
                'ignore_fields' : 'foo bar source_date'}
-    response = self.make_webapp_request(
-        request, handler_init_method=controller.DiffController)
-    response_str = response.out.getvalue()
+    response = self.make_request(request, path='/diff/results')
+    response_str = response.content
     for field in ['foo', 'bar', 'source_date']:
       self.assertFalse(field in response_str, field + ' is ignored and should '
                        'not be in the response.')
@@ -187,17 +178,12 @@ class ControllerTests(unittest.TestCase):
   def test_missing_filenames(self):
     """The diff results page should fail gracefully when diffing a pasted in
     file, which has no filename."""
-    response = self.make_webapp_request(
+    response = self.make_request(
         {'pfif_xml_1' : PfifXml.XML_ADDED_DELETED_CHANGED_1,
          'pfif_xml_2' : PfifXml.XML_ADDED_DELETED_CHANGED_2},
-        handler_init_method=controller.DiffController)
-    response_str = response.out.getvalue()
+        path='/diff/results')
+    response_str = response.content
     self.assertTrue('pasted in' in response_str)
-
-  @staticmethod
-  def test_main():
-    """main should not crash."""
-    controller.main()
 
 if __name__ == '__main__':
   unittest.main()

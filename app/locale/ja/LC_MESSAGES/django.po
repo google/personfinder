@@ -544,6 +544,9 @@ msgstr ""
 "\n"
 "登録を解除するには、次のリンクにアクセスしてください: %(unsubscribe_link)s\n"
 
+msgid " (normal connection fee may apply)"
+msgstr ""
+
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
 
@@ -632,8 +635,10 @@ msgstr "作成者の電話番号"
 msgid "Authorization key"
 msgstr "承認キー"
 
+#. Translators: A link text to go back to the form where the user
+#. can import or export records in the site.
 msgid "Back to import/export form"
-msgstr ""
+msgstr "インポート / エクスポート フォームに戻る"
 
 msgid ""
 "By marking this note as spam, you will make it hidden by default. It will"
@@ -724,15 +729,18 @@ msgstr "この記録のメモを無効にする"
 msgid "Does this person have profile pages at other websites?"
 msgstr "この人のプロフィールが掲載されているウェブサイトは他にありますか？"
 
+#. Translators: A button label to download a file.
 msgid "Download"
-msgstr ""
+msgstr "ダウンロード"
 
 #, python-format
 msgid "Download %(begin_link)sthis Excel template%(end_link)s and add rows to it"
 msgstr "%(begin_link)sこの Excel テンプレート%(end_link)sをダウンロードして、テンプレートに行を追加します"
 
+#. Translators: The title of a section where the user can download person
+#. records in the site.
 msgid "Download all person records in CSV format"
-msgstr ""
+msgstr "CSV 形式で人物の記録をダウンロードします"
 
 msgid "E-mail"
 msgstr "メール"
@@ -775,6 +783,9 @@ msgid ""
 msgstr ""
 "有効期限を %(extension_days)s 日延長する\n"
 "                "
+
+msgid "External photo"
+msgstr ""
 
 #. Translators: An error message indicating that we
 #. failed to obtain search result for the phone number
@@ -1148,9 +1159,6 @@ msgstr "電話番号"
 msgid "Photo"
 msgstr "写真"
 
-msgid "Photo (external site; normal connection fee may apply)"
-msgstr "写真（外部サイト: 規定の通信料が発生する場合があります）"
-
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
@@ -1317,9 +1325,6 @@ msgstr "この人の状況"
 msgid "Status of this person:"
 msgstr "この人の状況:"
 
-msgid "Street name only, no number"
-msgstr "町名のみ（番地は入力しない）"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1370,8 +1375,10 @@ msgstr "作成者がこの記録に関するメモを無効にしました。"
 msgid "The author has disabled status updates on this record."
 msgstr "作成者がこの記録に関する新着情報を無効にしました。"
 
+#. Translators: An error message indicating that the data
+#. requested by the user is not available yet.
 msgid "The data is not ready yet. Try again in 24 hours."
-msgstr ""
+msgstr "データはまだ利用できません。24 時間後にもう一度お試しください。"
 
 msgid "The email address you entered appears to be invalid."
 msgstr ""
@@ -1641,8 +1648,10 @@ msgid ""
 "the following person:\n"
 msgstr "次の人の新着情報を受け取るための登録が完了しました:\n"
 
+#. Translators: A message shown when the browser is about to start
+#. downloading a file.
 msgid "Your download should start automatically."
-msgstr ""
+msgstr "ダウンロードは自動的に開始されます。"
 
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"

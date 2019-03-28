@@ -41,8 +41,9 @@ def days_to_date(days):
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
-        profile_websites = [add_profile_icon_url(website, self)
-                for website in self.config.profile_websites or []]
+        profile_websites = [
+            add_profile_icon_url(website, self)
+            for website in self.config.profile_websites or []]
         self.render('create.html',
                     profile_websites=profile_websites,
                     profile_websites_json=simplejson.dumps(profile_websites),
@@ -107,7 +108,7 @@ class Handler(BaseHandler):
             lambda url: url, [self.params.profile_url1,
                               self.params.profile_url2,
                               self.params.profile_url3])
-        url_validator = URLValidator()
+        url_validator = URLValidator(schemes=['http', 'https'])
         for profile_url in profile_urls:
             try:
                 url_validator(profile_url)
@@ -163,7 +164,7 @@ class Handler(BaseHandler):
             description=self.params.description,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
-            age=self.params.age,
+            age=fuzzify_age(self.params.age),
             home_city=self.params.home_city,
             home_state=self.params.home_state,
             home_postal_code=self.params.home_postal_code,
