@@ -189,7 +189,11 @@ class Categories: # pylint: disable=W0232
 
 
 class MessageGroupingById(object):
-  """A class to help group messages by record ID."""
+  """A class to help group messages by record ID.
+
+  This should contain the logic for grouping messages by record ID, but no UI
+  code (it's meant for sharing logic between the HTML and plain text displays).
+  """
 
   def __init__(self, messages):
     self.messages = messages
