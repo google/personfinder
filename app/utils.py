@@ -16,7 +16,6 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import calendar
-import cgi
 import copy
 from datetime import datetime, timedelta
 import hmac
@@ -137,7 +136,7 @@ def urlencode(params, encoding='utf-8'):
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
     # This will strip out None-valued params and collapse repeated params.
-    params = dict(cgi.parse_qsl(params))
+    params = dict(urlparse.parse_qsl(params))
     if value is None:
         if param in params:
             del(params[param])
