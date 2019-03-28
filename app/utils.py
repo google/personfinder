@@ -1071,21 +1071,15 @@ class BaseHandler(webapp.RequestHandler):
 
     def should_show_inline_photo(self, photo_url):
         """Returns True if we should show the photo in our site directly with
-        <img> tag. In zero-rating mode, it returns True only if the photo is
-        served by our domain, to avoid loading resources in other domains in
-        Person Finder.
-
-        See "Zero-rating" section of the admin page
-        (app/resources/admin.html.template) for details of zero-rating mode.
+        <img> tag. Returns True only if the photo is served by our domain, to
+        avoid loading resources in other domains in Person Finder.
         """
         if not photo_url:
             return False
-        elif self.env.config.zero_rating_mode:
+        else:
             _, our_netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             _, photo_netloc, _, _, _ = urlparse.urlsplit(photo_url)
             return photo_netloc == our_netloc
-        else:
-            return True
 
     URL_PARSE_QUERY_INDEX = 4
 
