@@ -202,10 +202,17 @@ def convert_xsl_to_csv(contents):
     return csv_output.getvalue(), None
 
 
+class BaseApiHandler(utils.BaseHandler):
+
+    def __init__(self, request, response, env):
+        super(BaseApiHandler, self).__init__(request, response, env)
+        self.set_auth()
+
+
 # TODO(gimite): Rename this class name and URL because it now supports both
 #     import and export, maybe after we decide to use CSV or Excel file for
 #     import and export.
-class Import(utils.BaseHandler):
+class Import(BaseApiHandler):
     """A web UI for users to import or export records in CSV / Excel format.
     """
 
@@ -348,7 +355,7 @@ class Import(utils.BaseHandler):
                 message=_('The data is not ready yet. Try again in 24 hours.'))
 
 
-class Read(utils.BaseHandler):
+class Read(BaseApiHandler):
     https_required = True
 
     def get(self):
@@ -391,7 +398,7 @@ class Read(utils.BaseHandler):
             self, ApiActionLog.READ, len(records), len(notes))
 
 
-class PhotoUpload(utils.BaseHandler):
+class PhotoUpload(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -429,7 +436,7 @@ class PhotoUpload(utils.BaseHandler):
         self.write('</url></response>')
 
 
-class Write(utils.BaseHandler):
+class Write(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -501,7 +508,7 @@ class Write(utils.BaseHandler):
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
 
-class Search(utils.BaseHandler):
+class Search(BaseApiHandler):
     https_required = False
 
     def get(self):
@@ -554,7 +561,7 @@ class Search(utils.BaseHandler):
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 
-class Subscribe(utils.BaseHandler):
+class Subscribe(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -577,7 +584,7 @@ class Subscribe(utils.BaseHandler):
         return self.info(200, 'Successfully subscribed')
 
 
-class Unsubscribe(utils.BaseHandler):
+class Unsubscribe(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -603,7 +610,7 @@ def fetch_all(query):
     return results
 
 
-class Stats(utils.BaseHandler):
+class Stats(BaseApiHandler):
     def get(self):
         if not (self.auth and self.auth.stats_permission):
             self.info(
@@ -642,7 +649,7 @@ class Stats(utils.BaseHandler):
                                      'note': note_counts}))
 
 
-class HandleSMS(utils.BaseHandler):
+class HandleSMS(BaseApiHandler):
     """Person Finder doesn't directly handle SMSes from users. They are handled
     by Google internal SMS gateway. When the gateway receives an SMS, it sends
     an XML HTTP request to Person Finder, and sends back its response to the
