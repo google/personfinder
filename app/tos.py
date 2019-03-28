@@ -17,8 +17,7 @@
 
 __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
 
-from django_setup import ugettext as _  # always keep this first
-
+from django.utils.translation import ugettext as _
 import logging
 import traceback
 import urllib2

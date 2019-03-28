@@ -17,8 +17,7 @@
 
 # We use lazy translation in this file because the language isn't set yet.
 from __future__ import absolute_import
-import django_setup
-from django_setup import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # The root URL of this application.
 ROOT_URL = 'http://google.org/personfinder'
@@ -216,7 +215,9 @@ LANGUAGE_SYNONYMS = {
 }
 
 # RTL languages.
-LANGUAGES_BIDI = django_setup.LANGUAGES_BIDI + ['ps', 'prs']
+# This is mostly the same as LANGUAGES_BIDI set in django_setup, with the
+# addition of 'ps' and 'prs'.
+LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ps', 'prs', 'ur']
 
 # Mapping from language codes to Facebook locale codes.
 #

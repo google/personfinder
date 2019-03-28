@@ -24,6 +24,10 @@ import re
 import time
 import urlparse
 
+# This has to be imported before const, so that Django will get set up before
+# const tries to use Django's translation functions. When the server's actually
+# running, main.py will import it, but main.py doesn't get involved here.
+import django_setup
 from const import ROOT_URL, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 from model import *
 import reveal
