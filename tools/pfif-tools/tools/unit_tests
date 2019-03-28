@@ -7,4 +7,4 @@ echo
 echo "--- Running unit tests"
 # TODO(samking): try to get --with-coverage to work.  If not, make a new script
 # to test coverage.  Maybe coverage run foo, coverage report -m?
-nosetests --detailed-errors "$@"
+nosetests -d "$@"
