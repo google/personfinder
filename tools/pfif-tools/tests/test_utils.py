@@ -136,18 +136,17 @@ class UtilTests(unittest.TestCase):
     message for removed records, and one message for each other record."""
     # an empty messages list should produce no errors and return a string with
     # no messages
-    output_str = utils.MessagesOutput.messages_to_str_by_id([], is_html=True)
-    self.assertEqual(output_str.count('"message"'), 0)
+    output_str = utils.MessagesOutput.messages_to_str_by_id([])
+    self.assertEqual(output_str, '')
 
     # there should be an added section, a deleted section, and one section for
     # each of the records that had fields added, removed, or changed
     messages = pfif_diff.pfif_file_diff(
         StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_1),
         StringIO(PfifXml.XML_ADDED_DELETED_CHANGED_2))
-    output_str = utils.MessagesOutput.messages_to_str_by_id(messages,
-                                                            is_html=True)
-    self.assertEqual(output_str.count('grouped_record_header'), 3)
-    self.assertEqual(output_str.count('"message"'), 3)
+    output_str = utils.MessagesOutput.messages_to_str_by_id(messages)
+    self.assertEqual(output_str.count('1 messages'), 2)
+    self.assertEqual(output_str.count('3 messages'), 1)
     self.assertTrue('foo' in output_str)
     self.assertTrue('bar' in output_str)
     self.assertTrue('source_date' in output_str)
@@ -157,11 +156,9 @@ class UtilTests(unittest.TestCase):
     messages = pfif_diff.pfif_file_diff(
         StringIO(PfifXml.XML_ONE_PERSON_ONE_FIELD),
         StringIO(PfifXml.XML_ONE_PERSON_TWO_FIELDS))
-    output_str = utils.MessagesOutput.messages_to_str_by_id(messages,
-                                                            is_html=True)
-    self.assertEqual(output_str.count('grouped_record_header'), 1)
-    self.assertEqual(output_str.count('"message"'), 1)
-    self.assertEqual(output_str.count('grouped_record_list'), 1)
+    output_str = utils.MessagesOutput.messages_to_str_by_id(messages)
+    self.assertEqual(output_str.count('1 messages'), 1)
+    self.assertEqual(output_str.count('extra fields'), 1)
 
   def test_truncate(self):
     """truncate should leave there with the specified number of messages per

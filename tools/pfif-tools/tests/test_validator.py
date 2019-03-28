@@ -116,12 +116,6 @@ class ValidatorTests(unittest.TestCase):
         messages, show_full_line=True, xml_lines=lines)
     self.assertNotEqual(output.find("ZZZ 11"), -1)
 
-    # is_html should output a div somewhere
-    self.assertEqual(output.find("div"), -1)
-    output = validator.validator_messages_to_str(
-        messages, is_html=True, xml_lines=lines)
-    self.assertNotEqual(output.find("div"), -1)
-
   # validate_root_has_child
 
   def test_root_has_child(self):
