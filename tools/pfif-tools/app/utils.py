@@ -188,6 +188,31 @@ class Categories: # pylint: disable=W0232
   CHANGED_FIELD = 'Values changed'
 
 
+class MessageGroupingById(object):
+  """A class to help group messages by record ID."""
+
+  def __init__(self, messages):
+    self.messages = messages
+    messages_by_category = MessagesOutput.group_messages_by_category(messages)
+    self.added_record_ids = [
+        msg.person_record_id or msg.note_record_id
+        for msg in messages_by_category.get(Categories.ADDED_RECORD, [])]
+    self.deleted_record_ids = [
+        msg.person_record_id or msg.note_record_id
+        for msg in messages_by_category.get(Categories.DELETED_RECORD, [])]
+    self.messages_by_record = {}
+    for category, key in {Categories.ADDED_FIELD: 'added_tags',
+                          Categories.DELETED_FIELD: 'deleted_tags',
+                          Categories.CHANGED_FIELD: 'changed_tags'}.items():
+      messages_by_record = MessagesOutput.group_messages_by_record(
+          messages_by_category.get(category, []))
+      for record_id, record_message_list in messages_by_record.items():
+        record_data = self.messages_by_record.setdefault(
+            record_id, {'count': 0})
+        record_data[key] = [msg.xml_tag for msg in record_message_list]
+        record_data['count'] += len(record_message_list)
+
+
 class MessagesOutput:
   """A container that allows for outputting either a plain string or HTML
   easily"""
@@ -310,48 +335,30 @@ class MessagesOutput:
     if truncate:
       messages = MessagesOutput.truncate(
           messages, MessagesOutput.GROUPED_TRUNCATE_THRESHOLD)
-    output = MessagesOutput()
-    list_records_categories = [Categories.ADDED_RECORD,
-                               Categories.DELETED_RECORD]
-    list_fields_categories =  [Categories.ADDED_FIELD,
-                               Categories.DELETED_FIELD,
-                               Categories.CHANGED_FIELD]
-    messages_by_category = MessagesOutput.group_messages_by_category(messages)
+    msg_grouping = MessageGroupingById(messages)
+    output = ''
 
-    # Output Records Added and Deleted
-    for category in list_records_categories:
-      changed_records_messages = messages_by_category.get(category)
-      if changed_records_messages:
-        output.make_message_part_division(
-            category + ': ' + str(len(changed_records_messages)) + ' messages.')
-        record_ids_changed = MessagesOutput.get_field_from_messages(
-            changed_records_messages, 'record_id')
-        output.make_message_part_division(
-            'Record IDs: ', data=', '.join(record_ids_changed))
-        output.end_new_message()
+    if msg_grouping.added_record_ids:
+      output += '%s: %d messages.\n' % (
+          Categories.ADDED_RECORD, len(msg_grouping.added_record_ids))
+    if msg_grouping.deleted_record_ids:
+      output += '%s: %d messages.\n' % (
+          Categories.DELETED_RECORD, len(msg_grouping.deleted_record_ids))
 
-    # Extract Messages with Changed Records
-    messages_by_record = []
-    for category in list_fields_categories:
-      messages_by_record.extend(messages_by_category.get(category, []))
-    messages_by_record = MessagesOutput.group_messages_by_record(
-        messages_by_record)
-
-    # Output Records Changed
-    for record, record_list in messages_by_record.items():
-      output.make_message_part_division(
-          str(len(record_list)) + ' messages for record: ' + record)
-      record_messages_by_category = MessagesOutput.group_messages_by_category(
-          record_list)
-      for category in list_fields_categories:
-        tag_list = MessagesOutput.get_field_from_messages(
-            record_messages_by_category.get(category, []), 'xml_tag')
-        if tag_list:
-          output.make_message_part_division(
-              category + ': ', data=', '.join(tag_list))
-      output.end_new_message()
-
-    return output.get_output()
+    for record_id, record_data in msg_grouping.messages_by_record.items():
+      output += '%d messages for record: %s\n' % (
+          record_data['count'], record_id)
+      if record_data.get('added_tags'):
+        output += '%s: %s\n' % (Categories.ADDED_FIELD,
+                                ', '.join(record_data['added_tags']))
+      if record_data.get('deleted_tags'):
+        output += '%s: %s\n' % (Categories.DELETED_FIELD,
+                                ', '.join(record_data['deleted_tags']))
+      if record_data.get('changed_tags'):
+        output += '%s: %s\n' % (Categories.CHANGED_FIELD,
+                                ', '.join(record_data['changed_tags']))
+      output += '\n'
+    return output
 
   @staticmethod
   # pylint: disable=R0912

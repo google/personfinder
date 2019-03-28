@@ -39,58 +39,58 @@
 
 <div class="all_messages">
   {% if group_messages %}
-    {% if added_record_ids %}
+    {% if msg_grouping.added_record_ids %}
       <div class="message">
         <div class="grouped_record_header">
-          B has extra records: {{ added_record_ids|length }} messages.
+          B has extra records: {{ msg_grouping.added_record_ids|length }} messages.
         </div>
         <div class="grouped_record_list">
           Record IDs:
           <span class="message_data">
-            {{ added_record_ids|join:', ' }}
+            {{ msg_grouping.added_record_ids|join:', ' }}
           </span>
         </div>
       </div>
     {% endif %}
-    {% if deleted_record_ids %}
+    {% if msg_grouping.deleted_record_ids %}
       <div class="message">
         <div class="grouped_record_header">
-          B is missing records: {{ deleted_record_ids|length }} messages.
+          B is missing records: {{ msg_grouping.deleted_record_ids|length }} messages.
         </div>
         <div class="grouped_record_list">
           Record IDs:
           <span class="message_data">
-            {{ deleted_record_ids|join:', ' }}
+            {{ msg_grouping.deleted_record_ids|join:', ' }}
           </span>
         </div>
       </div>
     {% endif %}
-    {% for record_id, record_msgs in msgs_by_record.items %}
+    {% for record_id, record_data in msg_grouping.messages_by_record.items %}
       <div class="message">
         <div class="grouped_record_header">
-          {{ record_msgs.list|length }} messages for record: {{ record_id }}
+          {{ record_data.count }} messages for record: {{ record_id }}
         </div>
-        {% if record_msgs.added_field_tags %}
+        {% if record_data.added_tags %}
           <div class="grouped_record_list">
             B has extra fields:
             <span class="message_data">
-              {{ record_msgs.added_field_tags|join:', ' }}
+              {{ record_data.added_tags|join:', ' }}
             </span>
           </div>
         {% endif %}
-        {% if record_msgs.deleted_field_tags %}
+        {% if record_data.deleted_tags %}
           <div class="grouped_record_list">
             B is missing fields:
             <span class="message_data">
-              {{ record_msgs.deleted_field_tags|join:', ' }}
+              {{ record_data.deleted_tags|join:', ' }}
             </span>
           </div>
         {% endif %}
-        {% if record_msgs.changed_field_tags %}
+        {% if record_data.changed_tags %}
           <div class="grouped_record_list">
             Values changed:
             <span class="message_data">
-              {{ record_msgs.changed_field_tags|join:', ' }}
+              {{ record_data.changed_tags|join:', ' }}
             </span>
           </div>
         {% endif %}

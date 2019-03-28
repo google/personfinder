@@ -91,52 +91,7 @@ class DiffController(PfifController):
       page_ctx['group_messages'] = True
       messages = utils.MessagesOutput.truncate(
           messages, utils.MessagesOutput.GROUPED_TRUNCATE_THRESHOLD)
-      messages_by_category = utils.MessagesOutput.group_messages_by_category(
-          messages)
-      added_record_msgs = messages_by_category.get(
-          utils.Categories.ADDED_RECORD)
-      if added_record_msgs:
-          page_ctx['added_record_ids'] = (
-          utils.MessagesOutput.get_field_from_messages(
-              added_record_msgs, 'record_id'))
-      deleted_record_msgs = messages_by_category.get(
-          utils.Categories.DELETED_RECORD)
-      if deleted_record_msgs:
-          page_ctx['deleted_record_ids'] = (
-              utils.MessagesOutput.get_field_from_messages(
-                  deleted_record_msgs, 'record_id'))
-      field_change_messages = []
-      for category in [utils.Categories.ADDED_FIELD,
-                       utils.Categories.DELETED_FIELD,
-                       utils.Categories.CHANGED_FIELD]:
-        field_change_messages.extend(messages_by_category.get(category, []))
-      messages_by_record = {}
-      for record_id, record_list in (
-          utils.MessagesOutput.group_messages_by_record(
-              field_change_messages).items()):
-        record_messages = {'list': record_list}
-        record_messages_by_category = (
-            utils.MessagesOutput.group_messages_by_category(record_list))
-        added_field_msgs = record_messages_by_category.get(
-            utils.Categories.ADDED_FIELD, [])
-        if added_field_msgs:
-          record_messages['added_field_tags'] = (
-              utils.MessagesOutput.get_field_from_messages(
-                  added_field_msgs, 'xml_tag'))
-        deleted_field_msgs = record_messages_by_category.get(
-            utils.Categories.DELETED_FIELD, [])
-        if deleted_field_msgs:
-          record_messages['deleted_field_tags'] = (
-              utils.MessagesOutput.get_field_from_messages(
-                  deleted_field_msgs, 'xml_tag'))
-        changed_field_msgs = record_messages_by_category.get(
-            utils.Categories.CHANGED_FIELD, [])
-        if changed_field_msgs:
-          record_messages['changed_field_tags'] = (
-              utils.MessagesOutput.get_field_from_messages(
-                  changed_field_msgs, 'xml_tag'))
-        messages_by_record[record_id] = record_messages
-      page_ctx['msgs_by_record'] = messages_by_record
+      page_ctx['msg_grouping'] = utils.MessageGroupingById(messages)
     return render(request, 'diff_results.html', page_ctx)
 
 class ValidatorController(PfifController):
