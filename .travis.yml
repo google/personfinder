@@ -26,7 +26,7 @@ install:
       git \
       time \
       unzip
-  - wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.74.zip -O /tmp/appengine.zip
+  - wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.84.zip -O /tmp/appengine.zip
   - unzip -qq /tmp/appengine.zip
   - pip install cssselect lxml mock modernize pillow==4.1.0 pytest
   - npm --prefix ui install
