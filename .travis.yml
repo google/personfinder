@@ -32,7 +32,7 @@ install:
   - npm --prefix ui install
 
 before_script:
-  - export APPENGINE_DIR=google_appengine
+  - export APPENGINE_DIR=$TRAVIS_BUILD_DIR/google_appengine
 
 script:
   - tools/travis_tests
