@@ -283,6 +283,13 @@ class PersonNoteTests(ServerTestsBase):
             'Not currently at "view" page: %s' % self.s.url)
         return self.s.submit(self.s.doc.cssselect_one('input.add-note'))
 
+    def submit_minimal_create_form(self, create_form):
+        self.s.submit(create_form,
+                      own_info='no',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      author_name='_test_author_name')
+
     def test_robots(self):
         """Check that <meta name="robots"> tags appear on the right pages."""
         person = Person(
@@ -478,6 +485,18 @@ class PersonNoteTests(ServerTestsBase):
         self.assert_params_conform(
             self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
+    def test_details_after_create_form_submission(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+
+        # For now, the date of birth should be hidden.
+        assert 'birth' not in self.s.content.lower()
+
+        self.verify_details_page(
+            num_notes=0,
+            full_name='_test_given_name _test_family_name',
+            details={'Author\'s name:': '_test_author_name'})
+
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -492,22 +511,8 @@ class PersonNoteTests(ServerTestsBase):
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
-
-        # Submit the create form with minimal information.
         create_form = self.s.doc.cssselect_one('form')
-        self.s.submit(create_form,
-                      own_info='no',
-                      given_name='_test_given_name',
-                      family_name='_test_family_name',
-                      author_name='_test_author_name')
-
-        # For now, the date of birth should be hidden.
-        assert 'birth' not in self.s.content.lower()
-
-        self.verify_details_page(
-            num_notes=0,
-            full_name='_test_given_name _test_family_name',
-            details={'Author\'s name:': '_test_author_name'})
+        self.submit_minimal_create_form(create_form)
 
         # Now the search should yield a result.
         search_page = self.go('/haiti/query?role=seek')
