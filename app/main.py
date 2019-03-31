@@ -206,7 +206,7 @@ def select_lang(request, config=None):
         (config and
          config.language_menu_options and
          config.language_menu_options[0]) or
-            django_setup.LANGUAGE_CODE)
+            const.DEFAULT_LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
             select_lang_from_header(request, default_lang=default_lang))

@@ -214,6 +214,8 @@ LANGUAGE_SYNONYMS = {
     'ji' : 'yi'
 }
 
+DEFAULT_LANGUAGE_CODE = 'en'
+
 # RTL languages.
 # This is mostly the same as LANGUAGES_BIDI set in django_setup, with the
 # addition of 'ps' and 'prs'.
