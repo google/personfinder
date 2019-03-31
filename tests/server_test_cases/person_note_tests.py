@@ -20,6 +20,7 @@ See scrape.py for methods available for the document object returned by self.s.g
 """
 
 import datetime
+from parameterized import parameterized
 import re
 import time
 import urlparse
@@ -459,6 +460,24 @@ class PersonNoteTests(ServerTestsBase):
         submit_button = search_page.xpath_one('//input[@type="submit"]')
         assert 'Search for this person' in submit_button.get('value')
 
+    @parameterized.expand([(True,), (False,)])
+    def test_no_result_search(self, use_full_text_search):
+        config.set(enable_full_text_search = use_full_text_search)
+        search_page = self.go('/haiti/query?role=seek')
+        submit_button = search_page.xpath_one('//input[@type="submit"]')
+
+        # Try a search, which should yield no results.
+        search_form = search_page.cssselect_one('form')
+        self.s.submit(search_form, query_name='_test_given_name')
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
+        self.verify_results_page(0)
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
+        self.verify_unsatisfactory_results()
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
+
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -472,18 +491,7 @@ class PersonNoteTests(ServerTestsBase):
             self.assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
-        # Start on the search page.
-        search_page = self.go('/haiti/query?role=seek')
-        submit_button = search_page.xpath_one('//input[@type="submit"]')
-
-        # Try a search, which should yield no results.
-        search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query_name='_test_given_name')
-        assert_params()
-        self.verify_results_page(0)
-        assert_params()
-        self.verify_unsatisfactory_results()
-        assert_params()
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
 
         # Submit the create form with minimal information.
         create_form = self.s.doc.cssselect_one('form')
@@ -502,6 +510,8 @@ class PersonNoteTests(ServerTestsBase):
             details={'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
+        search_page = self.go('/haiti/query?role=seek')
+        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_given_name']),
