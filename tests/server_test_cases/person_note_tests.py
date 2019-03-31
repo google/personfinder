@@ -453,6 +453,12 @@ class PersonNoteTests(ServerTestsBase):
         link = self.s.doc.cssselect_one('a.results-found')
         assert 'query_name=_test_given_name' in link.get('href')
 
+    def test_search_page_link(self):
+        self.go('/haiti')
+        search_page = self.s.follow('I\'m looking for someone')
+        submit_button = search_page.xpath_one('//input[@type="submit"]')
+        assert 'Search for this person' in submit_button.get('value')
+
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -466,11 +472,9 @@ class PersonNoteTests(ServerTestsBase):
             self.assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
-        # Start on the home page and click the "I'm looking for someone" button
-        self.go('/haiti')
-        search_page = self.s.follow('I\'m looking for someone')
+        # Start on the search page.
+        search_page = self.go('/haiti/query?role=seek')
         submit_button = search_page.xpath_one('//input[@type="submit"]')
-        assert 'Search for this person' in submit_button.get('value')
 
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
