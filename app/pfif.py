@@ -28,7 +28,7 @@ import StringIO
 import logging
 import os
 import re
-import xml.sax
+import defusedxml.sax
 import xml.sax.handler
 
 # Possible values for the 'sex' field on a person record.
@@ -490,7 +490,7 @@ def parse_file(pfif_utf8_file, rename_fields=True):
     with PFIF 1.4 field names as keys if rename_fields is True; otherwise,
     the field names are kept as is in the input XML file."""
     handler = Handler(rename_fields)
-    parser = xml.sax.make_parser()
+    parser = defusedxml.sax.make_parser()
     parser.setFeature(xml.sax.handler.feature_namespaces, True)
     # Below two are to avoid XML External Entity attacks:
     # https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing
