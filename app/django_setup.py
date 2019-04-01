@@ -26,7 +26,7 @@ fine, and then the next one will crash when it tries to intialize Django a
 second time. So, we want to have a single set of Django settings, intialized by
 the Django app regardless of which app serves first from an instance. The
 webapp2 app imports this, this imports the Django app's entrypoint (wsgi), and
-it initializes Django.
+Django is initialized from wsgi.
 """
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
