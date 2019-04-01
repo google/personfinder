@@ -42,8 +42,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-FORCE_SCRIPT_NAME = '/personfinder'
-
 ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
