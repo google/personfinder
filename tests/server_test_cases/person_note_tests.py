@@ -468,7 +468,7 @@ class PersonNoteTests(ServerTestsBase):
         assert 'Search for this person' in submit_button.get('value')
 
     @parameterized.expand([(True,), (False,)])
-    def test_no_result_search(self, use_full_text_search):
+    def test_search_with_no_result(self, use_full_text_search):
         config.set(enable_full_text_search = use_full_text_search)
         search_page = self.go('/haiti/query?role=seek')
         submit_button = search_page.xpath_one('//input[@type="submit"]')
@@ -497,6 +497,22 @@ class PersonNoteTests(ServerTestsBase):
             full_name='_test_given_name _test_family_name',
             details={'Author\'s name:': '_test_author_name'})
 
+    @parameterized.expand([(True,), (False,)])
+    def test_search_with_result(self, use_full_text_search):
+        def assert_params(url=None):
+            self.assert_params_conform(
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+        search_page = self.go('/haiti/query?role=seek')
+        search_form = search_page.cssselect_one('form')
+        self.s.submit(search_form, query_name='_test_given_name')
+        assert_params()
+        self.verify_results_page(1, all_have=(['_test_given_name']),
+                                 some_have=(['_test_given_name']),
+                                 status=(['Unspecified']))
+        self.verify_click_search_result(0, assert_params)
+
     def run_test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -514,15 +530,6 @@ class PersonNoteTests(ServerTestsBase):
         create_form = self.s.doc.cssselect_one('form')
         self.submit_minimal_create_form(create_form)
 
-        # Now the search should yield a result.
-        search_page = self.go('/haiti/query?role=seek')
-        search_form = search_page.cssselect_one('form')
-        self.s.submit(search_form, query_name='_test_given_name')
-        assert_params()
-        self.verify_results_page(1, all_have=(['_test_given_name']),
-                                 some_have=(['_test_given_name']),
-                                 status=(['Unspecified']))
-        self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
         # note doesn't update
         person = Person.all().filter('given_name =', '_test_given_name').get()
@@ -570,6 +577,8 @@ class PersonNoteTests(ServerTestsBase):
         person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
+        search_page = self.go('/haiti/query?role=seek')
+        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(
