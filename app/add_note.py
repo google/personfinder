@@ -51,14 +51,12 @@ class Handler(BaseHandler):
         if not person:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
-        standalone = self.request.get('standalone')
 
         # Render the page.
         enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
 
         self.render('add_note.html',
                     person=person,
-                    standalone=standalone,
                     enable_notes_url=enable_notes_url)
 
     def post(self):
