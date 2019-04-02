@@ -1,3 +1,6 @@
+"""Code shared by admin view modules."""
+
+
 import django.shortcuts
 from google.appengine.api import users
 
@@ -6,6 +9,7 @@ import views.base
 
 
 class AdminBaseView(views.base.BaseView):
+    """Base view for admin views."""
 
     _POST_PARAMETERS = {
         'xsrf_token': utils.strip,
