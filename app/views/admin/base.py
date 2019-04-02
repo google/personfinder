@@ -1,6 +1,5 @@
 """Code shared by admin view modules."""
 
-
 import django.shortcuts
 from google.appengine.api import users
 
@@ -32,6 +31,8 @@ class AdminBaseView(views.base.BaseView):
                 users.create_login_url(self.request.url))
         if not users.is_current_user_admin():
             logout_url = users.create_logout_url(self.build_absolute_uri())
-            self.render('not_admin_error.html',
-                        logout_url=logout_url, user=self.env.user)
+            self.render(
+                'not_admin_error.html',
+                logout_url=logout_url,
+                user=self.env.user)
         return super(AdminBaseView, self).dispatch(request, args, kwargs)

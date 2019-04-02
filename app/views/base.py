@@ -1,6 +1,5 @@
 """View-related code common to the whole app."""
 
-
 import functools
 
 import django.http
@@ -109,10 +108,9 @@ class BaseView(django.views.View):
         """
         if path is None:
             return self.request.get_full_path()
-        prefix = (site_settings.OPTIONAL_PATH_PREFIX if
-                  self.request.path_info[1:].startswith(
-                      site_settings.OPTIONAL_PATH_PREFIX)
-                  else '')
+        prefix = (site_settings.OPTIONAL_PATH_PREFIX
+                  if self.request.path_info[1:].startswith(
+                      site_settings.OPTIONAL_PATH_PREFIX) else '')
         return '/%s%s' % (prefix, path)
 
     def build_absolute_uri(self, path=None):
@@ -143,6 +141,7 @@ class BaseView(django.views.View):
         Returns:
             HttpResponse: A HttpResponse with the rendered template.
         """
+
         def get_vars():
             """A function returning vars, for use by the resources module."""
             template_vars['env'] = self.env
@@ -151,6 +150,7 @@ class BaseView(django.views.View):
             template_vars['config'] = self.env.config
             template_vars['params'] = self.params
             return template_vars
+
         query_str = self.request.META.get('QUERY_STRING', '')
         extra_key = (self.env.repo, self.env.charset, query_str)
         return django.http.HttpResponse(
@@ -173,12 +173,13 @@ class BaseView(django.views.View):
         for key in initkwargs:
             if key in cls.http_method_names:
                 raise TypeError("You tried to pass in the %s method name as a "
-                                "keyword argument to %s(). Don't do that."
-                                % (key, cls.__name__))
+                                "keyword argument to %s(). Don't do that." %
+                                (key, cls.__name__))
             if not hasattr(cls, key):
-                raise TypeError("%s() received an invalid keyword %r. as_view "
-                                "only accepts arguments that are already "
-                                "attributes of the class." % (cls.__name__, key))
+                raise TypeError(
+                    "%s() received an invalid keyword %r. as_view "
+                    "only accepts arguments that are already "
+                    "attributes of the class." % (cls.__name__, key))
 
         def view(request, *args, **kwargs):
             self = cls(**initkwargs)
@@ -189,6 +190,7 @@ class BaseView(django.views.View):
             self.kwargs = kwargs
             self.setup(request, *args, **kwargs)
             return self.dispatch(request, *args, **kwargs)
+
         view.view_class = cls
         view.view_initkwargs = initkwargs
 

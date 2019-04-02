@@ -2,10 +2,8 @@ import os
 
 import const
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # If we actually did anything that used the secret key we'd need to set it to
 # some constant value and find a way to secretly store it. However, we don't use
@@ -15,7 +13,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # break because this changed or something like that than a security hole we
 # don't know about).
 SECRET_KEY = os.urandom(30)
-
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
@@ -28,7 +25,6 @@ else:
         'google.org',
         'personfinder.google.org',
     ]
-
 
 # Application definition
 
@@ -47,8 +43,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-        ],
+        'DIRS': [],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -67,7 +62,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'wsgi.application'
-
 
 # Internationalization
 
