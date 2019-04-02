@@ -1169,20 +1169,13 @@ class BaseHandler(webapp.RequestHandler):
                 self.terminate_response()
                 return
             self.env.logout_url = users.create_logout_url(self.request.url)
-            try:
-                # This is different from env.repo_options because this contains
-                # all repositories including deactivated ones.
-                self.env.all_repo_options = [
-                    Struct(
-                        repo=repo,
-                        url=get_repo_url(self.request, repo) + '/admin')
-                    for repo in sorted(model.Repo.list())]
-            except:
-                # Logs the exception here because exceptions thrown during
-                # tempalate variable evaluation is silently ignored anyway. Note
-                # that logging.exception() logs the current exception by
-                # default.
-                logging.exception('Exception thrown')
+            # This is different from env.repo_options because this contains all
+            # repositories including deactivated ones.
+            self.env.all_repo_options = [
+                Struct(
+                    repo=repo,
+                    url=get_repo_url(self.request, repo) + '/admin')
+                for repo in sorted(model.Repo.list())]
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:
