@@ -37,9 +37,7 @@ handlers:
 - url: /admin/api_keys.*
   script: admin_api_keys.py
   secure: always
-- url: /djangotest.*
-  script: wsgi.application
-- url: /.*/djangotest.*
+- url: /.*/admin/statistics.*
   script: wsgi.application
 - url: .*
   script: main.py

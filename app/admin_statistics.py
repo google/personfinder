@@ -33,7 +33,6 @@ class Handler(utils.BaseHandler):
                 note_status_list.append('num_notes_unspecified')
             else:
                 note_status_list.append('num_notes_' + note_status)
-
         self.render('admin_statistics.html',
                     all_usage=all_usage,
                     note_status_list=note_status_list)
