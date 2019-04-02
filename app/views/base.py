@@ -1,7 +1,11 @@
+"""View-related code common to the whole app."""
+
+
+import functools
+
 import django.http
 import django.utils.decorators
 import django.views
-import functools
 
 import config
 import const
@@ -11,14 +15,35 @@ import utils
 
 
 class BaseView(django.views.View):
+    """Base view class shared across the app."""
+
+    # This should be overridden by subclasses.
+    ACTION_ID = None
 
     _GET_PARAMETERS = {
         'lang': utils.strip,
     }
 
     def setup(self, request, *args, **kwargs):
+        """Sets up the handler.
+
+        Views aren't passed any request-specific information when they're
+        initialized, so you can't really do much in __init__. However, having a
+        function that gets called before dispatch is useful for all kinds of
+        things (in particular, it's useful to have a top-down function, where
+        the parent class functions run before those of subclasses). setup() is
+        essentially a substitute for __init__().
+
+        Args:
+            request (HttpRequest): The request object.
+            *args: Unused.
+            **kwargs: Arbitrary keyword arguments. Should include repository ID
+                (under the key 'repo') if applicable.
+        """
+        # pylint: disable=attribute-defined-outside-init
         # TODO(nworden): don't forget to call super.setup here once we upgrade
         # to Django 2.2.
+        del request, args  # unused
 
         # Set up the parameters and read in the base set of parameters.
         self.params = utils.Struct()
@@ -27,7 +52,7 @@ class BaseView(django.views.View):
         # Set up env variable with data needed by the whole app.
         self.env = utils.Struct()
         self.env.repo = kwargs.get('repo', None)
-        self.env.action = kwargs['action']
+        self.env.action = self.ACTION_ID
         self.env.config = config.Configuration(self.env.repo or '*')
         self.env.lang = self.params.lang
         self.env.rtl = self.env.lang in const.LANGUAGES_BIDI
@@ -36,7 +61,7 @@ class BaseView(django.views.View):
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('global')
 
-    def read_params(self, get_params={}, post_params={}, file_params={}):
+    def read_params(self, get_params=None, post_params=None, file_params=None):
         """Reads CGI parameter values into self.params.
 
         Args:
@@ -48,17 +73,22 @@ class BaseView(django.views.View):
                 validator functions.
         """
         if self.request.method == 'GET':
-            for key, validator in get_params.items():
-                if key in self.request.GET:
-                    setattr(self.params, key, validator(self.request.GET[key]))
+            if get_params:
+                for key, validator in get_params.items():
+                    if key in self.request.GET:
+                        setattr(self.params, key,
+                                validator(self.request.GET[key]))
         else:
-            for key, validator in post_params.items():
-                if key in self.request.POST:
-                    setattr(self.params, key, validator(self.request.POST[key]))
-            for key, validator in file_params.items():
-                if key in self.request.FILES:
-                    setattr(self.params, key,
-                            validator(self.request.FILES[key]))
+            if post_params:
+                for key, validator in post_params.items():
+                    if key in self.request.POST:
+                        setattr(self.params, key,
+                                validator(self.request.POST[key]))
+            if file_params:
+                for key, validator in file_params.items():
+                    if key in self.request.FILES:
+                        setattr(self.params, key,
+                                validator(self.request.FILES[key]))
 
     def build_absolute_path(self, path=None):
         """Builds an absolute path given a path.
@@ -114,6 +144,7 @@ class BaseView(django.views.View):
             HttpResponse: A HttpResponse with the rendered template.
         """
         def get_vars():
+            """A function returning vars, for use by the resources module."""
             template_vars['env'] = self.env
             # TODO(nworden): change templates to access config through env, which
             # already has the config anyway
@@ -128,14 +159,14 @@ class BaseView(django.views.View):
 
     @django.utils.decorators.classonlymethod
     def as_view(cls, **initkwargs):
-        # Django discourages overriding View.__init__, but having a function
-        # called before dispatch is useful for all sorts of things. Django 2.2
-        # has support for a setup() hook that's called automatically before
-        # dispatch, and I don't want to wait to use it, so we make the
-        # modifications to View.as_view() ourselves to get this feature ahead of
-        # time (this is just a copy of the original View.as_view function, with
-        # the setup() call stuck in). We can clean this up when we upgrade to
-        # Django 2.2.
+        # pylint: disable=E,W,R,C
+        # We want to have a setup() function called before dispatch() (see
+        # explanation in the comments on the setup() function), and Django 2.2
+        # has support for it built in. However, we're not on Django 2.2 yet, so
+        # we make the modification to View.as_view() ourselves to get this
+        # feature ahead of time (the code below is just a copy of the original
+        # Django 1.11 View.as_view function, with the setup() call stuck in). We
+        # can clean this up when we upgrade to Django 2.2.
         """
         Main entry point for a request-response process.
         """

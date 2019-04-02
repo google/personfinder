@@ -6,6 +6,8 @@ import views.admin.base
 
 class AdminStatisticsView(views.admin.base.AdminBaseView):
 
+    ACTION_ID = 'admin/statistics'
+
     def get(self, request, *args, **kwargs):
         repos = sorted(model.Repo.list())
         all_usage = [self._get_repo_usage(repo) for repo in repos]
