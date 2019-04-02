@@ -42,7 +42,7 @@
 {% endblock body %}
 
 {% block sidenav %}
-  <div><span class="email">{{env.admin.user.email}}<a href="{{env.admin.logout_url}}">Sign out</a></div>
+  <div><span class="email">{{env.user.email}}<a href="{{env.logout_url}}">Sign out</a></div>
 
   <h2>Global</h2>
     <a href="{{env.global_url}}/admin">Global settings</a>
@@ -57,7 +57,7 @@
       {% if not env.repo %}
         <option>Select a repository:</option>
       {% endif %}
-      {% for option in env.admin.repo_options %}
+      {% for option in env.all_repo_options %}
         <option value="{{option.url}}"
           {% ifequal option.repo env.repo %}
             selected
