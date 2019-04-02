@@ -1157,8 +1157,8 @@ class BaseHandler(webapp.RequestHandler):
         # If we use it, user can't sign out
         # because the error page of "login: admin" doesn't have sign-out link.
         if self.admin_required:
-            user = users.get_current_user()
-            if not user:
+            self.env.user = users.get_current_user()
+            if not self.env.user:
                 login_url = users.create_login_url(self.request.url)
                 webapp.RequestHandler.redirect(self, login_url)
                 self.terminate_response()
@@ -1168,6 +1168,14 @@ class BaseHandler(webapp.RequestHandler):
                 self.render('not_admin_error.html', logout_url=logout_url, user=user)
                 self.terminate_response()
                 return
+            self.env.logout_url = users.create_logout_url(self.request.url)
+            # This is different from env.repo_options because this contains all
+            # repositories including deactivated ones.
+            self.env.all_repo_options = [
+                Struct(
+                    repo=repo,
+                    url=get_repo_url(self.request, repo) + '/admin')
+                for repo in sorted(model.Repo.list())]
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:
