@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf import urls
 
 import site_settings
 import views.admin.statistics
@@ -10,13 +10,15 @@ base_urlpatterns = [
 ]
 
 urlpatterns = [
-    url('^%s' % base_pattern[1], base_pattern[2](), {'action': base_pattern[0]})
+    urls.url('^%s' % base_pattern[1], base_pattern[2](),
+             {'action': base_pattern[0]})
     for base_pattern in base_urlpatterns
 ]
 
 if site_settings.OPTIONAL_PATH_PREFIX:
     urlpatterns += [
-        url('^%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, base_pattern[1]),
-            base_pattern[2](), {'action': base_pattern[0]})
+        urls.url('^%s%s' % (site_settings.OPTIONAL_PATH_PREFIX,
+                            base_pattern[1]), base_pattern[2](),
+                 {'action': base_pattern[0]})
         for base_pattern in base_urlpatterns
     ]
