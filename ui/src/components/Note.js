@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import Card from '@material/react-card';
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
@@ -112,7 +113,7 @@ class Note extends Component {
 
   render() {
     return (
-      <div className='note-card'>
+      <Card className='note-card'>
         {/* TODO(gimite): Add drop down menu. */}
         <div className='note-section'>
           <div className='note-headline'>
@@ -161,7 +162,7 @@ class Note extends Component {
             {/* TODO(gimite): Add location */}
           </div>
         </div>
-      </div>
+      </Card>
     );
   }
 }
