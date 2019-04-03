@@ -3,6 +3,7 @@
 import django.shortcuts
 from google.appengine.api import users
 
+import model
 import utils
 import views.base
 
@@ -20,6 +21,12 @@ class AdminBaseView(views.base.BaseView):
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
+        self.env.logout_url = users.create_logout_url(self.build_absolute_uri())
+        self.env.all_repo_options = [
+            utils.Struct(
+                repo=repo, url=self.build_absolute_path('%s/admin' % repo))
+            for repo in sorted(model.Repo.list())
+        ]
 
     def dispatch(self, request, *args, **kwargs):
         # All the admin pages, and only the admin pages, require the user to be
@@ -28,7 +35,7 @@ class AdminBaseView(views.base.BaseView):
         # refactoring this into a decorator or something like that.
         if not self.env.user:
             return django.shortcuts.redirect(
-                users.create_login_url(self.request.url))
+                users.create_login_url(self.build_absolute_uri()))
         if not users.is_current_user_admin():
             logout_url = users.create_logout_url(self.build_absolute_uri())
             self.render(

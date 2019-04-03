@@ -1,6 +1,7 @@
 """View-related code common to the whole app."""
 
 import functools
+import re
 
 import django.http
 import django.utils.decorators
@@ -53,7 +54,19 @@ class BaseView(django.views.View):
         self.env.repo = kwargs.get('repo', None)
         self.env.action = self.ACTION_ID
         self.env.config = config.Configuration(self.env.repo or '*')
-        self.env.lang = self.params.lang
+        # Django will make a guess about what language to use, but Django's
+        # guess should be overridden by the lang CGI param if it's set.
+        # TODO(nworden): figure out how much of the logic below we still need
+        # now that Django can do a lot of the work for us.
+        lang = self.params.get('lang') or self.request.LANGUAGE_CODE
+        lang = re.sub('[^A-Za-z0-9-]', '', lang)
+        lang = const.LANGUAGE_SYNONYMS.get(lang, lang)
+        if lang in const.LANGUAGE_ENDONYMS.keys():
+            self.env.lang = lang
+        else:
+            self.env.lang = (self.env.config.language_menu_options[0]
+                             if self.env.config.language_menu_options else
+                             const.DEFAULT_LANGUAGE_CODE)
         self.env.rtl = self.env.lang in const.LANGUAGES_BIDI
         self.env.charset = const.CHARSET_UTF8
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
