@@ -214,6 +214,9 @@ LANGUAGE_SYNONYMS = {
     'ji' : 'yi'
 }
 
+# The language code to use when there's no indication of what language to use
+# (i.e., when the user's request doesn't indicate a language preference and
+# there are no languages specified in the repository's config).
 DEFAULT_LANGUAGE_CODE = 'en'
 
 # RTL languages.

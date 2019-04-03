@@ -71,7 +71,7 @@ class BaseView(django.views.View):
         self.env.charset = const.CHARSET_UTF8
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
         # great that templates are building URLs by sticking things onto this.
-        self.env.global_url = self.build_absolute_uri('global')
+        self.env.global_url = self.build_absolute_uri('/global')
 
     def read_params(self, get_params=None, post_params=None, file_params=None):
         """Reads CGI parameter values into self.params.
@@ -102,29 +102,53 @@ class BaseView(django.views.View):
                         setattr(self.params, key,
                                 validator(self.request.FILES[key]))
 
+    def _request_is_for_prefixed_path(self):
+        """Checks if the request's path uses an optional path prefix."""
+        if not site_settings.OPTIONAL_PATH_PREFIX:
+            return False
+        req_path = self.request.path[1:]  # drop the leading slash
+        if req_path == site_settings.OPTIONAL_PATH_PREFIX:
+            return True
+        return req_path.startswith('%s/' % site_settings.OPTIONAL_PATH_PREFIX)
+
     def build_absolute_path(self, path=None):
-        """Builds an absolute path given a path.
+        """Builds an absolute path, including the path prefix if required.
 
         Django's HttpRequest objects have a similar function, but we implement
         our own so that we can handle path prefixes correctly when they're in
         use.
 
         Args:
-            path (str, optional): A path, e.g., 'abc?x=y'. Must NOT have a
-                leading slash. May include a query string. If not specified,
-                will return the current path.
+            path (str, optional): A path (may include a query string), e.g.,
+                'abc?x=y'. Paths beginning with a slash will be interpreted as
+                being relative to the Django app's directory, while paths
+                without a leading slash will be considered relative to the
+                current request's path. If not specified, the current request's
+                path will be used.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
             if it was used with the original request (e.g.,
-            '/personfinder/abc?x=y').
+            '/personfinder/abc?x=y'). Does not preserve query parameters from
+            the original request.
         """
-        if path is None:
-            return self.request.get_full_path()
-        prefix = (site_settings.OPTIONAL_PATH_PREFIX
-                  if self.request.path_info[1:].startswith(
-                      site_settings.OPTIONAL_PATH_PREFIX) else '')
-        return '/%s%s' % (prefix, path)
+        if not path:
+            # request.path will already include the path prefix if it's being
+            # used.
+            return self.request.path
+        elif path[0] == '/':
+            # We're dealing with an absolute path, so add the path prefix if
+            # necessary.
+            return ('/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
+                    if self._request_is_for_prefixed_path()
+                    else path)
+        else:
+            # We're dealing with a relative path, so just append it to the
+            # current request's path (which will already include the path prefix
+            # if it's being used).
+            return ('%s%s' % (self.request.path, path)
+                    if self.request.path[-1] == '/'
+                    else '%s/%s' % (self.request.path, path))
 
     def build_absolute_uri(self, path=None):
         """Builds an absolute URI given a path.
@@ -133,14 +157,18 @@ class BaseView(django.views.View):
         this function ourselves.
 
         Args:
-            path (str, optional): A path, e.g., 'abc?x=y'. Must NOT have a
-                leading slash. May include a query string. If not specified,
-                will use the current path.
+            path (str, optional): A path (may include a query string), e.g.,
+                'abc?x=y'. Paths beginning with a slash will be interpreted as
+                being relative to the Django app's directory, while paths
+                without a leading slash will be considered relative to the
+                current request's path. If not specified, the current request's
+                path will be used.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
             it was used with the original request (e.g.,
-            'http://localhost:8000/personfinder/abc?x=y').
+            'http://localhost:8000/personfinder/abc?x=y'). Does not preserve
+            query parameters from the original request.
         """
         return self.request.build_absolute_uri(self.build_absolute_path(path))
 
@@ -152,7 +180,7 @@ class BaseView(django.views.View):
             **template_vars: Named variables to pass to the template.
 
         Returns:
-            HttpResponse: A HttpResponse with the rendered template.
+            HttpResponse: An HttpResponse with the rendered template.
         """
 
         def get_vars():
@@ -180,9 +208,7 @@ class BaseView(django.views.View):
         # feature ahead of time (the code below is just a copy of the original
         # Django 1.11 View.as_view function, with the setup() call stuck in). We
         # can clean this up when we upgrade to Django 2.2.
-        """
-        Main entry point for a request-response process.
-        """
+        """Main entry point for a request-response process."""
         for key in initkwargs:
             if key in cls.http_method_names:
                 raise TypeError("You tried to pass in the %s method name as a "

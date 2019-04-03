@@ -1,3 +1,17 @@
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """URL routing module."""
 
 from django.conf import urls
@@ -5,18 +19,18 @@ from django.conf import urls
 import site_settings
 import views.admin.statistics
 
-_BASE_URL_PATTERNS = [('global/admin/statistics/',
+_BASE_URL_PATTERNS = [('global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view)]
 
 # pylint: disable=invalid-name
 urlpatterns = [
-    urls.url('^%s' % base_pattern[0], base_pattern[1]())
-    for base_pattern in _BASE_URL_PATTERNS
+    urls.url('^%s' % path_exp, view_func())
+    for (path_exp, view_func) in _BASE_URL_PATTERNS
 ]
 
 if site_settings.OPTIONAL_PATH_PREFIX:
     urlpatterns += [
         urls.url(
-            '^%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, base_pattern[0]),
-            base_pattern[1]()) for base_pattern in _BASE_URL_PATTERNS
+            '^%s/%s' % (site_settings.OPTIONAL_PATH_PREFIX, path_exp),
+            view_func()) for (path_exp, view_func) in _BASE_URL_PATTERNS
     ]

@@ -1,6 +1,23 @@
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""Module for Django settings."""
+
 import os
 
 import const
+import site_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,17 +31,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # don't know about).
 SECRET_KEY = os.urandom(30)
 
+# Check if we're running a local development server or in prod.
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
     # If DEBUG is True and ALLOWED_HOSTS is empty, Django permits localhost.
     ALLOWED_HOSTS = []
 else:
     DEBUG = False
-    ALLOWED_HOSTS = [
-        'googlepersonfinder.appspot.com',
-        'google.org',
-        'personfinder.google.org',
-    ]
+    ALLOWED_HOSTS = site_settings.PROD_ALLOWED_HOSTS
 
 # Application definition
 
@@ -41,6 +55,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'urls'
+
+# By default, if a URL can't be resolved and doesn't end in a slash, Django will
+# issue a redirect to the same URL with a slash. We'd rather not issue
+# unecessary redirects, so we just put optional trailing slashes in the URL
+# configuration.
+APPEND_SLASH = False
 
 TEMPLATES = [
     {

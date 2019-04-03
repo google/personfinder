@@ -24,7 +24,7 @@ class AdminBaseView(views.base.BaseView):
         self.env.logout_url = users.create_logout_url(self.build_absolute_uri())
         self.env.all_repo_options = [
             utils.Struct(
-                repo=repo, url=self.build_absolute_path('%s/admin' % repo))
+                repo=repo, url=self.build_absolute_path('/%s/admin' % repo))
             for repo in sorted(model.Repo.list())
         ]
 
