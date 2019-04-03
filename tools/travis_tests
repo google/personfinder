@@ -27,11 +27,14 @@ case "${TRAVIS_PYTHON_VERSION:0:1}" in
             $TOOLS_DIR/server_tests -q && \
             $TOOLS_DIR/python3_compatibility_check && \
             $TOOLS_DIR/ui test && \
-            echo "All tests passed."
+            echo "All Python 2.7 tests and checks passed."
         ;;
     "3")
         $TOOLS_DIR/py3_unit_tests -q &&
-            echo "All Python 3.7 tests passed."
+            # If the results ever do differ between Python 2 and 3, prefer to
+            # get it right for Python 3 since that's the future.
+            $TOOLS_DIR/lint pylint-check && $TOOLS_DIR/lint yapf-check \
+            echo "All Python 3.7 tests and checks passed."
         ;;
     *)
         echo "Unrecognized Python version from Travis: $TRAVIS_PYTHON_VERSION"

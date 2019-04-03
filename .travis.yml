@@ -28,7 +28,7 @@ install:
       unzip
   - wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.83.zip -O /tmp/appengine.zip
   - unzip -qq /tmp/appengine.zip
-  - pip install cssselect lxml mock modernize pillow==4.1.0 pytest
+  - pip install cssselect lxml mock modernize pillow==4.1.0 pylint pytest yapf
   - npm --prefix ui install
 
 before_script:
