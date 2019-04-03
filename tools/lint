@@ -1,15 +1,34 @@
-#!/bin/sh
-
-# use pylint to check the args.
-# requires installing pylint http://www.logilab.org/project/pylint
-# short form: easy_install pylint (may require root)
-LINT=$(which pylint)
-REPORTS="no"
-DEPRECATED=regsub,string,TERMIOS,Bastion,rexec
-if [ -z "$LINT" ]; then
-   echo "pylint not found, please install."
-   exit 1
-fi
+#!/bin/bash
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
-${LINT} --deprecated-module=${DEPRECATED} --reports=${REPORTS} "$@" 
+
+DEFAULT_YAPF_FILES="tests/test_searcher.py \
+                    tests/test_xsrftool.py"
+DEFAULT_PYLINT_FILES="tests/test_searcher.py \
+                      tests/test_xsrftool.py"
+
+# Call through python -m instead of directly, so that you're sure to be able to
+# use it even if you installed the tools through pip.
+PYLINT="python -m pylint"
+YAPF="python -m yapf --style google"
+
+command="$1"
+file_list="${@:2:999}"
+
+if [ "$file_list" == "" ]; then
+    if [ "$command" == "yapf-fix" -o "$command" == "yapf-check" ]; then
+        file_list=$DEFAULT_YAPF_FILES
+    elif [ "$command" == "pylint-check" ]; then
+        file_list=$DEFAULT_PYLINT_FILES
+    fi
+fi
+
+if [ "$command" == "yapf-fix" ]; then
+    $YAPF -i $file_list
+elif [ "$command" == "yapf-check" ]; then
+    $YAPF -d $file_list
+elif [ "$command" == "pylint-check" ]; then
+    $PYLINT $file_list
+else
+    echo "Usage: tools/lint [yapf-fix|yapf-check|pylint-check]"
+fi
