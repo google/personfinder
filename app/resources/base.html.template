@@ -21,6 +21,15 @@
 
 <head>
   {% block head %}
+
+    {# Redirect for missing Javascript support. #}
+    {% if env.ui != "light" %}
+      <noscript>
+        <style>html{display:none;}</style>
+        <meta http-equiv="refresh" content="0.0;url={{env.light_url}}">
+      </noscript>
+    {% endif %}
+
     {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
     <meta charset="{{env.charset}}">
     {% if not env.amp %}
@@ -91,6 +100,7 @@
     class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
     {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
   {% block body %}
+
     {% if env.amp and env.enable_analytics %}
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_gtm_id}}"
                      data-credentials="include">
@@ -131,6 +141,17 @@
       {% block container %}
         <div class="container">
           <div class="content" role="main">
+	    {# Show for missing Javascript support for the case that the browser does not allow the redirect above. #}
+	    {% if env.ui != "light" %}
+	      <noscript>
+		<h1>
+                  {% with light_url=env.light_url %}
+                    {% blocktrans %}If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.{% endblocktrans %}
+                  {% endwith %}
+                </h1>
+	      </noscript>
+	    {% endif %}
+
             {% block content %}
             {% endblock content %}
           </div>
