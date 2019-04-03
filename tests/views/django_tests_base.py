@@ -52,5 +52,16 @@ class DjangoTestsBase(unittest.TestCase):
         """
         # TODO(nworden): when everything's on Django, make some changes to
         # scrape.py so it better fits Django's test framework.
-        return scrape.Document(response.content, None, response.status_code,
-                               None, response, const.CHARSET_UTF8)
+        return scrape.Document(
+            content_bytes=response.content,
+            # The Django test Response objects don't include the URL, but that's
+            # ok: the Document's url field is only used by scrape.Session, which
+            # we're not using with the Django tests.
+            url=None,
+            status=response.status_code,
+            # We aren't using this, at least not in the Django tests.
+            message=None,
+            # The response headers are accessed directly through the Response
+            # object.
+            headers=response,
+            charset=const.CHARSET_UTF8)

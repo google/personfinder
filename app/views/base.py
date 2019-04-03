@@ -81,8 +81,8 @@ class BaseView(django.views.View):
                 functions.
             post_params (dict): A dictionary from POST parameter keys to
                 validator functions.
-            file_params (dict): A dictionary from FILES parameter keys to
-                validator functions.
+            file_params (dict): A dictionary from POST parameter keys for
+                uploaded files to validator functions.
         """
         if self.request.method == 'GET':
             if get_params:
@@ -123,8 +123,9 @@ class BaseView(django.views.View):
                 'abc?x=y'. Paths beginning with a slash will be interpreted as
                 being relative to the Django app's directory, while paths
                 without a leading slash will be considered relative to the
-                current request's path. If not specified, the current request's
-                path will be used.
+                current request's path. If the path argument is not specified,
+                None, or the empty string, the current request's path will be
+                used.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -161,8 +162,9 @@ class BaseView(django.views.View):
                 'abc?x=y'. Paths beginning with a slash will be interpreted as
                 being relative to the Django app's directory, while paths
                 without a leading slash will be considered relative to the
-                current request's path. If not specified, the current request's
-                path will be used.
+                current request's path. If the path argument is not specified,
+                None, or the empty string, the current request's path will be
+                used.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
