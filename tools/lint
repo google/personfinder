@@ -9,8 +9,9 @@ DEFAULT_PYLINT_FILES="tests/test_searcher.py \
 
 # Call through python -m instead of directly, so that you're sure to be able to
 # use it even if you installed the tools through pip.
-PYLINT="python -m pylint"
 YAPF="python -m yapf --style google"
+# pylint will complain about TODOs, so disable that with "--disable fixme"
+PYLINT="python -m pylint --disable fixme"
 
 command="$1"
 file_list="${@:2:999}"
