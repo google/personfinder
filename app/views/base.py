@@ -1,3 +1,16 @@
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 """View-related code common to the whole app."""
 
 import functools
@@ -119,13 +132,9 @@ class BaseView(django.views.View):
         use.
 
         Args:
-            path (str, optional): A path (may include a query string), e.g.,
-                'abc?x=y'. Paths beginning with a slash will be interpreted as
-                being relative to the Django app's directory, while paths
-                without a leading slash will be considered relative to the
-                current request's path. If the path argument is not specified,
-                None, or the empty string, the current request's path will be
-                used.
+            path (str, optional): A path beginning with a slash (may include a
+                query string), e.g., '/abc?x=y'. If the path argument is not
+                specified or is None, the current request's path will be used.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -133,23 +142,15 @@ class BaseView(django.views.View):
             '/personfinder/abc?x=y'). Does not preserve query parameters from
             the original request.
         """
-        if not path:
+        if path is None:
             # request.path will already include the path prefix if it's being
             # used.
             return self.request.path
-        elif path[0] == '/':
-            # We're dealing with an absolute path, so add the path prefix if
-            # necessary.
-            return ('/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
-                    if self._request_is_for_prefixed_path()
-                    else path)
+        assert path[0] == '/'
+        if self._request_is_for_prefixed_path():
+            return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
         else:
-            # We're dealing with a relative path, so just append it to the
-            # current request's path (which will already include the path prefix
-            # if it's being used).
-            return ('%s%s' % (self.request.path, path)
-                    if self.request.path[-1] == '/'
-                    else '%s/%s' % (self.request.path, path))
+            return path
 
     def build_absolute_uri(self, path=None):
         """Builds an absolute URI given a path.
@@ -158,13 +159,9 @@ class BaseView(django.views.View):
         this function ourselves.
 
         Args:
-            path (str, optional): A path (may include a query string), e.g.,
-                'abc?x=y'. Paths beginning with a slash will be interpreted as
-                being relative to the Django app's directory, while paths
-                without a leading slash will be considered relative to the
-                current request's path. If the path argument is not specified,
-                None, or the empty string, the current request's path will be
-                used.
+            path (str, optional): A path beginning with a slash (may include a
+                query string), e.g., '/abc?x=y'. If the path argument is not
+                specified or is None, the current request's path will be used.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if

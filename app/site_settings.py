@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Module for site-specific settings.
 
 Some "constants" are expected to be the same for any Person Finder installation
@@ -32,8 +31,8 @@ DEFAULT_LANGUAGE_CODE)
 OPTIONAL_PATH_PREFIX = 'personfinder'
 
 # Hosts allowed in prod (not applicable to local servers).
-PROD_ALLOWED_HOSTS = [
-    'googlepersonfinder.appspot.com',
-    'google.org',
-    'personfinder.google.org',
-]
+# We just allow everything for now, to handle the different domains we serve off
+# of (e.g., different App Engine versions).
+# TODO(nworden): Find a way to set this at deploy time. Maybe we could use an
+# environment variable passed through app.yaml.
+PROD_ALLOWED_HOSTS = ['*']
