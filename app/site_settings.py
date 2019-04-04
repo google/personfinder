@@ -32,8 +32,6 @@ DEFAULT_LANGUAGE_CODE)
 OPTIONAL_PATH_PREFIX = 'personfinder'
 
 # Hosts allowed in prod (not applicable to local servers).
-PROD_ALLOWED_HOSTS = [
-    'googlepersonfinder.appspot.com',
-    'google.org',
-    'personfinder.google.org',
-]
+# We just allow everything to handle the different domains we serve off of
+# (e.g., different App Engine versions).
+PROD_ALLOWED_HOSTS = ['*']
