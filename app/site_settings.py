@@ -32,6 +32,8 @@ DEFAULT_LANGUAGE_CODE)
 OPTIONAL_PATH_PREFIX = 'personfinder'
 
 # Hosts allowed in prod (not applicable to local servers).
-# We just allow everything to handle the different domains we serve off of
-# (e.g., different App Engine versions).
+# We just allow everything for now, to handle the different domains we serve off
+# of (e.g., different App Engine versions).
+# TODO(nworden): Find a way to set this at deploy time. Maybe we could use an
+# environment variable passed through app.yaml.
 PROD_ALLOWED_HOSTS = ['*']
