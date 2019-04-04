@@ -58,6 +58,15 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             # Don't test POST requests here; they'll need an XSRF token and
             # that'll be covered in a separate test.
 
+    def test_other_pages_unrestricted(self):
+        """Tests that non-admins can access unrestricted pages."""
+        self.login(is_admin=False)
+        for (path_name, _
+            ) in filter(lambda item: not item[1],
+                        AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
+            path = django.urls.reverse(path_name)
+            assert self.client.get(path).status_code != 403
+
     def test_all_paths_included(self):
         """Tests that all (Django-served) pages are listed.
 
