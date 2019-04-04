@@ -22,6 +22,7 @@ import django_tests_base
 
 
 class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
+    """Tests that access restrictions are enforced."""
 
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
@@ -30,6 +31,7 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
     }
 
     def test_blocked_to_non_admins(self):
+        """Tests that admin-only pages aren't available to non-admins."""
         self.login(is_admin=False)
         for (path_name, _
             ) in filter(lambda item: item[1],
@@ -39,6 +41,14 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             assert self.client.post(path).status_code == 403
 
     def test_available_to_admins(self):
+        """Tests that admin-only pages are available to admins.
+
+        This is a sort of meta-test: I'm not really concerned that we might
+        accidentally lock admins out of the admin pages, but I do want to make
+        sure that the test above actually depends on the user not being an admin
+        (as opposed to access getting denied because the tests are set up wrong
+        somehow).
+        """
         self.login(is_admin=True)
         for (path_name, _
             ) in filter(lambda item: item[1],
@@ -49,6 +59,11 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             # that'll be covered in a separate test.
 
     def test_all_paths_included(self):
+        """Tests that all (Django-served) pages are listed.
+
+        We want to make sure no one forgets to add these tests for admin pages,
+        so we require that each URL path is included in the dictionary above.
+        """
         for pattern in urls.urlpatterns:
             if pattern.name.startswith('prefixed:'):
                 # Skip these; they're the same views as the non-prefixed
