@@ -147,9 +147,11 @@ class BaseView(django.views.View):
             # request.path will already include the path prefix if it's being
             # used.
             return self.request.path
-        return ('/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
-                if self._request_is_for_prefixed_path()
-                else path)
+        assert path[0] == '/'
+        if self._request_is_for_prefixed_path():
+            return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
+        else:
+            return path
 
     def build_absolute_uri(self, path=None):
         """Builds an absolute URI given a path.
