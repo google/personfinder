@@ -21,8 +21,6 @@ import django_setup  # always keep this first
 import mimetypes
 import re
 import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), 'vendors'))
 
 import urlparse
 
@@ -79,7 +77,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/delete_record',
   'admin/resources',
   'admin/review',
-  'admin/statistics',
   'css',
   'add_note',
   'tos',
@@ -176,7 +173,7 @@ def select_lang(request, config=None):
         (config and
          config.language_menu_options and
          config.language_menu_options[0]) or
-            django_setup.LANGUAGE_CODE)
+            const.DEFAULT_LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
             select_lang_from_header(request, default_lang=default_lang))
