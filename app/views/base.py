@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """View-related code common to the whole app."""
 
 import functools
@@ -172,7 +171,7 @@ class BaseView(django.views.View):
         """
         return self.request.build_absolute_uri(self.build_absolute_path(path))
 
-    def render(self, template_name, **template_vars):
+    def render(self, template_name, status_code=200, **template_vars):
         """Renders a template with the given variables.
 
         Args:
@@ -196,7 +195,8 @@ class BaseView(django.views.View):
         extra_key = (self.env.repo, self.env.charset, query_str)
         return django.http.HttpResponse(
             resources.get_rendered(template_name, self.env.lang, extra_key,
-                                   get_vars, 0))
+                                   get_vars, 0),
+            status=status_code)
 
     @django.utils.decorators.classonlymethod
     def as_view(cls, **initkwargs):
