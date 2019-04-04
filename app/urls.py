@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """URL routing module."""
 
 from django.conf import urls
@@ -19,18 +18,20 @@ from django.conf import urls
 import site_settings
 import views.admin.statistics
 
-_BASE_URL_PATTERNS = [('global/admin/statistics/?',
+_BASE_URL_PATTERNS = [('admin-statistics', 'global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view)]
 
 # pylint: disable=invalid-name
 urlpatterns = [
-    urls.url('^%s' % path_exp, view_func())
-    for (path_exp, view_func) in _BASE_URL_PATTERNS
+    urls.url('^%s' % path_exp, view_func(), name=name)
+    for (name, path_exp, view_func) in _BASE_URL_PATTERNS
 ]
 
 if site_settings.OPTIONAL_PATH_PREFIX:
     urlpatterns += [
         urls.url(
             '^%s/%s' % (site_settings.OPTIONAL_PATH_PREFIX, path_exp),
-            view_func()) for (path_exp, view_func) in _BASE_URL_PATTERNS
+            view_func(),
+            name='prefixed:%s' % name)
+        for (name, path_exp, view_func) in _BASE_URL_PATTERNS
     ]
