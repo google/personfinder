@@ -28,14 +28,17 @@ _BASE_URL_PATTERNS = [('admin-statistics', r'global/admin/statistics/?',
 # Pylint would prefer that this name be uppercased, but Django's going to look
 # for this value in the urls module; it has to be called urlpatterns.
 urlpatterns = [
-    urls.url('^(%s)$' % path_exp, view_func(), name=name)
+    urls.url('^%s$' % path_exp, view_func(), name=name)
     for (name, path_exp, view_func) in _BASE_URL_PATTERNS
 ]
 
 if site_settings.OPTIONAL_PATH_PREFIX:
     urlpatterns += [
         urls.url(
-            '^(%s)/(%s)$' % (site_settings.OPTIONAL_PATH_PREFIX, path_exp),
+            '^%(prefix)s/%(path)s$' % {
+                'prefix': site_settings.OPTIONAL_PATH_PREFIX,
+                'path': path_exp
+            },
             view_func(),
             name='prefixed:%s' % name)
         for (name, path_exp, view_func) in _BASE_URL_PATTERNS
