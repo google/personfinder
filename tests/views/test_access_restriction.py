@@ -27,6 +27,7 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
     IS_RESTRICTED_TO_ADMINS = {
+        'admin-create-repo': True,
         'admin-statistics': True,
     }
 
