@@ -1,9 +1,5 @@
-import os
-import unittest
-
 import django
 import django.test
-from google.appengine.ext import testbed
 
 import model
 
