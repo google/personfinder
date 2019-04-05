@@ -31,7 +31,6 @@ class AdminBaseView(views.base.BaseView):
 
     def setup(self, request, *args, **kwargs):
         super(AdminBaseView, self).setup(request, *args, **kwargs)
-        self.read_params(post_params=AdminBaseView._POST_PARAMETERS)
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
@@ -41,6 +40,12 @@ class AdminBaseView(views.base.BaseView):
                 repo=repo, url=self.build_absolute_path('/%s/admin' % repo))
             for repo in sorted(model.Repo.list())
         ]
+
+    def get_params(self):
+        return views.base.read_params(
+            super(AdminBaseView, self).get_params(),
+            self.request,
+            post_params=AdminBaseView._POST_PARAMETERS)
 
     def dispatch(self, request, *args, **kwargs):
         # All the admin pages, and only the admin pages, require the user to be

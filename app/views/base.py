@@ -59,8 +59,7 @@ class BaseView(django.views.View):
         del request, args  # unused
 
         # Set up the parameters and read in the base set of parameters.
-        self.params = utils.Struct()
-        self.read_params(get_params=BaseView._GET_PARAMETERS)
+        self.params = self.get_params()
 
         # Set up env variable with data needed by the whole app.
         self.env = utils.Struct()
@@ -86,34 +85,9 @@ class BaseView(django.views.View):
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
 
-    def read_params(self, get_params=None, post_params=None, file_params=None):
-        """Reads CGI parameter values into self.params.
-
-        Args:
-            get_params (dict): A dictionary from GET parameter keys to validator
-                functions.
-            post_params (dict): A dictionary from POST parameter keys to
-                validator functions.
-            file_params (dict): A dictionary from POST parameter keys for
-                uploaded files to validator functions.
-        """
-        if self.request.method == 'GET':
-            if get_params:
-                for key, validator in get_params.items():
-                    if key in self.request.GET:
-                        setattr(self.params, key,
-                                validator(self.request.GET[key]))
-        else:
-            if post_params:
-                for key, validator in post_params.items():
-                    if key in self.request.POST:
-                        setattr(self.params, key,
-                                validator(self.request.POST[key]))
-            if file_params:
-                for key, validator in file_params.items():
-                    if key in self.request.FILES:
-                        setattr(self.params, key,
-                                validator(self.request.FILES[key]))
+    def get_params(self):
+        return read_params(
+            utils.Struct(), self.request, get_params=BaseView._GET_PARAMETERS)
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
@@ -240,3 +214,40 @@ class BaseView(django.views.View):
         # like csrf_exempt from dispatch
         functools.update_wrapper(view, cls.dispatch, assigned=())
         return view
+
+
+def read_params(container,
+                request,
+                get_params=None,
+                post_params=None,
+                file_params=None):
+    """Reads CGI parameter values from the request to the container.
+
+    Args:
+        container (utils.Struct): The container to put parameter values in.
+        request (HttpRequest): The request to read from.
+        get_params (dict): A dictionary from GET parameter keys to validator
+            functions.
+        post_params (dict): A dictionary from POST parameter keys to validator
+            functions.
+        file_params (dict): A dictionary from POST parameter keys for uploaded
+            files to validator functions.
+
+    Returns:
+        utils.Struct: The container, for convenience.
+    """
+    if request.method == 'GET':
+        if get_params:
+            for key, validator in get_params.items():
+                if key in request.GET:
+                    setattr(container, key, validator(request.GET[key]))
+    elif request.method == 'POST':
+        if post_params:
+            for key, validator in post_params.items():
+                if key in request.POST:
+                    setattr(container, key, validator(request.POST[key]))
+        if file_params:
+            for key, validator in file_params.items():
+                if key in request.FILES:
+                    setattr(container, key, validator(request.FILES[key]))
+    return container
