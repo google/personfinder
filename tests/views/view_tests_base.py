@@ -8,6 +8,7 @@ import django.test
 from google.appengine.ext import testbed
 
 import const
+import utils
 
 import scrape
 
@@ -23,6 +24,7 @@ class ViewTestsBase(unittest.TestCase):
         django.setup()
         django.test.utils.setup_test_environment()
         self.client = django.test.Client()
+        self.xsrf_tool = utils.XsrfTool()
 
     def tearDown(self):
         self.testbed.deactivate()
