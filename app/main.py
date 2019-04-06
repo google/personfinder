@@ -21,8 +21,6 @@ import django_setup  # always keep this first
 import mimetypes
 import re
 import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), 'vendors'))
 
 import urlparse
 
@@ -40,36 +38,6 @@ import resources
 import utils
 import user_agents
 import setup_pf
-
-
-class AdminEnv(object):
-    """Template variables for admin pages."""
-
-    def __init__(self, request):
-        self.request = request
-        self.user = users.get_current_user()
-        self.logout_url = users.create_logout_url(self.request.url)
-
-    @property
-    def repo_options(self):
-        """This is different from env.repo_options because this contains all
-        repositories including deactivated ones.
-
-        This is defined as a property so that it is evaluated lazily only
-        when necessary.
-        """
-        try:
-            return [
-                utils.Struct(
-                    repo=repo,
-                    url=utils.get_repo_url(self.request, repo) + '/admin')
-                for repo in sorted(model.Repo.list())]
-        except:
-            # Logs the exception here because exceptions thrown during template
-            # variable evaluation is silently ignored. Note that
-            # logging.exception() logs the current exception by default.
-            logging.exception('Exception thrown')
-            return None
 
 
 # When no action or repo is specified, redirect to this action.
@@ -109,7 +77,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin/delete_record',
   'admin/resources',
   'admin/review',
-  'admin/statistics',
   'css',
   'add_note',
   'tos',
@@ -206,7 +173,7 @@ def select_lang(request, config=None):
         (config and
          config.language_menu_options and
          config.language_menu_options[0]) or
-            django_setup.LANGUAGE_CODE)
+            const.DEFAULT_LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
             select_lang_from_header(request, default_lang=default_lang))
@@ -434,8 +401,6 @@ def setup_env(request):
         env.enable_javascript
         and not env.config.zero_rating_mode
         and env.config.translate_api_key)
-
-    env.admin = AdminEnv(request)
 
     # Repo-specific information.
     if env.repo:

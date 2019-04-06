@@ -64,8 +64,6 @@ class Handler(BaseHandler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
-        standalone = self.request.get('standalone')
-
         # TODO: Handle no persons found.
 
         person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
@@ -75,7 +73,7 @@ class Handler(BaseHandler):
         # Note: we're not showing notes and linked persons information
         # here at the moment.
         self.render('multiview.html',
-                    person=person, any=any_person, standalone=standalone,
+                    person=person, any=any_person,
                     cols=len(person['full_name']) + 1,
                     onload_function='view_page_loaded()', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)

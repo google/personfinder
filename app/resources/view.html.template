@@ -60,9 +60,7 @@
 {% endblock head %}
 
 {% block content %}
-  {% if not standalone %}
-    {% include "map.html.template" %}
-  {% endif %}
+  {% include "map.html.template" %}
 
   <div class="view">
 

@@ -63,7 +63,6 @@ class Handler(BaseHandler):
         if not person:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
-        standalone = self.request.get('standalone')
 
         # Check if private info should be revealed.
         content_id = 'view:' + self.params.id
@@ -153,7 +152,6 @@ class Handler(BaseHandler):
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,
-                    standalone=standalone,
                     onload_function='view_page_loaded()',
                     show_private_info=show_private_info,
                     admin=users.is_current_user_admin(),
