@@ -104,10 +104,20 @@ class Repo(db.Model):
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
 
-    # No properties for now; only the key_name is significant.  The repository
-    # title and other settings are all in ConfigEntry entities (see config.py).
-    # The per-repository 'deactivated' setting blocks UI and API access to the
-    # repository, replacing all its pages with a deactivation message.
+    class Status(object):
+        """An enum for the launch/activation status of the repo."""
+        UNLAUNCHED = 0
+        ACTIVE = 1
+        DEACTIVATED = 2
+
+    # Whether the repository is unlaunched, active, or deactivated.
+    activation_status = db.IntegerProperty(
+        required=False, default=Status.UNLAUNCHED)
+
+    # Few properties for now; the repository title and other settings are all in
+    # ConfigEntry entities (see config.py). The per-repository 'deactivated'
+    # setting blocks UI and API access to the repository, replacing all its
+    # pages with a deactivation message.
 
     @classmethod
     def list(cls):
