@@ -114,6 +114,8 @@ class Repo(db.Model):
     activation_status = db.IntegerProperty(
         required=False, default=Status.UNLAUNCHED)
 
+    test_mode = db.BooleanProperty(default=False)
+
     # Few properties for now; the repository title and other settings are all in
     # ConfigEntry entities (see config.py). The per-repository 'deactivated'
     # setting blocks UI and API access to the repository, replacing all its
