@@ -638,7 +638,7 @@ class PersonNoteTests(ServerTestsBase):
                 'Original URL:': 'Link',
                 'Original posting date:': 'Jan 1, 2001 12:00:00 AM UTC',
                 'Original site name:': '_test_source_name',
-                'Expiry date of this record:': 'Jan 11, 2001 12:00:05 AM UTC'})
+                'Expiry date of this record:': 'Jan 11, 2001 12:00:00 AM UTC'})
 
     def test_profile_icons_present(self):
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
