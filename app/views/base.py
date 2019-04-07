@@ -38,17 +38,14 @@ class BaseView(django.views.View):
     }
 
     class Env(object):
-
-        @property
-        def repo(self):
-            return self._repo
-
-        @repo.setter
-        def repo(self, value):
-            self._repo = value
+        """Class to store environment information used by views and templates.
+        """
+        # pylint: disable=attribute-defined-outside-init
+        # pylint: disable=too-many-instance-attributes
 
         @property
         def action(self):
+            """Gets the action ID, an identifier for the page being served."""
             return self._action
 
         @action.setter
@@ -56,31 +53,8 @@ class BaseView(django.views.View):
             self._action = value
 
         @property
-        def config(self):
-            return self._config
-
-        @config.setter
-        def config(self, value):
-            self._config = value
-
-        @property
-        def lang(self):
-            return self._lang
-
-        @lang.setter
-        def lang(self, value):
-            self._lang = value
-
-        @property
-        def rtl(self):
-            return self._rtl
-
-        @rtl.setter
-        def rtl(self, value):
-            self._rtl = value
-
-        @property
         def charset(self):
+            """Gets the character set being used to serve the page."""
             return self._charset
 
         @charset.setter
@@ -88,12 +62,67 @@ class BaseView(django.views.View):
             self._charset = value
 
         @property
+        def config(self):
+            """Gets the config, a config.Config object for the repository."""
+            return self._config
+
+        @config.setter
+        def config(self, value):
+            self._config = value
+
+        @property
+        def enable_javascript(self):
+            "Gets whether or not to enable JavaScript." ""
+            return self._enable_javascript
+
+        @enable_javascript.setter
+        def enable_javascript(self, value):
+            self._enable_javascript = value
+
+        @property
         def global_url(self):
+            """Gets the URL for the global root."""
             return self._global_url
 
         @global_url.setter
         def global_url(self, value):
             self._global_url = value
+
+        @property
+        def lang(self):
+            """Gets the two-letter code for the language being used."""
+            return self._lang
+
+        @lang.setter
+        def lang(self, value):
+            self._lang = value
+
+        @property
+        def repo(self):
+            """Gets the repository ID, or None if it's a global page."""
+            return self._repo
+
+        @repo.setter
+        def repo(self, value):
+            self._repo = value
+
+        @property
+        def rtl(self):
+            """Gets whether the language a right-to-left language."""
+            return self._rtl
+
+        @rtl.setter
+        def rtl(self, value):
+            self._rtl = value
+
+        @property
+        def show_logo(self):
+            """Gets whether or not to show the logo in the header."""
+            return self._show_logo
+
+        @show_logo.setter
+        def show_logo(self, value):
+            self._show_logo = value
 
     def setup(self, request, *args, **kwargs):
         """Sets up the handler.
@@ -144,6 +173,12 @@ class BaseView(django.views.View):
         self.env.global_url = self.build_absolute_uri('/global')
 
     def get_params(self):
+        """Gets parameter values out of the request.
+
+        Returns:
+            utils.Struct: A container with the values of CGI parameters used by
+            this view.
+        """
         return read_params(
             utils.Struct(), self.request, get_params=BaseView._GET_PARAMETERS)
 
@@ -181,8 +216,7 @@ class BaseView(django.views.View):
         assert path[0] == '/'
         if self._request_is_for_prefixed_path():
             return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
-        else:
-            return path
+        return path
 
     def build_absolute_uri(self, path=None):
         """Builds an absolute URI given a path.

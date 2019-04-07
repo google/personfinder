@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Code shared by admin view modules."""
 
 import django.shortcuts
@@ -30,33 +29,22 @@ class AdminBaseView(views.base.BaseView):
     }
 
     class Env(views.base.BaseView.Env):
+        """Class to store environment information used by views and templates.
+        """
+        # pylint: disable=attribute-defined-outside-init
 
         @property
-        def show_logo(self):
-            return self._show_logo
+        def all_repo_options(self):
+            """Gets a list of Structs with repo IDs and URLs."""
+            return self._all_repo_options
 
-        @show_logo.setter
-        def show_logo(self, value):
-            self._show_logo = value
-
-        @property
-        def enable_javascript(self):
-            return self._enable_javascript
-
-        @enable_javascript.setter
-        def enable_javascript(self, value):
-            self._enable_javascript = value
-
-        @property
-        def user(self):
-            return self._user
-
-        @user.setter
-        def user(self, value):
-            self._user = value
+        @all_repo_options.setter
+        def all_repo_options(self, value):
+            self._all_repo_options = value
 
         @property
         def logout_url(self):
+            """Gets a logout URL for the user."""
             return self._logout_url
 
         @logout_url.setter
@@ -64,12 +52,13 @@ class AdminBaseView(views.base.BaseView):
             self._logout_url = value
 
         @property
-        def all_repo_options(self):
-            return self._all_repo_options
+        def user(self):
+            """Gets a users.User object for the current user, if any."""
+            return self._user
 
-        @all_repo_options.setter
-        def all_repo_options(self, value):
-            self._all_repo_options = value
+        @user.setter
+        def user(self, value):
+            self._user = value
 
     def setup(self, request, *args, **kwargs):
         super(AdminBaseView, self).setup(request, *args, **kwargs)
