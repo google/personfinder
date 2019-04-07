@@ -23,6 +23,7 @@ from django.utils.translation import ugettext as _
 
 from confirm_disable_notes import DisableAndEnableNotesError
 
+
 class Handler(utils.BaseHandler):
     """This handler lets the author confirm to disable future nots 
     to a person record."""
@@ -45,7 +46,7 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _('[Person Finder] Notes are now enabled on "%(full_name)s"'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -54,12 +55,9 @@ class Handler(utils.BaseHandler):
                 body=self.render_to_string(
                     'enable_notes_notice_email.txt',
                     full_name=person.primary_full_name,
-                    record_url=record_url
-                )
-            )
+                    record_url=record_url))
 
         self.redirect(record_url)
-
 
     def post(self):
         try:
@@ -79,7 +77,7 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _('[Person Finder] Enabling notes notice for "%(full_name)s"'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -88,12 +86,9 @@ class Handler(utils.BaseHandler):
                 body=self.render_to_string(
                     'enable_notes_notice_email.txt',
                     full_name=person.primary_full_name,
-                    record_url=record_url
-                )
-            )
+                    record_url=record_url))
 
         self.redirect(record_url)
-
 
     def get_person_and_verify_params(self):
         """Check the request for a valid person id and valid crypto token.

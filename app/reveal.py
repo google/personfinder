@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Handler for a Turing test page, and utility functions for other pages,
 to guard the display of sensitive information."""
 
@@ -34,9 +33,11 @@ REVEAL_KEY_LENGTH = 20
 
 # ==== Signature generation and verification ===============================
 
+
 def sha1_hash(string):
     """Computes the SHA-1 hash of the given string."""
     return sha.new(string).digest()
+
 
 def xor(string, byte):
     """Exclusive-ors each character in a string with the given byte."""
@@ -45,15 +46,18 @@ def xor(string, byte):
         results.append(chr(ord(ch) ^ byte))
     return ''.join(results)
 
+
 def hmac(key, data, hash=sha1_hash):
     """Produces an HMAC for the given data."""
     return hash(xor(key, 0x5c) + hash(xor(key, 0x36) + pickle.dumps(data)))
+
 
 def sign(data, lifetime=600):
     """Produces a limited-time signature for the given data."""
     expiry = int(time.time() + lifetime)
     key = get_reveal_key(length=REVEAL_KEY_LENGTH)
     return hmac(key, (expiry, data)).encode('hex') + '.' + str(expiry)
+
 
 def verify(data, signature):
     """Checks that a signature matches the given data and hasn't yet expired."""
@@ -65,6 +69,7 @@ def verify(data, signature):
     key = get_reveal_key(length=REVEAL_KEY_LENGTH)
     return time.time() < expiry and hmac(key, (expiry, data)) == mac
 
+
 def get_reveal_key(length=REVEAL_KEY_LENGTH):
     """Gets the key for authorizing reveal operations, or creates one if none
     exist."""
@@ -73,6 +78,7 @@ def get_reveal_key(length=REVEAL_KEY_LENGTH):
         key = generate_random_key(REVEAL_KEY_LENGTH)
         config.set(reveal=key)
     return key
+
 
 def make_reveal_url(handler, content_id):
     """Produces a link to this reveal handler that, on success, redirects back
@@ -95,7 +101,9 @@ def make_reveal_url(handler, content_id):
 # 3.  If reveal.verify() returns False, then replace the sensitive information
 #     with a link to make_reveal_url(self, content_id).
 
+
 class Handler(BaseHandler):
+
     def get(self):
         self.render('reveal.html', captcha_html=self.get_captcha_html())
 
@@ -116,8 +124,7 @@ class Handler(BaseHandler):
                 return self.error(400, 'Invalid target parameter')
             scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
             target = '%s://%s%s' % (scheme, netloc, self.params.target)
-            self.redirect(
-                set_url_param(target, 'signature', signature))
+            self.redirect(set_url_param(target, 'signature', signature))
         else:
             self.render(
                 'reveal.html',

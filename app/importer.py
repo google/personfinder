@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Support for importing records in batches, with error detection.
 
 This module converts Python dictionaries into datastore entities.
@@ -35,6 +34,7 @@ from utils import validate_sex, validate_status, validate_approximate_date, \
 DEFAULT_PUT_RETRIES = 3
 MAX_PUT_BATCH = 100
 
+
 def utf8_decoder(dict_reader):
     """Yields a dictionary where all string values are converted to Unicode.
 
@@ -51,6 +51,7 @@ def utf8_decoder(dict_reader):
                 record[key] = value.decode('utf-8')
         yield record
 
+
 def put_batch(batch, retries=DEFAULT_PUT_RETRIES):
     for attempt in range(retries):
         try:
@@ -62,12 +63,15 @@ def put_batch(batch, retries=DEFAULT_PUT_RETRIES):
             logging.warn('Retrying batch: %s' % value)
     return 0
 
+
 date_re = re.compile(r'^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
+
 
 def strip(string_or_none):
     if not string_or_none:
         return ''
     return string_or_none.strip() or ''
+
 
 def validate_datetime(datetime_or_datestring):
     if isinstance(datetime_or_datestring, datetime.datetime):
@@ -79,11 +83,13 @@ def validate_datetime(datetime_or_datestring):
         return datetime.datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % datetime_or_datestring)
 
+
 def validate_boolean(string):
     if not string:
         return None  # A missing value is okay.
     return (isinstance(string, basestring) and
             string.strip().lower() in ['true', 'yes', 'y', '1'])
+
 
 def create_person(repo, fields):
     """Creates a Person entity in the given repository with the given field
@@ -121,10 +127,9 @@ def create_person(repo, fields):
     # For PFIF 1.3 or older, populate full_name (it was an optional field
     # before), using given_name and family_name if it is empty.
     if not person_fields['full_name'].strip():
-        person_fields['full_name'] = get_full_name(
-            person_fields['given_name'],
-            person_fields['family_name'],
-            config.Configuration(repo))
+        person_fields['full_name'] = get_full_name(person_fields['given_name'],
+                                                   person_fields['family_name'],
+                                                   config.Configuration(repo))
     # TODO(liuhsinwen): Separate existed and non-existed record id and
     # increment person counter for new records
     record_id = strip(fields.get('person_record_id'))
@@ -139,6 +144,7 @@ def create_person(repo, fields):
         # by the number of upload records
         # UsageCounter.increment_person_counter(repo)
         return Person.create_original(repo, **person_fields)
+
 
 def create_note(repo, fields):
     """Creates a Note entity in the given repository with the given field
@@ -171,13 +177,14 @@ def create_note(repo, fields):
         if is_clone(repo, record_id):
             return Note.create_clone(repo, record_id, **note_fields)
         else:
-            return Note.create_original_with_record_id(
-                repo, record_id, **note_fields)
+            return Note.create_original_with_record_id(repo, record_id,
+                                                       **note_fields)
     else:  # create a new original record
         # TODO(liuhsinwen): fix performance problem by incrementing the counter
         # by the number of upload notes
         # UsageCounter.increment_note_counter(repo)
         return Note.create_original(repo, **note_fields)
+
 
 def filter_new_notes(entities, repo):
     """Filter the notes which are new."""
@@ -205,14 +212,18 @@ def send_notifications(handler, persons, notes):
 
 
 def notes_match(a, b):
-    fields = ['person_record_id', 'author_name', 'author_email', 'author_phone',
-              'source_date', 'status', 'author_made_contact',
-              'email_of_found_person', 'phone_of_found_person',
-              'last_known_location', 'text', 'photo_url']
+    fields = [
+        'person_record_id', 'author_name', 'author_email', 'author_phone',
+        'source_date', 'status', 'author_made_contact', 'email_of_found_person',
+        'phone_of_found_person', 'last_known_location', 'text', 'photo_url'
+    ]
     return [getattr(a, f) for f in fields] == [getattr(b, f) for f in fields]
 
 
-def import_records(repo, domain, converter, records,
+def import_records(repo,
+                   domain,
+                   converter,
+                   records,
                    mark_notes_reviewed=False,
                    believed_dead_permission=False,
                    handler=None,
@@ -259,8 +270,8 @@ def import_records(repo, domain, converter, records,
             skipped.append((e.__class__.__name__ + ': ' + str(e), fields))
             continue
         if entity.original_domain != domain:
-            skipped.append(
-                ('Not in authorized domain: %r' % entity.record_id, fields))
+            skipped.append(('Not in authorized domain: %r' % entity.record_id,
+                            fields))
             continue
         if isinstance(entity, Person):
             entity.update_index(['old', 'new'])
@@ -273,7 +284,7 @@ def import_records(repo, domain, converter, records,
     # Updated Persons other than those being imported.
     #
     # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
-    # key sets: Person entities for the records passed in to import_records() 
+    # key sets: Person entities for the records passed in to import_records()
     # go in 'persons', and any other Person entities affected by the import go
     # in 'extra_persons'.  The two dictionaries are kept separate in order to
     # produce a count of records written that only counts 'persons'.
@@ -294,9 +305,8 @@ def import_records(repo, domain, converter, records,
 
         if not person:
             skipped.append(
-                ('There is no person record with the person_record_id %r'
-                    % note.person_record_id,
-                 fields))
+                ('There is no person record with the person_record_id %r' %
+                 note.person_record_id, fields))
             continue
         # Check whether reporting 'believed_dead' in note is permitted.
         if not believed_dead_permission and note.status == 'believed_dead':
@@ -316,8 +326,8 @@ def import_records(repo, domain, converter, records,
             other_notes = Note.get_by_person_record_id(
                 repo, note.person_record_id, filter_expired=False)
             if any(notes_match(note, other_note) for other_note in other_notes):
-                skipped.append(
-                    ('This is a duplicate of an existing note', fields))
+                skipped.append(('This is a duplicate of an existing note',
+                                fields))
                 continue
 
         note.reviewed = mark_notes_reviewed
@@ -337,8 +347,8 @@ def import_records(repo, domain, converter, records,
     all_persons = dict(persons, **extra_persons)
     written = 0
     while entities:
-        # The presence of a handler indicates we should notify subscribers 
-        # for any new notes being written. We do not notify on 
+        # The presence of a handler indicates we should notify subscribers
+        # for any new notes being written. We do not notify on
         # "re-imported" existing notes to avoid spamming subscribers.
         new_notes = []
         if handler:

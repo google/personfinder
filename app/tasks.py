@@ -36,7 +36,6 @@ import pfif
 import record_writer
 import utils
 
-
 CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
@@ -66,8 +65,12 @@ class ScanForExpired(utils.BaseHandler):
     def schedule_next_task(self, cursor):
         """Schedule the next task for to carry on with this query.
         """
-        self.add_task_for_repo(self.repo, self.task_name(), self.ACTION,
-                               cursor=cursor, queue_name='expiry')
+        self.add_task_for_repo(
+            self.repo,
+            self.task_name(),
+            self.ACTION,
+            cursor=cursor,
+            queue_name='expiry')
 
     def get(self):
         if self.repo:
@@ -100,6 +103,7 @@ class ScanForExpired(utils.BaseHandler):
             for repo in model.Repo.list():
                 self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
+
 class DeleteExpired(ScanForExpired):
     """Scan for person records with expiry date thats past."""
     ACTION = 'tasks/delete_expired'
@@ -109,6 +113,7 @@ class DeleteExpired(ScanForExpired):
 
     def query(self):
         return model.Person.past_due_records(self.repo)
+
 
 class DeleteOld(ScanForExpired):
     """Scan for person records with old source dates for expiration."""
@@ -159,12 +164,12 @@ class CleanUpInTestMode(utils.BaseHandler):
         """Schedule the next task for to carry on with this query.
         """
         self.add_task_for_repo(
-                self.repo,
-                self.task_name(),
-                self.ACTION,
-                utcnow=str(calendar.timegm(utcnow.utctimetuple())),
-                cursor=cursor,
-                queue_name='clean_up_in_test_mode')
+            self.repo,
+            self.task_name(),
+            self.ACTION,
+            utcnow=str(calendar.timegm(utcnow.utctimetuple())),
+            cursor=cursor,
+            queue_name='clean_up_in_test_mode')
 
     def in_test_mode(self, repo):
         """Returns True if the repository is in test mode."""
@@ -176,10 +181,8 @@ class CleanUpInTestMode(utils.BaseHandler):
             # exactly the same filter. So we use utcnow previously used
             # instead of the current time.
             utcnow = self.params.utcnow or utils.get_utcnow()
-            max_entry_date = (
-                    utcnow -
-                    datetime.timedelta(
-                            seconds=CleanUpInTestMode.DELETION_AGE_SECONDS))
+            max_entry_date = (utcnow - datetime.timedelta(
+                seconds=CleanUpInTestMode.DELETION_AGE_SECONDS))
             query = model.Person.all_in_repo(self.repo)
             query.filter('entry_date <=', max_entry_date)
             if self.params.cursor:
@@ -204,7 +207,7 @@ class CleanUpInTestMode(utils.BaseHandler):
                 # This exception is sometimes raised, maybe when the query
                 # object live too long?
                 self.schedule_next_task(cursor, utcnow)
-                
+
         else:
             for repo in model.Repo.list():
                 if self.in_test_mode(repo):
@@ -357,8 +360,8 @@ class UpdateDeadStatus(CountBase):
     ACTION = 'tasks/count/update_dead_status'
 
     def make_query(self):
-        return model.Person.all().filter('repo =', self.repo
-                          ).filter('latest_status =', 'believed_dead')
+        return model.Person.all().filter('repo =', self.repo).filter(
+            'latest_status =', 'believed_dead')
 
     def update_counter(self, counter, person):
         person.update_latest_status()
@@ -408,16 +411,13 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
                 self._maybe_notify(count_of_unreviewed_notes)
             except runtime.DeadlineExceededError:
                 logging.info("DeadlineExceededError occurs")
-                self.add_task_for_repo(
-                    self.repo, self.task_name(), self.ACTION)
+                self.add_task_for_repo(self.repo, self.task_name(), self.ACTION)
             except datastore_errors.Timeout:
                 logging.info("Timeout occurs in datastore")
-                self.add_task_for_repo(
-                    self.repo, self.task_name(), self.ACTION)
+                self.add_task_for_repo(self.repo, self.task_name(), self.ACTION)
         else:
             for repo in model.Repo.list():
-                self.add_task_for_repo(
-                    repo, self.task_name(), self.ACTION)
+                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
     def _subject(self):
         return "Please review your notes in %(repo_name)s" % {
@@ -433,16 +433,17 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
     def _maybe_notify(self, count_of_unreviewed_notes):
         # TODO(yaboo@): Response should be modified
         if self._should_notify(count_of_unreviewed_notes):
-            self.send_mail(self.config.get('notification_email'),
-                           subject=self._subject(),
-                           body=self._body(count_of_unreviewed_notes))
+            self.send_mail(
+                self.config.get('notification_email'),
+                subject=self._subject(),
+                body=self._body(count_of_unreviewed_notes))
 
     def _should_notify(self, count_of_unreviewed_notes):
         if not self.config.get('notification_email'):
             return False
 
-        return  count_of_unreviewed_notes > self.config.get(
-                'unreviewed_notes_threshold')
+        return count_of_unreviewed_notes > self.config.get(
+            'unreviewed_notes_threshold')
 
 
 class ThumbnailPreparer(utils.BaseHandler):
@@ -457,9 +458,8 @@ class ThumbnailPreparer(utils.BaseHandler):
         # anything that doesn't get done now will be retried anyway on the next
         # iteration of the cron job.
         if self.repo:
-            for p in (model.Photo.all()
-                      .filter('thumbnail_data =', None)
-                      .filter('repo =', self.repo)):
+            for p in (model.Photo.all().filter('thumbnail_data =', None).filter(
+                    'repo =', self.repo)):
                 photo.set_thumbnail(p)
         else:
             for repo in model.Repo.list():
@@ -486,7 +486,7 @@ class DumpCSV(utils.BaseHandler):
     # uploading after 4 min, assuming uploading takes similar time as
     # fetching.
     MAX_FETCH_TIME = datetime.timedelta(minutes=4)
-    
+
     def __init__(self, *args, **kwargs):
         super(DumpCSV, self).__init__(*args, **kwargs)
         self.storage = cloud_storage.CloudStorage()
@@ -498,11 +498,11 @@ class DumpCSV(utils.BaseHandler):
         """Schedule the next task for to carry on with this query.
         """
         self.add_task_for_repo(
-                self.repo,
-                self.task_name(),
-                self.ACTION,
-                cursor=cursor,
-                timestamp=str(calendar.timegm(timestamp.utctimetuple())))
+            self.repo,
+            self.task_name(),
+            self.ACTION,
+            cursor=cursor,
+            timestamp=str(calendar.timegm(timestamp.utctimetuple())))
 
     def get(self):
         if self.repo:
@@ -561,23 +561,23 @@ class DumpCSV(utils.BaseHandler):
                 break
             query.with_cursor(query.cursor())
 
-        for kind, writer in [
-                ('filtered', filtered_writer), ('full', full_writer)]:
+        for kind, writer in [('filtered', filtered_writer), ('full',
+                                                             full_writer)]:
             base_name = '%s-persons-%s-%s' % (
                 repo, kind, timestamp.strftime('%Y-%m-%d-%H%M%S'))
             final_csv_name = '%s.csv' % base_name
             temp_csv_name = '%s.temp.csv' % base_name
 
             if is_first:
-                self.storage.insert_object(
-                    final_csv_name, 'text/csv', writer.io.getvalue())
+                self.storage.insert_object(final_csv_name, 'text/csv',
+                                           writer.io.getvalue())
             elif has_data:
                 # Creates a temporary CSV file with new records, and append it to
                 # the final CSV file.
-                self.storage.insert_object(
-                    temp_csv_name, 'text/csv', writer.io.getvalue())
-                self.storage.compose_objects(
-                    [final_csv_name, temp_csv_name], final_csv_name, 'text/csv')
+                self.storage.insert_object(temp_csv_name, 'text/csv',
+                                           writer.io.getvalue())
+                self.storage.compose_objects([final_csv_name, temp_csv_name],
+                                             final_csv_name, 'text/csv')
 
             if scan_completed:
                 key = 'latest_%s_csv_object_name' % kind
@@ -596,12 +596,13 @@ class DumpCSV(utils.BaseHandler):
                     note_record = PFIF.note_to_dict(note)
                     if note.hidden:
                         note_record['text'] = ''
-                    records.append(utils.join_person_and_note_record(
-                        person_record, note_record))
+                    records.append(
+                        utils.join_person_and_note_record(
+                            person_record, note_record))
             else:
                 # Add a row with blank note fields.
                 # Uses join_person_and_note_record() here too to prefix field
                 # names consistently.
-                records.append(utils.join_person_and_note_record(
-                    person_record, None))
+                records.append(
+                    utils.join_person_and_note_record(person_record, None))
         return records

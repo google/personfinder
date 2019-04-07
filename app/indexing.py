@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Support for approximate string prefix queries.
 
 A hit is defined when the words entered in the query are all prefixes of one
@@ -49,7 +48,7 @@ def update_index_properties(entity):
     for property in entity._fields_to_index_properties:
         for value in TextQuery(getattr(entity, property)).query_words:
             if property in entity._fields_to_index_by_prefix_properties:
-                for n in xrange(1,len(value)+1):
+                for n in xrange(1, len(value) + 1):
                     pref = value[:n]
                     if pref not in names_prefixes:
                         names_prefixes.add(pref)
@@ -67,8 +66,8 @@ def update_index_properties(entity):
     MAX_TOKENS = 100
     entity.names_prefixes = list(names_prefixes)[:MAX_TOKENS]
     if len(names_prefixes) > MAX_TOKENS:
-        logging.debug('MAX_TOKENS exceeded for %s' %
-                      ' '.join(list(names_prefixes)))
+        logging.debug(
+            'MAX_TOKENS exceeded for %s' % ' '.join(list(names_prefixes)))
 
 
 def get_alternate_name_tokens(person):
@@ -80,6 +79,7 @@ def get_alternate_name_tokens(person):
 
 
 class CmpResults():
+
     def __init__(self, query):
         self.query = query
         self.query_words_set = set(query.words)
@@ -103,7 +103,6 @@ class CmpResults():
         else:
             return cmp(r2, r1)
 
-
     def set_ranking_attr(self, person):
         """Consider save these into to db"""
         if not hasattr(person, '_normalized_given_name'):
@@ -112,7 +111,7 @@ class CmpResults():
             person._normalized_full_name = TextQuery(person.full_name)
             person._name_words = set(person._normalized_full_name.words)
             person._alt_name_words = set(
-                    TextQuery(person.alternate_names).words)
+                TextQuery(person.alternate_names).words)
 
     # TODO(ryok): re-consider the ranking putting more weight on full_name (a
     # required field) instead of given name and family name pair (optional).
@@ -120,48 +119,38 @@ class CmpResults():
         # The normalized query words, in the order as entered.
         ordered_words = self.query.normalized.split()
 
-        if (ordered_words ==
-            person._normalized_given_name.words +
-            person._normalized_family_name.words):
+        if (ordered_words == person._normalized_given_name.words +
+                person._normalized_family_name.words):
             # Matches a Latin name exactly (given name followed by surname).
             return 10
 
         if (re.match(ur'^[\u3400-\u9fff]$', person.family_name) and
-            ordered_words in [
-                [person.family_name + person.given_name],
-                [person.family_name, person.given_name]
-            ]):
+                ordered_words in [[person.family_name + person.given_name],
+                                  [person.family_name, person.given_name]]):
             # Matches a CJK name exactly (surname followed by given name).
             return 10
 
         if (re.match(ur'^[\u3400-\u9fff]+$', person.family_name) and
-            ordered_words in [
-                [person.family_name + person.given_name],
-                [person.family_name, person.given_name]
-            ]):
+                ordered_words in [[person.family_name + person.given_name],
+                                  [person.family_name, person.given_name]]):
             # Matches a CJK name exactly (surname followed by given name).
             # A multi-character surname is uncommon, so it is ranked a bit lower.
             return 9.5
 
-        if (ordered_words ==
-            person._normalized_family_name.words +
-            person._normalized_given_name.words):
+        if (ordered_words == person._normalized_family_name.words +
+                person._normalized_given_name.words):
             # Matches a Latin name with given and family name switched.
             return 9
 
         if (re.match(ur'^[\u3400-\u9fff]$', person.given_name) and
-            ordered_words in [
-                    [person.given_name + person.family_name],
-                    [person.given_name, person.family_name]
-            ]):
+                ordered_words in [[person.given_name + person.family_name],
+                                  [person.given_name, person.family_name]]):
             # Matches a CJK name with surname and given name switched.
             return 9
 
         if (re.match(ur'^[\u3400-\u9fff]+$', person.given_name) and
-            ordered_words in [
-                    [person.given_name + person.family_name],
-                    [person.given_name, person.family_name]
-            ]):
+                ordered_words in [[person.given_name + person.family_name],
+                                  [person.given_name, person.family_name]]):
             # Matches a CJK name with surname and given name switched.
             # A multi-character surname is uncommon, so it's ranked a bit lower.
             return 8.5
@@ -171,8 +160,8 @@ class CmpResults():
             return 8
 
         if self.query.normalized in [
-            person._normalized_given_name.normalized,
-            person._normalized_family_name.normalized,
+                person._normalized_given_name.normalized,
+                person._normalized_family_name.normalized,
         ]:
             # Matches the given name exactly or the family name exactly.
             return 7

@@ -46,10 +46,11 @@ class Handler(utils.BaseHandler):
         except RestoreError, e:
             return self.error(400, unicode(e))
 
-        self.render('restore.html',
-                    captcha_html=self.get_captcha_html(),
-                    token=token,
-                    id=self.params.id)
+        self.render(
+            'restore.html',
+            captcha_html=self.get_captcha_html(),
+            token=token,
+            id=self.params.id)
 
     def post(self):
         """If the Turing test response is valid, restores the record by setting
@@ -62,10 +63,11 @@ class Handler(utils.BaseHandler):
         captcha_response = self.get_captcha_response()
         if not captcha_response.is_valid:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('restore.html',
-                        captcha_html=captcha_html,
-                        token=token,
-                        id=self.params.id)
+            self.render(
+                'restore.html',
+                captcha_html=captcha_html,
+                token=token,
+                id=self.params.id)
             return
 
         # Log the user action.
@@ -77,7 +79,7 @@ class Handler(utils.BaseHandler):
 
         record_url = self.get_url('/view', person.repo, id=person.record_id)
         subject = _('[Person Finder] Record restoration notice for '
-                '"%(full_name)s"') % {'full_name': person.primary_full_name}
+                    '"%(full_name)s"') % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -86,9 +88,7 @@ class Handler(utils.BaseHandler):
                 body=self.render_to_string(
                     'restoration_email.txt',
                     full_name=person.primary_full_name,
-                    record_url=record_url
-                )
-            )
+                    record_url=record_url))
 
         self.redirect(record_url)
 

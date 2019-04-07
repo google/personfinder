@@ -12,15 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Classes to write both types of records in different formats."""
-
 
 import csv
 
 import pfif
 import utils
-
 
 PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 
@@ -30,10 +27,12 @@ def get_person_note_joined_record_fields():
     """
     person_fields = [
         utils.get_field_name_for_joined_record(f, 'person')
-        for f in PFIF.fields['person']]
+        for f in PFIF.fields['person']
+    ]
     note_fields = [
         utils.get_field_name_for_joined_record(f, 'note')
-        for f in PFIF.fields['note']]
+        for f in PFIF.fields['note']
+    ]
     return person_fields + [f for f in note_fields if f not in person_fields]
 
 
@@ -62,8 +61,8 @@ class RecordCsvWriter(object):
             records (list of dict): A list of dictionaries which represent records.
         """
         for record in records:
-            self.writer.writerow([
-                record.get(name, '').encode('utf-8') for name in self.fields])
+            self.writer.writerow(
+                [record.get(name, '').encode('utf-8') for name in self.fields])
         self.io.flush()
 
     def close(self):
@@ -82,7 +81,7 @@ class NoteCsvWriter(RecordCsvWriter):
 
     fields = PFIF.fields['note']
 
-    
+
 class PersonWithNoteCsvWriter(RecordCsvWriter):
     """A class to write a joined record of person and note in CSV format."""
 

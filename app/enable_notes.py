@@ -22,13 +22,12 @@ from model import db
 from django.utils.translation import ugettext as _
 
 
-def get_enable_notes_url(handler, person, ttl=3*24*3600):
+def get_enable_notes_url(handler, person, ttl=3 * 24 * 3600):
     """Returns a URL to be used for disabling comments to a person record."""
     key_name = person.key().name()
     data = 'enable_notes:%s' % key_name
     token = reveal.sign(data, ttl)
-    return handler.get_url('/confirm_enable_notes',
-                           token=token, id=key_name)
+    return handler.get_url('/confirm_enable_notes', token=token, id=key_name)
 
 
 class Handler(utils.BaseHandler):
@@ -40,10 +39,11 @@ class Handler(utils.BaseHandler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        self.render('enable_notes.html',
-                    person=person,
-                    view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=self.get_captcha_html())
+        self.render(
+            'enable_notes.html',
+            person=person,
+            view_url=self.get_url('/view', id=self.params.id),
+            captcha_html=self.get_captcha_html())
 
     def post(self):
         """If the user passed the CAPTCHA, send the confirmation email."""
@@ -54,11 +54,8 @@ class Handler(utils.BaseHandler):
         captcha_response = self.get_captcha_response()
         if captcha_response.is_valid:
             enable_notes_url = get_enable_notes_url(self, person)
-            utils.send_confirmation_email_to_record_author(self,
-                                                           person,
-                                                           "enable",
-                                                           enable_notes_url,
-                                                           self.params.id)
+            utils.send_confirmation_email_to_record_author(
+                self, person, "enable", enable_notes_url, self.params.id)
 
             return self.info(
                 200, _('If you are the author of this note, please check your '
@@ -67,7 +64,8 @@ class Handler(utils.BaseHandler):
                        'record author to confirm your request.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('enable_notes.html',
-                        person=person,
-                        view_url=self.get_url('/view', id=self.params.id),
-                        captcha_html=captcha_html)
+            self.render(
+                'enable_notes.html',
+                person=person,
+                view_url=self.get_url('/view', id=self.params.id),
+                captcha_html=captcha_html)

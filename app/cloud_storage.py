@@ -64,23 +64,20 @@ class CloudStorage(object):
             content_type (str): MIME type string of the object.
             data (str): The content of the object.
         """
-        media = MediaIoBaseUpload(StringIO.StringIO(data), mimetype=content_type)
+        media = MediaIoBaseUpload(
+            StringIO.StringIO(data), mimetype=content_type)
         self.service.objects().insert(
             bucket=self.bucket_name,
             name=object_name,
             body={
                 # This let browsers to download the file instead of opening
                 # it in a browser.
-                'contentDisposition':
-                    'attachment; filename=%s' % object_name,
+                'contentDisposition': 'attachment; filename=%s' % object_name,
             },
             media_body=media).execute()
 
-    def compose_objects(
-        self,
-        source_object_names,
-        destination_object_name,
-        destination_content_type):
+    def compose_objects(self, source_object_names, destination_object_name,
+                        destination_content_type):
         """Concatenates the source objects to generate the destination object.
         
         Args:
@@ -92,13 +89,16 @@ class CloudStorage(object):
             destinationBucket=self.bucket_name,
             destinationObject=destination_object_name,
             body={
-                'sourceObjects': [{'name': name} for name in source_object_names],
+                'sourceObjects': [{
+                    'name': name
+                } for name in source_object_names],
                 'destination': {
-                    'contentType': destination_content_type,
+                    'contentType':
+                    destination_content_type,
                     # This let browsers to download the file instead of opening
                     # it in a browser.
                     'contentDisposition':
-                       'attachment; filename=%s' % destination_object_name,
+                    'attachment; filename=%s' % destination_object_name,
                 },
             }).execute()
 
@@ -146,7 +146,8 @@ class CloudStorage(object):
             'Expires': str(expiration_sec),
             'Signature': base64.b64encode(signature),
         }
-        return 'https://storage.googleapis.com%s?%s' % (path, urllib.urlencode(query_params))
+        return 'https://storage.googleapis.com%s?%s' % (
+            path, urllib.urlencode(query_params))
 
     def set_objects_lifetime(self, lifetime_days):
         """Sets lifetime of all objects in the bucket in days.
@@ -155,13 +156,19 @@ class CloudStorage(object):
 
         lifetime_days (int): Lifetime of objects in a number of days.
         """
-        self.service.buckets().patch(bucket=self.bucket_name, body={
-            'lifecycle': {
-                'rule': [
-                    {
-                        'action': {'type': 'Delete'},
-                        'condition': {'age': lifetime_days},
-                    },
-                ],
-            },
-        }).execute()
+        self.service.buckets().patch(
+            bucket=self.bucket_name,
+            body={
+                'lifecycle': {
+                    'rule': [
+                        {
+                            'action': {
+                                'type': 'Delete'
+                            },
+                            'condition': {
+                                'age': lifetime_days
+                            },
+                        },
+                    ],
+                },
+            }).execute()

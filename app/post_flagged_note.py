@@ -20,14 +20,16 @@ from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
-def get_confirm_post_note_with_bad_words_url(handler, note, ttl=3*24*3600):
+
+def get_confirm_post_note_with_bad_words_url(handler, note, ttl=3 * 24 * 3600):
     note_id = note.get_record_id()
     data = 'confirm_post_note_with_bad_words:%s' % note_id
     token = reveal.sign(data, ttl)
-    return handler.get_url('/confirm_post_flagged_note',
-                           token=token,
-                           id=note_id,
-                           repo=handler.repo)
+    return handler.get_url(
+        '/confirm_post_flagged_note',
+        token=token,
+        id=note_id,
+        repo=handler.repo)
 
 
 class PostNoteWithBadWordsError(Exception):
@@ -35,6 +37,7 @@ class PostNoteWithBadWordsError(Exception):
     detected as having spam words and the note author is asked
     to provide email confirmation to post the note."""
     pass
+
 
 class Handler(utils.BaseHandler):
     """This handler tells the note author that we can not post the note 
@@ -47,12 +50,12 @@ class Handler(utils.BaseHandler):
             return self.error(400, _(
                 "Can not find note with id %(id)s") % {'id': keyname})
 
-        self.render('post_flagged_note.html',
-                    note=note,
-                    author_email=self.params.author_email,
-                    id=self.params.id,
-                    repo=self.repo)
-
+        self.render(
+            'post_flagged_note.html',
+            note=note,
+            author_email=self.params.author_email,
+            id=self.params.id,
+            repo=self.repo)
 
     def post(self):
         keyname = "%s:%s" % (self.repo, self.params.id)
@@ -67,7 +70,7 @@ class Handler(utils.BaseHandler):
         # i18n: Subject line of an e-mail message that asks the note
         # author that he wants to post the note.
         subject = _('[Person Finder] Confirm your note on "%(full_name)s"'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
 
         # send e-mail to note author confirming the posting of this note.
         template_name = 'confirm_post_flagged_note_email.txt'
@@ -81,9 +84,7 @@ class Handler(utils.BaseHandler):
                 author_name=note.author_name,
                 full_name=person.primary_full_name,
                 site_url=self.get_url('/'),
-                confirm_url=confirm_post_note_with_bad_words_url
-            )
-        )
+                confirm_url=confirm_post_note_with_bad_words_url))
 
         return self.info(
             200, _('Your request has been processed successfully. '

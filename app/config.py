@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Storage for configuration settings.  Settings can be global or specific
 to a repository, and their values can be of any JSON-encodable type.
 
@@ -47,9 +46,9 @@ class ConfigurationCache:
 
     def flush(self):
         self.storage.clear()
-        self.items_count=0
+        self.items_count = 0
 
-    def delete(self,key):
+    def delete(self, key):
         """Deletes the entry with given key from config_cache."""
         if key in self.storage:
             self.storage.pop(key)
@@ -67,12 +66,12 @@ class ConfigurationCache:
         """Gets the value corresponding to the key from cache. If cache entry
            has expired, it is deleted from the cache and None is returned."""
         value, expiry = self.storage.get(key, (None, 0))
-        if value is None :
+        if value is None:
             self.miss_count += 1
             return default
 
         now = utils.get_utcnow()
-        if (expiry > now) :
+        if (expiry > now):
             self.hit_count += 1
             return value
         else:
@@ -100,7 +99,7 @@ class ConfigurationCache:
                 return default
             logging.debug("Adding repository %r to config_cache" % repo)
             config_dict = dict([(e.key().name().split(':', 1)[1],
-                         simplejson.loads(e.value)) for e in entries])
+                                 simplejson.loads(e.value)) for e in entries])
             self.add(repo, config_dict, self.expiry_time)
 
         if name in config_dict:
@@ -110,12 +109,15 @@ class ConfigurationCache:
     def enable(self, value):
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
-        db.put(ConfigEntry(key_name="*:config_cache_enable",
-                           value=simplejson.dumps(bool(value))))
+        db.put(
+            ConfigEntry(
+                key_name="*:config_cache_enable",
+                value=simplejson.dumps(bool(value))))
         self.delete('*')
 
     def is_enabled(self):
         return self.get_config('*', 'config_cache_enable', None)
+
 
 cache = ConfigurationCache()
 
@@ -139,15 +141,18 @@ def get(name, default=None, repo='*'):
         return simplejson.loads(entry.value)
     return default
 
+
 def set(repo='*', **kwargs):
     """Sets configuration settings."""
     if 'launched_repos' in kwargs.keys():
         raise Exception(
             'Config "launched_repos" is deprecated. Use per-repository '
             'config "launched" instead.')
-    db.put(ConfigEntry(key_name=repo + ':' + name,
-           value=simplejson.dumps(value)) for name, value in kwargs.items())
+    db.put(
+        ConfigEntry(key_name=repo + ':' + name, value=simplejson.dumps(value))
+        for name, value in kwargs.items())
     cache.delete(repo)
+
 
 # If calling from code where a Configuration object is available (e.g., from
 # within a handler), prefer Configuration.get. Configuration objects get all
@@ -162,6 +167,7 @@ def get_for_repo(repo, name, default=None):
         value = get(name, default, '*')
     return value
 
+
 def set_for_repo(repo, **kwargs):
     """Sets configuration settings for a particular repository.  When used
     with get_for_repo, has the effect of overriding global settings."""
@@ -169,12 +175,12 @@ def set_for_repo(repo, **kwargs):
 
 
 class Configuration(UserDict.DictMixin):
+
     def __init__(self, repo):
         self.repo = repo
         # We fetch all the config entries at once here, so that we don't have to
         # make many Datastore queries for each individual entry later.
-        db_entries = model.filter_by_prefix(
-            ConfigEntry.all(), self.repo + ':')
+        db_entries = model.filter_by_prefix(ConfigEntry.all(), self.repo + ':')
         self.entries = {
             entry.key().name().split(':', 1)[1]: simplejson.loads(entry.value)
             for entry in db_entries

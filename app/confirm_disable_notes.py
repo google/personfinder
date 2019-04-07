@@ -21,10 +21,12 @@ from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
+
 class DisableAndEnableNotesError(Exception):
     """Container for user-facing error messages when confirming to disable
     or enable future nots to a record."""
     pass
+
 
 class Handler(utils.BaseHandler):
     """This handler lets the author confirm to disable future notes 
@@ -36,10 +38,11 @@ class Handler(utils.BaseHandler):
         except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
-        self.render('confirm_disable_notes.html',
-                    person=person,
-                    id=self.params.id,
-                    token=token)
+        self.render(
+            'confirm_disable_notes.html',
+            person=person,
+            id=self.params.id,
+            token=token)
 
     def post(self):
         try:
@@ -49,8 +52,7 @@ class Handler(utils.BaseHandler):
 
         # Log the user action.
         model.UserActionLog.put_new(
-            'disable_notes',
-            person,
+            'disable_notes', person,
             self.request.get('reason_for_disabling_notes'))
 
         # Update the notes_disabled flag in person record.
@@ -62,7 +64,7 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _('[Person Finder] Notes are now disabled for "%(full_name)s"'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -71,9 +73,7 @@ class Handler(utils.BaseHandler):
                 body=self.render_to_string(
                     'disable_notes_notice_email.txt',
                     full_name=person.primary_full_name,
-                    record_url=record_url
-                )
-            )
+                    record_url=record_url))
 
         self.redirect(record_url)
 

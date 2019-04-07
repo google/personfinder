@@ -44,6 +44,6 @@ class Handler(utils.BaseHandler):
             'num_people': num_people,
             'seek_url': self.get_url('/query', role='seek'),
             'provide_url': self.get_url('/query', role='provide'),
-            'facebook_locale':
-                const.FACEBOOK_LOCALES.get(self.env.lang, 'en_US'),
+            'facebook_locale': const.FACEBOOK_LOCALES.get(
+                self.env.lang, 'en_US'),
         }

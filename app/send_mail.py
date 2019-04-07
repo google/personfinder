@@ -23,11 +23,13 @@ import logging
 class EmailSender(webapp.RequestHandler):
     """Simple handler to send email; intended to be called from a taskqueue
     task so email sending can be throttled to stay below app engine quotas."""
+
     def post(self):
-        self.send_mail(sender=self.request.get('sender'),
-                       subject=self.request.get('subject'),
-                       to=self.request.get('to'),
-                       body=self.request.get('body'))
+        self.send_mail(
+            sender=self.request.get('sender'),
+            subject=self.request.get('subject'),
+            to=self.request.get('to'),
+            body=self.request.get('body'))
 
     @staticmethod
     def send_mail(sender, subject, to, body):

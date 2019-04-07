@@ -36,8 +36,7 @@ WILLCOM_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.willcom\-inc\.com\/[^\"]+)"\>', re.I)
 EMOBILE_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>', re.I)
-WEB171_URL_RE = re.compile(
-    r'<a href="(https://www\.web171\.jp/[^"]+)">', re.I)
+WEB171_URL_RE = re.compile(r'<a href="(https://www\.web171\.jp/[^"]+)">', re.I)
 
 # An re for an actual message stored at Docomo
 DOCOMO_MESSAGE_RE = re.compile(
@@ -57,14 +56,15 @@ def get_phone_number(string):
         A normalized phone number if the input string is phone number, or
         None otherwise.
     """
-    normalized = NUMBER_SEPARATOR_RE.sub(
-        '', unicodedata.normalize('NFKC', string))
+    normalized = NUMBER_SEPARATOR_RE.sub('',
+                                         unicodedata.normalize('NFKC', string))
     number_match = PHONE_NUMBER_RE.match(normalized)
     if number_match:
         if number_match.groups()[0]:
             return '0' + number_match.groups()[1]
         else:
             return number_match.groups()[1]
+
 
 def is_mobile_number(string):
     """Tests the given string matches the pattern for the Japanese mobile phone
@@ -76,6 +76,7 @@ def is_mobile_number(string):
         True if the string is a Jp mobile phone number, and False otherwise.
     """
     return bool(MOBILE_NUMBER_RE.match(string))
+
 
 def extract_redirect_url(scrape):
     """Tries to extract a further redirect URL for the correct mobile carrier
@@ -104,6 +105,7 @@ def extract_redirect_url(scrape):
     if web171_urls:
         return web171_urls[0]
 
+
 def docomo_has_messages(scrape):
     """Checks if Docomo has messages for a number being inquired in its own
     system, that is, the given scrape contains urls for the stored messages.
@@ -114,6 +116,7 @@ def docomo_has_messages(scrape):
     """
     return bool(DOCOMO_MESSAGE_RE.findall(scrape))
 
+
 def get_docomo_post_data(number, hidden_param):
     """Returns a mapping for POST data to Docomo's url to inquire for messages
     for the given number.
@@ -122,11 +125,8 @@ def get_docomo_post_data(number, hidden_param):
     Returns:
         a mapping for the POST data.
     """
-    return {'es': 1,
-            'si': 1,
-            'bi1': 1,
-            'ep': hidden_param,
-            'sm': number}
+    return {'es': 1, 'si': 1, 'bi1': 1, 'ep': hidden_param, 'sm': number}
+
 
 def look_up_number(number):
     """Look up messages for the number, registered in the Japanese mobile
@@ -165,6 +165,7 @@ def look_up_number(number):
         # for Docomo if it does.
         return DOCOMO_URL + '?' + encoded_data
 
+
 def handle_phone_number(handler, query):
     """Handles a phone number query. If the query is a mobile phone number,
     looks up the number for registered messages in the mobile carriers-provided
@@ -184,11 +185,9 @@ def handle_phone_number(handler, query):
             if url:
                 handler.redirect(url)
             else:
-                handler.render('results.html',
-                               results=[], jp_phone_number_query=True)
+                handler.render(
+                    'results.html', results=[], jp_phone_number_query=True)
         else:
-            handler.render('query.html',
-                           show_jp_171_suggestion=True)
+            handler.render('query.html', show_jp_171_suggestion=True)
         return True
     return False
-

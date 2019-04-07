@@ -50,7 +50,7 @@ def has_possible_duplicates(results):
 
 def is_possible_phone_number(query_str):
     return re.search(POSSIBLE_PHONE_NUMBER_RE,
-        unicodedata.normalize('NFKC', unicode(query_str)))
+                     unicodedata.normalize('NFKC', unicode(query_str)))
 
 
 def max_word_length(query_words):
@@ -80,27 +80,26 @@ class Handler(BaseHandler):
             query_dict: A list contains two queries: Name query and Location query
         """
 
-        searcher = Searcher(
-            self.repo, config.get('enable_fulltext_search'), MAX_RESULTS)
-        results = searcher.search(
-            query_dict['name'],
-            query_dict.get('location'))
+        searcher = Searcher(self.repo, config.get('enable_fulltext_search'),
+                            MAX_RESULTS)
+        results = searcher.search(query_dict['name'],
+                                  query_dict.get('location'))
 
         query_name = self.get_query_value()
         for result in results:
-            result.view_url = self.get_url('/view',
-                                           id=result.record_id,
-                                           role=self.params.role,
-                                           query_name=query_name,
-                                           query_location=
-                                               self.params.query_location,
-                                           given_name=self.params.given_name,
-                                           family_name=self.params.family_name)
+            result.view_url = self.get_url(
+                '/view',
+                id=result.record_id,
+                role=self.params.role,
+                query_name=query_name,
+                query_location=self.params.query_location,
+                given_name=self.params.given_name,
+                family_name=self.params.family_name)
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
-            result.should_show_inline_photo = (
-                self.should_show_inline_photo(result.photo_url))
+            result.should_show_inline_photo = (self.should_show_inline_photo(
+                result.photo_url))
             if result.should_show_inline_photo and result.photo:
                 # Only use a thumbnail URL if the photo was uploaded; we don't
                 # have thumbnails for other photos.
@@ -153,14 +152,18 @@ class Handler(BaseHandler):
         third_party_search_engines = []
         for i, search_engine in enumerate(
                 self.config.third_party_search_engines or []):
-            third_party_search_engines.append(
-                {'id': i, 'name': search_engine.get('name', '')})
+            third_party_search_engines.append({
+                'id':
+                i,
+                'name':
+                search_engine.get('name', '')
+            })
 
         if self.params.role == 'provide':
             # The order of family name and given name does matter (see the
             # scoring function in indexing.py).
-            query_txt = get_full_name(
-                self.params.given_name, self.params.family_name, self.config)
+            query_txt = get_full_name(self.params.given_name,
+                                      self.params.family_name, self.config)
 
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt, '')
@@ -170,7 +173,7 @@ class Handler(BaseHandler):
             if self.config.use_family_name and not self.params.family_name:
                 return self.reject_query(query)
             if (len(query.query_words) == 0 or
-                max_word_length(query.query_words) < min_query_word_length):
+                    max_word_length(query.query_words) < min_query_word_length):
                 return self.reject_query(query)
 
             # Look for *similar* names, not prefix matches.
@@ -178,10 +181,12 @@ class Handler(BaseHandler):
             # for key in criteria:
             #     criteria[key] = criteria[key][:3]
             # "similar" = same first 3 letters
-            results = self.search({'name':query_txt})
+            results = self.search({'name': query_txt})
             # Filter out results with addresses matching part of the query.
-            results = [result for result in results
-                       if not getattr(result, 'is_address_match', False)]
+            results = [
+                result for result in results
+                if not getattr(result, 'is_address_match', False)
+            ]
 
             if results:
                 # Perhaps the person you wanted to report has already been
@@ -190,19 +195,18 @@ class Handler(BaseHandler):
                     'results.html',
                     results=results,
                     num_results=len(results),
-                    has_possible_duplicates=
-                        has_possible_duplicates(results),
+                    has_possible_duplicates=has_possible_duplicates(results),
                     results_url=results_url,
                     create_url=create_url,
-                    third_party_search_engines=
-                        third_party_search_engines,
+                    third_party_search_engines=third_party_search_engines,
                     query_name=self.get_query_value(),
-                    query_location=self.params.query_location,)
+                    query_location=self.params.query_location,
+                )
             else:
                 if self.env.ui == 'small':
                     # show a link to a create page.
-                    return self.render('small-create.html',
-                                       create_url=create_url)
+                    return self.render(
+                        'small-create.html', create_url=create_url)
                 else:
                     # No matches; proceed to create a new record.
                     return self.redirect(create_url)
@@ -212,8 +216,10 @@ class Handler(BaseHandler):
             # continue to support it for third-parties that link directly to
             # search results pages.
             query_name = self.get_query_value()
-            query_dict = {'name': query_name,
-                          'location': self.params.query_location}
+            query_dict = {
+                'name': query_name,
+                'location': self.params.query_location
+            }
             query = TextQuery(" ".join(q for q in query_dict.values() if q))
             results_based_on_input = True
 
@@ -262,21 +268,19 @@ class Handler(BaseHandler):
                         # search result not based on the user input
                         results_based_on_input = False
 
-            concatenated_query = (
-                ('%s %s' % (query_name, self.params.query_location))
-                    .strip())
+            concatenated_query = ((
+                '%s %s' % (query_name, self.params.query_location)).strip())
 
             # Show the (possibly empty) matches.
-            return self.render('results.html',
-                               results=results,
-                               num_results=len(results),
-                               has_possible_duplicates=
-                                   has_possible_duplicates(results),
-                               results_url=results_url,
-                               create_url=create_url,
-                               third_party_search_engines=
-                                   third_party_search_engines,
-                               query_name=query_name,
-                               query=concatenated_query,
-                               third_party_query_type=third_party_query_type,
-                               results_based_on_input=results_based_on_input)
+            return self.render(
+                'results.html',
+                results=results,
+                num_results=len(results),
+                has_possible_duplicates=has_possible_duplicates(results),
+                results_url=results_url,
+                create_url=create_url,
+                third_party_search_engines=third_party_search_engines,
+                query_name=query_name,
+                query=concatenated_query,
+                third_party_query_type=third_party_query_type,
+                results_based_on_input=results_based_on_input)

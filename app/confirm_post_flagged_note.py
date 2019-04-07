@@ -22,10 +22,12 @@ from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
+
 class ConfirmPostNoteWithBadWordsError(Exception):
     """Container for user-facing error messages when confirming to post
     a note with bad words."""
     pass
+
 
 class Handler(utils.BaseHandler):
     """This handler lets the author confirm to post a note containing  
@@ -83,7 +85,7 @@ class Handler(utils.BaseHandler):
         (2) copy the note from NoteWithBadWords to Note;
         (3) log user action;
         (4) update person record. """
-        note.confirmed = True;
+        note.confirmed = True
 
         # Check whether the record author disabled notes on
         # this record during the time between the note author inputs the
@@ -97,7 +99,7 @@ class Handler(utils.BaseHandler):
         # during the time between the note author inputs the
         # note in the UI and confirms the note through email.
         if (self.params.status == 'believed_dead' and
-            not self.config.allow_believed_dead_via_ui):
+                not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '
                        '"believed_dead".'))
@@ -124,15 +126,17 @@ class Handler(utils.BaseHandler):
 
         # Specially log 'believed_dead'.
         if note_confirmed.status == 'believed_dead':
-            model.UserActionLog.put_new(
-                    'mark_dead', note_confirmed, person.primary_full_name,
-                    self.request.remote_addr)
+            model.UserActionLog.put_new('mark_dead', note_confirmed,
+                                        person.primary_full_name,
+                                        self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note_confirmed.status in ['believed_alive', 'is_note_author'] and
-            person.latest_status not in ['believed_alive', 'is_note_author']):
-            model.UserActionLog.put_new(
-                    'mark_alive', note_confirmed, person.primary_full_name)
+                person.latest_status not in [
+                    'believed_alive', 'is_note_author'
+                ]):
+            model.UserActionLog.put_new('mark_alive', note_confirmed,
+                                        person.primary_full_name)
 
         # Update the Person based on the Note.
         if person:

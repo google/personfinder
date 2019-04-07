@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Constants that aren't specific to a particular module or handler."""
 
 # We use lazy translation in this file because the language isn't set yet.
@@ -206,12 +205,12 @@ LANGUAGE_EXONYMS = {
 
 # See go/iii
 LANGUAGE_SYNONYMS = {
-    'he' : 'iw',
-    'in' : 'id',
-    'mo' : 'ro',
+    'he': 'iw',
+    'in': 'id',
+    'mo': 'ro',
     # Note that we don't currently support jv (Javanese) or yi (Yiddish).
-    'jw' : 'jv',
-    'ji' : 'yi'
+    'jw': 'jv',
+    'ji': 'yi'
 }
 
 # The language code to use when there's no indication of what language to use
@@ -327,7 +326,7 @@ NOTE_STATUS_TEXT = {
     'information_sought': _('I am seeking information'),
     'is_note_author': _('I am this person'),
     'believed_alive':
-        _('I have received information that this person is alive'),
+    _('I have received information that this person is alive'),
     'believed_missing': _('I have reason to think this person is missing'),
     'believed_dead': _('I have received information that this person is dead'),
 }
@@ -339,10 +338,10 @@ PERSON_STATUS_TEXT = {
     'information_sought': _('Someone is seeking information about this person'),
     'is_note_author': _('This person has posted a message'),
     'believed_alive':
-        _('Someone has received information that this person is alive'),
+    _('Someone has received information that this person is alive'),
     'believed_missing': _('Someone has reported that this person is missing'),
     'believed_dead':
-        _('Someone has received information that this person is dead'),
+    _('Someone has received information that this person is dead'),
 }
 
 # The list of external websites with profile pages sorted in the order they are

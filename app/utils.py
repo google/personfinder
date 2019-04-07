@@ -63,10 +63,12 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 # env.hidden_input_tags_for_preserved_query_params.
 PRESERVED_QUERY_PARAM_NAMES = ['ui', 'charsets', 'referrer']
 
+
 @register.filter
 def get_value(dictionary, key):
     """Django Template filter to get dictionary value based on the given key"""
     return dictionary.get(key)
+
 
 # ==== Field value text ========================================================
 
@@ -89,7 +91,6 @@ def get_person_status_text(person):
 # Things that occur as prefixes of global paths (i.e. no repository name).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 
-
 # ==== String formatting =======================================================
 
 
@@ -110,8 +111,8 @@ def format_utc_timestamp(timestamp):
 
 
 def format_sitemaps_datetime(dt):
-    integer_dt = datetime(
-        dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
+    integer_dt = datetime(dt.year, dt.month, dt.day, dt.hour, dt.minute,
+                          dt.second)
     return integer_dt.isoformat() + '+00:00'
 
 
@@ -128,9 +129,10 @@ def urlencode(params, encoding='utf-8'):
     have value == None.  (urllib.urlencode doesn't support Unicode)."""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
-    return urllib.urlencode([
-        (encode(key, encoding), encode(params[key], encoding))
-        for key in keys if isinstance(params[key], basestring)])
+    return urllib.urlencode([(encode(key, encoding),
+                              encode(params[key], encoding))
+                             for key in keys
+                             if isinstance(params[key], basestring)])
 
 
 def set_param(params, param, value):
@@ -139,7 +141,7 @@ def set_param(params, param, value):
     params = dict(urlparse.parse_qsl(params))
     if value is None:
         if param in params:
-            del(params[param])
+            del (params[param])
     else:
         params[param] = value
     return urlencode(params)
@@ -239,8 +241,7 @@ def validate_approximate_date(string):
 AGE_RE = re.compile(r'^(\d+)(-(\d+))?$')
 # Hyphen with possibly surrounding whitespaces.
 HYPHEN_RE = re.compile(
-    ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
-    re.UNICODE)
+    ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*', re.UNICODE)
 
 
 def validate_age(string):
@@ -371,6 +372,7 @@ def validate_cache_seconds(string):
 # The range should be no more specific than a five year period.
 MIN_AGE_RANGE = 5
 
+
 def fuzzify_age(value):
     """Fuzzifies the age value for privacy.
 
@@ -456,11 +458,11 @@ def get_host(host=None):
 
 # List of sensitive field names in person and note records.
 SENSITIVE_FIELDS = [
-  'date_of_birth',
-  'author_email',
-  'author_phone',
-  'email_of_found_person',
-  'phone_of_found_person',
+    'date_of_birth',
+    'author_email',
+    'author_phone',
+    'email_of_found_person',
+    'phone_of_found_person',
 ]
 
 
@@ -567,16 +569,18 @@ def get_utcnow_timestamp():
     return get_timestamp(get_utcnow())
 
 
-def log_api_action(handler, action, num_person_records=0, num_note_records=0,
-                   people_skipped=0, notes_skipped=0):
+def log_api_action(handler,
+                   action,
+                   num_person_records=0,
+                   num_note_records=0,
+                   people_skipped=0,
+                   notes_skipped=0):
     """Log an API action."""
     if handler.config and handler.config.api_action_logging:
         model.ApiActionLog.record_action(
-            handler.repo, handler.params.key,
-            handler.params.version.version, action,
-            num_person_records, num_note_records,
-            people_skipped, notes_skipped,
-            handler.request.headers.get('User-Agent'),
+            handler.repo, handler.params.key, handler.params.version.version,
+            action, num_person_records, num_note_records, people_skipped,
+            notes_skipped, handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
 
@@ -594,22 +598,22 @@ def get_full_name(given_name, family_name, config):
         return given_name
 
 
-def send_confirmation_email_to_record_author(
-    handler, person, action, confirm_url, record_id):
+def send_confirmation_email_to_record_author(handler, person, action,
+                                             confirm_url, record_id):
     """Send the author an email to confirm enabling/disabling notes
     of a record."""
     if not person.author_email:
         return handler.error(
-            400, _('No author email for record %(id)s.') % {'id' : record_id})
+            400, _('No author email for record %(id)s.') % {'id': record_id})
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     if action == 'enable':
         subject = _('[Person Finder] Enable notes on "%(full_name)s"?'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
     elif action == 'disable':
         subject = _('[Person Finder] Disable notes on "%(full_name)s"?'
-                ) % {'full_name': person.primary_full_name}
+                   ) % {'full_name': person.primary_full_name}
     else:
         raise ValueError('Unknown action: %s' % action)
 
@@ -623,9 +627,7 @@ def send_confirmation_email_to_record_author(
             author_name=person.author_name,
             full_name=person.primary_full_name,
             site_url=handler.get_url('/'),
-            confirm_url=confirm_url
-        )
-    )
+            confirm_url=confirm_url))
 
 
 def get_repo_url(request, repo, scheme=None):
@@ -665,10 +667,13 @@ def strip_url_scheme(url):
 def is_dev_app_server():
     return os.environ['APPLICATION_ID'].startswith('dev~')
 
+
 # ==== Struct ==================================================================
+
 
 class Struct:
     """A simple bag of attributes."""
+
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
@@ -677,6 +682,7 @@ class Struct:
 
 
 # ==== Key management ======================================================
+
 
 def generate_random_key(length):
     """Generates a random key with given length."""
@@ -689,6 +695,7 @@ def generate_random_key(length):
 
 
 # ==== Decorators  ============================================================
+
 
 def require_api_key_management_permission(handler_method):
     """
@@ -703,6 +710,7 @@ def require_api_key_management_permission(handler_method):
             # ....
             # ....
     """
+
     def inner(*args, **kwargs):
         handler = args[0]
         user = users.get_current_user()
@@ -711,12 +719,13 @@ def require_api_key_management_permission(handler_method):
              user.email() in handler.config.key_management_operators)):
             return handler_method(*args, **kwargs)
         else:
-            return handler.redirect(
-                users.create_login_url(handler.request.url))
+            return handler.redirect(users.create_login_url(handler.request.url))
+
     return inner
 
 
 # ==== Base Handler ============================================================
+
 
 class BaseHandler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
@@ -838,23 +847,32 @@ class BaseHandler(webapp.RequestHandler):
         # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
-              path += '?' + urlencode(params, self.charset)
+                path += '?' + urlencode(params, self.charset)
         else:
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path, permanent=permanent)
 
-    def render(self, name, language_override=None, cache_seconds=0,
-               get_vars=lambda: {}, **vars):
+    def render(self,
+               name,
+               language_override=None,
+               cache_seconds=0,
+               get_vars=lambda: {},
+               **vars):
         """Renders a template to the output stream, passing in the variables
         specified in **vars as well as any additional variables returned by
         get_vars().  Since this is intended for use by a dynamic page handler,
         caching is off by default; if cache_seconds is positive, then
         get_vars() will be called only when cached content is unavailable."""
-        self.write(self.render_to_string(
-            name, language_override, cache_seconds, get_vars, **vars))
+        self.write(
+            self.render_to_string(name, language_override, cache_seconds,
+                                  get_vars, **vars))
 
-    def render_to_string(self, name, language_override=None, cache_seconds=0,
-                         get_vars=lambda: {}, **vars):
+    def render_to_string(self,
+                         name,
+                         language_override=None,
+                         cache_seconds=0,
+                         get_vars=lambda: {},
+                         **vars):
         """Renders a template to a string, passing in the variables specified
         in **vars as well as any additional variables returned by get_vars().
         Since this is intended for use by a dynamic page handler, caching is
@@ -863,19 +881,21 @@ class BaseHandler(webapp.RequestHandler):
         # TODO(kpy): Make the contents of extra_key overridable by callers?
         lang = language_override or self.env.lang
         extra_key = (self.env.repo, self.env.charset, self.request.query_string)
+
         def get_all_vars():
             vars.update(get_vars())
             for key in ('env', 'config', 'params'):
                 if key in vars:
                     raise Exception(
-                        'Cannot use "%s" as a key in vars. It is reserved.'
-                        % key)
+                        'Cannot use "%s" as a key in vars. It is reserved.' %
+                        key)
             vars['env'] = self.env  # pass along application-wide context
             vars['config'] = self.config  # pass along the configuration
             vars['params'] = self.params  # pass along the query parameters
             return vars
-        return resources.get_rendered(
-            name, lang, extra_key, get_all_vars, cache_seconds)
+
+        return resources.get_rendered(name, lang, extra_key, get_all_vars,
+                                      cache_seconds)
 
     def error(self, code, message='', message_html=''):
         self.info(code, message, message_html, style='error')
@@ -902,8 +922,11 @@ class BaseHandler(webapp.RequestHandler):
             self.__render_plain_message(message, message_html)
         else:
             try:
-                self.render('message.html', cls=style,
-                            message=message, message_html=message_html)
+                self.render(
+                    'message.html',
+                    cls=style,
+                    message=message,
+                    message_html=message_html)
             except:
                 self.__render_plain_message(message, message_html)
         self.terminate_response()
@@ -911,8 +934,7 @@ class BaseHandler(webapp.RequestHandler):
     def __render_plain_message(self, message, message_html):
         self.response.out.write(
             django.utils.html.escape(message) +
-            ('<p>' if message and message_html else '') +
-            message_html)
+            ('<p>' if message and message_html else '') + message_html)
 
     def terminate_response(self):
         """Prevents any further output from being written."""
@@ -928,13 +950,18 @@ class BaseHandler(webapp.RequestHandler):
         """Constructs the absolute URL for a given action and query parameters,
         preserving the current repo and the parameters listed in
         PRESERVED_QUERY_PARAM_NAMES."""
-        return get_url(self.request, repo or self.env.repo, action,
-                       charset=self.env.charset, scheme=scheme, **params)
+        return get_url(
+            self.request,
+            repo or self.env.repo,
+            action,
+            charset=self.env.charset,
+            scheme=scheme,
+            **params)
 
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):
         """Queues up a task for an individual repository."""
-        task_name = '%s-%s-%s' % (repo, name, int(time.time()*1000))
+        task_name = '%s-%s-%s' % (repo, name, int(time.time() * 1000))
         path = '/%s/%s' % (repo, action)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
@@ -943,11 +970,15 @@ class BaseHandler(webapp.RequestHandler):
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
         logging.info('Add mail task: recipient %r, subject %r' % (to, subject))
-        taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
-                      params={'sender': sender,
-                              'to': to,
-                              'subject': subject,
-                              'body': body})
+        taskqueue.add(
+            queue_name='send-mail',
+            url='/global/admin/send_mail',
+            params={
+                'sender': sender,
+                'to': to,
+                'subject': subject,
+                'body': body
+            })
 
     def get_captcha_html(self, error_code=None, use_ssl=False):
         """Generates the necessary HTML to display a CAPTCHA validation box."""
@@ -959,8 +990,9 @@ class BaseHandler(webapp.RequestHandler):
 
         return captcha.get_display_html(
             site_key=config.get('captcha_site_key'),
-            use_ssl=use_ssl, error=error_code, lang=lang
-        )
+            use_ssl=use_ssl,
+            error=error_code,
+            lang=lang)
 
     def get_captcha_response(self):
         """Returns an object containing the CAPTCHA response information for the
@@ -998,23 +1030,26 @@ class BaseHandler(webapp.RequestHandler):
         # time zone offset and never use Daylight Saving Time.
         if date:
             if self.config.time_zone_offset:
-                return date + timedelta(0, 3600*self.config.time_zone_offset)
+                return date + timedelta(0, 3600 * self.config.time_zone_offset)
             return date
 
     def format_datetime_localized(self, dt):
         """Formats a datetime object to a localized human-readable string based
         on the current locale."""
-        return format_datetime(dt, locale=self.__get_env_language_for_babel());
+        return format_datetime(
+            dt, locale=self.__get_env_language_for_babel())
 
     def format_date_localized(self, dt):
         """Formats a datetime object to a localized human-readable string based
         on the current locale containing only the date."""
-        return format_date(dt, locale=self.__get_env_language_for_babel());
+        return format_date(
+            dt, locale=self.__get_env_language_for_babel())
 
     def format_time_localized(self, dt):
         """Formats a datetime object to a localized human-readable string based
         on the current locale containing only the time."""
-        return format_time(dt, locale=self.__get_env_language_for_babel());
+        return format_time(
+            dt, locale=self.__get_env_language_for_babel())
 
     def to_formatted_local_datetime(self, dt):
         """Converts a datetime object to the local datetime configured for the
@@ -1090,8 +1125,8 @@ class BaseHandler(webapp.RequestHandler):
         if not photo_url:
             return None
         parsed_url = list(urlparse.urlparse(photo_url))
-        params_dict = dict(urlparse.parse_qsl(
-            parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX]))
+        params_dict = dict(
+            urlparse.parse_qsl(parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX]))
         params_dict['thumb'] = 'true'
         parsed_url[BaseHandler.URL_PARSE_QUERY_INDEX] = urllib.urlencode(
             params_dict)
@@ -1112,8 +1147,7 @@ class BaseHandler(webapp.RequestHandler):
     def __return_unimplemented_method_error(self):
         return self.error(
             405,
-            'HTTP method %s is not allowed for this URL.'
-                % self.request.method)
+            'HTTP method %s is not allowed for this URL.' % self.request.method)
 
     def __init__(self, request, response, env):
         webapp.RequestHandler.__init__(self, request, response)
@@ -1139,8 +1173,8 @@ class BaseHandler(webapp.RequestHandler):
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
 
         # Ensure referrer is in whitelist, if it exists
-        if self.params.referrer and (not self.params.referrer in
-                                     self.config.referrer_whitelist):
+        if self.params.referrer and (
+                not self.params.referrer in self.config.referrer_whitelist):
             setattr(self.params, 'referrer', '')
 
         # Check for SSL (unless running local dev app server).
@@ -1165,7 +1199,8 @@ class BaseHandler(webapp.RequestHandler):
                 return
             if not users.is_current_user_admin():
                 logout_url = users.create_logout_url(self.request.url)
-                self.render('not_admin_error.html', logout_url=logout_url, user=user)
+                self.render(
+                    'not_admin_error.html', logout_url=logout_url, user=user)
                 self.terminate_response()
                 return
             self.env.logout_url = users.create_logout_url(self.request.url)
@@ -1173,9 +1208,9 @@ class BaseHandler(webapp.RequestHandler):
             # repositories including deactivated ones.
             self.env.all_repo_options = [
                 Struct(
-                    repo=repo,
-                    url=get_repo_url(self.request, repo) + '/admin')
-                for repo in sorted(model.Repo.list())]
+                    repo=repo, url=get_repo_url(self.request, repo) + '/admin')
+                for repo in sorted(model.Repo.list())
+            ]
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:
@@ -1196,8 +1231,10 @@ class BaseHandler(webapp.RequestHandler):
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
             self.env.robots_ok = True
-            self.render('message.html', cls='deactivation',
-                        message_html=self.config.deactivation_message_html)
+            self.render(
+                'message.html',
+                cls='deactivation',
+                message_html=self.config.deactivation_message_html)
             self.terminate_response()
 
     def get(self, *args):
@@ -1231,6 +1268,7 @@ class BaseHandler(webapp.RequestHandler):
 
 # ==== XSRF protection =========================================================
 
+
 class XsrfTool(object):
 
     # XSRF tokens expire after 4 hours.
@@ -1248,22 +1286,21 @@ class XsrfTool(object):
 
     def generate_token(self, user_id, action_id):
         action_time = get_utcnow_timestamp()
-        return '%s/%f' % (
-            self._generate_hmac_digest(user_id, action_id, action_time),
-            action_time)
+        return '%s/%f' % (self._generate_hmac_digest(user_id, action_id,
+                                                     action_time), action_time)
 
     def verify_token(self, token, user_id, action_id):
         [hmac_digest, action_time_str] = token.split('/')
         action_time = float(action_time_str)
         if (action_time + XsrfTool.TOKEN_EXPIRATION_TIME <
-            get_utcnow_timestamp()):
-          return False
+                get_utcnow_timestamp()):
+            return False
         expected_hmac_digest = self._generate_hmac_digest(
             user_id, action_id, action_time)
         return hmac.compare_digest(
             hmac_digest.encode('utf-8'), expected_hmac_digest)
 
     def _generate_hmac_digest(self, user_id, action_id, action_time):
-        hmac_obj = hmac.new(
-            self._key, '%s/%s/%f' % (user_id, action_id, action_time))
+        hmac_obj = hmac.new(self._key,
+                            '%s/%s/%f' % (user_id, action_id, action_time))
         return hmac_obj.hexdigest()

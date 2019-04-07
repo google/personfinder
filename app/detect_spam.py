@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Handler for spam note detection, store bad word list and provide
    utilities to evaluate the quality of notes."""
 
@@ -22,6 +21,7 @@ import unicodedata
 import logging
 import re
 import jautils
+
 
 def normalize(string):
     """Normalize a string to all lowercase and remove accents. """
@@ -34,6 +34,7 @@ def normalize(string):
 
 class SpamDetector():
     bad_words_set = set()
+
     def __init__(self, bad_words):
         if bad_words == '' or bad_words == None:
             return
@@ -62,12 +63,12 @@ class SpamDetector():
         words = re.findall("\w+-\w+|[\w']+", normalized_text)
 
         # Look for bad word in the text by string match.
-        bad_words_matched = self.bad_words_set.intersection( set(words) )
+        bad_words_matched = self.bad_words_set.intersection(set(words))
 
         # Simple way to calculate spam score for now.
         if len(words) == 0:
             logging.debug('input text contains no words.')
             return None
         else:
-            spam_score = float(len(bad_words_matched))/float(len(words))
+            spam_score = float(len(bad_words_matched)) / float(len(words))
             return spam_score

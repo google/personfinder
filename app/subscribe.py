@@ -25,13 +25,14 @@ from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
 
-def get_unsubscribe_link(handler, person, email, ttl=7*24*3600):
+def get_unsubscribe_link(handler, person, email, ttl=7 * 24 * 3600):
     """Returns a link that will remove the given email address from the list
     of subscribers for the given person, default ttl is one week"""
     data = 'unsubscribe:%s' % email
     token = reveal.sign(data, ttl)
-    return handler.get_url('/unsubscribe', token=token, email=email,
-                           id=person.record_id)
+    return handler.get_url(
+        '/unsubscribe', token=token, email=email, id=person.record_id)
+
 
 def subscribe_to(handler, repo, person, email, lang):
     """Add a subscription on a person for an e-mail address"""
@@ -43,11 +44,12 @@ def subscribe_to(handler, repo, person, email, lang):
         subscription = existing
         subscription.language = lang
     else:
-        subscription = model.Subscription.create(
-            repo, person.record_id, email, lang)
+        subscription = model.Subscription.create(repo, person.record_id, email,
+                                                 lang)
     db.put(subscription)
     send_subscription_confirmation(handler, person, email)
     return subscription
+
 
 def send_notifications(handler, updated_person, notes, follow_links=True):
     """Sends status updates about the person
@@ -80,29 +82,30 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
                 if validate_email(email):
                     django.utils.translation.activate(language)
                     subject = _(
-                            '[Person Finder] Status update for %(full_name)s'
-                            ) % {'full_name': updated_person.primary_full_name}
+                        '[Person Finder] Status update for %(full_name)s'
+                    ) % {'full_name': updated_person.primary_full_name}
                     body = handler.render_to_string(
-                        'person_status_update_email.txt', language,
+                        'person_status_update_email.txt',
+                        language,
                         full_name=updated_person.primary_full_name,
                         note=note,
                         note_status_text=get_note_status_text(note),
                         subscribed_person_url=subscribed_person_url,
                         site_url=handler.get_url('/'),
-                        view_url=handler.get_url('/view',
-                                                 id=updated_person.record_id),
-                        unsubscribe_link=get_unsubscribe_link(handler,
-                                                              subscribed_person,
-                                                              email))
+                        view_url=handler.get_url(
+                            '/view', id=updated_person.record_id),
+                        unsubscribe_link=get_unsubscribe_link(
+                            handler, subscribed_person, email))
                     handler.send_mail(email, subject, body)
     finally:
         django.utils.translation.activate(handler.env.lang)
+
 
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
     status updates"""
     subject = _('[Person Finder] You are subscribed to status updates for '
-            '%(full_name)s') % {'full_name': escape(person.primary_full_name)}
+                '%(full_name)s') % {'full_name': escape(person.primary_full_name)}
     body = handler.render_to_string(
         'subscription_confirmation_email.txt',
         full_name=person.primary_full_name,
@@ -115,6 +118,7 @@ def send_subscription_confirmation(handler, person, email):
 class Handler(BaseHandler):
     """Handles requests to subscribe to notifications on Person and
     Note record updates."""
+
     def get(self):
         person = model.Person.get(self.repo, self.params.id)
         if not person:
@@ -123,16 +127,16 @@ class Handler(BaseHandler):
         form_action = self.get_url('/subscribe', id=self.params.id)
         back_url = self.get_url('/view', id=self.params.id)
         site_key = self.config.get('captcha_site_key')
-        self.render('subscribe_captcha.html',
-                    site_key=site_key,
-                    person=person,
-                    captcha_html=self.get_captcha_html(),
-                    subscribe_email=self.params.subscribe_email or '',
-                    form_action=form_action,
-                    back_url=back_url,
-                    person_record_link_html=
-                        self.__get_person_record_link_html(person),
-                    context=self.params.context)
+        self.render(
+            'subscribe_captcha.html',
+            site_key=site_key,
+            person=person,
+            captcha_html=self.get_captcha_html(),
+            subscribe_email=self.params.subscribe_email or '',
+            form_action=form_action,
+            back_url=back_url,
+            person_record_link_html=self.__get_person_record_link_html(person),
+            context=self.params.context)
 
     def post(self):
         person = model.Person.get(self.repo, self.params.id)
@@ -153,7 +157,7 @@ class Handler(BaseHandler):
                                captcha_html=captcha_html,
                                form_action=form_action,
                                person_record_link_html=
-                                   self.__get_person_record_link_html(person))
+                               self.__get_person_record_link_html(person))
 
         # Check the captcha
         captcha_response = self.get_captcha_response()
@@ -162,14 +166,15 @@ class Handler(BaseHandler):
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             site_key = self.config.get('captcha_site_key')
             form_action = self.get_url('/subscribe', id=self.params.id)
-            return self.render('subscribe_captcha.html',
-                               person=person,
-                               site_key=site_key,
-                               subscribe_email=self.params.subscribe_email,
-                               captcha_html=captcha_html,
-                               form_action=form_action,
-                               person_record_link_html=
-                                   self.__get_person_record_link_html(person))
+            return self.render(
+                'subscribe_captcha.html',
+                person=person,
+                site_key=site_key,
+                subscribe_email=self.params.subscribe_email,
+                captcha_html=captcha_html,
+                form_action=form_action,
+                person_record_link_html=self.__get_person_record_link_html(
+                    person))
 
         subscription = subscribe_to(self, self.repo, person,
                                     self.params.subscribe_email, self.env.lang)
@@ -177,19 +182,20 @@ class Handler(BaseHandler):
             # User is already subscribed
             url = self.get_url('/view', id=self.params.id)
             link_text = _('Return to the record for %(full_name)s.'
-                    ) % {'full_name': escape(person.primary_full_name)}
+                         ) % {'full_name': escape(person.primary_full_name)}
             html = '<a href="%s">%s</a>' % (url, link_text)
             message_html = _('You are already subscribed. ' + html)
             return self.info(200, message_html=message_html)
 
         url = self.get_url('/view', id=self.params.id)
         link_text = _('Return to the record for %(full_name)s.'
-                ) % {'full_name': escape(person.primary_full_name)}
+                     ) % {'full_name': escape(person.primary_full_name)}
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
 
     def __get_person_record_link_html(self, person):
         return '<a href="%s" target=_blank>%s</a>' % (
-            django.utils.html.escape(self.get_url('/view', id=person.person_record_id)),
+            django.utils.html.escape(
+                self.get_url('/view', id=person.person_record_id)),
             django.utils.html.escape(person.primary_full_name))

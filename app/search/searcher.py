@@ -22,12 +22,9 @@ class Searcher(object):
             query_dict = {'name': query_name}
             if query_location:
                 query_dict['location'] = query_location
-            return full_text_search.search(
-                self._repo, query_dict, self._max_results)
+            return full_text_search.search(self._repo, query_dict,
+                                           self._max_results)
         else:
-            text_query = TextQuery(
-                '%s %s' % (query_name, query_location)
-                if query_location
-                else query_name)
-            return indexing.search(
-                self._repo, text_query, self._max_results)
+            text_query = TextQuery('%s %s' % (
+                query_name, query_location) if query_location else query_name)
+            return indexing.search(self._repo, text_query, self._max_results)

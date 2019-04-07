@@ -27,11 +27,13 @@ from google.appengine.api import urlfetch_errors
 
 import utils
 
+
 class Handler(utils.BaseHandler):
     """Proxy to perform search with third-party search engine."""
+
     def get(self):
-        if (self.params.search_engine_id >=
-                len(self.config.third_party_search_engines or [])):
+        if (self.params.search_engine_id >= len(
+                self.config.third_party_search_engines or [])):
             self.response.set_status(500)
             self.write('search_engine_id is out of range')
             return
@@ -44,9 +46,8 @@ class Handler(utils.BaseHandler):
         else:
             lang = 'en'
         time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-        signature_source = (
-            query + query_type + lang + time +
-            search_engine['auth_key'].encode('utf-8'))
+        signature_source = (query + query_type + lang + time +
+                            search_engine['auth_key'].encode('utf-8'))
         signature = hashlib.sha256(signature_source).hexdigest()
         params = {
             'q': query,
@@ -57,9 +58,9 @@ class Handler(utils.BaseHandler):
         }
         url = '%s?%s' % (search_engine['api_url'], urllib.urlencode(params))
         if search_engine.get('basic_auth_user'):
-            basic_auth_value = base64.encodestring('%s:%s' % (
-                    search_engine['basic_auth_user'],
-                    search_engine['basic_auth_password']))
+            basic_auth_value = base64.encodestring(
+                '%s:%s' % (search_engine['basic_auth_user'],
+                           search_engine['basic_auth_password']))
             # Result of base64.encodestring can include '\n', but HTTP header
             # value must not include '\n'.
             basic_auth_value = re.sub('\n', '', basic_auth_value)
@@ -71,7 +72,7 @@ class Handler(utils.BaseHandler):
             response = urlfetch.fetch(url, headers=headers, deadline=60)
             if response.status_code == 200:
                 self.response.headers['Content-Type'] = (
-                        'application/json; charset=utf-8')
+                    'application/json; charset=utf-8')
                 self.write(response.content)
             else:
                 self.response.set_status(response.status_code)

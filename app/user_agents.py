@@ -15,7 +15,6 @@
 
 import re
 
-
 # Regular expression to detect Japanese Tier-2 mobile phones.
 JP_TIER2_MOBILE_USER_AGENT_RE = re.compile(
     r'^(KDDI|DoCoMo|SoftBank|J-PHONE|Vodafone)')

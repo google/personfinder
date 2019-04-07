@@ -25,6 +25,7 @@ from django.utils.translation import ugettext as _
 # The number of days we extend a record, by default.
 EXPIRED_EXTENSION_DAYS = 60
 
+
 def get_extension_days(handler):
     return handler.config.default_extension_days or EXPIRED_EXTENSION_DAYS
 
@@ -33,10 +34,11 @@ class Handler(utils.BaseHandler):
     """Handles a user request to extend expiration of a person record."""
 
     def show_page(self, person, error_code=None):
-        self.render('extend.html',
-                    person=person,
-                    view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=self.get_captcha_html(error_code=error_code))
+        self.render(
+            'extend.html',
+            person=person,
+            view_url=self.get_url('/view', id=self.params.id),
+            captcha_html=self.get_captcha_html(error_code=error_code))
 
     def get(self):
         """Prompts the user with a Turing test before carrying out extension."""
@@ -64,9 +66,10 @@ class Handler(utils.BaseHandler):
                 # we save here too.
                 person.put()
                 person.put_expiry_flags()
-                self.render('extend_done.html',
-                    expiry_datetime_local_string = self.to_formatted_local_datetime(
-                        person.expiry_date),
+                self.render(
+                    'extend_done.html',
+                    expiry_datetime_local_string=self.
+                    to_formatted_local_datetime(person.expiry_date),
                     view_url=self.get_url('/view', id=person.record_id))
             else:
                 # this shouldn't happen in normal work flow.

@@ -8,6 +8,7 @@ import os.path
 import re
 import logging
 
+
 def read_dictionary(file_name):
     """
     Reads dictionary file.
@@ -36,8 +37,11 @@ def read_dictionary(file_name):
         return None
     return dictionary
 
-JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary('japanese_name_location_dict.txt')
+
+JAPANESE_NAME_LOCATION_DICTIONARY = read_dictionary(
+    'japanese_name_location_dict.txt')
 CHINESE_FAMILY_NAME_DICTIONARY = read_dictionary('chinese_family_name_dict.txt')
+
 
 def has_kanji(word):
     """
@@ -65,8 +69,9 @@ def romanize_single_japanese_word(word):
 
     if word in JAPANESE_NAME_LOCATION_DICTIONARY:
         yomigana_list = JAPANESE_NAME_LOCATION_DICTIONARY[word]
-        return [jautils.hiragana_to_romaji(yomigana)
-                for yomigana in yomigana_list]
+        return [
+            jautils.hiragana_to_romaji(yomigana) for yomigana in yomigana_list
+        ]
 
     return [word]
 
@@ -99,10 +104,8 @@ def romanize_japanese_word(word, for_index=True):
         # it can still return romanization "yamadataro".
         first_part = word[:index]
         last_part = word[index:]
-        romanized_first_parts = romanize_single_japanese_word(
-            first_part)
-        romanized_last_parts = romanize_single_japanese_word(
-            last_part)
+        romanized_first_parts = romanize_single_japanese_word(first_part)
+        romanized_last_parts = romanize_single_japanese_word(last_part)
         for romanized_first_part in romanized_first_parts:
             for romanized_last_part in romanized_last_parts:
                 if (romanized_first_part != first_part and
@@ -166,7 +169,7 @@ def split_chinese_name(word):
     if not re.search(ur'^[\u3400-\u9fff]+$', word):
         return None, None
 
-    for i in range(1,3):
+    for i in range(1, 3):
         if word[:i] in CHINESE_FAMILY_NAME_DICTIONARY:
             return word[:i], word[i:]
 
@@ -216,7 +219,8 @@ def romanize_search_query(word):
     # unidecode results together
     unidecode_romanize_word = unidecode(word).strip()
     chinese_romanize_list = romanize_chinese_name(word)
-    chinese_romanize_word = chinese_romanize_list[0] if chinese_romanize_list else ''
+    chinese_romanize_word = chinese_romanize_list[
+        0] if chinese_romanize_list else ''
     if chinese_romanize_word and chinese_romanize_word != unidecode_romanize_word:
         romanized_words.append(chinese_romanize_word)
     romanized_words.append(unidecode_romanize_word)

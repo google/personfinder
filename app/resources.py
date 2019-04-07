@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Resources are blobs in the datastore that can contain pages of HTML,
 stylesheets, images, or templates.  A Resource is just like a small file
 except for a few additional features:
@@ -35,7 +34,6 @@ import django.template.base
 
 from google.appengine.ext import db
 from google.appengine.ext import webapp
-
 
 # Requests for files and pages pass through three stages:
 #   1. get_rendered(): decides whether to serve plain data or render a Template
@@ -121,6 +119,7 @@ from google.appengine.ext import webapp
 
 
 class RamCache:
+
     def __init__(self):
         self.cache = {}
 
@@ -212,11 +211,14 @@ class Resource(db.Model):
 LOCALIZED_CACHE = RamCache()  # contains Resource objects
 RENDERED_CACHE = RamCache()  # contains strings of rendered content
 
+
 def clear_caches():
     LOCALIZED_CACHE.clear()
     RENDERED_CACHE.clear()
 
+
 active_bundle_name = '1'
+
 
 def set_active_bundle_name(name):
     """Sets the currently active bundle.  Unfortunately, this is a global
@@ -225,6 +227,7 @@ def set_active_bundle_name(name):
     name from get_rendered to the template loader."""
     global active_bundle_name
     active_bundle_name = name
+
 
 def get_localized(name, lang, bundle_name=None):
     """Gets the localized (or if none, generic) variant of a Resource from the
@@ -241,8 +244,13 @@ def get_localized(name, lang, bundle_name=None):
             LOCALIZED_CACHE.put(cache_key, resource, resource.cache_seconds)
     return resource
 
-def get_rendered(name, lang, extra_key=None,
-                 get_vars=lambda: {}, cache_seconds=1, bundle_name=None):
+
+def get_rendered(name,
+                 lang,
+                 extra_key=None,
+                 get_vars=lambda: {},
+                 cache_seconds=1,
+                 bundle_name=None):
     """Gets the rendered content of a Resource from the cache or the datastore.
     If name is 'foo.html', this looks for a Resource named 'foo.html' to serve
     as a plain file, then a Resource named 'foo.html.template' to render as a
@@ -262,6 +270,7 @@ def get_rendered(name, lang, extra_key=None,
             content = render_in_lang(resource.get_template(), lang, get_vars())
             RENDERED_CACHE.put(cache_key, content, cache_seconds)
     return content
+
 
 def render_in_lang(template, lang, vars):
     """Renders a template in a given language.  We use this to ensure that

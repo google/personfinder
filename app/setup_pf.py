@@ -18,12 +18,14 @@ import const
 from model import *
 from utils import *
 
+
 def setup_datastore():
     """Sets up the subject types and translations in a datastore.  (Existing
     subject types and messages will be updated; existing Subject or Report
     information will not be changed or deleted.)"""
     setup_repos()
     setup_configs()
+
 
 def wipe_datastore(delete=None, keep=None):
     """Deletes everything in the datastore.  If 'delete' is given (a list of
@@ -32,10 +34,12 @@ def wipe_datastore(delete=None, keep=None):
     query = db.Query(keys_only=True)
     keys = query.fetch(1000)
     while keys:
-        db.delete([key for key in keys
-                   if delete is None or key.kind() in delete
-                   if keep is None or key.kind() not in keep])
+        db.delete([
+            key for key in keys if delete is None or key.kind() in delete
+            if keep is None or key.kind() not in keep
+        ])
         keys = query.with_cursor(query.cursor()).fetch(1000)
+
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts,
@@ -43,32 +47,38 @@ def reset_datastore():
     wipe_datastore(keep=['Account'])
     setup_datastore()
 
+
 def setup_repos():
-    db.put([Repo(key_name='haiti'),
-            Repo(key_name='japan'),
-            Repo(key_name='pakistan')])
+    db.put([
+        Repo(key_name='haiti'),
+        Repo(key_name='japan'),
+        Repo(key_name='pakistan')
+    ])
     # Set some repositories active so they show on the main page.
     config.set_for_repo('japan', launched=True)
     config.set_for_repo('haiti', launched=True)
 
+
 def setup_configs():
     """Installs configuration settings used for testing by server_tests."""
-    COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
-                       'people finder', 'crisis', 'survivor', 'family']
+    COMMON_KEYWORDS = [
+        'person', 'people', 'finder', 'person finder', 'people finder',
+        'crisis', 'survivor', 'family'
+    ]
 
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only.
     #       (https://developers.google.com/recaptcha/docs/faq)
     # They should be replaced with real keys upon launch.
-    config.set(captcha_site_key='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-               captcha_secret_key='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
-               repo_aliases={},
-               sms_number_to_repo={},
-               referrer_whitelist=[],
-               initialized=True,
-               notification_email=const.DEFAULT_NOTIFICATION_EMAIL,
-               unreviewed_notes_threshold=(
-                   const.DEFAULT_UNREVIEWED_NOTES_THRESHOLD),
-               )
+    config.set(
+        captcha_site_key='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+        captcha_secret_key='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
+        repo_aliases={},
+        sms_number_to_repo={},
+        referrer_whitelist=[],
+        initialized=True,
+        notification_email=const.DEFAULT_NOTIFICATION_EMAIL,
+        unreviewed_notes_threshold=(const.DEFAULT_UNREVIEWED_NOTES_THRESHOLD),
+    )
 
     config.set_for_repo(
         'haiti',
@@ -83,9 +93,9 @@ def setup_configs():
         language_menu_options=['en', 'ht', 'fr', 'es'],
         # Content for the <meta name="keywords"> tag.
         keywords=', '.join([
-            'haiti', 'earthquake', 'haiti earthquake', 'haitian',
-            u'ha\xefti', u's\xe9isme', 'tremblement', 'tremblement de terre',
-            'famille', 'recherche de personnes', 'terremoto'
+            'haiti', 'earthquake', 'haiti earthquake', 'haitian', u'ha\xefti',
+            u's\xe9isme', 'tremblement', 'tremblement de terre', 'famille',
+            'recherche de personnes', 'terremoto'
         ] + COMMON_KEYWORDS),
         # If false, hide the family_name field and use only given_name.
         use_family_name=True,
@@ -113,10 +123,22 @@ def setup_configs():
         allow_believed_dead_via_ui=True,
         # Custom html messages to show on main page, results page, view page,
         # and query form, keyed by language codes.
-        start_page_custom_htmls={'en': '', 'fr': ''},
-        results_page_custom_htmls={'en': '', 'fr': ''},
-        view_page_custom_htmls={'en': '', 'fr': ''},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        results_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        view_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        seek_query_form_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
         time_zone_offset=0,
         time_zone_abbreviation='UTC',
         published_date=get_timestamp(datetime(2010, 1, 12)),
@@ -125,7 +147,9 @@ def setup_configs():
 
     config.set_for_repo(
         'japan',
-        language_menu_options=['ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
+        language_menu_options=[
+            'ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'
+        ],
         repo_titles={
             'en': '2011 Japan Earthquake',
             'zh-TW': u'2011 \u65e5\u672c\u5730\u9707',
@@ -148,10 +172,22 @@ def setup_configs():
         search_auth_key_required=True,
         read_auth_key_required=True,
         allow_believed_dead_via_ui=True,
-        start_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
-        results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
-        view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={
+            'en': 'Custom message',
+            'fr': 'French'
+        },
+        results_page_custom_htmls={
+            'en': 'Custom message',
+            'fr': 'French'
+        },
+        view_page_custom_htmls={
+            'en': 'Custom message',
+            'fr': 'French'
+        },
+        seek_query_form_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
         # NOTE(kpy): These two configuration settings only work for locations
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
@@ -164,13 +200,14 @@ def setup_configs():
     config.set_for_repo(
         'pakistan',
         repo_titles={
-            'en': 'Pakistan Floods',
-            'ur': u'\u067e\u0627\u06a9\u0633\u062a\u0627\u0646\u06cc \u0633\u06cc\u0644\u0627\u0628'
+            'en':
+            'Pakistan Floods',
+            'ur':
+            u'\u067e\u0627\u06a9\u0633\u062a\u0627\u0646\u06cc \u0633\u06cc\u0644\u0627\u0628'
         },
         language_menu_options=['en', 'ur'],
-        keywords=', '.join([
-            'pakistan', 'flood', 'pakistan flood', 'pakistani'
-        ] + COMMON_KEYWORDS),
+        keywords=', '.join(['pakistan', 'flood', 'pakistan flood', 'pakistani']
+                           + COMMON_KEYWORDS),
         use_family_name=False,
         family_name_first=False,
         use_alternate_names=False,
@@ -182,10 +219,22 @@ def setup_configs():
         read_auth_key_required=False,
         search_auth_key_required=False,
         allow_believed_dead_via_ui=True,
-        start_page_custom_htmls={'en': '', 'fr': ''},
-        results_page_custom_htmls={'en': '', 'fr': ''},
-        view_page_custom_htmls={'en': '', 'fr': ''},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        results_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        view_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        seek_query_form_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
         time_zone_offset=0,
         time_zone_abbreviation='UTC',
         published_date=get_timestamp(datetime(2010, 8, 6)),
@@ -206,13 +255,25 @@ def setup_lang_test_config():
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,
-        map_default_center=[0 ,0],
+        map_default_center=[0, 0],
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
         allow_believed_dead_via_ui=True,
-        start_page_custom_htmls={'en': '', 'fr': ''},
-        results_page_custom_htmls={'en': '', 'fr': ''},
-        view_page_custom_htmls={'en': '', 'fr': ''},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        results_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        view_page_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
+        seek_query_form_custom_htmls={
+            'en': '',
+            'fr': ''
+        },
     )

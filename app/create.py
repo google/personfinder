@@ -23,12 +23,14 @@ from django.core.validators import URLValidator, ValidationError
 from django.utils.translation import ugettext as _
 from const import NOTE_STATUS_TEXT
 
+
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
     entry of the source_date in the creation form.    Unlike the validators in
     utils.py, this will throw an exception if the input is badly formatted."""
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
+
 
 def days_to_date(days):
     """Converts a duration signifying days-from-now to a datetime object.
@@ -39,15 +41,18 @@ def days_to_date(days):
 
 
 class Handler(BaseHandler):
+
     def get(self):
         self.params.create_mode = True
         profile_websites = [
             add_profile_icon_url(website, self)
-            for website in self.config.profile_websites or []]
-        self.render('create.html',
-                    profile_websites=profile_websites,
-                    profile_websites_json=simplejson.dumps(profile_websites),
-                    onload_function='view_page_loaded()')
+            for website in self.config.profile_websites or []
+        ]
+        self.render(
+            'create.html',
+            profile_websites=profile_websites,
+            profile_websites_json=simplejson.dumps(profile_websites),
+            onload_function='view_page_loaded()')
 
     def post(self):
         now = get_utcnow()
@@ -62,7 +67,7 @@ class Handler(BaseHandler):
                 return self.error(400, _('Name is required.  Please go back and try again.'))
 
         if (self.params.author_email and
-            not validate_email(self.params.author_email)):
+                not validate_email(self.params.author_email)):
             return self.error(400, _('The email address you entered appears to be invalid.'))
 
         # If user is inputting his/her own information, set some params automatically
@@ -86,10 +91,10 @@ class Handler(BaseHandler):
             if not self.params.text:
                 return self.error(400, _('Message is required. Please go back and try again.'))
             if (self.params.status == 'is_note_author' and
-                not self.params.author_made_contact):
+                    not self.params.author_made_contact):
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
             if (self.params.status == 'believed_dead' and
-                not self.config.allow_believed_dead_via_ui):
+                    not self.config.allow_believed_dead_via_ui):
                 return self.error(400, _('Not authorized to post notes with the status "I have received information that this person is dead".'))
 
         source_date = None
@@ -104,10 +109,10 @@ class Handler(BaseHandler):
         expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
-        profile_urls = filter(
-            lambda url: url, [self.params.profile_url1,
-                              self.params.profile_url2,
-                              self.params.profile_url3])
+        profile_urls = filter(lambda url: url, [
+            self.params.profile_url1, self.params.profile_url2,
+            self.params.profile_url3
+        ])
         url_validator = URLValidator(schemes=['http', 'https'])
         for profile_url in profile_urls:
             try:
@@ -156,8 +161,7 @@ class Handler(BaseHandler):
             given_name=self.params.given_name,
             family_name=self.params.family_name,
             full_name=get_full_name(self.params.given_name,
-                                    self.params.family_name,
-                                    self.config),
+                                    self.params.family_name, self.config),
             alternate_names=get_full_name(self.params.alternate_given_names,
                                           self.params.alternate_family_names,
                                           self.config),
@@ -178,8 +182,7 @@ class Handler(BaseHandler):
             source_date=source_date,
             source_name=source_name,
             photo=photo,
-            photo_url=photo_url
-        )
+            photo_url=photo_url)
         person.update_index(['old', 'new'])
 
         if self.params.add_note:
@@ -214,10 +217,11 @@ class Handler(BaseHandler):
                 # When the note is detected as spam, we do not update person
                 # record with this note or log action. We ask the note author
                 # for confirmation first.
-                return self.redirect('/post_flagged_note',
-                                     id=note.get_record_id(),
-                                     author_email=note.author_email,
-                                     repo=self.repo)
+                return self.redirect(
+                    '/post_flagged_note',
+                    id=note.get_record_id(),
+                    author_email=note.author_email,
+                    repo=self.repo)
             else:
                 note = Note.create_original(
                     self.repo,
@@ -242,9 +246,9 @@ class Handler(BaseHandler):
 
             # Specially log 'believed_dead'.
             if note.status == 'believed_dead':
-                UserActionLog.put_new(
-                    'mark_dead', note, person.primary_full_name,
-                    self.request.remote_addr)
+                UserActionLog.put_new('mark_dead', note,
+                                      person.primary_full_name,
+                                      self.request.remote_addr)
 
         # Write the person record to datastore
         person.put_new()
@@ -263,9 +267,10 @@ class Handler(BaseHandler):
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:
-            return self.redirect('/subscribe',
-                                 id=person.record_id,
-                                 subscribe_email=self.params.author_email,
-                                 context='create_person')
+            return self.redirect(
+                '/subscribe',
+                id=person.record_id,
+                subscribe_email=self.params.author_email,
+                context='create_person')
 
         self.redirect('/view', id=person.record_id)

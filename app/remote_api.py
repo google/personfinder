@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Provides a method to set up remote API to a Person Finder app."""
 
 import code
@@ -30,6 +29,7 @@ import yaml
 from google.appengine.ext.remote_api import remote_api_stub
 from google.appengine.ext import db
 
+
 def parse_url(url):
     # Determine the protocol, host, port, and path from the URL argument.
     if '//' not in url:
@@ -42,20 +42,22 @@ def parse_url(url):
     path = path or '/remote_api'
     return secure, host, port, path
 
+
 def configure_remote_api(hostport, path, secure, server_type):
     if server_type == 'appengine':
         remote_api_stub.ConfigureRemoteApiForOAuth(
-                hostport, path, secure=secure, auth_tries=1)
+            hostport, path, secure=secure, auth_tries=1)
     elif server_type == 'local':
         # It seems local dev_appserver doesn't support remote API with OAuth.
         remote_api_stub.ConfigureRemoteApi(
-                None,
-                path,
-                lambda: ('admin@example.com', None),
-                hostport,
-                secure=secure)
+            None,
+            path,
+            lambda: ('admin@example.com', None),
+            hostport,
+            secure=secure)
     else:
         raise Exception('Unknown --server_type: %r' % server_type)
+
 
 def connect(url, server_type=None):
     """Sets up a connection to an app that has the remote_api handler."""
@@ -66,15 +68,15 @@ def connect(url, server_type=None):
     url = (secure and 'https' or 'http') + '://' + hostport + path
 
     if not server_type:
-        if (re.search(r'\.appspot\.com$', host)
-                    or host in ('google.org', 'www.google.org')):
+        if (re.search(r'\.appspot\.com$', host) or
+                host in ('google.org', 'www.google.org')):
             server_type = 'appengine'
         elif host == 'localhost':
             server_type = 'local'
         else:
             raise Exception(
-                    "Couldn't determine the server type. Specify either "
-                    "--server-type=appengine or --server-type=local.")
+                "Couldn't determine the server type. Specify either "
+                "--server-type=appengine or --server-type=local.")
 
     # Connect to the appserver.
     try:
@@ -90,11 +92,10 @@ def connect(url, server_type=None):
     except Exception, e:
         traceback.print_exc()
         raise Exception(
-                "\nERROR: Failed connecting to %s. See stack trace above for "
-                "details. Follow these steps if you haven't, and try "
-                "again:\n\n"
-                "- Install Google Cloud SDK: https://cloud.google.com/sdk/\n"
-                "- Run this command and log in with a Google account which is "
-                "an administrator of the AppEngine app:\n"
-                "  $ gcloud auth login"
-                % url)
+            "\nERROR: Failed connecting to %s. See stack trace above for "
+            "details. Follow these steps if you haven't, and try "
+            "again:\n\n"
+            "- Install Google Cloud SDK: https://cloud.google.com/sdk/\n"
+            "- Run this command and log in with a Google account which is "
+            "an administrator of the AppEngine app:\n"
+            "  $ gcloud auth login" % url)

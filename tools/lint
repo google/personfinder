@@ -5,7 +5,12 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 # yapf can fix things automatically, but pylint is more thorough. I expect the
 # set of things yapf is happy with will grow faster than the set of things
 # pylint is happy with, so we separate these lists.
-DEFAULT_YAPF_FILES="tests/test_searcher.py \
+DEFAULT_YAPF_FILES="app/[b-e]*.py \
+                    app/[g-l]*.py \
+                    app/[n-u]*.py \
+                    app/[w-z]*.py \
+                    app/search/*.py \
+                    tests/test_searcher.py \
                     tests/test_xsrftool.py"
 DEFAULT_PYLINT_FILES="tests/test_searcher.py \
                       tests/test_xsrftool.py"

@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Support for approximate string prefix queries."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
@@ -20,11 +19,13 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 from google.appengine.ext import db
 import unicodedata
 
+
 def normalize(string):
     """Normalize a string to all uppercase and remove accents."""
     string = unicode(string or '').strip().upper()
     decomposed = unicodedata.normalize('NFD', string)
     return ''.join(ch for ch in decomposed if unicodedata.category(ch) != 'Mn')
+
 
 def add_prefix_properties(model_class, *properties):
     """Adds indexable properties to a model class to support prefix queries.
@@ -46,9 +47,9 @@ def add_prefix_properties(model_class, *properties):
     model_class._prefix_properties += list(properties)
 
     # Update the model class.
-    db._initialize_properties(
-        model_class, model_class.__name__, model_class.__bases__,
-        model_class.__dict__)
+    db._initialize_properties(model_class, model_class.__name__,
+                              model_class.__bases__, model_class.__dict__)
+
 
 def update_prefix_properties(entity):
     """Finds and updates all prefix-related properties on the given entity."""
@@ -58,6 +59,7 @@ def update_prefix_properties(entity):
             setattr(entity, property + '_n_', value)
             setattr(entity, property + '_n1_', value[:1])
             setattr(entity, property + '_n2_', value[:2])
+
 
 def filter_prefix(query, **kwargs):
     """Approximately filters a query for the given prefix strings.  Each
@@ -70,6 +72,7 @@ def filter_prefix(query, **kwargs):
         elif len(prefix) == 1:
             query = query.filter(property + '_n1_ =', prefix[:1])
     return query
+
 
 def get_prefix_matches(query, limit, **kwargs):
     """Scans the results from a given query, yielding only those which actually

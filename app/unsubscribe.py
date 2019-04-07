@@ -20,7 +20,9 @@ import reveal
 
 from django.utils.translation import ugettext as _
 
+
 class Handler(BaseHandler):
+
     def get(self):
         email = self.request.get('email')
         token = self.request.get('token')

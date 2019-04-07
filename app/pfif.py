@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """PFIF 1.1 - 1.4 parsing and serialization (see http://zesty.ca/pfif/).
 
 This module converts between PFIF XML documents (PFIF 1.1, 1.2, 1.3, or 1.4) and
@@ -51,29 +50,28 @@ NOTE_STATUS_VALUES = [
 
 # Fields to preserve in a placeholder for an expired record.
 PLACEHOLDER_FIELDS = [
-    'person_record_id',
-    'source_date',
-    'entry_date',
-    'expiry_date'
+    'person_record_id', 'source_date', 'entry_date', 'expiry_date'
 ]
 
 # A dict mapping old field names to the new field names in PFIF 1.4,
 # for backward compatibility with older PFIF versions.
 RENAMED_FIELDS = {
     'home_zip': 'home_postal_code',  # Renamed in PFIF 1.2
-    'first_name': 'given_name',      # Renamed in PFIF 1.4
-    'last_name': 'family_name',      # Renamed in PFIF 1.4
+    'first_name': 'given_name',  # Renamed in PFIF 1.4
+    'last_name': 'family_name',  # Renamed in PFIF 1.4
     'found': 'author_made_contact',  # Renamed in PFIF 1.4
-    'other': 'description',          # Renamed in PFIF 1.4
+    'other': 'description',  # Renamed in PFIF 1.4
 }
 
 DESCRIPTION_FIELD_LABEL = 'description:'
+
 
 def xml_escape(s):
     # XML may only contain the following characters (even after entity
     # references are expanded).  See: https://www.w3.org/TR/REC-xml/#charsets
     s = re.sub(ur'''[^\x09\x0a\x0d\x20-\ud7ff\ue000-\ufffd]''', '', s)
-    return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
+    return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
 
 def convert_description_to_other(desc):
     """Converts 'description' in PFIF 1.4 to 'other' in older versions."""
@@ -85,6 +83,7 @@ def convert_description_to_other(desc):
     # Indent the text and prepend the description label.
     return DESCRIPTION_FIELD_LABEL + '\n' + ' ' * INDENT_DEPTH + \
         ('\n' + ' ' * INDENT_DEPTH).join(desc.split('\n')).rstrip(' ')
+
 
 def maybe_convert_other_to_description(other):
     """Converts 'other' in PFIF 1.3 and earlier to 'description' in PFIF 1.4 if
@@ -107,6 +106,7 @@ def maybe_convert_other_to_description(other):
 
 
 class PfifVersion:
+
     def __init__(self, version, ns, fields, mandatory_fields, serializers):
         self.version = version
         self.ns = ns
@@ -191,11 +191,14 @@ class PfifVersion:
 def nop(value):
     return value
 
+
 def format_boolean(value):
     return value and 'true' or 'false'
 
+
 def format_utc_datetime(dt):
     return dt and dt.replace(microsecond=0).isoformat() + 'Z' or ''
+
 
 SERIALIZERS = {  # Serialization functions (for fields that need conversion).
     'found': format_boolean,
@@ -416,6 +419,7 @@ PFIF_DEFAULT_VERSION = '1.4'
 
 assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
+
 def check_pfif_tag(name, parent=None):
     """Recognizes a PFIF XML tag from any version of PFIF."""
     return PFIF_1_4.check_tag(name, parent) or \
@@ -426,6 +430,7 @@ def check_pfif_tag(name, parent=None):
 
 class Handler(xml.sax.handler.ContentHandler):
     """SAX event handler for parsing PFIF documents."""
+
     def __init__(self, rename_fields=True):
         # Wether to attempt to rename fields based on RENAMED_FIELDS.
         self.rename_fields = rename_fields
@@ -480,9 +485,10 @@ def rename_fields_to_latest(record):
         if old in record:
             record[new] = record[old]
             # For backward-compatibility with PFIF 1.3 and earlier.
-            if old == 'other' and new =='description':
+            if old == 'other' and new == 'description':
                 record[new] = maybe_convert_other_to_description(record[old])
             del record[old]
+
 
 def parse_file(pfif_utf8_file, rename_fields=True):
     """Reads a UTF-8-encoded PFIF file to give a list of person records and a

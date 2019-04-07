@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Handler for retrieving uploaded photos for display."""
 
 import os
@@ -27,13 +26,16 @@ from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 MAX_IMAGE_DIMENSION = 300
 MAX_THUMBNAIL_DIMENSION = 80
 
+
 class PhotoError(Exception):
     message = _('There was a problem processing the image.  '
                 'Please try a different image.')
 
+
 class FormatUnrecognizedError(PhotoError):
     message = _('Photo uploaded is in an unrecognized format.  '
                 'Please go back and try again.')
+
 
 class SizeTooLargeError(PhotoError):
     message = _('The provided image is too large.  '
@@ -109,6 +111,7 @@ def get_photo_url(photo, handler):
 
 
 class Handler(utils.BaseHandler):
+
     def get(self):
         try:
             id = int(self.params.id)

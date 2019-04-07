@@ -17,14 +17,16 @@ from utils import *
 
 
 class Handler(BaseHandler):
+
     def get(self):
         env = self.env
-        self.render('embed.html', close_button=self.env.ui == 'small',
-                    gadget_link_html=anchor_start(
-                        '%s/gadget?lang=%s' % (env.repo_url, env.lang)),
-                    apache_link_html=anchor_start(
-                        'http://www.apache.org/licenses/LICENSE-2.0.html'),
-                    developers_link_html=anchor_start(
-                        'https://github.com/google/personfinder'),
-                    link_end_html='</a>'
-)
+        self.render(
+            'embed.html',
+            close_button=self.env.ui == 'small',
+            gadget_link_html=anchor_start(
+                '%s/gadget?lang=%s' % (env.repo_url, env.lang)),
+            apache_link_html=anchor_start(
+                'http://www.apache.org/licenses/LICENSE-2.0.html'),
+            developers_link_html=anchor_start(
+                'https://github.com/google/personfinder'),
+            link_end_html='</a>')

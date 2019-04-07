@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Terms of Services page."""
 
 __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
@@ -58,7 +57,7 @@ class Handler(utils.BaseHandler):
                         if href and anchor.text:
                             # Converts relative URLs to absolute URLs.
                             anchor.attrib['href'] = urlparse.urljoin(
-                                    res.geturl(), href)
+                                res.geturl(), href)
                             anchor.text += ' (%s)' % _(
                                 'external site; '
                                 'normal connection fee may apply')
@@ -66,11 +65,7 @@ class Handler(utils.BaseHandler):
 
         except:
             logging.error(
-                'Error during fetching/parsing the ToS page from %s\n%s',
-                url,
+                'Error during fetching/parsing the ToS page from %s\n%s', url,
                 traceback.format_exc())
 
-        self.render(
-                'tos.html',
-                article_html=article_html,
-                tos_url=url)
+        self.render('tos.html', article_html=article_html, tos_url=url)

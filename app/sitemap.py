@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Exports the URLs of all person entries to a sitemap.xml file."""
 
 import logging
@@ -28,7 +27,6 @@ import config
 import const
 from model import Repo
 from utils import BaseHandler
-
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
@@ -47,8 +45,8 @@ class SiteMap(BaseHandler):
         urlpaths.append({lang: '?lang=%s' % lang for lang in langs})
         # Include the repo homepages.
         for repo in Repo.list_launched():
-            urlpaths.append({
-                lang: '%s?lang=%s' % (repo, lang) for lang in langs})
+            urlpaths.append(
+                {lang: '%s?lang=%s' % (repo, lang) for lang in langs})
         self.render('sitemap.xml', urlpaths=urlpaths)
 
 
@@ -66,9 +64,12 @@ class SiteMapPing(BaseHandler):
     @staticmethod
     def add_ping_tasks():
         for search_engine in SiteMapPing._INDEXER_MAP:
-            name = 'sitemapping-%s-%s' % (search_engine, int(time.time()*1000))
+            name = 'sitemapping-%s-%s' % (search_engine, int(
+                time.time() * 1000))
             taskqueue.add(
-                name=name, method='GET', url='/global/sitemap/ping',
+                name=name,
+                method='GET',
+                url='/global/sitemap/ping',
                 params={SiteMapPing._GET_PARAM_SEARCH_ENGINE: search_engine})
 
     def get(self):
@@ -90,6 +91,6 @@ class SiteMapPing(BaseHandler):
             return True
         else:
             #TODO(nworden): Retry or email konbit-personfinder on failure.
-            logging.error('Received %d pinging %s',
-                          response.status_code, ping_url)
+            logging.error('Received %d pinging %s', response.status_code,
+                          ping_url)
             return False

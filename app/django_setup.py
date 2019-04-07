@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Initialize Django.
 
 We're currently in between web servers: Person Finder originally ran on webapp2,
@@ -41,7 +40,6 @@ import django.utils.translation
 from django.utils.translation import activate, gettext_lazy, ugettext
 
 import wsgi
-
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See https://web.archive.org/web/20160916120959/http://code.google.com/p/googleappengine/issues/detail?id=985
