@@ -37,6 +37,64 @@ class BaseView(django.views.View):
         'lang': utils.strip,
     }
 
+    class Env(object):
+
+        @property
+        def repo(self):
+            return self._repo
+
+        @repo.setter
+        def repo(self, value):
+            self._repo = value
+
+        @property
+        def action(self):
+            return self._action
+
+        @action.setter
+        def action(self, value):
+            self._action = value
+
+        @property
+        def config(self):
+            return self._config
+
+        @config.setter
+        def config(self, value):
+            self._config = value
+
+        @property
+        def lang(self):
+            return self._lang
+
+        @lang.setter
+        def lang(self, value):
+            self._lang = value
+
+        @property
+        def rtl(self):
+            return self._rtl
+
+        @rtl.setter
+        def rtl(self, value):
+            self._rtl = value
+
+        @property
+        def charset(self):
+            return self._charset
+
+        @charset.setter
+        def charset(self, value):
+            self._charset = value
+
+        @property
+        def global_url(self):
+            return self._global_url
+
+        @global_url.setter
+        def global_url(self, value):
+            self._global_url = value
+
     def setup(self, request, *args, **kwargs):
         """Sets up the handler.
 
@@ -62,7 +120,7 @@ class BaseView(django.views.View):
         self.params = self.get_params()
 
         # Set up env variable with data needed by the whole app.
-        self.env = utils.Struct()
+        self.env = self.Env()
         self.env.repo = kwargs.get('repo', None)
         self.env.action = self.ACTION_ID
         self.env.config = config.Configuration(self.env.repo or '*')

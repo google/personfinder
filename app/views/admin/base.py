@@ -29,6 +29,48 @@ class AdminBaseView(views.base.BaseView):
         'xsrf_token': utils.strip,
     }
 
+    class Env(views.base.BaseView.Env):
+
+        @property
+        def show_logo(self):
+            return self._show_logo
+
+        @show_logo.setter
+        def show_logo(self, value):
+            self._show_logo = value
+
+        @property
+        def enable_javascript(self):
+            return self._enable_javascript
+
+        @enable_javascript.setter
+        def enable_javascript(self, value):
+            self._enable_javascript = value
+
+        @property
+        def user(self):
+            return self._user
+
+        @user.setter
+        def user(self, value):
+            self._user = value
+
+        @property
+        def logout_url(self):
+            return self._logout_url
+
+        @logout_url.setter
+        def logout_url(self, value):
+            self._logout_url = value
+
+        @property
+        def all_repo_options(self):
+            return self._all_repo_options
+
+        @all_repo_options.setter
+        def all_repo_options(self, value):
+            self._all_repo_options = value
+
     def setup(self, request, *args, **kwargs):
         super(AdminBaseView, self).setup(request, *args, **kwargs)
         self.env.show_logo = True
