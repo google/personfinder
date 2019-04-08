@@ -52,6 +52,7 @@ class SiteMap(BaseHandler):
         self.render('sitemap.xml', urlpaths=urlpaths)
 
 
+# TODO(nworden): move this under a /tasks URL for consistency
 class SiteMapPing(BaseHandler):
     """Pings the index server."""
     _INDEXER_MAP = {
