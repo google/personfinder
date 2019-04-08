@@ -39,6 +39,9 @@ class BaseView(django.views.View):
 
     class Env(object):
         """Class to store environment information used by views and templates.
+
+        Subclasses of BaseView may define their own Env class (which must be
+        subclasses of BaseView.Env).
         """
         # pylint: disable=attribute-defined-outside-init
         # pylint: disable=too-many-instance-attributes
@@ -54,7 +57,7 @@ class BaseView(django.views.View):
 
         @property
         def charset(self):
-            """Gets the character set being used to serve the page."""
+            """Gets the character encoding being used to serve the page."""
             return self._charset
 
         @charset.setter
@@ -90,7 +93,7 @@ class BaseView(django.views.View):
 
         @property
         def lang(self):
-            """Gets the two-letter code for the language being used."""
+          """Gets the code for the language being used (see const.py)."""
             return self._lang
 
         @lang.setter
@@ -108,7 +111,7 @@ class BaseView(django.views.View):
 
         @property
         def rtl(self):
-            """Gets whether the language a right-to-left language."""
+            """Gets whether the language is a right-to-left language."""
             return self._rtl
 
         @rtl.setter

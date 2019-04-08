@@ -35,7 +35,12 @@ class AdminBaseView(views.base.BaseView):
 
         @property
         def all_repo_options(self):
-            """Gets a list of Structs with repo IDs and URLs."""
+            """Gets a list of Structs with repo IDs and URLs.
+
+            Each Struct is expected to have two values:
+            - repo: the repo ID
+            - url: the URL to the repo's admin page
+            """
             return self._all_repo_options
 
         @all_repo_options.setter
