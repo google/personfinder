@@ -93,7 +93,7 @@ class BaseView(django.views.View):
 
         @property
         def lang(self):
-          """Gets the code for the language being used (see const.py)."""
+            """Gets the code for the language being used (see const.py)."""
             return self._lang
 
         @lang.setter

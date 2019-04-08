@@ -66,6 +66,7 @@ class AdminBaseView(views.base.BaseView):
             self._user = value
 
     def setup(self, request, *args, **kwargs):
+        """See docs on BaseView.setup."""
         super(AdminBaseView, self).setup(request, *args, **kwargs)
         self.env.show_logo = True
         self.env.enable_javascript = True
@@ -84,6 +85,7 @@ class AdminBaseView(views.base.BaseView):
             post_params=AdminBaseView._POST_PARAMETERS)
 
     def dispatch(self, request, *args, **kwargs):
+        """See docs on django.views.View.dispatch."""
         # All the admin pages, and only the admin pages, require the user to be
         # logged in as an admin.
         # If we start requiring login for other pages, we should consider
