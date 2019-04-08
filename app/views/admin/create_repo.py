@@ -122,7 +122,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             published_date=utils.get_utcnow_timestamp(),
             updated_date=utils.get_utcnow_timestamp(),
             test_mode=False,
-            force_https=False,
+            force_https=True,
             zero_rating_mode=False,
             time_zone_offset=0,
             time_zone_abbreviation='UTC',
