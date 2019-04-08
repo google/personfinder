@@ -860,7 +860,7 @@ class HandleSMS(BaseApiHandler):
                 'ea': 'SMS',
                 'dp': '/sms_action'
             })
-            url = 'http://www.google-analytics.com/collect'
+            url = 'https://www.google-analytics.com/collect'
             try:
                 urllib2.urlopen(url, params)
             except urllib2.URLError:
