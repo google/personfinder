@@ -282,7 +282,7 @@ def setup_env(request):
     # Information about the request.
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
-    env.force_https = False
+    env.force_https = True
     env.domain = env.netloc.split(':')[0]
     env.global_url = utils.get_repo_url(request, 'global')
 

@@ -37,8 +37,8 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             ) in filter(lambda item: item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
             path = django.urls.reverse(path_name)
-            assert self.client.get(path).status_code == 403
-            assert self.client.post(path).status_code == 403
+            assert self.client.get(path, secure=True).status_code == 403
+            assert self.client.post(path, secure=True).status_code == 403
 
     def test_available_to_admins(self):
         """Tests that admin-only pages are available to admins.
@@ -54,7 +54,7 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             ) in filter(lambda item: item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
             path = django.urls.reverse(path_name)
-            assert self.client.get(path).status_code == 200
+            assert self.client.get(path, secure=True).status_code == 200
             # Don't test POST requests here; they'll need an XSRF token and
             # that'll be covered in a separate test.
 
@@ -65,7 +65,7 @@ class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
             ) in filter(lambda item: not item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
             path = django.urls.reverse(path_name)
-            assert self.client.get(path).status_code != 403
+            assert self.client.get(path, secure=True).status_code != 403
 
     def test_all_paths_included(self):
         """Tests that all (Django-served) pages are listed.
