@@ -38,6 +38,7 @@ install:
       pylint==1.9.4 \
       pytest \
       yapf
+  - pip install -r requirements.txt -t app/vendors
   - npm --prefix ui install
 
 before_script:
