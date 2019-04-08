@@ -63,6 +63,9 @@ class SiteMapPing(BaseHandler):
 
     repo_required = False
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     @staticmethod
     def add_ping_tasks():
         for search_engine in SiteMapPing._INDEXER_MAP:

@@ -509,7 +509,7 @@ class Write(BaseApiHandler):
 
 
 class Search(BaseApiHandler):
-    https_required = False
+    https_required = True
 
     def get(self):
         if self.config.search_auth_key_required and not (
