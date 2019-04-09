@@ -12,7 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Access restriction tests."""
+"""Automatic security tests.
+
+This file isn't meant for tests specific to a particular page; they're designed
+as general-purpose tests for common security requirements. All paths must be
+included in the AutoSecurityTests.PATH_TEST_INFO list (this is tested to ensure
+we can't forget these tests for a new view).
+"""
 
 import collections
 import copy
