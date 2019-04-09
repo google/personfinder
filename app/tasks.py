@@ -55,6 +55,9 @@ class ScanForExpired(utils.BaseHandler):
     Subclasses set the query and task_name."""
     repo_required = False
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     def task_name(self):
         """Subclasses should implement this."""
         pass
@@ -131,6 +134,9 @@ class CleanUpInTestMode(utils.BaseHandler):
     """
     repo_required = False
     ACTION = 'tasks/clean_up_in_test_mode'
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     # Entries older than this age in seconds are deleted in test mode.
     #
@@ -244,6 +250,9 @@ class CountBase(utils.BaseHandler):
 
     SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
     ACTION = ''  # Each subclass should set the action path that it handles.
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     def get(self):
         if self.repo:  # Do some counting.
@@ -397,6 +406,9 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
     repo_required = False  # can run without a repo
     ACTION = 'tasks/notify_many_unreviewed_notes'
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     def task_name(self):
         return 'notify-bad-review-status'
 
@@ -451,6 +463,9 @@ class ThumbnailPreparer(utils.BaseHandler):
     repo_required = False
     ACTION = 'tasks/thumbnail_preparer'
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     def get(self):
         # We don't retry this task automatically, because it's looking for
         # everything that doesn't already have a thumbnail every time --
@@ -481,6 +496,9 @@ class DumpCSV(utils.BaseHandler):
 
     repo_required = False
     ACTION = 'tasks/dump_csv'
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     # Lifetime of a single task is 10 min. It stops fetching and starts
     # uploading after 4 min, assuming uploading takes similar time as

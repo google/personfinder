@@ -73,6 +73,7 @@ class AdminBaseView(views.base.BaseView):
                 repo=repo, url=self.build_absolute_path('/%s/admin' % repo))
             for repo in sorted(model.Repo.list())
         ]
+        self.xsrf_tool = utils.XsrfTool()
 
     def get_params(self):
         return views.base.read_params(

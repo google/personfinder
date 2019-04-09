@@ -8,11 +8,13 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 DEFAULT_YAPF_FILES="app/views/base.py \
                     app/views/admin/base.py \
                     tests/test_searcher.py \
-                    tests/test_xsrftool.py"
+                    tests/test_xsrftool.py \
+                    tests/views/test_admin_create_repo.py"
 DEFAULT_PYLINT_FILES="app/views/base.py \
                       app/views/admin/base.py \
                       tests/test_searcher.py \
-                      tests/test_xsrftool.py"
+                      tests/test_xsrftool.py \
+                      tests/views/test_admin_create_repo.py"
 
 # Call through python -m instead of directly, so that you're sure to be able to
 # use it even if you installed the tools through pip.

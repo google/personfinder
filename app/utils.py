@@ -723,7 +723,7 @@ class BaseHandler(webapp.RequestHandler):
     repo_required = True
 
     # Handlers that require HTTPS can set this to True.
-    https_required = False
+    https_required = True
 
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False

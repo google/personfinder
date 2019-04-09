@@ -37,6 +37,8 @@ handlers:
 - url: /admin/api_keys.*
   script: admin_api_keys.py
   secure: always
+- url: /.*/admin/create_repo.*
+  script: wsgi.application
 - url: /.*/admin/statistics.*
   script: wsgi.application
 - url: .*
