@@ -500,14 +500,14 @@ class PersonNoteTests(ServerTestsBase):
     @parameterized.expand([(True,), (False,)])
     def test_search_with_result(self, use_full_text_search):
         config.set(enable_full_text_search = use_full_text_search)
-        def assert_params(url=None):
-            self.assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
         self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
         search_page = self.go('/haiti/query?role=seek')
         search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
+        def assert_params(url=None):
+            self.assert_params_conform(
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
         assert_params()
         self.verify_results_page(1, all_have=(['_test_given_name']),
                                  some_have=(['_test_given_name']),
@@ -522,9 +522,10 @@ class PersonNoteTests(ServerTestsBase):
         self.verify_details_page(num_notes=0)
         self.advance_utcnow(days=5)
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author', None)
+            author_made_contact=False, note_body='_test A note body',
+            author='_test A note author', status=None)
         person = Person.all().filter('given_name =', '_test_given_name').get()
-        assert person.entry_date == entry_date
+        self.assertEqual(person.entry_date, entry_date)
 
     def test_new_note_shown_below_old_note(self):
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
@@ -533,8 +534,10 @@ class PersonNoteTests(ServerTestsBase):
             False, '_test A note body', '_test A note author', None)
         self.advance_utcnow(seconds=1)
         self.verify_update_notes(
-            True, '_test Another note body', '_test Another note author',
-            'believed_alive',
+            author_made_contact=True,
+            note_body='_test Another note body',
+            author='_test Another note author',
+            status='believed_alive',
             last_known_location='Port-au-Prince',
             note_photo_url='http://localhost:8081/abc.jpg')
 
@@ -542,8 +545,10 @@ class PersonNoteTests(ServerTestsBase):
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
         self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
         self.verify_update_notes(
-            True, '_test Another note body', '_test Another note author',
-            'believed_alive',
+            author_made_contact=True,
+            note_body='_test Another note body',
+            author='_test Another note author',
+            status='believed_alive',
             last_known_location='Port-au-Prince',
             note_photo_url='http://localhost:8081/abc.jpg')
 
