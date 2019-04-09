@@ -1253,11 +1253,14 @@ class XsrfTool(object):
             action_time)
 
     def verify_token(self, token, user_id, action_id):
-        [hmac_digest, action_time_str] = token.split('/')
+        token_spl = token.split('/')
+        if len(token_spl) != 2:
+            return False
+        [hmac_digest, action_time_str] = token_spl
         action_time = float(action_time_str)
         if (action_time + XsrfTool.TOKEN_EXPIRATION_TIME <
             get_utcnow_timestamp()):
-          return False
+            return False
         expected_hmac_digest = self._generate_hmac_digest(
             user_id, action_id, action_time)
         return hmac.compare_digest(
