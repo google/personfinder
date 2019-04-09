@@ -63,6 +63,7 @@ class AdminBaseView(views.base.BaseView):
 
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
+        # pylint: disable=attribute-defined-outside-init
         super(AdminBaseView, self).setup(request, *args, **kwargs)
         self.env.show_logo = True
         self.env.enable_javascript = True

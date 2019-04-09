@@ -273,6 +273,20 @@ class BaseView(django.views.View):
             status=status_code)
 
     def error(self, status_code, message=''):
+        """Returns an error response.
+
+        Args:
+            status_code (int): The HTTP status code to use.
+            message (str, optional): A message to display. Defaults to the empty
+                string.
+
+        Returns:
+            HttpResponse: An HTTP response with the given status code and
+            message.
+        """
+        # pylint: disable=no-self-use
+        # Making this a method of BaseView keeps it consistent with render(),
+        # and probably other similar functions in the future.
         return django.http.HttpResponse(
             content=message, content_type='text/plain', status=status_code)
 
