@@ -15,6 +15,9 @@ import scrape
 class ViewTestsBase(unittest.TestCase):
     """A base class for tests for the Django app."""
 
+    TEST_USER_EMAIL = 'kay@mib.gov'
+    TEST_USER_ID = 'k'
+
     def setUp(self):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
