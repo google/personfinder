@@ -20,9 +20,34 @@ import views
 
 import view_tests_base
 
+PathTestInfo = namedtuple('PathTestInfo', [
+    'accepts_get',
+    'accepts_post',
+    'restricted_to_admins',
+    'sample_xsrf_data',
+])
 
-class AccessRestrictionTests(view_tests_base.ViewTestsBase):
+
+class AutoSecurityTests(view_tests_base.ViewTestsBase):
     """Tests that access restrictions are enforced."""
+
+    PATH_TEST_INFO = {
+        'admin-create-repo':
+        PathTestInfo(
+            'accepts_get' =True,
+            'accepts_post' =True,
+            'restricted_to_admins' =True,
+            'sample_xsrf_data' ={
+                'new_repo': 'new-hampshire',
+            }),
+        'admin-statistics':
+        PathTestInfo(
+            'accepts_get' =True,
+            'accepts_post' =False,
+            'restricted_to_admins' =True,
+            'sample_xsrf_data' =None,
+        ),
+    }
 
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
@@ -34,12 +59,14 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
     def test_blocked_to_non_admins(self):
         """Tests that admin-only pages aren't available to non-admins."""
         self.login(is_admin=False)
-        for (path_name, _
-            ) in filter(lambda item: item[1],
-                        AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
+        for (path_name, path_info
+            ) in filter(lambda (_, path_info): path_info.restricted_to_admins,
+                        AutoSecurityTests.PATH_TEST_INFO.items()):
             path = django.urls.reverse(path_name)
-            assert self.client.get(path, secure=True).status_code == 403
-            assert self.client.post(path, secure=True).status_code == 403
+            if path_info.accepts_get:
+                assert self.client.get(path, secure=True).status_code == 403
+            if path_info.accepts_post:
+                assert self.client.post(path, secure=True).status_code == 403
 
     def test_available_to_admins(self):
         """Tests that admin-only pages are available to admins.
@@ -79,5 +106,4 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
                 # Skip these; they're the same views as the non-prefixed
                 # versions.
                 continue
-            assert (
-                pattern.name in AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS)
+            assert (pattern.name in AutoSecurityTests.PATH_TEST_INFO)
