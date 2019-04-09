@@ -18,6 +18,7 @@ from django.conf import urls
 
 import site_settings
 import views.admin.api_keys
+import views.admin.create_repo
 import views.admin.statistics
 
 # We include an optional trailing slash in all the patterns (Django has support
@@ -25,6 +26,8 @@ import views.admin.statistics
 # if it's not really needed).
 _BASE_URL_PATTERNS = [('admin-apikeys-list', r'global/admin/api_keys/list/?',
                        views.admin.api_keys.ApiKeyListView.as_view),
+                      ('admin-create-repo', r'global/admin/create_repo/?',
+                       views.admin.create_repo.AdminCreateRepoView.as_view),
                       ('admin-statistics', r'global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view),]
 

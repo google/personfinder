@@ -12,7 +12,7 @@ import const
 import scrape
 
 
-class DjangoTestsBase(unittest.TestCase):
+class ViewTestsBase(unittest.TestCase):
     """A base class for tests for the Django app."""
 
     def setUp(self):

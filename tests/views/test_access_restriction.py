@@ -18,15 +18,16 @@ import django.urls
 import urls
 import views
 
-import django_tests_base
+import view_tests_base
 
 
-class AccessRestrictionTests(django_tests_base.DjangoTestsBase):
+class AccessRestrictionTests(view_tests_base.ViewTestsBase):
     """Tests that access restrictions are enforced."""
 
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
     IS_RESTRICTED_TO_ADMINS = {
+        'admin-create-repo': True,
         'admin-statistics': True,
     }
 
