@@ -104,16 +104,28 @@ class Repo(db.Model):
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
 
-    class Status(object):
+    class ActivationStatus(object):
         """An enum for the launch/activation status of the repo."""
-        UNLAUNCHED = 0
+        # For use with repositories that have not yet been publicly launched.
+        # Staging repos aren't listed on the homepage or in the repository feed,
+        # but are otherwise totally usable repos for anyone who knows the URL.
+        STAGING = 0
+        # For repositories in active use. These repos are listed on the homepage
+        # and in the repository feed.
         ACTIVE = 1
+        # For repositories that have been turned down. The repository is
+        # unavailable, through either the web interface or the API, and users
+        # will instead see a deactivation message. These repos aren't listed on
+        # the homepage or in the repository feed.
         DEACTIVATED = 2
 
-    # Whether the repository is unlaunched, active, or deactivated.
+    # TODO(nworden): actually use this field
     activation_status = db.IntegerProperty(
-        required=False, default=Status.UNLAUNCHED)
+        required=False, default=ActivationStatus.STAGING)
 
+    # Whether the repository is in test mode; meant for use with evergreen
+    # repositories when they're not needed. Records for repos in test mode are
+    # automatically deleted after 24 hours.
     test_mode = db.BooleanProperty(default=False)
 
     # Few properties for now; the repository title and other settings are all in
