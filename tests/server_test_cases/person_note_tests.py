@@ -20,6 +20,7 @@ See scrape.py for methods available for the document object returned by self.s.g
 """
 
 import datetime
+from parameterized import parameterized
 import re
 import time
 import urlparse
@@ -282,6 +283,13 @@ class PersonNoteTests(ServerTestsBase):
             'Not currently at "view" page: %s' % self.s.url)
         return self.s.submit(self.s.doc.cssselect_one('input.add-note'))
 
+    def submit_minimal_create_form(self, create_form):
+        self.s.submit(create_form,
+                      own_info='no',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      author_name='_test_author_name')
+
     def test_robots(self):
         """Check that <meta name="robots"> tags appear on the right pages."""
         person = Person(
@@ -453,41 +461,33 @@ class PersonNoteTests(ServerTestsBase):
         link = self.s.doc.cssselect_one('a.results-found')
         assert 'query_name=_test_given_name' in link.get('href')
 
-    def run_test_seeking_someone_regular(self):
-        """Follow the seeking someone flow on the regular-sized embed."""
-
-        # Set utcnow to match source date
-        SOURCE_DATETIME = datetime.datetime(2001, 1, 1, 0, 0, 0)
-        self.set_utcnow_for_test(SOURCE_DATETIME)
-        test_source_date = SOURCE_DATETIME.strftime('%Y-%m-%d')
-
-        # Shorthand to assert the correctness of our URL
-        def assert_params(url=None):
-            self.assert_params_conform(
-                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
-
-        # Start on the home page and click the "I'm looking for someone" button
+    def test_search_page_link(self):
         self.go('/haiti')
         search_page = self.s.follow('I\'m looking for someone')
         submit_button = search_page.xpath_one('//input[@type="submit"]')
         assert 'Search for this person' in submit_button.get('value')
 
+    @parameterized.expand([(True,), (False,)])
+    def test_search_with_no_result(self, use_full_text_search):
+        config.set(enable_full_text_search = use_full_text_search)
+        search_page = self.go('/haiti/query?role=seek')
+        submit_button = search_page.xpath_one('//input[@type="submit"]')
+
         # Try a search, which should yield no results.
         search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
-        assert_params()
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
         self.verify_results_page(0)
-        assert_params()
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
         self.verify_unsatisfactory_results()
-        assert_params()
+        self.assert_params_conform(
+            self.s.url, {'role': 'seek'}, {'ui': 'small'})
 
-        # Submit the create form with minimal information.
-        create_form = self.s.doc.cssselect_one('form')
-        self.s.submit(create_form,
-                      own_info='no',
-                      given_name='_test_given_name',
-                      family_name='_test_family_name',
-                      author_name='_test_author_name')
+    def test_details_after_create_form_submission(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
 
         # For now, the date of birth should be hidden.
         assert 'birth' not in self.s.content.lower()
@@ -497,31 +497,58 @@ class PersonNoteTests(ServerTestsBase):
             full_name='_test_given_name _test_family_name',
             details={'Author\'s name:': '_test_author_name'})
 
-        # Now the search should yield a result.
+    @parameterized.expand([(True,), (False,)])
+    def test_search_with_result(self, use_full_text_search):
+        config.set(enable_full_text_search = use_full_text_search)
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+        search_page = self.go('/haiti/query?role=seek')
+        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
+        def assert_params(url=None):
+            self.assert_params_conform(
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
         assert_params()
         self.verify_results_page(1, all_have=(['_test_given_name']),
                                  some_have=(['_test_given_name']),
                                  status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
-        # set the person entry_date to something in order to make sure adding
-        # note doesn't update
+
+    def test_note_doesnt_update_entry_date(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
         person = Person.all().filter('given_name =', '_test_given_name').get()
-        person.entry_date = datetime.datetime(2006, 6, 6, 6, 6, 6)
-        db.put(person)
+        entry_date = person.entry_date
         self.verify_details_page(num_notes=0)
+        self.advance_utcnow(days=5)
+        self.verify_update_notes(
+            author_made_contact=False, note_body='_test A note body',
+            author='_test A note author', status=None)
+        person = Person.all().filter('given_name =', '_test_given_name').get()
+        self.assertEqual(person.entry_date, entry_date)
 
-        self.go_to_add_note_page()
-        self.verify_note_form()
-        self.s.back()
-
+    def test_new_note_shown_below_old_note(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
         self.verify_update_notes(
             False, '_test A note body', '_test A note author', None)
-        # Advances the clock so that the new note is shown below the old notes.
         self.advance_utcnow(seconds=1)
         self.verify_update_notes(
-            True, '_test Another note body', '_test Another note author',
-            'believed_alive',
+            author_made_contact=True,
+            note_body='_test Another note body',
+            author='_test Another note author',
+            status='believed_alive',
+            last_known_location='Port-au-Prince',
+            note_photo_url='http://localhost:8081/abc.jpg')
+
+    def test_user_action_log_created(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+        self.verify_update_notes(
+            author_made_contact=True,
+            note_body='_test Another note body',
+            author='_test Another note author',
+            status='believed_alive',
             last_known_location='Port-au-Prince',
             note_photo_url='http://localhost:8081/abc.jpg')
 
@@ -533,24 +560,25 @@ class PersonNoteTests(ServerTestsBase):
                                Note_text='_test Another note body',
                                Note_status='believed_alive')
 
-        # Add a note with status == 'believed_dead'.
+    def post_and_verify_believed_dead_note(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
         # By default allow_believed_dead_via_ui = True for repo 'haiti'.
-        # Advances the clock so that the new note is shown below the old notes.
-        self.advance_utcnow(seconds=1)
         self.verify_update_notes(
-            True, '_test Third note body', '_test Third note author',
-            'believed_dead')
-        # Check that a UserActionLog entry was created.
-        self.verify_user_action_log('mark_dead', 'Note',
-                               repo='haiti',
-                               detail='_test_given_name _test_family_name',
-                               ip_address='127.0.0.1',
-                               Note_text='_test Third note body',
-                               Note_status='believed_dead')
+            True, '_test note body', '_test note author', 'believed_dead')
 
-        person = Person.all().filter('given_name =', '_test_given_name').get()
-        assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
+    def test_believed_dead_note(self):
+        self.post_and_verify_believed_dead_note()
 
+    @parameterized.expand([(True,), (False,)])
+    def test_believed_dead_note_in_results(self, use_full_text_search):
+        config.set(enable_full_text_search = use_full_text_search)
+        def assert_params(url=None):
+            self.assert_params_conform(
+                url or self.s.url, {'role': 'seek'}, {'ui': 'small'})
+        self.post_and_verify_believed_dead_note()
+        search_page = self.go('/haiti/query?role=seek')
+        search_form = search_page.cssselect_one('form')
         self.s.submit(search_form, query_name='_test_given_name')
         assert_params()
         self.verify_results_page(
@@ -558,11 +586,14 @@ class PersonNoteTests(ServerTestsBase):
             status=['Someone has received information that this person is dead']
         )
 
-        # test for default_expiry_days config:
+    def test_default_expiry(self):
         config.set_for_repo('haiti', default_expiry_days=10)
-
+        source_datetime = datetime.datetime(2001, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(source_datetime)
+        test_source_date = source_datetime.strftime('%Y-%m-%d')
         # Submit the create form with complete information
-        self.s.submit(create_form,
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.s.submit(self.s.doc.cssselect_one('form'),
                       own_info='no',
                       author_name='_test_author_name',
                       author_email='test_author_email@example.com',
@@ -589,7 +620,6 @@ class PersonNoteTests(ServerTestsBase):
                       profile_url3='http://www.foo.com/_test_account3',
                       expiry_option='foo',
                       description='_test_description')
-
         self.verify_details_page(
             num_notes=0,
             full_name='_test_given_name _test_family_name',
@@ -613,9 +643,18 @@ class PersonNoteTests(ServerTestsBase):
                 'Original URL:': 'Link',
                 'Original posting date:': 'Jan 1, 2001 12:00:00 AM UTC',
                 'Original site name:': '_test_source_name',
-                'Expiry date of this record:': 'Jan 11, 2001 12:00:05 AM UTC'})
+                'Expiry date of this record:': 'Jan 11, 2001 12:00:00 AM UTC'})
 
-        # Check the icons and the links are there.
+    def test_profile_icons_present(self):
+        self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
+        self.s.submit(self.s.doc.cssselect_one('form'),
+                      own_info='no',
+                      author_name='_test_author_name',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      profile_url1='http://www.facebook.com/_test_account1',
+                      profile_url2='http://www.twitter.com/_test_account2',
+                      profile_url3='http://www.foo.com/_test_account3')
         assert 'facebook-16x16.png' in self.s.doc.content
         assert 'twitter-16x16.png' in self.s.doc.content
         assert 'http://www.facebook.com/_test_account1' in self.s.doc.content
@@ -640,14 +679,6 @@ class PersonNoteTests(ServerTestsBase):
         self.go('/haiti/results?role=seek&query=_test_given_name')
         link = self.s.doc.cssselect_one('a.result-link')
         assert 'query_name=_test_given_name' in link.get('href')
-
-    def test_seeking_someone_regular_by_full_text_search(self):
-        config.set(enable_full_text_search = True)
-        self.run_test_seeking_someone_regular()
-
-    def test_seeking_someone_regular(self):
-        """Follow the seeking someone flow on the regular-sized embed."""
-        self.run_test_seeking_someone_regular()
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.

@@ -39,18 +39,20 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
 
     def test_get(self):
         """Tests GET requests."""
-        doc = self.to_doc(self.client.get('/global/admin/create_repo/'))
+        doc = self.to_doc(self.client.get(
+            '/global/admin/create_repo/', secure=True))
         assert doc.cssselect_one('input[name="new_repo"]') is not None
 
     def test_create_repo(self):
         """Tests POST requests to create a new repo."""
-        get_doc = self.to_doc(self.client.get('/global/admin/create_repo/'))
+        get_doc = self.to_doc(self.client.get(
+            '/global/admin/create_repo/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
             'value')
         post_resp = self.client.post('/global/admin/create_repo/', {
             'xsrf_token': xsrf_token,
             'new_repo': 'idaho'
-        })
+        }, secure=True)
         # Check that the user's redirected to the repo's main admin page.
         assert isinstance(post_resp, django.http.HttpResponseRedirect)
         assert post_resp.url == '/idaho/admin'
