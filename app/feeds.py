@@ -54,7 +54,7 @@ class Repo(BaseFeedsHandler):
     TITLE = 'Person Finder Repository Feed'
 
     repo_required = False
-    https_required = False
+    https_required = True
     # For a deactivated repo, return an empty feed instead of an error page.
     ignore_deactivation = True
 
@@ -127,7 +127,7 @@ class Person(BaseFeedsHandler):
 
 class Note(BaseFeedsHandler):
     # SSL check is done in get() if person_record_id is not specified.
-    https_required = False
+    https_required = True
 
     def get(self):
         # SSL and auth key is not required if a feed for a specific person

@@ -1,16 +1,12 @@
-import os
-import unittest
-
 import django
 import django.test
-from google.appengine.ext import testbed
 
 import model
 
-import django_tests_base
+import view_tests_base
 
 
-class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
+class AdminStatisticsViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(AdminStatisticsViewTests, self).setUp()
@@ -18,10 +14,14 @@ class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
         self.counter = model.UsageCounter.create('haiti')
         self.login(is_admin=True)
 
+    def get_page_doc(self):
+        return self.to_doc(self.client.get('/global/admin/statistics/',
+                                           secure=True))
+
     def test_person_counter(self):
         self.counter.person = 3
         self.counter.put()
-        doc = self.to_doc(self.client.get('/global/admin/statistics/'))
+        doc = self.get_page_doc()
         assert 'haiti' in doc.text
         assert '# Persons' in doc.text
         assert doc.cssselect_one('#haiti-persons').text == '3'
@@ -30,7 +30,7 @@ class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
         self.counter.note = 5
         self.counter.unspecified = 5
         self.counter.put()
-        doc = self.to_doc(self.client.get('/global/admin/statistics/'))
+        doc = self.get_page_doc()
         assert 'haiti' in doc.text
         assert '# Note' in doc.text
         assert doc.cssselect_one('#haiti-notes').text == '5'
@@ -40,7 +40,7 @@ class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
         self.counter.note = 1
         self.counter.is_note_author = 1
         self.counter.put()
-        doc = self.to_doc(self.client.get('/global/admin/statistics/'))
+        doc = self.get_page_doc()
         assert doc.cssselect_one('#haiti-num_notes_is_note_author').text == '1'
 
     def test_status_counter(self):
@@ -48,7 +48,7 @@ class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
         def set_counter_and_check(status_name, num):
             setattr(self.counter, status_name, num)
             self.counter.put()
-            doc = self.to_doc(self.client.get('/global/admin/statistics/'))
+            doc = self.get_page_doc()
             assert 'haiti' in doc.text
             assert status_name in doc.text
             assert doc.cssselect_one(

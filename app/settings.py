@@ -36,9 +36,11 @@ if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
     # If DEBUG is True and ALLOWED_HOSTS is empty, Django permits localhost.
     ALLOWED_HOSTS = []
+    SECURE_SSL_REDIRECT = False
 else:
     DEBUG = False
     ALLOWED_HOSTS = site_settings.PROD_ALLOWED_HOSTS
+    SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -61,6 +63,12 @@ ROOT_URLCONF = 'urls'
 # unecessary redirects, so we just put optional trailing slashes in the URL
 # configuration.
 APPEND_SLASH = False
+
+# App Engine issues HTTP requests for tasks, so we don't force HTTPS for them.
+SECURE_REDIRECT_EXEMPT = [r'^.*/tasks/.*']
+if site_settings.OPTIONAL_PATH_PREFIX:
+  SECURE_REDIRECT_EXEMPT += [
+      r'^%s/.*/tasks/.*' % site_settings.OPTIONAL_PATH_PREFIX]
 
 TEMPLATES = [
     {

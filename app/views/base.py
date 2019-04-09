@@ -198,6 +198,10 @@ class BaseView(django.views.View):
                                    get_vars, 0),
             status=status_code)
 
+    def error(self, status_code, message=''):
+        return django.http.HttpResponse(
+            content=message, content_type='text/plain', status=status_code)
+
     @django.utils.decorators.classonlymethod
     def as_view(cls, **initkwargs):
         # pylint: disable=E,W,R,C
