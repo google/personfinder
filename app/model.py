@@ -772,6 +772,10 @@ class ApiKeyManagementLog(db.Model):
     repo = db.StringProperty(required=True)
     api_key = db.StringProperty(required=True)
     action = db.StringProperty(required=True, choices=ACTIONS)
+    # The IP address of the admin making the change.
+    ip_address = db.StringProperty()
+    # A string representation of the state of the key after this action.
+    key_state = db.TextProperty()
 
     @property
     def authorization(self):

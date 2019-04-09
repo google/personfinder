@@ -62,6 +62,14 @@ ROOT_URLCONF = 'urls'
 # configuration.
 APPEND_SLASH = False
 
+SECURE_SSL_REDIRECT = True
+
+# App Engine issues HTTP requests for tasks, so we don't force HTTPS for them.
+SECURE_REDIRECT_EXEMPT = [r'^.*/tasks/.*']
+if site_settings.OPTIONAL_PATH_PREFIX:
+  SECURE_REDIRECT_EXEMPT += [
+      r'^%s/.*/tasks/.*' % site_settings.OPTIONAL_PATH_PREFIX]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

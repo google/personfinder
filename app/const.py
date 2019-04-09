@@ -20,7 +20,7 @@ from __future__ import absolute_import
 from django.utils.translation import gettext_lazy as _
 
 # The root URL of this application.
-ROOT_URL = 'http://google.org/personfinder'
+ROOT_URL = 'https://google.org/personfinder'
 
 # The domain name of this application.  The application hosts multiple
 # repositories; each repository ID is https://<HOME_DOMAIN>/<REPO>.
