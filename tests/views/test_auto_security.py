@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 """Access restriction tests."""
 
 import collections
@@ -23,6 +24,8 @@ import utils
 
 import view_tests_base
 
+
+# A tuple containing configuration for automatic security tests for a path.
 PathTestInfo = collections.namedtuple(
     'PathTestInfo',
     [
@@ -34,11 +37,12 @@ PathTestInfo = collections.namedtuple(
         'restricted_to_admins',
         # Whether POST requests should require an XSRF token.
         'requires_xsrf',
-        # A dict with valid POST data, excluding an XSRF token (the tests will add,
-        # or omit, the XSRF tokens). Should be None if XSRF isn't used for the page.
-        'sample_post_data',
-        # The action ID used for XSRF tokens. Should be None if XSRF isn't used for
+        # A dict with valid POST data, excluding an XSRF token (the tests will
+        # add, or omit, the XSRF tokens). Should be None if XSRF isn't used for
         # the page.
+        'sample_post_data',
+        # The action ID used for XSRF tokens. Should be None if XSRF isn't used
+        # for the page.
         'xsrf_action_id',
     ])
 
@@ -47,6 +51,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
     """Tests that access restrictions are enforced."""
     # pylint: disable=no-self-use
 
+    # A map from path names (defined in urls.py) to PathTestInfo tuples.
     PATH_TEST_INFO = {
         'admin-create-repo':
         PathTestInfo(
