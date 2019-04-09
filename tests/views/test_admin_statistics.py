@@ -1,16 +1,12 @@
-import os
-import unittest
-
 import django
 import django.test
-from google.appengine.ext import testbed
 
 import model
 
-import django_tests_base
+import view_tests_base
 
 
-class AdminStatisticsViewTests(django_tests_base.DjangoTestsBase):
+class AdminStatisticsViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(AdminStatisticsViewTests, self).setUp()

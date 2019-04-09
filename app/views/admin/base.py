@@ -41,6 +41,7 @@ class AdminBaseView(views.base.BaseView):
                 repo=repo, url=self.build_absolute_path('/%s/admin' % repo))
             for repo in sorted(model.Repo.list())
         ]
+        self.xsrf_tool = utils.XsrfTool()
 
     def dispatch(self, request, *args, **kwargs):
         # All the admin pages, and only the admin pages, require the user to be
