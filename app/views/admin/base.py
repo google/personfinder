@@ -24,10 +24,6 @@ import views.base
 class AdminBaseView(views.base.BaseView):
     """Base view for admin views."""
 
-    _POST_PARAMETERS = {
-        'xsrf_token': utils.strip,
-    }
-
     class Env(views.base.BaseView.Env):
         """Class to store environment information used by views and templates.
         """
@@ -82,7 +78,7 @@ class AdminBaseView(views.base.BaseView):
         return views.base.read_params(
             super(AdminBaseView, self).get_params(),
             self.request,
-            post_params=AdminBaseView._POST_PARAMETERS)
+            post_params={'xsrf_token': utils.strip})
 
     def dispatch(self, request, *args, **kwargs):
         """See docs on django.views.View.dispatch."""

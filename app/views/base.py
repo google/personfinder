@@ -33,15 +33,12 @@ class BaseView(django.views.View):
     # This should be overridden by subclasses.
     ACTION_ID = None
 
-    _GET_PARAMETERS = {
-        'lang': utils.strip,
-    }
-
     class Env(object):
         """Class to store environment information used by views and templates.
 
         Subclasses of BaseView may define their own Env class (which must be
-        subclasses of BaseView.Env).
+        subclasses of BaseView.Env); that Env class (as long as it's called
+        "Env") will be used automatically when the env is set up.
         """
         # pylint: disable=attribute-defined-outside-init
         # pylint: disable=too-many-instance-attributes
@@ -178,12 +175,20 @@ class BaseView(django.views.View):
     def get_params(self):
         """Gets parameter values out of the request.
 
+        Subclasses that need additional values should override this function,
+        with an implementation like this:
+        return views.base.read_params(
+            super(<Subclass>, self).get_params(),
+            self.request,
+            get_params={'x': validate_x, 'y': validate_y,},
+            post_params={'z': validate_z})
+
         Returns:
             utils.Struct: A container with the values of CGI parameters used by
             this view.
         """
         return read_params(
-            utils.Struct(), self.request, get_params=BaseView._GET_PARAMETERS)
+            utils.Struct(), self.request, get_params={'lang': utils.strip})
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
