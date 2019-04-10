@@ -27,7 +27,7 @@ import views.admin.statistics
 _BASE_URL_PATTERNS = [('admin-apikeys-list', r'global/admin/api_keys/list/?',
                        views.admin.api_keys.ApiKeyListView.as_view),
                       ('admin-apikeys-manage', r'global/admin/api_keys/?',
-                       views.amdin.api_keys.ApiKeyManagementView.as_view),
+                       views.admin.api_keys.ApiKeyManagementView.as_view),
                       ('admin-create-repo', r'global/admin/create_repo/?',
                        views.admin.create_repo.AdminCreateRepoView.as_view),
                       ('admin-statistics', r'global/admin/statistics/?',
