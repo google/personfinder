@@ -44,3 +44,19 @@ class ApiKeyListView(views.admin.base.AdminBaseView):
             authorizations=auths,
             xsrf_token=self.xsrf_tool.generate_token(
                self.env.user.user_id(), 'admin_api_keys'))
+
+
+class ApiKeyManagementView(views.admin.base.AdminBaseView):
+    """The API key management view, for creating or editing keys.
+
+    The way navigation works for the API key pages is a little bit odd: to see
+    this page, you make a _POST_ request. I think this was probably to keep API
+    keys out of URLs, but I'm not sure.
+    """
+
+    ACTION_ID = 'admin/api_keys'
+
+    def post(self, request, *args, **kwargs):
+        if not (self.params.get('xsrf_token') and self.xsrf_tool.verify_token(
+            self.params.xsrf_token, self.env.user.user_id(), 'admin_api_keys')):
+            return self.error(403)
