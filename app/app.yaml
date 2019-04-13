@@ -41,6 +41,8 @@ handlers:
   script: wsgi.application
 - url: /.*/admin/statistics.*
   script: wsgi.application
+- url: /.*/sitemap.*
+  script: wsgi.application
 - url: .*
   script: main.py
 
