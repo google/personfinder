@@ -43,6 +43,8 @@ handlers:
   script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
+- url: /.*/tasks/sitemap_ping.*
+  script: wsgi.application
 - url: .*
   script: main.py
 

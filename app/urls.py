@@ -17,6 +17,7 @@
 from django.conf import urls
 
 import site_settings
+import tasksmodule.sitemap_ping
 import views.admin.create_repo
 import views.admin.statistics
 import views.meta.sitemap
@@ -29,7 +30,9 @@ _BASE_URL_PATTERNS = [('admin-create-repo', r'global/admin/create_repo/?',
                       ('admin-statistics', r'global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view),
                       ('meta-sitemap', r'global/sitemap/?',
-                       views.meta.sitemap.SitemapView.as_view),]
+                       views.meta.sitemap.SitemapView.as_view),
+                      ('tasks-sitemap-ping', r'global/tasks/sitemap_ping/?',
+                       tasksmodule.sitemap_ping.SitemapPingTaskView.as_view),]
 
 # pylint: disable=invalid-name
 # Pylint would prefer that this name be uppercased, but Django's going to look

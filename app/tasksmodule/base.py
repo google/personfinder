@@ -13,6 +13,11 @@
 # limitations under the License.
 """Code shared by task view modules."""
 
+import logging
+
+import django.http
+
+import utils
 import views.base
 
 
@@ -27,7 +32,8 @@ class TasksBaseView(views.base.BaseView):
         # There are various reasons we'd prefer to prevent external users from
         # starting up tasks (e.g., because some tasks might be expensive
         # operations).
-        if not request.META.get('X-AppEngine-TaskName'):
+        if not (request.META.get('X-AppEngine-TaskName') or
+                utils.is_dev_app_server()):
             logging.warn('Non-taskqueue access of: %s' % self.request.path)
-            return self.error(403)
+            return django.http.HttpResponse(status=403)
         return super(TasksBaseView, self).dispatch(request, args, kwargs)
