@@ -32,7 +32,10 @@ class TasksBaseView(views.base.BaseView):
         # There are various reasons we'd prefer to prevent external users from
         # starting up tasks (e.g., because some tasks might be expensive
         # operations).
-        if not (request.META.get('X-AppEngine-TaskName') or
+        # Django renames headers, so X-AppEngine-TaskName will be in the META
+        # dictionary as HTTP_X_APPENGINE_TASKNAME:
+        # https://docs.djangoproject.com/en/1.11/ref/request-response/#django.http.HttpRequest.META
+        if not (request.META.get('HTTP_X_APPENGINE_TASKNAME') or
                 utils.is_dev_app_server()):
             logging.warn('Non-taskqueue access of: %s' % self.request.path)
             return django.http.HttpResponse(status=403)
