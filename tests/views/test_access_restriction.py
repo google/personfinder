@@ -13,6 +13,8 @@
 # limitations under the License.
 """Access restriction tests."""
 
+import os
+
 import django.urls
 
 import urls
@@ -81,25 +83,8 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
                 # versions.
                 continue
             if pattern.name.startswith('tasks_'):
-                # Skip task handlers; they're tested separately below.
+                # Skip task handlers; they'll be tested separately.
+                # TODO(nworden): test them
                 continue
             assert (
                 pattern.name in AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS)
-
-    def test_gae_task_header_required(self):
-        """Tests that tasks can only be called by App Engine.
-
-        App Engine sets a special header (and strips it out of external
-        requests); we use that to reject external requests to task handlers.
-        """
-        for pattern in urls.urlpatterns:
-            if pattern.name.startswith('prefixed__'):
-                # Skip these; they're the same views as the non-prefixed
-                # versions.
-                continue
-            if not pattern.name.startswith('tasks_'):
-                # Skip views that aren't task handlers; they're tested
-                # elsewhere.
-                continue
-            path = django.urls.reverse(pattern.name)
-            assert self.client.get(path).status_code == 403
