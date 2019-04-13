@@ -7,8 +7,6 @@ import django
 import django.test
 from google.appengine.ext import testbed
 
-import const
-
 
 class TaskTestsBase(unittest.TestCase):
     """A base class for tests for tasks."""
