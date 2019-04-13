@@ -38,5 +38,5 @@ class TasksBaseView(views.base.BaseView):
         if not (request.META.get('HTTP_X_APPENGINE_TASKNAME') or
                 utils.is_dev_app_server()):
             logging.warn('Non-taskqueue access of: %s' % self.request.path)
-            return django.http.HttpResponse(status=403)
+            return self.error(status_code=403)
         return super(TasksBaseView, self).dispatch(request, args, kwargs)

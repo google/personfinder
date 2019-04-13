@@ -25,13 +25,13 @@ import views.meta.sitemap
 # We include an optional trailing slash in all the patterns (Django has support
 # for automatic redirection, but we don't want to send people redirect responses
 # if it's not really needed).
-_BASE_URL_PATTERNS = [('admin-create-repo', r'global/admin/create_repo/?',
+_BASE_URL_PATTERNS = [('admin_create-repo', r'global/admin/create_repo/?',
                        views.admin.create_repo.AdminCreateRepoView.as_view),
-                      ('admin-statistics', r'global/admin/statistics/?',
+                      ('admin_statistics', r'global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view),
-                      ('meta-sitemap', r'global/sitemap/?',
+                      ('meta_sitemap', r'global/sitemap/?',
                        views.meta.sitemap.SitemapView.as_view),
-                      ('tasks-sitemap-ping', r'global/tasks/sitemap_ping/?',
+                      ('tasks_sitemap-ping', r'global/tasks/sitemap_ping/?',
                        tasksmodule.sitemap_ping.SitemapPingTaskView.as_view),]
 
 # pylint: disable=invalid-name
@@ -50,6 +50,6 @@ if site_settings.OPTIONAL_PATH_PREFIX:
                 'path': path_exp
             },
             view_func(),
-            name='prefixed:%s' % name)
+            name='prefixed__%s' % name)
         for (name, path_exp, view_func) in _BASE_URL_PATTERNS
     ]

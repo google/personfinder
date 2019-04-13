@@ -27,8 +27,9 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
     IS_RESTRICTED_TO_ADMINS = {
-        'admin-create-repo': True,
-        'admin-statistics': True,
+        'admin_create-repo': True,
+        'admin_statistics': True,
+        'meta_sitemap': False,
     }
 
     def test_blocked_to_non_admins(self):
@@ -75,9 +76,30 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
         so we require that each URL path is included in the dictionary above.
         """
         for pattern in urls.urlpatterns:
-            if pattern.name.startswith('prefixed:'):
+            if pattern.name.startswith('prefixed__'):
                 # Skip these; they're the same views as the non-prefixed
                 # versions.
                 continue
+            if pattern.name.startswith('tasks_'):
+                # Skip task handlers; they're tested separately below.
+                continue
             assert (
                 pattern.name in AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS)
+
+    def test_gae_task_header_required(self):
+        """Tests that tasks can only be called by App Engine.
+
+        App Engine sets a special header (and strips it out of external
+        requests); we use that to reject external requests to task handlers.
+        """
+        for pattern in urls.urlpatterns:
+            if pattern.name.startswith('prefixed__'):
+                # Skip these; they're the same views as the non-prefixed
+                # versions.
+                continue
+            if not pattern.name.startswith('tasks_'):
+                # Skip views that aren't task handlers; they're tested
+                # elsewhere.
+                continue
+            path = django.urls.reverse(pattern.name)
+            assert self.client.get(path).status_code == 403
