@@ -19,6 +19,7 @@ import logging
 import requests
 import requests_toolbelt.adapters.appengine
 import six.moves.urllib as urllib
+import six.moves.urllib.parse as urlparse
 import time
 
 from google.appengine.api import taskqueue
@@ -84,7 +85,13 @@ class SitemapPingTaskView(tasksmodule.base.TasksBaseView):
             return django.http.HttpResponse(status=500)
 
     def _ping_indexer(self, search_engine):
+        # App Engine makes HTTP requests to tasks, so building a URL based on
+        # the request will use HTTP instead of HTTPS, but we want to send search
+        # engines HTTPS URLs.
         sitemap_url = self.build_absolute_uri('/global/sitemap')
+        sitemap_url_parts = list(urlparse.urlparse(sitemap_url))
+        sitemap_url_parts[0] = 'https'  # 0 is the index of the scheme part.
+        sitemap_url = urlparse.urlunparse(sitemap_url_parts)
         ping_url = _INDEXER_MAP[search_engine] % urllib.parse.quote(sitemap_url)
         response = requests.get(ping_url)
         if response.status_code == 200:
