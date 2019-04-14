@@ -71,6 +71,14 @@ if site_settings.OPTIONAL_PATH_PREFIX:
   SECURE_REDIRECT_EXEMPT += [
       r'^%s/.*/tasks/.*' % site_settings.OPTIONAL_PATH_PREFIX]
 
+# Based on the Strict CSP example here:
+# https://csp.withgoogle.com/docs/strict-csp.html
+CSP_INCLUDE_NONCE_IN = ('script-src',)
+CSP_BASE_URI = "'none'"
+CSP_OBJECT_SRC = "'none'"
+CSP_SCRIPT_SRC = ("'unsafe-inline'", "'unsafe-eval'",
+                  "'strict-dynamic' https: http:",)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
