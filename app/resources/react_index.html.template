@@ -28,7 +28,7 @@
 <body>
   <div id="root"></div>
   <noscript>This won't work without JS.</noscript>
-  <script nonce="{{csp_nonce}}" src="/static/ui_bundles/{{env.lang}}-bundle.js"></script>
+  <script nonce="{{nonce}}" src="/static/ui_bundles/{{env.lang}}-bundle.js"></script>
 </body>
 
 </html>
