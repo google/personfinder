@@ -38,7 +38,7 @@ elif [ "$command" == "yapf-check" ]; then
 elif [ "$command" == "pylint-check" ]; then
     # Pylint apparently runs some stuff, including App Engine code that expects
     # this to be set.
-    SERVER_SOFTWARE="testing"
+    export SERVER_SOFTWARE="testing"
     $PYLINT $file_list
 else
     echo "Usage: tools/lint [yapf-fix|yapf-check|pylint-check]"
