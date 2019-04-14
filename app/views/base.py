@@ -263,6 +263,7 @@ class BaseView(django.views.View):
             # already has the config anyway
             template_vars['config'] = self.env.config
             template_vars['params'] = self.params
+            template_vars['csp_nonce'] = self.request.csp_nonce
             return template_vars
 
         query_str = self.request.META.get('QUERY_STRING', '')
