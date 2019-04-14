@@ -87,7 +87,9 @@
   {% endif %}
   {% if onload_function and not env.amp %}
     <script type="text/javascript" nonce="{{csp_nonce}}">
-      document.addEventListener('DOMContentLoaded', {{onload_function}});
+      document.addEventListener('DOMContentLoaded', function() {
+        {{onload_function}}();
+      });
     </script>
   {% endif %}
 {% endblock head %}</head>
