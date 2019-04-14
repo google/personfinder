@@ -210,7 +210,10 @@
               >{% trans "Terms of Service" %}</a>
         {% endblock sidenav %}
       </div>
-      <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+      <div id="overlay" class="overlay"></div>
+      <script type="text/javascript" nonce="{{csp_nonce}}">
+        document.querySelector('#overlay').addEventListener('click', hideSideMenu);
+      </script>
     {% endif %}
   {% endblock body %}
 </body></html>
