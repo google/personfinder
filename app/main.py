@@ -545,7 +545,7 @@ class Main(webapp.RequestHandler):
                 response.out.write(
                     resources.get_rendered(
                         'react_index.html', env.lang,
-                        get_vars=lambda: {'env': env, 'nonce': csp_nonce}))
+                        get_vars=lambda: {'env': env, 'csp_nonce': csp_nonce}))
                 return
 
         if not env.action and not env.repo:
