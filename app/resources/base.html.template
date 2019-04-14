@@ -74,7 +74,7 @@
        rel="stylesheet"
        href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
     {% if env.enable_javascript %}
-      <script type="text/javascript">
+      <script type="text/javascript" nonce="{{csp_nonce}}">
         var lang = '{{env.lang}}';
         {% if env.enable_translate %}
           var translate_api_key = '{{config.translate_api_key}}';
@@ -85,11 +85,14 @@
       <script src="{{env.global_url}}/forms.js"></script>
     {% endif %}
   {% endif %}
+  {% if onload_function and not env.amp %}
+    <script type="text/javascript" nonce="{{csp_nonce}}">
+      document.addEventListener('DOMContentLoaded', {{onload_function}});
+    </script>
+  {% endif %}
 {% endblock head %}</head>
 
-<body
-    class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
-    {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
+<body class="{{env.ui}} {% block extra_body_class %}{% endblock %}">
   {% block body %}
     {% if env.amp and env.enable_analytics %}
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_gtm_id}}"

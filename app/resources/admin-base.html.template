@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block body %}
-  <script>
+  <script nonce="{{csp_nonce}}">
     function $(id) {
       return document.getElementById(id);
     }

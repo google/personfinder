@@ -75,7 +75,7 @@ class Handler(BaseHandler):
         self.render('multiview.html',
                     person=person, any=any_person,
                     cols=len(person['full_name']) + 1,
-                    onload_function='view_page_loaded()', markdup=True,
+                    onload_function='view_page_loaded', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)
 
     def post(self):
