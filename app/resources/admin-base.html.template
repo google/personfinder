@@ -19,11 +19,14 @@
 {% endblock %}
 
 {% block logo %}
-  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">{% trans "Google Person Finder" %}
+  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu">{% trans "Google Person Finder" %}
+  <script type="text/javascript" nonce="{{csp_nonce}}">
+    document.querySelector('#menu-button').addEventListener('click', showSideMenu);
+  </script>
 {% endblock %}
 
 {% block body %}
-  <script>
+  <script nonce="{{csp_nonce}}">
     function $(id) {
       return document.getElementById(id);
     }
@@ -52,8 +55,8 @@
     <a href="{{env.global_url}}/admin/statistics">Historical statistics</a>
 
   <h2>Repository</h2>
-  <form method="get" style="display: inline-block" class="admin">
-    <select name="repo" id="select_repo" onchange="select_repo_changed()">
+  <form method="get" class="admin" id="admin-reposelector">
+    <select name="repo" id="select_repo">
       {% if not env.repo %}
         <option>Select a repository:</option>
       {% endif %}
@@ -69,6 +72,10 @@
       <option value="__new__">Create new...</option>
     </select>
   </form>
+  <script type="text/javascript" nonce="{{csp_nonce}}">
+    document.getElementById('select_repo').addEventListener(
+        'change', select_repo_changed);
+  </script>
 
   {% if env.repo %}
     <a href="{{env.repo_url}}/admin">Repository settings</a>
