@@ -1146,7 +1146,12 @@ class BaseHandler(webapp.RequestHandler):
         # Check for SSL (unless running local dev app server).
         if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
-                return self.error(403, 'HTTPS is required.')
+                url_parts = list(urlparse.urlparse(self.request.url))
+                url_parts[0] = 'https'  # The 0th part is the scheme.
+                webapp.RequestHandler.redirect(
+                    self, urlparse.urlunparse(url_parts))
+                self.terminate_response()
+                return
 
         # Handles repository alias.
         if self.maybe_redirect_for_repo_alias(request):
