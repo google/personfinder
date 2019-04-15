@@ -22,7 +22,6 @@ we can't forget these tests for a new view).
 
 import collections
 import copy
-import os
 
 import django.urls
 
