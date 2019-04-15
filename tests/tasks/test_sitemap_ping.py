@@ -38,7 +38,8 @@ class SitemapPingTests(task_tests_base.TaskTestsBase):
         with mock.patch('requests.get') as requests_mock:
             res = self.run_task('/global/tasks/sitemap_ping',
                                 {'search_engine': 'google'})
-            assert len(requests_mock.call_args_list) == 1
+            self.assertEqual(len(requests_mock.call_args_list), 1)
             call_args, _ = requests_mock.call_args_list[0]
-            assert call_args[0] == ('https://www.google.com/ping?sitemap='
-                                    'https%3A//testserver/global/sitemap')
+            self.assertEqual(call_args[0],
+                             ('https://www.google.com/ping?sitemap='
+                              'https%3A//testserver/global/sitemap'))
