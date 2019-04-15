@@ -64,7 +64,7 @@ class Handler(BaseHandler):
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
-                    onload_function="add_initial_languages()",
+                    onload_function="add_initial_languages",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
                         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0,
