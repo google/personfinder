@@ -20,7 +20,7 @@ import sys
 
 from const import *
 from model import *
-import sitemap
+from tasksmodule import sitemap_ping
 from utils import *
 import const
 import tasks
@@ -129,7 +129,7 @@ class Handler(BaseHandler):
                         'launch_status',
                         'test_mode',
                     ]):
-                sitemap.SiteMapPing.add_ping_tasks()
+                sitemap_ping.add_ping_tasks()
                 self.redirect('/admin')
 
         elif self.params.operation == 'save_global':

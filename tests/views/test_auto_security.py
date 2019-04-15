@@ -22,6 +22,7 @@ we can't forget these tests for a new view).
 
 import collections
 import copy
+import os
 
 import django.urls
 
@@ -59,7 +60,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     # A map from path names (defined in urls.py) to PathTestInfo tuples.
     PATH_TEST_INFO = {
-        'admin-create-repo':
+        'admin_create-repo':
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
@@ -69,11 +70,19 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'new_repo': 'new-hampshire',
             },
             xsrf_action_id='admin/create_repo'),
-        'admin-statistics':
+        'admin_statistics':
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
             restricted_to_admins=True,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_sitemap':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            restricted_to_admins=False,
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
@@ -212,8 +221,11 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         so we require that each URL path is included in the dictionary above.
         """
         for pattern in urls.urlpatterns:
-            if pattern.name.startswith('prefixed:'):
+            if pattern.name.startswith('prefixed__'):
                 # Skip these; they're the same views as the non-prefixed
                 # versions.
+                continue
+            if pattern.name.startswith('tasks_'):
+                # Skip tasks; they'll be tested separately.
                 continue
             assert pattern.name in AutoSecurityTests.PATH_TEST_INFO
