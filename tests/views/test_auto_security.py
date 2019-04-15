@@ -22,6 +22,7 @@ we can't forget these tests for a new view).
 
 import collections
 import copy
+import os
 
 import django.urls
 
@@ -228,3 +229,23 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 # Skip tasks; they'll be tested separately.
                 continue
             assert pattern.name in AutoSecurityTests.PATH_TEST_INFO
+
+    def test_gae_task_header_required(self):
+        """Tests that tasks can only be called by App Engine.
+
+        App Engine sets a special header (and strips it out of external
+        requests); we use that to reject external requests to task handlers.
+        """
+        # Set this to a non-dev ID, because we permit non-GAE requests in dev.
+        os.environ['APPLICATION_ID'] = 'prod-app'
+        for pattern in urls.urlpatterns:
+            if pattern.name.startswith('prefixed__'):
+                # Skip these; they're the same views as the non-prefixed
+                # versions.
+                continue
+            if not pattern.name.startswith('tasks_'):
+                # Skip views that aren't task handlers; they're tested
+                # elsewhere.
+                continue
+            path = django.urls.reverse(pattern.name)
+            assert self.client.get(path, secure=True).status_code == 403
