@@ -310,8 +310,8 @@ class ConfigTests(ServerTestsBase):
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['', '/query', '/results', '/create', '/view',
                      '/multiview', '/reveal', '/photo', '/embed',
-                     '/gadget', '/delete', '/sitemap', '/api/read',
-                     '/api/write', '/feeds/note', '/feeds/person']:
+                     '/gadget', '/delete', '/api/read', '/api/write',
+                     '/feeds/note', '/feeds/person']:
             doc = self.go('/haiti%s' % path)
             assert 'de<i>acti</i>vated' in doc.content, \
                 'path: %s, content: %s' % (path, doc.content)
