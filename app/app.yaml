@@ -40,6 +40,10 @@ handlers:
   script: wsgi.application
 - url: /.*/admin/statistics.*
   script: wsgi.application
+- url: /.*/sitemap.*
+  script: wsgi.application
+- url: /.*/tasks/sitemap_ping.*
+  script: wsgi.application
 # Everything else is handled by the webapp2 app.
 - url: .*
   script: main.py

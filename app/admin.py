@@ -20,7 +20,7 @@ import sys
 
 from const import *
 from model import *
-import sitemap
+from tasksmodule import sitemap_ping
 from utils import *
 import const
 import tasks
@@ -64,7 +64,7 @@ class Handler(BaseHandler):
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
-                    onload_function="add_initial_languages()",
+                    onload_function="add_initial_languages",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
                         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0,
@@ -129,7 +129,7 @@ class Handler(BaseHandler):
                         'launch_status',
                         'test_mode',
                     ]):
-                sitemap.SiteMapPing.add_ping_tasks()
+                sitemap_ping.add_ping_tasks()
                 self.redirect('/admin')
 
         elif self.params.operation == 'save_global':

@@ -152,7 +152,7 @@ class Handler(BaseHandler):
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,
-                    onload_function='view_page_loaded()',
+                    onload_function='view_page_loaded',
                     show_private_info=show_private_info,
                     admin=users.is_current_user_admin(),
                     dupe_notes_url=dupe_notes_url,

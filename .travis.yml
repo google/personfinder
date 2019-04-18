@@ -26,6 +26,10 @@ install:
       git \
       time \
       unzip
+  # The default version of pip will try to install the latest version of Django
+  # (apparently as part of installing django_csp), which doesn't work because
+  # the latest version of Django requires Python 3.
+  - python -m pip install --upgrade pip setuptools
   - wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.83.zip -O /tmp/appengine.zip
   - unzip -qq /tmp/appengine.zip
   - |
