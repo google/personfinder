@@ -199,7 +199,7 @@ class BaseView(django.views.View):
             return True
         return req_path.startswith('%s/' % site_settings.OPTIONAL_PATH_PREFIX)
 
-    def build_absolute_path(self, path=None):
+    def build_absolute_path(self, path=None, repo=None):
         """Builds an absolute path, including the path prefix if required.
 
         Django's HttpRequest objects have a similar function, but we implement
@@ -210,6 +210,9 @@ class BaseView(django.views.View):
             path (str, optional): A path beginning with a slash (may include a
                 query string), e.g., '/abc?x=y'. If the path argument is not
                 specified or is None, the current request's path will be used.
+            repo (str, optional): A repo ID. If specified, the path will be
+                considered relative to the repo's route. If this is specified,
+                path must also be specified.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -222,9 +225,12 @@ class BaseView(django.views.View):
             # used.
             return self.request.path
         assert path[0] == '/'
+        if repo:
+            path = '/%s%s' % (repo, path)
         if self._request_is_for_prefixed_path():
             return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
-        return path
+        else:
+            return path
 
     def build_absolute_uri(self, path=None):
         """Builds an absolute URI given a path.
@@ -358,15 +364,12 @@ def read_params(container,
     if request.method == 'GET':
         if get_params:
             for key, validator in get_params.items():
-                if key in request.GET:
-                    setattr(container, key, validator(request.GET[key]))
+                setattr(container, key, validator(request.GET.get(key, None)))
     elif request.method == 'POST':
         if post_params:
             for key, validator in post_params.items():
-                if key in request.POST:
-                    setattr(container, key, validator(request.POST[key]))
+                setattr(container, key, validator(request.POST.get(key, None)))
         if file_params:
             for key, validator in file_params.items():
-                if key in request.FILES:
-                    setattr(container, key, validator(request.FILES[key]))
+                setattr(container, key, validator(request.FILES.get(key, None)))
     return container
