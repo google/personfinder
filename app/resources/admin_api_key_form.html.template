@@ -204,8 +204,21 @@
 
   <p>
     <input type="hidden" name="key" value="{{target_key.key}}">
-    <input type="submit" name="submit" value="{{operation_name}}" id="submit"
-           onclick="return validate_fields();">
+    {% if operation_type == 'update' %}
+      <input
+          type="submit"
+	  name="submit"
+	  value="{% trans "Update an existing key" %}"
+	  id="submit"
+          onclick="return validate_fields();">
+    {% else %}
+      <input
+          type="submit"
+	  name="submit"
+	  value="{% trans "Create a new API key" %}"
+	  id="submit"
+          onclick="return validate_fields();">
+    {% endif %}
     <div id="mandatory_field_missing"
          class="mandatory" style="display: none">
       {% trans "Please fill in all the required fields." %}
