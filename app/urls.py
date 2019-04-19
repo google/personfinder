@@ -26,12 +26,13 @@ import views.meta.sitemap
 # We include an optional trailing slash in all the patterns (Django has support
 # for automatic redirection, but we don't want to send people redirect responses
 # if it's not really needed).
-_BASE_URL_PATTERNS = [('admin-apikeys-list',
-                       r'(?P<repo>.+)/admin/api_keys/list/?',
+_BASE_URL_PATTERNS = [('admin_apikeys-list',
+                       r'(?P<repo>[^\/]+)/admin/api_keys/list/?',
                        views.admin.api_keys.ApiKeyListView.as_view),
-                      ('admin-apikeys-manage', r'(?P<repo>.+)/admin/api_keys/?',
+                      ('admin_apikeys-manage',
+                       r'(?P<repo>[^\/]+)/admin/api_keys/?',
                        views.admin.api_keys.ApiKeyManagementView.as_view),
-                      ('admin-create-repo', r'global/admin/create_repo/?',
+                      ('admin_create-repo', r'global/admin/create_repo/?',
                        views.admin.create_repo.AdminCreateRepoView.as_view),
                       ('admin_statistics', r'global/admin/statistics/?',
                        views.admin.statistics.AdminStatisticsView.as_view),

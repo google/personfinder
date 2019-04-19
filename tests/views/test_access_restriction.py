@@ -29,10 +29,20 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
     # Dictionary from path name to a boolean indicating whether the page should
     # be restricted to admins.
     IS_RESTRICTED_TO_ADMINS = {
+        'admin_apikeys-manage': True,
+        'admin_apikeys-list': True,
         'admin_create-repo': True,
         'admin_statistics': True,
         'meta_sitemap': False,
     }
+
+    def get_path(self, path_name):
+        # If we ever have URLs with more interesting things in the path besides
+        # repo, we'll have to rethink this.
+        try:
+            return django.urls.reverse(path_name)
+        except django.urls.NoReverseMatch:
+            return django.urls.reverse(path_name, kwargs={'repo': 'haiti'})
 
     def test_blocked_to_non_admins(self):
         """Tests that admin-only pages aren't available to non-admins."""
@@ -40,7 +50,7 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
         for (path_name, _
             ) in filter(lambda item: item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             assert self.client.get(path, secure=True).status_code == 403
             assert self.client.post(path, secure=True).status_code == 403
 
@@ -57,7 +67,7 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
         for (path_name, _
             ) in filter(lambda item: item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             assert self.client.get(path, secure=True).status_code == 200
             # Don't test POST requests here; they'll need an XSRF token and
             # that'll be covered in a separate test.
@@ -68,7 +78,7 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
         for (path_name, _
             ) in filter(lambda item: not item[1],
                         AccessRestrictionTests.IS_RESTRICTED_TO_ADMINS.items()):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             assert self.client.get(path, secure=True).status_code != 403
 
     def test_all_paths_included(self):
