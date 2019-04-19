@@ -364,12 +364,15 @@ def read_params(container,
     if request.method == 'GET':
         if get_params:
             for key, validator in get_params.items():
-                setattr(container, key, validator(request.GET.get(key, None)))
+                if key in request.GET:
+                    setattr(container, key, validator(request.GET[key]))
     elif request.method == 'POST':
         if post_params:
             for key, validator in post_params.items():
-                setattr(container, key, validator(request.POST.get(key, None)))
+                if key in request.POST:
+                    setattr(container, key, validator(request.POST.get[key]))
         if file_params:
             for key, validator in file_params.items():
-                setattr(container, key, validator(request.FILES.get(key, None)))
+                if key in request.FILES:
+                    setattr(container, key, validator(request.FILES.get[key]))
     return container

@@ -174,8 +174,6 @@ def anchor(href, body):
 
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
-    if string is None:
-        return None
     return string.strip().rstrip('\0')
 
 
@@ -192,7 +190,7 @@ def validate_checkbox(string):
 
 
 def validate_checkbox_as_bool(val):
-    if val and val.lower() in ['on', 'yes', 'true']:
+    if val.lower() in ['on', 'yes', 'true']:
         return True
     return False
 
