@@ -370,9 +370,9 @@ def read_params(container,
         if post_params:
             for key, validator in post_params.items():
                 if key in request.POST:
-                    setattr(container, key, validator(request.POST.get[key]))
+                    setattr(container, key, validator(request.POST[key]))
         if file_params:
             for key, validator in file_params.items():
                 if key in request.FILES:
-                    setattr(container, key, validator(request.FILES.get[key]))
+                    setattr(container, key, validator(request.FILES[key]))
     return container
