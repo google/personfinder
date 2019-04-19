@@ -356,6 +356,13 @@ msgstr ""
 "      et võime saada hiljem algallikast veel ühe koopia.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -371,6 +378,14 @@ msgstr ""
 "loal, saadetakse kirje autorile kinnitussõnum. Kui olete autor, vaadake "
 "pärast alloleval nupul klõpsamist oma meilikontot.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -641,6 +656,9 @@ msgstr "Autori nimi"
 
 msgid "Author's phone number"
 msgstr "Autori telefoninumber"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autoriseerimisvõti"
@@ -1343,9 +1361,6 @@ msgstr "Kuva tundlik teave"
 msgid "Show who marked these duplicates"
 msgstr "Kuva, kes märkis need duplikaadid"
 
-msgid "Sign in"
-msgstr "Logi sisse"
-
 msgid "Sign out"
 msgstr "Logi välja"
 
@@ -1382,9 +1397,6 @@ msgstr "Isiku olek"
 
 msgid "Status of this person:"
 msgstr "Selle isiku olek:"
-
-msgid "Street name only, no number"
-msgstr "Ainult tänava nimi, ilma numbrita"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1693,10 +1705,6 @@ msgstr "Olete selle juba tellinud. "
 
 msgid "You are already unsubscribed."
 msgstr "Olete sellest tellimusest juba loobunud."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Olete praegu sisse logitud kui %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Te ei ole praegu sisse logitud."

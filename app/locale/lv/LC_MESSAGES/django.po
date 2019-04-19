@@ -366,6 +366,13 @@ msgstr ""
 "      vēlāk mēs varam saņemt vēl vienu kopiju no sākotnējā avota.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -383,6 +390,14 @@ msgstr ""
 "    Ja esat autors, pēc tālāk esošās pogas nospiešanas pārbaudiet "
 "e-pastu.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -660,6 +675,9 @@ msgstr "Autora vārds"
 
 msgid "Author's phone number"
 msgstr "Autora tālruņa numurs"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autorizācijas atslēga"
@@ -1366,9 +1384,6 @@ msgstr "Parādīt sensitīvu informāciju"
 msgid "Show who marked these duplicates"
 msgstr "Parādīt, kurš atzīmēja šos dublikātus"
 
-msgid "Sign in"
-msgstr "Pierakstīties"
-
 msgid "Sign out"
 msgstr "Izrakstīties"
 
@@ -1405,9 +1420,6 @@ msgstr "Personas statuss"
 
 msgid "Status of this person:"
 msgstr "Šīs personas statuss:"
-
-msgid "Street name only, no number"
-msgstr "Tikai ielas nosaukums bez mājas numura"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1718,10 +1730,6 @@ msgstr "Jūs jau esat abonents. "
 
 msgid "You are already unsubscribed."
 msgstr "Jūs jau esat anulējis abonēšanu."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Jūs pašlaik esat pierakstījies kā %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Jūs pašlaik neesat pierakstījies."

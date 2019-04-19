@@ -359,6 +359,13 @@ msgstr ""
 "vėliau galime gauti kitą jo kopiją iš pradinio šaltinio.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -376,6 +383,14 @@ msgstr ""
 "Jei esate autorius, patikrinkite el. paštą, spustelėję toliau esantį "
 "mygtuką.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -653,6 +668,9 @@ msgstr "Autoriaus vardas"
 
 msgid "Author's phone number"
 msgstr "Autoriaus telefono numeris"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Prieigos teisės raktas"
@@ -1355,9 +1373,6 @@ msgstr "Rodyti slaptą informaciją"
 msgid "Show who marked these duplicates"
 msgstr "Rodyti, kas pažymėjo šiuos pasikartojančius elementus"
 
-msgid "Sign in"
-msgstr "Prisijungti"
-
 msgid "Sign out"
 msgstr "Atsijungti"
 
@@ -1394,9 +1409,6 @@ msgstr "Asmens būsena"
 
 msgid "Status of this person:"
 msgstr "Šio asmens būsena:"
-
-msgid "Street name only, no number"
-msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1714,10 +1726,6 @@ msgstr "Jau esate užsiprenumeravę. "
 
 msgid "You are already unsubscribed."
 msgstr "Jau esate atšaukę prenumeratą."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Šiuo metu esate prisijungę kaip %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Šiuo metu nesate prisijungę."

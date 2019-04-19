@@ -351,6 +351,13 @@ msgstr ""
 "      появления аналогичных записей, скопированных из источника.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -366,6 +373,14 @@ msgstr ""
 "разрешает отключить или включить заметки. Если вы являетесь автором, "
 "после нажатия на кнопку ниже проверьте свой почтовый ящик.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -635,6 +650,9 @@ msgstr "Имя автора"
 
 msgid "Author's phone number"
 msgstr "Номер телефона автора"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Код авторизации"
@@ -1339,9 +1357,6 @@ msgstr "Показать конфиденциальную информацию"
 msgid "Show who marked these duplicates"
 msgstr "Показать, кто отметил эти записи как дубликаты"
 
-msgid "Sign in"
-msgstr "Войти"
-
 msgid "Sign out"
 msgstr "Выйти"
 
@@ -1378,9 +1393,6 @@ msgstr "Статус человека"
 
 msgid "Status of this person:"
 msgstr "Статус человека:"
-
-msgid "Street name only, no number"
-msgstr "Только название улицы (без номера)"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1688,10 +1700,6 @@ msgstr "Вы уже подписаны. "
 
 msgid "You are already unsubscribed."
 msgstr "Вы уже отменили подписку."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Выполнен вход в аккаунт: %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Вход не выполнен."
