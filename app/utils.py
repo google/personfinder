@@ -43,7 +43,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
-from recaptcha.client import captcha
+import recaptcha.client.captcha
 from babel.dates import format_date
 from babel.dates import format_datetime
 from babel.dates import format_time
@@ -957,7 +957,7 @@ class BaseHandler(webapp.RequestHandler):
         # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
         lang = self.env.lang.split('-')[0]
 
-        return captcha.get_display_html(
+        return recaptcha.client.captcha.get_display_html(
             site_key=config.get('captcha_site_key'),
             use_ssl=use_ssl, error=error_code, lang=lang
         )
@@ -969,11 +969,11 @@ class BaseHandler(webapp.RequestHandler):
         # only locally, for testing purpose.
         faked_captcha_response = self.request.get('faked_captcha_response')
         if faked_captcha_response and self.request.remote_addr == '127.0.0.1':
-            return captcha.RecaptchaResponse(
+            return recaptcha.client.captcha.RecaptchaResponse(
                 is_valid=faked_captcha_response == 'success')
 
         captcha_response = self.request.get('g-recaptcha-response')
-        return captcha.submit(captcha_response)
+        return recaptcha.client.captcha.submit(captcha_response)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
