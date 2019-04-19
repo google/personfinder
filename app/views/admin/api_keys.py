@@ -33,6 +33,7 @@ explain:
    key itself by way of the log entry.
 """
 
+import django.core.exceptions
 import django.shortcuts
 import django.utils.translation as t
 from google.appengine.ext import db
@@ -51,16 +52,7 @@ class ApiKeyListView(views.admin.base.AdminBaseView):
     ACTION_ID = 'admin/api_keys/list'
 
     def get(self, request, *args, **kwargs):
-        """Serves get requests.
-
-        Args:
-            request: Unused.
-            *args: Unused.
-            **kwargs: Unused.
-
-        Returns:
-            HttpResponse: A HTTP response with the API key list.
-        """
+        """Serves a view with a list of API keys."""
         del request, args, kwargs  # unused
         auths = model.Authorization.all().filter(
             'repo = ', self.env.repo or '*')
@@ -120,13 +112,40 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
         else:
             return self._render_form()
 
+    def _make_authorization(self, repo, key_str):
+        """Creates and stores an Authorization entity with the request's params.
+
+        Args:
+            repo (str): The ID of a repository, or '*' for a global key.
+            key_str (str): The key itself.
+
+        Returns:
+            Authorization: An Authorization entity, already put in Datastore.
+        """
+        authorization = model.Authorization.create(
+            repo,
+            key_str,
+            contact_name=self.params.contact_name,
+            contact_email=self.params.contact_email,
+            organization_name=self.params.organization_name,
+            domain_write_permission=self.params.get('domain_write_permission'),
+            read_permission=self.params.get('read_permission'),
+            full_read_permission=self.params.get('full_read_permission'),
+            search_permission=self.params.get('search_permission'),
+            subscribe_permission=self.params.get('subscribe_permission'),
+            mark_notes_reviewed=self.params.get('mark_notes_reviewed'),
+            believed_dead_permission=self.params.get(
+                'believed_dead_permission'),
+            stats_permission=self.params.get('stats_permission'),
+            is_valid=self.params.get('is_valid'))
+        authorization.put()
+        return authorization
+
     def post(self, request, *args, **kwargs):
-        if not (self.params.get('xsrf_token') and self.xsrf_tool.verify_token(
-            self.params.xsrf_token, self.env.user.user_id(), 'admin_api_keys')):
-            return self.error(403)
+        self.enforce_xsrf('admin_api_keys')
 
         # Navigation to an individual key's management page is handled by making
-        # a POST request to this view. When it's such a request the edit_form
+        # a POST request to this view. When it's such a request, the edit_form
         # param will be set.
         if self.params.get('edit_form'):
             authorization = db.get(self.params.get('authorization_key'))
@@ -152,7 +171,7 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
             # URLs, but check just to be safe.
             if existing_authorization.repo != repo:
                 return self.error(400, t.ugettext(
-                    'Authorization already exists for another repo!'
+                    'Authorization already exists for another repo! '
                     'That\'s not expected.'))
             key_str = existing_authorization.api_key
             action = model.ApiKeyManagementLog.UPDATE
@@ -160,23 +179,7 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
             key_str = utils.generate_random_key(_API_KEY_LENGTH)
             action = model.ApiKeyManagementLog.CREATE
 
-        authorization = model.Authorization.create(
-            repo,
-            key_str,
-            contact_name=self.params.contact_name,
-            contact_email=self.params.contact_email,
-            organization_name=self.params.organization_name,
-            domain_write_permission=self.params.get('domain_write_permission'),
-            read_permission=self.params.get('read_permission'),
-            full_read_permission=self.params.get('full_read_permission'),
-            search_permission=self.params.get('search_permission'),
-            subscribe_permission=self.params.get('subscribe_permission'),
-            mark_notes_reviewed=self.params.get('mark_notes_reviewed'),
-            believed_dead_permission=self.params.get(
-                'believed_dead_permission'),
-            stats_permission=self.params.get('stats_permission'),
-            is_valid=self.params.get('is_valid'))
-        authorization.put()
+        authorization = self._make_authorization(repo, key_str)
 
         management_log = model.ApiKeyManagementLog(
             repo=repo,

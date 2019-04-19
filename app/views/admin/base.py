@@ -82,6 +82,23 @@ class AdminBaseView(views.base.BaseView):
             self.request,
             post_params={'xsrf_token': utils.strip})
 
+    def enforce_xsrf(self, action_id):
+        """Verifies the request's XSRF token.
+
+        Checks the request's XSRF token and raises Django's PermissionDenied
+        exception if the request didn't have a token or the token is invalid.
+        As long as it's not caught, this will cause Django to return a 403.
+
+        Args:
+            action_id (str): The action ID used for creating the page's tokens.
+
+        Raises:
+            PermissionDenied: If the request's token is missing or invalid.
+        """
+        if not (self.params.get('xsrf_token') and self.xsrf_tool.verify_token(
+            self.params.xsrf_token, self.env.user.user_id(), action_id)):
+            raise django.core.exceptions.PermissionDenied
+
     def dispatch(self, request, *args, **kwargs):
         """See docs on django.views.View.dispatch."""
         # All the admin pages, and only the admin pages, require the user to be

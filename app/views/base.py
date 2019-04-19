@@ -221,6 +221,7 @@ class BaseView(django.views.View):
             the original request.
         """
         if path is None:
+            assert not repo
             # request.path will already include the path prefix if it's being
             # used.
             return self.request.path

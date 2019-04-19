@@ -210,15 +210,15 @@
     {% if operation_type == 'update' %}
       <input
           type="submit"
-	  name="submit"
-	  value="{% trans "Update an existing key" %}"
-	  id="submit">
+          name="submit"
+          value="{% trans "Update an existing key" %}"
+          id="submit">
     {% else %}
       <input
           type="submit"
-	  name="submit"
-	  value="{% trans "Create a new API key" %}"
-	  id="submit">
+          name="submit"
+          value="{% trans "Create a new API key" %}"
+          id="submit">
     {% endif %}
     <div id="mandatory_field_missing" class="mandatory">
       {% trans "Please fill in all the required fields." %}
