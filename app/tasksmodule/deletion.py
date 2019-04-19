@@ -116,18 +116,34 @@ class CleanupStrayItemsTaskView(tasksmodule.base.PerRepoTaskBaseView):
     """
 
     def schedule_task(self, repo, cursor):
+        """Schedules a new task.
+
+        Should be implemented by subclasses.
+        """
         del self, repo, cursor  # unusued
         raise NotImplementedError()
 
     def get_query(self):
+        """Gets the query for items to possibly delete.
+
+        Should be implemented by subclasses.
+        """
         del self  # unused
         raise NotImplementedError()
 
     def get_person_record_id(self, item):
+        """Gets the ID of the Person record the item is associated with.
+
+        Should be implemented by subclasses.
+        """
         del item  # unused
         raise NotImplementedError()
 
-    def get_person_record_id(self, item):
+    def get_base_timestamp(self, item):
+        """Gets the timestamp to use as the start of the grace period.
+
+        Should be implemented by subclasses.
+        """
         del item  # unused
         raise NotImplementedError()
 

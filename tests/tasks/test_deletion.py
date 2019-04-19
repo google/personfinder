@@ -121,7 +121,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         tq_mock.UnsetStubs()
 
     def test_task(self):
-        # TODO(nworden): break this test up.
+        # TODO(nworden): break this test up into smaller, more isolated tests.
         def assert_past_due_count(expected):
             actual = len(list(model.Person.past_due_records(repo='haiti')))
             assert actual == expected
