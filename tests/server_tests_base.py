@@ -106,7 +106,7 @@ class ServerTestsBase(unittest.TestCase):
         if 'data' in kwargs:
             return self.go(path, kwargs)
         else:
-            return self.go(path, data={'garbage': 'thatmeansnothing'}
+            return self.go(path, data={'garbage': 'thatmeansnothing'})
 
     def set_utcnow_for_test(self, new_utcnow, flush=''):
         """Sets the utils.get_utcnow() clock locally and on the server, and
