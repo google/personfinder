@@ -460,8 +460,7 @@ class Person(Base):
             # in theory, we should always have original_creation_date, but since
             # it was only added recently, we might have legacy
             # records without it.
-            start_date = (self.source_date or self.original_creation_date or
-                          utils.get_utcnow())
+            start_date = self.original_creation_date or utils.get_utcnow()
             return start_date + timedelta(expiration_days)
 
     def put_expiry_flags(self):
@@ -509,12 +508,26 @@ class Person(Base):
         # Permanently delete all related Photos and Notes, but not self.
         self.delete_related_entities()
 
+        was_changed = False
+        # TODO(nworden): consider adding a is_tombstone property or something
+        # like that, so we could just check that instead of checking each
+        # property individually every time.
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
             if name not in ['repo', 'is_expired', 'original_creation_date',
                             'source_date', 'entry_date', 'expiry_date']:
-                setattr(self, name, property.default)
-        self.put()  # Store the empty placeholder record.
+                if name == 'photo':
+                    # If we attempt to access this directly, Datastore will try
+                    # to fetch the actual photo, which won't go well, because we
+                    # just deleted the photo.
+                    cur_value = Person.photo.get_value_for_datastore(self)
+                else:
+                    cur_value = getattr(self, name)
+                if cur_value != property.default:
+                    setattr(self, name, property.default)
+                    was_changed = True
+        if was_changed:
+            self.put()  # Store the empty placeholder record.
 
     def delete_related_entities(self, delete_self=False):
         """Permanently delete all related Photos and Notes, and also self if

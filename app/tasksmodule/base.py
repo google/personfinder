@@ -17,6 +17,7 @@ import logging
 
 import django.http
 
+import model
 import utils
 import views.base
 
@@ -40,3 +41,35 @@ class TasksBaseView(views.base.BaseView):
             logging.warn('Non-taskqueue access of: %s' % self.request.path)
             return self.error(403)
         return super(TasksBaseView, self).dispatch(request, args, kwargs)
+
+
+class PerRepoTaskBaseView(TasksBaseView):
+    """Base class for tasks that should be split up by repo.
+
+    It's fairly common for our cron jobs to be split up by repo (it's the only
+    good way we've thought of to split them up).
+
+    GET requests are used for kicking the jobs off. Subclasses should implement
+    their operations in the POST handler, and should implement schedule_task to
+    handle their task names, parameters, etc.
+    """
+
+    def schedule_task(self, repo, **kwargs):
+        """Schedules a new or continuation task."""
+        del self, repo, kwargs  # unusued
+        raise NotImplementedError()
+
+    def get(self, request, *args, **kwargs):
+        """Schedules tasks."""
+        del request, args, kwargs  # unused
+        if self.env.repo == 'global':
+            for repo in model.Repo.list():
+                self.schedule_task(repo)
+        else:
+            self.schedule_task(self.env.repo)
+        return django.http.HttpResponse('')
+
+    def post(self, request, *args, **kwargs):
+        """Carries out task operations."""
+        del request, args, kwargs  # unused
+        raise NotImplementedError()

@@ -15,10 +15,18 @@ class TaskTestsBase(unittest.TestCase):
     # Engine (other task requests are rejected).
     _REQ_HEADERS = {'HTTP_X_APPENGINE_TASKNAME': 'notempty'}
 
+    def init_testbed_stubs(self):
+        """Initializes the App Engine testbed stubs.
+
+        Subclasses can override this, but should include the user stub even if
+        they don't need it directly (it seems to be required).
+        """
+        self.testbed.init_user_stub()
+
     def setUp(self):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
-        self.testbed.init_user_stub()
+        self.init_testbed_stubs()
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
         django.setup()
         django.test.utils.setup_test_environment()
@@ -28,6 +36,9 @@ class TaskTestsBase(unittest.TestCase):
         self.testbed.deactivate()
         django.test.utils.teardown_test_environment()
 
-    def run_task(self, path, data):
+    def run_task(self, path, data={}, method='GET'):
         """Makes a request to a task handler."""
-        return self.client.get(path, data, **TaskTestsBase._REQ_HEADERS)
+        if method == 'GET':
+            return self.client.get(path, data, **TaskTestsBase._REQ_HEADERS)
+        else:
+            return self.client.post(path, data, **TaskTestsBase._REQ_HEADERS)
