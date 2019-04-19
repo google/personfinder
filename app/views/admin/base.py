@@ -95,8 +95,11 @@ class AdminBaseView(views.base.BaseView):
         Raises:
             PermissionDenied: If the request's token is missing or invalid.
         """
-        if not (self.params.get('xsrf_token') and self.xsrf_tool.verify_token(
-            self.params.xsrf_token, self.env.user.user_id(), action_id)):
+        if not (self.params.get('xsrf_token') and
+                self.xsrf_tool.verify_token(
+                    self.params.get('xsrf_token'),
+                    self.env.user.user_id(),
+                    action_id)):
             raise django.core.exceptions.PermissionDenied
 
     def dispatch(self, request, *args, **kwargs):
