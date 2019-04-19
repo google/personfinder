@@ -3579,6 +3579,8 @@ _feed_profile_url2</pfif:profile_urls>
     def test_expire_clone(self):
         """Confirms that an expiring delete clone record behaves properly."""
         person, note = self.setup_person_and_note('test.google.com')
+        person.original_creation_date = person.source_date
+        person.put()
 
         # Check that they exist
         p123_id = 'test.google.com/person.123'
