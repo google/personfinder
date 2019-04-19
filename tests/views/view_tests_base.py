@@ -18,10 +18,13 @@ class ViewTestsBase(unittest.TestCase):
 
     _USER_ID = 'k'
 
+    def init_testbed_stubs(self):
+        self.testbed.init_user_stub()
+
     def setUp(self):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
-        self.testbed.init_user_stub()
+        self.init_testbed_stubs()
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
         django.setup()
         django.test.utils.setup_test_environment()
