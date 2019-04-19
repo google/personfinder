@@ -3590,7 +3590,7 @@ _feed_profile_url2</pfif:profile_urls>
         doc = self.go('/haiti/view?id=' + p123_id)
         self.advance_utcnow(days=1)  # past the default 40-day expiry period
         # run the process_expirations task
-        doc = self.go('/haiti/tasks/process_expirations')
+        doc = self.run_task('/haiti/tasks/process_expirations')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -3611,7 +3611,7 @@ _feed_profile_url2</pfif:profile_urls>
 
         self.advance_utcnow(days=11)  # past the configured 10-day expiry period
         # run the process_expirations task
-        doc = self.go('/haiti/tasks/process_expirations')
+        doc = self.run_task('/haiti/tasks/process_expirations')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -4354,7 +4354,7 @@ _feed_profile_url2</pfif:profile_urls>
                            'faked_captcha_response=success')
 
         # Run the expirations processing task.
-        doc = self.go('/haiti/tasks/process_expirations')
+        doc = self.run_task('/haiti/tasks/process_expirations')
 
         # The Person and Note records should be marked expired but retain data.
         person = db.get(person.key())
@@ -4404,7 +4404,7 @@ _feed_profile_url2</pfif:profile_urls>
         now = self.advance_utcnow(days=4)
 
         # Run the DeleteExpired task.
-        doc = self.go('/haiti/tasks/process_expirations')
+        doc = self.run_task('/haiti/tasks/process_expirations')
 
         # The Person record should still exist but now be empty.
         # The timestamps should be unchanged.
@@ -4519,7 +4519,7 @@ _feed_profile_url2</pfif:profile_urls>
         now = self.advance_utcnow(days=1)
 
         # Run the expirations processing task.
-        self.go('/haiti/tasks/process_expirations').content
+        self.run_task('/haiti/tasks/process_expirations').content
 
         # The Person record should be hidden but not yet gone.
         # The timestamps should reflect the time that the record was hidden.
