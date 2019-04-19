@@ -460,8 +460,7 @@ class Person(Base):
             # in theory, we should always have original_creation_date, but since
             # it was only added recently, we might have legacy
             # records without it.
-            start_date = (self.source_date or self.original_creation_date or
-                          utils.get_utcnow())
+            start_date = self.original_creation_date or utils.get_utcnow()
             return start_date + timedelta(expiration_days)
 
     def put_expiry_flags(self):
