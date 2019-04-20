@@ -184,6 +184,10 @@ class Handler(BaseHandler):
                 break
 
         config.set_for_repo(repo, **self.__view_config_to_model_config(values))
+        if self.params.operation == 'save_repo':
+            # We don't want to try doing this for global saves; that wouldn't
+            # make sense.
+            self.__update_repo_status(values)
         return True
 
     def __model_config_to_view_config(self, model_config):
@@ -225,3 +229,18 @@ class Handler(BaseHandler):
             else:
                 model_config[name] = value
         return model_config
+
+    def __update_repo_status(self, view_config):
+        repo_entity = model.Repo.get_by_key_name(self.env.repo)
+        launch_status = view_config['launch_status']
+        if launch_status == 'staging':
+            repo_entity.activation_status = model.Repo.ActivationStatus.STAGING
+        elif launch_status == 'activated':
+            repo_entity.activation_status = model.Repo.ActivationStatus.ACTIVE
+        elif launch_status == 'deactivated':
+            repo_entity.activation_status = (
+                model.Repo.ActivationStatus.DEACTIVATED)
+        else:
+            raise Exception('Invalid launch_status value: %s' % launch_status)
+        repo_entity.test_mode = view_config['test_mode']
+        repo_entity.put()
