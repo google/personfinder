@@ -355,6 +355,13 @@ msgstr ""
 "කරුණාකර දැනුවත්වන්න.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -371,6 +378,14 @@ msgstr ""
 "    ඔබ කර්තෘ නම්, පහත බොත්තම ක්ලික් කිරීමෙන් පසුව ඔබගේ ඊ-තැපෑල පරික්ෂා "
 "කරන්න.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -642,6 +657,9 @@ msgstr "කර්තෘගේ නම"
 
 msgid "Author's phone number"
 msgstr "කර්තෘගේ දුරකථන අංකය"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "අනුමැතිය දීමේ යතුර"
@@ -1341,9 +1359,6 @@ msgstr "සංවේදී තොරතුරු පෙන්වන්න"
 msgid "Show who marked these duplicates"
 msgstr "මෙම අනුපිටපත් ලකුණු කළේ කවුදැයි පෙන්වන්න"
 
-msgid "Sign in"
-msgstr "පුරනය වන්න"
-
 msgid "Sign out"
 msgstr "වරනය වන්න"
 
@@ -1380,9 +1395,6 @@ msgstr "පුද්ගලයාගේ තත්ත්වය"
 
 msgid "Status of this person:"
 msgstr "මෙම පුද්ගලයාගේ තත්ත්වය:"
-
-msgid "Street name only, no number"
-msgstr "වීථි නම පමණී, අංකයක් නැත"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1695,10 +1707,6 @@ msgstr "ඔබ දැනටමත් දායක වී ඇත. "
 
 msgid "You are already unsubscribed."
 msgstr "ඔබ දැනටමත් දායකත්වයෙන් ඉවත් වී ඇත."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "ඔබ වර්තමානයේදි %(user_email)s ලෙස පුරනය වී ඇත."
 
 msgid "You are not currently signed in."
 msgstr "ඔබ දැනට පුරා නැත."

@@ -736,6 +736,38 @@ class Authorization(db.Model):
     # redundantly as a separate property so it can be indexed and queried upon.
     repo = db.StringProperty(required=True)
 
+    def summary_str(self):
+        """Generates a summary of the key's current state.
+
+        Meant for logging.
+        """
+        permissions_list = []
+        for permission_field in ['read_permission',
+                                 'full_read_permission',
+                                 'search_permission',
+                                 'subscribe_permission',
+                                 'mark_notes_reviewed',
+                                 'believed_dead_permission',
+                                 'stats_permission']:
+            if getattr(self, permission_field):
+                permissions_list.append(permission_field)
+        permissions = '; '.join(permissions_list)
+        return ('repo: %(repo)s\n'
+                'write domain: %(write_domain)s\n'
+                'permissions: %(permissions)s\n'
+                'valid: %(valid)s\n'
+                'contact name: %(contact_name)s\n'
+                'contact email: %(contact_email)s\n'
+                'organization name: %(org_name)s') % {
+                    'repo': self.repo,
+                    'write_domain': self.domain_write_permission or 'None',
+                    'permissions': permissions,
+                    'valid': self.is_valid,
+                    'contact_name': self.contact_name,
+                    'contact_email': self.contact_email,
+                    'org_name': self.organization_name,
+                }
+
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
     domain_write_permission = db.StringProperty()

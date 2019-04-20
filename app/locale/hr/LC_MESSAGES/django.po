@@ -361,6 +361,13 @@ msgstr ""
 "      možemo kasnije ponovo primiti kopiju zapisa iz originalnog izvora.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -376,6 +383,14 @@ msgstr ""
 "autora zapisa, poslat će mu se poruka za potvrdu. Ako ste vi autor, "
 "provjerite e-poštu nakon što kliknete gumb u nastavku.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -645,6 +660,9 @@ msgstr "Ime autora"
 
 msgid "Author's phone number"
 msgstr "Telefonski broj autora"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ključ za autorizaciju"
@@ -1344,9 +1362,6 @@ msgstr "Prikaži osjetljive informacije"
 msgid "Show who marked these duplicates"
 msgstr "Prikaži tko je označio te duplikate"
 
-msgid "Sign in"
-msgstr "Prijava"
-
 msgid "Sign out"
 msgstr "Odjava"
 
@@ -1383,9 +1398,6 @@ msgstr "Status osobe"
 
 msgid "Status of this person:"
 msgstr "Status te osobe:"
-
-msgid "Street name only, no number"
-msgstr "Samo ulica, bez kućnog broja"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1694,10 +1706,6 @@ msgstr "Već ste pretplaćeni. "
 
 msgid "You are already unsubscribed."
 msgstr "Već ste poništili pretplatu."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Trenutačno ste prijavljeni kao %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Trenutačno niste prijavljeni."

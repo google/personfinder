@@ -363,6 +363,13 @@ msgstr ""
 "fournie par la source d'origine.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
 "courriels après avoir cliqué sur le bouton ci-dessous.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -661,6 +676,9 @@ msgstr "Nom de l'auteur"
 
 msgid "Author's phone number"
 msgstr "Numéro de téléphone de l'auteur"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Clé d'autorisation"
@@ -1396,9 +1414,6 @@ msgstr "Afficher les données sensibles"
 msgid "Show who marked these duplicates"
 msgstr "Afficher la personne ayant signalé ces avis en double"
 
-msgid "Sign in"
-msgstr "Connexion"
-
 msgid "Sign out"
 msgstr "Déconnexion"
 
@@ -1435,9 +1450,6 @@ msgstr "État de la personne"
 
 msgid "Status of this person:"
 msgstr "État de cette personne :"
-
-msgid "Street name only, no number"
-msgstr "Uniquement le nom de la rue, sans numéro"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1761,10 +1773,6 @@ msgstr "Vous êtes déjà abonné. "
 
 msgid "You are already unsubscribed."
 msgstr "Vous êtes déjà désabonné."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Vous êtes actuellement connecté avec l'adresse %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Actuellement, vous n'êtes pas connecté."

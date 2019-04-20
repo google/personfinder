@@ -10,7 +10,7 @@
 
 {% load i18n %}
 
-<script>
+<script nonce="{{csp_nonce}}">
   function $(id) {
     return document.getElementById(id);
   }
@@ -21,7 +21,7 @@
       $('domain_write_permission').value = "";
     }
   }
-  function validate_fields() {
+  function validate_fields(e) {
     $('submit').disabled = true;
     // Check that mandatory fields are filled in.
     var mandatory_fields = ['contact_name', 'contact_email',
@@ -29,10 +29,11 @@
     for (var i = 0; i < mandatory_fields.length; i++) {
       field = $(mandatory_fields[i]);
       if (field != null && field.value.length == 0) {
-        $('mandatory_field_missing').setAttribute('style', '');
+        $('mandatory_field_missing').style.display = '';
         field.focus();
         $('submit').disabled = false;
-        return false;
+        e.preventDefault();
+	return;
       }
     }
     // Check for explicit write permission
@@ -41,20 +42,23 @@
     if (write_field.checked && domain_write_field.value.length == 0) {
        alert('Enter proper value for domain name');
        domain_write_field.focus();
-       $('domain_write_label').setAttribute('class', 'mandatory');
+       $('domain_write_label').classList.add('mandatory');
        $('submit').disabled = false;
-       return false;
+       e.preventDefault();
+       return;
     }
 
-    $('mandatory_field_missing').setAttribute('style', 'display: none');
+    $('mandatory_field_missing').style.display = 'none';
     $('submit').disabled = false;
-    return true;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
     $('write_permission').checked =
         $('domain_write_permission').value.length > 0;
     update_write_domain();
+    $('mandatory_field_missing').style.display = 'none';
+    $('write_permission').addEventListener('change', update_write_domain);
+    $('submit').addEventListener('click', validate_fields);
   });
 </script>
 
@@ -104,8 +108,7 @@
     <legend>Permissions</legend>
 
     <div class="config">
-      <input type="checkbox" name="write_permission" id="write_permission"
-             onChange="update_write_domain();">
+      <input type="checkbox" name="write_permission" id="write_permission">
       <strong>WRITE</strong>:
       Allow the client to create and update person/note records.
       <div class="response">
@@ -204,10 +207,20 @@
 
   <p>
     <input type="hidden" name="key" value="{{target_key.key}}">
-    <input type="submit" name="submit" value="{{operation_name}}" id="submit"
-           onclick="return validate_fields();">
-    <div id="mandatory_field_missing"
-         class="mandatory" style="display: none">
+    {% if operation_type == 'update' %}
+      <input
+          type="submit"
+          name="submit"
+          value="{% trans "Update an existing key" %}"
+          id="submit">
+    {% else %}
+      <input
+          type="submit"
+          name="submit"
+          value="{% trans "Create a new API key" %}"
+          id="submit">
+    {% endif %}
+    <div id="mandatory_field_missing" class="mandatory">
       {% trans "Please fill in all the required fields." %}
     </div>
 </form>

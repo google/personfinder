@@ -8,6 +8,7 @@ import django.test
 from google.appengine.ext import testbed
 
 import const
+import utils
 
 import scrape
 
@@ -15,14 +16,20 @@ import scrape
 class ViewTestsBase(unittest.TestCase):
     """A base class for tests for the Django app."""
 
+    _USER_ID = 'k'
+
+    def init_testbed_stubs(self):
+        self.testbed.init_user_stub()
+
     def setUp(self):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
-        self.testbed.init_user_stub()
+        self.init_testbed_stubs()
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
         django.setup()
         django.test.utils.setup_test_environment()
         self.client = django.test.Client()
+        self._xsrf_tool = utils.XsrfTool()
 
     def tearDown(self):
         self.testbed.deactivate()
@@ -36,9 +43,12 @@ class ViewTestsBase(unittest.TestCase):
         """
         self.testbed.setup_env(
             user_email='kay@mib.gov',
-            user_id='k',
+            user_id=ViewTestsBase._USER_ID,
             user_is_admin='1' if is_admin else '0',
             overwrite=True)
+
+    def xsrf_token(self, action_id):
+        return self._xsrf_tool.generate_token(ViewTestsBase._USER_ID, action_id)
 
     def to_doc(self, response):
         """Produces a scrape.Document from the Django test response.
