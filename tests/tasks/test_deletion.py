@@ -51,7 +51,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
     def setUp(self):
         super(ProcessExpirationsTaskTests, self).setUp()
 
-        model.Repo(key_name='haiti').put()
+        self.data_generator.repo(repo_id='haiti')
         logging.basicConfig(level=logging.INFO, stream=sys.stderr)
         self.mox = None
 
@@ -59,52 +59,14 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
 
         # TODO(nworden): factor out a general-purpose utility for creation of
         # test entities.
-        self.photo = model.Photo.create('haiti', image_data='xyz')
-        self.photo.put()
+        self.photo = self.data_generator.photo()
         self.photo_key = self.photo.key()
-        self.p1 = model.Person.create_original(
-            'haiti',
-            given_name='John',
-            family_name='Smith',
-            home_street='Washington St.',
-            home_city='Los Angeles',
-            home_state='California',
-            home_postal_code='11111',
-            home_neighborhood='Good Neighborhood',
-            author_name='Alice Smith',
-            author_phone='111-111-1111',
-            author_email='alice.smith@gmail.com',
-            photo_url='',
-            photo=self.photo,
-            source_url='https://www.source.com',
-            source_date=datetime.datetime(2010, 1, 1),
-            source_name='Source Name',
-            entry_date=datetime.datetime(2010, 1, 1),
-            expiry_date=datetime.datetime(2010, 2, 1),
-            other='')
-        self.p2 = model.Person.create_original(
-            'haiti',
-            given_name='Tzvika',
-            family_name='Hartman',
-            home_street='Herzl St.',
-            home_city='Tel Aviv',
-            home_state='Israel',
-            source_date=datetime.datetime(2010, 1, 1),
-            entry_date=datetime.datetime(2010, 1, 1),
-            expiry_date=datetime.datetime(2010, 3, 1),
-            other='')
-        self.key_p1 = db.put(self.p1)
-        self.key_p2 = db.put(self.p2)
-        self.n1_1 = model.Note.create_original(
-            'haiti',
-            person_record_id=self.p1.record_id,
-            linked_person_record_id=self.p2.record_id,
-            status=u'believed_missing',
-            author_made_contact=False,
-            entry_date=utils.get_utcnow(),
-            source_date=datetime.datetime(2010, 1, 2))
+        self.p1 = self.data_generator.person_a(photo=self.photo)
+        self.p2 = self.data_generator.person_b()
+        self.key_p1 = self.p1.key()
+        self.key_p2 = self.p2.key()
+        self.n1_1 = self.data_generator.note(person_id=self.p1.record_id)
         self.note_id = self.n1_1.note_record_id
-        db.put(self.n1_1)
         self.to_delete = [self.p1, self.p2, self.n1_1, self.photo]
 
     def test_task_scheduling(self):
@@ -246,45 +208,17 @@ class CleanupStrayNotesTaskTests(task_tests_base.TaskTestsBase):
 
     def setUp(self):
         super(CleanupStrayNotesTaskTests, self).setUp()
-        self.person = model.Person.create_original(
-            'haiti',
-            given_name='Tzvika',
-            family_name='Hartman',
-            home_street='Herzl St.',
-            home_city='Tel Aviv',
-            home_state='Israel',
-            source_date=datetime.datetime(2010, 1, 1),
-            entry_date=datetime.datetime(2010, 1, 1),
-            expiry_date=datetime.datetime(2010, 5, 1),
-            other='')
-        self.person.put()
-        self.note1 = model.Note.create_original(
-            'haiti',
-            person_record_id=self.person.record_id,
-            status=u'believed_missing',
-            author_made_contact=False,
-            entry_date=utils.get_utcnow(),
-            source_date=datetime.datetime(2010, 1, 2),
+        self.person = self.data_generator.person(
+            expiry_date=datetime.datetime(2010, 5, 1))
+        self.note1 = self.data_generator.note(
+            person_id=self.person.record_id,
             original_creation_date=datetime.datetime(2010, 1, 2))
-        self.note1.put()
-        self.note2 = model.Note.create_original(
-            'haiti',
-            person_record_id='notanexistingrecord',
-            status=u'believed_missing',
-            author_made_contact=False,
-            entry_date=utils.get_utcnow(),
-            source_date=datetime.datetime(2010, 3, 15),
+        self.note2 = self.data_generator.note(
+            person_id='notanexistingrecord',
             original_creation_date=datetime.datetime(2010, 3, 15))
-        self.note2.put()
-        self.note3 = model.Note.create_original(
-            'haiti',
-            person_record_id='notanexistingrecord',
-            status=u'believed_missing',
-            author_made_contact=False,
-            entry_date=utils.get_utcnow(),
-            source_date=datetime.datetime(2010, 1, 2),
+        self.note3 = self.data_generator.note(
+            person_id='notanexistingrecord',
             original_creation_date=datetime.datetime(2010, 1, 2))
-        self.note3.put()
 
     def test_task(self):
         utils.set_utcnow_for_test(datetime.datetime(2010, 4, 2))
@@ -305,33 +239,17 @@ class CleanupStraySubscriptionsTaskTests(task_tests_base.TaskTestsBase):
 
     def setUp(self):
         super(CleanupStraySubscriptionsTaskTests, self).setUp()
-        self.person = model.Person.create_original(
-            'haiti',
-            given_name='Tzvika',
-            family_name='Hartman',
-            home_street='Herzl St.',
-            home_city='Tel Aviv',
-            home_state='Israel',
-            source_date=datetime.datetime(2010, 1, 1),
-            entry_date=datetime.datetime(2010, 1, 1),
-            expiry_date=datetime.datetime(2010, 5, 1),
-            other='')
-        self.person.put()
-        self.subscription1 = model.Subscription(
-            repo='haiti', person_record_id=self.person.record_id,
-            email='bert@example.com', language='en',
+        self.person = self.data_generator.person(
+            expiry_date=datetime.datetime(2010, 5, 1))
+        self.subscription1 = self.data_generator.subscription(
+            person_id=self.person.record_id,
             timestamp=datetime.datetime(2010, 1, 2))
-        self.subscription1.put()
-        self.subscription2 = model.Subscription(
-            repo='haiti', person_record_id='notanexistingrecordid',
-            email='bert@example.com', language='en',
+        self.subscription2 = self.data_generator.subscription(
+            person_id='notanexistingrecordid',
             timestamp=datetime.datetime(2010, 3, 15))
-        self.subscription2.put()
-        self.subscription3 = model.Subscription(
-            repo='haiti', person_record_id='notanexistingrecordid',
-            email='bert@example.com', language='en',
+        self.subscription3 = self.data_generator.subscription(
+            person_id='notanexistingrecordid',
             timestamp=datetime.datetime(2010, 1, 2))
-        self.subscription3.put()
 
     def test_task(self):
         utils.set_utcnow_for_test(datetime.datetime(2010, 4, 2))
