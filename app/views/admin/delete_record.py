@@ -1,0 +1,52 @@
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""The admin delete-record page."""
+
+import django.shortcuts
+
+import config
+import const
+import model
+import reveal
+import utils
+import views.admin.base
+
+
+class AdminDeleteRecordView(views.admin.base.AdminBaseView):
+    """The admin delete-record view."""
+
+    ACTION_ID = 'admin/delete_record'
+
+    def setup(self, request, *args, **kwargs):
+        super(AdminDeleteRecordView, self).setup(request, *args, **kwargs)
+
+    def get_params(self):
+        return views.base.read_params(
+            super(AdminCreateRepoView, self).get_params(),
+            self.request,
+            post_params={'id': utils.strip})
+
+    def get(self, request, *args, **kwargs):
+        """Serves GET requests with the deletion form."""
+        del request, args, kwargs  # unused
+        return self.render(
+            'admin_delete_record.html',
+            id='%s/person' % const.HOME_DOMAIN,
+            xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
+                                                     self.ACTION_ID))
+
+    def post(self, request, *args, **kwargs):
+        """Sends the user to the deletion page with a valid signature."""
+        del request, args, kwargs  # unused
+        action = ('delete', self.params.id)
