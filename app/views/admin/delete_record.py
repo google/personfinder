@@ -31,7 +31,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
 
     def get_params(self):
         return views.base.read_params(
-            super(AdminCreateRepoView, self).get_params(),
+            super(AdminDeleteRecordView, self).get_params(),
             self.request,
             post_params={'id': utils.strip})
 
@@ -40,7 +40,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         return self.render(
             'admin_delete_record.html',
-            id='%s/person' % const.HOME_DOMAIN,
+            id='%s/person.' % const.HOME_DOMAIN,
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
 
@@ -49,7 +49,8 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         self.enforce_xsrf(self.ACTION_ID)
         action = ('delete', self.params.id)
+        path = '/delete?' + utils.urlencode(
+            {'id': self.params.id,
+             'signature': reveal.sign(action),})
         return django.shortcuts.redirect(
-            self.build_absolute_uri('/delete', self.env.repo),
-            id=self.params.id,
-            signature=reveal.sign(action))
+            self.build_absolute_uri(path, self.env.repo))
