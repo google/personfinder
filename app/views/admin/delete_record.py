@@ -11,7 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""The admin delete-record page."""
+"""The admin delete-record page.
+
+No deleting is done from this page itself; it's just a way to skip the captcha
+on the user-facing deletion page.
+"""
 
 import django.shortcuts
 
