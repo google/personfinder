@@ -233,7 +233,7 @@ class BaseView(django.views.View):
         else:
             return path
 
-    def build_absolute_uri(self, path=None):
+    def build_absolute_uri(self, path=None, repo=None):
         """Builds an absolute URI given a path.
 
         See build_absolute_path (above) for an explanation of why we implement
@@ -243,6 +243,9 @@ class BaseView(django.views.View):
             path (str, optional): A path beginning with a slash (may include a
                 query string), e.g., '/abc?x=y'. If the path argument is not
                 specified or is None, the current request's path will be used.
+            repo (str, optional): A repo ID. If specified, the path will be
+                considered relative to the repo's route. If this is specified,
+                path must also be specified.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
@@ -250,7 +253,8 @@ class BaseView(django.views.View):
             'http://localhost:8000/personfinder/abc?x=y'). Does not preserve
             query parameters from the original request.
         """
-        return self.request.build_absolute_uri(self.build_absolute_path(path))
+        return self.request.build_absolute_uri(
+            self.build_absolute_path(path, repo))
 
     def render(self, template_name, status_code=200, **template_vars):
         """Renders a template with the given variables.
