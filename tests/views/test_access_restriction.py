@@ -32,6 +32,7 @@ class AccessRestrictionTests(view_tests_base.ViewTestsBase):
         'admin_apikeys-manage': True,
         'admin_apikeys-list': True,
         'admin_create-repo': True,
+        'admin_delete-record': True,
         'admin_statistics': True,
         'meta_sitemap': False,
     }
