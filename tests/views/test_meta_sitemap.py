@@ -34,9 +34,9 @@ class SitemapViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(SitemapViewTests, self).setUp()
-        model.Repo(key_name='haiti').put()
-        model.Repo(key_name='japan').put()
-        model.Repo(key_name='minnesota').put()
+        self.data_generator.repo(repo_id='haiti')
+        self.data_generator.repo(repo_id='japan')
+        self.data_generator.repo(repo_id='minnesota')
         # Set two of the repos as launched; the unlaunched one shouldn't appear
         # in the sitemap.
         config.set_for_repo('haiti', launched=True)

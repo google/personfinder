@@ -1,39 +1,20 @@
 """Tools to help run tests against the Django app."""
 
-import os
-import unittest
-
-import django
-import django.test
-from google.appengine.ext import testbed
-
 import const
 import utils
 
 import scrape
+import testutils.base
 
 
-class ViewTestsBase(unittest.TestCase):
+class ViewTestsBase(testutils.base.ServerTestsBase):
     """A base class for tests for the Django app."""
 
     _USER_ID = 'k'
 
-    def init_testbed_stubs(self):
-        self.testbed.init_user_stub()
-
     def setUp(self):
-        self.testbed = testbed.Testbed()
-        self.testbed.activate()
-        self.init_testbed_stubs()
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-        django.setup()
-        django.test.utils.setup_test_environment()
-        self.client = django.test.Client()
+        super(ViewTestsBase, self).setUp()
         self._xsrf_tool = utils.XsrfTool()
-
-    def tearDown(self):
-        self.testbed.deactivate()
-        django.test.utils.teardown_test_environment()
 
     def login(self, is_admin=False):
         """Logs in the "user" for making requests.

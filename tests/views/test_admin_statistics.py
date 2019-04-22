@@ -10,7 +10,7 @@ class AdminStatisticsViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(AdminStatisticsViewTests, self).setUp()
-        model.Repo(key_name='haiti').put()
+        self.data_generator.repo()
         self.counter = model.UsageCounter.create('haiti')
         self.login(is_admin=True)
 

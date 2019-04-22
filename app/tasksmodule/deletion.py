@@ -197,9 +197,7 @@ class CleanupStrayNotesTask(CleanupStrayItemsTaskView):
         return note.person_record_id
 
     def get_base_timestamp(self, note):
-        # All notes should have a source date, but fall back to the original
-        # creation date (which is automatically generated) just in case.
-        return note.source_date or note.original_creation_date
+        return note.original_creation_date
 
 
 class CleanupStraySubscriptionsTask(CleanupStrayItemsTaskView):

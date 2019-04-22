@@ -70,7 +70,10 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         self.enforce_xsrf(self.ACTION_ID)
         new_repo = self.params.new_repo
-        model.Repo(key_name=new_repo).put()
+        model.Repo(
+            key_name=new_repo,
+            activation_status=model.Repo.ActivationStatus.STAGING,
+            test_mode=False).put()
         # Provide some defaults.
         config.set_for_repo(
             new_repo,
