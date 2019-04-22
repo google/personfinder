@@ -359,6 +359,13 @@ msgstr ""
 "forrásból.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
 "kattintott.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -654,6 +669,9 @@ msgstr "Szerző neve"
 
 msgid "Author's phone number"
 msgstr "Szerző telefonszáma"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Engedélyezési kulcs"
@@ -1365,9 +1383,6 @@ msgstr "Bizalmas adatok megjelenítése"
 msgid "Show who marked these duplicates"
 msgstr "Azok megjelenítése, akik ismétlődőként jelölték meg ezeket"
 
-msgid "Sign in"
-msgstr "Bejelentkezés"
-
 msgid "Sign out"
 msgstr "Kilépés"
 
@@ -1404,9 +1419,6 @@ msgstr "A személy állapota"
 
 msgid "Status of this person:"
 msgstr "A személy állapota:"
-
-msgid "Street name only, no number"
-msgstr "Csak az utca neve, a házszám nem"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1724,10 +1736,6 @@ msgstr "Már feliratkozott. "
 
 msgid "You are already unsubscribed."
 msgstr "Már leiratkozott."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Jelenleg %(user_email)s e-mail címmel van bejelentkezve."
 
 msgid "You are not currently signed in."
 msgstr "Jelenleg nincs bejelentkezve."

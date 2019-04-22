@@ -460,8 +460,7 @@ class Person(Base):
             # in theory, we should always have original_creation_date, but since
             # it was only added recently, we might have legacy
             # records without it.
-            start_date = (self.source_date or self.original_creation_date or
-                          utils.get_utcnow())
+            start_date = self.original_creation_date or utils.get_utcnow()
             return start_date + timedelta(expiration_days)
 
     def put_expiry_flags(self):
@@ -509,12 +508,26 @@ class Person(Base):
         # Permanently delete all related Photos and Notes, but not self.
         self.delete_related_entities()
 
+        was_changed = False
+        # TODO(nworden): consider adding a is_tombstone property or something
+        # like that, so we could just check that instead of checking each
+        # property individually every time.
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
             if name not in ['repo', 'is_expired', 'original_creation_date',
                             'source_date', 'entry_date', 'expiry_date']:
-                setattr(self, name, property.default)
-        self.put()  # Store the empty placeholder record.
+                if name == 'photo':
+                    # If we attempt to access this directly, Datastore will try
+                    # to fetch the actual photo, which won't go well, because we
+                    # just deleted the photo.
+                    cur_value = Person.photo.get_value_for_datastore(self)
+                else:
+                    cur_value = getattr(self, name)
+                if cur_value != property.default:
+                    setattr(self, name, property.default)
+                    was_changed = True
+        if was_changed:
+            self.put()  # Store the empty placeholder record.
 
     def delete_related_entities(self, delete_self=False):
         """Permanently delete all related Photos and Notes, and also self if
@@ -722,6 +735,38 @@ class Authorization(db.Model):
     # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
     repo = db.StringProperty(required=True)
+
+    def summary_str(self):
+        """Generates a summary of the key's current state.
+
+        Meant for logging.
+        """
+        permissions_list = []
+        for permission_field in ['read_permission',
+                                 'full_read_permission',
+                                 'search_permission',
+                                 'subscribe_permission',
+                                 'mark_notes_reviewed',
+                                 'believed_dead_permission',
+                                 'stats_permission']:
+            if getattr(self, permission_field):
+                permissions_list.append(permission_field)
+        permissions = '; '.join(permissions_list)
+        return ('repo: %(repo)s\n'
+                'write domain: %(write_domain)s\n'
+                'permissions: %(permissions)s\n'
+                'valid: %(valid)s\n'
+                'contact name: %(contact_name)s\n'
+                'contact email: %(contact_email)s\n'
+                'organization name: %(org_name)s') % {
+                    'repo': self.repo,
+                    'write_domain': self.domain_write_permission or 'None',
+                    'permissions': permissions,
+                    'valid': self.is_valid,
+                    'contact_name': self.contact_name,
+                    'contact_email': self.contact_email,
+                    'org_name': self.organization_name,
+                }
 
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.

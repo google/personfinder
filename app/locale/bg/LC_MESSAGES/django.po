@@ -357,6 +357,13 @@ msgstr ""
 "по-късно е възможно да получим друго негово копие от първоизточника.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -374,6 +381,14 @@ msgstr ""
 "Ако вие сте авторът, проверете имейла си, след като кликнете върху бутона"
 " по-долу.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -647,6 +662,9 @@ msgstr "Име на автора"
 
 msgid "Author's phone number"
 msgstr "Телефон на автора"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ключ за упълномощаване"
@@ -1352,9 +1370,6 @@ msgstr "Показване на поверителна информация"
 msgid "Show who marked these duplicates"
 msgstr "Показване на човека, означил тези дубликати"
 
-msgid "Sign in"
-msgstr "Вход"
-
 msgid "Sign out"
 msgstr "Изход"
 
@@ -1391,9 +1406,6 @@ msgstr "Състояние на човек"
 
 msgid "Status of this person:"
 msgstr "Състояние на този човек:"
-
-msgid "Street name only, no number"
-msgstr "Само име на улицата, без номер"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1708,10 +1720,6 @@ msgstr "Вече сте абонирани. "
 
 msgid "You are already unsubscribed."
 msgstr "Вече сте отписани."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Понастоящем сте влезли като %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Понастоящем не сте влезли в профила си."

@@ -33,18 +33,26 @@ handlers:
   script: send_mail.py
   login: admin
 
-# Everything else is handled by main.
-- url: /admin/api_keys.*
-  script: admin_api_keys.py
-  secure: always
+# These are the handlers we've migrated to Django.
+- url: /.*/admin/api_keys.*
+  script: wsgi.application
 - url: /.*/admin/create_repo.*
+  script: wsgi.application
+- url: /.*/admin/delete_record.*
   script: wsgi.application
 - url: /.*/admin/statistics.*
   script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
+- url: /.*/tasks/process_expirations.*
+  script: wsgi.application
+- url: /.*/tasks/cleanup_stray_notes.*
+  script: wsgi.application
+- url: /.*/tasks/cleanup_stray_subscriptions.*
+  script: wsgi.application
 - url: /.*/tasks/sitemap_ping.*
   script: wsgi.application
+# Everything else is still handled by the webapp2 app.
 - url: .*
   script: main.py
 

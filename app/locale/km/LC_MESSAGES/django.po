@@ -366,6 +366,13 @@ msgstr ""
 "\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -383,6 +390,14 @@ msgstr ""
 "ប្រសិន​បើ​អ្នក​ជា​អ្នក​និពន្ធ​ "
 "សូម​ពិនិត្យ​មើល​អ៊ីមែល​របស់​អ្នក​បន្ទាប់​ពី​ចុច​ប៊ូតុង​ខាង​ក្រោម​។\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -662,6 +677,9 @@ msgstr "ឈ្មោះ​របស់​អ្នកនិពន្ធ"
 
 msgid "Author's phone number"
 msgstr "លេខ​ទូរស័ព្ទ​របស់​អ្នកនិពន្ធ"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "កូន​សោរ​អនុញ្ញាត"
@@ -1374,9 +1392,6 @@ msgstr "បង្ហាញ​ព័ត៌មាន​សម្ងាត់"
 msgid "Show who marked these duplicates"
 msgstr "បង្ហាញ​អ្នក​ដែល​បាន​សម្គាល់​ទាំង​នេះ​ស្ទួន"
 
-msgid "Sign in"
-msgstr "ចូល"
-
 msgid "Sign out"
 msgstr "ចេញ"
 
@@ -1413,9 +1428,6 @@ msgstr "ស្ថានភាពបុគ្គល"
 
 msgid "Status of this person:"
 msgstr "ស្ថានភាពបុគ្គលនេះ៖"
-
-msgid "Street name only, no number"
-msgstr "តែ​ឈ្មោះ​ផ្លូវ​ប៉ុណ្ណោះ​ គ្មាន​លេខ"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1741,10 +1753,6 @@ msgstr "អ្នក​បាន​ជា​វ​ប្រចាំ​រួច
 
 msgid "You are already unsubscribed."
 msgstr "អ្នក​បាន​ឈប់​ជាវ​ប្រចាំ​រួច​ហើយ​។"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "បច្ចុប្បន្ន​អ្នក​បាន​ចូល​ជា %(user_email)s ។"
 
 msgid "You are not currently signed in."
 msgstr "បច្ចុប្បន្ន​​អ្នក​មិន​បាន​ចូល​ទេ​។"

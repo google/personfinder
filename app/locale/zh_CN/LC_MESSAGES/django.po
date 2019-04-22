@@ -340,6 +340,13 @@ msgstr ""
 "      您可以删除这里的记录，但请注意，我们以后可能会从原始来源收到其他副本。\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -354,6 +361,14 @@ msgstr ""
 "    为了确保只有在获得记录创建者许可的情况下才能停用或启用注释功能，我们会向记录创建者发送确认邮件。\n"
 "    如果您是创建者，点击下方的按钮即可查看相关电子邮件。\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -609,6 +624,9 @@ msgstr "创建者姓名"
 
 msgid "Author's phone number"
 msgstr "创建者的电话号码"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "授权密钥"
@@ -1263,9 +1281,6 @@ msgstr "显示敏感信息"
 msgid "Show who marked these duplicates"
 msgstr "显示将这些注释标为重复的用户"
 
-msgid "Sign in"
-msgstr "登录"
-
 msgid "Sign out"
 msgstr "退出"
 
@@ -1302,9 +1317,6 @@ msgstr "人员状况"
 
 msgid "Status of this person:"
 msgstr "此人的状况："
-
-msgid "Street name only, no number"
-msgstr "输入街道名称即可，无需输入门牌号"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1596,10 +1608,6 @@ msgstr "您已经订阅。 "
 
 msgid "You are already unsubscribed."
 msgstr "您已退订。"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "您当前以 %(user_email)s 的身份登录了帐号。"
 
 msgid "You are not currently signed in."
 msgstr "您当前尚未登录。"

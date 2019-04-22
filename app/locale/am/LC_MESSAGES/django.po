@@ -349,6 +349,13 @@ msgstr ""
 "      ሰርስረን ማውጣት የምንችል መሆኑን እባክዎ ልብ ይበሉ።\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -364,6 +371,14 @@ msgstr ""
 "  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
 "  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -631,6 +646,9 @@ msgstr "የጸሐፊ ስም"
 
 msgid "Author's phone number"
 msgstr "የጸሐፊ ስልክ ቁጥር"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "የፈቀዳ ቁልፍ"
@@ -1306,9 +1324,6 @@ msgstr "ስስ መረጃ አሳይ"
 msgid "Show who marked these duplicates"
 msgstr "ማን እነዚህ የተባዙ የሚል ምልክት እንዳደረገባቸው አሳይ"
 
-msgid "Sign in"
-msgstr "በመለያ ግባ"
-
 msgid "Sign out"
 msgstr "ዘግተህ ውጣ"
 
@@ -1345,9 +1360,6 @@ msgstr "የግለሰብ ሁኔታ"
 
 msgid "Status of this person:"
 msgstr "የዚህ(ች) ግለሰብ ሁኔታ፦"
-
-msgid "Street name only, no number"
-msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1649,10 +1661,6 @@ msgstr "አስቀድመው ለደንበኝነት ተመዝግበዋል። "
 
 msgid "You are already unsubscribed."
 msgstr "አስቀድመው ከደንበኝነት ምዝገባ ወጥተዋል።"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "በአሁኑ ጊዜ እንደ %(user_email)s ሆነው ገብተዋል።"
 
 msgid "You are not currently signed in."
 msgstr "በአሁኑ ጊዜ በመለያ አልገቡም።"

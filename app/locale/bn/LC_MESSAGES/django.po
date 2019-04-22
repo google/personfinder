@@ -363,6 +363,13 @@ msgstr ""
 "      আমরা পরে মূল উৎস থেকে আরেকটি কপি পেতে পারি৷\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "  কনফার্মেশন মেসেজ পাঠানো হবে৷ আপনি যদি লেখক হন, তাহলে নিচের বোতামটি    "
 "ক্লিক করার পর আপনার ইমেল চেক করুন৷\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -651,6 +666,9 @@ msgstr "লেখকের নাম"
 
 msgid "Author's phone number"
 msgstr "লেখকের ফোন নম্বর"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "অনুমোদন কী"
@@ -1356,9 +1374,6 @@ msgstr "ব্যক্তিগত তথ্য দেখান"
 msgid "Show who marked these duplicates"
 msgstr "এইগুলি দৃশগুলিকে কে চিহ্নিত করছেন তা দেখান"
 
-msgid "Sign in"
-msgstr "সাইন-ইন করুন"
-
 msgid "Sign out"
 msgstr "সাইন-আউট করুন"
 
@@ -1395,9 +1410,6 @@ msgstr "ব্যক্তির স্থিতি"
 
 msgid "Status of this person:"
 msgstr "এই ব্যক্তিটির স্থিতি:"
-
-msgid "Street name only, no number"
-msgstr "কেবলমাত্র রাস্তার নাম, কোনো নম্বর নয়"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1711,10 +1723,6 @@ msgstr "আপনি ইতিমধ্যেই সদস্যতা নিয
 
 msgid "You are already unsubscribed."
 msgstr "আপনি ইতিমধ্যে সদস্যতা ত্যাগ করেছেন৷"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "আপনি বর্তমানে %(user_email)s হিসেবে প্রবেশ করে আছেন৷"
 
 msgid "You are not currently signed in."
 msgstr "আপনি বর্তমানে প্রবেশ করে নেই৷"

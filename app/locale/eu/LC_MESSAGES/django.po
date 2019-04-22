@@ -356,6 +356,13 @@ msgstr ""
 "      beste kopia bat jaso dezakegula jatorrizko iturburutik.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "egileari. Egilea zu bazara, begiratu posta elektronikoa beheko botoian "
 "klik egin ondoren.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -647,6 +662,9 @@ msgstr "Egilearen izena"
 
 msgid "Author's phone number"
 msgstr "Egilearen telefono-zenbakia"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Baimen-gakoa"
@@ -1352,9 +1370,6 @@ msgstr "Erakutsi isilpeko informazioa"
 msgid "Show who marked these duplicates"
 msgstr "Erakutsi nork markatu dituen bikoiztu gisa"
 
-msgid "Sign in"
-msgstr "Hasi saioa"
-
 msgid "Sign out"
 msgstr "Amaitu saioa"
 
@@ -1391,9 +1406,6 @@ msgstr "Pertsonaren egoera"
 
 msgid "Status of this person:"
 msgstr "Pertsona honen egoera:"
-
-msgid "Street name only, no number"
-msgstr "Kalearen izena soilik, zenbakirik gabe"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1702,10 +1714,6 @@ msgstr "Dagoeneko harpidetuta zaude. "
 
 msgid "You are already unsubscribed."
 msgstr "Dagoeneko kendu duzu harpidetza."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Unean %(user_email)s gisa duzu saioa hasita."
 
 msgid "You are not currently signed in."
 msgstr "Une honetan ez duzu saioa hasita."

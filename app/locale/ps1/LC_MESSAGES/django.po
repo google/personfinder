@@ -362,6 +362,13 @@ msgstr ""
 "\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -380,6 +387,14 @@ msgstr ""
 "    Îƒ ýöû åré ţĥé åûţĥör, çĥéçķ ýöûr é-måîļ åƒţér çļîçķîñĝ ţĥé bûţţöñ "
 "béļöŵ.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -656,6 +671,9 @@ msgstr "Åûţĥör'š ñåmé"
 
 msgid "Author's phone number"
 msgstr "Åûţĥör'š þĥöñé ñûmbér"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Åûţĥörîžåţîöñ ķéý"
@@ -1350,9 +1368,6 @@ msgstr "Šĥöŵ šéñšîţîvé îñƒörmåţîöñ"
 msgid "Show who marked these duplicates"
 msgstr "Šĥöŵ ŵĥö mårķéð ţĥéšé ðûþļîçåţéš"
 
-msgid "Sign in"
-msgstr "Šîĝñ îñ"
-
 msgid "Sign out"
 msgstr "Šîĝñ öûţ"
 
@@ -1389,9 +1404,6 @@ msgstr "Šţåţûš öƒ Þéršöñ"
 
 msgid "Status of this person:"
 msgstr "Šţåţûš öƒ ţĥîš þéršöñ:"
-
-msgid "Street name only, no number"
-msgstr "Šţrééţ ñåmé öñļý, ñö ñûmbér"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1701,10 +1713,6 @@ msgstr "Ýöû åré åļréåðý šûbšçrîbéð. "
 
 msgid "You are already unsubscribed."
 msgstr "Ýöû åré åļréåðý ûñšûbšçrîbéð."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Ýöû åré çûrréñţļý šîĝñéð îñ åš ᐅ%(user_email)sᐊ."
 
 msgid "You are not currently signed in."
 msgstr "Ýöû åré ñöţ çûrréñţļý šîĝñéð îñ."

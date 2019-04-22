@@ -1,35 +1,21 @@
 """Tools to help run tests against the Django app."""
 
-import os
-import unittest
-
-import django
-import django.test
-from google.appengine.ext import testbed
-
 import const
+import utils
 
 import scrape
+import testutils.base
 
 
-class ViewTestsBase(unittest.TestCase):
+class ViewTestsBase(testutils.base.ServerTestsBase):
     """A base class for tests for the Django app."""
 
     TEST_USER_EMAIL = 'kay@mib.gov'
     TEST_USER_ID = 'k'
 
     def setUp(self):
-        self.testbed = testbed.Testbed()
-        self.testbed.activate()
-        self.testbed.init_user_stub()
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-        django.setup()
-        django.test.utils.setup_test_environment()
-        self.client = django.test.Client()
-
-    def tearDown(self):
-        self.testbed.deactivate()
-        django.test.utils.teardown_test_environment()
+        super(ViewTestsBase, self).setUp()
+        self._xsrf_tool = utils.XsrfTool()
 
     def login(self, is_admin=False):
         """Logs in the "user" for making requests.
@@ -38,10 +24,14 @@ class ViewTestsBase(unittest.TestCase):
            is_admin (bool): Whether the user should be considered an admin.
         """
         self.testbed.setup_env(
-            user_email='kay@mib.gov',
-            user_id='k',
+            user_email=ViewTestsBase.TEST_USER_EMAIL,
+            user_id=ViewTestsBase.TEST_USER_ID,
             user_is_admin='1' if is_admin else '0',
             overwrite=True)
+
+    def xsrf_token(self, action_id):
+        return self._xsrf_tool.generate_token(
+            ViewTestsBase.TEST_USER_ID, action_id)
 
     def to_doc(self, response):
         """Produces a scrape.Document from the Django test response.

@@ -364,6 +364,13 @@ msgstr ""
 "      ಅದರ ಇನ್ನೊಂದು ನಕಲನ್ನು ನಾವು ಸ್ವೀಕರಿಸಬಹುದಾಗಿದೆ ಎಂಬುದು ತಿಳಿದಿರಲಿ.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -381,6 +388,14 @@ msgstr ""
 "    ದೃಢೀಕರಣ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ನೀವು ಲೇಖಕರಾಗಿದ್ದರೆ, ಕೆಳಗಿನ \n"
 "    ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿದ ನಂತರ ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -657,6 +672,9 @@ msgstr "ಲೇಖಕರ ಹೆಸರು"
 
 msgid "Author's phone number"
 msgstr "ಲೇಖಕರ ಫೋನ್ ಸಂಖ್ಯೆ"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "ದೃಢೀಕರಣ ಕೀ"
@@ -1370,9 +1388,6 @@ msgstr "ಸೂಕ್ಷ್ಮ ಮಾಹಿತಿಯನ್ನು ತೋರಿಸ�
 msgid "Show who marked these duplicates"
 msgstr "ಈ ನಕಲುಗಳನ್ನು ಗುರುತಿಸಿದ್ದು ಯಾರು ಎಂಬುದನ್ನು ತೋರಿಸು"
 
-msgid "Sign in"
-msgstr "ಸೈನ್ ಇನ್"
-
 msgid "Sign out"
 msgstr "ಸೈನ್ ಔಟ್"
 
@@ -1409,9 +1424,6 @@ msgstr "ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ"
 
 msgid "Status of this person:"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ:"
-
-msgid "Street name only, no number"
-msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ. ಸಂಖ್ಯೆ ಬೇಡ"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1723,10 +1735,6 @@ msgstr "ನೀವು ಈಗಾಗಲೇ ಚಂದಾದಾರರಾಗಿರು�
 
 msgid "You are already unsubscribed."
 msgstr "ನೀವು ಈಗಾಗಲೇ ಅನ್‌ಸಬ್‌ಸ್ಕ್ರೈಬ್ ಆಗಿರುವಿರಿ."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "ನೀವು ಪ್ರಸ್ತುತ %(user_email)s ಅಂತೆ ಸೈನ್‌ ಇನ್‌ ಆಗಿರುವಿರಿ."
 
 msgid "You are not currently signed in."
 msgstr "ನೀವು ಪ್ರಸ್ತುತ ಸೈನ್ ಇನ್ ಮಾಡಿಲ್ಲ."

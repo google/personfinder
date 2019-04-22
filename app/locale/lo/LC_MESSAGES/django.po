@@ -355,6 +355,13 @@ msgstr ""
 "      ພວກເຮົາອາດໄດ້ຮັບສຳເນົາອັນໃໝ່ຈາກແຫຼ່ງທີ່ມາຕົ້ນສະບັບອີກ.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -370,6 +377,14 @@ msgstr ""
 "  ຜູ່ຂຽນບັນທຶກ, ຂໍ້ຄວາມເພື່ອຢືນຢັນຈະຖືກສົ່ງໃຫ້ຜູ່ຂຽນບັນທຶກດັ່ງກ່າວ.\n"
 "  ຫາກທ່ານເປັນຜູ່ຂຽນ, ກວດສອບເບິ່ງອີເມວຫຼັງຈາກຄລິກປຸ່ມດ້ານລຸ່ມນີ້.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -642,6 +657,9 @@ msgstr "ຊື່ຂອງຜູ້ຂຽນ"
 
 msgid "Author's phone number"
 msgstr "ເບີໂທລະສັບຂອງຜູ່ຂຽນ"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "ຄີສຳລັບອະນຸຍາດ"
@@ -1332,9 +1350,6 @@ msgstr "ສະແດງຂໍ້ມູນທີ່ສຳຄັນ"
 msgid "Show who marked these duplicates"
 msgstr "ສະແດງໃຫ້ເຫັນວ່າໃຜໝາຍສິ່ງເຫຼົ່ານີ້ວ່າຊ້ຳກັນ"
 
-msgid "Sign in"
-msgstr "ເຂົ້າສູ່ລະບົບ"
-
 msgid "Sign out"
 msgstr "ອອກຈາກລະບົບ"
 
@@ -1371,9 +1386,6 @@ msgstr "ສະຖານະຂອງບຸກຄົນ"
 
 msgid "Status of this person:"
 msgstr "ສະຖານະຂອງບຸກຄົນນີ້:"
-
-msgid "Street name only, no number"
-msgstr "ຊື່ຖະຫນົນເທົ່ານັ້ນ, ຫ້າມເປັນໂຕເລກ"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1678,10 +1690,6 @@ msgstr "ທ່ານໄດ້ສະໝັກຢູ່ແລ້ວ. "
 
 msgid "You are already unsubscribed."
 msgstr "ທ່ານໄດ້ເຊົາສະໝັກຢູ່ແລ້ວ."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "ທ່ານເຂົ້າສູ່ລະບົບເປັນ %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "ໃນປັດຈຸບັນທ່ານບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ"
