@@ -118,8 +118,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
     }
 
     def get_path(self, path_name):
-        # If we ever have URLs with more interesting things in the path besides
-        # repo, we'll have to rethink this.
+        """Gets a path to use for the given path name.
+
+        Args:
+            path_name (str): The path name defined in urls.py.
+
+        This will first try to reverse the URL with no arguments, and then fall
+        back to reversing it with a "repo" argument. If we ever have URLs with
+        more interesting things in the path besides repo, we'll have to rethink
+        this.
+        """
         try:
             return django.urls.reverse(path_name)
         except django.urls.NoReverseMatch:
