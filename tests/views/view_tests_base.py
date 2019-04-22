@@ -12,22 +12,9 @@ class ViewTestsBase(testutils.base.ServerTestsBase):
 
     _USER_ID = 'k'
 
-    def init_testbed_stubs(self):
-        self.testbed.init_user_stub()
-
     def setUp(self):
-        self.testbed = testbed.Testbed()
-        self.testbed.activate()
-        self.init_testbed_stubs()
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-        django.setup()
-        django.test.utils.setup_test_environment()
-        self.client = django.test.Client()
+        super(ViewTestsBase, self).setUp()
         self._xsrf_tool = utils.XsrfTool()
-
-    def tearDown(self):
-        self.testbed.deactivate()
-        django.test.utils.teardown_test_environment()
 
     def login(self, is_admin=False):
         """Logs in the "user" for making requests.
