@@ -133,6 +133,8 @@ class ConfigTests(ServerTestsBase):
         # Change some settings for the new repository.
         settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
+            launch_status='activated',
+            test_mode='true',
             language_menu_options='["no"]',
             repo_titles='{"no": "Jordskjelv"}',
             keywords='foo, bar',
@@ -157,6 +159,9 @@ class ConfigTests(ServerTestsBase):
             force_https = 'false'
         )
         self.assertEquals(self.s.status, 200)
+        repo = Repo.get_by_key_name('xyz')
+        assert repo.activation_status == Repo.ActivationStatus.ACTIVE
+        assert repo.test_mode
         cfg = config.Configuration('xyz')
         self.assertEquals(cfg.language_menu_options, ['no'])
         assert cfg.repo_titles == {'no': 'Jordskjelv'}

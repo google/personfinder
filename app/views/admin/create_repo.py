@@ -73,7 +73,10 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
                 self.ACTION_ID)):
             return self.error(403)
         new_repo = self.params.new_repo
-        model.Repo(key_name=new_repo).put()
+        model.Repo(
+            key_name=new_repo,
+            activation_status=model.Repo.ActivationStatus.STAGING,
+            test_mode=False).put()
         # Provide some defaults.
         config.set_for_repo(
             new_repo,
