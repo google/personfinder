@@ -60,6 +60,26 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     # A map from path names (defined in urls.py) to PathTestInfo tuples.
     PATH_TEST_INFO = {
+        'admin_apikeys-list':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            restricted_to_admins=True,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'admin_apikeys-manage':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            restricted_to_admins=True,
+            requires_xsrf=True,
+            sample_post_data={
+                'contact_name': 'Bob',
+                'contact_email': 'bob@fridge.com',
+                'organization_name': 'Vance Refrigeration',
+            },
+            xsrf_action_id='admin_api_keys'),
         'admin_create-repo':
         PathTestInfo(
             accepts_get=True,
@@ -70,6 +90,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'new_repo': 'new-hampshire',
             },
             xsrf_action_id='admin/create_repo'),
+        'admin_delete-record':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            restricted_to_admins=True,
+            requires_xsrf=True,
+            sample_post_data={
+                'id': 'abc123',
+            },
+            xsrf_action_id='admin/delete_record'),
         'admin_statistics':
         PathTestInfo(
             accepts_get=True,
@@ -88,9 +118,13 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             xsrf_action_id=None),
     }
 
-    def setUp(self):
-        super(AutoSecurityTests, self).setUp()
-        self.xsrf_tool = utils.XsrfTool()
+    def get_path(self, path_name):
+        # If we ever have URLs with more interesting things in the path besides
+        # repo, we'll have to rethink this.
+        try:
+            return django.urls.reverse(path_name)
+        except django.urls.NoReverseMatch:
+            return django.urls.reverse(path_name, kwargs={'repo': 'haiti'})
 
     def get_valid_post_data(self, path_info):
         """Gets data for a valid POST requests.
@@ -100,7 +134,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         if path_info.requires_xsrf:
             # Copy the data dict to avoid mutating the original.
             data = copy.deepcopy(path_info.sample_post_data)
-            data['xsrf_token'] = self.xsrf_tool.generate_token(
+            data['xsrf_token'] = self._xsrf_tool.generate_token(
                 view_tests_base.ViewTestsBase.TEST_USER_ID,
                 path_info.xsrf_action_id)
             return data
@@ -126,7 +160,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         self.login(is_admin=False)
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: path_info.restricted_to_admins):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
                     self.client.get(path, secure=True).status_code, 403,
@@ -150,7 +184,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         self.login(is_admin=True)
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: path_info.restricted_to_admins):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
                     self.client.get(path, secure=True).status_code, 200,
@@ -169,7 +203,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         self.login(is_admin=False)
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: not path_info.restricted_to_admins):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
                     self.client.get(path, secure=True).status_code, 200,
@@ -191,7 +225,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             # Just in case someone accidentally included an XSRF token in the
             # PathTestInfo tuple.
             assert 'xsrf_token' not in path_info.sample_post_data
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             self.assertEqual(
                 self.client.post(path, path_info.sample_post_data,
                                  secure=True).status_code, 403,
@@ -207,7 +241,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         self.login(is_admin=True)
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: path_info.requires_xsrf):
-            path = django.urls.reverse(path_name)
+            path = self.get_path(path_name)
             post_data = copy.deepcopy(path_info.sample_post_data)
             post_data['xsrf_token'] = 'NotAValidToken'
             self.assertEqual(
@@ -247,5 +281,5 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 # Skip views that aren't task handlers; they're tested
                 # elsewhere.
                 continue
-            path = django.urls.reverse(pattern.name)
+            path = self.get_path(pattern.name)
             assert self.client.get(path, secure=True).status_code == 403
