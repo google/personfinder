@@ -59,6 +59,21 @@ class TestDataGenerator(object):
         'source_date': datetime.datetime(2010, 1, 2),
     }
 
+    _DEFAULT_AUTHORIZATION_PARAMS = {
+        'contact_name': 'Bob Vance',
+        'contact_email': 'bob@fridge.com',
+        'organization_name': 'Vance Refrigeration',
+        'domain_write_permission': 'fridge.com',
+        'read_permission': True,
+        'full_read_permission': True,
+        'search_permission': True,
+        'subscribe_permission': False,
+        'mark_notes_reviewed': False,
+        'believed_dead_permission': False,
+        'stats_permission': False,
+        'is_valid': True,
+    }
+
     def repo(self, store=True, repo_id='haiti'):
         repo = model.Repo(key_name=repo_id)
         if store:
@@ -92,6 +107,15 @@ class TestDataGenerator(object):
         if store:
             note.put()
         return note
+
+    def authorization(
+        self, store=True, repo_id='haiti', key='secret_key', **kwargs):
+        params = copy.deepcopy(TestDataGenerator._DEFAULT_AUTHORIZATION_PARAMS)
+        params.update(kwargs)
+        authorization = model.Authorization.create(repo_id, key, **params)
+        if store:
+            authorization.put()
+        return authorization
 
     def photo(self, store=True, repo_id='haiti', image_data='xyz'):
         photo = model.Photo.create(repo_id, image_data=image_data)

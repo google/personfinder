@@ -20,33 +20,13 @@ import model
 import view_tests_base
 
 
-def add_test_authorization():
-    authorization = model.Authorization.create(
-        'haiti',
-        'secret_key',
-        contact_name='Bob Vance',
-        contact_email='bob@fridge.com',
-        organization_name='Vance Refrigeration',
-        domain_write_permission='fridge.com',
-        read_permission=True,
-        full_read_permission=True,
-        search_permission=True,
-        subscribe_permission=False,
-        mark_notes_reviewed=False,
-        believed_dead_permission=False,
-        stats_permission=False,
-        is_valid=True)
-    authorization.put()
-    return authorization
-
-
 class ApiKeyListViewTests(view_tests_base.ViewTestsBase):
     """Tests the admin API keys list view."""
 
     def setUp(self):
         super(ApiKeyListViewTests, self).setUp()
-        model.Repo(key_name='haiti').put()
-        add_test_authorization()
+        self.data_generator.repo()
+        self.authorization = self.data_generator.authorization()
         self.login(is_admin=True)
 
     def test_get(self):
@@ -77,7 +57,7 @@ class ApiKeyManagementViewTests(view_tests_base.ViewTestsBase):
 
     def test_get_create_form(self):
         """Tests GET requests with no log key (i.e., the creation form)."""
-        self.authorization = add_test_authorization()
+        self.authorization = self.data_generator.authorization()
         res = self.client.get('/haiti/admin/api_keys/', secure=True)
         self.assertEqual(res.context['target_key'],
                          model.Authorization.DEFAULT_SETTINGS)
@@ -86,7 +66,7 @@ class ApiKeyManagementViewTests(view_tests_base.ViewTestsBase):
     def test_get_update_form(self):
         """Tests GET requests with a log key specified (i.e., an update form).
         """
-        self.authorization = add_test_authorization()
+        self.authorization = self.data_generator.authorization()
         management_log = model.ApiKeyManagementLog(
             repo='haiti',
             api_key=self.authorization.api_key,
@@ -104,7 +84,7 @@ class ApiKeyManagementViewTests(view_tests_base.ViewTestsBase):
 
     def test_post_render_update_form(self):
         """Tests POST requests to show the update form."""
-        self.authorization = add_test_authorization()
+        self.authorization = self.data_generator.authorization()
         params = {
             'edit_form': '1',
             'authorization_key': self.authorization.key(),
@@ -166,7 +146,7 @@ class ApiKeyManagementViewTests(view_tests_base.ViewTestsBase):
 
     def test_update_key(self):
         """Tests POST request to update an existing key."""
-        self.authorization = add_test_authorization()
+        self.authorization = self.data_generator.authorization()
         params = {
             'key': self.authorization.key(),
             'contact_name': 'Phyllis Vance',
