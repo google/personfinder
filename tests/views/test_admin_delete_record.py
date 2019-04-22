@@ -40,25 +40,6 @@ class AdminDeleteRecordViewTests(view_tests_base.ViewTestsBase):
         super(AdminDeleteRecordViewTests, self).setUp()
         self.login(is_admin=True)
         self.data_generator.repo()
-        """
-        self.person = model.Person.create_original(
-            'haiti',
-            given_name='John',
-            family_name='Smith',
-            home_street='Washington St.',
-            home_city='Los Angeles',
-            home_state='California',
-            home_postal_code='11111',
-            home_neighborhood='Good Neighborhood',
-            author_name='Alice Smith',
-            author_phone='111-111-1111',
-            author_email='alice.smith@gmail.com',
-            source_url='https://www.source.com',
-            source_date=datetime.datetime(2010, 1, 1),
-            source_name='Source Name',
-            entry_date=datetime.datetime(2010, 1, 1),
-            expiry_date=datetime.datetime(2010, 2, 1),
-            other='')"""
         self.person = self.data_generator.person()
 
     def test_get(self):
@@ -77,7 +58,7 @@ class AdminDeleteRecordViewTests(view_tests_base.ViewTestsBase):
             'id': self.person.record_id,
         }, secure=True)
         # Check that the user's redirected to the repo's main admin page.
-        assert isinstance(post_resp, django.http.HttpResponseRedirect)
+        self.assertIsInstance(post_resp, django.http.HttpResponseRedirect)
         parse = urlparse.urlparse(post_resp.url)
         self.assertEqual('/haiti/delete', parse.path)
         query_params = dict(urlparse.parse_qsl(parse.query))
