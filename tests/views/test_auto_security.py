@@ -27,7 +27,6 @@ import os
 import django.urls
 
 import urls
-import utils
 
 import view_tests_base
 
