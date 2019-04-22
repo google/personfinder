@@ -34,7 +34,7 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(AdminCreateRepoViewTests, self).setUp()
-        model.Repo(key_name='haiti').put()
+        self.data_generator.repo()
         self.login(is_admin=True)
 
     def test_get(self):
