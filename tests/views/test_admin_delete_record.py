@@ -39,7 +39,8 @@ class AdminDeleteRecordViewTests(view_tests_base.ViewTestsBase):
     def setUp(self):
         super(AdminDeleteRecordViewTests, self).setUp()
         self.login(is_admin=True)
-        model.Repo(key_name='haiti').put()
+        self.data_generator.repo()
+        """
         self.person = model.Person.create_original(
             'haiti',
             given_name='John',
@@ -57,7 +58,8 @@ class AdminDeleteRecordViewTests(view_tests_base.ViewTestsBase):
             source_name='Source Name',
             entry_date=datetime.datetime(2010, 1, 1),
             expiry_date=datetime.datetime(2010, 2, 1),
-            other='')
+            other='')"""
+        self.person = self.data_generator.person()
 
     def test_get(self):
         """Tests GET requests."""
