@@ -15,13 +15,13 @@
 <h2>{% trans "API Key Management" %}</h2>
 <p>
 {% if user %}
-  {% blocktrans with user_email_with_tags|safe as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
-  <a href="{{logout_url}}">{% trans "Sign out" %}</a>
-{% else %}
-  {% trans "You are not currently signed in." %}
-  <a href="{{login_url}}">{% trans "Sign in" %}</a>
+  {% blocktrans %}
+    You are currently signed in as <span class="email">{{user_email}}</span>
+  {% endblocktrans %}
 {% endif %}
-<p>{{nav_html|safe}}
+<p>
+  <a href="{{list_url}}">{% trans "List API keys" %}</a>
+</p>
 {% if message %}
   <div class="info"><strong>{{ message }}</strong></div>
 {% endif %}

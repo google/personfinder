@@ -364,6 +364,13 @@ msgstr ""
 "जाणीव असू द्या.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -382,6 +389,14 @@ msgstr ""
 "    तुम्ही लेखक असल्यास, खाली असलेले बटण क्लिक केल्यानंतर तुमचे ई-मेल "
 "तपासा.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -658,6 +673,9 @@ msgstr "लेखकाचे नाव"
 
 msgid "Author's phone number"
 msgstr "लेखकाचा फोन नंबर"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "ऑथोरायझेशन की"
@@ -1360,9 +1378,6 @@ msgstr "संवेदनशील माहिती दर्शवा"
 msgid "Show who marked these duplicates"
 msgstr "हे डुप्लिकेट कोणी चिन्हांकित केले ते दर्शवा"
 
-msgid "Sign in"
-msgstr "साइन इन करा"
-
 msgid "Sign out"
 msgstr "साइन आउट करा"
 
@@ -1399,9 +1414,6 @@ msgstr "व्यक्तीची स्थिती"
 
 msgid "Status of this person:"
 msgstr "या व्यक्तीची स्थिती:"
-
-msgid "Street name only, no number"
-msgstr "केवळ मार्ग नाव, नंबर नाही"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1713,10 +1725,6 @@ msgstr "तुम्ही आधीपासूनच सदस्यता घ
 
 msgid "You are already unsubscribed."
 msgstr "तुम्ही आधीपासूनच सदस्यता रद्द केली आहे."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "तुम्ही सध्या %(user_email)s म्हणून साइन इन केले आहे."
 
 msgid "You are not currently signed in."
 msgstr "तुम्ही सध्या साइन इन केलेले नाही."

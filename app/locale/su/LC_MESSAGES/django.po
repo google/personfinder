@@ -362,6 +362,13 @@ msgstr ""
 "      kami engké tiasa nampi salinan anu sanés tina sumber aslina.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -378,6 +385,14 @@ msgstr ""
 "rékaman. Upami anjeun panulis na, parios e-mail anjeun saatos ngaklik "
 "tombol dihandap.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -648,6 +663,9 @@ msgstr "Nami panulis"
 
 msgid "Author's phone number"
 msgstr "Nomer telepon panulis"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Konci otorisasi"
@@ -1356,9 +1374,6 @@ msgstr "Tingalikeun inpormasi sénsitip"
 msgid "Show who marked these duplicates"
 msgstr "Tingalikeun saha anu nandaan ieu salaku duplikat"
 
-msgid "Sign in"
-msgstr "Lebet"
-
 msgid "Sign out"
 msgstr "Kaluar"
 
@@ -1395,9 +1410,6 @@ msgstr "Kaayaan Jelema"
 
 msgid "Status of this person:"
 msgstr "Kaayaan jalma ieu:"
-
-msgid "Street name only, no number"
-msgstr "Nami jalan hungkul, henteu aya nomer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1711,10 +1723,6 @@ msgstr "Anjeun parantos ngalangganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Anjeun parantos lirén ngalangganan."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Anjeun nuju lebet salaku %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Anjeun nuju henteu lebet."

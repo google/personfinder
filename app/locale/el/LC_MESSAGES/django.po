@@ -374,6 +374,13 @@ msgstr ""
 "αρχική πηγή.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -393,6 +400,14 @@ msgstr ""
 "ταχυδρομείο\n"
 "σας, αφού κάνετε κλικ στο παρακάτω κουμπί.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -678,6 +693,9 @@ msgstr "Όνομα συντάκτη"
 
 msgid "Author's phone number"
 msgstr "Αριθμός τηλεφώνου συντάκτη"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Κλειδί εξουσιοδότησης"
@@ -1403,9 +1421,6 @@ msgstr "Προβολή ευαίσθητων δεδομένων"
 msgid "Show who marked these duplicates"
 msgstr "Εμφάνιση του χρήστη που επισήμανε αυτά τα διπλότυπα"
 
-msgid "Sign in"
-msgstr "Σύνδεση"
-
 msgid "Sign out"
 msgstr "Έξοδος"
 
@@ -1442,9 +1457,6 @@ msgstr "Κατάσταση ατόμου"
 
 msgid "Status of this person:"
 msgstr "Κατάσταση αυτού του ατόμου:"
-
-msgid "Street name only, no number"
-msgstr "Μόνο όνομα οδού. Όχι αριθμός."
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1769,10 +1781,6 @@ msgstr "Έχετε ήδη εγγραφεί. "
 
 msgid "You are already unsubscribed."
 msgstr "Έχετε ήδη καταργήσει την εγγραφή σας."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Είστε συνδεδεμένοι αυτήν τη στιγμή ως %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Δεν είστε συνδεδεμένοι αυτήν τη στιγμή."

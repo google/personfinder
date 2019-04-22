@@ -68,10 +68,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             HttpResponse: A redirect to the new repo's admin page.
         """
         del request, args, kwargs  # unused
-        if not (self.params.xsrf_token and self.xsrf_tool.verify_token(
-                self.params.xsrf_token, self.env.user.user_id(),
-                self.ACTION_ID)):
-            return self.error(403)
+        self.enforce_xsrf(self.ACTION_ID)
         new_repo = self.params.new_repo
         model.Repo(
             key_name=new_repo,

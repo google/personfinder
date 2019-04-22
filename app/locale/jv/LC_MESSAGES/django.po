@@ -356,6 +356,13 @@ msgstr ""
 "saka sumber asline.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "cathetan. Yen sampeyan panulise, priksa email sampeyan sabanjure ngeklik "
 "tombol ing ngisor iki.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -635,6 +650,9 @@ msgstr "Jeneng pengarang"
 
 msgid "Author's phone number"
 msgstr "Nomer telpon pengarang"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Kunci wewenang"
@@ -1340,9 +1358,6 @@ msgstr "Tampilake informasi sensitif"
 msgid "Show who marked these duplicates"
 msgstr "Tampilake wong sing nandhani iki duplikasi"
 
-msgid "Sign in"
-msgstr "Mlebu"
-
 msgid "Sign out"
 msgstr "Metu"
 
@@ -1379,9 +1394,6 @@ msgstr "Status Wong"
 
 msgid "Status of this person:"
 msgstr "Status wong iki:"
-
-msgid "Street name only, no number"
-msgstr "Mung jeneng dalan, ora perlu nomer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1692,10 +1704,6 @@ msgstr "Sampeyan wis langganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Sampeyan wis batal langganan."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Sampeyan saiki mlebu minangka %(user_email)s ."
 
 msgid "You are not currently signed in."
 msgstr "Sampeyan ora mlebu"

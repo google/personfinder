@@ -364,6 +364,13 @@ msgstr ""
 "ႏုိင္ေသးသည္ကို ေက်းဇူးၿပဳၿပီး သတိေပးပါရေစ။\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -383,6 +390,14 @@ msgstr ""
 "သင့္\n"
 "အီးေမးလ္ကိုစစ္ေဆးပါ။\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -662,6 +677,9 @@ msgstr "ရေးသားသူ၏ အမည်။"
 
 msgid "Author's phone number"
 msgstr "ရေးသားသူ၏ ဖုန်းနံပါတ်။"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Authorization key ခေါ် ခွင့် ပြုသည့် သော့နံပါတ်။"
@@ -1409,9 +1427,6 @@ msgstr "အေရးႀကီးေသာ အခ်က္အလက္မ်ာ�
 msgid "Show who marked these duplicates"
 msgstr "ဤမိတၱဴမ်ားကုိ မည္သူကမွတ္ထားသည္ကုိ ျပပါ။"
 
-msgid "Sign in"
-msgstr "ဆိုင်းအင် Sign in"
-
 msgid "Sign out"
 msgstr "ဆိုင်းအောက် Sign out"
 
@@ -1454,9 +1469,6 @@ msgstr "ပုဂ္ဂိုလ်၏ အခြေအနေ"
 
 msgid "Status of this person:"
 msgstr "ဤပုဂ္ဂိုလ်၏ အခြေအနေ −"
-
-msgid "Street name only, no number"
-msgstr "လမ်းနာမည်သာ၊ လမ်းနံပါတ်မပါ။"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1802,10 +1814,6 @@ msgstr ""
 "သင္သည္ ေနာက္ဆံုးအေျခအေနမ်ားကိုသိရွိရန္ အီးေမးလ္လိပ္စာျဖင့္ "
 "စာရင္းေပးသြင္းထားျခင္းကို ပယ္ဖ်က္လိုက္ၿပီးသည္။ unsubscribe "
 "လုပ္ထားၿပီးျဖစ္သည္။"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "သင္သည္ %(user_email)sအေနျဖင့္ ဆုိင္းအင္လုပ္ထားသည္။"
 
 msgid "You are not currently signed in."
 msgstr "သင်သည် လောလောဆယ် ဆိုင်းအင် မလုပ်ထားပါ။"
