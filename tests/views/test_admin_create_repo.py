@@ -61,9 +61,9 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
         self.assertIsNotNone(repo)
         self.assertEqual(
             repo.activation_status, model.Repo.ActivationStatus.STAGING)
-        self.assertFalse(repo.test_mode)
+        self.assertEqual(repo.test_mode, False)
         # Check a couple of the config fields that are set by default.
         repo_conf = config.Configuration('idaho')
         self.assertEqual(repo_conf.language_menu_options, ['en', 'fr'])
-        self.assertFalse(repo_conf.launched)
+        self.assertEqual(repo_conf.launched, False)
         self.assertEqual(repo_conf.time_zone_abbreviation, 'UTC')

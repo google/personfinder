@@ -26,6 +26,11 @@ import const
 import tasks
 
 
+_REPO_STATUS_VALUE_STAGING = 'staging'
+_REPO_STATUS_VALUE_ACTIVATED = 'activated'
+_REPO_STATUS_VALUE_DEACTIVATED = 'deactivated'
+
+
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
@@ -199,11 +204,11 @@ class Handler(BaseHandler):
                 view_config[name] = value
 
         if model_config.deactivated:
-            view_config['launch_status'] = 'deactivated'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_DEACTIVATED
         elif model_config.launched:
-            view_config['launch_status'] = 'activated'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_ACTIVATED
         else:
-            view_config['launch_status'] = 'staging'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_STAGING
 
         return view_config
 
@@ -213,13 +218,13 @@ class Handler(BaseHandler):
         model_config = {}
         for name, value in view_config.iteritems():
             if name == 'launch_status':
-                if value == 'staging':
+                if value == _REPO_STATUS_VALUE_STAGING:
                     model_config['deactivated'] = False
                     model_config['launched'] = False
-                elif value == 'activated':
+                elif value == _REPO_STATUS_VALUE_ACTIVATED:
                     model_config['deactivated'] = False
                     model_config['launched'] = True
-                elif value == 'deactivated':
+                elif value == _REPO_STATUS_VALUE_DEACTIVATED:
                     model_config['deactivated'] = True
                     model_config['launched'] = False
                 else:
@@ -233,11 +238,11 @@ class Handler(BaseHandler):
     def __update_repo_status(self, view_config):
         repo_entity = model.Repo.get_by_key_name(self.env.repo)
         launch_status = view_config['launch_status']
-        if launch_status == 'staging':
+        if launch_status == _REPO_STATUS_VALUE_STAGING:
             repo_entity.activation_status = model.Repo.ActivationStatus.STAGING
-        elif launch_status == 'activated':
+        elif launch_status == _REPO_STATUS_VALUE_ACTIVATED:
             repo_entity.activation_status = model.Repo.ActivationStatus.ACTIVE
-        elif launch_status == 'deactivated':
+        elif launch_status == _REPO_STATUS_VALUE_DEACTIVATED:
             repo_entity.activation_status = (
                 model.Repo.ActivationStatus.DEACTIVATED)
         else:
