@@ -10,7 +10,8 @@ import testutils.base
 class ViewTestsBase(testutils.base.ServerTestsBase):
     """A base class for tests for the Django app."""
 
-    _USER_ID = 'k'
+    TEST_USER_EMAIL = 'kay@mib.gov'
+    TEST_USER_ID = 'k'
 
     def setUp(self):
         super(ViewTestsBase, self).setUp()
@@ -23,13 +24,14 @@ class ViewTestsBase(testutils.base.ServerTestsBase):
            is_admin (bool): Whether the user should be considered an admin.
         """
         self.testbed.setup_env(
-            user_email='kay@mib.gov',
-            user_id=ViewTestsBase._USER_ID,
+            user_email=ViewTestsBase.TEST_USER_EMAIL,
+            user_id=ViewTestsBase.TEST_USER_ID,
             user_is_admin='1' if is_admin else '0',
             overwrite=True)
 
     def xsrf_token(self, action_id):
-        return self._xsrf_tool.generate_token(ViewTestsBase._USER_ID, action_id)
+        return self._xsrf_tool.generate_token(
+            ViewTestsBase.TEST_USER_ID, action_id)
 
     def to_doc(self, response):
         """Produces a scrape.Document from the Django test response.
