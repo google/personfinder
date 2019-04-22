@@ -41,7 +41,7 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
         """Tests GET requests."""
         doc = self.to_doc(self.client.get(
             '/global/admin/create_repo/', secure=True))
-        assert doc.cssselect_one('input[name="new_repo"]') is not None
+        self.assertIsNotNone(doc.cssselect_one('input[name="new_repo"]'))
 
     def test_create_repo(self):
         """Tests POST requests to create a new repo."""
@@ -54,13 +54,16 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
             'new_repo': 'idaho'
         }, secure=True)
         # Check that the user's redirected to the repo's main admin page.
-        assert isinstance(post_resp, django.http.HttpResponseRedirect)
-        assert post_resp.url == '/idaho/admin'
+        self.assertIsInstance(post_resp, django.http.HttpResponseRedirect)
+        self.assertEqual(post_resp.url, '/idaho/admin')
         # Check that the repo object is put in datastore.
         repo = model.Repo.get_by_key_name('idaho')
-        assert repo
+        self.assertIsNotNone(repo)
+        self.assertEqual(
+            repo.activation_status, model.Repo.ActivationStatus.STAGING)
+        self.assertIs(repo.test_mode, False)
         # Check a couple of the config fields that are set by default.
         repo_conf = config.Configuration('idaho')
-        assert repo_conf.language_menu_options == ['en', 'fr']
-        assert not repo_conf.launched
-        assert repo_conf.time_zone_abbreviation == 'UTC'
+        self.assertEqual(repo_conf.language_menu_options, ['en', 'fr'])
+        self.assertIs(repo_conf.launched, False)
+        self.assertEqual(repo_conf.time_zone_abbreviation, 'UTC')

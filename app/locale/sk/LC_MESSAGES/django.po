@@ -356,6 +356,13 @@ msgstr ""
 "      že neskôr môžeme dostať jeho ďalšiu kópiu z pôvodného zdroja.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -373,6 +380,14 @@ msgstr ""
 "    Ak ste autor, po kliknutí na tlačidlo nižšie skontrolujte svoj "
 "e-mail.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -647,6 +662,9 @@ msgstr "Meno autora"
 
 msgid "Author's phone number"
 msgstr "Telefónne číslo autora"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autorizačný kľúč"
@@ -1356,9 +1374,6 @@ msgstr "Zobraziť citlivé informácie"
 msgid "Show who marked these duplicates"
 msgstr "Zobraziť, kto označil tieto duplikáty"
 
-msgid "Sign in"
-msgstr "Prihlásiť sa"
-
 msgid "Sign out"
 msgstr "Odhlásiť sa"
 
@@ -1395,9 +1410,6 @@ msgstr "Stav osoby"
 
 msgid "Status of this person:"
 msgstr "Stav tejto osoby:"
-
-msgid "Street name only, no number"
-msgstr "Iba názov ulice, bez čísla"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1709,10 +1721,6 @@ msgstr "Na odber ste už prihlásený/-á. "
 
 msgid "You are already unsubscribed."
 msgstr "Z tohto odberu ste sa už odhlásili."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Momentálne ste prihlásený/-á ako používateľ %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Momentálne nie ste prihlásený/-á."

@@ -350,6 +350,13 @@ msgstr ""
 "      我們稍後可能會收到該記錄的其他副本 (由原始來源提供)。\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -365,6 +372,14 @@ msgstr ""
 "    許可，我們會寄送一封確認郵件給記錄作者。\n"
 "    如果您是作者，請在按一下下方的按鈕後，查看您的電郵信箱。\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -634,6 +649,9 @@ msgstr "作者的姓名"
 
 msgid "Author's phone number"
 msgstr "作者的電話號碼"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "授權金鑰"
@@ -1288,9 +1306,6 @@ msgstr "顯示機密資料"
 msgid "Show who marked these duplicates"
 msgstr "顯示將這些內容標記為重複內容的使用者"
 
-msgid "Sign in"
-msgstr "登入"
-
 msgid "Sign out"
 msgstr "登出"
 
@@ -1327,9 +1342,6 @@ msgstr "失蹤人士的狀態"
 
 msgid "Status of this person:"
 msgstr "這個人的狀態："
-
-msgid "Street name only, no number"
-msgstr "輸入路名即可，不必輸入門牌號碼"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1621,10 +1633,6 @@ msgstr "您已訂閱這個項目。 "
 
 msgid "You are already unsubscribed."
 msgstr "您已取消訂閱這個項目。"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "您目前是以 %(user_email)s 的身分登入。"
 
 msgid "You are not currently signed in."
 msgstr "您目前未登入。"

@@ -18,6 +18,7 @@ from django.conf import urls
 import site_settings
 import tasksmodule.deletion
 import tasksmodule.sitemap_ping
+import views.admin.api_keys
 import views.admin.create_repo
 import views.admin.statistics
 import views.meta.sitemap
@@ -26,6 +27,10 @@ import views.meta.sitemap
 # for automatic redirection, but we don't want to send people redirect responses
 # if it's not really needed).
 _BASE_URL_PATTERNS = [
+    ('admin_apikeys-list', r'(?P<repo>[^\/]+)/admin/api_keys/list/?',
+     views.admin.api_keys.ApiKeyListView.as_view),
+    ('admin_apikeys-manage', r'(?P<repo>[^\/]+)/admin/api_keys/?',
+     views.admin.api_keys.ApiKeyManagementView.as_view),
     ('admin_create-repo', r'global/admin/create_repo/?',
      views.admin.create_repo.AdminCreateRepoView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',

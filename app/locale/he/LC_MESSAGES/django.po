@@ -353,6 +353,13 @@ msgstr ""
 "    ייתכן שנקבל עותק נוסף שלה מהמקור.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -368,6 +375,14 @@ msgstr ""
 " הודעת אישור למחבר הרשומה. אם אתה המחבר, בדוק את תיבת האימייל שלך לאחר "
 "שתלחץ על הלחצן למטה.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -635,6 +650,9 @@ msgstr "שם המחבר"
 
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "מפתח הרשאה"
@@ -1312,9 +1330,6 @@ msgstr "הצג מידע רגיש"
 msgid "Show who marked these duplicates"
 msgstr "הצג מי סימן את הכפילויות האלה"
 
-msgid "Sign in"
-msgstr "היכנס"
-
 msgid "Sign out"
 msgstr "התנתק"
 
@@ -1351,9 +1366,6 @@ msgstr "סטטוס של אדם"
 
 msgid "Status of this person:"
 msgstr "הסטטוס של האדם הזה:"
-
-msgid "Street name only, no number"
-msgstr "שם רחוב בלבד, ללא מספר"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1659,10 +1671,6 @@ msgstr "אתה כבר רשום. "
 
 msgid "You are already unsubscribed."
 msgstr "הרישום שלך כבר בוטל."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "נכנסת כעת בתור %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "לא נכנסת למערכת."
