@@ -5,7 +5,11 @@ from google.appengine.ext import db
 
 
 class AdminPermission(db.Model):
-    """Entity class for tracking admin/moderator access."""
+    """Entity class for tracking admin/moderator access.
+
+    There should be only one AdminPermission entity for any given repo/email
+    address pair.
+    """
 
     # The repository the access applies to ("global" for all repositories).
     repo = db.StringProperty(required=True)
@@ -15,8 +19,9 @@ class AdminPermission(db.Model):
 
     class AccessLevel(object):
         """An enum for the level of access the user has."""
-        # Full admin access: the admin can edit the repo, add new admins, etc.
-        FULL_ADMIN = 0
+
+        # Admin access: the admin can edit the repo, add new moderators, etc.
+        ADMINISTRATOR = 0
         # Moderator access: the admin can moderate user input, but not anything
         # else.
         MODERATOR = 1
@@ -47,3 +52,19 @@ class AdminPermission(db.Model):
     @staticmethod
     def get_for_repo(repo):
         return AdminPermission.all().filter('repo =', repo)
+
+    def permission_state(self):
+        """Returns a string representation of the permission's state.
+
+        This is meant for logging, not display within the user interace.
+        """
+        return (
+            'repo: %(repo)s\n'
+            'email_address: %(email_address)s\n'
+            'access_level: %(access_level)d\n'
+            'expiration_date: %(expiration_date)s' % {
+                'repo': self.repo,
+                'email_address': self.email_address,
+                'access_level': self.access_level,
+                'expiration_date': self.expiration_date.isoformat(),
+            })
