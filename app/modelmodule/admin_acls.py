@@ -47,3 +47,19 @@ class AdminPermission(db.Model):
     def get(repo, email_address):
         return AdminPermission.get_by_key_name(
             AdminPermission._key_name(repo, email_address))
+
+    def permission_state(self):
+        """Returns a string representation of the permission's state.
+
+        This is meant for logging, not display within the user interace.
+        """
+        return (
+            'repo: %(repo)s\n'
+            'email_address: %(email_address)s\n'
+            'access_level: %(access_level)d\n'
+            'expiration_date: %(expiration_date)s' % {
+                'repo': self.repo,
+                'email_address': self.email_address,
+                'access_level': self.access_level,
+                'expiration_date': self.expiration_date.isoformat(),
+            })
