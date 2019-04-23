@@ -5,7 +5,11 @@ from google.appengine.ext import db
 
 
 class AdminPermission(db.Model):
-    """Entity class for tracking admin/moderator access."""
+    """Entity class for tracking admin/moderator access.
+
+    There should be only one AdminPermission entity for any given repo/email
+    address pair.
+    """
 
     # The repository the access applies to ("global" for all repositories).
     repo = db.StringProperty(required=True)
