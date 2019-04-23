@@ -45,7 +45,8 @@ class AdminAclsView(views.admin.base.AdminBaseView):
             })
 
     def _render_form(self):
-        existing_acls = admin_acls_model.AdminAcl.get_for_repo(self.env.repo)
+        existing_acls = admin_acls_model.AdminPermission.get_for_repo(
+            self.env.repo)
         default_expiration_date = (
             utils.get_utcnow() + datetime.timedelta(days=365))
         return self.render(
@@ -74,21 +75,23 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
         if self.params.level == 'full':
-            level = admin_acls_model.AdminAcl.AccessLevel.FULL_ADMIN
+            level = admin_acls_model.AdminPermission.AccessLevel.FULL_ADMIN
         elif self.params.level == 'moderator':
-            level = admin_acls_model.AdminAcl.AccessLevel.MODERATOR
+            level = admin_acls_model.AdminPermission.AccessLevel.MODERATOR
         expiration_date = datetime.datetime.strptime(
             self.params.expiration_date, AdminAclsView._EXPIRATION_DATE_FORMAT)
         if self.params.get('edit_button', ''):
-            acl = admin_acls_model.AdminAcl.get(self.env.repo, email_address)
+            acl = admin_acls_model.AdminPermission.get(
+                self.env.repo, email_address)
             acl.access_level = level
             acl.expiration_date = expiration_date
             acl.put()
         elif self.params.get('revoke_button', ''):
-            acl = admin_acls_model.AdminAcl.get(self.env.repo, email_address)
+            acl = admin_acls_model.AdminPermission.get(
+                self.env.repo, email_address)
             acl.delete()
         else:
-            admin_acls_model.AdminAcl.create(
+            admin_acls_model.AdminPermission.create(
                 repo=self.env.repo,
                 email_address=email_address,
                 access_level=level,
