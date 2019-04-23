@@ -19,8 +19,8 @@ class AdminPermission(db.Model):
 
     class AccessLevel(object):
         """An enum for the level of access the user has."""
-        # Full admin access: the admin can edit the repo, add new admins, etc.
-        FULL_ADMIN = 0
+        # Admin access: the admin can edit the repo, add new moderators, etc.
+        ADMINISTRATOR = 0
         # Moderator access: the admin can moderate user input, but not anything
         # else.
         MODERATOR = 1
