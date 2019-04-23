@@ -4,7 +4,7 @@
 from google.appengine.ext import db
 
 
-class AdminAcl(db.Model):
+class AdminPermission(db.Model):
     """Entity class for tracking admin/moderator access."""
 
     # The repository the access applies to ("global" for all repositories).
@@ -32,8 +32,8 @@ class AdminAcl(db.Model):
 
     @staticmethod
     def create(repo, email_address, access_level, expiration_date):
-        return AdminAcl(
-            key_name=AdminAcl._key_name(repo, email_address),
+        return AdminPermission(
+            key_name=AdminPermission._key_name(repo, email_address),
             repo=repo,
             email_address=email_address,
             access_level=access_level,
@@ -41,8 +41,9 @@ class AdminAcl(db.Model):
 
     @staticmethod
     def get(repo, email_address):
-        return AdminAcl.get_by_key_name(AdminAcl._key_name(repo, email_address))
+        return AdminPermission.get_by_key_name(
+            AdminPermission._key_name(repo, email_address))
 
     @staticmethod
     def get_for_repo(repo):
-        return AdminAcl.all().filter('repo =', repo)
+        return AdminPermission.all().filter('repo =', repo)
