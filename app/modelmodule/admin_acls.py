@@ -42,3 +42,7 @@ class AdminAcl(db.Model):
     @staticmethod
     def get(repo, email_address):
         return AdminAcl.get_by_key_name(AdminAcl._key_name(repo, email_address))
+
+    @staticmethod
+    def get_for_repo(repo):
+        return AdminAcl.all().filter('repo =', repo)
