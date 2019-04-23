@@ -8,7 +8,7 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template for the page to create a repository (see admin_create_repo.py). #}
+{# Template for the page to manage admin ACLs (see views/admin/acls.py). #}
 
 {% extends "admin-base.html.template" %}
 {% load i18n %}
@@ -38,9 +38,13 @@
 
   <h3>Edit or revoke access</h3>
 
-  <table>
+  <table class="admin-acls">
     <tr>
       <th>Email address</th>
+      <th>Level</th>
+      <th>Expiration date</th>
+      <th>Edit</th>
+      <th>Revoke</th>
     </tr>
     {% for acl in existing_acls %}
       <tr>
