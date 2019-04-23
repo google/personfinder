@@ -10,6 +10,9 @@ class AdminAcl(db.Model):
     # The repository the access applies to ("global" for all repositories).
     repo = db.StringProperty(required=True)
 
+    # The email address of the user.
+    email_address = db.StringProperty(required=True)
+
     class AccessLevel(object):
         """An enum for the level of access the user has."""
         # Full admin access: the admin can edit the repo, add new admins, etc.
@@ -20,8 +23,22 @@ class AdminAcl(db.Model):
 
     access_level = db.IntegerProperty(required=True)
 
-    # The email address of the user.
-    email_address = db.StringProperty(required=True)
-
     # The expiration date for the permission.
     expiration_date = db.DateTimeProperty(required=True)
+
+    @staticmethod
+    def _key_name(repo, email_address):
+        return '%s:%s' % (repo, email_address)
+
+    @staticmethod
+    def create(repo, email_address, access_level, expiration_date):
+        return AdminAcl(
+            key_name=AdminAcl._key_name(repo, email_address),
+            repo=repo,
+            email_address=email_address,
+            access_level=access_level,
+            expiration_date=expiration_date)
+
+    @staticmethod
+    def get(repo, email_address):
+        return AdminAcl.get_by_key_name(AdminAcl._key_name(repo, email_address))
