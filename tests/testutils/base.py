@@ -17,6 +17,7 @@ class ServerTestsBase(unittest.TestCase):
         they don't need it directly (it seems to be required).
         """
         self.testbed.init_user_stub()
+        self.testbed.init_datastore_v3_stub()
 
     def setUp(self):
         self.data_generator = data_generator.TestDataGenerator()
