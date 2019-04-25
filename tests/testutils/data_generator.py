@@ -20,6 +20,7 @@ import datetime
 import six
 
 import model
+import modelmodule.admin_acls as admin_acls_model
 
 
 class TestDataGenerator(object):
@@ -136,3 +137,13 @@ class TestDataGenerator(object):
         if store:
             subscription.put()
         return subscription
+
+    def admin_permission(
+        self, store=True, repo_id='haiti', email_address='j@mib.gov',
+        access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
+        expiration_date=datetime.datetime(2011, 1, 20)):
+        admin_permission = admin_acls_model.AdminPermission.create(
+            repo_id, email_address, access_level, expiration_date)
+        if store:
+            admin_permission.put()
+        return admin_permission
