@@ -75,7 +75,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
         if self.params.level == 'full':
-            level = admin_acls_model.AdminPermission.AccessLevel.FULL_ADMIN
+            level = admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR
         elif self.params.level == 'moderator':
             level = admin_acls_model.AdminPermission.AccessLevel.MODERATOR
         expiration_date = datetime.datetime.strptime(
