@@ -278,7 +278,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         requests); we use that to reject external requests to task handlers.
         """
         # Set this to a non-dev ID, because we permit non-GAE requests in dev.
-        os.environ['APPLICATION_ID'] = 'prod-app'
+        os.environ['APPLICATION_ID'] = 'personfinder-unittest'
         for pattern in urls.urlpatterns:
             if pattern.name.startswith('prefixed__'):
                 # Skip these; they're the same views as the non-prefixed
