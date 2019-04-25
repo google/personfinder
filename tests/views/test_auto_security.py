@@ -129,6 +129,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             xsrf_action_id=None),
     }
 
+    def init_testbed_stubs(self):
+        """Initializes the App Engine testbed stubs.
+
+        The base class initializes a Datastore stub, which seems to cause
+        problems when we set another app ID (for the task tests). We don't
+        really need Datastore for this, so just override the base class and
+        stick to the user stub.
+        """
+        self.testbed.init_user_stub()
+
     def get_path(self, path_name):
         """Gets a path to use for the given path name.
 
@@ -290,7 +300,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         requests); we use that to reject external requests to task handlers.
         """
         # Set this to a non-dev ID, because we permit non-GAE requests in dev.
-        os.environ['APPLICATION_ID'] = 'personfinder-unittest'
+        os.environ['APPLICATION_ID'] = 'prod-app'
         for pattern in urls.urlpatterns:
             if pattern.name.startswith('prefixed__'):
                 # Skip these; they're the same views as the non-prefixed
