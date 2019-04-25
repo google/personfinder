@@ -1204,6 +1204,17 @@ table.statistics tbody tr:hover{
   background-color: #f4f4f4;
 }
 
+/* ACLs management page */
+
+table.admin-acls {
+  border-collapse: collapse;
+}
+
+table.admin-acls th,
+table.admin-acls td {
+  border: 1px solid #dadada;
+}
+
 /* API key management page */
 
 table.api-keys {

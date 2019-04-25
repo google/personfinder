@@ -19,6 +19,7 @@ class AdminPermission(db.Model):
 
     class AccessLevel(object):
         """An enum for the level of access the user has."""
+
         # Admin access: the admin can edit the repo, add new moderators, etc.
         ADMINISTRATOR = 0
         # Moderator access: the admin can moderate user input, but not anything
@@ -47,6 +48,10 @@ class AdminPermission(db.Model):
     def get(repo, email_address):
         return AdminPermission.get_by_key_name(
             AdminPermission._key_name(repo, email_address))
+
+    @staticmethod
+    def get_for_repo(repo):
+        return AdminPermission.all().filter('repo =', repo)
 
     def permission_state(self):
         """Returns a string representation of the permission's state.

@@ -59,6 +59,18 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     # A map from path names (defined in urls.py) to PathTestInfo tuples.
     PATH_TEST_INFO = {
+        'admin_acls':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            restricted_to_admins=True,
+            requires_xsrf=True,
+            sample_post_data={
+                'email_address': 'l@mib.gov',
+                'expiration_date': '2019-04-25',
+                'level': 'moderator',
+            },
+            xsrf_action_id='admin/acls'),
         'admin_apikeys-list':
         PathTestInfo(
             accepts_get=True,
@@ -116,6 +128,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             sample_post_data=None,
             xsrf_action_id=None),
     }
+
+    def init_testbed_stubs(self):
+        """Initializes the App Engine testbed stubs.
+
+        The base class initializes a Datastore stub, which seems to cause
+        problems when we set another app ID (for the task tests). We don't
+        really need Datastore for this, so just override the base class and
+        stick to the user stub.
+        """
+        self.testbed.init_user_stub()
 
     def get_path(self, path_name):
         """Gets a path to use for the given path name.
