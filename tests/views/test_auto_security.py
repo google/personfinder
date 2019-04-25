@@ -59,6 +59,18 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     # A map from path names (defined in urls.py) to PathTestInfo tuples.
     PATH_TEST_INFO = {
+        'admin_acls':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            restricted_to_admins=True,
+            requires_xsrf=True,
+            sample_post_data={
+                'email_address': 'l@mib.gov',
+                'expiration_date': '2019-04-25',
+                'level': 'moderator',
+            },
+            xsrf_action_id='admin/acls'),
         'admin_apikeys-list':
         PathTestInfo(
             accepts_get=True,
