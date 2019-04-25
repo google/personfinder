@@ -74,7 +74,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
-        if self.params.level == 'full':
+        if self.params.level == 'administrator':
             level = admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR
         elif self.params.level == 'moderator':
             level = admin_acls_model.AdminPermission.AccessLevel.MODERATOR

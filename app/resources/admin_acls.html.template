@@ -24,7 +24,7 @@
       Email address: <input type="text" name="email_address" /><br/>
       Access level:
       <select name="level">
-        <option value="full">Full admin</option>
+        <option value="administrator">Administrator</option>
         <option value="moderator">Moderator</option>
       </select><br/>
       Expiration date:
@@ -54,9 +54,9 @@
           <td>{{ acl.email_address }}</td>
           <td>
             <select name="level">
-              <option value="full"
+              <option value="administrator"
                   {% if acl.access_level == 0 %}selected="selected"{% endif %}>
-                Full admin
+                Administrator
               </option>
               <option value="moderator"
                   {% if acl.access_level == 1 %}selected="selected"{% endif %}>
