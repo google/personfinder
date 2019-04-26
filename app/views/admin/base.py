@@ -62,26 +62,25 @@ class AdminBaseView(views.base.BaseView):
         def user(self, value):
             self._user = value
 
-    def _get_user_admin_permission(self, user):
+    def _get_user_admin_permission(self):
         user_repo_admin_object = admin_acls_model.AdminPermission.get(
             self.env.repo, self.env.user.email())
         if (user_repo_admin_object and
-            user_repo_admin_object.expiration_date < utils.get_utcnow()):
+                user_repo_admin_object.expiration_date < utils.get_utcnow()):
             user_repo_admin_object = None
         user_global_admin_object = admin_acls_model.AdminPermission.get(
             'global', self.env.user.email())
         if (user_global_admin_object and
-            user_global_admin_object.expiration_date < utils.get_utcnow()):
+                user_global_admin_object.expiration_date < utils.get_utcnow()):
             user_global_admin_object = None
         if user_repo_admin_object is None:
             return user_global_admin_object
-        elif user_global_admin_object is None:
+        if user_global_admin_object is None:
             return user_repo_admin_object
-        elif user_repo_admin_object.compare_level_to(
-            user_global_admin_object.access_level) > 0:
+        if user_repo_admin_object.compare_level_to(
+                user_global_admin_object.access_level) > 0:
             return user_repo_admin_object
-        else:
-            return user_global_admin_object
+        return user_global_admin_object
 
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
@@ -90,8 +89,7 @@ class AdminBaseView(views.base.BaseView):
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
-        self.env.user_admin_permission = self._get_user_admin_permission(
-            self.env.user)
+        self.env.user_admin_permission = self._get_user_admin_permission()
         self.env.logout_url = users.create_logout_url(self.build_absolute_uri())
         self.env.all_repo_options = [
             utils.Struct(
@@ -113,14 +111,17 @@ class AdminBaseView(views.base.BaseView):
             raise django.core.exceptions.PermissionDenied
 
     def enforce_moderator_admin_level(self):
+        """Require that the user be a moderator (or return a 403)."""
         self._enforce_admin_level(
             admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
 
     def enforce_manager_admin_level(self):
+        """Require that the user be a manager (or return a 403)."""
         self._enforce_admin_level(
             admin_acls_model.AdminPermission.AccessLevel.MANAGER)
 
     def enforce_superadmin_admin_level(self):
+        """Require that the user be a superadmin (or return a 403)."""
         self._enforce_admin_level(
             admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
 
