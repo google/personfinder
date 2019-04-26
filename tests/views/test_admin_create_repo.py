@@ -35,7 +35,7 @@ class AdminCreateRepoViewTests(view_tests_base.ViewTestsBase):
     def setUp(self):
         super(AdminCreateRepoViewTests, self).setUp()
         self.data_generator.repo()
-        self.login(is_admin=True)
+        self.login_as_superadmin()
 
     def test_get(self):
         """Tests GET requests."""

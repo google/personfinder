@@ -26,6 +26,7 @@ import os
 
 import django.urls
 
+import modelmodule.admin_acls as aa_model
 import urls
 
 import view_tests_base
@@ -39,8 +40,9 @@ PathTestInfo = collections.namedtuple(
         'accepts_get',
         # Whether the past is expected to accept POST requests.
         'accepts_post',
-        # Whether the page is restricted to admins.
-        'restricted_to_admins',
+        # The minimum admin level required to access the page (None if
+        # non-admins are expected to be able to access it).
+        'min_admin_level',
         # Whether POST requests should require an XSRF token.
         'requires_xsrf',
         # A dict with valid POST data, excluding an XSRF token (the tests will
@@ -63,7 +65,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=True,
             sample_post_data={
                 'email_address': 'l@mib.gov',
@@ -75,7 +77,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
@@ -83,7 +85,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
                 'contact_name': 'Bob',
@@ -95,7 +97,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
                 'new_repo': 'new-hampshire',
@@ -105,7 +107,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MODERATOR,
             requires_xsrf=True,
             sample_post_data={
                 'id': 'abc123',
@@ -115,7 +117,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
-            restricted_to_admins=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
@@ -123,7 +125,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
-            restricted_to_admins=False,
+            min_admin_level=None,
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
@@ -163,9 +165,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         if path_info.requires_xsrf:
             # Copy the data dict to avoid mutating the original.
             data = copy.deepcopy(path_info.sample_post_data)
-            data['xsrf_token'] = self._xsrf_tool.generate_token(
-                view_tests_base.ViewTestsBase.TEST_USER_ID,
-                path_info.xsrf_action_id)
+            data['xsrf_token'] = self.xsrf_token(path_info.xsrf_action_id)
             return data
         return path_info.sample_post_data
 
@@ -186,9 +186,9 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     def test_blocked_to_non_admins(self):
         """Tests that admin-only pages aren't available to non-admins."""
-        self.login(is_admin=False)
+        self.login_as_nonadmin()
         for (path_name, path_info) in self.get_paths_to_test(
-                lambda path_info: path_info.restricted_to_admins):
+                lambda path_info: path_info.min_admin_level is not None):
             path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
@@ -201,18 +201,39 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                         secure=True).status_code, 403,
                     'Admin-only page available to non-admin: %s' % path_name)
 
-    def test_available_to_admins(self):
-        """Tests that admin-only pages are available to admins.
-
-        This is a sort of meta-test: I'm not really concerned that we might
-        accidentally lock admins out of the admin pages, but I do want to make
-        sure that the test above actually depends on the user not being an admin
-        (as opposed to access getting denied because the tests are set up wrong
-        somehow).
-        """
-        self.login(is_admin=True)
+    def _check_admin_blocking(self, level):
+        levels = aa_model.AdminPermission.AccessLevel.ORDERING[
+            aa_model.AdminPermission.AccessLevel.ORDERING.index(level)+1:]
         for (path_name, path_info) in self.get_paths_to_test(
-                lambda path_info: path_info.restricted_to_admins):
+                lambda path_info: path_info.min_admin_level in levels):
+            path = self.get_path(path_name)
+            if path_info.accepts_get:
+                self.assertEqual(
+                    self.client.get(path, secure=True).status_code, 403,
+                    'Admin-only page available to non-admin: %s' % path_name)
+            if path_info.accepts_post:
+                self.assertEqual(
+                    self.client.post(
+                        path, self.get_valid_post_data(path_info),
+                        secure=True).status_code, 403,
+                    'Admin-only page available to non-admin: %s' % path_name)
+
+    def test_moderator_blocking(self):
+        """Tests that moderators can't access manager/superadmin pages."""
+        self.login_as_moderator()
+        self._check_admin_blocking(
+            aa_model.AdminPermission.AccessLevel.MODERATOR)
+
+    def test_manager_blocking(self):
+        """Tests that managers can't access superadmin pages."""
+        self.login_as_manager()
+        self._check_admin_blocking(aa_model.AdminPermission.AccessLevel.MANAGER)
+
+    def _check_admin_accessing(self, level):
+        levels = aa_model.AdminPermission.AccessLevel.ORDERING[
+            :aa_model.AdminPermission.AccessLevel.ORDERING.index(level)+1]
+        for (path_name, path_info) in self.get_paths_to_test(
+                lambda path_info: path_info.min_admin_level in levels):
             path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
@@ -227,11 +248,29 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                         secure=True).status_code, 403,
                     'POST unavailable to admins for: %s' % path_name)
 
+    def test_moderator_accessing(self):
+        """Tests that moderators can access moderator pages."""
+        self.login_as_moderator()
+        self._check_admin_accessing(
+            aa_model.AdminPermission.AccessLevel.MODERATOR)
+
+    def test_manager_accessing(self):
+        """Tests that managers can access manager/moderator pages."""
+        self.login_as_manager()
+        self._check_admin_accessing(
+            aa_model.AdminPermission.AccessLevel.MANAGER)
+
+    def test_superadmin_accessing(self):
+        """Tests that superadmins can access all pages."""
+        self.login_as_superadmin()
+        self._check_admin_accessing(
+            aa_model.AdminPermission.AccessLevel.SUPERADMIN)
+
     def test_other_pages_unrestricted(self):
         """Tests that non-admins can access unrestricted pages."""
-        self.login(is_admin=False)
+        self.login_as_nonadmin()
         for (path_name, path_info) in self.get_paths_to_test(
-                lambda path_info: not path_info.restricted_to_admins):
+                lambda path_info: path_info.min_admin_level is None):
             path = self.get_path(path_name)
             if path_info.accepts_get:
                 self.assertEqual(
@@ -248,7 +287,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
     def test_missing_xsrf_token(self):
         """Tests that, if XSRF is required, POSTs without a token are rejected.
         """
-        self.login(is_admin=True)
+        self.login_as_superadmin()
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: path_info.requires_xsrf):
             # Just in case someone accidentally included an XSRF token in the
@@ -267,7 +306,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
 
     def test_invalid_xsrf_token(self):
         """Tests that XSRF tokens are checked for validity."""
-        self.login(is_admin=True)
+        self.login_as_superadmin()
         for (path_name, path_info) in self.get_paths_to_test(
                 lambda path_info: path_info.requires_xsrf):
             path = self.get_path(path_name)

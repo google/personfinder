@@ -16,7 +16,7 @@
 {% block content %}
   <h2>Grant or revoke admin access</h2>
 
-  <h3>Add new admin or moderator</h3>
+  <h3>Add new admin</h3>
 
   <form method="post">
     <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
@@ -24,7 +24,8 @@
       Email address: <input type="text" name="email_address" /><br/>
       Access level:
       <select name="level">
-        <option value="administrator">Administrator</option>
+        <option value="superadmin">Superadmin</option>
+        <option value="manager">Manager</option>
         <option value="moderator">Moderator</option>
       </select><br/>
       Expiration date:
@@ -46,7 +47,7 @@
       <th>Edit</th>
       <th>Revoke</th>
     </tr>
-    {% for acl in existing_acls %}
+    {% for acl in editable_acls %}
       <tr>
         <form method="post">
           <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
@@ -54,12 +55,16 @@
           <td>{{ acl.email_address }}</td>
           <td>
             <select name="level">
-              <option value="administrator"
+              <option value="superadmin"
                   {% if acl.access_level == 0 %}selected="selected"{% endif %}>
-                Administrator
+                Superadmin
+              </option>
+              <option value="manager"
+                  {% if acl.access_level == 1 %}selected="selected"{% endif %}>
+                Manager
               </option>
               <option value="moderator"
-                  {% if acl.access_level == 1 %}selected="selected"{% endif %}>
+                  {% if acl.access_level == 2 %}selected="selected"{% endif %}>
                 Moderator
               </option>
             </select>
@@ -76,6 +81,38 @@
             <input type="submit" name="revoke_button" value="Revoke" />
           </td>
         </form>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <br/>
+
+  <h3>Other users with {{ self.env.repo }} permissions</h3>
+
+  <table class="admin-acls">
+    <tr>
+      <th>Email address</th>
+      <th>Level</th>
+      <th>Expiration date</th>
+    </tr>
+    {% for acl in fixed_acls %}
+      <tr>
+        <td>{{ acl.email_address }}</td>
+	<td>
+          {# Technically, this is guaranteed to always be "Superadmin", since #}
+          {# managers can edit the access of moderators and other managers,   #}
+          {# and moderators can't access this page (i.e., only superadmins    #}
+          {# will ever be un-editable), but relying on that just feels like   #}
+          {# asking for trouble if we change something someday.               #}
+          {% if acl.access_level == 0 %}
+            Superadmin
+          {% elif acl.access_level == 1 %}
+            Manager
+          {% else %}
+            Moderator
+          {% endif %}
+        </td>
+        <td>{{ acl.expiration_date|date:'Y-m-d' }}</td>
       </tr>
     {% endfor %}
   </table>

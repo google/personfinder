@@ -20,11 +20,19 @@ class AdminPermission(db.Model):
     class AccessLevel(object):
         """An enum for the level of access the user has."""
 
-        # Admin access: the admin can edit the repo, add new moderators, etc.
-        ADMINISTRATOR = 0
-        # Moderator access: the admin can moderate user input, but not anything
-        # else.
-        MODERATOR = 1
+        # Superadmins can do anything for a repo, and global superadmins can
+        # create new repos.
+        SUPERADMIN = 0
+        # Managers have limited administrative access: e.g., they can edit
+        # custom messages for their repo, but not the title.
+        MANAGER = 1
+        # Moderators can moderate user input.
+        MODERATOR = 2
+
+        # An ordered list of the admin access levels, from lowest to highest
+        # (i.e., each level has the permissions of everything before it in the
+        # list).
+        ORDERING = [MODERATOR, MANAGER, SUPERADMIN]
 
     access_level = db.IntegerProperty(required=True)
 
@@ -52,6 +60,28 @@ class AdminPermission(db.Model):
     @staticmethod
     def get_for_repo(repo):
         return AdminPermission.all().filter('repo =', repo)
+
+    def compare_level_to(self, other_level):
+        """Compares the level of this permission to the given level.
+
+        Args:
+            other_level (int): An AccessLevel value to compare to.
+
+        Returns:
+            int: A negative value if this permission has a lower level, a
+            positive value if this permission has a higher level, or 0 if the
+            levels are the same.
+        """
+        if self.access_level == other_level:
+            return 0
+        level_index = AdminPermission.AccessLevel.ORDERING.index(
+            self.access_level)
+        other_level_index = AdminPermission.AccessLevel.ORDERING.index(
+            other_level)
+        if level_index < other_level_index:
+            return -1
+        else:
+            return 1
 
     def permission_state(self):
         """Returns a string representation of the permission's state.

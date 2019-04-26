@@ -139,7 +139,7 @@ class TestDataGenerator(object):
         return subscription
 
     def admin_permission(
-        self, store=True, repo_id='haiti', email_address='j@mib.gov',
+        self, store=True, repo_id='haiti', email_address='l@mib.gov',
         access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
         expiration_date=datetime.datetime(2011, 1, 20)):
         admin_permission = admin_acls_model.AdminPermission.create(

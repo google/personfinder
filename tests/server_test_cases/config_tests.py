@@ -120,16 +120,8 @@ class ConfigTests(ServerTestsBase):
         assert cfg.get('unknown_key', 'default_value') == 'default_value'
 
     def test_repo_admin_page(self):
-        # Load the page to create a repository.
-        doc = self.go_as_admin('/global/admin/create_repo')
-        self.assertEquals(self.s.status, 200)
-
-        # Activate a new repository.
-        assert not Repo.get_by_key_name('xyz')
-        create_form = doc.cssselect_one('form#create_repo')
-        doc = self.s.submit(create_form, new_repo='xyz')
-        assert Repo.get_by_key_name('xyz')
-
+        Repo(key_name='xyz').put()
+        doc = self.go_as_admin('/xyz/admin')
         # Change some settings for the new repository.
         settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
@@ -156,7 +148,8 @@ class ConfigTests(ServerTestsBase):
             seek_query_form_custom_htmls='{"no": "query form message"}',
             footer_custom_htmls='{"no": "footer message"}',
             bad_words = 'bad, word',
-            force_https = 'false'
+            force_https = 'false',
+            time_zone_offset = '9'
         )
         self.assertEquals(self.s.status, 200)
         repo = Repo.get_by_key_name('xyz')

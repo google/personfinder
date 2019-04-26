@@ -51,6 +51,7 @@ class ApiKeyListView(views.admin.base.AdminBaseView):
 
     ACTION_ID = 'admin/api_keys/list'
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
         """Serves a view with a list of API keys."""
         del request, args, kwargs  # unused
@@ -96,6 +97,7 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
                 'subscribe_permission': utils.validate_checkbox_as_bool,
             })
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
         if self.params.log_key:
             management_log_key = self.params.log_key
@@ -139,6 +141,7 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
         authorization.put()
         return authorization
 
+    @views.admin.base.enforce_superadmin_admin_level
     def post(self, request, *args, **kwargs):
         self.enforce_xsrf('admin_api_keys')
 

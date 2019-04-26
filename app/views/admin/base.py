@@ -17,6 +17,7 @@ import django.shortcuts
 from google.appengine.api import users
 
 import model
+import modelmodule.admin_acls as admin_acls_model
 import utils
 import views.base
 
@@ -61,6 +62,26 @@ class AdminBaseView(views.base.BaseView):
         def user(self, value):
             self._user = value
 
+    def _get_user_admin_permission(self):
+        user_repo_admin_object = admin_acls_model.AdminPermission.get(
+            self.env.repo, self.env.user.email())
+        if (user_repo_admin_object and
+                user_repo_admin_object.expiration_date < utils.get_utcnow()):
+            user_repo_admin_object = None
+        user_global_admin_object = admin_acls_model.AdminPermission.get(
+            'global', self.env.user.email())
+        if (user_global_admin_object and
+                user_global_admin_object.expiration_date < utils.get_utcnow()):
+            user_global_admin_object = None
+        if user_repo_admin_object is None:
+            return user_global_admin_object
+        if user_global_admin_object is None:
+            return user_repo_admin_object
+        if user_repo_admin_object.compare_level_to(
+                user_global_admin_object.access_level) > 0:
+            return user_repo_admin_object
+        return user_global_admin_object
+
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
         # pylint: disable=attribute-defined-outside-init
@@ -69,6 +90,7 @@ class AdminBaseView(views.base.BaseView):
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
+        self.env.user_admin_permission = self._get_user_admin_permission()
         self.env.logout_url = users.create_logout_url(self.build_absolute_uri())
         self.env.all_repo_options = [
             utils.Struct(
@@ -106,11 +128,41 @@ class AdminBaseView(views.base.BaseView):
         if not self.env.user:
             return django.shortcuts.redirect(
                 users.create_login_url(self.build_absolute_uri()))
-        if not users.is_current_user_admin():
-            logout_url = users.create_logout_url(self.build_absolute_uri())
-            return self.render(
-                'not_admin_error.html',
-                status_code=403,
-                logout_url=logout_url,
-                user=self.env.user)
         return super(AdminBaseView, self).dispatch(request, args, kwargs)
+
+
+def _enforce_admin_level(user_admin_permission, min_level):
+    if user_admin_permission is None:
+        raise django.core.exceptions.PermissionDenied
+    if user_admin_permission.compare_level_to(min_level) < 0:
+        raise django.core.exceptions.PermissionDenied
+
+def enforce_moderator_admin_level(func):
+    """Require that the user be a moderator (or return a 403)."""
+    def inner(self, *args, **kwargs):
+        """Implementation of the enforce_moderator_admin_level decorator."""
+        _enforce_admin_level(
+            self.env.user_admin_permission,
+            admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
+        return func(self, *args, **kwargs)
+    return inner
+
+def enforce_manager_admin_level(func):
+    """Require that the user be a manager (or return a 403)."""
+    def inner(self, *args, **kwargs):
+        """Implementation of the enforce_manager_admin_level decorator."""
+        _enforce_admin_level(
+            self.env.user_admin_permission,
+            admin_acls_model.AdminPermission.AccessLevel.MANAGER)
+        return func(self, *args, **kwargs)
+    return inner
+
+def enforce_superadmin_admin_level(func):
+    """Require that the user be a superadmin (or return a 403)."""
+    def inner(self, *args, **kwargs):
+        """Implementation of the enforce_superadmin_admin_level decorator."""
+        _enforce_admin_level(
+            self.env.user_admin_permission,
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        return func(self, *args, **kwargs)
+    return inner

@@ -27,7 +27,7 @@ class ApiKeyListViewTests(view_tests_base.ViewTestsBase):
         super(ApiKeyListViewTests, self).setUp()
         self.data_generator.repo()
         self.authorization = self.data_generator.authorization()
-        self.login(is_admin=True)
+        self.login_as_superadmin()
 
     def test_get(self):
         """Tests GET requests."""
@@ -53,7 +53,7 @@ class ApiKeyManagementViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(ApiKeyManagementViewTests, self).setUp()
-        self.login(is_admin=True)
+        self.login_as_superadmin()
 
     def test_get_create_form(self):
         """Tests GET requests with no log key (i.e., the creation form)."""
