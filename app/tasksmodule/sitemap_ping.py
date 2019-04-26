@@ -56,10 +56,9 @@ class SitemapPingTaskView(tasksmodule.base.TasksBaseView):
 
     ACTION_ID = 'tasks/sitemap_ping'
 
-    def get_params(self):
-        return views.base.read_params(
-            super(SitemapPingTaskView, self).get_params(),
-            self.request,
+    def setup(self, request, *args, **kwargs):
+        super(SitemapPingTaskView, self).setup(request, *args, **kwargs)
+        self.params.read_values(
             get_params={_TASK_PARAM_SEARCH_ENGINE: utils.strip})
 
     def get(self, request, *args, **kwargs):

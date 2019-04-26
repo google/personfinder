@@ -32,12 +32,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
 
     def setup(self, request, *args, **kwargs):
         super(AdminDeleteRecordView, self).setup(request, *args, **kwargs)
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminDeleteRecordView, self).get_params(),
-            self.request,
-            post_params={'id': utils.strip})
+        self.params.read_values(post_params={'id': utils.strip})
 
     def get(self, request, *args, **kwargs):
         """Serves GET requests with the deletion form."""

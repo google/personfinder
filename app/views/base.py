@@ -27,6 +27,32 @@ import site_settings
 import utils
 
 
+class Params(object):
+
+    def __init__(self, request):
+        self._request = request
+        self._values = {}
+
+    def __getattr__(self, name):
+        return self._values.get(name, None)
+
+    def get(self, name, default=None):
+        return self._values.get(name, default)
+
+    def read_values(self, get_params={}, post_params={}, file_params={}):
+        if self._request.method == 'GET':
+            for key, validator in get_params.items():
+                if key in self._request.GET:
+                    self._values[key] = validator(self._request.GET[key])
+        elif self._request.method == 'POST':
+            for key, validator in post_params.items():
+                if key in self._request.POST:
+                    self._values[key] = validator(self._request.POST[key])
+            for key, validator in file_params.items():
+                if key in self._request.FILES:
+                    self._values[key] = validator(self._request.FILES[key])
+
+
 class BaseView(django.views.View):
     """Base view class shared across the app."""
 
@@ -146,7 +172,9 @@ class BaseView(django.views.View):
         del request, args  # unused
 
         # Set up the parameters and read in the base set of parameters.
-        self.params = self.get_params()
+        self.params = Params(self.request)
+        self.params.read_values(
+            get_params={'lang': utils.strip}, post_params={'lang': utils.strip})
 
         # Set up env variable with data needed by the whole app.
         self.env = self.Env()
@@ -157,7 +185,7 @@ class BaseView(django.views.View):
         # guess should be overridden by the lang CGI param if it's set.
         # TODO(nworden): figure out how much of the logic below we still need
         # now that Django can do a lot of the work for us.
-        lang = self.params.get('lang') or self.request.LANGUAGE_CODE
+        lang = self.params.lang or self.request.LANGUAGE_CODE
         lang = re.sub('[^A-Za-z0-9-]', '', lang)
         lang = const.LANGUAGE_SYNONYMS.get(lang, lang)
         if lang in const.LANGUAGE_ENDONYMS.keys():
@@ -171,24 +199,6 @@ class BaseView(django.views.View):
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
-
-    def get_params(self):
-        """Gets parameter values out of the request.
-
-        Subclasses that need additional values should override this function,
-        with an implementation like this:
-        return views.base.read_params(
-            super(<Subclass>, self).get_params(),
-            self.request,
-            get_params={'x': validate_x, 'y': validate_y,},
-            post_params={'z': validate_z})
-
-        Returns:
-            utils.Struct: A container with the values of CGI parameters used by
-            this view.
-        """
-        return read_params(
-            utils.Struct(), self.request, get_params={'lang': utils.strip})
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
@@ -344,40 +354,3 @@ class BaseView(django.views.View):
         # like csrf_exempt from dispatch
         functools.update_wrapper(view, cls.dispatch, assigned=())
         return view
-
-
-def read_params(container,
-                request,
-                get_params=None,
-                post_params=None,
-                file_params=None):
-    """Reads CGI parameter values from the request to the container.
-
-    Args:
-        container (utils.Struct): The container to put parameter values in.
-        request (HttpRequest): The request to read from.
-        get_params (dict): A dictionary from GET parameter keys to validator
-            functions.
-        post_params (dict): A dictionary from POST parameter keys to validator
-            functions.
-        file_params (dict): A dictionary from POST parameter keys for uploaded
-            files to validator functions.
-
-    Returns:
-        utils.Struct: The container, for convenience.
-    """
-    if request.method == 'GET':
-        if get_params:
-            for key, validator in get_params.items():
-                if key in request.GET:
-                    setattr(container, key, validator(request.GET[key]))
-    elif request.method == 'POST':
-        if post_params:
-            for key, validator in post_params.items():
-                if key in request.POST:
-                    setattr(container, key, validator(request.POST[key]))
-        if file_params:
-            for key, validator in file_params.items():
-                if key in request.FILES:
-                    setattr(container, key, validator(request.FILES[key]))
-    return container

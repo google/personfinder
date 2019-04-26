@@ -72,10 +72,9 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
 
     ACTION_ID = 'admin/api_keys'
 
-    def get_params(self):
-        return views.base.read_params(
-            super(ApiKeyManagementView, self).get_params(),
-            self.request,
+    def setup(self, request, *args, **kwargs):
+        super(ApiKeyManagementView, self).setup(request, *args, **kwargs)
+        self.params.read_values(
             get_params={
                 'log_key': utils.strip,
             },
@@ -98,7 +97,7 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
             })
 
     def get(self, request, *args, **kwargs):
-        if self.params.get('log_key'):
+        if self.params.log_key:
             management_log_key = self.params.log_key
             management_log = db.get(management_log_key)
             message = ''
@@ -128,16 +127,15 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
             contact_name=self.params.contact_name,
             contact_email=self.params.contact_email,
             organization_name=self.params.organization_name,
-            domain_write_permission=self.params.get('domain_write_permission'),
-            read_permission=self.params.get('read_permission'),
-            full_read_permission=self.params.get('full_read_permission'),
-            search_permission=self.params.get('search_permission'),
-            subscribe_permission=self.params.get('subscribe_permission'),
-            mark_notes_reviewed=self.params.get('mark_notes_reviewed'),
-            believed_dead_permission=self.params.get(
-                'believed_dead_permission'),
-            stats_permission=self.params.get('stats_permission'),
-            is_valid=self.params.get('is_valid'))
+            domain_write_permission=self.params.domain_write_permission,
+            read_permission=self.params.read_permission,
+            full_read_permission=self.params.full_read_permission,
+            search_permission=self.params.search_permission,
+            subscribe_permission=self.params.subscribe_permission,
+            mark_notes_reviewed=self.params.mark_notes_reviewed,
+            believed_dead_permission=self.params.believed_dead_permission,
+            stats_permission=self.params.stats_permission,
+            is_valid=self.params.is_valid)
         authorization.put()
         return authorization
 
@@ -147,23 +145,23 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
         # Navigation to an individual key's management page is handled by making
         # a POST request to this view. When it's such a request, the edit_form
         # param will be set.
-        if self.params.get('edit_form'):
-            authorization = db.get(self.params.get('authorization_key'))
+        if self.params.edit_form:
+            authorization = db.get(self.params.authorization_key)
             if not authorization:
                 return self.error(404, t.ugettext(
                     'No such Authorization entity.'))
             return self._render_form(authorization)
 
-        if not (self.params.get('contact_name') and
-                self.params.get('contact_email') and
-                self.params.get('organization_name')):
+        if not (self.params.contact_name and
+                self.params.contact_email and
+                self.params.organization_name):
             return self.error(400, t.ugettext(
                 'Please fill in all the required fields.'))
 
         repo = self.env.repo or '*'
-        if self.params.get('key'):
+        if self.params.key:
             # Just override the existing one.
-            existing_authorization = db.get(self.params.get('key'))
+            existing_authorization = db.get(self.params.key)
             if not existing_authorization:
                 return self.error(404, t.ugettext(
                     'No such Authorization entity.'))

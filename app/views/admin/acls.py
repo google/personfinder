@@ -31,11 +31,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
 
     def setup(self, request, *args, **kwargs):
         super(AdminAclsView, self).setup(request, *args, **kwargs)
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminAclsView, self).get_params(),
-            self.request,
+        self.params.read_values(
             post_params={
                 'edit_button': utils.strip,
                 'email_address': utils.strip,

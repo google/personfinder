@@ -65,6 +65,7 @@ class AdminBaseView(views.base.BaseView):
         """See docs on BaseView.setup."""
         # pylint: disable=attribute-defined-outside-init
         super(AdminBaseView, self).setup(request, *args, **kwargs)
+        self.params.read_values(post_params={'xsrf_token': utils.strip})
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
@@ -75,12 +76,6 @@ class AdminBaseView(views.base.BaseView):
             for repo in sorted(model.Repo.list())
         ]
         self.xsrf_tool = utils.XsrfTool()
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminBaseView, self).get_params(),
-            self.request,
-            post_params={'xsrf_token': utils.strip})
 
     def enforce_xsrf(self, action_id):
         """Verifies the request's XSRF token.
@@ -95,9 +90,9 @@ class AdminBaseView(views.base.BaseView):
         Raises:
             PermissionDenied: If the request's token is missing or invalid.
         """
-        if not (self.params.get('xsrf_token') and
+        if not (self.params.xsrf_token and
                 self.xsrf_tool.verify_token(
-                    self.params.get('xsrf_token'),
+                    self.params.xsrf_token,
                     self.env.user.user_id(),
                     action_id)):
             raise django.core.exceptions.PermissionDenied

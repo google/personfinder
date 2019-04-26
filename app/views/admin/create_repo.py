@@ -29,12 +29,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
 
     def setup(self, request, *args, **kwargs):
         super(AdminCreateRepoView, self).setup(request, *args, **kwargs)
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminCreateRepoView, self).get_params(),
-            self.request,
-            post_params={'new_repo': utils.strip})
+        self.params.read_values(post_params={'new_repo': utils.strip})
 
     def get(self, request, *args, **kwargs):
         """Serves GET requests.
