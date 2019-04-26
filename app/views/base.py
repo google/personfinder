@@ -28,6 +28,7 @@ import utils
 
 
 class Params(object):
+    """An object containing values of CGI params."""
 
     def __init__(self, request):
         self._request = request
@@ -37,20 +38,31 @@ class Params(object):
         return self._values.get(name, None)
 
     def get(self, name, default=None):
+        """Gets a value, or falls back to the given default."""
         return self._values.get(name, default)
 
-    def read_values(self, get_params={}, post_params={}, file_params={}):
+    def read_values(self, get_params=None, post_params=None, file_params=None):
+        """Reads params with the given keys and validators.
+
+        Each of get_params, post_params, and file_params should be a map of CGI
+        param keys to validator functions. If the key is present, the value will
+        be passed to the validator and the output stored in the Params object;
+        otherwise it will store None for the key's value.
+        """
         if self._request.method == 'GET':
-            for key, validator in get_params.items():
-                if key in self._request.GET:
-                    self._values[key] = validator(self._request.GET[key])
+            if get_params:
+                for key, validator in get_params.items():
+                    if key in self._request.GET:
+                        self._values[key] = validator(self._request.GET[key])
         elif self._request.method == 'POST':
-            for key, validator in post_params.items():
-                if key in self._request.POST:
-                    self._values[key] = validator(self._request.POST[key])
-            for key, validator in file_params.items():
-                if key in self._request.FILES:
-                    self._values[key] = validator(self._request.FILES[key])
+            if post_params:
+                for key, validator in post_params.items():
+                    if key in self._request.POST:
+                        self._values[key] = validator(self._request.POST[key])
+            if file_params:
+                for key, validator in file_params.items():
+                    if key in self._request.FILES:
+                        self._values[key] = validator(self._request.FILES[key])
 
 
 class BaseView(django.views.View):
