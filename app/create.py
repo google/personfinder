@@ -47,7 +47,7 @@ class Handler(BaseHandler):
         self.render('create.html',
                     profile_websites=profile_websites,
                     profile_websites_json=simplejson.dumps(profile_websites),
-                    onload_function='view_page_loaded()')
+                    onload_function='view_page_loaded')
 
     def post(self):
         now = get_utcnow()

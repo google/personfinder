@@ -1080,6 +1080,10 @@ form.admin .config .note {
   margin-{{start}}: 4em;
 }
 
+#admin-reposelector {
+  display: inline-block;
+}
+
 .subscribe_email_error {
   color: #f00;
 }
@@ -1198,6 +1202,17 @@ table.statistics td {
 
 table.statistics tbody tr:hover{
   background-color: #f4f4f4;
+}
+
+/* ACLs management page */
+
+table.admin-acls {
+  border-collapse: collapse;
+}
+
+table.admin-acls th,
+table.admin-acls td {
+  border: 1px solid #dadada;
 }
 
 /* API key management page */

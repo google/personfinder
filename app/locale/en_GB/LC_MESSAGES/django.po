@@ -361,6 +361,13 @@ msgstr ""
 "\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "author. If you are the author, check your emails after clicking the "
 "button below.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -651,6 +666,9 @@ msgstr "Author's name"
 
 msgid "Author's phone number"
 msgstr "Author's phone number"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Authorisation key"
@@ -1345,9 +1363,6 @@ msgstr "Show sensitive information"
 msgid "Show who marked these duplicates"
 msgstr "Show who marked these duplicates"
 
-msgid "Sign in"
-msgstr "Sign in"
-
 msgid "Sign out"
 msgstr "Sign out"
 
@@ -1693,10 +1708,6 @@ msgstr "You have already subscribed. "
 
 msgid "You are already unsubscribed."
 msgstr "You have already unsubscribed."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "You are currently signed in as %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "You are not currently signed in."

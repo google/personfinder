@@ -74,7 +74,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'admin',
   'admin/create_repo',
   'admin/dashboard',
-  'admin/delete_record',
   'admin/resources',
   'admin/review',
   'css',
@@ -100,8 +99,6 @@ HANDLER_CLASSES['api/photo_upload'] = 'api.PhotoUpload'
 HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
-HANDLER_CLASSES['sitemap'] = 'sitemap.SiteMap'
-HANDLER_CLASSES['sitemap/ping'] = 'sitemap.SiteMapPing'
 HANDLER_CLASSES['tasks/count/note'] = 'tasks.CountNote'
 HANDLER_CLASSES['tasks/count/person'] = 'tasks.CountPerson'
 HANDLER_CLASSES['tasks/count/reindex'] = 'tasks.Reindex'
@@ -282,7 +279,7 @@ def setup_env(request):
     # Information about the request.
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
-    env.force_https = False
+    env.force_https = True
     env.domain = env.netloc.split(':')[0]
     env.global_url = utils.get_repo_url(request, 'global')
     env.light_url = utils.set_url_param(env.url, 'ui', 'light')

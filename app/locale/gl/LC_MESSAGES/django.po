@@ -363,6 +363,13 @@ msgstr ""
 "      é posible que a fonte orixinal nos envíe outra copia.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -381,6 +388,14 @@ msgstr ""
 "    es o autor, consulta o teu correo electrónico despois de facer clic "
 "no botón que aparece a continuación.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -660,6 +675,9 @@ msgstr "Nome do autor"
 
 msgid "Author's phone number"
 msgstr "Número de teléfono do autor"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Clave de autorización"
@@ -1371,9 +1389,6 @@ msgstr "Amosar información confidencial"
 msgid "Show who marked these duplicates"
 msgstr "Amosar quen marcou estes duplicados"
 
-msgid "Sign in"
-msgstr "Iniciar sesión"
-
 msgid "Sign out"
 msgstr "Pechar sesión"
 
@@ -1721,10 +1736,6 @@ msgstr "Xa estás subscrito. "
 
 msgid "You are already unsubscribed."
 msgstr "Xa cancelaches a subscrición."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Actualmente iniciaches sesión como %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Non iniciaches sesión."

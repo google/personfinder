@@ -361,6 +361,13 @@ msgstr ""
 "      vi kan motta en annen kopi av den senere, fra originalkilden.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
 " deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -650,6 +665,9 @@ msgstr "Forfatterens navn"
 
 msgid "Author's phone number"
 msgstr "Forfatterens telefonnummer"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autorisasjonsnøkkel"
@@ -1357,9 +1375,6 @@ msgstr "Vis sensitiv informasjon"
 msgid "Show who marked these duplicates"
 msgstr "Vis hvem som merket disse duplikatene"
 
-msgid "Sign in"
-msgstr "Logg på"
-
 msgid "Sign out"
 msgstr "Logg av"
 
@@ -1710,10 +1725,6 @@ msgstr "Du abonnerer allerede. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede avsluttet abonnementet."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Du er logget på som %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Du er for øyeblikket ikke pålogget."

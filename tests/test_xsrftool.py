@@ -22,10 +22,12 @@ class XsrfToolTests(unittest.TestCase):
         token = tool.generate_token(12345, 'test_action')
         self.assertTrue(tool.verify_token(token, 12345, 'test_action'))
 
-    def test_rejects_invalid_token(self):
+    def test_rejects_invalid_tokens(self):
         """Tests that an invalid token is rejected."""
         config.set(xsrf_token_key='abcdef')
         tool = utils.XsrfTool()
+        self.assertFalse(tool.verify_token(
+            'ThisTokenDoesNotEvenHaveASlash', 12345, 'test_action'))
         timestamp = utils.get_timestamp(XsrfToolTests.TEST_NOW)
         self.assertFalse(
             tool.verify_token('NotTheRightDigest/%f' % timestamp, 12345,

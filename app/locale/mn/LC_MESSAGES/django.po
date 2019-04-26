@@ -358,6 +358,13 @@ msgstr ""
 "      эх сурвалжаас хүлээн авч болохыг анхаарна уу.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -374,6 +381,14 @@ msgstr ""
 "илгээгдэх болно. Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа "
 "имэйлээ шалгана уу.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -644,6 +659,9 @@ msgstr "Зохиогчийн нэр"
 
 msgid "Author's phone number"
 msgstr "Зохиогчийн утасны дугаар"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Эрхжүүлэлтийн түлхүүр"
@@ -1350,9 +1368,6 @@ msgstr "Нууцлаг мэдээллийг харуулах"
 msgid "Show who marked these duplicates"
 msgstr "Эдгээр давхардлуудыг хэн тэмдэглэснийг харуулах"
 
-msgid "Sign in"
-msgstr "Нэвтрэх"
-
 msgid "Sign out"
 msgstr "Гарах"
 
@@ -1697,10 +1712,6 @@ msgstr "Та аль хэдийн бүртгүүлсэн байна. "
 
 msgid "You are already unsubscribed."
 msgstr "Та аль хэдийн бүртгүүлсэн байна."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Та одоо %(user_email)s-р нэвтэрсэн байна."
 
 msgid "You are not currently signed in."
 msgstr "Та одоо нэвтрээгүй байна."

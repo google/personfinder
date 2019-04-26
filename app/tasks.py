@@ -29,7 +29,6 @@ from google.appengine.ext import db
 import cloud_storage
 import config
 import const
-import delete
 import model
 import photo
 import pfif
@@ -38,87 +37,8 @@ import utils
 
 
 CPU_MEGACYCLES_PER_REQUEST = 1000
-EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
 PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
-
-
-class ScanForExpired(utils.BaseHandler):
-    """Common logic for scanning the Person table looking for things to delete.
-
-    The common logic handles iterating through the query, updating the expiry
-    date and wiping/deleting as needed. The is_expired flag on all records whose
-    expiry_date has passed.  Records that expired more than EXPIRED_TTL in the
-    past will also have their data fields, notes, and photos permanently
-    deleted.
-
-    Subclasses set the query and task_name."""
-    repo_required = False
-
-    def task_name(self):
-        """Subclasses should implement this."""
-        pass
-
-    def query(self):
-        """Subclasses should implement this."""
-        pass
-
-    def schedule_next_task(self, cursor):
-        """Schedule the next task for to carry on with this query.
-        """
-        self.add_task_for_repo(self.repo, self.task_name(), self.ACTION,
-                               cursor=cursor, queue_name='expiry')
-
-    def get(self):
-        if self.repo:
-            query = self.query()
-            if self.params.cursor:
-                query.with_cursor(self.params.cursor)
-            cursor = self.params.cursor
-            try:
-                for person in query:
-                    # query.cursor() returns a cursor which returns the entity
-                    # next to this "person" as the first result.
-                    next_cursor = query.cursor()
-                    was_expired = person.is_expired
-                    person.put_expiry_flags()
-                    if (utils.get_utcnow() - person.get_effective_expiry_date()
-                            > EXPIRED_TTL):
-                        person.wipe_contents()
-                    else:
-                        # treat this as a regular deletion.
-                        if person.is_expired and not was_expired:
-                            delete.delete_person(self, person)
-                    cursor = next_cursor
-            except runtime.DeadlineExceededError:
-                self.schedule_next_task(cursor)
-            except datastore_errors.Timeout:
-                # This exception is sometimes raised, maybe when the query
-                # object live too long?
-                self.schedule_next_task(cursor)
-        else:
-            for repo in model.Repo.list():
-                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
-
-class DeleteExpired(ScanForExpired):
-    """Scan for person records with expiry date thats past."""
-    ACTION = 'tasks/delete_expired'
-
-    def task_name(self):
-        return 'delete-expired'
-
-    def query(self):
-        return model.Person.past_due_records(self.repo)
-
-class DeleteOld(ScanForExpired):
-    """Scan for person records with old source dates for expiration."""
-    ACTION = 'tasks/delete_old'
-
-    def task_name(self):
-        return 'delete-old'
-
-    def query(self):
-        return model.Person.potentially_expired_records(self.repo)
 
 
 class CleanUpInTestMode(utils.BaseHandler):
@@ -131,6 +51,9 @@ class CleanUpInTestMode(utils.BaseHandler):
     """
     repo_required = False
     ACTION = 'tasks/clean_up_in_test_mode'
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     # Entries older than this age in seconds are deleted in test mode.
     #
@@ -244,6 +167,9 @@ class CountBase(utils.BaseHandler):
 
     SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
     ACTION = ''  # Each subclass should set the action path that it handles.
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     def get(self):
         if self.repo:  # Do some counting.
@@ -397,6 +323,9 @@ class NotifyManyUnreviewedNotes(utils.BaseHandler):
     repo_required = False  # can run without a repo
     ACTION = 'tasks/notify_many_unreviewed_notes'
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     def task_name(self):
         return 'notify-bad-review-status'
 
@@ -451,6 +380,9 @@ class ThumbnailPreparer(utils.BaseHandler):
     repo_required = False
     ACTION = 'tasks/thumbnail_preparer'
 
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
+
     def get(self):
         # We don't retry this task automatically, because it's looking for
         # everything that doesn't already have a thumbnail every time --
@@ -481,6 +413,9 @@ class DumpCSV(utils.BaseHandler):
 
     repo_required = False
     ACTION = 'tasks/dump_csv'
+
+    # App Engine issues HTTP requests to tasks.
+    https_required = False
 
     # Lifetime of a single task is 10 min. It stops fetching and starts
     # uploading after 4 min, assuming uploading takes similar time as

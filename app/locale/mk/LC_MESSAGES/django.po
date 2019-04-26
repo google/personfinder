@@ -366,6 +366,13 @@ msgstr ""
 "      подоцна може да добиеме уште една копија од оригиналниот извор.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -384,6 +391,14 @@ msgstr ""
 "    Ако вие сте авторот, проверете ја вашата е-пошта по кликнување на "
 "копчето подолу.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -659,6 +674,9 @@ msgstr "Име на авторот"
 
 msgid "Author's phone number"
 msgstr "Телефонски број на авторот"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Клуч за авторизација"
@@ -1370,9 +1388,6 @@ msgstr "Прикажи чувствителни информации"
 msgid "Show who marked these duplicates"
 msgstr "Прикажи кој ги означил овие дупликати"
 
-msgid "Sign in"
-msgstr "Најавете се"
-
 msgid "Sign out"
 msgstr "Одјавете се"
 
@@ -1721,10 +1736,6 @@ msgstr "Веќе сте претплатени. "
 
 msgid "You are already unsubscribed."
 msgstr "Веќе ја откажавте претплатата."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Моментално сте најавени како %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Моментално не сте најавени."

@@ -360,6 +360,13 @@ msgstr ""
 "      daha sonra bizə orijinal qaynaqdan başqa bir kopyası gələ bilər .\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -376,6 +383,14 @@ msgstr ""
 "Əgər müəllif Sizsinizsə, aşağıdakı düyməyə basdıqdan sonra e-poçtunuzu "
 "yoxlayın.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -650,6 +665,9 @@ msgstr "Müəllifin adı"
 
 msgid "Author's phone number"
 msgstr "Müəllifin telefon nömrəsi"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Avtorizasiya açarı"
@@ -1359,9 +1377,6 @@ msgstr "Həssas məlumat göstər"
 msgid "Show who marked these duplicates"
 msgstr "Bu dublikatları işarələyənləri göstər"
 
-msgid "Sign in"
-msgstr "Giriş"
-
 msgid "Sign out"
 msgstr "Çıxış"
 
@@ -1708,10 +1723,6 @@ msgstr "Siz artıq abunə olmusunuz. "
 
 msgid "You are already unsubscribed."
 msgstr "Artıq abunəlikdən çıxmısınız."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Hal-hazırda %(user_email)s kimi daxil olmusunuz."
 
 msgid "You are not currently signed in."
 msgstr "Hazırda daxil olmamısınız."

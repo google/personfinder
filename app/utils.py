@@ -43,7 +43,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
-from recaptcha.client import captcha
+import recaptcha.client.captcha
 from babel.dates import format_date
 from babel.dates import format_datetime
 from babel.dates import format_time
@@ -723,7 +723,7 @@ class BaseHandler(webapp.RequestHandler):
     repo_required = True
 
     # Handlers that require HTTPS can set this to True.
-    https_required = False
+    https_required = True
 
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
@@ -957,7 +957,7 @@ class BaseHandler(webapp.RequestHandler):
         # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
         lang = self.env.lang.split('-')[0]
 
-        return captcha.get_display_html(
+        return recaptcha.client.captcha.get_display_html(
             site_key=config.get('captcha_site_key'),
             use_ssl=use_ssl, error=error_code, lang=lang
         )
@@ -969,11 +969,11 @@ class BaseHandler(webapp.RequestHandler):
         # only locally, for testing purpose.
         faked_captcha_response = self.request.get('faked_captcha_response')
         if faked_captcha_response and self.request.remote_addr == '127.0.0.1':
-            return captcha.RecaptchaResponse(
+            return recaptcha.client.captcha.RecaptchaResponse(
                 is_valid=faked_captcha_response == 'success')
 
         captcha_response = self.request.get('g-recaptcha-response')
-        return captcha.submit(captcha_response)
+        return recaptcha.client.captcha.submit(captcha_response)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
@@ -1146,7 +1146,12 @@ class BaseHandler(webapp.RequestHandler):
         # Check for SSL (unless running local dev app server).
         if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
-                return self.error(403, 'HTTPS is required.')
+                url_parts = list(urlparse.urlparse(self.request.url))
+                url_parts[0] = 'https'  # The 0th part is the scheme.
+                webapp.RequestHandler.redirect(
+                    self, urlparse.urlunparse(url_parts))
+                self.terminate_response()
+                return
 
         # Handles repository alias.
         if self.maybe_redirect_for_repo_alias(request):
@@ -1253,11 +1258,14 @@ class XsrfTool(object):
             action_time)
 
     def verify_token(self, token, user_id, action_id):
-        [hmac_digest, action_time_str] = token.split('/')
+        token_spl = token.split('/')
+        if len(token_spl) != 2:
+            return False
+        [hmac_digest, action_time_str] = token_spl
         action_time = float(action_time_str)
         if (action_time + XsrfTool.TOKEN_EXPIRATION_TIME <
             get_utcnow_timestamp()):
-          return False
+            return False
         expected_hmac_digest = self._generate_hmac_digest(
             user_id, action_id, action_time)
         return hmac.compare_digest(

@@ -367,6 +367,13 @@ msgstr ""
 "oorspronkelijk bron.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -383,6 +390,14 @@ msgstr ""
 "uitgeschakeld met toestemming van de auteur. Als u de auteur bent, "
 "controleer dan uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -663,6 +678,9 @@ msgstr "Naam van auteur"
 
 msgid "Author's phone number"
 msgstr "Telefoonnummer van auteur"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autorisatiecode"
@@ -1378,9 +1396,6 @@ msgstr "Gevoelige gegevens weergeven"
 msgid "Show who marked these duplicates"
 msgstr "Weergeven wie deze duplicaten heeft gemarkeerd"
 
-msgid "Sign in"
-msgstr "Inloggen"
-
 msgid "Sign out"
 msgstr "Uitloggen"
 
@@ -1730,10 +1745,6 @@ msgstr "U bent al geabonneerd. "
 
 msgid "You are already unsubscribed."
 msgstr "U bent al afgemeld."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "U bent momenteel ingelogd als %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "U bent momenteel niet ingelogd."

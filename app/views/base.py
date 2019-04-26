@@ -33,9 +33,96 @@ class BaseView(django.views.View):
     # This should be overridden by subclasses.
     ACTION_ID = None
 
-    _GET_PARAMETERS = {
-        'lang': utils.strip,
-    }
+    class Env(object):
+        """Class to store environment information used by views and templates.
+
+        Subclasses of BaseView may define their own Env class (which must be
+        subclasses of BaseView.Env); that Env class (as long as it's called
+        "Env") will be used automatically when the env is set up.
+        """
+        # pylint: disable=attribute-defined-outside-init
+        # pylint: disable=too-many-instance-attributes
+
+        @property
+        def action(self):
+            """Gets the action ID, an identifier for the page being served."""
+            return self._action
+
+        @action.setter
+        def action(self, value):
+            self._action = value
+
+        @property
+        def charset(self):
+            """Gets the character encoding being used to serve the page."""
+            return self._charset
+
+        @charset.setter
+        def charset(self, value):
+            self._charset = value
+
+        @property
+        def config(self):
+            """Gets the config, a config.Config object for the repository."""
+            return self._config
+
+        @config.setter
+        def config(self, value):
+            self._config = value
+
+        @property
+        def enable_javascript(self):
+            "Gets whether or not to enable JavaScript." ""
+            return self._enable_javascript
+
+        @enable_javascript.setter
+        def enable_javascript(self, value):
+            self._enable_javascript = value
+
+        @property
+        def global_url(self):
+            """Gets the URL for the global root."""
+            return self._global_url
+
+        @global_url.setter
+        def global_url(self, value):
+            self._global_url = value
+
+        @property
+        def lang(self):
+            """Gets the code for the language being used (see const.py)."""
+            return self._lang
+
+        @lang.setter
+        def lang(self, value):
+            self._lang = value
+
+        @property
+        def repo(self):
+            """Gets the repository ID, or None if it's a global page."""
+            return self._repo
+
+        @repo.setter
+        def repo(self, value):
+            self._repo = value
+
+        @property
+        def rtl(self):
+            """Gets whether the language is a right-to-left language."""
+            return self._rtl
+
+        @rtl.setter
+        def rtl(self, value):
+            self._rtl = value
+
+        @property
+        def show_logo(self):
+            """Gets whether or not to show the logo in the header."""
+            return self._show_logo
+
+        @show_logo.setter
+        def show_logo(self, value):
+            self._show_logo = value
 
     def setup(self, request, *args, **kwargs):
         """Sets up the handler.
@@ -59,11 +146,10 @@ class BaseView(django.views.View):
         del request, args  # unused
 
         # Set up the parameters and read in the base set of parameters.
-        self.params = utils.Struct()
-        self.read_params(get_params=BaseView._GET_PARAMETERS)
+        self.params = self.get_params()
 
         # Set up env variable with data needed by the whole app.
-        self.env = utils.Struct()
+        self.env = self.Env()
         self.env.repo = kwargs.get('repo', None)
         self.env.action = self.ACTION_ID
         self.env.config = config.Configuration(self.env.repo or '*')
@@ -86,34 +172,23 @@ class BaseView(django.views.View):
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
 
-    def read_params(self, get_params=None, post_params=None, file_params=None):
-        """Reads CGI parameter values into self.params.
+    def get_params(self):
+        """Gets parameter values out of the request.
 
-        Args:
-            get_params (dict): A dictionary from GET parameter keys to validator
-                functions.
-            post_params (dict): A dictionary from POST parameter keys to
-                validator functions.
-            file_params (dict): A dictionary from POST parameter keys for
-                uploaded files to validator functions.
+        Subclasses that need additional values should override this function,
+        with an implementation like this:
+        return views.base.read_params(
+            super(<Subclass>, self).get_params(),
+            self.request,
+            get_params={'x': validate_x, 'y': validate_y,},
+            post_params={'z': validate_z})
+
+        Returns:
+            utils.Struct: A container with the values of CGI parameters used by
+            this view.
         """
-        if self.request.method == 'GET':
-            if get_params:
-                for key, validator in get_params.items():
-                    if key in self.request.GET:
-                        setattr(self.params, key,
-                                validator(self.request.GET[key]))
-        else:
-            if post_params:
-                for key, validator in post_params.items():
-                    if key in self.request.POST:
-                        setattr(self.params, key,
-                                validator(self.request.POST[key]))
-            if file_params:
-                for key, validator in file_params.items():
-                    if key in self.request.FILES:
-                        setattr(self.params, key,
-                                validator(self.request.FILES[key]))
+        return read_params(
+            utils.Struct(), self.request, get_params={'lang': utils.strip})
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
@@ -124,7 +199,7 @@ class BaseView(django.views.View):
             return True
         return req_path.startswith('%s/' % site_settings.OPTIONAL_PATH_PREFIX)
 
-    def build_absolute_path(self, path=None):
+    def build_absolute_path(self, path=None, repo=None):
         """Builds an absolute path, including the path prefix if required.
 
         Django's HttpRequest objects have a similar function, but we implement
@@ -135,6 +210,9 @@ class BaseView(django.views.View):
             path (str, optional): A path beginning with a slash (may include a
                 query string), e.g., '/abc?x=y'. If the path argument is not
                 specified or is None, the current request's path will be used.
+            repo (str, optional): A repo ID. If specified, the path will be
+                considered relative to the repo's route. If this is specified,
+                path must also be specified.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -143,16 +221,19 @@ class BaseView(django.views.View):
             the original request.
         """
         if path is None:
+            assert not repo
             # request.path will already include the path prefix if it's being
             # used.
             return self.request.path
         assert path[0] == '/'
+        if repo:
+            path = '/%s%s' % (repo, path)
         if self._request_is_for_prefixed_path():
             return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
         else:
             return path
 
-    def build_absolute_uri(self, path=None):
+    def build_absolute_uri(self, path=None, repo=None):
         """Builds an absolute URI given a path.
 
         See build_absolute_path (above) for an explanation of why we implement
@@ -162,6 +243,9 @@ class BaseView(django.views.View):
             path (str, optional): A path beginning with a slash (may include a
                 query string), e.g., '/abc?x=y'. If the path argument is not
                 specified or is None, the current request's path will be used.
+            repo (str, optional): A repo ID. If specified, the path will be
+                considered relative to the repo's route. If this is specified,
+                path must also be specified.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
@@ -169,7 +253,8 @@ class BaseView(django.views.View):
             'http://localhost:8000/personfinder/abc?x=y'). Does not preserve
             query parameters from the original request.
         """
-        return self.request.build_absolute_uri(self.build_absolute_path(path))
+        return self.request.build_absolute_uri(
+            self.build_absolute_path(path, repo))
 
     def render(self, template_name, status_code=200, **template_vars):
         """Renders a template with the given variables.
@@ -189,6 +274,7 @@ class BaseView(django.views.View):
             # already has the config anyway
             template_vars['config'] = self.env.config
             template_vars['params'] = self.params
+            template_vars['csp_nonce'] = self.request.csp_nonce
             return template_vars
 
         query_str = self.request.META.get('QUERY_STRING', '')
@@ -197,6 +283,24 @@ class BaseView(django.views.View):
             resources.get_rendered(template_name, self.env.lang, extra_key,
                                    get_vars, 0),
             status=status_code)
+
+    def error(self, status_code, message=''):
+        """Returns an error response.
+
+        Args:
+            status_code (int): The HTTP status code to use.
+            message (str, optional): A message to display. Defaults to the empty
+                string.
+
+        Returns:
+            HttpResponse: An HTTP response with the given status code and
+            message.
+        """
+        # pylint: disable=no-self-use
+        # Making this a method of BaseView keeps it consistent with render(),
+        # and probably other similar functions in the future.
+        return django.http.HttpResponse(
+            content=message, content_type='text/plain', status=status_code)
 
     @django.utils.decorators.classonlymethod
     def as_view(cls, **initkwargs):
@@ -240,3 +344,40 @@ class BaseView(django.views.View):
         # like csrf_exempt from dispatch
         functools.update_wrapper(view, cls.dispatch, assigned=())
         return view
+
+
+def read_params(container,
+                request,
+                get_params=None,
+                post_params=None,
+                file_params=None):
+    """Reads CGI parameter values from the request to the container.
+
+    Args:
+        container (utils.Struct): The container to put parameter values in.
+        request (HttpRequest): The request to read from.
+        get_params (dict): A dictionary from GET parameter keys to validator
+            functions.
+        post_params (dict): A dictionary from POST parameter keys to validator
+            functions.
+        file_params (dict): A dictionary from POST parameter keys for uploaded
+            files to validator functions.
+
+    Returns:
+        utils.Struct: The container, for convenience.
+    """
+    if request.method == 'GET':
+        if get_params:
+            for key, validator in get_params.items():
+                if key in request.GET:
+                    setattr(container, key, validator(request.GET[key]))
+    elif request.method == 'POST':
+        if post_params:
+            for key, validator in post_params.items():
+                if key in request.POST:
+                    setattr(container, key, validator(request.POST[key]))
+        if file_params:
+            for key, validator in file_params.items():
+                if key in request.FILES:
+                    setattr(container, key, validator(request.FILES[key]))
+    return container

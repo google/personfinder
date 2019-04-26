@@ -360,6 +360,13 @@ msgstr ""
 "      keyinroq asl manbadan yana boshqa nusxa olishimiz mumkin.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "jo‘natildi.\n"
 "Agar siz yozuv muallifi bo‘lsangiz, quyidagi manzil orqali e-pochtangizni"
 " tekshirib ko‘ring."
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -653,6 +668,9 @@ msgstr "Muallifning ismi"
 
 msgid "Author's phone number"
 msgstr "Muallifning telefon raqami"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Tasdiqdan o‘tish kaliti"
@@ -1365,9 +1383,6 @@ msgstr "Muhim ma'lumotni ko‘rsatish"
 msgid "Show who marked these duplicates"
 msgstr "Kim bularni nusxa deb belgilaganligini ko‘rsatish"
 
-msgid "Sign in"
-msgstr "Kirish"
-
 msgid "Sign out"
 msgstr "Chiqish"
 
@@ -1719,10 +1734,6 @@ msgstr "Siz allaqachon obuna bo‘lgansiz. "
 
 msgid "You are already unsubscribed."
 msgstr "Siz obunani allaqachon bekor qilgansiz."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Siz ayni paytda %(user_email)s nomidan kirdingiz."
 
 msgid "You are not currently signed in."
 msgstr "Siz ayni paytda tizimga kirmagansiz."

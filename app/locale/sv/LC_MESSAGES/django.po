@@ -366,6 +366,13 @@ msgstr ""
 "      få en ny kopia av den från den ursprungliga källan.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -385,6 +392,14 @@ msgstr ""
 " nedan\n"
 "    och tittar sedan i din e-post.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -663,6 +678,9 @@ msgstr "Författarens namn"
 
 msgid "Author's phone number"
 msgstr "Författarens telefonnummer"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Auktoriseringsnyckel"
@@ -1368,9 +1386,6 @@ msgstr "Visa känslig information"
 msgid "Show who marked these duplicates"
 msgstr "Visa vem som markerade dubbletterna"
 
-msgid "Sign in"
-msgstr "Logga in"
-
 msgid "Sign out"
 msgstr "Logga ut"
 
@@ -1720,10 +1735,6 @@ msgstr "Du prenumererar redan. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har redan avslutat prenumerationen."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Du är inloggad som %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Du är inte inloggad för närvarande."
