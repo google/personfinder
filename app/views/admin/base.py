@@ -17,6 +17,7 @@ import django.shortcuts
 from google.appengine.api import users
 
 import model
+import modelmodule.admin_acls as admin_acls_model
 import utils
 import views.base
 
@@ -61,6 +62,27 @@ class AdminBaseView(views.base.BaseView):
         def user(self, value):
             self._user = value
 
+    def _get_user_admin_permission(self, user):
+        user_repo_admin_object = admin_acls_model.AdminPermission.get(
+            self.env.repo, self.env.user.email())
+        if (user_repo_admin_object and
+            user_repo_admin_object.expiration_date < utils.get_utcnow()):
+            user_repo_admin_object = None
+        user_global_admin_object = admin_acls_model.AdminPermission.get(
+            'global', self.env.user.email())
+        if (user_global_admin_object and
+            user_global_admin_object.expiration_date < utils.get_utcnow()):
+            user_global_admin_object = None
+        if user_repo_admin_object is None:
+            return user_global_admin_object
+        elif user_global_admin_object is None:
+            return user_repo_admin_object
+        elif user_repo_admin_object.compare_level_to(
+            user_global_admin_object.access_level) > 0:
+            return user_repo_admin_object
+        else:
+            return user_global_admin_object
+
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
         # pylint: disable=attribute-defined-outside-init
@@ -68,6 +90,8 @@ class AdminBaseView(views.base.BaseView):
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
+        self.env.user_admin_permission = self._get_user_admin_permission(
+            self.env.user)
         self.env.logout_url = users.create_logout_url(self.build_absolute_uri())
         self.env.all_repo_options = [
             utils.Struct(
@@ -81,6 +105,24 @@ class AdminBaseView(views.base.BaseView):
             super(AdminBaseView, self).get_params(),
             self.request,
             post_params={'xsrf_token': utils.strip})
+
+    def _enforce_admin_level(self, min_level):
+        if self.env.user_admin_permission is None:
+            raise django.core.exceptions.PermissionDenied
+        if self.env.user_admin_permission.compare_level_to(min_level) < 0:
+            raise django.core.exceptions.PermissionDenied
+
+    def enforce_moderator_admin_level(self):
+        self._enforce_admin_level(
+            admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
+
+    def enforce_manager_admin_level(self):
+        self._enforce_admin_level(
+            admin_acls_model.AdminPermission.AccessLevel.MANAGER)
+
+    def enforce_superadmin_admin_level(self):
+        self._enforce_admin_level(
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
 
     def enforce_xsrf(self, action_id):
         """Verifies the request's XSRF token.

@@ -53,11 +53,20 @@ class AdminAclsView(views.admin.base.AdminBaseView):
     def _render_form(self):
         existing_acls = admin_acls_model.AdminPermission.get_for_repo(
             self.env.repo)
+        editable_acls = [
+            acl for acl in existing_acls if
+            self.env.user_admin_permission.compare_level_to(acl.access_level)
+            >= 0]
+        fixed_acls = [
+            acl for acl in existing_acls if
+            self.env.user_admin_permission.compare_level_to(acl.access_level)
+            < 0]
         default_expiration_date = (
             utils.get_utcnow() + datetime.timedelta(days=365))
         return self.render(
             'admin_acls.html',
-            existing_acls=existing_acls,
+            editable_acls=editable_acls,
+            fixed_acls=fixed_acls,
             default_expiration_date=default_expiration_date,
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
@@ -69,6 +78,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         (with an option to edit or revoke them) and a form to add a new admin.
         """
         del request, args, kwargs  # unused
+        self.enforce_manager_admin_level()
         return self._render_form()
 
     def post(self, request, *args, **kwargs):
@@ -78,22 +88,34 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         return the same page used for GET requests.
         """
         del request, args, kwargs  # unused
+        self.enforce_manager_admin_level()
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
         level = AdminAclsView._PARAM_VALUES_TO_ADMIN_LEVELS[self.params.level]
+        # Managers can make other people managers or moderators, and superadmins
+        # can make other people any level. Moderators can't grant any
+        # permissions to other people, but they can't access this page anyway,
+        # so we don't need to worry about that here.
+        if self.env.user_admin_permission.compare_level_to(level) < 0:
+            raise django.core.exceptions.PermissionDenied
         expiration_date = datetime.datetime.strptime(
             self.params.expiration_date, AdminAclsView._EXPIRATION_DATE_FORMAT)
         # TODO(nworden): add logging for this
-        if self.params.get('edit_button', ''):
+        if (self.params.get('edit_button', '') or
+            self.params.get('revoke_button', '')):
             acl = admin_acls_model.AdminPermission.get(
                 self.env.repo, email_address)
-            acl.access_level = level
-            acl.expiration_date = expiration_date
-            acl.put()
-        elif self.params.get('revoke_button', ''):
-            acl = admin_acls_model.AdminPermission.get(
-                self.env.repo, email_address)
-            acl.delete()
+            # You can't edit or revoke the permissions of someone at a higher
+            # level.
+            if self.env.user_admin_permission.compare_level_to(
+                acl.access_level) < 0:
+                raise django.core.exceptions.PermissionDenied
+            if self.params.get('edit_button', ''):
+                acl.access_level = level
+                acl.expiration_date = expiration_date
+                acl.put()
+            elif self.params.get('revoke_button', ''):
+                acl.delete()
         else:
             admin_acls_model.AdminPermission.create(
                 repo=self.env.repo,

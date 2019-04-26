@@ -42,6 +42,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
     def get(self, request, *args, **kwargs):
         """Serves GET requests with the deletion form."""
         del request, args, kwargs  # unused
+        self.enforce_moderator_admin_level()
         return self.render(
             'admin_delete_record.html',
             id='%s/person.' % const.HOME_DOMAIN,
@@ -51,6 +52,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
     def post(self, request, *args, **kwargs):
         """Sends the user to the deletion page with a valid signature."""
         del request, args, kwargs  # unused
+        self.enforce_moderator_admin_level()
         self.enforce_xsrf(self.ACTION_ID)
         action = ('delete', self.params.id)
         path = '/delete?' + utils.urlencode(

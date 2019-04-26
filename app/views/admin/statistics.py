@@ -36,6 +36,7 @@ class AdminStatisticsView(views.admin.base.AdminBaseView):
             HttpResponse: A HTTP response with the admin statistics page.
         """
         del request, args, kwargs  # unused
+        self.enforce_manager_admin_level()
         repos = sorted(model.Repo.list())
         all_usage = [_get_repo_usage(repo) for repo in repos]
         note_status_list = []

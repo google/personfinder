@@ -47,7 +47,7 @@
       <th>Edit</th>
       <th>Revoke</th>
     </tr>
-    {% for acl in existing_acls %}
+    {% for acl in editable_acls %}
       <tr>
         <form method="post">
           <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
@@ -81,6 +81,38 @@
             <input type="submit" name="revoke_button" value="Revoke" />
           </td>
         </form>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <br/>
+
+  <h3>Other users with {{ self.env.repo }} permissions</h3>
+
+  <table class="admin-acls">
+    <tr>
+      <th>Email address</th>
+      <th>Level</th>
+      <th>Expiration date</th>
+    </tr>
+    {% for acl in fixed_acls %}
+      <tr>
+        <td>{{ acl.email_address }}</td>
+	<td>
+          {# Technically, this is guaranteed to always be "Superadmin", since #}
+          {# managers can edit the access of moderators and other managers,   #}
+          {# and moderators can't access this page (i.e., only superadmins    #}
+          {# will ever be un-editable), but relying on that just feels like   #}
+          {# asking for trouble if we change something someday.               #}
+          {% if acl.access_level == 0 %}
+            Superadmin
+          {% elif acl.access_level == 1 %}
+            Manager
+          {% else %}
+            Moderator
+          {% endif %}
+        </td>
+        <td>{{ acl.expiration_date|date:'Y-m-d' }}</td>
       </tr>
     {% endfor %}
   </table>

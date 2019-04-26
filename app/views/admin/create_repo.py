@@ -48,6 +48,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             HttpResponse: A HTTP response with the admin create-repo page.
         """
         del request, args, kwargs  # unused
+        self.enforce_superadmin_admin_level()
         return self.render(
             'admin_create_repo.html',
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
@@ -68,6 +69,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             HttpResponse: A redirect to the new repo's admin page.
         """
         del request, args, kwargs  # unused
+        self.enforce_superadmin_admin_level()
         self.enforce_xsrf(self.ACTION_ID)
         new_repo = self.params.new_repo
         model.Repo(

@@ -37,3 +37,11 @@ OPTIONAL_PATH_PREFIX = 'personfinder'
 # TODO(nworden): Find a way to set this at deploy time. Maybe we could use an
 # environment variable passed through app.yaml.
 PROD_ALLOWED_HOSTS = ['*']
+
+# This should be set to an admin's email address.
+# In production, a global superadmin permission, with a three-day expiration,
+# will be added for this user when the database is set up. That user should
+# adjust their expiration date and add permissions for other users as needed.
+# For development servers, a similar permission is set up for test@example.com
+# instead, regardless of the PROD_ROOT_ADMIN setting.
+PROD_ROOT_ADMIN = None
