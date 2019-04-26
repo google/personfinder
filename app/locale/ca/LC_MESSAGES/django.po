@@ -356,6 +356,13 @@ msgstr ""
 "endavant la font original ens n'enviï una altra còpia.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "confirmació. Si sou l'autor, comproveu el correu electrònic després de "
 "fer clic al botó que hi ha a continuació.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -652,6 +667,9 @@ msgstr "Nom de l'autor"
 
 msgid "Author's phone number"
 msgstr "Número de telèfon de l'autor"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Clau d'autorització"
@@ -1367,9 +1385,6 @@ msgstr "Mostra la informació sensible"
 msgid "Show who marked these duplicates"
 msgstr "Mostra qui ha marcat aquests duplicats"
 
-msgid "Sign in"
-msgstr "Inicia la sessió"
-
 msgid "Sign out"
 msgstr "Tanca la sessió"
 
@@ -1723,10 +1738,6 @@ msgstr "Ja esteu subscrit. "
 
 msgid "You are already unsubscribed."
 msgstr "Ja heu anul·lat la subscripció."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "En aquest moment teniu la sessió iniciada com a %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "No heu iniciat la sessió."

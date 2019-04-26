@@ -5,10 +5,17 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 # yapf can fix things automatically, but pylint is more thorough. I expect the
 # set of things yapf is happy with will grow faster than the set of things
 # pylint is happy with, so we separate these lists.
-DEFAULT_YAPF_FILES="tests/test_searcher.py \
-                    tests/test_xsrftool.py"
-DEFAULT_PYLINT_FILES="tests/test_searcher.py \
-                      tests/test_xsrftool.py"
+DEFAULT_YAPF_FILES="app/views/admin/base.py \
+                    tests/test_searcher.py \
+                    tests/test_xsrftool.py \
+                    tests/views/test_admin_create_repo.py \
+                    tests/views/test_auto_security.py \
+                    tests/views/test_admin_create_repo.py"
+DEFAULT_PYLINT_FILES="app/views/admin/base.py \
+                      tests/test_searcher.py \
+                      tests/test_xsrftool.py \
+                      tests/views/test_admin_create_repo.py \
+                      tests/views/test_auto_security.py"
 
 # Call through python -m instead of directly, so that you're sure to be able to
 # use it even if you installed the tools through pip.
@@ -32,6 +39,9 @@ if [ "$command" == "yapf-fix" ]; then
 elif [ "$command" == "yapf-check" ]; then
     $YAPF -d $file_list
 elif [ "$command" == "pylint-check" ]; then
+    # Pylint apparently runs some stuff, including App Engine code that expects
+    # this to be set.
+    export SERVER_SOFTWARE="testing"
     $PYLINT $file_list
 else
     echo "Usage: tools/lint [yapf-fix|yapf-check|pylint-check]"

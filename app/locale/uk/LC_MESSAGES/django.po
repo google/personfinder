@@ -356,6 +356,13 @@ msgstr ""
 "      згодом ми можемо отримати іншу його копію з початкового джерела.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -373,6 +380,14 @@ msgstr ""
 "    Якщо Ви автор, перевірте свою електронну пошту, щойно натиснете "
 "кнопку нижче.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -646,6 +661,9 @@ msgstr "Ім’я та прізвище автора"
 
 msgid "Author's phone number"
 msgstr "Номер телефону автора"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ключ авторизації"
@@ -1357,9 +1375,6 @@ msgstr "Показати конфіденційну інформацію"
 msgid "Show who marked these duplicates"
 msgstr "Показати, хто позначив ці копії"
 
-msgid "Sign in"
-msgstr "Увійти"
-
 msgid "Sign out"
 msgstr "Вийти"
 
@@ -1710,10 +1725,6 @@ msgstr "Ви вже підписалися. "
 
 msgid "You are already unsubscribed."
 msgstr "Ви вже скасували підписку."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Ви ввійшли як %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Ви не ввійшли."

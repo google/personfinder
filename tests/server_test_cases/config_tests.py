@@ -133,6 +133,8 @@ class ConfigTests(ServerTestsBase):
         # Change some settings for the new repository.
         settings_form = doc.cssselect_one('form#save_repo')
         doc = self.s.submit(settings_form,
+            launch_status='activated',
+            test_mode='true',
             language_menu_options='["no"]',
             repo_titles='{"no": "Jordskjelv"}',
             keywords='foo, bar',
@@ -157,6 +159,9 @@ class ConfigTests(ServerTestsBase):
             force_https = 'false'
         )
         self.assertEquals(self.s.status, 200)
+        repo = Repo.get_by_key_name('xyz')
+        assert repo.activation_status == Repo.ActivationStatus.ACTIVE
+        assert repo.test_mode
         cfg = config.Configuration('xyz')
         self.assertEquals(cfg.language_menu_options, ['no'])
         assert cfg.repo_titles == {'no': 'Jordskjelv'}
@@ -310,8 +315,8 @@ class ConfigTests(ServerTestsBase):
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['', '/query', '/results', '/create', '/view',
                      '/multiview', '/reveal', '/photo', '/embed',
-                     '/gadget', '/delete', '/sitemap', '/api/read',
-                     '/api/write', '/feeds/note', '/feeds/person']:
+                     '/gadget', '/delete', '/api/read', '/api/write',
+                     '/feeds/note', '/feeds/person']:
             doc = self.go('/haiti%s' % path)
             assert 'de<i>acti</i>vated' in doc.content, \
                 'path: %s, content: %s' % (path, doc.content)

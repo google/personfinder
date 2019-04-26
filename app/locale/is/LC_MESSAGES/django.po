@@ -366,6 +366,13 @@ msgstr ""
 "      við gætum síðar fengið annað eintak af henni frá upprunastaðnum.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -385,6 +392,14 @@ msgstr ""
 "smellt\n"
 "    á hnappinn hér að neðan.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -660,6 +675,9 @@ msgstr "Nafn höfundar"
 
 msgid "Author's phone number"
 msgstr "Símanúmer höfundar"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Sannvottunarlykill"
@@ -1375,9 +1393,6 @@ msgstr "Sýna viðkvæmar upplýsingar"
 msgid "Show who marked these duplicates"
 msgstr "Sýna hver merkti þessar tvítekningar"
 
-msgid "Sign in"
-msgstr "Skrá inn"
-
 msgid "Sign out"
 msgstr "Skrá út"
 
@@ -1725,10 +1740,6 @@ msgstr "Þú ert nú þegar áskrifandi. "
 
 msgid "You are already unsubscribed."
 msgstr "Þú hefur nú þegar sagt áskriftinni upp."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Þú ert skráð(ur) inn sem %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Þú ert ekki skráð(ur) inn."

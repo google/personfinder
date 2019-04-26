@@ -352,6 +352,13 @@ msgstr ""
 "کپی دیگری از این سابقه را از منبع اصلی دریافت کنیم.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -369,6 +376,14 @@ msgstr ""
 " از کلیک\n"
 "بر روی دکمه زیر، ایمیل  خود را بررسی کنید.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -627,6 +642,9 @@ msgstr "نام نویسنده"
 
 msgid "Author's phone number"
 msgstr "شماره تلفن نویسنده"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "کلید مجوز"
@@ -1334,9 +1352,6 @@ msgstr "نمایش اطلاعات مهم"
 msgid "Show who marked these duplicates"
 msgstr "نشان دادن افرادی که این موارد تکراری را علامت‌گذاری کرده‌اند"
 
-msgid "Sign in"
-msgstr "ورود به سیستم"
-
 msgid "Sign out"
 msgstr "خروج از سیستم"
 
@@ -1684,10 +1699,6 @@ msgstr "شما قبلاً مشترک شده‌اید. "
 
 msgid "You are already unsubscribed."
 msgstr "اشتراک شما قبلاً لغو شده است."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "درحال‌حاضر با %(user_email)s به سیستم وارد شده‌اید."
 
 msgid "You are not currently signed in."
 msgstr "در حال حاضر وارد سیستم نشده‌اید."

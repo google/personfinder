@@ -347,6 +347,13 @@ msgstr ""
 "sigurojmë një tjetër kopje më vonë, nga burimi origjinal i tij.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -363,6 +370,14 @@ msgstr ""
 "autori jeni ju, atëherë kontrolloni postën tuaj elektronike pasi të keni "
 "klikuar butonin e mëposhtëm.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -619,6 +634,9 @@ msgstr "Emri i autorit"
 
 msgid "Author's phone number"
 msgstr "Numri i telefonit të autorit"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Çelësi autorizues"
@@ -1347,9 +1365,6 @@ msgstr "Shfaq informacione të ndjeshme"
 msgid "Show who marked these duplicates"
 msgstr "Shfaq përdoruesin që i ka shënjuar si dublikatë këto raporte"
 
-msgid "Sign in"
-msgstr "Identifikohuni"
-
 msgid "Sign out"
 msgstr "Dilni"
 
@@ -1712,10 +1727,6 @@ msgstr "Ju jeni abonuar tashmë. "
 
 msgid "You are already unsubscribed."
 msgstr "Ju jeni çabonuar tashmë."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Ju keni hyrë tashmë si %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Ju nuk keni hyrë në llogari."

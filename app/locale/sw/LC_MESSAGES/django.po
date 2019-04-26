@@ -356,6 +356,13 @@ msgstr ""
 "chanzo halisi.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "kwa mwandishi wa rekodi. Iwapo wewe ndiwe mwandishi, angalia barua pepe "
 "yako baada ya kubofya kitufe hapo chini.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -642,6 +657,9 @@ msgstr "Jina la mwandishi"
 
 msgid "Author's phone number"
 msgstr "Nambari ya simu ya mwandishi"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ufunguo wa kuidhinisha"
@@ -1359,9 +1377,6 @@ msgstr "Onyesha maelezo nyeti"
 msgid "Show who marked these duplicates"
 msgstr "Onyesha aliyetia alama nakala hizi"
 
-msgid "Sign in"
-msgstr "Ingia katika akaunti"
-
 msgid "Sign out"
 msgstr "Ondoka katika akaunti"
 
@@ -1711,10 +1726,6 @@ msgstr "Tayari umesajiliwa. "
 
 msgid "You are already unsubscribed."
 msgstr "Tayari umejiengua."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Kwa sasa umeingia katika akaunti ukitumia %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Hajuaingia katika akaunti kwa sasa."

@@ -365,6 +365,13 @@ msgstr ""
 " wayo wangempela.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -382,6 +389,14 @@ msgstr ""
 "  Uma ngabe ungumbhali, hlola i-imeyili yakho ngemuva kokuchofoza "
 "inkinobho engezansi.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -658,6 +673,9 @@ msgstr "Igama lombhali"
 
 msgid "Author's phone number"
 msgstr "Inombolo yefoni yombhali"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ukhiye wokugunyazwa"
@@ -1373,9 +1391,6 @@ msgstr "Bonisa ulwazi olubucayi"
 msgid "Show who marked these duplicates"
 msgstr "Bonisa ukuthi ubani omake lawa mawele"
 
-msgid "Sign in"
-msgstr "Ngena ngemvume"
-
 msgid "Sign out"
 msgstr "Phuma ngemvume"
 
@@ -1727,10 +1742,6 @@ msgstr "Usuvele ubhalisile. "
 
 msgid "You are already unsubscribed."
 msgstr "Usuvele ukhishiwe ohlwini."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Okwamanje ungene ngemvume njengo-%(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Okwamanje awungenanga ngemvume."

@@ -361,6 +361,13 @@ msgstr ""
 "      kami mungkin akan menerima salinannya yang lain dari sumber asli.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "    Jika Anda adalah pembuatnya, periksa email setelah mengeklik tombol "
 "di bawah.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -656,6 +671,9 @@ msgstr "Nama pengarang"
 
 msgid "Author's phone number"
 msgstr "Nomor telepon pengarang"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Kunci otorisasi"
@@ -1361,9 +1379,6 @@ msgstr "Menampilkan informasi sensitif"
 msgid "Show who marked these duplicates"
 msgstr "Tampilkan yang menandai ini sebagai duplikat"
 
-msgid "Sign in"
-msgstr "Masuk"
-
 msgid "Sign out"
 msgstr "Keluar"
 
@@ -1707,10 +1722,6 @@ msgstr "Anda sudah berlangganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Anda sudah berhenti berlangganan."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Anda saat ini masuk sebagai %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Anda saat ini tidak masuk."

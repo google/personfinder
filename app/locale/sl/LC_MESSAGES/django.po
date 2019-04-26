@@ -359,6 +359,13 @@ msgstr ""
 "zapisa.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -375,6 +382,14 @@ msgstr ""
 "avtorja zapisa. Če ste avtor vi, po kliku spodnjega gumba preverite "
 "e-pošto.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -648,6 +663,9 @@ msgstr "Ime avtorja"
 
 msgid "Author's phone number"
 msgstr "Avtorjeva telefonska številka"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ključ za pooblastitev"
@@ -1354,9 +1372,6 @@ msgstr "Prikaži občutljive podatke"
 msgid "Show who marked these duplicates"
 msgstr "Pokaži, kdo je označil te dvojnike"
 
-msgid "Sign in"
-msgstr "Prijava"
-
 msgid "Sign out"
 msgstr "Odjava"
 
@@ -1703,10 +1718,6 @@ msgstr "Ste že naročeni. "
 
 msgid "You are already unsubscribed."
 msgstr "Naročnina je že odpovedana."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Trenutno ste vpisani kot %(user_email)s."
 
 msgid "You are not currently signed in."
 msgstr "Trenutno niste vpisani."

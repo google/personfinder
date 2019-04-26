@@ -356,6 +356,13 @@ msgstr ""
 "      մենք կարող ենք հետագայում ստանալ բնօրինակ աղբյուրի այլ կրկնօրինակ:\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -371,6 +378,14 @@ msgstr ""
 "թույլատրում է անջատել կամ միացնել նշումները: Եթե դուք հեղինակն եք, սույն "
 "կոճակը սեղմելուց հետո ստուգեք ձեր էլփոստը:\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -640,6 +655,9 @@ msgstr "Հեղինակի անունը"
 
 msgid "Author's phone number"
 msgstr "Հեղինակի հեռախոսահամարը"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Լիազորման բանալին"
@@ -1347,9 +1365,6 @@ msgstr "Ցույց տալ կարևոր տեղեկությունները"
 msgid "Show who marked these duplicates"
 msgstr "Ցույց տալ, թե ովքեր են նշել այս կրկնօրինակները"
 
-msgid "Sign in"
-msgstr "Մուտք"
-
 msgid "Sign out"
 msgstr "Դուրս գալ"
 
@@ -1694,10 +1709,6 @@ msgstr "Դուք արդեն բաժանորդագրված եք: "
 
 msgid "You are already unsubscribed."
 msgstr "Դուք արդեն ապաբաժանորդագրված եք:"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Դուք մուտք եք գործել որպես %(user_email)s:"
 
 msgid "You are not currently signed in."
 msgstr "Դուք մուտք չեք գործել:"

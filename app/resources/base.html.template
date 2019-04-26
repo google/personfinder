@@ -83,7 +83,7 @@
        rel="stylesheet"
        href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
     {% if env.enable_javascript %}
-      <script type="text/javascript">
+      <script type="text/javascript" nonce="{{csp_nonce}}">
         var lang = '{{env.lang}}';
         {% if env.enable_translate %}
           var translate_api_key = '{{config.translate_api_key}}';
@@ -91,14 +91,19 @@
           var translate_api_key = null;
         {% endif %}
       </script>
-      <script src="{{env.global_url}}/forms.js"></script>
+      <script src="{{env.global_url}}/forms.js" nonce="{{csp_nonce}}"></script>
     {% endif %}
+  {% endif %}
+  {% if onload_function and not env.amp %}
+    <script type="text/javascript" nonce="{{csp_nonce}}">
+      document.addEventListener('DOMContentLoaded', function() {
+        {{onload_function}}();
+      });
+    </script>
   {% endif %}
 {% endblock head %}</head>
 
-<body
-    class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
-    {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
+<body class="{{env.ui}} {% block extra_body_class %}{% endblock %}">
 
   {# If there is no Javascript support, and the browser does not allow the redirect above, allow user to take action. #}
   {% if env.ui != "light" %}
@@ -230,7 +235,10 @@
               >{% trans "Terms of Service" %}</a>
         {% endblock sidenav %}
       </div>
-      <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
+      <div id="overlay" class="overlay"></div>
+      <script type="text/javascript" nonce="{{csp_nonce}}">
+        document.querySelector('#overlay').addEventListener('click', hideSideMenu);
+      </script>
     {% endif %}
   {% endblock body %}
   </div>

@@ -20,10 +20,15 @@ import sys
 
 from const import *
 from model import *
-import sitemap
+from tasksmodule import sitemap_ping
 from utils import *
 import const
 import tasks
+
+
+_REPO_STATUS_VALUE_STAGING = 'staging'
+_REPO_STATUS_VALUE_ACTIVATED = 'activated'
+_REPO_STATUS_VALUE_DEACTIVATED = 'deactivated'
 
 
 class Handler(BaseHandler):
@@ -64,7 +69,7 @@ class Handler(BaseHandler):
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
-                    onload_function="add_initial_languages()",
+                    onload_function="add_initial_languages",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
                         tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0,
@@ -129,7 +134,7 @@ class Handler(BaseHandler):
                         'launch_status',
                         'test_mode',
                     ]):
-                sitemap.SiteMapPing.add_ping_tasks()
+                sitemap_ping.add_ping_tasks()
                 self.redirect('/admin')
 
         elif self.params.operation == 'save_global':
@@ -184,6 +189,10 @@ class Handler(BaseHandler):
                 break
 
         config.set_for_repo(repo, **self.__view_config_to_model_config(values))
+        if self.params.operation == 'save_repo':
+            # We don't want to try doing this for global saves; that wouldn't
+            # make sense.
+            self.__update_repo_status(values)
         return True
 
     def __model_config_to_view_config(self, model_config):
@@ -195,11 +204,11 @@ class Handler(BaseHandler):
                 view_config[name] = value
 
         if model_config.deactivated:
-            view_config['launch_status'] = 'deactivated'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_DEACTIVATED
         elif model_config.launched:
-            view_config['launch_status'] = 'activated'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_ACTIVATED
         else:
-            view_config['launch_status'] = 'staging'
+            view_config['launch_status'] = _REPO_STATUS_VALUE_STAGING
 
         return view_config
 
@@ -209,13 +218,13 @@ class Handler(BaseHandler):
         model_config = {}
         for name, value in view_config.iteritems():
             if name == 'launch_status':
-                if value == 'staging':
+                if value == _REPO_STATUS_VALUE_STAGING:
                     model_config['deactivated'] = False
                     model_config['launched'] = False
-                elif value == 'activated':
+                elif value == _REPO_STATUS_VALUE_ACTIVATED:
                     model_config['deactivated'] = False
                     model_config['launched'] = True
-                elif value == 'deactivated':
+                elif value == _REPO_STATUS_VALUE_DEACTIVATED:
                     model_config['deactivated'] = True
                     model_config['launched'] = False
                 else:
@@ -225,3 +234,18 @@ class Handler(BaseHandler):
             else:
                 model_config[name] = value
         return model_config
+
+    def __update_repo_status(self, view_config):
+        repo_entity = model.Repo.get_by_key_name(self.env.repo)
+        launch_status = view_config['launch_status']
+        if launch_status == _REPO_STATUS_VALUE_STAGING:
+            repo_entity.activation_status = model.Repo.ActivationStatus.STAGING
+        elif launch_status == _REPO_STATUS_VALUE_ACTIVATED:
+            repo_entity.activation_status = model.Repo.ActivationStatus.ACTIVE
+        elif launch_status == _REPO_STATUS_VALUE_DEACTIVATED:
+            repo_entity.activation_status = (
+                model.Repo.ActivationStatus.DEACTIVATED)
+        else:
+            raise Exception('Invalid launch_status value: %s' % launch_status)
+        repo_entity.test_mode = view_config['test_mode']
+        repo_entity.put()

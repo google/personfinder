@@ -19,10 +19,10 @@ to guard the display of sensitive information."""
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import cgi
+import hashlib
 import os
 import pickle
 import random
-import sha
 import time
 import urlparse
 
@@ -36,7 +36,7 @@ REVEAL_KEY_LENGTH = 20
 
 def sha1_hash(string):
     """Computes the SHA-1 hash of the given string."""
-    return sha.new(string).digest()
+    return hashlib.sha1(string).digest()
 
 def xor(string, byte):
     """Exclusive-ors each character in a string with the given byte."""

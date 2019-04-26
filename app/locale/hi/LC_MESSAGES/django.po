@@ -362,6 +362,13 @@ msgstr ""
 "      हम बाद में मूल स्रोत से उसकी एक दूसरी कॉपी ले सकते हैं.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "  अगर आप लेखक हैं तो, नीचे दिया गया बटन क्लिक करने के बाद अपना ई-मेल "
 "देखें.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -658,6 +673,9 @@ msgstr "लेखक का नाम"
 
 msgid "Author's phone number"
 msgstr "लेखक का फ़ोन नंबर"
+
+msgid "Authorization already exists for another repo!That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "मंज़ूरी के लिए कुंजी"
@@ -1369,9 +1387,6 @@ msgstr "संवेदनशील जानकारी दिखाएं"
 msgid "Show who marked these duplicates"
 msgstr "दिखाएं कि इन्हें डुप्लीकेट के रूप में किसने चिह्नित किया है"
 
-msgid "Sign in"
-msgstr "साइन इन करें"
-
 msgid "Sign out"
 msgstr "प्रस्थान करें"
 
@@ -1716,10 +1731,6 @@ msgstr "आपने पहले ही सदस्यता ली हुई 
 
 msgid "You are already unsubscribed."
 msgstr "आपने पहले ही सदस्यता छोड़ दी है."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "आप वर्तमान में %(user_email)s के रूप में प्रवेश हैं."
 
 msgid "You are not currently signed in."
 msgstr "आप वर्तमान में प्रवेश नहीं हैं."
