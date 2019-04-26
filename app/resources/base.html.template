@@ -109,9 +109,7 @@
   {% if env.ui != "light" %}
     <noscript>
       <p>
-        {% blocktrans with env.light_url as light_url %}
-          If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.</a>
-        {% endblocktrans %}
+        {% blocktrans with env.light_url as light_url %}If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.</a>{% endblocktrans %}
       </p>
     </noscript>
   {% endif %}
