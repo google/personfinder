@@ -29,6 +29,12 @@ class AdminAclsView(views.admin.base.AdminBaseView):
 
     _EXPIRATION_DATE_FORMAT = '%Y-%m-%d'
 
+    _PARAM_VALUES_TO_ADMIN_LEVELS = {
+        'superadmin': admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN,
+        'manager': admin_acls_model.AdminPermission.AccessLevel.MANAGER,
+        'moderator': admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
+    }
+
     def setup(self, request, *args, **kwargs):
         super(AdminAclsView, self).setup(request, *args, **kwargs)
 
@@ -74,10 +80,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
-        if self.params.level == 'administrator':
-            level = admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR
-        elif self.params.level == 'moderator':
-            level = admin_acls_model.AdminPermission.AccessLevel.MODERATOR
+        level = AdminAclsView._PARAM_VALUES_TO_ADMIN_LEVELS[self.params.level]
         expiration_date = datetime.datetime.strptime(
             self.params.expiration_date, AdminAclsView._EXPIRATION_DATE_FORMAT)
         # TODO(nworden): add logging for this

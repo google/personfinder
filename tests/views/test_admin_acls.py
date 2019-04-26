@@ -79,8 +79,8 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.assertEqual(
             res.context['existing_acls'][0].email_address, 'l@mib.gov')
 
-    def test_add_administrator(self):
-        """Tests adding a full administrator."""
+    def test_add_manager(self):
+        """Tests adding a manager."""
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
@@ -89,7 +89,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
-            'level': 'administrator',
+            'level': 'manager',
         }, secure=True)
         acls = admin_acls_model.AdminPermission.all()
         self.assertEqual(acls.count(), 1)
@@ -98,7 +98,31 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
         self.assertEqual(
             acl.access_level,
-            admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR)
+            admin_acls_model.AdminPermission.AccessLevel.MANAGER)
+        res = self.client.get('/haiti/admin/acls/', secure=True)
+        self.assertEqual(
+            res.context['existing_acls'][0].email_address, 'l@mib.gov')
+
+    def test_add_superadmin(self):
+        """Tests adding a superadmin."""
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-25',
+            'level': 'superadmin',
+        }, secure=True)
+        acls = admin_acls_model.AdminPermission.all()
+        self.assertEqual(acls.count(), 1)
+        acl = acls[0]
+        self.assertEqual(acl.email_address, 'l@mib.gov')
+        self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
+        self.assertEqual(
+            acl.access_level,
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(
             res.context['existing_acls'][0].email_address, 'l@mib.gov')
@@ -117,7 +141,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             'xsrf_token': xsrf_token,
             'email_address': 'j@mib.gov',
             'expiration_date': '2019-04-25',
-            'level': 'administrator',
+            'level': 'superadmin',
         }, secure=True)
         acls = admin_acls_model.AdminPermission.all()
         self.assertEqual(acls.count(), 1)
@@ -126,7 +150,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
         self.assertEqual(
             acl.access_level,
-            admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR)
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
 
     def test_edit_expiration_date(self):
         """Tests editing the expiration date for a permission."""

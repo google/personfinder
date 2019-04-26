@@ -20,11 +20,14 @@ class AdminPermission(db.Model):
     class AccessLevel(object):
         """An enum for the level of access the user has."""
 
-        # Admin access: the admin can edit the repo, add new moderators, etc.
-        ADMINISTRATOR = 0
-        # Moderator access: the admin can moderate user input, but not anything
-        # else.
-        MODERATOR = 1
+        # Superadmins can do anything for a repo, and global superadmins can
+        # create new repos.
+        SUPERADMIN = 0
+        # Managers have limited administrative access: e.g., they can edit
+        # custom messages for their repo, but not the title.
+        MANAGER = 1
+        # Moderators can moderate user input.
+        MODERATOR = 2
 
     access_level = db.IntegerProperty(required=True)
 
