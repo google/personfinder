@@ -166,6 +166,7 @@ def _enforce_admin_level(user_admin_permission, min_level):
 def enforce_moderator_admin_level(func):
     """Require that the user be a moderator (or return a 403)."""
     def inner(self, *args, **kwargs):
+        """Implementation of the enforce_moderator_admin_level decorator."""
         _enforce_admin_level(
             self.env.user_admin_permission,
             admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
@@ -175,6 +176,7 @@ def enforce_moderator_admin_level(func):
 def enforce_manager_admin_level(func):
     """Require that the user be a manager (or return a 403)."""
     def inner(self, *args, **kwargs):
+        """Implementation of the enforce_manager_admin_level decorator."""
         _enforce_admin_level(
             self.env.user_admin_permission,
             admin_acls_model.AdminPermission.AccessLevel.MANAGER)
@@ -184,6 +186,7 @@ def enforce_manager_admin_level(func):
 def enforce_superadmin_admin_level(func):
     """Require that the user be a superadmin (or return a 403)."""
     def inner(self, *args, **kwargs):
+        """Implementation of the enforce_superadmin_admin_level decorator."""
         _enforce_admin_level(
             self.env.user_admin_permission,
             admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
