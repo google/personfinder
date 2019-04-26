@@ -25,7 +25,7 @@
       Access level:
       <select name="level">
         <option value="superadmin">Superadmin</option>
-	<option value="manager">Manager</option>
+        <option value="manager">Manager</option>
         <option value="moderator">Moderator</option>
       </select><br/>
       Expiration date:
@@ -59,7 +59,7 @@
                   {% if acl.access_level == 0 %}selected="selected"{% endif %}>
                 Superadmin
               </option>
-	      <option value="manager"
+              <option value="manager"
                   {% if acl.access_level == 1 %}selected="selected"{% endif %}>
                 Manager
               </option>
