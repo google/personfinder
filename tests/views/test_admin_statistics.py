@@ -12,7 +12,7 @@ class AdminStatisticsViewTests(view_tests_base.ViewTestsBase):
         super(AdminStatisticsViewTests, self).setUp()
         self.data_generator.repo()
         self.counter = model.UsageCounter.create('haiti')
-        self.login(is_admin=True)
+        self.login_as_manager()
 
     def get_page_doc(self):
         return self.to_doc(self.client.get('/global/admin/statistics/',

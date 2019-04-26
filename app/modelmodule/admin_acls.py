@@ -32,7 +32,7 @@ class AdminPermission(db.Model):
         # An ordered list of the admin access levels, from lowest to highest
         # (i.e., each level has the permissions of everything before it in the
         # list).
-        ORDERED = [MODERATOR, MANAGER, SUPERADMIN]
+        ORDERING = [MODERATOR, MANAGER, SUPERADMIN]
 
     access_level = db.IntegerProperty(required=True)
 
@@ -74,9 +74,9 @@ class AdminPermission(db.Model):
         """
         if self.access_level == other_level:
             return 0
-        level_index = AdminPermission.AccessLevel.ORDERED.index(
+        level_index = AdminPermission.AccessLevel.ORDERING.index(
             self.access_level)
-        other_level_index = AdminPermission.AccessLevel.ORDERED.index(
+        other_level_index = AdminPermission.AccessLevel.ORDERING.index(
             other_level)
         if level_index < other_level_index:
             return -1

@@ -1,6 +1,8 @@
 """Tools to help run tests against the Django app."""
 
 import const
+import datetime
+import modelmodule.admin_acls as admin_acls_model
 import utils
 
 import scrape
@@ -10,28 +12,58 @@ import testutils.base
 class ViewTestsBase(testutils.base.ServerTestsBase):
     """A base class for tests for the Django app."""
 
-    TEST_USER_EMAIL = 'kay@mib.gov'
-    TEST_USER_ID = 'k'
-
     def setUp(self):
         super(ViewTestsBase, self).setUp()
         self._xsrf_tool = utils.XsrfTool()
+        self.data_generator.admin_permission(
+            repo_id='global', email_address='z@mib.gov',
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN,
+            expiration_date=datetime.datetime(2051, 1, 20))
+        self.data_generator.admin_permission(
+            repo_id='global', email_address='k@mib.gov',
+            access_level=admin_acls_model.AdminPermission.AccessLevel.MANAGER,
+            expiration_date=datetime.datetime(2051, 1, 20))
+        self.data_generator.admin_permission(
+            repo_id='global', email_address='j@mib.gov',
+            access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
+            expiration_date=datetime.datetime(2051, 1, 20))
+        self._current_user_id = None
 
-    def login(self, is_admin=False):
-        """Logs in the "user" for making requests.
-
-        Args:
-           is_admin (bool): Whether the user should be considered an admin.
-        """
+    def login_as_superadmin(self):
         self.testbed.setup_env(
-            user_email=ViewTestsBase.TEST_USER_EMAIL,
-            user_id=ViewTestsBase.TEST_USER_ID,
-            user_is_admin='1' if is_admin else '0',
+            user_email='z@mib.gov',
+            user_id='z',
+            user_is_admin='0',
             overwrite=True)
+        self._current_user_id = 'z'
+
+    def login_as_manager(self):
+        self.testbed.setup_env(
+            user_email='k@mib.gov',
+            user_id='k',
+            user_is_admin='0',
+            overwrite=True)
+        self._current_user_id = 'k'
+
+    def login_as_moderator(self):
+        self.testbed.setup_env(
+            user_email='j@mib.gov',
+            user_id='j',
+            user_is_admin='0',
+            overwrite=True)
+        self._current_user_id = 'j'
+
+    def login_as_nonadmin(self):
+        self.testbed.setup_env(
+            user_email='frank@mib.gov',
+            user_id='frank',
+            user_is_admin='0',
+            overwrite=True)
+        self._current_user_id = 'frank'
 
     def xsrf_token(self, action_id):
-        return self._xsrf_tool.generate_token(
-            ViewTestsBase.TEST_USER_ID, action_id)
+        return self._xsrf_tool.generate_token(self._current_user_id, action_id)
 
     def to_doc(self, response):
         """Produces a scrape.Document from the Django test response.

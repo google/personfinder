@@ -38,7 +38,7 @@ class AdminDeleteRecordViewTests(view_tests_base.ViewTestsBase):
 
     def setUp(self):
         super(AdminDeleteRecordViewTests, self).setUp()
-        self.login(is_admin=True)
+        self.login_as_moderator()
         self.data_generator.repo()
         self.person = self.data_generator.person()
 

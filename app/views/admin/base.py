@@ -153,11 +153,4 @@ class AdminBaseView(views.base.BaseView):
         if not self.env.user:
             return django.shortcuts.redirect(
                 users.create_login_url(self.build_absolute_uri()))
-        if not users.is_current_user_admin():
-            logout_url = users.create_logout_url(self.build_absolute_uri())
-            return self.render(
-                'not_admin_error.html',
-                status_code=403,
-                logout_url=logout_url,
-                user=self.env.user)
         return super(AdminBaseView, self).dispatch(request, args, kwargs)
