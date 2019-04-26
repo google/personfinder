@@ -33,22 +33,53 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
     def setUp(self):
         super(AdminAclsViewTests, self).setUp()
         self.data_generator.repo()
-        self.login(is_admin=True)
 
     def test_get_with_no_existing_users(self):
         """Tests GET requests when there's no users with permissions yet."""
+        self.login_as_manager()
         res = self.client.get('/haiti/admin/acls/', secure=True)
-        self.assertEqual(res.context['existing_acls'].count(), 0)
+        self.assertEqual(len(res.context['editable_acls']), 0)
+        self.assertEqual(len(res.context['fixed_acls']), 0)
 
-    def test_get_with_existing_users(self):
-        """Tests GET requests when there are users with permissions."""
+    def test_get_with_none_editable(self):
+        """Tests GET requests where the user can't edit any of the permissions.
+        """
+        self.login_as_manager()
+        self.data_generator.admin_permission(
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        self.data_generator.admin_permission(
+            email_address='m@mib.gov',
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        res = self.client.get('/haiti/admin/acls/', secure=True)
+        self.assertEqual(len(res.context['editable_acls']), 0)
+        self.assertEqual(len(res.context['fixed_acls']), 2)
+
+    def test_get_with_some_editable(self):
+        """Tests GET requests when the user can edit some of the permissions."""
+        self.login_as_manager()
+        self.data_generator.admin_permission()
+        self.data_generator.admin_permission(
+            email_address='m@mib.gov',
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        res = self.client.get('/haiti/admin/acls/', secure=True)
+        self.assertEqual(len(res.context['editable_acls']), 1)
+        self.assertEqual(len(res.context['fixed_acls']), 1)
+
+    def test_get_with_all_editable(self):
+        """Tests GET requests when the user can edit all of the permissions."""
+        self.login_as_manager()
         self.data_generator.admin_permission()
         self.data_generator.admin_permission(email_address='m@mib.gov')
         res = self.client.get('/haiti/admin/acls/', secure=True)
-        self.assertEqual(res.context['existing_acls'].count(), 2)
+        self.assertEqual(len(res.context['editable_acls']), 2)
+        self.assertEqual(len(res.context['fixed_acls']), 0)
 
     def test_get_default_expiration_date(self):
         """Tests that the expected default expiration date is correctly."""
+        self.login_as_manager()
         utils.set_utcnow_for_test(datetime.datetime(2010, 1, 5))
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(
@@ -57,6 +88,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
 
     def test_add_moderator(self):
         """Tests adding a moderator."""
+        self.login_as_manager()
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
@@ -67,7 +99,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             'expiration_date': '2019-04-25',
             'level': 'moderator',
         }, secure=True)
-        acls = admin_acls_model.AdminPermission.all()
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
         self.assertEqual(acls.count(), 1)
         acl = acls[0]
         self.assertEqual(acl.email_address, 'l@mib.gov')
@@ -77,10 +109,11 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(
-            res.context['existing_acls'][0].email_address, 'l@mib.gov')
+            res.context['editable_acls'][0].email_address, 'l@mib.gov')
 
-    def test_add_administrator(self):
-        """Tests adding a full administrator."""
+    def test_add_manager(self):
+        """Tests adding a manager."""
+        self.login_as_manager()
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
@@ -89,49 +122,65 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
-            'level': 'administrator',
+            'level': 'manager',
         }, secure=True)
-        acls = admin_acls_model.AdminPermission.all()
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
         self.assertEqual(acls.count(), 1)
         acl = acls[0]
         self.assertEqual(acl.email_address, 'l@mib.gov')
         self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
         self.assertEqual(
             acl.access_level,
-            admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR)
+            admin_acls_model.AdminPermission.AccessLevel.MANAGER)
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(
-            res.context['existing_acls'][0].email_address, 'l@mib.gov')
+            res.context['editable_acls'][0].email_address, 'l@mib.gov')
 
-    def test_edit_access_level(self):
-        """Tests editing the access level for a user."""
-        self.data_generator.admin_permission(
-            email_address='j@mib.gov',
-            expiration_date=datetime.datetime(2019, 4, 25),
-            access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
+    def test_add_superadmin(self):
+        """Tests adding a superadmin."""
+        self.login_as_superadmin()
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
-        xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
+        xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
             'value')
         post_resp = self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
-            'email_address': 'j@mib.gov',
+            'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
-            'level': 'administrator',
+            'level': 'superadmin',
         }, secure=True)
-        acls = admin_acls_model.AdminPermission.all()
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
         self.assertEqual(acls.count(), 1)
         acl = acls[0]
-        self.assertEqual(acl.email_address, 'j@mib.gov')
+        self.assertEqual(acl.email_address, 'l@mib.gov')
         self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
         self.assertEqual(
             acl.access_level,
-            admin_acls_model.AdminPermission.AccessLevel.ADMINISTRATOR)
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        res = self.client.get('/haiti/admin/acls/', secure=True)
+        self.assertEqual(
+            res.context['editable_acls'][0].email_address, 'l@mib.gov')
 
-    def test_edit_expiration_date(self):
-        """Tests editing the expiration date for a permission."""
+    def test_managers_cant_add_superadmins(self):
+        """Tests that managers can't add superadmins."""
+        self.login_as_manager()
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-25',
+            'level': 'superadmin',
+        }, secure=True)
+        self.assertEqual(post_resp.status_code, 403)
+
+    def test_edit_access_level(self):
+        """Tests editing the access level for a user."""
+        self.login_as_superadmin()
         self.data_generator.admin_permission(
-            email_address='j@mib.gov',
+            email_address='l@mib.gov',
             expiration_date=datetime.datetime(2019, 4, 25),
             access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
         get_doc = self.to_doc(self.client.get(
@@ -140,14 +189,79 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             'value')
         post_resp = self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
-            'email_address': 'j@mib.gov',
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-25',
+            'level': 'superadmin',
+        }, secure=True)
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
+        self.assertEqual(acls.count(), 1)
+        acl = acls[0]
+        self.assertEqual(acl.email_address, 'l@mib.gov')
+        self.assertEqual(acl.expiration_date, datetime.datetime(2019, 4, 25))
+        self.assertEqual(
+            acl.access_level,
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+
+    def test_managers_cant_edit_superadmins(self):
+        """Tests that managers can't edit superadmins."""
+        self.login_as_manager()
+        self.data_generator.admin_permission(
+            email_address='l@mib.gov',
+            expiration_date=datetime.datetime(2019, 4, 25),
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[0].get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-26',  # different expiration date
+            'level': 'superadmin',
+        }, secure=True)
+        self.assertEqual(post_resp.status_code, 403)
+
+    def test_managers_cant_superadminify(self):
+        """Tests that managers can't make a user into a superadmin."""
+        self.login_as_manager()
+        self.data_generator.admin_permission(
+            email_address='l@mib.gov',
+            expiration_date=datetime.datetime(2019, 4, 25),
+            access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-25',
+            'level': 'superadmin',
+        }, secure=True)
+        self.assertEqual(post_resp.status_code, 403)
+
+    def test_edit_expiration_date(self):
+        """Tests editing the expiration date for a permission."""
+        self.login_as_manager()
+        self.data_generator.admin_permission(
+            email_address='l@mib.gov',
+            expiration_date=datetime.datetime(2019, 4, 25),
+            access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
             'expiration_date': '2019-05-25',
             'level': 'moderator',
         }, secure=True)
-        acls = admin_acls_model.AdminPermission.all()
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
         self.assertEqual(acls.count(), 1)
         acl = acls[0]
-        self.assertEqual(acl.email_address, 'j@mib.gov')
+        self.assertEqual(acl.email_address, 'l@mib.gov')
         self.assertEqual(acl.expiration_date, datetime.datetime(2019, 5, 25))
         self.assertEqual(
             acl.access_level,
@@ -155,17 +269,38 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
 
     def test_revoke_access(self):
         """Tests revoking admin access."""
-        self.data_generator.admin_permission(email_address='j@mib.gov')
+        self.login_as_manager()
+        self.data_generator.admin_permission(email_address='l@mib.gov')
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
             'value')
         post_resp = self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
-            'email_address': 'j@mib.gov',
+            'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
             'level': 'moderator',
             'revoke_button': 'Revoke',
         }, secure=True)
-        acls = admin_acls_model.AdminPermission.all()
+        acls = admin_acls_model.AdminPermission.all().filter('repo =', 'haiti')
         self.assertEqual(acls.count(), 0)
+
+    def test_managers_cant_revoke_superadmins(self):
+        """Tests that managers can't revoke the access of superadmins."""
+        self.login_as_manager()
+        self.data_generator.admin_permission(
+            email_address='l@mib.gov',
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+        get_doc = self.to_doc(self.client.get(
+            '/haiti/admin/acls/', secure=True))
+        xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[0].get(
+            'value')
+        post_resp = self.client.post('/haiti/admin/acls', {
+            'xsrf_token': xsrf_token,
+            'email_address': 'l@mib.gov',
+            'expiration_date': '2019-04-25',
+            'level': 'moderator',
+            'revoke_button': 'Revoke',
+        }, secure=True)
+        self.assertEqual(post_resp.status_code, 403)

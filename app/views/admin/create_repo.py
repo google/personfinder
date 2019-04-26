@@ -36,6 +36,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             self.request,
             post_params={'new_repo': utils.strip})
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
         """Serves GET requests.
 
@@ -53,6 +54,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
 
+    @views.admin.base.enforce_superadmin_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, creating a new repo.
 
