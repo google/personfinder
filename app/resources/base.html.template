@@ -25,7 +25,7 @@
     {# If there is no Javascript support, redirect to the light URL. #}
     {% if env.ui != "light" %}
       <noscript>
-        <style>html{display:none;}</style>
+        <style type="text/css">#hide_in_light_mode{display:none}</style>
         <meta http-equiv="refresh" content="0.0;url={{env.light_url}}">
       </noscript>
     {% endif %}
@@ -99,6 +99,19 @@
 <body
     class="{{env.ui}} {% block extra_body_class %}{% endblock %}"
     {% if not env.amp %}onload="{{onload_function}}"{% endif %}>
+
+  {# If there is no Javascript support, and the browser does not allow the redirect above, allow user to take action. #}
+  {% if env.ui != "light" %}
+    <noscript>
+      <p>
+        {% blocktrans with env.light_url as light_url %}
+          If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.
+        {% endblocktrans %}
+      </p>
+    </noscript>
+  {% endif %}
+
+  <div id="hide_in_light_mode">
   {% block body %}
 
     {% if env.amp and env.enable_analytics %}
@@ -141,17 +154,6 @@
       {% block container %}
         <div class="container">
           <div class="content" role="main">
-            {# If there is no Javascript support, and the browser does not allow the redirect above, allow user to take action. #}
-            {% if env.ui != "light" %}
-              <noscript>
-                <h1>
-                  {% with light_url=env.light_url %}
-                    {% blocktrans %}If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.{% endblocktrans %}
-                  {% endwith %}
-                </h1>
-              </noscript>
-            {% endif %}
-
             {% block content %}
             {% endblock content %}
           </div>
@@ -206,10 +208,10 @@
               >{% trans "About Google Person Finder" %}</a>
           <span class="link-separator"></span>
           {% include "repo-menu.html.template" %}
-	  {% if config.feedback_url %}
+          {% if config.feedback_url %}
             <span class="link-separator"></span>
             <a href="{{config.feedback_url}}"
-	        {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+               {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
           {% endif %}
           <span class="link-separator"></span>
           {% if env.ui != "light" %}
@@ -231,4 +233,5 @@
       <div id="overlay" class="overlay" onclick="hideSideMenu()"></div>
     {% endif %}
   {% endblock body %}
+  </div>
 </body></html>
