@@ -51,10 +51,10 @@ class ApiKeyListView(views.admin.base.AdminBaseView):
 
     ACTION_ID = 'admin/api_keys/list'
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
         """Serves a view with a list of API keys."""
         del request, args, kwargs  # unused
-        self.enforce_superadmin_admin_level()
         auths = model.Authorization.all().filter(
             'repo = ', self.env.repo or '*')
         return self.render(
@@ -98,8 +98,8 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
                 'subscribe_permission': utils.validate_checkbox_as_bool,
             })
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
-        self.enforce_superadmin_admin_level()
         if self.params.get('log_key'):
             management_log_key = self.params.log_key
             management_log = db.get(management_log_key)
@@ -143,8 +143,8 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
         authorization.put()
         return authorization
 
+    @views.admin.base.enforce_superadmin_admin_level
     def post(self, request, *args, **kwargs):
-        self.enforce_superadmin_admin_level()
         self.enforce_xsrf('admin_api_keys')
 
         # Navigation to an individual key's management page is handled by making

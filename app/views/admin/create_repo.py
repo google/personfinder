@@ -36,6 +36,7 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             self.request,
             post_params={'new_repo': utils.strip})
 
+    @views.admin.base.enforce_superadmin_admin_level
     def get(self, request, *args, **kwargs):
         """Serves GET requests.
 
@@ -48,12 +49,12 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             HttpResponse: A HTTP response with the admin create-repo page.
         """
         del request, args, kwargs  # unused
-        self.enforce_superadmin_admin_level()
         return self.render(
             'admin_create_repo.html',
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
 
+    @views.admin.base.enforce_superadmin_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, creating a new repo.
 
@@ -69,7 +70,6 @@ class AdminCreateRepoView(views.admin.base.AdminBaseView):
             HttpResponse: A redirect to the new repo's admin page.
         """
         del request, args, kwargs  # unused
-        self.enforce_superadmin_admin_level()
         self.enforce_xsrf(self.ACTION_ID)
         new_repo = self.params.new_repo
         model.Repo(

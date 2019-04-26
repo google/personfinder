@@ -24,6 +24,7 @@ class AdminStatisticsView(views.admin.base.AdminBaseView):
 
     ACTION_ID = 'admin/statistics'
 
+    @views.admin.base.enforce_manager_admin_level
     def get(self, request, *args, **kwargs):
         """Serves get requests.
 
@@ -36,7 +37,6 @@ class AdminStatisticsView(views.admin.base.AdminBaseView):
             HttpResponse: A HTTP response with the admin statistics page.
         """
         del request, args, kwargs  # unused
-        self.enforce_manager_admin_level()
         repos = sorted(model.Repo.list())
         all_usage = [_get_repo_usage(repo) for repo in repos]
         note_status_list = []

@@ -71,6 +71,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
 
+    @views.admin.base.enforce_manager_admin_level
     def get(self, request, *args, **kwargs):
         """Serves GET requests with a form and list of existing ACLs.
 
@@ -78,9 +79,9 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         (with an option to edit or revoke them) and a form to add a new admin.
         """
         del request, args, kwargs  # unused
-        self.enforce_manager_admin_level()
         return self._render_form()
 
+    @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, making the requested changes.
 
@@ -88,7 +89,6 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         return the same page used for GET requests.
         """
         del request, args, kwargs  # unused
-        self.enforce_manager_admin_level()
         self.enforce_xsrf(self.ACTION_ID)
         email_address = self.params.email_address
         level = AdminAclsView._PARAM_VALUES_TO_ADMIN_LEVELS[self.params.level]
