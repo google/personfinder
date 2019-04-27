@@ -260,6 +260,7 @@ def setup_env(request):
     that are commonly used by most handlers."""
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
+    env.repo_entity = model.Repo.get(env.repo) if env.repo else None
     env.config = config.Configuration(env.repo or '*')
 
     env.analytics_id = env.config.get('analytics_id')
@@ -428,7 +429,7 @@ def setup_env(request):
         # If the repository is deactivated, we should not show test mode
         # notification.
         env.repo_test_mode = (
-            env.config.test_mode and not env.config.deactivated)
+            env.config.test_mode and not env.repo_entity.is_deactivated())
         env.force_https = env.config.force_https
 
         env.params_full_name = request.get('full_name', '').strip()

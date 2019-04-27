@@ -131,6 +131,10 @@ class Repo(db.Model):
     # Few properties for now; the repository title and other settings are all in
     # ConfigEntry entities (see config.py).
 
+    @staticmethod
+    def get(repo_id):
+        return Repo.get_by_key_name(repo_id)
+
     @classmethod
     def list(cls):
         """Returns a list of all repository names."""
@@ -139,15 +143,20 @@ class Repo(db.Model):
     @classmethod
     def list_active(cls):
         """Returns a list of the active (non-deactivated) repository names."""
-        return [name for name in Repo.list()
-                if not config.get_for_repo(name, 'deactivated')]
+        staging = [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.STAGING)]
+        active = [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.ACTIVE)]
+        return staging + active
 
     @classmethod
     def list_launched(cls):
         """Returns a list of the launched (listed in menu) repository names."""
-        return [name for name in Repo.list()
-                if config.get_for_repo(name, 'launched') and
-                        not config.get_for_repo(name, 'deactivated')]
+        return [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.ACTIVE)]
+
+    def is_deactivated(self):
+        return self.activation_status == Repo.ActivationStatus.DEACTIVATED
 
 
 class Base(db.Model):

@@ -47,12 +47,11 @@ def reset_datastore():
     setup_datastore()
 
 def setup_repos():
-    db.put([Repo(key_name='haiti'),
-            Repo(key_name='japan'),
+    db.put([Repo(key_name='haiti',
+                 activation_status=Repo.ActivationStatus.ACTIVE),
+            Repo(key_name='japan',
+                 activation_status=Repo.ActivationStatus.ACTIVE),
             Repo(key_name='pakistan')])
-    # Set some repositories active so they show on the main page.
-    config.set_for_repo('japan', launched=True)
-    config.set_for_repo('haiti', launched=True)
 
 def setup_configs():
     """Installs configuration settings used for testing by server_tests."""

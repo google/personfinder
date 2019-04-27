@@ -36,11 +36,10 @@ class SitemapViewTests(view_tests_base.ViewTestsBase):
         super(SitemapViewTests, self).setUp()
         self.data_generator.repo(repo_id='haiti')
         self.data_generator.repo(repo_id='japan')
-        self.data_generator.repo(repo_id='minnesota')
-        # Set two of the repos as launched; the unlaunched one shouldn't appear
-        # in the sitemap.
-        config.set_for_repo('haiti', launched=True)
-        config.set_for_repo('japan', launched=True)
+        # The unlaunched repo shouldn't appear in the sitemap.
+        self.data_generator.repo(
+            repo_id='minnesota',
+            activation_status=model.Repo.ActivationStatus.STAGING)
 
     def test_get(self):
         """Tests GET requests."""
