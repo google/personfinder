@@ -2,15 +2,16 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
-# yapf can fix things automatically, but pylint is more thorough. I expect the
-# set of things yapf is happy with will grow faster than the set of things
-# pylint is happy with, so we separate these lists.
-DEFAULT_YAPF_FILES="app/views/admin/base.py \
-                    tests/test_searcher.py \
-                    tests/test_xsrftool.py \
-                    tests/views/test_admin_create_repo.py \
-                    tests/views/test_auto_security.py \
-                    tests/views/test_admin_create_repo.py"
+# pylint is considerably more thorough than flake8, so we expect the set of
+# things flake8 is happy with will grow faster than the set of things pylint is
+# happy with, so we separate these lists.
+DEFAULT_FLAKE8_FILES="app/views \
+                      app/tasksmodule \
+                      tests/views \
+                      tests/tasks \
+                      tests/testutils \
+                      tests/test_searcher.py \
+                      tests/test_xsrftool.py"
 DEFAULT_PYLINT_FILES="app/views/admin/base.py \
                       tests/test_searcher.py \
                       tests/test_xsrftool.py \
@@ -19,30 +20,27 @@ DEFAULT_PYLINT_FILES="app/views/admin/base.py \
 
 # Call through python -m instead of directly, so that you're sure to be able to
 # use it even if you installed the tools through pip.
-YAPF="python -m yapf --style google"
-# pylint will complain about TODOs, so disable that with "--disable fixme"
-PYLINT="python -m pylint --disable fixme"
+FLAKE8="python -m flake8"
+PYLINT="python -m pylint"
 
 command="$1"
 file_list="${@:2:999}"
 
 if [ "$file_list" == "" ]; then
-    if [ "$command" == "yapf-fix" -o "$command" == "yapf-check" ]; then
-        file_list=$DEFAULT_YAPF_FILES
+    if [ "$command" == "flake8-check" ]; then
+        file_list=$DEFAULT_FLAKE8_FILES
     elif [ "$command" == "pylint-check" ]; then
         file_list=$DEFAULT_PYLINT_FILES
     fi
 fi
 
-if [ "$command" == "yapf-fix" ]; then
-    $YAPF -i $file_list
-elif [ "$command" == "yapf-check" ]; then
-    $YAPF -d $file_list
+if [ "$command" == "flake8-check" ]; then
+    $FLAKE8 $file_list
 elif [ "$command" == "pylint-check" ]; then
     # Pylint apparently runs some stuff, including App Engine code that expects
     # this to be set.
     export SERVER_SOFTWARE="testing"
     $PYLINT $file_list
 else
-    echo "Usage: tools/lint [yapf-fix|yapf-check|pylint-check]"
+    echo "Usage: tools/lint [flake8-check|pylint-check]"
 fi
