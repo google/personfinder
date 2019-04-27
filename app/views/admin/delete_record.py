@@ -55,8 +55,9 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
         del request, args, kwargs  # unused
         self.enforce_xsrf(self.ACTION_ID)
         action = ('delete', self.params.id)
-        path = '/delete?' + utils.urlencode(
-            {'id': self.params.id,
-             'signature': reveal.sign(action),})
+        path = '/delete?' + utils.urlencode({
+            'id': self.params.id,
+            'signature': reveal.sign(action),
+        })
         return django.shortcuts.redirect(
             self.build_absolute_uri(path, self.env.repo))

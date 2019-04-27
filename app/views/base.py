@@ -270,8 +270,8 @@ class BaseView(django.views.View):
         def get_vars():
             """A function returning vars, for use by the resources module."""
             template_vars['env'] = self.env
-            # TODO(nworden): change templates to access config through env, which
-            # already has the config anyway
+            # TODO(nworden): change templates to access config through env,
+            # which already has the config anyway
             template_vars['config'] = self.env.config
             template_vars['params'] = self.params
             template_vars['csp_nonce'] = self.request.csp_nonce

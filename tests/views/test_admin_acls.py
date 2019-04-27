@@ -15,12 +15,6 @@
 
 import datetime
 
-import django
-import django.http
-import django.test
-
-import config
-import model
 import modelmodule.admin_acls as admin_acls_model
 import utils
 
@@ -46,12 +40,12 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         """
         self.login_as_manager()
         self.data_generator.admin_permission(
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN))
         self.data_generator.admin_permission(
             email_address='m@mib.gov',
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN))
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(len(res.context['editable_acls']), 0)
         self.assertEqual(len(res.context['fixed_acls']), 2)
@@ -62,8 +56,8 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.data_generator.admin_permission()
         self.data_generator.admin_permission(
             email_address='m@mib.gov',
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN))
         res = self.client.get('/haiti/admin/acls/', secure=True)
         self.assertEqual(len(res.context['editable_acls']), 1)
         self.assertEqual(len(res.context['fixed_acls']), 1)
@@ -93,7 +87,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
@@ -118,7 +112,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
@@ -143,7 +137,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect_one('input[name="xsrf_token"]').get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
@@ -187,7 +181,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
@@ -208,8 +202,8 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.data_generator.admin_permission(
             email_address='l@mib.gov',
             expiration_date=datetime.datetime(2019, 4, 25),
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN))
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[0].get(
@@ -252,7 +246,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-05-25',
@@ -275,7 +269,7 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[1].get(
             'value')
-        post_resp = self.client.post('/haiti/admin/acls', {
+        self.client.post('/haiti/admin/acls', {
             'xsrf_token': xsrf_token,
             'email_address': 'l@mib.gov',
             'expiration_date': '2019-04-25',
@@ -290,8 +284,8 @@ class AdminAclsViewTests(view_tests_base.ViewTestsBase):
         self.login_as_manager()
         self.data_generator.admin_permission(
             email_address='l@mib.gov',
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN))
         get_doc = self.to_doc(self.client.get(
             '/haiti/admin/acls/', secure=True))
         xsrf_token = get_doc.cssselect('input[name="xsrf_token"]')[0].get(
