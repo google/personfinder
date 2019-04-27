@@ -1059,19 +1059,6 @@ class UserActionLog(db.Expando):
         entry.put()
 
 
-class StaticSiteMapInfo(db.Model):
-    """Holds static sitemaps file info."""
-    static_sitemaps = db.StringListProperty()
-    static_sitemaps_generation_time = db.DateTimeProperty(required=True)
-    shard_size_seconds = db.IntegerProperty(default=90)
-
-
-class SiteMapPingStatus(db.Model):
-    """Tracks the last shard index that was pinged to the search engine."""
-    search_engine = db.StringProperty(required=True)
-    shard_index = db.IntegerProperty(default=-1)
-
-
 class UniqueId(db.Model):
     """This entity is used just to generate unique numeric IDs."""
     @staticmethod
