@@ -22,7 +22,6 @@ import re
 # Filed issue #626 to move us out of the global namespace someday, which would
 # prevent stuff like this.
 import config
-import model
 
 import view_tests_base
 

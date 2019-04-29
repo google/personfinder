@@ -40,3 +40,17 @@ cron:
   url: /global/tasks/dump_csv
   schedule: every day 0:00
   timezone: UTC
+
+# Datacheck crons
+- description: Check expired person records.
+  url: /global/tasks/check_expired_person_records/
+  schedule: every day 18:00
+  timezone: UTC
+- description: Check note record validity.
+  url: /global/tasks/check_note_data_validity/
+  schedule: every day 18:00
+  timezone: UTC
+- description: Check person record validity.
+  url: /global/tasks/check_person_data_validity/
+  schedule: every day 18:00
+  timezone: UTC

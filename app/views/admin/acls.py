@@ -103,7 +103,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
             # You can't edit or revoke the permissions of someone at a higher
             # level.
             if self.env.user_admin_permission.compare_level_to(
-                acl.access_level) < 0:
+                    acl.access_level) < 0:
                 raise django.core.exceptions.PermissionDenied
             if self.params.edit_button:
                 acl.access_level = level

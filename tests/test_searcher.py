@@ -21,7 +21,8 @@ class SearcherTests(unittest.TestCase):
     def test_full_text_search_results(self):
         """Use full_text_search.search results when enabled."""
         with mock.patch('full_text_search.search') as full_text_search_mock:
-            full_text_search_mock.return_value = SearcherTests.FULLTEXT_RETURN_VALUE
+            full_text_search_mock.return_value = (
+                SearcherTests.FULLTEXT_RETURN_VALUE)
             searcher = Searcher(
                 SearcherTests.REPO_NAME,
                 enable_fulltext_search=True,
@@ -38,7 +39,8 @@ class SearcherTests(unittest.TestCase):
         """Use full_text_search.search results when enabled, including location.
         """
         with mock.patch('full_text_search.search') as full_text_search_mock:
-            full_text_search_mock.return_value = SearcherTests.FULLTEXT_RETURN_VALUE
+            full_text_search_mock.return_value = (
+                SearcherTests.FULLTEXT_RETURN_VALUE)
             searcher = Searcher(
                 SearcherTests.REPO_NAME,
                 enable_fulltext_search=True,

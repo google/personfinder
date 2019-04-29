@@ -34,11 +34,13 @@ SECRET_KEY = os.urandom(30)
 # Check if we're running a local development server or in prod.
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
+    DEBUG_PROPAGATE_EXCEPTIONS = True
     # If DEBUG is True and ALLOWED_HOSTS is empty, Django permits localhost.
     ALLOWED_HOSTS = []
     SECURE_SSL_REDIRECT = False
 else:
     DEBUG = False
+    DEBUG_PROPAGATE_EXCEPTIONS = False
     ALLOWED_HOSTS = site_settings.PROD_ALLOWED_HOSTS
     SECURE_SSL_REDIRECT = True
 
