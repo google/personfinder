@@ -15,24 +15,16 @@
 
 import datetime
 import logging
-import os
 import sys
 
-import django
-import django.test
-from google.appengine import runtime
-from google.appengine.api import users
 from google.appengine.ext import db
-from google.appengine.api import quota
 from google.appengine.api import taskqueue
-from google.appengine.ext import testbed
 # We should be moving off mox and to mock. However, taskqueue doesn't play nice
 # with mock, so dropping mox for these tests means moving to GAE's stuff for
 # this. Since taskqueue has to get replaced by Cloud Tasks for Python 3 anyway,
 # it's not worth rewriting these tests now just to avoid mox.
 import mox
 
-import config
 import model
 import utils
 
@@ -136,7 +128,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
-        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).is_expired is True
         assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
         assert db.get(self.photo_key)
@@ -150,7 +142,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
-        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).is_expired is True
         assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
         assert db.get(self.photo_key)
@@ -165,7 +157,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
-        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).is_expired is True
         assert db.get(self.key_p1).given_name is None
         assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key()) is None  # Note entity is actually gone
@@ -190,12 +182,12 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         # Confirm that the task wiped self.p2 as well.
         assert model.Person.all().count() == 0
         assert_past_due_count(2)
-        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).is_expired is True
         assert db.get(self.key_p1).given_name is None
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
-        assert db.get(self.key_p2).is_expired == True
+        assert db.get(self.key_p2).is_expired is True
         assert db.get(self.key_p2).given_name is None
         assert db.get(self.key_p2).source_date == datetime.datetime(2010, 3, 15)
         assert db.get(self.key_p2).entry_date == datetime.datetime(2010, 3, 15)

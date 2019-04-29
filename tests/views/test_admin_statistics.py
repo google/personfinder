@@ -1,6 +1,3 @@
-import django
-import django.test
-
 import model
 
 import view_tests_base

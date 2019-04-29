@@ -110,7 +110,7 @@ class TestDataGenerator(object):
         return note
 
     def authorization(
-        self, store=True, repo_id='haiti', key='secret_key', **kwargs):
+            self, store=True, repo_id='haiti', key='secret_key', **kwargs):
         params = copy.deepcopy(TestDataGenerator._DEFAULT_AUTHORIZATION_PARAMS)
         params.update(kwargs)
         authorization = model.Authorization.create(repo_id, key, **params)
@@ -125,9 +125,9 @@ class TestDataGenerator(object):
         return photo
 
     def subscription(
-        self, store=True, repo_id='haiti', person_id=None,
-        email='fred@example.net', language='en',
-        timestamp=datetime.datetime(2010, 1, 2)):
+            self, store=True, repo_id='haiti', person_id=None,
+            email='fred@example.net', language='en',
+            timestamp=datetime.datetime(2010, 1, 2)):
         subscription = model.Subscription(
             repo=repo_id,
             person_record_id=person_id,
@@ -139,9 +139,9 @@ class TestDataGenerator(object):
         return subscription
 
     def admin_permission(
-        self, store=True, repo_id='haiti', email_address='l@mib.gov',
-        access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
-        expiration_date=datetime.datetime(2011, 1, 20)):
+            self, store=True, repo_id='haiti', email_address='l@mib.gov',
+            access_level=admin_acls_model.AdminPermission.AccessLevel.MODERATOR,
+            expiration_date=datetime.datetime(2011, 1, 20)):
         admin_permission = admin_acls_model.AdminPermission.create(
             repo_id, email_address, access_level, expiration_date)
         if store:

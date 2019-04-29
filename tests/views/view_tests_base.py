@@ -17,8 +17,8 @@ class ViewTestsBase(testutils.base.ServerTestsBase):
         self._xsrf_tool = utils.XsrfTool()
         self.data_generator.admin_permission(
             repo_id='global', email_address='z@mib.gov',
-            access_level=
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN,
+            access_level=(
+                admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN),
             expiration_date=datetime.datetime(2051, 1, 20))
         self.data_generator.admin_permission(
             repo_id='global', email_address='k@mib.gov',

@@ -35,14 +35,14 @@ install:
   - |
     pip install \
       cssselect \
+      flake8 \
       lxml \
       mock \
       modernize \
       parameterized \
       pillow==4.1.0 \
       pylint==1.9.4 \
-      pytest \
-      yapf
+      pytest
   - pip install -r requirements.txt -t app/vendors
   - npm --prefix ui install
 
