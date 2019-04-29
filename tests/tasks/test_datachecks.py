@@ -115,6 +115,7 @@ class NoteDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
 class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
 
     _NOW = datetime.datetime(2010, 2, 1)
+    _YESTERDAY = _NOW - datetime.timedelta(days=1, hours=1)
 
     def init_testbed_stubs(self):
         self.testbed.init_user_stub()
@@ -127,11 +128,8 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
         self.data_generator.repo(repo_id='haiti')
 
     def test_good_expired_record(self):
-        expiry_date = (
-            ExpiredPersonRecordCheckTaskTest._NOW -
-            datetime.timedelta(days=1, hours=1))
         self.data_generator.person(
-            expiry_date=expiry_date,
+            expiry_date=ExpiredPersonRecordCheckTaskTest._YESTERDAY,
             given_name=None,
             family_name=None,
             home_city='',
@@ -155,10 +153,8 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
             '/haiti/tasks/check_expired_person_records', method='POST')
 
     def test_expired_record_with_data(self):
-        expiry_date = (
-            ExpiredPersonRecordCheckTaskTest._NOW -
-            datetime.timedelta(days=1, hours=1))
-        self.data_generator.person(expiry_date=expiry_date)
+        self.data_generator.person(
+            expiry_date=ExpiredPersonRecordCheckTaskTest._YESTERDAY)
         self.assertRaises(
             tasksmodule.datachecks.DatacheckException,
             self.run_task,

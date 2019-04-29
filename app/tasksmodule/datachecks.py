@@ -71,13 +71,18 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
 
     def _check_person(self, person):
         if not person.entry_date:
-            self.alert('A person record is missing an entry_date value.')
+            self.alert(
+                'A person record is missing an entry_date value (%s).'
+                % person.record_id)
         if not person.original_creation_date:
             self.alert(
-                'A person record is missing an original_creation_date value.')
+                'A person record is missing an original_creation_date value'
+                '(%s).' % person.record_id)
         if (person.author_email and
                 not utils.validate_email(person.author_email)):
-            self.alert('A person record has an invalid author_email value.')
+            self.alert(
+                'A person record has an invalid author_email value (%s).'
+                % person.record_id)
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # unused
@@ -106,20 +111,30 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
 
     def _check_note(self, note):
         if not note.entry_date:
-            self.alert('A note record is missing an entry_date value.')
+            self.alert(
+                'A note record is missing an entry_date value (%s).' %
+                note.record_id)
         if not note.original_creation_date:
             self.alert(
-                'A note record is missing an original_creation_date value.')
+                'A note record is missing an original_creation_date value (%s).'
+                % note.record_id)
         if not note.person_record_id:
-            self.alert('A note record is missing a person_record_id value.')
+            self.alert(
+                'A note record is missing a person_record_id value (%s).' %
+                note.record_id)
         if (note.author_email and not utils.validate_email(note.author_email)):
-            self.alert('A note record has an invalid author_email value.')
+            self.alert(
+                'A note record has an invalid author_email value (%s).' %
+                note.record_id)
         if (note.email_of_found_person and
                 not utils.validate_email(note.email_of_found_person)):
             self.alert(
-                'A note record has an invalid email_of_found_person value.')
+                'A note record has an invalid email_of_found_person value (%s).'
+                % note.record_id)
         if not model.Person.get(self.env.repo, note.person_record_id):
-            self.alert('A note record\'s associated person record is missing.')
+            self.alert(
+                'A note record\'s associated person record is missing (%s).' %
+                note.record_id)
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # unused
@@ -150,15 +165,16 @@ class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
         # Check things that were expired yesterday, just in case this job is
         # ahead of the deletion job.
         yesterday = utils.get_utcnow() - datetime.timedelta(days=1)
-        if person.expiry_date and person.expiry_date < yesterday:
-            for name, prop in person.properties().items():
-                if name not in ['repo', 'is_expired', 'original_creation_date',
-                                'source_date', 'entry_date', 'expiry_date',
-                                'last_modified']:
-                    if getattr(person, name) != prop.default:
-                        self.alert(
-                            'An expired person record still has data (%s).'
-                            % name)
+        if not (person.expiry_date and person.expiry_date < yesterday):
+            return
+        for name, prop in person.properties().items():
+            if name not in ['repo', 'is_expired', 'original_creation_date',
+                            'source_date', 'entry_date', 'expiry_date',
+                            'last_modified']:
+                if getattr(person, name) != prop.default:
+                    self.alert(
+                        'An expired person record still has data (%s, %s).' %
+                        (person.record_id, name))
 
     def post(self, request, *args, **kwargs):
         q = model.Person.all(filter_expired=False).filter(
