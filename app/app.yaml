@@ -46,6 +46,8 @@ handlers:
   script: wsgi.application
 - url: /.*/tasks/process_expirations.*
   script: wsgi.application
+- url: /.*/tasks/check_expired_person_records.*
+  script: wsgi.application
 - url: /.*/tasks/check_note_data_validity.*
   script: wsgi.application
 - url: /.*/tasks/check_person_data_validity.*

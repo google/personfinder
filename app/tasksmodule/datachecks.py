@@ -19,17 +19,13 @@ expected to be true.
 """
 
 import datetime
-import inspect
-import sys
 import time
 
 import django.http
 from google.appengine import runtime
 from google.appengine.api import datastore_errors
-from google.appengine.ext import db
 from google.appengine.api import taskqueue
 
-import delete
 import tasksmodule.base
 import model
 import utils
@@ -37,6 +33,7 @@ import views.base
 
 
 class DatacheckException(Exception):
+    """An exception raised when a datacheck tasks finds a problem."""
     pass
 
 
@@ -59,6 +56,10 @@ class DatachecksBaseTask(tasksmodule.base.PerRepoTaskBaseView):
                       params={'cursor': cursor})
 
     def alert(self, msg):
+        """Alerts developers of an error.
+
+        For now, we just raise an exception. It will show up in Stackdriver.
+        """
         raise DatacheckException(msg)
 
 
@@ -74,7 +75,7 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
             self.alert(
                 'A person record is missing an original_creation_date value.')
         if (person.author_email and
-            not utils.validate_email(person.author_email)):
+                not utils.validate_email(person.author_email)):
             self.alert('A person record has an invalid author_email value.')
 
     def post(self, request, *args, **kwargs):
@@ -90,9 +91,9 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
                 self._check_person(person)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
         return django.http.HttpResponse('')
 
 
@@ -112,7 +113,7 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
         if (note.author_email and not utils.validate_email(note.author_email)):
             self.alert('A note record has an invalid author_email value.')
         if (note.email_of_found_person and
-            not utils.validate_email(note.email_of_found_person)):
+                not utils.validate_email(note.email_of_found_person)):
             self.alert(
                 'A note record has an invalid email_of_found_person value.')
         if not model.Person.get(self.env.repo, note.person_record_id):
@@ -131,7 +132,41 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
                 self._check_note(note)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
+        return django.http.HttpResponse('')
+
+
+class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
+
+    BASE_NAME = 'expired_person_record_check'
+    TASK_PATH = 'check_expired_person_records'
+
+    def _check_person(self, person):
+        # Check things that were expired yesterday, just in case this job is
+        # ahead of the deletion job.
+        yesterday = utils.get_utcnow() - datetime.timedelta(days=1)
+        if person.expiry_date and person.expiry_date < yesterday:
+            for name, prop in person.properties().items():
+                if name not in ['repo', 'is_expired', 'original_creation_date',
+                                'source_date', 'entry_date', 'expiry_date']:
+                    if getattr(person, name) != prop.default:
+                        self.alert('An expired person record still has data.')
+
+    def post(self, request, *args, **kwargs):
+        q = model.Person.all(filter_expired=False).filter(
+            'repo =', self.env.repo)
+        cursor = self.params.get('cursor', '')
+        if cursor:
+            q.with_cursor(cursor)
+        try:
+            for person in q:
+                next_cursor = q.cursor()
+                self._check_person(person)
+                cursor = next_cursor
+        except runtime.DeadlineExceededError:
+            self._schedule_task(self.env.repo, cursor)
+        except datastore_errors.Timeout:
+            self._schedule_task(self.env.repo, cursor)
         return django.http.HttpResponse('')
