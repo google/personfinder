@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -647,7 +647,7 @@ msgstr "作成者の名前"
 msgid "Author's phone number"
 msgstr "作成者の電話番号"
 
-msgid "Authorization already exists for another repo!That's not expected."
+msgid "Authorization already exists for another repo! That's not expected."
 msgstr ""
 
 msgid "Authorization key"
@@ -968,6 +968,12 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "探している人の記録が見つからない場合は、以下をクリックして新しい記録を作成できます。"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1630,9 +1636,6 @@ msgstr "新着情報を受け取るよう既に設定されています。 "
 
 msgid "You are already unsubscribed."
 msgstr "新着情報の受け取りは既に停止されています。"
-
-msgid "You are not currently signed in."
-msgstr "ログインしていません。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

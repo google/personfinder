@@ -12,10 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import const
 from model import *
+import modelmodule.admin_acls as admin_acls_model
+import site_settings
 from utils import *
 
 def setup_datastore():
@@ -24,6 +26,7 @@ def setup_datastore():
     information will not be changed or deleted.)"""
     setup_repos()
     setup_configs()
+    setup_root_admin()
 
 def wipe_datastore(delete=None, keep=None):
     """Deletes everything in the datastore.  If 'delete' is given (a list of
@@ -216,3 +219,19 @@ def setup_lang_test_config():
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
+
+def setup_root_admin():
+    if is_dev_app_server():
+        admin_acls_model.AdminPermission.create(
+            repo='global',
+            email_address='test@example.com',
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN,
+            expiration_date=get_utcnow() + timedelta(days=3)).put()
+    elif site_settings.PROD_ROOT_ADMIN:
+        admin_acls_model.AdminPermission.create(
+            repo='global',
+            email_address=site_settings.PROD_ROOT_ADMIN,
+            access_level=
+            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN,
+            expiration_date=get_utcnow() + timedelta(days=3)).put()

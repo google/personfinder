@@ -39,6 +39,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
             self.request,
             post_params={'id': utils.strip})
 
+    @views.admin.base.enforce_moderator_admin_level
     def get(self, request, *args, **kwargs):
         """Serves GET requests with the deletion form."""
         del request, args, kwargs  # unused
@@ -48,6 +49,7 @@ class AdminDeleteRecordView(views.admin.base.AdminBaseView):
             xsrf_token=self.xsrf_tool.generate_token(self.env.user.user_id(),
                                                      self.ACTION_ID))
 
+    @views.admin.base.enforce_moderator_admin_level
     def post(self, request, *args, **kwargs):
         """Sends the user to the deletion page with a valid signature."""
         del request, args, kwargs  # unused

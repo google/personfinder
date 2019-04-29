@@ -19,6 +19,7 @@ import site_settings
 import tasksmodule.datachecks
 import tasksmodule.deletion
 import tasksmodule.sitemap_ping
+import views.admin.acls
 import views.admin.api_keys
 import views.admin.create_repo
 import views.admin.delete_record
@@ -29,6 +30,8 @@ import views.meta.sitemap
 # for automatic redirection, but we don't want to send people redirect responses
 # if it's not really needed).
 _BASE_URL_PATTERNS = [
+    ('admin_acls', r'(?P<repo>[^\/]+)/admin/acls/?',
+     views.admin.acls.AdminAclsView.as_view),
     ('admin_apikeys-list', r'(?P<repo>[^\/]+)/admin/api_keys/list/?',
      views.admin.api_keys.ApiKeyListView.as_view),
     ('admin_apikeys-manage', r'(?P<repo>[^\/]+)/admin/api_keys/?',

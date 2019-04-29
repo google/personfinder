@@ -24,6 +24,7 @@ class AdminStatisticsView(views.admin.base.AdminBaseView):
 
     ACTION_ID = 'admin/statistics'
 
+    @views.admin.base.enforce_manager_admin_level
     def get(self, request, *args, **kwargs):
         """Serves get requests.
 
