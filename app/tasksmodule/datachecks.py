@@ -150,9 +150,12 @@ class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
         if person.expiry_date and person.expiry_date < yesterday:
             for name, prop in person.properties().items():
                 if name not in ['repo', 'is_expired', 'original_creation_date',
-                                'source_date', 'entry_date', 'expiry_date']:
+                                'source_date', 'entry_date', 'expiry_date',
+                                'last_modified']:
                     if getattr(person, name) != prop.default:
-                        self.alert('An expired person record still has data.')
+                        self.alert(
+                            'An expired person record still has data (%s).'
+                            % name)
 
     def post(self, request, *args, **kwargs):
         q = model.Person.all(filter_expired=False).filter(

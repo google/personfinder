@@ -33,7 +33,7 @@ class TestDataGenerator(object):
         'home_postal_code': 'M4V 2C5',
         'home_neighborhood': 'Deer Park',
         'author_name': 'Alice Smith',
-        'author_photo': '111-111-1111',
+        'author_phone': '111-111-1111',
         'author_email': 'alice.smith@example.com',
         'source_name': 'Example Organization',
         'source_url': 'http://www.example.org/person123',
