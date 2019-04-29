@@ -26,7 +26,6 @@ from google.appengine.api import taskqueue
 
 import tasksmodule.base
 import utils
-import views.base
 
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
