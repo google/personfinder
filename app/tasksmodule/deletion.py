@@ -98,9 +98,9 @@ class ProcessExpirationsTask(tasksmodule.base.PerRepoTaskBaseView):
                     delete.delete_person(None, person, send_notices=False)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(repo, cursor)
+            self._schedule_task(self.env.repo, cursor)
         return django.http.HttpResponse('')
 
 
