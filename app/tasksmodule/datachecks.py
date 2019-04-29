@@ -64,6 +64,7 @@ class DatachecksBaseTask(tasksmodule.base.PerRepoTaskBaseView):
 
 
 class PersonDataValidityCheckTask(DatachecksBaseTask):
+    """Checks that person records have valid data."""
 
     BASE_NAME = 'person_data_validity_check'
     TASK_PATH = 'check_person_data_validity'
@@ -98,6 +99,7 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
 
 
 class NoteDataValidityCheckTask(DatachecksBaseTask):
+    """Checks that notes have valid data."""
 
     BASE_NAME = 'note_data_validity_check'
     TASK_PATH = 'check_note_data_validity'
@@ -139,6 +141,7 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
 
 
 class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
+    """Checks that expired person records have been cleared."""
 
     BASE_NAME = 'expired_person_record_check'
     TASK_PATH = 'check_expired_person_records'
