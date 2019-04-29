@@ -27,7 +27,6 @@ import delete
 import tasksmodule.base
 import model
 import utils
-import views.base
 
 
 _EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
