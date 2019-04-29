@@ -45,8 +45,10 @@ if six.PY2:
 
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
-# The requests library wants this to be set for some reason.
-os.environ['SERVER_SOFTWARE'] = 'testing'
+# We set this to something beginning with "Development" to use development
+# settings. Also, the requests library wants this to be set for some reason (it
+# doesn't care what the value is, it just wants there to be one).
+os.environ['SERVER_SOFTWARE'] = 'Development-testing'
 
 # When the appserver is running, the APP_DIR should be the current directory...
 os.chdir(os.environ['APP_DIR'])
