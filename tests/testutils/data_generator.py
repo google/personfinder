@@ -77,7 +77,7 @@ class TestDataGenerator(object):
 
     def repo(
         self, store=True, repo_id='haiti',
-        activation_status=model.Repo.ActivationStatus.ACTIVE):
+            activation_status=model.Repo.ActivationStatus.ACTIVE):
         repo = model.Repo(key_name=repo_id, activation_status=activation_status)
         if store:
             repo.put()
