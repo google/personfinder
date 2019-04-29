@@ -54,8 +54,6 @@ handlers:
   script: wsgi.application
 - url: /.*/tasks/cleanup_stray_subscriptions.*
   script: wsgi.application
-- url: /.*/tasks/datachecks_enqueuer.*
-  script: wsgi.application
 - url: /.*/tasks/sitemap_ping.*
   script: wsgi.application
 # Everything else is still handled by the webapp2 app.

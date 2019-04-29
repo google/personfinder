@@ -135,20 +135,3 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
         except datastore_errors.Timeout:
             self._schedule_task(repo, cursor)
         return django.http.HttpResponse('')
-
-
-class DatachecksEnqueuerTask(tasksmodule.base.PerRepoTaskBaseView):
-    """A task to enqueue all the datacheck tasks."""
-
-    def schedule_task(self, repo, **kwargs):
-        del kwargs  # unusued
-        name = '%s-datachecks-enqueuer-%s' % (repo, int(time.time()*1000))
-        path = self.build_absolute_path('/%s/tasks/datachecks_enqueuer' % repo)
-        taskqueue.add(
-            name=name, method='POST', url=path, queue_name='datachecks')
-
-    def post(self, request, *args, **kwargs):
-        for name, obj in inspect.getmembers(sys.modules[__name__]):
-            if inspect.isclass(obj) and isinstance(obj, DatachecksBaseTask):
-                obj.schedule_task()
-        return django.http.HttpResponse('')

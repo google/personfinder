@@ -56,9 +56,6 @@ _BASE_URL_PATTERNS = [
     ('tasks_cleanup-stray-subscriptions',
      r'(?P<repo>[^\/]+)/tasks/cleanup_stray_subscriptions/?',
      tasksmodule.deletion.CleanupStraySubscriptionsTask.as_view),
-    ('tasks_datachecks-enqueuer',
-     r'(?P<repo>[^\/]+)/tasks/datachecks_enqueuer/?',
-     tasksmodule.datachecks.DatachecksEnqueuerTask.as_view),
     ('tasks_sitemap-ping', r'global/tasks/sitemap_ping/?',
      tasksmodule.sitemap_ping.SitemapPingTaskView.as_view),
 ]
