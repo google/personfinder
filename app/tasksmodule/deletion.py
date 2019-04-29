@@ -27,7 +27,6 @@ import delete
 import tasksmodule.base
 import model
 import utils
-import views.base
 
 
 _EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
@@ -51,11 +50,9 @@ class ProcessExpirationsTask(tasksmodule.base.PerRepoTaskBaseView):
 
     ACTION_ID = 'tasks/process_expirations'
 
-    def get_params(self):
-        return views.base.read_params(
-            super(ProcessExpirationsTask, self).get_params(),
-            self.request,
-            post_params={'cursor': utils.strip})
+    def setup(self, request, *args, **kwargs):
+        super(ProcessExpirationsTask, self).setup(request, *args, **kwargs)
+        self.params.read_values(post_params={'cursor': utils.strip})
 
     def schedule_task(self, repo, **kwargs):
         name = '%s-process_expirations-%s' % (repo, int(time.time()*1000))
@@ -147,11 +144,9 @@ class CleanupStrayItemsTaskView(tasksmodule.base.PerRepoTaskBaseView):
         del item  # unused
         raise NotImplementedError()
 
-    def get_params(self):
-        return views.base.read_params(
-            super(CleanupStrayItemsTaskView, self).get_params(),
-            self.request,
-            post_params={'cursor': utils.strip})
+    def setup(self, request, *args, **kwargs):
+        super(CleanupStrayItemsTaskView, self).setup(request, *args, **kwargs)
+        self.params.read_values(post_params={'cursor': utils.strip})
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # unused

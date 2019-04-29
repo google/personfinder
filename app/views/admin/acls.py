@@ -37,11 +37,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
 
     def setup(self, request, *args, **kwargs):
         super(AdminAclsView, self).setup(request, *args, **kwargs)
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminAclsView, self).get_params(),
-            self.request,
+        self.params.read_values(
             post_params={
                 'edit_button': utils.strip,
                 'email_address': utils.strip,
@@ -101,8 +97,7 @@ class AdminAclsView(views.admin.base.AdminBaseView):
         expiration_date = datetime.datetime.strptime(
             self.params.expiration_date, AdminAclsView._EXPIRATION_DATE_FORMAT)
         # TODO(nworden): add logging for this
-        if (self.params.get('edit_button', '') or
-                self.params.get('revoke_button', '')):
+        if self.params.edit_button or self.params.revoke_button:
             acl = admin_acls_model.AdminPermission.get(
                 self.env.repo, email_address)
             # You can't edit or revoke the permissions of someone at a higher
@@ -110,11 +105,11 @@ class AdminAclsView(views.admin.base.AdminBaseView):
             if self.env.user_admin_permission.compare_level_to(
                     acl.access_level) < 0:
                 raise django.core.exceptions.PermissionDenied
-            if self.params.get('edit_button', ''):
+            if self.params.edit_button:
                 acl.access_level = level
                 acl.expiration_date = expiration_date
                 acl.put()
-            elif self.params.get('revoke_button', ''):
+            elif self.params.revoke_button:
                 acl.delete()
         else:
             admin_acls_model.AdminPermission.create(

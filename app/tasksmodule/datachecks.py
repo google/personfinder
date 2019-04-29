@@ -29,7 +29,6 @@ from google.appengine.api import taskqueue
 import tasksmodule.base
 import model
 import utils
-import views.base
 
 
 class DatacheckException(Exception):
@@ -39,11 +38,9 @@ class DatacheckException(Exception):
 
 class DatachecksBaseTask(tasksmodule.base.PerRepoTaskBaseView):
 
-    def get_params(self):
-        return views.base.read_params(
-            super(DatachecksBaseTask, self).get_params(),
-            self.request,
-            post_params={'cursor': utils.strip})
+    def setup(self, request, *args, **kwargs):
+        super(DatachecksBaseTask, self).setup(request, *args, **kwargs)
+        self.params.read_values(post_params={'cursor': utils.strip})
 
     def schedule_task(self, repo, **kwargs):
         name = '%s-%s-%s' % (repo, self.BASE_NAME, int(time.time()*1000))
@@ -88,7 +85,7 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
         del request, args, kwargs  # unused
         q = model.Person.all(filter_expired=False).filter(
             'repo =', self.env.repo)
-        cursor = self.params.get('cursor', '')
+        cursor = self.params.cursor
         if cursor:
             q.with_cursor(cursor)
         try:
@@ -140,7 +137,7 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
         del request, args, kwargs  # unused
         q = model.Note.all(filter_expired=False).filter(
             'repo =', self.env.repo)
-        cursor = self.params.get('cursor', '')
+        cursor = self.params.cursor
         if cursor:
             q.with_cursor(cursor)
         try:
@@ -179,7 +176,7 @@ class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
     def post(self, request, *args, **kwargs):
         q = model.Person.all(filter_expired=False).filter(
             'repo =', self.env.repo)
-        cursor = self.params.get('cursor', '')
+        cursor = self.params.cursor
         if cursor:
             q.with_cursor(cursor)
         try:

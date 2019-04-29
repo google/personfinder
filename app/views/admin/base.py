@@ -86,6 +86,7 @@ class AdminBaseView(views.base.BaseView):
         """See docs on BaseView.setup."""
         # pylint: disable=attribute-defined-outside-init
         super(AdminBaseView, self).setup(request, *args, **kwargs)
+        self.params.read_values(post_params={'xsrf_token': utils.strip})
         self.env.show_logo = True
         self.env.enable_javascript = True
         self.env.user = users.get_current_user()
@@ -97,33 +98,6 @@ class AdminBaseView(views.base.BaseView):
             for repo in sorted(model.Repo.list())
         ]
         self.xsrf_tool = utils.XsrfTool()
-
-    def get_params(self):
-        return views.base.read_params(
-            super(AdminBaseView, self).get_params(),
-            self.request,
-            post_params={'xsrf_token': utils.strip})
-
-    def _enforce_admin_level(self, min_level):
-        if self.env.user_admin_permission is None:
-            raise django.core.exceptions.PermissionDenied
-        if self.env.user_admin_permission.compare_level_to(min_level) < 0:
-            raise django.core.exceptions.PermissionDenied
-
-    def enforce_moderator_admin_level(self):
-        """Require that the user be a moderator (or return a 403)."""
-        self._enforce_admin_level(
-            admin_acls_model.AdminPermission.AccessLevel.MODERATOR)
-
-    def enforce_manager_admin_level(self):
-        """Require that the user be a manager (or return a 403)."""
-        self._enforce_admin_level(
-            admin_acls_model.AdminPermission.AccessLevel.MANAGER)
-
-    def enforce_superadmin_admin_level(self):
-        """Require that the user be a superadmin (or return a 403)."""
-        self._enforce_admin_level(
-            admin_acls_model.AdminPermission.AccessLevel.SUPERADMIN)
 
     def enforce_xsrf(self, action_id):
         """Verifies the request's XSRF token.
@@ -138,9 +112,9 @@ class AdminBaseView(views.base.BaseView):
         Raises:
             PermissionDenied: If the request's token is missing or invalid.
         """
-        if not (self.params.get('xsrf_token') and
+        if not (self.params.xsrf_token and
                 self.xsrf_tool.verify_token(
-                    self.params.get('xsrf_token'),
+                    self.params.xsrf_token,
                     self.env.user.user_id(),
                     action_id)):
             raise django.core.exceptions.PermissionDenied
