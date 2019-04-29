@@ -97,7 +97,7 @@ class SitemapPingTaskView(tasksmodule.base.TasksBaseView):
         if response.status_code == 200:
             return True
         else:
-            #TODO(nworden): Retry or email konbit-personfinder on failure.
+            # TODO(nworden): Retry or email konbit-personfinder on failure.
             logging.error('Received %d pinging %s',
                           response.status_code, ping_url)
             return False

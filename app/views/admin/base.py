@@ -163,6 +163,7 @@ def _enforce_admin_level(user_admin_permission, min_level):
     if user_admin_permission.compare_level_to(min_level) < 0:
         raise django.core.exceptions.PermissionDenied
 
+
 def enforce_moderator_admin_level(func):
     """Require that the user be a moderator (or return a 403)."""
     def inner(self, *args, **kwargs):
@@ -173,6 +174,7 @@ def enforce_moderator_admin_level(func):
         return func(self, *args, **kwargs)
     return inner
 
+
 def enforce_manager_admin_level(func):
     """Require that the user be a manager (or return a 403)."""
     def inner(self, *args, **kwargs):
@@ -182,6 +184,7 @@ def enforce_manager_admin_level(func):
             admin_acls_model.AdminPermission.AccessLevel.MANAGER)
         return func(self, *args, **kwargs)
     return inner
+
 
 def enforce_superadmin_admin_level(func):
     """Require that the user be a superadmin (or return a 403)."""
