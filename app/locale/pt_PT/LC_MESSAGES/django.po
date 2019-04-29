@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -667,7 +667,7 @@ msgstr "Nome do autor"
 msgid "Author's phone number"
 msgstr "Número de telefone do autor"
 
-msgid "Authorization already exists for another repo!That's not expected."
+msgid "Authorization already exists for another repo! That's not expected."
 msgstr ""
 
 msgid "Authorization key"
@@ -1008,6 +1008,12 @@ msgid ""
 msgstr ""
 "Se nenhum destes registos corresponder à pessoa que tinha em mente, pode "
 "clicar abaixo para criar um novo registo."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1720,9 +1726,6 @@ msgstr "Já subscreveu. "
 
 msgid "You are already unsubscribed."
 msgstr "Já anulou a subscrição."
-
-msgid "You are not currently signed in."
-msgstr "De momento, não tem sessão iniciada."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
