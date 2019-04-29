@@ -21,6 +21,15 @@
 
 <head>
   {% block head %}
+
+    {# If there is no Javascript support, redirect to the light URL. #}
+    {% if env.ui != "light" %}
+      <noscript>
+        <style type="text/css">#hide_in_light_mode{display:none}</style>
+        <meta http-equiv="refresh" content="0.0;url={{env.light_url}}">
+      </noscript>
+    {% endif %}
+
     {# TODO(haruo) Consider AMP page encoding to utf-8 only. #}
     <meta charset="{{env.charset}}">
     {% if not env.amp %}
@@ -95,7 +104,19 @@
 {% endblock head %}</head>
 
 <body class="{{env.ui}} {% block extra_body_class %}{% endblock %}">
+
+  {# If there is no Javascript support, and the browser does not allow the redirect above, allow user to take action. #}
+  {% if env.ui != "light" %}
+    <noscript>
+      <p>
+        {% blocktrans with env.light_url as light_url %}If this webpage is not replaced in a few seconds, please <a href="{{light_url}}">click here.</a>{% endblocktrans %}
+      </p>
+    </noscript>
+  {% endif %}
+
+  <div id="hide_in_light_mode">
   {% block body %}
+
     {% if env.amp and env.enable_analytics %}
       <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{config.amp_gtm_id}}"
                      data-credentials="include">
@@ -190,10 +211,10 @@
               >{% trans "About Google Person Finder" %}</a>
           <span class="link-separator"></span>
           {% include "repo-menu.html.template" %}
-	  {% if config.feedback_url %}
+          {% if config.feedback_url %}
             <span class="link-separator"></span>
             <a href="{{config.feedback_url}}"
-	        {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
+               {{env.target_attr|safe}}>{% trans "Feedback" %}</a>
           {% endif %}
           <span class="link-separator"></span>
           {% if env.ui != "light" %}
@@ -218,4 +239,5 @@
       </script>
     {% endif %}
   {% endblock body %}
+  </div>
 </body></html>
