@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel None\n"
 
 msgid ""
 "\n"
@@ -663,7 +663,7 @@ msgstr "Име аутора"
 msgid "Author's phone number"
 msgstr "Број телефона аутора"
 
-msgid "Authorization already exists for another repo!That's not expected."
+msgid "Authorization already exists for another repo! That's not expected."
 msgstr ""
 
 msgid "Authorization key"
@@ -1000,6 +1000,12 @@ msgid ""
 msgstr ""
 "Ако се ниједан од ових записа не односи на особу на коју сте мислили, "
 "можете да кликнете испод да бисте направили нови запис."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1707,9 +1713,6 @@ msgstr "Већ сте пријављени. "
 
 msgid "You are already unsubscribed."
 msgstr "Већ сте отказали пријаву."
-
-msgid "You are not currently signed in."
-msgstr "Тренутно нисте пријављени."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

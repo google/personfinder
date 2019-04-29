@@ -1170,7 +1170,8 @@ class BaseHandler(webapp.RequestHandler):
                 return
             if not users.is_current_user_admin():
                 logout_url = users.create_logout_url(self.request.url)
-                self.render('not_admin_error.html', logout_url=logout_url, user=user)
+                self.render('not_admin_error.html', logout_url=logout_url,
+                            user=self.env.user)
                 self.terminate_response()
                 return
             self.env.logout_url = users.create_logout_url(self.request.url)
