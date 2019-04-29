@@ -14,26 +14,7 @@
 """Tests for the datacheck tasks."""
 
 import datetime
-import logging
-import os
-import sys
 
-import django
-import django.test
-from google.appengine import runtime
-from google.appengine.api import users
-from google.appengine.ext import db
-from google.appengine.api import quota
-from google.appengine.api import taskqueue
-from google.appengine.ext import testbed
-# We should be moving off mox and to mock. However, taskqueue doesn't play nice
-# with mock, so dropping mox for these tests means moving to GAE's stuff for
-# this. Since taskqueue has to get replaced by Cloud Tasks for Python 3 anyway,
-# it's not worth rewriting these tests now just to avoid mox.
-import mox
-
-import config
-import model
 import tasksmodule
 import utils
 
@@ -149,7 +130,7 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
         expiry_date = (
             ExpiredPersonRecordCheckTaskTest._NOW -
             datetime.timedelta(days=1, hours=1))
-        person = self.data_generator.person(
+        self.data_generator.person(
             expiry_date=expiry_date,
             given_name=None,
             family_name=None,
@@ -169,7 +150,7 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
         expiry_date = (
             ExpiredPersonRecordCheckTaskTest._NOW +
             datetime.timedelta(days=1, hours=1))
-        self.data_generator.person()
+        self.data_generator.person(expiry_date=expiry_date)
         self.run_task(
             '/haiti/tasks/check_expired_person_records', method='POST')
 
@@ -177,7 +158,7 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
         expiry_date = (
             ExpiredPersonRecordCheckTaskTest._NOW -
             datetime.timedelta(days=1, hours=1))
-        person = self.data_generator.person(expiry_date=expiry_date)
+        self.data_generator.person(expiry_date=expiry_date)
         self.assertRaises(
             tasksmodule.datachecks.DatacheckException,
             self.run_task,
