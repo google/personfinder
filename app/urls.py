@@ -16,6 +16,7 @@
 from django.conf import urls
 
 import site_settings
+import tasksmodule.datachecks
 import tasksmodule.deletion
 import tasksmodule.sitemap_ping
 import views.admin.api_keys
@@ -43,12 +44,21 @@ _BASE_URL_PATTERNS = [
     ('tasks_process-expirations',
      r'(?P<repo>[^\/]+)/tasks/process_expirations/?',
      tasksmodule.deletion.ProcessExpirationsTask.as_view),
+    ('tasks_check-person-data-validity',
+     r'(?P<repo>[^\/]+)/tasks/check_person_data_validity/?',
+     tasksmodule.datachecks.PersonDataValidityCheckTask.as_view),
+    ('tasks_check-note-data-validity',
+     r'(?P<repo>[^\/]+)/tasks/check_note_data_validity/?',
+     tasksmodule.datachecks.NoteDataValidityCheckTask.as_view),
     ('tasks_cleanup-stray-notes',
      r'(?P<repo>[^\/]+)/tasks/cleanup_stray_notes/?',
      tasksmodule.deletion.CleanupStrayNotesTask.as_view),
     ('tasks_cleanup-stray-subscriptions',
      r'(?P<repo>[^\/]+)/tasks/cleanup_stray_subscriptions/?',
      tasksmodule.deletion.CleanupStraySubscriptionsTask.as_view),
+    ('tasks_datachecks-enqueuer',
+     r'(?P<repo>[^\/]+)/tasks/datachecks_enqueuer/?',
+     tasksmodule.datachecks.DatachecksEnqueuerTask.as_view),
     ('tasks_sitemap-ping', r'global/tasks/sitemap_ping/?',
      tasksmodule.sitemap_ping.SitemapPingTaskView.as_view),
 ]

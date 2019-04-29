@@ -46,9 +46,15 @@ handlers:
   script: wsgi.application
 - url: /.*/tasks/process_expirations.*
   script: wsgi.application
+- url: /.*/tasks/check_note_data_validity.*
+  script: wsgi.application
+- url: /.*/tasks/check_person_data_validity.*
+  script: wsgi.application
 - url: /.*/tasks/cleanup_stray_notes.*
   script: wsgi.application
 - url: /.*/tasks/cleanup_stray_subscriptions.*
+  script: wsgi.application
+- url: /.*/tasks/datachecks_enqueuer.*
   script: wsgi.application
 - url: /.*/tasks/sitemap_ping.*
   script: wsgi.application
