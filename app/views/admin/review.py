@@ -14,6 +14,7 @@
 """The admin content review page."""
 
 import django.shortcuts
+from google.appengine.ext import db
 
 import config
 import const
@@ -53,6 +54,11 @@ class AdminReviewView(views.admin.base.AdminBaseView):
         super(AdminReviewView, self).setup(request, *args, **kwargs)
         self.params.read_values(
             get_params={
+                'skip': utils.validate_int,
+                'source': utils.strip,
+                'status': utils.strip,
+            },
+            post_params={
                 'skip': utils.validate_int,
                 'source': utils.strip,
                 'status': utils.strip,
@@ -160,3 +166,18 @@ class AdminReviewView(views.admin.base.AdminBaseView):
     def post(self, request, *args, **kwargs):
         """Serves POST requests, creating a new repo."""
         del request, args, kwargs  # unused
+        self.enforce_xsrf(self.ACTION_ID)
+
+        notes = []
+        for param_key, value in self.request.POST.items():
+            if param_key.startswith('note.'):
+                note = model.Note.get(self.env.repo, param_key[5:])
+                if note:
+                    if value in ['accept', 'flag']:
+                        note.reviewed = True
+                    if value == 'flag':
+                        note.hidden = True
+                    notes.append(note)
+        db.put(notes)
+
+        return django.shortcuts.redirect(self.build_absolute_path())
