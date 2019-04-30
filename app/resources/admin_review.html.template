@@ -20,8 +20,26 @@
 {% endblock head %}
 
 {% block content %}
-  <p>Show: {{status_nav_html|safe}}
-  <p>Show: {{source_nav_html|safe}}
+  <p>
+    Show:
+    {% for option, option_url in status_options_nav %}
+      {% if option_url %}
+        <a href="{{ option_url }}">{{ option }}</a>
+      {% else %}
+        {{ option }}
+      {% endif %}
+    {% endfor %}
+  </p>
+  <p>
+    Show:
+    {% for option, option_url in source_options_nav %}
+      {% if option_url %}
+        <a href="{{ option_url }}">{{ option }}</a>
+      {% else %}
+        {{ option }}
+      {% endif %}
+    {% endfor %}
+  </p>
 
   <p>
   {% if notes %}

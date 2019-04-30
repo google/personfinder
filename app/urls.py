@@ -23,6 +23,7 @@ import views.admin.acls
 import views.admin.api_keys
 import views.admin.create_repo
 import views.admin.delete_record
+import views.admin.review
 import views.admin.statistics
 import views.meta.sitemap
 
@@ -40,6 +41,8 @@ _BASE_URL_PATTERNS = [
      views.admin.create_repo.AdminCreateRepoView.as_view),
     ('admin_delete-record', r'(?P<repo>[^\/]+)/admin/delete_record/?',
      views.admin.delete_record.AdminDeleteRecordView.as_view),
+    ('admin_review', r'(?P<repo>[^\/]+)/admin/review/?',
+     views.admin.review.AdminReviewView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
