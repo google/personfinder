@@ -19,6 +19,7 @@ import re
 import django.http
 import django.utils.decorators
 import django.views
+import six.moves.urllib.parse as urlparse
 
 import config
 import const
@@ -221,7 +222,7 @@ class BaseView(django.views.View):
             return True
         return req_path.startswith('%s/' % site_settings.OPTIONAL_PATH_PREFIX)
 
-    def build_absolute_path(self, path=None, repo=None):
+    def build_absolute_path(self, path=None, repo=None, params=None):
         """Builds an absolute path, including the path prefix if required.
 
         Django's HttpRequest objects have a similar function, but we implement
@@ -235,6 +236,8 @@ class BaseView(django.views.View):
             repo (str, optional): A repo ID. If specified, the path will be
                 considered relative to the repo's route. If this is specified,
                 path must also be specified.
+            params (dict, optional): A dictionary of query param keys and values
+                to add to the path.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -251,11 +254,23 @@ class BaseView(django.views.View):
         if repo:
             path = '/%s%s' % (repo, path)
         if self._request_is_for_prefixed_path():
-            return '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
+            res = '/%s%s' % (site_settings.OPTIONAL_PATH_PREFIX, path)
         else:
-            return path
+            res = path
+        if params:
+            url_parts = list(urlparse.urlparse(res))
+            url_params = dict(urlparse.parse_qsl(url_parts[4]))
+            for key, value in params.items():
+                if value is None:
+                    if key in url_params:
+                        del(url_params[key])
+                else:
+                    url_params[key] = value
+            url_parts[4] = utils.urlencode(url_params)
+            res = urlparse.urlunparse(url_parts)
+        return res
 
-    def build_absolute_uri(self, path=None, repo=None):
+    def build_absolute_uri(self, path=None, repo=None, params=None):
         """Builds an absolute URI given a path.
 
         See build_absolute_path (above) for an explanation of why we implement
@@ -268,6 +283,8 @@ class BaseView(django.views.View):
             repo (str, optional): A repo ID. If specified, the path will be
                 considered relative to the repo's route. If this is specified,
                 path must also be specified.
+            params (dict, optional): A dictionary of query param keys and values
+                to add to the path.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
@@ -276,7 +293,7 @@ class BaseView(django.views.View):
             query parameters from the original request.
         """
         return self.request.build_absolute_uri(
-            self.build_absolute_path(path, repo))
+            self.build_absolute_path(path, repo, params))
 
     def render(self, template_name, status_code=200, **template_vars):
         """Renders a template with the given variables.
