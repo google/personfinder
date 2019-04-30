@@ -77,12 +77,12 @@ class AdminReviewView(views.admin.base.AdminBaseView):
             if option == current_selected_status:
                 status_options_nav.append((option, None))
             else:
-                option_url = self.build_absolute_uri(
+                option_url = self.build_absolute_path(
                     '/admin/review', self.env.repo,
-                    params={
-                        'status': option,
-                        'source': current_selected_source,
-                    })
+                    params=[
+                        ('status', option),
+                        ('source', current_selected_source),
+                    ])
                 status_options_nav.append((option, option_url))
         source_options = ['all', '%s.%s' % (self.env.repo, const.HOME_DOMAIN)]
         for auth_key in model.Authorization.all().filter(
@@ -94,12 +94,12 @@ class AdminReviewView(views.admin.base.AdminBaseView):
             if option == current_selected_source:
                 source_options_nav.append((option, None))
             else:
-                option_url = self.build_absolute_uri(
+                option_url = self.build_absolute_path(
                     '/admin/review', self.env.repo,
-                    params={
-                        'source': option,
-                        'status': current_selected_status,
-                    })
+                    params=[
+                        ('source', option),
+                        ('status', current_selected_status),
+                    ])
                 source_options_nav.append((option, option_url))
 
         query = model.Note.all_in_repo(self.env.repo
@@ -141,13 +141,13 @@ class AdminReviewView(views.admin.base.AdminBaseView):
         if len(notes) > AdminReviewView._NOTES_PER_PAGE:
             notes = notes[:AdminReviewView._NOTES_PER_PAGE]
             next_skip = skip + AdminReviewView._NOTES_PER_PAGE
-            next_url = self.build_absolute_uri(
+            next_url = self.build_absolute_path(
                 '/admin/review', self.env.repo,
-                params={
-                    'skip': str(next_skip),
-                    'source': current_selected_source,
-                    'status': current_selected_status,
-                })
+                params=[
+                    ('skip', str(next_skip)),
+                    ('source', current_selected_source),
+                    ('status', current_selected_status),
+                ])
         else:
             next_url = None
 

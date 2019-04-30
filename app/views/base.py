@@ -236,8 +236,8 @@ class BaseView(django.views.View):
             repo (str, optional): A repo ID. If specified, the path will be
                 considered relative to the repo's route. If this is specified,
                 path must also be specified.
-            params (dict, optional): A dictionary of query param keys and values
-                to add to the path.
+            params (list, optional): A list of tuples of query param keys and
+                values to add to the path.
 
         Returns:
             str: An absolute path, including the sitewide OPTIONAL_PATH_PREFIX
@@ -260,7 +260,7 @@ class BaseView(django.views.View):
         if params:
             url_parts = list(urlparse.urlparse(res))
             url_params = dict(urlparse.parse_qsl(url_parts[4]))
-            for key, value in params.items():
+            for key, value in params:
                 if value is None:
                     if key in url_params:
                         del(url_params[key])
@@ -283,8 +283,8 @@ class BaseView(django.views.View):
             repo (str, optional): A repo ID. If specified, the path will be
                 considered relative to the repo's route. If this is specified,
                 path must also be specified.
-            params (dict, optional): A dictionary of query param keys and values
-                to add to the path.
+            params (list, optional): A list of tuples of query param keys and
+                values to add to the path.
 
         Returns:
             str: An absolute URI, including the sitewide OPTIONAL_PATH_PREFIX if
