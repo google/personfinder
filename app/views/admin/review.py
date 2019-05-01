@@ -16,7 +16,6 @@
 import django.shortcuts
 from google.appengine.ext import db
 
-import config
 import const
 import model
 import utils
@@ -102,9 +101,9 @@ class AdminReviewView(views.admin.base.AdminBaseView):
                     ])
                 source_options_nav.append((option, option_url))
 
-        query = model.Note.all_in_repo(self.env.repo
-            ).filter('reviewed =', False
-            ).filter('hidden =', False)
+        query = model.Note.all_in_repo(self.env.repo)
+        query = query.filter('reviewed =', False)
+        query = query.filter('hidden =', False)
         if current_selected_status == 'unspecified':
             query.filter('status =', '')
         elif current_selected_status != 'all':
