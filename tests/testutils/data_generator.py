@@ -19,6 +19,7 @@ import datetime
 
 import six
 
+import const
 import model
 import modelmodule.admin_acls as admin_acls_model
 
@@ -81,10 +82,14 @@ class TestDataGenerator(object):
             repo.put()
         return repo
 
-    def person(self, store=True, repo_id='haiti', **kwargs):
+    def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):
+        if not record_id:
+            record_id = '%s.%s/Person.%d' % (
+                repo_id, const.HOME_DOMAIN, model.UniqueId.create_id())
+        key_name = '%s:%s' % (repo_id, record_id)
         params = copy.deepcopy(TestDataGenerator._DEFAULT_PERSON_A_PARAMS)
         params.update(kwargs)
-        person = model.Person.create_original(repo_id, **params)
+        person = model.Person(key_name=key_name, repo=repo_id, **params)
         if store:
             person.put()
         return person
@@ -100,11 +105,18 @@ class TestDataGenerator(object):
             person.put()
         return person
 
-    def note(self, store=True, repo_id='haiti', person_id=None, **kwargs):
+    def note(
+            self, store=True, repo_id='haiti', person_id=None, record_id=None,
+            **kwargs):
+        if not record_id:
+            record_id = '%s.%s/Note.%d' % (
+                repo_id, const.HOME_DOMAIN, model.UniqueId.create_id())
+        key_name = '%s:%s' % (repo_id, record_id)
         params = copy.deepcopy(TestDataGenerator._DEFAULT_NOTE_PARAMS)
         params.update(kwargs)
-        note = model.Note.create_original(
-            repo_id, person_record_id=person_id, **params)
+        note = model.Note(
+            key_name=key_name, repo=repo_id, person_record_id=person_id,
+            **params)
         if store:
             note.put()
         return note
