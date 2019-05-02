@@ -102,8 +102,7 @@ class AdminReviewView(views.admin.base.AdminBaseView):
                 source_options_nav.append((option, option_url))
 
         query = model.Note.all_in_repo(self.env.repo)
-        query = query.filter('reviewed =', False)
-        query = query.filter('hidden =', False)
+        query = query.filter('reviewed =', False).filter('hidden =', False)
         if current_selected_status == 'unspecified':
             query.filter('status =', '')
         elif current_selected_status != 'all':
