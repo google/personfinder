@@ -83,20 +83,20 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # unused
-        q = model.Person.all(filter_expired=False).filter(
+        query = model.Person.all(filter_expired=False).filter(
             'repo =', self.env.repo)
         cursor = self.params.cursor
         if cursor:
-            q.with_cursor(cursor)
+            query.with_cursor(cursor)
         try:
-            for person in q:
-                next_cursor = q.cursor()
+            for person in query:
+                next_cursor = query.cursor()
                 self._check_person(person)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
 
 
@@ -135,20 +135,20 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # unused
-        q = model.Note.all(filter_expired=False).filter(
+        query = model.Note.all(filter_expired=False).filter(
             'repo =', self.env.repo)
         cursor = self.params.cursor
         if cursor:
-            q.with_cursor(cursor)
+            query.with_cursor(cursor)
         try:
-            for note in q:
-                next_cursor = q.cursor()
+            for note in query:
+                next_cursor = query.cursor()
                 self._check_note(note)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
 
 
@@ -174,18 +174,18 @@ class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
                         (person.record_id, name))
 
     def post(self, request, *args, **kwargs):
-        q = model.Person.all(filter_expired=False).filter(
+        query = model.Person.all(filter_expired=False).filter(
             'repo =', self.env.repo)
         cursor = self.params.cursor
         if cursor:
-            q.with_cursor(cursor)
+            query.with_cursor(cursor)
         try:
-            for person in q:
-                next_cursor = q.cursor()
+            for person in query:
+                next_cursor = query.cursor()
                 self._check_person(person)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
