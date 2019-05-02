@@ -15,10 +15,37 @@
 
 import datetime
 
+from google.appengine import runtime
+from google.appengine.api import taskqueue
+import mock
+import mox
+
 import tasksmodule
 import utils
 
 import task_tests_base
+
+
+def deadline_exceeded_side_effect(*args, **kwargs):
+    del args, kwargs  # Unused.
+    raise runtime.DeadlineExceededError()
+
+def _test_deadline_exceeded(run_task_func, task_url):
+    mox_obj = mox.Mox()
+    mox_obj.StubOutWithMock(taskqueue, 'add')
+    taskqueue.add(
+        method='POST',
+        url=task_url,
+        params={'cursor': None},
+        queue_name='datachecks',
+        retry_options=mox.IsA(taskqueue.taskqueue.TaskRetryOptions),
+        name=mox.IsA(unicode))
+    mox_obj.ReplayAll()
+    validate_email_mock = mock.Mock(side_effect=deadline_exceeded_side_effect)
+    utils.validate_email = validate_email_mock
+    run_task_func()
+    mox_obj.VerifyAll()
+    mox_obj.UnsetStubs()
 
 
 class PersonDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
@@ -55,6 +82,14 @@ class PersonDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
             tasksmodule.datachecks.DatacheckException,
             self.run_task,
             '/haiti/tasks/check_person_data_validity', method='POST')
+
+    def test_deadline_exceeded(self):
+        self.data_generator.person(author_email='abc@example.com')
+        def run_task_func():
+            self.run_task(
+                '/haiti/tasks/check_person_data_validity', method='POST')
+        _test_deadline_exceeded(
+             run_task_func, '/haiti/tasks/check_person_data_validity')
 
 
 class NoteDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
@@ -110,6 +145,17 @@ class NoteDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
             tasksmodule.datachecks.DatacheckException,
             self.run_task,
             '/haiti/tasks/check_note_data_validity', method='POST')
+
+    def test_deadline_exceeded(self):
+        person = self.data_generator.person()
+        self.data_generator.note(
+            person_id=person.record_id,
+            author_email='xyz@example.com')
+        def run_task_func():
+            self.run_task(
+                '/haiti/tasks/check_person_data_validity', method='POST')
+        _test_deadline_exceeded(
+             run_task_func, '/haiti/tasks/check_person_data_validity')
 
 
 class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
