@@ -30,6 +30,7 @@ def deadline_exceeded_side_effect(*args, **kwargs):
     del args, kwargs  # Unused.
     raise runtime.DeadlineExceededError()
 
+
 def _test_deadline_exceeded(run_task_func, task_url):
     mox_obj = mox.Mox()
     mox_obj.StubOutWithMock(taskqueue, 'add')
@@ -85,6 +86,7 @@ class PersonDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
 
     def test_deadline_exceeded(self):
         self.data_generator.person(author_email='abc@example.com')
+
         def run_task_func():
             self.run_task(
                 '/haiti/tasks/check_person_data_validity', method='POST')
@@ -151,6 +153,7 @@ class NoteDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
         self.data_generator.note(
             person_id=person.record_id,
             author_email='xyz@example.com')
+
         def run_task_func():
             self.run_task(
                 '/haiti/tasks/check_person_data_validity', method='POST')
