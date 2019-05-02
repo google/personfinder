@@ -20,8 +20,26 @@
 {% endblock head %}
 
 {% block content %}
-  <p>Show: {{status_nav_html|safe}}
-  <p>Show: {{source_nav_html|safe}}
+  <p>
+    Show:
+    {% for option, option_url in status_options_nav %}
+      {% if option_url %}
+        <a href="{{ option_url }}">{{ option }}</a>
+      {% else %}
+        {{ option }}
+      {% endif %}
+    {% endfor %}
+  </p>
+  <p>
+    Show:
+    {% for option, option_url in source_options_nav %}
+      {% if option_url %}
+        <a href="{{ option_url }}">{{ option }}</a>
+      {% else %}
+        {{ option }}
+      {% endif %}
+    {% endfor %}
+  </p>
 
   <p>
   {% if notes %}
@@ -33,9 +51,9 @@
     <p>
     <form method="post" id="review-form">
       <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
-      <input name="status" value="{{params.status}}" type="hidden">
-      <input name="source" value="{{params.source}}" type="hidden">
-      <input name="skip" value="{{params.skip}}" type="hidden">
+      <input name="status" value="{{param_status}}" type="hidden">
+      <input name="source" value="{{param_source}}" type="hidden">
+      <input name="skip" value="{{param_skip}}" type="hidden">
       <table class="review" cellpadding="0" cellspacing="0">
         <tr>
           <td class="empty"></td>

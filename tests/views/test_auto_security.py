@@ -113,6 +113,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'id': 'abc123',
             },
             xsrf_action_id='admin/delete_record'),
+        'admin_review':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MODERATOR,
+            requires_xsrf=True,
+            sample_post_data={
+                'note.abc': 'accept',
+            },
+            xsrf_action_id='admin/review'),
         'admin_statistics':
         PathTestInfo(
             accepts_get=True,

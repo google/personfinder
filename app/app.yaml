@@ -42,6 +42,8 @@ handlers:
   script: wsgi.application
 - url: /.*/admin/delete_record.*
   script: wsgi.application
+- url: /.*/admin/review.*
+  script: wsgi.application
 - url: /.*/admin/statistics.*
   script: wsgi.application
 - url: /.*/sitemap.*
