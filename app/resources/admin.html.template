@@ -708,7 +708,8 @@
       <label for="time_zone_offset">Time zone offset (-12 to 14):</label>
       <div class="response">
         UTC +
-        <input type="number" name="time_zone_offset" id="time_zone_offset"
+        <input type="number" step="any"
+            name="time_zone_offset" id="time_zone_offset"
             value="{{view_config_json.time_zone_offset}}">
       </div>
     </div>
