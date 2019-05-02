@@ -94,9 +94,9 @@ class PersonDataValidityCheckTask(DatachecksBaseTask):
                 self._check_person(person)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
 
 
@@ -146,9 +146,9 @@ class NoteDataValidityCheckTask(DatachecksBaseTask):
                 self._check_note(note)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
 
 
@@ -185,7 +185,7 @@ class ExpiredPersonRecordCheckTask(DatachecksBaseTask):
                 self._check_person(person)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
