@@ -14,6 +14,7 @@
 """Tests for the datacheck tasks."""
 
 import datetime
+import os
 
 from google.appengine import runtime
 from google.appengine.api import taskqueue
@@ -42,9 +43,9 @@ def _test_deadline_exceeded(run_task_func, task_url):
         retry_options=mox.IsA(taskqueue.taskqueue.TaskRetryOptions),
         name=mox.IsA(unicode))
     mox_obj.ReplayAll()
-    validate_email_mock = mock.Mock(side_effect=deadline_exceeded_side_effect)
-    utils.validate_email = validate_email_mock
-    run_task_func()
+    with mock.patch('utils.validate_email') as mock_validate_email:
+        mock_validate_email.side_effect = deadline_exceeded_side_effect
+        run_task_func()
     mox_obj.VerifyAll()
     mox_obj.UnsetStubs()
 
@@ -60,7 +61,8 @@ class PersonDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
     def init_testbed_stubs(self):
         self.testbed.init_user_stub()
         self.testbed.init_datastore_v3_stub()
-        self.testbed.init_taskqueue_stub()
+        path_to_app = os.path.join(os.path.dirname(__file__), '../../app')
+        self.testbed.init_taskqueue_stub(root_path=path_to_app)
 
     def setUp(self):
         super(PersonDataValidityCheckTaskTests, self).setUp()
@@ -104,7 +106,8 @@ class NoteDataValidityCheckTaskTests(task_tests_base.TaskTestsBase):
     def init_testbed_stubs(self):
         self.testbed.init_user_stub()
         self.testbed.init_datastore_v3_stub()
-        self.testbed.init_taskqueue_stub()
+        path_to_app = os.path.join(os.path.dirname(__file__), '../../app')
+        self.testbed.init_taskqueue_stub(root_path=path_to_app)
 
     def setUp(self):
         super(NoteDataValidityCheckTaskTests, self).setUp()
@@ -169,7 +172,8 @@ class ExpiredPersonRecordCheckTaskTest(task_tests_base.TaskTestsBase):
     def init_testbed_stubs(self):
         self.testbed.init_user_stub()
         self.testbed.init_datastore_v3_stub()
-        self.testbed.init_taskqueue_stub()
+        path_to_app = os.path.join(os.path.dirname(__file__), '../../app')
+        self.testbed.init_taskqueue_stub(root_path=path_to_app)
 
     def setUp(self):
         super(ExpiredPersonRecordCheckTaskTest, self).setUp()
