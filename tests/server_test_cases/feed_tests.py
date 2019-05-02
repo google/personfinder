@@ -96,14 +96,17 @@ class FeedTests(ServerTestsBase):
         self.verify_api_log(ApiActionLog.REPO, api_key='')
 
     def test_repo_feed_all_launched_repos(self):
-        config.set_for_repo('haiti',
-                deactivated=True, launched=True, test_mode=False)
-        config.set_for_repo('japan',
-                deactivated=False, launched=True, test_mode=True,
+        haiti_repo = Repo.get('haiti')
+        haiti_repo.activation_status = Repo.ActivationStatus.DEACTIVATED
+        haiti_repo.put()
+        japan_repo = Repo.get('japan')
+        japan_repo.activation_status = Repo.ActivationStatus.ACTIVE
+        japan_repo.put()
+        config.set_for_repo(
+                'japan', test_mode=True,
                 updated_date=utils.get_timestamp(
                         datetime.datetime(2012, 03, 11)))
-        config.set_for_repo('pakistan',
-                deactivated=False, launched=False, test_mode=False)
+        config.set_for_repo('pakistan', test_mode=False)
 
         # 'haiti', 'japan', and 'pakistan' exist in the datastore. Only those
         # which are 'launched' and not 'deactivated' i.e., only 'japan' should

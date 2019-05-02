@@ -15,13 +15,7 @@
 
 import re
 
-# pylint: disable=wrong-import-order
-# pylint sometimes thinks config is a standard import that belongs before the
-# django import. It's mistaken; config is our own module (if you run
-# python -c "import config", it produces an error saying config doesn't exist).
-# Filed issue #626 to move us out of the global namespace someday, which would
-# prevent stuff like this.
-import config
+import model
 
 import view_tests_base
 
@@ -35,11 +29,10 @@ class SitemapViewTests(view_tests_base.ViewTestsBase):
         super(SitemapViewTests, self).setUp()
         self.data_generator.repo(repo_id='haiti')
         self.data_generator.repo(repo_id='japan')
-        self.data_generator.repo(repo_id='minnesota')
-        # Set two of the repos as launched; the unlaunched one shouldn't appear
-        # in the sitemap.
-        config.set_for_repo('haiti', launched=True)
-        config.set_for_repo('japan', launched=True)
+        # The unlaunched repo shouldn't appear in the sitemap.
+        self.data_generator.repo(
+            repo_id='minnesota',
+            activation_status=model.Repo.ActivationStatus.STAGING)
 
     def test_get(self):
         """Tests GET requests."""
