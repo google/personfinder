@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
+"Generated-By: Babel 2.3.4\n"
 
 msgid ""
 "\n"
@@ -64,8 +64,8 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" yozuvi eslatmalarini yoqib qo‘yishni "
 "so‘radi.\n"
 "\n"
-"E-pochta manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
-"eslatmalarini \n"
+"Email manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv eslatmalarini"
+" \n"
 "o‘chirib qo‘yish uchun (3 kun ichida) quyidagi manzil ustiga bosing:\n"
 "\n"
 "   %(confirm_url)s\n"
@@ -94,7 +94,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun eslatmalarni o‘chirib "
 "qo‘yishingizni so‘radi.\n"
 "\n"
-"E-pochta manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
+"Email manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
 "eslatmalarini \n"
 "o‘chirib qo‘yish uchun (3 kun ichida) quyidagi manzil ustiga bosing:\n"
 "\n"
@@ -440,7 +440,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun yozuvni %(site_url)s saytidan "
 "o‘chirib yubordi.\n"
 "\n"
-"E-pochta manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
+"Email manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
 "o‘chirilish haqida sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -456,7 +456,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun yozuvni %(site_url)s saytidan "
 "o‘chirib yubordi.\n"
 "\n"
-"E-pochta manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
+"Email manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
 "o‘chirilish haqida sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -501,7 +501,7 @@ msgstr ""
 "quyidagi manzilga o‘ting:\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -523,7 +523,7 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -544,7 +544,7 @@ msgstr ""
 "Yozuvni ko‘rib chiqish uchun quyidagi manzilga o‘ting:\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -794,17 +794,17 @@ msgid "Download all person records in CSV format"
 msgstr "Shaxs haqidagi barcha yozuvlarni CSV formatda yuklab olish"
 
 msgid "E-mail"
-msgstr "E-pochta"
+msgstr "Email"
 
 msgid "E-mail address"
-msgstr "E-pochta manzili"
+msgstr "Email manzili"
 
 msgid "Edit"
 msgstr "Tahrirlash"
 
 #. Translators: The label for an email address field.
 msgid "Email address"
-msgstr "E-pochta manzili"
+msgstr "Email manzili"
 
 msgid "Embedding the Application"
 msgstr "Biritktirilgan ilova dastur"
@@ -1289,7 +1289,7 @@ msgid "Please fill in all the required fields."
 msgstr "Barcha so‘ralgan maydonchalarni to‘ldiring."
 
 msgid "Please fill in your email address."
-msgstr "E-pochta manzilingizni kiriting."
+msgstr "Email manzilingizni kiriting."
 
 msgid "Please only enter valid profile URLs."
 msgstr ""
@@ -1419,6 +1419,9 @@ msgstr "Odamning holati"
 
 msgid "Status of this person:"
 msgstr "Bu odamning holati:"
+
+msgid "Street name only, no number"
+msgstr "Ko‘cha nomi xolos, raqam kerak emas"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1735,6 +1738,9 @@ msgstr "Siz allaqachon obuna bo‘lgansiz. "
 msgid "You are already unsubscribed."
 msgstr "Siz obunani allaqachon bekor qilgansiz."
 
+msgid "You are not currently signed in."
+msgstr "Siz ayni paytda tizimga kirmagansiz."
+
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
@@ -1772,13 +1778,13 @@ msgid "Your download should start automatically."
 msgstr "Yuklab olish avtomatik boshlanishi kerak."
 
 msgid "Your e-mail address"
-msgstr "E-pochta manzilingiz"
+msgstr "Email manzilingiz"
 
 msgid "Your e-mail address:"
-msgstr "E-pochta manzilingiz:"
+msgstr "Email manzilingiz:"
 
 msgid "Your email"
-msgstr "E-pochta manzilingiz"
+msgstr "Email manzilingiz"
 
 msgid "Your name (required)"
 msgstr "Ismingiz (majburiy)"
