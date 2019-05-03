@@ -1,5 +1,4 @@
-#!/usr/bin/python2.7
-# Copyright 2011 Google Inc.
+# Copyright 2019 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""The admin dashboard page."""
 
-import logging
+import datetime
+
 import simplejson
-import sys
 
-from model import *
-from utils import *
+import model
+import pfif
+import utils
+import views.admin.base
 
 
 def encode_date(object):
@@ -42,33 +44,35 @@ def pack_json(json):
     return json
 
 
-class Handler(BaseHandler):
-    # If a repo is specified, this dashboard shows information about just that
-    # repo; otherwise it shows information for all repositories by default.
-    repo_required = False
-    # Show stats even for deactivated repositories.
-    ignore_deactivation = True
+class AdminDashboardView(views.admin.base.AdminBaseView):
+    """The admin dashboard view."""
 
-    admin_required = True
+    ACTION_ID = 'admin/dashboard'
 
-    def get(self):
+    def setup(self, request, *args, **kwargs):
+        super(AdminDashboardView, self).setup(request, *args, **kwargs)
+
+    @views.admin.base.enforce_manager_admin_level
+    def get(self, request, *args, **kwargs):
+        """Serves GET requests with the dashboard."""
+        del request, args, kwargs  # unused
         # Determine the time range to display.  We currently show the last
         # 7 days of data, which encodes to about 100 kb of JSON text.
-        max_time = get_utcnow()
-        min_time = max_time - timedelta(7)
+        max_time = utils.get_utcnow()
+        min_time = max_time - datetime.timedelta(7)
 
         # Gather the data into a table, with a column for each repository.  See:
         # https://developers.google.com/chart/interactive/docs/reference?csw=1#dataparam
-        active_repos = sorted(Repo.list_active())
-        launched_repos = sorted(Repo.list_launched())
-        if self.repo:
-            active_repos = launched_repos = [self.repo]
+        active_repos = sorted(model.Repo.list_active())
+        launched_repos = sorted(model.Repo.list_launched())
+        if self.env.repo:
+            active_repos = launched_repos = [self.env.repo]
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
             blanks = []
             for repo in launched_repos:
-                query = Counter.all_finished_counters(repo, scan_name)
+                query = model.Counter.all_finished_counters(repo, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
                     {'c': [{'v': c.timestamp}] + blanks + [{'v': c.get('all')}]}
@@ -89,14 +93,15 @@ class Handler(BaseHandler):
                           for status in [''] + pfif.NOTE_STATUS_VALUES]
         for repo in active_repos:
             data['counts'][repo] = dict(
-                (name, Counter.get_count(repo, name))
+                (name, model.Counter.get_count(repo, name))
                 for name in counter_names)
 
         data['sources'] = {}
         for repo in active_repos:
             counts_by_source = {}
             for kind in ['person', 'note']:
-                for name, count in Counter.get_all_counts(repo, kind).items():
+                for name, count in model.Counter.get_all_counts(
+                        repo, kind).items():
                     if name.startswith('original_domain='):
                         source = name.split('=', 1)[1]
                         counts_by_source.setdefault(source, {})[kind] = count
@@ -109,7 +114,8 @@ class Handler(BaseHandler):
         json = json.replace('"<<', '').replace('>>"', '')
 
         # Render the page with the JSON data in it.
-        self.render('admin_dashboard.html',
-                    data_js=pack_json(json),
-                    launched_repos_js=simplejson.dumps(launched_repos),
-                    active_repos_js=simplejson.dumps(active_repos))
+        return self.render(
+            'admin_dashboard.html',
+            data_js=pack_json(json),
+            launched_repos_js=simplejson.dumps(launched_repos),
+            active_repos_js=simplejson.dumps(active_repos))

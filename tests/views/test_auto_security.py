@@ -103,6 +103,14 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'new_repo': 'new-hampshire',
             },
             xsrf_action_id='admin/create_repo'),
+        'admin_dashboard':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
         'admin_delete-record':
         PathTestInfo(
             accepts_get=True,
@@ -147,9 +155,10 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         The base class initializes a Datastore stub, which seems to cause
         problems when we set another app ID (for the task tests). We don't
         really need Datastore for this, so just override the base class and
-        stick to the user stub.
+        stick to the user and memcache stubs.
         """
         self.testbed.init_user_stub()
+        self.testbed.init_memcache_stub()
 
     def get_path(self, path_name):
         """Gets a path to use for the given path name.

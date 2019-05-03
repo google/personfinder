@@ -22,6 +22,7 @@ import tasksmodule.sitemap_ping
 import views.admin.acls
 import views.admin.api_keys
 import views.admin.create_repo
+import views.admin.dashboard
 import views.admin.delete_record
 import views.admin.review
 import views.admin.statistics
@@ -39,6 +40,8 @@ _BASE_URL_PATTERNS = [
      views.admin.api_keys.ApiKeyManagementView.as_view),
     ('admin_create-repo', r'global/admin/create_repo/?',
      views.admin.create_repo.AdminCreateRepoView.as_view),
+    ('admin_dashboard', r'(?P<repo>[^\/]+)/admin/dashboard/?',
+     views.admin.dashboard.AdminDashboardView.as_view),
     ('admin_delete-record', r'(?P<repo>[^\/]+)/admin/delete_record/?',
      views.admin.delete_record.AdminDeleteRecordView.as_view),
     ('admin_review', r'(?P<repo>[^\/]+)/admin/review/?',

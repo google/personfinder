@@ -18,6 +18,7 @@ class ServerTestsBase(unittest.TestCase):
         """
         self.testbed.init_user_stub()
         self.testbed.init_datastore_v3_stub()
+        self.testbed.init_memcache_stub()
 
     def setUp(self):
         self.data_generator = data_generator.TestDataGenerator()

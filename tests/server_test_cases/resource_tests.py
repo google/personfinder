@@ -284,18 +284,3 @@ class CounterTests(ServerTestsBase):
         self.advance_utcnow(seconds=11)
         doc = self.go('/haiti?flush=memcache')
         assert 'Currently tracking about 400 records' in doc.text
-
-    def test_admin_dashboard(self):
-        """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put([Counter(
-            scan_name='Person', repo='haiti', last_key='', count_all=278
-        ), Counter(
-            scan_name='Person', repo='pakistan', last_key='',
-            count_all=127
-        ), Counter(
-            scan_name='Note', repo='haiti', last_key='', count_all=12
-        ), Counter(
-            scan_name='Note', repo='pakistan', last_key='', count_all=8
-        )])
-        assert self.go_as_admin('/global/admin/dashboard')
-        assert self.s.status == 200
