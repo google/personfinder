@@ -72,7 +72,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_post_flagged_note',
   'third_party_search',
   'admin',
-  'admin/dashboard',
   'admin/resources',
   'css',
   'add_note',
