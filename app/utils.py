@@ -17,9 +17,9 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 from django_setup import ugettext as _  # always keep this first
 
-import sys
-sys.path.append('../app/handlers/')
-sys.path.append('../app/utils/')
+#import sys
+#sys.path.append('../app/handlers/')
+#sys.path.append('../app/utils/')
 
 import calendar
 import cgi
