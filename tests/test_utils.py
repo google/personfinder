@@ -16,9 +16,9 @@
 
 """Tests for utils."""
 
-import sys
-sys.path.append('../app/handlers/')
-sys.path.append('../app/utils/')
+#import sys
+#sys.path.append('../app/handlers/')
+#sys.path.append('../app/utils/')
 
 import datetime
 import os
