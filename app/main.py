@@ -280,6 +280,7 @@ def setup_env(request):
     env.force_https = True
     env.domain = env.netloc.split(':')[0]
     env.global_url = utils.get_repo_url(request, 'global')
+    env.fixed_static_url_base = utils.get_repo_url(request, 'static')
     env.light_url = utils.set_url_param(env.url, 'ui', 'light')
 
     # Commonly used information that's rendered or localized for templates.

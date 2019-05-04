@@ -119,6 +119,15 @@ class BaseView(django.views.View):
             self._enable_javascript = value
 
         @property
+        def fixed_static_url_base(self):
+            """Gets the base URL for fixed static files."""
+            return self._fixed_static_url_base
+
+        @fixed_static_url_base.setter
+        def fixed_static_url_base(self, value):
+            self._fixed_static_url_base = value
+
+        @property
         def global_url(self):
             """Gets the URL for the global root."""
             return self._global_url
@@ -212,6 +221,7 @@ class BaseView(django.views.View):
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
+        self.env.fixed_static_url_base = self.build_absolute_uri('/static')
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
