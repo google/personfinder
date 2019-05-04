@@ -27,6 +27,7 @@ import views.admin.delete_record
 import views.admin.review
 import views.admin.statistics
 import views.meta.sitemap
+import views.meta.static
 
 # We include an optional trailing slash in all the patterns (Django has support
 # for automatic redirection, but we don't want to send people redirect responses
@@ -50,6 +51,8 @@ _BASE_URL_PATTERNS = [
      views.admin.statistics.AdminStatisticsView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
+    ('meta_static', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
+     views.meta.static.ConfigurableStaticView.as_view),
     ('tasks_process-expirations',
      r'(?P<repo>[^\/]+)/tasks/process_expirations/?',
      tasksmodule.deletion.ProcessExpirationsTask.as_view),
