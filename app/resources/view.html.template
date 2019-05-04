@@ -24,7 +24,7 @@
       (The default is the repository start page).
     {% endcomment %}
     {% if env.rtl %}
-      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
+      <a href="{{results_url}}"><img class="title-bar-button" src="{{env.fixed_static_url_base}}/forward_arrow.png" alt="Back"></a>
     {% else %}
       <a href="{{results_url}}"><img class="title-bar-button" src="{{env.fixed_static_url_base}}/back_arrow.png" alt="Back"></a>
     {% endif %}
