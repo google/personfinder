@@ -28,7 +28,7 @@
         <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
       {% endif %}
     {% else %}
-      <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
+      <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu" onclick="showSideMenu()">
     {% endif %}
   {% endif %}
   {% trans "Google Person Finder" %}

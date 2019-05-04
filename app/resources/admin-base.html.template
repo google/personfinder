@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block logo %}
-  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu">{% trans "Google Person Finder" %}
+  <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu">{% trans "Google Person Finder" %}
   <script type="text/javascript" nonce="{{csp_nonce}}">
     document.querySelector('#menu-button').addEventListener('click', showSideMenu);
   </script>
