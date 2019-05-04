@@ -13,7 +13,7 @@
 {% load i18n %}
 
 <div class="languages" title="{% trans "Language selection" %}">
-  <img src="{{env.global_url}}/language_picker.png"
+  <img src="{{env.fixed_static_url_base}}/language_picker.png"
       alt="{% trans "Language selection" %}"
       {% if env.ui == "small" %}onclick="this.style.display='none';
           $('language_picker').style.display='';"{% endif %} />
