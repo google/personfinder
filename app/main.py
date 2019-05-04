@@ -16,9 +16,9 @@
 """The main request handler.  All dynamic requests except for remote_api are
 handled by this handler, which dispatches to all other dynamic handlers."""
 
-import sys
-sys.path.append('../app/handlers/')
-sys.path.append('../app/utils/')
+#import sys
+#sys.path.append('../app/handlers/')
+#sys.path.append('../app/utils/')
 
 import django_setup  # always keep this first
 
