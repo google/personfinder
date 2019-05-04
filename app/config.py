@@ -25,7 +25,7 @@ from google.appengine.ext import db
 import UserDict, model, random, simplejson
 import logging
 import datetime
-#import utils
+import utils
 from datetime import timedelta
 
 
