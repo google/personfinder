@@ -43,6 +43,10 @@ handlers:
   script: wsgi.application
 - url: /.*/admin/create_repo.*
   script: wsgi.application
+- url: /global/admin/?
+  script: main.py
+- url: /.*/admin/?
+  script: wsgi.application
 - url: /.*/admin/dashboard.*
   script: wsgi.application
 - url: /.*/admin/delete_record.*
