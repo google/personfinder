@@ -14,8 +14,8 @@
 {% load i18n %}
 
 {% block content %}
-<script src="https://unpkg.com/react@16/umd/react.development.js" nonce="{{ csp_nonce }}" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" nonce="{{ csp_nonce }}" crossorigin></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" nonce="{{ csp_nonce }}" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" nonce="{{ csp_nonce }}" crossorigin></script>
 
 <script nonce="{{ csp_nonce }}">
   const LANGUAGE_EXONYMS_ARR = JSON.parse(
@@ -648,7 +648,7 @@
       <div class="option">
         <input type="radio" name="search_auth_key_required" value="false"
             id="search_auth_key_required_false"
-            {{view_config.search_auth_key_required|yesno:",checked"}}>
+            {{api_access_control_config.search_auth_key_required|yesno:",checked"}}>
         <label for="search_auth_key_required_false">
           Allow anyone to use the search API
         </label>
@@ -656,7 +656,7 @@
       <div class="option">
         <input type="radio" name="search_auth_key_required" value="true"
             id="search_auth_key_required_true"
-            {{view_config.search_auth_key_required|yesno:"checked,"}}>
+            {{api_access_control_config.search_auth_key_required|yesno:"checked,"}}>
         <label for="search_auth_key_required_true">
           Require an authorization key to use the search API
         </label>
@@ -667,7 +667,7 @@
       <div class="option">
         <input type="radio" name="read_auth_key_required" value="false"
             id="read_auth_key_required_false"
-            {{view_config.read_auth_key_required|yesno:",checked"}}>
+            {{api_access_control_config.read_auth_key_required|yesno:",checked"}}>
         <label for="read_auth_key_required_false">
           Allow anyone to use the read API and read the feeds
         </label>
@@ -675,7 +675,7 @@
       <div class="option">
         <input type="radio" name="read_auth_key_required" value="true"
                id="read_auth_key_required_true"
-               {{view_config.read_auth_key_required|yesno:"checked,"}}>
+               {{api_access_control_config.read_auth_key_required|yesno:"checked,"}}>
         <label for="read_auth_key_required_true">
           Require an authorization key to use the read API and read the feeds
         </label>
@@ -700,7 +700,7 @@
       <div class="option">
         <input type="radio" name="zero_rating_mode" value="false"
             id="zero_rating_mode_false"
-            {{view_config.zero_rating_mode|yesno:",checked"}}>
+            {{zero_rating_config.zero_rating_mode|yesno:",checked"}}>
         <label for="zero_rating_mode_false">
           Disable zero-rating mode: Enable all features which loads resource from external domains.
         </label>
@@ -708,7 +708,7 @@
       <div class="option">
         <input type="radio" name="zero_rating_mode" value="true"
             id="zero_rating_mode_true"
-            {{view_config.zero_rating_mode|yesno:"checked,"}}>
+            {{zero_rating_config.zero_rating_mode|yesno:"checked,"}}>
         <label for="zero_rating_mode_true">
           Enable zero-rating mode: Disable all features which loads resource from external domains.
         </label>
@@ -725,7 +725,7 @@
       </label>
       <div class="response">
         <textarea name="bad_words" id="bad_words" rows=4 cols=80
-          >{{view_config.bad_words|default:""}}</textarea>
+          >{{spam_config.bad_words|default:""}}</textarea>
       </div>
     </div>
   </fieldset>

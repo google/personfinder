@@ -71,6 +71,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
               post_params={
                   'activation_status': utils.validate_int,
                   'allow_believed_dead_via_ui': utils.validate_checkbox_as_bool,
+                  'bad_words': utils.strip,
                   'deactivation_message_html': utils.strip,
                   'family_name_first': utils.validate_checkbox_as_bool,
                   'keywords': utils.strip,
@@ -79,6 +80,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                   'map_size_pixels': utils.strip,
                   'min_query_word_length': utils.validate_int,
                   'profile_websites': utils.strip,
+                  'read_auth_key_required': utils.validate_checkbox_as_bool,
+                  'search_auth_key_required': utils.validate_checkbox_as_bool,
                   'show_profile_entry': utils.validate_checkbox_as_bool,
                   'test_mode': utils.validate_checkbox_as_bool,
                   'time_zone_offset': utils.validate_float,
@@ -86,6 +89,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                   'use_alternate_names': utils.validate_checkbox_as_bool,
                   'use_family_name': utils.validate_checkbox_as_bool,
                   'use_postal_code': utils.validate_checkbox_as_bool,
+                  'zero_rating_mode': utils.validate_checkbox_as_bool,
               })
 
     def setup(self, request, *args, **kwargs):
@@ -122,6 +126,9 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             forms_config=self._get_forms_config(),
             map_config=self._get_map_config(),
             timezone_config=self._get_timezone_config(),
+            api_access_control_config=self._get_api_access_control_config(),
+            zero_rating_config=self._get_zero_rating_config(),
+            spam_config=self._get_spam_config(),
             xsrf_token=self.xsrf_tool.generate_token(
                 self.env.user.user_id(), self.ACTION_ID))
 
@@ -208,6 +215,28 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 'time_zone_abbreviation')
         return timezone_config
 
+    def _get_api_access_control_config(self):
+        api_access_control_config = {}
+        if self._category_permissions['everything_else']:
+            api_access_control_config['search_auth_key_required'] = (
+                self.env.config.get('search_auth_key_required'))
+            api_access_control_config['read_auth_key_required'] = (
+                self.env.config.get('read_auth_key_required'))
+        return api_access_control_config
+
+    def _get_zero_rating_config(self):
+        zero_rating_config = {}
+        if self._category_permissions['everything_else']:
+            zero_rating_config['zero_rating_mode'] = self.env.config.get(
+                'zero_rating_mode')
+        return zero_rating_config
+
+    def _get_spam_config(self):
+        spam_config = {}
+        if self._category_permissions['everything_else']:
+            spam_config['bad_words'] = self.env.config.get('bad_words')
+        return spam_config
+
     @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
@@ -223,6 +252,9 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         self._set_forms_config()
         self._set_map_config()
         self._set_timezone_config()
+        self._set_api_access_control_config()
+        self._set_zero_rating_config()
+        self._set_spam_config()
         # Reload the config since we just changed it.
         self.env.config = config.Configuration(self.env.repo)
         return self._render_form()
@@ -293,3 +325,21 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             values['time_zone_abbreviation'] = (
                 self.params.time_zone_abbreviation)
             config.set_for_repo(self.env.repo, **values)
+
+    def _set_api_access_control_config(self):
+        if self._category_permissions['everything_else']:
+            values = {}
+            values['search_auth_key_required'] = (
+                self.params.search_auth_key_required)
+            values['read_auth_key_required'] = (
+                self.params.read_auth_key_required)
+            config.set_for_repo(self.env.repo, **values)
+
+    def _set_zero_rating_config(self):
+        if self._category_permissions['everything_else']:
+            config.set_for_repo(
+                self.env.repo, zero_rating_mode=self.params.zero_rating_mode)
+
+    def _set_spam_config(self):
+        if self._category_permissions['everything_else']:
+            config.set_for_repo(self.env.repo, bad_words=self.params.bad_words)
