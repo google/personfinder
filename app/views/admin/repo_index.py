@@ -61,11 +61,17 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                   messages[key_parts[2]] = value
           self.params.lang_list = [
               value for _, value in sorted(lang_list, key=lambda kv : kv[0])]
+          self.params.read_values(
+              post_params={
+                  'activation_status': utils.validate_int,
+                  'deactivation_message_html': utils.strip,
+              })
 
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
         # pylint: disable=attribute-defined-outside-init
         super(AdminRepoIndexView, self).setup(request, *args, **kwargs)
+        self._repo_obj = model.Repo.get(self.env.repo)
         self._read_params(request)
         self._category_permissions = self._get_category_permissions()
 
@@ -83,8 +89,13 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         return self.render(
             'admin_repo_index.html',
             category_permissions=self._category_permissions,
+            # Language-specific fields are handled by a React component, so we
+            # encode that into JSON for it.
+            # TODO(nworden): once we upgrade to Django 2.1+, use the new
+            # built-in json_script filter instead of encoding it ourselves.
             language_exonyms_json=encoder.encode(language_exonyms),
             language_config_json=encoder.encode(self._get_language_config()),
+            activation_config=self._get_activation_config(),
             xsrf_token=self.xsrf_tool.generate_token(
                 self.env.user.user_id(), self.ACTION_ID))
 
@@ -109,12 +120,22 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             language_config['custom_messages'] = custom_messages
         return language_config
 
+    def _get_activation_config(self):
+        activation_config = {}
+        if self._category_permissions['everything_else']:
+            activation_config['activation_status'] = (
+                self._repo_obj.activation_status)
+            activation_config['deactivation_message_html'] = (
+                self.env.config.get('deactivation_message_html'))
+        return activation_config
+
     @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
         del request, args, kwargs  # Unused.
         self.enforce_xsrf(self.ACTION_ID)
         self._set_language_config()
+        self._set_activation_config()
         # Reload the config since we just changed it.
         self.env.config = config.Configuration(self.env.repo)
         return self._render_form()
@@ -128,3 +149,11 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             for config_key, value in self.params.custom_messages.items():
                 values[config_key] = value
         config.set_for_repo(self.env.repo, **values)
+
+    def _set_activation_config(self):
+        if self._category_permissions['everything_else']:
+            self._repo_obj.activation_status = self.params.activation_status
+            self._repo_obj.put()
+            config.set_for_repo(
+                self.env.repo,
+                deactivation_message_html=self.params.deactivation_message_html)

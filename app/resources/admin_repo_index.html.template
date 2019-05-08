@@ -241,12 +241,12 @@
     <div class="config">
       <div class="option">
         <input
-            type="radio" name="launch_status" value="staging"
-            id="launch_status_staging"
-            {% if view_config.launch_status == "staging" %}
+            type="radio" name="activation_status" value="0"
+            id="activation_status_staging"
+            {% if activation_config.activation_status == 0 %}
               checked
             {% endif %}>
-        <label for="launch_status_staging">
+        <label for="activation_status_staging">
           Staging
         </label>
         <div class="note">
@@ -265,12 +265,12 @@
       </div>
       <div class="option">
         <input
-            type="radio" name="launch_status" value="activated"
-            id="launch_status_activated"
-            {% if view_config.launch_status == "activated" %}
+            type="radio" name="activation_status" value="1"
+            id="activation_status_activated"
+            {% if activation_config.activation_status == 1 %}
               checked
             {% endif %}>
-        <label for="launch_status_activated">
+        <label for="activation_status_activated">
           Activated
         </label>
         <div class="note">
@@ -288,12 +288,12 @@
       </div>
       <div class="option">
         <input
-            type="radio" name="launch_status" value="deactivated"
-            id="launch_status_deactivated"
-            {% if view_config.launch_status == "deactivated" %}
+            type="radio" name="activation_status" value="2"
+            id="activation_status_deactivated"
+            {% if activation_config.activation_status == 2 %}
               checked
             {% endif %}>
-        <label for="launch_status_deactivated">
+        <label for="activation_status_deactivated">
           Deactivated
         </label>
         <div class="note">
@@ -320,7 +320,7 @@
       <div class="response">
         <textarea name="deactivation_message_html"
             id="deactivation_message_html" rows=6 cols=80
-            >{{view_config.deactivation_message_html|default:""}}</textarea>
+            >{{activation_config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
   </fieldset>
