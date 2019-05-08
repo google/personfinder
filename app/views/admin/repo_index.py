@@ -44,6 +44,31 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         'footer_custom_htmls',
     ]
 
+    def _read_params(self, request):
+        if request.method == 'POST':
+          lang_list = []
+          self.params.repo_titles = {}
+          self.params.custom_messages = {}
+          for key, value in request.POST.items():
+              key_parts = key.split('__')
+              if key_parts[0] == 'langlist':
+                  lang_list.append((int(key_parts[1]), value))
+              elif key_parts[0] == 'repotitle':
+                  self.params.repo_titles[key_parts[1]] = value
+              elif key_parts[0] == 'custommsg':
+                  messages = self.params.custom_messages.setdefault(
+                      key_parts[1], {})
+                  messages[key_parts[2]] = value
+          self.params.lang_list = [
+              value for _, value in sorted(lang_list, key=lambda kv : kv[0])]
+
+    def setup(self, request, *args, **kwargs):
+        """See docs on BaseView.setup."""
+        # pylint: disable=attribute-defined-outside-init
+        super(AdminRepoIndexView, self).setup(request, *args, **kwargs)
+        self._read_params(request)
+        self._category_permissions = self._get_category_permissions()
+
     def _get_category_permissions(self):
         return {
             key: self.env.user_admin_permission.compare_level_to(min_level) >= 0
@@ -51,31 +76,32 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             AdminRepoIndexView._CATEGORY_PERMISSION_LEVELS.items()
         }
 
+    def _render_form(self):
+        language_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
+                                  key= lambda lang: lang[1])
+        encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
+        return self.render(
+            'admin_repo_index.html',
+            category_permissions=self._category_permissions,
+            language_exonyms_json=encoder.encode(language_exonyms),
+            language_config_json=encoder.encode(self._get_language_config()),
+            xsrf_token=self.xsrf_tool.generate_token(
+                self.env.user.user_id(), self.ACTION_ID))
+
     @views.admin.base.enforce_manager_admin_level
     def get(self, request, *args, **kwargs):
         """Serves GET requests."""
         del request, args, kwargs  # Unused.
-        language_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
-                                  key= lambda lang: lang[1])
-        category_permissions = self._get_category_permissions()
-        language_config = self._get_language_config(category_permissions)
-        encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
-        return self.render(
-            'admin_repo_index.html',
-            category_permissions=category_permissions,
-            language_exonyms_json=encoder.encode(language_exonyms),
-            language_config_json=encoder.encode(language_config),
-            xsrf_token=self.xsrf_tool.generate_token(
-                self.env.user.user_id(), self.ACTION_ID))
+        return self._render_form()
 
-    def _get_language_config(self, category_permissions):
+    def _get_language_config(self):
         language_config = {}
         language_config['lang_list'] = self.env.config.get(
             'language_menu_options', [])
-        if category_permissions['everything_else']:
+        if self._category_permissions['everything_else']:
             language_config['repo_titles'] = self.env.config.get(
                 'repo_titles', {})
-        if category_permissions['custom_messages']:
+        if self._category_permissions['custom_messages']:
             custom_messages = {}
             for config_key in AdminRepoIndexView._CUSTOM_MESSAGES_CONFIG_KEYS:
                 custom_messages[config_key] = self.env.config.get(
@@ -88,4 +114,17 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         """Serves POST requests, updating the repo's configuration."""
         del request, args, kwargs  # Unused.
         self.enforce_xsrf(self.ACTION_ID)
-        category_permissions = self._get_category_permissions()
+        self._set_language_config()
+        # Reload the config since we just changed it.
+        self.env.config = config.Configuration(self.env.repo)
+        return self._render_form()
+
+    def _set_language_config(self):
+        values = {}
+        if self._category_permissions['everything_else']:
+            values['language_menu_options'] = self.params.lang_list
+            values['repo_titles'] = self.params.repo_titles
+        if self._category_permissions['custom_messages']:
+            for config_key, value in self.params.custom_messages.items():
+                values[config_key] = value
+        config.set_for_repo(self.env.repo, **values)
