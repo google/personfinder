@@ -626,7 +626,7 @@
         UTC +
         <input type="number" step="any"
             name="time_zone_offset" id="time_zone_offset"
-            value="{{view_config_json.time_zone_offset}}">
+            value="{{timezone_config.time_zone_offset}}">
       </div>
     </div>
 
@@ -636,7 +636,7 @@
       </label>
       <div class="response">
         <input name="time_zone_abbreviation" id="time_zone_abbreviation" size=3
-            value="{{view_config.time_zone_abbreviation}}">
+            value="{{timezone_config.time_zone_abbreviation}}">
       </div>
     </div>
   </fieldset>

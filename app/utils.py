@@ -203,6 +203,10 @@ def validate_int(string):
     return string and int(strip(string))
 
 
+def validate_float(string):
+    return string and float(strip(string))
+
+
 def validate_sex(string):
     """Validates the 'sex' parameter, returning a canonical value or ''."""
     if string:

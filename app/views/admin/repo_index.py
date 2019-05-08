@@ -81,6 +81,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                   'profile_websites': utils.strip,
                   'show_profile_entry': utils.validate_checkbox_as_bool,
                   'test_mode': utils.validate_checkbox_as_bool,
+                  'time_zone_offset': utils.validate_float,
+                  'time_zone_abbreviation': utils.strip,
                   'use_alternate_names': utils.validate_checkbox_as_bool,
                   'use_family_name': utils.validate_checkbox_as_bool,
                   'use_postal_code': utils.validate_checkbox_as_bool,
@@ -119,6 +121,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             keywords_config=self._get_keywords_config(),
             forms_config=self._get_forms_config(),
             map_config=self._get_map_config(),
+            timezone_config=self._get_timezone_config(),
             xsrf_token=self.xsrf_tool.generate_token(
                 self.env.user.user_id(), self.ACTION_ID))
 
@@ -196,6 +199,15 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 'map_size_pixels')
         return map_config
 
+    def _get_timezone_config(self):
+        timezone_config = {}
+        if self._category_permissions['everything_else']:
+            timezone_config['time_zone_offset'] = self.env.config.get(
+                'time_zone_offset')
+            timezone_config['time_zone_abbreviation'] = self.env.config.get(
+                'time_zone_abbreviation')
+        return timezone_config
+
     @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
@@ -210,13 +222,12 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         self._set_keywords_config()
         self._set_forms_config()
         self._set_map_config()
+        self._set_timezone_config()
         # Reload the config since we just changed it.
         self.env.config = config.Configuration(self.env.repo)
         return self._render_form()
 
     def _validate_input(self):
-        import q
-        q(self.params.profile_websites)
         if self._category_permissions['everything_else']:
             # It happens that all of the JSON fields fall into this permission
             # category.
@@ -273,4 +284,12 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             values['map_default_center'] = self.params.map_default_center
             values['map_default_zoom'] = self.params.map_default_zoom
             values['map_size_pixels'] = self.params.map_size_pixels
+            config.set_for_repo(self.env.repo, **values)
+
+    def _set_timezone_config(self):
+        if self._category_permissions['everything_else']:
+            values = {}
+            values['time_zone_offset'] = self.params.time_zone_offset
+            values['time_zone_abbreviation'] = (
+                self.params.time_zone_abbreviation)
             config.set_for_repo(self.env.repo, **values)
