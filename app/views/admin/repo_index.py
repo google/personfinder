@@ -101,6 +101,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         self._category_permissions = self._get_category_permissions()
 
     def _get_category_permissions(self):
+        if not self.env.user_admin_permission:
+            return {}
         return {
             key: self.env.user_admin_permission.compare_level_to(min_level) >= 0
             for key, min_level in
