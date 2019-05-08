@@ -47,14 +47,16 @@
   class LanguagesFieldsetComponent extends React.Component {
     constructor(props) {
       super(props);
-      const repo_titles_map = new Map(
-          Object.keys(this.props.repo_titles).map(
-              k => [k, this.props.repo_titles[k]]));
-      const custom_messages_map = new Map(
-          Object.keys(this.props.custom_messages).map(
+      const repo_titles_map = props.hasOwnProperty('repo_titles') ?
+          new Map(Object.keys(props.repo_titles).map(
+              k => [k, props.repo_titles[k]]))
+          : {};
+      const custom_messages_map = props.hasOwnProperty('custom_messages') ?
+          new Map(Object.keys(props.custom_messages).map(
               ck => [ck, new Map(Object.keys(
                   this.props.custom_messages[ck]).map(
-                      lk => [lk, this.props.custom_messages[ck][lk]]))]));
+                      lk => [lk, props.custom_messages[ck][lk]]))]))
+          : {};
       this.state = {
         lang_list: props.lang_list,
         repo_titles: repo_titles_map,
