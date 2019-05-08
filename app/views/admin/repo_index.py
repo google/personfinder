@@ -44,6 +44,12 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         'footer_custom_htmls',
     ]
 
+    _JSON_FIELDS = [
+        'map_default_center',
+        'map_size_pixels',
+        'profile_websites',
+    ]
+
     def _read_params(self, request):
         if request.method == 'POST':
           lang_list = []
@@ -64,8 +70,20 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
           self.params.read_values(
               post_params={
                   'activation_status': utils.validate_int,
+                  'allow_believed_dead_via_ui': utils.validate_checkbox_as_bool,
                   'deactivation_message_html': utils.strip,
+                  'family_name_first': utils.validate_checkbox_as_bool,
+                  'keywords': utils.strip,
+                  'map_default_center': utils.strip,
+                  'map_default_zoom': utils.validate_int,
+                  'map_size_pixels': utils.strip,
+                  'min_query_word_length': utils.validate_int,
+                  'profile_websites': utils.strip,
+                  'show_profile_entry': utils.validate_checkbox_as_bool,
                   'test_mode': utils.validate_checkbox_as_bool,
+                  'use_alternate_names': utils.validate_checkbox_as_bool,
+                  'use_family_name': utils.validate_checkbox_as_bool,
+                  'use_postal_code': utils.validate_checkbox_as_bool,
               })
 
     def setup(self, request, *args, **kwargs):
@@ -98,6 +116,9 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             language_config_json=encoder.encode(self._get_language_config()),
             activation_config=self._get_activation_config(),
             data_retention_config=self._get_data_retention_config(),
+            keywords_config=self._get_keywords_config(),
+            forms_config=self._get_forms_config(),
+            map_config=self._get_map_config(),
             xsrf_token=self.xsrf_tool.generate_token(
                 self.env.user.user_id(), self.ACTION_ID))
 
@@ -137,17 +158,73 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             data_retention_config['test_mode'] = self._repo_obj.test_mode
         return data_retention_config
 
+    def _get_keywords_config(self):
+        keywords_config = {}
+        if self._category_permissions['everything_else']:
+            keywords_config['keywords'] = self.env.config.get('keywords')
+        return keywords_config
+
+    def _get_forms_config(self):
+        forms_config = {}
+        if self._category_permissions['everything_else']:
+            forms_config['use_family_name'] = self.env.config.get(
+                'use_family_name')
+            forms_config['family_name_first'] = self.env.config.get(
+                'family_name_first')
+            forms_config['use_alternate_names'] = self.env.config.get(
+                'use_alternate_names')
+            forms_config['use_postal_code'] = self.env.config.get(
+                'use_postal_code')
+            forms_config['allow_believed_dead_via_ui'] = self.env.config.get(
+                'allow_believed_dead_via_ui')
+            forms_config['min_query_word_length'] = self.env.config.get(
+                'min_query_word_length')
+            forms_config['show_profile_entry'] = self.env.config.get(
+                'show_profile_entry')
+            forms_config['profile_websites'] = self.env.config.get(
+                'profile_websites')
+        return forms_config
+
+    def _get_map_config(self):
+        map_config = {}
+        if self._category_permissions['everything_else']:
+            map_config['map_default_zoom'] = self.env.config.get(
+                'map_default_zoom')
+            map_config['map_default_center'] = self.env.config.get(
+                'map_default_center')
+            map_config['map_size_pixels'] = self.env.config.get(
+                'map_size_pixels')
+        return map_config
+
     @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
         del request, args, kwargs  # Unused.
         self.enforce_xsrf(self.ACTION_ID)
+        validation_response = self._validate_input()
+        if validation_response:
+            return validation_response
         self._set_language_config()
         self._set_activation_config()
         self._set_data_retention_config()
+        self._set_keywords_config()
+        self._set_forms_config()
+        self._set_map_config()
         # Reload the config since we just changed it.
         self.env.config = config.Configuration(self.env.repo)
         return self._render_form()
+
+    def _validate_input(self):
+        import q
+        q(self.params.profile_websites)
+        if self._category_permissions['everything_else']:
+            # It happens that all of the JSON fields fall into this permission
+            # category.
+            try:
+                for field_name in AdminRepoIndexView._JSON_FIELDS:
+                    simplejson.loads(self.params.get(field_name))
+            except:
+                return self.error(400, 'Invalid profile_websites value.')
 
     def _set_language_config(self):
         values = {}
@@ -171,3 +248,29 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         if self._category_permissions['everything_else']:
             self._repo_obj.test_mode = self.params.test_mode
             self._repo_obj.put()
+
+    def _set_keywords_config(self):
+        if self._category_permissions['everything_else']:
+            config.set_for_repo(self.env.repo, keywords=self.params.keywords)
+
+    def _set_forms_config(self):
+        if self._category_permissions['everything_else']:
+            values = {}
+            values['use_family_name'] = self.params.use_family_name
+            values['family_name_first'] = self.params.family_name_first
+            values['use_alternate_names'] = self.params.use_alternate_names
+            values['use_postal_code'] = self.params.use_postal_code
+            values['allow_believed_dead_via_ui'] = (
+                self.params.allow_believed_dead_via_ui)
+            values['min_query_word_length'] = self.params.min_query_word_length
+            values['show_profile_entry'] = self.params.show_profile_entry
+            values['profile_websites'] = self.params.profile_websites
+            config.set_for_repo(self.env.repo, **values)
+
+    def _set_map_config(self):
+        if self._category_permissions['everything_else']:
+            values = {}
+            values['map_default_center'] = self.params.map_default_center
+            values['map_default_zoom'] = self.params.map_default_zoom
+            values['map_size_pixels'] = self.params.map_size_pixels
+            config.set_for_repo(self.env.repo, **values)

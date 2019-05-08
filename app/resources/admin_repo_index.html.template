@@ -216,12 +216,36 @@
     }
   }
 
+  function insert_profile_websites_example(event) {
+    event.preventDefault();
+    $('profile_websites').value = [
+        '[',
+        '    {',
+        '        "name": "Facebook",',
+        '        "icon_filename": "facebook-16x16.png",',
+        '        "url_regexp": "https?://(www\\\\.)?facebook\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "Twitter",',
+        '        "icon_filename": "twitter-16x16.png",',
+        '        "url_regexp": "https?://(www\\\\.)?twitter\\\\.com/.*"',
+        '    },',
+        '    {',
+        '        "name": "LinkedIn",',
+        '        "icon_filename": "linkedin-16x16.png",',
+        '        "url_regexp": "https?://(www\\\\.)?linkedin\\\\.com/.*"',
+        '    }',
+        ']'].join('\n');
+  }
+
   function init() {
     ReactDOM.render(
         e(
 	    LanguagesFieldsetComponent,
 	    JSON.parse("{{ language_config_json|escapejs }}")),
         document.querySelector('#languages_component_container'));
+    $('profile_websites_example_link').addEventListener(
+        'click', insert_profile_websites_example);
   }
 
   document.addEventListener('DOMContentLoaded', init);
@@ -388,7 +412,7 @@
   </fieldset>
 
   <fieldset>
-    <legend>General</legend>
+    <legend>Keywords</legend>
 
     <div class="config">
       <label for="keywords">
@@ -396,7 +420,7 @@
       </label>
       <div class="response">
         <textarea name="keywords" id="keywords" rows=4 cols=80
-          >{{view_config.keywords|default:""}}</textarea>
+          >{{keywords_config.keywords|default:""}}</textarea>
       </div>
     </div>
 
@@ -409,7 +433,7 @@
       <div class="option">
         <input type="radio" name="use_family_name" value="true"
           id="use_family_name_true"
-          {{view_config.use_family_name|yesno:"checked,"}}>
+          {{forms_config.use_family_name|yesno:"checked,"}}>
         <label for="use_family_name_true">
           Use both given and family name fields
         </label>
@@ -417,7 +441,7 @@
       <div class="option">
         <input type="radio" name="use_family_name" value="false"
             id="use_family_name_false"
-            {{view_config.use_family_name|yesno:",checked"}}>
+            {{forms_config.use_family_name|yesno:",checked"}}>
         <label for="use_family_name_false">
           Use only a single name field
         </label>
@@ -428,7 +452,7 @@
       <div class="option">
         <input type="radio" name="family_name_first" value="false"
             id="family_name_first_false"
-            {{view_config.family_name_first|yesno:",checked"}}>
+            {{forms_config.family_name_first|yesno:",checked"}}>
         <label for="family_name_first_false">
           Show given name first, then family name
         </label>
@@ -436,7 +460,7 @@
       <div class="option">
         <input type="radio" name="family_name_first" value="true"
             id="family_name_first_true"
-            {{view_config.family_name_first|yesno:"checked,"}}>
+            {{forms_config.family_name_first|yesno:"checked,"}}>
         <label for="family_name_first_true">
           Show family name first, then given name
         </label>
@@ -447,7 +471,7 @@
       <div class="option">
         <input type="radio" name="use_alternate_names" value="false"
             id="use_alternate_names_false"
-            {{view_config.use_alternate_names|yesno:",checked"}}>
+            {{forms_config.use_alternate_names|yesno:",checked"}}>
         <label for="use_alternate_names_false">
           Don't use alternate name fields (e.g. readings of Japanese names)
         </label>
@@ -455,7 +479,7 @@
       <div class="option">
         <input type="radio" name="use_alternate_names" value="true"
             id="use_alternate_names_true"
-            {{view_config.use_alternate_names|yesno:"checked,"}}>
+            {{forms_config.use_alternate_names|yesno:"checked,"}}>
         <label for="use_alternate_names_true">
           Use alternate name fields (e.g. readings of Japanese names)
         </label>
@@ -466,7 +490,7 @@
       <div class="option">
         <input type="radio" name="use_postal_code" value="true"
             id="use_postal_code_true"
-            {{view_config.use_postal_code|yesno:"checked,"}}>
+            {{forms_config.use_postal_code|yesno:"checked,"}}>
         <label for="use_postal_code_true">
           Use the postal code field
         </label>
@@ -474,7 +498,7 @@
       <div class="option">
         <input type="radio" name="use_postal_code" value="false"
             id="use_postal_code_false"
-            {{view_config.use_postal_code|yesno:",checked"}}>
+            {{forms_config.use_postal_code|yesno:",checked"}}>
         <label for="use_postal_code_false">
           Hide the postal code field
         </label>
@@ -485,7 +509,7 @@
       <div class="option">
         <input type="radio" name="allow_believed_dead_via_ui" value="true"
             id="allow_believed_dead_via_ui"
-            {{view_config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+            {{forms_config.allow_believed_dead_via_ui|yesno:"checked,"}}>
         <label for="allow_believed_dead_via_ui_true">
           Allow users to post notes with status
           "I have received information that this person is dead".
@@ -494,7 +518,7 @@
       <div class="option">
         <input type="radio" name="allow_believed_dead_via_ui" value="false"
             id="allow_believed_dead_via_ui"
-            {{view_config.allow_believed_dead_via_ui|yesno:",checked"}}>
+            {{forms_config.allow_believed_dead_via_ui|yesno:",checked"}}>
         <label for="allow_believed_dead_via_ui_false">
           Don't allow users to post notes with status
           "I have received information that this person is dead".
@@ -507,7 +531,7 @@
       <div class="option">
         <input type="radio" name="min_query_word_length" value="1"
             id="min_query_word_length_1"
-            {% ifequal view_config.min_query_word_length 1 %}
+            {% ifequal forms_config.min_query_word_length 1 %}
               checked
             {% endifequal %}
         >
@@ -518,7 +542,7 @@
       <div class="option">
         <input type="radio" name="min_query_word_length" value="2"
             id="min_query_word_length_2"
-            {% ifnotequal view_config.min_query_word_length 1 %}
+            {% ifnotequal forms_config.min_query_word_length 1 %}
               checked
             {% endifnotequal %}
         >
@@ -532,7 +556,7 @@
       <div class="option">
         <input type="radio" name="show_profile_entry" value="true"
             id="show_profile_entry_true"
-            {{view_config.show_profile_entry|yesno:"checked,"}}>
+            {{forms_config.show_profile_entry|yesno:"checked,"}}>
         <label for="show_profile_entry_true">
           Show input fields for profile pages
         </label>
@@ -540,7 +564,7 @@
       <div class="option">
         <input type="radio" name="show_profile_entry" value="false"
             id="show_profile_entry_false"
-            {{view_config.show_profile_entry|yesno:",checked"}}>
+            {{forms_config.show_profile_entry|yesno:",checked"}}>
         <label for="show_profile_entry_false">
           Hide input fields for profile pages
         </label>
@@ -550,11 +574,11 @@
     <div class="config">
       <label for="profile_websites">External websites to show as the
       default options for profile pages (JSON list of dictionaries sorted in the
-      order of display) <a href="javascript:insert_profile_websites_example()"
+      order of display) <a id="profile_websites_example_link" href="#"
       >click to insert an example</a>:</label>
       <div class="response">
         <textarea name="profile_websites" id="profile_websites" rows=3 cols=80
-          >{{view_config_json.profile_websites|default:"[]"}}</textarea>
+          >{{forms_config.profile_websites|default:"[]"}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -566,7 +590,7 @@
       <label for="map_default_zoom">Default zoom level (integer):</label>
       <div class="response">
         <input name="map_default_zoom" id="map_default_zoom" size=24
-            value="{{view_config_json.map_default_zoom}}">
+            value="{{map_config.map_default_zoom}}">
       </div>
     </div>
 
@@ -576,17 +600,17 @@
       </label>
       <div class="response">
         <input name="map_default_center" id="map_default_center" size=24
-            value="{{view_config_json.map_default_center}}">
+            value="{{map_config.map_default_center}}">
       </div>
     </div>
 
     <div class="config">
-      <label for="map_default_center">
+      <label for="map_size_pixels">
         Map size in pixels [width, height]:
       </label>
       <div class="response">
         <input name="map_size_pixels" id="map_size_pixels" size=24
-            value="{{view_config_json.map_size_pixels}}">
+            value="{{map_config.map_size_pixels}}">
       </div>
     </div>
   </fieldset>
