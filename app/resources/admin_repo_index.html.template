@@ -332,7 +332,7 @@
       <div class="option">
         <input type="radio" name="test_mode" value="true"
           id="test_mode_true"
-          {{view_config.test_mode|yesno:"checked,"}}>
+          {{data_retention_config.test_mode|yesno:"checked,"}}>
         <label for="test_mode_true">
           Test mode
         </label>
@@ -364,7 +364,7 @@
       <div class="option">
         <input type="radio" name="test_mode" value="false"
             id="test_mode_false"
-            {{view_config.test_mode|yesno:",checked"}}>
+            {{data_retention_config.test_mode|yesno:",checked"}}>
         <label for="test_mode_false">
           Real mode
         </label>

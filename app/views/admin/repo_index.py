@@ -65,6 +65,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
               post_params={
                   'activation_status': utils.validate_int,
                   'deactivation_message_html': utils.strip,
+                  'test_mode': utils.validate_checkbox_as_bool,
               })
 
     def setup(self, request, *args, **kwargs):
@@ -96,6 +97,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             language_exonyms_json=encoder.encode(language_exonyms),
             language_config_json=encoder.encode(self._get_language_config()),
             activation_config=self._get_activation_config(),
+            data_retention_config=self._get_data_retention_config(),
             xsrf_token=self.xsrf_tool.generate_token(
                 self.env.user.user_id(), self.ACTION_ID))
 
@@ -129,6 +131,12 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 self.env.config.get('deactivation_message_html'))
         return activation_config
 
+    def _get_data_retention_config(self):
+        data_retention_config = {}
+        if self._category_permissions['everything_else']:
+            data_retention_config['test_mode'] = self._repo_obj.test_mode
+        return data_retention_config
+
     @views.admin.base.enforce_manager_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
@@ -136,6 +144,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         self.enforce_xsrf(self.ACTION_ID)
         self._set_language_config()
         self._set_activation_config()
+        self._set_data_retention_config()
         # Reload the config since we just changed it.
         self.env.config = config.Configuration(self.env.repo)
         return self._render_form()
@@ -157,3 +166,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             config.set_for_repo(
                 self.env.repo,
                 deactivation_message_html=self.params.deactivation_message_html)
+
+    def _set_data_retention_config(self):
+        if self._category_permissions['everything_else']:
+            self._repo_obj.test_mode = self.params.test_mode
+            self._repo_obj.put()
