@@ -52,6 +52,8 @@ class Handler(BaseHandler):
                 val = getattr(p, prop)
                 if prop == 'sex':  # convert enum value to localized text
                     val = get_person_sex_text(p)
+                elif prop == 'photo_url' and val:
+                    val = (self.should_show_inline_photo(val), val)
                 person[prop].append(val)
                 any_person[prop] = any_person[prop] or val
 
