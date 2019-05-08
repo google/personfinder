@@ -269,7 +269,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 for field_name in AdminRepoIndexView._JSON_FIELDS:
                     simplejson.loads(self.params.get(field_name))
             except:
-                return self.error(400, 'Invalid profile_websites value.')
+                return self.error(400, 'Invalid JSON value.')
 
     def _set_language_config(self):
         values = {}
