@@ -283,16 +283,24 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
 
     def _set_activation_config(self):
         if self._category_permissions['everything_else']:
-            self._repo_obj.activation_status = self.params.activation_status
-            self._repo_obj.put()
+            if self._repo_obj.activation_status != self.params.activation_status:
+                self._repo_obj.activation_status = self.params.activation_status
+                self._repo_obj.put()
+                config.set_for_repo(
+                    self.env.repo,
+                    updated_date=utils.get_utcnow_timestamp())
             config.set_for_repo(
                 self.env.repo,
                 deactivation_message_html=self.params.deactivation_message_html)
 
     def _set_data_retention_config(self):
         if self._category_permissions['everything_else']:
-            self._repo_obj.test_mode = self.params.test_mode
-            self._repo_obj.put()
+            if self._repo_obj.test_mode != self.params.test_mode:
+                self._repo_obj.test_mode = self.params.test_mode
+                self._repo_obj.put()
+                config.set_for_repo(
+                    self.env.repo,
+                    updated_date=utils.get_utcnow_timestamp())
 
     def _set_keywords_config(self):
         if self._category_permissions['everything_else']:
