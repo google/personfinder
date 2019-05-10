@@ -120,7 +120,7 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
                 'unreviewed_notes_threshold', 100),
         }
 
-    @views.admin.base.enforce_manager_admin_level
+    @views.admin.base.enforce_superadmin_admin_level
     def post(self, request, *args, **kwargs):
         """Serves POST requests, updating the repo's configuration."""
         del request, args, kwargs  # Unused.
