@@ -134,7 +134,13 @@
             {% for val in person.photo_url %}
             <td class="field">
               {% if val %}
-                <a href="{{val}}"><img src="{{val}}" class="photo"></a>
+                <a href="{{val.1}}">
+                  {% if val.0 %}
+                    <img src="{{val.1}}" class="photo">
+                  {% else %}
+                    {% trans "External photo" %}
+                  {% endif %}
+                </a>
               {% else %}
                 <img src="{{env.global_url}}/no-photo.gif" class="photo">
               {% endif %}

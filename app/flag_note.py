@@ -35,6 +35,7 @@ class Handler(utils.BaseHandler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
+        utils.sanitize_urls(note)
         self.render('flag_note.html',
                     note=note,
                     captcha_html=captcha_html,
@@ -70,6 +71,7 @@ class Handler(utils.BaseHandler):
                                        signature=self.params.signature))
         elif not captcha_response.is_valid:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
+            utils.sanitize_urls(note)
             self.render('flag_note.html',
                         note=note,
                         captcha_html=captcha_html,

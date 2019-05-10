@@ -1111,9 +1111,11 @@ http://www.foo.com/_account_1''',
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
+        # The photos should be linked but not inlined.
         assert 'http://example.com/photo1' in doc.content
         assert 'http://example.com/photo2' in doc.content
         assert 'http://example.com/photo3' in doc.content
+        assert 'External photo' in doc.content
         assert 'http://www.facebook.com/_account_1' in doc.content
         assert 'http://www.twitter.com/_account_1' in doc.content
         assert 'http://www.foo.com/_account_1' in doc.content

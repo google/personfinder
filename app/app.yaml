@@ -33,6 +33,11 @@ handlers:
   script: send_mail.py
   login: admin
 
+- url: /static
+  static_dir: resources/static/fixed/
+- url: /personfinder/static
+  static_dir: resources/static/fixed/
+
 # These are the handlers we've migrated to Django.
 - url: /.*/admin/acls.*
   script: wsgi.application
