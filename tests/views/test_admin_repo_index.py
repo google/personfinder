@@ -204,6 +204,7 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         repo = model.Repo.get_by_key_name('haiti')
         self.assertTrue(repo.test_mode)
         repo_conf = config.Configuration('haiti')
+        self.assertIs(repo_conf.test_mode, True)
         self.assertEqual(
             repo_conf.updated_date,
             utils.get_timestamp(datetime.datetime(2019, 5, 10, 12, 15, 0)))

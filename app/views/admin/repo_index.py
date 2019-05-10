@@ -296,10 +296,13 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
     def _set_data_retention_config(self):
         if self._category_permissions['everything_else']:
             if self._repo_obj.test_mode != self.params.test_mode:
+                # TODO(nworden): stop setting test_mode in the config once we've
+                # switched to using the field on the Repo object exclusively.
                 self._repo_obj.test_mode = self.params.test_mode
                 self._repo_obj.put()
                 config.set_for_repo(
                     self.env.repo,
+                    test_mode=self.params.test_mode,
                     updated_date=utils.get_utcnow_timestamp())
 
     def _set_keywords_config(self):
