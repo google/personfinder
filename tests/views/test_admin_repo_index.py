@@ -215,7 +215,9 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
             use_postal_code='true',
             allow_believed_dead_via_ui='true',
             min_query_word_length='2',
-            show_profile_entry='true')
+            show_profile_entry='true',
+            # The value for this doesn't really matter.
+            profile_websites='{"arbitrary": "json"}')
         repo_conf = config.Configuration('haiti')
         self.assertIs(repo_conf.use_family_name, True)
         self.assertIs(repo_conf.family_name_first, True)
@@ -224,6 +226,7 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         self.assertIs(repo_conf.allow_believed_dead_via_ui, True)
         self.assertEqual(repo_conf.min_query_word_length, 2)
         self.assertIs(repo_conf.show_profile_entry, True)
+        self.assertEqual(repo_conf.profile_websites, {'arbitrary': 'json'})
 
     def test_edit_map_config(self):
         self.login_as_superadmin()
@@ -233,8 +236,8 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
             map_size_pixels='[300, 450]')
         repo_conf = config.Configuration('haiti')
         self.assertEqual(repo_conf.map_default_zoom, 8)
-        self.assertEqual(repo_conf.map_default_center, '[32.7, 85.6]')
-        self.assertEqual(repo_conf.map_size_pixels, '[300, 450]')
+        self.assertEqual(repo_conf.map_default_center, [32.7, 85.6])
+        self.assertEqual(repo_conf.map_size_pixels, [300, 450])
 
     def test_edit_timezone_config(self):
         self.login_as_superadmin()
