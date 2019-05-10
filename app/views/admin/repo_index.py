@@ -99,6 +99,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         self._repo_obj = model.Repo.get(self.env.repo)
         self._read_params(request)
         self._category_permissions = self._get_category_permissions()
+        self._json_encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
 
     def _get_category_permissions(self):
         if not self.env.user_admin_permission:
@@ -112,7 +113,6 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
     def _render_form(self):
         language_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                   key=lambda lang: lang[1])
-        encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
         return self.render(
             'admin_repo_index.html',
             category_permissions=self._category_permissions,
@@ -120,8 +120,9 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             # encode that into JSON for it.
             # TODO(nworden): once we upgrade to Django 2.1+, use the new
             # built-in json_script filter instead of encoding it ourselves.
-            language_exonyms_json=encoder.encode(language_exonyms),
-            language_config_json=encoder.encode(self._get_language_config()),
+            language_exonyms_json=self._json_encoder.encode(language_exonyms),
+            language_config_json=self._json_encoder.encode(
+                self._get_language_config()),
             activation_config=self._get_activation_config(),
             data_retention_config=self._get_data_retention_config(),
             keywords_config=self._get_keywords_config(),
@@ -193,8 +194,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 'min_query_word_length')
             forms_config['show_profile_entry'] = self.env.config.get(
                 'show_profile_entry')
-            forms_config['profile_websites'] = self.env.config.get(
-                'profile_websites')
+            forms_config['profile_websites'] = self._json_encoder.encode(
+                self.env.config.get('profile_websites'))
         return forms_config
 
     def _get_map_config(self):
@@ -202,10 +203,10 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
         if self._category_permissions['everything_else']:
             map_config['map_default_zoom'] = self.env.config.get(
                 'map_default_zoom')
-            map_config['map_default_center'] = self.env.config.get(
-                'map_default_center')
-            map_config['map_size_pixels'] = self.env.config.get(
-                'map_size_pixels')
+            map_config['map_default_center'] = self._json_encoder.encode(
+                self.env.config.get('map_default_center'))
+            map_config['map_size_pixels'] = self._json_encoder.encode(
+                self.env.config.get('map_size_pixels'))
         return map_config
 
     def _get_timezone_config(self):
@@ -323,15 +324,18 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
                 self.params.allow_believed_dead_via_ui)
             values['min_query_word_length'] = self.params.min_query_word_length
             values['show_profile_entry'] = self.params.show_profile_entry
-            values['profile_websites'] = self.params.profile_websites
+            values['profile_websites'] = simplejson.loads(
+                self.params.profile_websites)
             config.set_for_repo(self.env.repo, **values)
 
     def _set_map_config(self):
         if self._category_permissions['everything_else']:
             values = {}
-            values['map_default_center'] = self.params.map_default_center
+            values['map_default_center'] = simplejson.loads(
+                self.params.map_default_center)
             values['map_default_zoom'] = self.params.map_default_zoom
-            values['map_size_pixels'] = self.params.map_size_pixels
+            values['map_size_pixels'] = simplejson.loads(
+                self.params.map_size_pixels)
             config.set_for_repo(self.env.repo, **values)
 
     def _set_timezone_config(self):
