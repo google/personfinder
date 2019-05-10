@@ -267,6 +267,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             # category.
             try:
                 for field_name in AdminRepoIndexView._JSON_FIELDS:
+                    if not self.params.get(field_name):
+                        return self.error(400, 'Missing JSON value.')
                     simplejson.loads(self.params.get(field_name))
             except simplejson.JSONDecodeError:
                 return self.error(400, 'Invalid JSON value.')
