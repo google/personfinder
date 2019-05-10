@@ -13,7 +13,6 @@
 # limitations under the License.
 """The admin custom messages page."""
 
-import django.shortcuts
 import simplejson
 
 import config
@@ -52,45 +51,46 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
 
     def _read_params(self, request):
         if request.method == 'POST':
-          lang_list = []
-          self.params.repo_titles = {}
-          self.params.custom_messages = {}
-          for key, value in request.POST.items():
-              key_parts = key.split('__')
-              if key_parts[0] == 'langlist':
-                  lang_list.append((int(key_parts[1]), value))
-              elif key_parts[0] == 'repotitle':
-                  self.params.repo_titles[key_parts[1]] = value
-              elif key_parts[0] == 'custommsg':
-                  messages = self.params.custom_messages.setdefault(
-                      key_parts[1], {})
-                  messages[key_parts[2]] = value
-          self.params.lang_list = [
-              value for _, value in sorted(lang_list, key=lambda kv : kv[0])]
-          self.params.read_values(
-              post_params={
-                  'activation_status': utils.validate_int,
-                  'allow_believed_dead_via_ui': utils.validate_checkbox_as_bool,
-                  'bad_words': utils.strip,
-                  'deactivation_message_html': utils.strip,
-                  'family_name_first': utils.validate_checkbox_as_bool,
-                  'keywords': utils.strip,
-                  'map_default_center': utils.strip,
-                  'map_default_zoom': utils.validate_int,
-                  'map_size_pixels': utils.strip,
-                  'min_query_word_length': utils.validate_int,
-                  'profile_websites': utils.strip,
-                  'read_auth_key_required': utils.validate_checkbox_as_bool,
-                  'search_auth_key_required': utils.validate_checkbox_as_bool,
-                  'show_profile_entry': utils.validate_checkbox_as_bool,
-                  'test_mode': utils.validate_checkbox_as_bool,
-                  'time_zone_offset': utils.validate_float,
-                  'time_zone_abbreviation': utils.strip,
-                  'use_alternate_names': utils.validate_checkbox_as_bool,
-                  'use_family_name': utils.validate_checkbox_as_bool,
-                  'use_postal_code': utils.validate_checkbox_as_bool,
-                  'zero_rating_mode': utils.validate_checkbox_as_bool,
-              })
+            lang_list = []
+            self.params.repo_titles = {}
+            self.params.custom_messages = {}
+            for key, value in request.POST.items():
+                key_parts = key.split('__')
+                if key_parts[0] == 'langlist':
+                    lang_list.append((int(key_parts[1]), value))
+                elif key_parts[0] == 'repotitle':
+                    self.params.repo_titles[key_parts[1]] = value
+                elif key_parts[0] == 'custommsg':
+                    messages = self.params.custom_messages.setdefault(
+                        key_parts[1], {})
+                    messages[key_parts[2]] = value
+            self.params.lang_list = [
+                value for _, value in sorted(lang_list, key=lambda kv: kv[0])]
+            self.params.read_values(
+                post_params={
+                    'activation_status': utils.validate_int,
+                    'allow_believed_dead_via_ui':
+                    utils.validate_checkbox_as_bool,
+                    'bad_words': utils.strip,
+                    'deactivation_message_html': utils.strip,
+                    'family_name_first': utils.validate_checkbox_as_bool,
+                    'keywords': utils.strip,
+                    'map_default_center': utils.strip,
+                    'map_default_zoom': utils.validate_int,
+                    'map_size_pixels': utils.strip,
+                    'min_query_word_length': utils.validate_int,
+                    'profile_websites': utils.strip,
+                    'read_auth_key_required': utils.validate_checkbox_as_bool,
+                    'search_auth_key_required': utils.validate_checkbox_as_bool,
+                    'show_profile_entry': utils.validate_checkbox_as_bool,
+                    'test_mode': utils.validate_checkbox_as_bool,
+                    'time_zone_offset': utils.validate_float,
+                    'time_zone_abbreviation': utils.strip,
+                    'use_alternate_names': utils.validate_checkbox_as_bool,
+                    'use_family_name': utils.validate_checkbox_as_bool,
+                    'use_postal_code': utils.validate_checkbox_as_bool,
+                    'zero_rating_mode': utils.validate_checkbox_as_bool,
+                })
 
     def setup(self, request, *args, **kwargs):
         """See docs on BaseView.setup."""
@@ -111,7 +111,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
 
     def _render_form(self):
         language_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
-                                  key= lambda lang: lang[1])
+                                  key=lambda lang: lang[1])
         encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
         return self.render(
             'admin_repo_index.html',
@@ -268,7 +268,7 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
             try:
                 for field_name in AdminRepoIndexView._JSON_FIELDS:
                     simplejson.loads(self.params.get(field_name))
-            except:
+            except simplejson.JSONDecodeError:
                 return self.error(400, 'Invalid JSON value.')
 
     def _set_language_config(self):
@@ -283,7 +283,8 @@ class AdminRepoIndexView(views.admin.base.AdminBaseView):
 
     def _set_activation_config(self):
         if self._category_permissions['everything_else']:
-            if self._repo_obj.activation_status != self.params.activation_status:
+            if (self._repo_obj.activation_status !=
+                    self.params.activation_status):
                 self._repo_obj.activation_status = self.params.activation_status
                 self._repo_obj.put()
                 config.set_for_repo(

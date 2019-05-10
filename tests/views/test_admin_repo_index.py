@@ -16,16 +16,6 @@
 import copy
 import datetime
 
-import django
-import django.http
-import django.test
-
-# pylint: disable=wrong-import-order
-# pylint sometimes thinks config is a standard import that belongs before the
-# django import. It's mistaken; config is our own module (if you run
-# python -c "import config", it produces an error saying config doesn't exist).
-# Filed issue #626 to move us out of the global namespace someday, which would
-# prevent stuff like this.
 import config
 import model
 import utils
