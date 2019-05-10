@@ -157,18 +157,13 @@ class ConfigTests(ServerTestsBase):
         assert config.get('unreviewed_notes_threshold') == 100
 
     def test_deactivation(self):
-        cfg = config.Configuration('haiti')
-        old_updated_date = cfg.updated_date
-        self.advance_utcnow(seconds=1)
-
         # Deactivate an existing repository.
+        repo_obj = Repo.get('haiti')
+        repo_obj.activation_status=Repo.ActivationStatus.DEACTIVATED
+        repo_obj.put()
         config.set_for_repo(
             'haiti',
-            activation_status=Repo.ActivationStatus.DEACTIVATED,
             deactivation_message_html='de<i>acti</i>vated')
-
-        # Changing 'launch_status' renews updated_date.
-        assert config.get_for_repo('haiti', 'updated_date') != old_updated_date
 
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['', '/query', '/results', '/create', '/view',
@@ -193,17 +188,8 @@ class ConfigTests(ServerTestsBase):
             assert 'currently in test mode' not in doc.content, \
                 'path: %s, content: %s' % (path, doc.content)
 
-        cfg = config.Configuration('haiti')
-        old_updated_date = cfg.updated_date
-        self.advance_utcnow(seconds=1)
-
         # Enable test-mode for an existing repository.
         config.set_for_repo('haiti', test_mode=True)
-
-        cfg = config.Configuration('haiti')
-        assert cfg.test_mode
-        # Changing 'test_mode' renews updated_date.
-        assert cfg.updated_date != old_updated_date
 
         # Ensure all HTML pages show the test mode message.
         for path in HTML_PATHS:
