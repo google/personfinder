@@ -52,6 +52,7 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
                 'notification_email': utils.strip,
                 'unreviewed_notes_threshold': utils.validate_int,
             })
+        self._json_encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
 
     def _render_form(self):
         return self.render(
@@ -75,12 +76,14 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
 
     def _get_sms_config(self):
         return {
-            'sms_number_to_repo': self.env.config.get('sms_number_to_repo'),
+            'sms_number_to_repo': self._json_encoder.encode(
+                self.env.config.get('sms_number_to_repo')),
         }
 
     def _get_repo_alias_config(self):
         return {
-            'repo_aliases': self.env.config.get('repo_aliases'),
+            'repo_aliases': self._json_encoder.encode(
+                self.env.config.get('repo_aliases')),
         }
 
     def _get_site_info_config(self):
@@ -151,10 +154,13 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
 
     def _set_sms_config(self):
         config.set_for_repo(
-            '*', sms_number_to_repo=self.params.sms_number_to_repo)
+            '*',
+            sms_number_to_repo=simplejson.loads(self.params.sms_number_to_repo))
 
     def _set_repo_alias_config(self):
-        config.set_for_repo('*', repo_aliases=self.params.repo_aliases)
+      config.set_for_repo(
+          '*',
+          repo_aliases=simplejson.loads(self.params.repo_aliases))
 
     def _set_site_info_config(self):
         config.set_for_repo(
