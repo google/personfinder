@@ -129,6 +129,16 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'id': 'abc123',
             },
             xsrf_action_id='admin/delete_record'),
+        'admin_repo_index':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
+            requires_xsrf=True,
+            sample_post_data={
+                'custommsg__start_page_custom_htmls__en': 'custom message',
+            },
+            xsrf_action_id='admin/repo-index'),
         'admin_review':
         PathTestInfo(
             accepts_get=True,
@@ -245,6 +255,10 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         """
         self.testbed.init_user_stub()
         self.testbed.init_memcache_stub()
+
+    def setUp(self):
+        super(AutoSecurityTests, self).setUp()
+        self.data_generator.repo()
 
     def get_path(self, path_name):
         """Gets a path to use for the given path name.
