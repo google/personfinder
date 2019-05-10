@@ -119,8 +119,8 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
     def _get_notification_config(self):
         return {
             'notification_email': self.env.config.get('notification_email', ''),
-            'unreviewed_notes_threshold': self.env.config.get(
-                'unreviewed_notes_threshold', 100),
+            'unreviewed_notes_threshold': str(self.env.config.get(
+                'unreviewed_notes_threshold', 100)),
         }
 
     @views.admin.base.enforce_superadmin_admin_level
