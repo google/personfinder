@@ -14,6 +14,7 @@
 """Tests for the main repo admin page."""
 
 import copy
+import datetime
 
 import django
 import django.http
@@ -27,6 +28,7 @@ import django.test
 # prevent stuff like this.
 import config
 import model
+import utils
 
 import view_tests_base
 
@@ -65,6 +67,8 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         'read_auth_key_required': False,
         'zero_rating_mode': False,
         'bad_words': '',
+        'updated_date': utils.get_timestamp(
+            datetime.datetime(2019, 5, 10, 11, 15, 0)),
     }
 
     _BASE_POST_PARAMS = {
@@ -176,6 +180,8 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         self.assertEqual(repo_conf.start_page_custom_htmls['en'], 'new en msg')
 
     def test_edit_activation_status_config(self):
+        # Set the time to an hour past the original update_date.
+        utils.set_utcnow_for_test(datetime.datetime(2019, 5, 10, 12, 15, 0))
         self.login_as_superadmin()
         self._post_with_params(
             activation_status=str(model.Repo.ActivationStatus.DEACTIVATED),
@@ -186,12 +192,21 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         repo_conf = config.Configuration('haiti')
         self.assertEqual(
             repo_conf.deactivation_message_html, 'it is deactivated')
+        self.assertEqual(
+            repo_conf.updated_date,
+            utils.get_timestamp(datetime.datetime(2019, 5, 10, 12, 15, 0)))
 
     def test_edit_data_retention_mode_config(self):
+        # Set the time to an hour past the original update_date.
+        utils.set_utcnow_for_test(datetime.datetime(2019, 5, 10, 12, 15, 0))
         self.login_as_superadmin()
         self._post_with_params(test_mode=True)
         repo = model.Repo.get_by_key_name('haiti')
         self.assertTrue(repo.test_mode)
+        repo_conf = config.Configuration('haiti')
+        self.assertEqual(
+            repo_conf.updated_date,
+            utils.get_timestamp(datetime.datetime(2019, 5, 10, 12, 15, 0)))
 
     def test_edit_keywords_config(self):
         self.login_as_superadmin()
