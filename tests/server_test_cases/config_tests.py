@@ -178,7 +178,7 @@ class ConfigTests(ServerTestsBase):
             assert not doc.cssselect('table')
             assert not doc.cssselect('td')
 
-    def test_the_test_mode(self):
+    def test_non_test_mode(self):
         HTML_PATHS = ['', '/query', '/results', '/create', '/view',
                       '/multiview', '/reveal', '/photo', '/embed', '/delete']
 
@@ -187,6 +187,10 @@ class ConfigTests(ServerTestsBase):
             doc = self.go('/haiti%s' % path)
             assert 'currently in test mode' not in doc.content, \
                 'path: %s, content: %s' % (path, doc.content)
+
+    def test_the_test_mode(self):
+        HTML_PATHS = ['', '/query', '/results', '/create', '/view',
+                      '/multiview', '/reveal', '/photo', '/embed', '/delete']
 
         # Enable test-mode for an existing repository.
         config.set_for_repo('haiti', test_mode=True)
