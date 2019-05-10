@@ -129,6 +129,7 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         # that didn't come from us, and I don't want to have to keep a list of
         # them).
         for key in AdminRepoIndexViewTests._SUPERADMIN_ONLY_CONTEXT_KEYS:
+            # These can be either None or an empty dictionary.
             self.assertFalse(
                 resp.context.get(key),
                 'Non-empty superadmin-only key: %s' % key)
@@ -221,7 +222,7 @@ class AdminRepoIndexViewTests(view_tests_base.ViewTestsBase):
         self.assertIs(repo_conf.use_alternate_names, True)
         self.assertIs(repo_conf.use_postal_code, True)
         self.assertIs(repo_conf.allow_believed_dead_via_ui, True)
-        self.assertIs(repo_conf.min_query_word_length, 2)
+        self.assertEqual(repo_conf.min_query_word_length, 2)
         self.assertIs(repo_conf.show_profile_entry, True)
 
     def test_edit_map_config(self):
