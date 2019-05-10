@@ -170,6 +170,10 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         self.testbed.init_user_stub()
         self.testbed.init_memcache_stub()
 
+    def setUp(self):
+        super(AutoSecurityTests, self).setUp()
+        self.data_generator.repo()
+
     def get_path(self, path_name):
         """Gets a path to use for the given path name.
 
