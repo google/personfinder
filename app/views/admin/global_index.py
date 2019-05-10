@@ -16,9 +16,6 @@
 import simplejson
 
 import config
-import const
-import model
-import modelmodule.admin_acls as admin_acls_model
 import utils
 import views.admin.base
 
@@ -158,9 +155,9 @@ class AdminGlobalIndexView(views.admin.base.AdminBaseView):
             sms_number_to_repo=simplejson.loads(self.params.sms_number_to_repo))
 
     def _set_repo_alias_config(self):
-      config.set_for_repo(
-          '*',
-          repo_aliases=simplejson.loads(self.params.repo_aliases))
+        config.set_for_repo(
+            '*',
+            repo_aliases=simplejson.loads(self.params.repo_aliases))
 
     def _set_site_info_config(self):
         config.set_for_repo(

@@ -14,11 +14,8 @@
 """Tests for the main global admin page."""
 
 import copy
-import datetime
 
 import config
-import model
-import utils
 
 import view_tests_base
 
