@@ -36,7 +36,7 @@ def is_jp_tier2_mobile_phone(request):
 
 
 def prefer_lite_ui(request):
-    user_agent = request.META['HTTP_USER_AGENT']
+    user_agent = request.META.get('HTTP_USER_AGENT', None)
     return user_agent and JP_TIER2_MOBILE_USER_AGENT_RE.match(user_agent)
 
 
