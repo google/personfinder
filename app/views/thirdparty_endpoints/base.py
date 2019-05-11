@@ -81,37 +81,54 @@ class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
         resp = django.http.HttpResponse()
-        resp['Content-Type'] = 'application/atom+xml; charset=utf-8'
+        resp['Content-Type'] = 'application/xml; charset=utf-8'
         #self.get_feed().write(resp, 'UTF-8')
         resp.write("""<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:gpf="http://schemas.google.com/personfinder/2012"
       xmlns:georss="http://www.georss.org/georss">
-  <id>https://google.org/personfinder/global/feeds/repo</id>
+  <id>http://localhost:8000/global/feeds/repo</id>
   <title>Person Finder Repository Feed</title>
-  <updated>2017-07-05T22:10:09Z</updated>
+  <updated>2011-03-11T00:00:00Z</updated>
   <entry>
-    <id>https://google.org/personfinder/japan</id>
-    <updated>2017-07-05T22:10:09Z</updated>
-    <title xml:lang="ja">ab</title>
+    <id>https://google.org/personfinder/haiti</id>
+    <published>2010-01-12T00:00:00Z</published>
+    <updated>2010-01-12T00:00:00Z</updated>
+    <title xml:lang="en">Haiti Earthquake</title>
     <content type="text/xml">
       <gpf:repo>
-        <gpf:title xml:lang="ja">ab</gpf:title>
-        <gpf:title xml:lang="en">Japan</gpf:title>
-        <gpf:title xml:lang="zh-CN">ab</gpf:title>
-        <gpf:title xml:lang="ko">ab</gpf:title>
-        <gpf:title xml:lang="fil">Hapon</gpf:title>
-        <gpf:title xml:lang="th">abcdef</gpf:title>
-        <gpf:title xml:lang="pt-BR">Japao</gpf:title>
-        <gpf:title xml:lang="vi">abc def afhor</gpf:title>
-        <gpf:title xml:lang="es">Japon</gpf:title>
-        <gpf:title xml:lang="pt-PT">Japao</gpf:title>
-        <gpf:title xml:lang="af">Japan</gpf:title>
+        <gpf:title xml:lang="en">Haiti Earthquake</gpf:title>
+        <gpf:title xml:lang="ht">Tranbleman Te an Ayiti</gpf:title>
+        <gpf:title xml:lang="fr">Seisme en Haiti</gpf:title>
+        <gpf:title xml:lang="es">Terremoto en Haiti</gpf:title>
+        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
+        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:test_mode>false</gpf:test_mode>
+        <gpf:location>
+          <georss:point>18.968637 -72.284546</georss:point>
+        </gpf:location>
+      </gpf:repo>
+    </content>
+  </entry>
+  <entry>
+    <id>https://google.org/personfinder/japan</id>
+    <published>2011-03-11T00:00:00Z</published>
+    <updated>2011-03-11T00:00:00Z</updated>
+    <title xml:lang="ja">2011 abcd</title>
+    <content type="text/xml">
+      <gpf:repo>
+        <gpf:title xml:lang="ja">2011 abcd</gpf:title>
+        <gpf:title xml:lang="en">2011 Japan Earthquake</gpf:title>
+        <gpf:title xml:lang="ko"></gpf:title>
+        <gpf:title xml:lang="zh-CN">2011 abcs</gpf:title>
+        <gpf:title xml:lang="zh-TW">2011 abcd</gpf:title>
+        <gpf:title xml:lang="pt-BR">2011 Terremoto no Japao</gpf:title>
+        <gpf:title xml:lang="es">2011 Terremoto en Japon</gpf:title>
         <gpf:read_auth_key_required>true</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>true</gpf:search_auth_key_required>
         <gpf:test_mode>false</gpf:test_mode>
         <gpf:location>
-          <georss:point>35.69377 139.70359</georss:point>
+          <georss:point>38 140.7</georss:point>
         </gpf:location>
       </gpf:repo>
     </content>
