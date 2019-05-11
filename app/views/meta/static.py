@@ -33,7 +33,6 @@ ConfigurableStaticFile = collections.namedtuple(
     [
         'content_type',
     ])
-DEFAULT_FILEINFO = ConfigurableStaticFile(content_type=None)
 
 
 CONFIGURABLE_STATIC_FILES = {
@@ -50,7 +49,9 @@ class ConfigurableStaticView(views.base.BaseView):
         """Serves get requests with configurable static files."""
         del request, args  # unused
         filename = kwargs['filename']
-        fileinfo = CONFIGURABLE_STATIC_FILES.get(filename, DEFAULT_FILEINFO)
+        if filename not in CONFIGURABLE_STATIC_FILES:
+            return self.error(404)
+        fileinfo = CONFIGURABLE_STATIC_FILES[filename]
         return django.http.HttpResponse(
             resources.get_rendered(
                 'static/configurable/%s' % filename, self.env.lang),
