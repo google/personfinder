@@ -133,6 +133,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={},
             min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
@@ -143,6 +144,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=True,
             sample_post_data={
