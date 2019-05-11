@@ -43,7 +43,7 @@ CONFIGURABLE_STATIC_FILES = {
 }
 
 
-class ConfigurableStaticView(views.base.BaseView):
+class ConfigurableStaticFileView(views.base.BaseView):
     """The view for configurable static files."""
 
     ACTION_ID = 'static'

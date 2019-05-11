@@ -180,7 +180,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
-        'meta_static':
+        'meta_static-files':
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
