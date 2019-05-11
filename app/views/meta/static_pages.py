@@ -34,3 +34,13 @@ class RespondersView(views.base.BaseView):
             return self.render('responders-ja.html')
         else:
             return self.render('responders.html')
+
+
+class HowToView(views.base.BaseView):
+
+    def get(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        if self.env.lang == 'ja':
+            return self.render('howto-ja.html')
+        else:
+            return self.render('howto.html')
