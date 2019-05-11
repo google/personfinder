@@ -37,6 +37,7 @@ DEFAULT_FILEINFO = ConfigurableStaticFile(content_type=None)
 
 
 CONFIGURABLE_STATIC_FILES = {
+    'logo.png': ConfigurableStaticFile(content_type='image/png'),
 }
 
 
