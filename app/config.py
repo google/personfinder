@@ -169,7 +169,7 @@ def set_for_repo(repo, **kwargs):
 
 
 class Configuration(UserDict.DictMixin):
-    def __init__(self, repo):
+    def __init__(self, repo, include_global=True):
         self.repo = repo
         # We fetch all the config entries at once here, so that we don't have to
         # make many Datastore queries for each individual entry later.
@@ -179,7 +179,10 @@ class Configuration(UserDict.DictMixin):
             entry.key().name().split(':', 1)[1]: simplejson.loads(entry.value)
             for entry in db_entries
         }
-        self.global_config = None if repo == '*' else Configuration('*')
+        if include_global:
+            self.global_config = None if repo == '*' else Configuration('*')
+        else:
+            self.global_config = None
 
     def __nonzero__(self):
         return True
