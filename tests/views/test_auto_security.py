@@ -129,7 +129,17 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'id': 'abc123',
             },
             xsrf_action_id='admin/delete_record'),
-        'admin_repo_index':
+        'admin_global-index':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
+            requires_xsrf=True,
+            sample_post_data={
+                'feedback_url': 'www.example.com/feedback',
+            },
+            xsrf_action_id='admin/global-index'),
+        'admin_repo-index':
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,

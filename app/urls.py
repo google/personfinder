@@ -24,6 +24,7 @@ import views.admin.api_keys
 import views.admin.create_repo
 import views.admin.dashboard
 import views.admin.delete_record
+import views.admin.global_index
 import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
@@ -46,7 +47,9 @@ _BASE_URL_PATTERNS = [
      views.admin.dashboard.AdminDashboardView.as_view),
     ('admin_delete-record', r'(?P<repo>[^\/]+)/admin/delete_record/?',
      views.admin.delete_record.AdminDeleteRecordView.as_view),
-    ('admin_repo_index', r'(?P<repo>[^\/]+)/admin/?',
+    ('admin_global-index', r'global/admin/?',
+     views.admin.global_index.AdminGlobalIndexView.as_view),
+    ('admin_repo-index', r'(?P<repo>[^\/]+)/admin/?',
      views.admin.repo_index.AdminRepoIndexView.as_view),
     ('admin_review', r'(?P<repo>[^\/]+)/admin/review/?',
      views.admin.review.AdminReviewView.as_view),

@@ -119,43 +119,6 @@ class ConfigTests(ServerTestsBase):
         cfg = config.Configuration('foo')
         assert cfg.get('unknown_key', 'default_value') == 'default_value'
 
-    def test_global_admin_page(self):
-        # Load the global administration page.
-        doc = self.go_as_admin('/global/admin')
-        assert self.s.status == 200
-
-        # Change some settings.
-        settings_form = doc.cssselect_one('form#save_global')
-        doc = self.s.submit(settings_form,
-            sms_number_to_repo=
-                '{"+198765432109": "haiti", "+8101234567890": "japan"}',
-            unreviewed_notes_threshold='100',
-        )
-        assert self.s.status == 200, self.get_admin_page_error_message()
-
-        # Reopen the admin page and check if the change took effect on the page.
-        doc = self.go_as_admin('/global/admin')
-        assert self.s.status == 200
-        assert (simplejson.loads(
-                    doc.cssselect_one('textarea#sms_number_to_repo').text) ==
-                {'+198765432109': 'haiti', '+8101234567890': 'japan'})
-
-        # Also check if the change took effect in the config.
-        assert (config.get('sms_number_to_repo') ==
-            {'+198765432109': 'haiti', '+8101234567890': 'japan'})
-
-        # Change settings again and make sure they took effect.
-        settings_form = doc.cssselect_one('form#save_global')
-        doc = self.s.submit(settings_form,
-            sms_number_to_repo=
-                '{"+198765432109": "test", "+8101234567890": "japan"}',
-            unreviewed_notes_threshold = '100',
-        )
-        assert self.s.status == 200, self.get_admin_page_error_message()
-        assert (config.get('sms_number_to_repo') ==
-            {'+198765432109': 'test', '+8101234567890': 'japan'})
-        assert config.get('unreviewed_notes_threshold') == 100
-
     def test_deactivation(self):
         # Deactivate an existing repository.
         repo_obj = Repo.get('haiti')

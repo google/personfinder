@@ -1,0 +1,252 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the repository settings page (see admin.py).                #}
+
+{% extends "admin-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<h2>Global settings</h2>
+
+<form id="save_global" method="post" class="admin">
+  <input type="hidden" name="xsrf_token" value="{{ xsrf_token }}" />
+  <fieldset>
+    <legend>SMS</legend>
+    <div class="config">
+      <label for="sms_number_to_repo">
+        SMS numbers mapping.<br>
+        e.g., If it is
+        <code>{"+198765432109": "test", "+8101234567890": "japan"}</code>, SMS
+        messages to +198765432109 are interpreted as requests for "test"
+        repository, and messages to +8101234567890 are interpreted as requests
+        to "japan" repository.<br>
+        JSON dictionary where the key is an international phone number and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="sms_number_to_repo"
+            id="sms_number_to_repo" rows=10 cols=80
+            >{{ sms_config.sms_number_to_repo }}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Repository aliases</legend>
+    <div class="config">
+      <label for="repo_aliases">
+        Repository alias mapping.<br>
+        e.g., If it is
+        <code>{"jp": "japan", "ht": "haiti"}</code>,
+	you can use
+	<a href="https://google.org/personfinder/jp">
+	  https://google.org/personfinder/jp
+	</a>
+	 as an alias of
+	<a href="https://google.org/personfinder/japan">
+	  https://google.org/personfinder/japan
+	</a>
+	 and the same for "ht".
+	This is especially useful combined with the short URL e.g.,
+	<a href="https://g.co/pf/jp">
+	  https://g.co/pf/jp
+	</a>
+	.<br>
+        JSON dictionary where the key is an alias for repository and the
+        value is a repository name:
+      </label>
+      <div class="response">
+        <textarea name="repo_aliases"
+            id="repo_aliases" rows=10 cols=80
+            >{{repo_alias_config.repo_aliases}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Site information</legend>
+    <div class="config">
+      <div class="option">
+        <input
+            type="radio" name="brand" value="google"
+            id="brand_google"
+            {% if site_info_config.brand == "google" %}
+              checked
+            {% endif %}>
+        <label for="brand_google">
+          Brand as Google
+        </label>
+        <div class="note">
+          Select this if you are running Person Finder as Google. It changes the
+          home page etc. to Google branded version.
+        </div>
+      </div>
+      <div class="option">
+        <input
+            type="radio" name="brand" value="none"
+            id="brand_none"
+            {% if site_info_config.brand == "none" %}
+              checked
+            {% endif %}>
+        <label for="brand_none">
+          Brand as other organization
+        </label>
+        <div class="note">
+          Select this if you are running Person Finder as any organization other
+          than Google.
+        </div>
+      </div>
+    </div>
+    <div class="config">
+      To launch Person Finder for production use, you must provide URL of
+      Privacy policy and Terms of services for your Person Finder. You can use
+      <strong>%(lang)s</strong> in the Terms of services URL which is replaced
+      by ISO 639-1 language code e.g.,
+      https://www.google.com/policies/terms/?hl=%(lang)s
+    </div>
+    <div class="config">
+      <label for="privacy_policy_url">Privacy policy URL (required):</label>
+      <div class="response">
+        <input type="text" name="privacy_policy_url" id="privacy_policy_url" size=60
+            value="{{site_info_config.privacy_policy_url}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="tos_url">Terms of services URL (required):</label>
+      <div class="response">
+        <input type="text" name="tos_url" id="tos_url" size=60
+            value="{{site_info_config.tos_url}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="feedback_url">Feedback URL:</label>
+      <div class="response">
+        <input type="text" name="feedback_url" id="feedback_url" size=60
+            value="{{site_info_config.feedback_url}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>reCAPTCHA</legend>
+    <div class="config">
+      Person finder uses
+      <a href="https://developers.google.com/recaptcha/docs/v3" target="_blank">
+      reCAPTCHA v3</a> to protect the site from spam/abuse. Follow
+      <a href="https://developers.google.com/recaptcha/docs/v3" target="_blank">
+      reCAPTCHA v3 document</a> to get reCAPTCHA keys and put it here.
+    </div>
+    <div class="config">
+      <label for="captcha_site_key">reCAPTCHA v3 site key (required):</label>
+      <div class="response">
+        <input type="text" name="captcha_site_key" id="captcha_site_key" size=60
+            value="{{recaptcha_config.captcha_site_key}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="captcha_secret_key">reCAPTCHA v3 secret key (required):</label>
+      <div class="response">
+        <input type="text" name="captcha_secret_key" id="captcha_secret_key" size=60
+            value="{{recaptcha_config.captcha_secret_key}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Google Analytics</legend>
+    <div class="config">
+      Set analytics IDs below to enable Google Analytics for this site.
+      See <a href="https://www.google.com/analytics/" target="_blank">Google
+      Analytics</a> site for how to use Google Analytics and to get an an
+      analytics ID.
+    </div>
+    <div class="config">
+      <label for="analytics_id">Analytics ID (optional):</label>
+      <div class="response">
+        <input type="text" name="analytics_id" id="analytics_id" size=24
+            value="{{ganalytics_config.analytics_id}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="amp_gtm_id">AMP GTM ID (optional):</label>
+      <div class="response">
+        <input type="text" name="amp_gtm_id" id="amp_gtm_id" size=24
+            value="{{ganalytics_config.amp_gtm_id}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Google Maps integration</legend>
+    <div class="config">
+      Google Maps API key is required to enable Google Maps integration. See
+      <a href="https://developers.google.com/maps/documentation/javascript/get-api-key"
+      target="_blank">the documentation</a>.
+    </div>
+    <div class="config">
+      <label for="maps_api_key">Google Maps API key (optional):</label>
+      <div class="response">
+        <input type="text" name="maps_api_key" id="maps_api_key" size=60
+            value="{{gmaps_config.maps_api_key}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Google Translate integration</legend>
+    <div class="config">
+      Google Cloud Translation API key is required to enable the use of Google
+      Translate to provide translation of notes. See
+      <a href="https://cloud.google.com/translate/docs/" target="_blank">
+      the documentation</a>.
+    </div>
+    <div class="config">
+      <label for="translate_api_key">Google Cloud Translation API key (optional):</label>
+      <div class="response">
+        <input type="text" name="translate_api_key" id="translate_api_key" size=60
+            value="{{gtranslate_config.translate_api_key}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Notification settings</legend>
+    <div class="config">
+      Notification setting.<br>
+      Notifications are sent to 'Notification Email' according to some conditions (e.g.
+      the number of unreviewed notes exceeds 'Unreviewed notes threshold'). By default,
+      these conditions are checked every 6 hours. If you want to change this interval,
+      please change cron settings in app/cron.yaml.
+    </div>
+    <div class="config">
+      <label for="notification_email">Notification Email (optional):</label>
+      <div class="response">
+        <input type="email" name="notification_email" id="notification_email" size=24
+            value="{{notification_config.notification_email}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="unreviewed_notes_threshold">Unreviewed notes threshold:</label>
+      <div class="response">
+        <input type="number" min="0" name="unreviewed_notes_threshold"
+            id="unreviewed_notes_threshold"
+            size=24 value="{{notification_config.unreviewed_notes_threshold}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <p>
+    <input type="hidden" name="operation" value="save_global">
+    <input type="submit" value="Save these settings">
+  </p>
+</form>
+
+{% endblock %}

@@ -39,25 +39,7 @@ handlers:
   static_dir: resources/static/fixed/
 
 # These are the handlers we've migrated to Django.
-- url: /.*/admin/acls.*
-  script: wsgi.application
-- url: /.*/admin/api_keys.*
-  script: wsgi.application
-- url: /.*/admin/create_repo.*
-  script: wsgi.application
-- url: /global/admin/?
-  script: main.py
-- url: /personfinder/global/admin/?
-  script: main.py
-- url: /.*/admin/?
-  script: wsgi.application
-- url: /.*/admin/dashboard.*
-  script: wsgi.application
-- url: /.*/admin/delete_record.*
-  script: wsgi.application
-- url: /.*/admin/review.*
-  script: wsgi.application
-- url: /.*/admin/statistics.*
+- url: /.*/admin.*
   script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
