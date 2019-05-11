@@ -91,7 +91,7 @@
           var translate_api_key = null;
         {% endif %}
       </script>
-      <script src="{{env.global_url}}/forms.js" nonce="{{csp_nonce}}"></script>
+      <script src="{{env.fixed_static_url_base}}/forms.js" nonce="{{csp_nonce}}"></script>
     {% endif %}
   {% endif %}
   {% if onload_function and not env.amp %}
