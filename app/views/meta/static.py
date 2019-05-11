@@ -36,7 +36,10 @@ ConfigurableStaticFile = collections.namedtuple(
 
 
 CONFIGURABLE_STATIC_FILES = {
+    'facebook-16x16.png': ConfigurableStaticFile(content_type='image/png'),
+    'linkedin-16x16.png': ConfigurableStaticFile(content_type='image/png'),
     'logo.png': ConfigurableStaticFile(content_type='image/png'),
+    'twitter-16x16.png': ConfigurableStaticFile(content_type='image/png'),
 }
 
 
