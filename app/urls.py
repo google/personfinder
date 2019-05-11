@@ -56,6 +56,8 @@ _BASE_URL_PATTERNS = [
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
     ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+    ('meta_static-home-altpath', r'/global/home.html',
+     views.meta.static_pages.HomeView.as_view),
     ('meta_static-howto', r'global/howto.html',
      views.meta.static_pages.HowToView.as_view),
     ('meta_static-responders', r'global/responders.html',

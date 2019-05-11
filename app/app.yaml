@@ -43,6 +43,10 @@ handlers:
   script: wsgi.application
 - url: /personfinder/?
   script: wsgi.application
+- url: /global/home.html
+  script: wsgi.application
+- url: /personfinder/global/home.html
+  script: wsgi.application
 - url: /global/howto.html
   script: wsgi.application
 - url: /personfinder/global/howto.html
