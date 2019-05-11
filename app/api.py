@@ -87,12 +87,12 @@ def get_tag_params(handler):
     """Return HTML tag parameters used in import.html."""
     return {
         'begin_notes_template_link':
-            '<a href="%s/notes-template.xlsx">' %
+            '<a href="%s/static/notes-template.xlsx">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_notes_template_link':
             '</a>',
         'begin_sample_anchor_tag':
-            '<a href="%s/sample-import.csv" target="_blank">' %
+            '<a href="%s/static/sample-import.csv" target="_blank">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_sample_anchor_tag':
             '</a>',
