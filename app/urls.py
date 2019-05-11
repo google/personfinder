@@ -56,6 +56,8 @@ _BASE_URL_PATTERNS = [
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
     ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+    ('meta_static-responders', r'global/responders.html',
+     views.meta.static_pages.RespondersView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
     ('tasks_process-expirations',

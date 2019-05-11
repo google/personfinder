@@ -24,3 +24,13 @@ class HomeView(views.base.BaseView):
             return self.render('home-ja.html')
         else:
             return self.render('home.html')
+
+
+class RespondersView(views.base.BaseView):
+
+    def get(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        if self.env.lang == 'ja':
+            return self.render('responders-ja.html')
+        else:
+            return self.render('responders.html')
