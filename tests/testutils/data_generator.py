@@ -77,8 +77,10 @@ class TestDataGenerator(object):
         'is_valid': True,
     }
 
+    DEFAULT_REPO_UPDATED_DATE = 1557676201
+
     def repo(
-        self, store=True, repo_id='haiti',
+            self, store=True, repo_id='haiti',
             activation_status=model.Repo.ActivationStatus.ACTIVE):
         repo = model.Repo(key_name=repo_id, activation_status=activation_status)
         if store:
@@ -87,10 +89,11 @@ class TestDataGenerator(object):
 
     def setup_repo_config(
             self,
-            updated_date=1557676201,
+            repo_id='haiti',
+            updated_date=DEFAULT_REPO_UPDATED_DATE,
             repo_titles={'en': 'Haiti', 'es': 'Haití'}):
         config.set_for_repo(
-            'haiti',
+            repo_id,
             updated_date=updated_date,
             repo_titles=repo_titles)
 
