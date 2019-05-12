@@ -13,12 +13,10 @@
 # limitations under the License.
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
-import django.shortcuts
-from google.appengine.api import users
+import datetime
 
 import config
 import model
-import utils
 import views.thirdparty_endpoints.base
 
 
@@ -42,12 +40,16 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
             None,  # description
             feed_guid=self.build_absolute_uri())
         for repo in repos:
+            repo_conf = config.Configuration(repo, include_global=False)
             feed.add_item(
                 repo,
                 self.build_absolute_uri('/', repo=repo),
                 None,  # description
                 unique_id=self.build_absolute_uri('/', repo=repo),
-                repo_id=repo)
+                updateddate=datetime.datetime.fromtimestamp(
+                    repo_conf.updated_date),
+                repo_id=repo,
+                repo_conf=repo_conf)
         return feed
 
 
@@ -58,7 +60,21 @@ class _RepoFeed(views.thirdparty_endpoints.base.PersonFinderAtomFeed):
         if 'repo_id' not in item:
             return
         repo_id = item['repo_id']
+        repo_conf = item['repo_conf']
         repo_obj = model.Repo.get(repo_id)
-        repo_conf = config.Configuration(repo_id, include_global=False)
         for lang, title in repo_conf.repo_titles.items():
             handler.addQuickElement('title', title, {'xml:lang': lang})
+        handler.addQuickElement(
+            'gpf:read_auth_key_required',
+            'true' if repo_conf.read_auth_key_required else 'false')
+        handler.addQuickElement(
+            'gpf:search_auth_key_required',
+            'true' if repo_conf.search_auth_key_required else 'false')
+        handler.addQuickElement(
+            'gpf:test_mode',
+            'true' if repo_obj.test_mode else 'false')
+        center = repo_conf.map_default_center or [0, 0]
+        handler.startElement('gpf:location', {})
+        handler.addQuickElement(
+            'georss:point', '%f %f' % (center[0], center[1]))
+        handler.endElement('gpf:location')
