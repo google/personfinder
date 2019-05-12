@@ -65,6 +65,25 @@ class ThirdPartyEndpointBaseView(views.base.BaseView):
         """
         raise NotImplementedError()
 
+    def log_api_action(
+            self, action, num_person_records=0, num_note_records=0,
+            people_skipped=0, notes_skipped=0):
+        version = None
+        if self.params.version:
+            version = self.params.version.version
+        model.ApiActionLog.record_action(
+            self.env.repo,
+            self.params.key,
+            version,
+            action,
+            num_person_records,
+            num_note_records,
+            people_skipped,
+            notes_skipped,
+            self.request.META.get('HTTP_USER_AGENT'),
+            self.request.META.get('REMOTE_ADDR'),
+            self.build_absolute_uri())
+
 
 class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
 

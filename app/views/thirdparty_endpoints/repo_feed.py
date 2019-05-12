@@ -50,6 +50,7 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
                     repo_conf.updated_date),
                 repo_id=repo,
                 repo_conf=repo_conf)
+        self.log_api_action(model.ApiActionLog.REPO)
         return feed
 
 
