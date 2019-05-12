@@ -91,10 +91,12 @@ class TestDataGenerator(object):
             self,
             repo_id='haiti',
             updated_date=DEFAULT_REPO_UPDATED_DATE,
+            language_menu_options=['en', 'es'],
             repo_titles={'en': 'Haiti', 'es': 'Haití'}):
         config.set_for_repo(
             repo_id,
             updated_date=updated_date,
+            language_menu_options=language_menu_options,
             repo_titles=repo_titles)
 
     def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):

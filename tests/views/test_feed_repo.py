@@ -1,6 +1,7 @@
 import xml.etree
 
 import model
+import utils
 
 import view_tests_base
 
@@ -36,10 +37,15 @@ class FeedRepoViewTests(view_tests_base.ViewTestsBase):
         all_entry_els = self._xml_findall(root, 'atom:entry')
         self.assertEqual(len(all_entry_els), 1)
         entry_el = all_entry_els[0]
-        self.assertEqual(len(self._xml_findall(entry_el, 'atom:title')), 3)
         self.assertEqual(
-            self._xml_findall(entry_el, 'atom:title[@xml:lang=""]')[0],
-            'haiti')
+            self._xml_findall(entry_el, 'atom:id')[0].text,
+            'http://testserver/haiti/')
+        all_title_els = self._xml_findall(entry_el, 'atom:title')
+        self.assertEqual(len(all_title_els), 1)
+        self.assertEqual(all_title_els[0].text, 'Haiti')
+        self.assertEqual(
+            self._xml_findall(entry_el, 'atom:updated')[0].text,
+            utils.format_utc_timestamp(self.haiti_updated_timestamp))
 
     def atest_global_repo_feed(self):
         feed = self._get_parsed_feed('/global/feeds/repo')
