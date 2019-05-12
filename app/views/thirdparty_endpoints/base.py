@@ -13,7 +13,9 @@
 # limitations under the License.
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
-import django.utils.feedgenerator
+import xml.etree.ElementTree as ET
+
+import django.http
 
 import model
 import utils
@@ -99,16 +101,26 @@ class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
 
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
+        self.log()
         resp = django.http.HttpResponse()
         resp['Content-Type'] = 'application/xml; charset=utf-8'
-        self.get_feed().write(resp, 'UTF-8')
+        resp.write('<?xml version="1.0" encoding="UTF-8"?>')
+        self._get_feed().write(resp)
         return resp
 
+    def add_feed_elements(self):
+        raise NotImplementedError()
 
-class PersonFinderAtomFeed(django.utils.feedgenerator.Atom1Feed):
+    def log(self):
+        raise NotImplementedError()
 
-    def root_attributes(self):
-        res = super(PersonFinderAtomFeed, self).root_attributes()
-        res['xmlns:gpf'] = 'http://schemas.google.com/personfinder/2012'
-        res['xmlns:georss'] = 'http://www.georss.org/georss'
-        return res
+    def _get_feed(self):
+        root = ET.Element(
+            'feed',
+            attrib={
+                'xmlns': 'http://www.w3.org/2005/Atom',
+                'xmlns:gpf': 'http://schemas.google.com/personfinder/2012',
+                'xmlns:georss': 'http://www.georss.org/georss',
+            })
+        self.add_feed_elements(root)
+        return ET.ElementTree(root)

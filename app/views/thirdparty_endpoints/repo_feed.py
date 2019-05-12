@@ -14,9 +14,11 @@
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
 import datetime
+import xml.etree.ElementTree as ET
 
 import config
 import model
+import utils
 import views.thirdparty_endpoints.base
 
 
@@ -29,53 +31,60 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
         # Anyone can access the repos feed.
         pass
 
-    def get_feed(self):
+    def add_feed_elements(self, root):
+        ET.SubElement(root, 'id').text = self.build_absolute_uri()
+        ET.SubElement(root, 'title').text = RepoFeedView._TITLE
         if self.env.repo == 'global':
-            repos = model.Repo.list_launched()
+            repos = model.Repo.all().filter(
+                'activation_status !=', model.Repo.ActivationStatus.STAGING)
         else:
-            repos = [self.env.repo]
-        feed = _RepoFeed(
-            RepoFeedView._TITLE,
-            self.build_absolute_uri(),  # link
-            None,  # description
-            feed_guid=self.build_absolute_uri())
+            repo = model.Repo.get(self.env.repo)
+            if repo.activation_status == model.Repo.ActivationStatus.ACTIVE:
+                repos = [repo]
+            else:
+                return self.error(404)
+        repo_confs = {}
         for repo in repos:
-            repo_conf = config.Configuration(repo, include_global=False)
-            feed.add_item(
-                repo,
-                self.build_absolute_uri('/', repo=repo),
-                None,  # description
-                unique_id=self.build_absolute_uri('/', repo=repo),
-                updateddate=datetime.datetime.fromtimestamp(
-                    repo_conf.updated_date),
-                repo_id=repo,
-                repo_conf=repo_conf)
-        self.log_api_action(model.ApiActionLog.REPO)
-        return feed
+            repo_id = repo.key().name()
+            repo_conf = config.Configuration(repo_id, include_global=False)
+            repo_confs[repo_id] = repo_conf
+        updated_dates = [
+            repo_conf.updated_date for repo_conf in repo_confs.values()]
+        # If there's no non-staging repositories, it's not really clear what
+        # updated_date should be; we just use the current time.
+        latest_updated_date = (
+            max(updated_dates) if updated_dates else utils.get_utcnow())
+        ET.SubElement(root, 'updated').text = utils.format_utc_timestamp(
+            latest_updated_date)
+        for repo in repos:
+            if repo.activation_status == model.Repo.ActivationStatus.ACTIVE:
+                self._add_repo_entry(root, repo, repo_confs[repo.key().name()])
 
-
-class _RepoFeed(views.thirdparty_endpoints.base.PersonFinderAtomFeed):
-
-    def add_item_elements(self, handler, item):
-        super(_RepoFeed, self).add_item_elements(handler, item)
-        if 'repo_id' not in item:
-            return
-        repo_id = item['repo_id']
-        repo_conf = item['repo_conf']
-        repo_obj = model.Repo.get(repo_id)
+    def _add_repo_entry(self, root, repo, repo_conf):
+        entry_el = ET.SubElement(root, 'entry')
+        ET.SubElement(entry_el, 'id').text = self.build_absolute_uri(
+            '/', repo.key().name())
+        if repo_conf.language_menu_options:
+            default_lang = repo_conf.language_menu_options[0]
+            title_el = ET.SubElement(
+                entry_el, 'title', {'xml:lang': default_lang})
+            title_el.text = repo_conf.repo_titles[default_lang]
+        ET.SubElement(entry_el, 'updated').text = utils.format_utc_timestamp(
+            repo_conf.updated_date)
+        content_el = ET.SubElement(root, 'content', {'type': 'text/xml'})
+        repo_el = ET.SubElement(content_el, 'gpf:repo')
         for lang, title in repo_conf.repo_titles.items():
-            handler.addQuickElement('title', title, {'xml:lang': lang})
-        handler.addQuickElement(
-            'gpf:read_auth_key_required',
+            ET.SubElement(repo_el, 'title', {'xml:lang': lang}).text = title
+        ET.SubElement(repo_el, 'gpf:read_auth_key_required').text = (
             'true' if repo_conf.read_auth_key_required else 'false')
-        handler.addQuickElement(
-            'gpf:search_auth_key_required',
+        ET.SubElement(repo_el, 'gpf:search_auth_key_required').text = (
             'true' if repo_conf.search_auth_key_required else 'false')
-        handler.addQuickElement(
-            'gpf:test_mode',
-            'true' if repo_obj.test_mode else 'false')
+        ET.SubElement(repo_el, 'gpf:test_mode').text = (
+            'true' if repo.test_mode else 'false')
         center = repo_conf.map_default_center or [0, 0]
-        handler.startElement('gpf:location', {})
-        handler.addQuickElement(
-            'georss:point', '%f %f' % (center[0], center[1]))
-        handler.endElement('gpf:location')
+        location_el = ET.SubElement(repo_el, 'gpf:location')
+        ET.SubElement(location_el, 'georss:point').text = (
+            '%f %f' % (center[0], center[1]))
+
+    def log(self):
+        self.log_api_action(model.ApiActionLog.REPO)
