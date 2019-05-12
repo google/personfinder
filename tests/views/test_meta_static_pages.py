@@ -1,9 +1,5 @@
 # encoding: utf-8
 
-from google.appengine.ext import db
-
-import model
-
 import view_tests_base
 
 
