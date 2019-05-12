@@ -120,7 +120,7 @@ class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
         <gpf:title xml:lang="ja">2011 abcd</gpf:title>
         <gpf:title xml:lang="en">2011 Japan Earthquake</gpf:title>
         <gpf:title xml:lang="ko"></gpf:title>
-        <gpf:title xml:lang="zh-CN">2011 abcs</gpf:title>
+        <gpf:title xml:lang="zh-CN">2011 abcd</gpf:title>
         <gpf:title xml:lang="zh-TW">2011 abcd</gpf:title>
         <gpf:title xml:lang="pt-BR">2011 Terremoto no Japao</gpf:title>
         <gpf:title xml:lang="es">2011 Terremoto en Japon</gpf:title>
@@ -133,7 +133,8 @@ class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
       </gpf:repo>
     </content>
   </entry>
-</feed>""")
+</feed>
+""")
         return resp
 
 
