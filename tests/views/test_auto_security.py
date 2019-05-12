@@ -167,6 +167,14 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
+        'thirdparty-endpoints_repo-feed':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
     }
 
     def init_testbed_stubs(self):
@@ -183,6 +191,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
     def setUp(self):
         super(AutoSecurityTests, self).setUp()
         self.data_generator.repo()
+        self.data_generator.setup_repo_config()
 
     def get_path(self, path_name):
         """Gets a path to use for the given path name.

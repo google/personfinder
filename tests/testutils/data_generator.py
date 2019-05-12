@@ -19,6 +19,7 @@ import datetime
 
 import six
 
+import config
 import const
 import model
 import modelmodule.admin_acls as admin_acls_model
@@ -83,6 +84,15 @@ class TestDataGenerator(object):
         if store:
             repo.put()
         return repo
+
+    def setup_repo_config(
+            self,
+            updated_date=1557676201,
+            repo_titles={'en': 'Haiti', 'es': 'Haití'}):
+        config.set_for_repo(
+            'haiti',
+            updated_date=updated_date,
+            repo_titles=repo_titles)
 
     def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):
         if not record_id:
