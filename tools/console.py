@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2009-2010 by Ka-Ping Yee
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
