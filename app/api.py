@@ -19,6 +19,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import calendar
+import cgi
 import csv
 import datetime
 import logging
@@ -492,9 +493,9 @@ class Write(BaseApiHandler):
         for error, record in skipped:
             skipped_records.append(
                 '      <pfif:%s>%s</pfif:%s>\n' %
-                (id_field, record.get(id_field, ''), id_field))
+                (id_field, cgi.escape(record.get(id_field, '')), id_field))
             skipped_records.append(
-                '      <status:error>%s</status:error>\n' % error)
+                '      <status:error>%s</status:error>\n' % cgi.escape(error))
 
         self.write('''
   <status:write>
