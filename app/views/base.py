@@ -155,6 +155,15 @@ class BaseView(django.views.View):
             self._repo = value
 
         @property
+        def repo_url(self):
+            """Gets the URL for the repo root."""
+            return self._repo_url
+
+        @repo_url.setter
+        def repo_url(self, value):
+            self._repo_url = value
+
+        @property
         def rtl(self):
             """Gets whether the language is a right-to-left language."""
             return self._rtl
@@ -221,6 +230,7 @@ class BaseView(django.views.View):
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
+        self.env.repo_url = self.build_absolute_uri('/', self.env.repo)
         self.env.fixed_static_url_base = self.build_absolute_uri('/static')
 
     def _request_is_for_prefixed_path(self):
