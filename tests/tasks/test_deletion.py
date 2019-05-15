@@ -89,7 +89,7 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
         # DeadlineExceededErrors can be raised at any time. A convenient way for
         # us to raise it during this test execution is with utils.get_utcnow.
         with mock.patch('utils.get_utcnow') as get_utcnow_mock:
-            get_utcnow_mock.side_effect=runtime.DeadlineExceededError()
+            get_utcnow_mock.side_effect = runtime.DeadlineExceededError()
             self.run_task('/haiti/tasks/process_expirations', method='POST')
         tq_mock.VerifyAll()
         tq_mock.UnsetStubs()
