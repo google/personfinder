@@ -1,4 +1,4 @@
-Want to contribute? Great! First, read this page (including the small print at the end).
+# Want to contribute? Great! First, read this page (including the small print at the end).
 
 ### Before you contribute
 Before we can use your code, you must sign the
@@ -16,7 +16,7 @@ possibly guide you. Coordinating up front makes it much easier to avoid
 frustration later on.
 
 ### Set up your development environment
-See [GettingStarted](https://github.com/google/personfinder/wiki/GettingStarted).
+See [Getting Started](https://github.com/google/personfinder/wiki/GettingStarted).
 
 ### Code reviews
 All submissions, including submissions by project members, require review. We
