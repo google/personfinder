@@ -95,9 +95,9 @@ class ProcessExpirationsTask(tasksmodule.base.PerRepoTaskBaseView):
                     delete.delete_person(None, person, send_notices=False)
                 cursor = next_cursor
         except runtime.DeadlineExceededError:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         except datastore_errors.Timeout:
-            self._schedule_task(self.env.repo, cursor)
+            self.schedule_task(self.env.repo, cursor=cursor)
         return django.http.HttpResponse('')
 
 
@@ -112,12 +112,12 @@ class CleanupStrayItemsTaskView(tasksmodule.base.PerRepoTaskBaseView):
     never will).
     """
 
-    def schedule_task(self, repo, cursor):
+    def schedule_task(self, repo, **kwargs):
         """Schedules a new task.
 
         Should be implemented by subclasses.
         """
-        del self, repo, cursor  # unusued
+        del self, repo, kwargs  # unusued
         raise NotImplementedError()
 
     def get_query(self):
@@ -176,11 +176,12 @@ class CleanupStrayNotesTask(CleanupStrayItemsTaskView):
 
     ACTION_ID = 'tasks/cleanup_stray_notes'
 
-    def schedule_task(self, repo, cursor):
+    def schedule_task(self, repo, **kwargs):
         name = '%s-cleanup_stray_notes-%s' % (
             repo, int(time.time()*1000))
         path = self.build_absolute_path(
             '/%s/tasks/cleanup_stray_notes' % repo)
+        cursor = kwargs.get('cursor', '')
         taskqueue.add(name=name, method='POST', url=path, queue_name='expiry',
                       params={'cursor': cursor})
 
@@ -200,11 +201,12 @@ class CleanupStraySubscriptionsTask(CleanupStrayItemsTaskView):
 
     ACTION_ID = 'tasks/cleanup_stray_subscriptions'
 
-    def schedule_task(self, repo, cursor):
+    def schedule_task(self, repo, **kwargs):
         name = '%s-cleanup_stray_subscriptions-%s' % (
             repo, int(time.time()*1000))
         path = self.build_absolute_path(
             '/%s/tasks/cleanup_stray_subscriptions' % repo)
+        cursor = kwargs.get('cursor', '')
         taskqueue.add(name=name, method='POST', url=path, queue_name='expiry',
                       params={'cursor': cursor})
 
