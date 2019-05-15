@@ -85,12 +85,12 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
                       url='/haiti/tasks/process_expirations',
                       queue_name='expiry',
                       params={'cursor': ''})
+        tq_mock.ReplayAll()
         # DeadlineExceededErrors can be raised at any time. A convenient way for
         # us to raise it during this test execution is with utils.get_utcnow.
-        utils.get_utcnow = mock.Mock(
-            side_effect=runtime.DeadlineExceededError())
-        tq_mock.ReplayAll()
-        self.run_task('/haiti/tasks/process_expirations', method='POST')
+        with mock.patch('utils.get_utcnow') as get_utcnow_mock:
+            get_utcnow_mock.side_effect=runtime.DeadlineExceededError()
+            self.run_task('/haiti/tasks/process_expirations', method='POST')
         tq_mock.VerifyAll()
         tq_mock.UnsetStubs()
 
