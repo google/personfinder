@@ -50,9 +50,9 @@
   <h2>Global</h2>
     <a href="{{env.global_url}}/admin">Global settings</a>
     <a href="{{env.global_url}}/admin/create_repo">Create new repository</a>
-    <a href="{{env.global_url}}/admin/resources">Resources</a>
     <a href="{{env.global_url}}/admin/api_keys/list">Global API keys</a>
     <a href="{{env.global_url}}/admin/statistics">Historical statistics</a>
+    <a href="{{env.global_url}}/admin/acls">Admin access control</a>
 
   <h2>Repository</h2>
   <form method="get" class="admin" id="admin-reposelector">
@@ -78,10 +78,10 @@
   </script>
 
   {% if env.repo %}
-    <a href="{{env.repo_url}}/admin">Repository settings</a>
-    <a href="{{env.repo_url}}/admin/dashboard">Dashboard</a>
-    <a href="{{env.repo_url}}/admin/review">Review notes</a>
-    <a href="{{env.repo_url}}/admin/api_keys/list">Repository API keys</a>
-    <a href="{{env.repo_url}}/admin/delete_record">Delete a record</a>
+    <a href="{{env.repo_url}}admin">Repository settings</a>
+    <a href="{{env.repo_url}}admin/dashboard">Dashboard</a>
+    <a href="{{env.repo_url}}admin/review">Review notes</a>
+    <a href="{{env.repo_url}}admin/delete_record">Delete a record</a>
+    <a href="{{env.repo_url}}admin/acls">Repo admin access control</a>
   {% endif %}
 {% endblock sidenav %}
