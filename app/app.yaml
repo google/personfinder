@@ -41,6 +41,8 @@ handlers:
 # These are the handlers we've migrated to Django.
 - url: /.*/admin.*
   script: wsgi.application
+- url: /.+/d/results.*
+  script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
 - url: /.*/tasks/process_expirations.*

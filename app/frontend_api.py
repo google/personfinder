@@ -57,28 +57,6 @@ class Repo(FrontendApiHandler):
         self._return_json(json)
 
 
-class Results(FrontendApiHandler):
-
-    repo_required = True
-
-    MAX_RESULTS = 100
-
-    def _result_to_dict(self, person):
-        # TODO: implement this
-        return {
-            'personId': person.record_id,
-            'name': 'Hardcoded name',
-        }
-
-    def get(self):
-        searcher = Searcher(
-            self.repo, config.get('enable_fulltext_search'),
-            Results.MAX_RESULTS)
-        results = searcher.search(
-            self.params.query_name or self.params.query)
-        self._return_json([self._result_to_dict(r) for r in results])
-
-
 class Person(FrontendApiHandler):
 
     repo_required = True

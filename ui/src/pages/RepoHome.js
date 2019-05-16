@@ -15,7 +15,7 @@
  */
 
 import React, {Component} from 'react';
-import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import Button from '@material/react-button';
 
 import EndBarHeader from './../components/EndBarHeader.js';
