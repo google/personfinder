@@ -28,7 +28,7 @@ import views.admin.global_index
 import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
-import views.frontend_api
+import views.frontendapi
 import views.meta.sitemap
 
 # We include an optional trailing slash in all the patterns (Django has support
@@ -55,8 +55,8 @@ _BASE_URL_PATTERNS = [
      views.admin.review.AdminReviewView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
-    ('frontend-api_results', r'(?P<repo>[^\/]+)/d/results/?',
-     views.frontend_api.ResultsView.as_view),
+    ('frontendapi_results', r'(?P<repo>[^\/]+)/d/results/?',
+     views.frontendapi.ResultsView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
     ('tasks_process-expirations',

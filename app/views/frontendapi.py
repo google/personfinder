@@ -49,7 +49,7 @@ class ResultsView(FrontendApiBaseView):
             get_params={'query_name': utils.strip, 'query': utils.strip})
 
     def get(self, request, *args, **kwargs):
-        del request, args, kwargs  # unused
+        del request, args, kwargs  # Unused.
         # TODO(nworden): consider consolidating search stuff, especially since
         # full-text is going away.
         searcher = search.searcher.Searcher(
