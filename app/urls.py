@@ -55,7 +55,7 @@ _BASE_URL_PATTERNS = [
      views.admin.review.AdminReviewView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
-    ('frontendapi_results', r'(?P<repo>[^\/]+)/d/results/?',
+    ('frontend-api_results', r'(?P<repo>[^\/]+)/d/results/?',
      views.frontend_api.ResultsView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
