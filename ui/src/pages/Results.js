@@ -195,6 +195,11 @@ class SearchResultImpl extends Component {
         month='short'
         hour='numeric'
         minute='numeric'
+        // TODO(nworden): handle timezones. react-intl is supposed to support
+        // passing timezones into the IntlProvider itself, which would be ideal
+        // but which I can't seem to get working. Worst-case scenario we define
+        // it as a global JS var and use it for FormattedDates throughout.
+        timeZone='UTC'
         timeZoneName='short' />
     var timestampLine = '';
     if (this.props.result.timestampType == 'creation') {

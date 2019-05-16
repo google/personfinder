@@ -353,7 +353,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                 ],
                 "localPhotoUrl": null,
                 "personId": "123",
-                "timestamp": 1558033512,
+                "timestamp": "2019-05-15T17:12:23.936282",
                 "timestampType": "creation",
               }
             }
@@ -423,7 +423,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                     ],
                     "localPhotoUrl": null,
                     "personId": "123",
-                    "timestamp": 1558033512,
+                    "timestamp": "2019-05-15T17:12:23.936282",
                     "timestampType": "creation",
                   }
                 }
@@ -519,7 +519,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                       ],
                       "localPhotoUrl": null,
                       "personId": "123",
-                      "timestamp": 1558033512,
+                      "timestamp": "2019-05-15T17:12:23.936282",
                       "timestampType": "creation",
                     }
                   }
@@ -556,8 +556,9 @@ exports[`testing Results snapshot test for Results 1`] = `
                                 hour="numeric"
                                 minute="numeric"
                                 month="short"
+                                timeZone="UTC"
                                 timeZoneName="short"
-                                value={1970-01-19T00:47:13.512Z}
+                                value={2019-05-15T21:12:23.936Z}
                               />,
                             }
                           }
@@ -569,11 +570,12 @@ exports[`testing Results snapshot test for Results 1`] = `
                               hour="numeric"
                               minute="numeric"
                               month="short"
+                              timeZone="UTC"
                               timeZoneName="short"
-                              value={1970-01-19T00:47:13.512Z}
+                              value={2019-05-15T21:12:23.936Z}
                             >
                               <span>
-                                Jan 18, 7:47 PM EST
+                                May 15, 9:12 PM UTC
                               </span>
                             </FormattedDate>
                             .
@@ -604,7 +606,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                 ],
                 "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
                 "personId": "321",
-                "timestamp": 1558026312,
+                "timestamp": "2019-05-16T16:35:23.936282",
                 "timestampType": "update",
               }
             }
@@ -673,7 +675,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                     ],
                     "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
                     "personId": "321",
-                    "timestamp": 1558026312,
+                    "timestamp": "2019-05-16T16:35:23.936282",
                     "timestampType": "update",
                   }
                 }
@@ -768,7 +770,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                       ],
                       "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
                       "personId": "321",
-                      "timestamp": 1558026312,
+                      "timestamp": "2019-05-16T16:35:23.936282",
                       "timestampType": "update",
                     }
                   }
@@ -805,8 +807,9 @@ exports[`testing Results snapshot test for Results 1`] = `
                                 hour="numeric"
                                 minute="numeric"
                                 month="short"
+                                timeZone="UTC"
                                 timeZoneName="short"
-                                value={1970-01-19T00:47:06.312Z}
+                                value={2019-05-16T20:35:23.936Z}
                               />,
                             }
                           }
@@ -818,11 +821,12 @@ exports[`testing Results snapshot test for Results 1`] = `
                               hour="numeric"
                               minute="numeric"
                               month="short"
+                              timeZone="UTC"
                               timeZoneName="short"
-                              value={1970-01-19T00:47:06.312Z}
+                              value={2019-05-16T20:35:23.936Z}
                             >
                               <span>
-                                Jan 18, 7:47 PM EST
+                                May 16, 8:35 PM UTC
                               </span>
                             </FormattedDate>
                             .
