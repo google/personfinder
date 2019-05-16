@@ -190,7 +190,7 @@ class SearchResultImpl extends Component {
       nameStr += ' (' + this.props.result.alternateNames.join(', ') + ')';
     }
     const formattedTimestamp = <FormattedDate
-        value={new Date(this.props.result.timestamp)}
+        value={new Date(this.props.result.timestamp + 'Z')}
         day='numeric'
         month='short'
         hour='numeric'
