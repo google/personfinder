@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import config
-from model import Person
+import model
 import photo
 from search.searcher import Searcher
 import simplejson
@@ -116,7 +116,7 @@ class Create(FrontendApiHandler):
 
     def post(self):
         # TODO: factor all this out somewhere shared
-        person = Person.create_original(
+        person = model.Person.create_original(
             self.repo,
             entry_date=utils.get_utcnow(),
             family_name=self.params.family_name,
