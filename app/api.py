@@ -421,7 +421,8 @@ class PhotoUpload(BaseApiHandler):
 
         try:
             photo_img = images.Image(self.request.body)
-            photo, photo_url = create_photo(photo_img, self)
+            photo, photo_url = create_photo(
+                photo_img, self.repo, self.transitionary_get_url)
         except PhotoError, e:
             self.error(400, e.message)
 

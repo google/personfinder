@@ -39,7 +39,7 @@ class SizeTooLargeError(PhotoError):
                 'Please upload a smaller one.')
 
 
-def create_photo(image, handler):
+def create_photo(image, repo, url_builder):
     """Creates a new Photo entity for the provided image of type images.Image
     after resizing it and converting to PNG.  It may throw a PhotoError on
     failure, which comes with a localized error message appropriate for
@@ -67,8 +67,8 @@ def create_photo(image, handler):
         # as e.g. IOError if the image is corrupt.
         raise PhotoError()
 
-    photo = model.Photo.create(handler.repo, image_data=image_data)
-    photo_url = get_photo_url(photo, handler)
+    photo = model.Photo.create(repo, image_data=image_data)
+    photo_url = get_photo_url(photo, repo, url_builder)
     return (photo, photo_url)
 
 
@@ -101,10 +101,10 @@ def set_thumbnail(photo):
     photo.save()
 
 
-def get_photo_url(photo, handler):
+def get_photo_url(photo, repo, url_builder):
     """Returns the URL where this app is serving a hosted Photo object."""
     id = photo.key().name().split(':')[1]
-    return handler.get_url('/photo', id=id)
+    return url_builder('/photo', repo=repo, params={'id': id})
 
 
 class Handler(utils.BaseHandler):

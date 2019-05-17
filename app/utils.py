@@ -934,6 +934,11 @@ class BaseHandler(webapp.RequestHandler):
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 
+    def transitionary_get_url(self, path, repo, params=None):
+        """Gets a URL to the given path, with the given params.
+        """
+        return self.get_url(path, repo=repo, **params)
+
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):
         """Queues up a task for an individual repository."""
