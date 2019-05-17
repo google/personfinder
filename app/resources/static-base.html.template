@@ -26,7 +26,10 @@
 {# Header above page content. #}
 {% block header %}
   {{block.super}}
-  <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu" onclick="showSideMenu()">{% trans "Google Person Finder" %}
+  <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu">{% trans "Google Person Finder" %}
+  <script nonce="{{ csp_nonce }}">
+    document.querySelector('#menu-button').addEventListener('click', showSideMenu);
+  </script>
 {% endblock header %}
 
 {# Container around page content. #}

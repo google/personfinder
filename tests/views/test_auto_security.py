@@ -255,6 +255,42 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
+        'meta_static-home':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-home-altpath':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-howto':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-responders':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
     }
 
     def init_testbed_stubs(self):
