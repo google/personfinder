@@ -161,7 +161,9 @@ class ApiKeyManagementView(views.admin.base.AdminBaseView):
             return self.error(400, t.ugettext(
                 'Please fill in all the required fields.'))
 
-        repo = self.env.repo or '*'
+        repo = self.env.repo
+        if repo == 'global':
+            repo = '*'
         if self.params.key:
             # Just override the existing one.
             existing_authorization = db.get(self.params.key)

@@ -29,6 +29,7 @@ import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
 import views.meta.sitemap
+import views.meta.static_files
 import views.meta.static_pages
 
 # We include an optional trailing slash in all the patterns (Django has support
@@ -64,6 +65,8 @@ _BASE_URL_PATTERNS = [
      views.meta.static_pages.RespondersView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
+    ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
+     views.meta.static_files.ConfigurableStaticFileView.as_view),
     ('tasks_process-expirations',
      r'(?P<repo>[^\/]+)/tasks/process_expirations/?',
      tasksmodule.deletion.ProcessExpirationsTask.as_view),

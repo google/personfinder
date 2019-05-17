@@ -16,7 +16,7 @@
 {% block head %}
   {{block.super}}
   <style>body { width: inherit; max-width: inherit; }</style>
-  <script src="{{env.global_url}}/admin_review.js"></script>
+  <script src="{{env.fixed_static_url_base}}/admin_review.js" nonce={{ csp_nonce }}></script>
 {% endblock head %}
 
 {% block content %}
