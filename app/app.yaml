@@ -43,6 +43,8 @@ handlers:
   script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
+- url: /global/static.*
+  script: wsgi.application
 - url: /.*/tasks/process_expirations.*
   script: wsgi.application
 - url: /.*/tasks/check_expired_person_records.*

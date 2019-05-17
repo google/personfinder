@@ -8,9 +8,9 @@
 {# Contents of the <head> element.  Use this to add stylesheets. #}
 {% block head %}
   {{block.super}}
-  <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+  <link rel="stylesheet" href="{{env.fixed_static_url_base}}/sidebar.css">
   {% if config.brand == "google" %}
-    <link rel="stylesheet" href="{{env.global_url}}/google.css">
+    <link rel="stylesheet" href="{{env.fixed_static_url_base}}/google.css">
   {% endif %}
 {% endblock head %}
 
