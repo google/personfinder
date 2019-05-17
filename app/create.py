@@ -103,9 +103,6 @@ def create_person(
         if not given_name:
             raise CreationError(_('Name is required.  Please go back and try again.'))
 
-    if (author_email and not validate_email(author_email)):
-        raise CreationError(_('The email address you entered appears to be invalid.'))
-
     # If user is inputting his/her own information, set some params automatically
     if own_info == 'yes':
         author_name = given_name
@@ -115,6 +112,9 @@ def create_person(
             author_email = users_own_email
         if users_own_phone:
             author_phone = users_own_phone
+
+    if (author_email and not validate_email(author_email)):
+        raise CreationError(_('The email address you entered appears to be invalid.'))
 
     else:
         if not author_name:

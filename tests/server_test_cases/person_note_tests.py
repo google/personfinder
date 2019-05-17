@@ -1024,7 +1024,7 @@ class PersonNoteTests(ServerTestsBase):
                       own_info='yes',
                       given_name='_test_given_name',
                       family_name='_test_family_name',
-                      your_own_email='_test_email',
+                      your_own_email='test_email@example.com',
                       your_own_phone='_test_phone',
                       text='_test A note body')
         person = Person.all().get()
