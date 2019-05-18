@@ -84,7 +84,7 @@ CSP_SCRIPT_SRC = ("'unsafe-inline'", "'unsafe-eval'",
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['resources'],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -95,9 +95,6 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'loaders': [
-                'template_loader.TemplateLoader',
-            ]
         },
     },
 ]
