@@ -22,6 +22,11 @@ import utils
 import views.thirdparty_endpoints.base
 
 
+ATOM = views.thirdparty_endpoints.base.ATOM
+GPF = views.thirdparty_endpoints.base.GPF
+GEORSS = views.thirdparty_endpoints.base.GEORSS
+
+
 class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
     """View for the repo feed."""
 
@@ -67,23 +72,23 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
         if repo_conf.language_menu_options:
             default_lang = repo_conf.language_menu_options[0]
             title_el = ET.SubElement(
-                entry_el, 'title', {'xml:lang': default_lang})
+                entry_el, 'title', {'lang': default_lang})
             title_el.text = repo_conf.repo_titles[default_lang]
         ET.SubElement(entry_el, 'updated').text = utils.format_utc_timestamp(
             repo_conf.updated_date)
-        content_el = ET.SubElement(root, 'content', {'type': 'text/xml'})
-        repo_el = ET.SubElement(content_el, 'gpf:repo')
+        content_el = ET.SubElement(entry_el, 'content', {'type': 'text/xml'})
+        repo_el = ET.SubElement(content_el, GPF + 'repo')
         for lang, title in repo_conf.repo_titles.items():
-            ET.SubElement(repo_el, 'title', {'xml:lang': lang}).text = title
-        ET.SubElement(repo_el, 'gpf:read_auth_key_required').text = (
+            ET.SubElement(repo_el, 'title', {'lang': lang}).text = title
+        ET.SubElement(repo_el, GPF + 'read_auth_key_required').text = (
             'true' if repo_conf.read_auth_key_required else 'false')
-        ET.SubElement(repo_el, 'gpf:search_auth_key_required').text = (
+        ET.SubElement(repo_el, GPF + 'search_auth_key_required').text = (
             'true' if repo_conf.search_auth_key_required else 'false')
-        ET.SubElement(repo_el, 'gpf:test_mode').text = (
+        ET.SubElement(repo_el, GPF + 'test_mode').text = (
             'true' if repo.test_mode else 'false')
         center = repo_conf.map_default_center or [0, 0]
-        location_el = ET.SubElement(repo_el, 'gpf:location')
-        ET.SubElement(location_el, 'georss:point').text = (
+        location_el = ET.SubElement(repo_el, GPF + 'location')
+        ET.SubElement(location_el, GEORSS + 'point').text = (
             '%f %f' % (center[0], center[1]))
 
     def log(self):

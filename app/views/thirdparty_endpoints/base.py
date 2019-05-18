@@ -13,13 +13,22 @@
 # limitations under the License.
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
-import xml.etree.ElementTree as ET
+import lxml.etree as ET
 
 import django.http
 
 import model
 import utils
 import views.base
+
+
+ATOM_NS = 'http://www.w3.org/2005/Atom'
+GPF_NS = 'http://schemas.google.com/personfinder/2012'
+GEORSS_NS = 'http://www.georss.org/georss'
+
+ATOM = '{%s}' % ATOM_NS
+GPF = '{%s}' % GPF_NS
+GEORSS = '{%s}' % GEORSS_NS
 
 
 class ThirdPartyEndpointBaseView(views.base.BaseView):
@@ -88,24 +97,24 @@ class ThirdPartyEndpointBaseView(views.base.BaseView):
 
 
 class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
+    """Base class for feed views."""
 
-    def get_feed(self, resp):
-        """Get the feed to write to the response.
-
-        Should be implemented by subclasses.
-
-        Returns:
-            SyndicationFeed: A Django SyndicationFeed object.
-        """
-        raise NotImplementedError()
+    _NAMESPACE_MAP = {
+        None: 'http://www.w3.org/2005/Atom',
+        'gpf': 'http://schemas.google.com/personfinder/2012',
+        'georss': 'http://www.georss.org/georss',
+    }
 
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
         self.log()
+        root = ET.Element('feed', nsmap=ThirdPartyFeedBaseView._NAMESPACE_MAP)
+        self.add_feed_elements(root)
+        feed = ET.ElementTree(root)
         resp = django.http.HttpResponse()
         resp['Content-Type'] = 'application/xml; charset=utf-8'
         resp.write('<?xml version="1.0" encoding="UTF-8"?>')
-        self._get_feed().write(resp)
+        feed.write(resp)
         return resp
 
     def add_feed_elements(self):
@@ -113,14 +122,3 @@ class ThirdPartyFeedBaseView(ThirdPartyEndpointBaseView):
 
     def log(self):
         raise NotImplementedError()
-
-    def _get_feed(self):
-        root = ET.Element(
-            'feed',
-            attrib={
-                'xmlns': 'http://www.w3.org/2005/Atom',
-                'xmlns:gpf': 'http://schemas.google.com/personfinder/2012',
-                'xmlns:georss': 'http://www.georss.org/georss',
-            })
-        self.add_feed_elements(root)
-        return ET.ElementTree(root)
