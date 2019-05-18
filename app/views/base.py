@@ -24,7 +24,6 @@ import six.moves.urllib.parse as urlparse
 
 import config
 import const
-import resources
 import site_settings
 import user_agents
 import utils
