@@ -25,6 +25,7 @@ import config
 import const
 import resources
 import site_settings
+import user_agents
 import utils
 
 
@@ -155,6 +156,15 @@ class BaseView(django.views.View):
             self._repo = value
 
         @property
+        def repo_url(self):
+            """Gets the URL for the repo root."""
+            return self._repo_url
+
+        @repo_url.setter
+        def repo_url(self, value):
+            self._repo_url = value
+
+        @property
         def rtl(self):
             """Gets whether the language is a right-to-left language."""
             return self._rtl
@@ -171,6 +181,15 @@ class BaseView(django.views.View):
         @show_logo.setter
         def show_logo(self, value):
             self._show_logo = value
+
+        @property
+        def ui(self):
+            """Gets the UI mode to use."""
+            return self._ui
+
+        @ui.setter
+        def ui(self, value):
+            self._ui = value
 
     def setup(self, request, *args, **kwargs):
         """Sets up the handler.
@@ -191,12 +210,18 @@ class BaseView(django.views.View):
         # pylint: disable=attribute-defined-outside-init
         # TODO(nworden): don't forget to call super.setup here once we upgrade
         # to Django 2.2.
-        del request, args  # unused
+        del args  # unused
 
         # Set up the parameters and read in the base set of parameters.
         self.params = Params(self.request)
         self.params.read_values(
-            get_params={'lang': utils.strip}, post_params={'lang': utils.strip})
+            get_params={
+                'lang': utils.strip,
+                'ui': utils.strip,
+            },
+            post_params={
+                'lang': utils.strip,
+            })
 
         # Set up env variable with data needed by the whole app.
         self.env = self.Env()
@@ -221,7 +246,16 @@ class BaseView(django.views.View):
         # TODO(nworden): try to eliminate use of global_url. It doesn't seem
         # great that templates are building URLs by sticking things onto this.
         self.env.global_url = self.build_absolute_uri('/global')
+        self.env.repo_url = self.build_absolute_uri('/', self.env.repo)
         self.env.fixed_static_url_base = self.build_absolute_uri('/static')
+        if self.params.ui:
+            self.env.ui = self.params.ui
+        elif user_agents.prefer_lite_ui(request):
+            self.env.ui = 'light'
+        else:
+            self.env.ui = 'default'
+        self.env.enable_javascript = self.env.ui
+        self.env.show_logo = self.env.ui == 'default'
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""

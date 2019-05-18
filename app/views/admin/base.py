@@ -63,6 +63,8 @@ class AdminBaseView(views.base.BaseView):
             self._user = value
 
     def _get_user_admin_permission(self):
+        if not self.env.user:
+            return None
         user_repo_admin_object = admin_acls_model.AdminPermission.get(
             self.env.repo, self.env.user.email())
         if (user_repo_admin_object and

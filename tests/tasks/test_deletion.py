@@ -17,8 +17,10 @@ import datetime
 import logging
 import sys
 
+from google.appengine import runtime
 from google.appengine.ext import db
 from google.appengine.api import taskqueue
+import mock
 # We should be moving off mox and to mock. However, taskqueue doesn't play nice
 # with mock, so dropping mox for these tests means moving to GAE's stuff for
 # this. Since taskqueue has to get replaced by Cloud Tasks for Python 3 anyway,
@@ -71,6 +73,24 @@ class ProcessExpirationsTaskTests(task_tests_base.TaskTestsBase):
                       params={'cursor': ''})
         tq_mock.ReplayAll()
         self.run_task('/global/tasks/process_expirations')
+        tq_mock.VerifyAll()
+        tq_mock.UnsetStubs()
+
+    def test_task_rescheduling(self):
+        """Tests that task is rescheduled for continuation."""
+        tq_mock = mox.Mox()
+        tq_mock.StubOutWithMock(taskqueue, 'add')
+        taskqueue.add(name=mox.IsA(unicode),
+                      method='POST',
+                      url='/haiti/tasks/process_expirations',
+                      queue_name='expiry',
+                      params={'cursor': ''})
+        tq_mock.ReplayAll()
+        # DeadlineExceededErrors can be raised at any time. A convenient way for
+        # us to raise it during this test execution is with utils.get_utcnow.
+        with mock.patch('utils.get_utcnow') as get_utcnow_mock:
+            get_utcnow_mock.side_effect = runtime.DeadlineExceededError()
+            self.run_task('/haiti/tasks/process_expirations', method='POST')
         tq_mock.VerifyAll()
         tq_mock.UnsetStubs()
 

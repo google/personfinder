@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -19,6 +18,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import calendar
+import cgi
 import csv
 import datetime
 import logging
@@ -87,12 +87,12 @@ def get_tag_params(handler):
     """Return HTML tag parameters used in import.html."""
     return {
         'begin_notes_template_link':
-            '<a href="%s/notes-template.xlsx">' %
+            '<a href="%s/static/notes-template.xlsx">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_notes_template_link':
             '</a>',
         'begin_sample_anchor_tag':
-            '<a href="%s/sample-import.csv" target="_blank">' %
+            '<a href="%s/static/sample-import.csv" target="_blank">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_sample_anchor_tag':
             '</a>',
@@ -492,9 +492,9 @@ class Write(BaseApiHandler):
         for error, record in skipped:
             skipped_records.append(
                 '      <pfif:%s>%s</pfif:%s>\n' %
-                (id_field, record.get(id_field, ''), id_field))
+                (id_field, cgi.escape(record.get(id_field, '')), id_field))
             skipped_records.append(
-                '      <status:error>%s</status:error>\n' % error)
+                '      <status:error>%s</status:error>\n' % cgi.escape(error))
 
         self.write('''
   <status:write>

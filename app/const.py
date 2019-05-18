@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -351,19 +350,19 @@ DEFAULT_PROFILE_WEBSITES = [
     {
         # Display name of the website
         'name': 'Facebook',
-        # Filename of the icon file served as /global/<icon_filename>.
-        'icon_filename': 'facebook-16x16.png',
+        # Filename of the icon file, served from root.
+        'icon_filename': '/global/static/facebook-16x16.png',
         # Regexp to check for valid profile page URLs.
         'url_regexp': 'https?://(www\\.)?facebook\\.com/.*',
     },
     {
         'name': 'Twitter',
-        'icon_filename': 'twitter-16x16.png',
+        'icon_filename': '/global/static/twitter-16x16.png',
         'url_regexp': 'https?://(www\\.)?twitter\\.com/.*',
     },
     {
         'name': 'LinkedIn',
-        'icon_filename': 'linkedin-16x16.png',
+        'icon_filename': '/global/static/linkedin-16x16.png',
         'url_regexp': 'https?://(www\\.)?linkedin\\.com/.*',
     },
 ]
