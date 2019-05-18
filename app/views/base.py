@@ -17,6 +17,7 @@ import functools
 import re
 
 import django.http
+import django.shortcuts
 import django.utils.decorators
 import django.views
 import six.moves.urllib.parse as urlparse
@@ -349,23 +350,18 @@ class BaseView(django.views.View):
         Returns:
             HttpResponse: An HttpResponse with the rendered template.
         """
-
-        def get_vars():
-            """A function returning vars, for use by the resources module."""
-            template_vars['env'] = self.env
+        template_name = '%s.template' % template_name
+        context = {
+            'env': self.env,
             # TODO(nworden): change templates to access config through env,
             # which already has the config anyway
-            template_vars['config'] = self.env.config
-            template_vars['params'] = self.params
-            template_vars['csp_nonce'] = self.request.csp_nonce
-            return template_vars
-
-        query_str = self.request.META.get('QUERY_STRING', '')
-        extra_key = (self.env.repo, self.env.charset, query_str)
-        return django.http.HttpResponse(
-            resources.get_rendered(template_name, self.env.lang, extra_key,
-                                   get_vars, 0),
-            status=status_code)
+            'config': self.env.config,
+            'params': self.params,
+            'csp_nonce': self.request.csp_nonce,
+        }
+        context.update(template_vars)
+        return django.shortcuts.render(
+            self.request, template_name, context, status=status_code)
 
     def error(self, status_code, message=''):
         """Returns an error response.
