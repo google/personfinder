@@ -2,7 +2,6 @@
 import xml.etree
 
 import model
-import utils
 
 import view_tests_base
 

@@ -13,7 +13,6 @@
 # limitations under the License.
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
-import datetime
 import django.http
 import xml.etree.ElementTree as ET
 
@@ -54,8 +53,7 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
             repo_id = repo.key().name()
             repo_conf = config.Configuration(repo_id, include_global=False)
             repo_confs[repo_id] = repo_conf
-        updated_dates = [
-            repo_conf.updated_date for repo_conf in repo_confs.values()]
+        updated_dates = [conf.updated_date for conf in repo_confs.values()]
         # If there's no non-staging repositories, it's not really clear what
         # updated_date should be; we just use the current time.
         latest_updated_date = (
