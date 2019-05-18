@@ -94,12 +94,14 @@ class TestDataGenerator(object):
             repo_id='haiti',
             updated_date=DEFAULT_REPO_UPDATED_DATE,
             language_menu_options=['en', 'es'],
-            repo_titles={'en': 'Haiti', 'es': 'Haití'}):
+            repo_titles={'en': 'Haiti', 'es': 'Haití'},
+            map_default_center=[123.45, 67.89]):
         config.set_for_repo(
             repo_id,
             updated_date=updated_date,
             language_menu_options=language_menu_options,
-            repo_titles=repo_titles)
+            repo_titles=repo_titles,
+            map_default_center=map_default_center)
 
     def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):
         if not record_id:

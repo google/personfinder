@@ -14,6 +14,7 @@
 """Code shared by third-party endpoint (API and feeds) view modules."""
 
 import datetime
+import django.http
 import xml.etree.ElementTree as ET
 
 import config
@@ -47,7 +48,7 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
             if repo.activation_status == model.Repo.ActivationStatus.ACTIVE:
                 repos = [repo]
             else:
-                return self.error(404)
+                raise django.http.Http404()
         repo_confs = {}
         for repo in repos:
             repo_id = repo.key().name()
@@ -79,7 +80,7 @@ class RepoFeedView(views.thirdparty_endpoints.base.ThirdPartyFeedBaseView):
         content_el = ET.SubElement(entry_el, 'content', {'type': 'text/xml'})
         repo_el = ET.SubElement(content_el, GPF + 'repo')
         for lang, title in repo_conf.repo_titles.items():
-            ET.SubElement(repo_el, 'title', {'lang': lang}).text = title
+            ET.SubElement(repo_el, GPF + 'title', {'lang': lang}).text = title
         ET.SubElement(repo_el, GPF + 'read_auth_key_required').text = (
             'true' if repo_conf.read_auth_key_required else 'false')
         ET.SubElement(repo_el, GPF + 'search_auth_key_required').text = (
