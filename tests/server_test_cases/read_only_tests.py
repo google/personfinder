@@ -37,11 +37,6 @@ class ReadOnlyTests(ServerTestsBase):
         doc = self.go('/')
         assert 'You are now running Person Finder.' in doc.text
 
-    def test_home(self):
-        """Check the generic home page."""
-        doc = self.go('/global/home.html')
-        assert 'You are now running Person Finder.' in doc.text
-
     def test_start(self):
         """Check the start page with no language specified."""
         doc = self.go('/haiti')

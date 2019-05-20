@@ -14,10 +14,10 @@
         <table>
           <tr>
             <td>
-              <img src="{{env.global_url}}/separated-81x80.png" width="81" height="80">
+              <img src="{{env.fixed_static_url_base}}/separated-81x80.png" width="81" height="80">
             </td>
             <td>
-              <img src="{{env.global_url}}/search-100x80.png" width="100" height="80">
+              <img src="{{env.fixed_static_url_base}}/search-100x80.png" width="100" height="80">
             </td>
           </tr>
           <tr class="captions">
@@ -30,10 +30,10 @@
         <table>
           <tr>
             <td>
-              <img src="{{env.global_url}}/post-90x80.png" width="90" height="80">
+              <img src="{{env.fixed_static_url_base}}/post-90x80.png" width="90" height="80">
             </td>
             <td>
-              <img src="{{env.global_url}}/find-80x80.png" width="80" height="80">
+              <img src="{{env.fixed_static_url_base}}/find-80x80.png" width="80" height="80">
             </td>
           </tr>
           <tr class="captions">
@@ -76,6 +76,10 @@
     <p>Please see the
     <a href="https://github.com/google/personfinder">project page</a>
     for instructions on administering this site and customizing its appearance.
+
+    {% if not config.initialized %}
+      <p>You can <a href="/setup_datastore">set up the database</a>.
+    {% endif %}
 
   {% endif %}
 

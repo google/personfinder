@@ -39,9 +39,31 @@ handlers:
   static_dir: resources/static/fixed/
 
 # These are the handlers we've migrated to Django.
+- url: /?
+  script: wsgi.application
+- url: /personfinder/?
+  script: wsgi.application
+- url: /setup_datastore/?
+  script: wsgi.application
+- url: /global/home.html
+  script: wsgi.application
+- url: /personfinder/global/home.html
+  script: wsgi.application
+- url: /global/howto.html
+  script: wsgi.application
+- url: /personfinder/global/howto.html
+  script: wsgi.application
+- url: /global/responders.html
+  script: wsgi.application
+- url: /personfinder/global/responders.html
+  script: wsgi.application
 - url: /.*/admin.*
   script: wsgi.application
+- url: /.*/feeds/repo.*
+  script: wsgi.application
 - url: /.*/sitemap.*
+  script: wsgi.application
+- url: /global/static.*
   script: wsgi.application
 - url: /.*/tasks/process_expirations.*
   script: wsgi.application
