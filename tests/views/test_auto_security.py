@@ -40,6 +40,8 @@ PathTestInfo = collections.namedtuple(
         'accepts_get',
         # Whether the past is expected to accept POST requests.
         'accepts_post',
+        # kwargs to use in generating the test path.
+        'sample_path_kwargs',
         # The minimum admin level required to access the page (None if
         # non-admins are expected to be able to access it).
         'min_admin_level',
@@ -65,6 +67,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=True,
             sample_post_data={
@@ -77,6 +80,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=False,
             sample_post_data=None,
@@ -85,6 +89,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
@@ -97,6 +102,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={},
             min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
@@ -107,6 +113,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=False,
             sample_post_data=None,
@@ -115,6 +122,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MODERATOR,
             requires_xsrf=True,
             sample_post_data={
@@ -125,6 +133,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={},
             min_admin_level=aa_model.AdminPermission.AccessLevel.SUPERADMIN,
             requires_xsrf=True,
             sample_post_data={
@@ -135,6 +144,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=True,
             sample_post_data={
@@ -145,6 +155,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MODERATOR,
             requires_xsrf=True,
             sample_post_data={
@@ -155,6 +166,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
+            sample_path_kwargs={},
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=False,
             sample_post_data=None,
@@ -171,6 +183,127 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         PathTestInfo(
             accepts_get=True,
             accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-files':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={
+                'repo': 'haiti',
+                'filename': 'facebook-16x16.png',
+            },
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_check-expired-person-records':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_check-note-data-validity':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_check-person-data-validity':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_cleanup-stray-notes':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_cleanup-stray-subscriptions':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_process-expirations':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'tasks_sitemap-ping':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-home':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-home-altpath':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-howto':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-responders':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'thirdparty-endpoints_repo-feed':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={'repo': 'global'},
             min_admin_level=None,
             requires_xsrf=False,
             sample_post_data=None,
@@ -191,6 +324,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
     def setUp(self):
         super(AutoSecurityTests, self).setUp()
         self.data_generator.repo()
+        self.data_generator.setup_repo_config()
 
     def get_path(self, path_name):
         """Gets a path to use for the given path name.
@@ -203,10 +337,9 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         more interesting things in the path besides repo, we'll have to rethink
         this.
         """
-        try:
-            return django.urls.reverse(path_name)
-        except django.urls.NoReverseMatch:
-            return django.urls.reverse(path_name, kwargs={'repo': 'haiti'})
+        path_info = AutoSecurityTests.PATH_TEST_INFO[path_name]
+        return django.urls.reverse(
+            path_name, kwargs=path_info.sample_path_kwargs)
 
     def get_valid_post_data(self, path_info):
         """Gets data for a valid POST requests.
@@ -233,7 +366,7 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         return [(path_name, path_info)
                 for (path_name,
                      path_info) in AutoSecurityTests.PATH_TEST_INFO.items()
-                if filter_func(path_info)]
+                if filter_func(path_info) and not path_name.startswith('tasks')]
 
     def test_blocked_to_non_admins(self):
         """Tests that admin-only pages aren't available to non-admins."""

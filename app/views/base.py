@@ -17,14 +17,15 @@ import functools
 import re
 
 import django.http
+import django.shortcuts
 import django.utils.decorators
 import django.views
 import six.moves.urllib.parse as urlparse
 
 import config
 import const
-import resources
 import site_settings
+import user_agents
 import utils
 
 
@@ -181,6 +182,15 @@ class BaseView(django.views.View):
         def show_logo(self, value):
             self._show_logo = value
 
+        @property
+        def ui(self):
+            """Gets the UI mode to use."""
+            return self._ui
+
+        @ui.setter
+        def ui(self, value):
+            self._ui = value
+
     def setup(self, request, *args, **kwargs):
         """Sets up the handler.
 
@@ -200,12 +210,18 @@ class BaseView(django.views.View):
         # pylint: disable=attribute-defined-outside-init
         # TODO(nworden): don't forget to call super.setup here once we upgrade
         # to Django 2.2.
-        del request, args  # unused
+        del args  # unused
 
         # Set up the parameters and read in the base set of parameters.
         self.params = Params(self.request)
         self.params.read_values(
-            get_params={'lang': utils.strip}, post_params={'lang': utils.strip})
+            get_params={
+                'lang': utils.strip,
+                'ui': utils.strip,
+            },
+            post_params={
+                'lang': utils.strip,
+            })
 
         # Set up env variable with data needed by the whole app.
         self.env = self.Env()
@@ -232,6 +248,14 @@ class BaseView(django.views.View):
         self.env.global_url = self.build_absolute_uri('/global')
         self.env.repo_url = self.build_absolute_uri('/', self.env.repo)
         self.env.fixed_static_url_base = self.build_absolute_uri('/static')
+        if self.params.ui:
+            self.env.ui = self.params.ui
+        elif user_agents.prefer_lite_ui(request):
+            self.env.ui = 'light'
+        else:
+            self.env.ui = 'default'
+        self.env.enable_javascript = self.env.ui
+        self.env.show_logo = self.env.ui == 'default'
 
     def _request_is_for_prefixed_path(self):
         """Checks if the request's path uses an optional path prefix."""
@@ -325,23 +349,18 @@ class BaseView(django.views.View):
         Returns:
             HttpResponse: An HttpResponse with the rendered template.
         """
-
-        def get_vars():
-            """A function returning vars, for use by the resources module."""
-            template_vars['env'] = self.env
+        template_name = '%s.template' % template_name
+        context = {
+            'env': self.env,
             # TODO(nworden): change templates to access config through env,
             # which already has the config anyway
-            template_vars['config'] = self.env.config
-            template_vars['params'] = self.params
-            template_vars['csp_nonce'] = self.request.csp_nonce
-            return template_vars
-
-        query_str = self.request.META.get('QUERY_STRING', '')
-        extra_key = (self.env.repo, self.env.charset, query_str)
-        return django.http.HttpResponse(
-            resources.get_rendered(template_name, self.env.lang, extra_key,
-                                   get_vars, 0),
-            status=status_code)
+            'config': self.env.config,
+            'params': self.params,
+            'csp_nonce': self.request.csp_nonce,
+        }
+        context.update(template_vars)
+        return django.shortcuts.render(
+            self.request, template_name, context, status=status_code)
 
     def error(self, status_code, message=''):
         """Returns an error response.

@@ -30,6 +30,9 @@ import views.admin.review
 import views.admin.statistics
 import views.frontendapi
 import views.meta.sitemap
+import views.meta.static_files
+import views.meta.static_pages
+import views.thirdparty_endpoints.repo_feed
 
 # We include an optional trailing slash in all the patterns (Django has support
 # for automatic redirection, but we don't want to send people redirect responses
@@ -59,6 +62,15 @@ _BASE_URL_PATTERNS = [
      views.frontendapi.ResultsView.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
+    ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
+     views.meta.static_files.ConfigurableStaticFileView.as_view),
+    ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+    ('meta_static-home-altpath', r'global/home.html',
+     views.meta.static_pages.HomeView.as_view),
+    ('meta_static-howto', r'global/howto.html',
+     views.meta.static_pages.HowToView.as_view),
+    ('meta_static-responders', r'global/responders.html',
+     views.meta.static_pages.RespondersView.as_view),
     ('tasks_process-expirations',
      r'(?P<repo>[^\/]+)/tasks/process_expirations/?',
      tasksmodule.deletion.ProcessExpirationsTask.as_view),
@@ -79,6 +91,8 @@ _BASE_URL_PATTERNS = [
      tasksmodule.deletion.CleanupStraySubscriptionsTask.as_view),
     ('tasks_sitemap-ping', r'global/tasks/sitemap_ping/?',
      tasksmodule.sitemap_ping.SitemapPingTaskView.as_view),
+    ('thirdparty-endpoints_repo-feed', r'(?P<repo>[^\/]+)/feeds/repo/?',
+     views.thirdparty_endpoints.repo_feed.RepoFeedView.as_view),
 ]
 
 # pylint: disable=invalid-name

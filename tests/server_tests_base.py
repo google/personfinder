@@ -121,7 +121,9 @@ class ServerTestsBase(unittest.TestCase):
             param = str(new_utcnow)
         else:
             param = calendar.timegm(new_utcnow.utctimetuple())
-        path = '/?utcnow=%s&flush=%s' % (param, flush)
+        # This isn't a real path, but that's ok, we just need some path that's
+        # served by webapp2 rather than Django.
+        path = '/webapp2path?utcnow=%s&flush=%s' % (param, flush)
         # Requesting '/' gives a fast redirect; to save time, don't follow it.
         scrape.Session(verbose=0).go(self.path_to_url(path), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)
