@@ -936,6 +936,16 @@ class BaseHandler(webapp.RequestHandler):
 
     def transitionary_get_url(self, path, repo, params=None):
         """Gets a URL to the given path, with the given params.
+
+        We want to share some code between Django and webapp2 handlers (also,
+        I'd like to get away from embedding so much code in the handlers), and a
+        significant obstacle to that is that you can only create URLs from
+        handlers. The solution seems to be passing a URL-building function into
+        functions that need to build URLs.
+
+        The Django app has a somewhat different URL builder for various reasons,
+        and this function matches its signature so that functions don't have to
+        know what web framework their URL-building function came from.
         """
         return self.get_url(path, repo=repo, **params)
 
