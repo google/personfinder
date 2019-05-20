@@ -54,6 +54,11 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Country',
     description: 'A label for a form field for a person\'s country.',
   },
+  description: {
+    id: 'Create.description',
+    defaultMessage: 'Description',
+    description: 'A label for a free-text field for describing a person.',
+  },
   familyNameOrSurnameRequired: {
     id: 'Create.familyNameOrSurnameRequired',
     defaultMessage: 'Family name or Surname (required)',
@@ -63,11 +68,6 @@ const MESSAGES = defineMessages({
     id: 'Create.givenNameOrFirstNameRequired',
     defaultMessage: 'Given name or First name (required)',
     description: 'A label for a form field for a person\'s given name.',
-  },
-  homeStreetAddress: {
-    id: 'Create.homeStreetAddress',
-    defaultMessage: 'Home street address',
-    description: 'A label for a form field for a person\'s street address.',
   },
   identifyingInformation: {
     id: 'Create.identifyingInformation',
@@ -189,7 +189,7 @@ class Create extends Component {
       formGivenName: '',
       formSex: '',
       formAge: '',
-      formHomeStreetAddress: '',
+      formDescription: '',
       formPhotoFile: null,
       formPhotoUrl: '',
       formProfilePages: Immutable.List(),
@@ -389,11 +389,12 @@ class Create extends Component {
     );
   }
 
-  renderTextFieldAndInput(formKey, inputName, labelMessage) {
+  renderTextFieldOrAreaAndInput(formKey, inputName, labelMessage, textArea) {
     return (
         <TextField
           label={this.props.intl.formatMessage(labelMessage)}
           outlined
+          textarea={textArea}
         >
           <Input
             name={inputName}
@@ -401,6 +402,16 @@ class Create extends Component {
             onChange={(e) => this.setState({[formKey]: e.target.value})} />
         </TextField>
     );
+  }
+
+  renderTextFieldAndInput(formKey, inputName, labelMessage) {
+    return this.renderTextFieldOrAreaAndInput(
+        formKey, inputName, labelMessage, false);
+  }
+
+  renderTextAreaAndInput(formKey, inputName, labelMessage) {
+    return this.renderTextFieldOrAreaAndInput(
+        formKey, inputName, labelMessage, true);
   }
 
   /*
@@ -427,19 +438,13 @@ class Create extends Component {
           </option>
         </Select>
         {this.renderTextFieldAndInput('formAge', 'age', MESSAGES.age)}
-        {this.renderTextFieldAndInput(
-            'formHomeStreetAddress', 'home_street', MESSAGES.homeStreetAddress)}
         {this.renderTextFieldAndInput('formCity', 'home_city', MESSAGES.city)}
         {this.renderTextFieldAndInput(
             'formProvinceState', 'home_state', MESSAGES.provinceOrState)}
         {this.renderTextFieldAndInput(
             'formCountry', 'home_country', MESSAGES.country)}
-        {/*
-        TODO(nworden): add description field. We may need to implement our
-        own notched textarea field due to an issue with the Material
-        component for it:
-        https://github.com/material-components/material-components-web-react/issues/559
-        */}
+        {this.renderTextAreaAndInput(
+            'formDescription', 'description', MESSAGES.description)}
         {this.renderPhotoFields()}
         {this.renderProfilePageFields()}
       </div>
