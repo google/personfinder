@@ -29,6 +29,6 @@ class SetupDatastoreHandler(views.base.BaseView):
         """Sets up datastore, if it's not already set up."""
         del request, args, kwargs  # unused
         if self.env.config.get('initialized'):
-            raise django.core.exceptions.PermissionDenied()
+            return self.error(400)
         setup_pf.setup_datastore()
         return django.shortcuts.redirect(self.build_absolute_uri('/'))
