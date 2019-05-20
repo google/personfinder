@@ -192,6 +192,42 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
+        'meta_static-home':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-home-altpath':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-howto':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
+        'meta_static-responders':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
         'tasks_check-expired-person-records':
         PathTestInfo(
             accepts_get=True,
@@ -255,43 +291,14 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             requires_xsrf=False,
             sample_post_data=None,
             xsrf_action_id=None),
-        'meta_static-home':
-        PathTestInfo(
-            accepts_get=True,
-            accepts_post=False,
-            sample_path_kwargs={},
-            min_admin_level=None,
-            requires_xsrf=False,
-            sample_post_data=None,
-            xsrf_action_id=None),
-        'meta_static-home-altpath':
-        PathTestInfo(
-            accepts_get=True,
-            accepts_post=False,
-            sample_path_kwargs={},
-            min_admin_level=None,
-            requires_xsrf=False,
-            sample_post_data=None,
-            xsrf_action_id=None),
-        'meta_static-howto':
-        PathTestInfo(
-            accepts_get=True,
-            accepts_post=False,
-            sample_path_kwargs={},
-            min_admin_level=None,
-            requires_xsrf=False,
-            sample_post_data=None,
-            xsrf_action_id=None),
-        'meta_static-responders':
-        PathTestInfo(
-            accepts_get=True,
-            accepts_post=False,
-            sample_path_kwargs={},
-            min_admin_level=None,
-            requires_xsrf=False,
-            sample_post_data=None,
-            xsrf_action_id=None),
     }
+
+    EXEMPT_PATHS = [
+        # We exempt this from the auto-tests because it should normally (if
+        # datastore is already set up) return an error, regardless of whether
+        # the requester is an admin.
+        'meta_setup-datastore',
+    ]
 
     def init_testbed_stubs(self):
         """Initializes the App Engine testbed stubs.
@@ -489,6 +496,8 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
         so we require that each URL path is included in the dictionary above.
         """
         for pattern in urls.urlpatterns:
+            if pattern.name in AutoSecurityTests.EXEMPT_PATHS:
+                continue
             if pattern.name.startswith('prefixed__'):
                 # Skip these; they're the same views as the non-prefixed
                 # versions.
