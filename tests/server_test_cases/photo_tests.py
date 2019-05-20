@@ -99,7 +99,7 @@ class PhotoTests(ServerTestsBase):
             doc = self.submit_create(photo=photo)
         # Verify an error message is displayed.
         assert not doc.cssselect('img.photo')
-        assert 'a problem with your uploaded photo' in doc.text
+        assert 'unrecognized format' in doc.text
 
     def test_set_thumbnail(self):
         """Tests that a thumbnail is generated."""
