@@ -29,6 +29,7 @@ import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
 import views.frontendapi
+import views.meta.setup_datastore
 import views.meta.sitemap
 import views.meta.static_files
 import views.meta.static_pages
@@ -60,6 +61,8 @@ _BASE_URL_PATTERNS = [
      views.admin.statistics.AdminStatisticsView.as_view),
     ('frontendapi_results', r'(?P<repo>[^\/]+)/d/results/?',
      views.frontendapi.ResultsView.as_view),
+    ('meta_setup-datastore', r'setup_datastore/?',
+     views.meta.setup_datastore.SetupDatastoreHandler.as_view),
     ('meta_sitemap', r'global/sitemap/?',
      views.meta.sitemap.SitemapView.as_view),
     ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
