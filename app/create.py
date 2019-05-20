@@ -159,7 +159,7 @@ def create_person(
             note_photo, note_photo_url = create_photo(
                 note_photo, repo, url_builder)
     except PhotoError, e:
-        raise CreationError(_('There seems to be a problem with your uploaded photo.'))
+        raise CreationError(e.message)
     # Finally, store the Photo. Past this point, we should NOT self.error.
     if photo:
         photo.put()
