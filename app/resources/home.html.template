@@ -78,6 +78,10 @@
     <a href="https://github.com/google/personfinder">project page</a>
     for instructions on administering this site and customizing its appearance.
 
+    {% if not config.initialized %}
+      <p>You can <a href="/setup_datastore">set up the database</a>.
+    {% endif %}
+
   {% endif %}
 
 {% endblock content %}

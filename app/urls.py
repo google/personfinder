@@ -28,6 +28,7 @@ import views.admin.global_index
 import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
+import views.meta.setup_datastore
 import views.meta.sitemap
 import views.meta.static_files
 import views.meta.static_pages
@@ -57,6 +58,8 @@ _BASE_URL_PATTERNS = [
      views.admin.review.AdminReviewView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
+    ('meta_setup-datastore', r'setup_datastore/?',
+     views.meta.setup_datastore.SetupDatastoreHandler.as_view),
     ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
     ('meta_static-home-altpath', r'global/home.html',
      views.meta.static_pages.HomeView.as_view),
