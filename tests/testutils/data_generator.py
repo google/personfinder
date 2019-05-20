@@ -79,6 +79,7 @@ class TestDataGenerator(object):
         'is_valid': True,
     }
 
+    # 2019-05-12 15:50:01 UTC
     DEFAULT_REPO_UPDATED_DATE = 1557676201
 
     def repo(
