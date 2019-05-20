@@ -21,6 +21,7 @@ import datetime
 
 import six
 
+import config
 import const
 import model
 import modelmodule.admin_acls as admin_acls_model
@@ -78,13 +79,30 @@ class TestDataGenerator(object):
         'is_valid': True,
     }
 
+    # 2019-05-12 15:50:01 UTC
+    DEFAULT_REPO_UPDATED_DATE = 1557676201
+
     def repo(
-        self, store=True, repo_id='haiti',
+            self, store=True, repo_id='haiti',
             activation_status=model.Repo.ActivationStatus.ACTIVE):
         repo = model.Repo(key_name=repo_id, activation_status=activation_status)
         if store:
             repo.put()
         return repo
+
+    def setup_repo_config(
+            self,
+            repo_id='haiti',
+            updated_date=DEFAULT_REPO_UPDATED_DATE,
+            language_menu_options=['en', 'es'],
+            repo_titles={'en': 'Haiti', 'es': 'Haití'},
+            map_default_center=[123.45, 67.89]):
+        config.set_for_repo(
+            repo_id,
+            updated_date=updated_date,
+            language_menu_options=language_menu_options,
+            repo_titles=repo_titles,
+            map_default_center=map_default_center)
 
     def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):
         if not record_id:

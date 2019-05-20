@@ -49,26 +49,6 @@ class BaseFeedsHandler(utils.BaseHandler):
         self.set_auth()
 
 
-class Repo(BaseFeedsHandler):
-    TITLE = 'Person Finder Repository Feed'
-
-    repo_required = False
-    https_required = True
-    # For a deactivated repo, return an empty feed instead of an error page.
-    ignore_deactivation = True
-
-    def get(self):
-        repos = model.Repo.list_launched()
-        if self.repo:
-            repos = [self.repo] if self.repo in repos else []
-
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
-        atom.REPO_1_0.write_feed(
-            self.response.out, repos, self.request.url, self.TITLE,
-            get_latest_repo_updated_date(repos))
-        utils.log_api_action(self, model.ApiActionLog.REPO)
-
-
 class Person(BaseFeedsHandler):
     https_required = True
 

@@ -57,6 +57,8 @@ handlers:
   script: wsgi.application
 - url: /.*/admin.*
   script: wsgi.application
+- url: /.*/feeds/repo.*
+  script: wsgi.application
 - url: /.*/sitemap.*
   script: wsgi.application
 - url: /global/static.*
