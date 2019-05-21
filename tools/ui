@@ -30,10 +30,10 @@ case "$1" in
     ;;
 "buildtoae")
     npm run --prefix ui build
-    mkdir -p app/resources/static/ui_bundles
-    mv ui/dist/*-bundle.js app/resources/static/ui_bundles/
-    mv ui/dist/bundle.css app/resources/static/ui_bundles/bundle.css
-    cp -r --no-clobber ui/static/static/* app/resources/static/
+    mkdir -p app/resources/static/fixed/ui_bundles
+    mv ui/dist/*-bundle.js app/resources/static/fixed/ui_bundles/
+    mv ui/dist/bundle.css app/resources/static/fixed/ui_bundles/bundle.css
+    cp -r --no-clobber ui/static/static/* app/resources/static/fixed/
     ;;
 *)
     echo "Specify run, test, or buildtoae."
