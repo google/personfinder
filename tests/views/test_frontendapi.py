@@ -74,7 +74,7 @@ class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
         self.data_generator.repo()
 
     def test_post(self):
-        resp = self.client.post(
+        self.client.post(
             '/haiti/d/create',
             data={
                 'given_name': 'Matt',
