@@ -411,6 +411,7 @@ class Create extends Component {
         >
           <Input
             value={page.value}
+            name={'profile-url-' + index}
             onChange={(e) => this.updateProfilePageValue(index, e.target.value)}
           />
         </TextField>
@@ -635,6 +636,7 @@ class Create extends Component {
   renderAboutMeForm() {
     return (
       <div className='create-formwrapper'>
+        <input type='hidden' name='own_info' value='yes' />
         {this.renderIdentifyingInfoFields()}
         {this.renderStatusFields()}
       </div>

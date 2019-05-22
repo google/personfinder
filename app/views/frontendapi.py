@@ -17,6 +17,7 @@
 import django.http
 import simplejson
 
+import create
 import model
 import search.searcher
 import utils
@@ -81,3 +82,105 @@ class ResultsView(FrontendApiBaseView):
             # TODO(nworden): ask Travis/Pete if we should do something about
             # external photos here.
         }
+
+
+class CreateView(FrontendApiBaseView):
+    """View for creating a new record."""
+
+    def setup(self, request, *args, **kwargs):
+        super(CreateView, self).setup(request, *args, **kwargs)
+        self.params.read_values(
+            post_params={
+                'add_note': utils.validate_yes,
+                'age': utils.validate_age,
+                'alternate_family_names': utils.strip,
+                'alternate_given_names': utils.strip,
+                'author_email': utils.strip,
+                'author_made_contact': utils.validate_yes,
+                'author_name': utils.strip,
+                'author_phone': utils.strip,
+                'users_own_email': utils.strip,
+                'users_own_phone': utils.strip,
+                'clone': utils.validate_yes,
+                'description': utils.strip,
+                'email_of_found_person': utils.strip,
+                'family_name': utils.strip,
+                'given_name': utils.strip,
+                'home_city': utils.strip,
+                'home_country': utils.strip,
+                'home_neighborhood': utils.strip,
+                'home_postal_code': utils.strip,
+                'home_state': utils.strip,
+                'last_known_location': utils.strip,
+                'note_photo': utils.validate_image,
+                'note_photo_url': utils.strip,
+                'phone_of_found_person': utils.strip,
+                'photo': utils.validate_image,
+                'photo_url': utils.strip,
+                'referrer': utils.strip,
+                'sex': utils.validate_sex,
+                'source_date': utils.strip,
+                'source_name': utils.strip,
+                'source_url': utils.strip,
+                'status': utils.validate_status,
+                'text': utils.strip,
+                'own_info': utils.validate_yes,
+            })
+        if request.method == 'POST':
+            profile_urls = []
+            profile_field_index = 0
+            while True:
+                field_key = 'profile-url-%d' % profile_field_index
+                if field_key in self.request.POST:
+                    profile_urls.append(
+                        utils.strip(self.request.POST[field_key]))
+                    profile_field_index += 1
+                else:
+                    break
+            if profile_urls:
+                self.params['profile_urls'] = profile_urls
+
+    def post(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        person = create.create_person(
+            repo=self.env.repo,
+            config=self.env.config,
+            netloc='abc', # TODO
+            user_ip_address=self.request.META.get('REMOTE_ADDR'),
+            given_name=self.params.given_name,
+            family_name=self.params.family_name,
+            own_info=self.params.own_info,
+            clone=self.params.clone,
+            status=self.params.status,
+            source_name=self.params.source_name,
+            source_url=self.params.source_url,
+            source_date=self.params.source_date,
+            referrer=self.params.referrer,
+            author_name=self.params.author_name,
+            author_email=self.params.author_email,
+            author_phone=self.params.author_phone,
+            author_made_contact=self.params.author_made_contact,
+            users_own_email=self.params.your_own_email,
+            users_own_phone=self.params.your_own_phone,
+            alternate_given_names=self.params.alternate_given_names,
+            alternate_family_names=self.params.alternate_family_names,
+            home_neighborhood=self.params.home_neighborhood,
+            home_city=self.params.home_city,
+            home_state=self.params.home_state,
+            home_postal_code=self.params.home_postal_code,
+            home_country=self.params.home_country,
+            age=self.params.age,
+            sex=self.params.sex,
+            description=self.params.description,
+            photo=self.params.photo or None,
+            photo_url=self.params.photo_url,
+            note_photo=self.params.note_photo or None,
+            note_photo_url=self.params.note_photo_url,
+            profile_urls=self.params.profile_urls,
+            add_note=self.params.add_note,
+            text=self.params.text,
+            email_of_found_person=self.params.email_of_found_person,
+            phone_of_found_person=self.params.phone_of_found_person,
+            last_known_location=self.params.last_known_location,
+            url_builder=self.build_absolute_uri)
+        return self._json_response({'record_id': person.record_id})

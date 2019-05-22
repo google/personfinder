@@ -141,6 +141,7 @@ def create_person(
 
     expiry_date = days_to_date(expiry_option or config.default_expiry_days)
 
+    profile_urls = profile_urls or []
     profile_urls = filter(lambda url: url, profile_urls)
     url_validator = URLValidator(schemes=['http', 'https'])
     for profile_url in profile_urls:
@@ -188,7 +189,7 @@ def create_person(
         family_name=family_name,
         full_name=get_full_name(given_name, family_name, config),
         alternate_names=get_full_name(
-            alternate_given_names, alternate_family_names, config),
+            alternate_given_names or '', alternate_family_names or '', config),
         description=description,
         sex=sex,
         age=age,
