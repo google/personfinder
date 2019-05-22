@@ -477,13 +477,32 @@ class Create extends Component {
   }
 
   renderTextFieldAndInput(formKey, inputName, labelMessage) {
-    return this.renderTextFieldOrAreaAndInput(
-        formKey, inputName, labelMessage, false);
+    return (
+        <TextField
+          label={this.props.intl.formatMessage(labelMessage)}
+          outlined
+        >
+          <Input
+            name={inputName}
+            value={this.state[formKey]}
+            onChange={(e) => this.setState({[formKey]: e.target.value})} />
+        </TextField>
+    );
   }
 
   renderTextAreaAndInput(formKey, inputName, labelMessage) {
-    return this.renderTextFieldOrAreaAndInput(
-        formKey, inputName, labelMessage, true);
+    return (
+        <TextField
+          label={this.props.intl.formatMessage(labelMessage)}
+          outlined
+          textarea
+        >
+          <Input
+            name={inputName}
+            value={this.state[formKey]}
+            onChange={(e) => this.setState({[formKey]: e.target.value})} />
+        </TextField>
+    );
   }
 
   /*
