@@ -36,7 +36,7 @@ const RESULTS_DATA = [
       fullNames: ['Fred Fredricks'],
       alternateNames: ['Freddy'],
       timestampType: 'creation',
-      timestamp: '2019-05-15T17:12:23.936282',
+      timestamp: '2019-05-15T17:12:23.936282Z',
       localPhotoUrl: null,
     },
     {
@@ -44,7 +44,7 @@ const RESULTS_DATA = [
       fullNames: ['Alan Smith', 'Alan Herbert Smith'],
       alternateNames: [],
       timestampType: 'update',
-      timestamp: '2019-05-16T16:35:23.936282',
+      timestamp: '2019-05-16T16:35:23.936282Z',
       localPhotoUrl: 'http://www.example.com/notevenreallylocal.jpg',
     },
   ]
