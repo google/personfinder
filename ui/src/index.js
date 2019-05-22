@@ -29,4 +29,4 @@ ReactDOM.render(
         messages={require(`./translations/${BUNDLE_LANGUAGE}.js`)}>
       <App />
     </IntlProvider>,
-    document.getElementById("root"));
+    document.getElementById('root'));

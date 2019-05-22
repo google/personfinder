@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import config
-from model import Person
+import model
 import photo
 from search.searcher import Searcher
 import simplejson
@@ -57,28 +57,6 @@ class Repo(FrontendApiHandler):
         self._return_json(json)
 
 
-class Results(FrontendApiHandler):
-
-    repo_required = True
-
-    MAX_RESULTS = 100
-
-    def _result_to_dict(self, person):
-        # TODO: implement this
-        return {
-            'personId': person.record_id,
-            'name': 'Hardcoded name',
-        }
-
-    def get(self):
-        searcher = Searcher(
-            self.repo, config.get('enable_fulltext_search'),
-            Results.MAX_RESULTS)
-        results = searcher.search(
-            self.params.query_name or self.params.query)
-        self._return_json([self._result_to_dict(r) for r in results])
-
-
 class Person(FrontendApiHandler):
 
     repo_required = True
@@ -116,7 +94,7 @@ class Create(FrontendApiHandler):
 
     def post(self):
         # TODO: factor all this out somewhere shared
-        person = Person.create_original(
+        person = model.Person.create_original(
             self.repo,
             entry_date=utils.get_utcnow(),
             family_name=self.params.family_name,

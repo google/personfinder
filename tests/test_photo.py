@@ -46,7 +46,7 @@ class PhotoTests(unittest.TestCase):
             photo.Handler, 'photo', environ=os.environ)
         self.assertEquals(
             'http://example.appspot.com/haiti/photo?id=%s' % id,
-            photo.get_photo_url(entity, ph))
+            photo.get_photo_url(entity, 'haiti', ph.transitionary_get_url))
 
 
 if __name__ == '__main__':

@@ -97,7 +97,9 @@ class Handler(BaseHandler):
         photo, photo_url = (None, self.params.note_photo_url)
         if self.params.note_photo is not None:
             try:
-                photo, photo_url = create_photo(self.params.note_photo, self)
+                photo, photo_url = create_photo(
+                    self.params.note_photo, self.repo,
+                    self.transitionary_get_url)
             except PhotoError, e:
                 return self.error(400, e.message)
             photo.put()
