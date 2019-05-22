@@ -145,7 +145,6 @@ class CreateView(FrontendApiBaseView):
         person = create.create_person(
             repo=self.env.repo,
             config=self.env.config,
-            netloc='abc', # TODO
             user_ip_address=self.request.META.get('REMOTE_ADDR'),
             given_name=self.params.given_name,
             family_name=self.params.family_name,

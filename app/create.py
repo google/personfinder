@@ -20,7 +20,8 @@ import simplejson
 
 from django.core.validators import URLValidator, ValidationError
 from django.utils.translation import ugettext as _
-from const import NOTE_STATUS_TEXT
+
+import const
 
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
@@ -53,7 +54,6 @@ class FlaggedNoteException(Exception):
 def create_person(
         repo,
         config,
-        netloc,
         user_ip_address,
         given_name,
         family_name,
@@ -91,6 +91,7 @@ def create_person(
         phone_of_found_person,
         last_known_location,
         url_builder,
+        source_domain=const.HOME_DOMAIN,
         should_fuzzify_age=True,
         expiry_option=None):
     now = get_utcnow()
@@ -175,9 +176,9 @@ def create_person(
     if not clone:
         # record originated here
         if referrer:
-            source_name = "%s (referred by %s)" % (netloc, referrer)
+            source_name = "%s (referred by %s)" % (source_domain, referrer)
         else:
-            source_name = netloc
+            source_name = source_domain
 
     if age and should_fuzzify_age:
         age = fuzzify_age(age)
@@ -305,7 +306,6 @@ class Handler(BaseHandler):
             person = create_person(
                 repo=self.repo,
                 config=self.config,
-                netloc=self.env.netloc,
                 user_ip_address=self.request.remote_addr,
                 given_name=self.params.given_name,
                 family_name=self.params.family_name,
@@ -342,6 +342,7 @@ class Handler(BaseHandler):
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
+                source_domain=self.env.netloc,
                 expiry_option=self.params.expiry_option,
                 url_builder=self.transitionary_get_url)
         except FlaggedNoteException as e:
