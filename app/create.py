@@ -37,6 +37,254 @@ def days_to_date(days):
     return days and get_utcnow() + timedelta(days=days)
 
 
+class CreationError(Exception):
+
+    def __init__(self, user_readable_message, message=None):
+        super(CreationError, self).__init__(message)
+        self.user_readable_message = user_readable_message
+
+class FlaggedNoteException(Exception):
+
+    def __init__(self, note, message=None):
+        super(FlaggedNoteException, self).__init__(message)
+        self.note = note
+
+
+def create_person(
+        repo,
+        config,
+        netloc,
+        user_ip_address,
+        given_name,
+        family_name,
+        own_info,
+        clone,
+        status,
+        source_name,
+        source_url,
+        source_date,
+        referrer,
+        author_name,
+        author_email,
+        author_phone,
+        author_made_contact,
+        users_own_email,
+        users_own_phone,
+        alternate_given_names,
+        alternate_family_names,
+        home_neighborhood,
+        home_city,
+        home_state,
+        home_postal_code,
+        home_country,
+        age,
+        sex,
+        description,
+        photo,
+        photo_url,
+        note_photo,
+        note_photo_url,
+        profile_urls,
+        add_note,
+        text,
+        email_of_found_person,
+        phone_of_found_person,
+        last_known_location,
+        url_builder,
+        should_fuzzify_age=True,
+        expiry_option=None):
+    now = get_utcnow()
+    # Several messages here exceed the 80-column limit because django's
+    # makemessages script can't handle messages split across lines. :(
+    if config.use_family_name:
+        if not (given_name and family_name):
+            raise CreationError(_('The Given name and Family name are both required.  Please go back and try again.'))
+    else:
+        if not given_name:
+            raise CreationError(_('Name is required.  Please go back and try again.'))
+
+    # If user is inputting his/her own information, set some params automatically
+    if own_info == 'yes':
+        author_name = given_name
+        status = 'is_note_author'
+        author_made_contact = 'yes'
+        if users_own_email:
+            author_email = users_own_email
+        if users_own_phone:
+            author_phone = users_own_phone
+
+    if (author_email and not validate_email(author_email)):
+        raise CreationError(_('The email address you entered appears to be invalid.'))
+
+    else:
+        if not author_name:
+            if clone:
+                raise CreationError(_('The Original author\'s name is required.  Please go back and try again.'))
+            else:
+                raise CreationError(_('Your name is required in the "Source" section.  Please go back and try again.'))
+
+    if add_note:
+        if not text:
+            raise CreationError(_('Message is required. Please go back and try again.'))
+        if status == 'is_note_author' and not author_made_contact:
+            raise CreationError(_('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
+        if status == 'believed_dead' and not config.allow_believed_dead_via_ui:
+            raise CreationError(_('Not authorized to post notes with the status "I have received information that this person is dead".'))
+
+    if source_date:
+        try:
+            source_date = validate_date(source_date)
+        except ValueError:
+            raise CreationError(_('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
+        if source_date > now:
+            raise CreationError(_('Date cannot be in the future.  Please go back and try again.'))
+
+    expiry_date = days_to_date(expiry_option or config.default_expiry_days)
+
+    profile_urls = filter(lambda url: url, profile_urls)
+    url_validator = URLValidator(schemes=['http', 'https'])
+    for profile_url in profile_urls:
+        try:
+            url_validator(profile_url)
+        except ValidationError:
+            raise CreationError(_('Please only enter valid profile URLs.'))
+
+    # If nothing was uploaded, just use the photo_url that was provided.
+    try:
+        # If a photo was uploaded, create a Photo entry and get the URL
+        # where we serve it.
+        if photo is not None:
+            photo, photo_url = create_photo(photo, repo, url_builder)
+        if note_photo is not None:
+            note_photo, note_photo_url = create_photo(
+                note_photo, repo, url_builder)
+    except PhotoError, e:
+        raise CreationError(e.message)
+    # Finally, store the Photo. Past this point, we should NOT self.error.
+    if photo:
+        photo.put()
+    if note_photo:
+        note_photo.put()
+
+    # Person records have to have a source_date; if none entered, use now.
+    source_date = source_date or now
+
+    # Determine the source name, or fill it in if the record is original
+    # (i.e. created for the first time here, not copied from elsewhere).
+    if not clone:
+        # record originated here
+        if referrer:
+            source_name = "%s (referred by %s)" % (netloc, referrer)
+        else:
+            source_name = netloc
+
+    if age and should_fuzzify_age:
+        age = fuzzify_age(age)
+    person = Person.create_original(
+        repo,
+        entry_date=now,
+        expiry_date=expiry_date,
+        given_name=given_name,
+        family_name=family_name,
+        full_name=get_full_name(given_name, family_name, config),
+        alternate_names=get_full_name(
+            alternate_given_names, alternate_family_names, config),
+        description=description,
+        sex=sex,
+        age=age,
+        home_city=home_city,
+        home_state=home_state,
+        home_postal_code=home_postal_code,
+        home_neighborhood=home_neighborhood,
+        home_country=home_country,
+        profile_urls='\n'.join(profile_urls),
+        author_name=author_name,
+        author_phone=author_phone,
+        author_email=author_email,
+        source_url=source_url,
+        source_date=source_date,
+        source_name=source_name,
+        photo=photo,
+        photo_url=photo_url
+    )
+    person.update_index(['old', 'new'])
+
+    if add_note:
+        spam_detector = SpamDetector(config.bad_words)
+        spam_score = spam_detector.estimate_spam_score(text)
+        if (spam_score > 0):
+            note = NoteWithBadWords.create_original(
+                repo,
+                entry_date=get_utcnow(),
+                person_record_id=person.record_id,
+                author_name=author_name,
+                author_email=author_email,
+                author_phone=author_phone,
+                source_date=source_date,
+                author_made_contact=bool(author_made_contact),
+                status=status,
+                email_of_found_person=email_of_found_person,
+                phone_of_found_person=phone_of_found_person,
+                last_known_location=last_known_location,
+                text=text,
+                photo=note_photo,
+                photo_url=note_photo_url,
+                spam_score=spam_score,
+                confirmed=False)
+
+            # Write the new NoteWithBadWords to the datastore
+            note.put_new()
+            # Write the person record to datastore before redirect
+            db.put(person)
+            UserActionLog.put_new('add', person, copy_properties=False)
+
+            # When the note is detected as spam, we do not update person
+            # record with this note or log action. We ask the note author
+            # for confirmation first.
+            raise FlaggedNoteException(note)
+        else:
+            note = Note.create_original(
+                repo,
+                entry_date=get_utcnow(),
+                person_record_id=person.record_id,
+                author_name=author_name,
+                author_email=author_email,
+                author_phone=author_phone,
+                source_date=source_date,
+                author_made_contact=bool(author_made_contact),
+                status=status,
+                email_of_found_person=email_of_found_person,
+                phone_of_found_person=phone_of_found_person,
+                last_known_location=last_known_location,
+                text=text,
+                photo=note_photo,
+                photo_url=note_photo_url)
+
+            # Write the new Note to the datastore
+            note.put_new()
+            person.update_from_note(note)
+
+        # Specially log 'believed_dead'.
+        if note.status == 'believed_dead':
+            UserActionLog.put_new(
+                'mark_dead', note, person.primary_full_name,
+                user_ip_address)
+
+    # Write the person record to datastore
+    person.put_new()
+
+    # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
+    if not person.source_url and not clone:
+        # Put again with the URL, now that we have a person_record_id.
+        person.source_url = url_builder(
+            '/view', repo, params={'id': person.record_id})
+        db.put(person)
+
+    # TODO(ryok): batch-put person, note, photo, note_photo here.
+
+    return person
+
+
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
@@ -49,212 +297,59 @@ class Handler(BaseHandler):
                     onload_function='view_page_loaded')
 
     def post(self):
-        now = get_utcnow()
-
-        # Several messages here exceed the 80-column limit because django's
-        # makemessages script can't handle messages split across lines. :(
-        if self.config.use_family_name:
-            if not (self.params.given_name and self.params.family_name):
-                return self.error(400, _('The Given name and Family name are both required.  Please go back and try again.'))
-        else:
-            if not self.params.given_name:
-                return self.error(400, _('Name is required.  Please go back and try again.'))
-
-        if (self.params.author_email and
-            not validate_email(self.params.author_email)):
-            return self.error(400, _('The email address you entered appears to be invalid.'))
-
-        # If user is inputting his/her own information, set some params automatically
-        if self.params.own_info == 'yes':
-            self.params.author_name = self.params.given_name
-            self.params.status = 'is_note_author'
-            self.params.author_made_contact = 'yes'
-            if self.params.your_own_email:
-                self.params.author_email = self.params.your_own_email
-            if self.params.your_own_phone:
-                self.params.author_phone = self.params.your_own_phone
-
-        else:
-            if not self.params.author_name:
-                if self.params.clone:
-                    return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
-                else:
-                    return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
-
-        if self.params.add_note:
-            if not self.params.text:
-                return self.error(400, _('Message is required. Please go back and try again.'))
-            if (self.params.status == 'is_note_author' and
-                not self.params.author_made_contact):
-                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-            if (self.params.status == 'believed_dead' and
-                not self.config.allow_believed_dead_via_ui):
-                return self.error(400, _('Not authorized to post notes with the status "I have received information that this person is dead".'))
-
-        source_date = None
-        if self.params.source_date:
-            try:
-                source_date = validate_date(self.params.source_date)
-            except ValueError:
-                return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > now:
-                return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
-
-        expiry_date = days_to_date(self.params.expiry_option or
-                                   self.config.default_expiry_days)
-
-        profile_urls = filter(
-            lambda url: url, [self.params.profile_url1,
-                              self.params.profile_url2,
-                              self.params.profile_url3])
-        url_validator = URLValidator(schemes=['http', 'https'])
-        for profile_url in profile_urls:
-            try:
-                url_validator(profile_url)
-            except ValidationError:
-                return self.error(
-                    400, _('Please only enter valid profile URLs.'))
-
-        # If nothing was uploaded, just use the photo_url that was provided.
-        photo, photo_url = (None, self.params.photo_url)
-        note_photo, note_photo_url = (None, self.params.note_photo_url)
+        profile_urls = [self.params.profile_url1,
+                        self.params.profile_url2,
+                        self.params.profile_url3]
         try:
-            # If a photo was uploaded, create a Photo entry and get the URL
-            # where we serve it.
-            if self.params.photo is not None:
-                photo, photo_url = create_photo(self.params.photo, self)
-            if self.params.note_photo is not None:
-                note_photo, note_photo_url = \
-                    create_photo(self.params.note_photo, self)
-        except PhotoError, e:
-            return self.error(400, e.message)
-        # Finally, store the Photo. Past this point, we should NOT self.error.
-        if photo:
-            photo.put()
-        if note_photo:
-            note_photo.put()
-
-        # Person records have to have a source_date; if none entered, use now.
-        source_date = source_date or now
-
-        # Determine the source name, or fill it in if the record is original
-        # (i.e. created for the first time here, not copied from elsewhere).
-        source_name = self.params.source_name
-        if not self.params.clone:
-            # record originated here
-            if self.params.referrer:
-                source_name = "%s (referred by %s)" % (self.env.netloc,
-                                                       self.params.referrer)
-            else:
-                source_name = self.env.netloc
-
-        person = Person.create_original(
-            self.repo,
-            entry_date=now,
-            expiry_date=expiry_date,
-            given_name=self.params.given_name,
-            family_name=self.params.family_name,
-            full_name=get_full_name(self.params.given_name,
-                                    self.params.family_name,
-                                    self.config),
-            alternate_names=get_full_name(self.params.alternate_given_names,
-                                          self.params.alternate_family_names,
-                                          self.config),
-            description=self.params.description,
-            sex=self.params.sex,
-            date_of_birth=self.params.date_of_birth,
-            age=fuzzify_age(self.params.age),
-            home_city=self.params.home_city,
-            home_state=self.params.home_state,
-            home_postal_code=self.params.home_postal_code,
-            home_neighborhood=self.params.home_neighborhood,
-            home_country=self.params.home_country,
-            profile_urls='\n'.join(profile_urls),
-            author_name=self.params.author_name,
-            author_phone=self.params.author_phone,
-            author_email=self.params.author_email,
-            source_url=self.params.source_url,
-            source_date=source_date,
-            source_name=source_name,
-            photo=photo,
-            photo_url=photo_url
-        )
-        person.update_index(['old', 'new'])
-
-        if self.params.add_note:
-            spam_detector = SpamDetector(self.config.bad_words)
-            spam_score = spam_detector.estimate_spam_score(self.params.text)
-            if (spam_score > 0):
-                note = NoteWithBadWords.create_original(
-                    self.repo,
-                    entry_date=get_utcnow(),
-                    person_record_id=person.record_id,
-                    author_name=self.params.author_name,
-                    author_email=self.params.author_email,
-                    author_phone=self.params.author_phone,
-                    source_date=source_date,
-                    author_made_contact=bool(self.params.author_made_contact),
-                    status=self.params.status,
-                    email_of_found_person=self.params.email_of_found_person,
-                    phone_of_found_person=self.params.phone_of_found_person,
-                    last_known_location=self.params.last_known_location,
-                    text=self.params.text,
-                    photo=note_photo,
-                    photo_url=note_photo_url,
-                    spam_score=spam_score,
-                    confirmed=False)
-
-                # Write the new NoteWithBadWords to the datastore
-                note.put_new()
-                # Write the person record to datastore before redirect
-                db.put(person)
-                UserActionLog.put_new('add', person, copy_properties=False)
-
-                # When the note is detected as spam, we do not update person
-                # record with this note or log action. We ask the note author
-                # for confirmation first.
-                return self.redirect('/post_flagged_note',
-                                     id=note.get_record_id(),
-                                     author_email=note.author_email,
-                                     repo=self.repo)
-            else:
-                note = Note.create_original(
-                    self.repo,
-                    entry_date=get_utcnow(),
-                    person_record_id=person.record_id,
-                    author_name=self.params.author_name,
-                    author_email=self.params.author_email,
-                    author_phone=self.params.author_phone,
-                    source_date=source_date,
-                    author_made_contact=bool(self.params.author_made_contact),
-                    status=self.params.status,
-                    email_of_found_person=self.params.email_of_found_person,
-                    phone_of_found_person=self.params.phone_of_found_person,
-                    last_known_location=self.params.last_known_location,
-                    text=self.params.text,
-                    photo=note_photo,
-                    photo_url=note_photo_url)
-
-                # Write the new Note to the datastore
-                note.put_new()
-                person.update_from_note(note)
-
-            # Specially log 'believed_dead'.
-            if note.status == 'believed_dead':
-                UserActionLog.put_new(
-                    'mark_dead', note, person.primary_full_name,
-                    self.request.remote_addr)
-
-        # Write the person record to datastore
-        person.put_new()
-
-        # TODO(ryok): we could do this earlier so we don't neet to db.put twice.
-        if not person.source_url and not self.params.clone:
-            # Put again with the URL, now that we have a person_record_id.
-            person.source_url = self.get_url('/view', id=person.record_id)
-            db.put(person)
-
-        # TODO(ryok): batch-put person, note, photo, note_photo here.
+            person = create_person(
+                repo=self.repo,
+                config=self.config,
+                netloc=self.env.netloc,
+                user_ip_address=self.request.remote_addr,
+                given_name=self.params.given_name,
+                family_name=self.params.family_name,
+                own_info=self.params.own_info,
+                clone=self.params.clone,
+                status=self.params.status,
+                source_name=self.params.source_name,
+                source_url=self.params.source_url,
+                source_date=self.params.source_date,
+                referrer=self.params.referrer,
+                author_name=self.params.author_name,
+                author_email=self.params.author_email,
+                author_phone=self.params.author_phone,
+                author_made_contact=self.params.author_made_contact,
+                users_own_email=self.params.your_own_email,
+                users_own_phone=self.params.your_own_phone,
+                alternate_given_names=self.params.alternate_given_names,
+                alternate_family_names=self.params.alternate_family_names,
+                home_neighborhood=self.params.home_neighborhood,
+                home_city=self.params.home_city,
+                home_state=self.params.home_state,
+                home_postal_code=self.params.home_postal_code,
+                home_country=self.params.home_country,
+                age=self.params.age,
+                sex=self.params.sex,
+                description=self.params.description,
+                photo=self.params.photo,
+                photo_url=self.params.photo_url,
+                note_photo=self.params.note_photo,
+                note_photo_url=self.params.note_photo_url,
+                profile_urls=profile_urls,
+                add_note=self.params.add_note,
+                text=self.params.text,
+                email_of_found_person=self.params.email_of_found_person,
+                phone_of_found_person=self.params.phone_of_found_person,
+                last_known_location=self.params.last_known_location,
+                expiry_option=self.params.expiry_option,
+                url_builder=self.transitionary_get_url)
+        except FlaggedNoteException as e:
+            return self.redirect('/post_flagged_note',
+                                 id=e.note.get_record_id(),
+                                 author_email=e.note.author_email,
+                                 repo=self.repo)
+        except CreationError as e:
+            return self.error(400, e.user_readable_message)
 
         # if unchecked the subscribe updates about your own record, skip the subscribe page
         if not self.params.subscribe_own_info:

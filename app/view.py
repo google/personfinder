@@ -15,7 +15,6 @@
 from google.appengine.api import datastore_errors
 
 from model import *
-from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend

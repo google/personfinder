@@ -15,6 +15,8 @@
 import logging
 import unicodedata
 
+from django.utils.translation import ugettext as _
+
 from model import *
 from utils import *
 from search.searcher import Searcher
