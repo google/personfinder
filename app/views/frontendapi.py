@@ -131,12 +131,11 @@ class CreateView(FrontendApiBaseView):
             profile_field_index = 0
             # We surely don't need to check profile_field_indices greater than
             # the size of the POST dictionary.
-            while profile_field_index < self.request.POST.size():
+            for profile_field_index in range(self.request.POST.size()):
                 field_key = 'profile-url-%d' % profile_field_index
                 if field_key in self.request.POST:
                     profile_urls.append(
                         utils.strip(self.request.POST[field_key]))
-                    profile_field_index += 1
                 else:
                     break
             if profile_urls:
