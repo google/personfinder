@@ -76,7 +76,7 @@ class ResultsView(FrontendApiBaseView):
             'fullNames': person.full_name_list,
             'alternateNames': person.alternate_names_list,
             'timestampType': timestamp_type,
-            'timestamp': timestamp.isoformat(),
+            'timestamp': '%sZ' % timestamp.isoformat(),
             'localPhotoUrl': local_photo_url,
             # TODO(nworden): ask Travis/Pete if we should do something about
             # external photos here.
