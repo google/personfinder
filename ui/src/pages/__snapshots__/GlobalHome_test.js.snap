@@ -68,9 +68,11 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
             </span>
           </FormattedMessage>
         </p>
-        <RippledComponent
+        <WithRipple(Button)
           className="pf-button-secondary globalhome-howsitworkbutton"
+          dense={false}
           disabled={false}
+          icon={null}
           initRipple={[Function]}
           onBlur={[Function]}
           onClick={[Function]}
@@ -81,13 +83,17 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           onTouchStart={[Function]}
+          outlined={false}
           raised={true}
           style={Object {}}
           unbounded={false}
+          unelevated={false}
         >
-          <Component
+          <Button
             className="pf-button-secondary globalhome-howsitworkbutton"
+            dense={false}
             disabled={false}
+            icon={null}
             initRipple={[Function]}
             onBlur={[Function]}
             onClick={[Function]}
@@ -98,8 +104,11 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchStart={[Function]}
+            outlined={false}
             raised={true}
             style={Object {}}
+            unbounded={false}
+            unelevated={false}
           >
             <button
               className="mdc-button pf-button-secondary globalhome-howsitworkbutton mdc-button--raised"
@@ -115,25 +124,30 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
               onTouchStart={[Function]}
               style={Object {}}
             >
-              <span
-                className="mdc-button__label"
-              >
-                How does it work?
-              </span>
+              How does it work?
             </button>
-          </Component>
-        </RippledComponent>
+          </Button>
+        </WithRipple(Button)>
       </div>
-      <Grid>
+      <Grid
+        className=""
+        fixedColumnWidth={false}
+        tag="div"
+      >
         <div
           className="mdc-layout-grid"
         >
-          <Row>
+          <Row
+            className=""
+            tag="div"
+          >
             <div
               className="mdc-layout-grid__inner"
             >
               <Cell
+                className=""
                 key="haiti"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -187,11 +201,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -206,7 +221,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -220,6 +235,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -271,8 +287,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -280,7 +296,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="japan"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -334,11 +352,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -353,7 +372,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -367,6 +386,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -418,8 +438,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -427,7 +447,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="albany"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -481,11 +503,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -500,7 +523,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -514,6 +537,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -565,8 +589,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -574,7 +598,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="seattle"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -628,11 +654,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -647,7 +674,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -661,6 +688,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -712,8 +740,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -721,7 +749,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="montreal"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -775,11 +805,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -794,7 +825,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -808,6 +839,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -859,8 +891,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -868,7 +900,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="belgium"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -922,11 +956,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -941,7 +976,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -955,6 +990,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -1006,8 +1042,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -1015,7 +1051,9 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 </div>
               </Cell>
               <Cell
+                className=""
                 key="boise"
+                tag="div"
               >
                 <div
                   className="mdc-layout-grid__cell"
@@ -1069,11 +1107,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                     >
                       <Card
                         className="repocard"
+                        outlined={false}
                       >
                         <div
                           className="mdc-card repocard"
                         >
-                          <RippledComponent
+                          <WithRipple(PrimaryContentBase)
                             className="repocard-content"
                             disabled={false}
                             onBlur={[Function]}
@@ -1088,7 +1127,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             style={Object {}}
                             unbounded={false}
                           >
-                            <Component
+                            <PrimaryContentBase
                               className="repocard-content"
                               disabled={false}
                               initRipple={[Function]}
@@ -1102,6 +1141,7 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
                               style={Object {}}
+                              unbounded={false}
                             >
                               <div
                                 className="mdc-card__primary-action repocard-content"
@@ -1153,8 +1193,8 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   </p>
                                 </div>
                               </div>
-                            </Component>
-                          </RippledComponent>
+                            </PrimaryContentBase>
+                          </WithRipple(PrimaryContentBase)>
                         </div>
                       </Card>
                     </RepoCardImpl>
@@ -1188,22 +1228,32 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
             </span>
           </div>
         </EndBarHeader>
-        <Grid>
+        <Grid
+          className=""
+          fixedColumnWidth={false}
+          tag="div"
+        >
           <div
             className="mdc-layout-grid"
           >
-            <Row>
+            <Row
+              className=""
+              tag="div"
+            >
               <div
                 className="mdc-layout-grid__inner"
               >
                 <Cell
+                  className=""
                   desktopColumns={6}
+                  tag="div"
                 >
                   <div
                     className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop"
                   >
                     <Card
                       className="globalhome-thirdpartycard"
+                      outlined={false}
                     >
                       <div
                         className="mdc-card globalhome-thirdpartycard"
@@ -1240,17 +1290,24 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             </FormattedHTMLMessage>
                           </p>
                         </div>
-                        <Actions>
+                        <Actions
+                          className=""
+                          fullBleed={false}
+                        >
                           <div
                             className="mdc-card__actions"
                           >
-                            <ActionButtons>
+                            <ActionButtons
+                              className=""
+                            >
                               <div
                                 className="mdc-card__action-buttons"
                               >
-                                <RippledComponent
+                                <WithRipple(Button)
                                   className="pf-button-secondary mdc-card__action mdc-card__action--button"
+                                  dense={false}
                                   disabled={false}
+                                  icon={null}
                                   initRipple={[Function]}
                                   key=".0"
                                   onBlur={[Function]}
@@ -1262,13 +1319,17 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   onMouseUp={[Function]}
                                   onTouchEnd={[Function]}
                                   onTouchStart={[Function]}
+                                  outlined={false}
                                   raised={true}
                                   style={Object {}}
                                   unbounded={false}
+                                  unelevated={false}
                                 >
-                                  <Component
+                                  <Button
                                     className="pf-button-secondary mdc-card__action mdc-card__action--button"
+                                    dense={false}
                                     disabled={false}
+                                    icon={null}
                                     initRipple={[Function]}
                                     onBlur={[Function]}
                                     onClick={[Function]}
@@ -1279,8 +1340,11 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                     onMouseUp={[Function]}
                                     onTouchEnd={[Function]}
                                     onTouchStart={[Function]}
+                                    outlined={false}
                                     raised={true}
                                     style={Object {}}
+                                    unbounded={false}
+                                    unelevated={false}
                                   >
                                     <button
                                       className="mdc-button pf-button-secondary mdc-card__action mdc-card__action--button mdc-button--raised"
@@ -1296,14 +1360,10 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                       onTouchStart={[Function]}
                                       style={Object {}}
                                     >
-                                      <span
-                                        className="mdc-button__label"
-                                      >
-                                        Learn how
-                                      </span>
+                                      Learn how
                                     </button>
-                                  </Component>
-                                </RippledComponent>
+                                  </Button>
+                                </WithRipple(Button)>
                               </div>
                             </ActionButtons>
                           </div>
@@ -1313,13 +1373,16 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                   </div>
                 </Cell>
                 <Cell
+                  className=""
                   desktopColumns={6}
+                  tag="div"
                 >
                   <div
                     className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop"
                   >
                     <Card
                       className="globalhome-thirdpartycard"
+                      outlined={false}
                     >
                       <div
                         className="mdc-card globalhome-thirdpartycard"
@@ -1356,17 +1419,24 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             </FormattedHTMLMessage>
                           </p>
                         </div>
-                        <Actions>
+                        <Actions
+                          className=""
+                          fullBleed={false}
+                        >
                           <div
                             className="mdc-card__actions"
                           >
-                            <ActionButtons>
+                            <ActionButtons
+                              className=""
+                            >
                               <div
                                 className="mdc-card__action-buttons"
                               >
-                                <RippledComponent
+                                <WithRipple(Button)
                                   className="pf-button-secondary mdc-card__action mdc-card__action--button"
+                                  dense={false}
                                   disabled={false}
+                                  icon={null}
                                   initRipple={[Function]}
                                   key=".0"
                                   onBlur={[Function]}
@@ -1378,13 +1448,17 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                   onMouseUp={[Function]}
                                   onTouchEnd={[Function]}
                                   onTouchStart={[Function]}
+                                  outlined={false}
                                   raised={true}
                                   style={Object {}}
                                   unbounded={false}
+                                  unelevated={false}
                                 >
-                                  <Component
+                                  <Button
                                     className="pf-button-secondary mdc-card__action mdc-card__action--button"
+                                    dense={false}
                                     disabled={false}
+                                    icon={null}
                                     initRipple={[Function]}
                                     onBlur={[Function]}
                                     onClick={[Function]}
@@ -1395,8 +1469,11 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                     onMouseUp={[Function]}
                                     onTouchEnd={[Function]}
                                     onTouchStart={[Function]}
+                                    outlined={false}
                                     raised={true}
                                     style={Object {}}
+                                    unbounded={false}
+                                    unelevated={false}
                                   >
                                     <button
                                       className="mdc-button pf-button-secondary mdc-card__action mdc-card__action--button mdc-button--raised"
@@ -1412,14 +1489,10 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                                       onTouchStart={[Function]}
                                       style={Object {}}
                                     >
-                                      <span
-                                        className="mdc-button__label"
-                                      >
-                                        Get started
-                                      </span>
+                                      Get started
                                     </button>
-                                  </Component>
-                                </RippledComponent>
+                                  </Button>
+                                </WithRipple(Button)>
                               </div>
                             </ActionButtons>
                           </div>

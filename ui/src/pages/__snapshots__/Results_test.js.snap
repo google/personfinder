@@ -198,11 +198,15 @@ exports[`testing Results snapshot test for Results 1`] = `
               dense={false}
               floatingLabelClassName=""
               fullWidth={false}
+              helperText={null}
+              isRtl={false}
               label="Search for a person"
+              leadingIcon={null}
               lineRippleClassName=""
               notchedOutlineClassName=""
               outlined={true}
               textarea={false}
+              trailingIcon={null}
             >
               <div
                 className="mdc-text-field searchbar mdc-text-field--outlined"
@@ -230,6 +234,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                         "hasLabel": [Function],
                         "hasOutline": [Function],
                         "isFocused": [Function],
+                        "isRtl": [Function],
                         "notchOutline": [Function],
                         "registerInputInteractionHandler": [Function],
                         "registerTextFieldInteractionHandler": [Function],
@@ -238,8 +243,10 @@ exports[`testing Results snapshot test for Results 1`] = `
                         "setLineRippleTransformOrigin": [Function],
                         "shakeLabel": [Function],
                       },
-                      "characterCounter_": undefined,
-                      "helperText_": undefined,
+                      "helperText_": Object {
+                        "setValidity": [Function],
+                        "showToScreenReader": [Function],
+                      },
                       "inputBlurHandler_": [Function],
                       "inputFocusHandler_": [Function],
                       "inputInputHandler_": [Function],
@@ -250,6 +257,7 @@ exports[`testing Results snapshot test for Results 1`] = `
                       "setPointerXOffset_": [Function],
                       "textFieldInteractionHandler_": [Function],
                       "trailingIcon_": undefined,
+                      "useCustomValidityChecking_": false,
                       "useNativeValidation_": true,
                       "validationAttributeChangeHandler_": [Function],
                       "validationObserver_": undefined,
@@ -257,19 +265,22 @@ exports[`testing Results snapshot test for Results 1`] = `
                   }
                   handleFocusChange={[Function]}
                   handleValueChange={[Function]}
-                  id=""
+                  id={null}
                   inputType="input"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
+                  onMouseDown={[Function]}
+                  onTouchStart={[Function]}
                   setDisabled={[Function]}
                   setInputId={[Function]}
-                  syncInput={[Function]}
                   value="thátcher"
                 >
                   <input
                     className="mdc-text-field__input"
                     disabled={false}
-                    id=""
+                    id={null}
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -279,44 +290,42 @@ exports[`testing Results snapshot test for Results 1`] = `
                     value="thátcher"
                   />
                 </Input>
+                <FloatingLabel
+                  className=""
+                  float={true}
+                  handleWidthChange={[Function]}
+                  htmlFor={null}
+                >
+                  <label
+                    className="mdc-floating-label mdc-floating-label--float-above"
+                    htmlFor={null}
+                    onAnimationEnd={[Function]}
+                  >
+                    Search for a person
+                  </label>
+                </FloatingLabel>
                 <NotchedOutline
                   className=""
+                  isRtl={false}
                   notch={true}
                   notchWidth={0}
                 >
                   <div
-                    className="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched"
+                    className="mdc-notched-outline mdc-notched-outline--notched"
+                    key="notched-outline"
                   >
-                    <div
-                      className="mdc-notched-outline__leading"
-                    />
-                    <div
-                      className="mdc-notched-outline__notch"
-                      style={
-                        Object {
-                          "width": undefined,
-                        }
-                      }
+                    <svg
+                      focusable="false"
                     >
-                      <FloatingLabel
-                        className=""
-                        float={true}
-                        handleWidthChange={[Function]}
-                        htmlFor=""
-                      >
-                        <label
-                          className="mdc-floating-label mdc-floating-label--float-above"
-                          htmlFor=""
-                          onAnimationEnd={[Function]}
-                        >
-                          Search for a person
-                        </label>
-                      </FloatingLabel>
-                    </div>
-                    <div
-                      className="mdc-notched-outline__trailing"
-                    />
+                      <path
+                        className="mdc-notched-outline__path"
+                      />
+                    </svg>
                   </div>
+                  <div
+                    className="mdc-notched-outline__idle"
+                    key="notched-outline-idle"
+                  />
                 </NotchedOutline>
               </div>
             </TextField>
@@ -877,7 +886,7 @@ exports[`testing Results snapshot test for Results 1`] = `
           </Footer>
         </InjectIntl(Footer)>
       </div>
-      <RippledComponent
+      <WithRipple(Fab)
         className="results-addpersonfab"
         disabled={false}
         icon={
@@ -885,6 +894,8 @@ exports[`testing Results snapshot test for Results 1`] = `
             src="/static/icons/maticon_add.svg"
           />
         }
+        initRipple={[Function]}
+        mini={false}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -898,7 +909,7 @@ exports[`testing Results snapshot test for Results 1`] = `
         textLabel="Create new record"
         unbounded={false}
       >
-        <Component
+        <Fab
           className="results-addpersonfab"
           disabled={false}
           icon={
@@ -907,6 +918,7 @@ exports[`testing Results snapshot test for Results 1`] = `
             />
           }
           initRipple={[Function]}
+          mini={false}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -918,10 +930,16 @@ exports[`testing Results snapshot test for Results 1`] = `
           onTouchStart={[Function]}
           style={Object {}}
           textLabel="Create new record"
+          unbounded={false}
         >
           <button
             className="mdc-fab results-addpersonfab mdc-fab--extended"
             disabled={false}
+            icon={
+              <img
+                src="/static/icons/maticon_add.svg"
+              />
+            }
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -933,30 +951,18 @@ exports[`testing Results snapshot test for Results 1`] = `
             onTouchStart={[Function]}
             style={Object {}}
           >
-            <Icon
-              icon={
-                <img
-                  src="/static/icons/maticon_add.svg"
-                />
-              }
+            <img
+              className="mdc-fab__icon"
+              src="/static/icons/maticon_add.svg"
+            />
+            <span
+              className="mdc-fab__label"
             >
-              <img
-                className="mdc-fab__icon"
-                src="/static/icons/maticon_add.svg"
-              />
-            </Icon>
-            <TextLabel
-              textLabel="Create new record"
-            >
-              <span
-                className="mdc-fab__label"
-              >
-                Create new record
-              </span>
-            </TextLabel>
+              Create new record
+            </span>
           </button>
-        </Component>
-      </RippledComponent>
+        </Fab>
+      </WithRipple(Fab)>
     </div>
   </Results>
 </InjectIntl(Results)>
