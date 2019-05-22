@@ -21,6 +21,8 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+from six.moves.urllib import parse as urlparse
+import urllib
 
 import config
 import full_text_search
@@ -399,6 +401,34 @@ class Person(Base):
     def photo_url_no_scheme(self):
         import utils
         return utils.strip_url_scheme(self.photo_url)
+
+    def photo_is_local(self, request_url):
+        # TODO(nworden): consider setting the acceptable domain in
+        # site_settings.py, so that we don't have to pass a request URL in. It's
+        # not obvious how to account for different App Engine versions without
+        # it being a hassle, but shouldn't be too hard.
+        if not self.photo_url:
+            return False
+        else:
+            _, our_netloc, _, _, _ = urlparse.urlsplit(request_url)
+            _, photo_netloc, _, _, _ = urlparse.urlsplit(self.photo_url)
+            return photo_netloc == our_netloc
+
+    URL_PARSE_QUERY_INDEX = 4
+
+    # TODO(nworden): if/when we make photo_is_local a property (that doesn't
+    # need the request_url) argument, make this just a property too. I only have
+    # it as a static method because I wouldn't want someone to accidentally try
+    # to use it when the URL isn't local.
+    @staticmethod
+    def get_thumbnail_url(local_photo_url):
+        parsed_url = list(urlparse.urlparse(local_photo_url))
+        params_dict = dict(urlparse.parse_qsl(
+            parsed_url[Person.URL_PARSE_QUERY_INDEX]))
+        params_dict['thumb'] = 'true'
+        parsed_url[Person.URL_PARSE_QUERY_INDEX] = urllib.urlencode(
+            params_dict)
+        return urlparse.urlunparse(parsed_url)
 
     def get_notes(self, filter_expired=True):
         """Returns a list of all the Notes on this Person, omitting expired

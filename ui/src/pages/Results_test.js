@@ -30,13 +30,28 @@ import {flushPromises} from '../testing/utils';
 Enzyme.configure({adapter: new Adapter()});
 
 const REPO_DATA = {repoId: 'albany', title: 'Albany', recordCount: 100,};
+const RESULTS_DATA = [
+    {
+      personId: '123',
+      fullNames: ['Fred Fredricks'],
+      alternateNames: ['Freddy'],
+      timestampType: 'creation',
+      timestamp: '2019-05-15T17:12:23.936282Z',
+      localPhotoUrl: null,
+    },
+    {
+      personId: '321',
+      fullNames: ['Alan Smith', 'Alan Herbert Smith'],
+      alternateNames: [],
+      timestampType: 'update',
+      timestamp: '2019-05-16T16:35:23.936282Z',
+      localPhotoUrl: 'http://www.example.com/notevenreallylocal.jpg',
+    },
+  ]
 
 function setupPageWrapper() {
   fetch.mockResponseOnce(JSON.stringify(REPO_DATA));
-  fetch.mockResponseOnce(JSON.stringify([
-      {personId: '123', name: 'Fred'},
-      {personId: '456', name: 'Alan'},
-  ]));
+  fetch.mockResponseOnce(JSON.stringify(RESULTS_DATA));
   const history = createMemoryHistory('/albany');
   const locationValue = {search: 'query_name=th%C3%A1tcher'};
   const matchValue = {params: {repoId: 'albany'}};
@@ -108,10 +123,7 @@ describe('testing Results', () => {
     // history object and need to specify initialEntries, to avoid generating
     // random keys that mess up the snapshot.
     fetch.mockResponseOnce(JSON.stringify(REPO_DATA));
-    fetch.mockResponseOnce(JSON.stringify([
-        {personId: '123', name: 'Fred'},
-        {personId: '456', name: 'Alan'},
-    ]));
+    fetch.mockResponseOnce(JSON.stringify(RESULTS_DATA));
     const locationValue = {search: 'query_name=th%C3%A1tcher'};
     const matchValue = {params: {repoId: 'albany'}};
     const wrapper = mountWithIntl(

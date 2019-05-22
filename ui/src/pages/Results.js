@@ -15,7 +15,7 @@
  */
 
 import React, {Component} from 'react';
-import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import {FormattedDate, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import Fab from '@material/react-fab';
 
@@ -35,6 +35,16 @@ const MESSAGES = defineMessages({
     id: 'Results.noResultsFound',
     defaultMessage: 'No results found.',
     description: 'A message shown when a search query has produced no results.',
+  },
+  timestampCreation: {
+    id: 'Results.timestampCreation',
+    defaultMessage: 'Record created on {timestampStr}.',
+    description: 'A message saying when a record was originally created.',
+  },
+  timestampUpdate: {
+    id: 'Results.timestampUpdate',
+    defaultMessage: 'Record updated on {timestampStr}.',
+    description: 'A message saying when a record was last updated.',
   },
 });
 
@@ -175,18 +185,49 @@ class SearchResultImpl extends Component {
   }
 
   render() {
+    var nameStr = this.props.result.fullNames.join(', ');
+    if (this.props.result.alternateNames.length > 0) {
+      nameStr += ' (' + this.props.result.alternateNames.join(', ') + ')';
+    }
+    const formattedTimestamp = <FormattedDate
+        value={new Date(this.props.result.timestamp)}
+        day='numeric'
+        month='short'
+        hour='numeric'
+        minute='numeric'
+        // TODO(nworden): handle timezones. react-intl is supposed to support
+        // passing timezones into the IntlProvider itself, which would be ideal
+        // but which I can't seem to get working. Worst-case scenario we define
+        // it as a global JS var and use it for FormattedDates throughout.
+        timeZone='UTC'
+        timeZoneName='short' />
+    var timestampLine = '';
+    if (this.props.result.timestampType == 'creation') {
+      timestampLine = (
+          <FormattedMessage
+            {...MESSAGES.timestampCreation}
+            values={{
+              'timestampStr': formattedTimestamp,
+            }} />);
+    } else if (this.props.result.timestampType == 'update') {
+      timestampLine = (
+          <FormattedMessage
+            {...MESSAGES.timestampUpdate}
+            values={{
+              'timestampStr': formattedTimestamp,
+            }} />);
+    }
     return (
       <li className='results-result' onClick={this.goToView}>
         <div className='results-resultphoto'>
-          <img src={this.props.result.photoUrl} />
+          <img src={this.props.result.localPhotoUrl} />
         </div>
         <div className='results-resultcontent'>
           <h5 className='mdc-typography--headline5'>
-            {this.props.result.name}
+            {nameStr}
           </h5>
           <p className='mdc-typography--body1'>
-            {/* TODO(nworden): implement this for real */}
-            Record created on March 31
+            {timestampLine}
           </p>
         </div>
       </li>

@@ -104,7 +104,9 @@ class TestDataGenerator(object):
             repo_titles=repo_titles,
             map_default_center=map_default_center)
 
-    def person(self, store=True, repo_id='haiti', record_id=None, **kwargs):
+    def person(
+            self, store=True, index=False, repo_id='haiti', record_id=None,
+            **kwargs):
         if not record_id:
             record_id = '%s.%s/Person.%d' % (
                 repo_id, const.HOME_DOMAIN, model.UniqueId.create_id())
@@ -112,20 +114,19 @@ class TestDataGenerator(object):
         params = copy.deepcopy(TestDataGenerator._DEFAULT_PERSON_A_PARAMS)
         params.update(kwargs)
         person = model.Person(key_name=key_name, repo=repo_id, **params)
+        if index:
+            person.update_index(['old', 'new'])
         if store:
             person.put()
         return person
 
-    def person_a(self, **kwargs):
-        return self.person(**kwargs)
+    def person_a(self, store=True, index=False, repo_id='haiti', **kwargs):
+        return self.person(store=store, index=index, repo_id=repo_id, **kwargs)
 
-    def person_b(self, store=True, repo_id='haiti', **kwargs):
+    def person_b(self, store=True, index=False, repo_id='haiti', **kwargs):
         params = copy.deepcopy(TestDataGenerator._DEFAULT_PERSON_B_PARAMS)
         params.update(kwargs)
-        person = model.Person.create_original(repo_id, **params)
-        if store:
-            person.put()
-        return person
+        return self.person(store=store, index=index, repo_id=repo_id, **params)
 
     def note(
             self, store=True, repo_id='haiti', person_id=None, record_id=None,
