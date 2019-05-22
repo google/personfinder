@@ -49,7 +49,7 @@ class FrontendApiResultsViewTests(view_tests_base.ViewTestsBase):
                     'personId': john1.record_id,
                     'fullNames': ['John Smith'],
                     'alternateNames': ['Johnny'],
-                    'timestamp': '2010-01-01T00:00:00',
+                    'timestamp': '2010-01-01T00:00:00Z',
                     'timestampType': 'creation',
                     'localPhotoUrl':
                     'http://testserver/haiti/photo/1?thumb=true',
@@ -58,7 +58,7 @@ class FrontendApiResultsViewTests(view_tests_base.ViewTestsBase):
                     'personId': john2.record_id,
                     'fullNames': ['John Schiff'],
                     'alternateNames': [],
-                    'timestamp': '2010-01-01T00:00:00',
+                    'timestamp': '2010-01-01T00:00:00Z',
                     'timestampType': 'creation',
                     'localPhotoUrl': None,
                 },
