@@ -19,11 +19,32 @@ import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const MESSAGES = defineMessages({
-  unspecified: {
-    id: 'Note.unspecified',
-    defaultMessage: 'Unspecified',
+  authorMadeContact: {
+    id: 'Note.authorMadeContact',
+    defaultMessage: 'This person has been in contact with someone',
+    description: ('A message which can be attached to a note about a specific '
+        + 'person.'),
+  },
+  believedAlive: {
+    id: 'Note.believedAlive',
+    defaultMessage: 'I have received information that this person is alive',
     description: ('An option for "Status" field of a note about a specific '
-        + 'person, indicating that the status of the person is unspecified.'),
+        + 'person, indicating that the author of the note has received '
+        + 'information that the person in question is alive.'),
+  },
+  believedDead: {
+    id: 'Note.believedDead',
+    defaultMessage: 'I have received information that this person is dead',
+    description: ('An option for "Status" field of a note about a specific '
+        + 'person, indicating that author of the note has received '
+        + 'information that the person in question is dead.'),
+  },
+  believedMissing: {
+    id: 'Note.believedMissing',
+    defaultMessage: 'I have reason to think this person is missing',
+    description: ('An option for "Status" field of a note about a specific '
+        + 'person, indicating that the author of the note has reason to '
+        + 'believe that the person in question is still missing.'),
   },
   informationSought: {
     id: 'Note.informationSought',
@@ -38,33 +59,6 @@ const MESSAGES = defineMessages({
     description: ('An option for "Status" field of a note about a specific '
         + 'person, indicating that the author of the note is the person in '
         + 'question.'),
-  },
-  believedAlive: {
-    id: 'Note.believedAlive',
-    defaultMessage: 'I have received information that this person is alive',
-    description: ('An option for "Status" field of a note about a specific '
-        + 'person, indicating that the author of the note has received '
-        + 'information that the person in question is alive.'),
-  },
-  believedMissing: {
-    id: 'Note.believedMissing',
-    defaultMessage: 'I have reason to think this person is missing',
-    description: ('An option for "Status" field of a note about a specific '
-        + 'person, indicating that the author of the note has reason to '
-        + 'believe that the person in question is still missing.'),
-  },
-  believedDead: {
-    id: 'Note.believedDead',
-    defaultMessage: 'I have received information that this person is dead',
-    description: ('An option for "Status" field of a note about a specific '
-        + 'person, indicating that author of the note has received '
-        + 'information that the person in question is dead.'),
-  },
-  authorMadeContact: {
-    id: 'Note.authorMadeContact',
-    defaultMessage: 'This person has been in contact with someone',
-    description: ('A message which can be attached to a note about a specific '
-        + 'person.'),
   },
   lastKnownLocation: {
     id: 'Note.lastKnownLocation',
@@ -89,6 +83,12 @@ const MESSAGES = defineMessages({
     description: ('A label of a field in a note about a speicifc person, '
         + 'indicating the status of the person sought or found e.g., the '
         + 'person is alive, missing or dead.'),
+  },
+  unspecified: {
+    id: 'Note.unspecified',
+    defaultMessage: 'Unspecified',
+    description: ('An option for "Status" field of a note about a specific '
+        + 'person, indicating that the status of the person is unspecified.'),
   },
 });
 
