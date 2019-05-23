@@ -353,6 +353,13 @@ msgstr ""
 "      เราอาจได้รับอีกสำเนาหนึ่งจากแหล่งที่มาเดิมในภายหลัง\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 " หากคุณเป็นผู้ให้ข้อมูล "
 "โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -646,6 +661,9 @@ msgstr "ชื่อของผู้ให้ข้อมูล"
 
 msgid "Author's phone number"
 msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "คีย์การให้สิทธิ์"
@@ -979,6 +997,12 @@ msgid ""
 msgstr ""
 "หากบันทึกเหล่านี้ไม่ตรงกับบุคคลที่คุณต้องการ "
 "คุณสามารถคลิกที่ด้านล่างเพื่อสร้างบันทึกใหม่"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1336,9 +1360,6 @@ msgstr "แสดงข้อมูลที่ละเอียดอ่อน
 msgid "Show who marked these duplicates"
 msgstr "แสดงผู้ที่ทำเครื่องหมายรายการที่ซ้ำกันเหล่านี้"
 
-msgid "Sign in"
-msgstr "ลงชื่อเข้าใช้"
-
 msgid "Sign out"
 msgstr "ออกจากระบบ"
 
@@ -1479,6 +1500,9 @@ msgstr "มีบันทึกที่มีชื่อคล้ายกั
 
 msgid "There is one existing record with a similar name."
 msgstr "มีบันทึกที่มีชื่อคล้ายกันอยู่หนึ่งรายการ"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "เกิดปัญหาขณะดำเนินการกับภาพ โปรดลองใช้ภาพอื่น"
@@ -1679,13 +1703,6 @@ msgstr "คุณได้สมัครรับข้อมูลแล้ว
 
 msgid "You are already unsubscribed."
 msgstr "คุณได้ยกเลิกการสมัครแล้ว"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "ขณะนี้คุณกำลังลงชื่อเข้าใช้ด้วย %(user_email)s"
-
-msgid "You are not currently signed in."
-msgstr "คุณไม่ได้ลงชื่อเข้าใช้อยู่ในขณะนี้"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

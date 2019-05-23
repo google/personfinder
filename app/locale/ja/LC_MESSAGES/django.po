@@ -347,6 +347,13 @@ msgstr ""
 "      この記録はここで削除できますが、\n"
 "      後ほど元の情報源からこの記録の別のコピーを受け取る可能性があります。"
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -362,6 +369,14 @@ msgstr ""
 "    確認メールが記録の作成者に送られます。作成者である場合は、\n"
 "    下のボタンをクリックした後、メールを確認してください。\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -631,6 +646,9 @@ msgstr "作成者の名前"
 
 msgid "Author's phone number"
 msgstr "作成者の電話番号"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "承認キー"
@@ -950,6 +968,12 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "探している人の記録が見つからない場合は、以下をクリックして新しい記録を作成できます。"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1285,9 +1309,6 @@ msgstr "個人情報を表示"
 msgid "Show who marked these duplicates"
 msgstr "これらの重複している記録を登録した人を表示"
 
-msgid "Sign in"
-msgstr "ログイン"
-
 msgid "Sign out"
 msgstr "ログアウト"
 
@@ -1426,6 +1447,9 @@ msgstr "類似する名前の記録が複数あります。"
 
 msgid "There is one existing record with a similar name."
 msgstr "類似する名前の記録が 1 件あります。"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
@@ -1615,13 +1639,6 @@ msgstr "新着情報を受け取るよう既に設定されています。 "
 
 msgid "You are already unsubscribed."
 msgstr "新着情報の受け取りは既に停止されています。"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "現在、%(user_email)s としてログインしています。"
-
-msgid "You are not currently signed in."
-msgstr "ログインしていません。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

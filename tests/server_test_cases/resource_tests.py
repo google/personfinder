@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -98,83 +97,6 @@ class ResourceTests(ServerTestsBase):
         self.advance_utcnow(seconds=1.1)
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content_bytes == 'goodbye'
-
-    def test_admin_resources(self):
-        # Verify that the bundle listing loads.
-        doc = self.go_as_admin('/global/admin/resources')
-
-        # Add a new bundle (redirects to the new bundle's resource listing).
-        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='xyz')
-        assert doc.cssselect_one('a.sel').text == 'Bundle: xyz'
-        bundle = ResourceBundle.get_by_key_name('xyz')
-        assert bundle
-
-        # Add a resource (redirects to the resource's edit page).
-        doc = self.s.submit(doc.cssselect('form')[0], resource_name='abc')
-        assert doc.cssselect_one('a.sel').text == 'Resource: abc'
-
-        # The new Resource shouldn't exist in the datastore until it is saved.
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Enter some content for the resource.
-        doc = self.s.submit(doc.cssselect('form')[0], content='pqr')
-        assert Resource.get_by_key_name('abc', parent=bundle).content == 'pqr'
-
-        # Use the breadcrumb navigation bar to go back to the resource listing.
-        doc = self.s.follow('Bundle: xyz')
-
-        # Add a localized variant of the resource.
-        row = doc.xpath_one('//tr[td[normalize-space(.)="abc"]]')
-        doc = self.s.submit(row.cssselect('form')[0], resource_lang='pl')
-        assert doc.cssselect_one('a.sel').text == 'pl: Polish'
-
-        # Enter some content for the localized resource.
-        doc = self.s.submit(doc.cssselect('form')[0], content='jk')
-        assert Resource.get_by_key_name('abc:pl', parent=bundle).content == 'jk'
-
-        # Confirm that both the generic and localized resource are listed.
-        doc = self.s.follow('Bundle: xyz')
-        resource_texts = [a.text for a in doc.cssselect('a.resource')]
-        assert 'abc' in resource_texts
-        assert 'pl' in resource_texts
-
-        # Copy all the resources to a new bundle.
-        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='zzz',
-                            resource_bundle_original='xyz')
-        parent = ResourceBundle.get_by_key_name('zzz')
-        assert Resource.get_by_key_name('abc', parent=parent).content == 'pqr'
-        assert Resource.get_by_key_name('abc:pl', parent=parent).content == 'jk'
-
-        # Verify that we can't add a resource to the default bundle.
-        bundle = ResourceBundle.get_by_key_name('1')
-        assert(bundle)
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.follow('1 (default)')
-        self.s.submit(doc.cssselect('form')[0], resource_name='abc')
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Verify that we can't edit a resource in the default bundle.
-        self.s.back()
-        doc = self.s.follow('base.html.template')
-        self.s.submit(doc.cssselect('form')[0], content='xyz')
-        assert not Resource.get_by_key_name('base.html.template', parent=bundle)
-
-        # Verify that we can't copy resources into the default bundle.
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.follow('xyz')
-        doc = self.s.submit(doc.cssselect('form')[-1], resource_bundle='1',
-                            resource_bundle_original='xyz')
-        assert not Resource.get_by_key_name('abc', parent=bundle)
-
-        # Switch the default bundle version.
-        doc = self.go_as_admin('/global/admin/resources')
-        doc = self.s.submit(
-                doc.cssselect('form')[0], resource_bundle_default='xyz')
-        assert 'xyz (default)' in doc.text
-        # Undo.
-        doc = self.s.submit(
-                doc.cssselect('form')[0], resource_bundle_default='1')
-        assert '1 (default)' in doc.text
 
 
 class CounterTests(ServerTestsBase):
@@ -284,18 +206,3 @@ class CounterTests(ServerTestsBase):
         self.advance_utcnow(seconds=11)
         doc = self.go('/haiti?flush=memcache')
         assert 'Currently tracking about 400 records' in doc.text
-
-    def test_admin_dashboard(self):
-        """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put([Counter(
-            scan_name='Person', repo='haiti', last_key='', count_all=278
-        ), Counter(
-            scan_name='Person', repo='pakistan', last_key='',
-            count_all=127
-        ), Counter(
-            scan_name='Note', repo='haiti', last_key='', count_all=12
-        ), Counter(
-            scan_name='Note', repo='pakistan', last_key='', count_all=8
-        )])
-        assert self.go_as_admin('/global/admin/dashboard')
-        assert self.s.status == 200

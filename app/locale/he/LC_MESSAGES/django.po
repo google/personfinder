@@ -353,6 +353,13 @@ msgstr ""
 "    ייתכן שנקבל עותק נוסף שלה מהמקור.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -368,6 +375,14 @@ msgstr ""
 " הודעת אישור למחבר הרשומה. אם אתה המחבר, בדוק את תיבת האימייל שלך לאחר "
 "שתלחץ על הלחצן למטה.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -635,6 +650,9 @@ msgstr "שם המחבר"
 
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "מפתח הרשאה"
@@ -961,6 +979,12 @@ msgid ""
 msgstr ""
 "אם אף אחת מהרשומות האלה לא מתאימה לאדם שבו אתה מעוניין, תוכל ללחוץ למטה "
 "כדי ליצור רשומה חדשה."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1312,9 +1336,6 @@ msgstr "הצג מידע רגיש"
 msgid "Show who marked these duplicates"
 msgstr "הצג מי סימן את הכפילויות האלה"
 
-msgid "Sign in"
-msgstr "היכנס"
-
 msgid "Sign out"
 msgstr "התנתק"
 
@@ -1455,6 +1476,9 @@ msgstr "קיימות כמה רשומות עם שם דומה."
 
 msgid "There is one existing record with a similar name."
 msgstr "קיימת רשומה אחת עם שם דומה."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "אירעה בעיה בעיבוד התמונה. נסה תמונה אחרת."
@@ -1656,13 +1680,6 @@ msgstr "אתה כבר רשום. "
 
 msgid "You are already unsubscribed."
 msgstr "הרישום שלך כבר בוטל."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "נכנסת כעת בתור %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "לא נכנסת למערכת."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

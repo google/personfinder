@@ -366,6 +366,13 @@ msgstr ""
 "      подоцна може да добиеме уште една копија од оригиналниот извор.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -384,6 +391,14 @@ msgstr ""
 "    Ако вие сте авторот, проверете ја вашата е-пошта по кликнување на "
 "копчето подолу.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -659,6 +674,9 @@ msgstr "Име на авторот"
 
 msgid "Author's phone number"
 msgstr "Телефонски број на авторот"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Клуч за авторизација"
@@ -998,6 +1016,12 @@ msgid ""
 msgstr ""
 "Ако ниту еден од овие записи не одговара на лицето што го имавте на ум, "
 "може да кликнете подолу за да создадете нов запис."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1364,9 +1388,6 @@ msgstr "Прикажи чувствителни информации"
 msgid "Show who marked these duplicates"
 msgstr "Прикажи кој ги означил овие дупликати"
 
-msgid "Sign in"
-msgstr "Најавете се"
-
 msgid "Sign out"
 msgstr "Одјавете се"
 
@@ -1509,6 +1530,9 @@ msgstr "Има неколку постоечки записи со слични 
 
 msgid "There is one existing record with a similar name."
 msgstr "Има еден постоечки запис со слично име."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Настана проблем при обработка на сликата. Обидете се со друга слика."
@@ -1715,13 +1739,6 @@ msgstr "Веќе сте претплатени. "
 
 msgid "You are already unsubscribed."
 msgstr "Веќе ја откажавте претплатата."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Моментално сте најавени како %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Моментално не сте најавени."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

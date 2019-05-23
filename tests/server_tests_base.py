@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -97,6 +96,17 @@ class ServerTestsBase(unittest.TestCase):
                           ['dev_appserver_login=admin@example.com:True:1'])
         return self.go(path, **kwargs)
 
+    def run_task(self, path, **kwargs):
+        # This is like go(), but with garbage data to trick scrape.py into doing
+        # a POST request. If not for the fact that we're moving to Django and
+        # going to be able to use the Django test client going forward, I'd do
+        # this in a cleaner way, but it doesn't seem worth it for stuff we know
+        # we have to rewrite.
+        if 'data' in kwargs:
+            return self.go(path, kwargs)
+        else:
+            return self.go(path, data={'garbage': 'thatmeansnothing'})
+
     def set_utcnow_for_test(self, new_utcnow, flush=''):
         """Sets the utils.get_utcnow() clock locally and on the server, and
         optionally also flushes caches on the server.
@@ -111,7 +121,9 @@ class ServerTestsBase(unittest.TestCase):
             param = str(new_utcnow)
         else:
             param = calendar.timegm(new_utcnow.utctimetuple())
-        path = '/?utcnow=%s&flush=%s' % (param, flush)
+        # This isn't a real path, but that's ok, we just need some path that's
+        # served by webapp2 rather than Django.
+        path = '/webapp2path?utcnow=%s&flush=%s' % (param, flush)
         # Requesting '/' gives a fast redirect; to save time, don't follow it.
         scrape.Session(verbose=0).go(self.path_to_url(path), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)

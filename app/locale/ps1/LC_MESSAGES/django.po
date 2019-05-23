@@ -362,6 +362,13 @@ msgstr ""
 "\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -380,6 +387,14 @@ msgstr ""
 "    Îƒ ýöû åré ţĥé åûţĥör, çĥéçķ ýöûr é-måîļ åƒţér çļîçķîñĝ ţĥé bûţţöñ "
 "béļöŵ.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -656,6 +671,9 @@ msgstr "Åûţĥör'š ñåmé"
 
 msgid "Author's phone number"
 msgstr "Åûţĥör'š þĥöñé ñûmbér"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Åûţĥörîžåţîöñ ķéý"
@@ -991,6 +1009,12 @@ msgid ""
 msgstr ""
 "Îƒ ñöñé öƒ ţĥéšé réçörðš måţçĥ ţĥé þéršöñ ýöû ĥåð îñ mîñð, ýöû çåñ çļîçķ "
 "béļöŵ ţö çréåţé å ñéŵ réçörð."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1350,9 +1374,6 @@ msgstr "Šĥöŵ šéñšîţîvé îñƒörmåţîöñ"
 msgid "Show who marked these duplicates"
 msgstr "Šĥöŵ ŵĥö mårķéð ţĥéšé ðûþļîçåţéš"
 
-msgid "Sign in"
-msgstr "Šîĝñ îñ"
-
 msgid "Sign out"
 msgstr "Šîĝñ öûţ"
 
@@ -1496,6 +1517,9 @@ msgstr "Ţĥéré åré šömé éxîšţîñĝ réçörðš ŵîţĥ šîmîļ�
 
 msgid "There is one existing record with a similar name."
 msgstr "Ţĥéré îš öñé éxîšţîñĝ réçörð ŵîţĥ å šîmîļår ñåmé."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Ţĥéré ŵåš å þröbļém þröçéššîñĝ ţĥé îmåĝé.  Þļéåšé ţrý å ðîƒƒéréñţ îmåĝé."
@@ -1698,13 +1722,6 @@ msgstr "Ýöû åré åļréåðý šûbšçrîbéð. "
 
 msgid "You are already unsubscribed."
 msgstr "Ýöû åré åļréåðý ûñšûbšçrîbéð."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Ýöû åré çûrréñţļý šîĝñéð îñ åš ᐅ%(user_email)sᐊ."
-
-msgid "You are not currently signed in."
-msgstr "Ýöû åré ñöţ çûrréñţļý šîĝñéð îñ."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

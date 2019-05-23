@@ -1,0 +1,69 @@
+<!--
+ Copyright 2019 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+{% for msg in msgs %}
+  <div class="message">
+    {% if show_error_type %}
+      <span class="message_type">
+        {% if msg.is_error %}
+          ERROR
+        {% else %}
+          WARNING
+        {% endif %}
+      </span>
+    {% endif %}
+    {% if show_line_numbers and msg.xml_line_number %}
+      <span class="message_line_number">
+        LINE {{ msg.xml_line_number }}:
+      </span>
+    {% endif %}
+    <span class="message_category">
+      {{ msg.category }}
+      {% if msg.extra_data %}
+        <span class="message_data">: {{msg.extra_data}}</span>
+      {% endif %}
+    </span>
+    {% if show_record_ids %}
+      {% if msg.person_record_id %}
+        <div class="message_person_record_id">
+          The relevant person_record_id is:
+          <span class="message_data">{{ msg.person_record_id }}</span>
+        </div>
+      {% endif %}
+      {% if msg.note_record_id %}
+        <div class="message_note_record_id">
+          The relevant note_record_id is:
+          <span class="message_data">{{ msg.note_record_id }}</span>
+        </div>
+      {% endif %}
+    {% endif %}
+    {% if show_xml_tag and msg.xml_tag %}
+      <div class="message_xml_tag">
+        The tag of the relevant PFIF XML node:
+        <span class="message_data">{{ msg.xml_tag }}</span>
+      </div>
+    {% endif %}
+    {% if show_xml_text and msg.xml_text %}
+      <div class="message_xml_text">
+        The text of the relevant PFIF XML node:
+        <span class="message_data">{{ msg.xml_text }}</span>
+      </div>
+    {% endif %}
+    {% if show_full_line and msg.full_xml_line %}
+      <div class="message_xml_full_line">{{ msg.full_xml_line }}</div>
+    {% endif %}
+  </div>
+{% endfor %}

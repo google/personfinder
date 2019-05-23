@@ -311,14 +311,14 @@ a.expand-button {
 
 /* Icon for the expand-button before the form is expanded */
 .expand-button-icon-down {
-  background: url({{env.global_url}}/expand-icon-down.png);
+  background: url({{env.fixed_static_url_base}}/expand-icon-down.png);
   background-repeat: no-repeat;
   background-position: {{end}};
 }
 
 /* Icon for the expand-button after the form is expanded */
 .expand-button-icon-up {
-  background: url({{env.global_url}}/expand-icon-up.png);
+  background: url({{env.fixed_static_url_base}}/expand-icon-up.png);
   background-repeat: no-repeat;
   background-position: {{end}};
 }
@@ -1080,8 +1080,16 @@ form.admin .config .note {
   margin-{{start}}: 4em;
 }
 
+#admin-reposelector {
+  display: inline-block;
+}
+
 .subscribe_email_error {
   color: #f00;
+}
+
+#save_repo table td {
+  vertical-align: top;
 }
 
 /* Review page */
@@ -1198,6 +1206,17 @@ table.statistics td {
 
 table.statistics tbody tr:hover{
   background-color: #f4f4f4;
+}
+
+/* ACLs management page */
+
+table.admin-acls {
+  border-collapse: collapse;
+}
+
+table.admin-acls th,
+table.admin-acls td {
+  border: 1px solid #dadada;
 }
 
 /* API key management page */

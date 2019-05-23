@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,27 +42,14 @@ def make_hidden_notes_blank(notes):
             note.text = ''
 
 
-class Repo(utils.BaseHandler):
-    TITLE = 'Person Finder Repository Feed'
+class BaseFeedsHandler(utils.BaseHandler):
 
-    repo_required = False
-    https_required = False
-    # For a deactivated repo, return an empty feed instead of an error page.
-    ignore_deactivation = True
-
-    def get(self):
-        repos = model.Repo.list_launched()
-        if self.repo:
-            repos = [self.repo] if self.repo in repos else []
-
-        self.response.headers['Content-Type'] = 'application/xml; charset=utf-8'
-        atom.REPO_1_0.write_feed(
-            self.response.out, repos, self.request.url, self.TITLE,
-            get_latest_repo_updated_date(repos))
-        utils.log_api_action(self, model.ApiActionLog.REPO)
+    def __init__(self, request, response, env):
+        super(BaseFeedsHandler, self).__init__(request, response, env)
+        self.set_auth()
 
 
-class Person(utils.BaseHandler):
+class Person(BaseFeedsHandler):
     https_required = True
 
     def get(self):
@@ -118,9 +104,9 @@ class Person(utils.BaseHandler):
                              self.num_notes)
 
 
-class Note(utils.BaseHandler):
+class Note(BaseFeedsHandler):
     # SSL check is done in get() if person_record_id is not specified.
-    https_required = False
+    https_required = True
 
     def get(self):
         # SSL and auth key is not required if a feed for a specific person

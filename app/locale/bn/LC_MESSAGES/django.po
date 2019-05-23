@@ -363,6 +363,13 @@ msgstr ""
 "      আমরা পরে মূল উৎস থেকে আরেকটি কপি পেতে পারি৷\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "  কনফার্মেশন মেসেজ পাঠানো হবে৷ আপনি যদি লেখক হন, তাহলে নিচের বোতামটি    "
 "ক্লিক করার পর আপনার ইমেল চেক করুন৷\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -651,6 +666,9 @@ msgstr "লেখকের নাম"
 
 msgid "Author's phone number"
 msgstr "লেখকের ফোন নম্বর"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "অনুমোদন কী"
@@ -990,6 +1008,12 @@ msgid ""
 msgstr ""
 "এই রেকর্ডের কোনটিই যদি আপনার পরিচিত ব্যক্তির সঙ্গে না মেলে, তাহলে একটি "
 "নতুন রেকর্ড তৈরি করার জন্য নীচের ক্লিক করতে পারেন৷"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1356,9 +1380,6 @@ msgstr "ব্যক্তিগত তথ্য দেখান"
 msgid "Show who marked these duplicates"
 msgstr "এইগুলি দৃশগুলিকে কে চিহ্নিত করছেন তা দেখান"
 
-msgid "Sign in"
-msgstr "সাইন-ইন করুন"
-
 msgid "Sign out"
 msgstr "সাইন-আউট করুন"
 
@@ -1502,6 +1523,9 @@ msgstr "একই নামের সঙ্গে কিছু বিদ্য�
 
 msgid "There is one existing record with a similar name."
 msgstr "একই নামের সঙ্গে একটি বিদ্যমান রেকর্ড রয়েছে৷"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1708,13 +1732,6 @@ msgstr "আপনি ইতিমধ্যেই সদস্যতা নিয
 
 msgid "You are already unsubscribed."
 msgstr "আপনি ইতিমধ্যে সদস্যতা ত্যাগ করেছেন৷"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "আপনি বর্তমানে %(user_email)s হিসেবে প্রবেশ করে আছেন৷"
-
-msgid "You are not currently signed in."
-msgstr "আপনি বর্তমানে প্রবেশ করে নেই৷"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

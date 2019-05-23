@@ -363,6 +363,13 @@ msgstr ""
 "fournie par la source d'origine.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -379,6 +386,14 @@ msgstr ""
 "désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
 "courriels après avoir cliqué sur le bouton ci-dessous.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -661,6 +676,9 @@ msgstr "Nom de l'auteur"
 
 msgid "Author's phone number"
 msgstr "Numéro de téléphone de l'auteur"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Clé d'autorisation"
@@ -1006,6 +1024,12 @@ msgid ""
 msgstr ""
 "Si aucun des avis de recherche suivants ne correspond à la personne à "
 "laquelle vous pensiez, vous pouvez cliquer ci-dessous pour en créer un."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1396,9 +1420,6 @@ msgstr "Afficher les données sensibles"
 msgid "Show who marked these duplicates"
 msgstr "Afficher la personne ayant signalé ces avis en double"
 
-msgid "Sign in"
-msgstr "Connexion"
-
 msgid "Sign out"
 msgstr "Déconnexion"
 
@@ -1544,6 +1565,9 @@ msgstr "Plusieurs avis de recherche sont associés à des noms similaires."
 
 msgid "There is one existing record with a similar name."
 msgstr "Il existe un avis de recherche associé à un nom similaire."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1758,13 +1782,6 @@ msgstr "Vous êtes déjà abonné. "
 
 msgid "You are already unsubscribed."
 msgstr "Vous êtes déjà désabonné."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Vous êtes actuellement connecté avec l'adresse %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Actuellement, vous n'êtes pas connecté."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

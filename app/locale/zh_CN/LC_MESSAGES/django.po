@@ -340,6 +340,13 @@ msgstr ""
 "      您可以删除这里的记录，但请注意，我们以后可能会从原始来源收到其他副本。\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -354,6 +361,14 @@ msgstr ""
 "    为了确保只有在获得记录创建者许可的情况下才能停用或启用注释功能，我们会向记录创建者发送确认邮件。\n"
 "    如果您是创建者，点击下方的按钮即可查看相关电子邮件。\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -609,6 +624,9 @@ msgstr "创建者姓名"
 
 msgid "Author's phone number"
 msgstr "创建者的电话号码"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "授权密钥"
@@ -928,6 +946,12 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "如果这些记录与您要寻找的人员不符，您可以点击下面，创建新记录。"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1263,9 +1287,6 @@ msgstr "显示敏感信息"
 msgid "Show who marked these duplicates"
 msgstr "显示将这些注释标为重复的用户"
 
-msgid "Sign in"
-msgstr "登录"
-
 msgid "Sign out"
 msgstr "退出"
 
@@ -1404,6 +1425,9 @@ msgstr "现有若干条姓名类似的记录。"
 
 msgid "There is one existing record with a similar name."
 msgstr "现有 1 条姓名类似的记录。"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "处理图片时出现问题，请改用其他图片。"
@@ -1593,13 +1617,6 @@ msgstr "您已经订阅。 "
 
 msgid "You are already unsubscribed."
 msgstr "您已退订。"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "您当前以 %(user_email)s 的身份登录了帐号。"
-
-msgid "You are not currently signed in."
-msgstr "您当前尚未登录。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

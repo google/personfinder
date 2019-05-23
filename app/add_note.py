@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,14 +50,12 @@ class Handler(BaseHandler):
         if not person:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
-        standalone = self.request.get('standalone')
 
         # Render the page.
         enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
 
         self.render('add_note.html',
                     person=person,
-                    standalone=standalone,
                     enable_notes_url=enable_notes_url)
 
     def post(self):
@@ -100,7 +97,9 @@ class Handler(BaseHandler):
         photo, photo_url = (None, self.params.note_photo_url)
         if self.params.note_photo is not None:
             try:
-                photo, photo_url = create_photo(self.params.note_photo, self)
+                photo, photo_url = create_photo(
+                    self.params.note_photo, self.repo,
+                    self.transitionary_get_url)
             except PhotoError, e:
                 return self.error(400, e.message)
             photo.put()

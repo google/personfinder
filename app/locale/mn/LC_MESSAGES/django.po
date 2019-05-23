@@ -358,6 +358,13 @@ msgstr ""
 "      эх сурвалжаас хүлээн авч болохыг анхаарна уу.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -374,6 +381,14 @@ msgstr ""
 "илгээгдэх болно. Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа "
 "имэйлээ шалгана уу.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -644,6 +659,9 @@ msgstr "Зохиогчийн нэр"
 
 msgid "Author's phone number"
 msgstr "Зохиогчийн утасны дугаар"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Эрхжүүлэлтийн түлхүүр"
@@ -977,6 +995,12 @@ msgid ""
 msgstr ""
 "Эдгээр бичлэгүүдийн аль нь ч таны бодож байгаа хүнтэй таарахгүй байгаа "
 "бол та доор товшиж шинэ бичлэг үүсгэж болно."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1344,9 +1368,6 @@ msgstr "Нууцлаг мэдээллийг харуулах"
 msgid "Show who marked these duplicates"
 msgstr "Эдгээр давхардлуудыг хэн тэмдэглэснийг харуулах"
 
-msgid "Sign in"
-msgstr "Нэвтрэх"
-
 msgid "Sign out"
 msgstr "Гарах"
 
@@ -1489,6 +1510,9 @@ msgstr "Төстэй нэртэй хэсэг бичлэг байна."
 
 msgid "There is one existing record with a similar name."
 msgstr "Төстэй нэртэй нэг бичлэг байна."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Зургийг боловсруулах явцад алдаа гарлаа. Өөр зураг оруулж үзнэ үү."
@@ -1691,13 +1715,6 @@ msgstr "Та аль хэдийн бүртгүүлсэн байна. "
 
 msgid "You are already unsubscribed."
 msgstr "Та аль хэдийн бүртгүүлсэн байна."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Та одоо %(user_email)s-р нэвтэрсэн байна."
-
-msgid "You are not currently signed in."
-msgstr "Та одоо нэвтрээгүй байна."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

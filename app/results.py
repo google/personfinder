@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +14,8 @@
 
 import logging
 import unicodedata
+
+from django.utils.translation import ugettext as _
 
 from model import *
 from utils import *

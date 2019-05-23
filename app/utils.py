@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,10 +14,7 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-from django_setup import ugettext as _  # always keep this first
-
 import calendar
-import cgi
 import copy
 from datetime import datetime, timedelta
 import hmac
@@ -38,6 +34,7 @@ import base64
 
 from django.core.validators import EmailValidator, URLValidator, ValidationError
 import django.utils.html
+from django.utils.translation import ugettext as _
 from django.template.defaulttags import register
 from google.appengine.api import images
 from google.appengine.api import taskqueue
@@ -45,7 +42,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
-from recaptcha.client import captcha
+import recaptcha.client.captcha
 from babel.dates import format_date
 from babel.dates import format_datetime
 from babel.dates import format_time
@@ -138,7 +135,7 @@ def urlencode(params, encoding='utf-8'):
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
     # This will strip out None-valued params and collapse repeated params.
-    params = dict(cgi.parse_qsl(params))
+    params = dict(urlparse.parse_qsl(params))
     if value is None:
         if param in params:
             del(params[param])
@@ -203,6 +200,10 @@ def validate_role(string):
 
 def validate_int(string):
     return string and int(strip(string))
+
+
+def validate_float(string):
+    return string and float(strip(string))
 
 
 def validate_sex(string):
@@ -725,7 +726,7 @@ class BaseHandler(webapp.RequestHandler):
     repo_required = True
 
     # Handlers that require HTTPS can set this to True.
-    https_required = False
+    https_required = True
 
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
@@ -933,6 +934,21 @@ class BaseHandler(webapp.RequestHandler):
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 
+    def transitionary_get_url(self, path, repo, params=None):
+        """Gets a URL to the given path, with the given params.
+
+        We want to share some code between Django and webapp2 handlers (also,
+        I'd like to get away from embedding so much code in the handlers), and a
+        significant obstacle to that is that you can only create URLs from
+        handlers. The solution seems to be passing a URL-building function into
+        functions that need to build URLs.
+
+        The Django app has a somewhat different URL builder for various reasons,
+        and this function matches its signature so that functions don't have to
+        know what web framework their URL-building function came from.
+        """
+        return self.get_url(path, repo=repo, **params)
+
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):
         """Queues up a task for an individual repository."""
@@ -959,7 +975,7 @@ class BaseHandler(webapp.RequestHandler):
         # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
         lang = self.env.lang.split('-')[0]
 
-        return captcha.get_display_html(
+        return recaptcha.client.captcha.get_display_html(
             site_key=config.get('captcha_site_key'),
             use_ssl=use_ssl, error=error_code, lang=lang
         )
@@ -971,11 +987,11 @@ class BaseHandler(webapp.RequestHandler):
         # only locally, for testing purpose.
         faked_captcha_response = self.request.get('faked_captcha_response')
         if faked_captcha_response and self.request.remote_addr == '127.0.0.1':
-            return captcha.RecaptchaResponse(
+            return recaptcha.client.captcha.RecaptchaResponse(
                 is_valid=faked_captcha_response == 'success')
 
         captcha_response = self.request.get('g-recaptcha-response')
-        return captcha.submit(captcha_response)
+        return recaptcha.client.captcha.submit(captcha_response)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
@@ -1099,6 +1115,18 @@ class BaseHandler(webapp.RequestHandler):
             params_dict)
         return urlparse.urlunparse(parsed_url)
 
+    def set_auth(self):
+        self.auth = None
+        if self.params.key:
+            if self.repo:
+                # check for domain specific one.
+                self.auth = model.Authorization.get(self.repo, self.params.key)
+            if not self.auth:
+                # perhaps this is a global key ('*' for consistency with config).
+                self.auth = model.Authorization.get('*', self.params.key)
+        if self.auth and not self.auth.is_valid:
+            self.auth = None
+
     def __return_unimplemented_method_error(self):
         return self.error(
             405,
@@ -1136,40 +1164,42 @@ class BaseHandler(webapp.RequestHandler):
         # Check for SSL (unless running local dev app server).
         if self.https_required and not is_dev_app_server():
             if self.env.scheme != 'https':
-                return self.error(403, 'HTTPS is required.')
+                url_parts = list(urlparse.urlparse(self.request.url))
+                url_parts[0] = 'https'  # The 0th part is the scheme.
+                webapp.RequestHandler.redirect(
+                    self, urlparse.urlunparse(url_parts))
+                self.terminate_response()
+                return
 
         # Handles repository alias.
         if self.maybe_redirect_for_repo_alias(request):
             return
-
-        # Check for an authorization key.
-        self.auth = None
-        if self.params.key:
-            if self.repo:
-                # check for domain specific one.
-                self.auth = model.Authorization.get(self.repo, self.params.key)
-            if not self.auth:
-                # perhaps this is a global key ('*' for consistency with config).
-                self.auth = model.Authorization.get('*', self.params.key)
-        if self.auth and not self.auth.is_valid:
-            self.auth = None
 
         # Shows a custom error page here when the user is not an admin
         # instead of "login: admin" in app.yaml
         # If we use it, user can't sign out
         # because the error page of "login: admin" doesn't have sign-out link.
         if self.admin_required:
-            user = users.get_current_user()
-            if not user:
+            self.env.user = users.get_current_user()
+            if not self.env.user:
                 login_url = users.create_login_url(self.request.url)
                 webapp.RequestHandler.redirect(self, login_url)
                 self.terminate_response()
                 return
             if not users.is_current_user_admin():
                 logout_url = users.create_logout_url(self.request.url)
-                self.render('not_admin_error.html', logout_url=logout_url, user=user)
+                self.render('not_admin_error.html', logout_url=logout_url,
+                            user=self.env.user)
                 self.terminate_response()
                 return
+            self.env.logout_url = users.create_logout_url(self.request.url)
+            # This is different from env.repo_options because this contains all
+            # repositories including deactivated ones.
+            self.env.all_repo_options = [
+                Struct(
+                    repo=repo,
+                    url=get_repo_url(self.request, repo) + '/admin')
+                for repo in sorted(model.Repo.list())]
 
         # Handlers that don't need a repository configuration can skip it.
         if not self.repo:
@@ -1187,7 +1217,8 @@ class BaseHandler(webapp.RequestHandler):
 
         # If this repository has been deactivated, terminate with a message.
         # The ignore_deactivation flag is for admin pages that bypass this.
-        if self.config.deactivated and not self.ignore_deactivation:
+        if (self.env.repo_entity.is_deactivated() and
+            not self.ignore_deactivation):
             self.env.language_menu = []
             self.env.robots_ok = True
             self.render('message.html', cls='deactivation',
@@ -1247,11 +1278,14 @@ class XsrfTool(object):
             action_time)
 
     def verify_token(self, token, user_id, action_id):
-        [hmac_digest, action_time_str] = token.split('/')
+        token_spl = token.split('/')
+        if len(token_spl) != 2:
+            return False
+        [hmac_digest, action_time_str] = token_spl
         action_time = float(action_time_str)
         if (action_time + XsrfTool.TOKEN_EXPIRATION_TIME <
             get_utcnow_timestamp()):
-          return False
+            return False
         expected_hmac_digest = self._generate_hmac_digest(
             user_id, action_id, action_time)
         return hmac.compare_digest(

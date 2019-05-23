@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -18,9 +17,8 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-import django_setup  # always keep this first
-
 import calendar
+import cgi
 import csv
 import datetime
 import logging
@@ -34,6 +32,7 @@ import urllib2
 import uuid
 
 import django.utils.html
+from django.utils import translation
 from django.utils.translation import ugettext as _
 from google.appengine import runtime
 from google.appengine.ext import db
@@ -42,7 +41,6 @@ from unidecode import unidecode
 
 import cloud_storage
 import config
-from django_setup import ugettext as _
 import full_text_search
 import importer
 import indexing
@@ -89,12 +87,12 @@ def get_tag_params(handler):
     """Return HTML tag parameters used in import.html."""
     return {
         'begin_notes_template_link':
-            '<a href="%s/notes-template.xlsx">' %
+            '<a href="%s/static/notes-template.xlsx">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_notes_template_link':
             '</a>',
         'begin_sample_anchor_tag':
-            '<a href="%s/sample-import.csv" target="_blank">' %
+            '<a href="%s/static/sample-import.csv" target="_blank">' %
                 django.utils.html.escape(handler.env.global_url),
         'end_sample_anchor_tag':
             '</a>',
@@ -204,10 +202,17 @@ def convert_xsl_to_csv(contents):
     return csv_output.getvalue(), None
 
 
+class BaseApiHandler(utils.BaseHandler):
+
+    def __init__(self, request, response, env):
+        super(BaseApiHandler, self).__init__(request, response, env)
+        self.set_auth()
+
+
 # TODO(gimite): Rename this class name and URL because it now supports both
 #     import and export, maybe after we decide to use CSV or Excel file for
 #     import and export.
-class Import(utils.BaseHandler):
+class Import(BaseApiHandler):
     """A web UI for users to import or export records in CSV / Excel format.
     """
 
@@ -350,7 +355,7 @@ class Import(utils.BaseHandler):
                 message=_('The data is not ready yet. Try again in 24 hours.'))
 
 
-class Read(utils.BaseHandler):
+class Read(BaseApiHandler):
     https_required = True
 
     def get(self):
@@ -393,7 +398,7 @@ class Read(utils.BaseHandler):
             self, ApiActionLog.READ, len(records), len(notes))
 
 
-class PhotoUpload(utils.BaseHandler):
+class PhotoUpload(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -416,7 +421,8 @@ class PhotoUpload(utils.BaseHandler):
 
         try:
             photo_img = images.Image(self.request.body)
-            photo, photo_url = create_photo(photo_img, self)
+            photo, photo_url = create_photo(
+                photo_img, self.repo, self.transitionary_get_url)
         except PhotoError, e:
             self.error(400, e.message)
 
@@ -431,7 +437,7 @@ class PhotoUpload(utils.BaseHandler):
         self.write('</url></response>')
 
 
-class Write(utils.BaseHandler):
+class Write(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -487,9 +493,9 @@ class Write(utils.BaseHandler):
         for error, record in skipped:
             skipped_records.append(
                 '      <pfif:%s>%s</pfif:%s>\n' %
-                (id_field, record.get(id_field, ''), id_field))
+                (id_field, cgi.escape(record.get(id_field, '')), id_field))
             skipped_records.append(
-                '      <status:error>%s</status:error>\n' % error)
+                '      <status:error>%s</status:error>\n' % cgi.escape(error))
 
         self.write('''
   <status:write>
@@ -503,8 +509,8 @@ class Write(utils.BaseHandler):
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
 
-class Search(utils.BaseHandler):
-    https_required = False
+class Search(BaseApiHandler):
+    https_required = True
 
     def get(self):
         if self.config.search_auth_key_required and not (
@@ -556,7 +562,7 @@ class Search(utils.BaseHandler):
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 
-class Subscribe(utils.BaseHandler):
+class Subscribe(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -579,7 +585,7 @@ class Subscribe(utils.BaseHandler):
         return self.info(200, 'Successfully subscribed')
 
 
-class Unsubscribe(utils.BaseHandler):
+class Unsubscribe(BaseApiHandler):
     https_required = True
 
     def post(self):
@@ -605,7 +611,7 @@ def fetch_all(query):
     return results
 
 
-class Stats(utils.BaseHandler):
+class Stats(BaseApiHandler):
     def get(self):
         if not (self.auth and self.auth.stats_permission):
             self.info(
@@ -644,7 +650,7 @@ class Stats(utils.BaseHandler):
                                      'note': note_counts}))
 
 
-class HandleSMS(utils.BaseHandler):
+class HandleSMS(BaseApiHandler):
     """Person Finder doesn't directly handle SMSes from users. They are handled
     by Google internal SMS gateway. When the gateway receives an SMS, it sends
     an XML HTTP request to Person Finder, and sends back its response to the
@@ -724,7 +730,7 @@ class HandleSMS(utils.BaseHandler):
 
         if query_lang:
             # Use the language for the following calls of _().
-            django_setup.activate(query_lang)
+            translation.activate(query_lang)
 
         responses = []
 
@@ -855,7 +861,7 @@ class HandleSMS(utils.BaseHandler):
                 'ea': 'SMS',
                 'dp': '/sms_action'
             })
-            url = 'http://www.google-analytics.com/collect'
+            url = 'https://www.google-analytics.com/collect'
             try:
                 urllib2.urlopen(url, params)
             except urllib2.URLError:

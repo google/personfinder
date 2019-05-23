@@ -12,5 +12,5 @@ https://google.org/personfinder/.
 
 ## How to Contribute
 
-1. Follow [GettingStarted](https://github.com/google/personfinder/wiki/GettingStarted) to set up your development environment.
+1. Follow [Getting Started](https://github.com/google/personfinder/wiki/GettingStarted) to set up your development environment.
 2. Follow [CONTRIBUTING](https://github.com/google/personfinder/blob/master/CONTRIBUTING.md) to send pull requests.

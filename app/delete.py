@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +65,10 @@ def get_restore_url(handler, person, ttl=3*24*3600):
 
 def delete_person(handler, person, send_notices=True):
     """Delete a person record and associated data.  If it's an original
-    record, deletion can be undone within EXPIRED_TTL_DAYS days."""
+    record, deletion can be undone within EXPIRED_TTL_DAYS days.
+
+    The handler argument is not needed if notices aren't being sent.
+    """
     if person.is_original():
         if send_notices:
             # For an original record, send notifiations

@@ -365,6 +365,13 @@ msgstr ""
 "lähteestä.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -381,6 +388,14 @@ msgstr ""
 " kirjoittajan luvalla. Jos olet tietojen kirjoittaja, tarkista "
 "sähköpostisi klikattuasi alla olevaa painiketta.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -653,6 +668,9 @@ msgstr "Ilmoittajan nimi"
 
 msgid "Author's phone number"
 msgstr "Ilmoittajan puhelinnumero"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Valtuutusavain"
@@ -990,6 +1008,12 @@ msgid ""
 msgstr ""
 "Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
 "ilmoituksen aioit tehdä, luo uusi tallenne klikkaamalla alla."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1358,9 +1382,6 @@ msgstr "Näytä arkaluonteiset tiedot"
 msgid "Show who marked these duplicates"
 msgstr "Näytä, kuka merkitsi nämä kaksoiskappaleiksi"
 
-msgid "Sign in"
-msgstr "Kirjaudu sisään"
-
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
@@ -1505,6 +1526,9 @@ msgstr "Löytyi joitakin tallenteita, joissa henkilöiden nimet ovat samankaltai
 
 msgid "There is one existing record with a similar name."
 msgstr "Löytyi yksi tallenne, jossa henkilön nimi on samankaltainen."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
@@ -1707,13 +1731,6 @@ msgstr "Olet jo tilannut tämän kohteen. "
 
 msgid "You are already unsubscribed."
 msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Olet tällä hetkellä kirjautunut sisään osoitteella %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Et ole kirjautunut sisään."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

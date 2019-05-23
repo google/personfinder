@@ -64,8 +64,8 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" yozuvi eslatmalarini yoqib qo‘yishni "
 "so‘radi.\n"
 "\n"
-"E-pochta manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
-"eslatmalarini \n"
+"Email manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv eslatmalarini"
+" \n"
 "o‘chirib qo‘yish uchun (3 kun ichida) quyidagi manzil ustiga bosing:\n"
 "\n"
 "   %(confirm_url)s\n"
@@ -94,7 +94,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun eslatmalarni o‘chirib "
 "qo‘yishingizni so‘radi.\n"
 "\n"
-"E-pochta manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
+"Email manzilingiz  yozuv muallifi sifatida saqlangan. Yozuv "
 "eslatmalarini \n"
 "o‘chirib qo‘yish uchun (3 kun ichida) quyidagi manzil ustiga bosing:\n"
 "\n"
@@ -360,6 +360,13 @@ msgstr ""
 "      keyinroq asl manbadan yana boshqa nusxa olishimiz mumkin.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "jo‘natildi.\n"
 "Agar siz yozuv muallifi bo‘lsangiz, quyidagi manzil orqali e-pochtangizni"
 " tekshirib ko‘ring."
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -425,7 +440,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun yozuvni %(site_url)s saytidan "
 "o‘chirib yubordi.\n"
 "\n"
-"E-pochta manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
+"Email manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
 "o‘chirilish haqida sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -441,7 +456,7 @@ msgstr ""
 "Foydalanuvchi \"%(full_name)s\" uchun yozuvni %(site_url)s saytidan "
 "o‘chirib yubordi.\n"
 "\n"
-"E-pochta manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
+"Email manzilingiz ushbu yozuv muallifi sifatida salqlanganligi uchun\n"
 "o‘chirilish haqida sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -486,7 +501,7 @@ msgstr ""
 "quyidagi manzilga o‘ting:\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -508,7 +523,7 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -529,7 +544,7 @@ msgstr ""
 "Yozuvni ko‘rib chiqish uchun quyidagi manzilga o‘ting:\n"
 "    %(record_url)s\n"
 "\n"
-"E-pochta manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
+"Email manzilingiz ushbu shaxs yozuvlariga yoki yozuvlaridagi \n"
 "qaydlarga aloqador bo‘lganligi sababli sizni ogohlantiryapmiz.\n"
 
 #, python-format
@@ -654,6 +669,9 @@ msgstr "Muallifning ismi"
 msgid "Author's phone number"
 msgstr "Muallifning telefon raqami"
 
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
+
 msgid "Authorization key"
 msgstr "Tasdiqdan o‘tish kaliti"
 
@@ -776,17 +794,17 @@ msgid "Download all person records in CSV format"
 msgstr "Shaxs haqidagi barcha yozuvlarni CSV formatda yuklab olish"
 
 msgid "E-mail"
-msgstr "E-pochta"
+msgstr "Email"
 
 msgid "E-mail address"
-msgstr "E-pochta manzili"
+msgstr "Email manzili"
 
 msgid "Edit"
 msgstr "Tahrirlash"
 
 #. Translators: The label for an email address field.
 msgid "Email address"
-msgstr "E-pochta manzili"
+msgstr "Email manzili"
 
 msgid "Embedding the Application"
 msgstr "Biritktirilgan ilova dastur"
@@ -993,6 +1011,12 @@ msgid ""
 msgstr ""
 "Agar quyidagi yozuvlar siz izlayotgan odamga taalluqli bo‘lmasa, pastki "
 "qator ustiga bosib, yangi yozuv yaratishingiz mumkin."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1265,7 +1289,7 @@ msgid "Please fill in all the required fields."
 msgstr "Barcha so‘ralgan maydonchalarni to‘ldiring."
 
 msgid "Please fill in your email address."
-msgstr "E-pochta manzilingizni kiriting."
+msgstr "Email manzilingizni kiriting."
 
 msgid "Please only enter valid profile URLs."
 msgstr ""
@@ -1358,9 +1382,6 @@ msgstr "Muhim ma'lumotni ko‘rsatish"
 
 msgid "Show who marked these duplicates"
 msgstr "Kim bularni nusxa deb belgilaganligini ko‘rsatish"
-
-msgid "Sign in"
-msgstr "Kirish"
 
 msgid "Sign out"
 msgstr "Chiqish"
@@ -1505,6 +1526,9 @@ msgstr "Xuddi shu nomdagi bir nechta yozuvlar mavjud."
 
 msgid "There is one existing record with a similar name."
 msgstr "Xuddi shu nomdagi bitta yozuv mavjud."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1715,13 +1739,6 @@ msgid "You are already unsubscribed."
 msgstr "Siz obunani allaqachon bekor qilgansiz."
 
 #, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Siz ayni paytda %(user_email)s nomidan kirdingiz."
-
-msgid "You are not currently signed in."
-msgstr "Siz ayni paytda tizimga kirmagansiz."
-
-#, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
 msgstr ""
 "O‘chirishdan oldin %(begin_tag)syozuvni ko‘rib chiqish%(end_tag)singiz "
@@ -1758,13 +1775,13 @@ msgid "Your download should start automatically."
 msgstr "Yuklab olish avtomatik boshlanishi kerak."
 
 msgid "Your e-mail address"
-msgstr "E-pochta manzilingiz"
+msgstr "Email manzilingiz"
 
 msgid "Your e-mail address:"
-msgstr "E-pochta manzilingiz:"
+msgstr "Email manzilingiz:"
 
 msgid "Your email"
-msgstr "E-pochta manzilingiz"
+msgstr "Email manzilingiz"
 
 msgid "Your name (required)"
 msgstr "Ismingiz (majburiy)"

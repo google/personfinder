@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,6 +51,8 @@ class Handler(BaseHandler):
                 val = getattr(p, prop)
                 if prop == 'sex':  # convert enum value to localized text
                     val = get_person_sex_text(p)
+                elif prop == 'photo_url' and val:
+                    val = (self.should_show_inline_photo(val), val)
                 person[prop].append(val)
                 any_person[prop] = any_person[prop] or val
 
@@ -64,8 +65,6 @@ class Handler(BaseHandler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
-        standalone = self.request.get('standalone')
-
         # TODO: Handle no persons found.
 
         person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
@@ -75,9 +74,9 @@ class Handler(BaseHandler):
         # Note: we're not showing notes and linked persons information
         # here at the moment.
         self.render('multiview.html',
-                    person=person, any=any_person, standalone=standalone,
+                    person=person, any=any_person,
                     cols=len(person['full_name']) + 1,
-                    onload_function='view_page_loaded()', markdup=True,
+                    onload_function='view_page_loaded', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)
 
     def post(self):

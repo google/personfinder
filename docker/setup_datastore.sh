@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Initialize the Person Finder's datastore the first time it is run on this machine.
 
 PORT=8000

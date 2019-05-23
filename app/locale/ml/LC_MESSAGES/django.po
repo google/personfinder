@@ -371,6 +371,13 @@ msgstr ""
 "      ഇതിന്റെ മറ്റൊരു പകർപ്പ് ലഭിക്കാനിടയുണ്ടെന്ന് മനസിലാക്കുക.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -388,6 +395,14 @@ msgstr ""
 "    സന്ദേശം അയയ്‌ക്കും. നിങ്ങളാണ് രചയിതാവെങ്കിൽ, ചുവടെയുള്ള\n"
 "    ബട്ടൺ ക്ലിക്കുചെയ്‌തശേഷം നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -669,6 +684,9 @@ msgstr "രചയിതാവിന്റെ പേര്"
 
 msgid "Author's phone number"
 msgstr "രചയിതാവിന്റെ ഫോൺ നമ്പർ"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "അംഗീകരണ കീ"
@@ -1009,6 +1027,12 @@ msgstr ""
 "നിങ്ങളുടെ മനസിലുണ്ടായിരുന്ന വ്യക്തിയുമായി ഈ റെക്കോർഡുകളൊന്നും "
 "പൊരുത്തപ്പെടുന്നില്ലെങ്കിൽ, നിങ്ങൾക്ക് ഒരു പുതിയ റെക്കോർഡ് സൃഷ്‌ടിക്കാൻ "
 "ചുവടെ ക്ലിക്കുചെയ്യാനാകും."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1387,9 +1411,6 @@ msgstr "സൂക്ഷ്‌മമായി കൈകാര്യം ചെയ�
 msgid "Show who marked these duplicates"
 msgstr "ഈ തനിപ്പകർപ്പുകൾ അടയാളപ്പെടുത്തിയത് ആരെന്ന് ദൃശ്യമാക്കുക"
 
-msgid "Sign in"
-msgstr "സൈൻ ഇൻ ചെയ്യുക"
-
 msgid "Sign out"
 msgstr "സൈൻ ഔട്ട് ചെയ്യുക"
 
@@ -1535,6 +1556,9 @@ msgstr "സമാന പേരുകളുള്ള ചില റെക്കോ
 
 msgid "There is one existing record with a similar name."
 msgstr "സമാന പേരുള്ള ഒരു റെക്കോർഡ് നിലവിലുണ്ട്."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1744,13 +1768,6 @@ msgstr "നിങ്ങൾ ഇതിനകം സബ്‌സ്‌ക്രൈ�
 
 msgid "You are already unsubscribed."
 msgstr "നിങ്ങൾ ഇതിനകം അൺസ‌ബ്‌സ്‌ക്രൈബുചെയ്‌തു."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "നിങ്ങൾ നിലവിൽ %(user_email)s എന്നതായി സൈൻ ഇൻ ചെയ്‌തു."
-
-msgid "You are not currently signed in."
-msgstr "നിങ്ങൾ നിലവിൽ സൈൻ ഇൻ ചെയ്‌തിട്ടില്ല."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

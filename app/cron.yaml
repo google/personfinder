@@ -18,12 +18,15 @@ cron:
   url: /global/tasks/count/update_dead_status
   schedule: every 5 minutes
 
-- description: delete expired
-  url: /global/tasks/delete_expired
-  schedule: every 60 minutes
-- description: delete old
-  url: /global/tasks/delete_old
-  schedule: every 60 minutes
+- description: process expirations
+  url: /global/tasks/process_expirations
+  schedule: every 4 hours
+- description: clean up unassociated notes
+  url: /global/tasks/cleanup_stray_notes
+  schedule: every 4 hours
+- description: clean up unassociated subscriptions
+  url: /global/tasks/cleanup_stray_subscriptions
+  schedule: every 4 hours
 - description: clean up in test mode
   url: /global/tasks/clean_up_in_test_mode
   schedule: every 60 minutes
@@ -36,4 +39,18 @@ cron:
 - description: dump CSV
   url: /global/tasks/dump_csv
   schedule: every day 0:00
+  timezone: UTC
+
+# Datacheck crons
+- description: Check expired person records.
+  url: /global/tasks/check_expired_person_records/
+  schedule: every day 18:00
+  timezone: UTC
+- description: Check note record validity.
+  url: /global/tasks/check_note_data_validity/
+  schedule: every day 18:00
+  timezone: UTC
+- description: Check person record validity.
+  url: /global/tasks/check_person_data_validity/
+  schedule: every day 18:00
   timezone: UTC

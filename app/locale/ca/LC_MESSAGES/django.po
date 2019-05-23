@@ -356,6 +356,13 @@ msgstr ""
 "endavant la font original ens n'enviï una altra còpia.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "confirmació. Si sou l'autor, comproveu el correu electrònic després de "
 "fer clic al botó que hi ha a continuació.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -652,6 +667,9 @@ msgstr "Nom de l'autor"
 
 msgid "Author's phone number"
 msgstr "Número de telèfon de l'autor"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Clau d'autorització"
@@ -995,6 +1013,12 @@ msgid ""
 msgstr ""
 "Si cap d'aquests registres no coincideix amb la persona que cerqueu, "
 "podeu fer clic al botó que apareix més avall per crear-ne un de nou."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1361,9 +1385,6 @@ msgstr "Mostra la informació sensible"
 msgid "Show who marked these duplicates"
 msgstr "Mostra qui ha marcat aquests duplicats"
 
-msgid "Sign in"
-msgstr "Inicia la sessió"
-
 msgid "Sign out"
 msgstr "Tanca la sessió"
 
@@ -1507,6 +1528,9 @@ msgstr "Hi ha uns quants registres existents amb noms semblants."
 
 msgid "There is one existing record with a similar name."
 msgstr "Hi ha un registre existent amb un nom semblant."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1717,13 +1741,6 @@ msgstr "Ja esteu subscrit. "
 
 msgid "You are already unsubscribed."
 msgstr "Ja heu anul·lat la subscripció."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "En aquest moment teniu la sessió iniciada com a %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "No heu iniciat la sessió."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

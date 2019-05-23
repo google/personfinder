@@ -33,16 +33,63 @@ handlers:
   script: send_mail.py
   login: admin
 
-# Everything else is handled by main.
-- url: /admin/api_keys.*
-  script: admin_api_keys.py
-  secure: always
+- url: /static
+  static_dir: resources/static/fixed/
+- url: /personfinder/static
+  static_dir: resources/static/fixed/
+
+# These are the handlers we've migrated to Django.
+- url: /?
+  script: wsgi.application
+- url: /personfinder/?
+  script: wsgi.application
+- url: /setup_datastore/?
+  script: wsgi.application
+- url: /global/home.html
+  script: wsgi.application
+- url: /personfinder/global/home.html
+  script: wsgi.application
+- url: /global/howto.html
+  script: wsgi.application
+- url: /personfinder/global/howto.html
+  script: wsgi.application
+- url: /global/responders.html
+  script: wsgi.application
+- url: /personfinder/global/responders.html
+  script: wsgi.application
+- url: /.*/admin.*
+  script: wsgi.application
+- url: /.+/d/results.*
+  script: wsgi.application
+- url: /.*/feeds/repo.*
+  script: wsgi.application
+- url: /.*/sitemap.*
+  script: wsgi.application
+- url: /global/static.*
+  script: wsgi.application
+- url: /.*/tasks/process_expirations.*
+  script: wsgi.application
+- url: /.*/tasks/check_expired_person_records.*
+  script: wsgi.application
+- url: /.*/tasks/check_note_data_validity.*
+  script: wsgi.application
+- url: /.*/tasks/check_person_data_validity.*
+  script: wsgi.application
+- url: /.*/tasks/cleanup_stray_notes.*
+  script: wsgi.application
+- url: /.*/tasks/cleanup_stray_subscriptions.*
+  script: wsgi.application
+- url: /.*/tasks/sitemap_ping.*
+  script: wsgi.application
+# Everything else is still handled by the webapp2 app.
 - url: .*
   script: main.py
 
 libraries:
 - name: django
-  version: "1.9"
+  version: "1.11"
+- name: ssl
+  version: "2.7.11"
 - name: lxml
   version: "3.7.3"
 - name: webapp2

@@ -1,0 +1,121 @@
+<!--
+ Copyright 2019 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ page_title }}</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>Diff: {{ msgs|length }} Messages</h1>
+
+{% if msgs_by_category %}
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Number of Messages</th>
+    </tr>
+    {% for category, msgs in msgs_by_category.items %}
+      <tr>
+        <td>{{ category }}</td>
+        <td>{{ msgs|length }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% for filename in filenames %}
+  <p>
+    File {{ filename.shorthand_name }}:
+    {% if filename.filename %}
+      {{ filename.filename }}
+    {% else %}
+      pasted in
+    {% endif %}
+  </p>
+{% endfor %}
+
+<div class="all_messages">
+  {% if group_messages %}
+    {% if msg_grouping.added_record_ids %}
+      <div class="message">
+        <div class="grouped_record_header">
+          B has extra records: {{ msg_grouping.added_record_ids|length }} messages.
+        </div>
+        <div class="grouped_record_list">
+          Record IDs:
+          <span class="message_data">
+            {{ msg_grouping.added_record_ids|join:', ' }}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+    {% if msg_grouping.deleted_record_ids %}
+      <div class="message">
+        <div class="grouped_record_header">
+          B is missing records: {{ msg_grouping.deleted_record_ids|length }} messages.
+        </div>
+        <div class="grouped_record_list">
+          Record IDs:
+          <span class="message_data">
+            {{ msg_grouping.deleted_record_ids|join:', ' }}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+    {% for record_id, record_data in msg_grouping.messages_by_record.items %}
+      <div class="message">
+        <div class="grouped_record_header">
+          {{ record_data.count }} messages for record: {{ record_id }}
+        </div>
+        {% if record_data.added_tags %}
+          <div class="grouped_record_list">
+            B has extra fields:
+            <span class="message_data">
+              {{ record_data.added_tags|join:', ' }}
+            </span>
+          </div>
+        {% endif %}
+        {% if record_data.deleted_tags %}
+          <div class="grouped_record_list">
+            B is missing fields:
+            <span class="message_data">
+              {{ record_data.deleted_tags|join:', ' }}
+            </span>
+          </div>
+        {% endif %}
+        {% if record_data.changed_tags %}
+          <div class="grouped_record_list">
+            Values changed:
+            <span class="message_data">
+              {{ record_data.changed_tags|join:', ' }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    {% include "messages.html" with show_record_ids=True show_xml_tag=True show_xml_text=True %}
+  {% endif %}
+</div>
+
+</body>
+
+</html>

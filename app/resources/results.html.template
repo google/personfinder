@@ -200,7 +200,7 @@
             </div>
           {% else %}
             <div class="resultImageContainer"
-              ><img class="resultImage" src="{{env.global_url}}/no-photo.png"
+              ><img class="resultImage" src="{{env.fixed_static_url_base}}/no-photo.png"
                     width='80' height='80' align='left' alt=''
             /></div>
           {% endif %}

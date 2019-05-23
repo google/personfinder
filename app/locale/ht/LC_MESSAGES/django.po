@@ -340,6 +340,13 @@ msgstr ""
 "li.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -355,6 +362,14 @@ msgstr ""
 "aktive, nou pral voye yon mesaj bay otè nòt la. Si ou se otè a, tanpri "
 "verifye imèl ou apre ou klike sou bouton pi ba a.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -602,6 +617,9 @@ msgstr "Non otè a"
 
 msgid "Author's phone number"
 msgstr "Nimewo telefòn otè a"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Kle Otorizasyon"
@@ -936,6 +954,12 @@ msgid ""
 msgstr ""
 "Si okenn nan dosye sa yo pa koresponn ak moun ou an, ou met klike sou "
 "bouton anba la pou ou sa kreye yon nouvo dosye."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1293,9 +1317,6 @@ msgstr "Montre enfòmasyon ki delika"
 msgid "Show who marked these duplicates"
 msgstr "Montre ki moun ki te make doub sa yo"
 
-msgid "Sign in"
-msgstr "Konekte"
-
 msgid "Sign out"
 msgstr "Dekonekte"
 
@@ -1436,6 +1457,9 @@ msgstr "Gen kèlke dosye ki egziste deja ak menm non sa a."
 
 msgid "There is one existing record with a similar name."
 msgstr "Gen yon dosye ki egziste deja ak menm non sa a."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Genyen yo erè ak foto sa. tanpri eseye mete yon lòt."
@@ -1640,13 +1664,6 @@ msgstr "Ou deja pa abòne. "
 
 msgid "You are already unsubscribed."
 msgstr "Ou deja pa abòne."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Kounye a ou konekte kòm %(user_email)s ."
-
-msgid "You are not currently signed in."
-msgstr "Ou pa konekte kounye a."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

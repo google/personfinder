@@ -355,6 +355,13 @@ msgstr ""
 "කරුණාකර දැනුවත්වන්න.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -371,6 +378,14 @@ msgstr ""
 "    ඔබ කර්තෘ නම්, පහත බොත්තම ක්ලික් කිරීමෙන් පසුව ඔබගේ ඊ-තැපෑල පරික්ෂා "
 "කරන්න.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -642,6 +657,9 @@ msgstr "කර්තෘගේ නම"
 
 msgid "Author's phone number"
 msgstr "කර්තෘගේ දුරකථන අංකය"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "අනුමැතිය දීමේ යතුර"
@@ -977,6 +995,12 @@ msgid ""
 msgstr ""
 "ඔබ සිතා සිටි පුද්ගලයා හා මෙම වාර්තා කිසිවක් ගැළපෙන්නේ නැති නම්, නව "
 "වාර්තාවක් තැනීමට ඔබට පහත ක්ලික් කළ හැක."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1341,9 +1365,6 @@ msgstr "සංවේදී තොරතුරු පෙන්වන්න"
 msgid "Show who marked these duplicates"
 msgstr "මෙම අනුපිටපත් ලකුණු කළේ කවුදැයි පෙන්වන්න"
 
-msgid "Sign in"
-msgstr "පුරනය වන්න"
-
 msgid "Sign out"
 msgstr "වරනය වන්න"
 
@@ -1486,6 +1507,9 @@ msgstr "සමාන නම් සහිත පවතින වාර්තා �
 
 msgid "There is one existing record with a similar name."
 msgstr "සමාන නමක් සහිත එක් පවතින වාර්තාවක් ඇත."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1692,13 +1716,6 @@ msgstr "ඔබ දැනටමත් දායක වී ඇත. "
 
 msgid "You are already unsubscribed."
 msgstr "ඔබ දැනටමත් දායකත්වයෙන් ඉවත් වී ඇත."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "ඔබ වර්තමානයේදි %(user_email)s ලෙස පුරනය වී ඇත."
-
-msgid "You are not currently signed in."
-msgstr "ඔබ දැනට පුරා නැත."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

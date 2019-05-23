@@ -345,8 +345,16 @@ exports[`testing Results snapshot test for Results 1`] = `
             }
             result={
               Object {
-                "name": "Fred",
+                "alternateNames": Array [
+                  "Freddy",
+                ],
+                "fullNames": Array [
+                  "Fred Fredricks",
+                ],
+                "localPhotoUrl": null,
                 "personId": "123",
+                "timestamp": "2019-05-15T17:12:23.936282Z",
+                "timestampType": "creation",
               }
             }
           >
@@ -407,8 +415,16 @@ exports[`testing Results snapshot test for Results 1`] = `
                 }
                 result={
                   Object {
-                    "name": "Fred",
+                    "alternateNames": Array [
+                      "Freddy",
+                    ],
+                    "fullNames": Array [
+                      "Fred Fredricks",
+                    ],
+                    "localPhotoUrl": null,
                     "personId": "123",
+                    "timestamp": "2019-05-15T17:12:23.936282Z",
+                    "timestampType": "creation",
                   }
                 }
               >
@@ -495,8 +511,16 @@ exports[`testing Results snapshot test for Results 1`] = `
                   }
                   result={
                     Object {
-                      "name": "Fred",
+                      "alternateNames": Array [
+                        "Freddy",
+                      ],
+                      "fullNames": Array [
+                        "Fred Fredricks",
+                      ],
+                      "localPhotoUrl": null,
                       "personId": "123",
+                      "timestamp": "2019-05-15T17:12:23.936282Z",
+                      "timestampType": "creation",
                     }
                   }
                 >
@@ -507,7 +531,9 @@ exports[`testing Results snapshot test for Results 1`] = `
                     <div
                       className="results-resultphoto"
                     >
-                      <img />
+                      <img
+                        src={null}
+                      />
                     </div>
                     <div
                       className="results-resultcontent"
@@ -515,12 +541,44 @@ exports[`testing Results snapshot test for Results 1`] = `
                       <h5
                         className="mdc-typography--headline5"
                       >
-                        Fred
+                        Fred Fredricks (Freddy)
                       </h5>
                       <p
                         className="mdc-typography--body1"
                       >
-                        Record created on March 31
+                        <FormattedMessage
+                          defaultMessage="Record created on {timestampStr}."
+                          id="Results.timestampCreation"
+                          values={
+                            Object {
+                              "timestampStr": <FormattedDate
+                                day="numeric"
+                                hour="numeric"
+                                minute="numeric"
+                                month="short"
+                                timeZoneName="short"
+                                value={2019-05-15T17:12:23.936Z}
+                              />,
+                            }
+                          }
+                        >
+                          <span>
+                            Record created on 
+                            <FormattedDate
+                              day="numeric"
+                              hour="numeric"
+                              minute="numeric"
+                              month="short"
+                              timeZoneName="short"
+                              value={2019-05-15T17:12:23.936Z}
+                            >
+                              <span>
+                                May 15, 5:12 PM UTC
+                              </span>
+                            </FormattedDate>
+                            .
+                          </span>
+                        </FormattedMessage>
                       </p>
                     </div>
                   </li>
@@ -529,7 +587,7 @@ exports[`testing Results snapshot test for Results 1`] = `
             </Route>
           </withRouter(InjectIntl(SearchResultImpl))>
           <withRouter(InjectIntl(SearchResultImpl))
-            key="456"
+            key="321"
             repo={
               Object {
                 "recordCount": 100,
@@ -539,8 +597,15 @@ exports[`testing Results snapshot test for Results 1`] = `
             }
             result={
               Object {
-                "name": "Alan",
-                "personId": "456",
+                "alternateNames": Array [],
+                "fullNames": Array [
+                  "Alan Smith",
+                  "Alan Herbert Smith",
+                ],
+                "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
+                "personId": "321",
+                "timestamp": "2019-05-16T16:35:23.936282Z",
+                "timestampType": "update",
               }
             }
           >
@@ -601,8 +666,15 @@ exports[`testing Results snapshot test for Results 1`] = `
                 }
                 result={
                   Object {
-                    "name": "Alan",
-                    "personId": "456",
+                    "alternateNames": Array [],
+                    "fullNames": Array [
+                      "Alan Smith",
+                      "Alan Herbert Smith",
+                    ],
+                    "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
+                    "personId": "321",
+                    "timestamp": "2019-05-16T16:35:23.936282Z",
+                    "timestampType": "update",
                   }
                 }
               >
@@ -689,8 +761,15 @@ exports[`testing Results snapshot test for Results 1`] = `
                   }
                   result={
                     Object {
-                      "name": "Alan",
-                      "personId": "456",
+                      "alternateNames": Array [],
+                      "fullNames": Array [
+                        "Alan Smith",
+                        "Alan Herbert Smith",
+                      ],
+                      "localPhotoUrl": "http://www.example.com/notevenreallylocal.jpg",
+                      "personId": "321",
+                      "timestamp": "2019-05-16T16:35:23.936282Z",
+                      "timestampType": "update",
                     }
                   }
                 >
@@ -701,7 +780,9 @@ exports[`testing Results snapshot test for Results 1`] = `
                     <div
                       className="results-resultphoto"
                     >
-                      <img />
+                      <img
+                        src="http://www.example.com/notevenreallylocal.jpg"
+                      />
                     </div>
                     <div
                       className="results-resultcontent"
@@ -709,12 +790,44 @@ exports[`testing Results snapshot test for Results 1`] = `
                       <h5
                         className="mdc-typography--headline5"
                       >
-                        Alan
+                        Alan Smith, Alan Herbert Smith
                       </h5>
                       <p
                         className="mdc-typography--body1"
                       >
-                        Record created on March 31
+                        <FormattedMessage
+                          defaultMessage="Record updated on {timestampStr}."
+                          id="Results.timestampUpdate"
+                          values={
+                            Object {
+                              "timestampStr": <FormattedDate
+                                day="numeric"
+                                hour="numeric"
+                                minute="numeric"
+                                month="short"
+                                timeZoneName="short"
+                                value={2019-05-16T16:35:23.936Z}
+                              />,
+                            }
+                          }
+                        >
+                          <span>
+                            Record updated on 
+                            <FormattedDate
+                              day="numeric"
+                              hour="numeric"
+                              minute="numeric"
+                              month="short"
+                              timeZoneName="short"
+                              value={2019-05-16T16:35:23.936Z}
+                            >
+                              <span>
+                                May 16, 4:35 PM UTC
+                              </span>
+                            </FormattedDate>
+                            .
+                          </span>
+                        </FormattedMessage>
                       </p>
                     </div>
                   </li>

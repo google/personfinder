@@ -361,6 +361,13 @@ msgstr ""
 "      ممکن ہے ہمیں بعد میں اصل ماخذ سے اس کی دوسری کاپی وصول ہو۔\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -378,6 +385,14 @@ msgstr ""
 "    اگر آپ مصنف ہیں تو ذیل کے بٹن پر کلک کرنے کے بعد اپنا ای میل چیک "
 "کریں۔\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -648,6 +663,9 @@ msgstr "مصنف کا نام"
 
 msgid "Author's phone number"
 msgstr "مصنف کا فون نمبر"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "اجازت دینے کی کلید"
@@ -982,6 +1000,12 @@ msgid ""
 msgstr ""
 "اگر ان ریکارڈوں میں سے کوئی بھی آپ کے ذہن میں موجود شخص سے مماثل نہیں ہے "
 "تو آپ ایک نیا ریکارڈ بنانے کیلئے ذیل میں کلک کرسکتے ہیں۔"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1349,9 +1373,6 @@ msgstr "حساس معلومات دکھائیں"
 msgid "Show who marked these duplicates"
 msgstr "دکھائیں کہ کس نے ان ڈپلیکیٹس کو نشان زد کیا ہے"
 
-msgid "Sign in"
-msgstr "سائن ان کریں"
-
 msgid "Sign out"
 msgstr "سائن آؤٹ کریں"
 
@@ -1495,6 +1516,9 @@ msgstr "ملتے جلتے ناموں کے کچھ موجودہ ریکارڈز ہ�
 
 msgid "There is one existing record with a similar name."
 msgstr "اس سے ملتے جلتے نام کا ایک ریکارڈ پہلے سے موجود ہے۔"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "تصویر پر کارروائی کرنے میں ایک دشواری تھی۔ براہ کرم مختلف تصویر آزمائیں۔"
@@ -1701,13 +1725,6 @@ msgstr "آپ پہلے سے ہی سبسکرائب ہیں۔ "
 
 msgid "You are already unsubscribed."
 msgstr "آپ پہلے سے ہی ان سبسکرائب ہیں۔"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "آپ فی الحال %(user_email)s کے بطور سائن ان ہیں۔"
-
-msgid "You are not currently signed in."
-msgstr "آپ فی الحال سائن ان نہیں ہیں۔"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

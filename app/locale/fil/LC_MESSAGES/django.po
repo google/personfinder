@@ -356,6 +356,13 @@ msgstr ""
 "maaari kaming makatanggap ng isa pang kopya nito mula sa orihinal na "
 "source sa ibang pagkakataon."
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "magpapadala ng mensahe ng pagkumpirma sa may-akda ng record.\n"
 "Kung ikaw ang may-akda, tingnan ang iyong email pagkatapos i-click ang "
 "button sa ibaba."
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -649,6 +664,9 @@ msgstr "Pangalan ng may-akda"
 
 msgid "Author's phone number"
 msgstr "Numero ng telepono ng may-akda"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Key ng pahintulot"
@@ -995,6 +1013,12 @@ msgid ""
 msgstr ""
 "Kung wala sa mga record na ito ang tumutugma sa taong iniisip mo, maaari "
 "kang mag-click sa ibaba upang gumawa ng bagong record."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1365,9 +1389,6 @@ msgstr "Ipakita ang sensitibong impormasyon"
 msgid "Show who marked these duplicates"
 msgstr "Ipakita kung sino ang naglagay ng marka sa mga duplicate na ito"
 
-msgid "Sign in"
-msgstr "Mag-sign in"
-
 msgid "Sign out"
 msgstr "Mag-sign out"
 
@@ -1514,6 +1535,9 @@ msgstr "May ilang umiiral na talaang may magkakatulad na pangalan."
 
 msgid "There is one existing record with a similar name."
 msgstr "May umiiral na talaang may katulad na pangalan."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1722,13 +1746,6 @@ msgstr "Naka-subscribe ka na. "
 
 msgid "You are already unsubscribed."
 msgstr "Naka-unsubscribe ka na."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Kasalukuyan kang naka-sign in bilang %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Kasalukuyan kang hindi naka-sign in."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

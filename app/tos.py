@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +16,7 @@
 
 __author__ = 'ichikawa@google.com (Hiroshi Ichikawa)'
 
-from django_setup import ugettext as _  # always keep this first
-
+from django.utils.translation import ugettext as _
 import logging
 import traceback
 import urllib2

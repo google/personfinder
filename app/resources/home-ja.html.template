@@ -1,0 +1,86 @@
+{% extends "static-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+
+  {% if config.brand == "google" %}
+
+    <h1>
+      Google パーソンファインダーは、災害時において、友人や家族の安否を確認する手助けをします。
+    </h1>
+
+    <div class="storyboard">
+      <div class="storyboard-section">
+        <table>
+          <tr>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/separated-81x80.png" width="81" height="80">
+            </td>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/search-100x80.png" width="100" height="80">
+            </td>
+          </tr>
+          <tr class="captions">
+            <td>災害時離ればなれになってしまった人々が...</td>
+            <td>探している人について情報を募集すると...</td>
+          </tr>
+        </table>
+      </div>
+      <div class="storyboard-section">
+        <table>
+          <tr>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/post-90x80.png" width="90" height="80">
+            </td>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/find-80x80.png" width="80" height="80">
+            </td>
+          </tr>
+          <tr class="captions">
+            <td>個人や団体が知っている情報を提供し...</td>
+            <td>友人や家族の安否情報を見つけることができます</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="teasers">
+      <div class="teasers-section">
+        <h2>災害に対応する</h2>
+        災害後、人々が互いの安否を確認する手助けができます。
+        <ul>
+          <li>あなたのサイトに Google パーソンファインダーを埋め込む。
+          <li>Google パーソンファインダーからデータをダウンロードする。
+          <li>Google パーソンファインダーへデータをアップロードする。
+        </ul>
+        <a href="{{env.global_url}}/responders.html">詳細 &#xbb;</a>
+      </div>
+      <div class="teasers-section">
+        <h2>サービスを開発する</h2>
+        Google パーソンファインダーを改良することができます。
+        <ul>
+          <li>PFIFデータモデルを理解する。
+          <li>パーソンファインダーをカスタマイズ・改良する。
+        </ul>
+        <a href="https://github.com/google/personfinder/wiki/IndexJapanese">
+            詳細 &#xbb;</a>
+      </div>
+    </div>
+
+  {% else %}
+
+    <h1>Welcome</h1>
+
+    <p>You are now running Person Finder.
+
+    <p>Please see the
+    <a href="https://github.com/google/personfinder">project page</a>
+    for instructions on administering this site and customizing its appearance.
+
+    {% if not config.initialized %}
+      <p>You can <a href="/setup_datastore">set up the database</a>.
+    {% endif %}
+
+  {% endif %}
+
+{% endblock content %}

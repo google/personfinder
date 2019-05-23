@@ -8,9 +8,9 @@
 {# Contents of the <head> element.  Use this to add stylesheets. #}
 {% block head %}
   {{block.super}}
-  <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+  <link rel="stylesheet" href="{{env.fixed_static_url_base}}/sidebar.css">
   {% if config.brand == "google" %}
-    <link rel="stylesheet" href="{{env.global_url}}/google.css">
+    <link rel="stylesheet" href="{{env.fixed_static_url_base}}/google.css">
   {% endif %}
 {% endblock head %}
 
@@ -26,7 +26,10 @@
 {# Header above page content. #}
 {% block header %}
   {{block.super}}
-  <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">{% trans "Google Person Finder" %}
+  <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu">{% trans "Google Person Finder" %}
+  <script nonce="{{ csp_nonce }}">
+    document.querySelector('#menu-button').addEventListener('click', showSideMenu);
+  </script>
 {% endblock header %}
 
 {# Container around page content. #}
@@ -57,7 +60,7 @@
     {% endif %}
     <span class="link-separator"></span>
     {% if env.ui != "light" %}
-      <a href="http://support.google.com/personfinder/?hl={{env.lang}}"
+      <a href="https://support.google.com/personfinder/?hl={{env.lang}}"
           {% comment %}
             Translators: The title of a page of frequently asked questions.
           {% endcomment %}

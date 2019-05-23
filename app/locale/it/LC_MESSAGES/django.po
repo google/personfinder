@@ -364,6 +364,13 @@ msgstr ""
 "\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -382,6 +389,14 @@ msgstr ""
 "    Se l'autore sei tu, controlla la posta dopo avere fatto clic sul "
 "pulsante sotto.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -664,6 +679,9 @@ msgstr "Nome dell'autore"
 
 msgid "Author's phone number"
 msgstr "Numero di telefono dell'autore"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Codice di autorizzazione"
@@ -1005,6 +1023,12 @@ msgid ""
 msgstr ""
 "Se nessuno di questi record corrisponde alla persona che avevi in mente, "
 "puoi fare clic di seguito per creare un nuovo record."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1372,9 +1396,6 @@ msgstr "Mostra informazioni riservate"
 msgid "Show who marked these duplicates"
 msgstr "Mostra chi ha contrassegnato questi duplicati"
 
-msgid "Sign in"
-msgstr "Accedi"
-
 msgid "Sign out"
 msgstr "Esci"
 
@@ -1517,6 +1538,9 @@ msgstr "Ci sono alcuni record esistenti con nomi simili."
 
 msgid "There is one existing record with a similar name."
 msgstr "C'è un solo record esistente con un nome simile."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1722,13 +1746,6 @@ msgstr "Sei già iscritto. "
 
 msgid "You are already unsubscribed."
 msgstr "Hai già annullato l'iscrizione."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Hai eseguito l'accesso come %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Accesso non effettuato."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

@@ -343,6 +343,13 @@ msgstr ""
 "      나중에 원본 출처로부터 신상기록 사본이\n"
 "      다시 등록될 수 있습니다."
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -358,6 +365,14 @@ msgstr ""
 "    설정할 수 있도록 신상기록 작성자에게 확인 메일이 발송됩니다.\n"
 "    신상기록 작성자인 경우 아래 버튼을 클릭한 후에 이메일을 확인해 주세요.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -624,6 +639,9 @@ msgstr "작성자 이름"
 
 msgid "Author's phone number"
 msgstr "작성자 전화번호"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "인증 키"
@@ -945,6 +963,12 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "검색결과에 찾는 사람에 대한 신상기록이 없는 경우 아래 버튼을 클릭하여 신상기록을 새로 작성할 수 있습니다."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1286,9 +1310,6 @@ msgstr "중요 정보 표시"
 msgid "Show who marked these duplicates"
 msgstr "중복 신상기록으로 표시한 사용자 보기"
 
-msgid "Sign in"
-msgstr "로그인"
-
 msgid "Sign out"
 msgstr "로그아웃"
 
@@ -1427,6 +1448,9 @@ msgstr "이름이 유사한 신상기록이 몇 건 있습니다."
 
 msgid "There is one existing record with a similar name."
 msgstr "이름이 유사한 신상기록이 1건 있습니다."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
@@ -1618,13 +1642,6 @@ msgstr "이미 수신 신청하셨습니다."
 
 msgid "You are already unsubscribed."
 msgstr "이미 수신 취소하셨습니다."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "현재 다음 계정에 로그인함: %(user_email)s"
-
-msgid "You are not currently signed in."
-msgstr "현재 로그인되어 있지 않습니다."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

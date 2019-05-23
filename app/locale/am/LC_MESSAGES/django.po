@@ -349,6 +349,13 @@ msgstr ""
 "      ሰርስረን ማውጣት የምንችል መሆኑን እባክዎ ልብ ይበሉ።\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -364,6 +371,14 @@ msgstr ""
 "  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
 "  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -631,6 +646,9 @@ msgstr "የጸሐፊ ስም"
 
 msgid "Author's phone number"
 msgstr "የጸሐፊ ስልክ ቁጥር"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "የፈቀዳ ቁልፍ"
@@ -955,6 +973,12 @@ msgid ""
 msgstr ""
 "ማናቸውም እነኚህ መዝገቦች እርስዎ ካሰቡት ሰው ጋር የሚዛመዱ ካልሆኑ አዲስ መዝገብ ለመፍጠር ከታች ጠቅ ማድረግ "
 "ይችላሉ።"
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1306,9 +1330,6 @@ msgstr "ስስ መረጃ አሳይ"
 msgid "Show who marked these duplicates"
 msgstr "ማን እነዚህ የተባዙ የሚል ምልክት እንዳደረገባቸው አሳይ"
 
-msgid "Sign in"
-msgstr "በመለያ ግባ"
-
 msgid "Sign out"
 msgstr "ዘግተህ ውጣ"
 
@@ -1449,6 +1470,9 @@ msgstr "ተመሳሳይ ስም ያላቸው አንዳንድ ነባር መዝገ�
 
 msgid "There is one existing record with a similar name."
 msgstr "ተመሳሳይ ስም ያለው አንድ ነባር መዝገብ አለ።"
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "ምስሉን መስራት ላይ ችግር ነበር።  እባክዎ የተለየ ምስል ይሞክሩ።"
@@ -1646,13 +1670,6 @@ msgstr "አስቀድመው ለደንበኝነት ተመዝግበዋል። "
 
 msgid "You are already unsubscribed."
 msgstr "አስቀድመው ከደንበኝነት ምዝገባ ወጥተዋል።"
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "በአሁኑ ጊዜ እንደ %(user_email)s ሆነው ገብተዋል።"
-
-msgid "You are not currently signed in."
-msgstr "በአሁኑ ጊዜ በመለያ አልገቡም።"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

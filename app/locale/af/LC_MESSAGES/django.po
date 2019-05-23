@@ -355,6 +355,13 @@ msgstr ""
 "kopie daarvan van die oorspronklike bron kan kry.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -371,6 +378,14 @@ msgstr ""
 "rekordouteur gestuur word. As jy die outeur is, kontroleer jou e-pos "
 "nadat jy die knoppie hieronder geklik het.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -643,6 +658,9 @@ msgstr "Outeur se naam"
 
 msgid "Author's phone number"
 msgstr "Outeur se foonnommer"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Magtigingsleutel"
@@ -980,6 +998,12 @@ msgid ""
 msgstr ""
 "Indien geen van hierdie rekords pas by die persoon wat jy in gedagte "
 "gehad het nie, kan jy hieronder klik om 'n nuwe rekord te skep."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1342,9 +1366,6 @@ msgstr "Wys sensitiewe inligting"
 msgid "Show who marked these duplicates"
 msgstr "Wys wie hierdie duplikate gemerk het"
 
-msgid "Sign in"
-msgstr "Meld aan"
-
 msgid "Sign out"
 msgstr "Meld af"
 
@@ -1486,6 +1507,9 @@ msgstr "Daar is 'n aantal bestaande rekords met soortgelyke name."
 
 msgid "There is one existing record with a similar name."
 msgstr "Daar is een bestaande rekord met 'n soortgelyke naam."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Kon nie die prent verwerk nie. Probeer asseblief 'n ander prent."
@@ -1688,13 +1712,6 @@ msgstr "Jy is reeds ingeteken. "
 
 msgid "You are already unsubscribed."
 msgstr "Jy is reeds uitgeteken."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Jy is tans aangemeld as %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Jy is nie tans aangemeld nie."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

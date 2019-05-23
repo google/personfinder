@@ -1,5 +1,19 @@
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import config
-from model import Person
+import model
 import photo
 from search.searcher import Searcher
 import simplejson
@@ -41,28 +55,6 @@ class Repo(FrontendApiHandler):
                 },
             ]
         self._return_json(json)
-
-
-class Results(FrontendApiHandler):
-
-    repo_required = True
-
-    MAX_RESULTS = 100
-
-    def _result_to_dict(self, person):
-        # TODO: implement this
-        return {
-            'personId': person.record_id,
-            'name': 'Hardcoded name',
-        }
-
-    def get(self):
-        searcher = Searcher(
-            self.repo, config.get('enable_fulltext_search'),
-            Results.MAX_RESULTS)
-        results = searcher.search(
-            self.params.query_name or self.params.query)
-        self._return_json([self._result_to_dict(r) for r in results])
 
 
 class Person(FrontendApiHandler):
@@ -121,7 +113,7 @@ class Create(FrontendApiHandler):
 
     def post(self):
         # TODO: factor all this out somewhere shared
-        person = Person.create_original(
+        person = model.Person.create_original(
             self.repo,
             entry_date=utils.get_utcnow(),
             family_name=self.params.family_name,

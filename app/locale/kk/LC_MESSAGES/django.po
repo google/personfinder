@@ -361,6 +361,13 @@ msgstr ""
 "      түпнұсқа дереккөзден оның тағы бір көшірмесін алуымыз мүмкін.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "  Егер авторы сіз болсаңыз, төмендегі түймені басқаннан кейін, поштаңызды"
 " тексеріңіз.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -650,6 +665,9 @@ msgstr "Aвтордың аты"
 
 msgid "Author's phone number"
 msgstr "Aвтордың телефон нөмірі"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Рұқсат беру кілті"
@@ -989,6 +1007,12 @@ msgid ""
 msgstr ""
 "Бұл деректер сіз іздеп жүрген адамға сәйкес келмесе, жаңа дерек жинағын "
 "жасау үшін төмендегі аймақты басыңыз."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1350,9 +1374,6 @@ msgstr "Маңызды ақпаратты көрсету"
 msgid "Show who marked these duplicates"
 msgstr "Бұл көшірмелерді кім белгілегенін көрсету"
 
-msgid "Sign in"
-msgstr "Кіру"
-
 msgid "Sign out"
 msgstr "Шығу"
 
@@ -1495,6 +1516,9 @@ msgstr "Ұқсас атаумен бірнеше деректер бар."
 
 msgid "There is one existing record with a similar name."
 msgstr "Ұқсас атаумен бір дерек бар."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Бұл бейнені қолдануда мәселе туындады. Басқа бейнені қолданып көріңіз."
@@ -1699,13 +1723,6 @@ msgstr "Сіз бұрыннан жазылғансыз. "
 
 msgid "You are already unsubscribed."
 msgstr "Сіз жазылымды тоқтаттыңыз."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Сіз қазір жүйеге %(user_email)s ретінде кіріп отырсыз."
-
-msgid "You are not currently signed in."
-msgstr "Сіз қазір жүйеде емессіз."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

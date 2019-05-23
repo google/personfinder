@@ -363,6 +363,13 @@ msgstr ""
 "original.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -380,6 +387,14 @@ msgstr ""
 "mesmo.\n"
 "    Se é o autor, confirme o seu email depois de clicar no botão abaixo.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -651,6 +666,9 @@ msgstr "Nome do autor"
 
 msgid "Author's phone number"
 msgstr "Número de telefone do autor"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Chave de autorização"
@@ -990,6 +1008,12 @@ msgid ""
 msgstr ""
 "Se nenhum destes registos corresponder à pessoa que tinha em mente, pode "
 "clicar abaixo para criar um novo registo."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1354,9 +1378,6 @@ msgstr "Mostrar informações confidenciais"
 msgid "Show who marked these duplicates"
 msgstr "Mostrar quem marcou estes duplicados"
 
-msgid "Sign in"
-msgstr "Iniciar sessão"
-
 msgid "Sign out"
 msgstr "Terminar sessão"
 
@@ -1499,6 +1520,9 @@ msgstr "Há alguns registos já existentes com nomes semelhantes."
 
 msgid "There is one existing record with a similar name."
 msgstr "Há um registo já existente com um nome semelhante."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1705,13 +1729,6 @@ msgstr "Já subscreveu. "
 
 msgid "You are already unsubscribed."
 msgstr "Já anulou a subscrição."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Atualmente, tem sessão iniciada como %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "De momento, não tem sessão iniciada."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

@@ -1,0 +1,48 @@
+{% extends "static-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<h1>災害対応者向け情報</h1>
+
+Google が災害に即して Google パーソンファインダーを開始した場合には、政府および非営利組織が情報を通達したり、データを使用したり、情報を登録したりすることで、人々がお互いの位置を特定するのに役立ちます。
+
+<div class="section">
+<img class="inset" src="{{env.fixed_static_url_base}}/embed-80x57.png"
+	width="80" height="57" alt="パーソンファインダーを埋め込む">
+<h2>サイトに Google パーソンファインダーを埋め込む</h2>
+
+<p>
+Google パーソンファインダーに関する情報をコミュニティに広めましょう。<a href="https://google.org/personfinder">Google パーソンファインダーのページ</a> を紹介したり、運営するウェブサイトに以下の HTML コードを使用して小さいサイズの Google パーソンファインダーを直接埋め込んだりできます。
+
+<pre>
+&lt;iframe
+  src="https://google.org/personfinder/<var>repository</var>/?ui=small"
+  width=400 height=300 frameborder=0
+  style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
+</pre>
+
+<p>
+(<var>repository</var> は適切なレポジトリ名に変更してください)
+
+<p>
+上記のガジェット コードは Apache 2.0 ライセンス下で使用でき、このガジェットを通して受信したデータはすべてクリエイティブ コモンズ ライセンス下で共有されます。
+</div>
+
+<div class="section">
+<img class="inset" src="{{env.fixed_static_url_base}}/download-80x99.png"
+	width="80" height="99" alt="データのダウンロード">
+<h2>Google パーソンファインダーからデータをダウンロードする</h2>
+
+<p>
+Google パーソンファインダーのデータをダウンロードしたり、Google パーソンファインダー API を使用して手持ちのデータベースと同期したりできます。データは XML ベースの PFIF (People Finder Interchange Format) 形式で提供されます。アクセスのリクエスト方法、データのダウンロード方法については、<a href="https://github.com/google/personfinder/wiki/DataAPIJapanese">サービス開発者向けドキュメント</a>をご覧ください。
+</div>
+
+<div class="section">
+<img class="inset" src="{{env.fixed_static_url_base}}/upload-80x127.png"
+	width="80" height="127" alt="データのアップロード">
+<h2>Google パーソンファインダーにデータをアップロードする</h2>
+
+<p>
+手元のデータベースから Google パーソンファインダーに情報を登録・公開し、一般の人々にも知っている情報をレコードに追加してもらいましょう。Google パーソンファインダーにデータをアップロードするには、PFIF (People Finder Interchange Format) 形式のデータを使用する必要があります。アクセスのリクエスト方法、データのアップロード方法については、<a href="https://github.com/google/personfinder/wiki/DataAPIJapanese">サービス開発者向けドキュメント</a>をご覧ください。
+</div>
+{% endblock content %}

@@ -240,6 +240,13 @@ msgid ""
 "    "
 msgstr ""
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -248,6 +255,14 @@ msgid ""
 "\n"
 "    If you are the author, check your e-mail after clicking the button "
 "below.\n"
+"  "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
 "  "
 msgstr ""
 
@@ -451,6 +466,9 @@ msgid "Author's name"
 msgstr ""
 
 msgid "Author's phone number"
+msgstr ""
+
+msgid "Authorization already exists for another repo! That's not expected."
 msgstr ""
 
 msgid "Authorization key"
@@ -768,6 +786,12 @@ msgstr ""
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
+msgstr ""
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
 msgid ""
@@ -1104,9 +1128,6 @@ msgstr ""
 msgid "Show who marked these duplicates"
 msgstr ""
 
-msgid "Sign in"
-msgstr ""
-
 msgid "Sign out"
 msgstr ""
 
@@ -1244,6 +1265,9 @@ msgid "There are some existing records with similar names."
 msgstr ""
 
 msgid "There is one existing record with a similar name."
+msgstr ""
+
+msgid "There seems to be a problem with your uploaded photo."
 msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
@@ -1433,13 +1457,6 @@ msgid "You are already subscribed. "
 msgstr ""
 
 msgid "You are already unsubscribed."
-msgstr ""
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr ""
-
-msgid "You are not currently signed in."
 msgstr ""
 
 #, python-format

@@ -374,6 +374,13 @@ msgstr ""
 "αρχική πηγή.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -393,6 +400,14 @@ msgstr ""
 "ταχυδρομείο\n"
 "σας, αφού κάνετε κλικ στο παρακάτω κουμπί.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -678,6 +693,9 @@ msgstr "Όνομα συντάκτη"
 
 msgid "Author's phone number"
 msgstr "Αριθμός τηλεφώνου συντάκτη"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Κλειδί εξουσιοδότησης"
@@ -1024,6 +1042,12 @@ msgstr ""
 "Εάν καμία από τις εγγραφές δεν ταιριάζει με το άτομο που είχατε στο μυαλό"
 " σας, μπορείτε να κάνετε κλικ παρακάτω, για να δημιουργήσετε μια νέα "
 "εγγραφή."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1403,9 +1427,6 @@ msgstr "Προβολή ευαίσθητων δεδομένων"
 msgid "Show who marked these duplicates"
 msgstr "Εμφάνιση του χρήστη που επισήμανε αυτά τα διπλότυπα"
 
-msgid "Sign in"
-msgstr "Σύνδεση"
-
 msgid "Sign out"
 msgstr "Έξοδος"
 
@@ -1553,6 +1574,9 @@ msgstr "Υπάρχουν ορισμένες εγγραφές με παρόμοι
 
 msgid "There is one existing record with a similar name."
 msgstr "Υπάρχει μια εγγραφή με το ίδιο όνομα."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1766,13 +1790,6 @@ msgstr "Έχετε ήδη εγγραφεί. "
 
 msgid "You are already unsubscribed."
 msgstr "Έχετε ήδη καταργήσει την εγγραφή σας."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Είστε συνδεδεμένοι αυτήν τη στιγμή ως %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Δεν είστε συνδεδεμένοι αυτήν τη στιγμή."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

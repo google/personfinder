@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +20,6 @@ import django_setup  # always keep this first
 import mimetypes
 import re
 import os
-import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), 'vendors'))
 
 import urlparse
 
@@ -40,36 +37,6 @@ import resources
 import utils
 import user_agents
 import setup_pf
-
-
-class AdminEnv(object):
-    """Template variables for admin pages."""
-
-    def __init__(self, request):
-        self.request = request
-        self.user = users.get_current_user()
-        self.logout_url = users.create_logout_url(self.request.url)
-
-    @property
-    def repo_options(self):
-        """This is different from env.repo_options because this contains all
-        repositories including deactivated ones.
-
-        This is defined as a property so that it is evaluated lazily only
-        when necessary.
-        """
-        try:
-            return [
-                utils.Struct(
-                    repo=repo,
-                    url=utils.get_repo_url(self.request, repo) + '/admin')
-                for repo in sorted(model.Repo.list())]
-        except:
-            # Logs the exception here because exceptions thrown during template
-            # variable evaluation is silently ignored. Note that
-            # logging.exception() logs the current exception by default.
-            logging.exception('Exception thrown')
-            return None
 
 
 # When no action or repo is specified, redirect to this action.
@@ -104,12 +71,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_post_flagged_note',
   'third_party_search',
   'admin',
-  'admin/create_repo',
-  'admin/dashboard',
-  'admin/delete_record',
   'admin/resources',
-  'admin/review',
-  'admin/statistics',
   'css',
   'add_note',
   'tos',
@@ -130,11 +92,8 @@ HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
 HANDLER_CLASSES['api/stats'] = 'api.Stats'
 HANDLER_CLASSES['api/handle_sms'] = 'api.HandleSMS'
 HANDLER_CLASSES['api/photo_upload'] = 'api.PhotoUpload'
-HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
-HANDLER_CLASSES['sitemap'] = 'sitemap.SiteMap'
-HANDLER_CLASSES['sitemap/ping'] = 'sitemap.SiteMapPing'
 HANDLER_CLASSES['tasks/count/note'] = 'tasks.CountNote'
 HANDLER_CLASSES['tasks/count/person'] = 'tasks.CountPerson'
 HANDLER_CLASSES['tasks/count/reindex'] = 'tasks.Reindex'
@@ -206,7 +165,7 @@ def select_lang(request, config=None):
         (config and
          config.language_menu_options and
          config.language_menu_options[0]) or
-            django_setup.LANGUAGE_CODE)
+            const.DEFAULT_LANGUAGE_CODE)
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
             select_lang_from_header(request, default_lang=default_lang))
@@ -296,6 +255,7 @@ def setup_env(request):
     that are commonly used by most handlers."""
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
+    env.repo_entity = model.Repo.get(env.repo) if env.repo else None
     env.config = config.Configuration(env.repo or '*')
 
     env.analytics_id = env.config.get('analytics_id')
@@ -315,9 +275,11 @@ def setup_env(request):
     # Information about the request.
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
-    env.force_https = False
+    env.force_https = True
     env.domain = env.netloc.split(':')[0]
     env.global_url = utils.get_repo_url(request, 'global')
+    env.fixed_static_url_base = utils.get_repo_url(request, 'static')
+    env.light_url = utils.set_url_param(env.url, 'ui', 'light')
 
     # Commonly used information that's rendered or localized for templates.
     env.language_options = get_language_options(request, env.config, env.lang)
@@ -435,8 +397,6 @@ def setup_env(request):
         and not env.config.zero_rating_mode
         and env.config.translate_api_key)
 
-    env.admin = AdminEnv(request)
-
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
@@ -466,7 +426,7 @@ def setup_env(request):
         # If the repository is deactivated, we should not show test mode
         # notification.
         env.repo_test_mode = (
-            env.config.test_mode and not env.config.deactivated)
+            env.config.test_mode and not env.repo_entity.is_deactivated())
         env.force_https = env.config.force_https
 
         env.params_full_name = request.get('full_name', '').strip()

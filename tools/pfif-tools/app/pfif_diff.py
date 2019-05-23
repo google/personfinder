@@ -230,7 +230,7 @@ def main():
       text_is_case_sensitive=options.text_is_case_sensitive,
       ignore_fields=options.ignore_fields,
       omit_blank_fields=options.omit_blank_fields)
-  print(utils.MessagesOutput.generate_message_summary(messages, is_html=False))
+  print(utils.MessagesOutput.generate_message_summary(messages))
   if options.group_by_record_id:
     print(utils.MessagesOutput.messages_to_str_by_id(messages))
   else:

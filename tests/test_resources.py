@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2011 Google Inc.
 #
@@ -67,16 +66,12 @@ class ResourcesTests(unittest.TestCase):
         resources.set_active_bundle_name('1')
 
         self.temp_entity_keys = []
-        self.put_resource('1', 'base.html.template', 50,
+        self.put_resource('1', 'test-base.html.template', 50,
                           'hi! {% block foo %}{% endblock foo %}')
-        self.put_resource('1', 'base.html.template:es', 40,
+        self.put_resource('1', 'test-base.html.template:es', 40,
                           '\xc2\xa1hola! {% block foo %}{% endblock foo %}')
-        self.put_resource('1', 'page.html.template', 30,
-                          '{% extends "base.html.template" %} '
-                          '{% block foo %}default{% endblock foo %}')
-        self.put_resource('1', 'page.html.template:fr', 20,
-                          '{% extends "base.html.template" %} '
-                          '{% block foo %}fran\xc3\xa7ais{% endblock foo %}')
+        self.put_resource('1', 'page.html.template', 30, 'default')
+        self.put_resource('1', 'page.html.template:fr', 20, 'fran\xc3\xa7ais')
         self.put_resource('1', 'static.html', 30, 'hello')
         self.put_resource('1', 'static.html:fr', 20, 'bonjour')
         self.put_resource('1', 'data', 10, '\xff\xfe\xfd\xfc')
@@ -215,38 +210,26 @@ class ResourcesTests(unittest.TestCase):
         get_rendered = resources.get_rendered
         eq = self.assertEquals
 
-        # There's no es-specific page but there is an es-specific base template.
-        self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
-        assert self.fetched == ['page.html:es', 'page.html',
-                                'page.html.template:es', 'page.html.template',
-                                'base.html.template:es']
-        assert self.compiled == ['page.html.template', 'base.html.template:es']
-        assert self.rendered == ['page.html.template']
-
         # There's an fr-specific page but no fr-specific base template.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
-        assert self.fetched == ['page.html:fr', 'page.html',
-                                'page.html.template:fr',
-                                'base.html.template:fr', 'base.html.template']
-        assert self.compiled == ['page.html.template:fr', 'base.html.template']
+        assert get_rendered('page.html', 'fr') == u'fran\xe7ais'
+        assert self.fetched == [
+            'page.html:fr', 'page.html', 'page.html.template:fr']
+        assert self.compiled == ['page.html.template:fr']
         assert self.rendered == ['page.html.template:fr']
 
         # There's no en-specific page and no en-specific base template.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert get_rendered('page.html', 'en') == u'default'
         assert self.fetched == ['page.html:en', 'page.html',
-                                'page.html.template:en', 'page.html.template',
-                                'base.html.template:en', 'base.html.template']
-        assert self.compiled == ['page.html.template', 'base.html.template']
+                                'page.html.template:en', 'page.html.template']
+        assert self.compiled == ['page.html.template']
         assert self.rendered == ['page.html.template']
 
         # These should be cache hits, and shouldn't fetch, compile, or render.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
-        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
-        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert get_rendered('page.html', 'fr') == u'fran\xe7ais'
+        assert get_rendered('page.html', 'en') == u'default'
         assert self.fetched == []
         assert self.compiled == []
         assert self.rendered == []
@@ -256,7 +239,7 @@ class ResourcesTests(unittest.TestCase):
 
         # Should fetch and recompile the pages but not the base templates.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
+        assert get_rendered('page.html', 'es') == u'default'
         assert self.fetched == ['page.html:es', 'page.html',
                                 'page.html.template:es', 'page.html.template']
         assert self.compiled == ['page.html.template']
@@ -264,7 +247,7 @@ class ResourcesTests(unittest.TestCase):
 
         # Should fetch and recompile the pages but not the base templates.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert get_rendered('page.html', 'fr') == u'fran\xe7ais'
         assert self.fetched == ['page.html:fr', 'page.html',
                                 'page.html.template:fr']
         assert self.compiled == ['page.html.template:fr']
@@ -272,7 +255,7 @@ class ResourcesTests(unittest.TestCase):
 
         # Should fetch and recompile the pages but not the base templates.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert get_rendered('page.html', 'en') == u'default'
         assert self.fetched == ['page.html:en', 'page.html',
                                 'page.html.template:en', 'page.html.template']
         assert self.compiled == ['page.html.template']
@@ -282,29 +265,26 @@ class ResourcesTests(unittest.TestCase):
         # (page.html.template:en and page.html.template:es remain cached).
         utils.set_utcnow_for_test(52)
 
-        # Should fetch and recompile the base template but not the page.
+        # Should not recompile the page.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
-        assert self.fetched == ['page.html:es', 'page.html',
-                                'base.html.template:es']
-        assert self.compiled == ['base.html.template:es']
+        assert get_rendered('page.html', 'es') == u'default'
+        assert self.fetched == ['page.html:es', 'page.html']
+        assert self.compiled == []
         assert self.rendered == ['page.html.template']
 
         # Should fetch and recompile both the fr page and the base template.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert get_rendered('page.html', 'fr') == u'fran\xe7ais'
         assert self.fetched == ['page.html:fr', 'page.html',
-                                'page.html.template:fr',
-                                'base.html.template:fr', 'base.html.template']
-        assert self.compiled == ['page.html.template:fr', 'base.html.template']
+                                'page.html.template:fr']
+        assert self.compiled == ['page.html.template:fr']
         assert self.rendered == ['page.html.template:fr']
 
-        # Should fetch and recompile the base template but not the page.
+        # Should not recompile the page.
         self.fetched, self.compiled, self.rendered = [], [], []
-        assert get_rendered('page.html', 'en') == u'hi! default'
-        assert self.fetched == ['page.html:en', 'page.html',
-                                'base.html.template:en', 'base.html.template']
-        assert self.compiled == ['base.html.template']
+        assert get_rendered('page.html', 'en') == u'default'
+        assert self.fetched == ['page.html:en', 'page.html']
+        assert self.compiled == []
         assert self.rendered == ['page.html.template']
 
         # Ensure binary data is preserved.

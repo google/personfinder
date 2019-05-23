@@ -1,15 +1,62 @@
-#!/bin/sh
+#!/bin/bash
+# Copyright 2019 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-# use pylint to check the args.
-# requires installing pylint http://www.logilab.org/project/pylint
-# short form: easy_install pylint (may require root)
-LINT=$(which pylint)
-REPORTS="no"
-DEPRECATED=regsub,string,TERMIOS,Bastion,rexec
-if [ -z "$LINT" ]; then
-   echo "pylint not found, please install."
-   exit 1
-fi
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
-${LINT} --deprecated-module=${DEPRECATED} --reports=${REPORTS} "$@" 
+
+# pylint is considerably more thorough than flake8, so we expect the set of
+# things flake8 is happy with will grow faster than the set of things pylint is
+# happy with, so we separate these lists.
+DEFAULT_FLAKE8_FILES="app/views \
+                      app/tasksmodule \
+                      app/wsgi.py \
+                      tests/views \
+                      tests/tasks \
+                      tests/testutils \
+                      tests/test_searcher.py \
+                      tests/test_xsrftool.py"
+DEFAULT_PYLINT_FILES="app/views/admin/base.py \
+                      app/wsgi.py \
+                      tests/test_searcher.py \
+                      tests/test_xsrftool.py \
+                      tests/views/test_admin_create_repo.py \
+                      tests/views/test_auto_security.py"
+
+# Call through python -m instead of directly, so that you're sure to be able to
+# use it even if you installed the tools through pip.
+FLAKE8="python -m flake8"
+PYLINT="python -m pylint"
+
+command="$1"
+file_list="${@:2:999}"
+
+if [ "$file_list" == "" ]; then
+    if [ "$command" == "flake8-check" ]; then
+        file_list=$DEFAULT_FLAKE8_FILES
+    elif [ "$command" == "pylint-check" ]; then
+        file_list=$DEFAULT_PYLINT_FILES
+    fi
+fi
+
+if [ "$command" == "flake8-check" ]; then
+    $FLAKE8 $file_list
+elif [ "$command" == "pylint-check" ]; then
+    # Pylint apparently runs some stuff, including App Engine code that expects
+    # this to be set.
+    export SERVER_SOFTWARE="testing"
+    $PYLINT $file_list
+else
+    echo "Usage: tools/lint [flake8-check|pylint-check]"
+fi

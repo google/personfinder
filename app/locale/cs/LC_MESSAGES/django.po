@@ -350,6 +350,13 @@ msgstr ""
 "zdroje obdržíme jeho další kopii.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -365,6 +372,14 @@ msgstr ""
 "souhlasem autora záznamu, zašleme autorovi záznamu zprávu s potvrzením. "
 "Pokud jste autor, po kliknutí na tlačítko níže se podívejte do svého "
 "e-mailu."
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -637,6 +652,9 @@ msgstr "Jméno autora"
 
 msgid "Author's phone number"
 msgstr "Telefonní číslo autora"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Autorizační klíč"
@@ -976,6 +994,12 @@ msgid ""
 msgstr ""
 "Pokud žádný z těchto záznamů neodpovídá osobě, kterou jste měli na mysli,"
 " kliknutím níže vytvořte nový záznam."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1342,9 +1366,6 @@ msgstr "Zobrazit citlivé informace"
 msgid "Show who marked these duplicates"
 msgstr "Ukázat, kdo tyto duplikáty označil"
 
-msgid "Sign in"
-msgstr "Přihlásit se"
-
 msgid "Sign out"
 msgstr "Odhlásit se"
 
@@ -1487,6 +1508,9 @@ msgstr "Existuje několik záznamů s podobnými jmény."
 
 msgid "There is one existing record with a similar name."
 msgstr "Existuje jeden záznam s podobným jménem."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1691,13 +1715,6 @@ msgstr "Již jste přihlášeni k odběru. "
 
 msgid "You are already unsubscribed."
 msgstr "Již jste odhlášeni z odběru."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Aktuálně jste přihlášeni jako uživatel %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Aktuálně nejste přihlášeni."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

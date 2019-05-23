@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -28,6 +27,9 @@ class ImportTests(ServerTestsBase):
     """Tests for CSV import page at /api/import."""
     def setUp(self):
         ServerTestsBase.setUp(self)
+        Repo(
+            key_name='haiti',
+            activation_status=Repo.ActivationStatus.ACTIVE).put()
         config.set_for_repo(
             'haiti',
             api_action_logging=True)

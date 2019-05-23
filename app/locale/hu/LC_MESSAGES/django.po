@@ -359,6 +359,13 @@ msgstr ""
 "forrásból.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
 "kattintott.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -654,6 +669,9 @@ msgstr "Szerző neve"
 
 msgid "Author's phone number"
 msgstr "Szerző telefonszáma"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Engedélyezési kulcs"
@@ -994,6 +1012,12 @@ msgid ""
 msgstr ""
 "Ha ezek közül egyik bejegyzés sem illik arra a személyre, akire Ön "
 "gondolt, alább kattintva létrehozhat egy új bejegyzést."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1365,9 +1389,6 @@ msgstr "Bizalmas adatok megjelenítése"
 msgid "Show who marked these duplicates"
 msgstr "Azok megjelenítése, akik ismétlődőként jelölték meg ezeket"
 
-msgid "Sign in"
-msgstr "Bejelentkezés"
-
 msgid "Sign out"
 msgstr "Kilépés"
 
@@ -1513,6 +1534,9 @@ msgstr "Néhány létező bejegyzésben hasonló a név."
 
 msgid "There is one existing record with a similar name."
 msgstr "Már van egy bejegyzés, amelyben hasonló a név."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1721,13 +1745,6 @@ msgstr "Már feliratkozott. "
 
 msgid "You are already unsubscribed."
 msgstr "Már leiratkozott."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Jelenleg %(user_email)s e-mail címmel van bejelentkezve."
-
-msgid "You are not currently signed in."
-msgstr "Jelenleg nincs bejelentkezve."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

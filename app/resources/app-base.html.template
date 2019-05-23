@@ -17,18 +17,18 @@
   {% if env.amp %}
     <div class="title-bar-button-container">
       <a href="{{env.global_url}}">
-        <amp-img width="24" height="24" src="{{env.global_url}}/back_arrow.png" alt="{% trans "About Google Person Finder" %}">
+        <amp-img width="24" height="24" src="{{env.fixed_static_url_base}}/back_arrow.png" alt="{% trans "About Google Person Finder" %}">
       </a>
     </div>
   {% else %}
     {% if env.repo and env.action and env.action != "start" %}
       {% if env.rtl %}
-        <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/forward_arrow.png" alt="Back"></a>
+        <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.fixed_static_url_base}}/forward_arrow.png" alt="Back"></a>
       {% else %}
-        <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.global_url}}/back_arrow.png" alt="Back"></a>
+        <a href="{{env.start_url}}"><img class="title-bar-button" src="{{env.fixed_static_url_base}}/back_arrow.png" alt="Back"></a>
       {% endif %}
     {% else %}
-      <img class="title-bar-button" id="menu-button" src="{{env.global_url}}/menu.png" alt="Menu" onclick="showSideMenu()">
+      <img class="title-bar-button" id="menu-button" src="{{env.fixed_static_url_base}}/menu.png" alt="Menu" onclick="showSideMenu()">
     {% endif %}
   {% endif %}
   {% trans "Google Person Finder" %}

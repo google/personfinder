@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -36,11 +35,6 @@ class ReadOnlyTests(ServerTestsBase):
     def test_noconfig(self):
         """Check the home page with no config (generic welcome page)."""
         doc = self.go('/')
-        assert 'You are now running Person Finder.' in doc.text
-
-    def test_home(self):
-        """Check the generic home page."""
-        doc = self.go('/global/home.html')
         assert 'You are now running Person Finder.' in doc.text
 
     def test_start(self):
@@ -269,12 +263,6 @@ class ReadOnlyTests(ServerTestsBase):
         """Check the photo page."""
         doc = self.go('/haiti/photo')
         assert 'Photo id is unspecified or invalid' in doc.text
-
-    def test_static(self):
-        """Check that the static files are accessible."""
-        doc = self.go('/static/no-photo.png')
-        self.assertEqual(self.s.status, 200)
-        assert doc.content_bytes.startswith('\x89PNG')
 
     def test_embed(self):
         """Check the embed page."""

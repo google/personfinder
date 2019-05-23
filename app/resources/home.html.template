@@ -1,0 +1,87 @@
+{% extends "static-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+
+  {% if config.brand == "google" %}
+
+    <h1>
+      Google Person Finder helps people reconnect with friends and loved ones
+      in the aftermath of natural and humanitarian disasters.
+    </h1>
+
+    <div class="storyboard">
+      <div class="storyboard-section">
+        <table>
+          <tr>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/separated-81x80.png" width="81" height="80">
+            </td>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/search-100x80.png" width="100" height="80">
+            </td>
+          </tr>
+          <tr class="captions">
+            <td>A crisis strikes and people get separated.</td>
+            <td>They let the world know they are looking for someone.</td>
+          </tr>
+        </table>
+      </div>
+      <div class="storyboard-section">
+        <table>
+          <tr>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/post-90x80.png" width="90" height="80">
+            </td>
+            <td>
+              <img src="{{env.fixed_static_url_base}}/find-80x80.png" width="80" height="80">
+            </td>
+          </tr>
+          <tr class="captions">
+            <td>Individuals and organizations provide information.</td>
+            <td>People find information about their friends and family.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="teasers">
+      <div class="teasers-section">
+          <h2>Responders</h2>
+          You can help people find each other in the aftermath of a disaster:
+          <ul>
+            <li>Embed Google Person Finder in your site
+            <li>Download data from Google Person Finder
+            <li>Upload data into Google Person Finder
+          </ul>
+          <a href="{{env.global_url}}/responders.html">See how &#xbb;</a>
+      </div>
+      <div class="teasers-section">
+          <h2>Developers</h2>
+          You can help continue to improve Google Person Finder:
+          <ul>
+            <li>Learn about the PFIF data model
+            <li>Customize or improve Person Finder
+          </ul>
+          <a href="https://github.com/google/personfinder">
+              Get started &#xbb;</a>
+      </div>
+    </div>
+
+  {% else %}
+
+    <h1>Welcome</h1>
+
+    <p>You are now running Person Finder.
+
+    <p>Please see the
+    <a href="https://github.com/google/personfinder">project page</a>
+    for instructions on administering this site and customizing its appearance.
+
+    {% if not config.initialized %}
+      <p>You can <a href="/setup_datastore">set up the database</a>.
+    {% endif %}
+
+  {% endif %}
+
+{% endblock content %}

@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # encoding: utf-8
 # Copyright 2010 Google Inc.
 #
@@ -212,6 +211,8 @@ class HandlerTests(unittest.TestCase):
     """Tests for the base handler implementation."""
 
     def setUp(self):
+        # Make it look like the dev server so HTTPS isn't required.
+        os.environ['APPLICATION_ID'] = 'dev~abc'
         self.testbed = testbed.Testbed()
         self.testbed.activate()
         self.testbed.init_user_stub()

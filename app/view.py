@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,6 @@
 from google.appengine.api import datastore_errors
 
 from model import *
-from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
@@ -63,7 +61,6 @@ class Handler(BaseHandler):
         if not person:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
-        standalone = self.request.get('standalone')
 
         # Check if private info should be revealed.
         content_id = 'view:' + self.params.id
@@ -153,8 +150,7 @@ class Handler(BaseHandler):
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,
-                    standalone=standalone,
-                    onload_function='view_page_loaded()',
+                    onload_function='view_page_loaded',
                     show_private_info=show_private_info,
                     admin=users.is_current_user_admin(),
                     dupe_notes_url=dupe_notes_url,

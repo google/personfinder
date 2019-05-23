@@ -362,6 +362,13 @@ msgstr ""
 "kemudian.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -380,6 +387,14 @@ msgstr ""
 "    Jika anda pengarangnya, semak e-mel anda selepas mengklik butang di "
 "bawah.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -656,6 +671,9 @@ msgstr "Nama pengarang"
 
 msgid "Author's phone number"
 msgstr "Nombor telefon pengarang"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Kunci kebenaran"
@@ -996,6 +1014,12 @@ msgid ""
 msgstr ""
 "Jika tiada satu pun rekod ini sepadan dengan orang yang anda fikirkan, "
 "anda boleh klik di bawah untuk membuat rekod baharu."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1364,9 +1388,6 @@ msgstr "Tunjukkan maklumat sensitif"
 msgid "Show who marked these duplicates"
 msgstr "Tunjukkan siapa yang menandakannya sebagai pendua"
 
-msgid "Sign in"
-msgstr "Log masuk"
-
 msgid "Sign out"
 msgstr "Log keluar"
 
@@ -1508,6 +1529,9 @@ msgstr "Terdapat beberapa rekod sedia ada dengan nama yang sama."
 
 msgid "There is one existing record with a similar name."
 msgstr "Terdapat satu rekod sedia ada dengan nama yang serupa."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Terdapat masalah semasa memproses imej.  Sila cuba imej yang berbeza."
@@ -1710,13 +1734,6 @@ msgstr "Anda sudah melanggan. "
 
 msgid "You are already unsubscribed."
 msgstr "Anda sudah berhenti melanggan."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Anda kini log masuk sebagai %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Anda tidak log masuk pada masa ini."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -230,7 +229,7 @@ def import_records(repo, domain, converter, records,
             entity must begin with domain + '/', or the record will be skipped.
         records: A list of dictionaries representing the entries.
         mark_notes_reviewed: If true, mark the new notes as reviewed.
-        believed_dead_permission: If true, allow importing notes with status 
+        believed_dead_permission: If true, allow importing notes with status
             as 'believed_dead'; otherwise skip the note and return an error.
         handler: Handler to use to send e-mail notification for notes.  If this
             is None, then we do not send e-mail.
@@ -273,7 +272,7 @@ def import_records(repo, domain, converter, records,
     # Updated Persons other than those being imported.
     #
     # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
-    # key sets: Person entities for the records passed in to import_records() 
+    # key sets: Person entities for the records passed in to import_records()
     # go in 'persons', and any other Person entities affected by the import go
     # in 'extra_persons'.  The two dictionaries are kept separate in order to
     # produce a count of records written that only counts 'persons'.

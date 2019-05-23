@@ -365,6 +365,13 @@ msgstr ""
 " wayo wangempela.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -382,6 +389,14 @@ msgstr ""
 "  Uma ngabe ungumbhali, hlola i-imeyili yakho ngemuva kokuchofoza "
 "inkinobho engezansi.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -658,6 +673,9 @@ msgstr "Igama lombhali"
 
 msgid "Author's phone number"
 msgstr "Inombolo yefoni yombhali"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Ukhiye wokugunyazwa"
@@ -1001,6 +1019,12 @@ msgstr ""
 "uthole isixhumanisi sokuqinisekisa ukuthi ufuna ukukhubaza amanothi kule "
 "rekhodi. Kungenjalo, sicela ulinde umbhali werekhodi ukuze aqinisekise "
 "isicelo sakho."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1367,9 +1391,6 @@ msgstr "Bonisa ulwazi olubucayi"
 msgid "Show who marked these duplicates"
 msgstr "Bonisa ukuthi ubani omake lawa mawele"
 
-msgid "Sign in"
-msgstr "Ngena ngemvume"
-
 msgid "Sign out"
 msgstr "Phuma ngemvume"
 
@@ -1515,6 +1536,9 @@ msgstr "Kukhona amarekhodi athile anamagama afanayo."
 
 msgid "There is one existing record with a similar name."
 msgstr "Kukhona irekhodi elilodwa elinegama elifanayo."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1721,13 +1745,6 @@ msgstr "Usuvele ubhalisile. "
 
 msgid "You are already unsubscribed."
 msgstr "Usuvele ukhishiwe ohlwini."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Okwamanje ungene ngemvume njengo-%(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Okwamanje awungenanga ngemvume."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

@@ -358,6 +358,13 @@ msgstr ""
 "đầu.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -373,6 +380,14 @@ msgstr ""
 " hồ sơ, thư xác nhận sẽ được gửi tới tác giả hồ sơ. Nếu bạn là tác giả, "
 "hãy kiểm tra email của mình sau khi nhấp vào nút dưới đây.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -644,6 +659,9 @@ msgstr "Tên tác giả"
 
 msgid "Author's phone number"
 msgstr "Số điện thoại của tác giả"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Khóa ủy quyền"
@@ -979,6 +997,12 @@ msgid ""
 msgstr ""
 "Nếu không có hồ sơ nào trong các hồ sơ này khớp với người bạn muốn tìm, "
 "bạn có thể nhấp vào bên dưới để tạo một hồ sơ mới."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1345,9 +1369,6 @@ msgstr "Hiển thị thông tin nhạy cảm"
 msgid "Show who marked these duplicates"
 msgstr "Hiển thị người đã đánh dấu những nội dung trùng lặp này"
 
-msgid "Sign in"
-msgstr "Đăng nhập"
-
 msgid "Sign out"
 msgstr "Đăng xuất"
 
@@ -1488,6 +1509,9 @@ msgstr "Hiện có một số hồ sơ có tên tương tự."
 
 msgid "There is one existing record with a similar name."
 msgstr "Hiện có một hồ sơ có tên tương tự."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Đã xảy ra sự cố khi xử lý ảnh này. Hãy thử một ảnh khác."
@@ -1693,13 +1717,6 @@ msgstr "Bạn đã được đăng ký. "
 
 msgid "You are already unsubscribed."
 msgstr "Bạn đã được hủy đăng ký."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Bạn hiện được đăng nhập bằng %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Bạn hiện không được đăng nhập."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

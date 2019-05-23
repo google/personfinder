@@ -356,6 +356,13 @@ msgstr ""
 "      beste kopia bat jaso dezakegula jatorrizko iturburutik.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -372,6 +379,14 @@ msgstr ""
 "egileari. Egilea zu bazara, begiratu posta elektronikoa beheko botoian "
 "klik egin ondoren.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -648,6 +663,9 @@ msgstr "Egilearen izena"
 msgid "Author's phone number"
 msgstr "Egilearen telefono-zenbakia"
 
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
+
 msgid "Authorization key"
 msgstr "Baimen-gakoa"
 
@@ -662,13 +680,13 @@ msgid ""
 "the contents of the note. Users will also be able to remove the spam mark"
 " from this note."
 msgstr ""
-"Oharra spam gisa markatzen baduzu, ezkutatu egingo da lehenespenez. "
+"Oharra spam gisa markatzen baduzu, ezkutatu egingo da modu lehenetsian. "
 "Erregistroan egoten jarraituko du, baina klik bat gehiago egin beharko da"
 " oharraren edukia ikusteko. Erabiltzaileek, bestalde, oharraren spam-"
 "marka kendu ahal izango dute."
 
 msgid "By unmarking this note as spam, you will make it visible by default."
-msgstr "Oharrari spam-marka kenduz gero, ikusgai ezarriko da lehenespenez."
+msgstr "Oharrari spam-marka kenduz gero, ikusgai ezarriko da modu lehenetsian."
 
 msgid "CSV file"
 msgstr "CSV fitxategia"
@@ -986,6 +1004,12 @@ msgid ""
 msgstr ""
 "Erregistro hauek zuk uste zenuen pertsonarekin bat ez badatoz, behean "
 "klik egin dezakezu erregistro bat sortzeko."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1352,9 +1376,6 @@ msgstr "Erakutsi isilpeko informazioa"
 msgid "Show who marked these duplicates"
 msgstr "Erakutsi nork markatu dituen bikoiztu gisa"
 
-msgid "Sign in"
-msgstr "Hasi saioa"
-
 msgid "Sign out"
 msgstr "Amaitu saioa"
 
@@ -1495,6 +1516,9 @@ msgstr "Antzeko izena duen hainbat erregistro dago."
 
 msgid "There is one existing record with a similar name."
 msgstr "Antzeko izena duen erregistro bat dago."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1699,13 +1723,6 @@ msgstr "Dagoeneko harpidetuta zaude. "
 
 msgid "You are already unsubscribed."
 msgstr "Dagoeneko kendu duzu harpidetza."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Unean %(user_email)s gisa duzu saioa hasita."
-
-msgid "You are not currently signed in."
-msgstr "Une honetan ez duzu saioa hasita."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

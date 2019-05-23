@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +26,16 @@ SJIS_PREFERRED_USER_AGENT_RE = re.compile(r'^KDDI')
 
 
 def is_jp_tier2_mobile_phone(request):
-    """Returns True if the user agent is a Japanese Tier-2 mobile phone."""
+    """Returns True if the user agent is a Japanese Tier-2 mobile phone.
+
+    TODO(nworden): clean this up once we're fully on Django.
+    """
     user_agent = request.headers.get('User-Agent')
+    return user_agent and JP_TIER2_MOBILE_USER_AGENT_RE.match(user_agent)
+
+
+def prefer_lite_ui(request):
+    user_agent = request.META.get('HTTP_USER_AGENT', None)
     return user_agent and JP_TIER2_MOBILE_USER_AGENT_RE.match(user_agent)
 
 

@@ -19,16 +19,17 @@
 {% endif %}
 
 <p>
-{% if user %}
-  {% blocktrans with user_email_with_tags|safe as user_email %}You are currently signed in as {{user_email}}.{% endblocktrans %}
-  <a href="{{logout_url}}">{% trans "Sign out" %}</a>
-{% else %}
-  {% trans "You are not currently signed in." %}
-  <a href="{{login_url}}">{% trans "Sign in" %}</a>
-{% endif %}
-{% if message %}<div class="info"><strong>{{message}}</strong></div>
-{% endif %}
-<p>{{nav_html|safe}}
+  {% blocktrans %}
+    You are currently signed in as <span class="email">{{user_email}}</span>
+  {% endblocktrans %}
+  {% if message %}
+    <div class="info"><strong>{{message}}</strong></div>
+  {% endif %}
+<p>
+  {% blocktrans %}
+    <a href="{{admin_api_keys_url}}">Create a new API key</a>
+  {% endblocktrans %}
+</p>
 
 <p>
 <table class="api-keys" cellpadding="0" cellspacing="0">

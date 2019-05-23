@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +16,10 @@
 
 # We use lazy translation in this file because the language isn't set yet.
 from __future__ import absolute_import
-import django_setup
-from django_setup import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # The root URL of this application.
-ROOT_URL = 'http://google.org/personfinder'
+ROOT_URL = 'https://google.org/personfinder'
 
 # The domain name of this application.  The application hosts multiple
 # repositories; each repository ID is https://<HOME_DOMAIN>/<REPO>.
@@ -215,8 +213,15 @@ LANGUAGE_SYNONYMS = {
     'ji' : 'yi'
 }
 
+# The language code to use when there's no indication of what language to use
+# (i.e., when the user's request doesn't indicate a language preference and
+# there are no languages specified in the repository's config).
+DEFAULT_LANGUAGE_CODE = 'en'
+
 # RTL languages.
-LANGUAGES_BIDI = django_setup.LANGUAGES_BIDI + ['ps', 'prs']
+# This is mostly the same as LANGUAGES_BIDI set in django_setup, with the
+# addition of 'ps' and 'prs'.
+LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ps', 'prs', 'ur']
 
 # Mapping from language codes to Facebook locale codes.
 #
@@ -345,19 +350,19 @@ DEFAULT_PROFILE_WEBSITES = [
     {
         # Display name of the website
         'name': 'Facebook',
-        # Filename of the icon file served as /global/<icon_filename>.
-        'icon_filename': 'facebook-16x16.png',
+        # Filename of the icon file, served from root.
+        'icon_filename': '/global/static/facebook-16x16.png',
         # Regexp to check for valid profile page URLs.
         'url_regexp': 'https?://(www\\.)?facebook\\.com/.*',
     },
     {
         'name': 'Twitter',
-        'icon_filename': 'twitter-16x16.png',
+        'icon_filename': '/global/static/twitter-16x16.png',
         'url_regexp': 'https?://(www\\.)?twitter\\.com/.*',
     },
     {
         'name': 'LinkedIn',
-        'icon_filename': 'linkedin-16x16.png',
+        'icon_filename': '/global/static/linkedin-16x16.png',
         'url_regexp': 'https?://(www\\.)?linkedin\\.com/.*',
     },
 ]

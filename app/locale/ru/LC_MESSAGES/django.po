@@ -351,6 +351,13 @@ msgstr ""
 "      появления аналогичных записей, скопированных из источника.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -366,6 +373,14 @@ msgstr ""
 "разрешает отключить или включить заметки. Если вы являетесь автором, "
 "после нажатия на кнопку ниже проверьте свой почтовый ящик.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -635,6 +650,9 @@ msgstr "Имя автора"
 
 msgid "Author's phone number"
 msgstr "Номер телефона автора"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "Код авторизации"
@@ -971,6 +989,12 @@ msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "Нужного человека нет в списке? Нажмите кнопку ниже, чтобы создать запись."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1339,9 +1363,6 @@ msgstr "Показать конфиденциальную информацию"
 msgid "Show who marked these duplicates"
 msgstr "Показать, кто отметил эти записи как дубликаты"
 
-msgid "Sign in"
-msgstr "Войти"
-
 msgid "Sign out"
 msgstr "Выйти"
 
@@ -1485,6 +1506,9 @@ msgstr "Есть несколько записей с похожими имен�
 
 msgid "There is one existing record with a similar name."
 msgstr "Есть одна запись с похожим именем."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr "Ошибка обработки изображения. Выберите другое изображение."
@@ -1685,13 +1709,6 @@ msgstr "Вы уже подписаны. "
 
 msgid "You are already unsubscribed."
 msgstr "Вы уже отменили подписку."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Выполнен вход в аккаунт: %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Вход не выполнен."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

@@ -357,6 +357,13 @@ msgstr ""
 "      నుండి దీని యొక్క మరో కాపీని పొందవచ్చని గమనించండి.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -373,6 +380,14 @@ msgstr ""
 "    నిర్ధారించడం కోసం, రికార్డ్ లేఖరికి నిర్ధారణ సందేశం పంపబడుతుంది.\n"
 "    మీరే లేఖరి అయితే, దిగువ బటన్‌ను క్లిక్ చేసిన తర్వాత మీ ఇ-మెయిల్‌‍ను "
 "తనిఖీ చేయండి."
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -649,6 +664,9 @@ msgstr "లేఖరి పేరు"
 
 msgid "Author's phone number"
 msgstr "లేఖరి ఫోన్ నంబర్"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "ప్రామాణీకరణ కీ"
@@ -990,6 +1008,12 @@ msgid ""
 msgstr ""
 "ఈ రికార్డ్‌లు ఏవీ మీరు భావిస్తున్న వ్యక్తికి సరిపోలకుంటే, క్రొత్త "
 "రికార్డ్‌ను సృష్టించడం కోసం మీరు దిగువ క్లిక్ చేయవచ్చు."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1360,9 +1384,6 @@ msgstr "సున్నితమైన సమాచారాన్ని చూ�
 msgid "Show who marked these duplicates"
 msgstr "వీటిని నకిలీలుగా గుర్తు పెట్టిన వారిని చూపు"
 
-msgid "Sign in"
-msgstr "సైన్ ఇన్ చేయండి"
-
 msgid "Sign out"
 msgstr "సైన్ అవుట్ చేయండి"
 
@@ -1506,6 +1527,9 @@ msgstr "సారూప్య పేర్లతో కొన్ని రిక
 
 msgid "There is one existing record with a similar name."
 msgstr "సారూప్య పేరుతో 1 రికార్డ్ ఉనికిలో ఉంది."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1714,13 +1738,6 @@ msgstr "మీరు ఇప్పటికే చందా పొందారు
 
 msgid "You are already unsubscribed."
 msgstr "మీరు ఇప్పటికే చందాను తొలగించారు."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "మీరు ప్రస్తుతం %(user_email)sగా సైన్ ఇన్ చేసారు."
-
-msgid "You are not currently signed in."
-msgstr "మీరు ప్రస్తుతం సైన్ ఇన్ చేయలేదు."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

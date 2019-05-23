@@ -364,6 +364,13 @@ msgstr ""
 "जाणीव असू द्या.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -382,6 +389,14 @@ msgstr ""
 "    तुम्ही लेखक असल्यास, खाली असलेले बटण क्लिक केल्यानंतर तुमचे ई-मेल "
 "तपासा.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -658,6 +673,9 @@ msgstr "लेखकाचे नाव"
 
 msgid "Author's phone number"
 msgstr "लेखकाचा फोन नंबर"
+
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
 
 msgid "Authorization key"
 msgstr "ऑथोरायझेशन की"
@@ -994,6 +1012,12 @@ msgid ""
 msgstr ""
 "तुमच्या मनात असलेल्या व्यक्तीशी यापैकी कोणतीही रेकॉर्ड न जुळल्यास, तुम्ही"
 " एक नवीन रेकॉर्ड तयार करण्यासाठी खाली क्लिक करू शकता."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1360,9 +1384,6 @@ msgstr "संवेदनशील माहिती दर्शवा"
 msgid "Show who marked these duplicates"
 msgstr "हे डुप्लिकेट कोणी चिन्हांकित केले ते दर्शवा"
 
-msgid "Sign in"
-msgstr "साइन इन करा"
-
 msgid "Sign out"
 msgstr "साइन आउट करा"
 
@@ -1385,7 +1406,7 @@ msgid "Source of Record"
 msgstr "नोंदीचा स्रोत"
 
 msgid "Source of this record"
-msgstr "या रेकॉर्डचा स्त्रोत"
+msgstr "या रेकॉर्डचा स्रोत"
 
 msgid "Status"
 msgstr "स्थिती"
@@ -1504,6 +1525,9 @@ msgstr "समान नावांची काही रेकॉर्ड �
 
 msgid "There is one existing record with a similar name."
 msgstr "समान नावाचे एक रेकॉर्ड विद्यमान आहे."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1710,13 +1734,6 @@ msgstr "तुम्ही आधीपासूनच सदस्यता घ
 
 msgid "You are already unsubscribed."
 msgstr "तुम्ही आधीपासूनच सदस्यता रद्द केली आहे."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "तुम्ही सध्या %(user_email)s म्हणून साइन इन केले आहे."
-
-msgid "You are not currently signed in."
-msgstr "तुम्ही सध्या साइन इन केलेले नाही."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."

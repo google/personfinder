@@ -1,0 +1,119 @@
+{# Copyright 2016 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the page to manage admin ACLs (see views/admin/acls.py). #}
+
+{% extends "admin-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+  <h2>Grant or revoke admin access</h2>
+
+  <h3>Add new admin</h3>
+
+  <form method="post">
+    <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
+    <p>
+      Email address: <input type="text" name="email_address" /><br/>
+      Access level:
+      <select name="level">
+        <option value="superadmin">Superadmin</option>
+        <option value="manager">Manager</option>
+        <option value="moderator">Moderator</option>
+      </select><br/>
+      Expiration date:
+      <input type="text"
+             name="expiration_date"
+             value="{{default_expiration_date|date:'Y-m-d'}}" />
+      <br/>
+      <input type="submit" value="Add access" />
+    </p>
+  </form>
+
+  <h3>Edit or revoke access</h3>
+
+  <table class="admin-acls">
+    <tr>
+      <th>Email address</th>
+      <th>Level</th>
+      <th>Expiration date</th>
+      <th>Edit</th>
+      <th>Revoke</th>
+    </tr>
+    {% for acl in editable_acls %}
+      <tr>
+        <form method="post">
+          <input type="hidden" name="xsrf_token" value="{{xsrf_token}}" />
+          <input type="hidden" name="email_address" value="{{acl.email_address}}" />
+          <td>{{ acl.email_address }}</td>
+          <td>
+            <select name="level">
+              <option value="superadmin"
+                  {% if acl.access_level == 0 %}selected="selected"{% endif %}>
+                Superadmin
+              </option>
+              <option value="manager"
+                  {% if acl.access_level == 1 %}selected="selected"{% endif %}>
+                Manager
+              </option>
+              <option value="moderator"
+                  {% if acl.access_level == 2 %}selected="selected"{% endif %}>
+                Moderator
+              </option>
+            </select>
+          </td>
+          <td>
+            <input type="text"
+                   name="expiration_date"
+                   value="{{ acl.expiration_date|date:'Y-m-d' }}" />
+          </td>
+          <td>
+            <input type="submit" name="edit_button" value="Edit" />
+          </td>
+          <td>
+            <input type="submit" name="revoke_button" value="Revoke" />
+          </td>
+        </form>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <br/>
+
+  <h3>Other users with {{ self.env.repo }} permissions</h3>
+
+  <table class="admin-acls">
+    <tr>
+      <th>Email address</th>
+      <th>Level</th>
+      <th>Expiration date</th>
+    </tr>
+    {% for acl in fixed_acls %}
+      <tr>
+        <td>{{ acl.email_address }}</td>
+	<td>
+          {# Technically, this is guaranteed to always be "Superadmin", since #}
+          {# managers can edit the access of moderators and other managers,   #}
+          {# and moderators can't access this page (i.e., only superadmins    #}
+          {# will ever be un-editable), but relying on that just feels like   #}
+          {# asking for trouble if we change something someday.               #}
+          {% if acl.access_level == 0 %}
+            Superadmin
+          {% elif acl.access_level == 1 %}
+            Manager
+          {% else %}
+            Moderator
+          {% endif %}
+        </td>
+        <td>{{ acl.expiration_date|date:'Y-m-d' }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +23,6 @@ except for a few additional features:
 Similar to App Engine's app versions, there is a concept of an "active bundle"
 from which resources are obtained.  Previewing or releasing a new set of
 resources is a matter of setting the active bundle."""
-
-import django_setup
 
 import datetime
 import logging

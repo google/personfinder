@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +21,8 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+from six.moves.urllib import parse as urlparse
+import urllib
 
 import config
 import full_text_search
@@ -104,10 +105,36 @@ class Repo(db.Model):
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
 
-    # No properties for now; only the key_name is significant.  The repository
-    # title and other settings are all in ConfigEntry entities (see config.py).
-    # The per-repository 'deactivated' setting blocks UI and API access to the
-    # repository, replacing all its pages with a deactivation message.
+    class ActivationStatus(object):
+        """An enum for the launch/activation status of the repo."""
+        # For use with repositories that have not yet been publicly launched.
+        # Staging repos aren't listed on the homepage or in the repository feed,
+        # but are otherwise totally usable repos for anyone who knows the URL.
+        STAGING = 0
+        # For repositories in active use. These repos are listed on the homepage
+        # and in the repository feed.
+        ACTIVE = 1
+        # For repositories that have been turned down. The repository is
+        # unavailable, through either the web interface or the API, and users
+        # will instead see a deactivation message. These repos aren't listed on
+        # the homepage or in the repository feed.
+        DEACTIVATED = 2
+
+    # TODO(nworden): actually use this field
+    activation_status = db.IntegerProperty(
+        required=False, default=ActivationStatus.STAGING)
+
+    # Whether the repository is in test mode; meant for use with evergreen
+    # repositories when they're not needed. Records for repos in test mode are
+    # automatically deleted after 24 hours.
+    test_mode = db.BooleanProperty(default=False)
+
+    # Few properties for now; the repository title and other settings are all in
+    # ConfigEntry entities (see config.py).
+
+    @staticmethod
+    def get(repo_id):
+        return Repo.get_by_key_name(repo_id)
 
     @classmethod
     def list(cls):
@@ -117,15 +144,20 @@ class Repo(db.Model):
     @classmethod
     def list_active(cls):
         """Returns a list of the active (non-deactivated) repository names."""
-        return [name for name in Repo.list()
-                if not config.get_for_repo(name, 'deactivated')]
+        staging = [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.STAGING)]
+        active = [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.ACTIVE)]
+        return staging + active
 
     @classmethod
     def list_launched(cls):
         """Returns a list of the launched (listed in menu) repository names."""
-        return [name for name in Repo.list()
-                if config.get_for_repo(name, 'launched') and
-                        not config.get_for_repo(name, 'deactivated')]
+        return [repo.key().name() for repo in Repo.all().filter(
+            'activation_status =', Repo.ActivationStatus.ACTIVE)]
+
+    def is_deactivated(self):
+        return self.activation_status == Repo.ActivationStatus.DEACTIVATED
 
 
 class Base(db.Model):
@@ -370,6 +402,34 @@ class Person(Base):
         import utils
         return utils.strip_url_scheme(self.photo_url)
 
+    def photo_is_local(self, request_url):
+        # TODO(nworden): consider setting the acceptable domain in
+        # site_settings.py, so that we don't have to pass a request URL in. It's
+        # not obvious how to account for different App Engine versions without
+        # it being a hassle, but shouldn't be too hard.
+        if not self.photo_url:
+            return False
+        else:
+            _, our_netloc, _, _, _ = urlparse.urlsplit(request_url)
+            _, photo_netloc, _, _, _ = urlparse.urlsplit(self.photo_url)
+            return photo_netloc == our_netloc
+
+    URL_PARSE_QUERY_INDEX = 4
+
+    # TODO(nworden): if/when we make photo_is_local a property (that doesn't
+    # need the request_url) argument, make this just a property too. I only have
+    # it as a static method because I wouldn't want someone to accidentally try
+    # to use it when the URL isn't local.
+    @staticmethod
+    def get_thumbnail_url(local_photo_url):
+        parsed_url = list(urlparse.urlparse(local_photo_url))
+        params_dict = dict(urlparse.parse_qsl(
+            parsed_url[Person.URL_PARSE_QUERY_INDEX]))
+        params_dict['thumb'] = 'true'
+        parsed_url[Person.URL_PARSE_QUERY_INDEX] = urllib.urlencode(
+            params_dict)
+        return urlparse.urlunparse(parsed_url)
+
     def get_notes(self, filter_expired=True):
         """Returns a list of all the Notes on this Person, omitting expired
         Notes by default."""
@@ -438,8 +498,7 @@ class Person(Base):
             # in theory, we should always have original_creation_date, but since
             # it was only added recently, we might have legacy
             # records without it.
-            start_date = (self.source_date or self.original_creation_date or
-                          utils.get_utcnow())
+            start_date = self.original_creation_date or utils.get_utcnow()
             return start_date + timedelta(expiration_days)
 
     def put_expiry_flags(self):
@@ -487,12 +546,27 @@ class Person(Base):
         # Permanently delete all related Photos and Notes, but not self.
         self.delete_related_entities()
 
+        was_changed = False
+        # TODO(nworden): consider adding a is_tombstone property or something
+        # like that, so we could just check that instead of checking each
+        # property individually every time.
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
             if name not in ['repo', 'is_expired', 'original_creation_date',
-                            'source_date', 'entry_date', 'expiry_date']:
-                setattr(self, name, property.default)
-        self.put()  # Store the empty placeholder record.
+                            'source_date', 'entry_date', 'expiry_date',
+                            'last_modified']:
+                if name == 'photo':
+                    # If we attempt to access this directly, Datastore will try
+                    # to fetch the actual photo, which won't go well, because we
+                    # just deleted the photo.
+                    cur_value = Person.photo.get_value_for_datastore(self)
+                else:
+                    cur_value = getattr(self, name)
+                if cur_value != property.default:
+                    setattr(self, name, property.default)
+                    was_changed = True
+        if was_changed:
+            self.put()  # Store the empty placeholder record.
 
     def delete_related_entities(self, delete_self=False):
         """Permanently delete all related Photos and Notes, and also self if
@@ -701,6 +775,38 @@ class Authorization(db.Model):
     # redundantly as a separate property so it can be indexed and queried upon.
     repo = db.StringProperty(required=True)
 
+    def summary_str(self):
+        """Generates a summary of the key's current state.
+
+        Meant for logging.
+        """
+        permissions_list = []
+        for permission_field in ['read_permission',
+                                 'full_read_permission',
+                                 'search_permission',
+                                 'subscribe_permission',
+                                 'mark_notes_reviewed',
+                                 'believed_dead_permission',
+                                 'stats_permission']:
+            if getattr(self, permission_field):
+                permissions_list.append(permission_field)
+        permissions = '; '.join(permissions_list)
+        return ('repo: %(repo)s\n'
+                'write domain: %(write_domain)s\n'
+                'permissions: %(permissions)s\n'
+                'valid: %(valid)s\n'
+                'contact name: %(contact_name)s\n'
+                'contact email: %(contact_email)s\n'
+                'organization name: %(org_name)s') % {
+                    'repo': self.repo,
+                    'write_domain': self.domain_write_permission or 'None',
+                    'permissions': permissions,
+                    'valid': self.is_valid,
+                    'contact_name': self.contact_name,
+                    'contact_email': self.contact_email,
+                    'org_name': self.organization_name,
+                }
+
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
     domain_write_permission = db.StringProperty()
@@ -772,6 +878,10 @@ class ApiKeyManagementLog(db.Model):
     repo = db.StringProperty(required=True)
     api_key = db.StringProperty(required=True)
     action = db.StringProperty(required=True, choices=ACTIONS)
+    # The IP address of the admin making the change.
+    ip_address = db.StringProperty()
+    # A string representation of the state of the key after this action.
+    key_state = db.TextProperty()
 
     @property
     def authorization(self):
@@ -986,19 +1096,6 @@ class UserActionLog(db.Expando):
                     value = value.key()
                 setattr(entry, kind + '_' + name, value)
         entry.put()
-
-
-class StaticSiteMapInfo(db.Model):
-    """Holds static sitemaps file info."""
-    static_sitemaps = db.StringListProperty()
-    static_sitemaps_generation_time = db.DateTimeProperty(required=True)
-    shard_size_seconds = db.IntegerProperty(default=90)
-
-
-class SiteMapPingStatus(db.Model):
-    """Tracks the last shard index that was pinged to the search engine."""
-    search_engine = db.StringProperty(required=True)
-    shard_index = db.IntegerProperty(default=-1)
 
 
 class UniqueId(db.Model):

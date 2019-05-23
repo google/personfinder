@@ -361,6 +361,13 @@ msgstr ""
 "      vi kan motta en annen kopi av den senere, fra originalkilden.\n"
 "    "
 
+#, python-format
+msgid ""
+"\n"
+"    <a href=\"%(admin_api_keys_url)s\">Create a new API key</a>\n"
+"  "
+msgstr ""
+
 msgid ""
 "\n"
 "    To ensure that notes are only disabled or enabled with the record "
@@ -377,6 +384,14 @@ msgstr ""
 "per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
 " deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
 "  "
+
+#, python-format
+msgid ""
+"\n"
+"    You are currently signed in as <span "
+"class=\"email\">%(user_email)s</span>\n"
+"  "
+msgstr ""
 
 msgid ""
 "\n"
@@ -651,6 +666,9 @@ msgstr "Forfatterens navn"
 msgid "Author's phone number"
 msgstr "Forfatterens telefonnummer"
 
+msgid "Authorization already exists for another repo! That's not expected."
+msgstr ""
+
 msgid "Authorization key"
 msgstr "Autorisasjonsnøkkel"
 
@@ -725,7 +743,7 @@ msgid "Create a new record for"
 msgstr "Opprett en ny oppføring for"
 
 msgid "Crisis events"
-msgstr "Nødsituasjoner"
+msgstr "Nødssituasjoner"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -989,6 +1007,12 @@ msgid ""
 msgstr ""
 "Hvis ingen av disse oppføringene stemmer overens med den aktuelle "
 "personen, kan du opprette en ny oppføring ved å klikke nedenfor."
+
+#, python-format
+msgid ""
+"If this webpage is not replaced in a few seconds, please <a "
+"href=\"%(light_url)s\">click here.</a>"
+msgstr ""
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1351,9 +1375,6 @@ msgstr "Vis sensitiv informasjon"
 msgid "Show who marked these duplicates"
 msgstr "Vis hvem som merket disse duplikatene"
 
-msgid "Sign in"
-msgstr "Logg på"
-
 msgid "Sign out"
 msgstr "Logg av"
 
@@ -1497,6 +1518,9 @@ msgstr "Flere eksisterende oppføringer har lignende navn."
 
 msgid "There is one existing record with a similar name."
 msgstr "Én eksisterende oppføring har lignende navn."
+
+msgid "There seems to be a problem with your uploaded photo."
+msgstr ""
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -1704,13 +1728,6 @@ msgstr "Du abonnerer allerede. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede avsluttet abonnementet."
-
-#, python-format
-msgid "You are currently signed in as %(user_email)s."
-msgstr "Du er logget på som %(user_email)s."
-
-msgid "You are not currently signed in."
-msgstr "Du er for øyeblikket ikke pålogget."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
