@@ -29,34 +29,6 @@ class FrontendApiHandler(utils.BaseHandler):
         self.write(simplejson.dumps(data))
 
 
-class Repo(FrontendApiHandler):
-
-    repo_required = False
-
-    def get(self):
-        # TODO: implement this for real
-        if self.env.repo:
-            json = {
-                'repoId': 'haiti',
-                'title': 'Haiti earthquake',
-                'recordCount': 12345
-            }
-        else:
-            json = [
-                {
-                    'repoId': 'haiti',
-                    'title': 'Haiti earthquake',
-                    'recordCount': 12345,
-                },
-                {
-                    'repoId': 'japan',
-                    'title': 'Japan earthquake',
-                    'recordCount': 54321,
-                },
-            ]
-        self._return_json(json)
-
-
 class Person(FrontendApiHandler):
 
     repo_required = True
