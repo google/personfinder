@@ -59,6 +59,8 @@ _BASE_URL_PATTERNS = [
      views.admin.review.AdminReviewView.as_view),
     ('admin_statistics', r'global/admin/statistics/?',
      views.admin.statistics.AdminStatisticsView.as_view),
+    ('frontendapi_person', r'(?P<repo>[^\/]+)/d/person/?',
+     views.frontendapi.PersonView.as_view),
     ('frontendapi_results', r'(?P<repo>[^\/]+)/d/results/?',
      views.frontendapi.ResultsView.as_view),
     ('meta_setup-datastore', r'setup_datastore/?',

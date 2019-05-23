@@ -37,6 +37,14 @@ class FrontendApiBaseView(views.base.BaseView):
             self._json_encoder.encode(data),
             content_type='application/json; charset=utf-8')
 
+    def dispatch(self, request, *args, **kwargs):
+        """See docs on django.views.View.dispatch."""
+        repo_obj = model.Repo.get(self.env.repo)
+        if (repo_obj.activation_status ==
+                model.Repo.ActivationStatus.DEACTIVATED):
+            return self.error(404)
+        return super(FrontendApiBaseView, self).dispatch(request, args, kwargs)
+
 
 class ResultsView(FrontendApiBaseView):
     """View for returning search results."""
@@ -81,3 +89,39 @@ class ResultsView(FrontendApiBaseView):
             # TODO(nworden): ask Travis/Pete if we should do something about
             # external photos here.
         }
+
+
+class PersonView(FrontendApiBaseView):
+    """View for person data."""
+
+    def setup(self, request, *args, **kwargs):
+        super(PersonView, self).setup(request, *args, **kwargs)
+        self.params.read_values(get_params={'id': utils.strip})
+
+    def get(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        person = model.Person.get(self.env.repo, self.params.id)
+        # Check if it's expired, just in case the expiry cron hasn't gotten to
+        # it yet.
+        if person.expiry_date and person.expiry_date < utils.get_utcnow():
+            return self.error(404)
+        source_date = person.source_date
+        if source_date:
+            source_date = '%sZ' % source_date.isoformat()
+        data = {
+            'name': 'Ted',
+            # TODO(nworden): maybe change the UI to handle an empty string
+            'sex': person.sex or None,
+            'age': person.fuzzified_age,
+            'home_city': person.home_city,
+            'home_state': person.home_state,
+            'home_country': person.home_country,
+            'description': person.description,
+            'profile_pages': [],
+            'author_name': person.author_name,
+            'author_email': person.author_email,
+            'author_phone': person.author_phone,
+            'source_date': source_date,
+            'source_name': person.source_name,
+        }
+        return self._json_response(data)
