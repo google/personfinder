@@ -25,7 +25,9 @@
     {# If there is no Javascript support, redirect to the light URL. #}
     {% if env.ui != "light" %}
       <noscript>
-        <style type="text/css">#hide_in_light_mode{display:none}</style>
+        <style type="text/css" nonce="{{ csp_nonce }}">
+          #hide_in_light_mode{display:none}
+        </style>
         <meta http-equiv="refresh" content="0.0;url={{env.light_url}}">
       </noscript>
     {% endif %}
@@ -38,7 +40,7 @@
     <meta name="keywords" content="{{config.keywords}}">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     {% if env.amp %}
-      <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+      <style amp-boilerplate nonce="{{ csp_nonce }}">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate nonce="{{ csp_nonce }}">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
       <script async src="https://cdn.ampproject.org/v0.js"></script>
     {% endif %}
 
@@ -60,7 +62,7 @@
     </title>
 
   {% if env.amp %}
-    <style type="text/css" amp-custom>
+    <style type="text/css" amp-custom nonce="{{ csp_nonce }}">
       {% if env.rtl %}
         {% with "right" as start %}
         {% with "left" as end %}
@@ -81,7 +83,8 @@
   {% else %}
     <link
        rel="stylesheet"
-       href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}">
+       href="{{env.global_url}}/css?lang={{env.lang}}&ui={{env.ui}}"
+       nonce="{{ csp_nonce }}">
     {% if env.enable_javascript %}
       <script type="text/javascript" nonce="{{csp_nonce}}">
         var lang = '{{env.lang}}';
