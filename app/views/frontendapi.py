@@ -61,6 +61,16 @@ class RepoView(FrontendApiBaseView):
                     'recordCount': self._get_person_count(repo_id),
                 })
         else:
+            repo = model.Repo.get(self.env.repo)
+            if not repo:
+                return self.error(404)
+            # We permit requests for staging repos so that admins can preview
+            # the repo. In the future we might consider requiring admin status
+            # to see them, though we'd need to provide some kind of login flow
+            # for that.
+            if (repo.activation_status ==
+                    model.Repo.ActivationStatus.DEACTIVATED):
+                return self.error(404)
             repo_title = self._select_repo_title(
                 self.env.config.get('repo_titles'),
                 self.env.config.get('language_menu_options'))
