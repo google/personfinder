@@ -38,6 +38,7 @@ class FrontendApiBaseView(views.base.BaseView):
             self._json_encoder.encode(data),
             content_type='application/json; charset=utf-8')
 
+
 class RepoView(FrontendApiBaseView):
     """View for information about repositories themselves."""
 
