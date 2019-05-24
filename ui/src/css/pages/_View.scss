@@ -26,6 +26,12 @@
   text-align: center;
 }
 
+.view-body .mdc-typography--headline5 {
+  text-align: left;
+  margin: 16px;
+  color: #212121;
+}
+
 .view-card {
   border: 1px solid #dadce0;
   border-radius: 4px;
@@ -39,7 +45,7 @@
   padding: 16px 0;
   text-align: left;
   &:last-child {
-    border: none;
+    border-bottom: none;
   }
 }
 

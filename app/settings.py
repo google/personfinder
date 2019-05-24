@@ -35,8 +35,7 @@ SECRET_KEY = os.urandom(30)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
     DEBUG_PROPAGATE_EXCEPTIONS = True
-    # If DEBUG is True and ALLOWED_HOSTS is empty, Django permits localhost.
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
     SECURE_SSL_REDIRECT = False
 else:
     DEBUG = False
@@ -77,11 +76,13 @@ if site_settings.OPTIONAL_PATH_PREFIX:
 
 # Based on the Strict CSP example here:
 # https://csp.withgoogle.com/docs/strict-csp.html
-CSP_INCLUDE_NONCE_IN = ('script-src',)
+CSP_INCLUDE_NONCE_IN = ('script-src', 'style-src')
 CSP_BASE_URI = "'none'"
 CSP_OBJECT_SRC = "'none'"
 CSP_SCRIPT_SRC = ("'unsafe-inline'", "'unsafe-eval'",
                   "'strict-dynamic' https: http:",)
+CSP_STYLE_SRC = ("'unsafe-inline'", "'unsafe-eval'",
+                 "'strict-dynamic' https: http:",)
 
 TEMPLATES = [
     {

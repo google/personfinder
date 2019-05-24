@@ -11,7 +11,7 @@
 {# Template fragment for the embedded map (used in create.py and view.py).  #}
 
 {% if env.enable_maps %}
-  <style>
+  <style nonce="{{ csp_nonce }}">
   .map {
     width: {{config.map_size_pixels.0}}px;
     height: {{config.map_size_pixels.1}}px;

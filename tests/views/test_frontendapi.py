@@ -165,3 +165,23 @@ class FrontendApiResultsViewTests(view_tests_base.ViewTestsBase):
                     'localPhotoUrl': None,
                 },
             ])
+
+
+class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
+
+    def setUp(self):
+        super(FrontendApiCreateViewTests, self).setUp()
+        self.data_generator.repo()
+
+    def test_post(self):
+        self.client.post(
+            '/haiti/d/create',
+            data={
+                'given_name': 'Matt',
+                'family_name': 'Matthews',
+                'own_info': 'yes',
+            },
+            secure=True)
+        persons = model.Person.all()
+        self.assertEqual(persons.count(), 1)
+        self.assertEqual(persons[0].given_name, 'Matt')

@@ -19,6 +19,7 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import Note from './../components/Note.js';
 import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
@@ -325,11 +326,17 @@ class View extends Component {
   }
   
   renderNotes() {
+    const noteElements = this.state.person.notes.map(note => {
+      return (<Note note={note} key={note.note_record_id} />);
+    });
+
     return (
       <div>
-        <h1><FormattedMessage {...MESSAGES.notesForThisPerson} /></h1>
-        {/* TODO(gimite): Implement this. */}
-        <div>TBD</div>
+        <h5 className='mdc-typography--headline5'>
+          <FormattedMessage {...MESSAGES.notesForThisPerson} />
+        </h5>
+        {/* TODO(gimite): Add feed icon. */}
+        {noteElements}
       </div>
     );
   }

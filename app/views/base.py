@@ -43,6 +43,10 @@ class Params(object):
         """Gets a value, or falls back to the given default."""
         return self._values.get(name, default)
 
+    def put(self, name, value):
+        """Adds a value."""
+        self._values.put(name, value)
+
     def read_values(self, get_params=None, post_params=None, file_params=None):
         """Reads params with the given keys and validators.
 
