@@ -35,8 +35,7 @@ SECRET_KEY = os.urandom(30)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     DEBUG = True
     DEBUG_PROPAGATE_EXCEPTIONS = True
-    # If DEBUG is True and ALLOWED_HOSTS is empty, Django permits localhost.
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
     SECURE_SSL_REDIRECT = False
 else:
     DEBUG = False
