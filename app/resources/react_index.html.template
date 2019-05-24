@@ -22,7 +22,11 @@
   <title>
     {% block title %}{% trans "Person Finder" %}{% endblock title %}
   </title>
-  <link rel="stylesheet" type="text/css" href="/static/ui_bundles/bundle.css">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/ui_bundles/bundle.css"
+    nonce="{{ csp_nonce }}">
 </head>
 
 <body>
