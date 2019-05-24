@@ -186,15 +186,11 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
               dense={false}
               floatingLabelClassName=""
               fullWidth={false}
-              helperText={null}
-              isRtl={false}
               label="Search for a person"
-              leadingIcon={null}
               lineRippleClassName=""
               notchedOutlineClassName=""
               outlined={true}
               textarea={false}
-              trailingIcon={null}
             >
               <div
                 className="mdc-text-field searchbar mdc-text-field--outlined"
@@ -222,7 +218,6 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                         "hasLabel": [Function],
                         "hasOutline": [Function],
                         "isFocused": [Function],
-                        "isRtl": [Function],
                         "notchOutline": [Function],
                         "registerInputInteractionHandler": [Function],
                         "registerTextFieldInteractionHandler": [Function],
@@ -231,10 +226,8 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                         "setLineRippleTransformOrigin": [Function],
                         "shakeLabel": [Function],
                       },
-                      "helperText_": Object {
-                        "setValidity": [Function],
-                        "showToScreenReader": [Function],
-                      },
+                      "characterCounter_": undefined,
+                      "helperText_": undefined,
                       "inputBlurHandler_": [Function],
                       "inputFocusHandler_": [Function],
                       "inputInputHandler_": [Function],
@@ -245,7 +238,6 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                       "setPointerXOffset_": [Function],
                       "textFieldInteractionHandler_": [Function],
                       "trailingIcon_": undefined,
-                      "useCustomValidityChecking_": false,
                       "useNativeValidation_": true,
                       "validationAttributeChangeHandler_": [Function],
                       "validationObserver_": undefined,
@@ -253,22 +245,19 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                   }
                   handleFocusChange={[Function]}
                   handleValueChange={[Function]}
-                  id={null}
+                  id=""
                   inputType="input"
-                  onBlur={[Function]}
                   onChange={[Function]}
-                  onFocus={[Function]}
                   onKeyDown={[Function]}
-                  onMouseDown={[Function]}
-                  onTouchStart={[Function]}
                   setDisabled={[Function]}
                   setInputId={[Function]}
+                  syncInput={[Function]}
                   value=""
                 >
                   <input
                     className="mdc-text-field__input"
                     disabled={false}
-                    id={null}
+                    id=""
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -278,42 +267,44 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                     value=""
                   />
                 </Input>
-                <FloatingLabel
-                  className=""
-                  float={false}
-                  handleWidthChange={[Function]}
-                  htmlFor={null}
-                >
-                  <label
-                    className="mdc-floating-label"
-                    htmlFor={null}
-                    onAnimationEnd={[Function]}
-                  >
-                    Search for a person
-                  </label>
-                </FloatingLabel>
                 <NotchedOutline
                   className=""
-                  isRtl={false}
                   notch={false}
                   notchWidth={0}
                 >
                   <div
-                    className="mdc-notched-outline"
-                    key="notched-outline"
+                    className="mdc-notched-outline mdc-notched-outline--upgraded"
                   >
-                    <svg
-                      focusable="false"
+                    <div
+                      className="mdc-notched-outline__leading"
+                    />
+                    <div
+                      className="mdc-notched-outline__notch"
+                      style={
+                        Object {
+                          "width": undefined,
+                        }
+                      }
                     >
-                      <path
-                        className="mdc-notched-outline__path"
-                      />
-                    </svg>
+                      <FloatingLabel
+                        className=""
+                        float={false}
+                        handleWidthChange={[Function]}
+                        htmlFor=""
+                      >
+                        <label
+                          className="mdc-floating-label"
+                          htmlFor=""
+                          onAnimationEnd={[Function]}
+                        >
+                          Search for a person
+                        </label>
+                      </FloatingLabel>
+                    </div>
+                    <div
+                      className="mdc-notched-outline__trailing"
+                    />
                   </div>
-                  <div
-                    className="mdc-notched-outline__idle"
-                    key="notched-outline-idle"
-                  />
                 </NotchedOutline>
               </div>
             </TextField>
@@ -356,11 +347,9 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             </span>
           </div>
         </EndBarHeader>
-        <WithRipple(Button)
+        <RippledComponent
           className="pf-button-secondary"
-          dense={false}
           disabled={false}
-          icon={null}
           initRipple={[Function]}
           onBlur={[Function]}
           onClick={[Function]}
@@ -371,17 +360,13 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           onTouchStart={[Function]}
-          outlined={false}
           raised={true}
           style={Object {}}
           unbounded={false}
-          unelevated={false}
         >
-          <Button
+          <Component
             className="pf-button-secondary"
-            dense={false}
             disabled={false}
-            icon={null}
             initRipple={[Function]}
             onBlur={[Function]}
             onClick={[Function]}
@@ -392,11 +377,8 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchStart={[Function]}
-            outlined={false}
             raised={true}
             style={Object {}}
-            unbounded={false}
-            unelevated={false}
           >
             <button
               className="mdc-button pf-button-secondary mdc-button--raised"
@@ -412,10 +394,14 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
               onTouchStart={[Function]}
               style={Object {}}
             >
-              Provide information about someone
+              <span
+                className="mdc-button__label"
+              >
+                Provide information about someone
+              </span>
             </button>
-          </Button>
-        </WithRipple(Button)>
+          </Component>
+        </RippledComponent>
       </div>
       <InjectIntl(Footer)>
         <Footer

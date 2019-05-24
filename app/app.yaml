@@ -59,6 +59,8 @@ handlers:
   script: wsgi.application
 - url: /.*/admin.*
   script: wsgi.application
+- url: /.+/d/create.*
+  script: wsgi.application
 - url: /.+/d/person.*
   script: wsgi.application
 - url: /.+/d/results.*
