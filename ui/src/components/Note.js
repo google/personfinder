@@ -106,65 +106,59 @@ const STATUS_MESSAGES = {
  *
  * Usage: <Note note={note} />
  */
-class Note extends Component {
-  renderStatus() {
-    return <FormattedMessage {...STATUS_MESSAGES[this.props.note.status]} />;
-  }
-
-  render() {
-    return (
-      <Card className='note-card'>
-        {/* TODO(gimite): Add drop down menu. */}
-        <div className='note-section'>
-          <div className='note-headline'>
-            <div className='note-headlinephoto'>
-              <img src={this.props.note.photo_url} />
-            </div>
-            <div className='note-headlinecontent'>
-              <h5 className='mdc-typography--subtitle2'>
-                <FormattedMessage
-                  {...MESSAGES.postedBy}
-                  values={{authorName: this.props.note.author_name}}
-                />
-              </h5>
-              <p className='mdc-typography--caption'>
-                {this.props.note.source_date}
-              </p>
-            </div>
+const Note = (props) => {
+  return (
+    <Card className='note-card'>
+      {/* TODO(gimite): Add drop down menu. */}
+      <div className='note-section'>
+        <div className='note-headline'>
+          <div className='note-headlinephoto'>
+            <img src={props.note.photo_url} />
+          </div>
+          <div className='note-headlinecontent'>
+            <h5 className='mdc-typography--subtitle2'>
+              <FormattedMessage
+                {...MESSAGES.postedBy}
+                values={{authorName: props.note.author_name}}
+              />
+            </h5>
+            <p className='mdc-typography--caption'>
+              {props.note.source_date}
+            </p>
           </div>
         </div>
+      </div>
 
-        <div className='note-section'>
-          <div className='mdc-typography--body2'>
-            {this.props.note.text}
+      <div className='note-section'>
+        <div className='mdc-typography--body2'>
+          {props.note.text}
+        </div>
+        <div className='mdc-typography--caption'>
+          <div>
+            <FormattedMessage {...MESSAGES.status} />:
+            <span> </span>
+            <FormattedMessage {...STATUS_MESSAGES[props.note.status]} />
           </div>
-          <div className='mdc-typography--caption'>
+          {props.note.author_made_contact ?
+            <div><FormattedMessage {...MESSAGES.authorMadeContact} /></div>
+            : null
+          }
+          {props.note.last_known_location ?
             <div>
-              <FormattedMessage {...MESSAGES.status} />:
+              <FormattedMessage {...MESSAGES.lastKnownLocation} />:
               <span> </span>
-              {this.renderStatus()}
+              {props.note.last_known_location}
+              <span> ・ </span>
+              {/* TODO(gimite): Implement this. */}
+              <a href='#'><FormattedMessage {...MESSAGES.map} /></a>
             </div>
-            {this.props.note.author_made_contact ?
-              <div><FormattedMessage {...MESSAGES.authorMadeContact} /></div>
-              : null
-            }
-            {this.props.note.last_known_location ?
-              <div>
-                <FormattedMessage {...MESSAGES.lastKnownLocation} />:
-                <span> </span>
-                {this.props.note.last_known_location}
-                <span> ・ </span>
-                {/* TODO(gimite): Implement this. */}
-                <a href='#'><FormattedMessage {...MESSAGES.map} /></a>
-              </div>
-              : null
-            }
-            {/* TODO(gimite): Add location */}
-          </div>
+            : null
+          }
+          {/* TODO(gimite): Add location */}
         </div>
-      </Card>
-    );
-  }
+      </div>
+    </Card>
+  );
 }
 
 export default injectIntl(Note);
