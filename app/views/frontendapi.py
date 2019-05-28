@@ -182,6 +182,16 @@ class PersonView(FrontendApiBaseView):
         # it yet.
         if person.expiry_date and person.expiry_date < utils.get_utcnow():
             return self.error(404)
+        notes = [
+            {
+                'note_record_id': note.record_id,
+                'source_date': self._js_date(note.source_date),
+                'author_name': note.author_name,
+                'author_made_contact': note.author_made_contact,
+                'status': note.status,
+                'text': note.text,
+            }
+            for note in person.unexpired_notes]
         data = {
             'name': person.full_name,
             # TODO(nworden): maybe change the UI to handle an empty string
@@ -198,7 +208,7 @@ class PersonView(FrontendApiBaseView):
             'author_phone': person.author_phone,
             'source_date': self._js_date(person.source_date),
             'source_name': person.source_name,
-            'notes': person.unexpired_notes,
+            'notes': notes,
         }
         return self._json_response(data)
 
