@@ -222,7 +222,7 @@ class View extends Component {
           SEX_VALUE_MESSAGES[this.state.person.sex]);
     }
   }
-  
+
   renderProfilePages() {
     return this.state.person.profile_pages.map((page, index) => {
       // TODO(gimite): Change the link text from URL to profile name
@@ -324,7 +324,7 @@ class View extends Component {
       </div>
     );
   }
-  
+
   renderNotes() {
     const noteElements = this.state.person.notes.map(note => {
       return (<Note note={note} key={note.note_record_id} />);
@@ -344,7 +344,7 @@ class View extends Component {
   renderAddNoteFab() {
     // TODO(gimite): Implement this.
   }
-  
+
   render() {
     if (!this.state.isLoaded) {
       return <LoadingIndicator />;

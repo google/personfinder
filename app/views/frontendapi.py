@@ -15,6 +15,7 @@
 """Handlers for the frontend API."""
 
 import django.http
+from google.appengine.api import datastore_errors
 import simplejson
 
 import create
@@ -37,6 +38,12 @@ class FrontendApiBaseView(views.base.BaseView):
         return django.http.HttpResponse(
             self._json_encoder.encode(data),
             content_type='application/json; charset=utf-8')
+
+    def _js_date(self, date):
+        if date:
+            return '%sZ' % date.isoformat()
+        else:
+            return None
 
     def dispatch(self, request, *args, **kwargs):
         """See docs on django.views.View.dispatch."""
@@ -85,7 +92,7 @@ class ResultsView(FrontendApiBaseView):
             'fullNames': person.full_name_list,
             'alternateNames': person.alternate_names_list,
             'timestampType': timestamp_type,
-            'timestamp': '%sZ' % timestamp.isoformat(),
+            'timestamp': self._js_date(timestamp),
             'localPhotoUrl': local_photo_url,
             # TODO(nworden): ask Travis/Pete if we should do something about
             # external photos here.
@@ -102,15 +109,14 @@ class PersonView(FrontendApiBaseView):
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
         person = model.Person.get(self.env.repo, self.params.id)
+        if not person:
+            return self.error(404)
         # Check if it's expired, just in case the expiry cron hasn't gotten to
         # it yet.
         if person.expiry_date and person.expiry_date < utils.get_utcnow():
             return self.error(404)
-        source_date = person.source_date
-        if source_date:
-            source_date = '%sZ' % source_date.isoformat()
         data = {
-            'name': 'Ted',
+            'name': person.full_name,
             # TODO(nworden): maybe change the UI to handle an empty string
             'sex': person.sex or None,
             'age': person.fuzzified_age,
@@ -122,8 +128,9 @@ class PersonView(FrontendApiBaseView):
             'author_name': person.author_name,
             'author_email': person.author_email,
             'author_phone': person.author_phone,
-            'source_date': source_date,
+            'source_date': self._js_date(person.source_date),
             'source_name': person.source_name,
+            'notes': person.unexpired_notes,
         }
         return self._json_response(data)
 

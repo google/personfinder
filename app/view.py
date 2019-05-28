@@ -81,10 +81,7 @@ class Handler(BaseHandler):
             self.should_show_inline_photo(person.photo_url))
 
         # Get the notes and duplicate links.
-        try:
-            notes = person.get_notes()
-        except datastore_errors.NeedIndexError:
-            notes = []
+        notes = person.unexpired_notes
         person.sex_text = get_person_sex_text(person)
         for note in notes:
             self.__add_fields_to_note(note)
