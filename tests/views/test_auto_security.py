@@ -58,6 +58,7 @@ PathTestInfoTuple = collections.namedtuple(
         'xsrf_action_id',
     ])
 
+
 def path_test_info(
         accepts_get,
         accepts_post,

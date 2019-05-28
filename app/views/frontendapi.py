@@ -15,7 +15,6 @@
 """Handlers for the frontend API."""
 
 import django.http
-from google.appengine.api import datastore_errors
 import simplejson
 
 import config
