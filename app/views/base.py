@@ -45,7 +45,7 @@ class Params(object):
 
     def put(self, name, value):
         """Adds a value."""
-        self._values.put(name, value)
+        self._vaues.put(name, value)
 
     def read_values(self, get_params=None, post_params=None, file_params=None):
         """Reads params with the given keys and validators.
