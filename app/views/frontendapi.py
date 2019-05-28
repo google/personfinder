@@ -49,10 +49,13 @@ class FrontendApiBaseView(views.base.BaseView):
 
     def dispatch(self, request, *args, **kwargs):
         """See docs on django.views.View.dispatch."""
-        repo_obj = model.Repo.get(self.env.repo)
-        if (repo_obj.activation_status ==
-                model.Repo.ActivationStatus.DEACTIVATED):
-            return self.error(404)
+        if self.env.repo != 'global':
+            repo_obj = model.Repo.get(self.env.repo)
+            if not repo_obj:
+                return self.error(404)
+            if (repo_obj.activation_status ==
+                    model.Repo.ActivationStatus.DEACTIVATED):
+                return self.error(404)
         return super(FrontendApiBaseView, self).dispatch(request, args, kwargs)
 
 
