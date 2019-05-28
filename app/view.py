@@ -31,17 +31,17 @@ import urlparse
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
 
-def get_profile_pages(profile_urls, handler):
+def get_profile_pages(profile_urls, config, url_builder):
     profile_pages = []
     for profile_url in profile_urls.splitlines():
         # Use the hostname as the website name by default.
         profile_page = {
             'name': urlparse.urlparse(profile_url).hostname,
             'url': profile_url }
-        for website in handler.config.profile_websites or []:
+        for website in config.profile_websites or []:
             if ('url_regexp' in website and
                 re.match(website['url_regexp'], profile_url)):
-                profile_page = add_profile_icon_url(website, handler)
+                profile_page = add_profile_icon_url(website, url_builder)
                 profile_page['url'] = profile_url
                 break
         profile_pages.append(profile_page)
@@ -141,7 +141,8 @@ class Handler(BaseHandler):
             sanitize_urls(note)
 
         if person.profile_urls:
-            person.profile_pages = get_profile_pages(person.profile_urls, self)
+            person.profile_pages = get_profile_pages(
+                person.profile_urls, self.config, self.transitionary_get_url)
 
         self.render('view.html',
                     person=person,

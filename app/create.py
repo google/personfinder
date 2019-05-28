@@ -291,7 +291,7 @@ class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
         profile_websites = [
-            add_profile_icon_url(website, self)
+            add_profile_icon_url(website, self.transitionary_get_url)
             for website in self.config.profile_websites or []]
         self.render('create.html',
                     profile_websites=profile_websites,

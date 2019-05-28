@@ -651,10 +651,9 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
 
-def add_profile_icon_url(website, handler):
+def add_profile_icon_url(website, url_builder):
     website = copy.deepcopy(website)  # avoid modifying the original
-    website['icon_url'] = \
-        handler.env.global_url + '/' + website['icon_filename']
+    website['icon_url'] = url_builder('/static/%s' % website['icon_filename'])
     return website
 
 
@@ -934,7 +933,7 @@ class BaseHandler(webapp.RequestHandler):
         return get_url(self.request, repo or self.env.repo, action,
                        charset=self.env.charset, scheme=scheme, **params)
 
-    def transitionary_get_url(self, path, repo, params=None):
+    def transitionary_get_url(self, path, repo=None, params=None):
         """Gets a URL to the given path, with the given params.
 
         We want to share some code between Django and webapp2 handlers (also,
@@ -947,7 +946,9 @@ class BaseHandler(webapp.RequestHandler):
         and this function matches its signature so that functions don't have to
         know what web framework their URL-building function came from.
         """
-        return self.get_url(path, repo=repo, **params)
+        if not params:
+            params = {}
+        return get_url(self.request, repo, path, **params)
 
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):
