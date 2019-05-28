@@ -174,6 +174,8 @@ class PersonView(FrontendApiBaseView):
 
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
+        if not self.params.id:
+            return self.error(400)
         person = model.Person.get(self.env.repo, self.params.id)
         if not person:
             return self.error(404)
