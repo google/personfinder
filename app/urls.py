@@ -71,6 +71,7 @@ _BASE_URL_PATTERNS = [
      views.meta.sitemap.SitemapView.as_view),
     ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
      views.meta.static_files.ConfigurableStaticFileView.as_view),
+    # The regular home path is in _STARTING_SLASH_URL_PATTERNS, below.
     ('meta_static-home-altpath', r'global/home.html',
      views.meta.static_pages.HomeView.as_view),
     ('meta_static-howto', r'global/howto.html',
