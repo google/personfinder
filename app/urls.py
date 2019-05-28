@@ -63,6 +63,8 @@ _BASE_URL_PATTERNS = [
      views.frontendapi.CreateView.as_view),
     ('frontendapi_person', r'(?P<repo>[^\/]+)/d/person/?',
      views.frontendapi.PersonView.as_view),
+    ('frontendapi_repo', r'(?P<repo>[^\/]+)/d/repo/?',
+     views.frontendapi.RepoView.as_view),
     ('frontendapi_results', r'(?P<repo>[^\/]+)/d/results/?',
      views.frontendapi.ResultsView.as_view),
     ('meta_setup-datastore', r'setup_datastore/?',
@@ -71,7 +73,7 @@ _BASE_URL_PATTERNS = [
      views.meta.sitemap.SitemapView.as_view),
     ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
      views.meta.static_files.ConfigurableStaticFileView.as_view),
-    ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+    # The regular home path is in _STARTING_SLASH_URL_PATTERNS, below.
     ('meta_static-home-altpath', r'global/home.html',
      views.meta.static_pages.HomeView.as_view),
     ('meta_static-howto', r'global/howto.html',
@@ -102,12 +104,23 @@ _BASE_URL_PATTERNS = [
      views.thirdparty_endpoints.repo_feed.RepoFeedView.as_view),
 ]
 
+# This pattern can't be automatically prefixed like the others, because it'll
+# end up with a repeated slash ("personfinder//?").
+_STARTING_SLASH_URL_PATTERNS = [
+    ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+]
+
 # pylint: disable=invalid-name
 # Pylint would prefer that this name be uppercased, but Django's going to look
 # for this value in the urls module; it has to be called urlpatterns.
 urlpatterns = [
     urls.url('^%s$' % path_exp, view_func(), name=name)
     for (name, path_exp, view_func) in _BASE_URL_PATTERNS
+]
+
+starting_slash_urlpatterns = [
+    urls.url('^%s$' % path_exp, view_func(), name=name)
+    for (name, path_exp, view_func) in _STARTING_SLASH_URL_PATTERNS
 ]
 
 if site_settings.OPTIONAL_PATH_PREFIX:
@@ -121,3 +134,15 @@ if site_settings.OPTIONAL_PATH_PREFIX:
             name='prefixed__%s' % name)
         for (name, path_exp, view_func) in _BASE_URL_PATTERNS
     ]
+    starting_slash_urlpatterns += [
+        urls.url(
+            '^%(prefix)s%(path)s$' % {
+                'prefix': site_settings.OPTIONAL_PATH_PREFIX,
+                'path': path_exp
+            },
+            view_func(),
+            name='prefixed__%s' % name)
+        for (name, path_exp, view_func) in _STARTING_SLASH_URL_PATTERNS
+    ]
+
+urlpatterns += starting_slash_urlpatterns

@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Copyright 2019 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +19,105 @@
 import model
 
 import view_tests_base
+
+
+class FrontendApiRepoViewTests(view_tests_base.ViewTestsBase):
+    """Tests the frontend API's repo view."""
+
+    def test_repo(self):
+        self.data_generator.repo(repo_id='haiti')
+        self.data_generator.setup_repo_config(repo_id='haiti')
+        resp = self.client.get('/haiti/d/repo', secure=True)
+        self.assertEqual(
+            {
+                'repoId': 'haiti',
+                'title': 'Haiti',
+                'recordCount': 0,
+            },
+            resp.json())
+
+    def test_nonexistent_repo(self):
+        resp = self.client.get('/estonia/d/repo?lang=es', secure=True)
+        self.assertEqual(resp.status_code, 404)
+
+    def test_deactivated_repo(self):
+        self.data_generator.repo(
+            repo_id='haiti',
+            activation_status=model.Repo.ActivationStatus.DEACTIVATED)
+        resp = self.client.get('/haiti/d/repo', secure=True)
+        self.assertEqual(resp.status_code, 404)
+
+    def test_repo_with_count(self):
+        self.data_generator.repo(repo_id='haiti')
+        self.data_generator.setup_repo_config(repo_id='haiti')
+        counter = model.Counter(repo='haiti', scan_name='person')
+        counter.count_all = 180
+        counter.put()
+        resp = self.client.get('/haiti/d/repo', secure=True)
+        self.assertEqual(
+            {
+                'repoId': 'haiti',
+                'title': 'Haiti',
+                'recordCount': 200,
+            },
+            resp.json())
+
+    def test_repo_other_language(self):
+        self.data_generator.repo(repo_id='latvia')
+        self.data_generator.setup_repo_config(
+            repo_id='latvia',
+            language_menu_options=['lv', 'es'],
+            repo_titles={'lv': 'Latvija', 'es': 'Letonia'})
+        resp = self.client.get('/latvia/d/repo?lang=es', secure=True)
+        self.assertEqual(
+            {
+                'repoId': 'latvia',
+                'title': 'Letonia',
+                'recordCount': 0,
+            },
+            resp.json())
+
+    def test_global_no_repos(self):
+        resp = self.client.get('/global/d/repo', secure=True)
+        self.assertEqual(resp.json(), [])
+
+    def test_global_one_repo(self):
+        self.data_generator.repo(repo_id='haiti')
+        self.data_generator.setup_repo_config(repo_id='haiti')
+        resp = self.client.get('/global/d/repo', secure=True)
+        self.assertEqual(
+            [
+                {
+                    'repoId': 'haiti',
+                    'title': 'Haiti',
+                    'recordCount': 0,
+                },
+            ],
+            resp.json())
+
+    def test_global_multiple_repos(self):
+        self.data_generator.repo(repo_id='haiti')
+        self.data_generator.setup_repo_config(repo_id='haiti')
+        self.data_generator.repo(repo_id='japan')
+        self.data_generator.setup_repo_config(
+            repo_id='japan',
+            language_menu_options=['ja', 'en'],
+            repo_titles={'ja': '日本', 'en': 'Japan'})
+        resp = self.client.get('/global/d/repo', secure=True)
+        self.assertEqual(
+            [
+                {
+                    'repoId': 'haiti',
+                    'title': 'Haiti',
+                    'recordCount': 0,
+                },
+                {
+                    'repoId': 'japan',
+                    'title': 'Japan',
+                    'recordCount': 0,
+                },
+            ],
+            resp.json())
 
 
 class FrontendApiResultsViewTests(view_tests_base.ViewTestsBase):

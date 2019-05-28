@@ -184,6 +184,15 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'own_info': 'yes',
             },
             xsrf_action_id=None),
+        'frontendapi_repo':
+        PathTestInfo(
+            accepts_get=True,
+            accepts_post=False,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data=None,
+            xsrf_action_id=None),
         'frontendapi_results':
         PathTestInfo(
             accepts_get=True,

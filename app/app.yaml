@@ -63,6 +63,8 @@ handlers:
   script: wsgi.application
 - url: /.+/d/person.*
   script: wsgi.application
+- url: /.+/d/repo.*
+  script: wsgi.application
 - url: /.+/d/results.*
   script: wsgi.application
 - url: /.*/feeds/repo.*
