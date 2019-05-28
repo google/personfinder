@@ -23,6 +23,7 @@ import create
 import model
 import search.searcher
 import utils
+import view
 import views.base
 
 
@@ -186,7 +187,8 @@ class PersonView(FrontendApiBaseView):
             'home_state': person.home_state,
             'home_country': person.home_country,
             'description': person.description,
-            'profile_pages': [],
+            'profile_pages': view.get_profile_pages(
+                person.profile_urls, self.env.config, self.build_absolute_uri),
             'author_name': person.author_name,
             'author_email': person.author_email,
             'author_phone': person.author_phone,
