@@ -16,6 +16,10 @@
 
 """Tests for the frontend API."""
 
+import datetime
+
+import six
+
 import model
 
 import view_tests_base
@@ -185,3 +189,89 @@ class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
         persons = model.Person.all()
         self.assertEqual(persons.count(), 1)
         self.assertEqual(persons[0].given_name, 'Matt')
+
+
+class FrontendApiPersonViewTests(view_tests_base.ViewTestsBase):
+
+    def setUp(self):
+        super(FrontendApiPersonViewTests, self).setUp()
+        self.data_generator.repo()
+
+    def test_get_with_person(self):
+        person = self.data_generator.person(
+            expiry_date=datetime.datetime(2090, 1, 10),
+            full_name='John Smith',
+            age='40-45',
+            sex='male',
+            description='description here')
+        resp = self.client.get(
+            '/haiti/d/person', data={'id': person.record_id}, secure=True)
+        self.assertEqual(
+            resp.json(),
+            {
+                six.u('name'): six.u('John Smith'),
+                six.u('sex'): six.u('male'),
+                six.u('age'): six.u('40-45'),
+                six.u('author_email'): six.u('alice.smith@example.com'),
+                six.u('author_name'): six.u('Alice Smith'),
+                six.u('author_phone'): six.u('111-111-1111'),
+                six.u('description'): six.u('description here'),
+                six.u('home_city'): six.u('Toronto'),
+                six.u('home_country'): six.u(''),
+                six.u('home_state'): six.u('Ontario'),
+                six.u('description'): six.u('description here'),
+                six.u('profile_pages'): [],
+                six.u('source_date'): six.u('2010-01-01T00:00:00Z'),
+                six.u('source_name'): six.u('Example Organization'),
+                six.u('notes'): [],
+            })
+
+    def test_get_with_person_with_note(self):
+        person = self.data_generator.person(
+            expiry_date=datetime.datetime(2090, 1, 10),
+            full_name='John Smith',
+            age='40-45',
+            sex='male',
+            description='description here')
+        note = self.data_generator.note(
+            person_id=person.record_id,
+            entry_date=datetime.datetime(2950, 1, 1),
+            source_date=datetime.datetime(2950, 1, 2),
+            author_name='Fred',
+            text='text here')
+        resp = self.client.get(
+            '/haiti/d/person', data={'id': person.record_id}, secure=True)
+        note_list = resp.json()['notes']
+        self.assertEqual(len(note_list), 1)
+        self.assertEqual(
+            note_list[0],
+            {
+                six.u('note_record_id'): note.record_id,
+                six.u('source_date'): six.u('2950-01-02T00:00:00Z'),
+                six.u('author_name'): six.u('Fred'),
+                six.u('author_made_contact'): False,
+                six.u('status'): six.u('believed_missing'),
+                six.u('text'): six.u('text here'),
+            })
+
+    def test_get_with_nonexistent_person(self):
+        resp = self.client.get(
+            '/haiti/d/person', data={'id': 'nonexistent.record'}, secure=True)
+        self.assertEqual(resp.status_code, 404)
+
+    def test_get_with_expired_person(self):
+        person = self.data_generator.person()
+        resp = self.client.get(
+            '/haiti/d/person', data={'id': person.record_id}, secure=True)
+        self.assertEqual(resp.status_code, 404)
+
+    def test_get_with_deactivated_repo(self):
+        self.data_generator.repo(
+            repo_id='malaysia',
+            activation_status=model.Repo.ActivationStatus.DEACTIVATED)
+        person = self.data_generator.person(
+            repo_id='malaysia',
+            expiry_date=datetime.datetime(2090, 1, 10))
+        resp = self.client.get(
+            '/haiti/d/person', data={'id': person.record_id}, secure=True)
+        self.assertEqual(resp.status_code, 404)
