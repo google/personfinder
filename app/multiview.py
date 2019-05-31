@@ -67,7 +67,8 @@ class Handler(BaseHandler):
 
         # TODO: Handle no persons found.
 
-        person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
+        person['profile_pages'] = [view.get_profile_pages(
+            profile_urls, self.config, self.transitionary_get_url)
             for profile_urls in person['profile_urls']]
         any_person['profile_pages'] = any(person['profile_pages'])
 

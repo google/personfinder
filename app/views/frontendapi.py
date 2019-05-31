@@ -22,6 +22,7 @@ import create
 import model
 import search.searcher
 import utils
+import view
 import views.base
 
 
@@ -38,6 +39,23 @@ class FrontendApiBaseView(views.base.BaseView):
         return django.http.HttpResponse(
             self._json_encoder.encode(data),
             content_type='application/json; charset=utf-8')
+
+    def _js_date(self, date):
+        if date:
+            return '%sZ' % date.isoformat()
+        else:
+            return None
+
+    def dispatch(self, request, *args, **kwargs):
+        """See docs on django.views.View.dispatch."""
+        if self.env.repo != 'global':
+            repo_obj = model.Repo.get(self.env.repo)
+            if not repo_obj:
+                return self.error(404)
+            if (repo_obj.activation_status ==
+                    model.Repo.ActivationStatus.DEACTIVATED):
+                return self.error(404)
+        return super(FrontendApiBaseView, self).dispatch(request, args, kwargs)
 
 
 class RepoView(FrontendApiBaseView):
@@ -139,11 +157,60 @@ class ResultsView(FrontendApiBaseView):
             'fullNames': person.full_name_list,
             'alternateNames': person.alternate_names_list,
             'timestampType': timestamp_type,
-            'timestamp': '%sZ' % timestamp.isoformat(),
+            'timestamp': self._js_date(timestamp),
             'localPhotoUrl': local_photo_url,
             # TODO(nworden): ask Travis/Pete if we should do something about
             # external photos here.
         }
+
+
+class PersonView(FrontendApiBaseView):
+    """View for person data."""
+
+    def setup(self, request, *args, **kwargs):
+        super(PersonView, self).setup(request, *args, **kwargs)
+        self.params.read_values(get_params={'id': utils.strip})
+
+    def get(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        if not self.params.id:
+            return self.error(400)
+        person = model.Person.get(self.env.repo, self.params.id)
+        if not person:
+            return self.error(404)
+        # Check if it's expired, just in case the expiry cron hasn't gotten to
+        # it yet.
+        if person.expiry_date and person.expiry_date < utils.get_utcnow():
+            return self.error(404)
+        notes = [
+            {
+                'note_record_id': note.record_id,
+                'source_date': self._js_date(note.source_date),
+                'author_name': note.author_name,
+                'author_made_contact': note.author_made_contact,
+                'status': note.status,
+                'text': note.text,
+            }
+            for note in person.unexpired_notes]
+        data = {
+            'name': person.full_name,
+            # TODO(nworden): maybe change the UI to handle an empty string
+            'sex': person.sex or None,
+            'age': person.fuzzified_age,
+            'home_city': person.home_city,
+            'home_state': person.home_state,
+            'home_country': person.home_country,
+            'description': person.description,
+            'profile_pages': view.get_profile_pages(
+                person.profile_urls, self.env.config, self.build_absolute_uri),
+            'author_name': person.author_name,
+            'author_email': person.author_email,
+            'author_phone': person.author_phone,
+            'source_date': self._js_date(person.source_date),
+            'source_name': person.source_name,
+            'notes': notes,
+        }
+        return self._json_response(data)
 
 
 class CreateView(FrontendApiBaseView):

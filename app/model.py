@@ -436,6 +436,13 @@ class Person(Base):
         return Note.get_by_person_record_id(
             self.repo, self.record_id, filter_expired=filter_expired)
 
+    @property
+    def unexpired_notes(self):
+        try:
+            return self.get_notes()
+        except datastore_errors.NeedIndexError:
+            return []
+
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves a list of all the Subscriptions for this Person."""
         return Subscription.get_by_person_record_id(
