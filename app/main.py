@@ -532,10 +532,16 @@ class Main(webapp.RequestHandler):
                 self.serve_static_content(self.env.action)
             elif self.should_serve_react_ui():
                 csp_nonce = self.set_content_security_policy()
+                react_env = {'maps_api_key': env.config.get('maps_api_key')}
+                json_encoder = simplejson.encoder.JSONEncoder()
                 response.out.write(
                     resources.get_rendered(
                         'react_index.html', env.lang,
-                        get_vars=lambda: {'env': env, 'csp_nonce': csp_nonce}))
+                        get_vars=lambda: {
+                            'env': env,
+                            'csp_nonce': csp_nonce,
+                            'env_json': json_encoder.encode(react_env),
+                        }))
                 return
 
         if not env.action and not env.repo:

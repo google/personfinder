@@ -28,6 +28,7 @@ import TextField, {HelperText, Input} from '@material/react-text-field';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import LocationFieldset from './../components/LocationFieldset.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
 import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
@@ -81,6 +82,19 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Information about me',
     description: ('A label on a tab for users to submit information about '
         + 'themselves.'),
+  },
+  lastKnownLocation: {
+    id: 'Create.lastKnownLocation',
+    defaultMessage: 'Last known location',
+    description: ('A label on a form field for the last known location of a '
+        + 'person.'),
+  },
+  lastKnownLocationInstructions: {
+    id: 'Create.lastKnownLocationInstructions',
+    defaultMessage: ('Type an address or open the map to indicate the location '
+        + 'by clicking on the map.'),
+    description: ('Instructions for how to fill in a field indicating the last '
+        + 'known location of a person.'),
   },
   message: {
     id: 'Create.message',
@@ -254,6 +268,7 @@ class Create extends Component {
       // This is for a reference to an element to anchor the profile page
       // options menu to; it's used by the Material MenuSurface component.
       profilePageOptionsAnchor: null,
+      showMap: false,
       // These fields are for the values of the form fields.
       formSurname: '',
       formGivenName: '',
@@ -264,6 +279,7 @@ class Create extends Component {
       formPhotoUrl: '',
       formProfilePages: Immutable.List(),
       formPersonStatus: 'unspecified',
+      formLastKnownLocation: '',
     };
     this.repoId = this.props.match.params.repoId;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -567,6 +583,53 @@ class Create extends Component {
     );
   }
 
+  renderLastKnownLocationField() {
+    const mapsApiDisabled = ENV.maps_api_key == null || ENV.maps_api_key == '';
+    const map = (mapsApiDisabled || !this.state.showMap) ? null : (
+        <div>
+        </div>
+      );
+    const mapsApiButtons = mapsApiDisabled ? null : (
+        <div>
+          <Button
+            className='pf-button-primary'
+            type='button'
+            onClick={() => this.populateLocationWithCurrentLocation()}>
+            Use location
+          </Button>
+          &nbsp;
+          <Button
+            className='pf-button-primary'
+            type='button'
+            onClick={() => this.setState({showMap: true})}>
+            Show map
+          </Button>
+          { map }
+        </div>
+      );
+    return (
+      <div className="create-formgroupwrapper">
+        {this.renderTextAreaAndInput(
+            'formLastKnownLocation', 'last_known_location',
+            MESSAGES.lastKnownLocation)}
+        <p className='mdc-typography--body1 form-explanationtext'>
+          <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
+        </p>
+        {mapsApiButtons}
+        <LocationFieldset />
+      </div>
+    );
+  }
+
+  populateLocationWithCurrentLocation() {
+    const page = this;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const positionStr =
+          position.coords.latitude + ', ' + position.coords.longitude;
+      page.setState({formLastKnownLocation: positionStr});
+    });
+  }
+
   renderStatusFields() {
     return (
       <div className='create-formsectionwrapper'>
@@ -633,6 +696,7 @@ class Create extends Component {
             </Radio>
           </div>
         </div>
+        { this.renderLastKnownLocationField() }
       </div>
     );
   }
