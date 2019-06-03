@@ -59,6 +59,7 @@ PathTestInfoTuple = collections.namedtuple(
     ])
 
 
+# pylint: disable=too-many-arguments
 def path_test_info(
         accepts_get,
         accepts_post,
@@ -68,6 +69,7 @@ def path_test_info(
         sample_get_data=None,
         sample_post_data=None,
         xsrf_action_id=None):
+    """Generates a PathTestInfoTuple, with some default values."""
     return PathTestInfoTuple(
         accepts_get=accepts_get,
         accepts_post=accepts_post,
