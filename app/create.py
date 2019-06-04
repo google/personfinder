@@ -212,59 +212,32 @@ def create_person(
     person.update_index(['old', 'new'])
 
     if add_note:
-        spam_detector = SpamDetector(config.bad_words)
-        spam_score = spam_detector.estimate_spam_score(text)
-        if (spam_score > 0):
-            note = NoteWithBadWords.create_original(
-                repo,
-                entry_date=get_utcnow(),
+        try:
+            note = create_note(
+                repo=repo,
                 person_record_id=person.record_id,
+                config=config,
+                status=status,
+                source_date=source_date,
                 author_name=author_name,
                 author_email=author_email,
                 author_phone=author_phone,
-                source_date=source_date,
                 author_made_contact=bool(author_made_contact),
-                status=status,
-                email_of_found_person=email_of_found_person,
-                phone_of_found_person=phone_of_found_person,
-                last_known_location=last_known_location,
-                text=text,
                 photo=note_photo,
                 photo_url=note_photo_url,
-                spam_score=spam_score,
-                confirmed=False)
-
-            # Write the new NoteWithBadWords to the datastore
-            note.put_new()
-            # Write the person record to datastore before redirect
+                text=text,
+                email_of_found_person=email_of_found_person,
+                phone_of_found_person=phone_of_found_person,
+                last_known_location=last_known_location)
+        except FlaggedNoteException as e:
             db.put(person)
             UserActionLog.put_new('add', person, copy_properties=False)
-
             # When the note is detected as spam, we do not update person
             # record with this note or log action. We ask the note author
             # for confirmation first.
-            raise FlaggedNoteException(note)
-        else:
-            note = Note.create_original(
-                repo,
-                entry_date=get_utcnow(),
-                person_record_id=person.record_id,
-                author_name=author_name,
-                author_email=author_email,
-                author_phone=author_phone,
-                source_date=source_date,
-                author_made_contact=bool(author_made_contact),
-                status=status,
-                email_of_found_person=email_of_found_person,
-                phone_of_found_person=phone_of_found_person,
-                last_known_location=last_known_location,
-                text=text,
-                photo=note_photo,
-                photo_url=note_photo_url)
+            raise e
 
-            # Write the new Note to the datastore
-            note.put_new()
-            person.update_from_note(note)
+        person.update_from_note(note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
@@ -285,6 +258,66 @@ def create_person(
     # TODO(ryok): batch-put person, note, photo, note_photo here.
 
     return person
+
+
+def create_note(
+        repo,
+        person_record_id,
+        config,
+        status,
+        source_date,
+        author_name,
+        author_email,
+        author_phone,
+        author_made_contact,
+        photo,
+        photo_url,
+        text,
+        email_of_found_person,
+        phone_of_found_person,
+        last_known_location):
+    spam_detector = SpamDetector(config.bad_words)
+    spam_score = spam_detector.estimate_spam_score(text)
+    if spam_score > 0:
+        note = NoteWithBadWords.create_original(
+            repo,
+            entry_date=get_utcnow(),
+            person_record_id=person_record_id,
+            author_name=author_name,
+            author_email=author_email,
+            author_phone=author_phone,
+            source_date=source_date,
+            author_made_contact=author_made_contact,
+            status=status,
+            email_of_found_person=email_of_found_person,
+            phone_of_found_person=phone_of_found_person,
+            last_known_location=last_known_location,
+            text=text,
+            photo=photo,
+            photo_url=photo_url,
+            spam_score=spam_score,
+            confirmed=False)
+        note.put_new()
+        raise FlaggedNoteException(note)
+    else:
+        note = Note.create_original(
+            repo,
+            entry_date=get_utcnow(),
+            person_record_id=person_record_id,
+            author_name=author_name,
+            author_email=author_email,
+            author_phone=author_phone,
+            source_date=source_date,
+            author_made_contact=author_made_contact,
+            status=status,
+            email_of_found_person=email_of_found_person,
+            phone_of_found_person=phone_of_found_person,
+            last_known_location=last_known_location,
+            text=text,
+            photo=photo,
+            photo_url=photo_url)
+        note.put_new()
+        return note
 
 
 class Handler(BaseHandler):
