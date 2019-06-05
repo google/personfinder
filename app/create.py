@@ -95,14 +95,15 @@ def create_person(
         should_fuzzify_age=True,
         expiry_option=None):
     now = get_utcnow()
-    # Several messages here exceed the 80-column limit because django's
-    # makemessages script can't handle messages split across lines. :(
     if config.use_family_name:
         if not (given_name and family_name):
-            raise CreationError(_('The Given name and Family name are both required.  Please go back and try again.'))
+            raise CreationError(_(
+                'The Given name and Family name are both required.  Please go '
+                'back and try again.'))
     else:
         if not given_name:
-            raise CreationError(_('Name is required.  Please go back and try again.'))
+            raise CreationError(_(
+                'Name is required.  Please go back and try again.'))
 
     # If user is inputting his/her own information, set some params automatically
     if own_info == 'yes':
@@ -115,30 +116,39 @@ def create_person(
             author_phone = users_own_phone
 
     if (author_email and not validate_email(author_email)):
-        raise CreationError(_('The email address you entered appears to be invalid.'))
+        raise CreationError(_(
+            'The email address you entered appears to be invalid.'))
 
     else:
         if not author_name:
             if clone:
-                raise CreationError(_('The Original author\'s name is required.  Please go back and try again.'))
+                raise CreationError(_(
+                    'The Original author\'s name is required.  Please go back '
+                    'and try again.'))
             else:
-                raise CreationError(_('Your name is required in the "Source" section.  Please go back and try again.'))
+                raise CreationError(_(
+                    'Your name is required in the "Source" section.  Please go '
+                    'back and try again.'))
 
     if add_note:
-        if not text:
-            raise CreationError(_('Message is required. Please go back and try again.'))
-        if status == 'is_note_author' and not author_made_contact:
-            raise CreationError(_('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-        if status == 'believed_dead' and not config.allow_believed_dead_via_ui:
-            raise CreationError(_('Not authorized to post notes with the status "I have received information that this person is dead".'))
+        validate_note_data(
+            config=config,
+            status=status,
+            author_name=author_name,
+            author_email=author_email,
+            author_made_contact=author_made_contact,
+            text=text)
 
     if source_date:
         try:
             source_date = validate_date(source_date)
         except ValueError:
-            raise CreationError(_('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
+            raise CreationError(_(
+                'Original posting date is not in YYYY-MM-DD format, or is a '
+                'nonexistent date.  Please go back and try again.'))
         if source_date > now:
-            raise CreationError(_('Date cannot be in the future.  Please go back and try again.'))
+            raise CreationError(_(
+                'Date cannot be in the future.  Please go back and try again.'))
 
     expiry_date = days_to_date(expiry_option or config.default_expiry_days)
 
@@ -228,7 +238,9 @@ def create_person(
                 text=text,
                 email_of_found_person=email_of_found_person,
                 phone_of_found_person=phone_of_found_person,
-                last_known_location=last_known_location)
+                last_known_location=last_known_location,
+                # We called validate_note_data separately above.
+                validate_data=False)
         except FlaggedNoteException as e:
             db.put(person)
             UserActionLog.put_new('add', person, copy_properties=False)
@@ -260,6 +272,32 @@ def create_person(
     return person
 
 
+def validate_note_data(
+        config,
+        status,
+        author_name,
+        author_email,
+        author_made_contact,
+        text):
+    if not text:
+        raise CreationError(_(
+            'Message is required. Please go back and try again.'))
+    if not author_name:
+        raise CreationError(_(
+            'Your name is required in the "About you" section.  Please go back '
+            'and try again.'))
+    if status == 'is_note_author' and not author_made_contact:
+        raise CreationError(_(
+            'Please check that you have been in contact with the person after '
+            'the disaster, or change the "Status of this person" field.'))
+    if status == 'believed_dead' and not config.allow_believed_dead_via_ui:
+        raise CreationError(_(
+            'Not authorized to post notes with the status "believed_dead".'))
+    if author_email and not validate_email(author_email):
+        raise CreationError(_(
+            'The email address you entered appears to be invalid.'))
+
+
 def create_note(
         repo,
         person_record_id,
@@ -275,7 +313,16 @@ def create_note(
         text,
         email_of_found_person,
         phone_of_found_person,
-        last_known_location):
+        last_known_location,
+        validate_data=True):
+    if validate_data:
+        validate_note_data(
+            config=config,
+            status=status,
+            author_name=author_name,
+            author_email=author_email,
+            author_made_contact=author_made_contact,
+            text=text)
     spam_detector = SpamDetector(config.bad_words)
     spam_score = spam_detector.estimate_spam_score(text)
     if spam_score > 0:
