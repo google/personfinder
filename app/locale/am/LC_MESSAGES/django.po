@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  ማስታወሻዎች የሚሰናከሉት ወይም የሚነቁት በጸሐፊው ፍቃድ ብቻ እንደሆነ ለማረጋገጥ\n"
-"  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
-"  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -231,32 +212,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      እርግጠኛ ነዎት በ«%(full_name)s» ላይ ማስታወሻዎችን ማሰናከል ይፈልጋሉ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      እርግጠኛ ነዎት በ%(full_name)s መዝገብ ላይ ያሉ ማስታወሻዎችን ማሰናከል ይፈልጋሉ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      እርግጠኛ ነዎት በ«%(full_name)s» ላይ ማስታወሻዎችን ማንቃት ይፈልጋሉ?\n"
 "    "
 
 #, python-format
@@ -356,22 +317,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    ማስታወሻዎች የሚሰናከሉት ወይም የሚነቁት በጸሐፊው ፍቃድ ብቻ እንደሆነ ለማረጋገጥ\n"
-"  የማረጋገጫ መልዕክት ወደ የመዝገቡ ጸሐፊ ይላካል።\n"
-"  እርስዎ ከሆኑ ጸሐፊው ከታች ያለውን አዝራር ጠቅ ካደረጉ በኋላ ኢሜይልዎን ይመልከቱ።\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -387,18 +332,6 @@ msgid ""
 msgstr ""
 "\n"
 "  ያስገቡት የኢሜል አድራሻ ትክክለኛ አድራሻ አይደለም።\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  መዝገቡ አሁንም በዚህ ጣቢያ ላይ የሚታይ ይሆናል፣ ነገር ግን ማንም ሰው በእሱ ላይ ተጨማሪ\n"
-"  ማስታወሻዎችን መለጠፍ አይችልም።\n"
 "  "
 
 msgid ""
@@ -744,9 +677,6 @@ msgstr "የዴስክቶፕ ስሪት"
 msgid "Developers"
 msgstr "ገንቢዎች"
 
-msgid "Disable notes on this record"
-msgstr "በዚህ መዝገብ ላይ ያሉ ማስታወሻዎችን ያሰናክሉ"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "ይህ ሰው በሌሎች ድር ጣቢያዎች ላይ የመገለጫ ገጾች አሉት?"
 
@@ -778,9 +708,6 @@ msgstr "የኢሜይል አድራሻ"
 
 msgid "Embedding the Application"
 msgstr "መተግበሪያውን በመክተት ላይ"
-
-msgid "Enable notes on this record"
-msgstr "በዚህ መዝገብ ላይ ማስታወሻዎችን ያንቁ"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "እንደ ዓዓዓዓ-ወወ-ቀቀ ያስገቡ"
@@ -922,9 +849,6 @@ msgstr "መረጃ እየፈለግሁ ነኝ"
 msgid "I am this person"
 msgstr "ይህ ሰው ነኝ"
 
-msgid "I do not want any more updates on this record."
-msgstr "በዚህ መዝገብ ላይ ተጨማሪ ዝማኔዎችን አልፈልግም።"
-
 msgid "I do not want my information online anymore."
 msgstr "መረጃዬ ከአሁን በኋላ መስመር ላይ እንዲሆን አልፈልግም።"
 
@@ -979,15 +903,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"የዚህ ማስታወሻ ጸሐፊ ከሆኑ እባክዎ በዚህ ማስታወሻ ላይ ማስታወሻዎችን ማሰናከል እንደሚፈሉ ለማረጋገጥ እባክዎ አንድ"
-" አገናኝ መጥቶልዎ ከሆነ ለማየት ኢሜይልዎን ይመልከቱ። አለበለዚያ የመዝገቡ ጸሐፊ ጥያቄዎን እስኪያረጋግጥ ድረስ "
-"እባክዎ ይጠብቁ።"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1113,10 +1028,6 @@ msgstr "ምንም ማስታወሻዎች አልተለጠፉም"
 
 msgid "No person id was specified."
 msgstr "ምንም የግለሰብ መታወቂያ አልተጠቀሰም።"
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "ይህን መታወቂያ የያዘ ማንም ሰው የለም፦ %(id_str)s።"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1279,9 +1190,6 @@ msgstr "ግዛት ወይም ክልል"
 msgid "Reason for deletion:"
 msgstr "የስረዛ ምክንያት፦"
 
-msgid "Reason for disabling notes:"
-msgstr "ማስታወሻዎች የሚሰናከሉበት ምክንያት፦"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "ከ«%(query)s» ጋር የሚዛመዱ ስሞች እና አድራሻዎች ያላቸው መዛግብቶች"
@@ -1366,9 +1274,6 @@ msgstr "የግለሰብ ሁኔታ"
 
 msgid "Status of this person:"
 msgstr "የዚህ(ች) ግለሰብ ሁኔታ፦"
-
-msgid "Street name only, no number"
-msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1455,10 +1360,6 @@ msgid ""
 msgstr ""
 "የመረጡት ሁኔታ እርስዎ ይህ ሰው እንደሆኑ ያመለክታል።  ይህ እውነት ከሆነ ይህን ሰው ማግኘትዎን ለማመልከት እባክዎ"
 " «አዎ»ን ይምረጡ።"
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "ማስመሰያ %(token)s ልክ ያልሆነ ነበር"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1641,17 +1542,11 @@ msgstr "ስለማን መረጃ እንዳለዎት"
 msgid "Yes"
 msgstr "አዎ"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "አዎ፣ የመዝገብ ጸሐፊው ማስታወሻዎችን እንዲያሰናክል ጠይቅ"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "አዎ፣ የመዝገብ ጸሐፊው ማስታወሻዎችን እንዲያነቃ ጠይቅ"
 
 msgid "Yes, delete the record"
 msgstr "አዎ፣ መዝገቡን ሰርዘው"
-
-msgid "Yes, disable notes on this record."
-msgstr "አዎ፣ በዚህ መዝገብ ላይ ያሉ ማስታወሻዎችን አሰናክል።"
 
 msgid "Yes, extend the record"
 msgstr "አዎ፣ መዝገቡን አራዝመው"
@@ -1670,9 +1565,6 @@ msgstr "አስቀድመው ለደንበኝነት ተመዝግበዋል። "
 
 msgid "You are already unsubscribed."
 msgstr "አስቀድመው ከደንበኝነት ምዝገባ ወጥተዋል።"
-
-msgid "You are not currently signed in."
-msgstr "በአሁኑ ጊዜ በመለያ አልገቡም።"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1753,16 +1645,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያሉ ማስታወሻዎች ይንቁ?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[ሰው ማግኛ] የ«%(full_name)s» ማስታወሻዎች ማሳወቂያን በማንቃት ላይ"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[ሰው ማግኛ] አሁን የ«%(full_name)s» ማስታወሻዎች ተሰናክሏል"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[ሰው ማግኛ] ማስታወሻዎች አሁን በ«%(full_name)s» ላይ ነቅተዋል"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

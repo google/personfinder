@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  टिप्पणीहरू सर्जकको अनुमति लिएर मात्र सक्षम वा असक्षम पारिने कुराको "
-"सुःनिश्चित होस् भन्नाका लागि रेकर्ड सर्जकलाई एउटा पुष्टि सन्देश पठाइने छ।"
-" यदि तपाईं सर्जक हुनुहुन्छ भने  तलको बटनमा क्लिक गरेर आफ्नो इमेल जाँच "
-"गर्नुहोस्।\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -226,17 +206,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      के तपाईं \"%(full_name)s\"का टिप्पणीहरू असक्षम पार्ने बारे निश्चित "
-"हुनुहुन्छ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -244,17 +213,6 @@ msgstr ""
 "\n"
 "      के तपाईं \"%(full_name)s\"को रेकर्डमा टिप्पणीहरू असक्षम पार्न "
 "चाहानु हुन्छ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      के तपाईं \"%(full_name)s \"मा टिप्पणीहरू सक्षम पार्ने कुरामा "
-"निश्चित हुनुहुन्छ?\n"
 "    "
 
 #, python-format
@@ -352,22 +310,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    टिप्पणीहरू केवल रेकर्ड सर्जकको अनुमतिबाट मात्र सक्षम वा असक्षम पारिने"
-" कुरा सुःनिश्चित गर्न रेकर्ड सर्जकलाई पुष्टि सन्देश पठाइने छ। यदि तपाईं "
-"सर्जक हुनुहुन्छ भने तलको बटन क्लिक गरी इमेल जाँच गर्नुहोस्।\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -383,18 +325,6 @@ msgid ""
 msgstr ""
 "\n"
 "  तपाईँले प्रविष्ट गर्नुभएको इमेल ठेगाना मान्य छैन।\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  यस रेकर्ड यस साइटमा अझैं देखिने छ, तर कसैले पनि यसमा थप टिप्पणी पोष्ट "
-"गर्न सक्ने छैनन्।\n"
 "  "
 
 msgid ""
@@ -733,9 +663,6 @@ msgstr "डेस्कटप संस्करण"
 msgid "Developers"
 msgstr "विकासकर्ताहरू"
 
-msgid "Disable notes on this record"
-msgstr "यस रेकर्डमा टिप्पणीहरू असक्षम पार्नुहोस्"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "के यस व्यक्तिको अन्य वेब साइटमा प्रोफाइल पृष्ठहरू छन्?"
 
@@ -769,9 +696,6 @@ msgstr "इमेल ठेगाना"
 
 msgid "Embedding the Application"
 msgstr "आवेदन एम्बेड गर्दै"
-
-msgid "Enable notes on this record"
-msgstr "यस रेकर्डमा टिप्पणीहरू सक्षम पार्नुहोस्"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD का रूपमा प्रविष्टि गर्नुहोस्"
@@ -921,9 +845,6 @@ msgstr "म जानकारी खोजिरहेको छु"
 msgid "I am this person"
 msgstr "म यो व्यक्ति हुँ"
 
-msgid "I do not want any more updates on this record."
-msgstr "यस रेकर्डमा अरू थप अद्यावधिकहरू म चाहन्न।"
-
 msgid "I do not want my information online anymore."
 msgstr "म अबदेखि मेरो जानकारी अनलाइनमा चाहान्न।"
 
@@ -978,16 +899,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"यदि तपाईं यस टिप्पणीको सर्जक हुनुहुन्छ भने कृपया लिङ्कका लागि तपाईंको "
-"इमेल जाँच गर्नुहोस् यस रेकर्डमा टिप्पणीहरू असक्षम गर्न चाहनुहुन्छ भन्ने "
-"सुःनिश्चित गर्नाका लागि। कृपया अन्यथा रेकर्ड तपाईंको अनुरोध पुष्टि गर्न "
-"सर्जकलाई प्रतीक्षा गर्नुहोस्।"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1122,10 +1033,6 @@ msgstr "कुनै टिप्पणीहरू पोष्ट गरिए
 
 msgid "No person id was specified."
 msgstr "कुनै व्यक्तिगत पहिचान निर्दिष्ट गरिएको छैन।"
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "यस ID %(id_str)s का साथ कुनै पनि व्यक्ति छैन।"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1302,9 +1209,6 @@ msgstr "प्रान्त वा राज्य"
 msgid "Reason for deletion:"
 msgstr "मेट्नका लागि कारण:"
 
-msgid "Reason for disabling notes:"
-msgstr "टिप्पणी असक्षम पार्नका लागि कारण:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "\"%(query)s\" सँग मिल्दो नाम ठेगानासहितको रेकर्डहरू"
@@ -1389,9 +1293,6 @@ msgstr "व्यक्तिको अवस्था"
 
 msgid "Status of this person:"
 msgstr "यस व्यक्तिको अवस्था:"
-
-msgid "Street name only, no number"
-msgstr "सडक नाम मात्र, नम्बर होइन"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1479,10 +1380,6 @@ msgstr ""
 "तपाईंले चयन गर्नु भएको वस्तुस्थितिले तपाईं यस व्यक्ति भएको कुरा इङ्गित "
 "गर्दछ। यदि यो सत्य हो भने कृपया तपाईंले सम्पर्क गर्नुभएको व्यक्तिलाई "
 "इङ्कित गर्न \"हो\" चयन गर्नुहोस्"
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "टोकन %(token)s अमान्य थियो"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1674,17 +1571,11 @@ msgstr "तपाईंसँग कसको बारेमा जानका
 msgid "Yes"
 msgstr "हो"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "हो,  टिप्पणी असक्षम पार्नका लागि टिप्पणी सर्जकलाई सोध्नुहोस्।"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "हो, रेकर्ड सर्जकलाई टिप्पणीहरू सक्षम पार्न सोध्नुहोस्"
 
 msgid "Yes, delete the record"
 msgstr "हो, रेकर्ड मेट्नुहोस्"
-
-msgid "Yes, disable notes on this record."
-msgstr "हो, यस रेकर्डमा टिप्पणीहरू असक्षम पार्नुहोस्।"
 
 msgid "Yes, extend the record"
 msgstr "हो, रेकर्ड विस्तार गर्नुहोस्"
@@ -1703,9 +1594,6 @@ msgstr "तपाईँको पहिलेदेखि नै सदस्य
 
 msgid "You are already unsubscribed."
 msgstr "तपाईँको सदस्यता पहिलेदेखि नै हटाइएको छ।"
-
-msgid "You are not currently signed in."
-msgstr "तपाईं हाल साइन इन हुनुहुन्न।"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1795,18 +1683,10 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] \"%(full_name)s\"मा टिप्पणीहरू सक्षम पार्ने हो?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] \"%(full_name)s\"का लागि टिप्पणी सूचना सक्षम पार्दै"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
 "[Person Finder] \"%(full_name)s\"का लागि टिप्पणीहरू अहिले असक्षम पारिएका "
 "छन्"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] \"%(full_name)s\"मा  टिप्पणीहरू अहिले सक्षम पारिएका छन्"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

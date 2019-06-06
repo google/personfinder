@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Un message de confirmation sera envoyé à l'auteur de l'avis de "
-"recherche afin d'obtenir son autorisation pour l'activation ou la "
-"désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
-"e-mails après avoir cliqué sur le bouton ci-dessous.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -241,17 +221,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Voulez-vous vraiment désactiver les commentaires concernant "
-"\"%(full_name)s\" ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -259,17 +228,6 @@ msgstr ""
 "\n"
 "      Voulez-vous vraiment désactiver les commentaires pour l'avis de "
 "recherche concernant \"%(full_name)s\" ?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Voulez-vous vraiment activer les commentaires concernant "
-"\"%(full_name)s\" ?\n"
 "    "
 
 #, python-format
@@ -369,23 +327,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Un message de confirmation sera envoyé à l'auteur de l'avis de "
-"recherche afin d'obtenir son autorisation pour l'activation ou la "
-"désactivation des commentaires. Si vous êtes l'auteur, vérifiez vos "
-"e-mails après avoir cliqué sur le bouton ci-dessous.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -401,18 +342,6 @@ msgid ""
 msgstr ""
 "\n"
 "  L'adresse e-mail que vous avez saisie n'est pas valide.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  L'avis de recherche restera visible sur ce site, mais personne ne "
-"pourra publier de commentaires le concernant.\n"
 "  "
 
 msgid ""
@@ -780,9 +709,6 @@ msgstr "Version classique"
 msgid "Developers"
 msgstr "Développeurs"
 
-msgid "Disable notes on this record"
-msgstr "Désactiver les commentaires pour cet avis de recherche"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Cette personne possède-t-elle des pages de profil sur d'autres sites Web ?"
 
@@ -816,9 +742,6 @@ msgstr "Adresse e-mail"
 
 msgid "Embedding the Application"
 msgstr "Intégrer l'application"
-
-msgid "Enable notes on this record"
-msgstr "Activer les commentaires pour cet avis de recherche"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Respectez le format AAAA-MM-JJ."
@@ -968,9 +891,6 @@ msgstr "Je recherche des informations."
 msgid "I am this person"
 msgstr "Je confirme être cette personne."
 
-msgid "I do not want any more updates on this record."
-msgstr "Je ne veux pas que cet avis de recherche soit mis à jour."
-
 msgid "I do not want my information online anymore."
 msgstr "Je ne veux plus que mes informations soient affichées en ligne."
 
@@ -1025,17 +945,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Si vous êtes l'auteur de ce commentaire, veuillez vérifier vos e-mails. "
-"Vous avez dû recevoir un lien pour confirmer la désactivation des "
-"commentaires relatifs à cet avis de recherche. Si vous n'êtes pas "
-"l'auteur, veuillez patienter le temps que ce dernier confirme votre "
-"demande."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1177,10 +1086,6 @@ msgstr "Aucun commentaire n'a été publié."
 
 msgid "No person id was specified."
 msgstr "Aucun ID de personne n'a été spécifié."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Personne ne correspond à l'identifiant %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1352,9 +1257,6 @@ msgstr "Département ou État"
 msgid "Reason for deletion:"
 msgstr "Motif de la suppression :"
 
-msgid "Reason for disabling notes:"
-msgstr "Motif de la désactivation des commentaires :"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
@@ -1447,9 +1349,6 @@ msgstr "Statut de la personne"
 
 msgid "Status of this person:"
 msgstr "Statut de cette personne :"
-
-msgid "Street name only, no number"
-msgstr "Nom de la rue uniquement, sans le numéro"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1545,10 +1444,6 @@ msgstr ""
 "Le statut que vous avez sélectionné indique que vous êtes cette personne."
 " Si tel est le cas, sélectionnez également \"Oui\" pour indiquer que vous"
 " avez contacté cette personne."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Le jeton %(token)s n'est pas valide."
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1746,19 +1641,11 @@ msgstr "Personne sur laquelle vous disposez d'informations"
 msgid "Yes"
 msgstr "Oui"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr ""
-"Oui, demander à l'auteur de l'avis de recherche de désactiver les "
-"commentaires"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Oui, demander à l'auteur de l'avis de recherche d'activer les commentaires"
 
 msgid "Yes, delete the record"
 msgstr "Oui, supprimer l'avis de recherche"
-
-msgid "Yes, disable notes on this record."
-msgstr "Oui, désactiver les commentaires pour cet avis de recherche"
 
 msgid "Yes, extend the record"
 msgstr "Oui, repousser la date d'expiration de l'avis de recherche"
@@ -1777,9 +1664,6 @@ msgstr "Vous êtes déjà abonné. "
 
 msgid "You are already unsubscribed."
 msgstr "Vous vous êtes déjà désabonné."
-
-msgid "You are not currently signed in."
-msgstr "Actuellement, vous n'êtes pas connecté."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1881,22 +1765,10 @@ msgstr ""
 "\"%(full_name)s\" ?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Recherche de personnes] Activer les notifications relatives aux "
-"commentaires concernant \"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
 "[Recherche de personnes] Les commentaires concernant \"%(full_name)s\" "
 "sont maintenant désactivés."
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
-"[Recherche de personnes] Les commentaires concernant \"%(full_name)s\" "
-"sont maintenant activés."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

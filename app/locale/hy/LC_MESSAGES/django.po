@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Հեղինակին ուղարկում ենք հաղորդագրություն` խնդրելով հաստատել, որ նա "
-"թույլատրում է անջատել կամ միացնել նշումները: Եթե դուք հեղինակն եք, սույն "
-"կոճակը սեղմելուց հետո ստուգեք ձեր էլփոստը:\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -237,16 +218,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Իսկապե՞ս ուզում եք անջատել «%(full_name)s»-ի նշումները:\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -254,16 +225,6 @@ msgstr ""
 "\n"
 "      Իսկապե՞ս ուզում եք անջատել «%(full_name)s»-ի գրառումների նշումները:"
 "\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Իսկապե՞ս ուզում եք միացնել «%(full_name)s»-ի նշումները:\n"
 "    "
 
 #, python-format
@@ -363,22 +324,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Հեղինակին ուղարկում ենք հաղորդագրություն` խնդրելով հաստատել, որ նա "
-"թույլատրում է անջատել կամ միացնել նշումները: Եթե դուք հեղինակն եք, սույն "
-"կոճակը սեղմելուց հետո ստուգեք ձեր էլփոստը:\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -394,18 +339,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Մուտքագրված էլփոստի հասցեն անվավեր է:\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Գրառումը դեռ տեսանելի է կայքում, սակայն ոչ ոք չի կարողանա փակցնել\n"
-"  նշումներ այնտեղ:\n"
 "  "
 
 msgid ""
@@ -758,9 +691,6 @@ msgstr "Համակարգչային տարբերակ"
 msgid "Developers"
 msgstr "Մշակողներ"
 
-msgid "Disable notes on this record"
-msgstr "Անջատել այս գրառման նշումները"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Այս անձն այլ կայքերում պրոֆիլ ունի՞:"
 
@@ -794,9 +724,6 @@ msgstr "Էլփոստի հասցե"
 
 msgid "Embedding the Application"
 msgstr "Ծրագրի ներկառուցում"
-
-msgid "Enable notes on this record"
-msgstr "Միացնել այս գրառման նշումները"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Մուտքագրել որպես YYYY-MM-DD"
@@ -943,9 +870,6 @@ msgstr "Ես տեղեկություն եմ որոնում"
 msgid "I am this person"
 msgstr "Ես եմ այդ մարդը"
 
-msgid "I do not want any more updates on this record."
-msgstr "Ես այլևս չեմ ցանկանում տեղեկանալ այս գրառման մասին:"
-
 msgid "I do not want my information online anymore."
 msgstr "Ես այլևս չեմ ցանկանում, որ իմ տեղեկություններն առցանց լինեն:"
 
@@ -1000,15 +924,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Եթե դու այս գրառման հեղինակն եք, ստուգեք ձեր էլփոստը և հաստատեք հղումով, "
-"որ ցանկանում եք անջատել այս գրառման նշումները: Հակառակ դեպքում սպասեք "
-"մինչև գրառման հեղինակը կհաստատի ձեր հարցումը:"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1140,10 +1055,6 @@ msgstr "Նշումներ չեն փակցվել"
 
 msgid "No person id was specified."
 msgstr "Որևէ անձի ID նշված չէ:"
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "%(id_str)s-ով անձինք չկան:"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1314,9 +1225,6 @@ msgstr "Մարզը կամ նահանգը"
 msgid "Reason for deletion:"
 msgstr "Հեռացման պատճառը`"
 
-msgid "Reason for disabling notes:"
-msgstr "Նշումների անջատման պատճառը`"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "«%(query)s» հարցմանը համապատասխանող անուններով և հասցեներով գրառումներ"
@@ -1401,9 +1309,6 @@ msgstr "Անձի կարգավիճակը"
 
 msgid "Status of this person:"
 msgstr "Այս անձի կարգավիճակը՝"
-
-msgid "Street name only, no number"
-msgstr "Միայն փողոցի անունը (առանց տան համարի)"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1490,10 +1395,6 @@ msgid ""
 msgstr ""
 "Ձեր ընտրած կարգավիճակը ցույց է տալիս, որ դուք այս անձն եք: Եթե դա ճիշտ է,"
 " սեղմեք նաև «Այո»` այս մարդու հետ կապվելու մասին հատկանշելու համար:"
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "%(token)s այլանիշն անվավեր է"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1683,17 +1584,11 @@ msgstr "Ում տվյալներն եք ուզում մուտքագրել"
 msgid "Yes"
 msgstr "Այո"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Այո, խնդրել գրառման հեղինակին, որպեսզի անջատի նշումները"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Այո, խնդրել գրառման հեղինակին, որպեսզի միացնի նշումները"
 
 msgid "Yes, delete the record"
 msgstr "Այո, ջնջել գրառումը"
-
-msgid "Yes, disable notes on this record."
-msgstr "Այո, անջատել այս գրառման նշումները"
 
 msgid "Yes, extend the record"
 msgstr "Այո, երկարաձգել գրառումը"
@@ -1712,9 +1607,6 @@ msgstr "Դուք արդեն բաժանորդագրված եք: "
 
 msgid "You are already unsubscribed."
 msgstr "Դուք արդեն ապաբաժանորդագրված եք:"
-
-msgid "You are not currently signed in."
-msgstr "Դուք մուտք չեք գործել:"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1800,16 +1692,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Մարդկանց որոնում] Միացնե՞լ «%(full_name)s»-ի նշումները"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Մարդկանց որոնում] «%(full_name)s»-ի նշումները միացվում են"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Մարդկանց որոնում] «%(full_name)s»-ի նշումներն այժմ անջատված են"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Մարդկանց որոնում] «%(full_name)s»-ի նշումներն այժմ միացված են"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

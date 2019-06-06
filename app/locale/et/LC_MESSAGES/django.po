@@ -21,27 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Tagamaks, et märkmed keelatakse või lubatakse ainult kirje autori loal,"
-"\n"
-"  saadetakse kirje autorile kinnitussõnum.\n"
-"  Kui olete autor, vaadake pärast alloleval nupul klõpsamist oma "
-"meilikontot.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -237,17 +216,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Kas soovite inimese „%(full_name)s” kohta märkmed kindlasti "
-"keelata?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -255,17 +223,6 @@ msgstr ""
 "\n"
 "      Kas soovite inimese „%(full_name)s” kirjel olevad märkmed kindlasti"
 " keelata?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Kas soovite inimese „%(full_name)s” kohta märkused kindlasti "
-"lubada?\n"
 "    "
 
 #, python-format
@@ -363,22 +320,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Tagamaks, et märkmed keelatakse või lubatakse ainult kirje autori "
-"loal, saadetakse kirje autorile kinnitussõnum. Kui olete autor, vaadake "
-"pärast alloleval nupul klõpsamist oma meilikontot.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -394,18 +335,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Teie sisestatud e-posti aadress on sobimatu.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Kirje on ikka sellel saidil nähtav, kuid keegi ei saa sellele rohkem "
-"märkmeid postitada.\n"
 "  "
 
 msgid ""
@@ -761,9 +690,6 @@ msgstr "Arvutiversioon"
 msgid "Developers"
 msgstr "Arendajad"
 
-msgid "Disable notes on this record"
-msgstr "Keela selle kirje puhul märkmed"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Kas sellel inimesel on profiililehti muudel veebisaitidel?"
 
@@ -797,9 +723,6 @@ msgstr "E-posti aadress"
 
 msgid "Embedding the Application"
 msgstr "Rakenduse manustamine"
-
-msgid "Enable notes on this record"
-msgstr "Luba selle kirje puhul märkmed"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sisestage kujul AAAA-KK-PP"
@@ -947,9 +870,6 @@ msgstr "Otsin teavet"
 msgid "I am this person"
 msgstr "Mina olen see isik"
 
-msgid "I do not want any more updates on this record."
-msgstr "Ma ei soovi saada rohkem selle kirje värskendusi."
-
 msgid "I do not want my information online anymore."
 msgstr "Ma ei taha enam oma teavet võrgus."
 
@@ -1004,16 +924,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Kui olete selle märkme autor, otsige oma meilikontolt meil, millega "
-"saadeti teile link, mida kasutades saate kinnitada, et soovite sellel "
-"kirjel märkmed keelata. Kui te pole autor, peate ootama, kuni kirje autor"
-" teie taotluse kinnitab."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1148,10 +1058,6 @@ msgstr "Märkmeid pole postitatud"
 
 msgid "No person id was specified."
 msgstr "Ühtegi isiku ID-d ei määratud."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Pole inimest, kelle ID on %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1316,9 +1222,6 @@ msgstr "Provints või osariik"
 msgid "Reason for deletion:"
 msgstr "Kustutamise põhjus:"
 
-msgid "Reason for disabling notes:"
-msgstr "Märkmete keelamise põhjus:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Kirjed, mille nimed ja aadressid sobivad päringuga „%(query)s”"
@@ -1403,9 +1306,6 @@ msgstr "Isiku olek"
 
 msgid "Status of this person:"
 msgstr "Selle isiku olek:"
-
-msgid "Street name only, no number"
-msgstr "Ainult tänava nimi, ilma numbrita"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1492,10 +1392,6 @@ msgid ""
 msgstr ""
 "Teie valitud olek näitab, et vastav inimene olete teie. Kui see on tõsi, "
 "valige „Jah” kinnitamaks, et olete selle inimesega kontakteerunud."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Luba %(token)s oli vale"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1685,17 +1581,11 @@ msgstr "Kelle kohta on teil teavet?"
 msgid "Yes"
 msgstr "Jah"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Jah, palu kirje autoril märkmed keelata"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Jah, palu kirje autoril märkmed lubada"
 
 msgid "Yes, delete the record"
 msgstr "Jah, kustuta see kirje"
-
-msgid "Yes, disable notes on this record."
-msgstr "Jah, keela selle kirje puhul märkmed."
 
 msgid "Yes, extend the record"
 msgstr "Jah, pikenda kirje kehtivust"
@@ -1714,9 +1604,6 @@ msgstr "Olete selle juba tellinud. "
 
 msgid "You are already unsubscribed."
 msgstr "Olete sellest tellimusest juba loobunud."
-
-msgid "You are not currently signed in."
-msgstr "Te ei ole praegu sisse logitud."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1801,16 +1688,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Isikuotsing] Kas lubada märkmed inimese „%(full_name)s” kohta?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Isikuotsing] Inimese „%(full_name)s” kohta märkmete lubamise teatis"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Isikuotsing] Märkmed inimese „%(full_name)s” kohta on nüüd keelatud"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Isikuotsing] Inimese „%(full_name)s” kohta on nüüd märkmed lubatud"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

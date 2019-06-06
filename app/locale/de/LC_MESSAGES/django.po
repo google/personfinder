@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Damit Notizen nur mit dem Einverständnis des Erstellers aktiviert oder "
-"deaktiviert werden, wird eine Bestätigungsnachricht an den Ersteller des "
-"Datensatzes gesendet. Wenn Sie der Ersteller sind, klicken Sie auf die "
-"Schaltfläche unten und überprüfen Sie anschließend Ihre E-Mails.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -241,16 +221,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Möchten Sie Notizen für \"%(full_name)s\" wirklich deaktivieren?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -258,16 +228,6 @@ msgstr ""
 "\n"
 "      Möchten Sie Notizen zum Datensatz für \"%(full_name)s\" wirklich "
 "deaktivieren?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Möchten Sie Notizen für \"%(full_name)s\" wirklich aktivieren?\n"
 "    "
 
 #, python-format
@@ -367,23 +327,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Damit Notizen nur mit dem Einverständnis des Erstellers aktiviert "
-"oder deaktiviert werden, wird eine Bestätigungsnachricht an den Ersteller"
-" des Datensatzes gesendet. Wenn Sie der Ersteller sind, klicken Sie auf "
-"die Schaltfläche unten und überprüfen Sie anschließend Ihre E-Mails.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -399,18 +342,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Die eingegebene E-Mail-Adresse ist ungültig.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Der Datensatz ist weiterhin auf dieser Website sichtbar, aber es können"
-" keine weiteren Notizen hinzugefügt werden.\n"
 "  "
 
 msgid ""
@@ -771,9 +702,6 @@ msgstr "Desktop-Version"
 msgid "Developers"
 msgstr "Entwickler"
 
-msgid "Disable notes on this record"
-msgstr "Notizen zu diesem Datensatz deaktivieren"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Hat diese Person ein Profil auf anderen Websites?"
 
@@ -807,9 +735,6 @@ msgstr "E-Mail-Adresse"
 
 msgid "Embedding the Application"
 msgstr "Anwendung einbetten"
-
-msgid "Enable notes on this record"
-msgstr "Notizen für diesen Datensatz aktivieren"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Im Format jjjj-mm-tt eingeben"
@@ -959,9 +884,6 @@ msgstr "Ich suche nach Informationen."
 msgid "I am this person"
 msgstr "Ich bin diese Person."
 
-msgid "I do not want any more updates on this record."
-msgstr "Ich möchte keine weiteren Updates zu diesem Datensatz erhalten."
-
 msgid "I do not want my information online anymore."
 msgstr "Meine Informationen sollen nicht mehr online angezeigt werden."
 
@@ -1016,16 +938,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Wenn Sie der Ersteller dieser Notiz sind, suchen Sie bitte in Ihren "
-"E-Mails nach dem Link mit der Bestätigung, dass sie um Deaktivierung der "
-"Notizen für diesen Datensatz bitten. Anderenfalls warten Sie bitte, bis "
-"der Ersteller des Datensatzes Ihre Anfrage bestätigt."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1164,10 +1076,6 @@ msgstr "Es wurden keine Notizen gepostet."
 
 msgid "No person id was specified."
 msgstr "Keine persönliche ID angegeben."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Keine Person mit der ID: %(id_str)s"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1342,9 +1250,6 @@ msgstr "Bundesland, -staat, Provinz oder Kanton"
 msgid "Reason for deletion:"
 msgstr "Grund für die Löschung:"
 
-msgid "Reason for disabling notes:"
-msgstr "Grund für die Deaktivierung von Notizen:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Datensätze mit Namen und Adressen, die mit \"%(query)s\" übereinstimmen"
@@ -1429,9 +1334,6 @@ msgstr "Status der Person"
 
 msgid "Status of this person:"
 msgstr "Status dieser Person:"
-
-msgid "Street name only, no number"
-msgstr "Nur Straßenname, keine Hausnummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1527,10 +1429,6 @@ msgstr ""
 "Laut dem von Ihnen ausgewählten Status sind Sie diese Person. Falls das "
 "stimmt, wählen Sie außerdem \"Ja\" aus, um anzugeben, dass Sie diese "
 "Person kontaktiert haben."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Das Token %(token)s war ungültig."
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1726,17 +1624,11 @@ msgstr "Person, zu der Sie Informationen haben"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, den Ersteller des Datensatzes bitten, Notizen zu deaktivieren"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ja, den Ersteller des Datensatzes bitten, Notizen zu aktivieren"
 
 msgid "Yes, delete the record"
 msgstr "Ja, den Datensatz löschen"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, Notizen zu diesem Datensatz deaktivieren"
 
 msgid "Yes, extend the record"
 msgstr "Ja, das Ablaufdatum des Datensatzes verlängern"
@@ -1755,9 +1647,6 @@ msgstr "Sie haben bereits ein Abo. "
 
 msgid "You are already unsubscribed."
 msgstr "Sie haben das Abo bereits beendet."
-
-msgid "You are not currently signed in."
-msgstr "Sie sind momentan nicht angemeldet."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1849,18 +1738,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Vermisstensuche] Notizen zu \"%(full_name)s\" aktivieren?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Vermisstensuche] Benachrichtigung über Aktivierung von Notizen zu "
-"\"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Vermisstensuche] Notizen zu \"%(full_name)s\" sind jetzt deaktiviert."
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Vermisstensuche] Notizen zu \"%(full_name)s\" sind jetzt aktiviert."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

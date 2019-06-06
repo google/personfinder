@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  "
-"為了確保註解功能的停用或啟用的確獲得記錄作者本人許可，我們會寄送一封確認郵件給記錄作者。如果您是作者，請您在按一下下方的按鈕後，查看您的電郵信箱。"
-"\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -233,32 +214,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      您確定要停用「%(full_name)s」的註解功能嗎？\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      您確定要停用「%(full_name)s」這項記錄的註解功能嗎？\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      您確定要啟用「%(full_name)s」的註解功能嗎？\n"
 "    "
 
 #, python-format
@@ -357,22 +318,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    為了確保註解功能的停用或啟用的確獲得記錄作者本人\n"
-"    許可，我們會寄送一封確認郵件給記錄作者。\n"
-"    如果您是作者，請在按一下下方的按鈕後，查看您的電郵信箱。\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -388,18 +333,6 @@ msgid ""
 msgstr ""
 "\n"
 "  您輸入的電郵地址無效。\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  相關記錄仍會顯示在網站上，但所有人皆無法再\n"
-"  針對該項記錄發佈註解。\n"
 "  "
 
 msgid ""
@@ -744,9 +677,6 @@ msgstr "電腦版本"
 msgid "Developers"
 msgstr "開發人員"
 
-msgid "Disable notes on this record"
-msgstr "停用這項記錄的註解功能"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "這個人在其他網站上有個人資料頁面嗎？"
 
@@ -778,9 +708,6 @@ msgstr "電郵地址"
 
 msgid "Embedding the Application"
 msgstr "嵌入應用程式"
-
-msgid "Enable notes on this record"
-msgstr "啟用這項記錄的註解功能"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
@@ -922,9 +849,6 @@ msgstr "我正在找尋這個人的消息"
 msgid "I am this person"
 msgstr "我就是這個人"
 
-msgid "I do not want any more updates on this record."
-msgstr "我不想再收到這項記錄的最新動態。"
-
 msgid "I do not want my information online anymore."
 msgstr "我不想再讓其他人在網上看到我的資料。"
 
@@ -977,12 +901,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr "如果您是這項註解的作者，請查看您的信箱以找出系統寄送的郵件，然後透過當中的連結確認您要停用這項記錄的註解功能。如果您並非作者，請等候記錄作者確認您的要求。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1105,10 +1023,6 @@ msgstr "沒有已發佈的註解"
 
 msgid "No person id was specified."
 msgstr "未指定失蹤人士識別碼。"
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "沒有以下編號的失蹤人士：%(id_str)s。"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1261,9 +1175,6 @@ msgstr "省或州"
 msgid "Reason for deletion:"
 msgstr "刪除原因："
 
-msgid "Reason for disabling notes:"
-msgstr "停用註解功能的原因："
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "名稱和地址符合「%(query)s」的記錄"
@@ -1349,9 +1260,6 @@ msgstr "失蹤人士的狀態"
 msgid "Status of this person:"
 msgstr "這個人的狀態："
 
-msgid "Street name only, no number"
-msgstr "輸入路名即可，不必輸入門牌號碼"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1435,10 +1343,6 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr "您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個人聯絡。"
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "憑證 %(token)s 無效"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1613,17 +1517,11 @@ msgstr "您有其相關資料的人"
 msgid "Yes"
 msgstr "是"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "是，要求記錄作者停用註解功能"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "是，要求記錄作者啟用註解功能"
 
 msgid "Yes, delete the record"
 msgstr "是，刪除這項記錄"
-
-msgid "Yes, disable notes on this record."
-msgstr "是，停用這項記錄的註解功能。"
 
 msgid "Yes, extend the record"
 msgstr "是，延長記錄有效期"
@@ -1642,9 +1540,6 @@ msgstr "您已訂閱這個項目。 "
 
 msgid "You are already unsubscribed."
 msgstr "您已取消訂閱這個項目。"
-
-msgid "You are not currently signed in."
-msgstr "您目前未登入。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1723,16 +1618,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[尋人工具] 要啟用「%(full_name)s」的註解嗎？"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[尋人工具] 正在啟用「%(full_name)s」的註解通知"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[尋人工具] 已停用「%(full_name)s」的註解功能"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[尋人工具] 已啟用「%(full_name)s」的註解功能"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
