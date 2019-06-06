@@ -119,8 +119,6 @@ class Handler(BaseHandler):
             repo=self.repo)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
-        disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
-        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
         extend_url = None
         extension_days = 0
         expiration_days = None
@@ -157,8 +155,6 @@ class Handler(BaseHandler):
                     feed_url=feed_url,
                     subscribe_url=subscribe_url,
                     delete_url=delete_url,
-                    disable_notes_url=disable_notes_url,
-                    enable_notes_url=enable_notes_url,
                     extend_url=extend_url,
                     extension_days=extension_days,
                     expiration_days=expiration_days)

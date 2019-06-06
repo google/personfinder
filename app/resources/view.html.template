@@ -360,14 +360,6 @@
               </a>
             </div>
           {% endif %}
-
-          {% if env.enable_captcha and person.author_email and not person.notes_disabled %}
-            <div class="links">
-            <a id="disable-notes-btn" href="{{disable_notes_url}}">
-              {% trans "Disable notes on this record" %}
-            </a>
-            </div>
-          {% endif %}
         </div>
 
       </div>
@@ -376,19 +368,9 @@
 
     <div class="column end">
       {% if person.notes_disabled %}
-        <form method="get" action="{{env.repo_path}}/enable_notes">
-          {{env.hidden_input_tags_for_preserved_query_params|safe}}
-          <input type="hidden" name="id" value="{{person.record_id}}">
-          <div class="mandatory">
-            <p>{% trans "The author has disabled notes on this record." %}</p>
-            <div class="button button-red">
-              <input type="submit"
-                class="enable-notes"
-                value="{% trans "Enable notes on this record" %}"
-                id="enable_notes_btn">
-            </div>
-          </div>
-        </form>
+        <div class="mandatory">
+          <p>{% trans "The author has disabled notes on this record." %}</p>
+        </div>
       {% else %}
         <form method="get" action="{{env.repo_path}}/add_note">
           {{env.hidden_input_tags_for_preserved_query_params|safe}}
