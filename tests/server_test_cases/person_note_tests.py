@@ -444,7 +444,7 @@ class PersonNoteTests(ServerTestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            given_name='_test_given_name',
+            given_name='alexander',
             family_name='_test_family_name',
             full_name='_test_given_name _test_family_name',
             entry_date=datetime.datetime.utcnow(),
@@ -455,10 +455,10 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query_name='_test_given_name')
+        self.s.submit(search_form, query_name='alexander')
         assert_params()
         link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query_name=_test_given_name' in link.get('href')
+        assert 'query_name=alexander' in link.get('href')
 
     def test_search_page_link(self):
         self.go('/haiti')
@@ -668,16 +668,16 @@ class PersonNoteTests(ServerTestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            given_name='_test_given_name',
+            given_name='eric',
             family_name='_test_family_name',
             full_name='_test_given_name _test_family_name',
             entry_date=datetime.datetime.utcnow(),
             text='_test A note body')
         person.update_index(['old', 'new'])
         person.put()
-        self.go('/haiti/results?role=seek&query=_test_given_name')
+        self.go('/haiti/results?role=seek&query=eric')
         link = self.s.doc.cssselect_one('a.result-link')
-        assert 'query_name=_test_given_name' in link.get('href')
+        assert 'query_name=eric' in link.get('href')
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.
