@@ -680,10 +680,10 @@ class HandleSMS(BaseApiHandler):
             self.info(
                 403,
                 message=
-                    '"key" URL parameter is either missing, invalid or '
-                    'lacks required permissions. The key\'s repo must be "*", '
-                    'search_permission must be True, and it must have write '
-                    'permission with domain name "*".',
+                    "'key' URL parameter is either missing, invalid or "
+                    "lacks required permissions. The key's repo must be '*', "
+                    "search_permission must be True, and it must have write "
+                    "permission with domain name '*'.",
                 style='plain')
             return
 
@@ -696,13 +696,13 @@ class HandleSMS(BaseApiHandler):
         if message_text is None:
             self.info(
                 400,
-                message='message_text element is required.',
+                message='Message text is required.',
                 style='plain')
             return
         if receiver_phone_number is None:
             self.info(
                 400,
-                message='receiver_phone_number element is required.',
+                message='Receiver Phone number is required.',
                 style='plain')
             return
 
@@ -713,8 +713,8 @@ class HandleSMS(BaseApiHandler):
             self.info(
                 400,
                 message=
-                    'The given receiver_phone_number is not found in '
-                    'sms_number_to_repo config.',
+                    ('The given phone number: %s is not found in '
+                    'SMS number to repo config.' % receiver_phone_number ),
                 style='plain')
             return
 
