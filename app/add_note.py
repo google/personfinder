@@ -52,11 +52,7 @@ class Handler(BaseHandler):
                 _("This person's entry does not exist or has been deleted."))
 
         # Render the page.
-        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
-
-        self.render('add_note.html',
-                    person=person,
-                    enable_notes_url=enable_notes_url)
+        self.render('add_note.html', person=person)
 
     def post(self):
         """Post a note in person's record view page"""

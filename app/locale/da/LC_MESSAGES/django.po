@@ -21,23 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"Der sendes en bekræftelse til journalens forfatter for at sikre, \n"
-"  at noter kun aktiveres eller deaktiveres med forfatterens tilladelse. \n"
-"  Hvis du er forfatteren, skal du tjekke din mail, når du har klikket \n"
-"  på knappen nedenfor."
-
 #, python-format
 msgid ""
 "\n"
@@ -237,16 +220,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på, at du vil deaktivere noter for \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -254,16 +227,6 @@ msgstr ""
 "\n"
 "      Er du sikker på, at du vil deaktivere noter til journalen for "
 "\"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på, at du vil aktivere noter for \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -366,23 +329,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"Der sendes en bekræftelse til journalens forfatter for at sikre, at noter"
-" kun\n"
-"    aktiveres eller deaktiveres med forfatterens tilladelse. Hvis du er "
-"forfatteren,\n"
-"    skal du tjekke din mail, når du har klikket på knappen nedenfor."
-
 #, python-format
 msgid ""
 "\n"
@@ -398,19 +344,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Den indtastede mailadresse er ikke gyldig.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Journalen er fortsat synlig på dette website, men det er ikke muligt at"
-" indsende\n"
-"  yderligere noter til den.\n"
 "  "
 
 msgid ""
@@ -767,9 +700,6 @@ msgstr "Computerversion"
 msgid "Developers"
 msgstr "Udviklere"
 
-msgid "Disable notes on this record"
-msgstr "Deaktiver noter for denne journal"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Har denne person profilsider på andre websites?"
 
@@ -803,9 +733,6 @@ msgstr "Mailadresse"
 
 msgid "Embedding the Application"
 msgstr "Sådan integrerer du programmet"
-
-msgid "Enable notes on this record"
-msgstr "Aktivér noter for denne journal"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Angiv som ÅÅÅÅ-MM-DD"
@@ -955,9 +882,6 @@ msgstr "Jeg søger oplysninger"
 msgid "I am this person"
 msgstr "Jeg er denne person"
 
-msgid "I do not want any more updates on this record."
-msgstr "Jeg vil ikke have flere opdateringer om denne journal."
-
 msgid "I do not want my information online anymore."
 msgstr "Mine oplysninger skal ikke være online længere."
 
@@ -1012,16 +936,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Hvis du er forfatteren til denne note, skal du tjekke din mail for at "
-"finde et link, som du kan bruge til at bekræfte, at du vil deaktivere "
-"noter for denne journal. Ellers skal du vente, til journalens forfatter "
-"bekræfter din anmodning."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1156,10 +1070,6 @@ msgstr "Der er ikke indsendt nogen noter"
 
 msgid "No person id was specified."
 msgstr "Der er ikke angivet et person-id."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Der er ingen person med dette id: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1326,9 +1236,6 @@ msgstr "Område eller stat"
 msgid "Reason for deletion:"
 msgstr "Årsag til sletning:"
 
-msgid "Reason for disabling notes:"
-msgstr "Årsag til deaktivering af noter:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Journaler med navne og adresser, der matcher \"%(query)s\""
@@ -1413,9 +1320,6 @@ msgstr "Personstatus"
 
 msgid "Status of this person:"
 msgstr "Personstatus:"
-
-msgid "Street name only, no number"
-msgstr "Kun gade, intet nummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1505,10 +1409,6 @@ msgstr ""
 "Den status, du har valgt, antyder, at du er denne person.  Hvis det "
 "passer, skal du også vælge \"Ja\" for at angive, at du har kontaktet "
 "denne person."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Tokenet %(token)s var ugyldigt"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1700,17 +1600,11 @@ msgstr "Den person, du har oplysninger om"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, bed journalens forfatter om at deaktivere noter"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ja, bed journalens forfatter om at aktivere noter"
 
 msgid "Yes, delete the record"
 msgstr "Ja, slet journalen"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, deaktiver noter for denne journal"
 
 msgid "Yes, extend the record"
 msgstr "Ja, forlæng journalen"
@@ -1729,9 +1623,6 @@ msgstr "Du har allerede abonneret. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede afmeldt abonnementet."
-
-msgid "You are not currently signed in."
-msgstr "Du er i øjeblikket ikke logget ind"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1816,16 +1707,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Aktivér noter til \"%(full_name)s\"?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Meddelelse om aktivering af noter for \"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Person Finder] Noter er nu deaktiveret for \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Noter er nu aktiveret for \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

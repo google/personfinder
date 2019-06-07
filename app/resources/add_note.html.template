@@ -58,11 +58,6 @@
         {% if person.notes_disabled %}
           <div class="mandatory">
             {% trans "The author has disabled notes on this record." %}
-            <p>
-            <input type="button"
-              value="{% trans "Enable notes on this record" %}"
-              onclick="javascript:location.href='{{enable_notes_url}}'"
-              id="enable_notes_btn">
           </div>
         {% else %}
           <div class="create note" role="form">         

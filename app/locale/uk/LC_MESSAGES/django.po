@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Щоб переконатися, що нотатки вмикаються чи вимикаються лише з дозволу\n"
-"  автора запису, йому надсилається повідомлення для підтвердження.\n"
-"  Якщо Ви автор, перевірте свою електронну пошту, щойно натиснете кнопку "
-"нижче.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -237,32 +217,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Справді вимкнути нотатки про особу \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      Справді вимкнути нотатки до запису про особу \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Справді ввімкнути нотатки про особу \"%(full_name)s\"?\n"
 "    "
 
 #, python-format
@@ -363,24 +323,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Щоб переконатися, що нотатки вмикаються чи вимикаються лише з дозволу"
-"\n"
-"    автора запису, йому надсилається повідомлення для підтвердження.\n"
-"    Якщо Ви автор, перевірте свою електронну пошту, щойно натиснете "
-"кнопку нижче.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -396,19 +338,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Ви ввели недійсну електронну адресу.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Запис і надалі можна буде переглядати на цьому сайті, але ніхто більше "
-"не зможе\n"
-"  публікувати в ньому нотатки.\n"
 "  "
 
 msgid ""
@@ -765,9 +694,6 @@ msgstr "Версія для ПК"
 msgid "Developers"
 msgstr "Розробникам"
 
-msgid "Disable notes on this record"
-msgstr "Вимкнути нотатки до цього запису"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Чи має ця особа сторінки профілю на інших веб-сайтах?"
 
@@ -801,9 +727,6 @@ msgstr "Електронна адреса"
 
 msgid "Embedding the Application"
 msgstr "Вставка програми"
-
-msgid "Enable notes on this record"
-msgstr "Увімкнути нотатки до цього запису"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Введіть у форматі РРРР-ММ-ДД"
@@ -953,9 +876,6 @@ msgstr "Я шукаю інформацію"
 msgid "I am this person"
 msgstr "Я є цією особою"
 
-msgid "I do not want any more updates on this record."
-msgstr "Я більше не хочу отримувати оновлення щодо цього запису."
-
 msgid "I do not want my information online anymore."
 msgstr "Я більше не хочу, щоб моя інформація була доступна онлайн."
 
@@ -1010,15 +930,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Якщо Ви автор цієї нотатки, перевірте, чи Ви отримали електронний лист із"
-" посиланням, за допомогою якого можна підтвердити вимкнення нотаток до "
-"цього запису. Або зачекайте, доки автор запису підтвердить Ваш запит."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1154,10 +1065,6 @@ msgstr "Немає опублікованих нотаток"
 
 msgid "No person id was specified."
 msgstr "Не вказано ідентифікатор особи."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Немає особи з ідентифікатором %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1324,9 +1231,6 @@ msgstr "Область чи штат"
 msgid "Reason for deletion:"
 msgstr "Причина видалення:"
 
-msgid "Reason for disabling notes:"
-msgstr "Причина вимкнення нотаток:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Записи з іменами й адресами, що відповідають запиту \"%(query)s\""
@@ -1411,9 +1315,6 @@ msgstr "Статус особи"
 
 msgid "Status of this person:"
 msgstr "Статус цієї особи:"
-
-msgid "Street name only, no number"
-msgstr "Лише назва вулиці, без номера будинку"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1504,10 +1405,6 @@ msgid ""
 msgstr ""
 "Ваш статус указує, що ви є цією особою. Якщо це правда, виберіть \"Так\","
 " щоб указати, що ви зв’язувалися з цією особою."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Маркер %(token)s недійсний"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1699,17 +1596,11 @@ msgstr "Про кого ви маєте інформацію"
 msgid "Yes"
 msgstr "Так"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Так, попросити автора запису вимкнути нотатки"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Так, попросити автора запису ввімкнути нотатки"
 
 msgid "Yes, delete the record"
 msgstr "Так, видалити запис"
-
-msgid "Yes, disable notes on this record."
-msgstr "Так, вимкнути нотатки до запису."
 
 msgid "Yes, extend the record"
 msgstr "Так, подовжити термін дії запису"
@@ -1728,9 +1619,6 @@ msgstr "Ви вже підписалися. "
 
 msgid "You are already unsubscribed."
 msgstr "Ви вже скасували підписку."
-
-msgid "You are not currently signed in."
-msgstr "Ви не ввійшли."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1821,18 +1709,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Служба пошуку людей] Увімкнути нотатки про особу \"%(full_name)s\"?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Служба пошуку людей] Увімкнути сповіщення для нотаток про особу "
-"\"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Служба пошуку людей] Нотатки про особу \"%(full_name)s\" зараз вимкнено"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Служба пошуку людей] Нотатки про особу \"%(full_name)s\" зараз увімкнено"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
