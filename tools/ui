@@ -35,6 +35,9 @@ case "$1" in
     mv ui/dist/bundle.css app/resources/static/fixed/ui_bundles/bundle.css
     cp -r --no-clobber ui/static/static/* app/resources/static/fixed/
     ;;
+"depaudit")
+    npm audit --prefix ui
+    ;;
 *)
     echo "Specify run, test, or buildtoae."
     exit 1
