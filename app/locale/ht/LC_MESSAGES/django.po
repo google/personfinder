@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Pou asire nòt yo sèlman aktive oswa dezaktive ak otorizsyon otè dosye "
-"a, nou pral voye yon mesaj bay otè dosye a. Si w se otè a, verify imèl ou"
-" apre ou klike sou bouton pi ba a.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -224,32 +205,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Èske ou sèten ou vle dezaktive nòt sou \" %(full_name)s \"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      Èske ou sèten ou vle dezaktive nòt sou dosye  \" %(full_name)s \"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Èske ou sèten ou vle aktive nòt sou \" %(full_name)s \"?\n"
 "    "
 
 #, python-format
@@ -347,22 +308,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Pou asire nou se sèlman ak otorizsyon otè nòt yo dezaktive oswa "
-"aktive, nou pral voye yon mesaj bay otè nòt la. Si ou se otè a, tanpri "
-"verifye imèl ou apre ou klike sou bouton pi ba a.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -378,18 +323,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Adrès imel la ou antre a pa valab.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Dosye a ap toujou vizib sou sit sa a, men pesonn pa pral kapab mete "
-"plis nòt sou li.\n"
 "  "
 
 msgid ""
@@ -717,9 +650,6 @@ msgstr "Vèsyon biwo"
 msgid "Developers"
 msgstr "Devlopè"
 
-msgid "Disable notes on this record"
-msgstr "Dezaktive nòt sou dosye sa a"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Eske moun sa a gen paj pwofil nan lòt sit wèb ?"
 
@@ -753,9 +683,6 @@ msgstr "Adrès imèl"
 
 msgid "Embedding the Application"
 msgstr "Entegrasyon aplikasyon an"
-
-msgid "Enable notes on this record"
-msgstr "Aktive nòt sou dosye sa a"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Mete tankou AAAA-MM-JJ"
@@ -903,9 +830,6 @@ msgstr "Map chèche enfòmasyon"
 msgid "I am this person"
 msgstr "Mwen se moun sa a"
 
-msgid "I do not want any more updates on this record."
-msgstr "Mwen pa vle resevwa nouvèl sou dosye sa a ankò."
-
 msgid "I do not want my information online anymore."
 msgstr "Mwen pa vle enfòmasyon mwen sou entènèt ankò."
 
@@ -960,15 +884,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Si ou se otè nan nòt sa a, tanpri tcheke imèl ou pou yon lyen pou konfime"
-" ou vle dezaktive nòt sou dosye sa a. Sinon, tanpri, tann pou otè a dosye"
-" konfime demann ou an."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1100,10 +1015,6 @@ msgstr "Pa gen nòt ki afiche"
 
 msgid "No person id was specified."
 msgstr "Yo pa te espesifye id pèson."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Pa gen moun ak idantite: %(id_str)s ."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1266,9 +1177,6 @@ msgstr "Pwovens oswa depatman"
 msgid "Reason for deletion:"
 msgstr "Rezon pou efase:"
 
-msgid "Reason for disabling notes:"
-msgstr "Rezon pou dezaktive nòt:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Dosye ak non ak adrès yo pa koresponn \" %(query)s \""
@@ -1353,9 +1261,6 @@ msgstr "Ki dènye nouvèl sou moun la"
 
 msgid "Status of this person:"
 msgstr "Dènye nouvèl sou moun sa a"
-
-msgid "Street name only, no number"
-msgstr "Non lari a sèlman, pa ekri nimewo kay la"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1442,10 +1347,6 @@ msgid ""
 msgstr ""
 "Dènye nouvèl ou chwazi a endike ou se moun sa a. Si se vre, tanpri tou "
 "chwazi 'Wi' yo endike ou te kontakte moun sa a."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Jeton %(token)s nan pa te valab"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1635,17 +1536,11 @@ msgstr "Sou ki moun ou gen enfòmasyon an"
 msgid "Yes"
 msgstr "Wi"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Wi, mande otè dosye pou dezaktive nòt"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Wi, mande otè dosye a pou pèmèt nòt"
 
 msgid "Yes, delete the record"
 msgstr "Wi, efase dosye a"
-
-msgid "Yes, disable notes on this record."
-msgstr "Wi, dezaktive nòt sou dosye sa a."
 
 msgid "Yes, extend the record"
 msgstr "Wi, yon pwolonje dosye a"
@@ -1664,9 +1559,6 @@ msgstr "Ou deja pa abòne. "
 
 msgid "You are already unsubscribed."
 msgstr "Ou deja pa abòne."
-
-msgid "You are not currently signed in."
-msgstr "Ou pa konekte kounye a."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1753,16 +1645,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[ZouitChèche Moun] Pèmèt nòt sou \" %(full_name)s \"?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Zouti Pou Chèche Moun] N ap aktive avi nòt pou \" %(full_name)s \""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "Zouti Pou[Chèche Moun] Kounye a nòt dezaktive pou \" %(full_name)s \""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Zouti Pou Chèche Moun] Kounye a nòt aktive sou \" %(full_name)s \""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

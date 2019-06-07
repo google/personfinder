@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Eslatma yozuv muallifi ruxsati bilan o‘chirib yoki yoqib "
-"qo‘yilganligiga ishonch hosil qilish uchun tasdiqlash xabari muallifga "
-"jo‘natiladi. Agar siz muallif bo‘lsangiz, quyidagi tugmaga bosib, "
-"e-pochtangizni tekshirib ko‘ring.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -239,17 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      \"%(full_name)s\"dagi eslatmalarni o‘chirib qo‘ymoqchi "
-"ekanligingizga ishonchingiz komilmi?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -257,17 +226,6 @@ msgstr ""
 "\n"
 "      \"%(full_name)s\" yozuvi eslatmalarini o‘chirib qo‘yishga "
 "ishonchingiz komilmi?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      \"%(full_name)s\" eslatmalarini yoqib qo‘yishga ishonchingiz "
-"komilmi?\n"
 "    "
 
 #, python-format
@@ -367,24 +325,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"Eslatmalarni yoqib yoki o‘chirib qo‘yish faqatgina yozuv muallifining "
-"ruxsatidan  \n"
-"so‘ng mumkin bo‘lganligi uchun tasdiqlash xabari yozuv muallifiga "
-"jo‘natildi.\n"
-"Agar siz yozuv muallifi bo‘lsangiz, quyidagi manzil orqali e-pochtangizni"
-" tekshirib ko‘ring."
-
 #, python-format
 msgid ""
 "\n"
@@ -400,18 +340,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Siz kiritgan e-pochta manzili yaroqsiz.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Ushbu yozuv haliyam saytda ko‘rinadi, lekin hech kim unda o‘zgartirish\n"
-" kirita olmaydi.\n"
 "  "
 
 msgid ""
@@ -772,9 +700,6 @@ msgstr "Kompyuter versiyasi"
 msgid "Developers"
 msgstr "Dasturchilar"
 
-msgid "Disable notes on this record"
-msgstr "Bu yozuv eslatmalarini o‘chirib qo‘yish"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Bu odamning boshqa saytlarda anketalari bormi?"
 
@@ -808,9 +733,6 @@ msgstr "Email manzili"
 
 msgid "Embedding the Application"
 msgstr "Biritktirilgan ilova dastur"
-
-msgid "Enable notes on this record"
-msgstr "Bu yozuv eslatmalarini yoqib qo‘yish"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-OO-KK shaklida kiriting"
@@ -960,9 +882,6 @@ msgstr "Men ma'lumot izlayapman"
 msgid "I am this person"
 msgstr "Bu inson menman"
 
-msgid "I do not want any more updates on this record."
-msgstr "Men bu yozuv yangilanishlarini olishni xohlamayman."
-
 msgid "I do not want my information online anymore."
 msgstr "Men haqimdagi ma'lumot internetda bo‘lishini xohlamayman."
 
@@ -1017,15 +936,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Agar siz ushbu qayd muallifi bo‘lsangiz, e-pochta manzilingizni "
-"tekshirib, bu yozuvdagi qaydlarni o‘chirib qo‘yish so‘rovini tasdiqlang. "
-"Agar bunday bo‘lmasa, yozuv muallifi so‘rovingizni tasdiqlashini kuting."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1160,10 +1070,6 @@ msgstr "Eslatmalar kiritilmagan."
 
 msgid "No person id was specified."
 msgstr "Shaxsni tasdiqlovchi identifikator ko‘rsatilmagan."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "%(id_str)s nomli shaxs mavjud emas."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1330,9 +1236,6 @@ msgstr "Viloyat yoki shtat"
 msgid "Reason for deletion:"
 msgstr "O‘chirilish sababi:"
 
-msgid "Reason for disabling notes:"
-msgstr "Eslatmalarning o‘chirilib qo‘yilishi sababi:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr ""
@@ -1419,9 +1322,6 @@ msgstr "Odamning holati"
 
 msgid "Status of this person:"
 msgstr "Bu odamning holati:"
-
-msgid "Street name only, no number"
-msgstr "Ko‘cha nomi xolos, raqam kerak emas"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1511,10 +1411,6 @@ msgstr ""
 "Siz tanlagan belgilarga qaraganda, siz ushbu odamsiz. Agar bu rost "
 "bo‘lsa, bu odam bilan bog‘langaningizni tasdiqlash maqsadida, \"Ha\" "
 "tugmasini bosing."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "%(token)s belgisi ishlamadi"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1708,17 +1604,11 @@ msgstr "Sizda kim haqida ma’lumot bor"
 msgid "Yes"
 msgstr "Ha"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ha, muallifdan eslatmalarni o‘chirib qo‘yishni so‘ramoqchiman"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ha, muallifdan eslatmalarni yoqib qo‘yishni so‘ramoqchiman"
 
 msgid "Yes, delete the record"
 msgstr "Ha, yozuvni o‘chirmoqchiman"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ha, bu yozuvdagi eslatmalarni o‘chirib qo‘ymoqchiman."
 
 msgid "Yes, extend the record"
 msgstr "Ha, yozuv muddatini uzaytirmoqchiman"
@@ -1737,9 +1627,6 @@ msgstr "Siz allaqachon obuna bo‘lgansiz. "
 
 msgid "You are already unsubscribed."
 msgstr "Siz obunani allaqachon bekor qilgansiz."
-
-msgid "You are not currently signed in."
-msgstr "Siz ayni paytda tizimga kirmagansiz."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1830,18 +1717,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Odam ilovchi] \"%(full_name)s\" uchun eslatmalar yoqib qo‘yilsinmi?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Odam izlovchi] \"%(full_name)s\" uchun ogohlantirish eslatmalari "
-"yoqilmoqda"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Odam izlovchi] \"%(full_name)s\" uchun eslatmalar o‘chirib qo‘yildi"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Odam izlovchi] \"%(full_name)s\" uchun eslatmalar yoqib qo‘yildi"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Tietojen kirjoittajalle lähetetään vahvistusviesti varmistaaksemme, "
-"että muistiinpanot poistetaan käytöstä tai otetaan käyttöön vain tietojen"
-" kirjoittajan luvalla. Jos olet tietojen kirjoittaja, tarkista "
-"sähköpostisi klikattuasi alla olevaa painiketta.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -241,17 +221,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Haluatko varmasti poistaa käytöstä henkilöä %(full_name)s koskevat "
-"muistiinpanot?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -259,17 +228,6 @@ msgstr ""
 "\n"
 "      Haluatko varmasti poistaa käytöstä muistiinpanot henkilöä "
 "%(full_name)s koskevista tiedoista?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Haluatko varmasti ottaa käyttöön henkilöä %(full_name)s koskevat "
-"muistiinpanot?\n"
 "    "
 
 #, python-format
@@ -372,23 +330,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Tietojen kirjoittajalle lähetetään vahvistusviesti varmistaaksemme, "
-"että muistiinpanot poistetaan käytöstä tai otetaan käyttöön vain tietojen"
-" kirjoittajan luvalla. Jos olet tietojen kirjoittaja, tarkista "
-"sähköpostisi klikattuasi alla olevaa painiketta.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -404,18 +345,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Antamasi sähköpostiosoite on virheellinen.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Tiedot näkyvät edelleen sivustossa, mutta kukaan ei enää voi lisätä "
-"muistiinpanoja niiden yhteyteen.\n"
 "  "
 
 msgid ""
@@ -773,9 +702,6 @@ msgstr "Versio tietokoneelle"
 msgid "Developers"
 msgstr "Kehittäjät"
 
-msgid "Disable notes on this record"
-msgstr "Poista muistiinpanot käytöstä näissä tiedoissa"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Onko tällä henkilöllä profiilisivuja muissa verkkosivustoissa?"
 
@@ -807,9 +733,6 @@ msgstr "Sähköpostiosoite"
 
 msgid "Embedding the Application"
 msgstr "Sovelluksen upottaminen"
-
-msgid "Enable notes on this record"
-msgstr "Ota muistiinpanot käyttöön näissä tiedoissa"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Anna muodossa VVVV-KK-PP"
@@ -957,9 +880,6 @@ msgstr "Etsin tietoja"
 msgid "I am this person"
 msgstr "Olen kyseinen henkilö"
 
-msgid "I do not want any more updates on this record."
-msgstr "En halua enää saada näitä tietoja koskevia päivityksiä."
-
 msgid "I do not want my information online anymore."
 msgstr "Haluan poistaa tietoni verkosta."
 
@@ -1014,16 +934,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Jos olet kirjoittanut tämän muistiinpanon, vahvista klikkaamalla "
-"sähköpostiosoitteeseesi lähetettyä vahvistuslinkkiä, että haluat poistaa "
-"näiden tietojen muistiinpanot käytöstä. Odota muussa tapauksessa, että "
-"tietojen kirjoittaja vahvistaa pyyntösi."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1158,10 +1068,6 @@ msgstr "Muistiinpanoja ei ole lisätty"
 
 msgid "No person id was specified."
 msgstr "Henkilön tunnusta ei ole määritetty."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Ei löydy henkilöä tunnuksella: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1331,9 +1237,6 @@ msgstr "Lääni tai osavaltio"
 msgid "Reason for deletion:"
 msgstr "Poiston syy:"
 
-msgid "Reason for disabling notes:"
-msgstr "Syy muistiinpanojen käytöstä poistamiseen:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Tiedot, joiden nimi ja osoite vastaa kyselyä %(query)s"
@@ -1418,9 +1321,6 @@ msgstr "Henkilön tila"
 
 msgid "Status of this person:"
 msgstr "Tämän henkilön tila:"
-
-msgid "Street name only, no number"
-msgstr "Vain kadun nimi, ei numeroa"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1509,10 +1409,6 @@ msgid ""
 msgstr ""
 "Valitsemasi tilan mukaan olet kyseinen henkilö. Jos näin on, valitse myös"
 " Kyllä osoittaaksesi, että olet ottanut yhteyttä tähän henkilöön."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Tunnus %(token)s on virheellinen"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1702,17 +1598,11 @@ msgstr "Kenestä sinulla on tietoa"
 msgid "Yes"
 msgstr "Kyllä"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Kyllä, pyydä tietojen kirjoittajaa poistamaan muistiinpanot käytöstä"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Kyllä, pyydä tietojen kirjoittajaa ottamaan muistiinpanot käyttöön"
 
 msgid "Yes, delete the record"
 msgstr "Kyllä, poista tiedot."
-
-msgid "Yes, disable notes on this record."
-msgstr "Kyllä, poista näiden tietojen muistiinpanot käytöstä."
 
 msgid "Yes, extend the record"
 msgstr "Kyllä, siirrä vanhentumispäivää"
@@ -1731,9 +1621,6 @@ msgstr "Olet jo tilannut tämän kohteen. "
 
 msgid "You are already unsubscribed."
 msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
-
-msgid "You are not currently signed in."
-msgstr "Et ole kirjautunut sisään."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1826,22 +1713,10 @@ msgstr ""
 "käyttöön?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Ilmoitus henkilöä %(full_name)s koskevien muistiinpanojen"
-" ottamisesta käyttöön"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
 "[Person Finder] Henkilöä %(full_name)s koskevat muistiinpanot on nyt "
 "poistettu käytöstä"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Henkilöä %(full_name)s koskevat muistiinpanot on nyt "
-"otettu käyttöön"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

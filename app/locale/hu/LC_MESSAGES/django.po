@@ -21,27 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Annak érdekében, hogy a megjegyzéseket csak a bejegyzés készítőjének \n"
-"    engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog "
-"egy megerősítő üzenetet. \n"
-"    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
-"kattintott.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -240,32 +219,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Biztosan letiltja „%(full_name)s” megjegyzéseit?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      Biztosan letiltja a megjegyzéseket „%(full_name)s” bejegyzésénél?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Biztosan engedélyezi „%(full_name)s” megjegyzéseit?\n"
 "    "
 
 #, python-format
@@ -366,25 +325,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Annak érdekében, hogy a megjegyzéseket csak a bejegyzés készítőjének "
-"\n"
-"    engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog "
-"egy megerősítő üzenetet. \n"
-"    Ha Ön a szerző, nézze meg e-mailjeit, miután az alábbi gombra "
-"kattintott.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -400,18 +340,6 @@ msgid ""
 msgstr ""
 "\n"
 "  A megadott e-mail-cím nem érvényes.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  A bejegyzés továbbra is látható lesz ezen a webhelyen, de senki sem fog"
-" tudni további megjegyzéseket fűzni hozzá.\n"
 "  "
 
 msgid ""
@@ -775,9 +703,6 @@ msgstr "Asztali verzió"
 msgid "Developers"
 msgstr "Fejlesztők"
 
-msgid "Disable notes on this record"
-msgstr "Megjegyzések letiltása a bejegyzésen"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ennek a személynek vannak profiloldalai más webhelyeken?"
 
@@ -811,9 +736,6 @@ msgstr "E-mail-cím"
 
 msgid "Embedding the Application"
 msgstr "Alkalmazás beágyazása"
-
-msgid "Enable notes on this record"
-msgstr "Megjegyzések engedélyezése a bejegyzésen"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
@@ -961,9 +883,6 @@ msgstr "Információt keresek"
 msgid "I am this person"
 msgstr "Én vagyok ez a személy"
 
-msgid "I do not want any more updates on this record."
-msgstr "Nem kérek több frissítést ezzel a bejegyzéssel kapcsolatban."
-
 msgid "I do not want my information online anymore."
 msgstr "Szeretném eltávolítani az adataimat az internetről."
 
@@ -1018,16 +937,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ha Ön a bejegyzés szerzője, nézze meg e-mailjeit, és keresse meg a "
-"linket, amellyel megerősítheti, hogy letiltja a megjegyzéseket ennél a "
-"bejegyzésnél. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti"
-" kérelmét."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1162,10 +1071,6 @@ msgstr "Nem lett közzétéve megjegyzés"
 
 msgid "No person id was specified."
 msgstr "Nincs megadva személyi azonosító."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Nem létezik személy a következő azonosítóval: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1336,9 +1241,6 @@ msgstr "Tartomány vagy állam"
 msgid "Reason for deletion:"
 msgstr "A törlés oka:"
 
-msgid "Reason for disabling notes:"
-msgstr "A megjegyzések letiltásának oka:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Bejegyzések a következővel egyező névvel és címmel: „%(query)s”"
@@ -1425,9 +1327,6 @@ msgstr "A személy állapota"
 
 msgid "Status of this person:"
 msgstr "A személy állapota:"
-
-msgid "Street name only, no number"
-msgstr "Csak az utca neve, a házszám nem"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1519,10 +1418,6 @@ msgstr ""
 "A kiválasztott állapot azt jelzi, hogy Ön ez a személy. Ha ez így van, "
 "akkor válassza az „Igen” lehetőséget is annak jelzésére, hogy kapcsolatba"
 " lépett ezzel a személlyel."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "A(z) %(token)s token érvénytelen volt"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1716,17 +1611,11 @@ msgstr "Akiről információd van"
 msgid "Yes"
 msgstr "Igen"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy tiltsa le a megjegyzéseket"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy engedélyezze a megjegyzéseket"
 
 msgid "Yes, delete the record"
 msgstr "Igen, törlöm a bejegyzést"
-
-msgid "Yes, disable notes on this record."
-msgstr "Igen, letiltom a megjegyzéseket a bejegyzésen."
 
 msgid "Yes, extend the record"
 msgstr "Igen, meghosszabbítom a bejegyzést"
@@ -1745,9 +1634,6 @@ msgstr "Már feliratkozott. "
 
 msgid "You are already unsubscribed."
 msgstr "Már leiratkozott."
-
-msgid "You are not currently signed in."
-msgstr "Jelenleg nincs bejelentkezve."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1841,18 +1727,8 @@ msgstr ""
 "„%(full_name)s”?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Személykereső] Megjegyzésekről szóló értesítés engedélyezése "
-"„%(full_name)s” esetében"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Személykereső] A megjegyzések le vannak tiltva „%(full_name)s” esetében"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Személykereső] A megjegyzések engedélyezettek „%(full_name)s” esetében"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

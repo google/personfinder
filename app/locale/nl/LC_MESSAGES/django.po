@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Er wordt een bevestigingsbericht naar de auteur van de vermelding "
-"verzonden om ervoor te zorgen dat opmerkingen alleen worden in- of "
-"uitgeschakeld met zijn of haar toestemming. Als u de auteur bent, "
-"controleer dan uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -242,17 +222,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Weet u zeker dat u opmerkingen wilt uitschakelen voor "
-"'%(full_name)s'?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -260,17 +229,6 @@ msgstr ""
 "\n"
 "      Weet u zeker dat u opmerkingen wilt uitschakelen voor de vermelding"
 " van '%(full_name)s'?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Weet u zeker dat u opmerkingen wilt inschakelen voor "
-"'%(full_name)s'?\n"
 "    "
 
 #, python-format
@@ -374,23 +332,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Er wordt een bevestigingsbericht naar de auteur van de vermelding "
-"verzonden om ervoor te zorgen dat opmerkingen alleen worden in- of "
-"uitgeschakeld met toestemming van de auteur. Als u de auteur bent, "
-"controleer dan uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -406,18 +347,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Het ingevoerde e-mailadres is ongeldig.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  De vermelding blijft zichtbaar op deze site, maar er kunnen geen "
-"opmerkingen meer bij geplaatst worden.\n"
 "  "
 
 msgid ""
@@ -783,9 +712,6 @@ msgstr "Desktopversie"
 msgid "Developers"
 msgstr "Ontwikkelaars"
 
-msgid "Disable notes on this record"
-msgstr "Opmerkingen uitschakelen voor deze vermelding"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Heeft deze persoon profielpagina's op andere websites?"
 
@@ -819,9 +745,6 @@ msgstr "E-mailadres"
 
 msgid "Embedding the Application"
 msgstr "De app insluiten"
-
-msgid "Enable notes on this record"
-msgstr "Opmerkingen inschakelen voor deze vermelding"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Gebruik de notatie JJJJ-MM-DD"
@@ -971,9 +894,6 @@ msgstr "Ik ben op zoek naar informatie"
 msgid "I am this person"
 msgstr "Ik ben deze persoon"
 
-msgid "I do not want any more updates on this record."
-msgstr "Ik wil niet dat er updates voor deze vermelding worden weergegeven."
-
 msgid "I do not want my information online anymore."
 msgstr "Ik wil niet dat mijn gegevens online beschikbaar blijven."
 
@@ -1028,16 +948,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Als u de auteur van deze opmerking bent, controleer dan of u een e-mail "
-"met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
-"opmerkingen wilt uitschakelen voor deze vermelding. Als u niet de auteur "
-"bent, wacht dan tot de auteur van de vermelding uw verzoek bevestigt."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1174,10 +1084,6 @@ msgstr "Er zijn geen opmerkingen geplaatst"
 
 msgid "No person id was specified."
 msgstr "Er is geen persoons-ID gespecificeerd."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Geen persoon met id: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1345,9 +1251,6 @@ msgstr "Provincie of staat"
 msgid "Reason for deletion:"
 msgstr "Reden voor verwijdering:"
 
-msgid "Reason for disabling notes:"
-msgstr "Reden voor het uitschakelen van opmerkingen:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Vermeldingen met namen en adressen die overeenkomen met '%(query)s'"
@@ -1432,9 +1335,6 @@ msgstr "Status van persoon"
 
 msgid "Status of this person:"
 msgstr "Status van deze persoon:"
-
-msgid "Street name only, no number"
-msgstr "Alleen de straatnaam, geen huisnummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1524,10 +1424,6 @@ msgstr ""
 "De status die u heeft geselecteerd, geeft aan dat u deze persoon bent. "
 "Als dit zo is, selecteer dan ook 'Ja' om aan te geven dat u contact met "
 "deze persoon heeft gehad."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "De token %(token)s is ongeldig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1719,17 +1615,11 @@ msgstr "Over wie heeft u informatie?"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, de auteur vragen opmerkingen uit te schakelen"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ja, de auteur vragen opmerkingen in te schakelen"
 
 msgid "Yes, delete the record"
 msgstr "Ja, de vermelding verwijderen"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, opmerkingen voor deze vermelding uitschakelen."
 
 msgid "Yes, extend the record"
 msgstr "Ja, de vermelding verlengen"
@@ -1748,9 +1638,6 @@ msgstr "U bent al geabonneerd. "
 
 msgid "You are already unsubscribed."
 msgstr "U bent al afgemeld."
-
-msgid "You are not currently signed in."
-msgstr "U bent momenteel niet ingelogd."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1841,18 +1728,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Personen zoeken] Opmerkingen voor '%(full_name)s' inschakelen?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Personen zoeken] Bericht over het inschakelen van opmerkingen voor "
-"'%(full_name)s'"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Personen zoeken] Opmerkingen zijn nu uitgeschakeld voor '%(full_name)s'"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Personen zoeken] Opmerkingen zijn nu ingeschakeld voor '%(full_name)s'"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

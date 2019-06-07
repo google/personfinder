@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Ili kuhakikisha kwamba ujumbe ulioachwa umefichwa au unaonyeshwa kwa "
-"ruhusa ya mwandishi wa rekodi pekee, barua pepe ya kuthibitisha itatumwa "
-"kwa mwandishi wa rekodi. Iwapo wewe ndiwe mwandishi, angalia barua pepe "
-"zako baada ya kubofya kitufe hapo chini.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -237,15 +217,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"Je, una uhakika unataka kuficha ujumbe ulioachwa kwenye \"%(full_name)s\"?"
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
@@ -254,16 +225,6 @@ msgstr ""
 "      Je, una uhakika unataka kuficha ujumbe ulioachwa kwenye rekodi ya "
 "\"%(full_name)s\"?\n"
 "    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"Je, una uhakika unataka kuonyesha ujumbe ulioachwa kwenye "
-"\"%(full_name)s\"?"
 
 #, python-format
 msgid ""
@@ -363,23 +324,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Ili kuhakikisha kwamba ujumbe ulioachwa umefichwa au unaonyeshwa kwa "
-"ruhusa ya mwandishi wa rekodi pekee, barua pepe ya kuthibitisha itatumwa "
-"kwa mwandishi wa rekodi. Iwapo wewe ndiwe mwandishi, angalia barua pepe "
-"yako baada ya kubofya kitufe hapo chini.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -395,18 +339,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Anwani ya barua pepe uliyoweka si sahihi.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Rekodi bado itaonekana kwenye tovuti hii, lakini hakuna atakayeweza "
-"kuacha ujumbe zaidi kwenye rekodi.\n"
 "  "
 
 msgid ""
@@ -764,9 +696,6 @@ msgstr "Toleo la eneo-kazi"
 msgid "Developers"
 msgstr "Wasanidi programu"
 
-msgid "Disable notes on this record"
-msgstr "Ficha ujumbe ulioachwa kwenye rekodi hii"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Je, mtu huyu ana kurasa za wasifu kwenye tovuti zingine?"
 
@@ -800,9 +729,6 @@ msgstr "Anwani ya barua pepe"
 
 msgid "Embedding the Application"
 msgstr "Upachikaji wa Programu"
-
-msgid "Enable notes on this record"
-msgstr "Onyesha ujumbe ulioachwa kwenye rekodi hii"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ingiza kama YYYY-MM-DD"
@@ -950,9 +876,6 @@ msgstr "Natafuta maelezo"
 msgid "I am this person"
 msgstr "Mimi ndiye mtu huyu"
 
-msgid "I do not want any more updates on this record."
-msgstr "Sitaki taarifa zaidi kwenye rekodi hii."
-
 msgid "I do not want my information online anymore."
 msgstr "Sitaki maelezo yangu mtandaoni tena."
 
@@ -1007,16 +930,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Iwapo ni wewe uliyeandika ujumbe huu, tafadhali angalia kiungo "
-"ulichotumiwa kwenye barua pepe zako ili uthibitishe kwamba unataka "
-"kuuondoa ujumbe kwenye rekodi hii. Kama sivyo, tafadhali subiri mwandishi"
-" wa rekodi athibitishe ombi lako."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1151,10 +1064,6 @@ msgstr "Hakuna ujumbe ulioachwa"
 
 msgid "No person id was specified."
 msgstr "Haikubainisha kitambulisho cha mtu yeyote."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Hakuna mtu aliye na kitambulisho: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1326,9 +1235,6 @@ msgstr "Mkoa au jimbo"
 msgid "Reason for deletion:"
 msgstr "Sababu ya kufuta:"
 
-msgid "Reason for disabling notes:"
-msgstr "Sababu ya kuficha ujumbe ulioachwa:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Rekodi na majina na anwani zinazolingana \"%(query)s\""
@@ -1413,9 +1319,6 @@ msgstr "Hali ya Mtu"
 
 msgid "Status of this person:"
 msgstr "Hali ya mtu huyu:"
-
-msgid "Street name only, no number"
-msgstr "Jina la mtaa pekee, hakuna nambari"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1505,10 +1408,6 @@ msgstr ""
 "Hali uliyoichagua inaonyesha kwamba wewe ni mtu huyu. Kama hii ni kweli, "
 "tafadhali pia chagua 'Ndiyo' ili kuonyesha kwamba umewasiliana na mtu "
 "huyu."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Tokeni %(token)s ilikuwa batili."
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1700,17 +1599,11 @@ msgstr "Uliye na maelezo yanayomhusu"
 msgid "Yes"
 msgstr "Ndiyo"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ndiyo, uliza aliyeandika rekodi afiche ujumbe ulioachwa"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ndiyo, muulize aliyeandika rekodi hii aonyeshe ujumbe ulioachwa"
 
 msgid "Yes, delete the record"
 msgstr "Ndiyo, futa rekodi hiyo"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ndiyo, ficha ujumbe ulioachwa kwenye rekodi hii."
 
 msgid "Yes, extend the record"
 msgstr "Ndiyo, ongeza rekodi hiyo"
@@ -1729,9 +1622,6 @@ msgstr "Tayari umesajiliwa. "
 
 msgid "You are already unsubscribed."
 msgstr "Tayari umejiengua."
-
-msgid "You are not currently signed in."
-msgstr "Hajuaingia katika akaunti kwa sasa."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1826,22 +1716,10 @@ msgstr ""
 "\"%(full_name)s\"?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Tovuti ya Kutafuta Waliopotea] Notisi ya kuanza kuonyesha ujumbe "
-"uliochiwa \"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr ""
 "[Tovuti ya Kutafuta Waliopotea] Ujumbe ulioachiwa \"%(full_name)s\" sasa "
 "umefichwa"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
-"[Tovuti ya Kutafuta Waliopotea] Ujumbe ulioachiwa \"%(full_name)s\" sasa "
-"unaonyeshwa"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

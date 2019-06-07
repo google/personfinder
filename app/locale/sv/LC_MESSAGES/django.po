@@ -21,29 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  En bekräftelseförfrågan skickas till den som har skrivit posten för att"
-"\n"
-"säkerställa att meddelanden endast aktiveras eller inaktiveras med "
-"skribentens\n"
-"tillåtelse. Om det är du som har skrivit posten klickar du på knappen "
-"nedan\n"
-"och tittar sedan i din e-post.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -246,32 +223,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Vill du inaktivera meddelanden om %(full_name)s?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      Vill du inaktivera meddelanden angående posten om %(full_name)s?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Vill du aktivera meddelanden om %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -373,26 +330,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    En bekräftelseförfrågan skickas till den som har skrivit posten för "
-"att\n"
-"    säkerställa att meddelanden endast aktiveras eller inaktiveras med "
-"skribentens\n"
-"    tillåtelse. Om det är du som har skrivit posten klickar du på knappen"
-" nedan\n"
-"    och tittar sedan i din e-post.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -408,19 +345,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Den e-postadress du angav är inte giltig.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Posten visas fortfarande på den här webbplatsen, men ingen kan lämna "
-"några fler\n"
-"meddelanden om den.\n"
 "  "
 
 msgid ""
@@ -783,9 +707,6 @@ msgstr "Datorversion"
 msgid "Developers"
 msgstr "Utvecklare"
 
-msgid "Disable notes on this record"
-msgstr "Inaktivera meddelanden om den här posten"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Har personen en profilsida på en annan webbplats?"
 
@@ -819,9 +740,6 @@ msgstr "E-postadress"
 
 msgid "Embedding the Application"
 msgstr "Bädda in programmet"
-
-msgid "Enable notes on this record"
-msgstr "Aktivera meddelanden om den här posten"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
@@ -967,9 +885,6 @@ msgstr "Jag söker information"
 msgid "I am this person"
 msgstr "Jag är den här personen"
 
-msgid "I do not want any more updates on this record."
-msgstr "Jag vill inte få fler uppdateringar för den här posten."
-
 msgid "I do not want my information online anymore."
 msgstr "Jag vill inte längre ha mina uppgifter online."
 
@@ -1024,16 +939,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Om det är du som har skrivit det här meddelandet tittar du i din inkorg "
-"efter ett e-postmeddelande med en länk för att inaktivera meddelanden om "
-"den här posten. Du kan även vänta på att den som har skrivit posten "
-"bekräftar din begäran."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1166,10 +1071,6 @@ msgstr "Inga medelanden har lämnats"
 
 msgid "No person id was specified."
 msgstr "Inget person-id har valts."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Ingen person med detta ID: %(id_str)s."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1335,9 +1236,6 @@ msgstr "Provins eller delstat"
 msgid "Reason for deletion:"
 msgstr "Orsak till borttagning:"
 
-msgid "Reason for disabling notes:"
-msgstr "Anledning till att inaktivera meddelanden:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Poster med namn och adress som stämmer överens med %(query)s"
@@ -1422,9 +1320,6 @@ msgstr "Personens status"
 
 msgid "Status of this person:"
 msgstr "Personens status:"
-
-msgid "Street name only, no number"
-msgstr "Bara gatans namn, inte husnummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1516,10 +1411,6 @@ msgstr ""
 "Den status du har valt antyder att du är den här personen. Om det "
 "stämmer, välj även Ja och ange att du har kontaktat personen som söker "
 "dig."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Token %(token)s var ogiltig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1709,17 +1600,11 @@ msgstr "Personen du har uppgifter om"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, be den som har skrivit posten att inaktivera meddelanden"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Ja, be den som har skrivit posten att aktivera medddelanden"
 
 msgid "Yes, delete the record"
 msgstr "Ja, ta bort posten"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, inaktivera meddelanden för den här posten."
 
 msgid "Yes, extend the record"
 msgstr "Ja, förläng posten"
@@ -1738,9 +1623,6 @@ msgstr "Du prenumererar redan. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har redan avslutat prenumerationen."
-
-msgid "You are not currently signed in."
-msgstr "Du är inte inloggad för närvarande."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1823,16 +1705,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Vill du aktivera meddelanden om %(full_name)s?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Avisering om aktiverade meddelanden för %(full_name)s"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Person Finder] Meddelanden har inaktiverats för %(full_name)s"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Meddelanden har aktiverats för %(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

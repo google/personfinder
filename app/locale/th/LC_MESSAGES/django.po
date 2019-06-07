@@ -21,27 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาต\n"
-"จากผู้ให้ข้อมูลบันทึกเท่านั้น "
-"จะมีการส่งข้อความยืนยันไปยังผู้ให้ข้อมูลบันทึก \n"
-"หากคุณเป็นผู้ให้ข้อมูล "
-"โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -236,32 +215,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      คุณแน่ใจไหมว่าต้องการปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\"\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      คุณแน่ใจไหมว่าต้องการปิดใช้งานข้อความในบันทึกของ \"%(full_name)s\"\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      คุณแน่ใจไหมว่าต้องการเปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\"\n"
 "    "
 
 #, python-format
@@ -360,26 +319,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    "
-"เพื่อให้แน่ใจว่าข้อความจะถูกปิดหรือเปิดใช้งานได้เฉพาะเมื่อได้รับอนุญาตจาก"
-"\n"
-"ผู้ให้ข้อมูลบันทึกเท่านั้น จะมีการส่งข้อความยืนยันไปยังผู้ให้ข้อมูลบันทึก"
-"\n"
-" หากคุณเป็นผู้ให้ข้อมูล "
-"โปรดตรวจสอบอีเมลของคุณหลังจากที่คลิกปุ่มด้านล่างนี้\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -395,18 +334,6 @@ msgid ""
 msgstr ""
 "\n"
 "  ที่อยู่อีเมลที่คุณป้อนไม่ถูกต้อง\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  บันทึกจะยังคงมองเห็นได้บนไซต์นี้ แต่จะไม่มีใครสามารถ\n"
-"โพสต์ข้อความในบันทึกนี้ได้อีก\n"
 "  "
 
 msgid ""
@@ -762,9 +689,6 @@ msgstr "รุ่นเดสก์ท็อป"
 msgid "Developers"
 msgstr "นักพัฒนาซอฟต์แวร์"
 
-msgid "Disable notes on this record"
-msgstr "ปิดใช้งานข้อความในบันทึกนี้"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "บุคคลนี้มีหน้าโปรไฟล์ที่เว็บไซต์อื่นๆ ไหม"
 
@@ -796,9 +720,6 @@ msgstr "ที่อยู่อีเมล"
 
 msgid "Embedding the Application"
 msgstr "การฝังแอปพลิเคชันนี้"
-
-msgid "Enable notes on this record"
-msgstr "เปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
@@ -946,9 +867,6 @@ msgstr "ฉันกำลังหาข้อมูล"
 msgid "I am this person"
 msgstr "ฉันคือบุคคลนี้"
 
-msgid "I do not want any more updates on this record."
-msgstr "ฉันไม่ต้องการรับการอัปเดตเพิ่มเติมของบันทึกนี้"
-
 msgid "I do not want my information online anymore."
 msgstr "ฉันไม่ต้องการให้ข้อมูลของฉันออนไลน์อีกแล้ว"
 
@@ -1003,15 +921,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"หากคุณเป็นผู้ให้ข้อมูลข้อความนี้ "
-"โปรดตรวจสอบอีเมลของคุณเพื่อรับลิงก์ที่จะใช้ยืนยันว่าคุณต้องการปิดใช้งานข้อความในบันทึกนี้"
-" มิเช่นนั้น โปรดรอให้ผู้ให้ข้อมูลบันทึกยืนยันคำขอของคุณ"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1141,10 +1050,6 @@ msgstr "ไม่มีข้อความที่ถูกโพสต์"
 
 msgid "No person id was specified."
 msgstr "ไม่ได้ระบุหมายเลขประจำตัวไว้"
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "ไม่มีบุคคลที่มี ID: %(id_str)s"
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1309,9 +1214,6 @@ msgstr "จังหวัดหรือรัฐ"
 msgid "Reason for deletion:"
 msgstr "เหตุผลสำหรับการนำออก:"
 
-msgid "Reason for disabling notes:"
-msgstr "สาเหตุที่ปิดใช้งานข้อความ:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "บันทึกที่มีชื่อและที่อยู่ตรงกับ \"%(query)s\""
@@ -1396,9 +1298,6 @@ msgstr "สถานะของบุคคล"
 
 msgid "Status of this person:"
 msgstr "สถานะของบุคคลนี้:"
-
-msgid "Street name only, no number"
-msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1485,10 +1384,6 @@ msgid ""
 msgstr ""
 "สถานะที่คุณเลือกบ่งบอกว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก "
 "''ใช่'' ด้วยเพื่อบ่งบอกว่าคุณได้ติดต่อกับบุคคลนี้"
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "โทเค็น %(token)s ไม่ถูกต้อง"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1674,17 +1569,11 @@ msgstr "คุณมีข้อมูลของใคร"
 msgid "Yes"
 msgstr "ใช่"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "ใช่ ขอให้ผู้ให้ข้อมูลบันทึกปิดใช้งานข้อความ"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "ใช่ ขอให้ผู้ให้ข้อมูลบันทึกเปิดใช้งานข้อความ"
 
 msgid "Yes, delete the record"
 msgstr "ใช่ ลบบันทึกนี้"
-
-msgid "Yes, disable notes on this record."
-msgstr "ใช่ ปิดใช้งานข้อความในบันทึกนี้"
 
 msgid "Yes, extend the record"
 msgstr "ใช่ ขยายเวลาของบันทึก"
@@ -1703,9 +1592,6 @@ msgstr "คุณได้สมัครรับข้อมูลแล้ว
 
 msgid "You are already unsubscribed."
 msgstr "คุณได้ยกเลิกการสมัครแล้ว"
-
-msgid "You are not currently signed in."
-msgstr "คุณไม่ได้ลงชื่อเข้าใช้อยู่ในขณะนี้"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1793,16 +1679,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] ต้องการเปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\" ไหม"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] การเปิดใช้งานการแจ้งเตือนข้อความสำหรับ \"%(full_name)s\""
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Person Finder] ขณะนี้ได้ปิดใช้งานข้อความสำหรับ \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] ขณะนี้ได้เปิดใช้งานข้อความเกี่ยวกับ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

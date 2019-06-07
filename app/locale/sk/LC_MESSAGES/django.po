@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Keďže chceme zaručiť, aby boli poznámky povolené alebo zakázané len so "
-"súhlasom autora záznamu, zašleme autorovi záznamu potvrdzujúcu správu. Ak"
-" ste autor, po kliknutí na tlačidlo nižšie skontrolujte svoj e-mail.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -236,32 +217,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Naozaj chcete zakázať poznámky o osobe %(full_name)s?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to disable notes on the record of "
 "\"%(full_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
 "      Naozaj chcete zakázať poznámky k záznamu o osobe %(full_name)s?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Naozaj chcete povoliť poznámky o osobe %(full_name)s?\n"
 "    "
 
 #, python-format
@@ -363,24 +324,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Keďže chceme zaručiť, aby boli poznámky povolené alebo zakázané len\n"
-"    so súhlasom autora záznamu, zašleme autorovi záznamu potvrdzujúcu "
-"správu.\n"
-"    Ak ste autor, po kliknutí na tlačidlo nižšie skontrolujte svoj "
-"e-mail.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -396,19 +339,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Zadaná e-mailová adresa nie je platná.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Záznam bude na týchto webových stránkach stále viditeľný, no nikto k "
-"nemu\n"
-"  nebude môcť pridať ďalšie poznámky.\n"
 "  "
 
 msgid ""
@@ -767,9 +697,6 @@ msgstr "Verzia pre počítače"
 msgid "Developers"
 msgstr "Vývojári"
 
-msgid "Disable notes on this record"
-msgstr "Zakázať poznámky k tomuto záznamu"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Má táto osoba stránky s profilom na iných webových lokalitách?"
 
@@ -803,9 +730,6 @@ msgstr "E-mailová adresa"
 
 msgid "Embedding the Application"
 msgstr "Vloženie aplikácie"
-
-msgid "Enable notes on this record"
-msgstr "Povoliť poznámky k tomuto záznamu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Zadajte v tvare RRRR-MM-DD"
@@ -954,9 +878,6 @@ msgstr "Hľadám informácie"
 msgid "I am this person"
 msgstr "Som táto osoba"
 
-msgid "I do not want any more updates on this record."
-msgstr "Nechcem žiadne ďalšie aktualizácie o tomto zázname."
-
 msgid "I do not want my information online anymore."
 msgstr "Už si neprajem, aby boli moje informácie zverejnené online."
 
@@ -1011,15 +932,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ak ste autorom tejto poznámky, dostanete e-mailovú správu s odkazom, "
-"pomocou ktorého môžete potvrdiť, že chcete poznámky k tomuto záznamu "
-"zakázať. V opačnom prípade počkajte, kým autor potvrdí vašu žiadosť."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
@@ -1153,10 +1065,6 @@ msgstr "Neboli uverejnené žiadne poznámky"
 
 msgid "No person id was specified."
 msgstr "Nebolo uvedené žiadne ID osoby."
-
-#, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Osoba s ID %(id_str)s sa nenašla."
 
 #, python-format
 msgid "No results found for: %(query)s"
@@ -1329,9 +1237,6 @@ msgstr "Provincia alebo štát"
 msgid "Reason for deletion:"
 msgstr "Dôvod odstránenia:"
 
-msgid "Reason for disabling notes:"
-msgstr "Dôvod zakázania poznámok:"
-
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
 msgstr "Záznamy s menami a adresami, ktoré zodpovedajú dopytu „%(query)s“"
@@ -1416,9 +1321,6 @@ msgstr "Stav osoby"
 
 msgid "Status of this person:"
 msgstr "Stav tejto osoby:"
-
-msgid "Street name only, no number"
-msgstr "Iba názov ulice, bez čísla"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1505,10 +1407,6 @@ msgid ""
 msgstr ""
 "Stav, ktorý ste vybrali, udáva, že ste táto osoba. Ak je to pravda, "
 "zvoľte aj možnosť Áno, čím potvrdíte, že ste túto osobu kontaktovali."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Token %(token)s bol neplatný"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1701,17 +1599,11 @@ msgstr "O kom máte informácie"
 msgid "Yes"
 msgstr "Áno"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Áno, požiadať autora záznamu o zakázanie poznámok"
-
 msgid "Yes, ask the record author to enable notes"
 msgstr "Áno, požiadať autora záznamu o povolenie poznámok"
 
 msgid "Yes, delete the record"
 msgstr "Áno, odstrániť záznam"
-
-msgid "Yes, disable notes on this record."
-msgstr "Áno, zakázať poznámky k tomuto záznamu."
 
 msgid "Yes, extend the record"
 msgstr "Áno, chcem predĺžiť platnosť záznamu"
@@ -1730,9 +1622,6 @@ msgstr "Na odber ste už prihlásený/-á. "
 
 msgid "You are already unsubscribed."
 msgstr "Z tohto odberu ste sa už odhlásili."
-
-msgid "You are not currently signed in."
-msgstr "Momentálne nie ste prihlásený/-á."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1819,18 +1708,8 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Hľadanie ľudí] Povoliť poznámky k osobe %(full_name)s?"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Hľadanie ľudí] Prebieha povolenie upozornenia na poznámky k osobe "
-"%(full_name)s"
-
-#, python-format
 msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
 msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli zakázané"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Hľadanie ľudí] Poznámky k osobe %(full_name)s boli povolené"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
