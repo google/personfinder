@@ -2850,29 +2850,35 @@ _read_profile_url2</pfif:profile_urls>
             phone_number='+10987654321',
             path='/global/api/handle_sms?key=sms_key&lang=en',
             expected_response_code=400,
-            expected_response='The given receiver_phone_number is not found in '
-                 'sms_number_to_repo config.')
+            expected_response= 'You&#39;ve reached Person Finder, but '
+                'there&#39;s not a repository assigned for +10987654321.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?key=global_test_key&lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?key=search_key&lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
 
 
     def test_person_feed(self):
