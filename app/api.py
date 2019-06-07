@@ -713,8 +713,9 @@ class HandleSMS(BaseApiHandler):
             self.info(
                 400,
                 message=
-                    ('The given phone number: %s is not found in '
-                    'SMS number to repo config.' % receiver_phone_number ),
+                    ("You've reached Person Finder, "
+                     "but there's not a repository assigned for %s."
+                     % receiver_phone_number),
                 style='plain')
             return
 
