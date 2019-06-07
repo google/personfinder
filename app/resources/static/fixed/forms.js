@@ -361,6 +361,22 @@ function validate_fields() {
     }
   }
 
+  // Validate age format
+  var age_field = $('age');
+  var age_value = age_field.value;
+
+  if (age_value != "") {
+    var curated_age_value = age_value.replace(/\s/g,'');
+    var valid_age_re = /^(\d+-?)+\d+$/;
+
+    var isAgeFormatValid = valid_age_re.test(curated_age_value);
+
+    if (!isAgeFormatValid) {
+      alert("The age entered is not in a valid format.");
+      return false;
+    }
+  }
+
   return true;
 }
 
