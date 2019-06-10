@@ -340,7 +340,7 @@ class AddNoteView(FrontendApiBaseView):
         del request, args, kwargs  # Unused.
         if not self.params.id:
             return self.error(400)
-        person = Person.get(self.env.repo, self.params.id)
+        person = model.Person.get(self.env.repo, self.params.id)
         if not person:
             return self.error(400)
         create.validate_note_data(
@@ -375,5 +375,5 @@ class AddNoteView(FrontendApiBaseView):
             email_of_found_person=self.params.email_of_found_person,
             phone_of_found_person=self.params.phone_of_found_person,
             last_known_location=self.params.last_known_location,
-            validate=False)
+            validate_data=False)
         return self._json_response({'note_id': note.record_id})

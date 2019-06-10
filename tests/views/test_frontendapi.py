@@ -275,3 +275,24 @@ class FrontendApiPersonViewTests(view_tests_base.ViewTestsBase):
         resp = self.client.get(
             '/haiti/d/person', data={'id': person.record_id}, secure=True)
         self.assertEqual(resp.status_code, 404)
+
+
+class FrontendApiAddNoteViewTests(view_tests_base.ViewTestsBase):
+
+    def setUp(self):
+        super(FrontendApiAddNoteViewTests, self).setUp()
+        self.data_generator.repo()
+        self.person = self.data_generator.person()
+
+    def test_add_note(self):
+        self.client.post(
+            '/haiti/d/add_note',
+            data={
+                'id': self.person.record_id,
+                'author_name': 'Adam',
+                'text': 'Here is some text.',
+            },
+            secure=True)
+        notes = model.Person.get('haiti', self.person.record_id).get_notes()
+        self.assertEqual(len(notes), 1)
+        self.assertEqual(notes[0].author_name, 'Adam')
