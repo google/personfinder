@@ -376,6 +376,7 @@ def create_note(
                 person.latest_status not in
                 ['believed_alive', 'is_note_author']):
             UserActionLog.put_new('mark_alive', note, person.record_id)
+        # TODO(nworden): add sending subscription notifications here
         return note
 
 
