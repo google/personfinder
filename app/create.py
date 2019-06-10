@@ -16,6 +16,7 @@ from model import *
 from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
+import subscribe
 import simplejson
 
 from django.core.validators import URLValidator, ValidationError
@@ -225,8 +226,9 @@ def create_person(
         try:
             note = create_note(
                 repo=repo,
-                person_record_id=person.record_id,
+                person=person,
                 config=config,
+                user_ip_address=user_ip_address,
                 status=status,
                 source_date=source_date,
                 author_name=author_name,
@@ -300,8 +302,9 @@ def validate_note_data(
 
 def create_note(
         repo,
-        person_record_id,
+        person,
         config,
+        user_ip_address,
         status,
         source_date,
         author_name,
@@ -329,7 +332,7 @@ def create_note(
         note = NoteWithBadWords.create_original(
             repo,
             entry_date=get_utcnow(),
-            person_record_id=person_record_id,
+            person_record_id=person.record_id,
             author_name=author_name,
             author_email=author_email,
             author_phone=author_phone,
@@ -350,7 +353,7 @@ def create_note(
         note = Note.create_original(
             repo,
             entry_date=get_utcnow(),
-            person_record_id=person_record_id,
+            person_record_id=person.record_id,
             author_name=author_name,
             author_email=author_email,
             author_phone=author_phone,
@@ -364,6 +367,15 @@ def create_note(
             photo=photo,
             photo_url=photo_url)
         note.put_new()
+        # Specially log notes that make a person dead or switch to an alive
+        # status.
+        if status == 'believed_dead':
+            UserActionLog.put_new(
+                'mark_dead', note, person.record_id, user_ip_address)
+        if (status in ['believed_alive', 'is_note_author'] and
+                person.latest_status not in
+                ['believed_alive', 'is_note_author']):
+            UserActionLog.put_new('mark_alive', note, person.record_id)
         return note
 
 
