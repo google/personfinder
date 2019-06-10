@@ -219,17 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Biztosan letiltja a megjegyzéseket „%(full_name)s” bejegyzésénél?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -938,16 +927,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ha Ön a bejegyzés szerzője, nézze meg e-mailjeit, és keresse meg a "
-"linket, amellyel megerősítheti, hogy engedélyezi a megjegyzéseket ezen a "
-"bejegyzésen. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti "
-"kérelmét."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Ha rendelkezik fényképpel erről a személyről, töltse fel vagy adja meg az"
@@ -1079,13 +1058,6 @@ msgstr "Nincs találat a következőre: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Nincs ilyen engedélyező entitás."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"A következő állapottal nem lehet jegyzetet közzétenni: „Arról értesültem,"
-" hogy ez a személy elhalálozott”."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
 "„Believed_dead” (halottnak vélt) állapottal nem tehet közzé "
@@ -1174,13 +1146,6 @@ msgid ""
 msgstr ""
 "Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a "
 "katasztrófát követően, vagy módosítsa „A személy állapota” mezőt."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a "
-"földrengés után, vagy módosítsa a „Személy állapota” mezőt."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
@@ -1327,9 +1292,6 @@ msgstr "A személy állapota"
 
 msgid "Status of this person:"
 msgstr "A személy állapota:"
-
-msgid "Street name only, no number"
-msgstr "Csak az utca neve, a házszám nem"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1614,9 +1576,6 @@ msgstr "Akiről információd van"
 msgid "Yes"
 msgstr "Igen"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy engedélyezze a megjegyzéseket"
-
 msgid "Yes, delete the record"
 msgstr "Igen, törlöm a bejegyzést"
 
@@ -1637,9 +1596,6 @@ msgstr "Már feliratkozott. "
 
 msgid "You are already unsubscribed."
 msgstr "Már leiratkozott."
-
-msgid "You are not currently signed in."
-msgstr "Jelenleg nincs bejelentkezve."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1731,10 +1687,6 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[Személykereső] Engedélyezi a megjegyzéseket a következő személynél: "
 "„%(full_name)s”?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Személykereső] A megjegyzések le vannak tiltva „%(full_name)s” esetében"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

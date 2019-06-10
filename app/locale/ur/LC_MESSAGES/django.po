@@ -219,18 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      کیا آپ واقعی \"%(full_name)s\" کے ریکارڈ پر نوٹس کو غیر فعال کرنا "
-"چاہتے ہیں؟\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -928,15 +916,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"اگر آپ اس نوٹ کے مصنف ہیں تو براہ کرم ایک لنک کیلئے اپنا ای میل چیک کرکے "
-"تصدیق کریں کہ آپ اس ریکارڈ پر نوٹس کو فعال کرنا چاہتے ہیں۔ بصورت دیگر، "
-"براہ کرم ریکارڈ کے مصنف کو آپ کی درخواست کی تصدیق کرنے کا انتظار کریں۔"
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "‏اگر آپ کے پاس اس شخص کی تصویر ہے تو اسے اپ لوڈ کریں یا اس کا URL پتہ درج"
@@ -1068,13 +1047,6 @@ msgstr "کوئی نتیجہ نہیں ملا برائے: %(query)s"
 msgid "No such Authorization entity."
 msgstr "اس طرح کی کوئی اجازت دہندگی کی ہستی نہیں ہے۔"
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"\"مجھے یہ معلومات موصول ہوئی ہے کہ یہ شخص مر چکا ہے\" حیثیت کے ساتھ نوٹس "
-"شا‏ئع کرنے کی اجازت نہیں ہے۔"
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "‏\"believed_dead\" صورتحال کے ساتھ نوٹس شائع کرنے کی اجازت نہیں ہے"
 
@@ -1162,13 +1134,6 @@ msgid ""
 msgstr ""
 "براہ کرم چیک کریں کہ آپ تباہی کے بعد اس شخص کے ساتھ رابطہ میں رہے ہیں یا "
 "'اس شخص کی صورتحال' فیلڈ کو تبدیل کریں۔"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"براہ کرم چیک کرلیں کہ آپ زلزلہ کے بعد اس شخص کے ساتھ رابطہ میں رہے ہیں، "
-"یا 'اس شخص کی صورتحال' والی فیلڈ تبدیل کریں۔"
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
@@ -1313,9 +1278,6 @@ msgstr "شخص کی صورتحال"
 
 msgid "Status of this person:"
 msgstr "اس شخص کی صورتحال:"
-
-msgid "Street name only, no number"
-msgstr "صرف گلی کا نام، نمبر نہیں"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1596,9 +1558,6 @@ msgstr "آپ کے پاس کس کے بارے میں معلومات ہے"
 msgid "Yes"
 msgstr "ہاں"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "ہاں، ریکارڈ کے مصنف سے نوٹس فعال کرنے کو کہیں"
-
 msgid "Yes, delete the record"
 msgstr "ہاں، ریکارڈ حذف کریں"
 
@@ -1619,9 +1578,6 @@ msgstr "آپ پہلے سے ہی سبسکرائب ہیں۔ "
 
 msgid "You are already unsubscribed."
 msgstr "آپ پہلے سے ہی ان سبسکرائب ہیں۔"
-
-msgid "You are not currently signed in."
-msgstr "آپ فی الحال سائن ان نہیں ہیں۔"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1709,10 +1665,6 @@ msgstr "‏[Person Finder] \"%(full_name)s\" پر نوٹس غیر فعال کر�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "‏[Person Finder] \"%(full_name)s\" پر نوٹس فعال کریں؟"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "‏[Person Finder] نوٹس اب \"%(full_name)s\" کیلئے غیر فعال کر دیے گئے ہیں"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

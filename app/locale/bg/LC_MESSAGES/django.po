@@ -218,16 +218,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"Наистина ли искате да деактивирате бележките за записа на %(full_name)s?"
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -932,16 +922,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ако вие сте авторът на тази бележка, моля, проверете дали сте получили "
-"имейл с връзка за потвърждение, че искате да активирате бележките за "
-"съответния запис. В противен случай, моля, изчакайте автора му да "
-"потвърди заявката ви."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
 
@@ -1073,13 +1053,6 @@ msgstr "Няма резултати за: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Няма такъв упълномощаващ субект."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Не сте упълномощени да публикувате бележки със състояние „Получих "
-"информация, че този човек е починал“."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Не сте упълномощени да публикувате бележки със състояние „believed_dead“."
 
@@ -1165,13 +1138,6 @@ msgid ""
 msgstr ""
 "Моля, потвърдете, че сте били във връзка с този човек след бедствието, "
 "или променете полето „Състояние на този човек“."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Моля, потвърдете, че сте били във връзка с този човек след "
-"земетресението, или променете полето „Състояние на този човек“."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
@@ -1316,9 +1282,6 @@ msgstr "Състояние на човек"
 
 msgid "Status of this person:"
 msgstr "Състояние на този човек:"
-
-msgid "Street name only, no number"
-msgstr "Само име на улицата, без номер"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1600,9 +1563,6 @@ msgstr "За кого имате информация"
 msgid "Yes"
 msgstr "Да"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Да, нека авторът на записа бъде помолен да активира бележките"
-
 msgid "Yes, delete the record"
 msgstr "Да, записът да се изтрие"
 
@@ -1623,9 +1583,6 @@ msgstr "Вече сте абонирани. "
 
 msgid "You are already unsubscribed."
 msgstr "Вече сте отписани."
-
-msgid "You are not currently signed in."
-msgstr "Понастоящем не сте влезли в профила си."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1719,12 +1676,6 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[Търсене на хора при бедствия] Да се активират ли бележките за "
 "%(full_name)s?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr ""
-"[Търсене на хора при бедствия] Бележките вече са деактивирани за "
-"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

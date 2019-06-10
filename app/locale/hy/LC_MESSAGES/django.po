@@ -218,18 +218,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Իսկապե՞ս ուզում եք անջատել «%(full_name)s»-ի գրառումների նշումները:"
-"\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -925,15 +913,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Եթե դու այս գրառման հեղինակն եք, ստուգեք ձեր էլփոստը և հաստատեք հղումով, "
-"որ ցանկանում եք միացնել այս գրառման նշումները: Հակառակ դեպքում սպասեք "
-"մինչև գրառման հեղինակը կհաստատի ձեր հարցումը:"
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Եթե ունեք այս անձի լուսանկարը, վերբեռնեք այն կամ մուտքագրեք դրա URL-ը:"
 
@@ -1063,13 +1042,6 @@ msgstr "«%(query)s» հարցումով ոչ մի արդյունք չի գտն�
 msgid "No such Authorization entity."
 msgstr "Այսպիսի նույնականացումով անձ չկա:"
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"«Ես ունեմ տեղեկություններ, որ տվյալ անձը մահացած է» կարգավիճակի "
-"հրապարակման համար անհրաժեշտ է լիազորում:"
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "«believed_dead» կարգավիճակի հրապարակման համար անհրաժեշտ է լիազորում:"
 
@@ -1154,13 +1126,6 @@ msgid ""
 msgstr ""
 "Նշեք, որ աղետից հետո շփվել եք այս անձի հետ, կամ փոխեք «Այս անձի "
 "կարգավիճակը» դաշտը:"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Ստուգեք` արդյոք շփվել եք այս անձի հետ երկրաշարժից հետո կամ փոխեք «Այս "
-"անձի կարգավիճակը» դաշտը:"
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
@@ -1309,9 +1274,6 @@ msgstr "Անձի կարգավիճակը"
 
 msgid "Status of this person:"
 msgstr "Այս անձի կարգավիճակը՝"
-
-msgid "Street name only, no number"
-msgstr "Միայն փողոցի անունը (առանց տան համարի)"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1587,9 +1549,6 @@ msgstr "Ում տվյալներն եք ուզում մուտքագրել"
 msgid "Yes"
 msgstr "Այո"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Այո, խնդրել գրառման հեղինակին, որպեսզի միացնի նշումները"
-
 msgid "Yes, delete the record"
 msgstr "Այո, ջնջել գրառումը"
 
@@ -1610,9 +1569,6 @@ msgstr "Դուք արդեն բաժանորդագրված եք: "
 
 msgid "You are already unsubscribed."
 msgstr "Դուք արդեն ապաբաժանորդագրված եք:"
-
-msgid "You are not currently signed in."
-msgstr "Դուք մուտք չեք գործել:"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1696,10 +1652,6 @@ msgstr "[Մարդկանց որոնում] Անջատե՞լ «%(full_name)s»-ի 
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Մարդկանց որոնում] Միացնե՞լ «%(full_name)s»-ի նշումները"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Մարդկանց որոնում] «%(full_name)s»-ի նշումներն այժմ անջատված են"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

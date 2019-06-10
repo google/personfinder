@@ -210,17 +210,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      确定要停用“%(full_name)s”这条记录的注释功能吗？\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -880,12 +869,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，确认要启用此记录的注释功能。如果您不是，请等待记录创建者确认您的请求。"
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有这个人的照片，请上传该照片或输入照片网址。"
 
@@ -1009,11 +992,6 @@ msgstr "没有找到与“%(query)s”相符的搜索结果"
 msgid "No such Authorization entity."
 msgstr "没有这样的授权实体。"
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr "未经授权，无法发布状况内容为“我收到这个人不幸遇难的消息”的注释。"
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "未经授权，无法发布状态为“believed_dead”的注释。"
 
@@ -1090,11 +1068,6 @@ msgid ""
 "Please check that you have been in contact with the person after the "
 "disaster, or change the \"Status of this person\" field."
 msgstr "请确认在灾难发生后您与此人保持着联系，或更改“此人的状况”字段中的内容。"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr "请确认地震后您曾与此人联系过，或更改“这个人的状况”字段中的信息。"
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "请核实此记录是否与您想要报告的人员情况相符。"
@@ -1237,9 +1210,6 @@ msgstr "人员状况"
 
 msgid "Status of this person:"
 msgstr "此人的状况："
-
-msgid "Street name only, no number"
-msgstr "输入街道名称即可，无需输入门牌号"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1498,9 +1468,6 @@ msgstr "您有其相关信息的人"
 msgid "Yes"
 msgstr "是"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "是，请求记录创建者启用注释功能"
-
 msgid "Yes, delete the record"
 msgstr "是，删除此记录"
 
@@ -1521,9 +1488,6 @@ msgstr "您已经订阅。 "
 
 msgid "You are already unsubscribed."
 msgstr "您已退订。"
-
-msgid "You are not currently signed in."
-msgstr "您当前尚未登录。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1600,10 +1564,6 @@ msgstr "[网上寻人] 停用“%(full_name)s”的注释功能？"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[网上寻人] 启用“%(full_name)s”的注释功能？"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[网上寻人] 现已停用“%(full_name)s”的注释功能"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
