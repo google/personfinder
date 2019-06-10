@@ -312,3 +312,68 @@ class CreateView(FrontendApiBaseView):
             last_known_location=self.params.last_known_location,
             url_builder=self.build_absolute_uri)
         return self._json_response({'record_id': person.record_id})
+
+
+class AddNoteView(FrontendApiBaseView):
+    """View for adding a note."""
+
+    def setup(self, request, *args, **kwargs):
+        super(AddNoteView, self).setup(request, *args, **kwargs)
+        self.params.read_values(
+            post_params={
+                'author_email': utils.strip,
+                'author_made_contact': utils.validate_yes,
+                'author_name': utils.strip,
+                'author_phone': utils.strip,
+                'email_of_found_person': utils.strip,
+                'id': utils.strip,
+                'last_known_location': utils.strip,
+                'phone_of_found_person': utils.strip,
+                'photo': utils.validate_image,
+                'photo_url': utils.strip,
+                'source_date': utils.strip,
+                'status': utils.validate_status,
+                'text': utils.strip,
+            })
+
+    def post(self, request, *args, **kwargs):
+        del request, args, kwargs  # Unused.
+        if not self.params.id:
+            return self.error(400)
+        person = Person.get(self.env.repo, self.params.id)
+        if not person:
+            return self.error(400)
+        create.validate_note_data(
+            config=self.env.config,
+            status=self.params.status,
+            author_name=self.params.author_name,
+            author_email=self.params.author_email,
+            author_made_contact=self.params.author_made_contact,
+            text=self.params.text)
+        photo, photo_url = (None, self.params.photo_url)
+        if self.params.photo is not None:
+            try:
+                photo, photo_url = photo.create_photo(
+                    self.params.photo, self.env.repo, self.build_absolute_uri)
+            except photo.PhotoError, e:
+                return self.error(400, e.message)
+            photo.put()
+        note = create.create_note(
+            repo=self.env.repo,
+            person=person,
+            config=self.env.config,
+            user_ip_address=self.request.META.get('REMOTE_ADDR'),
+            status=self.params.status,
+            source_date=self.params.source_date,
+            author_name=self.params.author_name,
+            author_email=self.params.author_email,
+            author_phone=self.params.author_phone,
+            author_made_contact=self.params.author_made_contact,
+            photo=self.params.photo,
+            photo_url=self.params.photo_url,
+            text=self.params.text,
+            email_of_found_person=self.params.email_of_found_person,
+            phone_of_found_person=self.params.phone_of_found_person,
+            last_known_location=self.params.last_known_location,
+            validate=False)
+        return self._json_response({'note_id': note.record_id})
