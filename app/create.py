@@ -349,35 +349,32 @@ def create_note(
             confirmed=False)
         note.put_new()
         raise FlaggedNoteException(note)
-    else:
-        note = Note.create_original(
-            repo,
-            entry_date=get_utcnow(),
-            person_record_id=person.record_id,
-            author_name=author_name,
-            author_email=author_email,
-            author_phone=author_phone,
-            source_date=source_date,
-            author_made_contact=author_made_contact,
-            status=status,
-            email_of_found_person=email_of_found_person,
-            phone_of_found_person=phone_of_found_person,
-            last_known_location=last_known_location,
-            text=text,
-            photo=photo,
-            photo_url=photo_url)
-        note.put_new()
-        # Specially log notes that make a person dead or switch to an alive
-        # status.
-        if status == 'believed_dead':
-            UserActionLog.put_new(
-                'mark_dead', note, person.record_id, user_ip_address)
-        if (status in ['believed_alive', 'is_note_author'] and
-                person.latest_status not in
-                ['believed_alive', 'is_note_author']):
-            UserActionLog.put_new('mark_alive', note, person.record_id)
-        # TODO(nworden): add sending subscription notifications here
-        return note
+    note = Note.create_original(
+        repo,
+        entry_date=get_utcnow(),
+        person_record_id=person.record_id,
+        author_name=author_name,
+        author_email=author_email,
+        author_phone=author_phone,
+        source_date=source_date,
+        author_made_contact=author_made_contact,
+        status=status,
+        email_of_found_person=email_of_found_person,
+        phone_of_found_person=phone_of_found_person,
+        last_known_location=last_known_location,
+        text=text,
+        photo=photo,
+        photo_url=photo_url)
+    note.put_new()
+    # Specially log notes that make a person dead or switch to an alive status.
+    if status == 'believed_dead':
+        UserActionLog.put_new(
+            'mark_dead', note, person.record_id, user_ip_address)
+    if (status in ['believed_alive', 'is_note_author'] and
+            person.latest_status not in ['believed_alive', 'is_note_author']):
+        UserActionLog.put_new('mark_alive', note, person.record_id)
+    # TODO(nworden): add sending subscription notifications here
+    return note
 
 
 class Handler(BaseHandler):

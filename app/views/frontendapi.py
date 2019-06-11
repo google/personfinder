@@ -355,7 +355,7 @@ class AddNoteView(FrontendApiBaseView):
             try:
                 photo, photo_url = photo.create_photo(
                     self.params.photo, self.env.repo, self.build_absolute_uri)
-            except photo.PhotoError, e:
+            except photo.PhotoError as e:
                 return self.error(400, e.message)
             photo.put()
         note = create.create_note(
