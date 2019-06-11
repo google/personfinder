@@ -16,6 +16,7 @@ from model import *
 from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
+import subscribe
 import simplejson
 
 from django.core.validators import URLValidator, ValidationError
@@ -95,14 +96,15 @@ def create_person(
         should_fuzzify_age=True,
         expiry_option=None):
     now = get_utcnow()
-    # Several messages here exceed the 80-column limit because django's
-    # makemessages script can't handle messages split across lines. :(
     if config.use_family_name:
         if not (given_name and family_name):
-            raise CreationError(_('The Given name and Family name are both required.  Please go back and try again.'))
+            raise CreationError(_(
+                'The Given name and Family name are both required.  Please go '
+                'back and try again.'))
     else:
         if not given_name:
-            raise CreationError(_('Name is required.  Please go back and try again.'))
+            raise CreationError(_(
+                'Name is required.  Please go back and try again.'))
 
     # If user is inputting his/her own information, set some params automatically
     if own_info == 'yes':
@@ -115,30 +117,39 @@ def create_person(
             author_phone = users_own_phone
 
     if (author_email and not validate_email(author_email)):
-        raise CreationError(_('The email address you entered appears to be invalid.'))
+        raise CreationError(_(
+            'The email address you entered appears to be invalid.'))
 
     else:
         if not author_name:
             if clone:
-                raise CreationError(_('The Original author\'s name is required.  Please go back and try again.'))
+                raise CreationError(_(
+                    'The Original author\'s name is required.  Please go back '
+                    'and try again.'))
             else:
-                raise CreationError(_('Your name is required in the "Source" section.  Please go back and try again.'))
+                raise CreationError(_(
+                    'Your name is required in the "Source" section.  Please go '
+                    'back and try again.'))
 
     if add_note:
-        if not text:
-            raise CreationError(_('Message is required. Please go back and try again.'))
-        if status == 'is_note_author' and not author_made_contact:
-            raise CreationError(_('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-        if status == 'believed_dead' and not config.allow_believed_dead_via_ui:
-            raise CreationError(_('Not authorized to post notes with the status "I have received information that this person is dead".'))
+        validate_note_data(
+            config=config,
+            status=status,
+            author_name=author_name,
+            author_email=author_email,
+            author_made_contact=author_made_contact,
+            text=text)
 
     if source_date:
         try:
             source_date = validate_date(source_date)
         except ValueError:
-            raise CreationError(_('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
+            raise CreationError(_(
+                'Original posting date is not in YYYY-MM-DD format, or is a '
+                'nonexistent date.  Please go back and try again.'))
         if source_date > now:
-            raise CreationError(_('Date cannot be in the future.  Please go back and try again.'))
+            raise CreationError(_(
+                'Date cannot be in the future.  Please go back and try again.'))
 
     expiry_date = days_to_date(expiry_option or config.default_expiry_days)
 
@@ -212,59 +223,35 @@ def create_person(
     person.update_index(['old', 'new'])
 
     if add_note:
-        spam_detector = SpamDetector(config.bad_words)
-        spam_score = spam_detector.estimate_spam_score(text)
-        if (spam_score > 0):
-            note = NoteWithBadWords.create_original(
-                repo,
-                entry_date=get_utcnow(),
-                person_record_id=person.record_id,
+        try:
+            note = create_note(
+                repo=repo,
+                person=person,
+                config=config,
+                user_ip_address=user_ip_address,
+                status=status,
+                source_date=source_date,
                 author_name=author_name,
                 author_email=author_email,
                 author_phone=author_phone,
-                source_date=source_date,
                 author_made_contact=bool(author_made_contact),
-                status=status,
+                photo=note_photo,
+                photo_url=note_photo_url,
+                text=text,
                 email_of_found_person=email_of_found_person,
                 phone_of_found_person=phone_of_found_person,
                 last_known_location=last_known_location,
-                text=text,
-                photo=note_photo,
-                photo_url=note_photo_url,
-                spam_score=spam_score,
-                confirmed=False)
-
-            # Write the new NoteWithBadWords to the datastore
-            note.put_new()
-            # Write the person record to datastore before redirect
+                # We called validate_note_data separately above.
+                validate_data=False)
+        except FlaggedNoteException as e:
             db.put(person)
             UserActionLog.put_new('add', person, copy_properties=False)
-
             # When the note is detected as spam, we do not update person
             # record with this note or log action. We ask the note author
             # for confirmation first.
-            raise FlaggedNoteException(note)
-        else:
-            note = Note.create_original(
-                repo,
-                entry_date=get_utcnow(),
-                person_record_id=person.record_id,
-                author_name=author_name,
-                author_email=author_email,
-                author_phone=author_phone,
-                source_date=source_date,
-                author_made_contact=bool(author_made_contact),
-                status=status,
-                email_of_found_person=email_of_found_person,
-                phone_of_found_person=phone_of_found_person,
-                last_known_location=last_known_location,
-                text=text,
-                photo=note_photo,
-                photo_url=note_photo_url)
+            raise e
 
-            # Write the new Note to the datastore
-            note.put_new()
-            person.update_from_note(note)
+        person.update_from_note(note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
@@ -285,6 +272,109 @@ def create_person(
     # TODO(ryok): batch-put person, note, photo, note_photo here.
 
     return person
+
+
+def validate_note_data(
+        config,
+        status,
+        author_name,
+        author_email,
+        author_made_contact,
+        text):
+    if not text:
+        raise CreationError(_(
+            'Message is required. Please go back and try again.'))
+    if not author_name:
+        raise CreationError(_(
+            'Your name is required in the "About you" section.  Please go back '
+            'and try again.'))
+    if status == 'is_note_author' and not author_made_contact:
+        raise CreationError(_(
+            'Please check that you have been in contact with the person after '
+            'the disaster, or change the "Status of this person" field.'))
+    if status == 'believed_dead' and not config.allow_believed_dead_via_ui:
+        raise CreationError(_(
+            'Not authorized to post notes with the status "believed_dead".'))
+    if author_email and not validate_email(author_email):
+        raise CreationError(_(
+            'The email address you entered appears to be invalid.'))
+
+
+def create_note(
+        repo,
+        person,
+        config,
+        user_ip_address,
+        status,
+        source_date,
+        author_name,
+        author_email,
+        author_phone,
+        author_made_contact,
+        photo,
+        photo_url,
+        text,
+        email_of_found_person,
+        phone_of_found_person,
+        last_known_location,
+        validate_data=True):
+    if validate_data:
+        validate_note_data(
+            config=config,
+            status=status,
+            author_name=author_name,
+            author_email=author_email,
+            author_made_contact=author_made_contact,
+            text=text)
+    spam_detector = SpamDetector(config.bad_words)
+    spam_score = spam_detector.estimate_spam_score(text)
+    if spam_score > 0:
+        note = NoteWithBadWords.create_original(
+            repo,
+            entry_date=get_utcnow(),
+            person_record_id=person.record_id,
+            author_name=author_name,
+            author_email=author_email,
+            author_phone=author_phone,
+            source_date=source_date,
+            author_made_contact=author_made_contact,
+            status=status,
+            email_of_found_person=email_of_found_person,
+            phone_of_found_person=phone_of_found_person,
+            last_known_location=last_known_location,
+            text=text,
+            photo=photo,
+            photo_url=photo_url,
+            spam_score=spam_score,
+            confirmed=False)
+        note.put_new()
+        raise FlaggedNoteException(note)
+    note = Note.create_original(
+        repo,
+        entry_date=get_utcnow(),
+        person_record_id=person.record_id,
+        author_name=author_name,
+        author_email=author_email,
+        author_phone=author_phone,
+        source_date=source_date,
+        author_made_contact=author_made_contact,
+        status=status,
+        email_of_found_person=email_of_found_person,
+        phone_of_found_person=phone_of_found_person,
+        last_known_location=last_known_location,
+        text=text,
+        photo=photo,
+        photo_url=photo_url)
+    note.put_new()
+    # Specially log notes that make a person dead or switch to an alive status.
+    if status == 'believed_dead':
+        UserActionLog.put_new(
+            'mark_dead', note, person.record_id, user_ip_address)
+    if (status in ['believed_alive', 'is_note_author'] and
+            person.latest_status not in ['believed_alive', 'is_note_author']):
+        UserActionLog.put_new('mark_alive', note, person.record_id)
+    # TODO(nworden): add sending subscription notifications here
+    return note
 
 
 class Handler(BaseHandler):

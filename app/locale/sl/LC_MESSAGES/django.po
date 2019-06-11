@@ -219,17 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ali res želite onemogočiti opombe v zapisu osebe »%(full_name)s«?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -932,15 +921,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Če ste avtor te opombe, preverite, ali ste prejeli e-pošto s povezavo, s "
-"katero lahko potrdite, da želite za ta zapis omogočiti opombe. V "
-"nasprotnem primeru počakajte, da vašo zahtevo potrdi avtor zapisa."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Če imate fotografijo te osebe, jo prenesite v strežnik ali vnesite njen "
@@ -1072,13 +1052,6 @@ msgstr "Ni bilo rezultatov iskanja za: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Ni nobenega takega subjekta za dodeljevanje dovoljenj."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Niste pooblaščeni za objavo opomb s statusom »Prejel sem informacije, da "
-"je ta oseba mrtva«."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
 
@@ -1164,13 +1137,6 @@ msgid ""
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
 "Preverite, ali ste bili po katastrofi v stiku z osebo ali pa spremenite "
-"polje »Stanje te osebe«."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Preverite, ali ste bili po potresu v stiku z osebo ali pa spremenite "
 "polje »Stanje te osebe«."
 
 msgid "Please check whether it matches the person you were planning to report."
@@ -1314,9 +1280,6 @@ msgstr "Stanje osebe"
 
 msgid "Status of this person:"
 msgstr "Stanje te osebe:"
-
-msgid "Street name only, no number"
-msgstr "Samo ulica brez številke"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1594,9 +1557,6 @@ msgstr "O kom imate podatke"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Da, prosite avtorja zapisa, da omogoči opombe"
-
 msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
 
@@ -1617,9 +1577,6 @@ msgstr "Ste že naročeni. "
 
 msgid "You are already unsubscribed."
 msgstr "Naročnina je že odpovedana."
-
-msgid "You are not currently signed in."
-msgstr "Trenutno niste vpisani."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1700,10 +1657,6 @@ msgstr "[Iskalnik oseb] Ali želite onemogočiti opombe za osebo »%(full_name)s
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Iskalnik oseb] Ali želite omogočiti opombe za osebo »%(full_name)s«?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Iskalnik oseb] Opombe so zdaj onemogočene za osebo »%(full_name)s«"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

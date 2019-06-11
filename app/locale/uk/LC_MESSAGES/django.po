@@ -217,17 +217,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Справді вимкнути нотатки до запису про особу \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -931,15 +920,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Якщо Ви автор цієї нотатки, перевірте, чи Ви отримали електронний лист із"
-" посиланням, за допомогою якого можна підтвердити ввімкнення нотаток до "
-"цього запису. Або зачекайте, доки автор запису підтвердить Ваш запит."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Якщо ви маєте фотографію цієї особи, завантажте її або введіть її "
@@ -1073,13 +1053,6 @@ msgstr "Немає результатів для запиту \"%(query)s\""
 msgid "No such Authorization entity."
 msgstr "Немає такого об’єкта авторизації."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Забороняється публікувати нотатки зі статусом \"У мене є інформація, що "
-"ця особа померла\"."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Not authorized to post notes with the status \"believed_dead\"."
 
@@ -1166,13 +1139,6 @@ msgid ""
 msgstr ""
 "Переконайтеся, що ви спілкувалися з цією особою після стихійного лиха або"
 " змініть дані в полі \"Статус цієї особи\"."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Поставте прапорець, якщо ви спілкувалися з цією особою після землетрусу, "
-"або змініть дані в полі \"Статус цієї особи\"."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Перевірте, чи це запис про особу, про яку ви хочете повідомити."
@@ -1315,9 +1281,6 @@ msgstr "Статус особи"
 
 msgid "Status of this person:"
 msgstr "Статус цієї особи:"
-
-msgid "Street name only, no number"
-msgstr "Лише назва вулиці, без номера будинку"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1599,9 +1562,6 @@ msgstr "Про кого ви маєте інформацію"
 msgid "Yes"
 msgstr "Так"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Так, попросити автора запису ввімкнути нотатки"
-
 msgid "Yes, delete the record"
 msgstr "Так, видалити запис"
 
@@ -1622,9 +1582,6 @@ msgstr "Ви вже підписалися. "
 
 msgid "You are already unsubscribed."
 msgstr "Ви вже скасували підписку."
-
-msgid "You are not currently signed in."
-msgstr "Ви не ввійшли."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1713,10 +1670,6 @@ msgstr "[Служба пошуку людей] Вимкнути нотатки �
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Служба пошуку людей] Увімкнути нотатки про особу \"%(full_name)s\"?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Служба пошуку людей] Нотатки про особу \"%(full_name)s\" зараз вимкнено"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
