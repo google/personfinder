@@ -21,6 +21,7 @@ import Radio, {NativeRadioControl} from '@material/react-radio';
 import Select from '@material/react-select';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 
+import COMMON_MESSAGES from './../utils/CommonMessages.js';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import RepoHeader from './../components/RepoHeader.js';
@@ -33,11 +34,6 @@ const MESSAGES = defineMessages({
     description: ('A label on a form field for a message to and/or about a '
         + 'person. The message might get displayed to other people looking for '
         + 'information about the person.'),
-  },
-  no: {
-    id: 'AddNote.no',
-    defaultMessage: 'No',
-    description: 'A negative answer to a yes/no question.',
   },
   sourceOfThisNote: {
     id: 'AddNote.sourceOfThisNote',
@@ -97,11 +93,6 @@ const MESSAGES = defineMessages({
     id: 'AddNote.subscribeToUpdates',
     defaultMessage: 'Subscribe to updates about this person',
     description: 'A label on a checkbox to subscribe to updates.',
-  },
-  yes: {
-    id: 'AddNote.yes',
-    defaultMessage: 'Yes',
-    description: 'An affirmative answer to a yes/no question.',
   },
   yourEmailRequired: {
     id: 'AddNote.yourEmailRequired',
@@ -226,7 +217,7 @@ class AddNote extends Component {
             </p>
             <div>
               <Radio
-                label={this.props.intl.formatMessage(MESSAGES.yes)}
+                label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
                 key='yes'
               >
                 <NativeRadioControl
@@ -238,7 +229,7 @@ class AddNote extends Component {
             </div>
             <div>
               <Radio
-                label={this.props.intl.formatMessage(MESSAGES.no)}
+                label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
                 key='no'
               >
                 <NativeRadioControl
