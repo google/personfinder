@@ -221,18 +221,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sigur doriți să dezactivați notele la înregistrarea pentru "
-"„%(full_name)s”?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -950,16 +938,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Dacă sunteți autorul acestei note, verificați e-mailul pentru a vedea "
-"dacă ați primit un link prin care să confirmați că doriți să activați "
-"notele pentru această înregistrare. În caz contrar, așteptați ca autorul "
-"înregistrării să vă confirme solicitarea."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Dacă dețineți o fotografie a acestei persoane, încărcați-o sau "
@@ -1095,13 +1073,6 @@ msgstr "Niciun rezultat găsit pentru: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Nu există o astfel de entitate de autorizare."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Nu este autorizată postarea de note cu starea „Am primit informații "
-"conform cărora această persoană a decedat”."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nu sunteți autorizat(ă) să postați note cu starea „believed_dead”."
 
@@ -1188,13 +1159,6 @@ msgid ""
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
 "Confirmați dacă ați intrat în legătură cu această persoană după dezastru "
-"sau modificați câmpul „Starea acestei persoane”."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Confirmați dacă ați intrat în legătură cu această persoană după cutremur "
 "sau modificați câmpul „Starea acestei persoane”."
 
 msgid "Please check whether it matches the person you were planning to report."
@@ -1342,9 +1306,6 @@ msgstr "Starea persoanei"
 
 msgid "Status of this person:"
 msgstr "Starea acestei persoane:"
-
-msgid "Street name only, no number"
-msgstr "Nume stradă, fără număr"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1629,9 +1590,6 @@ msgstr "Despre cine aveți informații"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Da, solicitați autorului înregistrării să activeze notele"
-
 msgid "Yes, delete the record"
 msgstr "Da, ștergeți înregistrarea"
 
@@ -1652,9 +1610,6 @@ msgstr "Sunteți deja abonat(ă). "
 
 msgid "You are already unsubscribed."
 msgstr "Sunteți deja dezabonat(ă)."
-
-msgid "You are not currently signed in."
-msgstr "Nu sunteți conectat(ă)."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1743,10 +1698,6 @@ msgstr "[Person Finder] Dezactivați notele pentru „%(full_name)s”?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Activați notele pentru „%(full_name)s”?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Notele sunt dezactivate acum pentru „%(full_name)s”"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

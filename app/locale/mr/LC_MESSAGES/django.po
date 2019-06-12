@@ -219,18 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      तुम्हाला खात्री आहे की तुम्ही \"%(full_name)s\" च्या रेकॉर्डवर टिपा"
-" बंद करू इच्छिता?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -936,15 +924,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"तुम्ही या टिपेचे लेखक असल्यास, कृपया या रेकॉर्डवरील टिपा तुम्ही बंद करू "
-"इच्छित असल्याचे निश्चित करण्यासाठी तुमचा ईमेल तपासा. अन्यथा, तुमच्या "
-"विनंती निश्चित करण्यासाठी रेकॉर्ड लेखकाची प्रतीक्षा करा."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "आपल्याकडे या व्यक्तीचा फोटो असल्यास, तो अपलोड करा किंवा त्याचा URL पत्ता "
@@ -1076,13 +1055,6 @@ msgstr "यासाठी परिणाम आढळले नाहीत: %
 msgid "No such Authorization entity."
 msgstr "असे कोणतेही प्राधिकृत अस्तित्व नाही."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"\"ही व्यक्ती मृत झाली असल्याची माहिती मला प्राप्त झाली आहे\" या स्थितीसह "
-"टिपा पोस्ट करण्यासाठी अधिकृत नाही."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"believed_dead\" स्थितीसह टिपा पोस्ट करण्यासाठी अधिकृत नाही."
 
@@ -1169,13 +1141,6 @@ msgid ""
 "disaster, or change the \"Status of this person\" field."
 msgstr ""
 "कृपया आपत्ती नंतर तुम्ही व्यक्तीच्या संपर्कात असल्याचे तपासा किंवा \"या "
-"व्यक्तीची स्थिती\" फील्ड बदला."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"कृपया भूकंपानंतर तुम्ही व्यक्तीशी संपर्क केला असल्याचे तपासा किंवा \"या "
 "व्यक्तीची स्थिती\" फील्ड बदला."
 
 msgid "Please check whether it matches the person you were planning to report."
@@ -1321,9 +1286,6 @@ msgstr "व्यक्तीची स्थिती"
 
 msgid "Status of this person:"
 msgstr "या व्यक्तीची स्थिती:"
-
-msgid "Street name only, no number"
-msgstr "केवळ मार्ग नाव, नंबर नाही"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1602,9 +1564,6 @@ msgstr "आपल्याकडे कोणाविषयी माहित�
 msgid "Yes"
 msgstr "होय"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "होय, टिपा सुरू करण्यासाठी रेकॉर्ड लेखकाला विचारा"
-
 msgid "Yes, delete the record"
 msgstr "होय, रेकॉर्ड हटवा"
 
@@ -1625,9 +1584,6 @@ msgstr "तुम्ही आधीपासूनच सदस्यता घ
 
 msgid "You are already unsubscribed."
 msgstr "तुम्ही आधीपासूनच सदस्यता रद्द केली आहे."
-
-msgid "You are not currently signed in."
-msgstr "तुम्ही सध्या साइन इन केलेले नाही."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1715,10 +1671,6 @@ msgstr "[व्यक्ती शोधक] \"%(full_name)s\" वरील ट�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] \"%(full_name)s\" वरील टिपा सुरू करायच्या?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[व्यक्ती शोधक] \"%(full_name)s\" साठी टिपा आता अक्षम केल्या आहेत"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -216,18 +216,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Kas soovite inimese „%(full_name)s” kirjel olevad märkmed kindlasti"
-" keelata?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -925,16 +913,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Kui olete selle märkme autor, otsige oma meilikontolt meil, millega "
-"saadeti teile link, mida kasutades saate kinnitada, et soovite sellel "
-"kirjel märkmed lubada. Kui te pole autor, peate ootama, kuni kirje autor "
-"teie taotluse kinnitab."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Kui teil on sellest inimesest foto, laadige see üles või sisestage selle "
@@ -1066,13 +1044,6 @@ msgstr "Järgmisele päringule ei leitud ühtegi tulemust: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Ühtegi sellist volitamise üksust pole."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Pole luba postitada märkmeid olekuga „Mul on teavet, et see inimene on "
-"surnud”."
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Pole luba postitada märkmeid olekuga „believed_dead”."
 
@@ -1157,13 +1128,6 @@ msgid ""
 msgstr ""
 "Kontrollige, kas olete inimesega pärast katastroofi ühenduses olnud, või "
 "muutke välja „Selle isiku olek”."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Kontrollige, kas olete inimesega pärast maavärinat ühenduses olnud, või "
-"muutke välja „Selle inimese olek”."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Kontrollige, kas see sobib inimesega, kellest plaanisite teatada."
@@ -1306,9 +1270,6 @@ msgstr "Isiku olek"
 
 msgid "Status of this person:"
 msgstr "Selle isiku olek:"
-
-msgid "Street name only, no number"
-msgstr "Ainult tänava nimi, ilma numbrita"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1584,9 +1545,6 @@ msgstr "Kelle kohta on teil teavet?"
 msgid "Yes"
 msgstr "Jah"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Jah, palu kirje autoril märkmed lubada"
-
 msgid "Yes, delete the record"
 msgstr "Jah, kustuta see kirje"
 
@@ -1607,9 +1565,6 @@ msgstr "Olete selle juba tellinud. "
 
 msgid "You are already unsubscribed."
 msgstr "Olete sellest tellimusest juba loobunud."
-
-msgid "You are not currently signed in."
-msgstr "Te ei ole praegu sisse logitud."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1692,10 +1647,6 @@ msgstr "[Isikuotsing] Kas keelata märkmed inimese „%(full_name)s” kohta?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Isikuotsing] Kas lubada märkmed inimese „%(full_name)s” kohta?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Isikuotsing] Märkmed inimese „%(full_name)s” kohta on nüüd keelatud"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

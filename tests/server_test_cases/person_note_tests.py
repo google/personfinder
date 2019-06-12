@@ -543,6 +543,8 @@ class PersonNoteTests(ServerTestsBase):
     def test_user_action_log_created(self):
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
         self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+        url_parts = list(urlparse.urlparse(self.s.url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
         self.verify_update_notes(
             author_made_contact=True,
             note_body='_test Another note body',
@@ -554,7 +556,7 @@ class PersonNoteTests(ServerTestsBase):
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                repo='haiti',
-                               detail='_test_given_name _test_family_name',
+                               detail=record_id,
                                ip_address='',
                                Note_text='_test Another note body',
                                Note_status='believed_alive')
@@ -1371,6 +1373,8 @@ http://www.foo.com/_account_1''',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
+        url_parts = list(urlparse.urlparse(view_url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
 
         # Check that the right status options appear on the view page.
         self.s.go(view_url)
@@ -1399,7 +1403,7 @@ http://www.foo.com/_account_1''',
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                     repo='haiti',
-                                    detail='_test_given _test_family',
+                                    detail=record_id,
                                     ip_address='',
                                     Note_text='_test_text',
                                     Note_status='believed_alive')
@@ -1443,6 +1447,8 @@ http://www.foo.com/_account_1''',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
+        url_parts = list(urlparse.urlparse(view_url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
 
         # Check that the believed_dead option does not appear
         # on the view page.
@@ -1475,7 +1481,7 @@ http://www.foo.com/_account_1''',
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                     repo='japan',
-                                    detail='_test_family _test_given',
+                                    detail=record_id,
                                     ip_address='',
                                     Note_text='_test_text',
                                     Note_status='believed_alive')

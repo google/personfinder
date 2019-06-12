@@ -219,18 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på at du vil deaktivere notater på oppføringen for "
-"«%(full_name)s»?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -936,16 +924,6 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
-"e-post med en link for å bekrefte at du vil aktivere notater for denne "
-"oppføringen. Hvis ikke, må du vente på at den som skrev oppføringen "
-"bekrefter forespørselen din."
-
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Hvis du har et bilde av denne personen, kan du laste det opp eller oppgi "
@@ -1075,13 +1053,6 @@ msgstr "Fant ingen resultater for: %(query)s"
 msgid "No such Authorization entity."
 msgstr "Denne autorisasjonsinstansen eksisterer ikke."
 
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Ikke autorisert til å legge inn notater med statusen «Jeg har mottatt "
-"informasjon om at denne personen er død.»"
-
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autorisert til å legge ut notater med statusen «believed_dead»."
 
@@ -1167,13 +1138,6 @@ msgid ""
 msgstr ""
 "Merk av for at du har vært i kontakt med denne personen etter "
 "katastrofen, eller endre feltet «Status for denne personen»."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Merk av for at du har vært i kontakt med denne personen etter "
-"jordskjelvet, eller endre feltet «Status for denne personen»."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Kontrollér om dette stemmer overens med personen du ønsker å rapportere."
@@ -1316,9 +1280,6 @@ msgstr "Status for personen"
 
 msgid "Status of this person:"
 msgstr "Denne personens status:"
-
-msgid "Street name only, no number"
-msgstr "Kun gatenavn, ikke nummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1600,9 +1561,6 @@ msgstr "Hvem har du informasjon om?"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to enable notes"
-msgstr "Ja, be oppføringsforfatteren om å aktivere notater"
-
 msgid "Yes, delete the record"
 msgstr "Ja, slett oppføringen"
 
@@ -1623,9 +1581,6 @@ msgstr "Du abonnerer allerede. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede avsluttet abonnementet."
-
-msgid "You are not currently signed in."
-msgstr "Du er for øyeblikket ikke pålogget."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1708,10 +1663,6 @@ msgstr "[Personsøk] Vil du deaktivere notater for «%(full_name)s»?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Personsøk] Vil du aktivere notater for «%(full_name)s»?"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Personsøk] Notater er deaktivert for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -189,10 +189,22 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             accepts_post=False,
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=False),
+        'frontendapi_add-note':
+        path_test_info(
+            accepts_get=False,
+            accepts_post=True,
+            sample_path_kwargs={'repo': 'haiti'},
+            min_admin_level=None,
+            requires_xsrf=False,
+            sample_post_data={
+                'id': TEST_PERSON_RECORD_ID,
+                'author_name': 'Mateo',
+                'text': 'here is text',
+            }),
         'frontendapi_create':
         path_test_info(
             accepts_get=False,
-            accepts_post=False,
+            accepts_post=True,
             sample_path_kwargs={'repo': 'haiti'},
             min_admin_level=None,
             requires_xsrf=False,
