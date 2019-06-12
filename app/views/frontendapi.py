@@ -335,6 +335,8 @@ class AddNoteView(FrontendApiBaseView):
                 'status': utils.validate_status,
                 'text': utils.strip,
             })
+        # TODO(nworden): consider doing this in some cleaner way
+        self.params.status = self.params.status or ''
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
@@ -348,7 +350,7 @@ class AddNoteView(FrontendApiBaseView):
             status=self.params.status,
             author_name=self.params.author_name,
             author_email=self.params.author_email,
-            author_made_contact=self.params.author_made_contact,
+            author_made_contact=bool(self.params.author_made_contact),
             text=self.params.text)
         photo, photo_url = (None, self.params.photo_url)
         if self.params.photo is not None:
@@ -368,7 +370,7 @@ class AddNoteView(FrontendApiBaseView):
             author_name=self.params.author_name,
             author_email=self.params.author_email,
             author_phone=self.params.author_phone,
-            author_made_contact=self.params.author_made_contact,
+            author_made_contact=bool(self.params.author_made_contact),
             photo=self.params.photo,
             photo_url=self.params.photo_url,
             text=self.params.text,

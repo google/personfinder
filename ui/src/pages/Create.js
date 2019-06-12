@@ -26,6 +26,7 @@ import Tab from '@material/react-tab';
 import TabBar from '@material/react-tab-bar';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 
+import COMMON_MESSAGES from './../utils/CommonMessages.js';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
@@ -98,11 +99,6 @@ const MESSAGES = defineMessages({
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
     description: ('A label on a button to show additional fields that are '
         + 'hidden by default.'),
-  },
-  no: {
-    id: 'Create.no',
-    defaultMessage: 'No',
-    description: 'A negative answer to a yes/no question.',
   },
   orEnterPhotoUrl: {
     id: 'Create.orEnterPhotoUrl',
@@ -214,11 +210,6 @@ const MESSAGES = defineMessages({
     id: 'Create.uploadPhoto',
     defaultMessage: 'Upload photo',
     description: 'Label for a button for users who want to upload a photo.',
-  },
-  yes: {
-    id: 'Create.yes',
-    defaultMessage: 'Yes',
-    description: 'An affirmative answer to a yes/no question.',
   },
 });
 
@@ -610,7 +601,7 @@ class Create extends Component {
           </p>
           <div>
             <Radio
-              label={this.props.intl.formatMessage(MESSAGES.yes)}
+              label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
               key='yes'
             >
               <NativeRadioControl
@@ -622,7 +613,7 @@ class Create extends Component {
           </div>
           <div>
             <Radio
-              label={this.props.intl.formatMessage(MESSAGES.no)}
+              label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
               key='no'
             >
               <NativeRadioControl
