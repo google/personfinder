@@ -335,6 +335,8 @@ class AddNoteView(FrontendApiBaseView):
                 'status': utils.validate_status,
                 'text': utils.strip,
             })
+        # TODO(nworden): consider doing this in some cleaner way
+        self.params.status = self.params.status or ''
 
     def post(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
