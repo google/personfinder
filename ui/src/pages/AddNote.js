@@ -16,6 +16,7 @@
 
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import Button from '@material/react-button';
 import Checkbox from '@material/react-checkbox';
 import Radio, {NativeRadioControl} from '@material/react-radio';
 import Select from '@material/react-select';
@@ -89,6 +90,11 @@ const MESSAGES = defineMessages({
     description: ('A label for a form field asking if the user has personally '
         + 'talked to the person they\'re filling out the form about.'),
   },
+  submitNote: {
+    id: 'AddNote.submitNote',
+    defaultMessage: 'Submit note',
+    description: 'A label on a form submission button.',
+  },
   subscribeToUpdates: {
     id: 'AddNote.subscribeToUpdates',
     defaultMessage: 'Subscribe to updates about this person',
@@ -127,16 +133,17 @@ class AddNote extends Component {
       formAuthorPhone: '',
       formPersonStatus: 'unspecified',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const personId = Utils.getURLParam(this.props, 'id');
+    this.personId = Utils.getURLParam(this.props, 'id');
     this.repoId = this.props.match.params.repoId;
     // TODO(nworden): consider if we could have a global cache of repo info to
     // avoid calling for it on each page load
     const apiURLs = [
         `/${this.repoId}/d/repo`,
-        `/${this.repoId}/d/person?id=${encodeURIComponent(personId)}`,
+        `/${this.repoId}/d/person?id=${encodeURIComponent(this.personId)}`,
         ];
     Promise.all(apiURLs.map(url => fetch(url)))
         .then(res => Promise.all(res.map(r => r.json())))
@@ -208,7 +215,7 @@ class AddNote extends Component {
               textarea
             >
               <Input
-                name='message'
+                name='text'
                 value={this.state['formMessage']}
                 onChange={(e) => this.setState({['formMessage']: e.target.value})} />
             </TextField>
@@ -271,6 +278,28 @@ class AddNote extends Component {
     );
   }
 
+  handleSubmit(e) {
+    // TODO(nworden): show the loading indicator as soon as the search starts
+    e.preventDefault();
+    const apiUrl = '/' + this.repoId + '/d/add_note';
+    const formData = new FormData(e.target);
+    fetch(apiUrl, {method: 'POST', body: formData})
+      .then(res => res.json())
+      .then(
+        (res) => {
+          this.props.history.push({
+            pathname: '/' + this.repoId + '/view',
+            search: '?id=' + this.personId,
+          });
+        },
+        (error) => {
+          this.setState({
+            error: error
+          });
+        }
+      );
+  }
+
   render() {
     if (!this.state.isLoaded) {
       return <LoadingIndicator />;
@@ -282,7 +311,19 @@ class AddNote extends Component {
           backButtonTarget={`/${this.repoId}`}
         />
         <div className='addnote-body'>
-          {this.renderForm()}
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type='hidden'
+              name='id'
+              value={this.personId}
+            />
+            {this.renderForm()}
+            <Button
+                className='pf-button-primary addnote-submitbutton'
+                type='submit'>
+                {this.props.intl.formatMessage(MESSAGES.submitNote)}
+          </Button>
+          </form>
           <Footer />
         </div>
       </div>
