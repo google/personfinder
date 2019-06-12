@@ -21,27 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Siekiant užtikrinti, kad pastabos neleidžiamos arba įgalinamos tik "
-"gavus įrašo autoriaus\n"
-"leidimą, jam bus siunčiamas patvirtinimo pranešimas.\n"
-"Jei esate autorius, patikrinkite el. paštą, spustelėję toliau esantį "
-"mygtuką.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -241,37 +220,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ar tikrai norite neleisti pastabų apie „%(full_name)s“?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ar tikrai norite neleisti pastabų apie „%(full_name)s“ įrašą?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ar tikrai norite įgalinti pastabas apie „%(full_name)s“?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -366,24 +314,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Siekiant užtikrinti, kad pastabos neleidžiamos arba įgalinamos tik "
-"gavus įrašo autoriaus\n"
-"leidimą, jam bus siunčiamas patvirtinimo pranešimas.\n"
-"Jei esate autorius, patikrinkite el. paštą, spustelėję toliau esantį "
-"mygtuką.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -399,19 +329,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Įvedėte netinkamą el. pašto adresą.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Įrašas vis dar bus matomas šioje svetainėje, bet niekas nebegalės "
-"paskelbti\n"
-"pastabų apie jį.\n"
 "  "
 
 msgid ""
@@ -773,9 +690,6 @@ msgstr "Versija staliniams kompiuteriams"
 msgid "Developers"
 msgstr "Kūrėjai"
 
-msgid "Disable notes on this record"
-msgstr "Neleisti pastabų apie šį įrašą"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ar šis asmuo turi profilio puslapių kitose svetainėse?"
 
@@ -809,9 +723,6 @@ msgstr "El. pašto adresas"
 
 msgid "Embedding the Application"
 msgstr "Programos įterpimas"
-
-msgid "Enable notes on this record"
-msgstr "Įgalinti pastabas apie šį įrašą"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Įveskite MMMM-MM-DD formatu"
@@ -957,9 +868,6 @@ msgstr "Ieškau informacijos"
 msgid "I am this person"
 msgstr "Aš esu šis asmuo"
 
-msgid "I do not want any more updates on this record."
-msgstr "Nebenoriu gauti šio įrašo naujinių."
-
 msgid "I do not want my information online anymore."
 msgstr "Nebenoriu, kad mano informacija būtų internete."
 
@@ -1014,24 +922,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Jei esate šios pastabos autorius, patikrinkite el. paštą ir spustelėję "
-"nuorodą patvirtinkite, kad norite neleisti šio įrašo pastabų. Jei ne, "
-"palaukite, kol įrašo autorius patvirtins jūsų užklausą."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Jei esate šios pastabos autorius, patikrinkite el. paštą ir spustelėję "
-"nuorodą patvirtinkite, kad norite įgalinti pastabas apie šį įrašą. Jei "
-"ne, palaukite, kol įrašo autorius patvirtins jūsų užklausą."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1158,22 +1048,11 @@ msgid "No person id was specified."
 msgstr "Nenurodytas asmens ID."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Nėra asmens su šiuo ID: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Nerasta jokių rezultatų pagal: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Tokio prieigos teisės subjekto nėra."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Neturite įgaliojimų skelbti pastabų, kurių būsena „Gavau informacijos, "
-"kad šis asmuo yra miręs“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nesate įgalioti paskelbti pastabas, kurių būsena „laikomas_mirusiu“."
@@ -1262,13 +1141,6 @@ msgstr ""
 "Nurodykite, ar bendravote su asmeniu po nelaimės, arba pakeiskite lauko "
 "„Šio asmens būsena“ vertę."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Nurodykite, ar bendravote su asmeniu po žemės drebėjimo, arba pakeiskite "
-"lauko „Šio asmens būsena“ reikšmę."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Patikrinkite, ar nurodytas ne tas asmuo, apie kurį ketinate pranešti."
 
@@ -1327,9 +1199,6 @@ msgstr "Provincija arba valstija"
 
 msgid "Reason for deletion:"
 msgstr "Ištrynimo priežastis:"
-
-msgid "Reason for disabling notes:"
-msgstr "Priežastys, dėl kurių neleidžiamos pastabos:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1415,9 +1284,6 @@ msgstr "Asmens būsena"
 
 msgid "Status of this person:"
 msgstr "Šio asmens būsena:"
-
-msgid "Street name only, no number"
-msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1509,10 +1375,6 @@ msgstr ""
 "Pasirinkta būsena nurodo, jog jūs esate šis asmuo. Jei tai tiesa, taip "
 "pat pasirinkite „Taip“, kad nurodytumėte, jog susisiekėte su šiuo "
 "asmeniu."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Prieigos raktas %(token)s buvo netinkamas"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1706,17 +1568,8 @@ msgstr "Apie ką informacijos turite"
 msgid "Yes"
 msgstr "Taip"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Taip, prašyti įrašo autoriaus neleisti pastabų"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Taip, prašyti įrašo autoriaus leisti pastabas"
-
 msgid "Yes, delete the record"
 msgstr "Taip, ištrinti įrašą"
-
-msgid "Yes, disable notes on this record."
-msgstr "Taip, neleisti pastabų apie šį įrašą."
 
 msgid "Yes, extend the record"
 msgstr "Taip, pratęsti įrašo galiojimo laiką"
@@ -1735,9 +1588,6 @@ msgstr "Jau esate užsiprenumeravę. "
 
 msgid "You are already unsubscribed."
 msgstr "Jau esate atšaukę prenumeratą."
-
-msgid "You are not currently signed in."
-msgstr "Šiuo metu nesate prisijungę."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1824,20 +1674,6 @@ msgstr "[Žmonių ieškojimo priemonė] Neleisti pastabų apie „%(full_name)s�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Žmonių ieškojimo priemonė] Įgalinti pastabas apie „%(full_name)s“?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Žmonių ieškojimo priemonė] Įgalinamas įspėjimas apie „%(full_name)s“ "
-"pastabas"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Žmonių ieškojimo priemonė] Dabar „%(full_name)s“ pastabos neleidžiamos"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Žmonių ieškojimo priemonė] Dabar „%(full_name)s“ pastabos įgalintos"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -18,6 +18,7 @@ import React from 'react';
 import {injectIntl} from 'react-intl';
 import {BrowserRouter, Route} from 'react-router-dom';
 
+import AddNote from './pages/AddNote.js';
 import Create from './pages/Create.js';
 import GlobalHome from './pages/GlobalHome.js';
 import RepoHome from './pages/RepoHome.js';
@@ -33,6 +34,7 @@ const App = () => (
           global/home.html */}
       <Route exact path='/' component={GlobalHome} />
       <Route exact path='/:repoId' component={RepoHome} />
+      <Route exact path='/:repoId/add_note' component={AddNote} />
       <Route exact path='/:repoId/create' component={Create} />
       <Route exact path='/:repoId/results' component={Results} />
       <Route exact path='/:repoId/view' component={View} />

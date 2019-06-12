@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Тэмдэглэлийг зөвхөн бичлэгийн зохиогчийн зөвшөөрөлтэйгээр идэвхжүүлэх "
-"буюу идэвхгүйжүүлэхийн тулд бичлэгийн зохиогч руу баталгаажуулах зурвас "
-"илгээгдэх болно.\n"
-"  Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа имэйлээ шалгана уу.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -239,39 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Та \"%(full_name)s\" дээрх тэмдэглэлүүдийг үнэхээр идэвхгүйжүүлэх "
-"үү?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Та \"%(full_name)s\"-н бичлэгүүд дээрх тэмдэглэлүүдийг үнэхээр "
-"идэвхгүйжүүлэхийг хүсэж байна уу?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Та \"%(full_name)s\" дээрх тэмдэглэлүүдийг үнэхээр идэвхжүүлэх үү?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -365,23 +312,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Тэмдэглэлийг зөвхөн бичлэгийн зохиогчийн зөвшөөрөлтэйгээр идэвхжүүлэх"
-" буюу идэвхгүйжүүлэхийн тулд бичлэгийн зохиогч руу баталгаажуулах зурвас "
-"илгээгдэх болно. Хэрэв та зохиогч нь бол доорх товчийг дарсны дараа "
-"имэйлээ шалгана уу.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -397,18 +327,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Таны оруулсан имэйл хаяг буруу байна.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Бичлэг энэ сайтан дээр харагдсан хэвээр байх боловч хэн нэгэн дээр нь "
-"цаашид тэмдэглэл үлдээх боломжгүй болсон.\n"
 "  "
 
 msgid ""
@@ -764,9 +682,6 @@ msgstr "Десктоп хувилбар"
 msgid "Developers"
 msgstr "Хөгжүүлэгчид"
 
-msgid "Disable notes on this record"
-msgstr "Энэ бичлэг дээр тэмдэглэлийг идэвхгүйжүүлэх"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Энэ хүнд өөр вебсайтууд дээр профайл хуудас байгаа юу?"
 
@@ -798,9 +713,6 @@ msgstr "Имэйл хаяг"
 
 msgid "Embedding the Application"
 msgstr "Аппликешныг оруулж байна"
-
-msgid "Enable notes on this record"
-msgstr "Энэ бичлэг дээр тэмдэглэлийг идэвхжүүлэх"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD байдлаар оруулна уу"
@@ -944,9 +856,6 @@ msgstr "Би мэдээлэл хайж байна"
 msgid "I am this person"
 msgstr "Би энэ хүн байна"
 
-msgid "I do not want any more updates on this record."
-msgstr "Би энэ бичлэгийн талаар шинэ мэдээлэл авахгүй."
-
 msgid "I do not want my information online anymore."
 msgstr "Би өөрийн мэдээллийг цаашид онлайн байлгахгүй."
 
@@ -1001,27 +910,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Хэрэв та энэ тэмдэглэлийн зохиогч нь бол өөрийн имэйлээ шалгаж ирсэн "
-"холбоосоор энэ бичлэг дээр тэмдэглэлүүдийг идэвхгүйжүүлэхийг хүсэж "
-"байгаагаа баталгаажуулна уу.  Үгүй бол бичлэгийн зохиогч таны хүсэлтийг "
-"баталгаажуултал хүлээнэ үү."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Хэрэв та энэ тэмдэглэлийн зохиогч нь бол өөрийн имэйлээ шалгаж ирсэн "
-"холбоосоор энэ бичлэг дээр тэмдэглэлүүдийг идэвхжүүлэхийг хүсэж байгаагаа"
-" \n"
-"баталгаажуулна уу.  Үгүй бол бичлэгийн зохиогч таны хүсэлтийг \n"
-"баталгаажуултал хүлээнэ үү."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1148,22 +1036,11 @@ msgid "No person id was specified."
 msgstr "Id-г нь тогтоосон хүн алга."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Дараах ID-тай хүн алга байна: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Дараахад илэрц олдсонгүй: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ийм Эрхжүүлэгч байгууллага байхгүй байна."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"\"Би энэ хүнийг амь үрэгдсэн талаар мэдээлэл хүлээж авсан\" гэсэн "
-"статустай тэмдэглэл нийтлэх эрхгүй."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "\"үрэгдсэнд_тооцсон\" гэсэн статустай тэмдэглэл нийтлэх эрхгүй."
@@ -1253,13 +1130,6 @@ msgstr ""
 "Та гамшигт үзэгдлийн дараа энэ хүнтэй холбоо барьсан гэж тэмдэглэх, эсвэл"
 " \"Энэ хүний байдал\" хэсгийг өөрчилнө үү."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Та газар хөдөлсний дараа тус хүнтэй холбоо барьсан гэж чек хийх буюу "
-"\"Энэ хүний статус\" талбарыг өөрчилнө үү."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Энэ таны мэдээлэх гэж буй хүнтэй таарч байгаа эсэхийг шалгана уу."
 
@@ -1316,9 +1186,6 @@ msgstr "Муж буюу орон нутаг"
 
 msgid "Reason for deletion:"
 msgstr "Устгах шалтгаан:"
-
-msgid "Reason for disabling notes:"
-msgstr "Тэмдэглэлийг идэвхгүйжүүлэх шалтгаан:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1404,9 +1271,6 @@ msgstr "Хүний байдал"
 
 msgid "Status of this person:"
 msgstr "Энэ хүний байдал:"
-
-msgid "Street name only, no number"
-msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1495,10 +1359,6 @@ msgid ""
 msgstr ""
 "Таны сонгосон статусаар бол та энэ хүн байна. Хэрэв үнэн бол та энэ "
 "хүнтэй холбоо барьсан гэдийг мөн 'Тийм' болгоно уу."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "%(token)s бүтвэр буруу байна"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1686,17 +1546,8 @@ msgstr "Танд хэний талаарх мэдээлэл байгаа вэ"
 msgid "Yes"
 msgstr "Тийм"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Тийм, бичлэгийн зохиогчоос тэмдэглэлийг идэвхгүйжүүлэх эсэхийг асуух"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Тийм, бичлэгийн зохиогчоос тэмдэглэлийг идэвхжүүлэх эсэхийг асуух"
-
 msgid "Yes, delete the record"
 msgstr "Тийм, бичлэгийг устгах"
-
-msgid "Yes, disable notes on this record."
-msgstr "Тийм, энэ бичлэг дээр тэмдэглэлийг идэвхгүйжүүлнэ."
 
 msgid "Yes, extend the record"
 msgstr "Тийм, бичлэгийн хугацааг сунгана"
@@ -1715,9 +1566,6 @@ msgstr "Та аль хэдийн бүртгүүлсэн байна. "
 
 msgid "You are already unsubscribed."
 msgstr "Та аль хэдийн бүртгүүлсэн байна."
-
-msgid "You are not currently signed in."
-msgstr "Та одоо нэвтрээгүй байна."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1805,20 +1653,6 @@ msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэли
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэлийг идэвхжүүлэх үү?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг мэдэгдлийг "
-"идэвхжүүлэх үү"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг идэвхгүйжүүлсэн"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг идэвхжүүлсэн"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"Upang tiyaking dini-disable o ine-enable lang ang mga tala nang may\n"
-"pahintulot ng may-akda ng record, magpapadala ng mensahe ng pagkumpirma "
-"sa may-akda ng record.\n"
-"Kung ikaw ang may-akda, tingnan ang iyong email pagkatapos i-click ang "
-"button sa ibaba."
-
 #, python-format
 msgid ""
 "\n"
@@ -236,39 +217,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sigurado ka bang gusto mong i-disable ang mga tala kay "
-"\"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"Sigurado ka bang gusto mong i-disable ang mga tala sa record ni "
-"\"%(full_name)s\"?"
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sigurado ka bang gusto mong i-enable ang mga tala kay "
-"\"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -363,23 +311,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"Upang tiyaking dini-disable o ine-enable lang ang mga tala nang may "
-"pahintulot ng may-akda ng record,\n"
-"magpapadala ng mensahe ng pagkumpirma sa may-akda ng record.\n"
-"Kung ikaw ang may-akda, tingnan ang iyong email pagkatapos i-click ang "
-"button sa ibaba."
-
 #, python-format
 msgid ""
 "\n"
@@ -396,18 +327,6 @@ msgstr ""
 "\n"
 "  Di-wasto ang inilagay mong Email address.\n"
 "  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"Makikita pa rin ang record sa site na ito, ngunit walang sinumang "
-"makakapag-post ng\n"
-"dagdag pang mga tala dito."
 
 msgid ""
 "\n"
@@ -772,9 +691,6 @@ msgstr "Bersyon sa desktop"
 msgid "Developers"
 msgstr "Mga Developer"
 
-msgid "Disable notes on this record"
-msgstr "I-disable ang mga tala sa talaang ito"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Mayroon bang mga pahina ng profile sa ibang mga website ang taong ito?"
 
@@ -808,9 +724,6 @@ msgstr "Mga email address"
 
 msgid "Embedding the Application"
 msgstr "Pag-e-embed ng Application"
-
-msgid "Enable notes on this record"
-msgstr "I-enable ang mga tala sa talaang ito"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ilagay bilang YYYY-MM-DD"
@@ -960,11 +873,6 @@ msgstr "Naghahanap ako ng impormasyon"
 msgid "I am this person"
 msgstr "Ako ang taong ito"
 
-msgid "I do not want any more updates on this record."
-msgstr ""
-"Hindi ko gustong makatanggap ng higit pang mga update tungkol sa talaang "
-"ito."
-
 msgid "I do not want my information online anymore."
 msgstr "Hindi ko na gustong maging online ang aking impormasyon."
 
@@ -1019,26 +927,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong email kung "
-"may link upang kumpirmahing gusto mong i-disable ang mga tala sa record "
-"na ito. Kung wala, mangyaring hintaying kumpirmahin ng may-akda ng record"
-" ang iyong kahilingan."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong email kung "
-"may link upang kumpirmahing gusto mong i-enable ang mga tala sa record na"
-" ito. Kung wala, mangyaring hintaying kumpirmahin ng may-akda ng record "
-"ang iyong kahilingan."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1167,22 +1055,11 @@ msgid "No person id was specified."
 msgstr "Walang tinukoy na pagkakakilanlan ng tao."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Walang taong may ID: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Walang nakitang mga resulta para sa: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Walang ganoong entity sa Pagpapahintulot."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Hindi pinapahintulutang mag-post ng mga tala na may status na "
-"\"Nakatanggap ako ng impormasyon na patay na ang taong ito.\""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -1274,13 +1151,6 @@ msgstr ""
 "Pakitiyak na nakaugnayan mo ang taong ito pagkatapos ng sakuna, o baguhin"
 " ang field na \"Status ng taong ito.\""
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Pakitiyak na nakaugnayan mo ang tao pagkatapos ng lindol, o baguhin ang "
-"field na \"Status ng taong ito\"."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Mangyaring tingnan kung tumutugma ito sa taong pinaplano mong iulat."
 
@@ -1337,9 +1207,6 @@ msgstr "Lalawigan o estado"
 
 msgid "Reason for deletion:"
 msgstr "Dahilan ng pagtatanggal:"
-
-msgid "Reason for disabling notes:"
-msgstr "Dahilan para sa pag-disable sa mga tala:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1425,9 +1292,6 @@ msgstr "Status ng Taong Ito"
 
 msgid "Status of this person:"
 msgstr "Status ng taong ito:"
-
-msgid "Street name only, no number"
-msgstr "Pangalan lang ng kalye, walang numero"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1520,10 +1384,6 @@ msgid ""
 msgstr ""
 "Isinasaad ng pinili mong status na ikaw ang taong ito.  Kung totoo ito, "
 "pakipili din ang 'Oo' upang isaad na nakipag-ugnay ka sa taong ito."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Di-wasto ang token na %(token)s"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1717,17 +1577,8 @@ msgstr "Kaninong impormasyon ang mayroon ka"
 msgid "Yes"
 msgstr "Oo"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Oo, hilingin sa may-akda ng record na i-disable ang mga tala"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Oo, hilingin sa may-akda ng record na i-enable ang mga tala"
-
 msgid "Yes, delete the record"
 msgstr "Oo, tanggalin ang talaang ito"
-
-msgid "Yes, disable notes on this record."
-msgstr "Oo, i-disable ang mga tala sa talaang ito."
 
 msgid "Yes, extend the record"
 msgstr "Oo, pahabain ang record"
@@ -1746,9 +1597,6 @@ msgstr "Naka-subscribe ka na. "
 
 msgid "You are already unsubscribed."
 msgstr "Naka-unsubscribe ka na."
-
-msgid "You are not currently signed in."
-msgstr "Kasalukuyan kang hindi naka-sign in."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1836,24 +1684,6 @@ msgstr "[Person Finder] I-disable ang mga tala tungkol kay \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] I-enable ang mga tala tungkol kay \"%(full_name)s\"?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Ine-enable ang paunawa sa mga tala para kay "
-"\"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Naka-disable na ngayon ang mga tala para kay "
-"\"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr ""
-"[Person Finder] Naka-enable na ngayon ang mga tala tungkol kay "
-"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

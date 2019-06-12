@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Om te verseker dat notas net gedeaktiveer of geaktiveer word met die "
-"rekordouteur se toestemming, sal 'n bevestigingboodskap na die "
-"rekordouteur gestuur word. As jy die outeur is, kontroleer jou e-pos "
-"nadat jy die knoppie hieronder geklik het.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -238,38 +218,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Is jy seker jy wil notas oor \"%(full_name)s\" deaktiveer?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Is jy seker jy wil notas oor die rekord van \"%(full_name)s\" "
-"deaktiveer?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Is jy seker jy wil notas oor \"%(full_name)s\" aktiveer?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -362,23 +310,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Om te verseker dat notas net gedeaktiveer of geaktiveer word met die "
-"rekordouteur se toestemming, sal 'n bevestigingboodskap na die "
-"rekordouteur gestuur word. As jy die outeur is, kontroleer jou e-pos "
-"nadat jy die knoppie hieronder geklik het.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -394,18 +325,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Die e-posadres wat jy ingevoer het, is nie geldig nie.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Die rekord sal nog sigbaar wees op hierdie werf, maar niemand sal "
-"verdere notas daaroor kan plaas nie.\n"
 "  "
 
 msgid ""
@@ -763,9 +682,6 @@ msgstr "Werkskerm-weergawe"
 msgid "Developers"
 msgstr "Ontwikkelaars"
 
-msgid "Disable notes on this record"
-msgstr "Deaktiveer notas oor hierdie rekord"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Het hierdie persoon profielbladsye op ander webwerwe?"
 
@@ -799,9 +715,6 @@ msgstr "E-posadres"
 
 msgid "Embedding the Application"
 msgstr "Bed die program in"
-
-msgid "Enable notes on this record"
-msgstr "Aktiveer notas oor hierdie rekord"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Voer in as JJJJ-MM-DD"
@@ -947,9 +860,6 @@ msgstr "Ek is op soek na inligting"
 msgid "I am this person"
 msgstr "Ek is hierdie persoon"
 
-msgid "I do not want any more updates on this record."
-msgstr "Ek wil nie enige verdere opdaterings oor hierdie rekord hê nie."
-
 msgid "I do not want my information online anymore."
 msgstr "Ek wil nie meer my inligting aanlyn hê nie."
 
@@ -1004,24 +914,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"As jy die outeur van hierdie nota is, kontroleer jou e-pos vir 'n skakel "
-"om te bevestig dat jy notas oor hierdie rekord wil deaktiveer. Andersins,"
-" wag vir die rekordouteur om jou versoek te bevestig."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"As jy die outeur van hierdie nota is, kontroleer jou e-pos vir 'n skakel "
-"om te bevestig dat jy notas oor hierdie rekord wil aktiveer. Andersins, "
-"wag vir die rekordouteur om jou versoek te bevestig."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "As jy 'n foto van die persoon het, laai dit op of voer die URL daarvan in."
@@ -1146,22 +1038,11 @@ msgid "No person id was specified."
 msgstr "Geen persoon-ID is gespesifiseer nie."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Geen persoon met ID %(id_str)s nie."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Geen resultate gevind nie vir: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Geen sodanige magtigingsentiteit nie."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Nie gemagtig om notas met die status \"Ek is ingelig dat hierdie persoon "
-"dood is\" te plaas nie."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nie gemagtig om notas met die status \"believed_dead\" te plaas nie."
@@ -1251,13 +1132,6 @@ msgstr ""
 "Merk asseblief dat jy met die persoon in kontak was ná die ramp, of "
 "verander die \"Status van hierdie persoon\"-veld."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Merk dat jy met die persoon in kontak was ná die aardbewing, of verander "
-"die \"Status van hierdie persoon\"-veld."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Kontroleer of dit by die persoon pas wat jy van plan was om aan te gee."
 
@@ -1314,9 +1188,6 @@ msgstr "Provinsie of deelstaat"
 
 msgid "Reason for deletion:"
 msgstr "Rede waarom dit uitgevee word:"
-
-msgid "Reason for disabling notes:"
-msgstr "Rede waarom notas gedeaktiveer word:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1402,9 +1273,6 @@ msgstr "Status van persoon"
 
 msgid "Status of this person:"
 msgstr "Status van hierdie persoon:"
-
-msgid "Street name only, no number"
-msgstr "Net straatnaam, nie nommer nie"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1492,10 +1360,6 @@ msgstr ""
 "Die status wat jy gekies het, dui aan dat jy hierdie persoon is. As dit "
 "waar is, kies ook \"Ja\" om aan te dui dat jy hierdie persoon gekontak "
 "het."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Die token %(token)s was ongeldig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1683,17 +1547,8 @@ msgstr "Oor wie jy inligting het"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, vra die rekordouteur om notas te deaktiveer"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Ja, vra die rekordouteur om notas te aktiveer"
-
 msgid "Yes, delete the record"
 msgstr "Ja, vee die rekord uit"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, deaktiveer notas oor hierdie rekord."
 
 msgid "Yes, extend the record"
 msgstr "Ja, verleng die rekord"
@@ -1712,9 +1567,6 @@ msgstr "Jy is reeds ingeteken. "
 
 msgid "You are already unsubscribed."
 msgstr "Jy is reeds uitgeteken."
-
-msgid "You are not currently signed in."
-msgstr "Jy is nie tans aangemeld nie."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1799,18 +1651,6 @@ msgstr "[Persoonsoeker] Deaktiveer notas oor \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Persoonsoeker] Aktiveer notas oor \"%(full_name)s\"?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Persoonsoeker] Kennisgewing oor notas-aktivering vir \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Persoonsoeker] Notas is nou gedeaktiveer vir \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Persoonsoeker] Notas is nou geaktiveer vir \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

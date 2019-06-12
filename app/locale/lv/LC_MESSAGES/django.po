@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Lai piezīmes varētu atspējot vai iespējot tikai ar ieraksta autora "
-"atļauju,\n"
-"  ieraksta autoram tiks nosūtīts apstiprinājuma ziņojums.\n"
-"  Ja esat autors, pēc tālāk esošās pogas nospiešanas pārbaudiet e-pastu.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -243,39 +223,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Vai tiešām vēlaties atspējot piezīmes par personu “%(full_name)s”?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Vai tiešām vēlaties atspējot piezīmes ierakstam par šo personu: "
-"“%(full_name)s”?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Vai tiešām vēlaties iespējot piezīmes ierakstam par šo personu: "
-"“%(full_name)s”?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -373,24 +320,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Lai piezīmes varētu atspējot vai iespējot tikai ar ieraksta autora "
-"atļauju,\n"
-"    ieraksta autoram tiks nosūtīts apstiprinājuma ziņojums.\n"
-"    Ja esat autors, pēc tālāk esošās pogas nospiešanas pārbaudiet "
-"e-pastu.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -406,19 +335,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Ievadītā e-pasta adrese nav derīga.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Ieraksts šajā vietnē joprojām būs redzams, taču neviens turpmāk nevarēs"
-" publicēt\n"
-"  piezīmes par to.\n"
 "  "
 
 msgid ""
@@ -776,9 +692,6 @@ msgstr "Datora versija"
 msgid "Developers"
 msgstr "Izstrādātāji"
 
-msgid "Disable notes on this record"
-msgstr "Atspējot piezīmes par šo ierakstu"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Vai šai personai ir profila lapas citās vietnēs?"
 
@@ -812,9 +725,6 @@ msgstr "E-pasta adrese"
 
 msgid "Embedding the Application"
 msgstr "Lietojumprogrammas iegulšana"
-
-msgid "Enable notes on this record"
-msgstr "Iespējot piezīmes par šo ierakstu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ievadiet datumu formātā GGGG-MM-DD."
@@ -964,9 +874,6 @@ msgstr "Es meklēju informāciju"
 msgid "I am this person"
 msgstr "Es esmu šī persona"
 
-msgid "I do not want any more updates on this record."
-msgstr "Es vairs nevēlos saņemt šī ieraksta atjauninājumus."
-
 msgid "I do not want my information online anymore."
 msgstr "Es vairs nevēlos, lai mana informācija būtu pieejama tiešsaistē."
 
@@ -1021,26 +928,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ja esat šīs piezīmes autors, lūdzu, izmantojiet e-pasta ziņojumā saņemto "
-"saiti, lai apstiprinātu, ka vēlaties atspējot piezīmes par šo ierakstu. "
-"Ja neesat autors, lūdzu, uzgaidiet, līdz ieraksta autors apstiprina jūsu "
-"pieprasījumu."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ja esat šīs piezīmes autors, lūdzu, izmantojiet e-pasta ziņojumā saņemto "
-"saiti, lai apstiprinātu, ka vēlaties iespējot piezīmes par šo ierakstu. "
-"Ja neesat autors, lūdzu, uzgaidiet, līdz ieraksta autors apstiprina jūsu "
-"pieprasījumu."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1169,22 +1056,11 @@ msgid "No person id was specified."
 msgstr "Netika norādīts personas ID."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Nav personas ar šādu ID: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Netika atrasts neviens rezultāts meklēšanas vaicājumam “%(query)s”"
 
 msgid "No such Authorization entity."
 msgstr "Šāda pilnvarojuma entītija nepastāv."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Nav atļauts publicēt piezīmes ar statusu “Esmu saņēmis informāciju, ka šī"
-" persona ir mirusi”."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Jums nav atļaujas publicēt piezīmes ar statusu “believed_dead”."
@@ -1273,13 +1149,6 @@ msgstr ""
 "Lūdzu, atzīmējiet, ka esat sazinājies ar šo personu pēc nelaimes "
 "gadījuma, vai arī mainiet lauku “Šīs personas statuss”."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Lūdzu, atzīmējiet, ka esat sazinājies ar šo personu pēc zemestrīces, vai "
-"arī mainiet lauku “Šīs personas statuss”."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Lūdzu, pārbaudiet, vai tie atbilst personai, par kuru vēlaties ziņot."
 
@@ -1336,9 +1205,6 @@ msgstr "Reģions vai štats"
 
 msgid "Reason for deletion:"
 msgstr "Dzēšanas iemesls:"
-
-msgid "Reason for disabling notes:"
-msgstr "Piezīmju atspējošanas iemesls:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1427,9 +1293,6 @@ msgstr "Personas statuss"
 msgid "Status of this person:"
 msgstr "Šīs personas statuss:"
 
-msgid "Street name only, no number"
-msgstr "Tikai ielas nosaukums bez mājas numura"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1517,10 +1380,6 @@ msgid ""
 msgstr ""
 "Atlasītais statuss norāda, ka jūs esat šī persona. Ja tā ir taisnība, "
 "lūdzu, atlasiet “Jā”, lai norādītu, ka esat sazinājies ar šo personu."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Marķieris %(token)s nebija derīgs."
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1710,17 +1569,8 @@ msgstr "Par ko jums ir informācija"
 msgid "Yes"
 msgstr "Jā"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Jā, lūdziet ieraksta autoru atspējot piezīmes"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Jā, lūdziet ieraksta autoru iespējot piezīmes"
-
 msgid "Yes, delete the record"
 msgstr "Jā, dzēst ierakstu"
-
-msgid "Yes, disable notes on this record."
-msgstr "Jā, atspējot piezīmes par šo ierakstu."
 
 msgid "Yes, extend the record"
 msgstr "Jā, pagarināt ieraksta derīguma termiņu"
@@ -1739,9 +1589,6 @@ msgstr "Jūs jau esat abonents. "
 
 msgid "You are already unsubscribed."
 msgstr "Jūs jau esat anulējis abonēšanu."
-
-msgid "You are not currently signed in."
-msgstr "Jūs pašlaik neesat pierakstījies."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1834,18 +1681,6 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[Person Finder] Vai iespējot piezīmes ierakstam par "
 "personu“%(full_name)s”?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] Piezīmju iespējošana ierakstam par personu “%(full_name)s”"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Piezīmes par personu “%(full_name)s” ir atspējotas."
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Piezīmes par personu “%(full_name)s” ir iespējotas."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

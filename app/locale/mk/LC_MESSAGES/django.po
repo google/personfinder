@@ -21,27 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  За да се осигуриме дека белешките се овозможени или оневозможени само "
-"со дозвола на авторот\n"
-"на записот, авторот на записот ќе добие порака за потврда.\n"
-" Ако вие сте авторот, проверете ја вашата е-пошта по кликнување на "
-"копчето подолу.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -242,40 +221,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Дали сте сигурни дека сакате да оневозможите белешки за "
-"„%(full_name)s“?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Дали сте сигурни дека сакате да оневозможите белешки за записот на "
-"„%(full_name)s“?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Дали сте сигурни дека сакате да овозможите белешки за "
-"„%(full_name)s“?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -373,25 +318,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    За да се осигуриме дека белешките се овозможени или оневозможени само"
-" со дозвола\n"
-"    на авторот на записот, авторот на записот ќе добие порака за потврда."
-"\n"
-"    Ако вие сте авторот, проверете ја вашата е-пошта по кликнување на "
-"копчето подолу.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -407,19 +333,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Адресата на е-пошта што ја внесовте не е важечка.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Записот ќе остане да се гледа на овој сајт, но никој нема да може да "
-"објавува\n"
-"  дополнителни белешки на него.\n"
 "  "
 
 msgid ""
@@ -779,9 +692,6 @@ msgstr "Верзија на работна површина"
 msgid "Developers"
 msgstr "Развивачи"
 
-msgid "Disable notes on this record"
-msgstr "Оневозможете белешки на овој запис"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Дали ова лице има страници со профил на други веб-сајтови?"
 
@@ -815,9 +725,6 @@ msgstr "Адреса на е-пошта"
 
 msgid "Embedding the Application"
 msgstr "Вградување на апликацијата"
-
-msgid "Enable notes on this record"
-msgstr "Овозможете белешки на овој запис"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Внесете како ГГГГ-ММ-ДД"
@@ -965,9 +872,6 @@ msgstr "Барам информации"
 msgid "I am this person"
 msgstr "Јас сум ова лице"
 
-msgid "I do not want any more updates on this record."
-msgstr "Не сакам повеќе ажурирања за овој запис."
-
 msgid "I do not want my information online anymore."
 msgstr "Не сакам повеќе информациите за мене да се на интернет."
 
@@ -1022,24 +926,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ако сте автор на оваа белешка, проверете ја вашата e-пошта за врска за да"
-" потврдите дека сакате да оневозможите белешки на овој запис. Во "
-"спротивно, почекајте авторот на записот да го потврди вашето барање."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Ако сте автор на оваа белешка, проверете ја вашата e-пошта за врска за да"
-" потврдите дека сакате да овозможите белешки на овој запис. Во спротивно,"
-" почекајте авторот на записот да го потврди вашето барање."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1166,22 +1052,11 @@ msgid "No person id was specified."
 msgstr "Нема назначено ID на лице."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Нема лице со ID: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Не се најдени резултати за: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Нема таков ентитет за авторизација."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Не се овластени да објавуваат белешки со статус: „Добив информации дека "
-"ова лице е мртво“."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -1273,13 +1148,6 @@ msgstr ""
 "Проверете дали сте биле во контакт со лицето по катастрофата или "
 "променете го полето: „Статус на ова лице“."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Означете дека сте биле во контакт со лицето по земјотресот, или изменете "
-"го полето: \"Статус на ова лице\"."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Означете дали се совпаѓа со лицето што планиравте да го пријавите."
 
@@ -1336,9 +1204,6 @@ msgstr "Покраина или држава"
 
 msgid "Reason for deletion:"
 msgstr "Причина за бришење:"
-
-msgid "Reason for disabling notes:"
-msgstr "Причина за оневозможување белешки:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1424,9 +1289,6 @@ msgstr "Статус на лице"
 
 msgid "Status of this person:"
 msgstr "Статус на ова лице"
-
-msgid "Street name only, no number"
-msgstr "Само улица, без број"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1515,10 +1377,6 @@ msgid ""
 msgstr ""
 "Статусот што го избравте покажува дека вие сте ова лице. Ако е така,  "
 "изберете и „Да“ за да покажете дека сте го контактирале ова лице."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Ознаката %(token)s е неважечка"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1710,17 +1568,8 @@ msgstr "За кого имате информации"
 msgid "Yes"
 msgstr "Да"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Да, побарајте од авторот на записот да оневозможи белешки"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Да, побарајте од авторот на записот да овозможи белешки"
-
 msgid "Yes, delete the record"
 msgstr "Да, избришете го записот"
-
-msgid "Yes, disable notes on this record."
-msgstr "Да, оневозможете белешки на овој запис."
 
 msgid "Yes, extend the record"
 msgstr "Да, продолжете го записот"
@@ -1739,9 +1588,6 @@ msgstr "Веќе сте претплатени. "
 
 msgid "You are already unsubscribed."
 msgstr "Веќе ја откажавте претплатата."
-
-msgid "You are not currently signed in."
-msgstr "Моментално не сте најавени."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1829,18 +1675,6 @@ msgstr "[Пронаоѓач на лица] Оневозможете белешк
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Пронаоѓач на лица] Овозможете белешки за „%(full_name)s“?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Пронаоѓач на лица] Известување за овозможување белешки за „%(full_name)s“"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Пронаоѓач на лица] Сега белешките за „%(full_name)s“ се оневозможени"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Пронаоѓач на лица] Сега белешките за \"%(full_name)s\" се овозможени"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

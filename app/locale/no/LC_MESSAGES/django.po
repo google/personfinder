@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  For å påse at notater blir deaktivert eller aktivert bare hvis "
-"forfatteren av oppføringen samtykker til dette, sender vi en bekreftelse "
-"per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
-" deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -239,38 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på at du vil deaktivere notater for «%(full_name)s»?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på at du vil deaktivere notater på oppføringen for "
-"«%(full_name)s»?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Er du sikker på at du vil aktivere notater for «%(full_name)s»?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -368,23 +316,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    For å påse at notater blir deaktivert eller aktivert bare hvis "
-"forfatteren av oppføringen samtykker til dette, sender vi en bekreftelse "
-"per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
-" deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -400,18 +331,6 @@ msgid ""
 msgstr ""
 "\n"
 "  E-postadressen du skrev inn, er ikke gyldig.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Oppføringen kommer fortsatt til å være synlig på dette nettstedet, men "
-"ingen vil kunne legge ut flere notater på den.\n"
 "  "
 
 msgid ""
@@ -770,9 +689,6 @@ msgstr "Datamaskinversjon"
 msgid "Developers"
 msgstr "Utviklere"
 
-msgid "Disable notes on this record"
-msgstr "Deaktiver notater på denne oppføringen"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Har denne personen profilsider på andre nettsteder?"
 
@@ -806,9 +722,6 @@ msgstr "E-postadresse"
 
 msgid "Embedding the Application"
 msgstr "Bygg inn appen"
-
-msgid "Enable notes on this record"
-msgstr "Aktiver notater på denne oppføringen"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Angi som ÅÅÅÅ-MM-DD"
@@ -956,9 +869,6 @@ msgstr "Jeg er på jakt etter informasjon"
 msgid "I am this person"
 msgstr "Jeg er denne personen"
 
-msgid "I do not want any more updates on this record."
-msgstr "Jeg vil ikke lenger motta oppdateringer for denne oppføringen."
-
 msgid "I do not want my information online anymore."
 msgstr "Jeg vil ikke at mine opplysninger skal være på nettet lenger."
 
@@ -1013,26 +923,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
-"e-post med en link for å bekrefte at du vil deaktivere notater for denne "
-"oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
-"oppføringen bekrefter forespørselen din."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
-"e-post med en link for å bekrefte at du vil aktivere notater for denne "
-"oppføringen. Hvis ikke, må du vente på at den som skrev oppføringen "
-"bekrefter forespørselen din."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1157,22 +1047,11 @@ msgid "No person id was specified."
 msgstr "Ingen person-ID er angitt."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Ingen person med ID-en: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Fant ingen resultater for: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Denne autorisasjonsinstansen eksisterer ikke."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Ikke autorisert til å legge inn notater med statusen «Jeg har mottatt "
-"informasjon om at denne personen er død.»"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Ikke autorisert til å legge ut notater med statusen «believed_dead»."
@@ -1260,13 +1139,6 @@ msgstr ""
 "Merk av for at du har vært i kontakt med denne personen etter "
 "katastrofen, eller endre feltet «Status for denne personen»."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Merk av for at du har vært i kontakt med denne personen etter "
-"jordskjelvet, eller endre feltet «Status for denne personen»."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Kontrollér om dette stemmer overens med personen du ønsker å rapportere."
 
@@ -1323,9 +1195,6 @@ msgstr "Provins eller stat"
 
 msgid "Reason for deletion:"
 msgstr "Årsak til sletting:"
-
-msgid "Reason for disabling notes:"
-msgstr "Årsak til deaktivering av notater:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1411,9 +1280,6 @@ msgstr "Status for personen"
 
 msgid "Status of this person:"
 msgstr "Denne personens status:"
-
-msgid "Street name only, no number"
-msgstr "Kun gatenavn, ikke nummer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1503,10 +1369,6 @@ msgstr ""
 "Valgt status indikerer at du er denne personen. Hvis dette stemmer, ber "
 "vi deg også om å indikere at du har kontaktet denne personen ved å velge "
 "alternativet Ja."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Tokenet %(token)s var ugyldig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1699,17 +1561,8 @@ msgstr "Hvem har du informasjon om?"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ja, be oppføringsforfatteren om å deaktivere notater"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Ja, be oppføringsforfatteren om å aktivere notater"
-
 msgid "Yes, delete the record"
 msgstr "Ja, slett oppføringen"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ja, deaktiver notater for denne oppføringen."
 
 msgid "Yes, extend the record"
 msgstr "Ja, forleng oppføringen"
@@ -1728,9 +1581,6 @@ msgstr "Du abonnerer allerede. "
 
 msgid "You are already unsubscribed."
 msgstr "Du har allerede avsluttet abonnementet."
-
-msgid "You are not currently signed in."
-msgstr "Du er for øyeblikket ikke pålogget."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1813,18 +1663,6 @@ msgstr "[Personsøk] Vil du deaktivere notater for «%(full_name)s»?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Personsøk] Vil du aktivere notater for «%(full_name)s»?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Personsøk] Aktiverer notatmelding for «%(full_name)s»"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Personsøk] Notater er deaktivert for «%(full_name)s»"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Personsøk] Notater er nå aktivert for «%(full_name)s»"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

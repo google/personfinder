@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  S potrditvenim sporočilom, ki ga bomo poslali avtorju zapisa, bomo "
-"zagotovili, da so opombe omogočene ali onemogočene samo z dovoljenjem "
-"avtorja zapisa. Če ste avtor vi, po kliku spodnjega gumba preverite "
-"e-pošto.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -239,37 +219,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ali res želite onemogočiti opombe za osebo »%(full_name)s«?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ali res želite onemogočiti opombe v zapisu osebe »%(full_name)s«?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Ali res želite omogočiti opombe za osebo »%(full_name)s«?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -366,23 +315,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    S potrditvenim sporočilom, ki ga bomo poslali avtorju zapisa, bomo "
-"zagotovili, da so opombe omogočene ali onemogočene samo z dovoljenjem "
-"avtorja zapisa. Če ste avtor vi, po kliku spodnjega gumba preverite "
-"e-pošto.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -398,18 +330,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Vneseni e-poštni naslov ni veljaven.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Zapis bo še vedno viden na tem spletnem mestu, vendar zanj ne bo več "
-"mogoče objavljati opomb.\n"
 "  "
 
 msgid ""
@@ -768,9 +688,6 @@ msgstr "Namizna različica"
 msgid "Developers"
 msgstr "Razvijalci"
 
-msgid "Disable notes on this record"
-msgstr "Onemogoči opombe v tem zapisu"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Ali ima ta oseba strani profila na drugih spletnih mestih?"
 
@@ -804,9 +721,6 @@ msgstr "E-poštni naslov"
 
 msgid "Embedding the Application"
 msgstr "Vdelava te aplikacije"
-
-msgid "Enable notes on this record"
-msgstr "Omogoči opombe v tem zapisu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Vnesite v obliki LLLL-MM-DD"
@@ -952,9 +866,6 @@ msgstr "Iščem informacije"
 msgid "I am this person"
 msgstr "Ta oseba sem jaz"
 
-msgid "I do not want any more updates on this record."
-msgstr "Za ta zapis ne želim novih posodobitev."
-
 msgid "I do not want my information online anymore."
 msgstr "Ne želim več, da so moji podatki objavljeni v spletu."
 
@@ -1009,24 +920,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Če ste avtor te opombe, preverite, ali ste prejeli e-pošto s povezavo, s "
-"katero lahko potrdite, da želite za ta zapis onemogočiti opombe. V "
-"nasprotnem primeru počakajte, da vašo zahtevo potrdi avtor zapisa."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Če ste avtor te opombe, preverite, ali ste prejeli e-pošto s povezavo, s "
-"katero lahko potrdite, da želite za ta zapis omogočiti opombe. V "
-"nasprotnem primeru počakajte, da vašo zahtevo potrdi avtor zapisa."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1153,22 +1046,11 @@ msgid "No person id was specified."
 msgstr "Naveden ni bil noben osebni dokument."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Ni osebe z ID-jem: %(id_str)s"
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Ni bilo rezultatov iskanja za: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ni nobenega takega subjekta za dodeljevanje dovoljenj."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Niste pooblaščeni za objavo opomb s statusom »Prejel sem informacije, da "
-"je ta oseba mrtva«."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "Nimate pooblastila za objavljanje opombe s stanjem »believed_dead«."
@@ -1257,13 +1139,6 @@ msgstr ""
 "Preverite, ali ste bili po katastrofi v stiku z osebo ali pa spremenite "
 "polje »Stanje te osebe«."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Preverite, ali ste bili po potresu v stiku z osebo ali pa spremenite "
-"polje »Stanje te osebe«."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Preverite, ali se ujema z osebo, za katero ste nameravali vnesti prijavo."
 
@@ -1320,9 +1195,6 @@ msgstr "Provinca ali zvezna država"
 
 msgid "Reason for deletion:"
 msgstr "Razlog za izbris:"
-
-msgid "Reason for disabling notes:"
-msgstr "Razlog, zaradi katerega ste onemogočili opombe:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1409,9 +1281,6 @@ msgstr "Stanje osebe"
 msgid "Status of this person:"
 msgstr "Stanje te osebe:"
 
-msgid "Street name only, no number"
-msgstr "Samo ulica brez številke"
-
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1497,10 +1366,6 @@ msgid ""
 msgstr ""
 "Izbrano stanje kaže, da ste ta oseba vi. Če to drži, izberite tudi »Da«, "
 "da potrdite, da ste vzpostavili stik s to osebo."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Žeton %(token)s ni veljaven"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1692,17 +1557,8 @@ msgstr "O kom imate podatke"
 msgid "Yes"
 msgstr "Da"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Da, prosite avtorja zapisa, da onemogoči opombe"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Da, prosite avtorja zapisa, da omogoči opombe"
-
 msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
-
-msgid "Yes, disable notes on this record."
-msgstr "Da, onemogoči opombe v tem zapisu."
 
 msgid "Yes, extend the record"
 msgstr "Da, podaljšaj zapis"
@@ -1721,9 +1577,6 @@ msgstr "Ste že naročeni. "
 
 msgid "You are already unsubscribed."
 msgstr "Naročnina je že odpovedana."
-
-msgid "You are not currently signed in."
-msgstr "Trenutno niste vpisani."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1804,18 +1657,6 @@ msgstr "[Iskalnik oseb] Ali želite onemogočiti opombe za osebo »%(full_name)s
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Iskalnik oseb] Ali želite omogočiti opombe za osebo »%(full_name)s«?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Iskalnik oseb] Obvestilo o omogočenju opomb za osebo »%(full_name)s«"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Iskalnik oseb] Opombe so zdaj onemogočene za osebo »%(full_name)s«"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Iskalnik oseb] Opombe so zdaj omogočene za osebo »%(full_name)s«"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

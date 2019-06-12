@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Për t'u siguruar që shënimet janë të disponueshme ose jo, me lejen e "
-"autorit të raportit, një mesazh konfirmimi do t'i dërgohet autorit. Nëse "
-"autori jeni ju, atëherë kontrolloni postën tuaj elektronike pasi të keni "
-"klikuar butonin e mëposhtëm.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -227,40 +207,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Jeni i sigurt që doni t'i lejoni për shfrytëzim shënimet mbi "
-"\"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Jeni i sigurt që doni ta hiqni mundësinë e shfrytëzimit të "
-"shënimeve në raportin për \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Jeni i sigurt që doni ta lejoni mundësinë e shfrytëzimit të "
-"shënimeve mbi \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -354,23 +300,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Për t'u siguruar që shënimet janë të disponueshme ose jo, me lejen e "
-"autorit të raportit, një mesazh konfirmimi do t'i dërgohet autorit. Nëse "
-"autori jeni ju, atëherë kontrolloni postën tuaj elektronike pasi të keni "
-"klikuar butonin e mëposhtëm.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -386,18 +315,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Adresa e mail-it që fute nuk është e vlefshme.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Raporti do të vazhdojë të figurojë në këtë faqe, por askush nuk do të "
-"jetë në gjendje të postojë shënime të tjera në të.\n"
 "  "
 
 msgid ""
@@ -743,9 +660,6 @@ msgstr "Versioni në Desktop"
 msgid "Developers"
 msgstr "Programuesit"
 
-msgid "Disable notes on this record"
-msgstr "Çaktivizo mundësinë për shënime në këtë raport"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "A ka faqe profili apo faqe interneti të tjera ky person?"
 
@@ -779,9 +693,6 @@ msgstr "Adresa e email-it"
 
 msgid "Embedding the Application"
 msgstr "Duke instaluar aplikacionin"
-
-msgid "Enable notes on this record"
-msgstr "Aktivizo mundësinë për shënime në këtë raport"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Shkruajeni datën në formatin \"YYYY-MM-DD\""
@@ -931,9 +842,6 @@ msgstr "Po kërkoj informacione"
 msgid "I am this person"
 msgstr "Unë jam ky person"
 
-msgid "I do not want any more updates on this record."
-msgstr "Nuk dua më njoftime mbi këtë raport."
-
 msgid "I do not want my information online anymore."
 msgstr "Nuk më nevojiten më të dhënat e mia në internet."
 
@@ -988,26 +896,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Nëse autori i këtij shënimi jeni ju, ju lutemi kontrolloni postën tuaj "
-"elektronike për lidhjen e konfirmimit përmes të cilës do të çaktivizoni "
-"mundësinë e futjes së shënimeve në këtë raport. Në të kundërt, ju lutemi "
-"prisni që kërkesën tuaj ta konfirmojë autori i raportit."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Nëse autori i këtij shënimi jeni ju, ju lutemi kontrolloni postën tuaj "
-"elektronike për lidhjen e konfirmimit përmes të cilës do të aktivizoni "
-"mundësinë e futjes së shënimeve në këtë raport. Në të kundërt, ju lutemi "
-"prisni që kërkesën tuaj ta konfirmojë autori i raportit."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1140,22 +1028,11 @@ msgid "No person id was specified."
 msgstr "Nuk u specifikua asnjë ID e personit."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Nuk ka asnjë person me id.-në %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Asnjë rezultat nuk u gjet për %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Nuk keni një autorizim i tillë."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"I/E paautorizuar për të postuar shënime me statusin \"Kam marrë "
-"informacione se ky person ka vdekur\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "I/E paautorizuar për të postuar shënime me statusin \"mendohet i vdekur\"."
@@ -1246,13 +1123,6 @@ msgstr ""
 "Kontrollo që ke qenë në kontakt me personin pas katastrofës ose ndrysho "
 "fushën \"Statusi i këtij personi\"."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Ju lutemi, verifikoni që keni kontaktuar me këtë person pas tërmetit ose "
-"ndryshoni fushën \"Statusi i këtij personi\"."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Ju lutemi, verifikoni nëse i përputhet personit që ju planifikonit ta "
@@ -1313,9 +1183,6 @@ msgstr "Provinca ose shteti"
 
 msgid "Reason for deletion:"
 msgstr "Arsyeja e fshirjes:"
-
-msgid "Reason for disabling notes:"
-msgstr "Arsyeja për çaktivizimin e shënimeve:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1401,9 +1268,6 @@ msgstr "Statusi i personit"
 
 msgid "Status of this person:"
 msgstr "Statusi i këtij personi:"
-
-msgid "Street name only, no number"
-msgstr "Vetëm emrin e rrugës, jo numrin e saj"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1497,10 +1361,6 @@ msgstr ""
 "Statusi që keni klikuar tregon se ju jeni personi i duhur. Nëse është e "
 "vërtetë, ju lutemi klikoni 'Po' për të treguar se ju keni kontaktuar me "
 "këtë person."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Atributi %(token)s ishte i pavlefshëm"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1697,21 +1557,8 @@ msgstr "Për kë ke informacione"
 msgid "Yes"
 msgstr "Po"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr ""
-"Po, kërkojini autorit të raportit që të çaktivizojë mundësinë e "
-"futjes/shfrytëzimit të shënimeve."
-
-msgid "Yes, ask the record author to enable notes"
-msgstr ""
-"Po, kërkojini autorit të raportit që të aktivizojë mundësinë e "
-"futjes/shfrytëzimit të shënimeve."
-
 msgid "Yes, delete the record"
 msgstr "Po, fshije raportin"
-
-msgid "Yes, disable notes on this record."
-msgstr "Po, çaktivizoje futjen/shfrytëzimin e shënimeve në këtë raport."
 
 msgid "Yes, extend the record"
 msgstr "Po, shtyje afatin e shfrytëzimit të raportit"
@@ -1730,9 +1577,6 @@ msgstr "Ju jeni abonuar tashmë. "
 
 msgid "You are already unsubscribed."
 msgstr "Ju jeni çabonuar tashmë."
-
-msgid "You are not currently signed in."
-msgstr "Ju nuk keni hyrë në llogari."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1820,20 +1664,6 @@ msgstr "[Gjetësi i Personave] Do i çaktivizosh shënimet mbi \"%(full_name)s\"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Gjetësi i Personave] Do i aktivizosh shënimet mbi \"%(full_name)s\"?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr ""
-"[Gjetësi i Personave] Njoftimi për aktivizimin e shënimeve për "
-"\"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Gjetësi i Personave] Shënimet u çaktivizuan për \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Gjetësi i Personave] Shënimet u aktivizuan mbi \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

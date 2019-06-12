@@ -14,6 +14,7 @@
 
 from google.appengine.api import datastore_errors
 
+import create
 from model import *
 from photo import create_photo, PhotoError
 from utils import *
@@ -25,9 +26,6 @@ import utils
 
 from django.utils.translation import ugettext as _
 from urlparse import urlparse
-
-# TODO(jessien): Clean up duplicate code here and in create.py.
-# https://github.com/google/personfinder/issues/157
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
@@ -52,39 +50,20 @@ class Handler(BaseHandler):
                 _("This person's entry does not exist or has been deleted."))
 
         # Render the page.
-        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
-
-        self.render('add_note.html',
-                    person=person,
-                    enable_notes_url=enable_notes_url)
+        self.render('add_note.html', person=person)
 
     def post(self):
         """Post a note in person's record view page"""
-        if not self.params.text:
-            return self.error(
-                400, _('Message is required. Please go back and try again.'))
-
-        if not self.params.author_name:
-            return self.error(
-                400, _('Your name is required in the "About you" section.  '
-                       'Please go back and try again.'))
-
-        if (self.params.status == 'is_note_author' and
-            not self.params.author_made_contact):
-            return self.error(
-                400, _('Please check that you have been in contact with '
-                       'the person after the disaster, or change the '
-                       '"Status of this person" field.'))
-        if (self.params.status == 'believed_dead' and
-            not self.config.allow_believed_dead_via_ui):
-            return self.error(
-                400, _('Not authorized to post notes with the status '
-                       '"believed_dead".'))
-
-        if (self.params.author_email and
-            not utils.validate_email(self.params.author_email)):
-            return self.error(400, _(
-                'The email address you entered appears to be invalid.'))
+        try:
+            create.validate_note_data(
+                config=self.config,
+                status=self.params.status,
+                author_name=self.params.author_name,
+                author_email=self.params.author_email,
+                author_made_contact=self.params.author_made_contact,
+                text=self.params.text)
+        except create.CreationError as e:
+            return self.error(400, e.user_readable_message)
 
         person = Person.get(self.repo, self.params.id)
         if person.notes_disabled:
@@ -104,65 +83,29 @@ class Handler(BaseHandler):
                 return self.error(400, e.message)
             photo.put()
 
-        spam_detector = SpamDetector(self.config.bad_words)
-        spam_score = spam_detector.estimate_spam_score(self.params.text)
-
-        if (spam_score > 0):
-            note = NoteWithBadWords.create_original(
-                self.repo,
-                entry_date=get_utcnow(),
-                person_record_id=self.params.id,
+        try:
+            note = create.create_note(
+                repo=self.repo,
+                person=person,
+                config=self.config,
+                user_ip_address=self.request.remote_addr,
+                status=self.params.status,
+                source_date=get_utcnow(),
                 author_name=self.params.author_name,
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
-                source_date=get_utcnow(),
                 author_made_contact=bool(self.params.author_made_contact),
-                status=self.params.status,
-                email_of_found_person=self.params.email_of_found_person,
-                phone_of_found_person=self.params.phone_of_found_person,
-                last_known_location=self.params.last_known_location,
-                text=self.params.text,
                 photo=photo,
                 photo_url=photo_url,
-                spam_score=spam_score,
-                confirmed=False)
-            # Write the new NoteWithBadWords to the datastore
-            note.put_new()
-            # When the note is detected as spam, we do not update person record
-            # or log action. We ask the note author for confirmation first.
-            return self.redirect('/post_flagged_note', id=note.get_record_id(),
-                                 author_email=note.author_email,
-                                 repo=self.repo)
-        else:
-            note = Note.create_original(
-                self.repo,
-                entry_date=get_utcnow(),
-                person_record_id=self.params.id,
-                author_name=self.params.author_name,
-                author_email=self.params.author_email,
-                author_phone=self.params.author_phone,
-                source_date=get_utcnow(),
-                author_made_contact=bool(self.params.author_made_contact),
-                status=self.params.status,
+                text=self.params.text,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
-                text=self.params.text,
-                photo=photo,
-                photo_url=photo_url)
-            # Write the new regular Note to the datastore
-            note.put_new()
-
-        # Specially log 'believed_dead'.
-        if note.status == 'believed_dead':
-            UserActionLog.put_new(
-                'mark_dead', note, person.primary_full_name,
-                self.request.remote_addr)
-
-        # Specially log a switch to an alive status.
-        if (note.status in ['believed_alive', 'is_note_author'] and
-            person.latest_status not in ['believed_alive', 'is_note_author']):
-            UserActionLog.put_new('mark_alive', note, person.primary_full_name)
+                validate_data=False)
+        except create.FlaggedNoteException as e:
+            return self.redirect(
+                '/post_flagged_note', id=e.note.get_record_id(),
+                author_email=e.note.author_email, repo=self.repo)
 
         # Update the Person based on the Note.
         if person:

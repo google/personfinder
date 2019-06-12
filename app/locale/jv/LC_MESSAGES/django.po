@@ -21,26 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  Kanggo njamin catetan mung dipateni utawa diaktifake karo idin "
-"pengarang laporan, pesen konfirmasi bakal dikirim menyang pengarang "
-"laporan. Yen sampeyan panulise, priksa email sampeyan sabanjure ngeklik "
-"tombol ing ngisor iki.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -238,38 +218,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sampeyan yakin pengin mateni cathetan ing \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sampeyan yakin pengin mateni cathetan ing laporane "
-"\"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      Sampeyan yakin pengin ngaktifake cathetan ing \"%(full_name)s\"?\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -363,23 +311,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    Kanggo njamin catetan mung dipateni utawa diaktifake karo idin "
-"panulis cathetan, pesen konfirmasi bakal dikirim menyang panulis "
-"cathetan. Yen sampeyan panulise, priksa email sampeyan sabanjure ngeklik "
-"tombol ing ngisor iki.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -395,18 +326,6 @@ msgid ""
 msgstr ""
 "\n"
 "  Alamat Email sing sampeyan ketik ora sah.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  Laporan iki bakal isih bisa didheleng ing situs iki, nanging ora ana "
-"sing bisa ngirim cathetan ing laporane.\n"
 "  "
 
 msgid ""
@@ -755,9 +674,6 @@ msgstr "Versi desktop"
 msgid "Developers"
 msgstr "Pangembang"
 
-msgid "Disable notes on this record"
-msgstr "Pateni cathetan ing laporan iki"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "Apa wong iki duwe kaca profil ing situs web liyane?"
 
@@ -791,9 +707,6 @@ msgstr "Alamat email"
 
 msgid "Embedding the Application"
 msgstr "Sematke Aplikasi iki"
-
-msgid "Enable notes on this record"
-msgstr "Aktifake cathetan ing laporan iki"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ketik minangka YYYY-MM-DD"
@@ -943,9 +856,6 @@ msgstr "Aku lagi nggoleki informasi"
 msgid "I am this person"
 msgstr "Aku wong iki"
 
-msgid "I do not want any more updates on this record."
-msgstr "Aku ora gelem nganyari apa wae ing laporan iki."
-
 msgid "I do not want my information online anymore."
 msgstr "Aku ora pengin informasiku online maneh."
 
@@ -1000,24 +910,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Yen sampeyan pengarang cathetan iki, priksa email kanggo nemu tautan "
-"kanggo konfirmasi manawa sampeyan pengin mateni cathetan ing laporan iki."
-" Yen ora, enteni pengarang kanggo ngonfirmasi panjaluk sampeyan."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"Yen sampeyan pengarang cathetan iki, priksa email kanggo nemu tautan "
-"kanggo konfirmasi manawa sampeyan pengin ngaktifake cathetan ing laporan "
-"iki. Yen ora, enteni pengarang kanggo ngonfirmasi panjaluk sampeyan."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Yen sampeyan duwe foto wong iki, unggah utawa ketik alamat URL-e."
@@ -1140,22 +1032,11 @@ msgid "No person id was specified."
 msgstr "Ora onok ID wong sing disebutake."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "Ora ana wong karo ID: %(id_str)s ."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "Ora ana asil kanggo: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "Ora ana entitas wewenang."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"Ora duwe wewenang kanggo ngirim cathetan posting karo status \"Aku wis "
-"nampa informasi manawa wong iki wis meninggal\"."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
@@ -1247,13 +1128,6 @@ msgstr ""
 "Priksa manawa sampeyan wis ngubungi wong iki sabanjure musibah, utawa "
 "genti kolom \"Status wong iki\"."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Priksa manawa sampeyan wis ngubungi wong iki sabanjure gempa bumi, utawa "
-"karo genti kolom \"Status wong iki\"."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Mangga priksa manawa iku wis cocog karo wong sing pengin sampeyan "
@@ -1312,9 +1186,6 @@ msgstr "Provinsi utawa negara bagean"
 
 msgid "Reason for deletion:"
 msgstr "Alesan pambusakan:"
-
-msgid "Reason for disabling notes:"
-msgstr "Alesan kanggo mateni cathetan:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1400,9 +1271,6 @@ msgstr "Status Wong"
 
 msgid "Status of this person:"
 msgstr "Status wong iki:"
-
-msgid "Street name only, no number"
-msgstr "Mung jeneng dalan, ora perlu nomer"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1492,10 +1360,6 @@ msgstr ""
 "Status sing sampeyan pilih nuduhake manawa sampeyan iku wong iki. Yen "
 "bener, monggo pilih 'Ya' kanggo nunjukake manawa sampeyan wis ngubungi "
 "wong iki."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "Token %(token)s ora valid"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1684,17 +1548,8 @@ msgstr "Sing sampeyan duweni informasine"
 msgid "Yes"
 msgstr "Ya"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "Ya, takoni pengarang rekaman kanggo mateni cathetan"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "Ya, takon pengarang rekaman kanggo ngaktifake cathetan"
-
 msgid "Yes, delete the record"
 msgstr "Ya, busak laporan"
-
-msgid "Yes, disable notes on this record."
-msgstr "Ya, pateni cathetan ing laporan iki."
 
 msgid "Yes, extend the record"
 msgstr "Ya, tambah wektu kedaluwarsa laporan"
@@ -1713,9 +1568,6 @@ msgstr "Sampeyan wis langganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Sampeyan wis batal langganan."
-
-msgid "You are not currently signed in."
-msgstr "Sampeyan ora mlebu"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1803,18 +1655,6 @@ msgstr "[Person Finder] Pateni cathetan kanggo \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Aktifake cathetan kanggo \"%(full_name)s\"?"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "[Person Finder] NGaktifake kabar cathetan kanggo \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "[Person Finder] Cathetan saiki dipateni kanggo \"%(full_name)s\""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "[Person Finder] Cathetan saiki diaktifake kanggo \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

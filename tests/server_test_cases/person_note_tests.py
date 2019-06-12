@@ -444,7 +444,7 @@ class PersonNoteTests(ServerTestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            given_name='_test_given_name',
+            given_name='alexander',
             family_name='_test_family_name',
             full_name='_test_given_name _test_family_name',
             entry_date=datetime.datetime.utcnow(),
@@ -455,10 +455,10 @@ class PersonNoteTests(ServerTestsBase):
         assert_params()
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query_name='_test_given_name')
+        self.s.submit(search_form, query_name='alexander')
         assert_params()
         link = self.s.doc.cssselect_one('a.results-found')
-        assert 'query_name=_test_given_name' in link.get('href')
+        assert 'query_name=alexander' in link.get('href')
 
     def test_search_page_link(self):
         self.go('/haiti')
@@ -543,6 +543,8 @@ class PersonNoteTests(ServerTestsBase):
     def test_user_action_log_created(self):
         self.go('/haiti/create?query=&role=seek&given_name=&family_name=')
         self.submit_minimal_create_form(self.s.doc.cssselect_one('form'))
+        url_parts = list(urlparse.urlparse(self.s.url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
         self.verify_update_notes(
             author_made_contact=True,
             note_body='_test Another note body',
@@ -554,7 +556,7 @@ class PersonNoteTests(ServerTestsBase):
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                repo='haiti',
-                               detail='_test_given_name _test_family_name',
+                               detail=record_id,
                                ip_address='',
                                Note_text='_test Another note body',
                                Note_status='believed_alive')
@@ -668,16 +670,16 @@ class PersonNoteTests(ServerTestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            given_name='_test_given_name',
+            given_name='eric',
             family_name='_test_family_name',
             full_name='_test_given_name _test_family_name',
             entry_date=datetime.datetime.utcnow(),
             text='_test A note body')
         person.update_index(['old', 'new'])
         person.put()
-        self.go('/haiti/results?role=seek&query=_test_given_name')
+        self.go('/haiti/results?role=seek&query=eric')
         link = self.s.doc.cssselect_one('a.result-link')
-        assert 'query_name=_test_given_name' in link.get('href')
+        assert 'query_name=eric' in link.get('href')
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.
@@ -1371,6 +1373,8 @@ http://www.foo.com/_account_1''',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
+        url_parts = list(urlparse.urlparse(view_url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
 
         # Check that the right status options appear on the view page.
         self.s.go(view_url)
@@ -1399,7 +1403,7 @@ http://www.foo.com/_account_1''',
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                     repo='haiti',
-                                    detail='_test_given _test_family',
+                                    detail=record_id,
                                     ip_address='',
                                     Note_text='_test_text',
                                     Note_status='believed_alive')
@@ -1443,6 +1447,8 @@ http://www.foo.com/_account_1''',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
+        url_parts = list(urlparse.urlparse(view_url))
+        record_id = dict(urlparse.parse_qsl(url_parts[4]))['id']
 
         # Check that the believed_dead option does not appear
         # on the view page.
@@ -1475,7 +1481,7 @@ http://www.foo.com/_account_1''',
         # Check that a UserActionLog entry was created.
         self.verify_user_action_log('mark_alive', 'Note',
                                     repo='japan',
-                                    detail='_test_family _test_given',
+                                    detail=record_id,
                                     ip_address='',
                                     Note_text='_test_text',
                                     Note_status='believed_alive')
@@ -2850,29 +2856,35 @@ _read_profile_url2</pfif:profile_urls>
             phone_number='+10987654321',
             path='/global/api/handle_sms?key=sms_key&lang=en',
             expected_response_code=400,
-            expected_response='The given receiver_phone_number is not found in '
-                 'sms_number_to_repo config.')
+            expected_response= 'You&#39;ve reached Person Finder, but '
+                'there&#39;s not a repository assigned for +10987654321.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?key=global_test_key&lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
         self.verify_sms_response(
             message_text='Search _test_family_name',
             phone_number='+12345678901',
             path='/global/api/handle_sms?key=search_key&lang=en',
             expected_response_code=403,
-            expected_response='&quot;key&quot; URL parameter is either '
-                 'missing, invalid or lacks required permissions.')
+            expected_response='&#39;key&#39; URL parameter is either missing, '
+                'invalid or lacks required permissions. The key&#39;s repo '
+                'must be &#39;*&#39;, search_permission must be True, and it '
+                'must have write permission with domain name &#39;*&#39;.')
 
 
     def test_person_feed(self):
@@ -3665,152 +3677,6 @@ _feed_profile_url2</pfif:profile_urls>
         # Verify that the expiration warning is gone.
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert 'Warning: this record will expire' not in doc.text
-
-    def test_disable_and_enable_notes(self):
-        """Test disabling and enabling notes for a record through the UI. """
-        person, note = self.setup_person_and_note()
-        p123_id = 'haiti.personfinder.google.org/person.123'
-        # View the record and click the button to disable comments.
-        doc = self.go('/haiti/view?' + 'id=' + p123_id)
-        doc = self.s.follow(doc.cssselect_one('#disable-notes-btn'))
-        assert 'disable notes on ' \
-               '"_test_given_name _test_family_name"' in doc.text
-        button = doc.xpath_one(
-            '//input[@value="Yes, ask the record author to disable notes"]')
-        doc = self.s.submit(button, faked_captcha_response='failure')
-
-        # Check to make sure that the user was redirected to the same page due
-        # to an invalid captcha.
-        assert 'disable notes on ' \
-               '"_test_given_name _test_family_name"' in doc.text, \
-               'missing expected status from %s' % doc.text
-
-        # Continue with a valid captcha (faked, for purpose of test). Check
-        # that a proper message has been sent to the record author.
-        doc = self.go(
-            '/haiti/disable_notes',
-            data='id=haiti.personfinder.google.org/person.123&' +
-                 'faked_captcha_response=success')
-        self.verify_email_sent(1)
-        messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
-        assert messages[0]['to'] == ['test@example.com']
-        words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Disable notes on '
-                '"_test_given_name _test_family_name"?' in words), words
-        assert 'the author of this record' in words
-        assert 'follow this link within 3 days' in words
-        confirm_disable_notes_url = re.search(
-            '(/haiti/confirm_disable_notes.*)', messages[0]['data']).group(1)
-        assert confirm_disable_notes_url
-        # The author confirm disabling comments using the URL in the e-mail.
-        # Clicking the link should take you to the confirm_disable_commments
-        # page (no CAPTCHA) where you can click the button to confirm.
-        doc = self.go(confirm_disable_notes_url)
-        assert 'reason_for_disabling_notes' in doc.content, doc.content
-        assert 'The record will still be visible on this site' in doc.text, \
-            utils.encode(doc.text)
-        button = doc.xpath_one(
-            '//input[@value="Yes, disable notes on this record."]')
-        doc = self.s.submit(button,
-                            reason_for_disabling_notes='spam_received')
-
-        # The Person record should now be marked as notes_disabled.
-        person = Person.get('haiti', person.record_id)
-        assert person.notes_disabled
-
-        # Check the notification messages sent to related e-mail accounts.
-        self.verify_email_sent(3)
-        messages = sorted(self.mail_server.messages[1:], key=lambda m: m['to'][0])
-
-        # After sorting by recipient, the second message should be to the
-        # person author, test@example.com (sorts after test2@example.com).
-        assert messages[1]['to'] == ['test@example.com']
-        words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Notes are now disabled for '
-                '"_test_given_name _test_family_name"' in words), words
-
-        # The first message should be to the note author, test2@example.com.
-        assert messages[0]['to'] == ['test2@example.com']
-        words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Notes are now disabled for '
-                '"_test_given_name _test_family_name"' in words), words
-
-        # Make sure that a UserActionLog row was created.
-        self.verify_user_action_log('disable_notes', 'Person', repo='haiti',
-            entity_key_name='haiti:haiti.personfinder.google.org/person.123',
-            detail='spam_received')
-
-        # Redirect to view page, now we should not show the add_note panel,
-        # instead, we show message and a button to enable comments.
-        assert not doc.cssselect('input.add-note')
-        assert 'The author has disabled notes on ' \
-               'this record.' in doc.content
-
-        # Click the enable_notes button should lead to enable_notes
-        # page with a CAPTCHA.
-        doc = self.s.submit(doc.cssselect_one('input.enable-notes'))
-        assert 'enable notes on ' \
-               '"_test_given_name _test_family_name"' in doc.text
-        button = doc.xpath_one(
-            '//input[@value="Yes, ask the record author to enable notes"]')
-        doc = self.s.submit(button, faked_captcha_response='failure')
-
-        # Check to make sure that the user was redirected to the same page due
-        # to an invalid captcha.
-        assert 'enable notes on ' \
-               '"_test_given_name _test_family_name"' in doc.text
-
-        # Continue with a valid captcha. Check that a proper message
-        # has been sent to the record author.
-        doc = self.go(
-            '/haiti/enable_notes',
-            data='id=haiti.personfinder.google.org/person.123&' +
-                 'faked_captcha_response=success')
-        assert 'confirm that you want to enable notes on this record.' \
-            in doc.text, utils.encode(doc.text)
-        # Check that a request email has been sent to the author.
-        self.verify_email_sent(4)
-        messages = sorted(self.mail_server.messages[3:],
-                          key=lambda m: m['to'][0])
-        assert messages[0]['to'] == ['test@example.com']
-        words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Enable notes on '
-                '"_test_given_name _test_family_name"?' in words), words
-        assert 'the author of this record' in words, words
-        assert 'follow this link within 3 days' in words, words
-        confirm_enable_notes_url = re.search(
-            '(/haiti/confirm_enable_notes.*)', messages[0]['data']).group(1)
-        assert confirm_enable_notes_url
-        # The author confirm enabling comments using the URL in the e-mail.
-        # Clicking the link should take you to the confirm_enable_commments
-        # page which verifies the token and immediately redirect to view page.
-        doc = self.go(confirm_enable_notes_url)
-
-        # The Person record should now have notes_disabled = False.
-        person = Person.get('haiti', person.record_id)
-        assert not person.notes_disabled
-
-        # Check the notification messages sent to related e-mail accounts.
-        self.verify_email_sent(6)
-        messages = sorted(self.mail_server.messages[4:],
-                          key=lambda m: m['to'][0])
-        assert messages[1]['to'] == ['test@example.com']
-        words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Notes are now enabled on ' +
-                '"_test_given_name _test_family_name"' in words), words
-        assert messages[0]['to'] == ['test2@example.com']
-        words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Notes are now enabled on ' +
-                '"_test_given_name _test_family_name"' in words), words
-
-        # Make sure that a UserActionLog row was created.
-        self.verify_user_action_log('enable_notes', 'Person', repo='haiti',
-            entity_key_name='haiti:haiti.personfinder.google.org/person.123')
-
-        # In the view page, now we should see add-note button,
-        # also, we show the link to disable comments.
-        assert doc.cssselect('input.add-note')
-        assert 'Disable notes on this record' in doc.content
 
     def test_detect_note_with_bad_words(self):
         """Checks that we can config the subdomain by adding a list of

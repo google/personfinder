@@ -21,25 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-msgid ""
-"\n"
-"\n"
-"  To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"  permission, a confirmation message will be sent to the record author.\n"
-"  If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"\n"
-"  "
-msgstr ""
-"\n"
-"\n"
-"  برای اطمینان از اینکه یادداشت‌ها فقط با مجوز نویسنده سابقه فعال یا "
-"غیرفعال می‌شوند، یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما "
-"نویسنده هستید، بعد از کلیک بر روی دکمه زیر، ایمیل  خود را بررسی کنید.\n"
-"\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -229,40 +210,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      مطمئنید می‌خواهید یادداشت‌های مربوط به «%(full_name)s» را غیرفعال "
-"کنید؟\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to disable notes on the record of "
-"\"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      مطمئنید می‌خواهید یادداشت‌ها را در سابقه «%(full_name)s» غیرفعال "
-"کنید؟\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to enable notes on \"%(full_name)s\"?\n"
-"    "
-msgstr ""
-"\n"
-"      مطمئنید می‌خواهید یادداشت‌های مربوط به «%(full_name)s» را فعال "
-"کنید؟\n"
-"    "
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -359,24 +306,6 @@ msgid ""
 "  "
 msgstr ""
 
-msgid ""
-"\n"
-"    To ensure that notes are only disabled or enabled with the record "
-"author's\n"
-"    permission, a confirmation message will be sent to the record author."
-"\n"
-"    If you are the author, check your e-mail after clicking the button "
-"below.\n"
-"  "
-msgstr ""
-"\n"
-"    برای اطمینان از اینکه یادداشت‌ها فقط با مجوز نویسنده سابقه فعال یا "
-"غیرفعال می‌شوند،\n"
-"یک پیام تأیید برای نویسنده سابقه ارسال می‌شود. اگر شما نویسنده هستید، بعد"
-" از کلیک\n"
-"بر روی دکمه زیر، ایمیل  خود را بررسی کنید.\n"
-"  "
-
 #, python-format
 msgid ""
 "\n"
@@ -392,18 +321,6 @@ msgid ""
 msgstr ""
 "\n"
 "  آدرس ایمیلی که وارد کردید معتبر نیست.\n"
-"  "
-
-msgid ""
-"\n"
-"  The record will still be visible on this site, but no one will be able "
-"to post\n"
-"  further notes on it.\n"
-"  "
-msgstr ""
-"\n"
-"  سابقه هنوز هم در این سایت قابل مشاهده خواهد بود، اما هیچ کس\n"
-" نمی‌تواند یادداشت‌های دیگری به آن پست کند.\n"
 "  "
 
 msgid ""
@@ -745,9 +662,6 @@ msgstr "نسخه رایانه‌ای"
 msgid "Developers"
 msgstr "برنامه‌نویسان"
 
-msgid "Disable notes on this record"
-msgstr "غیرفعال کردن یادداشت‌‌ها در این سابقه"
-
 msgid "Does this person have profile pages at other websites?"
 msgstr "این شخص در سایر وب‌سایت‌ها دارای صفحه‌های نمایه است؟"
 
@@ -779,9 +693,6 @@ msgstr "نشانی ایمیل "
 
 msgid "Embedding the Application"
 msgstr "جاسازی این برنامه"
-
-msgid "Enable notes on this record"
-msgstr "فعال کردن یادداشت‌ها در این سابقه"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "‏‫به صورت YYYY-MM-DD وارد کنید"
@@ -929,9 +840,6 @@ msgstr "به دنبال کسب اطلاعات هستم"
 msgid "I am this person"
 msgstr "من همین شخص هستم"
 
-msgid "I do not want any more updates on this record."
-msgstr "نمی‌خواهم به‌روزرسانی‌های دیگری برای این سابقه داشته باشم."
-
 msgid "I do not want my information online anymore."
 msgstr "دیگر نمی‌خواهم اطلاعاتم بصورت آنلاین نمایش داده شود."
 
@@ -986,26 +894,6 @@ msgid ""
 "If this webpage is not replaced in a few seconds, please <a "
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to disable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"اگر نویسنده این یادداشت هستید، لطفاً ایمیل  خود را برای دریافت پیوندی "
-"بررسی کنید که از طریق آن تأیید کنید می‌خواهید یادداشت‌ها را در این سابقه "
-"غیرفعال کنید. در غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست "
-"شما را تأیید کند."
-
-msgid ""
-"If you are the author of this note, please check your e-mail for a link "
-"to confirm that you want to enable notes on this record.  Otherwise, "
-"please wait for the record author to confirm your request."
-msgstr ""
-"اگر نویسنده این یادداشت هستید، لطفاً ایمیل  خود را برای دریافت پیوندی "
-"بررسی کنید که از طریق آن تأیید کنید می‌خواهید یادداشت‌ها را در این سابقه "
-"فعال کنید. در غیر اینصورت، لطفاً منتظر نویسنده سابقه باشید تا درخواست شما"
-" را تأیید کند."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -1132,22 +1020,11 @@ msgid "No person id was specified."
 msgstr "هیچ شناسه فردی مشخص نشده است."
 
 #, python-format
-msgid "No person with ID: %(id_str)s."
-msgstr "فردی با این شناسه وجود ندارد: %(id_str)s."
-
-#, python-format
 msgid "No results found for: %(query)s"
 msgstr "نتیجه‌ای برای این عبارت جستجو یافت نشد: %(query)s"
 
 msgid "No such Authorization entity."
 msgstr "چنین نهاد مجوز دهنده‌ای وجود ندارد."
-
-msgid ""
-"Not authorized to post notes with the status \"I have received "
-"information that this person is dead\"."
-msgstr ""
-"با وضعیت «اطلاعاتی دریافت کرده‌ام که این فرد فوت شده است» مجاز به پست "
-"کردن یادداشت‌ها نیستید."
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr "‏‫پست کردن یادداشت‌ برای وضعیت «believed_dead» مجاز نیست."
@@ -1235,13 +1112,6 @@ msgstr ""
 "لطفاً علامت بگذارید که بعد از فاجعه با این شخص در تماس بوده‌اید یا فیلد "
 "«وضعیت این شخص» را تغییر دهید."
 
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"لطفاً علامت بگذارید که بعد از زلزله با این شخص در تماس بوده‌اید یا فیلد "
-"«وضعیت این شخص» را تغییر دهید."
-
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "لطفاً بررسی کنید و ببینید آیا این همان شخصی است که می‌خواستید گزارشی در "
@@ -1300,9 +1170,6 @@ msgstr "استان یا ایالت"
 
 msgid "Reason for deletion:"
 msgstr "دلیل حذف:"
-
-msgid "Reason for disabling notes:"
-msgstr "دلیل غیرفعال کردن یادداشت‌ها:"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
@@ -1388,9 +1255,6 @@ msgstr "وضعیت فرد"
 
 msgid "Status of this person:"
 msgstr "وضعیت این شخص:"
-
-msgid "Street name only, no number"
-msgstr "فقط نام خیابان، بدون شماره"
 
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
@@ -1480,10 +1344,6 @@ msgstr ""
 "وضعیتی که انتخاب کرده‌اید نشان می‌دهد که شما همین فرد هستید. اگر درست "
 "است، لطفاً «بله» را انتخاب کنید تا نشان دهید که با این شخص در تماس "
 "بوده‌اید."
-
-#, python-format
-msgid "The token %(token)s was invalid"
-msgstr "نمودافزار %(token)s معتبر نبود"
 
 #, python-format
 msgid "The token %(token)s was invalid."
@@ -1673,17 +1533,8 @@ msgstr "درباره چه کسی اطلاعات دارید"
 msgid "Yes"
 msgstr "بله"
 
-msgid "Yes, ask the record author to disable notes"
-msgstr "بله، از نویسنده سابقه برای غیرفعال کردن یادداشت‌ها درخواست شود"
-
-msgid "Yes, ask the record author to enable notes"
-msgstr "بله، از نویسنده سابقه برای فعال کردن یادداشت‌ها درخواست شود"
-
 msgid "Yes, delete the record"
 msgstr "بله، این سابقه حذف شود"
-
-msgid "Yes, disable notes on this record."
-msgstr "بله، یادداشت‌ها در این سابقه غیرفعال شود."
 
 msgid "Yes, extend the record"
 msgstr "بله این سابقه تمدید شود"
@@ -1702,9 +1553,6 @@ msgstr "شما قبلاً مشترک شده‌اید. "
 
 msgid "You are already unsubscribed."
 msgstr "اشتراک شما قبلاً لغو شده است."
-
-msgid "You are not currently signed in."
-msgstr "در حال حاضر وارد سیستم نشده‌اید."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1790,18 +1638,6 @@ msgstr "‏‫[Person Finder] یادداشت‌های مربوط به «%(full_n
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "‏‫[Person Finder] یادداشت‌های مربوط به «%(full_name)s» فعال شود؟"
-
-#, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(full_name)s\""
-msgstr "‏‫[Person Finder] اعلان فعال‌سازی یادداشت‌ها برای «%(full_name)s»"
-
-#, python-format
-msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
-msgstr "‏‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» غیرفعال است"
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(full_name)s\""
-msgstr "‏‫[Person Finder] یادداشت‌ها اکنون برای «%(full_name)s» فعال است"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
