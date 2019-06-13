@@ -84,19 +84,6 @@ const MESSAGES = defineMessages({
     description: ('A label on a tab for users to submit information about '
         + 'themselves.'),
   },
-  lastKnownLocation: {
-    id: 'Create.lastKnownLocation',
-    defaultMessage: 'Last known location',
-    description: ('A label on a form field for the last known location of a '
-        + 'person.'),
-  },
-  lastKnownLocationInstructions: {
-    id: 'Create.lastKnownLocationInstructions',
-    defaultMessage: ('Type an address or open the map to indicate the location '
-        + 'by clicking on the map.'),
-    description: ('Instructions for how to fill in a field indicating the last '
-        + 'known location of a person.'),
-  },
   message: {
     id: 'Create.message',
     defaultMessage: 'Message',
@@ -575,7 +562,6 @@ class Create extends Component {
   }
 
   renderLastKnownLocationField() {
-    if (1 == 1) {
     return (
       <div className="create-formgroupwrapper">
         <LocationFieldset
@@ -585,41 +571,6 @@ class Create extends Component {
               (value) => this.setState({locationLatLng: value})}
             onLocationTextUpdate={
               (value) => this.setState({locationText: value})} />
-      </div>
-    );
-    }
-    const mapsApiDisabled = ENV.maps_api_key == null || ENV.maps_api_key == '';
-    const map = (mapsApiDisabled || !this.state.showMap) ? null : (
-        <div>
-        </div>
-      );
-    const mapsApiButtons = mapsApiDisabled ? null : (
-        <div>
-          <Button
-            className='pf-button-primary'
-            type='button'
-            onClick={() => this.populateLocationWithCurrentLocation()}>
-            Use location
-          </Button>
-          &nbsp;
-          <Button
-            className='pf-button-primary'
-            type='button'
-            onClick={() => this.setState({showMap: true})}>
-            Show map
-          </Button>
-          { map }
-        </div>
-      );
-    return (
-      <div className="create-formgroupwrapper">
-        {this.renderTextAreaAndInput(
-            'formLastKnownLocation', 'last_known_location',
-            MESSAGES.lastKnownLocation)}
-        <p className='mdc-typography--body1 form-explanationtext'>
-          <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
-        </p>
-        {mapsApiButtons}
       </div>
     );
   }

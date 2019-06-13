@@ -16,7 +16,7 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {defineMessages, injectIntl} from 'react-intl';
+import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import Button from '@material/react-button';
 import TextField, {HelperText, Input} from '@material/react-text-field';
@@ -32,6 +32,13 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Last known location',
     description: ('A label on a form field for the last known location of a '
         + 'person.'),
+  },
+  lastKnownLocationInstructions: {
+    id: 'LocationFieldset.lastKnownLocationInstructions',
+    defaultMessage: ('Type an address or open the map to indicate the location '
+        + 'by clicking on the map.'),
+    description: ('Instructions for how to fill in a field indicating the last '
+        + 'known location of a person.'),
   },
   showMap: {
     id: 'LocationFieldset.showMap',
@@ -137,6 +144,9 @@ class LocationFieldset extends Component {
             onChange={(e) => this.props.onLocationTextUpdate(e.target.value)}
             onBlur={(e) => this.onLocationTextFieldBlur(e)} />
         </TextField>
+        <p className='mdc-typography--body1 form-explanationtext'>
+          <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
+        </p>
         <Button
           className='pf-button-primary'
           type='button'
