@@ -50,6 +50,7 @@ class LocationFieldset extends Component {
       haveStartedLoadingMapScript: false,
       haveFinishedLoadingMapScript: false,
     };
+    this.onLocationLatLngUpdate = this.onLocationLatLngUpdate.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -74,6 +75,12 @@ class LocationFieldset extends Component {
     document.getElementsByTagName('body')[0].appendChild(scriptTag);
   }
 
+  onLocationLatLngUpdate(value) {
+    const textValue = value[0] + ', ' + value[1];
+    this.props.onLocationLatLngUpdate(value);
+    this.props.onLocationTextUpdate(textValue);
+  }
+
   render() {
     const showHideMapButton = this.state.showMap ?
         (
@@ -93,7 +100,11 @@ class LocationFieldset extends Component {
           </Button>
         );
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
-        ? (<Map />) : null;
+        ? <Map
+            pinLocation={this.props.locationLatLng}
+            onLocationTextUpdate={this.props.onLocationTextUpdate}
+            onLocationLatLngUpdate={this.onLocationLatLngUpdate} />
+        : null;
     return (
       <div>
         <TextField
@@ -124,9 +135,8 @@ class LocationFieldset extends Component {
     // thing to do
     const outer = this;
     navigator.geolocation.getCurrentPosition(function(position) {
-      outer.setState({
-        selectedLocation: [position.coords.latitude, position.coords.longitude],
-      });
+      outer.onLocationLatLngUpdate(
+          [position.coords.latitude, position.coords.longitude]);
     });
   }
 }
@@ -134,10 +144,6 @@ class LocationFieldset extends Component {
 class MapImpl extends Component {
   constructor(props) {
     super(props);
-    const pinLocation = props.pinLocation || ENV.maps_default_center;
-    this.state = {
-      pinLatLng: new google.maps.LatLng(pinLocation[0], pinLocation[1]),
-    }
   }
 
   componentDidMount() {
@@ -146,18 +152,32 @@ class MapImpl extends Component {
     this.loadMap();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.pinLocation != prevProps.pinLocation) {
+      if (this.marker) {
+        const pinLocation = this.props.pinLocation || ENV.maps_default_center;
+        const pinLatLng = new google.maps.LatLng(
+            pinLocation[0], pinLocation[1]);
+        this.marker.setPosition(pinLatLng);
+      }
+    }
+  }
+
   loadMap() {
     const mapNode = ReactDOM.findDOMNode(this.refs.map);
-    const pinLatLng = this.state.pinLatLng;
+    const pinLocation = this.props.pinLocation || ENV.maps_default_center;
+    const pinLatLng = new google.maps.LatLng(pinLocation[0], pinLocation[1]);
     const map = new google.maps.Map(mapNode, {
       center: {lat: ENV.maps_default_center[0],
                lng: ENV.maps_default_center[1]},
       zoom: ENV.maps_default_zoom,
     });
-    const marker = new google.maps.Marker({
+    this.marker = new google.maps.Marker({
       map: map,
-      position: this.state.pinLatLng,
+      position: pinLatLng,
     });
+    map.addListener('click', (e) => this.props.onLocationLatLngUpdate(
+        [e.latLng.lat(), e.latLng.lng()]));
     google.maps.event.trigger(map, 'ready');
   }
 

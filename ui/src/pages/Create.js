@@ -579,10 +579,10 @@ class Create extends Component {
     return (
       <div className="create-formgroupwrapper">
         <LocationFieldset
-            locationPin={this.state.locationPin}
+            locationLatLng={this.state.locationLatLng}
             locationText={this.state.locationText}
-            onLocationPinUpdate={
-              (value) => this.setState({locationPin: value})}
+            onLocationLatLngUpdate={
+              (value) => this.setState({locationLatLng: value})}
             onLocationTextUpdate={
               (value) => this.setState({locationText: value})} />
       </div>
