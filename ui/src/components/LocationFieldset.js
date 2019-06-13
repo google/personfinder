@@ -68,10 +68,8 @@ class LocationFieldset extends Component {
   loadMapScript() {
     const scriptTag = document.createElement('script');
     scriptTag.src = BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key;
-    const outer = this;
-    scriptTag.addEventListener('load', function() {
-      outer.setState({haveFinishedLoadingMapScript: true});
-    });
+    scriptTag.addEventListener('load', () =>
+      this.setState({haveFinishedLoadingMapScript: true}));
     document.getElementsByTagName('body')[0].appendChild(scriptTag);
   }
 
@@ -131,13 +129,9 @@ class LocationFieldset extends Component {
   }
 
   populateLocationWithCurrentLocation() {
-    // TODO(nworden): send this to someone who knows JS to see if this is a dumb
-    // thing to do
-    const outer = this;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      outer.onLocationLatLngUpdate(
-          [position.coords.latitude, position.coords.longitude]);
-    });
+    navigator.geolocation.getCurrentPosition((position) =>
+      this.onLocationLatLngUpdate(
+          [position.coords.latitude, position.coords.longitude]));
   }
 }
 
