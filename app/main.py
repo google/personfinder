@@ -34,6 +34,7 @@ import logging
 import model
 import pfif
 import resources
+import simplejson
 import utils
 import user_agents
 import setup_pf
@@ -528,7 +529,11 @@ class Main(webapp.RequestHandler):
                 self.serve_static_content(self.env.action)
             elif self.should_serve_react_ui():
                 csp_nonce = self.set_content_security_policy()
-                react_env = {'maps_api_key': env.config.get('maps_api_key')}
+                react_env = {
+                    'maps_api_key': env.config.get('maps_api_key'),
+                    'maps_default_center': env.config.get('map_default_center'),
+                    'maps_default_zoom': env.config.get('map_default_zoom'),
+                }
                 json_encoder = simplejson.encoder.JSONEncoder()
                 response.out.write(
                     resources.get_rendered(
