@@ -46,10 +46,32 @@ class LocationFieldset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markerLocation: null,
-      selectedLocation: props.selectedLocation,
       showMap: false,
+      haveStartedLoadingMapScript: false,
+      haveFinishedLoadingMapScript: false,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // This is more complex than I'd like, but basically what's going on is I
+    // want to ensure the Google Maps JS is never loaded more than once, and
+    // only loaded at all if the user wants to show the map.
+    if (this.state.showMap && !prevState.showMap) {
+      this.setState({haveStartedLoadingMapScript: true});
+    } else if (this.state.haveStartedLoadingMapScript &&
+        !prevState.haveStartedLoadingMapScript) {
+      this.loadMapScript();
+    }
+  }
+
+  loadMapScript() {
+    const scriptTag = document.createElement('script');
+    scriptTag.src = BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key;
+    const outer = this;
+    scriptTag.addEventListener('load', function() {
+      outer.setState({haveFinishedLoadingMapScript: true});
+    });
+    document.getElementsByTagName('body')[0].appendChild(scriptTag);
   }
 
   render() {
@@ -70,6 +92,8 @@ class LocationFieldset extends Component {
             {this.props.intl.formatMessage(MESSAGES.showMap)}
           </Button>
         );
+    const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
+        ? (<Map />) : null;
     return (
       <div>
         <TextField
@@ -79,8 +103,8 @@ class LocationFieldset extends Component {
         >
           <Input
             name='last_known_location'
-            value={this.state['changethis']}
-            onChange={(e) => this.setState({['changethis']: e.target.value})} />
+            value={this.props.locationText}
+            onChange={(e) => this.props.onLocationTextUpdate(e.target.value)} />
         </TextField>
         <Button
           className='pf-button-primary'
@@ -88,8 +112,9 @@ class LocationFieldset extends Component {
           onClick={() => this.populateLocationWithCurrentLocation()}>
           Use location
         </Button>
+        &nbsp;
         {showHideMapButton}
-        <Map display={this.state.showMap} />
+        {map}
       </div>
     );
   }
@@ -111,55 +136,33 @@ class MapImpl extends Component {
     super(props);
     const pinLocation = props.pinLocation || ENV.maps_default_center;
     this.state = {
-      display: props.display,
-      mapStartedLoading: props.display,
-      // It'd be nice to store this as a google.maps.LatLng directly, but we
-      // can't do that until the script is loaded.
-      pinLocation: pinLocation,
+      pinLatLng: new google.maps.LatLng(pinLocation[0], pinLocation[1]),
     }
   }
 
   componentDidMount() {
-    if (this.props.display) {
-      this.loadMap();
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.display != this.props.display) {
-      this.setState({
-        display: this.props.display,
-        mapStartedLoading: prevState.mapStartedLoading || this.props.display,
-      });
-      if (this.props.display) {
-        this.loadMap();
-      }
-    }
+    // We can't do this in the constructor because we need it to render first,
+    // or else the div it looks for won't be present yet.
+    this.loadMap();
   }
 
   loadMap() {
     const mapNode = ReactDOM.findDOMNode(this.refs.map);
-    const scriptTag = document.createElement('script');
-    const pinLocation = this.state.pinLocation;
-    scriptTag.src = BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key;
-    scriptTag.addEventListener('load', function() {
-      const map = new google.maps.Map(mapNode, {
-        center: {lat: ENV.maps_default_center[0],
-                 lng: ENV.maps_default_center[1]},
-        zoom: ENV.maps_default_zoom,
-      });
-      const marker = new google.maps.Marker({
-        map: map,
-        position: new google.maps.LatLng(pinLocation[0], pinLocation[1]),
-      });
-      google.maps.event.trigger(map, 'ready');
+    const pinLatLng = this.state.pinLatLng;
+    const map = new google.maps.Map(mapNode, {
+      center: {lat: ENV.maps_default_center[0],
+               lng: ENV.maps_default_center[1]},
+      zoom: ENV.maps_default_zoom,
     });
-    document.getElementsByTagName('body')[0].appendChild(scriptTag);
+    const marker = new google.maps.Marker({
+      map: map,
+      position: this.state.pinLatLng,
+    });
+    google.maps.event.trigger(map, 'ready');
   }
 
   render() {
     const mapStyle = {
-      display: this.state.display ? 'inherit' : 'none',
       height: '250px',
       width: '100%',
     };
