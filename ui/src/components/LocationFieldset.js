@@ -22,6 +22,11 @@ import Button from '@material/react-button';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 
 const MESSAGES = defineMessages({
+  hideMap: {
+    id: 'LocationFieldset.hideMap',
+    defaultMessage: 'Hide map',
+    description: 'Label on a button to hide a map display.',
+  },
   lastKnownLocation: {
     id: 'LocationFieldset.lastKnownLocation',
     defaultMessage: 'Last known location',
@@ -48,6 +53,23 @@ class LocationFieldset extends Component {
   }
 
   render() {
+    const showHideMapButton = this.state.showMap ?
+        (
+          <Button
+            className='pf-button-primary'
+            type='button'
+            onClick={() => this.setState({showMap: false})}>
+            {this.props.intl.formatMessage(MESSAGES.hideMap)}
+          </Button>
+        ) :
+        (
+          <Button
+            className='pf-button-primary'
+            type='button'
+            onClick={() => this.setState({showMap: true})}>
+            {this.props.intl.formatMessage(MESSAGES.showMap)}
+          </Button>
+        );
     return (
       <div>
         <TextField
@@ -66,12 +88,7 @@ class LocationFieldset extends Component {
           onClick={() => this.populateLocationWithCurrentLocation()}>
           Use location
         </Button>
-        <Button
-          className='pf-button-primary'
-          type='button'
-          onClick={() => this.setState({showMap: true})}>
-          {this.props.intl.formatMessage(MESSAGES.showMap)}
-        </Button>
+        {showHideMapButton}
         <Map display={this.state.showMap} />
       </div>
     );
