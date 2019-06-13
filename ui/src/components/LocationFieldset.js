@@ -79,6 +79,23 @@ class LocationFieldset extends Component {
     this.props.onLocationTextUpdate(textValue);
   }
 
+  onLocationTextFieldBlur(e) {
+    if (this.state.haveFinishedLoadingMapScript) {
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode(
+          {address: this.props.locationText},
+          (results, status) => {
+            if ((status != 'OK') || (results.length == 0)) {
+              // We're geocoding strictly on a best-effort basis.
+              return;
+            }
+            const resultGeoLocation = results[0].geometry.location;
+            this.props.onLocationLatLngUpdate(
+                [resultGeoLocation.lat(), resultGeoLocation.lng()]);
+          });
+    }
+  }
+
   render() {
     const showHideMapButton = this.state.showMap ?
         (
@@ -113,7 +130,8 @@ class LocationFieldset extends Component {
           <Input
             name='last_known_location'
             value={this.props.locationText}
-            onChange={(e) => this.props.onLocationTextUpdate(e.target.value)} />
+            onChange={(e) => this.props.onLocationTextUpdate(e.target.value)}
+            onBlur={(e) => this.onLocationTextFieldBlur(e)} />
         </TextField>
         <Button
           className='pf-button-primary'
