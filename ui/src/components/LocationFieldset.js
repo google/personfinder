@@ -50,6 +50,7 @@ class LocationFieldset extends Component {
       haveStartedLoadingMapScript: false,
       haveFinishedLoadingMapScript: false,
     };
+    this.mapsApiDisabled = ENV.maps_api_key == null || ENV.maps_api_key == '';
     this.onLocationLatLngUpdate = this.onLocationLatLngUpdate.bind(this);
   }
 
@@ -97,23 +98,26 @@ class LocationFieldset extends Component {
   }
 
   render() {
-    const showHideMapButton = this.state.showMap ?
-        (
-          <Button
-            className='pf-button-primary'
-            type='button'
-            onClick={() => this.setState({showMap: false})}>
-            {this.props.intl.formatMessage(MESSAGES.hideMap)}
-          </Button>
-        ) :
-        (
-          <Button
-            className='pf-button-primary'
-            type='button'
-            onClick={() => this.setState({showMap: true})}>
-            {this.props.intl.formatMessage(MESSAGES.showMap)}
-          </Button>
-        );
+    var showHideMapButton = null;
+    if (!this.mapsApiDisabled) {
+      showHideMapButton = this.state.showMap ?
+          (
+            <Button
+              className='pf-button-primary'
+              type='button'
+              onClick={() => this.setState({showMap: false})}>
+              {this.props.intl.formatMessage(MESSAGES.hideMap)}
+            </Button>
+          ) :
+          (
+            <Button
+              className='pf-button-primary'
+              type='button'
+              onClick={() => this.setState({showMap: true})}>
+              {this.props.intl.formatMessage(MESSAGES.showMap)}
+            </Button>
+          );
+    }
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
         ? <Map
             pinLocation={this.props.locationLatLng}
