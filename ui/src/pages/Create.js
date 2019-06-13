@@ -470,30 +470,30 @@ class Create extends Component {
 
   renderTextFieldAndInput(formKey, inputName, labelMessage) {
     return (
-        <TextField
-          label={this.props.intl.formatMessage(labelMessage)}
-          outlined
-        >
-          <Input
-            name={inputName}
-            value={this.state[formKey]}
-            onChange={(e) => this.setState({[formKey]: e.target.value})} />
-        </TextField>
+      <TextField
+        label={this.props.intl.formatMessage(labelMessage)}
+        outlined
+      >
+        <Input
+          name={inputName}
+          value={this.state[formKey]}
+          onChange={(e) => this.setState({[formKey]: e.target.value})} />
+      </TextField>
     );
   }
 
   renderTextAreaAndInput(formKey, inputName, labelMessage) {
     return (
-        <TextField
-          label={this.props.intl.formatMessage(labelMessage)}
-          outlined
-          textarea
-        >
-          <Input
-            name={inputName}
-            value={this.state[formKey]}
-            onChange={(e) => this.setState({[formKey]: e.target.value})} />
-        </TextField>
+      <TextField
+        label={this.props.intl.formatMessage(labelMessage)}
+        outlined
+        textarea
+      >
+        <Input
+          name={inputName}
+          value={this.state[formKey]}
+          onChange={(e) => this.setState({[formKey]: e.target.value})} />
+      </TextField>
     );
   }
 
@@ -575,6 +575,13 @@ class Create extends Component {
   }
 
   renderLastKnownLocationField() {
+    if (1 == 1) {
+    return (
+      <div className="create-formgroupwrapper">
+        <LocationFieldset />
+      </div>
+    );
+    }
     const mapsApiDisabled = ENV.maps_api_key == null || ENV.maps_api_key == '';
     const map = (mapsApiDisabled || !this.state.showMap) ? null : (
         <div>
@@ -607,7 +614,6 @@ class Create extends Component {
           <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
         </p>
         {mapsApiButtons}
-        <LocationFieldset />
       </div>
     );
   }
