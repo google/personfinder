@@ -171,6 +171,9 @@ class MapImpl extends Component {
         const pinLatLng = new google.maps.LatLng(
             pinLocation[0], pinLocation[1]);
         this.marker.setPosition(pinLatLng);
+        if (!this.map.getBounds().contains(pinLatLng)) {
+          this.map.panTo(pinLatLng);
+        }
       }
     }
   }
@@ -179,18 +182,18 @@ class MapImpl extends Component {
     const mapNode = ReactDOM.findDOMNode(this.refs.map);
     const pinLocation = this.props.pinLocation || ENV.maps_default_center;
     const pinLatLng = new google.maps.LatLng(pinLocation[0], pinLocation[1]);
-    const map = new google.maps.Map(mapNode, {
+    this.map = new google.maps.Map(mapNode, {
       center: {lat: ENV.maps_default_center[0],
                lng: ENV.maps_default_center[1]},
       zoom: ENV.maps_default_zoom,
     });
     this.marker = new google.maps.Marker({
-      map: map,
+      map: this.map,
       position: pinLatLng,
     });
-    map.addListener('click', (e) => this.props.onLocationLatLngUpdate(
+    this.map.addListener('click', (e) => this.props.onLocationLatLngUpdate(
         [e.latLng.lat(), e.latLng.lng()]));
-    google.maps.event.trigger(map, 'ready');
+    google.maps.event.trigger(this.map, 'ready');
   }
 
   render() {
