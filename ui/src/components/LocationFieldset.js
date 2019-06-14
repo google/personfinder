@@ -73,14 +73,10 @@ class LocationFieldset extends Component {
       this.setState({haveStartedLoadingMapScript: true});
     } else if (this.state.haveStartedLoadingMapScript &&
         !prevState.haveStartedLoadingMapScript) {
-      this.loadMapScript();
-    }
-  }
-
-  loadMapScript() {
-    Utils.loadExternalScript(
+      Utils.loadExternalScript(
         BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key,
         () => this.setState({haveFinishedLoadingMapScript: true}));
+    }
   }
 
   onLocationLatLngUpdate(value) {
