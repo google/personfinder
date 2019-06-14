@@ -20,6 +20,7 @@ import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import Button from '@material/react-button';
 import TextField, {HelperText, Input} from '@material/react-text-field';
+import Utils from './../utils/Utils';
 
 const MESSAGES = defineMessages({
   hideMap: {
@@ -65,6 +66,9 @@ class LocationFieldset extends Component {
     // This is more complex than I'd like, but basically what's going on is I
     // want to ensure the Google Maps JS is never loaded more than once, and
     // only loaded at all if the user wants to show the map.
+    // The first time showMap is set to true, we also set
+    // haveStartedLoadingMapScript to true, and when that's set to true we load
+    // the map script.
     if (this.state.showMap && !prevState.showMap) {
       this.setState({haveStartedLoadingMapScript: true});
     } else if (this.state.haveStartedLoadingMapScript &&
@@ -74,11 +78,9 @@ class LocationFieldset extends Component {
   }
 
   loadMapScript() {
-    const scriptTag = document.createElement('script');
-    scriptTag.src = BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key;
-    scriptTag.addEventListener('load', () =>
-      this.setState({haveFinishedLoadingMapScript: true}));
-    document.getElementsByTagName('body')[0].appendChild(scriptTag);
+    Utils.loadExternalScript(
+        BASE_MAPS_API_URL + '?key=' + ENV.maps_api_key,
+        () => this.setState({haveFinishedLoadingMapScript: true}));
   }
 
   onLocationLatLngUpdate(value) {
