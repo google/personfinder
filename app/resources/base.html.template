@@ -133,13 +133,13 @@
         </script>
       </amp-analytics>
     {% endif %}
-    <div class="header title-bar" role="banner">
-      {% block header %}
-        {% if env.show_logo %}
-          {% block logo %}{% endblock %}
-        {% endif %}
-      {% endblock header %}
-    </div>
+    {% if env.show_logo %}
+      <div class="header title-bar" role="banner">
+        {% block header %}
+            {% block logo %}{% endblock %}
+        {% endblock header %}
+      </div>
+    {% endif %}
 
     {% if env.repo %}
       <div class="subtitle-bar">
