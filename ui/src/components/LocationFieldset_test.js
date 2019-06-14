@@ -21,18 +21,30 @@ import React from 'react';
 
 import LocationFieldset from './LocationFieldset';
 import {mountWithIntl} from '../testing/enzyme-intl-helper';
+import mockGoogle, {LatLng, Map, Marker} from '../testing/mock-google-module';
 import Utils from './../utils/Utils';
 
 Enzyme.configure({adapter: new Adapter()});
 
 let mockLoadExternalScript;
 
+function showMap(wrapper) {
+  wrapper.find('button').at(1).simulate('click');
+  mockLoadExternalScript.mock.calls[0][1]();
+  wrapper.update();
+}
+
 describe('testing LocationFieldset', () => {
   beforeEach(() => {
-    global.ENV = {'maps_api_key': 'abc123'};
+    global.ENV = {
+      'maps_api_key': 'abc123',
+      'maps_default_center': [40.6782, -73.9442],
+      'maps_default_zoom': 10,
+    };
     jest.mock('./../utils/Utils');
     mockLoadExternalScript = jest.fn();
     Utils.loadExternalScript = mockLoadExternalScript.bind(Utils);
+    global.google = mockGoogle;
   });
 
   test('location text should be populated from props', () => {
@@ -81,6 +93,7 @@ describe('testing LocationFieldset', () => {
     const wrapper = mountWithIntl(<LocationFieldset />);
     wrapper.update();
     expect(wrapper.find('button').length).toBe(2);
+    expect(wrapper.find('button').at(1).text()).toBe('Show map');
     wrapper.unmount();
   });
 
@@ -91,6 +104,15 @@ describe('testing LocationFieldset', () => {
     expect(mockLoadExternalScript).toHaveBeenCalledWith(
         'https://maps.googleapis.com/maps/api/js?key=abc123',
         expect.anything());
+    wrapper.unmount();
+  });
+
+  test('map is displayed on show map button click', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    showMap(wrapper);
+    expect(wrapper.find('MapImpl').length).toBe(1);
+    expect(wrapper.find('button').at(1).text()).toBe('Hide map');
     wrapper.unmount();
   });
 });
