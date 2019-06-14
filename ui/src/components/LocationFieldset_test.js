@@ -25,64 +25,72 @@ import Utils from './../utils/Utils';
 
 Enzyme.configure({adapter: new Adapter()});
 
-test('location text should be populated from props', () => {
-  global.ENV = {};
-  const wrapper = mountWithIntl(
-    <LocationFieldset
-        locationText='burlington, vt' />
-  );
-  wrapper.update();
-  expect(wrapper.find('Input').get(0).props.value).toBe('burlington, vt');
-  wrapper.unmount();
-});
+let mockLoadExternalScript;
 
-test('location text update should call back', () => {
-  global.ENV = {};
-  const mockLocationTextUpdateCallback = jest.fn();
-  const wrapper = mountWithIntl(
-    <LocationFieldset
-        onLocationTextUpdate={mockLocationTextUpdateCallback} />
-  );
-  const changeEvent = {target: {value: 'burlington, vt'}};
-  wrapper.find('Input').simulate('change', changeEvent);
-  wrapper.update();
-  expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith('burlington, vt');
-  wrapper.unmount();
-});
+describe('testing LocationFieldset', () => {
+  beforeEach(() => {
+    global.ENV = {'maps_api_key': 'abc123'};
+    jest.mock('./../utils/Utils');
+    mockLoadExternalScript = jest.fn();
+    Utils.loadExternalScript = mockLoadExternalScript.bind(Utils);
+  });
 
-test('no map button present without Maps API key', () => {
-  global.ENV = {};
-  const wrapper = mountWithIntl(<LocationFieldset />);
-  wrapper.update();
-  expect(wrapper.find('button').length).toBe(1);
-  wrapper.unmount();
-});
+  test('location text should be populated from props', () => {
+    global.ENV = {};
+    const wrapper = mountWithIntl(
+      <LocationFieldset
+          locationText='burlington, vt' />
+    );
+    wrapper.update();
+    expect(wrapper.find('Input').get(0).props.value).toBe('burlington, vt');
+    wrapper.unmount();
+  });
 
-test('no map button present with empty Maps API key', () => {
-  global.ENV = {'maps_api_key': ''};
-  const wrapper = mountWithIntl(<LocationFieldset />);
-  wrapper.update();
-  expect(wrapper.find('button').length).toBe(1);
-  wrapper.unmount();
-});
+  test('location text update should call back', () => {
+    global.ENV = {};
+    const mockLocationTextUpdateCallback = jest.fn();
+    const wrapper = mountWithIntl(
+      <LocationFieldset
+          onLocationTextUpdate={mockLocationTextUpdateCallback} />
+    );
+    const changeEvent = {target: {value: 'burlington, vt'}};
+    wrapper.find('Input').simulate('change', changeEvent);
+    wrapper.update();
+    expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith(
+        'burlington, vt');
+    wrapper.unmount();
+  });
 
-test('map button present with Maps API key', () => {
-  global.ENV = {'maps_api_key': 'abc123'};
-  const wrapper = mountWithIntl(<LocationFieldset />);
-  wrapper.update();
-  expect(wrapper.find('button').length).toBe(2);
-  wrapper.unmount();
-});
+  test('no map button present without Maps API key', () => {
+    global.ENV = {};
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    expect(wrapper.find('button').length).toBe(1);
+    wrapper.unmount();
+  });
 
-test('map script is loaded on show map button click', () => {
-  global.ENV = {'maps_api_key': 'abc123'};
-  jest.mock('./../utils/Utils');
-  const mockLoadExternalScript = jest.fn();
-  Utils.loadExternalScript = mockLoadExternalScript.bind(Utils);
-  const wrapper = mountWithIntl(<LocationFieldset />);
-  wrapper.update();
-  wrapper.find('button').at(1).simulate('click');
-  expect(mockLoadExternalScript).toHaveBeenCalledWith(
-      'https://maps.googleapis.com/maps/api/js?key=abc123', expect.anything());
-  wrapper.unmount();
+  test('no map button present with empty Maps API key', () => {
+    global.ENV = {'maps_api_key': ''};
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    expect(wrapper.find('button').length).toBe(1);
+    wrapper.unmount();
+  });
+
+  test('map button present with Maps API key', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    expect(wrapper.find('button').length).toBe(2);
+    wrapper.unmount();
+  });
+
+  test('map script is loaded on show map button click', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    wrapper.find('button').at(1).simulate('click');
+    expect(mockLoadExternalScript).toHaveBeenCalledWith(
+        'https://maps.googleapis.com/maps/api/js?key=abc123',
+        expect.anything());
+    wrapper.unmount();
+  });
 });
