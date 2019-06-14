@@ -15,14 +15,13 @@
  */
 
 
-import toJson from 'enzyme-to-json';
-
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
 import LocationFieldset from './LocationFieldset';
 import {mountWithIntl} from '../testing/enzyme-intl-helper';
+import Utils from './../utils/Utils';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -68,9 +67,22 @@ test('no map button present with empty Maps API key', () => {
 });
 
 test('map button present with Maps API key', () => {
-  global.ENV = {'maps_api_key': 'oto4tjwjp4'};
+  global.ENV = {'maps_api_key': 'abc123'};
   const wrapper = mountWithIntl(<LocationFieldset />);
   wrapper.update();
   expect(wrapper.find('button').length).toBe(2);
+  wrapper.unmount();
+});
+
+test('map script is loaded on show map button click', () => {
+  global.ENV = {'maps_api_key': 'abc123'};
+  jest.mock('./../utils/Utils');
+  const mockLoadExternalScript = jest.fn();
+  Utils.loadExternalScript = mockLoadExternalScript.bind(Utils);
+  const wrapper = mountWithIntl(<LocationFieldset />);
+  wrapper.update();
+  wrapper.find('button').at(1).simulate('click');
+  expect(mockLoadExternalScript).toHaveBeenCalledWith(
+      'https://maps.googleapis.com/maps/api/js?key=abc123', expect.anything());
   wrapper.unmount();
 });
