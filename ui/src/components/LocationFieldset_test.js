@@ -48,7 +48,6 @@ describe('testing LocationFieldset', () => {
   });
 
   test('location text should be populated from props', () => {
-    global.ENV = {};
     const wrapper = mountWithIntl(
       <LocationFieldset
           locationText='burlington, vt' />
@@ -59,7 +58,6 @@ describe('testing LocationFieldset', () => {
   });
 
   test('location text update should call back', () => {
-    global.ENV = {};
     const mockLocationTextUpdateCallback = jest.fn();
     const wrapper = mountWithIntl(
       <LocationFieldset
@@ -114,5 +112,42 @@ describe('testing LocationFieldset', () => {
     expect(wrapper.find('MapImpl').length).toBe(1);
     expect(wrapper.find('button').at(1).text()).toBe('Hide map');
     wrapper.unmount();
+  });
+
+  test('lat/lng update should call back', () => {
+    const mockLocationTextUpdateCallback = jest.fn();
+    const mockLocationLatLngUpdateCallback = jest.fn();
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            onLocationTextUpdate={mockLocationTextUpdateCallback}
+            onLocationLatLngUpdate={mockLocationLatLngUpdateCallback} />);
+    wrapper.update();
+    showMap(wrapper);
+    // Calling the function passed into the Map should cause the
+    // LocationFieldset to propagate the data up.
+    wrapper.find('MapImpl').prop('onLocationLatLngUpdate')([35.6762, 139.6503]);
+    expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith(
+        '35.6762, 139.6503');
+    expect(mockLocationLatLngUpdateCallback).toHaveBeenCalledWith(
+        [35.6762, 139.6503]);
+  });
+
+  test('populate with current location', () => {
+    const mockGetCurrentPosition = jest.fn();
+    global.navigator.geolocation = {getCurrentPosition: mockGetCurrentPosition};
+    const mockLocationTextUpdateCallback = jest.fn();
+    const mockLocationLatLngUpdateCallback = jest.fn();
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            onLocationTextUpdate={mockLocationTextUpdateCallback}
+            onLocationLatLngUpdate={mockLocationLatLngUpdateCallback} />);
+    wrapper.update();
+    wrapper.find('button').at(0).simulate('click');
+    mockGetCurrentPosition.mock.calls[0][0](
+        {coords: {latitude: 29.7604, longitude: -95.3698}});
+    expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith(
+        '29.7604, -95.3698');
+    expect(mockLocationLatLngUpdateCallback).toHaveBeenCalledWith(
+        [29.7604, -95.3698]);
   });
 });
