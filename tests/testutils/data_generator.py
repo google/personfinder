@@ -96,13 +96,15 @@ class TestDataGenerator(object):
             updated_date=DEFAULT_REPO_UPDATED_DATE,
             language_menu_options=['en', 'es'],
             repo_titles={'en': 'Haiti', 'es': 'Haití'},
-            map_default_center=[123.45, 67.89]):
+            map_default_center=[123.45, 67.89],
+            map_default_zoom=8):
         config.set_for_repo(
             repo_id,
             updated_date=updated_date,
             language_menu_options=language_menu_options,
             repo_titles=repo_titles,
-            map_default_center=map_default_center)
+            map_default_center=map_default_center,
+            map_default_zoom=map_default_zoom)
 
     def person(
             self, store=True, index=False, repo_id='haiti', record_id=None,

@@ -37,6 +37,8 @@ class FrontendApiRepoViewTests(view_tests_base.ViewTestsBase):
                 'repoId': 'haiti',
                 'title': 'Haiti',
                 'recordCount': 0,
+                'mapDefaultCenter': [123.45, 67.89],
+                'mapDefaultZoom': 8,
             },
             resp.json())
 
@@ -63,6 +65,8 @@ class FrontendApiRepoViewTests(view_tests_base.ViewTestsBase):
                 'repoId': 'haiti',
                 'title': 'Haiti',
                 'recordCount': 200,
+                'mapDefaultCenter': [123.45, 67.89],
+                'mapDefaultZoom': 8,
             },
             resp.json())
 
@@ -78,6 +82,8 @@ class FrontendApiRepoViewTests(view_tests_base.ViewTestsBase):
                 'repoId': 'latvia',
                 'title': 'Letonia',
                 'recordCount': 0,
+                'mapDefaultCenter': [123.45, 67.89],
+                'mapDefaultZoom': 8,
             },
             resp.json())
 
