@@ -125,6 +125,8 @@ class LocationFieldset extends Component {
     }
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
         ? <MapDisplay
+            mapDefaultCenter={this.props.mapDefaultCenter}
+            mapDefaultZoom={this.props.mapDefaultZoom}
             pinLocation={this.props.locationLatLng}
             onLocationTextUpdate={this.props.onLocationTextUpdate}
             onLocationLatLngUpdate={this.onLocationLatLngUpdate} />
@@ -179,7 +181,8 @@ class MapDisplayImpl extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.pinLocation != prevProps.pinLocation) {
       if (this.marker) {
-        const pinLocation = this.props.pinLocation || ENV.maps_default_center;
+        const pinLocation = this.props.pinLocation
+            || this.props.mapDefaultCenter;
         const pinLatLng = new google.maps.LatLng(
             pinLocation[0], pinLocation[1]);
         this.marker.setPosition(pinLatLng);
@@ -192,12 +195,13 @@ class MapDisplayImpl extends Component {
 
   loadMap() {
     const mapNode = ReactDOM.findDOMNode(this.refs.map);
-    const pinLocation = this.props.pinLocation || ENV.maps_default_center;
+    const pinLocation = this.props.pinLocation
+        || this.props.mapDefaultCenter;
     const pinLatLng = new google.maps.LatLng(pinLocation[0], pinLocation[1]);
     this.map = new google.maps.Map(mapNode, {
-      center: {lat: ENV.maps_default_center[0],
-               lng: ENV.maps_default_center[1]},
-      zoom: ENV.maps_default_zoom,
+      center: {lat: this.props.mapDefaultCenter[0],
+               lng: this.props.mapDefaultCenter[1]},
+      zoom: this.props.mapDefaultZoom,
     });
     this.marker = new google.maps.Marker({
       map: this.map,

@@ -98,6 +98,9 @@ class RepoView(FrontendApiBaseView):
                 'repoId': self.env.repo,
                 'title': repo_title,
                 'recordCount': self._get_person_count(self.env.repo),
+                'mapDefaultCenter': self.env.config.get('map_default_center'),
+                'mapDefaultZoom': self.env.config.get('map_default_zoom'),
+
             }
         return self._json_response(data)
 

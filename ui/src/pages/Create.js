@@ -565,6 +565,8 @@ class Create extends Component {
     return (
       <div className="create-formgroupwrapper">
         <LocationFieldset
+            mapDefaultCenter={this.state.repo.mapDefaultCenter}
+            mapDefaultZoom={this.state.repo.mapDefaultZoom}
             locationLatLng={this.state.locationLatLng}
             locationText={this.state.locationText}
             onLocationLatLngUpdate={
