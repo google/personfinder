@@ -13,9 +13,6 @@
 # limitations under the License.
 """Code shared by admin view modules."""
 
-import django.shortcuts
-
-import model
 import utils
 import views.base
 
