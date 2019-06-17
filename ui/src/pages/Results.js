@@ -133,7 +133,7 @@ class Results extends Component {
   renderAddPersonFab() {
     return (
       <Fab
-          className='results-addpersonfab'
+          className='results-addfab'
           onClick={this.goToCreate}
           icon={<img src='/static/icons/maticon_add.svg' />}
           textLabel={this.props.intl.formatMessage(
