@@ -45,8 +45,6 @@ describe('testing LocationFieldset', () => {
   beforeEach(() => {
     global.ENV = {
       'maps_api_key': 'abc123',
-      'maps_default_center': [40.6782, -73.9442],
-      'maps_default_zoom': 10,
     };
     jest.mock('./../utils/Utils');
     mockLoadExternalScript = jest.fn();
@@ -62,6 +60,8 @@ describe('testing LocationFieldset', () => {
   test('location text should be populated from props', () => {
     const wrapper = mountWithIntl(
       <LocationFieldset
+          mapDefaultCenter={[40.6782, -73.9442]}
+          mapDefaultZoom={10}
           locationText='burlington, vt' />
     );
     wrapper.update();
@@ -73,6 +73,8 @@ describe('testing LocationFieldset', () => {
     const mockLocationTextUpdateCallback = jest.fn();
     const wrapper = mountWithIntl(
       <LocationFieldset
+          mapDefaultCenter={[40.6782, -73.9442]}
+          mapDefaultZoom={10}
           onLocationTextUpdate={mockLocationTextUpdateCallback} />
     );
     const changeEvent = {target: {value: 'burlington, vt'}};
@@ -85,7 +87,11 @@ describe('testing LocationFieldset', () => {
 
   test('no map button present without Maps API key', () => {
     global.ENV = {};
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     expect(wrapper.find('button').length).toBe(1);
     wrapper.unmount();
@@ -93,14 +99,22 @@ describe('testing LocationFieldset', () => {
 
   test('no map button present with empty Maps API key', () => {
     global.ENV = {'maps_api_key': ''};
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     expect(wrapper.find('button').length).toBe(1);
     wrapper.unmount();
   });
 
   test('map button present with Maps API key', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     expect(wrapper.find('button').length).toBe(2);
     expect(wrapper.find('button').at(1).text()).toBe('Show map');
@@ -108,7 +122,11 @@ describe('testing LocationFieldset', () => {
   });
 
   test('map script is loaded on show map button click', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     wrapper.find('button').at(1).simulate('click');
     expect(mockLoadExternalScript).toHaveBeenCalledWith(
@@ -118,7 +136,11 @@ describe('testing LocationFieldset', () => {
   });
 
   test('map is displayed on show map button click', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     showMap(wrapper);
     expect(wrapper.find('MapDisplayImpl').length).toBe(1);
@@ -131,6 +153,8 @@ describe('testing LocationFieldset', () => {
     const mockLocationLatLngUpdateCallback = jest.fn();
     const wrapper = mountWithIntl(
         <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
             onLocationTextUpdate={mockLocationTextUpdateCallback}
             onLocationLatLngUpdate={mockLocationLatLngUpdateCallback} />);
     wrapper.update();
@@ -152,6 +176,8 @@ describe('testing LocationFieldset', () => {
     const mockLocationLatLngUpdateCallback = jest.fn();
     const wrapper = mountWithIntl(
         <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
             onLocationTextUpdate={mockLocationTextUpdateCallback}
             onLocationLatLngUpdate={mockLocationLatLngUpdateCallback} />);
     wrapper.update();
@@ -165,7 +191,11 @@ describe('testing LocationFieldset', () => {
   });
 
   test('map loads correctly', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     showMap(wrapper);
     expect(global.google.maps.event.trigger).toHaveBeenCalledWith(
@@ -182,7 +212,11 @@ describe('testing LocationFieldset', () => {
   });
 
   test('map marker updates on lat/lng change', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     showMap(wrapper);
     const map = constructedMaps[0];
@@ -198,7 +232,11 @@ describe('testing LocationFieldset', () => {
   });
 
   test('map pans when given out-of-bounds location', () => {
-    const wrapper = mountWithIntl(<LocationFieldset />);
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
     wrapper.update();
     showMap(wrapper);
     const map = constructedMaps[0];
