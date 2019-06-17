@@ -13,6 +13,8 @@
 # limitations under the License.
 """Code shared by admin view modules."""
 
+import simplejson
+
 import utils
 import views.base
 
@@ -29,5 +31,12 @@ class EnduserBaseView(views.base.BaseView):
     def dispatch(self, request, *args, **kwargs):
         """See docs on django.views.View.dispatch."""
         if self.env.config.enable_react_ui:
-            return self.render('react_index.html')
+            react_env = {
+                'maps_api_key': self.env.config.get('maps_api_key'),
+                'maps_default_center': self.env.config.map_default_center,
+                'maps_default_zoom': self.env.config.map_default_zoom,
+            }
+            json_encoder = simplejson.encoder.JSONEncoder()
+            return self.render(
+                'react_index.html', env_json=json_encoder.encode(react_env))
         return super(EnduserBaseView, self).dispatch(request, args, kwargs)
