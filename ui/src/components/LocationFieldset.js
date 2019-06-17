@@ -124,7 +124,7 @@ class LocationFieldset extends Component {
           );
     }
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
-        ? <Map
+        ? <MapDisplay
             pinLocation={this.props.locationLatLng}
             onLocationTextUpdate={this.props.onLocationTextUpdate}
             onLocationLatLngUpdate={this.onLocationLatLngUpdate} />
@@ -165,7 +165,7 @@ class LocationFieldset extends Component {
   }
 }
 
-class MapImpl extends Component {
+class MapDisplayImpl extends Component {
   constructor(props) {
     super(props);
   }
@@ -222,6 +222,6 @@ class MapImpl extends Component {
   }
 }
 
-const Map = injectIntl(MapImpl);
+const MapDisplay = injectIntl(MapDisplayImpl);
 
 export default injectIntl(LocationFieldset);

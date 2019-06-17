@@ -19,9 +19,16 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import LocationFieldset from './LocationFieldset';
+import LocationFieldset, {MapDisplay} from './LocationFieldset';
 import {mountWithIntl} from '../testing/enzyme-intl-helper';
-import mockGoogle, {LatLng, Map, Marker} from '../testing/mock-google-module';
+import {
+  mockGoogle,
+  Bounds,
+  constructedMaps,
+  clearConstructedMaps,
+  constructedMarkers,
+  clearConstructedMarkers,
+} from '../testing/mock-google-module';
 import Utils from './../utils/Utils';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -45,6 +52,11 @@ describe('testing LocationFieldset', () => {
     mockLoadExternalScript = jest.fn();
     Utils.loadExternalScript = mockLoadExternalScript.bind(Utils);
     global.google = mockGoogle;
+  });
+
+  afterEach(() => {
+    clearConstructedMaps();
+    clearConstructedMarkers();
   });
 
   test('location text should be populated from props', () => {
@@ -109,7 +121,7 @@ describe('testing LocationFieldset', () => {
     const wrapper = mountWithIntl(<LocationFieldset />);
     wrapper.update();
     showMap(wrapper);
-    expect(wrapper.find('MapImpl').length).toBe(1);
+    expect(wrapper.find('MapDisplayImpl').length).toBe(1);
     expect(wrapper.find('button').at(1).text()).toBe('Hide map');
     wrapper.unmount();
   });
@@ -125,7 +137,8 @@ describe('testing LocationFieldset', () => {
     showMap(wrapper);
     // Calling the function passed into the Map should cause the
     // LocationFieldset to propagate the data up.
-    wrapper.find('MapImpl').prop('onLocationLatLngUpdate')([35.6762, 139.6503]);
+    wrapper.find('MapDisplayImpl').prop('onLocationLatLngUpdate')(
+        [35.6762, 139.6503]);
     expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith(
         '35.6762, 139.6503');
     expect(mockLocationLatLngUpdateCallback).toHaveBeenCalledWith(
@@ -149,5 +162,53 @@ describe('testing LocationFieldset', () => {
         '29.7604, -95.3698');
     expect(mockLocationLatLngUpdateCallback).toHaveBeenCalledWith(
         [29.7604, -95.3698]);
+  });
+
+  test('map loads correctly', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    showMap(wrapper);
+    expect(global.google.maps.event.trigger).toHaveBeenCalledWith(
+        expect.any(global.google.maps.Map), 'ready');
+    const map = global.google.maps.event.trigger.mock.calls[0][0];
+    expect(map.settings).toStrictEqual({
+        center: {lat: 40.6782, lng: -73.9442},
+        zoom: 10,
+    });
+    expect(constructedMarkers.length).toBe(1);
+    expect(constructedMarkers[0].settings.position.lat).toBe(40.6782);
+    expect(constructedMarkers[0].settings.position.lng).toBe(-73.9442);
+    wrapper.unmount();
+  });
+
+  test('map marker updates on lat/lng change', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    showMap(wrapper);
+    const map = constructedMaps[0];
+    const bounds = new Bounds();
+    bounds.contains.mockReturnValue(true);
+    map.getBounds.mockReturnValue(bounds);
+    wrapper.setProps({locationLatLng: [46.8772, -96.7898]});
+    const newLatLng = constructedMarkers[0].setPosition.mock.calls[0][0];
+    expect(newLatLng.lat).toBe(46.8772);
+    expect(newLatLng.lng).toBe(-96.7898);
+    expect(map.panTo).toHaveBeenCalledTimes(0);
+    wrapper.unmount();
+  });
+
+  test('map pans when given out-of-bounds location', () => {
+    const wrapper = mountWithIntl(<LocationFieldset />);
+    wrapper.update();
+    showMap(wrapper);
+    const map = constructedMaps[0];
+    const bounds = new Bounds();
+    bounds.contains.mockReturnValue(false);
+    map.getBounds.mockReturnValue(bounds);
+    wrapper.setProps({locationLatLng: [39.7392, -104.9903]});
+    const pannedToLatLng = map.panTo.mock.calls[0][0];
+    expect(pannedToLatLng.lat).toBe(39.7392);
+    expect(pannedToLatLng.lng).toBe(-104.9903);
+    wrapper.unmount();
   });
 });

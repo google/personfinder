@@ -21,19 +21,42 @@ class LatLng {
   }
 }
 
+class Bounds {
+  constructor() {
+    // TODO(nworden): see if there's a better way to do this. seems like there
+    // should be.
+    this.contains = jest.fn();
+  }
+}
+
+const constructedMaps = [];
+
+function clearConstructedMaps() {
+  constructedMaps.splice(0, constructedMaps.length);
+}
+
 class Map {
   constructor(node, settings) {
     this.node = node;
     this.settings = settings;
-    // TODO(nworden): see if there's a better way to do this. seems like there
-    // should be.
+    constructedMaps.push(this);
     this.addListener = jest.fn();
+    this.panTo = jest.fn();
+    this.getBounds = jest.fn();
   }
+}
+
+const constructedMarkers = [];
+
+function clearConstructedMarkers() {
+  constructedMarkers.splice(0, constructedMarkers.length);
 }
 
 class Marker {
   constructor(settings) {
     this.settings = settings;
+    constructedMarkers.push(this);
+    this.setPosition = jest.fn();
   }
 }
 
@@ -48,4 +71,11 @@ const mockGoogle = {
   },
 };
 
-export default mockGoogle;
+export {
+  mockGoogle,
+  Bounds,
+  constructedMaps,
+  clearConstructedMaps,
+  constructedMarkers,
+  clearConstructedMarkers
+};
