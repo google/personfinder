@@ -29,6 +29,7 @@ import TextField, {HelperText, Input} from '@material/react-text-field';
 import COMMON_MESSAGES from './../utils/CommonMessages.js';
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
+import LocationFieldset from './../components/LocationFieldset.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
 import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
@@ -245,6 +246,7 @@ class Create extends Component {
       // This is for a reference to an element to anchor the profile page
       // options menu to; it's used by the Material MenuSurface component.
       profilePageOptionsAnchor: null,
+      showMap: false,
       // These fields are for the values of the form fields.
       formSurname: '',
       formGivenName: '',
@@ -255,6 +257,7 @@ class Create extends Component {
       formPhotoUrl: '',
       formProfilePages: Immutable.List(),
       formPersonStatus: 'unspecified',
+      formLastKnownLocation: '',
     };
     this.repoId = this.props.match.params.repoId;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -454,30 +457,30 @@ class Create extends Component {
 
   renderTextFieldAndInput(formKey, inputName, labelMessage) {
     return (
-        <TextField
-          label={this.props.intl.formatMessage(labelMessage)}
-          outlined
-        >
-          <Input
-            name={inputName}
-            value={this.state[formKey]}
-            onChange={(e) => this.setState({[formKey]: e.target.value})} />
-        </TextField>
+      <TextField
+        label={this.props.intl.formatMessage(labelMessage)}
+        outlined
+      >
+        <Input
+          name={inputName}
+          value={this.state[formKey]}
+          onChange={(e) => this.setState({[formKey]: e.target.value})} />
+      </TextField>
     );
   }
 
   renderTextAreaAndInput(formKey, inputName, labelMessage) {
     return (
-        <TextField
-          label={this.props.intl.formatMessage(labelMessage)}
-          outlined
-          textarea
-        >
-          <Input
-            name={inputName}
-            value={this.state[formKey]}
-            onChange={(e) => this.setState({[formKey]: e.target.value})} />
-        </TextField>
+      <TextField
+        label={this.props.intl.formatMessage(labelMessage)}
+        outlined
+        textarea
+      >
+        <Input
+          name={inputName}
+          value={this.state[formKey]}
+          onChange={(e) => this.setState({[formKey]: e.target.value})} />
+      </TextField>
     );
   }
 
@@ -558,6 +561,31 @@ class Create extends Component {
     );
   }
 
+  renderLastKnownLocationField() {
+    return (
+      <div className="create-formgroupwrapper">
+        <LocationFieldset
+            mapDefaultCenter={this.state.repo.mapDefaultCenter}
+            mapDefaultZoom={this.state.repo.mapDefaultZoom}
+            locationLatLng={this.state.locationLatLng}
+            locationText={this.state.locationText}
+            onLocationLatLngUpdate={
+              (value) => this.setState({locationLatLng: value})}
+            onLocationTextUpdate={
+              (value) => this.setState({locationText: value})} />
+      </div>
+    );
+  }
+
+  populateLocationWithCurrentLocation() {
+    const page = this;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const positionStr =
+          position.coords.latitude + ', ' + position.coords.longitude;
+      page.setState({formLastKnownLocation: positionStr});
+    });
+  }
+
   renderStatusFields() {
     return (
       <div className='create-formsectionwrapper'>
@@ -624,6 +652,7 @@ class Create extends Component {
             </Radio>
           </div>
         </div>
+        { this.renderLastKnownLocationField() }
       </div>
     );
   }

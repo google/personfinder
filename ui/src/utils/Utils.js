@@ -24,6 +24,13 @@ class Utils {
   static getURLParam(props, paramName) {
     return queryString.parse(props.location.search)[paramName];
   }
+
+  static loadExternalScript(url, callback) {
+    const scriptTag = document.createElement('script');
+    scriptTag.src = url;
+    scriptTag.addEventListener('load', callback);
+    document.getElementsByTagName('body')[0].appendChild(scriptTag);
+  }
 }
 
 export default Utils;
