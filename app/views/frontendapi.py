@@ -98,6 +98,8 @@ class RepoView(FrontendApiBaseView):
                 'repoId': self.env.repo,
                 'title': repo_title,
                 'recordCount': self._get_person_count(self.env.repo),
+                'mapDefaultCenter': self.env.config.get('map_default_center'),
+                'mapDefaultZoom': self.env.config.get('map_default_zoom'),
             }
         return self._json_response(data)
 
@@ -311,7 +313,7 @@ class CreateView(FrontendApiBaseView):
             phone_of_found_person=self.params.phone_of_found_person,
             last_known_location=self.params.last_known_location,
             url_builder=self.build_absolute_uri)
-        return self._json_response({'record_id': person.record_id})
+        return self._json_response({'personId': person.record_id})
 
 
 class AddNoteView(FrontendApiBaseView):
