@@ -18,7 +18,6 @@ import re
 
 import django.http
 import django.shortcuts
-import django.template.loader
 import django.utils.decorators
 import django.views
 import six.moves.urllib.parse as urlparse
@@ -344,7 +343,7 @@ class BaseView(django.views.View):
         return self.request.build_absolute_uri(
             self.build_absolute_path(path, repo, params))
 
-    def render_to_string(self, template_name, status_code=200, **template_vars):
+    def render(self, template_name, status_code=200, **template_vars):
         """Renders a template with the given variables.
 
         Args:
@@ -352,7 +351,7 @@ class BaseView(django.views.View):
             **template_vars: Named variables to pass to the template.
 
         Returns:
-            str: The rendered template.
+            HttpResponse: An HttpResponse with the rendered template.
         """
         template_name = '%s.template' % template_name
         context = {
@@ -364,24 +363,8 @@ class BaseView(django.views.View):
             'csp_nonce': self.request.csp_nonce,
         }
         context.update(template_vars)
-        # TODO(nworden): at some point we should try to make sure no templates
-        # need the request; then we could move this out of the handlers.
-        return django.template.loader.render_to_string(
-            template_name, context, self.request)
-
-    def render(self, template_name, status_code=200, **template_vars):
-        """Renders a template with the given variables.
-
-        Args:
-            template_name (str): The filename of the template in app/resources.
-            **template_vars: Named variables to pass to the template.
-
-        Returns:
-            HttpResponse: An HttpResponse with the rendered template.
-        """
-        return django.http.HttpResponse(
-            self.render_to_string(template_name, **template_vars),
-            status=status_code)
+        return django.shortcuts.render(
+            self.request, template_name, context, status=status_code)
 
     def error(self, status_code, message=''):
         """Returns an error response.
