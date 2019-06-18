@@ -178,7 +178,7 @@ class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
         self.data_generator.repo()
 
     def test_post(self):
-        self.client.post(
+        resp = self.client.post(
             '/haiti/d/create',
             data={
                 'given_name': 'Matt',
@@ -189,6 +189,7 @@ class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
         persons = model.Person.all()
         self.assertEqual(persons.count(), 1)
         self.assertEqual(persons[0].given_name, 'Matt')
+        self.assertEqual(resp.json(), {'personId': persons[0].record_id})
 
 
 class FrontendApiPersonViewTests(view_tests_base.ViewTestsBase):
