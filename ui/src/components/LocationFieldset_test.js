@@ -135,6 +135,21 @@ describe('testing LocationFieldset', () => {
     wrapper.unmount();
   });
 
+  test('map script is only loaded once', () => {
+    const wrapper = mountWithIntl(
+        <LocationFieldset
+            mapDefaultCenter={[40.6782, -73.9442]}
+            mapDefaultZoom={10}
+            />);
+    wrapper.update();
+    // Show the map, hide it, and show it again.
+    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(1).simulate('click');
+    expect(mockLoadExternalScript).toHaveBeenCalledTimes(1);
+    wrapper.unmount();
+  });
+
   test('map is displayed on show map button click', () => {
     const wrapper = mountWithIntl(
         <LocationFieldset
