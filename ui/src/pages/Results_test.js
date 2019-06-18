@@ -112,7 +112,7 @@ describe('testing Results', () => {
     const [wrapper, history] = setupPageWrapper();
     return flushPromises().then(() => {
       wrapper.update();
-      wrapper.find('.results-addpersonfab').at(0).simulate('click');
+      wrapper.find('.results-addfab').at(0).simulate('click');
       expect(history.entries[1].pathname).toBe('/albany/create');
       wrapper.unmount();
     });

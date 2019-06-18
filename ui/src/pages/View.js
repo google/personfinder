@@ -16,6 +16,7 @@
 
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import Fab from '@material/react-fab';
 
 import Footer from './../components/Footer.js';
 import LoadingIndicator from './../components/LoadingIndicator.js';
@@ -28,6 +29,13 @@ import Utils from './../utils/Utils.js';
 // TODO(gimite): Consider sharing some messages with Create.js because they
 // have many overlaps.
 const MESSAGES = defineMessages({
+  addNote: {
+    id: 'View.addNote',
+    defaultMessage: 'Add note',
+    description: ('A label on a button that takes the user to a page where '
+        + 'they can add a note with an update on a person\'s status or a '
+        + 'message for the person.'),
+  },
   age: {
     id: 'View.age',
     defaultMessage: 'Age',
@@ -162,16 +170,17 @@ class View extends Component {
       person: null
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.goToAddNote = this.goToAddNote.bind(this);
   }
 
   componentDidMount() {
-    const personId = Utils.getURLParam(this.props, 'id');
+    this.personId = Utils.getURLParam(this.props, 'id');
     this.repoId = this.props.match.params.repoId;
     // TODO(nworden): consider if we could have a global cache of repo info to
     // avoid calling for it on each page load
     const apiURLs = [
         `/${this.repoId}/d/repo`,
-        `/${this.repoId}/d/person?id=${encodeURIComponent(personId)}`,
+        `/${this.repoId}/d/person?id=${encodeURIComponent(this.personId)}`,
         ];
     Promise.all(apiURLs.map(url => fetch(url)))
         .then(res => Promise.all(res.map(r => r.json())))
@@ -194,6 +203,13 @@ class View extends Component {
     this.props.history.push({
         pathname: `/${this.repoId}/results`,
         search: '?query_name=' + encodeURIComponent(query),
+      });
+  }
+
+  goToAddNote() {
+    this.props.history.push({
+          pathname: `/${this.repoId}/add_note`,
+          search: '?id=' + encodeURIComponent(this.personId),
       });
   }
 
@@ -342,7 +358,14 @@ class View extends Component {
   }
 
   renderAddNoteFab() {
-    // TODO(gimite): Implement this.
+    return (
+      <Fab
+          className='results-addfab'
+          onClick={this.goToAddNote}
+          icon={<img src='/static/icons/maticon_add.svg' />}
+          textLabel={this.props.intl.formatMessage(MESSAGES.addNote)}
+      />
+    );
   }
 
   render() {
