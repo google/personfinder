@@ -58,7 +58,7 @@ class LocationFieldset extends Component {
       haveStartedLoadingMapScript: false,
       haveFinishedLoadingMapScript: false,
     };
-    this.mapsApiEnabled = ENV.maps_api_key;
+    this.mapsApiEnabled = Boolean(ENV.maps_api_key);
     this.onLocationLatLngUpdate = this.onLocationLatLngUpdate.bind(this);
   }
 
