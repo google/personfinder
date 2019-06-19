@@ -47,7 +47,7 @@ class HowToPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showOwnInfoSection: true,
+      showOwnInfoSection: false,
       showViewOthersInfoSection: false,
       showProvideOthersInfoSection: false,
     };
@@ -68,20 +68,88 @@ class HowToPage extends Component {
             <Zippy
                 header={'Provide your own safety information'}
                 zipHandler={
-                  (display) => this.setState({showOwnInfoSection: display})}
+                    (display) => this.setState({showOwnInfoSection: display})}
                 display={this.state.showOwnInfoSection}>
+              {/* TODO(nworden): figure out how to i18n this, esp. if we need screenshots */}
               <ol className='mdc-typography--body1'>
                 <li>
                   <b>Getting started</b>
-                  <p>Go to the Google Person Finder homepage by entering the URL (<a href="http://g.co/pf">http://g.co/pf</a>) in the browser and choose the disaster name relevant to you. Here is an environment for demonstration so you can try the operation at any time.</p>
+                  <p>Go to the Google Person Finder homepage by entering the URL (<a href="http://g.co/pf">http://g.co/pf</a>) in the browser and choose the disaster name relevant to you. Then click the [Provide information about someone] button.</p>
                 </li>
                 <li>
                   <b>Enter your name</b>
-                  <p>Put your name in [Given name] [Family name] and click [Provide information about this person].</p>
+                  <p>Put your name in the [Given name] [Family name] fields.</p>
                 </li>
                 <li>
-                  <b>Finish moving this page to React</b>
-                  <p>Nick's not done with this yet.</p>
+                  <b>Input more detailed information (optional)</b>
+                  <p>You can click the [More] button to open up fields for more detailed information, to help others identify you.</p>
+                </li>
+                <li>
+                  <b>Specify your status</b>
+                  <p>In the [Status of this person] field, select [I am this person]. Optionally, add your location.</p>
+                </li>
+                <li>
+                  <b>Submit the record</b>
+                  <p>Click [Submit record]. Your record will be created.</p>
+                </li>
+              </ol>
+            </Zippy>
+          </li>
+          <li>
+            <Zippy
+                header={'Confirm safety of family and friends'}
+                zipHandler={
+                    (display) => this.setState({
+                        showViewOthersInfoSection: display})}
+                display={this.state.showViewOthersInfoSection}>
+              <ol className='mdc-typography--body1'>
+                <li>
+                  <b>Getting started</b>
+                  <p>Go to the Google Person Finder homepage by entering the URL (<a href="http://g.co/pf">http://g.co/pf</a>) in the browser and choose the disaster name relevant to you.</p>
+                </li>
+                <li>
+                  <b>Searching</b>
+                  <p>Enter the name of the person you're looking for and then hit the [Enter] key.</p>
+                </li>
+                <li>
+                  <b>Results</b>
+                  <p>If you see a search result that might be the person you're looking for, click it to open a page with more details about that record.</p>
+                </li>
+                <li>
+                  <b>Adding a record</b>
+                  <p>If you can't find a record for the person you're looking for, you can add a record seeking information.</p>
+                  <p>(Note from Nick: It might be helpful to generalize the section below, so that we can tell people to follow those directions here.</p>
+                </li>
+              </ol>
+            </Zippy>
+          </li>
+          <li>
+            <Zippy
+                header={'Provide other people\'s safety information'}
+                zipHandler={
+                    (display) => this.setState({
+                      showProvideOthersInfoSection: display})}
+                display={this.state.showProvideOthersInfoSection}>
+              <ol className='mdc-typography--body1'>
+                <li>
+                  <b>Getting started</b>
+                  <p>Go to the Google Person Finder homepage by entering the URL (<a href="http://g.co/pf">http://g.co/pf</a>) in the browser and choose the disaster name relevant to you. Then click the [Provide information about someone] button and choose the [Someone else] tab near the top..</p>
+                </li>
+                <li>
+                  <b>Enter the person's name</b>
+                  <p>Put the person's name in the [Given name] and [Family name] fields.</p>
+                </li>
+                <li>
+                  <b>Input more detailed information (optional)</b>
+                  <p>You can click the [More] button to open up fields for more detailed information, to help others identify the person.</p>
+                </li>
+                <li>
+                  <b>Specify the person's status</b>
+                  <p>Select the person's status, a message about their status (e.g., how you know their status), and (optionally) their location.</p>
+                </li>
+                <li>
+                  <b>Submit the record</b>
+                  <p>Click [Submit record]. The record will be created.</p>
                 </li>
               </ol>
             </Zippy>

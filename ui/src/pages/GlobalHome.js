@@ -115,6 +115,7 @@ class GlobalHome extends Component {
       error: null,
       repos: []
     };
+    this.goToHowDoesItWork = this.goToHowDoesItWork.bind(this);
   }
 
   componentDidMount() {
@@ -140,6 +141,10 @@ class GlobalHome extends Component {
       );
   }
 
+  goToHowDoesItWork() {
+    this.props.history.push(`/global/howto`)
+  }
+
   renderHeader() {
     return (
       <div>
@@ -155,7 +160,7 @@ class GlobalHome extends Component {
         <Button
           className='pf-button-secondary globalhome-howsitworkbutton'
           raised
-          onClick={() => console.log('clicked!')}
+          onClick={this.goToHowDoesItWork}
         >
           {this.props.intl.formatMessage(MESSAGES.howDoesItWork)}
         </Button>
