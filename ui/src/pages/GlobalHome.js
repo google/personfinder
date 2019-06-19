@@ -116,6 +116,8 @@ class GlobalHome extends Component {
       repos: []
     };
     this.goToHowDoesItWork = this.goToHowDoesItWork.bind(this);
+    this.goToRespondersPage = this.goToRespondersPage.bind(this);
+    this.goToDevelopersPage = this.goToDevelopersPage.bind(this);
   }
 
   componentDidMount() {
@@ -142,7 +144,15 @@ class GlobalHome extends Component {
   }
 
   goToHowDoesItWork() {
-    this.props.history.push(`/global/howto`)
+    this.props.history.push(`/global/howto`);
+  }
+
+  goToRespondersPage() {
+    this.props.history.push(`/global/responders`);
+  }
+
+  goToDevelopersPage() {
+    window.location.href = 'https://github.com/google/personfinder';
   }
 
   renderHeader() {
@@ -155,7 +165,6 @@ class GlobalHome extends Component {
         <p className='mdc-typography--body1 globalhome-headerdesc'>
           <FormattedMessage {...MESSAGES.tagline} />
         </p>
-        {/* TODO(nworden): implement this link/page */}
         {/* TODO(nworden): see if we can support right-click targets */}
         <Button
           className='pf-button-secondary globalhome-howsitworkbutton'
@@ -181,11 +190,10 @@ class GlobalHome extends Component {
         </div>
         <CardActions>
           <CardActionButtons>
-            {/* TODO(nworden): implement this link/page */}
             <Button
               className='pf-button-secondary'
               raised
-              onClick={() => console.log('clicked!')}
+              onClick={this.goToRespondersPage}
             >
               {this.props.intl.formatMessage(MESSAGES.learnHow)}
             </Button>
@@ -208,11 +216,10 @@ class GlobalHome extends Component {
         </div>
         <CardActions>
           <CardActionButtons>
-            {/* TODO(nworden): implement this link/page */}
             <Button
               className='pf-button-secondary'
               raised
-              onClick={() => console.log('clicked!')}
+              onClick={this.goToDevelopersPage}
             >
               {this.props.intl.formatMessage(MESSAGES.getStarted)}
             </Button>
