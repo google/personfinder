@@ -28,6 +28,7 @@ import views.admin.global_index
 import views.admin.repo_index
 import views.admin.review
 import views.admin.statistics
+import views.enduser.global_index
 import views.frontendapi
 import views.meta.setup_datastore
 import views.meta.sitemap
@@ -75,9 +76,9 @@ _BASE_URL_PATTERNS = [
      views.meta.sitemap.SitemapView.as_view),
     ('meta_static-files', r'(?P<repo>[^\/]+)/static/(?P<filename>.+)',
      views.meta.static_files.ConfigurableStaticFileView.as_view),
-    # The regular home path is in _STARTING_SLASH_URL_PATTERNS, below.
-    ('meta_static-home-altpath', r'global/home.html',
-     views.meta.static_pages.HomeView.as_view),
+    # The regular global homepage path is in _STARTING_SLASH_URL_PATTERNS below.
+    ('enduser_global-index-altpath', r'global/home.html',
+     views.enduser.global_index.GlobalIndexView.as_view),
     ('meta_static-howto', r'global/howto.html',
      views.meta.static_pages.HowToView.as_view),
     ('meta_static-responders', r'global/responders.html',
@@ -109,7 +110,8 @@ _BASE_URL_PATTERNS = [
 # This pattern can't be automatically prefixed like the others, because it'll
 # end up with a repeated slash ("personfinder//?").
 _STARTING_SLASH_URL_PATTERNS = [
-    ('meta_static-home', r'/?', views.meta.static_pages.HomeView.as_view),
+    ('enduser_global-index', r'/?',
+     views.enduser.global_index.GlobalIndexView.as_view),
 ]
 
 # pylint: disable=invalid-name
