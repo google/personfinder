@@ -189,6 +189,18 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             accepts_post=False,
             min_admin_level=aa_model.AdminPermission.AccessLevel.MANAGER,
             requires_xsrf=False),
+        'enduser_global-index':
+        path_test_info(
+            accepts_get=True,
+            accepts_post=False,
+            min_admin_level=None,
+            requires_xsrf=False),
+        'enduser_global-index-altpath':
+        path_test_info(
+            accepts_get=True,
+            accepts_post=False,
+            min_admin_level=None,
+            requires_xsrf=False),
         'frontendapi_add-note':
         path_test_info(
             accepts_get=False,
@@ -249,18 +261,6 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
                 'repo': 'haiti',
                 'filename': 'facebook-16x16.png',
             },
-            min_admin_level=None,
-            requires_xsrf=False),
-        'meta_static-home':
-        path_test_info(
-            accepts_get=True,
-            accepts_post=False,
-            min_admin_level=None,
-            requires_xsrf=False),
-        'meta_static-home-altpath':
-        path_test_info(
-            accepts_get=True,
-            accepts_post=False,
             min_admin_level=None,
             requires_xsrf=False),
         'meta_static-howto':

@@ -11,26 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Views for static pages."""
+"""View for the global homepage."""
 
-import views.base
-
-
-class RespondersView(views.base.BaseView):
-
-    def get(self, request, *args, **kwargs):
-        del request, args, kwargs  # Unused.
-        if self.env.lang == 'ja':
-            return self.render('responders-ja.html')
-        else:
-            return self.render('responders.html')
+import views.enduser.base
 
 
-class HowToView(views.base.BaseView):
+class GlobalIndexView(views.enduser.base.EnduserBaseView):
 
     def get(self, request, *args, **kwargs):
         del request, args, kwargs  # Unused.
         if self.env.lang == 'ja':
-            return self.render('howto-ja.html')
+            return self.render('home-ja.html')
         else:
-            return self.render('howto.html')
+            return self.render('home.html')
