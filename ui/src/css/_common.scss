@@ -91,3 +91,27 @@ input[type=file].proxied-upload {
   color: #757575;
   font-size: 12px;
 }
+
+.staticpage-sectionzippylist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.staticpage-sectionzippylist li {
+  border-top: 1px solid #dadce0;
+  padding: 10px 0;
+}
+
+.staticpage-sectionzippylist li:last-child {
+  border-bottom: 1px solid #dadce0;
+}
+
+.staticpage-sectionzippylist li li {
+  border: none;
+  padding: 0px;
+}
+
+.staticpage-sectionzippylist li:last-child li {
+  border: none;
+}

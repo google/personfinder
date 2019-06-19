@@ -18,12 +18,20 @@ import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 import StaticPageWrapper from './../components/StaticPageWrapper.js';
+import Zippy from './../components/Zippy.js';
 
 const MESSAGES = defineMessages({
   helpDocument: {
     id: 'HowToPage.helpDocument',
     defaultMessage: 'Help document',
     description: 'A header for a page with help documentation.',
+  },
+  intro: {
+    id: 'HowToPage.intro',
+    defaultMessage: ('Person Finder can be used by anyone from a PC or mobile '
+        + 'phone. This document shows how to provide and search for safety '
+        + 'information in emergency situations.'),
+    description: 'An introduction to a user guide for Person Finder.',
   },
   pfUserGuide: {
     id: 'HowToPage.pfUserGuide',
@@ -35,12 +43,53 @@ const MESSAGES = defineMessages({
 /**
  * A page for the user guide.
  */
-const HowToPage = (props) => (
-  <StaticPageWrapper
-      pageTitle={props.intl.formatMessage(MESSAGES.helpDocument)}>
-    <h2 className='mdc-typography--subtitle2'><FormattedMessage {...MESSAGES.pfUserGuide} /></h2>
-    <p className='mdc-typography--body1'>Person Finder can be used by anyone from a PC or mobile phone. This document shows how to provide and search for safety information in emergency situations.</p>
-  </StaticPageWrapper>
-);
+class HowToPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showOwnInfoSection: true,
+      showViewOthersInfoSection: false,
+      showProvideOthersInfoSection: false,
+    };
+  }
+
+  render() {
+    return (
+      <StaticPageWrapper
+          pageTitle={this.props.intl.formatMessage(MESSAGES.helpDocument)}>
+        <h2 className='mdc-typography--subtitle2'>
+          <FormattedMessage {...MESSAGES.pfUserGuide} />
+        </h2>
+        <p className='mdc-typography--body1'>
+          <FormattedMessage {...MESSAGES.intro} />
+        </p>
+        <ul className='staticpage-sectionzippylist'>
+          <li>
+            <Zippy
+                header={'Provide your own safety information'}
+                zipHandler={
+                  (display) => this.setState({showOwnInfoSection: display})}
+                display={this.state.showOwnInfoSection}>
+              <ol className='mdc-typography--body1'>
+                <li>
+                  <b>Getting started</b>
+                  <p>Go to the Google Person Finder homepage by entering the URL (<a href="http://g.co/pf">http://g.co/pf</a>) in the browser and choose the disaster name relevant to you. Here is an environment for demonstration so you can try the operation at any time.</p>
+                </li>
+                <li>
+                  <b>Enter your name</b>
+                  <p>Put your name in [Given name] [Family name] and click [Provide information about this person].</p>
+                </li>
+                <li>
+                  <b>Finish moving this page to React</b>
+                  <p>Nick's not done with this yet.</p>
+                </li>
+              </ol>
+            </Zippy>
+          </li>
+        </ul>
+      </StaticPageWrapper>
+    );
+  }
+}
 
 export default injectIntl(HowToPage);

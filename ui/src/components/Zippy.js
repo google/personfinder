@@ -22,7 +22,7 @@ import React, {Component} from 'react';
 class Zippy extends Component {
   render() {
     const content = this.props.display ?
-        <p>{this.props.content}</p> : null;
+        <p>{this.props.children}</p> : null;
     return (
       <div>
         <div className='zippy-header'>
