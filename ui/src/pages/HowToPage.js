@@ -66,7 +66,10 @@ class HowToPage extends Component {
         <ul className='staticpage-sectionzippylist'>
           <li>
             <Zippy
-                header={'Provide your own safety information'}
+                header={
+                    <h3 className='mdc-typography--headline3'>
+                      Provide your own safety information
+                    </h3>}
                 zipHandler={
                     (display) => this.setState({showOwnInfoSection: display})}
                 display={this.state.showOwnInfoSection}>
@@ -97,7 +100,10 @@ class HowToPage extends Component {
           </li>
           <li>
             <Zippy
-                header={'Confirm safety of family and friends'}
+                header={
+                    <h3 className='mdc-typography--headline3'>
+                      Confirm safety of family and friends
+                    </h3>}
                 zipHandler={
                     (display) => this.setState({
                         showViewOthersInfoSection: display})}
@@ -125,7 +131,10 @@ class HowToPage extends Component {
           </li>
           <li>
             <Zippy
-                header={'Provide other people\'s safety information'}
+                header={
+                    <h3 className='mdc-typography--headline3'>
+                      Provide other people's safety information
+                    </h3>}
                 zipHandler={
                     (display) => this.setState({
                       showProvideOthersInfoSection: display})}
