@@ -60,9 +60,10 @@
 }
 
 .globalhome-thirdpartycard {
-  background-color: #eee;
+  background-color: #f7f7f8;
   margin-bottom: 24px;
   padding: 16px;
+  @include mdc-button-outline-width(0px);
 }
 
 .globalhome-thirdpartycard h3 {

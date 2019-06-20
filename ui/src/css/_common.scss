@@ -85,6 +85,8 @@ input[type=file].proxied-upload {
 .pf-button-secondary {
   @include mdc-button-filled-accessible(#fff);
   @include mdc-button-ink-color(#1a73e7);
+  @include mdc-button-outline-color(#dadce0);
+  @include mdc-button-outline-width(1px);
 }
 
 .form-explanationtext {
