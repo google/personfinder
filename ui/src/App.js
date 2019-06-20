@@ -21,7 +21,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import AddNote from './pages/AddNote.js';
 import Create from './pages/Create.js';
 import GlobalHome from './pages/GlobalHome.js';
+import HowToPage from './pages/HowToPage.js';
 import RepoHome from './pages/RepoHome.js';
+import RespondersPage from './pages/RespondersPage.js';
 import Results from './pages/Results.js';
 import View from './pages/View.js';
 
@@ -33,6 +35,8 @@ const App = () => (
       {/* TODO(nworden): include support for legacy homepage URL:
           global/home.html */}
       <Route exact path='/' component={GlobalHome} />
+      <Route exact path='/global/howto' component={HowToPage} />
+      <Route exact path='/global/responders' component={RespondersPage} />
       <Route exact path='/:repoId' component={RepoHome} />
       <Route exact path='/:repoId/add_note' component={AddNote} />
       <Route exact path='/:repoId/create' component={Create} />

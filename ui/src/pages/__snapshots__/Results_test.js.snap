@@ -106,51 +106,88 @@ exports[`testing Results snapshot test for Results 1`] = `
             }
           }
         >
-          <div
-            id="repoheader"
+          <InjectIntl(PageHeader)
+            backButtonTarget="/albany"
+            title="Albany"
           >
-            <div
-              id="repoheader-backbutton"
+            <PageHeader
+              backButtonTarget="/albany"
+              intl={
+                Object {
+                  "defaultFormats": Object {},
+                  "defaultLocale": "en",
+                  "formatDate": [Function],
+                  "formatHTMLMessage": [Function],
+                  "formatMessage": [Function],
+                  "formatNumber": [Function],
+                  "formatPlural": [Function],
+                  "formatRelative": [Function],
+                  "formatTime": [Function],
+                  "formats": Object {},
+                  "formatters": Object {
+                    "getDateTimeFormat": [Function],
+                    "getMessageFormat": [Function],
+                    "getNumberFormat": [Function],
+                    "getPluralFormat": [Function],
+                    "getRelativeFormat": [Function],
+                  },
+                  "locale": "en",
+                  "messages": Object {},
+                  "now": [Function],
+                  "onError": [Function],
+                  "textComponent": "span",
+                  "timeZone": null,
+                }
+              }
+              title="Albany"
             >
-              <Link
-                replace={false}
-                to="/albany"
+              <div
+                id="repoheader"
               >
-                <a
-                  href="/albany"
-                  onClick={[Function]}
+                <div
+                  id="repoheader-backbutton"
                 >
-                  <div>
-                    <img
-                      src="/static/icons/maticon_arrow_back.svg"
-                    />
-                  </div>
-                </a>
-              </Link>
-            </div>
-            <div
-              id="repoheader-info"
-            >
-              <p
-                className="mdc-typography--subtitle1"
-              >
-                <FormattedMessage
-                  defaultMessage="Google Person Finder"
-                  id="RepoHeader.productName"
-                  values={Object {}}
+                  <Link
+                    replace={false}
+                    to="/albany"
+                  >
+                    <a
+                      href="/albany"
+                      onClick={[Function]}
+                    >
+                      <div>
+                        <img
+                          src="/static/icons/maticon_arrow_back.svg"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </div>
+                <div
+                  id="repoheader-info"
                 >
-                  <span>
-                    Google Person Finder
-                  </span>
-                </FormattedMessage>
-              </p>
-              <p
-                className="mdc-typography--subtitle2"
-              >
-                Albany
-              </p>
-            </div>
-          </div>
+                  <p
+                    className="mdc-typography--subtitle1"
+                  >
+                    <FormattedMessage
+                      defaultMessage="Google Person Finder"
+                      id="RepoHeader.productName"
+                      values={Object {}}
+                    >
+                      <span>
+                        Google Person Finder
+                      </span>
+                    </FormattedMessage>
+                  </p>
+                  <p
+                    className="mdc-typography--subtitle2"
+                  >
+                    Albany
+                  </p>
+                </div>
+              </div>
+            </PageHeader>
+          </InjectIntl(PageHeader)>
         </RepoHeader>
       </InjectIntl(RepoHeader)>
       <div
