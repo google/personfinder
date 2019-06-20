@@ -168,7 +168,7 @@ class GlobalHome extends Component {
         {/* TODO(nworden): see if we can support right-click targets */}
         <Button
           className='pf-button-secondary globalhome-howsitworkbutton'
-          raised
+          outlined
           onClick={this.goToHowDoesItWork}
         >
           {this.props.intl.formatMessage(MESSAGES.howDoesItWork)}
@@ -179,7 +179,7 @@ class GlobalHome extends Component {
 
   renderRespondersCard() {
     return (
-      <Card className='globalhome-thirdpartycard'>
+      <Card className='globalhome-thirdpartycard' outlined>
         <div>
           <h3 className='mdc-typography--headline3'>
             <FormattedMessage {...MESSAGES.responders} />
@@ -192,7 +192,7 @@ class GlobalHome extends Component {
           <CardActionButtons>
             <Button
               className='pf-button-secondary'
-              raised
+              outlined
               onClick={this.goToRespondersPage}
             >
               {this.props.intl.formatMessage(MESSAGES.learnHow)}
@@ -205,7 +205,7 @@ class GlobalHome extends Component {
 
   renderDevelopersCard() {
     return (
-      <Card className='globalhome-thirdpartycard'>
+      <Card className='globalhome-thirdpartycard' outlined>
         <div>
           <h3 className='mdc-typography--headline3'>
             <FormattedMessage {...MESSAGES.developers} />
@@ -218,7 +218,7 @@ class GlobalHome extends Component {
           <CardActionButtons>
             <Button
               className='pf-button-secondary'
-              raised
+              outlined
               onClick={this.goToDevelopersPage}
             >
               {this.props.intl.formatMessage(MESSAGES.getStarted)}
@@ -303,7 +303,7 @@ class RepoCardImpl extends Component {
       );
     }
     return (
-      <Card className='repocard'>
+      <Card className='repocard' outlined>
         <CardPrimaryContent className='repocard-content' onClick={this.goToRepo}>
           <div className={repocardImageClassName}>
             <p className='mdc-typography--body1'>
