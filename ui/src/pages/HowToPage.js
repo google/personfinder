@@ -124,7 +124,6 @@ class HowToPage extends Component {
                 <li>
                   <b>Adding a record</b>
                   <p>If you can't find a record for the person you're looking for, you can add a record seeking information.</p>
-                  <p>(Note from Nick: It might be helpful to generalize the section below, so that we can tell people to follow those directions here.</p>
                 </li>
               </ol>
             </Zippy>
