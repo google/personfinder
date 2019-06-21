@@ -18,8 +18,6 @@ import React from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {Link} from 'react-router-dom';
 
-import PageHeader from './../components/PageHeader.js';
-
 const MESSAGES = defineMessages({
   // TODO(nworden): figure out how to make this configurable for users other
   // than Google
@@ -31,10 +29,22 @@ const MESSAGES = defineMessages({
   },
 });
 
-const RepoHeader = (props) => (
-  <PageHeader
-      backButtonTarget={props.backButtonTarget}
-      title={props.repo.title} />
+const PageHeader = (props) => (
+  <div id='repoheader'>
+    <div id='repoheader-backbutton'>
+      <Link to={props.backButtonTarget}>
+        <div><img src='/static/icons/maticon_arrow_back.svg' /></div>
+      </Link>
+    </div>
+    <div id='repoheader-info'>
+      <p className='mdc-typography--subtitle1'>
+        <FormattedMessage {...MESSAGES.productName} />
+      </p>
+      <p className='mdc-typography--subtitle2'>
+        {props.title}
+      </p>
+    </div>
+  </div>
 );
 
-export default injectIntl(RepoHeader);
+export default injectIntl(PageHeader);
