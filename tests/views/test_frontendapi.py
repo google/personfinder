@@ -22,7 +22,6 @@ import mock
 import six
 
 import model
-import photo
 
 import view_tests_base
 
