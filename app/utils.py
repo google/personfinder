@@ -296,6 +296,17 @@ def validate_image(bytestring):
         return False
 
 
+def validate_django_image(uploaded_file):
+    try:
+        image = None
+        if uploaded_file:
+            image = images.Image(uploaded_file.read())
+            image.width
+        return image
+    except:
+        return False
+
+
 EMAIL_VALIDATOR = EmailValidator()
 
 
