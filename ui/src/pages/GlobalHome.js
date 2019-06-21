@@ -246,12 +246,12 @@ class GlobalHome extends Component {
   }
 
   renderRepoList() {
-    let cells = this.state.repos.map(repo => (
-      <Cell key={repo.repoId}>
+    const cells = this.state.repos.map(repo => (
+      <div className='globalhome-repolistitem' key={repo.repoId}>
         <RepoCard history={this.props.history} repo={repo} />
-      </Cell>
+      </div>
     ));
-    return <Grid><Row>{cells}</Row></Grid>;
+    return <div className='globalhome-repolistwrapper'>{cells}</div>;
   }
 
   render() {

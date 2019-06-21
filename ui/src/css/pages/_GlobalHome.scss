@@ -47,6 +47,20 @@
   margin: 40px 0;
 }
 
+.globalhome-repolistwrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+.globalhome-repolistitem {
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: 8px;
+  max-width: 480px;
+}
+
 .globalhome-thirdpartywrapper {
   margin-top: 8px;
 }
