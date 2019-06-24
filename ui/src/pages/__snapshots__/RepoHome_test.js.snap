@@ -440,59 +440,90 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
           </Component>
         </RippledComponent>
       </div>
-      <InjectIntl(Footer)>
-        <Footer
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en",
-              "formatDate": [Function],
-              "formatHTMLMessage": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatPlural": [Function],
-              "formatRelative": [Function],
-              "formatTime": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralFormat": [Function],
-                "getRelativeFormat": [Function],
-              },
-              "locale": "en",
-              "messages": Object {},
-              "now": [Function],
-              "onError": [Function],
-              "textComponent": "span",
-              "timeZone": null,
-            }
-          }
+      <div
+        className="org-boxwrapper repohome-footersection"
+      >
+        <p
+          className="mdc-typography--body1 repohome-howtolink"
         >
-          <div
-            className="footer"
+          <Link
+            replace={false}
+            to={
+              Object {
+                "pathname": "/global/howto",
+              }
+            }
           >
-            <p
-              className="mdc-typography--body1"
+            <a
+              href="/global/howto"
+              onClick={[Function]}
             >
-              <FormattedHTMLMessage
-                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>."
-                id="Footer.disclaimerText"
+              <FormattedMessage
+                defaultMessage="How to use Person Finder"
+                id="RepoHome.howToUsePf"
                 values={Object {}}
               >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>.",
+                <span>
+                  How to use Person Finder
+                </span>
+              </FormattedMessage>
+            </a>
+          </Link>
+        </p>
+        <InjectIntl(Footer)>
+          <Footer
+            intl={
+              Object {
+                "defaultFormats": Object {},
+                "defaultLocale": "en",
+                "formatDate": [Function],
+                "formatHTMLMessage": [Function],
+                "formatMessage": [Function],
+                "formatNumber": [Function],
+                "formatPlural": [Function],
+                "formatRelative": [Function],
+                "formatTime": [Function],
+                "formats": Object {},
+                "formatters": Object {
+                  "getDateTimeFormat": [Function],
+                  "getMessageFormat": [Function],
+                  "getNumberFormat": [Function],
+                  "getPluralFormat": [Function],
+                  "getRelativeFormat": [Function],
+                },
+                "locale": "en",
+                "messages": Object {},
+                "now": [Function],
+                "onError": [Function],
+                "textComponent": "span",
+                "timeZone": null,
+              }
+            }
+          >
+            <div
+              className="footer"
+            >
+              <p
+                className="mdc-typography--body1"
+              >
+                <FormattedHTMLMessage
+                  defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>."
+                  id="Footer.disclaimerText"
+                  values={Object {}}
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>.",
+                      }
                     }
-                  }
-                />
-              </FormattedHTMLMessage>
-            </p>
-          </div>
-        </Footer>
-      </InjectIntl(Footer)>
+                  />
+                </FormattedHTMLMessage>
+              </p>
+            </div>
+          </Footer>
+        </InjectIntl(Footer)>
+      </div>
     </div>
   </RepoHome>
 </InjectIntl(RepoHome)>
