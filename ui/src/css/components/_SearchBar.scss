@@ -27,3 +27,7 @@
 .searchbar .mdc-floating-label:not(.mdc-floating-label--float-above) {
   margin-left: 48px;
 }
+
+.searchbar {
+  @include mdc-text-field-outline-shape-radius(8px);
+}

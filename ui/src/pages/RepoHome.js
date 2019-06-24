@@ -16,6 +16,7 @@
 
 import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import {Link} from 'react-router-dom'
 import Button from '@material/react-button';
 
 import EndBarHeader from './../components/EndBarHeader.js';
@@ -25,6 +26,11 @@ import RepoHeader from './../components/RepoHeader.js';
 import SearchBar from './../components/SearchBar.js';
 
 const MESSAGES = defineMessages({
+  howToUsePf: {
+    id: 'RepoHome.howToUsePf',
+    defaultMessage: 'How to use Person Finder',
+    description: 'Anchor text for a link to a user guide.',
+  },
   provideInfoAboutSomeone: {
     id: 'RepoHome.provideInfoAboutSomeone',
     defaultMessage: 'Provide information about someone',
@@ -131,13 +137,20 @@ class RepoHome extends Component {
           </EndBarHeader>
           <Button
             className='pf-button-secondary'
-            raised
+            outlined
             onClick={this.goToCreate}
           >
             {this.props.intl.formatMessage(MESSAGES.provideInfoAboutSomeone)}
           </Button>
         </div>
-        <Footer />
+        <div className='org-boxwrapper repohome-footersection'>
+          <p className='mdc-typography--body1 repohome-howtolink'>
+            <Link to={{pathname: '/global/howto'}}>
+              <FormattedMessage {...MESSAGES.howToUsePf} />
+            </Link>
+          </p>
+          <Footer />
+        </div>
       </div>);
   }
 }

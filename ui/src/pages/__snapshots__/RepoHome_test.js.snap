@@ -397,7 +397,7 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           onTouchStart={[Function]}
-          raised={true}
+          outlined={true}
           style={Object {}}
           unbounded={false}
         >
@@ -414,11 +414,11 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchStart={[Function]}
-            raised={true}
+            outlined={true}
             style={Object {}}
           >
             <button
-              className="mdc-button pf-button-secondary mdc-button--raised"
+              className="mdc-button pf-button-secondary mdc-button--outlined"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -440,55 +440,90 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
           </Component>
         </RippledComponent>
       </div>
-      <InjectIntl(Footer)>
-        <Footer
-          intl={
-            Object {
-              "defaultFormats": Object {},
-              "defaultLocale": "en",
-              "formatDate": [Function],
-              "formatHTMLMessage": [Function],
-              "formatMessage": [Function],
-              "formatNumber": [Function],
-              "formatPlural": [Function],
-              "formatRelative": [Function],
-              "formatTime": [Function],
-              "formats": Object {},
-              "formatters": Object {
-                "getDateTimeFormat": [Function],
-                "getMessageFormat": [Function],
-                "getNumberFormat": [Function],
-                "getPluralFormat": [Function],
-                "getRelativeFormat": [Function],
-              },
-              "locale": "en",
-              "messages": Object {},
-              "now": [Function],
-              "onError": [Function],
-              "textComponent": "span",
-              "timeZone": null,
-            }
-          }
+      <div
+        className="org-boxwrapper repohome-footersection"
+      >
+        <p
+          className="mdc-typography--body1 repohome-howtolink"
         >
-          <div
-            className="footer"
+          <Link
+            replace={false}
+            to={
+              Object {
+                "pathname": "/global/howto",
+              }
+            }
           >
-            <p
-              className="mdc-typography--body1"
+            <a
+              href="/global/howto"
+              onClick={[Function]}
             >
               <FormattedMessage
-                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts."
-                id="Footer.disclaimerText"
+                defaultMessage="How to use Person Finder"
+                id="RepoHome.howToUsePf"
                 values={Object {}}
               >
                 <span>
-                  PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts.
+                  How to use Person Finder
                 </span>
               </FormattedMessage>
-            </p>
-          </div>
-        </Footer>
-      </InjectIntl(Footer)>
+            </a>
+          </Link>
+        </p>
+        <InjectIntl(Footer)>
+          <Footer
+            intl={
+              Object {
+                "defaultFormats": Object {},
+                "defaultLocale": "en",
+                "formatDate": [Function],
+                "formatHTMLMessage": [Function],
+                "formatMessage": [Function],
+                "formatNumber": [Function],
+                "formatPlural": [Function],
+                "formatRelative": [Function],
+                "formatTime": [Function],
+                "formats": Object {},
+                "formatters": Object {
+                  "getDateTimeFormat": [Function],
+                  "getMessageFormat": [Function],
+                  "getNumberFormat": [Function],
+                  "getPluralFormat": [Function],
+                  "getRelativeFormat": [Function],
+                },
+                "locale": "en",
+                "messages": Object {},
+                "now": [Function],
+                "onError": [Function],
+                "textComponent": "span",
+                "timeZone": null,
+              }
+            }
+          >
+            <div
+              className="footer"
+            >
+              <p
+                className="mdc-typography--body1"
+              >
+                <FormattedHTMLMessage
+                  defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>."
+                  id="Footer.disclaimerText"
+                  values={Object {}}
+                >
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>.",
+                      }
+                    }
+                  />
+                </FormattedHTMLMessage>
+              </p>
+            </div>
+          </Footer>
+        </InjectIntl(Footer)>
+      </div>
     </div>
   </RepoHome>
 </InjectIntl(RepoHome)>
