@@ -15,15 +15,17 @@
  */
 
 import React, {Component} from 'react';
-import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
 
 const MESSAGES = defineMessages({
-  disclaimerText: {
+  disclaimerTextHTML: {
     id: 'Footer.disclaimerText',
     defaultMessage: ('PLEASE NOTE: All data entered is available to the public '
         + 'and usable by anyone. Google does not review or verify the accuracy '
         + 'of this data. Google may share the data with public and private '
-        + 'organizations participating in disaster response efforts.'),
+        + 'organizations participating in disaster response efforts. Learn '
+        + 'more about <a href="https://policies.google.com/privacy">Google\'s '
+        + 'privacy policy</a>.'),
     description: 'A disclaimer shown at the footer of the page.',
   },
 });
@@ -31,7 +33,7 @@ const MESSAGES = defineMessages({
 const Footer = () => (
   <div className="footer">
     <p className="mdc-typography--body1">
-      <FormattedMessage {...MESSAGES.disclaimerText} />
+      <FormattedHTMLMessage {...MESSAGES.disclaimerTextHTML} />
     </p>
   </div>
 );
