@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Та \"%(full_name)s\"-н бичлэгүүд дээрх тэмдэглэлүүдийг үнэхээр "
+"идэвхгүйжүүлэхийг хүсэж байна уу?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -911,6 +923,17 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Хэрэв та энэ тэмдэглэлийн зохиогч нь бол өөрийн имэйлээ шалгаж ирсэн "
+"холбоосоор энэ бичлэг дээр тэмдэглэлүүдийг идэвхжүүлэхийг хүсэж байгаагаа"
+" \n"
+"баталгаажуулна уу.  Үгүй бол бичлэгийн зохиогч таны хүсэлтийг \n"
+"баталгаажуултал хүлээнэ үү."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Хэрэв танд энэ хүний зураг байгаа бол байршуулах буюу URL хаягийг нь "
@@ -1272,6 +1295,9 @@ msgstr "Хүний байдал"
 msgid "Status of this person:"
 msgstr "Энэ хүний байдал:"
 
+msgid "Street name only, no number"
+msgstr "Зөвхөн гудамжны нэр, дугаар оруулахгүй"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1546,6 +1572,9 @@ msgstr "Танд хэний талаарх мэдээлэл байгаа вэ"
 msgid "Yes"
 msgstr "Тийм"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Тийм, бичлэгийн зохиогчоос тэмдэглэлийг идэвхжүүлэх эсэхийг асуух"
+
 msgid "Yes, delete the record"
 msgstr "Тийм, бичлэгийг устгах"
 
@@ -1566,6 +1595,9 @@ msgstr "Та аль хэдийн бүртгүүлсэн байна. "
 
 msgid "You are already unsubscribed."
 msgstr "Та аль хэдийн бүртгүүлсэн байна."
+
+msgid "You are not currently signed in."
+msgstr "Та одоо нэвтрээгүй байна."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1653,6 +1685,10 @@ msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэли
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Хүн Хайгч] \"%(full_name)s\"-н дээрх тэмдэглэлийг идэвхжүүлэх үү?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Хүн Хайгч] \"%(full_name)s\"-н талаарх тэмдэглэлийг идэвхгүйжүүлсэн"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

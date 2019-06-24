@@ -221,6 +221,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Haluatko varmasti poistaa käytöstä muistiinpanot henkilöä "
+"%(full_name)s koskevista tiedoista?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -923,6 +935,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Jos olet kirjoittanut tämän muistiinpanon, vahvista klikkaamalla "
+"sähköpostiosoitteeseesi lähetettyä vahvistuslinkkiä, että haluat ottaa "
+"näiden tietojen muistiinpanot käyttöön. Odota muussa tapauksessa, että "
+"tietojen kirjoittaja vahvistaa pyyntösi."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
@@ -1286,6 +1308,9 @@ msgstr "Henkilön tila"
 msgid "Status of this person:"
 msgstr "Tämän henkilön tila:"
 
+msgid "Street name only, no number"
+msgstr "Vain kadun nimi, ei numeroa"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1562,6 +1587,9 @@ msgstr "Kenestä sinulla on tietoa"
 msgid "Yes"
 msgstr "Kyllä"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Kyllä, pyydä tietojen kirjoittajaa ottamaan muistiinpanot käyttöön"
+
 msgid "Yes, delete the record"
 msgstr "Kyllä, poista tiedot."
 
@@ -1582,6 +1610,9 @@ msgstr "Olet jo tilannut tämän kohteen. "
 
 msgid "You are already unsubscribed."
 msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
+
+msgid "You are not currently signed in."
+msgstr "Et ole kirjautunut sisään."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1672,6 +1703,12 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[Person Finder] Otetaanko henkilöä %(full_name)s koskevat muistiinpanot "
 "käyttöön?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr ""
+"[Person Finder] Henkilöä %(full_name)s koskevat muistiinpanot on nyt "
+"poistettu käytöstä"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

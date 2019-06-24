@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      तुम्हाला खात्री आहे की तुम्ही \"%(full_name)s\" च्या रेकॉर्डवर टिपा"
+" बंद करू इच्छिता?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -924,6 +936,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"तुम्ही या टिपेचे लेखक असल्यास, कृपया या रेकॉर्डवरील टिपा तुम्ही बंद करू "
+"इच्छित असल्याचे निश्चित करण्यासाठी तुमचा ईमेल तपासा. अन्यथा, तुमच्या "
+"विनंती निश्चित करण्यासाठी रेकॉर्ड लेखकाची प्रतीक्षा करा."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "आपल्याकडे या व्यक्तीचा फोटो असल्यास, तो अपलोड करा किंवा त्याचा URL पत्ता "
@@ -1287,6 +1308,9 @@ msgstr "व्यक्तीची स्थिती"
 msgid "Status of this person:"
 msgstr "या व्यक्तीची स्थिती:"
 
+msgid "Street name only, no number"
+msgstr "केवळ मार्ग नाव, नंबर नाही"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1564,6 +1588,9 @@ msgstr "आपल्याकडे कोणाविषयी माहित�
 msgid "Yes"
 msgstr "होय"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "होय, टिपा सुरू करण्यासाठी रेकॉर्ड लेखकाला विचारा"
+
 msgid "Yes, delete the record"
 msgstr "होय, रेकॉर्ड हटवा"
 
@@ -1584,6 +1611,9 @@ msgstr "तुम्ही आधीपासूनच सदस्यता घ
 
 msgid "You are already unsubscribed."
 msgstr "तुम्ही आधीपासूनच सदस्यता रद्द केली आहे."
+
+msgid "You are not currently signed in."
+msgstr "तुम्ही सध्या साइन इन केलेले नाही."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1671,6 +1701,10 @@ msgstr "[व्यक्ती शोधक] \"%(full_name)s\" वरील ट�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] \"%(full_name)s\" वरील टिपा सुरू करायच्या?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[व्यक्ती शोधक] \"%(full_name)s\" साठी टिपा आता अक्षम केल्या आहेत"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

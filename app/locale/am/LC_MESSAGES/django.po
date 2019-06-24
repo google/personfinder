@@ -212,6 +212,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      እርግጠኛ ነዎት በ%(full_name)s መዝገብ ላይ ያሉ ማስታወሻዎችን ማሰናከል ይፈልጋሉ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -893,6 +904,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"የዚህ ማስታወሻ ጸሐፊ ከሆኑ እባክዎ በዚህ ማስታወሻ ላይ ማስታወሻዎችን ማንቃት እንደሚፈሉ ለማረጋገጥ እባክዎ አንድ "
+"አገናኝ መጥቶልዎ ከሆነ ለማየት ኢሜይልዎን ይመልከቱ። አለበለዚያ የመዝገቡ ጸሐፊ ጥያቄዎን እስኪያረጋግጥ ድረስ "
+"እባክዎ ይጠብቁ።"
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "የዚህ ሰው ፎቶ ካለዎት ይስቀሉት ወይም የዩ አር ኤል አድራሻውን ያስገቡ።"
 
@@ -1243,6 +1263,9 @@ msgstr "የግለሰብ ሁኔታ"
 msgid "Status of this person:"
 msgstr "የዚህ(ች) ግለሰብ ሁኔታ፦"
 
+msgid "Street name only, no number"
+msgstr "የመንገድ ስም ብቻ፣ ቁጥር የለም"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1510,6 +1533,9 @@ msgstr "ስለማን መረጃ እንዳለዎት"
 msgid "Yes"
 msgstr "አዎ"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "አዎ፣ የመዝገብ ጸሐፊው ማስታወሻዎችን እንዲያነቃ ጠይቅ"
+
 msgid "Yes, delete the record"
 msgstr "አዎ፣ መዝገቡን ሰርዘው"
 
@@ -1530,6 +1556,9 @@ msgstr "አስቀድመው ለደንበኝነት ተመዝግበዋል። "
 
 msgid "You are already unsubscribed."
 msgstr "አስቀድመው ከደንበኝነት ምዝገባ ወጥተዋል።"
+
+msgid "You are not currently signed in."
+msgstr "በአሁኑ ጊዜ በመለያ አልገቡም።"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1608,6 +1637,10 @@ msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያሉ ማስታወሻዎ
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[ሰው ማግኛ] በ«%(full_name)s» ላይ ያሉ ማስታወሻዎች ይንቁ?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[ሰው ማግኛ] አሁን የ«%(full_name)s» ማስታወሻዎች ተሰናክሏል"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

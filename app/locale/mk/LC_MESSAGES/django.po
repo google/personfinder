@@ -221,6 +221,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Дали сте сигурни дека сакате да оневозможите белешки за записот на "
+"„%(full_name)s“?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -927,6 +939,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ако сте автор на оваа белешка, проверете ја вашата e-пошта за врска за да"
+" потврдите дека сакате да овозможите белешки на овој запис. Во спротивно,"
+" почекајте авторот на записот да го потврди вашето барање."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Ако имате слика од ова лице, поставете ја или внесете ја нејзината "
@@ -1290,6 +1311,9 @@ msgstr "Статус на лице"
 msgid "Status of this person:"
 msgstr "Статус на ова лице"
 
+msgid "Street name only, no number"
+msgstr "Само улица, без број"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1568,6 +1592,9 @@ msgstr "За кого имате информации"
 msgid "Yes"
 msgstr "Да"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Да, побарајте од авторот на записот да овозможи белешки"
+
 msgid "Yes, delete the record"
 msgstr "Да, избришете го записот"
 
@@ -1588,6 +1615,9 @@ msgstr "Веќе сте претплатени. "
 
 msgid "You are already unsubscribed."
 msgstr "Веќе ја откажавте претплатата."
+
+msgid "You are not currently signed in."
+msgstr "Моментално не сте најавени."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1675,6 +1705,10 @@ msgstr "[Пронаоѓач на лица] Оневозможете белешк
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Пронаоѓач на лица] Овозможете белешки за „%(full_name)s“?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Пронаоѓач на лица] Сега белешките за „%(full_name)s“ се оневозможени"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

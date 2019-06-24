@@ -216,6 +216,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ඔබට \"%(full_name)s\" වාර්තාව මත සටහන් අබල කිරීමට අවශ්‍ය බව ඔබට "
+"විශ්වාසද?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -912,6 +924,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"මෙම සටහනේ කර්තෘ ඔබ නම්, මෙම වාර්තාව මත සටහන් සබල කිරීමට ඔබට අවශ්‍ය බව "
+"තහවුරු කිරීමට සබැඳියක් සඳහා කරුණාකර ඔබගේ ඊ-තැපෑල පරික්ෂා කරන්න.  එසේ නැති"
+" නම්, ඔබගේ ඉල්ලීම් තහවුරු කිරීමට කරුණාකර වාර්තා කර්තෘ සඳහා රැඳී සිටින්න."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "ඔබට මෙම පුද්ගලයා පිළිබඳ ඡායාරූපයක් ඇත් නම්, එය උඩුගත කරන්න නැතහොත් එහි "
@@ -1273,6 +1294,9 @@ msgstr "පුද්ගලයාගේ තත්ත්වය"
 msgid "Status of this person:"
 msgstr "මෙම පුද්ගලයාගේ තත්ත්වය:"
 
+msgid "Street name only, no number"
+msgstr "වීථි නම පමණී, අංකයක් නැත"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1551,6 +1575,9 @@ msgstr "ඔබ සතුව තොරතුරු ඇති අය"
 msgid "Yes"
 msgstr "ඔව්"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "ඔව්, වාර්තා කර්තෘගෙන් සටහන් සබල කරන ලෙස විමසන්න"
+
 msgid "Yes, delete the record"
 msgstr "ඔව්, වාර්තාව මකන්න"
 
@@ -1571,6 +1598,9 @@ msgstr "ඔබ දැනටමත් දායක වී ඇත. "
 
 msgid "You are already unsubscribed."
 msgstr "ඔබ දැනටමත් දායකත්වයෙන් ඉවත් වී ඇත."
+
+msgid "You are not currently signed in."
+msgstr "ඔබ දැනට පුරා නැත."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1657,6 +1687,10 @@ msgstr "[පුද්ගල සෙවුම] \"%(full_name)s\" මත සටහ�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[පුද්ගල සෙවුම] \"%(full_name)s\" මත සටහන් සබල කරයි?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[පුද්ගල සෙවුම] \"%(full_name)s\" සඳහා සටහන් දැන් අබල කර ඇත"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

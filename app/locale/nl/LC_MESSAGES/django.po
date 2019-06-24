@@ -222,6 +222,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Weet u zeker dat u opmerkingen wilt uitschakelen voor de vermelding"
+" van '%(full_name)s'?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -937,6 +949,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Als u de auteur van deze opmerking bent, controleer dan of u een e-mail "
+"met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
+"opmerkingen wilt inschakelen voor deze vermelding. Als u niet de auteur "
+"bent, wacht dan tot de auteur van de vermelding uw verzoek bevestigt."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Als u een foto heeft van deze persoon, kunt u deze uploaden of het URL-"
@@ -1300,6 +1322,9 @@ msgstr "Status van persoon"
 msgid "Status of this person:"
 msgstr "Status van deze persoon:"
 
+msgid "Street name only, no number"
+msgstr "Alleen de straatnaam, geen huisnummer"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1579,6 +1604,9 @@ msgstr "Over wie heeft u informatie?"
 msgid "Yes"
 msgstr "Ja"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ja, de auteur vragen opmerkingen in te schakelen"
+
 msgid "Yes, delete the record"
 msgstr "Ja, de vermelding verwijderen"
 
@@ -1599,6 +1627,9 @@ msgstr "U bent al geabonneerd. "
 
 msgid "You are already unsubscribed."
 msgstr "U bent al afgemeld."
+
+msgid "You are not currently signed in."
+msgstr "U bent momenteel niet ingelogd."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1687,6 +1718,10 @@ msgstr "[Personen zoeken] Opmerkingen voor '%(full_name)s' verwijderen?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Personen zoeken] Opmerkingen voor '%(full_name)s' inschakelen?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Personen zoeken] Opmerkingen zijn nu uitgeschakeld voor '%(full_name)s'"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

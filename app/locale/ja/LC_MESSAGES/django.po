@@ -213,6 +213,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      「%(full_name)s」さんの記録に関するメモを無効にしてもよろしいですか？\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -888,6 +899,12 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr "このメモの作成者である場合は、この記録に関するメモを有効にする確認リンクが掲載されたメールをご覧ください。作成者ではない場合は、記録の作成者がこのリクエストを確認するまでお待ちください。"
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してください。"
 
@@ -1230,6 +1247,9 @@ msgstr "この人の状況"
 msgid "Status of this person:"
 msgstr "この人の状況:"
 
+msgid "Street name only, no number"
+msgstr "町名のみ（番地は入力しない）"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1487,6 +1507,9 @@ msgstr "あなたが情報を持っている人"
 msgid "Yes"
 msgstr "はい"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "はい、メモを有効にするよう記録の作成者にリクエストします"
+
 msgid "Yes, delete the record"
 msgstr "はい、記録を削除します"
 
@@ -1507,6 +1530,9 @@ msgstr "新着情報を受け取るよう既に設定されています。 "
 
 msgid "You are already unsubscribed."
 msgstr "新着情報の受け取りは既に停止されています。"
+
+msgid "You are not currently signed in."
+msgstr "ログインしていません。"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1583,6 +1609,10 @@ msgstr "[パーソンファインダー] 「%(full_name)s」さんに関する�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモを有効にしますか？"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[パーソンファインダー] 「%(full_name)s」さんに関するメモが無効になりました"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

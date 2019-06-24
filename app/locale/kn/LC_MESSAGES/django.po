@@ -221,6 +221,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" ಅವರ ರೆಕಾರ್ಡ್‌ನಲ್ಲಿ ಟಿಪ್ಪಣಿಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು"
+" ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -928,6 +940,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"ನೀವು ಈ ಟಿಪ್ಪಣಿಯ ಲೇಖಕರಾಗಿದ್ದರೆ, ಈ ರೆಕಾರ್ಡ್‌ನಲ್ಲಿ ಟಿಪ್ಪಣಿಗಳನ್ನು "
+"ಸಕ್ರಿಯಗೊಳಿಸಲು ನೀವು ಬಯಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ದೃಢೀಕರಿಸುವ ಲಿಂಕ್‌ಗಾಗಿ, ದಯವಿಟ್ಟು "
+"ನಿಮ್ಮ ಇಮೇಲ್ ಪರಿಶೀಲಿಸಿ. ಇಲ್ಲವೇ, ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ದೃಢೀಕರಿಸಲು ರೆಕಾರ್ಡ್ "
+"ಲೇಖಕರಿಗಾಗಿ ನಿರೀಕ್ಷಿಸಿ."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "ನೀವು ಈ ವ್ಯಕ್ತಿಯ ಫೋಟೋ ಹೊಂದಿದ್ದರೆ, ಅದನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಅದರ URL "
@@ -1295,6 +1317,9 @@ msgstr "ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ"
 msgid "Status of this person:"
 msgstr "ಈ ವ್ಯಕ್ತಿಯ ಸ್ಥಿತಿ:"
 
+msgid "Street name only, no number"
+msgstr "ಗಲ್ಲಿ ಹೆಸರು ಮಾತ್ರ. ಸಂಖ್ಯೆ ಬೇಡ"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1572,6 +1597,9 @@ msgstr "ನೀವು ಯಾರ ಕುರಿತು ಮಾಹಿತಿಯನ್ನ
 msgid "Yes"
 msgstr "ಹೌದು"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "ಹೌದು, ಟಿಪ್ಪಣಿಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸುವಂತೆ ರೆಕಾರ್ಡ್ ಲೇಖಕರಿಗೆ ಹೇಳಿ"
+
 msgid "Yes, delete the record"
 msgstr "ಹೌದು, ರೆಕಾರ್ಡ್ ಅಳಿಸಿ"
 
@@ -1592,6 +1620,9 @@ msgstr "ನೀವು ಈಗಾಗಲೇ ಚಂದಾದಾರರಾಗಿರು�
 
 msgid "You are already unsubscribed."
 msgstr "ನೀವು ಈಗಾಗಲೇ ಅನ್‌ಸಬ್‌ಸ್ಕ್ರೈಬ್ ಆಗಿರುವಿರಿ."
+
+msgid "You are not currently signed in."
+msgstr "ನೀವು ಪ್ರಸ್ತುತ ಸೈನ್ ಇನ್ ಮಾಡಿಲ್ಲ."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1683,6 +1714,12 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ] \"%(full_name)s\" ಕುರಿತು ಟಿಪ್ಪಣಿಗಳನ್ನು "
 "ಸಕ್ರಿಯಗೊಳಿಸುವುದೇ?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr ""
+"[ವ್ಯಕ್ತಿ ಹುಡುಕುವಿಕೆ] \"%(full_name)s\" ಗಾಗಿ ಟಿಪ್ಪಣಿಗಳನ್ನು ಇದೀಗ "
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -218,6 +218,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Is jy seker jy wil notas oor die rekord van \"%(full_name)s\" "
+"deaktiveer?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -915,6 +927,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"As jy die outeur van hierdie nota is, kontroleer jou e-pos vir 'n skakel "
+"om te bevestig dat jy notas oor hierdie rekord wil aktiveer. Andersins, "
+"wag vir die rekordouteur om jou versoek te bevestig."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "As jy 'n foto van die persoon het, laai dit op of voer die URL daarvan in."
 
@@ -1274,6 +1295,9 @@ msgstr "Status van persoon"
 msgid "Status of this person:"
 msgstr "Status van hierdie persoon:"
 
+msgid "Street name only, no number"
+msgstr "Net straatnaam, nie nommer nie"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1547,6 +1571,9 @@ msgstr "Oor wie jy inligting het"
 msgid "Yes"
 msgstr "Ja"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ja, vra die rekordouteur om notas te aktiveer"
+
 msgid "Yes, delete the record"
 msgstr "Ja, vee die rekord uit"
 
@@ -1567,6 +1594,9 @@ msgstr "Jy is reeds ingeteken. "
 
 msgid "You are already unsubscribed."
 msgstr "Jy is reeds uitgeteken."
+
+msgid "You are not currently signed in."
+msgstr "Jy is nie tans aangemeld nie."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1651,6 +1681,10 @@ msgstr "[Persoonsoeker] Deaktiveer notas oor \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Persoonsoeker] Aktiveer notas oor \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Persoonsoeker] Notas is nou gedeaktiveer vir \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -223,6 +223,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Vai tiešām vēlaties atspējot piezīmes ierakstam par šo personu: "
+"“%(full_name)s”?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -929,6 +941,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Ja esat šīs piezīmes autors, lūdzu, izmantojiet e-pasta ziņojumā saņemto "
+"saiti, lai apstiprinātu, ka vēlaties iespējot piezīmes par šo ierakstu. "
+"Ja neesat autors, lūdzu, uzgaidiet, līdz ieraksta autors apstiprina jūsu "
+"pieprasījumu."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Ja jums ir šīs personas fotoattēls, augšupielādējiet to vai ievadiet tā "
@@ -1293,6 +1315,9 @@ msgstr "Personas statuss"
 msgid "Status of this person:"
 msgstr "Šīs personas statuss:"
 
+msgid "Street name only, no number"
+msgstr "Tikai ielas nosaukums bez mājas numura"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1569,6 +1594,9 @@ msgstr "Par ko jums ir informācija"
 msgid "Yes"
 msgstr "Jā"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Jā, lūdziet ieraksta autoru iespējot piezīmes"
+
 msgid "Yes, delete the record"
 msgstr "Jā, dzēst ierakstu"
 
@@ -1589,6 +1617,9 @@ msgstr "Jūs jau esat abonents. "
 
 msgid "You are already unsubscribed."
 msgstr "Jūs jau esat anulējis abonēšanu."
+
+msgid "You are not currently signed in."
+msgstr "Jūs pašlaik neesat pierakstījies."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1681,6 +1712,10 @@ msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr ""
 "[Person Finder] Vai iespējot piezīmes ierakstam par "
 "personu“%(full_name)s”?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Piezīmes par personu “%(full_name)s” ir atspējotas."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

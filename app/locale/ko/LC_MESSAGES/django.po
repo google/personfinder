@@ -211,6 +211,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      '%(full_name)s'님의 신상기록에서 메모를 사용 중지하시겠습니까?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -884,6 +895,14 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"이 메모의 작성자인 경우 이메일에 있는 링크를 통해 이 신상기록에서 메모를 사용할 것임을 확인하세요. 작성자가 아닌 경우 신상기록 "
+"작성자가 요청을 확인할 때까지 기다려 주세요."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "이 사람의 사진이 있으시면 사진을 업로드하거나 URL 주소를 입력하세요."
 
@@ -1228,6 +1247,9 @@ msgstr "이 사람의 상태"
 msgid "Status of this person:"
 msgstr "이 사람의 상태:"
 
+msgid "Street name only, no number"
+msgstr "상세주소(번지 제외)"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1487,6 +1509,9 @@ msgstr "내가 관련 정보를 가진 사람"
 msgid "Yes"
 msgstr "예"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "메모 사용 요청"
+
 msgid "Yes, delete the record"
 msgstr "신상기록 삭제"
 
@@ -1507,6 +1532,9 @@ msgstr "이미 수신 신청하셨습니다."
 
 msgid "You are already unsubscribed."
 msgstr "이미 수신 취소하셨습니다."
+
+msgid "You are not currently signed in."
+msgstr "현재 로그인되어 있지 않습니다."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1583,6 +1611,10 @@ msgstr "[Person Finder] '%(full_name)s'님에 대한 메모를 사용 중지하�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] '%(full_name)s'님에 대한 메모를 사용하시겠습니까?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] 이제 '%(full_name)s'님에 대한 메모를 사용 중지하도록 설정되었습니다."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

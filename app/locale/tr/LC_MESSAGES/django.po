@@ -222,6 +222,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" ile ilgili kayıtta notları devre dışı bırakmak "
+"istediğinizden emin misiniz?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -929,6 +941,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Bu notun yazarı sizseniz, bu kayıttaki notları etkinleştirmek "
+"istediğinizi onaylayan bir bağlantı için lütfen e-postanızı denetleyin. "
+"Aksi takdirde, lütfen kayıt sahibinin isteğinizi onaylamasını bekleyin."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
 
@@ -1290,6 +1311,9 @@ msgstr "Kişinin Durumu"
 msgid "Status of this person:"
 msgstr "Bu kişinin durumu:"
 
+msgid "Street name only, no number"
+msgstr "Yalnızca sokak adı, numara yok"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1564,6 +1588,9 @@ msgstr "Kiminle ilgili bilgi girmek istiyorsunuz?"
 msgid "Yes"
 msgstr "Evet"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Evet, kaydın sahibinden notları etkinleştirmesini iste"
+
 msgid "Yes, delete the record"
 msgstr "Evet, kaydı sil"
 
@@ -1584,6 +1611,9 @@ msgstr "Zaten abonesiniz. "
 
 msgid "You are already unsubscribed."
 msgstr "Abonelikten zaten çıktınız."
+
+msgid "You are not currently signed in."
+msgstr "Şu anda oturum açmış değilsiniz."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1673,6 +1703,10 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Kişi Bulucu] \"%(full_name)s\" ile ilgili notlar etkinleştirilsin mi?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Kişi Bulucu] \"%(full_name)s\" için notlar artık devre dışı bırakıldı"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

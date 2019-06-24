@@ -222,6 +222,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Vuoi disattivare le note per il record di \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -936,6 +947,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Se sei l'autore di questa nota, controlla la posta per verificare se è "
+"presente un link che ti consente di confermare che desideri attivare le "
+"note per questo record. In caso contrario, aspetta che l'autore del "
+"record confermi la tua richiesta."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Se possiedi una foto di questa persona, caricala o inserisci il relativo "
@@ -1298,6 +1319,9 @@ msgstr "Stato della persona"
 msgid "Status of this person:"
 msgstr "Stato di questa persona:"
 
+msgid "Street name only, no number"
+msgstr "Solo il nome della via, senza numero civico"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1575,6 +1599,9 @@ msgstr "Persona in merito alla quale hai informazioni"
 msgid "Yes"
 msgstr "Sì"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Sì, chiedi all'autore del record di attivare le note."
+
 msgid "Yes, delete the record"
 msgstr "Sì, elimina il record"
 
@@ -1595,6 +1622,9 @@ msgstr "Sei già iscritto. "
 
 msgid "You are already unsubscribed."
 msgstr "Hai già annullato l'iscrizione."
+
+msgid "You are not currently signed in."
+msgstr "Accesso non effettuato."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1682,6 +1712,10 @@ msgstr "[Person Finder] Disattivare le note su \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Attivare le note su \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Le note sono state disattivate per \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

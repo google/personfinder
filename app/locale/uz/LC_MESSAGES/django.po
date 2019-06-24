@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" yozuvi eslatmalarini o‘chirib qo‘yishga "
+"ishonchingiz komilmi?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -925,6 +937,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Agar siz ushbu qayd muallifi bo‘lsangiz, e-pochta manzilingizni "
+"tekshiring va ushbu yozuvdagi qaydlarni yoqib qo‘yish so‘rovini "
+"tasdiqlang. Agar bunday bo‘lmasa, yozuv muallifi so‘rovingizni "
+"tasdiqlashini kuting."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Sizda u odamning rasmi bo‘lsa, bu yerga yuklang yoki suratning internet "
@@ -1287,6 +1309,9 @@ msgstr "Odamning holati"
 msgid "Status of this person:"
 msgstr "Bu odamning holati:"
 
+msgid "Street name only, no number"
+msgstr "Ko‘cha nomi xolos, raqam kerak emas"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1568,6 +1593,9 @@ msgstr "Sizda kim haqida ma’lumot bor"
 msgid "Yes"
 msgstr "Ha"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ha, muallifdan eslatmalarni yoqib qo‘yishni so‘ramoqchiman"
+
 msgid "Yes, delete the record"
 msgstr "Ha, yozuvni o‘chirmoqchiman"
 
@@ -1588,6 +1616,9 @@ msgstr "Siz allaqachon obuna bo‘lgansiz. "
 
 msgid "You are already unsubscribed."
 msgstr "Siz obunani allaqachon bekor qilgansiz."
+
+msgid "You are not currently signed in."
+msgstr "Siz ayni paytda tizimga kirmagansiz."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1676,6 +1707,10 @@ msgstr "[Odam izlovchi] \"%(full_name)s\" eslatmalari o‘chirib qo‘yilsinmi?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Odam ilovchi] \"%(full_name)s\" uchun eslatmalar yoqib qo‘yilsinmi?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Odam izlovchi] \"%(full_name)s\" uchun eslatmalar o‘chirib qo‘yildi"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

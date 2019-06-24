@@ -217,6 +217,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Bạn có chắc chắn muốn tắt ghi chú trên hồ sơ của \"%(full_name)s\" "
+"không?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -916,6 +928,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Nếu bạn là tác giả của ghi chú này, vui lòng kiểm tra email của mình có "
+"liên kết để xác nhận rằng bạn muốn bật ghi chú trên hồ sơ này. Nếu không,"
+" vui lòng đợi tác giả hồ sơ xác nhận yêu cầu của bạn."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của "
@@ -1279,6 +1300,9 @@ msgstr "Tình trạng cá nhân"
 msgid "Status of this person:"
 msgstr "Tình trạng của người này:"
 
+msgid "Street name only, no number"
+msgstr "Chỉ tên phố, không có số"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1554,6 +1578,9 @@ msgstr "Người bạn có thông tin"
 msgid "Yes"
 msgstr "Có"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Có, yêu cầu tác giả hồ sơ bật ghi chú"
+
 msgid "Yes, delete the record"
 msgstr "Có, xóa hồ sơ này"
 
@@ -1574,6 +1601,9 @@ msgstr "Bạn đã được đăng ký. "
 
 msgid "You are already unsubscribed."
 msgstr "Bạn đã được hủy đăng ký."
+
+msgid "You are not currently signed in."
+msgstr "Bạn hiện không được đăng nhập."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1663,6 +1693,10 @@ msgstr "[Công cụ tìm kiếm người thân] Tắt ghi chú trên \"%(full_na
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Công cụ tìm kiếm người thân] Bật ghi chú trên \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Công cụ tìm kiếm người thân] Ghi chú hiện bị tắt cho \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

@@ -220,6 +220,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Naha anjeun yakin badé mareuman catetan dina rékaman "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -920,6 +932,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Upami anjeun panulis catetan ieu, mangga parios e-mail anjeun kanggo "
+"tautan pikeun mastikeun yén anjeun hoyong ngahurungkeun catetan dina "
+"rékaman ieu. Upami henteu, mangga antosan kanggo panulisan rékamanan "
+"pikeun mastikeun panyungkeunan anjeun."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Upami anjeun ngagaduhan poto jalma ieu, unggah potona atanapi lebetkeun "
@@ -1285,6 +1307,9 @@ msgstr "Kaayaan Jelema"
 msgid "Status of this person:"
 msgstr "Kaayaan jalma ieu:"
 
+msgid "Street name only, no number"
+msgstr "Nami jalan hungkul, henteu aya nomer"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1564,6 +1589,9 @@ msgstr "Inpormasi saha anu anjeun boga"
 msgid "Yes"
 msgstr "Leres"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Leres, taroskeun ka panulis rékaman pikeun ngahurungkeun catetan"
+
 msgid "Yes, delete the record"
 msgstr "Leres, hapus rékamanna"
 
@@ -1584,6 +1612,9 @@ msgstr "Anjeun parantos ngalangganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Anjeun parantos lirén ngalangganan."
+
+msgid "You are not currently signed in."
+msgstr "Anjeun nuju henteu lebet."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1673,6 +1704,10 @@ msgstr "[Panimu Jalma] Pareuman catetan pikeun \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Panimu Jalma] Hurungkeun catetan pikeun \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Panimu Jalma] Catetan ayeuna dihurungkeun kanggo \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

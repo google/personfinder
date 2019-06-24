@@ -216,6 +216,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      هل تريد فعلًا إيقاف الملاحظات على سجل \"%(full_name)s\"؟\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -913,6 +924,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"إذا كنت مؤلف هذه الملاحظة، فالرجاء التحقق من بريدك الإلكتروني للحصول على "
+"رابط لتأكيد رغبتك في تفعيل الملاحظات على هذا السجل. وإلا، فالرجاء انتظار "
+"تأكيد مؤلف السجل لطلبك."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "‏إذا كانت لديك صورة لهذا الشخص، فحمّلها أو أدخل عنوان URL لها."
 
@@ -1267,6 +1287,9 @@ msgstr "حالة الشخص"
 msgid "Status of this person:"
 msgstr "حالة هذا الشخص:"
 
+msgid "Street name only, no number"
+msgstr "اسم الشارع فقط، بلا رقم"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1536,6 +1559,9 @@ msgstr "من الشخص الذي بحوذتك معلومات عنه"
 msgid "Yes"
 msgstr "نعم"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "نعم، طلب تفعيل الملاحظات من مؤلف السجل"
+
 msgid "Yes, delete the record"
 msgstr "نعم، حذف هذا السجل"
 
@@ -1556,6 +1582,9 @@ msgstr "أنت مشترك من قبل. "
 
 msgid "You are already unsubscribed."
 msgstr "لقد تم إلغاء اشتراكك من قبل."
+
+msgid "You are not currently signed in."
+msgstr "لم تسجل الدخول في الوقت الحالي."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1636,6 +1665,10 @@ msgstr "[الباحث عن الأشخاص] هل تريد إيقاف الملاح
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[الباحث عن الأشخاص] هل تريد تفعيل الملاحظات على \"%(full_name)s\"؟"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[الباحث عن الأشخاص] تم الآن إيقاف الملاحظات لـ \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

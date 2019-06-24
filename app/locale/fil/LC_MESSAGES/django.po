@@ -217,6 +217,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"Sigurado ka bang gusto mong i-disable ang mga tala sa record ni "
+"\"%(full_name)s\"?"
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -928,6 +939,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Kung ikaw ang may-akda ng talang ito, pakitingnan ang iyong email kung "
+"may link upang kumpirmahing gusto mong i-enable ang mga tala sa record na"
+" ito. Kung wala, mangyaring hintaying kumpirmahin ng may-akda ng record "
+"ang iyong kahilingan."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Kung mayroon kang larawan ng taong ito, i-upload ito o ilagay ang URL "
@@ -1293,6 +1314,9 @@ msgstr "Status ng Taong Ito"
 msgid "Status of this person:"
 msgstr "Status ng taong ito:"
 
+msgid "Street name only, no number"
+msgstr "Pangalan lang ng kalye, walang numero"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1577,6 +1601,9 @@ msgstr "Kaninong impormasyon ang mayroon ka"
 msgid "Yes"
 msgstr "Oo"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Oo, hilingin sa may-akda ng record na i-enable ang mga tala"
+
 msgid "Yes, delete the record"
 msgstr "Oo, tanggalin ang talaang ito"
 
@@ -1597,6 +1624,9 @@ msgstr "Naka-subscribe ka na. "
 
 msgid "You are already unsubscribed."
 msgstr "Naka-unsubscribe ka na."
+
+msgid "You are not currently signed in."
+msgstr "Kasalukuyan kang hindi naka-sign in."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1684,6 +1714,12 @@ msgstr "[Person Finder] I-disable ang mga tala tungkol kay \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] I-enable ang mga tala tungkol kay \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr ""
+"[Person Finder] Naka-disable na ngayon ang mga tala para kay "
+"\"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

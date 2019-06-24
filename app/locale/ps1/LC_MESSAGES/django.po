@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Åré ýöû šûré ýöû ŵåñţ ţö ðîšåbļé ñöţéš öñ ţĥé réçörð öƒ "
+"\"ᐅ%(full_name)sᐊ\"¿\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -922,6 +934,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Îƒ ýöû åré ţĥé åûţĥör öƒ ţĥîš ñöţé, þļéåšé çĥéçķ ýöûr é-måîļ ƒör å ļîñķ "
+"ţö çöñƒîrm ţĥåţ ýöû ŵåñţ ţö éñåbļé ñöţéš öñ ţĥîš réçörð.  Öţĥérŵîšé, "
+"þļéåšé ŵåîţ ƒör ţĥé réçörð åûţĥör ţö çöñƒîrm ýöûr réqûéšţ."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Îƒ ýöû ĥåvé å þĥöţö öƒ ţĥîš þéršöñ, ûþļöåð îţ ör éñţér îţš Û®Ļ åððréšš."
 
@@ -1278,6 +1299,9 @@ msgstr "Šţåţûš öƒ Þéršöñ"
 msgid "Status of this person:"
 msgstr "Šţåţûš öƒ ţĥîš þéršöñ:"
 
+msgid "Street name only, no number"
+msgstr "Šţrééţ ñåmé öñļý, ñö ñûmbér"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1553,6 +1577,9 @@ msgstr "Ŵĥö ýöû ĥåvé îñƒörmåţîöñ åböûţ"
 msgid "Yes"
 msgstr "Ýéš"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ýéš, åšķ ţĥé réçörð åûţĥör ţö éñåbļé ñöţéš"
+
 msgid "Yes, delete the record"
 msgstr "Ýéš, ðéļéţé ţĥé réçörð"
 
@@ -1573,6 +1600,9 @@ msgstr "Ýöû åré åļréåðý šûbšçrîbéð. "
 
 msgid "You are already unsubscribed."
 msgstr "Ýöû åré åļréåðý ûñšûbšçrîbéð."
+
+msgid "You are not currently signed in."
+msgstr "Ýöû åré ñöţ çûrréñţļý šîĝñéð îñ."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1659,6 +1689,10 @@ msgstr "[Þéršöñ Fîñðér] Ðîšåbļé ñöţéš öñ \"ᐅ%(full_name)
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Þéršöñ Fîñðér] Éñåbļé ñöţéš öñ \"ᐅ%(full_name)sᐊ\"¿"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Þéršöñ Fîñðér] Ñöţéš åré ñöŵ ðîšåbļéð ƒör \"ᐅ%(full_name)sᐊ\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

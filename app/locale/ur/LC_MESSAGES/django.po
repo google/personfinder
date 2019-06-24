@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      کیا آپ واقعی \"%(full_name)s\" کے ریکارڈ پر نوٹس کو غیر فعال کرنا "
+"چاہتے ہیں؟\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -916,6 +928,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"اگر آپ اس نوٹ کے مصنف ہیں تو براہ کرم ایک لنک کیلئے اپنا ای میل چیک کرکے "
+"تصدیق کریں کہ آپ اس ریکارڈ پر نوٹس کو فعال کرنا چاہتے ہیں۔ بصورت دیگر، "
+"براہ کرم ریکارڈ کے مصنف کو آپ کی درخواست کی تصدیق کرنے کا انتظار کریں۔"
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "‏اگر آپ کے پاس اس شخص کی تصویر ہے تو اسے اپ لوڈ کریں یا اس کا URL پتہ درج"
@@ -1279,6 +1300,9 @@ msgstr "شخص کی صورتحال"
 msgid "Status of this person:"
 msgstr "اس شخص کی صورتحال:"
 
+msgid "Street name only, no number"
+msgstr "صرف گلی کا نام، نمبر نہیں"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1558,6 +1582,9 @@ msgstr "آپ کے پاس کس کے بارے میں معلومات ہے"
 msgid "Yes"
 msgstr "ہاں"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "ہاں، ریکارڈ کے مصنف سے نوٹس فعال کرنے کو کہیں"
+
 msgid "Yes, delete the record"
 msgstr "ہاں، ریکارڈ حذف کریں"
 
@@ -1578,6 +1605,9 @@ msgstr "آپ پہلے سے ہی سبسکرائب ہیں۔ "
 
 msgid "You are already unsubscribed."
 msgstr "آپ پہلے سے ہی ان سبسکرائب ہیں۔"
+
+msgid "You are not currently signed in."
+msgstr "آپ فی الحال سائن ان نہیں ہیں۔"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1665,6 +1695,10 @@ msgstr "‏[Person Finder] \"%(full_name)s\" پر نوٹس غیر فعال کر�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "‏[Person Finder] \"%(full_name)s\" پر نوٹس فعال کریں؟"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "‏[Person Finder] نوٹس اب \"%(full_name)s\" کیلئے غیر فعال کر دیے گئے ہیں"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

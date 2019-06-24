@@ -220,6 +220,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Yakin ingin menonaktifkan catatan pada rekaman \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -927,6 +938,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Jika Anda adalah pembuat catatan ini, periksa link di email untuk "
+"mengonfirmasi bahwa Anda ingin mengaktifkan catatan pada rekaman ini. "
+"Atau, tunggu hingga pembuat rekaman mengonfirmasi permintaan Anda."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Jika Anda punya foto orang ini, unggahlah atau masukkan alamat URL-nya."
 
@@ -1284,6 +1304,9 @@ msgstr "Status Orang"
 msgid "Status of this person:"
 msgstr "Status orang ini:"
 
+msgid "Street name only, no number"
+msgstr "Nama jalan saja, tanpa nomor"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1557,6 +1580,9 @@ msgstr "Orang yang Anda ketahui informasinya"
 msgid "Yes"
 msgstr "Ya"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Ya, minta pembuat rekaman untuk mengaktifkan catatan"
+
 msgid "Yes, delete the record"
 msgstr "Ya, hapus rekaman tersebut"
 
@@ -1577,6 +1603,9 @@ msgstr "Anda sudah berlangganan. "
 
 msgid "You are already unsubscribed."
 msgstr "Anda sudah berhenti berlangganan."
+
+msgid "You are not currently signed in."
+msgstr "Anda saat ini tidak masuk."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1662,6 +1691,10 @@ msgstr "[Person Finder] Nonaktifkan catatan pada \"%(full_name)s\"?"
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] Aktifkan catatan pada \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] Catatan saat ini dinonaktifkan untuk \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

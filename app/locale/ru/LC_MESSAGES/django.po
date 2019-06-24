@@ -215,6 +215,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Отключить заметки к записи о человеке \"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -909,6 +920,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Если вы – автор этой заметки, нажмите на ссылку в отправленном вам "
+"электронном сообщении, чтобы подтвердить включение заметок к этой записи."
+" В противном случае дождитесь, пока автор записи подтвердит ваш запрос."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Если у вас есть фотография этого человека, загрузите ее или укажите ее "
@@ -1273,6 +1293,9 @@ msgstr "Статус человека"
 msgid "Status of this person:"
 msgstr "Статус человека:"
 
+msgid "Street name only, no number"
+msgstr "Только название улицы (без номера)"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1546,6 +1569,9 @@ msgstr "Информация о человеке"
 msgid "Yes"
 msgstr "Да"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Да, попросить автора записи включить заметки"
+
 msgid "Yes, delete the record"
 msgstr "Удалить запись"
 
@@ -1566,6 +1592,9 @@ msgstr "Вы уже подписаны. "
 
 msgid "You are already unsubscribed."
 msgstr "Вы уже отменили подписку."
+
+msgid "You are not currently signed in."
+msgstr "Вход не выполнен."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1654,6 +1683,10 @@ msgstr "[Поиск пропавших людей] Отключить замет
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Поиск пропавших людей] Включить заметки о человеке \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Поиск пропавших людей] Отключены заметки о человеке \"%(full_name)s\""
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

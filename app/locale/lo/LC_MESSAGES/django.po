@@ -216,6 +216,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການປິດການນຳໃຊ້ໂນ໋ດໃນການບັນທຶກ "
+"\"%(full_name)s\"?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -910,6 +922,16 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"ຖ້າຫາກທ່ານແມ່ນຜູ່ຂຽນບັນທຶກນີ້,\n"
+" ກະລຸນາກວດເບິ່ງອີເມວຂອງທ່ານ ສຳລັບລິ້ງຢືນຢັນວ່າ \n"
+"ທ່ານຕ້ອງການປິດການນຳໃຊ້ໂນ໋ດໃນບັນທຶກນີ້.  ຖ້າບໍ່ແມ່ນ, \n"
+"ກະລຸນາລໍຖ້າຜູ່ຂຽນບັນທຶກຢືນຢັນຄຳຮ້ອງຂໍຂອງທ່ານ."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "ຖ້າທ່ານມີຮູບຂອງບຸກຄົນນີ້, ສາມາດອັບໂຫລດມັນຂຶ້ນ ຫຼື ໃສ່ URL ຂອງຮູບໄດ້."
 
@@ -1265,6 +1287,9 @@ msgstr "ສະຖານະຂອງບຸກຄົນ"
 msgid "Status of this person:"
 msgstr "ສະຖານະຂອງບຸກຄົນນີ້:"
 
+msgid "Street name only, no number"
+msgstr "ຊື່ຖະຫນົນເທົ່ານັ້ນ, ຫ້າມເປັນໂຕເລກ"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1535,6 +1560,9 @@ msgstr "ທ່ານມີຂໍ້ມູນກ່ຽວກັບໃຜ"
 msgid "Yes"
 msgstr "ຕົກລົງ"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "ແມ່ນແລ້ວ, ຂໍໃຫ້ຜູ້ຂຽນບັນທຶກເປີດນຳໃຊ້ໂນ໋ດ"
+
 msgid "Yes, delete the record"
 msgstr "ແມ່ນແລ້ວ, ລຶບບັນທຶກດັ່ງກ່າວ"
 
@@ -1555,6 +1583,9 @@ msgstr "ທ່ານໄດ້ສະໝັກຢູ່ແລ້ວ. "
 
 msgid "You are already unsubscribed."
 msgstr "ທ່ານໄດ້ເຊົາສະໝັກຢູ່ແລ້ວ."
+
+msgid "You are not currently signed in."
+msgstr "ໃນປັດຈຸບັນທ່ານບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ"
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1644,6 +1675,10 @@ msgstr "[Person Finder] ປິດການນຳໃຊ້ໂນ໋ດໃນ \"%(
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Person Finder] ເປີດການນຳໃຊ້ໂນ໋ດໃນ \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Person Finder] ໄດ້ປີດການນຳໃຊ້ໂນ໋ດສຳລັບ \"%(full_name)s\" ແລ້ວ"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

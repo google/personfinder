@@ -220,6 +220,17 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Ar tikrai norite neleisti pastabų apie „%(full_name)s“ įrašą?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -923,6 +934,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Jei esate šios pastabos autorius, patikrinkite el. paštą ir spustelėję "
+"nuorodą patvirtinkite, kad norite įgalinti pastabas apie šį įrašą. Jei "
+"ne, palaukite, kol įrašo autorius patvirtins jūsų užklausą."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Jei turite šio asmens nuotrauką, įkelkite ją arba nurodykite jos URL "
@@ -1285,6 +1305,9 @@ msgstr "Asmens būsena"
 msgid "Status of this person:"
 msgstr "Šio asmens būsena:"
 
+msgid "Street name only, no number"
+msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1568,6 +1591,9 @@ msgstr "Apie ką informacijos turite"
 msgid "Yes"
 msgstr "Taip"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Taip, prašyti įrašo autoriaus leisti pastabas"
+
 msgid "Yes, delete the record"
 msgstr "Taip, ištrinti įrašą"
 
@@ -1588,6 +1614,9 @@ msgstr "Jau esate užsiprenumeravę. "
 
 msgid "You are already unsubscribed."
 msgstr "Jau esate atšaukę prenumeratą."
+
+msgid "You are not currently signed in."
+msgstr "Šiuo metu nesate prisijungę."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1674,6 +1703,10 @@ msgstr "[Žmonių ieškojimo priemonė] Neleisti pastabų apie „%(full_name)s�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Žmonių ieškojimo priemonė] Įgalinti pastabas apie „%(full_name)s“?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Žmonių ieškojimo priemonė] Dabar „%(full_name)s“ pastabos neleidžiamos"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

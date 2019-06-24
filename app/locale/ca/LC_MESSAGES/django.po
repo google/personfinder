@@ -219,6 +219,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Confirmeu que voleu desactivar les notes al registre de "
+"%(full_name)s?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -930,6 +942,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Si sou l'autor d'aquesta nota, cerqueu al correu electrònic un enllaç per"
+" confirmar que voleu activar les notes d'aquest registre. Si no ho sou, "
+"espereu que l'autor del registre confirmi la sol·licitud."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Si teniu una foto d'aquesta persona, pengeu-la o introduïu-ne l'adreça "
@@ -1293,6 +1314,9 @@ msgstr "Estat de la persona"
 msgid "Status of this person:"
 msgstr "Estat d'aquesta persona:"
 
+msgid "Street name only, no number"
+msgstr "Només el nom del carrer, sense el número"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1576,6 +1600,9 @@ msgstr "De qui tens informació"
 msgid "Yes"
 msgstr "Sí"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Sí, demana a l'autor del registre que activi les notes"
+
 msgid "Yes, delete the record"
 msgstr "Sí, suprimeix el registre"
 
@@ -1596,6 +1623,9 @@ msgstr "Ja esteu subscrit. "
 
 msgid "You are already unsubscribed."
 msgstr "Ja heu anul·lat la subscripció."
+
+msgid "You are not currently signed in."
+msgstr "No heu iniciat la sessió."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1685,6 +1715,12 @@ msgstr "[Cercador de persones] Voleu desactivar les notes sobre \"%(full_name)s\
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Cercador de persones] Vols activar les notes sobre \"%(full_name)s\"?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr ""
+"[Cercador de persones] Ara les notes estan desactivades per a "
+"%(full_name)s"
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""

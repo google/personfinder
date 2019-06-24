@@ -217,6 +217,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes on the record of "
+"\"%(full_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      \"%(full_name)s\" туралы деректерге қатысты жазбаларды өшіргіңіз "
+"келетініне сенімдісіз бе?\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(full_name)s\"?\n"
 "    "
@@ -922,6 +934,15 @@ msgid ""
 "href=\"%(light_url)s\">click here.</a>"
 msgstr ""
 
+msgid ""
+"If you are the author of this note, please check your e-mail for a link "
+"to confirm that you want to enable notes on this record.  Otherwise, "
+"please wait for the record author to confirm your request."
+msgstr ""
+"Егер сіз осы жазбаның авторы болсаңыз, поштаңызды тексеріп, осы дерекке "
+"қатысты жазбаларды қосқыңыз келетінін растаңыз. Әйтпесе, деректің авторы "
+"өтінішіңізді растағанға дейін күтіңіз."
+
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Егер ол адамның фотосуреті болса, фотосуретті жүктеңіз немесе оның URL "
@@ -1280,6 +1301,9 @@ msgstr "Адамның жай-күйі"
 msgid "Status of this person:"
 msgstr "Бұл адамның жай-күйі:"
 
+msgid "Street name only, no number"
+msgstr "Көшенің атауы ғана, нөмірсіз"
+
 #. Translators: A placeholder text for the home location field
 #. in the form to search person records.
 msgid "Street name, neighborhood, city, etc."
@@ -1556,6 +1580,9 @@ msgstr "Кім туралы ақпаратыңыз бар?"
 msgid "Yes"
 msgstr "Иә"
 
+msgid "Yes, ask the record author to enable notes"
+msgstr "Иә, дерек авторынан жазбаларды қосуды өтініңіз"
+
 msgid "Yes, delete the record"
 msgstr "Иә, деректі өшіріңіз"
 
@@ -1576,6 +1603,9 @@ msgstr "Сіз бұрыннан жазылғансыз. "
 
 msgid "You are already unsubscribed."
 msgstr "Сіз жазылымды тоқтаттыңыз."
+
+msgid "You are not currently signed in."
+msgstr "Сіз қазір жүйеде емессіз."
 
 #, python-format
 msgid "You can %(begin_tag)sview the record%(end_tag)s before deleting it."
@@ -1664,6 +1694,10 @@ msgstr "[Адам Іздеу қызметі]  \"%(full_name)s\" туралы ж�
 #, python-format
 msgid "[Person Finder] Enable notes on \"%(full_name)s\"?"
 msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбаларды қосу қажет пе?"
+
+#, python-format
+msgid "[Person Finder] Notes are now disabled for \"%(full_name)s\""
+msgstr "[Адам Іздеу қызметі] \"%(full_name)s\" туралы жазбалар қазір қосылған."
 
 #, python-format
 msgid "[Person Finder] Record restoration notice for \"%(full_name)s\""
