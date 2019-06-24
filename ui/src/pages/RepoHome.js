@@ -131,7 +131,7 @@ class RepoHome extends Component {
           </EndBarHeader>
           <Button
             className='pf-button-secondary'
-            raised
+            outlined
             onClick={this.goToCreate}
           >
             {this.props.intl.formatMessage(MESSAGES.provideInfoAboutSomeone)}
