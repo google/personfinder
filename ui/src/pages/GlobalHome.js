@@ -36,13 +36,21 @@ const MESSAGES = defineMessages({
     description: ('A header for a section about how software developers can '
         + 'use the product to help with a disaster response.'),
   },
-  developersHowToHelpHTML: {
-    id: 'GlobalHome.developersHowToHelp',
-    defaultMessage: ('You can help continue to improve Google Person Finder:'
-        + '<ul><li>Learn about the PFIF data model</li><li>Customize or '
-        + 'improve Person Finder</li></ul>'),
-    description: ('A summary of how software developers can help improve the '
-        + 'product.'),
+  developersHowToHelpFirstLineHTML: {
+    id: 'GlobalHome.developersHowToHelpFirstLine',
+    defaultMessage: 'You can help continue to improve Google Person Finder:',
+    description: ('Part of a description of what third-parties can do to help '
+        + 'improve the product. Ends in a colon because it will be followed by '
+        + 'a list'),
+  },
+  developersHowToHelpListHTML: {
+    id: 'GlobalHome.developersHowToHelpList',
+    defaultMessage: ('<ul><li>Learn about the PFIF data model</li><li>'
+        + 'Customize or improve Person Finder</li></ul>'),
+    description: ('A list of ways third-party software developers can do to '
+        + 'help improve the product. PFIF stands for Person Finder Interchange '
+        + 'Format (a data standard for exhanging information about missing '
+        + 'people).'),
   },
   getStarted: {
     id: 'GlobalHome.getStarted',
@@ -81,13 +89,21 @@ const MESSAGES = defineMessages({
         + 'local officials, nonprofit organizations, etc., can use the product '
         + 'to help.'),
   },
-  respondersHowToHelpHTML: {
-    id: 'GlobalHome.respondersHowToHelp',
+  respondersHowToHelpFirstLineHTML: {
+    id: 'GlobalHome.respondersHowToHelpFirstLine',
     defaultMessage: ('You can help people find each other in the aftermath of '
-        + 'a disaster:<ul><li>Embed Google Person Finder in your site</li>'
-        + '<li>Download data from Google Person Finder</li><li>Upload data '
-        + 'into Google Person Finder</li></ul>'),
-    description: 'A summary of how response organizations can use the product.',
+        + 'a disaster:'),
+    description: ('Part of a description of how third-party organizations can '
+        + 'use the product. Ends with a colon because it will be followed by a '
+        + 'list.'),
+  },
+  respondersHowToHelpListHTML: {
+    id: 'GlobalHome.respondersHowToHelpList',
+    defaultMessage: ('<ul><li>Embed Google Person Finder in your site</li><li>'
+        + 'Download data from Google Person Finder</li><li>Upload data into '
+        + 'Google Person Finder</li></ul>'),
+    description: ('A list of ways third-party organizations can use the '
+        + 'product.'),
   },
   tagline: {
     id: 'GlobalHome.tagline',
@@ -185,7 +201,11 @@ class GlobalHome extends Component {
             <FormattedMessage {...MESSAGES.responders} />
           </h3>
           <p className='mdc-typography--body1'>
-            <FormattedHTMLMessage {...MESSAGES.respondersHowToHelpHTML} />
+            <FormattedHTMLMessage
+                {...MESSAGES.respondersHowToHelpFirstLineHTML} />
+          </p>
+          <p className='mdc-typography--body1'>
+            <FormattedHTMLMessage {...MESSAGES.respondersHowToHelpListHTML} />
           </p>
         </div>
         <CardActions>
@@ -211,7 +231,11 @@ class GlobalHome extends Component {
             <FormattedMessage {...MESSAGES.developers} />
           </h3>
           <p className='mdc-typography--body1'>
-            <FormattedHTMLMessage {...MESSAGES.developersHowToHelpHTML} />
+            <FormattedHTMLMessage
+                {...MESSAGES.developersHowToHelpFirstLineHTML} />
+          </p>
+          <p className='mdc-typography--body1'>
+            <FormattedHTMLMessage {...MESSAGES.developersHowToHelpListHTML} />
           </p>
         </div>
         <CardActions>
