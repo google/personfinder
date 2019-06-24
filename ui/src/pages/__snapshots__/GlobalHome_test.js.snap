@@ -1205,14 +1205,31 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             className="mdc-typography--body1"
                           >
                             <FormattedHTMLMessage
-                              defaultMessage="You can help people find each other in the aftermath of a disaster:<ul><li>Embed Google Person Finder in your site</li><li>Download data from Google Person Finder</li><li>Upload data into Google Person Finder</li></ul>"
-                              id="GlobalHome.respondersHowToHelp"
+                              defaultMessage="You can help people find each other in the aftermath of a disaster:"
+                              id="GlobalHome.respondersHowToHelpFirstLine"
                               values={Object {}}
                             >
                               <span
                                 dangerouslySetInnerHTML={
                                   Object {
-                                    "__html": "You can help people find each other in the aftermath of a disaster:<ul><li>Embed Google Person Finder in your site</li><li>Download data from Google Person Finder</li><li>Upload data into Google Person Finder</li></ul>",
+                                    "__html": "You can help people find each other in the aftermath of a disaster:",
+                                  }
+                                }
+                              />
+                            </FormattedHTMLMessage>
+                          </p>
+                          <p
+                            className="mdc-typography--body1"
+                          >
+                            <FormattedHTMLMessage
+                              defaultMessage="<ul><li>Embed Google Person Finder in your site</li><li>Download data from Google Person Finder</li><li>Upload data into Google Person Finder</li></ul>"
+                              id="GlobalHome.respondersHowToHelpList"
+                              values={Object {}}
+                            >
+                              <span
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<ul><li>Embed Google Person Finder in your site</li><li>Download data from Google Person Finder</li><li>Upload data into Google Person Finder</li></ul>",
                                   }
                                 }
                               />
@@ -1322,14 +1339,31 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                             className="mdc-typography--body1"
                           >
                             <FormattedHTMLMessage
-                              defaultMessage="You can help continue to improve Google Person Finder:<ul><li>Learn about the PFIF data model</li><li>Customize or improve Person Finder</li></ul>"
-                              id="GlobalHome.developersHowToHelp"
+                              defaultMessage="You can help continue to improve Google Person Finder:"
+                              id="GlobalHome.developersHowToHelpFirstLine"
                               values={Object {}}
                             >
                               <span
                                 dangerouslySetInnerHTML={
                                   Object {
-                                    "__html": "You can help continue to improve Google Person Finder:<ul><li>Learn about the PFIF data model</li><li>Customize or improve Person Finder</li></ul>",
+                                    "__html": "You can help continue to improve Google Person Finder:",
+                                  }
+                                }
+                              />
+                            </FormattedHTMLMessage>
+                          </p>
+                          <p
+                            className="mdc-typography--body1"
+                          >
+                            <FormattedHTMLMessage
+                              defaultMessage="<ul><li>Learn about the PFIF data model</li><li>Customize or improve Person Finder</li></ul>"
+                              id="GlobalHome.developersHowToHelpList"
+                              values={Object {}}
+                            >
+                              <span
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<ul><li>Learn about the PFIF data model</li><li>Customize or improve Person Finder</li></ul>",
                                   }
                                 }
                               />
@@ -1449,15 +1483,19 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
             <p
               className="mdc-typography--body1"
             >
-              <FormattedMessage
-                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts."
+              <FormattedHTMLMessage
+                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>."
                 id="Footer.disclaimerText"
                 values={Object {}}
               >
-                <span>
-                  PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts.
-                </span>
-              </FormattedMessage>
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>.",
+                    }
+                  }
+                />
+              </FormattedHTMLMessage>
             </p>
           </div>
         </Footer>

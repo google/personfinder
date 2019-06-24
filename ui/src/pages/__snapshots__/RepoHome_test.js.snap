@@ -397,7 +397,7 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           onTouchStart={[Function]}
-          raised={true}
+          outlined={true}
           style={Object {}}
           unbounded={false}
         >
@@ -414,11 +414,11 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             onMouseUp={[Function]}
             onTouchEnd={[Function]}
             onTouchStart={[Function]}
-            raised={true}
+            outlined={true}
             style={Object {}}
           >
             <button
-              className="mdc-button pf-button-secondary mdc-button--raised"
+              className="mdc-button pf-button-secondary mdc-button--outlined"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -476,15 +476,19 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             <p
               className="mdc-typography--body1"
             >
-              <FormattedMessage
-                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts."
+              <FormattedHTMLMessage
+                defaultMessage="PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>."
                 id="Footer.disclaimerText"
                 values={Object {}}
               >
-                <span>
-                  PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts.
-                </span>
-              </FormattedMessage>
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "PLEASE NOTE: All data entered is available to the public and usable by anyone. Google does not review or verify the accuracy of this data. Google may share the data with public and private organizations participating in disaster response efforts. Learn more about <a href=\\"https://policies.google.com/privacy\\">Google's privacy policy</a>.",
+                    }
+                  }
+                />
+              </FormattedHTMLMessage>
             </p>
           </div>
         </Footer>
