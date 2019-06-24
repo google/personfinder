@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from model import *
-from photo import create_photo, PhotoError
+import photo
 from utils import *
 from detect_spam import SpamDetector
 import subscribe
@@ -81,8 +81,8 @@ def create_person(
         age,
         sex,
         description,
-        photo,
-        photo_url,
+        person_photo,
+        person_photo_url,
         note_photo,
         note_photo_url,
         profile_urls,
@@ -162,20 +162,21 @@ def create_person(
         except ValidationError:
             raise CreationError(_('Please only enter valid profile URLs.'))
 
-    # If nothing was uploaded, just use the photo_url that was provided.
+    # If nothing was uploaded, just use the photo URL that was provided.
     try:
         # If a photo was uploaded, create a Photo entry and get the URL
         # where we serve it.
-        if photo is not None:
-            photo, photo_url = create_photo(photo, repo, url_builder)
+        if person_photo is not None:
+            person_photo, person_photo_url = photo.create_photo(
+                person_photo, repo, url_builder)
         if note_photo is not None:
-            note_photo, note_photo_url = create_photo(
+            note_photo, note_photo_url = photo.create_photo(
                 note_photo, repo, url_builder)
-    except PhotoError, e:
+    except photo.PhotoError as e:
         raise CreationError(e.message)
     # Finally, store the Photo. Past this point, we should NOT self.error.
-    if photo:
-        photo.put()
+    if person_photo:
+        person_photo.put()
     if note_photo:
         note_photo.put()
 
@@ -217,8 +218,8 @@ def create_person(
         source_url=source_url,
         source_date=source_date,
         source_name=source_name,
-        photo=photo,
-        photo_url=photo_url
+        photo=person_photo,
+        photo_url=person_photo_url
     )
     person.update_index(['old', 'new'])
 
@@ -235,8 +236,8 @@ def create_person(
                 author_email=author_email,
                 author_phone=author_phone,
                 author_made_contact=bool(author_made_contact),
-                photo=note_photo,
-                photo_url=note_photo_url,
+                note_photo=note_photo,
+                note_photo_url=note_photo_url,
                 text=text,
                 email_of_found_person=email_of_found_person,
                 phone_of_found_person=phone_of_found_person,
@@ -311,8 +312,8 @@ def create_note(
         author_email,
         author_phone,
         author_made_contact,
-        photo,
-        photo_url,
+        note_photo,
+        note_photo_url,
         text,
         email_of_found_person,
         phone_of_found_person,
@@ -343,8 +344,8 @@ def create_note(
             phone_of_found_person=phone_of_found_person,
             last_known_location=last_known_location,
             text=text,
-            photo=photo,
-            photo_url=photo_url,
+            photo=note_photo,
+            photo_url=note_photo_url,
             spam_score=spam_score,
             confirmed=False)
         note.put_new()
@@ -363,8 +364,8 @@ def create_note(
         phone_of_found_person=phone_of_found_person,
         last_known_location=last_known_location,
         text=text,
-        photo=photo,
-        photo_url=photo_url)
+        photo=note_photo,
+        photo_url=note_photo_url)
     note.put_new()
     # Specially log notes that make a person dead or switch to an alive status.
     if status == 'believed_dead':
@@ -422,8 +423,8 @@ class Handler(BaseHandler):
                 age=self.params.age,
                 sex=self.params.sex,
                 description=self.params.description,
-                photo=self.params.photo,
-                photo_url=self.params.photo_url,
+                person_photo=self.params.photo,
+                person_photo_url=self.params.photo_url,
                 note_photo=self.params.note_photo,
                 note_photo_url=self.params.note_photo_url,
                 profile_urls=profile_urls,

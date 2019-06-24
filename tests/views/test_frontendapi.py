@@ -18,6 +18,7 @@
 
 import datetime
 
+import mock
 import six
 
 import model
@@ -183,19 +184,29 @@ class FrontendApiCreateViewTests(view_tests_base.ViewTestsBase):
         super(FrontendApiCreateViewTests, self).setUp()
         self.data_generator.repo()
 
-    def test_post(self):
-        resp = self.client.post(
-            '/haiti/d/create',
-            data={
-                'given_name': 'Matt',
-                'family_name': 'Matthews',
-                'own_info': 'yes',
-            },
-            secure=True)
+    @mock.patch('photo.create_photo')
+    def test_postabc(self, mock_create_photo):
+        mock_create_photo.return_value = (
+            model.Photo.create(
+                'haiti', image_data='pretend this is image data'),
+            'http://www.example.com/photo.jpg')
+        with open('../tests/testdata/small_image.png') as image_file:
+            resp = self.client.post(
+                '/haiti/d/create',
+                data={
+                    'given_name': 'Matt',
+                    'family_name': 'Matthews',
+                    'own_info': 'yes',
+                    'photo': image_file,
+                },
+                secure=True)
         persons = model.Person.all()
         self.assertEqual(persons.count(), 1)
         self.assertEqual(persons[0].given_name, 'Matt')
         self.assertEqual(resp.json(), {'personId': persons[0].record_id})
+        create_photo_call_args = mock_create_photo.call_args[0]
+        self.assertEqual(create_photo_call_args[0].height, 100)
+        self.assertEqual(create_photo_call_args[1], 'haiti')
 
 
 class FrontendApiPersonViewTests(view_tests_base.ViewTestsBase):

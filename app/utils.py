@@ -296,6 +296,24 @@ def validate_image(bytestring):
         return False
 
 
+def validate_django_image(uploaded_file):
+    """Tries to convert an image from Django to an Images API object.
+
+    This is essentially a variant of validate_image, above, but for images that
+    are uploaded to a Django handler (which gives us something different than
+    webapp2 did). If the image is validated, it returns an Image object (from
+    the App Engine Images API). Otherwise, it returns False.
+    """
+    try:
+        image = None
+        if uploaded_file:
+            image = images.Image(uploaded_file.read())
+            image.width
+        return image
+    except:
+        return False
+
+
 EMAIL_VALIDATOR = EmailValidator()
 
 

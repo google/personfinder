@@ -243,10 +243,8 @@ class CreateView(FrontendApiBaseView):
                 'home_postal_code': utils.strip,
                 'home_state': utils.strip,
                 'last_known_location': utils.strip,
-                'note_photo': utils.validate_image,
                 'note_photo_url': utils.strip,
                 'phone_of_found_person': utils.strip,
-                'photo': utils.validate_image,
                 'photo_url': utils.strip,
                 'referrer': utils.strip,
                 'sex': utils.validate_sex,
@@ -256,6 +254,10 @@ class CreateView(FrontendApiBaseView):
                 'status': utils.validate_status,
                 'text': utils.strip,
                 'own_info': utils.validate_yes,
+            },
+            file_params={
+                'note_photo': utils.validate_django_image,
+                'photo': utils.validate_django_image,
             })
         if request.method == 'POST':
             profile_urls = []
@@ -302,8 +304,8 @@ class CreateView(FrontendApiBaseView):
             age=self.params.age,
             sex=self.params.sex,
             description=self.params.description,
-            photo=self.params.photo or None,
-            photo_url=self.params.photo_url,
+            person_photo=self.params.photo or None,
+            person_photo_url=self.params.photo_url,
             note_photo=self.params.note_photo or None,
             note_photo_url=self.params.note_photo_url,
             profile_urls=self.params.profile_urls,
@@ -373,8 +375,8 @@ class AddNoteView(FrontendApiBaseView):
             author_email=self.params.author_email,
             author_phone=self.params.author_phone,
             author_made_contact=bool(self.params.author_made_contact),
-            photo=self.params.photo,
-            photo_url=self.params.photo_url,
+            note_photo=self.params.photo,
+            note_photo_url=self.params.photo_url,
             text=self.params.text,
             email_of_found_person=self.params.email_of_found_person,
             phone_of_found_person=self.params.phone_of_found_person,
