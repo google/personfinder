@@ -212,6 +212,10 @@ class PersonView(FrontendApiBaseView):
             'source_name': person.source_name,
             'notes': notes,
         }
+        if person.photo:
+            data['localPhotoUrl'] = person.photo_url
+        elif person.photo_url:
+            data['externalPhotoUrl'] = person.photo_url
         return self._json_response(data)
 
 
