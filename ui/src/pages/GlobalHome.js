@@ -70,6 +70,11 @@ const MESSAGES = defineMessages({
     description: ('Label on a button that takes users to a page explaining how '
         + 'third-party responders can help.'),
   },
+  pfLogo: {
+    id: 'GlobalHome.pfLogo',
+    defaultMessage: 'Person Finder logo',
+    description: 'Alt text for a logo image.',
+  },
   productNameWithEmphasis: {
     id: 'GlobalHome.productNameWithEmphasis',
     defaultMessage: '<b>Google</b> Person Finder',
@@ -175,7 +180,9 @@ class GlobalHome extends Component {
     return (
       <div>
         <h1 className='mdc-typography--headline1'>
-          <img src='/static/icons/maticon_person_pin.svg' />
+          <img
+              src='/static/icons/maticon_person_pin.svg'
+              alt={this.props.intl.formatMessage(MESSAGES.pfLogo)} />
           <FormattedHTMLMessage {...MESSAGES.productNameWithEmphasis} />
         </h1>
         <p className='mdc-typography--body1 globalhome-headerdesc'>
