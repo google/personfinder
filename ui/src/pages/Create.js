@@ -47,6 +47,11 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Age',
     description: 'A label for a form field for a person\'s age.',
   },
+  chooseFile: {
+    id: 'Create.chooseFile',
+    defaultMessage: 'Choose file',
+    description: 'Label for a button for users who want to upload a photo.',
+  },
   city: {
     id: 'Create.city',
     defaultMessage: 'City',
@@ -100,6 +105,12 @@ const MESSAGES = defineMessages({
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
     description: ('A label on a button to show additional fields that are '
         + 'hidden by default.'),
+  },
+  noFileChosen: {
+    id: 'Create.noFileChosen',
+    defaultMessage: 'No file chosen...',
+    description: ('Placeholder text used when a user has not (yet) chosen to '
+        + 'upload a photo.'),
   },
   orEnterPhotoUrl: {
     id: 'Create.orEnterPhotoUrl',
@@ -207,11 +218,6 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Subscribe to updates',
     description: 'A label on a checkbox to subscribe to updates.',
   },
-  uploadPhoto: {
-    id: 'Create.uploadPhoto',
-    defaultMessage: 'Upload photo',
-    description: 'Label for a button for users who want to upload a photo.',
-  },
 });
 
 /*
@@ -299,38 +305,54 @@ class Create extends Component {
     )
   }
 
-  renderPhotoFields() {
-    const photoFilenameSpan = this.state.formPhotoFile
-        ? <span>{this.state.formPhotoFile.name}</span>
-        : null;
-    let photoDeleteButton = null;
-    if (this.state.formPhotoFile) {
-      photoDeleteButton = (
-        <span onClick={(e) => {this.setState({formPhotoFile: ''})}}>X</span>
-      );
-    }
-    return (
-      <PFNotchedOutline label={this.props.intl.formatMessage(MESSAGES.photo)}>
-        {/*
-          * You can't really style an input element, but we don't want to
-          * display it as-is, so we hide the actual input element and use a
-          * styled button as a proxy. The Button below this will call click() on
-          * the input when it's clicked.
-          */}
+  renderPhotoUploadLine() {
+    // You can't really style an input element, but we don't want to display it
+    // as-is, so we hide the actual input element and use a styled button as a
+    // proxy. The Button below this will call click() on the input when it's
+    // clicked.
+    const photoInputField = (
         <input
           className='proxied-upload'
           type='file'
           ref={this.photoUploadInput}
           onChange={(e) => this.setState({formPhotoFile: e.target.files[0]})} />
-        <Button
-          className='pf-button-primary'
-          type='button'
-          onClick={() => this.photoUploadInput.current.click()}
-          disabled={this.state.formPhotoUrl != ""}>
-          {this.props.intl.formatMessage(MESSAGES.uploadPhoto)}
-        </Button>
-        {photoFilenameSpan}
-        {photoDeleteButton}
+    );
+    if (this.state.formPhotoFile) {
+      return (
+          <div className='create-photouploadline'>
+            {photoInputField}
+            <span className='mdc-typography--body1'>
+              {this.state.formPhotoFile.name}
+            </span>
+            <img
+                className='create-photodeletebutton'
+                src='/static/icons/maticon_clear.svg'
+                onClick={(e) => {this.setState({formPhotoFile: ''})}} />
+          </div>
+      );
+    } else {
+      return (
+          <div className='create-photouploadline'>
+            {photoInputField}
+            <span className='mdc-typography--body1'>
+              <FormattedMessage {...MESSAGES.noFileChosen} />
+            </span>
+            <Button
+              className='pf-button-primary create-choosefilebutton'
+              type='button'
+              onClick={() => this.photoUploadInput.current.click()}
+              disabled={this.state.formPhotoUrl != ""}>
+              {this.props.intl.formatMessage(MESSAGES.chooseFile)}
+            </Button>
+          </div>
+      );
+    }
+  }
+
+  renderPhotoFields() {
+    return (
+      <PFNotchedOutline label={this.props.intl.formatMessage(MESSAGES.photo)}>
+        {this.renderPhotoUploadLine()}
         <TextField
           label={this.props.intl.formatMessage(MESSAGES.orEnterPhotoUrl)}
           outlined
@@ -624,7 +646,7 @@ class Create extends Component {
           <p className='mdc-typography--body1 form-explanationtext'>
             <FormattedMessage {...MESSAGES.messageExplanationText} />
           </p>
-          <p>
+          <p className='mdc-typography--body1'>
             <FormattedMessage {...MESSAGES.statusPersonallyTalkedTo} />
           </p>
           <div>
