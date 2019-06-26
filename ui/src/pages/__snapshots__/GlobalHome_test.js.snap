@@ -132,44 +132,10 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
           className="globalhome-repolistitem"
           key="haiti"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 0,
-                "recordCount": 400,
-                "repoId": "haiti",
-                "title": "Haiti",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 0,
@@ -179,32 +145,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 0,
+                    "recordCount": 400,
+                    "repoId": "haiti",
+                    "title": "Haiti",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -215,10 +202,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -231,90 +220,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory0"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory0"
                           >
-                            H
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Haiti
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 400,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 400 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              H
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Haiti
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 400,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 400 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="japan"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 1,
-                "recordCount": 100,
-                "repoId": "japan",
-                "title": "Japan",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 1,
@@ -324,32 +294,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 1,
+                    "recordCount": 100,
+                    "repoId": "japan",
+                    "title": "Japan",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -360,10 +351,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -376,90 +369,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory1"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory1"
                           >
-                            J
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Japan
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 100,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 100 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              J
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Japan
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 100,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 100 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="albany"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 2,
-                "recordCount": 100,
-                "repoId": "albany",
-                "title": "Albany",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 2,
@@ -469,32 +443,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 2,
+                    "recordCount": 100,
+                    "repoId": "albany",
+                    "title": "Albany",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -505,10 +500,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -521,90 +518,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory2"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory2"
                           >
-                            A
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Albany
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 100,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 100 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              A
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Albany
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 100,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 100 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="seattle"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 3,
-                "recordCount": 800,
-                "repoId": "seattle",
-                "title": "Seattle",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 3,
@@ -614,32 +592,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 3,
+                    "recordCount": 800,
+                    "repoId": "seattle",
+                    "title": "Seattle",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -650,10 +649,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -666,90 +667,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory3"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory3"
                           >
-                            S
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Seattle
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 800,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 800 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              S
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Seattle
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 800,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 800 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="montreal"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 4,
-                "recordCount": 500,
-                "repoId": "montreal",
-                "title": "Montreal",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 4,
@@ -759,32 +741,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 4,
+                    "recordCount": 500,
+                    "repoId": "montreal",
+                    "title": "Montreal",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -795,10 +798,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -811,90 +816,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory4"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory4"
                           >
-                            M
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Montreal
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 500,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 500 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              M
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Montreal
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 500,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 500 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="belgium"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 0,
-                "recordCount": 100,
-                "repoId": "belgium",
-                "title": "Belgium",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 0,
@@ -904,32 +890,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 0,
+                    "recordCount": 100,
+                    "repoId": "belgium",
+                    "title": "Belgium",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -940,10 +947,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -956,90 +965,71 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory0"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory0"
                           >
-                            B
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Belgium
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 100,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 100 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              B
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Belgium
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 100,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 100 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
         <div
           className="globalhome-repolistitem"
           key="boise"
         >
-          <InjectIntl(RepoCardImpl)
-            repo={
-              Object {
-                "displayCategory": 1,
-                "recordCount": 100,
-                "repoId": "boise",
-                "title": "Boise",
-              }
-            }
+          <div
+            tabIndex="0"
           >
-            <RepoCardImpl
-              intl={
-                Object {
-                  "defaultFormats": Object {},
-                  "defaultLocale": "en",
-                  "formatDate": [Function],
-                  "formatHTMLMessage": [Function],
-                  "formatMessage": [Function],
-                  "formatNumber": [Function],
-                  "formatPlural": [Function],
-                  "formatRelative": [Function],
-                  "formatTime": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
-                    "getDateTimeFormat": [Function],
-                    "getMessageFormat": [Function],
-                    "getNumberFormat": [Function],
-                    "getPluralFormat": [Function],
-                    "getRelativeFormat": [Function],
-                  },
-                  "locale": "en",
-                  "messages": Object {},
-                  "now": [Function],
-                  "onError": [Function],
-                  "textComponent": "span",
-                  "timeZone": null,
-                }
-              }
+            <InjectIntl(RepoCardImpl)
               repo={
                 Object {
                   "displayCategory": 1,
@@ -1049,32 +1039,53 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                 }
               }
             >
-              <Card
-                className="repocard"
-                outlined={true}
+              <RepoCardImpl
+                intl={
+                  Object {
+                    "defaultFormats": Object {},
+                    "defaultLocale": "en",
+                    "formatDate": [Function],
+                    "formatHTMLMessage": [Function],
+                    "formatMessage": [Function],
+                    "formatNumber": [Function],
+                    "formatPlural": [Function],
+                    "formatRelative": [Function],
+                    "formatTime": [Function],
+                    "formats": Object {},
+                    "formatters": Object {
+                      "getDateTimeFormat": [Function],
+                      "getMessageFormat": [Function],
+                      "getNumberFormat": [Function],
+                      "getPluralFormat": [Function],
+                      "getRelativeFormat": [Function],
+                    },
+                    "locale": "en",
+                    "messages": Object {},
+                    "now": [Function],
+                    "onError": [Function],
+                    "textComponent": "span",
+                    "timeZone": null,
+                  }
+                }
+                repo={
+                  Object {
+                    "displayCategory": 1,
+                    "recordCount": 100,
+                    "repoId": "boise",
+                    "title": "Boise",
+                  }
+                }
               >
-                <div
-                  className="mdc-card repocard mdc-card--outlined"
+                <Card
+                  className="repocard"
+                  outlined={true}
                 >
-                  <RippledComponent
-                    className="repocard-content"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    style={Object {}}
-                    unbounded={false}
+                  <div
+                    className="mdc-card repocard mdc-card--outlined"
                   >
-                    <Component
+                    <RippledComponent
                       className="repocard-content"
                       disabled={false}
-                      initRipple={[Function]}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
@@ -1085,10 +1096,12 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                       onTouchEnd={[Function]}
                       onTouchStart={[Function]}
                       style={Object {}}
+                      unbounded={false}
                     >
-                      <div
-                        className="mdc-card__primary-action repocard-content"
+                      <Component
+                        className="repocard-content"
                         disabled={false}
+                        initRipple={[Function]}
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -1101,47 +1114,62 @@ exports[`testing GlobalHome snapshot test for GlobalHome 1`] = `
                         style={Object {}}
                       >
                         <div
-                          className="repocard-image repocard-imagedisplaycategory1"
+                          className="mdc-card__primary-action repocard-content"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={Object {}}
                         >
-                          <p
-                            className="mdc-typography--body1"
+                          <div
+                            className="repocard-image repocard-imagedisplaycategory1"
                           >
-                            B
-                          </p>
-                        </div>
-                        <div
-                          className="repocard-info"
-                        >
-                          <h5
-                            className="mdc-typography--headline5 repocard-title"
-                          >
-                            Boise
-                          </h5>
-                          <p
-                            className="mdc-typography--body1 repocard-recordcount"
-                          >
-                            <FormattedMessage
-                              defaultMessage="Tracking {recordCount} records"
-                              id="GlobalHome.repoRecordCount"
-                              values={
-                                Object {
-                                  "recordCount": 100,
-                                }
-                              }
+                            <p
+                              className="mdc-typography--body1"
                             >
-                              <span>
-                                Tracking 100 records
-                              </span>
-                            </FormattedMessage>
-                          </p>
+                              B
+                            </p>
+                          </div>
+                          <div
+                            className="repocard-info"
+                          >
+                            <h5
+                              className="mdc-typography--headline5 repocard-title"
+                            >
+                              Boise
+                            </h5>
+                            <p
+                              className="mdc-typography--body1 repocard-recordcount"
+                            >
+                              <FormattedMessage
+                                defaultMessage="Tracking {recordCount} records"
+                                id="GlobalHome.repoRecordCount"
+                                values={
+                                  Object {
+                                    "recordCount": 100,
+                                  }
+                                }
+                              >
+                                <span>
+                                  Tracking 100 records
+                                </span>
+                              </FormattedMessage>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Component>
-                  </RippledComponent>
-                </div>
-              </Card>
-            </RepoCardImpl>
-          </InjectIntl(RepoCardImpl)>
+                      </Component>
+                    </RippledComponent>
+                  </div>
+                </Card>
+              </RepoCardImpl>
+            </InjectIntl(RepoCardImpl)>
+          </div>
         </div>
       </div>
       <div

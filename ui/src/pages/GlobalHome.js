@@ -279,7 +279,9 @@ class GlobalHome extends Component {
   renderRepoList() {
     const cells = this.state.repos.map(repo => (
       <div className='globalhome-repolistitem' key={repo.repoId}>
-        <RepoCard history={this.props.history} repo={repo} />
+        <div tabIndex='0'>
+          <RepoCard history={this.props.history} repo={repo} />
+        </div>
       </div>
     ));
     return <div className='globalhome-repolistwrapper'>{cells}</div>;
