@@ -279,9 +279,7 @@ class GlobalHome extends Component {
   renderRepoList() {
     const cells = this.state.repos.map(repo => (
       <div className='globalhome-repolistitem' key={repo.repoId}>
-        <div tabIndex='0'>
-          <RepoCard history={this.props.history} repo={repo} />
-        </div>
+        <RepoCard history={this.props.history} repo={repo} />
       </div>
     ));
     return <div className='globalhome-repolistwrapper'>{cells}</div>;
@@ -337,7 +335,11 @@ class RepoCardImpl extends Component {
     }
     return (
       <Card className='repocard' outlined>
-        <CardPrimaryContent className='repocard-content' onClick={this.goToRepo}>
+        <CardPrimaryContent
+            className='repocard-content'
+            tabIndex='0'
+            onClick={this.goToRepo}
+            onKeyDown={(e) => {return e.keyCode != 13 || this.goToRepo()}}>
           <div className={repocardImageClassName}>
             <p className='mdc-typography--body1'>
               {Array.from(this.props.repo.title)[0]}
