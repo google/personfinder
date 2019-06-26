@@ -308,7 +308,7 @@ class BaseView(django.views.View):
         if params:
             url_parts = list(urlparse.urlparse(res))
             url_params = dict(urlparse.parse_qsl(url_parts[4]))
-            for key, value in params:
+            for key, value in params.items():
                 if value is None:
                     if key in url_params:
                         del(url_params[key])
