@@ -33,6 +33,7 @@ class EnduserBaseView(views.base.BaseView):
         if self.env.config.enable_react_ui:
             react_env = {
                 'maps_api_key': self.env.config.get('maps_api_key'),
+                'recaptcha_site_key': self.env.config.get('captcha_site_key'),
             }
             json_encoder = simplejson.encoder.JSONEncoder()
             return self.render(
