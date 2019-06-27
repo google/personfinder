@@ -463,6 +463,7 @@ class Create extends Component {
       >
         <Input
           name={inputName}
+          id={'forminput-' + formKey}
           value={this.state[formKey]}
           onChange={(e) => this.setState({[formKey]: e.target.value})} />
       </TextField>
@@ -478,6 +479,7 @@ class Create extends Component {
       >
         <Input
           name={inputName}
+          id={'forminput-' + formKey}
           value={this.state[formKey]}
           onChange={(e) => this.setState({[formKey]: e.target.value})} />
       </TextField>
