@@ -104,7 +104,7 @@ def set_thumbnail(photo):
 def get_photo_url(photo, repo, url_builder):
     """Returns the URL where this app is serving a hosted Photo object."""
     id = photo.key().name().split(':')[1]
-    return url_builder('/photo', repo=repo, params={'id': id})
+    return url_builder('/photo', repo=repo, params=[('id', id)])
 
 
 class Handler(utils.BaseHandler):
