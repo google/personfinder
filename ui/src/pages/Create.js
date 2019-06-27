@@ -310,6 +310,11 @@ class Create extends Component {
     )
   }
 
+  clearPhotoUpload() {
+    this.photoUploadInput.current.value = '';
+    this.setState({formPhotoFile: ''});
+  }
+
   renderPhotoUploadLine() {
     // You can't really style an input element, but we don't want to display it
     // as-is, so we hide the actual input element and use a styled button as a
@@ -336,11 +341,9 @@ class Create extends Component {
                 tabIndex='0'
                 role='button'
                 aria-label={this.props.intl.formatMessage(MESSAGES.delete)}
-                onClick={(e) => {
-                  return this.setState({formPhotoFile: ''});
-                }}
+                onClick={(e) => this.clearPhotoUpload()}
                 onKeyDown={(e) => {
-                  return e.keyCode != 13 || this.setState({formPhotoFile: ''});
+                  return e.keyCode != 13 || this.clearPhotoUpload();
                 }} />
           </div>
       );
@@ -355,7 +358,7 @@ class Create extends Component {
               className='pf-button-primary create-choosefilebutton'
               type='button'
               onClick={() => this.photoUploadInput.current.click()}
-              disabled={this.state.formPhotoUrl != ""}>
+              disabled={this.state.formPhotoUrl != ''}>
               {this.props.intl.formatMessage(MESSAGES.chooseFile)}
             </Button>
           </div>
