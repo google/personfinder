@@ -964,9 +964,11 @@ class BaseHandler(webapp.RequestHandler):
         and this function matches its signature so that functions don't have to
         know what web framework their URL-building function came from.
         """
+        if params:
+            param_dict = {k: v for k, v in params}
         if not params:
-            params = {}
-        return get_url(self.request, repo, path, **params)
+            param_dict = {}
+        return get_url(self.request, repo, path, **param_dict)
 
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):

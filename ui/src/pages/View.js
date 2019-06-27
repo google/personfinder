@@ -257,7 +257,7 @@ class View extends Component {
         <div className='view-section'>
           <div className='view-headline'>
             <div className='view-headlinephoto'>
-              <img src={this.state.person.photoUrl} />
+              <img src={this.state.person.localPhotoUrl} />
             </div>
             <div className='view-headlinecontent'>
               <h5 className='mdc-typography--headline5'>
