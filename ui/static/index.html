@@ -35,8 +35,16 @@
   <noscript>This won't work without JS.</noscript>
   <script>
     const ENV = {
+        // This is a public testing key, available at:
+        // https://developers.google.com/recaptcha/docs/faq
+        'recaptcha_site_key': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
         'maps_api_key': '',
     };
+  </script>
+  <!-- TODO(nworden): maybe wait to load this until needed.
+       Also consider whether we should pay attention to the callback. -->
+  <script src="https://www.google.com/recaptcha/api.js?render=explicit" async
+      defer>
   </script>
   <script src="../dist/dev-bundle.js"></script>
 </body>

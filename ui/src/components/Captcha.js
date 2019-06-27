@@ -35,7 +35,8 @@ class Captcha extends Component {
   }
 
   componentDidMount() {
-    grecaptcha.render('recaptcha_container', {'sitekey': ENV.recaptcha_key});
+    grecaptcha.render(
+        'recaptcha_container', {'sitekey': ENV.recaptcha_site_key});
   }
 
   render() {
