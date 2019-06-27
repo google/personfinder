@@ -62,6 +62,11 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Country',
     description: 'A label for a form field for a person\'s country.',
   },
+  delete: {
+    id: 'Create.delete',
+    defaultMessage: 'Delete',
+    description: 'A label for a delete button.',
+  },
   description: {
     id: 'Create.description',
     defaultMessage: 'Description',
@@ -327,7 +332,16 @@ class Create extends Component {
             <img
                 className='create-photodeletebutton'
                 src='/static/icons/maticon_clear.svg'
-                onClick={(e) => {this.setState({formPhotoFile: ''})}} />
+                alt={this.props.intl.formatMessage(MESSAGES.delete)}
+                tabIndex='0'
+                role='button'
+                aria-label={this.props.intl.formatMessage(MESSAGES.delete)}
+                onClick={(e) => {
+                  return this.setState({formPhotoFile: ''});
+                }}
+                onKeyDown={(e) => {
+                  return e.keyCode != 13 || this.setState({formPhotoFile: ''});
+                }} />
           </div>
       );
     } else {
