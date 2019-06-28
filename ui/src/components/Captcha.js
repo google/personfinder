@@ -18,10 +18,17 @@ import React, {Component} from 'react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {Link} from 'react-router-dom';
 import Button from '@material/react-button';
+import Utils from './../utils/Utils';
 
 const MESSAGES = defineMessages({
+  captchaToolLoading: {
+    id: 'Captcha.captchaToolLoading',
+    defaultMessage: 'Captcha tool loading...',
+    description: ('A message shown while the captcha JavaScript tool is '
+        + 'loading.'),
+  },
   proceed: {
-    id: 'RepoHeader.proceed',
+    id: 'Captcha.proceed',
     defaultMessage: 'Proceed',
     description: ('Label on a button that a user should click after completing '
         + 'a reCaptcha form.'),
@@ -31,17 +38,27 @@ const MESSAGES = defineMessages({
 class Captcha extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      scriptHasLoaded: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    grecaptcha.render(
-        'recaptcha_container', {'sitekey': ENV.recaptcha_site_key});
+    Utils.loadExternalScript(
+        'https://www.google.com/recaptcha/api.js?render=explicit',
+        () => grecaptcha.ready(() => {
+            grecaptcha.render(
+              'recaptcha_container', {'sitekey': ENV.recaptcha_site_key});
+            this.setState({scriptHasLoaded: true});
+        }));
   }
 
   render() {
     return (
       <div className='captcha_wrapper'>
+        {this.state.scriptHasLoaded ? null :
+           <FormattedMessage {...MESSAGES.captchaToolLoading} />}
         <form onSubmit={this.handleSubmit}>
           <div id='recaptcha_container'></div>
           <br/>
