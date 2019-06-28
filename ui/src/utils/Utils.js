@@ -25,11 +25,27 @@ class Utils {
     return queryString.parse(props.location.search)[paramName];
   }
 
+  static onExternalScriptLoad(url) {
+    EXTERNAL_SCRIPTS[url].loaded = true;
+    const callbacksList = EXTERNAL_SCRIPTS[url].callbacks;
+    for (var i = 0; i < callbacksList.length; i++) {
+      callbacksList[i]();
+    }
+  }
+
   static loadExternalScript(url, callback) {
-    const scriptTag = document.createElement('script');
-    scriptTag.src = url;
-    scriptTag.addEventListener('load', callback);
-    document.getElementsByTagName('body')[0].appendChild(scriptTag);
+    if (EXTERNAL_SCRIPTS[url] == undefined) {
+      EXTERNAL_SCRIPTS[url] = {callbacks: [callback], loaded: false};
+      const scriptTag = document.createElement('script');
+      scriptTag.src = url;
+      scriptTag.addEventListener(
+          'load', () => Utils.onExternalScriptLoad(url));
+      document.getElementsByTagName('body')[0].appendChild(scriptTag);
+    } else if (EXTERNAL_SCRIPTS[url].loaded) {
+      callback();
+    } else {
+      EXTERNAL_SCRIPTS[url].callbacks.push(callback);
+    }
   }
 }
 
