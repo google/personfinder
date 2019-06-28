@@ -35,6 +35,10 @@
   <noscript>This won't work without JS.</noscript>
   <script nonce="{{ csp_nonce }}">
     const ENV = {{ env_json|safe }};
+    // A map from external script URLs to a) a boolean indicating whether they
+    // have finished loading and b) a list of listeners to notify when it
+    // finishes loading
+    const EXTERNAL_SCRIPTS = new Map();
   </script>
   <script nonce="{{ csp_nonce }}" src="/static/ui_bundles/{{env.lang}}-bundle.js"></script>
 </body>

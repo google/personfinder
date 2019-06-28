@@ -40,11 +40,10 @@
         'recaptcha_site_key': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
         'maps_api_key': '',
     };
-  </script>
-  <!-- TODO(nworden): maybe wait to load this until needed.
-       Also consider whether we should pay attention to the callback. -->
-  <script src="https://www.google.com/recaptcha/api.js?render=explicit" async
-      defer>
+    // A map from external script URLs to a) a boolean indicating whether they
+    // have finished loading and b) a list of listeners to notify when it
+    // finishes loading
+    const EXTERNAL_SCRIPTS = new Map();
   </script>
   <script src="../dist/dev-bundle.js"></script>
 </body>
