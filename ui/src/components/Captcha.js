@@ -27,12 +27,6 @@ const MESSAGES = defineMessages({
     description: ('A message shown while the captcha JavaScript tool is '
         + 'loading.'),
   },
-  proceed: {
-    id: 'Captcha.proceed',
-    defaultMessage: 'Proceed',
-    description: ('Label on a button that a user should click after completing '
-        + 'a reCaptcha form.'),
-  },
 });
 
 class Captcha extends Component {
@@ -41,7 +35,6 @@ class Captcha extends Component {
     this.state = {
       scriptHasLoaded: false,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +42,10 @@ class Captcha extends Component {
         'https://www.google.com/recaptcha/api.js?render=explicit',
         () => grecaptcha.ready(() => {
             grecaptcha.render(
-              'recaptcha_container', {'sitekey': ENV.recaptcha_site_key});
+              'recaptcha_container', {
+                'callback': (value) => this.props.callback(value),
+                'sitekey': ENV.recaptcha_site_key,
+              });
             this.setState({scriptHasLoaded: true});
         }));
   }
@@ -59,23 +55,9 @@ class Captcha extends Component {
       <div className='captcha_wrapper'>
         {this.state.scriptHasLoaded ? null :
            <FormattedMessage {...MESSAGES.captchaToolLoading} />}
-        <form onSubmit={this.handleSubmit}>
-          <div id='recaptcha_container'></div>
-          <br/>
-          <Button
-              className='pf-button-primary'
-              type='submit'>
-            {this.props.intl.formatMessage(MESSAGES.proceed)}
-          </Button>
-        </form>
+        <div id='recaptcha_container'></div>
       </div>
     );
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    this.props.callback(formData.get('g-recaptcha-response'));
   }
 }
 
