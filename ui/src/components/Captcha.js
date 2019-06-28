@@ -43,7 +43,7 @@ class Captcha extends Component {
         () => grecaptcha.ready(() => {
             grecaptcha.render(
               'recaptcha_container', {
-                'callback': (value) => this.props.callback(value),
+                'callback': this.props.callback,
                 'sitekey': ENV.recaptcha_site_key,
               });
             this.setState({scriptHasLoaded: true});
