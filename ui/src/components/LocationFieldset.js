@@ -133,6 +133,7 @@ class LocationFieldset extends Component {
         >
           <Input
             name='last_known_location'
+            id='forminput-lastknownlocation'
             value={this.props.locationText}
             onChange={(e) => this.props.onLocationTextUpdate(e.target.value)}
             onBlur={(e) => this.onLocationTextFieldBlur(e)} />

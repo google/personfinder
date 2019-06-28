@@ -19,6 +19,12 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {Link} from 'react-router-dom';
 
 const MESSAGES = defineMessages({
+  back: {
+    id: 'RepoHeader.back',
+    defaultMessage: 'Back',
+    description: ('Alt text for a button that takes the user to a previous '
+        + 'page.'),
+  },
   // TODO(nworden): figure out how to make this configurable for users other
   // than Google
   productName: {
@@ -33,7 +39,11 @@ const PageHeader = (props) => (
   <div id='repoheader'>
     <div id='repoheader-backbutton'>
       <Link to={props.backButtonTarget}>
-        <div><img src='/static/icons/maticon_arrow_back.svg' /></div>
+        <div>
+          <img
+              src='/static/icons/maticon_arrow_back.svg'
+              alt={props.intl.formatMessage(MESSAGES.back)} />
+        </div>
       </Link>
     </div>
     <div id='repoheader-info'>

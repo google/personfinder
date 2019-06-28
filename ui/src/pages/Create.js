@@ -502,6 +502,7 @@ class Create extends Component {
       >
         <Input
           name={inputName}
+          id={'forminput-' + formKey}
           value={this.state[formKey]}
           onChange={(e) => this.setState({[formKey]: e.target.value})} />
       </TextField>
@@ -517,6 +518,7 @@ class Create extends Component {
       >
         <Input
           name={inputName}
+          id={'forminput-' + formKey}
           value={this.state[formKey]}
           onChange={(e) => this.setState({[formKey]: e.target.value})} />
       </TextField>
@@ -635,6 +637,7 @@ class Create extends Component {
           <Select
               label={this.props.intl.formatMessage(
                   MESSAGES.statusOfThisPersonField)}
+              id='forminput-formPersonStatus'
               onChange={(e) => this.setState(
                   {formPersonStatus: e.target.value})}
               value={this.state.formPersonStatus}
@@ -673,6 +676,7 @@ class Create extends Component {
             >
               <NativeRadioControl
                 name='author_made_contact'
+                id='forminput-authormadecontact-yes'
                 value='yes'
                 onChange={(e) => this.setState(
                     {statusMadeContact: e.target.value})} />
@@ -685,6 +689,7 @@ class Create extends Component {
             >
               <NativeRadioControl
                 name='author_made_contact'
+                id='forminput-authormadecontact-no'
                 value='no'
                 onChange={(e) => this.setState(
                     {statusMadeContact: e.target.value})} />
