@@ -20,7 +20,6 @@ from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
-import reveal
 import subscribe
 import utils
 

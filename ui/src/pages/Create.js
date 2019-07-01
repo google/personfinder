@@ -33,7 +33,6 @@ import LocationFieldset from './../components/LocationFieldset.js';
 import PFNotchedOutline from './../components/PFNotchedOutline.js';
 import ProfilePageUtils from './../utils/ProfilePageUtils.js';
 import RepoHeader from './../components/RepoHeader.js';
-import Utils from './../utils/Utils.js';
 
 const MESSAGES = defineMessages({
   addSite: {

@@ -35,8 +35,15 @@
   <noscript>This won't work without JS.</noscript>
   <script>
     const ENV = {
+        // This is a public testing key, available at:
+        // https://developers.google.com/recaptcha/docs/faq
+        'recaptcha_site_key': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
         'maps_api_key': '',
     };
+    // A map from external script URLs to a) a boolean indicating whether they
+    // have finished loading and b) a list of listeners to notify when it
+    // finishes loading
+    const EXTERNAL_SCRIPTS = new Map();
   </script>
   <script src="../dist/dev-bundle.js"></script>
 </body>
