@@ -36,7 +36,7 @@ Enzyme.configure({adapter: new Adapter()});
 let mockLoadExternalScript;
 
 function showMap(wrapper) {
-  wrapper.find('button').at(1).simulate('click');
+  wrapper.find('div.locationfieldset-showmap').at(0).simulate('click');
   mockLoadExternalScript.mock.calls[0][1]();
   wrapper.update();
 }
@@ -93,7 +93,7 @@ describe('testing LocationFieldset', () => {
             mapDefaultZoom={10}
             />);
     wrapper.update();
-    expect(wrapper.find('button').length).toBe(1);
+    expect(wrapper.find('div.locationfieldset-showmap').length).toBe(0);
     wrapper.unmount();
   });
 
@@ -105,7 +105,7 @@ describe('testing LocationFieldset', () => {
             mapDefaultZoom={10}
             />);
     wrapper.update();
-    expect(wrapper.find('button').length).toBe(1);
+    expect(wrapper.find('div.locationfieldset-showmap').length).toBe(0);
     wrapper.unmount();
   });
 
@@ -116,8 +116,9 @@ describe('testing LocationFieldset', () => {
             mapDefaultZoom={10}
             />);
     wrapper.update();
-    expect(wrapper.find('button').length).toBe(2);
-    expect(wrapper.find('button').at(1).text()).toBe('Show map');
+    expect(wrapper.find('div.locationfieldset-showmap').length).toBe(1);
+    expect(wrapper.find('div.locationfieldset-showmap').text()).toContain(
+        'Show map');
     wrapper.unmount();
   });
 
@@ -128,7 +129,7 @@ describe('testing LocationFieldset', () => {
             mapDefaultZoom={10}
             />);
     wrapper.update();
-    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('div.locationfieldset-showmap').at(0).simulate('click');
     expect(mockLoadExternalScript).toHaveBeenCalledWith(
         'https://maps.googleapis.com/maps/api/js?key=abc123',
         expect.anything());
@@ -143,9 +144,9 @@ describe('testing LocationFieldset', () => {
             />);
     wrapper.update();
     // Show the map, hide it, and show it again.
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('div.locationfieldset-showmap').at(0).simulate('click');
+    wrapper.find('div.locationfieldset-showmap').at(0).simulate('click');
+    wrapper.find('div.locationfieldset-showmap').at(0).simulate('click');
     expect(mockLoadExternalScript).toHaveBeenCalledTimes(1);
     wrapper.unmount();
   });
@@ -159,7 +160,8 @@ describe('testing LocationFieldset', () => {
     wrapper.update();
     showMap(wrapper);
     expect(wrapper.find('MapDisplayImpl').length).toBe(1);
-    expect(wrapper.find('button').at(1).text()).toBe('Hide map');
+    expect(wrapper.find('div.locationfieldset-showmap').at(0).text()).toContain(
+        'Hide map');
     wrapper.unmount();
   });
 
@@ -196,7 +198,7 @@ describe('testing LocationFieldset', () => {
             onLocationTextUpdate={mockLocationTextUpdateCallback}
             onLocationLatLngUpdate={mockLocationLatLngUpdateCallback} />);
     wrapper.update();
-    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('div.locationfieldset-uselocation').at(0).simulate('click');
     mockGetCurrentPosition.mock.calls[0][0](
         {coords: {latitude: 29.7604, longitude: -95.3698}});
     expect(mockLocationTextUpdateCallback).toHaveBeenCalledWith(
