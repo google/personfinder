@@ -33,6 +33,11 @@
   padding: 0;
 }
 
+.mdc-chip {
+  background-color: #fff;
+  border: 1px solid #dadce0;
+}
+
 /* Material is going to use our secondary color for this by default, which isn't
  * good because our secondary color is white.
  * TODO(nworden): handle this a better way (maybe just tell Material our

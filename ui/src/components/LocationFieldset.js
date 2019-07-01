@@ -16,9 +16,10 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
+import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import Button from '@material/react-button';
+import {Chip} from '@material/react-chips';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 import Utils from './../utils/Utils';
 
@@ -45,6 +46,12 @@ const MESSAGES = defineMessages({
     id: 'LocationFieldset.showMap',
     defaultMessage: 'Show map',
     description: 'Label on a button to show a map.',
+  },
+  useLocation: {
+    id: 'LocationFieldset.useLocation',
+    defaultMessage: 'Use location',
+    description: ('Label on a button that a user can use to automatically fill '
+        + 'in a location field with their browser location.'),
   },
 });
 
@@ -141,12 +148,17 @@ class LocationFieldset extends Component {
         <p className='mdc-typography--body1 form-explanationtext'>
           <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
         </p>
-        <Button
-          className='pf-button-primary'
-          type='button'
-          onClick={() => this.populateLocationWithCurrentLocation()}>
-          Use location
-        </Button>
+        <Chip
+            className='locationfieldset-uselocation'
+            label={
+              <div className='locationfieldset-uselocation-label'>
+                <img src='/static/icons/maticon_map.svg' />
+                &nbsp;
+                <FormattedMessage {...MESSAGES.useLocation} />
+              </div>
+            }
+            handleInteraction={
+              () => this.populateLocationWithCurrentLocation()} />
         &nbsp;
         {showHideMapButton}
         {map}
