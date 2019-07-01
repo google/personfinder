@@ -80,6 +80,7 @@
   {% if env.repo %}
     <a href="{{env.repo_url}}admin">Repository settings</a>
     <a href="{{env.repo_url}}admin/dashboard">Dashboard</a>
+    <a href="{{env.repo_url}}admin/api_keys/list">API keys</a>
     <a href="{{env.repo_url}}admin/review">Review notes</a>
     <a href="{{env.repo_url}}admin/delete_record">Delete a record</a>
     <a href="{{env.repo_url}}admin/acls">Repo admin access control</a>
