@@ -99,12 +99,6 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Message',
     description: 'A message for a person, or about the person.',
   },
-  messageExplanationText: {
-    id: 'Create.messageExplanationText',
-    defaultMessage: ('Write a message for this person, or for others seeking '
-        + 'this person.'),
-    description: 'Hint text for a form field for a message for/about a person.',
-  },
   moreDropdown: {
     id: 'Create.moreDropdown',
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
@@ -123,6 +117,12 @@ const MESSAGES = defineMessages({
     description: ('A label for a form field where users can submit a photo URL '
         + '(as opposed to uploading a photo directly)'),
   },
+  otherPersonMessageExplanationText: {
+    id: 'Create.otherPersonMessageExplanationText',
+    defaultMessage: ('Write a message for this person, or for others seeking '
+        + 'this person.'),
+    description: 'Hint text for a form field for a message for/about a person.',
+  },
   photo: {
     id: 'Create.photo',
     defaultMessage: 'Photo',
@@ -138,6 +138,12 @@ const MESSAGES = defineMessages({
     id: 'Create.provinceOrState',
     defaultMessage: 'Province or state',
     description: 'A label for a form field for a person\'s province or state.',
+  },
+  selfMessageExplanationText: {
+    id: 'Create.selfMessageExplanationText',
+    defaultMessage: 'Write a message to the people looking for you',
+    description: ('Hint text for a form field for a message the user can leave '
+        + 'people looking for them in the aftermath of a disaster.'),
   },
   sex: {
     id: 'Create.sex',
@@ -169,7 +175,7 @@ const MESSAGES = defineMessages({
     id: 'Create.statusOfThisPersonHeader',
     defaultMessage: 'Status of this person',
     description: ('A heading for a form section for information about a '
-        + 'person\'s status.'),
+        + 'person\'s status in the aftermath of a disaster.'),
   },
   statusOfThisPersonField: {
     id: 'Create.statusOfThisPersonField',
@@ -222,6 +228,12 @@ const MESSAGES = defineMessages({
     id: 'Create.subscribeToUpdates',
     defaultMessage: 'Subscribe to updates',
     description: 'A label on a checkbox to subscribe to updates.',
+  },
+  yourStatusHeader: {
+    id: 'Create.yourStatusHeader',
+    defaultMessage: 'Your status',
+    description: ('A heading for a form section for information about the '
+        + 'user\'s status in the aftermath of a disaster.'),
   },
 });
 
@@ -628,85 +640,95 @@ class Create extends Component {
   }
 
   renderStatusFields() {
+    const headerMessage = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        MESSAGES.yourStatusHeader :
+        MESSAGES.statusOfThisPersonHeader;
+    const statusField = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        <input type='hidden' name='status' value='is_note_author' /> :
+        (
+            <Select
+                label={this.props.intl.formatMessage(
+                    MESSAGES.statusOfThisPersonField)}
+                name='status'
+                id='forminput-formPersonStatus'
+                onChange={(e) => this.setState(
+                    {formPersonStatus: e.target.value})}
+                value={this.state.formPersonStatus}
+                outlined
+            >
+              <option value='unspecified'>
+                {this.props.intl.formatMessage(
+                    MESSAGES.statusOfPersonUnspecified)}
+              </option>
+              <option value='information_sought'>
+                {this.props.intl.formatMessage(
+                    MESSAGES.statusOfPersonSeekingInfo)}
+              </option>
+              <option value='is_note_author'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonAmPerson)}
+              </option>
+              <option value='believed_alive'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsAlive)}
+              </option>
+              <option value='believed_missing'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsMissing)}
+              </option>
+            </Select>
+        );
+    const messageExplanationTextMessage = (
+        this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        MESSAGES.selfMessageExplanationText :
+        MESSAGES.otherPersonMessageExplanationText);
+    const talkedToField = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        null :
+        (
+            <div>
+              <p className='mdc-typography--body1'>
+                <FormattedMessage {...MESSAGES.statusPersonallyTalkedTo} />
+              </p>
+              <div>
+                <Radio
+                  label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
+                  key='yes'
+                >
+                  <NativeRadioControl
+                    name='author_made_contact'
+                    id='forminput-authormadecontact-yes'
+                    value='yes'
+                    onChange={(e) => this.setState(
+                        {statusMadeContact: e.target.value})} />
+                </Radio>
+              </div>
+              <div>
+                <Radio
+                  label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
+                  key='no'
+                >
+                  <NativeRadioControl
+                    name='author_made_contact'
+                    id='forminput-authormadecontact-no'
+                    value='no'
+                    onChange={(e) => this.setState(
+                        {statusMadeContact: e.target.value})} />
+                </Radio>
+              </div>
+            </div>
+        );
     return (
       <div className='create-formsectionwrapper'>
         <div className='create-formgroupwrapper'>
           <span className='mdc-typography--overline'>
-            <FormattedMessage {...MESSAGES.statusOfThisPersonHeader} />
+            <FormattedMessage {...headerMessage} />
           </span>
-          <Select
-              label={this.props.intl.formatMessage(
-                  MESSAGES.statusOfThisPersonField)}
-              id='forminput-formPersonStatus'
-              onChange={(e) => this.setState(
-                  {formPersonStatus: e.target.value})}
-              value={this.state.formPersonStatus}
-              outlined
-          >
-            <option value='unspecified'>
-              {this.props.intl.formatMessage(
-                  MESSAGES.statusOfPersonUnspecified)}
-            </option>
-            <option value='information_sought'>
-              {this.props.intl.formatMessage(
-                  MESSAGES.statusOfPersonSeekingInfo)}
-            </option>
-            <option value='is_note_author'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonAmPerson)}
-            </option>
-            <option value='believed_alive'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsAlive)}
-            </option>
-            <option value='believed_missing'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsMissing)}
-            </option>
-          </Select>
+          {statusField}
           {this.renderTextAreaAndInput(
               'formStatusMessage', 'message', MESSAGES.message)}
           <p className='mdc-typography--body1 form-explanationtext'>
-            <FormattedMessage {...MESSAGES.messageExplanationText} />
+            <FormattedMessage {...messageExplanationTextMessage} />
           </p>
-          <p className='mdc-typography--body1'>
-            <FormattedMessage {...MESSAGES.statusPersonallyTalkedTo} />
-          </p>
-          <div>
-            <Radio
-              label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
-              key='yes'
-            >
-              <NativeRadioControl
-                name='author_made_contact'
-                id='forminput-authormadecontact-yes'
-                value='yes'
-                onChange={(e) => this.setState(
-                    {statusMadeContact: e.target.value})} />
-            </Radio>
-          </div>
-          <div>
-            <Radio
-              label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
-              key='no'
-            >
-              <NativeRadioControl
-                name='author_made_contact'
-                id='forminput-authormadecontact-no'
-                value='no'
-                onChange={(e) => this.setState(
-                    {statusMadeContact: e.target.value})} />
-            </Radio>
-          </div>
+          {talkedToField}
         </div>
         { this.renderLastKnownLocationField() }
-      </div>
-    );
-  }
-
-  renderAboutMeForm() {
-    return (
-      <div className='create-formwrapper'>
-        <input type='hidden' name='own_info' value='yes' />
-        {this.renderIdentifyingInfoFields()}
-        {this.renderStatusFields()}
       </div>
     );
   }
@@ -742,16 +764,17 @@ class Create extends Component {
     if (!this.state.isLoaded) {
       return <LoadingIndicator />;
     }
-    let formContent = null;
-    switch (this.state.activeTabIndex) {
-      case TAB_INDICES.ABOUT_ME:
-        formContent = this.renderAboutMeForm();
-        break;
-      case TAB_INDICES.ABOUT_SOMEONE_ELSE:
-        // TODO(nworden): support the form for someone else
-        formContent = <div>form for someone else here</div>;
-        break;
-    }
+    const formContent = (
+      <div className='create-formwrapper'>
+        <input
+            type='hidden'
+            name='own_info'
+            value={this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+                'yes' : 'no'} />
+        {this.renderIdentifyingInfoFields()}
+        {this.renderStatusFields()}
+      </div>
+    );
     return (
       <div className='pf-linearwrap'>
         {/* TODO(nworden): consider having this go back to search results when
