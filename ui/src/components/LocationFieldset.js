@@ -113,15 +113,22 @@ class LocationFieldset extends Component {
     let showHideMapButton = null;
     if (this.mapsApiEnabled) {
       const newMapState = !this.state.showMap;
+      const showHideMapButtonLabel =
+          newMapState ?
+          this.props.intl.formatMessage(MESSAGES.showMap) :
+          this.props.intl.formatMessage(MESSAGES.hideMap);
       showHideMapButton = (
-          <Button
-              className='pf-button-primary'
-              type='button'
-              onClick={() => this.setState({showMap: newMapState})}>
-              {newMapState ?
-                  this.props.intl.formatMessage(MESSAGES.showMap) :
-                  this.props.intl.formatMessage(MESSAGES.hideMap)}
-          </Button>);
+          <Chip
+              className='locationfieldset-showmap'
+              label={
+                <div className='locationfieldset-showmap-label'>
+                  <img src='/static/icons/maticon_map.svg' />
+                  &nbsp;
+                  {showHideMapButtonLabel}
+                </div>
+              }
+              handleInteraction={() => this.setState({showMap: newMapState})} />
+      );
     }
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
         ? <MapDisplay
@@ -152,7 +159,7 @@ class LocationFieldset extends Component {
             className='locationfieldset-uselocation'
             label={
               <div className='locationfieldset-uselocation-label'>
-                <img src='/static/icons/maticon_map.svg' />
+                <img src='/static/icons/maticon_my_location.svg' />
                 &nbsp;
                 <FormattedMessage {...MESSAGES.useLocation} />
               </div>
