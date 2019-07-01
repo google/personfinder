@@ -47,7 +47,8 @@ describe('testing Captcha', () => {
     const wrapper = mountWithIntl(<Captcha callback={mockCallback} />);
     wrapper.update();
     // Check that the external script loader was called, then call the callback
-    // passed to it.
+    // passed to it (pulled from the list of arguments mockLoadExternalScript
+    // was called with).
     expect(mockLoadExternalScript).toHaveBeenCalledWith(
         'https://www.google.com/recaptcha/api.js?render=explicit',
         expect.anything());
