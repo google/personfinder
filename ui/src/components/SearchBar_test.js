@@ -48,3 +48,14 @@ test('search handler should be called on "Enter" keydown', () => {
   expect(mockSearchCallback).toHaveBeenCalledWith('gilbert');
   wrapper.unmount();
 });
+
+test('value should update if props change', () => {
+  const wrapper = mountWithIntl(
+    <SearchBar initialValue='tom' />
+  );
+  expect(wrapper.find('SearchBar').state().value).toBe('tom');
+  wrapper.setProps({initialValue: 'matt'});
+  wrapper.update();
+  expect(wrapper.find('SearchBar').state().value).toBe('matt');
+  wrapper.unmount();
+});

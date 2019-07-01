@@ -35,6 +35,12 @@ class SearchBar extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.initialValue != this.props.initialValue) {
+      this.setState({value: this.props.initialValue});
+    }
+  }
+
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
