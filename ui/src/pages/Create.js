@@ -57,13 +57,21 @@ const MESSAGES = defineMessages({
     defaultMessage: 'City',
     description: 'A label for a form field for a person\'s city.',
   },
+  copiedRecord: {
+    id: 'Create.copiedRecord',
+    defaultMessage: 'This record is copied from another source',
+    description: ('An option on a form to indicate the user is copying data '
+        + 'over from another source.'),
+  },
   country: {
     id: 'Create.country',
     defaultMessage: 'Country',
     description: 'A label for a form field for a person\'s country.',
   },
-  delete: {
-    id: 'Create.delete',
+  // This is called deleteMsg, rather than just "delete", because "delete" is a
+  // keyword in JavaScript.
+  deleteMsg: {
+    id: 'Create.deleteMsg',
     defaultMessage: 'Delete',
     description: 'A label for a delete button.',
   },
@@ -104,6 +112,13 @@ const MESSAGES = defineMessages({
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
     description: ('A label on a button to show additional fields that are '
         + 'hidden by default.'),
+  },
+  newRecord: {
+    id: 'Create.newRecord',
+    defaultMessage: 'This is a new record',
+    description: ('An option on a form to indicate that the user is creating a '
+        + 'brand new record, as opposed to copying over data from another '
+        + 'source.'),
   },
   noFileChosen: {
     id: 'Create.noFileChosen',
@@ -171,6 +186,12 @@ const MESSAGES = defineMessages({
     description: ('A label for a tab for users to submit information about '
         + 'someone other than themselves.'),
   },
+  sourceOfRecordHeader: {
+    id: 'Create.sourceOfRecordHeader',
+    defaultMessage: 'Source of record',
+    description: ('A header for a section of a form for information about the '
+        + 'source of the rest of the form\'s information.'),
+  },
   statusOfThisPersonHeader: {
     id: 'Create.statusOfThisPersonHeader',
     defaultMessage: 'Status of this person',
@@ -229,6 +250,22 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Subscribe to updates',
     description: 'A label on a checkbox to subscribe to updates.',
   },
+  yourEmail: {
+    id: 'Create.yourEmail',
+    defaultMessage: 'Your email',
+    description: 'A label for a form field for the user\'s email address.',
+  },
+  yourNameRequired: {
+    id: 'Create.yourNameRequired',
+    defaultMessage: 'Your name (required)',
+    description: ('A label for a form field for the user\'s name. It can be a '
+        + 'full or a partial name.'),
+  },
+  yourPhoneNumber: {
+    id: 'Create.yourPhoneNumber',
+    defaultMessage: 'Your phone number',
+    description: 'A label for a form field for the user\'s phone number.',
+  },
   yourStatusHeader: {
     id: 'Create.yourStatusHeader',
     defaultMessage: 'Your status',
@@ -270,6 +307,9 @@ class Create extends Component {
       // options menu to; it's used by the Material MenuSurface component.
       profilePageOptionsAnchor: null,
       showMap: false,
+      // By default, we hide a couple of the record source fields in a zippy. If
+      // this is true, we show them.
+      showAllSourceFields: false,
       // These fields are for the values of the form fields.
       formSurname: '',
       formGivenName: '',
@@ -349,10 +389,10 @@ class Create extends Component {
             <img
                 className='create-photodeletebutton'
                 src='/static/icons/maticon_clear.svg'
-                alt={this.props.intl.formatMessage(MESSAGES.delete)}
+                alt={this.props.intl.formatMessage(MESSAGES.deleteMsg)}
                 tabIndex='0'
                 role='button'
-                aria-label={this.props.intl.formatMessage(MESSAGES.delete)}
+                aria-label={this.props.intl.formatMessage(MESSAGES.deleteMsg)}
                 onClick={(e) => this.clearPhotoUpload()}
                 onKeyDown={(e) => {
                   return e.keyCode != 13 || this.clearPhotoUpload();
@@ -616,7 +656,7 @@ class Create extends Component {
 
   renderLastKnownLocationField() {
     return (
-      <div className="create-formgroupwrapper">
+      <div className='create-formgroupwrapper'>
         <LocationFieldset
             mapDefaultCenter={this.state.repo.mapDefaultCenter}
             mapDefaultZoom={this.state.repo.mapDefaultZoom}
@@ -733,6 +773,69 @@ class Create extends Component {
     );
   }
 
+  renderSourceFields() {
+    if (this.state.activeTabIndex == TAB_INDICES.ABOUT_ME) {
+      return null;
+    }
+    const moreSection = this.state.showAllSourceFields ?
+        (
+            <div className='create-formgroupwrapper'>
+              {this.renderTextFieldAndInput(
+                  'formAuthorEmail', 'author_email', MESSAGES.yourEmail)}
+              {this.renderTextFieldAndInput(
+                  'formAuthorPhone', 'author_phone', MESSAGES.yourPhoneNumber)}
+            </div>
+        ) :
+        (
+            <div className='create-formgroupwrapper create-morebutton'>
+              <span
+                className='mdc-typography--body1'
+                onClick={(e) => this.setState({showAllSourceFields: true})}
+              >
+                <FormattedHTMLMessage {...MESSAGES.moreDropdown} />
+              </span>
+            </div>
+        );
+    return (
+        <div className='create-formsectionwrapper create-sourcesection'>
+          <div className='create-formgroupwrapper'>
+            <span className='mdc-typography--overline'>
+              <FormattedMessage {...MESSAGES.sourceOfRecordHeader} />
+            </span>
+            <div>
+              <Radio
+                label={this.props.intl.formatMessage(MESSAGES.newRecord)}
+                key='yes'
+              >
+                <NativeRadioControl
+                  name='clone'
+                  id='forminput-clone-yes'
+                  value='yes'
+                  onChange={(e) => this.setState(
+                      {formClone: e.target.value})} />
+              </Radio>
+            </div>
+            <div>
+              <Radio
+                label={this.props.intl.formatMessage(MESSAGES.copiedRecord)}
+                key='no'
+              >
+                <NativeRadioControl
+                  name='clone'
+                  id='forminput-clone-no'
+                  value='no'
+                  onChange={(e) => this.setState(
+                      {formClone: e.target.value})} />
+              </Radio>
+            </div>
+            {this.renderTextFieldAndInput(
+                'formAuthorName', 'author_name', MESSAGES.yourNameRequired)}
+          </div>
+          {moreSection}
+        </div>
+    );
+  }
+
   handleSubmit(e) {
     // TODO(nworden): show the loading indicator as soon as the search starts
     e.preventDefault();
@@ -773,6 +876,7 @@ class Create extends Component {
                 'yes' : 'no'} />
         {this.renderIdentifyingInfoFields()}
         {this.renderStatusFields()}
+        {this.renderSourceFields()}
       </div>
     );
     return (
