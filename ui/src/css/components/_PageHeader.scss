@@ -16,6 +16,7 @@
 
 #pageheader {
   border-bottom: 1px solid #dadce0;
+  height: 64px;
   overflow: auto;
 }
 
@@ -28,16 +29,16 @@
   float: left;
 }
 
-#pageheader p {
-  margin: 0;
-}
-
 #pageheader p.mdc-typography--subtitle1 {
   color: #212121;
-  margin: 3px 0 8px;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 14px 0 8px;
 }
 
 #pageheader p.mdc-typography--subtitle2 {
   color: #757575;
-  margin: 0 0 3px;
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0;
 }
