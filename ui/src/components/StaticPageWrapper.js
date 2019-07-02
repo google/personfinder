@@ -31,7 +31,7 @@ const StaticPageWrapper = (props) => (
     <div className='staticpagewrapper-content'>
       {props.children}
     </div>
-    <Footer />
+    <Footer wrapped />
   </div>
 );
 
