@@ -219,133 +219,137 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             onSearch={[Function]}
             repoId="albany"
           >
-            <TextField
-              className="searchbar"
-              dense={false}
-              floatingLabelClassName=""
-              fullWidth={false}
-              label="Search for a person"
-              lineRippleClassName=""
-              notchedOutlineClassName=""
-              outlined={true}
-              textarea={false}
+            <div
+              className="searchbar-wrapper"
             >
-              <div
-                className="mdc-text-field searchbar mdc-text-field--outlined"
-                key="text-field-container"
-                onClick={[Function]}
-                onKeyDown={[Function]}
+              <TextField
+                className="searchbar"
+                dense={false}
+                floatingLabelClassName=""
+                fullWidth={false}
+                label="Search for a person"
+                lineRippleClassName=""
+                notchedOutlineClassName=""
+                outlined={true}
+                textarea={false}
               >
-                <Input
-                  className=""
-                  disabled={false}
-                  foundation={
-                    MDCTextFieldFoundation {
-                      "adapter_": Object {
-                        "activateLineRipple": [Function],
-                        "addClass": [Function],
-                        "closeOutline": [Function],
-                        "deactivateLineRipple": [Function],
-                        "deregisterInputInteractionHandler": [Function],
-                        "deregisterTextFieldInteractionHandler": [Function],
-                        "deregisterValidationAttributeChangeHandler": [Function],
-                        "floatLabel": [Function],
-                        "getLabelWidth": [Function],
-                        "getNativeInput": [Function],
-                        "hasClass": [Function],
-                        "hasLabel": [Function],
-                        "hasOutline": [Function],
-                        "isFocused": [Function],
-                        "notchOutline": [Function],
-                        "registerInputInteractionHandler": [Function],
-                        "registerTextFieldInteractionHandler": [Function],
-                        "registerValidationAttributeChangeHandler": [Function],
-                        "removeClass": [Function],
-                        "setLineRippleTransformOrigin": [Function],
-                        "shakeLabel": [Function],
-                      },
-                      "characterCounter_": undefined,
-                      "helperText_": undefined,
-                      "inputBlurHandler_": [Function],
-                      "inputFocusHandler_": [Function],
-                      "inputInputHandler_": [Function],
-                      "isFocused_": false,
-                      "isValid_": true,
-                      "leadingIcon_": undefined,
-                      "receivedUserInput_": false,
-                      "setPointerXOffset_": [Function],
-                      "textFieldInteractionHandler_": [Function],
-                      "trailingIcon_": undefined,
-                      "useNativeValidation_": true,
-                      "validationAttributeChangeHandler_": [Function],
-                      "validationObserver_": undefined,
-                    }
-                  }
-                  handleFocusChange={[Function]}
-                  handleValueChange={[Function]}
-                  id=""
-                  inputType="input"
-                  onChange={[Function]}
+                <div
+                  className="mdc-text-field searchbar mdc-text-field--outlined"
+                  key="text-field-container"
+                  onClick={[Function]}
                   onKeyDown={[Function]}
-                  setDisabled={[Function]}
-                  setInputId={[Function]}
-                  syncInput={[Function]}
-                  value=""
                 >
-                  <input
-                    className="mdc-text-field__input"
+                  <Input
+                    className=""
                     disabled={false}
+                    foundation={
+                      MDCTextFieldFoundation {
+                        "adapter_": Object {
+                          "activateLineRipple": [Function],
+                          "addClass": [Function],
+                          "closeOutline": [Function],
+                          "deactivateLineRipple": [Function],
+                          "deregisterInputInteractionHandler": [Function],
+                          "deregisterTextFieldInteractionHandler": [Function],
+                          "deregisterValidationAttributeChangeHandler": [Function],
+                          "floatLabel": [Function],
+                          "getLabelWidth": [Function],
+                          "getNativeInput": [Function],
+                          "hasClass": [Function],
+                          "hasLabel": [Function],
+                          "hasOutline": [Function],
+                          "isFocused": [Function],
+                          "notchOutline": [Function],
+                          "registerInputInteractionHandler": [Function],
+                          "registerTextFieldInteractionHandler": [Function],
+                          "registerValidationAttributeChangeHandler": [Function],
+                          "removeClass": [Function],
+                          "setLineRippleTransformOrigin": [Function],
+                          "shakeLabel": [Function],
+                        },
+                        "characterCounter_": undefined,
+                        "helperText_": undefined,
+                        "inputBlurHandler_": [Function],
+                        "inputFocusHandler_": [Function],
+                        "inputInputHandler_": [Function],
+                        "isFocused_": false,
+                        "isValid_": true,
+                        "leadingIcon_": undefined,
+                        "receivedUserInput_": false,
+                        "setPointerXOffset_": [Function],
+                        "textFieldInteractionHandler_": [Function],
+                        "trailingIcon_": undefined,
+                        "useNativeValidation_": true,
+                        "validationAttributeChangeHandler_": [Function],
+                        "validationObserver_": undefined,
+                      }
+                    }
+                    handleFocusChange={[Function]}
+                    handleValueChange={[Function]}
                     id=""
-                    onBlur={[Function]}
+                    inputType="input"
                     onChange={[Function]}
-                    onFocus={[Function]}
                     onKeyDown={[Function]}
-                    onMouseDown={[Function]}
-                    onTouchStart={[Function]}
+                    setDisabled={[Function]}
+                    setInputId={[Function]}
+                    syncInput={[Function]}
                     value=""
-                  />
-                </Input>
-                <NotchedOutline
-                  className=""
-                  notch={false}
-                  notchWidth={0}
-                >
-                  <div
-                    className="mdc-notched-outline mdc-notched-outline--upgraded"
+                  >
+                    <input
+                      className="mdc-text-field__input"
+                      disabled={false}
+                      id=""
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onMouseDown={[Function]}
+                      onTouchStart={[Function]}
+                      value=""
+                    />
+                  </Input>
+                  <NotchedOutline
+                    className=""
+                    notch={false}
+                    notchWidth={0}
                   >
                     <div
-                      className="mdc-notched-outline__leading"
-                    />
-                    <div
-                      className="mdc-notched-outline__notch"
-                      style={
-                        Object {
-                          "width": undefined,
-                        }
-                      }
+                      className="mdc-notched-outline mdc-notched-outline--upgraded"
                     >
-                      <FloatingLabel
-                        className=""
-                        float={false}
-                        handleWidthChange={[Function]}
-                        htmlFor=""
+                      <div
+                        className="mdc-notched-outline__leading"
+                      />
+                      <div
+                        className="mdc-notched-outline__notch"
+                        style={
+                          Object {
+                            "width": undefined,
+                          }
+                        }
                       >
-                        <label
-                          className="mdc-floating-label"
+                        <FloatingLabel
+                          className=""
+                          float={false}
+                          handleWidthChange={[Function]}
                           htmlFor=""
-                          onAnimationEnd={[Function]}
                         >
-                          Search for a person
-                        </label>
-                      </FloatingLabel>
+                          <label
+                            className="mdc-floating-label"
+                            htmlFor=""
+                            onAnimationEnd={[Function]}
+                          >
+                            Search for a person
+                          </label>
+                        </FloatingLabel>
+                      </div>
+                      <div
+                        className="mdc-notched-outline__trailing"
+                      />
                     </div>
-                    <div
-                      className="mdc-notched-outline__trailing"
-                    />
-                  </div>
-                </NotchedOutline>
-              </div>
-            </TextField>
+                  </NotchedOutline>
+                </div>
+              </TextField>
+            </div>
           </SearchBar>
         </InjectIntl(SearchBar)>
         <p
@@ -471,7 +475,9 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
             </a>
           </Link>
         </p>
-        <InjectIntl(Footer)>
+        <InjectIntl(Footer)
+          wrapped={true}
+        >
           <Footer
             intl={
               Object {
@@ -500,9 +506,10 @@ exports[`testing RepoHome snapshot test for RepoHome 1`] = `
                 "timeZone": null,
               }
             }
+            wrapped={true}
           >
             <div
-              className="footer"
+              className="footer footer-wrapped"
             >
               <p
                 className="mdc-typography--body1"
