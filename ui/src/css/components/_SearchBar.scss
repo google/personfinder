@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
+.searchbar-wrapper {
+  padding: 0 40px;
+}
+
 .searchbar {
   background-image: url('/static/icons/maticon_search.svg');
   background-repeat: no-repeat;
   background-position: 16px center;
+  width: 100%;
 }
 
 .searchbar .mdc-text-field__input {
