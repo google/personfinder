@@ -149,7 +149,7 @@ class RepoHome extends Component {
               <FormattedMessage {...MESSAGES.howToUsePf} />
             </Link>
           </p>
-          <Footer />
+          <Footer wrapped />
         </div>
       </div>);
   }

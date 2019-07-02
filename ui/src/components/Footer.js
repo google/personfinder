@@ -30,12 +30,21 @@ const MESSAGES = defineMessages({
   },
 });
 
-const Footer = () => (
-  <div className="footer">
-    <p className="mdc-typography--body1">
-      <FormattedHTMLMessage {...MESSAGES.disclaimerTextHTML} />
-    </p>
-  </div>
-);
+class Footer extends Component {
+  render() {
+    // Generally, the footer is separate from everything else. Sometimes though,
+    // it's within a box; the box has some padding of its own, so the footer
+    // should have less padding in those cases.
+    const classNames = this.props.wrapped ?
+        'footer footer-wrapped' : 'footer footer-unwrapped';
+    return (
+      <div className={classNames}>
+        <p className='mdc-typography--body1'>
+          <FormattedHTMLMessage {...MESSAGES.disclaimerTextHTML} />
+        </p>
+      </div>
+    );
+  }
+}
 
 export default injectIntl(Footer);
