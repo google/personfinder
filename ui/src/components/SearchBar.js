@@ -50,16 +50,18 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <TextField
-        label={this.props.intl.formatMessage(MESSAGES.searchForAPerson)}
-        outlined
-        className='searchbar'
-      >
-        <Input
-          value={this.state.value}
-          onKeyDown={this.handleKeyDown}
-          onChange={(e) => this.setState({value: e.target.value})} />
-      </TextField>
+        <div className='searchbar-wrapper'>
+          <TextField
+            label={this.props.intl.formatMessage(MESSAGES.searchForAPerson)}
+            outlined
+            className='searchbar'
+          >
+            <Input
+              value={this.state.value}
+              onKeyDown={this.handleKeyDown}
+              onChange={(e) => this.setState({value: e.target.value})} />
+          </TextField>
+        </div>
     );
   }
 }

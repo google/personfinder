@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-.footer {
+.footer-wrapped {
   margin: 0 16px;
+}
+
+.footer-unwrapped {
+  margin: 0 32px;
 }
 
 .footer p {
   color: #757575;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
 }
