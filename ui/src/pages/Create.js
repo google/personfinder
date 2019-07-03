@@ -136,7 +136,11 @@ const MESSAGES = defineMessages({
     id: 'Create.otherPersonMessageExplanationText',
     defaultMessage: ('Write a message for this person, or for others seeking '
         + 'this person.'),
-    description: 'Hint text for a form field for a message for/about a person.',
+    description: ('Hint text for a form field for a message for/about a '
+        + 'person. The form is used to provide or seek information about a '
+        + 'person in the aftermath of a disaster, and this field is a '
+        + 'free-text field that can be used to provide additional information '
+        + 'about someone or to ask for information about the person.'),
   },
   photo: {
     id: 'Create.photo',
