@@ -56,13 +56,21 @@ const MESSAGES = defineMessages({
     defaultMessage: 'City',
     description: 'A label for a form field for a person\'s city.',
   },
+  copiedRecord: {
+    id: 'Create.copiedRecord',
+    defaultMessage: 'This record is copied from another source',
+    description: ('An option on a form to indicate the user is copying data '
+        + 'over from another source.'),
+  },
   country: {
     id: 'Create.country',
     defaultMessage: 'Country',
     description: 'A label for a form field for a person\'s country.',
   },
-  delete: {
-    id: 'Create.delete',
+  // This is called deleteMsg, rather than just "delete", because "delete" is a
+  // keyword in JavaScript.
+  deleteMsg: {
+    id: 'Create.deleteMsg',
     defaultMessage: 'Delete',
     description: 'A label for a delete button.',
   },
@@ -98,17 +106,18 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Message',
     description: 'A message for a person, or about the person.',
   },
-  messageExplanationText: {
-    id: 'Create.messageExplanationText',
-    defaultMessage: ('Write a message for this person, or for others seeking '
-        + 'this person.'),
-    description: 'Hint text for a form field for a message for/about a person.',
-  },
   moreDropdown: {
     id: 'Create.moreDropdown',
     defaultMessage: 'More&nbsp;&nbsp;&#9207;',
     description: ('A label on a button to show additional fields that are '
         + 'hidden by default.'),
+  },
+  newRecord: {
+    id: 'Create.newRecord',
+    defaultMessage: 'This is a new record',
+    description: ('An option on a form to indicate that the user is creating a '
+        + 'brand new record, as opposed to copying over data from another '
+        + 'source.'),
   },
   noFileChosen: {
     id: 'Create.noFileChosen',
@@ -121,6 +130,16 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Or enter photo URL',
     description: ('A label for a form field where users can submit a photo URL '
         + '(as opposed to uploading a photo directly)'),
+  },
+  otherPersonMessageExplanationText: {
+    id: 'Create.otherPersonMessageExplanationText',
+    defaultMessage: ('Write a message for this person, or for others seeking '
+        + 'this person.'),
+    description: ('Hint text for a form field for a message for/about a '
+        + 'person. The form is used to provide or seek information about a '
+        + 'person in the aftermath of a disaster, and this field is a '
+        + 'free-text field that can be used to provide additional information '
+        + 'about someone or to ask for information about the person.'),
   },
   photo: {
     id: 'Create.photo',
@@ -137,6 +156,12 @@ const MESSAGES = defineMessages({
     id: 'Create.provinceOrState',
     defaultMessage: 'Province or state',
     description: 'A label for a form field for a person\'s province or state.',
+  },
+  selfMessageExplanationText: {
+    id: 'Create.selfMessageExplanationText',
+    defaultMessage: 'Write a message to the people looking for you',
+    description: ('Hint text for a form field for a message the user can leave '
+        + 'people looking for them in the aftermath of a disaster.'),
   },
   sex: {
     id: 'Create.sex',
@@ -164,11 +189,17 @@ const MESSAGES = defineMessages({
     description: ('A label for a tab for users to submit information about '
         + 'someone other than themselves.'),
   },
+  sourceOfRecordHeader: {
+    id: 'Create.sourceOfRecordHeader',
+    defaultMessage: 'Source of record',
+    description: ('A header for a section of a form for information about the '
+        + 'source of the rest of the form\'s information.'),
+  },
   statusOfThisPersonHeader: {
     id: 'Create.statusOfThisPersonHeader',
     defaultMessage: 'Status of this person',
     description: ('A heading for a form section for information about a '
-        + 'person\'s status.'),
+        + 'person\'s status in the aftermath of a disaster.'),
   },
   statusOfThisPersonField: {
     id: 'Create.statusOfThisPersonField',
@@ -222,6 +253,28 @@ const MESSAGES = defineMessages({
     defaultMessage: 'Subscribe to updates',
     description: 'A label on a checkbox to subscribe to updates.',
   },
+  yourEmail: {
+    id: 'Create.yourEmail',
+    defaultMessage: 'Your email',
+    description: 'A label for a form field for the user\'s email address.',
+  },
+  yourNameRequired: {
+    id: 'Create.yourNameRequired',
+    defaultMessage: 'Your name (required)',
+    description: ('A label for a form field for the user\'s name. It can be a '
+        + 'full or a partial name.'),
+  },
+  yourPhoneNumber: {
+    id: 'Create.yourPhoneNumber',
+    defaultMessage: 'Your phone number',
+    description: 'A label for a form field for the user\'s phone number.',
+  },
+  yourStatusHeader: {
+    id: 'Create.yourStatusHeader',
+    defaultMessage: 'Your status',
+    description: ('A heading for a form section for information about the '
+        + 'user\'s status in the aftermath of a disaster.'),
+  },
 });
 
 /*
@@ -257,6 +310,9 @@ class Create extends Component {
       // options menu to; it's used by the Material MenuSurface component.
       profilePageOptionsAnchor: null,
       showMap: false,
+      // By default, we hide a couple of the record source fields in a zippy. If
+      // this is true, we show them.
+      showAllSourceFields: false,
       // These fields are for the values of the form fields.
       formSurname: '',
       formGivenName: '',
@@ -336,10 +392,10 @@ class Create extends Component {
             <img
                 className='create-photodeletebutton'
                 src='/static/icons/maticon_clear.svg'
-                alt={this.props.intl.formatMessage(MESSAGES.delete)}
+                alt={this.props.intl.formatMessage(MESSAGES.deleteMsg)}
                 tabIndex='0'
                 role='button'
-                aria-label={this.props.intl.formatMessage(MESSAGES.delete)}
+                aria-label={this.props.intl.formatMessage(MESSAGES.deleteMsg)}
                 onClick={(e) => this.clearPhotoUpload()}
                 onKeyDown={(e) => {
                   return e.keyCode != 13 || this.clearPhotoUpload();
@@ -603,7 +659,7 @@ class Create extends Component {
 
   renderLastKnownLocationField() {
     return (
-      <div className="create-formgroupwrapper">
+      <div className='create-formgroupwrapper'>
         <LocationFieldset
             mapDefaultCenter={this.state.repo.mapDefaultCenter}
             mapDefaultZoom={this.state.repo.mapDefaultZoom}
@@ -627,86 +683,159 @@ class Create extends Component {
   }
 
   renderStatusFields() {
+    const headerMessage = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        MESSAGES.yourStatusHeader :
+        MESSAGES.statusOfThisPersonHeader;
+    const statusField = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        <input type='hidden' name='status' value='is_note_author' /> :
+        (
+            <Select
+                label={this.props.intl.formatMessage(
+                    MESSAGES.statusOfThisPersonField)}
+                name='status'
+                id='forminput-formPersonStatus'
+                onChange={(e) => this.setState(
+                    {formPersonStatus: e.target.value})}
+                value={this.state.formPersonStatus}
+                outlined
+            >
+              <option value='unspecified'>
+                {this.props.intl.formatMessage(
+                    MESSAGES.statusOfPersonUnspecified)}
+              </option>
+              <option value='information_sought'>
+                {this.props.intl.formatMessage(
+                    MESSAGES.statusOfPersonSeekingInfo)}
+              </option>
+              <option value='is_note_author'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonAmPerson)}
+              </option>
+              <option value='believed_alive'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsAlive)}
+              </option>
+              <option value='believed_missing'>
+                {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsMissing)}
+              </option>
+            </Select>
+        );
+    const messageExplanationTextMessage = (
+        this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        MESSAGES.selfMessageExplanationText :
+        MESSAGES.otherPersonMessageExplanationText);
+    const talkedToField = this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+        null :
+        (
+            <div>
+              <p className='mdc-typography--body1'>
+                <FormattedMessage {...MESSAGES.statusPersonallyTalkedTo} />
+              </p>
+              <div>
+                <Radio
+                  label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
+                  key='yes'
+                >
+                  <NativeRadioControl
+                    name='author_made_contact'
+                    id='forminput-authormadecontact-yes'
+                    value='yes'
+                    onChange={(e) => this.setState(
+                        {statusMadeContact: e.target.value})} />
+                </Radio>
+              </div>
+              <div>
+                <Radio
+                  label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
+                  key='no'
+                >
+                  <NativeRadioControl
+                    name='author_made_contact'
+                    id='forminput-authormadecontact-no'
+                    value='no'
+                    onChange={(e) => this.setState(
+                        {statusMadeContact: e.target.value})} />
+                </Radio>
+              </div>
+            </div>
+        );
     return (
       <div className='create-formsectionwrapper'>
         <div className='create-formgroupwrapper'>
           <span className='mdc-typography--overline'>
-            <FormattedMessage {...MESSAGES.statusOfThisPersonHeader} />
+            <FormattedMessage {...headerMessage} />
           </span>
-          <Select
-              label={this.props.intl.formatMessage(
-                  MESSAGES.statusOfThisPersonField)}
-              id='forminput-formPersonStatus'
-              onChange={(e) => this.setState(
-                  {formPersonStatus: e.target.value})}
-              value={this.state.formPersonStatus}
-              outlined
-          >
-            <option value='unspecified'>
-              {this.props.intl.formatMessage(
-                  MESSAGES.statusOfPersonUnspecified)}
-            </option>
-            <option value='information_sought'>
-              {this.props.intl.formatMessage(
-                  MESSAGES.statusOfPersonSeekingInfo)}
-            </option>
-            <option value='is_note_author'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonAmPerson)}
-            </option>
-            <option value='believed_alive'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsAlive)}
-            </option>
-            <option value='believed_missing'>
-              {this.props.intl.formatMessage(MESSAGES.statusOfPersonIsMissing)}
-            </option>
-          </Select>
+          {statusField}
           {this.renderTextAreaAndInput(
               'formStatusMessage', 'message', MESSAGES.message)}
           <p className='mdc-typography--body1 form-explanationtext'>
-            <FormattedMessage {...MESSAGES.messageExplanationText} />
+            <FormattedMessage {...messageExplanationTextMessage} />
           </p>
-          <p className='mdc-typography--body1'>
-            <FormattedMessage {...MESSAGES.statusPersonallyTalkedTo} />
-          </p>
-          <div>
-            <Radio
-              label={this.props.intl.formatMessage(COMMON_MESSAGES.yes)}
-              key='yes'
-            >
-              <NativeRadioControl
-                name='author_made_contact'
-                id='forminput-authormadecontact-yes'
-                value='yes'
-                onChange={(e) => this.setState(
-                    {statusMadeContact: e.target.value})} />
-            </Radio>
-          </div>
-          <div>
-            <Radio
-              label={this.props.intl.formatMessage(COMMON_MESSAGES.no)}
-              key='no'
-            >
-              <NativeRadioControl
-                name='author_made_contact'
-                id='forminput-authormadecontact-no'
-                value='no'
-                onChange={(e) => this.setState(
-                    {statusMadeContact: e.target.value})} />
-            </Radio>
-          </div>
+          {talkedToField}
         </div>
         { this.renderLastKnownLocationField() }
       </div>
     );
   }
 
-  renderAboutMeForm() {
+  renderSourceFields() {
+    if (this.state.activeTabIndex == TAB_INDICES.ABOUT_ME) {
+      return null;
+    }
+    const moreSection = this.state.showAllSourceFields ?
+        (
+            <div className='create-formgroupwrapper'>
+              {this.renderTextFieldAndInput(
+                  'formAuthorEmail', 'author_email', MESSAGES.yourEmail)}
+              {this.renderTextFieldAndInput(
+                  'formAuthorPhone', 'author_phone', MESSAGES.yourPhoneNumber)}
+            </div>
+        ) :
+        (
+            <div className='create-formgroupwrapper create-morebutton'>
+              <span
+                className='mdc-typography--body1'
+                onClick={(e) => this.setState({showAllSourceFields: true})}
+              >
+                <FormattedHTMLMessage {...MESSAGES.moreDropdown} />
+              </span>
+            </div>
+        );
     return (
-      <div className='create-formwrapper'>
-        <input type='hidden' name='own_info' value='yes' />
-        {this.renderIdentifyingInfoFields()}
-        {this.renderStatusFields()}
-      </div>
+        <div className='create-formsectionwrapper create-sourcesection'>
+          <div className='create-formgroupwrapper'>
+            <span className='mdc-typography--overline'>
+              <FormattedMessage {...MESSAGES.sourceOfRecordHeader} />
+            </span>
+            <div>
+              <Radio
+                label={this.props.intl.formatMessage(MESSAGES.newRecord)}
+                key='yes'
+              >
+                <NativeRadioControl
+                  name='clone'
+                  id='forminput-clone-yes'
+                  value='yes'
+                  onChange={(e) => this.setState(
+                      {formClone: e.target.value})} />
+              </Radio>
+            </div>
+            <div>
+              <Radio
+                label={this.props.intl.formatMessage(MESSAGES.copiedRecord)}
+                key='no'
+              >
+                <NativeRadioControl
+                  name='clone'
+                  id='forminput-clone-no'
+                  value='no'
+                  onChange={(e) => this.setState(
+                      {formClone: e.target.value})} />
+              </Radio>
+            </div>
+            {this.renderTextFieldAndInput(
+                'formAuthorName', 'author_name', MESSAGES.yourNameRequired)}
+          </div>
+          {moreSection}
+        </div>
     );
   }
 
@@ -741,16 +870,18 @@ class Create extends Component {
     if (!this.state.isLoaded) {
       return <LoadingIndicator />;
     }
-    let formContent = null;
-    switch (this.state.activeTabIndex) {
-      case TAB_INDICES.ABOUT_ME:
-        formContent = this.renderAboutMeForm();
-        break;
-      case TAB_INDICES.ABOUT_SOMEONE_ELSE:
-        // TODO(nworden): support the form for someone else
-        formContent = <div>form for someone else here</div>;
-        break;
-    }
+    const formContent = (
+      <div className='create-formwrapper'>
+        <input
+            type='hidden'
+            name='own_info'
+            value={this.state.activeTabIndex == TAB_INDICES.ABOUT_ME ?
+                'yes' : 'no'} />
+        {this.renderIdentifyingInfoFields()}
+        {this.renderStatusFields()}
+        {this.renderSourceFields()}
+      </div>
+    );
     return (
       <div className='pf-linearwrap'>
         {/* TODO(nworden): consider having this go back to search results when
