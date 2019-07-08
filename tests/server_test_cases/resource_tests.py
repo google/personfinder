@@ -54,50 +54,6 @@ class ResourceTests(ServerTestsBase):
         doc = self.go('/haiti/create')
         assert 'xyz' not in doc.content
 
-    def test_resource_caching(self):
-        """Verifies that Resources are cached properly."""
-        # There's no file here.
-        self.go('/global/foo.txt')
-        assert self.s.status == 404
-        self.go('/global/foo.txt?lang=fr')
-        assert self.s.status == 404
-
-        # Add a Resource to be served as the static file.
-        bundle = ResourceBundle(key_name='1')
-        Resource(
-            parent=bundle, key_name='static/foo.txt', content='hello').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'hello'
-
-        # Add a localized Resource.
-        fr_key = Resource(parent=bundle, key_name='static/foo.txt:fr',
-                          content='bonjour').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'hello'  # original Resource remains cached
-
-        # The cached version should expire after 1 second.
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'bonjour'
-
-        # Change the non-localized Resource.
-        Resource(
-            parent=bundle, key_name='static/foo.txt', content='goodbye').put()
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'bonjour'
-                # no effect on the localized Resource
-
-        # Remove the localized Resource.
-        db.delete(fr_key)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'bonjour'
-                # localized Resource remains cached
-
-        # The cached version should expire after 1 second.
-        self.advance_utcnow(seconds=1.1)
-        doc = self.go('/global/foo.txt?lang=fr')
-        assert doc.content_bytes == 'goodbye'
-
 
 class CounterTests(ServerTestsBase):
     """Tests related to Counters."""
