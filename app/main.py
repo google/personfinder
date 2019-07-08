@@ -523,61 +523,31 @@ class Main(webapp.RequestHandler):
                         (env.repo, env.charset), get_vars)
                 response.out.write(content)
 
-        if env.config.get('enable_react_ui'):
-            # TODO(nworden): serve static files from /global/static
-            if env.repo == 'static':
-                self.serve_static_content(self.env.action)
-            elif self.should_serve_react_ui():
-                csp_nonce = self.set_content_security_policy()
-                react_env = {
-                    'maps_api_key': env.config.get('maps_api_key'),
-                }
-                json_encoder = simplejson.encoder.JSONEncoder()
-                response.out.write(
-                    resources.get_rendered(
-                        'react_index.html', env.lang,
-                        get_vars=lambda: {
-                            'env': env,
-                            'csp_nonce': csp_nonce,
-                            'env_json': json_encoder.encode(react_env),
-                        }))
-                return
+        if env.config.get('enable_react_ui') and self.should_serve_react_ui():
+            csp_nonce = self.set_content_security_policy()
+            react_env = {
+                'maps_api_key': env.config.get('maps_api_key'),
+            }
+            json_encoder = simplejson.encoder.JSONEncoder()
+            response.out.write(
+                resources.get_rendered(
+                    'react_index.html', env.lang,
+                    get_vars=lambda: {
+                        'env': env,
+                        'csp_nonce': csp_nonce,
+                        'env_json': json_encoder.encode(react_env),
+                    }))
+            return
 
-        if not env.action and not env.repo:
-            # A request for the root path ('/'). Renders the home page.
-            self.serve_static_content(HOME_ACTION)
-        elif env.action in HANDLER_CLASSES:
+        if env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')
             handler = getattr(__import__(module_name), class_name)(
                 request, response, env)
             getattr(handler, request.method.lower())()  # get() or post()
-        elif env.action.endswith('.template'):
-            # Don't serve template source code.
+        else:
             response.set_status(404)
             response.out.write('Not found')
-        else:
-            self.serve_static_content(self.env.action)
-
-    def serve_static_content(self, resource_name):
-        """Serve a static page or file in app/resources/static directory."""
-        response, env = self.response, self.env
-        env.robots_ok = True
-        get_vars = lambda: {'env': env, 'config': env.config}
-        content = resources.get_rendered(
-            'static/%s' % resource_name,
-            env.lang,
-            (env.repo, env.charset),
-            get_vars)
-        if content is None:
-            response.set_status(404)
-            response.out.write('Not found')
-        else:
-            content_type, encoding = mimetypes.guess_type(resource_name)
-            response.headers['Content-Type'] = (
-                    (content_type or 'text/plain') +
-                    ('; charset=%s' % encoding if encoding else ''))
-            response.out.write(content)
 
     def get(self):
         self.serve()
