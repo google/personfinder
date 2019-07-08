@@ -16,9 +16,10 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {FormattedHTMLMessage, defineMessages, injectIntl} from 'react-intl';
+import {FormattedHTMLMessage, FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import {withRouter} from 'react-router-dom';
 import Button from '@material/react-button';
+import {Chip} from '@material/react-chips';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 import Utils from './../utils/Utils';
 
@@ -45,6 +46,12 @@ const MESSAGES = defineMessages({
     id: 'LocationFieldset.showMap',
     defaultMessage: 'Show map',
     description: 'Label on a button to show a map.',
+  },
+  useLocation: {
+    id: 'LocationFieldset.useLocation',
+    defaultMessage: 'Use location',
+    description: ('Label on a button that a user can use to automatically fill '
+        + 'in a location field with their browser location.'),
   },
 });
 
@@ -106,15 +113,22 @@ class LocationFieldset extends Component {
     let showHideMapButton = null;
     if (this.mapsApiEnabled) {
       const newMapState = !this.state.showMap;
+      const showHideMapButtonLabel =
+          newMapState ?
+          this.props.intl.formatMessage(MESSAGES.showMap) :
+          this.props.intl.formatMessage(MESSAGES.hideMap);
       showHideMapButton = (
-          <Button
-              className='pf-button-primary'
-              type='button'
-              onClick={() => this.setState({showMap: newMapState})}>
-              {newMapState ?
-                  this.props.intl.formatMessage(MESSAGES.showMap) :
-                  this.props.intl.formatMessage(MESSAGES.hideMap)}
-          </Button>);
+          <Chip
+              className='locationfieldset-showmap'
+              label={
+                <div className='locationfieldset-showmap-label'>
+                  <img src='/static/icons/maticon_map.svg' />
+                  &nbsp;
+                  {showHideMapButtonLabel}
+                </div>
+              }
+              handleInteraction={() => this.setState({showMap: newMapState})} />
+      );
     }
     const map = (this.state.showMap && this.state.haveFinishedLoadingMapScript)
         ? <MapDisplay
@@ -141,12 +155,17 @@ class LocationFieldset extends Component {
         <p className='mdc-typography--body1 form-explanationtext'>
           <FormattedHTMLMessage {...MESSAGES.lastKnownLocationInstructions} />
         </p>
-        <Button
-          className='pf-button-primary'
-          type='button'
-          onClick={() => this.populateLocationWithCurrentLocation()}>
-          Use location
-        </Button>
+        <Chip
+            className='locationfieldset-uselocation'
+            label={
+              <div className='locationfieldset-uselocation-label'>
+                <img src='/static/icons/maticon_my_location.svg' />
+                &nbsp;
+                <FormattedMessage {...MESSAGES.useLocation} />
+              </div>
+            }
+            handleInteraction={
+              () => this.populateLocationWithCurrentLocation()} />
         &nbsp;
         {showHideMapButton}
         {map}
