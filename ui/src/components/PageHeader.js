@@ -36,8 +36,8 @@ const MESSAGES = defineMessages({
 });
 
 const PageHeader = (props) => (
-  <div id='repoheader'>
-    <div id='repoheader-backbutton'>
+  <div id='pageheader'>
+    <div id='pageheader-backbutton'>
       <Link to={props.backButtonTarget}>
         <div>
           <img
@@ -46,7 +46,7 @@ const PageHeader = (props) => (
         </div>
       </Link>
     </div>
-    <div id='repoheader-info'>
+    <div id='pageheader-info'>
       <p className='mdc-typography--subtitle1'>
         <FormattedMessage {...MESSAGES.productName} />
       </p>
