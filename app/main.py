@@ -103,7 +103,8 @@ HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 HANDLER_CLASSES['tasks/notify_many_unreviewed_notes'] = 'tasks.NotifyManyUnreviewedNotes'
 HANDLER_CLASSES['tasks/thumbnail_preparer'] = 'tasks.ThumbnailPreparer'
 
-NON_REACT_UI_PATHS = ['api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/']
+NON_REACT_UI_PATHS = [
+    'api/', 'admin/', 'feeds/', 'sitemap', 'tasks/', 'd/', 'photo']
 
 def is_development_server():
     """Returns True if the app is running in development."""
