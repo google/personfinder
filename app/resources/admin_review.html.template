@@ -95,7 +95,7 @@
               {% endif %}
             </td>
             <td class="person">
-              <a href="{{env.repo_path}}/view?id={{note.person_record_id}}"
+              <a href="{{env.repo_url}}view?id={{note.person_record_id}}"
                   id="link-{{forloop.counter}}">
                 {{note.person_full_name}}
               </a>
