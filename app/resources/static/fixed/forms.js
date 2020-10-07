@@ -367,15 +367,18 @@ function validate_fields() {
 
   if (age_value != "") {
     var curated_age_value = age_value.replace(/\s/g,'');
-    var valid_age_re = /^(\d+-?)+\d+$/;
+    var valid_age_re = /^(\d+-)?\d+$/;
 
     var isAgeFormatValid = valid_age_re.test(curated_age_value);
 
     if (!isAgeFormatValid) {
-      alert("The age entered is not in a valid format.");
-      return false;
+       show($('age_improper_format'));
+       age_field.focus();
+       return false;
     }
   }
+
+  hide($('age_improper_format'))
 
   return true;
 }
