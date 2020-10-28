@@ -201,6 +201,12 @@ class AutoSecurityTests(view_tests_base.ViewTestsBase):
             accepts_post=False,
             min_admin_level=None,
             requires_xsrf=False),
+        'enduser_global-index-altpath2':
+            path_test_info(
+                accepts_get=True,
+                accepts_post=False,
+                min_admin_level=None,
+                requires_xsrf=False),
         'frontendapi_add-note':
         path_test_info(
             accepts_get=False,

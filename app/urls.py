@@ -79,6 +79,8 @@ _BASE_URL_PATTERNS = [
     # The regular global homepage path is in _STARTING_SLASH_URL_PATTERNS below.
     ('enduser_global-index-altpath', r'global/home.html',
      views.enduser.global_index.GlobalIndexView.as_view),
+    ('enduser_global-index-altpath2', r'global/?',
+     views.enduser.global_index.GlobalIndexView.as_view),
     ('meta_static-howto', r'global/howto.html',
      views.meta.static_pages.HowToView.as_view),
     ('meta_static-responders', r'global/responders.html',
