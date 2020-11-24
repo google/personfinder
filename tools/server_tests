@@ -30,9 +30,26 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 # directory.
 cd "$(dirname $0)/.."
 
+# Parse arguments and set flags
+SKIP_UPDATE_TRANSLATIONS=false
+for arg in "$@"; do
+  shift
+  if [[ "${arg}" == "--skip_update_translations" ]]; then
+    SKIP_UPDATE_TRANSLATIONS=true
+    continue
+  fi
+  # All arguments other than "--skip_update_translations" remains intact
+  set -- "$@" "${arg}"
+done
+readonly SKIP_UPDATE_TRANSLATIONS
+
 echo
-echo "--- Updating translations"
-$TOOLS_DIR/update_messages
+if [[ "${SKIP_UPDATE_TRANSLATIONS}" == true ]]; then
+  echo "--- Skipped updating translations"
+else
+  echo "--- Updating translations"
+  "${TOOLS_DIR}"/update_messages
+fi
 
 echo
 echo "--- Running server tests"
