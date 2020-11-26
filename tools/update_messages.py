@@ -189,5 +189,4 @@ if __name__ == '__main__':
 
     # Run compilemessages to generate all the .mo files.
     sys.stderr = open('/dev/null', 'w')  # suppress the listing of all files
-    django_admin('compilemessages',
-                 '--ignore=vendors')
+    django_admin('compilemessages')
