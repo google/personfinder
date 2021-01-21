@@ -39,6 +39,24 @@ if [ -z "$APPENGINE_DIR" ]; then
     exit 1
 fi
 
+for dir in \
+    "$GCLOUD_DIR" \
+    "$(dirname "$(which gcloud)")" \
+    /usr/lib/google-cloud-sdk \
+    /usr/local/lib/google-cloud-sdk \
+    /usr/local/google-cloud-sdk \
+    $HOME/google-cloud-sdk; do
+    if [ -d "$dir" ]; then
+        export GCLOUD_DIR="$dir"
+        break
+    fi
+done
+
+if [ -z "$GCLOUD_DIR" ]; then
+    echo "Could not find google-cloud-sdk directory.  Please set GCLOUD_DIR."
+    exit 1
+fi
+
 for python in \
     "$PYTHON" \
     $(which python2.7) \
