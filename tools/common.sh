@@ -27,11 +27,7 @@ export TESTS_DIR=$PROJECT_DIR/tests
 for dir in \
     "$APPENGINE_DIR" \
     $HOME/opt/google-cloud-sdk/platform/google_appengine \
-    $HOME/google-cloud-sdk/platform/google_appengine \
-    /usr/lib/google_appengine \
-    /usr/local/lib/google_appengine \
-    /usr/local/google_appengine \
-    $HOME/google_appengine; do
+    $HOME/google-cloud-sdk/platform/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
         break
@@ -40,6 +36,7 @@ done
 
 if [ -z "$APPENGINE_DIR" ]; then
     echo "Could not find google_appengine directory.  Please set APPENGINE_DIR."
+    echo "Standalone SDK is deprecated. Please update to Google Cloud SDK"
     exit 1
 fi
 
