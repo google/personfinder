@@ -22,8 +22,12 @@ export PROJECT_DIR=$(dirname $TOOLS_DIR)
 export APP_DIR=$PROJECT_DIR/app
 export TESTS_DIR=$PROJECT_DIR/tests
 
+# Look for non-standalone SDK inside google-cloud-sdk.
+# Then look for a standalone one (deprecated).
 for dir in \
     "$APPENGINE_DIR" \
+    $HOME/opt/google-cloud-sdk/platform/google_appengine \
+    $HOME/google-cloud-sdk/platform/google_appengine \
     /usr/lib/google_appengine \
     /usr/local/lib/google_appengine \
     /usr/local/google_appengine \
