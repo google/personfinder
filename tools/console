@@ -14,6 +14,10 @@
 # limitations under the License.
 
 
+# Set up appropriate Application Default Credentials (ADC)
+# to access a production host.
+# https://cloud.google.com/sdk/gcloud/reference/auth/application-default
+
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 export REMOTE_API_RC="from model import *"$'\n'"from setup_pf import *"
