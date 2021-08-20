@@ -16,14 +16,14 @@ to get the dependencies for our React app.
 Once you have everything, the easiest way to develop the UI is to run two local
 servers:
 
-1. Run the Django (backend) server as usual, at port 8000.
+1. Run the Django (backend) server as usual, at port 8080 (default).
 2. Enable the React UI support (currently disabled by default) in the backend by
    setting `enable_react_ui` config to True:
     ```
-    $ ./tools/console localhost:8000
+    $ ./tools/console localhost:8080
     > config.set(enable_react_ui=True)
     ```
-3. Run the UI with `tools/ui run`. It will talk to the backend at port 8000 when
+3. Run the UI with `tools/ui run`. It will talk to the backend at port 8080 when
    it needs to make API calls. There is currently an issue with uploaded photos:
    the Webpack dev server is not set up to proxy requests for photo URLs, but it
    also can't serve the photos on its own, so photos will not correctly appear

@@ -31,7 +31,7 @@ module.exports = merge(common, {
     contentBase: path.join(__dirname, 'static/'),
     proxy: {
       '/*/d/**': {
-        target: 'http://localhost:8000',
+        target: 'http://localhost:8080',
         secure: false
       }
     },
