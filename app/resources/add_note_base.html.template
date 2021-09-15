@@ -299,6 +299,12 @@
   </div>
 {% endif %}
 
+{% if enable_recaptcha %}
+  <div class="recaptcha">
+    {{captcha_html|safe}}
+  </div>
+{% endif %}
+
 <div class="submit button button-blue">
   <input type="submit"
     {% if person.notes_disabled %}

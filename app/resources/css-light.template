@@ -893,6 +893,12 @@ label.option {
   min-width: 50%;
 }
 
+/* reCAPTCHA */
+.create .recaptcha {
+  margin: 0 auto;
+  width: 302px;  /* Defined in captcha.get_display_html. */
+}
+
 .source .instructions {
   padding-top: 1em;
   padding-bottom: 1em;

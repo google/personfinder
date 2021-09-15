@@ -723,7 +723,7 @@
         </div>
 
         {% ifequal params.role "provide" %}
-          {% include "add_note_base.html.template" %}
+          {% include "add_note_base.html.template" with enable_recaptcha=True %}
         {% endifequal %}
 
         {% ifnotequal params.role "provide" %}
