@@ -727,6 +727,9 @@
         {% endifequal %}
 
         {% ifnotequal params.role "provide" %}
+          <div class="recaptcha">
+            {{captcha_html|safe}}
+          </div>
           <div class="submit button button-blue">
             <input type="submit"
                 value="{% trans "Save this record" %}"

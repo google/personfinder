@@ -380,7 +380,7 @@ def create_note(
 
 
 class Handler(BaseHandler):
-    def get(self):
+    def _render_create_html(self):
         self.params.create_mode = True
         profile_websites = [
             add_profile_icon_url(website, self.transitionary_get_url)
@@ -391,18 +391,13 @@ class Handler(BaseHandler):
                     profile_websites_json=simplejson.dumps(profile_websites),
                     onload_function='view_page_loaded')
 
+    def get(self):
+        self._render_create_html()
+
     def post(self):
         captcha_response = self.get_captcha_response()
         if not captcha_response.is_valid:
-            self.params.create_mode = True
-            profile_websites = [
-                add_profile_icon_url(website, self.transitionary_get_url)
-                for website in self.config.profile_websites or []]
-            self.render('create.html',
-                        captcha_html=self.get_captcha_html(),
-                        profile_websites=profile_websites,
-                        profile_websites_json=simplejson.dumps(profile_websites),
-                        onload_function='view_page_loaded')
+            self._render_create_html()
             return
 
         profile_urls = [self.params.profile_url1,
