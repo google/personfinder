@@ -176,7 +176,8 @@ class CountBase(utils.BaseHandler):
                 counter = model.Counter.get_unfinished_or_create(
                     self.repo, self.SCAN_NAME)
                 entities_remaining = True
-                while entities_remaining:
+                batches_done = 0
+                while entities_remaining and batches_done < 20:
                     # Batch the db updates.
                     for _ in xrange(100):
                         entities_remaining = run_count(
@@ -185,6 +186,9 @@ class CountBase(utils.BaseHandler):
                             break
                     # And put the updates at once.
                     counter.put()
+                    batches_done += 1
+                self.add_task_for_repo(self.repo, self.SCAN_NAME, self.ACTION)
+                return
             except runtime.DeadlineExceededError:
                 # Continue counting in another task.
                 self.add_task_for_repo(self.repo, self.SCAN_NAME, self.ACTION)
