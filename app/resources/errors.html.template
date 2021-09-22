@@ -14,6 +14,11 @@
   The Email address you entered is not valid.
   {% endblocktrans %}
   </div>
+  <div id="age_improper_format" class="mandatory" style="display: none">
+  {% blocktrans %}
+  The age you entered is not valid.
+  {% endblocktrans %}
+  </div>
   <div id="status_inconsistent_with_author_made_contact"
       class="mandatory" style="display: none">
     {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
